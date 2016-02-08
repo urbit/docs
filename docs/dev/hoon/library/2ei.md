@@ -5,14 +5,28 @@ section 2eI, parsing (external)
 
 Parse or crash
 
-    ++  rash  |*([naf=@ sab=_rule] (scan (trip naf) sab))   ::
-
-Parse a cord with a given rule and crash if the cord isn't entirely
+Parse a cord with a given [`++rule`]() and crash if the [`++cord`]() isn't entirely
 parsed.
 
-`naf` is an [atom]().
+Accepts
+-------
 
-`sab` is a [rule]().
+`naf` is an atom.
+
+`sab` is a `++rule`.
+
+Produces
+--------
+
+The value of the parse result, or crash.
+
+Source
+------
+
+    ++  rash  |*([naf=@ sab=_rule] (scan (trip naf) sab))   ::
+
+Examples
+--------
 
     ~zod/try=> (rash 'I was the world in which I walked, and what I saw' (star (shim 0 200)))
     "I was the world in which I walked, and what I saw"
@@ -33,14 +47,28 @@ parsed.
 
 Parse or null
 
-    ++  rush  |*([naf=@ sab=_rule] (rust (trip naf) sab))
-
 Parse a given with a given rule and produce null if the cord isn't
 entirely parsed.
+
+Accepts
+-------
 
 `naf` is an [atom]().
 
 `sab` is a [rule]().
+
+Produces
+--------
+
+The value of the parse result, or null.
+
+Source
+------
+
+    ++  rush  |*([naf=@ sab=_rule] (rust (trip naf) sab))
+
+Examples
+--------
 
         ~zod/try=> (rush 'I was the world in which I walked, and what I saw' (star (shim 0 200)))
         [~ "I was the world in which I walked, and what I saw"]
@@ -59,16 +87,30 @@ entirely parsed.
 
 Parse tape or null
 
+Parse a [`++tape`]() with a given [`++rule`]() and produce null if the `++tape` isn't
+entirely parsed.
+
+Accepts
+-------
+
+`los` is a `++tape`.
+
+`sab` is a `++rule`.
+
+Produces
+--------
+
+A `(unit ,@t)`
+
+Source
+------
+
     ++  rust  |*  [los=tape sab=_rule]
               =+  vex=((full sab) [[1 1] los])
               ?~(q.vex ~ [~ u=p.u.q.vex])
 
-Parse a tape with a given rule and produce null if the tape isn't
-entirely parsed.
-
-`los` is a [tape]().
-
-`sab` is a [rule]().
+Examples
+--------
 
         ~zod/try=> (rust "I was the world in which I walked, and what I saw" (star (shim 0 200)))
         [~ "I was the world in which I walked, and what I saw"]
@@ -83,6 +125,24 @@ entirely parsed.
 
 Parse tape or crash
 
+Parse a [`++tape`]() with a given [`++rule`]() and crash if the `++tape` isn't entirely
+parsed.
+
+Accepts
+-------
+
+`los` is a [tape]().
+
+`sab` is a [rule]().
+
+Produces
+--------
+
+Either a `++tape` or a crash.
+
+Source
+------
+
     ++  scan  |*  [los=tape sab=_rule]
               =+  vex=((full sab) [[1 1] los])
               ?~  q.vex
@@ -90,12 +150,8 @@ Parse tape or crash
                 ~|('syntax-error' !!)
               p.u.q.vex
 
-Parse a tape with a given rule and crash if the tape isn't entirely
-parsed.
-
-`los` is a [tape]().
-
-`sab` is a [rule]().
+Examples
+--------
 
         ~zod/try=> (scan "I was the world in which I walked, and what I saw" (star (shim 0 200)))
         "I was the world in which I walked, and what I saw"

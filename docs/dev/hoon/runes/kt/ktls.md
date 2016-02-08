@@ -1,21 +1,13 @@
-ketlus, `^+`, %ktls
-============================
+`^+`
+====
 
-Cast to type
+Cast `q` to an unbunted `p`
 
-Syntax
-======
-
-`^+` is a natural rune that casts the product of `q` to the type of `p`,
-verifying that it contains the type of `q`. `^+` is similar to `^-`, but
-doesn't bunt the subject. Most often we use `^+` to cast when our type
-is already defined by something inside our context.
-
-See also
---------
-
-kethep, `^-`, %kthp
-============================
+Casts `q` to the type of `p`, verifying that it contains
+the type of `q`. Similar to `^+`, but doesn't bunt `p`. Used to
+cast to types that have previously been made into validator
+functions (clams) with `$,`. For example, the arguments to a [`|=`]() are
+automatically bunted with a [`=|`](), so `^+` is used. Most often we use `^+` to cast when our type is already defined by something inside our context.
 
 Produces
 --------
@@ -25,7 +17,7 @@ Twig: `[%ktls p=twig q=twig]`
 Sample
 ------
 
-`p` is a [twig](). `q` is a [twig]().
+`p` is a [`++twig`](). `q` is a twig.
 
 Tall form
 ---------
@@ -38,11 +30,6 @@ Wide form
 
     ^+(p q)
 
-Irregular form
---------------
-
-None
-
 Examples
 --------
 
@@ -51,8 +38,8 @@ Examples
     ~zod/try=> ^+('any text' (add 90 7))
     'a'
 
-Here we use a cord (which could be any cord), `'any text'` to cast our
-result to a ['++cord']().
+Here we use a ['++cord']() (which could be any cord), `'any text'` to cast our
+result to a cord.
 
     /~zod/try=>  =cor  |=  a=[q=@ta r=@ s=@]
                        [(cat 3 'new' q.a) (add r.a s.a) (sub r.a s.a)]

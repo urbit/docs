@@ -5,6 +5,29 @@ section 2eD
 
 Conditional composer
 
+Parsing composer: connects the [`++edge`]() `vex` with the subsequent [`++rule`]() `sab`
+as an optional suffix, using [gate]() `raq` to compose or reject its
+result. If there is no suffix, or if the suffix fails to be composed
+with the current result, the current result is produced. Used to map a
+group of rules to a specified output.
+
+Accepts
+-------
+
+`raq` is a [gate]().
+
+`sab` is a [rule]().
+
+`vex` is an [edge]().
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
+
     ++  bend                                                ::  conditional comp
       ~/  %bend
       |*  raq=_|*([a=* b=*] [~ u=[a b]])
@@ -22,17 +45,8 @@ Conditional composer
       [p=yur q=[~ u=[p=u.vux q=q.u.q.yit]]]
     ::
 
-Parsing composer: connects the edge `vex` with the subsequent rule `sab`
-as an optional suffix, using the gate `raq` to compose or reject its
-result. If there is no suffix, or if the suffix fails to be composed
-with the current result, the current result is produced. Used to map a
-group of rules to a specified output.
-
-`raq` is a [gate]().
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> (;~((bend |=([a=char b=char] ?.(=(a b) ~ (some +(a))))) prn prn) [1 1] "qs")
     [p=[p=1 q=3] q=[~ u=[p=~~q q=[p=[p=1 q=2] q="s"]]]]
@@ -54,6 +68,28 @@ group of rules to a specified output.
 
 Arbitrary compose
 
+Parsing composer: connects the [`++edge`]() `vex` with a following [`++rule`]() `sab`,
+combining the contents of `vex` with the result of `sab` using a binary
+[gate]() `raq`. Used to fold over the results of several `++rules`.
+
+Accepts
+-------
+
+`raq` is a gate that accepts a cell of two [nouns](), `a` and `b`, and
+produces a cell of two nouns.
+
+`sab` is a rule.
+
+`vex` is an edge.
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
+
     ++  comp
       ~/  %comp
       |*  raq=_|*([a=* b=*] [a b])                          ::  arbitrary compose
@@ -68,16 +104,8 @@ Arbitrary compose
       [p=yur q=[~ u=[p=(raq p.u.q.vex p.u.q.yit) q=q.u.q.yit]]]
     ::
 
-Parsing composer: connects the edge `vex` with a following rule `sab`,
-combining the contents of `vex` with the result of `sab` using a binary
-gate `raq`. Used to fold over the results of several rules.
-
-`raq` is a [gate]() that accepts a cell of two nouns, `a` and `b`, and
-produces a cell of two nouns.
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> (scan "123" ;~((comp |=([a=@u b=@u] (add a b))) dit dit dit))
     6
@@ -91,6 +119,27 @@ produces a cell of two nouns.
 
 Skip delimiter
 
+Parsing composer: connects an [`++edge`]() `vex` with a following [`++rule`]() `sab` by
+parsing the `++rule` `bus` (the delimiting symbol) and throwing out the
+result.
+
+Accepts
+-------
+
+`bus` is a `++rule`.
+
+`sab` is a `++rule`.
+
+`vex` is an `++edge`.
+
+Produces
+--------
+
+
+
+Source
+------
+
     ++  glue                                                ::  add rule
       ~/  %glue
       |*  bus=_rule
@@ -99,15 +148,8 @@ Skip delimiter
       (plug vex ;~(pfix bus sab))
     ::
 
-Parsing composer: connects an edge `vex` with a following rule `sab` by
-parsing the rule `bus` (the delimiting symbol) and throwing out the
-result.
-
-`bus` is a [rule]().
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> (scan "200|mal|bon" ;~((glue bar) dem sym sym))
     [q=200 7.102.829 7.237.474]
@@ -124,6 +166,24 @@ result.
 
 Parse unless
 
+Parsing composer: if an [`++edge`]() `vex` reflects a success, fail. Otherwise,
+connect `vex` with the following [`++rule`]().
+
+Accepts
+-------
+
+`sab` is a `++rule`.
+
+`vex` is an `++edge`.
+
+Produces
+--------
+
+
+
+Source
+------
+
     ++  less                                                ::  no first and second
       |*  [vex=edge sab=_rule]
       ?~  q.vex
@@ -132,12 +192,8 @@ Parse unless
       vex(q ~)
     ::
 
-Parsing composer: if an edge `vex` reflects a success, fail. Otherwise,
-connect `vex` with the following rule.
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> (scan "sas-/lo" (star ;~(less lus bar prn)))
     "sas-/lo"
@@ -154,15 +210,29 @@ connect `vex` with the following rule.
 
 Discard first rule
 
+Parsing composer: connects an [`++edge`]() `vex` with two subsequent [`++rule`]()s,
+ignoring the result of the first and producing the result of the second.
+
+Accepts
+-------
+
+`vex` is an [edge]().
+
+Produces
+--------
+
+
+
+Source
+------
+
     ++  pfix                                                ::  discard first rule
       ~/  %pfix
       (comp |*([a=* b=*] b))
     ::
 
-Parsing composer: connects an [edge]() `vex` with two subsequent rules,
-ignoring the result of the first and producing the result of the second.
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> `@t`(scan "%him" ;~(pfix cen sym))
     'him'
@@ -174,6 +244,25 @@ ignoring the result of the first and producing the result of the second.
 ### `++plug`
 
 Parse to tuple
+
+Parsing composer: connects an [`++edge`]() `vex` with a following [`++rule`]() `sab`, producing
+a cell of both the results. See also: the monad applicator [;\~]() for a
+more detailed explanation.
+
+Accepts
+-------
+
+`sab` is a `++rule`.
+
+`vex` is an `++edge`.
+
+Produces
+--------
+
+
+
+Source
+------
 
     ++  plug                                                ::  first then second
       ~/  %plug
@@ -187,13 +276,8 @@ Parse to tuple
       [p=yur q=[~ u=[p=[p.u.q.vex p.u.q.yit] q=q.u.q.yit]]]
     ::
 
-Parsing composer: connects `vex` with a following rule `sab`, producing
-a cell of both the results. See also: the monad applicator [;\~]() for a
-more detailed explanation.
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> (scan "1..20" ;~(plug dem dot dot dem))
     [q=1 ~~~. ~~~. q=20]
@@ -208,6 +292,24 @@ more detailed explanation.
 
 Parse options
 
+Parsing composer: if `vex` reflects a failure, connect it with the
+following rule `sab`. See also: the monad applicator [;\~]()
+
+Accepts
+-------
+
+`sab` is a [`++rule`]().
+
+`vex` is an [`++edge`]().
+
+Produces
+--------
+
+
+
+Source
+------
+
     ++  pose                                                ::  first or second
       ~/  %pose
       |*  [vex=edge sab=_rule]
@@ -216,12 +318,8 @@ Parse options
         [p=(last p.vex p.roq) q=q.roq]
       vex
 
-Parsing composer: if `vex` reflects a failure, connect it with the
-following rule `sab`. See also: the monad applicator [;\~]()
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> `@t`(scan "+" ;~(pose lus tar cen))
     '+'
@@ -239,6 +337,24 @@ following rule `sab`. See also: the monad applicator [;\~]()
 
 First and second
 
+Parsing composer: if an [`++edge`]() `vex` reflects a failure, fail. Otherwise,
+connect `vex` with the following [`++rule`]().
+
+Accepts
+-------
+
+`sab` is a `++rule`.
+
+`vex` is an `++edge`.
+
+Produces
+--------
+
+
+
+Source
+------
+
     ++  simu                                                ::  first and second
       |*  [vex=edge sab=_rule]
       ?~  q.vex
@@ -247,12 +363,8 @@ First and second
       roq
     ::
 
-Parsing composer: if an edge `vex` reflects a failure, fail. Otherwise,
-connect `vex` with the following rule.
-
-`sab` is a [rule]().
-
-`vex` is an [edge]().
+Examples
+--------
 
     ~zod/try=> (scan "~zod" scat:vast)
     [%dtzy p=%p q=0]
@@ -270,16 +382,30 @@ connect `vex` with the following rule.
 
 Discard second rule
 
+Parsing composer: connects [`++edge`]()s `vex` with two subsequent [`++rule`]()s returning the
+result of the first and discarding the result of the second.
+
+Accepts
+-------
+
+`a` is the result of parsing the first `++rule`.
+
+`b` is the result of of parsing the second `++rule`.
+
+Produces
+--------
+
+
+
+Source
+------
+
     ++  sfix                                                ::  discard second rule
       ~/  %sfix
       (comp |*([a=* b=*] a))
 
-Parsing composer: connects `vex` with two subsequent rules returning the
-result of the first and discarding the result of the second.
-
-`a` is the result of parsing the first [rule]().
-
-`b` is the result of of parsing the second [rule]().
+Examples
+--------
 
     ~zod/try=> `@t`(scan "him%" ;~(sfix sym cen))
     'him'

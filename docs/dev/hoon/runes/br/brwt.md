@@ -1,23 +1,22 @@
-barwut, `|?`, %brwt
-============================
+`|?`
+====
 
-`%lead` trap
+`|-` with hidden context
 
-`|?` is a synthetic rune that produces a dry [`%lead`]() trap. `%lead`
-traps are used when we want to pass one core to another core, as both
-the sample and context of the core being passed must must be hidden in
-order to avoid type conflicts with a core that has a different sample
-and context.
+Similar to `|-` except for that the [sample]() and
+[context]() of the core being passed is hidden in order to avoid
+type conflicts with a core that has a different [sample]() and
+context. In urbit language, `|?` produces a [dry]() [%lead]() trap. 
 
 Produces
 --------
 
 Twig: `[%brwt q=twig]`
 
-Sample
-------
+Accepts
+-------
 
-`q` is a [twig]().
+`p` is a [++twig]().
 
 Tall form
 ---------
@@ -28,11 +27,6 @@ Wide form
 ---------
 
     |?(p)
-
-Irregular form
---------------
-
-None
 
 Examples
 --------

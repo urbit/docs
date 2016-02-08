@@ -1,7 +1,7 @@
-zapfas, `!/`, %zpfs
-============================
+`!/`
+====
 
-Report as error
+XX
 
 `!/` is a virtual natural rune that should never be compiled. When
 compiled with error checking turned on, it reports its subject as an
@@ -15,7 +15,7 @@ Twig: `[%zpfs p=twig q=twig]`
 Sample
 ------
 
-`p` and `q` are [twig]()s.
+`p` and `q` are [`++twig`]()s.
 
 Tall form
 ---------
@@ -27,11 +27,6 @@ Wide form
 ---------
 
     !/(p q)
-
-Irregular form
---------------
-
-None
 
 Examples
 --------

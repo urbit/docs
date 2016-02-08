@@ -1,28 +1,17 @@
-wutcol, `?:`, %wtcl
-============================
+`?:`
+====
 
-If, then
-
-`?:`, `wutcol`, is a natural rune that produces `q` if `p` is yes (`&`,
-`0`), or `r` if `p` is no (`|`, 1). `?:` is most similar to the
-traditional "if" statement, producing the first expression if the
-loobean is true. `?:` is the inverse of `?.`.
-
-See also
---------
-
-wutdot, `?.`, %wtdt
-============================
+If-then-else
 
 Produces
 --------
 
 Twig: `[%wtcl p=twig q=twig r=twig]`
 
-Sample
-------
+Accepts
+-------
 
-`p`, `q`, and `r` are [twig]()s.
+`p`, `q`, and `r` are [`++twig`]()s.
 
 Tall form
 ---------
@@ -36,11 +25,6 @@ Wide form
 
     ?:(p q r)
 
-Irregular form
---------------
-
-None
-
 Examples
 --------
 
@@ -50,5 +34,5 @@ Examples
     %yup
 
 Here we see two common cases of `?:` in the wide form, one uses an
-expression `gte` that produces a loobean and the other [`?=`]() to
+expression [`++gte`]() that produces a boolean and the other [`?=`]() to
 produce one of its cases.

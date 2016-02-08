@@ -1,20 +1,20 @@
-sigtis, `~=`, %sgts
-============================
+`~=`
+====
 
-Equality hint
+Hint to avoid duplication
 
-`~=` is a synthetic rune that hints to the interpreter that `q` may
-produce a noun equal to the already existing `p`, avoiding duplication.
+Hints to the interpreter that `q` may produce a noun equal to the
+already existing `p` in order to avoid storing the same noun twice.
 
 Produces
 --------
 
 Twig `[%sgts p=twig q=twig]`
 
-Sample
-------
+Accepts
+-------
 
-`p` is a [twig](). `q` is a [twig]().
+`p` is a [`++twig`](). `q` is a twig.
 
 Tall form
 ---------
@@ -26,11 +26,6 @@ Wide form
 ---------
 
     ~=(p q)
-
-Irregular form
---------------
-
-None
 
 Examples
 --------

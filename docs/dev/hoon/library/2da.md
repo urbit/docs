@@ -5,6 +5,21 @@ section 2dA, sets
 
 Set verification
 
+Produces a boolean indicating whether `a` is a [`++set`]() or not.
+
+Accepts
+-------
+
+`a` is a [tree]().
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
+
     ++  apt                                                 ::  set invariant
       |=  a=(tree)
       ?~  a
@@ -14,9 +29,8 @@ Set verification
       ==
     ::
 
-Produces a loobean indicating whether `a` is a set or not.
-
-`a` is a [tree]().
+Examples
+--------
 
     ~zod/try=> =b (sa `(list ,@t)`['john' 'bonita' 'daniel' 'madeleine' ~])
     ~zod/try=> (apt b)
@@ -33,20 +47,47 @@ Produces a loobean indicating whether `a` is a set or not.
 
 Set operations
 
+Core whose [arm]()s contain a variety of functions that operate on [`++set`]()s. Its [sample]() accepts the input [`++set`]() to be manipulated. 
+
+Accepts
+-------
+
+A `++set`.
+
+Source
+------
+
     ++  in                                                  ::  set engine
       ~/  %in
       |/  a=(set)
 
-Input arm.
+Examples
+--------
 
     ~zod/try=> ~(. in (sa "asd"))
     <13.evb [nlr(^$1{@tD $1}) <414.fvk 101.jzo 1.ypj %164>]>
 
-`a` is a [set]()
-
 ### `+-all:in`
 
 Logical AND
+
+Computes the logical AND on every element in `a` slammed with `b`,
+producing a boolean.
+
+Accepts
+-------
+
+`a` is a [`++set`]().
+
+`b` is a [wet]() [gate]() that accepts a [noun]() and produces a boolean.
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
 
       +-  all                                               ::  logical AND
         ~/  %all
@@ -57,12 +98,8 @@ Logical AND
         ?&((b n.a) $(a l.a) $(a r.a))
       ::
 
-Computes the logical AND on every element in `a` slammed with `b`,
-producing a loobean.
-
-`a` is a [set]().
-
-`b` is a [wet gate]() that accepts a noun and produces a loobean.
+Examples
+--------
 
     ~zod/try=> =b (sa `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
     ~zod/try=> (~(all in b) |=(a=* ?@(+.a & |)))
@@ -77,6 +114,23 @@ producing a loobean.
 
 Logical OR
 
+Computes the logical OR on every element of `a` slammed with `b`.
+
+Accepts
+-------
+
+`a` is a [`++set`]().
+
+`b` is a [gate]() that accepts a noun and produces a boolean.
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
+
       +-  any                                               ::  logical OR
         ~/  %any
         |*  b=$+(* ?)
@@ -86,11 +140,8 @@ Logical OR
         ?|((b n.a) $(a l.a) $(a r.a))
       ::
 
-Computes the logical OR on every element of `a` slammed with `b`.
-
-`a` is a [set]().
-
-`b` is a [gate]() that accepts a noun and produces a loobean.
+Examples
+--------
 
     ~zod/try=> =b (sa `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
     ~zod/try=> (~(any in b) |=(a=* ?@(+.a & |)))
@@ -104,6 +155,23 @@ Computes the logical OR on every element of `a` slammed with `b`.
 ### `+-del:in`
 
 Remove noun
+
+Removes `b` from the [`++set`]() `a`.
+
+Accepts
+-------
+
+`a` is a set.
+
+`b` is a [noun]().
+
+Produces
+--------
+
+A set.
+
+Source
+------
 
       +-  del                                               ::  b without any a
         ~/  %del
@@ -123,11 +191,9 @@ Remove noun
         [n.r.a $(r.a l.r.a) r.r.a]
       ::
 
-Removes `b` from the set `a`.
 
-`a` is a [set]().
-
-`b` is a [noun]().
+Examples
+--------
 
     ~zod/try=> =b (sa `(list ,@t)`['a' 'b' 'c' ~])
     ~zod/try=> (~(del in b) 'a')
@@ -144,6 +210,23 @@ Removes `b` from the set `a`.
 
 Axis a in b
 
+Produce the axis of `b` within `a`.
+
+Accepts
+-------
+
+`a` is a [`++set`]().
+
+`b` is a [noun]().
+
+Produces
+--------
+
+The [`++unit`]() of an atom.
+
+Source
+------
+
       +-  dig                                               ::  axis of a in b
         |=  b=*
         =+  c=1
@@ -155,11 +238,9 @@ Axis a in b
         $(a r.a, c (peg c 7))
       ::
 
-Produce the axis of `b` within `a`.
 
-`a` is a [set]().
-
-`b` is a [noun]().
+Examples
+--------
 
     ~zod/try=> =a (sa `(list ,@)`[1 2 3 4 5 6 7 ~])
     ~zod/try=> a
@@ -179,6 +260,23 @@ Produce the axis of `b` within `a`.
 
 Concatenate
 
+Insert the elements of a [`++list`]() `b` into a [`++set`]() `a`.
+
+Accepts
+-------
+
+`a` is a set.
+
+`b` is a list.
+
+Produces
+--------
+
+A `++set`.
+
+Source
+------
+
       +-  gas                                               ::  concatenate
         ~/  %gas
         |=  b=(list ,_?>(?=(^ a) n.a))
@@ -188,11 +286,9 @@ Concatenate
         $(b t.b, a (put(+< a) i.b))
       ::
 
-Insert the elements of a list `b` into a set `a`.
 
-`a` is a [set]().
-
-`b` is a [list]().
+Examples
+--------
 
     ~zod/try=> b
     {'bonita' 'madeleine' 'rudolf' 'john'}
@@ -207,6 +303,23 @@ Insert the elements of a list `b` into a set `a`.
 
 b in a?
 
+Checks if `b` is an element of `a`, producing a boolean.
+
+Accepts
+-------
+
+`a` is a [`++set`]().
+
+`b` is a [noun]().
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
+
       +-  has                                               ::  b exists in a check
         ~/  %has
         |*  b=*
@@ -220,11 +333,9 @@ b in a?
         $(a r.a)
       ::
 
-Checks if `b` is an element of `a`, producing a loobean.
 
-`a` is a [set]().
-
-`b` is a [noun]().
+Examples
+--------
 
     ~zod/try=> =a (~(gas in `(set ,@t)`~) `(list ,@t)`[`a` `b` `c` ~])
     ~zod/try=> (~(has in a) `a`)
@@ -237,6 +348,24 @@ Checks if `b` is an element of `a`, producing a loobean.
 ### `+-int:in`
 
 Intersection
+
+Produces a set of the intersection between two [`++set`]()s of the same type,
+`a` and `b`.
+
+Accepts
+-------
+
+`a` is a set.
+
+`b` is a set.
+
+Produces
+--------
+
+A [`++set`]().
+
+Source
+------
 
     +-  int                                               ::  intersection
         ~/  %int
@@ -254,12 +383,9 @@ Intersection
           %-  uni(+< $(a l.a, b [n.b l.b ~]))  $(b r.b)
         %-  uni(+< $(a r.a, b [n.b ~ r.b]))  $(b l.b)
 
-Produces a set of the intersection between two sets of the same type,
-`a` and `b`.
 
-`a` is a [set]().
-
-`b` is a [set]().
+Examples
+--------
 
     ~zod/try=> (~(int in (sa "ac")) (sa "ha"))
     {~~a}
@@ -275,6 +401,23 @@ Produces a set of the intersection between two sets of the same type,
 ### `+-put:in`
 
 Put b in a
+
+Add an element `b` to the [`++set`]() `a`.
+
+Accepts
+-------
+
+`a` is a set.
+
+`b` is a [noun]().
+
+Produces
+--------
+
+A [`++set`]().
+
+Source
+------
 
       +-  put                                               ::  puts b in a
         ~/  %put
@@ -297,11 +440,9 @@ Put b in a
         [n.c [n.a l.a l.c] r.c]
       ::
 
-Add an element `b` to the set `a`.
 
-`a` is a [set]().
-
-`b` is a [noun]().
+Examples
+--------
 
     ~zod/try=> =a (~(gas in `(set ,@t)`~) `(list ,@t)`[`a` `b` `c` ~])
     ~zod/try=> =b (~(put in a) `d`)
@@ -316,6 +457,25 @@ Add an element `b` to the set `a`.
 
 Accumulate
 
+Accumulate the elements of `a` using a [gate]() `c` and an accumulator `b`.
+
+Accepts
+--------
+
+`a` is a [`++set`]().
+
+`b` is a [noun]().
+
+`c` is a gate.
+
+Produces
+--------
+
+A noun.
+
+Source
+------
+
       +-  rep                                               ::  replace by tile
         |*  [b=* c=_,*]
         |-
@@ -323,13 +483,9 @@ Accumulate
         $(a r.a, b $(a l.a, b (c n.a b)))
       ::
 
-Accumulate the elements of `a` using a gate `c` and an accumulator `b`.
 
-`a` is a [set]().
-
-`b` is a [noun]() that accepts a noun and produces a loobean.
-
-`c` is a [gate]().
+Examples
+--------
 
     ~zod/try=> =a (~(gas in *(set ,@)) [1 2 3 ~])
     ~zod/try=> a
@@ -343,6 +499,21 @@ Accumulate the elements of `a` using a gate `c` and an accumulator `b`.
 
 Set to list
 
+Flattens the [`++set`]() `a` into a [`++list`]().
+
+Accepts
+-------
+
+`a` is an set.
+
+Produces
+--------
+
+A list.
+
+Source
+------
+
       +-  tap                                               ::  list tiles a set
         ~/  %tap
         |=  b=(list ,_?>(?=(^ a) n.a))
@@ -352,13 +523,9 @@ Set to list
         $(a r.a, b [n.a $(a l.a)])
       ::
 
-Flatten the set `a` into a list.
 
-`a` is an [set]().
-
-`a` is a [set]().
-
-`b` is a [list]().
+Examples
+--------
 
     ~zod/try=> =s (sa `(list ,@t)`['a' 'b' 'c' 'd' 'e' ~])
     ~zod/try=> s
@@ -375,6 +542,24 @@ Flatten the set `a` into a list.
 ### `+-uni:in`
 
 Union
+
+Produces a set of the union between two [`++set`]()s of the same type, `a` and
+`b`.
+
+Accepts
+-------
+
+`a` is a set.
+
+`b` is a set.
+
+Produces
+--------
+
+A set.
+
+Source
+------
 
       +-  uni                                               ::  union
         ~/  %uni
@@ -396,12 +581,9 @@ Union
           $(b [n.b $(b l.b, a [n.a l.a ~]) r.b], a r.a)
         $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
 
-Produces a set of the union between two sets of the same type, `a` and
-`b`.
 
-`a` is a [set]().
-
-`b` is a [set]().
+Examples
+--------
 
     ~zod/try=> (~(uni in (sa "ac")) (sa "ha"))
     {~~a ~~c ~~h}
@@ -418,13 +600,28 @@ Produces a set of the union between two sets of the same type, `a` and
 
 Set size
 
+Produce the number of elements in [`++set`]() `a` as an atom.
+
+Accepts
+-------
+
+`a` is an set.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
+
       +-  wyt                                               ::  size of set
         |-  ^-  @
         ?~(a 0 +((add $(a l.a) $(a r.a))))
 
-Produce the number of elements in set `a` as an atom.
 
-`a` is an [set]().
+Examples
+--------
 
     ~zod/try=> =a (~(put in (~(put in (sa)) 'a')) 'b')
     ~zod/try=> ~(wyt in a)

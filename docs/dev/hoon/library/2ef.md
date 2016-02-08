@@ -5,9 +5,15 @@ section 2eF, parsing (ascii)
 
 Parse space
 
+Parses ASCII character 32, space.
+
+Source
+------
+
     ++  ace  (just ' ')
 
-Parses ASCII character 32, space.
+Examples
+--------
 
     ~zod/try=> (scan " " ace)
     ~~. 
@@ -24,9 +30,15 @@ Parses ASCII character 32, space.
 
 Parse vertical bar
 
+Parses ASCII character 124, the vertical bar.
+
+Source
+------
+
     ++  bar  (just '|')
 
-Parses ASCII character 124, the vertical bar.
+Examples
+--------
 
     ~zod/try=> (scan "|" bar)
     ~~~7c. 
@@ -43,10 +55,17 @@ Parses ASCII character 124, the vertical bar.
 
 Parse backslash
 
+Parses ASCII character 92, the backslash. Note the extra `\` in the calling of
+`bas` with [`++just`](/doc/hoon/library/2ec#++just) is to escape the escape
+character, `\`.
+
+Source
+------
+
     ++  bas  (just '\\')
 
-Parses ASCII character 92, the backslash. Note the extra `\` in the slam
-of `bas` with [`++just`](/doc/hoon/library/2ec#++just) is to escape the escape character, `\`.
+Examples
+--------
 
     ~zod/try=> (scan "\\" bas)
     ~~~5c.
@@ -65,9 +84,15 @@ of `bas` with [`++just`](/doc/hoon/library/2ec#++just) is to escape the escape c
 
 Parse dollar sign
 
+Parses ASCII character 36, the dollar sign.
+
+Source
+------
+
     ++  buc  (just '$')
 
-Parses ASCII character 36, the dollar sign.
+Examples
+--------
 
     ~zod/try=> (scan "$" buc)
     ~~~24.
@@ -84,9 +109,15 @@ Parses ASCII character 36, the dollar sign.
 
 Parse underscore
 
+Parses ASCII character 95, the underscore.
+
+Source
+------
+
     ++  cab  (just '_')
 
-Parses ASCII character 95, the underscore.
+Examples
+--------
 
     ~zod/try=> (scan "_" cab)
     ~~~5f.
@@ -103,9 +134,15 @@ Parses ASCII character 95, the underscore.
 
 Parses percent sign
 
+Parses ASCII character 37, the percent sign.
+
+Source
+------
+
     ++  cen  (just '%')
 
-Parses ASCII character 37, the percent sign.
+Examples
+--------
 
     ~zod/try=> (scan "%" cen)
     ~~~25.
@@ -122,9 +159,15 @@ Parses ASCII character 37, the percent sign.
 
 Parse colon
 
+Parses ASCII character 58, the colon
+
+Source
+------
+
     ++  col  (just ':')
 
-Parses ASCII character 58, the colon
+Examples
+--------
 
     ~zod/try=> (scan ":" col)
     ~~~3a.
@@ -141,9 +184,15 @@ Parses ASCII character 58, the colon
 
 Parse comma
 
+Parses ASCII character 44, the comma.
+
+Source
+------
+
     ++  com  (just ',')
 
-Parses ASCII character 44, the comma.
+Examples
+--------
 
     ~zod/try=> (scan "," com)
     ~~~2c.
@@ -160,19 +209,25 @@ Parses ASCII character 44, the comma.
 
 Parse double quote
 
-    ++  doq  (just '"')
-
 Parses ASCII character 34, the double quote.
 
-    ~tadbyl-hilbel/try=> (scan "\"" doq)
+Source
+------
+
+    ++  doq  (just '"')
+
+Examples
+--------
+
+    ~zod/try=> (scan "\"" doq)
     ~~~22.
-    ~tadbyl-hilbel/try=> `cord`(scan "\"" doq)
+    ~zod/try=> `cord`(scan "\"" doq)
     '"'
-    ~tadbyl-hilbel/try=> (doq [[1 1] "\""])
+    ~zod/try=> (doq [[1 1] "\""])
     [p=[p=1 q=2] q=[~ [p=~~~22. q=[p=[p=1 q=2] q=""]]]]
-    ~tadbyl-hilbel/try=> (doq [[1 1] "not successfully parsed"])
+    ~zod/try=> (doq [[1 1] "not successfully parsed"])
     [p=[p=1 q=1] q=~]
-    ~tadbyl-hilbel/try=> (scan "see?" doq)
+    ~zod/try=> (scan "see?" doq)
     ! {1 1}
     ! 'syntax-error'
     ! exit 
@@ -183,9 +238,15 @@ Parses ASCII character 34, the double quote.
 
 Parse period
 
+Parses ASCII character 46, the period.
+
+Source
+------
+
     ++  dot  (just '.')
 
-Parses ASCII character 46, the period.
+Examples
+--------
 
     ~zod/try=> (scan "." dot)
     ~~~.
@@ -202,9 +263,15 @@ Parses ASCII character 46, the period.
 
 Parse forward slash
 
+Parses ASCII character 47, the forward slash.
+
+Source
+------
+
     ++  fas  (just '/')
 
-Parses ASCII character 47, the forward slash.
+Examples
+--------
 
     ~zod/try=> (scan "/" fas)
     ~~~2f.
@@ -221,9 +288,15 @@ Parses ASCII character 47, the forward slash.
 
 Parse less-than sign
 
+Parses ASCII character 60, the less-than sign.
+
+Source
+------
+
     ++  gal  (just '<')
 
-Parses ASCII character 60, the less-than sign.
+Examples
+--------
 
     ~zod/try=> (scan "<" gal)
     ~~~3c.
@@ -242,9 +315,15 @@ Parses ASCII character 60, the less-than sign.
 
 Parse greater-than sign
 
+Parses ASCII character 62, the greater-than sign.
+
+Source
+------
+
     ++  gar  (just '>')
 
-Parses ASCII character 62, the greater-than sign.
+Examples
+--------
 
     ~zod/try=> (scan ">" gar)
     ~~~3e.
@@ -261,9 +340,15 @@ Parses ASCII character 62, the greater-than sign.
 
 Parse number sign
 
+Parses ASCII character 35, the number sign.
+
+Source
+------
+
     ++  hax  (just '#')
 
-Parses ASCII character 35, the number sign.
+Examples
+--------
 
     ~zod/try=> (scan "#" hax)
     ~~~23.
@@ -280,11 +365,17 @@ Parses ASCII character 35, the number sign.
 
 Parse left curley bracket
 
-    ++  kel  (just '{')
-
 Parses ASCII character 123, the left curly bracket. Note that `{`
 (`kel`) and `}` (`ker`) open and close a Hoon expression for Hoon string
 interpolation. To parse either of them, they must be escaped.
+
+Source
+------
+
+    ++  kel  (just '{')
+
+Examples
+--------
 
     ~zod/try=> (scan "\{" kel)
     ~~~7b.
@@ -301,11 +392,17 @@ interpolation. To parse either of them, they must be escaped.
 
 Parse right curley bracket
 
-    ++  ker  (just '}')
-
 Parses ASCII character 125, the right curly bracket. Note that `{`
 (`kel`) and `}` (`ker`) open and close a Hoon expression for Hoon string
 interpolation. To parse either of them, they must be escaped.
+
+Source
+------
+
+    ++  ker  (just '}')
+
+Examples
+--------
 
     ~zod/try=> (scan "}" ker)
     ~~~7d.
@@ -322,9 +419,15 @@ interpolation. To parse either of them, they must be escaped.
 
 Parse caret
 
+Parses ASCII character 94, the caret.
+
+Source
+------
+
     ++  ket  (just '^')
 
-Parses ASCII character 94, the caret.
+Examples
+--------
 
     ~zod/try=> (scan "^" ket)
     ~~~5e.
@@ -341,9 +444,15 @@ Parses ASCII character 94, the caret.
 
 Parse plus sign
 
+Parses ASCII character 43, the plus sign.
+
+Source
+------
+
     ++  lus  (just '+')
 
-Parses ASCII character 43, the plus sign.
+Examples
+--------
 
         ~zod/try=> (scan "+" lus)
         ~~~2b.
@@ -360,9 +469,15 @@ Parses ASCII character 43, the plus sign.
 
 Parse hyphen
 
+Parses ASCII character 45, the hyphen.
+
+Source
+------
+
     ++  hep  (just '-')
 
-Parses ASCII character 45, the hyphen.
+Examples
+--------
 
     ~zod/try=> (scan "-" hep)
     ~~-
@@ -379,9 +494,15 @@ Parses ASCII character 45, the hyphen.
 
 Parse left parenthesis
 
+Parses ASCII character 40, the left parenthesis.
+
+Source
+------
+
     ++  pel  (just '(')
 
-Parses ASCII character 40, the left parenthesis.
+Examples
+--------
 
     ~zod/try=> (scan "(" pel)
     ~~~28.
@@ -398,9 +519,15 @@ Parses ASCII character 40, the left parenthesis.
 
 Parse ampersand
 
+Parses ASCII character 38, the ampersand.
+
+Source
+------
+
     ++  pam  (just '&')
 
-Parses ASCII character 38, the ampersand.
+Examples
+--------
 
     ~zod/try=> (scan "&" pam)
     ~~~26.
@@ -417,9 +544,15 @@ Parses ASCII character 38, the ampersand.
 
 Parse right parenthesis
 
+Parses ASCII character 41, the right parenthesis.
+
+Source
+------
+
     ++  per  (just ')')
 
-Parses ASCII character 41, the right parenthesis.
+Examples
+--------
 
     ~zod/try=> (scan ")" per)
     ~~~29.
@@ -436,9 +569,15 @@ Parses ASCII character 41, the right parenthesis.
 
 Parse "at" sign
 
+Parses ASCII character 64, the "at" sign.
+
+Source
+------
+
     ++  pat  (just '@')
 
-Parses ASCII character 64, the "at" sign.
+Examples
+--------
 
     ~zod/try=> (scan "@" pat)
     ~~~4.
@@ -455,11 +594,15 @@ Parses ASCII character 64, the "at" sign.
 
 Parse left square bracket
 
-Left square bracket
+Parses ASCII character 91, the left square bracket.
+
+Source
+------
 
     ++  sel  (just '[')
 
-Parses ASCII character 91, the left square bracket.
+Examples
+--------
 
         ~zod/try=> (scan "[" sel)
         ~~~5b.
@@ -476,11 +619,15 @@ Parses ASCII character 91, the left square bracket.
 
 Parse semicolon
 
-    ++  sem  (just ';')
-
 Parses ASCII character 59, the semicolon.
 
-### `Examples`
+Source
+------
+
+    ++  sem  (just ';')
+
+Examples
+--------
 
     ~zod/try=> (scan ";" sem)
     ~~~3b.
@@ -497,9 +644,15 @@ Parses ASCII character 59, the semicolon.
 
 Parse right square bracket
 
+Parses ASCII character 93, the right square bracket.
+
+Source
+------
+
     ++  ser  (just ']')
 
-Parses ASCII character 93, the right square bracket.
+Examples
+--------
 
     ~zod/try=> (scan "]" ser)
     ~~~5d.
@@ -516,9 +669,15 @@ Parses ASCII character 93, the right square bracket.
 
 Parse tilde
 
+Parses ASCII character 126, the tilde.
+
+Source
+------
+
     ++  sig  (just '~')
 
-Parses ASCII character 126, the tilde.
+Examples
+--------
 
     ~zod/try=> (scan "~" sig)
     ~~~~
@@ -535,10 +694,16 @@ Parses ASCII character 126, the tilde.
 
 Parse single quote
 
+Parses ASCII character 39, soq. Note the extra '' is to escape the first
+`soq` because soq delimits a [`++cord`]().
+
+Source
+------
+
     ++  soq  (just '\'')
 
-Parses ASCII character 39, soq. Note the extra '' is to escape the first
-`soq` because soq delimits a cord.
+Examples
+--------
 
     ~zod/try=> (scan "'" soq)
     ~~~27.
@@ -555,9 +720,15 @@ Parses ASCII character 39, soq. Note the extra '' is to escape the first
 
 Parse asterisk
 
+Parses ASCII character 42, the asterisk.
+
+Source
+------
+
     ++  tar  (just '*')
 
-Parses ASCII character 42, the asterisk.
+Examples
+--------
 
     ~zod/try=> (scan "*" tar)
     ~~~2a.
@@ -574,10 +745,16 @@ Parses ASCII character 42, the asterisk.
 
 Parse backtick
 
+Parses ASCII character 96, the backtick (also known as the "grave
+accent").
+
+Source
+------
+
     ++  tec  (just '`')                                     ::  backTiCk
 
-Parses ASCII character 96, the backtick (also known as the "grave
-accent".
+Examples
+--------
 
     ~zod/try=> (scan "`" tec)
     ~~~6.
@@ -594,9 +771,15 @@ accent".
 
 Parse equals sign
 
+Parses ASCII character 61, the equals sign.
+
+Source
+------
+
     ++  tis  (just '=')
 
-Parses ASCII character 61, the equals sign.
+Examples
+--------
 
     ~zod/try=> (scan "=" tis)
     ~~~3d.
@@ -613,9 +796,15 @@ Parses ASCII character 61, the equals sign.
 
 Parses question mark
 
+Parses ASCII character 63, the question mark.
+
+Source
+------
+
     ++  wut  (just '?')
 
-Parses ASCII character 63, wut.
+Examples
+--------
 
     ~zod/try=> (scan "?" wut)
     ~~~3f.
@@ -632,9 +821,15 @@ Parses ASCII character 63, wut.
 
 Exclamation point
 
+Parses ASCII character 33, the exclamation point zap.
+
+Source
+------
+
     ++  zap  (just '!')
 
-Parses ASCII character 33, the exclamation point zap.
+Examples
+--------
 
         ~zod/try=> (scan "!" zap)
         ~~~21.

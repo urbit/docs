@@ -5,9 +5,15 @@ section 2eH, parsing (idioms)
 
 Alphabetic characters
 
+Parse alphabetic characters, both upper and lowercase.
+
+Source
+------
+
     ++  alf  ;~(pose low hig)                               ::  alphabetic
 
-Parse alphabetic characters, both upper and lowercase.
+Examples
+--------
 
         ~zod/try=> (scan "a" alf)
         ~~a
@@ -22,9 +28,15 @@ Parse alphabetic characters, both upper and lowercase.
 
 Alphanumeric characters
 
+Parse alphanumeric characters - both alphabetic characters and numbers.
+
+Source
+------
+
     ++  aln  ;~(pose low hig nud)                           ::  alphanumeric
 
-Parse alphanumeric characters - both alphabetic characters and numbers.
+Examples
+--------
 
         ~zod/try=> (scan "0" aln)
         ~~0
@@ -39,9 +51,15 @@ Parse alphanumeric characters - both alphabetic characters and numbers.
 
 Alphanumeric and `-`
 
+Parse alphanumeric strings and hep, "-".
+
+Source
+------
+
     ++  alp  ;~(pose low hig nud hep)                       ::  alphanumeric and -
 
-Parse alphanumeric strings and hep, "-".
+Examples
+--------
 
         ~zod/try=> (scan "7" alp)
         ~~7
@@ -56,9 +74,15 @@ Parse alphanumeric strings and hep, "-".
 
 Axis syntax `-`, `+`
 
+Parse the hep and lus axis syntax.
+
+Source
+------
+
     ++  bet  ;~(pose (cold 2 hep) (cold 3 lus))             ::  axis syntax - +
 
-Parse the hep and lus axis syntax.
+Examples
+--------
 
         ~zod/try=> (scan "-" bet)
         2
@@ -71,10 +95,15 @@ Parse the hep and lus axis syntax.
 
 Binary to atom
 
+Parse a tape of binary (0s and 1s) and produce its atomic representation.
+
+Source
+------
+
     ++  bin  (bass 2 (most gon but))                        ::  binary to atom
 
-Parse a tape of binary (0s and 1s) and produce its atomic
-representation.
+Examples
+--------
 
         ~zod/try=> (scan "0000" bin)
         0
@@ -91,9 +120,15 @@ representation.
 
 Binary digit
 
+Parse a single binary digit.
+
+Source
+------
+
     ++  but  (cook |=(a=@ (sub a '0')) (shim '0' '1'))      ::  binary digit
 
-Parse a single binary digit.
+Examples
+--------
 
         ~zod/try=> (scan "0" but)
         0
@@ -112,9 +147,15 @@ Parse a single binary digit.
 
 Octal digit
 
+Parse a single octal digit.
+
+Source
+------
+
     ++  cit  (cook |=(a=@ (sub a '0')) (shim '0' '7'))      ::  octal digit
 
-Parse a single octal digit.
+Examples
+--------
 
         ~zod/try=> (scan "1" cit)
         1
@@ -133,9 +174,15 @@ Parse a single octal digit.
 
 Decimal to atom
 
+Parse a decimal number to an atom.
+
+Source
+------
+
     ++  dem  (bass 10 (most gon dit))                       ::  decimal to atom
 
-Parse a decimal number to an atom.
+Examples
+--------
 
         ~zod/try=> (scan "7" dem)
         7
@@ -152,9 +199,15 @@ Parse a decimal number to an atom.
 
 Decimal digit
 
+Parse a single decimal digit.
+
+Source
+------
+
     ++  dit  (cook |=(a=@ (sub a '0')) (shim '0' '9'))      ::  decimal digit
 
-Parse a single decimal digit.
+Examples
+--------
 
         ~zod/try=> (scan "7" dit)
         7
@@ -169,9 +222,15 @@ Parse a single decimal digit.
 
 Axis syntax `<` or `>`
 
+Parse the axis gal and gar axis syntax.
+
+Source
+------
+
     ++  gul  ;~(pose (cold 2 gal) (cold 3 gar))             ::  axis syntax < >
 
-Parse the axis gal and gar axis syntax.
+Examples
+--------
 
         ~zod/try=> (scan "<" gul)
         2
@@ -184,10 +243,16 @@ Parse the axis gal and gar axis syntax.
 
 Long numbers
 
-    ++  gon  ;~(pose ;~(plug bas gay fas) (easy ~))         ::  long numbers \ /
-
 Parse long numbers - Numbers which wrap around the shell with the line
-break characters bas and fas.
+
+Source
+------
+
+break     ++  gon  ;~(pose ;~(plug bas gay fas) (easy ~))         ::  long numbers \ /
+
+Examples
+--------
+characters bas and fas.
 
         ~zod/try=> (scan "\\/" gon)
         [~~~5c. ~ ~~~2f.]
@@ -200,9 +265,15 @@ break characters bas and fas.
 
 Hex to atom
 
+Parse any hexadecimal number to an atom.
+
+Source
+------
+
     ++  hex  (bass 16 (most gon hit))                       ::  hex to atom
 
-Parse any hexadecimal number to an atom.
+Examples
+--------
 
         ~zod/try=> (scan "a" hex)
         10
@@ -225,9 +296,15 @@ Parse any hexadecimal number to an atom.
 
 Uppercase
 
+Parse a single uppercase letter.
+
+Source
+------
+
     ++  hig  (shim 'A' 'Z')                                 ::  uppercase
 
-Parse a single uppercase letter.
+Examples
+--------
 
         ~zod/try=> (scan "G" hig)
         ~~~47.
@@ -244,13 +321,19 @@ Parse a single uppercase letter.
 
 Hex digits
 
+Parse a single hexadecimal digit.
+
+Source
+------
+
     ++  hit  ;~  pose                                       ::  hex digits
                dit
                (cook |=(a=char (sub a 87)) (shim 'a' 'f'))
                (cook |=(a=char (sub a 55)) (shim 'A' 'F'))
              ==
 
-Parse a single hexadecimal digit.
+Examples
+--------
 
         ~zod/try=> (scan "a" hit)
         10
@@ -267,9 +350,15 @@ Parse a single hexadecimal digit.
 
 Lowercase
 
+Parse a single lowercase letter.
+
+Source
+------
+
     ++  low  (shim 'a' 'z')                                 ::  lowercase
 
-Parse a single lowercase letter.
+Examples
+--------
 
         ~zod/try=> (scan "g" low)
         ~~g
@@ -286,11 +375,17 @@ Parse a single lowercase letter.
 
 Hexbyte
 
+Parse a hexbyte.
+
+Source
+------
+
     ++  mes  %+  cook                                       ::  hexbyte
                |=([a=@ b=@] (add (mul 16 a) b))
              ;~(plug hit hit)
 
-Parse a hexbyte.
+Examples
+--------
 
         ~zod/try=> (scan "2A" mes)
         42
@@ -303,11 +398,17 @@ Parse a hexbyte.
 
 ### `++nix`
 
-Letters, `-`, and `_`
+Letters and `-`
+
+Parse Letters and `-`.
+
+Source
+------
 
     ++  nix  (boss 256 (star ;~(pose aln cab)))             ::
 
-Letters, `-`, and `_`
+Examples
+--------
 
     ~zod/try=> (scan "as_me" nix)
     q=435.626.668.897
@@ -320,9 +421,15 @@ Letters, `-`, and `_`
 
 Numeric
 
+Parse a numeric character - A number.
+
+Source
+------
+
     ++  nud  (shim '0' '9')                                 ::  numeric
 
-Parse a numeric character - A number.
+Examples
+--------
 
     ~zod/try=> (scan "0" nud)
     ~~0
@@ -339,9 +446,15 @@ Parse a numeric character - A number.
 
 Printable character
 
+Parse any printable character.
+
+Source
+------
+
     ++  prn  ;~(less (just `@`127) (shim 32 256))
 
-Parse any printable character
+Examples
+--------
 
     ~zod/try=> (scan "h" prn)
     ~~h
@@ -357,12 +470,18 @@ Parse any printable character
 
 Chars in blockcord
 
+Parse character in cord block.
+
+Source
+------
+
     ++  qat  ;~  pose                                       ::  chars in blockcord
                  prn
                  ;~(less ;~(plug (just `@`10) soqs) (just `@`10))
              ==
 
-Parse character in cord block.
+Examples
+--------
 
     ~zod/try=> (scan "h" qat)
     ~~h
@@ -380,12 +499,18 @@ Parse character in cord block.
 
 Chars in cord
 
+Parse an individual character to its cord atom representation.
+
+Source
+------
+
     ++  qit  ;~  pose                                       ::  chars in a cord
                  ;~(less bas soq prn)
                  ;~(pfix bas ;~(pose bas soq mes))          ::  escape chars
              ==
 
-Parse an individual character to its cord atom representation.
+Examples
+--------
 
     ~zod/try=> (scan "%" qit)
     37
@@ -410,7 +535,13 @@ Parse an individual character to its cord atom representation.
 
 Cord
 
-    ++  qut  ;~  pose                                       ::  cord
+Parse single-soq cord with `\{gap}/` anywhere in the middle, or triple-single
+quote (aka triple-soq) cord, between which must be in an indented block.
+
+Source
+------
+
+     ++  qut  ;~  pose                                       ::  cord
                  ;~  less  soqs
                    (ifix [soq soq] (boss 256 (more gon qit)))
                  ==
@@ -423,8 +554,8 @@ Cord
              ==
     ::
 
-Parse single-soq cord with `\{gap}/` anywhere in the middle, or
-triple-soq cord which must be in an indented block.
+Examples
+--------
 
     ~zod/try=> (scan "'cord'" qut)
     q=1.685.221.219
@@ -443,9 +574,15 @@ triple-soq cord which must be in an indented block.
 
 Delimiting `'''`
 
+Parse a triple-single quote, used for multiline strings.
+
+Source
+------
+
     ++  soqs  ;~(plug soq soq soq)                          ::  delimiting '''
 
-Triple single quote
+Examples
+--------
 
     ~zod/try=> (scan "'''" soqs)
     [~~~27. ~~~27. ~~~27.]
@@ -459,13 +596,19 @@ Triple single quote
 
 Term
 
+A term: a letter(lowercase), followed by letters, numbers, or `-`.
+
+Source
+------
+
     ++  sym
       %+  cook
         |=(a=tape (rap 3 ^-((list ,@) a)))
       ;~(plug low (star ;~(pose nud low hep)))
     ::
 
-A term: a letter(lowercase), followed by letters, numbers, or `-`.
+Examples
+--------
 
     ~zod/try=> (scan "sam-2" sym)
     215.510.507.891
@@ -480,6 +623,11 @@ A term: a letter(lowercase), followed by letters, numbers, or `-`.
 
 `+>-` axis syntax
 
+Axis syntax parser
+
+Source
+------
+
     ++  ven  ;~  (comp |=([a=@ b=@] (peg a b)))             ::  +>- axis syntax
                bet
                =+  hom=`?`|
@@ -493,7 +641,8 @@ A term: a letter(lowercase), followed by letters, numbers, or `-`.
                [p.wag [~ (peg p.u.q.vex p.u.q.wag) q.u.q.wag]]
              ==
 
-Axis syntax parser
+Examples
+--------
 
     ~zod/arvo=/hoon/hoon> (scan "->+" ven)
     11
@@ -510,6 +659,11 @@ Axis syntax parser
 
 Base64 digit
 
+Parse a Terran base64 digit.
+
+Source
+------
+
     ++  vit                                                 ::  base64 digit
       ;~  pose
         (cook |=(a=@ (sub a 65)) (shim 'A' 'Z'))
@@ -519,7 +673,8 @@ Base64 digit
         (cold 63 (just '+'))
       ==
 
-Terran base64
+Examples
+--------
 
     ~zod/arvo=/hoon/hoon> (scan "C" vit)
     2

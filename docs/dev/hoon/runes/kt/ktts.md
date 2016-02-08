@@ -1,7 +1,8 @@
-kettis, `^=`, %ktts
-============================
+`^=`
+====
 
-Wrap
+Wraps a variable name around a value.
+
 
 `^=`, `kettis`, `[%ktts p=toga q=twig]` is a natural rune that wraps `q`
 in the [`++toga`]() `p`. `^=` is most commonly used for assignment,
@@ -12,10 +13,10 @@ Produces
 
 Twig: `[%ktts p=toga q=twig]`
 
-Sample
-------
+Accepts
+-------
 
-`p` is a [`++toga`](). `q` is a [twig]().
+`p` is a `++toga`. `q` is a [`++twig`]().
 
 Tall form
 ---------

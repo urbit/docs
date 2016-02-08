@@ -1,20 +1,17 @@
-wutket, `?^`, %wtkt
-============================
+`?^`
+====
 
-Is bunt, inverse
-
-`?^` is a synthetic rune that evaluates `r` if `p` is equal to the
-[bunt]() for its [tile](), otherwise `q` is evaluated.
+If `p` is cell-then-else
 
 Produces
 --------
 
 Twig: `[%wtkt p=wing q=twig r=twig]`
 
-Sample
-------
+Accepts
+-------
 
-`p` is a [`++wing`](). `q` and `r` are [twig]()s.
+`p` is a [`++wing`](). `q` and `r` are [`++twig`]()s.
 
 Tall form
 ---------
@@ -27,11 +24,6 @@ Wide form
 ---------
 
     ?^(p q r)
-
-Irregular form
---------------
-
-None
 
 Examples
 --------
@@ -47,7 +39,7 @@ Examples
                %empty
     %full
 
-Here we show that `*@tas`, the bunt of `@tas` is equivalent to the empty
+Here we show that `*@tas`, the [bunt]() of `@tas` is equivalent to the empty
 [`++tape`]() `""`, then use it in two `?^` cases.
 
     ~zod/try=> *(unit)

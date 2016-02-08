@@ -5,6 +5,22 @@ section 3bC, Gregorian UTC
 
 Weekday of Jan 1
 
+Computes which day of the week January 1st falls on for a year `yer`,
+producing an atom. Weeks are zero-indexed beginning on Sunday.
+
+Accepts
+-------
+
+`yer` is an unsigned decimal, [`@ud`]().
+
+Produces
+--------
+
+An atom.
+
+Source
+------
+
     ++  dawn                                                ::  weekday of jan 1
       |=  yer=@ud
       =+  yet=(sub yer 1)
@@ -12,10 +28,8 @@ Weekday of Jan 1
       :(add 1 (mul 5 (mod yet 4)) (mul 4 (mod yet 100)) (mul 6 (mod yet 400)))
     ::
 
-Computes which day of the week January 1st falls on for a year `yer`,
-producing an atom. Weeks are zero-indexed beginning on Sunday.
-
-`yer` is an unsigned decimal, [`@ud`]().
+Examples
+--------
 
     ~zod/try=> (dawn 2.015)
     4
@@ -27,9 +41,27 @@ producing an atom. Weeks are zero-indexed beginning on Sunday.
 
 ------------------------------------------------------------------------
 
+
+
 ### `++daws`
 
 Weekday of date
+
+Produces the day of the week of a given date `yed` as an atom. Weeks are
+zero-indexed beginning on Sunday.
+
+Accepts
+-------
+
+`yed` is a [`++date`]().
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
     ++  daws                                                ::  weekday of date
       |=  yed=date
@@ -37,10 +69,8 @@ Weekday of date
       (add (dawn y.yed) (sub (yawn [y.yed m.yed d.t.yed]) (yawn y.yed 1 1)))
     ::
 
-Produces the day of the week of a given date `yed` as an atom. Weeks are
-zero-indexed beginning on Sunday.
-
-`yed` is a [`date`]().
+Examples
+--------
 
     ~zod/try=> (daws [[a=%.y y=2.014] m=6 t=[d=6 h=21 m=9 s=15 f=~[0xa16]]])
     5
@@ -54,6 +84,21 @@ zero-indexed beginning on Sunday.
 ### `++deal`
 
 Add leap seconds
+
+Produces a [`++date`]() with the 25 leap seconds added.
+
+Accepts
+-------
+
+`yer` is an absolute date, [`@da`]().
+
+Produces
+--------
+
+A `++date`.
+
+Source
+------
 
     ++  deal                                                ::  to leap sec time
       |=  yer=@da
@@ -69,9 +114,8 @@ Add leap seconds
       $(n +(n))
     ::
 
-Produces a [`date`]() with the 25 leap seconds added.
-
-`yer` is an absolute date, [`@da`]().
+Examples
+--------
 
     ~zod/try=> (yore (bex 127))
     [[a=%.y y=226] m=12 t=[d=5 h=15 m=30 s=8 f=~]]
@@ -85,6 +129,22 @@ Produces a [`date`]() with the 25 leap seconds added.
 ### `++lead`
 
 Subtract leap seconds
+
+Produces an absolute date ([`@ud`]()) with the 25 leap seconds
+subtracted.
+
+Accepts
+-------
+
+`ley` is a [`++date`]().
+
+Produces
+--------
+
+An atom of [odor]() [`@da`](), which represents an absolute date.
+
+Source
+------
 
     ++  lead                                                ::  from leap sec time
       |=  ley=date
@@ -103,10 +163,8 @@ Subtract leap seconds
       $(n +(n))
     ::
 
-Produces an absolute date ([`@ud`]()) with the 25 leap seconds
-subtracted.
-
-`ley` is a [`date`]().
+Examples
+--------
 
     ~zod/try=> (yore `@da`(bex 127))
     [[a=%.y y=226] m=12 t=[d=5 h=15 m=30 s=8 f=~]]
@@ -120,6 +178,21 @@ subtracted.
 ### `++dust`
 
 Print UTC format
+
+Produces a [`++tape`]() of the date in UTC format.
+
+Accepts
+-------
+
+`yed` is a [`++date`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
 
     ++  dust                                                ::  print UTC format
       |=  yed=date
@@ -135,9 +208,8 @@ Print UTC format
       ==
     ::
 
-Produces a [tape]() of the date in UTC format.
-
-`yed` is a [`date`]().
+Examples
+--------
 
     ~zod/try=> (dust (yore ->-))
     "Tue, 21 Oct 2014 21:35:12 +0000"
@@ -149,6 +221,22 @@ Produces a [tape]() of the date in UTC format.
 ### `++stud`
 
 Parse UTC format
+
+Accepts a [`++tape`]() containing a date in UTC format and produces the
+[`++unit`]() of a [`++date`]().
+
+Accepts
+-------
+
+`cud` is a `++tape`.
+
+Produces
+--------
+
+The `++unit` of a `++date`.
+
+Source
+------
 
     ++  stud                                                ::  parse UTC format
       |=  cud=tape
@@ -177,8 +265,8 @@ Parse UTC format
       ==
     ::
 
-Accepts a [tape]() containing a date in UTC format and produces the
-[unit]() of a [`date`]().
+Examples
+--------
 
     ~zod/try=> (stud "Tue, 21 Oct 2014 21:21:55 +0000")
     [~ [[a=%.y y=2.014] m=10 t=[d=21 h=21 m=21 s=55 f=~]]]
@@ -193,10 +281,28 @@ Accepts a [tape]() containing a date in UTC format and produces the
 
 UGT to UTC time
 
+Transforms Urbit Galactic Time to UTC time, producing an atom.
+
+Accepts
+-------
+
+An atom of [odor]() [`@da`](), representing an absolute date.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
+
     ++  unt                                                 ::  UGT to UTC time
       |=  a=@da
       (div (sub a ~1970.1.1) (bex 64))
     ::
+
+Examples
+--------
 
     ~zod/try=/hom> (unt -<-)
     1.413.927.704
@@ -205,15 +311,14 @@ UGT to UTC time
     ~zod/try=> (unt ~2014.1.1)
     1.388.534.400
 
-Transforms Urbit Galactic Time to UTC time, producing an atom.
-
-`a` is an [atom]().
-
 ------------------------------------------------------------------------
 
 ### `++yu`
 
 UTC format constants
+
+Source
+------
 
     ++  yu                                                  ::  UTC format constants
       |%
@@ -227,13 +332,24 @@ UTC format constants
 
 Months
 
+Produces a list of [`++tapes`]() containing the 12 months of the year.
+
+Produces
+--------
+
+A `++list` of `++tape`s.
+
+Source
+------
+
       ++  mon  ^-  (list tape)
         :~  "January"  "February"  "March"  "April"  "May"  "June"  "July"
             "August"  "September"  "October"  "November"  "December"
         ==
       ::
 
-Produces a list of [tapes]() containing the 12 months of the year.
+Examples
+--------
 
     ~zod/try=/hom> mon:yu
     <<
@@ -259,14 +375,20 @@ Produces a list of [tapes]() containing the 12 months of the year.
 
 Weeks
 
+Produces a list of [tapes]() containing the 7 days of the week,
+beginning with Sunday.
+
+Source
+------
+
       ++  wik  ^-  (list tape)
         :~  "Sunday"  "Monday"  "Tuesday"  "Wednesday"  "Thursday"
             "Friday"  "Saturday"
         ==
       ::
 
-Produces a list of [tapes]() containing the 7 days of the week,
-beginning with Sunday.
+Examples
+--------
 
     ~zod/try=/hom> wik:yu
     <<"Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday">>
@@ -281,6 +403,16 @@ beginning with Sunday.
 
 Leap second dates
 
+Produces a [`++list`]() of the (absolute) dates ([`@da`]) of the 25 leap seconds.
+
+Produces
+--------
+
+A `++list` of atoms of odor `@da`.
+
+Source
+------
+
       ++  les  ^-  (list ,@da)
         :~  ~2015.7.1 ~2012.7.1  ~2009.1.1  ~2006.1.1  ~1999.1.1  ~1997.7.1
             ~1996.1.1  ~1994.7.1  ~1993.7.1  ~1992.7.1  ~1991.1.1  ~1990.1.1
@@ -289,7 +421,8 @@ Leap second dates
             ~1973.1.1 ~1972.7.1
         ==
 
-Produces a list of the (absolute) dates ([`@da`]) of the 25 leap seconds
+Examples
+--------
 
     ~zod/try=/hom> les:yu
     ~[
@@ -329,6 +462,17 @@ Produces a list of the (absolute) dates ([`@da`]) of the 25 leap seconds
 
 Back-shifted leap second dates
 
+Produces a [`++list`]() of absolute dates ([`@da`]()s) that represent the Urbit
+Galactc Time equivalents of the UTC leap second dates in [`++les`](/doc/hoon/library/3bc#++les).
+
+Produces
+--------
+
+A `++list` of atoms of odor `@da`.
+
+Source
+------
+
       ++  lef  ^-  (list ,@da)
         :~  ~2015.6.30..23.59.59   ~2012.6.30..23.59.59
             ~2008.12.31..23.59.58  ~2005.12.31..23.59.57
@@ -346,8 +490,8 @@ Back-shifted leap second dates
         ==
     ::
 
-Produces a list of absolute dates ([`@da`]()) that represent the Urbit
-Galactc Time equivalents of the UTC leap second dates in [`++les`](/doc/hoon/library/3bc#++les).
+Examples
+--------
 
     ~zod/try=/hom> lef:yu
     ~[

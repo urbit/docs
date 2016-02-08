@@ -5,29 +5,43 @@ section 3bG, URL handling
 
 Import URL path
 
-    ++  deft                                                ::  import url path
-      |=  rax=(list ,@t)
-      |-  ^-  pork
-      ?~  rax
-        [~ ~]
-      ?~  t.rax
-        =+  den=(trip i.rax)
-        =+  ^=  vex
-          %-  %-  full
-              ;~(plug sym ;~(pose (stag ~ ;~(pfix dot sym)) (easy ~)))
-          [[1 1] (trip i.rax)]
-        ?~  q.vex
-          [~ [i.rax ~]]
-        [+.p.u.q.vex [-.p.u.q.vex ~]]
-      =+  pok=$(rax t.rax)
-      :-  p.pok
-      [i.rax q.pok]
-    ::
-
 Parse the extension the from last element of url, which is delimited
 either by a `.` or a `/`.
 
+Accepts
+-------
+
 `rax` is a [`++list`]() of [`@t`]().
+
+Produces
+--------
+
+A [`++pork`]().
+
+Source
+------
+
+    ++  deft                                                ::  import url path
+          |=  rax=(list ,@t)
+          |-  ^-  pork
+          ?~  rax
+            [~ ~]
+          ?~  t.rax
+            =+  den=(trip i.rax)
+            =+  ^=  vex
+              %-  %-  full
+                  ;~(plug sym ;~(pose (stag ~ ;~(pfix dot sym)) (easy ~)))
+              [[1 1] (trip i.rax)]
+            ?~  q.vex
+              [~ [i.rax ~]]
+            [+.p.u.q.vex [-.p.u.q.vex ~]]
+          =+  pok=$(rax t.rax)
+          :-  p.pok
+          [i.rax q.pok]
+        ::
+
+Examples
+--------
 
     ~zod/try=> (deft /foo/bar/'baz.txt')
     [p=[~ ~.txt] q=<|foo bar baz|>]
@@ -38,21 +52,37 @@ either by a `.` or a `/`.
 
 Restructure path
 
-    ++  fain                                                ::  path restructure
-      |=  [hom=path raw=path]
-      =+  bem=(need (tome raw))
-      =+  [mer=(flop s.bem) moh=(flop hom)]
-      |-  ^-  (pair beam path)
-      ?~  moh
-        [bem(s hom) (flop mer)]
-      ?>  &(?=(^ mer) =(i.mer i.moh))
-      $(mer t.mer, moh t.moh)
-    ::
-
 Splits a concrete
-[`++spur`]() out of a full `++path`, producing a location [`++beam`]() and a remainder [`++path`]().
 
-`hom` is a [`++path`]()
+[`++spur`]() out of a full [`++path`](), producing a location [`++beam`]() and
+a remainder [`++path`]().
+
+Accepts
+-------
+
+`hom` is a `++path`
+
+Produces
+--------
+
+    ([pair]() beam path)
+
+Source
+------
+
+    ++  fain                                                ::  path restructure
+          |=  [hom=path raw=path]
+          =+  bem=(need (tome raw))
+          =+  [mer=(flop s.bem) moh=(flop hom)]
+          |-  ^-  (pair beam path)
+          ?~  moh
+            [bem(s hom) (flop mer)]
+          ?>  &(?=(^ mer) =(i.mer i.moh))
+          $(mer t.mer, moh t.moh)
+        ::
+
+Examples
+--------
 
     ~zod/try=> (fain / %)
     [p=[[p=~zod q=%try r=[%da p=~2014.11.1..00.07.17..c835]] s=/] q=/]
@@ -77,48 +107,62 @@ Splits a concrete
 
 Parse fcgi
 
-    ++  fuel                                                ::  parse fcgi
-      |=  [bem=beam but=path]
-      ^-  epic
-      ?>  ?=([%web @ *] but)
-      =+  dyb=(slay i.t.but)
-      ?>  ?&  ?=([~ %many *] dyb)
-              ?=([* * *] p.u.dyb)
-              ::  ?=([%$ %tas *] i.p.u.dyb)
-              ?=([%many *] i.p.u.dyb)
-              ?=([%blob *] i.t.p.u.dyb)
-          ==
-      =+  ced=((hard cred) p.i.t.p.u.dyb)
-      ::  =+  nep=q.p.i.p.u.dyb
-      =+  ^=  nyp  ^-  path
-          %+  turn  p.i.p.u.dyb
-          |=  a=coin  ^-  @ta
-          ?>  ?=([%$ %ta @] a)
-          ?>(((sane %ta) q.p.a) q.p.a)
-      =+  ^=  gut  ^-  (list ,@t)
-          %+  turn  t.t.p.u.dyb
-          |=  a=coin  ^-  @t
-          ?>  ?=([%$ %t @] a)
-          ?>(((sane %t) q.p.a) q.p.a)
-      =+  ^=  quy
-          |-  ^-  (list ,[p=@t q=@t])
-          ?~  gut  ~
-          ?>  ?=(^ t.gut)
-          [[i.gut i.t.gut] $(gut t.t.gut)]
-      :*  (~(gas by *(map cord cord)) quy)
-          ced
-          bem
-          t.t.but
-          nyp
-      ==
-    ::
-
 Retrieieves the %eyre FCGI, producing a [`++epic`](). Used primarily in
 [`/hook`]() files. See the [`%eyre`]() doc for more detail.
+
+Accepts
+-------
 
 `bem` is a [`++beam`]().
 
 `but` is a [`++path`]().
+
+Produces
+--------
+
+A `++epic`.
+
+Source
+------
+
+    ++  fuel                                                ::  parse fcgi
+          |=  [bem=beam but=path]
+          ^-  epic
+          ?>  ?=([%web @ *] but)
+          =+  dyb=(slay i.t.but)
+          ?>  ?&  ?=([~ %many *] dyb)
+                  ?=([* * *] p.u.dyb)
+                  ::  ?=([%$ %tas *] i.p.u.dyb)
+                  ?=([%many *] i.p.u.dyb)
+                  ?=([%blob *] i.t.p.u.dyb)
+              ==
+          =+  ced=((hard cred) p.i.t.p.u.dyb)
+          ::  =+  nep=q.p.i.p.u.dyb
+          =+  ^=  nyp  ^-  path
+              %+  turn  p.i.p.u.dyb
+              |=  a=coin  ^-  @ta
+              ?>  ?=([%$ %ta @] a)
+              ?>(((sane %ta) q.p.a) q.p.a)
+          =+  ^=  gut  ^-  (list ,@t)
+              %+  turn  t.t.p.u.dyb
+              |=  a=coin  ^-  @t
+              ?>  ?=([%$ %t @] a)
+              ?>(((sane %t) q.p.a) q.p.a)
+          =+  ^=  quy
+              |-  ^-  (list ,[p=@t q=@t])
+              ?~  gut  ~
+              ?>  ?=(^ t.gut)
+              [[i.gut i.t.gut] $(gut t.t.gut)]
+          :*  (~(gas by *(map cord cord)) quy)
+              ced
+              bem
+              t.t.but
+              nyp
+          ==
+        ::
+
+Examples
+--------
 
     ~zod/main=> (fuel [[p=~zod q=%try r=[%ud p=2]] s=/psal] /web/'._.~-~~~~.gen~-~-_~~05vg0001v09f0n30fbh7dn6ab2jakmmspdq04nef5h70qbd5lh6atr4c5j2qrbldpp62q1df1in0sr1ding0c3qgt7kclj74qb65lm6atrkc5k2qpr5e1mmispdchin4p3fegmiqrjpdlo62p1dchsn4p39comn8pbcehgmsbbef5p7crrifr3o035dhgfrk2b5__')
     [ qix={}
@@ -139,23 +183,39 @@ Retrieieves the %eyre FCGI, producing a [`++epic`](). Used primarily in
 
 64-bit encode
 
-    ++  sifo                                                ::  64-bit encode
-      |=  tig=@
-      ^-  tape
-      =+  poc=(~(dif fo 3) 0 (met 3 tig))
-      =+  pad=(lsh 3 poc (swap 3 tig))
-      =+  ^=  cha
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-      =+  ^=  sif
-          |-  ^-  tape
-          ?~  pad
-            ~
-          =+  d=(end 0 6 pad)
-          [(cut 3 [d 1] cha) $(pad (rsh 0 6 pad))]
-      (weld (flop (slag poc sif)) (trip (fil 3 poc '=')))
-    ::
-
 Encodes an atom to MIME base64, producing a [`++tape`]().
+
+Accepts
+-------
+
+`tig` is an atom.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
+    ++  sifo                                                ::  64-bit encode
+          |=  tig=@
+          ^-  tape
+          =+  poc=(~(dif fo 3) 0 (met 3 tig))
+          =+  pad=(lsh 3 poc (swap 3 tig))
+          =+  ^=  cha
+          'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+          =+  ^=  sif
+              |-  ^-  tape
+              ?~  pad
+                ~
+              =+  d=(end 0 6 pad)
+              [(cut 3 [d 1] cha) $(pad (rsh 0 6 pad))]
+          (weld (flop (slag poc sif)) (trip (fil 3 poc '=')))
+        ::
+
+Examples
+--------
 
     ~zod/main=> (sifo 'foobar')
     "Zm9vYmFy"
@@ -168,28 +228,44 @@ Encodes an atom to MIME base64, producing a [`++tape`]().
 
 Encode URL
 
-    ++  urle                                                ::  URL encode
-      |=  tep=tape
-      ^-  tape
-      %-  zing
-      %+  turn  tep
-      |=  tap=char
-      =+  xen=|=(tig=@ ?:((gte tig 10) (add tig 55) (add tig '0')))
-      ?:  ?|  &((gte tap 'a') (lte tap 'z'))
-              &((gte tap 'A') (lte tap 'Z'))
-              &((gte tap '0') (lte tap '9'))
-              =('.' tap)
-              =('-' tap)
-              =('~' tap)
-              =('_' tap)
-          ==
-        [tap ~]
-      ['%' (xen (rsh 0 4 tap)) (xen (end 0 4 tap)) ~]
-    ::
-
 The inverse of [`++urld`](). Accepts a tape `tep` and replaces all
 characters other than alphanumerics and `.`, `-`, `~`, and `_`, with URL
 escape sequences.
+
+Accepts
+-------
+
+`tep` is a [`++tape`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
+    ++  urle                                                ::  URL encode
+          |=  tep=tape
+          ^-  tape
+          %-  zing
+          %+  turn  tep
+          |=  tap=char
+          =+  xen=|=(tig=@ ?:((gte tig 10) (add tig 55) (add tig '0')))
+          ?:  ?|  &((gte tap 'a') (lte tap 'z'))
+                  &((gte tap 'A') (lte tap 'Z'))
+                  &((gte tap '0') (lte tap '9'))
+                  =('.' tap)
+                  =('-' tap)
+                  =('~' tap)
+                  =('_' tap)
+              ==
+            [tap ~]
+          ['%' (xen (rsh 0 4 tap)) (xen (end 0 4 tap)) ~]
+        ::
+
+Examples
+--------
 
     ~zod/main=> (urle "hello")
     "hello"
@@ -202,25 +278,39 @@ escape sequences.
 
 Decode URL
 
-    ++  urld                                                ::  URL decode
-      |=  tep=tape
-      ^-  (unit tape)
-      ?~  tep  [~ ~]
-      ?:  =('%' i.tep)
-        ?.  ?=([@ @ *] t.tep)  ~
-        =+  nag=(mix i.t.tep (lsh 3 1 i.t.t.tep))
-        =+  val=(rush nag hex:ag)
-        ?~  val  ~
-        =+  nex=$(tep t.t.t.tep)
-        ?~(nex ~ [~ [`@`u.val u.nex]])
-      =+  nex=$(tep t.tep)
-      ?~(nex ~ [~ i.tep u.nex])
-    ::
-
-The inverse of [`++urle`](). Parses a URL escaped tape to the
+The inverse of [`++urle`](). Parses a URL escaped [`++tape`]() to the
 [`++unit`]() of an unescaped `++tape`.
 
-`tep` is a [`++tape`]().
+Accepts
+-------
+
+`tep` is a `++tape`.
+
+Produces
+--------
+
+The [`++unit`]() of a `++tape`.
+
+Source
+------
+
+    ++  urld                                                ::  URL decode
+          |=  tep=tape
+          ^-  (unit tape)
+          ?~  tep  [~ ~]
+          ?:  =('%' i.tep)
+            ?.  ?=([@ @ *] t.tep)  ~
+            =+  nag=(mix i.t.tep (lsh 3 1 i.t.t.tep))
+            =+  val=(rush nag hex:ag)
+            ?~  val  ~
+            =+  nex=$(tep t.t.t.tep)
+            ?~(nex ~ [~ [`@`u.val u.nex]])
+          =+  nex=$(tep t.tep)
+          ?~(nex ~ [~ i.tep u.nex])
+        ::
+
+Examples
+--------
 
     ~zod/main=> (urld "hello")
     [~ "hello"]
@@ -235,17 +325,31 @@ The inverse of [`++urle`](). Parses a URL escaped tape to the
 
 Localize purl
 
-    ++  earl                                                ::  localize purl
-      |=  [who=@p pul=purl]
-      ^-  purl
-      pul(q.q [(rsh 3 1 (scot %p who)) q.q.pul])
-    ::
-
 Prepends a ship name to the spur of a [`++purl`]().
+
+Accepts
+-------
 
 `who` is a [`@p`](), a ship name.
 
-`pul` is a [`++purl`]().
+`pul` is a `++purl`.
+
+Produces
+--------
+
+A `++purl`.
+
+Source
+------
+
+    ++  earl                                                ::  localize purl
+          |=  [who=@p pul=purl]
+          ^-  purl
+          pul(q.q [(rsh 3 1 (scot %p who)) q.q.pul])
+        ::
+
+Examples
+--------
 
     ~zod/main=> (need (epur 'http://123.1.1.1/me.ham'))
     [p=[p=%.n q=~ r=[%.n p=.123.1.1.1]] q=[p=[~ ~.ham] q=<|me|>] r=~]
@@ -260,15 +364,29 @@ Prepends a ship name to the spur of a [`++purl`]().
 
 Purl to tape
 
+Parses a [`++purl`]() `pul` to a [`++tape`]().
+
+Accepts
+-------
+
+`pul` is a `++purl`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  earn                                                ::  purl to tape
-      |^  |=  pul=purl
-          ^-  tape
-          :(weld (head p.pul) "/" (body q.pul) (tail r.pul))
-      ::
+          |^  |=  pul=purl
+              ^-  tape
+              :(weld (head p.pul) "/" (body q.pul) (tail r.pul))
+          ::
 
-Parses a `++purl` `pul` to a [`++tape`]().
-
-`pul` is a [`++purl`]().
+Examples
+--------
 
     ~zod/main=> (earn [| ~ [%| .127.0.0.1]] [~ ~] ~)
     "http://127.0.0.1/"
@@ -291,18 +409,33 @@ Parses a `++purl` `pul` to a [`++tape`]().
 
 Render URL path
 
-      ++  body
-        |=  pok=pork  ^-  tape
-        ?~  q.pok  ~
-        |-
-        =+  seg=(trip i.q.pok)
-        ?~  t.q.pok
-          ?~(p.pok seg (welp seg '.' (trip u.p.pok)))
-        (welp seg '/' $(q.pok t.q.pok))
-      ::
-      
-
 Renders URL path `pok` as a [`++tape`]().
+
+Accepts
+-------
+
+`pok` is a [`++pork`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
+    ++  body
+            |=  pok=pork  ^-  tape
+            ?~  q.pok  ~
+            |-
+            =+  seg=(trip i.q.pok)
+            ?~  t.q.pok
+              ?~(p.pok seg (welp seg '.' (trip u.p.pok)))
+            (welp seg '/' $(q.pok t.q.pok))
+          ::
+          
+Examples
+--------
 
     ~zod/main=> (body:earn ~ /foo/mol/lok)
     "foo/mol/lok"
@@ -315,25 +448,41 @@ Renders URL path `pok` as a [`++tape`]().
 
 Render URL beginning
 
-      ++  head
-        |=  har=hart
-        ^-  tape
-        ;:  weld
-          ?:(&(p.har !=([& /localhost] r.har)) "https://" "http://")
-        ::
-          ?-  -.r.har
-            |  (trip (rsh 3 1 (scot %if p.r.har)))
-            &  =+  rit=(flop p.r.har)
-               |-  ^-  tape
-               ?~(rit ~ (weld (trip i.rit) ?~(t.rit "" `tape`['.' $(rit t.rit)])))
-          ==
-        ::
-          ?~(q.har ~ `tape`[':' (trip (rsh 3 2 (scot %ui u.q.har)))])
-        ==
-      ::
-
 Renders a `++hart`, usually the beginning of a URL, as the [`++tape`]()
 of a traditional URL.
+
+Accepts
+-------
+
+`har` is a `++heart`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
+    ++  head
+            |=  har=hart
+            ^-  tape
+            ;:  weld
+              ?:(&(p.har !=([& /localhost] r.har)) "https://" "http://")
+            ::
+              ?-  -.r.har
+                |  (trip (rsh 3 1 (scot %if p.r.har)))
+                &  =+  rit=(flop p.r.har)
+                   |-  ^-  tape
+                   ?~(rit ~ (weld (trip i.rit) ?~(t.rit "" `tape`['.' $(rit t.rit)])))
+              ==
+            ::
+              ?~(q.har ~ `tape`[':' (trip (rsh 3 2 (scot %ui u.q.har)))])
+            ==
+          ::
+
+Examples
+--------
 
     ~zod/main=> (head:earn | ~ %| .127.0.0.1)
     "http://127.0.0.1"
@@ -348,26 +497,40 @@ of a traditional URL.
 
 Render query string
 
-      ++  tail
-        |=  kay=quay
-        ^-  tape
-        ?:  =(~ kay)  ~
-        :-  '?'
-        |-  ^-  tape
-        ?~  kay  ~
-        ;:  weld
-          (urle (trip p.i.kay))
-          "="
-          (urle (trip q.i.kay))
-          ?~(t.kay ~ `tape`['&' $(kay t.kay)])
-        ==
-      --
-    ::
-
-Renders a `quay`, a query string in hoon, to the [`++tape`]() of a
+Renders a [`++quay`](), a query string in hoon, to the [`++tape`]() of a
 traditional query string.
 
-`kay` is a [`++quay`]().
+Accepts
+-------
+
+`kay` is a `++quay`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
+    ++  tail
+            |=  kay=quay
+            ^-  tape
+            ?:  =(~ kay)  ~
+            :-  '?'
+            |-  ^-  tape
+            ?~  kay  ~
+            ;:  weld
+              (urle (trip p.i.kay))
+              "="
+              (urle (trip q.i.kay))
+              ?~(t.kay ~ `tape`['&' $(kay t.kay)])
+            ==
+          --
+        ::
+
+Examples
+--------
 
     ~zod/main=> (tail:earn ~)
     ""
@@ -380,13 +543,27 @@ traditional query string.
 
 Top-level URL parser
 
-    ++  epur                                                ::  url/header parser
-      =<  |=(a=cord (rush a auri))
-      |%
+Parses an entire URL.
 
-Toplevel URL parser.
+Accepts
+-------
 
 `a` is a [`++cord`](/doc/hoon/library/1#++cord).
+
+Produces
+--------
+
+A [`++purl`]().
+
+Source
+------
+
+    ++  epur                                                ::  url/header parser
+          =<  |=(a=cord (rush a auri))
+          |%
+
+Examples
+--------
 
     ~zod/main=> (epur 'http://127.0.0.1/')
     [~ [p=[p=%.n q=~ r=[%.n p=.127.0.0.1]] q=[p=~ q=<||>] r=~]]
@@ -430,11 +607,24 @@ Toplevel URL parser.
 
 ### `++apat`
 
-      ++  apat                                              ::  2396 abs_path
-        %+  cook  deft
-        (ifix [fas ;~(pose fas (easy ~))] (more fas smeg))
-
 URL path as ++pork
+
+Parses a URL path as a [`++pork`]().
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
+
+    ++  apat                                              ::  2396 abs_path
+            %+  cook  deft
+            (ifix [fas ;~(pose fas (easy ~))] (more fas smeg))
+
+Examples
+--------
 
     ~zod/try=> (scan "/foo/mol/lok" apat:epur)
     [p=~ q=<|foo mol lok|>]
@@ -443,23 +633,39 @@ URL path as ++pork
 
 ### `++auri`
 
-      ++  auri
-        %+  cook
-          |=  a=purl
-          ?.(=([& /localhost] r.p.a) a a(p.p &))
-        ;~  plug
-          ;~  plug
-            %+  sear
-              |=  a=@t
-              ^-  (unit ,?)
-              ?+(a ~ %http [~ %|], %https [~ %&])
-            ;~(sfix scem ;~(plug col fas fas))
-            thor
-          ==
-          ;~(plug ;~(pose apat (easy *pork)) yque)
-        ==
-
 URL parsing rule
+
+Accepts
+-------
+
+A [`++purl`]().
+
+Produces
+--------
+
+XX
+
+Source
+------
+
+    ++  auri
+            %+  cook
+              |=  a=purl
+              ?.(=([& /localhost] r.p.a) a a(p.p &))
+            ;~  plug
+              ;~  plug
+                %+  sear
+                  |=  a=@t
+                  ^-  (unit ,?)
+                  ?+(a ~ %http [~ %|], %https [~ %&])
+                ;~(sfix scem ;~(plug col fas fas))
+                thor
+              ==
+              ;~(plug ;~(pose apat (easy *pork)) yque)
+            ==
+
+Examples
+--------
 
     ~zod/main=> (auri:epur [1 1] "http://127.0.0.1/")
     [ p=[p=1 q=18] 
@@ -548,10 +754,22 @@ URL parsing rule
 
 ### `++cock`
 
-      ++  cock                                              ::  cookie
-        (most ;~(plug sem ace) ;~(plug toke ;~(pfix tis tosk)))
-
 HTTP cookies, results in associative list of cord to cord.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  cock                                              ::  cookie
+            (most ;~(plug sem ace) ;~(plug toke ;~(pfix tis tosk)))
+
+Examples
+--------
 
     ~zod/try=> (scan "sam=lop" cock:epur)
     [['sam' 'lop'] ~]
@@ -563,15 +781,27 @@ HTTP cookies, results in associative list of cord to cord.
 
 ### `++dlab`
 
-      ++  dlab                                              ::  2396 domainlabel
-        %+  sear
-          |=  a=@ta
-          ?.(=('-' (rsh 3 (dec (met 3 a)) a)) [~ u=a] ~)
-        %+  cook  cass
-        ;~(plug aln (star alp))
-      ::
-
 Domain label: alphanumeric, with `-` allowed in middle.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  dlab                                              ::  2396 domainlabel
+            %+  sear
+              |=  a=@ta
+              ?.(=('-' (rsh 3 (dec (met 3 a)) a)) [~ u=a] ~)
+            %+  cook  cass
+            ;~(plug aln (star alp))
+          ::
+
+Examples
+--------
 
     ~zod/try=> (scan "google" dlab:epur)
     ~.google
@@ -585,9 +815,21 @@ Domain label: alphanumeric, with `-` allowed in middle.
 
 ### `++fque`
 
-      ++  fque  (cook crip (plus pquo))                     ::  normal query field
-
 One or more query string characters
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  fque  (cook crip (plus pquo))                     ::  normal query field
+
+Examples
+--------
 
     ~zod/try=> (scan "%20" fque:epur)
     ' '
@@ -603,9 +845,21 @@ One or more query string characters
 
 ### `++fquu`
 
-      ++  fquu  (cook crip (star pquo))                     ::  optional field
-
 Zero or more query string characters
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  fquu  (cook crip (star pquo))                     ::  optional field
+
+Examples
+--------
 
     ~zod/try=> (scan "%20" fquu:epur)
     ' '
@@ -620,10 +874,22 @@ Zero or more query string characters
 
 ### `++pcar`
 
-      ++  pcar  ;~(pose pure pesc psub col pat)             ::  2396 path char
-
 Single URL path character: literal, `%` escape, subpath delimiter, `:`
 or `@`
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pcar  ;~(pose pure pesc psub col pat)             ::  2396 path char
+
+Examples
+--------
 
     ~zod/try=> (scan "a" pcar:epur)
     ~~a
@@ -641,9 +907,21 @@ or `@`
 
 ### `++pcok`
 
-      ++  pcok  ;~(less bas sem com doq prn)                ::  cookie char
-
 Cookie character
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pcok  ;~(less bas sem com doq prn)                ::  cookie char
+
+Examples
+--------
 
     ~zod/try=> (scan "a" pcok:epur)
     ~~a
@@ -658,9 +936,21 @@ Cookie character
 
 ### `++pesc`
 
-      ++  pesc  ;~(pfix cen mes)                            ::  2396 escaped
-
 URL `%` escape, by two hex characters.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pesc  ;~(pfix cen mes)                            ::  2396 escaped
+
+Examples
+--------
 
     ~zod/try=> `@t`(scan "%22" pesc:epur)
     '"'
@@ -669,9 +959,21 @@ URL `%` escape, by two hex characters.
 
 ### `++pold`
 
-      ++  pold  (cold ' ' (just '+'))                       ::  old space code
-
 Old URL `' '` escape
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pold  (cold ' ' (just '+'))                       ::  old space code
+
+Examples
+--------
 
     ~zod/try=> `@t`(scan "+" pold:epur)
     ' '
@@ -681,9 +983,21 @@ Old URL `' '` escape
 
 ### `++pque`
 
-      ++  pque  ;~(pose pcar fas wut)                       ::  3986 query char
-
 Irregular query string character.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pque  ;~(pose pcar fas wut)                       ::  3986 query char
+
+Examples
+--------
 
     ~zod/try=> `@t`(scan "a" pque:epur)
     'a'
@@ -696,9 +1010,21 @@ Irregular query string character.
 
 ### `++pquo`
 
-      ++  pquo  ;~(pose pure pesc pold)                     ::  normal query char
-
 Character in query string key/value
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pquo  ;~(pose pure pesc pold)                     ::  normal query char
+
+Examples
+--------
 
     ~zod/try=> (scan "a" pquo:epur)
     'a'
@@ -714,9 +1040,21 @@ Character in query string key/value
 
 ### `++pure`
 
-      ++  pure  ;~(pose aln hep dot cab sig)                ::  2396 unreserved
-
 URL-safe character
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  pure  ;~(pose aln hep dot cab sig)                ::  2396 unreserved
+
+Examples
+--------
 
     ~zod/try=> (scan "a" pure:epur)
     ~~a
@@ -730,12 +1068,24 @@ URL-safe character
 
 ### `++psub`
 
-      ++  psub  ;~  pose                                    ::  3986 sub-delims
-                  zap  buc  pam  soq  pel  per
-                  tar  lus  com  sem  tis
-                ==
-
 URL path subdelimeter
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  psub  ;~  pose                                    ::  3986 sub-delims
+                      zap  buc  pam  soq  pel  per
+                      tar  lus  com  sem  tis
+                    ==
+
+Examples
+--------
 
     ~zod/try=> `@t`(scan "+" psub:epur)
     '+'
@@ -749,12 +1099,24 @@ URL path subdelimeter
 
 ### `++ptok`
 
-      ++  ptok  ;~  pose                                    ::  2616 token
-                  aln  zap  hax  buc  cen  pam  soq  tar  lus
-                  hep  dot  ket  cab  tec  bar  sig
-                ==
-
 Character valid in HTTP token
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  ptok  ;~  pose                                    ::  2616 token
+                      aln  zap  hax  buc  cen  pam  soq  tar  lus
+                      hep  dot  ket  cab  tec  bar  sig
+                    ==
+
+Examples
+--------
 
     ~zod/try=> `tape`(murn =+(a=' ' |-(`tape`?:(=(0x7f a) ~ [a $(a +(a))]))) (curr rush ptok):epur)
     "!#$%&'*+-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ^_`abcdefghijklmnopqrstuvwxyz|~"
@@ -763,13 +1125,25 @@ Character valid in HTTP token
 
 ### `++scem`
 
-      ++  scem                                              ::  2396 scheme
-        %+  cook  cass
-        ;~(plug alf (star ;~(pose aln lus hep dot)))
-      ::
-
 URI scheme: alphabetic character, followed by any number of
 alphanumeric, `+` `-` or `.`
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  scem                                              ::  2396 scheme
+            %+  cook  cass
+            ;~(plug alf (star ;~(pose aln lus hep dot)))
+          ::
+
+Examples
+--------
 
     ~zod/try=> `@t`(scan "http" scem:epur)
     'http'
@@ -780,9 +1154,21 @@ alphanumeric, `+` `-` or `.`
 
 ### `++smeg`
 
-      ++  smeg  (cook crip (plus pcar))                     ::  2396 segment
-
 URL path segment
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  smeg  (cook crip (plus pcar))                     ::  2396 segment
+
+Examples
+--------
 
     ~zod/try=> (scan "foo" smeg:epur)
     'foo'
@@ -791,9 +1177,21 @@ URL path segment
 
 ### `++tock`
 
-      ++  tock  (cook crip (plus pcok))                     ::  6265 cookie-value
-
 HTTP cookie value
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  tock  (cook crip (plus pcok))                     ::  6265 cookie-value
+
+Examples
+--------
 
     ~zod/try=> (rush 'sam' tock:epur)
     [~ 'sam']
@@ -806,9 +1204,21 @@ HTTP cookie value
 
 ### `++tosk`
 
-      ++  tosk  ;~(pose tock (ifix [doq doq] tock))         ::  6265 cookie-value
-
 Possibly quoted HTTP cookie value
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  tosk  ;~(pose tock (ifix [doq doq] tock))         ::  6265 cookie-value
+
+Examples
+--------
 
     ~zod/try=> (rush 'sam' tosk:epur)
     [~ 'sam']
@@ -821,9 +1231,21 @@ Possibly quoted HTTP cookie value
 
 ### `++toke`
 
-      ++  toke  (cook crip (plus ptok))                     ::  2616 token
-
 HTTP cookie name
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  toke  (cook crip (plus ptok))                     ::  2616 token
+
+Examples
+--------
 
     ~zod/try=> (rush 'sam' toke:epur)
     [~ 'sam']
@@ -836,14 +1258,26 @@ HTTP cookie name
 
 ### `++thor`
 
-      ++  thor                                              ::  2396 host/port
-        %+  cook  |*(a=[* *] [+.a -.a])
-        ;~  plug
-          thos
-          ;~(pose (stag ~ ;~(pfix col dim:ag)) (easy ~))
-        ==
-
 Parse ++host and unit `@ui` port.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  thor                                              ::  2396 host/port
+            %+  cook  |*(a=[* *] [+.a -.a])
+            ;~  plug
+              thos
+              ;~(pose (stag ~ ;~(pfix col dim:ag)) (easy ~))
+            ==
+
+Examples
+--------
 
     ~zod/try=> (scan "localhost" thor:epur)
     [~ [%.y i='localhost' t=~]]
@@ -856,26 +1290,38 @@ Parse ++host and unit `@ui` port.
 
 ### `++thos`
 
-      ++  thos                                              ::  2396 host, no local
-        ;~  plug
-          ;~  pose
-            %+  stag  %&
-            %+  sear                                        ::  LL parser weak here
-              |=  a=(list ,@t)
-              =+  b=(flop a)
-              ?>  ?=(^ b)
-              =+  c=(end 3 1 i.b)
-              ?.(&((gte c 'a') (lte c 'z')) ~ [~ u=b])
-            (most dot dlab)
-          ::
-            %+  stag  %|
-            =+  tod=(ape:ag ted:ab)
-            %+  bass  256
-            ;~(plug tod (stun [3 3] ;~(pfix dot tod)))
-          ==
-        ==
-
 URI host: dot-separated segments, or IP address.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  thos                                              ::  2396 host, no local
+            ;~  plug
+              ;~  pose
+                %+  stag  %&
+                %+  sear                                        ::  LL parser weak here
+                  |=  a=(list ,@t)
+                  =+  b=(flop a)
+                  ?>  ?=(^ b)
+                  =+  c=(end 3 1 i.b)
+                  ?.(&((gte c 'a') (lte c 'z')) ~ [~ u=b])
+                (most dot dlab)
+              ::
+                %+  stag  %|
+                =+  tod=(ape:ag ted:ab)
+                %+  bass  256
+                ;~(plug tod (stun [3 3] ;~(pfix dot tod)))
+              ==
+            ==
+
+Examples
+--------
 
     ~zod/try=> (scan "localhost" thos:epur)
     [%.y i='localhost' t=~]
@@ -889,13 +1335,25 @@ URI host: dot-separated segments, or IP address.
 
 ### `++yque`
 
-      ++  yque                                              ::  query ending
-        ;~  pose
-          ;~(pfix wut yquy)
-          (easy ~)
-        ==
-
 Parses query string, or lack thereof. Result type ++quay
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  yque                                              ::  query ending
+            ;~  pose
+              ;~(pfix wut yquy)
+              (easy ~)
+            ==
+
+Examples
+--------
 
     ~zod/try=> (scan "?sar=tok" yque:epur)
     [['sar' 'tok'] ~]
@@ -906,18 +1364,30 @@ Parses query string, or lack thereof. Result type ++quay
 
 ### `++yquy`
 
-      ++  yquy                                              ::  query
-        ;~  pose                                            ::  proper query
-          %+  more
-            ;~(pose pam sem)
-          ;~(plug fque ;~(pose ;~(pfix tis fquu) (easy '')))
-        ::
-          %+  cook                                          ::  funky query
-            |=(a=tape [[%$ (crip a)] ~])
-          (star pque)
-        ==
-
 Parse query string after `?`
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  yquy                                              ::  query
+            ;~  pose                                            ::  proper query
+              %+  more
+                ;~(pose pam sem)
+              ;~(plug fque ;~(pose ;~(pfix tis fquu) (easy '')))
+            ::
+              %+  cook                                          ::  funky query
+                |=(a=tape [[%$ (crip a)] ~])
+              (star pque)
+            ==
+
+Examples
+--------
 
     ~zod/try=> (scan "sar=tok" yquy:epur)
     [['sar' 'tok'] ~]
@@ -928,14 +1398,26 @@ Parse query string after `?`
 
 ### `++zest`
 
-      ++  zest                                              ::  2616 request-uri
-        ;~  pose
-          (stag %& (cook |=(a=purl a) auri))
-          (stag %| ;~(plug apat yque))
-        ==
-      --
-
 Parse ++quri absolute or relative request path
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  zest                                              ::  2616 request-uri
+            ;~  pose
+              (stag %& (cook |=(a=purl a) auri))
+              (stag %| ;~(plug apat yque))
+            ==
+          --
+
+Examples
+--------
 
     ~zod/try=> (scan "http://www.google.com:80/search?q=foo" zest:epur)
     [%.y p=[p=%.n q=[~ 80] r=[%.y p=<|com google www|>]] q=[p=~ q=<|search|>] r=~[[p='q' q='foo']]]

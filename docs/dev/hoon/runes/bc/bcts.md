@@ -1,23 +1,21 @@
-buctis `$=` %bcts
-==========================
+`$=` 
+====
 
-Face for tile
+Add variable name
 
-`$=` is a tile rune that produces a `%bark`. A `%bark` is a tile that
-wraps a [face]() around another tile. Used primarily to add faces to
-[nouns]().
+Wraps a [++face]() around another [mold](). Used primarily to add variable names to values.
 
 Produces
 --------
 
-[Tile](): `[%bark p=term q=tile]`
+Produces a [mold]() that validates the input value with `q`, before adding face `p`.
 
-Sample
+Accepts
 ------
 
-`p` is a [term]().
+`p` is a [++term]().
 
-`q` is a [tile]().
+`q` is a mold.
 
 Tall form
 ---------
@@ -28,12 +26,13 @@ Tall form
 Wide form
 ---------
 
-None
+        $=(p q)
 
 Irregular form
 --------------
 
-None
+        `p=q` 
+note: this is only the case when in mold syntax
 
 Examples
 --------
@@ -51,3 +50,10 @@ Examples
     ~zod/try=> :type; *a=[1 2]
     a=[%1 %2]
     a=[%1 %2]
+
+    |_  [hid=bowl vat=axle]
+    ...
+    --
+See here how we wrap the faces 'hid' and 'vat' around the two [sample]() (input) types of the core above. We can now refer to our 'bowl' and 'vat' by these names.
+
+

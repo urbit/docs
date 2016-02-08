@@ -5,22 +5,36 @@ section 3bF, filesystem interface
 
 Generate file diff
 
-    ++  feel                                                ::  simple file write
-      |=  [pax=path val=*]
-      ^-  miso
-      =+  dir=((hard arch) .^(%cy pax))
-      ?~  q.dir  [%ins val]
-      :-  %mut
-      ^-  udon
-      [%a %a .^(%cx pax) val]
-    ::
-
 Generates a diff between a file located at `pax` and an input value
 `val`.
+
+Accepts
+-------
 
 `pax` is a [`++path`]().
 
 `val` is a value as a [noun]().
+
+Produces
+--------
+
+A [`++miso`]().
+
+Source
+------
+
+    ++  feel                                                ::  simple file write
+          |=  [pax=path val=*]
+          ^-  miso
+          =+  dir=((hard arch) .^(%cy pax))
+          ?~  q.dir  [%ins val]
+          :-  %mut
+          ^-  udon
+          [%a %a .^(%cx pax) val]
+        ::
+
+Examples
+--------
 
     ~zod/try=> + %/mel 'test'
     + /~zod/try/2/mel
@@ -37,17 +51,31 @@ Generates a diff between a file located at `pax` and an input value
 
 Simple file load
 
-    ++  file                                                ::  simple file load
-      |=  pax=path
-      ^-  (unit)
-      =+  dir=((hard arch) .^(%cy pax))
-      ?~(q.dir ~ [~ .^(%cx pax)])
-    ::
-
 Reads the value of a file located at `pax` and renders it as a
 [`++unit`]().
 
+Accepts
+-------
+
 `pax` is a [`++path`]().
+
+Produces
+--------
+
+The `++unit` of a [`++noun`]().
+
+Source
+------
+
+    ++  file                                                ::  simple file load
+          |=  pax=path
+          ^-  (unit)
+          =+  dir=((hard arch) .^(%cy pax))
+          ?~(q.dir ~ [~ .^(%cx pax)])
+        ::
+
+Examples
+--------
 
     ~zod/try=> %/zak
     ~zod/try=/zak> :ls %
@@ -66,19 +94,33 @@ Reads the value of a file located at `pax` and renders it as a
 
 Write high-level change
 
-    ++  foal                                                ::  high-level write
-      |=  [pax=path val=*]
-      ^-  toro
-      ?>  ?=([* * * *] pax)
-      [i.t.pax [%& [*cart [[t.t.t.pax (feel pax val)] ~]]]]
-    ::
-
 Produces a [`++toro`](), a change intended for whatever file is located
 at `pax`. Handled by `%clay`.
+
+Accepts
+-------
 
 `pax` is a [`++path`]().
 
 `val` is a value as a [noun]().
+
+Produces
+--------
+
+A [`++toro`]().
+
+Source
+------
+
+    ++  foal                                                ::  high-level write
+          |=  [pax=path val=*]
+          ^-  toro
+          ?>  ?=([* * * *] pax)
+          [i.t.pax [%& [*cart [[t.t.t.pax (feel pax val)] ~]]]]
+        ::
+
+Examples
+--------
 
     ~zod/try=> + %/mek 'a'
     + /~zod/try/4/mek
@@ -94,17 +136,31 @@ at `pax`. Handled by `%clay`.
 
 High-level delete
 
-    ++  fray                                                ::  high-level delete
-      |=  pax=path
-      ^-  toro
-      ?>  ?=([* * * *] pax)
-      [i.t.pax [%& [*cart [[t.t.t.pax [%del .^(%cx pax)]] ~]]]]
-    ::
-
 Produces a deletion [`++toro`]() for a file located at path `pax`.
 Handled by `%clay`.
 
+Accepts
+-------
+
 `pax` is a [`++path`]().
+
+Produces
+--------
+
+A `++toro`.
+
+Source
+------
+
+    ++  fray                                                ::  high-level delete
+          |=  pax=path
+          ^-  toro
+          ?>  ?=([* * * *] pax)
+          [i.t.pax [%& [*cart [[t.t.t.pax [%del .^(%cx pax)]] ~]]]]
+        ::
+
+Examples
+--------
 
     ~zod/try=> + %/mek 'a'
     + /~zod/try/4/mek
@@ -117,22 +173,36 @@ Handled by `%clay`.
 
 Unify changes
 
-    ++  furl                                                ::  unify changes
-      |=  [one=toro two=toro]
-      ^-  toro
-      ~|  %furl
-      ?>  ?&  =(p.one p.two)                                ::  same path
-              &(?=(& -.q.one) ?=(& -.q.two))                ::  both deltas
-          ==
-      [p.one [%& [*cart (weld q.q.q.one q.q.q.two)]]]
-    ::
-
 Merge two [`++toro`]()s `one` and `two` that are in the same [`desk`]()
 and pointed at the same [`++path`]().
 
-`one` is a [`++toro`]().
+Accepts
+-------
 
-`two` is a [`++toro`]().
+`one` is a `++toro`.
+
+`two` is a `++toro`.
+
+Produces
+--------
+
+A `++toro`.
+
+Source
+------
+
+    ++  furl                                                ::  unify changes
+          |=  [one=toro two=toro]
+          ^-  toro
+          ~|  %furl
+          ?>  ?&  =(p.one p.two)                                ::  same path
+                  &(?=(& -.q.one) ?=(& -.q.two))                ::  both deltas
+              ==
+          [p.one [%& [*cart (weld q.q.q.one q.q.q.two)]]]
+        ::
+
+Examples
+--------
 
     ~zod/try=> %/zak
     ~zod/try=/zak> :ls %
@@ -150,17 +220,31 @@ and pointed at the same [`++path`]().
 
 ### `++meat`
 
-Kite to .\^ path
-
-    ++  meat                                                ::  kite to .^ path
-      |=  kit=kite
-      ^-  path
-      [(cat 3 'c' p.kit) (scot %p r.kit) s.kit (scot `dime`q.kit) t.kit]
-    ::
+Kite to .^ path
 
 Converts a type request name to a [`++path`]().
 
+Accepts
+-------
+
 `kit` is a [`++kite`]().
+
+Produces
+--------
+
+A `++path`.
+
+Source
+------
+
+    ++  meat                                                ::  kite to .^ path
+          |=  kit=kite
+          ^-  path
+          [(cat 3 'c' p.kit) (scot %p r.kit) s.kit (scot `dime`q.kit) t.kit]
+        ::
+
+Examples
+--------
 
     zod/try=/zop> `kite`[%x ud/1 ~zod %main /sur/down/gate/hook]
     [p=%x q=[%ud p=1] r=~zod s=%main t=/sur/down/gate/hook]
@@ -185,33 +269,47 @@ Converts a type request name to a [`++path`]().
 
 Parse kite path
 
-    ++  tame                                                ::  parse kite path
-      |=  hap=path
-      ^-  (unit kite)
-      ?.  ?=([@ @ @ @ *] hap)  ~
-      =+  :*  hyr=(slay i.hap)
-              fal=(slay i.t.hap)
-              dyc=(slay i.t.t.hap)
-              ved=(slay i.t.t.t.hap)
-              ::  ved=(slay i.t.hap)
-              ::  fal=(slay i.t.t.hap)
-              ::  dyc=(slay i.t.t.t.hap)
-              tyl=t.t.t.t.hap
-          ==
-      ?.  ?=([~ %$ %tas @] hyr)  ~
-      ?.  ?=([~ %$ %p @] fal)  ~
-      ?.  ?=([~ %$ %tas @] dyc)  ~
-      ?.  ?=([~ %$ case] ved)  ~
-      =+  his=`@p`q.p.u.fal
-      =+  [dis=(end 3 1 q.p.u.hyr) rem=(rsh 3 1 q.p.u.hyr)]
-      ?.  ?&(?=(%c dis) ?=(?(%v %w %x %y %z) rem))  ~
-      [~ rem p.u.ved q.p.u.fal q.p.u.dyc tyl]
-    ::
-
 Parses a clay [.\^]()
 [`++path` ]()to request details. Produces the [`++unit`]() of a [`++kite`]().
 
+Accepts
+-------
+
 `hap` is a [`++path`]().
+
+Produces
+--------
+
+A `(unit kite)`.
+
+Source
+------
+
+    ++  tame                                                ::  parse kite path
+          |=  hap=path
+          ^-  (unit kite)
+          ?.  ?=([@ @ @ @ *] hap)  ~
+          =+  :*  hyr=(slay i.hap)
+                  fal=(slay i.t.hap)
+                  dyc=(slay i.t.t.hap)
+                  ved=(slay i.t.t.t.hap)
+                  ::  ved=(slay i.t.hap)
+                  ::  fal=(slay i.t.t.hap)
+                  ::  dyc=(slay i.t.t.t.hap))
+                  tyl=t.t.t.t.hap
+              ==
+          ?.  ?=([~ %$ %tas @] hyr)  ~
+          ?.  ?=([~ %$ %p @] fal)  ~
+          ?.  ?=([~ %$ %tas @] dyc)  ~
+          ?.  ?=([~ %$ case] ved)  ~
+          =+  his=`@p`q.p.u.fal
+          =+  [dis=(end 3 1 q.p.u.hyr) rem=(rsh 3 1 q.p.u.hyr)]
+          ?.  ?&(?=(%c dis) ?=(?(%v %w %x %y %z) rem))  ~
+          [~ rem p.u.ved q.p.u.fal q.p.u.dyc tyl]
+        ::
+
+Examples
+--------
 
     ~zod/try=/zop> (tame /cx/~zod/main/1/sur/down/gate/hook)
     [~ [p=%x q=[%ud p=1] r=~zod s=%main t=/sur/down/gate/hook]]
@@ -224,21 +322,37 @@ Parses a clay [.\^]()
 
 Parse path to beam
 
-    ++  tome                                                ::  parse path to beam
-      |=  pax=path
-      ^-  (unit beam)
-      ?.  ?=([* * * *] pax)  ~
-      %+  biff  (slaw %p i.pax)
-      |=  who=ship
-      %+  biff  (slaw %tas i.t.pax)
-      |=  dex=desk
-      %+  biff  (slay i.t.t.pax)
-      |=  cis=coin
-      ?.  ?=([%$ case] cis)  ~
-      `(unit beam)`[~ [who dex `case`p.cis] (flop t.t.t.pax)]
-    ::
+Parses a [`++path`]() `pax` to a [`++beam](), a well-typed location.
 
-Parses a [`++path`]() `pax` to a [\`++beam](), a well-typed location.
+Accepts
+-------
+
+`pax` is a [`++path`]().
+
+Produces
+--------
+
+A `(unit beam)`.
+
+Source
+------
+
+    ++  tome                                                ::  parse path to beam
+          |=  pax=path
+          ^-  (unit beam)
+          ?.  ?=([* * * *] pax)  ~
+          %+  biff  (slaw %p i.pax)
+          |=  who=ship
+          %+  biff  (slaw %tas i.t.pax)
+          |=  dex=desk
+          %+  biff  (slay i.t.t.pax)
+          |=  cis=coin
+          ?.  ?=([%$ case] cis)  ~
+          `(unit beam)`[~ [who dex `case`p.cis] (flop t.t.t.pax)]
+        ::
+
+Examples
+--------
 
     ~zod/try=/zop> (tome /~fyr/try/2/for/me)
     [~ [[p=~fyr q=%try r=[%ud p=2]] s=/me/for]]
@@ -249,13 +363,26 @@ Parses a [`++path`]() `pax` to a [\`++beam](), a well-typed location.
     ~zod/try=/zop> (tome /~zod/main/0x12)
     ~
 
-### `++tope :: beam to path`
+### `++tope`
 
 Parse beam to path
 
-    |=  bem=beam
-      ^-  path
-      [(scot %p p.bem) q.bem (scot r.bem) (flop s.bem)]
+Parses a [`++beam`]() `bem` to a [`++path`]().
+
+Accepts
+-------
+
+`bem` is a `++beam`.
+
+Produces
+--------
+
+A `++path`.
+
+    ++tope
+        |=  bem=beam
+          ^-  path
+          [(scot %p p.bem) q.bem (scot r.bem) (flop s.bem)]
 
 Parses a [`++beam`]() to a [`++path`](/doc/hoon/library/1#++path).
 

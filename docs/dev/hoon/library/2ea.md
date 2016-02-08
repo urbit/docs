@@ -5,6 +5,21 @@ section 2eA, packing
 
 Unpack atom to noun
 
+Produces a noun unpacked from atom `a`. The inverse of jam.
+
+Accepts
+-------
+
+`a` is an [atom]().
+
+Produces
+--------
+
+A [`++noun`]().
+
+Source
+------
+
     ++  cue                                                 ::  unpack atom to noun
       ~/  %cue
       |=  a=@
@@ -26,9 +41,9 @@ Unpack atom to noun
       [(add 2 p.d) (need (~(get by m) q.d)) m]
     ::
 
-Produces a noun unpacked from atom `a`. The inverse of jam.
 
-`a` is an [atom]().
+Examples
+--------
 
     ~zod/try=> (cue 12)
     1
@@ -42,6 +57,23 @@ Produces a noun unpacked from atom `a`. The inverse of jam.
 ------------------------------------------------------------------------
 
 ### `++jam`
+
+Unpack noun to atom
+
+Produces an atom unpacked from noun `a`. The inverse of cue.
+
+Accepts
+-------
+
+`a` is a [noun]().
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
     ++  jam                                                 ::  pack
       ~/  %jam
@@ -68,9 +100,9 @@ Produces a noun unpacked from atom `a`. The inverse of jam.
       [(add 2 p.d) (mix 3 (lsh 0 2 q.d)) m]
     ::
 
-Produces an atom unpacked from noun `a`. The inverse of cue.
 
-`a` is a [noun]().
+Examples
+--------
 
     ~zod/try=> (jam 1)
     12
@@ -87,6 +119,23 @@ Produces an atom unpacked from noun `a`. The inverse of cue.
 
 Length-encode
 
+Produces a cell whose tail `q` is atom `a` with a bit representation of
+its length prepended to it (as the least significant bits). The head `p`
+is the length of `q` in bits.
+
+Accepts
+-------
+
+`a` is an atom.
+
+Produces
+--------
+
+A cell of two atoms, `p` and `q`. 
+
+Source
+------
+
     ++  mat                                                 ::  length-encode 
       ~/  %mat
       |=  a=@
@@ -98,11 +147,9 @@ Length-encode
       :-  (add (add c c) b)
       (cat 0 (bex c) (mix (end 0 (dec c) b) (lsh 0 (dec c) a)))
 
-Produces a cell whose tail `q` is atom `a` with a bit representation of
-its length prepended to it (as the least significant bits). The head `p`
-is the length of `q` in bits.
 
-`a` is an atom.
+Examples
+--------
 
     ~zod/try=> (mat 0xaaa)
     [p=20 q=699.024]
@@ -127,6 +174,26 @@ is the length of `q` in bits.
 
 Length-decode
 
+The inverse of `++mat`. Accepts a cell of index `a` and a bitstring `b`
+and produces the cell whose tail `q` is the decoded atom at index `a`
+and whose head is the length of the encoded atom `q`, by which the
+offset `a` is advanced. Only used internally as a helper cue.
+
+Accepts
+-------
+
+`a` is an atom.
+
+`b` is a bitstring as an atom.
+
+Produces
+--------
+
+A cell of two atoms, `p` and `q`.
+
+Source
+------
+
     ++  rub                                                 ::  length-decode
       ~/  %rub
       |=  [a=@ b=@]
@@ -143,14 +210,9 @@ Length-decode
       =+  e=(add (bex (dec c)) (cut 0 [d (dec c)] b))
       [(add (add c c) e) (cut 0 [(add d (dec c)) e] b)]
 
-The inverse of `++mat`. Accepts a cell of index `a` and a bitstring `b`
-and produces the cell whose tail `q` is the decoded atom at index `a`
-and whose head is the length of the encoded atom `q`, by which the
-offset `a` is advanced. Only used internally as a helper cue.
 
-`a` is an atom.
-
-`b` is a bitstring as an atom.
+Examples
+--------
 
     ~zod/try=> `@ub`(jam 0xaaa)
     0b1.0101.0101.0101.0010.0000
