@@ -3,6 +3,21 @@ section 3bH, names etc
 
 ### `++clan`
 
+Ship class
+
+Accepts
+-------
+
+`who` is a [`++ship`]()
+
+Produces
+--------
+
+A [`%cube`]().
+
+Source
+------
+
     ++  clan                                                ::  ship to rank
       |=  who=ship  ^-  rank
       =+  wid=(met 3 who)
@@ -13,7 +28,8 @@ section 3bH, names etc
       ?>  (lte wid 16)  %pawn
     ::
 
-Ship class
+Examples
+--------
 
     ~zod/main=> (clan ~zod)
     %czar
@@ -25,6 +41,18 @@ Ship class
     %duke
 
 ### `++glam`
+
+Galaxy names
+
+Retrieves the 'name' of a given Galaxy.
+
+Accepts
+-------
+
+`zar` is a `@p` of one byte, the length of a Galaxy name.
+
+Source
+------
 
     ++  glam
       |=  zar=@pD  ^-  tape
@@ -87,7 +115,8 @@ Ship class
       ==
     ::
 
-Retrieve carrier name.
+Examples
+--------
 
     ~zod/main=> (glam ~zod)
     "Tianming"
@@ -95,6 +124,18 @@ Retrieve carrier name.
     "Bolivar"
 
 ### `++glon`
+
+ISO language code
+
+XX
+
+Accepts
+-------
+
+`lag` is a [`++lang`]().
+
+Source
+------
 
     ++  glon
       |=  lag=lang
@@ -287,7 +328,8 @@ Retrieve carrier name.
       ==
     ::
 
-ISO language code
+Examples
+--------
 
     ~zod/main=> (glon %cs)
     [~ "Czech"]
@@ -298,6 +340,22 @@ ISO language code
 
 ### `++gnom`
 
+Display ship name
+
+Fetches a ship's display name from %ames.
+
+Accepts
+-------
+
+`our` is a [`@p`]().
+
+`now` is a [`@da`]().
+
+`him` is a [`@p`]().
+
+Source
+------
+
     ++  gnom                                                ::  ship display name
       |=  [[our=@p now=@da] him=@p]  ^-  @t
       =+  yow=(scot %p him)
@@ -307,7 +365,8 @@ ISO language code
       (rap 3 yow ' ' woy ~)
     ::
 
-Fetch display name from %ames
+Examples
+--------
 
     ~zod/main=> (gnom [->-< -<-] ~zod)
     '~zod |Tianming|'
@@ -421,14 +480,32 @@ XX Document
 
 ### `++saxo`
 
+List ancestors
+
+Lists the ancestors of `who`.
+
+Accepts
+-------
+
+`who` is a [`++ship`]().
+
+Produces
+--------
+
+A [`++list`]() of `++ship`.
+
+Source
+------
+
     ++  saxo                                                ::  autocanon
       |=  who=ship
       ^-  (list ship)
       ?:  (lth who 256)  [who ~]
       [who $(who (sein who))]
     ::
-
-Compute list of ancestors
+    
+Examples
+--------
 
     ~zod/main=> (saxo ~pittyp-pittyp)
     ~[~pittyp-pittyp ~dalnel ~del]
@@ -438,6 +515,23 @@ Compute list of ancestors
     ~[~ractul-fodsug-sibryg-modsyl--difrun-mirfun-filrec-patmet ~zod]
 
 ### `++sein`
+
+Direct parent
+
+Computes the direct parent of `who`.
+
+Accepts
+-------
+
+`who` is a [`++ship`]().
+
+Produces
+--------
+
+A `++ship`.
+
+Source
+------
 
     ++  sein                                                ::  autoboss
       |=  who=ship  ^-  ship
@@ -450,7 +544,8 @@ Compute list of ancestors
         %pawn  `@p`0
       ==
 
-Compute direct senior.
+Examples
+--------
 
     ~zod/main=> (sein ~tasfyn-partyv)
     ~doznec
@@ -464,8 +559,6 @@ Compute direct senior.
     ~del
     ~zod/main=> (sein ~ractul-fodsug-sibryg-modsyl--difrun-mirfun-filrec-patmet)
     ~zod
-
-Compute Phonemic base.
 
     ~zod/main=> (saxo ~rabdec-monfer)
     ~[~rabdec-monfer ~dalnel ~del]

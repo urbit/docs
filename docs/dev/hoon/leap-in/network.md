@@ -4,14 +4,13 @@ sort: 2
 title: Network Messages
 ---
 
-Enough of pure hoonery.  Let's get to the good stuff.  Let's get
-our planets to talk to each other.
+Now we've learned enough hoon to do more interesting things.
+Let's get our planets to talk to each other.
 
-Of course, for talking to be of any use, we need someone
-listening.  What we've written up until now are just shell
+All we've written up until now are just shell
 commands that produce a value and then disappear.  We need an
 actual app to listen for messages from another planet.  Let's
-take a look at a very basic one.
+take a look at a very basic app that does this.
 
 ```
 ::  There is no love that is not an echo
@@ -29,10 +28,11 @@ take a look at a very basic one.
 --
 ```
 
+
 This is a very simple app that does only one thing.  If you poke
-it with a value it prints that out.  You have to start the app,
-then you can poke it from the command line with the following
-commands:
+it with a value, it prints that value out. To try this out, you
+have to start the app, then you can poke it from the command line
+with the following commands:
 
 ```
 ~fintud-macrep:dojo> |start %echo
@@ -48,21 +48,25 @@ commands:
 > There is currently a bug where the `%argument` lines are
 > printed *above* the line you entered, so your output may not
 > look exactly like this.
+> `>=` means that a command was successfully received and
+> executed.
 
 Most of the app code should be simple enough to guess its
 function.  The important part of this code is the definition of
 `++poke-noun`.
 
-Once an app starts, it's always on in the background, and you
+Once an app starts, it's always running in the background and you
 interact with it by sending it messages.  The most
 straightforward way to do that is to poke it from the command
-line.  When you do that, `++poke-noun` is called from your app.
+line, which we we did with `:echo 5` (`:[app-name]
+[argument(s)]).
 
-In our case, `++poke-noun` takes an argument `arg` and prints it
+In this case, `++poke-noun` takes an argument `arg` and prints it
 out with `~&`.  This is an unusual rune that formally "does
 nothing", but the interpreter detects it and printfs the first
-child.  This is a slightly hacky way of printing to the console,
-and we'll get to the correct way later on.
+child, before executing the second as if the first didn't exist.
+This is a slightly hacky way of printing to the console, but
+we'll get to the correct way later on.
 
 But what does `++poke-noun` produce?  Recall that `^-` casts to a
 type.  In this case, it's declaring that end result of the
@@ -70,10 +74,11 @@ function will be of type `[(list) _+>.$]`.  But what does this
 mean?
 
 The phrase to remember is "a list of moves and our state".  Urbit
-is a message passing system, so whenver we want to do something
-that interacts with the rest of the system we send a message.
-Thus, a move is arvo's equivalent of a syscall.  The first
-thing that `++poke-noun` produces is a list of messages, called
+is a message passing system XX should we mention event
+driven operating system XX, so whenever we want to do something that
+interacts with the rest of the system we send a message.  Thus, a
+move is arvo's equivalent of a syscall.  The first thing that
+`++poke-noun` produces is a list of messages, called
 "moves".  In this case, we don't actually want the system to do
 anything, so we produce the empty list, `~` (in the `[~ +>.$]`
 line).
@@ -101,25 +106,28 @@ number, and then print out the square of that number.
 ```
 
 A few things have changed.  Firstly, we no longer accept
-arbitrary nouns because we can only square atoms.  Thus, our
-argument is now `arg=@`.  Secondly, it's `++poke-atom` rather
-than `++poke-noun`.
+arbitrary nouns because we can only square atoms (integers, in
+this case an unsigned one).  Thus, our argument is now `arg=@`.
+Secondly, it's `++poke-atom` rather than `++poke-noun`.
 
-Are there other `++poke`s?  Definitely.  In fact, `noun` and
+Are there other `++poke`s?  Yes.  In fact, `noun` and
 `atom` are just two of arbitrarily many "marks".  A mark is
 fundamentally a type definition, but accessible at the arvo
 level.  Each mark is defined in the `/mar` directory.  Some marks
 have conversion routines to other marks, and some have diff,
 patch, and merge algorithms.  None of these are required for a
-mark to exist, though.
+mark to exist, however.
 
-`noun` and `atom` are two of dozens of predefined marks, and the
+`noun` and `atom` are two of dozens of predefined marks (that will
+already be in your `/mar` directory), and the
 user may add more at will.  The type associated with `noun` is
 `*`, and the type associated with `atom` is `@`.
 
-Data constructed on the command line is by default marked with
-`noun`.  In this case, the app is expecting an atom, so we have
-to explicitly mark the data with `atom`.  Try the following
+When we poke an app from anywhere, we do so with a mark that
+searches for the corresponding (`++poke-[mark]`) arm.  Data
+constructed on the command line is by default marked with `noun`.
+In this case, the app is expecting an atom, so we have to
+explicitly mark the data with `atom` using `&[mark]`.  Try the following
 commands:
 
 ```
@@ -144,7 +152,7 @@ pipeline, so we'll be getting quite used to them.
   previous section).
 
 - One way of representing strings is with double quoted strings
-  called "tapes".  The hoon type is `tape`, and there is a
+  called "tapes".  The hoon type is `++tape`, and there is a
   corresponding mark with the same name.  Write an app that
   accepts a tape and prints out `(flop argument)`, where
   `argument` is the input.  What does this do?
@@ -155,7 +163,7 @@ Let's write our first network message!  Here's `/ape/pong.hoon`:
 ```
 /?    314
 |%
-  ++  move  ,[bone term path *]
+  ++  move  ,[bone term wire *]
 --
 !:
 |_  [bowl state=~]
@@ -184,9 +192,10 @@ Run it with these commands:
 >=
 ```
 
-Replace `~sampel-sipnym` with another urbit.  Don't forget to
-start the `%pong` app on that urbit too.  You should see, on the
-foreign urbit, this output:
+Replace `~sampel-sipnym` with another urbit. The easiest thing to
+do is to start a [moon](), a sub-identity of your urbit. Don't
+forget to start the `%pong` app on that urbit too.  You should
+see, on the foreign urbit, this output:
 
 ```
 [%receiving 'howdy']
@@ -194,14 +203,16 @@ foreign urbit, this output:
 
 Most of the code should be straightforward.  In `++poke-atom`,
 the only new thing is the expression `(,@t arg)`.  As we already
-know, `@t` is the type of "cord" text strings.  `,` is an
-operator that turns a type into a validator function -- that is,
-a function whose domain is all nouns and range is the given type,
-and which is identity when the domain is restricted to the given
-type.  In simpler terms, it's a function that coerces any value
-to the given type.  We call this `,@t` function on the argument.
-This coerces the argument to text, so that we can print it out
-prettily.
+know, `@t` is the type of "cord" text strings.  `,` is the
+irregular short form of `$,`an operator that turns a type into a
+validator function (called a "clam" in hoon) -- that is, a
+function whose domain is all nouns and range is the given type.
+In simpler terms, if a validator function is passed a value that
+falls within its type, that value is produced.  Otherwise, it
+produces the default value (aka the "bunt") of its type.  Here we call
+this `,@t` function on the argument.  This coerces the argument
+to text, so that we can print it out prettily no matter what
+we're passed.
 
 The more interesting part is in `++poke-urbit`.  The `urbit` mark
 is an urbit identity, and the hoon type associated with it is
@@ -214,68 +225,101 @@ want to send a message to another urbit.  Thus, we produce a list
 with one element:
 
 ```
-[ost %poke /sending [to %pong] %atom 'howdy']
+[ost %poke /sending [to-urbit-address %pong] %atom 'howdy']
 ```
+###Moves
 
 The general form of a move is
 
-`[bone term path *]`
+                >-app/vane-specific part of move
+`[bone term wire *]`
+ -arvo part----> 
+  of move
+
+Or, in pseudo-code:
+
+`["cause" sys-call/action tack-new-layer-on-cause action-specific
+information]`
+
+Let's walk through each of these elements step by step
+
+####Bones ("cause")
 
 If you look up `++bone` in `hoon.hoon`, you'll see that it's a
 number (`@ud`), and that it's an opaque reference to a duct.
 `++duct` in hoon.hoon is a list of `wire`s, where `wire` is an
 alias for `path`.  `++path` is a list of `span`s, which are ASCII
 text.  Thus, a duct is a list of paths, and a bone is an opaque
-reference to that duct (in the same way that a Unix file
-descriptor is an opaque reference to a file structure).  Thus,
-the center of all this is the concept of a "duct".
+reference to it (in the same way that a Unix file
+descriptor is an opaque reference to a file structure).  Thus, to
+truly understand bones, we must understand ducts.
 
-A duct is stack of causes, represented as paths.  At the bottom
-of every duct is a unix event, such as a keystroke, network
-packet, file change, or timer event.  When arvo is given this
-event, it routes the event to appropriate kernel module for
-handling.
+A duct is stack of causes, again, represented as paths, which are
+called wires.  At the bottom of every duct is a unix event, such
+as a keystroke, network packet, file change, or timer event.
+When arvo is given this event, it routes the event to appropriate
+kernel module for handling.
+
+XX[short explanation of the composition of arvo should be here.]
 
 Sometimes, the module can immediately handle the event and
-produce any necessary results.  Otherwise, it asks other kernel
-modules or applications to do certain things, and produces the
-result from that.  When it sends a message to another kernel
-module or application, it sends it "along" the duct it was given,
-plus with a new path.  Arvo pushes the new path onto the duct.
-Now the duct has two entries, with the unix even on the bottom
-and the kernel module that handled it next.  This process can
-continue indefinitely, adding more and more layers onto the duct.
-When an entity produces a result, a layer is popped off the duct.
+produce any necessary results. For example, when we poked the
+`++poke-atom` arm above, we poked %gall, our application server,
+which was able to respond to our poke directly.  When the module
+cannot service the request itself, it sends instructions to the other kernel
+module or application to do a specified action, and produces the
+result from that.  Furthermore, when one module sends a message to another kernel
+module or application, it also sends along the duct it was given
+with its new wire tacked onto the end.  Now the duct has two entries,
+with the unix even on the bottom and the kernel module that
+handled it next.  This process can continue indefinitely, adding
+more and more layers onto the duct.  When an entity finally
+produces a result, a layer is popped off the duct, and the result
+is passed all the way back down.
 
-In effect, a duct is an arvo-level call stack.  The duct system
-creates a structured message-passing system.  It's worth noting
+In effect, a duct is an arvo-level call stack. It's worth noting
 that while in traditional call stacks a function call happens
-synchronously and returns exactly once, in arvo multiple moves
-can be sent at once, they are evaluated asynchronously, and each
+synchronously and returns exactly once. In arvo, multiple moves
+can be sent at once, are evaluated asynchronously, and each
 one may be responded to zero or more times.
 
-Anyhow, the point is that whatever caused `++poke-urbit` to be
+The point to take home is that whatever caused `++poke-urbit` to be
 called is also the root cause for the network message we're
-trying to send.  Thus, we say to send the network message along
-the given bone `ost`.  Of course, we have to push a layer to the
-duct.  This layer can have any data we want in it, but we don't
-need anything specific here, so we just use `/sending`.  If we
-were expecting a response (which we're not), it would come back
-along the `/sending` path.  It's a good idea for debugging
-purposes to make the path human-readable, but it's not necessary.
+trying to send. Thus, we say to send the network message along the given bone
+`ost`.
 
-Looking back at the general form of a move, there is a `term`,
-which in this case is `%poke`.  This is the name of the
-particular kind of move we're sending.  If you think of a move as
-a syscall (which you should), then this `term` is the name of the
-syscall.  Common ones include: `%poke`, to message an app;
-`%warp`, to read from the filesystem; `%wait`, to set a timer;
-and `%them`, to send an http request.
+#####Wire ('tack on new layer to duct')
 
-The general form ends with `*` since each type of move takes
+Of course, we have to push a new layer onto our duct
+before passing it along (or responding to it directly) anywhere  This
+layer can have any data we want in it, but we don't need anything
+specific here, so we just use the wire `/sending`
+(`/elem1/elem2/elem n` is one syntax used to create `++path`s and
+`++wire`s of n elements).  If we were expecting a response (which
+we're not), it would come back along the `/sending` wire, meaning
+that the path `/sending` will be passed back to the response
+handler as an argument.  Although it's not required, it's
+generally a good idea to make the wire human-readable for
+bug-handling purposes.
+
+#####Term (sys-call)
+
+Looking back at the general form of a move, there is a
+`term`--which is text composed lowercase ascii and `-`, and has
+the sign of `@tas`-- which in this case is `%poke`.  This is the
+name of the particular kind of move we're sending.  If you think
+of a move as a syscall (which you should), then this `term` is
+the name of the syscall.  Common ones include: `%poke`, to
+message an app; `%warp`, to read from the filesystem; `%wait`, to
+set a timer; and `%them`, to send an http request. 
+
+XXDescribe where they can find a list of these things.
+
+The general form ends with `*` (a noun) since each type of move takes
 different data.  In our case, a `%poke` move takes a target
-(urbit and app) and marked data and pokes that app on that urbit
-with that data.  `[to %pong]` is the target urbit and app,
+(urbit and app) and marked data and pokes the arm of the
+corresponding mark on that app on that urbit
+with that data.  `[to-urbit-address %pong]` is the target urbit and app,
 `%atom` is the mark`, and `'howdy'` is the data.
 
 When arvo receives a `%poke` move, it calls the appropriate

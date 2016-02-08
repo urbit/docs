@@ -5,6 +5,21 @@ section 3bD, JSON and XML
 
 Mime type to `++cord`
 
+Renders a [mime](http://en.wikipedia.org/wiki/MIME) type path with infix
+`/` to a [`++cord`]().
+Accepts
+-------
+
+`myn` is a ++[`mite`](), a [`++list`]() of [`@ta`]().
+
+Produces
+--------
+
+A `++cord`.
+
+Source
+------
+
     ++  moon                                                ::  mime type to text
       |=  myn=mite
       %+  rap
@@ -15,10 +30,8 @@ Mime type to `++cord`
       (weld (trip i.myn) `tape`['/' $(myn t.myn)])
     ::
 
-Renders a [mime](http://en.wikipedia.org/wiki/MIME) type path with infix
-`/` to a [cord]().
-
-`myn` is a ++[mite](), a list of [@ta]().
+Examples
+--------
 
     ~zod/try=> `@t`(moon /image/png)
     'image/png'
@@ -31,6 +44,32 @@ Renders a [mime](http://en.wikipedia.org/wiki/MIME) type path with infix
 
 Parse cube with fork
 
+Parser generator. Produces a parser that succeeds upon encountering one
+of the [`++term`]()s in a faceless list `a`.
+
+A perk is an arm used to parse one of a finite set of options, formally
+a choice between [`++term`]()s: if you want to match "true" or "false", and
+nothing else, (perk \~[%true %false]) produces the relevant parser,
+whose result type is `?(%true %false)`. For more complicated
+transformations, a combintation of ++[`++sear`]() and map ++[`++get`]() is recommended,
+e.g. `(sear ~(get by (mo ~[[%true &] [%false |]]))) sym)` will have a
+similar effect but produce `?(& |)` , a [boolean](). However, constructions
+such as `(sear (flit ~(has in (sa %true %false %other ~))) sym)` are
+needlessly unwieldy.
+
+Accepts
+-------
+
+`a` is a [`++pole`](), which is a [`++list`]() without [`%face`]()s.
+
+Produces
+--------
+
+XX
+
+Source
+------
+
     ++  perk                                                ::  parse cube with fork
       |*  a=(pole ,@tas)
       ?~  a  fail
@@ -40,20 +79,8 @@ Parse cube with fork
       ==
     ::
 
-Parser generator. Produces a parser that succeeds upon encountering one
-of the [`++term`]()s in a faceless list `a`.
-
-A- perk is an arm used to parse one of a finite set of options, formally
-a choice between terms: if you want to match "true" or "false", and
-nothing else, (perk \~[%true %false]) produces the relevant parser,
-whose result type is `?(%true %false)`. For more complicated
-transformations, a combintation of ++sear and map ++get is recommended,
-e.g. `(sear ~(get by (mo ~[[%true &] [%false |]]))) sym)` will have a
-similar effect but produce `?(& |)` ,a loobean. However, constructions
-such as `(sear (flit ~(has in (sa %true %false %other ~))) sym)` are
-needlessly unwieldy.
-
-`a` is a [`++pole`](), which is a [`++list`]() without [`%face`]()s
+Examples
+--------
 
     ~zod/try=> (scan "ham" (perk %sam %ham %lam ~))
     %ham
@@ -65,14 +92,29 @@ needlessly unwieldy.
 
 JSON parser core
 
+JSON parser core: parses a [`++cord`]() `a` to the hoon structure for JSON,
+a [`++json`]().
+
+Accepts
+-------
+
+`a` is [`++cord`]().
+
+Produces
+--------
+
+
+A `(like json)`.
+
+Source
+------
+
     ++  poja                                                ::  JSON parser core
       =<  |=(a=cord (rush a apex))
       |%
 
-JSON parser core: parses a `++cord` `a` to the hoon structure for JSON,
-a [`++json`]().
-
-`a` is [`++cord`]().
+Examples
+--------
 
     ~zod/try=> (poja '[1,2,3]')
     [~ [%a p=~[[%n p=~.1] [%n p=~.2] [%n p=~.3]]]]
@@ -81,19 +123,30 @@ a [`++json`]().
     ~zod/try=> (poja 'invalid{json')
     ~
 
-### `++apex`
+### `++tops`
 
 Parse object
 
-       ++  apex  ;~(pose abox obox)                          ::  JSON object
-
-Top level parsing rule. Parses either a single JSON object, or an array
+Top level parsing [`++rule`](). Parses either a single JSON object, or an array
 of JSON objects to a [`++json`](). See also: [`++abox`](), [`++obox`]().
 
-A- this is now called ++tops, and ++apex is the old ++valu, which
-apparently didn't make its way into the docs. Apologies for the
-confusion, many things have been restructured in ++shell inconsistently
-with current test:urbit.git
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like json)`.
+
+Source
+------
+
+       ++  apex  ;~(pose abox obox)                          ::  JSON object
+
+Examples
+--------
 
     ~zod/try=> (rash '[1,2]' apex:poja)
     [%a p=~[[%n p=~.1] [%n p=~.2]]]
@@ -103,9 +156,24 @@ with current test:urbit.git
     ! {1 1}
     ! exit
 
-### `++valu`
+### `++apex`
 
 Parse value
+
+Parsing [`++rule`](). Parses JSON values to [`++json`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like json)`.
+
+Source
+------
 
       ++  valu                                              ::  JSON value
         %+  knee  *json  |.  ~+
@@ -120,7 +188,8 @@ Parse value
           ==
         ==
 
-Parsing rule. Parses JSON values to [`++json`]().
+Examples
+--------
 
     ~zod/try=> (rash '[1,2]' valu:poja)
     [%a p=~[[%n p=~.1] [%n p=~.2]]]
@@ -139,10 +208,26 @@ Parsing rule. Parses JSON values to [`++json`]().
 
 Parse array
 
-      ++  abox  (stag %a (ifix [sel (ws ser)] (more (ws com) valu)))
-
 Parsing rule. Parses a JSON array with values enclosed within `[]` and
 delimited by a `,`.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like json)`.
+
+Source
+------
+
+      ++  abox  (stag %a (ifix [sel (ws ser)] (more (ws com) valu)))
+
+Examples
+--------
 
     ~zod/try=> (rash '[1, 2,4]' abox:poja)
     [[%n p=~.1] ~[[%n p=~.2] [%n p=~.4]]]
@@ -154,10 +239,26 @@ JSON Objects
 
 Parse key value pair
 
-      ++  pair  ;~(plug ;~(sfix (ws stri) (ws col)) valu)
-
 Parsing rule. Parses a [`++json`]() from a JSON key-value pair of a
 string and value delimited by `:`.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like json)`.
+
+Source
+------
+
+      ++  pair  ;~(plug ;~(sfix (ws stri) (ws col)) valu)
+
+Examples
+--------
 
     ~zod/try=> (rash '"ham": 2' pair:poja)
     ['ham' [%n p=~.2]]
@@ -166,10 +267,26 @@ string and value delimited by `:`.
 
 Parse array of objects
 
-      ++  obje  (ifix [(ws kel) (ws ker)] (more (ws com) pair))
-
 Parsing rule. Parses a [`++json`]() from an array of JSON object
 key-value pairs that are enclosed within `{}` and separated by `,`.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like ,[%o p=(map ,@t json)])`
+
+Source
+------
+
+      ++  obje  (ifix [(ws kel) (ws ker)] (more (ws com) pair))
+
+Examples
+--------
 
     ~zod/try=> (rash '{"ham": 2, "lam":true}' obje:poja)
     [['ham' [%n p=~.2]] ~[['lam' [%b p=%.y]]]]
@@ -178,10 +295,25 @@ key-value pairs that are enclosed within `{}` and separated by `,`.
 
 Parse boxed object
 
+Parsing rule. Parses an array of JSON objects to an object of [`++json`](). See also: [`++json`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like ,[%o p=(map ,@t json)])`
+
+Source
+------
+
       ++  obox  (stag %o (cook mo obje))
 
-Parsing rule. Parses an array of JSON objects to a [`++json`]() map with
-a tag of `%o`. See also: [`++json`]().
+Examples
+--------
 
     ~zod/try=> (rash '{"ham": 2, "lam":true}' obox:poja)
     [%o {[p='lam' q=[%b p=%.y]] [p='ham' q=[%n p=~.2]]}]
@@ -193,10 +325,28 @@ JSON Booleans
 
 Parse boolean
 
-      ++  bool  ;~(pose (cold & (jest 'true')) (cold | (jest 'false')))
-
 Parsing rule. Parses a string of either `true` or `false` to a
 [`++json`]() boolean.
+
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+
+A `(like ,[%b p=?])`
+
+Source
+------
+
+      ++  bool  ;~(pose (cold & (jest 'true')) (cold | (jest 'false')))
+
+Examples
+--------
 
     ~zod/try=> (rash 'true' bool:poja)
     %.y
@@ -213,12 +363,28 @@ JSON strings
 
 Parse string
 
-      ++  stri
-        (cook crip (ifix [doq doq] (star jcha)))
-
 Parsing rule. Parse a string to a [`++cord`](). A JSON string is a list
 of characters enclosed in double quotes along with escaping `\`s, to a
 [`++cord`](). See also [`++jcha`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like ,[%s p=@t])`.
+
+Source
+------
+
+      ++  stri
+        (cook crip (ifix [doq doq] (star jcha)))
+
+Examples
+--------
 
     ~zod/try=> (rash '"ham"' stri:poja)
     'ham'
@@ -232,10 +398,27 @@ of characters enclosed in double quotes along with escaping `\`s, to a
 
 Parse char from string
 
-     ++  jcha  ;~(pose ;~(less doq bas prn) esca)           :: character in string
-
 Parsing rule. Parses either a literal or escaped character from a JSON
 string to a [`++cord`]().
+
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like cord)`.
+
+Source
+------
+
+     ++  jcha  ;~(pose ;~(less doq bas prn) esca)           :: character in string
+
+Examples
+--------
 
     ~zod/try=> (rash 'a' jcha:poja)
     'a'.
@@ -253,6 +436,23 @@ string to a [`++cord`]().
 
 Parse escaped char
 
+Parsing rule. Parses a backslash-escaped special character, low ASCII,
+or UTF16 codepoint, to a [`++cord`]().
+
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like cord)`.
+
+Source
+------
+
       ++  esca                                               :: Escaped character
         ;~  pfix  bas
           ;~  pose
@@ -261,8 +461,8 @@ Parse escaped char
             ;~(pfix (just 'u') (cook tuft qix:ab))           :: 4-digit hex to UTF-8
           ==
 
-Parsing rule. Parses a backslash-escaped special character, low ASCII,
-or UTF16 codepoint, to a [`++cord`]().
+Examples
+--------
 
     ~zod/try=> (rash 'b' esca:poja)
     ! {1 1}
@@ -282,13 +482,29 @@ or UTF16 codepoint, to a [`++cord`]().
 JSON numbers
 ------------
 
-A- JSON numbers are stored as cords internally in lieu of full float
+A JSON numbers are stored as cords internally in lieu of full float
 support, so ++numb and subarms are really more *validators* than parsers
 per se.
 
 ### `++numb`
 
 Parse number
+
+Parsing rule. Parses decimal numbers with an optional `-`, fractional
+part, or exponent part, to a [`++tape`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+An [`++edge`]() of a [`++tape`]().
+
+Source
+------
 
       ++  numb
         ;~  (comp twel)
@@ -301,8 +517,8 @@ Parse number
           (mayb expo)
         ==
 
-Parsing rule. Parses decimal numbers with an optional `-`, fractional
-part, or exponent part, to a [`++cord`]().
+Examples
+--------
 
     ~zod/try=> (rash '0' numb:poja)
     ~[~~0]
@@ -322,9 +538,25 @@ part, or exponent part, to a [`++cord`]().
 
 Parse 1-9
 
+Parsing rule. Parses digits `0` through `9` to a [`++tape`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+The [`++edge`]() of a `++tape`.
+
+Source
+------
+
       ++  digs  (star (shim '0' '9'))
 
-Parsing rule. Parses digits `0` through `9` to a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (rash '' digs:poja)
     ""
@@ -339,6 +571,22 @@ Parsing rule. Parses digits `0` through `9` to a [`++tape`]().
 
 Parse exponent part
 
+Parsing rule. Parses an exponent to a [`++tape`]() .An exponent is an
+`e` or 'E', followed by an optional `+` or `-`, and then by digits.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+The [`++edge`]() of a `++tape`.
+
+Source
+------
+
       ++  expo                                               :: Exponent part
         ;~  (comp twel)
           (piec (mask "eE"))
@@ -346,8 +594,8 @@ Parse exponent part
           digs
         ==
 
-Parsing rule. Parses an exponent to a [`++cord`](). An exponent is an
-`e`, followed by an optional `+` or `-`, followed by digits.
+Examples
+--------
 
     ~zod/try=> `tape`(rash 'e7' expo:poja)
     "e7"
@@ -360,9 +608,25 @@ Parsing rule. Parses an exponent to a [`++cord`](). An exponent is an
 
 Fractional part
 
+Parsing rule. Parses a dot followed by digits to a [`++cord`]().
+
+Accepts
+-------
+
+A `++nail`.
+
+Produces
+--------
+
+The [`++edge`]() of a `++tape`.
+
+Source
+------
+
       ++  frac   ;~(plug dot digs)                          :: Fractional part
 
-Parsing rule. Parses a dot followed by digits to a [`++cord`]().
+Examples
+--------
 
     ~zod/try=> (rash '.25' frac:poja)
     [~~~. "25"]
@@ -378,9 +642,25 @@ whitespace
 
 Parse whitespace
 
+Parsing rule. Parses a whitespace to a [`++tape`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like tape)`.
+
+Source
+------
+
       ++  spac  (star (mask [`@`9 `@`10 `@`13 ' ' ~]))
 
-Parsing rule. Parses a whitespace to a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (scan "" spac:poja)
     ""
@@ -396,12 +676,26 @@ Parsing rule. Parses a whitespace to a [`++tape`]().
 
 Allow prefix whitespace
 
-      ++  ws  |*(sef=_rule ;~(pfix spac sef))
-
 Parser modifier. Produces a rule that allows for a whitespace before
 applying `sef`.
 
+Accepts
+-------
+
 `sef` is a [`++rule`]().
+
+Produces
+--------
+
+A `++rule`.
+
+Source
+------
+
+      ++  ws  |*(sef=_rule ;~(pfix spac sef))
+
+Examples
+--------
 
     ~zod/try=> (rash '   4' digs:poja)
     ! {1 1}
@@ -421,9 +715,25 @@ Plumbing
 
 Maybe parse
 
+Parser modifier. Need to document, an example showing failure.
+
+Accepts
+-------
+
+XX
+
+Produces
+--------
+
+XX
+
+Source
+------
+
       ++  mayb  |*(bus=_rule ;~(pose bus (easy "")))
 
-Parser modifier. Need to document, an example showing failure.
+Examples
+--------
 
     ~zod/try=> (abox:poja 1^1 "not-an-array")
     [p=[p=1 q=1] q=~]
@@ -434,13 +744,27 @@ Parser modifier. Need to document, an example showing failure.
 
 Weld two tapes
 
-      ++  twel  |=([a=tape b=tape] (weld a b))
+Concatenates two tapes, `a` and `b`, producing a [`++tape`]().
 
-Concatenates two tapes, `a` and `b`, producing a `++tape`.
+Accepts
+-------
 
 `a` is a [`++tape`]().
 
 `b` is a [`++tape`]().
+
+Produces
+--------
+
+The [`++edge`]() of a `++tape`.
+
+Source
+------
+
+      ++  twel  |=([a=tape b=tape] (weld a b))
+
+Examples
+--------
 
     ~zod/try=> (twel "sam" "hok"):poja
     ~[~~s ~~a ~~m ~~h ~~o ~~k]
@@ -451,22 +775,51 @@ Concatenates two tapes, `a` and `b`, producing a `++tape`.
 
 Parse char to list
 
+Parser modifer. Parses an atom with `bus` and then wraps it in a
+[`++list`]().
+
+Accepts
+-------
+
+`bus` is a [`++rule`]().
+
+Produces
+--------
+
+A `++rule`.
+
+Source
+------
+
       ++  piec
         |*  bus=_rule
         (cook |=(a=@ [a ~]) bus)
     ::
 
-Parser modifer. Parses an atom with `bus` and then wraps it in a
-[`++list`]().
+Examples
+--------
 
-`bus` is a [`++rule`]().
-
-    ~zod/try=> (scan "4" (piec:poja dem:ag))
+    d~zod/try=> (scan "4" (piec:poja dem:ag))
     [4 ~]
 
 ### `++pojo`
 
 Print JSON
+
+Renders a [`++json`]() `val` as a [`++tape`]().
+
+Accepts
+-------
+
+`val` is a [`json`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
 
     ++  pojo                                                ::  print json
       |=  val=json
@@ -510,9 +863,8 @@ Print JSON
       ==
     ::
 
-Renders a `++json` `val` as a [`++tape`]().
-
-`val` is a [`json`]().
+Examples
+--------
 
     ~zod/try=> (pojo [%n '12.6'])
     "12.6"
@@ -531,13 +883,27 @@ Renders a `++json` `val` as a [`++tape`]().
 
 Print XML
 
+Renders a `++manx` `a` as a [`++tape`]().
+
+Accepts
+-------
+
+`a` is a [`++manx`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  poxo                                                ::  node to tape
       =<  |=(a=manx `tape`(apex a ~))
       |_  unq=?                                             ::  unq
 
-Renders a `++manx` `a` as a [`++tape`]().
-
-`a` is a [`++manx`]().
+Examples
+--------
 
     ~zod/try=> (poxo ;div;)
     "<div></div>"
@@ -549,6 +915,23 @@ Renders a `++manx` `a` as a [`++tape`]().
 ### `++apex`
 
 Inner XML printer
+
+Renders a [`++manx`]() as a [`++tape`](), appending a suffix `rez`.
+
+XX is `rez/` a typo or is the `/` intentional
+
+Accepts
+-------
+
+`rez` is a [`++tape`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
 
       ++  apex                                              ::  top level
         |=  [mex=manx rez=tape]
@@ -566,9 +949,8 @@ Inner XML printer
         ?~(att rez [' ' (attr att rez)])
       ::  
 
-Renders a `++manx` as a [`++tape`](), appending a suffix `rez\`.
-
-`rez` is a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (apex:poxo ;div; "")
     "<div></div>"
@@ -585,6 +967,23 @@ Renders a `++manx` as a [`++tape`](), appending a suffix `rez\`.
 
 Print attributes
 
+Render XML attributes as a [`++tape`]().
+
+Accepts
+-------
+
+`tat` is a [`++mart`]().
+
+`rez` is a `++tape`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
       ++  attr                                              ::  attributes to tape
         |=  [tat=mart rez=tape]
         ^-  tape
@@ -596,11 +995,8 @@ Print attributes
           (escp(unq |) v.i.tat '"' ?~(t.tat rez [' ' rez]))
         ==
 
-Render XML attributes as a [`++tape`]().
-
-`tat` is a [`++mart`]().
-
-`rez` is a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (attr:poxo ~ "")
     ""
@@ -612,6 +1008,23 @@ Render XML attributes as a [`++tape`]().
 ### `++escp`
 
 Escape XML
+
+Escapes the XML special characters `"`, `&`, `'`, `<`, `>`.
+
+Accepts
+-------
+
+`tex`is a [`++tape`]().
+
+`rez` is a `++tape`.
+
+Produces
+--------
+
+`++tape`.
+
+Source
+------
 
       ++  escp                                              ::  escape for xml
         |=  [tex=tape rez=tape]
@@ -633,11 +1046,8 @@ Escape XML
         ==
       ::
 
-Escapes the XML special characters `"`, `&`, `'`, `<`, `>`.
-
-`tex`is a [`++tape`]().
-
-`rez` is a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (escp:poxo "astra" ~)
     ~[~~a ~~s ~~t ~~r ~~a]
@@ -652,15 +1062,29 @@ Escapes the XML special characters `"`, `&`, `'`, `<`, `>`.
 
 Print name
 
+Renders a [`++mane`]() as a [`++tape`]().
+
+Accepts
+-------
+
+`man` is a `++mane`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
       ++  name                                              ::  name to tape
         |=  man=mane  ^-  tape
         ?@  man  (trip man)
         (weld (trip -.man) `tape`[':' (trip +.man)])
       ::
 
-Renders a `++mane` as a `++tape`.
-
-`man` is a [`++mane`]().
+Examples
+--------
 
     ~zod/try=> (name:poxo %$)
     ""
@@ -673,6 +1097,23 @@ Renders a `++mane` as a `++tape`.
 
 Print node list
 
+Renders multiple XML nodes as a [`++tape`]().
+
+Accepts
+-------
+
+`lix` is a [`++list`]() of [`++manx`]().
+
+`rez` is a `++tape`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
       ++  many                                              ::  nodelist to tape
         |=  [lix=(list manx) rez=tape]
         |-  ^-  tape
@@ -680,11 +1121,8 @@ Print node list
         (apex i.lix $(lix t.lix))
       ::
 
-Renders multiple XML nodes as a [`++tape`]()
-
-`lix` is a [`++list`]() of [`++manx`]().
-
-`rez` is a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (many:poxo ~ "")
     ""
@@ -701,13 +1139,27 @@ Renders multiple XML nodes as a [`++tape`]()
 
 Parse XML
 
+Parses an XML node from a [`++cord`](), producing a [`++unit`]() [`++manx`]().
+
+Accepts
+-------
+
+`a` is a [`++cord`]().
+
+Produces
+--------
+
+A `(unit manx)`.
+
+Source
+------
+
     ++  poxa                                                ::  xml parser
       =<  |=(a=cord (rush a apex))
       |%
 
-Parses an XML node from a [`++cord`](), producing a unit [`++manx`]().
-
-`a` is a [`++cord`]().
+Examples
+--------
 
     ~zod/try=> (poxa '<div />')
     [~ [g=[n=%div a=~] c=~]]
@@ -722,6 +1174,21 @@ Parses an XML node from a [`++cord`](), producing a unit [`++manx`]().
 
 Top level parser
 
+Parses a node of XML, type [`++manx`]().
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `++manx`.
+
+Source
+------
+
       ++  apex
         =+  spa=;~(pose comt whit)
         %+  knee  *manx  |.  ~+
@@ -733,21 +1200,38 @@ Top level parser
         == 
       :: 
 
-Parses a node of XML, type [`++manx`]().
+Examples
+--------
 
-    ~zod/try=> (rash '<div />' apex:xmlp)
+    ~zod/try=> (rash '<div />' apex:poxa)
     [g=[n=%div a=~] c=~]
-    ~zod/try=> (rash '<html><head/> <body/></html>' apex:xmlp)
+    ~zod/try=> (rash '<html><head/> <body/></html>' apex:poxa)
     [g=[n=%html a=~] c=~[[g=[n=%head a=~] c=~] [g=[n=%body a=~] c=~]]]
-    ~zod/try=> (rash '<script src="/gep/hart.js"/>' apex:xmlp)
+    ~zod/try=> (rash '<script src="/gep/hart.js"/>' apex:poxa)
     [g=[n=%script a=~[[n=%src v="/gep/hart.js"]]] c=~]
-    ~zod/try=> (rash '<<<<' apex:xmlp)
+    ~zod/try=> (rash '<<<<' apex:poxa)
     ! {1 2}
     ! exit
 
 ### `++attr`
 
 Parse XML attributes
+
+Parses the list of attributes inside the opening XML tag, which is zero
+or more space-prefixed name to string values.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A [`++mart`]().
+
+Source
+------
 
       ++  attr                                              ::  attributes
         %+  knee  *mart  |.  ~+ 
@@ -761,23 +1245,23 @@ Parse XML attributes
           ==  
       ::
 
-Parses the list of attributes inside the opening XML tag, which is zero
-or more space-prefixed name to string values. Result type [`++mart`]()
+Examples
+--------
 
-    ~zod/try=> (rash '' attr:xmlp)
+    ~zod/try=> (rash '' attr:poxa)
     ~
-    ~zod/try=> (rash 'sam=""' attr:xmlp)
+    ~zod/try=> (rash 'sam=""' attr:poxa)
     ! {1 1}
     ! exit
-    ~zod/try=> (rash ' sam=""' attr:xmlp)
+    ~zod/try=> (rash ' sam=""' attr:poxa)
     ~[[n=%sam v=""]]
-    ~zod/try=> (rash ' sam="hek"' attr:xmlp)
+    ~zod/try=> (rash ' sam="hek"' attr:poxa)
     ~[[n=%sam v="hek"]]
-    ~zod/try=> (rash ' sam="hek" res="actor"' attr:xmlp)
+    ~zod/try=> (rash ' sam="hek" res="actor"' attr:poxa)
     ~[[n=%sam v="hek"] [n=%res v="actor"]]
-    ~zod/try=> (rash ' sam=\'hek\' res="actor"' attr:xmlp)
+    ~zod/try=> (rash ' sam=\'hek\' res="actor"' attr:poxa)
     ~[[n=%sam v="hek"] [n=%res v="actor"]]
-    ~zod/try=> (rash ' sam=\'hek" res="actor"' attr:xmlp)
+    ~zod/try=> (rash ' sam=\'hek" res="actor"' attr:poxa)
     ! {1 23}
     ! exit
 
@@ -785,24 +1269,55 @@ or more space-prefixed name to string values. Result type [`++mart`]()
 
 Parse character data
 
+Parsing rule. Parses XML character data.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A [`++mars`]().
+
+Source
+------
+
       ++  chrd                                              ::  character data
         %+  cook  |=(a=tape ^-(mars :/(a)))
         (plus ;~(less soq doq ;~(pose (just `@`10) escp)))
       ::
 
-Parsing rule. Parses XML character data. Result type [`++mars`]()
+Examples
+--------
 
-    ~zod/try=> (rash 'asa' chrd:xmlp)
+    ~zod/try=> (rash 'asa' chrd:poxa)
     [g=[n=%$ a=~[[n=%$ v="asa"]]] c=~]
-    ~zod/try=> (rash 'asa &gt; are' chrd:xmlp)
+    ~zod/try=> (rash 'asa &gt; are' chrd:poxa)
     [g=[n=%$ a=~[[n=%$ v="asa > are"]]] c=~]
-    ~zod/try=> (rash 'asa > are' chrd:xmlp)
+    ~zod/try=> (rash 'asa > are' chrd:poxa)
     ! {1 6}
     ! exit
 
 ### `++comt`
 
 Parses comments
+
+Parsing rule. Parses XML comment blocks.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A [`++like`]().
+
+Source
+------
 
       ++  comt                                              ::  comments 
         =-  (ifix [(jest '<!--') (jest '-->')] (star -))
@@ -812,20 +1327,38 @@ Parses comments
           ;~(less (jest '-->') hep)
         ==
       ::
+A [`++unit`]() of.
 
-Parsing rule. Parses XML comment blocks.
+Examples
+--------
 
-    ~zod/try=> (rash '<!--  bye -->' comt:xmlp)
+    ~zod/try=> (rash '<!--  bye -->' comt:poxa)
     "  bye "
-    ~zod/try=> (rash '<!--  bye  ><<<>< - - -->' comt:xmlp)
+    ~zod/try=> (rash '<!--  bye  ><<<>< - - -->' comt:poxa)
     "  bye  ><<<>< - - "
-    ~zod/try=> (rash '<!--  invalid -->-->' comt:xmlp)
+    ~zod/try=> (rash '<!--  invalid -->-->' comt:poxa)
     ! {1 18}
     ! exit
 
 ### `++escp`
 
 Parse (possibly) escaped char
+
+Parsing rule. Parses a nonspecial or escaped character. Result type
+[`++char`]()
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+The [`++edge`]() of a [`++cord`]().
+
+Source
+------
 
       ++  escp
         ;~  pose
@@ -837,42 +1370,59 @@ Parse (possibly) escaped char
           (cold '\'' (jest '&apos;'))
         ==
 
-Parsing rule. Parses a nonspecial or escaped character. Result type
-[`++char`]()
+Examples
+--------
 
-    ~zod/try=> (rash 'a' escp:xmlp)
+    ~zod/try=> (rash 'a' escp:poxa)
     'a'
-    ~zod/try=> (rash 'ab' escp:xmlp)
+    ~zod/try=> (rash 'ab' escp:poxa)
     ! {1 2}
     ! exit
-    ~zod/try=> (rash '.' escp:xmlp)
+    ~zod/try=> (rash '.' escp:poxa)
     '.'
-    ~zod/try=> (rash '!' escp:xmlp)
+    ~zod/try=> (rash '!' escp:poxa)
     '!'
-    ~zod/try=> (rash '>' escp:xmlp)
+    ~zod/try=> (rash '>' escp:poxa)
     ! {1 2}
     ! exit
-    ~zod/try=> (rash '&gt;' escp:xmlp)
+    ~zod/try=> (rash '&gt;' escp:poxa)
     '>'
-    ~zod/try=> (rash '&quot;' escp:xmlp)
+    ~zod/try=> (rash '&quot;' escp:poxa)
     '"'
 
 ### `++empt`
 
 Parse self-closing tag
 
+Parsing rule. Parses self-closing XML tags that end in `/>`.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+
+A `(like tape)`.
+
+Source
+------
+
       ++  empt                                              ::  self-closing tag
         %+  ifix  [gal (jest '/>')]  
         ;~(plug ;~(plug name attr) (cold ~ (star whit)))  
       ::
 
-Parsing rule. Parses self-closing XML tags that end in `/>`.
+Examples
+--------
 
-    ~zod/try=> (rash '<div/>' empt:xmlp)
+    ~zod/try=> (rash '<div/>' empt:poxa)
     [[%div ~] ~]
-    ~zod/try=> (rash '<pre color="#eeffee" />' empt:xmlp)
+    ~zod/try=> (rash '<pre color="#eeffee" />' empt:poxa)
     [[%pre ~[[n=%color v="#eeffee"]]] ~]
-    ~zod/try=> (rash '<pre color="#eeffee"></pre>' empt:xmlp)
+    ~zod/try=> (rash '<pre color="#eeffee"></pre>' empt:poxa)
     ! {1 21}
     ! exit
 
@@ -880,24 +1430,55 @@ Parsing rule. Parses self-closing XML tags that end in `/>`.
 
 Parse opening tag
 
+Parsing rule. Parses the opening tag of an XML node. Result type
+[`++marx`]()
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like marx)`.
+
+Source
+------
+
       ++  head                                              ::  opening tag
         (ifix [gal gar] ;~(plug name attr))
       ::
 
-Parsing rule. Parses the opening tag of an XML node. Result type
-[`++marx`]()
+Examples
+--------
 
-    ~zod/try=> (rash '<a>' head:xmlp)
+    ~zod/try=> (rash '<a>' head:poxa)
     [n=%a a=~]
-    ~zod/try=> (rash '<div mal="tok">' head:xmlp)
+    ~zod/try=> (rash '<div mal="tok">' head:poxa)
     [n=%div a=~[[n=%mal v="tok"]]]
-    ~zod/try=> (rash '<div mal="tok" />' head:xmlp)
+    ~zod/try=> (rash '<div mal="tok" />' head:poxa)
     ! {1 16}
     ! exit
 
 ### `++name`
 
 Parse tag name
+
+Parsing rule. Parses the name of an XML tag.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+An [`++edge`]() of a [`++mane`]().
+
+Source
+------
 
       ++  name                                              ::  tag name 
         %+  knee  *mane  |.  ~+
@@ -910,15 +1491,16 @@ Parse tag name
         ;~(pose ;~(plug ;~(sfix chx col) chx) chx)
       ::
 
-Parsing rule. Parses the name of an XML tag. Result type [`++mane`]()
+Examples
+--------
 
-    ~zod/try=> (scan "ham" name:xmlp)
+    ~zod/try=> (scan "ham" name:poxa)
     %ham
-    ~zod/try=> (scan "ham:tor" name:xmlp)
+    ~zod/try=> (scan "ham:tor" name:poxa)
     [%ham %tor]
-    ~zod/try=> (scan "ham-tor" name:xmlp)
+    ~zod/try=> (scan "ham-tor" name:poxa)
     %ham-tor
-    ~zod/try=> (scan "ham tor" name:xmlp)
+    ~zod/try=> (scan "ham tor" name:poxa)
     ! {1 4}
     ! exit
 
@@ -926,15 +1508,31 @@ Parsing rule. Parses the name of an XML tag. Result type [`++mane`]()
 
 Parse closing tag
 
-      ++  tail  (ifix [(jest '</') gar] name)               ::  closing tag
-
 Parsing rule. Parses an XML closing tag.
 
-    ~zod/try=> (scan "</div>" tail:xmlp)
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like tail)`.
+
+Source
+------
+
+      ++  tail  (ifix [(jest '</') gar] name)               ::  closing tag
+
+Examples
+--------
+
+    ~zod/try=> (scan "</div>" tail:poxa)
     %div
-    ~zod/try=> (scan "</a>" tail:xmlp)
+    ~zod/try=> (scan "</a>" tail:poxa)
     %a
-    ~zod/try=> (scan "</>" tail:xmlp)
+    ~zod/try=> (scan "</>" tail:poxa)
     ! {1 3}
     ! exit
 
@@ -942,21 +1540,37 @@ Parsing rule. Parses an XML closing tag.
 
 Parse whitespace, etc.
 
+Parsing rule. Parses newlines, tabs, and spaces.
+
+Accepts
+-------
+
+A [`++nail`]().
+
+Produces
+--------
+
+A `(like char)`.
+
+Source
+------
+
       ++  whit  (mask ~[' ' `@`0x9 `@`0xa])                 ::  whitespace
     ::
 
-Parsing rule. Parses newlines, tabs, and spaces.
+Examples
+--------
 
-    ~zod/try=> `@`(scan " " whit:xmlp)
+    ~zod/try=> `@`(scan " " whit:poxa)
     32
-    ~zod/try=> `@`(scan "  " whit:xmlp)
+    ~zod/try=> `@`(scan "  " whit:poxa)
     ! {1 2}
     ! exit
-    ~zod/try=> `@`(scan "\0a" whit:xmlp)
+    ~zod/try=> `@`(scan "\0a" whit:poxa)
     10
-    ~zod/try=> `@`(scan "\09" whit:xmlp)
+    ~zod/try=> `@`(scan "\09" whit:poxa)
     9
-    ~zod/try=> `@`(scan "\08" whit:xmlp)
+    ~zod/try=> `@`(scan "\08" whit:poxa)
     ! {1 1}
     ! exit
 
@@ -964,21 +1578,46 @@ Parsing rule. Parses newlines, tabs, and spaces.
 
 JSON reparsing core
 
-    ++  jo                                                  ::  json reparser
-      =>  |%  ++  grub  (unit ,*) 
-              ++  fist  $+(json grub)
-      |%
+Contains converters of [`++json`]() to [`++unit`]()s of well-typed structures.
 
-Contains converters of ++json to [`++unit`]() well-typed structures.
+Accepts
+-------
 
 A `fist` is a gate that produces a `grub`.
 
 A `grub` is a unit of some JSON value.
 
+Source
+------
+
+    ++  jo                                                  ::  json reparser
+      =>  |%  ++  grub  (unit ,*) 
+              ++  fist  $+(json grub)
+      |%
+
+
 ### `++ar`
 
 Parse array to list
 
+Reparser modifier. Reparses an array to the [`++unit`]() of a homogenous
+[`++list`]() using `wit` to reparse every element.
+
+`wit` is a [`++fist`](), a JSON reparser.
+
+
+Accepts
+-------
+
+A [`++fist`]().
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
       ++  ar                                                ::  array as list
         |*  wit=fist
         |=  jon=json
@@ -989,18 +1628,33 @@ Parse array to list
         [i=(wit i.p.jon) t=$(p.jon t.p.jon)]
       ::
 
-Reparser modifier. Reparses an array to the [`++unit`]() of a homogenous
-[`++list`]() using `wit` to reparse every element.
-
-`wit` is a [`++fist`](), a JSON reparser.
+Examples
+--------
 
     ~zod/try=> :type; ((ar ni):jo a/~[n/'1' n/'2'])
     [~ u=~[1 2]]
     {[%~ u=it(@)] %~}
 
+
 ### `++at`
 
 Reparse array as tuple
+
+Reparser generator. Reparses an array as a fixed-length tuple of
+[`++unit`]()s, using a list of `++fist`s.
+
+Accepts
+-------
+
+`wil` is a [`++pole`](), a [`face`]()less list of [`++fist`]()s.
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
 
       ++  at                                                ::  array as tuple
         |*  wil=(pole fist)
@@ -1010,10 +1664,8 @@ Reparse array as tuple
         ?.((za raw) ~ (some (zp raw)))
       ::
 
-Reparser generator. Reparses an array as a fixed-length tuple of
-[`++unit`]()s, using a list of `++fist`s.
-
-`wil` is a [`++pole`]() a [`face`]()less list of [`++fist`]()s.
+Examples
+--------
 
     ~zod/try=> ((at ni so ni ~):jo a/~[n/'3' s/'to' n/'4'])
     [~ u=[q=3 ~.to q=4]]
@@ -1027,6 +1679,21 @@ Reparser generator. Reparses an array as a fixed-length tuple of
 
 Reparse array to tuple
 
+Reparser generator. Reparses a list of [`++json`]() with `wil` to a tuple of [`++unit`]()s.
+
+Accepts
+-------
+
+`wil` is a [`++pole`](), a [face]()less list of [`++fist`]()s.
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
+
         ++  at-raw                                            ::  array as tuple
         |*  wil=(pole fist)
         |=  jol=(list json)
@@ -1035,10 +1702,8 @@ Reparse array to tuple
         ((at-raw +.wil) ?~(jol ~ t.jol))
       ::
 
-Reparser generator. Reparses a list of [`++json`]() to a tuple of
-[`++unit`]() using `wil`.
-
-`wil` is a [`++pole`](), a [face]()less list of [`++fist`]()s.
+Examples
+--------
 
     ~zod/try=> ((at-raw ni ni bo ~):jo ~[s/'hi' n/'1' b/&])
     [~ [~ 1] [~ u=%.y] ~]
@@ -1047,12 +1712,28 @@ Reparser generator. Reparses a list of [`++json`]() to a tuple of
 
 Reparse boolean
 
+Reparser modifier. Reparses a boolean to the [`++unit`]() of a
+boolean.
+
+Accepts
+-------
+
+A [`++json`]().
+
+Produces
+--------
+
+A [`++fist`]().
+
+Source
+------
+
       ++  bo                                                ::  boolean
         |=(jon=json ?.(?=([%b *] jon) ~ [~ u=p.jon]))
       ::
 
-Reparser modifier. Reparses a boolean to the [`++unit`]() of a
-[`loobean`]().
+Examples
+--------
 
     ~zod/try=> (bo:jo [%b &])
     [~ u=%.y]
@@ -1065,12 +1746,29 @@ Reparser modifier. Reparses a boolean to the [`++unit`]() of a
 
 Reparse boolean not
 
+Reparser modifier. Reparses the inverse of a boolean to the [`++unit`]()
+of a loobean.
+
+
+Accepts
+-------
+
+A [`++json`]().
+
+Produces
+--------
+
+A [`++fist`]().
+
+Source
+------
+
       ++  bu                                                ::  boolean not
         |=(jon=json ?.(?=([%b *] jon) ~ [~ u=!p.jon]))
       ::
 
-Reparser modifier. Reparses the inverse of a boolean to the [`++unit`]()
-of a loobean.
+Examples
+--------
 
     ~zod/try=> (bu:jo [%b &])
     [~ u=%.n]
@@ -1083,18 +1781,32 @@ of a loobean.
 
 Reparse and transform
 
+Reparser modifier. Reparses `jon` and slams the result through `wit`,
+producing a [`++unit`]().
+
+Accepts
+-------
+
+`wit` is a [`++fist`]().
+
+`poq` is a [`gate`]() that accepts and returns a [noun]().
+
+Produces
+--------
+
+A [`++fist`]().
+
+Source
+------
+
       ++  cu                                                ::  transform
         |*  [poq=$+(* *) wit=fist]
         |=  jon=json
         (bind (wit jon) poq)
       ::
 
-Reparser modifier. Reparses `jon` and slams the result through `wit`,
-producing a [`++unit`]().
-
-`wit` is a [`++fist`]().
-
-`poq` is a [`gate`]() that accepts and returns a [noun]().
+Examples
+--------
 
     ~zod/try=> ((cu dec ni):jo [%n '20'])
     [~ 19]
@@ -1105,13 +1817,29 @@ producing a [`++unit`]().
 
 Reparse UTC date
 
+Reparser modifier. Reparses a UTC date string to a [`++unit`]().
+
+Accepts
+-------
+
+`jon` is a [`++json`]().
+
+Produces
+--------
+
+A [`++fist`]().
+
+Source
+------
+
       ++  da                                                ::  UTC date
         |=  jon=json
         ?.  ?=([%s *] jon)  ~
         (bind (stud (trip p.jon)) |=(a=date (year a)))
       ::
 
-Reparser modifier. Reparses a UTC date string to a [`++unit`]().
+Examples
+--------
 
     ~zod/try=> (da:jo [%s 'Wed, 29 Oct 2014 0:26:15 +0000'])
     [~ ~2014.10.29..00.26.15]
@@ -1124,6 +1852,22 @@ Reparser modifier. Reparses a UTC date string to a [`++unit`]().
 
 Reparse millisecond date
 
+Reparser modifier. Reparses the javascript millisecond date integer to a
+[`++unit`]().
+
+Accepts
+-------
+
+`jon` is a [`++json`]().
+
+Produces
+--------
+
+A [`++fist`]().
+
+Source
+------
+
       ++  di                                                ::  millisecond date
         |=  jon=json
         %+  bind  (ni jon)
@@ -1131,8 +1875,8 @@ Reparse millisecond date
         (add ~1970.1.1 (div (mul ~s1 a) 1.000))
       ::
 
-Reparser modifier. Reparses the JavaScript millisecond date integer to a
-[`++unit`]().
+Examples
+--------
 
     ~zod/try=> (di:jo [%s '2014-10-29'])
     ~
@@ -1147,18 +1891,32 @@ Reparser modifier. Reparses the JavaScript millisecond date integer to a
 
 Reparse unit
 
+Reparser modifier. Reparses `wit` to a [`++unit`]().
+
+JSON units are considered to be either JSON null or the requested
+value, and are reparsed to results of \~ or (some {value}) respectively.
+
+Accepts
+-------
+
+`wit` is a [`++fist`]().
+
+Produces
+--------
+
+A [`++fist`]().
+
+Source
+------
+
       ++  mu                                                ::  true unit
         |*  wit=fist
         |=  jon=json
         ?~(jon (some ~) (bind (wit jon) some))
       ::
 
-Reparser modifier. Reparses `wit` to a [`++unit`]().
-
-A- JSON units are considered to be either JSON null or the requested
-value, and are reparsed to results of \~ or (some {value}) respectively
-
-`wit` is a [`++fist`]().
+Examples
+--------
 
     ~zod/try=> ((mu ni):jo [%n '20'])
     [~ [~ u=q=20]]
@@ -1173,12 +1931,6 @@ value, and are reparsed to results of \~ or (some {value}) respectively
 
 Reparse number as real
 
-      ++  ne                                                ::  number as real
-        |=  jon=json
-        ^-  (unit ,@rd)
-        !!
-      ::
-
 XX Currently unimplemented
 
 A- yup, this will eventually reparse a floating point atom, but
@@ -1188,13 +1940,29 @@ interfaces for the latter are not currently stable.
 
 Reparse number as integer
 
+Reparser modifier. Reparses an integer representation to a [`++unit]().
+
+Accepts
+-------
+
+`jon` is a ++[`++json`]().
+
+Produces
+--------
+
+The `++unit` of an atom.
+
+Source
+------
+
       ++  ni                                                ::  number as integer
         |=  jon=json 
         ?.  ?=([%n *] jon)  ~
         (rush p.jon dem)
       ::
 
-Reparser modifier. Reparses an integer representation to a [\`++unit]().
+Examples
+--------
 
     ~zod/try=> (ni:jo [%n '0'])
     [~ q=0]
@@ -1215,13 +1983,29 @@ Reparser modifier. Reparses an integer representation to a [\`++unit]().
 
 Reparse number as text
 
+Reparser modifier. Reparses a numeric representation to a [++cord]().
+
+Accepts
+-------
+
+`jon` is a `++json`.
+
+Produces
+--------
+
+The [`++unit`]() of a `++cord`.
+
+Source
+------
+
       ++  no                                                ::  number as text
         |=  jon=json
         ?.  ?=([%n *] jon)  ~
         (some p.jon)
       ::
 
-Reparser modifier. Reparses a numeric representation to a [++cord]().
+Examples
+--------
 
     ~zod/try=> (no:jo [%n '0'])
     [~ u=~.0]
@@ -1242,6 +2026,23 @@ Reparser modifier. Reparses a numeric representation to a [++cord]().
 
 Reparse object to frond
 
+Reparser generator. Reparses an object, succeeding if it corresponds to
+one of the key-value pairs in `wer`.
+
+Accepts
+-------
+
+`wer` is a [`++pole`](), a [`++face`]()less list of [`++cord`]() and
+[`++fist`]() key-value pairs.
+
+Produces
+--------
+
+The [`++unit`]() of a cell of a.....
+
+Source
+------
+
       ++  of                                                ::  object as frond
         |*  wer=(pole ,[cord fist])
         |=  jon=json
@@ -1253,11 +2054,8 @@ Reparse object to frond
         ((of +.wer) jon)
       ::
 
-Reparser generator. Reparses an object, succeeding if it corresponds to
-one of the key-value pairs in `wer`.
-
-`wer` is a [`++pole`](), a [`++face`]()less list of [`++cord`]() and
-[`++fist`]() key-value pairs.
+Examples
+--------
 
     ~zod/try=> ((of sem/sa som/ni ~):jo %o [%sem s/'hi'] ~ ~)
     [~ [%sem "hi"]]
@@ -1282,6 +2080,24 @@ one of the key-value pairs in `wer`.
 
 Reparse object as tuple
 
+Reparser generator. For every key in `wer` that matches a key in the
+[`++edge`], the fist in `wer` is applied to the corresponding value in
+the [`++edge`](), the results of which are produced in a tuple.
+
+
+Accepts
+-------
+
+`wer` is a [`++pole`]() of [`++cord`]() to [`++fist`]() key-value pairs.
+
+Produces
+--------
+
+A [`++unit`]() of a tuple XX?
+
+Source
+------
+
       ++  ot                                                ::  object as tuple
         |*  wer=(pole ,[cord fist])
         |=  jon=json
@@ -1290,11 +2106,8 @@ Reparse object as tuple
         ?.((za raw) ~ (some (zp raw)))
       ::
 
-Reparser generator. For every key in `wer` that matches a key in the
-[`++edge`], the fist in `wer` is applied to the corresponding value in
-the [`++edge`](), the results of which are produced in a tuple.
-
-`wer` is a [`++pole`]() of [`++cord`]() to [`++fist`]() key-value pairs.
+Examples
+--------
 
     ~zod/try=> (jobe [%sem s/'ha'] [%som n/'20'] ~)
     [%o p={[p='sem' q=[%s p=~.ha]] [p='som' q=[%n p=~.20]]}]
@@ -1302,6 +2115,25 @@ the [`++edge`](), the results of which are produced in a tuple.
     [~ u=["ha" q=20 "ha"]]
 
 ### `++ot-raw`
+
+Reparser generator. Reparses a map `jom` using `wer`; for every key in
+`wer` that matches a key in `map`, the corresponding `++fist` is applied
+to the corresponding value in `jom`, the results of which are produced
+in a tuple.
+
+
+Accepts
+-------
+
+`wer` is a [`++pole`]() of [`++cord`]() to [`++fist`]() key-value pairs.
+
+Produces
+--------
+
+A [`++unit`]() of.
+
+Source
+------
 
         ++  ot-raw                                            ::  object as tuple
         |*  wer=(pole ,[cord fist])
@@ -1311,10 +2143,8 @@ the [`++edge`](), the results of which are produced in a tuple.
         [?~(ten ~ (+.-.wer u.ten)) ((ot-raw +.wer) jom)]
         ::
 
-Reparser generator. Reparses a map `jom` using `wer`; for every key in
-`wer` that matches a key in `map`, the corresponding `++fist` is applied
-to the corresponding value in `jom`, the results of which are produced
-in a tuple.
+Examples
+--------
 
     ~zod/try=> ((ot-raw sem/sa som/ni sem/sa ~):jo (mo [%sem s/'ha'] [%som n/'20'] ~))
     [[~ u="ha"] [~ q=20] [~ u="ha"] ~]
@@ -1325,6 +2155,22 @@ in a tuple.
 
 Parse object to map
 
+Reparser modifier. Reparses a [`++json`]() object to a homogenous map
+using `wit`.
+
+Accepts
+-------
+
+`wit` is a [`++fist`]().
+
+Produces
+--------
+
+A [`++unit`]() of...
+
+Source
+------
+
         ++  om                                                ::  object as map
         |*  wit=fist
         |=  jon=json
@@ -1332,10 +2178,8 @@ Parse object to map
         (zm ~(run by p.jon) wit)
       ::
 
-Reparser modifier. Reparses a [`++json`]() object to a homogenous map
-using `wit`.
-
-`wit` is a [`++fist`]().
+Examples
+--------
 
     ~zod/try=> ((om ni):jo (jobe [%sap n/'20'] [%sup n/'5'] [%sop n/'177'] ~))
     [~ {[p='sup' q=q=5] [p='sop' q=q=177] [p='sap' q=q=20]}]
@@ -1346,15 +2190,29 @@ using `wit`.
 
 Add prefix
 
+Reparser modifier. Adds a static prefix `pre` to the parse result of
+`wit`. See also: [`++stag`]().
+
+Accepts
+-------
+
+`pre` is a prefix [`noun`]().
+
+Produces
+--------
+
+The [`++unit`]() of a cell of [noun]() and the result of parsing `wit`.
+
+Source
+------
+
       ++  pe                                                ::  prefix
         |*  [pre=* wit=fist]
         (cu |*(a=* [pre a]) wit)
       ::
 
-Reparser modifier. Adds a static prefix `pre` to the parse result of
-`wit`. See also: [`++stag`]().
-
-`pre` is a prefix [`noun`]().
+Examples
+--------
 
     ~zod/try=> (ni:jo n/'2')
     [~ q=2]
@@ -1369,12 +2227,28 @@ Reparser modifier. Adds a static prefix `pre` to the parse result of
 
 Reparse string to tape
 
+Reparser modifier. Reparses a [`++json`]() string to a [`++tape`]().
+
+Accepts
+-------
+
+`jon` is a [`++json`]().
+
+Produces
+--------
+
+The [`++unit`]() of a [`++tape`]().
+
+Source
+------
+
       ++  sa                                                ::  string as tape
         |=  jon=json
         ?.(?=([%s *] jon) ~ (some (trip p.jon)))
       ::
 
-Reparser modifier. Reparses a [`++json`]() string to a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (sa:jo s/'value')
     [~ u="value"]
@@ -1387,12 +2261,28 @@ Reparser modifier. Reparses a [`++json`]() string to a [`++tape`]().
 
 Reparse string to cord
 
+Reparser modifier. Reparses a string to a [`++cord`]().
+
+Accepts
+-------
+
+`jon` is a [`++json`]().
+
+Produces
+--------
+
+The [`++unit`]() of a [`++cord`]().
+
+Source
+------
+
       ++  so                                                ::  string as cord
         |=  jon=json
         ?.(?=([%s *] jon) ~ (some p.jon))
       ::
 
-Reparser modifier. Reparses a string to a [`++cord`]().
+Examples
+--------
 
     ~zod/try=> (so:jo s/'value')
     [~ u=~.value]
@@ -1405,6 +2295,21 @@ Reparser modifier. Reparses a string to a [`++cord`]().
 
 Reparse string
 
+Reparser generator. Produces a reparser that applies `sab` to a string.
+
+Accepts
+-------
+
+`sab` is a [`++rule`].
+
+Produces
+--------
+
+A [`++rule`]().
+
+Source
+------
+
       ++  su                                                ::  parse string
         |*  sab=rule
         |=  jon=json
@@ -1412,9 +2317,8 @@ Reparse string
         (rush p.jon sab)
       ::
 
-Reparser generator. Produces a reparser that applies `sab` to a string.
-
-`sab` is a [`++rule`]().
+Examples
+--------
 
     ~zod/try=> ((su:jo fed:ag) s/'zod')
     [~ 0]
@@ -1429,9 +2333,25 @@ Reparser generator. Produces a reparser that applies `sab` to a string.
 
 Reparse null
 
+Reparser modifier. Reparses a null value.
+
+Accepts
+-------
+
+`jon` is a [`++json`]().
+
+Produces
+--------
+
+The [`++unit`]() of null.
+
+Source
+------
+
       ++  ul  |=(jon=json ?~(jon (some ~) ~))               ::  null
 
-Reparser modifier. Reparses a null value.
+Examples
+--------
 
     ~zod/try=> (ul:jo `json`~)
     [~ u=~]
@@ -1446,6 +2366,22 @@ Reparser modifier. Reparses a null value.
 
 Pole of nonempty units
 
+Determines if `pod` contains all non-empty units, producing a boolean. Used
+internally.
+
+Accepts
+-------
+
+`pod` is a [`++pole`]() of [`++unit`]().
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
+
       ++  za                                                ::  full unit pole
         |*  pod=(pole (unit))
         ?~  pod  &
@@ -1453,10 +2389,8 @@ Pole of nonempty units
         (za +.pod)
       ::
 
-Determines if `pod` contains no empty units, producing a loobean. Used
-internally.
-
-`pod` is a [`++pole`]() of [`++unit`]().
+Examples
+--------
 
     ~zod/try=> (za:jo ~[`1 `2 `3])
     %.y
@@ -1466,6 +2400,22 @@ internally.
 ### `++zl`
 
 Collapse unit list
+
+Produces a unit of the values of `lut` if every unit in `lut` is
+nonempty. Otherwise, produces `~`. 
+
+Accepts
+-------
+
+`lut` is a [`++list`]() of [`++unit`]()s.
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
 
       ++  zl                                                ::  collapse unit list
         |*  lut=(list (unit))
@@ -1478,11 +2428,8 @@ Collapse unit list
         [i=u:+.i.lut t=$(lut t.lut)]
       ::
 
-Produces a unit of the values of `lut` if every unit in `lut` is
-nonempty. Otherwise, produces `~`. If any of the `++unit`s in `lut` are
-empty, produces null.
-
-`lut` is a [`++list`]() of [`++unit`]()s.
+Examples
+--------
 
     ~zod/try=> (zl:jo `(list (unit))`~[`1 `2 `3])
     [~ u=~[1 2 3]]
@@ -1493,7 +2440,22 @@ empty, produces null.
 
 ### `++zp`
 
-Parses a
+XX
+
+Collapses a `++pole` of `++unit`s `but`, producing a tuple.
+
+Accepts
+-------
+
+`but` is a [`++pole`]() of [`++unit`]().
+
+Produces
+--------
+
+??
+
+Source
+------
 
       ++  zp                                                ::  unit tuple
         |*  but=(pole (unit))
@@ -1503,9 +2465,8 @@ Parses a
         [u:->.but (zp +.but)]
       ::
 
-Collapses a `++pole` of `++unit`s `but`, producing a tuple.
-
-`but` is a [`++pole`]() of [`++unit`]().
+Examples
+--------
 
     ~zod/try=> (zp:jo `(pole (unit))`~[`1 `2 `3])
     [1 2 3]
@@ -1518,6 +2479,24 @@ Collapses a `++pole` of `++unit`s `but`, producing a tuple.
 
 Collapse unit map
 
+Produces a [`++unit`]() of the [`++map`]() `lum` of term to `++unit` key value
+pairs, with all of the nonempty values stripped of their `++unit`
+wrappers. If any of the `++units` in `lum` are empty, `~` is produced.
+See also: [`++zp`](), [`++zl`]().
+
+Accepts
+-------
+
+`lum` is a map of [`++term`]() to [`++unit`]()s.
+
+Produces
+--------
+
+The `++unit` of a tuple of what were the key-value pairs of `lum`.
+
+Source
+------
+
       ++  zm                                                ::  collapse unit map
         |*  lum=(map term (unit))
         ?:  (~(rep by lum) | |=([[@ a=(unit)] b=?] |(b ?=(~ a))))
@@ -1525,12 +2504,8 @@ Collapse unit map
         (some (~(run by lum) need))
     ::
 
-Produces a `++unit` of the map `lum` of term to `++unit` key value
-pairs, with all of the nonempty values stripped of their `++unit`
-wrappers. If any of the `++units` in `lum` are empty, `~` is produced.
-See also: [`++zp`](), [`++zl`]().
-
-`lum` is a map of [`++term`]() to [`++unit`]()s.
+Examples
+--------
 
     ~zod/try=> (zm:jo `(map term (unit ,@u))`(mo a/`4 b/`1 c/`2 ~))
     [~ {[p=%a q=4] [p=%c q=2] [p=%b q=1]}]
@@ -1549,17 +2524,31 @@ See also: [`++zp`](), [`++zl`]().
 
 `++json` from key-value pair
 
+Produces a ++json object with one key-value pair.
+
+Accepts
+-------
+
+`p` is a `@t` key.
+
+`q` is a [`++json`]().
+
+Produces
+--------
+
+A [`++json`]().
+
+Source
+------
+
     ++  joba                                                ::  object from k-v pair
       |=  [p=@t q=json]
       ^-  json
       [%o [[p q] ~ ~]]
     ::
 
-Produces a ++json object with one key.
-
-`p` is a `@t` key.
-
-`q` is a [`++json`]().
+Examples
+--------
 
     ~zod/try=> (joba %hi %b |)
     [%o p={[p='hi' q=[%b p=%.n]]}]
@@ -1574,15 +2563,29 @@ Produces a ++json object with one key.
 
 Object from key-value list
 
+Produces a `++json` object from a [`++list`]() `a` of key to `++json` values.
+
+Accepts
+-------
+
+`a` is a [`++list`]() of [`++cord`]() to [`++json`]() values.
+
+Produces
+--------
+
+A `++json`.
+
+Source
+------
+
     ++  jobe                                                ::  object from k-v list
       |=  a=(list ,[p=@t q=json])
       ^-  json
       [%o (~(gas by *(map ,@t json)) a)]
     ::
 
-Produces a `++json` object from a list `a` of key to `++json` values.
-
-`a` is a [`++list`]() of [`++cord`]() to [`++json`]() values.
+Examples
+--------
 
     ~zod/try=> (jobe a/n/'20' b/~ c/a/~[s/'mol'] ~)
     [%o p={[p='a' q=[%n p=~.20]] [p='c' q=[%a p=~[[%s p=~.mol]]]] [p='b' q=~]}]
@@ -1593,13 +2596,29 @@ Produces a `++json` object from a list `a` of key to `++json` values.
 
 `++json` string from tape
 
+Produces a [`++json`]() string from a [`++tape`]().
+
+Accepts
+-------
+
+A [`++tape`]().
+
+Produces
+--------
+
+A `++json`.
+
+Source
+------
+
     ++  jape                                                ::  string from tape
       |=  a=tape
       ^-  json
       [%s (crip a)]
     ::
 
-Produces a [`++json`]() string from a [`++tape`]().
+Examples
+--------
 
     ~zod/try=> (jape ~)
     [%s p=~.]
@@ -1614,6 +2633,21 @@ Produces a [`++json`]() string from a [`++tape`]().
 
 `++json` number from unigned
 
+Produces a `++json` number from an unsigned atom.
+
+Accepts
+-------
+
+`a` is an atom of odor [`@u`]().
+
+Produces
+--------
+
+A [`++json`]().
+
+Source
+------
+
     ++  jone                                                ::  number from unsigned
       |=  a=@u
       ^-  json
@@ -1622,9 +2656,8 @@ Produces a [`++json`]() string from a [`++tape`]().
       (crip (flop |-(^-(tape ?:(=(0 a) ~ [(add '0' (mod a 10)) $(a (div a 10))])))))
     ::
 
-Produces a `++json` number from an unsigned atom.
-
-`a` is a [`@u`]().
+Examples
+--------
 
     ~zod/try=> (jone 1)
     [%n p=~.1]
@@ -1639,6 +2672,21 @@ Produces a `++json` number from an unsigned atom.
 
 Escape JSON character
 
+Produces a [`++tape`]() of an escaped [`++json`](/doc/hoon/library/3bi#++json) character `a`.
+
+Accepts
+-------
+
+`a` is an atom of odor [`@tD`](), aka a [`++char`]().
+
+Produces
+--------
+
+A [`++tape`]().
+
+Source
+------
+
     ++  jesc
       |=  a=@  ^-  tape
       ?+  a  [a ~]
@@ -1648,9 +2696,8 @@ Escape JSON character
       ==
     ::
 
-Produces a `++tape` of an escaped [`++json`](/doc/hoon/library/3bi#++json) character `a`.
-
-`a` is an atom
+Examples
+--------
 
     ~zod/try=> (jesc 'a')
     "a"
@@ -1661,7 +2708,7 @@ Produces a `++tape` of an escaped [`++json`](/doc/hoon/library/3bi#++json) chara
     ~zod/try=> (jesc '"')
     "\""
 
-### `++scanf`
+### `++scanf` XX
 
 Formatted scan
 
@@ -1693,7 +2740,7 @@ collapses the result list to a tuple, such that (scanf "foo 1 2 bar"
     ~zod/try=> `@da`(year `date`dat(- [%& -.dat], |6 ~[(div (mul |6.dat (bex 16)) 1.000)]))
     ~2014.8.12..23.10.58..ee56
 
-### `++parsf`
+### `++parsf` XX
 
     ++  parsf                                              ::  make parser from:
       |^  |*  a=(pole ,_:/(*$&(_rule tape)))               ::  ;"chars{rule}chars"
@@ -1710,7 +2757,7 @@ the embedded rules' results.
 
 Two intermediate arms are used:
 
-#### ++norm
+#### ++norm XX
 
       ::  .=  (norm [;"{n}, {n}"]:n=dim:ag)  ~[[& dim] [| ", "] [& dim]]:ag
       ++  norm                                             
@@ -1729,7 +2776,7 @@ Two intermediate arms are used:
 `norm` converts a `;"` pole of `[[%~. [%~. ?(tape _rule)] ~] ~]` into a
 more convenient list of discriminated tapes and rules.
 
-#### ++bill
+#### ++bill XX
 
       ::  .=  (bill ~[[& dim] [| ", "] [& dim]]:ag)
       ::  ;~(plug dim ;~(pfix com ace ;~(plug dim (easy)))):ag
@@ -1747,12 +2794,24 @@ sections and producing a list of the rules' results.
 
 ### `++taco`
 
+Converts an atom to an octet stream [`++octs`](), which contains a length, to
+encode trailing zeroes.
+
+Produces
+--------
+
+An `++octs`.
+
+Source
+------
+
     ++  taco                                                ::  atom to octstream
       |=  tam=@  ^-  octs
       [(met 3 tam) tam]
     ::
 
-An [octs] contains a length, to encode trailing zeroes.
+Examples
+--------
 
     ~zod/try=> (taco 'abc')
     [p=3 q=6.513.249]
@@ -1761,12 +2820,31 @@ An [octs] contains a length, to encode trailing zeroes.
 
 ### `++tact`
 
+tape to octs
+
+Converts a `++tape` to an octet stream ([`++octs`](), which contains a length
+to encode trailing zeroes.
+
+Accepts
+-------
+
+A `++tape`.
+
+Produces
+--------
+
+An [`++octs`]().
+
+Source
+------
+
     ++  tact                                                ::  tape to octstream
       |=  tep=tape  ^-  octs
       (taco (rap 3 tep))
     ::
 
-octs from tape
+Examples
+--------
 
     ~zod/try=> (tact "abc")
     [p=3 q=6.513.249]
@@ -1775,13 +2853,32 @@ octs from tape
 
 ### `++tell`
 
+octs from wall
+
+Converts a [`++wall`]() to an octet stream ([`++octs`](), which contains a length
+to encode trailing zeroes.
+
+Accepts
+-------
+
+`wol` is a [`++wall`]().
+
+Produces
+--------
+
+An `++octs`.
+
+Source
+------
+
     ++  tell                                                ::  wall to octstream
       |=  wol=wall  ^-  octs
       =+  buf=(rap 3 (turn wol |=(a=tape (crip (weld a `tape`[`@`10 ~])))))
       [(met 3 buf) buf]
     ::
 
-octs from wall
+Examples
+--------
 
     ~zod/try=> (tell ~["abc" "line" "3"])
     [p=11 q=12.330.290.663.108.538.769.039.969]
@@ -1794,14 +2891,32 @@ octs from wall
 
 ### `++txml`
 
+Tape to xml CDATA node
+
+Converts a [`++tape`]() to an xml CDATA node XX
+
+Accepts
+-------
+
+`tep` is a [`++tape`]().
+
+Produces
+--------
+
+A [`++manx`]().
+
+Source
+------
+
     ++  txml                                                ::  string to xml
       |=  tep=tape  ^-  manx
       [[%$ [%$ tep] ~] ~]
     ::
 
-Tape to xml CDATA node
+Examples
+--------
 
     ~zod/try=> (txml "hi")
     [g=[n=%$ a=~[[n=%$ v="hi"]]] c=~]
     ~zod/try=> (txml "larton bestok")
-    [g=[n=%$ a=~[[n=%$ v="larton bestok"]]] c=~]
+    [

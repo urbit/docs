@@ -5,9 +5,15 @@ section 2eG, parsing (whitespace)
 
 `.` optional gap
 
+Dot followed by an optional gap, used with numbers.
+
+Source
+------
+
     ++  dog  ;~(plug dot gay)                               ::
 
-Dot followed by an optional gap, used in numbers.
+Examples
+--------
 
     /~zod/try=> 1.234.
                 703
@@ -21,9 +27,15 @@ Dot followed by an optional gap, used in numbers.
 
 `@p` separator
 
+Phonetic base phrase separator
+
+Source
+------
+
     ++  doh  ;~(plug ;~(plug hep hep) gay)                  ::
 
-Phonetic base phrase separator
+Examples
+--------
 
     /~zod/try=> ~nopfel-botduc-nilnev-dolfyn--haspub-natlun-lodmur-holtyd
     ~nopfel-botduc-nilnev-dolfyn--haspub-natlun-lodmur-holtyd
@@ -41,9 +53,15 @@ Phonetic base phrase separator
 
 `--` to `~`
 
+Parse phep, `--`, to null, `~`.
+
+Source
+------
+
     ++  dun  (cold ~ ;~(plug hep hep))                      ::  -- (phep) to ~
 
-Parse phep, `--`, to null, `~`.
+Examples
+--------
 
     ~zod/try=> (scan "--" dun)
     ~
@@ -56,9 +74,15 @@ Parse phep, `--`, to null, `~`.
 
 `==` to `~`
 
+Parse stet, `==`, to null `~`.
+
+Source
+------
+
     ++  duz  (cold ~ ;~(plug tis tis))                      ::  == (stet) to ~
 
-Parse stet, `==`, to null `~`.
+Examples
+--------
 
     ~zod/try=> (scan "==" duz)
     ~
@@ -71,9 +95,15 @@ Parse stet, `==`, to null `~`.
 
 Newline or ' '
 
+Whitespace component, either newline or space.
+
+Source
+------
+
     ++  gah  (mask [`@`10 ' ' ~])                           ::  newline or ace
 
-Whitespace component, either newline or space.
+Examples
+--------
 
     /~zod/try=> ^-  *  ::  show spaces
                 """
@@ -100,9 +130,12 @@ Whitespace component, either newline or space.
 
 Plural whitespace
 
-    ++  gap  (cold ~ ;~(plug gaq (star ;~(pose vul gah))))  ::  plural whitespace
-
 Separates tall runes
+
+Source
+------
+
+    ++  gap  (cold ~ ;~(plug gaq (star ;~(pose vul gah))))  ::  plural whitespace
 
 ------------------------------------------------------------------------
 
@@ -110,13 +143,17 @@ Separates tall runes
 
 End of line
 
+Two spaces, a newline, or comment.
+    
+Source
+------
+
     ++  gaq  ;~  pose                                       ::  end of line
                  (just `@`10)
                  ;~(plug gah ;~(pose gah vul))
                  vul
              ==
 
-Two spaces, a newline, or comment.
 
 ------------------------------------------------------------------------
 
@@ -124,23 +161,34 @@ Two spaces, a newline, or comment.
 
 Classic whitespace
 
-    ++  gaw  (cold ~ (star ;~(pose vul gah)))               ::  classic white
+Terran whitespace.
 
-Terran whitespace
+Source
+------
+
+    ++  gaw  (cold ~ (star ;~(pose vul gah)))               ::  classic white
 
 ------------------------------------------------------------------------
 
 ### `++gay`
 
+Optional gap
+
 Optional gap.
+
+Source
+------
 
     ++  gay  ;~(pose gap (easy ~))                          ::
-
-Optional gap.
 
 ------------------------------------------------------------------------
 
 ### `++vul`
+
+Comments to null
+
+Source
+------
 
     ++  vul  %-  cold  :-  ~                                ::  comments
              ;~  plug  col  col
@@ -150,6 +198,9 @@ Optional gap.
 
 Parse comments and produce a null. Note that a comment must be ended
 with a newline character.
+
+Examples
+--------
 
     ~zod/try=> (scan "::this is a comment \0a" vul)
     ~

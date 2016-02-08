@@ -12,6 +12,22 @@ anyway.
 
 Invert diff patches
 
+Inverts a list of changes `bur`. Skips stay constant and replaces are
+swapped. Produces a `bur`.
+
+Accepts
+-------
+
+`bur` is a [`++urge`]().
+
+Produces
+--------
+
+The `++urge` of a noun.
+
+Source
+------
+
     ++  berk                                                ::  invert diff patch
       |*  bur=(urge)
       |-  ^+  bur
@@ -23,10 +39,8 @@ Invert diff patches
       ==
     ::
 
-Inverts a list of changes `bur`. Skips stay constant and replaces are
-swapped. Produces a `bur`.
-
-`bur` is a [`++urge`]().
+Examples
+--------
 
     ~zod/try=> (berk `(urge)`~[`10 %|^[~[2] ~[3 4]] `5])
     ~[[%.y p=10] [%.n p=~[3 4] q=~[2]] [%.y p=5]]
@@ -43,6 +57,21 @@ swapped. Produces a `bur`.
 
 Generate patch
 
+Produces a patch between two nouns, by change type
+
+Accepts
+-------
+
+`pum` is an [`++umph`]().
+
+Produces
+--------
+
+An [`++udon`]()
+
+Source
+------
+
     ++  diff                                                ::  generate patch
       |=  pum=umph
       |=  [old=* new=*]  ^-  udon
@@ -56,9 +85,8 @@ Generate patch
       ==
     ::
 
-Produces a patch between two nouns, by change type
-
-`pum` is an [`++umph`]().
+Examples
+--------
 
     ~zod/try=> ((diff %a) 20 21)
     [p=%a q=[%d p=[%1 p=21] q=[%1 p=20]]]
@@ -87,6 +115,26 @@ Produces a patch between two nouns, by change type
 ### `++loss`
 
 Longest subsequence
+
+Finds a subsequence of repeated elements within two [`++list`]()s, using
+several internal helper arms. Produces a [`++tape`]().
+
+Accepts
+-------
+
+`hel` is a [`++list`]() of [nouns]().
+
+`hev` is a [++list`]() of nouns.
+
+Produces
+--------
+
+XX
+
+A [++list`]() of nouns.
+
+Source
+------
 
     ++  loss                                                ::  longest subsequence
       ~/  %loss
@@ -153,12 +201,8 @@ Longest subsequence
         $(hel t.hel, hev t.hev, rag (done %| [i.hel ~] [i.hev ~]))
       --
 
-Finds a subsequence of repeated elements within two [`++list`]()s, using
-several internal helper arms. Produces a [`++tape`]().
-
-`hel` is a [`++list`]() of characters.
-
-`hev` is a [++list\`]() of characters.
+Examples
+--------
 
     ~zod/try=> (loss "sam" "sem")
     "sm"
@@ -177,6 +221,22 @@ several internal helper arms. Produces a [`++tape`]().
 
 Find common
 
+Finds a subsequence of repeated elements within two
+[`++list`](/doc/hoon/library/1#++list)s, producing a [\`++tape]().
+
+Accepts
+-------
+
+A cell of two `++tape`s, `hel` and `hev`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  locz                                                ::  trivial algorithm
       |=  [hel=tape hev=tape]
       ^-  tape
@@ -194,8 +254,8 @@ Find common
       ?:((gth p.lef p.rig) lef rig)
     ::
 
-Finds a subsequence of repeated elements within two [`++list`](/doc/hoon/library/1#++list)s,
-producing a [\`++tape]().
+Examples
+--------
 
     ~zod/try=> (locz "samukot" "semelkot")
     "smkot"
@@ -208,6 +268,22 @@ producing a [\`++tape]().
 
 Split on `\n`
 
+Split on newlines, ascii `10`
+
+Accepts
+-------
+
+`lub` is an atom.
+
+Produces
+--------
+
+XX
+
+A `++list` of atoms of odor [`@t`]() ([`++cord`]()).
+
+Source
+------
     ++  lore                                                ::  atom to line list
       ~/  %lore
       |=  lub=@
@@ -225,7 +301,8 @@ Split on `\n`
       $(lub res, tez [(end 3 meg lub) tez])
     ::
 
-Split on newlines, ascii `10`
+Examples
+--------
 
     ~zod/try=> (lore 'soke\0alas\0amep')
     <|soke las mep|>
@@ -244,12 +321,30 @@ Split on newlines, ascii `10`
 
 Join with `\n`
 
+Join line list with newlines.
+
+Accepts
+-------
+
+A `++list` of atoms of [odor]() [`@t`]() ([`++cord`]()).
+
+Produces
+--------
+
+XX
+
+An atom of [odor]() [`@t`]() ([`++cord`]().
+
+Source
+------
+
     ++  role                                                ::  line list to atom
       |=  tez=(list ,@t)
       (rap 3 (turn tez |=(a=@t (cat 3 a 10))))
     ::
 
-Join line list with newlines.
+Examples
+--------
 
     ~zod/try=> (role 'sep' 'tek' 'lap' ~)
     3.230.709.852.558.292.782.985.274.739
@@ -265,6 +360,21 @@ Join line list with newlines.
 ### `++lump`
 
 Change with `++udon`
+
+Use [`++udon`]() to change [noun]().
+
+Accepts
+-------
+
+A cell of an `++udon`, `don`, and a noun, `src`.
+
+Produces
+--------
+
+A noun.
+
+Source
+------
 
     ++  lump                                                ::  apply patch
       |=  [don=udon src=*]
@@ -287,7 +397,8 @@ Change with `++udon`
       ==
     ::
 
-Use udon to change noun
+Examples
+--------
 
     ~zod/try=> (lump [%a %a 20 25] 20)
     25
@@ -313,6 +424,21 @@ Use udon to change noun
 
 Patch `a`
 
+Patch a by references to axis and literal.
+
+Accepts
+-------
+
+A cell of a [noun](), `a`, and an [`++upas`](), `b`.
+
+Produces
+--------
+
+A noun.
+
+Source
+------
+
     ++  lure                                                ::  apply tree diff
       |=  [a=* b=upas]
       ^-  *
@@ -323,7 +449,8 @@ Patch `a`
         %1  .*(a [1 p.b])
       ==
 
-Patch a by references to axis and literal.
+Examples
+--------
 
     ~zod/try=> (lure ~[1 2] [[%0 2] [%1 3] [%0 7]])
     [1 3 0]
@@ -336,6 +463,21 @@ Patch a by references to axis and literal.
 
 Reverse patch
 
+Reverse a patch (preprocessor unchanged)
+
+Accepts
+-------
+
+`don` is an [`++udon`]().
+
+Produces
+--------
+
+An `++udon`.
+
+Source
+------
+
     ++  limp                                                ::  invert patch
       |=  don=udon  ^-  udon
       :-  p.don
@@ -346,7 +488,8 @@ Reverse patch
       ==
     ::
 
-Reverse a patch (preprocessor unchanged)
+Examples
+--------
 
     ~zod/try=> (limp [%a %a 20 40])
     [p=%a q=[%a p=40 q=20]]
@@ -361,6 +504,21 @@ Reverse a patch (preprocessor unchanged)
 
 Prep for diff
 
+Prep atom for diff: leave alone, cue, or split by newlines.
+
+Accepts
+-------
+
+A cell of an [`++umph`](), `pum`, and a [noun](), `src`.
+
+Produces
+--------
+
+A noun.
+
+Source
+------
+
     ++  hump                                                ::  general prepatch
       |=  [pum=umph src=*]  ^-  *
       ?+  pum  ~|(%unsupported !!)
@@ -370,7 +528,8 @@ Prep for diff
       ==
     ::
 
-Prep atom for diff: leave alone, cue, or split by newlines.
+Examples
+--------
 
     ~zod/try=> (hump %a ~)
     0
@@ -391,6 +550,21 @@ Prep atom for diff: leave alone, cue, or split by newlines.
 
 Atomize post diff
 
+Re-atomize after diff: leave alone, jam, or join with newlines.
+
+Accepts
+-------
+
+A cell of an [`++umph`](), `pum`, and a [noun](), `dst`.
+
+Produces
+--------
+
+A noun.
+
+Source
+------
+
     ++  husk                                                ::  unprepatch
       |=  [pum=umph dst=*]  ^-  *
       ?+  pum  ~|(%unsupported !!)
@@ -400,7 +574,8 @@ Atomize post diff
       ==
     ::
 
-Re-atomize after diff: leave alone, jam, or join with newlines.
+Examples
+--------
 
     ~zod/try=> (husk %a 0)
     0
@@ -438,6 +613,23 @@ Re-atomize after diff: leave alone, jam, or join with newlines.
 
 Apply list patch
 
+Amend list using an urge: [`++list`]() of `[%& {number skipped}]` and
+`[%| old new]`
+
+
+Accepts
+-------
+
+A cell of a `++list` of [noun]()s, `hel`, and an [`++urge`]() of a noun, `rug`.
+
+Produces
+--------
+
+A `++list` of nouns.
+
+Source
+------
+
     ++  lurk                                                ::  apply list patch
       |*  [hel=(list) rug=(urge)]
       ^+  hel
@@ -464,8 +656,8 @@ Apply list patch
       ==
     ::
 
-Amend list using an urge: list of `[%& {number skipped}]` and
-`[%| old new]`
+Examples
+--------
 
     ~zod/try=> (lurk "hema" `(urge char)`~[`1 [%| "e" "ru"] `2])
     "hurma"
@@ -477,6 +669,20 @@ Amend list using an urge: list of `[%& {number skipped}]` and
 ### `++lusk`
 
 `lcs` to list patch
+
+Using a common sequence, generate urge from two [`++list`]()s.
+
+
+Accepts
+-------
+
+A cell of three `++list`s of [noun](), `hel`, `hev`, and `lcs`.
+
+Produces
+--------
+
+Source
+------
 
     ++  lusk                                                ::  lcs to list patch
       |*  [hel=(list) hev=(list) lcs=(list)]
@@ -522,7 +728,8 @@ Amend list using an urge: list of `[%& {number skipped}]` and
         $(hel t.hel, hev t.hev, rag (done %| [i.hel ~] [i.hev ~]))
       --
 
-Using a common sequence, generate urge from two lists
+Examples
+--------
 
     ~zod/try=> (lusk "hamok" "hasok" "haok")
     ~[[%.y p=2] [%.n p="m" q="s"] [%.y p=2]]
@@ -538,6 +745,21 @@ Using a common sequence, generate urge from two lists
 ### `++nude`
 
 Tree change
+
+Generate tree diff from two nouns.
+
+Accepts
+-------
+
+A cell of two nouns, `a` and `b`.
+
+Produces
+--------
+
+A cell of two [`++upas`](), `p` and `q`.
+
+Source
+------
 
     ++  nude                                                ::  tree change
       |=  [a=* b=*]
@@ -572,7 +794,8 @@ Tree change
         [%0 u.c]
       --
 
-Generate tree diff from two nouns.
+Examples
+--------
 
     ~zod/try=> (nude 40 20)
     [p=[%1 p=20] q=[%1 p=40]]

@@ -1,24 +1,22 @@
-dottar, `.*`, %dttr
-============================
+`.*`
+====
 
-Nock
+Compute nock
+
+Computes nock expressions. Runs nock formula `q` on
+nock subject `p`.
 
 `.*` is a natural rune that calculates the nock of subject `p` and
 formula `q`. `.*` makes it possible to compute nock formulas in user
 space.
-
-See also
---------
-
-[Nock tutorial]()
 
 Produces
 --------
 
 Twig: `[%dttr p=twig q=twig]`
 
-Sample
-------
+Accepts
+-------
 
 `p` is a [twig](). `q` is a [twig]().
 
@@ -32,11 +30,6 @@ Wide form
 ---------
 
     .*(p q)
-
-Irregular form
---------------
-
-None
 
 Examples
 --------

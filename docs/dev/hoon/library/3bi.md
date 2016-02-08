@@ -22,6 +22,18 @@ Cryptosuite interface, see %ames documentation
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++seal`
 
     ++  seal                                                ::  auth conversation
@@ -34,17 +46,53 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++sign`
 
                     ++  sign  |=([a=@ b=@] _@)              ::  certify as us
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++sure`
 
                     ++  sure  |=([a=@ b=@] *(unit ,@))      ::  authenticate from us
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++tear`
 
@@ -53,11 +101,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++de`
 
               ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++dy`
 
@@ -65,11 +137,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++en`
 
               ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++ex`
 
@@ -78,10 +174,34 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++fig`
 
 
     XX document
+
+    Accepts
+    -------
+
+    Produces
+    --------
+
+    Source
+    ------
+
+    Examples
+    --------
 
     ###++pac
 
@@ -91,6 +211,18 @@ XX document
 
     XX document
 
+    Accepts
+    -------
+
+    Produces
+    --------
+
+    Source
+    ------
+
+    Examples
+    --------
+
     ###++pub
 
     ```
@@ -99,6 +231,18 @@ XX document
 
     XX document
 
+    Accepts
+    -------
+
+    Produces
+    --------
+
+    Source
+    ------
+
+    Examples
+    --------
+
     ###++sec
 
     ```
@@ -106,6 +250,18 @@ XX document
     ```
 
     XX document
+
+    Accepts
+    -------
+
+    Produces
+    --------
+
+    Source
+    ------
+
+    Examples
+    --------
 
     ###++nu
 
@@ -116,9 +272,33 @@ XX document
 
     XX document
 
+    Accepts
+    -------
+
+    Produces
+    --------
+
+    Source
+    ------
+
+    Examples
+    --------
+
     ###++pit
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++nol`
 
@@ -126,11 +306,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++com`
 
                      ++  com  |=(a=@ ^?(..nu))              ::  from naked pass
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++aeon`
 
@@ -165,11 +369,35 @@ See also ++ze, %clay documentation
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++apex`
 
     ++  apex  ,[p=@uvI q=(map ,@ta ,@uvI) r=(map ,@ta ,~)]  ::  node report (old)
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++ares`
 
@@ -189,11 +417,35 @@ Failure cause: unknown, or machine-readable term and stack trace.
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++bait`
 
     ++  bait  ,[p=skin q=@ud r=dove]                        ::  fmt nrecvd spec
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++bath`
 
@@ -204,6 +456,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++beam`
 
@@ -231,6 +495,18 @@ Global root
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++blob`
 
@@ -286,11 +562,35 @@ XX unused?
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++cake`
 
     ++  cake  ,[p=sock q=skin r=@]                          ::  top level packet
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++cape`
 
@@ -301,17 +601,53 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++cart`
 
     ++  cart  ,[p=cash q=cash]                              ::  hash change
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++care`
 
     ++  care  ?(%u %v %w %x %y %z)                          ::  clay submode
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++case`
 
@@ -330,11 +666,35 @@ documentation
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++chum`
 
     ++  chum  ,@uvI                                         ::  hashed passcode
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++clot`
 
@@ -346,17 +706,53 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++coal`
 
     ++  coal  ,*                                            ::  untyped vase
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++code`
 
     ++  code  ,@uvI                                         ::  symmetric key
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++cone`
 
@@ -367,11 +763,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++chum`
 
     ++  chum  ,@uvI                                         ::  hashed passcode
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++claw`
 
@@ -385,6 +805,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++clip`
 
@@ -406,11 +838,35 @@ See %eyre documentation.
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++code`
 
     ++  code  ,@uvI                                         ::  symmetric key
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++cone`
 
@@ -421,11 +877,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++coop`
 
     ++  coop  (unit ares)                                   ::  e2e ack
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++corn`
 
@@ -437,6 +917,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++cred`
 
@@ -451,6 +943,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++cuff`
 
     ++  cuff                                                ::  permissions
@@ -460,11 +964,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++deed`
 
     ++  deed  ,[p=@ q=step r=?]                             ::  sig, stage, fake?
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++dome`
 
@@ -478,6 +1006,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++dore`
 
     ++  dore                                                ::  foreign contact
@@ -488,11 +1028,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++dove`
 
     ++  dove  ,[p=@ud q=(map ,@ud ,@)]                      ::  count hash 13-blocks
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++epic`
 
@@ -506,11 +1070,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++flap`
 
     ++  flap  ,@uvH                                         ::  network packet id
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++flow`
 
@@ -520,6 +1108,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++fort`
 
@@ -533,17 +1133,53 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++frog`
 
     ++  frog  ,[p=@da q=nori]                               ::  time and change
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++gank`
 
     ++  gank  (each vase (list tank))                       ::  abstract result
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++gift`
 
@@ -581,6 +1217,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++zang`
 
     ++  zang                                                ::  XX evil hack
@@ -597,11 +1245,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++gilt`
 
     ++  gilt  ,[@tas *]                                     ::  presumed gift
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++gens`
 
@@ -609,11 +1281,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++germ`
 
     ++  germ  ?(%init %fine %that %this %mate %meld)        ::  merge style
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++gcos`
 
@@ -626,6 +1322,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++goad`
 
@@ -644,6 +1352,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++goal`
 
@@ -664,11 +1384,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++govt`
 
     ++  govt  path                                          ::  country/postcode
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++hand`
 
@@ -676,11 +1420,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++hart`
 
     ++  hart  ,[p=? q=(unit ,@ud) r=host]                   ::  http sec/port/host
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++hate`
 
@@ -688,11 +1456,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++heir`
 
     ++  heir  ,[p=@ud q=mess r=(unit love)]                 ::  status/headers/data
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++hiss`
 
@@ -700,11 +1492,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++hist`
 
     ++  hist  ,[p=@ud q=(list ,@t)]                         ::  depth texts
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++hole`
 
@@ -712,11 +1528,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++hoot`
 
     ++  hoot  ,[p=? q=(unit ,@ud) r=host]                   ::  secure/port/host
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++hort`
 
@@ -724,11 +1564,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++host`
 
     ++  host  $%([& p=(list ,@t)] [| p=@if])                ::  http host
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++httq`
 
@@ -741,11 +1605,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++httr`
 
     ++  httr  ,[p=@ud q=mess r=(unit octs)]                 ::  raw http response
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++httx`
 
@@ -757,11 +1645,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++kite`
 
     ++  kite  ,[p=care q=case r=ship s=desk t=spur]         ::  parsed global name
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++json`
 
@@ -776,6 +1688,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++jsot`
 
     ++  jsot                                                ::  strict json top
@@ -785,6 +1709,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++lamb`
 
     ++  lamb                                                ::  short path
@@ -793,6 +1729,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++lane`
 
@@ -804,11 +1752,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++lang`
 
     ++  lang  ,@ta                                          ::  IETF lang as code
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++lark`
 
@@ -816,11 +1788,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++lass`
 
     ++  lass  ?(%0 %1 %2)                                   ::  power increment
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++lath`
 
@@ -832,11 +1828,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++lawn`
 
     ++  lawn  (list lath)                                   ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++lice`
 
@@ -844,11 +1864,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++life`
 
     ++  life  ,@ud                                          ::  regime number
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++lint`
 
@@ -856,11 +1900,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++lobe`
 
     ++  lobe  ,@                                            ::  blob ref
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++love`
 
@@ -874,11 +1942,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++luge`
 
     ++  luge  ,[p=mark q=*]                                 ::  fully typed content
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++maki`
 
@@ -886,11 +1978,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++mace`
 
     ++  mace  (list ,[p=life q=ring])                       ::  private secrets
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++marv`
 
@@ -898,11 +2014,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++math`
 
     ++  math  (map ,@t (list ,@t))                          ::  semiparsed headers
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++meal`
 
@@ -917,11 +2057,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++mess`
 
     ++  mess  (list ,[p=@t q=@t])                           ::  raw http headers
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++meta`
 
@@ -931,6 +2095,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++meth`
 
@@ -947,11 +2123,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++mite`
 
     ++  mite  (list ,@ta)                                   ::  mime type
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++miso`
 
@@ -963,11 +2163,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++mizu`
 
     ++  mizu  ,[p=@u q=(map ,@ud tako) r=rang]              ::  new state
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++moar`
 
@@ -975,11 +2199,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++moat`
 
     ++  moat  ,[p=case q=case r=path]                       ::  change range
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++mood`
 
@@ -987,11 +2235,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++moth`
 
     ++  moth  ,[p=meth q=math r=(unit octs)]                ::  http operation
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++name`
 
@@ -999,11 +2271,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++newt`
 
     ++  newt  ?(%boot %kick %mess %slay %wake)              ::  lifecycle events
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++nose`
 
@@ -1013,6 +2309,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++note`
 
@@ -1024,6 +2332,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++nori`
 
     ++  nori                                                ::  repository action
@@ -1033,11 +2353,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++octs`
 
     ++  octs  ,[p=@ud q=@]                                  ::  octet-stream
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++oryx`
 
@@ -1045,11 +2389,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++pact`
 
     ++  pact  path                                          ::  routed path
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++pail`
 
@@ -1057,11 +2425,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++plan`
 
     ++  plan  (trel view (pair ,@da (unit ,@dr)) path)      ::  subscription
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++plea`
 
@@ -1069,11 +2461,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++pork`
 
     ++  pork  ,[p=(unit ,@ta) q=(list ,@t)]                 ::  fully parsed url
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++pred`
 
@@ -1081,11 +2497,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++prod`
 
     ++  prod  ,[p=prom q=tape r=tape]                       ::  prompt
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++prom`
 
@@ -1093,11 +2533,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++purl`
 
     ++  purl  ,[p=hart q=pork r=quay]                       ::  parsed url
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++putt`
 
@@ -1107,6 +2571,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++pyre`
 
@@ -1118,11 +2594,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++quay`
 
     ++  quay  (list ,[p=@t q=@t])                           ::  parsed url query
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++quri`
 
@@ -1132,6 +2632,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++race`
 
@@ -1144,11 +2656,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++rank`
 
     ++  rank  ?(%czar %king %duke %earl %pawn)              ::  ship width class
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++rang`
 
@@ -1157,6 +2693,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++rant`
 
@@ -1168,6 +2716,18 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++rave`
 
     ++  rave                                                ::  general request
@@ -1176,6 +2736,18 @@ XX document
               ==                                            ::
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++rill`
 
@@ -1186,11 +2758,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++riot`
 
     ++  riot  (unit rant)                                   ::  response/complete
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++road`
 
@@ -1202,11 +2798,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++rock`
 
     ++  rock  ,@uvO                                         ::  packet
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++rout`
 
@@ -1214,11 +2834,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++rump`
 
     ++  rump  ,[p=care q=case r=@tas s=path]                ::  relative path
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++saba`
 
@@ -1226,11 +2870,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++sack`
 
     ++  sack  ,[p=ship q=ship]                              ::  incoming [our his]
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++sufi`
 
@@ -1244,11 +2912,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++salt`
 
     ++  salt  ,@uv                                          ::  entropy
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++seal`
 
@@ -1262,11 +2954,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++sect`
 
     ++  sect  ?(%black %blue %red %orange %white)           ::  banner
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++shed`
 
@@ -1290,11 +3006,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++skit`
 
     ++  skit  ,[p=(unit ,@ta) q=(list ,@ta) r=(list ,@ta)]  ::  tracking path
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++skin`
 
@@ -1302,11 +3042,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++slip`
 
     ++  slip  ,[p=path q=goal]                              ::  traceable request
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++snow`
 
@@ -1314,17 +3078,53 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++soap`
 
     ++  soap  ,[p=[p=life q=life] q=path r=@ud]             ::  statement id
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++soup`
 
     ++  soup  ,[p=path q=@ud]                               ::  new statement id
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++soul`
 
@@ -1338,11 +3138,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++soba`
 
     ++  soba  ,[p=cart q=(list ,[p=path q=miso])]           ::  delta
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++sock`
 
@@ -1350,11 +3174,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++spur`
 
     ++  spur  path                                          ::  ship desk case spur
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++step`
 
@@ -1362,11 +3210,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++tako`
 
     ++  tako  ,@                                            ::  yaki ref
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++tart`
 
@@ -1374,11 +3246,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++taxi`
 
     ++  taxi  ,[p=lane q=rock]                              ::  routed packet
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++tick`
 
@@ -1386,11 +3282,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++toro`
 
     ++  toro  ,[p=@ta q=nori]                               ::  general change
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++town`
 
@@ -1403,11 +3323,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++tube`
 
     ++  tube  ,[p=@ta q=@ta r=@ta s=path]                   ::  canonical path
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++tutu`
 
@@ -1415,11 +3359,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++yaki`
 
     ++  yaki  ,[p=(list tako) q=(map path lobe) r=tako t=@da] ::  commit
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++view`
 
@@ -1427,11 +3395,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++waks`
 
     ++  waks  (map path woof)                               ::  list file states
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++what`
 
@@ -1444,11 +3436,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++whom`
 
     ++  whom  ,[p=@ud q=govt r=sect s=name]                 ::  year/govt/id
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++woof`
 
@@ -1457,11 +3473,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++wund`
 
     ++  wund  (list ,[p=life q=ring r=acru])                ::  mace in action
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++will`
 
@@ -1469,11 +3509,35 @@ XX document
 
 XX document
 
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
+
 ### `++worm`
 
     ++  worm  ,*                                            ::  vase of tart
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------
 
 ### `++zuse`
 
@@ -1481,3 +3545,15 @@ XX document
     --
 
 XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+Examples
+--------

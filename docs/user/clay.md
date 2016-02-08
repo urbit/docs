@@ -82,20 +82,21 @@ Turn off autosync.  The argument needs to match the original
 
 ### Filesystem manipulation
 
-#### `|rm [pax=path]`
+#### `|rm [paz=(list path)]`
 
-Remove the leaf at `pax`.
+Remove any leaf at each of the paths in `paz`.
     
     |rm /===/pub/fab/nixon/hoon
 
 Remember that folders in `%clay` are a consequence of the tree of
 leaves; there is no `rmdir` or `mkdir`.
 
-#### `|cp [fro=path too=path]`
+#### `|cp [too=path fro=path how=$|(~ [germ ~])]`
 
-Copy the leaf at `fro` to `too`.
+Copy the subtree `fro` into the subtree `too`, committing it with
+the specified merge strategy.
 
-#### `|mv [fro=path too=path]`
+#### `|mv [too=path fro=path how=$|(~ [germ ~])]`
 
 In `%clay`, `|mv` is just a shorthand for `|cp` then `|rm`.  The
 `|rm` doesn't happen unless the `|cp` succeeds, obviously -- it's
@@ -103,9 +104,11 @@ good to be transactional.
 
 ### Filesystem generators
 
-#### `+cat [paz=(list path)]`
+#### `+cal [paz=(list path)]`
+#### `+cat [pax=path]`
 
 Produce the noun, if any, at each of these (global) paths.
+`+cat` produces one result, `+cal` a list.
 
 #### `+ls [pax=path ~]`
 
@@ -115,6 +118,11 @@ Because generators aren't passed the dojo's default path, unlike
 the current directory in Unix, it's not possible to build an
 trivial `+ls` that's the equivalent of Unix `ls`.  You always
 have to write `+ls %`.
+
+#### `+ll [pax=path ~]`
+
+Like `+ls`, but the result is a list of full paths.  Useful as
+Urbit equivalent of the Unix wildcard `*`.
 
 ## A quick overview of `%clay`
 
@@ -408,13 +416,3 @@ trusted to provide updates.  Sometimes, it's useful to sync two
 desks to each other, so that changes to one or the other are
 mirrored.  Cyclical sync structures are normal and healthy.
 Also, one desk can be the target of multiple autosyncs.
-
-### Cancelling a merge
-
-Sometimes you start a merge that isn't going to finish quickly
-enough to suit your taste. If you find yourself in this awkward
-position,
-
-    |cancel %local-desk
-
-will get you out of it.

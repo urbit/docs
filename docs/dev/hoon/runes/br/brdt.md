@@ -1,27 +1,19 @@
-bardot, `|.`, %brdt
-============================
+`|.`
+====
 
-Trap
+Trap: `|=` with no argument & not called automatically
 
-`|.`, is a synthetic rune that produces a [dry]() [`%gold`]() trap. A
-trap is a [`door`]() with one only arm [`$`](), the empty name.
-
-The default action performed on a trap is kicking it by pulling the arm
-`$`. `|.` is similar to `|=` with no arguments. You can think of `|.` as
-a function that takes no inputs.
-
-See also
---------
-
-barhep, `|-`, %brhp](#brhp) [bartis, `|=`, %brts
+Similar to `|=` except that it takes no arguments and is not automatically
+called (you must activate it with the irregular wideform of `%-`, which is
+`()`. More specifically, its single arm [$]() (the empty name) is not automatically called when the [core]() is constructed. The core produced is both [dry] and [`%gold`](). Used to prevent thunk. XX
 
 Produces
 --------
 
 Twig: `[%brdt p=twig]`
 
-Sample
-------
+Accepts
+-------
 
 `p` is a [`++twig`]().
 
@@ -34,11 +26,6 @@ Wide form
 ---------
 
     |.(p)
-
-Irregular form
---------------
-
-None
 
 Examples
 --------

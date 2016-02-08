@@ -5,6 +5,24 @@ section 2eB, parsing (tracing)
 
 Farther trace
 
+Compares two line-column pairs, called [`++hair`]()s, `zyc` and `naz`, producing whichever
+is further along.
+
+Accepts
+-------
+
+`naz` is a [hair]().
+
+`zyc` is a [hair]().
+
+Produces
+--------
+
+a `++hair`.
+
+Source
+------
+
     ++  last  |=  [zyc=hair naz=hair]                       ::  farther trace
               ^-  hair
               ?:  =(p.zyc p.naz)
@@ -12,12 +30,9 @@ Farther trace
               ?:((gth p.zyc p.naz) zyc naz)
     ::
 
-Compares two line-column pairs, `zyc` and `naz`, and produces whichever
-[hair]() is farther along.
 
-`zyc` is a [hair]().
-
-`naz` is a [hair]().
+Examples
+--------
 
     ~zod/try=> (last [1 1] [1 2])
     [p=1 q=2]
@@ -34,16 +49,31 @@ Compares two line-column pairs, `zyc` and `naz`, and produces whichever
 
 Detect newline
 
+Advances the [`++hair`]() `naz` by a row if the [`++char`]() `weq` is a newline, or by a
+column if `weq` is any other character.
+
+Accepts
+-------
+
+`weq` is a char.
+
+`naz` is a hair.
+
+Produces
+--------
+
+A hair.
+
+Source
+------
+
     ++  lust  |=  [weq=char naz=hair]                       ::  detect newline
               ^-  hair
               ?:(=(10 weq) [+(p.naz) 1] [p.naz +(q.naz)])
 
-Advances the hair `naz` by a row if the char `weq` is a newline, or by a
-column if `weq` is any other character.
 
-`weq` is a [char]().
-
-`naz` is a [hair]().
+Examples
+--------
 
     ~zod/try=> (lust `a` [1 1])
     [p=1 q=2]

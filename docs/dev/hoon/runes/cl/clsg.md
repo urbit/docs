@@ -1,20 +1,19 @@
-colsig, `:~`, %clsg
-============================
+`:~`
+====
 
-Null-terminated tuple
+Null-terminated tuple of n elements
 
-`:~`, `colsig`, `[%clsg p=tusk]` is a synthetic rune that produces a
-null-terminated tuple.
+Closed with `==`.
 
 Produces
 --------
 
 Twig: `[%clsg p=tusk]`
 
-Sample
-------
+Accepts
+-------
 
-`p` is a [`++tusk`](), a list of twigs.
+`p` is a [`++tusk`](), a list of [`++twig`]()s.
 
 Tall form
 ---------
@@ -49,8 +48,7 @@ Examples
                 ==
     [5 3 4 2 1 ~]
 
-This is the most straightforward case of `:~`, producing a tuple of four
-values in wide, irregular and tall form.
+This is the most straightforward case of `:~`, producing a tuple in wide, irregular and tall form.
 
     /~zod/try=> %-  flop
                 %-  limo

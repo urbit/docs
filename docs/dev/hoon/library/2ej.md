@@ -5,15 +5,29 @@ section 2eJ, formatting (basic text)
 
 To lowercase
 
+Produce the case insensitive (all lowercase) [`++cord`]() of a [`++tape`]().
+
+Accepts
+-------
+
+`vib` is a `++tape`.
+
+Produces
+--------
+
+A `++cord`.
+
+Source
+------
+
     ++  cass                                                ::  lowercase
       |=  vib=tape
       %+  rap  3
       (turn vib |=(a=@ ?.(&((gte a 'A') (lte a 'Z')) a (add 32 a))))
     ::
 
-Produce the case insensitive (all lowercase) cord of a tape.
-
-`vib` is a [tape]().
+Examples
+--------
 
     ~zod/try=> (cass "john doe")
     7.309.170.810.699.673.450
@@ -30,6 +44,22 @@ Produce the case insensitive (all lowercase) cord of a tape.
 
 To uppercase
 
+Turn all occurances of lowercase letters in any [`++tape`]() into uppercase
+letters, as a [`++cord`]().
+
+Accepts
+-------
+
+`vib` is a `++tape`.
+
+Produces
+--------
+
+A `++cord`.
+
+Source
+------
+
     ++  cuss                                                ::  uppercase
       |=  vib=tape
       ^-  @t
@@ -37,10 +67,8 @@ To uppercase
       (turn vib |=(a=@ ?.(&((gte a 'a') (lte a 'z')) a (sub a 32))))
     ::
 
-Turn all occurances of lowercase letters in any tape into uppercase
-letters, as a cord.
-
-`vib` is a [tape]().
+Examples
+--------
 
     ~zod/try=> (cuss "john doe")
     'JOHN DOE'
@@ -57,11 +85,25 @@ letters, as a cord.
 
 Tape to cord
 
+Produce a [`++cord`]() from a [`++tape`]().
+
+Accepts
+-------
+
+`a` is a `++tape`.
+
+Produces
+--------
+
+A `++cord`.
+
+Source
+------
+
     ++  crip  |=(a=tape `@t`(rap 3 a))                      ::  tape to cord
 
-Produce cord from a tape.
-
-`a` is a [tape]().
+Examples
+--------
 
     ~zod/try=> (crip "john doe")
     'john doe'
@@ -76,6 +118,21 @@ Produce cord from a tape.
 
 Escape special chars
 
+Escape special characters, used in [`++show`](/doc/hoon/library/2ez#++show)
+
+Accepts
+-------
+
+`vib` is a [`++tape`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  mesc                                                ::  ctrl code escape
       |=  vib=tape
       ^-  tape
@@ -88,9 +145,8 @@ Escape special chars
       [i.vib $(vib t.vib)]
     ::
 
-Escape special characters, used in [`++show`](/doc/hoon/library/2ez#++show)
-
-`vib` is a [tape]().
+Examples
+--------
 
     /~zod/try=> (mesc "ham lus")
     "ham lus"
@@ -105,6 +161,23 @@ Escape special characters, used in [`++show`](/doc/hoon/library/2ez#++show)
 
 Prepend `n` times
 
+Add `a` repetitions of character `b` to the head of [`++tape`]() `c`.
+
+Accepts
+-------
+
+`a` and `b` are atoms.
+
+`c` is a `++tape`.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  runt                                                ::  prepend repeatedly
       |=  [[a=@ b=@] c=tape]
       ^-  tape
@@ -113,11 +186,8 @@ Prepend `n` times
       [b $(a (dec a))]
     ::
 
-Add `a` repetitions of character `b` to the head of `c`
-
-`a` and `b` are [atom]()s.
-
-`c` is a [tape]().
+Examples
+--------
 
     /~zod/try=> (runt [2 '/'] "ham")
     "//ham"
@@ -130,17 +200,31 @@ Add `a` repetitions of character `b` to the head of `c`
 
 Soft-cast by odor
 
+Soft-cast validity by [odor]().
+
+Accepts
+-------
+
+`a` is a [`++span`]() (`@ta`).
+
+`b` is an atom.
+
+Produces
+--------
+
+A `(unit ,@)`.
+
+Source
+------
+
     ++  sand                                                ::  atom sanity
       |=  a=@ta
       |=  b=@  ^-  (unit ,@)
       ?.(((sane a) b) ~ [~ b])
     ::
 
-Soft-cast validity by odor.
-
-`a` is a [`@ta`]().
-
-`b` is an [atom]().
+Examples
+--------
 
     /~zod/try=> `(unit ,@ta)`((sand %ta) 'sym-som')
     [~ ~.sym-som]
@@ -152,6 +236,23 @@ Soft-cast validity by odor.
 ### `++sane`
 
 Check odor validity
+
+Check validity by [odor](). Produces a [gate]().
+
+Accepts
+-------
+
+`a` is a [`++span`]() (`@ta`).
+
+`b` is an [atom]().
+
+Produces
+--------
+
+A boolean.
+
+Source
+------
 
     ++  sane                                                ::  atom sanity
       |=  a=@ta
@@ -189,11 +290,8 @@ Check odor validity
       ==
     ::
 
-Check validity by odor. Produces a gate.
-
-`a` is a [`@ta`]().
-
-`b` is an [atom]().
+Examples
+--------
 
     /~zod/try=> ((sane %tas) %mol)
     %.y
@@ -208,6 +306,23 @@ Check validity by odor. Produces a gate.
 
 Tape split
 
+Split first `a` characters off [`++tape`]() `b`.
+
+Accepts
+-------
+
+`a` is an atom.
+
+`b` is a `++tape`.
+
+Produces
+--------
+
+A cell of `++tape`s, `p` and `q`.
+
+Source
+------
+
     ++  trim                                                ::  tape split
       |=  [a=@ b=tape]
       ^-  [p=tape q=tape]
@@ -219,11 +334,8 @@ Tape split
       [[i.b p.c] q.c]
     ::
 
-Split first `a` characters off tape.
-
-`a` is an [atom]().
-
-`b` is a [tape]().
+Examples
+--------
 
     /~zod/try=> (trim 5 "lasok termun")
     [p="lasok" q=" termun"]
@@ -236,6 +348,21 @@ Split first `a` characters off tape.
 
 Cord to tape
 
+Produce a [`++tape`]() from [`++cord`]().
+
+Accepts
+-------
+
+`a` is an atom.
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  trip                                                ::  cord to tape
       ~/  %trip
       |=  a=@  ^-  tape
@@ -244,9 +371,8 @@ Cord to tape
       [^-(@ta (end 3 1 a)) $(a (rsh 3 1 a))]
     ::
 
-Produce tape from cord.
-
-`a` is an [atom]().
+Examples
+--------
 
     /~zod/try=> (trip 'john doe')
     "john doe"
@@ -261,6 +387,21 @@ Produce tape from cord.
 
 UTF8 Length
 
+Produces the number of utf8 bytes.
+
+Accepts
+-------
+
+`a` is a [`@t`]().
+
+Produces
+--------
+
+An atom.
+
+Source
+------
+
     ++  teff                                                ::  length utf8
       |=  a=@t  ^-  @
       =+  b=(end 3 1 a)
@@ -270,9 +411,8 @@ UTF8 Length
       ?:((lte b 127) 1 ?:((lte b 223) 2 ?:((lte b 239) 3 4)))
     ::
 
-Number of utf8 bytes.
-
-`a` is a [`@t`]().
+Examples
+--------
 
     /~zod/try=> (teff 'a')
     1
@@ -284,6 +424,21 @@ Number of utf8 bytes.
 ### `++turf`
 
 UTF8 to UTF32 cord
+
+Convert utf8 ([`++cord`]()) to utf32 codepoints.
+
+Accepts
+-------
+
+`a` is a [`@t`]().
+
+Produces
+--------
+
+A [`@c`](), UTF-32 codepoint.
+
+Source
+------
 
     ++  turf                                                ::  utf8 to utf32
       |=  a=@t
@@ -305,9 +460,8 @@ UTF8 to UTF32 cord
       $(a (rsh 3 b a))
     ::
 
-Convert utf8 ([cord]()) to utf32 codepoints.
-
-`a` is a [`@t`]().
+Examples
+--------
 
     /~zod/try=> (turf 'my ßam')
     ~-my.~df.am
@@ -326,15 +480,29 @@ Convert utf8 ([cord]()) to utf32 codepoints.
 
 UTF8 to UTF32 tape
 
+Convert [`++tape`]() to a [`++list`]() of codepoints ([`@c`]()).
+
+Accepts
+-------
+
+`a` is a `++tape`.
+
+Produces
+--------
+
+A `++list` of codepoints [`@c`]().
+
+Source
+------
+
     ++  tuba                                                ::  utf8 to utf32 tape
       |=  a=tape
       ^-  (list ,@c)
       (rip 5 (turf (rap 3 a)))                              ::  XX horrible
     ::
 
-Convert tape to list of codepoints.
-
-`a` is a [tape]()
+Examples
+--------
 
     /~zod/try=> (tuba "я тут")
     ~[~-~44f. ~-. ~-~442. ~-~443. ~-~442.]
@@ -347,6 +515,21 @@ Convert tape to list of codepoints.
 
 UTF32 to UTF8 tape
 
+Wrap a [`++list`]() of utf32 codepoints into a utf8 [`++tape`]().
+
+Accepts
+-------
+
+`a` is a `++list` of [`@c`]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
+
     ++  tufa                                                ::  utf32 to utf8 tape
       |=  a=(list ,@c)
       ^-  tape
@@ -354,9 +537,8 @@ UTF32 to UTF8 tape
       (weld (rip 3 (tuft i.a)) $(a t.a))
     ::
 
-Wrap list of utf32 codepoints to utf8 [tape]().
-
-`a` is a [list]() of [`@c`]().
+Examples
+--------
 
     /~zod/try=> (tufa ~[~-~44f. ~-. ~-~442. ~-~443. ~-~442.])
     "я тут"
@@ -368,6 +550,22 @@ Wrap list of utf32 codepoints to utf8 [tape]().
 ### `++tuft`
 
 UTF32 to UTF8 text
+
+Convert utf32 glyph to
+[LSB](http://en.wikipedia.org/wiki/Least_significant_bit) utf8 [`++cord`]().
+
+Accepts
+-------
+
+`a` is a codepoint ([`@c`]()).
+
+Produces
+--------
+
+A `++cord`.
+
+Source
+------
 
     ++  tuft                                                ::  utf32 to utf8 text
       |=  a=@c
@@ -399,10 +597,8 @@ UTF32 to UTF8 text
       ==
     ::
 
-Convert utf32 glyph to
-[LSB](http://en.wikipedia.org/wiki/Least_significant_bit) utf8 cord.
-
-`a` is a [`@c`]().
+Examples
+--------
 
     /~zod/try=> (tuft `@c`%a)
     'a'
@@ -414,6 +610,21 @@ Convert utf32 glyph to
 ### `++wack`
 
 Coin format encode
+
+Escape [`++span`]() `~` as `~~` and `_` as `~-`. Used for printing.
+
+Accepts
+-------
+
+`a` is a `++span` (`@ta`).
+
+Produces
+--------
+
+A [`++span`]() (`@ta`).
+
+Source
+------
 
     ++  wack                                                ::  coin format
       |=  a=@ta
@@ -428,9 +639,8 @@ Coin format encode
       [i.b $(b t.b)]
     ::
 
-Escape span `~` as `~~` and `_` as `~-`. Used for printing.
-
-`a` is a [`@ta`]().
+Examples
+--------
 
     /~zod/try=> (wack '~20_sam~')
     ~.~~20~-sam~~
@@ -447,6 +657,21 @@ Escape span `~` as `~~` and `_` as `~-`. Used for printing.
 
 Coin format decode
 
+Unescape [`++span`]() `~~` as `~` and `~-` as `_`.
+
+Accepts
+-------
+
+`a` is a an [atom]().
+
+Produces
+--------
+
+A [`++span`]() `@ta`.
+
+Source
+------
+
     ++  wick                                                ::  coin format
       |=  a=@
       ^-  @ta
@@ -461,9 +686,8 @@ Coin format decode
       [i.b $(b t.b)]
     ::
 
-Unescape span `~~` as `~` and `~-` as `_`.
-
-`a` is a an [atom]().
+Examples
+--------
 
     /~zod/try=> `@t`(wick '~-ams~~lop')
     '_ams~lop'
@@ -475,6 +699,21 @@ Unescape span `~~` as `~` and `~-` as `_`.
 ### `++woad`
 
 Unescape cord
+
+Unescape [`++cord`]() codepoints.
+
+Accepts
+-------
+
+`a` is a [`@ta`]().
+
+Produces
+--------
+
+A [`++cord`]().
+
+Source
+------
 
     ++  woad                                                ::  cord format
       |=  a=@ta
@@ -510,9 +749,8 @@ Unescape cord
       ==
     ::
 
-Unescape cord codepoints.
-
-`a` is a [`@ta`]().
+Examples
+--------
 
     /~zod/try=> (woad ~.~b6.20.as)
     '¶20 as'
@@ -522,6 +760,21 @@ Unescape cord codepoints.
 ### `++wood`
 
 Escape cord
+
+Escape [`++cord`]() codepoints.
+
+Accepts
+-------
+
+`a` is a [`++span`]() (`@ta`).
+
+Produces
+--------
+
+A [`++span`]() (`@ta`).
+
+Source
+------
 
     ++  wood                                                ::  cord format
       |=  a=@t
@@ -553,9 +806,8 @@ Escape cord
         %'~'  ['~' '~' d]
       ==
 
-Escape cord codepoints.
-
-`a` is a [`@ta`]().
+Examples
+--------
 
     /~zod/try=> (wood 'my ßam')
     ~.my.~df.am

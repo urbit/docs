@@ -17,6 +17,22 @@ Used in the `@p` phonetic base.
 
 Conceal structure
 
+Scrambles a bytestring `pyn` by adding the current position to each
+byte, looking it up in an s-box, and then performing the XOR operation
+on the result, pushing it forward. Produces an atom.
+
+Accepts
+-------
+
+`pyn` is an [atom]().
+
+
+Produces
+--------
+
+Source
+------
+
       ++  wren                                              ::  conceal structure
         |=  pyn=@  ^-  @
         =+  len=(met 3 pyn)
@@ -35,11 +51,8 @@ Conceal structure
         [[1 mog] $(mig mog)]
       ::
 
-Scrambles a bytestring `pyn` by adding the current position to each
-byte, looking it up in an s-box, and then performing the XOR operation
-on the result, pushing it forward. Produces an atom.
-
-`pyn` is an [atom]().
+Examples
+--------
 
     ~zod/try=> `@ux`(wren:un 'testing')
     0x30.bf6a.b9fe.7d8f
@@ -53,6 +66,21 @@ on the result, pushing it forward. Produces an atom.
 ### `++wred`
 
 Restore structure
+
+Unscrambles a bytestring `cry` by subtracting the current position from
+each byte, looking it up in an s-box, and performing the XOR operation
+on the result, pushing it forward. Produces an atom.
+
+Accepts
+-------
+
+`cry` is an [atom]().
+
+Produces
+--------
+
+Source
+------
 
       ++  wred                                              ::  restore structure
         |=  cry=@  ^-  @
@@ -72,11 +100,8 @@ Restore structure
         [[1 :(mix mig (end 3 1 len) (zyrt mog))] $(mig mog)]
       ::
 
-Unscrambles a bytestring `cry` by subtracting the current position from
-each byte, looking it up in an s-box, and performing the XOR operation
-on the result, pushing it forward. Produces an atom.
-
-`cry` is an [atom]().
+Examples
+--------
 
     ~zod/try=> (wred:un 0x30.bf6a.b9fe.7d8f)
     29.113.321.805.538.676
@@ -91,9 +116,20 @@ on the result, pushing it forward. Produces an atom.
 
 Add modulo 255
 
+Produces the sum of two atoms modulo 255, encoded as a nonzero byte.
+
+Accepts
+-------
+
+A cell of two atoms, `a` and `b`.
+
+Source
+------
+
       ++  xafo  |=([a=@ b=@] +((mod (add (dec b) a) 255)))
 
-Produces the sum of two atoms modulo 255, encoded as a nonzero byte.
+Examples
+--------
 
     ~zod/try=> (xafo:un 5 6)
     11
@@ -106,10 +142,26 @@ Produces the sum of two atoms modulo 255, encoded as a nonzero byte.
 
 Subtract modulo 255
 
-      ++  xaro  |=([a=@ b=@] +((mod (add (dec b) (sub 255 (mod a 255))) 255)))
-
 Produces the difference between two atoms modulo 255, encoded as a
 nonzero byte.
+
+Accepts
+-------
+
+A cell of two atoms, `a` and `b`.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
+
+      ++  xaro  |=([a=@ b=@] +((mod (add (dec b) (sub 255 (mod a 255))) 255)))
+
+Examples
+--------
 
     ~zod/try=> (xaro:un 17 57)
     40
@@ -121,6 +173,23 @@ nonzero byte.
 ### `++zaft`
 
 Look up in 255 sub box
+
+The inverse of [`++zart`](). Looks up a nonzero byte`a\` in a substiution
+box with 255 values, producing a unique nonzero byte.
+
+Accepts
+-------
+
+`a` is an atom of one byte in length.
+
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
       ++  zaft                                              ::  forward 255-sbox
         |=  a=@D
@@ -139,10 +208,8 @@ Look up in 255 sub box
         (cut 3 [(dec a) 1] b)
       ::
 
-The inverse of [`++zart`](). Looks up a nonzero byte`a\` in a substiution
-box with 255 values, producing a unique nonzero byte.
-
-`a` is an [atom]() of one byte in length.
+Examples
+--------
 
     ~zod/try=> (zaft:un 0x12)
     42
@@ -157,6 +224,22 @@ box with 255 values, producing a unique nonzero byte.
 ### `++zart`
 
 Reverse look up in 255 sub box
+
+The inverse of [`++zaft`](). Looks up the index of a nonzero byte `a` in
+the substitution box with 255 values, producing a unique nonzero byte.
+
+Accepts
+-------
+
+`a` is an atom of one byte in length.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
       ++  zart                                              ::  reverse 255-sbox
         |=  a=@D
@@ -175,10 +258,8 @@ Reverse look up in 255 sub box
         (cut 3 [(dec a) 1] b)
       ::
 
-The inverse of [`++zaft`](). Looks up the index of a nonzero byte `a` in
-the substitution box with 255 values, producing a unique nonzero byte.
-
-`a` is an [atom]() of one byte in length.
+Examples
+--------
 
     ~zod/try=> `@ux`(zart:un 204)
     0xff
@@ -190,6 +271,22 @@ the substitution box with 255 values, producing a unique nonzero byte.
 ### `++zyft`
 
 Lookup byte in 256 sub box
+
+The inverse of [`++zyrt`](). Looks up a byte `a` in a substituion box
+with 256 values, producing a byte.
+
+Accepts
+-------
+
+`a` is an [atom]() of one byte in length.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
       ++  zyft                                              ::  forward 256-sbox
         |=  a=@D
@@ -209,10 +306,8 @@ Lookup byte in 256 sub box
         (cut 3 [a 1] b)
       ::
 
-The inverse of [`++zyrt`](). Looks up a byte `a` in a substituion box
-with 256 values, producing a byte.
-
-`a` is an [atom]() of one byte in length.
+Examples
+--------
 
     ~zod/try=> (zyft:un 0x12)
     57
@@ -226,6 +321,22 @@ with 256 values, producing a byte.
 ### `++zyrt`
 
 Reverse lookup byte in 256 sub box
+
+The inverse of [`++zyft`](/doc/hoon/library/2en#++zyft). Looks up a byte `a` in a substituion box
+with 256 values, producing a byte.
+
+Accepts
+-------
+
+`a` is an [atom]() of one byte in length.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
       ++  zyrt                                              ::  reverse 256-sbox
         |=  a=@D
@@ -244,10 +355,8 @@ Reverse lookup byte in 256 sub box
               df4d.225e.2d56.7fd6.1395.a3f8.c582
         (cut 3 [a 1] b)
 
-The inverse of [`++zyft`](/doc/hoon/library/2en#++zyft). Looks up a byte `a` in a substituion box
-with 256 values, producing a byte.
-
-`a` is an [atom]() of one byte in length.
+Examples
+--------
 
     ~zod/try=> `@ux`(zyrt:un 57)
     0x12
@@ -271,6 +380,23 @@ A core for performing reversible scrambling operations for the `@p` phonetic bas
 
 Conceal structure, v2
 
+Randomly permutes atoms that fit into 17 to 32 bits into one another. If the
+atom fits into 33 to 64 bits, does the same permutation on the low 32 bits
+only. Otherwise, passes the atom through unchanged.
+
+Accepts
+-------
+
+An atom.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
+
     ++  feen                                              ::  conceal structure v2
       |=  pyn=@  ^-  @
       ?:  &((gte pyn 0x1.0000) (lte pyn 0xffff.ffff))
@@ -282,11 +408,33 @@ Conceal structure, v2
         (add 0x1.0000 (fice (sub lo 0x1.0000)))
       pyn
 
-Randomly permutes atoms that fit into 17 to 32 bits into one another. If the atom fits into 33 to 64 bits, does the same permutation on the low 32 bits only. Otherwise, passes the atom through unchanged.
+Examples
+--------
+
 
 ------------------------------------------------------------------------
 
 ### `++fend`
+
+XX
+
+Randomly permutes atoms that fit into 17 to 32 bits into one another, and
+randomly permutes the low 32 bits of atoms that fit into 33 to 64 bits;
+otherwise, passes the atom through unchanged. The permutation is the inverse of
+the one applied by [`++feen`]().
+
+Accepts
+-------
+
+An atom.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
     ++  fend                                              ::  restore structure v2
       |=  cry=@  ^-  @
@@ -299,11 +447,29 @@ Randomly permutes atoms that fit into 17 to 32 bits into one another. If the ato
         (add 0x1.0000 (teil (sub lo 0x1.0000)))
       cry
 
-Randomly permutes atoms that fit into 17 to 32 bits into one another, and randomly permutes the low 32 bits of atoms that fit into 33 to 64 bits; otherwise, passes the atom through unchanged. The permutation is the inverse of the one applied by [`++feen`]().
+Examples
+--------
 
 ------------------------------------------------------------------------
 
 ### `++fice`
+
+XX
+
+Applies a 3-round Feistel-like cipher to randomly permute atoms in the range `0` to `2^32 - 2^16`. The construction given in Black and Rogaway is ideal for a domain with a size of that form, and as with a conventionel Feistel cipher, three rounds suffice to make the permutation pseudorandom.
+
+Accepts
+-------
+
+An atom.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
     ++  fice                                              ::  adapted from
       |=  nor=@                                           ::  black and rogaway
@@ -315,11 +481,32 @@ Randomly permutes atoms that fit into 17 to 32 bits into one another, and random
       [(mod nor 65.535) (div nor 65.535)]
       (add (mul 65.535 -.sel) +.sel)
 
-Applies a 3-round Feistel-like cipher to randomly permute atoms in the range `0` to `2^32 - 2^16`. The construction given in Black and Rogaway is ideal for a domain with a size of that form, and as with a conventionel Feistel cipher, three rounds suffice to make the permutation pseudorandom.
+Examples
+--------
 
 ------------------------------------------------------------------------
 
 ### `++teil`
+
+XX
+
+Applies the reverse of the Feistel-like cipher applied by [`++fice`](). Unlike
+a conventional Feistel cipher that is its own inverse if keys are used in
+reverse order, this Feistel-like cipher uses two moduli that must be swapped
+when applying the reverse transformation.
+
+Accepts
+-------
+
+An atom.
+
+Produces
+--------
+
+An atom.
+
+Source
+------
 
     ++  teil                                              ::  reverse ++fice
       |=  vip=@
@@ -331,11 +518,30 @@ Applies a 3-round Feistel-like cipher to randomly permute atoms in the range `0`
       [(mod vip 65.535) (div vip 65.535)]
       (add (mul 65.535 -.sel) +.sel)
 
-Applies the reverse of the Feistel-like cipher applied by [`++fice`](). Unlike a conventional Feistel cipher that is its own inverse if keys are used in reverse order, this Feistel-like cipher uses two moduli that must be swapped when applying the reverse transformation.
+Examples
+--------
 
 ------------------------------------------------------------------------
 
 ### `++rynd`
+
+XX
+
+A single round of the Feistel-like cipher [`++fice`](). AES ([`++aesc`]()) is
+used as the round function.
+
+Accepts
+-------
+
+A cell of three atoms, `n`, `l`, and `r`.
+
+Produces
+--------
+
+A cell of two atoms.
+
+Source
+------
 
     ++  rynd                                              ::  feistel round
       |=  [n=@ l=@ r=@]
@@ -345,11 +551,29 @@ Applies the reverse of the Feistel-like cipher applied by [`++fice`](). Unlike a
         (~(sum fo 65.535) l (en:aesc (snag n raku) r))
       (~(sum fo 65.536) l (en:aesc (snag n raku) r))
 
-A single round of the Feistel-like cipher [`++fice`](). AES ([`++aesc`]()) is used as the round function.
+Examples
+--------
 
 ------------------------------------------------------------------------
 
 ### `++rund`
+
+XX
+
+A single round of the Feistel-like reverse cipher [`++teil`]().
+
+Accepts
+-------
+
+A cell of three atoms, `n`, `l`, and `r`.
+
+Produces
+--------
+
+A cell of two atoms.
+
+Source
+------
 
     ++  rund                                              ::  reverse round
       |=  [n=@ l=@ r=@]
@@ -359,11 +583,28 @@ A single round of the Feistel-like cipher [`++fice`](). AES ([`++aesc`]()) is us
         (~(dif fo 65.535) l (en:aesc (snag n raku) r))
       (~(dif fo 65.536) l (en:aesc (snag n raku) r))
 
-A single round of the Feistel-like reverse cipher [`++teil`]().
+Examples
+--------
 
 ------------------------------------------------------------------------
 
 ### `++raku`
+
+XX
+
+
+Accepts
+-------
+
+A list of atoms of [odor]() [`@ux`]() (hexadecimal).
+
+Produces
+--------
+
+Arbitrary keys for use with [`++aesc`]().
+
+Source
+------
 
     ++  raku
       ^-  (list ,@ux)
@@ -375,4 +616,6 @@ A single round of the Feistel-like reverse cipher [`++teil`]().
             6f5f.ab8e.88b9.c089.b2dc.95a6.aed5.e3a4
       ==
 
-Arbitrary keys for use with [`++aesc`]().
+Examples
+--------
+

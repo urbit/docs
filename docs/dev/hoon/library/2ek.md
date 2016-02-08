@@ -5,12 +5,21 @@ section 2eK, formatting (layout)
 
 Pretty-printing engine
 
+Pretty-printing engine that accepts a [`++tank`](/doc/hoon/library/1#++tank) [sample]() and contains arms that perform computation on it.
+
+Accepts
+-------
+
+`tac` is a `++tank`.
+
+Produces
+--------
+
     ++  re
       |_  tac=tank
 
-Pretty-printing engine.
-
-`tac` is a [`++tank`](/doc/hoon/library/1#++tank).
+Examples
+--------
 
     /~zod/try=> ~(. re leaf/"ham")
     <2.ghl [[%leaf ""] <414.gly 100.xkc 1.ypj %164>]>
@@ -18,6 +27,21 @@ Pretty-printing engine.
 ### `++ram`
 
 Flatten to tape
+
+Flatten [`++tank`]() out into a [`++tape`]().
+
+Accepts
+-------
+
+`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+
+Produces
+--------
+
+A `++tape`.
+
+Source
+------
 
       ++  ram
         ^-  tape
@@ -35,7 +59,8 @@ Flatten to tape
         ==
       ::
 
-Flatten tank out into a tape.
+Examples
+--------
 
     /~zod/try=> ~(ram re leaf/"foo")
     "foo"
@@ -45,6 +70,23 @@ Flatten tank out into a tape.
 ### `++win`
 
 Render at indent
+
+Render at indent level `tab` and width `edg`.
+
+Accepts
+-------
+
+`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+
+`tab` and `edg` are atoms.
+
+Produces
+--------
+
+A [`++wall`]() ([`++list`]() of [`++tapes`]()).
+
+Source
+------
 
       ++  win
         |=  [tab=@ edg=@]
@@ -86,9 +128,8 @@ Render at indent
             ==
         ::
 
-Render at indent level `tab` and width `edg`.
-
-`tab` and `edg` are [atom]()s.
+Examples
+--------
 
     /~zod/try=> (~(win re leaf/"samoltekon-lapdok") 0 20)
     <<"samoltekon-lapdok">>
@@ -101,21 +142,69 @@ Render at indent level `tab` and width `edg`.
 
 ### `++din`
 
+XX document
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
         ++  din  (mod (add 2 tab) (mul 2 (div edg 3)))
 
-XX document
+
+----------------------------------------------------------------------
 
 ### `++fit`
 
 Fit on one line test
 
-        ++  fit  (lte (lent ram) (sub edg tab))
-
 Determine whether `tac` fits on one line. Internal to `++win`
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+++  fit  (lte (lent ram) (sub edg tab))
+
+
+Examples
+--------
+
+
+
+
+----------------------------------------------------------------------
 
 ### `++rig`
 
 Wrap in `\/`
+
+Wrap [`++tape`]() in `\/` if it doesn't fit at current indentation. Internal to
+[`++win`]()
+
+Accepts
+-------
+
+`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+
+`hom` is a `++tape`.
+
+Produces
+--------
+
+A [`++wall`]() (list of `++tape`s).
+
+Source
+------
 
         ++  rig
           |=  hom=tape
@@ -136,12 +225,24 @@ Wrap in `\/`
           [(runt [tab ' '] p.mut) $(hom q.mut)]
         ::
 
-Wrap tape in `\/` if it doesn't fit at current indentation. Internal to
-`++win`
+Examples
+--------
 
 ### `++wig`
 
 `++win` render tape
+
+Render [`++tape`](). Internal to [`++win`]().
+
+Accepts
+-------
+
+`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+
+`hom` is a `++tape`.
+
+Produces
+--------
 
         ++  wig
           |=  hom=tape
@@ -159,4 +260,5 @@ Wrap tape in `\/` if it doesn't fit at current indentation. Internal to
         --
       --
 
-Render tape. Internal to `++win`.
+Examples
+--------
