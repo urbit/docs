@@ -83,7 +83,13 @@ main commands to do this.
 
 This pulls a bunch of examples from `~wactex-ribmex`'s `%examples`
 desk and puts them in our `%examples` desk.  A desk is a
-branch (in the git branch sense) of our filesystem.
+branch (in the git branch sense) of our filesystem.  If you want to
+inspect these files in Unix you'll need to mount the `%examples` 
+desk:
+
+    ~fintud-macrep:dojo> |mount /=examples= %examples
+
+This should result in a `/examples` folder inside your pier.
 
 You can, of course, merge the examples into your `%home`
 (default) desk if you wish.  Merging into a new desk creates it,
