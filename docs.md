@@ -4,9 +4,9 @@ anchor: none
 
 <div class="lead">
     <div class="logo inverse blue">~</div>
-    <h1 class="blue i-b">Urbit documentation</h1>
+    <h1 class="blue i-b">Urbit docs</h1>
 </div>
 
-<div class="sections col-md-offset-2">
+<div class="sections lead-offset">
     <kids></kids>
 </div>
