@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-arvo
+Arvo
 ====
 
 Our operating system.

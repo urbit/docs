@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# `hoon`
+# Hoon
 
 Hoon is our programming language.
 
