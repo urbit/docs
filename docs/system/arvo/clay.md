@@ -1,4 +1,6 @@
-<div class="short">
+---
+sort: 3
+---
 
 `%clay`
 =======
@@ -19,9 +21,5 @@ control algorithms, which are mostly defined in `++ze` and `++zu` in
 zuse. Second is the write, query, and subscription logic. Finally, there
 is the logic for communicating requests to, and receiving requests from,
 foreign ships.
-
-</div>
-
-------------------------------------------------------------------------
 
 <list></list>

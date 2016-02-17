@@ -1,4 +1,6 @@
-<div class="short">
+---
+sort: 1
+---
 
 `%ames`
 =======
@@ -22,8 +24,4 @@ routing is handled entirely in `%ames`. Finally, the actual `%ames`
 protocol itself, including how to route incoming packets to the correct
 vane or app, is defined in `%ames`.
 
-</div>
-
-<hr>
-</hr>
 <list></list>

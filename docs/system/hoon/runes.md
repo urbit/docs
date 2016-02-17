@@ -1,5 +1,3 @@
-<div class="short">
-
 Runes
 =====
 
@@ -11,10 +9,6 @@ Runes are loosely divided into categories by their first character. To
 find documentation on each individual category, follow these links:
 
 <list></list>
-
-<search/>
-
-</div>
 
 ------------------------------------------------------------------------
 
