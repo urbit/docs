@@ -1,7 +1,6 @@
-References
-==========
+Quick references
+================
 
-Aside from the runes and standard library there are a few things worth
-knowing about the hoon language. You can find those here.
+These are designed to live by your side while programming.  Short, simple references for the average hoon programmer.
 
 <list></list>

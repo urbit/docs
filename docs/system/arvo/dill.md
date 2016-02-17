@@ -1,4 +1,6 @@
-<div class="short">
+---
+sort: 4
+---
 
 `%dill`
 =======
@@ -21,7 +23,3 @@ handles terminal events, keystroke by keystroke. Most characters are
 simply pushed onto the buffer and blitted to the screen, but some
 characters, including control-modified keys, arrow keys, etc. require
 special handling. Most of the readline functionality is in `%dill`.
-
-</div>
-
-------------------------------------------------------------------------

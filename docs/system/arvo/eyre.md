@@ -1,4 +1,6 @@
-<div class="short">
+---
+sort: 5
+---
 
 `%eyre`
 =======
@@ -15,10 +17,6 @@ ways, depending on the control string. Nearly all of these are
 essentially stateless, like functional publishing with `%ford`.
 Additionally, there's a fairly significant component that handles
 `%gall` messaging and subscriptions, which must be stateful.
-
-</div>
-
-------------------------------------------------------------------------
 
 HTTP Methods
 ============
@@ -57,7 +55,4 @@ Unsubscribe from stream `[stream]` on a foreign Urbit.
 urb.js
 ======
 
-
-<hr>
-</hr>
 <list></list>
