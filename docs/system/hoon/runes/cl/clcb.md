@@ -1,7 +1,7 @@
-`:_`
-====
+`:_ colcab`
+===========
 
-Inverted tuple of `p` `q`
+Inverted tuple of `p` `q`.
 
 Exists for code readability and organization. See the [backstep]() convention.
 

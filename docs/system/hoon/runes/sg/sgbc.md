@@ -1,7 +1,7 @@
-`~$`
-====
+`~$ sigbuc`
+===========
 
-Label for profiling
+Label for profiling.
 
 Labels computation `q` as `p` for profiling.
 

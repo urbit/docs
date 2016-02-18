@@ -1,7 +1,7 @@
-`%+`
-====
+`%+ cenlus`
+===========
 
-Call function w/two arguments
+Call function w/ two arguments.
 
 Calls the one arm ([$]()) from the [door]() `p` with its [sample]() set to `[%cntr q r]`.
 

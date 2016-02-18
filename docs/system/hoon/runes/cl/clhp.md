@@ -1,7 +1,7 @@
-`:-`
-====
+`:- colhep`
+===========
 
-Tuple of two
+Tuple of two.
 
 Produces
 --------

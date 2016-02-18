@@ -1,7 +1,7 @@
-`?!`
+`?! wutzap`
 ====
 
-Logical not
+Logical not.
 
 Produces the logical "not" of `p`.
 

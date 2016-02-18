@@ -1,7 +1,11 @@
-`|_`
-====
+---
+sort: 7
+---
 
-Door: core with sample (input values)
+`|_ barcab`
+===========
+
+Door: core with sample (input values).
 
 Similar to [`|%`](), but also takes input data (aka [sample]())
 available within the entire core. Cores of this type are called doors.

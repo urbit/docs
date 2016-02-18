@@ -1,7 +1,7 @@
-`.=`
-====
+`.= dottis`
+===========
 
-Test equality
+Test equality.
 
 Nock operator 5: tests two nouns `p` and `q` for equality, producing a boolean.
 

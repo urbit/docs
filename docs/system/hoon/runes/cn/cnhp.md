@@ -1,7 +1,7 @@
-`%-`
-====
+`%- cenhep`
+===========
 
-Call function w/one argument
+Call function w/ one argument.
 
 Call function with one argument. Has an irregular wideform syntax: `(function[arg0 arg1...])`, which can takes n arguments enclosed within the `()`. Note
 that one can also pass a tall form (or wide form) function called with `%-` a tuple with `n` elements for functions that require more than one argument.

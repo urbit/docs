@@ -1,7 +1,7 @@
-sigzap, `~!`, %sgzp
-============================
+`~! sigzap`
+===========
 
-Print type on compilation fail
+Print type on compilation fail.
 
 `~!` is a natural rune for debugging uses only, semantically equivalent
 to [`++twig`] `q`. If compilation fails within `q`, `~!` will show the

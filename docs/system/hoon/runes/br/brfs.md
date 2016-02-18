@@ -1,7 +1,11 @@
-`|/`
-====
+---
+sort: 8
+---
 
-`|_` with well typed output
+`|/ barfas`
+===========
+
+`|_` with well typed output.
 
 Similar to `|_` except that it takes and produces well-typed output. XX
 

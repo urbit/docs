@@ -1,7 +1,7 @@
-`;-`
+`;- semhep`
 ====
 
-Interpolate string
+Interpolate string.
 
 Interpolates a string (aka [++tape]()) into a [`++marl`](), our datastructure for XML.
 

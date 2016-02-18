@@ -1,7 +1,7 @@
-`?|`
+`?| wutbar`
 ====
 
-Logical 'or'
+Logical 'or'.
 
 Computes the logical 'or' operation on a list of boolean expressions `p`.
 

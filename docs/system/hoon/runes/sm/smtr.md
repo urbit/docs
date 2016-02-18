@@ -1,7 +1,7 @@
-`;*`
-====
+`;* semtar`
+===========
 
-Interpolate list of XML nodes
+Interpolate list of XML nodes.
 
 Interpolates a list of XML nodes within our XML template syntax (aka sail)
 

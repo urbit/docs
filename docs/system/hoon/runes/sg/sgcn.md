@@ -1,7 +1,7 @@
-`~%`
-====
+`~% sigcen`
+===========
 
-Register jet
+Register jet.
 
 Registers a jet in core `s` so that it can be called when that code is run.
 

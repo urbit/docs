@@ -1,7 +1,7 @@
-`%~`
-====
+`%~ censig`
+===========
 
-Call arm in door w/argument
+Call arm in door w/ argument.
 
 Evaluates the expression addressed at `p` within core
 `q` whose input data ([sample]()) is set to `r`. Used frequently with

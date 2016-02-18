@@ -1,7 +1,7 @@
-haxgar, `#>`, %hxgr
-============================
+`#> haxgar`
+===========
 
-Prettyprint `++tank`
+Prettyprint `++tank`.
 
 `#>`, `haxgar`, `[%hxgr p=tusk]`is a synthetic rune that slams the
 assumed gate `cain` on `[%zpgr %cntr p]`.

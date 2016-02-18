@@ -1,5 +1,7 @@
-ketwut, `^?`, %ktwt
-============================
+`^? ketwut`
+===========
+
+Convert `%gold` to `%lead`.
 
 Used to convert a [core]() whose context is unreadable (aka
 a %gold core) to a core both of whose context and sample are

@@ -1,7 +1,7 @@
-`$=` 
-====
+`$= buctis` 
+===========
 
-Add variable name
+Add variable name.
 
 Wraps a [++face]() around another [mold](). Used primarily to add variable names to values.
 

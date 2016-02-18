@@ -1,7 +1,7 @@
-`!!`
+`!! zapzap`
 ====
 
-Crash
+Crash.
 
 `!!` is a natural rune that always crashes.
 

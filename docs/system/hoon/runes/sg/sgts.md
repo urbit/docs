@@ -1,7 +1,7 @@
-`~=`
-====
+`~= sigtis`
+===========
 
-Hint to avoid duplication
+Hint to avoid duplication.
 
 Hints to the interpreter that `q` may produce a noun equal to the
 already existing `p` in order to avoid storing the same noun twice.

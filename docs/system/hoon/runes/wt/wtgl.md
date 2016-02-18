@@ -1,7 +1,7 @@
-`?<`
+`?< wutgal`
 ====
 
-Assert `p` is false
+Assert `p` is false.
 
 Asserts that `p` is false before evaluating `q`. Crashes if `p` evaluates to false.
 

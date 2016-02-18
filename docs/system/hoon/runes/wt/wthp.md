@@ -1,7 +1,7 @@
-`?-`
+`?- wuthep`
 ====
 
-Switch
+Switch.
 
 Different from the traditional switch statement in that it switches on a type instead of a value. More specifically, the labels in `q` must match the [span]() of `p`. `q` must be terminated with a `==`.
 

@@ -1,5 +1,7 @@
-`=+`
+`=+ tislus`
 ====
+
+Assign.
 
 Easiest way to declare variables. Pushes a new variable `p` onto the
 subject and then executes `q` against it.

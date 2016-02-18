@@ -1,7 +1,7 @@
-`~+`
-====
+`~+ siglus`
+===========
 
-Memoize computation
+Memoize computation.
 
 Hints to the interpreter to memoize (cache) the computation of `p`.
 

@@ -1,7 +1,11 @@
-`|.`
-====
+---
+sort: 3
+---
 
-Trap: `|=` with no argument & not called automatically
+`|. bardot`
+===========
+
+Trap: `|=` with no argument & not called automatically.
 
 Similar to `|=` except that it takes no arguments and is not automatically
 called (you must activate it with the irregular wideform of `%-`, which is

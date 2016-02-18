@@ -1,7 +1,7 @@
-`!;`
+`!; zapsem`
 ====
 
-`[type noun]` pair
+`[type noun]` pair.
 
 `!;` is a natural rune that produces the product of twig `q` as a
 `[type noun]` pair, with twig `p` serving as an example of the type.

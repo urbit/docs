@@ -1,7 +1,7 @@
-`~_`
-====
+`~_ sigcab`
+===========
 
-Pre-formatted stackframe into stacktrace
+Pre-formatted stackframe into stacktrace.
 
 Inserts pre-formatted stackframe `p` into the stacktrace of `q`. 
 In hoon terminology, inserts `p`, a [trap]() producing a [++`tank`]() (pretty printed text), in the trace of `q`.

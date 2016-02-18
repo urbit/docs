@@ -1,7 +1,7 @@
-semzaz
-===============
+`semzaz`
+========
 
-[`++sail`]() tag
+`++sail` tag.
 
 `semzaz`, is a virtual rune frequently referred to as [`++sail`]() in
 reference to `++sail`:vast which parses it. It is the most basic part of

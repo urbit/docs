@@ -1,7 +1,7 @@
-`;;`
+`;; semsem`
 ====
 
-Fixpoint
+Fixpoint.
 
 `;;` is a synthetic rune that types `q` as a fixpoint of `p`. More
 specifically, `;;` slams `q` through gate `p`, asserting that the

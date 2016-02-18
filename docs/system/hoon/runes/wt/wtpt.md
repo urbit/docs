@@ -1,7 +1,7 @@
-`?@`
+`?@ wutpat`
 ====
 
-If atom-then-else
+If atom-then-else.
 
 If-then-else statement that tests whether `p` is an atom, producing `q` if true and `r` if false.
 

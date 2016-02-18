@@ -1,7 +1,7 @@
-`;:`
+`;: semcol`
 ====
 
-Fold over tuple
+Fold over tuple.
 
 Apply a binary function `p` to a tuple `q` with n elements. Similar to folding over the tuple `q`.
 

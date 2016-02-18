@@ -1,8 +1,10 @@
-`=^`
+`=^ tisket`
 ====
 
+State monad.
+
 Used to both push a new variable on the subject as well as change the
-value of another.Similar to `=+` in that it pushes a value on the stack with
+value of another. Similar to `=+` in that it pushes a value on the stack with
 variable name (face) `p`. However, in addition to pushing a new variable onto
 the subject, it also modifies whatever value is tied to `q` within the subject.
 `r` is the cell of [new-product-p updated-value-1]. You can think of `=^` like

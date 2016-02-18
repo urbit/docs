@@ -1,7 +1,7 @@
-`%^`
-====
+`%^ cenket`
+===========
 
-Call function w/three arguments
+Call function w/ three arguments.
 
 Calls the one arm ([$]()) from the [door]() `p` with its [sample]() set to `[%cntr q r s]`. `%^` in the most common case simply calls `p` with `q`, `r`and `s` as its arguments.
 

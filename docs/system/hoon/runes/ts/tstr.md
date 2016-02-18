@@ -1,5 +1,7 @@
-`=*`
+`=* tistar`
 ====
+
+Alias.
 
 Makes `p` an alias of value `q`. Useful when you don't want to write
 out a long address multiple times, for example `p.s.+.variable`, which translates to `p` within `s` within the tail of `variable`.

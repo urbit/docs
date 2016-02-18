@@ -1,7 +1,7 @@
-`%_`
-====
+`%_ cencab`
+===========
 
-`%=`, but product cast to `p`
+`%=`, but product cast to `p`.
 
 The same as [`%=`](), except for that the product is cast
 back to the type of `p`. Evaluates `p` with the changes specified in `q`, then casts the product back to the type of `p`. `%_` is used to change a batch of [`++wing`]()s all at once, ensuring that the resulting product is type checked.

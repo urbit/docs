@@ -1,7 +1,7 @@
-`?+`
+`?+ wutlus`
 ====
 
-Switch w/default value
+Switch w/default value.
 
 Identical to [`?-`]() except for that it takes a default case `q` if none of the cases in `r` match the type of `p`. More specifically, the labels in `q` must match the [span]() of `p`. `q` must be terminated with a `==`.
 

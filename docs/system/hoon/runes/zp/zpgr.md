@@ -1,7 +1,7 @@
-`!>`
+`!> zapgar`
 ====
 
-Produce [type value]
+Produce `[type value]`.
 
 Produces a cell (known as a [`++vase`]() here) of both the type and value of `p`. Useful for debugging purposes. 
 

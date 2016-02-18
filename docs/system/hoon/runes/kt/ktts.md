@@ -1,5 +1,5 @@
-`^=`
-====
+`^= kettis`
+===========
 
 Wraps a variable name around a value.
 

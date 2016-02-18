@@ -1,5 +1,7 @@
-`=.`
+`=. tisdot`
 ====
+
+Change value.
 
 Produces `r` with `p` in the subject set to `q`. Allows you to change
 a value in your subject before executing more code against it.

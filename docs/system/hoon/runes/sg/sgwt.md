@@ -1,7 +1,7 @@
-`~?`
-====
+`~? sigwut`
+===========
 
-PrintF if `q` true
+PrintF if `q` true.
 
 Same as `~&` except for that `r` is printed to the console if and only
 if `q` evaluates to true.

@@ -1,7 +1,7 @@
-`$&` 
-====
+`$& bucpam` 
+===========
 
-Union of two cells: one w/cellular head & other w/atomic head
+Union of two cells: one w/cellular head & other w/atomic head.
 
 Produces a [mold]() that's a union between two different kinds of noun: a cell whose head is a cell (`p`), and cell whose head is an atom (`q`). Its default value ([bunt]()) is the value of `q`. One important use of `$&` is to implement autocons in [`++twig`]().
 

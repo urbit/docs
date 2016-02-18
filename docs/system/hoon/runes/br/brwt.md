@@ -1,7 +1,11 @@
-`|?`
-====
+---
+sort: 5
+---
 
-`|-` with hidden context
+`|? barwut`
+===========
+
+`|-` with hidden context.
 
 Similar to `|-` except for that the [sample]() and
 [context]() of the core being passed is hidden in order to avoid
