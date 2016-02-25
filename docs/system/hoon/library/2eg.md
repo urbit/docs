@@ -1,5 +1,5 @@
-section 2eG, parsing (whitespace)
-=================================
+2eG parsing (whitespace)
+========================
 
 ### `++dog`
 

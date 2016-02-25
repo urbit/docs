@@ -1,5 +1,5 @@
-section 2eZ, OLD rendering
-==========================
+2eZ OLD rendering
+=================
 
 ### `++show`
 

@@ -1,5 +1,5 @@
-section 2eP, diff
-=================
+2eP diff
+========
 
 A- more or less low priority and/or currently in the wrong section
 anyway.

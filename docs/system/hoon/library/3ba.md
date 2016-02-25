@@ -1,5 +1,5 @@
-section 3bA, lite number theory
-===============================
+3bA lite number theory
+======================
 
 ### `++fu`
 

@@ -1,5 +1,5 @@
-section 2eM, regular-expressions
-================================
+2eM regular-expressions
+=======================
 
 ### `++pars`
 

@@ -1,5 +1,5 @@
-section 2ee, parsing (composers)
-================================
+2ee parsing (composers)
+=======================
 
 ### `++bass`
 

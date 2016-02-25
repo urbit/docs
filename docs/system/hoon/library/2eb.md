@@ -1,5 +1,5 @@
-section 2eB, parsing (tracing)
-==============================
+2eB parsing (tracing)
+=====================
 
 ### `++last`
 

@@ -1,5 +1,5 @@
-section 2eL, formatting (path)
-==============================
+2eL formatting (path)
+=====================
 
 ### `++ab`
 

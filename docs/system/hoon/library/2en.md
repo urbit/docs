@@ -1,5 +1,5 @@
-section 2eN, pseudo-cryptography
-================================
+2eN pseudo-cryptography
+=======================
 
 ### `++un`
 

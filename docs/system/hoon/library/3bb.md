@@ -1,5 +1,5 @@
-section 3bB, cryptosuites
-=========================
+3bB cryptosuites
+================
 
 ### `++crua`
 

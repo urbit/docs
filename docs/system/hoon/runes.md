@@ -5,9 +5,9 @@ sort: 1
 Runes
 =====
 
-#### Make friends with them.
+#### Hoon has no reserved words.  Instead we use ASCII pairs we call runes.  
 
-This is the full list of runes.
+#### This is the complete index.
 
 <div class="book">
 

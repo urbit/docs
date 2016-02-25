@@ -1,5 +1,5 @@
-section 2eK, formatting (layout)
-================================
+2eK formatting (layout)
+=======================
 
 ### `++re`
 

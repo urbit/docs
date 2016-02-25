@@ -1,5 +1,5 @@
-section 3bH, names etc
-======================
+3bH names etc
+=============
 
 ### `++clan`
 

@@ -1,5 +1,5 @@
-section 2eH, parsing (idioms)
-=============================
+2eH parsing (idioms)
+====================
 
 ### `++alf`
 

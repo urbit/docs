@@ -1,5 +1,5 @@
-section 3bE, tree sync
-======================
+3bE tree sync
+=============
 
 ### `++invert-miso`
 
