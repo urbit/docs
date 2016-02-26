@@ -1,5 +1,9 @@
-`|^`
-====
+---
+sort: 6
+---
+
+`|^ barket`
+===========
 
 Same as `|-` except that it can contain internal arms.
 

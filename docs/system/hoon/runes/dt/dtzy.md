@@ -1,7 +1,7 @@
-[dotzay, %dtzy](#dttr)
-======================
+`dotzay`
+========
 
-Odored atom
+Odored atom.
 
 `dotzay` is a natural rune that produces a non-cubed atomic constant of
 odor `p` and value `q`. `dotzay` is never used explicitly, but always

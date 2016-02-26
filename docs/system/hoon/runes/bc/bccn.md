@@ -1,7 +1,7 @@
-`$%` 
+`$% buccen` 
 ====
 
-Tagged union
+Tagged union.
 
 Produces a [mold]() of a tagged union of a list of case pairs.
 

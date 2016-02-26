@@ -1,7 +1,11 @@
-`|=`
-====
+---
+sort: 2
+---
 
-Function with argument(s)
+`|= bartis`
+===========
+
+Function with argument(s).
 
 `|=`, is a synthetic rune that produces a [dry]() [`%gold`]() gate with
 sample [`$*(p)`](), arm `q`. A gate is a core with one arm, [`$`](), the

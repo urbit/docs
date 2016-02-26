@@ -1,5 +1,7 @@
-`=:`
+`=: tiscol`
 ====
+
+List of changes.
 
 Makes a list of changes `p` to the subject and then evaluates `q`.
 Allows you to change values in your context (not in the hoon sense).

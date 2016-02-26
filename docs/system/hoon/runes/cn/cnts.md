@@ -1,7 +1,7 @@
-`%=`
-====
+`%= centis`
+===========
 
-Eval `p` w/changes
+Eval `p` w/ changes.
 
 Evaluates `p` with the changes specified in `q`, where `q` is a list of addresses ([`++wing`]())s followed by the values that will replace whatever value currently lies at that address. Makes the changes all at once to ensure that the product type is checked.
 

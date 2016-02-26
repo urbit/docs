@@ -1,7 +1,7 @@
-`!?`
+`!? zapwut`
 ====
 
-Restrict version
+Restrict version.
 
 `!?` is a synthetic rune that enforces a Hoon version restriction.
 

@@ -1,5 +1,5 @@
-section 3bG, URL handling
-=========================
+3bG URL handling
+================
 
 ### `++deft`
 

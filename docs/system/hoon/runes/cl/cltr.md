@@ -1,7 +1,7 @@
-`:*`
-====
+`:* coltar`
+===========
 
-Tuple of n elements
+Tuple of n elements.
 
 Closed with `==`.
 

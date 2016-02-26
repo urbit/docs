@@ -10,14 +10,14 @@ The `urbit` repo can look a little confusing at first.  Here we'll take a look a
 
 If you `ls urb/zod` from inside the urbit repo you should see something like:
 
-    app
-    arvo
-    gen
-    lib
-    mar
-    ren
-    sur
-    web
+    app/
+    arvo/
+    gen/
+    lib/
+    mar/
+    ren/
+    sur/
+    web/
     web.md
 
 Let's step through directory by directory.
@@ -103,4 +103,8 @@ Default web requets in urbit are handled as a `.urb`, which is caught by the `ur
 ## `web/`
 
 There are the files publicly accessible to the web, as made possible by `%eyre`.
+
+## `web.md`
+
+This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://your-urbit.urbit.org/`
 

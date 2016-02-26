@@ -1,7 +1,7 @@
-`$?` 
-====
+`$? bucwut` 
+===========
 
-Union of types
+Union of types.
 
 Produce a union between a non-empty list of [mold]()s `p`. The default value ([bunt]()) is the value of the first element.
 

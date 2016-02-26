@@ -1,5 +1,5 @@
-section 2eJ, formatting (basic text)
-====================================
+2eJ formatting (basic text)
+===========================
 
 ### `++cass`
 

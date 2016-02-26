@@ -1,7 +1,11 @@
-`|-`
-====
+---
+sort: 4
+---
 
-Trap: automatically called function with no arguments
+`|- barhep`
+===========
+
+Trap: automatically called function with no arguments.
 
 A function with no arguments that's automatically called when constructed. More specifically, it produces a [dry]() [%gold]() [core]() whose single [arm]() [$]() (the empty name) is automatically called when the core is constructed. Similar to creating and calling an anonymous function and is quite commonly used for loops or recursion.
 

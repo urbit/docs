@@ -1,7 +1,7 @@
-`?.`
+`?. wutdot`
 ====
 
-Inverted if-then-else
+Inverted if-then-else.
 
 Unless `p` is true, evaluate `r`. Used to keep the heavier of `q` and `r` as the bottom expression, which makes for more readable code (see the section on [backstep]()).
 

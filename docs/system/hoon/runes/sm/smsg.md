@@ -1,7 +1,7 @@
-`;~`
+`;~ semsig`
 ====
 
-Monad composer
+Monad composer.
 
 `;~` is a synthetic rune used to compose functions under a monad.
 

@@ -1,7 +1,7 @@
-`!,`
+`!, zapcol`
 ====
 
-XX
+XX.
 
 Inserts twig `q` as a constant, typed with the type of twig `p`. XX??
 

@@ -1,5 +1,5 @@
-section 2eO, virtualization
-===========================
+2eO virtualization
+==================
 
 ### `++mack`
 

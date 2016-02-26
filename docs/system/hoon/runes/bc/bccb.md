@@ -1,7 +1,7 @@
-`$_`
-====
+`$_ buccab`
+===========
 
-Unbunt (create mold from example)
+Unbunt (create mold from example).
 
 Uses a [++twig]() `p` to produce a [mold]() for the type (span)
 of `p`.  The validator function has a default value of `p`. Used

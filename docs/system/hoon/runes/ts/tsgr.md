@@ -1,7 +1,7 @@
-`=>`
+`=> tisgar`
 ====
 
-Product as subject
+Product as subject.
 
 `=>` is a natural rune that uses the product of `p` as the subject of
 `q`. `=>` is the inverse of `=<`. Use `=>` when your `p` isn't too long

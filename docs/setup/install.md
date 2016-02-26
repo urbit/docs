@@ -19,13 +19,7 @@ cloud virtual machines (Amazon or Digital Ocean), the default
 memory configuration is smaller than this, and you need to
 manually configure a swapfile.
 
-To add swap to a DO droplet:
-
-https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
-
-To add swap on an Amazon instance:
-
-http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance
+Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there's a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
 
 Don't spend a lot of time tweaking these settings; the simplest
 thing is fine.

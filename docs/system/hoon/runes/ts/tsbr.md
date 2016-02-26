@@ -1,5 +1,7 @@
-`=|`
+`=| tisbar`
 ====
+
+Default value.
 
 Produces the default value of input type (aka mold) `p` and makes it
 available/pushes it onto `q`.

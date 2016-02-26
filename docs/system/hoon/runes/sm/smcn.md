@@ -1,7 +1,7 @@
-`;%`
+`;% semcen`
 ====
 
-`%-` in [`++sail`]()
+`%-` in `++sail`.
 
 Performs the same function as `%-`, except within XML template syntax
 (aka sail). Passes `q`, a list of n arguments, to function `p`.

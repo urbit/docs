@@ -1,7 +1,7 @@
-`:^`
-====
+`:^ colket`
+===========
 
-Tuple of four
+Tuple of four.
 
 Produces
 --------

@@ -1,7 +1,7 @@
-`^~`
-====
+`^~ ketsig`
+===========
 
-Try executing `p` at compile time
+Try executing `p` at compile time.
 
 Tries to execute `p` statically at compile time. If this
 fails, `p` remains dynamic. Primarily useful for

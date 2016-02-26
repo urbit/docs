@@ -1,7 +1,7 @@
-`$*` 
-====
+`$* buctar` 
+===========
 
-Bunt (default value)
+Bunt (default value).
 
 Produces the default value ([bunt]()) of [mold]() `p`. Does so as a compile-time constant if possible. If not possible, then it is produced dynamically.
 

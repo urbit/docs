@@ -1,7 +1,7 @@
-`^|`
-====
+`^| ketbar`
+===========
 
-Make core context unreadable
+Make core context unreadable.
 
 Converts a core to a core whose [context]() is unreadable. Useful in
 preventing type fails when replacing one core with one context

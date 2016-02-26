@@ -1,5 +1,5 @@
-section 2eA, packing
-====================
+2eA packing
+===========
 
 ### `++cue`
 

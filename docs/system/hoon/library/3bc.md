@@ -1,5 +1,5 @@
-section 3bC, Gregorian UTC
-==========================
+3bC Gregorian UTC
+=================
 
 ### `++dawn`
 

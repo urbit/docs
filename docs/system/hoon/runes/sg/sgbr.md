@@ -1,7 +1,7 @@
-`~|`
-====
+`~| sigbar`
+===========
 
-`p` in stack trace if `q` crashes
+`p` in stack trace if `q` crashes.
 
 Presents the product of `p` in the stack trace if `q` crashes. `p` is only
 evaluated if `q` crashes.

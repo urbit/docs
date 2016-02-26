@@ -1,5 +1,7 @@
-`=-`
+`=- tishep`
 ====
+
+Inverted `=+`.
 
 An inverted `=+`. Pushes variable `q` onto the subject and then
 executes `p` against the new subject.  Allows us to place the larger of `p` and

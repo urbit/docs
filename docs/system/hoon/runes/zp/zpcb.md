@@ -1,7 +1,7 @@
-`!_`
+`!_ zapcab`
 ====
 
-Path & range in stack trace
+Path & range in stack trace.
 
 Traces the stack if debugging is enabled, putting the current path and
 location range of each rune.

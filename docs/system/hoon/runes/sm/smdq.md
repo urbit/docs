@@ -1,7 +1,7 @@
-`;"`
+`;" semdoq`
 ====
 
-Make string
+Make string.
 
 `semdoq` is a synthetic rune used to make strings, interpreted or not.
 

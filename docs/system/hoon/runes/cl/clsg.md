@@ -1,7 +1,7 @@
-`:~`
-====
+`:~ colsig`
+===========
 
-Null-terminated tuple of n elements
+Null-terminated tuple of n elements.
 
 Closed with `==`.
 

@@ -1,7 +1,7 @@
-`?:`
+`?: wutcol`
 ====
 
-If-then-else
+If-then-else.
 
 Produces
 --------

@@ -1,5 +1,5 @@
-section 2eD
-===========
+2eD parsing (combinators)
+=========================
 
 ### `++bend`
 

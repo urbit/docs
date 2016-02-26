@@ -1,7 +1,7 @@
-`^.`
-====
+`^. ketdot`
+===========
 
-Cast `q` to product type of `p`
+Cast `q` to product type of `p`.
 
 Casts `q` to the product of calling `p` on `q`. The same
 as casting `q` to the product type of `p`. Useful when you want

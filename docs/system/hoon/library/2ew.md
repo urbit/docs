@@ -1,5 +1,5 @@
-section 2eW, lite number theory
-===============================
+2eW lite number theory
+======================
 
 ### `++egcd`
 

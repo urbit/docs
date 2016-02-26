@@ -1,7 +1,11 @@
-`|*`
-====
+---
+sort: 10
+---
 
-Wet function
+`|* bartar`
+===========
+
+Wet function.
 
 Similar to `|=` except that it does type checking at
 call time, and that the product type is checked to be the same as

@@ -1,7 +1,7 @@
-`$+`
-====
+`$+ buclus`
+===========
 
-Type of function (type signature)
+Type of function (type signature).
 
 Produces a [mold]() for a function that accepts `p` and produces `q`. Used when we want to use the type of a function that we do not want to compute.
 

@@ -1,7 +1,7 @@
-`%.`
-====
+`%. cendot`
+===========
 
-Inverted function call 
+Inverted function call.
 
 Inverts the order of [`%-`](), so the argument is the first
 element and the second element is the function. Exists primarily

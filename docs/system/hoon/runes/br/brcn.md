@@ -1,7 +1,11 @@
-`|%`
-====
+---
+sort: 1
+---
 
-Generic core
+`|% barcen`
+===========
+
+Generic core.
 
 Constructs a generic core with n named expressions, closed with `--`. Cores are
 similar to an object with named properties (aka [arms]()) that can contain either functions or data. Accepts both [dry or `%elm`]() and [wet or `%ash`]() arms.

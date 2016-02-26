@@ -1,7 +1,7 @@
-`?^`
+`?^ wutket`
 ====
 
-If `p` is cell-then-else
+If `p` is cell-then-else.
 
 Produces
 --------

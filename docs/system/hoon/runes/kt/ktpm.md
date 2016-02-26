@@ -1,7 +1,7 @@
-ketpam, `^&`, %ktpm
-============================
+`^& ketpam`
+===========
 
-Convert `%gold` to `%zinc`
+Convert `%gold` to `%zinc`.
 
 `^&` is a natural rune that converts a `%gold` core into a `%zinc` core.
 At present, `%zinc` cores are not commonly used.

@@ -1,7 +1,7 @@
-`!=`
+`!= zaptis`
 ====
 
-Show nock
+Show nock.
 
 `!=` is a natural rune that produces the formula of `p` as a noun.
 

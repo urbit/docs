@@ -1,7 +1,7 @@
-`.+`
-====
+`.+ dotlus`
+===========
 
-Increments an atom
+Increments an atom.
 
 `.+` is a natural rune that generates nock operator `4`, which
 increments an operand that's an atom.

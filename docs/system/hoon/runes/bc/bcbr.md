@@ -1,7 +1,7 @@
-`$|`
-====
+`$| bucbar`
+===========
 
-Union between atom and cell
+Union between atom and cell.
 
 [mold]() that's a union of an atom `p` and cell `q`.
 `$|` is similar to [`$?`](), but is more strict in that in

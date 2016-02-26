@@ -1,7 +1,11 @@
-`|+`
-====
+---
+sort: 9
+---
 
-Function with unreadable sample
+`|+ barlus`
+===========
+
+Function with unreadable sample.
 
 `|+` is a synthetic rune that produces a [dry]() [`%iron`]() function
 with argument (aka [sample]()) [`$*(p)`]() and [arm]()s `q`. `|+` is similar to `|=`, but differs in that its input (sample) cannot be read and thus cannot interfere with the type system.

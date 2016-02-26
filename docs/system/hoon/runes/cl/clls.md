@@ -1,7 +1,7 @@
-`:+`
-====
+`:+ collus`
+===========
 
-Tuple of 3
+Tuple of 3.
 
 Produces
 --------

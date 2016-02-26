@@ -1,5 +1,7 @@
-`=~`
+`=~ tissig`
 ====
+
+List of twigs.
 
 Composes a list of twigs. Applies `=>` to a list of expressions, using each result as the
 subject to the following expression.

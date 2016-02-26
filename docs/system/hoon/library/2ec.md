@@ -1,5 +1,5 @@
-section 2eC, parsing (custom rules)
-===================================
+2eC parsing (custom rules)
+==========================
 
 ### `++cold`
 

@@ -1,5 +1,5 @@
-section 2dC, queues
-===================
+2dC queues
+==========
 
 ### `++to`
 

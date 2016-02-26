@@ -1,7 +1,7 @@
-`?&`
+`?& wutpam`
 ====
 
-Logical 'and'
+Logical 'and'.
 
 Computes the logical 'and' operation on a list of boolean expressions.
 

@@ -1,5 +1,5 @@
-section 3bI, Arvo models
-========================
+3bI Arvo models
+===============
 
 ### `++acru`
 

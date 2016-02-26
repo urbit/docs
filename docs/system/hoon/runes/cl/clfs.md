@@ -1,7 +1,7 @@
-`:/`
-====
+`:/ colfas`
+===========
 
-String to XML XX
+String to XML XX.
 
 `:/`, `colfas`, is a synthetic rune that produces `[%$ [%$ p ~] ~]`,
 i.e., `[0 [0 p 0] 0]`.

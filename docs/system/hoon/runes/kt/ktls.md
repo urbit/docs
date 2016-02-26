@@ -1,7 +1,7 @@
-`^+`
-====
+`^+ ketlus`
+===========
 
-Cast `q` to an unbunted `p`
+Cast `q` to an unbunted `p`.
 
 Casts `q` to the type of `p`, verifying that it contains
 the type of `q`. Similar to `^+`, but doesn't bunt `p`. Used to

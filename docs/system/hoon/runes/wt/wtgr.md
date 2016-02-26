@@ -1,7 +1,7 @@
-`?>`
+`?> wutgar`
 ====
 
-Assert `p` is true
+Assert `p` is true.
 
 Asserts that `p` is true before evaluating `q`. Crashes if `p` evaluates to true.
 

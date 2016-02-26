@@ -1,7 +1,7 @@
-`.*`
-====
+`.* dottar`
+===========
 
-Compute nock
+Compute nock.
 
 Computes nock expressions. Runs nock formula `q` on
 nock subject `p`.

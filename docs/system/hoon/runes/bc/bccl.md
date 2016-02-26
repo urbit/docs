@@ -1,7 +1,7 @@
-`$:`
-====
+`$: buccol`
+===========
 
-Tuple of molds
+Tuple of molds.
 
 Produces
 --------

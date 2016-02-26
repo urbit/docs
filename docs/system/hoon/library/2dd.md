@@ -1,5 +1,5 @@
-section 2dD, casual containers
-==============================
+2dD casual containers
+=====================
 
 ### `++mo`
 
