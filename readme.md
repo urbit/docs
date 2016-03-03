@@ -1,7 +1,14 @@
-# Urbit docs
+Urbit docs
+==========
 
-These are the urbit docs as they appear on urbit.org.  
+These are the urbit docs as they appear on [urbit.org](urbit.org/docs).  
 
-We're currently in the process of factoring this repo out of the [urbit core](http://github.com/urbit/urbit) (as of 1/28/2015).
+Ongoing work on the docs continues on the `reorg` branch of this repo.  If you'd like to serve the contents from your Urbit just copy `docs/` and `docs.md` into `web/` inside your urbit. 
 
-This readme will get updated when that process is complete.
+
+Contributing
+============
+
+PRs are more than welcome: both corrections and suggestions.  
+
+We're almost always available on `:talk`, but you can also email [`urbit@urbit.org`](mailto:urbit@urbit.org) or post to [`urbit-dev`](https://groups.google.com/forum/#!forum/urbit-dev) if you have questions.
