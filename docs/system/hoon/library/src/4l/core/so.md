@@ -1,0 +1,476 @@
+### `++so`
+
+Coin parser engine
+
+Core containing arms that parse [`++coin`]s.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+    ++  so
+      |%
+
+Examples
+--------
+
+    ~zod/try=> so
+    <10.mkn 414.hhh 100.xkc 1.ypj %164>
+
+------------------------------------------------------------------------
+
+### `++bisk`
+
+Parse odor-atom pair
+
+Parsing rule. Parses an unsigned integer of any permitted base,
+producing a [`++dime`]().
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  bisk
+        ;~  pose
+          ;~  pfix  (just '0')
+            ;~  pose
+              (stag %ub ;~(pfix (just 'b') bay:ag))
+              (stag %ui ;~(pfix (just 'i') dim:ag))
+              (stag %ux ;~(pfix (just 'x') hex:ag))
+              (stag %uv ;~(pfix (just 'v') viz:ag))
+              (stag %uw ;~(pfix (just 'w') wiz:ag))
+            ==
+          ==
+          (stag %ud dem:ag)
+        ==
+
+Examples
+--------
+
+    ~zod/try=> (scan "25" bisk:so)
+    [%ud q=25]
+    ~zod/try=> (scan "0x12.6401" bisk:so)
+    [%ux q=1.205.249]
+
+------------------------------------------------------------------------
+
+### `++crub`
+
+Parse `@da`, `@dr`, `@p`, `@t`
+
+Parsing rule. Parses any atom of any of the following odors after a
+leading sig, `~` into a [`++dime`](): [`@da`](), [`@dr`](), [`@p`](),
+and [`@t`](), producing a [`++dime`]().
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  crub
+        ;~  pose
+          %+  cook
+            |=(det=date `dime`[%da (year det)])
+          ;~  plug
+            %+  cook
+              |=([a=@ b=?] [b a])
+            ;~(plug dim:ag ;~(pose (cold | hep) (easy &)))
+            ;~(pfix dot dim:ag)   ::  month
+            ;~(pfix dot dim:ag)   ::  day
+            ;~  pose
+              ;~  pfix
+                ;~(plug dot dot)
+                ;~  plug
+                  dum:ag
+                  ;~(pfix dot dum:ag)
+                  ;~(pfix dot dum:ag)
+                  ;~(pose ;~(pfix ;~(plug dot dot) (most dot qix:ab)) (easy ~))
+                ==
+              ==
+              (easy [0 0 0 ~])
+            ==
+          ==
+        ::
+          %+  cook
+            |=  [a=(list ,[p=?(%d %h %m %s) q=@]) b=(list ,@)]
+            =+  rop=`tarp`[0 0 0 0 b]
+            |-  ^-  dime
+            ?~  a
+              [%dr (yule rop)]
+            ?-  p.i.a
+              %d  $(a t.a, d.rop (add q.i.a d.rop))
+              %h  $(a t.a, h.rop (add q.i.a h.rop))
+              %m  $(a t.a, m.rop (add q.i.a m.rop))
+              %s  $(a t.a, s.rop (add q.i.a s.rop))
+            ==
+          ;~  plug
+            %+  most
+              dot
+            ;~  pose
+              ;~(pfix (just 'd') (stag %d dim:ag))
+              ;~(pfix (just 'h') (stag %h dim:ag))
+              ;~(pfix (just 'm') (stag %m dim:ag))
+              ;~(pfix (just 's') (stag %s dim:ag))
+            ==
+            ;~(pose ;~(pfix ;~(plug dot dot) (most dot qix:ab)) (easy ~))
+          ==
+        ::
+          (stag %p fed:ag)
+          ;~(pfix dot (stag %ta urs:ab))
+          ;~(pfix sig (stag %t (cook woad urs:ab)))
+          ;~(pfix hep (stag %c (cook turf (cook woad urs:ab))))
+        ==
+
+Examples
+--------
+
+    ~zod/try=> (scan "1926.5.12" crub:so)
+    [p=~.da q=170.141.184.449.747.016.871.285.095.307.149.312.000]
+    ~zod/try=> (,[%da @da] (scan "1926.5.12" crub:so))
+    [%da ~1926.5.12]
+    ~zod/try=> (scan "s10" crub:so)
+    [p=~.dr q=184.467.440.737.095.516.160]
+    ~zod/try=> (,[%dr @dr] (scan "s10" crub:so))
+    [%dr ~s10]
+    ~zod/try=> (scan "doznec" crub:so)
+    [%p 256]
+    ~zod/try=> (scan ".mas" crub:so)
+    [%ta 7.561.581]
+
+------------------------------------------------------------------------
+
+### `++nuck`
+
+Top-level coin parser
+
+Parsing rule. Switches on the first character and applies the
+corresponding [`++coin`]() parser.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  nuck
+        %+  knee  *coin  |.  ~+
+        %-  stew
+        ^.  stet  ^.  limo
+        :~  :-  ['a' 'z']  (cook |=(a=@ta [~ %tas a]) sym)
+            :-  ['0' '9']  (stag ~ bisk)
+            :-  '-'        (stag ~ tash)
+            :-  '.'        ;~(pfix dot perd)
+            :-  '~'        ;~(pfix sig ;~(pose twid (easy [~ %n 0])))
+        ==
+
+Examples
+--------
+
+    ~zod/try=> (scan "~pillyt" nuck:so)
+    [% p=[p=~.p q=32.819]]
+    ~zod/try=> (scan "0x12" nuck:so)
+    [% p=[p=~.ux q=18]]
+    ~zod/try=> (scan ".127.0.0.1" nuck:so)
+    [% p=[p=~.if q=2.130.706.433]]
+    ~zod/try=> `@ud`.127.0.0.1
+    2.130.706.433
+    ~zod/try=> (scan "._20_0w25_sam__" nuck:so)
+    [ %many 
+        p
+      ~[[% p=[p=~.ud q=20]] [% p=[p=~.uw q=133]] [% p=[p=~.tas q=7.168.371]]]
+    ]
+    ~zod/try=> `@`%sam
+    7.168.371
+    ~zod/try=> (scan "~0ph" nuck:so)
+    [%blob p=[1 1]]
+    ~zod/try=> ~0ph
+    [1 1]
+    ~zod/try=> `@uv`(jam [1 1])
+    0vph
+
+------------------------------------------------------------------------
+
+### `++nusk`
+
+Parse coin literal with escapes
+
+Parsing rule. Parses a coin literal with escapes. (See also: xx tuple
+formatting).
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  nusk
+        (sear |=(a=@ta (rush (wick a) nuck)) urt:ab)
+
+Examples
+--------
+
+    ~zod/try=> ~.asd_a
+    ~.asd_a
+    ~zod/try=> ._1_~~.asd~-a__
+    [1 ~.asd_a]
+    ~zod/try=> (scan "~~.asd~-a" nusk:so)
+    [% p=[p=~.ta q=418.212.246.369]]
+    ~zod/try=> (,[~ %ta @ta] (scan "~~.asd~-a" nusk:so))
+    [~ %ta ~.asd_a]
+
+------------------------------------------------------------------------
+
+### `++perd`
+
+Parsing rule.
+
+Parsing rule. Parses a dime or tuple without their respective standard
+prefixes.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  perd
+        ;~  pose
+          (stag ~ zust)
+          (stag %many (ifix [cab ;~(plug cab cab)] (more cab nusk)))
+        ==
+
+Examples
+--------
+
+    ~zod/try=> (scan "y" perd:so)
+    [~ [%f %.y]]
+    ~zod/try=> (scan "n" perd:so)
+    [~ [%f %.n]]
+    ~zod/try=> |
+    %.n
+    ~zod/try=> (scan "_20_x__" perd:so)
+    [%many [[% p=[p=~.ud q=20]] ~[[% p=[p=~.tas q=120]]]]]
+
+------------------------------------------------------------------------
+
+### `++royl`
+
+Parse dime float
+
+Parsing rule. Parses a number into a [`++dime`]() float.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  royl
+        =+  ^=  zer
+            (cook lent (star (just '0')))
+        =+  ^=  voy
+            %+  cook  royl-cell
+            ;~  plug
+              ;~(pose (cold | hep) (easy &))
+              ;~(plug dim:ag ;~(pose ;~(pfix dot ;~(plug zer dim:ag)) (easy [0 0])))
+              ;~  pose 
+                ;~  pfix 
+                  (just 'e') 
+                  (cook some ;~(plug ;~(pose (cold | hep) (easy &)) dim:ag))
+                == 
+                (easy ~)  
+              ==
+            ==
+        ;~  pose
+          (stag %rh (cook rylh ;~(pfix ;~(plug sig sig) voy)))
+          (stag %rq (cook rylq ;~(pfix ;~(plug sig sig sig) voy)))
+          (stag %rd (cook ryld ;~(pfix sig voy)))
+          (stag %rs (cook ryls voy)
+        ==
+
+Examples
+--------
+
+    ~zod/try=> (scan "~3.14" royl:so)
+    [%rd .~3.13999999999999]
+    ~zod/try=> .~3.14
+    .~3.13999999999999
+
+------------------------------------------------------------------------
+
+### `++royl-cell`
+
+XX still not fully functional
+
+Intermediate parsed float convereter
+
+------------------------------------------------------------------------
+
+### `++tash`
+
+Parse signed dime
+
+Accepts
+-------
+
+Accepts
+-------
+
+Produces
+--------
+
+Produces
+--------
+
+Parsing rule. Parses a signed number into a [`++dime`]().
+
+Source
+------
+
+      ++  royl-cell
+        |=  [a=? b=[c=@ d=@ e=@] f=(unit ,[h=? i=@])]  
+        ^-  [? @ @ @ (unit ,@s)]
+        ?~  f
+          [a c.b d.b e.b ~]
+        ?:  h.u.f
+          [a c.b d.b e.b [~ (mul i.u.f 2)]]
+        [a c.b d.b e.b [~ (dec (mul i.u.f 2))]]
+
+Examples
+--------
+
+Source
+------
+
+      ++  tash
+        =+  ^=  neg
+            |=  [syn=? mol=dime]  ^-  dime
+            ?>  =('u' (end 3 1 p.mol))
+            [(cat 3 's' (rsh 3 1 p.mol)) (new:si syn q.mol)]
+        ;~  pfix  hep
+          ;~  pose
+            (cook |=(a=dime (neg | a)) bisk)
+            ;~(pfix hep (cook |=(a=dime (neg & a)) bisk))
+          ==
+        ==
+
+Examples
+--------
+
+    ~zod/try=> (scan "-20" tash:so)
+    [p=~.sd q=39]
+    ~zod/try=> (,[%sd @sd] (scan "-20" tash:so))
+    [%sd -20]
+    ~zod/try=> (,[%sd @sd] (scan "--20" tash:so))
+    [%sd --20]
+    ~zod/try=> (,[%sx @sx] (scan "--0x2e" tash:so))
+    [%sx --0x2e]
+
+------------------------------------------------------------------------
+
+### `++twid`
+
+Parse coins without `~` prefix
+
+Parsing rule. Parses coins after a leading sig, `~`.
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  twid
+        ;~  pose
+          (cook |=(a=@ [%blob (cue a)]) ;~(pfix (just '0') vum:ag))
+          (stag ~ crub)
+        ==
+      ::
+
+Examples
+--------
+
+    ~zod/try=> (scan "zod" twid:so)
+    [~ [%p 0]]
+    ~zod/try=> (scan ".sam" twid:so)
+    [~ [%ta 7.168.371]]
+    ~zod/try=> `@ud`~.sam
+    7.168.371
+    ~zod/try=> `@t`~.sam
+    'sam'
+    ~zod/try=> (scan "0ph" twid:so)
+    [%blob [1 1]]
+
+------------------------------------------------------------------------
+
+### `++zust`
+
+Parse prefixed dimes from `@if`, `@f`, `@rd`
+
+Parsing rule. Parses an atom of either [`@if`]() (IP address), [`@f`]()
+(loobean), or [`rf`]()(floating point) into a [`++dime`]().
+
+Accepts
+-------
+
+Produces
+--------
+
+Source
+------
+
+      ++  zust
+        ;~  pose
+          (stag %is bip:ag)
+          (stag %if lip:ag)
+          (stag %f ;~(pose (cold & (just 'y')) (cold | (just 'n'))))
+          royl
+        ==
+      --
+
+Examples
+--------
+
+    ~zod/try=> (scan "127.0.0.1" zust:so)
+    [%if q=2.130.706.433]
+    ~zod/try=> (scan "af.0.0.0.0.e7a5.30d2.7" zust:so)
+    [%is q=908.651.950.243.594.834.993.091.554.288.205.831]
+    ~zod/try=> (,[%is @is] (scan "af.0.0.0.0.e7a5.30d2.7" zust:so))
+    [%is .af.0.0.0.0.e7a5.30d2.7]
+    ~zod/try=> (,[%is @ux] (scan "af.0.0.0.0.e7a5.30d2.7" zust:so))
+    [%is 0xaf.0000.0000.0000.0000.e7a5.30d2.0007]
+    ~zod/try=> (scan "y" zust:so)
+    [%f %.y]
+    ~zod/try=> (scan "12.09" zust:so)
+    [%rd .~12.00999999999999]
+
+
