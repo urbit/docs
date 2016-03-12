@@ -46,3 +46,5 @@ Examples
     ~zod/try=> (scan "12" ;~((comp |=([a=@u b=@u] (add a b))) dit dit dit))
     ! {1 3}
     ! exit
+
+***

@@ -120,3 +120,5 @@ Examples
     ~zod/try=> (mink [5]^[10 yelp/[0 1] 0 0] ,~)
     [%2 p=~[[~.yelp 5]]]
 
+
+***

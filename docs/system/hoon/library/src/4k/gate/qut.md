@@ -36,3 +36,5 @@ Examples
     'Heredoc isn't prohibited from containing quotes'
 
 
+
+***

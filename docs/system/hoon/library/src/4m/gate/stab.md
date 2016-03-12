@@ -33,3 +33,5 @@ Examples
     ~zod/try=> `(pole ,@ta)`(stab '/a/~pillyt/pals/1')
     [~.a [~.~pillyt [~.pals [~.1 ~]]]]
 
+
+***

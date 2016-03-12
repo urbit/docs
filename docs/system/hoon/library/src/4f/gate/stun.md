@@ -48,3 +48,5 @@ Examples
     [p=[p=1 q=10] q=[~ [p="aquickbro" q=[p=[p=1 q=10] q=""]]]]
     ~zod/try=> ((stun [5 10] prn) [1 1] "aqui")
     [p=[p=1 q=5] q=~]
+
+***

@@ -227,3 +227,5 @@ pairs. The contained arms inherit it's [sample]() [map](), `a`.
     ~zod/try=> ~(. by (mo (limo [%a 1] [%b 2] ~)))
     <19.irb [nlr([p={%a %b} q=@ud]) <414.rvm 101.jzo 1.ypj %164>]>
 
+
+***

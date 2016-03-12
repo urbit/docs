@@ -22,3 +22,5 @@ Examples
     ~zod/try=> (scan "0123456789" (star nud))
     "0123456789"
 
+
+***

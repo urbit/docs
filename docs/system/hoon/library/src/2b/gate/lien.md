@@ -24,3 +24,5 @@ Computes the Boolean logical "or" on the results of applying [gate]() `b` to eve
     %.n
 
 
+
+***
