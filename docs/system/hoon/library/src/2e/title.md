@@ -1,1 +1,1 @@
-## 2e: insecure hashing
+# 2e: insecure hashing
