@@ -2,7 +2,7 @@
 
 Binary XOR
 
-Produces the bit-wise logical XOR of `a` and `b`, producing an [atom]().
+Produces the bit-wise logical XOR of `a` and `b`, producing an atom.
 
 Accepts
 -------
@@ -21,7 +21,7 @@ Source
 
     ++  mix                                                 ::  binary xor
       ~/  %mix
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       ^-  @
       =+  [c=0 d=0]
       |-

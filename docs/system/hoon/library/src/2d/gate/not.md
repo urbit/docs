@@ -8,9 +8,9 @@ of `c`.
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
-`b` is an [atom]().
+`b` is an atom.
 
 `c` is an atom.
 
@@ -22,8 +22,9 @@ An atom.
 Source
 ------
 
-    ++  not  |=  [a=bloq b=@ c=@]                           ::  binary not (sized)
+    ++  not  |=  {a/bloq b/@ c/@}                           ::  binary not (sized)
       (mix c (dec (bex (mul b (bex a)))))
+
 
 Examples
 --------

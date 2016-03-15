@@ -2,7 +2,7 @@
 
 Binary AND
 
-Computes the bit-wise logical AND of two [atom]()s `a` and `b`, producing an
+Computes the bit-wise logical AND of two atoms `a` and `b`, producing an
 atom.
 
 Accepts
@@ -22,17 +22,17 @@ Source
 
     ++  dis                                                 ::  binary and
       ~/  %dis
-      |=  [a=@ b=@]
-      =|  [c=@ d=@]
+      |=  {a/@ b/@}
+      =|  {c/@ d/@}
       |-  ^-  @
       ?:  ?|(=(0 a) =(0 b))  d
       %=  $
         a   (rsh 0 1 a)
         b   (rsh 0 1 b)
         c   +(c)
-        d   %+  add  d 
-              %^  lsh  0  c 
-              ?|  =(0 (end 0 1 a)) 
+        d   %+  add  d
+              %^  lsh  0  c
+              ?|  =(0 (end 0 1 a))
                   =(0 (end 0 1 b))
               ==
       ==
