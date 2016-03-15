@@ -4,34 +4,17 @@ sort: 1
 title: Install
 ---
 
-# Installation guide
+# Install
 
-Urbit can be installed on most Unix systems.  There is no Windows
-port.  Windows is a wonderful OS, we just haven't gotten to it yet.
-Use a VM.
+Urbit is designed to run on any Unix box with an internet connection.  Debian, OS X, FreeBSD and Fedora all work well.
 
-## Install as a package
-
-### OS X - Homebrew
-
-    brew install --HEAD homebrew/head-only/urbit
-
-### Ubuntu or Debian
-
-Third-party packages are available, at:
-
-    https://github.com/yebyen/urbit-deb
-
-Urbit is only supported on Jessie onward (but outbound HTTPS
-requests only work on Stretch; I wish we knew why; help us!)
+Urbit is alpha software.  It’s not yet completely stable, its crypto hasn’t been audited and there are plenty of rough edges.  Just so you know what you're getting into.
 
 ## Build from source
 
-First, install all external dependencies.  Then, download and make.
-
 ### Dependencies
 
-urbit depends on:
+Urbit depends on:
 
     gcc (or clang)
     gmp
@@ -46,59 +29,47 @@ urbit depends on:
     libssl-dev (Linux only)
     ncurses (Linux only)
 
-#### Ubuntu or Debian
+Which can usually be installed with the following one-liners:
 
-    sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev git make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c
-
-#### Fedora
-
-    sudo dnf install gcc gcc-c++ git gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c
-
-#### FreeBSD
-
-    pkg install git gmake gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool
-
-#### AWS
-
-    sudo yum --enablerepo epel install gcc gcc-c++ git gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c
-
-#### OS X - Homebrew
-
+    # Mac OS X [Homebrew]
     brew install git gmp libsigsegv openssl libtool autoconf automake cmake
 
-#### OS X - Macports
-
+    # Mac OS X [Macports]
     sudo port install git gmp libsigsegv openssl autoconf automake cmake
 
-Although `automake`/`autoconf`/`libtool` are generally installed by
-default, some have reported needing to uninstall and reinstall those three packages, at least with Homebrew. Your mileage may vary.
+    # Ubuntu or Debian
+    sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev git make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c
 
-### Download and make
+    # Fedora
+    sudo dnf install gcc gcc-c++ git gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c
 
-Clone the repo:
+    # FreeBSD
+    pkg install git gmake gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool
 
-    git clone https://github.com/urbit/urbit
+    # AWS
+    sudo yum —enablerepo epel install gcc gcc-c++ git gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c
 
-`cd` to the directory you just created:
+### Setting up swap
 
-    cd urbit
-
-Run `make`:
-
-    make
-
-(On FreeBSD, use `gmake` instead.)
-
-## Setting up swap
-
-Urbit wants to map 2GB of memory when it boots up.  We won't
+Urbit wants to map 2GB of memory when it boots up.  We won’t
 necessarily use all this memory, we just want to see it.  On a
 normal modern PC or Mac, this is not an issue.  On some small
 cloud virtual machines (Amazon or Digital Ocean), the default
 memory configuration is smaller than this, and you need to
 manually configure a swapfile.
 
-Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there's a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
+Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there’s a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
 
-Don't spend a lot of time tweaking these settings; the simplest
+Don’t spend a lot of time tweaking these settings; the simplest
 thing is fine.
+
+### Clone and make
+
+Once your dependencies are installed the rest is easy:
+
+    git clone https://github.com/urbit/urbit
+    cd urbit
+    make
+    curl -o urbit.pill https://bootstrap.urbit.org/latest.pill
+
+After running `make` your Urbit executable lives at `bin/urbit`.  The `.pill` file is a compiled binary of Arvo that Urbit uses to bootstrap itself.
