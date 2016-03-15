@@ -1,10 +1,32 @@
 ---
 next: true
-sort: 2
+sort: 1
 title: System overview
 ---
 
 # System Overview
+
+Urbit is a clean-slate system software stack defined as a
+deterministic computer.  An encrypted P2P network, `%ames`, runs
+on a functional operating system, Arvo, written in a strict,
+typed functional language, Hoon, which compiles itself to a
+combinator interpreter, Nock, whose spec gzips to 340 bytes.
+
+## Architectural overview
+
+A deterministic computer?  Urbit's state is a pure function of
+its event history.  In practice it uses a memory checkpoint and
+an append-only log.  Every event is a transaction; Urbit is an
+ACID database and a single-level store.  Urbit runs on Unix now,
+but it's easy to imagine on a hypervisor or even bare metal.
+
+A purely functional OS?  Urbit is pure -- no code inside it can
+make system calls or otherwise affect the underlying platform.
+Instead, the top-level event function defines an I/O protocol.
+It maps an input event and the current state to a list of output
+actions and the subsequent state.  In Hoon:
+
+    $+([event state] [(list action) state])
 
 ### Nock
 

@@ -1,14 +1,14 @@
 ---
 next: true
-sort: 3
-title: What's in the repo
+sort: 2
+title: Arvo source guide
 ---
 
-# What's in the repo
+# Arvo source guide
 
-The `urbit` repo can look a little confusing at first.  Here we'll take a look at the files that live on your `/=home=` desk by default.  
+When you boot an Urbit we transfer the current version of the Arvo operating environment to your Urbit over our network.  That is, the source for the system lives on your Urbit.  Here we'll take a brief tour through the structure of a base Arvo desk.  
 
-If you `ls urb/zod` from inside the urbit repo you should see something like:
+Looking at the top level of [the Arvo repo](http://github.com/urbit/arvo), or any Urbit desk that has been mounted to Unix we see something like:
 
     app/
     arvo/
@@ -16,6 +16,7 @@ If you `ls urb/zod` from inside the urbit repo you should see something like:
     lib/
     mar/
     ren/
+    sec/
     sur/
     web/
     web.md
@@ -24,7 +25,7 @@ Let's step through directory by directory.
 
 ## `app/` 
 
-This is where `%gall` apps live.  `%gall` apps are stateful servants.  Sort of like unix daemons.  One very familiar one is `app/talk.hoon` which is the source code for `:talk` the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
+This is where `%gall` apps live.  `%gall` apps are stateful servers, sort of like unix daemons.  One very familiar one is `app/talk.hoon` which is the source code for `:talk` the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
 
 ## `arvo/`
 
@@ -60,25 +61,17 @@ This is where the `%arvo` vanes live.  Vanes are sort of like kernel modules. Th
 
 ### `arvo/hoon.hoon`
 
-`%hoon` is our programming langauge.
-
-### `arvo/jael.hoon`
-
-`%jael` handles secret storage.
-
-### `arvo/kahn.hoon`
-
-`%kahn` stores your contacts / trust graph.
+`%hoon` is our programming langauge.  Since Hoon compiles itself the language is actually specified in its source.
 
 ### `arvo/zuse.hoon`
 
-`%zuse` is our standard library.
+`%zuse` is the Hoon library.  
 
 That's it.  That's the whole system. 
 
 ## `gen/`
 
-`gen/` holds generators.  Generators are short command-line scripts.
+`gen/` holds generators.  Generators are command-line scripts.
 
 ## `lib/`
 
@@ -86,9 +79,7 @@ That's it.  That's the whole system.
 
 ## `mar/`
 
-This is where marks live.  Marks are data type definitions used by `%ford` and `%clay`.  
-
-Marks define how diffs are performed on a particular data type and how they can be translated to different types.  Sort of like file extensions, but much more powerful.
+This is where marks live.  Marks are data type definitions used by `%ford`.  A mark is like a mime-type, but precisely specified in executable code.  
 
 ## `ren/`
 
@@ -100,11 +91,13 @@ Default web requets in urbit are handled as a `.urb`, which is caught by the `ur
 
 `sur/` contains shared data structures.  
 
+Files in `sur` are like headers in C.
+
 ## `web/`
 
 There are the files publicly accessible to the web, as made possible by `%eyre`.
 
 ## `web.md`
 
-This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://your-urbit.urbit.org/`
+This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://your-urbit.urbit.org/`.
 
