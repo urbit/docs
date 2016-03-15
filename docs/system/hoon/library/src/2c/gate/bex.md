@@ -2,7 +2,7 @@
 
 Binary exponent
 
-Computes the result of `2^a`, producing an [atom]().
+Computes the result of `2^a`, producing an atom.
 
 Accepts
 -------
@@ -19,7 +19,7 @@ Source
 
     ++  bex                                                 ::  binary exponent
       ~/  %bex
-      |=  a=@
+      |=  a/@
       ^-  @
       ?:  =(0 a)  1
       (mul 2 $(a (dec a)))

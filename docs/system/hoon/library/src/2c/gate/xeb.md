@@ -2,7 +2,7 @@
 
 Binary logarithm
 
-Computes the base-2 logarithm of `a`, producing an [atom]().
+Computes the base-2 logarithm of `a`, producing an atom.
 
 Accepts
 -------
@@ -18,8 +18,8 @@ Source
 ------
 
     ++  xeb                                                 ::  binary logarithm
-      ::  ~/  %xeb
-      |=  a=@
+      ~/  %xeb
+      |=  a/@
       ^-  @
       (met 0 a)
 

@@ -3,16 +3,16 @@
 
 Assemble
 
-Produces an [atom]() from a list `b` of length-value pairs `p` and `q`,
+Produces an atom from a list `b` of length-value pairs `p` and `q`,
 where `p` is the length in bloqs of size `a`, and `q` is an atomic
 value.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
-`b` is a [`++list`]() of length value pairs, `p` and `q`.
+`b` is a `++list` of length value pairs, `p` and `q`.
 
 Produces
 --------
@@ -24,7 +24,7 @@ Source
 
     ++  can                                                 ::  assemble
       ~/  %can
-      |=  [a=bloq b=(list ,[p=@ q=@])]
+      |=  [a/bloq b/(list [p=@ q=@])]
       ^-  @
       ?~  b  0
       (mix (end a p.i.b q.i.b) (lsh a p.i.b $(b t.b)))
