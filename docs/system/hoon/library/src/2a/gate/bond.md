@@ -2,7 +2,7 @@
 
 Replace null
 
-Replaces an empty [++unit]() `b` with the product of a called [trap]()
+Replaces an empty ++unit `b` with the product of a called trap
 `a`. If the unit is not empty, then the original unit is produced.
 
 Accepts
@@ -21,10 +21,11 @@ Source
 ------
 
     ++  bond                                                ::  replace
-      |*  a=trap
-      |*  b=(unit)
+      |*  a/(trap)
+      |*  b/(unit)
       ?~  b  $:a
       u.b
+
 
 Examples
 --------

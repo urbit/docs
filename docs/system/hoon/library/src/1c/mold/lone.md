@@ -1,14 +1,12 @@
 ### `++lone`
 
-Tile generator. `++lone` puts face of `p` on something.
+`++lone` puts face of `p` on something.
 
 XX unused
 
 Source
 ------
 
-        ++  lone  |*(a=$+(* *) ,p=a)                            ::  just one thing
-
-
+    ++  lone  |*(a/$-(* *) p/a)                             ::  just one thing
 
 ***

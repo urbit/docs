@@ -7,7 +7,7 @@ Computes the axis of `b` within axis `a`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,15 +21,14 @@ Source
 
     ++  peg                                                 ::  tree connect
       ~/  %peg
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       ^-  @
       ?-  b
-        1   a
-        2   (mul a 2)
-        3   +((mul a 2))
+        $1  a
+        $2  (mul a 2)
+        $3  +((mul a 2))
         *   (add (mod b 2) (mul $(b (div b 2)) 2))
       ==
-    ::
 
 Examples
 --------

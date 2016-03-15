@@ -2,7 +2,7 @@
 
 List length
 
-Produces the length of any [`++list`]() `a` as an atom.
+Produces the length of any `++list` `a` as an atom.
 
 Accepts
 -------
@@ -19,12 +19,13 @@ Source
 
     ++  lent                                                ::  length
       ~/  %lent
-      |=  a=(list)
+      |=  a/(list)
       ^-  @
       =+  b=0
       |-
-      ?~  a  b 
+      ?~  a  b
       $(a t.a, b +(b))
+
 
 Examples
 --------

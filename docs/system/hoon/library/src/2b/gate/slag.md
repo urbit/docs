@@ -8,7 +8,7 @@ Accepts an atom `a` and list `b`, producing the remaining elements from
 Accepts
 -------
 
-`b` is a [list]().
+`b` is a list.
 
 Produces
 --------
@@ -20,11 +20,12 @@ Source
 
     ++  slag                                                ::  suffix
       ~/  %slag
-      |*  [a=@ b=(list)]
+      |*  {a/@ b/(list)}
       |-  ^+  b
       ?:  =(0 a)  b
       ?~  b  ~
       $(b t.b, a (dec a))
+
 
 Examples
 --------

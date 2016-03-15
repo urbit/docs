@@ -2,12 +2,15 @@
 
 Faceless list
 
-A [`++list`]() without the [face]()s `i` and `t`.
+A `++list` without the faces `i` and `t`.
 
 Source
 ------
 
-        ++  pole  |*  a=_,*                                     ::  nameless list
+    ++  pole  |*  a/$-(* *)                                 ::  nameless list
+              $@($~ {a (pole a)})                           ::
+
+
 
 Examples
 --------

@@ -2,13 +2,14 @@
 
 Mold of pair of types
 
-[mold]() generator. Produces a tuple of two of the types passed in.
+mold generator. Produces a tuple of two of the types passed in.
 
 
 Source
 ------
 
-        ++  pair  |*([a=$+(* *) b=$+(* *)] ,[p=a q=b])          ::  just a pair
+    ++  pair  |*({a/$-(* *) b/$-(* *)} {p/a q/b})           ::  just a pair
+
 
 
 Examples

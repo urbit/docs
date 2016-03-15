@@ -2,12 +2,12 @@
 
 Replicate
 
-Replicate: produces a [`++list`]() containing `a` copies of `b`.
+Replicate: produces a `++list` containing `a` copies of `b`.
 
 Accepts
 -------
 
-`b` is a [noun]()
+`b` is a noun.
 
 Produces
 --------
@@ -18,8 +18,9 @@ Source
 ------
 
     ++  reap                                                ::  replicate
-      |*  [a=@ b=*]
-      |-  ^-  (list ,_b)
+      ~/  %reap
+      |*  {a/@ b/*}
+      |-  ^-  (list _b)
       ?~  a  ~
       [b $(a (dec a))]
 

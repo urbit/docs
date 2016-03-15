@@ -7,9 +7,9 @@ Subtracts `b` from `a`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
-`b` is an [atom]().
+`b` is an atom.
 
 Produces
 --------
@@ -19,13 +19,13 @@ An atom.
 Source
 ------
 
-    ++  sub                                                 ::  subtract
-      ~/  %sub
-      |=  [a=@ b=@]
-      ~|  %subtract-underflow
-      ^-  @
-      ?:  =(0 b)  a
-      $(a (dec a), b (dec b))
+        ++  sub                                                 ::  subtract
+          ~/  %sub
+          |=  [a=@ b=@]
+          ~|  %subtract-underflow
+          ^-  @
+          ?:  =(0 b)  a
+          $(a (dec a), b (dec b))
 
 Examples
 --------

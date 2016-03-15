@@ -2,16 +2,16 @@
 
 Maybe transform
 
-Passes each member of [`++list`]() `a` to [gate]() `b`, which must produce a
-[`++unit`]().  Produces a new list with all the results that do not produce
+Passes each member of `++list` `a` to gate `b`, which must produce a
+`++unit`.  Produces a new list with all the results that do not produce
 `~`.
 
 Accepts
 -------
 
-`a` is a [list]().
+`a` is a list.
 
-`b` is a [gate]() that produces a [unit]().
+`b` is a gate that produces a unit.
 
 Produces
 --------
@@ -22,7 +22,8 @@ Source
 ------
 
     ++  murn                                                ::  maybe transform
-      |*  [a=(list) b=$+(* (unit))]
+      ~/  %murn
+      |*  {a/(list) b/$-(* (unit))}
       |-
       ?~  a  ~
       =+  c=(b i.a)

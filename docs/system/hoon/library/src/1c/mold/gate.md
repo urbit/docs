@@ -3,28 +3,26 @@
 Function
 
 A core with one arm, `$`--the empty name--which transforms a sample noun into a product
-noun. If used [dryly]() as a type, the [subject]() must have a sample type of [`*`]().
+noun. If used dryly as a type, the subject must have a sample type of `*`.
 
 
 Source
 ------
 
-        ++  gate  $+(* *)                                       ::  general gate
+    ++  gate  $-(* *)                                       ::  general gate
+
 
 Examples
 --------
 
-See also: [`++lift`](), [`++cork`]()
+See also: `++lift`, `++cork`
 
-    ~zod/try=> *gate
-    <1|mws [* <101.jzo 1.ypj %164>]>
-    ~zod/try=> `gate`|=(* 0)
-    <1|mws [* <101.jzo 1.ypj %164>]>
+    > ? gate
+      <1.ybc {* <110.jyx 1.ztu $151>}>
+    <1.ybc {* <110.jyx 1.ztu $151>}>
 
-    ~zod/try=> (|=(a=* [a 'b']) 'c')
-    [99 'b']
-    ~zod/try=> (`gate`|=(a=* [a 'b']) 'c')
-    [99 98]
+    > (`gate`|=(a/* [a 'b']) 1)
+    [1 'b']
 
 
 

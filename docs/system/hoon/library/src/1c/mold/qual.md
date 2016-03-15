@@ -7,7 +7,8 @@ A `++qual` is a tuple of four of the types passed in.
 Source
 ------
 
-        ++  qual  |*  [a=$+(* *) b=$+(* *) c=$+(* *) d=$+(* *)] ::  just a quadruple
+    ++  qual  |*  {a/$-(* *) b/$-(* *) c/$-(* *) d/$-(* *)} ::  just a quadruple
+              {p/a q/b r/c s/d}                             ::
 
 Examples
 --------
@@ -17,4 +18,4 @@ Examples
 
 
 
-***
+  ***

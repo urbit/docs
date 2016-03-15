@@ -2,14 +2,14 @@
 
 Give unit a default value
 
-Produces a default value `b` for a [`++unit`]() `a` in cases where `a` is null.
+Produces a default value `b` for a `++unit` `a` in cases where `a` is null.
 
 Accepts
 -------
 
 `a` is a unit.
 
-`b` is a [noun]() that's used as the default value.
+`b` is a noun that's used as the default value.
 
 Produces
 --------
@@ -20,8 +20,9 @@ Source
 ------
 
     ++  fall                                                ::  default
-      |*  [a=(unit) b=*]
+      |*  {a/(unit) b/*}
       ?~(a b u.a)
+
 
 Examples
 --------

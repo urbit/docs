@@ -2,7 +2,7 @@
 
 Unit to list
 
-Makes a [++list]() of the unwrapped value (`u.a`) of a [`++unit`]() `a`.
+Makes a ++list of the unwrapped value (`u.a`) of a `++unit` `a`.
 
 Accepts
 -------
@@ -18,17 +18,18 @@ Source
 ------
 
     ++  drop                                                ::  enlist
-      |*  a=(unit)
+      |*  a/(unit)
       ?~  a  ~
       [i=u.a t=~]
+
 
 Examples
 --------
 
-    ~zod/try=> =a ((unit ,@) [~ 97])
+    ~zod/try=> =a ((unit @) [~ 97])
     ~zod/try=> (drop a)
     [i=97 t=~] 
-    ~zod/try=> =a ((unit ,@) [~])
+    ~zod/try=> =a ((unit @) [~])
     ~zod/try=> (drop a)
     ~
 

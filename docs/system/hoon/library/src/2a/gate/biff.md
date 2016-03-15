@@ -2,7 +2,7 @@
 
 Unit as argument
 
-Applies a function `b` that produces a unit to the unwrapped value of [++unit]()
+Applies a function `b` that produces a unit to the unwrapped value of ++unit
 `a` (`u.a`). If `a` is empty, `~` is produced.
 
 Accepts
@@ -21,16 +21,17 @@ Source
 ------
 
     ++  biff                                                ::  apply
-      |*  [a=(unit) b=$+(* (unit))]
+      |*  {a/(unit) b/$-(* (unit))}
       ?~  a  ~
       (b u.a)
+
 
 Examples
 --------
 
-    ~zod/try=> (biff (some 5) |=(a=@ (some (add a 2))))
+    ~zod/try=> (biff (some 5) |=(a/@ (some (add a 2))))
     [~ u=7]
-    ~zod/try=> (biff ~ |=(a=@ (some (add a 2))))
+    ~zod/try=> (biff ~ |=(a/@ (some (add a 2))))
     ~
 
 

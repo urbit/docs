@@ -8,7 +8,7 @@ inclusive index `a`, producing `b` number of characters.
 Accepts
 -------
 
-`c` is a [list]().
+`c` is a list.
 
 Produces
 --------
@@ -19,8 +19,9 @@ Source
 ------
 
     ++  swag                                                ::  infix
-      |*  [[a=@ b=@] c=(list)]
-      (scag b (slag a c))
+      |*  {{a/@ b/@} c/(list)}
+      (scag +<-> (slag +<-< c))
+
 
 Examples
 --------

@@ -2,20 +2,21 @@
 
 Mold of fork between two
 
-[mold]() generator: produces a dicriminated [fork]() between two types.
+mold generator: produces a dicriminated fork between two types.
 
 Source
 ------
 
-        ++  each  |*([a=$+(* *) b=$+(* *)] $%([& p=a] [| p=b])) ::  either a or b
+        ++  each
+          |*  {a/$-(* *) b/$-(* *)}                     ::  either a or b
+          $%({$& p/a} {$| p/b})                         ::    a default
+
 
 Examples
 --------
 
-    ~zod/try=> :type; *(each cord time)
+    > ? *(each cord time)
+      ?({$.y p/@t} {$.n p/@da})
     [%.y p='']
-    {[%.y p=@t] [%.n p=@da]}
-
-
 
 ***

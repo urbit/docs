@@ -3,7 +3,7 @@
 Group unit values into pair
 
 Produces `~` if either `a` or `b` are empty. Otherwise, produces a
-[++unit]() whose value is a cell of the values of two input units `a` and
+++unit whose value is a cell of the values of two input units `a` and
 `b`.
 
 Accepts
@@ -22,10 +22,11 @@ Source
 ------
 
     ++  both                                                ::  all the above
-      |*  [a=(unit) b=(unit)]
+      |*  {a/(unit) b/(unit)}
       ?~  a  ~
       ?~  b  ~
       [~ u=[u.a u.b]]
+
 
 Examples
 --------
