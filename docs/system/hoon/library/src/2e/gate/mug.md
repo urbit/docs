@@ -1,12 +1,12 @@
 ### `++mug`
 
 Hashes `a` with the 31-bit nonzero FNV-1a non-cryptographic hash
-algorithm, producing an [atom]().
+algorithm, producing an atom.
 
 Accepts
 -------
 
-A is a [noun]().
+A is a noun.
 
 Produces
 --------
@@ -18,7 +18,7 @@ Source
 
     ++  mug                                                 ::  31bit nonzero FNV1a
       ~/  %mug
-      |=  a=*
+      |=  a/*
       ?^  a
         =+  b=[p=$(a -.a) q=$(a +.a)]
         |-  ^-  @
@@ -36,6 +36,7 @@ Source
         ?.  =(0 f)  f
         ^$(b +(b))
       $(c (fnv (mix c (cut 3 [d 1] a))), d +(d))
+
 
 Examples
 --------
