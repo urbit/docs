@@ -7,7 +7,7 @@ XX revisit
 Accepts
 -------
 
-`a` is a [noun]()
+`a` is a noun
 
 `b` is a noun
 
@@ -19,12 +19,13 @@ Source
 
     ++  vor                                                 ::  v-order
       ~/  %vor
-      |=  [a=* b=*]
+      |=  {a/* b/*}
       ^-  ?
       =+  [c=(mug (mug a)) d=(mug (mug b))]
       ?:  =(c d)
         (dor a b)
       (lth c d)
+
 
 Examples
 --------

@@ -8,7 +8,7 @@ boolean.
 Accepts
 -------
 
-`a` is a [noun]().
+`a` is a noun.
 
 `b` is a noun.
 
@@ -21,9 +21,9 @@ A boolean atom.
 Source
 ------
 
-    ++  aor                                                 ::  alphabetic-order
+    ++  aor                                                 ::  a-order
       ~/  %aor
-      |=  [a=* b=*]
+      |=  {a/* b/*}
       ^-  ?
       ?:  =(a b)  &
       ?.  ?=(@ a)
@@ -37,6 +37,7 @@ Source
       ?:  =(c d)
         $(a (rsh 3 1 a), b (rsh 3 1 b))
       (lth c d)
+
 
 Examples
 --------

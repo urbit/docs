@@ -8,7 +8,7 @@ boolean.
 Accepts
 -------
 
-`a` is a [noun]().
+`a` is a noun.
 
 `b` is a noun.
 
@@ -22,7 +22,7 @@ Source
 
     ++  dor                                                 ::  d-order
       ~/  %dor
-      |=  [a=* b=*]
+      |=  {a/* b/*}
       ^-  ?
       ?:  =(a b)  &
       ?.  ?=(@ a)
@@ -32,6 +32,7 @@ Source
         $(a -.a, b -.b)
       ?.  ?=(@ b)  &
       (lth a b)
+
 
 Examples
 --------
