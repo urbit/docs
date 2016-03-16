@@ -6,11 +6,15 @@ title: System overview
 
 # System Overview
 
+<div class="row"><div class="col-md-8">
+
 Urbit is a clean-slate system software stack defined as a
 deterministic computer.  An encrypted P2P network, `%ames`, runs
 on a functional operating system, Arvo, written in a strict,
 typed functional language, Hoon, which compiles itself to a
 combinator interpreter, Nock, whose spec gzips to 340 bytes.
+
+</div></div>
 
 ## Architectural overview
 

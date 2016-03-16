@@ -1,14 +1,18 @@
 ---
 next: true
-sort: 1
+sort: 2
 title: Install
 ---
 
 # Install
 
+<div class="row"><div class="col-md-8">
+
 Urbit is designed to run on any Unix box with an internet connection.  Debian, OS X, FreeBSD and Fedora all work well.
 
-Urbit is alpha software.  It’s not yet completely stable, its crypto hasn’t been audited and there are plenty of rough edges.  Just so you know what you're getting into.
+Urbit is alpha software.  It’s not yet completely stable, its crypto hasn’t been audited and there are plenty of rough edges.  Urbit is lots of fun to play with, but not quite ready for your important or sensitive data.  Just so you know what you're getting into.
+
+</div></div>
 
 ## Build from source
 
