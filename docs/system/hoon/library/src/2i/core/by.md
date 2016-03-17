@@ -4,12 +4,13 @@ Map operations
 
     ++  by                                                  ::  map engine
       ~/  %by
-      |/  a=(map)
+      |_  a/(map)
+
 
 Container arm for map operation arms. A map is a set of key, value
-pairs. The contained arms inherit it's [sample]() [map](), `a`.
+pairs. The contained arms inherit it's sample map, `a`.
 
-`a` is a [map]().
+`a` is a map.
 
     ~zod/try=> ~(. by (mo (limo [%a 1] [%b 2] ~)))
     <19.irb [nlr([p={%a %b} q=@ud]) <414.rvm 101.jzo 1.ypj %164>]>
@@ -22,26 +23,28 @@ Logical AND
 
       +-  all                                               ::  logical AND
         ~/  %all
-        |*  b=$+(* ?)
+        |*  b/$-(* ?)
         |-  ^-  ?
         ?~  a
           &
         ?&((b q.n.a) $(a l.a) $(a r.a))
+      ::
+
 
 Computes the logical AND on the results of slamming every element in map
 `a` with gate `b`. Produces a loobean.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [wet gate]().
+`b` is a wet gate.
 
-    ~zod/try=> =b (mo `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
-    ~zod/try=> (~(all by b) |=(a=* ?@(a & |)))
+    ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
+    ~zod/try=> (~(all by b) |=(a/* ?@(a & |)))
     %.n
     ~zod/try=> =a (mo `(list ,[@t @u])`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
-    ~zod/try=> (~(all by a) |=(a=@ (lte a 6)))
+    ~zod/try=> (~(all by a) |=(a/@ (lte a 6)))
     %.y
-    ~zod/try=> (~(all by a) |=(a=@ (lte a 4)))
+    ~zod/try=> (~(all by a) |=(a/@ (lte a 4)))
     %.n
 
 ------------------------------------------------------------------------
@@ -61,14 +64,14 @@ Logical OR
 Computes the logical OR on the results of slamming every element with
 gate `b`. Produces a loobean.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [wet gate]().
+`b` is a wet gate.
 
-    ~zod/try=> =b (mo `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
+    ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
     ~zod/try=> (~(all by b) |=(a=* ?@(a & |)))
     %.y
-    ~zod/try=> =a (mo `(list ,[@t @u])`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
+    ~zod/try=> =a (mo `(list [@t @u])`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
     ~zod/try=> (~(any by a) |=(a=@ (lte a 4)))
     %.y
 
@@ -80,7 +83,7 @@ Delete
 
       +-  del                                               ::  delete at key b
         ~/  %del
-        |*  b=*
+        |*  b/*
         |-  ^+  a
         ?~  a
           ~
@@ -88,20 +91,21 @@ Delete
           ?:  (gor b p.n.a)
             [n.a $(a l.a) r.a]
           [n.a l.a $(a r.a)]
-        |-  ^-  ?(~ _a)
+        |-  ^-  {$?($~ _a)}
         ?~  l.a  r.a
         ?~  r.a  l.a
         ?:  (vor p.n.l.a p.n.r.a)
           [n.l.a l.l.a $(l.a r.l.a)]
         [n.r.a $(r.a l.r.a) r.r.a]
+      ::
 
 Produces map `a` with the element located at key `b` removed.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a key as a [noun]().
+`b` is a key as a noun.
 
-        ~zod/try=> =b (mo `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
+        ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
         ~zod/try=> (~(del by b) `a`)
         {[p=`b` q=[2 3]]}
 
@@ -111,23 +115,25 @@ Produces map `a` with the element located at key `b` removed.
 
 Axis of key
 
-      +-  dig                                               ::  axis of key
-        |=  b=*
+      +-  dig                                               ::  axis of b key
+        |=  b/*
         =+  c=1
-        |-  ^-  (unit ,@)
+        |-  ^-  (unit @)
         ?~  a  ~
         ?:  =(b p.n.a)  [~ u=(peg c 2)]
         ?:  (gor b p.n.a)
           $(a l.a, c (peg c 6))
         $(a r.a, c (peg c 7))
+      ::
+
 
 Produce the axis of key `b` within map `a`.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a key as a [noun]().
+`b` is a key as a noun.
 
-        ~zod/try=> =b (mo `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])  
+        ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])  
         ~zod/try=> (~(dig by b) `b`)
         [~ 2]
 
