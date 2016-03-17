@@ -2,12 +2,12 @@
 
 GCD
 
-    ++  egcd                                                ::  schneier's egcd
-      |=  [a=@ b=@]
+    ++  egcd  !:                                            ::  schneier's egcd
+      |=  {a/@ b/@}
       =+  si
       =+  [c=(sun a) d=(sun b)]
       =+  [u=[c=(sun 1) d=--0] v=[c=--0 d=(sun 1)]]
-      |-  ^-  [d=@ u=@ v=@]
+      |-  ^-  {d/@ u/@s v/@s}
       ?:  =(--0 c)
         [(abs d) d.u d.v]
       ::  ?>  ?&  =(c (sum (pro (sun a) c.u) (pro (sun b) c.v)))
@@ -21,6 +21,7 @@ GCD
         v  [(dif d.v (pro q c.v)) c.v]
       ==
     ::
+
 
 Greatest common denominator
 
