@@ -2,18 +2,18 @@
 
 Day through second
 
-The remaining part of a [`++date`](): day, hour, minute, second and a list
-of [`@ux`]() for precision.
+The remaining part of a `++date`: day, hour, minute, second and a list
+of `@ux` for precision.
 
 Source
 ------
 
-    @ud h=@ud m=@ud s=@ud f=(list ,@ux)]      ::  parsed time
+    ++  tarp  {d/@ud h/@ud m/@ud s/@ud f/(list @ux)}        ::  parsed time
+
 
 Examples
 --------
 
-See also: [`++date`](), [`++yell`[]()/`++yule`]()
 
     ~zod/try=> -<-
     ~2014.9.20..00.43.33..b52a

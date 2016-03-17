@@ -3,7 +3,7 @@
 
 List of chars
 
-One of Hoon's two string types, the other being [`++cord`](). A tape is a
+One of Hoon's two string types, the other being `++cord`. A tape is a
 list of chars.
 
 Source
