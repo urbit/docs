@@ -3,12 +3,12 @@
 Jug operations
 
     ++  ju                                                  ::  jug engine
-      |/  a=(jug)
+      |/  a/(jug)
 
 Container arm for jug operation arms. A `++jug` is a `++map` of
-`++sets`. The contained arms inherit its [sample]() jug, `a`.
+`++sets`. The contained arms inherit its sample jug, `a`.
 
-`a` is a [jug]().
+`a` is a jug.
 
     ~zod/try=> ~(. ju (mo (limo a/(sa "ho") b/(sa "he") ~)))
     <2.dgz [nlr([p={%a %b} q={nlr(^$1{@tD $1}) nlr(^$3{@tD $3})}]) <414.fvk 101.jzo 1.ypj %164>]>
@@ -17,18 +17,20 @@ Container arm for jug operation arms. A `++jug` is a `++map` of
 
 Remove
 
-      +-  del                                               ::  delete at key b
-        |*  [b=* c=*]
+      +-  del                                               ::  del key-set pair
+        |*  {b/* c/*}
         ^+  a
-        =+  d=(get(+< a) b)
+        =+  d=(get b)
         =+  e=(~(del in d) c)
         ?~  e
           (~(del by a) b)
         (~(put by a) b e)
+      ::
+
 
 Produces jug `a` with value `c` removed from set located at key `b`.
 
-`a` is a [jug]().
+`a` is a jug.
 
 `b` is a key of the same type as the keys in `a`.
 
@@ -49,13 +51,14 @@ removed.
 Retrieve set
 
       +-  get                                               ::  gets set by key
-        |*  b=*
+        |*  b/*
         =+  c=(~(get by a) b)
         ?~(c ~ u.c)
+      ::
 
 Produces a set retrieved from jar `a` using key `b`.
 
-`a` is a [jar]().
+`a` is a jar.
 
 `b` is a key of the same type as the keys in `a`.
 
@@ -75,18 +78,20 @@ Produces a set retrieved from jar `a` using key `b`.
 Check contents
 
       +-  has                                               ::  existence check
-        |*  [b=* c=*]
+        |*  {b/* c/*}
         ^-  ?
-        (~(has in (get(+< a) b)) c)
+        (~(has in (get b)) c)
+      ::
+
 
 Computes whether a value `c` exists within the set located at key `b`
 with jar `a`. Produces a loobean.
 
-`a` is a [set]().
+`a` is a set.
 
-`b` is a key as a [noun]().
+`b` is a key as a noun.
 
-`c` is a value as a [noun]().
+`c` is a value as a noun.
 
     ~zod/try=> s
     {[p='a' q={1 3 2}] [p='b' q={5 4 6}]}
@@ -109,19 +114,19 @@ with jar `a`. Produces a loobean.
 
 Add key-set pair
 
-      +-  put                                               ::  adds key-element pair
-        |*  [b=* c=*]
+      +-  put                                               ::  add key-set pair
+        |*  {b/* c/*}
         ^+  a
-        =+  d=(get(+< a) b)
+        =+  d=(get b)
         (~(put by a) b (~(put in d) c))
 
 Produces jar `a` with `c` added to the set value located at key `b`.
 
-`a` is a [set]().
+`a` is a set.
 
-`b` is a key as a [noun]().
+`b` is a key as a noun.
 
-`c` is a [value]().
+`c` is a value.
 
     ~zod/try=> s
     {[p='a' q={1 3 2}] [p='b' q={5 4 6}]}

@@ -38,10 +38,10 @@ Computes the logical AND on the results of slamming every element in map
 
 `b` is a wet gate.
 
-    ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
+    ~zod/try=> =b (mo `(list {@t *})`[['a' 1] ['b' [2 3]] ~])
     ~zod/try=> (~(all by b) |=(a/* ?@(a & |)))
     %.n
-    ~zod/try=> =a (mo `(list ,[@t @u])`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
+    ~zod/try=> =a (mo `(list {@t @u})`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
     ~zod/try=> (~(all by a) |=(a/@ (lte a 6)))
     %.y
     ~zod/try=> (~(all by a) |=(a/@ (lte a 4)))
@@ -68,10 +68,10 @@ gate `b`. Produces a loobean.
 
 `b` is a wet gate.
 
-    ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
-    ~zod/try=> (~(all by b) |=(a=* ?@(a & |)))
+    ~zod/try=> =b (mo `(list {@t *})`[['a' 1] ['b' [2 3]] ~])
+    ~zod/try=> (~(all by b) |=(a/* ?@(a & |)))
     %.y
-    ~zod/try=> =a (mo `(list [@t @u])`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
+    ~zod/try=> =a (mo `(list {@t @u})`[['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
     ~zod/try=> (~(any by a) |=(a=@ (lte a 4)))
     %.y
 
@@ -105,7 +105,7 @@ Produces map `a` with the element located at key `b` removed.
 
 `b` is a key as a noun.
 
-        ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
+        ~zod/try=> =b (mo `(list {@t *})`[['a' 1] ['b' [2 3]] ~])
         ~zod/try=> (~(del by b) `a`)
         {[p=`b` q=[2 3]]}
 
@@ -133,7 +133,7 @@ Produce the axis of key `b` within map `a`.
 
 `b` is a key as a noun.
 
-        ~zod/try=> =b (mo `(list [@t *])`[['a' 1] ['b' [2 3]] ~])  
+        ~zod/try=> =b (mo `(list {@t *})`[['a' 1] ['b' [2 3]] ~])  
         ~zod/try=> (~(dig by b) `b`)
         [~ 2]
 
@@ -145,21 +145,22 @@ Concatenate
 
       +-  gas                                               ::  concatenate
         ~/  %gas
-        |*  b=(list ,[p=* q=*])
-        =>  .(b `(list ,_?>(?=(^ a) n.a))`b)
+        |=  b/(list _?>(?=(^ a) n.a))
         |-  ^+  a
         ?~  b
           a
-        $(b t.b, a (put(+< a) p.i.b q.i.b))
+        $(b t.b, a (put i.b))
+      ::
+
 
 Insert a list of key-value pairs `b` into map `a`.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [list]() of [cells]() of key-value nouns `p` and `q`.
+`b` is a list of cells of key-value nouns `p` and `q`.
 
-    ~zod/try=> =a (mo `(list ,[@t *])`[[`a` 1] [`b` 2] ~])
-    ~zod/try=> =b `(list ,[@t *])`[[`c` 3] [`d` 4] ~]
+    ~zod/try=> =a (mo `(list {@t *})`[[`a` 1] [`b` 2] ~])
+    ~zod/try=> =b `(list {@t *})`[[`c` 3] [`d` 4] ~]
     ~zod/try=> (~(gas by a) b)
     {[p=`d` q=4] [p=`a` q=1] [p=`c` q=3] [p=`b` q=2]}
 
@@ -183,11 +184,11 @@ Grab unit value
 
 Produce the unit value of the value located at key `b` within map `a`.
 
-`a` is a [map]()
+`a` is a map
 
-`b` is a [key]() as a [noun]()
+`b` is a key as a noun
 
-        ~zod/try=> =b (mo `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])  
+        ~zod/try=> =b (mo `(list {@t *})`[['a' 1] ['b' [2 3]] ~])  
         ~zod/try=> (~(get by b) `b`)
         [~ [2 3]]
 
@@ -198,18 +199,17 @@ Produce the unit value of the value located at key `b` within map `a`.
 Assert
 
       +-  got
-        |*  b=*
-        %-  need
-        %-  get(+< a)  b
+        |*  b/*
+        (need (get b))
 
 Produce the value located at key `b` within map `a`. Crash if key `b`
 does not exist.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [key]().
+`b` is a key.
 
-        ~zod/try=> =m (mo `(list ,[@t *])`[['a' 1] ['b' 2] ~])
+        ~zod/try=> =m (mo `(list {@t *})`[['a' 1] ['b' 2] ~])
         ~zod/try=> m
         {[p='a' q=1] [p='b' q=2]}
         ~zod/try=> (~(get by m) 'a')
@@ -227,17 +227,18 @@ Key existence check
 
       +-  has                                               ::  key existence check
         ~/  %has
-        |*  b=*
-        !=(~ (get(+< a) b))
+        |*  b/*
+        !=(~ (get b))
+
 
 Checks whether map `a` contains an element with key `b`, producing a
 loobean.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a key as a [noun]().
+`b` is a key as a noun.
 
-        ~zod/try=> =b (mo `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])  
+        ~zod/try=> =b (mo `(list {@t *})`[['a' 1] ['b' [2 3]] ~])  
         ~zod/try=> (~(has by b) `b`)
         %.y
         ~zod/try=> (~(has by b) `c`)
@@ -251,7 +252,7 @@ Intersection
 
       +-  int                                               ::  intersection
         ~/  %int
-        |*  b=_a
+        |*  b/_a
         |-  ^+  a
         ?~  b
           ~
@@ -260,41 +261,42 @@ Intersection
         ?:  (vor p.n.a p.n.b)
           ?:  =(p.n.b p.n.a)
             [n.b $(a l.a, b l.b) $(a r.a, b r.b)]
-          ?:  (hor p.n.b p.n.a)
-            %-  uni(+< $(a l.a, b [n.b l.b ~]))  $(b r.b)
-          %-  uni(+< $(a r.a, b [n.b ~ r.b]))  $(b l.b)
+          ?:  (gor p.n.b p.n.a)
+            %-  uni(a $(a l.a, b [n.b l.b ~]))  $(b r.b)
+          %-  uni(a $(a r.a, b [n.b ~ r.b]))  $(b l.b)
         ?:  =(p.n.a p.n.b)
           [n.b $(b l.b, a l.a) $(b r.b, a r.a)]
-        ?:  (hor p.n.a p.n.b)
-          %-  uni(+< $(b l.b, a [n.a l.a ~]))  $(a r.a)
-        %-  uni(+< $(b r.b, a [n.a ~ r.a]))  $(a l.a)
+        ?:  (gor p.n.a p.n.b)
+          %-  uni(a $(b l.b, a [n.a l.a ~]))  $(a r.a)
+        %-  uni(a $(b r.b, a [n.a ~ r.a]))  $(a l.a)
+      ::
 
 Produces a map of the (key) intersection between two maps of the same
 type, `a` and `b`. If both maps have an identical key that point to
 different values, the element from map `b` is used.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [map]().
+`b` is a map.
 
-        ~zod/try=> =n (mo `(list ,[@t *])`[['a' 1] ['c' 3] ~])
+        ~zod/try=> =n (mo `(list {@t *})`[['a' 1] ['c' 3] ~])
         ~zod/try=> n
         {[p='a' q=1] [p='c' q=3]}
         ~zod/try=> m
         {[p='a' q=1] [p='b' q=2]}
         ~zod/try=> (~(int by m) n)
         {[p='a' q=1]}
-        ~ravpel-holber/try=> =p (mo `(list ,[@t *])`[['a' 2] ['b' 2] ~])
+        ~ravpel-holber/try=> =p (mo `(list {@t *})`[['a' 2] ['b' 2] ~])
         ~zod/try=> p
         {[p='a' q=2] [p='b' q=2]}
         ~zod/try=> (~(int by p) n)
         {[p='a' q=2]}
-        ~zod/try=> =q (mo `(list ,[@t *])`[['a' 2] ['c' 2] ~])
+        ~zod/try=> =q (mo `(list {@t *})`[['a' 2] ['c' 2] ~])
         ~zod/try=> q
         {[p='a' q=2] [p='b' q=2]}
         ~zod/try=> (~(int by p) q)
         {[p='a' q=2] [p='b' q=2]}
-        ~zod/try=> =o (mo `(list ,[@t *])`[['c' 3] ['d' 4] ~])
+        ~zod/try=> =o (mo `(list {@t *})`[['c' 3] ['d' 4] ~])
         ~zod/try=> (~(int by m) o)
         {}
        
@@ -343,7 +345,7 @@ Add key-value pair
 
       +-  put                                               ::  adds key-value pair
         ~/  %put
-        |*  [b=* c=*]
+        |*  {b/* c/*}
         |-  ^+  a
         ?~  a
           [[b c] ~ ~]
@@ -362,10 +364,11 @@ Add key-value pair
         ?:  (vor p.n.a p.n.d)
           [n.a l.a d]
         [n.d [n.a l.a l.d] r.d]
+      ::
 
 Produces `a` with the addition of the key-value pair of `b` and `c`.
 
-`a` is a [map]().
+`a` is a map.
 
 `b` is a key of the same type as the keys in `a`.
 
@@ -386,10 +389,11 @@ Produces `a` with the addition of the key-value pair of `b` and `c`.
 ### `+-rep:by`
 
       +-  rep                                               ::  replace by product
-        |*  [b=* c=_,*]
+        |*  b/_|=({* *} +<+)
         |-
-        ?~  a  b
-        $(a r.a, b $(a l.a, b (c q.n.a b)))
+        ?~  a  +<+.b
+        $(a r.a, +<+.b $(a l.a, +<+.b (b n.a +<+.b)))
+      ::
 
 Accumulate using gate from values in map
 
@@ -400,7 +404,7 @@ XX interface changing.
 ### `+-rib:by`
 
       +-  rib                                               ::  transform + product
-        |*  [b=* c=_,*]
+        |*  {b/* c/$-(* *)}
         |-  ^+  [b a]
         ?~  a  [b ~]
         =+  d=(c n.a b)
@@ -408,6 +412,7 @@ XX interface changing.
         =+  e=$(a l.a, b -.d)
         =+  f=$(a r.a, b -.e)
         [-.f [n.a +.e +.f]]
+      ::
 
 Replace values with accumulator
 
@@ -419,23 +424,23 @@ XX interface changing, possibly disappearing
 
 Transform values
 
-      +-  run                                               ::  turns to tuples
-        |*  b=_,*
-        |-  
+      +-  run                                               ::  apply gate to values
+        |*  b/$-(* *)
+        |-
         ?~  a  a
-        a(n (b q.n.a), l $(a l.a), r $(a r.a))
+        [n=[p=p.n.a q=(b q.n.a)] l=$(a l.a) r=$(a r.a)]
 
 Iterates over every value in set `a` using gate `b`. Produces a map.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [wet gate]().
+`b` is a wet gate.
 
     ~zod/try=> m
     {[p='a' q=1] [p='b' q=2]}
     ~zod/try=> ^+(m (~(run by m) dec))
     {[p='a' q=0] [p='b' q=1]}
-    ~zod/try=> `(map ,@tas ,@t)`(~(run by m) (cury scot %ux))
+    ~zod/try=> `(map @tas @t)`(~(run by m) (cury scot %ux))
     {[p=%a q='0x1'] [p=%b q='0x2']}
 
 ------------------------------------------------------------------------
@@ -446,18 +451,19 @@ Listify pairs
 
       +-  tap                                               ::  listify pairs
         ~/  %tap
-        |=  b=(list ,_?>(?=(^ a) n.a))
+        |=  b/(list _?>(?=(^ a) n.a))
         ^+  b
         ?~  a
           b
         $(a r.a, b [n.a $(a l.a)])
+      ::
 
 Produces the list of all elements in map `a` that is prepended to list
 `b`, which is empty by default.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [list]().
+`b` is a list.
 
     {[p='a' q=1] [p='b' q=2]}
     ~zod/try=> `*`m
@@ -475,7 +481,7 @@ Union
 
       +-  uni                                               ::  union, merge
         ~/  %uni
-        |*  b=_a
+        |*  b/_a
         |-  ^+  a
         ?~  b
           a
@@ -484,21 +490,21 @@ Union
         ?:  (vor p.n.a p.n.b)
           ?:  =(p.n.b p.n.a)
             [n.b $(a l.a, b l.b) $(a r.a, b r.b)]
-          ?:  (hor p.n.b p.n.a)
+          ?:  (gor p.n.b p.n.a)
             $(a [n.a $(a l.a, b [n.b l.b ~]) r.a], b r.b)
           $(a [n.a l.a $(a r.a, b [n.b ~ r.b])], b l.b)
         ?:  =(p.n.a p.n.b)
           [n.b $(b l.b, a l.a) $(b r.b, a r.a)]
-        ?:  (hor p.n.a p.n.b)
+        ?:  (gor p.n.a p.n.b)
           $(b [n.b $(b l.b, a [n.a l.a ~]) r.b], a r.a)
         $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
 
 Produces a map of the union between the keys of `a` and `b`. If `b`
 shares a key with `a`, the tuple from `a` is preserved.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [map]().
+`b` is a map.
 
     ~zod/try=> m
     {[p='a' q=1] [p='b' q=2]}
@@ -524,8 +530,8 @@ shares a key with `a`, the tuple from `a` is preserved.
 
 Turn (with key)
 
-      +-  urn                                               ::  turn
-        |*  b=$+([* *] *)
+      +-  urn                                               ::  apply gate to nodes
+        |*  b/$-({* *} *)
         |-
         ?~  a  ~
         [n=[p=p.n.a q=(b p.n.a q.n.a)] l=$(a l.a) r=$(a r.a)]
@@ -533,9 +539,9 @@ Turn (with key)
 Iterates over every value in map `a` using gate `b`, which accepts both
 the key and the value of each element as its sample.
 
-`a` is a [map]().
+`a` is a map.
 
-`b` is a [wet gate]() that accepts two nouns (a key and a value) and
+`b` is a wet gate that accepts two nouns (a key and a value) and
 produces a noun (the new value).
 
     ~zod/try=> m
@@ -559,7 +565,7 @@ Depth
 
 Produce the depth of the tree map `a`.
 
-`a` is a [map]().
+`a` is a map.
 
     ~zod/try=> m
     {[p='a' q=1] [p='b' q=2]}
