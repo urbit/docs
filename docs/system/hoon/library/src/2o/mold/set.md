@@ -2,19 +2,19 @@
 
 Set
 
-[mold]() generator. A `++set` is a
-[treap](http://en.wikipedia.org/wiki/Treap) with unique values.
+mold generator. A `++set` is a treap with unique values.
 
 Source
 ------
 
-    ++  set  |*  a=_,*                                      ::  set
-             $|(~ [n=a l=(set a) r=(set a)])                ::
+    ++  set  |*  a/$-(* *)                                  ::  set
+             $@($~ {n/a l/(set a) r/(set a)})               ::
+
 
 Examples
 --------
 
-See also: [`++in`]()
+See also: `++in`
 
     ~zod/try=> (sa "abc")
     {~~a ~~c ~~b}

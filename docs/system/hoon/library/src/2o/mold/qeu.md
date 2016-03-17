@@ -2,16 +2,15 @@
 
 Queue
 
-[mold]() generator. An ordered [treap](http://en.wikipedia.org/wiki/Treap) of
+mold generator. An ordered [treap](http://en.wikipedia.org/wiki/Treap) of
 items.
 
 Source
 ------
 
-    ++  qeu  |*  a=_,*                                      ::  queue
-             $|(~ [n=a l=(qeu a) r=(qeu a)])                ::
+    ++  qeu  |*  a/$-(* *)                                  ::  queue
+             $@($~ {n/a l/(qeu a) r/(qeu a)})               ::
 
-See also: [`++to`]()
 
 Examples
 --------

@@ -12,9 +12,11 @@ Source
 ------
 
     ++  corl                                                ::  compose backwards
-      |*  [a=gate b=_,*]
-      |=  c=_+<.b
+      |*  {a/gate b/_|=(* **)}
+      =<  +:|.((a (b)))      ::  span check
+      |*  c/_+<.b
       (a (b c))
+    ::
 
 Examples
 --------

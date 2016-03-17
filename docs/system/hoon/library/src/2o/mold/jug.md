@@ -1,11 +1,12 @@
 ### `++jug`
 
-[mold]() generator.  A `++jug` is a [`++map`]() of [`++set`]()s.
+mold generator.  A `++jug` is a `++map` of `++set`s.
 
 Source
 ------
 
-    ++  jug  |*([a=_,* b=_,*] (map a (set b)))              ::  map of sets
+    ++  jug  |*({a/$-(* *) b/$-(* *)} (map a (set b)))      ::  map of sets
+
 
 Examples
 --------
