@@ -2,6 +2,7 @@
 next: true
 sort: 2
 title: Install
+navhome: /main
 ---
 
 # Install

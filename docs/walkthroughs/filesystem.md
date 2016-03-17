@@ -4,11 +4,21 @@ sort: 3
 title: Filesystem
 ---
 
-# Filesystem handbook
+# `%clay` (Filesystem)
 
 Urbit has its own revision-controlled filesystem, the `%clay`
-vane.  `%clay` is like a simplified `git`, but more reactive,
-and also typed.   Okay, this makes no sense.
+vane.  `%clay` is a typed, global revision-control system.  Or in other
+words, a typed, global referentially transparent namespace.
+
+In kernel and userspace code, you can use the Hoon `.^` rune
+to *dereference* this namespace and treat any data in it as a constant.  In userspace code, a
+generator will even *block* until the resource is available.
+
+Another global immutable namespace is IPFS.  But IPFS is
+distributed, whereas `%clay` is just decentralized.  IPFS stores
+resources around the network in a DHT, like Freenet or
+Bittorrent; `%clay` stores resources on the publisher's server,
+like HTTP or git.
 
 The most common way to use `%clay` is to mount a `%clay` node in
 a Unix directory.  The Urbit process will watch this directory
@@ -123,22 +133,6 @@ have to write `+ls %`.
 
 Like `+ls`, but the result is a list of full paths.  Useful as
 Urbit equivalent of the Unix wildcard `*`.
-
-## A quick overview of `%clay`
-
-`%clay` is a typed, global revision-control system.  Or in other
-words, a typed, global referentially transparent namespace.  It's
-difficult to understate how awesome this is.
-
-(Actually, in Layer 4 and 5 code, you can use the Hoon `.^` rune
-to literally *dereference* this namespace.  And in Layer 5, a
-generator will even *block* until the resource is available.)
-
-(Another awesome global immutable namespace is IPFS.  But IPFS is
-distributed, whereas `%clay` is just decentralized.  IPFS stores
-resources around the network in a DHT, like Freenet or
-Bittorrent; `%clay` stores resources on the publisher's server,
-like HTTP or git.)
 
 ### Path format
 

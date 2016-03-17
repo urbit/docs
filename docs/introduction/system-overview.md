@@ -2,6 +2,7 @@
 next: true
 sort: 1
 title: System overview
+navhome: /main
 ---
 
 # System Overview

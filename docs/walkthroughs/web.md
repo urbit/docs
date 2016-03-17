@@ -1,10 +1,14 @@
 ---
 next: true
 sort: 5
-title: Tree
+title: Web
 ---
 
-# Tree
+# Web
+
+General coverage of Urbit on the web.  Renderer -> file, main public facing files, and tree.  Then:
+
+## Tree
 
 Tree is a simple publishing platform for files that live on your Urbit.  You're probably reading this file using Tree right now.  The main driving use-case for Tree has been for us to host our own documentation and the surrounding discussion.  Tree remains a pretty simple and flexible tool for getting content online.  We think it's pretty great.
 
@@ -82,7 +86,7 @@ If you don't know anything about JSX that's okay: basically we just give you a f
 
 For those familiar with React / Flux each JSX tag corresponds to a component in [the source](https://github.com/urbit/tree/tree/master/js/components).  
 
-### <list>
+### `<list>`
 
 Example: `<list dataPath="/posts" titlesOnly="true"></list>`
 
@@ -95,7 +99,7 @@ Optional properties:
 - `sortBy`: Can be `date` if items have a `date` YAML.
 - `className`: Class to be assigned to the container.
 
-### <kids>
+### `<kids>`
 
 Example: `<kids dataPath="/posts"></kids>`
 
@@ -106,7 +110,7 @@ Optional properties:
 - `dataPath`: Path to load kids from.
 - `className`: Class to be assigned to the container.
 
-### <toc>
+### `<toc>`
 
 Example: `<toc noHeader="true"></toc>`
 

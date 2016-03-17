@@ -1,9 +1,10 @@
 ---
-sort: 4
-title: Dojo manual
+next: true
+sort: 2
+title: Shell
 ---
 
-# `:dojo` manual
+# `:dojo` (Shell)
 
 The dojo is a typed functional shell.  Assuming our default
 plot `~fintud-macrep`,  
@@ -112,9 +113,9 @@ even patch and diff for revision control.
 ### Other resources
 
 An excellent way to understand `:dojo` is to read the source,
-which is in `/===/ape/dojo/hoon`.
+which is in `/===/app/dojo/hoon` (or `home/app/dojo.hoon` if your `home` desk is mounted to Unix).
 
-Unfortunately, you may or may not know Hoon.  We'll use some Hoon
+You may or may not know Hoon.  We'll use some Hoon
 snippets here for defining structures and grammars.  Just think
 of it as pseudocode -- the meaning should be clear from context.
 
@@ -195,7 +196,14 @@ To unbind `foo`:
     ~fintud-macrep:dojo> =foo
 
 The dojo has a set of special variables, some read-write and some
-read-only: `dir`, `lib`, `arc`, `now`, `our`, `eny`.
+read-only: 
+
+    dir
+    lib
+    arc
+    now
+    our
+    eny
 
 The read-write specials are `dir`, `lib` and `arc`. `dir` is the
 current working beak (`%clay` branch and revision) and directory. The

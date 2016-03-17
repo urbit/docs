@@ -1,10 +1,9 @@
 ---
-next: true
-sort: 2
-title: Arvo source guide
+sort: 6
+title: Arvo source
 ---
 
-# Arvo source guide
+# Arvo source
 
 When you boot an Urbit we transfer the current version of the Arvo operating environment to your Urbit over our network.  That is, the source for the system lives on your Urbit.  Here we'll take a brief tour through the structure of a base Arvo desk.  
 
