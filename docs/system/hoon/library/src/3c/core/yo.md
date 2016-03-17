@@ -13,7 +13,7 @@ days from leap years in a century (24).
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -39,7 +39,7 @@ Number of seconds in a day.
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -63,7 +63,7 @@ XX Revisit
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -86,7 +86,7 @@ seconds in a minute by the minutes in an hour.
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -134,7 +134,7 @@ The number of seconds in a minute.
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -160,12 +160,12 @@ month at the year at that index.
 Produces
 --------
 
-A [`++list`]() of [`@ud`]()
+A `++list` of `@ud`
 
 Source
 ------
 
-          ++  moh  `(list ,@ud)`[31 28 31 30 31 30 31 31 30 31 30 31 ~]
+          ++  moh  `(list @ud)`[31 28 31 30 31 30 31 31 30 31 30 31 ~]
 
 Examples
 --------
@@ -188,12 +188,12 @@ month at the leap-year at that index.
 Examples
 --------
 
-A [`++list`]() of [`@ud`]()
+A `++list` of `@ud`
 
 Source
 ------
 
-          ++  moy  `(list ,@ud)`[31 29 31 30 31 30 31 31 30 31 30 31 ~]
+          ++  moy  `(list @ud)`[31 29 31 30 31 30 31 31 30 31 30 31 ~]
 
 Examples
 --------
@@ -215,7 +215,7 @@ number of seconds in four years.
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -240,7 +240,7 @@ seconds in a day by 365.
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------

@@ -6,25 +6,26 @@ its `@d`representation.
 Accepts
 -------
 
-`det` is a [`++date`]()
+`det` is a `++date`
 
 Produces
 --------
 
-A [`@d`]().
+A `@d`.
 
 Source
 ------
 
     ++  year                                                ::  date to @d
-      |=  det=date
-      ^-  @d
+      |=  det/date
+      ^-  @da
       =+  ^=  yer
           ?:  a.det
             (add 292.277.024.400 y.det)
           (sub 292.277.024.400 (dec y.det))
       =+  day=(yawn yer m.det d.t.det)
       (yule day h.t.det m.t.det s.t.det f.t.det)
+    ::
 
 Examples
 --------

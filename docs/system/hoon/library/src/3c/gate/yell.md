@@ -8,12 +8,12 @@ Source
 ------
 
     ++  yell                                                ::  tarp from @d
-      |=  now=@d
+      |=  now/@d
       ^-  tarp
       =+  sec=(rsh 6 1 now)
       =+  ^=  fan
           =+  [muc=4 raw=(end 6 1 now)]
-          |-  ^-  (list ,@ux)
+          |-  ^-  (list @ux)
           ?:  |(=(0 raw) =(0 muc))
             ~
           =>  .(muc (dec muc))
@@ -25,6 +25,8 @@ Source
       =+  mit=(div sec mit:yo)
       =>  .(sec (mod sec mit:yo))
       [day hor mit sec fan]
+    ::
+
 
 Examples
 --------

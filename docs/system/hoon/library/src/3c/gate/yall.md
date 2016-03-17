@@ -17,10 +17,10 @@ Produces
 Source
 ------
 
-    ++  yall                                                ::  day # to day of year
-      |=  day=@ud
-      ^-  [y=@ud m=@ud d=@ud]
-      =+  [era=0 cet=0 lep=_?]
+    ++  yall                                                ::  day / to day of year
+      |=  day/@ud
+      ^-  {y/@ud m/@ud d/@ud}
+      =+  [era=0 cet=0 lep=*?]
       =>  .(era (div day era:yo), day (mod day era:yo))
       =>  ^+  .
           ?:  (lth day +(cet:yo))
@@ -28,18 +28,19 @@ Source
           =>  .(lep |, cet 1, day (sub day +(cet:yo)))
           .(cet (add cet (div day cet:yo)), day (mod day cet:yo))
       =+  yer=(add (mul 400 era) (mul 100 cet))
-      |-  ^-  [y=@ud m=@ud d=@ud]
+      |-  ^-  {y/@ud m/@ud d/@ud}
       =+  dis=?:(lep 366 365)
       ?.  (lth day dis)
         =+  ner=+(yer)
         $(yer ner, day (sub day dis), lep =(0 (end 0 2 ner)))
-      |-  ^-  [y=@ud m=@ud d=@ud]
+      |-  ^-  {y/@ud m/@ud d/@ud}
       =+  [mot=0 cah=?:(lep moy:yo moh:yo)]
-      |-  ^-  [y=@ud m=@ud d=@ud]
+      |-  ^-  {y/@ud m/@ud d/@ud}
       =+  zis=(snag mot cah)
       ?:  (lth day zis)
         [yer +(mot) +(day)]
       $(mot +(mot), day (sub day zis))
+    ::
 
 Examples
 --------
