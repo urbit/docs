@@ -3,18 +3,18 @@
 Queue operations
 
 Container arm for queue operation arms. The contained arms inherit its
-[sample]() `++qeu` `a`.
+sample `++qeu` `a`.
 
 Accepts
 -------
 
-`a` is a queue, [++qeu]().
+`a` is a queue, ++qeu.
 
 Source
 ------
 
     ++  to                                                  ::  queue engine
-      |/  a=(qeu)
+      |/  a/(qeu)
 
 ### `+-bal:to`
 
@@ -25,12 +25,12 @@ Vertically rebalances queue `a`.
 Accepts
 -------
 
-`a` is a [queue]().
+`a` is a queue.
 
 Produces
 --------
 
-A [queue]().
+A queue.
 
 Source
 ------
@@ -38,12 +38,13 @@ Source
       +-  bal
         |-  ^+  a
         ?~  a  ~
-        ?.  |(?=(~ l.a) (vor n.a n.l.a))
+        ?.  |(?=($~ l.a) (vor n.a n.l.a))
           $(a [n.l.a l.l.a $(a [n.a r.l.a r.a])])
-        ?.  |(?=(~ r.a) (vor n.a n.r.a))
+        ?.  |(?=($~ r.a) (vor n.a n.r.a))
           $(a [n.r.a $(a [n.a l.a l.r.a]) r.r.a])
         a
       ::
+
 
 Examples
 --------
@@ -68,7 +69,7 @@ Produces the maximum depth of leaves (r.a and l.a) in queue `a`.
 Accepts
 -------
 
-`a` is a [queue]().
+`a` is a queue.
 
 Produces
 --------
@@ -84,16 +85,17 @@ Source
         +((max $(a l.a) $(a r.a)))
       ::
 
+
 Examples
 --------
 
-    ~zod/try=> =a (~(gas to `(qeu ,@)`~) `(list ,@)`[1 2 3 4 5 6 7 ~])
+    ~zod/try=> =a (~(gas to `(qeu @)`~) `(list @)`[1 2 3 4 5 6 7 ~])
     ~zod/try=> ~(dep to a)
     4
-    ~zod/try=> =a (~(gas to `(qeu ,@)`~) `(list ,@)`[1 2 3 4 ~])
+    ~zod/try=> =a (~(gas to `(qeu @)`~) `(list @)`[1 2 3 4 ~])
     ~zod/try=> ~(dep to a)
     3
-    ~zod/try=> =a (~(gas to `(qeu ,@)`~) `(list ,@)`[1 2 ~])
+    ~zod/try=> =a (~(gas to `(qeu @)`~) `(list @)`[1 2 ~])
     ~zod/try=> ~(dep to a)
     2
     ~zod/try=> ~(dep to `(qeu tape)`["a" ~ "b" ~ "c" ~ "d" ~ "e" ~ "f" ~ "g" ~ ~])
@@ -107,7 +109,7 @@ Examples
 
 Push list
 
-Push all elements of [`++list`]() `b` into the [`++queue`]().
+Push all elements of `++list` `b` into the `++queue`.
 
 Accepts
 -------
@@ -146,7 +148,7 @@ Examples
 
 Pop
 
-Produces the head and tail [`++queue`]() of `a`.
+Produces the head and tail `++queue` of `a`.
 
 Accepts
 -------
@@ -162,14 +164,14 @@ Source
 ------
 
       +-  get                                               ::  head-tail pair
-        |-  ^+  [p=?>(?=(^ a) n.a) q=a]
+        |-  ^+  ?>(?=(^ a) [p=n.a q=*(qeu _n.a)])
         ?~  a
           !!
         ?~  r.a
           [n.a l.a]
         =+  b=$(a r.a)
         :-  p.b
-        ?:  |(?=(~ q.b) (vor n.a n.q.b))
+        ?:  |(?=($~ q.b) (vor n.a n.q.b))
           [n.a l.a q.b]
         [n.q.b [n.a l.a l.q.b] r.q.b]
       ::
@@ -177,7 +179,7 @@ Source
 Examples
 --------
 
-    ~zod/try=> =s (~(gas to *(qeu ,@)) `(list ,@)`~[1 2 3])
+    ~zod/try=> =s (~(gas to *(qeu @)) `(list @)`~[1 2 3])
     ~zod/try=> ~(get to s)
     [p=1 q={3 2}]
     ~zod/try=> ~(get to ~)
@@ -189,12 +191,12 @@ Examples
 
 Remove last element 
 
-Removes the head of [`++queue`]() `a`, producing the resulting queue.
+Removes the head of `++queue` `a`, producing the resulting queue.
 
 Accepts
 -------
 
-`a` is a [queue]().
+`a` is a queue.
 
 Produces
 --------
@@ -207,14 +209,14 @@ Source
       +-  nap                                               ::  removes head
         ?>  ?=(^ a)
         ?:  =(~ l.a)  r.a
-        =+  b=get(+< l.a)
-        bal(+< ^+(a [p.b q.b r.a]))
+        =+  b=get(a l.a)
+        bal(a ^+(a [p.b q.b r.a]))
       ::
 
 Examples
 --------
 
-    ~zod/try=> =a (~(gas to `(qeu ,@)`~) `(list ,@)`[1 2 3 4 5 6 ~])
+    ~zod/try=> =a (~(gas to `(qeu @)`~) `(list @)`[1 2 3 4 5 6 ~])
     ~zod/try=> -.a
     n=6
     ~zod/try=> =b ~(nap to a)
@@ -231,13 +233,13 @@ Examples
 
 Insert
 
-Accept any [noun]() `b` and adds to [`++queue`]() `a` as the head, producing the
+Accept any noun `b` and adds to `++queue` `a` as the head, producing the
 resulting queue.
 
 Accepts
 -------
 
-`a` is a [queue]().
+`a` is a queue.
 
 `b` is any noun.
 
@@ -250,17 +252,18 @@ Source
 ------
 
       +-  put                                               ::  insert new tail
-        |*  b=*
+        |*  b/*
         |-  ^+  a
         ?~  a
           [b ~ ~]
-        bal(+< a(l $(a l.a)))
+        bal(a a(l $(a l.a)))
       ::
+
 
 Examples
 --------
 
-    ~zod/try=> (~(gas to `(qeu ,@)`~) `(list ,@)`[3 1 2 4 5 6 ~])
+    ~zod/try=> (~(gas to `(qeu @)`~) `(list @)`[3 1 2 4 5 6 ~])
     ~zod/try=> (~(put to a) 7)
     {7 6 5 4 2 1 3}
 
@@ -270,18 +273,19 @@ Examples
 
 Queue to list
 
-Produces [`++queue`]() `a` as a [`++list`]() from front to back.
+Produces `++queue` `a` as a `++list` from front to back.
 
 Accepts
 -------
 
-`a` is a [queue]().
+`a` is a queue.
 
 Source
 ------
 
-      +-  tap                                               :: queue to list 
-        |=  b=(list ,_?>(?=(^ a) n.a))
+      +-  tap                                               ::  adds list to end
+        |=  b/(list _?>(?=(^ a) n.a))
+        =+  z=0                                             ::  XX breaks jet match
         ^+  b
         ?~  a
           b
@@ -291,22 +295,22 @@ Source
 Examples
 --------
 
-    ~zod/try=> =a (~(gas to `(qeu ,@)`~) `(list ,@)`[3 1 2 4 5 6 ~])
+    ~zod/try=> =a (~(gas to `(qeu @)`~) `(list @)`[3 1 2 4 5 6 ~])
     ~zod/try=> `*`a
     [6 0 2 [4 [5 0 0] 0] 1 0 3 0 0]
-    ~zod/try=> (~(tap to a) `(list ,@)`[99 100 101 ~])
+    ~zod/try=> (~(tap to a) `(list @)`[99 100 101 ~])
     ~[3 1 2 4 5 6 99 100 101]
 
 ------------------------------------------------------------------------
 
 ### `+-top:to`
 
-Produces the head of [`++queue`]() `a` as a [`++unit`]() (an empty queue has no head).
+Produces the head of `++queue` `a` as a `++unit` (an empty queue has no head).
 
 Accepts
 -------
 
-`a` is a [queue]().
+`a` is a queue.
 
 Produces
 --------
@@ -317,14 +321,14 @@ Source
 ------
 
       +-  top                                               ::  produces head
-        |-  ^-  (unit ,_?>(?=(^ a) n.a))
+        |-  ^-  (unit _?>(?=(^ a) n.a))
         ?~  a  ~
         ?~(r.a [~ n.a] $(a r.a))
 
 Examples
 --------
 
-    ~zod/try=> =a (~(gas to `(qeu ,@)`~) `(list ,@)`[1 2 3 4 5 6 ~])
+    ~zod/try=> =a (~(gas to `(qeu @)`~) `(list @)`[1 2 3 4 5 6 ~])
     ~zod/try=> ~(top to a)
     [~ 1]
 
