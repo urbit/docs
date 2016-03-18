@@ -1,7 +1,7 @@
 ### `++shas`
 
     ++  shas                                                ::  salted hash
-      |=  [sal=@ ruz=@]
+      |=  [sal/@ ruz/@]
       (shax (mix sal (shax ruz)))
     ::
 

@@ -1,7 +1,7 @@
 ### `++shak`
 
     ++  shak                                                ::  XX shd be PBKDF
-      |=  [who=@p wud=@]
+      |=  [who/@p wud/@]
       (shas (mix %shak who) wud)
     ::
 
