@@ -4,69 +4,21 @@ sort: 4
 title: Talk manual
 ---
 
-# `:talk` manual
+# `:talk` 
 
-`:talk` is the Urbit appliance for chatter and notifications.
-For less sophisticated users, Urbit *is* just `:talk`.  If you
-see `:talk` as "like Slack, but distributed," or "like IRC, but
-persistent and encrypted," you're not completely wrong.
+`:talk` is the Urbit messaging and notifications protocol.  Today we use `:talk` to chat and coordinate, sort of like a distributed, encrypted Slack.  This is the simplest, most immediate use for `:talk`, but we hope it can become much more than just persistent IRC.  `:talk` is a general purpose tool for both aggregating and publishing heterogenous streams of messages.  Applications can use `:talk` as their transport protcol, API connectors can push disparate data sources into `:talk`, there are lots of things a distributed message protocol can be used for.
 
-`:talk` is an unusual messenger in two ways.  One: by default, it
-multiplexes all content streams into a single flow.  Most UI
-researchers agree that context-switching is cognitively expensive
-and leads to surfing the Internet.  (`:talk` is also used for
-your system notifications.)
-
-Two: text lines are limited to 64 ASCII bytes, no uppercase.
-This restriction is mobile-friendly and reduces the aesthetic
-impact of low-quality content.
-
-Messages in `:talk` are called "posts".  Posts go to "stations,"
-which are just like IRC or Slack channels.  Any urbit can host or
-subscribe to any number of stations. 
-
-`:talk` is not a text-only messenger; it's designed to support
-arbitrary content in posts, from URLs to images to long-form
-text.  (Only URLs right now.)  However, any message on `:talk`
-has to be able to summarize itself in a 64-byte text line.
-
-There are four kinds of station: a write-only `%mailbox` for
-direct messages, an invite-only `%party` for private conversation,
-a read-only `%journal` for curated content, and a public-access
-`%board` for general use or abuse.
-
-While there's obviously no central `:talk` server for all of
-Urbit, and thus no such thing as a truly global station space,
-active Urbit stars cooperate to federate, manage and mirror a
-collectively-managed namespace, very like Usenet.  These
-"federal" stations are generally public-access boards.
-
-Right now, the only public federal station is `urbit-meta`.
-Because the party always starts in the kitchen.
+`:talk`s design is similar in spirit to [nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol) the underlying protocol for Usenet.  Let's briefly outline the design: `:talk` messages are called ‘posts’.  Posts go to ‘stations’.  Any urbit can host or subscribe to any number of stations.  There’s no central `:talk` server.  Any Urbit can host one.  There are four kinds of station: a write-only `%mailbox` for direct messages, an invite-only `%party` for private conversation, a read-only `%journal` for curated content, and a public-access `%board` for general use.
 
 ## Quickstart
 
-Let's post something!  At the default `:talk` prompt
+There are two ways of using `:talk`: from the CLI or through a web interface available at `http://localhost:8080/talk` (or equivalent).  The web interface ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).
 
-    ~fintud-macrep:talk()
+The web interface doesn't expose *all* the functionality of the CLI, and it's more or less self-explanatory.  We'll give examples from the command line.
 
-type the message:
-
-    ~fintud-macrep:talk() hello, world.
-
-And hit return.  Don't worry, no one but you will see this.  The
-`:` means you're posting to yourself.  You'll get the post:
-
-    ~fintud-macrep: hello, world.
-    ~fintud-macrep:talk()
-
-It's boring to post to yourself.  Let's join a station:
+Let's join a station:
 
     ~fintud-macrep: ;join ~doznec/urbit-meta
-
-(`/urbit-meta` is a federal station, meaning it's hosted by your
-star (for `~fintud-macrep`, `~doznec`).  The `/` notation is just 
-an abbreviation for `~doznec/urbit-meta`.)
 
 You'll see:
 
@@ -77,11 +29,6 @@ You'll see:
            ~doznec= ~fintud-macrep admitted to %urbit-meta
     ~fintud-macrep:talk>
 
-Notice the character assignment - stations you're subscribed to are
-assigned [consistent ASCII glyphs](#-station-glyphs), which you'll 
-see in the log when you hear from these stations, and on the prompt
-when you're talking to them.
-
 Post a line to `/urbit-meta`:
 
     ~fintud-macrep:talk> hello, world
@@ -90,21 +37,17 @@ You'll see, echoed back at you through `~doznec`:
 
     ~fintud-macrep> hello, world
 
-And of course, anyone else in `/urbit-meta` will see it as well.
-But you don't care about `/urbit-meta`, so leave it:
+To send a direct message to someone, first set your audience:
 
-    ~fintud-macrep:talk> ;leave >
+    ~fintud-macrep:talk> ;~talsur-todres
 
-You'll see:
+You'll see your prompt change:
 
-    ---------:talk| %porch has left /urbit-meta, called `>`
+    ~fintud-macrep:talk[~talsur-todres]
 
-Everyone else will see:
+Then you're ready to chat away.  
 
-    ~doznec= ~fintud-macrep has left %urbit-meta
-
-Now you're ready to use `:talk` for real! For general discussion
-about Urbit, we recommend `/urbit-meta`.
+Those are the basics, and the rest is covered below.
 
 ## Manual
 
@@ -112,6 +55,8 @@ about Urbit, we recommend `/urbit-meta`.
 
 There are three kinds of inputs you can type at the `:talk`
 prompt: lines, URLs, and commands.
+
+#### Lines
 
 A line is 64 bytes of ASCII lowercase and spaces.  If the line
 starts with '@', it's an action (IRC `/me`).
@@ -121,23 +66,23 @@ insert a Unicode bullet-point character in an appropriate space
 in your post, to show you the prospective linebreak.  Your essay
 will be posted in multiple lines.
 
-A URL is any valid URL. A command is any line starting with `;`.
+#### URLs
 
-### Source annotation
+A URL is any valid URL. 
 
-Any post in your flow is shown with its author, together with a
-glyph that shows how the post reached you.  A post can reach you
-in one of three ways: 
+### Commands
 
-Any post you see reached you in one of three ways.  Either it was
-sent directly to just you; to you and others; or to a station you
-subscribe to.
+A command is any line starting with `;`.
 
-Informational messages are `|`. Posts directly to you are `:`.  Posts to
-you and others (a multiparty conversation) are `;`, unless you've bound
-this conversation to a glyph. Posts to a station use that station's
-glyph. Posts to a complex audience that doesn't directly include you are
-`*`.
+### Prefixes
+
+`|` - Informational messages
+
+`:` - Posts directly to you
+
+`;` - Posts to you and others (a multiparty conversation)
+
+`*` - Posts to a complex audience that doesn't directly include you are.
 
 ### Station Glyphs
 
@@ -153,7 +98,6 @@ will assign the `>` annotation to `/urbit-test`.
 
 ### Audience selection
 
-Audience selection is important in a multiplexed communicator!
 The audience is always shown in your prompt.  If there's a glyph
 for it, it's shown as the glyph:
 
@@ -163,11 +107,10 @@ Otherwise, the audience is shown in parens:
 
     ~fintud-macrep:talk(~dannum-mitryl) 
 
-`:talk` works fairly hard to get the audience right and minimize
-manual switching.  But to manually set the audience, the command
+To manually set the audience, the command
 is simply `;station` - eg, `;~dannum-mitryl` for a direct post;
-`/urbit-meta` or `~doznec/urbit-meta` to post to a federal
-station, `%mystation` to post to a station on your own ship.
+`;/urbit-meta` or `;~doznec/urbit-meta` to post to a federal
+station, `;%mystation` to post to a station on your own ship.
 For a station bound to a glyph, `;` then the glyph; eg, `;>`.
 
 You can post a line and set the audience in one command, eg:
@@ -208,8 +151,7 @@ meaning that `~fintud-macrep` posted a link to `foobar.com`,
 on the station or conversation whose glyph is `>`.
 
 The effect of activating a post depends on the post.  For a link,
-the full URL is shown and (system permitting) put into the OS's
-clipboard, or even automatically navigated to.  Even for a text
+the full URL is shown.  For a text
 post, activating shows the full audience, for complex audiences.
 
 Posts in your `:talk` flow are numbered; the numbers are printed
@@ -233,56 +175,43 @@ most recent; etc.
 
 ### Nicknames
 
-<mark>Implemented, no autocompletion</mark>
-
 Sometimes you know your Urbit friends by other names, on or
 offline.   Use the `;nick` command to assign or look up
 nicknames.
 
-`;nick` with no arguments lists all nicknames; `;nick
-~fintud-macrep` looks up a nickname; `;nick plato` searches in
-reverse; `;nick ~fintud-macrep plato` creates a nickname, and
-`;nick ~fintud-macrep ~` clears an assigned nickname.  All
-nicknames must be 14 characters or less, lowercase.
+`;nick` - list all nicknames
 
-Of course, nicknames are strictly local - like the names on
+`;nick ~fintud-macrep` - look up a nickname
+
+`;nick plato` - search in reverse
+
+`;nick ~fintud-macrep plato` create a nickname
+
+`;nick ~fintud-macrep ~` clear an assigned nickname
+
+`;set noob` show nicknames instead of urbit names
+
+`;unset noob` show urbit names instead of nicknames
+
+All nicknames must be 14 characters or less, lowercase.  Nicknames are strictly local - like the names on
 entries in a phonebook.  Sometimes in a post you want to mention
 someone you know by a nickname.  Just type `~plato`, and `:talk`
-will replace it magically with `~fintud-macrep` (or beep if no
-`~plato` is bound).
-
-If you would prefer to see nicknames instead of urbit names when
-someone speaks, use `;set noob`. `;unset noob` disables this
-setting.
+will replace it with `~fintud-macrep`.
 
 ### Presence
 
 You'll see presence notifications when people enter or leave
 stations you're subscribed to.
 
-`;who` lists everyone in all your stations.  `;who station`
-lists everyone in that station.
+`;who`  - list everyone in all your stations
 
-### Typing indicator
-
-<mark>Not yet implemented</mark>
-
-If one or more urbits in your audience is typing, `:talk`'s
-presence system will detect it and change the prompt:
-
-    ~fintud-macrep [~dannum-mitryl...]= 
+`;who station` - list everyone in that station
 
 ### Creating and managing stations
-
-
-<mark>Non-channel stations, and managing white/blacklists, 
-are a planned feature that is not yet implemented</mark>
-
 To create your own mailbox, party, journal or board:
 
-    ;create party %myfunparty
     ;create journal %serious-journal
-    ;create board %bizarre-board
+    ;create channel %serious-journal
 
 etc.
 
@@ -303,11 +232,3 @@ To appoint a coauthor of `%serious-journal`:
 
     ;author %serious-journal ~lagret-marpub
 
-### Settings
-
-To set a frontend option in your `talk` session, use `;set
-[option]`, or `;unset [option]` to unset it. To see all currently
-set options, just type `;set`. The options available are:
-
-- `noob` - Display user-defined nicknames instead of ship names
-  if available.
