@@ -3,14 +3,14 @@
 Noun literal syntax cases
 
 Noun literal syntax cases: atoms, jammed nouns, and nestable tuples.
-Parsed and printed using [`++so`]() and [`++co`]() cores.
+Parsed and printed using `++so` and `++co` cores.
 
 Source
 ------
 
-    ++  coin  $%  [%$ p=dime]                               ::
-                  [%blob p=*]                               ::
-                  [%many p=(list coin)]                     ::
+    ++  coin  $%  {$$ p/dime}                               ::
+                  {$blob p/*}                               ::
+                  {$many p/(list coin)}                     ::
               ==                                            ::
 
 Examples

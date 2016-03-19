@@ -2,7 +2,7 @@
 
 Coin format encode
 
-Escape [`++span`]() `~` as `~~` and `_` as `~-`. Used for printing.
+Escape `++span` `~` as `~~` and `_` as `~-`. Used for printing.
 
 Accepts
 -------
@@ -12,13 +12,13 @@ Accepts
 Produces
 --------
 
-A [`++span`]() (`@ta`).
+A `++span` (`@ta`).
 
 Source
 ------
 
     ++  wack                                                ::  coin format
-      |=  a=@ta
+      |=  a/@ta
       ^-  @ta
       =+  b=(rip 3 a)
       %+  rap  3

@@ -2,7 +2,7 @@
 
 Tape to cord
 
-Produce a [`++cord`]() from a [`++tape`]().
+Produce a `++cord` from a `++tape`.
 
 Accepts
 -------

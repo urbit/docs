@@ -2,39 +2,41 @@
 
 UTF8 to UTF32 cord
 
-Convert utf8 ([`++cord`]()) to utf32 codepoints.
+Convert utf8 (`++cord`) to utf32 codepoints.
 
 Accepts
 -------
 
-`a` is a [`@t`]().
+`a` is a `@t`.
 
 Produces
 --------
 
-A [`@c`](), UTF-32 codepoint.
+A `@c`, UTF-32 codepoint.
 
 Source
 ------
 
     ++  turf                                                ::  utf8 to utf32
-      |=  a=@t
+      |=  a/@t
       ^-  @c
       %+  rap  5
-      |-  ^-  (list ,@c)
+      |-  ^-  (list @c)
       =+  b=(teff a)
       ?:  =(0 b)  ~
-      :-  %+  can  0
+      =+  ^=  c
+          %+  can  0
           %+  turn
-            ^-  (list ,[p=@ q=@])
+            ^-  (list {p/@ q/@})
             ?+  b  !!
-              1  [[0 7] ~]
-              2  [[8 6] [0 5] ~]
-              3  [[16 6] [8 6] [0 4] ~]
-              4  [[24 6] [16 6] [8 6] [0 3] ~]
+              $1  [[0 7] ~]
+              $2  [[8 6] [0 5] ~]
+              $3  [[16 6] [8 6] [0 4] ~]
+              $4  [[24 6] [16 6] [8 6] [0 3] ~]
             ==
-          |=([p=@ q=@] [q (cut 0 [p q] a)])
-      $(a (rsh 3 b a))
+          |=({p/@ q/@} [q (cut 0 [p q] a)])
+      ?.  =((tuft c) (end 3 b a))  ~|(%bad-utf8 !!)
+      [c $(a (rsh 3 b a))]
     ::
 
 Examples

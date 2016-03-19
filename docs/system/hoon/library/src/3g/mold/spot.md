@@ -2,12 +2,13 @@
 
 Stack trace line
 
-A [`++spot`]() is what we print after crashing.
+A `++spot` is what we print after crashing.
 
 Source
 ------
 
-        ++  spot  ,[p=path q=pint]                              ::  range in file
+            ++  spot  {p/path q/pint}                               ::  range in file
+
 
 Examples
 --------

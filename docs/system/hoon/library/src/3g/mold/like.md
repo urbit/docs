@@ -7,10 +7,14 @@ Mold generator for an edge
 Source
 ------
 
-        ++  like  |*  a=_,*                                     ::  generic edge
+    ++  like  |*  a/$-(* *)                                 ::  generic edge
+              |=  b/_`*`[(hair) ~]                          ::
+              :-  p=(hair -.b)                              ::
+              ^=  q                                         ::
               ?@  +.b  ~                                    ::
               :-  ~                                         ::
               u=[p=(a +>-.b) q=[p=(hair -.b) q=(tape +.b)]] ::
+
 
 Examples
 --------

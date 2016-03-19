@@ -2,7 +2,7 @@
 
 Prepend `n` times
 
-Add `a` repetitions of character `b` to the head of [`++tape`]() `c`.
+Add `a` repetitions of character `b` to the head of `++tape` `c`.
 
 Accepts
 -------
@@ -20,7 +20,7 @@ Source
 ------
 
     ++  runt                                                ::  prepend repeatedly
-      |=  [[a=@ b=@] c=tape]
+      |=  [[a/@ b/@] c/tape]
       ^-  tape
       ?:  =(0 a)
         c

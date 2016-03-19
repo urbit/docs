@@ -2,8 +2,8 @@
 
 To uppercase
 
-Turn all occurances of lowercase letters in any [`++tape`]() into uppercase
-letters, as a [`++cord`]().
+Turn all occurances of lowercase letters in any `++tape` into uppercase
+letters, as a `++cord`.
 
 Accepts
 -------

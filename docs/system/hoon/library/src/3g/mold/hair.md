@@ -7,7 +7,8 @@ A pair of two [`@ud`]() used in parsing indicating line and column number.
 Source
 ------
 
-        ++  hair  ,[p=@ud q=@ud]                                ::  parsing trace
+            ++  hair  {p/@ud q/@ud}                                 ::  parsing trace
+
 
 Examples
 --------

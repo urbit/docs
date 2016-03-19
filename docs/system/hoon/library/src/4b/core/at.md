@@ -1,7 +1,7 @@
 ### `++at`
 
     ++  at
-      |_  a=@
+      |_  a/@
 
 XX document
 
@@ -27,25 +27,26 @@ XX document
 
 ### `++rf`
 
-      ++  rf    `tape`[?-(a & '&', | '|', * !!) ~]
+      ++  rf    `tape`[?-(a $& '&', $| '|', * !!) ~]
+
 
 XX document
 
 ### `++rn`
 
-      ++  rn    `tape`[?>(=(0 a) '~') ~]
+        ++  rn    `tape`[?>(=(0 a) '~') ~]
 
 XX document
 
 ### `++rt`
 
-      ++  rt    `tape`['\'' (weld (mesc (trip a)) `tape`['\'' ~])]
+        ++  rt    `tape`['\'' (weld (mesc (trip a)) `tape`['\'' ~])]
 
 XX document
 
 ### `++rta`
 
-      ++  rta   rt
+        ++  rta   rt
 
 XX document
 
@@ -57,20 +58,20 @@ XX document
 
 ### `++rub`
 
-      ++  rub   `tape`['0' 'b' (rum 2 ~ |=(b=@ (add '0' b)))]
+      ++  rub   `tape`['0' 'b' (rum 2 ~ |=(b/@ (add '0' b)))]
 
 XX document
 
 ### `++rud`
 
-      ++  rud   (rum 10 ~ |=(b=@ (add '0' b)))
+      ++  rud   (rum 10 ~ |=(b/@ (add '0' b)))
 
 XX document
 
 ### `++rum`
 
       ++  rum
-        |=  [b=@ c=tape d=$+(@ @)]
+        |=  {b/@ c/tape d/$-(@ @)}
         ^-  tape
         ?:  =(0 a)
           [(d 0) c]
@@ -85,6 +86,7 @@ XX document
           e  +(e)
         ==
       ::
+
 
 XX document
 
@@ -124,7 +126,7 @@ XX document
         %^    rum
             64
           ~
-        |=  b=@
+        |=  b/@
         ?:  =(63 b)
           '+'
         ?:  =(62 b)
@@ -136,7 +138,7 @@ XX document
 
 ### `++rux`
 
-      ++  rux  `tape`['0' 'x' (rum 16 ~ |=(b=@ (add b ?:((lth b 10) 48 87))))]
+      ++  rux  `tape`['0' 'x' (rum 16 ~ |=(b/@ (add b ?:((lth b 10) 48 87))))]
       --
       ::::::::::::::::::::::::::::::::::::::::::::::::::::::  ::
 

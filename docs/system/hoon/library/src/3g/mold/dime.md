@@ -2,15 +2,16 @@
 
 Odor-atom pair
 
-Used in [`++coin`](). Convenience methods [`++scot`]() and [`++scow`]() (in
-Section 2eL) print dimes as [`++cord`]() and [`++tape`](), respectively.
-[`++slat`](), [`++slav`](), and [`++slaw`]() are used to parse atoms of
-specific [odor]()s.
+Used in `++coin`. Convenience methods `++scot` and `++scow` (in
+Section 2eL) print dimes as `++cord` and `++tape`, respectively.
+`++slat`, `++slav`, and `++slaw` are used to parse atoms of
+specific odors.
 
 Source
 ------
 
-    ++  dime  ,[p=@ta q=@]                                  ::
+        ++  dime  {p/@ta q/@}                                  ::
+
 
 Examples
 --------

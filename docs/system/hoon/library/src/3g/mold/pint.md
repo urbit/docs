@@ -3,12 +3,13 @@
 Parsing range
 
 Mostly used for stacktraces. A `++pint` is a pair of
-[`++hair`](), indicating from `p` to `q`.
+`++hair`, indicating from `p` to `q`.
 
 Source
 ------
 
-        ++  pint  ,[p=[p=@ q=@] q=[p=@ q=@]]                    ::  line/column range
+            ++  pint  {p/{p/@ q/@} q/{p/@ q/@}}                     ::  line+column range
+
 
 Examples
 --------
