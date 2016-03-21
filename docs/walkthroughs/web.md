@@ -8,6 +8,7 @@ title: Web
 
 General coverage of Urbit on the web.  Renderer -> file, main public facing files, and tree.  Then:
 
+
 ## Tree
 
 Tree is a simple publishing platform for files that live on your Urbit.  You're probably reading this file using Tree right now.  The main driving use-case for Tree has been for us to host our own documentation and the surrounding discussion.  Tree remains a pretty simple and flexible tool for getting content online.  We think it's pretty great.
@@ -19,6 +20,12 @@ In the browser Tree is a [React](https://facebook.github.io/react/) / [Flux](htt
 Your Urbit comes with a pre-built copy of the tree (as a single `.js` file).  If you're interested in helping to develop tree or learning about how it works, it has its own GitHub repo [here](https://github.com/urbit/tree).  We have our own fork of Bootstrap, which lives [here](https://github.com/urbit/bootstrap).
 
 You don't need to know anything about the tree implementation to use it, so we'll start with that and get further into the technical details as we get down the page. 
+
+## Renderers
+
+## `/web`
+
+`|serve`
 
 ## Publishing files
 
