@@ -117,7 +117,7 @@ Merge the `%examples` desk from `~waxbex-ribmex`
 
 ### `|sync desk plot [plot-desk]`
 
-Subscribe to continuous updates from remote `plot` on local `desk`.  `plot-desk` can specify the remote `desk` name.  When omitted it's assumed to be the same as `desk`.
+Subscribe to continuous updates from remote `plot` on local `desk`.  `plot-desk` can specify the remote `desk` name.  When omitted it's assumed to be the same as `desk`.  Moons have `|sync %home ~parent %kids` automatically set up (where `~parent` is the planet that issued the moon).
 
 **Examples:**
 
