@@ -2,8 +2,8 @@
 
 First and second
 
-Parsing composer: if an [`++edge`]() `vex` reflects a failure, fail. Otherwise,
-connect `vex` with the following [`++rule`]().
+Parsing composer: if an `++edge` `vex` reflects a failure, fail. Otherwise,
+connect `vex` with the following `++rule`.
 
 Accepts
 -------
@@ -21,7 +21,7 @@ Source
 ------
 
     ++  simu                                                ::  first and second
-      |*  [vex=edge sab=_rule]
+      |*  {vex/edge sab/rule}
       ?~  q.vex
         vex
       =+  roq=(sab)

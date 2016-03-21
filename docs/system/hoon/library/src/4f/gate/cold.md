@@ -2,34 +2,33 @@
 
 Replace with constant
 
-Parser modifier. Accepts a [`++rule`]() `sef` and produces a parser that
+Parser modifier. Accepts a `++rule` `sef` and produces a parser that
 produces a constant `cus`, assuming `sef` is successful.
 
 Accepts
 -------
 
-`cus` is a constant [noun]().
+`cus` is a constant noun.
 
 `sef` is a `++rule`.
 
 Produces
 --------
 
-An [`++edge`]().
+An `++edge`.
 
 Source
 ------
 
-    ++  cold                                                ::  replace w/ constant
+    ++  cold                                                ::  replace w+ constant
       ~/  %cold
-      |*  [cus=* sef=_rule]
+      |*  {cus/* sef/rule}
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       =+  vex=(sef tub)
       ?~  q.vex
         vex
       [p=p.vex q=[~ u=[p=cus q=q.u.q.vex]]]
-    ::
 
 Examples
 --------

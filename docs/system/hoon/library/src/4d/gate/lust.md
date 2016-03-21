@@ -3,7 +3,7 @@
 
 Detect newline
 
-Advances the [`++hair`]() `naz` by a row if the [`++char`]() `weq` is a newline, or by a
+Advances the `++hair` `naz` by a row if the `++char` `weq` is a newline, or by a
 column if `weq` is any other character.
 
 Accepts
@@ -21,9 +21,10 @@ A hair.
 Source
 ------
 
-    ++  lust  |=  [weq=char naz=hair]                       ::  detect newline
+    ++  lust  |=  {weq/char naz/hair}                       ::  detect newline
               ^-  hair
-              ?:(=(10 weq) [+(p.naz) 1] [p.naz +(q.naz)])
+              ?:(=(`@`10 weq) [+(p.naz) 1] [p.naz +(q.naz)])
+
 
 
 Examples

@@ -24,8 +24,8 @@ Source
 
     ++  rub                                                 ::  length-decode
       ~/  %rub
-      |=  [a=@ b=@]
-      ^-  [p=@ q=@]
+      |=  {a/@ b/@}
+      ^-  {p/@ q/@}
       =+  ^=  c
           =+  [c=0 m=(met 0 b)]
           |-  ?<  (gth c m)

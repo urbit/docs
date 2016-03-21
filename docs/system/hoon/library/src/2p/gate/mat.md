@@ -19,16 +19,17 @@ A cell of two atoms, `p` and `q`.
 Source
 ------
 
-    ++  mat                                                 ::  length-encode 
+    ++  mat                                                 ::  length-encode
       ~/  %mat
-      |=  a=@
-      ^-  [p=@ q=@]
+      |=  a/@
+      ^-  {p/@ q/@}
       ?:  =(0 a)
         [1 1]
       =+  b=(met 0 a)
       =+  c=(met 0 b)
       :-  (add (add c c) b)
       (cat 0 (bex c) (mix (end 0 (dec c) b) (lsh 0 (dec c) a)))
+    ::
 
 
 Examples

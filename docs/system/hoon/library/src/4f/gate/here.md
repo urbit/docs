@@ -2,16 +2,16 @@
 
 Place-based apply
 
-Parser modifier. Similar to [`++cook`]() in that it produces a parser that takes a
+Parser modifier. Similar to `++cook` in that it produces a parser that takes a
 (successful) result of `sef` and slams it through `hez`. `hez` accepts a
-[`++pint`]() `a` and a [noun]() `b`, which is what the parser parsed.
+`++pint` `a` and a noun `b`, which is what the parser parsed.
 
 Accepts
 -------
 
-`hez` is a [gate]().
+`hez` is a gate.
 
-`sef` is a [`++rule`]()
+`sef` is a `++rule`
 
 Produces
 --------
@@ -23,9 +23,9 @@ Source
 
     ++  here                                                ::  place-based apply
       ~/  %here
-      |*  [hez=_|=([a=pint b=*] [a b]) sef=_rule]
+      |*  {hez/_|=({a/pint b/*} [a b]) sef/rule}
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       =+  vex=(sef tub)
       ?~  q.vex
         vex

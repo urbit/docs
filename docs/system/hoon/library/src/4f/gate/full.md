@@ -2,13 +2,13 @@
 
 Parse to end
 
-Parser modifier. Accepts a [`++rule`]() `sef`, and produces a parser that succeeds only
+Parser modifier. Accepts a `++rule` `sef`, and produces a parser that succeeds only
 when the of `tub` is fully consumed using `sef`.
 
 Accepts
 -------
 
-`sef` is a [`++rule`]().
+`sef` is a `++rule`.
 
 Produces
 --------

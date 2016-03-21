@@ -2,7 +2,7 @@
 
 Discard second rule
 
-Parsing composer: connects [`++edge`]()s `vex` with two subsequent [`++rule`]()s returning the
+Parsing composer: connects `++edge`s `vex` with two subsequent `++rule`s returning the
 result of the first and discarding the result of the second.
 
 Accepts
@@ -22,7 +22,8 @@ Source
 
     ++  sfix                                                ::  discard second rule
       ~/  %sfix
-      (comp |*([a=* b=*] a))
+      (comp |*({a/* b/*} a))
+
 
 Examples
 --------

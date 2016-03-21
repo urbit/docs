@@ -9,30 +9,30 @@ Accepts
 
 `[les=@ mos=@]` is a cell of atoms indicating the bounds.
 
-`fel` is a [`++rule`]().
+`fel` is a `++rule`.
 
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  stun                                                ::  parse several times
-      |*  [[les=@ mos=@] fel=_rule]
-      |=  tub=nail
-      ^-  (like (list ,_(wonk (fel))))
-      ?:  =(0 mos)
+      |*  {lig/{@ @} fel/rule}
+      |=  tub/nail
+      ^-  (like (list _(wonk (fel))))
+      ?:  =(0 +.lig)
         [p.tub [~ ~ tub]]
       =+  vex=(fel tub)
       ?~  q.vex
-        ?:  =(0 les)
+        ?:  =(0 -.lig)
           [p.vex [~ ~ tub]]
         vex
       =+  ^=  wag  %=  $
-                     les  ?:(=(0 les) 0 (dec les))
-                     mos  ?:(=(0 mos) 0 (dec mos))
+                     -.lig  ?:(=(0 -.lig) 0 (dec -.lig))
+                     +.lig  ?:(=(0 +.lig) 0 (dec +.lig))
                      tub  q.u.q.vex
                    ==
       ?~  q.wag

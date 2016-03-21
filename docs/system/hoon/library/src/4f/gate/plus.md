@@ -3,12 +3,12 @@
 
 List of at least one match.
 
-Parser modifier: parse [`++list`]() of at least one match.
+Parser modifier: parse `++list` of at least one match.
 
 Accepts
 -------
 
-`fel` is a [`++rule`]().
+`fel` is a `++rule`.
 
 Produces
 --------
@@ -18,7 +18,8 @@ A `++rule`.
 Source
 ------
 
-    ++  plus  |*(fel=_rule ;~(plug fel (star fel)))
+    ++  plus  |*(fel/rule ;~(plug fel (star fel)))
+
 
 Examples
 --------

@@ -7,24 +7,24 @@ Produces a noun unpacked from atom `a`. The inverse of jam.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 Produces
 --------
 
-A [`++noun`]().
+A `++noun`.
 
 Source
 ------
 
-    ++  cue                                                 ::  unpack atom to noun
+    ++  cue                                                 ::  unpack
       ~/  %cue
-      |=  a=@
+      |=  a/@
       ^-  *
       =+  b=0
-      =+  m=`(map ,@ ,*)`~
+      =+  m=`(map @ *)`~
       =<  q
-      |-  ^-  [p=@ q=* r=_m]
+      |-  ^-  {p/@ q/* r/(map @ *)}
       ?:  =(0 (cut 0 [b 1] a))
         =+  c=(rub +(b) a)
         [+(p.c) q.c (~(put by m) b q.c)]

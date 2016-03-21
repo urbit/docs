@@ -2,13 +2,13 @@
 
 Never parse
 
-Produces an [`++edge`]() at the same text position ([`++hair`]()) with a failing
+Produces an `++edge` at the same text position (`++hair`) with a failing
 result (`q=~`).
 
 Accepts
 -------
 
-`tub` is a [`++nail`]().
+`tub` is a `++nail`.
 
 Produces
 --------
@@ -18,7 +18,7 @@ An `++edge`.
 Source
 ------
 
-    ++  fail  |=(tub=nail [p=p.tub q=~])                    ::  never parse
+    ++  fail  |=(tub/nail [p=p.tub q=~])                    ::  never parse
 
 Examples
 --------

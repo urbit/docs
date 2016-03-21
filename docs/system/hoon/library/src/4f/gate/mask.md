@@ -8,25 +8,25 @@ characters.
 Accepts
 -------
 
-`bud` is a list of [`++char`]()
+`bud` is a list of `++char`
 
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  mask                                                ::  match char in set
       ~/  %mask
-      |=  bud=(list char)
+      |=  bud/(list char)
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       ^-  (like char)
       ?~  q.tub
         (fail tub)
-      ?.  (lien bud |=(a=char =(i.q.tub a)))
+      ?.  (lien bud |=(a/char =(i.q.tub a)))
         (fail tub)
       (next tub)
     ::

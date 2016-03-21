@@ -2,7 +2,7 @@
 
 Skip delimiter
 
-Parsing composer: connects an [`++edge`]() `vex` with a following [`++rule`]() `sab` by
+Parsing composer: connects an `++edge` `vex` with a following `++rule` `sab` by
 parsing the `++rule` `bus` (the delimiting symbol) and throwing out the
 result.
 
@@ -25,9 +25,9 @@ Source
 
     ++  glue                                                ::  add rule
       ~/  %glue
-      |*  bus=_rule
+      |*  bus/rule
       ~/  %fun
-      |*  [vex=edge sab=_rule]
+      |*  {vex/edge sab/rule}
       (plug vex ;~(pfix bus sab))
     ::
 

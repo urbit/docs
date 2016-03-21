@@ -2,15 +2,15 @@
 
 Farther trace
 
-Compares two line-column pairs, called [`++hair`]()s, `zyc` and `naz`, producing whichever
+Compares two line-column pairs, called `++hair`s, `zyc` and `naz`, producing whichever
 is further along.
 
 Accepts
 -------
 
-`naz` is a [hair]().
+`naz` is a hair.
 
-`zyc` is a [hair]().
+`zyc` is a hair.
 
 Produces
 --------
@@ -20,12 +20,11 @@ a `++hair`.
 Source
 ------
 
-    ++  last  |=  [zyc=hair naz=hair]                       ::  farther trace
+    ++  last  |=  {zyc/hair naz/hair}                       ::  farther trace
               ^-  hair
               ?:  =(p.zyc p.naz)
                 ?:((gth q.zyc q.naz) zyc naz)
               ?:((gth p.zyc p.naz) zyc naz)
-    ::
 
 
 Examples

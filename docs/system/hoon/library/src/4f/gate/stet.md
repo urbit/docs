@@ -18,7 +18,7 @@ Source
 ------
 
     ++  stet
-      |*  leh=(list ,[?(@ [@ @]) _rule])
+      |*  leh/(list {?(@ {@ @}) rule})
       |-
       ?~  leh
         ~

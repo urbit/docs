@@ -2,7 +2,7 @@
 
 Infix
 
-Parser modifier: surround with pair of [`++rule`]()s, the output of which is
+Parser modifier: surround with pair of `++rule`s, the output of which is
 discarded.
 
 Accepts
@@ -21,8 +21,12 @@ Source
 ------
 
     ++  ifix
-      |*  [fel=[p=_rule q=_rule] hof=_rule]
-      ;~(pfix p.fel ;~(sfix hof q.fel))
+      |*  {fel/{rule rule} hof/rule}
+      ~!  +<
+      ~!  +<:-.fel
+      ~!  +<:+.fel
+      ;~(pfix -.fel ;~(sfix hof +.fel))
+    ::
 
 Examples
 --------

@@ -2,7 +2,7 @@
 
 Parse list of at least one match
 
-Parser modifier: parse a [`++list`]() of at least one match using a delimiter [`++rule`]().
+Parser modifier: parse a `++list` of at least one match using a delimiter `++rule`.
 
 Accepts
 -------
@@ -20,8 +20,9 @@ Source
 ------
 
     ++  most
-      |*  [bus=_rule fel=_rule]
+      |*  {bus/rule fel/rule}
       ;~(plug fel (star ;~(pfix bus fel)))
+    ::
 
 Examples
 --------

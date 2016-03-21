@@ -2,19 +2,19 @@
 
 List of matches
 
-Parser modifier: parse [`++list`]() of matches.
+Parser modifier: parse `++list` of matches.
 
 Accepts
 -------
 
-`fel` is a [`++rule`]().
+`fel` is a `++rule`.
 
 Produces
 --------
 
     ++  star                                                ::  0 or more times
-      |*  fel=_rule
-      (stir `(list ,_(wonk *fel))`~ |*([a=* b=*] [a b]) fel)
+      |*  fel/rule
+      (stir `(list _(wonk *fel))`~ |*({a/* b/*} [a b]) fel)
 
 Examples
 --------

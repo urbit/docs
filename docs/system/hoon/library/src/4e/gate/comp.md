@@ -2,14 +2,14 @@
 
 Arbitrary compose
 
-Parsing composer: connects the [`++edge`]() `vex` with a following [`++rule`]() `sab`,
+Parsing composer: connects the `++edge` `vex` with a following `++rule` `sab`,
 combining the contents of `vex` with the result of `sab` using a binary
-[gate]() `raq`. Used to fold over the results of several `++rules`.
+gate `raq`. Used to fold over the results of several `++rules`.
 
 Accepts
 -------
 
-`raq` is a gate that accepts a cell of two [nouns](), `a` and `b`, and
+`raq` is a gate that accepts a cell of two nouns, `a` and `b`, and
 produces a cell of two nouns.
 
 `sab` is a rule.
@@ -19,16 +19,17 @@ produces a cell of two nouns.
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  comp
       ~/  %comp
-      |*  raq=_|*([a=* b=*] [a b])                          ::  arbitrary compose
+      |*  raq/_|*({a/* b/*} [a b])                       ::  arbitrary compose
       ~/  %fun
-      |*  [vex=edge sab=_rule]
+      |*  {vex/edge sab/rule}
+      ~!  +<
       ?~  q.vex
         vex
       =+  yit=(sab q.u.q.vex)
@@ -41,9 +42,9 @@ Source
 Examples
 --------
 
-    ~zod/try=> (scan "123" ;~((comp |=([a=@u b=@u] (add a b))) dit dit dit))
+    ~zod/try=> (scan "123" ;~((comp |=([a/@u b/@u] (add a b))) dit dit dit))
     6
-    ~zod/try=> (scan "12" ;~((comp |=([a=@u b=@u] (add a b))) dit dit dit))
+    ~zod/try=> (scan "12" ;~((comp |=([a/@u b/@u] (add a b))) dit dit dit))
     ! {1 3}
     ! exit
 

@@ -7,18 +7,18 @@ Consume any character, producing it as a result.
 Accepts
 -------
 
-`tub` is a [`++nail`]()
+`tub` is a `++nail`
 
 Produces
 --------
 
-An [`++edge`]().
+An `++edge`.
 
 Source
 ------
 
     ++  next                                                ::  consume a char
-      |=  tub=nail
+      |=  tub/nail
       ^-  (like char)
       ?~  q.tub
         (fail tub)

@@ -2,7 +2,7 @@
 
 Parse repeatedly
 
-Parse with [`++rule`]() as many times as possible, and fold over results with a
+Parse with `++rule` as many times as possible, and fold over results with a
 binary gate.
 
 Accepts
@@ -22,19 +22,26 @@ A rule.
 Source
 ------
 
-++  stir                                                ::  parse repeatedly 
-      ~/  %stir
-      |*  [rud=* raq=_|*([a=* b=*] [a b]) fel=_rule]
-      ~/  %fun
-      |=  tub=nail
-      ^-  (like ,_rud)
+    ++  stun                                                ::  parse several times
+      |*  {lig/{@ @} fel/rule}
+      |=  tub/nail
+      ^-  (like (list _(wonk (fel))))
+      ?:  =(0 +.lig)
+        [p.tub [~ ~ tub]]
       =+  vex=(fel tub)
       ?~  q.vex
-        [p.vex [~ rud tub]]
-      =+  wag=$(tub q.u.q.vex)
-      ?>  ?=(^ q.wag)
-      [(last p.vex p.wag) [~ (raq p.u.q.vex p.u.q.wag) q.u.q.wag]]
-    ::
+        ?:  =(0 -.lig)
+          [p.vex [~ ~ tub]]
+        vex
+      =+  ^=  wag  %=  $
+                     -.lig  ?:(=(0 -.lig) 0 (dec -.lig))
+                     +.lig  ?:(=(0 +.lig) 0 (dec +.lig))
+                     tub  q.u.q.vex
+                   ==
+      ?~  q.wag
+        wag
+      [p.wag [~ [p.u.q.vex p.u.q.wag] q.u.q.wag]]
+
 
 Examples
 --------

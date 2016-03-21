@@ -2,14 +2,14 @@
 
 Add to tape
 
-Parser modifier: prepend text to [`++tape`]() before applying parser.
+Parser modifier: prepend text to `++tape` before applying parser.
 
 Accepts
 -------
 
 `pre` is a `++tape`
 
-`sef` is a [`++rule`]()
+`sef` is a `++rule`
 
 Produces
 --------
@@ -20,10 +20,9 @@ Source
 ------
 
     ++  funk                                                ::  add to tape first
-      |*  [pre=tape sef=_rule]
-      |=  tub=nail
+      |*  {pre/tape sef/rule}
+      |=  tub/nail
       (sef p.tub (weld pre q.tub))
-    ::
 
 Examples
 --------

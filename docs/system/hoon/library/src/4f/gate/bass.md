@@ -1,31 +1,33 @@
 ### `++bass`
 
-Parser modifier: [LSB](http://en.wikipedia.org/wiki/Least_significant_bit)
-ordered [`++list`]() as atom of a [`++base`]().
+Parser modifier: LSB
+ordered `++list` as atom of a `++base`.
 
 Accepts
 -------
 
 `wuc` is an atom.
 
-`tyd` is a [`++rule`]().
+`tyd` is a `++rule`.
 
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  bass
-      |*  [wuc=@ tyd=_rule]
+      |*  {wuc/@ tyd/rule}
       %+  cook
-        |=  waq=(list ,@)
+        |=  waq/(list @)
         %+  roll
           waq
-        =|([p=@ q=@] |.((add p (mul wuc q))))
+        =|({p/@ q/@} |.((add p (mul wuc q))))
       tyd
+    ::
+
 
 Examples
 --------
