@@ -2,7 +2,7 @@
 
 Core used to scramble 16-bit atoms
 
-A [door]() that contains arms that are used to scramble two atoms, `top`
+A door that contains arms that are used to scramble two atoms, `top`
 and `bot`. Used especially in the phonetic base to disguise the
 relationship between a destroyer and its cruiser.
 
@@ -12,15 +12,15 @@ Accepts
 Produces
 --------
 
-`bot` is an [atom]().
+`bot` is an atom.
 
-`top` is an [atom]().
+`top` is an atom.
 
 Source
 ------
 
     ++  mu
-      |_  [top=@ bot=@]
+      |_  [top/@ bot/@]
 
 Examples
 --------
@@ -44,14 +44,15 @@ Accepts
 Produces
 --------
 
-`bot` is an [atom]().
+`bot` is an atom.
 
-`top` is an [atom]().
+`top` is an atom.
 
 Source
 ------
 
       ++  zag  [p=(end 4 1 (add top bot)) q=bot]
+
 
 Examples
 --------
@@ -65,7 +66,7 @@ Examples
 
 Subtract bottom from top
 
-The inverse of [`++zag`](). Produces the cell of `top` and `bot` with
+The inverse of `++zag`. Produces the cell of `top` and `bot` with
 `top` unscrambled. The unscrambled `top` is the sum of the sample `top`
 and the 16-bit complement of `bot`. Used to unscramble the name of the
 destroyer.
@@ -76,9 +77,9 @@ Accepts
 Produces
 --------
 
-`bot` is an [atom]().
+`bot` is an atom.
 
-`top` is an [atom]().
+`top` is an atom.
 
 Source
 ------
@@ -106,9 +107,9 @@ Accepts
 Produces
 --------
 
-`bot` is an [atom]().
+`bot` is an atom.
 
-`top` is an [atom]().
+`top` is an atom.
 
 Source
 ------

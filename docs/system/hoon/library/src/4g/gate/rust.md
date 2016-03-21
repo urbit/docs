@@ -2,7 +2,7 @@
 
 Parse tape or null
 
-Parse a [`++tape`]() with a given [`++rule`]() and produce null if the `++tape` isn't
+Parse a `++tape` with a given `++rule` and produce null if the `++tape` isn't
 entirely parsed.
 
 Accepts
@@ -20,9 +20,10 @@ A `(unit ,@t)`
 Source
 ------
 
-    ++  rust  |*  [los=tape sab=_rule]
+    ++  rust  |*  {los/tape sab/rule}
               =+  vex=((full sab) [[1 1] los])
               ?~(q.vex ~ [~ u=p.u.q.vex])
+
 
 Examples
 --------

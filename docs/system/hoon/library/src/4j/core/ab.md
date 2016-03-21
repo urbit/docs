@@ -22,7 +22,7 @@ Examples
 
 Parse hex pair
 
-Parsing [`++rule`](). Parses a pair of base-16 digits. Used in escapes.
+Parsing `++rule`. Parses a pair of base-16 digits. Used in escapes.
 
 Accepts
 -------
@@ -55,7 +55,7 @@ Examples
 
 Parse phonetic pair
 
-Parsing [`++rule`](). Parses an atom of [odor]() [`@pE`](), a phrase of two bytes
+Parsing `++rule`. Parses an atom of odor `@pE`, a phrase of two bytes
 encoded phonetically.
 
 Accepts
@@ -87,7 +87,7 @@ Examples
 
 Parse two phonetic pairs
 
-Parsing [`++rule`](). Parses and unscrambles an atom of odor [@pF](), a phrase
+Parsing `++rule`. Parses and unscrambles an atom of odor @pF, a phrase
 of two two-byte pairs that are encoded (and scrambled) phonetically.
 
 Accepts
@@ -104,7 +104,7 @@ Source
 ------
 
       ++  huf  %+  cook
-                   |=([a=@ b=@] (wred:un ~(zug mu ~(zag mu [a b]))))
+                   |=([a/@ b/@] (wred:un ~(zug mu ~(zag mu [a b]))))
                  ;~(plug hif ;~(pfix hep hif))
 
 Examples
@@ -123,13 +123,13 @@ Examples
 
 Parse 8 phonetic bytes
 
-Parsing [`++rule`](). Parses an atom of odor [@pG](), a phrase of eight of
+Parsing `++rule`. Parses an atom of odor @pG, a phrase of eight of
 phonetic bytes.
 
 Accepts
 -------
 
-An atom of odor [`@pG`]()
+An atom of odor `@pG`
 
 Produces
 --------
@@ -155,12 +155,12 @@ Examples
 
 Parse \<= 5 base-32
 
-Parsing [`++rule`](). Parses up to five base-32 digits without a leading zero.
+Parsing `++rule`. Parses up to five base-32 digits without a leading zero.
 
 Accepts
 -------
 
-Up to five [@uv]() (base 64) digits.
+Up to five @uv (base 64) digits.
 
 Produces
 --------
@@ -191,12 +191,12 @@ Examples
 
 Parse \<= 5 base-64
 
-Parsing [`++rule`](). Parses up to five base-64 digits without a leading zero.
+Parsing `++rule`. Parses up to five base-64 digits without a leading zero.
 
 Accepts
 -------
 
-Up to five [@uw]() (base 64) digits.
+Up to five @uw (base 64) digits.
 
 Produces
 --------
@@ -230,7 +230,7 @@ Examples
 
 Parse 5 base-32
 
-Parsing [`++rule`](). Parses exactly five base-32 digits.
+Parsing `++rule`. Parses exactly five base-32 digits.
 
 Accepts
 -------
@@ -258,15 +258,13 @@ Examples
 
 Parse 5 base-64
 
-Parsing [`++rule`](). Parses exactly five base-64 digits.
+Parsing `++rule`. Parses exactly five base-64 digits.
 
 Accepts
 -------
 
 Produces
 --------
-
-My name henry let's see how fast I can type.
 
 Source
 ------
@@ -288,7 +286,7 @@ Examples
 
 Parse \<= 4 binary
 
-Parsing [`++rule`](). Parses a binary number of up to 4 digits in length without
+Parsing `++rule`. Parses a binary number of up to 4 digits in length without
 a leading zero.
 
 Accepts
@@ -324,7 +322,7 @@ Examples
 
 Parse \<= 4 hex
 
-Parsing [`++rule`](). Parses a hexadecimal number of up to 4 digits in length
+Parsing `++rule`. Parses a hexadecimal number of up to 4 digits in length
 without a leading zero.
 
 Accepts
@@ -358,7 +356,7 @@ Examples
 
 Parse 4 binary
 
-Parsing [`++rule`](). Parses exactly four binary digits.
+Parsing `++rule`. Parses exactly four binary digits.
 
 Accepts
 -------
@@ -388,7 +386,7 @@ Examples
 
 Parse 4 hex
 
-Parsing [`++rule`](). Parses exactly four hexadecimal digits.
+Parsing `++rule`. Parses exactly four hexadecimal digits.
 
 Accepts
 -------
@@ -418,7 +416,7 @@ Examples
 
 Parse 1
 
-Parsing [`++rule`](). Parses the number 1.
+Parsing `++rule`. Parses the number 1.
 
 Accepts
 -------
@@ -449,7 +447,7 @@ Examples
 
 Parse decimal
 
-Parsing [`++rule`](). Parses a nonzero decimal digit.
+Parsing `++rule`. Parses a nonzero decimal digit.
 
 Accepts
 -------
@@ -460,7 +458,7 @@ Produces
 Source
 ------
 
-      ++  sed  (cook |=(a=@ (sub a '0')) (shim '1' '9'))
+      ++  sed  (cook |=(a/@ (sub a '0')) (shim '1' '9'))
 
 Examples
 --------
@@ -477,7 +475,7 @@ Examples
 
 Parse base-32
 
-Parsing [`++rule`](). Parses a nonzero base-32 digit
+Parsing `++rule`. Parses a nonzero base-32 digit
 
 Accepts
 -------
@@ -505,7 +503,7 @@ Examples
 
 Parse base-64
 
-Parsing [`++rule`](). Parses a nonzero base-64 digit
+Parsing `++rule`. Parses a nonzero base-64 digit
 
 Accepts
 -------
@@ -533,7 +531,7 @@ Examples
 
 Parse hex
 
-Parsing [`++rule`](). Parses a nonzero hexadecimal digit.
+Parsing `++rule`. Parses a nonzero hexadecimal digit.
 
 Accepts
 -------
@@ -561,7 +559,7 @@ Examples
 
 Parse binary
 
-Parsing [`++rule`](). Parses a binary digit.
+Parsing `++rule`. Parses a binary digit.
 
 Accepts
 -------
@@ -572,7 +570,7 @@ Produces
 Source
 ------
 
-      ++  sib  (cook |=(a=@ (sub a '0')) (shim '0' '1'))
+      ++  sib  (cook |=(a/@ (sub a '0')) (shim '0' '1'))
 
 Examples
 --------
@@ -588,7 +586,7 @@ Examples
 
 Parse decimal
 
-Parsing [`++rule`](). Parses a decimal digit.
+Parsing `++rule`. Parses a decimal digit.
 
 Accepts
 -------
@@ -599,7 +597,7 @@ Produces
 Source
 ------
 
-      ++  sid  (cook |=(a=@ (sub a '0')) (shim '0' '9'))
+      ++  sid  (cook |=(a/@ (sub a '0')) (shim '0' '9'))
 
 Examples
 --------
@@ -613,7 +611,7 @@ Examples
 
 Parse base-32
 
-Parsing [`++rule`](). Parses a base-32 digit.
+Parsing `++rule`. Parses a base-32 digit.
 
 Accepts
 -------
@@ -638,7 +636,7 @@ Examples
 
 Parse base-64
 
-Parsing [`++rule`](). Parses a base-64 digit.
+Parsing `++rule`. Parses a base-64 digit.
 
 Accepts
 -------
@@ -663,7 +661,7 @@ Examples
 
 Parse hex
 
-Parsing [`++rule`](). Parses a hexadecimal digit.
+Parsing `++rule`. Parses a hexadecimal digit.
 
 Accepts
 -------
@@ -688,7 +686,7 @@ Examples
 
 Parse base-32
 
-Parsing [`++rule`](). Parses a base-32 letter.
+Parsing `++rule`. Parses a base-32 letter.
 
 Accepts
 -------
@@ -699,7 +697,7 @@ Produces
 Source
 ------
 
-      ++  sov  (cook |=(a=@ (sub a 87)) (shim 'a' 'v'))
+      ++  sov  (cook |=(a/@ (sub a 87)) (shim 'a' 'v'))
 
 Examples
 --------
@@ -713,7 +711,7 @@ Examples
 
 Parse base-64
 
-Parsing [`++rule`](). Parses a base-64 letter/symbol.
+Parsing `++rule`. Parses a base-64 letter/symbol.
 
 Accepts
 -------
@@ -725,8 +723,8 @@ Source
 ------
 
       ++  sow  ;~  pose
-                 (cook |=(a=@ (sub a 87)) (shim 'a' 'z'))
-                 (cook |=(a=@ (sub a 29)) (shim 'A' 'Z'))
+                 (cook |=(a/@ (sub a 87)) (shim 'a' 'z'))
+                 (cook |=(a/@ (sub a 29)) (shim 'A' 'Z'))
                  (cold 62 (just '-'))
                  (cold 63 (just '~'))
                ==
@@ -743,7 +741,7 @@ Examples
 
 Parse hex letter
 
-Parsing [`++rule`](). Parses a hexadecimal letter.
+Parsing `++rule`. Parses a hexadecimal letter.
 
 Accepts
 -------
@@ -754,7 +752,7 @@ Produces
 Source
 ------
 
-      ++  sox  (cook |=(a=@ (sub a 87)) (shim 'a' 'f'))
+      ++  sox  (cook |=(a/@ (sub a 87)) (shim 'a' 'f'))
 
 Examples
 --------
@@ -768,7 +766,7 @@ Examples
 
 Parse \<= 3 decimal
 
-Parsing [`++rule`](). Parses a decimal number of up to 3 digits without a
+Parsing `++rule`. Parses a decimal number of up to 3 digits without a
 leading zero.
 
 Accepts
@@ -801,7 +799,7 @@ Examples
 
 Leading phonetic byte
 
-Parsing [`++rule`](). Parses the leading phonetic byte, which represents a
+Parsing `++rule`. Parses the leading phonetic byte, which represents a
 syllable.
 
 Accepts
@@ -813,7 +811,7 @@ Produces
 Source
 ------
 
-      ++  tip  (sear |=(a=@ (ins:po a)) til)
+      ++  tip  (sear |=(a/@ (ins:po a)) til)
 
 Examples
 --------
@@ -829,7 +827,7 @@ Examples
 
 Trailing phonetic syllable
 
-Parsing [`++rule`](). Parses the trailing phonetic byte, which represents a
+Parsing `++rule`. Parses the trailing phonetic byte, which represents a
 syllable.
 
 Accepts
@@ -841,7 +839,7 @@ Produces
 Source
 ------
 
-      ++  tiq  (sear |=(a=@ (ind:po a)) til)
+      ++  tiq  (sear |=(a/@ (ind:po a)) til)
 
 Examples
 --------
@@ -857,7 +855,7 @@ Examples
 
 Parse 3 decimal digits
 
-Parsing [`++rule`](). Parses exactly three decimal digits.
+Parsing `++rule`. Parses exactly three decimal digits.
 
 Accepts
 -------
@@ -885,7 +883,7 @@ Examples
 
 Parse 3 lowercase
 
-Parsing [`++rule`](). Parses exactly three lowercase letters.
+Parsing `++rule`. Parses exactly three lowercase letters.
 
 Accepts
 -------
@@ -915,7 +913,7 @@ Examples
 
 Parse span characters
 
-Parsing rule. Parses characters from an atom of the span odor [`@ta`]().
+Parsing rule. Parses characters from an atom of the span odor `@ta`.
 
 Accepts
 -------
@@ -927,7 +925,7 @@ Source
 ------
 
       ++  urs  %+  cook
-                 |=(a=tape (rap 3 ^-((list ,@) a)))
+                 |=(a/tape (rap 3 ^-((list @) a)))
                (star ;~(pose nud low hep dot sig cab))
 
 Examples
@@ -944,7 +942,7 @@ Examples
 
 Parse non-`_` span
 
-Parsing rule. Parses all characters of the span odor [`@ta`]() except
+Parsing rule. Parses all characters of the span odor `@ta` except
 for cab, `_`.
 
 Accepts
@@ -957,7 +955,7 @@ Source
 ------
 
       ++  urt  %+  cook
-                 |=(a=tape (rap 3 ^-((list ,@) a)))
+                 |=(a/tape (rap 3 ^-((list @) a)))
                (star ;~(pose nud low hep dot sig))
 
 Examples
@@ -1034,12 +1032,13 @@ Accepts
 Produces
 --------
 
-`fel` is a [`rule`]().
+`fel` is a `rule`.
 
 Source
 ------
 
-      ++  ape  |*(fel=_rule ;~(pose (cold 0 (just '0')) fel))
+      ++  ape  |*(fel/rule ;~(pose (cold 0 (just '0')) fel))
+
 
 Examples
 --------
@@ -1078,7 +1077,7 @@ Examples
 
 Parse IPv6
 
-Parsing rule. Parses a [`@is`](), an IPv6 address.
+Parsing rule. Parses a `@is`, an IPv6 address.
 
 Accepts
 -------
@@ -1118,6 +1117,7 @@ Source
 ------
 
       ++  dem  (ape (bass 1.000 ;~(plug ted:ab (star ;~(pfix dog tid:ab)))))
+
 
 Examples
 --------
@@ -1190,7 +1190,7 @@ Examples
 
 Parse phonetic base
 
-Parsing rule. Parses an atom of odor [`@p`](), the phonetic base.
+Parsing rule. Parses an atom of odor `@p`, the phonetic base.
 
 Accepts
 -------
