@@ -2,7 +2,7 @@
 
 Pretty-printing engine
 
-Pretty-printing engine that accepts a [`++tank`](/doc/hoon/library/1#++tank) [sample]() and contains arms that perform computation on it.
+Pretty-printing engine that accepts a `++tank` sample and contains arms that perform computation on it.
 
 Accepts
 -------
@@ -13,24 +13,24 @@ Produces
 --------
 
     ++  re
-      |_  tac=tank
+      |_  tac/tank
 
 Examples
 --------
 
-    /~zod/try=> ~(. re leaf/"ham")
-    <2.ghl [[%leaf ""] <414.gly 100.xkc 1.ypj %164>]>
+    /~zod/try=> ~(. re leaf+"ham")
+    <2.gdc {tac/{$leaf ""} <402.arm 110.jyx 1.ztu $151>}>
 
 ### `++ram`
 
 Flatten to tape
 
-Flatten [`++tank`]() out into a [`++tape`]().
+Flatten `++tank` out into a `++tape`.
 
 Accepts
 -------
 
-`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+`tac` is a `++tank`, taken from sample of `++re` core.
 
 Produces
 --------
@@ -43,9 +43,9 @@ Source
       ++  ram
         ^-  tape
         ?-    -.tac
-            %leaf  p.tac
-            %palm  ram(tac [%rose [p.p.tac (weld q.p.tac r.p.tac) s.p.tac] q.tac])
-            %rose
+            $leaf  p.tac
+            $palm  ram(tac [%rose [p.p.tac (weld q.p.tac r.p.tac) s.p.tac] q.tac])
+            $rose
           %+  weld
             q.p.tac
           |-  ^-  tape
@@ -59,9 +59,9 @@ Source
 Examples
 --------
 
-    /~zod/try=> ~(ram re leaf/"foo")
+    /~zod/try=> ~(ram re leaf+"foo")
     "foo"
-    /~zod/try=> ~(ram re rose/["." "(" ")"]^~[leaf/"bar" leaf/"baz" leaf/"bam"])
+    /~zod/try=> ~(ram re rose+["." "(" ")"]^~[leaf+"bar" leaf+"baz" leaf+"bam"])
     "(bar.baz.bam)"
 
 ### `++win`
@@ -73,25 +73,25 @@ Render at indent level `tab` and width `edg`.
 Accepts
 -------
 
-`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+`tac` is a `++tank`, taken from sample of `++re` core.
 
 `tab` and `edg` are atoms.
 
 Produces
 --------
 
-A [`++wall`]() ([`++list`]() of [`++tapes`]()).
+A `++wall` (`++list` of `++tapes`).
 
 Source
 ------
 
       ++  win
-        |=  [tab=@ edg=@]
+        |=  {tab/@ edg/@}
         =+  lug=`wall`~
         |^  |-  ^-  wall
             ?-    -.tac
-                %leaf  (rig p.tac)
-                %palm
+                $leaf  (rig p.tac)
+                $palm
               ?:  fit
                 (rig ram)
               ?~  q.tac
@@ -111,30 +111,17 @@ Source
                   ==
               (wig(lug qyr) q.p.tac)
             ::
-                %rose
-              ?:  fit
-                (rig ram)
-              =+  ^=  gyl
-                |-  ^-  wall
-                ?~  q.tac
-                  ?:(=(%$ r.p.tac) lug (rig r.p.tac))
-                ^$(tac i.q.tac, lug $(q.tac t.q.tac), tab din)
-              ?:  =(%$ q.p.tac)
-                gyl
-              (wig(lug gyl) q.p.tac)
-            ==
-        ::
 
 Examples
 --------
 
-    /~zod/try=> (~(win re leaf/"samoltekon-lapdok") 0 20)
+    /~zod/try=> (~(win re leaf+"samoltekon-lapdok") 0 20)
     <<"samoltekon-lapdok">>
-    /~zod/try=> (~(win re leaf/"samoltekon-lapdok") 0 10)
+    /~zod/try=> (~(win re leaf+"samoltekon-lapdok") 0 10)
     <<"\/samolt\/" "  ekon-l" "  apdok" "\/      \/">>
-    /~zod/try=> (~(win re rose/["--" "[" "]"]^~[leaf/"1423" leaf/"2316"]) 0 20)
+    /~zod/try=> (~(win re rose+["--" "[" "]"]^~[leaf+"1423" leaf+"2316"]) 0 20)
     <<"[1423--2316]">>
-    /~zod/try=> (~(win re rose/["--" "[" "]"]^~[leaf/"1423" leaf/"2316"]) 0 10)
+    /~zod/try=> (~(win re rose+["--" "[" "]"]^~[leaf+"1423" leaf+"2316"]) 0 10)
     <<"[ 1423" "  2316" "]">>
 
 ### `++din`
@@ -185,28 +172,28 @@ Examples
 
 Wrap in `\/`
 
-Wrap [`++tape`]() in `\/` if it doesn't fit at current indentation. Internal to
-[`++win`]()
+Wrap `++tape` in `\/` if it doesn't fit at current indentation. Internal to
+`++win`
 
 Accepts
 -------
 
-`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+`tac` is a `++tank`, taken from sample of `++re` core.
 
 `hom` is a `++tape`.
 
 Produces
 --------
 
-A [`++wall`]() (list of `++tape`s).
+A `++wall` (list of `++tape`s).
 
 Source
 ------
 
         ++  rig
-          |=  hom=tape
+          |=  hom/tape
           ^-  wall
-          ?:  (lte (lent hom) (sub edg tab))
+          ?:  & ::(lte (lent hom) (sub edg tab))
             [(runt [tab ' '] hom) lug]
           =>  .(tab (add tab 2), edg (sub edg 2))
           =+  mut=(trim (sub edg tab) hom)
@@ -229,12 +216,12 @@ Examples
 
 `++win` render tape
 
-Render [`++tape`](). Internal to [`++win`]().
+Render `++tape`. Internal to `++win`.
 
 Accepts
 -------
 
-`tac` is a `++tank`, taken from [sample]() of `++re` [core]().
+`tac` is a `++tank`, taken from sample of `++re` core.
 
 `hom` is a `++tape`.
 
@@ -242,7 +229,7 @@ Produces
 --------
 
         ++  wig
-          |=  hom=tape
+          |=  hom/tape
           ^-  wall
           ?~  lug
             (rig hom)
@@ -256,6 +243,7 @@ Produces
           [(runt [tab ' '] (weld hom `tape`[' ' (slag wug i.lug)])) t.lug]
         --
       --
+
 
 
 
