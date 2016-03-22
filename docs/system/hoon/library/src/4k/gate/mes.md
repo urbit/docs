@@ -8,7 +8,7 @@ Source
 ------
 
     ++  mes  %+  cook                                       ::  hexbyte
-               |=([a=@ b=@] (add (mul 16 a) b))
+               |=({a/@ b/@} (add (mul 16 a) b))
              ;~(plug hit hit)
 
 Examples

@@ -7,10 +7,10 @@ Axis syntax parser
 Source
 ------
 
-    ++  ven  ;~  (comp |=([a=@ b=@] (peg a b)))             ::  +>- axis syntax
+    ++  ven  ;~  (comp |=({a/@ b/@} (peg a b)))             ::  +>- axis syntax
                bet
                =+  hom=`?`|
-               |=  tub=nail
+               |=  tub/nail
                ^-  (like axis)
                =+  vex=?:(hom (bet tub) (gul tub))
                ?~  q.vex

@@ -2,13 +2,13 @@
 
 Indentation block
 
-Apply [`++rule`]() to indented block starting at current column number, omitting
+Apply `++rule` to indented block starting at current column number, omitting
 the leading whitespace.
 
 Accepts
 -------
 
-`sef` is a [`++rule`]()
+`sef` is a `++rule`
 
 Produces
 --------
@@ -18,7 +18,7 @@ A `++rule`.
 Source
 ------
 
-    ++  iny  |*  sef=_rule                                 :: indentation block
+    ++  inde  |*  sef/rule                                  :: indentation block
       |=  nail  ^+  (sef)
       =+  [har tap]=[p q]:+<
       =+  lev=(fil 3 (dec q.har) ' ')

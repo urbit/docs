@@ -9,9 +9,9 @@ Source
 
     ++  vit                                                 ::  base64 digit
       ;~  pose
-        (cook |=(a=@ (sub a 65)) (shim 'A' 'Z'))
-        (cook |=(a=@ (sub a 71)) (shim 'a' 'z'))
-        (cook |=(a=@ (add a 4)) (shim '0' '9'))
+        (cook |=(a/@ (sub a 65)) (shim 'A' 'Z'))
+        (cook |=(a/@ (sub a 71)) (shim 'a' 'z'))
+        (cook |=(a/@ (add a 4)) (shim '0' '9'))
         (cold 62 (just '-'))
         (cold 63 (just '+'))
       ==
