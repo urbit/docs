@@ -2,14 +2,14 @@
 
 Nock subject to unit
 
-Accepts a nock subject-formula cell and wraps it into a [`++unit`]().
+Accepts a nock subject-formula cell and wraps it into a `++unit`.
 `fol` is pure nock, meaning that nock `11` operations result in a block,
 producing a `~`.
 
 Accepts
 -------
 
-`sub` is a subject [noun]().
+`sub` is a subject noun.
 
 `fol` is a formula noun, which is generally a `++nock`.
 
@@ -22,11 +22,12 @@ Source
 ------
 
     ++  mack
-      |=  [sub=* fol=*]
+      |=  {sub/* fol/*}
       ^-  (unit)
-      =+  ton=(mink [sub fol] |=(* ~))
-      ?.(?=([0 *] ton) ~ [~ p.ton])
+      =+  ton=(mink [sub fol] |=({* *} ~))
+      ?.(?=({$0 *} ton) ~ [~ p.ton])
     ::
+
 
 Examples
 --------
@@ -39,7 +40,7 @@ Examples
     ~
     ~zod/try=> (mack [[[0 2] [1 3]] 4 4 4 4 0 5])
     [~ 6]
-    ~zod/try=> ;;((unit ,@tas) (mack [[1 %yes %no] 6 [0 2] [0 6] 0 7]))
+    ~zod/try=> ;;((unit @tas) (mack [[1 %yes %no] 6 [0 2] [0 6] 0 7]))
     [~ %no]
 
 

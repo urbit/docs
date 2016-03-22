@@ -2,13 +2,13 @@
 
 Typed virtual
 
-Kicks a [`++trap`](), producing its results or any errors that occur along
+Kicks a `++trap`, producing its results or any errors that occur along
 the way. Used to lazily compute stack traces.
 
 Accepts
 -------
 
-`taq` is a [`++trap`](), generally producing a list of [`++tank`]()s.
+`taq` is a `++trap`, generally producing a list of `++tank`s.
 
 Produces
 --------
@@ -20,13 +20,14 @@ Source
 
     ++  mule                                                ::  typed virtual
       ~/  %mule
-      |*  taq=_|.(_*)
+      |*  taq/_|.(**)
       =+  mud=(mute taq)
       ?-  -.mud
-        &  [%& p=$:taq]
-        |  [%| p=p.mud]
+        $&  [%& p=$:taq]                                    ::  XX transition
+        $|  [%| p=p.mud]
       ==
     ::
+
 
 Examples
 --------

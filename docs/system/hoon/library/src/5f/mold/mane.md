@@ -3,7 +3,7 @@
 XML name
 
 An XML name (tag name or attribute name) with an optional namespace.  Parsed by
-[`++name`]() within [`++poxa`](), rendered by [`++name`]() within `++poxo`.
+`++name` within `++poxa`, rendered by `++name` within `++poxo`.
 
 Source
 ------
@@ -13,7 +13,7 @@ Source
 Examples
 --------
 
-See also: [`++sail`]()
+See also: `++sail`
 
     ~zod/try=> *mane
     %$

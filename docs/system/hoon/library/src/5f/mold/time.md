@@ -7,12 +7,12 @@ The `@da` odor designates an absolute date atom.
 Source
 ------
 
-        ++  time  ,@da                                          ::  galactic time
+        ++  time  @da                                          ::  galactic time
 
 Examples
 --------
 
-See also: [`++date`](), [odor reference]()
+See also: `++date`, odor reference
 
     ~zod/try=> `time`-<-
     ~2014.9.25..20.01.47..eeac
