@@ -2,7 +2,7 @@
 
 Render path as tape
 
-Renders a path `pax` as [tape]().
+Renders a path `pax` as tape.
 
 Accepts
 -------
@@ -10,12 +10,12 @@ Accepts
 Produces
 --------
 
-`pax` is a [`path`]().
+`pax` is a `path`.
 
 Source
 ------
 
-    ++  spud  |=(pax=path ~(ram re (smyt pax)))             ::  path to tape
+    ++  spud  |=(pax/path ~(ram re (smyt pax)))             ::  path to tape
 
 Examples
 --------

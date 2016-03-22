@@ -2,7 +2,7 @@
 
 Parse span to path
 
-Parsing rule. Parses a span `zep` to a static [`++path`](/doc/hoon/library/1#++path).
+Parsing rule. Parses a span `zep` to a static `++path`.
 
 Accepts
 -------
@@ -13,9 +13,10 @@ Produces
 Source
 ------
 
-    ++  stab                                                ::  parse span to path
-      |=  zep=@ta  ^-  path
-      (rash zep ;~(pfix fas ;~(sfix (more fas urs:ab) fas)))
+    ++  stab                                                ::  parse cord to path
+      =+  fel=;~(pfix fas (more fas urs:ab))
+      |=(zep/@t `path`(rash zep fel))
+
 
 Examples
 --------
