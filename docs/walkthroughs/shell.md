@@ -8,8 +8,6 @@ title: Shell
 
 The dojo is a typed functional shell.
 
-(Goals of a REPL+IFTTT, hood)
-
 ## Quickstart
 
 Evaluate a hoon expression:
@@ -53,7 +51,7 @@ Sources can be chained together, but we can only produce one effect per command.
 
 ### Sinks
 
-### `=` - Set variable
+#### `=` - Set variable
 
 Set any envronment variable:
 
@@ -64,42 +62,80 @@ Set any envronment variable:
 
 (There are a few special variables that the dojo expects.  See below.)
 
-### `:` - Send to app
+#### `:` - Send to app
+
+`:app` goes to a local `app`, `:~ship/app` goes to the `app` on `~ship`.
+
+Send a `helm-hi` message to `hood`:
 
     ~fintud-macrep:dojo> :hood &helm-hi 'hi'
 
-### `*` - Save in `%clay`
+App usually expect marked data, so `&` is often used here.  
+
+#### `*` - Save in `%clay`
+
+Save a new `md` file in `web`:
 
     ~fintud-macrep:dojo> *%/web/foo/md '# hello'
 
-### `.` - Download to Unix
+The last component of the path is expected to be the mark (or mime type).
+
+#### `.` - Download to Unix
 
 Download a noun to Unix with `.`:
 
     ~fintud-macrep:dojo> .foo/bar/baz (add 2 2)
 
+Which creates a file at `pier/.urb/put/foo/bar.baz`.
+
+This is very often used with `+solid`:
+
+    ~fintud-macrep:dojo> .urbit/pill +solid
+
+Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`
+
 ### Sources
 
-### `&` - Mark conversion
+#### `&` - Mark conversion
 
-### `_` - Run a function
+Convert between marks using `&`:
 
-    _trip &html &md 'foo'
+    ~fintud-macrep:dojo> &html &md '# hello'
+    :: produces
+    '<html><head></head><body><div><h1 id="-hello">hello</h1></div></body></html>'
 
-### `+` `-` - HTTP requests
+#### `_` - Run a function
 
-    +http://google.com is get
-    +http://google.com &json (joba %a ~) is post {a:null} 
-    -http://localhost:6000/foobar &json (joba %a ~) is put {a:null}
+Use `_` to run a gate (or function):
 
-    +curl "http://google.com?q={(urle "my params")}"
-    the trivial generator that sends a get request, the baseline on which you could write a scraper
+    :: assign an arbitrary function and pass data to it
+    ~fintud-macrep:dojo> _|=({a/@} (mul a 3)) 3
+    :: produces
+    9
+    :: assign an arbitrary function to get the status code from an http request
+    ~fintud-macrep:dojo> _|=({p/@ud q/* r/*} p) +http://google.com
+    :: produces
+    301
 
-### `+` - Generators
+#### `+` `-` - HTTP requests
 
-### `[1 2 +hello 'world']` - Tuples
+`+http[s]://example.com` - sends a GET request
 
-<h3 class="first child">Variables</h3>
+`+http[s]://example.com &json [%s 'hi']` - sends a POST request with the JSON `"hi"` in the body.
+
+`-http[s]://example.com &json [%s 'hi']` - sends a PUT request with the JSON `"hi"` in the body.
+
+#### `+` - Generators
+
+Generators are simple hoon scripts loaded from the filesystem.  They live in `gen/`.
+
+Create a random moon (from any planet):
+
+    ~fintud-macrep:dojo> +moon
+    :: produces
+    "moon: ~docsun-tamtem-fintud-macrep; ticket: ~bartug-hodbyr-fognum-ralmud"
+
+### Variables 
 
 You can use `=` to set an environment variable in `:dojo`, but there are a few reserved names that have special uses.  
 
@@ -145,7 +181,7 @@ The current (128-bit `@da`) time.  Read-only.
 **Example:**
 
     ~fintud-macrep:dojo> now
-
+    :: produces
     ~2016.3.21..21.10.57..429a
 
 #### `our`
@@ -155,7 +191,7 @@ The current urbit plot.  Read-only.
 **Example:**
 
     ~fintud-macrep:dojo> our
-
+    :: produces
     ~fintud-macrep
 
 #### `eny`
@@ -165,43 +201,63 @@ The current urbit plot.  Read-only.
 **Example:**
 
     ~fintud-macrep:dojo> eny
-
+    :: produces
     0v1o.m2vio.j5ieb.7tq84.5kcnp.gjn04.9gl2e.tkj5v.0oqk3.iugk8.rhu6o
 
-# Generators
+### Generators
 
-#### `+cat`
+**`+cat`** - Similar to Unix `cat`.  Accepts a path.
 
-#### `+curl` / `+curl-hiss`
+    ~fintud-macrep:dojo> +cat %/web/md
+    ~fintud-macrep:dojo> +cat /~talsur-todres/home/2/web/notes/md
 
-#### `+hello`
+**`+curl`** - Similar to Unix `curl`.  Accepts a `tape`.
 
-#### `+ls`
+    ~fintud-macrep:dojo> +curl "http://nyt.com"
 
-#### `+moon`
+**`+hello`** - Just prints the argument.  Accepts a `@ta`.
 
-#### `+pope`
+    ~fintud-macrep:dojo> +hello 'mars'
 
-#### `+solid`
+**`+ls`** - Similar to Unix `ls`.  Accepts a path.
 
-#### `+ticket`
+    ~fintud-macrep:dojo> +ls %/web
+    ~fintud-macrep:dojo> +ls /~talsur-todres/home/2/web/notes
 
-#### `+tree`
+**`+moon`** - Generate a random moon from a planet.  No arguments.
 
-# Hood
+**`+solid`** - Compile the current state of the kernel and output a noun.  Usually downloaded to a file in unix.  No arguments.
+    
+    ~fintud-macrep:dojo> .urbit/pill +solid
 
-`|hi`
+**`+ticket`** - Generate a ticket for an Urbit plot.  Takes an Urbit name (`@p`).
 
-`|ask`
+    ~fintud-macrep:dojo> +ticket ~talsur-todres-fintud-macrep
 
-`|begin`
+**`+tree`** - Generate a recursive directory listing.  Takes a path.
 
-`|link` / `|unlink`
+    ~fintud-macrep:dojo> +tree %/web
 
-`|mass`
+### Hood
 
-`|reload`
+The hood is the system daemon.  See `gen/hood` and `app/hood`.
 
-`|reset`
+**`|hi`** - Sends a direct message.  Sort of like `finger`.  Accepts an urbit name (`@p`) and a string (`cord`).
 
-`|start`
+    ~fintud-macrep:dojo> |hi ~doznec 'you there?'
+
+**`|link`** / **`|unlink`** - Link / unlink a remote app.  Accepts an Urbit name and an app name.
+
+    ~fintud-macrep:dojo> |link ~talsur-todres %octo
+
+**`|mass`** - Prints the current memory usage of all the kernel modules.  No arguments.
+
+**`|reload`** - Reloads a kernel module (vane) from source.  Accepts any number of vane names.
+
+    ~fintud-macrep:dojo> |reload %clay %eyre
+
+**`|reset`** - Reloads `hoon.hoon`.  No arguments.
+
+**`|start`** - Starts an app.  Accepts an app name.
+
+    ~fintud-macrep:dojo> |start %curl
