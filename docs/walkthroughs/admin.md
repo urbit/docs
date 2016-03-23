@@ -9,7 +9,7 @@ title: Basic operation
 <div class="row">
 <div class="col-md-8">
 
-Here we'll cover the basic administrative tasks you'll encounter running your Urbit and the primary interfaces to control it.  
+Your Urbit is a persistent Unix process that you mainly control from the console.  For some things, a browser will also work. 
 
 </div>
 </div>
@@ -32,7 +32,7 @@ or
 
 Your Urbit terminal is separated into two parts: the prompt (the bottom line) and the record (everything above that).  The record is shared; all the output from all the apps in your command set appears in it.  The prompt is multiplexed.
 
-One unusual part of the Urbit command line is that apps can process your input before you hit return.  In general, invalid input is rejected with a beep.  To see this in action try entering `)` as the first character at the `:dojo` prompt.
+In the CLI Urbit apps can process your input before you hit return.  To see this in action try entering `)` as the first character at the `:dojo` prompt.
 
 `^X` - Switches the prompt between running console apps
 
@@ -58,15 +58,14 @@ The following emacs-style key bindings are available:
     ^U    kill to beginning of line
     ^Y    yank from kill buffer
 
-Full coverage of the Urbit shell is covered in the [Shell walkthrough](/docs/walkthroughs/dojo).
+Full coverage of the Urbit shell, the `:dojo` is covered in the [Shell walkthrough](/docs/walkthroughs/dojo).
 
 ## Web
 
-On startup Urbit tries to bind to `localhost:8080`.  If you're already running something on `8080` you'll find your Urbit on `8081`, and so on.  For planets only, we also proxy web domains through Urbit's own servers.  Any planet `~fintud-macrep` is also at
-`fintud-macrep.urbit.org`.  Please use this proxy as little as
-possible; it's not well-optimized.
+On startup Urbit tries to bind to `localhost:8080`.  If you're already running something on `8080` you'll find your Urbit on `8081`, and so on.  For planets only, we also proxy web domains through Urbit's own servers.  Any planet `~your-urbit` is also at
+`your-urbit.urbit.org`.
 
-Your Urbit serves a simple homepage from `http://localhost:8080` or `https://fintud-macrep.urbit.org` that should be self-explanatory.  Since our HTTPS isn't audited / battle tested we just call it "secure" HTTPS.  You can find that on `8443`.  Or `8444` (and so on) if you're already running something on `8443`.
+Your Urbit serves a simple homepage from `http://localhost:8080` or `https://your-urbit.urbit.org` that should be self-explanatory.  Since our HTTPS isn't audited / battle tested we just call it "secure" HTTPS.  You can find that on `8443`.  Or `8444` (and so on) if you're already running something on `8443`.
 
 A complete walkthrough of the Urbit web interface is [here](/docs/walkthroughs/web).
 
@@ -76,7 +75,7 @@ Urbit namespace is distributed by having parent nodes sign the keys for child no
 
 To generate a random moon from your planet run:
 
-    ~fintud-macrep:dojo> +moon
+    ~your-urbit:dojo> +moon
 
 You can use the resulting output in the same installation flow from [install](/install).  
 
@@ -86,9 +85,9 @@ Moons are automatically synced to their parent `%kids` desk, and can control app
 
 Piers are designed to be portable, but it *must* be done while the Urbit is turned off.  Urbit networking is stateful, so you can't run two copies of the same Urbit in two places.  
 
-To move a pier, simply move the contents of the directory it lives in.  To keep these files as small as possible we usually use the `--sparse` option in `tar`.  With a pier `fintud-macrep/` something like this (from inside `urbit/`) should work:
+To move a pier, simply move the contents of the directory it lives in.  To keep these files as small as possible we usually use the `--sparse` option in `tar`.  With a pier `your-urbit/` something like this (from inside `urbit/`) should work:
 
-    tar -Scvzf fintud-macrep.tar.gz ./fintud-macrep/
+    tar -Scvzf your-urbit.tar.gz ./your-urbit/
 
 ## Continuity breaches
 

@@ -4,48 +4,44 @@ sort: 3
 title: Filesystem
 ---
 
+<div class="row">
+<div class="col-md-8">
+
 # `%clay` (Filesystem)
 
-Urbit has its own revision-controlled filesystem, the `%clay`
-vane.  `%clay` is a typed, global revision-control system.  Or in other
-words, a typed, global referentially transparent namespace.
-
-In kernel and userspace code, you can use the Hoon `.^` rune
-to *dereference* this namespace and treat any data in it as a constant.  In userspace code, a
-generator will even *block* until the resource is available.
-
-Another global immutable namespace is IPFS.  But IPFS is
-distributed, whereas `%clay` is just decentralized.  IPFS stores
-resources around the network in a DHT, like Freenet or
-Bittorrent; `%clay` stores resources on the publisher's server,
-like HTTP or git.
+Urbit has its own revision-controlled filesystem, `%clay`.  `%clay` is a typed, global, referentially transparent namespace.  An easy way to think about it is like typed `git` with continuous sync.
 
 The most common way to use `%clay` is to mount a `%clay` node in
 a Unix directory.  The Urbit process will watch this directory
 and automatically record edits as changes, Dropbox style.  The
 mounted directory is always at the root of your pier directory.
 
+</div>
+</div>
+
 ## Quickstart
 
-Most of the time we want to use `%clay` from Unix.  
+When developing it's a good idea to use a separate desk.
 
-Mount the entire contents of your `home` desk to Unix:
+Create a `%sandbox` desk based on the `%home` desk:
 
-    ~fintud-macrep:dojo>|mount %
+    |merge %sandbox ~your-urbit %home
+
+Most of the time we want to use `%clay` from Unix.   
+
+Mount the entire contents of your `sandbox` desk to Unix:
+
+    ~your-urbit:dojo> |mount /=sandbox=
 
 To explore the filesystem from inside Urbit `+ls` and `+cat` are useful:
 
-    ~fintud-macrep:dojo> +ls /=home=/web
+    ~your-urbit:dojo> +ls /=sandbox=/web
 
-Let's see the contents of `/=home=/web/md`:
+Let's see the contents of `/=sandbox=/web/md`:
 
-    ~fintud-macrep:dojo> +cat /=home=/web/md
+    ~your-urbit:dojo> +cat /=sandbox=/web/md
 
-Create a new desk:
-
-    |merge %sandbox ~fintud-macrep %sandbox
-
-Sync it with a remote desk on the network:
+Sync with a remote desk on the network:
 
     |sync %sandbox ~wactex-ribmex %examples
 
@@ -67,7 +63,7 @@ If the default path is `/foo/bar/baz`, `/=/moo` means `/foo/moo`,
 and `/=/moo/=/goo` means `/foo/moo/baz/goo`.  Also, instead of
 `/=/=/zoo` or `/=/=/=/voo`, write `/==zoo` or `/===voo`.
 
-Most commonly this is used to avoid having to know the current revision number in the `dojo`.  Instead of writing `/~fintud-macrep/home/4/path/to/file` you can just write `/=home=/path/to/file`.
+Most commonly this is used to avoid having to know the current revision number in the `dojo`.  Instead of writing `/~your-urbit/home/4/path/to/file` you can just write `/=home=/path/to/file`.
 
 ### Revision-control
 

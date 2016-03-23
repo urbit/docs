@@ -11,13 +11,11 @@ title: Talk manual
 
 `:talk` is the Urbit messaging and notifications protocol.  Today we use `:talk` to chat and coordinate.  Come join us in `/urbit-meta` by using the [quickstart](#-quickstart) below.
 
-Today chat is sort of like a distributed, encrypted Slack that can be used from the CLI and the browser.  This is the simplest, most immediate use for `:talk`, but we hope it can become much more than just persistent IRC.  `:talk` is a general purpose tool for both aggregating and publishing heterogenous streams of messages.  Applications can use `:talk` as their transport protcol, API connectors can push disparate data sources into `:talk`, and so on. There are lots of things a distributed message protocol can be used for that we haven't even thought of.
+Today chat is sort of like a distributed, encrypted Slack that can be used from the CLI and the browser.  There’s no central `:talk` server.  Any Urbit can host one.
 
-`:talk`s design is similar in spirit to [nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol) the underlying protocol for Usenet.  Let's briefly outline the design: `:talk` messages are called ‘posts’.  Posts go to ‘stations’.  Any urbit can host or subscribe to any number of stations.  There’s no central `:talk` server.  Any Urbit can host one.  There are four kinds of station: a write-only `%mailbox` for direct messages, an invite-only `%party` for private conversation, a read-only `%journal` for curated content, and a public-access `%board` for general use.
+`:talk` is a general purpose tool for both aggregating and publishing streams of messages.  Applications can use `:talk` as their transport protcol, API connectors can push disparate data sources into `:talk`, and so on. There are lots of things a distributed message protocol can be used for that we haven't even thought of.
 
-There are two ways of using `:talk`: from the CLI or through a web interface available at `http://localhost:8080/talk` (or equivalent).  The web interface ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).
-
-The web interface doesn't expose *all* the functionality of the CLI, and it's more or less self-explanatory.  This document pertains primarily to the CLI.
+There are two ways of using `:talk`: from the CLI or through a web ui available at `http://your-urbit.urbit.org/talk` (or `http://localhost:8080/talk`).  The web ui ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).  
 
 </div>
 </div>
@@ -28,7 +26,7 @@ For the most part we use `:talk` as a single-instance of Slack.  There's one mai
 
 Let's join `/urbit-meta`:
 
-    ~fintud-macrep: ;join ~doznec/urbit-meta
+    ~your-urbit: ;join ~doznec/urbit-meta
 
 You'll see:
 
@@ -36,34 +34,38 @@ You'll see:
     ---------:talk| rules of /urbit-meta:
     ---------:talk|   don't be rude
     ---------:talk|   urbit-meta is politically correct and safe for work
-           ~doznec= ~fintud-macrep admitted to %urbit-meta
-    ~fintud-macrep:talk>
+           ~doznec= ~your-urbit admitted to %urbit-meta
+    ~your-urbit:talk>
 
 Post a line to `/urbit-meta`:
 
-    ~fintud-macrep:talk> hello, world
+    ~your-urbit:talk> hello, world
 
 You'll see, echoed back at you through `~doznec`:
 
-    ~fintud-macrep> hello, world
+    ~your-urbit> hello, world
 
 To send a direct message to someone, first set your audience:
 
-    ~fintud-macrep:talk> ;~talsur-todres
+    ~your-urbit:talk> ;~talsur-todres
 
 You'll see your prompt change:
 
-    ~fintud-macrep:talk[~talsur-todres]
+    ~your-urbit:talk[~talsur-todres]
 
 Now you and `~talsur-todres` can exchange messages directly.
 
 To set your audience back to `/urbit-meta`:
 
-    ~fintud-macrep:talk> ;~doznec/urbit-meta
-
-Those are the basics, and the rest is covered below.
+    ~your-urbit:talk> ;~doznec/urbit-meta
 
 ## Manual
+
+`:talk`s design is similar in spirit to [nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol) the underlying protocol for Usenet.  
+
+Our design is pretty simple: `:talk` messages are called ‘posts’.  Posts go to ‘stations’.  Any urbit can host or subscribe to any number of stations.  
+
+There are four kinds of station: a write-only `%mailbox` for direct messages, an invite-only `%party` for private conversation, a read-only `%journal` for curated content, and a public-access `%board` for general use.
 
 ### Posts
 
@@ -132,11 +134,11 @@ The audience you're sending to is always shown in your prompt.  If there's a gly
 
 Here we're talking to the station bound to `=`:
 
-    ~fintud-macrep:talk= 
+    ~your-urbit:talk= 
 
 Here we're talking directly to `~dannum-mitryl`:
 
-    ~fintud-macrep:talk(~dannum-mitryl) 
+    ~your-urbit:talk(~dannum-mitryl) 
 
 #### Configuration
 
@@ -167,16 +169,16 @@ configurations.
 
 `;nick` - list all nicknames
 
-`;nick ~fintud-macrep` - look up a nickname
+`;nick ~your-urbit` - look up a nickname
 
 `;nick plato` - search in reverse
 
-`;nick ~fintud-macrep plato` create a nickname
+`;nick ~your-urbit plato` create a nickname
 
-`;nick ~fintud-macrep ~` clear an assigned nickname
+`;nick ~your-urbit ~` clear an assigned nickname
 
 `;set noob` show nicknames instead of urbit names
 
 `;unset noob` show urbit names instead of nicknames
 
-All nicknames must be 14 characters or less, lowercase.  Nicknames are strictly local - like the names on entries in a phonebook.  Sometimes in a post you want to mention someone you know by a nickname.  Just type `~plato`, and `:talk` will replace it with `~fintud-macrep`.
+All nicknames must be 14 characters or less, lowercase.  Nicknames are strictly local - like the names on entries in a phonebook.  Sometimes in a post you want to mention someone you know by a nickname.  Just type `~plato`, and `:talk` will replace it with `~your-urbit`.

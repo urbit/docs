@@ -6,38 +6,91 @@ title: Web
 
 # Web
 
-General coverage of Urbit on the web.  Renderer -> file, main public facing files, and tree.  Then:
+<div class="row">
+<div class="col-md-8">
 
+Your Urbit runs its own webserver, `%eyre`, that handles all things HTTP.  Here we'll cover the features of `%eyre` that most resemble a traditional web server.
 
-## Tree
+By default `%eyre` uses Tree, which is sort of like a combination of Jekyll or Kirby and Finder on OSX.  Tree is a simple ui for browsing the contents of the filesystem, statically publishing a blog or any kind of content and for running single-page apps.  
 
-Tree is a simple publishing platform for files that live on your Urbit.  You're probably reading this file using Tree right now.  The main driving use-case for Tree has been for us to host our own documentation and the surrounding discussion.  Tree remains a pretty simple and flexible tool for getting content online.  We think it's pretty great.
+We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its own repo [here](https://github.com/urbit/tree).
 
-In spirit Tree is sort of like a combination of Jekyll and Finder: a simple static publishing tool and the basic UI for browsing the filesystem.  We take it one step further and make it possible to write modules (tiny little apps), like Talk and Dojo, that can be run directly inside of Tree.  
+</div>
+</div>
 
-In the browser Tree is a [React](https://facebook.github.io/react/) / [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) app that uses a slightly modifed version of [Bootstrap](http://getbootstrap.com/).  On your Urbit Tree is a set of renderers that translate data in `%clay`, our filesystem, into JSON / JSX that can be read by the client.  
+## Quickstart
 
-Your Urbit comes with a pre-built copy of the tree (as a single `.js` file).  If you're interested in helping to develop tree or learning about how it works, it has its own GitHub repo [here](https://github.com/urbit/tree).  We have our own fork of Bootstrap, which lives [here](https://github.com/urbit/bootstrap).
+Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running something at `8080`), or `http://your-urbit.urbit.org/`.
 
-You don't need to know anything about the tree implementation to use it, so we'll start with that and get further into the technical details as we get down the page. 
+(Make sure you have a desk mounted to unix, as covered in the [filesystem walkthrough](/filesystem))
 
-## Renderers
+To switch the desk you're serving from:
+
+    |serve %sandbox
+
+To host a file on the web try putting the following in `/home/web/test.md` (from Unix):
+    
+    # Hello
+
+    This is a simple markdown file.
+
+Create a folder with two more markdown files in it and copy it to `/home/web/test/`.
+
+Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
+
+    # Hello
+
+    This is a simple markdown file.
+
+    <div><list /></div>
+
+To view your file as raw `md`:
+
+    http://localhost:8080/test.md
+
+To view your file as raw `html`:
+
+    http://localhost:8080/test.html
+
+## Manual
 
 ## `/web`
 
-`|serve`
+This is the equivalent of a `public_html` directory.  Your Urbit looks in this directory to serve content to the world.  You can change what desk you're serving from using `|serve`.
+
+Switch to the `%sandbox` desk:
+
+    |serve %sandbox
+
+Let's quickly step through the default contents of `web/`:
+
+`404.hoon` - The default 404 page.
+`dojo.hoon` - Page body that loads the `dojo` React module.
+`lib/css/bootstrap.css` - The Urbit-flavored bootstrap
+`lib/css/codemirror.css` - Syntax highlighting
+`lib/css/fonts.css` - The Urbit custom fonts
+`lib/js/hoon.js` - Hoon syntax highlighting
+`lib/js/sole.js` - `dojo` operational transformation JS
+`lib/js/urb.js` - Base Urbit JS library.  Handles AJAX and polling.
+`static.md` - Sample static file
+`talk/` - Talk compiled JS / CSS
+`talk.hoon` - Page body that loads the `dojo` React module.
+`tree/` - Tree compiled JS / CSS
+`tree.hoon` - Page body that loads the `tree` React module.
+
+## Tree
+
+Tree is a simple publishing tool for files that live on your Urbit.  You're probably reading this file using Tree right now.  The main driving use-case for Tree has been for us to host our own documentation and the surrounding discussion.  Tree remains a pretty simple and flexible tool for getting content online.  We think it's pretty great.
+
+Tree is a simple static publishing tool and the basic UI for browsing the filesystem.  We take it one step further and make it possible to write modules (tiny little apps), like Talk and Dojo, that can be run directly inside of Tree.  
+
+In the browser Tree is a [React](https://facebook.github.io/react/) / [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) app that uses a slightly modifed version of [Bootstrap](http://getbootstrap.com/).  On your Urbit Tree is a renderer that translates data in `%clay`, our filesystem, into JSON / JSX that can be read by the client.  
+
+Your Urbit comes with a pre-built copy of the tree (as a single `.js` file).  If you're interested in helping to develop tree or learning about how it works, it has its own GitHub repo [here](https://github.com/urbit/tree).  We have our own fork of Bootstrap, which lives [here](https://github.com/urbit/bootstrap).
 
 ## Publishing files
 
-Assuming you have an Urbit desk mounted (if not see the [Filesystem Handbook](/walkthroughs/clay)), try opeing up `/web/static.md` in an editor and `http://localhost:8080/static` side by side. 
-
-It should be pretty obvious what's going on here.  Drop a markdown file anywhere in `/web` and we'll do the rest.
-
-### Simple blog
-
-From unix
-
-### Going further
+Publishing files in Tree is simple.  Try dropping a file in `/web` (as covered in the Quickstart) and navigating to it.
 
 The best example of more complicated usage of Tree is covered by the Urbit docs themselves.  See anything while perusing the docs that you'd like to use yourself?  The docs are all on GitHub [here](https://github.com/urbit/docs).
 

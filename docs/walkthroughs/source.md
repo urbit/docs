@@ -3,9 +3,15 @@ sort: 6
 title: Arvo source
 ---
 
+<div class="row">
+<div class="col-md-8">
+
 # Arvo source
 
 When you boot an Urbit we transfer the current version of the Arvo operating environment to your Urbit over our network.  That is, the source for the system lives on your Urbit.  Here we'll take a brief tour through the structure of a base Arvo desk.  
+
+</div>
+</div>
 
 Looking at the top level of [the Arvo repo](http://github.com/urbit/arvo), or any Urbit desk that has been mounted to Unix we see something like:
 
@@ -24,7 +30,7 @@ Let's step through directory by directory.
 
 ## `app/` 
 
-This is where `%gall` apps live.  `%gall` apps are stateful servers, sort of like unix daemons.  One very familiar one is `app/talk.hoon` which is the source code for `:talk` the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
+This is where `%gall` apps live.  `%gall` apps are stateful servers, sort of like unix daemons.  One familiar one is `app/talk.hoon` which is the source code for `:talk` the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
 
 ## `arvo/`
 
@@ -60,7 +66,7 @@ This is where the `%arvo` vanes live.  Vanes are sort of like kernel modules. Th
 
 ### `arvo/hoon.hoon`
 
-`%hoon` is our programming langauge.  Since Hoon compiles itself the language is actually specified in its source.
+`%hoon` is our programming langauge.  Since Hoon compiles itself the language is actually specified in this source file.
 
 ### `arvo/zuse.hoon`
 
@@ -70,7 +76,7 @@ That's it.  That's the whole system.
 
 ## `gen/`
 
-`gen/` holds generators.  Generators are command-line scripts.
+`gen/` holds generators.  Generators are short `:dojo` scripts.
 
 ## `lib/`
 
@@ -78,7 +84,7 @@ That's it.  That's the whole system.
 
 ## `mar/`
 
-This is where marks live.  Marks are data type definitions used by `%ford`.  A mark is like a mime-type, but precisely specified in executable code.  
+This is where marks live.  Marks are data type definitions used by `%ford`.  A mark is like a mime-type, but specified in executable code.  
 
 ## `ren/`
 
@@ -88,9 +94,7 @@ Default web requets in urbit are handled as a `.urb`, which is caught by the `ur
 
 ## `sur/`
 
-`sur/` contains shared data structures.  
-
-Files in `sur` are like headers in C.
+`sur/` contains shared data structures.  Files in `sur` are like header files in C.
 
 ## `web/`
 
@@ -98,5 +102,5 @@ There are the files publicly accessible to the web, as made possible by `%eyre`.
 
 ## `web.md`
 
-This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://your-urbit.urbit.org/`.
+This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://fintud-macrep.urbit.org/`.
 
