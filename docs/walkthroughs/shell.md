@@ -248,7 +248,7 @@ The current urbit plot.  Read-only.
 
 The hood is the system daemon.  See `gen/hood` and `app/hood`.
 
-**`|hi`** - Sends a direct message.  Sort of like `finger`.  Accepts an urbit name (`@p`) and a string (`cord`).
+**`|hi`** - Sends a direct message.  Sort of like Unix `write`.  Accepts an urbit name (`@p`) and a string (`cord`).
 
     ~your-urbit:dojo> |hi ~doznec 'you there?'
 
