@@ -2,14 +2,14 @@
 
 Check odor validity
 
-Check validity by [odor](). Produces a [gate]().
+Check validity by odor. Produces a gate.
 
 Accepts
 -------
 
-`a` is a [`++span`]() (`@ta`).
+`a` is a `++span` (`@ta`).
 
-`b` is an [atom]().
+`b` is an atom.
 
 Produces
 --------
@@ -20,8 +20,8 @@ Source
 ------
 
     ++  sane                                                ::  atom sanity
-      |=  a=@ta
-      |=  b=@  ^-  ?
+      |=  a/@ta
+      |=  b/@  ^-  ?
       ?.  =(%t (end 3 1 a))
         ~|(%sane-stub !!)
       =+  [inx=0 len=(met 3 b)]

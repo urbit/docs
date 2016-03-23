@@ -7,7 +7,7 @@ Decrements `a` by `1`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 Produces
 --------
@@ -19,14 +19,13 @@ Source
 
     ++  dec                                                 ::  decrement
       ~/  %dec
-      |=  a=@
+      |=  a/@
       ~|  %decrement-underflow
       ?<  =(0 a)
       =+  b=0
       |-  ^-  @
       ?:  =(a +(b))  b
       $(b +(b))
-    ::
 
 Examples
 --------

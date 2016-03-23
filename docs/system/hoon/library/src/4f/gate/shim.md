@@ -2,7 +2,7 @@
 
 Char in range
 
-Match characters ([`++char`]()) within a range.
+Match characters (`++char`) within a range.
 
 Accepts
 -------
@@ -14,16 +14,16 @@ Accepts
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  shim                                                ::  match char in range
       ~/  %shim
-      |=  [les=@ mos=@]
+      |=  {les/@ mos/@}
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       ^-  (like char)
       ?~  q.tub
         (fail tub)

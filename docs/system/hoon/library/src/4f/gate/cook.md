@@ -3,28 +3,28 @@
 Apply gate
 
 Parser modifier. Produces a parser that takes a (successful) result of a
-[`++rule`]() `sef` and slams it through `poq`.
+`++rule` `sef` and slams it through `poq`.
 
 Accepts
 -------
 
-`poq` is a [gate]().
+`poq` is a gate.
 
-`sef` is a [`++rule`]().
+`sef` is a `++rule`.
 
 Produces
 --------
 
-An [`++rule`]().
+An `++rule`.
 
 Source
 ------
 
     ++  cook                                                ::  apply gate
       ~/  %cook
-      |*  [poq=_,* sef=_rule]
+      |*  {poq/$-(* *) sef/rule}
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       =+  vex=(sef tub)
       ?~  q.vex
         vex

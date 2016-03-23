@@ -7,12 +7,13 @@ Optional result `p` and parsing continuation `q`.
 Source
 ------
 
-        ++  edge  ,[p=hair q=(unit ,[p=* q=nail])]              ::  parsing output
+            ++  hair  {p/@ud q/@ud}                                 ::  parsing trace
+
 
 Examples
 --------
 
-See also: Section 2eD, [`++rule`]()
+See also: Section 2eD, `++rule`
 
     ~zod/try=> *edge
     [p=[p=0 q=0] q=~]

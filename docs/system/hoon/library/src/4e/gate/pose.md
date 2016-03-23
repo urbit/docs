@@ -3,14 +3,14 @@
 Parse options
 
 Parsing composer: if `vex` reflects a failure, connect it with the
-following rule `sab`. See also: the monad applicator [;\~]()
+following rule `sab`. See also: the monad applicator ;\~
 
 Accepts
 -------
 
-`sab` is a [`++rule`]().
+`sab` is a `++rule`.
 
-`vex` is an [`++edge`]().
+`vex` is an `++edge`.
 
 Produces
 --------
@@ -22,11 +22,13 @@ Source
 
     ++  pose                                                ::  first or second
       ~/  %pose
-      |*  [vex=edge sab=_rule]
+      |*  {vex/edge sab/rule}
       ?~  q.vex
         =+  roq=(sab)
         [p=(last p.vex p.roq) q=q.roq]
       vex
+    ::
+
 
 Examples
 --------

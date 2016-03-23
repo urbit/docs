@@ -1,8 +1,8 @@
 ### `++shan`
 
     ++  shan                                                ::  sha-1 (deprecated)
-      |=  ruz=@
-      =+  [few==>(fe .(a 5)) wac=|=([a=@ b=@] (cut 5 [a 1] b))]
+      |=  ruz/@
+      =+  [few==>(fe .(a 5)) wac=|=({a/@ b/@} (cut 5 [a 1] b))]
       =+  [sum=sum.few ror=ror.few rol=rol.few net=net.few inv=inv.few]
       =+  ral=(lsh 0 3 (met 3 ruz))
       =+  ^=  ful
@@ -65,6 +65,7 @@
             :(sum (rol 0 5 a) fz e (wac 2 kbx) (wac j wox))
           :(sum (rol 0 5 a) fy e (wac 3 kbx) (wac j wox))
       $(j +(j), a tem, b a, c (rol 0 30 b), d c, e d)
+    ::
 
 XX document
 

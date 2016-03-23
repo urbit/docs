@@ -2,19 +2,19 @@
 
 Compute formula on subject with hint
 
-Produces a [`++toon`](), which is either a sucessful, blocked, or
+Produces a `++toon`, which is either a sucessful, blocked, or
 crashed result. If nock 11 is invoked, `sky` computes on the subject and
-produces a [`++unit`]() result. An empty result becomes a `%1` `++tune`,
+produces a `++unit` result. An empty result becomes a `%1` `++tune`,
 indicating a block.
 
 Accepts
 -------
 
-`sub` is the subject as a [noun]().
+`sub` is the subject as a noun.
 
 `fol` is the formula as a noun.
 
-`sky` is an [%iron]() gate invoked with [nock operator 11]().
+`sky` is an %iron gate invoked with nock operator 11.
 
 Produces
 --------
@@ -25,9 +25,10 @@ Source
 ------
 
     ++  mock
-      |=  [[sub=* fol=*] sky=$+(* (unit))]
-      (mook (mink [sub fol] sky))
+      |=  {{sub/* fol/*} gul/$-({* *} (unit (unit)))}
+      (mook (mink [sub fol] gul))
     ::
+
 
 Examples
 --------

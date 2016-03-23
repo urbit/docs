@@ -2,8 +2,8 @@
 
 Tree head
 
-Tests whether an `a` is in the head or tail of a [noun](). Produces the
-[cube]() `%2` if it is within the head, or the cube `%3` if it is
+Tests whether an `a` is in the head or tail of a noun. Produces the
+cube `%2` if it is within the head, or the cube `%3` if it is
 within the tail.
 
 Accepts
@@ -14,22 +14,22 @@ Accepts
 Produces
 --------
 
-A [cube]().
+A cube.
 
 Source
 ------
 
-    ++  cap                                                 ::  tree head
-      ~/  %cap
-      |=  a=@
-      ^-  ?(%2 %3)
-      ?-  a
-        %2        %2
-        %3        %3
-        ?(%0 %1)  !!
-        *         $(a (div a 2))
-      ==
-    ::
+        ++  cap                                                 ::  tree head
+          ~/  %cap
+          |=  a=@
+          ^-  ?(%2 %3)
+          ?-  a
+            %2        %2
+            %3        %3
+            ?(%0 %1)  !!
+            *         $(a (div a 2))
+          ==
+        ::
 
 Examples
 --------

@@ -2,7 +2,7 @@
 
 Always parse
 
-Parser generator. Produces a parser that succeeds with given [noun]() `huf`
+Parser generator. Produces a parser that succeeds with given noun `huf`
 without consuming any text.
 
 Accepts
@@ -13,7 +13,7 @@ Accepts
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------

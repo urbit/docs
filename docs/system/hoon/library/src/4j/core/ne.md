@@ -2,7 +2,7 @@
 
 Digit rendering engine
 
-A [door]() containing arms that render digits at bases 10, 16, 32, and
+A door containing arms that render digits at bases 10, 16, 32, and
 64.
 
 Accepts
@@ -11,13 +11,13 @@ Accepts
 Produces
 --------
 
-`tig` is an [`atom`]().
+`tig` is an `atom`.
 
 Source
 ------
 
     ++  ne
-      |_  tig=@
+      |_  tig/@
 
 Examples
 --------
@@ -39,7 +39,7 @@ Accepts
 Produces
 --------
 
-`tig` is an [`atom`]().
+`tig` is an `atom`.
 
 Source
 ------
@@ -66,7 +66,7 @@ Accepts
 Produces
 --------
 
-`tig` is an [`atom`]().
+`tig` is an `atom`.
 
 Source
 ------
@@ -124,7 +124,7 @@ Accepts
 Produces
 --------
 
-`tig` is an [`atom`]().
+`tig` is an `atom`.
 
 Source
 ------

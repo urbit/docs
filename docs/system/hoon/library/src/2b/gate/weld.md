@@ -2,23 +2,24 @@
 
 Concatenate
 
-Concatenate two [`++list`]()s `a` and `b`.
+Concatenate two `++list`s `a` and `b`.
 
 Accepts
 -------
 
-`a` and `b` are [list]()s.
+`a` and `b` are lists.
 
 Source
 ------
 
     ++  weld                                                ::  concatenate
       ~/  %weld
-      |*  [a=(list) b=(list)]
+      |*  {a/(list) b/(list)}
       =>  .(a ^.(homo a), b ^.(homo b))
       |-  ^+  b
       ?~  a  b
       [i.a $(a t.a)]
+
 
 Examples
 --------

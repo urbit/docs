@@ -2,13 +2,13 @@
 
 Index
 
-Accepts an atom `a` and a [`++list`]() `b`, producing the element at the index
+Accepts an atom `a` and a `++list` `b`, producing the element at the index
 of `a`and failing if the list is null. Lists are 0-indexed.
 
 Accepts
 -------
 
-`b` is a [list]().
+`b` is a list.
 
 Produces
 --------
@@ -20,12 +20,13 @@ Source
 
     ++  snag                                                ::  index
       ~/  %snag
-      |*  [a=@ b=(list)]
+      |*  {a/@ b/(list)}
       |-
       ?~  b
         ~|('snag-fail' !!)
       ?:  =(0 a)  i.b
       $(b t.b, a (dec a))
+
 
 Examples
 --------

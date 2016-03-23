@@ -1,42 +1,42 @@
 ### `++po`
 
-++  po
-  ~/  %po
-  =+  :-  ^=  sis                                       ::  prefix syllables
-      'dozmarbinwansamlitsighidfidlissogdirwacsabwissib\
-      /rigsoldopmodfoglidhopdardorlorhodfolrintogsilmir\
-      /holpaslacrovlivdalsatlibtabhanticpidtorbolfosdot\
-      /losdilforpilramtirwintadbicdifrocwidbisdasmidlop\
-      /rilnardapmolsanlocnovsitnidtipsicropwitnatpanmin\
-      /ritpodmottamtolsavposnapnopsomfinfonbanporworsip\
-      /ronnorbotwicsocwatdolmagpicdavbidbaltimtasmallig\
-      /sivtagpadsaldivdactansidfabtarmonranniswolmispal\
-      /lasdismaprabtobrollatlonnodnavfignomnibpagsopral\
-      /bilhaddocridmocpacravripfaltodtiltinhapmicfanpat\
-      /taclabmogsimsonpinlomrictapfirhasbosbatpochactid\
-      /havsaplindibhosdabbitbarracparloddosbortochilmac\
-      /tomdigfilfasmithobharmighinradmashalraglagfadtop\
-      /mophabnilnosmilfopfamdatnoldinhatnacrisfotribhoc\
-      /nimlarfitwalrapsarnalmoslandondanladdovrivbacpol\
-      /laptalpitnambonrostonfodponsovnocsorlavmatmipfap'
-      ^=  dex                                           ::  suffix syllables
-      'zodnecbudwessevpersutletfulpensytdurwepserwylsun\
-      /rypsyxdyrnuphebpeglupdepdysputlughecryttyvsydnex\
-      /lunmeplutseppesdelsulpedtemledtulmetwenbynhexfeb\
-      /pyldulhetmevruttylwydtepbesdexsefwycburderneppur\
-      /rysrebdennutsubpetrulsynregtydsupsemwynrecmegnet\
-      /secmulnymtevwebsummutnyxrextebfushepbenmuswyxsym\
-      /selrucdecwexsyrwetdylmynmesdetbetbeltuxtugmyrpel\
-      /syptermebsetdutdegtexsurfeltudnuxruxrenwytnubmed\
-      /lytdusnebrumtynseglyxpunresredfunrevrefmectedrus\
-      /bexlebduxrynnumpyxrygryxfeptyrtustyclegnemfermer\
-      /tenlusnussyltecmexpubrymtucfyllepdebbermughuttun\
-      /bylsudpemdevlurdefbusbeprunmelpexdytbyttyplevmyl\
-      /wedducfurfexnulluclennerlexrupnedlecrydlydfenwel\
-      /nydhusrelrudneshesfetdesretdunlernyrsebhulryllud\
-      /remlysfynwerrycsugnysnyllyndyndemluxfedsedbecmun\
-      /lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes'
-  |%
+    ++  po
+      ~/  %po
+      =+  :-  ^=  sis                                       ::  prefix syllables
+          'dozmarbinwansamlitsighidfidlissogdirwacsabwissib\
+          /rigsoldopmodfoglidhopdardorlorhodfolrintogsilmir\
+          /holpaslacrovlivdalsatlibtabhanticpidtorbolfosdot\
+          /losdilforpilramtirwintadbicdifrocwidbisdasmidlop\
+          /rilnardapmolsanlocnovsitnidtipsicropwitnatpanmin\
+          /ritpodmottamtolsavposnapnopsomfinfonbanporworsip\
+          /ronnorbotwicsocwatdolmagpicdavbidbaltimtasmallig\
+          /sivtagpadsaldivdactansidfabtarmonranniswolmispal\
+          /lasdismaprabtobrollatlonnodnavfignomnibpagsopral\
+          /bilhaddocridmocpacravripfaltodtiltinhapmicfanpat\
+          /taclabmogsimsonpinlomrictapfirhasbosbatpochactid\
+          /havsaplindibhosdabbitbarracparloddosbortochilmac\
+          /tomdigfilfasmithobharmighinradmashalraglagfadtop\
+          /mophabnilnosmilfopfamdatnoldinhatnacrisfotribhoc\
+          /nimlarfitwalrapsarnalmoslandondanladdovrivbacpol\
+          /laptalpitnambonrostonfodponsovnocsorlavmatmipfap'
+          ^=  dex                                           ::  suffix syllables
+          'zodnecbudwessevpersutletfulpensytdurwepserwylsun\
+          /rypsyxdyrnuphebpeglupdepdysputlughecryttyvsydnex\
+          /lunmeplutseppesdelsulpedtemledtulmetwenbynhexfeb\
+          /pyldulhetmevruttylwydtepbesdexsefwycburderneppur\
+          /rysrebdennutsubpetrulsynregtydsupsemwynrecmegnet\
+          /secmulnymtevwebsummutnyxrextebfushepbenmuswyxsym\
+          /selrucdecwexsyrwetdylmynmesdetbetbeltuxtugmyrpel\
+          /syptermebsetdutdegtexsurfeltudnuxruxrenwytnubmed\
+          /lytdusnebrumtynseglyxpunresredfunrevrefmectedrus\
+          /bexlebduxrynnumpyxrygryxfeptyrtustyclegnemfermer\
+          /tenlusnussyltecmexpubrymtucfyllepdebbermughuttun\
+          /bylsudpemdevlurdefbusbeprunmelpexdytbyttyplevmyl\
+          /wedducfurfexnulluclennerlexrupnedlecrydlydfenwel\
+          /nydhusrelrudneshesfetdesretdunlernyrsebhulryllud\
+          /remlysfynwerrycsugnysnyllyndyndemluxfedsedbecmun\
+          /lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes'
+      |%
 
 Provides the phonetic syllables and name generators for the Urbit naming
 system. The two faces, `sis` and `dex` are available to the arms
@@ -54,20 +54,20 @@ Produces the byte of the right-hand syllable `a`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 Produces
 --------
 
-A [`++unit`]() of an atom.
+A `++unit` of an atom.
 
 Source
 ------
 
-      ++  ind  ~/  %ind                                     ::  parse prefix
-               |=  a=@
+      ++  ind  ~/  %ind                                     ::  parse suffix
+               |=  a/@tas
                =+  b=0
-               |-  ^-  (unit ,@)
+               |-  ^-  (unit @)
                ?:(=(256 b) ~ ?:(=(a (tod b)) [~ b] $(b +(b))))
 
 Examples
@@ -91,20 +91,21 @@ Produces the byte of the left-hand phonetic syllable `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 Produces
 --------
-A [`++unit`]() of an atom.
+A `++unit` of an atom.
 
 Source
 ------
 
-      ++  ins  ~/  %ins                                     ::  parse suffix
-               |=  a=@
+      ++  ins  ~/  %ins                                     ::  parse prefix
+               |=  a/@tas
                =+  b=0
-               |-  ^-  (unit ,@)
+               |-  ^-  (unit @)
                ?:(=(256 b) ~ ?:(=(a (tos b)) [~ b] $(b +(b))))
+
 
 Examples
 --------
@@ -125,7 +126,7 @@ Examples
 Fetch prefix
 
 Produces the phonetic prefix syllable from index `a` within `dex` as an
-[atom]().
+atom.
 
 Accepts
 -------
@@ -141,8 +142,10 @@ An atom.
 Source
 ------
 
-      ++  tod  ~/  %tod                                     ::  fetch prefix
-               |=(a=@ ?>((lth a 256) (cut 3 [(mul 3 a) 3] dex)))
+      ++  tod  ~/  %tod                                     ::  fetch suffix
+               |=(a/@ ?>((lth a 256) (cut 3 [(mul 3 a) 3] dex)))
+
+
 
 Examples
 --------
@@ -167,7 +170,7 @@ Examples
 Fetch suffix
 
 Produces the phonetic prefix syllable from index `a` within `sis` as an
-[atom]().
+atom.
 
 Accepts
 -------
@@ -183,7 +186,7 @@ Source
 ------
 
       ++  tos  ~/  %tos                                     ::  fetch suffix
-               |=(a=@ ?>((lth a 256) (cut 3 [(mul 3 a) 3] sis)))
+               |=(a/@ ?>((lth a 256) (cut 3 [(mul 3 a) 3] sis)))
 
 Examples
 --------

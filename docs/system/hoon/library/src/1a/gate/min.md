@@ -7,7 +7,7 @@ Computes the lesser of `a` and `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,12 +21,11 @@ Source
 
     ++  min                                                 ::  minimum
       ~/  %min
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       ^-  @
       ?:  (lth a b)  a
       b
-    ::
-
+        
 Examples
 --------
 

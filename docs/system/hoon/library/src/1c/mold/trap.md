@@ -2,17 +2,16 @@
 
 Core with one arm `$`
 
-A trap is a core with one arm `++$`. Used when XX
+A trap is a core with one arm `++$`.
 
 Source
 ------
 
-        ++  trap  ,_|.(_*)                                      ::  makes perfect sense
+    ++  trap  |*(a/_* _|?(*a))                        ::  makes perfect sense
+
 
 Examples
 --------
-
-See also: `|.`
 
     ~zod/try=> *trap
     <1.mws 101.jzo 1.ypj %164>

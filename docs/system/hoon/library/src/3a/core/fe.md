@@ -7,22 +7,22 @@ Core containing XX
 Accepts
 -------
 
-`a` is a [`++bloq`]().
+`a` is a `++bloq`.
 
 Source
 ------
 
-  |_  a=bloq
+    |_  a=bloq
 
 ### `++dif`
 
-Produces the difference between two [atom]()s in the modular basis
+Produces the difference between two atoms in the modular basis
 representation.
 
 Accepts
 -------
 
-`a` is a [`++bloq`]().
+`a` is a `++bloq`.
 
 `b` is an atom.
 
@@ -31,12 +31,12 @@ Accepts
 Produces
 --------
 
-A [`@s`]()
+A `@s`
 
 Source
 ------
 
-      ++  dif  |=([b=@ c=@] (sit (sub (add out (sit b)) (sit c))))
+      ++  dif  |=([b/@ c/@] (sit (sub (add out (sit b)) (sit c))))
 
 Examples
 --------
@@ -69,7 +69,7 @@ Inverts the order of the modular field.
 Accepts
 -------
 
-`b` is a [`++bloq`]().
+`b` is a `++bloq`.
 
 Produces
 --------
@@ -80,7 +80,7 @@ An atom.
 Source
 ------
 
-      ++  inv  |=(b=@ (sub (dec out) (sit b)))
+      ++  inv  |=(b/@ (sub (dec out) (sit b)))
 
 Examples
 --------
@@ -109,17 +109,17 @@ Revereses bytes within block.
 Accepts
 -------
 
-`b` is a [`++bloq`]().
+`b` is a `++bloq`.
 
 Produces
 --------
 
-An atom.=
+An atom.
 
 Source
 ------
 
-      ++  net  |=  b=@  ^-  @
+      ++  net  |=  b/@  ^-  @
                =>  .(b (sit b))
                ?:  (lte a 3)
                  b
@@ -189,12 +189,12 @@ The maximum integer value that the current block can store.
 Accepts
 -------
 
-A [`++bloq`](). 
+A `++bloq`. 
 
 Produces
 --------
 
-An [atom]().
+An atom.
 
 Source
 ------
@@ -234,7 +234,7 @@ Roll `d` to the left by `c` `b`-sized blocks.
 Accepts
 -------
 
-`a` is a [`++bloq`]().
+`a` is a `++bloq`.
 
 `b` is a `++bloq`.
 
@@ -250,7 +250,7 @@ An atom.
 Source
 ------
 
-      ++  rol  |=  [b=bloq c=@ d=@]  ^-  @                  ::  roll left
+      ++  rol  |=  [b/bloq c/@ d/@]  ^-  @                  ::  roll left
                =+  e=(sit d)
                =+  f=(bex (sub a b))
                =+  g=(mod c f)
@@ -281,11 +281,11 @@ Roll `d` to the right by `c` `b`-sized blocks.
 Accepts
 -------
 
-`a` is a [`++bloq`]().
+`a` is a `++bloq`.
 
 `b` is a `++bloq`.
 
-`c` is an [atom]().
+`c` is an atom.
 
 `d` is an atom.
 
@@ -297,11 +297,12 @@ An atom.
 Source
 ------
 
-      ++  ror  |=  [b=bloq c=@ d=@]  ^-  @                  ::  roll right
+      ++  ror  |=  {b/bloq c/@ d/@}  ^-  @                  ::  roll right
                =+  e=(sit d)
                =+  f=(bex (sub a b))
                =+  g=(mod c f)
                (sit (con (rsh b g e) (lsh b (sub f g) e)))
+
 
 Examples
 --------
@@ -330,9 +331,9 @@ Sum two numbers in this modular field.
 Accepts
 -------
 
-`a` is a [`++bloq`]().
+`a` is a `++bloq`.
 
-`b` is an [atom]().
+`b` is an atom.
 
 `c` is an atom.
 
@@ -344,7 +345,7 @@ An atom.
 Source
 ------
 
-      ++  sum  |=([b=@ c=@] (sit (add b c)))                ::  wrapping add
+      ++  sum  |=([b/@ c/@] (sit (add b c)))                ::  wrapping add
 
 Examples
 --------
@@ -368,12 +369,12 @@ Examples
 
 Atom in mod block representation
 
-Produce an [atom]() in the current modular block representation.
+Produce an atom in the current modular block representation.
 
 Accepts
 -------
 
-`a` is a [`++bloq`]().
+`a` is a `++bloq`.
 
 `b` is an atom.
 
@@ -385,7 +386,7 @@ An atom.
 Source
 ------
 
-      ++  sit  |=(b=@ (end a 1 b))                          ::  enforce modulo
+      ++  sit  |=(b/@ (end a 1 b))                          ::  enforce modulo
 
 Examples
 --------

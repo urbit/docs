@@ -2,12 +2,12 @@
 
 Left-shift
 
-Produces an [atom]() by left-shifting `c` by `b` blocks of size `a`.
+Produces an atom by left-shifting `c` by `b` blocks of size `a`.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
@@ -23,8 +23,9 @@ Source
 
     ++  lsh                                                 ::  left-shift
       ~/  %lsh
-      |=  [a=bloq b=@ c=@]
+      |=  {a/bloq b/@u c/@}
       (mul (bex (mul (bex a) b)) c)
+
 
 Examples
 --------

@@ -2,26 +2,28 @@
 
 List
 
-[mold]() generator. `++list` generates a mold of a null-termanated list of a
+mold generator. `++list` generates a mold of a null-termanated list of a
 homogenous type.
 
 
 Source
 ------
 
-        ++  list  |*  a=_,*                                     ::  null-term list
+    ++  list  |*  a/$-(* *)                                 ::  null-term list
+              $@($~ {i/a t/(list a)})                       ::
+
 
 Examples
 --------
 
-See also: [`++turn`](), [`++snag`]()
+See also: `++turn`, `++snag`
 
-    ~zod/try=> *(list)
+    > *(list)
     ~
-    ~zod/try=> `(list ,@)`"abc"
+    > `(list @)`"abc"
     ~[97 98 99]
-    ~zod/try=> (snag 0 "abc")
-    ~~a
+    > (snag 0 "abc")
+    'a'
 
 
 

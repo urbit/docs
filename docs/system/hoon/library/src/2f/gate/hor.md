@@ -9,14 +9,14 @@ Recursive hash comparator gate.
 Accepts
 -------
 
-`a` is a [noun]().
+`a` is a noun.
 
 `b` is a noun.
 
 Produces
 --------
 
-A boolean [atom](). 
+A boolean atom. 
 
 
 Source
@@ -24,7 +24,7 @@ Source
 
     ++  hor                                                 ::  h-order
       ~/  %hor
-      |=  [a=* b=*]
+      |=  {a/* b/*}
       ^-  ?
       ?:  ?=(@ a)
         ?.  ?=(@ b)  &
@@ -33,6 +33,8 @@ Source
       ?:  =(-.a -.b)
         (gor +.a +.b)
       (gor -.a -.b)
+    ::
+
 
 Examples
 --------

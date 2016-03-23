@@ -2,24 +2,24 @@
 
 Daily time to time atom
 
-Accept a [`++tarp`](/doc/hoon/library/1#++tarp), a parsed daily time, and produces a time atom,
+Accept a `++tarp`, a parsed daily time, and produces a time atom,
 `@d`.
 
 Accepts
 -------
 
-`rip` is a [`++tarp`](/doc/hoon/library/1#++tarp).
+`rip` is a `++tarp`.
 
 Produces
 --------
 
-A [`@d`]().
+A `@d`.
 
 Source
 ------
 
     ++  yule                                                ::  time atom
-      |=  rip=tarp
+      |=  rip/tarp
       ^-  @d
       =+  ^=  sec  ;:  add
                      (mul d.rip day:yo)
@@ -34,6 +34,7 @@ Source
                    =>  .(muc (dec muc))
                    (add (lsh 4 muc i.f.rip) $(f.rip t.f.rip))
       (con (lsh 6 1 sec) fac)
+    ::
 
 Examples
 --------

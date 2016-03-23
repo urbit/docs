@@ -2,8 +2,8 @@
 
 Right fold
 
-Right fold: moves right to left across a [`++list`]() `a`, recursively slamming
-a binary [gate]() `b` with an element from `a` and an accumulator, producing
+Right fold: moves right to left across a `++list` `a`, recursively slamming
+a binary gate `b` with an element from `a` and an accumulator, producing
 the final value of the accumulator.
 
 Accepts
@@ -14,18 +14,19 @@ Accepts
 Produces
 --------
 
-The accumulator, which is a [noun]().
+The accumulator, which is a noun.
 
 Source
 ------
 
-    ++  reel                                                ::  right fold  
+    ++  reel                                                ::  right fold
       ~/  %reel
-      |*  [a=(list) b=_|=([* *] +<+)]
+      |*  {a/(list) b/_|=({* *} +<+)}
       |-  ^+  +<+.b
       ?~  a
         +<+.b
       (b i.a $(a t.a))
+
 
 Examples
 --------

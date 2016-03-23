@@ -2,7 +2,7 @@
 
 Render path as tank
 
-Renders the path `bon` as a [`tank`](), which is used for
+Renders the path `bon` as a `tank`, which is used for
 pretty-printing.
 
 Accepts
@@ -11,16 +11,16 @@ Accepts
 Produces
 --------
 
-`bon` is a [`++path`]().
+`bon` is a `++path`.
 
 Source
 ------
 
-    ++  smyt
-      |=  bon=path  ^-  tank
-      :+  %rose  [['/' ~] ['/' ~] ['/' ~]]
-      |-  ^-  (list tank)
-      (turn bon |=(a=@ [%leaf (rip 3 a)]))
+    ++  smyt                                                ::  pretty print path
+      |=  bon/path  ^-  tank
+      :+  %rose  [['/' ~] ['/' ~] ~]
+      (turn bon |=(a/@ [%leaf (trip a)]))
+    ::
 
 Examples
 --------

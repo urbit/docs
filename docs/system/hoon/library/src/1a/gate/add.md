@@ -7,7 +7,7 @@ Produces the sum of `a` and `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 

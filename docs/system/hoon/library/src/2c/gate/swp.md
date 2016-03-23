@@ -2,14 +2,14 @@
 
 Reverse block order
 
-Switches little endian to big and vice versa: produces an [atom]() by
+Switches little endian to big and vice versa: produces an atom by
 reversing the block order of `b` using block size `a`.
 
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
@@ -21,7 +21,7 @@ An atom
 Source
 ------
 
-    ++  swap  |=([a=bloq b=@] (rep a (flop (rip a b))))     ::  reverse bloq order
+    ++  swap  |=({a/bloq b/@} (rep a (flop (rip a b))))     ::  reverse bloq order
 
 Examples
 --------

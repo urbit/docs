@@ -7,9 +7,9 @@ Computes `a` divided by `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
-`b` is an [atom]().
+`b` is an atom.
 
 Produces
 --------

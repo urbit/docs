@@ -2,8 +2,8 @@
 
 Parse unless
 
-Parsing composer: if an [`++edge`]() `vex` reflects a success, fail. Otherwise,
-connect `vex` with the following [`++rule`]().
+Parsing composer: if an `++edge` `vex` reflects a success, fail. Otherwise,
+connect `vex` with the following `++rule`.
 
 Accepts
 -------
@@ -21,11 +21,11 @@ Source
 ------
 
     ++  less                                                ::  no first and second
-      |*  [vex=edge sab=_rule]
+      |*  {vex/edge sab/rule}
       ?~  q.vex
         =+  roq=(sab)
         [p=(last p.vex p.roq) q=q.roq]
-      vex(q ~)
+      (fail +<.sab)
     ::
 
 Examples

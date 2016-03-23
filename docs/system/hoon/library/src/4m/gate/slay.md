@@ -2,7 +2,7 @@
 
 Parse span to coin
 
-Parses a span `txt` to the unit of a [`++coin`]().
+Parses a span `txt` to the unit of a `++coin`.
 
 Accepts
 -------
@@ -10,18 +10,22 @@ Accepts
 Produces
 --------
 
-`txt` is a [`@ta`]().
+`txt` is a `@ta`.
 
 Source
 ------
 
-    ++  slay
-      |=  txt=@ta  ^-  (unit coin)
-      =+  vex=((full nuck:so) [[1 1] (trip txt)])
-      ?~  q.vex
-        ~
-      [~ p.u.q.vex]
-    ::
+        ++  slay
+          |=  txt/@ta  ^-  (unit coin)
+          =+  ^=  vex
+              ?:  (gth 0x7fff.ffff txt)                         ::  XX  petty cache
+                ~+  ((full nuck:so) [[1 1] (trip txt)])
+              ((full nuck:so) [[1 1] (trip txt)])
+          ?~  q.vex
+            ~
+          [~ p.u.q.vex]
+        ::
+
 
 Examples
 --------

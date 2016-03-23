@@ -22,7 +22,7 @@ Source
 
     ++  con                                                 ::  binary or
       ~/  %con
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       =+  [c=0 d=0]
       |-  ^-  @
       ?:  ?&(=(0 a) =(0 b))  d
@@ -30,9 +30,9 @@ Source
         a   (rsh 0 1 a)
         b   (rsh 0 1 b)
         c   +(c)
-        d   %+  add  d  
-              %^  lsh  0  c 
-              ?&  =(0 (end 0 1 a)) 
+        d   %+  add  d
+              %^  lsh  0  c
+              ?&  =(0 (end 0 1 a))
                   =(0 (end 0 1 b))
               ==
       ==

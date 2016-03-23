@@ -7,7 +7,7 @@ Tests whether `a` is less than or equal to `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,8 +21,9 @@ Source
 
     ++  lte                                                 ::  less-equal
       ~/  %lte
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       |(=(a b) (lth a b))
+
     ::
 
 Examples

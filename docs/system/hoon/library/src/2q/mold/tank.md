@@ -10,16 +10,16 @@ list of `++tank` delimted by the strings in `p`.
 Source
 ------
 
-    ++  tank  $%  [%leaf p=tape]                            ::  printing formats
-                  $:  %palm                                 ::  backstep list
-                      p=[p=tape q=tape r=tape s=tape]       ::
-                      q=(list tank)                         ::
+    ++  tank  $%  {$leaf p/tape}                            ::  printing formats
+                  $:  $palm                                 ::  backstep list
+                      p/{p/tape q/tape r/tape s/tape}       ::
+                      q/(list tank)                         ::
                   ==                                        ::
-                  $:  %rose                                 ::  flat list
-                      p=[p=tape q=tape r=tape]              ::  mid open close
-                      q=(list tank)                         ::
+                  $:  $rose                                 ::  flat list
+                      p/{p/tape q/tape r/tape}              ::  mid open close
+                      q/(list tank)                         ::
                   ==                                        ::
-              ==          
+              ==                                            ::
 
 Examples
 --------

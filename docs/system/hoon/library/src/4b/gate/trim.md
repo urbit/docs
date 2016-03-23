@@ -2,7 +2,7 @@
 
 Tape split
 
-Split first `a` characters off [`++tape`]() `b`.
+Split first `a` characters off `++tape` `b`.
 
 Accepts
 -------
@@ -19,16 +19,16 @@ A cell of `++tape`s, `p` and `q`.
 Source
 ------
 
-    ++  trim                                                ::  tape split
-      |=  [a=@ b=tape]
-      ^-  [p=tape q=tape]
-      ?~  b
-        [~ ~]
-      ?:  =(0 a)
-        [~ b]
-      =+  c=$(a (dec a), b t.b)
-      [[i.b p.c] q.c]
+      ++  trim                                              ::  31-bit nonzero
+        |=  key/@
+        =+  syd=0xcafe.babe
+        |-  ^-  @
+        =+  haz=(spec syd key)
+        =+  ham=(mix (rsh 0 31 haz) (end 0 31 haz))
+        ?.(=(0 ham) ham $(syd +(syd)))
+      --
     ::
+
 
 Examples
 --------

@@ -9,26 +9,29 @@ producing a list of all of the members that produce `%.y`. Inverse of
 Accepts
 -------
 
-`b` is a [gate]() that accepts one argument and produces a loobean.
+`b` is a gate that accepts one argument and produces a boolean.
 
 Produces
 --------
 
+A boolean
+
 Source
 ------
 
-++  skim                                                ::  only
-  ~/  %skim
-  |*  [a=(list) b=_|=(p=* .?(p))]
-  |-
-  ^+  a`
-  ?~  a  ~
-  ?:((b i.a) [i.a $(a t.a)] $(a t.a))
+    ++  skim                                                ::  only
+      ~/  %skim
+      |*  {a/(list) b/$-(* ?)}
+      |-
+      ^+  a
+      ?~  a  ~
+      ?:((b i.a) [i.a $(a t.a)] $(a t.a))
+
 
 Examples
 --------
 
-    ~zod/try=> =a |=(a=@ (gth a 1))
+    ~zod/try=> =a |=(a/@ (gth a 1))
     ~zod/try=> (skim (limo [0 1 2 3 ~]) a)
     [i=2 t=[i=3 t=~]]
 

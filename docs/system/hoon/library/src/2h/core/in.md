@@ -3,7 +3,7 @@
 
 Set operations
 
-Core whose [arm]()s contain a variety of functions that operate on [`++set`]()s. Its [sample]() accepts the input [`++set`]() to be manipulated. 
+Core whose arms contain a variety of functions that operate on `++set`s. Its sample accepts the input `++set` to be manipulated. 
 
 Accepts
 -------
@@ -15,7 +15,7 @@ Source
 
     ++  in                                                  ::  set engine
       ~/  %in
-      |/  a=(set)
+      |_  a/(set)
 
 Examples
 --------
@@ -33,9 +33,9 @@ producing a boolean.
 Accepts
 -------
 
-`a` is a [`++set`]().
+`a` is a `++set`.
 
-`b` is a [wet]() [gate]() that accepts a [noun]() and produces a boolean.
+`b` is a wet gate that accepts a noun and produces a boolean.
 
 Produces
 --------
@@ -47,21 +47,21 @@ Source
 
       +-  all                                               ::  logical AND
         ~/  %all
-        |*  b=$+(* ?)
+        |*  b/$-(* ?)
         |-  ^-  ?
         ?~  a
           &
         ?&((b n.a) $(a l.a) $(a r.a))
-      ::
+
 
 Examples
 --------
 
-    ~zod/try=> =b (sa `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
-    ~zod/try=> (~(all in b) |=(a=* ?@(+.a & |)))
+    ~zod/try=> =b (sa `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
+    ~zod/try=> (~(all in b) |=(a/* ?@(+.a & |)))
         %.n
-    ~zod/try=> =b (sa `(list ,@t)`['john' 'bonita' 'daniel' 'madeleine' ~])
-    ~zod/try=> (~(all in b) |=(a=@t (gte a 100)))
+    ~zod/try=> =b (sa `(list @t)`['john' 'bonita' 'daniel' 'madeleine' ~])
+    ~zod/try=> (~(all in b) |=(a/@t (gte a 100)))
         %.y
 
 ------------------------------------------------------------------------
@@ -75,9 +75,9 @@ Computes the logical OR on every element of `a` slammed with `b`.
 Accepts
 -------
 
-`a` is a [`++set`]().
+`a` is a `++set`.
 
-`b` is a [gate]() that accepts a noun and produces a boolean.
+`b` is a gate that accepts a noun and produces a boolean.
 
 Produces
 --------
@@ -89,21 +89,22 @@ Source
 
       +-  any                                               ::  logical OR
         ~/  %any
-        |*  b=$+(* ?)
+        |*  b/$-(* ?)
         |-  ^-  ?
         ?~  a
           |
         ?|((b n.a) $(a l.a) $(a r.a))
       ::
 
+
 Examples
 --------
 
-    ~zod/try=> =b (sa `(list ,[@t *])`[['a' 1] ['b' [2 3]] ~])
-    ~zod/try=> (~(any in b) |=(a=* ?@(+.a & |)))
+    ~zod/try=> =b (sa `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
+    ~zod/try=> (~(any in b) |=(a/* ?@(+.a & |)))
         %.y
-    ~zod/try=> =b (sa `(list ,@t)`['john' 'bonita' 'daniel' 'madeleine' ~])
-    ~zod/try=> (~(any in b) |=(a=@t (lte a 100)))
+    ~zod/try=> =b (sa `(list @t)`['john' 'bonita' 'daniel' 'madeleine' ~])
+    ~zod/try=> (~(any in b) |=(a/@t (lte a 100)))
         %.n
 
 ------------------------------------------------------------------------
@@ -112,14 +113,14 @@ Examples
 
 Remove noun
 
-Removes `b` from the [`++set`]() `a`.
+Removes `b` from the `++set` `a`.
 
 Accepts
 -------
 
 `a` is a set.
 
-`b` is a [noun]().
+`b` is a noun.
 
 Produces
 --------
@@ -131,7 +132,7 @@ Source
 
       +-  del                                               ::  b without any a
         ~/  %del
-        |*  b=*
+        |*  b/*
         |-  ^+  a
         ?~  a
           ~
@@ -139,7 +140,7 @@ Source
           ?:  (hor b n.a)
             [n.a $(a l.a) r.a]
           [n.a l.a $(a r.a)]
-        |-  ^-  ?(~ _a)
+        |-  ^-  {$?($~ _a)}
         ?~  l.a  r.a
         ?~  r.a  l.a
         ?:  (vor n.l.a n.r.a)
@@ -151,10 +152,10 @@ Source
 Examples
 --------
 
-    ~zod/try=> =b (sa `(list ,@t)`['a' 'b' 'c' ~])
+    ~zod/try=> =b (sa `(list @t)`['a' 'b' 'c' ~])
     ~zod/try=> (~(del in b) 'a')
     {'c' 'b'}
-    ~zod/try=> =b (sa `(list ,@t)`['john' 'bonita' 'daniel' 'madeleine' ~])
+    ~zod/try=> =b (sa `(list @t)`['john' 'bonita' 'daniel' 'madeleine' ~])
     ~zod/try=> (~(del in b) 'john')
     {'bonita' 'madeleine' 'daniel'}
     ~zod/try=> (~(del in b) 'susan')
@@ -171,34 +172,35 @@ Produce the axis of `b` within `a`.
 Accepts
 -------
 
-`a` is a [`++set`]().
+`a` is a `++set`.
 
-`b` is a [noun]().
+`b` is a noun.
 
 Produces
 --------
 
-The [`++unit`]() of an atom.
+The `++unit` of an atom.
 
 Source
 ------
 
       +-  dig                                               ::  axis of a in b
-        |=  b=*
+        |=  b/*
         =+  c=1
-        |-  ^-  (unit ,@)
+        |-  ^-  (unit @)
         ?~  a  ~
         ?:  =(b n.a)  [~ u=(peg c 2)]
-        ?:  (gor b n.a)
+        ?:  (hor b n.a)
           $(a l.a, c (peg c 6))
         $(a r.a, c (peg c 7))
       ::
 
 
+
 Examples
 --------
 
-    ~zod/try=> =a (sa `(list ,@)`[1 2 3 4 5 6 7 ~])
+    ~zod/try=> =a (sa `(list @)`[1 2 3 4 5 6 7 ~])
     ~zod/try=> a
     {5 4 7 6 1 3 2}
     ~zod/try=> -.a
@@ -216,7 +218,7 @@ Examples
 
 Concatenate
 
-Insert the elements of a [`++list`]() `b` into a [`++set`]() `a`.
+Insert the elements of a `++list` `b` into a `++set` `a`.
 
 Accepts
 -------
@@ -235,11 +237,11 @@ Source
 
       +-  gas                                               ::  concatenate
         ~/  %gas
-        |=  b=(list ,_?>(?=(^ a) n.a))
+        |=  b/(list _?>(?=(^ a) n.a))
         |-  ^+  a
         ?~  b
           a
-        $(b t.b, a (put(+< a) i.b))
+        $(b t.b, a (put i.b))
       ::
 
 
@@ -248,7 +250,7 @@ Examples
 
     ~zod/try=> b
     {'bonita' 'madeleine' 'rudolf' 'john'}
-    ~zod/try=> (~(gas in b) `(list ,@t)`['14' 'things' 'number' '1.337' ~])
+    ~zod/try=> (~(gas in b) `(list @t)`['14' 'things' 'number' '1.337' ~])
     {'1.337' '14' 'number' 'things' 'bonita' 'madeleine' 'rudolf' 'john'}
     ~zod/try=> (~(gas in s) `(list ,@t)`['1' '2' '3' ~])
     {'1' '3' '2' 'e' 'd' 'a' 'c' 'b'}
@@ -278,7 +280,7 @@ Source
 
       +-  has                                               ::  b exists in a check
         ~/  %has
-        |*  b=*
+        |*  b/*
         |-  ^-  ?
         ?~  a
           |
@@ -293,7 +295,7 @@ Source
 Examples
 --------
 
-    ~zod/try=> =a (~(gas in `(set ,@t)`~) `(list ,@t)`[`a` `b` `c` ~])
+    ~zod/try=> =a (~(gas in `(set @t)`~) `(list @t)`[`a` `b` `c` ~])
     ~zod/try=> (~(has in a) `a`)
     %.y
     ~zod/try=> (~(has in a) 'z')
@@ -305,7 +307,7 @@ Examples
 
 Intersection
 
-Produces a set of the intersection between two [`++set`]()s of the same type,
+Produces a set of the intersection between two `++set`s of the same type,
 `a` and `b`.
 
 Accepts
@@ -318,14 +320,14 @@ Accepts
 Produces
 --------
 
-A [`++set`]().
+A `++set`.
 
 Source
 ------
 
-    +-  int                                               ::  intersection
+      +-  int                                               ::  intersection
         ~/  %int
-        |*  b=_a
+        |*  b/_a
         |-  ^+  a
         ?~  b
           ~
@@ -336,8 +338,10 @@ Source
         ?:  =(n.b n.a)
           [n.a $(a l.a, b l.b) $(a r.a, b r.b)]
         ?:  (hor n.b n.a)
-          %-  uni(+< $(a l.a, b [n.b l.b ~]))  $(b r.b)
-        %-  uni(+< $(a r.a, b [n.b ~ r.b]))  $(b l.b)
+          %-  uni(a $(a l.a, b [n.b l.b ~]))  $(b r.b)
+        %-  uni(a $(a r.a, b [n.b ~ r.b]))  $(b l.b)
+      ::
+
 
 
 Examples
@@ -358,26 +362,26 @@ Examples
 
 Put b in a
 
-Add an element `b` to the [`++set`]() `a`.
+Add an element `b` to the `++set` `a`.
 
 Accepts
 -------
 
 `a` is a set.
 
-`b` is a [noun]().
+`b` is a noun.
 
 Produces
 --------
 
-A [`++set`]().
+A `++set`.
 
 Source
 ------
 
-      +-  put                                               ::  puts b in a
+      +-  put                                               ::  puts b in a, sorted
         ~/  %put
-        |*  b=*
+        |*  b/*
         |-  ^+  a
         ?~  a
           [b ~ ~]
@@ -400,7 +404,7 @@ Source
 Examples
 --------
 
-    ~zod/try=> =a (~(gas in `(set ,@t)`~) `(list ,@t)`[`a` `b` `c` ~])
+        ~zod/try=> =a (~(gas in `(set @t)`~) `(list @t)`[`a` `b` `c` ~])
     ~zod/try=> =b (~(put in a) `d`)
     ~zod/try=> b
     {`d` `a` `c` `b`}
@@ -413,14 +417,14 @@ Examples
 
 Accumulate
 
-Accumulate the elements of `a` using a [gate]() `c` and an accumulator `b`.
+Accumulate the elements of `a` using a gate `c` and an accumulator `b`.
 
 Accepts
 --------
 
-`a` is a [`++set`]().
+`a` is a `++set`.
 
-`b` is a [noun]().
+`b` is a noun.
 
 `c` is a gate.
 
@@ -432,21 +436,21 @@ A noun.
 Source
 ------
 
-      +-  rep                                               ::  replace by tile
-        |*  [b=* c=_,*]
-        |-
-        ?~  a  b
-        $(a r.a, b $(a l.a, b (c n.a b)))
-      ::
+    +-  rep                                               ::  replace by product
+      |*  b/_|=({* *} +<+)
+      |-
+      ?~  a  +<+.b
+      $(a r.a, +<+.b $(a l.a, +<+.b (b n.a +<+.b)))
+
 
 
 Examples
 --------
 
-    ~zod/try=> =a (~(gas in *(set ,@)) [1 2 3 ~])
+    ~zod/try=> =a (~(gas in *(set @)) [1 2 3 ~])
     ~zod/try=> a
     {1 3 2}
-    ~zod/try=> (~(rep in a) 0 |=([a=@ b=@] (add a b)))
+    ~zod/try=> (~(rep in a) 0 |=([a/@ b/@] (add a b)))
     6
 
 ------------------------------------------------------------------------
@@ -455,7 +459,7 @@ Examples
 
 Set to list
 
-Flattens the [`++set`]() `a` into a [`++list`]().
+Flattens the `++set` `a` into a `++list`.
 
 Accepts
 -------
@@ -470,23 +474,24 @@ A list.
 Source
 ------
 
-      +-  tap                                               ::  list tiles a set
+      +-  tap                                               ::  convert to list
         ~/  %tap
-        |=  b=(list ,_?>(?=(^ a) n.a))
+        |=  b/(list _?>(?=(^ a) n.a))
         ^+  b
         ?~  a
           b
-        $(a r.a, b [n.a $(a l.a)])
+        $(a r.a b [n.a $(a l.a)])
       ::
+
 
 
 Examples
 --------
 
-    ~zod/try=> =s (sa `(list ,@t)`['a' 'b' 'c' 'd' 'e' ~])
+    ~zod/try=> =s (sa `(list @t)`['a' 'b' 'c' 'd' 'e' ~])
     ~zod/try=> s
     {'e' 'd' 'a' 'c' 'b'}
-    ~zod/try=> (~(tap in s) `(list ,@t)`['1' '2' '3' ~])
+    ~zod/try=> (~(tap in s) `(list @t)`['1' '2' '3' ~])
     ~['b' 'c' 'a' 'd' 'e' '1' '2' '3']
     ~zod/try=> b
     {'bonita' 'madeleine' 'daniel' 'john'}
@@ -519,7 +524,8 @@ Source
 
       +-  uni                                               ::  union
         ~/  %uni
-        |*  b=_a
+        |*  b/_a
+        ?:  =(a b)  a
         |-  ^+  a
         ?~  b
           a
@@ -536,6 +542,7 @@ Source
         ?:  (hor n.a n.b)
           $(b [n.b $(b l.b, a [n.a l.a ~]) r.b], a r.a)
         $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
+      ::
 
 
 Examples
@@ -574,6 +581,8 @@ Source
       +-  wyt                                               ::  size of set
         |-  ^-  @
         ?~(a 0 +((add $(a l.a) $(a r.a))))
+      --
+
 
 
 Examples

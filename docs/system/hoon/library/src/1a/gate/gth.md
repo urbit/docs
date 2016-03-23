@@ -7,7 +7,7 @@ Tests whether `a` is greater than `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,10 +21,11 @@ Source
 
     ++  gth                                                 ::  greater-than
       ~/  %gth
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       ^-  ?
       !(lte a b)
-    ::
+
+
 
 Examples
 --------

@@ -2,15 +2,15 @@
 
 Parse tape or crash
 
-Parse a [`++tape`]() with a given [`++rule`]() and crash if the `++tape` isn't entirely
+Parse a `++tape` with a given `++rule` and crash if the `++tape` isn't entirely
 parsed.
 
 Accepts
 -------
 
-`los` is a [tape]().
+`los` is a tape.
 
-`sab` is a [rule]().
+`sab` is a rule.
 
 Produces
 --------
@@ -20,7 +20,7 @@ Either a `++tape` or a crash.
 Source
 ------
 
-    ++  scan  |*  [los=tape sab=_rule]
+    ++  scan  |*  {los/tape sab/rule}
               =+  vex=((full sab) [[1 1] los])
               ?~  q.vex
                 ~_  (show [%m '{%d %d}'] p.p.vex q.p.vex ~)

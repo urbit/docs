@@ -2,26 +2,32 @@
 
 Maybe
 
-[mold]() generator. A `++unit` is either `~` or `[~ u=a]` where `a` is the
+mold generator. A `++unit` is either `~` or `[~ u=a]` where `a` is the
 type that was passed in.
 
 
 Source
 ------
 
-        ++  unit  |*  a=_,*                                     ::  maybe
+    ++  unit  |*  a/$-(* *)                                 ::  maybe
+              $@($~ {$~ u/a})                               ::
+
 
 Examples
 --------
 
-See also: [`++bind`]()
+See also: `++bind`
 
-    ~zod/try=> :type; *(unit time)
+    ~zod/try=> ? *(unit time)
+    ?({$~ u/@da} $~)
     ~
-    u(@da)
-    ~zod/try=> `(unit time)`[~ -<-]
-    [~ ~2014.9.24..19.25.10..7dd5]
 
+     ~zod/try=> > =a |=  a/@
+      ^-  (unit @)
+      ?~  a  ~
+      [~ a]
+    > (a 2)
+    [~ u=2]
 
 
 ***

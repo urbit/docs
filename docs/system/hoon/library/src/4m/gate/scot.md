@@ -10,12 +10,12 @@ Accepts
 Produces
 --------
 
-`mol` is a [`++dime`]().
+`mol` is a `++dime`.
 
 Source
 ------
 
-    ++  scot  |=(mol=dime ~(rent co %$ mol))
+    ++  scot  |=(mol/dime ~(rent co %$ mol))
 
 Examples
 --------

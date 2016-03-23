@@ -2,27 +2,27 @@
 
 Unescape cord
 
-Unescape [`++cord`]() codepoints.
+Unescape `++cord` codepoints.
 
 Accepts
 -------
 
-`a` is a [`@ta`]().
+`a` is a `@ta`.
 
 Produces
 --------
 
-A [`++cord`]().
+A `++cord`.
 
 Source
 ------
 
     ++  woad                                                ::  cord format
-      |=  a=@ta
+      |=  a/@ta
       ^-  @t
       %+  rap  3
-      |-  ^-  (list ,@)
-      ?:  =(0 a)
+      |-  ^-  (list @)
+      ?:  =(`@`0 a)
         ~
       =+  b=(end 3 1 a)
       =+  c=(rsh 3 1 a)
@@ -34,7 +34,7 @@ Source
       ?+  b  =-  (weld (rip 3 (tuft p.d)) $(a q.d))
              ^=  d
              =+  d=0
-             |-  ^-  [p=@ q=@]
+             |-  ^-  {p/@ q/@}
              ?:  =('.' b)
                [d c]
              ?<  =(0 c)
@@ -46,8 +46,8 @@ Source
                    ?:  &((gte b '0') (lte b '9'))  48
                    ?>(&((gte b 'a') (lte b 'z')) 87)
              ==
-        %'.'  ['.' $(a c)]
-        %'~'  ['~' $(a c)]
+        $'.'  ['.' $(a c)]
+        $'~'  ['~' $(a c)]
       ==
     ::
 

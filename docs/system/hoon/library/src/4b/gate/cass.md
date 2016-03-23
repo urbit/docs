@@ -19,10 +19,9 @@ Source
 ------
 
     ++  cass                                                ::  lowercase
-      |=  vib=tape
+      |=  vib/tape
       %+  rap  3
-      (turn vib |=(a=@ ?.(&((gte a 'A') (lte a 'Z')) a (add 32 a))))
-    ::
+      (turn vib |=(a/@ ?.(&((gte a 'A') (lte a 'Z')) a (add 32 a))))
 
 Examples
 --------

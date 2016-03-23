@@ -7,21 +7,21 @@ Match and consume a single character.
 Accepts
 -------
 
-`daf` is a [`++char`]()
+`daf` is a `++char`
 
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  just                                                ::  XX redundant, jest
       ~/  %just                                             ::  match a char
-      |=  daf=char
+      |=  daf/char
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       ^-  (like char)
       ?~  q.tub
         (fail tub)

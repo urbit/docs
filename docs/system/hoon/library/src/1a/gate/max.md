@@ -7,7 +7,7 @@ Computes the greater of `a` and `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,11 +21,10 @@ Source
 
     ++  max                                                 ::  maximum
       ~/  %max
-      |=  [a=@ b=@]
+      |=  {a/@ b/@}
       ^-  @
       ?:  (gth a b)  a
       b
-    ::
 
 Examples
 --------

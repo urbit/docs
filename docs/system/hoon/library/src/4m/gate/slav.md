@@ -11,14 +11,14 @@ Accepts
 Produces
 --------
 
-`mod` is a term, an atom of odor [`@tas`]().
+`mod` is a term, an atom of odor `@tas`.
 
-`txt` is a span, an atom of odor [`@ta`]().
+`txt` is a span, an atom of odor `@ta`.
 
 Source
 ------
 
-    ++  slav  |=([mod=@tas txt=@ta] (need (slaw mod txt)))
+    ++  slav  |=([mod/@tas txt/@ta] (need (slaw mod txt)))
 
 Examples
 --------

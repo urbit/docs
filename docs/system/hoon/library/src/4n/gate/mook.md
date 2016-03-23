@@ -2,67 +2,56 @@
 
 Intelligently render crash annotation
 
-Converts a `%2` `++tone` nock stack trace to a list of [`++tank`]().
-Each may be a tank, cord, [`++spot`](), or trapped tank.
+Converts a `%2` `++tone` nock stack trace to a list of `++tank`.
+Each may be a tank, cord, `++spot`, or trapped tank.
 
 Accepts
 -------
 
-`ton` is a [`++tone`]().
+`ton` is a `++tone`.
 
 Produces
 --------
 
-A [`++toon`]().
+A `++toon`.
 
 Source
 ------
 
     ++  mook
-      |=  ton=tone
+      |=  ton/tone
       ^-  toon
-      ?.  ?=([2 *] ton)  ton
+      ?.  ?=({$2 *} ton)  ton
       :-  %2
+      :: =.  p.ton  (moop p.ton)
       =+  yel=(lent p.ton)
       =.  p.ton
         ?.  (gth yel 256)  p.ton
         %+  weld
           (scag 128 p.ton)
-        ^-  (list ,[@ta *])
+        ^-  (list {@ta *})
         :_  (slag (sub yel 128) p.ton)
         :-  %lose
         %+  rap  3
-        ;:  weld
-          "[skipped "
-          ~(rend co %$ %ud (sub yel 256))
-          " frames]"
-        ==
+        "[skipped {(scow %ud (sub yel 256))} frames]"
       |-  ^-  (list tank)
       ?~  p.ton  ~
-      =+  rex=$(p.ton t.p.ton)
-      ?+    -.i.p.ton  rex
-          %hunk  [(tank +.i.p.ton) rex]
-          %lose  [[%leaf (rip 3 (,@ +.i.p.ton))] rex]
-          %mean  :_  rex
-                 ?@  +.i.p.ton  [%leaf (rip 3 (,@ +.i.p.ton))]
+      =+  rep=$(p.ton t.p.ton)
+      ?+    -.i.p.ton  rep
+          $hunk  [(tank +.i.p.ton) rep]
+          $lose  [[%leaf (rip 3 (@ +.i.p.ton))] rep]
+          $hand  [[%leaf (scow %p (mug +.i.p.ton))] rep]
+          $mean  :_  rep
+                 ?@  +.i.p.ton  [%leaf (rip 3 (@ +.i.p.ton))]
                  =+  mac=(mack +.i.p.ton +<.i.p.ton)
                  ?~(mac [%leaf "####"] (tank u.mac))
-          %spot  :_  rex
+          $spot  :_  rep
                  =+  sot=(spot +.i.p.ton)
-                 :-  %leaf
-                 ;:  weld
-                   ~(ram re (smyt p.sot))
-                   ":<["
-                   ~(rend co ~ %ud p.p.q.sot)
-                   " "
-                   ~(rend co ~ %ud q.p.q.sot)
-                   "].["
-                   ~(rend co ~ %ud p.q.q.sot)
-                   " "
-                   ~(rend co ~ %ud q.q.q.sot)
-                   "]>"
-                 ==
-      ==
+                 :+  %rose  [":" ~ ~]
+                 :~  (smyt p.sot)
+                     =>  [ud=|=(a/@u (scow %ud a)) q.sot]
+                     leaf+"<[{(ud p.p)} {(ud q.p)}].[{(ud p.q)} {(ud q.q)}]>"
+      ==         ==
     ::
 
 Examples

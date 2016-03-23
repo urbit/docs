@@ -2,17 +2,17 @@
 
 XML node.
 
-Parsed by [`++apex`]() within [`++poxa`](), rendered by [`++poxo`]().
+Parsed by `++apex` within `++poxa`, rendered by `++poxo`.
 
 Source
 ------
 
-        ++  manx  ,[g=marx c=marl]                              ::  XML node
+        ++  manx  {g/marx c/marl}                              ::  XML node
 
 Examples
 --------
 
-See also: [`++sail`]() doc
+See also: `++sail` doc
 
 
 

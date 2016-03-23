@@ -10,13 +10,13 @@ Accepts
 Produces
 --------
 
-A [`++date`]().
+A `++date`.
 
 Source
 ------
 
     ++  yore                                                ::  @d to date
-      |=  now=@d
+      |=  now/@da
       ^-  date
       =+  rip=(yell now)
       =+  ger=(yall d.rip)
@@ -24,6 +24,7 @@ Source
             [a=& y=(sub y.ger 292.277.024.400)]
           [a=| y=+((sub 292.277.024.400 y.ger))]
       [m.ger d.ger h.rip m.rip s.rip f.rip]
+    ::
 
 Examples
 --------

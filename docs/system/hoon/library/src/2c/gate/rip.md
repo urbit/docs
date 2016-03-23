@@ -2,12 +2,12 @@
 
 Disassemble
 
-Produces a list of [atom]()s from the bits of `b` using block size `a`.
+Produces a list of atoms from the bits of `b` using block size `a`.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
@@ -21,8 +21,8 @@ Source
 
     ++  rip                                                 ::  disassemble
       ~/  %rip
-      |=  [a=bloq b=@]
-      ^-  (list ,@)
+      |=  {a/bloq b/@}
+      ^-  (list @)
       ?:  =(0 b)  ~
       [(end a 1 b) $(b (rsh a 1 b))]
 

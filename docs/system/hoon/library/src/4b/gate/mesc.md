@@ -2,12 +2,12 @@
 
 Escape special chars
 
-Escape special characters, used in [`++show`](/doc/hoon/library/2ez#++show)
+Escape special characters, used in `++show`.
 
 Accepts
 -------
 
-`vib` is a [`++tape`]().
+`vib` is a `++tape`.
 
 Produces
 --------
@@ -18,13 +18,13 @@ Source
 ------
 
     ++  mesc                                                ::  ctrl code escape
-      |=  vib=tape
+      |=  vib/tape
       ^-  tape
       ?~  vib
         ~
       ?:  =('\\' i.vib)
         ['\\' '\\' $(vib t.vib)]
-      ?:  ?|((gth i.vib 126) (lth i.vib 32) =(39 i.vib))
+      ?:  ?|((gth i.vib 126) (lth i.vib 32) =(`@`39 i.vib))
         ['\\' (welp ~(rux at i.vib) '/' $(vib t.vib))]
       [i.vib $(vib t.vib)]
     ::

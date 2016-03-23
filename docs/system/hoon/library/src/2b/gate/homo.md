@@ -2,7 +2,7 @@
 
 Homogenize
 
-Produces a [`++list`]() whose type is a fork of all the contained types in the
+Produces a `++list` whose type is a fork of all the contained types in the
 list `a`. Used when you want to make all the types of the elements of a list the same.
 
 Accepts
@@ -19,11 +19,12 @@ Source
 ------
 
     ++  homo                                                ::  homogenize
-      |*  a=(list)
+      |*  a/(list)
       ^+  =<  $
-        |%  +-  $  ?:(_? ~ [i=(snag 0 a) t=$])
+        |%  +-  $  ?:(*? ~ [i=(snag 0 a) t=$])
         --
       a
+
 
 Examples
 --------

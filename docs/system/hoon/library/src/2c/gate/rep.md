@@ -2,12 +2,12 @@
 
 Assemble single
 
-Produces an [atom]() by assembling a list of atoms `b` using block size `a`.
+Produces an atom by assembling a list of atoms `b` using block size `a`.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is a list of atoms.
 
@@ -21,7 +21,7 @@ Source
 
     ++  rep                                                 ::  assemble single
       ~/  %rep
-      |=  [a=bloq b=(list ,@)]
+      |=  {a/bloq b/(list @)}
       ^-  @
       =+  c=0
       |-

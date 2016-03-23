@@ -5,7 +5,7 @@ Comments to null
 Source
 ------
 
-    ++  vul  %-  cold  :-  ~                                ::  comments
+    ++  vul  %+  cold   ~                                   ::  comments
              ;~  plug  col  col
                (star prn)
                (just `@`10)

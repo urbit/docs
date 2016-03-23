@@ -1,17 +1,18 @@
 ### `++jar`
 
 
-Tile generator. A [`++jar`]() is a [`++map`]() of [`++list`]().
+Tile generator. A `++jar` is a `++map` of `++list`.
 
 Source
 ------
 
-    ++  jar  |*([a=_,* b=_,*] (map a (list b)))             ::  map of lists
+    ++  jar  |*({a/$-(* *) b/$-(* *)} (map a (list b)))     ::  map of lists
+
 
 Examples
 --------
 
-See also: [`++ja`](), [`++by`](), [`++map`](), [`++list`]()
+See also: `++ja`, `++by`, `++map`, `++list`
 
     ~zod/try=> =a (limo [1 2 ~])
     ~zod/try=> a

@@ -2,7 +2,7 @@
 
 Parse or crash
 
-Parse a cord with a given [`++rule`]() and crash if the [`++cord`]() isn't entirely
+Parse a cord with a given `++rule` and crash if the `++cord` isn't entirely
 parsed.
 
 Accepts
@@ -20,7 +20,8 @@ The value of the parse result, or crash.
 Source
 ------
 
-    ++  rash  |*([naf=@ sab=_rule] (scan (trip naf) sab))   ::
+    ++  rash  |*({naf/@ sab/rule} (scan (trip naf) sab))   ::
+
 
 Examples
 --------

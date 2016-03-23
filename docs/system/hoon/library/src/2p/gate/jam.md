@@ -7,7 +7,7 @@ Produces an atom unpacked from noun `a`. The inverse of cue.
 Accepts
 -------
 
-`a` is a [noun]().
+`a` is a noun.
 
 Produces
 --------
@@ -19,12 +19,12 @@ Source
 
     ++  jam                                                 ::  pack
       ~/  %jam
-      |=  a=*
+      |=  a/*
       ^-  @
       =+  b=0
-      =+  m=`(map ,* ,@)`~
+      =+  m=`(map * @)`~
       =<  q
-      |-  ^-  [p=@ q=@ r=_m]
+      |-  ^-  {p/@ q/@ r/(map * @)}
       =+  c=(~(get by m) a)
       ?~  c
         =>  .(m (~(put by m) a b))

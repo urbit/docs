@@ -17,17 +17,17 @@ An atom.
 Source
 ------
 
-    ++  mas                                                 ::  tree body
-      ~/  %mas
-      |=  a=@
-      ^-  @
-      ?-  a
-        1   !!
-        2   1
-        3   1
-        *   (add (mod a 2) (mul $(a (div a 2)) 2))
-      ==
-    ::
+        ++  mas                                                 ::  tree body
+          ~/  %mas
+          |=  a=@
+          ^-  @
+          ?-  a
+            1   !!
+            2   1
+            3   1
+            *   (add (mod a 2) (mul $(a (div a 2)) 2))
+          ==
+        ::
 
 Examples
 --------

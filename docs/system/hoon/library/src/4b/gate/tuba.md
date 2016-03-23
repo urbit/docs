@@ -2,7 +2,7 @@
 
 UTF8 to UTF32 tape
 
-Convert [`++tape`]() to a [`++list`]() of codepoints ([`@c`]()).
+Convert `++tape` to a `++list` of codepoints (`@c`).
 
 Accepts
 -------
@@ -12,14 +12,14 @@ Accepts
 Produces
 --------
 
-A `++list` of codepoints [`@c`]().
+A `++list` of codepoints `@c`.
 
 Source
 ------
 
     ++  tuba                                                ::  utf8 to utf32 tape
-      |=  a=tape
-      ^-  (list ,@c)
+      |=  a/tape
+      ^-  (list @c)
       (rip 5 (turf (rap 3 a)))                              ::  XX horrible
     ::
 

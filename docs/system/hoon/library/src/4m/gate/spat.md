@@ -10,12 +10,12 @@ Accepts
 Produces
 --------
 
-`pax` is a [`path`]().
+`pax` is a `path`.
 
 Source
 ------
 
-    ++  spat  |=(pax=path (crip (spud pax)))               ::  path to cord
+    ++  spat  |=(pax/path (crip (spud pax)))               ::  path to cord
 
 Examples
 --------

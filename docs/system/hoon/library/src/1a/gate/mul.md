@@ -7,7 +7,7 @@ Multiplies `a` by `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,14 +21,13 @@ Source
 
     ++  mul                                                 ::  multiply
       ~/  %mul
-      |=  [a=@ b=@]
+      |:  [a=`@`1 b=`@`1]
       ^-  @
       =+  c=0
       |-
       ?:  =(0 a)  c
       $(a (dec a), c (add b c))
-    ::
-
+        
 Examples
 --------
 

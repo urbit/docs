@@ -4,14 +4,14 @@ Switch by first
 
     ++  stew                                                ::  switch by first char
       ~/  %stew
-      |*  leh=(list ,[p=?(@ [@ @]) q=_rule])                ::  char/range keys
+      |*  leh/(list {p/?(@ {@ @}) q/rule})                  ::  char+range keys
       =+  ^=  wor                                           ::  range complete lth
-          |=  [ort=?(@ [@ @]) wan=?(@ [@ @])]
+          |=  {ort/?(@ {@ @}) wan/?(@ {@ @})}
           ?@  ort
             ?@(wan (lth ort wan) (lth ort -.wan))
           ?@(wan (lth +.ort wan) (lth +.ort -.wan))
       =+  ^=  hel                                           ::  build parser map
-          =+  hel=`(tree $_(?>(?=(^ leh) i.leh)))`~
+          =+  hel=`(tree _?>(?=(^ leh) i.leh))`~
           |-  ^+  hel
           ?~  leh
             ~
@@ -31,7 +31,7 @@ Switch by first
             [n.yal l.yal nuc]
           [n.nuc [n.yal l.yal l.nuc] r.nuc]
       ~%  %fun  ..^$  ~
-      |=  tub=nail
+      |=  tub/nail
       ?~  q.tub
         (fail tub)
       |-
@@ -47,8 +47,10 @@ Switch by first
       $(hel r.hel)
     ::
 
-Parser generator. From an associative [`++list`]() of characters or character
-ranges to [`++rule`]()s, construct a [`++map`](), and parse [`++tape`]()s only
+
+
+Parser generator. From an associative `++list` of characters or character
+ranges to `++rule`s, construct a `++map`, and parse `++tape`s only
 with `++rules` associated with a range that the `++tape`'s first character falls in.
 
 

@@ -2,7 +2,7 @@
 
 Hashes an atom with the 32-bit FNV non-cryptographic hash algorithm.
 Multiplies `a` by the prime number 16,777,619 and then takes the block
-of size 5 off the product's end, producing an [atom]().
+of size 5 off the product's end, producing an atom.
 
 Accepts
 -------
@@ -18,7 +18,7 @@ An atom.
 Source
 ------
 
-    ++  fnv  |=(a=@ (end 5 1 (mul 16.777.619 a)))           ::  FNV scrambler
+    ++  fnv  |=(a/@ (end 5 1 (mul 16.777.619 a)))           ::  FNV scrambler
 
 Examples
 --------

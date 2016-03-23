@@ -23,25 +23,26 @@ A unit or crash.
 Source
 ------
 
-++  mate                                                ::  choose
-  |*  [a=(unit) b=(unit)]
-  ?~  b  a
-  ?~  a  b
-  ?.(=(u.a u.b) ~|('mate' !!) a)
+    ++  mate                                                ::  choose
+      |*  {a/(unit) b/(unit)}
+      ?~  b  a
+      ?~  a  b
+      ?.(=(u.a u.b) ~|('mate' !!) a)
+
 
 Examples
 --------
 
-    ~zod/try=> =a ((unit ,@) [~ 97])
-    ~zod/try=> =b ((unit ,@) [~ 97])
+    ~zod/try=> =a ((unit @) [~ 97])
+    ~zod/try=> =b ((unit @) [~ 97])
     ~zod/try=> (mate a b)
     [~ 97]
-    ~zod/try=> =a ((unit ,@) [~ 97])
-    ~zod/try=> =b ((unit ,@) [~])
+    ~zod/try=> =a ((unit @) [~ 97])
+    ~zod/try=> =b ((unit @) [~])
     ~zod/try=> (mate a b)
     [~ 97]
-    ~zod/try=> =a ((unit ,@) [~ 97])
-    ~zod/try=> =b ((unit ,@) [~ 98])
+    ~zod/try=> =a ((unit @) [~ 97])
+    ~zod/try=> =b ((unit @) [~ 98])
     ~zod/try=> (mate a b)
     ! 'mate'
     ! exit

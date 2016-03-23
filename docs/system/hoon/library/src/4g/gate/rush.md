@@ -8,9 +8,9 @@ entirely parsed.
 Accepts
 -------
 
-`naf` is an [atom]().
+`naf` is an atom.
 
-`sab` is a [rule]().
+`sab` is a rule.
 
 Produces
 --------
@@ -20,7 +20,8 @@ The value of the parse result, or null.
 Source
 ------
 
-    ++  rush  |*([naf=@ sab=_rule] (rust (trip naf) sab))
+    ++  rush  |*({naf/@ sab/rule} (rust (trip naf) sab))
+
 
 Examples
 --------

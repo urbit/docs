@@ -12,7 +12,7 @@ Accepts
 Produces
 --------
 
-A list
+A `++list`.
 
 Source
 ------

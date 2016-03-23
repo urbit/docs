@@ -2,7 +2,7 @@
 
 Perfect weld
 
-Concatenate two [`++list`]()s `a` and `b` without losing their type information
+Concatenate two `++list`s `a` and `b` without losing their type information
 to homogenization.
 
 Accepts
@@ -21,13 +21,14 @@ Source
 ------
 
     ++  welp                                                ::  perfect weld
-      =|  [* *]
+      =|  {* *}
       |%
       +-  $
         ?~  +<-
           +<-(. +<+)
         +<-(+ $(+<- +<->))
       --
+
 
 Examples
 --------
@@ -36,10 +37,10 @@ Examples
     "foobar"
     ~zod/arvo=/hoon/hoon> (welp ~[60 61 62] ~[%a %b %c])
     [60 61 62 %a %b %c ~]
-    ~zod/arvo=/hoon/hoon> :type; (welp ~[60 61 62] ~[%a %b %c])
+    ~zod/arvo=/hoon/hoon>? (welp ~[60 61 62] ~[%a %b %c])
     [60 61 62 %a %b %c ~]
     [@ud @ud @ud %a %b %c %~]
-    ~zod/arvo=/hoon/hoon> (welp [sa/1 so/2 ~] si/3)
+    ~zod/arvo=/hoon/hoon> (welp [sa+1 so+2 ~] si/3)
     [[%sa 1] [%so 2] %si 3]
 
 

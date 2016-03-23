@@ -7,9 +7,9 @@ Right curry a gate, binding the tail of its sample
 Accepts
 -------
 
-`a` is a [gate]().
+`a` is a gate.
 
-`c` is a [noun]().
+`c` is a noun.
 
 Produces
 --------
@@ -18,10 +18,11 @@ Produces
 Source
 ------
 
-    ++  curr
-      |*  [a=_|=(^ _*) c=*]
-      |*  b=_+<+.a
+    ++  curr                                                ::  curry right
+      |*  {a/_|=(^ **) c/*}     
+      |*  b/_+<+.a
       (a b c)
+    ::
 
 Examples
 --------

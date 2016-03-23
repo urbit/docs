@@ -7,26 +7,27 @@ XX revisit
 Accepts
 -------
 
-`a` is a [noun]().
+`a` is a noun.
 
 `b` is a noun.
 
 Produces
 --------
 
-A boolean [atom]().
+A boolean atom.
 
 Source
 ------
 
     ++  gor                                                 ::  g-order
       ~/  %gor
-      |=  [a=* b=*]
+      |=  {a/* b/*}
       ^-  ?
       =+  [c=(mug a) d=(mug b)]
       ?:  =(c d)
         (dor a b)
       (lth c d)
+
 
 Examples
 --------

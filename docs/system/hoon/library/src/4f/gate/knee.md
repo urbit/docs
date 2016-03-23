@@ -10,20 +10,20 @@ Accepts
 
 `gar` is a noun.
 
-`sef` is a [gate]() that accepts a [`++rule`]()
+`sef` is a gate that accepts a `++rule`
 
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  knee                                                ::  callbacks
-      |*  [gar=* sef=_|.(rule)]
-      |=  tub=nail
-      ^-  (like ,_gar)
+      |*  {gar/* sef/_|.(*rule)}
+      |=  tub/nail
+      ^-  (like _gar)
       ((sef) tub)
     ::
 

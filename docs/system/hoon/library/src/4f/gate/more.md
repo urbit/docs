@@ -2,7 +2,7 @@
 
 Parse list with delimiter
 
-Parser modifier: Parse a list of matches using a delimiter [`++rule`]().
+Parser modifier: Parse a list of matches using a delimiter `++rule`.
 
 Accepts
 -------
@@ -20,8 +20,9 @@ Source
 ------
 
     ++  more
-      |*  [bus=_rule fel=_rule]
+      |*  {bus/rule fel/rule}
       ;~(pose (most bus fel) (easy ~))
+    ::
 
 Examples
 --------

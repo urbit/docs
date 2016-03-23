@@ -4,11 +4,10 @@ Blocksize
 
 Atom representing a blocksize, by convention expressed as a power of 2.
 
-
 Source
 ------
 
-    ++  bloq  ,@                                            ::  blockclass
+    ++  bloq  @                                            ::  blockclass
 
 Examples
 --------

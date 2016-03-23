@@ -7,24 +7,24 @@ Match and consume a cord.
 Accepts
 -------
 
-`daf` is a [`@t`]().
+`daf` is a `@t`.
 
 Produces
 --------
 
-An [`++edge`]().
+An `++edge`.
 
 Source
 ------
 
     ++  jest                                                ::  match a cord
-      |=  daf=@t
-      |=  tub=nail
+      |=  daf/@t
+      |=  tub/nail
       =+  fad=daf
-      |-  ^-  (like ,@t)
-      ?:  =(0 daf)
+      |-  ^-  (like @t)
+      ?:  =(`@`0 daf)
         [p=p.tub q=[~ u=[p=fad q=tub]]]
-      ?:  |(?=(~ q.tub) !=((end 3 1 daf) i.q.tub))
+      ?:  |(?=($~ q.tub) !=((end 3 1 daf) i.q.tub))
         (fail tub)
       $(p.tub (lust i.q.tub p.tub), q.tub t.q.tub, daf (rsh 3 1 daf))
     ::

@@ -2,9 +2,9 @@
 
 Measure
 
-Computes the number of blocks of size `a` in `b`, producing an [atom]().
+Computes the number of blocks of size `a` in `b`, producing an atom.
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
@@ -13,7 +13,7 @@ Source
 
     ++  met                                                 ::  measure
       ~/  %met
-      |=  [a=bloq b=@]
+      |=  {a/bloq b/@}
       ^-  @
       =+  c=0
       |-

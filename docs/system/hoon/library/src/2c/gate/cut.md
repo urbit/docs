@@ -7,9 +7,9 @@ Slices `c` blocks of size `a` that are `b` blocks from the end of `d`.
 Accepts
 -------
 
-`a` is a block size (see [++bloq]()).
+`a` is a block size (see ++bloq).
 
-`b` is an [atom]().
+`b` is an atom.
 
 `c` is an atom.
 
@@ -23,7 +23,7 @@ Source
 
     ++  cut                                                 ::  slice
       ~/  %cut
-      |=  [a=bloq [b=@ c=@] d=@]
+      |=  {a/bloq {b/@u c/@u} d/@}
       (end a c (rsh a b d))
 
 Examples

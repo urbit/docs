@@ -2,13 +2,13 @@
 
 Concatenate
 
-Concatenates two [atom]()s, `b` and `c`, according to bloq size `a`, producing an
+Concatenates two atoms, `b` and `c`, according to bloq size `a`, producing an
 atom.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
@@ -24,8 +24,9 @@ Source
 
     ++  cat                                                 ::  concatenate
       ~/  %cat
-      |=  [a=bloq b=@ c=@]
+      |=  {a/bloq b/@ c/@}
       (add (lsh a (met a b) c) b)
+
 
 Examples
 --------

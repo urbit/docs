@@ -7,7 +7,7 @@ Used primarily in crypto.
 Source
 ------
 
-        ++  ring  ,@                                            ::  private key
+        ++  ring  @                                            ::  private key
 
 
 

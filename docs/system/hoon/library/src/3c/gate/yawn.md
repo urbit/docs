@@ -17,13 +17,13 @@ Accepts
 Produces
 --------
 
-A [`@ud`]().
+A `@ud`.
 
 Source
 ------
 
     ++  yawn                                                ::  days since Jesus
-      |=  [yer=@ud mot=@ud day=@ud]
+      |=  {yer/@ud mot/@ud day/@ud}
       ^-  @ud
       =>  .(mot (dec mot), day (dec day))
       =>  ^+  .
@@ -46,6 +46,7 @@ Source
         =+  nec=(sub yer 100)
         $(yer nec, day (add day ?:((yelp nec) 36.525 36.524)))
       (add day (mul (div yer 400) (add 1 (mul 4 36.524))))
+    ::
 
 Examples
 --------

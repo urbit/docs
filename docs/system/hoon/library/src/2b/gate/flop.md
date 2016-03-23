@@ -19,13 +19,14 @@ Source
 
     ++  flop                                                ::  reverse
       ~/  %flop
-      |*  a=(list)
+      |*  a/(list)
       =>  .(a (homo a))
       ^+  a
       =+  b=`_a`~
       |-
       ?~  a  b
       $(a t.a, b [i.a b])
+
 
 
 Examples

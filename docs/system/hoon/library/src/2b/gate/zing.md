@@ -2,7 +2,7 @@
 
 Cons
 
-Turns a [`++list`]() of lists into a single list by promoting the elements of
+Turns a `++list` of lists into a single list by promoting the elements of
 each sublist into the higher.
 
 Accepts
@@ -26,6 +26,8 @@ Source
           +<
         (welp +<- $(+< +<+))
       --
+
+
 
 Examples
 --------

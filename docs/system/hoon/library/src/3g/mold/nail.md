@@ -7,7 +7,8 @@ Indicates parsing position `p`, and remaining text to be parsed `q`.
 Source
 ------
 
-        ++  nail  ,[p=hair q=tape]                              ::  parsing input
+            ++  nail  {p/hair q/tape}                               ::  parsing input
+
 
 Examples
 --------

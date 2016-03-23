@@ -2,8 +2,8 @@
 
 Parse to tuple
 
-Parsing composer: connects an [`++edge`]() `vex` with a following [`++rule`]() `sab`, producing
-a cell of both the results. See also: the monad applicator [;\~]() for a
+Parsing composer: connects an `++edge` `vex` with a following `++rule` `sab`, producing
+a cell of both the results. See also: the monad applicator ;\~ for a
 more detailed explanation.
 
 Accepts
@@ -23,7 +23,7 @@ Source
 
     ++  plug                                                ::  first then second
       ~/  %plug
-      |*  [vex=edge sab=_rule]
+      |*  {vex/edge sab/rule}
       ?~  q.vex
         vex
       =+  yit=(sab q.u.q.vex)

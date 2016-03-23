@@ -7,7 +7,7 @@ Computes the remainder of dividing `a` by `b`.
 Accepts
 -------
 
-`a` is an [atom]().
+`a` is an atom.
 
 `b` is an atom.
 
@@ -21,11 +21,11 @@ Source
 
     ++  mod                                                 ::  remainder
       ~/  %mod
-      |=  [a=@ b=@]
+      |:  [a=`@`1 b=`@`1]
       ^-  @
       ?<  =(0 b)
       (sub a (mul b (div a b)))
-    ::
+        
 
 Examples
 --------

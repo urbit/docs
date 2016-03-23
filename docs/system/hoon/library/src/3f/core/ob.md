@@ -30,20 +30,23 @@ An atom.
 Source
 ------
 
-    ++  feen                                              ::  conceal structure v2
-      |=  pyn=@  ^-  @
-      ?:  &((gte pyn 0x1.0000) (lte pyn 0xffff.ffff))
-        (add 0x1.0000 (fice (sub pyn 0x1.0000)))
-      ?:  &((gte pyn 0x1.0000.0000) (lte pyn 0xffff.ffff.ffff.ffff))
-        =+  lo=(dis pyn 0xffff.ffff)
-        =+  hi=(dis pyn 0xffff.ffff.0000.0000)
-        %+  con  hi
-        (add 0x1.0000 (fice (sub lo 0x1.0000)))
-      pyn
+      ++  feen                                              ::  conceal structure v2
+        |=  pyn/@  ^-  @
+        ?:  &((gte pyn 0x1.0000) (lte pyn 0xffff.ffff))
+          (add 0x1.0000 (fice (sub pyn 0x1.0000)))
+        ?:  &((gte pyn 0x1.0000.0000) (lte pyn 0xffff.ffff.ffff.ffff))
+          =+  lo=(dis pyn 0xffff.ffff)
+          =+  hi=(dis pyn 0xffff.ffff.0000.0000)
+          %+  con  hi
+          (add 0x1.0000 (fice (sub lo 0x1.0000)))
+        pyn
+      ::
+
 
 Examples
 --------
 
+XX
 
 ------------------------------------------------------------------------
 
@@ -54,7 +57,7 @@ XX
 Randomly permutes atoms that fit into 17 to 32 bits into one another, and
 randomly permutes the low 32 bits of atoms that fit into 33 to 64 bits;
 otherwise, passes the atom through unchanged. The permutation is the inverse of
-the one applied by [`++feen`]().
+the one applied by `++feen`.
 
 Accepts
 -------
@@ -69,16 +72,17 @@ An atom.
 Source
 ------
 
-    ++  fend                                              ::  restore structure v2
-      |=  cry=@  ^-  @
-      ?:  &((gte cry 0x1.0000) (lte cry 0xffff.ffff))
-        (add 0x1.0000 (teil (sub cry 0x1.0000)))
-      ?:  &((gte cry 0x1.0000.0000) (lte cry 0xffff.ffff.ffff.ffff))
-        =+  lo=(dis cry 0xffff.ffff)
-        =+  hi=(dis cry 0xffff.ffff.0000.0000)
-        %+  con  hi
-        (add 0x1.0000 (teil (sub lo 0x1.0000)))
-      cry
+      ++  fend                                              ::  restore structure v2
+        |=  cry/@  ^-  @
+        ?:  &((gte cry 0x1.0000) (lte cry 0xffff.ffff))
+          (add 0x1.0000 (teil (sub cry 0x1.0000)))
+        ?:  &((gte cry 0x1.0000.0000) (lte cry 0xffff.ffff.ffff.ffff))
+          =+  lo=(dis cry 0xffff.ffff)
+          =+  hi=(dis cry 0xffff.ffff.0000.0000)
+          %+  con  hi
+          (add 0x1.0000 (teil (sub lo 0x1.0000)))
+        cry
+      ::
 
 Examples
 --------
@@ -89,7 +93,6 @@ Examples
 
 XX
 
-Applies a 3-round Feistel-like cipher to randomly permute atoms in the range `0` to `2^32 - 2^16`. The construction given in Black and Rogaway is ideal for a domain with a size of that form, and as with a conventionel Feistel cipher, three rounds suffice to make the permutation pseudorandom.
 
 Accepts
 -------
@@ -104,15 +107,17 @@ An atom.
 Source
 ------
 
-    ++  fice                                              ::  adapted from
-      |=  nor=@                                           ::  black and rogaway
-      ^-  @                                               ::  "ciphers with
-      =+  ^=  sel                                         ::   arbitrary finite
-      %+  rynd  2                                         ::   domains", 2002
-      %+  rynd  1
-      %+  rynd  0
-      [(mod nor 65.535) (div nor 65.535)]
-      (add (mul 65.535 -.sel) +.sel)
+          ++  fice                                              ::  adapted from
+            |=  nor/@                                           ::  black and rogaway
+            ^-  @                                               ::  "ciphers with
+            =+  ^=  sel                                         ::   arbitrary finite
+            %+  rynd  2                                         ::   domains", 2002
+            %+  rynd  1
+            %+  rynd  0
+            [(mod nor 65.535) (div nor 65.535)]
+            (add (mul 65.535 -.sel) +.sel)
+          ::
+
 
 Examples
 --------
@@ -123,7 +128,7 @@ Examples
 
 XX
 
-Applies the reverse of the Feistel-like cipher applied by [`++fice`](). Unlike
+Applies the reverse of the Feistel-like cipher applied by `++fice`. Unlike
 a conventional Feistel cipher that is its own inverse if keys are used in
 reverse order, this Feistel-like cipher uses two moduli that must be swapped
 when applying the reverse transformation.
@@ -141,15 +146,18 @@ An atom.
 Source
 ------
 
-    ++  teil                                              ::  reverse ++fice
-      |=  vip=@
-      ^-  @
-      =+  ^=  sel
-      %+  rund  0
-      %+  rund  1
-      %+  rund  2
-      [(mod vip 65.535) (div vip 65.535)]
-      (add (mul 65.535 -.sel) +.sel)
+      ++  teil                                              ::  reverse ++fice
+        |=  vip/@
+        ^-  @
+        =+  ^=  sel
+        %+  rund  0
+        %+  rund  1
+        %+  rund  2
+        [(mod vip 65.535) (div vip 65.535)]
+        (add (mul 65.535 -.sel) +.sel)
+      ::
+
+
 
 Examples
 --------
@@ -160,7 +168,7 @@ Examples
 
 XX
 
-A single round of the Feistel-like cipher [`++fice`](). AES ([`++aesc`]()) is
+A single round of the Feistel-like cipher `++fice`. AES (`++aesc`) is
 used as the round function.
 
 Accepts
@@ -177,7 +185,7 @@ Source
 ------
 
     ++  rynd                                              ::  feistel round
-      |=  [n=@ l=@ r=@]
+      |=  [n/@ l/@ r/@]
       ^-  [@ @]
       :-  r
       ?~  (mod n 2)
@@ -193,7 +201,7 @@ Examples
 
 XX
 
-A single round of the Feistel-like reverse cipher [`++teil`]().
+A single round of the Feistel-like reverse cipher `++teil`.
 
 Accepts
 -------
@@ -208,13 +216,13 @@ A cell of two atoms.
 Source
 ------
 
-    ++  rund                                              ::  reverse round
-      |=  [n=@ l=@ r=@]
-      ^-  [@ @]
-      :-  r
-      ?~  (mod n 2)
-        (~(dif fo 65.535) l (en:aesc (snag n raku) r))
-      (~(dif fo 65.536) l (en:aesc (snag n raku) r))
+  ++  rund                                              ::  reverse round
+    |=  {n/@ l/@ r/@}
+    ^-  {@ @}
+    :-  r
+    ?~  (mod n 2)
+      (~(dif fo 65.535) l (en:aesc (snag n raku) r))
+    (~(dif fo 65.536) l (en:aesc (snag n raku) r))
 
 Examples
 --------
@@ -229,12 +237,12 @@ XX
 Accepts
 -------
 
-A list of atoms of [odor]() [`@ux`]() (hexadecimal).
+A list of atoms of odor `@ux` (hexadecimal).
 
 Produces
 --------
 
-Arbitrary keys for use with [`++aesc`]().
+Arbitrary keys for use with `++aesc`.
 
 Source
 ------

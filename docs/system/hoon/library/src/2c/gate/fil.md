@@ -2,16 +2,16 @@
 
 Fill bloqstream
 
-Produces an [atom]() by repeating `c` for `b` blocks of size `a`.
+Produces an atom by repeating `c` for `b` blocks of size `a`.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
-`c` is an [atom]().
+`c` is an atom.
 
 Produces
 --------
@@ -22,13 +22,14 @@ Source
 ------
 
     ++  fil                                                 ::  fill bloqstream
-      |=  [a=bloq b=@ c=@]
+      |=  {a/bloq b/@u c/@}
       =+  n=0
       =+  d=c
       |-  ^-  @
       ?:  =(n b)
         (rsh a 1 d)
       $(d (add c (lsh a 1 d)), n +(n))
+
 
 Examples
 --------

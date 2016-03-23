@@ -2,14 +2,14 @@
 
 Assemble non-zero
 
-Concatenates a list of [atom]()s `b` using blocksize `a`, producing an atom.
+Concatenates a list of atoms `b` using blocksize `a`, producing an atom.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
-`b` is a [`++list`]() of [atom]()s.
+`b` is a `++list` of atoms.
 
 Produces
 --------
@@ -21,7 +21,7 @@ Source
 
     ++  rap                                                 ::  assemble nonzero
       ~/  %rap
-      |=  [a=bloq b=(list ,@)]
+      |=  {a/bloq b/(list @)}
       ^-  @
       ?~  b  0
       (cat a i.b $(b t.b))

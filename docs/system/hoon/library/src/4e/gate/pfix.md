@@ -2,13 +2,13 @@
 
 Discard first rule
 
-Parsing composer: connects an [`++edge`]() `vex` with two subsequent [`++rule`]()s,
+Parsing composer: connects an `++edge` `vex` with two subsequent `++rule`s,
 ignoring the result of the first and producing the result of the second.
 
 Accepts
 -------
 
-`vex` is an [edge]().
+`vex` is an edge.
 
 Produces
 --------
@@ -20,8 +20,7 @@ Source
 
     ++  pfix                                                ::  discard first rule
       ~/  %pfix
-      (comp |*([a=* b=*] b))
-    ::
+      (comp |*({a/* b/*} b))
 
 Examples
 --------

@@ -2,33 +2,37 @@
 
 Coin format decode
 
-Unescape [`++span`]() `~~` as `~` and `~-` as `_`.
+Unescape `++span` `~~` as `~` and `~-` as `_`.
 
 Accepts
 -------
 
-`a` is a an [atom]().
+`a` is a an atom.
 
 Produces
 --------
 
-A [`++span`]() `@ta`.
+A `++span` `@ta`.
 
 Source
 ------
 
-    ++  wick                                                ::  coin format
-      |=  a=@
-      ^-  @ta
+    ++  wick                                                ::  knot format
+      |=  a/@
+      ^-  (unit @ta)
       =+  b=(rip 3 a)
-      %+  rap  3
-      |-  ^-  tape
-      ?~  b
-        ~
-      ?:  =('~' i.b)
-        ?~  t.b  !!
-        [?:(=('~' i.t.b) '~' ?>(=('-' i.t.b) '_')) $(b t.t.b)]
-      [i.b $(b t.b)]
+      =-  ?^(b ~ (some (rap 3 (flop c))))
+      =|  c/tape
+      |-  ^-  {b/tape c/tape}
+      ?~  b  [~ c]
+      ?.  =('~' i.b)
+        $(b t.b, c [i.b c])
+      ?~  t.b  [b ~]
+      ?-  i.t.b
+        $'~'  $(b t.t.b, c ['~' c])
+        $'-'  $(b t.t.b, c ['_' c])
+        @     [b ~]
+      ==
     ::
 
 Examples

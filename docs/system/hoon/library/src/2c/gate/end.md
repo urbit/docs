@@ -2,16 +2,16 @@
 
 Tail
 
-Produces an [atom]() by taking the last `b` blocks of size `a` from `c`.
+Produces an atom by taking the last `b` blocks of size `a` from `c`.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
-`c` is an [atom]().
+`c` is an atom.
 
 Produces
 --------
@@ -24,8 +24,9 @@ Source
 
     ++  end                                                 ::  tail
       ~/  %end
-      |=  [a=bloq b=@ c=@]
+      |=  {a/bloq b/@u c/@}
       (mod c (bex (mul (bex a) b)))
+
 
 Examples
 --------

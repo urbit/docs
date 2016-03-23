@@ -2,7 +2,7 @@
 
 Cord to tape
 
-Produce a [`++tape`]() from [`++cord`]().
+Produce a `++tape` from `++cord`.
 
 Accepts
 -------
@@ -19,11 +19,12 @@ Source
 
     ++  trip                                                ::  cord to tape
       ~/  %trip
-      |=  a=@  ^-  tape
+      |=  a/@  ^-  tape
       ?:  =(0 (met 3 a))
         ~
       [^-(@ta (end 3 1 a)) $(a (rsh 3 1 a))]
     ::
+
 
 Examples
 --------

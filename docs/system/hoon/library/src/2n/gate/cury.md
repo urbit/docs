@@ -5,22 +5,24 @@ Curry a gate, binding the head of its sample
 Accepts
 -------
 
-`a` is a [gate]().
+`a` is a gate.
 
-`b` is a [noun]().
+`b` is a noun.
 
 Produces
 --------
 
-A [gate]().
+A gate.
 
 Source
 ------
 
-    ++  cury
-      |*  [a=_|=(^ _*) b=*]
-      |*  c=_+<+.a
+    ++  cury                                                ::  curry left
+      |*  {a/_|=(^ **) b/*}
+      |*  c/_+<+.a
       (a b c)
+    ::
+
 
 Examples
 --------

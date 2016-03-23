@@ -14,16 +14,16 @@ Accepts
 Produces
 --------
 
-A [`++rule`]().
+A `++rule`.
 
 Source
 ------
 
     ++  stag                                                ::  add a label
       ~/  %stag
-      |*  [gob=* sef=_rule]
+      |*  {gob/* sef/rule}
       ~/  %fun
-      |=  tub=nail
+      |=  tub/nail
       =+  vex=(sef tub)
       ?~  q.vex
         vex

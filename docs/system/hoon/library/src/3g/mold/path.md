@@ -2,13 +2,14 @@
 
 Filesystem path
 
-A `++path` is a list of [`++span`]()s aka [`@ta`](). Used in
+A `++path` is a list of `++span`s aka `@ta`. Used in
 `%clay` and `%eyre` extensively.
 
 Source
 ------
 
-        ++  path  (list span)                                   ::  filesys location
+            ++  path  (list knot)                                   ::  filesys location
+
 
 Examples
 --------

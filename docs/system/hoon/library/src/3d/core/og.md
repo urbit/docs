@@ -3,14 +3,14 @@
 
     ++  og                                                  ::  shax-powered rng
       ~/  %og
-      |_  a=@
+      |_  a/@
 
 XX document
 
 ### `++rad`
 
       ++  rad                                               ::  random in range
-        |=  b=@  ^-  @
+        |=  b/@  ^-  @
         =+  c=(raw (met 0 b))
         ?:((lth c b) c $(a +(a)))
         ::
@@ -20,7 +20,7 @@ XX document
 ### `++rads`
 
       ++  rads                                              ::  random continuation
-        |=  b=@
+        |=  b/@
         =+  r=(rad b)
         [r +>.$(a (shas %og-s r))]
 
@@ -30,11 +30,11 @@ XX document
 
       ++  raw                                               ::  random bits
         ~/  %raw
-        |=  b=@  ^-  @
+        |=  b/@  ^-  @
         %+  can
           0
         =+  c=(shas %og-a (mix b a))
-        |-  ^-  (list ,[@ @])
+        |-  ^-  (list [@ @])
         ?:  =(0 b)
           ~
         =+  d=(shas %og-b (mix b (mix a c)))
@@ -47,7 +47,7 @@ XX document
 ### `++raws`
 
       ++  raws                                              ::  random bits continuation
-        |=  b=@
+        |=  b/@
         =+  r=(raw b)
         [r +>.$(a (shas %og-s r))]
       --

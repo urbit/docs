@@ -2,12 +2,12 @@
 
 Right-shift
 
-Right-shifts `c` by `b` blocks of size `a`, producing an [atom]().
+Right-shifts `c` by `b` blocks of size `a`, producing an atom.
 
 Accepts
 -------
 
-`a` is a block size (see [`++bloq`]()).
+`a` is a block size (see `++bloq`).
 
 `b` is an atom.
 
@@ -23,7 +23,7 @@ Source
 
     ++  rsh                                                 ::  right-shift
       ~/  %rsh
-      |=  [a=bloq b=@ c=@]
+      |=  {a/bloq b/@u c/@}
       (div c (bex (mul (bex a) b)))
 
 Examples

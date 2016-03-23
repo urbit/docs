@@ -9,7 +9,8 @@ that parsing rules match this with `_`.
 Source
 ------
 
-        ++  rule  |=(tub=nail `edge`[p.tub ~ ~ tub])            ::  parsing rule
+            ++  rule  _|=(nail *edge)                               ::  parsing rule
+
 
 Examples
 --------
