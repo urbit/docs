@@ -1,8 +1,8 @@
-# `:bank`, `$:`, "buccol", `{$bank p/(list moss)}`
+# `:bank, $:, "buccol", {$bank p/(list moss)}`
 
-The product: a mold which applies the tuple `p` to its sample.
+Tuple of molds
 
-Usage: define a record type.
+Product: a mold which applies the tuple `p` to its sample.
 
 Regular form: *running*.
 

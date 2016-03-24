@@ -1,8 +1,8 @@
-# `:shoe`, `$_`, "buccab", `{$shoe p/twig}`
+# `:shoe, $_, "buccab", {$shoe p/twig}`
 
-The product: a mold whose product is always `p`.
+Type as a single example.
 
-Usage: define a type as a single example.
+Product: a mold whose product is always `p`.
 
 Regular form: *1-fixed*.
 
