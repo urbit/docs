@@ -10,7 +10,7 @@ molds are often called "structures.")
 
 ## Overview
 
-While Hoon can't check this property statically, any true mold 
+While Hoon can't check this property statically, a proper mold 
 is a *rectifier*: an idempotent function across all nouns.  If
 the sample of a gate has span `%noun`, and its body obeys the
 constraint that for any x, `=((mold x) (mold (mold x)))`, it's a
@@ -129,7 +129,7 @@ Similarly, `%foo` is the number `7.303.014` or `0x6f.6f66`;
 Translation:
 
 ```
-{a b c}`   :bank(a b c)
+{a b c}    :bank(a b c)
 a/b        :coat(a b)
 ?(a b c)   :pick(a b c)
 _a         :shoe(a)
