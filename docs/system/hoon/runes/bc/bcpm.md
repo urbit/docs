@@ -1,30 +1,24 @@
-`$& bucpam` 
-===========
+# `:bush, $&, "bucpam", {$bush p/moss q/moss}`
 
 Union of two cells: one w/cellular head & other w/atomic head.
 
-Produces a [mold]() that's a union between two different kinds of noun: a cell whose head is a cell (`p`), and cell whose head is an atom (`q`). Its default value ([bunt]()) is the value of `q`. One important use of `$&` is to implement autocons in [`++twig`]().
+Product: a mold which applies `p` if the head of its sample 
+is a cell, `q` if the head of its sample is a cell.
 
-Produces
---------
+Regular form: *2-fixed*.
 
-A validator function that uses mold `p` to validate cells whose head is a cell, and `q` to validate cells whose head is an atom. Default value is the bunt of `q`.
+Example:
+```
+~zod:dojo> =a :book({$foo p/@ud q/@ud} {$bar p/@ud})
 
-Accepts
--------
+~zod:dojo> =b :bush({a a} a)
 
-A mold of a cell whose head is a cell `p` and a mold of a cell whose head is an atom `q`.
+~zod:dojo> (b [[%bar 33] [%foo 19 22]])
+[[%bar p=33] [%foo p=19 q=22]]
 
-Tall form
----------
+~zod:dojo> (b [%foo 19 22])
+[%foo p=19 q=22]
 
-    $&  p
-        q
-
-Wide form
----------
-
-    $&(p q)
-
-Examples
---------
+~zod:dojo> $:b 
+[%bar p=0]
+```

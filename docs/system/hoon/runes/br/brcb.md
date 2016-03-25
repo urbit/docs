@@ -2,37 +2,20 @@
 sort: 7
 ---
 
-`|_ barcab`
-===========
+# `:door`, `|_`, "buccab", `{$door p/moss q/(map term twig)}`
 
 Door: core with sample (input values).
 
-Similar to [`|%`](), but also takes input data (aka [sample]())
+Product: a core whose sample is `p` and arms are `q`.
+
+Regular form: *1-fixed*, then *battery*
+
+Similar to `|%`, but also takes input data (aka sample)
 available within the entire core. Cores of this type are called doors.
 Moreover, `|_` only accepts [dry or `%elm`]() arms--in other words,
 type checking on these arms is performed on the input before computation.
 
-Produces
---------
-
-Twig: `[%brcb p=twig q=(map term foot)]`
-
-Accepts
--------
-
-`p` is a a [mold](). `q` is a [`++map`]() with [`++term`]() keys and
-[`++foot`]() values.
-
-Tall form
----------
-
-    |_  p
-    ++  p.n.q
-      q.n.q
-    --
-
-Examples
---------
+Examples:
 
     /~zod/try=> =mol
                   |_  a=@ud

@@ -1,44 +1,26 @@
-`$: buccol`
-===========
+# `:bank, $:, "buccol", {$bank p/(list moss)}`
 
-Tuple of molds.
+Tuple of molds
 
-Produces
---------
+Product: a mold which applies the tuple `p` to its sample.
 
-A validator function that validates a tuple of nouns against a tuple of [mold]()s.
+Regular form: *running*.
 
-Accepts
---------
+Irregular form:
+```
+{a b c}     :bank(a b c)
+```
 
-`p` is a list of molds.
+Example:
+```
+~zod:dojo> =a :bank(p/@ud q/@tas)
 
-Tall form
----------
+~zod:dojo> (a 33 %foo)
+[p=33 q=%foo]
 
-    $:  i.p
-        i.t.p
-        i.t.t.p
-    ==
+~zod:dojo> `a`[33 %foo]
+[p=33 q=%foo]
 
-Wide form
----------
-
-    $:(i.p i.t.p i.t.t.p)
-
-Irregular form
---------------
-
-    {i.p i.t.p i.t.t.p}
-
-Examples
---------
-
-    ~zod/try=> *[1 2]
-    [%1 %2]
-    ~zod/try=> (,$:(1 2) "ham")
-    [%1 %2]
-    ~zod/try=> (,[1 2] "ham")
-    [%1 %2]
-    ~zod/try=> (,[@ 2] "ham")
-    [104 %2]
+~zod:dojo> $:a
+[p=0 q=%$]
+```

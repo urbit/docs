@@ -1,42 +1,23 @@
-`$? bucwut` 
-===========
+# `:pick, $?, "bucwut", {$? p/(list moss)}`
 
-Union of types.
+Generalized type union.
 
-Produce a union between a non-empty list of [mold]()s `p`. The default value ([bunt]()) is the value of the first element.
+Product: a mold which tries each of the alternatives in `p`.
 
-Produces
---------
+Note: Use `:pick` only if none of `:book` (`$%`), `:claw` (`$@`) or `:bush` (`$&`) applies.
 
-A validator function that keeps trying to validate a value using every mold in `p` from left to right. On a success, the value is produced. If no mold in `p` succeeds, the default value of the last element in `p` is produced.
+Regular form: *running*.
 
-Accepts
--------
+Example:
+```
+~zod:dojo> =a :pick($foo $bar $baz)
 
-`p` is a [++list]() of mold.
+~zod:dojo> (a %baz)
+%baz
 
-Tall form
----------
+~zod:dojo> (a [37 45])
+%foo
 
-    $?  p
-        q
-    ==
-
-Irregular form
---------------
-
-    ?(p q)
-
-Examples
---------
-
-    ++  base  ?([%atom p=odor] %noun %cell %bean %null)     ::  axils, @ * ^ ? ~
-
-`++base`, `?` (the irregular form of `$?`) specifies a list of
-orthoganal cases for the `%axil` mold.
-
-    ~zod/try=> *?(%a %b %c)
-    %a
-    ~zod/try=> :type; *?(%a %b %c)
-    %a
-    {%a %b %c}
+~zod:dojo> $:a
+$foo
+```

@@ -1,5 +1,6 @@
 ---
 anchor: none
+footer: true
 ---
 
 <div class="lead">
@@ -8,5 +9,5 @@ anchor: none
 </div>
 
 <div class="sections lead-offset">
-    <kids></kids>
+    <kids grid="true"></kids>
 </div>

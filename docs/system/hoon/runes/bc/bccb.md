@@ -1,52 +1,26 @@
-`$_ buccab`
-===========
+# `:shoe, $_, "buccab", {$shoe p/twig}`
 
-Unbunt (create mold from example).
+Type as a single example.
 
-Uses a [++twig]() `p` to produce a [mold]() for the type (span)
-of `p`.  The validator function has a default value of `p`. Used
-when either (1) you want the default value of a mold to be
-anything other than the standard default value ([bunt]()), or (2)
-you are referring to a type (span) that is difficult or
-cumbersome to describe in any way other than by example.
+Product: a mold whose product is always `p`.
 
-Produces
---------
+Regular form: *1-fixed*.
 
-A mold whose span is the span of `p`.
+Irregular form:
+```
+_%foo  :shoe(%foo)
+```
 
-Accepts
--------
+Example:
+```
+~zod:dojo> =a :shoe([%foobar %moobaz])
 
-`p` is a twig.
+~zod:dojo> (a %foo %bar)
+[%foobar %moobaz]
 
-Tall form
----------
+~zod:dojo> `a`[%foobar %moobaz]
+[%foobar %moobaz]
 
-    $_  p
-
-Wide form
----------
-
-    $_(p)
-
-Irregular form
---------------
-
-    _p
-
-Examples
---------
-
-    ~zod/try=> *_12
-    12
-    ~zod/try=> *@
-    0
-    ~zod/try=> :type; *_12
-    12
-    @ud
-    ~zod/try=> ^-(_(add 2 2) 'a')
-    97
-
-Here, see how the default value of `_12` is 12, whereas the
-default value of `@`--the type ([span]()) of `12`--is `0`.
+~zod:dojo $:a
+[%foobar %moobaz]
+```
