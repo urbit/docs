@@ -2,35 +2,15 @@
 sort: 4
 ---
 
-`|- barhep`
-===========
+# `:loop, |-, "barfas", {$trap p/twig}`
 
 Trap: automatically called function with no arguments.
 
-A function with no arguments that's automatically called when constructed. More specifically, it produces a [dry]() [%gold]() [core]() whose single [arm]() [$]() (the empty name) is automatically called when the core is constructed. Similar to creating and calling an anonymous function and is quite commonly used for loops or recursion.
+Produces: a core whose single arm $ (the empty name) is automatically called when the core is constructed. Similar to creating and calling an anonymous function and is quite commonly used for loops or recursion.
 
-Produces
---------
+Regular form: *1-fixed*
 
-[`++twig`]: `[%brhp p=twig]`
-
-Accepts
--------
-
-`p` is a twig
-
-Tall form
----------
-
-    |-  p
-
-Wide form
----------
-
-    |-(p)
-
-Examples
---------
+Examples:
 
     /~zod/try=> |-(42)
       42
@@ -51,7 +31,7 @@ producing a nested tuple.
 
     ++  dec                                                 ::  decrement
       ~/  %dec
-      |=  a=@
+      |=  a/@
       ~|  %decrement-underflow
       ?<  =(0 a)
       =+  b=0

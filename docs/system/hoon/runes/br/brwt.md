@@ -2,51 +2,29 @@
 sort: 5
 ---
 
-`|? barwut`
-===========
+# `:tray`, `|?`, "barwut", `{$tray p/twig}`
 
 `|-` with hidden context.
 
-Similar to `|-` except for that the [sample]() and
-[context]() of the core being passed is hidden in order to avoid
-type conflicts with a core that has a different [sample]() and
-context. In urbit language, `|?` produces a [dry]() [%lead]() trap. 
+Produces: a lead trap with expression `p` whose context is hidden to avoid type conflicts.
 
-Produces
---------
+Examples:
 
-Twig: `[%brwt q=twig]`
+            > |?(20)
+        < 1?aoy
+          { {a/^#3.?({i/@ud t/#3} ^#2.?({i/@ud t/#2} it(@ud))) our/@p now/@da eny/@uvI}
+            $~
+            <282.ucw 42.juj 402.arm 110.jyx 1.ztu $151>
+          }
+        >    ~zod/try=> +:|?(20)
+        > +:|.(20)
+        [ [ a=[i=1 t=[i=2 t=[i=3 t=~]]]
+            our=~sivtyv-barnel
+            now=~2016.3.29..04.14.18..9a26
+            eny=0v16.dkepv.qm6er.7v2mh.kcdva.oisv9.th4dl.era7v.pj315.fd6la.76d34
+          ]
+          ~
+          <282.ucw 42.juj 402.arm 110.jyx 1.ztu $151>
+        ]
 
-Accepts
--------
-
-`p` is a [++twig]().
-
-Tall form
----------
-
-    |?  p
-
-Wide form
----------
-
-    |?(p)
-
-Examples
---------
-
-    ~zod/try=> |?(20)
-    < 1?lld
-      [[[@da @ta] [@p @ta] *''] @n <250.yum 41.int 414.hhh 100.xkc 1.ypj %164>]
-    >
-    ~zod/try=> +:|?(20)
-    ! -axis.3
-    ! peek-park
-    ! exit
-    ~zod/try=> +:|.(20)
-    [ [[~2014.10.22..19.39.41..0440 ~.~2014.10.22..19.39.41..0440] [~zod ~.~zod] <||>]
-      ~
-      <250.yum 41.int 414.hhh 100.xkc 1.ypj %164>
-    ]
-
-A lead core's payload cannot be read or written.
+As demonstrated above, a lead core's payload cannot be read or written.

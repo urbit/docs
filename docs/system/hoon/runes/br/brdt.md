@@ -2,34 +2,15 @@
 sort: 3
 ---
 
-`|. bardot`
-===========
+# `:trap. |., "bardot", {$trap p/twig}`
 
-Trap: `|=` with no argument & not called automatically.
+Trap: `|=` with no argument; expression not evaluated automatically.
 
-Similar to `|=` except that it takes no arguments and is not automatically
+Produces: a core with a single arm `$` that it takes no arguments and is not automatically
 called (you must activate it with the irregular wideform of `%-`, which is
-`()`. More specifically, its single arm [$]() (the empty name) is not automatically called when the [core]() is constructed. The core produced is both [dry] and [`%gold`](). Used to prevent thunk. XX
+`()`).
 
-Produces
---------
-
-Twig: `[%brdt p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-    |.  p
-
-Wide form
----------
-
-    |.(p)
+Regular form: *1-fixed*
 
 Examples
 --------
@@ -68,7 +49,7 @@ Examples
 
 This is a simple example. We assign a shell variable `a` to be a trap
 that simply produces the atom `42`. Printing `a` prints the core and its
-context. Calling `a` using `(`, the irregular form of [`%-`](), produces
+context. Calling `a` using `(`, the irregular form of `%-`, produces
 its value. As does pulling the arm `$` from inside it using `$:a`.
 
     /~zod/try=> 

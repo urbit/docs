@@ -2,42 +2,20 @@
 sort: 10
 ---
 
-`|* bartar`
-===========
+# `:gill`, `|*`, "bartar", `{$gill p/twig q/twig}`
 
-Wet function.
+Function with arguments; type checking at call time
 
-Similar to `|=` except that it does type checking at
-call time, and that the product type is checked to be the same as
-the input type (in other words it's [wet]()), rather than the input ([sample]()) [mold]().
+Produces: a gate with argument `p` and body `q`. Type checking happens at
+call time. 
 
-Produces
---------
+Regular form: *1-fixed*, followed by Battery
 
-Twig: `[%brtr p=mold q=twig]`
+Examples:
 
-Accepts
--------
-
-`p` is a mold. `q` is a [++twig]().
-
-Tall form
----------
-
-    |*  p
-        q
-
-Wide form
----------
-
-    |*(p q)
-
-Examples
---------
-
-    ~zod/try=> %.('c' |*(a=@ a))
+    ~zod/try=> %.('c' |*(a/@ a))
     'c'
-    ~zod/try=> %.('c' |=(a=@ a))
+    ~zod/try=> %.('c' |=(a/@ a))
     99
 
 This is a concise way of understanding the difference between `|*` and
@@ -48,7 +26,7 @@ input sample type.
 
     ++  flop                                                ::  reverse
           ~/  %flop
-          |*  a=(list)
+          |*  a/(list)
           =>  .(a (homo a))
           ^+  a
           =+  b=`_a`~
@@ -57,6 +35,6 @@ input sample type.
             b
           $(a t.a, b [i.a b])
 
-In [`++flop`](), `|*` is used so the type information within the passed
+In `++flop`, `|*` is used so the type information within the passed
 in list is maintained. Without a `|*`, any cords would be cast to nouns
 as in our previous example.

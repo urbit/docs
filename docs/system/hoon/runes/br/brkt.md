@@ -2,36 +2,16 @@
 sort: 6
 ---
 
-`|^ barket`
-===========
+# `:cork`, `|^`, "barket", `{$cork p/twig q/(map term foot)}`
 
-Same as `|-` except that it can contain internal arms.
+Same as `|-` (expression evaluated automatically) except that it can contain internal arms.
 
-`|^` is a synthetic rune that produces and then calls a [`%gold`]()
-[book]() with sample `p` as a [`%$(p)`](), and a list of [arm]()s `q`.
+Produces a `%gold` (XX elaborate on what gold, book mean?)  book with sample `p` as a `%$(p)`, and a list of arms `q`.
 `q` must be closed with a `--`.
 
-Produces
---------
+Regular form: *1-fixed*
 
-Twig: `[%brkt p=twig q=(map term foot)]`
-
-Accepts
--------
-
-`p` is a [++twig](). `q` is a [`map`]() with [`++term`]() keys and
-[`++foot`]() values, which are called arms.
-
-Tall form
----------
-
-    |^  p
-    ++  p.n.q
-      q.n.q
-    --
-
-Examples
---------
+Examples:
 
     /~zod/try=> =+  a=21
                 |^  [square double]
@@ -46,15 +26,15 @@ commonly used inside another gate or core.
 
     ++  mum                                                 ::  mug with murmur3
       ~/  %mum
-      |=  a=*
+      |=  a/*
       |^  (trim ?@(a a (mix $(a -.a) (mix 0x7fff.ffff $(a +.a)))))
       ++  spec                                              ::  standard murmur3
-        |=  [syd=@ key=@]
+        |=  [syd/@ key/@]
         ?>  (lte (met 5 syd) 1)
         =+  ^=  row
-            |=  [a=@ b=@] 
+            |=  [a/@ b/@] 
             (con (end 5 1 (lsh 0 a b)) (rsh 0 (sub 32 a) b))
-        =+  mow=|=([a=@ b=@] (end 5 1 (mul a b)))
+        =+  mow=|=([a/@ b/@] (end 5 1 (mul a b)))
         =+  len=(met 5 key)
         =-  =.  goc  (mix goc len)
             =.  goc  (mix goc (rsh 4 1 goc))
@@ -63,7 +43,7 @@ commonly used inside another gate or core.
             =.  goc  (mow goc 0xc2b2.ae35)
             (mix goc (rsh 4 1 goc))
         ^=  goc
-        =+  [inx=0 goc=syd]
+        =+  [inx/0 goc/syd]
         |-  ^-  @
         ?:  =(inx len)  goc
         =+  kop=(cut 5 [inx 1] key)
@@ -76,7 +56,7 @@ commonly used inside another gate or core.
         $(inx +(inx))
       ::
       ++  trim                                              ::  31-bit nonzero
-        |=  key=@
+        |=  key/@
         =+  syd=0xcafe.babe
         |-  ^-  @
         =+  haz=(spec syd key)
@@ -85,5 +65,5 @@ commonly used inside another gate or core.
       --
     ::
 
-[`++mum`]() is a hashing gate, which uses two helper arms to compute
+`++mum` is a hashing gate, which uses two helper arms to compute
 its results. The `|^` at the top performs the computation.

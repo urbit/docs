@@ -2,45 +2,16 @@
 sort: 2
 ---
 
-`|= bartis`
-===========
+# `:gate`, `|=`, "bartis", `{$gate p/twig q/twig}`
 
 Function with argument(s).
 
-`|=`, is a synthetic rune that produces a [dry]() [`%gold`]() gate with
-sample [`$*(p)`](), arm `q`. A gate is a core with one arm, [`$`](), the
-empty name. `|=` checks its input sample against its [mold](), `p`.
-
-`|=` is similar to a function that takes a defined input and produces
-the result of some computation. `|=` differs from `|*` in that its
-typechecking occurs at compile-time to ensure that all inputs match its
-sample mold.
-
-Produces
---------
-
-Twig: `[%brts p=mold q=twig]`
-
-Accepts
--------
-
-`p` is a mold. `q` is a twig.
-
-Tall form
----------
-
-    |=  p
-        q
-
-Wide form
----------
-
-    |=(p q)
+Produces: a dry `%gold` gate with sample `$*(p)`, arm `q`. A gate is a core with one arm, `$`, the
+empty name.
 
 Examples
---------
 
-    ~zod/try=> =inc |=(a=@ +(a))
+    ~zod/try=> =inc |=(a/@ +(a))
     ~zod/try=> (inc 20)
     21
 
@@ -50,13 +21,13 @@ arguments.
 
     ++  add                                                 ::  add
           ~/  %add
-          |=  [a=@ b=@]
+          |=  [a/@ b=@]
           ^-  @
           ?:  =(0 a)
             b
           $(a (dec a), b +(b))
 
-In [++add](), from `hoon.hoon`, `|=` creates a gate whose sample takes
+In ++add, from `hoon.hoon`, `|=` creates a gate whose sample takes
 two atoms labeled `a` and `b`, and whose arm evaluates an expression
 that produces the sum of the atoms by decrementing `a` until it is `0`
 and incrementing `b` at each step. Here, `$` is used for recursion,
