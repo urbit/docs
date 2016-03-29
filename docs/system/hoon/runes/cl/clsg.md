@@ -1,40 +1,13 @@
-`:~ colsig`
+# `:conl`, `:~`, "colsig", `{$conl p/(list twig)}`
 ===========
 
 Null-terminated tuple of n elements.
 
-Closed with `==`.
+Produces: tuple of input elements. Closed with `==` in tall form.
 
-Produces
---------
+Regular form: *running*
 
-Twig: `[%clsg p=tusk]`
-
-Accepts
--------
-
-`p` is a [`++tusk`](), a list of [`++twig`]()s.
-
-Tall form
----------
-
-    :~  i.p
-        i.t.p
-        i.t.t.p
-    ==
-
-Wide form
----------
-
-    :~(i.p i.t.p i.t.t.p)
-
-Irregular form
---------------
-
-    ~[i.p i.t.p i.t.t.p]
-
-Examples
---------
+Examples:
 
     /~zod/try=> :~(5 3 4 2 1)
     [5 3 4 2 1 ~]
@@ -61,7 +34,7 @@ This is the most straightforward case of `:~`, producing a tuple in wide, irregu
     ~[1 2 4 3 5]
 
 In this example we use `%-` to pass the results of our previous example
-to [`++limo`](), which creates a [`++list`](), and [`++flop`](), which
+to `++limo`, which creates a `++list`, and `++flop`, which
 reverses its order. This example shows how `:~` is commonly useful.
 Null-terminated tuples are easily converted to lists, which are
 frequently encountered in hoon.

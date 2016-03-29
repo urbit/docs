@@ -1,33 +1,12 @@
-`:_ colcab`
-===========
+# `:scon`, `:_`, "colcab", `{$scon p/twig q/twig}`
 
 Inverted tuple of `p` `q`.
 
-Exists for code readability and organization. See the [backstep]() convention.
+Produces: a cell of `[q p]`. Exists for code readability and organization. See the backstep convention.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%clcb p=twig q=twig]`
-
-Accepts
--------
-
-`p` is a [++twig](). `q` is a twig.
-
-Tall form
----------
-
-    :_  p
-        q
-
-Wide form
----------
-
-    :_(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> :_(1 2)
     [2 1]
@@ -38,7 +17,7 @@ reverse order.
     ~zod/try=> `tape`:_(~ 'a')
     "a"
 
-Since a [`++tape`]() is a null-terminated list of characters, casting
+Since a `++tape` is a null-terminated list of characters, casting
 the result of `:_(~ 'a')` to a `tape` produces `"a"`.
 
     /~zod/try=> 
