@@ -1,38 +1,11 @@
-`.* dottar`
-===========
+# `:bump`, `{$bump p/twig}`
 
 Compute nock.
 
-Computes nock expressions. Runs nock formula `q` on
+Computes: nock expressions. Runs nock formula `q` on
 nock subject `p`.
 
-`.*` is a natural rune that calculates the nock of subject `p` and
-formula `q`. `.*` makes it possible to compute nock formulas in user
-space.
-
-Produces
---------
-
-Twig: `[%dttr p=twig q=twig]`
-
-Accepts
--------
-
-`p` is a [twig](). `q` is a [twig]().
-
-Tall form
----------
-
-    .*  p
-    q
-
-Wide form
----------
-
-    .*(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> .*([20 30] [0 2])
     20
@@ -47,4 +20,4 @@ Examples
     ~zod/try=> .*(~ [5 1^5 [4 1^3]])
     1
 
-See the [nock tutorial]() for further discussion of Nock.
+See the nock tutorial for further discussion of Nock.

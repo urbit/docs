@@ -1,38 +1,16 @@
-`.+ dotlus`
-===========
+# `:bump`, `.+` "dotlus" `{$bump p/twig}`
 
 Increments an atom.
 
-`.+` is a natural rune that generates nock operator `4`, which
-increments an operand that's an atom.
+Generates: nock operator `4`, which increments atom `p`.
 
-Accepts
---------
+Regular form: *1-fixed*
 
-Twig: `[%dtls p=twig]`
+Irregular form:
 
-Sample
-------
-
-`p` is a [`++twig`]()
-
-Tall form
----------
-
-    .+  p
-
-Wide form
----------
-
-    .+(p)
-
-Irregular form
---------------
-
-    +(p)
+`+(6)   .+(6)`
 
 Examples
---------
 
     ~zod/try=> +(6)
     7
