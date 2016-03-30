@@ -1,48 +1,16 @@
-`;: semcol`
-====
+# ``, `;:`, "semcol" `{$wad p/twig q/(list twig)}`
 
 Fold over tuple.
 
 Apply a binary function `p` to a tuple `q` with n elements. Similar to folding over the tuple `q`.
 
-Syntax
-======
+Regular form: *running*
 
-`;:` is a synthetic rune that applies `p`, a binary gate, to the n-ary
-tuple `q`. `;:` is similar to folding over the tuple `q`, producing the
-final result.
+Irregular form:
 
-Produces
---------
+`:(p i.q i.t.q i.t.t.q)   ;:(p i.q i.t.q i.t.t.q)`
 
-Twig: `[%smcl p=twig q=tusk]`
-
-Accepts
--------
-
-`p` is a [`++twig`](). `q` is a [`++tusk`](), a list of twigs.
-
-Tall form
----------
-
-    ;:  p
-      i.q
-      i.t.q
-      i.t.t.q
-    ==
-
-Wide form
----------
-
-    ;:(p i.q i.t.q i.t.t.q)
-
-Irregular form
---------------
-
-    :(p i.q i.t.q i.t.t.q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> (add 3 (add 4 5))
     12
@@ -61,5 +29,5 @@ gate `++add`.
     ~zod/try=> `tape`(weld "foo" (weld "bar" "baz"))
     "foobarbaz"
 
-Following on from our previous example, using `;:` with [`++weld`]() is
+Following on from our previous example, using `;:` with `++weld` is
 convenient for concatenating multiple strings.

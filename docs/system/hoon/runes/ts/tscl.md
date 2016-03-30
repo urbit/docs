@@ -1,38 +1,13 @@
-`=: tiscol`
-====
+# `:fix`, `=:`, "tiscol", `{$fix p/(list (pair wing twig)) q/twig}`
 
 List of changes.
 
 Makes a list of changes `p` to the subject and then evaluates `q`.
-Allows you to change values in your context (not in the hoon sense).
+Useful when you need to make a batch of changes to your subject.
 
+Regular form: *jogging*
 
-`=:` is a synthetic rune that produces `q` with the subject modified by
-the list of changes in `p` which must be terminated by a `==`. `=:` is
-useful when you need to make a batch of changes to your subject.
-
-Produces
---------
-
-Twig: `[%tscl p=tram q=twig]`
-
-Accepts
--------
-
-`p` is a [`++tram`](), a list of [`++wing`]()s and twigs. `q` is a
-[twig]().
-
-Tall form
----------
-
-    =:  p.i.p      q.i.p
-        p.i.t.p    q.i.t.p
-        p.i.t.t.p  q.i.t.t.p
-      ==
-      q
-
-Examples
---------
+Examples:
 
     ~zod/try=> =+  a=[b=1 c=2]
                =:  c.a  4

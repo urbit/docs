@@ -1,35 +1,14 @@
-`=> tisgar`
-====
+# `:per`, `=>`, "tisgar" `{$per p/twig q/twig}`
 
-Product as subject.
+`p` as subject of `q`.
 
-`=>` is a natural rune that uses the product of `p` as the subject of
-`q`. `=>` is the inverse of `=<`. Use `=>` when your `p` isn't too long
-and `=>` makes for more readable code.
+Uses the product of `p` as the subject of formula `q`. For code readability,
+use `=>` when your `p` isn't as long as `q`, and `=<` when `q` is longer than
+`p`.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%tsgr p=twig q=twig]`
-
-Accepts
--------
-
-`p` and `q` are [twig]()s.
-
-Tall form
----------
-
-    =>  p
-        q
-
-Wide form
----------
-
-    =>(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> =>([a=1 b=2 c=3] b)
     2
