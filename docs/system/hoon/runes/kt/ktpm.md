@@ -1,46 +1,17 @@
-`^& ketpam`
-===========
+# `:zinc`, `^&`, "ketpam", `{$zinc p/twig}`
 
 Convert `%gold` to `%zinc`.
 
-`^&` is a natural rune that converts a `%gold` core into a `%zinc` core.
-At present, `%zinc` cores are not commonly used.
+Converts a `%gold` core `p` into a `%zinc` core.
 
-See also
---------
-
-ketbar, `^|`, %ktbr
-============================
-
-Produces
---------
-
-Twig: `[%ktpm p=twig]`
-
-Sample
-------
-
-`p` is a [twig]().
-
-Tall form
----------
-
-    ^&  p
-
-Wide form
----------
-
-    ^&(p)
-
-Irregular form
---------------
-
-None
-
-Examples
---------
+Examples:
 
     ~zod/try=> |=(@ 1)
-    <1.gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %164>]>
+    < 1.odf
+      {@ {our/@p now/@da eny/@uvI} $~ <282.ucw 42.juj 402.arm 110.jyx 1.ztu $151>}
+    >
     ~zod/try=> ^&(|=(@ 1))
-    <1&gcq [@ @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %164>]>
+    < 1&odf
+      {@ {our/@p now/@da eny/@uvI} $~ <282.ucw 42.juj 402.arm 110.jyx 1.ztu $151>}
+    >
+

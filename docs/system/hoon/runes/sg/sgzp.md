@@ -1,40 +1,10 @@
-`~! sigzap`
-===========
+# `:peep`, `~!`, "sigzap", `{$peep p/twig q/twig}`
 
 Print type on compilation fail.
 
-`~!` is a natural rune for debugging uses only, semantically equivalent
-to [`++twig`] `q`. If compilation fails within `q`, `~!` will show the
-type of `p` on the stacktrace.
+Produces the type of `p` on the stacktrace if `q` fails. Used only for debugging purposes.
 
-Produces
---------
-
-Twig: `[%sgzp p=twig q=twig]`
-
-Sample
-------
-
-`p` is a twig, `q` is a twig.
-
-Tall form
----------
-
-    ~!  p
-        q
-
-Wide form
----------
-
-    ~!(p q)
-
-Irregular form
---------------
-
-None
-
-Examples
---------
+Examples:
 
     ~zod/try=> a
     ! -find-limb.a
@@ -55,5 +25,5 @@ of `'foo'`, `@t`.
     ! find-none
     ! exit
 
-Again, we use our unassigned variable `a` and the [cube]() `%foo`, whose
+Again, we use our unassigned variable `a` and the cube `%foo`, whose
 type is in fact `%foo`.

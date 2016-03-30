@@ -1,43 +1,14 @@
-`~< siggal`
-===========
+# `~<`, "siggal", `{$thin p/$@(term {p/term q/twig}) q/twig}`
 
 Hint to product.
 
-`~<` is a synthetic rune that applies arbitrary [hint]() `p` to the
+`~<` is a synthetic rune that applies arbitrary hint `p` to the
 product of `q`. `~<` is similar to `~>`, but computes `q` before
 applying the hint `p`.
 
-Produces
---------
+Irregular form: *2-fixed*
 
-Twig: `[%sggl p=$|(term [p=term q=twig]) q=twig]`
-
-Accepts
--------
-
-`p` is either a [`++term`]() or a `++term` twig pair. `q` is a twig.
-
-Tall form
----------
-
-`p=%foo`:
-
-        ~<  %foo
-        q
-
-`p=[p=%foo q=bar]`:
-
-        ~<  %foo.bar
-        q
-
-Wide form
----------
-
-    ~<(%foo q)
-    ~<(%foo.bar q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> (make '~<(%a 42)')
     [%7 p=[%1 p=42] q=[%10 p=97 q=[%0 p=1]]]

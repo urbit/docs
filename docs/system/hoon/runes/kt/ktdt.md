@@ -1,5 +1,4 @@
-`^. ketdot`
-===========
+# `:ward`, `^.`, "ketdot", `{$ward p/twig q/twig}`
 
 Cast `q` to product type of `p`.
 
@@ -8,26 +7,11 @@ as casting `q` to the product type of `p`. Useful when you want
 to cast to the type of a function that you don't want to actually
 run at runtime.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%ktdt p=twig q=twig]`
+Examples:
 
-Accepts
--------
-
-`p` is a [`++twig`](). `q` is a twig.
-
-Tall form
----------
-
-    ^.  p
-        q
-
-Examples
---------
-
-    /~zod/try=> =cor  |=  [~ a=@]
+    /~zod/try=> =cor  |=  [~ a/@]
           [~ p=a]
     changed %cor
     /~zod/try=> ^.(cor [~ 97])

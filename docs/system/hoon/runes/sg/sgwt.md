@@ -1,52 +1,13 @@
-`~? sigwut`
-===========
+# `:warn`, `~?`, "sigwut", `{$warn p/@ud q/twig r/twig s/twig}`
 
 PrintF if `q` true.
 
 Same as `~&` except for that `r` is printed to the console if and only
-if `q` evaluates to true.
+if `q` evaluates to true. `p` is the priority level between 1-3 (defaults to 0) and is both optional and rarely used.
 
-Produces
---------
+Regularm form *4-fixed*
 
-Twig: `[%sgwt p=@ud q=twig r=twig s=twig]`
-
-Accepts
--------
-
-`p` is a [`@ud`](). `q` is a [`++twig`](). `r` is a twig. `s` is a
-twig.
-
-Tall form
----------
-
-Priority 0 (debug):
-
-        ~&  q
-        r
-
-Priority 1 (notice):
-
-        ~&  >  q
-        r
-
-Priority 2 (warning):
-
-        ~&  >>  q
-        r
-
-Priority 3 (alarm):
-
-        ~&  >>>  q
-        r
-
-Wide form
----------
-
-    ~&(>> q r)
-
-Examples
---------
+Examples:
 
     ~zod/try=> ~?((gth 1 2) 'oops' ~)
     ~

@@ -1,36 +1,13 @@
-`^? ketwut`
-===========
+# `:lead`, `^?` "ketwut", `{$lead p/twig}`
 
-Convert `%gold` to `%lead`.
+Convert core with unreadable sample to have unreadable sample and context.
 
-Used to convert a [core]() whose context is unreadable (aka
-a %gold core) to a core both of whose context and sample are
-unreadable (aka a %lead core). XX
+Converts a %gold core `p` to a %lead core.
 
+Regular form: *1-fixed*
 
 
-Produces
---------
-
-Twig: `[%ktwt p=twig]`
-
-Sample
-------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-    ^?  p
-
-Wide form
----------
-
-    ^?(p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> |=(@ 1)
     <1.gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %164>]>

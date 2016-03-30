@@ -1,34 +1,13 @@
-`~= sigtis`
-===========
+# `:ddup`, `~=` "sigtis", `{$ddup p/twig q/twig}`
 
 Hint to avoid duplication.
 
 Hints to the interpreter that `q` may produce a noun equal to the
 already existing `p` in order to avoid storing the same noun twice.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig `[%sgts p=twig q=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`](). `q` is a twig.
-
-Tall form
----------
-
-    ~=  p
-        q
-
-Wide form
----------
-
-    ~=(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> 20
     20
