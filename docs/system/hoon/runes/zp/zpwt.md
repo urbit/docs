@@ -1,35 +1,12 @@
-`!? zapwut`
-====
+# `:need`, `!?`, "zapwut", `{$need p/$@(p/@ {p/@ q/@}) q/twig}`
 
 Restrict version.
 
-`!?` is a synthetic rune that enforces a Hoon version restriction.
+Enforces a Hoon version restriction. XX help
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%zpwt p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-To declare code that runs only in Hoon 164K or newer:
-
-    !?  164
-    q
-
-To declare code that runs only in 164K through 161K:
-
-    !?  [164 161] 
-    q
-
-Examples
---------
+Examples: XX help
 
     ~zod/try=> !?(264 (add 2 2))
     4

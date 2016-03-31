@@ -1,33 +1,14 @@
-`!! zapzap`
-====
+# `:fail`, `!!`, "zapzap" `{$fail $~}`
 
 Crash.
 
-`!!` is a natural rune that always crashes.
+Always causes a crash. Frequently used as sentinel, especially when you don't want the type system to
+give you type fails before you've written every possible branch of the
+computation.
 
-Always causes a crash. Useful when testing unfinished code so that you don't
-have to worry about type stuff for different conditional cases you have yet to
-cover.
+Regularm form: doesnt even accept input as it causes an immediate crash. XX???
 
-Frequently used as sentinel, especially when you don't want the type system to give you type fails before you've written every possible branch of the computation.
-
-Produces
---------
-
-Twig: `[%zpzp ~]`
-
-Accepts
--------
-
-N/A (always ignored)
-
-Wide form
----------
-
-    !!
-
-Examples
---------
+Examples:
 
     ~zod/try=> !!
     ! exit
