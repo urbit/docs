@@ -1,40 +1,16 @@
-`?& wutpam`
-====
+# `:and`, `?&`, "wutpam" `{$and p/(list twig)}`
 
 Logical 'and'.
 
-Computes the logical 'and' operation on a list of boolean expressions.
+Computes the logical 'and' operation on a list of boolean expressions `p`.
 
-Produces
---------
+Regular form: *running*
 
-Twig: `[%wtpm p=tusk]`
+Irregular form:
 
-Accepts
--------
+`&(a b c)   ?&(a b c)`
 
-`p` is a [`++tusk`](), a list of [++twig]()s.
-
-Tall form
----------
-
-    ?&  i.p
-        i.t.p
-        i.t.t.p
-    ==
-
-Wide form
----------
-
-    ?&(i.p i.t.p i.t.t.p)
-
-Irregular form
---------------
-
-    &(i.p i.t.p i.t.t.p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> ?&(& &)
     %.y

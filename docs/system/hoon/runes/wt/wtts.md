@@ -1,33 +1,13 @@
-`?= wuttis`
+# `:ifits`, `?=`, "wuttis" `{$fits p/twig q/wing}
 ====
 
-Is `q` within `++span` `p`.
+Is `q` within type `p`.
 
-Tests whether `q` is of type (mold) `p`.
+Tests whether `q` is of mold `p`.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%wtts p=mold q=wing]`
-
-Sample
-------
-
-`p` is a mold], `q` is a [`++wing`]().
-
-Tall form
----------
-
-    ?=  p
-        q
-
-Wide form
----------
-
-    ?=(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> ?=(@ 'a')
     %.y

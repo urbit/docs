@@ -1,32 +1,12 @@
-`?: wutcol`
-====
+# `if`, `?:`, "wutcol" `{$if p/twig q/twig r/twig}`
 
 If-then-else.
 
-Produces
---------
+If `p` evaluates to true, then `q`. Else, `e`.
 
-Twig: `[%wtcl p=twig q=twig r=twig]`
+Regular form: *3-fixed*
 
-Accepts
--------
-
-`p`, `q`, and `r` are [`++twig`]()s.
-
-Tall form
----------
-
-    ?:  p
-      q
-    r
-
-Wide form
----------
-
-    ?:(p q r)
-
-Examples
---------
+Examples:
 
     ~zod/try=> ?:((gth 1 2) 1 2)
     2
@@ -34,5 +14,5 @@ Examples
     %yup
 
 Here we see two common cases of `?:` in the wide form, one uses an
-expression [`++gte`]() that produces a boolean and the other [`?=`]() to
+expression `++gte` that produces a boolean and the other `?=` to
 produce one of its cases.

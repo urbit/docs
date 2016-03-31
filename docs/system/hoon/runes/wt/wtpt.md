@@ -1,36 +1,10 @@
-`?@ wutpat`
-====
+# `:ifat`, `?&`, "wutpam" `{$ifat p/wing q/twig r/twig}`
 
 If atom-then-else.
 
 If-then-else statement that tests whether `p` is an atom, producing `q` if true and `r` if false.
 
-Produces
---------
-
-Twig: `[%wtpt p=wing q=twig r=twig]`
-
-Accepts
--------
-
-`p` is a [`++wing`](). `q` and `r` are [++twig]()s.
-
-Tall form
----------
-
-Kingside:
-
-    ?@  p
-      q
-    r
-
-Wide form
----------
-
-    ?@(p q r)
-
-Examples
---------
+Examples:
 
     ~zod/try=> ?@(~ 1 2)
     ! mint-vain
@@ -47,7 +21,3 @@ Examples
     ~zod/try=> ?@(`*`[1 1] 1 2)
     2 
 
-Equivalent to
--------------
-
-    ?:(?=(@ p) q r)

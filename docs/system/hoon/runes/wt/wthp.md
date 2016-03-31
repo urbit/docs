@@ -1,52 +1,19 @@
-`?- wuthep`
-====
+# `:case`, `?-`, "wuthep" `{$case p/wing q/(list (pair twig twig))}`
 
 Switch.
 
-Different from the traditional switch statement in that it switches on a type instead of a value. More specifically, the labels in `q` must match the [span]() of `p`. `q` must be terminated with a `==`.
+Switches on the value of `p`. `q` is a list of key value pairs, the heads of
+which `p` attempts to match with.  Different from the traditional switch
+statement in that it switches on a type instead of a value. XX take a close
+look at this description The most common type used to switch on is the cube,
+which begins with `%` followed by text.
 
-Produces
---------
+Regular form: *1-fixed, followed by jogging*
 
-Twig: `[%wthp p=wing q=tine]`
-
-Accepts
--------
-
-`p` is a [`++wine`](). `q` is a [`++tine`]().
-
-Tall form
----------
-
-Kingside:
-
-    ?-  p
-      p.i.q      q.i.q
-      p.i.t.q    q.i.t.q
-      p.i.t.t.q  q.i.t.t.q
-    ==
-
-Queenside:
-
-    ?-    p
-        p.i.q      
-      q.i.q
-        p.i.t.q    
-      q.i.t.q
-        p.i.t.t.q  
-      q.i.t.t.q
-    ==
-
-Wide form
----------
-
-    ?-(p p.i.q q.i.q, p.i.t.q q.i.t.q, p.i.t.t.q q.i.t.t.q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> 
-      =cor  |=  typ=$?(%a %b)
+      =cor  |=  typ/$?(%a %b)
             ?-  typ
             %a  1
             %b  2
@@ -62,7 +29,7 @@ Examples
 Here is a simple example of `?-` that thows its input must have a well
 defined type for which all of the cases are covered. We create a core,
 `cor`, that takes an input `typ` which must be either `%a` or `%b` with
-[`$%`](). Calling `cor` with valid arguments selects one of our cases.
+`$%`. Calling `cor` with valid arguments selects one of our cases.
 
     ~zod/try=> 
       ?-  'a'
