@@ -1,39 +1,11 @@
-`=+ tislus`
-====
+# `:pin`, `=+`, "tislus" `{$pin p/twig q/twig}`
 
-Assign.
+Push variable onto the subject.
 
-Easiest way to declare variables. Pushes a new variable `p` onto the
-subject and then executes `q` against it.
+Pushes a new variable `p` onto the subject and then executes `q` against it.
+Can use `$=` to put an optional face (variable name) on the value.
 
-
-`=+` is a synthetic rune that pushes `p` on the subject and sends it to
-`q`. `=+` is the inverse of `=-`. Use `=+` when your `p` isn't too long
-and `=+` makes for more readable code.
-
-Produces
---------
-
-Twig: `[%tsls p=twig q=twig]`
-
-Accepts
--------
-
-`p` and `q` are [twig]()s.
-
-Tall form
----------
-
-    =+  p
-        q
-
-Wide form
----------
-
-    =+(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> 
         =+  a=1

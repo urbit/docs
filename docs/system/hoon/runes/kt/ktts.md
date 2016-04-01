@@ -1,41 +1,14 @@
-`^= kettis`
-===========
+# `:name`, `^=`, "kettis", `{$name p/toga q/twig}`
 
 Wraps a variable name around a value.
 
-
 `^=`, `kettis`, `[%ktts p=toga q=twig]` is a natural rune that wraps `q`
-in the [`++toga`]() `p`. `^=` is most commonly used for assignment,
+in the `++toga` `p`. `^=` is most commonly used for assignment,
 adding one or more names to values.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%ktts p=toga q=twig]`
-
-Accepts
--------
-
-`p` is a `++toga`. `q` is a [`++twig`]().
-
-Tall form
----------
-
-    ^=  p
-    q
-
-Wide form
----------
-
-    ^=(p q)
-
-Irregular form
---------------
-
-    p=q
-
-Examples
---------
+Examples:
 
     ~zod/try=> a=1
     a=1

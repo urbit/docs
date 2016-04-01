@@ -1,37 +1,12 @@
-`?! wutzap`
-====
+# `:not`, `?!`, "wutzap" `{$not p/twig}`
 
 Logical not.
 
 Produces the logical "not" of `p`.
 
-Produces
---------
+Regular form: *1-fixed*
 
-Twig: `[%wtzp p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-    ?!  p
-
-Wide form
----------
-
-    ?!(p)
-
-Irregular form
---------------
-
-    !p
-
-Examples
---------
+Examples:
 
     ~zod/try=> !&
     %.n

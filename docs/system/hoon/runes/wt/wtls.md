@@ -1,56 +1,21 @@
-`?+ wutlus`
-====
+# `:defl`, `?+`, "wutlus" `{$deft p/wing q/twig r/(list (pair twig twig))}`
 
-Switch w/default value.
+Switch with default value.
 
-Identical to [`?-`]() except for that it takes a default case `q` if none of the cases in `r` match the type of `p`. More specifically, the labels in `q` must match the [span]() of `p`. `q` must be terminated with a `==`.
+Identical to `?-` except for that it takes a default case `q` if none of the
+cases in `r` match the type of `p`. More specifically, the labels in `q` must
+match the span of `p`. As with `?-`, the most common type used to switch on is the cube, which begins with `%` followed by text.
 
-As with `?-`, the most common type used to switch on is the [cube](), which begins with `%` followed by text.
+Examples:
 
-Produces
---------
-
-Twig: `[%wtls p=wing q=twig r=tine]`
-
-Accepts
--------
-
-`p` is a [`++wing`](). `q` is a [`++twig`](). `r` is a [`++tine`]().
-
-Tall form
----------
-
-Kingside:
-
-    ?+  p
-      q
+    ?-  p
       p.i.r      q.i.r
       p.i.t.r    q.i.t.r
       p.i.t.t.r  q.i.t.t.r
+      *          q
     ==
-
-Queenside:
-
-    ?+    p
-      q
-        p.i.r      
-      q.i.r
-        p.i.t.r    
-      q.i.t.r
-        p.i.t.t.r  
-      q.i.t.t.r
-    ==
-
-Wide form
----------
-
-    ?+(p q p.i.r q.i.r, p.i.t.r q.i.t.r, p.i.t.t.r q.i.t.t.r)
-
-Examples
---------
-
     ~zod/try=> 
-      =cor  |=  typ=@ta
+      =cor  |=  typ/@ta
             ?+  typ  0
             %a  1
             %b  2
@@ -64,7 +29,7 @@ Examples
     0
 
 Here is a simple example of `?+` showing that although the cases must
-match the [span]() of its input, all possible cases don't need to be covered
+match the span of its input, all possible cases don't need to be covered
 since `?+` has a default case. We create a core, `cor` that takes an
 input `typ`, a `@ta`. Calling `cor` selects one of our cases when it is
 covered, or the default.
@@ -92,13 +57,3 @@ covered, or the default.
 
 This example shows how `?+` can fail. Our input span must match the span
 of our cases.
-
-Equivalent to
--------------
-
-    ?-  p
-      p.i.r      q.i.r
-      p.i.t.r    q.i.t.r
-      p.i.t.t.r  q.i.t.t.r
-      *          q
-    ==

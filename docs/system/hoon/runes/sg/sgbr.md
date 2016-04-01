@@ -1,28 +1,14 @@
-`~| sigbar`
-===========
+# `:show`, `~|` "sigbar", `{$show p/twig q/twig}`
 
 `p` in stack trace if `q` crashes.
 
-Presents the product of `p` in the stack trace if `q` crashes. `p` is only
+Produces: `p` in the stack trace if `q` crashes. `p` is only
 evaluated if `q` crashes.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%sgbr p=twig q=twig]`
+Examples:
 
-Accepts
--------
-
-`p` is a [`++twig`](). `q` is a twig.
-
-Tall form
----------
-
-    ~|  p
-        q
-
-Wide form
----------
-
-    ~|(p q)
+    > ~|('sample error message' !!)
+    'sample error message'
+    ford: build failed ~[/g/~sivtyv-barnel/use/dojo/~sivtyv-barnel/inn/hand /g/~sivtyv-barnel/use/hood/~sivtyv-barnel/out/dojo/drum/phat/~sivtyv-barnel/dojo /d //term/1]

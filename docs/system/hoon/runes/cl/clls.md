@@ -1,39 +1,15 @@
-`:+ collus`
+# `:cont`, `:+`, "collus", `{$cont p/twig q/twig r/twig}`
 ===========
 
 Tuple of 3.
 
-Produces
---------
+Produces: the tuple of `p`, `q`, and `r`.
 
-Twig: `[%clls p=twig q=twig r=twig]`
+Regular form:
 
-Accepts
--------
+*3-fixed*
 
-`p` is a [++twig](). `q` is a twig. `r` is a twig.
-
-Tall form
----------
-
-Kingside:
-
-    :+  p
-      q
-    r
-
-Queenside:
-
-    :+  p  q
-    r
-
-Wide form
----------
-
-    :+(p q r)
-
-Examples
---------
+Examples:
 
     /~zod/try=> :+  1
                   2

@@ -1,37 +1,10 @@
-`:* coltar`
-===========
+# `:conp`, `:*`, "coltar", {$conp p/(list twig)}
 
 Tuple of n elements.
 
-Closed with `==`.
+Produces: tuple of input elements. Closed with `==`.
 
-Produces
---------
-
-Twig: `[%cltr p=tusk]`
-
-Accepts
--------
-
-`p` is a [`++tusk`](), a list of [++twig]()s.
-
-Tall form
----------
-
-    :~  i.p
-        i.t.p
-        i.t.t.p
-    ==
-
-Wide form
----------
-
-    :*(i.p i.t.p i.t.t.p)
-
-Irregular form
---------------
-
-    [i.p i.t.p i.t.t.p]
+Regular form: *running*
 
 Examples
 --------

@@ -1,38 +1,18 @@
-`^- kethep`
-===========
+# `:cast`, `^-`, "kethep", `{$cast p/twig q/twig}`
 
 Cast.
 
-Casts `q` to the [span]() of `p`. The same as `^+`, except for that `q` is actually cast to the bunt of `q` (`$,(q)`). The easiest way to make a basic cast. Used when you already have already created a validator function ([mold]()) for a span.
+Casts `q` to the span of `p`. The same as `^+`, except for that `q` is actually cast to the bunt of `q` (`$,(q)`). The easiest way to make a basic cast; used when you already have already created a validator function (mold) for a span.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%kthp p=mold q=twig]`
+Irregular form:
 
-Accepts
--------
 
-`p` is a mold. `q` is a [`++twig`]().
+    `p`q   ^-(p q)
 
-Tall form
----------
 
-    ^-  p
-        q
-
-Wide form
----------
-
-    ^-(p q)
-
-Irregular form
---------------
-
-    `p`q
-
-Examples
---------
+Examples:
 
     ~zod/try=> (add 90 7)
     97
@@ -45,8 +25,8 @@ Here we see a straightforward use of `^-` in both irregular and wide
 forms, simply casting an atom to a `@t`. `97` is the ASCII code for
 `'a'`.
 
-    /~zod/try=> =cor  |=  a=@
-          ^-  (unit ,@ta)
+    /~zod/try=> =cor  |=  a/@
+          ^-  (unit @ta)
           [~ u=a]
     new var %cor
     /~zod/try=> (cor 97)

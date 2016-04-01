@@ -1,32 +1,12 @@
-`!= zaptis`
-====
+# `:code`, `!=`, "zaptis" `$code p/twig}`
 
 Show nock.
 
-`!=` is a natural rune that produces the formula of `p` as a noun.
+`!=` is a natural rune that produces the formula of `p` as a Nock noun.
 
-Accepts
--------
+Regular form: *1-fixed*
 
-Twig: `[%zpts p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-    !=  p
-
-Wide form
----------
-
-    !=(p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> !=(20)
     [1 20]

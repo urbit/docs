@@ -1,45 +1,12 @@
-`:^ colket`
-===========
+# `:conq`, `:^`, "colket", `{$conq p/twig q/twig r/twig s/twig}`
 
 Tuple of four.
 
-Produces
---------
+Produces: the tuple of `[p q r s]`.
 
-Twig: `[%clkt p=twig q=twig r=twig s=twig]`
-
-Accepts
--------
-
-`p` is a [++twig](). `q` is a twig. `r` is a twig. `s` is a
-twig.
-
-Tall form
----------
-
-Kingside:
-
-    :^    p
-        q
-      r
-    s
-
-Queenside:
-
-    :^  p  q
-      r
-    s
-
-    :^  p  q  r  
-    s
-
-Wide form
----------
-
-    :^(p q r s)
+Regular form: *4-fixed*
 
 Examples
---------
 
     /~zod/try=> :^(1 2 3 4)
     [1 2 3 4]

@@ -1,10 +1,10 @@
-# `:book`, `$%`, "buctis", `{$book p/(list moss)}`
+# `:book, $%, "buctis", {$book p/(list moss)}`
 
-The product: a mold producing the tagged union of the molds in
+Tagged union
+
+Product: a mold producing the tagged union of the molds in
 `p`, all of which must be of the form `:bank(stem bulb)`, where
 `stem` is an atomic mold.
-
-Usage: define a type which is a tagged union.
 
 Regular form: *running*.
 

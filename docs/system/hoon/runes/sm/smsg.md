@@ -1,36 +1,12 @@
-`;~ semsig`
-====
+# `:dip`, `;~`, "semsig" `{$dip p/twig q/(list twig)}`
 
 Monad composer.
 
-`;~` is a synthetic rune used to compose functions under a monad.
+Composes a list of functions `p` and `q` under a monad. `q` can be 1 or more functions.
 
-Produces
---------
+Regular form: 1-fixed, `q` is *running*
 
-Twig: `[%smsg p=(list beer)]`
-
-Accepts
--------
-
-`p` is a [`++list`]() of [`++beer`]().
-
-Tall form
----------
-
-    ;~  p
-      i.q
-      i.t.q
-      i.t.t.q
-    ==
-
-Wide form
----------
-
-    ;~(p i.q i.t.q i.t.t.q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> =cmp |=([a=tape b=$+(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
     ~zod/try=> ;~(cmp trip)

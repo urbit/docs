@@ -1,10 +1,9 @@
-# `:bush`, `$&`, "bucpam", `{$bush p/moss q/moss}`
+# `:bush, $&, "bucpam", {$bush p/moss q/moss}`
 
-The product: a mold which applies `p` if the head of its sample 
+Union of two cells: one w/cellular head & other w/atomic head.
+
+Product: a mold which applies `p` if the head of its sample 
 is a cell, `q` if the head of its sample is a cell.
-
-Usage: add a default pair behavior (like "autocons" in Nock
-formulas) to a tagged union type.
 
 Regular form: *2-fixed*.
 

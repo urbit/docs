@@ -1,4 +1,4 @@
-`=~ tissig`
+# `:tow`, `=~`, "tissig" `{$tow p/(list twig)}`
 ====
 
 List of twigs.
@@ -6,40 +6,9 @@ List of twigs.
 Composes a list of twigs. Applies `=>` to a list of expressions, using each result as the
 subject to the following expression.
 
-Produces
---------
+Regularm form: *running*
 
-Twig: `[%tssg p=tusk]`
-
-Sample
-------
-
-`p` is a [`++tusk`](), a list of [twig]()s.
-
-Tall form
----------
-
-    =~    i.p
-            i.t.p
-            i.t.t.p
-        ==
-
-Queenside:
-
-    =~  i.p
-        i.t.p
-        i.t.t.p
-    ==
-
-
-Wide form
----------
-
-    =~(i.p i.t.p i.t.t.p)
-
-
-Examples
---------
+Examples:
 
     ~zod/try=> =~(1 +(.) +(.))
     3

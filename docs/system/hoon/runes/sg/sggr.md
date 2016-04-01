@@ -1,41 +1,12 @@
-`~> siggar`
-===========
+# `:hint`, `~>` "siggar", {$hint p/$@(term {p/term q/twig}) q/twig}
 
 Arbitrary hint
 
-`~>` is a natural rune that applies arbitrary hint `p` to `q`.
+Applies arbitrary hint `p` to `q`.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%sggr p=$|(term [p=term q=twig]) q=twig]`
-
-Accepts
--------
-
-`p` is either a [`++term`]() or a term [`++twig`] pair. `q` is a twig.
-
-Tall form
----------
-
-`p=%foo`:
-
-    ~>  %foo
-        q
-
-`p=[p=%foo q=bar]`:
-
-        ~>  %foo.bar
-        q
-
-Wide form
----------
-
-    ~>(%foo q)
-    ~>(%foo.bar q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> (make '~>(%a 42)')
     [%10 p=97 q=[%1 p=42]]

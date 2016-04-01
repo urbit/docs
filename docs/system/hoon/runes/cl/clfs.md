@@ -1,33 +1,12 @@
 `:/ colfas`
 ===========
 
-String to XML XX.
+String to XML XX
 
 `:/`, `colfas`, is a synthetic rune that produces `[%$ [%$ p ~] ~]`,
 i.e., `[0 [0 p 0] 0]`.
 
-Produces
---------
-
-Twig: `[%clfs p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]()
-
-Tall form
----------
-
-    :/  p
-
-Wide form
----------
-
-    :/(p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> :/(20)
     [[%~. [%~. 20] ~] ~]

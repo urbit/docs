@@ -1,36 +1,22 @@
-`:- colhep`
-===========
+# `:cons`, `:-`, "colhep", `{$cons p/twig q/twig}`
 
 Tuple of two.
 
-Produces
---------
+Produces: a cell of `p` and `q`.
 
-Twig: `[%clhp p=twig q=twig]`
+Regular form: *2-fixed*
 
-Accepts
--------
+Irregular forms:
 
-`p` is a [++twig](). `q` is a twig.
+```
+[a b]  :-(a b)
+1^2^3  [1 2 3]
+a+1    [%a 1]
+`1     [~ 1]
+[1 2]~ [[1 2] ~] 
+```
 
-Tall form
----------
-
-    :-  p
-        q
-
-Wide form
----------
-
-    :-(p q)
-
-Irregular form
---------------
-
-    [p q]
-
-Examples
---------
+Examples:
 
     ~zod/try=> :-(1 2)
     [1 2]
@@ -66,7 +52,7 @@ Some obscure `:-` irregular forms
     ~zod/main=/app> a/'twig'
     [%a 'twig']
 
-Like `^`, but first item must be a [`++term`](), and is [cube]()d. Used to construct [`path`]()s and [frond]().
+Like `^`, but first item must be a `++term`, and is cubed. Used to construct `path`s and frond.
 
 ### Prefix `` ` ``, postfix `~`
 
@@ -75,5 +61,5 @@ Like `^`, but first item must be a [`++term`](), and is [cube]()d. Used to const
     ~zod/main=/app> [42 30]~
     [[42 30] ~]
 
-Complimenting each other, these construct pairs with `~` in the [head]() and
-[`tail`]() respectively. Multiple postfix `~` do not work for unknown reasons.
+Complimenting each other, these construct pairs with `~` in the head and
+`tail` respectively. Multiple postfix `~` do not work for unknown reasons.

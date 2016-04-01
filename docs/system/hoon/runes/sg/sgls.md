@@ -1,32 +1,12 @@
-`~+ siglus`
-===========
+# `:memo`, `~+`, "siglus", `{$memo p/@ q/twig}`
 
 Memoize computation.
 
 Hints to the interpreter to memoize (cache) the computation of `p`.
 
-Produces
---------
+Regular form: *1-fixed*
 
-Twig: `[%sgls p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]()
-
-Tall form
----------
-
-    ~+  p
-
-Wide form
----------
-
-    ~+(p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> 20
     20
@@ -40,5 +20,5 @@ Examples
     ~zod/try=> `@tas`1.869.440.365
     %memo
 
-By using [`++make`]() to display the compiled nock, we can see that `~+`
+By using `++make` to display the compiled nock, we can see that `~+`
 inserts a `%memo` hint.

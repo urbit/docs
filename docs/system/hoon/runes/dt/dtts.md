@@ -1,38 +1,12 @@
-`.= dottis`
-===========
+# `:same`, `.=`, "dottis", `{$same p/twig q/twig}`
 
 Test equality.
 
-Nock operator 5: tests two nouns `p` and `q` for equality, producing a boolean.
+Generates: Nock operator 5. Tests two nouns `p` and `q` for equality, producing a boolean.
 
-Produces
---------
+Regular form: *2-fixed*
 
-Twig: `[%dtts p=twig q=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`](). `q` is a twig.
-
-Tall form
----------
-
-    .=  p
-        q
-
-Wide form
----------
-
-    .=(p q)
-
-Irregular form
---------------
-
-    =(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> =(0 0)
     %.y
@@ -55,7 +29,7 @@ of each `p` and `q`. In the first case of this example the tape `"a"` is
 actually the list `[97 0]` since the ASCII code for `'a'` is 97. The
 following cases serve to show similar implicit down-casts.
 
-    /~zod/try=> =isa  |=  a=@t
+    /~zod/try=> =isa  |=  a/@t
                       ?:  =(a 'a')
                         'yes a'
                       'not a'
@@ -65,7 +39,7 @@ following cases serve to show similar implicit down-casts.
     /~zod/try=> (isa 'a')
     'yes a'
 
-In common practice `.=` is often used inside of [`?`]() runes, where
+In common practice `.=` is often used inside of `?` runes, where
 switching on equality is needed. Here we construct a simple function to test
 if our argument is equal to `'a'` and produce either `'yes a'` or
 `'not a'` accordingly.

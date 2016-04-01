@@ -1,33 +1,13 @@
-`.? dotwut`
-===========
+# `:deep`, `.?`, "dotwut", `{$deep p/twig}`
 
 Test if noun is cell or atom.
 
-Nock operator 3: tests whether a noun is a cell or an
+Generates: Nock operator 3. Tests whether a noun is a cell or an
 atom, producing true if it is the former and false if the latter.
 
-Produces
---------
+Regular form: *1-fixed*
 
-Twig: `[%dtwt p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-    .?  p
-
-Wide form
----------
-
-    .?(p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> .?(~)
     %.n

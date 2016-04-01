@@ -1,32 +1,13 @@
-`?^ wutket`
+# `:ifcl`, `?^`, "wutket" `{$ifcl p/wing q/twig r/twig}`
 ====
 
 If `p` is cell-then-else.
 
-Produces
---------
+If `p` is a cell, then produce `q`. Else, produce `r`.
 
-Twig: `[%wtkt p=wing q=twig r=twig]`
+Regular form: *3-fixed*
 
-Accepts
--------
-
-`p` is a [`++wing`](). `q` and `r` are [`++twig`]()s.
-
-Tall form
----------
-
-    ?^  p
-      q
-    r
-
-Wide form
----------
-
-    ?^(p q r)
-
-Examples
---------
+Examples:
 
     ~zod/try=> =(*@tas "")
     %.y
@@ -39,8 +20,8 @@ Examples
                %empty
     %full
 
-Here we show that `*@tas`, the [bunt]() of `@tas` is equivalent to the empty
-[`++tape`]() `""`, then use it in two `?^` cases.
+Here we show that `*@tas`, the bunt of `@tas` is equivalent to the empty
+`++tape` `""`, then use it in two `?^` cases.
 
     ~zod/try=> *(unit)
     ~
@@ -53,10 +34,6 @@ Here we show that `*@tas`, the [bunt]() of `@tas` is equivalent to the empty
                %empty
     %full
 
-Similar to the above case, we show the bunt of a [`++unit`](), which is
+Similar to the above case, we show the bunt of a `++unit`, which is
 `~`, and test against it.
 
-Equivalent to
--------------
-
-    ?:(?=(^ p) q r)

@@ -1,34 +1,12 @@
-`!> zapgar`
-====
+# `:wrap`, `!>`, "zapgar" `{$wrap p/twig}`
 
 Produce `[type value]`.
 
-Produces a cell (known as a [`++vase`]() here) of both the type and value of `p`. Useful for debugging purposes. 
+Produces a cell (known as a `++vase` here) of both the type and value of `p`. Useful for debugging purposes. 
 
-Uses biblical arms [`++onan`](), [`++abel`](). 
+Regular form: *1-fixed*
 
-Produces
---------
-
-Twig: `[%zpgr p=twig]`
-
-Accepts
--------
-
-`p` is a [`++twig`]().
-
-Tall form
----------
-
-    !>  p
-
-Wide form
----------
-
-    !>(p)
-
-Examples
---------
+Examples:
 
     ~zod/try=> !>(1)
     [p=[%atom p=%ud] q=1]

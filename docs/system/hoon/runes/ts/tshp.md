@@ -1,41 +1,15 @@
-`=- tishep`
-====
+# `:nip`, `=-`, "tishep" `{$nip p/twig q/twig}`
 
 Inverted `=+`.
 
-An inverted `=+`. Pushes variable `q` onto the subject and then
+Pushes variable `q` onto the subject and then
 executes `p` against the new subject.  Allows us to place the larger of `p` and
 `q` as the bottom expression, making for for more readable code (see the
-section on [backstep]()).
+section on backstep in the syntax section).
 
+Regular form: *2-fixed*
 
-`=-` is a synthetic rune that pushes `q` on the subject and sends it to
-`p`. `=-` is the inverse of `=+`. Use `=-` when your computation, `q` is
-lengthier and `=-` makes for more readable code.
-
-Produces
---------
-
-Twig: `[%tshp p=twig q=twig]`
-
-Accepts
--------
-
-`p` and `q` are [twig]()s.
-
-Tall form
----------
-
-    =-  p
-        q
-
-Wide form
----------
-
-    =-(p q)
-
-Examples
---------
+Examples:
 
     ~zod/try=> =-  [%a a]
                    [a=1]
@@ -46,7 +20,7 @@ In this simple example we push `[a=1]` on to our subject, and produce
 `[%a 1]`.
 
     ~zod/try=> 
-    =cor  |=  [a=@ b=@]
+    =cor  |=  [a/@ b/@]
           =-  [[%a a] [%b b]]
           [a b]=[(add a 2) (add a b)]
     new var %cor
