@@ -20,7 +20,7 @@ We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its
 
 ## Quickstart
 
-Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running something at `8080`), or `http://your-urbit.urbit.org/`.
+Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running other processes that might be occupying `8080`, you can determine which port your urbit is on by looking at your boot sequence--it's specified there), or `http://your-urbit.urbit.org/`.
 
 (Make sure you have a desk mounted to unix, as covered in the [filesystem walkthrough](/filesystem))
 
