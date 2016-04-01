@@ -34,7 +34,7 @@ To host a file on the web try putting the following in `/home/web/test.md` (from
 
     This is a simple markdown file.
 
-Create a folder with two more markdown files in it and copy it to `/home/web/test/`.
+Create a folder with two more markdown files in it and copy it to `/home/web/test/`. (In urbit, there is no distinction between a director and a file--in this case `test` is both a file and a directory. So, if you're adding files directly from unix, simply `mkdir test` and urbit will treat the file and directory as the same entity.)
 
 Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
