@@ -7,7 +7,14 @@ Usage: a generalized type union.  Use `:pick` only if none of
 
 Regular form: *running*.
 
+Irregular form:
+
+```
+?(a b c)  $?(a b c)
+```
+
 Example:
+
 ```
 ~zod:dojo> =a :pick($foo $bar $baz)
 
