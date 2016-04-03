@@ -1,6 +1,6 @@
 ---
-sort: 6
-title: Arvo source
+sort: 8
+title: Source layout
 ---
 
 <div class="row">

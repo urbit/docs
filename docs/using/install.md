@@ -1,6 +1,6 @@
 ---
 next: true
-sort: 2
+sort: 1
 title: Install
 navhome: /main
 ---

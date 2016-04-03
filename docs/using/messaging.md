@@ -1,7 +1,7 @@
 ---
 next: true
 sort: 4
-title: Talk manual
+title: Messaging (`:talk`)
 ---
 
 # `:talk` (messaging)

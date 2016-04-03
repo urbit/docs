@@ -1,7 +1,7 @@
 ---
 next: true
-sort: 2
-title: Shell
+sort: 5
+title: Shell (:dojo)
 ---
 
 <div class="row">
