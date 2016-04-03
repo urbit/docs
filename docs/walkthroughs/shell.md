@@ -7,7 +7,9 @@ title: Shell
 <div class="row">
 <div class="col-md-8">
 
-# `:dojo` (Shell)
+
+
+## `:dojo` (shell)
 
 The `:dojo` is the place to quickly experiment with Urbit.  At first glance the `:dojo` is just a Hoon REPL.  Looking a bit deeper the `:dojo` is set up to make operating on and transforming data in Urbit easy.  
 

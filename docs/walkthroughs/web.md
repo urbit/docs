@@ -20,7 +20,7 @@ We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its
 
 ## Quickstart
 
-Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running something at `8080`), or `http://your-urbit.urbit.org/`.
+Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running other processes that might be occupying `8080`, you can determine which port your urbit is on by looking at your boot sequence--it's specified there), or `http://your-urbit.urbit.org/`.
 
 (Make sure you have a desk mounted to unix, as covered in the [filesystem walkthrough](/filesystem))
 
@@ -34,7 +34,7 @@ To host a file on the web try putting the following in `/home/web/test.md` (from
 
     This is a simple markdown file.
 
-Create a folder with two more markdown files in it and copy it to `/home/web/test/`.
+Create a folder with two more markdown files in it and copy it to `/home/web/test/`. (In urbit, there is no distinction between a director and a file--in this case `test` is both a file and a directory. So, if you're adding files directly from unix, simply `mkdir test` and urbit will treat the file and directory as the same entity.)
 
 Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
