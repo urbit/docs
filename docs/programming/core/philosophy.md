@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# Philosophy
+# Mission statement
 
 Hoon is a strict, typed functional language which compiles itself
 to the Nock VM (whose spec fits on a T-shirt).

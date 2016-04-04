@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# Terminology
+# Concepts and terminology
 
 Usually, a new language is an improvement on one you already
 know.  If it isn't, it probably at least shares concepts with a

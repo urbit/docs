@@ -2,10 +2,15 @@
 logo: black
 sort: 1
 next: true
-title: Basic Hoon
+title: Hoon refresher / crash course
 ---
 
 # Basic Hoon
+
+(This recapitulates material you've already learned in Core Hoon.
+It will be a very abrupt tutorial if you don't know Hoon already,
+but it may just suffice.  If you don't find it obvious at first
+glance, read it over again 
 
 Our goal is to get you programming interesting and useful things
 as soon as possible. To get there we have to quickly cover some
@@ -15,19 +20,17 @@ Euler](https://projecteuler.net/) problem and
 [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
 
 To run this code, you'll need an urbit, and you'll need the
-`%examples` desk from `~wactex-ribmex`.  If you haven't installed
+`%examples` desk from `~zod`.  If you haven't installed
 urbit yet, check out the [installation
 instructions](http://urbit.org/docs/user/install).  Once urbit is
 intalled, take a look at the [basic
 operation](http://urbit.org/docs/user/basic) of your urbit.
 
-If you haven't pulled the examples desk from `~wactex-ribmex`, do
+If you haven't pulled the examples desk from `~zod`, do
 so now:
 
-    ~fintud-macrep:dojo> |merge %examples ~wactex-ribmex %examples
+    ~fintud-macrep:dojo> |merge %examples ~zod %examples
     >=
-    ; ~wactex-ribmex is your neighbor
-    ; ~wactex-ribmex is your neighbor
     [time passes...]
     merged with strategy %init
 
@@ -392,12 +395,6 @@ accessible.
   42 (regardless of input).  Change the `=<` line to `[(add 5 7)
   (^add 5 7)]`.  Can you recognize what's happening?
 
-- Write a program that prints the numbers from 1 to 100 (entered
-  from the command line), except that for multiples of three
-  print 'Fizz' instead of the number and for the multiples of
-  five print 'Buzz'. For numbers which are multiples of both
-  three and five print 'FizzBuzz'.
-
 Cheatsheet:
 
 - To pass arguments from the command line to a program, you
@@ -405,9 +402,6 @@ Cheatsheet:
   `[^ [[arg=TYPE ~] ~]]` where `TYPE` is replaced with the
   type of argument you're expecting.  Then `+euler1 a` from
   the dojo sets `arg` to `a`.
-- A list of strings is of type `(list ,@t)`, so the result of
-  the fizzbuzz function is of this type (hint: you'll need to
-  use `^-`)
 - The empty list is `~`
 - Lisp-style cons (construct a cell/prepend an element) is
   `[new-element list]`

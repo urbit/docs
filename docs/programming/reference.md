@@ -1,9 +1,9 @@
 ---
-sort: 3
+sort: 4
 ---
 
 # Reference
 
-Hoon language and library reference documentation.
+Background information on Nock, Hoon, Arvo, 
 
 <list dataPath="docs/system"></list>
