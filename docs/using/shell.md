@@ -43,7 +43,7 @@ Generators (files in `/gen`) are run with `+`:
 
 Save output to a file in `%clay` with `*`:
 
-    ~your-urbit:dojo> *foo/bar/hoon 'hello world'
+    ~your-urbit:dojo> *some/file/path/hoon 'hello world'
 
 Run system commands from `:hood`, like `reload`, using `|`:
 
