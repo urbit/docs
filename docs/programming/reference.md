@@ -6,4 +6,4 @@ sort: 4
 
 Background information on Nock, Hoon, Arvo, 
 
-<list dataPath="docs/system"></list>
+<list dataPath="docs/programming/reference"></list>

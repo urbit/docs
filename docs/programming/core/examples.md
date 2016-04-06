@@ -1,5 +1,6 @@
 ---
 sort: 9
+title: Examples
 ---
 
 # Examples

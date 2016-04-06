@@ -1,6 +1,7 @@
 ---
 sort: 3
 next: true
+title: Concepts
 ---
 
 # Concepts and terminology

@@ -1,6 +1,7 @@
 ---
 sort: 1
 next: true
+title: Demo
 ---
 
 # Demo

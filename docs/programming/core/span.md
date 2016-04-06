@@ -1,6 +1,7 @@
 ---
 sort: 7
 next: true
+title: Type: span
 ---
 
 # Type: `span`

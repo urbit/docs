@@ -1,6 +1,7 @@
 ---
 sort: 2
 next: true
+title: Philosophy
 ---
 
 # Mission statement

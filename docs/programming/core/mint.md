@@ -1,6 +1,7 @@
 ---
 sort: 6
 next: true
+Title: Compiler
 ---
 
 # Compiler: `mint`
