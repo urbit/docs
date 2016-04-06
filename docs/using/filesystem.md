@@ -43,7 +43,7 @@ Let's see the contents of `/=sandbox=/web/md`:
 
 Sync with a remote desk on the network:
 
-    |sync %sandbox ~wactex-ribmex %examples
+    |sync %{name for local desk} ~{SOME SHIP} %{name of remote desk}
 
 ## Manual
 
