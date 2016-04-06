@@ -7,4 +7,4 @@ sort: 3
 Short, example-based tutorials of simple Arvo techniques, for people
 who already know Hoon (or are not afraid to pretend they do).
 
-<list/></list>
+<list></list>

@@ -1,5 +1,6 @@
 ---
 sort: 7
+next: true
 ---
 
 # Type: `span`

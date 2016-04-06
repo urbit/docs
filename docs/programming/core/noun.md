@@ -1,5 +1,6 @@
 ---
 sort: 4
+next: true
 ---
 
 # Data model: `noun`
