@@ -1,28 +1,28 @@
 ---
 next: true
 sort: 4
-title: Messaging (`:talk`)
+title: Messaging (:talk)
 ---
 
-# `:talk` (messaging)
+# Messaging (`:talk`)
 
 <div class="row">
 <div class="col-md-8">
 
-`:talk` is the Urbit messaging and notifications protocol.  Today we use `:talk` to chat and coordinate.  Come join us in `/urbit-meta` by using the [quickstart](#-quickstart) below.
+`:talk` is the Urbit messaging and notifications protocol.  Today we use `:talk` just to chat and coordinate, but it's really a general purpose piece of infrastructure.  
 
-Today chat is sort of like a distributed, encrypted Slack that can be used from the CLI and the browser.  There’s no central `:talk` server.  Any Urbit can host one.
+For the time being come join us in `/urbit-meta` by using the <a href="#-quickstart">quickstart</a> below.
+
+Today `:talk` is sort of like a distributed, encrypted Slack that can be used from the CLI and the browser.  There’s no central `:talk` server.  Any Urbit can host one.
 
 `:talk` is a general purpose tool for both aggregating and publishing streams of messages.  Applications can use `:talk` as their transport protcol, API connectors can push disparate data sources into `:talk`, and so on. There are lots of things a distributed message protocol can be used for that we haven't even thought of.
-
-There are two ways of using `:talk`: from the CLI or through a web ui available at `http://your-urbit.urbit.org/talk` (or `http://localhost:8080/talk`).  The web ui ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).  
 
 </div>
 </div>
 
 ## Quickstart
 
-For the most part we use `:talk` as a single-instance of Slack.  There's one main station and for sending direct messages to one another.  Everyone is more than welcome in `/urbit-meta`.  It's the place to get help, ask questions and chat about Urbit in general.
+For the most part we use `:talk` as a single-instance of Slack: one main channel (`/urbit-meta`) and dms.  Everyone is more than welcome in `/urbit-meta`.  It's the place to get help, ask questions and chat about Urbit in general.
 
 Let's join `/urbit-meta`:
 
@@ -58,6 +58,10 @@ Now you and `~talsur-todres` can exchange messages directly.
 To set your audience back to `/urbit-meta`:
 
     ~your-urbit:talk> ;~doznec/urbit-meta
+
+There are two ways of using `:talk`: from the CLI or through a web ui available at `http://your-urbit.urbit.org/talk` (or `http://localhost:8080/talk`). 
+
+The web ui ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).
 
 ## Manual
 

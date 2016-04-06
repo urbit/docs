@@ -1,13 +1,13 @@
 ---
 next: true
-sort: 7
+sort: 6
 title: Filesystem
 ---
 
+# Filesystem (`%clay`)
+
 <div class="row">
 <div class="col-md-8">
-
-# `%clay` (Filesystem)
 
 Urbit has its own revision-controlled filesystem, `%clay`.  `%clay` is a typed, global, referentially transparent namespace.  An easy way to think about it is like typed `git` with continuous sync.
 

@@ -1,9 +1,7 @@
 ---
-sort: 1
+sort: 3
 ---
 
-# About
+# Programming
 
-To learn about the 
-
-<list dataPath="docs/about"></list>
+<list dataPath="docs/programming"></list>
