@@ -41,9 +41,9 @@ Let's see the contents of `/=sandbox=/web/md`:
 
     ~your-urbit:dojo> +cat /=sandbox=/web/md
 
-Sync with a remote desk on the network:
+Sync from your friend `~some-ship`'s `%experiment` desk to your `%sandbox` desk:
 
-    |sync %{name for local desk} ~{SOME SHIP} %{name of remote desk}
+    |sync %sandbox ~some-ship %experiment
 
 ## Manual
 
