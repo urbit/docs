@@ -1,8 +1,10 @@
 ---
 next: false
 sort: 2
-title: Network Messages
+title: Network messages
 ---
+
+# Network messages
 
 Now we've learned enough hoon to do more interesting things.
 Let's get our planets to talk to each other.
@@ -45,11 +47,13 @@ with the following commands:
 >=
 ```
 
-> There is currently a bug where the `%argument` lines are
-> printed *above* the line you entered, so your output may not
-> look exactly like this.
-> `>=` means that a command was successfully received and
-> executed.
+<blockquote class="blockquote">
+There is currently a bug where the `%argument` lines are
+printed *above* the line you entered, so your output may not
+look exactly like this.
+`>=` means that a command was successfully received and
+executed.
+</blockquote>
 
 Most of the app code should be simple enough to guess its
 function.  The important part of this code is the definition of
@@ -227,7 +231,8 @@ with one element:
 ```
 [ost %poke /sending [to-urbit-address %pong] %atom 'howdy']
 ```
-###Moves
+
+### Moves
 
 The general form of a move is
 
@@ -243,7 +248,7 @@ information]`
 
 Let's walk through each of these elements step by step
 
-####Bones ("cause")
+#### Bones ("cause")
 
 If you look up `++bone` in `hoon.hoon`, you'll see that it's a
 number (`@ud`), and that it's an opaque reference to a duct.
@@ -288,7 +293,7 @@ called is also the root cause for the network message we're
 trying to send. Thus, we say to send the network message along the given bone
 `ost`.
 
-#####Wire ('tack on new layer to duct')
+##### Wire ('tack on new layer to duct')
 
 Of course, we have to push a new layer onto our duct
 before passing it along (or responding to it directly) anywhere  This
@@ -302,7 +307,7 @@ handler as an argument.  Although it's not required, it's
 generally a good idea to make the wire human-readable for
 bug-handling purposes.
 
-#####Term (sys-call)
+##### Term (sys-call)
 
 Looking back at the general form of a move, there is a
 `term`--which is text composed lowercase ascii and `-`, and has
