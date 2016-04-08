@@ -13,10 +13,10 @@ Here's `ape/sum.hoon`:
 ```
 /?    314
 !:
-|_  [bowl state=@]
+|_  [bowl state/@]
 ++  poke-atom
-  |=  arg=@
-  ^-  [(list) _+>.$]
+  |=  arg/@
+  ^-  {(list) _+>.$}
   ~&  [%so-far (add state arg)]
   [~ +>.$(state (add state arg))]
 --
@@ -41,8 +41,7 @@ how?
 
 The state is stored as the second thing in the `|_` line.  In our
 case, it's simply an atom named `state`.  We change it by
-producing as our state not with (as before) `+>.$` but `+>.$(state (add state
-arg))`.  We've seen all these parts before, but you might not
+producing as our state not with `+>.$` (as before), but with `+>.$(state (add state arg))`.  We've seen all these parts before, but you might not
 recognize them.
 
 Recall in the first chapter that we recursed with the expression
@@ -62,14 +61,13 @@ meaning that our state is an atom.  Of course, `state` is just a
 name we're assigning to it, and you're free to use whatever name
 you want.
 
-Two points you may be wondering about.  Firstly, `bowl` is a set
-of general global state that is managed by the system.  It
+There are at least two points you may be wondering about.  First, `bowl` is a set of general global state that is managed by the system.  It
 includes things like `now` (current time), `our` (our urbit
 identity), and `eny` (256 bits of guaranteed-fresh entropy).  For
 the full list of things in `++bowl`, search for `++  bowl` (note
 the double space) in `/arvo/zuse.hoon`.
 
-> This is a very common technique in learning hoon.  While some
+> This is a very common technique in learning hoon.  While
 > documentation exists, often the easiest way to learn about an
 > identifier you see in code is to search in `/arvo/zuse.hoon`
 > and `/arvo/hoon.hoon` for it.  These are our two "standard
@@ -80,12 +78,12 @@ the double space) in `/arvo/zuse.hoon`.
 > /arvo microkernel), you can usually use the code and the
 > comments as reference doc.
 
-The second point is that urbit needs no "serialize to disk" step.
+The second thing is that urbit needs no "serialize to disk" step.
 Everything you produce in the app state is persistent across
 calls to the app, restarts of the urbit, and even power failure.
 If you want to write to the filesystem, you can, but it's not
 needed for persistence.  Urbit has transactional events, which
-makes it an [ACID operating system]().  Thus, you don't have to
+makes it an [ACID operating system](https://en.wikipedia.org/wiki/ACID).  Thus, you don't have to
 worry about persistence when programming in urbit or to ever go
 through the hassle of having to set up and write to a database.
 
