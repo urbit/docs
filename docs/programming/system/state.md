@@ -13,10 +13,12 @@ Here's `ape/sum.hoon`:
 ```
 /?    314
 !:
-|_  [bowl state/@]
+|_  {bowl state/@}
 ++  poke-atom
   |=  arg/@
   ^-  {(list) _+>.$}
+  ?:  =(arg 0)  
+    [~ +>.$(state 0)]
   ~&  [%so-far (add state arg)]
   [~ +>.$(state (add state arg))]
 --

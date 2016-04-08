@@ -10,9 +10,7 @@ Now we've learned enough hoon to do more interesting things.
 Let's get our planets to talk to each other.
 
 All we've written up until now are just shell
-commands that produce a value and then disappear.  We need an
-actual app to listen for messages from another planet.  Let's
-take a look at a very basic app that does this.
+commands that produce a value and then disappear.  To listen for and receive messages from other planets, we'll need an app--let's look at a very simple one:
 
 ```
 ::  There is no love that is not an echo
@@ -21,10 +19,10 @@ take a look at a very basic app that does this.
   ::
 /?    314
 !:
-|_  [bowl state=~]
+|_  {bowl state/$~}
 ++  poke-noun
-  |=  arg=*
-  ^-  [(list) _+>.$]
+  |=  arg/*
+  ^-  {(list) _+>.$}
   ~&  [%argument arg]
   [~ +>.$]
 --
@@ -74,13 +72,12 @@ we'll get to the correct way later on.
 
 But what does `++poke-noun` produce?  Recall that `^-` casts to a
 type.  In this case, it's declaring that end result of the
-function will be of type `[(list) _+>.$]`.  But what does this
+function will be of type `{(list) _+>.$}`.  But what does this
 mean?
 
 The phrase to remember is "a list of moves and our state".  Urbit
-is a message passing system XX should we mention event
-driven operating system XX, so whenever we want to do something that
-interacts with the rest of the system we send a message.  Thus, a
+is a message passing system, so whenever we want to do something that
+interacts with the rest of the system, we send a message.  Thus, a
 move is arvo's equivalent of a syscall.  The first thing that
 `++poke-noun` produces is a list of messages, called
 "moves".  In this case, we don't actually want the system to do
@@ -99,11 +96,11 @@ number, and then print out the square of that number.
 ```
 /?    314
 !:
-|_  [bowl state=~]
+|_  {bowl state=~}
 ::
 ++  poke-atom
-  |=  arg=@
-  ^-  [(list) _+>.$]
+  |=  arg/@
+  ^-  {(list) _+>.$}
   ~&  [%square (mul arg arg)]
   [~ +>.$]
 --
@@ -113,6 +110,8 @@ A few things have changed.  Firstly, we no longer accept
 arbitrary nouns because we can only square atoms (integers, in
 this case an unsigned one).  Thus, our argument is now `arg=@`.
 Secondly, it's `++poke-atom` rather than `++poke-noun`.
+
+# Intro to marks
 
 Are there other `++poke`s?  Yes.  In fact, `noun` and
 `atom` are just two of arbitrarily many "marks".  A mark is
@@ -156,31 +155,32 @@ pipeline, so we'll be getting quite used to them.
   previous section).
 
 - One way of representing strings is with double quoted strings
-  called "tapes".  The hoon type is `++tape`, and there is a
-  corresponding mark with the same name.  Write an app that
+  called "tapes".  The hoon type is `++tape`,   Write an app that
   accepts a tape and prints out `(flop argument)`, where
   `argument` is the input.  What does this do?
 
 
-Let's write our first network message!  Here's `/ape/pong.hoon`:
+# Sending a message to another ship
+
+Let's write our first network message!  Here's `/app/pong.hoon`:
 
 ```
 /?    314
 |%
-  ++  move  ,[bone term wire *]
+  ++  move  {bone term wire *}
 --
 !:
-|_  [bowl state=~]
+|_  {bowl state=$~}
 ::
 ++  poke-urbit
-  |=  to=@p
+  |=  to/@p
   ^-  [(list move) _+>.$]
   [[[ost %poke /sending [to %pong] %atom 'howdy'] ~] +>.$]
 ::
 ++  poke-atom
-  |=  arg=@
-  ^-  [(list move) _+>.$]
-  ~&  [%receiving (,@t arg)]
+  |=  arg/@
+  ^-  (list move) _+>.$}
+  ~&  [%receiving (@t arg)]
   [~ +>.$]
 ::
 ++  coup  |=(* [~ +>.$])
@@ -206,15 +206,13 @@ see, on the foreign urbit, this output:
 ```
 
 Most of the code should be straightforward.  In `++poke-atom`,
-the only new thing is the expression `(,@t arg)`.  As we already
-know, `@t` is the type of "cord" text strings.  `,` is the
-irregular short form of `$,`an operator that turns a type into a
-validator function (called a "clam" in hoon) -- that is, a
-function whose domain is all nouns and range is the given type.
+the only new thing is the expression `(@t arg)`.  As we already
+know, `@t` is the type of "cord" text strings. In Hoon, when types are called as functions, they serve as a validator function (called a "clam" in hoon) -- that is, a function whose domain is all nouns and range is the given type.
+
 In simpler terms, if a validator function is passed a value that
 falls within its type, that value is produced.  Otherwise, it
 produces the default value (aka the "bunt") of its type.  Here we call
-this `,@t` function on the argument.  This coerces the argument
+this `@t` function on the argument.  This coerces the argument
 to text, so that we can print it out prettily no matter what
 we're passed.
 
@@ -236,10 +234,9 @@ with one element:
 
 The general form of a move is
 
-                >-app/vane-specific part of move
+-arvo part---->                 
 `[bone term wire *]`
- -arvo part----> 
-  of move
+                >-app/vane-specific part of move
 
 Or, in pseudo-code:
 
@@ -265,16 +262,14 @@ as a keystroke, network packet, file change, or timer event.
 When arvo is given this event, it routes the event to appropriate
 kernel module for handling.
 
-XX[short explanation of the composition of arvo should be here.]
-
 Sometimes, the module can immediately handle the event and
 produce any necessary results. For example, when we poked the
 `++poke-atom` arm above, we poked %gall, our application server,
 which was able to respond to our poke directly.  When the module
-cannot service the request itself, it sends instructions to the other kernel
-module or application to do a specified action, and produces the
-result from that.  Furthermore, when one module sends a message to another kernel
-module or application, it also sends along the duct it was given
+cannot service the request itself, it sends instructions to another kernel
+module or application (the the %gall module) to do a specified action, and produces the result from that.
+
+Furthermore, when one module sends a message to another kernel module or application, it also sends along the duct it was given
 with its new wire tacked onto the end.  Now the duct has two entries,
 with the unix even on the bottom and the kernel module that
 handled it next.  This process can continue indefinitely, adding
@@ -296,7 +291,7 @@ trying to send. Thus, we say to send the network message along the given bone
 ##### Wire ('tack on new layer to duct')
 
 Of course, we have to push a new layer onto our duct
-before passing it along (or responding to it directly) anywhere  This
+before passing it along (or responding to it directly) anywhere.  This
 layer can have any data we want in it, but we don't need anything
 specific here, so we just use the wire `/sending`
 (`/elem1/elem2/elem n` is one syntax used to create `++path`s and
@@ -317,8 +312,6 @@ of a move as a syscall (which you should), then this `term` is
 the name of the syscall.  Common ones include: `%poke`, to
 message an app; `%warp`, to read from the filesystem; `%wait`, to
 set a timer; and `%them`, to send an http request. 
-
-XXDescribe where they can find a list of these things.
 
 The general form ends with `*` (a noun) since each type of move takes
 different data.  In our case, a `%poke` move takes a target
@@ -342,7 +335,7 @@ apps on different urbits.
 - Extend either of the apps in the first two exercises to accept
   input over the network in the same way as `pong`.
 
-- Modify `pong` to print out a message when it receives an ack.
+- Modify `pong` to print out a message when it receives acknowledgement.
 
 - Write two apps, `even` and `odd`.  When you pass an atom to
   `even`, check whether it's even.  If so, divide it by two and
@@ -350,9 +343,7 @@ apps on different urbits.
   an atom, check whether it's equal to one.  If so, terminate,
   printing "%success".  Otherwise, check whether it's odd.  If
   so, multiply it by three, add one, and recurse; otherwise, poke
-  `even` with it.  multiply it by three and add one.  When either
-  app receives a number, print it out along with the name of the
-  app.  In the end, you should be able to watch Collatz's
+  `even` with it.  When either app receives a number, print it out along with the name of the app.  In the end, you should be able to watch Collatz's
   conjecture play out between the two apps.  Sample output:
 
 ```
