@@ -31,16 +31,16 @@ contained within the `|%`. In Hoon, we call the code executed the
 ::::::::::::::::::::::::::::::
 |%                          ::
 ++  three                   ::
-  |=  a=@                   ::
-  =|  b=@                   ::
+  |=  a/@                   ::
+  =|  b/@                   ::
   |-  ^-  @u                ::
   ?:  (lth a b)             ::
     0                       ::
   (add b $(b (add 3 b)))    ::
                             ::
 ++  five                    ::
-  |=  a=@                   ::  subject
-  =|  b=@                   ::
+  |=  a/@                   ::  subject
+  =|  b/@                   ::
   |-  ^-  @                 ::
   ?:  (lte a b)             ::
     0                       ::
@@ -49,7 +49,7 @@ contained within the `|%`. In Hoon, we call the code executed the
   (add b $(b (add b 5)))    ::
                             ::
 ++  sum                     ::
-  |=  a=@u                  ::
+  |=  a/@u                  ::
   (add (five a) (three a))  ::
 --                          ::
 ::::::::::::::::::::::::::::::
