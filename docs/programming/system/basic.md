@@ -7,13 +7,13 @@ title: Hoon refresher / crash course
 
 # Basic Hoon
 
-(This recapitulates material you've already learned in Core Hoon.
+This recapitulates material you've already learned in Core Hoon.
 It will be a very abrupt tutorial if you don't know Hoon already,
-but it may just suffice.  If you don't find it obvious at first
-glance, read it over again 
+but it may be enough in and of itself.  If you don't find it obvious at first
+glance, read it over again. 
 
 Our goal is to get you programming interesting and useful things
-as soon as possible. To get there we have to quickly cover some
+as soon as possible. To get there, we have to quickly cover some
 of the fundamentals of hoon. To do this we'll walk through two
 simple programs: the first [Project
 Euler](https://projecteuler.net/) problem and
@@ -23,7 +23,7 @@ To run this code, you'll need an urbit, and you'll need the
 `%examples` desk from `~zod`.  If you haven't installed
 urbit yet, check out the [installation
 instructions](http://urbit.org/docs/user/install).  Once urbit is
-intalled, take a look at the [basic
+installed, take a look at the [basic
 operation](http://urbit.org/docs/user/basic) of your urbit.
 
 If you haven't pulled the examples desk from `~zod`, do
@@ -34,8 +34,8 @@ so now:
     [time passes...]
     merged with strategy %init
 
-The merge could take several minutes; you'll know it's done when
-"merged with strategy %init" is printed.  Mount the new files to
+This merge could take several minutes; you'll know it's done when
+"merged with strategy %init" is printed.  Next, mount the new files to
 your Unix pier directory:
 
     ~fintud-macrep:dojo> |mount /=examples=
@@ -66,6 +66,7 @@ under `/examples/gen/euler1.hoon`):
 
 ```
 ::    project euler 1
+::    project euler 1
 ::    https://projecteuler.net/problem=1
 ::  run in dojo with +euler1
 ::
@@ -75,20 +76,20 @@ under `/examples/gen/euler1.hoon`):
 :-  %noun
 =<  (sum 1.000)
 ::
-::::  ~fintud-macrep
+::::  ~sivtyv-barnel
   ::
 |%
 ++  three 
-  |=  a=@
-  =|  b=@
+  |=  a/@
+  =|  b/@
   |-  ^-  @u
   ?:  (lth a b)
     0
   (add b $(b (add 3 b)))
 
 ++  five
-  |=  a=@
-  =|  b=@
+  |=  a/@
+  =|  b/@
   |-  ^-  @
   ?:  (lte a b)
     0
@@ -97,17 +98,19 @@ under `/examples/gen/euler1.hoon`):
   (add b $(b (add b 5)))
 
 ++  sum
-  |=  a=@u
+  |=  a/@u
   (add (five a) (three a))
 --
 ```
 
+<blockquote class=“blockquote”>
 > Hoon is not generally whitespace sensitive, but we do have two
 > different kinds of whitespace: a single space and a gap, which
 > is two or more spaces or a linebreak. Tabs are taboo. Do not
 > use them. Really. For a more detailed explanation of when to
 > use spaces vs. gaps, see the syntax section before the first
 > excercises.
+<blockquote class=“blockquote”>
 
 ### Lines 1-11:
 
@@ -123,11 +126,11 @@ more detail later.
 
 ### How to form expressions
 
-Hoon does not use reserved words to form expressions. Instead,
-expressions are formed with runes, which are diagraphs of two
+Hoon does not use reserved words to form expressions. (We did recently implement an alternative keyword syntax, which is not covered here. For more information, see the [syntax section]()). Instead,
+expressions are formed with runes--diagraphs of two
 ascii symbols. Each rune takes a specific number of
 children--either expressions formed by other runes or literals
-that produce their own value.
+that produce their own value (some runes take n children, and are usually closed with `==`).
 
 For example, the rune `?:` from line 17 is the classic
 'if-then-else' statement, and thus takes three children:
@@ -182,7 +185,7 @@ Let's step into each of the three arms within our core.
 ### `++  sum`
 
     ++  sum
-      |=  a=@
+      |=  a/@
       (add (five a) (three a))
     --
 
@@ -201,8 +204,8 @@ Let's step into each of the three arms within our core.
 ### ++  three
 
     ++  three 
-      |=  a=@
-      =|  b=@
+      |=  a/@
+      =|  b/@
       |-  ^-  @u
       ?:  (lth a b)
         0
@@ -263,7 +266,7 @@ refer to our cheatsheat at the bottom.
 ```
 Review
 
-|%  start core (collection of named ++ arms)
+|%  start core (collection of named ++ arms; an "object")
 |=  define function
 =|  define variable from type with default value
 |-  drop a recursion point
@@ -273,14 +276,6 @@ Review
 (function args ...)  call function
 
 New material
-
-- :-  make a cell of values. The irregular wide form of this is
-  [a b] with two expressions separated by a single space.
-
-- Cords are one datatype for text in hoon. They're just a big
-  atom formed from adjacent unicode bytes -- a "c string". To
-  produce a cord enclose text within single quotes. To set the type
-  of an argument to a cord, use @t.
 
 - There are two syntaxes for writing Hoon: tall form and wide
   form.
@@ -304,109 +299,15 @@ New material
   =((mod b 3) 0).  In this case = is actually an irregular form
   of .=, which tests its two children for equality.
 
-  Another irregular form is [a b] for :-(a b)
-
   Surrounding a function with () is an irregular wide form
-  syntax for calling a function with n arguments.
-```
-    
+  syntax for calling a function with n arguments. More on this later.
 
-## The subject
+- :-  makes a cell of values. The irregular wide form of this is
+  [a b], with two expressions separated by a single space. (While the regular form of this rune takes a fixed number of children--2--its irregular wide form can accept n expressions:[a1..an])
 
-Now we're going to cover the boiler plate that we skimmed over
-earlier.
-
-    :-  %say  |=  *  
-    :-  %noun
-    =<  (sum [1.000 2.000])
-    
-This program is a cell of two elements: the first, `%say`, tells
-the interpreter what to produce--in this case a value.
-
-The second element is `|=`, which we know produces a function.
-`|=`'s first child is its argument(s), which in this case is any
-noun (`*`).  Its second child is the remainder of the program.
-
-Similarly, the rest of the program is a cell of the literal
-`%noun`, which tells the shell that we're producing a value of
-type `noun`, and the second child contains the code that we run
-to actually produce our value of the type `noun`.
-
-`=<` is a rune that takes two children. The second child is the
-context against which we run the first child. So in this case, we
-are running the expression `(sum 1.000)` against everything
-contained within the `|%`. In Hoon, we call the code executed the
-"formula" and its context the "subject".
+- Cords are one datatype for text in hoon. They're just a big
+  atom formed from adjacent unicode bytes -- a "c string". To
+  produce a cord enclose text within single quotes. To set the type
+  of an argument to a cord, use @t.
 
 ```
-::::::::::::::::::::::::::::::
-=<  (sum 1.000)             :: formula
-::::::::::::::::::::::::::::::
-|%                          ::
-++  three                   ::
-  |=  a=@                   ::
-  =|  b=@                   ::
-  |-  ^-  @u                ::
-  ?:  (lth a b)             ::
-    0                       ::
-  (add b $(b (add 3 b)))    ::
-                            ::
-++  five                    ::
-  |=  a=@                   ::  subject
-  =|  b=@                   ::
-  |-  ^-  @                 ::
-  ?:  (lte a b)             ::
-    0                       ::
-  ?:  =((mod b 3) 0)        ::
-    $(b (add b 5))          ::
-  (add b $(b (add b 5)))    ::
-                            ::
-++  sum                     ::
-  |=  a=@u                  ::
-  (add (five a) (three a))  ::
---                          ::
-::::::::::::::::::::::::::::::
-```
-
-In nearly every language there is a similar concept of a
-"context" in which expressions are executed. For example, in C
-this includes things like the call stack, stack variables, and so
-on.
-
-Hoon is unique in that this context is a first-class value.
-Scheme allows a sort of reification of the context through
-continutations, and some may see a parallel to Forth's stack, but
-Hoon takes takes the concept one step further.
-
-Our starting subject is the standard library, which is defined in
-`/arvo/hoon.hoon` and `/arvo/zuse.hoon`.  This is where functions
-like `add` are defined.  When we define a core with `|%`, we
-don't throw away the subject (i.e. the standard library); rather,
-we stack the new core on top of the old subject so that both are
-accessible.
-
-**Exercises**:
-
-- Pass `++sum` its arguments (`2000` and `3000`) from the
-  commandline.
-
-- Comment out all of the arms of the `|%`. Now add another arm
-  and call it `++add`, have it accept two arguments and procduce
-  42 (regardless of input).  Change the `=<` line to `[(add 5 7)
-  (^add 5 7)]`.  Can you recognize what's happening?
-
-Cheatsheet:
-
-- To pass arguments from the command line to a program, you
-  replace the `*` in the first line of the boiler plate to 
-  `[^ [[arg=TYPE ~] ~]]` where `TYPE` is replaced with the
-  type of argument you're expecting.  Then `+euler1 a` from
-  the dojo sets `arg` to `a`.
-- The empty list is `~`
-- Lisp-style cons (construct a cell/prepend an element) is
-  `[new-element list]`
-- For example, the first three positive integers are `[1 2 3
-  ~]`
-- `gte` tests whether `a` is greater than or equal to `b`.
-- `mod` runs the modulo operation on two atoms.
-- See the [basic math section]() for more info.
