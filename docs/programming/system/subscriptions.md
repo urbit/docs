@@ -17,18 +17,18 @@ Let's take a look at two apps, `:source` and `:sink`.  First,
 /?    314
 !:
 |%
-++  move  ,[bone %diff mark *]
+++  move  {bone $diff mark *}
 --
-|_  [hid=bowl state=~]
+|_  {hid/bowl state/$~}
 ++  poke-noun
-  |=  arg=*
-  ^-  [(list move) _+>.$]
+  |=  arg/*
+  ^-  {(list move) _+>.$}
   :_  +>.$
   %+  turn  (prey /the-path hid)
-  |=([o=bone *] [o %diff %noun arg])
+  |=({o/bone *} `move`[o %diff %noun arg])
 ++  peer
-  |=  pax=path
-  ^-  [(list move) _+>.$]
+  |=  pax/path
+  ^-  {(list move) _+>.$}
   ~&  [%subscribed-to pax=pax]
   [~ +>.$]
 --
@@ -39,17 +39,17 @@ And secondly, `:sink`:
 ```
 /?    314
 |%
-++  move  ,[bone card]
+++  move  {bone card}
 ++  card
-  $%  [%peer wire [@p term] path]
-      [%pull wire [@p term] ~]
+  $%  {$peer wire {@p term} path}
+      {$pull wire {@p term} $~}
   ==
 --
 !:
-|_  [bowl available=?]
+|_  {bowl available/?}
 ++  poke-noun
-  |=  arg=*
-  ^-  [(list move) _+>.$]
+  |=  arg/*
+  ^-  {(list move) _+>.$}
   ?:  &(=(%on arg) available)
     [[[ost %peer /subscribe [our %source] /the-path] ~] +>.$(available |)]
   ?:  &(=(%off arg) !available)
@@ -57,13 +57,13 @@ And secondly, `:sink`:
   ~&  ?:(available %not-subscribed %subscribed)
   [~ +>.$]
 ++  diff-noun
-  |=  [wir=wire arg=*]
-  ^-  [(list move) _+>.$]
+  |=  {wir/wire arg/*}
+  ^-  {(list move) _+>.$}
   ~&  [%recieved-data arg]
   [~ +>.$]
 ++  reap
-  |=  [wir=wire error=(unit tang)]
-  ^-  [(list move) _+>.$]
+  |=  {wir/wire error/(unit tang)}
+  ^-  {(list move) _+>.$}
   ?~  error
     ~&  %successfully-subscribed
     [~ +>.$]
@@ -151,7 +151,7 @@ whenever we poke `:source`, `:sink` gets the update and prints it
 out.  Then we unsubscribe by poking `:sink` with `%off`, and
 `:sink` stops getting updates.  We then resubscribe.
 
-There's a fair bit going on in this code,  Let's look at
+There's a fair bit going on in this code. Let's look at
 `:source` first.
 
 Our definition of `move` is fairly specific, since we're only
@@ -176,12 +176,12 @@ In our case, we don't care what path you subscribed on, and all
 we do is print out that you subscribed.  Arvo keeps track of your
 subscriptions, so you don't have to.  You can access your
 subscribers by looking at `sup` in the bowl that's passed in.
-`sup` is of type `(map bone ,[@p path])`, which associates bones
+`sup` is of type `(map bone {@p path})`, which associates bones
 with the urbit who subscribed, and which path they subscribed on.
-If you want to talk to your subscribers, send them messages along
+If you want to communicate with your subscribers, send them messages along
 their bone.
 
-`++poke-noun` spams the given arguement to all our subscribers.
+`++poke-noun` "spams" the given arguement to all our subscribers.
 There's a few things we haven't seen before.  Firstly, `:_(a b)`
 is the same as `[b a]`.  It's just a convenient way of formatting
 things when the first thing in a cell is much more complicated
@@ -199,11 +199,11 @@ who are subscribed on a path that begins with the given path.
 "Prey" is short for "prefix".
 
 Now we have the list of relevant subscribers.  This a list of
-triples, `[bone @p path]`, where the only thing we really need is
+triples, `{bone @p path}`, where the only thing we really need is
 the bone because we don't care what urbit they are or what exact
 path they subscribed on.  Thus, our transformer function takes
-`[o=bone *]` and produces `[o %diff %noun arg]`, which is a move
-that means "tell bone `o` this subscription update:  `[%noun
+`{o=bone *}` and produces `[o %diff %noun arg]`, which is a move
+that provides bone `o` with this subscription update:  `[%noun
 arg]`".  This is fairly dense code, but what it's doing is
 straightforward.
 
@@ -227,8 +227,8 @@ this, because its semantics are to cancel any subscriptions
 coming over this duct.  If your bone and wire are the same as
 when you subscribed, then the cancellation will happen correctly.
 
-The only state we need for `:sink` is a loobean to tell whether
-we're already subscribed to `:source`.  We use `available=?`,
+The only state we need for `:sink` is a boolean to indicate whether
+we're already subscribed to `:source`.  We use `available/?`,
 where `?` is the sign of type boolean (similar to `*`, `@`) (which defaults to true).
 
 In `++poke-noun` we check our input to see both if it's `%on` and
@@ -273,7 +273,7 @@ Moving forward, `++reap` is given the wire we attempted to
 subscribe over, possibly along with an error message in cases of
 failure. `(unit type)` means "either `~` or `[~ type]`, which
 means it's used like Haskell's "maybe" or C's nullability.  If
-`error` is `~`, then the subscription was successful, so we tell
+`error` is `~`, then the subscription was successful and we tell
 that to the user.  Otherwise, we print out the error message.
 
 Excercises XX
