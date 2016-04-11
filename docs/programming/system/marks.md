@@ -15,10 +15,10 @@ text, but there's no predefined mark for it.  This is
 
 ```
 /?  314
-|_  cod=@t
+|_  cod/@t
 ++  grab
   |%
-  ++  atom  |=(arg=@ `@t`(scot %ud arg))
+  ++  atom  |=(arg/@ `@t`(scot %ud arg))
   --
 ++  grow
   |%
@@ -34,7 +34,7 @@ case, the argument is the marked data.
 
 There are three possible top-level arms in the `|_` core,
 `++grab`, `++grow`, and `++grad`.  `++grad` is used for revision
-control, and it's covered elsewhere.  `++grab` specifies
+control, and is covered elsewhere.  `++grab` specifies
 functions to convert from another mark to the current mark.
 `++grow` specifies how to convert from the current mark to
 another one.
@@ -42,16 +42,14 @@ another one.
 In our case, we only define one arm in `++grab`, namely `++atom`.
 This allows us to convert any atom to a cord.  `++scot` is a
 standard library function in `hoon.hoon` which pretty-prints
-atoms of various types.  We want tot treat the atom as an
+atoms of various types.  We want to treat the atom as an
 unsigned decimal number, so we give `%ud` and the given argument
 to `++scot`.  Thus, the form of an arm in `++grab` is
 `|=(other-mark-type this-mark-value)`.
 
 In `++grow`, we just convert to the `md` mark, which is just a
 `@t` internally, but it has fancy conversion functions to things
-like html.  `++md` isn't a function because the "argument" is the
-`cod=@t` on the `|_` line.  We just produce the new value
-directly.
+like html.  `++md` isn't a function because the "argument" is already a `@t`, so we can just produce the new value directly.
 
 Let's play around a bit with this mark.  First, let's take a
 marked atom and convert it to our new mark.
@@ -87,7 +85,7 @@ Let's play around a little more:
 ]
 ```
 
-Ooh, that was exciting.  If you squint at that, but it looks an
+That was exciting.  If you squint at that,  it looks an
 awful lot like html.  Our value `17` is still in there, in the
 body.  `urb` is the mark we render most web pages to.  It makes
 sure you have a complete skeleton of a web page.  Of course, by
