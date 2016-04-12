@@ -13,17 +13,18 @@ line is commented with its number:
 :gate  end/atom                  ::  1
 :var   count  1                  ::  2
 :loop                            ::  3
-:if  =(end count)                ::  4
-   ~                             ::  5
-:cons                            ::  6
-  :if  =(0 (mod count 15))       ::  7
-    "FizzBuzz"                   ::  8
-  :if  =(0 (mod count 5))        ::  9
-    "Fizz"                       ::  10
-  :if  =(0 (mod count 3))        ::  11
-    "Buzz"                       ::  12
-  (text :wrap(count))            ::  13
-:moar(count (add 1 count))       ::  14
+:cast  (list tape)               ::  4
+:if  =(end count)                ::  5
+   ~                             ::  6
+:cons                            ::  7
+  :if  =(0 (mod count 15))       ::  8
+    "FizzBuzz"                   ::  9
+  :if  =(0 (mod count 5))        ::  10 
+    "Fizz"                       ::  11
+  :if  =(0 (mod count 3))        ::  12
+    "Buzz"                       ::  13
+  (text :wrap(count))            ::  14
+:moar(count (add 1 count))       ::  15
 ```
 
 Can you understand this code by just looking at it?  Hopefully,
@@ -40,16 +41,19 @@ Line 2 declares a variable, `count`, with initial value `1`.
 
 Line 3 begins a loop.
 
-Line 4 checks if `count` equals `end`.  If so, line 5 (and the
-whole loop) produces the value `~`, null.  If not, line 6 begins
-an ordered pair.
+Line 4 casts the product of the loop to a list of `tape`
+(string as a character list).
+
+Line 5 checks if `count` equals `end`.  If so, line 6 (and the
+whole loop) produces the value `~`, null, the empty list.  If
+not, line 7 begins an ordered pair.
 
 The head of the pair is "FizzBuzz", or "Fizz", or "Buzz", if the
-respective tests hit.  If not, line 13 wraps a runtime type
+respective tests hit.  If not, line 14 wraps a runtime type
 around `count`, then prints the type-value pair to a string (like
 C `sprintf()`).  This string is the first item in the output list.
 
-The tail of the pair is line 14, which repeats the loop (like
+The tail of the pair is line 15, which repeats the loop (like
 Clojure `recur`), with `count` incremented.  This list of strings
 is the rest of the output list.
 
