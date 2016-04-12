@@ -9,21 +9,21 @@ Let's figure out how to make HTTP requests and set timers.
 
 Let's build an uptime-monitoring system.  It'll ping a web
 service periodically and print out an error when the response
-code isn't 2xx.  Here's `ape/up.hoon`:
+code isn't 2xx.  Here's `app/up.hoon`:
 
 ```
 /?    314
 |%
-++  move  ,[bone card]
+++  move  {bone card}
 ++  card
-  $%  [%them wire (unit hiss)]
-      [%wait wire @da]
+  $%  {%them wire (unit hiss)}
+      {%wait wire @da}
   ==
 --
-|_  [hid=bowl on=_| in-progress=_| target=@t]
+|_  {hid/bowl on/_| in-progress=_| target/@t}
 ++  poke-cord
-  |=  url=@t
-  ^-  [(list move) _+>.$]
+  |=  url/@t
+  ^-  {(list move) _+>.$}
   ?:  =('off' url)
     [~ +>.$(on |)]
   ?:  =('on' url)
@@ -33,8 +33,8 @@ code isn't 2xx.  Here's `ape/up.hoon`:
     [ost.hid %them /request ~ (need (epur target)) %get ~ ~]~
   [~ +>.$(target url)]
 ++  thou-request
-  |=  [wir=wire code=@ud headers=mess body=(unit octs)]
-  ^-  [(list move) _+>.$]
+  |=  {wir/wire code/@ud headers/mess body/(unit octs)}
+  ^-  {(list move) _+>.$}
   ?:  &((gte code 200) (lth code 300))
     ~&  [%all-is-well code]
     :_  +>.$
@@ -49,7 +49,7 @@ code isn't 2xx.  Here's `ape/up.hoon`:
     [ost.hid %wait /timer (add ~s10 now.hid)]~
   ~
 ++  wake-timer
-  |=  [wir=wire ~]
+  |=  {wir/wire ~}
   ?:  on
     :_  +>.$
     [ost.hid %them /request ~ (need (epur target)) %get ~ ~]~
@@ -97,7 +97,7 @@ produce a `%wake` when the time comes.
 Let's take a look at our state:
 
 ```
-|_  [hid=bowl on=_| in-progress=_| target=@t]
+|_  {hid/bowl on/_| in-progress=_| target/@t}
 ```
 
 We have three pieces of app-specific state.  `target` is the url
