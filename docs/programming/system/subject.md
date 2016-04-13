@@ -1,4 +1,10 @@
-## The subject
+---
+sort: 2
+next: true
+title: Hoon refresher / crash course
+---
+
+# The subject
 
 Now we're going to cover the boiler plate that we skimmed over
 earlier.
@@ -86,7 +92,7 @@ Cheatsheet:
 
 - To pass arguments from the command line to a program, you
   replace the `*` in the first line of the boiler plate to 
-  `[^ [[arg=TYPE ~] ~]]` where `TYPE` is replaced with the
+  `{^ {{arg/TYPE ~} ~}}` where `TYPE` is replaced with the
   type of argument you're expecting.  Then `+euler1 a` from
   the dojo sets `arg` to `a`.
 - The empty list is `~`

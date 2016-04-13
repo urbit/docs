@@ -14,7 +14,7 @@ glance, read it over again.
 
 Our goal is to get you programming interesting and useful things
 as soon as possible. To get there, we have to quickly cover some
-of the fundamentals of hoon. To do this we'll walk through two
+of the fundamentals of hoon. To do this, we'll walk through two
 simple programs: the first [Project
 Euler](https://projecteuler.net/) problem and
 [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
@@ -66,7 +66,6 @@ under `/examples/gen/euler1.hoon`):
 
 ```
 ::    project euler 1
-::    project euler 1
 ::    https://projecteuler.net/problem=1
 ::  run in dojo with +euler1
 ::
@@ -103,14 +102,16 @@ under `/examples/gen/euler1.hoon`):
 --
 ```
 
-<blockquote class=“blockquote”>
-> Hoon is not generally whitespace sensitive, but we do have two
-> different kinds of whitespace: a single space and a gap, which
-> is two or more spaces or a linebreak. Tabs are taboo. Do not
-> use them. Really. For a more detailed explanation of when to
-> use spaces vs. gaps, see the syntax section before the first
-> excercises.
-<blockquote class=“blockquote”>
+
+<blockquote class="blockquote">
+Hoon is not generally whitespace sensitive, but we do have two
+different kinds of whitespace: a single space and a gap, which
+is two or more spaces or a linebreak. Tabs are taboo. Do not
+use them. Really. For a more detailed explanation of when to
+use spaces vs. gaps, see the [syntax section](docs/programming/core/twig/syntax) before the first
+excercises.
+</blockquote>
+
 
 ### Lines 1-11:
 
@@ -126,7 +127,7 @@ more detail later.
 
 ### How to form expressions
 
-Hoon does not use reserved words to form expressions. (We did recently implement an alternative keyword syntax, which is not covered here. For more information, see the [syntax section]()). Instead,
+Hoon does not use reserved words to form expressions. (We did recently implement an alternative keyword syntax, which is not covered here. For more information, see the [syntax section](docs/programming/core/twig/syntax)). Instead,
 expressions are formed with runes--diagraphs of two
 ascii symbols. Each rune takes a specific number of
 children--either expressions formed by other runes or literals
@@ -177,8 +178,10 @@ element in this map begins with a `++` followed by the name and
 the corresponding code. Since `|%` takes an arbitrary number of
 children, it needs to be closed with a `--`.
 
-> `++` is not technically a rune, since it is only used in core
-> syntax as shown above
+<blockquote class="blockquote">
+`++` is not technically a rune, since it is only used in core
+syntax as shown above
+</blockquote>
 
 Let's step into each of the three arms within our core.
 
@@ -242,8 +245,10 @@ Note that we only specify what changes (`b` in this case).  If
 you recurse by an actual function call, then you have to specify
 every argument.
 
-> If you're familiar with Clojure, `|-` is `loop` and `$()` is
-> recur.
+<blockquote class="blockquote">
+If you're familiar with Clojure, `|-` is `loop` and `$()` is
+recur.
+</blockquote>
 
 **Exercises**:
 

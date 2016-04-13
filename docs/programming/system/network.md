@@ -1,6 +1,6 @@
 ---
 next: false
-sort: 2
+sort: 3
 title: Network messages
 ---
 
@@ -15,7 +15,7 @@ commands that produce a value and then disappear.  To listen for and receive mes
 ```
 ::  There is no love that is not an echo
 ::
-::::  /hoon/echo/ape
+::::  /hoon/echo/app
   ::
 /?    314
 !:
@@ -153,12 +153,6 @@ pipeline, so we'll be getting quite used to them.
 
 - Write an app that computes fizzbuzz on its input (as in the
   previous section).
-
-- One way of representing strings is with double quoted strings
-  called "tapes".  The hoon type is `++tape`,   Write an app that
-  accepts a tape and prints out `(flop argument)`, where
-  `argument` is the input.  What does this do?
-
 
 # Sending a message to another ship
 
@@ -325,10 +319,12 @@ When arvo receives a `%poke` move, it calls the appropriate
 between apps on the same urbit as for sending messages between
 apps on different urbits.
 
-> We said earlier that we're not expecting a response.  This is
-> not entirely true:  the `++coup` is called when we receive
-> acknowledgment that the `++poke` was called.  We don't do
-> anything with this information right now, but we could.
+<blockquote class="blockquote">
+We said earlier that we're not expecting a response.  This is
+not entirely true:  the `++coup` is called when we receive
+acknowledgment that the `++poke` was called.  We don't do
+anything with this information right now, but we could.
+</blockquote>
 
 **Exercises**:
 

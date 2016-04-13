@@ -1,6 +1,6 @@
 ---
 next: true
-sort: 4
+sort: 5
 title: Subscriptions
 ---
 
@@ -111,8 +111,6 @@ Cheat sheet:
    the `|_`, as it lies above it:  hoon.hoon  `=> |% w types =>
    |_`
 
-
-
   
 ```
 
@@ -202,7 +200,7 @@ Now we have the list of relevant subscribers.  This a list of
 triples, `{bone @p path}`, where the only thing we really need is
 the bone because we don't care what urbit they are or what exact
 path they subscribed on.  Thus, our transformer function takes
-`{o=bone *}` and produces `[o %diff %noun arg]`, which is a move
+`{o/bone *}` and produces `[o %diff %noun arg]`, which is a move
 that provides bone `o` with this subscription update:  `[%noun
 arg]`".  This is fairly dense code, but what it's doing is
 straightforward.
@@ -276,4 +274,3 @@ means it's used like Haskell's "maybe" or C's nullability.  If
 `error` is `~`, then the subscription was successful and we tell
 that to the user.  Otherwise, we print out the error message.
 
-Excercises XX

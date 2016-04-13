@@ -1,6 +1,6 @@
 ---
 next: true
-sort: 7
+sort: 8
 title: Using Generators with Apps
 ---
 
@@ -12,7 +12,7 @@ the "plumbing" way to interact with apps.  Generators are the
 `|merge`, there are no marks in sight.
 
 We've used generators before, back in [Basic
-Operation](basic).  At that point, we just used the generators
+Operation](http://urbit.org/docs/user/basic).  At that point, we just used the generators
 to produce values -- we didn't pipe their results into apps.  In
 the dojo cast, the role of a generator is to take a list of
 arguments and produce a value, which is often, though not always,
@@ -52,10 +52,8 @@ abbreviated to `:my-app|my-generator <args>`.  Because most
 built-in commands are generators for the `:hood` app,
 `:hood|generator <args>` can be shortened to `|generator <args>`.
 
-XXThe paragraph above is too long and confusing
-
 Let's write a generator for a modified version of `:pong` from
-the chapter on [Network Messages](network).  Recall that `:pong`
+the chapter on [Network Messages](http://urbit.org/docs/user/network).  Recall that `:pong`
 takes an urbit address, which is of mark `urbit`, and sends that
 urbit the message `'howdy'`.  First--without a generator--let's
 make `:ping` that does the same, except that it lets the user
@@ -64,44 +62,117 @@ optionally specify the message as well.
 We'll need a new mark for our arguments.  Let's call it
 `ping-message`.
 
-> For app-specific marks, it's good style to prefix the name of
-> the mark with the name of the app.  Since many apps have
-> several such marks, subdirectories in `/mar` are rendered as
-> `-`, so that `ping-message` is written in
-> (`/mar/ping/message.hoon`).
+<blockquote class="blockquote">
+For app-specific marks, it's good style to prefix the name of
+the mark with the name of the app.  Since many apps have
+several such marks, subdirectories in `/mar` are rendered as
+`-`, so that `ping-message` is written in
+(`/mar/ping/message.hoon`).
+</blockquote>
 
 ```
-|_  [to=@p message=@t]
-++  grab
-  |%
-  ++  noun  ,[@p @t]
-  --
---
-```
-
-The app can easily be modified to use this (`/ape/ping.hoon`):
-
-```
+::  Up-ness monitor. Accepts atom url, 'on', or 'off'
+::
+::::  /hoon/up/examples/app
+  ::
 /?    314
 |%
-  ++  move  ,[bone term wire *]
+++  move  {bone card}
+++  card
+  $%  {$hiss wire $~ $httr {$purl p/purl}}
+      {$wait wire @da}
+  ==
+++  action
+  $%  {$on $~}            ::  enable polling('on')
+      {$off $~}           ::  disable polling('off)
+      {$target p/cord}    ::  set poll target('http://...')
+  ==
+--
+|_  {hid/bowl on/_| in-progress/_| target/@t}
+++  poke-atom
+  |=  url-or-command/@t  ^-  (quip move +>)
+  =+  ^-  act/action
+      ?:  ?=($on url-or-command)  [%on ~]
+      ?:  ?=($off url-or-command)  [%off ~]
+      [%target url-or-command]
+  ?-  -.act
+    $target  [~ +>.$(target p.act)]
+    $off  [~ +>.$(on |)]
+    $on
+      :-  ?:  |(on in-progress)  ~
+          [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+      +>.$(on &, in-progress &)
+  ==
+::
+
+::  ~&  'i get here'
+::  ^-  {(list move) _+>.$}
+::  ?:  =('off' url)
+::    [~ +>.$(on |)]
+::  ?:  =('on' url)
+::    :_  +>.$(on &, in-progress &)
+::    ?:  |(on in-progress)
+::      ~
+::    [ost.hid %them /request ~ (need (epur target)) %get ~ ~]~
+::  [~ +>.$(target url)]
+++  sigh-httr
+  |=  {wir/wire code/@ud headers/mess body/(unit octs)}
+  ~&  'arrive here'
+  ^-  {(list move) _+>.$}
+  ?:  &((gte code 200) (lth code 300))
+    ~&  [%all-is-well code]
+    :_  +>.$
+    [ost.hid %wait /timer (add ~s10 now.hid)]~
+  ~&  [%we-have-a-problem code]
+  ~&  [%headers headers]
+  ~&  [%body body]
+  :_  +>.$
+  [ost.hid %wait /timer (add ~s10 now.hid)]~
+++  wake-timer
+  |=  {wir/wire $~}  ^-  (quip move +>)
+  ?:  on
+    :_  +>.$
+    [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+  [~ +>.$(in-progress |)]
+::
+++  prep  ~&  target  _`.  ::
+--
+```
+
+The app can easily be modified to use this (`/app/ping.hoon`):
+
+```
+::
+::::  /hoon/ping/examples/app
+  ::
+/?    151
+|%
+  ++  move  {bone term wire *}
 --
 !:
-|_  [bowl state=~]
+|_  {bowl state/$~}
 ::
-++  poke-ping-message
-  |=  [to=@p message=@t]
-  ^-  [(list move) _+>.$]
-  [[[ost %poke /sending [to dap] %atom message] ~] +>.$]
+++  poke-examples-ping-message
+  |=  {to/@p message/@t}
+  ~&  'sent'
+  ^-  {(list move) _+>.$}
+  :-  ^-  (list move)
+      :~  `move`[ost %poke /sending [to dap] %atom message]
+      ==
+  +>.$
 ::
 ++  poke-atom
-  |=  arg=@
-  ^-  [(list move) _+>.$]
-  ~&  [%receiving (,@t arg)]
+  |=  arg/@
+  ~&  'received'
+  ^-  {(list move) _+>.$}
+  ::
+  ~&  [%receiving (@t arg)]
   [~ +>.$]
 ::
 ++  coup  |=(* `+>)
 --
+
+
 ```
 
 Now we can run this with:
@@ -123,11 +194,11 @@ to `:ping`, let's put it in `/gen/ping/send.hoon`:
 
 ```
 :-  %say
-|=  [^ [[to=@p message=?(~ [text=@t ~])] ~]]
+|=  {^ {{to/@p message/?($~ {text/@t $~})} $~}
 [%ping-message to ?~(message 'howdy' text.message)]
 ```
 
-A couple of new things here.  Firstly, `message=?(~ [text=@t ~])`
+A couple of new things here.  Firstly, `message/?($~ {text=@t $~})`
 should be read as "the message is either null or a pair of text
 and null".  Generator argument lists are always null-terminated,
 which makes it convenient to accept lists in tail position (which
@@ -140,21 +211,23 @@ text and null.
 Secondly, `?~(a b c)` is a rune which means "if the `a` is null,
 do `b`, else `c`".  It is roughly equivalent to `?:(=(~ a) b c)`.
 
-> `?~(a b c)` is actually equivalent to `?:=(?=(~ a) b c)`,
-> which, although identical at run time, is subtly different at
-> compile time.  Specifically, using `?=` rather than `=` means
-> that we're checking whether `a` is in the *type* of `~`, and so
-> the compiler knows that in the `b` case `a` is null, and in the
-> `c` case `a` is not null.  Since `=` is purely a runtime value
-> check with no type implications, the compiler doesn't gain any
-> information.
->
-> At any rate, this is the reason why we can refer to
-> `text.message` in the `c` clause.  The compiler knows that
-> `message` is not null, so it must have `text` within it.  If
-> you used `?:(=(~ message) 'howdy' text.message)` the compiler
-> would complain that it doesn't know whether `message` has
-> `text` within it.
+<blockquote class="blockquote">
+`?~(a b c)` is actually equivalent to `?:=(?=(~ a) b c)`,
+which, although identical at run time, is subtly different at
+compile time.  Specifically, using `?=` rather than `=` means
+that we're checking whether `a` is in the *type* of `~`, and so
+the compiler knows that in the `b` case `a` is null, and in the
+`c` case `a` is not null.  Since `=` is purely a runtime value
+check with no type implications, the compiler doesn't gain any
+information.
+
+At any rate, this is the reason why we can refer to
+`text.message` in the `c` clause.  The compiler knows that
+`message` is not null, so it must have `text` within it.  If
+you used `?:(=(~ message) 'howdy' text.message)` the compiler
+would complain that it doesn't know whether `message` has
+`text` within it.
+</blockquote>
 
 This is run as follows:
 

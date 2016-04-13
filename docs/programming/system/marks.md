@@ -1,6 +1,6 @@
 ---
 next: true
-sort: 5
+sort: 6
 title: Marks
 ---
 
@@ -34,7 +34,7 @@ case, the argument is the marked data.
 
 There are three possible top-level arms in the `|_` core,
 `++grab`, `++grow`, and `++grad`.  `++grad` is used for revision
-control, and is covered elsewhere.  `++grab` specifies
+controlv (it contains diff/patch logic), and is covered elsewhere.  `++grab` specifies
 functions to convert from another mark to the current mark.
 `++grow` specifies how to convert from the current mark to
 another one.

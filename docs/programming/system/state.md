@@ -1,6 +1,6 @@
 ---
 next: true
-sort: 3
+sort: 4
 title: State
 ---
 
@@ -8,7 +8,7 @@ In the last section we built a few small apps that sent moves.
 These apps were entirely stateless, however.  Most useful apps
 require some amount of state.  Let's build a trivial stateful
 app.  It'll keep a running the sum of all the atoms we poke it with.
-Here's `ape/sum.hoon`:
+Here's `app/sum.hoon`:
 
 ```
 /?    314
@@ -69,16 +69,18 @@ identity), and `eny` (256 bits of guaranteed-fresh entropy).  For
 the full list of things in `++bowl`, search for `++  bowl` (note
 the double space) in `/arvo/zuse.hoon`.
 
-> This is a very common technique in learning hoon.  While
-> documentation exists, often the easiest way to learn about an
-> identifier you see in code is to search in `/arvo/zuse.hoon`
-> and `/arvo/hoon.hoon` for it.  These are our two "standard
-> libraries", and they're usually not hard to read.  Since
-> urbit's codebase is relatively small (those two files are less
-> than 15000 lines of code combined, and besides the standard
-> library they include the hoon parser and compiler, plus the
-> /arvo microkernel), you can usually use the code and the
-> comments as reference doc.
+<blockquote class="blockquote">
+This is a very common technique in learning hoon.  While
+documentation exists, often the easiest way to learn about an
+identifier you see in code is to search in `/arvo/zuse.hoon`
+and `/arvo/hoon.hoon` for it.  These are our two "standard
+libraries", and they're usually not hard to read.  Since
+urbit's codebase is relatively small (those two files are less
+than 15000 lines of code combined, and besides the standard
+library they include the hoon parser and compiler, plus the
+/arvo microkernel), you can usually use the code and the
+comments as reference doc.
+</blockquote>
 
 The second thing is that urbit needs no "serialize to disk" step.
 Everything you produce in the app state is persistent across

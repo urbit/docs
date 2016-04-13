@@ -1,6 +1,6 @@
 ---
 next: true
-sort: 6
+sort: 7
 title: Web Apps
 ---
 
@@ -71,16 +71,18 @@ asserting the parsing succeeded with `need`, and asserting the
 result was 'click' with `?>`, which asserts that its first child
 is true.
 
-> Note the argument to `++json`is `jon/^json`.  Why `^json`?
-> `++json` shadows the type definition, so if we want to refer to
-> the type, we have to prepend a `^`.  This extends to multiple
-> levels:  `^^^foo` means the fourth most innermost instance of `foo`.
+<blockquote class="blockquote">
+Note the argument to `++json`is `jon/^json`.  Why `^json`?
+`++json` shadows the type definition, so if we want to refer to
+the type, we have to prepend a `^`.  This extends to multiple
+levels:  `^^^foo` means the fourth most innermost instance of `foo`.
 
-> `++jo` in `zuse` is a useful library for parsing complex json
-> into hoon structures. In this case, the `:` between `so` and
-> `jo` means 'inside of', because `so` is an arm contained within
-> the core `jo`.  Our case is actually simple enough that the
-> `?>` line could have been `?>  =([%s 'click'] jon)`.
+`++jo` in `zuse` is a useful library for parsing complex json
+into hoon structures. In this case, the `:` between `so` and
+`jo` means 'inside of', because `so` is an arm contained within
+the core `jo`.  Our case is actually simple enough that the
+`?>` line could have been `?>  =([%s 'click'] jon)`.
+</blockquote>
 
 We can test this mark from the command line (don't forget to start your app with `|start %click`)
 
@@ -112,9 +114,11 @@ And `/mar/clicks.hoon`:
 `clicks` is just an atom.  We convert to json by creating an
 object with a single field "clicks" with our value.
 
-> Be sure to checkout section 3bD, JSON and XML, in zuse.hoon
-> `++joba` is just a function that takes a key-value pair and
-> produces a JSON object with one element.
+<blockquote class="blockquote">
+Be sure to checkout section 3bD, JSON and XML, in zuse.hoon
+`++joba` is just a function that takes a key-value pair and
+produces a JSON object with one element.
+</blockquote>
 
 ```
 ~fintud-macrep:dojo> &json &clicks 6
