@@ -1,3 +1,9 @@
+---
+next: true
+sort: 8
+title: Subject
+---
+
 ## The subject
 
 Now we're going to cover the boiler plate that we skimmed over
