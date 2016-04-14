@@ -10,8 +10,8 @@ more often we want to subscribe to updates from another app.  You
 could build a subscription model out of one-way pokes, but it's
 such a common pattern that it's built into arvo.
 
-Let's take a look at two apps, `:source` and `:sink`.  First,
-`:source`:
+Let's take a look at two apps, `:examples-source` and `:examples-sink`.  First,
+`:examples-source`:
 
 ```
 /?    314
@@ -34,7 +34,7 @@ Let's take a look at two apps, `:source` and `:sink`.  First,
 --
 ```
 
-And secondly, `:sink`:
+And secondly, `:examples-sink`:
 
 ```
 /?    314
@@ -117,40 +117,40 @@ Cheat sheet:
 Here's some sample output of the two working together:
 
 ```
-~fintud-macrep:dojo> |start %source
+~fintud-macrep:dojo> |start %examples-source
 >=
-~fintud-macrep:dojo> |start %sink
+~fintud-macrep:dojo> |start %examples-sink
 >=
-~fintud-macrep:dojo> :sink %on
+~fintud-macrep:dojo> :examples-sink %on
 [%subscribed-to pax=/the-path]
 %successfully-subscribed]
 >=
-~fintud-macrep:dojo> :source 5
+~fintud-macrep:dojo> :examples-source 5
 [%received-data 5]
 >=
-~fintud-macrep:dojo> :sink %off
+~fintud-macrep:dojo> :examples-sink %off
 >=
-~fintud-macrep:dojo> :source 6
+~fintud-macrep:dojo> :examples-source 6
 >=
-~fintud-macrep:dojo> :sink %on
+~fintud-macrep:dojo> :examples-sink %on
 [%subscribed-to pax=/the-path]
 %successfully-subscribed]
 >=
-~fintud-macrep:dojo> :source 7
+~fintud-macrep:dojo> :examples-source 7
 [%received-data 7]
 >=
 ```
 
-###:source
+###:examples-source
 
 Hopefully you can get a sense for what's happening here.  When we
-poke `:sink` with `%on`, `:sink` subscribes to `:source`, and so
-whenever we poke `:source`, `:sink` gets the update and prints it
-out.  Then we unsubscribe by poking `:sink` with `%off`, and
-`:sink` stops getting updates.  We then resubscribe.
+poke `:examples-sink` with `%on`, `:examples-sink` subscribes to `:examples-source`, and so
+whenever we poke `:examples-source`, `:examples-sink` gets the update and prints it
+out.  Then we unsubscribe by poking `:examples-sink` with `%off`, and
+`:examples-sink` stops getting updates.  We then resubscribe.
 
 There's a fair bit going on in this code. Let's look at
-`:source` first.
+`:examples-source` first.
 
 Our definition of `move` is fairly specific, since we're only
 going to sending one kind of move.  The `%diff` move is a
@@ -205,12 +205,12 @@ that provides bone `o` with this subscription update:  `[%noun
 arg]`".  This is fairly dense code, but what it's doing is
 straightforward.
 
-###:sink
+###:examples-sink
 
-`:source` should now make sense.  `:sink` is a little longer,
+`:examples-source` should now make sense.  `:examples-sink` is a little longer,
 but not much more complicated.
 
-In `:sink`, our definition of of `++move` is different.  All
+In `:examples-sink`, our definition of of `++move` is different.  All
 moves start with a `bone`, and we conventionally refer to the
 second half as the "card", so that we can say a move is an action
 that sends a card along a bone.
@@ -225,13 +225,13 @@ this, because its semantics are to cancel any subscriptions
 coming over this duct.  If your bone and wire are the same as
 when you subscribed, then the cancellation will happen correctly.
 
-The only state we need for `:sink` is a boolean to indicate whether
-we're already subscribed to `:source`.  We use `available/?`,
+The only state we need for `:examples-sink` is a boolean to indicate whether
+we're already subscribed to `:examples-source`.  We use `available/?`,
 where `?` is the sign of type boolean (similar to `*`, `@`) (which defaults to true).
 
 In `++poke-noun` we check our input to see both if it's `%on` and
 we're available.  If so, we produce the move to subscribe to
-`:source`:
+`:examples-source`:
 
 ```
 [ost %peer /subscribe [our %source] /the-path]
@@ -241,7 +241,7 @@ Also, we set available to false (`|`) with `+>.$(available |)`.
 
 Otherwise, if our input is `%off` and we're already subscribed
 (i.e. `available` is false), then we unsubscribe from
-`:source`:
+`:examples-source`:
 
 ```
 [ost %pull /subscribe [our %source] ~]

@@ -14,48 +14,59 @@ service periodically and print out an error when the response
 code isn't 2xx.  Here's `app/up.hoon`:
 
 ```
+::  Up-ness monitor. Accepts atom url, 'on', or 'off'
+::
+::::  /hoon/up/examples/app
+  ::
 /?    314
 |%
 ++  move  {bone card}
 ++  card
-  $%  {%them wire (unit hiss)}
-      {%wait wire @da}
+  $%  {$hiss wire $~ $httr {$purl p/purl}}
+      {$wait wire @da}
+  ==
+++  action
+  $%  {$on $~}            ::  enable polling('on')
+      {$off $~}           ::  disable polling('off)
+      {$target p/cord}    ::  set poll target('http://...')
   ==
 --
-|_  {hid/bowl on/_| in-progress=_| target/@t}
-++  poke-cord
-  |=  url/@t
-  ^-  {(list move) _+>.$}
-  ?:  =('off' url)
-    [~ +>.$(on |)]
-  ?:  =('on' url)
-    :_  +>.$(on &, in-progress &)
-    ?:  |(on in-progress)
-      ~
-    [ost.hid %them /request ~ (need (epur target)) %get ~ ~]~
-  [~ +>.$(target url)]
-++  thou-request
+|_  {hid/bowl on/_| in-progress/_| target/@t}
+++  poke-atom
+  |=  url-or-command/@t  ^-  (quip move +>)
+  =+  ^-  act/action
+      ?:  ?=($on url-or-command)  [%on ~]
+      ?:  ?=($off url-or-command)  [%off ~]
+      [%target url-or-command]
+  ?-  -.act
+    $target  [~ +>.$(target p.act)]
+    $off  [~ +>.$(on |)]
+    $on
+      :-  ?:  |(on in-progress)  ~
+          [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+      +>.$(on &, in-progress &)
+  ==
+++  sigh-httr
   |=  {wir/wire code/@ud headers/mess body/(unit octs)}
+  ~&  'arrive here'
   ^-  {(list move) _+>.$}
   ?:  &((gte code 200) (lth code 300))
     ~&  [%all-is-well code]
     :_  +>.$
-    ?:  on
-      [ost.hid %wait /timer (add ~s10 now.hid)]~
-    ~
+    [ost.hid %wait /timer (add ~s10 now.hid)]~
   ~&  [%we-have-a-problem code]
   ~&  [%headers headers]
   ~&  [%body body]
   :_  +>.$
-  ?:  on
-    [ost.hid %wait /timer (add ~s10 now.hid)]~
-  ~
+  [ost.hid %wait /timer (add ~s10 now.hid)]~
 ++  wake-timer
-  |=  {wir/wire ~}
+  |=  {wir/wire $~}  ^-  (quip move +>)
   ?:  on
     :_  +>.$
-    [ost.hid %them /request ~ (need (epur target)) %get ~ ~]~
+    [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
   [~ +>.$(in-progress |)]
+::
+++  prep  ~&  target  _`.  ::
 --
 ```
 
@@ -173,14 +184,14 @@ Let's try it out:
 ```
 ~fintud-macrep:dojo> |start %up
 >=
-~fintud-macrep:dojo> :up &cord 'http://www.google.com'
+~fintud-macrep:dojo> :examples-up &cord 'http://www.google.com'
 >=
 [%all-is-well 200]
 [%all-is-well 200]
-~fintud-macrep:dojo> :up &cord 'http://example.com'
+~fintud-macrep:dojo> :examples-up &cord 'http://example.com'
 >=
 [%all-is-well 200]
-~fintud-macrep:dojo> :up &cord 'http://google.com'
+~fintud-macrep:dojo> :examples-up &cord 'http://google.com'
 >=
 [%we-have-a-problem 301]
 [ %headers

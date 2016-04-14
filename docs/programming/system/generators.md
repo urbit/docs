@@ -4,6 +4,8 @@ sort: 8
 title: Using Generators with Apps
 ---
 
+# Generators
+
 Up until now we've poked apps directly.  This requires the user
 to specify the mark, and it requires the app to accept the
 arguments in a way that's convenient for users to input.  This is
@@ -12,7 +14,7 @@ the "plumbing" way to interact with apps.  Generators are the
 `|merge`, there are no marks in sight.
 
 We've used generators before, back in [Basic
-Operation](http://urbit.org/docs/user/basic).  At that point, we just used the generators
+Operation](/docs/user/basic).  At that point, we just used the generators
 to produce values -- we didn't pipe their results into apps.  In
 the dojo cast, the role of a generator is to take a list of
 arguments and produce a value, which is often, though not always,
@@ -52,22 +54,22 @@ abbreviated to `:my-app|my-generator <args>`.  Because most
 built-in commands are generators for the `:hood` app,
 `:hood|generator <args>` can be shortened to `|generator <args>`.
 
-Let's write a generator for a modified version of `:pong` from
-the chapter on [Network Messages](http://urbit.org/docs/user/network).  Recall that `:pong`
+Let's write a generator for a modified version of `:examples-pong` from
+the chapter on [Network Messages](/docs/programming/system/network).  Recall that `:examples-pong`
 takes an urbit address, which is of mark `urbit`, and sends that
 urbit the message `'howdy'`.  First--without a generator--let's
-make `:ping` that does the same, except that it lets the user
+make `:examples-ping` that does the same, except that it lets the user
 optionally specify the message as well.
 
 We'll need a new mark for our arguments.  Let's call it
-`ping-message`.
+`examples-ping-message`.
 
 <blockquote class="blockquote">
 For app-specific marks, it's good style to prefix the name of
 the mark with the name of the app.  Since many apps have
 several such marks, subdirectories in `/mar` are rendered as
 `-`, so that `ping-message` is written in
-(`/mar/ping/message.hoon`).
+(/mar/examples/ping/message.hoon).
 </blockquote>
 
 ```
@@ -139,7 +141,7 @@ several such marks, subdirectories in `/mar` are rendered as
 --
 ```
 
-The app can easily be modified to use this (`/app/ping.hoon`):
+The app can easily be modified to use this (`/app/examples/ping.hoon`):
 
 ```
 ::
@@ -178,27 +180,27 @@ The app can easily be modified to use this (`/app/ping.hoon`):
 Now we can run this with:
 
 ```
-~fintud-macrep:dojo> |start %ping
+~fintud-macrep:dojo> |start %examples-ping
 >=
-~fintud-macrep:dojo> :ping &ping-message [~sampel-sipnym 'heyya']
+~fintud-macrep:dojo> :examples-ping &ping-message [~sampel-sipnym 'heyya']
 >=
 ```
 
-And on `~sampel-sipnym`, assuming it's running `:ping` as well,
+And on `~sampel-sipnym`, assuming it's running `:examples-ping` as well,
 we see `[%receiving 'heyya']`.
 
 This is an annoying way to invoke the app, though.  The `[]` are
 mandatory, and optional arguments are hard.  Let's make a
-generator, `+send` to make everything nicer.  Since it's specific
-to `:ping`, let's put it in `/gen/ping/send.hoon`:
+generator, `+examples-send` to make everything nicer.  Since it's specific
+to `:examples-ping`, let's put it in `/gen/examples/ping/send.hoon`:
 
 ```
 :-  %say
 |=  {^ {{to/@p message/?($~ {text/@t $~})} $~}
-[%ping-message to ?~(message 'howdy' text.message)]
+[%examples-ping-message to ?~(message 'howdy' text.message)]
 ```
 
-A couple of new things here.  Firstly, `message/?($~ {text=@t $~})`
+A couple of new things here.  Firstly, `message/?($~ {text/@t $~})`
 should be read as "the message is either null or a pair of text
 and null".  Generator argument lists are always null-terminated,
 which makes it convenient to accept lists in tail position (which
@@ -232,9 +234,9 @@ would complain that it doesn't know whether `message` has
 This is run as follows:
 
 ```
-~fintud-macrep:dojo> :ping|send ~sampel-sipnym
+~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym
 >=
-~fintud-macrep:dojo> :ping|send ~sampel-sipnym 'how do you do'
+~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym 'how do you do'
 >=
 ```
 
@@ -243,8 +245,8 @@ Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and
 
 **Exercises**:
 
-- Create a generator for `:sum` from [State](state) so that
-  you can run `:sum|add 5` to add numbers to it.
+- Create a generator for `:examples-sum` from [State](state) so that
+  you can run `:examples-sum|add 5` to add numbers to it.
 
-- Create a generator for `:click` from [Web Apps](web-apps) so
-  that you can run `:click|poke` to poke it.
+- Create a generator for `:examples-click` from [Web Apps](web-apps) so
+  that you can run `:examplesclick|poke` to poke it.

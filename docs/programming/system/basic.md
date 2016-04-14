@@ -47,7 +47,7 @@ Switch desks to run commands from the `%examples` desk:
 
 Run an example:
 
-    ~fintud-macrep:dojo> +euler1
+    ~fintud-macrep:dojo> +examples-euler1
     233.168
 
 ## Euler 1
@@ -62,14 +62,14 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 ```
 
 Here is the hoon solution (which should be in your pier directory
-under `/examples/gen/euler1.hoon`):
+under `/gen/examples/euler1`):
 
 ```
 ::    project euler 1
 ::    https://projecteuler.net/problem=1
-::  run in dojo with +euler1
+::  run in dojo with +examples-euler1
 ::
-::::  /hoon/euler1/gen
+::::  /hoon/euler1/examples/gen
   ::
 :-  %say  |=  *  
 :-  %noun
@@ -108,7 +108,7 @@ Hoon is not generally whitespace sensitive, but we do have two
 different kinds of whitespace: a single space and a gap, which
 is two or more spaces or a linebreak. Tabs are taboo. Do not
 use them. Really. For a more detailed explanation of when to
-use spaces vs. gaps, see the [syntax section](docs/programming/core/twig/syntax) before the first
+use spaces vs. gaps, see the syntax section before the first
 excercises.
 </blockquote>
 
@@ -127,7 +127,7 @@ more detail later.
 
 ### How to form expressions
 
-Hoon does not use reserved words to form expressions. (We did recently implement an alternative keyword syntax, which is not covered here. For more information, see the [syntax section](docs/programming/core/twig/syntax)). Instead,
+Hoon does not use reserved words to form expressions. (We did recently implement an alternative keyword syntax, which is not covered here. For more information, see the [syntax section](/docs/programming/core/twig/syntax/). Instead,
 expressions are formed with runes--diagraphs of two
 ascii symbols. Each rune takes a specific number of
 children--either expressions formed by other runes or literals
@@ -195,7 +195,7 @@ Let's step into each of the three arms within our core.
 `|=` produces a function, much like a lambda in lisp. It takes two children:
 
 - A set of argument(s). In this case our argument set only 
-  contains one: `a` which is required to be an atom or natural 
+  contains one: `a`, which is required to be an atom or natural 
   number, denoted by `@`.
 
 - The body of the function itself, which is executed when the
@@ -254,7 +254,7 @@ recur.
 
 Please tweak your code to complete the following excercises.
 
-There are a few runes and some syntax that we have yet to cover that
+There are a few runes and some syntaxes that we have yet to cover that
 you will need to complete the excercises below. For these, please
 refer to our cheatsheat at the bottom.
 
@@ -262,7 +262,7 @@ refer to our cheatsheat at the bottom.
 
 - Change `++sum` to accept two variables, `a` and `b`. Pass `a`
   to three and `b` to five. Then run the code with `a` set to
-  `1.000` and b set to `2.000`.
+  `1.000` and ` q` set to `2.000`.
 
 - Check if this new result is under one thousand. If it is,
   return the string 'result is less than one thousand'. If not,

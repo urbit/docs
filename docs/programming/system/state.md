@@ -4,11 +4,13 @@ sort: 4
 title: State
 ---
 
+# State
+
 In the last section we built a few small apps that sent moves.
 These apps were entirely stateless, however.  Most useful apps
 require some amount of state.  Let's build a trivial stateful
 app.  It'll keep a running the sum of all the atoms we poke it with.
-Here's `app/sum.hoon`:
+Here's `app/examples/sum.hoon`:
 
 ```
 /?    314
@@ -24,16 +26,16 @@ Here's `app/sum.hoon`:
 --
 ```
 
-We can start it with `|start %sum`, and then run it:
+We can start it with `|start %examples-sum`, and then run it:
 
 ```
-~fintud-macrep:dojo> :sum &atom 5
+~fintud-macrep:dojo> :examples-sum &atom 5
 [%so-far 5]
 >=
-~fintud-macrep:dojo> :sum &atom 2
+~fintud-macrep:dojo> :examples-sum &atom 2
 [%so-far 7]
 >=
-~fintud-macrep:dojo> :sum &atom 15
+~fintud-macrep:dojo> :examples-sum &atom 15
 [%so-far 22]
 >=
 ```
@@ -93,17 +95,17 @@ through the hassle of having to set up and write to a database.
 
 **Exercises**:
 
-- Modify `:sum` to reset the counter when you poke it with zero.
+- Modify `:examples-sum` to reset the counter when you poke it with zero.
 
 - Write an app that prints out the previous value you poked it
   with.  Sample output:
 
 ```
-~fintud-macrep:dojo> :last 7
+~fintud-macrep:dojo> :examples-last 7
 [%last 0]
 >=
-~fintud-macrep:dojo> :last [1 2 3]
+~fintud-macrep:dojo> :examples-last [1 2 3]
 [%last 7]
 >=
-~fintud-macrep:dojo> :last 'howdy'
+~fintud-macrep:dojo> :examples-last 'howdy'
 [%last [1 2 3]]

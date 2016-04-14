@@ -22,8 +22,7 @@ noun (`*`).  Its second child is the remainder of the program.
 
 Similarly, the rest of the program is a cell of the literal
 `%noun`, which tells the shell that we're producing a value of
-type `noun`, and the second child contains the code that we run
-to actually produce our value of the type `noun`.
+type `noun`, and the code that we run to actually produce our value of the type `noun`.
 
 `=<` is a rune that takes two children. The second child is the
 context against which we run the first child. So in this case, we
@@ -102,4 +101,4 @@ Cheatsheet:
   ~]`
 - `gte` tests whether `a` is greater than or equal to `b`.
 - `mod` runs the modulo operation on two atoms.
-- See the [basic math section]() for more info.
+- See the basic math section in `/arvo/hoon.hoon` for more info.

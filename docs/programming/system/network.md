@@ -10,12 +10,12 @@ Now we've learned enough hoon to do more interesting things.
 Let's get our planets to talk to each other.
 
 All we've written up until now are just shell
-commands that produce a value and then disappear.  To listen for and receive messages from other planets, we'll need an app--let's look at a very simple one:
+commands that produce a value and then disappear.  To listen for and receive messages from other planets, we'll need an app. Let's look at a very simple one:
 
 ```
 ::  There is no love that is not an echo
 ::
-::::  /hoon/echo/app
+::::  /hoon/echo/examples/app
   ::
 /?    314
 !:
@@ -37,10 +37,10 @@ with the following commands:
 ```
 ~fintud-macrep:dojo> |start %echo
 >=
-~fintud-macrep:dojo> :echo 5
+~fintud-macrep:dojo> :examples-echo 5
 [%argument 5]
 >=
-~fintud-macrep:dojo> :echo [1 2]
+~fintud-macrep:dojo> :examples-echo [1 2]
 [%argument [1 2]]
 >=
 ```
@@ -90,7 +90,7 @@ app state is stored.  It'll become clear why this is later on,
 but for now pretend that `+>.$` is a magic invocation that means
 "app state".
 
-Let's look at another example.  Say we want to only accept a
+Let's look at another example (edit your code in `/app/examples/echo/hoon` to reflect the code below).  Say we want to only accept a
 number, and then print out the square of that number.
 
 ```
@@ -108,7 +108,7 @@ number, and then print out the square of that number.
 
 A few things have changed.  Firstly, we no longer accept
 arbitrary nouns because we can only square atoms (integers, in
-this case an unsigned one).  Thus, our argument is now `arg=@`.
+this case an unsigned one).  Thus, our argument is now `arg/@`.
 Secondly, it's `++poke-atom` rather than `++poke-noun`.
 
 # Intro to marks
@@ -136,9 +136,9 @@ commands:
 ```
 ~fintud-macrep:dojo> |start %square
 >=
-~fintud-macrep:dojo> :square 6
+~fintud-macrep:dojo> :examples-square 6
 gall: %square: no poke arm for noun
-~fintud-macrep:dojo> :square &atom 6
+~fintud-macrep:dojo> :examples-square &atom 6
 [%square 36]
 >=
 ```
@@ -149,14 +149,14 @@ gall: %square: no poke arm for noun
 Marks are powerful, and they're the backbone of urbit's data
 pipeline, so we'll be getting quite used to them.
 
-**Exercises**:
+**Exercise**:
 
 - Write an app that computes fizzbuzz on its input (as in the
   previous section).
 
 # Sending a message to another ship
 
-Let's write our first network message!  Here's `/app/pong.hoon`:
+Let's write our first network message!  Here's `/app/examples/pong.hoon`:
 
 ```
 /?    314
@@ -184,15 +184,15 @@ Let's write our first network message!  Here's `/app/pong.hoon`:
 Run it with these commands:
 
 ```
-~fintud-macrep:dojo> |start %pong
+~fintud-macrep:dojo> |start %examples-pong
 >=
-~fintud-macrep:dojo> :pong &urbit ~sampel-sipnym
+~fintud-macrep:dojo> :pong &examples-urbit ~sampel-sipnym
 >=
 ```
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to
 do is to start a [moon](), a sub-identity of your urbit. Don't
-forget to start the `%pong` app on that urbit too.  You should
+forget to start the `%examples-pong` app on that urbit too.  You should
 see, on the foreign urbit, this output:
 
 ```
@@ -230,21 +230,22 @@ The general form of a move is
 
 -arvo part---->                 
 `[bone term wire *]`
-                >-app/vane-specific part of move
+                
+------------------------->app/vane-specific part of move
 
 Or, in pseudo-code:
 
 `["cause" sys-call/action tack-new-layer-on-cause action-specific
 information]`
 
-Let's walk through each of these elements step by step
+Let's walk through each of these elements step by step.
 
 #### Bones ("cause")
 
 If you look up `++bone` in `hoon.hoon`, you'll see that it's a
 number (`@ud`), and that it's an opaque reference to a duct.
-`++duct` in hoon.hoon is a list of `wire`s, where `wire` is an
-alias for `path`.  `++path` is a list of `span`s, which are ASCII
+`++duct` in hoon.hoon is a list of `wire`s, where `++wire` is an
+alias for `++path`.  `++path` is a list of `++span`s, which are ASCII
 text.  Thus, a duct is a list of paths, and a bone is an opaque
 reference to it (in the same way that a Unix file
 descriptor is an opaque reference to a file structure).  Thus, to
@@ -331,7 +332,7 @@ anything with this information right now, but we could.
 - Extend either of the apps in the first two exercises to accept
   input over the network in the same way as `pong`.
 
-- Modify `pong` to print out a message when it receives acknowledgement.
+- Modify `examples-pong` to print out a message when it receives acknowledgement.
 
 - Write two apps, `even` and `odd`.  When you pass an atom to
   `even`, check whether it's even.  If so, divide it by two and
