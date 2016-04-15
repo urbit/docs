@@ -6,6 +6,6 @@ sort: 4
 
 ##### Calls, but not.
 
-<list dataPath="docs/system/hoon/runes/cn" dataPreview="true" className="runes" linkToFragments="true"></list>
+<list dataPreview="true" className="runes" linkToFragments="true"></list>
 
-<kids dataPath="docs/system/hoon/runes/cn" className="runes"></kids>
+<kids className="runes"></kids>

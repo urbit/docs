@@ -6,6 +6,6 @@ sort: 10
 
 ##### Compose at will.
 
-<list dataPath="docs/system/hoon/runes/sm" dataPreview="true" className="runes" linkToFragments="true"></list>
+<list dataPreview="true" className="runes" linkToFragments="true"></list>
 
-<kids dataPath="docs/system/hoon/runes/sm" className="runes"></kids>
+<kids className="runes"></kids>
