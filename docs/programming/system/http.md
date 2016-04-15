@@ -32,7 +32,7 @@ code isn't 2xx.  Here's `app/up.hoon`:
   ==
 --
 |_  {hid/bowl on/_| in-progress/_| target/@t}
-++  poke-atom
+++  poke-cord
   |=  url-or-command/@t  ^-  (quip move +>)
   =+  ^-  act/action
       ?:  ?=($on url-or-command)  [%on ~]

@@ -9,9 +9,9 @@ our own marks.  Let's write a sample mark of our own, then chain
 it together with some preexisting ones to have fun with type
 conversions.
 
-Let's make a small "cord" mark.  "Cord" is a name we use for `@t`
-text, but there's no predefined mark for it.  This is
-`/mar/cord.hoon`:
+Let's make a small "examples-cord" mark.  "Cord" is a name we use for `@t`
+text, but there's no predefined mark for it.  Let's put the following code in:
+`/mar/examples/cord.hoon`:
 
 ```
 /?  314
@@ -57,9 +57,9 @@ marked atom and convert it to our new mark.
 ```
 ~fintud-macrep:dojo> &atom 9
 9
-~fintud-macrep:dojo> &cord &atom 9
+~fintud-macrep:dojo> &examples-cord &atom 9
 '9'
-~fintud-macrep:dojo> &cord &atom &cord &atom 9
+~fintud-macrep:dojo> &examples-cord &atom &examples-cord &atom 9
 '57'
 ```
 
@@ -71,9 +71,9 @@ same concept.  They're not isomorphisms.
 Let's play around a little more:
 
 ```
-~fintud-macrep:dojo> &md &cord &atom 17
+~fintud-macrep:dojo> &md &examples-cord &atom 17
 '17'
-~fintud-macrep:dojo> &hymn &md &cord &atom 17
+~fintud-macrep:dojo> &hymn &md &examples-cord &atom 17
 [ [%html ~]
   [[%head ~] [[%title ~] [[%~. [%~. "Untitled"] ~] ~] ~] ~]
   [ [%body ~]
@@ -93,7 +93,7 @@ the time this gets to the web page, it's plain html.  Let's do
 the final step in the conversion.
 
 ```
-~fintud-macrep:dojo> &mime &hymn &md &cord &atom 17
+~fintud-macrep:dojo> &mime &hymn &md &examples-cord &atom 17
 [ [%text %html ~]
   p=121
   q='<html><head><title>Untitled</title></head><body><meta value="{}" name="frontmatter" urb:front="" /><p>17</p></body></html>'
@@ -102,26 +102,26 @@ the final step in the conversion.
 
 This is a mime-typed octet stream with type `/text/html`, length
 121 bytes, and our lowly number `17` rendered to a web page.
-`cord` was just one step in the chain.
+`examples-cord` was just one step in the chain.
 
 Of course, arvo can infer some parts of this chain:
 
 ```
-~fintud-macrep:dojo> &cord 17
+~fintud-macrep:dojo> &examples-cord 17
 '17'
 ```
 
-Likewise, `md` is the only way to get from `cord` to `hymn`, so
+Likewise, `md` is the only way to get from `examples-cord` to `hymn`, so
 that can be omitted.  If we omit the `hymn`, though, we get:
 
 ```
-~fintud-macrep:dojo> &mime &cord 17
+~fintud-macrep:dojo> &mime &examples-cord 17
 [[%text %x-markdown ~] p=1 q='7']
 ```
 
-Here, we converted straight from `cord` to `md` to `mime`.  Arvo
+Here, we converted straight from `examples-cord` to `md` to `mime`.  Arvo
 decided that was the most straightforward conversion, but it
 gives a different result than passing it through the `hymn`
 mark.
 
-The minimal correct input, then, is `&mime &hymn &cord &atom 17`.
+The minimal correct input, then, is `&mime &hymn &examples-cord &atom 17`.

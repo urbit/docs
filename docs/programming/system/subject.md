@@ -1,7 +1,7 @@
 ---
 sort: 2
 next: true
-title: Hoon refresher / crash course
+title: The subject
 ---
 
 # The subject

@@ -191,7 +191,7 @@ Run it with these commands:
 ```
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to
-do is to start a [moon](), a sub-identity of your urbit. Don't
+do is to start a moon, a sub-identity of your urbit. If you don't know how to start a moon, see [the user admin section](/docs/using/admin/) Don't
 forget to start the `%examples-pong` app on that urbit too.  You should
 see, on the foreign urbit, this output:
 

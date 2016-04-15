@@ -182,7 +182,7 @@ Now we can run this with:
 ```
 ~fintud-macrep:dojo> |start %examples-ping
 >=
-~fintud-macrep:dojo> :examples-ping &ping-message [~sampel-sipnym 'heyya']
+~fintud-macrep:dojo> :examples-ping &examples-ping-message [~sampel-sipnym 'heyya']
 >=
 ```
 

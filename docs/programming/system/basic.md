@@ -1,5 +1,4 @@
 ---
-logo: black
 sort: 1
 next: true
 title: Hoon refresher / crash course
@@ -19,33 +18,20 @@ simple programs: the first [Project
 Euler](https://projecteuler.net/) problem and
 [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
 
-To run this code, you'll need an urbit, and you'll need the
-`%examples` desk from `~zod`.  If you haven't installed
+To run this code, you'll need an urbit, and will have to copy the [examples repo](https://github.com/urbit/examples) into it.
+
+If you haven't installed
 urbit yet, check out the [installation
-instructions](http://urbit.org/docs/user/install).  Once urbit is
+instructions](/docs/user/install).  Once urbit is
 installed, take a look at the [basic
-operation](http://urbit.org/docs/user/basic) of your urbit.
+operation](/docs/user/basic) of your urbit.
 
-If you haven't pulled the examples desk from `~zod`, do
-so now:
+If you haven't copied in the examples repo, running the following commands from your urbit directory should do the trick:
 
-    ~fintud-macrep:dojo> |merge %examples ~zod %examples
-    >=
-    [time passes...]
-    merged with strategy %init
+`cp -r {wherever-you've-pulled-to}/examples/gall/*/ arvo/`
+`cp -r {wherever-you've-pulled-to}/examples/dojo/*/ arvo/`
 
-This merge could take several minutes; you'll know it's done when
-"merged with strategy %init" is printed.  Next, mount the new files to
-your Unix pier directory:
-
-    ~fintud-macrep:dojo> |mount /=examples=
-
-Switch desks to run commands from the `%examples` desk:
-
-    ~fintud-macrep:dojo> =dir /=examples=
-    =% /~fintud-macrep/examples/~2015.11.13..02.25.00..41e9/
-
-Run an example:
+Run an example to ensure it worked:
 
     ~fintud-macrep:dojo> +examples-euler1
     233.168
