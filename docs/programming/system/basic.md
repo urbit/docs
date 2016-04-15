@@ -113,7 +113,7 @@ more detail later.
 
 ### How to form expressions
 
-Hoon does not use reserved words to form expressions. (We did recently implement an alternative keyword syntax, which is not covered here. For more information, see the [syntax section](/docs/programming/core/twig/syntax/). Instead,
+Hoon does not typically use reserved words to form expressions. Instead,
 expressions are formed with runes--diagraphs of two
 ascii symbols. Each rune takes a specific number of
 children--either expressions formed by other runes or literals
@@ -152,6 +152,23 @@ See the entire naming schema below/or link to it:
 ```
 
 Using our naming scheme `?:` is said 'wut col'.
+
+For those that would prefer to use reserved words to form expressions, you can substitute a rune's keyword--which you can find in `++twig` in `/arvo/hoon.hoon`--for the rune. For example, here's the code for `?:` in `++twig`:
+
+`{$if p/twig q/twig r/twig}                          ::  ?:  if/then/else`
+
+Instead of: 
+
+```
+?:(=(1 2) 'this is true' 'this is false')
+'this is false'`
+```
+You can write:
+
+```
+if(=(1 2) 'this is true' 'this is false')
+'this is false'
+```
 
 ### Lines 12-34
 
