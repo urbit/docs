@@ -6,6 +6,6 @@ sort: 12
 
 ##### Pow, zap, bam.
 
-<list dataPath="docs/system/hoon/runes/zp" dataPreview="true" className="runes" linkToFragments="true"></list>
+<list dataPreview="true" className="runes" linkToFragments="true"></list>
 
-<kids dataPath="docs/system/hoon/runes/zp" className="runes"></kids>
+<kids className="runes"></kids>

@@ -6,6 +6,6 @@ sort: 3
 
 ##### Tuples are easy.
 
-<list dataPath="docs/system/hoon/runes/cl" dataPreview="true" className="runes" linkToFragments="true"></list>
+<list dataPreview="true" className="runes" linkToFragments="true"></list>
 
-<kids dataPath="docs/system/hoon/runes/cl" className="runes"></kids>
+<kids className="runes"></kids>
