@@ -42,7 +42,7 @@ Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
     This is a simple markdown file.
 
-    <div><list /></div>
+    <div><list / />
 
 To view your file as raw `md`:
 
@@ -148,31 +148,31 @@ For those familiar with React / Flux each JSX tag corresponds to a component in 
 
 ### `<list>`
 
-Example: `<list dataPath="/posts" titlesOnly="true"></list>`
+Example: `<list src="/posts" titlesOnly="true" />`
 
 Creates a list of children at a path.  Defaults to the current path. 
 
 Optional properties:
 
-- `dataPath`: Path to load kids from.  
+- `src`: Path to load kids from.  
 - `titlesOnly`: Only show the 'title' which is either the filename or the first h1.
 - `sortBy`: Can be `date` if items have a `date` YAML.
 - `className`: Class to be assigned to the container.
 
 ### `<kids>`
 
-Example: `<kids dataPath="/posts"></kids>`
+Example: `<kids src="/posts" />`
 
 Includes all the children at the specified path separated by `<hr>` tags.
 
 Optional properties:
 
-- `dataPath`: Path to load kids from.
+- `src`: Path to load kids from.
 - `className`: Class to be assigned to the container.
 
 ### `<toc>`
 
-Example: `<toc noHeader="true"></toc>`
+Example: `<toc noHeader="true" />`
 
 Creates a table of contents from the `h1` - `h6` tags on the page.
 
@@ -244,7 +244,7 @@ Talk, for example, looks like this:
     <script src="/~~/~/at/lib/js/urb.js" />
     <script src="/talk/main.js" />
     <link href="/talk/main.css" rel="stylesheet" />
-    <talk></talk>
+    <talk />
 </module>
 ```
 

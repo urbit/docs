@@ -6,6 +6,6 @@ sort: 7
 
 ##### Go ahead, recast that.
 
-<list dataPath="docs/system/hoon/runes/kt" dataPreview="true" className="runes" linkToFragments="true"></list>
+<list dataPreview="true" className="runes" linkToFragments="true"></list>
 
-<kids dataPath="docs/system/hoon/runes/kt" className="runes"></kids>
+<kids className="runes"></kids>

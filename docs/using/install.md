@@ -51,6 +51,9 @@ Which can usually be installed with the following one-liners:
     # FreeBSD
     pkg install git gmake gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool
 
+    # Arch
+    pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses
+
     # AWS
     sudo yum —enablerepo epel install gcc gcc-c++ git gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c
 

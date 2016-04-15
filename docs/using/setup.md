@@ -85,8 +85,8 @@ which indicates the command was processed.
 
 We go into much greater detail about using each of these components in our walkthroughs:
 
-<list dataPath="/docs/walkthroughs"></list>
+<list src="."></list>
 
 With your Urbit up and running you know enough to start learning to program:
 
-<list dataPath="/docs/deep-dives"></list>
+<list src="../programming/deep"></list>

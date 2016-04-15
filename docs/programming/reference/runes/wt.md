@@ -6,6 +6,6 @@ sort: 11
 
 ##### If this then what?
 
-<list dataPath="docs/system/hoon/runes/wt" dataPreview="true" className="runes" linkToFragments="true"></list>
+<list dataPreview="true" className="runes" linkToFragments="true"></list>
 
-<kids dataPath="docs/system/hoon/runes/wt" className="runes"></kids>
+<kids className="runes"></kids>

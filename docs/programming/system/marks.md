@@ -49,7 +49,8 @@ to `++scot`.  Thus, the form of an arm in `++grab` is
 
 In `++grow`, we just convert to the `md` mark, which is just a
 `@t` internally, but it has fancy conversion functions to things
-like html.  `++md` isn't a function because the "argument" is already a `@t`, so we can just produce the new value directly.
+like html.  `++md` isn't a function because the "argument" is
+already a `@t`, so we can just produce the new value directly.
 
 Let's play around a bit with this mark.  First, let's take a
 marked atom and convert it to our new mark.
