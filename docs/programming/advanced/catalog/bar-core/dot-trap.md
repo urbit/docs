@@ -4,7 +4,7 @@ sort: 3
 
 # `:trap. |., "bardot", {$trap p/twig}`
 
-Make a trap, a core with no sample and one arm `$`.
+Form a trap, a core with one arm `$`.
 
 ## Expands to
 

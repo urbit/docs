@@ -1,15 +1,27 @@
-# `:deny`, `?<`, "wutgal" `{$deny p/twig q/twig}`
-====
+---
+sort: 10
+---
 
-Assert `p` is false.
+# `:deny, ?<, "wutgal", {$deny p/seed q/seed}`
 
-Asserts that `p` is false before evaluating `q`. Crashes if `p` evaluates to false.
+Negative assertion.
 
-Regular form: *2-fixed*
+## Expands to
 
-Examples:
+```
+:if  p
+  :zpzp
+q
+```
 
-    ~zod:dojo> ?<(=(0x1 0) %foo)
-    %foo
-    ~zod:dojo> ?<(=(0x1 1) %foo)
-    ! exit
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ?<(=(3 4) %foo)
+%foo
+```
+

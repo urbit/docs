@@ -4,7 +4,7 @@ sort: 5
 
 # `:door, |_, "buccab", {$door p/moss q/(map term foot)}`
 
-Make a door, a many-armed core with a sample.
+Form a door, a many-armed core with payload `{sample context}`.
 
 ## Expands to
 

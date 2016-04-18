@@ -1,26 +1,40 @@
+---
+sort: 1
+---
+
 # `:shoe, $_, "buccab", {$shoe p/twig}`
 
-Type as a single example.
+Form a mold which normalizes to an example.
 
-Product: a mold whose product is always `p`.
+## Expands to
 
-Regular form: *1-fixed*.
-
-Irregular form:
 ```
-_%foo  :shoe(%foo)
+:gate  *
+p
 ```
 
-Example:
-```
-~zod:dojo> =a :shoe([%foobar %moobaz])
+## Syntax
 
-~zod:dojo> (a %foo %bar)
+Regular: *1-fixed*.
+
+Irregular: `_foo` is `:shoe(foo)`.
+
+## Discussion
+
+A shoe discards the sample it's supposededly normalizing, and
+produces its example instead.
+
+## Examples
+
+```
+~zod:dojo> =foo :shoe([%foobar %moobaz])
+
+~zod:dojo> (foo %foo %bar)
 [%foobar %moobaz]
 
-~zod:dojo> `a`[%foobar %moobaz]
+~zod:dojo> `foo`[%foobar %moobaz]
 [%foobar %moobaz]
 
-~zod:dojo $:a
+~zod:dojo $:foo
 [%foobar %moobaz]
 ```

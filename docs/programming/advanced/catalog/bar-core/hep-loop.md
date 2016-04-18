@@ -4,7 +4,7 @@ sort: 4
 
 # `:loop, |-, "barhep", {$loop p/twig}`
 
-Make a trap and kick it.
+Form a trap (a core with one dry arm `$`) and kick it.
 
 ## Expands to
 

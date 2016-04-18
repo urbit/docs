@@ -1,53 +1,24 @@
-`%. cendot`
-===========
+---
+sort: 4
+---
 
-Inverted function call.
+# `:lace, %., "cendot", {$lace p/seed q/seed}`
 
-Inverts the order of [`%-`](), so the argument is the first
-element and the second element is the function. Exists primarily
-for code readability and organization. See the [backstep
-section]() for more information.
+Call a gate (function), reversed.
 
-Produces
---------
+## Expands to
 
-Twig: `[%cndt p=twig q=twig]`
+`:call(q p)`.
 
-Accepts
--------
+## Syntax
 
-`p` and `q` are [`++twig`]()s. `p` is the argument and `q` is the function (that's a twig).
+Regular: *2-fixed*.
 
-Tall form
----------
+## Examples
 
-    %.  p
-        q
+```
+~zod:dojo> =add-triple |=({a/@ b/@ c/@} :(add a b c))
+~zod:dojo> %.([1 2 3] add-triple)
+6
+```
 
-Wide form
----------
-
-    %.(p q)
-
-Examples
---------
-
-    /~zod:dojo> (dec 42)
-    41
-    ~zod:dojo> %.(42 dec)
-    41
-
-In the most straightforward case `%.` allows us to reverse the order of
-arm and arguments.
-
-    /~zod:dojo> %.
-                  %+  add
-                    %+  mul  2  20
-                  2
-                dec
-    41
-
-Here we add `2` to the product of `2` and `20`, and use `%.` to
-decrement our result. As you can see, `%.` is most useful for code
-organization, when you need to compute intermediate products for your
-final result.

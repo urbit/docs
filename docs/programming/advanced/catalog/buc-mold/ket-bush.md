@@ -1,13 +1,26 @@
-# `:bush, $&, "bucpam", {$bush p/moss q/moss}`
+---
+sort: 5
+---
 
-Union of two cells: one w/cellular head & other w/atomic head.
+# `:bush, $^, "bucket", {$bush p/moss q/moss}`
 
-Product: a mold which applies `p` if the head of its sample 
-is a cell, `q` if the head of its sample is a cell.
+Form a mold which normalizes a union distinguished by head depth.
 
-Regular form: *2-fixed*.
+## Normalizes to
 
-Example:
+Default, if the sample is an atom; `p`, if the head of the sample
+is an atom; `q` otherwise.
+
+## Defaults to
+
+The default of `p`.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
 ```
 ~zod:dojo> =a :book({$foo p/@ud q/@ud} {$bar p/@ud})
 

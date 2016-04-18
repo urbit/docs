@@ -4,7 +4,7 @@ sort: 6
 
 # `:gill, |*, "bartar", {$gill p/moss q/twig}`
 
-Make a wet gate, a generically typed Hoon function.
+Form a gill, a wet one-armed core with payload `{sample context}`.
 
 ## Expands to
 
@@ -23,13 +23,12 @@ Regular: *2-fixed*.
 ## Discussion
 
 In a normal (dry) gate, your argument is converted into the
-sample type.  In a generic (wet) gate, your argument type passes
-through the function, rather as if it was a macro (there is still
-only one copy of the code, however).
+sample type.  In a generic (wet) gate or gill, your argument type
+passes through the function, rather as if it was a macro (there
+is still only one copy of the code, however).
 
-Genericity is a powerful and dangerous tool.  Use wet gates only
-if you think you know what you're doing.  They are generally used
-for system infrastructure, not user-level code.
+Genericity is a powerful and dangerous tool.  Use gills only if
+you think you know what you're doing. 
 
 ## Examples
 
@@ -43,3 +42,6 @@ Wet and dry gates in a nutshell:
 ~zod:dojo> (bar %cat %dog)
 [%dog %cat]
 ```
+
+The dry gate does not preserve the span of `a` and `b`; the wet
+gate does.

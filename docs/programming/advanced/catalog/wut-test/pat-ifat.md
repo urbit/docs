@@ -1,23 +1,31 @@
-# `:ifat`, `?&`, "wutpam" `{$ifat p/wing q/twig r/twig}`
+---
+sort: 4
+---
 
-If atom-then-else.
+# `:ifat, ?@, "wutpat", {$ifat p/wing q/seed r/seed}`
 
-If-then-else statement that tests whether `p` is an atom, producing `q` if true and `r` if false.
+Branch on whether a wing of the subject is an atom.
 
-Examples:
+## Expands to
 
-    ~zod:dojo> ?@(~ 1 2)
-    ! mint-vain
-    ! exit
-    ~zod:dojo> ?@(%ha 1 2)
-    1
-    ~zod:dojo> ?@("" 1 2)
-    1
-    ~zod:dojo> ?@("a" 1 2)
-    2
-    ~zod:dojo> ?@([1 1] 1 2)
-    ! mint-vain
-    ! exit
-    ~zod:dojo> ?@(`*`[1 1] 1 2)
-    2 
+```
+:if  :fits($~ p)
+  q
+r
+```
 
+## Syntax
+
+Regular: *3-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ?@(0 1 2)
+! mint-vain
+! exit
+~zod:dojo> ?@(`*`0 1 2)
+1
+~zod:dojo> ?@(`*`[1 2] 3 4)
+4
+```

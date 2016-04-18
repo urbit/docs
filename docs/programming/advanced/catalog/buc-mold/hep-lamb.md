@@ -1,15 +1,35 @@
+---
+sort: 4
+---
+
 # `:lamb, $-, "buchep", {$lamb p/moss q/moss}`
 
-Function type.
+Form a mold which normalizes to an example gate.
 
-Product: a mold producing a gate accepting 
+## Expands to
 
-Regular form: *2-fixed*.
-
-Example:
 ```
-~zod:dojo> =a :lamb($foo $bar)
+:shoe
+:iron
+:gate  p
+$:q
+```
 
-~zod:dojo> ($:a %foo)
+## Syntax
+
+Regular: *2-fixed*.
+
+## Discussion
+
+Since a lamb is a shoe, it is not useful for normalizing, just
+for its signature.  In particular, the existence of lambs does
+let us send gates or other cores over the network!
+
+## Examples
+
+```
+~zod:dojo> =foo :lamb($foo $bar)
+
+~zod:dojo> ($:foo %foo)
 %bar
 ```

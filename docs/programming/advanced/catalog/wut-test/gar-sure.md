@@ -1,14 +1,26 @@
-# `:sure`, `?>`, "wutgar" `{$sure p/twig q/twig}`
+---
+sort: 11
+---
 
-Assert `p` is true.
+# `:sure, ?<, "wutgar", {$sure p/seed q/seed}`
 
-Asserts that `p` is true before evaluating `q`, crashing if `p` evaluates to false.
+Positive assertion.
 
-Regular form: *2-fixed*
+## Expands to
 
-Examples:
+```
+:lest  p
+  :zpzp
+q
+```
 
-    ~zod:dojo> ?>(=(0x1 1) %foo)
-    %foo
-    ~zod:dojo> ?>(=(0x1 0) %foo)
-    ! exit
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ?>(=(3 3) %foo)
+%foo
+```

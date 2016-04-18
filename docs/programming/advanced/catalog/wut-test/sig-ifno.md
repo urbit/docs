@@ -1,21 +1,32 @@
-# `ifno`, `?~`, "wutsig" `{$ifno p/wing q/twig r/twig}`
-====
+---
+sort: 3
+---
 
-If-null-then-else.
+# `ifno`, `?~`, "wutsig" `{$ifno p/wing q/seed r/seed}`
 
-If-then-else statement that tests whether `p` is null, producing `q` if true
-and `r` if false.
+Branch on whether a wing of the subject is null.
+ 
+## Expands to
 
-Regular form: *3-fixed*
+```
+:if  :fits($~ p)
+  q
+r
+```
 
-Examples:
+## Syntax
 
-    ~zod:dojo> ?~('a' 1 2)
-    2
-    ~zod:dojo> ?~('' 1 2)
-    1
-    ~zod:dojo> ?~(~zod 1 2)
-    1
-    ~zod:dojo> ?~((sub 20 20) 1 2)
-    1
+Regular: *3-fixed*.
 
+## Discussion
+
+It's bad style to use `:ifno` to test for any zero atom.  Use it
+only for a true null, `~`.
+
+## Examples
+
+```
+~zod:dojo> =foo ""
+~zod:dojo> ?~(foo 1 2)
+11
+```

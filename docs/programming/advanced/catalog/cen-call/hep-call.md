@@ -1,46 +1,43 @@
-`%- cenhep`
-===========
+---
+sort: 3
+---
 
-Call function w/ one argument.
+# `:call, %-, "cenhep", {$call p/seed q/seed}`
 
-Call function with one argument. Has an irregular wideform syntax: `(function[arg0 arg1...])`, which can takes n arguments enclosed within the `()`. Note
-that one can also pass a tall form (or wide form) function called with `%-` a tuple with `n` elements for functions that require more than one argument.
+Call a gate (function).
 
-%- is a synthetic rune that that pulls $ from the door p with its sample set to [%cltr q]. %- in both its tall and wide forms is like a function call with one argument.
+## Expands to
 
-Produces
---------
+`:open($ p q)`.
 
-Twig: `[%cnhp p=twig q=tusk]`
+## Syntax
 
-Accepts
--------
+Regular: *2-fixed*.
 
-`p` is a [++twig](), most commonly a function, and in tall form `q` is a twig. In irregular wide form, `q` is a [`++tusk`](), a list of twigs.
+Irregular: `(a)` is `$:a`; `(a b c d)` is `:call(a [b c d])`.
 
-Tall form
----------
+## Discussion
 
-    %-  p
-        q
-    ==
+`$call` is a function call; `p` is the function (`gate`), `q` the
+argument.  `$call` is a special case of `$open`, and a gate is a
+special case of a door.
 
-Wide form
----------
+In a gate, the modified core has only one anonymous arm; in a
+door it gets a full battery.  Intuitively, a gate defines one
+algorithm it can compute upon its sample, `+6`. A door defines
+many such algorithms.
 
-    %-(p q)
+In classical languages, doors correspond to groups of functions 
+with the same argument list, or at least sharing a prefix.  In
+Hoon, this shared sample is likely to be pulled into a door.
 
-Irregular form
---------------
+## Examples
 
-    (p q)
-
-Examples
---------
-
-    > %-(dec 4)
-    3
-
-    > (add 2 2)
-    4
+```
+~zod:dojo> =add-triple |=({a/@ b/@ c/@} :(add a b c))
+~zod:dojo> (add-triple 1 2 3)
+6
+~zod:dojo> %-(add-triple [1 2 3])
+6
+```
 

@@ -1,24 +1,30 @@
-# `:and`, `?&`, "wutpam" `{$and p/(list twig)}`
+---
+sort: 8
+---
 
-Logical 'and'.
+# `:and, ?&, "wutpam", {$and p/(list seed)}`
 
-Computes the logical 'and' operation on a list of boolean expressions `p`.
+Logical and.
 
-Regular form: *running*
+## Expands to
 
-Irregular form:
+```
+:ifno  p  
+  &
+:lest  i.p
+  |
+:moar(p t.p)
+```
 
-`&(a b c)   ?&(a b c)`
+## Syntax
 
-Examples:
+Regular: *running*.
 
-    ~zod:dojo> ?&(& &)
-    %.y
-    ~zod:dojo> &(& &)
-    %.y
-    ~zod:dojo> &(& |)
-    %.n
-    ~zod:dojo> &((gth 2 1) |)
-    %.n
-    ~zod:dojo> &((gth 2 1) &)
-    %.y
+Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
+
+## Examples
+
+```
+~zod:dojo> &(=(6 6) =(42 42))
+%.y
+```

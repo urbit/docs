@@ -4,7 +4,7 @@ sort: 1
 
 # `:core, |%, "barcen", {$core p/(map term foot)}`
 
-Make a core, a code-data pair with functional attributes.
+Form a core `{battery payload}` with subject as the payload.
 
 ## Produces
 

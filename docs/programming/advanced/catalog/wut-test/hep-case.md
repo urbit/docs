@@ -1,52 +1,49 @@
-# `:case`, `?-`, "wuthep" `{$case p/wing q/(list (pair twig twig))}`
+---
+sort: 12
+---
 
-Switch.
+# `:case, ?-, "wuthep", {$case p/wing q/(list (pair moss seed))}`
 
-Switches on the value of `p`. `q` is a list of key value pairs, the heads of
-which `p` attempts to match with.  Different from the traditional switch
-statement in that it switches on a type instead of a value. XX take a close
-look at this description The most common type used to switch on is the cube,
-which begins with `%` followed by text.
+Switch against a union, with no default.
 
-Regular form: *1-fixed, followed by jogging*
+## Expands to
 
-Examples:
+```
+:ifno  q
+  :lost 
+:if  :fits(p.i.q p)
+  q.i.q
+:moar(q t.q)
+```
 
-    ~zod:dojo> 
-      =cor  |=  typ/$?(%a %b)
-            ?-  typ
-            %a  1
-            %b  2
-            ==
-    new var %cor
-    ~zod:dojo> 
-      (cor %a)
-    1
-    ~zod:dojo> 
-      (cor %b)
-    2
+## Syntax
 
-Here is a simple example of `?-` that thows its input must have a well
-defined type for which all of the cases are covered. We create a core,
-`cor`, that takes an input `typ` which must be either `%a` or `%b` with
-`$%`. Calling `cor` with valid arguments selects one of our cases.
+Regular: *1-fixed*, then *jogging*.
 
-    ~zod:dojo> 
-      ?-  'a'
-          %a  0
-          %b  1
-          ==
-    ! /~zod/try/~2014.11.2..16.56.40..fca2:<[1 1].[4 7]>
-    ! -lost.@t
-    ! mint-lost
-    ~zod:dojo> 
-      ?-  (?(%a %b) 0)
-          %a  'a'
-          %b  'b'
-          ==
-    'b'
+## Discussion
 
-Here we can see a common failure case with `?-`. In the first example
-all of our possible input cases are not covered when we pass in a `@t`,
-so we fail with `mint-vain`, a compilation error. When we construct a well
-typed input and cover all of the possible cases, we get the desired result.
+The compiler makes sure that your code neither misses a case of
+the union, nor includes a double case that isn't there.  This is
+not special handling for `:case`, just a consequence of the
+semantics of `:if`, which `:case` reduces to.
+
+A missing case will throw the `mint-lost` error.  An extra case
+will throw `mint-vain`.  (Ecclesiastes did nothing wrong.)
+
+## Examples
+
+```
+~zod:dojo> =cor  |=  vat/?($a $b)
+                 ?-  vat
+                   $a  20
+                   $b  42
+                 ==
+~zod:dojo> (cor %a)
+20
+~zod:dojo> (cor %b)
+42
+~zod:dojo> (cor %c)
+! nest-fail
+```
+
+

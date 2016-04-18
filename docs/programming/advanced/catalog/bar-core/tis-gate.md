@@ -4,7 +4,7 @@ sort: 2
 
 # `:gate, |=, "bartis", {$gate p/moss q/twig}`
 
-Make a gate, a Hoon function.
+Form a gate, a dry one-armed core with payload `{sample context}`.
 
 ## Expands to
 
@@ -19,6 +19,8 @@ Make a gate, a Hoon function.
 ## Syntax
 
 Regular: *2-fixed*.
+
+## Discussion
 
 ## Examples
 

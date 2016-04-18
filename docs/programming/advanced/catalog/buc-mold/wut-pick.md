@@ -1,16 +1,38 @@
+---
+sort: 8
+---
+
 # `:pick, $?, "bucwut", {$? p/(list moss)}`
 
-Generalized type union.
+Form a mold which normalizes a general union.
 
-Product: a mold which tries each of the alternatives in `p`.
+## Normalizes to
 
-Note: Use `:pick` only if none of `:book` (`$%`), `:claw` (`$@`) or `:bush` (`$&`) applies.
+The first item in `p` which normalizes the sample to itself;
+otherwise, default.
 
-Regular form: *running*.
+Void, if `p` is empty.
 
-Example:
+## Defaults to
+
+The first item in `p`. 
+
+## Syntax
+
+Regular: *running*.
+
+Irregular: `?(%foo %bar)` is `$?(%foo %bar)`.
+
+## Discussion
+
+For a union of atoms, a pick is fine.  For more complex nouns,
+always try to use a book, claw or bush, at least if you expect
+your mold to be used as a normalizer.
+
+## Examples
+
 ```
-~zod:dojo> =a :pick($foo $bar $baz)
+~zod:dojo> =a ?($foo $bar $baz)
 
 ~zod:dojo> (a %baz)
 %baz

@@ -11,7 +11,7 @@ molds are often called "structures.")
 ## Overview
 
 While Hoon can't check this property statically, a proper mold 
-is a *rectifier*: an idempotent function across all nouns.  If
+is a *normalizer*: an idempotent function across all nouns.  If
 the sample of a gate has span `%noun`, and its body obeys the
 constraint that for any x, `=((mold x) (mold (mold x)))`, it's a
 rectifier and can be used as a mold.

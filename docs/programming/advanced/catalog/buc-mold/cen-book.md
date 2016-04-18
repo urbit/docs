@@ -1,21 +1,42 @@
-# `:book, $%, "buctis", {$book p/(list moss)}`
+---
+sort: 2
+---
 
-Tagged union
+# `:book, $%, "buctis", {$book p/(list {{aura @} moss})}`
 
-Product: a mold producing the tagged union of the molds in
-`p`, all of which must be of the form `:bank(stem bulb)`, where
-`stem` is an atomic mold.
+Form a mold which normalizes a union distinguished by a head atom.
 
-Regular form: *running*.
+## Normalizes to
 
-Examples:
+For any item `i` in `p`, a cell whose head is the atom `q.p.i.p`,
+and whose tail recognizes `q.i.p`.
+
+Void if `p` is empty.
+
+## Defaults to
+
+For the first item `i` in `p`, the cell `[q.p.i.p $:q.i.p]`.
+Crashes if `p` is empty.
+
+## Syntax 
+
+Regular form: *2-running*.
+
+## Discussion
+
+A book is a tagged union, an extremely common data model.
+
+Each item in a book is called a "page."  Make sure the first page
+in the book terminates, or the default will be an infinite loop!
+
+## Examples
 
 ```
-~zod:dojo> =a :book({$foo p/@ud q/@ud} {$bar p/@ud})
+~zod:dojo> =foo :book({$foo p/@ud q/@ud} {$bar p/@ud})
 
-~zod:dojo> (a [%bar 37])
+~zod:dojo> (foo [%bar 37])
 [%bar p=37]
 
-~zod:dojo> $:a
+~zod:dojo> $:foo
 [%foo p=0 q=0]~
 ```

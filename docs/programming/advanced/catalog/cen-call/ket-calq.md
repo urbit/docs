@@ -1,29 +1,23 @@
-`%^ cenket`
-===========
+---
+sort: 6
+---
 
-Call function w/ three arguments.
+# `:calq, %^, "cenket", {$calq p/seed q/seed r/seed s/seed}`
 
-Calls the one arm ([$]()) from the [door]() `p` with its [sample]() set to `[%cntr q r s]`. `%^` in the most common case simply calls `p` with `q`, `r`and `s` as its arguments.
+Call a gate (function), with a triple sample.
 
-Produces
---------
+## Expands to
 
-Twig: `[%cnkt p=twig q=twig r=twig s=twig]`
+`:call(p [q r s])`.
 
-Accepts
--------
+## Syntax
 
-`p` is a [`++twig`](), most commonly a function. The arguments `q`, `r` and `s` are twigs as well.
+Regular: *4-fixed*.
 
-Tall form
----------
+## Examples
 
-    %^    p
-        q
-      r
-    s
-
-Wide form
----------
-
-    %^(p q r s)
+```
+~zod:dojo> =add-triple |=({a/@ b/@ c/@} :(add a b c))
+~zod:dojo> %^(add-triple 1 2 3)
+6
+```

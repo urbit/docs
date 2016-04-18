@@ -1,21 +1,32 @@
-# `:not`, `?!`, "wutzap" `{$not p/twig}`
+---
+sort: 7
+---
+
+# `:not, ?!, "wutzap", {$not p/seed}`
 
 Logical not.
 
+## Expands to 
+
+```
+:same(%.n p)
+```
+
 Produces the logical "not" of `p`.
 
-Regular form: *1-fixed*
+## Syntax
 
-Examples:
+Regular: *1-fixed*.
 
-    ~zod:dojo> !&
-    %.n
-    ~zod:dojo> !|
-    %.y
-    ~zod:dojo> (gth 5 6)
-    %.n
-    ~zod:dojo> !(gth 5 6)
-    %.y
-    ~zod:dojo> !1
-    ! type-fail
-    ! exit
+Irregular: `!(foo)` is `?!(foo)`.
+
+## Examples
+
+```
+~zod:dojo> !&
+%.n
+~zod:dojo> !|
+%.y
+~zod:dojo> !(gth 5 6)
+%.y
+```

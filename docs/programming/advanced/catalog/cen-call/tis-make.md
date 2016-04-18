@@ -1,68 +1,43 @@
-`%= centis`
-===========
+---
+sort: 1
+---
 
-Eval `p` w/ changes.
+# `:make, %=, centis, {$make p/wing q/(list (pair wing seed))}` 
 
-Evaluates `p` with the changes specified in `q`, where `q` is a list of addresses ([`++wing`]())s followed by the values that will replace whatever value currently lies at that address. Makes the changes all at once to ensure that the product type is checked.
+Take a wing (attribute path) with changes.
 
-Like `%-`, `%=` has an addtional, irregular wifeform syntax that is frequently
-used: `a(p q.p, q p.a)`, where `a` is the code to be executed with the changes
-specified within the `()`.
+## Produces
 
-Produces
---------
+`p`, modified by the change list `q`.
 
-Twig: `[%cnts p=wing q=tram]`
+If `p` resolves to a leg, `q` is a list of changes to that leg.
+If `p` resolves to an arm, `q` is a list of changes to the core
+containing that arm.  We compute the arm on the modified core.
 
-Accepts
--------
+## Syntax
 
-`p` is a `++wing`. `q` is a [++tram]().
+Regular: *1-fixed*, then *jogging*.
 
-Tall form
----------
+Irregular: `foo(x 1, y 2, z 3)` is `:make(foo x 1, y 2, z 3)`.
 
-    %=  p
-      p.i.q    q.i.q
-      p.i.t.q  q.i.t.q
-    ==
+## Discussion
 
-Wide form
----------
+Note that `p` is a wing, not a twig.  Knowing that a function
+call `(foo bar)` involves making `foo`, replacing its sample 
+at slot `+6` with `bar`, and taking the `$` limb, you might think
+`(foo bar)` would mean `:(make foo +6 bar)`.
 
-    %=(p p.i.q q.i.q, p.i.t.q q.i.t.q)
+But it's actually `:pin(foo :(make $ +2 +6 bar))`.  Even if `foo`
+is a wing, we would just be mutating `+6` within the core that
+defines the `foo` arm.  Instead we want to modify the *product*
+of `foo` -- the gate -- so we have to pin it into the subject.
 
-Irregular form
---------------
+## Examples
 
-    p(p.i.q q.i.q, p.i.t.q q.i.t.q)
-
-Examples
---------
-
-    /~zod:dojo> =+  a=[p=5 q=6]
-                a(p 2)
-    [p=2 q=6]
-
-In this example we are using the irregular form of `%=` to replace `p`
-in `a`.
-
-    /~zod:dojo> =+  a=[p=1 q=2 r=3 s=4]
-        a(p 5, q 6, r 7, s 8)
-    [p=5 q=6 r=7 s=8]
-
-Here we show how you can replace multiple faces at once. We start with a
-new `a` and replace all of its values with the irregular form of `%=`.
-
-    /~zod:dojo> =+  step=0
-                =+  leng=10
-                =+  valu=0
-                |-
-                    ?:  =(step leng)
-                       valu
-                $(valu (mul 2 valu), step +(step))
-    1.024
-
-In this case we create a simple loop, using [`|-`](). To recurse, we use
-`%=` with [`$`](), the empty name — our `|-` — replacing our `valu` with
-`(mul 2 valu)` and `step` with `+(step)`.
+```
+~zod:dojo> =foo [p=5 q=6]
+~zod:dojo> foo(p 42)
+[p=42 q=6]
+~zod:dojo> foo(+3 99)
+[p=5 99]
+```

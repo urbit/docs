@@ -1,6 +1,23 @@
+---
+sort: 6
+---
+
 # `:claw, $@, "bucpat", {$claw p/moss q/moss}`
 
-Type: either an atom or a cell.
+Form a mold which normalizes a union distinguished by depth.
+
+## Normalizes to
+
+Default, if the sample is an atom; `p`, if the head of the sample
+is an atom; `q` otherwise.
+
+## Defaults to
+
+The default of `p`.
+
+## Syntax
+
+Regular: *2-fixed*.
 
 Product: a mold which applies `p` if its sample is an atom, 
 `q` if its sample is a cell.
