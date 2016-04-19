@@ -1,45 +1,35 @@
-# `:same`, `.=`, "dottis", `{$same p/twig q/twig}`
+---
+sort: 4
+---
 
-Test equality.
+# `:same, .=, "dottis", {$same p/twig q/twig}`
 
-Generates: Nock operator 5. Tests two nouns `p` and `q` for equality, producing a boolean.
+Test for equality with Nock `5`.
 
-Regular form: *2-fixed*
+## Produces
 
-Examples:
+`&`, `%.y`, `0` if `p` equals `q`; otherwise `|`, `%.n`, `1`.
 
-    ~zod:dojo> =(0 0)
-    %.y
-    ~zod:dojo> =(1 2)
-    %.n
+## Syntax
 
-Comparing two atoms is the most straightforward case of `.=`.
+Regular: *2-fixed*.
 
-    ~zod:dojo> =("a" [97 ~])
-    %.y
-    ~zod:dojo> =(~nec 1)
-    %.y
-    ~zod:dojo> =([%a 2] a/(dec 3))
-    %.y
-    ~zod:dojo> =([%b 2] a/(dec 3))
-    %.n
+Irregular: `=(a b)` is `.=(a b)`.
 
-It's important to keep in mind that `.=` compares the atomic equivalent
-of each `p` and `q`. In the first case of this example the tape `"a"` is
-actually the list `[97 0]` since the ASCII code for `'a'` is 97. The
-following cases serve to show similar implicit down-casts.
+## Discussion
 
-    /~zod:dojo> =isa  |=  a/@t
-                      ?:  =(a 'a')
-                        'yes a'
-                      'not a'
-    new var %isa
-    /~zod:dojo> (isa 'b')
-    'not a'
-    /~zod:dojo> (isa 'a')
-    'yes a'
+Like Nock equality, `:same` tests if two nouns are the same,
+ignoring invisible pointer structure.  Because in a conventional
+noun implementation each noun has a lazy short hash, comparisons 
+are fast unless the hash needs to be computed, or we are comparing
+separate copies of identical nouns.  (Comparing large duplicates 
+is a common cause of performance bugs.)
 
-In common practice `.=` is often used inside of `?` runes, where
-switching on equality is needed. Here we construct a simple function to test
-if our argument is equal to `'a'` and produce either `'yes a'` or
-`'not a'` accordingly.
+## Examples
+
+```
+~zod:dojo> =(0 0)
+%.y
+~zod:dojo> =(1 2)
+%.n
+```

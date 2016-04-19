@@ -1,12 +1,23 @@
-# `:wish`, `.^`, "dotket", `{$wish p/twig q/twig}`
+---
+sort: 5
+---
 
-Nock 11--grab a file from namespace.
+# `:wish, .^, "dotket", {$wish p/moss q/seed}`
 
-Generates: nock operator `11`, which--in virtual userspace
-nock, `++mock`--loads a file from the global namespace, %clay.
+Load data from the Arvo namespace with Nock `11`.
 
-Regular form: *2-fixed*
+## Produces
 
-Examples:
+The noun whose name is `q`, cast to the icon of `p`.
 
-XX Something wasn't working for me and didn't want to waste time.
+## Discussion
+
+Nock has no `11` instruction, of course.  But the virtual Nock
+used to run userspace code does.  Nock `11` loads from a
+typed immutable namespace defined by its virtual context.
+
+We don't remold dynamically nouns in a `:wish`, but we do check
+that the type of the value nests in `p`.
+
+## Examples
+

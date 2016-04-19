@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 3
 ---
 
 # `:open, %~, "censig", {$cnsg p/wing q/twig r/twig}

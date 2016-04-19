@@ -1,5 +1,5 @@
 ---
-sort: 4
+sort: 5
 ---
 
 # `:lace, %., "cendot", {$lace p/seed q/seed}`

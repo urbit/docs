@@ -1,5 +1,5 @@
 ---
-sort: 6
+sort: 7
 ---
 
 # `:calq, %^, "cenket", {$calq p/seed q/seed r/seed s/seed}`

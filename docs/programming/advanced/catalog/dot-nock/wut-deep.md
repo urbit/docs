@@ -1,33 +1,24 @@
-# `:deep`, `.?`, "dotwut", `{$deep p/twig}`
+---
+sort: 2 
+---
 
-Test if noun is cell or atom.
+# `:deep, .?, "dotwut", {$deep p/twig}`
 
-Generates: Nock operator 3. Tests whether a noun is a cell or an
-atom, producing true if it is the former and false if the latter.
+Test for cell or atom with Nock `3`.
 
-Regular form: *1-fixed*
+## Produces
 
-Examples:
+`&`, `%.y`, `0` if `p` is a cell; otherwise `|`, `%.n`, `1`.
 
-    ~zod:dojo> .?(~)
-    %.n
-    ~zod:dojo> .?(5)
-    %.n
-    ~zod:dojo> .?(~porlep)
-    %.n
+## Syntax
 
-In all of these cases our sample is implicitly down-cast to an atom,
-which produces `|`.
+Regular: *1-fixed*.
 
-    ~zod:dojo> .?([1 2 3])
-    %.y
-    ~zod:dojo> .?("ha")
-    %.y
-    ~zod:dojo> ._a_b__
-    [%a %b]
-    ~zod:dojo> .?(._a_b__)
-    %.y
+## Examples
 
-`[1 2 3]` is clearly a cell, `"ha"` is equivalent to the null-terminated
-tuple of its ASCII codes, and `._a_b__` is also clearly a cell. Each
-produce `&`.
+```
+~zod:dojo> .?(~)
+%.n
+~zod:dojo> .?([2 3])
+%.y
+```

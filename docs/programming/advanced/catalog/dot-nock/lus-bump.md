@@ -1,44 +1,29 @@
-# `:bump`, `.+` "dotlus" `{$bump p/twig}`
+---
+sort: 3
+---
 
-Increments an atom.
+# `:bump, .+, "dotlus", {$bump p/seed}`
 
-Generates: nock operator `4`, which increments atom `p`.
+Increment an atom with Nock `4`.
 
-Regular form: *1-fixed*
+## Produces
 
-Irregular form:
+`p` plus `1` if `p` is an atom; otherwise, crashes.  The product
+atom has no aura.
 
-`+(6)   .+(6)`
+## Syntax
 
-Examples
+Regular: *1-fixed*.
 
-    ~zod:dojo> +(6)
-    7
-    ~zod:dojo> +(2)
-    3
+Irregular: `+(6)` is `.+(6)`.
 
-In the most straightforward case `.+` increments its operand.
+## Examples
 
-    ~zod:dojo> +(~zod)
-    1
-    /~zod:dojo> `@`~zod
-    0
-    /~zod:dojo> `@`'a'
-    97    
-    ~zod:dojo> +('a')
-    98
-    /~zod:dojo> `@`0xff
-    255    
-    ~zod:dojo> +(0xff)
-    256
-    ~zod:dojo> +(41)
-    42
-
-When passed a non-atomic odored atom `.+` down-casts to an atom (of just `@`).
-
-    ~zod:dojo> +([1 2])
-    ! type-fail
-    ! exit
-
-Passing an operand that cannot be directly down-cast to an atom produces
-a type-fail.
+```
+~zod:dojo> +(6)
+7
+~zod:dojo> +(%foo)
+7.303.015
+~zod:dojo> +([1 2])
+! nest-fail
+```

@@ -1,5 +1,5 @@
 ---
-sort: 5
+sort: 6
 ---
 
 # `:calt, %+, "cenlus", {$calt p/seed q/seed r/seed}`
