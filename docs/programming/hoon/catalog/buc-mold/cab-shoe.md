@@ -1,8 +1,9 @@
 ---
 sort: 1
+preview: Form a mold
 ---
 
-# `:shoe, $_, "buccab", {$shoe p/twig}`
+# `:shoe $_ "buccab" {$shoe p/twig}`
 
 Form a mold which normalizes to an example.
 

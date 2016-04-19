@@ -1,5 +1,5 @@
 ---
-sort: 7
+sort: 6
 next: true
 title: Type: span
 ---

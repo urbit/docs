@@ -1,5 +1,5 @@
 ---
-sort: 9
+sort: 8
 title: Examples
 ---
 
@@ -82,14 +82,14 @@ up through the factors we're removing.
 Line `11`: we start a loop.  The product of the loop is cast to
 `..main`, which is the core we're in (`+1.main`).
 
-Lines `12` and `13`: we terminate the loop, returning `..main`, 
+Lines `12` and `13`: we terminate the loop, returning `..main`,
 if the square of the counter exceeds the range.
 
 Line `14`: repeats the loop, incrementing the counter, and
 replacing the core with a version sieved by `reap`.
 
 Lines `16` and `17`: the `reap` arm, which produces a gate that
-removes multiples of a factor from the field (set of possible 
+removes multiples of a factor from the field (set of possible
 primes).  The  sample of this gate is the factor to remove.
 
 Line `18`: we declare a variable `count`, an atom, with the
@@ -235,7 +235,7 @@ common pattern.  (You could put the molds and the gates in the
 same core, but the compiler couldn't constant-fold gate samples
 that use these molds, an efficiency cost.)
 
-Line `12` defines the `side` mold, an alias for `atom` (`@`). 
+Line `12` defines the `side` mold, an alias for `atom` (`@`).
 A side is a half of the board, as a marked/unmarked bitfield.
 
 Line `13` defines the `spot` mold, a 2D coordinate.
@@ -246,7 +246,7 @@ output action), as a book (tagged union).  There are two forms of
 (reporting that `'X'` or `'O'` won a game.
 
 Lines `17` to `20` define the `move` mold, a game move.  This is
-either `[%x spot]`, `[%o spot]`, or `[%z ~]` to reset the board. 
+either `[%x spot]`, `[%o spot]`, or `[%z ~]` to reset the board.
 
 Lines `21` to `23` define the `game` mold, the game state.  This
 is an `a` side, the next side to move; a `z` side, the other
@@ -266,7 +266,7 @@ to a bit index.
 
 Line `31` is the `get` gate, which produces the bit at a `spot`.
 
-Line `32` is the `set` gate, which produces a new side with the 
+Line `32` is the `set` gate, which produces a new side with the
 bit at a `spot` set.  It works by ORing (`con`) `half` with the
 binary exponent (`bex`) of the offset (`off`) of the spot.
 
@@ -331,7 +331,7 @@ side `z`, and replaces `z` with `next`.
     ++  spot  {x/@ y/@}
     ++  fact  $%  {$tie $~}
                   {$win p/cord}
-              == 
+              ==
     ++  move  $%  {$x p/spot}
                   {$o p/spot}
                   {$z $~}
@@ -358,8 +358,8 @@ side `z`, and replaces `z` with `next`.
     |=  act/move
     ^-  {(unit fact) game}
     ?-  act
-      {$x *}  ?>(w.mag ~(mo on p.act)) 
-      {$o *}  ?<(w.mag ~(mo on p.act)) 
+      {$x *}  ?>(w.mag ~(mo on p.act))
+      {$o *}  ?<(w.mag ~(mo on p.act))
       {$z *}  [~ nu]
     ==
   ::
@@ -376,7 +376,7 @@ side `z`, and replaces `z` with `next`.
             ?:  ~(win bo next)
                [[~ %win ?:(w.mag %x %o)] nu]
             [~ mag(w !w.mag, a z.mag, z next)]
-    -- 
+    --
   --
 --
 ```

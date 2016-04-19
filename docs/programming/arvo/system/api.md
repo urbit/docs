@@ -4,6 +4,8 @@ sort: 12
 title: API Connectors
 ---
 
+# API Connectors
+
 Most people have lots of data stored in online services, many of
 which have APIs.  API connectors allow the user to access this
 data from within their Urbit.
@@ -23,7 +25,7 @@ app accomplishes both for Github.
 After starting `%gh` (`|start %gh`), let's look at the root of
 the tree that `%gh` exposes:
 
-    ~sampel-sipnym:dojo> .^(arch %gy /=gh=)
+    ~your-urbit:dojo> .^(arch %gy /=gh=)
     [fil=~ dir={[p=~.issues q=~]}]
 
 `%gh` is currently a skeleton -- it contains examples of all the
@@ -31,7 +33,7 @@ functionality necessary for a connector, but many endpoints
 aren't implemented.  As we can see here, only issues are
 implemented.  We can explore this tree:
 
-    ~sampel-sipnym:dojo> .^(arch %gy /=gh=/issues)
+    ~your-urbit:dojo> .^(arch %gy /=gh=/issues)
     [fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
 
 And eventually:
@@ -49,9 +51,9 @@ the `:pipe` app:
     :pipe|connect %gh /listen/philipcmonktest/testing/issues/'issue_comment' %public
 
 Now creating an issue results in the following message in your
-`%public` channel:
+`%public` `:talk` channel:
 
-    ~sampel-sipnym[philipcmonktest@github]: opened issue #11: i found a bug!
+    ~your-urbit[philipcmonktest@github]: opened issue #11: i found a bug!
 
 You'll also get notifications of issue status changes and
 comments.
@@ -65,7 +67,7 @@ drifts out of sync with this doc).
 We'll go over the two parts to an API connector (one-time reading vs listening
 for events) separately.
 
-# Reading
+## Reading
 
 A connector exposes a tree of data.  Every read request has a
 `care`, which is generally either `%x` or `%y.  `%x` is a request
@@ -78,7 +80,7 @@ Unix `ls`.
 > "should" produce a list of all Github users, but we don't do
 > that because it's too long.  Instead, we just produce our own
 > username (from the `web.plan` file).  You can still access
-> repos from other uesrs, you just don't see them in the
+> repos from other users, you just don't see them in the
 > directory listing.
 
 The usual flow for implementing this tree of data makes heavy use
@@ -100,7 +102,7 @@ list of all the places we can request.  A place consists of:
    to match `/issues/<user>/<repo>` use `{$issues @t @t $~}`.
 
 -  `read-x`, called when someone tries to read the place with
-   care `%x`.  Should produce a single move, usually either a
+   `care` `%x`.  Should produce a single move, usually either a
    `%diff` response if we can immediately answer or a `%hiss`
    http request if we need to make a request to the api.  See the
    `++read-*` functions in `++helpers` for some common handlers.
@@ -156,7 +158,7 @@ control.  There are four functions we need to define:
 That's really all there is to the reading portion of API
 connectors.
 
-# Listening
+## Listening
 
 Listening for events is fairly service-specific.  In some
 services, we poll for changes.  For an example of that, check out
@@ -175,7 +177,7 @@ up-to-date.
 Flow of control starts in `++peer-listen`, where we just call
 `++listen`.  In `++listen`, for each event in the list of events,
 we check to see if we have that hook set up (by checking whether
-it exists in `hook`).  If so, we call `++update-hook` to add th
+it exists in `hook`).  If so, we call `++update-hook` to add the
 current bone to the set of listeners.  Otherwise, we call
 `++create-hook`, which sends a request to Github to set up the
 new webhook.  We also create an entry in `hook` with the current

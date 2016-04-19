@@ -1,5 +1,6 @@
 ---
-sort: 3
+sort: 10
+title: Stems catalog
 ---
 
 # Stems
@@ -8,67 +9,67 @@ sort: 3
 
 <div class="book">
 
-## `$ buc` (mold) 
+## `$ buc` (mold)
 
 <list src="buc-mold" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `| bar` (core) 
+## `| bar` (core)
 
 <list src="bar-core" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `: col` (cell) 
+## `: col` (cell)
 
 <list src="col-cell" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `% cen` (call) 
+## `% cen` (call)
 
 <list src="cen-call" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `. dot` (nock) 
+## `. dot` (nock)
 
 <list src="dot-nock" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `^ ket` (cast) 
+## `^ ket` (cast)
 
 <list src="ket-cast" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `~ sig` (hint) 
+## `~ sig` (hint)
 
 <list src="sig-hint" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `; sem` (make) 
+## `; sem` (make)
 
 <list src="sem-make" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `= tis` (flow) 
+## `= tis` (flow)
 
 <list src="tis-flow" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `? wut` (test) 
+## `? wut` (test)
 
 <list src="wut-test" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
-## `! zap` (wild) 
+## `! zap` (wild)
 
 <list src="zap-wild" dataPreview="true" className="runes" childIsFragment="true"></list>
 
