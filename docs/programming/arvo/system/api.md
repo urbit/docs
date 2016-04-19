@@ -4,6 +4,8 @@ sort: 12
 title: API Connectors
 ---
 
+# API Connectors
+
 Most people have lots of data stored in online services, many of
 which have APIs.  API connectors allow the user to access this
 data from within their Urbit.
@@ -65,7 +67,7 @@ drifts out of sync with this doc).
 We'll go over the two parts to an API connector (one-time reading vs listening
 for events) separately.
 
-# Reading
+## Reading
 
 A connector exposes a tree of data.  Every read request has a
 `care`, which is generally either `%x` or `%y.  `%x` is a request
@@ -156,7 +158,7 @@ control.  There are four functions we need to define:
 That's really all there is to the reading portion of API
 connectors.
 
-# Listening
+## Listening
 
 Listening for events is fairly service-specific.  In some
 services, we poll for changes.  For an example of that, check out

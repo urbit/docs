@@ -4,6 +4,8 @@ sort: 10
 title: Security Drivers
 ---
 
+# Security Drivers
+
 A security driver is a file in `/=home=/sec/<tld>/<domain>/hoon`
 that handles the authentication for all HTTP requests to
 `https://<domain>.<tld>`.  All requests to the domain are
@@ -43,6 +45,8 @@ If we don't have a security driver for Github yet, many of the
 endpoints won't be accessible, or they will only have publicly
 accessible information.  Most of what we care about requires us
 to be authenticated.
+
+## Basic auth
 
 Here's a simple security driver:
 
@@ -144,7 +148,7 @@ the driver.  In our case, that's
 encrypted, and you don't want to edit them directly.  `%eyre`
 loads them directly into your `bale`.
 
-# OAuth2
+## OAuth2
 
 Most services are better accessed through some form of OAuth.
 Github can be accessed with OAuth2, which is a little more

@@ -1,5 +1,5 @@
 ---
-sort: 5
+sort: 1
 next: true
 title: Interpreter
 ---
@@ -54,7 +54,7 @@ can detect this crash and produce an out-of-band value instead.
 *[a 4 b]         +*[a b]
 *[a 5 b]         =*[a b]
 
-*[a 6 b c d]     *[a 2 [0 1] 2 [1 c d] [1 0] 
+*[a 6 b c d]     *[a 2 [0 1] 2 [1 c d] [1 0]
                    2 [1 2 3] [1 0] 4 4 b]
 *[a 7 b c]       *[a 2 b 1 c]
 *[a 8 b c]       *[a 7 [[7 [0 1] b] 0 1] c]
@@ -70,7 +70,7 @@ can detect this crash and produce an out-of-band value instead.
 The pseudocode notation defines five prefix operators: `?`, `+`,
 `=`, `/`, and `*`.
 
-`?[x]` produces `0` if `x` is a cell, `1` if an atom. 
+`?[x]` produces `0` if `x` is a cell, `1` if an atom.
 
 `+[x]` produces the atom `x` plus `1`.
 
