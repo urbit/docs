@@ -1,5 +1,6 @@
 ---
-sort: 2
+sort: 12
+title: Standard Library
 ---
 
 Library

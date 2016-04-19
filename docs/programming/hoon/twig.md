@@ -1,7 +1,7 @@
 ---
-sort: 8
+sort: 7
 next: true
-title: Expression: twig
+title: Expressions: twig
 ---
 
 # Expression: `twig`

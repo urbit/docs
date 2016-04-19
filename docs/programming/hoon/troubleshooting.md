@@ -1,5 +1,6 @@
 ---
-sort: 10
+sort: 9
+title: Troubleshooting
 ---
 
 # Troubleshooting
@@ -53,7 +54,7 @@ Now your code parses but doesn't compile.
 ### Turn on debugging
 
 Your first step should be to put a `!:` ("zapcol") rune at the
-top of the file.  This is like calling the C compiler with `-g`; 
+top of the file.  This is like calling the C compiler with `-g`;
 it tells the Hoon compiler to generate tracing twigs.
 
 Bear in mind that `!:` breaks tail-call optimization.  This is a
@@ -100,7 +101,7 @@ means you tried to pound a square peg into a round hole.
 
 What was the peg and what was the hole?  Hoon doesn't tell you by
 default, because moral fiber, and also because in too many cases
-trivial errors lead to large intimidating dumps.  However, you 
+trivial errors lead to large intimidating dumps.  However, you
 can use the `~!` rune ("sigzap", `:peep`) to print the type of
 any twig in your stack trace.
 

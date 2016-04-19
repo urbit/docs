@@ -1,6 +1,5 @@
 ---
 sort: 3
-next: true
 title: Reference
 ---
 
