@@ -65,7 +65,7 @@ drifts out of sync with this doc).
 We'll go over the two parts to an API connector (one-time reading vs listening
 for events) separately.
 
-# Reading
+## Reading
 
 A connector exposes a tree of data.  Every read request has a
 `care`, which is generally either `%x` or `%y.  `%x` is a request
@@ -156,7 +156,12 @@ control.  There are four functions we need to define:
 That's really all there is to the reading portion of API
 connectors.
 
-# Listening
+One of the most accessbile ways to jump into Arvo programming is
+to just add more places to an existing API connector.  It's
+useful, small in scope, and comes in bite-sized chunks since most
+places are less than ten lines of code.
+
+## Listening
 
 Listening for events is fairly service-specific.  In some
 services, we poll for changes.  For an example of that, check out
@@ -199,6 +204,12 @@ That's really all there is to it.  Webhook flow isn't well
 standardized, so even if your chosen service is powered by
 webhooks, your listening code might look rather different.  The
 point is to expose the correct interface.
+
+
+## Github API Connector Code
+
+In case the code in `/=home=/app/gh/hoon` drifts out of sync with
+this doc:
 
 ```
 ::  This is a connector for the Github API v3.
