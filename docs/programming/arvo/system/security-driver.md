@@ -29,15 +29,15 @@ models.
 Still, it's worth seeing one or two built from the ground up.
 Here, we'll build a connector for the Github API v3.  The
 simplest way to interact with the Github API is to just fetch
-https://api.github.com.
+https://api.github.com from the dojo:
 
-    +https://api.github.com
+    ~your-urbit:dojo> +https://api.github.com
 
 Github exposes a few endpoints to the general web, and the root
 endpoint is one of them.  This gives you a textual representation
 of a JSON object that contains a bunch of urls to other parts of
 Github's API.  This is exactly the same response you would get
-from just running `curl` on UNIX.
+from just running `curl https://api.github.com` on UNIX.
 
 If we don't have a security driver for Github yet, many of the
 endpoints won't be accessible, or they will only have publicly
@@ -70,7 +70,7 @@ To try this out, we first have to initialize our credentials with
 `|init-auth-basic`, which prompts for the url of the service
 (api.github.com), username, and password.  It stores this
 information in a manner that `%eyre` knows how to decode and send
-put into your bale.  Note that `|init-auth-basic` is standard for
+put into your `bale`.  Note that `|init-auth-basic` is standard for
 basic auth, but other auth schemes (like OAuth) are initialized
 in other ways.
 
@@ -80,8 +80,7 @@ you're logged in as.
 
 You can similarly POST:
 
-    +https://api.github.com/gists &json _(cork poja need)
-      '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
+    ~your-urbit:dojo> +https://api.github.com/gists &json _(cork poja need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
 
 This creates a gist, go to `https://gist.github.com/<username>` to
 see it.
@@ -93,22 +92,24 @@ can send data of any mark as long as it has a conversion path to
 `%mime`.
 
 Let's take a look at the code and see if we can figure out what's
-happening here.
+happening here:
+
+    /+    basic-auth
 
 First, we load a library called `basic-auth`.  This library
 exposes two items.  `keys` is the type of the basic auth key,
 which is essentially a base64'd username and password.
-`standard` accepts a bale and produces a core with everything
+`standard` accepts a `bale` and produces a core with everything
 we'll need to implement basic auth.
 
 Every security driver needs some amount of state, which is stored
-in the bale.  The bale contains:
+in `bale`.  `bale` contains:
 
 - `our`, our urbit name
 - `now`, the current time
 - `eny`, 256 bits of entropy
-- `byk`, the urbit, desk, and case which the security driver is
-  running off
+- `byk`, the urbit, desk and case which the security driver is
+  running from
 - `usr`, the particular identity we're logging in with
 - `dom`, the site we're accessing
 - `key`, the secrets required to authenticate requests.  The type
@@ -130,7 +131,7 @@ one of:
   asking the user to visit the given url to continue the
   authentication process.
 
-Every request to a Github url will be filtered through
+Every request to a GitHub url will be filtered through
 `++filter-request`, and we want to add the authentication header
 to it.  Our `++aut` core contains a function
 `++out-addding-header`, which does exactly what we want.
@@ -141,7 +142,7 @@ service url, username, and password, and it stores them next to
 the driver.  In our case, that's
 `/=home=/sec/com/gitub/api/atom`.  These keys are stored
 encrypted, and you don't want to edit them directly.  `%eyre`
-loads them directly into your bale.
+loads them directly into your `bale`.
 
 # OAuth2
 
