@@ -8,11 +8,13 @@ title: Security Drivers
 
 A security driver is a file in `/=home=/sec/<tld>/<domain>/hoon`
 that handles the authentication for all HTTP requests to
-`https://<domain>.<tld>`.  All requests to the domain are
-filtered through the security driver, which will either decorate
-the request with the needed credentials if it has them, or else
-it will guide the user through the process of authenticating
-Urbit with the service.
+`https://<domain>.<tld>`.  When anything in Urbit makes an HTTP
+request through `%eyre` (our web server), it checks to see if we
+have a security driver for the requested domain, and if so
+filters the request through the driver.  The security driver will
+usually either decorate the request with the needed credentials
+if it has them, or else it will guide the user through the
+process of authenticating Urbit with the service.
 
 Each web service needs its own security driver, but most of them
 are pretty standard.  We recommend starting with an existing
@@ -121,23 +123,53 @@ in `bale`.  `bale` contains:
   `++bale`.  Thus, in our case, `key` in our bale is of type
   `keys:basic-auth`.
 
-Additionally, a security driver contains at least one "special"
-arm.  Here, we use `++filter-request`, which is a function which
-takes a hiss (http request) and produces a `sec-move`, which is
-one of:
+Additionally, a security driver contains at least one out of the
+five "special" arms:
 
-- `%send` plus a hiss, which sends the new hiss.  This is the
-  case in, for example, basic auth, where all we need to do is
-  add an extra header to the request.
-- `%give` plus an httr (http response), which immediately returns
-  an http response to the sender.
-- `%show` plus a purl (parsed url), which displays a message
-  asking the user to visit the given url to continue the
-  authentication process.
+- `++filter-request` is a function which takes a hiss (http
+  request) and produces a `sec-move` (defined in zuse), which is
+  one of:
+  
+  * `[%send hiss]`, which sends the new hiss.  This is the
+    case in, for example, basic auth, where all we need to do is
+    add an extra header to the request.
+  * `[%give httr]`, where httr is an http response.  This
+    immediately returns an http response to the sender.
+  * `[%show purl]`, where a purl is a parsed url.  This displays
+    a message asking the user to visit the given url to continue
+    the authentication process.
+  * `[%redo ~]`, which redoes the request.
 
-Every request to a GitHub url will be filtered through
-`++filter-request`, and we want to add the authentication header
-to it.  Our `++aut` core contains a function
+  `%eyre` calls `++filter-request` just before sending an HTTP
+  request to the specified domain.  This allows the security
+  driver to filter the requests, decorating them with
+  authentication data.
+
+- `++filter-response` is a function which takes an httr and
+  produces a `sec-move`.  `%eyre` calls it after receiving an
+  HTTP response from the specified domain.  This allows the
+  security driver to handle authentication errors, commonly
+  caused by expired tokens, and retry the request.
+
+- `++receive-auth-query-string` is a function that takes a `quay`
+  (list of query parameters) and produces a `sec-move`.  `%eyre`
+  calls it when it receives a request on the callback url.
+  Generally, this happens in OAuth after the user has granted
+  access to the urbit app, and the service makes a request to the
+  callback url with the code.  The security driver should then
+  make a request to convert the code into an access token.
+
+- `++receive-auth-response` is a function that takes an httr and
+  produces a `sec-move`.  `%eyre` calls it when it gets a
+  response to the request made in `++receive-auth-query-string`.
+
+- `++update` is a function which converts old state to a new
+  format when the security driver gets updated.  If you want to
+  just get rid of the old state, define `++discard-state` as `~`.
+
+For basic auth, we only have to worry about `++filter-request`,
+since all we need to do is add the correct header to each
+request.  Our `++aut` core contains a function
 `++out-addding-header`, which does exactly what we want.
 
 Where do the keys come from, though?  Remember we ran
@@ -215,7 +247,9 @@ Now we need a security driver.  Use this:
 
 The oauth2 library provides the main "engine" in `standard`, just
 like in basic auth, except that we also have to specify a
-function to save the access token when we get it.
+function to save the access token when we get it.  It's worth
+noting that this library is well documented in the source,
+including examples: `/=home=/lib/oauth2/hoon`.
 
 Running `+http://api.github.com/user` tries to make a request to
 Github with authentication.  This loads into the bale the keys,
