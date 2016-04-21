@@ -87,6 +87,13 @@ The usual flow for implementing this tree of data makes heavy use
 of the `connector` library.  This library is well documented in
 the source, so check out `/=home=/lib/connector/hoon`.
 
+The `connector` library needs to be initialized with definitions
+of `move` and `sub-result` (all the types of data that can be
+returned by a place).  This can just be a line at the top of the
+main core:
+
+    =+  connector=(connector move sub-result)  ::  Set up connector library
+
 Most of the Github-specific logic is in `++places`, which is a
 list of all the places we can request.  A place consists of:
 
@@ -120,23 +127,21 @@ list of all the places we can request.  A place consists of:
    `%y` request must produce an arch, unlike a `%x` request,
    which may produce data of any mark.
 
-The `connector` library needs to be initialized with definitions
-of `move` and `sub-result` (all the types of data that can be
-returned by a place).  `read-x` and `read-y` produce moves and
-`sigh-x` produces a sub-result.
-
 Filling out the list of places is a lot of grunt work, but most
 places are fairly straightforward, and the `++read-*` helper
 functions are useful.  Check out the library source for more
 information on those.
 
 Besides the list of places, we just need to handle the flow of
-control.  There are four functions we need to define:
+control.  `++peek` and `++peer-scry` are the interface we expose
+to the rest of the system while `++sigh-httr` and `++sigh-tang`
+are used to handle responses when we make HTTP requests.
 
 - `++peek` should usually just produce `~`.  If there are cases
   where we can respond directly to a `.^` request without
   blocking on anything, we could do it here, but it's generally
-  not worth the hassle.
+  not worth the hassle since the same logic should be duplicated
+  in `++peer-scry`.
 
 - `++peer-scry` is where the actual handling for a read request
   goes.  In general, we just need to call `++read` from the
@@ -145,11 +150,11 @@ control.  There are four functions we need to define:
   run either `++read-x` or `++read-y`, depending on the care.
 
 - If `++read-x` or `++read-y` made a successful API request, then
-  it'll come back on `++sigh-httr`.  Here, we just need to parse
-  out the wire and call `++sigh` from the `connector` library
-  with the list of places, care, path, and HTTP result.  This
-  will match the path to the appropriate place and run either
-  `++sigh-x` or `++sigh-y`, depending on the care.
+  the response will come back on `++sigh-httr`.  Here, we just
+  need to parse out the wire and call `++sigh` from the
+  `connector` library with the list of places, care, path, and
+  HTTP result.  This will match the path to the appropriate place
+  and run either `++sigh-x` or `++sigh-y`, depending on the care.
 
 - If `++read-x` or `++read-y` made an API request that failed,
   then we'll get a stack trace in `++sigh-tang`.  Here, we just
@@ -158,12 +163,19 @@ control.  There are four functions we need to define:
 That's really all there is to the reading portion of API
 connectors.
 
+One of the most accessbile ways to jump into Arvo programming is
+to just add more places to an existing API connector.  It's
+useful, small in scope, and comes in bite-sized chunks since most
+places are less than ten lines of code.
+
 ## Listening
 
 Listening for events is fairly service-specific.  In some
-services, we poll for changes.  For an example of that, check out
-the Twitter connector.  In Github, we power our event streams
-with webhooks.
+services, we poll for changes.  The Twitter connector has an
+example of this, but note that it predates the `connector`
+library and is thus more complicated than it needs to be, and the
+interface it exposes isn't standard.  In Github, we power our
+event streams with webhooks.
 
 For Github, when someone subscribes to
 `/listen/<user>/<repo>/<events...>`, we want to produce
@@ -201,6 +213,12 @@ That's really all there is to it.  Webhook flow isn't well
 standardized, so even if your chosen service is powered by
 webhooks, your listening code might look rather different.  The
 point is to expose the correct interface.
+
+
+## Github API Connector Code
+
+In case the code in `/=home=/app/gh/hoon` drifts out of sync with
+this doc:
 
 ```
 ::  This is a connector for the Github API v3.
