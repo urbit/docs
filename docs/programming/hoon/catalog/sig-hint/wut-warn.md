@@ -1,20 +1,29 @@
-# `:warn`, `~?`, "sigwut", `{$warn p/@ud q/twig r/twig s/twig}`
+---
+sort: 4
+---
 
-PrintF if `q` true.
+# `:warn ~? "sigwut" `{$warn p/twig q/twig r/twig}`
 
-Same as `~&` except for that `r` is printed to the console if and only
-if `q` evaluates to true. `p` is the priority level between 1-3 (defaults to 0) and is both optional and rarely used.
+Conditional debugging printf.
 
-Regularm form *4-fixed*
+## Expands to
 
-Examples:
+`r`.
 
-    ~zod:dojo> ~?((gth 1 2) 'oops' ~)
-    ~
-    ~zod:dojo> ~?((gth 1 0) 'oops' ~)
-    'oops'
-    ~
+## Convention 
 
-A simple case of the conditional printf. When our condition evaluates to
-true we print our `r`. Most useful in computation dealing with dynamic
-data.
+If `p` is true, prettyprints `q` on the console before computing `r`.
+
+## Syntax
+
+Regular: *4-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ~?((gth 1 2) 'oops' ~)
+~
+~zod:dojo> ~?((gth 1 0) 'oops' ~)
+'oops'
+~
+```

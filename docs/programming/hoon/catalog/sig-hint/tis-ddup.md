@@ -1,23 +1,34 @@
-# `:ddup`, `~=` "sigtis", `{$ddup p/twig q/twig}`
+---
+sort: 8
+---
 
-Hint to avoid duplication.
+# `:ddup ~= "sigtis" {$ddup p/seed q/seed}`
 
-Hints to the interpreter that `q` may produce a noun equal to the
-already existing `p` in order to avoid storing the same noun twice.
+Detect a duplicate.
 
-Regular form: *2-fixed*
+## Expands to
 
-Examples:
+`q`.
 
-    ~zod:dojo> 20
-    20
-    ~zod:dojo> =+(a=20 20)
-    20
-    ~zod:dojo> =+(a=20 ~=(a 20))
-    20
-    ~zod:dojo> (make '=+(a=20 20)')
-    [%8 p=[%1 p=20] q=[%1 p=20]]
-    ~zod:dojo> (make '=+(a=20 ~=(a 20))')
-    [%8 p=[%1 p=20] q=[%10 p=[p=1.836.213.607 q=[%0 p=2]] q=[%1 p=20]]]
-    ~zod:dojo> `@tas`1.836.213.607
-    %germ
+## Convention
+
+If `p` equals `q`, produce `p` instead of `q`.
+
+## Discussion
+
+Duplicates are especially bad news in Hoon, because comparing them
+takes O(n) time.  Use `~=` to kill them as they breed.
+
+## Examples
+
+This code traverses a tree and replaces all instances of `42` with
+`420`:
+
+```
+~zod:dojo> =foo  |=  a/(tree) 
+                 ?~(a ~ ~=(a [?:(=(n.a 42) 420 n.a) $(a l.a) $(a r.a)]))
+~zod:dojo> (foo 42 ~ ~)
+[420 ~ ~]
+```
+
+Without `~=`, it would build a copy of a completely unchanged tree.  Sad!

@@ -1,133 +1,62 @@
-# `:dip`, `;~`, "semsig" `{$dip p/twig q/(list twig)}`
+---
+sort: 2
+---
 
-Monad composer.
+# `:dip`, `;~`, "semsig" `{$dip p/seed q/(list seed)}`
 
-Composes a list of functions `p` and `q` under a monad. `q` can be 1 or more functions.
+Glue a pipeline together with a product-sample adapter.
 
-Regular form: 1-fixed, `q` is *running*
+## Produces
 
-Examples:
+The gates in `q` connected together using the gate `p`, which 
+transforms a `q` product and a `q` gate into a `q` sample.
 
-    ~zod:dojo> =cmp |=([a=tape b=$+(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
-    ~zod:dojo> ;~(cmp trip)
-    <1.xef [a=@ <374.hzt 100.kzl 1.ypj %164>]>
-    ~zod:dojo> (;~(cmp trip) 'a')
-    "a"
+## Discussion
 
-`;~` accepts a composer and a nonempty list of functions; at one gate, the
-composer is ignored, and the gate applied directly.
+Apparently `:dip` is a "Kleisli arrow."  Whatevs.  It's also 
+a close cousin of the infamous "monad."  Don't let that bother
+you either.  Hoon doesn't know anything about category theory,
+so you don't need to either.
 
-    ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a])) 'a')
-    "aa"
-    ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a])) '')
-    ""
+`:dip` is often used in parsers, but is not only for parsers.
 
-For multiple gates, `;~` uses the composer to connect the gates in
-order.
+## Syntax
 
-    ~zod:dojo> (;~(cmp trip ;~(cmp |=(a=@ ~[a a]) |=(a=@ <(dec a)>))) 'b')
-    "97b"
-    ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a]) |=(a=@ <(dec a)>)) 'b')
-    "97b"
-    ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a]) |=(a=@ <(dec a)>)) '')
-    ""
-    ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a]) |=(a=@ <(dec a)>)) 'a')
-    "96a"
-    ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a]) |=(a=@ <(dec a)>)) 'acd')
-    "96acd"
+Regular: *1-fixed*, then *running*.
 
-Multiple gates are equivalent to stacked semsigs.
+## Examples
 
-------------------------------------------------------------------------
+A simple "parser."  `trip` converts a `cord` (atomic string) to
+a `tape` (linked string).
 
-    [~ 0]
-    ~zod:dojo> ((slat %p) '~nec')
-    [~ 1]
-    ~zod:dojo> ((slat %p) 'nec')
-    ~
-    ~zod:dojo> ;~(biff (slat %p))
-    <1.ags [txt=@ta <1.wqj [mod=@tas <374.hzt 100.kzl 1.ypj %164>]>]>
-    ~zod:dojo> (;~(biff (slat %p)) '~zod')
-    [~ 0]
-    ~zod:dojo> (;~(biff (slat %p)) '~')
-    ~
-    ~zod:dojo> (;~(biff (slat %p)) '~nec')
-    [~ 1]
+```
+~zod:dojo> =cmp |=({a/tape b/$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
+~zod:dojo> ;~(cmp trip)
+<1.xef [a=@ <374.hzt 100.kzl 1.ypj %164>]>
+~zod:dojo> (;~(cmp trip) 'a')
+"a"
+```
 
-More commonly, this can be used for unit composition. `(slat %p)` parses
-cords in phonetic base, failure case: invalid text
+With just one gate in the pipeline `q`, the glue `p` is unused:
 
-    ~zod:dojo> (mo [~nec 12] [~tug 16] ~)
-    {[p=~nec q=12] [p=~tug q=16]}
-    ~zod:dojo> ~(get by (mo [~nec 12] [~tug 16] ~)) 
-    <1.yvn [* <18.wzi [a=nlr([p=@p q=@ud]) <374.hzt 100.kzl 1.ypj %164>]>]>
-    ~zod:dojo> =yaz ~(get by (mo [~nec 12] [~tug 16] ~)) 
-    ~zod:dojo> (yaz ~nec)
-    [~ 12]
-    ~zod:dojo> (yaz ~zod)
-    ~
-    ~zod:dojo> (yaz ~tug)
-    [~ 16]
+```
+~zod:dojo> (;~(cmp trip |=(a/@ ~[a a])) 'a')
+"aa"
+~zod:dojo> (;~(cmp trip |=(a/@ ~[a a])) '')
+""
+```
 
-`mo` makes a map, and `+-get`:by is used to retrieve values from one,
-failure case: no such key
+But for multiple gates, we need it to connect the pipeline:
 
-    ~zod:dojo> (;~(biff (slat %p) yaz) '~zod')
-    ~
-    ~zod:dojo> (;~(biff (slat %p) yaz) '~nec')
-    [~ 12]
-    ~zod:dojo> (;~(biff (slat %p) yaz) 'tug')
-    ~
-    ~zod:dojo> (;~(biff (slat %p) yaz) '~tug')
-    [~ 16]
-
-    ~zod:dojo> (;~(biff (slat %p) yaz |=(a=@ud [~ (add 100 a)])) '~nec')
-    [~ 112]
-    ~zod:dojo> (;~(biff (slat %p) yaz |=(a=@ud [~ (add 100 a)])) '~zod')
-    ~
-    ~zod:dojo> (;~(biff (slat %p) yaz |=(a=@ud [~ (add 100 a)])) 'mal')
-    ~
-
-These can be combined with `biff`, which connects a previous succeeded
-unit result by a gate that itself produces a unit from it.
-
-------------------------------------------------------------------------
-
-    ~zod:dojo> (hep [1 1] "")
-    [p=[p=1 q=1] q=~]
-    ~zod:dojo> (hep [1 1] "-")
-    [p=[p=1 q=2] q=[~ [p=~~- q=[p=[p=1 q=2] q=""]]]]
-    ~zod:dojo> `(like cord)`(hep [1 1] "-")
-    [p=[p=1 q=2] q=[~ [p='-' q=[p=[p=1 q=2] q=""]]]]
-    ~zod:dojo> `(like cord)`(hep [1 1] "?")
-    [p=[p=1 q=1] q=~]
-    ~zod:dojo> (lus [1 1] "+")
-    [p=[p=1 q=2] q=[~ [p=~~~2b. q=[p=[p=1 q=2] q=""]]]]
-    ~zod:dojo> `(like cord)`(lus [1 1] "+")
-    [p=[p=1 q=2] q=[~ [p='+' q=[p=[p=1 q=2] q=""]]]]
-    ~zod:dojo> `(like cord)`(lus [1 1] "++")
-    [p=[p=1 q=2] q=[~ [p='+' q=[p=[p=1 q=2] q="+"]]]]
-    ~zod:dojo> `(like cord)`(lus [1 1] " +")
-    [p=[p=1 q=1] q=~]
-    ~zod:dojo> `(like cord)`(;~(pose hep lus) [1 1] "?")
-    [p=[p=1 q=1] q=~]
-    ~zod:dojo> `(like cord)`(;~(pose hep lus) [1 1] "-")
-    [p=[p=1 q=2] q=[~ [p='-' q=[p=[p=1 q=2] q=""]]]]
-    ~zod:dojo> `(like cord)`(;~(pose hep lus) [1 1] "+")
-    [p=[p=1 q=2] q=[~ [p='+' q=[p=[p=1 q=2] q=""]]]]
-    ~zod:dojo> `(like cord)`(;~(pose hep lus) [1 1] "a")
-    [p=[p=1 q=1] q=~]
-    ~zod:dojo> `(like cord)`(;~(pose hep lus) [1 1] "-+")
-    [p=[p=1 q=2] q=[~ [p='-' q=[p=[p=1 q=2] q="+"]]]]
-    ~zod:dojo> `(like ,[cord cord])`(;~(plug hep lus) [1 1] "+")
-    [p=[p=1 q=1] q=~]
-    ~zod:dojo> `(like ,[cord cord])`(;~(plug hep lus) [1 1] "-+")
-    [p=[p=1 q=3] q=[~ [p=['-' '+'] q=[p=[p=1 q=3] q=""]]]]
-    ~zod:dojo> `(like ,[cord cord])`(;~(plug hep lus) [1 1] "-+ ")
-    [p=[p=1 q=3] q=[~ [p=['-' '+'] q=[p=[p=1 q=3] q=" "]]]]
-
-Most prominently, however, `;~` is used for combinator parsers,
-composing [rule]s in various ways
-
-See parsing sections 2eA - 2eH, and specifically section 2eD, for more
-information.
+```
+~zod:dojo> (;~(cmp trip ;~(cmp |=(a/@ ~[a a]) |=(a/@ <(dec a)>))) 'b')
+"97b"
+~zod:dojo> (;~(cmp trip |=(a/@ ~[a a]) |=(a/@ <(dec a)>)) 'b')
+"97b"
+~zod:dojo> (;~(cmp trip |=(a/@ ~[a a]) |=(a/@ <(dec a)>)) '')
+""
+~zod:dojo> (;~(cmp trip |=(a/@ ~[a a]) |=(a/@ <(dec a)>)) 'a')
+"96a"
+~zod:dojo> (;~(cmp trip |=(a/@ ~[a a]) |=(a/@ <(dec a)>)) 'acd')
+"96acd"
+```

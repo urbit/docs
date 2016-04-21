@@ -1,16 +1,26 @@
-# `:poll`, `~$` "sigbuc", `{$poll p/term q/twig}`
+---
+sort: 12
+---
 
-Label for profiling.
+# `:poll ~$ "sigbuc" {$poll p/term q/seed}`
 
-Labels computation `q` as `p` for profiling.
+Profiling hit counter.
 
-Irregular form: *2-fixed*
+## Expands to
 
-Examples:
+`q`.
 
-    ~zod:dojo> (make '~$(foo |-($))')
-    [%10 p=[p=1.702.259.052 q=[%1 p=7.303.014]] q=[%8 p=[%1 p=[9 2 0 1]] q=[%9 p=2 q=[%0 p=1]]]]
-    ~zod:dojo> `@tas`1.702.259.052
-    %live
-    ~zod:dojo> `@tas`7.303.014
-    %foo
+## Convention
+
+If profiling is on, adds 1 to the hit counter for `p`.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ~$(%foo 3)
+3
+```

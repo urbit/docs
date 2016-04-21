@@ -1,35 +1,27 @@
-# `:wrap`, `!>`, "zapgar" `{$wrap p/twig}`
+---
+sort: 2
+---
 
-Produce `[type value]`.
+# `:wrap !> "zapgar" {$wrap p/twig}`
 
-Produces a cell (known as a `++vase` here) of both the type and value of `p`. Useful for debugging purposes. 
+Wrap a noun in its span.
 
-Regular form: *1-fixed*
+## Produces
 
-Examples:
+A cell whose tail is `p`, and whose head is the static span of p.
 
-    ~zod:dojo> !>(1)
-    [p=[%atom p=%ud] q=1]
-    ~zod:dojo> !>(~zod)
-    [p=[%atom p=%p] q=0]
+## Syntax
 
-In these simple examples we see constant type information printed. `1`
-and `~zod` are shown to be odored atoms of `%ud` and `%p` respectively.
+Regular: *1-fixed*.
 
-    ~zod:dojo> !>([1 2])
-    [p=[%cell p=[%atom p=%ud] q=[%atom p=%ud]] q=[1 2]]
-    ~zod:dojo> !>([|.(20)]:~)
-    [   p
-      [ %core
-        p=[%cube p=0 q=[%atom p=%n]]
-          q
-        [ p=%gold
-          q=[%cube p=0 q=[%atom p=%n]]
-          r=[p=[1 20] q={[p=%$ q=[%ash p=[%dtzy p=%ud q=20]]]}]
-        ]
-      ]
-      q=[[1 20] 0]
-    ]
+## Discussion
 
-In these slightly more complex cases we see a cell and a core expanded
-to show their type information.
+In Hoon, dynamic type is static type compiled at runtime.  This
+span-noun cell is generally called a `vase`.
+
+## Examples
+
+```
+~zod:dojo> !>(1)
+[#t/@ud q=1]
+```

@@ -1,26 +1,32 @@
-# `:name`, `^=`, "kettis", `{$name p/toga q/twig}`
+---
+sort: 3
+---
 
-Wraps a variable name around a value.
+# `:name ^= "kettis" {$name p/toga q/seed}`
 
-`^=`, `kettis`, `[%ktts p=toga q=twig]` is a natural rune that wraps `q`
-in the `++toga` `p`. `^=` is most commonly used for assignment,
-adding one or more names to values.
+Name a value.
 
-Regular form: *2-fixed*
+## Produces
 
-Examples:
+If `p` is a term, the product `q` with span `[%face p q]`.  `p`
+may also be a tuple of terms, or a term-toga pair; the span of 
+`q` must divide evenly into cells to match it.
 
-    ~zod:dojo> a=1
-    a=1
-    ~zod:dojo> ^=  a
-               1
-    a=1
+## Syntax
 
-In this straightforward example we see the irregular and tall forms of
-`^=`, both of which assign `a` to be `1`.
+Regular: *2-fixed*.
 
-    ~zod:dojo> [b ~ c]=[1 2 3 4]
-    [b=1 2 c=[3 4]]
+Irregular: `foo=bar` is `:name(foo bar)`.
 
-Here we see multiple names being applied at once, using the irregular
-form of `^=`.
+## Examples
+```
+~zod:dojo> a=1
+a=1
+~zod:dojo> ^=  a
+           1
+a=1
+~zod:dojo> [b c d]=[1 2 3 4]
+[b=1 c=2 d=[3 4]]
+~zod:dojo> [b c d=[x y]]=[1 2 3 4]
+[b=1 c=2 d=[x=3 y4]]
+```

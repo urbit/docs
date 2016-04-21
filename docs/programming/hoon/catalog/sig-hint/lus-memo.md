@@ -1,24 +1,43 @@
-# `:memo`, `~+`, "siglus", `{$memo p/@ q/twig}`
+---
+sort: 7
+---
 
-Memoize computation.
+# :memo ~+ "siglus" {$memo p/seed}`
 
-Hints to the interpreter to memoize (cache) the computation of `p`.
+Cache a computation.
 
-Regular form: *1-fixed*
+## Expands to
 
-Examples:
+`p`.
 
-    ~zod:dojo> 20
-    20
-    ~zod:dojo> ~+(20)
-    20
-    ~zod:dojo> 20
-    ~zod:dojo> (make '20')
-    [%1 p=20]
-    ~zod:dojo> (make '~+(20)')
-    [%10 p=[p=1.869.440.365 q=[%1 p=0]] q=[%1 p=20]]
-    ~zod:dojo> `@tas`1.869.440.365
-    %memo
+## Convention
 
-By using `++make` to display the compiled nock, we can see that `~+`
-inserts a `%memo` hint.
+Caches the formula and subject of `p` in a local cache (generally 
+transient in the current event).
+
+## Syntax
+
+Regular: *1-fixed*.
+
+## Examples
+
+This may pause for a second:
+
+```
+~zod:dojo> %.(25 |=(a/@ ?:((lth a 2) 1 (add $(a (sub a 2)) $(a (dec a))))))
+121.393
+```
+
+This may make you want to press ^C:
+
+```
+~zod:dojo> %.(30 |=(a/@ ?:((lth a 2) 1 (add $(a (sub a 2)) $(a (dec a))))))
+1.346.269
+```
+
+This should work fine:
+
+```
+~zod:dojo> %.(100 |=(a/@ ~+(?:((lth a 2) 1 (add $(a (sub a 2)) $(a (dec a)))))))
+573.147.844.013.817.084.101
+```

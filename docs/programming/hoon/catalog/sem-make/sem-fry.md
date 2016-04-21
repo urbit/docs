@@ -1,18 +1,48 @@
-# `:fry`, `;;`, "semsem" `{$fry p/twig q/twig}`
+---
+sort: 1
+---
 
-Fixpoint.
+# `:fry ;; "semsem" {$fry p/moss q/seed}`
 
-Slams `q` through gate `p`, asserting that the
-resulting noun is equal to `.=` the original, and produces it.
+Normalize with a mold, asserting fixpoint.
 
-Examples: XX Review closely
+## Expands to
 
-    ~zod:dojo> ^-(tape ~[97 98 99])
-    ! type-fail
-    ! exit
-    ~zod:dojo> ;;(tape ~[97 98 99])
-    "abc"
-    ~zod:dojo> (tape [50 51 52])
-    "23"
-    ~zod:dojo> ;;(tape [50 51 52])
-    ! exit
+```
+:pin(:name(a (p q)) :sure(=(a (p a)) a))
+```
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+Fails because of auras:
+
+```
+~zod:dojo> ^-(tape ~[97 98 99])
+! nest-fail
+! exit
+```
+
+Succeeds because molds don't care about auras:
+
+```
+~zod:dojo> ;;(tape ~[97 98 99])
+"abc"
+```
+
+Succeeds because the mold normalizes:
+
+```
+~zod:dojo> (tape [50 51 52])
+"23"
+```
+
+Fails because not a fixpoint:
+
+```
+~zod:dojo> ;;(tape [50 51 52])
+! exit
+```

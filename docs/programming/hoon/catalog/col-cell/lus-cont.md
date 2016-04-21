@@ -1,30 +1,28 @@
-# `:cont`, `:+`, "collus", `{$cont p/twig q/twig r/twig}`
-===========
+---
+sort: 2
+---
 
-Tuple of 3.
+# `:cont, :+, "collus", {$cont p/twig q/twig r/twig}`
 
-Produces: the tuple of `p`, `q`, and `r`.
+Construct a triple (3-tuple).
 
-Regular form:
+## Expands to:
 
-*3-fixed*
+```
+:cons(p :cons(q r))
+```
 
-Examples:
+## Syntax
 
-    /~zod:dojo> :+  1
-                  2
-                3
-    [1 2 3]
-    /~zod:dojo> :+(%a ~ 'b')
-    [%a ~ 'b']
+Regular: *3-fixed*.
 
-This is the most straightforward case of `:+`, producing a tuple of three
-values in both tall and wide form.
+## Examples
 
-    /~zod:dojo> 
-    :+  (add 2 4)  (add 2 6)
-      |-  (div 4 2)
-    [6 8 2]
-
-Most commonly `:+` helps to organize code, allowing you to produce a
-cell from nested computation.
+```
+/~zod:dojo> :+  1
+              2
+            3
+[1 2 3]
+/~zod:dojo> :+(%a ~ 'b')
+[%a ~ 'b']
+```

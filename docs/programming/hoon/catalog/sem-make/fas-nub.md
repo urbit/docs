@@ -1,16 +1,19 @@
-`:/ colfas`
-===========
+---
+sort: 4
+---
 
-String to XML XX
+# `:nub ;/ "semfas" {$nub p/seed}`
 
-`:/`, `colfas`, is a synthetic rune that produces `[%$ [%$ p ~] ~]`,
-i.e., `[0 [0 p 0] 0]`.
+Tape as XML element.
 
-Examples:
+## Expands to
 
-    ~zod/try=> :/(20)
-    [[%~. [%~. 20] ~] ~]
-    ~zod/try=> :/(add 2 2)
-    [[%~. [%~. 4] ~] ~]
+```
+[%$ [%$ p ~] ~]
+```
 
-Wraps `++twig` in `[%$ [%$ .] ~]~`, used for interpolation.
+## Examples
+```
+~zod/try=> :/("foo"
+[[%$ [%$ "foo] ~] ~]
+```

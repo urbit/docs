@@ -1,29 +1,36 @@
-# `:conp`, `:*`, "coltar", {$conp p/(list twig)}
+---
+sort: 4
+---
 
-Tuple of n elements.
+# `:conp, :*, "coltar" {$conp p/(list twig)}`
 
-Produces: tuple of input elements. Closed with `==`.
+Construct an n-tuple.
 
-Regular form: *running*
+## Expands to
 
-Examples
---------
+```
+|-(?~(p !! ?~(t.p i.p :cons(i.p $(p t.p)))))
+```
 
-    /~zod:dojo> :*(5 3 4 1 4 9 0 ~ 'a')
-    [5 3 4 1 4 9 0 ~ 'a']
-    /~zod:dojo> [5 3 4 1 4 9 0 ~ 'a']
-    [5 3 4 1 4 9 0 ~ 'a']
-    /~zod:dojo> :*  5
-                    3
-                    4 
-                    1
-                    4
-                    9
-                    0
-                    ~
-                    'a'
-                ==
-    [5 3 4 1 4 9 0 ~ 'a']
+## Syntax
 
-This is the most straightforward case of `:*`, producing tuples of n
-values in wide, irregular and tall forms.
+Regular: *running*.
+
+## Examples
+```
+/~zod:dojo> :*(5 3 4 1 4 9 0 ~ 'a')
+[5 3 4 1 4 9 0 ~ 'a']
+/~zod:dojo> [5 3 4 1 4 9 0 ~ 'a']
+[5 3 4 1 4 9 0 ~ 'a']
+/~zod:dojo> :*  5
+                3
+                4 
+                1
+                4
+                9
+                0
+                ~
+                'a'
+            ==
+[5 3 4 1 4 9 0 ~ 'a']
+```

@@ -1,33 +1,30 @@
-# ``, `;:`, "semcol" `{$wad p/twig q/(list twig)}`
+---
+sort: 3
+---
 
-Fold over tuple.
+# `:wad ;: "semcol" {$wad p/seed q/(list seed)}`
 
-Apply a binary function `p` to a tuple `q` with n elements. Similar to folding over the tuple `q`.
+Call binary function as n-ary function.
 
-Regular form: *running*
+## Expands to
 
-Irregular form:
+```
+|-(?~(q !! ?~(t.q !! ?~(t.t.q :call(p i.q i.t.q) :call(p i.q $(q t.q))))))
+```
 
-`:(p i.q i.t.q i.t.t.q)   ;:(p i.q i.t.q i.t.t.q)`
+## Syntax
 
-Examples:
+Regular: *1-fixed*, then *running*.
 
-    ~zod:dojo> (add 3 (add 4 5))
-    12
-    ~zod:dojo> ;:(add 3 4 5)
-    12
-    ~zod:dojo> :(add 3 4 5)
-    12
+Irregular: `:(add a b c)` is `;:(add a b c)`.
 
-Here we see how `;:` is equivalent to nesting our calls to the binary
-gate `++add`.
+## Examples
 
-    ~zod:dojo> :(weld "foo" "bar" "baz")
-    ~[~~f ~~o ~~o ~~b ~~a ~~r ~~b ~~a ~~z]
-    ~zod:dojo> `tape`:(weld "foo" "bar" "baz")
-    "foobarbaz"
-    ~zod:dojo> `tape`(weld "foo" (weld "bar" "baz"))
-    "foobarbaz"
-
-Following on from our previous example, using `;:` with `++weld` is
-convenient for concatenating multiple strings.
+```
+~zod:dojo> (add 3 (add 4 5))
+12
+~zod:dojo> ;:(add 3 4 5)
+12
+~zod:dojo> :(add 3 4 5)
+12
+```

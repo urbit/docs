@@ -1,14 +1,27 @@
-# `:show`, `~|` "sigbar", `{$show p/twig q/twig}`
+---
+sort: 2
+---
 
-`p` in stack trace if `q` crashes.
+# `:show ~| "sigbar" {$show p/seed q/seed}`
 
-Produces: `p` in the stack trace if `q` crashes. `p` is only
-evaluated if `q` crashes.
+Tracing printf.
 
-Regular form: *2-fixed*
+## Expands to
 
-Examples:
+`q`.
 
-    > ~|('sample error message' !!)
-    'sample error message'
-    ford: build failed ~[/g/~sivtyv-barnel/use/dojo/~sivtyv-barnel/inn/hand /g/~sivtyv-barnel/use/hood/~sivtyv-barnel/out/dojo/drum/phat/~sivtyv-barnel/dojo /d //term/1]
+## Convention
+
+Prettyprints `p` in stack trace if `q` crashes.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ~|('sample error message' !!)
+'sample error message'
+ford: build failed
+```

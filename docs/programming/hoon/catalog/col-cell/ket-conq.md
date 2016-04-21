@@ -1,28 +1,28 @@
-# `:conq`, `:^`, "colket", `{$conq p/twig q/twig r/twig s/twig}`
+---
+sort: 3
+---
 
-Tuple of four.
+# `:conq, :^, "colket", {$conq p/twig q/twig r/twig s/twig}`
 
-Produces: the tuple of `[p q r s]`.
+Construct a quadruple (4-tuple).
 
-Regular form: *4-fixed*
+## Expands to
 
-Examples
+```
+:cons(p :cons(q :cons(r s)))
+```
 
-    /~zod:dojo> :^(1 2 3 4)
-    [1 2 3 4]
-    /~zod:dojo> :^  5  6
-                  7
-                8
-    [5 6 7 8]
+## Syntax
 
-These are the most straightforward cases of `:^`, producing a tuple of four
-values in both tall and wide forms respectively.
+Regular: *4-fixed*.
 
-    /~zod:dojo> 
-    :^  (add 2 4)  (add 2 6)
-      |-  (div 4 2)
-      ~
-    [6 8 2 ~]
+## Examples
 
-Most commonly `:^` helps to organize code, allowing you to produce a
-cell from nested computation.
+```
+/~zod:dojo> :^(1 2 3 4)
+[1 2 3 4]
+/~zod:dojo> :^  5  6
+              7
+            8
+[5 6 7 8]
+```

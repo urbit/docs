@@ -1,26 +1,39 @@
-# `:iron`, `^|`, "ketbar", `{$iron p/twig}`
+---
+sort: 5
+---
 
-Make core context unreadable.
+# `:iron ^| "ketbar" {$iron p/seed}`
 
-Converts an %gold core `p` to an %iron core. Useful in preventing type
-fails when replacing one core with one context with another core with a
-different context.
+Convert a gold core to a contravariant core (write-only sample).
 
-Regular form: *1-fixed*
+## Produces
 
-Examples:
+`p` as an iron core; crash if not a gold core.
 
-    /~zod:dojo> =cor  |=  a/@
-          +(a)
-    new var %cor
-    /~zod:dojo> +<.cor
-    a=0
-    /~zod:dojo> =iro  ^|(cor)
-    new var %iro
-    /~zod:dojo> +<.iro
-    ! -axis.6
-    ! peek-park
-    ! exit
+## Syntax
 
-Here we crete a simple gate and assign it to the shell variable `cor`.
-We can examine the sample of `cor` with `+<` (the head of the tail) to produce `a=0`. Assigning a new shell variable, `iro` as the `^|` of `cor` we can no longer peek in to its subject.
+Regular: *1-fixed*.
+
+## Discussion
+
+An iron core is an opaque function (gate or door).
+
+Theorem: if span `x` nests within span `a`, and span `y` nests
+within span `b`, a core accepting `b` and producing `x` nests
+within a iron core accepting `y` and producing `a`.
+
+Informally, a function fits an interface if the function has a
+more specific result and/or a less specific argument than the
+interface.
+
+## Examples
+
+The prettyprinter shows the core metal (`.` gold, `|` iron):
+
+```
+~zod:dojo> |=(@ 1)
+<1.gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
+~zod:dojo> ^|(|=(@ 1))
+<1|gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
+```
+

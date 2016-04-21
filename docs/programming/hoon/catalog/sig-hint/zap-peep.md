@@ -1,29 +1,29 @@
-# `:peep`, `~!`, "sigzap", `{$peep p/twig q/twig}`
+---
+sort: 9
+---
+
+# `:peep ~! "sigzap" {$peep p/seed q/seed}`
 
 Print type on compilation fail.
 
-Produces the type of `p` on the stacktrace if `q` fails. Used only for debugging purposes.
+## Expands to
 
-Examples:
+`q`.
 
-    ~zod:dojo> a
-    ! -find-limb.a
-    ! find-none
-    ! exit
-    ~zod:dojo> ~!('foo' a)
-    ! @t
-    ! -find-limb.a
-    ! find-none
-    ! exit
+## Convention
 
-When trying to compute an unassigned variable, `a` we produce the type
-of `'foo'`, `@t`.
+If compilation of `q` fails, prints the span of `p` in the trace.
 
-    ~zod:dojo> ~!(%foo a)
-    ! %foo
-    ! -find-limb.a
-    ! find-none
-    ! exit
+## Syntax
 
-Again, we use our unassigned variable `a` and the cube `%foo`, whose
-type is in fact `%foo`.
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> a
+! -find.a
+~zod:dojo> ~!('foo' a)
+! @t
+! find.a
+```

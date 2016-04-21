@@ -1,17 +1,28 @@
-# `:funk`, `~/`, "sigfas", `{$funk p/chum q/twig}` 
+---
+sort: 1
 
-XX HELP
+# `:funk ~/ "sigfas" {$funk p/term q/twig}` 
 
-`~/` is a synthetic rune that implements one common case - a function arm in
-a book, i.e. a library function - of the `~%` jet hint. Assumes the parent axis is `7` and that there are no children.
+Jet hint for a gate whose context is a registered core.
 
-Regular form: *2fixed*
+## Expands to
 
-Examples:
+```
+:fast(p +7 ~ q)
+```
 
-    ~zod:dojo> (make '~/  %bam  |.(40)')
-    [%8 p=[%1 p=[1 40]] q=[%10 p=[p=1.953.718.630 q=[%1 p=[7.168.354 [0 7] 0]]] q=[%0 p=1]]]
-    ~zod:dojo> `@`%bam
-    7.168.354
-    ~zod:dojo> `@tas`1.953.718.630
-    %fast
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+From the kernel: 
+```
+++  add
+  ~/  %add
+  |=  {a/@ b/@}
+  ^-  @
+  ?:  =(0 a)  b
+  $(a (dec a), b +(b))
+```

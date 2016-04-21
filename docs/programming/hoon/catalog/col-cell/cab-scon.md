@@ -1,29 +1,24 @@
-# `:scon`, `:_`, "colcab", `{$scon p/twig q/twig}`
+---
+sort: 6
+---
 
-Inverted tuple of `p` `q`.
+# `:scon, :_, "colcab", {$scon p/twig q/twig}`
 
-Produces: a cell of `[q p]`. Exists for code readability and organization. See the backstep convention.
+Construct a cell, inverted.
 
-Regular form: *2-fixed*
+## Expands to
 
-Examples:
+```
+:cons(q p)
+```
 
-    ~zod:dojo> :_(1 2)
-    [2 1]
+## Syntax
 
-A simple example. `:_` produces the cell of any two twigs, but in
-reverse order.
+Regular: *2-fixed*.
 
-    ~zod:dojo> `tape`:_(~ 'a')
-    "a"
+## Examples
 
-Since a `++tape` is a null-terminated list of characters, casting
-the result of `:_(~ 'a')` to a `tape` produces `"a"`.
-
-    /~zod:dojo> 
-        :_  (add 2 2)
-        |-  (div 4 2)
-    [2 4]
-
-Most commonly `:_` helps to organize code, allowing you to produce a
-cell from nested computation.
+```
+~zod:dojo> :_(1 2)
+[2 1]
+```

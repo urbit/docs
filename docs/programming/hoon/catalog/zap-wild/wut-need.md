@@ -1,16 +1,27 @@
-# `:need`, `!?`, "zapwut", `{$need p/$@(p/@ {p/@ q/@}) q/twig}`
+---
+sort: 4
+---
 
-Restrict version.
+# `:need !? "zapwut" {$need p/@ q/twig}`
 
-Enforces a Hoon version restriction. XX help
+Restrict Hoon version.
 
-Regular form: *2-fixed*
+## Produces
 
-Examples: XX help
+`q`, if `p` is greater than or equal to the Hoon kelvin version.
+(Versions count down; the current version is 150.)
 
-    ~zod:dojo> !?(264 (add 2 2))
-    4
-    ~zod:dojo> !?(164 (add 2 2))
-    4
-    ~zod:dojo> !?(163 (add 2 2))
-    ! exit
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> !?(264 (add 2 2))
+4
+~zod:dojo> !?(164 (add 2 2))
+4
+~zod:dojo> !?(64 (add 2 2))
+! exit
+```

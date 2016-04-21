@@ -1,23 +1,26 @@
-# `:fail`, `!!`, "zapzap" `{$fail $~}`
+---
+sort: 1
+---
+
+# `:fail, !! "zapzap" {$fail $~}`
 
 Crash.
 
-Always causes a crash. Frequently used as sentinel, especially when you don't want the type system to
-give you type fails before you've written every possible branch of the
-computation.
+## Produces
 
-Regularm form: doesnt even accept input as it causes an immediate crash. XX???
+Nothing.  Always crashes, with span `%void`.
 
-Examples:
+## Syntax
 
-    ~zod:dojo> !!
-    ! exit
-    ~zod:dojo> =|(a=(unit) ?^(a !! %none))
-    %none
-    ~zod:dojo> :type; =|(a=(unit) ?^(a !! %none))
-    %none
-    %none
-    ~zod:dojo> ?+('a' !! %a 1, %b 2)
-    1
-    ~zod:dojo> ?+('c' !! %a 1, %b 2)
-    ! exit
+`!!`
+
+## Discussion
+
+`%void` nests in every other span, so you can stub out anything with `!!`.
+
+## Examples
+
+```
+~zod:dojo> !!
+! exit
+```
