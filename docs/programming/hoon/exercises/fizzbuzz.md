@@ -6,7 +6,7 @@ comments: true
 # Friends of FizzBuzz
 
 1.  Consider the following implementation of FizzBuzz, which is
-    equivalent to the one in the [Demo](demo) section.
+    equivalent to the one in the [Demo](../../demo) section.
 
     ```
     |=  end/atom
