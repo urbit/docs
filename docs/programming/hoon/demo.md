@@ -27,8 +27,8 @@ line is commented with its number:
 :moar(count (add 1 count))       ::  15
 ```
 
-Can you understand this code by just looking at it?  Hopefully,
-but let's explain it anyway.
+Can you understand this code by just looking at it?  Maybe.
+But let's explain it anyway.
 
 Hoon is a functional language.  FizzBuzz is usually defined as a
 side effect, but Hoon has no side effects.  This code will

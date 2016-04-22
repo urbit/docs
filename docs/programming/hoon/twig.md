@@ -1,13 +1,14 @@
 ---
-sort: 7
+sort: 6
 next: true
-title: Expressions: twig
+title: Expressions
 ---
 
-# Expression: `twig`
+# Expressions
 
-A `twig` is an AST node: the noun that the Hoon compiler makes
-when it parses a source expression.
+A Hoon expression is called a `twig`.  A `twig` is an AST node:
+the noun that the Hoon compiler makes when it parses a source
+expression.
 
 The definition of `twig` is the definition of Hoon.  So let's
 define the syntax and semantics of Hoon, a twig at a time.  But
@@ -37,9 +38,12 @@ syntax and semantics; again, the difference is how we use it.
 
 Twigs are described as *mossy* (or *moldy*) and *seedy*; an
 example of X is the seedy form of X, a mold producing X is its
-mossy form.  For instance, `$foo` (mossy) is a mold whose product
-is always `%foo` (seedy).  (Obviously, seed is *yang* and moss is
-*yin*, so we can also say "yang foo" or "yin foo".)
+mossy form. 
+
+For instance, `[%foo %bar]` is seedy: a twig producing the noun
+`[7.303.014 7.496.034]`.  `{$foo $bar}` is mossy: a twig
+producing a function whose product is always `[7.303.014
+7.496.034]`.
 
 ## Twig categories
 
