@@ -1,6 +1,5 @@
 ---
-sort: 2
-next: true
+sort: 3
 ---
 
 # Limbs and wings

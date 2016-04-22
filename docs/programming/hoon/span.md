@@ -1,16 +1,14 @@
 ---
-sort: 5
+sort: 6
 next: true
-title: Basic types
+title: Type: span
 ---
 
-# Basic types
+# Type: `span`
 
 A `span` is a set of nouns and an interpretation of these nouns.
-Officially, we don't use the word "type" in Hoon.  But if we had 
-to say "type," it would mean `span`.
 
-## Span and mold
+## Span, mold, type: what's in a type system?
 
 There is no Hoon syntax for a span.  The programmer never defines
 a span explicitly.  It is always produced as the inferred range
@@ -28,8 +26,8 @@ the standard form is useful.  The standard form is a constructor
 function, or *mold*.
 
 A mold is an idempotent function (`gate`), accepting any noun.
-(An idempotent function is one such that *f(f(x))* equals *f(x)*
-if *f(x)* terminates.)  The product range of the function is the
+(An idempotent function is one such that f(f(x)) equals f(x) if
+f(x) does not crash.)  The product range of the function is the
 span, or *icon*, of the mold.
 
 Usually we use molds purely in the first sense: as an abstract
@@ -37,15 +35,28 @@ definition of a noun.  Don't actually call a mold unless you're
 actually validating untrusted foreign data.  As a beginner,
 hopefully you aren't!
 
-## The `span` mold (simplified)
+(It's also important to remember that any twig can be a mold.
+Some stems are macros designed for making molds, but a mold is
+defined by how it's used, not what it's made of.  The Hoon type
+system cannot even check the mold definition, since Hoon lacks
+dependent type and therefore can't verify idempotence.)
+
+To summarize: a Hoon "type declaration" is the definition of a
+function, the mold.  A mold and a span are different things.  A
+mold is a constructor.  A span defines a set of nouns, possibly
+infinite, and annotates them with semantics.
+
+Either mold or span could be called a "type," but not both.  We
+often say "type" in Hoon.  But we always mean it informally.
+Ideally, the meaning is obvious from context.  ("Type" can also
+mean a `mark`, Urbit's equivalent of a MIME type.)
+
+## The `span` mold
 
 Usually in Hoon we define the semantics of a primitive by the
 state the span of all nouns that implement that primitive.  We
 state this span as the icon of a mold.  That mold is produced by
 a kernel arm `span`:
-
-This is a slightly simplified version of `span`.  We'll undo and 
-explain the simplifications below.
 
 ```
 ++  term  @tas
@@ -54,7 +65,7 @@ explain the simplifications below.
           $void
   ==  $%  {$atom p/term q/(unit atom)}
           {$cell p/span q/span}
-          {$core p/span q/(map term twig)}
+          {$core p/span q/(map term span)}
           {$face p/term q/span}
           {$fork p/(set span)}
           {$hold p/span q/twig}
@@ -67,29 +78,26 @@ pseudocode.  If a span is an atom, it's either the atomic string
 `atom`, `cell`, `core`, etc.  We'll go through each of these
 cases below.
 
-### `$noun` and `$void`
+## `$noun` and `$void`
 
 `$noun` is the set of all nouns.  `$void` is the set of no nouns.
 
-### `{$cell p/span q/span}`
+## `{$cell p/span q/span}`
 
 `{$cell p/span q/span}` is the set of all cells with head `p` and
 tail `q`.
 
-### `{$fork p/(set span)}
+## `{$fork p/(set span)}
 
 `{$fork p/(set span)}` is the union of all spans in the set `p`.
 
-### `{$hold p/span q/twig}`
+## `{$hold p/span q/twig}`
 
 A `$hold` span, with span `p` and twig `q`, is a lazy reference
 to the span of `(mint p q)`.  In English it means: "the type of
 the product when we compile `q` against subject `p`.
 
-This is "manual laziness."  Hoon is a strict language, so we have
-to express 
-
-### `{$face p/term q/span}
+## `{$face p/term q/span}
 
 A `{$face p/term q/span}` wraps the label `p` around the span
 `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which
@@ -99,7 +107,7 @@ first character must be lowercase.
 See the [twig chapter](twig) for how labels are resolved.  It's
 nontrivial.
 
-### `{%atom p/term q/(unit atom))}
+## `{%atom p/term q/(unit atom))}
 
 An `$atom` is an atom, with two twists.  `q` is a `unit`, Hoon's
 equivalent of a nullable pointer or a Haskell `Maybe`.  If `q`
@@ -123,7 +131,7 @@ statically, by casting through the empty aura `@`.  Hoon is not
 dependently typed and can't statically enforce data constraints
 (for example, it can't enforce that a `@tas` is really a symbol).
 
-### `{$core p/span q/(map term span)}
+## `{$core p/span q/(map term span)}
 
 A `$core` is a code-data cell.  The data (or *payload*) is the
 tail; the code (or *battery*) is the head.  `p`, a span, is the

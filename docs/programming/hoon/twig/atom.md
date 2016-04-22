@@ -1,6 +1,5 @@
 ---
-sort: 1
-next: true
+sort: 2
 ---
 
 # Atoms, constants, quasi-constants

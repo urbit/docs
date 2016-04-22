@@ -16,7 +16,7 @@ ones, which mean almost the same things.  But why?
 
 ## Motivation
 
-Hoon has no close relatives.  The normal jargon of programming
+Hoon has no close relatives, and the normal jargon of programming
 maps poorly onto its semantics.  For example, although Hoon is a
 typed language, the term "type" is not formally defined in Hoon.
 "Type" is a great word, but Hoon has three quite separate
@@ -64,12 +64,12 @@ scheme which maps an atom to a subtree.  The whole noun is slot
 
 ### `nock` (interpreter)
 
-Hoon compiles itself to the [Nock](../nock) VM.  Nock is a
+Hoon compiles itself to the [Nock](nock) VM.  Nock is a
 Turing-complete, non-lambda combinator function.  The function
 takes a cell `{subject formula}`, and produces a noun `product`.
 
 To program in Hoon, this is all you need to know about Nock.  But
-it's still fun and useful to [learn more](../nock).
+it's still fun and useful to [learn more](nock).
 
 ## Compilation concepts
 
@@ -80,21 +80,6 @@ cell `{span nock}`, where a `span` is a type, a `twig` is a compiled
 expression (AST), and a `nock` is a Nock formula.  `mint` accepts
 a subject type and a source expression; it produces a product type
 and an executable formula.
-
-Calculating the output type from the input type and the source
-code is called "type inference." If you've used another typed
-functional language, like Haskell, Hoon's type inference does the
-same job but with less intelligence.
-
-Haskell infers backward and forward; Hoon only infers forward.
-Hoon can't figure out the type of a noun from how you use it,
-only from how you make it.  Hoon can infer tail recursion, but
-not head recursion.
-
-Low-powered type inference means you need more type annotations,
-which makes your program more readable anyway.  Also, the dumber
-the compiler, the easier it is for a dumb human to understand
-what the compiler is thinking.
 
 ### `twig` (expression)
 
@@ -202,7 +187,8 @@ arm `foo`.  If it finds a face, the product is a *leg*, or
 subtree of the subject.  If it finds a core, it computes the arm
 formula with that core as the subject.
 
-A limb can also be a slot (direct tree address), like `+15`.
+A limb can also be a slot (tree address), like `+15`, which 
+takes a leg directly.
 
 ### `wing` (limb path)
 

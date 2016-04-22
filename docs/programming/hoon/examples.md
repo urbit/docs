@@ -1,7 +1,6 @@
 ---
-sort: 9
+sort: 8
 title: Examples
-next: true
 ---
 
 # Examples

@@ -1,8 +1,9 @@
 ---
-sort: 11
-title: Library
+sort: 12
+title: Standard Library
 ---
 
-# Library
+Library
+========
 
 <list dataPreview="true" titlesOnly="true"></list>

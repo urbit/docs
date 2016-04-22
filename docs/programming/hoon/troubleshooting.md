@@ -1,7 +1,6 @@
 ---
-sort: 8
+sort: 9
 title: Troubleshooting
-next: true
 ---
 
 # Troubleshooting
