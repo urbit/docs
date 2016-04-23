@@ -1,10 +1,10 @@
 ---
 sort: 1
 next: true
-title: Interpreter
+title: Definition
 ---
 
-# Interpreter: `nock`
+# Definition
 
 The Nock VM is a Turing-complete function that maps a cell
 `{subject formula}` to a noun `product`, where `subject` is the
@@ -128,7 +128,7 @@ true and `1` is false.
 `[8 b c]` produces the product of formula `c`, against
 a subject whose head is the product of formula `b` with the
 original subject, and whose tail is the original subject.  (Think
-of `8` as a ``variable declaration'' or ``stack push.'')
+of `8` as a "variable declaration" or "stack push.")
 
 `[9 b c]` computes the product of formula `c` with the current
 subject; from that product `d` it extracts a formula `e` at tree

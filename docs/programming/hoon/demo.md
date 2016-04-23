@@ -19,11 +19,11 @@ line is commented with its number:
 :cons                            ::  7
   :if  =(0 (mod count 15))       ::  8
     "FizzBuzz"                   ::  9
-  :if  =(0 (mod count 5))        ::  10 
+  :if  =(0 (mod count 5))        ::  10
     "Fizz"                       ::  11
   :if  =(0 (mod count 3))        ::  12
     "Buzz"                       ::  13
-  (text :wrap(count))            ::  14
+  (pave :wrap(count))            ::  14
 :moar(count (add 1 count))       ::  15
 ```
 

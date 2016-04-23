@@ -27,7 +27,7 @@ and they are intended to form a sort of primer to Hoon.
         "Fizz"
       ?:  =(0 (mod count 3))
         "Buzz"
-      (text !>(count))
+      (pave !>(count))
     $(count (add 1 count))
     ```
 

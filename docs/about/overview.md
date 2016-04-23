@@ -5,7 +5,7 @@ title: System overview
 navhome: /main
 ---
 
-# System Overview
+# System overview
 
 <div class="row"><div class="col-md-8">
 
@@ -31,7 +31,9 @@ Instead, the top-level event function defines an I/O protocol.
 It maps an input event and the current state to a list of output
 actions and the subsequent state.  In Hoon:
 
-    $+([event state] [(list action) state])
+```
+$-([event state] [(list action) state])
+```
 
 ### Nock
 

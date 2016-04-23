@@ -19,10 +19,9 @@ ones, which mean almost the same things.  But why?
 Hoon has no close relatives.  The normal jargon of programming
 maps poorly onto its semantics.  For example, although Hoon is a
 typed language, the term "type" is not formally defined in Hoon.
-"Type" is a great word, but Hoon has three quite separate
-concepts which could comfortably claim it.  We say "type" all the
-time; we mean `span`, or `mold`, or `mark`, or possibly all
-three.
+"Type" is a great word, but Hoon has three separate concepts
+which could comfortably claim it.  We say "type" all the time; we
+mean `span`, or `mold`, or `mark`, or possibly all three.
 
 Other common programming concepts used only informally in Hoon
 are "function," "object," "event," "expression," "variable,"
@@ -30,17 +29,21 @@ are "function," "object," "event," "expression," "variable,"
 more.  We do use these words informally, but we're always making 
 an analogy whose precision depends on context.
 
-## Overview
+Hoon has concepts *like* all these abstractions, but they remain
+*false cognates*.  The closer an inexact cognate, the more
+unsettling it feels when the abstractions don't match.  Learning
+a few new words is a small price for avoiding this pain point.
 
-This document is a quick overview of Hoon, structured as a
-glossary of a few major concepts: `noun` (data), `nock`
-(interpreter), `mint` (compiler), `span` (type), `twig`
-(expression), `gate` (function), `mold` (constructor), `core`
-(object), `mark` (protocol).
+## Concepts
+
+A few major Hoon concepts: `noun` (data), `nock` (interpreter),
+`mint` (compiler), `span` (type), `twig` (expression), `gate`
+(function), `mold` (constructor), `core` (object), `mark`
+(protocol).
 
 ### `noun` (data value)
 
-A value in Hoon is called a [`noun`](noun).  A noun is either a
+A value in Hoon is called a `noun`.  A noun is either a
 unsigned integer of any size (`atom`), or an ordered pair of any
 two nouns (`cell`).  Nouns are like Lisp S-expressions, but
 simpler (Lisp atoms effectively have dynamic type bits).
@@ -62,14 +65,19 @@ One common operation on nouns is `slot`, a tree addressing
 scheme which maps an atom to a subtree.  The whole noun is slot
 `1`; the left child of `n` is `2n`, the right child `2n+1`. 
 
+Nothing in Nock, Hoon or Urbit can create cycles in a noun or
+detect pointer equivalence.  Nouns are generally implemented
+with reference counting, and have a lazy short Merkle hash to
+help with equality testing and associative containers.
+
 ### `nock` (interpreter)
 
-Hoon compiles itself to the [Nock](../nock) VM.  Nock is a
+Hoon compiles itself to the [Nock](../../nock) VM.  Nock is a
 Turing-complete, non-lambda combinator function.  The function
 takes a cell `{subject formula}`, and produces a noun `product`.
 
 To program in Hoon, this is all you need to know about Nock.  But
-it's still fun and useful to [learn more](../nock).
+it's still bfun and useful to [learn more](../../nock).
 
 ## Compilation concepts
 
