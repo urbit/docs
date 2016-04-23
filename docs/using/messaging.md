@@ -67,7 +67,7 @@ Last, let's create a channel we can invite some friends to:
 
     ~your-urbit:talk> ;create channel %my-channel 'some description'
 
-Not you can your friends to `;join ~your-urbit/my-channel`.
+Now you can your friends to `;join ~your-urbit/my-channel`.
 
 ## Manual
 
