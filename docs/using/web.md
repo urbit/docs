@@ -11,7 +11,9 @@ title: Web
 
 Your Urbit runs its own webserver, `%eyre`, that handles all things HTTP.  Here we'll cover the features of `%eyre` that most resemble a traditional web server.
 
-By default `%eyre` uses Tree, which is sort of like a combination of Jekyll or Kirby and Finder on OSX.  Tree is a simple ui for browsing the contents of the filesystem, statically publishing a blog or any kind of content and for running single-page apps.  
+By default `%eyre` uses Tree, which is sort of like a combination of [Jekyll](https://jekyllrb.com/) or [Kirby](https://getkirby.com/) and Finder on OSX.  Tree is a simple ui for browsing the contents of the filesystem, statically publishing a blog or any kind of content and for running single-page apps.  
+
+Tree was built primarily to display both our documentation and the contents of `urbit.org`.  We provide a few simple examples [here](#-examples) of how to publish using Tree.  If you're interested in doing anything complex it's worth checking out the [docs source](https://github.com/urbit/docs) and the [urbit.org](https://github.com/urbit/urbit.org) source.
 
 We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its own repo [here](https://github.com/urbit/tree).
 
@@ -29,7 +31,7 @@ To switch the desk you're serving from:
     |serve %sandbox
 
 To host a file on the web try putting the following in `/home/web/test.md` (from Unix):
-    
+
     # Hello
 
     This is a simple markdown file.
@@ -42,7 +44,7 @@ Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
     This is a simple markdown file.
 
-    <div><list / />
+    <div><list /><div/>
 
 To view your file as raw `md`:
 
@@ -51,6 +53,12 @@ To view your file as raw `md`:
 To view your file as raw `html`:
 
     http://localhost:8080/test.html
+
+## Examples
+
+We've created a few simple examples of how to get set up publishing content from your Urbit.  Feel free to ask questions in the comments.
+
+<list/>
 
 ## Manual
 
@@ -64,19 +72,19 @@ Switch to the `%sandbox` desk:
 
 Let's quickly step through the default contents of `web/`:
 
-`404.hoon` - The default 404 page.
-`dojo.hoon` - Page body that loads the `dojo` React module.
-`lib/css/bootstrap.css` - The Urbit-flavored bootstrap
-`lib/css/codemirror.css` - Syntax highlighting
-`lib/css/fonts.css` - The Urbit custom fonts
-`lib/js/hoon.js` - Hoon syntax highlighting
-`lib/js/sole.js` - `dojo` operational transformation JS
-`lib/js/urb.js` - Base Urbit JS library.  Handles AJAX and polling.
-`static.md` - Sample static file
-`talk/` - Talk compiled JS / CSS
-`talk.hoon` - Page body that loads the `dojo` React module.
-`tree/` - Tree compiled JS / CSS
-`tree.hoon` - Page body that loads the `tree` React module.
+- `404.hoon` - The default 404 page.
+- `dojo.hoon` - Page body that loads the `dojo` React module.
+- `lib/css/bootstrap.css` - The Urbit-flavored bootstrap
+- `lib/css/codemirror.css` - Syntax highlighting
+- `lib/css/fonts.css` - The Urbit custom fonts
+- `lib/js/hoon.js` - Hoon syntax highlighting
+- `lib/js/sole.js` - `dojo` operational transformation JS
+- `lib/js/urb.js` - Base Urbit JS library.  Handles AJAX and polling.
+- `static.md` - Sample static file
+- `talk/` - Talk compiled JS / CSS
+- `talk.hoon` - Page body that loads the `dojo` React module.
+- `tree/` - Tree compiled JS / CSS
+- `tree.hoon` - Page body that loads the `tree` React module.
 
 ## Tree
 
@@ -87,6 +95,10 @@ Tree is a simple static publishing tool and the basic UI for browsing the filesy
 In the browser Tree is a [React](https://facebook.github.io/react/) / [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) app that uses a slightly modifed version of [Bootstrap](http://getbootstrap.com/).  On your Urbit Tree is a renderer that translates data in `%clay`, our filesystem, into JSON / JSX that can be read by the client.  
 
 Your Urbit comes with a pre-built copy of the tree (as a single `.js` file).  If you're interested in helping to develop tree or learning about how it works, it has its own GitHub repo [here](https://github.com/urbit/tree).  We have our own fork of Bootstrap, which lives [here](https://github.com/urbit/bootstrap).
+
+## `/web/pages`
+
+To render content without the Tree put it in `/web/pages`.  Files in this directory aren't wrapped by Tree.  For some examples check out [`web/` in the examples repo](https://github.com/urbit/examples/tree/master/web).
 
 ## Publishing files
 
@@ -112,7 +124,7 @@ and appears at the top of a file.  YAML values can't contain newlines but can co
 
 String.  Example: `title: Tree manual`.
 
-This sets the title in the nav or in lists as distinct from the filename. 
+This sets the title in the nav or in lists as distinct from the filename.
 
 ### `next`
 
@@ -150,7 +162,7 @@ For those familiar with React / Flux each JSX tag corresponds to a component in 
 
 Example: `<list src="/posts" titlesOnly="true" />`
 
-Creates a list of children at a path.  Defaults to the current path. 
+Creates a list of children at a path.  Defaults to the current path.
 
 Optional properties:
 
