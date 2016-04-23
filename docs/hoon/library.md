@@ -1,8 +1,8 @@
 ---
-sort: 11
-title: Std Library reference
+sort: 10
+title: Standard library
 ---
 
-# Library reference
+# Standard library
 
 <list dataPreview="true" titlesOnly="true"></list>

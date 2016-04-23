@@ -12,6 +12,18 @@ is always `[1 constant]`.
 (Some of the "constant" syntax below can interpolate dynamic
 twigs.  When it does, it obviously isn't constant at all.)
 
+## Auras
+
+Recall the `$atom` span, `{$atom p/aura q/(unit @)}`.
+
+Each atom constant syntax implies an aura, which is just a
+textual symbol.  The aura is used indiscriminately to convey
+physical units, semantic interpretations, parsing syntax, and/or
+printing syntax.  It's soft type and can be manually overridden.
+
+We generally write an aura in its irregular mold syntax, such as 
+`@ud`.  The syntax for the 
+
 ## Twigs
 
 ```
@@ -19,8 +31,8 @@ twigs.  When it does, it obviously isn't constant at all.)
 ++  twig
   {$rock p/@tas q/@}
   {$sand p/@tas q/@}
-  {$knit p/(list $@(@ {$~ p/twig}))}
-  {$path p/(list (each @tas twig))
+  {$knit p/(list $@(@ {$~ p/seed}))}
+  {$path p/(list (each @tas seed))
 --
 ```
 
@@ -106,5 +118,3 @@ A path can be dynamically interpolated with `[]`:
 ```
 
 equals `/foo/bar/baz`.
-
-

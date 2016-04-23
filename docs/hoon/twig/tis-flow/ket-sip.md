@@ -2,7 +2,7 @@
 sort: 10
 ---
 
-# `:sip, =^, "tisket", {$sip p/taco q/wing r/twig s/twig}`
+# `:sip, =^, "tisket", {$sip p/taco q/wing r/seed s/seed}`
 
 Pin the head of a pair; mutate a leg with the tail.
 

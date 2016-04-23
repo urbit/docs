@@ -2,7 +2,7 @@
 sort: 4
 ---
 
-# `:same, .=, "dottis", {$same p/twig q/twig}`
+# `:same, .=, "dottis", {$same p/seed q/seed}`
 
 Test for equality with Nock `5`.
 

@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# `:gate, |=, "bartis", {$gate p/moss q/twig}`
+# `:gate, |=, "bartis", {$gate p/moss q/seed}`
 
 Form a gate, a dry one-armed core with payload `{sample context}`.
 

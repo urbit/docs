@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# `:open, %~, "censig", {$cnsg p/wing q/twig r/twig}
+# `:open, %~, "censig", {$cnsg p/wing q/seed r/seed}
 
 ## Expands to
 

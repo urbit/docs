@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# `:cont, :+, "collus", {$cont p/twig q/twig r/twig}`
+# `:cont, :+, "collus", {$cont p/seed q/seed r/seed}`
 
 Construct a triple (3-tuple).
 

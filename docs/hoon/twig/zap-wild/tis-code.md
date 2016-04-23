@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# `:code != "zaptis" {$code p/twig}`
+# `:code != "zaptis" {$code p/seed}`
 
 Make the Nock formula for a twig.
 

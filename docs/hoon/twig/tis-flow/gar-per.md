@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# `:per, =>, "tisgar", {$per p/twig q/twig}`
+# `:per, =>, "tisgar", {$per p/seed q/seed}`
 
 Compose two twigs.
 

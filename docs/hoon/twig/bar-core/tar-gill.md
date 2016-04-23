@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# `:gill, |*, "bartar", {$gill p/moss q/twig}`
+# `:gill, |*, "bartar", {$gill p/moss q/seed}`
 
 Form a gill, a wet one-armed core with payload `{sample context}`.
 

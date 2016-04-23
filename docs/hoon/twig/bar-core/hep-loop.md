@@ -2,7 +2,7 @@
 sort: 4
 ---
 
-# `:loop, |-, "barhep", {$loop p/twig}`
+# `:loop, |-, "barhep", {$loop p/seed}`
 
 Form a trap (a core with one dry arm `$`) and kick it.
 

@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# :thin ~< "siggal" {$thin p/$@(term {p/term q/twig}) q/twig}
+# :thin ~< "siggal" {$thin p/$@(term {p/term q/seed}) q/seed}
 
 Raw hint, applied to the result of computation.
 

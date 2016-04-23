@@ -2,7 +2,7 @@
 sort: 7
 ---
 
-# `:rev, =;, "tissem", {$rev p/taco q/twig r/twig}`
+# `:rev, =;, "tissem", {$rev p/taco q/seed r/seed}`
 
 Combine a named and/or typed noun with the subject, inverted.
 

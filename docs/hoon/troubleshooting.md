@@ -1,5 +1,5 @@
 ---
-sort: 8
+sort: 12
 title: Troubleshooting
 next: true
 ---

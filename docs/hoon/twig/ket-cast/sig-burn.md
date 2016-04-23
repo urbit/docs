@@ -1,4 +1,4 @@
-# `:burn`, `^~`, "ketsig", `{$burn p/twig}`
+# `:burn`, `^~`, "ketsig", `{$burn p/seed}`
 
 Try executing `p` at compile time.
 

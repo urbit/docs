@@ -2,7 +2,7 @@
 sort: 5
 ---
 
-# `:hint ~> "siggar", {$hint p/$@(term {p/term q/twig}) q/twig}`
+# `:hint ~> "siggar", {$hint p/$@(term {p/term q/seed}) q/seed}`
 
 Raw hint, applied before computation.
 

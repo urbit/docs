@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# `:var, =/, "tisfas", {$var p/taco q/twig r/twig}`
+# `:var, =/, "tisfas", {$var p/taco q/seed r/seed}`
 
 Combine a named and/or typed noun with the subject.
 

@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# `:nock, .*, "dottar", {$nock p/twig q/twig}`
+# `:nock, .*, "dottar", {$nock p/seed q/seed}`
 
 Compute the Nock function.
 

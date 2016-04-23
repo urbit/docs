@@ -2,7 +2,7 @@
 sort: 4
 ---
 
-# `:warn ~? "sigwut" `{$warn p/twig q/twig r/twig}`
+# `:warn ~? "sigwut" `{$warn p/seed q/seed r/seed}`
 
 Conditional debugging printf.
 

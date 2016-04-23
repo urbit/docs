@@ -2,7 +2,7 @@
 sort: 4
 ---
 
-# `:need !? "zapwut" {$need p/@ q/twig}`
+# `:need !? "zapwut" {$need p/@ q/seed}`
 
 Restrict Hoon version.
 

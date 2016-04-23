@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# `:lest`, `?.`, "wutdot" `{$lest p/twig q/twig r/twig}`
+# `:lest`, `?.`, "wutdot" `{$lest p/seed q/seed r/seed}`
 
 Branch on a boolean test, inverted.
 

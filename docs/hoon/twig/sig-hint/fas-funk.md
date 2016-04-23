@@ -1,7 +1,7 @@
 ---
 sort: 1
 
-# `:funk ~/ "sigfas" {$funk p/term q/twig}` 
+# `:funk ~/ "sigfas" {$funk p/term q/seed}` 
 
 Jet hint for a gate whose context is a registered core.
 

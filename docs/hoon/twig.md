@@ -69,7 +69,6 @@ this mistake the hard way, but designating subexpressions as
 
 ## Twig categories
 
-Fortunately, the twigs fit neatly into clear categories which
-match their rune prefix.  Read forward by category:
+Most twigs fit into clear categories by meaning and rune prefix:
 
 <div><list/></div>

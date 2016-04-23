@@ -2,7 +2,7 @@
 sort: 2 
 ---
 
-# `:deep, .?, "dotwut", {$deep p/twig}`
+# `:deep, .?, "dotwut", {$deep p/seed}`
 
 Test for cell or atom with Nock `3`.
 

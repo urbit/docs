@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# `:scon, :_, "colcab", {$scon p/twig q/twig}`
+# `:scon, :_, "colcab", {$scon p/seed q/seed}`
 
 Construct a cell, inverted.
 
