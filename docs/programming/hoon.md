@@ -5,6 +5,6 @@ title: Hoon
 
 ## Hoon
 
-Hoon is our programming language
+Hoon is a strict, typed, pure functional language that compiles itself to Nock.
 
 <list src="."></list>

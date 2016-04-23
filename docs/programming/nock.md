@@ -5,6 +5,6 @@ title: Nock
 
 ## Nock
 
-This is our great interpreter.
+Nock is a simple, Turing-complete combinator interpreter.
 
 <list src="."></list>
