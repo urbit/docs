@@ -3,14 +3,12 @@ sort: 3
 next: true
 ---
 
-# Cell construction (`:` runes)
+# Cells, `:` ("col")
 
 The cell twigs, `$cons` and friends, are simple and regular.
 All `:` twigs expand to `$cons`, which makes a pair (just like
 the Lisp `cons` operator).
 
-## Twigs
+## Stems
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

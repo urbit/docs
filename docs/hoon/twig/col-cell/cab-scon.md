@@ -2,21 +2,21 @@
 sort: 6
 ---
 
-# `:scon, :_, "colcab", {$scon p/seed q/seed}`
+# `:_  :scon  "colcab"`
 
-Construct a cell, inverted.
+`{$scon p/seed q/seed}`; construct a cell, inverted.
 
-## Expands to
+### Expands to
 
 ```
 :cons(q p)
 ```
 
-## Syntax
+### Syntax
 
 Regular: *2-fixed*.
 
-## Examples
+### Examples
 
 ```
 ~zod:dojo> :_(1 2)
