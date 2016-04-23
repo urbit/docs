@@ -1,9 +1,11 @@
 ---
-sort: 13
+sort: 11
 next: true
 ---
 
-# Special tools (`!` runes).
+# Random macros (`;` runes)
+
+Miscellaneous useful macros.
 
 ## Twigs
 

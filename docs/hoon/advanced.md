@@ -48,7 +48,7 @@ changed two stems: `$core` and `$face`.  We added polymorphism to
 
 If cores never changed, we wouldn't need polymorphism.  Of
 course, nouns are immutable and never change, but we use them as
-templates to construct a new noun
+templates to construct new nouns around.
 
 Suppose we take a core, a cell `{battery payload}`, and replace
 the payload with a different noun.  Then, we invoke an arm from
@@ -103,8 +103,8 @@ just think about them intuitively.
 Each core has a "metal" `p.q` which defines its variance model.
 A core can be *invariant* (`$gold`), *bivariant* (`$lead`),
 *covariant* (`$zinc`), or *contravariant* (`$iron`).  The default
-is gold; a gold core can be converted to any metal, and any metal
-can be converted to lead.
+is gold; a gold core can be cast or converted to any metal, and
+any metal can be cast or converted to lead.
 
 A gold core `a` has a read-write payload; another core `b` that
 nests within it (ie, can be substituted for it) must be a gold

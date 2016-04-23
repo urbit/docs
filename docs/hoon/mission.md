@@ -7,7 +7,8 @@ title: Mission
 # Mission
 
 Hoon is a strict, typed functional language which compiles itself
-to Nock, a combinator interpreter whose spec fits on a T-shirt.
+to [Nock](../../nock), a combinator interpreter whose spec fits
+on a T-shirt.
 
 Hoon's design goal is to support higher-order typed functional
 programming without category theory, formal logic, or other

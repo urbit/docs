@@ -1,11 +1,10 @@
 ---
 next: true
 sort: 1
-title: System overview
-navhome: /main
+title: Technical overview
 ---
 
-# System overview
+# Technical overview
 
 <div class="row"><div class="col-md-8">
 

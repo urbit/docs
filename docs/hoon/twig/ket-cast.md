@@ -3,7 +3,7 @@ sort: 9
 next: true
 ---
 
-# Type manipulation (`^` runes).
+# Type manipulation (`^` runes)
 
 `$cast`, `$like`, and `$name` let us adjust spans without
 violating type constraints.

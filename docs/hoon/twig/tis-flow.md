@@ -26,6 +26,8 @@ Another way to change the subject is to mutate it.  With the
 instead of reading, *installing* a new value at that leg.  Of
 course, we are creating a copy, not modifying the original.
 
+There are many flow stems, all small variations on these three.
+
 ## Twigs
 
 <list dataPreview="true" className="runes" linkToFragments="true"></list>

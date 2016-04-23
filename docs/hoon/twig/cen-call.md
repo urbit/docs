@@ -3,7 +3,7 @@ sort: 6
 next: true
 ---
 
-# Full make (`%` runes)
+# Make and call (`%` runes)
 
 We've already covered the irregular-only twigs `$wing` and
 `$limb`.  These are simple forms of the *invocation* family of
