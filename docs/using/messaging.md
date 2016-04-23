@@ -59,9 +59,15 @@ To set your audience back to `/urbit-meta`:
 
     ~your-urbit:talk> ;~doznec/urbit-meta
 
-There are two ways of using `:talk`: from the CLI or through a web ui available at `http://your-urbit.urbit.org/talk` (or `http://localhost:8080/talk`). 
+There are two ways of using `:talk`: from the CLI or through a web ui available at `http://your-urbit.urbit.org/talk` (or `http://localhost:8080/talk`).
 
 The web ui ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).
+
+Last, let's create a channel we can invite some friends to:
+
+    ~your-urbit:talk> ;create channel %my-channel 'some description'
+
+Not you can your friends to `;join ~your-urbit/my-channel`.
 
 ## Manual
 
@@ -87,7 +93,7 @@ will be posted in multiple lines.
 
 #### URLs
 
-A URL is any valid URL. 
+A URL is any valid URL.
 
 ### Commands
 
@@ -111,7 +117,7 @@ stations you're subscribed to.
 ### Station Glyphs
 
 Glyphs are assigned by station hash out of the following list
-    
+
     > = + - } ) , . " ' ^ $ % & @
 
 Alphanumeric characters and `|#;:*~_` are reserved; all others (the above lists, and `\/!?({<`) can be manually assigned.
@@ -138,11 +144,11 @@ The audience you're sending to is always shown in your prompt.  If there's a gly
 
 Here we're talking to the station bound to `=`:
 
-    ~your-urbit:talk= 
+    ~your-urbit:talk=
 
 Here we're talking directly to `~dannum-mitryl`:
 
-    ~your-urbit:talk(~dannum-mitryl) 
+    ~your-urbit:talk(~dannum-mitryl)
 
 #### Configuration
 
