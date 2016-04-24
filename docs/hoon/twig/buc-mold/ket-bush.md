@@ -1,5 +1,6 @@
 ---
-sort: 5
+sort: 6
+next: true
 ---
 
 # `:bush, $^, "bucket", {$bush p/moss q/moss}`

@@ -1,5 +1,6 @@
 ---
-sort: 6
+sort: 5
+next: true
 ---
 
 # `:claw, $@, "bucpat", {$claw p/moss q/moss}`

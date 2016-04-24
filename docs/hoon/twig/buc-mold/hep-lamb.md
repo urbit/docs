@@ -1,5 +1,6 @@
 ---
-sort: 4
+sort: 8
+next: true
 ---
 
 # `:lamb, $-, "buchep", {$lamb p/moss q/moss}`
@@ -21,9 +22,9 @@ Regular: *2-fixed*.
 
 ## Discussion
 
-Since a lamb is a shoe, it is not useful for normalizing, just
-for its signature.  In particular, the existence of lambs does
-let us send gates or other cores over the network!
+Since a lamb (ie, lambda), is a shoe, it is not useful for normalizing, just
+for typechecking.  In particular, the existence of lambs does *not* let us send
+gates or other cores over the network!
 
 ## Examples
 

@@ -96,7 +96,7 @@ A `{$face p/term q/span}` wraps the label `p` around the span
 obeys symbol rules: lowercase and digit only, infix hyphen,
 first character must be lowercase.
 
-See the [twig chapter](twig) for how labels are resolved.  It's
+See [`:limb`](twig/limb/limb) for how labels are resolved.  It's
 nontrivial.
 
 ### `{%atom p/term q/(unit atom))}
@@ -110,13 +110,51 @@ its only legal value is the constant `x`.
 `p` in the atom is a terminal used as an *aura*, or soft atom
 type.  Auras are a lightweight, advisory representation of the
 units, semantics, and/or syntax of an atom.  An aura is an atomic
-string; Two auras are compatible if one is a prefix of the other.
+string; two auras are compatible if one is a prefix of the other.
 
 For instance, `@t` means UTF-8 text (LSB low), `@ta` means ASCII
 text, and `@tas` means an ASCII symbol.  `@u` means an unsigned
 integer, `@ud` an unsigned decimal, `@ux` an unsigned
 hexadecimal.  You can use a `@ud` atom as a `@u` or vice versa,
 but not as a `@tas`.
+
+Auras can also end with an optional, capitalized suffix, which
+defines the atom's bitwidth as a log starting from `A`.  For
+example, `@udD` is an unsigned decimal byte; `@uxG` is an
+unsigned 64-bit hexadecimal.
+
+You can make up your own auras and are encouraged to do so, but
+here are some conventions bound to constant syntax:
+
+```
+@c              UTF-32 codepoint
+@d              date
+  @da           absolute date
+  @dr           relative date (ie, timespan)
+@f              yes or no (inverse boolean)
+@n              nil
+@p              phonemic base (plot)
+@r              IEEE floating-point
+  @rd           double precision  (64 bits)
+  @rh           half precision (16 bits)
+  @rq           quad precision (128 bits)
+  @rs           single precision (32 bits)
+@s              signed integer, sign bit low
+  @sb           signed binary
+  @sd           signed decimal
+  @sv           signed base32
+  @sw           signed base64
+  @sx           signed hexadecimal
+@t              UTF-8 text (cord)
+  @ta           ASCII text (span)
+    @tas        ASCII symbol (term)
+@u              unsigned integer
+  @ub           unsigned binary
+  @ud           unsigned decimal
+  @uv           unsigned base32
+  @uw           unsigned base64
+  @ux           unsigned hexadecimal
+```
 
 Auras are truly soft; you can turn any aura into any other,
 statically, by casting through the empty aura `@`.  Hoon is not
@@ -141,10 +179,10 @@ like a method table, but not every arm is a "method" in the OO
 sense.  An arm is a computed attribute.  A method is an arm whose
 product is a Hoon function (or *gate*).
 
-A gate is a core with one arm, whose name is the empty symbol
-`$`, and a payload whose shape is `{sample context}`.  The
-*context* is the subject in which the gate was defined; the
-*sample* is the argument.
+A gate (function, lambda, etc) is a core with one arm, whose name
+is the empty symbol `$`, and a payload whose shape is `{sample
+context}`.  The *context* is the subject in which the gate was
+defined; the *sample* is the argument.
 
 To call this function on an argument `x`, replace the sample (at
 tree address `6` in the core) with `x`, then compute the arm.

@@ -6,15 +6,11 @@ title: Technical overview
 
 # Technical overview
 
-<div class="row"><div class="col-md-8">
-
 Urbit is a clean-slate system software stack defined as a
 deterministic computer.  An encrypted P2P network, `%ames`, runs
 on a functional operating system, Arvo, written in a strict,
 typed functional language, Hoon, which compiles itself to a
 combinator interpreter, Nock, whose spec gzips to 340 bytes.
-
-</div></div>
 
 ## Architectural overview
 
@@ -69,17 +65,17 @@ control system (`%clay`), a web client/server (`%eyre`), a
 functional build system (`%ford`), and an application engine
 `(%gall)`.
 
-### `%ames`
+### Ames
 
-`%ames`, the Urbit network, is an encrypted P2P protocol over
-UDP.  Its address space is semi-decentralized; 64-bit addresses
-are hierarchically distributed, 128-bit addresses are
-self-created.  Addresses (or *plots*) are rendered in a phonemic
-syntax for memorability.  The scarcity of short plots helps
-control spam and other Sybil attacks.  The short plot hierarchy
-is also reused as a supernode routing system for NAT traversal.
+Ames, the Urbit network, is an encrypted P2P protocol over UDP.
+Its address space is semi-decentralized; 64-bit addresses are
+hierarchically distributed, 128-bit addresses are self-created.
+Addresses (or *plots*) are rendered in a phonemic syntax for
+memorability.  The scarcity of short plots helps control spam and
+other Sybil attacks.  The short plot hierarchy is also reused as
+a supernode routing system for NAT traversal.
 
-### Apps
+### Dojo and talk
 
 Urbit ships with two default applications: a REPL or shell
 `:dojo`, and a distributed user-level message-bus `:talk`.

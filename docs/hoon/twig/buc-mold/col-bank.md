@@ -1,5 +1,6 @@
 ---
-sort: 3
+sort: 2
+next: true
 ---
 
 # `:bank, $:, "buccol", {$bank p/(list moss)}`

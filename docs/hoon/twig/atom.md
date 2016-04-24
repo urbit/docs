@@ -3,11 +3,14 @@ sort: 1
 next: true
 ---
 
-# Atoms, constants, quasi-constants
+# Atoms and strings
 
-A constant is a twig whose product does not depend on the
-subject.  If you know Nock, the formula produced is always
-is always `[1 constant]`.
+The simplest expressions in every language are constants:
+atoms and strings.  This section 
+
+Some of these constructs aren't quite constants, li
+ 
+## Stems
 
 (Some of the "constant" syntax below can interpolate dynamic
 twigs.  When it does, it obviously isn't constant at all.)
@@ -16,12 +19,16 @@ twigs.  When it does, it obviously isn't constant at all.)
 
 Recall the `$atom` span, `{$atom p/aura q/(unit @)}`.
 
-Each atom constant syntax implies an aura, which is just a
+Each atom constant syntax implies an `aura`, which is just a
 textual symbol.  The aura is used indiscriminately to convey
 physical units, semantic interpretations, parsing syntax, and/or
 printing syntax.  It's soft type and can be manually overridden.
 
-We generally write an aura in its irregular mold syntax, such as 
+To write an aura, we generally borrow the atomic mold syntax,
+such as `@ud` for the unsigned decimal.
+We   write an aura 
+
+in its irregular mold syntax, such as 
 `@ud`.  The syntax for the 
 
 ## Twigs

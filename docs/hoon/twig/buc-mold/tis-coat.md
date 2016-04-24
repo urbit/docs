@@ -1,5 +1,6 @@
 ---
-sort: 7
+sort: 3
+next: true
 ---
 
 # `:coat, $=, "buctis", {$coat p/@tas q/moss}`

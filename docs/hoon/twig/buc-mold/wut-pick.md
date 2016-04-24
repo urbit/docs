@@ -1,5 +1,6 @@
 ---
-sort: 8
+sort: 7
+next: true
 ---
 
 # `:pick, $?, "bucwut", {$? p/(list moss)}`

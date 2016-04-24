@@ -1,6 +1,5 @@
 ---
-sort: 1
-preview: Form a mold
+sort: 9
 ---
 
 # `:shoe $_ "buccab" {$shoe p/seed}`

@@ -1,5 +1,6 @@
 ---
-sort: 2
+sort: 4
+next: true
 ---
 
 # `:book, $%, "buctis", {$book p/(list {{aura @} moss})}`
