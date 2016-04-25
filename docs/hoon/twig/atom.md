@@ -1,6 +1,6 @@
 ---
 sort: 1
-next: true
+
 ---
 
 # Atoms and strings

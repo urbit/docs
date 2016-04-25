@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# `:burn  ^~  "ketsig" 
+# `:burn  ^~  "ketsig"`
 
 `{$burn p/seed}`: fold constant at compile time.
 

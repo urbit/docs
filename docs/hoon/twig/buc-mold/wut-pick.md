@@ -1,9 +1,9 @@
 ---
 sort: 7
-next: true
+
 ---
 
-# `:pick  $?  "bucwut" 
+# `:pick  $?  "bucwut"`
 
 `{$pick p/(list moss)}`: mold which normalizes a general union.
 

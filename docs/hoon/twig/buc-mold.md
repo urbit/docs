@@ -1,9 +1,9 @@
 ---
 sort: 7
-next: true
+
 ---
 
-# Molds (`$` runes)
+# Mold, `$` ("buc")
 
 A *mold* is a `gate` (function) that helps us build simple and
 rigorous data structures.  (In fact, since "mold" sounds nasty,

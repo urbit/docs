@@ -1,9 +1,8 @@
 ---
 sort: 8
-next: true
 ---
 
-# Tests (`?` runes)
+# Test, `?` ("wut")
  
 Hoon has the usual branches and logical tests.  For pattern
 matching, it also has a `$fits` twig that tests whether a value
@@ -28,6 +27,4 @@ side is taken), it fails with an error.
 
 ## Twigs
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

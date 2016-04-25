@@ -1,14 +1,12 @@
 ---
 sort: 11
-next: true
+
 ---
 
-# Random macros (`;` runes)
+# Make, `;` ("sem")
 
 Miscellaneous useful macros.
 
 ## Twigs
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

@@ -1,9 +1,9 @@
 ---
 sort: 4
-next: true
+
 ---
 
-# Subject flow (`=` runes)
+# Flow, `=` ("tis")
 
 Flow twigs change the subject.  (Or more precisely, a flow twig
 compiles at least one of its subtwigs with a different subject.)
@@ -30,6 +30,4 @@ There are many flow stems, all small variations on these three.
 
 ## Twigs
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

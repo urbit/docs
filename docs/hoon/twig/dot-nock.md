@@ -1,14 +1,12 @@
 ---
 sort: 10
-next: true
+
 ---
 
-# Intrinsics (`.` runes)
+# Nock, `.` (dot)
 
 Anything Nock can do, Hoon can do also.
 
 ## Twigs
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

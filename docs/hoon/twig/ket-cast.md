@@ -1,9 +1,9 @@
 ---
 sort: 9
-next: true
+
 ---
 
-# Type manipulation (`^` runes)
+# Cast, `^` ("ket")
 
 `$cast`, `$like`, and `$name` let us adjust spans without
 violating type constraints.
@@ -13,6 +13,4 @@ it never allows invalid nests, it sometimes rejects valid nests.
 
 ## Twigs
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

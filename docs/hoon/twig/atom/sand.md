@@ -1,9 +1,9 @@
 ---
 sort: 1
-next: true
+
 ---
 
-# `:sand``
+# `:sand`
 
 `{$sand p/term q/@}`; a constant, warm atom.
 

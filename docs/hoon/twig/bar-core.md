@@ -1,9 +1,9 @@
 ---
 sort: 5
-next: true
+
 ---
 
-# Cores (`|` runes)
+# Core, `|` ("bar")
 
 Core twigs are flow twigs.  The compiler essentially pins a Nock
 formula, or battery of formulas, to the subject.

@@ -2,7 +2,7 @@
 sort: 4
 ---
 
-# `:lead  ^?  "ketwut" 
+# `:lead  ^?  "ketwut"`
 
 `{$lead p/seed}`: convert any core to a lead core (bivariant).
 

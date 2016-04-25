@@ -7,13 +7,12 @@ navhome: /main
 
 # Install
 
-<div class="row"><div class="col-md-8">
+Urbit is designed to run on any Unix box with an internet connection.  Debian
+(jessie), OS X, FreeBSD and Fedora all work well.
 
-Urbit is designed to run on any Unix box with an internet connection.  Debian, OS X, FreeBSD and Fedora all work well.
-
-Urbit is alpha software.  It’s not yet completely stable, its crypto hasn’t been audited and there are plenty of rough edges.  Urbit is lots of fun to play with, but not quite ready for your important or sensitive data.  Just so you know what you're getting into.
-
-</div></div>
+Urbit is alpha software.  It’s not yet completely stable, its crypto hasn’t
+been audited, and there are plenty of rough edges.  Urbit is lots of fun to play
+with, but not quite ready for your important or sensitive data.
 
 ## Build from source
 
@@ -80,4 +79,4 @@ Once your dependencies are installed the rest is easy:
     make
     curl -o urbit.pill https://bootstrap.urbit.org/latest.pill
 
-After running `make` your Urbit executable lives at `bin/urbit`.  The `.pill` file is a compiled binary of Arvo that Urbit uses to bootstrap itself.
+After running `make`, your Urbit executable lives at `bin/urbit`.  The `.pill` file is a compiled binary of Arvo that Urbit uses to bootstrap itself.

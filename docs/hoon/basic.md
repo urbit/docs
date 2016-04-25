@@ -10,11 +10,11 @@ A `span` is a set of nouns and an interpretation of these nouns.
 Officially, we don't use the word "type" in Hoon.  But if we had 
 to say "type," it would mean `span`.
 
-## Span and mold
+## Type, span and mold
 
 There is no Hoon syntax for a span.  The programmer never defines
 a span explicitly.  It is always produced as the inferred range
-of an expression (twig).
+of an expression (`twig`).
 
 But we still need simple, well-formed expressions that produce
 regular and well-shaped ranges, for three reasons.
@@ -37,15 +37,13 @@ definition of a noun.  Don't actually call a mold unless you're
 actually validating untrusted foreign data.  As a beginner,
 hopefully you aren't!
 
-## The `span` mold (simplified)
+## `span`: a set of nouns
 
-Usually in Hoon we define the semantics of a primitive by the
-state the span of all nouns that implement that primitive.  We
-state this span as the icon of a mold.  That mold is produced by
-a kernel arm `span`:
+Below is the mold for `span`.  You haven't seen this syntax before, 
+and we haven't explained it yet; just treat it as pseudocode.
 
-This is a slightly simplified version of `span`.  We'll undo and 
-explain the simplifications below.
+This is a slightly simplified version of `span`.  We undo and explain the
+simplifications in the [advanced types](../advanced) section.
 
 ```
 ++  term  @tas
@@ -61,13 +59,11 @@ explain the simplifications below.
       ==
 ```
 
-This is a syntactically correct Hoon twig, but treat it as
-pseudocode.  If a span is an atom, it's either the atomic string
-`noun` or `void`; if a cell, it's a tuple with one of the heads
-`atom`, `cell`, `core`, etc.  We'll go through each of these
-cases below.
+If a span is an atom, it's either the atomic string `noun` or
+`void`; if a cell, it's a tuple with one of the heads `atom`,
+`cell`, `core`, etc.  We'll go through each of these cases below.
 
-### `$noun` and `$void`
+### `?($noun $void)`
 
 `$noun` is the set of all nouns.  `$void` is the set of no nouns.
 
@@ -76,7 +72,7 @@ cases below.
 `{$cell p/span q/span}` is the set of all cells with head `p` and
 tail `q`.
 
-### `{$fork p/(set span)}
+### `{$fork p/(set span)}`
 
 `{$fork p/(set span)}` is the union of all spans in the set `p`.
 
@@ -89,17 +85,17 @@ the product when we compile `q` against subject `p`.
 This is "manual laziness."  Hoon is a strict language, so we have
 to express 
 
-### `{$face p/term q/span}
+### `{$face p/term q/span}`
 
 A `{$face p/term q/span}` wraps the label `p` around the span
 `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which
 obeys symbol rules: lowercase and digit only, infix hyphen,
 first character must be lowercase.
 
-See [`:limb`](twig/limb/limb) for how labels are resolved.  It's
+See [`:limb`](../twig/limb/limb) for how labels are resolved.  It's
 nontrivial.
 
-### `{%atom p/term q/(unit atom))}
+### `{%atom p/term q/(unit atom))}`
 
 An `$atom` is an atom, with two twists.  `q` is a `unit`, Hoon's
 equivalent of a nullable pointer or a Haskell `Maybe`.  If `q`
@@ -161,7 +157,7 @@ statically, by casting through the empty aura `@`.  Hoon is not
 dependently typed and can't statically enforce data constraints
 (for example, it can't enforce that a `@tas` is really a symbol).
 
-### `{$core p/span q/(map term span)}
+### `{$core p/span q/(map term span)}`
 
 A `$core` is a code-data cell.  The data (or *payload*) is the
 tail; the code (or *battery*) is the head.  `p`, a span, is the

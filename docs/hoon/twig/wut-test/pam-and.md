@@ -2,7 +2,7 @@
 sort: 8
 ---
 
-# `:and  ?&  "wutpam"
+# `:and  ?&  "wutpam"`
 
 `{$and p/(list seed)}`: logical and.
 

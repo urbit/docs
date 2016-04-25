@@ -4,7 +4,7 @@ sort: 12
 
 # `:case  ?-  "wuthep"` 
 
-`{$case p/wing q/(list (pair moss seed))}`  Switch against a 
+`{$case p/wing q/(list (pair moss seed))}`: switch against a 
 union, with no default.
 
 ## Expands to

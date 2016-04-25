@@ -1,6 +1,5 @@
 ---
 sort: 2
-next: true
 ---
 
 # `:wing`
@@ -25,7 +24,7 @@ Irregular: `a.b` finds limb `a` within limb `b` of the subject.
 
 It may be slightly hard to follow the formal definition above.
 
-Intuitively that Hoon wings are written in the opposite order
+Intuitively, Hoon wings are written in the opposite order
 from attribute dot-paths in most languages.  Hoon `a.b.c` is Java
 `c.b.a`; it means "a within b within c."
 

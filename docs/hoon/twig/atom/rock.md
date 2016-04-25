@@ -1,6 +1,6 @@
 ---
 sort: 2
-next: true
+
 ---
 
 # `:rock`

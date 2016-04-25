@@ -1,11 +1,11 @@
 ---
 sort: 1
-next: true
+
 ---
 
 # `:base`
 
-`{$base p/$@(?($noun $cell $bean $null) {$atom p/aura})}`: atom mold
+`{$base p/$@(?($noun $cell $bean $null) {$atom p/aura})}`: trivial molds.
 
 ## Produces
 

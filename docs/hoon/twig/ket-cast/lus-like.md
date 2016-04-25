@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# `:like  ^+  "ketlus" 
+# `:like  ^+  "ketlus"`
 
 `{$like p/seed q/seed}`: typecast by example (seed).
 

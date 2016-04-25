@@ -1,9 +1,9 @@
 ---
 sort: 5
-next: true
+
 ---
 
-# `:claw  $@  "bucpat"
+# `:claw  $@  "bucpat"`
 
 `{$claw p/moss q/moss}`: mold which normalizes a union tagged by depth.
   

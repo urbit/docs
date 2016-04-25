@@ -1,6 +1,6 @@
 ---
 sort: 6
-next: true
+
 ---
 
 # `:bush  $^  "bucket"` 

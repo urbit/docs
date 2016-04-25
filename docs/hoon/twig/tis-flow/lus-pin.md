@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# `:pin  =+  "tislus"
+# `:pin  =+  "tislus"`
 
 `{$pin p/seed q/seed}`: combine a new noun with the subject.
 

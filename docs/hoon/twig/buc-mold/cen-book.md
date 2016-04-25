@@ -1,6 +1,6 @@
 ---
 sort: 4
-next: true
+
 ---
 
 # `:book  $%  "buctis"` 

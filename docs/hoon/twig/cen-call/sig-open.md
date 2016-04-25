@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# `:open  %~  "censig"
+# `:open  %~  "censig"`
 
 `{$cnsg p/wing q/seed r/seed}`: call with multi-armed door.
 

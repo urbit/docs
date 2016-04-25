@@ -1,7 +1,8 @@
 ---
 sort: 1
+---
 
-# `:funk  ~/  "sigfas" 
+# `:funk  ~/  "sigfas"`
 
 `{$funk p/term q/seed}`: jet registration for gate with
 registered context.

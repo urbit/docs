@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# `:fits  ?=  "wuttis" 
+# `:fits  ?=  "wuttis"`
 
 `{$fits p/moss q/wing}`: test pattern match.
 

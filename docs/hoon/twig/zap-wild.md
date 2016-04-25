@@ -1,12 +1,10 @@
 ---
 sort: 13
-next: true
+
 ---
 
-# Special tools (`!` runes)
+# Wild, `!` ("zap")
 
 ## Twigs
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

@@ -9,7 +9,7 @@ title: Syntax
 Hoon's semantics are simple, but unusual.  Hoon's syntax is
 complex, and unusual.  Sorry.
 
-## Motivation
+# Motivation
 
 An excuse: the normal human brain doesn't have hardware support
 for math, but it does have hardware support for syntax.  Learning
