@@ -2,9 +2,9 @@
 sort: 6
 ---
 
-# `:calt, %+, "cenlus", {$calt p/seed q/seed r/seed}`
+# `:calt  %+  "cenlus"` 
 
-Call a gate (function), with a cell sample.
+`{$calt p/seed q/seed r/seed}`: call with pair sample.
 
 ## Expands to
 

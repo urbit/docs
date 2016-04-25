@@ -2,9 +2,9 @@
 sort: 9
 ---
 
-# `:shoe $_ "buccab" {$shoe p/seed}`
+# `:shoe  $_  "buccab"`
 
-Form a mold which normalizes to an example.
+`{$shoe p/seed}`: mold which normalizes to an example.
 
 ## Expands to
 

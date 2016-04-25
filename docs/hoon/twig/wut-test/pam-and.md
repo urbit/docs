@@ -2,9 +2,9 @@
 sort: 8
 ---
 
-# `:and, ?&, "wutpam", {$and p/(list seed)}`
+# `:and  ?&  "wutpam"
 
-Logical and.
+`{$and p/(list seed)}`: logical and.
 
 ## Expands to
 

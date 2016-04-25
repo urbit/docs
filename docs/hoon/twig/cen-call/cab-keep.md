@@ -2,13 +2,16 @@
 sort: 2
 ---
 
-# `:keep, %_, centis, {$keep p/wing q/(list (pair wing seed))}` 
+# `:keep  %_  "cencab"`
 
-Take a wing (attribute path) with changes, preserving type.
+`{$keep p/wing q/(list (pair wing seed))}`: take a wing with changes,
+preserving type.
 
 ## Expands to
 
+```
 :like(p :make(p q))
+```
 
 ## Syntax
 

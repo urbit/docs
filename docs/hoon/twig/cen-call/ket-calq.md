@@ -2,9 +2,9 @@
 sort: 7
 ---
 
-# `:calq, %^, "cenket", {$calq p/seed q/seed r/seed s/seed}`
+# `:calq  %^  "cenket"` 
 
-Call a gate (function), with a triple sample.
+`{$calq p/seed q/seed r/seed s/seed}`: call with triple sample.
 
 ## Expands to
 

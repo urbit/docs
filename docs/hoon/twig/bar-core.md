@@ -13,8 +13,6 @@ section in [`span`](../span) above.)  `$core` uses the subject as
 the payload of a battery, whose arms are compiled with the core
 itself as the subject.
 
-## Twigs
+## Stems
 
-<list dataPreview="true" className="runes" linkToFragments="true"></list>
-
-<kids className="runes"></kids>
+<list dataPreview="true" className="runes"></list>

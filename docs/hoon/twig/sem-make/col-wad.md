@@ -2,9 +2,9 @@
 sort: 3
 ---
 
-# `:wad ;: "semcol" {$wad p/seed q/(list seed)}`
+# `:wad  ;:  "semcol"`
 
-Call binary function as n-ary function.
+`{$wad p/seed q/(list seed)}`: call a binary function as an n-ary function.
 
 ## Expands to
 

@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:conp, :*, "coltar" {$conp p/(list twig)}`
+# `:conp  :*  "coltar"`
 
-Construct an n-tuple.
+`{$conp p/(list twig)}`: construct an n-tuple.
 
 ## Expands to
 

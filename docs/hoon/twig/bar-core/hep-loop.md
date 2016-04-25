@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:loop, |-, "barhep", {$loop p/seed}`
+# `:loop  |-  "barhep"`
 
-Form a trap (a core with one dry arm `$`) and kick it.
+`{$loop p/seed}`: form a trap and kick it.
 
 ## Expands to
 

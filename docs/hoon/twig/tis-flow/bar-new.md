@@ -2,9 +2,9 @@
 sort: 5
 ---
 
-# `:new, =|, "tisbar", {$new p/moss q/seed}`
+# `:new  =| , "tisbar"`
 
-Combine a defaulted mold with the subject.
+`{$new p/moss q/seed}`: combine a defaulted mold with the subject.
 
 ## Expands to
 

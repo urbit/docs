@@ -2,9 +2,9 @@
 sort: 9
 ---
 
-# `:or`, `?|`, "wutbar" `{$or p/(list seed)}`
+# `:or  ?|  "wutbar"` 
 
-Logical or.
+`{$or p/(list seed)}`: logical or.
 
 ## Expands to
 

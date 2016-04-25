@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:dump ~& "sigpam" {$dump p/seed q/seed}`
+# `:dump  ~&  "sigpam"`
 
-Debugging printf.
+`{$dump p/seed q/seed}`: debugging printf.
 
 ## Expands to
 

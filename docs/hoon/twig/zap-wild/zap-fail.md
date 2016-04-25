@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:fail, !! "zapzap" {$fail $~}`
+# `:fail  !!  "zapzap"`
 
-Crash.
+`{$fail $~}`: crash.
 
 ## Produces
 

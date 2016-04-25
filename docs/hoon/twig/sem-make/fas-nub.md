@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:nub ;/ "semfas" {$nub p/seed}`
+# `:nub  ;/  "semfas"`
 
-Tape as XML element.
+`{$nub p/seed}`: tape as XML element.
 
 ## Expands to
 

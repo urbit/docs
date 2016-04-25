@@ -2,9 +2,9 @@
 sort: 3
 ---
 
-# `:name ^= "kettis" {$name p/toga q/seed}`
+# `:name  ^=  "kettis"`
 
-Name a value.
+`{$name p/toga q/seed}`: name a value.
 
 ## Produces
 

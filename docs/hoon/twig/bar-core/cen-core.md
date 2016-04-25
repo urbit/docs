@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# `:core, |%, "barcen", {$core p/(map term foot)}`
+# `:core  |%  "barcen"`
 
 Form a core `{battery payload}` with subject as the payload.
 

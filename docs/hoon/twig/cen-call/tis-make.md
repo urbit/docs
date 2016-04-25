@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:make, %=, centis, {$make p/wing q/(list (pair wing seed))}` 
+# `:make  %=  "centis"`
 
-Take a wing (attribute path) with changes.
+`{$make p/wing q/(list (pair wing seed))}`: take a wing with changes.
 
 ## Produces
 

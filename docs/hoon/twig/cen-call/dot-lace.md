@@ -2,9 +2,9 @@
 sort: 5
 ---
 
-# `:lace, %., "cendot", {$lace p/seed q/seed}`
+# `:lace  %.  "cendot"` 
 
-Call a gate (function), reversed.
+`{$lace p/seed q/seed}`: call a gate (function), reversed.
 
 ## Expands to
 

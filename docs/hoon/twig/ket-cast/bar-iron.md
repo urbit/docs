@@ -2,9 +2,9 @@
 sort: 5
 ---
 
-# `:iron ^| "ketbar" {$iron p/seed}`
+# `:iron  ^|  "ketbar"  
 
-Convert a gold core to a contravariant core (write-only sample).
+`{$iron p/seed}`: convert a gold core to an iron core (contravariant).
 
 ## Produces
 

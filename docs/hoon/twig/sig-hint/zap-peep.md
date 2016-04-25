@@ -2,9 +2,9 @@
 sort: 9
 ---
 
-# `:peep ~! "sigzap" {$peep p/seed q/seed}`
+# `:peep  ~!  "sigzap"` 
 
-Print type on compilation fail.
+`{$peep p/seed q/seed}`: print type on compilation fail.
 
 ## Expands to
 

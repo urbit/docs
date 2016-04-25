@@ -2,9 +2,9 @@
 sort: 2
 ---
 
-# `:wrap !> "zapgar" {$wrap p/seed}`
+# `:wrap  !>  "zapgar"`
 
-Wrap a noun in its span.
+`{$wrap p/seed}`: wrap a noun in its span.
 
 ## Produces
 

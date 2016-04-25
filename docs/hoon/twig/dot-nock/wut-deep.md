@@ -2,9 +2,9 @@
 sort: 2 
 ---
 
-# `:deep, .?, "dotwut", {$deep p/seed}`
+# `:deep  .?  "dotwut"`
 
-Test for cell or atom with Nock `3`.
+`{$deep p/seed}`: test for cell or atom with Nock `3`.
 
 ## Produces
 

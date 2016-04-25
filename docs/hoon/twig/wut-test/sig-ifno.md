@@ -2,9 +2,10 @@
 sort: 3
 ---
 
-# `ifno`, `?~`, "wutsig" `{$ifno p/wing q/seed r/seed}`
+# `:ifno  ?~  "wutsig"` 
 
-Branch on whether a wing of the subject is null.
+`{$ifno p/wing q/seed r/seed}`: branch on whether a wing 
+of the subject is null.
  
 ## Expands to
 

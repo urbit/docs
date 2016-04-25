@@ -3,9 +3,9 @@ sort: 3
 next: true
 ---
 
-# `:coat, $=, "buctis", {$coat p/@tas q/moss}`
+# `:coat  $=  "buctis"`
 
-Form a mold which wraps a face around another mold.
+`{$coat p/@tas q/moss}`: mold which wraps a face around another mold.
 
 ## Expands to
 

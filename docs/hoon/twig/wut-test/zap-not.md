@@ -2,9 +2,9 @@
 sort: 7
 ---
 
-# `:not, ?!, "wutzap", {$not p/seed}`
+# `:not  ?!  "wutzap"`
 
-Logical not.
+`{$not p/seed}`: logical not.
 
 ## Expands to 
 

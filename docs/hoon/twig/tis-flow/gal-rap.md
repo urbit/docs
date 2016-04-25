@@ -2,9 +2,9 @@
 sort: 2
 ---
 
-# `:rap, =<, "tisgal", {$rap p/seed q/seed}`
+# `:rap  =<  "tisgal"`
 
-Compose two twigs, inverted.
+`{$rap p/seed q/seed}`: compose two twigs, inverted.
 
 ## Expands to
 

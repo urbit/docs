@@ -2,9 +2,9 @@
 sort: 8
 ---
 
-# `:set, =., "tisdot", {$set p/wing q/seed r/seed}`
+# `:set  =.  "tisdot"` 
 
-Mutate a leg in the subject.
+`{$set p/wing q/seed r/seed}`: change one leg in the subject.
 
 ## Expands to
 

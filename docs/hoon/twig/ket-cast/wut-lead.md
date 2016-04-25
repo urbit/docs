@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:lead ^? "ketwut" {$lead p/seed}`
+# `:lead  ^?  "ketwut" 
 
-Convert any core to a bivariant core (opaque payload).
+`{$lead p/seed}`: convert any core to a lead core (bivariant).
 
 ## Produces
 
@@ -16,7 +16,8 @@ Regular: *1-fixed*.
 
 ## Discussion
 
-A lead core is an opaque generator.
+A lead core is an opaque generator; the payload can't be read or 
+written.
 
 Theorem: if span `x` nests within span `a`, a lead core producing
 `x` nests within a lead core producing `a`.

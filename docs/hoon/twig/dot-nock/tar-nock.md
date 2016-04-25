@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:nock, .*, "dottar", {$nock p/seed q/seed}`
+# `:nock  .*  "dottar"`
 
-Compute the Nock function.
+`{$nock p/seed q/seed}`: evaluate with Nock `2`.
 
 ## Produces
 

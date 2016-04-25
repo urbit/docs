@@ -2,9 +2,9 @@
 sort: 12
 ---
 
-# `:poll ~$ "sigbuc" {$poll p/term q/seed}`
+# `:poll  ~$  "sigbuc"`
 
-Profiling hit counter.
+`{$poll p/term q/seed}`: profiling hit counter.
 
 ## Expands to
 

@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:cons, :-, "colhep", {$cons p/seed q/seed}`
+# `:cons  :- "colhep"`
 
-Construct a cell (2-tuple).
+`{$cons p/seed q/seed}`: construct a cell (2-tuple).
 
 ## Produces
 

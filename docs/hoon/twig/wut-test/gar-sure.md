@@ -2,9 +2,9 @@
 sort: 11
 ---
 
-# `:sure, ?<, "wutgar", {$sure p/seed q/seed}`
+# `:sure  ?<  "wutgar"
 
-Positive assertion.
+`{$sure p/seed q/seed}`: positive assertion.
 
 ## Expands to
 

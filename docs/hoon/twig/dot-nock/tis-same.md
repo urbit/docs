@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:same, .=, "dottis", {$same p/seed q/seed}`
+# `:same  .=  "dottis"` 
 
-Test for equality with Nock `5`.
+`{$same p/seed q/seed}`: test for equality with Nock `5`.
 
 ## Produces
 

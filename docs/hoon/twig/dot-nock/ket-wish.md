@@ -2,9 +2,9 @@
 sort: 5
 ---
 
-# `:wish, .^, "dotket", {$wish p/moss q/seed}`
+# `:wish  .^  "dotket"`
 
-Load data from the Arvo namespace with Nock `11`.
+`{$wish p/moss q/seed}`: load from the Arvo namespace with Nock `11`.
 
 ## Produces
 

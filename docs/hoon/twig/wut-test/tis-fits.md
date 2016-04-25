@@ -2,9 +2,9 @@
 sort: 6
 ---
 
-# `:fits, ?=, "wuttis", {$fits p/moss q/wing}
+# `:fits  ?=  "wuttis" 
 
-Test whether the noun at wing `q` fits pattern `p`.
+`{$fits p/moss q/wing}`: test pattern match.
 
 ## Produces
 

@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:warn ~? "sigwut" `{$warn p/seed q/seed r/seed}`
+# `:warn  ~?  "sigwut"`
 
-Conditional debugging printf.
+`{$warn p/seed q/seed r/seed}`: conditional debug printf.
 
 ## Expands to
 

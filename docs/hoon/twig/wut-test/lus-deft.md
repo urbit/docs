@@ -2,9 +2,10 @@
 sort: 13
 ---
 
-# `:deft, ?-, "wutlus", {$case p/wing q/seed r/(list (pair moss seed))}`
+# `:deft  ?-  "wutlus"`
 
-Switch against a union, with a default.
+`{$case p/wing q/seed r/(list (pair moss seed))}`: switch against 
+a union, with a default.
 
 ## Expands to
 

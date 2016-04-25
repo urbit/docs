@@ -2,9 +2,9 @@
 sort: 11
 ---
 
-# `:aka, =*, "tistar", {$aka p/term q/seed r/seed}`
+# `:aka  =* "tistar"`
 
-Define an alias.
+`{$aka p/term q/seed r/seed}`: define an alias.
 
 ## Produces
 

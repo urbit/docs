@@ -3,9 +3,9 @@ sort: 4
 next: true
 ---
 
-# `:book, $%, "buctis", {$book p/(list {{aura @} moss})}`
+# `:book  $%  "buctis"` 
 
-Form a mold which normalizes a union distinguished by a head atom.
+`{$book p/(list {{aura @} moss})}`: mold which recognizes a union tagged by head atom.
 
 ## Normalizes to
 

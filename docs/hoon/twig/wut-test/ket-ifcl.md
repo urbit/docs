@@ -2,9 +2,10 @@
 sort: 5
 ---
 
-# `:ifcl, ?^, "wutket", {$ifcl p/wing q/seed r/seed}`
+# `:ifcl  ?^  "wutket"`
 
-Branch on whether a wing of the subject is null.
+`{$ifcl p/wing q/seed r/seed}`: branch on whether a wing 
+of the subject is null.
 
 ## Expands to
 

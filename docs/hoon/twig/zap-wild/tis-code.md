@@ -2,9 +2,9 @@
 sort: 3
 ---
 
-# `:code != "zaptis" {$code p/seed}`
+# `:code  !=  "zaptis"`
 
-Make the Nock formula for a twig.
+`{$code p/seed}`: make the Nock formula for a twig.
 
 ## Produces
 

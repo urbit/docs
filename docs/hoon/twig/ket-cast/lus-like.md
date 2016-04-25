@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:like ^+ "ketlus" {$like p/seed q/seed}`
+# `:like  ^+  "ketlus" 
 
-Cast by example (seed).
+`{$like p/seed q/seed}`: typecast by example (seed).
 
 ## Produces
 

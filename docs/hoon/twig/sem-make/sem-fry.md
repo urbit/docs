@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:fry ;; "semsem" {$fry p/moss q/seed}`
+# `:fry  ;;  "semsem"`
 
-Normalize with a mold, asserting fixpoint.
+`{$fry p/moss q/seed}`: normalize with a mold, asserting fixpoint.
 
 ## Expands to
 

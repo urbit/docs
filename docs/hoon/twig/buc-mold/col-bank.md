@@ -3,9 +3,9 @@ sort: 2
 next: true
 ---
 
-# `:bank, $:, "buccol", {$bank p/(list moss)}`
+# `:bank  $:  "buccol"` 
 
-Form a mold which recognizes a tuple.
+`{$bank p/(list moss)}`: form a mold which recognizes a tuple.
 
 ## Normalizes
 

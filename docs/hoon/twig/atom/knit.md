@@ -1,24 +1,44 @@
 ---
-sort: 6
+sort: 3
+next: true
 ---
 
-# `:_  :scon  "colcab"`
+# `:knit`
 
-`{$scon p/seed q/seed}`; construct a cell, inverted.
+`{$knit p/(list (each @t seed))}`: text string with interpolation.
 
-### Expands to
+### Produces
 
-```
-:cons(q p)
-```
+A list-shaped string (`tape`) of the items in `p`, which are
+either constant `@t` multibyte UTF-8 strings (`cord`) or twigs
+producing a `tape`.
 
 ### Syntax
 
-Regular: *2-fixed*.
+Irregular: `"foobar"`.
+
+Irregular: `"foo{(weld "moo" "baz")}bar"`.
 
 ### Examples
 
+String:
+
 ```
-~zod:dojo> :_(1 2)
-[2 1]
+~zod:dojo> "hello, world."
+"hello, world."
 ```
+
+String with interpolation:
+
+```
+~zod:dojo> =+(planet="world" "hello, {planet}")`.
+"hello, %world."
+```
+
+String with interpolated prettyprinting:
+
+```
+~zod:dojo> =+(planet=%world "hello, {<planet>}")`.
+"hello, %world."
+```
+

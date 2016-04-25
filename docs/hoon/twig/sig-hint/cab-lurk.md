@@ -2,9 +2,9 @@
 sort: 3
 ---
 
-# `:lurk ~_ "sigcab" {$lurk p/seed q/seed}`
+# `:lurk  ~_  "sigcab"`
 
-User-formatted tracing printf.
+`{$lurk p/seed q/seed}`: user-formatted tracing printf.
 
 ## Expands to
 

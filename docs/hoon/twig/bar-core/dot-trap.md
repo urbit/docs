@@ -2,9 +2,9 @@
 sort: 3
 ---
 
-# `:trap. |., "bardot", {$trap p/seed}`
+# `:trap. |.  "bardot"`
 
-Form a trap, a core with one arm `$`.
+`{$trap p/seed}`: form a trap, a core with one arm `$`.
 
 ## Expands to
 

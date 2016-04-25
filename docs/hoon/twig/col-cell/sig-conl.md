@@ -2,9 +2,9 @@
 sort: 5
 ---
 
-# `:conl, :~, "colsig", {$conl p/(list seed)}`
+# `:conl  :~  "colsig"`
 
-Construct a null-terminated list.
+`{$conl p/(list seed)}`: construct a null-terminated list.
 
 ## Expands to
 

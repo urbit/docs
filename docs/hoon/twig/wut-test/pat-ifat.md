@@ -2,9 +2,10 @@
 sort: 4
 ---
 
-# `:ifat, ?@, "wutpat", {$ifat p/wing q/seed r/seed}`
+# `:ifat  ?@  "wutpat"`
 
-Branch on whether a wing of the subject is an atom.
+`{$ifat p/wing q/seed r/seed}`: branch on whether a wing 
+of the subject is an atom.
 
 ## Expands to
 

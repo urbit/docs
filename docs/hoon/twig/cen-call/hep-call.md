@@ -2,9 +2,9 @@
 sort: 4
 ---
 
-# `:call, %-, "cenhep", {$call p/seed q/seed}`
+# `:call  %-  "cenhep"`
 
-Call a gate (function).
+`{$call p/seed q/seed}`: call a gate (function).
 
 ## Expands to
 

@@ -23,5 +23,14 @@ Irregular: `~`, `@n`, null (`0`).
 
 ### Examples
 
-~zod:dojo>
-
+```
+~zod:dojo> ?? %foobar
+  [%atom %tas [~ u=125.762.588.864.358]]
+%foobar
+~zod:dojo> ?? %'foobar'
+  [%atom %t [~ u=125.762.588.864.358]]
+%'foobar'
+~zod:dojo> ?? 'foobar'
+  [%atom %t ~]
+'foobar'
+```

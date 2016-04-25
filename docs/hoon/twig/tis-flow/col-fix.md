@@ -2,9 +2,9 @@
 sort: 9
 ---
 
-# `:fix, =:, "tiscol", {$fix p/(list (pair wing seed)) q/seed}`
+# `:fix  =:  "tiscol"` 
 
-Mutate multiple legs in the subject.
+`{$fix p/(list (pair wing seed)) q/seed}`: change multiple legs in the subject.
 
 ## Expands to
 

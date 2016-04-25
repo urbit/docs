@@ -2,9 +2,9 @@
 sort: 10
 ---
 
-# `:deny, ?<, "wutgal", {$deny p/seed q/seed}`
+# `:deny  ?<  "wutgal"`
 
-Negative assertion.
+`{$deny p/seed q/seed}`: negative assertion.
 
 ## Expands to
 

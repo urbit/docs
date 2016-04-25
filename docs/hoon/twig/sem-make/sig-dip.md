@@ -2,9 +2,10 @@
 sort: 2
 ---
 
-# `:dip`, `;~`, "semsig" `{$dip p/seed q/(list seed)}`
+# `:dip  ;~  "semsig"`
 
-Glue a pipeline together with a product-sample adapter.
+`{$dip p/seed q/(list seed)}`: glue a pipeline together with a 
+product-sample adapter.
 
 ## Produces
 

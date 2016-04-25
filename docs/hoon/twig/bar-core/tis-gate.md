@@ -2,9 +2,9 @@
 sort: 2
 ---
 
-# `:gate, |=, "bartis", {$gate p/moss q/seed}`
+# `:gate  |=  "bartis"` 
 
-Form a gate, a dry one-armed core with payload `{sample context}`.
+`{$gate p/moss q/seed}`: form a gate, a dry one-armed core with sample.
 
 ## Expands to
 

@@ -2,9 +2,9 @@
 sort: 3
 ---
 
-# `:conq, :^, "colket", {$conq p/seed q/seed r/seed s/seed}`
+# `:conq  :^  "colket" 
 
-Construct a quadruple (4-tuple).
+`{$conq p/seed q/seed r/seed s/seed}`: construct a quadruple (4-tuple).
 
 ## Expands to
 

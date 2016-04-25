@@ -3,9 +3,9 @@ sort: 6
 next: true
 ---
 
-# `:bush, $^, "bucket", {$bush p/moss q/moss}`
+# `:bush  $^  "bucket"` 
 
-Form a mold which normalizes a union distinguished by head depth.
+`{$bush p/moss q/moss}`: mold which normalizes a union tagged by head depth.
 
 ## Normalizes to
 

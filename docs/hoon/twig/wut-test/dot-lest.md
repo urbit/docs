@@ -2,9 +2,9 @@
 sort: 2
 ---
 
-# `:lest`, `?.`, "wutdot" `{$lest p/seed q/seed r/seed}`
+# `:lest  ?.  "wutdot"` 
 
-Branch on a boolean test, inverted.
+`{$lest p/seed q/seed r/seed}`: branch on a boolean test, inverted.
 
 ## Expands to
 

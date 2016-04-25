@@ -2,9 +2,9 @@
 sort: 10
 ---
 
-# `:fast ~% "sigcen" {$fast p/term q/wing r/(list {term seed}) s/seed}`
+# `:fast  ~%  "sigcen"`
 
-General jet hint. 
+`{$fast p/term q/wing r/(list {term seed}) s/seed}`: jet registration.
 
 ## Expands to
 

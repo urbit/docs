@@ -2,9 +2,9 @@
 sort: 2
 ---
 
-# `:cast ^- "kethep" {$cast p/moss q/seed}`
+# `:cast  ^-  "kethep"`
 
-Cast by construction (mold).
+`{$cast p/moss q/seed}`: typecast by mold.
 
 ## Expands to
 

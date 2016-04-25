@@ -2,9 +2,9 @@
 sort: 1
 ---
 
-# `:if, ?:, "wutcol", `{$if p/seed q/seed r/seed}`
+# `:if  ?:  "wutcol"`
 
-Branch on a boolean test.
+`{$if p/seed q/seed r/seed}`: branch on a boolean test.
 
 ## Produces
 

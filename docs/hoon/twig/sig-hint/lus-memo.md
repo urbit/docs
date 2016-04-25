@@ -2,9 +2,9 @@
 sort: 7
 ---
 
-# :memo ~+ "siglus" {$memo p/seed}`
+# `:memo  ~+  "siglus"`
 
-Cache a computation.
+`{$memo p/seed}`: cache a computation.
 
 ## Expands to
 

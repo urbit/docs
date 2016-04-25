@@ -3,10 +3,10 @@ sort: 5
 next: true
 ---
 
-# `:claw, $@, "bucpat", {$claw p/moss q/moss}`
+# `:claw  $@  "bucpat"
 
-Form a mold which normalizes a union distinguished by depth.
-
+`{$claw p/moss q/moss}`: mold which normalizes a union tagged by depth.
+  
 ## Normalizes to
 
 Default, if the sample is an atom; `p`, if the head of the sample

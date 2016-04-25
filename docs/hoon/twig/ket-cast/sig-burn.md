@@ -1,22 +1,24 @@
-# `:burn`, `^~`, "ketsig", `{$burn p/seed}`
+---
+sort: 6
+---
 
-Try executing `p` at compile time.
+# `:burn  ^~  "ketsig" 
 
-Tries to execute `p` statically at compile time. If this
-fails, `p` remains dynamic. Primarily useful for
-optimization: when a value is static, `^~` can simplify the compilation.
+`{$burn p/seed}`: fold constant at compile time.
 
-Regular form *1-fixed*
+## Produces
 
-Examples
---------
+`p`, folded as a constqnt if possible.
 
-    /~zod:dojo> (make '|-(42)')
-    [%8 p=[%1 p=[1 42]] q=[%9 p=2 q=[%0 p=1]]]
-    /~zod:dojo> (make '^~(|-(42))')
-    [%1 p=42]
+## Syntax
 
-Here we use `++make` to examine the nock generated for a particular
-computation. We start with a simple kicked trap, `|-`, that just
-generates the static value `42`. When we wrap our `|-` in a `^~` you can
-see that our compilation is much simpler.
+Regular: *1-fixed*.
+
+## Examples
+
+```
+~zod:dojo> (make '|-(42)')
+[%8 p=[%1 p=[1 42]] q=[%9 p=2 q=[%0 p=1]]]
+~zod:dojo> (make '^~(|-(42))')
+[%1 p=42]
+```

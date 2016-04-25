@@ -5,7 +5,7 @@ next: true
 
 # `:base`
 
-`{$base p/$@(?($noun $cell $bean $null) {$atom p/aura})}`; atom mold
+`{$base p/$@(?($noun $cell $bean $null) {$atom p/aura})}`: atom mold
 
 ## Produces
 

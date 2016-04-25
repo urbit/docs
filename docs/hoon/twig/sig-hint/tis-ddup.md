@@ -2,9 +2,9 @@
 sort: 8
 ---
 
-# `:ddup ~= "sigtis" {$ddup p/seed q/seed}`
+# `:ddup  ~=  "sigtis"` 
 
-Detect a duplicate.
+`{$ddup p/seed q/seed}`: detect duplicate.
 
 ## Expands to
 

@@ -3,9 +3,9 @@ sort: 7
 next: true
 ---
 
-# `:pick, $?, "bucwut", {$? p/(list moss)}`
+# `:pick  $?  "bucwut" 
 
-Form a mold which normalizes a general union.
+`{$pick p/(list moss)}`: mold which normalizes a general union.
 
 ## Normalizes to
 

@@ -2,9 +2,10 @@
 sort: 6
 ---
 
-# :thin ~< "siggal" {$thin p/$@(term {p/term q/seed}) q/seed}
+# `:thin  ~<  "siggal"` 
 
-Raw hint, applied to the result of computation.
+`{$thin p/$@(term {p/term q/seed}) q/seed}`: raw hint, applied to 
+product.
 
 ## Expands to
 
@@ -18,7 +19,7 @@ Regular: *2-fixed*.  For the dynamic form, write `%term.twig`.
 
 `:thin` is only used for jet hints (`:funk` and `:fast`) at the 
 moment; we are not telling the interpreter something about the
-computation we're about to perform, but rather about the result.
+computation we're about to perform, but rather about its product.
 
 ## Examples
 

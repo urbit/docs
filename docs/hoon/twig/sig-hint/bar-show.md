@@ -2,9 +2,9 @@
 sort: 2
 ---
 
-# `:show ~| "sigbar" {$show p/seed q/seed}`
+# `:show  ~|  "sigbar"`
 
-Tracing printf.
+`{$show p/seed q/seed}`: tracing printf.
 
 ## Expands to
 
