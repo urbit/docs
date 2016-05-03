@@ -27,6 +27,10 @@ To add swap on an Amazon instance:
 
 http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance
 
+To add swap on a BSD instance:
+
+ https://www.freebsd.org/doc/handbook/adding-swap-space.htm
+
 Don't spend a lot of time tweaking these settings; the simplest
 thing is fine.
 
@@ -92,7 +96,7 @@ three packages, at least with Homebrew. Your mileage may vary.
 
 #### FreeBSD
 
-    pkg install git gmake gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool
+    pkg install git gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool
 
 #### Archlinux
 
