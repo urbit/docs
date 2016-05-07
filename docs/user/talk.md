@@ -215,16 +215,16 @@ post, activating shows the full audience, for complex audiences.
 Posts in your `:talk` flow are numbered; the numbers are printed
 every five posts, as
 
-    ----------[5955]
+    ----------[5.955]
 
 You can specify a post to activate in two ways: by absolute or
 relative position.  Absolute position is a direct history number:
 
-    ;5955
+    ;5.955
 
 If you use fewer digits than are in the current flow number, the
 high digits are defaulted "deli style" - if the current number is
-5955, typing `;3` means `;5953`, and `;140` means `;5140`.  To
+5955, typing `;3` means `;5.953`, and `;140` means `;5.140`.  To
 actually activate post `3`, write `;0003`.
 
 A unary sequence of `;` characters looks backward from the
