@@ -9,7 +9,10 @@ title: Shell (:dojo)
 <div class="row">
 <div class="col-md-8">
 
-The `:dojo` is the place to quickly experiment with Urbit.  At first glance the `:dojo` is just a Hoon REPL.  Looking a bit deeper the `:dojo` is set up to make operating on and transforming data in Urbit easy.  
+The `:dojo` is the place to quickly experiment with Urbit.  On
+the surface the `:dojo` is just a Hoon REPL.  On the inside, the
+`:dojo` is a system for operating on and transforming data in
+Urbit.  
 
 </div>
 </div>
@@ -21,7 +24,7 @@ Evaluate a hoon expression:
     ~your-urbit:dojo> (add 2 2)
     ~your-urbit:dojo> %+  add  2  2
 
-Tall form Hoon will be prompted for:
+Tall form Hoon may require multiple lines:
 
     ~your-urbit:dojo> %+  add
     ~your-urbit:dojo< 2
@@ -46,6 +49,65 @@ Save output to a file in `%clay` with `*`:
 Run system commands from `:hood`, like `reload`, using `|`:
 
     ~your-urbit:dojo> |reload %eyre
+
+
+### Generators
+
+**`+cat`** - Similar to Unix `cat`.  Accepts a path.
+
+    ~your-urbit:dojo> +cat %/web/md
+    ~your-urbit:dojo> +cat /~talsur-todres/home/2/web/notes/md
+
+**`+curl`** - Similar to Unix `curl`.  Accepts a `tape`.
+
+    ~your-urbit:dojo> +curl "http://nyt.com"
+
+**`+hello`** - Just prints the argument.  Accepts a `@ta`.
+
+    ~your-urbit:dojo> +hello 'mars'
+
+**`+ls`** - Similar to Unix `ls`.  Accepts a path.
+
+    ~your-urbit:dojo> +ls %/web
+    ~your-urbit:dojo> +ls /~talsur-todres/home/2/web/notes
+
+**`+moon`** - Generate a random moon from a planet.  No arguments.
+
+**`+solid`** - Compile the current state of the kernel and output a noun.  Usually downloaded to a file in unix.  No arguments.
+    
+    ~your-urbit:dojo> .urbit/pill +solid
+
+**`+ticket`** - Generate a ticket for an Urbit plot.  Takes an Urbit name (`@p`).
+
+    ~your-urbit:dojo> +ticket ~talsur-todres-your-urbit
+
+**`+tree`** - Generate a recursive directory listing.  Takes a path.
+
+    ~your-urbit:dojo> +tree %/web
+
+### Hood
+
+The hood is the system daemon.  See `gen/hood` and `app/hood`.
+
+**`|hi`** - Sends a direct message.  Sort of like Unix `write`.  Accepts an urbit name (`@p`) and a string (`cord`).
+
+    ~your-urbit:dojo> |hi ~doznec 'you there?'
+
+**`|link`** / **`|unlink`** - Link / unlink a remote app.  Accepts an Urbit name and an app name.
+
+    ~your-urbit:dojo> |link ~talsur-todres %octo
+
+**`|mass`** - Prints the current memory usage of all the kernel modules.  No arguments.
+
+**`|reload`** - Reloads a kernel module (vane) from source.  Accepts any number of vane names.
+
+    ~your-urbit:dojo> |reload %clay %eyre
+
+**`|reset`** - Reloads `hoon.hoon`.  No arguments.
+
+**`|start`** - Starts an app.  Accepts an app name.
+
+    ~your-urbit:dojo> |start %curl
 
 ## Manual
 
@@ -131,6 +193,9 @@ Use `_` to run a gate (or function):
 
 `-http[s]://example.com &json [%s 'hi']` - sends a PUT request with the JSON `"hi"` in the body.
 
+Note that the first of these is a source while the last two are
+sinks.
+
 #### `+` - Generators
 
 Generators are simple hoon scripts loaded from the filesystem.  They live in `gen/`.
@@ -209,61 +274,3 @@ The current urbit plot.  Read-only.
     ~your-urbit:dojo> eny
     :: produces
     0v1o.m2vio.j5ieb.7tq84.5kcnp.gjn04.9gl2e.tkj5v.0oqk3.iugk8.rhu6o
-
-### Generators
-
-**`+cat`** - Similar to Unix `cat`.  Accepts a path.
-
-    ~your-urbit:dojo> +cat %/web/md
-    ~your-urbit:dojo> +cat /~talsur-todres/home/2/web/notes/md
-
-**`+curl`** - Similar to Unix `curl`.  Accepts a `tape`.
-
-    ~your-urbit:dojo> +curl "http://nyt.com"
-
-**`+hello`** - Just prints the argument.  Accepts a `@ta`.
-
-    ~your-urbit:dojo> +hello 'mars'
-
-**`+ls`** - Similar to Unix `ls`.  Accepts a path.
-
-    ~your-urbit:dojo> +ls %/web
-    ~your-urbit:dojo> +ls /~talsur-todres/home/2/web/notes
-
-**`+moon`** - Generate a random moon from a planet.  No arguments.
-
-**`+solid`** - Compile the current state of the kernel and output a noun.  Usually downloaded to a file in unix.  No arguments.
-    
-    ~your-urbit:dojo> .urbit/pill +solid
-
-**`+ticket`** - Generate a ticket for an Urbit plot.  Takes an Urbit name (`@p`).
-
-    ~your-urbit:dojo> +ticket ~talsur-todres-your-urbit
-
-**`+tree`** - Generate a recursive directory listing.  Takes a path.
-
-    ~your-urbit:dojo> +tree %/web
-
-### Hood
-
-The hood is the system daemon.  See `gen/hood` and `app/hood`.
-
-**`|hi`** - Sends a direct message.  Sort of like Unix `write`.  Accepts an urbit name (`@p`) and a string (`cord`).
-
-    ~your-urbit:dojo> |hi ~doznec 'you there?'
-
-**`|link`** / **`|unlink`** - Link / unlink a remote app.  Accepts an Urbit name and an app name.
-
-    ~your-urbit:dojo> |link ~talsur-todres %octo
-
-**`|mass`** - Prints the current memory usage of all the kernel modules.  No arguments.
-
-**`|reload`** - Reloads a kernel module (vane) from source.  Accepts any number of vane names.
-
-    ~your-urbit:dojo> |reload %clay %eyre
-
-**`|reset`** - Reloads `hoon.hoon`.  No arguments.
-
-**`|start`** - Starts an app.  Accepts an app name.
-
-    ~your-urbit:dojo> |start %curl

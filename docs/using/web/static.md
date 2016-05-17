@@ -1,7 +1,6 @@
 ---
 sort: 3
 title: A static site
-next: true
 ---
 
 # A static site

@@ -24,7 +24,8 @@ We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its
 
 Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running other processes that might be occupying `8080`, you can determine which port your urbit is on by looking at your boot sequence — it's specified there), or `http://your-urbit.urbit.org/`.
 
-(Make sure you have a desk mounted to unix, as covered in the [filesystem walkthrough](/filesystem))
+(Make sure you have a desk mounted to unix, as covered in the
+[filesystem walkthrough](/docs/using/filesystem))
 
 To switch the desk you're serving from:
 
@@ -203,7 +204,7 @@ As a file browser Tree does a simple job: it fetches data and keeps a cache of w
 
 Since we want to use React to manage our DOM lifecycle we actually transfer the DOM structure of each page as JSON over the wire, and 'reactify' it on the client side.  
 
-On the Urbit side we actually have a type for html: `++manx`.  Our wire format for sending HTML as JSON is really similar to a `++manx`.  If you're not interested here's what the json looks like:
+On the Urbit side we have a type for html: `++manx`.  Our wire format for sending HTML as JSON is really similar to a `++manx`.  If you're not interested here's what the json looks like:
 
 ```
 "string" || {gn:"string", ga:{key:"string", [...]}, c:[...]}
@@ -227,7 +228,7 @@ To see the mechanics of how this is handled on the frontend, checkout `component
 
 ### Async component
 
-Each of our components (even those we fetched from the server) can depend on data that may not exist in our stores we wrap our components in a general-purpose Async component.  You can find the component in `components/Async.coffee` in the `urbit/tree` repo.
+Each of our components (even those we fetched from the server) can depend on data that may not exist in our stores, so we wrap our components in a general-purpose Async component.  You can find the component in `components/Async.coffee` in the `urbit/tree` repo.
 
 When we say that we just fetch HTML as JSON it's actually slightly more complicated.  When we fetch a node in the filesystem we might not want to fetch its entire contents.  Sometimes we just get the title as a part of a list of children, sometimes we might get a snippet (in a list with previews), and sometimes we get the whole thing.  On the Urbit side these results are provided by `ren/tree/json`.  
 

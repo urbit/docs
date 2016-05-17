@@ -67,15 +67,15 @@ Last, let's create a channel we can invite some friends to:
 
     ~your-urbit:talk> ;create channel %my-channel 'some description'
 
-Now you can your friends to `;join ~your-urbit/my-channel`.
+Now you can tell your friends to `;join ~your-urbit/my-channel`.
 
 ## Manual
 
-`:talk`s design is similar in spirit to [nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol) the underlying protocol for Usenet.  
+`:talk`'s design is similar in spirit to [nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol), the underlying protocol for Usenet.  
 
 Our design is pretty simple: `:talk` messages are called ‘posts’.  Posts go to ‘stations’.  Any urbit can host or subscribe to any number of stations.  
 
-There are four kinds of station: a write-only `%mailbox` for direct messages, an invite-only `%party` for private conversation, a read-only `%journal` for curated content, and a public-access `%board` for general use.
+There are four kinds of station: a write-only `%mailbox` for direct messages, an invite-only `%party` for private conversation, a read-only `%journal` for curated content, and a public-access `%channel` for general use.
 
 ### Posts
 
@@ -83,8 +83,7 @@ For the time being a post is either a line, a URL or a command.
 
 #### Lines
 
-A line is 64 bytes of ASCII lowercase and spaces.  If the line
-starts with '@', it's an action (IRC `/me`).
+A line is 64 bytes of ASCII lowercase, spaces and punctuation.  If the line starts with '@', it's an action (IRC `/me`).
 
 The `:talk` interface will let you keep typing past 64 bytes, but
 insert a Unicode bullet-point character in an appropriate space
@@ -97,13 +96,13 @@ A URL is any valid URL.
 
 ### Commands
 
-A command is any line starting with `;`.
+A command is a hoon expression, prefaced by '#'.
 
 ### Creating and managing stations
 
 `;create journal %serious-journal 'description'` - Creates a `%journal`, a privately writable publicly readable station.
 
-`;create channel %serious-journal 'description'` - Creates a `%channel`, a publicly readable publicly writeable station.
+`;create channel %serious-channel 'description'` - Creates a `%channel`, a publicly readable publicly writeable station.
 
 ### Presence
 
@@ -134,7 +133,7 @@ Received posts are prefixed with a glyph to let you know what the audience is.  
 
 `;` - Posts to you and others (a multiparty conversation)
 
-`*` - Posts to a complex audience that doesn't directly include you are.
+`*` - Posts to a complex audience that doesn't directly include you.
 
 ### Audience
 
@@ -162,11 +161,11 @@ Here we're talking directly to `~dannum-mitryl`:
 
 `;~dannum-mitryl this is a private message` - Set the audience and send a post in the same line.  This works for all of the above.
 
-Your audience is configured 'implicitly' with regard to the following rules:
+Your audience is configured 'implicitly' with regard to the following rules (in order):
 
+- if you manually locked the audience, that audience.
 - if typing a post, the audience when you started typing.
 - if you activated a post, the post you activated.
-- if you manually locked the audience, that audience.
 - audience of the last post received.
 - audience of the last post sent.
 

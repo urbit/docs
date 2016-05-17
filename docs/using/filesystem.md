@@ -156,12 +156,16 @@ Example:
 
 ### Merge strategies
 
-`%init` - Used iff it's the first commit to a desk.
+`%init` - Used if it's the first commit to a desk.  Also can be
+used to "reinitialize" a desk -- revision numbers keep going up,
+but the new revision isn't necessarily a descendent of the
+previously-numbered version.
 
 `%this` - Keep what's in Bob's desk, but join the ancestry.
 
 `%that` - take what's in Alice's desk, but join the ancestry. This is
-the reverse of `%this`.
+the reverse of `%this`.  This is different from `%init` because
+the new commit has both sides in its ancestry.
 
 `%fine` - "fast-forward" merge. This succeeds iff one head is in the
 ancestry of the other.
@@ -195,6 +199,7 @@ doesn't we use an `%init` merge.  Otherwise, we progressively try
 `%fine`, `%meet`, and `%mate` until one succeeds.  If none succeed, we
 merge Bob's desk into a scratch desk.  Then, we merge Alice's desk
 into the scratch desk with the `%meld` option to force the merge.
+Finally, we annotate any conflicts, if we know how.
 
 ### Manipulation
 
