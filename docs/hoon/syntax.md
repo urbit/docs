@@ -21,7 +21,7 @@ piles*, *indentation creep*, and *feature/label confusion*.
 
 ## Terminator piles
 
-*Terminator piles* are like Lisp's stacks of right parenthesess.
+*Terminator piles* are like Lisp's stacks of right parentheses.
 Significant whitespace solves this problem and creates others.
 
 Hoon has no terminator piles.  Except for a 1-space / more-space
@@ -228,7 +228,7 @@ s
 
 The hope of backstep indentation is that the heaviest twigs are
 at the bottom, keeping code flow vertical rather than diagonal.
-Alternate, reversing
+
 
 ### Conventions: *running*
 
@@ -345,7 +345,7 @@ starting in order of construction from `a`, or within a tuple
 mold `p`.  Hoon uses single-letter names for the same reason
 Algol style languages pass arguments by order, rather than
 keyword.  Naming items by order makes sense when there are no
-more than three or four; five is stretching it; six is too many.
+more than three or four; five is stretching it; six is outright.
 
 For example, when defining `add`, we want to name the operands
 `a` and `b`.  It's silly to call them `foo` and `bar`, let alone

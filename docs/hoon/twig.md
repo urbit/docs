@@ -30,9 +30,9 @@ of this structure is a *subexpression* or just *leg*.
 Usually a subexpression is itself a `twig`; sometimes it's an
 `@tas` (symbol) or a `wing` (reference path).
 
-## Moldy moss and woody seed
+## Moldy moss; woody seed
 
-When defining each pages in the `twig` book, we never use `twig`
+When defining each page in the `twig` book, we never use `twig`
 itself as a leg.  Instead, we use the mold `moss` to describe
 twigs whose product is used as a mold, and `seed` for twigs whose
 product could be anything.  Both `moss` and `seed` are just
@@ -47,7 +47,7 @@ For instance, `[%foo %bar]` is woody: a twig producing the noun
 producing a function whose product is always `[7.303.014
 7.496.034]`.
 
-This mold of course is a noun (a gate).  The value of that noun
+This mold, of course, is a noun (a gate).  The value of that noun
 is not `[7.303.014 7.496.034]`, or anything remotely like it.
 The noun is a pile of code.  It is probably a big pile of code,
 because most cores include a lot of formulas, contexts, etc,
