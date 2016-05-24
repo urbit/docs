@@ -79,11 +79,8 @@ tail `q`.
 ### `{$hold p/span q/twig}`
 
 A `$hold` span, with span `p` and twig `q`, is a lazy reference
-to the span of `(mint p q)`.  In English it means: "the type of
-the product when we compile `q` against subject `p`.
-
-This is "manual laziness."  Hoon is a strict language, so we have
-to express 
+to the span of `(mint p q)`.  In English, it means: "the type of
+the product when we compile `q` against subject `p`."
 
 ### `{$face p/term q/span}`
 

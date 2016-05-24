@@ -7,7 +7,7 @@ next: true
 # Examples
 
 Now we know enough to write two quick examples: the Sieve of
-Eratosthenes (a naive prime sieve) and a tictactoe engine.
+Eratosthenes (a naive prime sieve) and a tic-tac-toe engine.
 
 (Note that these are not examples of perfect Hoon code; they are
 meant for teaching.  They err, more than usual for Hoon, on the
@@ -48,6 +48,12 @@ than its argument, an atom:
 
 ## `sieve`: explanation
 
+```
+:gate  thru/atom                                        ::  1
+:cast  (list atom)                                      ::  2
+:var   field/(set atom)  (silt (gulf 2 thru))           ::  3
+```
+
 Line `1`: we are building a gate (function) whose sample
 (argument) is `thru`, an atom.
 
@@ -65,6 +71,12 @@ product of `main`.  (`abet:main` means `:rap(abet main)`.)
 The core is a state machine; `main` produces the core itself,
 with the computation completed.  `abet` then extracts the result.
 
+```
+:core                                                   ::  5
+++  abet                                                ::  6
+  (sort (~(tap in field) ~) lth)                        ::  7
+```
+
 Line `5`: we wrap a core around our existing subject.  The
 `field` and `thru` atoms are within the payload and of course
 remain accessible.
@@ -75,6 +87,12 @@ produces a gate that exports the set as a list, prepending it to
 a tail which is nil in this case (and most cases).  We sort this
 list in ascending order with `lth` (less-than).
 
+```
+++  main                                                ::  9
+  :var   factor/atom  2                                 ::  10
+  :loop  :like  ..main                                  ::  11
+```
+
 Line `9`: the `main` arm, which performs the main calculation.
 
 Line `10`: we declare a counter, `factor`, which will iterate
@@ -83,11 +101,23 @@ up through the factors we're removing.
 Line `11`: we start a loop.  The product of the loop is cast to
 `..main`, which is the core we're in (`+1.main`).
 
+```
+  :if    (gth (mul factor factor) thru)                 ::  12
+    ..main                                              ::  13
+  :moar(factor +(factor), ..main (reap factor))         ::  14
+```
+
 Lines `12` and `13`: we terminate the loop, returning `..main`,
 if the square of the counter exceeds the range.
 
 Line `14`: repeats the loop, incrementing the counter, and
 replacing the core with a version sieved by `reap`.
+
+```
+++  reap                                                ::  16
+  :gate  factor/atom                                    ::  17
+  :var   count/atom  (mul 2 factor)                     ::  18
+```
 
 Lines `16` and `17`: the `reap` arm, which produces a gate that
 removes multiples of a factor from the field (set of possible
@@ -95,6 +125,17 @@ primes).  The  sample of this gate is the factor to remove.
 
 Line `18`: we declare a variable `count`, an atom, with the
 initial value `(mul 2 factor)`.
+
+```
+  :loop  :like  ..reap                                  ::  19
+  :if    (gth count thru)                               ::  20
+    ..reap                                              ::  21
+  :moar                                                 ::  22
+    count  (add count factor)                           ::  23
+    field  (~(del in field) count)                      ::  24
+  ==                                                    ::  25
+--                                                      ::  26
+```
 
 Line `19`: we enter a loop.  This loop produces the core itself.
 
@@ -132,11 +173,11 @@ concise "kernel" style).
 --
 ```
 
-### `toe`: tictactoe engine
+### `toe`: tic-tac-toe engine
 
-The `toe` tictactoe engine applies a list of events to a game
-state, producing a list of game actions.  Events are tictactoe
-moves (`move)`; actions are tictactoe results (`fact`).
+The `toe` tic-tac-toe engine applies a list of events to a game
+state, producing a list of game actions.  Events are tic-tac-toe
+moves (`move)`; actions are tic-tac-toe results (`fact`).
 
 ```
 :rap  :gate  feed/(list move)                           ::  1
@@ -205,18 +246,31 @@ moves (`move)`; actions are tictactoe results (`fact`).
 
 ### `toe`: explanation
 
+```
+:rap  :gate  feed/(list move)                           ::  1
+      :new   game/game                                  ::  2
+      :loop  :cast  (list fact)                         ::  3
+      :ifno  feed  ~                                    ::  4
+```
+ 
 Line `1` wraps a conclusion around a stack of cores.  The cores
 at `11` and `26` are the data structures and functions of the
 engine; the conclusion is the interface and top-level logic.  It
 produces a gate whose sample is `feed`, a list of `move`.
 
 Line `2` declares a blank new variable named `game`, whose type
-is the `game` mold (tictactoe game state) defined on line `21`.
+is the `game` mold (tic-tac-toe game state) defined on line `21`.
 Under line `2`, `game` pulls the variable and `^game` the mold.
 
 Line `3` enters a loop producing a list of game events, `fact`.
 
 Line `4` produces nil, `~`, if `feed` is empty.
+
+```
+      :sip  this/(unit fact)                            ::  5
+          game                                          ::  6
+        (~(do go game) i.feed)                          ::  7
+```
 
 Lines `5` through `7` apply the move.  We open a `go` core on the
 current game state, produce a `do` gate, and call that gate on
@@ -225,11 +279,22 @@ the move.  The product of the `do` gate is a pair; the head is
 `game`.  The `:sip` twig declares the head as a new variable,
 `this`; it modifies the subject by setting `game` to the tail.
 
+```
+      :var   rest/(list fact)  :moar(feed t.feed)       ::  8
+      :ifno(this rest [u.this rest])                    ::  9
+```
+
 Line `8` declares a new variable, `rest`, which is all the facts
 generated by the moves in `t.feed`, the tail of the move list.
 (Yes, this is gratuitous head recursion.)  Line `9` produces
 `rest` if the `i.feed` move produced no fact; otherwise it
 prepends the new fact to `rest`.
+
+```
+:per  :core                                             ::  11
+      ++  side   atom                                   ::  12
+      ++  spot   {x/atom y/atom}                        ::  13
+```
 
 Line `11` wraps a library core around a data structure core, a
 common pattern.  (You could put the molds and the gates in the
@@ -241,18 +306,49 @@ A side is a half of the board, as a marked/unmarked bitfield.
 
 Line `13` defines the `spot` mold, a 2D coordinate.
 
+```
+      ++  fact   :book  {$tie $~}                       ::  14
+                        {$win p/cord}                   ::  15
+                 ==                                     ::  16
+```
+
 Lines `14` to `16` define the `fact` mold, a game event (ie,
 output action), as a book (tagged union).  There are two forms of
 `fact`: `[%tie ~]` (reporting a tie), and `[%win cord]`
 (reporting that `'X'` or `'O'` won a game.
 
+```
+      ++  move   :book  {$x p/spot}                     ::  17
+                        {$o p/spot}                     ::  18
+                        {$z $~}                         ::  19
+                 ==                                     ::  20
+```
+
 Lines `17` to `20` define the `move` mold, a game move.  This is
 either `[%x spot]`, `[%o spot]`, or `[%z ~]` to reset the board.
+
+```
+      ++  game   :bank  w/?                             ::  21
+                        a/side                          ::  22
+                        z/side                          ::  23
+                 ==                                     ::  24
+      --                                                ::  25
+```
 
 Lines `21` to `23` define the `game` mold, the game state.  This
 is an `a` side, the next side to move; a `z` side, the other
 side; and `w`, which is `&` (yes) if `a` is X and `b` is O; `|`
 otherwise.  (Obviously, we swap `a` and `z` on every move.)
+
+```
+:core                                                   ::  26
+++  bo                                                  ::  27
+  :door   half/side                                     ::  28
+  ++  bit  :gate(a/atom =(1 (cut 0 [a 1] half)))        ::  29
+  ++  off  :gate(a/spot (add x.a (mul 3 y.a)))          ::  30
+  ++  get  :gate(a/spot (bit (off a)))                  ::  31
+  ++  set  :gate(a/spot (con half (bex (off a))))       ::  32
+```
 
 Line `26` introduces the library core, which contains the doors
 `bo` (for `side` bitfields) and `go` (for game state).
@@ -271,11 +367,26 @@ Line `32` is the `set` gate, which produces a new side with the
 bit at a `spot` set.  It works by ORing (`con`) `half` with the
 binary exponent (`bex`) of the offset (`off`) of the spot.
 
+```
+  ++  win  :calt  lien                                  ::  33
+             (rip 4 0wl04h0.4A0Aw.4A00s.0e070)          ::  34
+           :gate(a/atom =(a (dis a half)))              ::  35
+  --                                                    ::  36
+```
+
 Lines `33` to `35` are a victory test.  It calls the
 standard `lien` function, which iterates a boolean gate over a
 list and produces `&` (yes) if any item tests as true, against a
 list of magic bitfields (expanded from a base64 constant), each
 of which must equal itself when ANDed (`dis`) with `half`.
+
+```
+++  go                                                  ::  37
+  :door  game/game                                      ::  38
+  ++  do                                                ::  39
+    :gate  act/move                                     ::  40
+    :cast  {(unit fact) ^game}                          ::  41
+```
 
 Lines `37` to `38` begin the `go` core, a door around a `game`.
 Again we name the sample `game`.  (This is a legitimate style,
@@ -285,10 +396,28 @@ Lines `40` to `42` begin the `do` gate, whose sample is `act`, a
 move.  The product is cast to a pair of `(unit fact)` and a new
 game state, written `^game` to skip to the second binding.
 
+```
+    :case  act                                          ::  42
+      {$x *}  :sure(w.game ~(mo on p.act))              ::  43
+      {$o *}  :deny(w.game ~(mo on p.act))              ::  44
+      {$z *}  [~ nu]                                    ::  45
+    ==                                                  ::  46
+  ::                                                    ::  47
+```
+
 Lines `42` through `46` switch on the form of `act`.  If it's an
 `%x` or `%o` move, we assert that it's the right turn, then use
 the `mo` door to apply the move.  If it's a `%z` move, we clear
 the board.
+
+```
+  ++  nu  :like(game [& 0 0])                           ::  48
+  ++  on                                                ::  49
+    :door    here/spot                                  ::  50
+    ++  is   :or  (~(get bo a.game) here)               ::  51
+                  (~(get bo z.game) here)               ::  52
+             ==                                         ::  53
+```
 
 Line `48` is the `nu` arm, which produces a blank game state.
 
@@ -299,6 +428,18 @@ against the combination of game state and coordinate.
 
 Lines `51` to `53` define the `is` arm, which is `&` (yes) iff
 either `a` or `z` has played `here`.
+
+```
+    ++  mo   :cast  {(unit fact) ^game}                 ::  54
+             :deny  is                                  ::  55
+             :var   next/side  (~(set bo a.game) here)  ::  56
+             :if    ~(win bo next)                      ::  57
+                [[~ %win ?:(w.game %x %o)] nu]          ::  58
+             [~ game(w !w.game, a z.game, z next)]      ::  59
+    --                                                  ::  60
+  --                                                    ::  62
+--                                                      ::  63
+```
 
 Line `54` begins the `mo` arm, which produces (with a
 nonessential cast) a pair of `(unit fact)` and game state.
