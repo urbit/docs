@@ -46,7 +46,7 @@ Good.
 
 ### Messaging — `:talk`
 
-Use `^X` (ctrl-x) to change your prompt.  Let's join the main urbit chat channel:
+Use `^X` (ctrl-x) to change your prompt.  Let's join the main Urbit chat channel:
 
     ~fitund-macrep:talk() ;join ~doznec/urbit-meta
 
