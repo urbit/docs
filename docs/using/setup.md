@@ -83,10 +83,6 @@ which indicates the command was processed.
 
 ## Learn more
 
-We go into much greater detail about using each of these components in our walkthroughs:
+If you're eager to get started programming you're ready to head over to <a href="../../hoon/demo">the Hoon demo</a>.
 
-<list src="."></list>
-
-With your Urbit up and running you know enough to start learning to program:
-
-<list src="../programming/deep"></list>
+To learn more about using the system, let's keep going:
