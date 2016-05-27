@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++jone`
 
 `++json` number from unigned

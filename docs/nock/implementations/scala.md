@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 title: Scala
 sort: 4
 next: true

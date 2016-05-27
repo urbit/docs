@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++stud`
 
 Parse UTC format

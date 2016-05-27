@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 title: Hoon
 sort: 7
 ---

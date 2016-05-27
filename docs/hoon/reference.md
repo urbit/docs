@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 9
 title: Twig reference
 ---

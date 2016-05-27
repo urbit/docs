@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 next: false
 sort: 3
 title: Network messages

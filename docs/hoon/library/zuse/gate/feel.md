@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++feel`
 
 Generate file diff

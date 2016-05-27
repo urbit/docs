@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++tell`
 
 octs from wall

@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++file`
 
 Simple file load

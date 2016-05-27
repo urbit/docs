@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++tope`
 
 Parse beam to path

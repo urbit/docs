@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++deal`
 
 Add leap seconds

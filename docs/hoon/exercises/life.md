@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 5
 comments: true
 ---

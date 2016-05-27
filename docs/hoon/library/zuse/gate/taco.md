@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++taco`
 
 Converts an atom to an octet stream [`++octs`](), which contains a length, to

@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 2
 next: true
 title: Explanation

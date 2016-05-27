@@ -1,8 +1,8 @@
 ---
+navhome: /docs
 next: true
 sort: 2
 title: Setup
-navhome: /docs
 ---
 
 # Getting started

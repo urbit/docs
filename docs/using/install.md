@@ -1,8 +1,8 @@
 ---
+navhome: /docs
 next: true
 sort: 1
 title: Install
-navhome: /main
 ---
 
 # Install

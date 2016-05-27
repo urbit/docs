@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++lead`
 
 Subtract leap seconds

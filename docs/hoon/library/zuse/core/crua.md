@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++crua`
 
     ++  crua  !:                                            ::  cryptosuite A (RSA)

@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++perk`
 
 Parse cube with fork

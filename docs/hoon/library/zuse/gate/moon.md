@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++moon`
 
 Mime type to `++cord`

@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++deft`
 
 Import URL path

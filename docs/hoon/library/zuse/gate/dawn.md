@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++dawn`
 
 Weekday of Jan 1

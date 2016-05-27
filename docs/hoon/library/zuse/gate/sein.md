@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++sein`
 
 Direct parent
