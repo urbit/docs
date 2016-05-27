@@ -3,7 +3,7 @@ Urbit docs
 
 These are the urbit docs as they appear on [urbit.org](urbit.org/docs).  
 
-Ongoing work on the docs continues on the `reorg` branch of this repo.  If you'd like to serve the contents from your Urbit just copy `docs/` and `docs.md` into `web/` inside your urbit. 
+If you'd like to serve the contents from your Urbit just copy `docs/` and `docs.md` into `web/` inside your urbit. 
 
 
 Contributing
