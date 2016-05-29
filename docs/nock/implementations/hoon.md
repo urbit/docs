@@ -2,6 +2,7 @@
 navhome: /docs
 title: Hoon
 sort: 7
+next: true
 ---
 
 # Hoon 
