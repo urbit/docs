@@ -2,7 +2,6 @@
 navhome: /docs
 title: Groovy
 sort: 8
-next: true
 ---
 
 # Groovy 
