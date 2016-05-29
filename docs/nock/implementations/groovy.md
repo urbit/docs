@@ -9,6 +9,17 @@ sort: 8
 From [Kohányi Róbert](https://github.com/kohanyirobert/gnock/blob/master/gnock.groovy):
 
 ```
+def i(def a) {
+  a.class in [
+    byte, Byte,
+    char, Character,
+    short, Short,
+    int, Integer,
+    long, Long,
+    BigInteger
+  ] && a >= 0
+}
+
 def n(def a) {
   if (a in List) {
     if (a.size() == 1) {
@@ -20,15 +31,15 @@ def n(def a) {
     } else {
       throw new IllegalStateException()
     }
-  } else if (a in Integer && a >= 0) {
-    a
+  } else if (i(a)) {
+    (BigInteger) a
   } else {
     throw new IllegalStateException()
   }
 }
 
 def wut(def a) {
-  a in Integer ? 1 : 0
+  i(a) ? 1 : 0
 }
 
 def lus(def a) {
@@ -50,7 +61,7 @@ def fas(def a) {
     throw new IllegalStateException()
   }
   def h = a[0]
-  if (!(h in Integer)) {
+  if (!i(h)) {
     throw new IllegalStateException()
   }
   def t = a[1]
@@ -59,18 +70,19 @@ def fas(def a) {
   } else if (h == 1) {
     t
   } else {
-    if (t in Integer) {
+    if (i(t)) {
       throw new IllegalStateException()
-    } else if (h == 2) {
+    }
+    if (h == 2) {
       t[0]
     } else if (h == 3) {
       t[1]
     } else {
-      def i = h.intdiv(2)
+      def x = h.intdiv(2)
       if (h.mod(2) == 0) {
-        fas([2, fas([i, t])])
+        fas([2, fas([x, t])])
       } else {
-        fas([3, fas([i, t])])
+        fas([3, fas([x, t])])
       }
     }
   }
