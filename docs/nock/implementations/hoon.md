@@ -1,8 +1,7 @@
 ---
 navhome: /docs
 title: Hoon
-sort: 7
-next: true
+sort: 8
 ---
 
 # Hoon 
