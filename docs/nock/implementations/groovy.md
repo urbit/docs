@@ -1,7 +1,7 @@
 ---
 navhome: /docs
 title: Groovy
-sort: 8
+sort: 7
 ---
 
 # Groovy 
