@@ -54,7 +54,7 @@ the eye to tell whether a token on the screen is a feature of the
 language, or a label in the program.  For example, in Lisp a
 special form has the same syntax as a function call.
 
-The worst-case result of FLC is "DSL cancer".  Every source file
+The worst-case result of FLC is "DSL cancer."  Every source file
 is effectively written in its own domain-specific language.  To
 read a new file is to learn a new language -- "write-only code."
 
@@ -139,10 +139,10 @@ Some twigs (simple leafy ones) have *only* irregular forms.
 A regular form starts with a *sigil*, which is either a
 *keyword* or a *rune* -- at the programmer's choice.
 
-A *keyword* is `:` and then the stem label - eg, `:cons`.
+A *keyword* is `:` and then the stem label - e.g., `:cons`.
 
-A *rune* is a pair of ASCII punctuation marks (a digraph) - eg,
-`:-`.  The first glyph in the rune indicates the category - eg,
+A *rune* is a pair of ASCII punctuation marks (a digraph) - e.g.,
+`:-`.  The first glyph in the rune indicates the category - e.g.,
 `:` runes make cells.  Runes can be pronounced by their glyphs or
 by their stem -- for `:-`, you can say either "colhep" or "cons".
 
@@ -196,7 +196,7 @@ both tall/flat mode switches and well-shaped gaps.  (Hoon layout
 could probably be done automatically with reasonable quality.
 But it would at least take machine learning, not a rule engine.)
 
-There only two real *rules* in Hoon whitespace design: don't
+There are only two real *rules* in Hoon whitespace design: don't
 go past 80 characters, and don't use (completely) blank lines.
 Otherwise, if it looks good and is easy to read, it's good.  But
 the best way to learn the art is to do everything by convention
