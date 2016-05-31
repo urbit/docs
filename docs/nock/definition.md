@@ -109,7 +109,7 @@ in the subject.
 
 A formula `[1 b]` produces the constant noun `b`.
 
-A formula `[2 b c]` treats `b` and `c` is formulas, resolves each
+A formula `[2 b c]` treats `b` and `c` as formulas, resolves each
 against the subject, then computes Nock again with the product of
 `b` as the subject, `c` as the formula.
 
