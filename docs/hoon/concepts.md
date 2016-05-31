@@ -143,7 +143,7 @@ b
 ```
 or the tall rune syntax (here on one line, with double spaces):
 ```
-:-  a  b
+%-  a  b
 ```
 
 ### `span` (type, as range)
