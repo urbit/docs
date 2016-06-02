@@ -5,7 +5,7 @@ sort: 8
 next: true
 ---
 
-# Groovy 
+# Scheme 
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock.ss):
 
