@@ -10,6 +10,7 @@ next: true
 From [Kohányi Róbert](https://github.com/kohanyirobert/gnock/blob/master/gnock.groovy):
 
 ```
+@Memoized
 def i(def a) {
   a.class in [
     byte, Byte,
@@ -21,28 +22,40 @@ def i(def a) {
   ] && a >= 0
 }
 
+@Memoized
 def n(def a) {
+  def r
+  n(a, { r = it })
+  r
+}
+
+@TailRecursive
+def n(def a, def r) {
   if (a in List) {
     if (a.size() == 1) {
-      n(a[0])
-    } else if (a.size() == 2) {
-      [n(a[0]), n(a[1])]
-    } else if (a.size() > 2) {
-      [n(a[0]), n(a.tail())]
+      r(a[0])
+    } else if (a.size() >= 2) {
+      n(a[0], { t ->
+        n(a.size() == 2 ? a[1] : a.tail(), { h ->
+          r([t, h])
+        })
+      })
     } else {
       throw new IllegalStateException()
     }
   } else if (i(a)) {
-    (BigInteger) a
+    r((BigInteger) a)
   } else {
     throw new IllegalStateException()
   }
 }
 
+@Memoized
 def wut(def a) {
   i(a) ? 1 : 0
 }
 
+@Memoized
 def lus(def a) {
   if (wut(a) == 0) {
     throw new IllegalStateException()
@@ -50,6 +63,7 @@ def lus(def a) {
   1 + a
 }
 
+@Memoized
 def tis(def a) {
   if (wut(a) == 1) {
     throw new IllegalStateException()
@@ -57,7 +71,15 @@ def tis(def a) {
   a[0] == a[1] ? 0 : 1
 }
 
+@Memoized
 def fas(def a) {
+  def r
+  fas(a, { r = it })
+  r
+}
+
+@TailRecursive
+def fas(def a, def r) {
   if (wut(a) == 1) {
     throw new IllegalStateException()
   }
@@ -69,27 +91,34 @@ def fas(def a) {
   if (h == 0) {
     throw new IllegalStateException()
   } else if (h == 1) {
-    t
+    r(t)
   } else {
     if (i(t)) {
       throw new IllegalStateException()
     }
     if (h == 2) {
-      t[0]
+      r(t[0])
     } else if (h == 3) {
-      t[1]
+      r(t[1])
     } else {
-      def x = h.intdiv(2)
-      if (h.mod(2) == 0) {
-        fas([2, fas([x, t])])
-      } else {
-        fas([3, fas([x, t])])
-      }
+      fas([h.intdiv(2), t], { p ->
+        fas([2 + h.mod(2), p], { q ->
+          r(q)
+        })
+      })
     }
   }
 }
 
+@Memoized
 def tar(def a) {
+  def r
+  tar(a, { r = it})
+  r
+}
+
+@TailRecursive
+def tar(def a, def r) {
   if (wut(a) == 1) {
     throw new IllegalStateException()
   }
@@ -101,18 +130,28 @@ def tar(def a) {
   def o = f[0]
   def v = f[1]
   if (wut(o) == 0) {
-    [tar([s, o]), tar([s, v])]
+    tar([s, o], { p ->
+      tar([s, v], { q ->
+        r([p, q])
+      })
+    })
   } else {
     if (o == 0) {
-      fas([v, s])
+      r(fas([v, s]))
     } else if (o == 1) {
-      v
+      r(v)
     } else if (o == 3) {
-      wut(tar([s, v]))
+      tar([s, v], {
+        r(wut(it))
+      })
     } else if (o == 4) {
-      lus(tar([s, v]))
+      tar([s, v], {
+        r(lus(it))
+      })
     } else if (o == 5) {
-      tis(tar([s, v]))
+      tar([s, v], {
+        r(tis(it))
+      })
     } else {
       if (wut(v) == 1) {
         throw new IllegalStateException()
@@ -120,29 +159,43 @@ def tar(def a) {
       def x = v[0]
       def y = v[1]
       if (o == 2) {
-        tar([tar([s, x]), tar([s, y])])
+        tar([s, x], { p ->
+          tar([s, y], { q ->
+            tar([p, q], {
+              r(it)
+            })
+          })
+        })
       } else if (o == 7) {
-        tar(n([s, 2, x, 1, y]))
+        tar(n([s, 2, x, 1, y]), {
+          r(it)
+        })
       } else if (o == 8) {
-        tar(n([s, 7, [[7, [0, 1], x], 0, 1], y]))
+        tar(n([s, 7, [[7, [0, 1], x], 0, 1], y]), {
+          r(it)
+        })
       } else if (o == 9) {
-        tar(n([s, 7, y, 2, [0, 1], 0, x]))
+        tar(n([s, 7, y, 2, [0, 1], 0, x]), {
+          r(it)
+        })
       } else if (o == 10) {
         if (wut(x) == 1) {
-          tar([s, y])
+          tar([s, y], {
+            r(it)
+          })
         } else {
-          def r = x[0]
-          def t = x[1]
-          tar(n([s, 8, t, 7, [0, 3], y]))
+          tar(n([s, 8, x[1], 7, [0, 3], y]), {
+            r(it)
+          })
         }
       } else {
         if (wut(y) == 1) {
           throw new IllegalStateException()
         }
-        def p = y[0]
-        def q = y[1]
         if (o == 6) {
-          tar(n([s, 2, [0, 1], 2, [1, p, q], [1, 0], 2, [1, 2, 3], [1, 0], 4, 4, x]))
+          tar(n([s, 2, [0, 1], 2, [1, y[0], y[1]], [1, 0], 2, [1, 2, 3], [1, 0], 4, 4, x]), {
+            r(it)
+          })
         } else {
           throw new IllegalStateException()
         }
