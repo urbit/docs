@@ -228,19 +228,17 @@ sets `b` to the default value of whatever type it is declared as.
 Since the default value of an atom is `0`, b is set to `0`.
 
 <blockquote class="blockquote">
-To find the default value of any given type, use `$*` ('buctar') followed by the type.
+To produce the default value of any given type, use `$*` ('buctar') followed by the type.
 Alternatively, use the irregular form `*`.
 
-    > ($* @)
-    0
-
-    > *@
+```
+    > *@ :: produce the default value of atom @
     0
  
-    > *@p
+    > *@p :: produce the phonemic base of atom @
     ~zod
 
-
+```
 </blockquote>
 
 So now we have two variables: `a` is set to our input, and `b` is
