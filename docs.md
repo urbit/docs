@@ -15,7 +15,7 @@ architecture description.  To install and run Urbit, read forward from the
 [installation guide](using/install).
 
 Most programmers start by [learning Hoon](hoon).  Some maniacs can skim the
-Hoon doc, then go straight to [Arvo systems programming](arvo/system).  All
+Hoon doc, then go straight to [Arvo systems programming](arvo).  All
 registered aspies are required to start with [Nock](nock).
 
 <br/>

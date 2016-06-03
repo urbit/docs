@@ -153,7 +153,7 @@ with keywords and move to runes; start with runes and stick
 with runes; or start with keywords and stick with keywords.
 
 Here's the FizzBuzz demo code, in idiomatic rune syntax.  Compare
-with the [original](../../demo).
+with the [original](../demo).
 
 ```
   |=  end/atom
