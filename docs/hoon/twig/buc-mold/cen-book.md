@@ -4,7 +4,7 @@ sort: 4
 
 ---
 
-# `:book  $%  "buctis"` 
+# `:book  $%  "buccen"` 
 
 `{$book p/(list {{aura @} moss})}`: mold which recognizes a union tagged by head atom.
 
