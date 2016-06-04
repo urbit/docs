@@ -57,7 +57,7 @@ To view your file as raw `html`:
 
 You may have noticed that we just created both `test.md` and `test/`. In urbit, there is no distinction between a directory and a file. So, if you're adding files directly from unix, simply `mkdir test` and urbit will treat the file and directory as the same entity. 
 
-You can use this feature to change your homepage at `your-urbit.urbit.org`. By default, this page will display some info about your urbit, but you can create the file `/home/web.md` to customize this page to your heart's content.
+You can use this feature to change your homepage at `your-urbit.urbit.org` with the page `/home/web.md`, where `home` is the current mounted desk. By default, `web.md` will display some info about your urbit, but you customize it to your heart's content.
 
 ## Examples
 
