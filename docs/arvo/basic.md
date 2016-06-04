@@ -9,7 +9,7 @@ title: Hoon refresher / crash course
 This recapitulates material you've already learned in [Hoon](/docs/hoon/).
 It will be a very abrupt tutorial if you don't know Hoon already,
 but it may be enough in and of itself.  If you don't find it obvious at first
-glance, read it over again. 
+glance, try working up from Hoon.
 
 Our goal is to get you programming interesting and useful things
 as soon as possible. To get there, we have to quickly cover some
