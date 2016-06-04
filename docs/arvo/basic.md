@@ -7,10 +7,10 @@ title: Hoon refresher / crash course
 
 # Basic Hoon
 
-This recapitulates material you've already learned in Core Hoon.
+This recapitulates material you've already learned in [Hoon](/docs/hoon/).
 It will be a very abrupt tutorial if you don't know Hoon already,
 but it may be enough in and of itself.  If you don't find it obvious at first
-glance, read it over again. 
+glance, try working up from Hoon.
 
 Our goal is to get you programming interesting and useful things
 as soon as possible. To get there, we have to quickly cover some
@@ -29,8 +29,8 @@ operation](/docs/user/basic) of your urbit.
 
 If you haven't copied in the examples repo, running the following commands from your urbit directory should do the trick:
 
-`cp -r {wherever-you've-pulled-to}/examples/gall/*/ arvo/`
-`cp -r {wherever-you've-pulled-to}/examples/dojo/*/ arvo/`
+`$ cp -r {wherever-you've-pulled-to}/examples/gall/*/ arvo/`
+`$ cp -r {wherever-you've-pulled-to}/examples/dojo/*/ arvo/`
 
 Run an example to ensure it worked:
 
@@ -115,10 +115,10 @@ more detail later.
 ### How to form expressions
 
 Hoon does not typically use reserved words to form expressions. Instead,
-expressions are formed with runes--diagraphs of two
-ascii symbols. Each rune takes a specific number of
-children--either expressions formed by other runes or literals
-that produce their own value (some runes take n children, and are usually closed with `==`).
+expressions are formed with _runes_: digraphs of two
+ASCII symbols. Each rune takes a specific number of
+children, either expressions formed by other runes or literals
+that produce their own value (some runes take _N_ children, and are usually closed with `==`).
 
 For example, the rune `?:` from line 17 is the classic
 'if-then-else' statement, and thus takes three children:
@@ -131,16 +131,16 @@ Since runes are such a fundamental structure in Hoon, we found
 ourselves speaking them out loud frequently. It quickly grew
 cumbersome to have to say "question mark, colon" to describe
 `?:`. To alleviate this problem, we came up with our own naming
-scheme: each ascii glyph has a single syllable pronunciation
+scheme: each ASCII glyph has a single-syllable pronunciation
 phonetically designed to be both easily remembered and easily
 pronounced in conjunction with the other glyphs (when forming a
 rune).
 
-See the entire naming schema below/or link to it:
+See the entire naming scheme below.
 
 ```
     ace [1 space]   gal <               pel (
-    bar |           gap [>1 space, nl]  per )
+    bar |           gap [>1 space, \n]  per )
     bas \           gar >               sel [
     buc $           hax #               sem ;
     cab _           hep -               ser ]
@@ -152,9 +152,9 @@ See the entire naming schema below/or link to it:
     fas /           pat @               zap !
 ```
 
-Using our naming scheme `?:` is said 'wut col'.
+Using this scheme, we would pronounce `?:` as 'wutcol'.
 
-For those that would prefer to use reserved words to form expressions, you can substitute a rune's keyword--which you can find in `++twig` in `/arvo/hoon.hoon`--for the rune. For example, here's the code for `?:` in `++twig`:
+For those who prefer to use reserved words to form expressions, you can substitute any rune with that rune's keyword, which you can find in `++twig` in `/arvo/hoon.hoon`. For example, here's the code for `?:` in `++twig`:
 
 `{$if p/twig q/twig r/twig}                          ::  ?:  if/then/else`
 
@@ -174,8 +174,8 @@ if(=(1 2) 'this is true' 'this is false')
 ### Lines 12-34
 
 Now let's quickly walk through this code line-by-line. Lines
-12-34 are wrapped in a `|%` (pronounced 'bar cen'), which
-produces a core, a fundamental datatype in hoon similar to a
+12-34 are wrapped in a `|%` ('barcen'), which produces a core.
+Cores are a fundamental datatype in Hoon, similar to a
 struct, class, or object. A core is just a map of names
 to any kind of code, whether it be functions or data. Each
 element in this map begins with a `++` followed by the name and
@@ -183,8 +183,8 @@ the corresponding code. Since `|%` takes an arbitrary number of
 children, it needs to be closed with a `--`.
 
 <blockquote class="blockquote">
-`++` is not technically a rune, since it is only used in core
-syntax as shown above
+`++` ('luslus') is not technically a rune, since it is only used 
+in core syntax, as shown above.
 </blockquote>
 
 Let's step into each of the three arms within our core.
@@ -196,16 +196,16 @@ Let's step into each of the three arms within our core.
       (add (five a) (three a))
     --
 
-`|=` produces a function, much like a lambda in lisp. It takes two children:
+`|=` ('bartis') produces a function, much like a lambda in lisp. It takes two children:
 
-- A set of argument(s). In this case our argument set only 
-  contains one: `a`, which is required to be an atom or natural 
+1. A set of argument(s). In this case our argument set only
+  contains one: `a`, which is required to be an atom or natural
   number, denoted by `@`.
 
-- The body of the function itself, which is executed when the
+1. The body of the function itself, which is executed when the
   function is called (in this case, with `(sum 1.000)`). This
   particular function adds the results of evaluating the gates `++
-  five` and `++three` with each of their respective input 
+  five` and `++three` with each of their respective input
   parameters set to `a`.
 
 ### ++  three
@@ -222,20 +222,34 @@ As above, `++three` takes an integer argument, `a`, and then
 executes the remainder of the code with `a` set to the actual
 arguments.
 
-Similarly, `=|` pushes its first child, `b` into our context (in
-other words, it declares a variable `b`) and executes the
-remainder of the code.  However, `b` is not an argument; `=|`
+Similarly, `=|` ('tisbar') pushes its first child, `b` into our
+context (in other words, it declares a variable `b`) and executes
+the remainder of the code.  However, `b` is not an argument; `=|`
 sets `b` to the default value of whatever type it is declared as.
 Since the default value of an atom is `0`, b is set to `0`.
+
+<blockquote class="blockquote">
+To produce the default value of any given type, use `$*` ('buctar') followed by the type.
+Alternatively, use the irregular form `*`.
+
+```
+    > *@ :: produce the default value of atom @
+    0
+ 
+    > *@p :: produce the phonemic base of atom @
+    ~zod
+
+```
+</blockquote>
 
 So now we have two variables: `a` is set to our input, and `b` is
 initialized to `0`.
 
-The easiest way to think about `|-` that it lays down a recursion
+One way to think about `|-` ('barhep') is that it lays down a recursion
 point. More on this later.
 
-`^-` is just a cast that sets the result of the remainder of the
-code to an unsigned integer, `@u`.
+`^-` ('kethep') is just a cast that sets the result of the remainder of 
+the code to an unsigned integer, `@u`.
 
 In pseudocode, the last three lines read like this: if `a` is
 less than `b`, produce zero. Else, add `b` to the result of
@@ -250,73 +264,73 @@ you recurse by an actual function call, then you have to specify
 every argument.
 
 <blockquote class="blockquote">
-If you're familiar with Clojure, `|-` is `loop` and `$()` is
-recur.
+If you're familiar with Clojure, `|-` is `loop` and `$()` is `recur`.
 </blockquote>
 
 **Exercises**:
 
-Please tweak your code to complete the following excercises.
+Tweak your code to complete the following excercises.
 
-There are a few runes and some syntaxes that we have yet to cover that
+There are a few runes and some syntax that we have yet to cover that
 you will need to complete the excercises below. For these, please
 refer to our cheatsheat at the bottom.
 
-- Read and understand `++five` line by line.
+1. Read and understand `++five` line by line.
 
-- Change `++sum` to accept two variables, `a` and `b`. Pass `a`
-  to three and `b` to five. Then run the code with `a` set to
-  `1.000` and ` q` set to `2.000`.
+1. Change `++sum` to accept two variables, `a` and `b`. Pass `a`
+  to `three` and `b` to `five`. Then run the code with `a` set to
+  `1.000` and `q` set to `2.000`.
 
-- Check if this new result is under one thousand. If it is,
-  return the string 'result is less than one thousand'. If not,
-  return 'result is greater than or equal to one thousand'.
+1. Check if this new result is under one thousand. If it is,
+  return the string `'result < 1.000'`. If not,
+  return `'result >= 1.000'`.
 
-```
-Review
+### Review
 
-|%  start core (collection of named ++ arms; an "object")
-|=  define function
-=|  define variable from type with default value
-|-  drop a recursion point
-^-  cast
-?:  if-then-else
-=(a b)  test equality
-(function args ...)  call function
+    |%  ('barcen') start core (collection of named ++ arms; an "object")
+    |=  ('bartis') define function
+    =|  ('tisbar') define variable from type with default value
+    |-  ('barhep') drop a recursion point
+    ^-  ('kethep') cast
+    ?:  ('wutcol') if-then-else
+    =(a b)  test equality
+    (function args ...)  call function with args
 
-New material
+### New material
 
-- There are two syntaxes for writing Hoon: tall form and wide
-  form.
+1. There are two syntaxes for writing Hoon: tallform and wideform.
 
-  In tall form, expressions are formed with either two spaces or
+  In tallform, expressions are formed with either two spaces or
   a line break separating both a rune from its children and each
-  of its children from one another. We use tall form when writing
+  of its children from one another. We use tallform when writing
   multiline expressions.
 
   For more concise expressions, we use wideform, which is always
-  a single line. Wideform can be used inside tall form
+  a single line. Wideform can be used inside tallform
   expressions, but not vice versa.
   
-  Wideform expressions are formed with a rune followed by ()
+  Wideform expressions are formed with a rune followed by `()`
   containing its children, all of which are separated by a
-  single space. For example to make a cell of two elements:
+  single space. For example, to make a cell of two elements:
 
-  :-(a b)
+      :-(a b)
 
   We've already seen wideform in action, for example with
-  =((mod b 3) 0).  In this case = is actually an irregular form
-  of .=, which tests its two children for equality.
+  `=((mod b 3) 0)`.  In this case, `=` is actually an irregular form
+  of `.=`, which tests its two children for equality.
 
-  Surrounding a function with () is an irregular wide form
-  syntax for calling a function with n arguments. More on this later.
+  Surrounding a function with `()` is an irregular wide form
+  syntax for calling a function with _N_ arguments. More on this later.
 
-- :-  makes a cell of values. The irregular wide form of this is
-  [a b], with two expressions separated by a single space. (While the regular form of this rune takes a fixed number of children--2--its irregular wide form can accept n expressions:[a1..an])
+1. `:-`  makes a cell of values. The irregular wide form of this is
+  `[a b]`, with two expressions separated by a single space. 
+  While the regular form of this rune takes a fixed number of 
+  children (two), its irregular wide form can accept _N_ expressions:
+  `[a1..an]`
 
-- Cords are one datatype for text in hoon. They're just a big
+2. Cords are one datatype for text in Hoon. They're just a big
   atom formed from adjacent unicode bytes -- a "c string". To
-  produce a cord enclose text within single quotes. To set the type
-  of an argument to a cord, use @t.
+  produce a cord, enclose text within single quotes. To set the type
+  of an argument to a cord, use `@t`.
 
-```
+
