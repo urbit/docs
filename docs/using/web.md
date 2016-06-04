@@ -46,7 +46,7 @@ Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
     This is a simple markdown file.
 
-    <div><list /><div/>
+    <div><list /></div>
 
 To view your file as raw `md`:
 
