@@ -14,10 +14,15 @@ Go to the [technical overview](about/overview) for a high-level
 architecture description.  To install and run Urbit, read forward from the
 [installation guide](using/install).
 
-Most programmers start by [learning Hoon](hoon).  Some maniacs can skim the
-Hoon doc, then go straight to [Arvo systems programming](arvo).  All
-registered aspies are required to start with [Nock](nock).
+To begin developing for Urbit, start by learning Hoon [syntax](hoon/syntax), 
+then walk through the [Arvo tutorials](arvo). The examples and exercises 
+in Arvo will teach you to build high-level programs and interact with the network. 
 
+Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
+there for pure-code exercises and functions in the [standard library](hoon/library). 
+
+Registered academics are required to start with the [Nock definition](nock/definition)
+and work upward from there. 
 <br/>
 <br/>
 

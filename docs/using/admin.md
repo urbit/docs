@@ -23,11 +23,11 @@ You can turn your Urbit off with `^D` from the `:talk` or `:dojo` prompts.
 
 To restart your Urbit simply pass the name of your pier:
 
-    bin/urbit some-planet
+    $ bin/urbit some-planet
 
 or
 
-    bin/urbit comet
+    $ bin/urbit comet
 
 ## Console
 
