@@ -21,8 +21,6 @@ Regular: *2-fixed*.
 ```
 ~zod:dojo> :like('text' %a)
 'a'
-~zod:dojo> :like('text' 97)
-nest-fail
 ```
 
 
