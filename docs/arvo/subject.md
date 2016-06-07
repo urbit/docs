@@ -13,26 +13,28 @@ earlier.
     :-  %noun
     =<  (sum [1.000 2.000])
     
-This program is a cell of two elements: the first, `%say`, tells
-the interpreter what to produce--in this case a value.
+The first rune, `:-` (colhep, aka [:cons](/hoon/twig/col-cell/hep-cons/)),
+constructs the 2-element cell that will be our program. The first element, 
+`%say`, tells the interpreter what to produce--in this case a value.
 
 The second element is `|=`, which we know produces a function.
 `|=`'s first child is its argument(s), which in this case is any
 noun (`*`).  Its second child is the remainder of the program.
 
-Similarly, the rest of the program is a cell of the literal
-`%noun`, which tells the shell that we're producing a value of
-type `noun`, and the code that we run to actually produce our value of the type `noun`.
+Similarly, the rest of the program (which we construct
+with another `:-`) is a cell of the literal `%noun`, which tells 
+the shell that we're producing a value of type `noun`, and the 
+code that we run to actually produce our value of the type `noun`.
 
-`=<` is a rune that takes two children. The second child is the
+`=<` (tisgal) is a rune that takes two children. The second child is the
 context against which we run the first child. So in this case, we
-are running the expression `(sum 1.000)` against everything
+are running the expression `(sum [1.000 2.000])` against everything
 contained within the `|%`. In Hoon, we call the code executed the
 "formula" and its context the "subject".
 
 ```
 ::::::::::::::::::::::::::::::
-=<  (sum 1.000)             :: formula
+=<  (sum [1.000 2.000])             :: formula
 ::::::::::::::::::::::::::::::
 |%                          ::
 ++  three                   ::
@@ -70,7 +72,7 @@ Scheme allows a sort of reification of the context through
 continutations, and some may see a parallel to Forth's stack, but
 Hoon takes takes the concept one step further.
 
-Our starting subject is the standard library, which is defined in
+Our starting subject is the [standard library](/hoon/library), which is defined in
 `/arvo/hoon.hoon` and `/arvo/zuse.hoon`.  This is where functions
 like `add` are defined.  When we define a core with `|%`, we
 don't throw away the subject (i.e. the standard library); rather,
@@ -79,7 +81,7 @@ accessible.
 
 **Exercises**:
 
-- Pass `++sum` its arguments (`2000` and `3000`) from the
+- Pass `++sum` its arguments (`2.000` and `3.000`) from the
   commandline.
 
 - Comment out all of the arms of the `|%`. Now add another arm
@@ -99,6 +101,6 @@ Cheatsheet:
   `[new-element list]`
 - For example, the first three positive integers are `[1 2 3
   ~]`
-- `gte` tests whether `a` is greater than or equal to `b`.
-- `mod` runs the modulo operation on two atoms.
+- `(gte a b)` tests whether `a` is greater than or equal to `b`.
+- `(mod a b)` runs the modulo operation on two atoms.
 - See the basic math section in `/arvo/hoon.hoon` for more info.

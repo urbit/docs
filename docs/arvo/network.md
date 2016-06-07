@@ -45,13 +45,11 @@ with the following commands:
 >=
 ```
 
-<blockquote class="blockquote">
-There is currently a bug where the `%argument` lines are
-printed *above* the line you entered, so your output may not
-look exactly like this.
-`>=` means that a command was successfully received and
-executed.
-</blockquote>
+> There is currently a bug where the `%argument` lines are
+> printed *above* the line you entered, so your output may not
+> look exactly like this.
+> `>=` means that a command was successfully received and
+> executed.
 
 Most of the app code should be simple enough to guess its
 function.  The important part of this code is the definition of
@@ -61,10 +59,10 @@ Once an app starts, it's always running in the background and you
 interact with it by sending it messages.  The most
 straightforward way to do that is to poke it from the command
 line, which we we did with `:echo 5` (`:[app-name]
-[argument(s)]).
+[argument(s)]`).
 
 In this case, `++poke-noun` takes an argument `arg` and prints it
-out with `~&`.  This is an unusual rune that formally "does
+out with `~&` (sigpam).  This is an unusual rune that formally "does
 nothing", but the interpreter detects it and printfs the first
 child, before executing the second as if the first didn't exist.
 This is a slightly hacky way of printing to the console, but
@@ -87,7 +85,7 @@ line).
 The second thing `++poke-noun` produces is our state.  `+>.$`
 refers to a particular address in our subject where our formal
 app state is stored.  It'll become clear why this is later on,
-but for now pretend that `+>.$` is a magic invocation that means
+but for now pretend that `+>.$` is a magic incantation that means
 "app state".
 
 Let's look at another example (edit your code in `/app/examples/echo/hoon` to reflect the code below).  Say we want to only accept a
@@ -121,10 +119,10 @@ have conversion routines to other marks, and some have diff,
 patch, and merge algorithms.  None of these are required for a
 mark to exist, however.
 
-`noun` and `atom` are two of dozens of predefined marks (that will
-already be in your `/mar` directory), and the
-user may add more at will.  The type associated with `noun` is
-`*`, and the type associated with `atom` is `@`.
+`noun` and `atom` are two predefined marks. In your `/mar` 
+directory, there are already many more, and you may add more 
+at will.  The type associated with `noun` is `*`, and the type 
+associated with `atom` is `@`.
 
 When we poke an app from anywhere, we do so with a mark that
 searches for the corresponding (`++poke-[mark]`) arm.  Data
@@ -146,7 +144,7 @@ gall: %square: no poke arm for noun
 > Recall the bug where `%square` may get printed above the input
 > line.
 
-Marks are powerful, and they're the backbone of urbit's data
+Marks are powerful, and they're the backbone of Urbit's data
 pipeline, so we'll be getting quite used to them.
 
 **Exercise**:
@@ -154,7 +152,7 @@ pipeline, so we'll be getting quite used to them.
 - Write an app that computes fizzbuzz on its input (as in the
   previous section).
 
-# Sending a message to another ship
+# Sending a message to another urbit
 
 Let's write our first network message!  Here's `/app/examples/pong.hoon`:
 
@@ -191,8 +189,8 @@ Run it with these commands:
 ```
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to
-do is to start a moon, a sub-identity of your urbit. If you don't know how to start a moon, see [the user admin section](/docs/using/admin/) Don't
-forget to start the `%examples-pong` app on that urbit too.  You should
+do is to start a moon, a sub-identity of your urbit. If you don't know how to start a moon, see [the user admin section](/docs/using/admin/). Don't
+forget to start the `%examples-pong` app on that urbit, too.  You should
 see, on the foreign urbit, this output:
 
 ```
@@ -200,11 +198,11 @@ see, on the foreign urbit, this output:
 ```
 
 Most of the code should be straightforward.  In `++poke-atom`,
-the only new thing is the expression `(@t arg)`.  As we already
-know, `@t` is the type of "cord" text strings. In Hoon, when types are called as functions, they serve as a validator function (called a "clam" in hoon) -- that is, a function whose domain is all nouns and range is the given type.
+the only new thing is the expression `(@t arg)`, which is the type `@t` being called as a function with argument `arg`.  As we already
+know, `@t` is the type of "cord" text strings. In Hoon, when types are called as functions, they serve as a validator function called a "clam" -- that is, a function whose domain is all nouns, and range is the given type (in this case, `@t`).
 
-In simpler terms, if a validator function is passed a value that
-falls within its type, that value is produced.  Otherwise, it
+In simpler terms, if a clam is passed a value of its own
+type, it produces that value.  Otherwise, it
 produces the default value (aka the "bunt") of its type.  Here we call
 this `@t` function on the argument.  This coerces the argument
 to text, so that we can print it out prettily no matter what
@@ -289,8 +287,8 @@ Of course, we have to push a new layer onto our duct
 before passing it along (or responding to it directly) anywhere.  This
 layer can have any data we want in it, but we don't need anything
 specific here, so we just use the wire `/sending`
-(`/elem1/elem2/elem n` is one syntax used to create `++path`s and
-`++wire`s of n elements).  If we were expecting a response (which
+(`/elem1/elem2/elemN` is one syntax used to create `++path`s and
+`++wire`s of N elements).  If we were expecting a response (which
 we're not), it would come back along the `/sending` wire, meaning
 that the path `/sending` will be passed back to the response
 handler as an argument.  Although it's not required, it's
@@ -299,18 +297,16 @@ bug-handling purposes.
 
 ##### Term (sys-call)
 
-Looking back at the general form of a move, there is a
-`term`--which is text composed lowercase ascii and `-`, and has
-the sign of `@tas`-- which in this case is `%poke`.  This is the
-name of the particular kind of move we're sending.  If you think
-of a move as a syscall (which you should), then this `term` is
-the name of the syscall.  Common ones include: `%poke`, to
-message an app; `%warp`, to read from the filesystem; `%wait`, to
+Each move also has a `term`, composed of lowercase ASCII and/or `-`.
+This `term` has the sign `@tas`. In this case, out `term` is `%poke`, 
+which is the name of the particular kind of move we're sending. 
+You can always use `%poke` to message an app. Other common names
+include `%warp`, to read from the filesystem; `%wait`, to
 set a timer; and `%them`, to send an http request. 
 
-The general form ends with `*` (a noun) since each type of move takes
+The move ends with `*` (that is, any noun) since each type of move takes
 different data.  In our case, a `%poke` move takes a target
-(urbit and app) and marked data and pokes the arm of the
+(urbit and app) and marked data, then pokes the arm of the
 corresponding mark on that app on that urbit
 with that data.  `[to-urbit-address %pong]` is the target urbit and app,
 `%atom` is the mark`, and `'howdy'` is the data.
@@ -320,12 +316,10 @@ When arvo receives a `%poke` move, it calls the appropriate
 between apps on the same urbit as for sending messages between
 apps on different urbits.
 
-<blockquote class="blockquote">
-We said earlier that we're not expecting a response.  This is
-not entirely true:  the `++coup` is called when we receive
-acknowledgment that the `++poke` was called.  We don't do
-anything with this information right now, but we could.
-</blockquote>
+> We said earlier that we're not expecting a response.  This is
+> not entirely true:  the `++coup` is called when we receive
+> acknowledgment that the `++poke` was called.  We don't do
+> anything with this information right now, but we could.
 
 **Exercises**:
 
@@ -368,5 +362,6 @@ anything with this information right now, but we could.
 %success
 ```
 
-- Put `even` and `odd` on two separate ships and pass the
-  messages over the network.
+- Put `even` and `odd` on two separate urbits and pass the
+  messages over the network. Post a link to a working solution 
+  in :talk to receive a cookie.
