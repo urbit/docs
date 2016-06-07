@@ -11,7 +11,7 @@ noun with the subject.
 ## Expands to
 
 ```
-?@(p :pin(:name(p q) r) :pin(:cast(:(coat p) q) r)
+?@(p :pin(:name(p q) r) :pin(:cast(:coat(p q) r)
 ```
 
 ## Syntax
