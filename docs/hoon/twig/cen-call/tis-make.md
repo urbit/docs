@@ -26,9 +26,9 @@ Irregular: `foo(x 1, y 2, z 3)` is `:make(foo x 1, y 2, z 3)`.
 Note that `p` is a wing, not a twig.  Knowing that a function
 call `(foo bar)` involves making `foo`, replacing its sample 
 at slot `+6` with `bar`, and taking the `$` limb, you might think
-`(foo bar)` would mean `:(make foo +6 bar)`.
+`(foo bar)` would mean `:make(foo +6 bar)`.
 
-But it's actually `:pin(foo :(make $ +2 +6 bar))`.  Even if `foo`
+But it's actually `:pin(foo :make($ +2 +6 bar))`.  Even if `foo`
 is a wing, we would just be mutating `+6` within the core that
 defines the `foo` arm.  Instead we want to modify the *product*
 of `foo` -- the gate -- so we have to pin it into the subject.
