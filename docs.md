@@ -1,24 +1,31 @@
 ---
 anchor: none
-layout: no-anchor
-logo: black
+footer: true
+title: Develop
+sort: 4
 ---
 
-<div class="short">
+<div class="lead">
+    <div class="logo inverse"></div>
+    <h1 class="blue i-b">Urbit docs</h1>
+</div>
 
-# Urbit documentation
+Go to the [technical overview](about/overview) for a high-level
+architecture description.  To install and run Urbit, read forward from the
+[installation guide](using/install).
 
-The Urbit doc is divided into three parts: [user doc](docs/user),
-[developer doc](docs/dev), and [theory](docs/theory) (whitepaper, essays,
-videos, etc).
+To begin developing for Urbit, start by learning Hoon [syntax](hoon/syntax), 
+then walk through the [Arvo tutorials](arvo). The examples and exercises 
+in Arvo will teach you to build high-level programs and interact with the network. 
 
-If you want to try Urbit, start with the user doc.  If you want
-to learn about Urbit, try the theory.  Or just start with the
-user doc; it doesn't assume any prior knowledge.
+Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
+there for pure-code exercises and functions in the [standard library](hoon/library). 
 
-The most fun thing to do with Urbit is code, but the developer
-doc remains under construction.  Sorry.  We'll have more soon.
+Registered academics are required to start with the [Nock definition](nock/definition)
+and work upward from there. 
+<br/>
+<br/>
 
-<list dataSort="true"></list>
-
+<div class="sections">
+    <kids grid="true"></kids>
 </div>
