@@ -88,7 +88,7 @@ Let's quickly step through the default contents of `web/`:
 - `lib/js/urb.js` - Base Urbit JS library.  Handles AJAX and polling.
 - `static.md` - Sample static file
 - `talk/` - Talk compiled JS / CSS
-- `talk.hoon` - Page body that loads the `dojo` React module.
+- `talk.hoon` - Page body that loads the `talk` React module.
 - `tree/` - Tree compiled JS / CSS
 - `tree.hoon` - Page body that loads the `tree` React module.
 
