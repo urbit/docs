@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++fuel`
 
 Parse fcgi

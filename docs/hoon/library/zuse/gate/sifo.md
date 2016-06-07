@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++sifo`
 
 64-bit encode

@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++gnom`
 
 Display ship name

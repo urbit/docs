@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++clan`
 
 Ship class

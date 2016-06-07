@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 1
 comments: true
 ---
@@ -22,7 +23,7 @@ comments: true
         "Fizz"
       ?:  =(0 (mod count 3))
         "Buzz"
-      (text !>(count))
+      (pave !>(count))
     $(count (add 1 count))
     ```
 

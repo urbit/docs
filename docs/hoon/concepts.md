@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 3
 next: true
 title: Concepts
@@ -77,7 +78,7 @@ Turing-complete, non-lambda combinator function.  The function
 takes a cell `{subject formula}`, and produces a noun `product`.
 
 To program in Hoon, this is all you need to know about Nock.  But
-it's still bfun and useful to [learn more](../../nock).
+it's still fun and useful to [learn more](../../nock).
 
 ## Compilation concepts
 
@@ -120,7 +121,7 @@ contain flat twigs, but not vice versa.
 
 Regular forms always start with a *sigil*, which is either a
 *keyword* or a *rune* at the programmer's choice.  A keyword is
-the stem cord, 
+the stem cord.
 
 For most stems, tall regular form has no delimiter or terminator,
 eliminating the `)))))` problem common in functional languages.
@@ -142,7 +143,7 @@ b
 ```
 or the tall rune syntax (here on one line, with double spaces):
 ```
-:-  a  b
+%-  a  b
 ```
 
 ### `span` (type, as range)
@@ -155,7 +156,7 @@ no syntax for spans; they are always defined by inference (ie, by
 ### `gate` (function)
 
 A `gate` is a Hoon function (lambda or closure).  Other
-constructs Urbit are functions in the mathematical sense -- for
+constructs in Urbit are functions in the mathematical sense -- for
 instance, a Nock formula is also a function.  But a gate is not a
 formula.  The gate's argument is its *sample*; the result is its
 *product*.

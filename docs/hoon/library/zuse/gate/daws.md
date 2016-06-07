@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++daws`
 
 Weekday of date

@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 7
 
 ---
@@ -44,7 +45,7 @@ In any case, since molds are just functions, we can use
 functional programming to assemble interesting molds.  For
 instance, `(map foo bar)` is a table from mold `foo` to mold
 `bar`.  `map` is not a mold; it's a function that makes a mold.
-Molds and mold builder sare generally described together.
+Molds and mold builders are generally described together.
 
 ## Stems
 

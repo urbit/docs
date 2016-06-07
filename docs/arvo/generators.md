@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 next: true
 sort: 8
 title: Using Generators with Apps

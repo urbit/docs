@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++mung`
 
 Virtualize slamming gate

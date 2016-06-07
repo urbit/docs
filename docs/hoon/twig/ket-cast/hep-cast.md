@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 2
 ---
 
@@ -14,7 +15,9 @@ sort: 2
 
 ## Syntax
 
-Regular: *2-fixed*
+Regular: *2-fixed*.
+
+Irregular: `` `foo`bar`` is `:cast(foo bar)`.
 
 ## Discussion
 
@@ -26,7 +29,7 @@ infinite loop in the compiler).
 
 ## Examples
 
-``
+```
 ~zod:dojo> (add 90 7)
 97
 ~zod:dojo> `@t`(add 90 7)

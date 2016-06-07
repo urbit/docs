@@ -1,6 +1,8 @@
 ---
 anchor: none
 footer: true
+title: Develop
+sort: 4
 ---
 
 <div class="lead">

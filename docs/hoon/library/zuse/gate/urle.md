@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++urle`
 
 Encode URL

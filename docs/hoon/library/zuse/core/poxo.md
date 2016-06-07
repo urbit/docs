@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++poxo`
 
 Print XML

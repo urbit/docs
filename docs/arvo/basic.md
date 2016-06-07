@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 1
 next: true
 title: Hoon refresher / crash course

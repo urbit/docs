@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++joba`
 
 `++json` from key-value pair

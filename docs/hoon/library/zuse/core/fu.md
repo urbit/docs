@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 3bA lite number theory
 ======================
 

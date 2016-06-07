@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++scanf` XX
 
 Formatted scan

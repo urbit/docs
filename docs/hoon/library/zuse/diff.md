@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 2eP diff
 ========
 

@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++jobe`
 
 Object from key-value list

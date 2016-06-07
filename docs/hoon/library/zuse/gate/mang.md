@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++mang`
 
 Unit: Slam gate with sample

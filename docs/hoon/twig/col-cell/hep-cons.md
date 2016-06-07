@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 1
 ---
 
@@ -22,7 +23,7 @@ Irregular: `a^b^c` is `[a b c]`.
 
 Irregular: `a+b` is `[%a b]`.
 
-Irregular: `\`a` is `[~ a]`.
+Irregular: `` `a`` is `[~ a]`.
 
 Irregular: `~[a b]` is `[a b ~]`.
 
@@ -39,4 +40,10 @@ compiler does), `[a b]` is the same as `[%cons a b]`.
 ```
 ~zod:dojo> :-(1 2)
 [1 2]
+~zod:dojo> 1^2
+[1 2]
+~zod:dojo> 1+2
+[%1 2]
+~zod:dojo> `1
+[~ 1]
 ```

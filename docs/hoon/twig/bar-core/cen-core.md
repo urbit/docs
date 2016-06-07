@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 1
 
 ---
@@ -20,7 +21,6 @@ Regular: *battery*.
 A core is like an "object" in a conventional language, but its
 attributes (*arms*) are functions on the core, not the core and
 an argument.  A "method" on a core is an arm producing a gate.
-gate.
 
 ## Examples
 

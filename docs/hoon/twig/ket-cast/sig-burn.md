@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 sort: 6
 ---
 
@@ -8,7 +9,7 @@ sort: 6
 
 ## Produces
 
-`p`, folded as a constqnt if possible.
+`p`, folded as a constant if possible.
 
 ## Syntax
 

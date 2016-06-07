@@ -1,5 +1,6 @@
 ---
-sort: 1
+navhome: /docs
+sort: 11
 ---
 
 # `:funk  ~/  "sigfas"`

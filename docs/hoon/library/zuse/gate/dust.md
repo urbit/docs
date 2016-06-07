@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++dust`
 
 Print UTC format

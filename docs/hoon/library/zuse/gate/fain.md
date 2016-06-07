@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++fain`
 
 Restructure path

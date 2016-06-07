@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 title: Haskell
 sort: 3
 next: true

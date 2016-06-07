@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++pojo`
 
 Print JSON

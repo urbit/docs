@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++jape`
 
 `++json` string from tape

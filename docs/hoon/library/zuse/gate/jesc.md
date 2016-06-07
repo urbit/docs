@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++jesc`
 
 Escape JSON character

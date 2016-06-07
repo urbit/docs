@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++tact`
 
 tape to octs

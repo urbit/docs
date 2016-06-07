@@ -1,3 +1,8 @@
+---
+navhome: /docs
+---
+
+
 ### `++glam`
 
 Galaxy names

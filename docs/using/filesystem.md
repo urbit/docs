@@ -1,4 +1,5 @@
 ---
+navhome: /docs
 next: true
 sort: 6
 title: Filesystem
