@@ -86,7 +86,7 @@ line).
 The second thing `++poke-noun` produces is our state.  `+>.$`
 refers to a particular address in our subject where our formal
 app state is stored.  It'll become clear why this is later on,
-but for now pretend that `+>.$` is a magic incantation that means
+but for now pretend that `+>.$` is a magic invocation that means
 "app state".
 
 Let's look at another example (edit your code in `/app/examples/echo/hoon` to reflect the code below).  Say we want to only accept a
