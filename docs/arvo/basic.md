@@ -90,14 +90,12 @@ under `/gen/examples/euler1`):
 ```
 
 
-<blockquote class="blockquote">
-Hoon is not generally whitespace sensitive, but we do have two
-different kinds of whitespace: a single space and a gap, which
-is two or more spaces or a linebreak. Tabs are taboo. Do not
-use them. Really. For a more detailed explanation of when to
-use spaces vs. gaps, see the syntax section before the first
-excercises.
-</blockquote>
+> Hoon is not generally whitespace sensitive, but we do have two
+> different kinds of whitespace: a single space and a gap, which
+> is two or more spaces or a linebreak. Tabs are taboo. Do not
+> use them. Really. For a more detailed explanation of when to
+> use spaces vs. gaps, see the syntax section before the first
+> exercises.
 
 
 ### Lines 1-11:
@@ -182,10 +180,8 @@ element in this map begins with a `++` followed by the name and
 the corresponding code. Since `|%` takes an arbitrary number of
 children, it needs to be closed with a `--`.
 
-<blockquote class="blockquote">
-`++` ('luslus') is not technically a rune, since it is only used 
-in core syntax, as shown above.
-</blockquote>
+> `++` ('luslus') is not technically a rune, since it is only used 
+> in core syntax, as shown above.
 
 Let's step into each of the three arms within our core.
 
@@ -228,19 +224,17 @@ the remainder of the code.  However, `b` is not an argument; `=|`
 sets `b` to the default value of whatever type it is declared as.
 Since the default value of an atom is `0`, b is set to `0`.
 
-<blockquote class="blockquote">
-To produce the default value of any given type, use `$*` ('buctar') followed by the type.
-Alternatively, use the irregular form `*`.
-
-```
-    > *@ :: produce the default value of atom @
-    0
- 
-    > *@p :: produce the phonemic base of atom @
-    ~zod
-
-```
-</blockquote>
+> To produce the default value of any given type, use `$*` ('buctar') followed by the type.
+> Alternatively, use the irregular form `*`.
+> 
+> ```
+>     > *@ :: produce the default value of atom @
+>     0
+>  
+>     > *@p :: produce the phonemic base of atom @
+>     ~zod
+> 
+> ```
 
 So now we have two variables: `a` is set to our input, and `b` is
 initialized to `0`.
@@ -263,9 +257,7 @@ Note that we only specify what changes (`b` in this case).  If
 you recurse by an actual function call, then you have to specify
 every argument.
 
-<blockquote class="blockquote">
-If you're familiar with Clojure, `|-` is `loop` and `$()` is `recur`.
-</blockquote>
+> If you're familiar with Clojure, `|-` is `loop` and `$()` is `recur`.
 
 **Exercises**:
 

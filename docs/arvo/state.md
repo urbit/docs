@@ -60,43 +60,43 @@ It's passed in and produced explicitly.  In Unix systems,
 application state is just a block of memory, which you need to
 serialize to disk if you want to keep it around for very long.
 
-In urbit, app state is a single (usually complex) value.  In our
+In Urbit, app state is a single (usually complex) value.  In our
 example, we have very simple state, so we defined `state=@`,
 meaning that our state is an atom.  Of course, `state` is just a
-name we're assigning to it, and you're free to use whatever name
-you want.
+name, and you're free to name your state whatever you like. But
+let's clarify a couple other things before we continue.
 
-There are at least two points you may be wondering about.  First, `bowl` is a set of general global state that is managed by the system.  It
-includes things like `now` (current time), `our` (our urbit
-identity), and `eny` (256 bits of guaranteed-fresh entropy).  For
-the full list of things in `++bowl`, search for `++  bowl` (note
-the double space) in `/arvo/zuse.hoon`.
+First, `bowl` is a set of general global states. This set is 
+managed by the system.  It includes things like `now` (the 
+current time), `our` (our urbit identity), and `eny` (256 bits
+of guaranteed-fresh entropy).  For the full list of things in 
+`++bowl`, search for `++  bowl` (note: two spaces) in 
+`/arvo/zuse.hoon`.
 
-<blockquote class="blockquote">
-This is a very common technique in learning hoon.  While
-documentation exists, often the easiest way to learn about an
-identifier you see in code is to search in `/arvo/zuse.hoon`
-and `/arvo/hoon.hoon` for it.  These are our two "standard
-libraries", and they're usually not hard to read.  Since
-urbit's codebase is relatively small (those two files are less
-than 15000 lines of code combined, and besides the standard
-library they include the hoon parser and compiler, plus the
-/arvo microkernel), you can usually use the code and the
-comments as reference doc.
-</blockquote>
+> This is, perhaps, the most common way to learn Hoon.
+> The easiest way to learn about an identifier you see in code 
+> is to search in `/arvo/zuse.hoon` and `/arvo/hoon.hoon` for it.  
+> These "standard libraries" are usually simple to read.  Since
+> Urbit's codebase is less than 15000 lines of code combined,
+> including the hoon parser, the compiler, and the
+> `/arvo` microkernel, you can usually use the code and its
+> comments as a reference doc.
+>
+> You can also read [zuse.hoon](https://github.com/urbit/arvo/blob/master/arvo/zuse.hoon) and [hoon.hoon](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon) in your browser.
 
-The second thing is that urbit needs no "serialize to disk" step.
+The second thing we should clear up is this: 
+Urbit needs no "serialize to disk" step.
 Everything you produce in the app state is persistent across
 calls to the app, restarts of the urbit, and even power failure.
-If you want to write to the filesystem, you can, but it's not
+If you want to write to the Unix filesystem, you can, but it's not
 needed for persistence.  Urbit has transactional events, which
 makes it an [ACID operating system](https://en.wikipedia.org/wiki/ACID).  Thus, you don't have to
-worry about persistence when programming in urbit or to ever go
+worry about persistence when programming in Urbit, or ever go
 through the hassle of having to set up and write to a database.
 
 **Exercises**:
 
-- Modify `:examples-sum` to reset the counter when you poke it with zero.
+- Modify `:examples-sum` to reset the counter when you poke it with 0.
 
 - Write an app that prints out the previous value you poked it
   with.  Sample output:
