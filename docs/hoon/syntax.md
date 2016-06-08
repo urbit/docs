@@ -366,3 +366,12 @@ simple and elegant problem*.
 Given an ugly or complex problem, lapidary naming is a liability,
 no matter the excellence of the programmer.  When in doubt, use
 long names and/or kebab-case.
+
+## Freedom
+
+If you came all this way to learn how to write apps, you're all
+set. This is about all you need to know to start getting your
+hands dirty. Refer back here or to the [standard library](/hoon/library) when
+needed, but for now, move on to [Arvo](/arvo) to continue learning. 
+
+If, however, good enough is *not* enough, feel free to dive deeper:
