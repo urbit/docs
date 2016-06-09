@@ -5,6 +5,8 @@ sort: 5
 title: Subscriptions
 ---
 
+# Subscriptions 
+
 We've dealt fairly extensively with "poke" messages to an app,
 but these are somewhat limited.  A poke is a one-way message, but
 more often we want to subscribe to updates from another app.  You
@@ -75,49 +77,48 @@ And secondly, `:examples-sink`:
 
 Cheat sheet:
 
-```
-- `&` can either be the boolean true (along with `%.y`, `0`), or
-  the irregular wide form of the `$&` rune, which computes the
-  logical 'and' operation on its two children.
+- `&` (pam) can either be the boolean true (along with `%.y`, `0`), or
+  the irregular wide form of the `?&` ([wutpam](/hoon/twig/wut-test/pam-and)) rune, which computes the
+  logical `AND` operation on its two children.
 
 - Similar to `&`,`|` is either the boolean false (along with `%.n` and `1`), or
-  the irregular short for of `?|`, which computes the logical 'or' operation on
-  its two children
+  the irregular short for of `?|` ([wutbar](/hoon/twig/wut-test/bar-or)), which computes logical `OR` on
+  its two children.
 
-- `!` is the irregular wide form of `?!`, which computes the logical `not` on
-  its child. 
+- `!` is the irregular wide form of `?!` ([wutzap](/hoon/twig/wut-test/zap-not/)), which computes 
+  logical `NOT` on its child. 
 
-- `?~` is basically an if-then-else statement that checks whether condition `p`
-  is `~` (null). `?~` is slightly different to `?:(~ %tru %fal) in that it
-  reduces to ?:($=(%type value) %tru %false). `$=` tests whether value `q`
-  falls within type `p`. One thing to watch out for in hoon: if you do `?~`, it
-  affects the type of the conditional value: XXexample
+- `?~` ([wutsig](/hoon/twig/wut-test/sig-ifno/)) is basically an if-then-else that checks whether condition `p`
+  is `~` (null). `?~` is slightly different from `?:(~ %tru %fal)` in that `?~`
+  reduces to `?:($=(%type value) %tru %false)`. `$=` ([buctis](/hoon/twig/buc-mold/tis-coat/)) tests whether 
+  value `q` is of type `p`. 
+  <!--One thing to watch out for in hoon: if you do `?~`, it
+  affects the type of the conditional value: XXexample-->
 
-- `:_` is just an inverted `:-`: all it does is accept children `p` and `q` and
-  produce an inverted tuple of the two, `[q p]`.
+- `:_` ([colcab](/hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it accepts `p` and `q`, and produces `[q p]`.
 
--  `++bowl` is the type of our system state within our app. For example, it
-   includes things like `our`, the ship name of the host, and  `now`, the
+-  `++bowl` is the type of the system state within our app. For example, it
+   includes things like `our`, the name of the host urbit, and  `now`, the
    current time. 
 
--  `$%` is a type constructor that defines a type composed of `n`
+-  `$%` ([buccen](/hoon/twig/buc-mold/cen-book/)) is a type constructor: it defines a new type, composed of `n`
    types that it is passed. For example `$%  @  *  ^  ==` is the
-   type of either `@`, `*`, or a cell `^`. XX this a union, right?
+   type of either `@`, `*`, or a cell `^`. <!--XX this is a union, right?-->
 
--  You may have noticed the separate `|%` above the application
-   core `|_`. We usually put our types in another core on top of the
+-  You may have noticed the separate `|%` ([barcen](/hoon/twig/bar-core/cen-core/)) above the application
+   core `|_` ([barcab](/hoon/twig/bar-core/cab-door/). We usually put our types in another core on top of the
    application core. We can access these type from our `|_`
-   because in hoon.hoon files, all cores are =>'ed (called) against
-   each other. Thus the `|%` with the types is in the context of
-   the `|_`, as it lies above it:  hoon.hoon  `=> |% w types =>
+   because in `hoon.hoon` files, all cores are called against
+   each other. (The shorthand for 'called' is `=>`.) Thus, the 
+   `|%` with the types is in the context of the `|_`, as it lies 
+   above it:  `hoon.hoon`  `=> |% w types =>
    |_`
 
   
-```
-
 Here's some sample output of the two working together:
 
 ```
+
 ~fintud-macrep:dojo> |start %examples-source
 >=
 ~fintud-macrep:dojo> |start %examples-sink
@@ -140,6 +141,7 @@ Here's some sample output of the two working together:
 ~fintud-macrep:dojo> :examples-source 7
 [%received-data 7]
 >=
+
 ```
 
 ###:examples-source
@@ -158,8 +160,8 @@ going to sending one kind of move.  The `%diff` move is a
 subscription update, and its content is marked data which gall
 routes to our subscribers.
 
-This is a slightly different kind of move than we've dealt with
-so far.  It's producing a result rather than calling other code
+This is a slightly different kind of move than [we've dealt with
+so far](/arvo/network).  It's producing a result rather than calling other code
 (i.e. it's a return rather than a function call), so if you
 recall the discussion of ducts, a layer gets popped off the duct
 rather than added to it.  This is why no wire is needed for the
@@ -199,7 +201,7 @@ who are subscribed on a path that begins with the given path.
 
 Now we have the list of relevant subscribers.  This a list of
 triples, `{bone @p path}`, where the only thing we really need is
-the bone because we don't care what urbit they are or what exact
+the bone, because we don't need to know their urbit or what exact
 path they subscribed on.  Thus, our transformer function takes
 `{o/bone *}` and produces `[o %diff %noun arg]`, which is a move
 that provides bone `o` with this subscription update:  `[%noun
@@ -228,7 +230,7 @@ when you subscribed, then the cancellation will happen correctly.
 
 The only state we need for `:examples-sink` is a boolean to indicate whether
 we're already subscribed to `:examples-source`.  We use `available/?`,
-where `?` is the sign of type boolean (similar to `*`, `@`) (which defaults to true).
+where `?` is the sign of type boolean (similar to `*`, `@`), which defaults to true (that is, `0`).
 
 In `++poke-noun` we check our input to see both if it's `%on` and
 we're available.  If so, we produce the move to subscribe to
@@ -253,8 +255,8 @@ as the one we originally subscribed on.
 
 We also set `available` to true (`&`).
 
-If neither of these cases are true, then we just print out our
-current subscription state and do nothing.
+If neither of these cases are true, then we print our 
+current subscription state.
 
 `++diff-noun` is called when we get a `%diff` update along a
 subscription with a mark of `noun`.  `++diff-noun` is given the
@@ -265,7 +267,7 @@ print out the data.
 `++reap` is called when we receive an acknowledgment as to
 whether the subscription was handled successfully. You can
 remember that `++reap` is the counterpart to `++peer` as it's
-almost spelled the same as 'peer' backwards. Similarly, `coup` is
+pronounced like 'peer' backwards. Similarly, `coup` is
 similar to 'poke' backwards.
 
 Moving forward, `++reap` is given the wire we attempted to
