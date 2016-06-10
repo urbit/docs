@@ -69,7 +69,7 @@ or `48.879`, whose parent is `~mun`, `0xef`, `239`.  The parent of
 
 A `span` defines a set (finite or infinite) of `noun`s and ascribes some semantics to it. There is no Hoon syntax for a `span`; it is always produced as the inferred range of an expression (`twig`).
 
-*See [basic types](../basic)*
+*See [basic types](../../hoon/basic/#-type-span-and-mold)*
 
 ###### `mold`: a type constructor / validator
 
@@ -78,7 +78,7 @@ A mold is an idempotent `gate` (function), accepting any `noun` and normalizing 
 - `icon`: the `span` of a `mold`
 - `bunt`: *(TODO: ??)*
 
-*See [`mold`](../twig/buc-mold/)*
+*See [`mold` `twig`s](../../hoon/twig/buc-mold/)*
 
 ###### `gate`: a function, lambda or closure
 
@@ -91,13 +91,13 @@ The `payload` of a `gate` has a shape of `{sample context}`.
 - `sample`: the argument *(TODO: or plural?)* of a `gate`
 - `context`: the subject in *(TODO: against?)* which a `gate` was defined
 
-*See [basic types](../basic)*
++*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span), [`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for calling a `gate`)*
 
 ###### `arm`: a named, functionally-computed attribute of a `core`
 
 The `twig` of each `arm` is compiled to a Nock formula, with the enclosing `core` itself as the subject.
 
-*See [basic types](../basic)*
+*See [basic types](../../hoon/basic)*
 
 ###### `core`: a code-data `cell`
 
@@ -127,7 +127,7 @@ Every `dry` `core` has a `metal` *(TODO: check)* which defines its *variance* mo
 - `zync`: *covariant*
 - `iron`: *contravariant*
 
-*See [advanced types](../advanced)*
+*See [advanced types](../../hoon/advanced)*
 
 ###### `foot`: a `wet` or `dry` `twig`
 
@@ -143,6 +143,8 @@ A Hoon `atom` is a Nock `atom`, with two additional pieces of metadata (TODO: ?)
 
 - `warm`: if the `unit` is `~` (null), any `atom` is in the `span`
 - `cold`: if the `unit` is `[~ x]`, where `x` is any `atom`, its only legal value is the constant `x`. *(TODO: what does this actually mean? What is the consequence of illegality?)*
+
+*See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*
 
 ###### `aura`: a soft `atom` type
 
@@ -167,7 +169,7 @@ A Hoon `atom` is a Nock `atom`, with two additional pieces of metadata (TODO: ?)
 
 - `tape` (`(list char)`): a `tape` is not an `aura`, but a `mold` for a collection where every item has an `aura` of `char` *(TODO: is this for easy indexing vs `@t`?)*
 
-*See [basic types](../basic)*
+*See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*
 
 ###### `loobean`: a Hoon boolean
 
@@ -193,11 +195,11 @@ The vast majority of `twig`s have a *regular form*, beginning with either a keyw
 
 - `sigil`: a keyword used to begin a `twig`
 
-Hoon does not have reserved words, but `sigil`s (prefixed with `:`), which are effectively aliases for `rune`s. For example, [`:cons` is `:-`](../twig/col-cel/hep-cons).
+Hoon does not have reserved words, but `sigil`s (prefixed with `:`), which are effectively aliases for `rune`s. For example, [`:cons` is `:-`](../../hoon/twig/col-cel/hep-cons).
 
-- `rune`: a pair of ASCII symbols used to begin a `twig` - the first symbol represents a family of related `twig`s. For example, the [`:` family](../twig/col-cell/) are all for cell-construction.
+- `rune`: a pair of ASCII symbols used to begin a `twig` - the first symbol represents a family of related `twig`s. For example, the [`:` family](../../hoon/twig/col-cell/) are all for cell-construction.
 
-*See [`twig` concept](../concepts) and [expressions](../twig/)*
+*See [`twig` concept](../../hoon/concepts/#-twig-expression) and [expressions](../../hoon/twig/)*
 
 ###### `limb`: attribute or variable reference
 
@@ -206,7 +208,7 @@ To resolve a `limb` named "foo", the `subject` is searched depth-first, head-fir
 - `leg`: a subexpression, or subtree of the `subject`. usually another `twig`, sometimes a symbol (`@tas`) or `wing`
 - `wing`: a list of `limb`s
 
-*See [Limbs and wings](../twig/limb)*
+*See [Limbs and wings](../../hoon/twig/limb)*
 
 ###### `face`: a named variable
 
@@ -222,7 +224,7 @@ A `face` is a `span` *(TODO: ?)* with a label (`@tas`) wrapped around it.
     - `alias`: a `face` that is a lazy reference to another `face`
     - `bridge`: a `face` that references a `twig`, against which the `face` label is resolved
 
-*See [advanced types](../advanced)*
+*See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*
 
 ###### `nest`: a type-casting operation
 
