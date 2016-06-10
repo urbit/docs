@@ -93,12 +93,6 @@ The `payload` of a `gate` has a shape of `{sample context}`.
 
 +*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span), [`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for calling a `gate`)*
 
-###### `arm`: a named, functionally-computed attribute of a `core`
-
-The `twig` of each `arm` is compiled to a Nock formula, with the enclosing `core` itself as the subject.
-
-*See [basic types](../../hoon/basic)*
-
 ###### `core`: a code-data `cell`
 
 The code (`battery`) is the head, the data (`payload`) is the tail. All code-data structures in normal languages (functions, objects, modules, etc) become `core`s in Hoon.
@@ -128,6 +122,12 @@ Every `dry` `core` has a `metal` *(TODO: check)* which defines its *variance* mo
 - `iron`: *contravariant*
 
 *See [advanced types](../../hoon/advanced)*
+
+###### `arm`: a named, functionally-computed attribute of a `core`
+
+The `twig` of each `arm` is compiled to a Nock formula, with the enclosing `core` itself as the subject.
+
+*See [basic types](../../hoon/basic)*
 
 ###### `foot`: a `wet` or `dry` `twig`
 
