@@ -179,7 +179,7 @@ A Hoon `atom` is a Nock `atom`, with two additional pieces of metadata (TODO: ?)
 
 ###### `twig`: a Hoon expression
 
-A `twig` is the name for any Hoon expression, and for the AST node representing the expression as compiled to Nock formula *(TODO: seems to be used interchangeably in the docs)*. It is a `book` with the form `{stem bulb}`.
+A `twig` is the name for any Hoon expression, and for the AST node representing the expression as compiled to a Nock formula *(TODO: seems to be used interchangeably in the docs)*. It is a `book` with the form `{stem bulb}`.
 
 - `book`: a tagged-union
 - `page`: an item in a `book`
@@ -195,11 +195,13 @@ The vast majority of `twig`s have a *regular form*, beginning with either a keyw
 
 - `sigil`: a keyword used to begin a `twig`
 
-Hoon does not have reserved words, but `sigil`s (prefixed with `:`), which are effectively aliases for `rune`s. For example, [`:cons` is `:-`](../../hoon/twig/col-cel/hep-cons).
+Hoon does not have reserved words, but `sigil`s (prefixed with `:`), which are effectively aliases for `rune`s. For example, [`:if` is `?:`](../../hoon/twig/wut-test/col-if/).
 
-- `rune`: a pair of ASCII symbols used to begin a `twig` - the first symbol represents a family of related `twig`s. For example, the [`:` family](../../hoon/twig/col-cell/) are all for cell-construction.
+- `rune`: a pair of ASCII symbols used to begin a `twig` - the first symbol represents a family of related `twig`s. For example, the [`?` family](../../hoon/twig/wut-test/) are all conditionals.
 
-*See [`twig` concept](../../hoon/concepts/#-twig-expression) and [expressions](../../hoon/twig/)*
+*regular forms* can alternate between *tall* and *wide* (or *flat*) syntax, *irregular formas* can use only the *wide*/*flat* syntax.
+
+*See [`twig` concept](../../hoon/concepts/#-twig-expression), [expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*
 
 ###### `limb`: attribute or variable reference
 
