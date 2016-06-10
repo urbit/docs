@@ -84,7 +84,7 @@ A mold is an idempotent `gate` (function), accepting any `noun` and normalizing 
 
 *TODO: simplify description*
 
-A `gate` is a specialized `core` with only one arm (whose name is the empty string (the symbol `$`). To call a `gate` on an argument, replace the `sample` (at tree address `6` in the `core`) with the argument, and then compute the `arm`.
+A `gate` is a specialized `core` with only one `arm` (whose name is the empty string (the symbol `$`). To call a `gate` on an argument, replace the `sample` (at tree address `6` in the `core`) with the argument, and then compute the `arm`.
 
 The `payload` of a `gate` has a shape of `{sample context}`.
 
@@ -188,10 +188,10 @@ A `twig` is the name for any Hoon expression, and for the AST node representing 
 
 A `twig` is either a `moss` ("mossy") or a `seed` ("woody"):
 
-- `moss`: a `twig` whose `product` is used a `mold`
-- `seed`: a `twig` whose `product` could by anything
+- `moss`: a `twig` whose `product` is used as a `mold`
+- `seed`: a `twig` whose `product` could be anything
 
-The vast majority of `twig`s have a *regular form*, beginning with either a keyword `sigil` or a digraph `rune`. Some `twig`s also have a syntactic *irregular form*, a handful have only an *irregular form*.
+The vast majority of `twig`s have a *regular form*, beginning with either a keyword `sigil` or a digraph `rune`. Some `twig`s also have a syntactic *irregular form*, a handful have *only* an *irregular form*.
 
 - `sigil`: a keyword used to begin a `twig`
 
