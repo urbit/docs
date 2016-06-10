@@ -5,6 +5,8 @@ sort: 6
 title: Marks
 ---
 
+# Marks
+
 We've used predefined marks already, but we haven't yet created
 our own marks.  Let's write a sample mark of our own, then chain
 it together with some preexisting ones to have fun with type
@@ -28,14 +30,14 @@ text, but there's no predefined mark for it.  Let's put the following code in:
 --
 ```
 
-Let's go through this line by line.  `/?  314` is the required
+`/?  314` is the required
 version number, just like in apps.  After that everything's in a
 `|_`, which is a `|%` core, but with input arguments.  In our
 case, the argument is the marked data.
 
 There are three possible top-level arms in the `|_` core,
-`++grab`, `++grow`, and `++grad`.  `++grad` is used for revision
-controlv (it contains diff/patch logic), and is covered elsewhere.  `++grab` specifies
+`++grab`, `++grow`, and `++grad` (which is used for revision
+control, covered elsewhere).  `++grab` specifies
 functions to convert from another mark to the current mark.
 `++grow` specifies how to convert from the current mark to
 another one.
