@@ -1,4 +1,6 @@
 ---
+navhome: /docs
+next: true
 sort: 3
 title: Glossary of Urbit Terms
 ---
@@ -48,7 +50,7 @@ or `48.879`, whose parent is `~mun`, `0xef`, `239`.  The parent of
 
 ### Nock
 
->Nock is a Turing-complete, non-lambda combinator function.
+> Nock is a Turing-complete, non-lambda combinator function.
 
 - `noun`: an `atom` or a `cell`
 - `atom`: any natural number
@@ -61,7 +63,7 @@ or `48.879`, whose parent is `~mun`, `0xef`, `239`.  The parent of
 
 ### Hoon
 
->Hoon is a strict, higher-order typed functional language which compiles itself to Nock.
+> Hoon is a strict, higher-order typed functional language which compiles itself to Nock.
 
 ###### `span`: an inferred type
 
@@ -110,7 +112,7 @@ The code (`battery`) is the head, the data (`payload`) is the tail. All code-dat
 
 *TODO: simplify*
 
->When we call a `wet` `arm`, we're essentially using the `twig` as a macro. We are not generating new code for every call site; we are creating a new type analysis path, which works as if we expanded the callee with the caller's context.
+> When we call a `wet` `arm`, we're essentially using the `twig` as a macro. We are not generating new code for every call site; we are creating a new type analysis path, which works as if we expanded the callee with the caller's context.
 
 - `dry`: polymorphic by means of *variance*
 
@@ -144,17 +146,18 @@ A Hoon `atom` is a Nock `atom`, with two additional pieces of metadata (TODO: ?)
 
 ###### `aura`: a soft `atom` type
 
-*alternately **odor***
+*alternately `odor`*
 
 *TODO: write a short summary*
 
 *TODO: are `aura`s always `mold`s? just the built-in `aura`s?*
 
->Auras are a lightweight, advisory representation of the units, semantics, and/or syntax of an `atom`. An `aura` is an atomic string; two auras are compatible if one is a prefix of the other.
-
->For instance, @t means UTF-8 text (LSB low), @ta means ASCII text, and @tas means an ASCII symbol. @u means an unsigned integer, @ud an unsigned decimal, @ux an unsigned hexadecimal. You can use a @ud atom as a @u or vice versa, but not as a @tas.
-
->Auras are truly soft; you can turn any `aura` into any other, statically, by casting through the empty `aura` `@`. Hoon is not dependently typed and can't statically enforce data constraints (for example, it can't enforce that a `@tas` is really a symbol).
+> Auras are a lightweight, advisory representation of the units, semantics, and/or syntax of an `atom`. An `aura` is an atomic string; two auras are compatible if one is a prefix of the other.
+>
+> For instance, @t means UTF-8 text (LSB low), @ta means ASCII text, and @tas means an ASCII symbol. @u means an unsigned integer, @ud an unsigned decimal, @ux an unsigned hexadecimal. You can use a @ud atom as a @u or vice versa, but not as a @tas.
+>
+> Auras are truly soft; you can turn any `aura` into any other, statically, by casting through the empty `aura` `@`. Hoon is not dependently typed and can't statically enforce data constraints (for example, it can't enforce that a `@tas` is really a symbol).
+>
 
 - `term` (`@tas`): a symbol - an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen ("worm-case"), first character must be lowercase *(TODO: alphabetic?)*.
 
@@ -227,10 +230,9 @@ A `face` is a `span` *(TODO: ?)* with a label (`@tas`) wrapped around it.
 
 ### Arvo
 
->Arvo is a nonpreemptive OS kernel, a single-threaded event interpreter.
+> Arvo is a nonpreemptive OS kernel, a single-threaded event interpreter.
 
 - `mark`
 - `generator`
 
 *... TODO*
-
