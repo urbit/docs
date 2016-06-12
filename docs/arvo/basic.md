@@ -157,7 +157,7 @@ Instead of:
 
 You can write:
 
-    if(=(1 2) 'this is true' 'this is false')
+    :if(=(1 2) 'this is true' 'this is false')
     'this is false'
 
 ### Lines 12-34
