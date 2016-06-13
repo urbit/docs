@@ -37,6 +37,8 @@ Registered academics are required to start with the [Nock definition](nock/defin
 <li><a href="https://github.com/urbit/docs">Documentation</a></li>
 </ul>
 
+<br />
+
 <b>Community / contact</b>
 <ul>
 <li>We use <code>:talk</code> on Urbit to chat.</li>
