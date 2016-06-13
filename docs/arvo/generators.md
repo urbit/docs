@@ -15,7 +15,7 @@ the "plumbing" way to interact with apps.  Generators are the
 `|merge`, there are no marks in sight.
 
 We've used generators before, back in [Basic
-Operation](/docs/user/basic).  At that point, we just used the generators
+Operation](/docs/using/admin).  At that point, we just used the generators
 to produce values -- we didn't pipe their results into apps.  In
 the dojo cast, the role of a generator is to take a list of
 arguments and produce a value, which is often, though not always,
