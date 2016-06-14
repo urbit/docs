@@ -186,7 +186,7 @@ limb, we just search the span depth-first.
 If a name is in the `p.p` map, it's an alias.  The map contains a
 `(unit twig)`; if the unit is full, the name resolves to that
 twig (compiled against the `q` span).  If the unit is empty,
-the name is blocked / skipped (see [limb](twig/limb) for what
+the name is blocked / skipped (see [limb](../twig/limb) for what
 this means).
 
 If a name is in the `q.p` map, it's a bridge.  When we search for
