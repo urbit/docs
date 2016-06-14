@@ -60,6 +60,10 @@ To set your audience back to `/urbit-meta`:
 
     ~your-urbit:talk> ;~doznec/urbit-meta
 
+Use `;leave` to unsubscribe from a channel:
+
+    ~your-urbit:talk> ;leave ~doznec/urbit-meta
+
 There are two ways of using `:talk`: from the CLI or through a web ui available at `http://your-urbit.urbit.org/talk` (or `http://localhost:8080/talk`).
 
 The web ui ships as compiled JavaScript on your Urbit, but has its own source repo [here](https://github.com/urbit/talk).
