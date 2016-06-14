@@ -23,8 +23,8 @@ To run this code, you'll need an urbit, and will have to copy the
 [examples repo](https://github.com/urbit/examples) into it.
 
 If you haven't installed urbit yet, check out the [installation
-instructions](/docs/user/install). Once urbit is installed, take a look
-at the [basic operation](/docs/user/basic) of your urbit.
+instructions](/docs/using/install). Once urbit is installed, take a look
+at the [basic operation](/docs/using/admin) of your urbit.
 
 If you haven't copied in the examples repo, running the following
 commands from your urbit directory should do the trick:

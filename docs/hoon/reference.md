@@ -10,6 +10,10 @@ title: Twig reference
 
 <div class="book">
 
+### [Atoms and strings](../twig/atom)
+
+### [Limbs and wings](../twig/limb)
+
 ## `$ buc` (mold)
 
 <list src="../twig/buc-mold" dataPreview="true" className="runes" childIsFragment="true"></list>
