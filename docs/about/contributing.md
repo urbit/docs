@@ -32,4 +32,4 @@ format your edited files with the following flags:
 `...`, which is grounds for termination. Run the following one-liner to
 atone.
 
-    $ sed '1,/^$/ s/^.../---/g' input.md > output.md
+    $ sed '1,/^$/ s/^\.\.\./---/g' input.md > output.md
