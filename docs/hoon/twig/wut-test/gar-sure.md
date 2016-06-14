@@ -3,7 +3,7 @@ navhome: /docs
 sort: 11
 ---
 
-# `:sure  ?<  "wutgar"`
+# `:sure  ?>  "wutgar"`
 
 `{$sure p/seed q/seed}`: positive assertion.
 
