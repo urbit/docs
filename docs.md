@@ -1,7 +1,7 @@
 ---
 anchor: none
 footer: true
-title: Develop
+title: Documentation
 sort: 4
 ---
 
