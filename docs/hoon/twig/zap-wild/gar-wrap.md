@@ -24,5 +24,5 @@ span-noun cell is generally called a `vase`.
 
 ```
 ~zod:dojo> !>(1)
-[#t/@ud q=1]
+[p=#t/@ud q=1]
 ```
