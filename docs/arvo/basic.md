@@ -157,13 +157,13 @@ Instead of:
 
 You can write:
 
-    if(=(1 2) 'this is true' 'this is false')
+    :if(=(1 2) 'this is true' 'this is false')
     'this is false'
 
 ### Lines 12-34
 
 Now let's quickly walk through this code line-by-line. Lines 12-34 are
-wrapped in a `|%` ('barcen'), which produces a core. Cores are a
+wrapped in a `|%` ('[barcen](/hoon/twig/bar-core/cen-core/)'), which produces a core. Cores are a
 fundamental datatype in Hoon, similar to a struct, class, or object. A
 core is just a map of names to any kind of code, whether it be functions
 or data. Each element in this map begins with a `++` followed by the
@@ -182,7 +182,7 @@ Let's step into each of the three arms within our core.
       (add (five a) (three a))
     --
 
-`|=` ('bartis') produces a function, much like a lambda in lisp. It
+`|=` ('[bartis](/hoon/twig/bar-core/tis-gate/)') produces a function, much like a lambda in lisp. It
 takes two children:
 
 1.  A set of argument(s). In this case our argument set only contains
@@ -207,7 +207,7 @@ takes two children:
 As above, `++three` takes an integer argument, `a`, and then executes
 the remainder of the code with `a` set to the actual arguments.
 
-Similarly, `=|` ('tisbar') pushes its first child, `b` into our context
+Similarly, `=|` ('[tisbar](/hoon/twig/tis-flow/bar-new/)') pushes its first child, `b` into our context
 (in other words, it declares a variable `b`) and executes the remainder
 of the code. However, `b` is not an argument; `=|` sets `b` to the
 default value of whatever type it is declared as. Since the default
@@ -225,10 +225,10 @@ value of an atom is `0`, b is set to `0`.
 So now we have two variables: `a` is set to our input, and `b` is
 initialized to `0`.
 
-One way to think about `|-` ('barhep') is that it lays down a recursion
+One way to think about `|-` ('[barhep](/hoon/twig/bar-core/hep-loop/)') is that it lays down a recursion
 point. More on this later.
 
-`^-` ('kethep') is just a cast that sets the result of the remainder of
+`^-` ('[kethep](/hoon/core/ket-cast/hep-cast/)') is just a cast that sets the result of the remainder of
 the code to an unsigned integer, `@u`.
 
 In pseudocode, the last three lines read like this: if `a` is less than
@@ -271,6 +271,8 @@ our cheatsheat at the bottom.
     ?:  ('wutcol') if-then-else
     =(a b)  test equality
     (function args ...)  call function with args
+
+Lookup each of these expressions (and all others!) in the [Twig Expressions](/hoon/twig/) definition.
 
 ### New material
 
