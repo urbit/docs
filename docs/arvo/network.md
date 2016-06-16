@@ -86,7 +86,7 @@ only accept a number, and then print out the square of that number.
 
     /?    314
     !:
-    |_  {bowl state=~}
+    |_  {bowl state/$~}
     ::
     ++  poke-atom
       |=  arg/@
@@ -149,7 +149,7 @@ Let's write our first network message! Here's `/app/examples/pong.hoon`:
       ++  move  {bone term wire *}
     --
     !:
-    |_  {bowl state=$~}
+    |_  {bowl state/$~}
     ::
     ++  poke-urbit
       |=  to/@p
