@@ -2,25 +2,35 @@
 navhome: /docs
 next: true
 sort: 3
-title: Glossary of Urbit Terms
+title: Urbit glossary
 ---
 
-# Glossary of Urbit Terms
+# Urbit glossary
 
-Here is a simple overview of the most common Urbit terms. Once you understand this, you know almost everything you need to start using Urbit.
+Urbit is renowned for its exotic terminology.  Here's a simple
+overview from the strange words in.
 
-## The Universe in a Table
+As Dijkstra put it: "The purpose of abstraction is not to be
+vague, but to create a new semantic level in which one can be
+absolutely precise."
+
+## Ships
+
+An Urbit `ship` is a cryptographic identity, a human-memorable
+name, and a packet routing address.  Ships are classed by the
+number of bits in their address:
 
     Size   Name    Parent  Object      Example
     -----  ------  ------  ------      -------
-    2^8    galaxy  ~       datacenter  ~zod
-    2^16   star    galaxy  sysadmin    ~doznec
+    2^8    galaxy  ~       supernode   ~zod
+    2^16   star    galaxy  supernode   ~doznec
     2^32   planet  star    user        ~tasfyn-partyv
     2^64   moon    planet  device      ~sigsam-nimbot-tasfyn-partyv
     2^128  comet   ~       bot         ~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex
-    any    urbit   *       *           ~somnym-anynym
 
-> The below summary is also available [here](http://urbit.org/posts/address-space/).
+Any ship can be called an `urbit`.
+
+> A summary [here](http://urbit.org/posts/address-space/).
 
 An Urbit identity is a string like `~firbyr-napbes`.  It
 means nothing, but it's easy to remember and say out loud.
@@ -50,13 +60,13 @@ or `48.879`, whose parent is `~mun`, `0xef`, `239`.  The parent of
 
 ### Nock
 
-> Nock is a Turing-complete, non-lambda combinator function.
+> Nock is a Turing-complete, non-lambda combinator interpreter.
 
 - `noun`: an `atom` or a `cell`
 - `atom`: any natural number
 - `cell`: any ordered pair of `noun`s
 - `subject`: a `noun` - the data against which a `formula` is evaluated
-- `formula`: a `cell` - any of the Nock formula numbers (0-10) or a pair of formulas that resolves to a cell.
+- `formula`: a `noun` - a function at the Nock level
 - `product`: a `noun` - the result of evaluating a `formula` against a `subject`
 
 *See [Nock definition](/nock/definition/).*
@@ -67,69 +77,88 @@ or `48.879`, whose parent is `~mun`, `0xef`, `239`.  The parent of
 
 ###### `span`: an inferred type
 
-A `span` defines a set (finite or infinite) of `noun`s and ascribes some semantics to it. There is no Hoon syntax for a `span`; it is always produced as the inferred range of an expression (`twig`).
+A `span` defines a set (finite or infinite) of `noun`s and
+ascribes some semantics to it. There is no Hoon syntax for a
+`span`; it is always produced as the inferred range of an
+expression (`twig`).
 
 *See [basic types](/hoon/basic/#-type-span-and-mold).*
 
-###### `mold`: a type constructor / validator
-
-A mold is an idempotent `gate` (function), accepting any `noun` and normalizing it to a range.
-
-- `bunt`: the default value of a `mold`
-- `icon`: the `span` of a `bunt`
-
-*See [`mold` `twig`s](/hoon/twig/buc-mold/).*
-
-###### `gate`: a function, lambda or closure
-
-A `gate` is a `core` with one `arm`. To call a `gate` on an argument, replace the `sample` (at tree address `6` in the `core`) with the argument, and then compute the `arm`.
-
-The `payload` of a `gate` has a shape of `{sample context}`.
-
-- `sample`: the argument
-- `context`: the subject in which a `gate` was defined
-
-*See [basic types](/hoon/basic/#-core-p-span-q-map-term-span), [`%-` or `:call`](/hoon/twig/cen-call/hep-call/) (the `twig` for calling a `gate`).*
-
 ###### `core`: a code-data `cell`
 
-The code (`battery`) is the head, the data (`payload`) is the tail. All code-data structures in normal languages (functions, objects, modules, etc) become `core`s in Hoon.
+The code (`battery`) is the head, the data (`payload`) is the
+tail. All code-data structures in normal languages (functions,
+objects, modules, etc) become `core`s in Hoon.
 
 - `battery`: the code of a `core`, a tree of `arm`s
 - `payload`: the data in a `core`
 
-`core`s are *polymorphic* structures; every function call (`gate`) in Hoon replaces the `payload` of a `core` with a different `noun`, and then invokes an `arm` from the `battery`.
+*See [basic types](/hoon/basic)*.
 
-- `wet`: polymorphic by means of *genericity*
+###### `arm`: a named, functionally-computed attribute of a `core`
 
-A `wet` `arm` uses the `twig` as a macro. We create a new type analysis path, which works as if we expanded the callee with the caller's context.
+The `twig` of each `arm` is compiled to a Nock formula, with the
+enclosing `core` itself as the subject.
 
-- `dry`: polymorphic by means of *variance*
+There are two kinds of `arm`s: `dry` and `wet`.  Most arms are
+dry.
 
-For a `dry` `arm`, we ask, is the new `payload` compatible with the old `payload` (against which the `core` was compiled)?
+- `dry`: normal, `++`, polymorphic by means of *variance*
 
-Every `core` has a `metal` which defines its *variance* model (ie, the properties of the `span` of a compatible `core`).
+For a `dry` `arm`, we ask, is the new `payload` compatible with
+the old `payload` (against which the `core` was compiled)?
+
+- `wet`: unusual, `--`, polymorphic by means of *genericity*
+
+A `wet` `arm` uses the `twig` as a macro. We create a new type
+analysis path, which works as if we expanded the callee with the
+caller's context.
+
+*See [advanced types](/hoon/advanced)*.
+
+###### `metal`: a variance model
+
+Every `core` has a `metal` which defines its *variance* model
+(ie, the properties of the `span` of a compatible `core`).
+The default is `gold` (invariant).
 
 - `gold`: *invariant*
 - `lead`: *bivariant*
-- `zync`: *covariant*
+- `zinc`: *covariant*
 - `iron`: *contravariant*
 
 *See [advanced types](/hoon/advanced)*.
 
-###### `arm`: a named, functionally-computed attribute of a `core`
+###### `gate`: a function/lambda/closure
 
-The `twig` of each `arm` is compiled to a Nock formula, with the enclosing `core` itself as the subject.
+A `gate` is a `core` with one `arm`. To call a `gate` on an
+argument, replace the `sample` (at tree address `6` in the
+`core`) with the argument, and then compute the `arm`.
 
-*See [basic types](/hoon/basic)*.
+The `payload` of a `gate` has a shape of `{sample context}`.
 
-###### `foot`: a `wet` or `dry` `arm`
+- `sample`: the argument tuple
+- `context`: the subject in which the `gate` was defined
+
+*See [basic types](/hoon/basic/#-core-p-span-q-map-term-span), [`%-` or `:call`](/hoon/twig/cen-call/hep-call/) (the `twig` for calling a `gate`).*
+
+###### `mold`: a type constructor / validator
+
+A mold is an idempotent `gate` (function), accepting any `noun`,
+and producing a range with a useful `span`.
+
+- `bunt`: the value a `mold` produces when normalizing its default sample
+- `icon`: the `span` of the `mold`'s range
+
+*See [`mold` `twig`s](/hoon/twig/buc-mold/).*
 
 ###### `atom`
 
-A Hoon `atom` is a Nock `atom`, with two additional pieces of metadata: an `aura`, and an optional constant.
+A Hoon `atom` span describes a Nock `atom`, with two additional
+pieces of metadata: an `aura`, and an optional constant.
 
-`atom`s are `warm` or `cold` based on whether the constant exists.
+An `atom` span are `warm` or `cold` based on whether the constant
+exists.
 
 - `warm`: if the constant is `~` (null), any `atom` is in the `span`
 - `cold`: if the constant is `[~ atom]`, its only legal value is `atom`.
@@ -138,62 +167,101 @@ A Hoon `atom` is a Nock `atom`, with two additional pieces of metadata: an `aura
 
 ###### `aura`: a soft `atom` type
 
-`aura` is a name for an atom type. It represents the structure of an `atom` in a string beginning with `@`. Any `aura` may change into any other by casting it through `@`, which by itself is an empty `aura`: [nominal equivalence](https://en.wikipedia.org/wiki/Nominal_type_system), rather than [structural equivalence](https://en.wikipedia.org/wiki/Structural_type_system).
+`aura` is a name for an atom type. It represents the structure of
+an `atom` in a string beginning with `@`.  An aura may represent
+units, print format, or other semantics.  Its constraints on the
+value of an atom aren't enforced in any way.
+
+Two `aura`s are compatible if one is a prefix of the other.  You
+can change any `aura` into any other `aura` by casting through
+the empty `aura`, `@`.   The standard library has molds which
+alias many common auras.
+
+Some common auras and their aliases:
 
 - `term` (`@tas`): a symbol - an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen ("kebab-case"), first character must be lowercase alphabetic.
-
 - `cord` (`@t`): UTF-8 text, least-significant-byte first
-
 - `char` (`@td`): a character, a single unicode byte (for multi-byte characters and codepoints, see `@c`)
-
-- `tape` (`(list char)`): a `tape` is not an `aura`, but a `mold` for a list where every item has an `aura` of `char`.
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
 
-###### `loobean`: a Hoon boolean
-
-`0` (`%.y`) is *true*, `1` (`%.n`) is *false*.
-
-> Why? It's fresh, it's different, it's new. And it's annoying. And it keeps you on your toes. And it's also just intuitively right.
-
 ###### `twig`: a Hoon expression
 
-A `twig` is the name for any Hoon expression, and for the AST node representing the expression as compiled to a Nock formula. It is a `book` with the form `{stem bulb}`.
+A `twig` is a Hoon expression.  Specifically, `twig` is the mold
+for the noun that a Hoon source expression compiles to.  A twig
+is always a cell.
 
-- `book`: a tagged-union
-- `page`: an item in a `book`
-- `stem`: an atomic symbol (`@tas`) - the name of a `twig`
-- `bulb`: The `mold` of the `twig`'s arguments.
+A twig has one of two forms: `{twig twig}`, which produces the
+ordered pair of the two twigs, or a cell `{stem bulb}`, where
+`stem` is an atomic symbol.
 
-The vast majority of `twig`s have a *regular form*, beginning with either a keyword `sigil` or a digraph `rune`. Some `twig`s also have a syntactic *irregular form*, a handful have *only* an *irregular form*.
+- `stem`: an atomic symbol (`@tas`) - the name of a `twig`.
+- `bulb`: The `mold` of the `twig`'s contents.
 
-- `sigil`: a keyword used to begin a `twig`
+Most `twig`s have a *regular form*, beginning with a `sigil`
+which is either a `keyword` or a `rune`.  Some `twig`s also have
+a syntactic *irregular form*; a few have *only* an *irregular
+form*.
 
-Hoon does not have reserved words, but `sigil`s (prefixed with `:`), which are effectively aliases for `rune`s. For example, [`:if` is `?:`](../../hoon/twig/wut-test/col-if/).
+- `sigil`: a `keyword` or `rune` used to begin a `twig`
+- `keyword`: the value of a stem, prefixed with `:`.
+- `rune`: a pair of ASCII symbols used to begin a `twig`.
 
-- `rune`: a pair of ASCII symbols used to begin a `twig` - the first symbol represents a family of related `twig`s. For example, the [`?` family](../../hoon/twig/wut-test/) are all conditionals.
+For example, the stem `%if` becomes the keyword
+[`:if`](../../hoon/twig/wut-test/col-if/), with the rune `?:`.
+The first symbol in a rune  represents a family of related
+`twig`s. For example, the [`?` family](../../hoon/twig/wut-test/)
+are all conditionals.
 
-*regular forms* can alternate between *tall* and *wide* (or *flat*) syntax, *irregular forms* can use only the *wide*/*flat* syntax.
+The keyword or rune forms are up to the programmer's choice.
+Most existing code uses runes, but the keyword form makes the
+learning path easier.
+
+A regular twig has two syntactic forms, *tall* and *flat*:
+
+- `tall`: multiple lines, no parentheses, two or more spaces between tokens
+- `flat`: one line, parentheses, one space between tokens
+
+`tall` twigs can contain `flat` ones, but not vice versa.  All
+irregular forms are `flat`.
 
 *See [`twig` concept](../../hoon/concepts/#-twig-expression), [expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*.
 
 ###### `limb`: attribute or variable reference
 
-To resolve a `limb` named "foo", the `subject` is searched depth-first, head-first for either a `face` named "foo" or a `core` with an `arm` of "foo". If a `face` is found, the result is a `leg`, if a `core` is found, the result is the `product` of the `arm`.
+To resolve a `limb` named "foo", the `subject` is searched
+depth-first, head-first for either a `face` named "foo" or a
+`core` with an `arm` of "foo". If a `face` is found, the result
+is a `leg`, if a `core` is found, the result is the `product` of
+the `arm`.
 
-- `leg`: a subexpression, or subtree of the `subject`. usually another `twig`, sometimes a symbol (`@tas`) or `wing`
-- `wing`: a list of `limb`s
+- `leg`: a subexpression, or subtree of the `subject`. 
+- `wing`: a list of `limb`s, searched from right to left (`a.b` means `b` within `a`).
 
 *See [Limbs and wings](../../hoon/twig/limb)*
 
-###### `face`: a named variable
+###### `face`: a labeled subtree
 
-Hoon has no scope or symbol-table; there is only the `subject`. To "declare" a "variable" is to construct a new `subject`: `[variable old-subject]`.
+Hoon has no scope or symbol-table; there is only the `subject`.
+To "declare" a "variable" is to construct a new `subject`:
+`[name=value old-subject]`.
 
-A `face` wraps a name (`@tas`) around a `span`.
+A `face` is a `span` that wraps a name (`@tas`) around another `span`.
 
 *See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
 
-###### `nest`: a type-casting operation
+###### `nest`: type compatibility test
 
-`nest` checks if the type of the second child is a subset of the type of the first chile. That's a short summary. To go in-depth, see [advanced types](../../hoon/advanced/).
+`nest` is an internal function on two spans, which produces yes
+if the set of nouns in the second span is provably a subset of 
+the first.
+
+*See [advanced types](../../hoon/advanced/)*.
+
+###### `loobean`: a Hoon boolean
+
+`0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
+
+> Why? It's fresh, it's different, it's new. And it's annoying.
+> And it keeps you on your toes. And it's also just intuitively
+> right.
