@@ -69,7 +69,7 @@ or `48.879`, whose parent is `~mun`, `0xef`, `239`.  The parent of
 - `formula`: a `noun` - a function at the Nock level
 - `product`: a `noun` - the result of evaluating a `formula` against a `subject`
 
-*See [Nock definition](/nock/definition/).*
+*See [Nock definition](../../nock/definition/).*
 
 ### Hoon
 
@@ -82,7 +82,7 @@ ascribes some semantics to it. There is no Hoon syntax for a
 `span`; it is always produced as the inferred range of an
 expression (`twig`).
 
-*See [basic types](/hoon/basic/#-type-span-and-mold).*
+*See [basic types](../../hoon/basic/#-type-span-and-mold).*
 
 ###### `core`: a code-data `cell`
 
@@ -93,7 +93,7 @@ objects, modules, etc) become `core`s in Hoon.
 - `battery`: the code of a `core`, a tree of `arm`s
 - `payload`: the data in a `core`
 
-*See [basic types](/hoon/basic)*.
+*See [basic types](../../hoon/basic)*.
 
 ###### `arm`: a named, functionally-computed attribute of a `core`
 
@@ -108,7 +108,7 @@ dry.
 For a `dry` `arm`, we ask, is the new `payload` compatible with
 the old `payload` (against which the `core` was compiled)?
 
-- `wet`: unusual, `--`, polymorphic by means of *genericity*
+- `wet`: unusual, `+-`, polymorphic by means of *genericity*
 
 A `wet` `arm` uses the `twig` as a macro. We create a new type
 analysis path, which works as if we expanded the callee with the
@@ -140,7 +140,7 @@ The `payload` of a `gate` has a shape of `{sample context}`.
 - `sample`: the argument tuple
 - `context`: the subject in which the `gate` was defined
 
-*See [basic types](/hoon/basic/#-core-p-span-q-map-term-span), [`%-` or `:call`](/hoon/twig/cen-call/hep-call/) (the `twig` for calling a `gate`).*
+*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span), [`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for calling a `gate`).*
 
 ###### `mold`: a type constructor / validator
 
@@ -157,7 +157,7 @@ and producing a range with a useful `span`.
 A Hoon `atom` span describes a Nock `atom`, with two additional
 pieces of metadata: an `aura`, and an optional constant.
 
-An `atom` span are `warm` or `cold` based on whether the constant
+An `atom` span is `warm` or `cold` based on whether the constant
 exists.
 
 - `warm`: if the constant is `~` (null), any `atom` is in the `span`
@@ -181,7 +181,7 @@ Some common auras and their aliases:
 
 - `term` (`@tas`): a symbol - an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen ("kebab-case"), first character must be lowercase alphabetic.
 - `cord` (`@t`): UTF-8 text, least-significant-byte first
-- `char` (`@td`): a character, a single unicode byte (for multi-byte characters and codepoints, see `@c`)
+- `char` (`@tD`): a character, a single unicode byte (for multi-byte characters and codepoints, see `@c`)
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
 
