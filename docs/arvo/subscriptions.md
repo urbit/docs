@@ -75,42 +75,42 @@ Cheat sheet:
 
 -   `&` (pam) can either be the boolean true (as can `%.y`, `0`), or
     the irregular wide form of the `?&`
-    ([wutpam](/hoon/twig/wut-test/pam-and)) rune, which computes 
+    ([wutpam](../../hoon/twig/wut-test/pam-and)) rune, which computes
     logical `AND` on its two children.
 
 -   Similar to `&`,`|` is either the boolean false (along with `%.n` and
     `1`), or the irregular short for of `?|`
-    ([wutbar](/hoon/twig/wut-test/bar-or)), which computes logical `OR`
+    ([wutbar](../../hoon/twig/wut-test/bar-or)), which computes logical `OR`
     on its two children.
 
 -   `!` is the irregular wide form of `?!`
-    ([wutzap](/hoon/twig/wut-test/zap-not/)), which computes logical
+    ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical
     `NOT` on its child.
 
--   `?~` ([wutsig](/hoon/twig/wut-test/sig-ifno/)) is basically an
+-   `?~` ([wutsig](../../hoon/twig/wut-test/sig-ifno/)) is basically an
     if-then-else that checks whether condition `p` is `~` (null). `?~`
     is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
-    ([buctis](/hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
+    ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
     of type `p`.
     <!--One thing to watch out for in hoon: if you do `?~`, it
       affects the type of the conditional value: XXexample-->
 
--   `:_` ([colcab](/hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
+-   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
 
 -   `++bowl` is the type of the system state within our app. For
     example, it includes things like `our`, the name of the host urbit,
     and `now`, the current time.
 
--   `$%` ([buccen](/hoon/twig/buc-mold/cen-book/)) is a type
+-   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
     `*`, or a cell `^`. <!--XX this is a union, right?-->
 
 -   You may have noticed the separate `|%`
-    ([barcen](/hoon/twig/bar-core/cen-core/)) above the application core
-    `|_` ([barcab](/hoon/twig/bar-core/cab-door/). We usually put our
+    ([barcen](../../hoon/twig/bar-core/cen-core/)) above the application core
+    `|_` ([barcab](../../hoon/twig/bar-core/cab-door/). We usually put our
     types in another core on top of the application core. We can access
     these type from our `|_` because in `hoon.hoon` files, all cores are
     called against each other. (The shorthand for 'called' is `=>`.)

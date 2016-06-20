@@ -15,7 +15,7 @@ Now we're going to cover the boiler plate that we skimmed over earlier.
     =<  (sum [1.000 2.000])
 
 The first rune, `:-` (colhep, aka
-[:cons](/hoon/twig/col-cell/hep-cons/)), constructs the 2-element cell
+[:cons](../../hoon/twig/col-cell/hep-cons/)), constructs the 2-element cell
 that will be our program. The first element, `%say`, tells the
 interpreter what to produce--in this case a value.
 
@@ -28,7 +28,7 @@ Similarly, the rest of the program (which we construct with another
 producing a value of type `noun`, and the code that we run to actually
 produce our value of the type `noun`.
 
-`=<` ([tisgal](/hoon/twig/tis-flow/gal-rap/)) is a rune that takes two
+`=<` ([tisgal](../../hoon/twig/tis-flow/gal-rap/)) is a rune that takes two
 children. The second child is the context against which we run the first
 child. So in this case, we are running the expression
 `(sum [1.000 2.000])` against everything contained within the `|%`. In
@@ -72,7 +72,7 @@ allows a sort of reification of the context through continutations, and
 some may see a parallel to Forth's stack, but Hoon takes takes the
 concept one step further.
 
-Our starting subject is the [standard library](/hoon/library), which is
+Our starting subject is the [standard library](../../hoon/library), which is
 defined in `/arvo/hoon.hoon` and `/arvo/zuse.hoon`. This is where
 functions like `add` are defined. When we define a core with `|%`, we
 don't throw away the subject (i.e. the standard library); rather, we
