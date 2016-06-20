@@ -77,12 +77,10 @@ line, though.
 Firstly, there's two kinds of cards we're sending to arvo.  A
 `%them` card makes an HTTP requrest out of a unit `hiss`.
 
-<blockquote class="blockquote">
-Recall that `++unit` means "maybe".  Formally, "`(unit a)` is
-either null or a pair of null and a value in `a`". Also recall
-that to pull a value out of a unit `(u.unit)`, you must first
-verify that the unit is not null (for example with `?~`).
-</blockquote>
+> Recall that `++unit` means "maybe".  Formally, "`(unit a)` is
+> either null or a pair of null and a value in `a`". Also recall
+> that to pull a value out of a unit `(u.unit)`, you must first
+> verify that the unit is not null (for example with `?~`).
 
 A `hiss` (all of the following terms are defined in `zuse`) is a
 pair of a `purl` and a `moth`.  A `purl` is a parsed url
@@ -96,11 +94,9 @@ of HTTP headers.  The `(unit octs)` is a possible octet stream
 representing the body.  If it's null, then no body is sent (as in
 this case).
 
-<blockquote class="blockquote">
-An octect stream is a pair of the length in bytes of the data
-plus the data itself.  You can use `++taco` takes text and
-turns it into an octet strem.
-</blockquote>
+> An octect stream is a pair of the length in bytes of the data
+> plus the data itself.  You can use `++taco` takes text and
+> turns it into an octet strem.
 
 When you send this request, you can expect a `%thou` with the
 response, which we handle later on in `++thou-request`.
@@ -108,11 +104,9 @@ response, which we handle later on in `++thou-request`.
 For `%wait`, you just pass a [`@da`]() (absolute date), and arvo will
 produce a `%wake` when the time comes.
 
-<blockquote class="blockquote">
-A timer is guaranteed to not be triggered before the given
-time, but it's currently impossible to guarantee the timer will be
-triggered at exactly the requested time.
-</blockquote>
+> A timer is guaranteed to not be triggered before the given
+> time, but it's currently impossible to guarantee the timer will be
+> triggered at exactly the requested time.
 
 Let's take a look at our state:
 
@@ -133,11 +127,9 @@ of `value`, but make the default value be `value`".  Thus, our
 type is still a boolean, just like `?`, but the default value is
 `|` (false).
 
-<blockquote class="blockquote">
-This is the same `_` used in `_+>.$`, which means "the same
-type as the value "+>.$".  In other words, the same type as our
-current context and state.
-</blockquote>
+> This is the same `_` used in `_+>.$`, which means "the same
+> type as the value "+>.$".  In other words, the same type as our
+> current context and state.
 
 Let's take a look at `++poke-cord`.  When we're poked with a
 cord, we first check whether it's `'off'`.  If so, we set `on` to
@@ -151,14 +143,12 @@ This request follows the pattern in `++hiss` well.  `(need (epur
 target))`  is the parsed url, `%get` is the HTTP method, `~`
 means no extra headers, and another `~` means no body.
 
-<blockquote class="blockquote">
-Note the `~` at the end of the move.  This is a convenient
-shortcut for creating a list of a single element.  It's part of
-a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`,
-`[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`.
-These may be mixed and matched to create various convoluted
-structures and emojis.
-</blockquote>
+> Note the `~` at the end of the move.  This is a convenient
+> shortcut for creating a list of a single element.  It's part of
+> a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`,
+> `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`.
+> These may be mixed and matched to create various convoluted
+> structures and emojis.
 
 If the argument is neither 'off' nor 'on', then we assume it's an
 actual url, so we save it in `target`.

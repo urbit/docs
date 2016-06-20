@@ -36,7 +36,7 @@ Hoon, we call the code executed the "formula" and its context the
 "subject".
 
     ::::::::::::::::::::::::::::::
-    =<  (sum [1.000 2.000])             :: formula
+    =<  (sum [1.000 2.000])     :: formula
     ::::::::::::::::::::::::::::::
     |%                          ::
     ++  three                   ::
@@ -58,8 +58,8 @@ Hoon, we call the code executed the "formula" and its context the
       (add b $(b (add b 5)))    ::
                                 ::
     ++  sum                     ::
-      |=  a/@u                  ::
-      (add (five a) (three a))  ::
+      |=  {a/@u b/@u}           ::
+      (add (five a) (three b))  ::
     --                          ::
     ::::::::::::::::::::::::::::::
 

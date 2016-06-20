@@ -99,6 +99,13 @@ ever go through the hassle of having to set up and write to a database.
 -   Write an app that prints out the previous value you poked it with.
     Sample output:
 
-\`\`\` \~fintud-macrep:dojo\> :examples-last 7 [%last 0] \>=
-\~fintud-macrep:dojo\> :examples-last [1 2 3][%last 7] \>=
-\~fintud-macrep:dojo\> :examples-last 'howdy' [%last [1 2 3]]
+```
+~fintud-macrep:dojo> :examples-last 7
+[%last 0]
+>= 
+~fintud-macrep:dojo> :examples-last [1 2 3]
+[%last 7]
+>=
+~fintud-macrep:dojo> :examples-last 'howdy'
+[%last [1 2 3]]
+```

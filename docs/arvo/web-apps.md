@@ -145,7 +145,7 @@ the app from the command line.
   `:click` and print out the subscription updates on the command
   line.
 
-#Frontend
+# Frontend
 
 That's all that's needed for the back end.  The front end is just
 some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/click.hoon`:

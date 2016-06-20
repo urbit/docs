@@ -29,8 +29,18 @@ at the [basic operation](/docs/using/admin) of your urbit.
 If you haven't copied in the examples repo, running the following
 commands from your urbit directory should do the trick:
 
-`$ cp -r {wherever-you've-pulled-to}/examples/gall/*/ arvo/`
-`$ cp -r {wherever-you've-pulled-to}/examples/dojo/*/ arvo/`
+Make sure you've mounted your `%home` desk:
+
+```
+~fintud-macrep:dojo> |mount %
+```
+
+Then, copy the example into it
+
+```
+$ cp -r {urbit-examples}/gall/*/ {your-pier}/home/
+$ cp -r {urbit-examples}/dojo/*/ {your-pier}/home/
+```
 
 Run an example to ensure it worked:
 
@@ -213,8 +223,8 @@ of the code. However, `b` is not an argument; `=|` sets `b` to the
 default value of whatever type it is declared as. Since the default
 value of an atom is `0`, b is set to `0`.
 
-> To produce the default value of any given type, use `$*` ('buctar')
-> followed by the type. Alternatively, use the irregular form `*`.
+> To produce the default value of any given type, use `*` ('tar')
+> followed by the type. This operaction is called *bunt*.
 >
 >         > *@ :: produce the default value of atom @
 >         0
