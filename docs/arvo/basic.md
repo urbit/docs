@@ -256,10 +256,10 @@ function call, then you have to specify every argument.
 
 **Exercises**:
 
-Tweak your code to complete the following excercises.
+Tweak your code to complete the following exercises.
 
 There are a few runes and some syntax that we have yet to cover that you
-will need to complete the excercises below. For these, please refer to
+will need to complete the exercises below. For these, please refer to
 our cheatsheat at the bottom.
 
 1.  Read and understand `++five` line by line.

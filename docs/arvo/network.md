@@ -235,7 +235,7 @@ Sometimes, the module can immediately handle the event and produce any
 necessary results. For example, when we poked the `++poke-atom` arm
 above, we poked %gall, our application server, which was able to respond
 to our poke directly. When the module cannot service the request itself,
-it sends instructions to another kernel module or application (the the
+it sends instructions to another kernel module or application (through the
 %gall module) to do a specified action, and produces the result from
 that.
 
@@ -305,7 +305,7 @@ urbit as for sending messages between apps on different urbits.
 
 -   Write two apps, `even` and `odd`. When you pass an atom to `even`,
     check whether it's even. If so, divide it by two and recurse;
-    otherwise, poke `odd` with it. When `odd` recieves an atom, check
+    otherwise, poke `odd` with it. When `odd` receives an atom, check
     whether it's equal to one. If so, terminate, printing "%success".
     Otherwise, check whether it's odd. If so, multiply it by three, add
     one, and recurse; otherwise, poke `even` with it. When either app

@@ -59,7 +59,7 @@ And secondly, `:examples-sink`:
     ++  diff-noun
       |=  {wir/wire arg/*}
       ^-  {(list move) _+>.$}
-      ~&  [%recieved-data arg]
+      ~&  [%received-data arg]
       [~ +>.$]
     ++  reap
       |=  {wir/wire error/(unit tang)}
@@ -180,7 +180,7 @@ so you don't have to. You can access your subscribers by looking at
 subscribed, and which path they subscribed on. If you want to
 communicate with your subscribers, send them messages along their bone.
 
-`++poke-noun` "spams" the given arguement to all our subscribers.
+`++poke-noun` "spams" the given argument to all our subscribers.
 There's a few things we haven't seen before. Firstly, `:_(a b)` is the
 same as `[b a]`. It's just a convenient way of formatting things when
 the first thing in a cell is much more complicated than the second.
