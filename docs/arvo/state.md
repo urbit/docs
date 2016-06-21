@@ -20,8 +20,6 @@ running the sum of all the atoms we poke it with. Here's
     ++  poke-atom
       |=  arg/@
       ^-  {(list) _+>.$}
-      ?:  =(arg 0)  
-        [~ +>.$(state 0)]
       ~&  [%so-far (add state arg)]
       [~ +>.$(state (add state arg))]
     --
