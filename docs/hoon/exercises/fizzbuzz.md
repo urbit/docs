@@ -28,8 +28,8 @@ comments: true
     ```
 
     Modify this to produce "Fuzz" when the number is divisible by
-    7, "Fuzz" when divisible by 21, "FuzzFizz" when divisble by 35,
-    and "FuzzFizzBuzz" when divisble by 105.
+    7, "Fuzz" when divisible by 21, "FuzzFizz" when divisible by 35,
+    and "FuzzFizzBuzz" when divisible by 105.
 
 1.  Modify FizzBuzz from the previous exercise to take both a
     start and an end number.

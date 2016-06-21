@@ -34,7 +34,8 @@ a value, it prints that value out. To try this out, you have to start
 the app, then you can poke it from the command line with the following
 commands:
 
-    ~fintud-macrep:dojo> |start %echo
+    ~fintud-macrep:dojo> |start %examples-echo
+    'prep'
     >=
     ~fintud-macrep:dojo> :examples-echo 5
     [%argument 5]
@@ -57,7 +58,7 @@ do that is to poke it from the command line, which we we did with
 `:echo 5` (`:[app-name] [argument(s)]`).
 
 In this case, `++poke-noun` takes an argument `arg` and prints it out
-with `~&` ([sigpam](/hoon/twig/sig-hint/pam-dump/)). This is an unusual
+with `~&` ([sigpam](../../hoon/twig/sig-hint/pam-dump/)). This is an unusual
 rune that formally "does nothing", but the interpreter detects it and
 printfs the first child, before executing the second as if the first
 didn't exist. This is a slightly hacky way of printing to the console,
@@ -169,7 +170,7 @@ Run it with these commands:
 
     ~fintud-macrep:dojo> |start %examples-pong
     >=
-    ~fintud-macrep:dojo> :pong &examples-urbit ~sampel-sipnym
+    ~fintud-macrep:dojo> :examples-pong &urbit ~sampel-sipnym
     >=
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to do is
@@ -220,7 +221,7 @@ Let's walk through each of these elements step by step.
 If you look up `++bone` in `hoon.hoon`, you'll see that it's a number
 (`@ud`), and that it's an opaque reference to a duct. `++duct` in
 hoon.hoon is a list of `wire`s, where `++wire` is an alias for `++path`.
-`++path` is a list of `++span`s, which are ASCII text. Thus, a duct is a
+`++path` is a list of `++knot`s, which are ASCII text. Thus, a duct is a
 list of paths, and a bone is an opaque reference to it (in the same way
 that a Unix file descriptor is an opaque reference to a file structure).
 Thus, to truly understand bones, we must understand ducts.
@@ -234,7 +235,7 @@ Sometimes, the module can immediately handle the event and produce any
 necessary results. For example, when we poked the `++poke-atom` arm
 above, we poked %gall, our application server, which was able to respond
 to our poke directly. When the module cannot service the request itself,
-it sends instructions to another kernel module or application (the the
+it sends instructions to another kernel module or application (through the
 %gall module) to do a specified action, and produces the result from
 that.
 
@@ -283,7 +284,7 @@ The move ends with `*` (that is, any noun) since each type of move takes
 different data. In our case, a `%poke` move takes a target (urbit and
 app) and marked data, then pokes the arm of the corresponding mark on
 that app on that urbit with that data. `[to-urbit-address %pong]` is the
-target urbit and app, `%atom` is the mark`, and`'howdy'\` is the data.
+target urbit and app, `%atom` is the `mark`, and`'howdy'` is the data.
 
 When arvo receives a `%poke` move, it calls the appropriate `++poke`.
 The same mechanism is used for sending messages between apps on the same
@@ -304,7 +305,7 @@ urbit as for sending messages between apps on different urbits.
 
 -   Write two apps, `even` and `odd`. When you pass an atom to `even`,
     check whether it's even. If so, divide it by two and recurse;
-    otherwise, poke `odd` with it. When `odd` recieves an atom, check
+    otherwise, poke `odd` with it. When `odd` receives an atom, check
     whether it's equal to one. If so, terminate, printing "%success".
     Otherwise, check whether it's odd. If so, multiply it by three, add
     one, and recurse; otherwise, poke `even` with it. When either app
@@ -312,30 +313,30 @@ urbit as for sending messages between apps on different urbits.
     the end, you should be able to watch Collatz's conjecture play out
     between the two apps. Sample output:
 
-<!-- -->
-
-    ~fintud-macrep:dojo> :even &atom 18
-    [%even 18]
-    [%odd 9]
-    [%even 28]
-    [%even 14]
-    [%odd 7]
-    [%even 22]
-    [%odd 11]
-    [%even 34]
-    [%odd 17]
-    [%even 52]
-    [%even 26]
-    [%odd 13]
-    [%even 40]
-    [%even 20]
-    [%even 10]
-    [%odd 5]
-    [%even 16]
-    [%even 8]
-    [%even 4]
-    [%even 2]
-    %success
+```
+~fintud-macrep:dojo> :even &atom 18
+[%even 18]
+[%odd 9]
+[%even 28]
+[%even 14]
+[%odd 7]
+[%even 22]
+[%odd 11]
+[%even 34]
+[%odd 17]
+[%even 52]
+[%even 26]
+[%odd 13]
+[%even 40]
+[%even 20]
+[%even 10]
+[%odd 5]
+[%even 16]
+[%even 8]
+[%even 4]
+[%even 2]
+%success
+```
 
 -   Put `even` and `odd` on two separate urbits and pass the messages
     over the network. Post a link to a working solution in :talk to

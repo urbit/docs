@@ -65,13 +65,11 @@ optionally specify the message as well.
 We'll need a new mark for our arguments.  Let's call it
 `examples-ping-message`.
 
-<blockquote class="blockquote">
-For app-specific marks, it's good style to prefix the name of
-the mark with the name of the app.  Since many apps have
-several such marks, subdirectories in `/mar` are rendered as
-`-`, so that `ping-message` is written in
-(/mar/examples/ping/message.hoon).
-</blockquote>
+> For app-specific marks, it's good style to prefix the name of
+> the mark with the name of the app.  Since many apps have
+> several such marks, subdirectories in `/mar` are rendered as
+> `-`, so that `ping-message` is written in
+> (/mar/examples/ping/message.hoon).
 
 ```
 ::  Up-ness monitor. Accepts atom url, 'on', or 'off'
@@ -214,23 +212,21 @@ text and null.
 Secondly, `?~(a b c)` is a rune which means "if the `a` is null,
 do `b`, else `c`".  It is roughly equivalent to `?:(=(~ a) b c)`.
 
-<blockquote class="blockquote">
-`?~(a b c)` is actually equivalent to `?:=(?=(~ a) b c)`,
-which, although identical at run time, is subtly different at
-compile time.  Specifically, using `?=` rather than `=` means
-that we're checking whether `a` is in the *type* of `~`, and so
-the compiler knows that in the `b` case `a` is null, and in the
-`c` case `a` is not null.  Since `=` is purely a runtime value
-check with no type implications, the compiler doesn't gain any
-information.
-
-At any rate, this is the reason why we can refer to
-`text.message` in the `c` clause.  The compiler knows that
-`message` is not null, so it must have `text` within it.  If
-you used `?:(=(~ message) 'howdy' text.message)` the compiler
-would complain that it doesn't know whether `message` has
-`text` within it.
-</blockquote>
+> `?~(a b c)` is actually equivalent to `?:=(?=(~ a) b c)`,
+> which, although identical at run time, is subtly different at
+> compile time.  Specifically, using `?=` rather than `=` means
+> that we're checking whether `a` is in the *type* of `~`, and so
+> the compiler knows that in the `b` case `a` is null, and in the
+> `c` case `a` is not null.  Since `=` is purely a runtime value
+> check with no type implications, the compiler doesn't gain any
+> information.
+>
+> At any rate, this is the reason why we can refer to
+> `text.message` in the `c` clause.  The compiler knows that
+> `message` is not null, so it must have `text` within it.  If
+> you used `?:(=(~ message) 'howdy' text.message)` the compiler
+> would complain that it doesn't know whether `message` has
+> `text` within it.
 
 This is run as follows:
 

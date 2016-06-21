@@ -16,7 +16,7 @@ for improving our [code](https://github.com/urbit/urbit/) and
 Our official guide to contributing can be found
 [here](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md),
 which is most useful for large and low-level changes. For simpler
-revisions, refer to [Hoon Syntax](/hoon/syntax) for an in-depth guide to
+revisions, refer to [Hoon Syntax](../../hoon/syntax) for an in-depth guide to
 good Hoon. Alternatively, [browse the
 source](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon).
 

@@ -96,7 +96,7 @@ initiates the long-polling loop, run against an injected `urb.js` of
 
 A `%js` `pest` is `resolve`d as a `text/javascript` success `%this`.
 
-When `poll.js` is recieved by the client, it opens an `XMLHttpRequest` for
+When `poll.js` is received by the client, it opens an `XMLHttpRequest` for
 `/~/on/{window.urb.poll}.json`, bringing us back to `%poll:process`.
 
 In the case of a non-`%js` `/~/on/`, `%poll:process-parsed` turns into a
@@ -167,7 +167,7 @@ the first nontrivial `++check-oryx` occurs, `++grab-body` the request oryx and
 ensuring it is recorded for the session. The request parsed with `++need-body`
 to a `[%auth %try {password}]` perk. `%get:process-auth` checks it against
 `++load-secret`, upon success updates the session with `++logon:ya`, and
-serves a fresh `auth.json` which reflects the changed `user`. Upon recieving
+serves a fresh `auth.json` which reflects the changed `user`. Upon receiving
 this, the page is refreshed to retry the original request.
 
 ## Post-authentication: app communication. [#auth-ok]
@@ -212,7 +212,7 @@ Upon receipt, the client realizes the long-poll isn't actually running, so that
 is started using `urb.poll`. At `/~/of/{ixor}`, perk
 `[%view ixor ~ {sequence-number}]`, it is `process`ed by `++poll:ix` (the cyst
 is retrieved by `++ire-ix` form global state, using the perk `ixor`): the
-sequence number is in the past, so the previously recieved `%rush` is 
+sequence number is in the past, so the previously received `%rush` is
 `++give-even`. After deleting the previous message in the queue and invoking 
 `++pass-took` to signal `%gall` of this occurrence, the data is annotated with
 the source app+path `++subs-to-json`, and returned to the polling duct.
