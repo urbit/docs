@@ -58,6 +58,6 @@ The tail of the pair is line 15, which repeats the loop (like
 Clojure `recur`), with `count` incremented.  This list of strings
 is the rest of the output list.
 
-You can test this code by mounting your home desk with `|mount %home`;
+You can test this code by mounting your home desk with `|mount %`;
 copying it into `home/gen/fizzbuzz.hoon` in your Urbit pier; then
 typing `+fizzbuzz 100` in the Urbit dojo (shell).

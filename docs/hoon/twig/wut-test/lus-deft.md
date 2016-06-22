@@ -3,7 +3,7 @@ navhome: /docs
 sort: 13
 ---
 
-# `:deft  ?-  "wutlus"`
+# `:deft  ?+  "wutlus"`
 
 `{$case p/wing q/seed r/(list (pair moss seed))}`: switch against 
 a union, with a default.

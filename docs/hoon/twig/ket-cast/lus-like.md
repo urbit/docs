@@ -16,11 +16,11 @@ within the span of `q`.  Otherwise, `nest-fail`.
 
 Regular: *2-fixed*.
 
-Irregular: `\`_foo\`bar` is `:like(foo bar)`.
-
 ## Examples
 
 ```
-~zod:dojo> :like('text' 97)
+~zod:dojo> :like('text' %a)
 'a'
 ```
+
+

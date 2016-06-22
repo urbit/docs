@@ -27,7 +27,7 @@ between opening and closing `==`.
 formal identity to the interpreter, which may or may not be able
 to recognize and/or accelerate it.
 
-Registered cores are are organized in a containment hierarchy.
+Registered cores are organized in a containment hierarchy.
 The parent core is at any leg within the child core.  When we
 register a core, we state the leg to its parent, in the form of
 wing `q`.  We assume the parent is already registered -- as it

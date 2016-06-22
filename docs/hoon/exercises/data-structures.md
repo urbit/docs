@@ -26,7 +26,7 @@ exercises, you'll need to refer to the [library reference for
     `'javacript'`, `'python'`.
 
 1.  At the dojo, take the union of `s` and `l`.  Delete
-    `'javascript'` from the result, and add `'coffescript'`.
+    `'javascript'` from the result, and add `'coffeescript'`.
 
 1.  Create an alphabetized list of the members of the set created
     in the previous exercise.

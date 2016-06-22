@@ -30,7 +30,7 @@ Regular: *3-fixed*.
 
 Short-circuiting in boolean tests works as you'd expect
 and includes the expected inference.  For instance,
-if you write `:(and a b)`, `b` is only executed if `a` is
+if you write `:and(a b)`, `b` is only executed if `a` is
 positive, and compiled with that assumption.
 
 Note also that all other branching twigs reduce to `:if`.

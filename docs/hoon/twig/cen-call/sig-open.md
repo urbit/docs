@@ -31,5 +31,5 @@ learn to step outside your linear, Western way of thinking."
 
 ## Examples
 
-See [`:door`](../bar-core/cab-door).
+See [`:door`](../../bar-core/cab-door).
 

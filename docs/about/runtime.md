@@ -953,9 +953,9 @@ We might even have changed the semantics of the battery without
 changing the label - so long as those semantics don't invalidate
 any attached driver.
 
-et tree.  For instance, it's normal to have
-two equivalent Nock batteries at the same time in one pier: one
-battery compiled with debugging hints, one not.
+For instance, it's normal to have two equivalent Nock batteries
+at the same time in one pier: one battery compiled with
+debugging hints, one not.
 
 Rather, the jet tree is a semantic hierarchy.  The root of the
 hierarchy is a constant, by convention the Hoon kernel version

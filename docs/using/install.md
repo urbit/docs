@@ -48,7 +48,7 @@ Which can usually be installed with the following one-liners:
     sudo dnf install gcc gcc-c++ git gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c
 
     # FreeBSD
-    pkg install git gmake gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool
+    pkg install git gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool
 
     # Arch
     pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses

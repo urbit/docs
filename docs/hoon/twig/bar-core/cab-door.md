@@ -4,7 +4,7 @@ sort: 5
 
 ---
 
-# `:door  |_  "buccab"` 
+# `:door  |_  "barcab"` 
 
 `{$door p/moss q/(map term foot)}`: form a door, a many-armed core
 with a sample.
