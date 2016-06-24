@@ -9,8 +9,32 @@ sort: 4
 
 ## Expands to
 
+*Pseudocode*, `a`, `b`, `c`, ... as elements of `p`
+
 ```
-|-(?~(p !! ?~(t.p i.p :cons(i.p $(p t.p)))))
+:cons(a :cons(b :cons(c :cons(... z)))))
+```
+
+### Compiler Macro
+
+```
+:loop
+:ifno  p
+  !!
+:ifno  t.p
+  i.p
+:cons  i.p
+:moar(p t.p)
+```
+
+```
+|-
+?~  p
+  !!
+?~  t.p
+  i.p
+:-  i.p
+$(p t.p)
 ```
 
 ## Syntax

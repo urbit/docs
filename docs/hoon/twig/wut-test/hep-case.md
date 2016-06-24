@@ -10,12 +10,34 @@ union, with no default.
 
 ## Expands to
 
+*Pseudocode*, `a`, `b`, `c`, ... as elements of `q`
+
 ```
+:if  :fits(p.a)  q.a
+:if  :fits(p.b)  q.b
+:if  :fits(p.c)  q.c
+...
+:show(%mint-lost !!)
+```
+
+### Compiler Macro
+
+```
+:loop
 :ifno  q
-  :lost 
+  :show(%mint-lost !!)
 :if  :fits(p.i.q p)
   q.i.q
 :moar(q t.q)
+```
+
+```
+|-
+?.  q
+  ~|(%mint-lost !!)
+?:  ?=(p.i.q p)
+  q.i.q
+$(q t.q)
 ```
 
 ## Syntax

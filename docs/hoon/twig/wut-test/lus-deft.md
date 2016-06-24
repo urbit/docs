@@ -10,12 +10,34 @@ a union, with a default.
 
 ## Expands to
 
+*Pseudocode*, `a`, `b`, `c`, ... as elements of `r`
+
 ```
+:if  :fits(p.a)  q.a
+:if  :fits(p.b)  q.b
+:if  :fits(p.c)  q.c
+...
+q
+```
+
+### Compiler Macro
+
+```
+:loop
 :ifno  r
   q
 :if  :fits(p.i.r p)
   q.i.r
 :moar(r t.r)
+```
+
+```
+|-
+?.  r
+  q
+?:  ?=(p.i.r p)
+  q.i.r
+$(r t.r)
 ```
 
 ## Syntax

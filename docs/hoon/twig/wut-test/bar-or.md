@@ -9,12 +9,30 @@ sort: 9
 
 ## Expands to
 
+*Pseudocode*, `a`, `b`, `c`, ... as elements of `p`
+
 ```
+:if(a & :if(b & :if(c & :if(... :if(z & |)))))
+```
+
+### Compiler Macro
+
+```
+:loop
 :ifno  p  
   |
 :if  i.p
   &
 :moar(p t.p)
+```
+
+```
+|-
+?~  p
+  |
+?:  i.p
+  &
+$(p t.p)
 ```
 
 ## Syntax

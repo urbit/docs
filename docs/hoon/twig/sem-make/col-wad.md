@@ -9,8 +9,30 @@ sort: 3
 
 ## Expands to
 
+*Pseudocode*, `a`, `b`, `c`, ... as elements of `q`
+
 ```
-|-(?~(q !! ?~(t.q !! ?~(t.t.q :call(p i.q i.t.q) :call(p i.q $(q t.q))))))
+:call(p a :call(p b :call(p c ...)))
+```
+
+### Compiler Macro
+
+```
+:loop
+:ifno  q  !!
+:ifno  t.q  !!
+:ifno  t.t.q
+  :call(p i.q i.t.q)
+:call(p i.q :moar(q t.q))
+```
+
+```
+|-
+?~  q  !!
+?~  t.q  !!
+?~  t.t.q
+  (p i.q i.t.q)
+(p i.q $(q t.q))
 ```
 
 ## Syntax
