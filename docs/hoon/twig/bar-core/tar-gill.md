@@ -11,10 +11,16 @@ core with sample.
 ## Expands to
 
 ```
-:new   p
+:new  p
 :core
 +-  $
   q
+--
+```
+
+```
+=|  p
+|%  +-  $  q
 --
 ```
 

@@ -11,8 +11,12 @@ sort: 11
 
 ```
 :lest  p
-  :zpzp
+  !!
 q
+```
+
+```
+?.(p !! q)
 ```
 
 ## Syntax

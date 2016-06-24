@@ -13,6 +13,10 @@ sort: 3
 :per(:cons(p .) q)
 ```
 
+```
+=>([p .] q)
+```
+
 ## Syntax
 
 Regular: *2-fixed*.

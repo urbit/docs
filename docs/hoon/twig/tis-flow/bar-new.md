@@ -13,6 +13,10 @@ sort: 5
 :pin(:bunt(p) q)
 ```
 
+```
+=+(*p q)
+```
+
 ## Syntax
 
 Regular: *2-fixed*.

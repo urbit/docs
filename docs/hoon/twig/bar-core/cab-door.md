@@ -18,6 +18,12 @@ with a sample.
 ==
 ```
 
+```
+=|  p
+|%  q
+==
+```
+
 ## Syntax
 
 Regular: *1-fixed*, then *battery*.

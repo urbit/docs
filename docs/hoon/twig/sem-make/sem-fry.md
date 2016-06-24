@@ -10,7 +10,15 @@ sort: 1
 ## Expands to
 
 ```
-:pin(:name(a (p q)) :sure(=(a (p a)) a))
+:pin  :name(a (p q))
+:sure  =(a (p a))
+a
+```
+
+```
+=+  a=(p q)
+?>  =(a (p a))
+a
 ```
 
 ## Syntax

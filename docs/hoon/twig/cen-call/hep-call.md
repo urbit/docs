@@ -9,7 +9,13 @@ sort: 4
 
 ## Expands to
 
-`:open($ p q)`.
+```
+:open($ p q)
+```
+
+```
+%~($ p q)
+```
 
 ## Syntax
 

@@ -15,6 +15,10 @@ sort: 2
 q
 ```
 
+```
+?:(p r q)
+```
+
 ## Syntax
 
 Regular: *3-fixed*.

@@ -16,6 +16,10 @@ of the subject is null.
 r
 ```
 
+```
+?:(?=(^ p) q r)
+```
+
 ## Syntax
 
 Regular: *3-fixed*.
