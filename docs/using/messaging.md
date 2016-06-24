@@ -27,7 +27,9 @@ For the most part we use `:talk` as a single-instance of Slack: one main channel
 
 Let's join `/urbit-meta`:
 
-    ~your-urbit: ;join ~doznec/urbit-meta
+Use `ctrl-x` to switch from `:dojo` to `:talk`, then:
+
+    ~your-urbit:talk> ;join ~doznec/urbit-meta
 
 You'll see:
 
@@ -95,13 +97,55 @@ insert a Unicode bullet-point character in an appropriate space
 in your post, to show you the prospective linebreak.  Your essay
 will be posted in multiple lines.
 
+    ~your-urbit:talk> this is a long message, so it will by truncated right at this•spot
+
+will print as
+
+    ~your-urbit; this is a long message, so it will by truncated right at this
+    ~your-urbit; spot
+
 #### URLs
 
 A URL is any valid URL.
 
+    ~your-urbit:talk> http://example.com
+
 ### Commands
 
 A command is a hoon expression, prefaced by '#'.
+
+    ~your-urbit:talk> #(add 2 2)
+
+### Activating Lines
+
+A line number identifying the *subsequent* line is displayed every 5 lines.
+
+    ---------[0]
+    ~your-urbit; this is my message
+    ~your-urbit@ this is an @ message
+    ~your-urbit; this is a long message, so it will by truncated right at this
+    ~your-urbit; spot
+    ~your-urbit/ http://example.com/
+    ---------[5]
+    ~your-urbit# (add 2 2)  4
+
+You can use a line number to *activate* a line:
+
+    ~your-urbit:talk> ;0
+
+which prints the number, line identifier, timestamp, sender, audience,
+and contents:
+
+    ? 0
+      0v3.hl51p.jhege.amhec.vb37r.3rejr at ~2016.6.24..04.48.21..a235
+      ~your-urbit to ~another-urbit
+    this is my message
+
+Activating a URL will print the full URL (it could have been truncated),
+and activating a command will evaluate it.
+
+You can activate the most recent line with `;`, the second-most recent with
+`;;`, and so on.
 
 ### Creating and managing stations
 
