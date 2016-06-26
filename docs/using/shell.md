@@ -90,9 +90,9 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
 The hood is the system daemon.  See `gen/hood` and `app/hood`.
 
-**`|hi`** - Sends a direct message.  Sort of like Unix `write`.  Accepts an urbit name (`@p`) and a string (`cord`).
+**`|hi`** - Sends a text message.  Sort of like Unix `write`.  Accepts an urbit name (`@p`) and a string ("tape").
 
-    ~your-urbit:dojo> |hi ~doznec 'you there?'
+    ~your-urbit:dojo> |hi ~doznec "hello, ~doznec"
 
 **`|link`** / **`|unlink`** - Link / unlink a remote app.  Accepts an Urbit name and an app name.
 
