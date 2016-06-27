@@ -128,9 +128,10 @@ Merge the `%examples` desk from `~waxbex-ribmex`
 
 Subscribe to continuous updates from remote `plot` on local `desk`.
 `plot-desk` can specify the remote `desk` name.  When omitted it is
-defaulted to being the same as `desk`. Ships have `|sync %home ~parent
-%kids` automatically set up (where `~parent` is the planet that issued
-the moon).
+defaulted to being the same as `desk`. Non-comet urbits have `|sync
+%home ~parent %kids` automatically set up (where `~parent` is the
+planet that issued a moon, the star that issued a planet, or the 
+galaxy that issued a star).
 
 **Examples:**
 
