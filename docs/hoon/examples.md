@@ -17,7 +17,7 @@ side of simple manual construction over high-octane FP.)
 ## `sieve`: code in basic style
 
 A function that produces the list of primes less than or equal to
-than its argument, an atom:
+its argument, an atom:
 ```
 :gate  thru/atom                                        ::  1
 :cast  (list atom)                                      ::  2

@@ -22,7 +22,7 @@ their address:
     Size   Name    Parent  Object      Example
     -----  ------  ------  ------      -------
     2^8    galaxy  ~       supernode   ~zod
-    2^16   star    galaxy  supernode   ~doznec
+    2^16   star    galaxy  supernode   ~dozbud
     2^32   planet  star    user        ~tasfyn-partyv
     2^64   moon    planet  device      ~sigsam-nimbot-tasfyn-partyv
     2^128  comet   ~       bot         ~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex
