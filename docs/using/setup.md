@@ -16,7 +16,8 @@ is both a network address and a memorable name.
 
 You are probably creating one of two kinds of urbit: a 32-bit
 "planet" or a 128-bit "comet." For a quick terminology guide
-and high-level refresher, refer to this [handy reference sheet](/about/terminology).
+and high-level refresher, refer to this [handy reference
+sheet](/docs/about/glossary).
 
 If you have an Urbit invitation, you'll have a planet like
 `~fintud-macrep` and `~fortyv-tombyt-tabsen-sonres`.  To create

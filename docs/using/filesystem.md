@@ -108,30 +108,30 @@ Unmounts the path `%/web` from whatever name it was mounted as.
 
 Unmounts the Unix path `/generators`.
 
-### `|merge desk beak [strategy]`
+### `|merge desk beak[, =gem strategy]`
 
 Merges a `beak` into a `desk` using an optional merge `strategy`.
 
-A `beak` is either a desk (`%home`), a plot-desk cell (`[~doznec
-%home]`), or a plot-desk-case (`/~doznec/home/2/web/md`)
+A `beak` is a ship-desk-case triple, encoded as a path(`/~doznec/home/2`)
 
 **Examples:**
 
-    |merge %home-work /=home= %fine
+    |merge %home-work /=home=, =gem %fine
 
 Merge `/=home=` into `%home-work` using merge strategy `%fine`.
 
-    |merge %examples [~wacbex-ribmex %examples]
+    |merge %examples ~wacbex-ribmex %examples
 
 Merge the `%examples` desk from `~waxbex-ribmex`
 
 ### `|sync desk plot [plot-desk]`
 
 Subscribe to continuous updates from remote `plot` on local `desk`.
-`plot-desk` can specify the remote `desk` name.  When omitted it's
-assumed to be the same as `desk`.  Moons have `|sync %home ~parent
-%kids` automatically set up (where `~parent` is the planet that issued
-the moon).
+`plot-desk` can specify the remote `desk` name.  When omitted it is
+defaulted to being the same as `desk`. Non-comet urbits have `|sync
+%home ~parent %kids` automatically set up (where `~parent` is the
+planet that issued a moon, the star that issued a planet, or the 
+galaxy that issued a star).
 
 **Examples:**
 
@@ -140,8 +140,7 @@ the moon).
 ### `|unsync desk plot [plot-desk]`
 
 Unsubscribe from updates from remote `plot` on local `desk` with
-optional `plot-desk`.  Arguments must match original `|sync` command
-exactly.
+optional `plot-desk`.  Arguments must match original `|sync` command.
 
 Example:
 
@@ -160,7 +159,7 @@ Example:
 `%init` - Used if it's the first commit to a desk.  Also can be
 used to "reinitialize" a desk -- revision numbers keep going up,
 but the new revision isn't necessarily a descendent of the
-previously-numbered version.
+previously-numbered version, allowing merges to be rerun.
 
 `%this` - Keep what's in Bob's desk, but join the ancestry.
 
@@ -209,32 +208,26 @@ Finally, we annotate any conflicts, if we know how.
 Remove the data at `path`.  `path` must be a path to actual node, not
 a 'directory'
 
-### `|cp to from how`
+### `|cp to from`
 
-Copy the subtree `from` into the subtree `to`, committing it with the
-specified merge strategy `how`.
+Copy the file at `from` into the path `to`.
 
-#### `|mv to from how`
+#### `|mv to from`
 
-Move the subtree `from` into the subtree `to`, committing it with the
-specified merge strategy `how`.
+Move the file at `from` into the path `to`.
 
 In `%clay`, `|mv` is just a shorthand for `|cp` then `|rm`.  The `|rm`
 doesn't happen unless the `|cp` succeeds.
 
 ### Generators
 
-<h3 class="first child"><code>+cat path</code> / <code>+cal [path
-...]</code></h3>
+<h3 class="first child"><code>+cat path [path ...]</code></h3>
 
-Similar to Unix `cat`.  `+cat` takes a single `path`, `+cal` a list of
-paths.  
+Similar to Unix `cat`.  `+cat` takes one or more `path`s, and prints
+their contents.
 
-Produces the contents of the file at the given `path`.
+### `+ls path`
 
-### `+ls path` / `+ll [path ...]`
-
-Similar to Unix `ls`.  `+ls` takes a single `path`, `+ll` a list of
-paths.  
+Similar to Unix `ls`. `+ls` takes a single `path`.
 
 Produces a list of names at the `path`.

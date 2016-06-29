@@ -28,7 +28,7 @@ Evaluate a hoon expression:
 Tall form Hoon may require multiple lines:
 
     ~your-urbit:dojo> %+  add
-    ~your-urbit:dojo< 2
+    ~your-urbit:dojo<   2
     ~your-urbit:dojo< 2
 
 Use `=var` to save a shell variable:
@@ -74,6 +74,8 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
 **`+moon`** - Generate a random moon from a planet.  No arguments.
 
+    ~your-urbit:dojo> +moon
+
 **`+solid`** - Compile the current state of the kernel and output a noun.  Usually downloaded to a file in unix.  No arguments.
     
     ~your-urbit:dojo> .urbit/pill +solid
@@ -100,11 +102,15 @@ The hood is the system daemon.  See `gen/hood` and `app/hood`.
 
 **`|mass`** - Prints the current memory usage of all the kernel modules.  No arguments.
 
+    ~your-urbit:dojo> |mass
+
 **`|reload`** - Reloads a kernel module (vane) from source.  Accepts any number of vane names.
 
     ~your-urbit:dojo> |reload %clay %eyre
 
-**`|reset`** - Reloads `hoon.hoon`.  No arguments.
+**`|reset`** - Reloads `hoon.hoon` and all modules.  No arguments.
+
+    ~your-urbit:dojo> |reset
 
 **`|start`** - Starts an app.  Accepts an app name.
 
@@ -129,7 +135,7 @@ Set any envronment variable:
 
     44
 
-(There are a few special variables that the dojo expects.  See below.)
+(There are a few special variables that the dojo maintains.  See below.)
 
 #### `:` - Send to app
 
@@ -149,9 +155,9 @@ Save a new `md` file in `web`:
 
 The last component of the path is expected to be the mark (or mime type).
 
-#### `.` - Download to Unix
+#### `.` - Export to Unix
 
-Download a noun to Unix with `.`:
+Export a noun to Unix with `.`:
 
     ~your-urbit:dojo> .foo/bar/baz (add 2 2)
 
@@ -181,7 +187,7 @@ Use `_` to run a gate (or function):
     ~your-urbit:dojo> _|=({a/@} (mul a 3)) 3
     :: produces
     9
-    :: assign an arbitrary function to get the status code from an http request
+    :: use a function to get the status code from an http request
     ~your-urbit:dojo> _|=({p/@ud q/* r/*} p) +http://google.com
     :: produces
     301

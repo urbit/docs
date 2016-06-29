@@ -24,6 +24,12 @@ Regular: *2-fixed*.
 
 ## Discussion
 
+A gate is a core with one arm named `$`, so, just as with `:loop` (`|-`),
+we can recurse back into it with `:moar()` or `$()`.
+
+> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
+> containing a list of changes to the subject.
+
 ## Examples
 
 A trivial gate:
