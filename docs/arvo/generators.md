@@ -138,7 +138,7 @@ to `:examples-ping`, let's put it in `/gen/examples/ping/send.hoon`:
 
 ```
 :-  %say
-|=  {^ {{to/@p message/?($~ {text/@t $~})} $~}
+|=  {^ {to/@p message/?($~ {text/@t $~})} $~}
 [%examples-ping-message to ?~(message 'howdy' text.message)]
 ```
 
