@@ -72,81 +72,26 @@ We'll need a new mark for our arguments.  Let's call it
 > (/mar/examples/ping/message.hoon).
 
 ```
-::  Up-ness monitor. Accepts atom url, 'on', or 'off'
 ::
-::::  /hoon/up/examples/app
+::::  /hoon/message/ping/examples/app
   ::
 /?    314
-|%
-++  move  {bone card}
-++  card
-  $%  {$hiss wire $~ $httr {$purl p/purl}}
-      {$wait wire @da}
-  ==
-++  action
-  $%  {$on $~}            ::  enable polling('on')
-      {$off $~}           ::  disable polling('off)
-      {$target p/cord}    ::  set poll target('http://...')
-  ==
---
-|_  {hid/bowl on/_| in-progress/_| target/@t}
-++  poke-atom
-  |=  url-or-command/@t  ^-  (quip move +>)
-  =+  ^-  act/action
-      ?:  ?=($on url-or-command)  [%on ~]
-      ?:  ?=($off url-or-command)  [%off ~]
-      [%target url-or-command]
-  ?-  -.act
-    $target  [~ +>.$(target p.act)]
-    $off  [~ +>.$(on |)]
-    $on
-      :-  ?:  |(on in-progress)  ~
-          [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
-      +>.$(on &, in-progress &)
-  ==
-::
-
-::  ~&  'i get here'
-::  ^-  {(list move) _+>.$}
-::  ?:  =('off' url)
-::    [~ +>.$(on |)]
-::  ?:  =('on' url)
-::    :_  +>.$(on &, in-progress &)
-::    ?:  |(on in-progress)
-::      ~
-::    [ost.hid %them /request ~ (need (epur target)) %get ~ ~]~
-::  [~ +>.$(target url)]
-++  sigh-httr
-  |=  {wir/wire code/@ud headers/mess body/(unit octs)}
-  ~&  'arrive here'
-  ^-  {(list move) _+>.$}
-  ?:  &((gte code 200) (lth code 300))
-    ~&  [%all-is-well code]
-    :_  +>.$
-    [ost.hid %wait /timer (add ~s10 now.hid)]~
-  ~&  [%we-have-a-problem code]
-  ~&  [%headers headers]
-  ~&  [%body body]
-  :_  +>.$
-  [ost.hid %wait /timer (add ~s10 now.hid)]~
-++  wake-timer
-  |=  {wir/wire $~}  ^-  (quip move +>)
-  ?:  on
-    :_  +>.$
-    [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
-  [~ +>.$(in-progress |)]
-::
-++  prep  ~&  target  _`.  ::
+|_  {to/@p message/@t}
+++  grab
+  |%
+  ++  noun  {@p @t}
+  --
 --
 ```
 
 The app can easily be modified to use this (`/app/examples/ping.hoon`):
 
 ```
+::  Allows one ship to ping another with a string of text
 ::
 ::::  /hoon/ping/examples/app
   ::
-/?    151
+/?    314
 |%
   ++  move  {bone term wire *}
 --
@@ -172,8 +117,6 @@ The app can easily be modified to use this (`/app/examples/ping.hoon`):
 ::
 ++  coup  |=(* `+>)
 --
-
-
 ```
 
 Now we can run this with:
