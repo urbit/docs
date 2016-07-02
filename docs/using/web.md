@@ -42,6 +42,9 @@ To host a file on the web try putting the following in `/home/web/test.md` (from
 
 Create the directory `/home/web/test/` and add two more markdown files in it.
 
+NOTE: Due to a bug in Urbit you may have to create the directory and the file in it in rapid
+succession using something like `mkdir home/web/test && touch home/web/test/first.md`.
+
 Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
     # Hello
@@ -49,6 +52,10 @@ Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
     This is a simple markdown file.
 
     <div><list /></div>
+    
+To view your file rendered using tree:
+
+    http://localhost:8080/test/
 
 To view your file as raw `md`:
 

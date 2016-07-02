@@ -159,7 +159,7 @@ with the [original](../demo).
   |=  end/atom
   =/  count  1
   |-  ^-  (list tape)
-  ?:  =(100 count)  ~
+  ?:  =(end count)  ~
   :_  $(count (add 1 count))
   ?:  =(0 (mod count 15))
     "FizzBuzz"
@@ -167,7 +167,7 @@ with the [original](../demo).
     "Fizz"
   ?:  =(0 (mod count 3))
     "Buzz"
-  (text !>(count))
+  (pave !>(count))
 ```
 
 ## Tall regular form
