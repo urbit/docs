@@ -10,8 +10,17 @@ sort: 3
 ## Expands to
 
 ```
-:rap(p :make(q +6 r))
+:pin  :name(a q)
+:rap(p :make(a +6 r))
 ```
+
+```
+=+  a=q
+=<(p %=(a +6 r))
+```
+
+> Note: the expansion implementation is hygienic -- it doesn't actually add the
+> `a` face to the subject. It's shown here because `:make` requires a `wing`.
 
 ## Syntax
 
