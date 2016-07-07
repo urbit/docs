@@ -21,6 +21,9 @@ a
 a
 ```
 
+> Note: the expansion implementation is hygienic -- it doesn't actually add the
+> `a` face to the subject.
+
 ## Syntax
 
 Regular: *2-fixed*.
