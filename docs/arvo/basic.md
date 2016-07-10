@@ -38,8 +38,8 @@ Make sure you've mounted your `%home` desk:
 Then, copy the example into it
 
 ```
-$ cp -r {urbit-examples}/gall/*/ {your-pier}/home/
-$ cp -r {urbit-examples}/dojo/*/ {your-pier}/home/
+$ cp -r {urbit-examples}/gall/*/*/ {your-pier}/home/
+$ cp -r {urbit-examples}/dojo/*/*/ {your-pier}/home/
 ```
 
 Run an example to ensure it worked:
