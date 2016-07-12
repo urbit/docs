@@ -2,20 +2,15 @@
 navhome: /docs
 sort: 1
 next: true
-title: Hoon refresher / crash course
+title: Basic Hoon
 ---
 
 Basic Hoon
 ==========
 
-This recapitulates material you've already learned in
-[Hoon](/docs/hoon/). It will be a very abrupt tutorial if you don't know
-Hoon already, but it may be enough in and of itself. If you don't find
-it obvious at first glance, try working up from Hoon.
-
 Our goal is to get you programming interesting and useful things as soon
 as possible. To get there, we have to quickly cover some of the
-fundamentals of hoon. To do this, we'll walk through two simple
+fundamentals of [Hoon](/docs/hoon/). To do this, we'll walk through two simple
 programs: the first [Project Euler](https://projecteuler.net/) problem
 and [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
 
