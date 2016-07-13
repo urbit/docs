@@ -15,7 +15,7 @@ sort: 9
 :if(a & :if(b & :if(c & :if(... :if(z & |)))))
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :loop

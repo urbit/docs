@@ -15,7 +15,7 @@ sort: 3
 :call(p a :call(p b :call(p c ...)))
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :loop

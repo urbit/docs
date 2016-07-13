@@ -20,7 +20,7 @@ a union, with a default.
 q
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :loop

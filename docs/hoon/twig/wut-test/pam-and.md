@@ -15,7 +15,7 @@ sort: 8
 :lest(a | :lest(b | :lest(c | :lest(... :lest(z | &)))))
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :loop

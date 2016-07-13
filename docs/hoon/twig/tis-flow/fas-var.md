@@ -30,7 +30,7 @@ noun with the subject.
 =+(^-(p q) r)
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :ifat  p

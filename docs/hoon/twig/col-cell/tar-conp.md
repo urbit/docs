@@ -15,7 +15,7 @@ sort: 4
 :cons(a :cons(b :cons(c :cons(... z)))))
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :loop

@@ -20,7 +20,7 @@ union, with no default.
 :show(%mint-lost !!)
 ```
 
-### Compiler Macro
+### Compiler macro
 
 ```
 :loop
