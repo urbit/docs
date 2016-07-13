@@ -9,7 +9,13 @@ sort: 6
 
 ## Expands to
 
-`:call(p [q r])`.
+```
+:call(p [q r])
+```
+
+```
+%-(p [q r])
+```
 
 ## Syntax
 

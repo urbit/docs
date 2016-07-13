@@ -9,12 +9,30 @@ sort: 8
 
 ## Expands to
 
+*Pseudocode*, `a`, `b`, `c`, ... as elements of `p`
+
 ```
+:lest(a | :lest(b | :lest(c | :lest(... :lest(z | &)))))
+```
+
+### Compiler macro
+
+```
+:loop
 :ifno  p  
   &
 :lest  i.p
   |
 :moar(p t.p)
+```
+
+```
+|-
+?~  p
+  &
+?.  i.p
+  |
+$(p t.p)
 ```
 
 ## Syntax

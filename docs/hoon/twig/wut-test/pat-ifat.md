@@ -11,9 +11,13 @@ of the subject is an atom.
 ## Expands to
 
 ```
-:if  :fits($~ p)
+:if  :fits(@ p)
   q
 r
+```
+
+```
+?:(?=(@ p) q r)
 ```
 
 ## Syntax

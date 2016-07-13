@@ -10,8 +10,19 @@ sort: 1
 ## Expands to
 
 ```
-:pin(:name(a (p q)) :sure(=(a (p a)) a))
+:pin  :name(a (p q))
+:sure  =(a (p a))
+a
 ```
+
+```
+=+  a=(p q)
+?>  =(a (p a))
+a
+```
+
+> Note: the expansion implementation is hygienic -- it doesn't actually add the
+> `a` face to the subject.
 
 ## Syntax
 

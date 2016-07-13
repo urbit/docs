@@ -13,6 +13,10 @@ sort: 2
 :per(q p)
 ```
 
+```
+=>(q p)
+```
+
 ## Syntax
 
 Regular: *2-fixed*.

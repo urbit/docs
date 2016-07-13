@@ -14,6 +14,10 @@ a leg with the tail.
 :var(p -.r :set(q +.r s))
 ```
 
+```
+=/(p -.r =.(q +.r s))
+```
+
 ## Syntax
 
 Regular: *4-fixed*.

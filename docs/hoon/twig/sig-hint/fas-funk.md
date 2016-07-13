@@ -14,6 +14,10 @@ registered context.
 :fast(p +7 ~ q)
 ```
 
+```
+~%(p +7 ~ q)
+```
+
 ## Syntax
 
 Regular: *2-fixed*.

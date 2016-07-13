@@ -10,8 +10,42 @@ noun with the subject.
 
 ## Expands to
 
+*if `p` is a symbol*:
+
 ```
-?@(p :pin(:name(p q) r) :pin(:cast(:coat(p q) r)
+:pin(:name(p q) r)
+```
+
+```
+=+(^=(p q) r)
+```
+
+*if `p` is a symbol with a mold*:
+
+```
+:pin(:cast(p q) r)
+```
+
+```
+=+(^-(p q) r)
+```
+
+### Compiler macro
+
+```
+:ifat  p
+  :pin  :name(p q)
+  r
+:pin  :cast(:coat(p.p q.p) q)
+r
+```
+
+```
+?@  p
+  =+  p=q
+  r
+=+  ^-($=(p.p q.p) q)
+r
 ```
 
 ## Syntax

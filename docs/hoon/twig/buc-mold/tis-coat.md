@@ -15,6 +15,11 @@ sort: 3
 :name(p :call(q +6))
 ```
 
+```
+|=  *
+^=(p %-(q +6))
+```
+
 ## Syntax
 
 Regular: *2-fixed*.
