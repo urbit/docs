@@ -28,7 +28,7 @@ Most stems are implemented as internal macros, however.
 The bulb is usually a tuple, sometimes a list or map.  An element
 of this structure is a *subexpression* or just *leg*.
 
-Usually a subexpression is itself a `twig`; sometimes it's an
+Usually a subexpression is itself a `twig`; sometimes it's a
 `@tas` (symbol) or a `wing` (reference path).
 
 ## Moldy moss; woody seed
