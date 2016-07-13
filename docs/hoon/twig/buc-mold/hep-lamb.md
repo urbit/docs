@@ -4,7 +4,7 @@ sort: 8
 
 ---
 
-# `:lamb  $-, "buchep"`
+# `:lamb  $- "buchep"`
 
 `{$lamb p/moss q/moss}`: mold which normalizes to an example gate.
 

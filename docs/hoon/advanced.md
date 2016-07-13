@@ -72,12 +72,12 @@ polymorphism relies on genericity.
 ### Dry arms
 
 For a dry arm, we apply the Liskov substitution principle: we
-ask, "can we use any `p` as if it was a `q.q`"?  This is the same
+ask, "can we use any `p` as if it was a `q.q`?"  This is the same
 test as in `:cast` or any type comparison (`nest`).  Intuitively,
-we ask: is the new payload compatible with the old payload?
+we ask: "is the new payload compatible with the old payload?"
 
 For a core `a`, if `p.a` fits in `q.q.a`, we can use arms on the
-core.  The product of an dry arm whose twig is `b` is always
+core.  The product of a dry arm whose twig is `b` is always
 defined as `{$hold a(p q.q.a, p.q %gold) b}`.
 
 In other words, the subject of the arm computation is the
@@ -89,7 +89,7 @@ call in most languages.
 
 Dry polymorphism works by substituting cores.  Typically, the
 the programmer uses one core as an interface definition, then
-replace it with another core which does something useful.
+replaces it with another core which does something useful.
 
 For core `b` to nest within core `a`, the batteries of `a` and
 `b` must have the same tree shape, and the product of each `b`
@@ -108,7 +108,7 @@ is gold; a gold core can be cast or converted to any metal, and
 any metal can be cast or converted to lead.
 
 A gold core `a` has a read-write payload; another core `b` that
-nests within it (ie, can be substituted for it) must be a gold
+nests within it (i.e., can be substituted for it) must be a gold
 core whose payload is mutually compatible (`+3.a` nests in `+3.b`,
 `+3.b` nests in `+3.a`).  Hence, *invariant*.
 
@@ -128,8 +128,8 @@ nests within `+6.a`.  Hence, *covariant*.
 
 ### Wet arms
 
-For a wet arm, we ask: suppose this core was actually compiled
-using `p` instead of `q.q`?  Would the Nock formula we generated
+For a wet arm, we ask: "suppose this core was actually compiled
+using `p` instead of `q.q`?"  Would the Nock formula we generated
 for `q.q` actually work for a `p` payload?
 
 A wet arm with twig `b` in core `a` produces the span `{$hold a
@@ -186,7 +186,7 @@ limb, we just search the span depth-first.
 If a name is in the `p.p` map, it's an alias.  The map contains a
 `(unit twig)`; if the unit is full, the name resolves to that
 twig (compiled against the `q` span).  If the unit is empty,
-the name is blocked / skipped (see [limb](twig/limb) for what
+the name is blocked / skipped (see [limb](../twig/limb) for what
 this means).
 
 If a name is in the `q.p` map, it's a bridge.  When we search for

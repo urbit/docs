@@ -19,11 +19,13 @@ Produces the logical "not" of `p`.
 
 Regular: *1-fixed*.
 
-Irregular: `!(foo)` is `?!(foo)`.
+Irregular: `!foo` is `?!(foo)`.
 
 ## Examples
 
 ```
+~zod:dojo> ?!(.=(1 2))
+%.y
 ~zod:dojo> !&
 %.n
 ~zod:dojo> !|

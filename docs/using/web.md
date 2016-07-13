@@ -25,8 +25,10 @@ We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its
 
 Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running other processes that might be occupying `8080`, you can determine which port your urbit is on by looking at your boot sequence — it's specified there), or `http://your-urbit.urbit.org/`.
 
+<span class="red">
 (Make sure you have a desk mounted to unix, as covered in the
 [filesystem walkthrough](/docs/using/filesystem)).
+</span>
 
 To switch the desk you're serving from:
 
@@ -38,7 +40,10 @@ To host a file on the web try putting the following in `/home/web/test.md` (from
 
     This is a simple markdown file.
 
-Create the directory `/home/web/test/` and add two more markdown files in it. 
+Create the directory `/home/web/test/` and add two more markdown files in it.
+
+NOTE: Due to a bug in Urbit you may have to create the directory and the file in it in rapid
+succession using something like `mkdir home/web/test && touch home/web/test/first.md`.
 
 Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
 
@@ -47,6 +52,10 @@ Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
     This is a simple markdown file.
 
     <div><list /></div>
+    
+To view your file rendered using tree:
+
+    http://localhost:8080/test/
 
 To view your file as raw `md`:
 
@@ -56,7 +65,7 @@ To view your file as raw `html`:
 
     http://localhost:8080/test.html
 
-You may have noticed that we just created both `test.md` and `test/`. In Urbit, there is no distinction between a directory and a file. So, if you're adding files directly from unix, simply `mkdir test` and Urbit will treat the file and directory as the same entity. 
+You may have noticed that we just created both `test.md` and `test/`. In Urbit, there is no distinction between a directory and a file. So, if you're adding files directly from unix, simply `mkdir test` and Urbit will treat the file and directory as the same entity.
 
 You can use this feature to change your homepage at `your-urbit.urbit.org` with the page `/home/web.md`, where `home` is the current mounted desk. By default, `web.md` will display some info about your urbit, but you can customize it to your heart's content.
 

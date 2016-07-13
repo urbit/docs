@@ -159,7 +159,7 @@ with the [original](../demo).
   |=  end/atom
   =/  count  1
   |-  ^-  (list tape)
-  ?:  =(100 count)  ~
+  ?:  =(end count)  ~
   :_  $(count (add 1 count))
   ?:  =(0 (mod count 15))
     "FizzBuzz"
@@ -167,7 +167,7 @@ with the [original](../demo).
     "Fizz"
   ?:  =(0 (mod count 3))
     "Buzz"
-  (text !>(count))
+  (pave !>(count))
 ```
 
 ## Tall regular form
@@ -371,7 +371,7 @@ long names and/or kebab-case.
 
 If you came all this way to learn how to write apps, you're all
 set. This is about all you need to know to start getting your
-hands dirty. Refer back here or to the [standard library](/hoon/library) when
-needed, but for now, move on to [Arvo](/arvo) to continue learning. 
+hands dirty. Refer back here or to the [standard library](../../hoon/library) when
+needed, but for now, move on to [Arvo](../../arvo) to continue learning.
 
 If, however, good enough is *not* enough, feel free to dive deeper:

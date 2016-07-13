@@ -2,20 +2,15 @@
 navhome: /docs
 sort: 1
 next: true
-title: Hoon refresher / crash course
+title: Basic Hoon
 ---
 
 Basic Hoon
 ==========
 
-This recapitulates material you've already learned in
-[Hoon](/docs/hoon/). It will be a very abrupt tutorial if you don't know
-Hoon already, but it may be enough in and of itself. If you don't find
-it obvious at first glance, try working up from Hoon.
-
 Our goal is to get you programming interesting and useful things as soon
 as possible. To get there, we have to quickly cover some of the
-fundamentals of hoon. To do this, we'll walk through two simple
+fundamentals of [Hoon](/docs/hoon/). To do this, we'll walk through two simple
 programs: the first [Project Euler](https://projecteuler.net/) problem
 and [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
 
@@ -23,14 +18,24 @@ To run this code, you'll need an urbit, and will have to copy the
 [examples repo](https://github.com/urbit/examples) into it.
 
 If you haven't installed urbit yet, check out the [installation
-instructions](/docs/user/install). Once urbit is installed, take a look
-at the [basic operation](/docs/user/basic) of your urbit.
+instructions](/docs/using/install). Once urbit is installed, take a look
+at the [basic operation](/docs/using/admin) of your urbit.
 
 If you haven't copied in the examples repo, running the following
 commands from your urbit directory should do the trick:
 
-`$ cp -r {wherever-you've-pulled-to}/examples/gall/*/ arvo/`
-`$ cp -r {wherever-you've-pulled-to}/examples/dojo/*/ arvo/`
+Make sure you've mounted your `%home` desk:
+
+```
+~fintud-macrep:dojo> |mount %
+```
+
+Then, copy the example into it
+
+```
+$ cp -r {urbit-examples}/gall/*/*/ {your-pier}/home/
+$ cp -r {urbit-examples}/dojo/*/*/ {your-pier}/home/
+```
 
 Run an example to ensure it worked:
 
@@ -157,13 +162,13 @@ Instead of:
 
 You can write:
 
-    if(=(1 2) 'this is true' 'this is false')
+    :if(=(1 2) 'this is true' 'this is false')
     'this is false'
 
 ### Lines 12-34
 
 Now let's quickly walk through this code line-by-line. Lines 12-34 are
-wrapped in a `|%` ('barcen'), which produces a core. Cores are a
+wrapped in a `|%` ('[barcen](../../hoon/twig/bar-core/cen-core/)'), which produces a core. Cores are a
 fundamental datatype in Hoon, similar to a struct, class, or object. A
 core is just a map of names to any kind of code, whether it be functions
 or data. Each element in this map begins with a `++` followed by the
@@ -182,7 +187,7 @@ Let's step into each of the three arms within our core.
       (add (five a) (three a))
     --
 
-`|=` ('bartis') produces a function, much like a lambda in lisp. It
+`|=` ('[bartis](../../hoon/twig/bar-core/tis-gate/)') produces a function, much like a lambda in lisp. It
 takes two children:
 
 1.  A set of argument(s). In this case our argument set only contains
@@ -207,14 +212,14 @@ takes two children:
 As above, `++three` takes an integer argument, `a`, and then executes
 the remainder of the code with `a` set to the actual arguments.
 
-Similarly, `=|` ('tisbar') pushes its first child, `b` into our context
+Similarly, `=|` ('[tisbar](../../hoon/twig/tis-flow/bar-new/)') pushes its first child, `b` into our context
 (in other words, it declares a variable `b`) and executes the remainder
 of the code. However, `b` is not an argument; `=|` sets `b` to the
 default value of whatever type it is declared as. Since the default
 value of an atom is `0`, b is set to `0`.
 
-> To produce the default value of any given type, use `$*` ('buctar')
-> followed by the type. Alternatively, use the irregular form `*`.
+> To produce the default value of any given type, use `*` ('tar')
+> followed by the type. This operaction is called *bunt*.
 >
 >         > *@ :: produce the default value of atom @
 >         0
@@ -225,10 +230,10 @@ value of an atom is `0`, b is set to `0`.
 So now we have two variables: `a` is set to our input, and `b` is
 initialized to `0`.
 
-One way to think about `|-` ('barhep') is that it lays down a recursion
+One way to think about `|-` ('[barhep](../../hoon/twig/bar-core/hep-loop/)') is that it lays down a recursion
 point. More on this later.
 
-`^-` ('kethep') is just a cast that sets the result of the remainder of
+`^-` ('[kethep](../../hoon/core/ket-cast/hep-cast/)') is just a cast that sets the result of the remainder of
 the code to an unsigned integer, `@u`.
 
 In pseudocode, the last three lines read like this: if `a` is less than
@@ -246,10 +251,10 @@ function call, then you have to specify every argument.
 
 **Exercises**:
 
-Tweak your code to complete the following excercises.
+Tweak your code to complete the following exercises.
 
 There are a few runes and some syntax that we have yet to cover that you
-will need to complete the excercises below. For these, please refer to
+will need to complete the exercises below. For these, please refer to
 our cheatsheat at the bottom.
 
 1.  Read and understand `++five` line by line.
@@ -271,6 +276,8 @@ our cheatsheat at the bottom.
     ?:  ('wutcol') if-then-else
     =(a b)  test equality
     (function args ...)  call function with args
+
+Lookup each of these expressions (and all others!) in the [Twig Expressions](../../hoon/twig/) definition.
 
 ### New material
 

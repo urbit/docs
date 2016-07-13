@@ -17,7 +17,7 @@ side of simple manual construction over high-octane FP.)
 ## `sieve`: code in basic style
 
 A function that produces the list of primes less than or equal to
-than its argument, an atom:
+its argument, an atom:
 ```
 :gate  thru/atom                                        ::  1
 :cast  (list atom)                                      ::  2
@@ -313,7 +313,7 @@ Line `13` defines the `spot` mold, a 2D coordinate.
                  ==                                     ::  16
 ```
 
-Lines `14` to `16` define the `fact` mold, a game event (ie,
+Lines `14` to `16` define the `fact` mold, a game event (i.e.,
 output action), as a book (tagged union).  There are two forms of
 `fact`: `[%tie ~]` (reporting a tie), and `[%win cord]`
 (reporting that `'X'` or `'O'` won a game.

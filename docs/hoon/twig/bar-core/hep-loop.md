@@ -21,6 +21,15 @@ sort: 4
 
 Regular: *1-fixed*.
 
+## Discussion
+
+The `:loop` keyword (and `|-` rune) can be thought of as a "recursion point" -
+since `:loop` makes a `:trap` (a core with one arm named `$`), we can recurse
+back into it with `:moar()` or `$()`.
+
+> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
+> containing a list of changes to the subject.
+
 ## Examples
 
 A trivial loop doesn't even recurse:
