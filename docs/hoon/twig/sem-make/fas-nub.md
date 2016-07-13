@@ -10,11 +10,15 @@ sort: 4
 ## Expands to
 
 ```
-[%$ [%$ p ~] ~]
+:conl(%$ :conl(%$ p))
+```
+
+```
+~[%$ ~[%$ 'p']]
 ```
 
 ## Examples
 ```
-~zod/try=> :/("foo"
-[[%$ [%$ "foo] ~] ~]
+~zod/try=> :/"foo"
+[[%~. [%~. "foo] ~] ~]
 ```

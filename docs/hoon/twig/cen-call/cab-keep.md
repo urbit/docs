@@ -15,6 +15,10 @@ preserving type.
 :like(p :make(p q))
 ```
 
+```
+^+(p %=(p q))
+```
+
 ## Syntax
 
 Regular: *1-fixed*, then *jogging*.

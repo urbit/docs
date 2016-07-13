@@ -17,6 +17,11 @@ sort: 8
 $:q
 ```
 
+```
+$_  ^|
+|=(p $:q)
+```
+
 ## Syntax
 
 Regular: *2-fixed*.

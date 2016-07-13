@@ -11,7 +11,11 @@ subject, inverted.
 ## Expands to
 
 ```
-?@(p :pin(:name(p r) q) :pin(:cast(:coat(p r) q)
+:var(p r q)
+```
+
+```
+=/(p r q)
 ```
 
 ## Syntax

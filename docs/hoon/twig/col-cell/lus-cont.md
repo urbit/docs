@@ -13,6 +13,10 @@ sort: 2
 :cons(p :cons(q r))
 ```
 
+```
+:-(p :-(q r))
+```
+
 ## Syntax
 
 Regular: *3-fixed*.

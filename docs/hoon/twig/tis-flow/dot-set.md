@@ -13,6 +13,10 @@ sort: 8
 :per(:keep(. p q) r)
 ```
 
+```
+=>(%_(. p q) r)
+```
+
 ## Syntax
 
 Regular: *3-fixed*.

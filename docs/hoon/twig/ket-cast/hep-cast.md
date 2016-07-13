@@ -13,6 +13,10 @@ sort: 2
 :like(:bunt(p) q)
 ```
 
+```
+^+(*p q)
+```
+
 ## Syntax
 
 Regular: *2-fixed*.

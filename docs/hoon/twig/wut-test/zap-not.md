@@ -13,6 +13,10 @@ sort: 7
 :same(%.n p)
 ```
 
+```
+.=(| p)
+```
+
 Produces the logical "not" of `p`.
 
 ## Syntax

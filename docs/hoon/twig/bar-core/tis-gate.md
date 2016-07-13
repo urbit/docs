@@ -11,10 +11,16 @@ sort: 2
 ## Expands to
 
 ```
-:new   p
+:new  p
 :core
 ++  $
   q
+--
+```
+
+```
+=|  p
+|%  ++  $  q
 --
 ```
 

@@ -10,7 +10,11 @@ sort: 9
 ## Expands to
 
 ```
-:per(:keep(. p q) r)
+:per(:keep(. p) q)
+```
+
+```
+=>(%_(. p) q)
 ```
 
 ## Syntax

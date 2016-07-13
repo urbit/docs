@@ -14,6 +14,10 @@ sort: 9
 p
 ```
 
+```
+|=(*  p)
+```
+
 ## Syntax
 
 Regular: *1-fixed*.
