@@ -24,7 +24,8 @@ in Arvo will teach you to build high-level programs and interact with the networ
 Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
 there for pure-code exercises and functions in the [standard library](hoon/library).
 
-Registered academics are required to start with the [Nock definition](nock/definition) and work upward from there.
+Anyone obsessed with math, theory, fundamentals of computation,
+etc, should start with the [Nock definition](nock/definition) and work upward from there.
 
 </div>
 

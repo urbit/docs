@@ -1,12 +1,11 @@
 ---
 navhome: /docs
-sort: 4
+sort: 5
 ---
 
-# Hoon reference
+# Hoon
 
-This in-depth reference covers all the features of Hoon.  
-
-If you prefer to learn from the bottom up, feel free to start here.
+An in-depth technical reference for Hoon.  Best for readers with
+an interest or background in programming languages.
 
 <list/>
