@@ -2,7 +2,7 @@
 navhome: '/docs'
 next: True
 sort: 4
-title: 'Messaging (:talk)'
+title: Messaging (:talk)
 ---
 
 # Messaging (`:talk`)

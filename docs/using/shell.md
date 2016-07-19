@@ -2,7 +2,7 @@
 navhome: '/docs'
 next: True
 sort: 5
-title: 'Shell (:dojo)'
+title: Shell (:dojo)
 ---
 
 # Shell (`:dojo`)
