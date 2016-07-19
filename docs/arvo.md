@@ -1,12 +1,12 @@
 ---
 navhome: /docs
-sort: 3
+sort: 4
 ---
 
-# Arvo programming
+# Quickstart
 
-This example-based sequence of tutorials shows you how to build simple programs in hoon and use the basic features of Arvo.  
+Fast, pragmatic tutorials which show you how to build simple programs in Hoon and Arvo.
 
-If you like to learn by example, start here.
+If you learn by getting things done, not by exploring fundamentals, start here.
 
 <list/>
