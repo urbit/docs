@@ -60,7 +60,6 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
     ~your-urbit:dojo> +cat /~talsur-todres/home/gen/curl/hoon
 
-(Where 
 
 **`+curl`** - Similar to Unix `curl`. Accepts a `tape`.
 
