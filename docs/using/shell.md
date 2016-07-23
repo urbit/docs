@@ -40,7 +40,7 @@ Use `=dir` to set the current working directory:
 
     ~your-urbit:dojo> =dir %/web
 
-(`%` represents your current directory. For a complete explanation on urbith paths, see the [filesystem section](./filesystem))
+(`%` represents your current directory. For a complete explanation on urbith paths, see the [filesystem section](./filesystem.md))
 
 Generators (files in `/gen`) are run with `+`:
 
