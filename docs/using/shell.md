@@ -97,7 +97,7 @@ noun. Usually downloaded to a file in unix. No arguments.
 The hood is the system daemon. See `gen/hood` and `app/hood`.
 
 **`|hi`** - Sends a direct message. Sort of like Unix `write`. Accepts
-an urbit name (`@p`) and a string (`cord`).
+an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
 
     ~your-urbit:dojo> |hi ~dozbud "you there?"
 
