@@ -40,6 +40,8 @@ Use `=dir` to set the current working directory:
 
     ~your-urbit:dojo> =dir %/web
 
+(`%` represents your current directory)
+
 Generators (files in `/gen`) are run with `+`:
 
     ~your-urbit:dojo> +hello 'world'
@@ -56,8 +58,9 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
 **`+cat`** - Similar to Unix `cat`. Accepts a path.
 
-    ~your-urbit:dojo> +cat %/web/md
-    ~your-urbit:dojo> +cat /~talsur-todres/home/2/web/notes/md
+    ~your-urbit:dojo> +cat /~talsur-todres/home/gen/curl/hoon
+
+(Where 
 
 **`+curl`** - Similar to Unix `curl`. Accepts a `tape`.
 
