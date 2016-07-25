@@ -102,8 +102,9 @@ is often vocalized or subvocalized.   "pal" is easier to say,
 aloud or silently, then "left paren."
 
 Note that the list includes two separate whitespace forms: `ace`
-for a single space, `gap` for 2+, comment or newline.  Hoon
-Besides `ace` versus `gap`, whitespace is not significant.
+for a single space, `gap` for 2+, comment or newline.  In Hoon,
+the only significance in whitespace is the difference between
+`ace` and `gap`.
 
 Comments start with `::` and run to the end of the line.  Hard
 tab characters are illegal, and an 80-column right margin is
@@ -346,7 +347,8 @@ starting in order of construction from `a`, or within a tuple
 mold `p`.  Hoon uses single-letter names for the same reason
 Algol style languages pass arguments by order, rather than
 keyword.  Naming items by order makes sense when there are no
-more than three or four; five is stretching it; six is outright.
+more than three or four; five is stretching it; six is outright
+ridiculous.
 
 For example, when defining `add`, we want to name the operands
 `a` and `b`.  It's silly to call them `foo` and `bar`, let alone
