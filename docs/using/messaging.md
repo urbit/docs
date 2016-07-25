@@ -188,8 +188,6 @@ you're subscribed to.
 
 `;who` - list everyone in all your stations
 
-`;who station` - list everyone in that station
-
 ### Station Glyphs
 
 Glyphs are assigned by station hash out of the following list
