@@ -93,8 +93,8 @@ Cheat sheet:
     `?:($=(%type value) %tru %false)`. `$=`
     ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
     of type `p`.
-    <!--One thing to watch out for in hoon: if you do `?~`, it
-      affects the type of the conditional value: XXexample-->
+<!-- One thing to watch out for in hoon: if you do `?~`, it
+      affects the type of the conditional value: XXexample -->
 
 -   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
@@ -106,7 +106,8 @@ Cheat sheet:
 -   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
-    `*`, or a cell `^`. <!--XX this is a union, right?-->
+    `*`, or a cell `^`. 
+<!-- XX this is a union, right? -->
 
 -   You may have noticed the separate `|%`
     ([barcen](../../hoon/twig/bar-core/cen-core/)) above the application core
