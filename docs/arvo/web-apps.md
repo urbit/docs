@@ -19,7 +19,7 @@ poke it.  There'll be a button to poke the app, and line of text
 below it saying how many times the app has been poked.  We can
 update this by subscribing our page to the relevant path on its app.
 
-Let's first write the app, `/app/click.hoon`:
+Let's first checkout the app `/app/examples/click.hoon`:
 
 ```
 /?    314
@@ -29,15 +29,15 @@ Let's first write the app, `/app/click.hoon`:
 --
 !:
 |_  {hid/bowl clicks/@}
-++  poke-click
+++  poke-examples-click-click
   |=  click/$click
   ~&  [%poked +(clicks)]
   :_  +>.$(clicks +(clicks))
   %+  turn  (prey /the-path hid)
-  |=({o/bone *} [o %diff %clicks +(clicks)])
+  |=({o/bone *} [o %diff %examples-click-clicks +(clicks)])
 ++  peer-the-path
   |=  pax/path
-  [[[ost.hid %diff %clicks clicks] ~] +>.$]
+  [[[ost.hid %diff %examples-click-clicks clicks] ~] +>.$]
 --
 ```
 
@@ -48,7 +48,7 @@ all our subcribers the new value.  When someone subscribes to us
 on the path `/the-path`, we immediately give them the current
 number of clicks.
 
-Let's take a look at the new marks.  Here's `/mar/click.hoon`:
+Let's take a look at the new marks.  Here's `/mar/examples/click/click.hoon`:
 
 ```
 |_  click/$click
@@ -63,7 +63,7 @@ Let's take a look at the new marks.  Here's `/mar/click.hoon`:
 --
 ```
 
-The mark `click` has hoon type `%click`, which means the only
+The mark `examples-click-click` has hoon type `%click`, which means the only
 valid value is `%click`.  We can convert from `noun` by just
 producing `%click`.
 
@@ -83,22 +83,22 @@ is true.
 > the core `jo`.  Our case is actually simple enough that the
 > `?>` line could have been `?>  =([%s 'click'] jon)`.
 
-We can test this mark from the command line (don't forget to start your app with `|start %click`)
+We can test this mark from the command line (don't forget to start your app with `|start %examples-click`)
 
 ```
-~fintud-macrep:dojo> &click %click
+~fintud-macrep:dojo> &examples-click-click %click
 %click
-~fintud-macrep:dojo> &click &json [%s 'click']
+~fintud-macrep:dojo> &examples-click-click &json [%s 'click']
 %click
-~fintud-macrep:dojo> &click &json &mime [/text/json (taco '"click"')]
+~fintud-macrep:dojo> &examples-click-click &json &mime [/text/json (taco '"click"')]
 %click
-~fintud-macrep:dojo> &click &json &mime [/text/json (taco '"clickety"')]
+~fintud-macrep:dojo> &examples-click-click &json &mime [/text/json (taco '"clickety"')]
 /~fintud-macrep/home/0/mar/click:<[7 5].[8 11]>
 ford: casting %json to %click
 ford: cast %click
 ```
 
-And `/mar/clicks.hoon`:
+And `/mar/examples/click/clicks.hoon`:
 
 ```
 |_  clicks/@
@@ -110,7 +110,7 @@ And `/mar/clicks.hoon`:
 --
 ```
 
-`clicks` is just an atom.  We convert to json by creating an
+`examples-clicks-clicks` is just an atom.  We convert to json by creating an
 object with a single field "clicks" with our value.
 
 > Be sure to checkout section 3bD, JSON and XML, in zuse.hoon
@@ -118,10 +118,8 @@ object with a single field "clicks" with our value.
 > produces a JSON object with one element.
 
 ```
-~fintud-macrep:dojo> &json &clicks 6
+~fintud-macrep:dojo> &json &examples-click-clicks 6
 [%o p={[p='clicks' q=[%n p=~.6]]}]
-~fintud-macrep:dojo> &mime &json &clicks 6
-[[%text %json ~] p=12 q='{"clicks":6}']
 ```
 
 Now that we know the marks involved, take another look at the app
@@ -129,15 +127,17 @@ above.  Everything should be pretty straightforward.  Let's poke
 the app from the command line.
 
 ```
-~fintud-macrep:dojo> |start %click
+~fintud-macrep:dojo> |start %examples-click
 >=
-~fintud-macrep:dojo> :click &click %click
+~fintud-macrep:dojo> :examples-click &examples-click-click %click
 [%poked 1]
 >=
-~fintud-macrep:dojo> :click &click %click
+~fintud-macrep:dojo> :examples-click &examples-click-click %click
 [%poked 2]
 >=
 ```
+
+Please pardon the awkwardness of the name 'examples-click-click', but we used it to stay true to our examples naming convention.
 
 **Exercise**:
 
@@ -177,22 +177,21 @@ To view the frontend, point your browser at `ship-name.urbit.org/~~/click` if yo
 We have a button labeled "Poke!" and a div with id `clicks` where
 we'll put the number of clicks.  We also include a small
 javascript file where the client-side application logic can be
-found.  It's in `/web/click/main.js`:
+found.  It's in `/web/pages/examples/click.js`:
 
 ```
+
 $(function() {
   var clicks, $go, $clicks, $err
 
   $go     = $('#go')
   $clicks = $('#clicks')
   $err    = $('#err')
-  
-  window.urb.appl = "click"
 
   $go.on("click",
     function() {
       window.urb.send(
-        "click", {mark: "click"}
+        "click", {mark: "examples-click-click"}
       ,function(err,res) {
         if(err)
           return $err.text("There was an error. Sorry!")
@@ -205,6 +204,7 @@ $(function() {
       })
   })
 
+  window.urb.appl = "examples-click"
   window.urb.bind('/the-path',
     function(err,dat) {
       clicks = dat.data.clicks
