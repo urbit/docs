@@ -159,7 +159,7 @@ Let's write our first network message! Here's `/app/examples/pong.hoon`:
     ::
     ++  poke-atom
       |=  arg/@
-      ^-  (list move) _+>.$}
+      ^-  {(list move) _+>.$}
       ~&  [%receiving (@t arg)]
       [~ +>.$]
     ::
