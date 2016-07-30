@@ -40,8 +40,11 @@ you think you know what you're doing.
 
 Just as with a `:gate`, we can recurse back into a `:gill` with `:moar()` or `$()`.
 
-> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
-> containing a list of changes to the subject.
+> `:moar()` expands to `:make($)`, accepting a *jogging* body containing a list
+> of changes to the subject.
+
+> `$()` expands to `%=($)`, accepting a *jogging* body containing a
+> list of changes to the subject.
 
 ## Examples
 
