@@ -154,8 +154,8 @@ Let's write our first network message! Here's `/app/examples/pong.hoon`:
     ::
     ++  poke-urbit
       |=  to/@p
-      ^-  [(list move) _+>.$]
-      [[[ost %poke /sending [to %pong] %atom 'howdy'] ~] +>.$]
+      ^-  {(list move) _+>.$}
+      [[[ost %poke /sending [to dap] %atom 'howdy'] ~] +>.$]
     ::
     ++  poke-atom
       |=  arg/@
