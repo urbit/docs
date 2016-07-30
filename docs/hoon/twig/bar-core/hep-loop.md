@@ -6,7 +6,7 @@ sort: 4
 
 # `:loop  |-  "barhep"`
 
-`{$loop p/seed}`: form a trap and kick it.
+`{$loop p/seed}`: form a trap and kick ("*call*") it.
 
 ## Expands to
 
@@ -29,8 +29,11 @@ The `:loop` keyword (and `|-` rune) can be thought of as a "recursion point" -
 since `:loop` makes a `:trap` (a core with one arm named `$`), we can recurse
 back into it with `:moar()` or `$()`.
 
-> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
-> containing a list of changes to the subject.
+> `:moar()` expands to `:make($)`, accepting a *jogging* body containing a list
+> of changes to the subject.
+
+> `$()` expands to `%=($)`, accepting a *jogging* body containing a
+> list of changes to the subject.
 
 ## Examples
 

@@ -58,5 +58,8 @@ A more interesting trap:
 Note that we can use `:moar()` or `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
-> containing a list of changes to the subject.
+> `:moar()` expands to `:make($)`, accepting a *jogging* body containing a list
+> of changes to the subject.
+
+> `$()` expands to `%=($)`, accepting a *jogging* body containing a
+> list of changes to the subject.
