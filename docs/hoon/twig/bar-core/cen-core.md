@@ -39,4 +39,3 @@ A trivial core:
 101
 ```
 
-In this trivial example, `g` id ther
