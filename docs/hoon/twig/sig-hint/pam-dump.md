@@ -22,6 +22,12 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :dump('halp' ~)
+'halp'
+~
+```
+
+```
 ~zod:dojo> ~&('halp' ~)
 'halp'
 ~

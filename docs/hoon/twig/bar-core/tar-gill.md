@@ -59,5 +59,14 @@ Wet and dry gates in a nutshell:
 [%dog %cat]
 ```
 
+```
+~zod:dojo> =foo |=({a/* b/*} [b a])
+~zod:dojo> =bar |*({a/* b/*} [b a])
+~zod:dojo> (foo %cat %dog)
+[6.778.724 7.627.107]
+~zod:dojo> (bar %cat %dog)
+[%dog %cat]
+```
+
 The dry gate does not preserve the span of `a` and `b`; the wet
 gate does.

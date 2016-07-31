@@ -24,6 +24,15 @@ Regular: *3-fixed*.
 ## Examples
 
 ```
+/~zod:dojo> :cont  1
+              2
+            3
+[1 2 3]
+/~zod:dojo> :cont(%a ~ 'b')
+[%a ~ 'b']
+```
+
+```
 /~zod:dojo> :+  1
               2
             3

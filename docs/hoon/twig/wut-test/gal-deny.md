@@ -26,6 +26,11 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :deny(=(3 4) %foo)
+%foo
+```
+
+```
 ~zod:dojo> ?<(=(3 4) %foo)
 %foo
 ```

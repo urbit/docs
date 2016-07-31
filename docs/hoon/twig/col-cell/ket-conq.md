@@ -24,10 +24,21 @@ Regular: *4-fixed*.
 ## Examples
 
 ```
-/~zod:dojo> :^(1 2 3 4)
+/~zod:dojo> :conq(1 2 3 4)
 [1 2 3 4]
-/~zod:dojo> :^  5  6
+/~zod:dojo> :conq  5
+                6
               7
             8
+[5 6 7 8]
+```
+
+```
+/~zod:dojo> :^(1 2 3 4)
+[1 2 3 4]
+/~zod:dojo> :^     5
+                 6
+               7
+             8
 [5 6 7 8]
 ```

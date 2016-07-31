@@ -32,3 +32,12 @@ Regular: *3-fixed*.
 ~zod:dojo> (foo 5)
 8
 ```
+
+```
+~zod:dojo> =foo  |=  a/@
+                 =/   b  1
+                 =;   c/@  :(add a b c)
+                 2
+~zod:dojo> (foo 5)
+8
+```

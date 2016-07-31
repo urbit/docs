@@ -22,6 +22,11 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :poll(%foo 3)
+3
+```
+
+```
 ~zod:dojo> ~$(%foo 3)
 3
 ```

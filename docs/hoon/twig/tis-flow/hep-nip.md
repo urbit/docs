@@ -29,9 +29,18 @@ is much smaller than the twig that uses it.
 ## Examples
  
 ```
+~zod:dojo> =foo  :gate  a/@
+                 :pin  :name(b 1)
+                 :nip  :(add a b c)
+                 c=2 
+~zod:dojo> (foo 5)
+8
+```
+
+```
 ~zod:dojo> =foo  |=  a/@
-                 =+  :name(b 1)
-                 =-  :(add a b c)
+                 =+  b=1)
+                 =-  (add a b c)
                  c=2 
 ~zod:dojo> (foo 5)
 8

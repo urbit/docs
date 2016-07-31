@@ -34,6 +34,19 @@ your mold to be used as a normalizer.
 ## Examples
 
 ```
+~zod:dojo> =a :pick($foo $bar $baz)
+
+~zod:dojo> (a %baz)
+%baz
+
+~zod:dojo> (a [37 45])
+%foo
+
+~zod:dojo> $:a
+$foo
+```
+
+```
 ~zod:dojo> =a ?($foo $bar $baz)
 
 ~zod:dojo> (a %baz)

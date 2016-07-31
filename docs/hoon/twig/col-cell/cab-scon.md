@@ -24,6 +24,11 @@ Regular: *2-fixed*.
 ### Examples
 
 ```
+~zod:dojo> :scon(1 2)
+[2 1]
+```
+
+```
 ~zod:dojo> :_(1 2)
 [2 1]
 ```

@@ -18,6 +18,13 @@ Regular: *1-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :deep(~)
+%.n
+~zod:dojo> :deep([2 3])
+%.y
+```
+
+```
 ~zod:dojo> .?(~)
 %.n
 ~zod:dojo> .?([2 3])

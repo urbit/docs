@@ -19,6 +19,15 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :need(264 (add 2 2))
+4
+~zod:dojo> :need(164 (add 2 2))
+4
+~zod:dojo> :need(64 (add 2 2))
+! exit
+```
+
+```
 ~zod:dojo> !?(264 (add 2 2))
 4
 ~zod:dojo> !?(164 (add 2 2))

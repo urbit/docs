@@ -22,6 +22,14 @@ Regular: *4-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :warn((gth 1 2) 'oops' ~)
+~
+~zod:dojo> :warn((gth 1 0) 'oops' ~)
+'oops'
+~
+```
+
+```
 ~zod:dojo> ~?((gth 1 2) 'oops' ~)
 ~
 ~zod:dojo> ~?((gth 1 0) 'oops' ~)

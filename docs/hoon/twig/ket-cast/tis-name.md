@@ -20,11 +20,14 @@ Regular: *2-fixed*.
 Irregular: `foo=bar` is `:name(foo bar)`.
 
 ## Examples
+
 ```
 ~zod:dojo> a=1
 a=1
 ~zod:dojo> ^=  a
            1
+a=1
+~zod:dojo> :name(a 1)
 a=1
 ~zod:dojo> [b c d]=[1 2 3 4]
 [b=1 c=2 d=[3 4]]

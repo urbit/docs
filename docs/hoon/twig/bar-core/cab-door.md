@@ -48,6 +48,17 @@ is an irregular form for `:open($ foo bar)`, `%~`, "censig".
 A trivial door:
 
 ```
+/~zod:dojo> =mol  :door  a/@ud
+                  ++  succ  +(a)
+                  ++  prev  (dec a)
+                  --
+/~zod:dojo> :call(succ mol 1)
+2
+/~zod:dojo> :call(succ mol :call(succ mol :call(prev mol 5)))
+6
+```
+
+```
 /~zod:dojo> =mol  |_  a/@ud
                   ++  succ  +(a)
                   ++  prev  (dec a)

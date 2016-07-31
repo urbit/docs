@@ -21,6 +21,8 @@ Irregular: `+(6)` is `.+(6)`.
 ## Examples
 
 ```
+~zod:dojo> :bump(6)
+7
 ~zod:dojo> +(6)
 7
 ~zod:dojo> +(%foo)

@@ -40,3 +40,10 @@ gates or other cores over the network!
 ~zod:dojo> ($:foo %foo)
 %bar
 ```
+
+```
+~zod:dojo> =foo $-($foo $bar)
+
+~zod:dojo> ($:foo %foo)
+%bar
+```

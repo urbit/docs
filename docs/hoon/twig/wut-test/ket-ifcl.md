@@ -31,6 +31,16 @@ Regular form: *3-fixed*
 ## Examples
 
 ```
+~zod:dojo> :ifcl(0 1 2)
+! mint-vain
+! exit
+~zod:dojo> :ifcl(`*`0 1 2)
+2
+~zod:dojo> :ifcl(`*`[1 2] 3 4)
+3
+```
+
+```
 ~zod:dojo> ?^(0 1 2)
 ! mint-vain
 ! exit

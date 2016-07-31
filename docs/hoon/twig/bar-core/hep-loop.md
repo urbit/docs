@@ -40,6 +40,11 @@ back into it with `:moar()` or `$()`.
 A trivial loop doesn't even recurse:
 
 ```
+~zod:dojo> :loop(42)
+42
+```
+
+```
 ~zod:dojo> |-(42)
 42
 ```
@@ -53,6 +58,17 @@ The classic loop is a decrement:
                  :if  =(a +(b))
                    b
                  :moar(b +(b))
+~zod:dojo> foo
+41
+```
+
+```
+~zod:dojo> =foo  =/  a  42
+                 =/  b  0
+                 |-
+                 ?:  =(a +(b))
+                   b
+                 $(b +(b))
 ~zod:dojo> foo
 41
 ```

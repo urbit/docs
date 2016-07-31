@@ -33,6 +33,12 @@ only for a true null, `~`.
 
 ```
 ~zod:dojo> =foo ""
+~zod:dojo> :ifno(foo 1 2)
+1
+```
+
+```
+~zod:dojo> =foo ""
 ~zod:dojo> ?~(foo 1 2)
 1
 ```

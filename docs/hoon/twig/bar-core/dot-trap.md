@@ -34,6 +34,14 @@ A trap is a deferred computation.
 A trivial trap:
 
 ```
+~zod:dojo> =foo :trap(42)
+~zod:dojo> :rap($ foo)
+42
+~zod:dojo> (foo)
+42
+```
+
+```
 ~zod:dojo> =foo |.(42)
 ~zod:dojo> $:foo
 42
@@ -51,6 +59,18 @@ A more interesting trap:
                  :if  =(step reps)
                    outp
                  :moar(outp (add outp 2), step +(step))
+~zod:dojo> (foo)
+20
+```
+
+```
+~zod:dojo> =foo  =/  reps  10
+                 =/  step  0
+                 =/  outp  0
+                 |.
+                 ?:  =(step reps)
+                   outp
+                 $(outp (add outp 2), step +(step))
 ~zod:dojo> (foo)
 20
 ```

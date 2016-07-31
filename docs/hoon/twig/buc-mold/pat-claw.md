@@ -39,3 +39,16 @@ Example:
 ~zod:dojo> $:a
 [%foo p=0 q=0]
 ```
+
+```
+~zod:dojo> =a $@($foo $:(p/$bar q/@ud))
+
+~zod:dojo> (a %foo)
+%foo
+
+~zod:dojo> `a`[%bar 99]
+[p=%bar q=99]
+
+~zod:dojo> $:a
+[%foo p=0 q=0]
+```

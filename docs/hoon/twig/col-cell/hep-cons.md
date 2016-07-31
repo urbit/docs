@@ -38,6 +38,8 @@ compiler does), `[a b]` is the same as `[%cons a b]`.
 ## Examples
 
 ```
+~zod:dojo> :cons(1 2)
+[1 2]
 ~zod:dojo> :-(1 2)
 [1 2]
 ~zod:dojo> 1^2

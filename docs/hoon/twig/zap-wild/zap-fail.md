@@ -22,6 +22,11 @@ Nothing.  Always crashes, with span `%void`.
 ## Examples
 
 ```
+~zod:dojo> :fail
+! exit
+```
+
+```
 ~zod:dojo> !!
 ! exit
 ```

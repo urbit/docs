@@ -26,6 +26,11 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :sure(=(3 3) %foo)
+%foo
+```
+
+```
 ~zod:dojo> ?>(=(3 3) %foo)
 %foo
 ```
