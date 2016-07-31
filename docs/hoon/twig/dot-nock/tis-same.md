@@ -29,6 +29,12 @@ is a common cause of performance bugs.)
 ## Examples
 
 ```
+~zod:dojo> :same(0 0)
+%.y
+~zod:dojo> :same(1 2)
+%.n
+```
+```
 ~zod:dojo> =(0 0)
 %.y
 ~zod:dojo> =(1 2)

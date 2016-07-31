@@ -24,6 +24,12 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> =add-triple :gate({a/@ b/@ c/@} :(add a b c))
+~zod:dojo> :lace([1 2 3] add-triple)
+6
+```
+
+```
 ~zod:dojo> =add-triple |=({a/@ b/@ c/@} :(add a b c))
 ~zod:dojo> %.([1 2 3] add-triple)
 6

@@ -51,6 +51,20 @@ An extra case will throw `mint-vain`.  A lost case defaults.
 ## Examples
 
 ```
+~zod:dojo> =cor  :gate  vat/?($a $b)
+                 :deft  vat  240
+                      $a  20
+                      $b  42
+                 ==
+~zod:dojo> (cor %a)
+20
+~zod:dojo> (cor %b)
+42
+~zod:dojo> (cor %c)
+240
+```
+
+```
 ~zod:dojo> =cor  |=  vat/?($a $b)
                  ?+  vat  240
                    $a  20

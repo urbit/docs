@@ -41,3 +41,16 @@ Irregular: `{a b c}` is `:bank(a b c)`.
 ~zod:dojo> $:foo
 [p=0 q=%$]
 ```
+
+```
+~zod:dojo> =foo $:(p/@ud q/@tas)
+
+~zod:dojo> (foo 33 %foo)
+[p=33 q=%foo]
+
+~zod:dojo> `foo`[33 %foo]
+[p=33 q=%foo]
+
+~zod:dojo> $:foo
+[p=0 q=%$]
+```

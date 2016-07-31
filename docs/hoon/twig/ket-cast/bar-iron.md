@@ -32,6 +32,13 @@ interface.
 The prettyprinter shows the core metal (`.` gold, `|` iron):
 
 ```
+~zod:dojo> :gate(@ 1)
+<1.gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
+~zod:dojo> :iron(:gate(@ 1))
+<1|gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
+```
+
+```
 ~zod:dojo> |=(@ 1)
 <1.gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
 ~zod:dojo> ^|(|=(@ 1))

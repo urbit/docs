@@ -22,6 +22,12 @@ Regular: *2-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :show('sample error message' !!)
+'sample error message'
+ford: build failed
+```
+
+```
 ~zod:dojo> ~|('sample error message' !!)
 'sample error message'
 ford: build failed

@@ -23,4 +23,7 @@ Regular: *2-fixed*.
 'a'
 ```
 
-
+```
+~zod:dojo> ^+('text' %a)
+'a'
+```

@@ -24,11 +24,23 @@ Hints are all conventions at the interpreter level.
 ## Examples
 
 ```
+~zod:dojo> :hint(%a 42)
+42
+```
+
+```
 ~zod:dojo> ~>(%a 42)
 42
 ```
 
 Running the compiler:
+
+```
+~zod:dojo> (make ':hint(%a 42)')
+[%10 p=97 q=[%1 p=42]]
+~zod:dojo> (make ':hint(%a.+(2) 42)')
+[%10 p=[p=97 q=[%4 p=[%1 p=2]]] q=[%1 p=42]]
+```
 
 ```
 ~zod:dojo> (make '~>(%a 42)')

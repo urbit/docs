@@ -26,6 +26,8 @@ Irregular: `foo:bar` is `:rap(foo bar)`.
 ## Examples
 
 ```
+~zod:dojo> :rap(b [a=1 b=2 c=3])
+2
 ~zod:dojo> b:[a=1 b=2 c=3]
 2
 ~zod:dojo> [. .]:(add 2 4)

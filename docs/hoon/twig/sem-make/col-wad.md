@@ -46,6 +46,13 @@ Irregular: `:(add a b c)` is `;:(add a b c)`.
 ```
 ~zod:dojo> (add 3 (add 4 5))
 12
+~zod:dojo> :wad(add 3 4 5)
+12
+```
+
+```
+~zod:dojo> (add 3 (add 4 5))
+12
 ~zod:dojo> ;:(add 3 4 5)
 12
 ~zod:dojo> :(add 3 4 5)

@@ -23,6 +23,11 @@ span-noun cell is generally called a `vase`.
 ## Examples
 
 ```
+~zod:dojo> :wrap(1)
+[p=#t/@ud q=1]
+```
+
+```
 ~zod:dojo> !>(1)
 [p=#t/@ud q=1]
 ```

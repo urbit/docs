@@ -36,6 +36,12 @@ A common error is `find.$`, meainng `p` is not a mold.
 
 ```
 ~zod:dojo> =bar [%foo %bar %baz]
+~zod:dojo> :fits({$foo *} bar)
+%.y
+```
+
+```
+~zod:dojo> =bar [%foo %bar %baz]
 ~zod:dojo> ?=({$foo *} bar)
 %.y
 ```

@@ -44,6 +44,11 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 ## Examples
 
 ```
+~zod:dojo> :and(=(6 6) =(42 42))
+%.y
+```
+
+```
 ~zod:dojo> &(=(6 6) =(42 42))
 %.y
 ```

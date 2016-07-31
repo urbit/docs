@@ -31,6 +31,19 @@ twig of an `:if` is much heavier than the negative twig.
 ## Examples
 
 ```
+~zod:dojo> :lest((gth 1 2) 3 4)
+3
+~zod:dojo> :lest(:fits(%a 'a') %not-a %yup)
+%yup
+~zod:dojo> :lest  %.y
+             'this false case is less heavy than the true case'
+           :if  =(2 3)
+             'two not equal to 3'
+           'but see how \'r is much heavier than \'q?'
+'but see how \'r is much heavier than \'q?'
+```
+
+```
 ~zod:dojo> ?.((gth 1 2) 3 4)
 3
 ~zod:dojo> ?.(?=(%a 'a') %not-a %yup)

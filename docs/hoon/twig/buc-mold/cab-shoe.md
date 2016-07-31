@@ -43,3 +43,16 @@ produces its example instead.
 ~zod:dojo $:foo
 [%foobar %moobaz]
 ```
+
+```
+~zod:dojo> =foo $_([%foobar %moobaz])
+
+~zod:dojo> (foo %foo %bar)
+[%foobar %moobaz]
+
+~zod:dojo> `foo`[%foobar %moobaz]
+[%foobar %moobaz]
+
+~zod:dojo $:foo
+[%foobar %moobaz]
+```

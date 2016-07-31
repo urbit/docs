@@ -28,6 +28,17 @@ Irregular: `!foo` is `?!(foo)`.
 ## Examples
 
 ```
+~zod:dojo> not:(=(1 2))
+%.y
+~zod:dojo> :not(&)
+%.n
+~zod:dojo> :not(|)
+%.y
+~zod:dojo> :not(gth 5 6)
+%.y
+```
+
+```
 ~zod:dojo> ?!(.=(1 2))
 %.y
 ~zod:dojo> !&

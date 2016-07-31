@@ -40,3 +40,10 @@ layer (as seen in the expansion above) to apply a coat.
 ~zod:dojo> (a %bar)
 p=%foo
 ```
+
+```
+~zod:dojo> =a $=(p $foo)
+
+~zod:dojo> (a %bar)
+p=%foo
+```
