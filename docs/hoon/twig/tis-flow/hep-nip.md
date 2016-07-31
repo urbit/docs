@@ -5,7 +5,7 @@ sort: 4
 
 # `:nip  =-  "tishep"`
 
-`{$pin p/seed q/seed}`: combine a new noun with the subject, inverted.
+`{$nip p/seed q/seed}`: combine a new noun with the subject, inverted.
 
 ## Expands to
 

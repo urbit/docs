@@ -27,7 +27,7 @@ an argument.  A "method" on a core is an arm producing a gate.
 A trivial core:
 
 ```
-~zod:dojo> =foo  =+  x  58
+~zod:dojo> =foo  =+  x=58
                  |%
                  ++  n  (add 42 x)
                  ++  g  |=  b/@

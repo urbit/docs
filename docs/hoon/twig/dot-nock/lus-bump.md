@@ -5,7 +5,7 @@ sort: 3
 
 # `:bump  .+  "dotlus"`
 
-`{$bump p/seed}`: increment an atom with Nock `4`.
+`{$bump p/atom}`: increment an atom with Nock `4`.
 
 ## Produces
 

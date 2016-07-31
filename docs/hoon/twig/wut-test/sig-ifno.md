@@ -34,5 +34,5 @@ only for a true null, `~`.
 ```
 ~zod:dojo> =foo ""
 ~zod:dojo> ?~(foo 1 2)
-11
+1
 ```

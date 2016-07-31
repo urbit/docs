@@ -19,6 +19,3 @@ typed immutable namespace defined by its virtual context.
 
 We don't remold dynamically nouns in a `:wish`, but we do check
 that the type of the value nests in `p`.
-
-## Examples
-
