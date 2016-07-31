@@ -26,7 +26,7 @@ Irregular: `_foo` is `:shoe(foo)`.
 
 ## Discussion
 
-A shoe discards the sample it's supposededly normalizing, and
+A shoe discards the sample it's supposedly normalizing, and
 produces its example instead.
 
 ## Examples
