@@ -24,12 +24,26 @@ noun stays the same; the alias is just recorded in its span.
 ## Examples
 
 ```
-~zod:dojo> 
+~zod:dojo>
+    :pin  a=1
+    :aka  b  a
+    [a b]
+[1 1]
+~zod:dojo>
+    :pin  a=1
+    :aka  b  a
+    :set  a  2
+    [a b]
+[2 2]
+```
+
+```
+~zod:dojo>
     =+  a=1
     =*  b  a
     [a b]
 [1 1]
-~zod:dojo> 
+~zod:dojo>
     =+  a=1
     =*  b  a
     =.  a  2

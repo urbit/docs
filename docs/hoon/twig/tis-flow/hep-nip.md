@@ -5,7 +5,7 @@ sort: 4
 
 # `:nip  =-  "tishep"`
 
-`{$pin p/seed q/seed}`: combine a new noun with the subject, inverted.
+`{$nip p/seed q/seed}`: combine a new noun with the subject, inverted.
 
 ## Expands to
 
@@ -29,9 +29,18 @@ is much smaller than the twig that uses it.
 ## Examples
  
 ```
+~zod:dojo> =foo  :gate  a/@
+                 :pin  :name(b 1)
+                 :nip  :(add a b c)
+                 c=2 
+~zod:dojo> (foo 5)
+8
+```
+
+```
 ~zod:dojo> =foo  |=  a/@
-                 =+  :name(b 1)
-                 =-  :(add a b c)
+                 =+  b=1)
+                 =-  (add a b c)
                  c=2 
 ~zod:dojo> (foo 5)
 8

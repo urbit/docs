@@ -33,12 +33,23 @@ Regular: *2-fixed*.
 Fails because of auras:
 
 ```
+~zod:dojo> :cast(tape ~[97 98 99])
+! nest-fail
+! exit
+```
+
+```
 ~zod:dojo> ^-(tape ~[97 98 99])
 ! nest-fail
 ! exit
 ```
 
 Succeeds because molds don't care about auras:
+
+```
+~zod:dojo> :fry(tape ~[97 98 99])
+"abc"
+```
 
 ```
 ~zod:dojo> ;;(tape ~[97 98 99])
@@ -53,6 +64,11 @@ Succeeds because the mold normalizes:
 ```
 
 Fails because not a fixpoint:
+
+```
+~zod:dojo> :fry(tape [50 51 52])
+! exit
+```
 
 ```
 ~zod:dojo> ;;(tape [50 51 52])

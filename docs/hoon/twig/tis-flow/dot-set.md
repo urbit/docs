@@ -30,6 +30,16 @@ a new subject with a changed value.  Note that the mutation uses
 ## Examples
 
 ```
+~zod:dojo> :pin  a=[b=1 c=2]
+           :set  b.a  3
+           a
+[b=3 c=2]
+~zod:dojo> :pin  a=[b=1 c=2]
+           :set(b.a 3 a)
+[b=3 c=2]
+```
+
+```
 ~zod:dojo> =+  a=[b=1 c=2]
            =.  b.a  3
            a

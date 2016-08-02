@@ -36,6 +36,18 @@ span of a limb with mutations.
 [p=%bar q=6]
 ~zod:dojo> foo(p [55 99])
 [p=[55 99] q=6]
+~zod:dojo> :keep(foo p %bar)
+[p=7.496.034 99]
+~zod:dojo> :keep(foo p [55 99])
+! nest-fail
+```
+
+```
+~zod:dojo> =foo [p=42 q=6]
+~zod:dojo> foo(p %bar)
+[p=%bar q=6]
+~zod:dojo> foo(p [55 99])
+[p=[55 99] q=6]
 ~zod:dojo> %_(foo p %bar)
 [p=7.496.034 99]
 ~zod:dojo> %_(foo p [55 99])

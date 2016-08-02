@@ -5,7 +5,7 @@ sort: 3
 
 # `:bump  .+  "dotlus"`
 
-`{$bump p/seed}`: increment an atom with Nock `4`.
+`{$bump p/atom}`: increment an atom with Nock `4`.
 
 ## Produces
 
@@ -21,6 +21,8 @@ Irregular: `+(6)` is `.+(6)`.
 ## Examples
 
 ```
+~zod:dojo> :bump(6)
+7
 ~zod:dojo> +(6)
 7
 ~zod:dojo> +(%foo)

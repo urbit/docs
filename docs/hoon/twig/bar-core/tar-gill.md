@@ -40,8 +40,11 @@ you think you know what you're doing.
 
 Just as with a `:gate`, we can recurse back into a `:gill` with `:moar()` or `$()`.
 
-> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
-> containing a list of changes to the subject.
+> `:moar()` expands to `:make($)`, accepting a *jogging* body containing a list
+> of changes to the subject.
+
+> `$()` expands to `%=($)`, accepting a *jogging* body containing a
+> list of changes to the subject.
 
 ## Examples
 
@@ -50,6 +53,15 @@ Wet and dry gates in a nutshell:
 ```
 ~zod:dojo> =foo :gate({a/* b/*} [b a])
 ~zod:dojo> =bar :gill({a/* b/*} [b a])
+~zod:dojo> (foo %cat %dog)
+[6.778.724 7.627.107]
+~zod:dojo> (bar %cat %dog)
+[%dog %cat]
+```
+
+```
+~zod:dojo> =foo |=({a/* b/*} [b a])
+~zod:dojo> =bar |*({a/* b/*} [b a])
 ~zod:dojo> (foo %cat %dog)
 [6.778.724 7.627.107]
 ~zod:dojo> (bar %cat %dog)

@@ -24,6 +24,14 @@ Regular: *2-fixed*.
 ```
 ~zod:dojo> a
 ! -find.a
+~zod:dojo> :peep('foo' a)
+! @t
+! find.a
+```
+
+```
+~zod:dojo> a
+! -find.a
 ~zod:dojo> ~!('foo' a)
 ! @t
 ! find.a

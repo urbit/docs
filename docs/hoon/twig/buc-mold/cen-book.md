@@ -42,3 +42,13 @@ in the book terminates, or the default will be an infinite loop!
 ~zod:dojo> $:foo
 [%foo p=0 q=0]~
 ```
+
+```
+~zod:dojo> =foo $%({$foo p/@ud q/@ud} {$bar p/@ud})
+
+~zod:dojo> (foo [%bar 37])
+[%bar p=37]
+
+~zod:dojo> $:foo
+[%foo p=0 q=0]~
+```

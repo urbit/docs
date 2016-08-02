@@ -57,6 +57,20 @@ will throw `mint-vain`.  (Ecclesiastes did nothing wrong.)
 ## Examples
 
 ```
+~zod:dojo> =cor  :gate  vat/?($a $b)
+                 :case  vat
+                   $a  20
+                   $b  42
+                 ==
+~zod:dojo> (cor %a)
+20
+~zod:dojo> (cor %b)
+42
+~zod:dojo> (cor %c)
+! nest-fail
+```
+
+```
 ~zod:dojo> =cor  |=  vat/?($a $b)
                  ?-  vat
                    $a  20

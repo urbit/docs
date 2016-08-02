@@ -38,6 +38,11 @@ Note also that all other branching twigs reduce to `:if`.
 ## Examples
 
 ```
+~zod:dojo> :if((gth 1 2) 3 4)
+4
+```
+
+```
 ~zod:dojo> ?:((gth 1 2) 3 4)
 4
 ```

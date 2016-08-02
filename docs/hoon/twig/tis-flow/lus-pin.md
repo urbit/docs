@@ -28,8 +28,17 @@ Regular: *2-fixed*.
 ## Examples
  
 ```
+~zod:dojo> =foo  :gate  a/@
+                 :pin  :name(b 1)
+                 :pin  :name(c 2)
+                 :(add a b c)
+~zod:dojo> (foo 5)
+8
+```
+
+```
 ~zod:dojo> =foo  |=  a/@
-                 =+  :name(b 1)
+                 =+  b=1
                  =+  c=2
                  :(add a b c)
 ~zod:dojo> (foo 5)

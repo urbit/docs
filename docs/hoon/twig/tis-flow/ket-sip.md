@@ -38,6 +38,14 @@ We have to change the core state every time we generate a
 random number, so we need to `:sip`:
 
 ```
+~zod:dojo> :pin  rng=~(. og 420)
+           :sip  r1  rng  (rads:rng 100)
+           :sip  r2  rng  (rads:rng 100)
+           [r1 r2]
+[99 46]
+```
+
+```
 ~zod:dojo> =+  rng=~(. og 420)
            =^  r1  rng  (rads:rng 100)
            =^  r2  rng  (rads:rng 100)

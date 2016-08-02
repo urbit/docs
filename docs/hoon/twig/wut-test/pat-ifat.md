@@ -27,6 +27,16 @@ Regular: *3-fixed*.
 ## Examples
 
 ```
+~zod:dojo> :ifat(0 1 2)
+! mint-vain
+! exit
+~zod:dojo> :ifat(`*`0 1 2)
+1
+~zod:dojo> :ifat(`*`[1 2] 3 4)
+4
+```
+
+```
 ~zod:dojo> ?@(0 1 2)
 ! mint-vain
 ! exit

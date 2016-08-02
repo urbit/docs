@@ -201,7 +201,7 @@ whose value is of type `atom`; it's a subtree of type `foo:atom`.
 
 ### `limb` (attribute or variable reference)
 
-A [`limb`](limb), like `foo`, is Hoon's equivalent of a variable 
+A [`limb`](../twig/limb/limb), like `foo`, is Hoon's equivalent of a variable 
 reference.  A limb is a twig; given a subject span, `mint`
 resolves it to a Nock formula and a product span.
 
@@ -215,7 +215,7 @@ A limb can also be a slot (direct tree address), like `+15`.
 
 ### `wing` (limb path)
 
-A wing is a list of limbs.  Like attribute references in a
+A [wing](../twig/limb/wing) is a list of limbs.  Like attribute references in a
 conventional language, it uses the syntax `a.b.c`, but inside
 out: Hoon `a.b.c` means "a within b within c", the equivalent of
 `c.b.a` in any other language.  All limbs but the last, here `a`,

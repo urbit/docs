@@ -34,6 +34,14 @@ A trap is a deferred computation.
 A trivial trap:
 
 ```
+~zod:dojo> =foo :trap(42)
+~zod:dojo> :rap($ foo)
+42
+~zod:dojo> (foo)
+42
+```
+
+```
 ~zod:dojo> =foo |.(42)
 ~zod:dojo> $:foo
 42
@@ -55,8 +63,23 @@ A more interesting trap:
 20
 ```
 
+```
+~zod:dojo> =foo  =/  reps  10
+                 =/  step  0
+                 =/  outp  0
+                 |.
+                 ?:  =(step reps)
+                   outp
+                 $(outp (add outp 2), step +(step))
+~zod:dojo> (foo)
+20
+```
+
 Note that we can use `:moar()` or `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `:moar()` expands to `:make($)` (`%=($)`), accepting a *jogging* body
-> containing a list of changes to the subject.
+> `:moar()` expands to `:make($)`, accepting a *jogging* body containing a list
+> of changes to the subject.
+
+> `$()` expands to `%=($)`, accepting a *jogging* body containing a
+> list of changes to the subject.

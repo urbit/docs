@@ -54,11 +54,20 @@ Regular: *3-fixed*.
 
 ## Discussion
 
-`p` can be either a symbol or a symbol/mold.  If it's just a
-symbol, `:var` "declares a type-inferred variable."  It has a
-mold, `:var` "declares a type-checked variable."
+`p` can be either a symbol or a symbol/mold.  If it's just a symbol,
+`:var` "declares a type-inferred variable."  If it has a mold, `:var`
+"declares a type-checked variable."
 
 ## Examples
+
+```
+~zod:dojo> =foo  :gate  a/@
+                 :var  b  1
+                 :var  c/@  2
+                 :(add a b c)
+~zod:dojo> (foo 5)
+8
+```
 
 ```
 ~zod:dojo> =foo  |=  a/@

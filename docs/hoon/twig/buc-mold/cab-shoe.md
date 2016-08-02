@@ -26,13 +26,26 @@ Irregular: `_foo` is `:shoe(foo)`.
 
 ## Discussion
 
-A shoe discards the sample it's supposededly normalizing, and
+A shoe discards the sample it's supposedly normalizing, and
 produces its example instead.
 
 ## Examples
 
 ```
 ~zod:dojo> =foo :shoe([%foobar %moobaz])
+
+~zod:dojo> (foo %foo %bar)
+[%foobar %moobaz]
+
+~zod:dojo> `foo`[%foobar %moobaz]
+[%foobar %moobaz]
+
+~zod:dojo $:foo
+[%foobar %moobaz]
+```
+
+```
+~zod:dojo> =foo $_([%foobar %moobaz])
 
 ~zod:dojo> (foo %foo %bar)
 [%foobar %moobaz]
