@@ -15,7 +15,7 @@ This document outlines the following:
 7. [`sign`](#sign), the responses `%eyre` accepts
 8. [`bolo`](#bolo), the state stored between separate events.
 
-# 1. URL structure [#perk]
+# 1. URL structure <a id="perk"/>
 There exist several URL forms accepted by `%eyre`. 
 
 ## 1.1 Functional request
@@ -49,7 +49,7 @@ When a new version of a page becomes available, it is useful to propagate it to 
 - `/~/on/[hash].json` retuns `true` when a page may require updating.
 - `/~/on/[hash].js` is a lightweight script that polls for the above. It is primarily used in error messages.
 
-## 1.3 Authentication [#auth]
+## 1.3 Authentication <a id="auth"/>
 Authenticated requests are accomplished through sessions, tracked with cookies which are set on the first such request.
 - `/~/as/[user]/...` is an authenticated request to `...`, where `user` can be a `@p` ship, `'own'`, `'any'`, or `'anon'`. 
   + `'anon'` is a randomly-generated per-session submarine, and requires no further authentication.
@@ -79,8 +79,8 @@ So far, all the paths specified have been GET requests. Authentication, however,
 - `POST {oryx, xyro} /~/to/[app]/[mark].json`, where `xyro` is data that will be converted to the `mark`. In the simplest case, `/~/do/hello/json.json` will pass `xyro` through verbatim, sending `[%json xyro]` to the `++poke` arm of app `%hello`.
 - `POST {oryx, xyro} /~/to/<ship>/[app]/[mark].json` is a foreign message send, as above.
 
-## 1.5 Subscriptions [#subs]
-- `/~/of/[ixor]`[#of-ixor] is an `EventSource`: a conceptually infinite file containing a stream of events. By default, it sends a newline every 30 seconds serving to signal that the connection is alive to both the server and IP middleware.
+## 1.5 Subscriptions <a id="subs"/>
+- `/~/of/[ixor]`<a id="of-ixor"/> is an `EventSource`: a conceptually infinite file containing a stream of events. By default, it sends a newline every 30 seconds serving to signal that the connection is alive to both the server and IP middleware.
   + `/~/of/[ixor]?poll={n}` is a long-polling fallback interface. Produces event number {n}, blocking until it occurs. 
 
 Its contexts can be affected by  `POST` requests with a body of `{oryx, wire}`, and a query string of `PUT` or `DELETE`. They return either `{mark}`(which may be `null`), or [`{fail, mess}`](#mean-json)
@@ -88,17 +88,17 @@ Its contexts can be affected by  `POST` requests with a body of `{oryx, wire}`, 
 - `/~/in/[hash].json` is a dual to [`/~/on`](#on-change). It binds `mod` events, which echo the requesting token.
 - `/~/is/[app]/path/to.[mark]` binds `rush` events, formatted with a first line of `[app] /path/to`, and the rest containing subscription data. Additionally, `mean` events formatted similarly may arrive, also converted to the relevant mark.
 
-## 1.6 Ablative [#temp]
+## 1.6 Ablative <a id="temp"/>
 These interfaces will temporarily exist to aid development, and are to be considered unstable.
 - `/~/debug/...` access normally inaccessible pages. For example, `/~/debug/as.html` will present the login page, regardless of current session status.
 
-# 2. Client state [#client]
+# 2. Client state <a id="client"/>
 Some information is stored on, and provided to, browser clients
 
 ## 2.1 Cookies
 Authenticated users receive a cookie on the domain of `*.urbit.org`. The cookie contains a client session token, keyed by the serving ship.
 
-## 2.2 Authentication [#auth-json]
+## 2.2 Authentication <a id="auth-json"/>
 It is common(e.g. by the `%urb` mark) to set window.urb to the contents of `/~/auth.json`:
 - `ship` is the serving ship
 - `oryx` is a unique CSRF token that identifies this view, bound to the session cookie
@@ -114,7 +114,7 @@ To this object, `/main/lib/urb.js` adds helpers:
 - `drop({path,app?=urb.app}, cb?)` pulls the subscription
 - `util` is an object containing methods for converting between JavaScript types and Hoon atom odors.
 
-# 3. Requests [#kiss]
+# 3. Requests <a id="kiss"/>
 
 ## `[%born port=@ud]`, unix init
 When the `vere` process is re/started, a TCP port is bound, HTTP requests on which are the scope of this document. The `%born` gift informs eyre of this occurrence, which in turn updates [its state.](#bolo)
@@ -144,7 +144,7 @@ After `r` is parsed to a `purl`, the `pork`(relative path) determines the resour
 - `/~/at` and `/~/auth.json` generate a new `oryx` and store it in the [session state](#sink).
 - `/~/in` and `/~/is` affect [view state](#stem), possibly sending subscriptions or unsubscriptions to `%f` and `%g` respectively, and are generated from view state.
 - `/~/on` is saved to the `bolo` by `hash`, and translated to a [`%wasp` note](#wasp).
-- `/~/of` fails if the `ixor` is unknown, and otherwise is stored in the `ixor`, receiving a partial response and all events after its [last-seen header](#). If it has a `poll` parameter, the response is full, and only occurs if the body is non-empty. Otherwise the oryx is saved as a (live)[#live] request in case of cancellation.
+- `/~/of` fails if the `ixor` is unknown, and otherwise is stored in the `ixor`, receiving a partial response and all events after its [last-seen header](#). If it has a `poll` parameter, the response is full, and only occurs if the body is non-empty. Otherwise the oryx is saved as a [live](#live) request in case of cancellation.
 - `/~/to` transforms into a [`%g` message](#mess).
 
 **Gifts given in response:** a [`%thou`](), or a [`%that`](#that) followed by multiple [`%thar`]()s.
@@ -165,10 +165,10 @@ Sometimes, messages are received from other ships. They are expected to take the
 
 **Gifts given in response:** [`%nice` or `%mean`](#ack).
 
-### 3.4.1 `gram` [#gram]
+### 3.4.1 `gram` <a id="gram"/>
 
-There are three messages of note, all concerning authentication [#foreign]
-- `[/lon ses]` [#lon] is a login request, which contains the session wishing to authenticate.
+There are three messages of note, all concerning authentication <a id="foreign"/>
+- `[/lon ses]` <a id="lon"/> is a login request, which contains the session wishing to authenticate.
 - if the session is already authorized, a reply of `[/aut ses]` from (%eyre on) a foreign ship prescribes that the session is henceforth allowed to act on its behalf.
 All waiting `/~/as` are resolved as succesful.
 - otherwise, `[/hat ses hart]` contains the ship's preferred hostname. This can then be used to redirect the client.
@@ -176,8 +176,8 @@ All waiting `/~/as` are given `307 Redirect`s to `/~/am` on the provided host.
 
 **Gifts given in response:** nice?
 
-# 4. Responses [#gift]
-## 4.1 `[%nice ~]`, `[%mean ares]`, network acknowledgement [#ack]
+# 4. Responses <a id="gift"/>
+## 4.1 `[%nice ~]`, `[%mean ares]`, network acknowledgement <a id="ack"/>
 A `%nice` is given upon receiving an [ames message](#gram), indicating succesful receipt. `%mean` is currently unused directly, but reserved for error conditions. 
 
 ## `[%sigh p=cage]`, inbound http response
@@ -189,35 +189,35 @@ Most requests are served with one coherent response, consisting of
 - `q=mess`, response headers
 - `r=(unit octs)`, an optional body
 
-## 4.3 `[%that httr]`, partial HTTP response [#that]
+## 4.3 `[%that httr]`, partial HTTP response <a id="that"/>
 [EventStream responses](#of-ixor) consist of multiple sequential chunks. Treated as `%thou`, except the request is kept open.
 
-## 4.4 `[%thar (unit octs)]`, partial HTTP body [#thar]
+## 4.4 `[%thar (unit octs)]`, partial HTTP body <a id="thar"/>
 Complementing `%that`, `%thar` is a body chunk, containing an event. An empty `%thar` signals for the connection to be closed.
 
 Body chunks, besides `[1 '\0a']`(a heartbeat newline), are encoded from `even` events. The stem becomes the [`event` field](#eventsource), and the content, `data` lines.
 
-### 4.4.1 `even`, event types [#even]
+### 4.4.1 `even`, event types <a id="even"/>
 There are three events that a [client subscription](#subs) will be given.
 
-- `[%news hash]`[#even-news] is a `%f` update, and contains the relevant dependency token.
-- `[%rush [term path] wain]`[#even-rush] is sourced subscription data.
+- `[%news hash]`<a id="even-news"/> is a `%f` update, and contains the relevant dependency token.
+- `[%rush [term path] wain]`<a id="even-rush"/> is sourced subscription data.
 - `[%mean [term path] ares]` is a sourced subscription error.
 
-# 5. Vane requests [#note]
+# 5. Vane requests <a id="note"/>
 ## 5.1 ``[%a %wont sock `[path *]`gram]``, outbound message
 The `%a` interface provides conveyance of [messages](#gram) over UDP.
 
 Signs a `%woot` upon message arrival.
 
-## 5.2 `[%b ?(%wait %rest) time]`, timeout set/unset [#wait]
+## 5.2 `[%b ?(%wait %rest) time]`, timeout set/unset <a id="wait"/>
 All open [subscriptions](#of-ixor) require a "heartbeat" newline every `~s30`. When this fails to arrive, a complementary timer is set for `~m1`, after which the client is considered to have departed. 
 The `%b` timer interface is used to schedule the next such event, or cancel past scheduled ones when a connection closes. 
 
 Signs a `%wake` upon timer activation.
 
-## 5.3 `[%f %wasp @uvI]`, dependency listen [#wasp]
-Knowledge of filesystem changes, requested by `/~/on` and `/~/in`, is requested the `%wasp` note. It contains the hash token which idenitifes a set of dependencies to query. Saved as a (live)[#live] request in case of cancellation when caused by `/~/on`.
+## 5.3 `[%f %wasp @uvI]`, dependency listen <a id="wasp"/>
+Knowledge of filesystem changes, requested by `/~/on` and `/~/in`, is requested the `%wasp` note. It contains the hash token which idenitifes a set of dependencies to query. Saved as a (live[live](#live)#live] request in case of cancellation when caused by `/~/on`.
 
 Signs a `%writ` upon change. 
 
@@ -229,12 +229,12 @@ Signs a `%made` containing the computation result.
 The `silk`s used are as follows: 
 
 ### `[%cast %mime %boil mark beam [%web span ~]]`, file load
-The simplest functional request is the construction of a page. Saved as a (live)[#live] request in case of cancellation.
+The simplest functional request is the construction of a page. Saved as a [live](#live) request in case of cancellation.
 - The `mark` is the request extension, defaulting to `%html`.
 - A `beam`(path in `%clay`) is decoded from the request path.
 - A `/web/<nyp ced quy>` virtual path is appended, span-encoding method, auth, and query string.
 
-### `[%cast mark %done ~ cage]`, convert [#done]
+### `[%cast mark %done ~ cage]`, convert <a id="done"/>
 This is used when communicating with apps, in both directions.
 - Client messages are encoded as JSON objects, but can contain many different marks. Ones sent to non-`json.json` endpoints are `%cast` to he relevant mark, with a `cage` of `[%json p:!>(*json) jon]`, prior to being sent onwards to applications with `[%g %mess]`.
 - Subscription responses also come in arbitrary marks, but are required to be sent as whichever mark an endpoint is subscribed to. They get `%cast` prior to being sent back as a `%that` EventSource segment.
@@ -242,12 +242,12 @@ This is used when communicating with apps, in both directions.
 ## 5.5 `%g`, app actions
 The end goal of many a userspace `hymn.hook` is to provide UI for a `%gall` app. To accommodate this, various functionality needs to be interfaced with.
 
-### `[%mess hapt ship cage]`, app message [#mess]
+### `[%mess hapt ship cage]`, app message <a id="mess"/>
 After a `/~/to` POST has been received, and possibly converted to the correct mark, it is sent to `%g` for processing. The `hapt` is the destination, the `ship` is the source, the `cage` is the marked message data.
 
 Signs a `%nice` or `%mean`, in userspace or upon crashing.
 
-### `[%show hapt ship path]`, app subscription[#show]
+### `[%show hapt ship path]`, app subscription<a id="show"/>
 An `/~/is` PUT, if not already registered, results in a new subscription. A request for such contains the destination `hapt`, requesting `ship`, and app-internal `path`.
 
 Signs a `%nice` on init, `%rush` on data, and a `%mean` in subscription termination.
@@ -262,13 +262,13 @@ An `/~/is` DELETE is used to remove a subscription, and is converted straightfor
 
 Signs an empty `%mean` for each open subscription that is closed.
 
-# 6. In-flight metadata [#whir]
+# 6. In-flight metadata <a id="whir"/>
 Various state can be associated with requests, but not necessarily be returned in responses to them.
 
-## 6.1 `~`, dropthrough [#wire-drop]
+## 6.1 `~`, dropthrough <a id="wire-drop"/>
 If the response should be sent statelessly further up the duct, the `wire` is empty. This is used in `%f` pure functional page generation.
 
-## 6.2 `[?(%y %n) ...]`, stability [#wire-live]
+## 6.2 `[?(%y %n) ...]`, stability <a id="wire-live"/>
 The first element of a [`%b` timer](#wait) path distinguishes between live(%y) and dying(%n) channels.
 
 ## 6.3 `/of/[ixor]`, view
@@ -277,13 +277,13 @@ Designates which stream to act upon. Present on `%b` timer cards.
 ## 6.4 `/on/<deps>`
 Present on `%f` dependency news. Looked up in [the state](#bolo) to see if any response is necessary.
 
-## 6.5 `/to/<hasp>/<ship>`, app [#wire-to]
+## 6.5 `/to/<hasp>/<ship>`, app <a id="wire-to"/>
 Present on `%f` translations of message marks
 
-## 6.6 `/is/[ixor]/{hasp path}`, subscription [#wire-is]
+## 6.6 `/is/[ixor]/{hasp path}`, subscription <a id="wire-is"/>
 Subscription requests. Present on `%g` subscription requests, and `%f` translations of [`%rush` subscription data](#show).
 
-# 7. Vane responses [#sign]
+# 7. Vane responses <a id="sign"/>
 The goal of requests is to cause some manner of result. Specifically, 
 
 ## 7.1 `[%a %woot ship coop]`, acknowledgement
@@ -311,11 +311,11 @@ The former is [served](#mime) back to the requester(i.e. the remaining duct), an
 ### 7.5 `[%rush cage]`, subscription data
 A `%rush` arrives on a [subscription wire](#wire-is), and is then sent [for conversion](#done) to the correct mark. An unexpected `%rush` is `%nuke`d.
 
-# 8. Server state [#bolo]
+# 8. Server state <a id="bolo"/>
 There is a quantity of data that persists between events.
 
 ## 8.1 Global
-- `path` [#prefix] the default path which is prepended to relative plain requests. Initialized to `/<our>`, the serving ship; this interprets the first element of requests as a desk, and injects a `case` of `0`.
+- `path` <a id="prefix"/> the default path which is prepended to relative plain requests. Initialized to `/<our>`, the serving ship; this interprets the first element of requests as a desk, and injects a `case` of `0`.
 - `(jar ship hart)` remembered hostnames in order of preference, made accessible through `.^`
   + The default values(for self) are `http://<ship>.urbit.org:80` if not on a fake network, followed by `https://0.0.0.0:[port]`.
 - `(jug deps (each duct oryx))`, `/~/on` and `/~/in` endpoints listening to `%c` updates.
@@ -325,24 +325,24 @@ There is a quantity of data that persists between events.
 - `(map hole sink)`, session state.
 - `(map hole ,[ship ?])`, foreign session names, along with their origin ships and whether they are authorized to act on our behalf.
 
-## 8.2 `live`, per-request state [#live]
+## 8.2 `live`, per-request state <a id="live"/>
 To honor request cancellations, each unserved request must track which effect it is causing.
 + `[%exec whir]` if it is a ford data request 
 + `[%wasp (list @uvH)]` if it is a ford dependency poll
 + `[%xeno ship]` if this is a proxied request
 + `[%poll ixor]` if this is a session long-poll
 
-## 8.3 `sink`, per-session state [#sink]
+## 8.3 `sink`, per-session state <a id="sink"/>
 Each `hole` has associated authentication state.
 - `priv`, a random secret that verifies the session, stored in cookie.
 - `[ship (set ship)]`, the `ship` a session is acting as and any others it has been authorized with.
 - `(jug ship ,[path duct])`, authentication `/~/as` requests waiting on foreign ships.
 - `(set oryx)`, views associated with this session. Dual of `hole` in `stem`.
 
-## 8.4 `stem`, per-view state [#stem]
+## 8.4 `stem`, per-view state <a id="stem"/>
 Each `oryx` has active subscription state.
 - `hole`, session in which this view resides. Dual of `(set oryx)` in `sink`.
-- `ixor`[#ixor], a cached hash of the `oryx` that is used as a subscription id, by the `/~/of` EventStream.
+- `ixor`<a id="ixor"/>, a cached hash of the `oryx` that is used as a subscription id, by the `/~/of` EventStream.
 - `[,@u (map ,@u even)]`, queued [events](#even). Has a maximum size.
 - `(unit ,[duct @u ?])`, http connection, its last received event, and whether it is a long-poll request.
 - `(set deps)`, subscribed `/~/in` points. Mirrored in `bolo`.
@@ -351,11 +351,11 @@ Each `oryx` has active subscription state.
 
 # Appendix A: Glossary
 - An `oryx` is a CSRF token used for [authenticated requests](#auth)
-- `mean.json`[#mean-json] is a rendering of hoon `ares`: an error message formatted as `{fail:'type',mess:"Error message"}`
-- `urb.js`[#urb-js] is the standard client-side implementation of the `%eyre` protocols, normally found in `/=main=/lib`
-- The act of "serving" \[#mime], refers to the wrapping of a `%mime` cage in an HTTP `200 Success` response, and errors or other marks being [sent to ford](#done) for conversion. Inside a `sign`, this conversion occurs along the same [`wire`](#wire); otherwise, the `wire` is [empty](#wire-drop).
+- `mean.json`<a id="mean-json"/> is a rendering of hoon `ares`: an error message formatted as `{fail:'type',mess:"Error message"}`
+- `urb.js`<a id="urb-js"/> is the standard client-side implementation of the `%eyre` protocols, normally found in `/=main=/lib`
+- The act of "serving" \<a id="mime"/>, refers to the wrapping of a `%mime` cage in an HTTP `200 Success` response, and errors or other marks being [sent to ford](#done) for conversion. Inside a `sign`, this conversion occurs along the same [`wire`](#wire); otherwise, the `wire` is [empty](#wire-drop).
 
-# Appendix B: EventSource [#eventsource]
+# Appendix B: EventSource <a id="eventsource"/>
 For more information, see <http://dev.w3.org/html5/eventsource/>
 
 An EventSource is a stream of events, encoded in a conceptually infinite `GET` request. Each event is formatted as

@@ -34,7 +34,7 @@ Eyre: Commentary
 Let us follow the loading of a simple cli app, as it bounces from
 browser to server to browser and back.
 
-## Initial request[#init]
+## Initial request<a id="init"/>
 
 An http request for `http://sampel-sipnym.urbit.org/cli` will be [redirected](dns)
 to the `%eyre` on ~sampel-sipnym, and come in as a `%this` kiss.
@@ -169,7 +169,7 @@ to a `[%auth %try {password}]` perk. `%get:process-auth` checks it against
 serves a fresh `auth.json` which reflects the changed `user`. Upon receiving
 this, the page is refreshed to retry the original request.
 
-## Post-authentication: app communication. [#auth-ok]
+## Post-authentication: app communication. <a id="auth-ok"/>
 
 Upon refresh, `/~~/cli` brings us for the third time to `%get:process-auth`, but
 this time the cookie is set, and the `yac` fetched contains the serving ship as
@@ -194,7 +194,7 @@ of `oryx` that identifies the connection. `++as-aux-request`, an `%is` is a
 `++add-subs:ix`, the ix core fetched `++for-view` by hashing the request
 `++oryx-to-ixor`.
 
-[#ixor] A view has all the state associated with a client that must be
+<a id="ixor"/> A view has all the state associated with a client that must be
 remembered between events. In this case, this is what app/path the request duct
 is associated with; but mainly, `++add-subs:ix` will `pass-note` to `%gall` so
 it `%show`s the data on the path, current and future.
@@ -230,14 +230,14 @@ would occur first, and `%made:axon` would send the gall message proper. In
 either case, eventually a `%mean` or `%nice` arrives, is encoded as json, and
 sent to the client callback.
 
-## A path not taken: magic filenames [#mage]
+## A path not taken: magic filenames <a id="mage"/>
 
 The `/robots.txt` and `/favicon.(ico|png)` files are static, and served
 immediately when caught by a `++parse`. 
 
 XX index.html?
 
-## A path not taken: foreign auth [#xeno]
+## A path not taken: foreign auth <a id="xeno"/>
 
 While this example details a login `/~/as/own`, it is possible to be
 authenticated as any ship on the network. A request for such seen in
@@ -267,7 +267,7 @@ and sending `%g %nuke`.
 
 XX unmentioned arms: abet, add-poll, adit, ames-gram, anon, ares-to-json, bolo, cyst, doze, even, ford-kill, get-mean, gift, give-json, give-thou, gram, hapt, hasp, host-to-ship, ix, ixor, js, kiss, load, mean-json, move, note, pass-note, perk, perk-auth, pest, poke-test, print-subs, render-tang, resp, root-beak, scry, ses-authed, ses-ya, sign, silk, sine, stay, stem, teba, titl, to-oryx, urb, wait-era, wake, whir, wush, xml, ya, ye
 
-## Appendix A: DNS [#dns]
+## Appendix A: DNS <a id="dns"/>
 
 The `*.urbit.org` domain can be used to access destroyers and cruisers. In the
 common case oh hosted ships, this is done by dynamic DNS directly to the hosting
