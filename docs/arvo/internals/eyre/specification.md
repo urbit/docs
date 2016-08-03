@@ -76,8 +76,8 @@ So far, all the paths specified have been GET requests. Authentication, however,
 - `POST {oryx,ship?} /~/auth.json?DELETE` revokes authorization. Response as above.
 
 ## 1.4 Messaging
-- `POST {oryx, xyro} /~/to/[app]/[mark].json`, where `xyro` is data that will be converted to the `mark`. In the simplest case, `/~/do/hello/json.json` will pass `xyro` through verbatim, sending `[%json xyro]` to the `++poke` arm of app `%hello`.
-- `POST {oryx, xyro} /~/to/<ship>/[app]/[mark].json` is a foreign message send, as above.
+- `POST {oryx, wire, xyro} /~/to/[app]/[mark].json`, where `xyro` is data that will be converted to the `mark`. In the simplest case, `/~/to/hello/json.json` will pass `xyro` through verbatim, sending `[%json xyro]` to the `++poke` arm of app `%hello`.
+- `POST {oryx, wire, xyro} /~/to/<ship>/[app]/[mark].json` is a foreign message send, as above.
 
 ## 1.5 Subscriptions <a id="subs"/>
 - `/~/of/[ixor]`<a id="of-ixor"/> is an `EventSource`: a conceptually infinite file containing a stream of events. By default, it sends a newline every 30 seconds serving to signal that the connection is alive to both the server and IP middleware.
@@ -130,9 +130,13 @@ Userspace http request, converted by `%ford` into an actual `hiss`.
 The primary `%eyre` request type comes from the host system, and constitutes an inbound http request. It consists of five parts:
 
 I. `p=[? @if]`: a loobean determining whether the request is being made over https, and the client source, an IPv6 address possibly encoding an IPv4 one as `.0.0.0.0.0.ffff.wwxx.yyzz`
+
 II. `q=meth`, an http method
+
 III. `r=@t`, the unparsed URL
+
 IV. `s=mess`, an associative list of header keys/values
+
 V. `t=(unit octs)`, the request body, if any.
 
 After `r` is parsed to a `purl`, the `pork`(relative path) determines the resource being served. The first step in handling an http request is [classifying its intent](#perk).
@@ -353,9 +357,12 @@ Each `oryx` has active subscription state.
 - An `oryx` is a CSRF token used for [authenticated requests](#auth)
 - `mean.json`<a id="mean-json"/> is a rendering of hoon `ares`: an error message formatted as `{fail:'type',mess:"Error message"}`
 - `urb.js`<a id="urb-js"/> is the standard client-side implementation of the `%eyre` protocols, normally found in `/=main=/lib`
-- The act of "serving" \<a id="mime"/>, refers to the wrapping of a `%mime` cage in an HTTP `200 Success` response, and errors or other marks being [sent to ford](#done) for conversion. Inside a `sign`, this conversion occurs along the same [`wire`](#wire); otherwise, the `wire` is [empty](#wire-drop).
+- The act of "serving"<a id="mime"/>, refers to the wrapping of a `%mime` cage in an HTTP `200 Success` response, and errors or other marks being [sent to ford](#done) for conversion. Inside a `sign`, this conversion occurs along the same [`wire`](#wire); otherwise, the `wire` is [empty](#wire-drop).
 
 # Appendix B: EventSource <a id="eventsource"/>
+
+UNIMPLEMENTED
+
 For more information, see <http://dev.w3.org/html5/eventsource/>
 
 An EventSource is a stream of events, encoded in a conceptually infinite `GET` request. Each event is formatted as
