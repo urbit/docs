@@ -15,7 +15,7 @@ to create a new semantic level in which one can be absolutely precise."
 
 ## Ships
 
-An Urbit `shdip` is a cryptographic title on a `will` signed by private 
+An Urbit `ship` is a cryptographic title on a `will` signed by private 
 key , a human-memorable name, and a packet routing address. Ships are 
 classed by the number of bits in their address:
 
