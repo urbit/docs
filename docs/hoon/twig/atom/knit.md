@@ -32,14 +32,13 @@ String:
 String with interpolation:
 
 ```
-~zod:dojo> =+(planet="world" "hello, {planet}")`.
-"hello, %world."
+~zod:dojo> =+(planet="world" "hello, {planet}.")
+"hello, world."
 ```
 
 String with interpolated prettyprinting:
 
 ```
-~zod:dojo> =+(planet=%world "hello, {<planet>}")`.
+~zod:dojo> =+(planet=%world "hello, {<planet>}.")
 "hello, %world."
 ```
-
