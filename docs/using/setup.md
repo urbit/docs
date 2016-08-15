@@ -63,9 +63,15 @@ Good.
 ### Messaging — `:talk`
 
 Use `^X` (ctrl-x) to change your prompt. Let's join the main Urbit chat
-channel:
+channel.
 
-    ~fitund-macrep:talk() ;join ~dozbud/urbit-meta
+For planets:
+
+    ~fitund-macrep:talk() ;join /urbit-meta
+
+For comets:
+
+    ~ticlen-nidrup-larwyl-rivtyc--folsel-tocwyl-hosrex-nimder:talk() ;join ~binzod/urbit-meta
 
 `:talk` is stateful, so your urbit will download a backlog.
 `/urbit-meta` is the place to ask questions, get help and talk about

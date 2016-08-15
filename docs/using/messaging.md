@@ -41,9 +41,15 @@ Urbit in general.
 
 Let's join `/urbit-meta`:
 
-Use `ctrl-x` to switch from `:dojo` to `:talk`, then:
+Use `ctrl-x` to switch from `:dojo` to `:talk`.
 
-    ~your-urbit:talk> ;join ~dozbud/urbit-meta
+If you're a planet:
+
+    ~your-urbit:talk> ;join /urbit-meta
+
+If you're a comet:
+
+    ~your-really-long-urbit:talk> ;join ~binzod/urbit-meta
 
 You'll see:
 

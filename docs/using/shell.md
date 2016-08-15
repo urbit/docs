@@ -99,7 +99,7 @@ The hood is the system daemon. See `gen/hood` and `app/hood`.
 **`|hi`** - Sends a direct message. Sort of like Unix `write`. Accepts
 an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
 
-    ~your-urbit:dojo> |hi ~dozbud "you there?"
+    ~your-urbit:dojo> |hi ~binzod "you there?"
 
 **`|link`** / **`|unlink`** - Link / unlink a remote app. Accepts an
 Urbit name and an app name.
