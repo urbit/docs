@@ -63,8 +63,6 @@ marked atom and convert it to our new mark.
 9
 ~fintud-macrep:dojo> &examples-cord &atom 9
 '9'
-~fintud-macrep:dojo> &examples-cord &atom &examples-cord &atom 9
-'57'
 ```
 
 ASCII 9 is 57.  There's no requirement, implicit or otherwise,
