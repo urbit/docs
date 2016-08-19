@@ -3,7 +3,7 @@ navhome: /docs
 sort: 12
 ---
 
-# `:tow  =>  "tissig"` 
+# `:tow  =~  "tissig"` 
 
 `{$tow p/(list twig)}`: compose many twigs.
 

@@ -26,9 +26,9 @@ First, `:examples-source`:
       |=  arg/*
       ^-  {(list move) _+>.$}
       :_  +>.$
-      %+  turn  (prey /the-path hid)
+      %+  turn  (prey /example-path hid)
       |=({o/bone *} `move`[o %diff %noun arg])
-    ++  peer
+    ++  peer-example-path
       |=  pax/path
       ^-  {(list move) _+>.$}
       ~&  [%subscribed-to pax=pax]
@@ -51,7 +51,7 @@ And secondly, `:examples-sink`:
       |=  arg/*
       ^-  {(list move) _+>.$}
       ?:  &(=(%on arg) available)
-        [[[ost %peer /subscribe [our %source] /the-path] ~] +>.$(available |)]
+        [[[ost %peer /subscribe [our %source] /example-path] ~] +>.$(available |)]
       ?:  &(=(%off arg) !available)
         [[[ost %pull /subscribe [our %source] ~] ~] +>.$(available &)]
       ~&  ?:(available %not-subscribed %subscribed)
@@ -126,7 +126,7 @@ Here's some sample output of the two working together:
     ~fintud-macrep:dojo> |start %examples-sink
     >=
     ~fintud-macrep:dojo> :examples-sink %on
-    [%subscribed-to pax=/the-path]
+    [%subscribed-to pax=/example-path]
     %successfully-subscribed]
     >=
     ~fintud-macrep:dojo> :examples-source 5
@@ -137,7 +137,7 @@ Here's some sample output of the two working together:
     ~fintud-macrep:dojo> :examples-source 6
     >=
     ~fintud-macrep:dojo> :examples-sink %on
-    [%subscribed-to pax=/the-path]
+    [%subscribed-to pax=/example-path]
     %successfully-subscribed]
     >=
     ~fintud-macrep:dojo> :examples-source 7
@@ -189,7 +189,7 @@ Thus, we're producing our state unchanged.
 
 Our list of moves is the result of a call to `++turn`. `++turn` is what
 many languages call "map" -- it runs a function on every item in a list
-and collects the results in a list. The list is `(prey /the-path hid)`
+and collects the results in a list. The list is `(prey /example-path hid)`
 and the function is the `|=` line right after it.
 
 `++prey` is a standard library function defined in `zuse`. It takes a
@@ -234,7 +234,7 @@ In `++poke-noun` we check our input to see both if it's `%on` and we're
 available. If so, we produce the move to subscribe to
 `:examples-source`:
 
-    [ost %peer /subscribe [our %source] /the-path]
+    [ost %peer /subscribe [our %source] /example-path]
 
 Also, we set available to false (`|`) with `+>.$(available |)`.
 
