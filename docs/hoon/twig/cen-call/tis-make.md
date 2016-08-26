@@ -28,10 +28,19 @@ call `(foo bar)` involves making `foo`, replacing its sample
 at slot `+6` with `bar`, and taking the `$` limb, you might think
 `(foo bar)` would mean `:make(foo +6 bar)`.
 
-But it's actually `:pin(foo :make($ +2 +6 bar))`.  Even if `foo`
-is a wing, we would just be mutating `+6` within the core that
-defines the `foo` arm.  Instead we want to modify the *product*
-of `foo` -- the gate -- so we have to pin it into the subject.
+But it's actually `:pin(foo :per(:make(+2 +6 bar) $))`. Even if `foo` is
+a wing, we would just be mutating `+6` within the core that defines the
+`foo` arm.  Instead we want to modify the *product* of `foo` -- the gate
+-- so we have to pin it into the subject.
+
+Here's that again using runes:
+```
+=+  foo
+=>  %=  +2
+      +6  bar
+    ==
+  $
+```
 
 ## Examples
 
