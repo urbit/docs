@@ -23,7 +23,7 @@ code isn't 2xx.  Here's `app/up.hoon`:
 |%
 ++  move  {bone card}
 ++  card
-  $%  {$hiss wire $~ $httr {$purl p/purl}}
+  $%  {$hiss wire unit-iden/$~ mark/$httr cage/{mark/$purl vase/purl}}
       {$wait wire @da}
   ==
 ++  action
@@ -33,7 +33,7 @@ code isn't 2xx.  Here's `app/up.hoon`:
   ==
 --
 |_  {hid/bowl on/_| in-progress/_| target/@t}
-++  poke-cord
+++  poke-atom
   |=  url-or-command/@t  ^-  (quip move +>)
   =+  ^-  act/action
       ?:  ?=($on url-or-command)  [%on ~]
@@ -67,39 +67,41 @@ code isn't 2xx.  Here's `app/up.hoon`:
     [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
   [~ +>.$(in-progress |)]
 ::
-++  prep  ~&  target  _`.  ::
---
+++  prep  ~&  target  _`.  :: computed when the source file changes;
+--                         :: here it prints target then resets our state
 ```
 
 There's some fancy stuff going on here.  We'll go through it line by
 line, though.
 
-Firstly, there's two kinds of cards we're sending to arvo.  A
-`%them` card makes an HTTP requrest out of a unit `hiss`.
+There's two kinds of cards we're sending to arvo. A `%hiss` move tells
+`%eyre` to make an HTTP request. It expects a `(unit iden)`, which will
+be null here because we aren't doing any authentication; a mark, in this
+case the http request mark `&httr`; and some data in the form of a
+`cage`, which is a `{mark vase}`. This is confusing, so the mold in the
+code quoted above includes a bunch of otherwise unnecessary faces for
+the purpose of illustration. Compare: `{$hiss p/(unit iden) q/mark
+r/cage}` from `zuse`.
+
+> You can grep zuse.hoon and arvo.hoon for most of these definitions.
+> However, beware the ambiguity surrounding "hiss": there's ++hiss in
+> section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the
+> move that is sent to %eyre to make our HTTP request happen. Here we're
+> talking about the latter. See `++kiss-eyre` in `zuse`.
 
 > Recall that `++unit` means "maybe".  Formally, "`(unit a)` is
 > either null or a pair of null and a value in `a`". Also recall
-> that to pull a value out of a unit `(u.unit)`, you must first
-> verify that the unit is not null (for example with `?~`).
+> that to pull a value out of a unit (`u.unit`), you must first
+> verify that the unit is not null (for example with `?~`). See
+> `++need`.
 
-A `hiss` (all of the following terms are defined in `zuse`) is a
-pair of a `purl` and a `moth`.  A `purl` is a parsed url
-structure, which can be created with `++epur`, which is a
-function that takes a url as text and parses it into a `(unit
+A `purl` is a parsed url structure, which can be created with `++epur`,
+which is a function that takes a url as text and parses it into a `(unit
 purl)`.  Thus, the result is null if and only if the url is malformed.
+'Purl' is also the mark which will be applied to this result.  
 
-A `moth` is a treble of a `meth`, a `math`, and `(unit octs)`.
-`meth` is the HTTP method, in this case `%get`.  `math` is a map
-of HTTP headers.  The `(unit octs)` is a possible octet stream
-representing the body.  If it's null, then no body is sent (as in
-this case).
-
-> An octect stream is a pair of the length in bytes of the data
-> plus the data itself.  You can use `++taco` takes text and
-> turns it into an octet strem.
-
-When you send this request, you can expect a `%thou` with the
-response, which we handle later on in `++thou-request`.
+When you send this request, you can expect a `%sigh` with the
+response, which we handle later on in `++sigh-httr`.
 
 For `%wait`, you just pass a [`@da`]() (absolute date), and arvo will
 produce a `%wake` when the time comes.
@@ -131,30 +133,45 @@ type is still a boolean, just like `?`, but the default value is
 > type as the value "+>.$".  In other words, the same type as our
 > current context and state.
 
-Let's take a look at `++poke-cord`.  When we're poked with a
-cord, we first check whether it's `'off'`.  If so, we set `on` to
-false.
+Let's take a look at `++poke-atom`.  When we're poked with an atom, we
+first check whether the atom is `'off'`.  If so, we set our state
+variable `on` to false.
 
-If not, we check whether it's `on`.  If so, we set `on` and
-`in-progress` to true.  If it was already either on or in
-progress, then we don't take any other immediate action.  If it
-was both off and not in progress, then we send an HTTP request.
-This request follows the pattern in `++hiss` well.  `(need (epur
-target))`  is the parsed url, `%get` is the HTTP method, `~`
-means no extra headers, and another `~` means no body.
-
-> Note the `~` at the end of the move.  This is a convenient
-> shortcut for creating a list of a single element.  It's part of
-> a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`,
-> `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`.
-> These may be mixed and matched to create various convoluted
-> structures and emojis.
+If not, we check whether the atom is `'on'`.  If so, we set `on` and
+`in-progress` to true.  If it was already either on or in progress, then
+we don't take any other immediate action. If it was both off and not in
+progress, then we send an HTTP request.
 
 If the argument is neither 'off' nor 'on', then we assume it's an
 actual url, so we save it in `target`.
 
+Here's the move that sends the HTTP request: 
+```
+[ost.hid %hiss /request ~ %httr %purl (need (epur target))]
+```
+
+> Remember, we are expected to produce a *list* of moves. Note the `~`
+> after the move in the full example. This is a convenient shortcut for
+> creating a list of a single element.  It's part of a small family of
+> such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c]
+> ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to
+> create various convoluted structures and emojis.
+
+The correspondence between this move and `{bone card}` can be hard to
+visualize on one line. Here it is more pedantically:
+
+```
+:*  bone=ost.hid                                        :: the move
+    term=%hiss
+    wire=/request
+    unit-iden=~
+    mark=%httr
+    cage=[%purl (need (epur target))]
+==
+```
+
 When the HTTP response comes back, we handle it with
-`++thou-request`, which, along with the wire the request was sent
+`++sigh-httr`, which, along with the wire the request was sent
 on, takes the status code, the response headers, and the response
 body.
 
@@ -175,14 +192,14 @@ Let's try it out:
 ```
 ~fintud-macrep:dojo> |start %up
 >=
-~fintud-macrep:dojo> :examples-up &cord 'http://www.google.com'
+~fintud-macrep:dojo> :examples-up &atom 'http://www.google.com'
 >=
 [%all-is-well 200]
 [%all-is-well 200]
-~fintud-macrep:dojo> :examples-up &cord 'http://example.com'
+~fintud-macrep:dojo> :examples-up &atom 'http://example.com'
 >=
 [%all-is-well 200]
-~fintud-macrep:dojo> :examples-up &cord 'http://google.com'
+~fintud-macrep:dojo> :examples-up &atom 'http://google.com'
 >=
 [%we-have-a-problem 301]
 [ %headers
@@ -209,5 +226,5 @@ Let's try it out:
     ]
   ]
 ]
-~fintud-macrep:dojo> :up &cord 'off'
+~fintud-macrep:dojo> :up &atom 'off'
 ```
