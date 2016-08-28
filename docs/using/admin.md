@@ -29,6 +29,13 @@ or
 
     $ bin/urbit comet
 
+
+## Logging
+
+To log Urbit's command line output to a file, use `script`:
+
+    $ script urbit.log bin/urbit your-urbit
+
 ## Console
 
 Your Urbit terminal is separated into two parts: the prompt (the bottom line) and the record (everything above that).  The record is shared; all the output from all the apps in your command set appears in it.  The prompt is multiplexed.
