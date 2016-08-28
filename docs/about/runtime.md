@@ -513,7 +513,7 @@ no means the case.
 
 In deep memory, think of yourself as if in a signal handler.
 Your execution context is extremely fragile and may be terminated
-without warning or cleanup at any time (for instance, by ^C).
+without warning or cleanup at any time (for instance, by `ctrl-c`).
 
 For instance, you can't call `malloc` (or C++ `new`) in your C
 code, because you don't have the right to modify data structures
