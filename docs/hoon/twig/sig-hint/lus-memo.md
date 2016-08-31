@@ -29,7 +29,7 @@ This may pause for a second:
 121.393
 ```
 
-This may make you want to press ^C:
+This may make you want to press `ctrl-c`:
 
 ```
 ~zod:dojo> %.(30 |=(a/@ ?:((lth a 2) 1 (add $(a (sub a 2)) $(a (dec a))))))

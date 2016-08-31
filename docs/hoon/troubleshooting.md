@@ -145,7 +145,7 @@ If your code crashes at runtime or overflows the stack, you'll
 see a stack trace that looks just like the trace above.  Don't
 confuse runtime crashes with compilation errors, though.
 
-If your code goes into an infinite loop, kill it with `^C` (you'll
+If your code goes into an infinite loop, kill it with `ctrl-c` (you'll
 need to be developing on the local console; otherwise, the
 infinite loop will time out either too slowly or too fast).  The
 stack trace will show what your code was doing when interrupted.

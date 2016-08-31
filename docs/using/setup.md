@@ -62,7 +62,7 @@ Good.
 
 ### Messaging — `:talk`
 
-Use `^X` (ctrl-x) to change your prompt. Let's join the main Urbit chat
+Use `ctrl-x` to change your prompt. Let's join the main Urbit chat
 channel.
 
 For planets:
