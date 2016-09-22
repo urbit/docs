@@ -20,18 +20,18 @@ with, but not quite ready for your important or sensitive data.
 
 Urbit depends on:
 
-    gcc (or clang)
+    C compiler (gcc or clang)
+    automake
+    autoconf
+    libtool
+    cmake
+    ragel
+    re2c
+    libcurl
+    curses
     gmp
     libsigsegv
     openssl
-    automake
-    autoconf
-    ragel
-    cmake
-    re2c
-    libtool
-    libssl-dev (Linux only)
-    ncurses (Linux only)
 
 Which can usually be installed with the following one-liners:
 
@@ -42,19 +42,19 @@ Which can usually be installed with the following one-liners:
     sudo port install git gmp libsigsegv openssl autoconf automake cmake
 
     # Ubuntu or Debian
-    sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev git make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c
+    sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev git make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev
 
     # Fedora
-    sudo dnf install gcc gcc-c++ git gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c
+    sudo dnf install gcc gcc-c++ git gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c libcurl-devel
 
     # FreeBSD
-    pkg install git gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool
+    pkg install git gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool curl
 
     # Arch
-    pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses
+    pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses curl
 
     # AWS
-    sudo yum —enablerepo epel install gcc gcc-c++ git gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c
+    sudo yum —enablerepo epel install gcc gcc-c++ git gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
 
 ### Setting up swap
 
@@ -77,6 +77,5 @@ Once your dependencies are installed the rest is easy:
     git clone https://github.com/urbit/urbit
     cd urbit
     make
-    curl -o urbit.pill https://bootstrap.urbit.org/latest.pill
 
-After running `make`, your Urbit executable lives at `bin/urbit`.  The `.pill` file is a compiled binary of Arvo that Urbit uses to bootstrap itself.
+After running `make`, your Urbit executable lives at `bin/urbit`.
