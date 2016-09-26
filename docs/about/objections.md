@@ -159,7 +159,7 @@ If we look at the way most successful platforms are adopted, they're not adopted
 
 C is a better language than Pascal, but it didn't beat Pascal because it's a better language.  C beat Pascal because C was the native language of Unix, and people wanted to program in Unix.  People don't use Javascript because Javascript is a great language, but because it's the native language of the browser.  Replacing the native language of a platform may be doable -- but it's incredibly hard.
 
-Hoon is not competing with C, or even Haskell, as a Unix programming language.  The only reason to program in Hoon is that it's the native language of Urbit.  Urbit is not competing with node.js or Rails as a Web backend.  The only reason to run Urbit is to 
+Hoon is not competing with C, or even Haskell, as a Unix programming language.  The only reason to program in Hoon is that it's the native language of Urbit.  Urbit is not competing with node.js or Rails as a Web backend.  The only reason to run Urbit is to run Urbit.
 
 Nock is cool, but it only gets adopted if Hoon gets adopted.  Hoon is cool, but it only gets adopted if Urbit gets adopted.  Urbit only gets adopted if it's useful as a personal server for human beings -- most of whom won't be Hoon programmers, or programmers at all.
 
