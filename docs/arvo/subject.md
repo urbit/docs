@@ -68,7 +68,7 @@ which expressions are executed. For example, in C this includes things
 like the call stack, stack variables, and so on.
 
 Hoon is unique in that this context is a first-class value. Scheme
-allows a sort of reification of the context through continutations, and
+allows a sort of reification of the context through continuations, and
 some may see a parallel to Forth's stack, but Hoon takes the
 concept one step further.
 
