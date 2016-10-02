@@ -69,7 +69,7 @@ like the call stack, stack variables, and so on.
 
 Hoon is unique in that this context is a first-class value. Scheme
 allows a sort of reification of the context through continutations, and
-some may see a parallel to Forth's stack, but Hoon takes takes the
+some may see a parallel to Forth's stack, but Hoon takes the
 concept one step further.
 
 Our starting subject is the [standard library](../../hoon/library), which is
