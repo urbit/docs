@@ -33,6 +33,7 @@ thing is fine.
 Urbit may be in your system's package repository - check there first. If not, we host packages for some platforms:
 
 [FreeBSD](https://media.urbit.org/dist/freebsd/urbit-0.4.txz): install with `pkg install urbit-0.4.txz`.
+[Debian](https://media.urbit.org/dist/debian/urbit_0.4-1_amd64.deb): install with `dpkg -i urbit_0.4-1_amd64.deb`, followed by `apt-get install -f` to install any missing dependencies.
 
 ## Build from source
 
