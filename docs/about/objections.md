@@ -7,8 +7,6 @@ We're strong believers in crowdsourced criticism.  We've heard a lot of great ob
 
 ## Urbit is a total scamcoin.  It's 100% premined.
 
-TLDR: yeah.  But at least it's not the DAO.
-
 Like a cryptocurrency, Urbit is a digital title.  But Urbit is digital land, not digital money.  If you assess it as a currency, it's a lousy currency.  If you assess a cat as a dog, it's a lousy dog.
 
 In real-world economics, the crucial distinction between land and money is that land (a) has intrinsic utility and (b) is non-fungible.
@@ -25,7 +23,7 @@ Ethically, what makes "premining" feel wrong is that the creators of the currenc
 
 To put it bluntly, Galen drives a 2004 Saab and Curtis drives a moldy '99 Cougar covered with raven shit.  And we both love cars.  We also have kids.  And our spouses are more skeptical of Urbit than anyone else could ever be.  (Our next startup definitely *will* be a get-rich-quick scheme, though.)
 
-Curtis created Urbit.  So by the [homesteading principle], he started out owning all of it.  But by now, Urbit's 8-bit galaxies have already been distributed among [57 separate individuals]().  Curtis owns 4 -- or 24, counting his whole family.  (Some of whom he still owes money.)
+Curtis created Urbit.  So by the [homesteading principle](https://en.wikipedia.org/wiki/Homestead_principle), he started out owning all of it.  But by now, Urbit's 8-bit galaxies have already been distributed among [57 separate individuals]().  Curtis owns 4 -- or 24, counting his whole family.  (Some of whom he still owes money.)
 
 Tlon, the corporation which still runs Urbit development, has 95.  (Without Tlon, there is basically no Arvo.)  50 are reserved for a hypothetical Urbit Foundation.  Tlon employees have another 16.
 
@@ -51,7 +49,7 @@ But the test of a free software project is whether it can fork.  So long as the 
 
 Urbit is designed to govern itself collectively by address space ownership -- effectively, "proof of stake."  Any arbitrary power, will tend to fracture along these property lines.  For instance, our hot updates are sent through the galaxy hierarchy; in a development fork, active galaxies would pick sides.  This would actually be awesome for Urbit.
 
-By fragmenting the galaxy space into 57 separate partitions, 've created a global property map which is much more likely to splinter further, than reunite.
+By fragmenting the galaxy space into 57 separate partitions, we've created a global property map which is much more likely to splinter further, than reunite.
 
 In the long run, every galaxy should have a separate owner, who is a human being rather than a corporation.  Combining galaxy holdings is regarded as creepy, and damages the value of both galaxies.  Splitting up any remaining clumps is meritorious.
 
@@ -235,7 +233,7 @@ We have other ideas for initial killer apps.  But this, we feel, is the best one
 
 ## Urbit is sneered at by brilliant talking horses.
 
-It's difficult to categorize this [brilliant essay of Fare's] in a single bullet point.  So I've saved it for last.
+It's difficult to categorize this [brilliant essay of Fare's](http://ngnghm.github.io/blog/2016/06/11/chapter-10-houyhnhnms-vs-martians/) in a single bullet point.  So I've saved it for last.
 
 We've already addressed the point most commonly made by others: that jets are a sham.  It's not always trivial to decode this critique, which is quite abstract.  But Fare' makes a few other points.
 
