@@ -192,6 +192,10 @@ a publicly readable publicly writeable station.
 You'll see presence notifications when people enter or leave stations
 you're subscribed to.
 
+`;set quiet` - Turn off presence notifications
+
+`;unset quiet` - Turn on presence notifications
+
 `;who` - list everyone in all your stations
 
 ### Station Glyphs
