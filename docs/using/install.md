@@ -7,37 +7,44 @@ title: Install
 
 # Install
 
-Urbit is designed to run on any Unix box with an internet connection.  Debian
-(jessie), OS X, FreeBSD and Fedora all work well.
+Installing Urbit is easy.  It just takes a few minutes to get an
+instance up and running on the network.  
 
-Urbit is alpha software.  It’s not yet completely stable, its crypto hasn’t
-been audited, and there are plenty of rough edges.  Urbit is lots of fun to play
-with, but not quite ready for your important or sensitive data.
+Urbit is designed to run on any Unix box with an internet connection.
+Debian (jessie), Mac OS X, FreeBSD and Fedora all work well.
 
-### Setting up swap
+If you run into trouble installing Urbit, please let us know via
+email, [questions@urbit.org](mailto:questions@urbit.org), or on the
+forum: [urbit.org/fora](https://urbit.org/fora).  You can also chat
+with us at [urbit.org/stream](https://urbit.org/fora).
 
-Urbit wants to map 2GB of memory when it boots up.  We won’t
-necessarily use all this memory, we just want to see it.  On a
-normal modern PC or Mac, this is not an issue.  On some small
-cloud virtual machines (Amazon or Digital Ocean), the default
-memory configuration is smaller than this, and you need to
-manually configure a swapfile.
+> Urbit is alpha software.  It’s not yet completely stable, its crypto
+> hasn’t been audited, and there are plenty of rough edges.  Urbit is
+> lots of fun to play with, but not quite ready for your important or
+> sensitive data.
 
-Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there’s a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
+## Packages
 
-Don’t spend a lot of time tweaking these settings; the simplest
-thing is fine.
+Urbit may be in your system's package repository — check there first.  If not,
+we host packages for some platforms. If you'd prefer to install from source, see
+below.
 
-## Install a package
+#### Mac OS X (Homebrew)
+- `brew update`
+- `brew install urbit`
 
-Urbit may be in your system's package repository - check there first. If not, we host packages for some platforms:
+#### FreeBSD
+- Download `urbit-0.4.txz` [here](https://media.urbit.org/dist/freebsd/urbit-0.4.txz).
+- Install with `pkg install urbit-0.4.txz`
 
-[FreeBSD](https://media.urbit.org/dist/freebsd/urbit-0.4.txz): install with `pkg install urbit-0.4.txz`.
-[Debian](https://media.urbit.org/dist/debian/urbit_0.4-1_amd64.deb): install with `dpkg -i urbit_0.4-1_amd64.deb`, followed by `apt-get install -f` to install any missing dependencies.
+#### Debian
+- Download `urbit_0.4-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4-1_amd64.deb).
+- Install with `dpkg -i urbit_0.4-1_amd64.deb`
+- Then `apt-get install -f` to install any missing dependencies
 
-## Build from source
+## Source
 
-First, fetch the source tarball from [here](https://media.urbit.org/dist/src/urbit-0.4.tar.gz).
+First, fetch the source tarball from [media.urbit.org/dist/src/urbit-0.4.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.tar.gz).
 
 ### Dependencies
 
@@ -90,3 +97,17 @@ Once your dependencies are installed the rest is easy:
 After running `make`, your Urbit executable is in `bin/urbit`. Install it wherever you'd like.
 
     # sudo install -m 0755 bin/urbit /usr/local/bin
+
+## Setting up swap
+
+Urbit wants to map 2GB of memory when it boots up.  We won’t
+necessarily use all this memory, we just want to see it.  On a
+normal modern PC or Mac, this is not an issue.  On some small
+cloud virtual machines (Amazon or Digital Ocean), the default
+memory configuration is smaller than this, and you need to
+manually configure a swapfile.
+
+Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there’s a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
+
+Don’t spend a lot of time tweaking these settings; the simplest
+thing is fine.
