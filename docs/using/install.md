@@ -29,22 +29,25 @@ Urbit may be in your system's package repository — check there first.  If not,
 we host packages for some platforms. If you'd prefer to install from source, see
 below.
 
-#### Mac OS X (Homebrew)
+**Mac OS X (Homebrew)**
+
 - `brew update`
 - `brew install urbit`
 
-#### FreeBSD
+**FreeBSD**
+
 - Download `urbit-0.4.txz` [here](https://media.urbit.org/dist/freebsd/urbit-0.4.txz).
 - Install with `pkg install urbit-0.4.txz`
 
-#### Debian
+**Debian**
+
 - Download `urbit_0.4-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4-1_amd64.deb).
 - Install with `dpkg -i urbit_0.4-1_amd64.deb`
 - Then `apt-get install -f` to install any missing dependencies
 
 ## Source
 
-First, fetch the source tarball from [media.urbit.org/dist/src/urbit-0.4.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.tar.gz).
+First, fetch the source tarball: **[urbit-0.4.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.tar.gz)**.
 
 ### Dependencies
 
