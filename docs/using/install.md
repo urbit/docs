@@ -69,25 +69,25 @@ Urbit depends on:
 Which can usually be installed with the following one-liners:
 
     # Mac OS X [Homebrew]
-    $ brew install git gmp libsigsegv openssl libtool autoconf automake cmake
+    $ brew install gmp libsigsegv openssl libtool autoconf automake cmake
 
     # Mac OS X [Macports]
-    $ sudo port install git gmp libsigsegv openssl autoconf automake cmake
+    $ sudo port install gmp libsigsegv openssl autoconf automake cmake
 
     # Ubuntu or Debian
-    $ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev git make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev
+    $ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev
 
     # Fedora
-    $ sudo dnf install gcc gcc-c++ git gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c libcurl-devel
+    $ sudo dnf install gcc gcc-c++ gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c libcurl-devel
 
     # FreeBSD
-    $ pkg install git gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool curl
+    $ pkg install gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool curl
 
     # Arch
     $ pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses curl
 
     # AWS
-    $ sudo yum —enablerepo epel install gcc gcc-c++ git gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
+    $ sudo yum —enablerepo epel install gcc gcc-c++ gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
 
 ### Clone and make
 
