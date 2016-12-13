@@ -47,7 +47,7 @@ below.
 
 ## Source
 
-First, fetch the source tarball: **[urbit-0.4.2.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.3.tar.gz)**.
+First, fetch the source tarball: **[urbit-0.4.3.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.3.tar.gz)**.
 
 ### Dependencies
 
