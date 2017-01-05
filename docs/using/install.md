@@ -75,7 +75,7 @@ Which can usually be installed with the following one-liners:
     $ sudo port install gmp libsigsegv openssl autoconf automake cmake
 
     # Ubuntu or Debian
-    $ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev
+    $ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev make exuberant-ctags automake autoconf libtool g++ ragel cmake python re2c libcurl4-gnutls-dev
 
     # Fedora
     $ sudo dnf install gcc gcc-c++ gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c libcurl-devel
