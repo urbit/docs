@@ -21,7 +21,7 @@ system for operating on and transforming data in Urbit.
 
 ## Quickstart
 
-Evaluate a hoon expression:
+Evaluate a hoon expression (whitespace matters):
 
     ~your-urbit:dojo> (add 2 2)
     ~your-urbit:dojo> %+  add  2  2
