@@ -57,14 +57,14 @@ You'll see:
     ---------:talk| rules of /urbit-meta:
     ---------:talk|   don't be rude
     ---------:talk|   urbit-meta is politically correct and safe for work
-           ~dozbud= ~your-urbit admitted to %urbit-meta
+           ~binzod= ~your-urbit admitted to %urbit-meta
     ~your-urbit:talk>
 
 Post a line to `/urbit-meta`:
 
     ~your-urbit:talk> hello, world
 
-You'll see, echoed back at you through `~dozbud`:
+You'll see, echoed back at you through `~binzod`:
 
     ~your-urbit> hello, world
 
@@ -80,11 +80,11 @@ Now you and `~talsur-todres` can exchange messages directly.
 
 To set your audience back to `/urbit-meta`:
 
-    ~your-urbit:talk> ;~dozbud/urbit-meta
+    ~your-urbit:talk> ;~binzod/urbit-meta
 
 Use `;leave` to unsubscribe from a channel:
 
-    ~your-urbit:talk> ;leave ~dozbud/urbit-meta
+    ~your-urbit:talk> ;leave ~binzod/urbit-meta
 
 There are two ways of using `:talk`: from the CLI or through a web ui
 available at `http://your-urbit.urbit.org/talk` (or
