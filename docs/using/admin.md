@@ -2,10 +2,10 @@
 navhome: /docs
 next: true
 sort: 3
-title: Basic operation
+title: Basic Administration and Operation
 ---
 
-# Basic operation
+# Basic Administration
 
 <div class="row">
 <div class="col-md-8">
@@ -35,6 +35,16 @@ or
 To log Urbit's command line output to a file, use `script`:
 
     $ script urbit.log bin/urbit your-urbit
+
+## Moving your pier
+
+Piers are designed to be portable, but it *must* be done while the Urbit is turned off.  Urbit networking is stateful, so you can't run two copies of the same Urbit in two places.  
+
+To move a pier, simply move the contents of the directory it lives in.  To keep these files as small as possible we usually use the `--sparse` option in `tar`.  With a pier `your-urbit/` something like this (from inside `urbit/`) should work:
+
+    tar -Scvzf your-urbit.tar.gz ./your-urbit/
+
+# Basic Operation
 
 ## Console
 
@@ -88,14 +98,6 @@ To generate a random moon from your planet run:
 You can use the resulting output in the same installation flow from [install](/docs/using/install).  
 
 Moons are automatically synced to their parent `%kids` desk, and can control applications on their parent planet using `|link`.  You can read more about those things in the [filesystem](/docs/using/filesystem) and [console](/docs/using/shell) walkthroughs.
-
-## Moving your pier
-
-Piers are designed to be portable, but it *must* be done while the Urbit is turned off.  Urbit networking is stateful, so you can't run two copies of the same Urbit in two places.  
-
-To move a pier, simply move the contents of the directory it lives in.  To keep these files as small as possible we usually use the `--sparse` option in `tar`.  With a pier `your-urbit/` something like this (from inside `urbit/`) should work:
-
-    tar -Scvzf your-urbit.tar.gz ./your-urbit/
 
 ## Continuity breaches
 
