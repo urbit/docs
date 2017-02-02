@@ -1510,27 +1510,27 @@ core?  Slightly pseudocoded:
 
     ++  arvo
       |%
-      ++  come  |=  [yen=@ ova=(list ovum) nyf=pone]  ::  11
-                ^-  [(list ovum) _+>]
+      ++  come  |/  {yen/@ ova/(list ovum) nyf/pone}  ::  11
+                ^-  {(list ovum) _+>}
                 !!
-      ++  keep  |=  [now=@da hap=path]                ::  4
+      ++  keep  |/  {now/@da hap/path}                ::  4
                 ^-  (unit ,@da) 
                 !!
-      ++  load  |=  [yen=@ ova=(list ovum) nyf=pane]  ::  86
-                ^-  [(list ovum) _+>]
+      ++  load  |/  {yen/@ ova/(list ovum) nyf/pane}  ::  86
+                ^-  {(list ovum) _+>}
                 !!
-      ++  peek  |=  [now=@da path]                    ::  87
+      ++  peek  |/  {now/@da path}                    ::  87
                 ^-  (unit)
                 !!
-      ++  poke  |=  [now=@da ovo=ovum]                ::  42
-                ^-  [(list ovum) _+>]
+      ++  poke  |/  {now/@da ovo/ovum}                ::  42
+                ^-  {(list ovum) _+>}
                 !!
-      ++  wish  |=  txt=@ta                           ::  20
+      ++  wish  |/  txt/@ta                           ::  20
                 ^-  *
                 !!
       --
-    ++  card  ,[p=@tas q=*]                           ::  typeless card
-    ++  ovum  ,[p=wire q=card]                        ::  Arvo event
+    ++  card  {p/@tas q/*}                           ::  typeless card
+    ++  ovum  {p/wire q/card}                        ::  Arvo event
     ++  wire  path                                    ::  event cause
 
 This is the Arvo ABI in a very real sense.  Arvo is a core with
