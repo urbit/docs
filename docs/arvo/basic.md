@@ -117,7 +117,7 @@ rune takes a specific number of children, either expressions formed by
 other runes or literals that produce their own value (some runes take
 *N* children, and are usually closed with `==`).
 
-For example, the rune `?:` from line 17 is the classic 'if-then-else'
+For example, the rune `?:` from line 18 is the classic 'if-then-else'
 statement, and thus takes three children:
 
       ?:  (lth a b)           ::  if first child evals to true
@@ -165,9 +165,9 @@ You can write:
     :if(=(1 2) 'this is true' 'this is false')
     'this is false'
 
-### Lines 12-34
+### Lines 13-35
 
-Now let's quickly walk through this code line-by-line. Lines 12-34 are
+Now let's quickly walk through this code line-by-line. Lines 13-35 are
 wrapped in a `|%` ('[barcen](../../hoon/twig/bar-core/cen-core/)'), which produces a core. Cores are a
 fundamental datatype in Hoon, similar to a struct, class, or object. A
 core is just a map of names to any kind of code, whether it be functions

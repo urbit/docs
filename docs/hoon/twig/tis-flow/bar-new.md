@@ -35,7 +35,7 @@ is `:coat(foo @)` (wrapping a face around a mold).
 
 ```
 ~zod:dojo> =foo  :gate  a/@
-                 :pin  b/@
+                 :new  b/@
                  :nip  :(add a b c)
                  c=2 
 ~zod:dojo> (foo 5)

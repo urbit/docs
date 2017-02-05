@@ -9,8 +9,8 @@ sort: 1
 
 ## Produces
 
-The value of `p` with the span of `q`, if the span of `p` nests
-within the span of `q`.  Otherwise, `nest-fail`.
+The value of `q` with the span of `p`, if the span of `q` nests
+within the span of `p`.  Otherwise, `nest-fail`.
 
 ## Syntax
 
