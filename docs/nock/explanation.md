@@ -32,8 +32,8 @@ For instance, it's common to represent strings (or even whole
 text files) as atoms, arranging them LSB first - so "foo" becomes
 `0x6f6f66`.  How do we know to print this as "foo", not `0x6f6f66`?
 We need external information - such as a Hoon type.  Similarly,
-other common atomic types - signed integers, floating point, etc
-- are all straightforward to map into atoms.
+other common atomic types - signed integers, floating point, etc - 
+are all straightforward to map into atoms.
 
 It's also important to note that, unlike Lisp, Nock cannot create
 cyclical data structures.  It is normal and common for nouns in a
