@@ -43,7 +43,7 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 <b>Community / contact</b>
 <ul>
 <li>We use <code>:talk</code> on Urbit to chat.</li>
-<li>Our <a href="http://urbit.org/fora/">discussion forum</a> on urbit.org</li>
+<li>Our <a href="http://urbit.org/fora/">discussion forum</a>  on urbit.org</li>
 <li><a href="https://reddit.com/r/urbit">/r/urbit on Reddit</a></li>
 <li><a href="https://twitter.com/urbit_">@urbit_ on Twitter</a></li>
 <li><a href="https://groups.google.com/forum/#!forum/urbit-dev">urbit-dev mailing list</a></li>
