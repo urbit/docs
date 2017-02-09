@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Ruby
 sort: 2
 next: true

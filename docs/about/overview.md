@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 next: true
 sort: 1
 title: Technical overview

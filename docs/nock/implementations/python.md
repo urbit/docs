@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Python
 sort: 1
 next: true

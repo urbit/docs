@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Javascript
 sort: 9
 next: true
