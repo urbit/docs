@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Swift
 sort: 10
 next: true

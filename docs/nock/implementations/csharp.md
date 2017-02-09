@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: C#
 sort: 12
 next: true

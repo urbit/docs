@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Clojure
 sort: 5
 next: true

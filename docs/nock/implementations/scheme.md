@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Scheme
 sort: 8
 next: true
