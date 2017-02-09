@@ -46,7 +46,7 @@ Hoon, we call the code executed the "formula" and its context the
       ?:  (lth a b)             ::
         0                       ::
       (add b $(b (add 3 b)))    ::
-                                ::
+    ::                          ::
     ++  five                    ::
       |=  a/@                   ::  subject
       =|  b/@                   ::
@@ -56,7 +56,7 @@ Hoon, we call the code executed the "formula" and its context the
       ?:  =((mod b 3) 0)        ::
         $(b (add b 5))          ::
       (add b $(b (add b 5)))    ::
-                                ::
+    ::                          ::
     ++  sum                     ::
       |=  {a/@u b/@u}           ::
       (add (five a) (three b))  ::
@@ -103,4 +103,3 @@ Cheatsheet:
 -   `(gte a b)` tests whether `a` is greater than or equal to `b`.
 -   `(mod a b)` runs the modulo operation on two atoms.
 -   See the basic math section in `/arvo/hoon.hoon` for more info.
-

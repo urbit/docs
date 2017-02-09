@@ -68,14 +68,14 @@ Here is the hoon solution (which should be in your pier directory under
     ::::  ~sivtyv-barnel
       ::
     |%
-    ++  three 
+    ++  three
       |=  a/@
       =|  b/@
       |-  ^-  @u
       ?:  (lth a b)
         0
       (add b $(b (add 3 b)))
-
+    ::
     ++  five
       |=  a/@
       =|  b/@
@@ -85,7 +85,7 @@ Here is the hoon solution (which should be in your pier directory under
       ?:  =((mod b 3) 0)
         $(b (add b 5))
       (add b $(b (add b 5)))
-
+    ::
     ++  sum
       |=  a/@u
       (add (five a) (three a))
@@ -201,7 +201,7 @@ takes two children:
 
 ### ++ three
 
-    ++  three 
+    ++  three
       |=  a/@
       =|  b/@
       |-  ^-  @u
@@ -313,5 +313,3 @@ calling a function with *N* arguments. More on this later.
     formed from adjacent unicode bytes -- a "c string". To produce a
     cord, enclose text within single quotes. To set the type of an
     argument to a cord, use `@t`.
-
-
