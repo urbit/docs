@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Groovy
 sort: 7
 next: true

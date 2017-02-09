@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 next: false
 sort: 9
 title: HTTP Requests and Timers
