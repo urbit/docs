@@ -31,23 +31,27 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 
 <div class="col-md-4">
 
-<b>Source on GitHub</b>
+<b>Community & contact</b>
 <ul>
-<li><a href="https://github.com/urbit/urbit">Main repo</a></li>
-<li><a href="https://github.com/urbit/examples">Examples</a></li>
-<li><a href="https://github.com/urbit/docs">Documentation</a></li>
+<li>Find us on<a href="https://urbit.org/stream"><code>talk</code></a>!</li>
+<li>Our discussion<a href="http://urbit.org/fora/"><code>fora</code></a>.</li>
+<li>On Reddit <a href="https://reddit.com/r/urbit">/r/urbit</a>.</li>
+<li>On Twitter <a href="https://twitter.com/urbit_">@urbit_</a>.</li>
+<li>Our developer <a href="https://groups.google.com/forum/#!forum/urbit-dev">mailing list</a>.</li>
+<li>Or email us at <a href="mailto:urbit@urbit.org">urbit@urbit.org</a>.</li>
 </ul>
 
 <br />
 
-<b>Community / contact</b>
+<b>Source code on <a href="https://github.com/urbit">GitHub</a></b>
 <ul>
-<li>We use <code>:talk</code> on Urbit to chat.</li>
-<li>Our <a href="http://urbit.org/fora/">discussion forum</a> on urbit.org</li>
-<li><a href="https://reddit.com/r/urbit">/r/urbit on Reddit</a></li>
-<li><a href="https://twitter.com/urbit_">@urbit_ on Twitter</a></li>
-<li><a href="https://groups.google.com/forum/#!forum/urbit-dev">urbit-dev mailing list</a></li>
-<li><a href="mailto:urbit@urbit.org">urbit@urbit.org</a></li>
+<li><a href="https://github.com/urbit/urbit"><code>vere</code></a> - Urbit's VM.</li>
+<li><a href="https://github.com/urbit/arvo"><code>arvo</code></a> - Urbit's OS.</li>
+<li><a href="https://github.com/urbit/tree"><code>tree</code></a> - Urbit's web UI.</li>
+<li><a href="https://github.com/urbit/talk"><code>talk</code></a> - Urbit's web chat.</li>
+<li><a href="https://github.com/urbit/sole"><code>sole</code></a> - Urbit's web console.</li>
+<li><a href="https://github.com/urbit/examples"><code>examples</code></a> - Hoon, Arvo and Tree.</li>
+<li><a href="https://github.com/urbit/docs"><code>docs</code></a> - Urbit documentation repository.</li>
 </ul>
 
 </div>
