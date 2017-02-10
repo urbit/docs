@@ -101,6 +101,14 @@ After running `make`, your Urbit executable is in `bin/urbit`. Install it wherev
 
     # sudo install -m 0755 bin/urbit /usr/local/bin
 
+Test that it works:
+
+    $ urbit
+    simple usage:
+       urbit -c <mycomet> to create a comet (anonymous urbit)
+       urbit -w <myplanet> -t <myticket> if you have a ticket
+       urbit <myplanet or mycomet> to restart an existing urbit
+
 ## Setting up swap
 
 Urbit wants to map 2GB of memory when it boots up.  We won’t

@@ -10,7 +10,7 @@ title: Basic operation
 <div class="row">
 <div class="col-md-8">
 
-Your Urbit is a persistent Unix process that you mainly control from the console.  For some things, a browser will also work. 
+Your Urbit is a persistent Unix process that you mainly control from the console.  For some things, a browser will also work.
 
 </div>
 </div>
@@ -23,18 +23,18 @@ You can turn your Urbit off with `ctrl-d` from the `:talk` or `:dojo` prompts.
 
 To restart your Urbit simply pass the name of your pier:
 
-    $ bin/urbit some-planet
+    $ urbit some-planet
 
 or
 
-    $ bin/urbit comet
+    $ urbit comet
 
 
 ## Logging
 
 To log Urbit's command line output to a file, use `script`:
 
-    $ script urbit.log bin/urbit your-urbit
+    $ script urbit.log urbit your-urbit
 
 ## Console
 

@@ -24,7 +24,7 @@ If you have an Urbit invitation, you'll have a planet like
 `~fintud-macrep` and `~fortyv-tombyt-tabsen-sonres`. To create your
 pier:
 
-    $ bin/urbit -w fintud-macrep -t fortyv-tombyt-tabsen-sonres
+    $ urbit -w fintud-macrep -t fortyv-tombyt-tabsen-sonres
 
 This will create a directory `fintud-macrep/` and begin building your
 urbit. This may take a few minutes.
@@ -33,7 +33,7 @@ If you do not have a ticket, you can still make a 'comet', a wild urbit
 drifting through cyberspace. Pick your own directory name, it doesn't
 matter:
 
-    $ bin/urbit -c mycomet
+    $ urbit -c mycomet
 
 This will create the directory `mycomet/` and generate a 128-bit
 identity for your urbit.
