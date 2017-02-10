@@ -43,6 +43,14 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 
 <br />
 
+<b>Community docs</b>
+<ul>
+<li>The <code>~master-morzod</code><a href="http://micnus-tarwyl-haltem-linhut--dilhul-talbes-wolnyx-lasbud.urbit.org/docs/">docs</a>, and <a href="http://urbit.org/fora/posts/~2016.12.25..06.35.44..a1ec~/"><code>fora</code></a> post.</li>
+<li><a href="https://github.com/Fang-/Urbit-By-Doing">Urbit by Doing</a>, by <code>~palfun-foslup</code>.</li>
+</ul>
+
+<br />
+
 <b>Source code on <a href="https://github.com/urbit">GitHub</a></b>
 <ul>
 <li><a href="https://github.com/urbit/urbit"><code>vere</code></a> - Urbit's VM.</li>
