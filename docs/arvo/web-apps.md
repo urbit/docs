@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: true
-sort: 7
+sort: 17
 title: Web Apps
 ---
 
@@ -195,8 +195,8 @@ $(function() {
       ,function(err,res) {
         if(err)
           return $err.text("There was an error. Sorry!")
-        if(res.data !== undefined && 
-           res.data.ok !== undefined && 
+        if(res.data !== undefined &&
+           res.data.ok !== undefined &&
            res.data.ok !== true)
           $err.text(res.data.res)
         else

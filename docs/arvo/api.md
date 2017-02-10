@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: true
-sort: 12
+sort: 22
 title: API Connectors
 ---
 

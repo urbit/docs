@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: false
-sort: 9
+sort: 19
 title: HTTP Requests and Timers
 ---
 
@@ -145,7 +145,7 @@ progress, then we send an HTTP request.
 If the argument is neither 'off' nor 'on', then we assume it's an
 actual url, so we save it in `target`.
 
-Here's the move that sends the HTTP request: 
+Here's the move that sends the HTTP request:
 ```
 [ost.hid %hiss /request ~ %httr %purl (need (epur target))]
 ```

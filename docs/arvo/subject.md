@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 2
+sort: 12
 next: true
 title: The subject
 ---
@@ -103,4 +103,3 @@ Cheatsheet:
 -   `(gte a b)` tests whether `a` is greater than or equal to `b`.
 -   `(mod a b)` runs the modulo operation on two atoms.
 -   See the basic math section in `/arvo/hoon.hoon` for more info.
-

@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: false
-sort: 3
+sort: 13
 title: Network messages
 ---
 
@@ -341,4 +341,3 @@ urbit as for sending messages between apps on different urbits.
 -   Put `even` and `odd` on two separate urbits and pass the messages
     over the network. Post a link to a working solution in :talk to
     receive a cookie.
-

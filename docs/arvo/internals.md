@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 15
+sort: 23
 ---
 
 # Arvo internals

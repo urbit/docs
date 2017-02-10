@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 1
+sort: 11
 next: true
 title: Basic Hoon
 ---
@@ -68,7 +68,7 @@ Here is the hoon solution (which should be in your pier directory under
     ::::  ~sivtyv-barnel
       ::
     |%
-    ++  three 
+    ++  three
       |=  a/@
       =|  b/@
       |-  ^-  @u
@@ -201,7 +201,7 @@ takes two children:
 
 ### ++ three
 
-    ++  three 
+    ++  three
       |=  a/@
       =|  b/@
       |-  ^-  @u
@@ -313,5 +313,3 @@ calling a function with *N* arguments. More on this later.
     formed from adjacent unicode bytes -- a "c string". To produce a
     cord, enclose text within single quotes. To set the type of an
     argument to a cord, use `@t`.
-
-
