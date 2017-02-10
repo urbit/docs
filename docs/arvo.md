@@ -3,7 +3,7 @@ navhome: /docs/
 sort: 4
 ---
 
-# Quickstart
+# Arvo
 
 Fast, pragmatic tutorials which show you how to build simple programs in Hoon and Arvo.
 
