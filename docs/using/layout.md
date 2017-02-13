@@ -91,7 +91,7 @@ This is where marks live.  Marks are data type definitions used by `%ford`.  A m
 
 These are web renderers.  A renderer handles web requests of a particular type.  
 
-Default web requets in urbit are handled as a `.urb`, which is caught by the `urb.hoon` renderer.  This wraps the request in our default `css` and `js` and adds some routing magic for certain paths.
+Default web requests in urbit are handled as a `.urb`, which is caught by the `urb.hoon` renderer.  This wraps the request in our default `css` and `js` and adds some routing magic for certain paths.
 
 ## `sur/`
 

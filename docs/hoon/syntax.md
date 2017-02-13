@@ -289,10 +289,12 @@ of a core.  A conventional example:
 
 ```
 |%
-++  foo
-  p
-++  bar
-  q
+++  dry-arm-foo
+  %p
+++  dry-arm-bar
+  %q
++-  wet-arm-baz
+  %r
 --
 ```
 

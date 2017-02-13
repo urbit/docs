@@ -21,9 +21,19 @@ Irregular: `+15` is slot `15`, `[%& 15]`.
 
 Irregular: `.` is slot `1`, the whole subject.
 
+Irregular: `&4` is slot `30`, the 4th element of a tuple
+with at least 5 elements.
+
+Irregular: `|4` is slot `31`, the elements that follow `&4`. 
+
 Irregular: `foobar` is `[%| 0 %foobar]`.
 
 Irregular: `^^^foobar` is `[%| 3 %foobar]`.
+
+Irregular: `+<-` is "take the tail, then take the head of
+that, then the head of that." `+` and `>` mean "tail" while
+`-` and `<` mean "head." This limb syntax starts on `+` or `-`
+and alternates for readability. 
 
 ### Traverse
 

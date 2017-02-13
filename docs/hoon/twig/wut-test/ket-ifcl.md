@@ -6,7 +6,7 @@ sort: 5
 # `:ifcl  ?^  "wutket"`
 
 `{$ifcl p/wing q/seed r/seed}`: branch on whether a wing 
-of the subject is null.
+of the subject is a cell.
 
 ## Expands to
 
