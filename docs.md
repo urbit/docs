@@ -12,23 +12,6 @@ sort: 4
 
 <div class="col-md-12 head">
 
-<div class="col-md-8">
-
-Check out the [technical overview](about/overview) for a high-level
-architecture description.  To install and run Urbit, head to the Using section, starting with the [installation guide](using/install) and continuing forward.
-
-To begin developing for Urbit, start by learning Hoon [syntax](hoon/syntax),
-then walk through the [Arvo tutorials](arvo). The examples and exercises
-in Arvo will teach you to build high-level programs and interact with the network.
-
-Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
-there for pure-code exercises and functions in the [standard library](hoon/library).
-
-Anyone obsessed with math, theory, fundamentals of computation,
-etc, should start with the [Nock definition](nock/definition) and work upward from there.
-
-</div>
-
 <div class="col-md-4">
 
 <b>Community & contact</b>
@@ -53,6 +36,23 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 <li><a href="https://github.com/urbit/examples"><code>examples</code></a> - Hoon, Arvo and Tree.</li>
 <li><a href="https://github.com/urbit/docs"><code>docs</code></a> - Urbit documentation repository.</li>
 </ul>
+
+</div>
+
+<div class="col-md-8">
+
+Check out the [technical overview](about/overview) for a high-level
+architecture description.  To install and run Urbit, head to the Using section, starting with the [installation guide](using/install) and continuing forward.
+
+To begin developing for Urbit, start by learning Hoon [syntax](hoon/syntax),
+then walk through the [Arvo tutorials](arvo). The examples and exercises
+in Arvo will teach you to build high-level programs and interact with the network.
+
+Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
+there for pure-code exercises and functions in the [standard library](hoon/library).
+
+Anyone obsessed with math, theory, fundamentals of computation,
+etc, should start with the [Nock definition](nock/definition) and work upward from there.
 
 </div>
 
