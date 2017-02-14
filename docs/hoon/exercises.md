@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
 sort: 11
+title: Exercises
 ---
 
 # Exercises
