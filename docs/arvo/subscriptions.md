@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: true
-sort: 5
+sort: 15
 title: Subscriptions
 ---
 
@@ -106,7 +106,7 @@ Cheat sheet:
 -   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
-    `*`, or a cell `^`. 
+    `*`, or a cell `^`.
 <!-- XX this is a union, right? -->
 
 -   You may have noticed the separate `|%`

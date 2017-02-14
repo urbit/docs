@@ -1,7 +1,7 @@
 ---
 navhome: '/docs'
 next: True
-sort: 8
+sort: 18
 title: Using Generators with Apps
 ---
 

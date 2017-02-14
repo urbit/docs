@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: false
-sort: 10
+sort: 20
 title: Security Drivers
 ---
 
@@ -130,7 +130,7 @@ five "special" arms:
 - `++filter-request` is a function which takes a hiss (http
   request) and produces a `sec-move` (defined in zuse), which is
   one of:
-  
+
   * `[%send hiss]`, which sends the new hiss.  This is the
     case in, for example, basic auth, where all we need to do is
     add an extra header to the request.
