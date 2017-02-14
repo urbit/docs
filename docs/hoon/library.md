@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 10
+sort: 20
 title: Standard library
 ---
 

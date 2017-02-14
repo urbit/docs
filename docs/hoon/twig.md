@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 6
+sort: 16
 next: true
 title: Expressions
 ---
@@ -60,7 +60,7 @@ have a span that describes it.)
 And of course, Hoon is a functional language, so seeds sometimes
 produce a mold -- because we do pass around functions as values.
 Don't worry about this issue.  It will totally make sense soon.
- 
+
 But writing `[%foo %bar]` where you mean `{$foo $bar}`, or the
 reverse, is a common beginner's mistake in Hoon.  At least it
 always results in a compiler error (since the noun types are so

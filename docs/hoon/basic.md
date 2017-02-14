@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 5
+sort: 15
 next: true
 title: Basic types
 ---
@@ -8,7 +8,7 @@ title: Basic types
 # Basic types
 
 A `span` is a set of nouns and an interpretation of these nouns.
-Officially, we don't use the word "type" in Hoon.  But if we had 
+Officially, we don't use the word "type" in Hoon.  But if we had
 to say "type," it would mean `span`.
 
 ## Type, span and mold
@@ -40,7 +40,7 @@ hopefully you aren't!
 
 ## `span`: a set of nouns
 
-Below is the mold for `span`.  You haven't seen this syntax before, 
+Below is the mold for `span`.  You haven't seen this syntax before,
 and we haven't explained it yet; just treat it as pseudocode.
 
 This is a slightly simplified version of `span`.  We undo and explain the

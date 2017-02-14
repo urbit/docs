@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 7
+sort: 17
 next: true
 title: Advanced types
 ---
@@ -193,6 +193,6 @@ If a name is in the `q.p` map, it's a bridge.  When we search for
 a name, we also compile the bridge, and check if the name
 resolves against the bridge product.  If so, we use it.
 
-These hacks let us deal with interesting large-scale problems, 
+These hacks let us deal with interesting large-scale problems,
 like complex library dependencies.  You definitely don't need to
 understand them to just write simple Hoon programs.

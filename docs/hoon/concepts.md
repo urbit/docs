@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 3
+sort: 13
 next: true
 title: Concepts
 ---
@@ -27,7 +27,7 @@ mean `span`, or `mold`, or `mark`, or possibly all three.
 Other common programming concepts used only informally in Hoon
 are "function," "object," "event," "expression," "variable,"
 "label," "closure", "environment," "scope," and probably a few
-more.  We do use these words informally, but we're always making 
+more.  We do use these words informally, but we're always making
 an analogy whose precision depends on context.
 
 Hoon has concepts *like* all these abstractions, but they remain
@@ -51,7 +51,7 @@ simpler (Lisp atoms effectively have dynamic type bits).
 
 The simplest noun syntax uses brackets, like `[a b]` for the cell
 of `a` and `b`.  Brackets nest right; `[a b c d]` is `[a [b [c
-d]]]`.  You'll also see braces: `{a b c d}`. 
+d]]]`.  You'll also see braces: `{a b c d}`.
 
 A noun list, by convention, points right and is zero-terminated.
 Hoon uses tuples (improper nouns) more freely than Lisp; only
@@ -64,7 +64,7 @@ etc, this refers to the integer `0x6f.6f66`, aka `7.303.014`.
 
 One common operation on nouns is `slot`, a tree addressing
 scheme which maps an atom to a subtree.  The whole noun is slot
-`1`; the left child of `n` is `2n`, the right child `2n+1`. 
+`1`; the left child of `n` is `2n`, the right child `2n+1`.
 
 Nothing in Nock, Hoon or Urbit can create cycles in a noun or
 detect pointer equivalence.  Nouns are generally implemented
@@ -164,7 +164,7 @@ formula.  The gate's argument is its *sample*; the result is its
 ### `core` (object)
 
 A `core` has no exact equivalent in conventional languages, but
-the closest equivalent is an object.  An object has methods; a 
+the closest equivalent is an object.  An object has methods; a
 core has functionally computed attributes (*arms*).  An arm that
 produces a gate is the Hoon equivalent of a conventional method;
 think of it as a computed attribute whose value is a lambda.
@@ -201,7 +201,7 @@ whose value is of type `atom`; it's a subtree of type `foo:atom`.
 
 ### `limb` (attribute or variable reference)
 
-A [`limb`](../twig/limb/limb), like `foo`, is Hoon's equivalent of a variable 
+A [`limb`](../twig/limb/limb), like `foo`, is Hoon's equivalent of a variable
 reference.  A limb is a twig; given a subject span, `mint`
 resolves it to a Nock formula and a product span.
 
