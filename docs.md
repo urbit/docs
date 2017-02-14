@@ -54,7 +54,7 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 <ul>
 <li><a href="https://github.com/urbit/urbit"><code>vere</code></a> - Urbit's VM</li>
 <li><a href="https://github.com/urbit/arvo"><code>arvo</code></a> - Urbit's OS</li>
-<li><a href="https://github.com/urbit/tree"><code>tree</code></a> - Urbit's web UI</li>
+<li><a href="https://github.com/urbit/tree"><code>tree</code></a> - Urbit's web publishing UI</li>
 <li><a href="https://github.com/urbit/talk"><code>talk</code></a> - Urbit's web chat</li>
 <li><a href="https://github.com/urbit/sole"><code>sole</code></a> - Urbit's web console</li>
 <li><a href="https://github.com/urbit/examples"><code>examples</code></a> - Hoon, Arvo and Tree</li>

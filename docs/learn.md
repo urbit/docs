@@ -7,6 +7,6 @@ sort: 2
 
 As a open-source project, writing documentation for Urbit has become a kind of rite of passage for aspiring contributors.
 
-Learn Hoon from the ground up through our in-house Urbyte series, or delve into the great doc efforts by some of our awesome community developers.
+Learn Hoon from the ground up through our in-house Urbyte series, or delve into the great doc efforts by some of our community members.
 
 <list/>
