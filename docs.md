@@ -41,6 +41,8 @@ sort: 4
 
 <div class="col-md-8">
 
+**Urbit** is a secure peer-to-peer network of personal servers, built on a clean-slate system software stack.
+
 Check out the [technical overview](about/overview) for a high-level
 architecture description.  To install and run Urbit, head to the Using section, starting with the [installation guide](using/install) and continuing forward.
 
