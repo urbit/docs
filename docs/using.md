@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 2
+sort: 1
 ---
 
 # Using
