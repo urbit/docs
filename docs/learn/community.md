@@ -16,3 +16,5 @@ and [`fora`](https://urbit.org/fora/posts/~2016.12.25..06.35.44..a1ec~/) post.
 and [`fora`](https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~/) post.
 
 * [Urbit by Doing](https://github.com/Fang-/Urbit-By-Doing), by `~palfun-foslup`.
+
+* [Learning Hoon](https://github.com/knubie/learning-hoon), by `knubie`.
