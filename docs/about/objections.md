@@ -1,3 +1,9 @@
+---
+navhome: '/docs'
+next: True
+sort: 5
+title: Common objections to Urbit
+---
 
 # Common objections to Urbit
 
@@ -117,7 +123,7 @@ The correct way to think about jets is not to compare them to a perfect interpre
 
 Compared to both intrinsics and an FFI, your jets have one key disadvantage: they need to be specified in pure code.  You may not have this executable specification, which means you need to write it.  Is this really so bad for your development process?  An executable specification?  Which can be trivially tested against the efficient implementation?
 
-Compared to intrinsics, jets give you true separation between mechanism and policy; only the interpreter, not the programmer and not the compiler, needs to know what's accelerated. 
+Compared to intrinsics, jets give you true separation between mechanism and policy; only the interpreter, not the programmer and not the compiler, needs to know what's accelerated.
 
 Compared to an FFI, jets preclude I/O, so can be trivially sandboxed.  Except that the programmer needs to mark routines which may benefit from optimization with a hint, here too we separate mechanism (efficient implementation) from policy.
 
@@ -133,7 +139,7 @@ TLDR: no, it doesn't.
 
 We can prune the event log because the Urbit transition function doesn't have any access to the event history -- just the current state and the current event.
 
-Urbit defines the semantics of a complete event log.  It doesn't and can't require an implementation to maintain the whole log.  It can maintain a checkpoint and the log since that checkpoint.  The current implementation of Urbit maintains 
+Urbit defines the semantics of a complete event log.  It doesn't and can't require an implementation to maintain the whole log.  It can maintain a checkpoint and the log since that checkpoint.  The current implementation of Urbit maintains
 
 However, any practical urbit maintains a periodically updated checkpoint.  Our present implementation doesn't provide a way to prune the event log, but that's just a missing feature.
 
