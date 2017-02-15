@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 4
+sort: 14
 next: true
 title: Syntax
 ---
@@ -187,7 +187,7 @@ is self-terminating.  Otherwise the twig is terminated by a
 The *running* body is a list of twigs.  The *jogging* body is a
 list of twig pairs, separated by a `gap`.  The *battery* body is
 a list of symbol-twig pairs, separated by a gap, prefixed by `++`
-and then a gap. 
+and then a gap.
 
 This definition is enough to parse.  But the proper shape of the
 whitespace gaps demands an informal convention.
@@ -342,7 +342,7 @@ In the *lapidary* naming style, labels are pronounceable
 three-letter strings, usually CVC (consonant-vowel-consonant).
 Sometimes they encode a mnemonic, but usually they are just
 memorable.  Labels are reused wherever the analogy seems
-appropriate. 
+appropriate.
 
 In the *ultralapidary* naming style, labels are single letters,
 starting in order of construction from `a`, or within a tuple

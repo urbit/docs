@@ -1,13 +1,13 @@
 ---
 navhome: /docs/
-sort: 1
+sort: 10
 next: true
 title: Demo
 ---
 
 # Demo
 
-Here's everyone's favorite whiteboard example, FizzBuzz.  Each 
+Here's everyone's favorite whiteboard example, FizzBuzz.  Each
 line is commented with its number:
 
 ```

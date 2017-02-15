@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 1
+sort: 11
 next: true
 title: Basic Hoon
 ---

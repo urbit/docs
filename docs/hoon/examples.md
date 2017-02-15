@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 8
+sort: 18
 title: Examples
 next: true
 ---
@@ -253,7 +253,7 @@ moves (`move)`; actions are tic-tac-toe results (`fact`).
       :loop  :cast  (list fact)                         ::  3
       :ifno  feed  ~                                    ::  4
 ```
- 
+
 Line `1` wraps a conclusion around a stack of cores.  The cores
 at `11` and `26` are the data structures and functions of the
 engine; the conclusion is the interface and top-level logic.  It
