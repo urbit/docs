@@ -2,10 +2,10 @@
 navhome: /docs/
 next: false
 sort: 20
-title: Security Drivers
+title: Security drivers
 ---
 
-# Security Drivers
+# Security drivers
 
 A security driver is a file in `/=home=/sec/<tld>/<domain>/hoon`
 that handles the authentication for all HTTP requests to

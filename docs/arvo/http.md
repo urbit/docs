@@ -2,7 +2,7 @@
 navhome: /docs/
 next: false
 sort: 19
-title: HTTP Requests and Timers
+title: HTTP requests and timers
 ---
 
 # Writing an HTTP request
