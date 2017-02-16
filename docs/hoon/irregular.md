@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 21
+sort: 22
 title: Irregular forms
 comments: true
 ---

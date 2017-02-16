@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 12
+sort: 19
 title: Troubleshooting
 next: true
 ---
