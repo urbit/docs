@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 12
+sort: 14
 next: true
 title: Syntax
 ---

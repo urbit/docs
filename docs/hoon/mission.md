@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 10
+sort: 12
 next: true
 title: Mission
 ---

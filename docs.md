@@ -12,7 +12,7 @@ sort: 4
 
 <div class="col-md-12 head">
 
-<div class="col-md-10">
+<div class="col-md-8">
 
 **Urbit** is a secure peer-to-peer network of personal servers, built on a clean-slate system software stack.
 
