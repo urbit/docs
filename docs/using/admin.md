@@ -2,10 +2,10 @@
 navhome: /docs
 next: true
 sort: 3
-title: Basic Administration and Operation
+title: Administration and Operation
 ---
 
-# Basic Administration
+# Administration
 
 <div class="row">
 <div class="col-md-8">
@@ -44,7 +44,7 @@ To move a pier, simply move the contents of the directory it lives in.  To keep 
 
     tar -Scvzf your-urbit.tar.gz ./your-urbit/
 
-# Basic Operation
+# Operation
 
 ## Console
 
