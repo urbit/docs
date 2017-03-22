@@ -34,18 +34,18 @@ To switch the desk you're serving from:
 
     |serve %sandbox
 
-To host a file on the web try putting the following in `/home/web/test.md` (from Unix):
+To host a file on the web try putting the following in `/sandbox/web/test.md` (from Unix):
 
     # Hello
 
     This is a simple markdown file.
 
-Create the directory `/home/web/test/` and add two more markdown files in it.
+Create the directory `/sandbox/web/test/` and add two more markdown files in it.
 
 NOTE: Due to a bug in Urbit you may have to create the directory and the file in it in rapid
-succession using something like `mkdir home/web/test && touch home/web/test/first.md`.
+succession using something like `mkdir sandbox/web/test && touch sandbox/web/test/first.md`.
 
-Now modify `/home/web/test.md` to list the children using the `<list/>` JSX:
+Now modify `/sandbox/web/test.md` to list the children using the `<list/>` JSX:
 
     # Hello
 
