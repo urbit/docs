@@ -16,7 +16,7 @@ sort: 7
 
 <li><code>~hidduc-posmeg</code>
 <br />
-<a href="https://fosnut-dandut.urbit.org/pages/hidducs-notes/tutorial/docs/">docs</a>, <code>fora</code> <a href="https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~/">post</a></li>
+<a href="https://fosnut-dandut.urbit.org/pages/hidducs-notes/tutorial/">docs</a>, <code>fora</code> <a href="https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~/">post</a></li>
 
 <li><code>~palfun-foslup</code>
 <br />
