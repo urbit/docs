@@ -175,7 +175,7 @@ version, allowing merges to be rerun.
 the reverse of `%this`. This is different from `%init` because the new
 commit has both sides in its ancestry.
 
-`%fine` - "fast-forward" merge. This succeeds iff one head is in the
+`%fine` - "fast-forward" merge. This succeeds if one head is in the
 ancestry of the other.
 
 `%meet`, `%mate`, and `%meld` - find the most recent common ancestor to

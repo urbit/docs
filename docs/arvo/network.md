@@ -241,7 +241,7 @@ that.
 
 Furthermore, when one module sends a message to another kernel module or
 application, it also sends along the duct it was given with its new wire
-tacked onto the end. Now the duct has two entries, with the unix even on
+tacked onto the end. Now the duct has two entries, with the unix event on
 the bottom and the kernel module that handled it next. This process can
 continue indefinitely, adding more and more layers onto the duct. When
 an entity finally produces a result, a layer is popped off the duct, and
