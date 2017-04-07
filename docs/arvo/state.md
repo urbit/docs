@@ -56,7 +56,7 @@ just a block of memory, which you need to serialize to disk if you want
 to keep it around for very long.
 
 In Urbit, app state is a single (usually complex) value. In our example,
-we have very simple state, so we defined `state=@`, meaning that our
+we have very simple state, so we defined `state/@`, meaning that our
 state is an atom. Of course, `state` is just a name, and you're free to
 name your state whatever you like. But let's clarify a couple other
 things before we continue.
