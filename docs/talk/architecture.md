@@ -225,7 +225,7 @@ On top of that, readers are in a good position for determining a user's status, 
 When a reader wants something done, it sends an `update` to its broker, containing the change that needs to happen. The reader applies the change to its own state before sending a `lowdown` describing it to all readers. Even the reader that requested the change gets informed, so it knows for sure that its change went through.  
 In the case of a `%status` update, we follow a similar flow similar to when we receive a `%group` `report`.
 
->**Current implementation** doesn't deal with status updates very well. You want to be able to be able to set your status per partner, but it's currently set by knot, which means it only works for local stations. What's more, there's no `command` for telling a foreign station you want to change your status, so unless you own the station your change won't be propagated.
+>**Current implementation** doesn't deal with status updates very well. You want to be able to set your status per partner, but it's currently set by knot, which means it only works for local stations. What's more, there's no `command` for telling a foreign station you want to change your status, so unless you own the station your change won't be propagated.
 
 >**Current implementation** also considers a `status` to be both `presence` and `human`. This same `human` structure is also used in storing local nicknames, however. All this needs some work for clarity and simplicity. (What's a "true name"? Demonology?) Allowing users to set per-station handles is probably fine, but this needs to actually be implemented.
 
@@ -314,6 +314,33 @@ Used in telegram rendering. Can turn telegrams into their full representations, 
 @TODO maybe insert full flow diagram?
 
 
-## Notes
+## Notes on the talk API
+
+The broker does "the heavy lifting", but still leaves a lot of light work up to the readers. For example, readers can instruct a broker to send messages, but they have to send an entire thought. The client should not be responsible for, say, generating a message serial when that's something the broker can handle perfectly fine.
+
+Similarly, I'm currently working on implementations for `;invite` and `;banish` for modifying blacklists (channels, mailboxes) and whitelists (journals, villages). I find myself doing checks on the station type and constructing an updated config within the reader, and even building an `%inv` message to send! These are all things the broker should take care of, because they will be (should be) implemented that way for all readers.
+
+If we want to make talk an easy platform to use for messaging applications, it needs a better API. The current command structure works, but isn't as simple as it could be. The broker also has no way of sending an informative message back to the reader if anything fails, so doing checks on the reader-side is currently mandatory if you want to be able tot ell your user what is up.
+
+```
+++  action                                              ::  user action
+  $%  {$create (pair knot (pair cord posture))}         ::  configure + destroy
+      {$permit (trel knot ? (set ship))}                ::  invite/banish
+      {$say (list (trel audience statement))}           ::  originate
+      ::  probably include ++update in this.            ::
+  ==                                                    ::
+++  reaction                                            ::  user information
+  $:  kind/?($info $fail)                               ::  result
+      what/@t                                           ::  explain
+      why/(unit action)                                 ::  cause
+  ==                                                    ::
+```
+
+You want the broker to do as much lifting as possible, so that readers don't have to reimplement the same things over and over again. The structure above helps the reader instruct the broker in a simpler, more low-effort way, and enables the broker to pass on a potential failure cause.
+
+(Readers can of course choose to not display all reactions they get. At this point I don't think it's worth implementing something like error codes for readers to display their own custom messages, but very much possibly to add that in the future if it becomes desirable.)
+
+
+## Miscellaneous notes
 
 * Federation might be implemented as a new subscription type, where multiple brokers subscribe to a station, mirror its state, and (after processing) relay commands/reports to the other federation nodes.
