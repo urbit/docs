@@ -1,333 +1,89 @@
 # Talk architecture
 
-This document is complemented by talk's source code, but doesn't require it. Definitions of data structures will be provided where useful. Descriptions of processes will be accompanied by diagrams describing this flow in code arms. For an overview of the different cores and their most important arms, see the end of this document.
+This document is complemented by talk's source code, but doesn't require it. Definitions of data structures will be provided where useful.
 
 >**Current implementation** remarks mention where the [current implementation](https://github.com/Fang-/arvo/tree/talk-split) differs from what is described, and why changing that to match this document would be desirable.
 
 
 ## Overview
 
-At the time of writing, talk is Urbit's biggest user-facing application, and fresh out of a big restructuring. Previously, talk was a single application. Now, it has been split into two, to improve maintainability and extensibility.
+At the time of writing, talk is Urbit's biggest user-facing application, and fresh out of a big restructuring. Previously, talk the platform and talk the application were one and the same. Now, they have been split to help clarify their distinction, provide an example of how the platform can be used, and to aid in maintaining and extending it.
 
-Official Urbit terminology calls these the `guardian` (like a unix daemon) and `agent`. You may also view them as your personal server and client. To be more semantically appropriate for talk, we're calling them `broker` and `reader` respectively.
+Official Urbit terminology calls the platform a `guardian` (like a unix daemon) and the application an `agent`. You may also view them as your personal server and client. To be more semantically appropriate for talk, we're calling them `broker` and `reader` respectively.
 
-Everyone (per identity) has a single talk broker that does all the heavy lifting. Connected to it can be any number of readers, whose task it is to present the user with an interface for interacting with talk. Brokers and readers will only interact with each other if they are in the same team. That is, if they belong to the same identity, with moons counting as their planets.
+>It may be desirable to separate the platform from the "talk" name entirely, to decouple it from the client implementation we know and love. Also, "reader" is starting to feel more and more incorrect.
 
-### Partners
+Everyone (per identity) has a single broker that does all the heavy lifting. This broker can be used by any number of readers to help them realize their messaging functionality. Examples include the talk application we're all familiar with and the brand new Twitter clone [feed](http://urbit.org/fora/posts/~2017.4.12..21.14.00..fe17~/).
 
-```
-++  partner    (each station passport)                  ::  interlocutor
-```
+Since reader implementations will vary widely, we'll be looking exclusively at the functionality the broker provides and how that can be used. In order to do so, we first look at the core concepts that govern talk's architecture, then delve continuously deeper by examining the interfaces the broker offers, seeing how communication between brokers happens, and finally looking at how it's all implemented.
 
-A `partner` is either a `station` (a "chat room" hosted on a ship, represented as `~ship-name/station-name`) or a `passport`, which represents a non-station target. An example of a passport is a Twitter handle. Since passports aren't yet fully implemented for any kind of usage, we'll ignore them for now.
+## Core concepts
 
-
-## Broker
-
-The broker is responsible for all primary talk functionality, everything that happens "under the hood". It can send, receive and store messages, keeps track of presence lists and configurations, and manages the stations you've created.
-
-> **Note**: You may see `lowdown`s as output in some of the arm flows. These are sent to readers. Their purpose is described later in this document.
-
-### General messaging flow (broker to broker)
-
-```
-++  command                                             ::  effect on party
-  $%  {$publish (list thought)}                         ::  originate
-      {$review (list thought)}                          ::  deliver
-      ::  ...                                           ::
-  ==                                                    ::
-++  thought    (trel serial audience statement)         ::  which whom what
-++  report                                              ::  talk update
-  $%  {$grams (pair @ud (list telegram))}               ::  beginning thoughts
-      ::  ...                                           ::
-  ==                                                    ::
-```
-
-Posting a message is done by poking your own broker with a `%publish` `command`, which prompts the broker to verifies that command originated from someone in its `team` (its own ship, or one of its moons), and to actually publish it.
-
-Having received and verified the command to publish a message, your broker sends a `%review` `command` to the brokers of all members of the `audience`. That is, all ships of the stations in the audience. (Again, messaging to other kinds of partners isn't implemented yet.)
-
-Upon getting poked with a command to review a message, a broker seeks out the appropriate story and (after checking if the sender has write permissions) adds the message to the story. Doing this causes a `%grams` `report` to be sent to everyone that has subscribed to that story.
-
-When a broker gets a diff ("subscription poke") with a `%grams` report, it adds all messages in it to the appropriate story.
-
-![messaging implementation flow](./diagrams/talk_flow-messaging.png "messaging implementation flow")
-
-```
-++  diff-talk-report        ::
-  ++  ra-diff-talk-report   ::  sends report to its appropriate story.
-  ++  pa-diff-talk-report   ::  processes a report for a story.
-  ++  pa-lesson             ::  learns a list of messages.
-++  poke-talk-command       ::
-  ++  ra-apply              ::  applies a talk command.
-  ++  ra-think              ::  consumes a list of messages.
-  ++  ra-consume            ::  conducts a message to each partner in audience.
-  ++  ra-conduct            ::  records a message or send it.
-    ++  ra-transmit         ::  sends a message to a partner.
-    ++  ra-record           ::  stores a message in a story.
-      ++  pa-learn          ::  either adds or modifies a message.
-        ++  pa-append       ::  adds a message to the story.
-        ++  pa-revise       ::  modifies a message in the story.
-      ++ pa-refresh         ::  sends messages to all interested subscribers.
-```
-
-### Stories (broker to broker)
-
-```
-++  story                                               ::  wire content
-  $:  count/@ud                                         ::  (lent grams)
-      grams/(list telegram)                             ::  all history
-      locals/atlas                                      ::  local presence
-      sequence/(map partner @ud)                        ::  partners heard
-      shape/config                                      ::  configuration
-      known/(map serial @ud)                            ::  messages heard
-      followers/(map bone river)                        ::  subscribers
-  ==                                                    ::
-```
-
-A `story` is the structure in which a station's full state is stored. Its the canonical source for its messages, configuration, presence and subscribers.
-
-#### Telling stories
+Before we dive into interfacing with the broker, we need to understand how it sees the world. Let's pull up part of the structure for the broker's state, and some structures that relate to it.
 
 ```
 ++  house                                               ::  broker state
   $:  stories/(map knot story)                          ::  conversations
+      readers/(map bone (set knot))                     ::  our message readers
       ::  ...                                           ::
   ==                                                    ::
-++  command                                             ::  effect on party
-  $%  {$design (pair knot (unit config))}               ::  configure+destroy
-      ::  ...                                           ::
-  ==                                                    ::
-```
-
-To create a station, you send a `%design` command to your broker, containing the name of the station and its initial configuration. After verifying you are in the broker's team, it sets the configuration for a story with the specified name, creating that story if it doesn't yet exist.
-
-When people subscribe to a station it sends a `%peer` to the station's ship's broker. In the subscription path, the name of the station is specified, as well as the range of the subscription. For example, a subscriber may only be interested in messages up to a month from now.
-
->**Current implementation** always gets you messages from up to a day old, and all messages after that. Giving the user the option to specify the range of the subscription should prove useful to future applications of the talk system. The same can be said for making a range enforceable on a per-station basis.
-
-When a broker gets peered, it checks the source for read permissions on the specified story before adding it to the story's list of subscribers. When this happens, the broker sends a bunch of different reports to the new subscriber to bring them up to speed on configuration, presences and messages of the station.
-
-![subscribe implementation flow](./diagrams/talk_flow-subscribe.png "subscribe implementation flow")
-
-```
-++  poke-talk-command     ::
-  ++  ra-apply            ::  applies a talk command.
-  ++  ra-config           ::  (re)configures a story.
-  ++  pa-reform           ::  changes the configuration of the story.
-++  peer                  ::
-  ++  ra-subscribe        ::  adds a subscriber to a story, sends them info.
-  ++  pa-report-cabal     ::  sends subscribers a report with configuration.
-  ++  pa-notify           ::  changes a ship's presence in the story.
-    ++  pa-report-group   ::  sends subscribers a report with presences.
-  ++  pa-first-grams      ::  determines the backlog of messages to send.
-    ++  pa-start          ::  sends a range of messages.
-```
-
-#### Hearing stories
-
-```
-++  house                                               ::  broker state
-  $:  remotes/(map partner atlas)                       ::  remote presence
+++  story                                               ::  wire content
+  $:  grams/(list telegram)                             ::  all messages
+      locals/atlas                                      ::  local presence
+      remotes/(map partner atlas)                       ::  remote presence
+      shape/config                                      ::  configuration
       mirrors/(map station config)                      ::  remote config
+      followers/(map bone river)                        ::  subscribers
       ::  ...                                           ::
   ==                                                    ::
-++  report                                              ::  talk update
-  $%  {$cabal config}                                   ::  config neighborhood
-      {$group atlas}                                    ::  presence
-      ::  ...                                           ::
-  ==                                                    ::
-```
-
-When subscribing, no stories are created. A story is the one true canonical source of a station, there can only be one. A subscriber keeps a station's data and other
-
-Every instance of a talk broker comes with a default mailbox. For planets, this is their `%porch`. It can be written to by everyone, but only read by its owner. The mailbox is used to store *all* incoming messages from *all* subscriptions. This means that if you are subscribed to a station you host, messages will be stored in both the station's story *and* your mailbox. (This is not a problem, and actually a good thing. It provides clear separation between subscriptions and stations themselves and makes it simple to not be subscribed to your own stations.)
-
->**Current implementation** still draws this line a bit unclearly, because of how the mailbox itself is also a regular story, and the storage of relevant data being as described below. The effort for changing this is not worth the small gains in clarity, however, and may even end up increasing clutter. (You'd almost think a broker-host and broker-guest would be appropriate, but likely not.)
-
-Presence lists and configurations of stations you've joined are stored in maps in the broker's general state. These are updated whenever a `%cabal` or `%group` `report` is received. Such updates are sent to all subscribers of a story whenever changes occur.
-
->**Current implementation** doesn't store presence and config of local stations in the maps, instead keeping this strictly in the stories themselves. Also adding local story presences and configs to the global maps would help simplify communication with readers and readers themselves. (See also "Reader" below.)
-
->**Current implementation** includes remote presences and configs in `%cabal` and `%group` reports. Leaving those out should not hinder functionality. "But federation?" No party in a federation scenario should care where presence/config originated.
-
-![subscription reports implementation flow](./diagrams/talk_flow-reports.png "subscription reports implementation flow")
-
-```
-++  diff-talk-report        ::
-  ++  ra-diff-talk-report   ::  applies a report to the story it's intended for.
-  ++  pa-diff-talk-report   ::  processes a report.
-    ++  pa-cabal            ::  stores remote configuration.
-      ++  pa-report-cabal   ::  sends subscribers a report with configuration.
-    ++  pa-remind           ::  stores remote presence.
-      ++  pa-report-group   ::  sends subscribers a report with presences.
-```
-
-
-## Reader
-
-A reader is an application used for interfacing with a talk broker. As such, it communicates solely with the broker of the identity it is associated with. No other brokers. No other readers. That is all left up to the broker itself.
-
->**Current implementation** still stores different tales (subsets of stories). Ideally, and taking the changes described below into account, readers should be able to get away with a single list of messages and maps for presences and configurations. Practically, you could say it's like subscribing to the broker's mailbox and the changes made to broker's presence and config lists. This means that the `man/knot` that's still passed around to cores in the reader has become mostly meaningless, and should be removed.
-
-### Staying informed (broker to reader)
-
-```
-++  lowdown                                             ::  reader update
-  $%  {$confs (map station (unit config))}              ::  changed config
-      {$precs (map partner atlas)}                      ::  changed presence
-      {$grams (pair knot (pair @ud (list telegram)))}   ::  new grams
+++  config                                              ::  party configuration
+  $:  sources/(set partner)                             ::  pulls from
       ::  ...                                           ::
   ==                                                    ::
 ```
 
-As silently illustrated in the flow diagrams shown earlier in this document, `lowdown`s may get sent whenever something about a story changes: new or changed messages (`%grams`), presence (`%precs`) or configuration (`%confs`). Those lowdowns contain exclusively the changes compared to what the reader knows. When it first boots up, this is all state of all the broker's subscriptions. Afterwards, this is just whatever change the broker recently recorded.
+### Stories
 
->**Current implementation** has many more lowdowns, which include different lowdowns for local and remote station changes. Taking the changes described above into account (ditching tales for simpler storage) would make it possible to simplify reader state and the lowdowns that update it considerably.
+A `story` is the structure in which a local `station`'s full state is stored. All its messages and configuration, as well as those of other stations.
 
->**Current implementation** sends much more than just the change for most lowdowns, often sending the entire new state. This places the burden of calculating the differences with the reader, even though the broker had that information readily available. Sending the change alone would free the reader from the required logic, and potentially allow the reader to stop mirroring broker state altogether. Reports might also be updated to behave this way. If needed, ++scry arms could be added to the broker for (hopefully infrequent) state access.
+Why those of other stations? Observe that a station's configuration contains `sources`. These are the station's subscriptions, from which is receives messages and metadata like presences and configurations. When you subscribe to a foreign station, you're not subscribing your identity to it. Rather, you're telling whatever story your reader is using to subscribe to it.
 
-![subscription lowdowns implementation flow](./diagrams/talk_flow-lowdowns-subs.png "subscription lowdowns implementation flow")
+Because subscriptions are essentially story-to-story instead of broker-to-story, it is easy for different reader implementations to isolate their functionality from each other. For example, cli-talk uses the `%mailbox` story for subscriptions and message management, and feed uses a `%feed` story for doing the same. Neither have to deal with each other's data, but they can still choose to subscribe to it if they want to (and know the name of the story the other application uses).
 
-```
-++  diff-talk-lowdown
-  ++  ra-lowdown        ::  processes a lowdown.
-    ++  ra-low-precs    ::  applies changes from a presence lowdown.
-      ++  sh-low-precs  ::  displays changes from a presence lowdown.
-    ++  ra-low-confs    ::  applies changes from a configuration lowdown.
-      ++  sh-low-confs  ::  displays changes from a configuration lowdown.
-    ++  ra-low-grams    ::  applies changes from a messages lowdown.
-      ++  sh-low-grams  ::  displays changes from a messages lowdown.
-      ++  pa-lesson     ::  learns a list of messages.
-      ++  pa-learn      ::  either adds or modifies a message.
-        ++  pa-append   ::  adds a message to the story.
-        ++  pa-revise   ::  modifies a message in the story.
-```
+>**Current implementation** of "cli-talk" (and web-talk too) instantiates with default mailbox and journal stations. This is likely not desirable. Applications should specify their own stories. Using defaults will just end up with them becoming bloated streams of unfiltered noise.
 
-### Changing shared UI (reader to broker to reader)
+### `partner` or `station`?
 
 ```
-++  update                                              ::  change shared state
-  $%  {$status (pair (set partner) status)}             ::  our status update
-      {$human (pair ship human)}                        ::  new identity
-      {$bind (pair char (set partner))}                 ::  bind a glyph
-  ==                                                    ::
-++  lowdown                                             ::  reader update
-  $%  {$glyfs (jug char (set partner))}                 ::  new bindings
-      {$names (map ship (unit human))}                  ::  new identities
-      ::  ...                                           ::
-  ==                                                    ::
+++  partner    (each station passport)                  ::  interlocutor
+++  station    (pair ship knot)                         ::  domestic flow
 ```
 
-Generally, readers should be free to carry their own configurations, independent from other readers. Some of the currently available UI configuration, however, is worth syncing across readers to present information to the user in a consistent way. These are glyph bindings and nicknames, and are shared across readers through the broker.  
-On top of that, readers are in a good position for determining a user's status, like "idle", "active" or "typing", or allow the user to set such a status themselves. This, too, needs to be done through the broker.
+A `partner` is either a `station` (a "chat room" hosted on a ship's broker, represented as `~ship-name/station-name`) or a `passport`, which represents a non-station target. An example of a passport is a Twitter handle. Since passports aren't yet fully implemented for any kind of usage, we'll ignore them.
 
-When a reader wants something done, it sends an `update` to its broker, containing the change that needs to happen. The reader applies the change to its own state before sending a `lowdown` describing it to all readers. Even the reader that requested the change gets informed, so it knows for sure that its change went through.  
-In the case of a `%status` update, we follow a similar flow similar to when we receive a `%group` `report`.
+## Interfaces for readers
 
->**Current implementation** doesn't deal with status updates very well. You want to be able to set your status per partner, but it's currently set by knot, which means it only works for local stations. What's more, there's no `command` for telling a foreign station you want to change your status, so unless you own the station your change won't be propagated.
+Now that we know how a broker keeps track of things, we should have an easier time understanding the different interfaces it offers for user/reader actions.
 
->**Current implementation** also considers a `status` to be both `presence` and `human`. This same `human` structure is also used in storing local nicknames, however. All this needs some work for clarity and simplicity. (What's a "true name"? Demonology?) Allowing users to set per-station handles is probably fine, but this needs to actually be implemented.
-
-![UI lowdowns implementation flow](./diagrams/talk_flow-lowdowns-ui.png "UI lowdowns implementation flow")
-
-```
-++  poke-talk-update        ::
-  ++  ra-update             ::  processes an update.
-    ++  pa-notify           ::  changes a ship's presence in the story.
-      ++  pa-report-group   ::  sends subscribers a report with presences.
-    ++  ra-inform           ::  sends a lowdown with changes to all readers.
-++  diff-talk-lowdown       ::
-  ++  ra-lowdown            ::  processes a lowdown.
-    ++  ra-low-names        ::  applies new or changed local identities.
-    ++  ra-low-glyfs        ::  applies new or changed glyph bindings.
-```
-
-## Implementation overview
-
-We're not going to be explaining talk's usage of cores here. ~~Please see the "core shenanigans" document for that.~~
-
-The different cores used by the talk applications are described below. Renaming (of both cores and their arms) is going to happen.
-
-### `++ra` transactions (broker and reader)
-
-Whenever an event happens (poke, peer, diff, etc.) `++ra` core arms are usually the first to be called.
-
-Important arms in the broker's `++ra` include:
-* `++ra-apply` for processing `command` pokes.
-* `++ra-update` for processing `update` pokes.
-* `++ra-diff-talk-report` for processing `report` diffs, delegates to `++pa-diff-talk-report`.
-* `++ra-subscribe` for peers.
-* `++ra-cancel` for pulls.
-
-Important arms in the reader's `++ra` include:
-* `++ra-low` for processing `lowdown` diffs.
-* `++ra-sole` for processing `sole-action` pokes.
-
-When it needs to apply changes to complex structures (stories, shells), it directs flow into the appropriate core.
-
-It modifies state and produces `command`s, `report`s and `lowdown`s.
-
-### `++pa` stories (broker)
-
-Used for modifying stories.
-
->**Current implementation** still has a `++pa` core in the reader, for dealing with tales. All it does is add messages to the specified tale. When ditching tales, this functionality should just get moved into the reader's `++ra` core.
-
-Important arms include:
-* `++pa-diff-talk-report` for processing `report`s.
-* `++pa-acquire` for subscribing a partner to the story.
-* `++pa-abjure` for unsubscribing a partner from the story.
-
-It modifies a story's state and produces `report`s and `lowdown`s.
-
-### `++sh` shell (reader)
-
-Used for doing sole (console, cli) work. Does work on input and prints changes to the screen.
-
-Important arms include:
-* `++sh-sole` for applying `sole-action`s.
-* `++sh-scad` for parsing cli input and turning it into a work item.
-* `++sh-work` for doing a work item.
-
-For constructing printable strings of structures like `partner`s and `telegram`s, it uses their rendering cores.
-
-It modifies the shell's state and produces `command`s, `update`s and `sole-effect`s.
-
-### `++sn` station rendering (reader)
-
-Used in both station and ship rendering. Creates tapes representing the station or ship.
-
-### `++ta` partner rendering (reader)
-
-Used in partner rendering. Creates tapes representing the partner. Makes use of `++sn`.
-
-### `++te` audience rendering (reader)
-
-Used in audience rendering. Creates tapes representing the set of partners. Makes use of `++ta`.
-
-### `++tr` telegram rendering (reader)
-
-Used in telegram rendering. Can turn telegrams into their full representations, or a single 64-character line. Makes use of `++sn` and `++te`.
-
-
-@TODO maybe insert full flow diagram?
-
-
-## Notes on the talk API
-
-The broker does "the heavy lifting", but still leaves a lot of light work up to the readers. For example, readers can instruct a broker to send messages, but they have to send an entire thought. The client should not be responsible for, say, generating a message serial when that's something the broker can handle perfectly fine.
-
-Similarly, I'm currently working on implementations for `;invite` and `;banish` for modifying blacklists (channels, mailboxes) and whitelists (journals, villages). I find myself doing checks on the station type and constructing an updated config within the reader, and even building an `%inv` message to send! These are all things the broker should take care of, because they will be (should be) implemented that way for all readers.
-
-If we want to make talk an easy platform to use for messaging applications, it needs a better API. The current command structure works, but isn't as simple as it could be. The broker also has no way of sending an informative message back to the reader if anything fails, so doing checks on the reader-side is currently mandatory if you want to be able tot ell your user what is up.
+>The interfaces presented here are suggestions, backed by functional implementations. Adding a new interface for existing functionality is trivial. These may be changed or added to as the use cases for talk (the platform) evolve.
 
 ```
 ++  action                                              ::  user action
-  $%  {$create (pair knot (pair cord posture))}         ::  configure + destroy
+  $%  ::  station configuration                         ::
+      {$create (trel knot cord posture)}                ::  create station
+      {$depict (pair knot cord)}                        ::  change description
+      {$adjust (pair knot posture)}                     ::  change posture
+      {$delete (pair knot (unit @t))}                   ::  delete + announce
       {$permit (trel knot ? (set ship))}                ::  invite/banish
-      {$say (list (trel audience statement))}           ::  originate
-      ::  probably include ++update in this.            ::
+      {$source (trel knot ? (set partner))}             ::  un/sub p to/from r
+      ::  messaging                                     ::
+      {$convey (list thought)}                          ::  post exact
+      {$phrase (pair (set partner) (list speech))}      ::  post easy
+      ::  personal metadata                             ::
+      {$status (pair (set partner) status)}             ::  our status update
+      ::  changing shared ui                            ::
+      {$human (pair ship human)}                        ::  new identity
+      {$glyph (pair char (set partner))}                ::  bind a glyph
   ==                                                    ::
 ++  reaction                                            ::  user information
   $:  kind/?($info $fail)                               ::  result
@@ -336,11 +92,118 @@ If we want to make talk an easy platform to use for messaging applications, it n
   ==                                                    ::
 ```
 
-You want the broker to do as much lifting as possible, so that readers don't have to reimplement the same things over and over again. The structure above helps the reader instruct the broker in a simpler, more low-effort way, and enables the broker to pass on a potential failure cause.
+>**Current implementation** doesn't include *all* of the above actions yet, but adding them in is trivial since the functionality is already there.
 
-(Readers can of course choose to not display all reactions they get. At this point I don't think it's worth implementing something like error codes for readers to display their own custom messages, but very much possibly to add that in the future if it becomes desirable.)
+>**Current implementation** uses a `(set knot)` for `%status` commands, which limits us to updating our status on local stations only.
+
+Most of these `action`s should (hopefully) be fairly self-explanatory. Loobs `?` are used to differentiate between "add" and "delete" actions, `knot`s are used to specify local stations, `partner`s are targets of actions and...  
+"shared ui"? Yes, some UI state gets stored in the broker. Currently these are nicknames and glyph bindings. Those get kept up to date across readers to ensure the user can easily identify other users and stations in a familiar manner, regardless of what reader they're using. (Of course, readers can choose to ignore this if they want to.)
+
+To give the broker a way to communicate warnings and errors to the readers, it can send them a `reaction`. This way, even though the broker itself isn't user-facing, it can still inform the user of potential failure of their action, or other warnings.
+
+By using these interfaces exclusively, a reader as functional as our current talk can be implemented. Most of the reader code will go towards UI-related tasks, since the broker generically implements all messaging functionality.
+
+### Reader subscriptions
+
+Those interfaces alone can't provide the reader with any data, however. It still needs to subscribe itself to the stories it's interested in. Let's take a look at a `%peer` move that does just that!
+
+```
+:*  ost.hid                                             ::  bone
+    %peer                                               ::  move type
+    /story/some-story                                   ::  diff path
+    [our %broker]                                       ::  peer target
+    /reader/some-story                                  ::  peer path
+==
+```
+
+Fairly standard. We should mention the paths being used here, however.  
+The diff path is simply something for the reader to use to identify what subscription a diff came from. That is, what story the diff relates to. Not all readers will need this (cli-talk doesn't!), but that's entirely up to the implementation.  
+The peer path informs the broker as to what kind of subscription this is. We always start with `/reader` to identify this as a reader subscription. If we leave the path at that, we subscribe to changes to the shared UI state. If we append a story name to it, we subscribe to changes to that story.
+
+Over a subscription we can either get sent a `reaction` as described above, or a `lowdown`. Let's see what that looks like.
+
+```
+++  lowdown                                             ::  changed shared state
+  $%  ::  story state                                   ::
+      {$confs (unit config) (map station (unit config))}::  changed configs
+      {$precs (pair atlas (map partner atlas))}         ::  changed presences
+      {$grams (pair @ud (list telegram))}               ::  new grams
+      ::  ui state                                      ::
+      {$glyph (jug char (set partner))}                 ::  new bindings
+      {$names (map ship (unit human))}                  ::  new identities
+  ==                                                    ::
+```
+
+`lowdown`s inform a reader of changes to story or UI state. You'll see these cover most of the story state we described above.
+
+It's important to note that lowdowns contain just that which has changed, just the "diff". This is why configurations are wrapped in `unit`s, so we can signify deletion. This means simple readers that don't even keep state can still inform you when someones presence has changed.
+
+>Sending "just the diff" is a little bit trickier for `config`s, since they're a more complex structure than "just a map of maps". For now, the best we do is send only the configs that have changed, but not the individual changes within those configs.
+
+## Communication between brokers
+
+```
+++  command                                             ::  effect on party
+  $%  {$review (list thought)}                          ::  deliver
+  ==                                                    ::
+```
+
+>**Current implementation** hasn't deprecated the `%design` and `%publish` commands yet. They should be, because they have `action` equivalents and are exclusively used by your own identity.
+
+When you tell your broker to post a message (through the `%convey` or `%phrase` commands), it looks at the audience you want the message to be sent to. For each station, it sends a `%review` command to the host ship, asking for the message to be reviewed and accepted.
+
+When a message gets added to a story, or a presence or configuration in it gets changed, all who are subscribed to that story get notified. This is done via `report`s.
+
+```
+++  report                                              ::  talk update
+  $%  {$cabal config}                                   ::  local config
+      {$group register}                                 ::  presences
+      {$grams (pair @ud (list telegram))}               ::  thoughts
+  ==                                                    ::
+++  register  (pair atlas (map partner atlas))          ::  ping me, ping srcs
+```
+
+>Whereas lowdowns send just the information that has changed, reports always send the entire thing. It might technically be possible to send just the diff, but this needs to be looked into further. Diffs are in a bit of a vague spot currently anyway, see below.
+
+Non-message reports include both local and remote presences. This is useful in federation, where subscribers are also interested in the presences on related stations.
+
+>Federation is, at the time of writing, completely untested. Messages should work fine, but proper configuration and presence propagation has yet to be seen. We'll probably need a `/federate` subscription path to integrate this cleanly into the existing system. It's an entirely new can of worms though.
+
+>**Current implementation** also sends remote configurations in the `%cabal` report. This doesn't seem to be useful for anything. In case of federation, you would want all stations to copy each other's configuration.
 
 
-## Miscellaneous notes
+## Broker implementation
 
-* Federation might be implemented as a new subscription type, where multiple brokers subscribe to a station, mirror its state, and (after processing) relay commands/reports to the other federation nodes.
+For every event (poke, peer, etc.) the broker receives, it calls an arm from the `++ra` core. The event gets processed, and if needed, the `++pa` core is invoked to make changes to stories. If anything interesting happens, an event is sent to relevant brokers and/or readers.
+
+Below you'll find diagrams outlining the arm flows for various common events. If you want to see what they do in more detail, looking at the code might be a good idea.
+
+@TODO update diagrams where necessary, put them here, walk the reader through them briefly.
+
+
+## Roadmap
+
+Things currently on the to-do list, roughly in order of priority:  
+(Cleanup, rewriting for clarity and improving inline documentation will be done once we have a shippable talk.)
+
+* **Architecture** / high-impact changes
+  * Implement federation.
+    * Should config be determined by the original station, or should "federators" be allowed to make changes as well?
+    * Is anyone allowed to federate any station they can subscribe to? (Definitely not if the above is "allowed to make changes"!)
+  * Move fora things out of the broker.
+    * *Maybe* make it its own reader app?
+  * Improve presence capabilities.
+    * Separate presence from handles.
+    * Command for setting our presence in a foreign station.
+    * "Typing", "idle", etc.
+  * Extended permissions management?
+    * It might be nice to be able to white/blacklist entire classes
+* **Functionality**
+  * Flexible subscribe ranges.
+    * As opposed to the current always-default "a day old, and everything newer forever". of ships (ie, disallow all comets.)
+  * List (accessible) stations on ships.
+  * Talkpolls!
+  * Per-channel message sanitization configuration?
+    * Allow/disallow capitals, unicode, etc.
+  * Better glyph management.
+  * Better line splitting.
