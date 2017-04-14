@@ -72,7 +72,6 @@ Now that we know how a broker keeps track of things, we should have an easier ti
   $%  ::  station configuration                         ::
       {$create (trel knot cord posture)}                ::  create station
       {$depict (pair knot cord)}                        ::  change description
-      {$adjust (pair knot posture)}                     ::  change posture
       {$delete (pair knot (unit @t))}                   ::  delete + announce
       {$permit (trel knot ? (set ship))}                ::  invite/banish
       {$source (trel knot ? (set partner))}             ::  un/sub p to/from r
@@ -167,7 +166,7 @@ When a message gets added to a story, or a presence or configuration in it gets 
 
 Non-message reports include both local and remote presences. This is useful in federation, where subscribers are also interested in the presences on related stations.
 
->Federation is, at the time of writing, completely untested. Messages should work fine, but proper configuration and presence propagation has yet to be seen. We'll probably need a `/federate` subscription path to integrate this cleanly into the existing system. It's an entirely new can of worms though.
+>Federation is, at the time of writing, largely untested. Messages and presences seem to work fine, but configuration sharing isn't in yet. The solution that's currently in try-out development is having a "federator whitelist", and using a special command to signify a ship starts federating, so that users don't have to manually chain sources together.
 
 >**Current implementation** also sends remote configurations in the `%cabal` report. This doesn't seem to be useful for anything. In case of federation, you would want all stations to copy each other's configuration.
 
