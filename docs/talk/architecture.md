@@ -1,208 +1,341 @@
+
 # Talk architecture
 
-This document is complemented by talk's source code, but doesn't require it. Definitions of data structures will be provided where useful.
-
->**Current implementation** remarks mention where the [current implementation](https://github.com/Fang-/arvo/tree/talk-split) differs from what is described, and why changing that to match this document would be desirable.
+This document is complemented by talk's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
 
 
 ## Overview
 
-At the time of writing, talk is Urbit's biggest user-facing application, and fresh out of a big restructuring. Previously, talk the platform and talk the application were one and the same. Now, they have been split to help clarify their distinction, provide an example of how the platform can be used, and to aid in maintaining and extending it.
+Talk was Urbit's first big user-facing application, and continues to enjoy a prominent role in the Urbit landscape as the primary messaging bus.
 
-Official Urbit terminology calls the platform a `guardian` (like a unix daemon) and the application an `agent`. You may also view them as your personal server and client. To be more semantically appropriate for talk, we're calling them `broker` and `reader` respectively.
+To be clear, we make a distinction between "talk the platform" and "talk the chat application". The latter makes use of the former for most of its functionality, and serves as an example of things that can be built on top of the platform. (Also see the small Twitter clone, [feed](http://urbit.org/fora/posts/~2017.4.12..21.14.00..fe17~/).)  
+This document, however, focusses on the platform. In talk's case, we refer to this "server" (or `guardian`, in Urbit terminology) as the *broker*. It manages an identity's messages, subscriptions, and more.
 
->It may be desirable to separate the platform from the "talk" name entirely, to decouple it from the client implementation we know and love. Also, "reader" is starting to feel more and more incorrect.
 
-Everyone (per identity) has a single broker that does all the heavy lifting. This broker can be used by any number of readers to help them realize their messaging functionality. Examples include the talk application we're all familiar with and the brand new Twitter clone [feed](http://urbit.org/fora/posts/~2017.4.12..21.14.00..fe17~/).
+## Core concepts & functionality
 
-Since reader implementations will vary widely, we'll be looking exclusively at the functionality the broker provides and how that can be used. In order to do so, we first look at the core concepts that govern talk's architecture, then delve continuously deeper by examining the interfaces the broker offers, seeing how communication between brokers happens, and finally looking at how it's all implemented.
-
-## Core concepts
-
-Before we dive into interfacing with the broker, we need to understand how it sees the world. Let's pull up part of the structure for the broker's state, and some structures that relate to it.
+To begin to gain an understanding of how the broker functions, let's look at its state mold.
 
 ```
-++  house                                               ::  broker state
-  $:  stories/(map knot story)                          ::  conversations
-      readers/(map bone (set knot))                     ::  our message readers
+++  state                                               :>  broker state
+  $:  stories/(map knot story)                          :<  conversations
+      readers/(map bone (set knot))                     :<  our message readers
       ::  ...                                           ::
   ==                                                    ::
-++  story                                               ::  wire content
-  $:  grams/(list telegram)                             ::  all messages
-      locals/atlas                                      ::  local presence
-      remotes/(map partner atlas)                       ::  remote presence
-      shape/config                                      ::  configuration
-      mirrors/(map station config)                      ::  remote config
-      followers/(map bone river)                        ::  subscribers
-      ::  ...                                           ::
-  ==                                                    ::
-++  config                                              ::  party configuration
-  $:  sources/(set partner)                             ::  pulls from
+++  story                                               :>  wire content
+  $:  grams/(list telegram)                             :<  all messages
+      locals/group                                      :<  local presence
+      remotes/(map partner group)                       :<  remote presence
+      shape/config                                      :<  configuration
+      mirrors/(map circle config)                       :<  remote config
+      followers/(map bone river)                        :<  subscribers
       ::  ...                                           ::
   ==                                                    ::
 ```
+
+Aside from keeping track of `readers`, the different applications that use the broker, it also stores a map of stories.
 
 ### Stories
 
-A `story` is the structure in which a local `station`'s full state is stored. All its messages and configuration, as well as those of other stations.
+Stories are the primary driver behind the broker. Whether you're hosting a group chat, or just want a place to aggregate messages into, a `story` will be created for it. They contain all data they need to be complete, from messages to metadata.
 
-Why those of other stations? Observe that a station's configuration contains `sources`. These are the station's subscriptions, from which is receives messages and metadata like presences and configurations. When you subscribe to a foreign station, you're not subscribing your identity to it. Rather, you're telling whatever story your reader is using to subscribe to it.
-
-Because subscriptions are essentially story-to-story instead of broker-to-story, it is easy for different reader implementations to isolate their functionality from each other. For example, cli-talk uses the `%mailbox` story for subscriptions and message management, and feed uses a `%feed` story for doing the same. Neither have to deal with each other's data, but they can still choose to subscribe to it if they want to (and know the name of the story the other application uses).
-
->**Current implementation** of "cli-talk" (and web-talk too) instantiates with default mailbox and journal stations. This is likely not desirable. Applications should specify their own stories. Using defaults will just end up with them becoming bloated streams of unfiltered noise.
-
-### `partner` or `station`?
+Looking carefully at that metadata, stories seem to store both "local" and "remote" versions. This is to facilitate the "aggregate messages" use-case mentioned above, and core to how subscriptions function. Looking at the `config` structure, we see the following attribute:
 
 ```
-++  partner    (each station passport)                  ::  interlocutor
-++  station    (pair ship knot)                         ::  domestic flow
+src/(set partner)                                       :<  pulls from
 ```
 
-A `partner` is either a `station` (a "chat room" hosted on a ship's broker, represented as `~ship-name/station-name`) or a `passport`, which represents a non-station target. An example of a passport is a Twitter handle. Since passports aren't yet fully implemented for any kind of usage, we'll ignore them.
+Every story has a set of sources from which it receives data. If there's nothing in this set, the story will only receive messages people explicitly target towards it. If there *are* sources in that set, then their message will get forwarded to the story automatically. Presences and configurations for those sources are kept track of as well.
 
-## Interfaces for readers
+In short, stories store messages. They get these either directly, or through any sources they have subscribed to.
 
-Now that we know how a broker keeps track of things, we should have an easier time understanding the different interfaces it offers for user/reader actions.
+### Partners
 
->The interfaces presented here are suggestions, backed by functional implementations. Adding a new interface for existing functionality is trivial. These may be changed or added to as the use cases for talk (the platform) evolve.
+Though these sources are `partner` structures, we can see remote configurations are only stored for so-called `circle`s.
 
 ```
-++  action                                              ::  user action
-  $%  ::  station configuration                         ::
-      {$create (trel knot cord posture)}                ::  create station
-      {$depict (pair knot cord)}                        ::  change description
-      {$delete (pair knot (unit @t))}                   ::  delete + announce
-      {$permit (trel knot ? (set ship))}                ::  invite/banish
-      {$source (trel knot ? (set partner))}             ::  un/sub p to/from r
+++  partner    (each circle passport)                   :<  message target
+++  circle     {hos/ship nom/knot}                      :<  native target
+++  passport                                            :>  foreign target
+  $%  {$twitter p/cord}                                 :<  twitter handle
+  ==                                                    ::
+```
+
+A `partner` is either a `circle` or a `passport`. A `circle` is a native partner, one created by the broker: a named story hosted on a ship, usually represented as `~ship/story`.  
+A `passport` is a non-native partner, such as a Twitter feed. The possibilities for passports are endless... but none of them are properly implemented yet, so for the rest of this document we'll assume a `partner` is always a `circle`.
+
+### Access control
+
+Though not important to the broker's architecture, the way access control for stories works is useful to understand. There are currently four security modes:
+
+```
+++  security                                            :>  security mode
+  $?  $black                                            :<  channel, blacklist
+      $white                                            :<  village, whitelist
+      $green                                            :<  journal, author list
+      $brown                                            :<  mailbox, our r, bl w
+  ==                                                    ::
+```
+
+A `channel` is publicly readable and writable, with a blacklist for banishing.  
+A `village` is privately readable and writable, with a whitelist for inviting.  
+A `journal` is publicly readable and privately writable, with a whitelist for authors.
+A `mailbox` is readable by its owner and publicly writable, with a blacklist for blocking.
+
+### Federation
+
+One of the primary aspects of Urbit is its decentralized nature. The broker can happily make use of that by federating circles. That is, hosting them on multiple ships simultaneously. They share all messages, presence and configuration, regardless of where that data or change originated.  
+This can help spread heavy load across multiple ships, makes circles easier to access, and allows for fallback in case one of the hosts goes offline.
+
+
+## Interfaces for applications
+
+Applications can interact with the broker in two complementary ways: they can tell it what actions to perform, and they can subscribe to its state changes.
+
+### Interactions
+
+The broker can be commanded by poking it with `action`s.
+
+```
+++  action                                              :>  user action
+  $%  ::  circle configuration                          ::
+      {$create nom/knot des/cord sec/security}          :<  create circle
+      {$delete nom/knot ano/(unit cord)}                :<  delete + announce
+      {$depict nom/knot des/cord}                       :<  change description
+      {$permit nom/knot inv/? sis/(set ship)}           :<  invite/banish
+      {$source nom/knot sub/? src/(set partner)}        :<  un/sub to/from src
+      {$enlist nom/knot fed/? sis/(set ship)}           :<  dis/allow federation
+      {$burden circle}                                  :<  help federate
       ::  messaging                                     ::
-      {$convey (list thought)}                          ::  post exact
-      {$phrase (pair (set partner) (list speech))}      ::  post easy
+      {$convey tos/(list thought)}                      :<  post exact
+      {$phrase aud/(set partner) ses/(list speech)}     :<  post easy
       ::  personal metadata                             ::
-      {$status (pair (set partner) status)}             ::  our status update
+      {$status cis/(set circle) sat/status}             :<  our status update
       ::  changing shared ui                            ::
-      {$human (pair ship human)}                        ::  new identity
-      {$glyph (pair char (set partner))}                ::  bind a glyph
-  ==                                                    ::
-++  reaction                                            ::  user information
-  $:  kind/?($info $fail)                               ::  result
-      what/@t                                           ::  explain
-      why/(unit action)                                 ::  cause
+      {$human sip/ship man/human}                       :<  new identity
+      {$glyph gyf/char pas/(set partner) bin/?}         :<  un/bind a glyph
   ==                                                    ::
 ```
 
->**Current implementation** doesn't include *all* of the above actions yet, but adding them in is trivial since the functionality is already there.
+The largest part of these actions concern themselves with managing local circles. `nom` is always the name used to identify the relevant story. To disambiguate between "add" and "delete" type actions (for permissions, subscriptions and federation), a loob `?` is used.
 
->**Current implementation** uses a `(set knot)` for `%status` commands, which limits us to updating our status on local stations only.
+To send messages, two interfaces are available. `%convey` lets you specify all details of the messages, including its timestamp, serial, and fully assembled audience. `%phrase`, on the other hand, takes care of that for you, allowing you to specify just the target partners and message contents.
 
-Most of these `action`s should (hopefully) be fairly self-explanatory. Loobs `?` are used to differentiate between "add" and "delete" actions, `knot`s are used to specify local stations, `partner`s are targets of actions and...  
-"shared ui"? Yes, some UI state gets stored in the broker. Currently these are nicknames and glyph bindings. Those get kept up to date across readers to ensure the user can easily identify other users and stations in a familiar manner, regardless of what reader they're using. (Of course, readers can choose to ignore this if they want to.)
+`%status` is useful for setting your own presence and nickname in a circle, so others can see if you're active.
 
-To give the broker a way to communicate warnings and errors to the readers, it can send them a `reaction`. This way, even though the broker itself isn't user-facing, it can still inform the user of potential failure of their action, or other warnings.
+> **Current implementation** implements a `%status` command that only works for local circles.
 
-By using these interfaces exclusively, a reader as functional as our current talk can be implemented. Most of the reader code will go towards UI-related tasks, since the broker generically implements all messaging functionality.
+"Shared UI" encompasses UI data that should be consistent across applications. For example, if the user sets a local nickname for an identity, they expect to see that nickname regardless of the application they're currently using. The same goes for glyph bindings, for easy audience targeting.
 
-### Reader subscriptions
-
-Those interfaces alone can't provide the reader with any data, however. It still needs to subscribe itself to the stories it's interested in. Let's take a look at a `%peer` move that does just that!
+Sometimes, in response to a user action, the broker will respond with a `reaction`.
 
 ```
-:*  ost.hid                                             ::  bone
-    %peer                                               ::  move type
-    /story/some-story                                   ::  diff path
-    [our %broker]                                       ::  peer target
-    /reader/some-story                                  ::  peer path
-==
+++  reaction                                            :>  user information
+  $:  res/?($info $fail)                                :<  result
+      wat/cord                                          :<  explain
+      why/(unit action)                                 :<  cause
+  ==                                                    ::
 ```
 
-Fairly standard. We should mention the paths being used here, however.  
-The diff path is simply something for the reader to use to identify what subscription a diff came from. That is, what story the diff relates to. Not all readers will need this (cli-talk doesn't!), but that's entirely up to the implementation.  
-The peer path informs the broker as to what kind of subscription this is. We always start with `/reader` to identify this as a reader subscription. If we leave the path at that, we subscribe to changes to the shared UI state. If we append a story name to it, we subscribe to changes to that story.
+These are used to inform the application (and thus the user) of any unexpected side effects or errors that occurred as a result of the action they issued.
 
-Over a subscription we can either get sent a `reaction` as described above, or a `lowdown`. Let's see what that looks like.
+### Subscriptions
+
+To receive data from a broker, applications will have to subscribe to it. A `%peer` move for doing so looks something like this:
 
 ```
-++  lowdown                                             ::  changed shared state
+:*  ost.hid                                             :<  bone
+    %peer                                               :<  move type
+    /story/[some-story]                                 :<  diff path
+    [our %broker]                                       :<  peer target
+    /reader/[some-story]                                :<  peer path
+==                                                      ::
+```
+
+The diff path is for the application to use to identify what subscription a diff came from. That is, what story the diff relates to. Not all applications will care for this.  
+The peer path informs the broker of the intent of the subscription. It always starts with `/reader` to indicate we're a client application, not another broker. If the path ends there, it subscribes to shared UI changes. If it goes on to specify a story name, it subscribes to changes to that story.
+
+These changes get sent as `lowdown`s.
+
+```
+++  lowdown                                             :>  new/changed state
   $%  ::  story state                                   ::
-      {$confs (unit config) (map station (unit config))}::  changed configs
-      {$precs (pair atlas (map partner atlas))}         ::  changed presences
-      {$grams (pair @ud (list telegram))}               ::  new grams
+      $:  $confs                                        :<  configs
+          loc/(unit config)                             :<  local config
+          rem/(map circle (unit config))                :<  remote configs
+      ==                                                ::
+      {$precs reg/crowd}                                :<  presences
+      {$grams num/@ud gaz/(list telegram)}              :<  messages
       ::  ui state                                      ::
-      {$glyph (jug char (set partner))}                 ::  new bindings
-      {$names (map ship (unit human))}                  ::  new identities
+      {$glyph (jug char (set partner))}                 :<  glyph bindings
+      {$names (map ship (unit human))}                  :<  nicknames
   ==                                                    ::
 ```
 
-`lowdown`s inform a reader of changes to story or UI state. You'll see these cover most of the story state we described above.
+Aside from the initial lowdown that is sent when a subscription starts, these contains exclusively the changes as they occur. Configurations are wrapped in `unit`s so that deletion can be indicated. This also means that simple applications don't necessarily need to keep state. If all they want to do is show events as they happen, then the broker subscription will provide all they need.
 
-It's important to note that lowdowns contain just that which has changed, just the "diff". This is why configurations are wrapped in `unit`s, so we can signify deletion. This means simple readers that don't even keep state can still inform you when someones presence has changed.
-
->Sending "just the diff" is a little bit trickier for `config`s, since they're a more complex structure than "just a map of maps". For now, the best we do is send only the configs that have changed, but not the individual changes within those configs.
 
 ## Communication between brokers
 
+Brokers can communicate with other brokers to send commands and subscription updates.
+
+### Interaction
+
+To request changes to a story, brokers can send `command`s.
+
 ```
-++  command                                             ::  effect on party
-  $%  {$review (list thought)}                          ::  deliver
+++  command                                             :>  effect on story
+  $%  {$review tos/(list thought)}                      :<  deliver
+      $:  $burden                                       :<  starting fed state
+          nom/knot                                      ::
+          cof/lobby                                     ::
+          pes/crowd                                     ::
+          gaz/(list telegram)                           ::
+      ==                                                ::
+      {$relief nom/knot who/(set ship)}                 :<  federation ended
   ==                                                    ::
 ```
 
->**Current implementation** hasn't deprecated the `%design` and `%publish` commands yet. They should be, because they have `action` equivalents and are exclusively used by your own identity.
+A `%review` command contains messages. These are sent to foreign brokers to be published to one of their stories.
 
-When you tell your broker to post a message (through the `%convey` or `%phrase` commands), it looks at the audience you want the message to be sent to. For each station, it sends a `%review` command to the host ship, asking for the message to be reviewed and accepted.
+`%burden` and `%relief` commands are used for federation. The former signals the sender wants to start federating story `nom`, and contains any pre-existing state that needs to be merged into it. The latter signals that the hosts in `who` will no longer be federating the story.
 
-When a message gets added to a story, or a presence or configuration in it gets changed, all who are subscribed to that story get notified. This is done via `report`s.
+### Subscriptions
+
+Brokers subscribe to other brokers whenever a source gets added to a story's configuration. (Likewise, they unsubscribe when a source is removed.) Subscribers, also knows as story "followers", get sent `report`s whenever changes occur.
 
 ```
-++  report                                              ::  talk update
-  $%  {$cabal config}                                   ::  local config
-      {$group register}                                 ::  presences
-      {$grams (pair @ud (list telegram))}               ::  thoughts
+++  report                                              :>  update
+  $%  {$lobby cab/lobby}                                :<  config neighborhood
+      {$crowd reg/crowd}                                :<  presence
+      {$grams num/@ud gaz/(list telegram)}              :<  thoughts
   ==                                                    ::
-++  register  (pair atlas (map partner atlas))          ::  ping me, ping srcs
+++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
+++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ```
 
->Whereas lowdowns send just the information that has changed, reports always send the entire thing. It might technically be possible to send just the diff, but this needs to be looked into further. Diffs are in a bit of a vague spot currently anyway, see below.
+There are three different kinds of reports, for configurations, presences, and messages.
 
-Non-message reports include both local and remote presences. This is useful in federation, where subscribers are also interested in the presences on related stations.
-
->Federation is, at the time of writing, largely untested. Messages and presences seem to work fine, but configuration sharing isn't in yet. The solution that's currently in try-out development is having a "federator whitelist", and using a special command to signify a ship starts federating, so that users don't have to manually chain sources together.
-
->**Current implementation** also sends remote configurations in the `%cabal` report. This doesn't seem to be useful for anything. In case of federation, you would want all stations to copy each other's configuration.
+Attentive eyes may have seen this in lowdowns as well, they contains both local and remote data. This is required for federation to share full state, and some regular subscribers might take interest in that data as well.
 
 
 ## Broker implementation
 
-For every event (poke, peer, etc.) the broker receives, it calls an arm from the `++ra` core. The event gets processed, and if needed, the `++pa` core is invoked to make changes to stories. If anything interesting happens, an event is sent to relevant brokers and/or readers.
+Now that we know what gets sent over the wire and why, let's see what happens whenever such events happen. We won't be covering everything, but enough to illustrate the general flow.
 
-Below you'll find diagrams outlining the arm flows for various common events. If you want to see what they do in more detail, looking at the code might be a good idea.
+First though, it's useful to understand how the broker's code is structured. It consists of two primary cores that are used as engines for applying changes to state and producing moves for output.
 
-@TODO update diagrams where necessary, put them here, walk the reader through them briefly.
+* `++ta` is the transaction core. For every event that happens, be it a poke, peer of diff, the transaction core gets put to work to process it. Once it's done, it produces a list of moves and the new state.
+* `++so` is the story core, used by `++ta` for applying changes to stories. In doing so, it may add moves to the transaction core for it to produce.
+
+Once all work in an engine core has finished, its `-done` arm is called to produce moves and apply the changes it made back into the application state.
+
+In the diagrams that follow, regular lines indicate flows that always happen. Dashed lines indicate flows that are traversed if the described condition is met.  
+Below the diagrams you will find brief explanations of the involved arms. In a particularly bright future, these might be available on-hover instead.  
+For brevity, utility arms that aren't a direct and important part of the flow have been omitted.
+
+### Subscriptions
+
+Broker-to-broker subscriptions happen when a source gets added to a story. This is done with a `%source` action, and results in a `%peer` move being sent. Upon receiving a peer, the broker validates the subscription and sends the current state.
+
+![subscriptions implementation flow](./diagrams/flow-subscriptions.png "subscriptions implementation flow")
+
+```
+++  poke-talk-action        :<  we got poked with an action.
+  ++  ta-action             :<  applies an action.
+  ++  ta-config             :<  (re)configures a story.
+  ++  so-reform             :<  changes the configuration of the story.
+    ++  so-acquire          :<  subscribes the story to new sources.
+::                          ::
+++  peer                    :<  we got peered.
+  ++  ta-subscribe          :<  sends initial data: current state.
+  ++  so-report-lobby       :<  sends a report with configurations.
+  ++  so-notify             :<  changes a ship's presence in the story.
+    ++  so-report-crowd     :<  sends a report with presences.
+  ++  so-start              :<  determines the backlog of messages to send.
+    ++  so-first-grams      :<  sends a range of messages and adds follower.
+```
+
+### Reports
+
+Once a subscription has been established, the broker will receive reports. `%lobby` and `%group` reports are applied through the following flow. Note how, when a `%lobby` from a federating ship is received, this authoritatively changes the story's configuration.
+
+![report diff implementation flow](./diagrams/flow-reports.png "report diff implementation flow")
+
+```
+++  diff-talk-report        :<  we got a subscription report.
+  ++  ta-diff-report        :<  applies a report to the story it's intended for.
+  ++  so-diff-report        :<  applies a report.
+    ++  so-lobby            :<  stores updated configuration.
+      ++  so-reform         :<  changes the configuration of the story.
+      ++  so-report-lobby   :<  sends a report with configuration.
+    ++  so-remind           :<  stores updated presences.
+      ++  so-report-crowd   :<  sends a report with presences.
+```
+
+### Messaging
+
+To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%review` command being sent to the involved partners. Receiving a `%review` command causes its messages to be added to the story, which sends a `%grams` report to followers and a `%grams` lowdown to all reader applications.
+
+![messaging implementation flow](./diagrams/flow-messaging.png "messaging implementation flow")
+
+```
+++  poke-talk-action        :<  we got poked with an action.
+  ++  ta-action             :<  applies an action.
+::                          ::
+++  poke-talk-command       :<  we get poked with a command.
+  ++  ta-apply              :<  applies a command.
+  ++  ta-think              :<  consumes each message in the given list.
+  ++  ta-consume            :<  conducts a message to each partner in audience.
+  ++  ta-conduct            :<  records or sends a message.
+    ++  ta-transmit         :<  sends a message to a partner.
+    ++  ta-record           :<  stores a message in a story.
+::                          ::
+++  diff-talk-report        :<  we got a subscription report.
+  ++  ta-diff-report        :<  applies a report to the story it's intended for.
+  ++  so-diff-report        :<  applies a report.
+  ++  so-lesson             :<  learns a list of messages.
+    ++  so-learn            :<  either adds or modifies a message.
+      ++  so-append         :<  adds a new message to the story.
+      ++  so-revise         :<  modifies an existing message in the story.
+    ++ so-refresh           :<  sends messages to all interested subscribers.
+```
 
 
-## Roadmap
+## The future
 
-Things currently on the to-do list, roughly in order of priority:  
-(Cleanup, rewriting for clarity and improving inline documentation will be done once we have a shippable talk.)
+Talk is neither complete nor perfect. There are still problems that need to be solved and features that need to be implemented.
 
-* **Architecture** / high-impact changes
-  * Implement federation.
-    * Should config be determined by the original station, or should "federators" be allowed to make changes as well?
-    * Is anyone allowed to federate any station they can subscribe to? (Definitely not if the above is "allowed to make changes"!)
-  * Move fora things out of the broker.
-    * *Maybe* make it its own reader app?
-  * Improve presence capabilities.
-    * Separate presence from handles.
-    * Command for setting our presence in a foreign station.
-    * "Typing", "idle", etc.
-  * Extended permissions management?
-    * It might be nice to be able to white/blacklist entire classes
-* **Functionality**
-  * Flexible subscribe ranges.
-    * As opposed to the current always-default "a day old, and everything newer forever". of ships (ie, disallow all comets.)
-  * List (accessible) stations on ships.
-  * Talkpolls!
-  * Per-channel message sanitization configuration?
-    * Allow/disallow capitals, unicode, etc.
-  * Better glyph management.
-  * Better line splitting.
+### Architectural issues
+
+To distribute commands and reports to all that are affected by it, the broker takes a "propagate changes" approach. If, in processing a report, any state changes, new state gets sent to all interested brokers... even those it got the report from in the first place. This results in a lot of unnecessary data transfer, where everyone always gets notified of each other's state changes, regardless of whether those changes are old news or not.
+
+While not a practical problem (yet, things work fine at the current scale of use), it does underline the need for a more structured approach to the broker's subscription model. In an ideal world, every interested node gets notified of a set of changes exactly once.
+
+### Features and functionality
+
+To turn talk into a [sustainable social platform](https://urbit.org/fora/posts/~2017.4.26..18.00.25..b93c~/), it needs a number of things.
+
+Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their broker subscribe to a list of circles the added friends are in. Of course, one will be able to set joined circles as "private" to keep them from being visible to others.
+
+Eventually, content self-moderation might need to be implemented. Users would flag their content if it is potentially offensive. Others would easily be able to filter out content that might offend them.  
+This functionality brings its own large sets of challenges that need to be tackled.
+
+Additionally, federation might be put to broader use. Knowing a circle is federated could help fall back to alternative hosts in case the one the broker originally subscribed to is unavailable.  
+Implementation-wise, care would need to be taken for this to not get ugly. Not to mention, when/how would availability of a host be verified?
+
+Smaller functionality that still needs to be implemented includes:
+* Extended permissions management. Being able to black-/whitelist entire ship classes.
+* Improved presence functionality. Actually using the presence system, and sending "typing", "idle", etc. statuses.
+* Per-circle message rules. Dis/allow unicode, enforce line length, etc.
+* Flexible on-subscribe scrollback. Some cases may want more than just a day's worth.
+* Talkpolls.
+
+
+## Further reading
+
+To gain a more thorough understanding of the broker's inner workings, take a look at its source code. It comes with inline documentation.  
+[link]
+
+To see an expansive example of an application that uses the broker, take a look at the code of the talk reader. This, too, comes with inline documentation.  
+[link]
