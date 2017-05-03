@@ -11,6 +11,7 @@ This document is complemented by talk's source code, but doesn't require it. Def
   * [Partners](#partners)
   * [Access control](#access-control)
   * [Federation](#federation)
+  * [General use](#general-use)
 * [Interfaces for applications](#interfaces-for-applications)
   * [Interactions](#interactions)
   * [Subscriptions](#subscriptions)
@@ -44,6 +45,13 @@ To begin to gain an understanding of how the broker functions, let's look at its
       readers/(map bone (set knot))                     :<  our message readers
       ::  ...                                           ::
   ==                                                    ::
+```
+
+Aside from keeping track of `readers`, the different applications that use the broker, it also stores a map of named stories.
+
+### Stories
+
+```
 ++  story                                               :>  wire content
   $:  grams/(list telegram)                             :<  all messages
       locals/group                                      :<  local presence
@@ -55,19 +63,26 @@ To begin to gain an understanding of how the broker functions, let's look at its
   ==                                                    ::
 ```
 
-Aside from keeping track of `readers`, the different applications that use the broker, it also stores a map of stories.
-
-### Stories
-
-Stories are the primary driver behind the broker. Whether you're hosting a group chat, or just want a place to aggregate messages into, a `story` will be created for it. They contain all data they need to be complete, from messages to metadata.
-
-Looking carefully at that metadata, stories seem to store both "local" and "remote" versions. This is to facilitate the "aggregate messages" use-case mentioned above, and core to how subscriptions function. Looking at the `config` structure, we see the following attribute:
+Stories are the primary driver behind the broker. Whether you're hosting a group chat, or just want a place to aggregate messages into, a `story` will be created for it. They contain all data they need to be complete, from messages to metadata. Let's see what that metadata is made up of.
 
 ```
-src/(set partner)                                       :<  pulls from
+++  group      (map ship status)                        :<  presence map
+++  status     {pec/presence man/human}                 :<  participant
+++  config                                              :>  circle config
+  $:  src/(set partner)                                 :<  pulls from
+      cap/cord                                          :<  description
+      con/control                                       :<  restrictions
+      fed/federal                                       :<  federators
+  ==                                                    ::
+++  control    {sec/security ses/(set ship)}            :<  access control
+++  federal    {may/(set ship) fes/(set ship)}          :<  federation control
 ```
 
-Every story has a set of sources from which it receives data. If there's nothing in this set, the story will only receive messages people explicitly target towards it. If there *are* sources in that set, then their message will get forwarded to the story automatically. Presences and configurations for those sources are kept track of as well.
+A `group` consists of ships and their `status` within a story. A status encompasses both `presence` (whether they're online, idle, typing, etc.) and `human` (their display name).
+
+A `config` contains all configuration for a story, from its description to its access control. (More on [`con`](#access-control) and [`fed`](#federation) below.) The `src` attribute in configurations is worth elaborating on.
+
+Every story has a set of sources from which it receives data. If there's nothing in this set, the story will only receive messages people explicitly target towards it. If there *are* sources in that set, then their message will get forwarded to the story automatically. Presences and configurations for those sources are kept track of as well, which is why we see not only "local" but also "remote" data in the story structure.
 
 In short, stories store messages. They get these either directly, or through any sources they have subscribed to.
 
@@ -101,13 +116,23 @@ Though not important to the broker's architecture, the way access control for st
 
 A `channel` is publicly readable and writable, with a blacklist for banishing.  
 A `village` is privately readable and writable, with a whitelist for inviting.  
-A `journal` is publicly readable and privately writable, with a whitelist for authors.
+A `journal` is publicly readable and privately writable, with a whitelist for authors.  
 A `mailbox` is readable by its owner and publicly writable, with a blacklist for blocking.
 
 ### Federation
 
-One of the primary aspects of Urbit is its decentralized nature. The broker can happily make use of that by federating circles. That is, hosting them on multiple ships simultaneously. They share all messages, presence and configuration, regardless of where that data or change originated.  
+One of the primary aspects of Urbit is its decentralized nature. To make full use of that, the broker can federate circles. That is, circles can be hosted on multiple ships simultaneously. They share all messages, presence and configuration, regardless of where that data or change originated.  
 This can help spread heavy load across multiple ships, makes circles easier to access, and allows for fallback in case one of the hosts goes offline.
+
+The `fed` configuration attribute is used to determine which ships are allowed to federate a circle, and keep track of the ones that are currently doing so.
+
+### General use
+
+Upon initial startup, the broker creates a default story, a mailbox named `porch`. (This name is different for stars and galaxies.) This mailbox is the primary target for anyone and anything that wants to reach its owner. Applications can use it to send notifications and other information to the user (the broker itself does this as well), and users can use it to direct-message others.
+
+Talk reader applications are encouraged to use the default mailbox as the primary messaging hub. This way, users can easily switch between different applications without "losing" their subscriptions, message backlog, etc.
+
+As an example, the "official" talk reader operates like this, serving as an interface for reading from and managing the user's mailbox. Local stories are subscribed to through the `porch`, which ends up containing all messages the user receives.
 
 
 ## Interfaces for applications
@@ -192,6 +217,7 @@ These changes get sent as `lowdown`s.
       {$glyph (jug char (set partner))}                 :<  glyph bindings
       {$names (map ship (unit human))}                  :<  nicknames
   ==                                                    ::
+++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ```
 
 Aside from the initial lowdown that is sent when a subscription starts, these contains exclusively the changes as they occur. Configurations are wrapped in `unit`s so that deletion can be indicated. This also means that simple applications don't necessarily need to keep state. If all they want to do is show events as they happen, then the broker subscription will provide all they need.
@@ -201,7 +227,7 @@ Aside from the initial lowdown that is sent when a subscription starts, these co
 
 Brokers can communicate with other brokers to send commands and subscription updates.
 
-### Interaction
+### Interactions
 
 To request changes to a story, brokers can send `command`s.
 
@@ -216,6 +242,8 @@ To request changes to a story, brokers can send `command`s.
       ==                                                ::
       {$relief nom/knot who/(set ship)}                 :<  federation ended
   ==                                                    ::
+++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
+++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ```
 
 A `%review` command contains messages. These are sent to foreign brokers to be published to one of their stories.
