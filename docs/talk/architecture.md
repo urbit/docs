@@ -3,6 +3,28 @@
 
 This document is complemented by talk's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
 
+## Table of contents
+
+* [Overview](#overview)
+* [Core concepts & functionality](#core-concepts--functionality)
+  * [Stories](#stories)
+  * [Partners](#partners)
+  * [Access control](#access-control)
+  * [Federation](#federation)
+* [Interfaces for applications](#interfaces-for-applications)
+  * [Interactions](#interactions)
+  * [Subscriptions](#subscriptions)
+* [Communication between brokers](#communication-between-brokers)
+  * [Interactions](#interactions-1)
+  * [Subscriptions](#subscriptions-1)
+* [Broker implementation](#broker-implementation)
+  * [Subscriptions](#subscriptions-2)
+  * [Reports](#reports)
+  * [Messaging](#messaging)
+* [The future](#the-future)
+  * [Architectural issues](#architectural-issues)
+  * [Features and functionality](#features-and-functionality)
+* [Further reading](#further-reading)
 
 ## Overview
 
@@ -14,7 +36,7 @@ This document, however, focusses on the platform. In talk's case, we refer to th
 
 ## Core concepts & functionality
 
-To begin to gain an understanding of how the broker functions, let's look at its state mold.
+To begin to gain an understanding of how the broker functions, let's look at its state model.
 
 ```
 ++  state                                               :>  broker state
