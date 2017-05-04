@@ -6,11 +6,13 @@ This document is complemented by talk's source code, but doesn't require it. Def
 ## Table of contents
 
 * [Overview](#overview)
-* [Core concepts & functionality](#core-concepts--functionality)
-  * [Stories](#stories)
+* [Structures & functionality](#structures--functionality)
   * [Partners](#partners)
+  * [Messages](#messages)
+  * [Metadata](#metadata)
   * [Access control](#access-control)
   * [Federation](#federation)
+  * [Stories](#stories)
   * [General use](#general-use)
 * [Interfaces for applications](#interfaces-for-applications)
   * [Interactions](#interactions)
@@ -35,39 +37,96 @@ To be clear, we make a distinction between "talk the platform" and "talk the cha
 This document, however, focusses on the platform. In talk's case, we refer to this "server" (or `guardian`, in Urbit terminology) as the *broker*. It manages an identity's messages, subscriptions, and more.
 
 
-## Core concepts & functionality
+## Structures & functionality
 
-To begin to gain an understanding of how the broker functions, let's look at its state model.
+### Partners
+
+One of the broker's strengths is that it can not only interface with other brokers, but also external services. We define a single structure that can be used to specify both kinds of messaging targets.
 
 ```
-++  state                                               :>  broker state
-  $:  stories/(map knot story)                          :<  conversations
-      readers/(map bone (set knot))                     :<  our message readers
+++  partner    (each circle passport)                   :<  message target
+++  circle     {hos/ship nom/knot}                      :<  native target
+++  passport                                            :>  foreign target
+  $%  {$twitter p/cord}                                 :<  twitter handle
+  ==                                                    ::
+```
+
+A `partner` is either a `circle` or a `passport`. A `circle` is a native partner, essentially a named collection of messages created by and hosted on a ship's broker, usually represented as `~ship-name/circle-name`.  
+A `passport` is a non-native partner, such as a Twitter feed. The possibilities for passports are endless... but none of them are properly implemented yet. For the rest of this document we'll assume a `partner` is always a `circle`.
+
+### Messages
+
+When we subscribe to a circle, the primary thing we're interested in is its messages. Message data itself isn't that complicated, but a fair amount of metadata comes into play when actually sending a message. Let's work our way up, starting at the contents.
+
+```
+++  speech                                              :>  narrative action
+  $%  {$lin pat/? msg/cord}                             :<  no/@ text line
+      {$ire tos/serial sep/speech}                      :<  in-reply-to
+      {$url url/purf}                                   :<  parsed url
+      {$app app/term msg/cord}                          :<  app message
+      {$ext nom/term dat/*}                             :<  extended action
       ::  ...                                           ::
   ==                                                    ::
 ```
 
-Aside from keeping track of `readers`, the different applications that use the broker, it also stores a map of named stories.
-
-### Stories
+At the heart of every message lies a `speech` that describes the message contents. There's a large number of different speech types, from simple text messages to parsed URLs, Hoon expressions and more. Thought the system strives to accommodate all use cases, the `%ext` speech type provides some extensibility for applications that feel their needs aren't covered.
 
 ```
-++  story                                               :>  wire content
-  $:  grams/(list telegram)                             :<  all messages
-      locals/group                                      :<  local presence
-      remotes/(map partner group)                       :<  remote presence
-      shape/config                                      :<  configuration
-      mirrors/(map circle config)                       :<  remote config
-      followers/(map bone river)                        :<  subscribers
-      ::  ...                                           ::
+++  statement  {wen/@da boq/bouquet sep/speech}         :<  when this
+++  bouquet    (set flavor)                             :<  complete aroma
+++  flavor     path                                     :<  content flavor
+```
+
+Message contents are wrapped in a `statement` which specifies its timestamp and the `flavor` of its content, ¿¿¿ which can be used to filter out content they prefer not to see. ???
+
+```
+++  audience   (map partner (pair envelope delivery))   :<  destination + state
+++  envelope   {vis/? sen/(unit partner)}               :<  visible sender
+++  delivery                                            :>  delivery state
+  $?  $pending                                          :<  undelivered
+      $received                                         :<  delivered
+      $rejected                                         :<  undeliverable
+      $released                                         :<  sent one-way
+      $accepted                                         :<  fully processed
   ==                                                    ::
 ```
 
-Stories are the primary driver behind the broker. Whether you're hosting a group chat, or just want a place to aggregate messages into, a `story` will be created for it. They contain all data they need to be complete, from messages to metadata. Let's see what that metadata is made up of.
+When specifying a message's destination, an `audience` is used. It contains all the recipients of the message, as well as the delivery state for each of those recipients.
 
 ```
+++  telegram   {aut/ship tot/thought}                   :<  who thought
+++  thought    {uid/serial aud/audience sam/statement}  :<  which whom what
+++  serial     @uvH                                     :<  unique identifier
+```
+
+The message and its destination get put into a `thought`, which also carries a universally unique identifier. This way, recipients can easily check whether they're receiving a new message or a potentially modified version of an existing one.  
+Finally, all this gets put into a `telegram` which tags it with the message's author.
+
+### Metadata
+
+Messages aren't the only thing a subscription gets us. We're also kept up to date with relevant metadata.
+
+```
+++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ++  group      (map ship status)                        :<  presence map
 ++  status     {pec/presence man/human}                 :<  participant
+++  presence                                            :>  status type
+  $?  $gone                                             :<  left
+      $idle                                             :<  idle
+      $hear                                             :<  present
+      $talk                                             :<  typing
+  ==                                                    ::
+++  human                                               :>  human identifier
+  $:  tru/(unit (trel cord (unit cord) cord))           :<  true name
+      han/(unit cord)                                   :<  handle
+  ==                                                    ::
+```
+
+`status` is user-set metadata that describes, well, the status of users in a circle. This encompasses their `presence`, which shows their activity, and their `human` identity, which includes their display handle.  
+For reasons we'll discover shortly, circles keep track of both their own `group` and those of the partners they're subscribed to. `crowd` encapsulates this.
+
+```
+++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
 ++  config                                              :>  circle config
   $:  src/(set partner)                                 :<  pulls from
       cap/cord                                          :<  description
@@ -78,32 +137,15 @@ Stories are the primary driver behind the broker. Whether you're hosting a group
 ++  federal    {may/(set ship) fes/(set ship)}          :<  federation control
 ```
 
-A `group` consists of ships and their `status` within a story. A status encompasses both `presence` (whether they're online, idle, typing, etc.) and `human` (their display name).
+Another part of metadata we get from circle subscriptions is configurations. Again, circles want to remember their own configuration, as well as those of their subscriptions. But why, precisely?
 
-A `config` contains all configuration for a story, from its description to its access control. (More on [`con`](#access-control) and [`fed`](#federation) below.) The `src` attribute in configurations is worth elaborating on.
+The `config` structure contains `src`, a set of partners. These indicate the different sources a circle may pull content from. This allows circles to aggregate messages from multiple places. In doing so, it also receives metadata from those places, hence why we have structures for storing "remote" presences and configurations alongside local ones.
 
-Every story has a set of sources from which it receives data. If there's nothing in this set, the story will only receive messages people explicitly target towards it. If there *are* sources in that set, then their message will get forwarded to the story automatically. Presences and configurations for those sources are kept track of as well, which is why we see not only "local" but also "remote" data in the story structure.
-
-In short, stories store messages. They get these either directly, or through any sources they have subscribed to.
-
-### Partners
-
-Though these sources are `partner` structures, we can see remote configurations are only stored for so-called `circle`s.
-
-```
-++  partner    (each circle passport)                   :<  message target
-++  circle     {hos/ship nom/knot}                      :<  native target
-++  passport                                            :>  foreign target
-  $%  {$twitter p/cord}                                 :<  twitter handle
-  ==                                                    ::
-```
-
-A `partner` is either a `circle` or a `passport`. A `circle` is a native partner, one created by the broker: a named story hosted on a ship, usually represented as `~ship/story`.  
-A `passport` is a non-native partner, such as a Twitter feed. The possibilities for passports are endless... but none of them are properly implemented yet, so for the rest of this document we'll assume a `partner` is always a `circle`.
+Aside from a description, a configuration also contains structures to define access and federation control. They're important parts of functionality in their own right, so they get their own sections below.
 
 ### Access control
 
-Though not important to the broker's architecture, the way access control for stories works is useful to understand. There are currently four security modes:
+A `control` structure contains both a security mode and a list of ships, which is either a white- or blacklist depending on the aforementioned mode. There are four such modes available.
 
 ```
 ++  security                                            :>  security mode
@@ -114,7 +156,7 @@ Though not important to the broker's architecture, the way access control for st
   ==                                                    ::
 ```
 
-A `channel` is publicly readable and writable, with a blacklist for banishing.  
+A `channel` is publicly readable and writable, with a blacklist for blocking.  
 A `village` is privately readable and writable, with a whitelist for inviting.  
 A `journal` is publicly readable and privately writable, with a whitelist for authors.  
 A `mailbox` is readable by its owner and publicly writable, with a blacklist for blocking.
@@ -125,6 +167,30 @@ One of the primary aspects of Urbit is its decentralized nature. To make full us
 This can help spread heavy load across multiple ships, makes circles easier to access, and allows for fallback in case one of the hosts goes offline.
 
 The `fed` configuration attribute is used to determine which ships are allowed to federate a circle, and keep track of the ones that are currently doing so.
+
+
+### Stories
+
+To see how that all ties together, we're going to take a look at the broker's state.
+
+```
+++  state                                               :>  broker state
+  $:  stories/(map knot story)                          :<  conversations
+      ::  ...                                           ::
+  ==                                                    ::
+++  story                                               :>  wire content
+  $:  grams/(list telegram)                             :<  all messages
+      locals/group                                      :<  local presence
+      remotes/(map partner group)                       :<  remote presence
+      shape/config                                      :<  configuration
+      mirrors/(map circle config)                       :<  remote config
+      ::  ...                                           ::
+  ==                                                    ::
+```
+
+Stories are the primary driver behind the broker. They are the structures that are used to power circles, which we can now say are named stories hosted on ships.
+
+With the configuration described above in mind, we can try and imagine the things we can do with stories. Knowing that we can subscribe them to any number of sources, they can function as central hubs for our messaging, aggregate specific kinds of data feeds, or simply accept whatever messages get sent to it like a regular old chatroom.
 
 ### General use
 
@@ -191,7 +257,7 @@ These are used to inform the application (and thus the user) of any unexpected s
 To receive data from a broker, applications will have to subscribe to it. A `%peer` move for doing so looks something like this:
 
 ```
-:*  ost.hid                                             :<  bone
+:*  ost.bol                                             :<  bone
     %peer                                               :<  move type
     /story/[some-story]                                 :<  diff path
     [our %broker]                                       :<  peer target
@@ -217,7 +283,6 @@ These changes get sent as `lowdown`s.
       {$glyph (jug char (set partner))}                 :<  glyph bindings
       {$names (map ship (unit human))}                  :<  nicknames
   ==                                                    ::
-++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ```
 
 Aside from the initial lowdown that is sent when a subscription starts, these contains exclusively the changes as they occur. Configurations are wrapped in `unit`s so that deletion can be indicated. This also means that simple applications don't necessarily need to keep state. If all they want to do is show events as they happen, then the broker subscription will provide all they need.
@@ -242,8 +307,6 @@ To request changes to a story, brokers can send `command`s.
       ==                                                ::
       {$relief nom/knot who/(set ship)}                 :<  federation ended
   ==                                                    ::
-++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
-++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ```
 
 A `%review` command contains messages. These are sent to foreign brokers to be published to one of their stories.
@@ -252,7 +315,20 @@ A `%review` command contains messages. These are sent to foreign brokers to be p
 
 ### Subscriptions
 
-Brokers subscribe to other brokers whenever a source gets added to a story's configuration. (Likewise, they unsubscribe when a source is removed.) Subscribers, also knows as story "followers", get sent `report`s whenever changes occur.
+Brokers subscribe to other brokers whenever a source gets added to a story's configuration. (Likewise, they unsubscribe when a source is removed.) Here's the peer move we send when we start a subscription:
+
+```
+:*  ost.bol                                             :<  bone
+    %peer                                               :<  move type
+    /friend/show/[our-circle]/[host]/[their-circle]     :<  diff path
+    [host %broker]                                      :<  peer target
+    /[their-circle]/[start]/[end]                       :<  peer path
+==                                                      ::
+```
+
+Again, the diff path is just what our broker uses to identify what subscription a received message originates from. The peer path is more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can be used to specify how long we want our subscription to last. Maybe we want messages starting from last week, up to the end of the month. We may also specify message numbers instead of dates, if we're so inclined.
+
+For as long as their subscriptions last, subscribers get sent `report`s whenever changes occur.
 
 ```
 ++  report                                              :>  update
@@ -260,8 +336,6 @@ Brokers subscribe to other brokers whenever a source gets added to a story's con
       {$crowd reg/crowd}                                :<  presence
       {$grams num/@ud gaz/(list telegram)}              :<  thoughts
   ==                                                    ::
-++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
-++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ```
 
 There are three different kinds of reports, for configurations, presences, and messages.
@@ -325,7 +399,7 @@ Once a subscription has been established, the broker will receive reports. `%lob
 
 ### Messaging
 
-To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%review` command being sent to the involved partners. Receiving a `%review` command causes its messages to be added to the story, which sends a `%grams` report to followers and a `%grams` lowdown to all reader applications.
+To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%review` command being sent to the involved partners. Receiving a `%review` command causes its messages to be added to the story, which sends a `%grams` report to subscribers and a `%grams` lowdown to all reader applications.
 
 ![messaging implementation flow](./diagrams/flow-messaging.png "messaging implementation flow")
 
@@ -361,6 +435,10 @@ Talk is neither complete nor perfect. There are still problems that need to be s
 To distribute commands and reports to all that are affected by it, the broker takes a "propagate changes" approach. If, in processing a report, any state changes, new state gets sent to all interested brokers... even those it got the report from in the first place. This results in a lot of unnecessary data transfer, where everyone always gets notified of each other's state changes, regardless of whether those changes are old news or not.
 
 While not a practical problem (yet, things work fine at the current scale of use), it does underline the need for a more structured approach to the broker's subscription model. In an ideal world, every interested node gets notified of a set of changes exactly once.
+
+That still becomes unwieldy for circles that have thousands of subscribers, since a single node would still be sending thousands of network events. An obvious potential solution is to apply Urbit's hierarchical structure to this, and send messages to stars for them to send to their children.
+
+While on the topic of subscriptions, the current implementation treats them as semantic data, explicitly storing them in application state. It would be desirable to push this to the background again.
 
 ### Features and functionality
 
