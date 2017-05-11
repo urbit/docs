@@ -109,7 +109,7 @@ Our design is pretty simple: `:talk` messages are called ‘posts’. Posts
 go to ‘stations’. Any urbit can host or subscribe to any number of
 stations.
 
-There are four kinds of station: a write-only `%mailbox` for direct
+There are four kinds of stations: a write-only `%mailbox` for direct
 messages, an invite-only `%party` for private conversation, a read-only
 `%journal` for curated content, and a public-access `%channel` for
 general use.

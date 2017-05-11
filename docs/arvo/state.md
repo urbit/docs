@@ -39,7 +39,7 @@ We can start it with `|start %examples-sum`, and then run it:
 We can see that app state is being saved, but when, where, and how?
 
 The state is stored as the second thing in the `|_` line. In our case,
-it's simply an atom named `state`. We change it by producing as our
+it's simply an atom named `state`. We change it by producing our
 state not with `+>.$` (as before), but with
 `+>.$(state (add state arg))`. We've seen all these parts before, but
 you might not recognize them.
