@@ -261,7 +261,7 @@ our cheatsheat at the bottom.
 
 2.  Change `++sum` to accept two variables, `a` and `b`. Pass `a` to
     `three` and `b` to `five`. Then run the code with `a` set to `1.000`
-    and `q` set to `2.000`.
+    and `b` set to `2.000`.
 
 3.  Check if this new result is under one thousand. If it is, return the
     string `'result < 1.000'`. If not, return `'result >= 1.000'`.
