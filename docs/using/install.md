@@ -74,9 +74,12 @@ Which can usually be installed with the following one-liners:
     # Mac OS X [Macports]
     $ sudo port install gmp libsigsegv openssl autoconf automake cmake
 
-    # Ubuntu or Debian
+    # Debian (Incomplete, missing libuv1)
     $ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev
 
+    # Ubuntu
+    $ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev python libuv1-dev
+    
     # Fedora
     $ sudo dnf install gcc gcc-c++ gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c libcurl-devel
 
