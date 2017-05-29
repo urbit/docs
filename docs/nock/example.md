@@ -242,8 +242,8 @@ Its subject is the loop core:
 [bat pay]
 ```
 
-where `bat` is just the loop formula, and `pay` is the pair `[a
-b]`, `a` being the input subject, and `b` the counter.  Thus we
+where `bat` is just the loop formula, and `pay` is the pair `[b
+a]`, `b` being the counter, and `a` the input subject.  Thus we
 could also write this subject as
 
 ```
