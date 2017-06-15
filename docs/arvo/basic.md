@@ -304,12 +304,14 @@ We've already seen wideform in action, for example with
 Surrounding a function with `()` is an irregular wide form syntax for
 calling a function with *N* arguments. More on this later.
 
-2.  `:-` makes a cell of values. The irregular wide form of this is
+2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar-core/tis-gate/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
+
+3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the
     regular form of this rune takes a fixed number of children (two),
     its irregular wide form can accept *N* expressions: `[a1..an]`
 
-3.  Cords are one datatype for text in Hoon. They're just a big atom
+4.  Cords are one datatype for text in Hoon. They're just a big atom
     formed from adjacent unicode bytes -- a "c string". To produce a
     cord, enclose text within single quotes. To set the type of an
     argument to a cord, use `@t`.
