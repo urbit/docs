@@ -67,6 +67,8 @@
     ::  changed, we need to deduce the old state from
     ::  the current state and the delta. depends on the
     ::  fact that state changes before ++feel. funky!
+    ::  we could, of course, store mul/? in state, and
+    ::  make a delta for it, but should we need to?
     =/  old
       .=  0
       %+  mod
