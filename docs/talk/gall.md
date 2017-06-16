@@ -7,7 +7,19 @@ New Gall has not yet fully solidified. As such, structure and naming are tentati
 
 ## Table of contents
 
-@TODO
+* [Renewing a pillar of Arvo](#renewing-a-pillar-of-arvo)
+  * [Problems](#problems)
+  * [Solutions](#solutions)
+* [As seen in new Gall](#as-seen-in-new-gall)
+  * [Structures](#structures)
+  * [Arms](#arms)
+* [By example](#by-example)
+  * [State & deltas](#state--deltas)
+  * [Queries & rumors](#queries--rumors)
+  * [Responding to queries](#responding-to-queries)
+  * [Updating state & query results](#updating-state--query-results)
+* [Criticism](#criticism)
+* [Further reading](#further-reading)
 
 ## Renewing a pillar of Arvo
 
