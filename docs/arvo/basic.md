@@ -283,33 +283,33 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
 
 1.  There are two syntaxes for writing Hoon: tallform and wideform.
 
-In tallform, expressions are formed with either two spaces or a line
-break separating both a rune from its children and each of its children
-from one another. We use tallform when writing multiline expressions.
+    In tallform, expressions are formed with either two spaces or a line
+    break separating both a rune from its children and each of its children
+    from one another. We use tallform when writing multiline expressions.
 
-For more concise expressions, we use wideform, which is always a single
-line. Wideform can be used inside tallform expressions, but not vice
-versa.
+    For more concise expressions, we use wideform, which is always a single
+    line. Wideform can be used inside tallform expressions, but not vice
+    versa.
 
-Wideform expressions are formed with a rune followed by `()` containing
-its children, all of which are separated by a single space. For example,
-to make a cell of two elements:
+    Wideform expressions are formed with a rune followed by `()` containing
+    its children, all of which are separated by a single space. For example,
+    to make a cell of two elements, use `:-(a b)`.
 
-      :-(a b)
+    We've already seen wideform in action, for example with
+    `=((mod b 3) 0)`. In this case, `=` is actually an irregular form of
+    `.=`, which tests its two children for equality.
 
-We've already seen wideform in action, for example with
-`=((mod b 3) 0)`. In this case, `=` is actually an irregular form of
-`.=`, which tests its two children for equality.
+    Surrounding a function with `()` is an irregular wide form syntax for
+    calling a function with *N* arguments. More on this later.
 
-Surrounding a function with `()` is an irregular wide form syntax for
-calling a function with *N* arguments. More on this later.
+2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar-core/tis-gate/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
 
-1.  `:-` makes a cell of values. The irregular wide form of this is
+3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the
     regular form of this rune takes a fixed number of children (two),
-    its irregular wide form can accept *N* expressions: `[a1..an]`
+    its irregular wide form can accept *N* expressions: `[a1..an]`.
 
-2.  Cords are one datatype for text in Hoon. They're just a big atom
+4.  Cords are one datatype for text in Hoon. They're just a big atom
     formed from adjacent unicode bytes -- a "c string". To produce a
     cord, enclose text within single quotes. To set the type of an
     argument to a cord, use `@t`.

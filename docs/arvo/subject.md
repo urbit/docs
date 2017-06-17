@@ -82,7 +82,7 @@ accessible.
 **Exercises**:
 
 -   Pass `++sum` its arguments (`2.000` and `3.000`) from the
-    commandline.
+    command line.
 
 -   Comment out all of the arms of the `|%`. Now add another arm and
     call it `++add`, have it accept two arguments and procduce 42
