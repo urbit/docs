@@ -19,9 +19,7 @@ sort: 4
 Check out the [technical overview](about/overview) for a high-level
 architecture description.  To install and run Urbit, head to the Using section, starting with the [installation guide](using/install) and continuing forward.
 
-To begin developing for Urbit, start by learning Hoon [syntax](hoon/syntax),
-then walk through the [Arvo tutorials](arvo). The examples and exercises
-in Arvo will teach you to build high-level programs and interact with the network.
+To begin developing for Urbit, start by walking through [Urbytes](https://urbit.org/docs/byte/0). After that, delve into Hoon [syntax](hoon/syntax) directly, then walk through the [Arvo tutorials](arvo). The examples and exercises in Arvo will teach you to build high-level programs and interact with the network.
 
 Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
 there for pure-code exercises and functions in the [standard library](hoon/library).
