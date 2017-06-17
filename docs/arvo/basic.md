@@ -307,7 +307,7 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
 3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the
     regular form of this rune takes a fixed number of children (two),
-    its irregular wide form can accept *N* expressions: `[a1..an]`
+    its irregular wide form can accept *N* expressions: `[a1..an]`.
 
 4.  Cords are one datatype for text in Hoon. They're just a big atom
     formed from adjacent unicode bytes -- a "c string". To produce a
