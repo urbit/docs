@@ -295,7 +295,7 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
     its children, all of which are separated by a single space. For example,
     to make a cell of two elements:
 
-      :-(a b)
+    `:-(a b)`
 
     We've already seen wideform in action, for example with
     `=((mod b 3) 0)`. In this case, `=` is actually an irregular form of
