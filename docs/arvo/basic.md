@@ -293,9 +293,7 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
 
     Wideform expressions are formed with a rune followed by `()` containing
     its children, all of which are separated by a single space. For example,
-    to make a cell of two elements:
-
-    `:-(a b)`
+    to make a cell of two elements, use `:-(a b)`.
 
     We've already seen wideform in action, for example with
     `=((mod b 3) 0)`. In this case, `=` is actually an irregular form of
