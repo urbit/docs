@@ -116,7 +116,7 @@ context.
 
 *See [advanced types](/hoon/advanced)*.
 
-###### metal a variance model
+###### metal: a variance model
 
 Every core has a *metal* which defines its variance model (ie, the
 properties of the span of a compatible core). The default is `gold`
@@ -169,7 +169,7 @@ An atom span is *warm* or *cold* based on whether the constant exists.
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*
 
-###### *aura*: a soft atom type
+###### aura: a soft atom type
 
 *aura* is a name for an atom type. It represents the structure of an
 atom in a string beginning with `@`. An aura may represent units,
