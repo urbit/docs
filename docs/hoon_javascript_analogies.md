@@ -3,19 +3,6 @@
 Below find a table of analogies between Hoon and Javascript terms that may be useful for learners. Note that these correspondences are mostly inexact and should serve only as guideposts on the path to
 comprehending Hoon on its own terms.
 
-|Hoon Term     |Javascript Term                                                                                                                               |
-|--------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-|core          |the Map object                                                                                                                                |
-|arm           |a key-value pair in the Map object                                                                                                            |
-|"formula"     |function invocation                                                                                                                           |
-|"subject"     |the invoked function and its scope                                                                                                            |
-|=< ('tisgal') |takes two children, a function invocation as well as the invoked function and its scope (the Hoon terms "formula" and "subject" defined above)|
-||= ('bartis') |function                                                                                                                                      |
-|=| ('tisbar') |declare a variable                                                                                                                            |
-||- ('barhep') |initialize a loop                                                                                                                             |
-|?: ('wutcol') |initialize if statement                                                                                                                       |
-|:- ('colhep') |somewhat similar to the "return" keyword in a much expanded form                                                                              |
-
 <table>
     <tr>
         <td><strong>Hoon Term</strong></td>
@@ -39,7 +26,7 @@ comprehending Hoon on its own terms.
     </tr>
     <tr>
         <td>=< ('tisgal')</td>
-        <td>takes two children, a function invocation as well as the invoked function and its scope (the Hoon terms "formula" and "subject" defined above)</td>
+        <td>takes two children</td>
     </tr>
     <tr>
         <td>|= ('bartis')</td>
