@@ -5,7 +5,7 @@ sort: 3
 title: Urbit glossary
 ---
 
-# Urbit glossary
+# Urbit Glossary
 
 Urbit is renowned for its exotic terminology. Here's a simple overview
 from the strange words in.
