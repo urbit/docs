@@ -26,7 +26,7 @@ comprehending Hoon on its own terms.
     </tr>
     <tr>
         <td>=< ('tisgal')</td>
-        <td>takes two children</td>
+        <td>a function invocation as well as the invoked function and its scope</td>
     </tr>
     <tr>
         <td>|= ('bartis')</td>
