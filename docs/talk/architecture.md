@@ -1,47 +1,56 @@
 
-# Talk architecture
+# Hall architecture
 
-This document is complemented by talk's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
+This document is complemented by Hall's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
+
+Hall's implementation is structured according to the new Gall model. Familiarity with its concepts is assumed. See [the new Gall model](gall.md).
 
 ## Table of contents
 
-* [Overview](#overview)
+* [Introduction](#introduction)
 * [Structures & functionality](#structures--functionality)
   * [Partners](#partners)
   * [Messages](#messages)
-  * [Metadata](#metadata)
-  * [Access control](#access-control)
-  * [Federation](#federation)
+  * [Participant metadata](#participant-metadata)
+  * [Configurations](#configurations)
   * [Stories](#stories)
   * [General use](#general-use)
+  * [Federation](#federation)
 * [Interfaces for applications](#interfaces-for-applications)
   * [Interactions](#interactions)
-  * [Subscriptions](#subscriptions)
-* [Communication between brokers](#communication-between-brokers)
+  * [Queries, prizes and rumors](#queries-prizes-and-rumors)
+* [Communication between Halls](#communication-between-halls)
   * [Interactions](#interactions-1)
-  * [Subscriptions](#subscriptions-1)
-* [Broker implementation](#broker-implementation)
-  * [Subscriptions](#subscriptions-2)
-  * [Reports](#reports)
+  * [Querying](#querying)
+  * [Federation](#federation)
+* [Hall implementation](#hall-implementation)
+  * [Subscriptions](#subscriptions)
+  * [Rumors](#rumors)
   * [Messaging](#messaging)
 * [The future](#the-future)
-  * [Architectural issues](#architectural-issues)
   * [Features and functionality](#features-and-functionality)
 * [Further reading](#further-reading)
 
-## Overview
 
-Talk was Urbit's first big user-facing application, and continues to enjoy a prominent role in the Urbit landscape as the primary messaging bus.
+## Introduction
+
+Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but does so as two separate applications this time.
+
+The messaging parts of talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The interface retains the `talk` name. The messaging bus, which will prove useful to many more applications, will be named `Hall`.
+
+@TODO mention clients are sometimes referred to as "readers".
+
+@TODO probably rewrite intro entirely.
 
 To be clear, we make a distinction between "talk the platform" and "talk the chat application". The latter makes use of the former for most of its functionality, and serves as an example of things that can be built on top of the platform. (Also see the small Twitter clone, [feed](http://urbit.org/fora/posts/~2017.4.12..21.14.00..fe17~/).)  
-This document, however, focusses on the platform. In talk's case, we refer to this "server" (or `guardian`, in Urbit terminology) as the *broker*. It manages an identity's messages, subscriptions, and more.
+This document, however, focusses on the platform. In talk's case, we refer to this "server" (or `guardian`, in Urbit terminology) as the *Hall*. It manages an identity's messages, subscriptions, and more.
 
 
 ## Structures & functionality
 
 ### Partners
 
-One of the broker's strengths is that it can not only interface with other brokers, but also external services. We define a single structure that can be used to specify both kinds of messaging targets.
+One of Hall's strengths is that it can not only interface with other Hall instances (Halls, if you will), but also external services. We define a single structure that can be used to specify both kinds of messaging targets.
 
 ```
 ++  partner    (each circle passport)                   :<  message target
@@ -51,7 +60,7 @@ One of the broker's strengths is that it can not only interface with other broke
   ==                                                    ::
 ```
 
-A `partner` is either a `circle` or a `passport`. A `circle` is a native partner, essentially a named collection of messages created by and hosted on a ship's broker, usually represented as `~ship-name/circle-name`.  
+A `partner` is either a `circle` or a `passport`. A `circle` is a native partner, essentially a named collection of messages created by and hosted on a ship's Hall, usually represented as `~ship-name/circle-name`.  
 A `passport` is a non-native partner, such as a Twitter feed. The possibilities for passports are endless... but none of them are properly implemented yet. For the rest of this document we'll assume a `partner` is always a `circle`.
 
 ### Messages
@@ -59,7 +68,7 @@ A `passport` is a non-native partner, such as a Twitter feed. The possibilities 
 When we subscribe to a circle, the primary thing we're interested in is its messages. Message data itself isn't that complicated, but a fair amount of metadata comes into play when actually sending a message. Let's work our way up, starting at the contents.
 
 ```
-++  speech                                              :>  narrative action
+++  speech                                              :>  content body
   $%  {$lin pat/? msg/cord}                             :<  no/@ text line
       {$ire tos/serial sep/speech}                      :<  in-reply-to
       {$url url/purf}                                   :<  parsed url
@@ -69,15 +78,15 @@ When we subscribe to a circle, the primary thing we're interested in is its mess
   ==                                                    ::
 ```
 
-At the heart of every message lies a `speech` that describes the message contents. There's a large number of different speech types, from simple text messages to parsed URLs, Hoon expressions and more. Thought the system strives to accommodate all use cases, the `%ext` speech type provides some extensibility for applications that feel their needs aren't covered.
+At the heart of every message lies a `speech` that describes the message body. There's a large number of different speech types, from simple text messages to parsed URLs, Hoon expressions and more. Thought the system strives to eventually accommodate all use cases, the `%ext` speech type provides extensibility for applications that feel their needs aren't covered.
 
 ```
-++  statement  {wen/@da boq/bouquet sep/speech}         :<  when this
+++  statement  {wen/@da boq/bouquet sep/speech}         :<  when what body
 ++  bouquet    (set flavor)                             :<  complete aroma
 ++  flavor     path                                     :<  content flavor
 ```
 
-Message contents are wrapped in a `statement` which specifies its timestamp and the `flavor` of its content, ¿¿¿ which can be used to filter out content they prefer not to see. ???
+Message bodies are wrapped in a `statement` which specifies the timestamp and  `flavor` of its content, the latter of which can in the future be used to filter out the kinds of content you personally do not wish to see.
 
 ```
 ++  audience   (map partner (pair envelope delivery))   :<  destination + state
@@ -95,14 +104,14 @@ When specifying a message's destination, an `audience` is used. It contains all 
 
 ```
 ++  telegram   {aut/ship tot/thought}                   :<  who thought
-++  thought    {uid/serial aud/audience sam/statement}  :<  which whom what
+++  thought    {uid/serial aud/audience sam/statement}  :<  which whom this
 ++  serial     @uvH                                     :<  unique identifier
 ```
 
 The message and its destination get put into a `thought`, which also carries a universally unique identifier. This way, recipients can easily check whether they're receiving a new message or a potentially modified version of an existing one.  
 Finally, all this gets put into a `telegram` which tags it with the message's author.
 
-### Metadata
+### Participant metadata
 
 Messages aren't the only thing a subscription gets us. We're also kept up to date with relevant metadata.
 
@@ -111,7 +120,7 @@ Messages aren't the only thing a subscription gets us. We're also kept up to dat
 ++  group      (map ship status)                        :<  presence map
 ++  status     {pec/presence man/human}                 :<  participant
 ++  presence                                            :>  status type
-  $?  $gone                                             :<  left
+  $?  $gone                                             :<  absent
       $idle                                             :<  idle
       $hear                                             :<  present
       $talk                                             :<  typing
@@ -125,27 +134,30 @@ Messages aren't the only thing a subscription gets us. We're also kept up to dat
 `status` is user-set metadata that describes, well, the status of users in a circle. This encompasses their `presence`, which shows their activity, and their `human` identity, which includes their display handle.  
 For reasons we'll discover shortly, circles keep track of both their own `group` and those of the partners they're subscribed to. `crowd` encapsulates this.
 
+### Configurations
+
 ```
 ++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
 ++  config                                              :>  circle config
-  $:  src/(set partner)                                 :<  pulls from
+  $:  src/(set partner)                                 :<  active sources
       cap/cord                                          :<  description
+      fit/filter                                        :<  message rules
       con/control                                       :<  restrictions
-      fed/federal                                       :<  federators
+  ==                                                    ::
+++  filter                                              :>  content filters
+  $:  cas/?                                             :<  dis/allow capitals
+      utf/?                                             :<  dis/allow non-ascii
   ==                                                    ::
 ++  control    {sec/security ses/(set ship)}            :<  access control
-++  federal    {may/(set ship) fes/(set ship)}          :<  federation control
 ```
 
 Another part of metadata we get from circle subscriptions is configurations. Again, circles want to remember their own configuration, as well as those of their subscriptions. But why, precisely?
 
-The `config` structure contains `src`, a set of partners. These indicate the different sources a circle may pull content from. This allows circles to aggregate messages from multiple places. In doing so, it also receives metadata from those places, hence why we have structures for storing "remote" presences and configurations alongside local ones.
+The `config` structure contains `src`, a set of partners. These indicate the different sources a circle is currently pulling content from. This allows circles to aggregate messages from multiple places. In doing so, it also receives metadata from those places, hence why we have structures for storing "remote" presences and configurations alongside local ones.
 
-Aside from a description, a configuration also contains structures to define access and federation control. They're important parts of functionality in their own right, so they get their own sections below.
+Aside from that, `config` contains a description for the circle, which is exactly what it sounds like. It also specifies a `filter`, which are content formatting rules all messages passing through this circle are made to adhere to.
 
-### Access control
-
-A `control` structure contains both a security mode and a list of ships, which is either a white- or blacklist depending on the aforementioned mode. There are four such modes available.
+Lastly, there's a `control` structure that contains both a security mode and a list of ships, which is either a white- or blacklist depending on the aforementioned mode. There are four such modes available.
 
 ```
 ++  security                                            :>  security mode
@@ -161,20 +173,12 @@ A `village` is privately readable and writable, with a whitelist for inviting.
 A `journal` is publicly readable and privately writable, with a whitelist for authors.  
 A `mailbox` is readable by its owner and publicly writable, with a blacklist for blocking.
 
-### Federation
-
-One of the primary aspects of Urbit is its decentralized nature. To make full use of that, the broker can federate circles. That is, circles can be hosted on multiple ships simultaneously. They share all messages, presence and configuration, regardless of where that data or change originated.  
-This can help spread heavy load across multiple ships, makes circles easier to access, and allows for fallback in case one of the hosts goes offline.
-
-The `fed` configuration attribute is used to determine which ships are allowed to federate a circle, and keep track of the ones that are currently doing so.
-
-
 ### Stories
 
-To see how that all ties together, we're going to take a look at the broker's state.
+To see how that all ties together, we're going to take a look at Hall's state.
 
 ```
-++  state                                               :>  broker state
+++  state                                               :>  hall state
   $:  stories/(map knot story)                          :<  conversations
       ::  ...                                           ::
   ==                                                    ::
@@ -188,59 +192,64 @@ To see how that all ties together, we're going to take a look at the broker's st
   ==                                                    ::
 ```
 
-Stories are the primary driver behind the broker. They are the structures that are used to power circles, which we can now say are named stories hosted on ships.
+Stories are the primary driver behind Hall. They are the structures that are used to power circles, which we can now say are named stories hosted on ships.
 
 With the configuration described above in mind, we can try and imagine the things we can do with stories. Knowing that we can subscribe them to any number of sources, they can function as central hubs for our messaging, aggregate specific kinds of data feeds, or simply accept whatever messages get sent to it like a regular old chatroom.
 
 ### General use
 
-Upon initial startup, the broker creates a default story, a mailbox named `porch`. (This name is different for stars and galaxies.) This mailbox is the primary target for anyone and anything that wants to reach its owner. Applications can use it to send notifications and other information to the user (the broker itself does this as well), and users can use it to direct-message others.
+Upon initial startup, Hall creates a default story, a mailbox named `porch`. (This name is different for stars and galaxies: `floor` and `court` respectively.) This mailbox is the primary target for anyone and anything that wants to reach its owner. Applications can use it to send notifications and other information to the user (Hall itself does this as well), and users can use it to direct-message others.
 
-Talk reader applications are encouraged to use the default mailbox as the primary messaging hub. This way, users can easily switch between different applications without "losing" their subscriptions, message backlog, etc.
+Applications that use Hall are encouraged to use the default mailbox as the primary messaging hub. This way, users can easily switch between different applications without "losing" their subscriptions, message backlog, etc.
 
-As an example, the "official" talk reader operates like this, serving as an interface for reading from and managing the user's mailbox. Local stories are subscribed to through the `porch`, which ends up containing all messages the user receives.
+As an example, Talk operates like this, serving as an interface for reading from and managing the user's mailbox. Local stories are subscribed to through the `porch`, which ends up containing all messages the user receives.
+
+### Federation
+
+Some places, like `urbit-meta`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both these desired can be met through federation.
+
+In federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).  
+This way, all planets and comets will be able to subscribe to `/urbit-meta` and get all updates on the story, regardless of where on the network they originated.
 
 
 ## Interfaces for applications
 
-Applications can interact with the broker in two complementary ways: they can tell it what actions to perform, and they can subscribe to its state changes.
+Applications can interact with Hall in two complementary ways: they can tell it what actions to perform, and they can subscribe to its state changes.
 
 ### Interactions
 
-The broker can be commanded by poking it with `action`s.
+Hall can be commanded by poking it with `action`s.
 
 ```
 ++  action                                              :>  user action
   $%  ::  circle configuration                          ::
       {$create nom/knot des/cord sec/security}          :<  create circle
-      {$delete nom/knot ano/(unit cord)}                :<  delete + announce
+      {$delete nom/knot why/(unit cord)}                :<  delete + announce
       {$depict nom/knot des/cord}                       :<  change description
+      {$filter nom/knot fit/filter}                     :<  change message rules
       {$permit nom/knot inv/? sis/(set ship)}           :<  invite/banish
       {$source nom/knot sub/? src/(set partner)}        :<  un/sub to/from src
-      {$enlist nom/knot fed/? sis/(set ship)}           :<  dis/allow federation
-      {$burden circle}                                  :<  help federate
       ::  messaging                                     ::
       {$convey tos/(list thought)}                      :<  post exact
       {$phrase aud/(set partner) ses/(list speech)}     :<  post easy
       ::  personal metadata                             ::
-      {$status cis/(set circle) sat/status}             :<  our status update
+      {$notify nos/(set knot) pes/presence}             :<  our presence update
+      {$naming nos/(set knot) man/human}                :<  our name update
       ::  changing shared ui                            ::
       {$human sip/ship man/human}                       :<  new identity
       {$glyph gyf/char pas/(set partner) bin/?}         :<  un/bind a glyph
   ==                                                    ::
 ```
 
-The largest part of these actions concern themselves with managing local circles. `nom` is always the name used to identify the relevant story. To disambiguate between "add" and "delete" type actions (for permissions, subscriptions and federation), a loob `?` is used.
+The largest part of these actions concern themselves with managing local circles. `nom` is always the name used to identify the relevant story. To disambiguate between "add" and "delete" type actions (for permissions and subscriptions), a loob `?` is used.
 
 To send messages, two interfaces are available. `%convey` lets you specify all details of the messages, including its timestamp, serial, and fully assembled audience. `%phrase`, on the other hand, takes care of that for you, allowing you to specify just the target partners and message contents.
 
-`%status` is useful for setting your own presence and nickname in a circle, so others can see if you're active.
-
-> **Current implementation** implements a `%status` command that only works for local circles.
+`%notify` and `%naming` are useful for setting your own presence and nickname in a circle respectively, so others can see if you're active and what to call you by.
 
 "Shared UI" encompasses UI data that should be consistent across applications. For example, if the user sets a local nickname for an identity, they expect to see that nickname regardless of the application they're currently using. The same goes for glyph bindings, for easy audience targeting.
 
-Sometimes, in response to a user action, the broker will respond with a `reaction`.
+Sometimes, in response to a user action, Hall will respond with a `reaction`.
 
 ```
 ++  reaction                                            :>  user information
@@ -252,218 +261,262 @@ Sometimes, in response to a user action, the broker will respond with a `reactio
 
 These are used to inform the application (and thus the user) of any unexpected side effects or errors that occurred as a result of the action they issued.
 
-### Subscriptions
+### Queries, prizes and rumors
 
-To receive data from a broker, applications will have to subscribe to it. A `%peer` move for doing so looks something like this:
-
-```
-:*  ost.bol                                             :<  bone
-    %peer                                               :<  move type
-    /story/[some-story]                                 :<  diff path
-    [our %broker]                                       :<  peer target
-    /reader/[some-story]                                :<  peer path
-==                                                      ::
-```
-
-The diff path is for the application to use to identify what subscription a diff came from. That is, what story the diff relates to. Not all applications will care for this.  
-The peer path informs the broker of the intent of the subscription. It always starts with `/reader` to indicate we're a client application, not another broker. If the path ends there, it subscribes to shared UI changes. If it goes on to specify a story name, it subscribes to changes to that story.
-
-These changes get sent as `lowdown`s.
+To receive data from Hall, applications will have to query it. There are two paths that are useful for readers to query. Let's look at them and their results.
 
 ```
-++  lowdown                                             :>  new/changed state
-  $%  ::  story state                                   ::
-      $:  $confs                                        :<  configs
-          loc/(unit config)                             :<  local config
-          rem/(map circle (unit config))                :<  remote configs
+++  query                                               :>  query paths
+  $%  {$reader $~}                                      :<  shared ui state
+      {$circle nom/knot ran/range}                      :<  story query
+      ::  ...                                           ::
+  ==                                                    ::
+++  range  (unit {hed/place tal/(unit place)})          :<  msg range, @ud/@da
+++  place  $%({$da @da} {$ud @ud})                      :<  point for range
+++  prize                                               :>  query result
+  $%  $:  $reader                                       :<  /reader
+          gys/(jug char (set partner))                  :<  glyph bindings
+          nis/(map ship cord)                           :<  nicknames
       ==                                                ::
-      {$precs reg/crowd}                                :<  presences
-      {$grams num/@ud gaz/(list telegram)}              :<  messages
-      ::  ui state                                      ::
-      {$glyph (jug char (set partner))}                 :<  glyph bindings
-      {$names (map ship (unit human))}                  :<  nicknames
+      {$circle burden}                                  :<  /circle
+      ::  ...                                           ::
+  ==                                                    ::
+++  burden                                              :<  full story state
+  $:  gaz/(list telegram)                               :<  all messages
+      cos/lobby                                         :<  loc & rem configs
+      pes/crowd                                         :<  loc & rem presences
   ==                                                    ::
 ```
 
-Aside from the initial lowdown that is sent when a subscription starts, these contains exclusively the changes as they occur. Configurations are wrapped in `unit`s so that deletion can be indicated. This also means that simple applications don't necessarily need to keep state. If all they want to do is show events as they happen, then the broker subscription will provide all they need.
+To be clear, the paths for those queries are `/reader` and `/circle/[name]/[start]/[end]`, where `start` and `end` are optional and can be either a date or a message number.  
+`/reader` queries produce shared UI state. That is, glyph bindings and nicknames.  
+`/circle` queries produce the entire public state of the requested story, including remotes.
+
+Any changes to the results of these queries are communicated via the following `rumor`s. It's a fairly long list of potential changes,
+
+```
+++  rumor                                               :<  query result change
+  $%  $:  $reader                                       :<  /reader
+          $=  dif                                       ::
+          $%  {$glyph diff-glyph}                       ::
+              {$nick diff-nick}                         ::
+          ==                                            ::
+      ==                                                ::
+      {$circle dif/diff-story}                          :<  /circle
+      ::  ...                                           ::
+  ==                                                    ::
+++  diff-glyph  {bin/? gyf/char pas/(set partner)}      :<  un/bound glyph
+++  diff-nick   {who/ship nic/cord}                     :<  changed nickname
+++  diff-story                                          ::
+  $%  {$new cof/config}                                 :<  new story
+      {$grams gaz/(list telegram)}                      :<  new/changed msgs
+      {$config cir/circle dif/diff-config}              :<  new/changed config
+      {$status pan/partner who/ship dif/diff-status}    :<  new/changed status
+      {$follow sub/? pas/(set partner)}                 :<  un/subscribe
+      {$remove $~}                                      :<  removed story
+      ::  ...                                           ::
+  ==                                                    ::
+++  diff-config                                         :>  config change
+  $%  {$full cof/config}                                :<  set w/o side-effects
+      {$source add/? pas/(set partner)}                 :<  add/rem sources
+      {$caption cap/cord}                               :<  changed description
+      {$filter fit/filter}                              :<  changed filter
+      {$secure sec/security}                            :<  changed security
+      {$permit add/? sis/(set ship)}                    :<  add/rem to b/w-list
+      {$remove $~}                                      :<  removed config
+  ==                                                    ::
+++  diff-status                                         :>  status change
+  $%  {$full sat/status}                                :<  fully changed status
+      {$presence pec/presence}                          :<  changed presence
+      {$human dif/diff-human}                           :<  changed name
+      {$remove $~}                                      :<  removed config
+  ==                                                    ::
+++  diff-human                                          :>  name change
+  $%  {$full man/human}                                 :<  fully changed name
+      {$true tru/(unit (trel cord (unit cord) cord))}   :<  changed true name
+      {$handle han/(unit cord)}                         :<  changed handle
+  ==                                                    ::
+```
+
+These are, as enforced by Gall, the changes as they happen. This makes it possible for very minimal Hall readers to be implemented that only show a stream of changes, rather than keeping state themselves.
 
 
-## Communication between brokers
+## Communication between Halls
 
-Brokers can communicate with other brokers to send commands and subscription updates.
+Halls can communicate with other Halls to send commands and subscription updates.
 
 ### Interactions
 
-To request changes to a story, brokers can send `command`s.
+To request changes to a story, Halls can send `command`s.
 
 ```
 ++  command                                             :>  effect on story
-  $%  {$review tos/(list thought)}                      :<  deliver
-      $:  $burden                                       :<  starting fed state
-          nom/knot                                      ::
-          cof/lobby                                     ::
-          pes/crowd                                     ::
-          gaz/(list telegram)                           ::
-      ==                                                ::
-      {$relief nom/knot who/(set ship)}                 :<  federation ended
+  $%  {$publish tos/(list thought)}                     :<  deliver
+      {$present nos/(set knot) dif/diff-status}         :<  status update
+      ::  ...                                           ::
   ==                                                    ::
 ```
 
-A `%review` command contains messages. These are sent to foreign brokers to be published to one of their stories.
+A `%publish` command contains messages. These are sent to foreign Halls to be published to their stories.
 
-`%burden` and `%relief` commands are used for federation. The former signals the sender wants to start federating story `nom`, and contains any pre-existing state that needs to be merged into it. The latter signals that the hosts in `who` will no longer be federating the story.
+The `%present` command is used for sending status updates about our ship.
 
-### Subscriptions
+### Querying
 
-Brokers subscribe to other brokers whenever a source gets added to a story's configuration. (Likewise, they unsubscribe when a source is removed.) Here's the peer move we send when we start a subscription:
+Halls can query other halls. Here's the peer move we send when we open a query on a foreign circle:
 
 ```
 :*  ost.bol                                             :<  bone
     %peer                                               :<  move type
-    /friend/show/[our-circle]/[host]/[their-circle]     :<  diff path
-    [host %broker]                                      :<  peer target
-    /[their-circle]/[start]/[end]                       :<  peer path
+    /circle/[our-circle]/[host]/[their-circle]          :<  rumor path
+    [host %hall]                                        :<  query target
+    /circle/[their-circle]/[start]/[end]                :<  query path
 ==                                                      ::
 ```
 
-Again, the diff path is just what our broker uses to identify what subscription a received message originates from. The peer path is more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can be used to specify how long we want our subscription to last. Maybe we want messages starting from last week, up to the end of the month. We may also specify message numbers instead of dates, if we're so inclined.
+Again, the rumor path is what our Hall uses to identify what query a received message originates from. Our circle is specified so that we know what story is interested in the changes we get.  
+The query path is slightly more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can (optionally) be used to specify the range of messages we want to get from our query. Once we're out of that range, we stop receiving updates.
 
-For as long as their subscriptions last, subscribers get sent `report`s whenever changes occur.
+### Federation
+
+Along the way so far, we've skipped some parts of structures. Most of these relate to federation. Let's see what we missed.
 
 ```
-++  report                                              :>  update
-  $%  {$lobby cab/lobby}                                :<  config neighborhood
-      {$crowd reg/crowd}                                :<  presence
-      {$grams num/@ud gaz/(list telegram)}              :<  thoughts
+++  query                                               :>  query paths
+  $%  {$burden who/ship}                                :<  duties to share
+      {$report $~}                                      :<  duty reports
+      ::  ...                                           ::
+  ==                                                    ::
+++  prize                                               :>  query result
+  $%  {$burden sos/(map knot burden)}                   :<  /burden
+      ::  ...                                           ::
+  ==                                                    ::
+++  rumor                                               :<  query result change
+  $%  {$burden nom/knot dif/diff-story}                 :<  /burden
+      ::  ...                                           ::
+  ==                                                    ::
+++  diff-story                                          ::
+  $%  {$bear bur/burden}                                :<  new inherited story
+      {$burden bur/?}                                   :<  burden flag
+      ::  ...                                           ::
   ==                                                    ::
 ```
 
-There are three different kinds of reports, for configurations, presences, and messages.
+We briefly touched upon how federation works on the higher level. On the lower, this is how things go down.
 
-Attentive eyes may have seen this in lowdowns as well, they contains both local and remote data. This is required for federation to share full state, and some regular subscribers might take interest in that data as well.
+1. When Hall boots on a star or galaxy, it starts querying its parent's (~zod for galaxies) `/burden` path.
+2. Upon receiving that query, the parent sends a `%burden` prize containing all state of its channels (fully public circles) to the child. It also subscribes to `/report` on that child.
+3. When a new story gets created on the parent, its children get a `%burden` rumor with a `%bear` story diff, and they create a local copy of that channel.
+4. When something about a parent's story changes, a `%burden` rumor is sent to all its children (because they're querying `/burden`). The children apply this change to their local version of the story.
+5. When a child's story has a `%grams` or `%status` change, a `%burden` rumor is sent to the parent (because they're querying `/report`). The parent applies this change to their local version of the story, and #4 happens.
 
 
-## Broker implementation
+## Hall implementation
 
 Now that we know what gets sent over the wire and why, let's see what happens whenever such events happen. We won't be covering everything, but enough to illustrate the general flow.
 
-First though, it's useful to understand how the broker's code is structured. It consists of two primary cores that are used as engines for applying changes to state and producing moves for output.
+First though, it's useful to understand how Hall's code is structured. It consists of primary cores, designed to work optimally with Gall.
 
-* `++ta` is the transaction core. For every event that happens, be it a poke, peer of diff, the transaction core gets put to work to process it. Once it's done, it produces a list of moves and the new state.
-* `++so` is the story core, used by `++ta` for applying changes to stories. In doing so, it may add moves to the transaction core for it to produce.
+* `++ta` is the transaction core. For every event that happens, be it a poke, peer or diff, the transaction core gets put to work to process it. Once it's done, it produces a list of deltas that describe how our state needs to be modified.
+* `++da` is the delta application core. It is used to apply `++ta`'s deltas to our application state, and produce a list of side-effects.
 
-Once all work in an engine core has finished, its `-done` arm is called to produce moves and apply the changes it made back into the application state.
+Both those cores also have a core within themselves dedicated solely to dealing with stories, `++so` and `++sa` respectively.
+
+Once all work in an engine core has finished, its `-done` arm is called to produce the result of all the core's computation.
 
 In the diagrams that follow, regular lines indicate flows that always happen. Dashed lines indicate flows that are traversed if the described condition is met.  
 Below the diagrams you will find brief explanations of the involved arms. In a particularly bright future, these might be available on-hover instead.  
 For brevity, utility arms that aren't a direct and important part of the flow have been omitted.
 
+(You will find that the origins still use old Gall arms, with some glue code in between. At the time of writing, new Gall has not yet been implemented, so this will have to do.)
+
+We will generally only display the delta generation parts of the flow. Delta application is usually implemented simply enough to deduce what it does from looking at the label.
+
 ### Subscriptions
 
-Broker-to-broker subscriptions happen when a source gets added to a story. This is done with a `%source` action, and results in a `%peer` move being sent. Upon receiving a peer, the broker validates the subscription and sends the current state.
+Hall-to-Hall subscriptions happen when a source gets added to a story. This is done with a `%source` action, and results in a `%peer` move being sent (prompted by a `%story %follow` delta).  
+Upon receiving a valid peer on a `/circle` path, the subscribing ship is added to that circle's presence map.
 
 ![subscriptions implementation flow](./diagrams/flow-subscriptions.png "subscriptions implementation flow")
 
 ```
-++  poke-talk-action        :<  we got poked with an action.
-  ++  ta-action             :<  applies an action.
-  ++  ta-config             :<  (re)configures a story.
-  ++  so-reform             :<  changes the configuration of the story.
-    ++  so-acquire          :<  subscribes the story to new sources.
-::                          ::
-++  peer                    :<  we got peered.
-  ++  ta-subscribe          :<  sends initial data: current state.
-  ++  so-report-lobby       :<  sends a report with configurations.
-  ++  so-notify             :<  changes a ship's presence in the story.
-    ++  so-report-crowd     :<  sends a report with presences.
-  ++  so-start              :<  determines the backlog of messages to send.
-    ++  so-first-grams      :<  sends a range of messages and adds follower.
+++  poke-talk-action      :<  we got poked with an action.
+  ++  ta-action           :<  applies an action.
+  ++  ta-config           :<  (re)configures a story.
+::                        ::
+++  peer                  :<  we got peered.
+  ++  g-query             :<  resolves query to prize.
+  ++  ta-subscribe        :<  act upon subscription.
+  ++  so-attend           :<  adds a ship's status to the story.
 ```
 
-### Reports
+### Rumors
 
-Once a subscription has been established, the broker will receive reports. `%lobby` and `%group` reports are applied through the following flow. Note how, when a `%lobby` from a federating ship is received, this authoritatively changes the story's configuration.
+Once a query has opened, Hall will receive updates on it, rumors. The changes describes in these rumors are applied via the following flow.
 
-![report diff implementation flow](./diagrams/flow-reports.png "report diff implementation flow")
+![rumor implementation flow](./diagrams/flow-rumors.png "report diff implementation flow")
 
 ```
-++  diff-talk-report        :<  we got a subscription report.
-  ++  ta-diff-report        :<  applies a report to the story it's intended for.
-  ++  so-diff-report        :<  applies a report.
-    ++  so-lobby            :<  stores updated configuration.
-      ++  so-reform         :<  changes the configuration of the story.
-      ++  so-report-lobby   :<  sends a report with configuration.
-    ++  so-remind           :<  stores updated presences.
-      ++  so-report-crowd   :<  sends a report with presences.
+++  diff-talk-rumor       :<  we got a query update.
+  ++  ta-hear             :<  applies a rumor to the story it's intended for.
+  ++  so-hear             :<  applies a %circle rumor to the story.
+    ++  so-config-full    :<  splits a %full diff-config into separate changes.
+    ++  so-bear           :<  accept burden, assimilate into the story's state.
+    ++  so-lesson         :<  sends a report with presences.
 ```
 
 ### Messaging
 
-To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%review` command being sent to the involved partners. Receiving a `%review` command causes its messages to be added to the story, which sends a `%grams` report to subscribers and a `%grams` lowdown to all reader applications.
+To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%publish` command being sent to the involved partners. Receiving a `%publish` command causes its messages to be added to the story through the creation of a `%story %grams` delta.
 
 ![messaging implementation flow](./diagrams/flow-messaging.png "messaging implementation flow")
 
 ```
-++  poke-talk-action        :<  we got poked with an action.
-  ++  ta-action             :<  applies an action.
-::                          ::
-++  poke-talk-command       :<  we get poked with a command.
-  ++  ta-apply              :<  applies a command.
-  ++  ta-think              :<  consumes each message in the given list.
-  ++  ta-consume            :<  conducts a message to each partner in audience.
-  ++  ta-conduct            :<  records or sends a message.
-    ++  ta-transmit         :<  sends a message to a partner.
-    ++  ta-record           :<  stores a message in a story.
-::                          ::
-++  diff-talk-report        :<  we got a subscription report.
-  ++  ta-diff-report        :<  applies a report to the story it's intended for.
-  ++  so-diff-report        :<  applies a report.
-  ++  so-lesson             :<  learns a list of messages.
-    ++  so-learn            :<  either adds or modifies a message.
-      ++  so-append         :<  adds a new message to the story.
-      ++  so-revise         :<  modifies an existing message in the story.
-    ++ so-refresh           :<  sends messages to all interested subscribers.
+++  poke-talk-action      :<  we got poked with an action.
+  ++  ta-action           :<  applies an action.
+::                        ::
+++  poke-talk-command     :<  we get poked with a command.
+  ++  ta-apply            :<  applies a command.
+  ++  ta-think            :<  consumes each message in the given list.
+  ++  ta-consume          :<  conducts a message to each partner in audience.
+  ++  ta-conduct          :<  records or sends a message.
+    ++  ta-transmit       :<  sends a message to a partner.
+    ++  ta-record         :<  stores a message in a story.
+    ++  so-learn          :<  either adds or modifies a message.
 ```
 
 
 ## The future
 
-Talk is neither complete nor perfect. There are still problems that need to be solved and features that need to be implemented.
-
-### Architectural issues
-
-To distribute commands and reports to all that are affected by it, the broker takes a "propagate changes" approach. If, in processing a report, any state changes, new state gets sent to all interested brokers... even those it got the report from in the first place. This results in a lot of unnecessary data transfer, where everyone always gets notified of each other's state changes, regardless of whether those changes are old news or not.
-
-While not a practical problem (yet, things work fine at the current scale of use), it does underline the need for a more structured approach to the broker's subscription model. In an ideal world, every interested node gets notified of a set of changes exactly once.
-
-That still becomes unwieldy for circles that have thousands of subscribers, since a single node would still be sending thousands of network events. An obvious potential solution is to apply Urbit's hierarchical structure to this, and send messages to stars for them to send to their children.
-
-While on the topic of subscriptions, the current implementation treats them as semantic data, explicitly storing them in application state. It would be desirable to push this to the background again.
+Hall is neither complete nor perfect. There are features that need to be implemented, varying from small quality of life changes to broad-reaching functionality.
 
 ### Features and functionality
 
 To turn talk into a [sustainable social platform](https://urbit.org/fora/posts/~2017.4.26..18.00.25..b93c~/), it needs a number of things.
 
-Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their broker subscribe to a list of circles the added friends are in. Of course, one will be able to set joined circles as "private" to keep them from being visible to others.
+Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their Hall subscribe to a list of circles the added friends are in. Of course, one will be able to set joined circles as "private" to keep them from being visible to others.
 
 Eventually, content self-moderation might need to be implemented. Users would flag their content if it is potentially offensive. Others would easily be able to filter out content that might offend them.  
 This functionality brings its own large sets of challenges that need to be tackled.
 
-Additionally, federation might be put to broader use. Knowing a circle is federated could help fall back to alternative hosts in case the one the broker originally subscribed to is unavailable.  
+Additionally, federation might be put to broader use. Knowing a circle is federated could help fall back to alternative hosts in case the one Hall originally subscribed to is unavailable.  
 Implementation-wise, care would need to be taken for this to not get ugly. Not to mention, when/how would availability of a host be verified?
+
+Other changes that might have a fair impact on the functioning of Hall are un/read states for messages, and being able to use moons to allow your friends to chat with you in a local channel.
 
 Smaller functionality that still needs to be implemented includes:
 * Extended permissions management. Being able to black-/whitelist entire ship classes.
 * Improved presence functionality. Actually using the presence system, and sending "typing", "idle", etc. statuses.
-* Per-circle message rules. Dis/allow unicode, enforce line length, etc.
 * Flexible on-subscribe scrollback. Some cases may want more than just a day's worth.
-* Talkpolls.
+* Polls.
+
+And of course there's a lot Talk, the client, can improve on as well.
 
 
 ## Further reading
 
-To gain a more thorough understanding of the broker's inner workings, take a look at its source code. It comes with inline documentation.  
+To gain a more thorough understanding of Hall's inner workings, take a look at its source code. It comes with inline documentation.  
 [link]
 
-To see an expansive example of an application that uses the broker, take a look at the code of the talk reader. This, too, comes with inline documentation.  
+To see an expansive example of an application that uses Hall, take a look at the code of Talk. It, too, comes with inline documentation.  
 [link]
