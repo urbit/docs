@@ -277,10 +277,9 @@ set of nouns in the second span is provably a subset of the first.
 > Why? It's fresh, it's different, it's new. And it's annoying. And it
 > keeps you on your toes. And it's also just intuitively right.
 
-## Hoon/Javascript Analogies
+## Hoon/JavaScript Analogies
 
-Below find a table of analogies between Hoon and Javascript terms that may be useful for learners. Note that these correspondences are mostly inexact and should serve only as guideposts on the path to
-comprehending Hoon on its own terms.
+Below find a table of analogies between Hoon and JavaScript terms that may be useful for learners. Note that these correspondences are mostly inexact and should serve only as guideposts on the path to comprehending Hoon on its own terms. The list is a work-in-progress.
 
 <table>
     <tr>
