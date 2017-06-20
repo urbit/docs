@@ -36,14 +36,7 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 
 Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but does so as two separate applications this time.
 
-The messaging parts of talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The interface retains the `talk` name. The messaging bus, which will prove useful to many more applications, will be named `Hall`.
-
-@TODO mention clients are sometimes referred to as "readers".
-
-@TODO probably rewrite intro entirely.
-
-To be clear, we make a distinction between "talk the platform" and "talk the chat application". The latter makes use of the former for most of its functionality, and serves as an example of things that can be built on top of the platform. (Also see the small Twitter clone, [feed](http://urbit.org/fora/posts/~2017.4.12..21.14.00..fe17~/).)  
-This document, however, focusses on the platform. In talk's case, we refer to this "server" (or `guardian`, in Urbit terminology) as the *Hall*. It manages an identity's messages, subscriptions, and more.
+The messaging parts of talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as Hall *readers*. One such application, as you might have guessed, is `Talk`.
 
 
 ## Structures & functionality
