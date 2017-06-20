@@ -143,7 +143,9 @@ that issued a star).
 
 **Examples:**
 
-    |sync %home-local ~dozbud %home |sync %home ~doznec
+    |sync %home-local ~dozbud %home
+
+    |sync %home ~doznec
 
 ### `|unsync desk plot [plot-desk]`
 
