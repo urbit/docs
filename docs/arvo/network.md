@@ -15,7 +15,7 @@ All we've written up until now are just shell commands that produce a
 value and then disappear. To listen for and receive messages from other
 planets, we'll need an app. Let's look at a very simple one:
 
-    ::  There is no love that is not an echo
+    ::  Accepts any noun from dojo and prints it out
     ::
     ::::  /echo/app/examples
       ::
