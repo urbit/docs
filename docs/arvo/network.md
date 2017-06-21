@@ -17,7 +17,7 @@ planets, we'll need an app. Let's look at a very simple one:
 
     ::  There is no love that is not an echo
     ::
-    ::::  /hoon/echo/examples/app
+    ::::  /echo/app/examples
       ::
     /?    314
     !:
