@@ -134,17 +134,18 @@ remembered and easily pronounced in conjunction with the other glyphs
 
 See the entire naming scheme below.
 
-        ace [1 space]   gal <               pel (
-        bar |           gap [>1 space, \n]  per )
+        ace [1 space]   gal <               pal (
+        bar |           gap [>1 space, nl]  par )
         bas \           gar >               sel [
         buc $           hax #               sem ;
         cab _           hep -               ser ]
-        cen %           kel {               soq '
-        col :           ker }               tar *
-        com ,           ket ^               tec `
-        doq "           lus +               tis =
-        dot .           pam &               wut ?
-        fas /           pat @               zap !
+        cen %           kel {               sig ~
+        col :           ker }               soq '
+        com ,           ket ^               tar *
+        doq "           lus +               tec `
+        dot .           pam &               tis =
+        fas /           pat @               wut ?
+        zap !
 
 Using this scheme, we would pronounce `?:` as 'wutcol'.
 
