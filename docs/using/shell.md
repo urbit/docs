@@ -301,3 +301,11 @@ The current urbit plot. Read-only.
     ~your-urbit:dojo> eny
     :: produces
     0v1o.m2vio.j5ieb.7tq84.5kcnp.gjn04.9gl2e.tkj5v.0oqk3.iugk8.rhu6o
+
+
+## Troubleshooting
+
+If you encounter `%dy-edit-busy` while entering commands, it is 
+because your dojo is blocked on a timer or an http request. Type backspace
+and your dojo will end the blocked command.
+
