@@ -209,6 +209,11 @@ above lists, and `\/!?({<`) can be manually assigned.
 
 `;bind > /urbit-test` - assigns the `>` glyph to `/urbit-test`.
 
+To see what station is bound to a glyph:
+
+    ;what +  
+    {[%.y p=[p=~binzod q=~.urbit-meta]]}
+
 ### Prefixes
 
 Received posts are prefixed with a glyph to let you know what the
