@@ -211,8 +211,8 @@ above lists, and `\/!?({<`) can be manually assigned.
 
 To see what station is bound to a glyph:
 
-`;what +`
-`{[%.y p=[p=~binzod q=~.urbit-meta]]}`
+    ;what +  
+    {[%.y p=[p=~binzod q=~.urbit-meta]]}
 
 ### Prefixes
 
