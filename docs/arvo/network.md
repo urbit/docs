@@ -15,7 +15,7 @@ All we've written up until now are just shell commands that produce a
 value and then disappear. To listen for and receive messages from other
 planets, we'll need an app. Let's look at a very simple one:
 
-    ::  There is no love that is not an echo
+    ::  Accepts any noun from dojo and prints it out
     ::
     ::::  /hoon/echo/examples/app
       ::
@@ -65,13 +65,13 @@ didn't exist. This is a slightly hacky way of printing to the console,
 but we'll get to the correct way later on.
 
 But what does `++poke-noun` produce? Recall that `^-` casts to a type.
-In this case, it's declaring that end result of the function will be of
+In this case, it's declaring that the end result of the function will be of
 type `{(list) _+>.$}`. But what does this mean?
 
 The phrase to remember is "a list of moves and our state". Urbit is a
 message passing system, so whenever we want to do something that
 interacts with the rest of the system, we send a message. Thus, a move
-is arvo's equivalent of a syscall. The first thing that `++poke-noun`
+is Arvo's equivalent of a syscall. The first thing that `++poke-noun`
 produces is a list of messages, called "moves". In this case, we don't
 actually want the system to do anything, so we produce the empty list,
 `~` (in the `[~ +>.$]` line).
@@ -106,7 +106,7 @@ Intro to marks
 
 Are there other `++poke`s? Yes. In fact, `noun` and `atom` are just two
 of arbitrarily many "marks". A mark is fundamentally a type definition,
-but accessible at the arvo level. Each mark is defined in the `/mar`
+but accessible at the Arvo level. Each mark is defined in the `/mar`
 directory. Some marks have conversion routines to other marks, and some
 have diff, patch, and merge algorithms. None of these are required for a
 mark to exist, however.
@@ -201,7 +201,7 @@ stands for "phonetic base").
 
 Recall that in a `++poke` arm we produce "a list of moves and our
 state". Until now, we've left the list of moves empty, since we haven't
-wanted to tell arvo to do anything in particular. Now we want to send a
+wanted to tell Arvo to do anything in particular. Now we want to send a
 message to another urbit. Thus, we produce a list with one element:
 
     [ost %poke /sending [to-urbit-address %pong] %atom 'howdy']
@@ -228,7 +228,7 @@ Thus, to truly understand bones, we must understand ducts.
 
 A duct is stack of causes, again, represented as paths, which are called
 wires. At the bottom of every duct is a unix event, such as a keystroke,
-network packet, file change, or timer event. When arvo is given this
+network packet, file change, or timer event. When Arvo is given this
 event, it routes the event to appropriate kernel module for handling.
 
 Sometimes, the module can immediately handle the event and produce any
@@ -247,9 +247,9 @@ continue indefinitely, adding more and more layers onto the duct. When
 an entity finally produces a result, a layer is popped off the duct, and
 the result is passed all the way back down.
 
-In effect, a duct is an arvo-level call stack. It's worth noting that
+In effect, a duct is an Arvo-level call stack. It's worth noting that
 while in traditional call stacks a function call happens synchronously
-and returns exactly once. In arvo, multiple moves can be sent at once,
+and returns exactly once. In Arvo, multiple moves can be sent at once,
 are evaluated asynchronously, and each one may be responded to zero or
 more times.
 
@@ -286,7 +286,7 @@ app) and marked data, then pokes the arm of the corresponding mark on
 that app on that urbit with that data. `[to-urbit-address %pong]` is the
 target urbit and app, `%atom` is the `mark`, and`'howdy'` is the data.
 
-When arvo receives a `%poke` move, it calls the appropriate `++poke`.
+When Arvo receives a `%poke` move, it calls the appropriate `++poke`.
 The same mechanism is used for sending messages between apps on the same
 urbit as for sending messages between apps on different urbits.
 
