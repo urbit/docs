@@ -36,18 +36,18 @@ below.
 
 **FreeBSD**
 
-- Download `urbit-0.4.3.txz` [here](https://media.urbit.org/dist/freebsd/urbit-0.4.3.txz).
-- Install with `pkg install urbit-0.4.3.txz`
+- Download `urbit-0.4.5.txz` [here](https://media.urbit.org/dist/freebsd/urbit-0.4.5.txz).
+- Install with `pkg install urbit-0.4.5.txz`
 
 **Debian**
 
-- Download `urbit_0.4.5-1_amd64.deb` [here](https://github.com/urbit/urbit/releases/download/v0.4.5/urbit_0.4.5-1_amd64.deb).
+- Download `urbit_0.4.5-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4.5-1_amd64.deb).
 - Install with `dpkg -i urbit_0.4.5-1_amd64.deb`
 - Then `apt-get install -f` to install any missing dependencies
 
 ## Source
 
-First, fetch the source tarball: **[urbit-0.4.5.tar.gz](https://github.com/urbit/urbit/archive/v0.4.5.tar.gz)**.
+First, fetch the source tarball: **[urbit-0.4.5.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.5.tar.gz)**.
 
 ### Dependencies
 
@@ -93,8 +93,8 @@ Which can usually be installed with the following one-liners:
 
 Once your dependencies are installed the rest is easy:
 
-    $ tar xfvz urbit-0.4.tar.gz
-    $ cd urbit-0.4
+    $ tar xfvz urbit-0.4.5.tar.gz
+    $ cd urbit-0.4.5
     $ make # gmake on FreeBSD
 
 After running `make`, your Urbit executable is in `bin/urbit`. Install it wherever you'd like.
