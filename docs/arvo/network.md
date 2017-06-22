@@ -17,7 +17,7 @@ planets, we'll need an app. Let's look at a very simple one:
 
     ::  Accepts any noun from dojo and prints it out
     ::
-    ::::  /echo/app/examples
+    ::::  /hoon/echo/examples/app
       ::
     /?    314
     !:
