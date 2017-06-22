@@ -41,13 +41,13 @@ below.
 
 **Debian**
 
-- Download `urbit_0.4.3-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4.3-1_amd64.deb).
-- Install with `dpkg -i urbit_0.4.3-1_amd64.deb`
+- Download `urbit_0.4.5-1_amd64.deb` [here](https://github.com/urbit/urbit/releases/download/v0.4.5/urbit_0.4.5-1_amd64.deb).
+- Install with `dpkg -i urbit_0.4.5-1_amd64.deb`
 - Then `apt-get install -f` to install any missing dependencies
 
 ## Source
 
-First, fetch the source tarball: **[urbit-0.4.3.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.3.tar.gz)**.
+First, fetch the source tarball: **[urbit-0.4.5.tar.gz](https://github.com/urbit/urbit/archive/v0.4.5.tar.gz)**.
 
 ### Dependencies
 
