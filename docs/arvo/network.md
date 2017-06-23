@@ -65,7 +65,7 @@ didn't exist. This is a slightly hacky way of printing to the console,
 but we'll get to the correct way later on.
 
 But what does `++poke-noun` produce? Recall that `^-` casts to a type.
-In this case, it's declaring that end result of the function will be of
+In this case, it's declaring that the end result of the function will be of
 type `{(list) _+>.$}`. But what does this mean?
 
 The phrase to remember is "a list of moves and our state". Urbit is a
