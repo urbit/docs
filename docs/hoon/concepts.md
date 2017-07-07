@@ -22,7 +22,7 @@ maps poorly onto its semantics.  For example, although Hoon is a
 typed language, the term "type" is not formally defined in Hoon.
 "Type" is a great word, but Hoon has three separate concepts
 which could comfortably claim it.  We say "type" all the time; we
-mean `span`, or `mold`, or `mark`, or possibly all three.
+mean [`span`](#span), or `mold`, or `mark`, or possibly all three.
 
 Other common programming concepts used only informally in Hoon
 are "function," "object," "event," "expression," "variable,"
@@ -38,8 +38,8 @@ a few new words is a small price for avoiding this pain point.
 ## Concepts
 
 A few major Hoon concepts: `noun` (data), `nock` (interpreter),
-`mint` (compiler), `span` (type), `twig` (expression), `gate`
-(function), `mold` (constructor), `core` (object), `mark`
+[`mint`](#mint) (compiler), [`span`](#span) (type), [`twig`](#twig) (expression),
+`gate` (function), `mold` (constructor), `core` (object), `mark`
 (protocol).
 
 ### `noun` (data value)
@@ -82,11 +82,11 @@ it's still fun and useful to [learn more](../../nock).
 
 ## Compilation concepts
 
-### `mint` (compiler)
+### <a name="mint">`mint`</a> (compiler)
 
-[`mint`](mint) is the Hoon compiler.  It maps a cell `{span twig}` to a
-cell `{span nock}`, where a `span` is a type, a `twig` is a compiled
-expression (AST), and a `nock` is a Nock formula.  `mint` accepts
+[`mint`](#mint) is the Hoon compiler.  It maps a cell `{span twig}` to a
+cell `{span nock}`, where a [`span`](#span) is a type, a [`twig`](#twig)
+is a compiled expression (AST), and a `nock` is a Nock formula.  `mint` accepts
 a subject type and a source expression; it produces a product type
 and an executable formula.
 
@@ -105,9 +105,9 @@ which makes your program more readable anyway.  Also, the dumber
 the compiler, the easier it is for a dumb human to understand
 what the compiler is thinking.
 
-### `twig` (expression)
+### <a name="twig">`twig`</a> (expression)
 
-A [`twig`](twig) is a Hoon AST node, the result of parsing a
+A [`twig`](../reference) is a Hoon AST node, the result of parsing a
 source expression.  A Hoon source file encodes one twig.
 
 As the noun that the parser produces, a twig is a tagged union of
@@ -146,12 +146,12 @@ or the tall rune syntax (here on one line, with double spaces):
 %-  a  b
 ```
 
-### `span` (type, as range)
+### <a name="span">`span`</a> (type, as range)
 
-A [`span`](span) is a Hoon type.  It defines a set (finite or
+A `span` is a Hoon type.  It defines a set (finite or
 infinite) of nouns and ascribes some semantics to it.  There is
 no syntax for spans; they are always defined by inference (ie, by
-`mint`), usually using a constructor (`mold`).
+[`mint`](#mint)), usually using a constructor (`mold`).
 
 ### `gate` (function)
 
@@ -179,7 +179,7 @@ A `mold` is a constructor function (`gate`).  Its sample is any
 noun; its product is a structured noun.  A mold is idempotent;
 `(mold (mold x))` always equals `(mold x)`.
 
-Since there's no such thing as a span declaration, we use molds
+Since there's no such thing as a [`span`](#span) declaration, we use molds
 to define useful spans by example; we also use them to validate
 untrusted network input.
 
@@ -193,19 +193,19 @@ The Hoon equivalent is `:var  foo  atom`.   But Hoon has a
 homoiconic heap; there is no inscrutable scope or environment.
 There is just the subject, which is one noun.  To "declare a
 variable" is to make a cell `[variable old-subject]`, and use it
-as the subject of the twig below.
+as the subject of the [`twig`](#twig) below.
 
-So the label `foo` isn't a key in a symbol table; it's in the
-type (`span`) of the new value.  It's not a variable named `foo`,
+So the labe[`twig`](#twig)l `foo` isn't a key in a symbol table; it's in the
+type ([`span`](#span)) of the new value.  It's not a variable named `foo`,
 whose value is of type `atom`; it's a subtree of type `foo:atom`.
 
-### `limb` (attribute or variable reference)
+### <a name="limb">`limb`</a> (attribute or variable reference)
 
 A [`limb`](../twig/limb/limb), like `foo`, is Hoon's equivalent of a variable
-reference.  A limb is a twig; given a subject span, `mint`
-resolves it to a Nock formula and a product span.
+reference.  A limb is a [`twig`](#twig); given a subject [`span`](#span),
+[`mint`](#mint) resolves it to a Nock formula and a product [`span`](#span).
 
-To resolve limb `foo`, `mint` searches the subject depth-first,
+To resolve limb `foo`, [`mint`](#mint) searches the subject depth-first,
 head-first for either a `face` named `foo`, or a `core` with the
 arm `foo`.  If it finds a face, the product is a *leg*, or
 subtree of the subject.  If it finds a core, it computes the arm
@@ -213,7 +213,7 @@ formula with that core as the subject.
 
 A limb can also be a slot (direct tree address), like `+15`.
 
-### `wing` (limb path)
+### `wing` ([`limb`](#limb) path)
 
 A [wing](../twig/limb/wing) is a list of limbs.  Like attribute references in a
 conventional language, it uses the syntax `a.b.c`, but inside
