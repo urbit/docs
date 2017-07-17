@@ -148,7 +148,7 @@ Please pardon the awkwardness of the name 'examples-click-click', but we used it
 # Frontend
 
 That's all that's needed for the back end.  The front end is just
-some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/click.hoon`:
+some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/pages/examples/click.hoon`:
 
 ```
 ;html
@@ -163,7 +163,7 @@ some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/click.hoon`
       ;div#err(class "disabled");
       ;div#clicks;
     ==
-    ;script(type "text/javascript", src "/click/main.js");
+    ;script(type "text/javascript", src "/pages/examples/click/click.js");
   ==
 ==
 ```
@@ -177,7 +177,7 @@ To view the frontend, point your browser at `ship-name.urbit.org/~~/pages/exampl
 We have a button labeled "Poke!" and a div with id `clicks` where
 we'll put the number of clicks.  We also include a small
 javascript file where the client-side application logic can be
-found.  It's in `/web/pages/examples/click.js`:
+found.  It's in `/web/pages/examples/click/click.js`:
 
 ```
 
