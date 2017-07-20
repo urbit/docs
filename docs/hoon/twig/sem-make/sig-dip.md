@@ -13,6 +13,40 @@ product-sample adapter.
 The gates in `q` connected together using the gate `p`, which 
 transforms a `q` product and a `q` gate into a `q` sample.
 
+## Expands to
+
+*Note: these are structurally correct, but elide some type-system complexity.*
+
+`;~(a b)` reduces to `b`.
+
+`;~(a b c)` expands to
+
+```
+|=  arg/*
+(a (b arg) c(+6 arg))
+```
+
+`;~(a b c d)` expands to
+
+```
+|=  arg/*
+%+  a (b arg)
+=+  arg=arg
+|.  (a (c arg) d(+6 arg))
+```
+
+### Compiler macro
+
+```
+?~  q  !!
+|-
+?~  t.q  i.q
+=/  a  $(q t.q)
+=/  b  i.q
+=/  c  ,.+6.b
+|.  (p (b c) a(,.+6 c))
+```
+
 ## Discussion
 
 Apparently `:dip` is a "Kleisli arrow."  Whatevs.  It's also 
