@@ -71,9 +71,9 @@ A simple "parser."  `trip` converts a `cord` (atomic string) to
 a `tape` (linked string).
 
 ```
-~zod:dojo> =cmp |=({a/tape b/$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
+~zod:dojo> =cmp |=({a/tape b/$-(char tape)} `tape`?~(a ~ (weld (b i.a) t.a)))
 ~zod:dojo> ;~(cmp trip)
-<1.xef [a=@ <374.hzt 100.kzl 1.ypj %164>]>
+<1.zje {a/@ <409.yxa 110.lxv 1.ztu $151>}>
 ~zod:dojo> (;~(cmp trip) 'a')
 "a"
 ```
