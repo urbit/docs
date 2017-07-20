@@ -56,6 +56,11 @@ so you don't need to either.
 
 `:dip` is often used in parsers, but is not only for parsers.
 
+This can be thought of as user-defined function composition; instead of simply
+nesting the gates in `q`, each is passed individually to `p` with the product
+of the previous gate, allowing arbitrary filtering, transformation, or
+conditional application.
+
 ## Syntax
 
 Regular: *1-fixed*, then *running*.
