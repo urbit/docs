@@ -22,8 +22,9 @@ source](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon).
 
 ## Docs guidelines
 
-For documentation pull requests, acquire [pandoc](http://pandoc.org) and
-format your edited files with the following flags:
+For documentation pull requests, if you are making a brand new page, you'll want
+it to conform to our general documentation standards. Acquire [pandoc](http://pandoc.org)
+and make sure to format your edited files with the following flags:
 
     $ pandoc --standalone \
         --from=markdown+yaml_metadata_block \
@@ -31,8 +32,15 @@ format your edited files with the following flags:
         -o output.md \
         input.md
 
-**Note:** Pandoc will convert the terminating `---` in YAML metadata to
-`...`, which is grounds for termination. Run the following one-liner to
-atone.
+If you are editing an existing page, reformatting the entire page with pandoc
+will make the diff hard to read so please don't do it. Just make sure that your
+edits generally conform to the style of the existing docs around it. For exmaple,
+you'll notice that the paragraphs mostly wrap at column 80.
+
+**Note:** If you have an old version of Pandoc, it may will convert the
+terminating `---` in YAML metadata to `...`, which is grounds for termination.
+Run the following one-liner to atone.
 
     $ sed '1,/^$/ s/^\.\.\./---/g' input.md > output.md
+
+Newer versions of pandoc (1.19.2.1, for example) don't have this issue.
