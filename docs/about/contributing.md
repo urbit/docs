@@ -33,11 +33,11 @@ and make sure to format your edited files with the following flags:
         input.md
 
 If you are editing an existing page, reformatting the entire page with pandoc
-will make the diff hard to read so please don't do it. Just make sure that your
-edits generally conform to the style of the existing docs around it. For exmaple,
-you'll notice that the paragraphs mostly wrap at column 80.
+will make the diff hard to read. Instead, just make sure that your edits generally
+conform to the style of the existing docs around it. For example, you'll notice 
+that the paragraphs mostly wrap at column 80.
 
-**Note:** If you have an old version of Pandoc, it may will convert the
+**Note:** If you have an old version of Pandoc, it may convert the
 terminating `---` in YAML metadata to `...`, which is grounds for termination.
 Run the following one-liner to atone.
 
