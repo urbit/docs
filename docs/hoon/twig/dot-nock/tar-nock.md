@@ -5,7 +5,7 @@ sort: 1
 
 # `:nock  .*  "dottar"`
 
-`{$nock p/seed q/seed}`: evaluate with Nock `2`.
+`{$nock p/seed q/seed}`: Nock evaluation.
 
 ## Produces
 
@@ -16,6 +16,10 @@ Nock of formula `q` and subject `p`, with span `%noun`.
 Regular: *2-fixed*.
 
 ## Discussion
+
+The rune `.*` evaluates twigs `p` and `q` against the 
+Hoon subject, and then evaluates in Nock the latter 
+product against the former.
 
 Note that `:nock` can be used to bypass the type system,
 though its product contains no type information.  It's
