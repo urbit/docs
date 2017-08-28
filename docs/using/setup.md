@@ -38,9 +38,6 @@ matter:
 This will create the directory `mycomet/` and generate a 128-bit
 identity for your urbit.
 
-WARNING: right now (June 2017) the network is extremely slow.
-It will take hours, not minutes, to boot your ship.  Sorry!
-
 ## Orientation
 
 When your urbit is finished booting you should see a `dojo>` prompt.
