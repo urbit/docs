@@ -33,5 +33,5 @@ Regular: *2-fixed*, then *jogging*.
 5
 ~zod:dojo> =foo [a=1 b=2 c=3 d=4]
 ~zod:dojo> %*(+ foo c %hello, d %world)
-[b=2 c=%hello d=%world e=5]
+[b=2 c=%hello d=%world]
 ```
