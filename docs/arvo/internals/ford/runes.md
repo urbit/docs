@@ -55,9 +55,44 @@ that horn, and wraps a face around it.
 Example:
 ```
 /=  foo  /~  [a=0 b=1]
+::
 [a.foo b.foo]
 ```
 produces: `[0 1]`
+
+### `/:` evaluate at path, and `/<mark>/` render mark at current path
+
+`/:` takes a path and a horn, and evaluates the horn with the current path set to the supplied path.
+`/mar/` renders the mark 'mar' at the current path.
+
+Example:
+```
+/=  hoo-source  /:  /path/to/hoon-file  /hoon/
+::
+`@t`hoo-source
+```
+
+produces the text of the hoon file at "/path/to/hoon-file/hoon".
+
+`/hoon/` renders the current path using the `%hoon` mark, which in this case
+passes the contents through unchanged.  In general, rendering a file with a
+mark will potentially run the contents through a series of conversion
+operations. For details on marks, see the
+[marks docs](https://urbit.org/docs/arvo/marks).
+
+Here's an example that includes a mark conversion:
+```
+/=  page  /:  /path/to/html/file  /mime/
+::
+page
+
+::  contents of /path/to/html/file:
+<html><head><title>My Fascinating Blog</title></head></html>
+```
+produces: `[[%text %html ~] 37 '<html><body><div></div></body></html>']`
+
+This result includes the MIME type ('text/html'), the content length in bytes,
+and the HTML itself.
 
 ### `/_` run a horn on each file in the current directory
 
@@ -70,6 +105,7 @@ the file.
 Example:
 ```
 /=  kids  /_  /hoon/
+::
 `(map term cord)`kids
 ```
 
@@ -77,31 +113,30 @@ produces a value of type `(map term cord)`, where each key is the basename (the
 filename without the prefix), and each value is the result of running the
 contents of the file through the `%hoon` mark, which validates that it's valid
 hoon code and returns it unmodified. So, the resulting map associates basenames
-with file contents. For more information on marks, see the docs for the
-`/<mark>/` syntax.
-
-### `/:` evaluate at path
-
-`/:` takes a path and a horn, and evaluates the horn with the current path set to the supplied path.
-
-Example:
-```
-/=  hoo-source  /:  /path/to/hoon-file  /hoon/
-`@t`hoo-source
-```
-
-produces the text of the hoon file at "/path/to/hoon-file/hoon".
+with file contents.
 
 ### `/;` operate on
 
 `/;` takes a twig and a horn. The twig should evaluate to a gate, which is then slammed
-with the result of the horn.
+with the result of the horn as its sample.
 
 Example:
-
 ```
-/=  goo  /;  |=({a/@ b/@} +(b))  /~  [a=0 b=1]
+/=  goo
+    /;  |=({a/@ b/@} +(b))
+    /~  [a=0 b=1]
+::
 goo
 ```
+
+Here's a slightly more complex example with runes that use the filesystem:
+```
+/=  file-length
+    /;  |=(a/@t (lent (crip a)))
+    /:  /path/to/hoon/file  /hoon/
+::
+file-length
+```
+produces the number of bytes in the file "/path/to/hoon/file."
 
 produces: `2`
