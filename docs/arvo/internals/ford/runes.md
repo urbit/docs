@@ -94,7 +94,8 @@ produces the text of the hoon file at "/path/to/hoon-file/hoon".
 
 ### `/;` operate on
 
-`/;` takes a twig and a horn, and applies the twig to the result of the horn.
+`/;` takes a twig and a horn. The twig should evaluate to a gate, which is then slammed
+with the result of the horn.
 
 Example:
 
