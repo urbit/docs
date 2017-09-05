@@ -30,7 +30,7 @@ Example:
 ```
 //  %/file-to-include
 ::
-(frobnicate:file-to-include |)
+(frobnicate:file-to-include %.n)
 
 ::  contents of file-to-include.hoon
 |%
@@ -45,9 +45,7 @@ _Note: `%` means current directory, which in a hoon file will resolve to the
 "directory" containing that file. Also, %clay doesn't have first-class
 directories the way unix filesystems do. Whereas in unix, a directory is a
 special kind of file, in %clay it's just a path prefix, and there is no file
-stored at that path. The meaning of `%` is also contextual: some ford runes can
-also modify the value of `%` inside their arguments (see the docs for `/_` for
-an example)._
+stored at that path._
 
 ### `/=` wrap a face around an included horn
 
@@ -63,21 +61,33 @@ produces: `[0 1]`
 
 ### `/_` run a horn on each file in the current directory
 
-`/_` takes a horn as an argument. It produces a new horn
-representing the result of mapping the supplied horn over
-the list of files in the current directory.
+`/_` takes a horn as an argument. It produces a new horn representing the
+result of mapping the supplied horn over the list of files in the current
+directory. The keys in the resulting map are the basenames of the files in the
+directory, and each value is the result of running that horn on the contents of
+the file.
 
 Example:
 ```
-/=  kids  /_  /~  %
-`(map term path)`kids
+/=  kids  /_  /hoon/
+`(map term cord)`kids
 ```
 
-produces a value of type `(map term path)`, where each key is the basename (the
-filename without the prefix), and each value is the prefix: the path of the
-"directory" containing that file.
+produces a value of type `(map term cord)`, where each key is the basename (the
+filename without the prefix), and each value is the result of running the
+contents of the file through the `%hoon` mark, which validates that it's valid
+hoon code and returns it unmodified. So, the resulting map associates basenames
+with file contents. For more information on marks, see the docs for the
+`/<mark>/` syntax.
 
-_Note that `%` is contextual: it takes on different values based on the
-"current directory", which can be set by `/_` and other ford runes. For each
-file in the directory through which `/_` is iterating, `%` becomes the path of
-that file during that iteration._
+### `/:` evaluate at path
+
+`/:` takes a path and a horn, and evaluates the horn with the current path set to the supplied path.
+
+Example:
+```
+/=  hoo-source  /:  /path/to/hoon-file  /hoon/
+`@t`hoo-source
+```
+
+produces the text of the hoon file at "/path/to/hoon-file/hoon".
