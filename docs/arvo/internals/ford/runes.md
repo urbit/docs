@@ -91,3 +91,16 @@ Example:
 ```
 
 produces the text of the hoon file at "/path/to/hoon-file/hoon".
+
+### `/;` operate on
+
+`/;` takes a twig and a horn, and applies the twig to the result of the horn.
+
+Example:
+
+```
+/=  goo  /;  |=({a/@ b/@} +(b))  /~  [a=0 b=1]
+goo
+```
+
+produces: `2`
