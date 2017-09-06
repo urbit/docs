@@ -200,3 +200,32 @@ i.liz
 produces: `1`
 
 Without the cast, we wouldn't be able to access the 'i' face of the list.
+
+### `/+` import from lib/
+
+The `/+` rune accepts a filename as an argument. It interprets that filename
+as a hoon source file within the `lib` directory. This is how we import a shared
+library in urbit.
+
+Example:
+```
+/+  time-to-id
+::
+(time-to-id now)
+```
+produces: `"c.314d"` (or something similar depending on when you run it)
+
+### `/-` import from sur/
+
+The `/-` rune accepts a filename as an argument. It interprets that filename as
+a hoon source file within the `sur` directory. The `sur` directory contains
+shared structures that can be used by other parts of urbit. This is somewhat
+similar to including a header file in C.
+
+Example:
+```
+/-  talk
+::
+*serial:talk
+```
+produces: `0v0`
