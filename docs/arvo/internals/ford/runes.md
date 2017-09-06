@@ -402,3 +402,17 @@ produces: [%who '~zod' %where /ford/pages/web %case 60]
 
 Wide-form `/$` takes its arguments inside brackets, like `/~`:
 `/=gas=/$[fuel]`
+
+### `/%` propagate extra arguments into renderers
+
+`/%` will forward extra arguments (usually from `%eyre`) on to any enclosed `/renderer/`'s. Without this,
+renderers that use `/$` to read the extra arguments will crash.
+
+Example:
+```
+/=  dat  /%  /tree-json/
+::
+dat
+```
+produces the results of running `ren/tree-json` on the current path. This renderer needs the query string,
+which is one of the extra arguments passed in from `%eyre`.
