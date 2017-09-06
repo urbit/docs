@@ -185,6 +185,31 @@ just a mark: `/&c&b&/:path:/mark/`
 Tall-form `/&` takes only two arguments: a mark and a horn. The mark does not
 need to be enclosed in `/`'s: `/&  html  /elem/`
 
+### `/|` short-circuiting 'or'
+
+`/|` takes a series of horns and produces the first one (left-to-right) that
+succeeds. If none succeed, it produces stack traces from all of its arguments.
+
+Example:
+```
+/=  res  /:  /%/path/to/file
+/|
+  /!elem/
+  /elem/
+==
+::
+res
+```
+tries to parse the file at `/%/path/to/file` as a hoon expression and evaluate
+it (`/!elem/`), and then if that fails, tries to convert the file to an HTML
+element directly (`/elem/`). This is used in urbit's `tree` publishing system
+to enable a user to place either a hoon file or a static file in a directory,
+and have them both result in webpages, with preference given to treating the
+file as hoon to be evaluated.
+
+Wide-form `/|` encloses its arguments in parentheses, with a single space as a delimiter:
+`/|(/!elem/ /elem/)`
+
 ### `/_` unfiltered: run a horn on each file in the current directory
 
 `/_` can be used in two ways: filtered and unfiltered.
