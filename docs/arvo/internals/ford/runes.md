@@ -182,3 +182,20 @@ Example:
 vanes
 ```
 produces: `[%ames %behn %clay %dill %eyre %ford %gall ~]`.
+
+### `/^` cast
+
+`/^` takes a mold and a horn, and casts the result of the horn to the mold.
+
+Example:
+```
+/=  liz  /^  (list @)                                   ::  cast to real list
+         /~  ~[1 2 3]                                   ::  no 'i' or 't' faces
+::
+?<  ?=($~ liz)                                          ::  prevent find-fork
+i.liz
+```
+
+produces: `1`
+
+Without the cast, we wouldn't be able to access the 'i' face of the list.
