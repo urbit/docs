@@ -144,7 +144,8 @@ produces the number of bytes in the file "/path/to/hoon/file."
 ### `/,` switch by path
 
 `/,` is a switch statement, which picks a branch to evaluate based on
-whether the current path matches the path in the switch statement.
+whether the current path matches the path in the switch statement. 
+Takes a sequence of pairs of (path, horn) terminated by a `==`.
 
 Example:
 ```
@@ -155,7 +156,29 @@ Example:
       /another-wrong-path  /~  ~
       /right-path  /~  %evaluate-me                     ::  only evaluate this horn 
     ==
+::
 `@t`just-right
 ```
 
 produces: `'evaluate-me'`
+
+### `/.` list
+
+Produce a null-terminated list from a sequence of horns, terminated by a `==`.
+
+Example:
+```
+/=  vanes
+    /.
+      /~  %ames
+      /~  %behn
+      /~  %clay
+      /~  %dill
+      /~  %eyre
+      /~  %ford
+      /~  %gall
+    ==
+::
+vanes
+```
+produces: `[%ames %behn %clay %dill %eyre %ford %gall ~]`.
