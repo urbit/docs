@@ -187,7 +187,9 @@ need to be enclosed in `/`'s: `/&  html  /elem/`
 
 ### `/_` run a horn on each file in the current directory
 
-`/_` takes a horn as an argument. It produces a new horn representing the
+`/_` can be used in two ways: filtered and unfiltered.
+
+Unfiltered `/_` takes a horn as an argument. It produces a new horn representing the
 result of mapping the supplied horn over the list of files in the current
 directory. The keys in the resulting map are the basenames of the files in the
 directory, and each value is the result of running that horn on the contents of
@@ -205,6 +207,21 @@ filename without the prefix), and each value is the result of running the
 contents of the file through the `%hoon` mark, which validates that it's valid
 hoon code and returns it unmodified. So, the resulting map associates basenames
 with file contents.
+
+Filtered `/_` takes an aura and a horn, and filters the list of files in the
+current directory by whether their filenames can be parsed to an atom of that
+aura. It then produces a map where each key is the filename after parsing into
+that atom type, and each value is the result of running the horn on the
+contents of that file.
+
+Example:
+```
+/=  timed-posts  /_  @da  /md/
+`(map @da @t)`timed-posts
+```
+produces a map from dates to cords. This product will only contain files whose
+names are parsable into `@da` dates. The values are the file contents converted
+to a cord of markdown-formatted text.
 
 ### `/;` operate on
 
