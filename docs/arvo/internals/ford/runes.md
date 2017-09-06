@@ -141,6 +141,19 @@ and the HTML itself.
 
 In wide-form, `/:` uses `:` as a delimiter: `/=page=/:/path/to/html/file:/mime/`
 
+### `/!mark/` evaluate as hoon, then pass through mark
+
+Example:
+```
+/=  mime  /:  /%/some-hoon-file  /!mime/
+::
+mime
+
+:: contents of /%/some-hoon-file:
+%produces-a-cord
+```
+produces: `[[%text %plain ~] 15 'produces-a-cord']`
+
 ### `/&` pass through a series of marks
 
 `/&` passes a horn through multiple marks, right-to-left. It has both a
