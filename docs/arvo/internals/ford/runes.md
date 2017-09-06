@@ -184,6 +184,11 @@ vanes
 ```
 produces: `[%ames %behn %clay %dill %eyre %ford %gall ~]`.
 
+### `/*` heterogeneous map
+
+_DEPRECATED_
+TODO: remove
+
 ### `/^` cast
 
 `/^` takes a mold and a horn, and casts the result of the horn to the mold.
