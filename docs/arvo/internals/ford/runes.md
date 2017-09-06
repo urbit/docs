@@ -66,7 +66,7 @@ produces: `[%a %b]`
 `// <rel-path>` parses `rel-path` as a hoon twig, and then adds the resulting
 twig to the subject. Note that the result type of this rune is not a horn, but
 just a hoon twig, so its result can't be used as an argument to other runes
-that expect a horn.
+that expect a horn. There is no wide-form for this rune.
 
 Example:
 ```
@@ -102,6 +102,8 @@ Example:
 ```
 produces: `[0 1]`
 
+In wide-form, `/=` uses `=` as a delimiter: `/=foo=/~[a=0 b=1]`
+
 ### `/:` evaluate at path, and `/<mark>/` render mark at current path
 
 `/:` takes a path and a horn, and evaluates the horn with the current path set to the supplied path.
@@ -136,6 +138,8 @@ produces:
 
 This result includes the MIME type ('text/html'), the content length in bytes,
 and the HTML itself.
+
+In wide-form, `/:` uses `:` as a delimiter: `/=page=/:/path/to/html/file:/mime/`
 
 ### `/&` pass through a series of marks
 
