@@ -6,6 +6,35 @@ One of the most common ways to use ford is through ford's runes, all of which be
 
 Another common use case is assembling and rendering markdown templates into a single HTML file, to be sent as an HTTP response in urbit's web server `%eyre`. It's important to keep in mind that %ford is quite flexible and generic, and is used in other parts of urbit -- such as the dojo -- that would not traditionally fall under the auspices of a build system.
 
+### `/+` import from lib/
+
+The `/+` rune accepts a filename as an argument. It interprets that filename
+as a hoon source file within the `lib` directory. This is how we import a shared
+library in urbit.
+
+Example:
+```
+/+  time-to-id
+::
+(time-to-id now)
+```
+produces: `"c.314d"` (or something similar depending on when you run it)
+
+### `/-` import from sur/
+
+The `/-` rune accepts a filename as an argument. It interprets that filename as
+a hoon source file within the `sur` directory. The `sur` directory contains
+shared structures that can be used by other parts of urbit. This is somewhat
+similar to including a header file in C.
+
+Example:
+```
+/-  talk
+::
+*serial:talk
+```
+produces: `0v0`
+
 ### `/~` twig by hand
 
 `/~  <twig>` produces a horn that evaluates a twig and places the product
@@ -22,9 +51,9 @@ produces:
 ### `//` include a file by relative path
 
 `// <rel-path>` parses `rel-path` as a hoon twig, and then adds the resulting
-twig to the subject. It's similar to `#include` in C. Note that the result type
-of this rune is not a horn, but just a hoon twig, so its result can't be used
-as an argument to other runes that expect a horn.
+twig to the subject. Note that the result type of this rune is not a horn, but
+just a hoon twig, so its result can't be used as an argument to other runes
+that expect a horn.
 
 Example:
 ```
@@ -223,32 +252,3 @@ produces two `<script>` tags. The first has its contents set to the contents
 of the JavaScript file we loaded from clay. The second is an auto-update
 script that polls the server to check whether the dependency hash has changed.
 This pattern is used in urbit's `tree` web publishing system.
-
-### `/+` import from lib/
-
-The `/+` rune accepts a filename as an argument. It interprets that filename
-as a hoon source file within the `lib` directory. This is how we import a shared
-library in urbit.
-
-Example:
-```
-/+  time-to-id
-::
-(time-to-id now)
-```
-produces: `"c.314d"` (or something similar depending on when you run it)
-
-### `/-` import from sur/
-
-The `/-` rune accepts a filename as an argument. It interprets that filename as
-a hoon source file within the `sur` directory. The `sur` directory contains
-shared structures that can be used by other parts of urbit. This is somewhat
-similar to including a header file in C.
-
-Example:
-```
-/-  talk
-::
-*serial:talk
-```
-produces: `0v0`
