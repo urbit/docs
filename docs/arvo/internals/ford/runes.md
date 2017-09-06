@@ -136,11 +136,11 @@ Here's a slightly more complex example with runes that use the filesystem:
 ```
 /=  file-length
     /;  |=(a/@t (lent (crip a)))
-    /:  /path/to/hoon/file  /hoon/
+    /:  /%/path/to/hoon/file  /hoon/
 ::
 file-length
 ```
-produces the number of bytes in the file "/path/to/hoon/file."
+produces the number of bytes in the file "/%/path/to/hoon/file."
 
 ### `/,` switch by path
 
@@ -151,11 +151,11 @@ Takes a sequence of pairs of (path, horn) terminated by a `==`.
 Example:
 ```
 /=  just-right
-    /:  /right-path                                     ::  set path to /right-path 
+    /:  /===/right-path                                 ::  set path to /%/right-path
     /,
       /wrong-path  /~  ~
       /another-wrong-path  /~  ~
-      /right-path  /~  %evaluate-me                     ::  only evaluate this horn 
+      /right-path  /~  %evaluate-me                     ::  only evaluate this horn
     ==
 ::
 `@t`just-right
