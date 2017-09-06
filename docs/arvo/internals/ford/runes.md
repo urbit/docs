@@ -252,3 +252,25 @@ produces two `<script>` tags. The first has its contents set to the contents
 of the JavaScript file we loaded from clay. The second is an auto-update
 script that polls the server to check whether the dependency hash has changed.
 This pattern is used in urbit's `tree` web publishing system.
+
+
+### `/$` process extra arguments
+
+`/$` will slam a gate on whatever extra arguments have been supplied to this build.
+At the moment, only HTTP requests forwarded by `%eyre` contain any extra arguments,
+and using this rune outside of that context will cause an error. Requests from `%eyre`
+contain an argument representing the query string, which can be parsed using the
+standard library gate `++fuel`.
+
+Example:
+```
+/=  gas  /$  fuel
+::
+:*
+  %who    {<(~(get ju aut.ced.gas) 0)>}
+  %where  {(spud s.bem.gas)}
+  %case   {(scow %ud p.r.bem.gas)}
+==
+```
+produces: [%who '~zod' %where /ford/pages/web %case 60]
+
