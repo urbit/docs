@@ -37,8 +37,10 @@ produces: `0v0`
 
 ### `/~` twig by hand
 
-`/~  <twig>` produces a horn that evaluates a twig and places the product
-in the subject. Arbitrary hoon can be in the twig.
+`/~  <twig>` produces a "horn" that evaluates a twig and places the product in
+the subject. Arbitrary hoon can be in the twig. A
+[horn](https://urbit.org/docs/arvo/internals/ford/commentary/#-horn) is a data
+structure representing a `%ford` static resource.
 
 Example:
 ```
