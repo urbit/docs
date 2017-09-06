@@ -127,7 +127,9 @@ and the HTML itself.
 ### `/&` pass through a series of marks
 
 `/&` passes a horn through multiple marks, right-to-left. It has both a
-wide-form and a tall-form syntax. Wide-form:
+wide-form and a tall-form syntax. In wide-form, it takes a series of mark
+arguments followed by a horn. In tall-form, it takes a single mark followed by
+a horn.
 
 ```
 /=  some-text  /:  /%/text-file  /&mime&/txt/
@@ -158,7 +160,13 @@ checking that the type fits in `manx` (a hoon/sail type indicating an XML
 element). The `%html` mark recognizes the `%elem` and converts it to an HTML
 string with enclosing `<html>`, `<head>`, and `<body>` tags.
 
-It's possible to use wide-form `/&` with more than two marks, by using `&` as a delimiter between marks and adding a `/` before the last mark, like: `/&d&c&b&/a/`.
+It's possible to use wide-form `/&` with more than two marks, by using `&` as a
+delimiter between marks and adding a `/` before the last mark, like:
+`/&d&c&b&/a/`. The last argument here can actually be any arbitrary horn, not
+just a mark: `/&c&b&/:path:/mark/`
+
+Tall-form `/&` takes only two arguments: a mark and a horn. The mark does not
+need to be enclosed in `/`'s: `/&  html  /elem/`
 
 ### `/_` run a horn on each file in the current directory
 
