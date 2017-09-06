@@ -185,7 +185,7 @@ just a mark: `/&c&b&/:path:/mark/`
 Tall-form `/&` takes only two arguments: a mark and a horn. The mark does not
 need to be enclosed in `/`'s: `/&  html  /elem/`
 
-### `/_` run a horn on each file in the current directory
+### `/_` unfiltered: run a horn on each file in the current directory
 
 `/_` can be used in two ways: filtered and unfiltered.
 
@@ -208,6 +208,10 @@ contents of the file through the `%hoon` mark, which validates that it's valid
 hoon code and returns it unmodified. So, the resulting map associates basenames
 with file contents.
 
+Wide-form unfiltered `/_` doesn't need a delimiter: `/=  kids  /_/hoon/`
+
+### `/_` filtered: run a horn on each file in the directory matching an aura
+
 Filtered `/_` takes an aura and a horn, and filters the list of files in the
 current directory by whether their filenames can be parsed to an atom of that
 aura. It then produces a map where each key is the filename after parsing into
@@ -222,6 +226,8 @@ Example:
 produces a map from dates to cords. This product will only contain files whose
 names are parsable into `@da` dates. The values are the file contents converted
 to a cord of markdown-formatted text.
+
+Wide-form filtered `/_` uses `_` as a delimiter: `/=  timed-posts  /_@da_/md/`
 
 ### `/;` operate on
 
