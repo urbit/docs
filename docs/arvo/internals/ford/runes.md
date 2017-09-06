@@ -416,3 +416,5 @@ dat
 ```
 produces the results of running `ren/tree-json` on the current path. This renderer needs the query string,
 which is one of the extra arguments passed in from `%eyre`.
+
+Wide-form `/%` has no delimiter: `/%/tree-json/`
