@@ -259,7 +259,7 @@ produces the number of bytes in the file "/%/path/to/hoon/file."
 
 `/,` is a switch statement, which picks a branch to evaluate based on
 whether the current path matches the path in the switch statement. 
-Takes a sequence of pairs of (path, horn) terminated by a `==`.
+Takes a sequence of pairs of (path, horn) terminated by a `==`. No wide-form.
 
 Example:
 ```
@@ -278,7 +278,7 @@ produces: `'evaluate-me'`
 
 ### `/.` list
 
-Produce a null-terminated list from a sequence of horns, terminated by a `==`.
+Produce a null-terminated list from a sequence of horns, terminated by a `==`. No wide-form.
 
 Example:
 ```
@@ -319,6 +319,8 @@ produces: `1`
 
 Without the cast, we wouldn't be able to access the 'i' face of the list.
 
+Wide-form `/^` uses `^` as a delimiter: `/^(list @)^/~[1 2 3 ~]`
+
 ### `/#` insert dephash
 
 `/#` takes a horn and produces a cell of the dependency
@@ -337,6 +339,8 @@ of the JavaScript file we loaded from clay. The second is an auto-update
 script that polls the server to check whether the dependency hash has changed.
 This pattern is used in urbit's `tree` web publishing system.
 
+Wide-form `/#` does not need a delimiter:
+`/=  inline  /^  {dep/@uvH txt/@t}  /#/:/%/my-script:/js/`
 
 ### `/$` process extra arguments
 
@@ -358,3 +362,5 @@ Example:
 ```
 produces: [%who '~zod' %where /ford/pages/web %case 60]
 
+Wide-form `/$` takes its arguments inside brackets, like `/~`:
+`/=gas=/$[fuel]`
