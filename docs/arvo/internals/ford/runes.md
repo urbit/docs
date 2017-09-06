@@ -158,6 +158,8 @@ checking that the type fits in `manx` (a hoon/sail type indicating an XML
 element). The `%html` mark recognizes the `%elem` and converts it to an HTML
 string with enclosing `<html>`, `<head>`, and `<body>` tags.
 
+It's possible to use wide-form `/&` with more than two marks, by using `&` as a delimiter between marks and adding a `/` before the last mark, like: `/&d&c&b&/a/`.
+
 ### `/_` run a horn on each file in the current directory
 
 `/_` takes a horn as an argument. It produces a new horn representing the
