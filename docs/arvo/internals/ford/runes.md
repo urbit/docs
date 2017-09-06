@@ -89,7 +89,8 @@ page
 ::  contents of /path/to/html/file:
 <html><head><title>My Fascinating Blog</title></head></html>
 ```
-produces: `[[%text %html ~] 37 '<html><body><div></div></body></html>']`
+produces:
+`[[%text %html ~] 60 '<html><head><title>My Fascinating Blog</title></head></html>']`
 
 This result includes the MIME type ('text/html'), the content length in bytes,
 and the HTML itself.
