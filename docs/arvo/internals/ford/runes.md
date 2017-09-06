@@ -129,6 +129,8 @@ Example:
 goo
 ```
 
+produces: `2`
+
 Here's a slightly more complex example with runes that use the filesystem:
 ```
 /=  file-length
@@ -139,4 +141,21 @@ file-length
 ```
 produces the number of bytes in the file "/path/to/hoon/file."
 
-produces: `2`
+### `/,` switch by path
+
+`/,` is a switch statement, which picks a branch to evaluate based on
+whether the current path matches the path in the switch statement.
+
+Example:
+```
+/=  just-right
+    /:  /right-path                                     ::  set path to /right-path 
+    /,
+      /wrong-path  /~  ~
+      /another-wrong-path  /~  ~
+      /right-path  /~  %evaluate-me                     ::  only evaluate this horn 
+    ==
+`@t`just-right
+```
+
+produces: `'evaluate-me'`
