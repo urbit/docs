@@ -124,6 +124,40 @@ produces:
 This result includes the MIME type ('text/html'), the content length in bytes,
 and the HTML itself.
 
+### `/&` pass through a series of marks
+
+`/&` passes a horn through multiple marks, right-to-left. It has both a
+wide-form and a tall-form syntax. Wide-form:
+
+```
+/=  some-text  /:  /%/text-file  /&mime&/txt/
+::
+some-text
+```
+produces: `[[%text %plain ~] p=17 q='Hi I\'m some text\0a']`
+
+This example shows two of the ways marks are used. The first way is what
+happens with the `/txt/` mark: we use it to find a file in clay with that
+extension, without performing any conversions.  Since this file is stored with
+the `%txt` mark in `%clay`, its type is a `wain`: a list of cords, where each
+cord is a single line. Once we've read the file, the `%mime` mark converts the
+`wain` to a triple that includes the MIME type ("text/plain"), the content
+length in bytes, and the content itself as a cord.
+
+```
+/=  page  /&html&elem&/~[;div.foo;]
+::
+page
+```
+produces: `'<html><head></head><body><div class="foo"></div></body></html>'`
+
+This runs the sail expression `;div.foo;` through the `%elem` mark, then
+through the `%html` mark.  The `/~` rune produces an item of mark `noun`.  The
+`%elem` mark converts the mark of the expression from `noun` to `elem` by
+checking that the type fits in `manx` (a hoon/sail type indicating an XML
+element). The `%html` mark recognizes the `%elem` and converts it to an HTML
+string with enclosing `<html>`, `<head>`, and `<body>` tags.
+
 ### `/_` run a horn on each file in the current directory
 
 `/_` takes a horn as an argument. It produces a new horn representing the
