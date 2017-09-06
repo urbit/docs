@@ -206,6 +206,24 @@ produces: `1`
 
 Without the cast, we wouldn't be able to access the 'i' face of the list.
 
+### `/#` insert dephash
+
+`/#` takes a horn and produces a cell of the dependency
+hash of the result of the horn, and the result itself.
+
+Example:
+```
+/=  inline  /^  {dep/@uvH txt/@t}  /#  /:  /%/my-script  /js/
+::
+;=  ;script: (trip txt.inline)                          ::  set script contents
+    ;script@"/~/on/{<dep.inline>}.js";                  ::  set script src
+==
+```
+produces two `<script>` tags. The first has its contents set to the contents
+of the JavaScript file we loaded from clay. The second is an auto-update
+script that polls the server to check whether the dependency hash has changed.
+This pattern is used in urbit's `tree` web publishing system.
+
 ### `/+` import from lib/
 
 The `/+` rune accepts a filename as an argument. It interprets that filename
