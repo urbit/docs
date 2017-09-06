@@ -48,6 +48,19 @@ Example:
 produces:
 `[0 1]`
 
+In wide-form, `/~` always takes a tuple (which may be a degenerate tuple of one element), and produces it.
+
+Example:
+```
+/~[%something]
+```
+produces: `%something`
+
+```
+/~[%a %b]
+```
+produces: `[%a %b]`
+
 ### `//` include a file by relative path
 
 `// <rel-path>` parses `rel-path` as a hoon twig, and then adds the resulting
