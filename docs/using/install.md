@@ -16,7 +16,7 @@ Debian (jessie), Mac OS X, FreeBSD and Fedora all work well.
 If you run into trouble installing Urbit, please let us know via
 email, [questions@urbit.org](mailto:questions@urbit.org), or on the
 forum: [urbit.org/fora](https://urbit.org/fora).  You can also chat
-with us at [urbit.org/stream](https://urbit.org/fora).
+with us at [urbit.org/stream](https://urbit.org/stream).
 
 > Urbit is alpha software.  It’s not yet completely stable, its crypto
 > hasn’t been audited, and there are plenty of rough edges.  Urbit is
