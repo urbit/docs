@@ -1,13 +1,13 @@
 ---
 anchor: none
 footer: true
-title: Documentation
+title: Docs
 sort: 4
 ---
 
 <div class="lead">
     <div class="logo inverse"></div>
-    <h1 class="blue i-b">Urbit documentation</h1>
+    <h1 class="blue i-b">Urbit docs</h1>
 </div>
 
 <div class="col-md-12 head">
