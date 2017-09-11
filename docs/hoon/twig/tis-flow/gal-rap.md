@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 2
 ---
 
@@ -9,13 +9,9 @@ sort: 2
 
 ## Expands to
 
-```
-:per(q p)
-```
+    :per(q p)
 
-```
-=>(q p)
-```
+    =>(q p)
 
 ## Syntax
 
@@ -25,11 +21,9 @@ Irregular: `foo:bar` is `:rap(foo bar)`.
 
 ## Examples
 
-```
-~zod:dojo> :rap(b [a=1 b=2 c=3])
-2
-~zod:dojo> b:[a=1 b=2 c=3]
-2
-~zod:dojo> [. .]:(add 2 4)
-[6 6]
-```
+    ~zod:dojo> :rap(b [a=1 b=2 c=3])
+    2
+    ~zod:dojo> b:[a=1 b=2 c=3]
+    2
+    ~zod:dojo> [. .]:(add 2 4)
+    [6 6]

@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++fain`
 
@@ -9,21 +8,18 @@ Restructure path
 
 Splits a concrete
 
-[`++spur`]() out of a full [`++path`](), producing a location [`++beam`]() and
-a remainder [`++path`]().
+[`++spur`]() out of a full [`++path`](), producing a location [`++beam`]() and a
+remainder [`++path`]().
 
-Accepts
--------
+## Accepts
 
 `hom` is a `++path`
 
-Produces
---------
+## Produces
 
     ([pair]() beam path)
 
-Source
-------
+## Source
 
     ++  fain                                                ::  path restructure
           |=  [hom=path raw=path]
@@ -36,8 +32,7 @@ Source
           $(mer t.mer, moh t.moh)
         ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (fain / %)
     [p=[[p=~zod q=%try r=[%da p=~2014.11.1..00.07.17..c835]] s=/] q=/]
@@ -57,5 +52,3 @@ Examples
     [ p=[[p=~zod q=%try r=[%da p=~2014.11.1..00.09.25..c321]] s=/hook/hymn/tor]
       q=/._req_1234__
     ]
-
-

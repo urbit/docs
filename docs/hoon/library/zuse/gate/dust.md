@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++dust`
 
@@ -9,18 +8,15 @@ Print UTC format
 
 Produces a [`++tape`]() of the date in UTC format.
 
-Accepts
--------
+## Accepts
 
 `yed` is a [`++date`]().
 
-Produces
---------
+## Produces
 
 A `++tape`.
 
-Source
-------
+## Source
 
     ++  dust                                                ::  print UTC format
       |=  yed=date
@@ -36,12 +32,9 @@ Source
       ==
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (dust (yore ->-))
     "Tue, 21 Oct 2014 21:35:12 +0000"
     ~zod/try=> (dust [[a=%.y y=2.002] m=10 t=[d=11 h=12 m=20 s=55 f=~]])
     "Fri, 11 Oct 2002 12:20:55 +0000"
-
-

@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 7
-
 ---
 
 # `:pick  $?  "bucwut"`
@@ -10,14 +9,13 @@ sort: 7
 
 ## Normalizes to
 
-The first item in `p` which normalizes the sample to itself;
-otherwise, default.
+The first item in `p` which normalizes the sample to itself; otherwise, default.
 
 Void, if `p` is empty.
 
 ## Defaults to
 
-The first item in `p`. 
+The first item in `p`.
 
 ## Syntax
 
@@ -27,34 +25,30 @@ Irregular: `?(%foo %bar)` is `$?(%foo %bar)`.
 
 ## Discussion
 
-For a union of atoms, a pick is fine.  For more complex nouns,
-always try to use a book, claw or bush, at least if you expect
-your mold to be used as a normalizer.
+For a union of atoms, a pick is fine. For more complex nouns, always try to use
+a book, claw or bush, at least if you expect your mold to be used as a
+normalizer.
 
 ## Examples
 
-```
-~zod:dojo> =a :pick($foo $bar $baz)
+    ~zod:dojo> =a :pick($foo $bar $baz)
 
-~zod:dojo> (a %baz)
-%baz
+    ~zod:dojo> (a %baz)
+    %baz
 
-~zod:dojo> (a [37 45])
-%foo
+    ~zod:dojo> (a [37 45])
+    %foo
 
-~zod:dojo> $:a
-$foo
-```
+    ~zod:dojo> $:a
+    $foo
 
-```
-~zod:dojo> =a ?($foo $bar $baz)
+    ~zod:dojo> =a ?($foo $bar $baz)
 
-~zod:dojo> (a %baz)
-%baz
+    ~zod:dojo> (a %baz)
+    %baz
 
-~zod:dojo> (a [37 45])
-%foo
+    ~zod:dojo> (a [37 45])
+    %foo
 
-~zod:dojo> $:a
-$foo
-```
+    ~zod:dojo> $:a
+    $foo

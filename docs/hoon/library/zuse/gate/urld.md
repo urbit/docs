@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++urld`
 
@@ -10,18 +9,15 @@ Decode URL
 The inverse of [`++urle`](). Parses a URL escaped [`++tape`]() to the
 [`++unit`]() of an unescaped `++tape`.
 
-Accepts
--------
+## Accepts
 
 `tep` is a `++tape`.
 
-Produces
---------
+## Produces
 
 The [`++unit`]() of a `++tape`.
 
-Source
-------
+## Source
 
     ++  urld                                                ::  URL decode
           |=  tep=tape
@@ -38,8 +34,7 @@ Source
           ?~(nex ~ [~ i.tep u.nex])
         ::
 
-Examples
---------
+## Examples
 
     ~zod/main=> (urld "hello")
     [~ "hello"]
@@ -49,5 +44,3 @@ Examples
     [~ "hello-my?=me  !"]
     ~zod/main=> (urld "hello-my%3F%3Dme%20%2%21")
     ~
-
-

@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++scanf` XX
 
@@ -14,16 +13,15 @@ Formatted scan
 
 Scan with `;"`-interpolated parsers.
 
-A- here there be monsters, monsters of my making. But the basic idea is
-you use `;"` (which currently is parsed by sail but shouldn't be) to mix
-literal text and [++rule]s, and apply this to text which is a
-correspending mixture of aforementioned literals and sections parsable
-by the relevant rules. ++parsf is the parser form that combines a
-tape-rule mix into one big ++rule, ++norm being a parsf internal that
-winnows the `;"` result into a list of discriminate literals and rules,
-and ++bill doing the actual composing: ++\$:parsf just adds a layer that
-collapses the result list to a tuple, such that (scanf "foo 1 2 bar"
-;"foo {dem} {dem} bar") parses [1 2] and not [1 2 \~].
+A- here there be monsters, monsters of my making. But the basic idea is you use
+`;"` (which currently is parsed by sail but shouldn't be) to mix literal text
+and \[++rule\]s, and apply this to text which is a correspending mixture of
+aforementioned literals and sections parsable by the relevant rules. ++parsf is
+the parser form that combines a tape-rule mix into one big ++rule, ++norm being
+a parsf internal that winnows the `;"` result into a list of discriminate
+literals and rules, and ++bill doing the actual composing: ++\\$:parsf just adds
+a layer that collapses the result list to a tuple, such that (scanf "foo 1 2
+bar" ;"foo {dem} {dem} bar") parses \[1 2\] and not \[1 2 ~\].
 
     ~zod/try=> `[p=@ud q=@ud]`(scanf "Score is 5 to 2" [;"Score is {n} to {n}"]:n=dim:ag)
     [p=5 q=2]
@@ -46,9 +44,9 @@ collapses the result list to a tuple, such that (scanf "foo 1 2 bar"
           [i $(+< t)]
       ::
 
-`parsf` generates a `_rule` from a tape with rules embedded in it,
-literal sections being matched verbatim. The parsed type is a tuple of
-the embedded rules' results.
+`parsf` generates a `_rule` from a tape with rules embedded in it, literal
+sections being matched verbatim. The parsed type is a tuple of the embedded
+rules' results.
 
 Two intermediate arms are used:
 
@@ -68,8 +66,8 @@ Two intermediate arms are used:
         [%& p=rul]
       ::
 
-`norm` converts a `;"` pole of `[[%~. [%~. ?(tape _rule)] ~] ~]` into a
-more convenient list of discriminated tapes and rules.
+`norm` converts a `;"` pole of `[[%~. [%~. ?(tape _rule)] ~] ~]` into a more
+convenient list of discriminated tapes and rules.
 
 #### ++bill XX
 
@@ -84,5 +82,5 @@ more convenient list of discriminated tapes and rules.
       --
     ::
 
-`bill` builds a parser out of rules and tapes, ignoring the literal
-sections and producing a list of the rules' results.
+`bill` builds a parser out of rules and tapes, ignoring the literal sections and
+producing a list of the rules' results.

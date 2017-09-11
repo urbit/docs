@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 8
 ---
 
@@ -11,29 +11,23 @@ sort: 8
 
 *Pseudocode*, `a`, `b`, `c`, ... as elements of `p`
 
-```
-:lest(a | :lest(b | :lest(c | :lest(... :lest(z | &)))))
-```
+    :lest(a | :lest(b | :lest(c | :lest(... :lest(z | &)))))
 
 ### Compiler macro
 
-```
-:loop
-:ifno  p  
-  &
-:lest  i.p
-  |
-:moar(p t.p)
-```
+    :loop
+    :ifno  p  
+      &
+    :lest  i.p
+      |
+    :moar(p t.p)
 
-```
-|-
-?~  p
-  &
-?.  i.p
-  |
-$(p t.p)
-```
+    |-
+    ?~  p
+      &
+    ?.  i.p
+      |
+    $(p t.p)
 
 ## Syntax
 
@@ -43,12 +37,8 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 
 ## Examples
 
-```
-~zod:dojo> :and(=(6 6) =(42 42))
-%.y
-```
+    ~zod:dojo> :and(=(6 6) =(42 42))
+    %.y
 
-```
-~zod:dojo> &(=(6 6) =(42 42))
-%.y
-```
+    ~zod:dojo> &(=(6 6) =(42 42))
+    %.y

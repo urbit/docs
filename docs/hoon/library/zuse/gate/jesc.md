@@ -1,26 +1,23 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++jesc`
 
 Escape JSON character
 
-Produces a [`++tape`]() of an escaped [`++json`](/docs/hoon/library/3bi#++json) character `a`.
+Produces a [`++tape`]() of an escaped [`++json`](/docs/hoon/library/3bi#++json)
+character `a`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom of odor [`@tD`](), aka a [`++char`]().
 
-Produces
---------
+## Produces
 
 A [`++tape`]().
 
-Source
-------
+## Source
 
     ++  jesc
       |=  a=@  ^-  tape
@@ -31,8 +28,7 @@ Source
       ==
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (jesc 'a')
     "a"
@@ -42,5 +38,3 @@ Examples
     "\\"
     ~zod/try=> (jesc '"')
     "\""
-
-

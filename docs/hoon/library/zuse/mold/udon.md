@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++udon`
 
@@ -16,5 +15,3 @@ navhome: /docs/
               ==                                            ::
 
 See `%clay` doc
-
-

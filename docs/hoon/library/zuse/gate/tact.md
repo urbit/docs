@@ -1,39 +1,32 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++tact`
 
 tape to octs
 
-Converts a `++tape` to an octet stream ([`++octs`](), which contains a length
-to encode trailing zeroes.
+Converts a `++tape` to an octet stream ([`++octs`](), which contains a length to
+encode trailing zeroes.
 
-Accepts
--------
+## Accepts
 
 A `++tape`.
 
-Produces
---------
+## Produces
 
 An [`++octs`]().
 
-Source
-------
+## Source
 
     ++  tact                                                ::  tape to octstream
       |=  tep=tape  ^-  octs
       (taco (rap 3 tep))
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (tact "abc")
     [p=3 q=6.513.249]
     ~zod/try=> `@t`6.513.249
     'abc'
-
-

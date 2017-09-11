@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 1
 ---
 
@@ -13,7 +13,7 @@ sort: 1
 
 ## Convention
 
-Prettyprints `p` on the console before computing `q`. 
+Prettyprints `p` on the console before computing `q`.
 
 ## Syntax
 
@@ -21,14 +21,10 @@ Regular: *2-fixed*.
 
 ## Examples
 
-```
-~zod:dojo> :dump('halp' ~)
-'halp'
-~
-```
+    ~zod:dojo> :dump('halp' ~)
+    'halp'
+    ~
 
-```
-~zod:dojo> ~&('halp' ~)
-'halp'
-~
-```
+    ~zod:dojo> ~&('halp' ~)
+    'halp'
+    ~

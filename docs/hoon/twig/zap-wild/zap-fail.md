@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 1
 ---
 
@@ -9,7 +9,7 @@ sort: 1
 
 ## Produces
 
-Nothing.  Always crashes, with span `%void`.
+Nothing. Always crashes, with span `%void`.
 
 ## Syntax
 
@@ -21,12 +21,8 @@ Nothing.  Always crashes, with span `%void`.
 
 ## Examples
 
-```
-~zod:dojo> :fail
-! exit
-```
+    ~zod:dojo> :fail
+    ! exit
 
-```
-~zod:dojo> !!
-! exit
-```
+    ~zod:dojo> !!
+    ! exit

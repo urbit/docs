@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 4
 ---
 
@@ -11,7 +11,7 @@ sort: 4
 
 `r`.
 
-## Convention 
+## Convention
 
 If `p` is true, prettyprints `q` on the console before computing `r`.
 
@@ -21,18 +21,14 @@ Regular: *4-fixed*.
 
 ## Examples
 
-```
-~zod:dojo> :warn((gth 1 2) 'oops' ~)
-~
-~zod:dojo> :warn((gth 1 0) 'oops' ~)
-'oops'
-~
-```
+    ~zod:dojo> :warn((gth 1 2) 'oops' ~)
+    ~
+    ~zod:dojo> :warn((gth 1 0) 'oops' ~)
+    'oops'
+    ~
 
-```
-~zod:dojo> ~?((gth 1 2) 'oops' ~)
-~
-~zod:dojo> ~?((gth 1 0) 'oops' ~)
-'oops'
-~
-```
+    ~zod:dojo> ~?((gth 1 2) 'oops' ~)
+    ~
+    ~zod:dojo> ~?((gth 1 0) 'oops' ~)
+    'oops'
+    ~

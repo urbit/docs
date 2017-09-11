@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++glon`
 
@@ -9,13 +8,11 @@ ISO language code
 
 XX
 
-Accepts
--------
+## Accepts
 
 `lag` is a [`++lang`]().
 
-Source
-------
+## Source
 
     ++  glon
       |=  lag=lang
@@ -208,8 +205,7 @@ Source
       ==
     ::
 
-Examples
---------
+## Examples
 
     ~zod/main=> (glon %cs)
     [~ "Czech"]
@@ -217,5 +213,3 @@ Examples
     [~ "English"]
     ~zod/main=> (glon %mz)
     ~
-
-

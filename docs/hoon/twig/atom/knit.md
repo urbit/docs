@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 3
-
 ---
 
 # `:knit`
@@ -10,9 +9,8 @@ sort: 3
 
 ### Produces
 
-A list-shaped string (`tape`) of the items in `p`, which are
-either constant `@t` multibyte UTF-8 strings (`cord`) or twigs
-producing a `tape`.
+A list-shaped string (`tape`) of the items in `p`, which are either constant
+`@t` multibyte UTF-8 strings (`cord`) or twigs producing a `tape`.
 
 ### Syntax
 
@@ -24,21 +22,15 @@ Irregular: `"foo{(weld "moo" "baz")}bar"`.
 
 String:
 
-```
-~zod:dojo> "hello, world."
-"hello, world."
-```
+    ~zod:dojo> "hello, world."
+    "hello, world."
 
 String with interpolation:
 
-```
-~zod:dojo> =+(planet="world" "hello, {planet}.")
-"hello, world."
-```
+    ~zod:dojo> =+(planet="world" "hello, {planet}.")
+    "hello, world."
 
 String with interpolated prettyprinting:
 
-```
-~zod:dojo> =+(planet=%world "hello, {<planet>}.")
-"hello, %world."
-```
+    ~zod:dojo> =+(planet=%world "hello, {<planet>}.")
+    "hello, %world."

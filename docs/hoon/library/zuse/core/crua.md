@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++crua`
 
@@ -97,7 +96,6 @@ XX document
 XX document
 
 ### `++seal`
-
 
     XX document
 
@@ -243,7 +241,6 @@ XX document
 XX document
 
 ### `++com`
-
 
     XX document
 
@@ -465,7 +462,6 @@ XX document
 
 ### `++fig`
 
-
     XX document
 
     ###++pac
@@ -600,4 +596,3 @@ XX document
     ::
 
 XX document
-

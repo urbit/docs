@@ -1,18 +1,15 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++mang`
 
 Unit: Slam gate with sample
 
-Produces a [`++unit`]() computation result from slamming `gat` with
-`sam`, using `sky` to compute or block on nock 11 when applicable.
-Similar to [`++mong`]().
+Produces a [`++unit`]() computation result from slamming `gat` with `sam`, using
+`sky` to compute or block on nock 11 when applicable. Similar to [`++mong`]().
 
-Accepts
--------
+## Accepts
 
 `gat` is a [noun]() that is generally a [`gate`]().
 
@@ -20,13 +17,11 @@ Accepts
 
 `sky` is an [%iron]() gate invoked with [nock operator 11]().
 
-Produces
---------
+## Produces
 
 The `++unit` of a noun.
 
-Source
-------
+## Source
 
     ++  mang
       |=  [[gat=* sam=*] sky=$+(* (unit))]
@@ -35,8 +30,7 @@ Source
       ?.(?=([0 *] ton) ~ [~ p.ton])
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (mang [|=(@ 20) ~] ,~)
     [~ 20]
@@ -56,5 +50,3 @@ Examples
     [~ [0 6]]
     ~zod/try=> (mang [|=(a=@ .^(a)) 8] |=(a=* [~ a 6]))
     [~ [8 6]]
-
-

@@ -1,29 +1,24 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++feel`
 
 Generate file diff
 
-Generates a diff between a file located at `pax` and an input value
-`val`.
+Generates a diff between a file located at `pax` and an input value `val`.
 
-Accepts
--------
+## Accepts
 
 `pax` is a [`++path`]().
 
 `val` is a value as a [noun]().
 
-Produces
---------
+## Produces
 
 A [`++miso`]().
 
-Source
-------
+## Source
 
     ++  feel                                                ::  simple file write
           |=  [pax=path val=*]
@@ -35,8 +30,7 @@ Source
           [%a %a .^(%cx pax) val]
         ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> + %/mel 'test'
     + /~zod/try/2/mel
@@ -48,5 +42,3 @@ Examples
     '''
     ~zod/try=> `@t`272.335.332.724
     'tesh?'
-
-

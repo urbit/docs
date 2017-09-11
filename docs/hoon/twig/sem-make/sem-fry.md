@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 1
 ---
 
@@ -9,17 +9,13 @@ sort: 1
 
 ## Expands to
 
-```
-:pin  :name(a (p q))
-:sure  =(a (p a))
-a
-```
+    :pin  :name(a (p q))
+    :sure  =(a (p a))
+    a
 
-```
-=+  a=(p q)
-?>  =(a (p a))
-a
-```
+    =+  a=(p q)
+    ?>  =(a (p a))
+    a
 
 > Note: the expansion implementation is hygienic -- it doesn't actually add the
 > `a` face to the subject.
@@ -32,45 +28,31 @@ Regular: *2-fixed*.
 
 Fails because of auras:
 
-```
-~zod:dojo> :cast(tape ~[97 98 99])
-! nest-fail
-! exit
-```
+    ~zod:dojo> :cast(tape ~[97 98 99])
+    ! nest-fail
+    ! exit
 
-```
-~zod:dojo> ^-(tape ~[97 98 99])
-! nest-fail
-! exit
-```
+    ~zod:dojo> ^-(tape ~[97 98 99])
+    ! nest-fail
+    ! exit
 
 Succeeds because molds don't care about auras:
 
-```
-~zod:dojo> :fry(tape ~[97 98 99])
-"abc"
-```
+    ~zod:dojo> :fry(tape ~[97 98 99])
+    "abc"
 
-```
-~zod:dojo> ;;(tape ~[97 98 99])
-"abc"
-```
+    ~zod:dojo> ;;(tape ~[97 98 99])
+    "abc"
 
 Succeeds because the mold normalizes:
 
-```
-~zod:dojo> (tape [50 51 52])
-"23"
-```
+    ~zod:dojo> (tape [50 51 52])
+    "23"
 
 Fails because not a fixpoint:
 
-```
-~zod:dojo> :fry(tape [50 51 52])
-! exit
-```
+    ~zod:dojo> :fry(tape [50 51 52])
+    ! exit
 
-```
-~zod:dojo> ;;(tape [50 51 52])
-! exit
-```
+    ~zod:dojo> ;;(tape [50 51 52])
+    ! exit

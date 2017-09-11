@@ -1,35 +1,29 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++poja`
 
 JSON parser core
 
-JSON parser core: parses a [`++cord`]() `a` to the hoon structure for JSON,
-a [`++json`]().
+JSON parser core: parses a [`++cord`]() `a` to the hoon structure for JSON, a
+[`++json`]().
 
-Accepts
--------
+## Accepts
 
 `a` is [`++cord`]().
 
-Produces
---------
-
+## Produces
 
 A `(like json)`.
 
-Source
-------
+## Source
 
     ++  poja                                                ::  JSON parser core
       =<  |=(a=cord (rush a apex))
       |%
 
-Examples
---------
+## Examples
 
     ~zod/try=> (poja '[1,2,3]')
     [~ [%a p=~[[%n p=~.1] [%n p=~.2] [%n p=~.3]]]]
@@ -45,23 +39,19 @@ Parse object
 Top level parsing [`++rule`](). Parses either a single JSON object, or an array
 of JSON objects to a [`++json`](). See also: [`++abox`](), [`++obox`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like json)`.
 
-Source
-------
+## Source
 
        ++  apex  ;~(pose abox obox)                          ::  JSON object
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '[1,2]' apex:poja)
     [%a p=~[[%n p=~.1] [%n p=~.2]]]
@@ -77,18 +67,15 @@ Parse value
 
 Parsing [`++rule`](). Parses JSON values to [`++json`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like json)`.
 
-Source
-------
+## Source
 
       ++  valu                                              ::  JSON value
         %+  knee  *json  |.  ~+
@@ -103,8 +90,7 @@ Source
           ==
         ==
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '[1,2]' valu:poja)
     [%a p=~[[%n p=~.1] [%n p=~.2]]]
@@ -123,57 +109,48 @@ Examples
 
 Parse array
 
-Parsing rule. Parses a JSON array with values enclosed within `[]` and
-delimited by a `,`.
+Parsing rule. Parses a JSON array with values enclosed within `[]` and delimited
+by a `,`.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like json)`.
 
-Source
-------
+## Source
 
       ++  abox  (stag %a (ifix [sel (ws ser)] (more (ws com) valu)))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '[1, 2,4]' abox:poja)
     [[%n p=~.1] ~[[%n p=~.2] [%n p=~.4]]]
 
-JSON Objects
-------------
+## JSON Objects
 
 ### `++pair`
 
 Parse key value pair
 
-Parsing rule. Parses a [`++json`]() from a JSON key-value pair of a
-string and value delimited by `:`.
+Parsing rule. Parses a [`++json`]() from a JSON key-value pair of a string and
+value delimited by `:`.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like json)`.
 
-Source
-------
+## Source
 
       ++  pair  ;~(plug ;~(sfix (ws stri) (ws col)) valu)
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '"ham": 2' pair:poja)
     ['ham' [%n p=~.2]]
@@ -182,26 +159,22 @@ Examples
 
 Parse array of objects
 
-Parsing rule. Parses a [`++json`]() from an array of JSON object
-key-value pairs that are enclosed within `{}` and separated by `,`.
+Parsing rule. Parses a [`++json`]() from an array of JSON object key-value pairs
+that are enclosed within `{}` and separated by `,`.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like ,[%o p=(map ,@t json)])`
 
-Source
-------
+## Source
 
       ++  obje  (ifix [(ws kel) (ws ker)] (more (ws com) pair))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '{"ham": 2, "lam":true}' obje:poja)
     [['ham' [%n p=~.2]] ~[['lam' [%b p=%.y]]]]
@@ -210,58 +183,48 @@ Examples
 
 Parse boxed object
 
-Parsing rule. Parses an array of JSON objects to an object of [`++json`](). See also: [`++json`]().
+Parsing rule. Parses an array of JSON objects to an object of [`++json`](). See
+also: [`++json`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like ,[%o p=(map ,@t json)])`
 
-Source
-------
+## Source
 
       ++  obox  (stag %o (cook mo obje))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '{"ham": 2, "lam":true}' obox:poja)
     [%o {[p='lam' q=[%b p=%.y]] [p='ham' q=[%n p=~.2]]}]
 
-JSON Booleans
--------------
+## JSON Booleans
 
 ### `++bool`
 
 Parse boolean
 
-Parsing rule. Parses a string of either `true` or `false` to a
-[`++json`]() boolean.
+Parsing rule. Parses a string of either `true` or `false` to a [`++json`]()
+boolean.
 
-
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
-
+## Produces
 
 A `(like ,[%b p=?])`
 
-Source
-------
+## Source
 
       ++  bool  ;~(pose (cold & (jest 'true')) (cold | (jest 'false')))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash 'true' bool:poja)
     %.y
@@ -271,35 +234,30 @@ Examples
     ! {1 1}
     ! exit
 
-JSON strings
-------------
+## JSON strings
 
 ### `++stri`
 
 Parse string
 
-Parsing rule. Parse a string to a [`++cord`](). A JSON string is a list
-of characters enclosed in double quotes along with escaping `\`s, to a
+Parsing rule. Parse a string to a [`++cord`](). A JSON string is a list of
+characters enclosed in double quotes along with escaping `\`s, to a
 [`++cord`](). See also [`++jcha`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like ,[%s p=@t])`.
 
-Source
-------
+## Source
 
       ++  stri
         (cook crip (ifix [doq doq] (star jcha)))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '"ham"' stri:poja)
     'ham'
@@ -313,27 +271,22 @@ Examples
 
 Parse char from string
 
-Parsing rule. Parses either a literal or escaped character from a JSON
-string to a [`++cord`]().
+Parsing rule. Parses either a literal or escaped character from a JSON string to
+a [`++cord`]().
 
-
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like cord)`.
 
-Source
-------
+## Source
 
      ++  jcha  ;~(pose ;~(less doq bas prn) esca)           :: character in string
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash 'a' jcha:poja)
     'a'.
@@ -351,22 +304,18 @@ Examples
 
 Parse escaped char
 
-Parsing rule. Parses a backslash-escaped special character, low ASCII,
-or UTF16 codepoint, to a [`++cord`]().
+Parsing rule. Parses a backslash-escaped special character, low ASCII, or UTF16
+codepoint, to a [`++cord`]().
 
-
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like cord)`.
 
-Source
-------
+## Source
 
       ++  esca                                               :: Escaped character
         ;~  pfix  bas
@@ -376,8 +325,7 @@ Source
             ;~(pfix (just 'u') (cook tuft qix:ab))           :: 4-digit hex to UTF-8
           ==
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash 'b' esca:poja)
     ! {1 1}
@@ -394,32 +342,27 @@ Examples
     ~zod/try=> (rash '\\u00df' esca:poja)
     'ß'
 
-JSON numbers
-------------
+## JSON numbers
 
-A JSON numbers are stored as cords internally in lieu of full float
-support, so ++numb and subarms are really more *validators* than parsers
-per se.
+A JSON numbers are stored as cords internally in lieu of full float support, so
+++numb and subarms are really more *validators* than parsers per se.
 
 ### `++numb`
 
 Parse number
 
-Parsing rule. Parses decimal numbers with an optional `-`, fractional
-part, or exponent part, to a [`++tape`]().
+Parsing rule. Parses decimal numbers with an optional `-`, fractional part, or
+exponent part, to a [`++tape`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 An [`++edge`]() of a [`++tape`]().
 
-Source
-------
+## Source
 
       ++  numb
         ;~  (comp twel)
@@ -432,8 +375,7 @@ Source
           (mayb expo)
         ==
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '0' numb:poja)
     ~[~~0]
@@ -455,23 +397,19 @@ Parse 1-9
 
 Parsing rule. Parses digits `0` through `9` to a [`++tape`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 The [`++edge`]() of a `++tape`.
 
-Source
-------
+## Source
 
       ++  digs  (star (shim '0' '9'))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '' digs:poja)
     ""
@@ -486,21 +424,18 @@ Examples
 
 Parse exponent part
 
-Parsing rule. Parses an exponent to a [`++tape`]() .An exponent is an
-`e` or 'E', followed by an optional `+` or `-`, and then by digits.
+Parsing rule. Parses an exponent to a [`++tape`]() .An exponent is an `e` or
+'E', followed by an optional `+` or `-`, and then by digits.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 The [`++edge`]() of a `++tape`.
 
-Source
-------
+## Source
 
       ++  expo                                               :: Exponent part
         ;~  (comp twel)
@@ -509,8 +444,7 @@ Source
           digs
         ==
 
-Examples
---------
+## Examples
 
     ~zod/try=> `tape`(rash 'e7' expo:poja)
     "e7"
@@ -525,23 +459,19 @@ Fractional part
 
 Parsing rule. Parses a dot followed by digits to a [`++cord`]().
 
-Accepts
--------
+## Accepts
 
 A `++nail`.
 
-Produces
---------
+## Produces
 
 The [`++edge`]() of a `++tape`.
 
-Source
-------
+## Source
 
       ++  frac   ;~(plug dot digs)                          :: Fractional part
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '.25' frac:poja)
     [~~~. "25"]
@@ -550,8 +480,7 @@ Examples
     ~zod/try=> (rash '.7' frac:poja)
     [~~~. "7"]
 
-whitespace
-----------
+## whitespace
 
 ### `++spac`
 
@@ -559,23 +488,19 @@ Parse whitespace
 
 Parsing rule. Parses a whitespace to a [`++tape`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like tape)`.
 
-Source
-------
+## Source
 
       ++  spac  (star (mask [`@`9 `@`10 `@`13 ' ' ~]))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (scan "" spac:poja)
     ""
@@ -591,26 +516,22 @@ Examples
 
 Allow prefix whitespace
 
-Parser modifier. Produces a rule that allows for a whitespace before
-applying `sef`.
+Parser modifier. Produces a rule that allows for a whitespace before applying
+`sef`.
 
-Accepts
--------
+## Accepts
 
 `sef` is a [`++rule`]().
 
-Produces
---------
+## Produces
 
 A `++rule`.
 
-Source
-------
+## Source
 
       ++  ws  |*(sef=_rule ;~(pfix spac sef))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '   4' digs:poja)
     ! {1 1}
@@ -623,8 +544,7 @@ Examples
                      ''' (ws digs):poja)
     "4"
 
-Plumbing
---------
+## Plumbing
 
 ### `++mayb`
 
@@ -632,23 +552,19 @@ Maybe parse
 
 Parser modifier. Need to document, an example showing failure.
 
-Accepts
--------
+## Accepts
 
 XX
 
-Produces
---------
+## Produces
 
 XX
 
-Source
-------
+## Source
 
       ++  mayb  |*(bus=_rule ;~(pose bus (easy "")))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (abox:poja 1^1 "not-an-array")
     [p=[p=1 q=1] q=~]
@@ -661,25 +577,21 @@ Weld two tapes
 
 Concatenates two tapes, `a` and `b`, producing a [`++tape`]().
 
-Accepts
--------
+## Accepts
 
 `a` is a [`++tape`]().
 
 `b` is a [`++tape`]().
 
-Produces
---------
+## Produces
 
 The [`++edge`]() of a `++tape`.
 
-Source
-------
+## Source
 
       ++  twel  |=([a=tape b=tape] (weld a b))
 
-Examples
---------
+## Examples
 
     ~zod/try=> (twel "sam" "hok"):poja
     ~[~~s ~~a ~~m ~~h ~~o ~~k]
@@ -690,31 +602,24 @@ Examples
 
 Parse char to list
 
-Parser modifer. Parses an atom with `bus` and then wraps it in a
-[`++list`]().
+Parser modifer. Parses an atom with `bus` and then wraps it in a [`++list`]().
 
-Accepts
--------
+## Accepts
 
 `bus` is a [`++rule`]().
 
-Produces
---------
+## Produces
 
 A `++rule`.
 
-Source
-------
+## Source
 
       ++  piec
         |*  bus=_rule
         (cook |=(a=@ [a ~]) bus)
     ::
 
-Examples
---------
+## Examples
 
     d~zod/try=> (scan "4" (piec:poja dem:ag))
     [4 ~]
-
-

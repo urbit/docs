@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 4
 ---
 
@@ -9,13 +9,9 @@ sort: 4
 
 ## Expands to
 
-```
-:per(:cons(q .) p)
-```
+    :per(:cons(q .) p)
 
-```
-=>([q .] p)
-```
+    =>([q .] p)
 
 ## Syntax
 
@@ -23,25 +19,21 @@ Regular: *2-fixed*.
 
 ## Discussion
 
-`:nip` looks better than `:pin` when the twig you're pinning 
-is much smaller than the twig that uses it.
+`:nip` looks better than `:pin` when the twig you're pinning is much smaller
+than the twig that uses it.
 
 ## Examples
- 
-```
-~zod:dojo> =foo  :gate  a/@
-                 :pin  :name(b 1)
-                 :nip  :(add a b c)
-                 c=2 
-~zod:dojo> (foo 5)
-8
-```
 
-```
-~zod:dojo> =foo  |=  a/@
-                 =+  b=1)
-                 =-  (add a b c)
-                 c=2 
-~zod:dojo> (foo 5)
-8
-```
+    ~zod:dojo> =foo  :gate  a/@
+                     :pin  :name(b 1)
+                     :nip  :(add a b c)
+                     c=2 
+    ~zod:dojo> (foo 5)
+    8
+
+    ~zod:dojo> =foo  |=  a/@
+                     =+  b=1)
+                     =-  (add a b c)
+                     c=2 
+    ~zod:dojo> (foo 5)
+    8

@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 7
 ---
 
@@ -7,15 +7,11 @@ sort: 7
 
 `{$not p/seed}`: logical not.
 
-## Expands to 
+## Expands to
 
-```
-:same(%.n p)
-```
+    :same(%.n p)
 
-```
-.=(| p)
-```
+    .=(| p)
 
 Produces the logical "not" of `p`.
 
@@ -27,24 +23,20 @@ Irregular: `!foo` is `?!(foo)`.
 
 ## Examples
 
-```
-~zod:dojo> not:(=(1 2))
-%.y
-~zod:dojo> :not(&)
-%.n
-~zod:dojo> :not(|)
-%.y
-~zod:dojo> :not(gth 5 6)
-%.y
-```
+    ~zod:dojo> not:(=(1 2))
+    %.y
+    ~zod:dojo> :not(&)
+    %.n
+    ~zod:dojo> :not(|)
+    %.y
+    ~zod:dojo> :not(gth 5 6)
+    %.y
 
-```
-~zod:dojo> ?!(.=(1 2))
-%.y
-~zod:dojo> !&
-%.n
-~zod:dojo> !|
-%.y
-~zod:dojo> !(gth 5 6)
-%.y
-```
+    ~zod:dojo> ?!(.=(1 2))
+    %.y
+    ~zod:dojo> !&
+    %.n
+    ~zod:dojo> !|
+    %.y
+    ~zod:dojo> !(gth 5 6)
+    %.y

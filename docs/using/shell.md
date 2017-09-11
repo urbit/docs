@@ -2,23 +2,19 @@
 navhome: '/docs'
 next: True
 sort: 5
-title: Shell (:dojo)
+title: 'Shell (:dojo)'
 ---
 
 # Shell (`:dojo`)
 
 <div class="row">
-
 <div class="col-md-8">
-
-The `:dojo` is the place to quickly experiment with Urbit. On the
-surface the `:dojo` is just a Hoon REPL. On the inside, the `:dojo` is a
-system for operating on and transforming data in Urbit.
-
-</div>
+The `:dojo` is the place to quickly experiment with Urbit. On the surface the
+`:dojo` is just a Hoon REPL. On the inside, the `:dojo` is a system for
+operating on and transforming data in Urbit.
 
 </div>
-
+</div>
 ## Quickstart
 
 Evaluate a hoon expression (whitespace matters):
@@ -40,7 +36,8 @@ Use `=dir` to set the current working directory:
 
     ~your-urbit:dojo> =dir %/web
 
-(`%` represents your current directory. For a complete explanation on urbit paths, see the [filesystem section](/docs/using/filesystem))
+(`%` represents your current directory. For a complete explanation on urbit
+paths, see the [filesystem section](/docs/using/filesystem))
 
 Generators (files in `/gen`) are run with `+`:
 
@@ -60,7 +57,6 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
     ~your-urbit:dojo> +cat /~talsur-todres/home/gen/curl/hoon
 
-
 **`+curl`** - Similar to Unix `curl`. Accepts a `tape`.
 
     ~your-urbit:dojo> +curl "http://nyt.com"
@@ -78,13 +74,12 @@ Run system commands from `:hood`, like `reload`, using `|`:
 
     ~your-urbit:dojo> +moon
 
-**`+solid`** - Compile the current state of the kernel and output a
-noun. Usually downloaded to a file in unix. No arguments.
+**`+solid`** - Compile the current state of the kernel and output a noun.
+Usually downloaded to a file in unix. No arguments.
 
     ~your-urbit:dojo> .urbit/pill +solid
 
-**`+ticket`** - Generate a ticket for an Urbit plot. Takes an Urbit name
-(`@p`).
+**`+ticket`** - Generate a ticket for an Urbit plot. Takes an Urbit name (`@p`).
 
     ~your-urbit:dojo> +ticket ~talsur-todres-your-urbit
 
@@ -96,23 +91,23 @@ noun. Usually downloaded to a file in unix. No arguments.
 
 The hood is the system daemon. See `gen/hood` and `app/hood`.
 
-**`|hi`** - Sends a direct message. Sort of like Unix `write`. Accepts
-an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
+**`|hi`** - Sends a direct message. Sort of like Unix `write`. Accepts an urbit
+name (`@p`) and a string (`tape`, which is text wrapped with double-quotes).
 
     ~your-urbit:dojo> |hi ~binzod "you there?"
 
-**`|link`** / **`|unlink`** - Link / unlink a remote app. Accepts an
-Urbit name and an app name.
+**`|link`** / **`|unlink`** - Link / unlink a remote app. Accepts an Urbit name
+and an app name.
 
     ~your-urbit:dojo> |link ~talsur-todres %octo
 
-**`|mass`** - Prints the current memory usage of all the kernel modules.
-No arguments.
+**`|mass`** - Prints the current memory usage of all the kernel modules. No
+arguments.
 
     ~your-urbit:dojo> |mass
 
-**`|reload`** - Reloads a kernel module (vane) from source. Accepts any
-number of vane names.
+**`|reload`** - Reloads a kernel module (vane) from source. Accepts any number
+of vane names.
 
     ~your-urbit:dojo> |reload %clay %eyre
 
@@ -129,14 +124,12 @@ number of vane names.
 <h3 class="first child">
 Sources and sinks
 </h3>
+A dojo command is either a source or a sink. A source is just something that can
+be printed to your console or the result of some computation. A sink is an
+*effect*: a change to the filesystem, a network message, a change to your
+environment, or typed message to an app.
 
-A dojo command is either a source or a sink. A source is just something
-that can be printed to your console or the result of some computation. A
-sink is an *effect*: a change to the filesystem, a network message, a
-change to your environment, or typed message to an app.
-
-Sources can be chained together, but we can only produce one effect per
-command.
+Sources can be chained together, but we can only produce one effect per command.
 
 ### Sinks
 
@@ -167,8 +160,7 @@ Save a new `md` file in `web`:
 
     ~your-urbit:dojo> *%/web/foo/md '# hello'
 
-The last component of the path is expected to be the mark (or mime
-type).
+The last component of the path is expected to be the mark (or mime type).
 
 #### `.` - Export to Unix
 
@@ -211,18 +203,18 @@ Use `_` to run a gate (or function):
 
 `+http[s]://example.com` - sends a GET request
 
-`+http[s]://example.com &json [%s 'hi']` - sends a POST request with the
-JSON `"hi"` in the body.
+`+http[s]://example.com &json [%s 'hi']` - sends a POST request with the JSON
+`"hi"` in the body.
 
-`-http[s]://example.com &json [%s 'hi']` - sends a PUT request with the
-JSON `"hi"` in the body.
+`-http[s]://example.com &json [%s 'hi']` - sends a PUT request with the JSON
+`"hi"` in the body.
 
 Note that the first of these is a source while the last two are sinks.
 
 #### `+` - Generators
 
-Generators are simple hoon scripts loaded from the filesystem. They live
-in `gen/`.
+Generators are simple hoon scripts loaded from the filesystem. They live in
+`gen/`.
 
 Create a random moon (from any planet):
 
@@ -232,8 +224,8 @@ Create a random moon (from any planet):
 
 ### Variables
 
-You can use `=` to set an environment variable in `:dojo`, but there are
-a few reserved names that have special uses.
+You can use `=` to set an environment variable in `:dojo`, but there are a few
+reserved names that have special uses.
 
 #### `dir`
 
@@ -248,8 +240,8 @@ Current working `%clay` desk and revision. Read / write.
 
 #### `lib`
 
-Current set of libraries (`/lib`) in your environment. Can also be set
-with `/+`. Read / write.
+Current set of libraries (`/lib`) in your environment. Can also be set with
+`/+`. Read / write.
 
 **Examples:**
 
@@ -261,8 +253,8 @@ with `/+`. Read / write.
 
 #### `sur`
 
-Current set of structures (`/sur`) in your environment. Can also be set
-with `/-`. Read / write.
+Current set of structures (`/sur`) in your environment. Can also be set with
+`/-`. Read / write.
 
 **Examples:**
 
@@ -302,10 +294,8 @@ The current urbit plot. Read-only.
     :: produces
     0v1o.m2vio.j5ieb.7tq84.5kcnp.gjn04.9gl2e.tkj5v.0oqk3.iugk8.rhu6o
 
-
 ## Troubleshooting
 
-If you encounter `%dy-edit-busy` while entering commands, it is 
-because your dojo is blocked on a timer or an http request. Type backspace
-and your dojo will end the blocked command.
-
+If you encounter `%dy-edit-busy` while entering commands, it is because your
+dojo is blocked on a timer or an http request. Type backspace and your dojo will
+end the blocked command.

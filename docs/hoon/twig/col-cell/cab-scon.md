@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 6
 ---
 
@@ -9,13 +9,9 @@ sort: 6
 
 ### Expands to
 
-```
-:cons(q p)
-```
+    :cons(q p)
 
-```
-:-(q p)
-```
+    :-(q p)
 
 ### Syntax
 
@@ -23,12 +19,8 @@ Regular: *2-fixed*.
 
 ### Examples
 
-```
-~zod:dojo> :scon(1 2)
-[2 1]
-```
+    ~zod:dojo> :scon(1 2)
+    [2 1]
 
-```
-~zod:dojo> :_(1 2)
-[2 1]
-```
+    ~zod:dojo> :_(1 2)
+    [2 1]

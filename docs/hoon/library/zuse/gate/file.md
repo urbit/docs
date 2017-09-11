@@ -1,27 +1,22 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++file`
 
 Simple file load
 
-Reads the value of a file located at `pax` and renders it as a
-[`++unit`]().
+Reads the value of a file located at `pax` and renders it as a [`++unit`]().
 
-Accepts
--------
+## Accepts
 
 `pax` is a [`++path`]().
 
-Produces
---------
+## Produces
 
 The `++unit` of a [`++noun`]().
 
-Source
-------
+## Source
 
     ++  file                                                ::  simple file load
           |=  pax=path
@@ -30,8 +25,7 @@ Source
           ?~(q.dir ~ [~ .^(%cx pax)])
         ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> %/zak
     ~zod/try=/zak> :ls %
@@ -45,5 +39,3 @@ Examples
     ~
     ~zod/try=/zak> (file /==2%/mop)
     ~
-
-

@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++fuel`
 
@@ -10,20 +9,17 @@ Parse fcgi
 Retrieieves the %eyre FCGI, producing a [`++epic`](). Used primarily in
 [`/hook`]() files. See the [`%eyre`]() doc for more detail.
 
-Accepts
--------
+## Accepts
 
 `bem` is a [`++beam`]().
 
 `but` is a [`++path`]().
 
-Produces
---------
+## Produces
 
 A `++epic`.
 
-Source
-------
+## Source
 
     ++  fuel                                                ::  parse fcgi
           |=  [bem=beam but=path]
@@ -61,8 +57,7 @@ Source
           ==
         ::
 
-Examples
---------
+## Examples
 
     ~zod/main=> (fuel [[p=~zod q=%try r=[%ud p=2]] s=/psal] /web/'._.~-~~~~.gen~-~-_~~05vg0001v09f0n30fbh7dn6ab2jakmmspdq04nef5h70qbd5lh6atr4c5j2qrbldpp62q1df1in0sr1ding0c3qgt7kclj74qb65lm6atrkc5k2qpr5e1mmispdchin4p3fegmiqrjpdlo62p1dchsn4p39comn8pbcehgmsbbef5p7crrifr3o035dhgfrk2b5__')
     [ qix={}
@@ -78,5 +73,3 @@ Examples
       but=/
       nyp=/gen
     ]
-
-

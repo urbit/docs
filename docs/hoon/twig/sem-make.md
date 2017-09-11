@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 11
-
 ---
 
 # Make, `;` ("sem")

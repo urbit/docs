@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++poxa`
 
@@ -9,25 +8,21 @@ Parse XML
 
 Parses an XML node from a [`++cord`](), producing a [`++unit`]() [`++manx`]().
 
-Accepts
--------
+## Accepts
 
 `a` is a [`++cord`]().
 
-Produces
---------
+## Produces
 
 A `(unit manx)`.
 
-Source
-------
+## Source
 
     ++  poxa                                                ::  xml parser
       =<  |=(a=cord (rush a apex))
       |%
 
-Examples
---------
+## Examples
 
     ~zod/try=> (poxa '<div />')
     [~ [g=[n=%div a=~] c=~]]
@@ -44,18 +39,15 @@ Top level parser
 
 Parses a node of XML, type [`++manx`]().
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `++manx`.
 
-Source
-------
+## Source
 
       ++  apex
         =+  spa=;~(pose comt whit)
@@ -68,8 +60,7 @@ Source
         == 
       :: 
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '<div />' apex:poxa)
     [g=[n=%div a=~] c=~]
@@ -85,21 +76,18 @@ Examples
 
 Parse XML attributes
 
-Parses the list of attributes inside the opening XML tag, which is zero
-or more space-prefixed name to string values.
+Parses the list of attributes inside the opening XML tag, which is zero or more
+space-prefixed name to string values.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A [`++mart`]().
 
-Source
-------
+## Source
 
       ++  attr                                              ::  attributes
         %+  knee  *mart  |.  ~+ 
@@ -113,8 +101,7 @@ Source
           ==  
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '' attr:poxa)
     ~
@@ -139,26 +126,22 @@ Parse character data
 
 Parsing rule. Parses XML character data.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A [`++mars`]().
 
-Source
-------
+## Source
 
       ++  chrd                                              ::  character data
         %+  cook  |=(a=tape ^-(mars :/(a)))
         (plus ;~(less soq doq ;~(pose (just `@`10) escp)))
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash 'asa' chrd:poxa)
     [g=[n=%$ a=~[[n=%$ v="asa"]]] c=~]
@@ -174,18 +157,15 @@ Parses comments
 
 Parsing rule. Parses XML comment blocks.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A [`++like`]().
 
-Source
-------
+## Source
 
       ++  comt                                              ::  comments 
         =-  (ifix [(jest '<!--') (jest '-->')] (star -))
@@ -195,10 +175,10 @@ Source
           ;~(less (jest '-->') hep)
         ==
       ::
+
 A [`++unit`]() of.
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '<!--  bye -->' comt:poxa)
     "  bye "
@@ -212,21 +192,17 @@ Examples
 
 Parse (possibly) escaped char
 
-Parsing rule. Parses a nonspecial or escaped character. Result type
-[`++char`]()
+Parsing rule. Parses a nonspecial or escaped character. Result type [`++char`]()
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 The [`++edge`]() of a [`++cord`]().
 
-Source
-------
+## Source
 
       ++  escp
         ;~  pose
@@ -238,8 +214,7 @@ Source
           (cold '\'' (jest '&apos;'))
         ==
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash 'a' escp:poxa)
     'a'
@@ -264,27 +239,22 @@ Parse self-closing tag
 
 Parsing rule. Parses self-closing XML tags that end in `/>`.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
-
+## Produces
 
 A `(like tape)`.
 
-Source
-------
+## Source
 
       ++  empt                                              ::  self-closing tag
         %+  ifix  [gal (jest '/>')]  
         ;~(plug ;~(plug name attr) (cold ~ (star whit)))  
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '<div/>' empt:poxa)
     [[%div ~] ~]
@@ -298,28 +268,23 @@ Examples
 
 Parse opening tag
 
-Parsing rule. Parses the opening tag of an XML node. Result type
-[`++marx`]()
+Parsing rule. Parses the opening tag of an XML node. Result type [`++marx`]()
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like marx)`.
 
-Source
-------
+## Source
 
       ++  head                                              ::  opening tag
         (ifix [gal gar] ;~(plug name attr))
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (rash '<a>' head:poxa)
     [n=%a a=~]
@@ -335,18 +300,15 @@ Parse tag name
 
 Parsing rule. Parses the name of an XML tag.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 An [`++edge`]() of a [`++mane`]().
 
-Source
-------
+## Source
 
       ++  name                                              ::  tag name 
         %+  knee  *mane  |.  ~+
@@ -359,8 +321,7 @@ Source
         ;~(pose ;~(plug ;~(sfix chx col) chx) chx)
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (scan "ham" name:poxa)
     %ham
@@ -378,23 +339,19 @@ Parse closing tag
 
 Parsing rule. Parses an XML closing tag.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like tail)`.
 
-Source
-------
+## Source
 
       ++  tail  (ifix [(jest '</') gar] name)               ::  closing tag
 
-Examples
---------
+## Examples
 
     ~zod/try=> (scan "</div>" tail:poxa)
     %div
@@ -410,24 +367,20 @@ Parse whitespace, etc.
 
 Parsing rule. Parses newlines, tabs, and spaces.
 
-Accepts
--------
+## Accepts
 
 A [`++nail`]().
 
-Produces
---------
+## Produces
 
 A `(like char)`.
 
-Source
-------
+## Source
 
       ++  whit  (mask ~[' ' `@`0x9 `@`0xa])                 ::  whitespace
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> `@`(scan " " whit:poxa)
     32
@@ -441,5 +394,3 @@ Examples
     ~zod/try=> `@`(scan "\08" whit:poxa)
     ! {1 1}
     ! exit
-
-

@@ -1,43 +1,42 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
 
-Eyre: Reference
-===============
+# Eyre: Reference
 
 ## State
 
 Stored
 
-- `++bolo`
-- `++cyst`
-- `++stem`
+-   `++bolo`
+-   `++cyst`
+-   `++stem`
 
 Runtime
 
-- `perk`
-  + `perk-auth`
-- `pest`
-- `even`
+-   `perk`
+-   `perk-auth`
+-   `pest`
+-   `even`
 
 ## Cores
 
-- `++handle`
-  + `++parse`
-     - `++as...`
-- `++ya`
-- `++ix`
+-   `++handle`
+-   `++parse`
+    -   `++as...`
+-   `++ya`
+-   `++ix`
 
-Eyre: Commentary
-================
+# Eyre: Commentary
 
-Let us follow the loading of a simple cli app, as it bounces from
-browser to server to browser and back.
+Let us follow the loading of a simple cli app, as it bounces from browser to
+server to browser and back.
 
 ## Initial request<a id="init"/>
 
-An http request for `http://sampel-sipnym.urbit.org/cli` will be [redirected](dns)
-to the `%eyre` on ~sampel-sipnym, and come in as a `%this` kiss.
+An http request for `http://sampel-sipnym.urbit.org/cli` will be
+[redirected](dns) to the `%eyre` on ~sampel-sipnym, and come in as a `%this`
+kiss.
 
 From arvo, requests enter `++call`, which after some type reification are passed
 along to `++apex:ye`. In the case of a `%this` kiss, its components are
@@ -46,7 +45,8 @@ in `++emule` to produce a `++fail` page in case of error. `++apex:handle` will
 `++process` the request to a `pest` or a `++done` core, and in the former case
 `++resolve` the pest into an outgoing card.
 
-XX it also seems to affect the current ship, test that serving ship name is consistently correct
+XX it also seems to affect the current ship, test that serving ship name is
+consistently correct
 
 The pest is produced by `++process`, which will first further `++parse` the
 request, and if this does not make the response immediately obvious,
@@ -68,8 +68,8 @@ the perk it into a `%boil` `++ford-req`, adding an `++fcgi` path-segment
 containing query string and `++fcgi-cred:for-client` auth information.
 
 `%ford`s translation of `/=cli=/hymn/hook` to a self-refreshing `%urb` html page
-[deserves its own commentary](../ford/commentary), but we resume in `%eyre`
-when the `%made` sign arrives in `++take`, and soon after `++axon:ye`. There the
+[deserves its own commentary](../ford/commentary), but we resume in `%eyre` when
+the `%made` sign arrives in `++take`, and soon after `++axon:ye`. There the
 `wire`, or rather the `whir` it has been verified to be, determines that the
 response should be served immediately. However, as the mark is not `%mime`,
 another trip to `%ford` is required to encode it, on the same wire; afterwards,
@@ -145,7 +145,7 @@ To understand `/~/at`, there will first be a brief diversion to `~/auth.json`.
 `auth.json`, perk `[%auth %json]`, in `++process-auth` serves `++stat-json:ya`,
 containing such information as the serving ship, which identities are associated
 with this session, and `oryx`, a CSRF token. An oryx must be present on all
-stateful requests, in this case executing a log in.  It also saves the new/old
+stateful requests, in this case executing a log in. It also saves the new/old
 session using `abet`.
 
 XX explain `ixor` here and not [later](#ixor)?
@@ -153,21 +153,22 @@ XX explain `ixor` here and not [later](#ixor)?
 `/~/at` is an alternate interface, which injects `auth.json` data into the
 requested file. `/~/at/auth.js`, then, is a request for the built-in `auth:js`
 (parsed to and processed from an `[%auth %js ~]` perk), with session data added
-as `window.urb`. And indeed, ``[`%js /~/at/auth]`` is parsed to
-``[%auth at [`%js /auth]``, which in `++process-auth` is re-`process`ed to
-`[%js ++auth:js]`, which is `++resolve`d after an `++add-json` of 
-the relevant data. The yac cookies are also passed to `resolve`, which
-`++add-cookies` injects into the `httr`.
+as `window.urb`. And indeed, `` [`%js /~/at/auth] `` is parsed to
+`` [%auth at [`%js /auth] ``, which in `++process-auth` is re-`process`ed to
+`[%js ++auth:js]`, which is `++resolve`d after an `++add-json` of the relevant
+data. The yac cookies are also passed to `resolve`, which `++add-cookies`
+injects into the `httr`.
 
-It is at this point that there is first occasion for user input, namely the password.
+It is at this point that there is first occasion for user input, namely the
+password.
 
 The `auth:js` script sends a `PUT` request, also to `/~/auth.json`. In `parse`,
 the first nontrivial `++check-oryx` occurs, `++grab-body` the request oryx and
 ensuring it is recorded for the session. The request parsed with `++need-body`
 to a `[%auth %try {password}]` perk. `%get:process-auth` checks it against
-`++load-secret`, upon success updates the session with `++logon:ya`, and
-serves a fresh `auth.json` which reflects the changed `user`. Upon receiving
-this, the page is refreshed to retry the original request.
+`++load-secret`, upon success updates the session with `++logon:ya`, and serves
+a fresh `auth.json` which reflects the changed `user`. Upon receiving this, the
+page is refreshed to retry the original request.
 
 ## Post-authentication: app communication. <a id="auth-ok"/>
 
@@ -182,7 +183,7 @@ know to serve the window.urb necessary to make requests, and the `urb.js`
 standard library which extends it with a number of wrappers to them and other
 useful functions.
 
----
+--------------------------------------------------------------------------------
 
 One of those functions is `urb.bind`, which is used to subscribe to application
 data. Userspace javascript sets `urb.appl` to `/tic`, and binds `lines` to a
@@ -212,18 +213,19 @@ is started using `urb.poll`. At `/~/of/{ixor}`, perk
 `[%view ixor ~ {sequence-number}]`, it is `process`ed by `++poll:ix` (the cyst
 is retrieved by `++ire-ix` form global state, using the perk `ixor`): the
 sequence number is in the past, so the previously received `%rush` is
-`++give-even`. After deleting the previous message in the queue and invoking 
+`++give-even`. After deleting the previous message in the queue and invoking
 `++pass-took` to signal `%gall` of this occurrence, the data is annotated with
 the source app+path `++subs-to-json`, and returned to the polling duct.
 
 On the client, the user callback receives the `/cli` history, and displays it on
 the page. The `/~/of` long poll is continued, this time reaching `++poll:ix`
-with the "pending" sequence number, and being stored in the `cyst` for its troubles.
+with the "pending" sequence number, and being stored in the `cyst` for its
+troubles.
 
----
+--------------------------------------------------------------------------------
 
 Its next update proceeds idenitcally, but first it must be triggered, which
-happens when the user enters "(add 2 2)\n", firing an `urb.send` from the event
+happens when the user enters "(add 2 2)\\n", firing an `urb.send` from the event
 handler. This sends a `POST` request to `/~/to/cli/json.json`, perk `%mess`,
 `++process`ed to a `%g %mess`. Were the mark not `%json`, a `%ford` conversion
 would occur first, and `%made:axon` would send the gall message proper. In
@@ -233,7 +235,7 @@ sent to the client callback.
 ## A path not taken: magic filenames <a id="mage"/>
 
 The `/robots.txt` and `/favicon.(ico|png)` files are static, and served
-immediately when caught by a `++parse`. 
+immediately when caught by a `++parse`.
 
 XX index.html?
 
@@ -250,7 +252,6 @@ normal login page but later sends the client back. XX expand, basically the
 status quo is you're logged in and `/~/as/foo` is ignored, just setting your
 `urb.user` XX
 
-
 ## A path not taken: deauthentication
 
 `/~/away`, perk `[%away ~]`, produces a static `++logout-page:xml`, which also
@@ -264,8 +265,12 @@ from memory.
 `++del-subs:ix` acting as reverse of `++add-subs` by deleting the duct binding
 and sending `%g %nuke`.
 
-
-XX unmentioned arms: abet, add-poll, adit, ames-gram, anon, ares-to-json, bolo, cyst, doze, even, ford-kill, get-mean, gift, give-json, give-thou, gram, hapt, hasp, host-to-ship, ix, ixor, js, kiss, load, mean-json, move, note, pass-note, perk, perk-auth, pest, poke-test, print-subs, render-tang, resp, root-beak, scry, ses-authed, ses-ya, sign, silk, sine, stay, stem, teba, titl, to-oryx, urb, wait-era, wake, whir, wush, xml, ya, ye
+XX unmentioned arms: abet, add-poll, adit, ames-gram, anon, ares-to-json, bolo,
+cyst, doze, even, ford-kill, get-mean, gift, give-json, give-thou, gram, hapt,
+hasp, host-to-ship, ix, ixor, js, kiss, load, mean-json, move, note, pass-note,
+perk, perk-auth, pest, poke-test, print-subs, render-tang, resp, root-beak,
+scry, ses-authed, ses-ya, sign, silk, sine, stay, stem, teba, titl, to-oryx,
+urb, wait-era, wake, whir, wush, xml, ya, ye
 
 ## Appendix A: DNS <a id="dns"/>
 
@@ -273,5 +278,5 @@ The `*.urbit.org` domain can be used to access destroyers and cruisers. In the
 common case oh hosted ships, this is done by dynamic DNS directly to the hosting
 instance. We do not speak of the uncommon case. When ports are blocked and
 infrastructure crumbles around you, only imported martian networking can be
-trusted: the `%get` and `%got` [gram]()s are used to proxy [`%this` requests]() and
-[`%thou` responses]() respectively.
+trusted: the `%get` and `%got` [gram]()s are used to proxy [`%this` requests]()
+and [`%thou` responses]() respectively.

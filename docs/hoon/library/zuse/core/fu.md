@@ -1,10 +1,8 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
 
-
-3bA lite number theory
-======================
+# 3bA lite number theory
 
 ### `++fu`
 
@@ -70,4 +68,3 @@ XX document
         [(mod c p.a) (mod c q.a)]
 
 XX document
-

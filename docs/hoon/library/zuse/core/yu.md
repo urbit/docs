@@ -1,14 +1,12 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++yu`
 
 UTC format constants
 
-Source
-------
+## Source
 
     ++  yu                                                  ::  UTC format constants
       |%
@@ -16,7 +14,7 @@ Source
     ~zod/try=/hom> yu
     <4.pgn 250.tmw 41.cmo 414.rvm 101.jzo 1.ypj %164>
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ### `++mon`
 
@@ -24,13 +22,11 @@ Months
 
 Produces a list of [`++tapes`]() containing the 12 months of the year.
 
-Produces
---------
+## Produces
 
 A `++list` of `++tape`s.
 
-Source
-------
+## Source
 
       ++  mon  ^-  (list tape)
         :~  "January"  "February"  "March"  "April"  "May"  "June"  "July"
@@ -38,8 +34,7 @@ Source
         ==
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=/hom> mon:yu
     <<
@@ -59,17 +54,16 @@ Examples
     ~zod/try=/hom> (snag 1 mon:yu)
     "February"
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ### `++wik`
 
 Weeks
 
-Produces a list of [tapes]() containing the 7 days of the week,
-beginning with Sunday.
+Produces a list of [tapes]() containing the 7 days of the week, beginning with
+Sunday.
 
-Source
-------
+## Source
 
       ++  wik  ^-  (list tape)
         :~  "Sunday"  "Monday"  "Tuesday"  "Wednesday"  "Thursday"
@@ -77,8 +71,7 @@ Source
         ==
       ::
 
-Examples
---------
+## Examples
 
     ~zod/try=/hom> wik:yu
     <<"Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday">>
@@ -87,21 +80,20 @@ Examples
     ~zod/try=/hom> (snag (daws (yore -<-)) wik:yu)
     "Tuesday"
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ### `++les`
 
 Leap second dates
 
-Produces a [`++list`]() of the (absolute) dates ([`@da`]) of the 25 leap seconds.
+Produces a [`++list`]() of the (absolute) dates (\[`@da`\]) of the 25 leap
+seconds.
 
-Produces
---------
+## Produces
 
 A `++list` of atoms of odor `@da`.
 
-Source
-------
+## Source
 
       ++  les  ^-  (list ,@da)
         :~  ~2015.7.1 ~2012.7.1  ~2009.1.1  ~2006.1.1  ~1999.1.1  ~1997.7.1
@@ -111,8 +103,7 @@ Source
             ~1973.1.1 ~1972.7.1
         ==
 
-Examples
---------
+## Examples
 
     ~zod/try=/hom> les:yu
     ~[
@@ -146,22 +137,21 @@ Examples
     ~zod/try=/hom> (snag 2 les:yu)
     ~2006.1.1
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ### `++lef`
 
 Back-shifted leap second dates
 
 Produces a [`++list`]() of absolute dates ([`@da`]()s) that represent the Urbit
-Galactc Time equivalents of the UTC leap second dates in [`++les`](/docs/hoon/library/3bc#++les).
+Galactc Time equivalents of the UTC leap second dates in
+[`++les`](/docs/hoon/library/3bc#++les).
 
-Produces
---------
+## Produces
 
 A `++list` of atoms of odor `@da`.
 
-Source
-------
+## Source
 
       ++  lef  ^-  (list ,@da)
         :~  ~2015.6.30..23.59.59   ~2012.6.30..23.59.59
@@ -180,8 +170,7 @@ Source
         ==
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=/hom> lef:yu
     ~[
@@ -214,4 +203,3 @@ Examples
     ]
     ~zod/try=/hom> (snag 2 lef:yu)
     ~2005.12.31..23.59.57
-

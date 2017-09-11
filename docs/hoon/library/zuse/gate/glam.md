@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++glam`
 
@@ -9,13 +8,11 @@ Galaxy names
 
 Retrieves the 'name' of a given Galaxy.
 
-Accepts
--------
+## Accepts
 
 `zar` is a `@p` of one byte, the length of a Galaxy name.
 
-Source
-------
+## Source
 
     ++  glam
       |=  zar=@pD  ^-  tape
@@ -78,12 +75,9 @@ Source
       ==
     ::
 
-Examples
---------
+## Examples
 
     ~zod/main=> (glam ~zod)
     "Tianming"
     ~zod/main=> (glam ~fyr)
     "Bolivar"
-
-

@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 4
-
 ---
 
 # `:loop  |-  "barhep"`
@@ -10,14 +9,10 @@ sort: 4
 
 ## Expands to
 
-```
-:rap  $
-:trap  p
-```
+    :rap  $
+    :trap  p
 
-```
-=<($ |.(p))
-```
+    =<($ |.(p))
 
 ## Syntax
 
@@ -32,43 +27,35 @@ back into it with `:moar()` or `$()`.
 > `:moar()` expands to `:make($)`, accepting a *jogging* body containing a list
 > of changes to the subject.
 
-> `$()` expands to `%=($)`, accepting a *jogging* body containing a
-> list of changes to the subject.
+> `$()` expands to `%=($)`, accepting a *jogging* body containing a list of
+> changes to the subject.
 
 ## Examples
 
 A trivial loop doesn't even recurse:
 
-```
-~zod:dojo> :loop(42)
-42
-```
+    ~zod:dojo> :loop(42)
+    42
 
-```
-~zod:dojo> |-(42)
-42
-```
+    ~zod:dojo> |-(42)
+    42
 
 The classic loop is a decrement:
 
-```
-~zod:dojo> =foo  :var  a  42
-                 :var  b  0
-                 :loop
-                 :if  =(a +(b))
-                   b
-                 :moar(b +(b))
-~zod:dojo> foo
-41
-```
+    ~zod:dojo> =foo  :var  a  42
+                     :var  b  0
+                     :loop
+                     :if  =(a +(b))
+                       b
+                     :moar(b +(b))
+    ~zod:dojo> foo
+    41
 
-```
-~zod:dojo> =foo  =/  a  42
-                 =/  b  0
-                 |-
-                 ?:  =(a +(b))
-                   b
-                 $(b +(b))
-~zod:dojo> foo
-41
-```
+    ~zod:dojo> =foo  =/  a  42
+                     =/  b  0
+                     |-
+                     ?:  =(a +(b))
+                       b
+                     $(b +(b))
+    ~zod:dojo> foo
+    41

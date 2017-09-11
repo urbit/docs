@@ -1,7 +1,6 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++jape`
 
@@ -9,18 +8,15 @@ navhome: /docs/
 
 Produces a [`++json`]() string from a [`++tape`]().
 
-Accepts
--------
+## Accepts
 
 A [`++tape`]().
 
-Produces
---------
+## Produces
 
 A `++json`.
 
-Source
-------
+## Source
 
     ++  jape                                                ::  string from tape
       |=  a=tape
@@ -28,8 +24,7 @@ Source
       [%s (crip a)]
     ::
 
-Examples
---------
+## Examples
 
     ~zod/try=> (jape ~)
     [%s p=~.]
@@ -39,5 +34,3 @@ Examples
     '"lam"'
     ~zod/try=> (crip (pojo (jape "semtek som? zeplo!")))
     '"semtek som? zeplo!"'
-
-

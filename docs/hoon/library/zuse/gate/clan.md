@@ -1,24 +1,20 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 ---
-
 
 ### `++clan`
 
 Ship class
 
-Accepts
--------
+## Accepts
 
 `who` is a [`++ship`]()
 
-Produces
---------
+## Produces
 
 A [`%cube`]().
 
-Source
-------
+## Source
 
     ++  clan                                                ::  ship to rank
       |=  who=ship  ^-  rank
@@ -30,8 +26,7 @@ Source
       ?>  (lte wid 16)  %pawn
     ::
 
-Examples
---------
+## Examples
 
     ~zod/main=> (clan ~zod)
     %czar
@@ -41,5 +36,3 @@ Examples
     %king
     ~zod/main=> (clan ~tasfyn-partyv)
     %duke
-
-

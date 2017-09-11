@@ -1,5 +1,5 @@
 ---
-navhome: /docs/
+navhome: '/docs/'
 sort: 7
 ---
 
@@ -10,13 +10,9 @@ subject, inverted.
 
 ## Expands to
 
-```
-:var(p r q)
-```
+    :var(p r q)
 
-```
-=/(p r q)
-```
+    =/(p r q)
 
 ## Syntax
 
@@ -24,20 +20,16 @@ Regular: *3-fixed*.
 
 ## Examples
 
-```
-~zod:dojo> =foo  :gate  a/@
-                 :var   b  1
-                 :rev   c/@  :(add a b c)
-                 2
-~zod:dojo> (foo 5)
-8
-```
+    ~zod:dojo> =foo  :gate  a/@
+                     :var   b  1
+                     :rev   c/@  :(add a b c)
+                     2
+    ~zod:dojo> (foo 5)
+    8
 
-```
-~zod:dojo> =foo  |=  a/@
-                 =/   b  1
-                 =;   c/@  :(add a b c)
-                 2
-~zod:dojo> (foo 5)
-8
-```
+    ~zod:dojo> =foo  |=  a/@
+                     =/   b  1
+                     =;   c/@  :(add a b c)
+                     2
+    ~zod:dojo> (foo 5)
+    8
