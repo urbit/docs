@@ -39,8 +39,7 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 <ul>
 <li>Chat with us on <a href="https://urbit.org/stream"><code>:talk</code></a></li>
 <li>Our discussion forum <a href="http://urbit.org/fora"><code>fora</code></a></li>
-<li>On Twitter <a href="https://twitter.com/urbit_">@urbit_</a></li>
-<li>On Reddit <a href="https://reddit.com/r/urbit">/r/urbit</a></li>
+<li>On Twitter <a href="https://twitter.com/urbit">@urbit</a></li>
 <li>Or email us at <a href="mailto:urbit@urbit.org">urbit@urbit.org</a></li>
 </ul>
 
