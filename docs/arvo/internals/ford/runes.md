@@ -23,13 +23,44 @@ The `/+` rune accepts a filename as an argument. It interprets that filename as
 a hoon source file within the `lib` directory. This is how we import a shared
 library in urbit.
 
-Example:
+To run this example, put this code in your desk at `gen/faslus.hoon` and run
+`+faslus` in your dojo. This example is a generator. For more information on
+generators, see the [generator docs](https://urbit.org/docs/arvo/generators).
 
     /+  time-to-id
     ::
+    :-  %say
+    |=  {now/@da * *} $~ $~}
+    :-  %noun
     (time-to-id now)
 
 produces: `"c.314d"` (or something similar depending on when you run it)
+
+You can import multiple libraries with a single `/+` rune by separating them
+with commas.
+
+Replace the code in `gen/faslus.hoon` with the following:
+
+    /+  time-to-id, hep-to-cab
+    ::
+    :-  %say
+    |=  {{now/@da * *} $~ $~}
+    :-  %noun
+    =/  id  (time-to-id now)
+    =/  str  "my-id-is-{id}"
+    (hep-to-cab (crip str))
+
+This should print something like `my_id_is_c.3588`.
+
+Another feature of the
+`/+ and`/-`runes is the ability to specify the`ship`and`case\` from which to
+load the library.
+
+Example:
+
+    /+  time-to-id, hep-to-cab/4/~zod
+
+will load the `hep-to-cab` library from `~zod` at `%clay` revision `4`.
 
 ### `/-` import from sur/
 
@@ -45,6 +76,10 @@ Example:
     *serial:talk
 
 produces: `0v0`
+
+`/-` can also take multiple files as arguments, and the ship and case of those
+arguments can be specified. See the `/+` docs for more details about the syntax
+for those features.
 
 ### `/~` twig by hand
 
