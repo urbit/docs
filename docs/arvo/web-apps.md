@@ -20,42 +20,48 @@ relevant path on its app.
 
 Let's first checkout the app `/app/examples/click.hoon`:
 
-    /?    314
-    !:
-    |%
-    ++  move  {bone $diff $mark *}
-    --
-    !:
-    |_  {hid/bowl clicks/@}
-    ++  poke-examples-click-click
-      |=  click/$click
-      ~&  [%poked +(clicks)]
-      :_  +>.$(clicks +(clicks))
-      %+  turn  (prey /the-path hid)
-      |=({o/bone *} [o %diff %examples-click-clicks +(clicks)])
-    ++  peer-the-path
-      |=  pax/path
-      [[[ost.hid %diff %examples-click-clicks clicks] ~] +>.$]
-    --
+  /-  click
+  [. click]
+  !:
+  |%
+  ++  move  {bone $diff $click-clicks clicks}
+  --
+  ::
+  |_  {bow/bowl cis/clicks}
+  ::
+  ++  poke-click-click
+    |=  cik/^click                                       ::<  the sur not the core
+    ^-  (quip move +>.$)
+    ~&  click+clicked++(cis)
+    :_  +>.$(cis +(cis))
+    %+  turn  (prey /click bow)
+    |=  {o/bone *}
+    [o %diff %click-clicks +(cis)]
+  ::
+  ++  peer-click
+    |=  pax/path
+    ^-  (quip move +>.$)
+    [~[[ost.bow %diff %click-clicks cis]] +>.$]
+  ::
 
 There's nothing really new here, except that we use a couple of new marks,
 `click` and `clicks`. When we get poked with a `click`, we increment the
-variable `clicks` in our state and tell all our subcribers the new value. When
+variable `clicks` in our state and tell all our subscribers the new value. When
 someone subscribes to us on the path `/the-path`, we immediately give them the
 current number of clicks.
 
-Let's take a look at the new marks. Here's `/mar/examples/click/click.hoon`:
+Let's take a look at the new marks. Here's `/examples/mar/click/click.hoon`:
 
-    |_  click/$click
-    ++  grab
-      |%
-      ++  noun  |=(* %click)
-      ++  json
-        |=  jon/^json
-        ?>  =('click' (need (so:jo jon)))
-        %click
-      --
+  |_  cik/^click
+  ++  grab
+    |%
+    ++  noun  |=(* %click)
+    ++  json
+      |=  jon/^json
+      ?>  =('click' (need (so:jo jon)))
+      %click
     --
+  --
 
 The mark `examples-click-click` has hoon type `%click`, which means the only
 valid value is `%click`. We can convert from `noun` by just producing `%click`.
@@ -88,13 +94,16 @@ We can test this mark from the command line (don't forget to start your app with
     ford: casting %json to %click
     ford: cast %click
 
-And `/mar/examples/click/clicks.hoon`:
+And `/examples/mar/click/clicks.hoon`:
 
-    |_  clicks/@
+    /-  click
+    [. click]
+    !:
+    |_  cis/clicks
     ++  grow
       |%
       ++  json
-        (joba %clicks (jone clicks))
+        (joba %clicks (jone cis))
       --
     --
 
@@ -126,28 +135,36 @@ to stay true to our examples naming convention.
 
 **Exercise**:
 
--   Modify `:sink` from the subcriptions chapter to listen to `:click` and print
+-   Modify `:sink` from the subscriptions chapter to listen to `:click` and print
     out the subscription updates on the command line.
 
 # Frontend
 
 That's all that's needed for the back end. The front end is just some "sail"
 html (Hoon markup for XML) and javascript. Here's
-`/web/pages/examples/click.hoon`:
+`/examples/web/pages/click.hoon`:
 
+    !:
+    ^-  manx
     ;html
       ;head
-        ;script(type "text/javascript", src "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js");
-        ;script(type "text/javascript", src "/~/at/lib/js/urb.js");
-        ;title: Clickety!
+        ;meta(charset "UTF-8");
+        ;meta
+          =name     "viewport"
+          =content  "width=device-width, initial-scale=1.0";
+        ;title: Examples - Click
+        ;link(rel "stylesheet", type "text/css", href "/~~/pages/click/click.css");
+        ;script(type "text/javascript", src "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js");
+        ;script(type "text/javascript", src "/~~/~/at/lib/js/urb.js");
       ==
       ;body
         ;div#cont
+          ;h1: :click
           ;input#go(type "button", value "Poke!");
           ;div#err(class "disabled");
           ;div#clicks;
         ==
-        ;script(type "text/javascript", src "/pages/examples/click/click.js");
+        ;script(type "text/javascript", src "/~~/pages/click/click.js");
       ==
     ==
 
@@ -174,7 +191,7 @@ application logic can be found. It's in `/web/pages/examples/click/click.js`:
       $go.on("click",
         function() {
           window.urb.send(
-            "click", {mark: "examples-click-click"}
+            "click", {mark: "click-click"}
           ,function(err,res) {
             if(err)
               return $err.text("There was an error. Sorry!")
@@ -187,8 +204,8 @@ application logic can be found. It's in `/web/pages/examples/click/click.js`:
           })
       })
 
-      window.urb.appl = "examples-click"
-      window.urb.bind('/the-path',
+      window.urb.appl = "click"
+      window.urb.bind('/click',
         function(err,dat) {
           clicks = dat.data.clicks
           $clicks.text(clicks)
