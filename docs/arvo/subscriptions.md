@@ -15,28 +15,7 @@ of one-way pokes, but it's such a common pattern that it's built into arvo.
 Let's take a look at two apps, `:examples-source` and `:examples-sink`. First,
 `:examples-source`:
 
-    /?    314
     !:
-    |%
-    ++  move  {bone $diff mark *}
-    --
-    |_  {hid/bowl state/$~}
-    ++  poke-noun
-      |=  arg/*
-      ^-  {(list move) _+>.$}
-      :_  +>.$
-      %+  turn  (prey /example-path hid)
-      |=({o/bone *} `move`[o %diff %noun arg])
-    ++  peer-example-path
-      |=  pax/path
-      ^-  {(list move) _+>.$}
-      ~&  [%subscribed-to pax=pax]
-      [~ +>.$]
-    --
-
-And secondly, `:examples-sink`:
-
-    /?    314
     |%
     ++  move  {bone card}
     ++  card
@@ -44,30 +23,56 @@ And secondly, `:examples-sink`:
           {$pull wire {@p term} $~}
       ==
     --
-    !:
-    |_  {bowl available/?}
+    ::
+    |_  {bow/bowl val/?}                                    ::<  available? (y or n)
+    ::
     ++  poke-noun
-      |=  arg/*
-      ^-  {(list move) _+>.$}
-      ?:  &(=(%on arg) available)
-        [[[ost %peer /subscribe [our %source] /example-path] ~] +>.$(available |)]
-      ?:  &(=(%off arg) !available)
-        [[[ost %pull /subscribe [our %source] ~] ~] +>.$(available &)]
-      ~&  ?:(available %not-subscribed %subscribed)
+      |=  non/*
+      ^-  (quip move +>.$)
+      ?:  &(=(%on non) val)
+        :_  +>.$(val |)
+        :~  :*  ost.bow
+                %peer
+                /subscribe
+                [our.bow %source]
+                /example-path
+            ==
+        ==
+      ?:  &(=(%off non) !val)
+        :_  +>.$(val &)
+        ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
+      ~&  ?:  val
+            sink+unsubscribed+'You are now unsubscribed!'
+          sink+subscribed+'You are now subscribed!'
       [~ +>.$]
+    ::
     ++  diff-noun
-      |=  {wir/wire arg/*}
-      ^-  {(list move) _+>.$}
-      ~&  [%received-data arg]
+      |=  {wir/wire non/*}
+      ^-  (quip move +>.$)
+      ~&  sink+received-data+' You got something!'
+      ~&  sink+data+non
       [~ +>.$]
-    ++  reap
-      |=  {wir/wire error/(unit tang)}
-      ^-  {(list move) _+>.$}
-      ?~  error
-        ~&  %successfully-subscribed
+    ::
+    ++  coup
+      |=  {wir/wire err/(unit tang)}
+      ^-  (quip move +>.$)
+      ?~  err
+        ~&  sink+success+'Poke succeeded!'
         [~ +>.$]
-      ~&  [%subscription-failed error]
+      ~&  sink+error+'Poke failed. Error:'
+      ~&  sink+error+err
       [~ +>.$]
+    ::
+    ++  reap
+      |=  {wir/wire err/(unit tang)}
+      ^-  (quip move +>.$)
+      ?~  err
+        ~&  sink+success+'Peer succeeded!'
+        [~ +>.$]
+      ~&  sink+error+'Peer failed. Error:'
+      ~&  sink+error+err
+      [~ +>.$]
+    ::
     --
 
 Cheat sheet:

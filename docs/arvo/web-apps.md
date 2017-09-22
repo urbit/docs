@@ -30,7 +30,7 @@ Let's first checkout the app `/app/examples/click.hoon`:
   |_  {bow/bowl cis/clicks}
   ::
   ++  poke-click-click
-    |=  cik/^click                                       ::<  the sur not the core
+    |=  cik/^click                                     ::<  the sur not the core
     ^-  (quip move +>.$)
     ~&  click+clicked++(cis)
     :_  +>.$(cis +(cis))

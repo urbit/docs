@@ -12,15 +12,15 @@ entirely stateless, however. Most useful apps require some amount of state.
 Let's build a trivial stateful app. It'll keep a running the sum of all the
 atoms we poke it with. Here's `app/examples/sum.hoon`:
 
-    /?    314
     !:
-    |_  {bowl state/@}
+    |_  {bow/bowl sum/@}                               ::<  sum is our app state
+    ::
     ++  poke-atom
-      |=  arg/@
-      ^-  {(list) _+>.$}
-      ~&  [%so-far (add state arg)]
-      [~ +>.$(state (add state arg))]
-    --
+      |=  tom/@
+      ^-  (quip list +>.$)
+      ~&  sum+(add sum tom)
+      [~ +>.$(sum (add sum tom))]
+    ::
 
 We can start it with `|start %examples-sum`, and then run it:
 
@@ -37,7 +37,7 @@ We can start it with `|start %examples-sum`, and then run it:
 We can see that app state is being saved, but when, where, and how?
 
 The state is stored as the second thing in the `|_` line. In our case, it's
-simply an atom named `state`. We change it by producing our state not with
+simply an atom named `sum`. We change it by producing our state not with
 `+>.$` (as before), but with `+>.$(state (add state arg))`. We've seen all these
 parts before, but you might not recognize them.
 
