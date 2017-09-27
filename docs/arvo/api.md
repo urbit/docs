@@ -146,7 +146,7 @@ requests.
 
 That's really all there is to the reading portion of API connectors.
 
-One of the most accessbile ways to jump into Arvo programming is to just add
+One of the most accessible ways to jump into Arvo programming is to just add
 more places to an existing API connector. It's useful, small in scope, and comes
 in bite-sized chunks since most places are less than ten lines of code.
 
@@ -253,6 +253,9 @@ In case the code in `/=home=/app/gh/hoon` drifts out of sync with this doc:
       ^-  (list place:connector)
       =+  (helpers:connector ost.hid wir "https://api.github.com")
       =>  |%                              ::  gh-specific helpers
+          ++  read-sentinel
+            |=(pax/path [ost %diff %arch `0vsen.tinel ~])
+          ::
           ++  sigh-list-issues-x
             |=  jon/json
             %+  bind  ((ar:jo issue:gh-parse) jon)
@@ -322,13 +325,26 @@ In case the code in `/=home=/app/gh/hoon` drifts out of sync with this doc:
               ^=  read-x
               |=(pax/path (get /repos/[-.+>.pax]/[-.+>+.pax]/issues/[-.+>+>.pax]))
             ::
-              read-y=(read-static ~)
+              ^=  read-y
+              |=  pax/path
+              %.  pax
+              ?:  ((sane %tas) -.+>+>.pax)
+                read-sentinel
+              (read-static %gh-issue ~)
+            ::
               ^=  sigh-x
               |=  jon/json
               %+  bind  (issue:gh-parse jon)
               |=  issue/issue:gh
               gh-issue+issue
             ::
+              sigh-y=sigh-strange
+          ==
+          ^-  place                       ::  /issues/by-repo/<u>/<r>/<n>/<mark>
+          :*  guard={$issues $by-repo @t @t @t @t $~}
+              read-x=read-null
+              read-y=read-sentinel
+              sigh-x=sigh-strange
               sigh-y=sigh-strange
           ==
       ==
