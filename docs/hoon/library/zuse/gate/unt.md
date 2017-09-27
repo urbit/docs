@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++unt`
 
@@ -8,22 +9,26 @@ UGT to UTC time
 
 Transforms Urbit Galactic Time to UTC time, producing an atom.
 
-## Accepts
+Accepts
+-------
 
 An atom of [odor]() [`@da`](), representing an absolute date.
 
-## Produces
+Produces
+--------
 
 An atom.
 
-## Source
+Source
+------
 
     ++  unt                                                 ::  UGT to UTC time
       |=  a=@da
       (div (sub a ~1970.1.1) (bex 64))
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=/hom> (unt -<-)
     1.413.927.704
@@ -31,3 +36,5 @@ An atom.
     569.413.670.400
     ~zod/try=> (unt ~2014.1.1)
     1.388.534.400
+
+

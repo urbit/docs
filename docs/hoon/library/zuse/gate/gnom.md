@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++gnom`
 
@@ -8,7 +9,8 @@ Display ship name
 
 Fetches a ship's display name from %ames.
 
-## Accepts
+Accepts
+-------
 
 `our` is a [`@p`]().
 
@@ -16,7 +18,8 @@ Fetches a ship's display name from %ames.
 
 `him` is a [`@p`]().
 
-## Source
+Source
+------
 
     ++  gnom                                                ::  ship display name
       |=  [[our=@p now=@da] him=@p]  ^-  @t
@@ -27,7 +30,8 @@ Fetches a ship's display name from %ames.
       (rap 3 yow ' ' woy ~)
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (gnom [->-< -<-] ~zod)
     '~zod |Tianming|'
@@ -35,3 +39,5 @@ Fetches a ship's display name from %ames.
     '~doznec ~doznec'
     ~zod/main=> (gnom [->-< -<-] ~tug)
     '~tug |Go-Daigo|'
+
+

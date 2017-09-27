@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++sein`
 
@@ -8,15 +9,18 @@ Direct parent
 
 Computes the direct parent of `who`.
 
-## Accepts
+Accepts
+-------
 
 `who` is a [`++ship`]().
 
-## Produces
+Produces
+--------
 
 A `++ship`.
 
-## Source
+Source
+------
 
     ++  sein                                                ::  autoboss
       |=  who=ship  ^-  ship
@@ -29,7 +33,8 @@ A `++ship`.
         %pawn  `@p`0
       ==
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (sein ~tasfyn-partyv)
     ~doznec

@@ -1,5 +1,5 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 20
 title: Standard library
 ---

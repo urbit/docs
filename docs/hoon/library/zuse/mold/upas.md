@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++upas`
 
@@ -12,3 +13,5 @@ navhome: '/docs/'
               ==                                            ::
 
 See `%clay` doc
+
+

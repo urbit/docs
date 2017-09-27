@@ -1,23 +1,28 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
+
 
 ### `++fray`
 
 High-level delete
 
-Produces a deletion [`++toro`]() for a file located at path `pax`. Handled by
-`%clay`.
+Produces a deletion [`++toro`]() for a file located at path `pax`.
+Handled by `%clay`.
 
-## Accepts
+Accepts
+-------
 
 `pax` is a [`++path`]().
 
-## Produces
+Produces
+--------
 
 A `++toro`.
 
-## Source
+Source
+------
 
     ++  fray                                                ::  high-level delete
           |=  pax=path
@@ -26,7 +31,8 @@ A `++toro`.
           [i.t.pax [%& [*cart [[t.t.t.pax [%del .^(%cx pax)]] ~]]]]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> + %/mek 'a'
     + /~zod/try/4/mek
@@ -34,3 +40,4 @@ A `++toro`.
     [p=~.try q=[%.y q=[p=[p=0v0 q=0v0] q=~[[p=/mek q=[%del p=97]]]]]]
     ~zod/try=> `@t`97
     'a'
+

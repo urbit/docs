@@ -1,5 +1,5 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 4
 ---
 
@@ -9,11 +9,16 @@ sort: 4
 
 ## Expands to
 
-    :conl(%$ :conl(%$ p))
+```
+:conl(%$ :conl(%$ p))
+```
 
-    ~[%$ ~[%$ 'p']]
+```
+~[%$ ~[%$ 'p']]
+```
 
 ## Examples
-
-    ~zod/try=> :/"foo"
-    [[%~. [%~. "foo] ~] ~]
+```
+~zod/try=> :/"foo"
+[[%~. [%~. "foo] ~] ~]
+```
