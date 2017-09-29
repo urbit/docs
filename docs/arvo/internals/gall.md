@@ -43,7 +43,7 @@ app's either `++peek` or `++peer` arm. The first response will always be
 either a `%nice` or a `%mean`, indicating whether or not the
 subscription was successful. After the first response, there will be
 zero or more responses of either `%rush` or `%rust`, which communicate
-either a differntial or full update to the data stream. There may be a
+either a differential or full update to the data stream. There may be a
 `%mean`, which indicates that the subscription has been canceled and no
 more responses will be received along this stream.
 
