@@ -136,25 +136,32 @@ be getting quite used to them.
 
 Let's write our first network message! Here's `/app/examples/pong.hoon`:
 
-    /?    314
-    |%
-      ++  move  {bone term wire *}
-    --
     !:
-    |_  {bowl state/$~}
+    |%
+    ++  move  {bone card}
+    ++  card  $%  {$poke wire dock poke-contents}
+              ==
+    ++  poke-contents  $%  {$atom @}
+                       ==
+    --
+    |_  {bow/bowl $~}                                             ::<  stateless
     ::
     ++  poke-urbit
-      |=  to/@p
+      |=  to/ship
       ^-  {(list move) _+>.$}
-      [[[ost %poke /sending [to dap] %atom 'howdy'] ~] +>.$]
+      ~&  pong+'Outgoing pong!'
+      :_  +>.$
+      ~[[ost.bow %poke /sending [to dap.bow] %atom 'Pong']]
     ::
     ++  poke-atom
-      |=  arg/@
+      |=  tom/@
       ^-  {(list move) _+>.$}
-      ~&  [%receiving (@t arg)]
+      ~&  pong+'Incoming pong!'
+      ~&  pong+received+`@t`tom
       [~ +>.$]
     ::
     ++  coup  |=(* [~ +>.$])
+    ::
     --
 
 Run it with these commands:

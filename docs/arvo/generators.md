@@ -77,30 +77,33 @@ The app can easily be modified to use this (`/app/examples/ping.hoon`):
 
     ::  Allows one ship to ping another with a string of text
     ::
-    ::::  /hoon/ping/examples/app
+    ::::  /===/app/ping/hoon
       ::
-    /?    314
-    |%
-      ++  move  {bone term wire *}
-    --
-    !:
-    |_  {bowl state/$~}
+    /-  ping-message
     ::
-    ++  poke-examples-ping-message
-      |=  {to/@p message/@t}
-      ~&  'sent'
+    !:
+    |%
+    ++  move  {bone card}
+    ++  card  $%  {$poke wire dock poke-contents}
+              ==
+    ++  poke-contents  $%  {$atom @}
+                       ==
+    --
+    |_  {bow/bowl $~}                                       ::<  stateless
+    ::
+    ++  poke-ping-message
+      |=  ping-message
+      ~&  ping+'Message sent!'
       ^-  {(list move) _+>.$}
-      :-  ^-  (list move)
-          :~  `move`[ost %poke /sending [to dap] %atom message]
-          ==
-      +>.$
+      :_  +>.$
+      :_  ~
+      [ost.bow %poke /sending [to dap.bow] %atom message]
     ::
     ++  poke-atom
       |=  arg/@
-      ~&  'received'
+      ~&  ping+'Message received!'
       ^-  {(list move) _+>.$}
-      ::
-      ~&  [%receiving (@t arg)]
+      ~&  ping+message+(@t arg)
       [~ +>.$]
     ::
     ++  coup  |=(* `+>)

@@ -16,61 +16,49 @@ Let's take a look at two apps, `:examples-source` and `:examples-sink`. First,
 `:examples-source`:
 
     !:
+    ::
     |%
     ++  move  {bone card}
-    ++  card
-      $%  {$peer wire {@p term} path}
-          {$pull wire {@p term} $~}
-      ==
+    ++  card  $%  {$diff diff-contents}
+              ==
+    ++  diff-contents  $%  {$noun *}
+                       ==
     --
     ::
-    |_  {bow/bowl val/?}                                    ::<  available? (y or n)
+    |_  {bow/bowl $~}                                             ::<  stateless
     ::
     ++  poke-noun
       |=  non/*
-      ^-  (quip move +>.$)
-      ?:  &(=(%on non) val)
-        :_  +>.$(val |)
-        :~  :*  ost.bow
-                %peer
-                /subscribe
-                [our.bow %source]
-                /example-path
-            ==
-        ==
-      ?:  &(=(%off non) !val)
-        :_  +>.$(val &)
-        ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
-      ~&  ?:  val
-            sink+unsubscribed+'You are now unsubscribed!'
-          sink+subscribed+'You are now subscribed!'
-      [~ +>.$]
+      ^-  {(list move) _+>.$}
+      :_  +>.$
+      %+  turn  (prey /example-path bow)
+      |=({o/bone *} [o %diff %noun non])
     ::
-    ++  diff-noun
-      |=  {wir/wire non/*}
-      ^-  (quip move +>.$)
-      ~&  sink+received-data+' You got something!'
-      ~&  sink+data+non
+    ++  peer-example-path
+      |=  pax/path
+      ^-  {(list move) _+>.$}
+      ~&  source+peer-notify+'Someone subscribed to you!'
+      ~&  source+[ship+src.bow path+pax]
       [~ +>.$]
     ::
     ++  coup
       |=  {wir/wire err/(unit tang)}
-      ^-  (quip move +>.$)
+      ^-  {(list move) _+>.$}
       ?~  err
-        ~&  sink+success+'Poke succeeded!'
+        ~&  source+success+'Poke succeeded!'
         [~ +>.$]
-      ~&  sink+error+'Poke failed. Error:'
-      ~&  sink+error+err
+      ~&  source+error+'Poke failed. Error:'
+      ~&  source+error+err
       [~ +>.$]
     ::
     ++  reap
       |=  {wir/wire err/(unit tang)}
-      ^-  (quip move +>.$)
+      ^-  {(list move) _+>.$}
       ?~  err
-        ~&  sink+success+'Peer succeeded!'
+        ~&  source+success+'Peer succeeded!'
         [~ +>.$]
-      ~&  sink+error+'Peer failed. Error:'
-      ~&  sink+error+err
+      ~&  source+error+'Peer failed. Error:'
+      ~&  source+error+err
       [~ +>.$]
     ::
     --

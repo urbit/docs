@@ -13,11 +13,11 @@ Let's build a trivial stateful app. It'll keep a running the sum of all the
 atoms we poke it with. Here's `app/examples/sum.hoon`:
 
     !:
-    |_  {bow/bowl sum/@}                               ::<  sum is our app state
+    |_  {bow/bowl sum/@}                                    ::<  sum is our app state
     ::
     ++  poke-atom
       |=  tom/@
-      ^-  (quip list +>.$)
+      ^-  {(list move) _+>.$}
       ~&  sum+(add sum tom)
       [~ +>.$(sum (add sum tom))]
     ::

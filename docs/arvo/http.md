@@ -13,60 +13,67 @@ how to make HTTP requests and set timers.
 Let's build an uptime-monitoring system. It'll ping a web service periodically
 and print out an error when the response code isn't 2xx. Here's `app/up.hoon`:
 
-    ::  Up-ness monitor. Accepts atom url, 'on', or 'off'
-    ::
-    ::::  /hoon/up/examples/app
-      ::
-    /?    314
-    |%
-    ++  move  {bone card}
-    ++  card
-      $%  {$hiss wire unit-iden/$~ mark/$httr cage/{mark/$purl vase/purl}}
-          {$wait wire @da}
-      ==
-    ++  action
-      $%  {$on $~}            ::  enable polling('on')
-          {$off $~}           ::  disable polling('off)
-          {$target p/cord}    ::  set poll target('http://...')
-      ==
-    --
-    |_  {hid/bowl on/_| in-progress/_| target/@t}
-    ++  poke-atom
-      |=  url-or-command/@t  ^-  (quip move +>)
-      =+  ^-  act/action
-          ?:  ?=($on url-or-command)  [%on ~]
-          ?:  ?=($off url-or-command)  [%off ~]
-          [%target url-or-command]
-      ?-  -.act
-        $target  [~ +>.$(target p.act)]
-        $off  [~ +>.$(on |)]
-        $on
-          :-  ?:  |(on in-progress)  ~
-              [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
-          +>.$(on &, in-progress &)
-      ==
-    ++  sigh-httr
-      |=  {wir/wire code/@ud headers/mess body/(unit octs)}
-      ~&  'arrive here'
-      ^-  {(list move) _+>.$}
-      ?:  &((gte code 200) (lth code 300))
-        ~&  [%all-is-well code]
-        :_  +>.$
-        [ost.hid %wait /timer (add ~s10 now.hid)]~
-      ~&  [%we-have-a-problem code]
-      ~&  [%headers headers]
-      ~&  [%body body]
-      :_  +>.$
-      [ost.hid %wait /timer (add ~s10 now.hid)]~
-    ++  wake-timer
-      |=  {wir/wire $~}  ^-  (quip move +>)
-      ?:  on
-        :_  +>.$
-        [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
-      [~ +>.$(in-progress |)]
-    ::
-    ++  prep  ~&  target  _`.  :: computed when the source file changes;
-    --                         :: here it prints target then resets our state
+
+::  Up-ness monitor. Accepts atom url, 'on', or 'off'
+::
+::::  /===/app/up/hoon
+  ::
+!:
+::
+|%
+++  move  {bone card}
+++  card
+  $%  {$hiss wire $~ $httr {$purl p/purl}}
+      {$wait wire @da}
+  ==
+++  action
+  $%  {$on $~}            ::  enable polling('on')
+      {$off $~}           ::  disable polling('off)
+      {$target p/cord}    ::  set poll target('http://...')
+  ==
+--
+|_  {bow/bowl on/_| in-progress/_| target/@t}
+::
+++  poke-atom
+  |=  url-or-command/@t
+  ^-  (quip move +>)
+  =+  ^-  act/action
+      ?:  ?=($on url-or-command)  [%on ~]
+      ?:  ?=($off url-or-command)  [%off ~]
+      [%target url-or-command]
+  ?-  -.act
+    $target  [~ +>.$(target p.act)]
+    $off  [~ +>.$(on |)]
+    $on
+      :-  ?:  |(on in-progress)  ~
+          [ost.bow %hiss /request ~ %httr %purl (need (epur target))]~
+      +>.$(on &, in-progress &)
+  ==
+
+++  sigh-httr
+  |=  {wir/wire code/@ud headers/mess body/(unit octs)}
+  ~&  'arrive here'
+  ^-  {(list move) _+>.$}
+  ?:  &((gte code 200) (lth code 300))
+    ~&  [%all-is-well code]
+    :_  +>.$
+    [ost.bow %wait /timer (add ~s10 now.bow)]~
+  ~&  [%we-have-a-problem code]
+  ~&  [%headers headers]
+  ~&  [%body body]
+  :_  +>.$
+  [ost.bow %wait /timer (add ~s10 now.bow)]~
+++  wake-timer
+  |=  {wir/wire $~}  ^-  (quip move +>)
+  ?:  on
+    :_  +>.$
+    [ost.bow %hiss /request ~ %httr %purl (need (epur target))]~
+  [~ +>.$(in-progress |)]
+::
+++  prep  ~&  target  _`.         :: computed when the source file changes;
+::        
+--                                :: here it prints target then resets our state
+
 
 There's some fancy stuff going on here. We'll go through it line by line,
 though.
