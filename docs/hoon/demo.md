@@ -38,9 +38,8 @@ will *return* a list of strings, not *print* a list of strings.
 will be able to see the product.)
 
 The code produces a list in which each item is either a number 
-(as a string), "Fizz", "Buzz", "Fizzbuzz", or the value `~`.  `~` 
-is null, which indicates the end of the list and hence will always 
-be last.
+(as a string), "Fizz", "Buzz", or "Fizzbuzz". The value `~` is 
+"null" and indicates the end of the list.
 
 Line 1 defines a function of one argument, `end`, an unsigned
 integer.
