@@ -57,7 +57,7 @@ whole loop) returns the value `~`.  If not, line 7 returns an
 ordered pair.  (This pair will be: (1) the next item in the list, 
 and (2) the rest of the list.)
 
-The head of the pair is: (i) "FizzBuzz", or "Fizz", or 
+(1) The head of the pair is: (i) "FizzBuzz", or "Fizz", or 
 "Buzz", if the respective tests hit; otherwise, it's 
 (ii) the number in question, `count`.  In case (ii), line 14 
 makes `count` into a `tape`, first by using `:wrap` to produce a 
@@ -65,7 +65,7 @@ pair: runtime type of `count`, and `count` itself. `pave` is a
 Hoon function that converts the type-value pair to a `tape` 
 (like C `sprintf()`).
 
-The tail of the pair&mdash;the rest of the output list&mdash;is 
+(2) The tail of the pair&mdash;the rest of the output list&mdash;is 
 produced at line 15, which repeats the loop (like Clojure 
 `recur`), with `count` incremented.
 
