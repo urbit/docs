@@ -53,7 +53,7 @@ Line 4 defines the product of the loop as a list of `tape`s.
 types.)
 
 Line 5 checks if `count` equals `end`.  If so, line 6 (and the
-whole loop) returns the value `~`.  If not, line 7 returns an 
+whole loop) returns the value `~`.  If not, line 7 produces an 
 ordered pair.  (This pair will be: (a) the next item in the list, 
 and (b) the rest of the list.)
 
