@@ -54,9 +54,9 @@ Line 4 defines the product of the loop as a list of `tape`s.
 types.)
 
 Line 5 checks if `count` equals `end`.  If so, line 6 (and the
-whole loop) returns the value `~`.  If not, line 7 makes the 
-product into an ordered pair.  This pair is: (1) the next item in 
-the list, and (2) the rest of the list.
+whole loop) returns the value `~`.  If not, line 7 returns an 
+ordered pair.  This pair is: (1) the next item in the list, and 
+(2) the rest of the list.
 
 The head of the pair is either: (i) "FizzBuzz", or "Fizz", or 
 "Buzz", if the respective tests hit; or, if the tests don't hit, 
