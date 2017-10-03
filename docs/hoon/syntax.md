@@ -56,7 +56,7 @@ special form has the same syntax as a function call.
 
 The worst-case result of FLC is "DSL cancer."  Every source file
 is effectively written in its own domain-specific language.  To
-read a new file is to learn a new language -- "write-only code."
+read a new file is to learn a new language&mdash;"write-only code."
 
 A fixed reserved-word set, especially with syntax highlighting,
 and especially with orthogonal grammar (in C, you don't write
@@ -71,15 +71,19 @@ higher-order programming; write-only Hoon can certainly be
 
 # Design
 
-Because each twig stem has its own bulb, each has its own parser
-rule.  We'll describe these grammars as we go through the stems.
+Hoon expressions are called 
+*[twigs](https://urbit.org/docs/about/glossary#twig)*. The name 
+of a twig is its 
+*[stem](https://urbit.org/docs/about/glossary#stem)*.  Because 
+each twig stem has its own structure, each has its own parser
+rule. We'll describe these grammars as we go through the stems.
 
 But Hoon has a general syntax design with common principles and
 regularities.  We'll cover those here.
 
 ## Glyphs and characters
 
-Hoon is a heavy punctuation user.  To make ASCII great again,
+Hoon is a heavy punctuation user.  To aid pronunciation,
 we've mapped each punctuation glyph to a syllable:
 
 ```
@@ -133,17 +137,20 @@ implement both.  All tall forms are regular.
 Some twigs also have *irregular forms*, which follow no
 principles at all.  All irregular forms are flat.
 
-Some twigs (simple leafy ones) have *only* irregular forms.
+Some twigs have *only* irregular forms.
 
 ## Keywords versus runes
 
-A regular form starts with a *sigil*, which is either a
-*keyword* or a *rune* -- at the programmer's choice.
+A regular form starts with a 
+*[sigil](https://urbit.org/docs/about/glossary#sigil)*, which is 
+either a *keyword* or a 
+*[rune](https://urbit.org/docs/about/glossary#rune)*&mdash;at 
+the programmer's choice.
 
-A *keyword* is `:` and then the stem label - e.g., `:cons`.
+A *keyword* is `:` and then the stem label&mdash;e.g., `:cons`.
 
-A *rune* is a pair of ASCII punctuation marks (a digraph) - e.g.,
-`:-`.  The first glyph in the rune indicates the category - e.g.,
+A *rune* is a pair of ASCII punctuation marks (a digraph)&mdash;e.g.,
+`:-`.  The first glyph in the rune indicates the category&mdash;e.g.,
 `:` runes make cells.  Runes can be pronounced by their glyphs or
 by their stem -- for `:-`, you can say either "colhep" or "cons".
 
@@ -174,8 +181,10 @@ with the [original](../demo).
 ## Tall regular form
 
 Tall regular form starts with the sigil, followed by a `gap`
-(any whitespace except `ace`), followed by a bulb whose twigs are
-separated by `gap`.
+(any whitespace except `ace`). After this is a 
+*[bulb](https://urbit.org/docs/about/glossary#bulb)*&mdash;the 
+contents of the twig&mdash;whose own twigs are separated by 
+`gap`.
 
 There are four body subtypes: *fixed*, *running*, *jogging*, and
 *battery*.  Stems with a *fixed* number of subexpressions
@@ -284,8 +293,11 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 
 ### Conventions: *battery*
 
-A *battery* bulb is a list of symbol-twig pairs, for the battery
-of a core.  A conventional example:
+A *battery* bulb is a list of symbol-twig pairs, for the
+*[battery](https://urbit.org/docs/about/glossary#battery)*
+of a 
+*[core](https://urbit.org/docs/about/glossary#core)*.  A 
+conventional example:
 
 ```
 |%
