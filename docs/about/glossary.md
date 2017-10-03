@@ -57,6 +57,10 @@ whose number is its bottom half. So the planet `~firbyr-napbes`,
 `48.879`, whose parent is `~mun`, `0xef`, `239`. The parent of `~mun`
 and all galaxies is `~zod`, `0`.
 
+##### Pier
+
+A ship's *pier* is its Unix directory.  For planets the name of the pier is usually the planet name.
+
 ### Nock
 
 > Nock is a Turing-complete, non-lambda combinator interpreter.
