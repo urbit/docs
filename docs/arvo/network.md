@@ -12,39 +12,43 @@ planets to talk to each other.
 
 All we've written up until now are just shell commands that produce a value and
 then disappear. To listen for and receive messages from other planets, we'll
-need an app. Let's look at a very simple one:
+need an app. Let's look at a very simple one, `echo.hoon`:
 
     ::  Accepts any noun from dojo and prints it out
     ::
-    ::::  /hoon/echo/examples/app
+    ::::  /===/app/echo/hoon
       ::
-    /?    314
-    !:
-    |_  {bowl state/$~}
-    ++  poke-noun
-      |=  arg/*
-      ^-  {(list) _+>.$}
-      ~&  [%argument arg]
-      [~ +>.$]
-    --
+    !:                          :: enables debug printfs
+    |%                          :: forms a core with subject as payload
+    ++  move  {bone card}       :: defines echo app's arvo move mold
+    ++  card  $%  $~            :: defines card (data) mold as null tagged union 
+              ==                :: end of mold definition; see $%
+    --                          :: end of card arm definition
+    ::                          ::
+    |_  {bow/bowl $~}           :: forms a core with bowl (app state) as sample
+    ++  poke-noun               :: begin definition of poke-noun arm
+      |=  non/*                 :: forms a gate which accepts any noun
+      ^-  {(list move) _+>.$}   :: casts product to mold of moves and context
+      ~&  echo+noun+non         :: debug printf, i.e. '[%echo %noun *]'
+      [~ +>.$]                  :: produce a cell of empty list and our state
+    --                          :: end of poke-noun arm definition
 
 This is a very simple app that does only one thing. If you poke it with a value,
 it prints that value out. To try this out, you have to start the app, then you
 can poke it from the command line with the following commands:
 
-    ~fintud-macrep:dojo> |start %examples-echo
-    'prep'
+    ~fintud-macrep:dojo> |start %echo
     >=
-    ~fintud-macrep:dojo> :examples-echo 5
-    [%argument 5]
+    ~fintud-macrep:dojo> :echo 5
+    [%echo %noun 5]
     >=
     ~fintud-macrep:dojo> :examples-echo [1 2]
-    [%argument [1 2]]
+    [%echo %noun [1 2]]
     >=
 
-> There is currently a bug where the `%argument` lines are printed *above* the
-> line you entered, so your output may not look exactly like this. `>=` means
-> that a command was successfully received and executed.
+> There is currently a bug where the `[%echo %noun *]` lines are printed *above*
+> the line you entered, so your output may not look exactly like this. `>=` 
+> means that a command was successfully received and executed.
 
 Most of the app code should be simple enough to guess its function. The
 important part of this code is the definition of `++poke-noun`.
@@ -54,16 +58,17 @@ it by sending it messages. The most straightforward way to do that is to poke it
 from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
-In this case, `++poke-noun` takes an argument `arg` and prints it out with `~&`
-([sigpam](../../hoon/twig/sig-hint/pam-dump/)). This is an unusual rune that
-formally "does nothing", but the interpreter detects it and printfs the first
-child, before executing the second as if the first didn't exist. This is a
-slightly hacky way of printing to the console, but we'll get to the correct way
-later on.
+In this case, `++poke-noun` takes an argument (*sample*) `arg` and 
+prints it to dojo with `~&` ([sigpam](../../hoon/twig/sig-hint/pam-dump/)). 
+This is an unusual rune that formally "does nothing", but the interpreter 
+detects it and printfs the first child, before executing the second as if the
+first didn't exist. This is a slightly hacky way of printing to the console, 
+but we'll get to the correct way later on.
 
 But what does `++poke-noun` produce? Recall that `^-` casts to a type. In this
-case, it's declaring that the end result of the function will be of type
-`{(list) _+>.$}`. But what does this mean?
+case, it's declaring that the end result (*product*) of the function 
+(`++poke-noun`'s *gate*) will be of type `{(list) _+>.$}`. But what does this 
+mean?
 
 The phrase to remember is "a list of moves and our state". Urbit is a message
 passing system, so whenever we want to do something that interacts with the rest
@@ -81,20 +86,31 @@ Let's look at another example (edit your code in `/app/examples/echo/hoon` to
 reflect the code below). Say we want to only accept a number, and then print out
 the square of that number.
 
-    /?    314
-    !:
-    |_  {bowl state/$~}
+    ::  Accepts any atom from dojo and prints its square
     ::
+    ::::  /===/app/echo/hoon
+      ::
+    !:                          
+    |%                          
+    ++  move  {bone card}       
+    ++  card  $%  $~            
+              ==                
+    --                          
+    ::                          
+    |_  {bow/bowl $~}           
     ++  poke-atom
-      |=  arg/@
-      ^-  {(list) _+>.$}
-      ~&  [%square (mul arg arg)]
-      [~ +>.$]
-    --
+      |=  atm/@                 
+      ^-  {(list move) _+>.$}   
+      ~&  [%square atm (mul atm atm)]
+      [~ +>.$]                  
+    --                          
 
 A few things have changed. Firstly, we no longer accept arbitrary nouns because
 we can only square atoms (integers, in this case an unsigned one). Thus, our
-argument is now `arg/@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
+argument is now `atm/@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
+Also note how the format of the sample we send to the debug printf rune `~&` 
+has moved from irregular (`echo+noun+non`) to regular 
+(`[%square atm (mul atm atm)]`).
 
 # Intro to marks
 
