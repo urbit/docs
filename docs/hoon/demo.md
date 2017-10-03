@@ -69,7 +69,8 @@ Hoon function that converts the type-value pair to a `tape`
 produced at line 15, which repeats the loop (like Clojure 
 `recur`), with `count` incremented.
 
-You can test this code by mounting your home desk by entering 
+You can test this code by mounting your home desk with 
 `|mount %` from the dojo; saving the above code as 
-`home/gen/fizzbuzz.hoon` in your Urbit pier; then typing 
+`home/gen/fizzbuzz.hoon` in your Urbit 
+[pier](https://urbit.org/docs/about/glossary#pier); then typing 
 `+fizzbuzz 100` in the dojo.
