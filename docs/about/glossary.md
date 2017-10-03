@@ -81,7 +81,7 @@ A ship's *pier* is its Unix directory.  For planets the name of the pier is usua
 > Hoon is a strict, higher-order typed functional language that compiles
 > itself to Nock.
 
-###### span: an inferred type
+###### <h6 id="span">span:</h6> an inferred type
 
 A *span* defines a set (finite or infinite) of nouns and ascribes some
 semantics to it. There is no Hoon syntax for a span; it is always
@@ -89,18 +89,18 @@ produced as the inferred range of an expression (*twig*).
 
 *See [basic types](../../hoon/basic/#-type-span-and-mold).*
 
-###### core: a code-data cell
+###### <h6 id="core">core:</h6> a code-data cell
 
 The code (*battery*) is the head, the data (*payload*) is the tail. All
 code-data structures in normal languages (functions, objects, modules,
 etc) become *core*s in Hoon.
 
--   *battery*: the code of a core, a tree of *arms*
--   *payload*: the data in a core
+-   <h6 id="battery">*battery*:</h6> the code of a core, a tree of *arms*
+-   <h6 id="payload">*payload*:</h6> the data in a core
 
 *See [basic types](../../hoon/basic)*.
 
-###### arm: a named, functionally-computed attribute of a core
+###### <h6 id="arm">arm:</h6> a named, functionally-computed attribute of a core
 
 The *twig* of each arm is compiled to a Nock formula, with the
 enclosing `core` itself as the subject.
@@ -133,7 +133,7 @@ properties of the span of a compatible core). The default is `gold`
 
 *See [advanced types](/hoon/advanced)*.
 
-###### gate: a function/lambda/closure
+###### <h6 id="gate">gate:</h6> a function/lambda/closure
 
 A *gate* is a core with one arm. To call a gate on an argument,
 replace the sample (at [tree
@@ -149,7 +149,7 @@ The payload of a gate has a shape of `{sample context}`.
 [`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for
 calling a `gate`).*
 
-###### mold: a type constructor / validator
+###### <h6 id="mold">mold:</h6> a type constructor / validator
 
 A *mold* is an idempotent gate (function), accepting any noun, and
 producing a range with a useful span.
@@ -196,7 +196,7 @@ Some common auras and their aliases:
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
 
-###### twig: a Hoon expression
+###### <h6 id="twig">twig:</h6> a Hoon expression
 
 A *twig* is a Hoon expression. Specifically, twig is the mold for the
 noun that a Hoon source expression compiles to. A twig is always a cell.
@@ -205,16 +205,16 @@ A twig has one of two forms: `{twig twig}`, which produces the ordered
 pair of the two twigs, or a cell `{stem bulb}`, where `stem` is an
 atomic symbol.
 
--   *stem*: an atomic symbol (`@tas`) - the name of a twig.
--   *bulb*: The mold of the twig's contents.
+-   <h6 id="stem">*stem*:</h6> an atomic symbol (`@tas`) - the name of a twig.
+-   <h6 id="bulb">*bulb*:</h6> The mold of the twig's contents.
 
 Most twigs have a *regular form*, beginning with a *sigil* which is
 either a *keyword* or a *rune*. Some twigs also have a syntactic
 *irregular form*; a few have *only* an *irregular form*.
 
--   *sigil*: a *keyword* or *rune* used to begin a twig
+-   <h6 id="sigil">*sigil*:</h6> a *keyword* or *rune* used to begin a twig
 -   *keyword*: the value of a stem, prefixed with `:`.
--   *rune*: a pair of ASCII symbols used to begin a twig.
+-   <h6 id="rune">*rune*:</h6> a pair of ASCII symbols used to begin a twig.
 
 For example, the stem `%if` becomes the keyword
 [`:if`](../../hoon/twig/wut-test/col-if/), with the rune `?:`. The first
