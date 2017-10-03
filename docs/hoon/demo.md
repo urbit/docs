@@ -72,5 +72,5 @@ produced at line 15, which repeats the loop (like Clojure
 You can test this code by mounting your home desk with 
 `|mount %` from the dojo; saving the above code as 
 `home/gen/fizzbuzz.hoon` in your Urbit 
-[pier](https://urbit.org/docs/about/glossary/#pier); then typing 
+[pier](https://urbit.org/docs/about/glossary#pier); then typing 
 `+fizzbuzz 100` in the dojo.
