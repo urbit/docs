@@ -79,9 +79,11 @@ type has a name, called a
 *[stem](https://urbit.org/docs/about/glossary#stem)*.  Finally, 
 each stem has its own structure, e.g.:
 
-> :-
->   (add 12 13)
-> (sub 10 7)
+```
+  :-
+    (add 12 13)
+  (sub 10 7)
+```
 
 This twig uses the rune `:-` (stem: `cons`) to produce an ordered 
 pair: `[25 3]`.  There are two subexpressions following the `:-`, 
