@@ -55,9 +55,9 @@ is to return.
 Line 5 uses the `?:` rune, which is a conditional. This line 
 checks whether `count` equals `end`.  If so, line 6 (and the
 whole loop) returns the value `~`.  The list is finished.  If not, 
-line 7 produces an ordered pair.  (This pair will be: (a) the next 
+line 7 produces an ordered pair.  This pair will be: (a) the next 
 item in the list, determined by lines 8-14; and (b) the rest of 
-the list, determined by line 15.)
+the list, determined by line 15.
 
 (a) The head of the pair is: (i) "FizzBuzz", or "Fizz", or 
 "Buzz", if the respective tests hit; otherwise, it's 
