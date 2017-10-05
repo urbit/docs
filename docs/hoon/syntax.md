@@ -72,13 +72,22 @@ higher-order programming; write-only Hoon can certainly be
 # Design
 
 Hoon expressions are called 
-*[twigs](https://urbit.org/docs/about/glossary#twig)*. The name 
-of a twig is its 
-*[stem](https://urbit.org/docs/about/glossary#stem)*.  Because 
-each twig stem has its own structure, each has its own parser
-rule. We'll describe these grammars as we go through the stems.
+*[twigs](https://urbit.org/docs/about/glossary#twig)*, and at the 
+beginning of each twig is a 
+*[rune](https://urbit.org/docs/about/glossary#rune)*.  Each rune 
+type has a name, called a 
+*[stem](https://urbit.org/docs/about/glossary#stem)*.  Finally, 
+each stem has its own structure, e.g.:
 
-But Hoon has a general syntax design with common principles and
+> :-
+>   (add 12 13)
+> (sub 10 7)
+
+This twig uses the rune `:-` (stem: `cons`) to produce an ordered 
+pair: `[25 3]`.  There are two subexpressions following the `:-`, 
+corresponding to the two parts of the `cons` structure.  
+
+Hoon has a general syntax design with common principles and
 regularities.  We'll cover those here.
 
 ## Glyphs and characters
@@ -139,48 +148,19 @@ principles at all.  All irregular forms are flat.
 
 Some twigs have *only* irregular forms.
 
-## Keywords versus runes
+## Runes
 
-A regular form starts with a 
-*[sigil](https://urbit.org/docs/about/glossary#sigil)*, which is 
-either a *keyword* or a 
-*[rune](https://urbit.org/docs/about/glossary#rune)*&mdash;at 
-the programmer's choice.
-
-A *keyword* is `:` and then the stem label&mdash;e.g., `:cons`.
+As mentioned earlier, a regular form starts with a 
+*[rune](https://urbit.org/docs/about/glossary#rune).
 
 A *rune* is a pair of ASCII punctuation marks (a digraph)&mdash;e.g.,
 `:-`.  The first glyph in the rune indicates the category&mdash;e.g.,
 `:` runes make cells.  Runes can be pronounced by their glyphs or
-by their stem -- for `:-`, you can say either "colhep" or "cons".
-
-Keywords may be less challenging for early learners.  Rune style
-is less cluttered and distracting for experienced programmers;
-the system codebase is all in rune style.   Beginners can start
-with keywords and move to runes; start with runes and stick
-with runes; or start with keywords and stick with keywords.
-
-Here's the FizzBuzz demo code, in idiomatic rune syntax.  Compare
-with the [original](../demo).
-
-```
-  |=  end/atom
-  =/  count  1
-  |-  ^-  (list tape)
-  ?:  =(end count)  ~
-  :_  $(count (add 1 count))
-  ?:  =(0 (mod count 15))
-    "FizzBuzz"
-  ?:  =(0 (mod count 5))
-    "Fizz"
-  ?:  =(0 (mod count 3))
-    "Buzz"
-  (pave !>(count))
-```
+by their stem&mdash;for `:-`, you can say either "colhep" or "cons".
 
 ## Tall regular form
 
-Tall regular form starts with the sigil, followed by a `gap`
+Tall regular form starts with the rune, followed by a `gap`
 (any whitespace except `ace`). After this is a 
 *[bulb](https://urbit.org/docs/about/glossary#bulb)*&mdash;the 
 contents of the twig&mdash;whose own twigs are separated by 
@@ -188,7 +168,7 @@ contents of the twig&mdash;whose own twigs are separated by
 
 There are four body subtypes: *fixed*, *running*, *jogging*, and
 *battery*.  Stems with a *fixed* number of subexpressions
-self-terminate.  For instance, `:if` has three subexpressions and
+self-terminate.  For instance, `?:` has three subexpressions and
 is self-terminating.  Otherwise the twig is terminated by a
 `gap`, then either `==` (*running* or *jogging*, most twigs) or
 `--` (*battery*).
@@ -312,7 +292,7 @@ conventional example:
 
 ## Flat regular form
 
-Flat regular form starts with the sigil, followed by `pal`
+Flat regular form starts with the rune, followed by `pal`
 (`(`, left parenthesis), followed by a bulb whose subexpressions
 are separated by `ace` (one space), followed by `par` (`)`, right
 parenthesis).
