@@ -208,22 +208,15 @@ atomic symbol.
 -   <h6 id="stem">*stem*:</h6> an atomic symbol (`@tas`) - the name of a twig.
 -   <h6 id="bulb">*bulb*:</h6> The mold of the twig's contents.
 
-Most twigs have a *regular form*, beginning with a *sigil* which is
-either a *keyword* or a *rune*. Some twigs also have a syntactic
-*irregular form*; a few have *only* an *irregular form*.
+Most twigs have a *regular form*, beginning with a *rune*. Some twigs 
+also have a syntactic *irregular form*; a few have *only* an *irregular form*.
 
--   <h6 id="sigil">*sigil*:</h6> a *keyword* or *rune* used to begin a twig
--   *keyword*: the value of a stem, prefixed with `:`.
 -   <h6 id="rune">*rune*:</h6> a pair of ASCII symbols used to begin a twig.
 
-For example, the stem `%if` becomes the keyword
-[`:if`](../../hoon/twig/wut-test/col-if/), with the rune `?:`. The first
-symbol in a rune represents a family of related `twig`s. For example,
-the [`?` family](../../hoon/twig/wut-test/) are all conditionals.
-
-The keyword or rune forms are up to the programmer's choice. Most
-existing code uses runes, but the keyword form makes the learning path
-easier.
+For example, the rune [`?:`](../../hoon/twig/wut-test/col-if/) is 
+Hoon's most common conditional, a branch on a boolean test.  The first symbol 
+in a rune represents a family of related `twig`s. For example, the 
+[`?` family](../../hoon/twig/wut-test/) are all conditionals.
 
 A regular twig has two syntactic forms, *tall* and *flat*:
 
