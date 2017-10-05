@@ -85,9 +85,9 @@ each stem has its own structure, e.g.:
   (sub 10 7)
 ```
 
-This twig uses the rune `:-` (stem: "cons") to produce an ordered 
+This twig uses the rune `:-` (stem: `%clhp`) to produce an ordered 
 pair: `[25 3]`.  There are two subexpressions following the `:-`, 
-corresponding to the two parts of the `cons` structure.  
+corresponding to the two parts of the `%clhp` structure.  
 
 Hoon has a general syntax design with common principles and
 regularities.  We'll cover those here.
@@ -157,8 +157,8 @@ As mentioned earlier, a regular form starts with a
 
 A *rune* is a pair of ASCII punctuation marks (a digraph)&mdash;e.g.,
 `:-`.  The first glyph in the rune indicates the category&mdash;e.g.,
-`:` runes make cells.  Runes can be pronounced by their glyphs or
-by their stem&mdash;for `:-`, you can say either "colhep" or "cons".
+`:` runes make cells.  Runes can be pronounced by their glyphs&mdash;
+for `:-`, you say "colhep".
 
 ## Tall regular form
 
