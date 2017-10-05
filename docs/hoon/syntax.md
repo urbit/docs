@@ -85,7 +85,7 @@ each stem has its own structure, e.g.:
   (sub 10 7)
 ```
 
-This twig uses the rune `:-` (stem: `cons`) to produce an ordered 
+This twig uses the rune `:-` (stem: "cons") to produce an ordered 
 pair: `[25 3]`.  There are two subexpressions following the `:-`, 
 corresponding to the two parts of the `cons` structure.  
 
