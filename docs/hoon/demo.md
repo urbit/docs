@@ -38,8 +38,10 @@ The code produces a list in which each item is either a number
 (as a string), "Fizz", "Buzz", or "Fizzbuzz". The value `~` is 
 "null" and indicates the end of the list.
 
-Line 1 uses `|=` to define a function of one argument, `end`, 
-which is of the type `atom` (i.e. an unsigned integer).
+Line 1 uses the `|=` 
+*[rune](https://urbit.org/docs/about/glossary#rune)* to define a 
+function of one argument, `end`, which is of the type `atom` (i.e. 
+an unsigned integer).
 
 Line 2 declares a variable, `count`, with initial value `1`.
 
@@ -47,9 +49,8 @@ Line 3 begins a loop.
 
 Line 4 defines the product of the loop as a list of `tape`s. 
 (A `tape` is a list of characters, one of Hoon's two string 
-types.)  The `^-` 
-*[rune](https://urbit.org/docs/about/glossary#rune)* is used for 
-defining the type the function is to return. 
+types.)  The `^-` rune is used for defining the product type the function 
+is to return. 
 
 Line 5 uses the `?:` rune, which is a conditional. This line 
 checks whether `count` equals `end`.  If so, line 6 (and the
