@@ -164,9 +164,9 @@ for `:-`, you say "colhep".
 
 Tall regular form starts with the rune, followed by a `gap`
 (any whitespace except `ace`). After this is a 
-*[bulb](https://urbit.org/docs/about/glossary#bulb)*&mdash;the 
-contents of the twig&mdash;whose own twigs are separated by 
-`gap`.
+*[bulb](https://urbit.org/docs/about/glossary#bulb)*&mdash;which 
+defines the types of content the twig can have&mdash;whose own twigs 
+are separated by `gap`.
 
 There are four body subtypes: *fixed*, *running*, *jogging*, and
 *battery*.  Stems with a *fixed* number of subexpressions
