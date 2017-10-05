@@ -153,7 +153,7 @@ Some twigs have *only* irregular forms.
 ## Runes
 
 As mentioned earlier, a regular form starts with a 
-*[rune](https://urbit.org/docs/about/glossary#rune).
+[rune](https://urbit.org/docs/about/glossary#rune).
 
 A *rune* is a pair of ASCII punctuation marks (a digraph)&mdash;e.g.,
 `:-`.  The first glyph in the rune indicates the category&mdash;e.g.,
