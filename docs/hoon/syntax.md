@@ -99,7 +99,7 @@ Code is often vocalized or subvocalized. "pal" is easier to say,
 aloud or silently, than "left paren".
 
 Note that the list includes two separate whitespace forms: `ace`
-for a single space, `gap` for 2+, comment, and newline.  In Hoon,
+for a single space; `gap` is either 2+ spaces or a newline.  In Hoon,
 the only significance in whitespace is the difference between
 `ace` and `gap`. Comments start with `::` and run to the end of 
 the line.
@@ -122,8 +122,7 @@ Each rune is followed by one or more subexpressions. The number and
 kind of subexpressions depend on the rune.
 
 ```
-:-
-  25
+:-  25
 3
 ```
 
@@ -163,8 +162,7 @@ Some runes also have *irregular forms*, which follow no
 principles at all.  All irregular forms are flat.
 
 ```
-.=
-  22
+.=  22
 23
 ```
 
