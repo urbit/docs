@@ -201,7 +201,7 @@ a list of symbol-child pairs, separated by a gap, prefixed by `++`
 and then a gap.
 
 This definition is enough to write Hoon that will parse.  But the 
-proper shape of the whitespace gaps rquiress an informal convention.
+proper shape of the whitespace gaps requires an informal convention.
 
 Whitespace design in Hoon is an art, not a science.  It involves
 both tall/flat mode switches and well-shaped gaps.  (Hoon layout
