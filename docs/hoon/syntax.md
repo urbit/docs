@@ -110,7 +110,7 @@ line comment at column 57.
 
 ## Expressions and Runes
 
-Each regular Hoon expression begins with a  
+Each regular Hoon expression begins with a 
 [rune](https://urbit.org/docs/about/glossary#rune). A rune is a pair 
 of ASCII punctuation marks (a digraph)&mdash;e.g., `:-`.  The first 
 glyph in the rune indicates the category&mdash;e.g., `:` runes make 
@@ -177,10 +177,10 @@ Some twigs have *only* irregular forms.
 ## Tall regular form
 
 Tall regular form starts with the rune, followed by a `gap`.
-(Remember, a `gap` is any whitespace except `ace`, including 
-either comments or line breaks.). After that are the number and 
-types of subexpressions appropriate for that rune.  Each 
-subexpression is separated from the others by a `gap`.
+(Remember, a `gap` is any whitespace other than `ace`.). After 
+that are the number and types of subexpressions appropriate for 
+that rune.  Each subexpression is separated from the others by a 
+`gap`.
 
 Let's call everything in the twig after the initial rune the twig 
 *body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
