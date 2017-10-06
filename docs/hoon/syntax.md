@@ -47,10 +47,10 @@ shaped more or less like procedural programs.
 
 ## Feature/label confusion
 
-*Feature/label confusion* (FLC) is any syntax which makes it hard 
-for the eye to tell whether a token on the screen is a feature of 
-the language, or a label in the program.  For example, in Lisp a
-special form has the same syntax as a function call.
+*Feature/label confusion* (FLC) is the result of any syntax that
+makes it hard for the eye to tell whether a token on the screen is 
+a feature of the language, or a label in the program.  For example, 
+in Lisp a special form has the same syntax as a function call.
 
 The worst-case result of FLC is "DSL cancer."  Every source file
 is effectively written in its own domain-specific language.  To
@@ -101,8 +101,8 @@ aloud or silently, than "left paren".
 Note that the list includes two separate whitespace forms: `ace`
 for a single space; `gap` is either 2+ spaces or a newline.  In Hoon,
 the only significance in whitespace is the difference between
-`ace` and `gap`. Comments start with `::` and run to the end of 
-the line.
+`ace` and `gap`. Comments also count as `gap` whitespace&mdash;they 
+start with `::` and run to the end of the line.
 
 An 80-column right margin is strongly encouraged.  Really 
 well-groomed Hoon uses a 55-column code margin and puts a standard 
@@ -119,7 +119,7 @@ pairs). We pronounce runes using their glyph names&mdash;for `:-`,
 we say "colhep".
 
 Each rune is followed by one or more subexpressions. The number and 
-kind of subexpressions depend on the rune.
+kind of subexpressions depend on the rune used.
 
 ```
 :-  25
@@ -134,7 +134,7 @@ and the second of which becomes the *tail* (i.e., the right).
 Hoon expressions are sometimes called 
 [twigs](https://urbit.org/docs/about/glossary#twig). You'll find that 
 Hoon code has a tree-like structure, so you can think of the various 
-expressions as twigs of this tree.  The subexpressions following the 
+expressions as twigs of the tree.  The subexpressions following the 
 rune are sometimes called the *children* of that twig.
 
 ## Tall and flat forms
@@ -176,15 +176,15 @@ Some twigs have *only* irregular forms.
 
 ## Tall regular form
 
-Tall regular form starts with the rune, followed by a `gap`.
-(Remember, a `gap` is any whitespace other than `ace`.). After 
+Tall regular forms start with a rune followed by a `gap`.
+(Remember, a `gap` is any whitespace other than `ace`.) After 
 that are the number and types of subexpressions appropriate for 
-that rune.  Each subexpression is separated from the others by a 
-`gap`.
+that rune.  Each subexpression is separated from its neighboring 
+subexpressions by a `gap`.
 
 Let's call everything in the twig after the initial rune the twig 
 *body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
-and [battery](https://urbit.org/docs/about/glossary#battery). 
+and *[battery](https://urbit.org/docs/about/glossary#battery)*. 
 
 Runes with a *fixed* number of subexpressions self-terminate. For 
 instance, the `:-` and `.=` runes each have two subexpressions 
@@ -194,12 +194,13 @@ a `gap`, then either `==` (*running* or *jogging*, most twigs) or
 
 The *running* body has a list of *children* (i.e., subexpressions). 
 The *jogging* body has a list of child pairs, where the members of 
-each pair is separated by a `gap`.  The *battery* body is
+each pair are separated by a `gap`.  The *battery* body is
 a list of symbol-child pairs, separated by a gap, prefixed by `++`
 and then a gap.
 
-This definition is enough to write Hoon that will parse.  But the 
-proper shape of the whitespace gaps requires an informal convention.
+This definition is enough to write Hoon that will parse.  But 
+writing code with optimal whitespace management requires some 
+additional informal conventions.
 
 Whitespace design in Hoon is an art, not a science.  It involves
 both tall/flat mode switches and well-shaped gaps.  (Hoon layout
@@ -334,7 +335,7 @@ There is no flat regular form for *battery* bodies.  Be tall.
 
 Hoon does not enforce any rule on symbols, except that capitals
 are not allowed (use kebab-case).  However, a lot of system code
-is written in using "lapidary" conventions that need explanation.
+is written using "lapidary" conventions that need explanation.
 
 Naming things is one of the hard problems in CS.  Dodging this
 problem is one of the reasons mathematicians use Greek letters,
