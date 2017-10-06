@@ -186,7 +186,7 @@ subexpression is separated from the others by a `gap`.
 
 Let's call everything in the twig after the initial rune the twig 
 *body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
-and *[battery](https://urbit.org/docs/about/glossary#battery)*. 
+and [battery](https://urbit.org/docs/about/glossary#battery). 
 
 Runes with a *fixed* number of subexpressions self-terminate. For 
 instance, the `:-` and `.=` runes each have two subexpressions 
@@ -296,9 +296,9 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 ### Conventions: *battery*
 
 A *battery* body has a list of symbol-child pairs, for the
-*[battery](https://urbit.org/docs/about/glossary#battery)*
+[battery](https://urbit.org/docs/about/glossary#battery)
 of a 
-*[core](https://urbit.org/docs/about/glossary#core)*.  A 
+[core](https://urbit.org/docs/about/glossary#core).  A 
 conventional example:
 
 ```
