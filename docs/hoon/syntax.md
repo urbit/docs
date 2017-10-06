@@ -186,9 +186,10 @@ subexpression is separated from the others by a `gap`.
 
 Let's call everything in the twig after the initial rune the twig 
 *body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
-and *[battery](https://urbit.org/docs/about/glossary#battery)*.  
-Runes with a *fixed* number of subexpressions self-terminate.  
-For instance, the `:-` and `.=` runes each have two subexpressions 
+and *[battery](https://urbit.org/docs/about/glossary#battery)*. 
+
+Runes with a *fixed* number of subexpressions self-terminate. For 
+instance, the `:-` and `.=` runes each have two subexpressions 
 and are self-terminating.  Otherwise the twig is terminated by both
 a `gap`, then either `==` (*running* or *jogging*, most twigs) or
 `--` (*battery*).
