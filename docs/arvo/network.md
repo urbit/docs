@@ -294,7 +294,7 @@ The move ends with `*` (that is, any noun) since each type of move takes
 different data. In our case, a `%poke` move takes a target (urbit and app) and
 marked data, then pokes the arm of the corresponding mark on that app on that
 urbit with that data. `[to-urbit-address %pong]` is the target urbit and app,
-`%atom` is the `mark`, and`'howdy'` is the data.
+`%atom` is the `mark`, and`'Pong'` is the data.
 
 When Arvo receives a `%poke` move, it calls the appropriate `++poke`. The same
 mechanism is used for sending messages between apps on the same urbit as for
@@ -308,9 +308,9 @@ sending messages between apps on different urbits.
 **Exercises**:
 
 -   Extend either of the apps in the first two exercises to accept input over
-    the network in the same way as `pong`.
+    the network in the same way as `%pong`.
 
--   Modify `examples-pong` to print out a message when it receives
+-   Modify `pong.hoon` to print out a message when it receives
     acknowledgement.
 
 -   Write two apps, `even` and `odd`. When you pass an atom to `even`, check
