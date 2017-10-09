@@ -86,31 +86,28 @@ Let's look at another example (edit your code in `/app/examples/echo/hoon` to
 reflect the code below). Say we want to only accept a number, and then print out
 the square of that number.
 
-    ::  Accepts any atom from dojo and prints its square
+    ::  Accepts an atom from the dojo and squares it.
     ::
-    ::::  /===/app/echo/hoon
+    ::::  /===/app/square/hoon
       ::
     !:                          
-    |%                          
-    ++  move  {bone card}       
+    |%                                                  ::>  no moves in :square
+    ++  move  {bone card}                               ::>  no cards in :square
     ++  card  $%  $~            
               ==                
     --                          
-    ::                          
+    ::                                                  ::<  stateless
     |_  {bow/bowl $~}           
     ++  poke-atom
-      |=  atm/@                 
+      |=  tom/@                 
       ^-  {(list move) _+>.$}   
-      ~&  [%square atm (mul atm atm)]
+      ~&  square+(mul tom tom)
       [~ +>.$]                  
     --                          
 
 A few things have changed. Firstly, we no longer accept arbitrary nouns because
 we can only square atoms (integers, in this case an unsigned one). Thus, our
-argument is now `atm/@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
-Also note how the format of the sample we send to the debug printf rune `~&` 
-has moved from irregular (`echo+noun+non`) to regular 
-(`[%square atm (mul atm atm)]`).
+argument is now `tom/@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
 
 # Intro to marks
 
@@ -132,9 +129,9 @@ commands:
 
     ~fintud-macrep:dojo> |start %square
     >=
-    ~fintud-macrep:dojo> :examples-square 6
+    ~fintud-macrep:dojo> :square 6
     gall: %square: no poke arm for noun
-    ~fintud-macrep:dojo> :examples-square &atom 6
+    ~fintud-macrep:dojo> :square &atom 6
     [%square 36]
     >=
 
@@ -150,49 +147,62 @@ be getting quite used to them.
 
 # Sending a message to another urbit
 
-Let's write our first network message! Here's `/app/examples/pong.hoon`:
+Let's write our first network message! Here's `examples/app/pong.hoon`:
 
-    /?    314
-    |%
-      ++  move  {bone term wire *}
-    --
+    ::  Allows one urbit to send the string 'Pong' to 
+    ::  another urbit.
+    ::
+    ::::  /===/app/pong/hoon
+      ::
     !:
-    |_  {bowl state/$~}
+    |%
+    ++  move  {bone card}
+    ++  card  $%  {$poke wire dock poke-contents}
+              ==
+    ++  poke-contents  $%  {$atom @}
+                       ==
+    --
+    |_  {bow/bowl $~}                                       ::<  stateless
     ::
     ++  poke-urbit
-      |=  to/@p
+      |=  to/ship
       ^-  {(list move) _+>.$}
-      [[[ost %poke /sending [to dap] %atom 'howdy'] ~] +>.$]
+      ~&  pong+'Outgoing pong!'
+      :_  +>.$
+      ~[[ost.bow %poke /sending [to dap.bow] %atom 'Pong']]
     ::
     ++  poke-atom
-      |=  arg/@
+      |=  tom/@
       ^-  {(list move) _+>.$}
-      ~&  [%receiving (@t arg)]
+      ~&  pong+'Incoming pong!'
+      ~&  pong+received+`@t`tom
       [~ +>.$]
     ::
     ++  coup  |=(* [~ +>.$])
+    ::
     --
-
+ 
 Run it with these commands:
 
-    ~fintud-macrep:dojo> |start %examples-pong
+    ~fintud-macrep:dojo> |start %pong
     >=
-    ~fintud-macrep:dojo> :examples-pong &urbit ~sampel-sipnym
+    ~fintud-macrep:dojo> :pong &urbit ~sampel-sipnym
     >=
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to do is to start
 a comet, a free and disposable Urbit identity. If you don't know how to start a
 comet, see [the user setup section](/docs/using/setup/). Don't forget to start
-the `%examples-pong` app on that urbit, too. You should see, on the foreign
+the `%pong` app on that urbit, too. You should see, on the foreign
 urbit, this output:
 
-    [%receiving 'howdy']
+    [%pong 'Incoming pong!']
+    [%pong %received 'Pong']
 
 Most of the code should be straightforward. In `++poke-atom`, the only new thing
-is the expression `(@t arg)`, which is the type `@t` being called as a function
-with argument `arg`. As we already know, `@t` is the type of "cord" text
-strings. In Hoon, when types are called as functions, they serve as a validator
-function called a "clam" -- that is, a function whose domain is all nouns, and
+is the expression `` `@t`tom ``, which is casting the argument `tom` to type 
+`@t`. As we already know, `@t` is the type of "cord" text strings. In Hoon, 
+when types are called using tick marks, they serve as a validator function 
+called a "clam" -- that is, a function whose domain is all nouns, and
 range is the given type (in this case, `@t`).
 
 In simpler terms, if a clam is passed a value of its own type, it produces that
@@ -201,15 +211,15 @@ Here we call this `@t` function on the argument. This coerces the argument to
 text, so that we can print it out prettily no matter what we're passed.
 
 The more interesting part is in `++poke-urbit`. The `urbit` mark is an urbit
-identity, and the Hoon type associated with it is `@p` (the "p" stands for
-"phonetic base").
+identity, and the Hoon type associated with it is `ship` or `@p` (the "p" 
+stands for "phonetic base").
 
 Recall that in a `++poke` arm we produce "a list of moves and our state". Until
 now, we've left the list of moves empty, since we haven't wanted to tell Arvo to
 do anything in particular. Now we want to send a message to another urbit. Thus,
 we produce a list with one element:
 
-    [ost %poke /sending [to-urbit-address %pong] %atom 'howdy']
+    ~[[ost.bow %poke /sending [to dap.bow] %atom 'Pong]]
 
 ### Moves
 
@@ -224,14 +234,14 @@ Let's walk through each of these elements step by step.
 #### Bones ("cause")
 
 If you look up `++bone` in `hoon.hoon`, you'll see that it's a number (`@ud`),
-and that it's an opaque reference to a duct. `++duct` in hoon.hoon is a list of
-`wire`s, where `++wire` is an alias for `++path`. `++path` is a list of
+and that it's an opaque reference to a duct. `++duct` in `hoon.hoon` is a list 
+of `wire`s, where `++wire` is an alias for `++path`. `++path` is a list of
 `++knot`s, which are ASCII text. Thus, a duct is a list of paths, and a bone is
 an opaque reference to it (in the same way that a Unix file descriptor is an
 opaque reference to a file structure). Thus, to truly understand bones, we must
 understand ducts.
 
-A duct is stack of causes, again, represented as paths, which are called wires.
+A duct is a stack of causes, again, represented as paths, which are called wires.
 At the bottom of every duct is a unix event, such as a keystroke, network
 packet, file change, or timer event. When Arvo is given this event, it routes
 the event to appropriate kernel module for handling.
@@ -245,11 +255,12 @@ action, and produces the result from that.
 
 Furthermore, when one module sends a message to another kernel module or
 application, it also sends along the duct it was given with its new wire tacked
-onto the end. Now the duct has two entries, with the unix event on the bottom
-and the kernel module that handled it next. This process can continue
-indefinitely, adding more and more layers onto the duct. When an entity finally
-produces a result, a layer is popped off the duct, and the result is passed all
-the way back down.
+onto the top. Now the duct has two entries, with the unix event on the bottom
+and the kernel module that handled it on top. This process can continue
+indefinitely, pushing more and more wires onto the top of the duct. When an 
+entity finally produces a result, a wire is popped off the duct, and the result 
+is passed all the way back down, repeating the process of wire popping 
+sequentially until the bottom of the duct is reached.
 
 In effect, a duct is an Arvo-level call stack. It's worth noting that while in
 traditional call stacks a function call happens synchronously and returns
@@ -262,8 +273,8 @@ to send the network message along the given bone `ost`.
 
 ##### Wire ('tack on new layer to duct')
 
-Of course, we have to push a new layer onto our duct before passing it along (or
-responding to it directly) anywhere. This layer can have any data we want in it,
+Of course, we have to push a new wire onto our duct before passing it along (or
+responding to it directly) anywhere. This wire can have any data we want in it,
 but we don't need anything specific here, so we just use the wire `/sending`
 (`/elem1/elem2/elemN` is one syntax used to create `++path`s and `++wire`s of N
 elements). If we were expecting a response (which we're not), it would come back
@@ -274,7 +285,7 @@ generally a good idea to make the wire human-readable for bug-handling purposes.
 ##### Term (sys-call)
 
 Each move also has a `term`, composed of lowercase ASCII and/or `-`. This `term`
-has the sign `@tas`. In this case, out `term` is `%poke`, which is the name of
+has the sign `@tas`. In this case, our `term` is `%poke`, which is the name of
 the particular kind of move we're sending. You can always use `%poke` to message
 an app. Other common names include `%warp`, to read from the filesystem;
 `%wait`, to set a timer; and `%them`, to send an http request.
