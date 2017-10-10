@@ -33,8 +33,8 @@ sort: 4
 <li><a href="https://github.com/urbit/tree"><code>tree</code></a> - Urbit's web publishing UI</li>
 <li><a href="https://github.com/urbit/talk"><code>talk</code></a> - Urbit's web chat</li>
 <li><a href="https://github.com/urbit/sole"><code>sole</code></a> - Urbit's web console</li>
-<li><a href="https://github.com/urbit/examples"><code>examples</code></a> - Hoon, Arvo and Tree</li>
 <li><a href="https://github.com/urbit/docs"><code>docs</code></a> - The repo for these docs</li>
+<li><a href="https://github.com/urbit/examples"><code>examples</code></a> - Hoon, Arvo and Tree</li>
 </ul>
 
 </div>
