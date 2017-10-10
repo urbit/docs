@@ -41,13 +41,14 @@ sort: 4
 
 </div>
 
+<h2>Community</h2>
 <div class="row">
     <div class="col-md-4">
-        <h2>Community projects</h2>
+        <h3>Projects</h3>
         <list dataPath="/docs/community-projects"></list>
     </div>
     <div class="col-md-4">
-        <h2>Community docs</h2>
+        <h3>Docs</h3>
         <ul class="list">
             <li><code>~master-morzod</code>
                 <br />
@@ -85,28 +86,34 @@ sort: 4
         </ul>
     </div>
 </div>
+
+<h2>Users</h2>
 <div class="row">
     <div class="col-md-4">
-        <h2>Get Started</h2>
+        <h3>Get Started</h3>
         <p>These short guides will get you installed, setup, and will walk you 
            through the basic features of Urbit.</p>
         <list dataPath="/docs/using"></list>
     </div>
+</div>
+
+<h2>Developers</h2>
+<div class="row">
     <div class="col-md-4">
-        <h2>Learn</h2>
+        <h3>Learn</h3>
         <p>Learn Hoon in short, self-contained, bottom-up tutorials through our
            in-house Urbyte series. A work in progress. Still ideal for the 
            complete newbie.</p>
         <list dataPath="/docs/byte"></list>
     </div>
     <div class="col-md-4">
-        <h2>About</h2>
+        <h3>About</h3>
         <list dataPath="/docs/about"></list>
     </div>
 </div>
 <div class="row">
     <div class="col-md-3">
-        <h2>Vere</h2>
+        <h3>Vere</h3>
         <p>The Nock runtime system, written in C.</p>
         <p>Read on if you plan to work on the Urbit interpreter, you're a 
            language implementation geek, or you don't really understand anything
@@ -114,19 +121,19 @@ sort: 4
         <list dataPath="/docs/vere"></list>
     </div>
     <div class="col-md-3">
-        <h2>Nock</h2>
+        <h3>Nock</h3>
         <p>Nock is our nano-VM. If you're into combinators or want to understand
            the foundation of Urbit, dive in.</p>
         <list dataPath="/docs/nock"></list>
     </div>
     <div class="col-md-3">
-        <h2>Hoon</h2>
+        <h3>Hoon</h3>
         <p>An in-depth technical reference for Hoon. Best for readers with an 
            interest or background in programming languages.</p>
         <list dataPath="/docs/hoon"></list>
     </div>
     <div class="col-md-3">
-        <h2>Arvo</h2>
+        <h3>Arvo</h3>
         <p>Fast, pragmatic tutorials which show you how to build simple programs
            in Hoon and Arvo.</p>
         <p>If you learn by getting things done, not by exploring fundamentals, 
