@@ -44,6 +44,41 @@ sort: 4
 <h2>Community</h2>
 <div class="row">
     <div class="col-md-4">
+        <h3>Media</h3>
+        <ul class="list">
+            <li><h1><a href="https://www.youtube.com/watch?v=kh4Ai5YXFaA">Mars Talks, Ep. 2</a></h1>
+                <p><code>~master-morzod</code><b> </b>talks about the Urbit 
+                   operating system, Arvo.</p>
+            </li>
+            <li><h1><a href="https://www.youtube.com/watch?v=lX0xx70TcJE">Mars Talks, Ep. 1</a></h1>
+                <p><code>~poldec-tonteg</code><b> </b>talks about Urbit web 
+                   development.</p>
+            </li>
+            <li><h1><a href="https://www.youtube.com/watch?v=LFalNG4eTqU">Mars Talks, Ep. 0</a></h1>
+                    <p><code>~rovnys-ricfer</code><b> </b>gives a technical 
+                       introduction to Urbit.</p>
+            </li>
+            <li><h1><a href="https://softwareengineeringdaily.com/2017/01/20/urbit-with-curtis-yarvin-and-galen-wolfe-pauly">Software Engineering Daily</a></h1>
+                    <p>Urbit CEO Galen Wolfe-Pauly (<code>~ravmel-ropdyl</code>) 
+                       and CTO Curtis Yarvin (<code>~sorreg-namtyv</code>) talk
+                       with Jeff Meyerson of the <i>Software Engineering Daily</i>
+                       <b> </b>podcast about the origin story of Urbit.</p>
+            </li>
+            <li><h1><a href="https://etherreview.info/the-ether-review-46-smoking-dmt-with-mencius-moldbug-8360845941ff">The Ether Review #46</a></h1>
+                    <p>Galen and Curtis talk with Arthur Falls of <i>The Ether Review</i>
+                       <b> </b>podcast and give a non-technical overview of Urbit.</p>
+            </li>
+            <li><h1><a href="http://podcast.hajak.se/104117/548011-e09-galen-wolfe-pauly-urbit-a-user-owned-internet-on-top-of-the-internet">Governing the Future: E09</a></h1>
+                    <p>Galen talks with Hampus Jakobsson of the <i>Governing the Future</i> 
+                       <b> </b>podcast about the Urbit user experience.</p>
+            </li>
+            <li><h1><a href="https://www.youtube.com/watch?v=bTisf4oxIFo">Urbit at LambdaConf 2016</a></h1>
+                    <p>Curtis gives a technical talk, <i>Urbit: A Clean Slate Functional Operating Stack</i>
+                       <b> </b>at the LambdaConf 2016 conference in Boulder, Colorado.</p>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
         <h3>Projects</h3>
         <ul class="list">
             <li><code>~littel-ponnys</code>
