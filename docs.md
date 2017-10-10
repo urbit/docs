@@ -26,7 +26,7 @@ sort: 4
 
 <div class="col-md-4">
 
-<b>Source code on <a href="https://github.com/urbit">GitHub</a></b>
+<b>Source code</b>
 <ul>
 <li><a href="https://github.com/urbit/urbit"><code>vere</code></a> - Urbit's VM</li>
 <li><a href="https://github.com/urbit/arvo"><code>arvo</code></a> - Urbit's OS</li>
