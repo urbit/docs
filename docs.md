@@ -28,13 +28,13 @@ sort: 4
 
 <b>Source code</b>
 <ul>
-<li><a href="https://github.com/urbit/urbit"><code>vere</code></a> - Urbit's VM</li>
-<li><a href="https://github.com/urbit/arvo"><code>arvo</code></a> - Urbit's OS</li>
-<li><a href="https://github.com/urbit/tree"><code>tree</code></a> - Urbit's web publishing UI</li>
-<li><a href="https://github.com/urbit/talk"><code>talk</code></a> - Urbit's web chat</li>
-<li><a href="https://github.com/urbit/sole"><code>sole</code></a> - Urbit's web console</li>
-<li><a href="https://github.com/urbit/docs"><code>docs</code></a> - The repo for these docs</li>
-<li><a href="https://github.com/urbit/examples"><code>examples</code></a> - Hoon, Arvo and Tree</li>
+<li><a href="https://github.com/urbit/urbit"><code>urbit</code></a><b> </b> An operating function</li>
+<li><a href="https://github.com/urbit/arvo"><code>arvo</code></a><b> </b> The Urbit operating system</li>
+<li><a href="https://github.com/urbit/tree"><code>tree</code></a><b> </b> The Urbit web interface</li>
+<li><a href="https://github.com/urbit/talk"><code>talk</code></a><b> </b> Urbit web chat</li>
+<li><a href="https://github.com/urbit/sole"><code>sole</code></a><b> </b> Urbit web terminal</li>
+<li><a href="https://github.com/urbit/docs"><code>docs</code></a><b> </b> The Urbit docs</li>
+<li><a href="https://github.com/urbit/examples"><code>examples</code></a><b> </b> Urbit examples</li>
 </ul>
 
 </div>
