@@ -43,6 +43,10 @@ sort: 4
 
 <div class="row">
     <div class="col-md-4">
+        <h2>Community projects</h2>
+        <list dataPath="/docs/community-projects"></list>
+    </div>
+    <div class="col-md-4">
         <h2>Community docs</h2>
         <ul class="list">
             <li><code>~master-morzod</code>
@@ -79,10 +83,6 @@ sort: 4
                 <h1><a href="https://github.com/knubie/learning-hoon">Learning Hoon</a></h1>
             </li>
         </ul>
-    </div>
-    <div class="col-md-4">
-        <h2>Community projects</h2>
-        <list dataPath="/docs/community-projects"></list>
     </div>
 </div>
 <div class="row">
