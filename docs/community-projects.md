@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 8
+sort: 1
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 3
+sort: 5
 ---
 
 # About
