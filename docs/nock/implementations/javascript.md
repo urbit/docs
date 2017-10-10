@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 title: Javascript
-sort: 9
+sort: 13
 next: true
 ---
 

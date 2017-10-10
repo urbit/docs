@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 title: Ruby
-sort: 2
+sort: 15
 next: true
 ---
 

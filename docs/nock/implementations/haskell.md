@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 title: Haskell
-sort: 3
+sort: 18
 next: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 title: Scala
-sort: 4
+sort: 20
 next: true
 ---
 

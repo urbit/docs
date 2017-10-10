@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 title: Swift
-sort: 10
+sort: 16
 next: true
 ---
 

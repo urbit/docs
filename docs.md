@@ -45,7 +45,36 @@ sort: 4
 <div class="row">
     <div class="col-md-4">
         <h3>Projects</h3>
-        <list dataPath="/docs/community-projects"></list>
+        <ul class="list">
+            <li><code>~ponnys-podfer</code>
+                <br />
+                <h1><a href="https://github.com/ponnys-podfer/yint">Yint: A Tiny MUD</a></h1>
+                <b> </b> 
+                <h1><a href="https://urbit.org/~~/fora/posts/~2016.11.27..01.04.25..ffcf~">
+                    <code>fora</code>
+                    <b> </b>
+                    post
+                    </a>
+                </h1>
+            </li>
+            <br />
+            <li><code>~palfun-foslup</code>
+                <br />
+                <h1><a href="https://github.com/Fang-/talkbot"><code>~talkbot</code>: The One and Only</a></h1>
+                <br />
+                <h1><a href="https://github.com/Fang-/urbit-string">Hoon string processing</a></h1>
+                <b> </b> 
+                <h1><a href="https://urbit.org/~~/fora/posts/~2017.1.7..19.34.24..0080~">
+                    <code>fora</code>
+                    <b> </b>
+                    post
+                    </a>
+                </h1>
+            </li>
+            <br />
+            <li><h1><a href="./nock/implementations">Nock implementations</a></h1>
+            </li>
+        </ul>
     </div>
     <div class="col-md-4">
         <h3>Docs</h3>

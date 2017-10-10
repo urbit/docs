@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 title: Clojure
-sort: 5
+sort: 17
 next: true
 ---
 
