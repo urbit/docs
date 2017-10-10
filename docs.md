@@ -46,7 +46,7 @@ sort: 4
     <div class="col-md-4">
         <h3>Projects</h3>
         <ul class="list">
-            <li><code>~ponnys-podfer</code>
+            <li><code>~littel-ponnys</code>
                 <br />
                 <h1><a href="https://github.com/ponnys-podfer/yint">Yint: A Tiny MUD</a></h1>
                 <b> </b> 
