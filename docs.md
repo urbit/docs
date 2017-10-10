@@ -106,12 +106,10 @@ sort: 4
 </div>
 <div class="row">
     <div class="col-md-4">
-        <h2>Arvo</h2>
-        <p>Fast, pragmatic tutorials which show you how to build simple programs
-           in Hoon and Arvo.</p>
-        <p>If you learn by getting things done, not by exploring fundamentals, 
-           start here.</p>
-        <list dataPath="/docs/arvo"></list>
+        <h2>Nock</h2>
+        <p>Nock is our nano-VM. If you're into combinators or want to understand
+           the foundation of Urbit, dive in.</p>
+        <list dataPath="/docs/nock"></list>
     </div>
     <div class="col-md-4">
         <h2>Hoon</h2>
@@ -120,9 +118,11 @@ sort: 4
         <list dataPath="/docs/hoon"></list>
     </div>
     <div class="col-md-4">
-        <h2>Nock</h2>
-        <p>Nock is our nano-VM. If you're into combinators or want to understand
-           the foundation of Urbit, dive in.</p>
-        <list dataPath="/docs/nock"></list>
+        <h2>Arvo</h2>
+        <p>Fast, pragmatic tutorials which show you how to build simple programs
+           in Hoon and Arvo.</p>
+        <p>If you learn by getting things done, not by exploring fundamentals, 
+           start here.</p>
+        <list dataPath="/docs/arvo"></list>
     </div>
 </div>
