@@ -91,7 +91,7 @@ sort: 4
                 </h1>
             </li>
             <br />
-            <li><code>~hidduc-posmeg</code>
+            <li><code>~fosnut-dandut</code>
                 <br />
                 <h1><a href="https://fosnut-dandut.urbit.org/pages/hidducs-notes/tutorial/">docs</a></h1>
                 <b> </b> 
