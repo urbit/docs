@@ -105,19 +105,27 @@ sort: 4
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <h2>Vere</h2>
+        <p>The Nock runtime system, written in C.</p>
+        <p>Read on if you plan to work on the Urbit interpreter, you're a 
+           language implementation geek, or you don't really understand anything
+           until you've seen the actual structs.</p>
+        <list dataPath="/docs/vere"></list>
+    </div>
+    <div class="col-md-3">
         <h2>Nock</h2>
         <p>Nock is our nano-VM. If you're into combinators or want to understand
            the foundation of Urbit, dive in.</p>
         <list dataPath="/docs/nock"></list>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h2>Hoon</h2>
         <p>An in-depth technical reference for Hoon. Best for readers with an 
            interest or background in programming languages.</p>
         <list dataPath="/docs/hoon"></list>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h2>Arvo</h2>
         <p>Fast, pragmatic tutorials which show you how to build simple programs
            in Hoon and Arvo.</p>
