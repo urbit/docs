@@ -85,21 +85,17 @@ sort: 4
                 <br />
                 <a href="https://urbit.org/fora/posts/~2017.1.16..06.08.17..ae0f~">Hoon Doccords</a>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.1.16..06.08.17..ae0f~">post 1</a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.1.16..06.08.17..ae0f~">Fora 1</a>
                 </h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.4.7..06.37.22..c960~">post 2</a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.4.7..06.37.22..c960~">Fora 2</a>
                 </h1>
                 <br />
                 <h1><a href="https://urbit.org/fora/posts/~2017.3.19..19.36.37..e7b5~">A Hoon Unit-Testing Outline</a></h1>
                 <br />
                 <h1><a href="https://github.com/ponnys-podfer/yint">A Tiny MUD Server</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/~~/fora/posts/~2016.11.27..01.04.25..ffcf~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2016.11.27..01.04.25..ffcf~">Fora post</a>
                 </h1>
             </li>
             <br />
@@ -119,21 +115,14 @@ sort: 4
                 <br />
                 <h1><a href="https://github.com/Fang-/blockio">Block.io API Integration</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.8.14..00.54.52..f06a~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.8.14..00.54.52..f06a~">Fora post</a>
                 </h1>
                 <br />
                 <h1><a href="https://github.com/Fang-/urbit-string">Hoon String Processing</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/~~/fora/posts/~2017.1.7..19.34.24..0080~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.1.7..19.34.24..0080~">Fora post</a>
                 </h1>
+                <br />
                 <h1><a href="https://github.com/Fang-/talkbot"><code>~talkbot</code>: The One and Only</a></h1>
                 <br />
             </li>
@@ -142,20 +131,12 @@ sort: 4
                 <br />
                 <h1><a href="https://github.com/asssaf/urbit-wiki">A Simple Wiki for Urbit</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/~~/fora/posts/~2017.8.1..18.56.49..f8f4~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.8.1..18.56.49..f8f4~">Fora post</a>
                 </h1>
                 <br />
                 <h1><a href="https://github.com/asssaf/urbit-package">An Urbit Package Manager</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.9.7..23.20.06..dc47~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.9.7..23.20.06..dc47~">Fora post</a>
                 </h1>
                 <br />
                 <h1><a href="https://github.com/asssaf/urbit-extra-marks">Image and Vector Graphic Marks</a></h1>
@@ -167,20 +148,12 @@ sort: 4
                 <br />
                 <h1><a href="https://github.com/vvisigoth/unfurl">Link Unfurling for Web Talk</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.9.20..22.45.02..0f8d~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.9.20..22.45.02..0f8d~">Fora post</a>
                 </h1>
                 <br />
                 <h1><a href="https://github.com/vvisigoth/tumblr-urbit-api">Tumblr API Integration</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.8.4..16.42.22..d7ba~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.8.4..16.42.22..d7ba~">Fora post</a>
                 </h1>
                 <br />
                 <h1><a href="https://github.com/vvisigoth/taskk">Urbit Issue tracking</a></h1>
@@ -188,8 +161,7 @@ sort: 4
                 <h1><a href="https://github.com/vvisigoth/taskk-ui">frontend</a>
                 </h1>
                 <b> </b>
-                <h1><a href="https://urbit.org/fora/posts/~2017.6.29..19.48.19..6a1e~">
-                    <code>fora</code></a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.6.29..19.48.19..6a1e~">Fora</a>
                 </h1>
             </li>
             <br />
@@ -219,11 +191,7 @@ sort: 4
                 <br />
                 <h1><a href="https://mardev.urbit.org/docs">docs</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2016.12.25..06.35.44..a1ec~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2016.12.25..06.35.44..a1ec~">Fora post</a>
                 </h1>
             </li>
             <br />
@@ -231,11 +199,7 @@ sort: 4
                 <br />
                 <h1><a href="https://fosnut-dandut.urbit.org/pages/hidducs-notes/tutorial/">docs</a></h1>
                 <b> </b> 
-                <h1><a href="https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~">
-                    <code>fora</code>
-                    <b> </b>
-                    post
-                    </a>
+                <h1><a href="https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~">Fora post</a>
                 </h1>
             </li>
             <br />
