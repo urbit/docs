@@ -182,7 +182,7 @@ sort: 4
         <ul class="list">
             <li><code>~master-morzod</code>
                 <br />
-                <h1><a href="https://mardev.urbit.org/docs">docs</a></h1>
+                <h1><a href="https://mardev.urbit.org/docs">Docs</a></h1>
                 <b> </b> 
                 <h1><a href="https://urbit.org/fora/posts/~2016.12.25..06.35.44..a1ec~">Fora post</a>
                 </h1>
@@ -190,7 +190,7 @@ sort: 4
             <br />
             <li><code>~fosnut-dandut</code>
                 <br />
-                <h1><a href="https://fosnut-dandut.urbit.org/pages/hidducs-notes/tutorial/">docs</a></h1>
+                <h1><a href="https://fosnut-dandut.urbit.org/pages/hidducs-notes/tutorial/">Docs</a></h1>
                 <b> </b> 
                 <h1><a href="https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~">Fora post</a>
                 </h1>
