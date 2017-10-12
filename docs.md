@@ -238,9 +238,24 @@ sort: 4
 <div class="row">
     <div class="col-md-4">
         <h3>Get Started</h3>
-        <p>These short guides will get you installed, setup, and will walk you 
-           through the basic features of Urbit.</p>
-        <list dataPath="/docs/using"></list>
+        <p>These short guides will get you installed and setup on Urbit.</p>
+        <ul class="list">
+            <li><h1><a href="./using/install">Install</a></h1></li>
+            <li><h1><a href="./using/setup">Setup</a></h1></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h3>Manual</h3>
+        <p>These short guides will walk you through the basic features of Urbit.</p>
+        <ul class="list">
+            <li><h1><a href="./using/admin">Administration and Operation</a></h1></li>
+            <li><h1><a href="./using/messaging">Messaging (:talk)</a></h1></li>
+            <li><h1><a href="./using/shell">Messaging (:dojo)</a></h1></li>
+            <li><h1><a href="./using/filesystem">Filesystem</a></h1></li>
+            <li><h1><a href="./using/web">Web</a></h1></li>
+            <li><h1><a href="./using/urb">From Unix</a></h1></li>
+            <li><h1><a href="./using/layout">Source layout</a></h1></li>
+        </ul>
     </div>
 </div>
 
