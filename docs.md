@@ -39,6 +39,10 @@ sort: 4
     <div class="col-md-4">
         <h3>Media</h3>
         <ul class="list">
+            <li><h1><a href="https://www.youtube.com/watch?v=5B7JDdX-6IY">Mars Talks, Ep. 3</a></h1>
+                <p><code>~palfun-foslup</code><b> </b>talks about new Talk,
+                   improving Gall and bootstrapping Urbit on Ethereum.</p>
+            </li>
             <li><h1><a href="https://www.youtube.com/watch?v=kh4Ai5YXFaA">Mars Talks, Ep. 2</a></h1>
                 <p><code>~master-morzod</code><b> </b>talks about the Urbit 
                    operating system, Arvo.</p>
@@ -50,6 +54,18 @@ sort: 4
             <li><h1><a href="https://www.youtube.com/watch?v=LFalNG4eTqU">Mars Talks, Ep. 0</a></h1>
                     <p><code>~rovnys-ricfer</code><b> </b>gives a technical 
                        introduction to Urbit.</p>
+            </li>
+            <li><h1><a href="https://medium.com/@IsaacSimpson/urbit-and-the-not-so-dark-future-of-the-internet-400c9b667e2">Urbit and the Not-So-Dark Future of the Internet</a></h1>
+                <p><code>~fitseb-ropnux</code><b> </b>writes about the problems
+                   of the modern Internet and why Urbit could be the solution.</p>
+            </li>
+            <li><h1><a href="https://www.anthonyarroyodotcom.com/blog/2017/7/17/the-future-of-precision-agriculture-is-decentralized">The Future of Precision Agriculture is Decentralized</a></h1>
+                <p><code>~poldec-tonteg</code><b> </b>writes about what farmers
+                   really want and what Urbit can do for them.</p>
+            </li>
+            <li><h1><a href="http://www.anthonyarroyodotcom.com/blog/2017/8/17/urbit-a-digital-frontier-to-homestead">Urbit: A Digital Frontier to Homestead</a></h1>
+                    <p><code>~poldec-tonteg</code><b> </b>gives a local community
+                        talk about what he finds exciting about Urbit.</p>
             </li>
             <li><h1><a href="https://softwareengineeringdaily.com/2017/01/20/urbit-with-curtis-yarvin-and-galen-wolfe-pauly">Software Engineering Daily</a></h1>
                     <p>Urbit CEO Galen Wolfe-Pauly (<code>~ravmel-ropdyl</code>) 
