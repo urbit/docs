@@ -262,15 +262,15 @@ sort: 4
 <h2>Developers</h2>
 <div class="row">
     <div class="col-md-4">
+        <h3>About</h3>
+        <list dataPath="/docs/about"></list>
+    </div>
+    <div class="col-md-4">
         <h3>Learn</h3>
         <p>Learn Hoon in short, self-contained, bottom-up tutorials through our
            in-house Urbyte series. A work in progress. Still ideal for the 
            complete newbie.</p>
         <list dataPath="/docs/byte"></list>
-    </div>
-    <div class="col-md-4">
-        <h3>About</h3>
-        <list dataPath="/docs/about"></list>
     </div>
 </div>
 <div class="row">
