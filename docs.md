@@ -10,27 +10,26 @@ sort: 4
     <h1 class="blue i-b">Urbit docs</h1>
 </div>
 
-<div class="row head">
-  <div class="col-md-4">
-  <h3>Streams</h3>
-  <ul class="list">
-      <li>Chat with us on <a href="https://urbit.org/stream"><code>Talk</code></a></li>
-      <li>Our discussion forum <a href="http://urbit.org/fora"><code>Fora</code></a></li>
-      <li>On Twitter <a href="https://twitter.com/urbit">@urbit</a></li>
-      <li>On Github <a href="https://github.com/urbit">@urbit</a></li>
-  </ul>
+<div class="row">
+  <div class="col-md-12">
+    <h2>This Week in Urbit</h2>
   </div>
   <div class="col-md-4">
-  <h3>Source code</h3>
-  <ul class="list">
-      <li><a href="https://github.com/urbit/urbit"><code>urbit</code></a><b> </b> An operating function</li>
-      <li><a href="https://github.com/urbit/arvo"><code>arvo</code></a><b> </b> The Urbit operating system</li>
-      <li><a href="https://github.com/urbit/tree"><code>tree</code></a><b> </b> The Urbit web interface</li>
-      <li><a href="https://github.com/urbit/talk"><code>talk</code></a><b> </b> Urbit web chat</li>
-      <li><a href="https://github.com/urbit/sole"><code>sole</code></a><b> </b> Urbit web terminal</li>
-      <li><a href="https://github.com/urbit/docs"><code>docs</code></a><b> </b> The Urbit docs</li>
-      <li><a href="https://github.com/urbit/examples"><code>examples</code></a><b> </b> Urbit examples</li>
-  </ul>
+    <h3>Streams</h3>
+    <ul class="list">
+      <li>
+        <h1><a href="https://urbit.org/stream">Talk: Urbit-based chat</a></h1>
+      </li>
+      <li>
+        <h1><a href="http://urbit.org/fora">Fora: Urbit-based discussion forum</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://twitter.com/urbit">Twitter: the official @urbit account</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://github.com/urbit">Github: home for Urbit development</a></h1>
+      </li>
+    </ul>
   </div>
 </div>
 
