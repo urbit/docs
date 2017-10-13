@@ -15,6 +15,40 @@ sort: 4
     <h2>This Week in Urbit</h2>
   </div>
   <div class="col-md-4">
+    <h3>Weekly Updates</h3>
+    <ul class="list">
+      <li>
+        <h1><a href="https://urbit.org/blog">~2017.10.13 This Week in Urbit 4</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/blog">~2017.10.6 This Week in Urbit 3</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/blog">~2017.9.28 This Week in Urbit 2</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/blog">~2017.9.21 This Week in Urbit 1</a></h1>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <h3>Urbit Projects</h3>
+    <ul class="list">
+      <li>
+        <h1><a href="https://urbit.org/fora">UP 3: Hoon Tutorial</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/fora">UP 2: A Better Ford</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/fora">UP 1: Ford Caching</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/fora">UP 0: Urbit Projects</a></h1>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-4">
     <h3>Feeds</h3>
     <ul class="list">
       <li>
