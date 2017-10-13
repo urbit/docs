@@ -15,7 +15,7 @@ sort: 4
     <h2>This Week in Urbit</h2>
   </div>
   <div class="col-md-4">
-    <h3>Streams</h3>
+    <h3>Feeds</h3>
     <ul class="list">
       <li>
         <h1><a href="https://urbit.org/stream">Talk: Urbit-based chat</a></h1>
