@@ -81,19 +81,19 @@ sort: 4
               </p>
             </li>
             <li>
-              <h1><a href="https://medium.com/@IsaacSimpson/urbit-and-the-not-so-dark-future-of-the-internet-400c9b667e2">Urbit and the Not-So-Dark Future of the Internet</a></h1>
+              <h1><a href="https://medium.com/@IsaacSimpson/urbit-and-the-not-so-dark-future-of-the-internet-400c9b667e2">[Article] Urbit and the Not-So-Dark Future of the Internet</a></h1>
               <p>
               <code>~fitseb-ropnux</code><b> </b>writes about the problems of the modern Internet and why Urbit could be the solution.
               </p>
             </li>
             <li>
-              <h1><a href="http://podcast.hajak.se/104117/548011-e09-galen-wolfe-pauly-urbit-a-user-owned-internet-on-top-of-the-internet">Governing the Future: E09</a></h1>
+              <h1><a href="http://podcast.hajak.se/104117/548011-e09-galen-wolfe-pauly-urbit-a-user-owned-internet-on-top-of-the-internet">[Podcast] Governing the Future: E09</a></h1>
               <p>
               Galen talks with Hampus Jakobsson of the <i>Governing the Future</i><b> </b>podcast about the Urbit user experience.
               </p>
             </li>
             <li>
-              <h1><a href="https://www.youtube.com/watch?v=bTisf4oxIFo">Urbit at LambdaConf 2016</a></h1>
+              <h1><a href="https://www.youtube.com/watch?v=bTisf4oxIFo">[Video] Urbit at LambdaConf 2016</a></h1>
               <p>
               Curtis gives a technical talk, <i>Urbit: A Clean Slate Functional Operating Stack</i><b> </b>at the LambdaConf 2016 conference in Boulder, Colorado.
               </p>
