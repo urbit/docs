@@ -1,5 +1,5 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 3
 ---
 
@@ -17,16 +17,20 @@ Regular: *1-fixed*.
 
 ## Examples
 
-    ~zod:dojo> :code(20)
-    [1 20]
-    ~zod:dojo> :code(~zod)
-    [1 0]
-    ~zod:dojo> :code((add 2 2))
-    [8 [9 3.110.356 0 31] 9 2 [0 4] [7 [0 3] 1 2 2] 0 11]
+```
+~zod:dojo> :code(20)
+[1 20]
+~zod:dojo> :code(~zod)
+[1 0]
+~zod:dojo> :code((add 2 2))
+[8 [9 3.110.356 0 31] 9 2 [0 4] [7 [0 3] 1 2 2] 0 11]
+```
 
-    ~zod:dojo> !=(20)
-    [1 20]
-    ~zod:dojo> !=(~zod)
-    [1 0]
-    ~zod:dojo> !=((add 2 2))
-    [8 [9 3.110.356 0 31] 9 2 [0 4] [7 [0 3] 1 2 2] 0 11]
+```
+~zod:dojo> !=(20)
+[1 20]
+~zod:dojo> !=(~zod)
+[1 0]
+~zod:dojo> !=((add 2 2))
+[8 [9 3.110.356 0 31] 9 2 [0 4] [7 [0 3] 1 2 2] 0 11]
+```

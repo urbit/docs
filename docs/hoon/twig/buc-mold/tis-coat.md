@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 3
+
 ---
 
 # `:coat  $=  "buctis"`
@@ -9,11 +10,15 @@ sort: 3
 
 ## Expands to
 
-    :gate  *
-    :name(p :call(q +6))
+```
+:gate  *
+:name(p :call(q +6))
+```
 
-    |=  *
-    ^=(p %-(q +6))
+```
+|=  *
+^=(p %-(q +6))
+```
 
 ## Syntax
 
@@ -23,18 +28,22 @@ Irregular: `foo/bar` is `:coat(foo bar)`.
 
 ## Discussion
 
-Note that the Hoon compiler is at least slightly clever about compiling molds,
-and almost never has to actually put in a gate layer (as seen in the expansion
-above) to apply a coat.
+Note that the Hoon compiler is at least slightly clever about
+compiling molds, and almost never has to actually put in a gate
+layer (as seen in the expansion above) to apply a coat.
 
 ## Examples
 
-    ~zod:dojo> =a :coat(p $foo)
+```
+~zod:dojo> =a :coat(p $foo)
 
-    ~zod:dojo> (a %bar)
-    p=%foo
+~zod:dojo> (a %bar)
+p=%foo
+```
 
-    ~zod:dojo> =a $=(p $foo)
+```
+~zod:dojo> =a $=(p $foo)
 
-    ~zod:dojo> (a %bar)
-    p=%foo
+~zod:dojo> (a %bar)
+p=%foo
+```

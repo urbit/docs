@@ -1,16 +1,17 @@
 ---
-navhome: '/docs/'
-next: True
+navhome: /docs/
+next: true
 sort: 15
 title: Subscriptions
 ---
 
 # Subscriptions
 
-We've dealt fairly extensively with "poke" messages to an app, but these are
-somewhat limited. A poke is a one-way message, but more often we want to
-subscribe to updates from another app. You could build a subscription model out
-of one-way pokes, but it's such a common pattern that it's built into arvo.
+We've dealt fairly extensively with "poke" messages to an app, but these
+are somewhat limited. A poke is a one-way message, but more often we
+want to subscribe to updates from another app. You could build a
+subscription model out of one-way pokes, but it's such a common pattern
+that it's built into arvo.
 
 Let's take a look at two apps, `:source` and `:sink`. First,
 `:source`:
@@ -134,47 +135,50 @@ And secondly, `:sink`:
 
 Cheat sheet:
 
--   `&` (pam) can either be the boolean true (as can `%.y`, `0`), or the
-    irregular wide form of the `?&` ([wutpam](../../hoon/twig/wut-test/pam-and))
-    rune, which computes logical `AND` on its two children.
+-   `&` (pam) can either be the boolean true (as can `%.y`, `0`), or
+    the irregular wide form of the `?&`
+    ([wutpam](../../hoon/twig/wut-test/pam-and)) rune, which computes
+    logical `AND` on its two children.
 
--   Similar to `&`,`|` is either the boolean false (along with `%.n` and `1`),
-    or the irregular short for of `?|`
-    ([wutbar](../../hoon/twig/wut-test/bar-or)), which computes logical `OR` on
-    its two children.
+-   Similar to `&`,`|` is either the boolean false (along with `%.n` and
+    `1`), or the irregular short for of `?|`
+    ([wutbar](../../hoon/twig/wut-test/bar-or)), which computes logical `OR`
+    on its two children.
 
 -   `!` is the irregular wide form of `?!`
-    ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical `NOT`
-    on its child.
+    ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical
+    `NOT` on its child.
 
 -   `?~` ([wutsig](../../hoon/twig/wut-test/sig-ifno/)) is basically an
-    if-then-else that checks whether condition `p` is `~` (null). `?~` is
-    slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
+    if-then-else that checks whether condition `p` is `~` (null). `?~`
+    is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
-    ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is of
-    type `p`. <!-- One thing to watch out for in hoon: if you do `?~`, it
-          affects the type of the conditional value: XXexample -->
+    ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
+    of type `p`.
+<!-- One thing to watch out for in hoon: if you do `?~`, it
+      affects the type of the conditional value: XXexample -->
 
 -   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
 
--   `++bowl` is the type of the system state within our app. For example, it
-    includes things like `our`, the name of the host urbit, and `now`, the
-    current time.
+-   `++bowl` is the type of the system state within our app. For
+    example, it includes things like `our`, the name of the host urbit,
+    and `now`, the current time.
 
--   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type constructor:
-    it defines a new type, composed of `n` types that it is passed. For example
-    `$%  @  *  ^  ==` is the type of either `@`, `*`, or a cell `^`.
-    <!-- XX this is a union, right? -->
+-   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
+    constructor: it defines a new type, composed of `n` types that it is
+    passed. For example `$%  @  *  ^  ==` is the type of either `@`,
+    `*`, or a cell `^`.
+<!-- XX this is a union, right? -->
 
 -   You may have noticed the separate `|%`
     ([barcen](../../hoon/twig/bar-core/cen-core/)) above the application core
-    `|_` ([barcab](../../hoon/twig/bar-core/cab-door/). We usually put our types
-    in another core on top of the application core. We can access these type
-    from our `|_` because in `hoon.hoon` files, all cores are called against
-    each other. (The shorthand for 'called' is `=>`.) Thus, the `|%` with the
-    types is in the context of the `|_`, as it lies above it: `hoon.hoon`
-    `=> |% w types => |_`
+    `|_` ([barcab](../../hoon/twig/bar-core/cab-door/). We usually put our
+    types in another core on top of the application core. We can access
+    these type from our `|_` because in `hoon.hoon` files, all cores are
+    called against each other. (The shorthand for 'called' is `=>`.)
+    Thus, the `|%` with the types is in the context of the `|_`, as it
+    lies above it: `hoon.hoon` `=> |% w types => |_`
 
 Here's some sample output of the two working together:
 
@@ -216,16 +220,16 @@ prints it out. Then we unsubscribe by poking `:sink` with `%off`, and
 There's a fair bit going on in this code. Let's look at `:source`
 first.
 
-Our definition of `move` is fairly specific, since we're only going to sending
-one kind of move. The `%diff` move is a subscription update, and its content is
-marked data which gall routes to our subscribers.
+Our definition of `move` is fairly specific, since we're only going to
+sending one kind of move. The `%diff` move is a subscription update, and
+its content is marked data which gall routes to our subscribers.
 
 This is a slightly different kind of move than [we've dealt with so
-far](/arvo/network). It's producing a result rather than calling other code
-(i.e. it's a return rather than a function call), so if you recall the
-discussion of ducts, a layer gets popped off the duct rather than added to it.
-This is why no wire is needed for the move -- we won't receive anything in
-response to it.
+far](/arvo/network). It's producing a result rather than calling other
+code (i.e. it's a return rather than a function call), so if you recall
+the discussion of ducts, a layer gets popped off the duct rather than
+added to it. This is why no wire is needed for the move -- we won't
+receive anything in response to it.
 
 Anyways, there are four functions (arms) inside the `|_`. We already know when
 `++poke-noun` is called. `++peer-example-path` is called when someone tries to 
@@ -239,11 +243,11 @@ passed in. `sup` is of type `(map bone {@p path})`, which associates bones with
 the urbit who subscribed, and which path they subscribed on. If you want to
 communicate with your subscribers, send them messages along their bone.
 
-`++poke-noun` "spams" the given argument to all our subscribers. There's a few
-things we haven't seen before. Firstly, `:_(a b)` is the same as `[b a]`. It's
-just a convenient way of formatting things when the first thing in a cell is
-much more complicated than the second. Thus, we're producing our state
-unchanged.
+`++poke-noun` "spams" the given argument to all our subscribers.
+There's a few things we haven't seen before. Firstly, `:_(a b)` is the
+same as `[b a]`. It's just a convenient way of formatting things when
+the first thing in a cell is much more complicated than the second.
+Thus, we're producing our state unchanged.
 
 Our list of moves is the result of a call to `++turn`. `++turn` is what many
 languages call "map" -- it runs a function on every item in a list and collects
@@ -311,8 +315,8 @@ again using our handy inverted cell constructor mold `:_`:
     :_	+>.$(val &)
     ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
 
-It's important to send over the same bone and wire (`/subscribe`) as the one we
-originally subscribed on.
+It's important to send over the same bone and wire (`/subscribe`) as the
+one we originally subscribed on.
 
 If neither of these cases are true, then we print our current subscription
 state, based on whether `val` is true or false, and return a cell containing 

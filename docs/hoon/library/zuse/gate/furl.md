@@ -1,25 +1,29 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++furl`
 
 Unify changes
 
-Merge two [`++toro`]()s `one` and `two` that are in the same [`desk`]() and
-pointed at the same [`++path`]().
+Merge two [`++toro`]()s `one` and `two` that are in the same [`desk`]()
+and pointed at the same [`++path`]().
 
-## Accepts
+Accepts
+-------
 
 `one` is a `++toro`.
 
 `two` is a `++toro`.
 
-## Produces
+Produces
+--------
 
 A `++toro`.
 
-## Source
+Source
+------
 
     ++  furl                                                ::  unify changes
           |=  [one=toro two=toro]
@@ -31,7 +35,8 @@ A `++toro`.
           [p.one [%& [*cart (weld q.q.q.one q.q.q.two)]]]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> %/zak
     ~zod/try=/zak> :ls %
@@ -46,3 +51,5 @@ A `++toro`.
         ]
       ]
     ]
+
+

@@ -1,6 +1,7 @@
 ---
-navhome: '/docs'
+navhome: /docs
 sort: 8
+
 ---
 
 # `:gasp  |:  "barcol"`
@@ -9,16 +10,20 @@ sort: 8
 
 ## Expands to
 
-    :pin  :burn(p)
-    :trap(q)
+```
+:pin  :burn(p)
+:trap(q)
+```
 
-    =>  ^~  p
-      |.  q
+```
+=>  ^~  p
+  |.  q
+```
 
 ## Discussion
 
-Note that `p` is a seed, not a moss; `:gasp` doesn't bunt your sample as `:gate`
-does.
+Note that `p` is a seed, not a moss; `:gasp` doesn't bunt your sample as
+`:gate` does.
 
 ## Syntax
 

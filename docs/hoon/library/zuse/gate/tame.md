@@ -1,23 +1,27 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++tame`
 
 Parse kite path
 
-Parses a clay [.\\^]() [`++path`]()to request details. Produces the [`++unit`]()
-of a [`++kite`]().
+Parses a clay [.\^]()
+[`++path` ]()to request details. Produces the [`++unit`]() of a [`++kite`]().
 
-## Accepts
+Accepts
+-------
 
 `hap` is a [`++path`]().
 
-## Produces
+Produces
+--------
 
 A `(unit kite)`.
 
-## Source
+Source
+------
 
     ++  tame                                                ::  parse kite path
           |=  hap=path
@@ -42,7 +46,8 @@ A `(unit kite)`.
           [~ rem p.u.ved q.p.u.fal q.p.u.dyc tyl]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=/zop> (tame /cx/~zod/main/1/sur/down/gate/hook)
     [~ [p=%x q=[%ud p=1] r=~zod s=%main t=/sur/down/gate/hook]]
@@ -50,3 +55,5 @@ A `(unit kite)`.
     ~
     ~zod/try=/zop> (tame /~zod/main/0x12/sur/down/gate/hook)
     ~
+
+

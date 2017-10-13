@@ -1,14 +1,15 @@
 ---
-navhome: '/docs/'
-next: False
+navhome: /docs/
+next: false
 sort: 13
 title: Network messages
 ---
 
-# Network messages
+Network messages
+================
 
-Now we've learned enough Hoon to do more interesting things. Let's get our
-planets to talk to each other.
+Now we've learned enough Hoon to do more interesting things. Let's get
+our planets to talk to each other.
 
 All we've written up until now are just shell commands that produce a value and
 then disappear. To listen for and receive messages from other planets, we'll
@@ -33,9 +34,10 @@ need an app. Let's look at a very simple one, `echo.hoon`:
       [~ +>.$]                  :: produce a cell of empty list and our state
     --                          :: end of poke-noun arm definition
 
-This is a very simple app that does only one thing. If you poke it with a value,
-it prints that value out. To try this out, you have to start the app, then you
-can poke it from the command line with the following commands:
+This is a very simple app that does only one thing. If you poke it with
+a value, it prints that value out. To try this out, you have to start
+the app, then you can poke it from the command line with the following
+commands:
 
     ~fintud-macrep:dojo> |start %echo
     >=
@@ -78,13 +80,13 @@ called "moves". In this case, we don't actually want the system to do anything,
 so we produce the empty list, `~` (in the `[~ +>.$]` line).
 
 The second thing `++poke-noun` produces is our state. `+>.$` refers to a
-particular address in our subject where our formal app state is stored. It'll
-become clear why this is later on, but for now pretend that `+>.$` is a magic
-invocation that means "app state".
+particular address in our subject where our formal app state is stored.
+It'll become clear why this is later on, but for now pretend that `+>.$`
+is a magic invocation that means "app state".
 
-Let's look at another example (edit your code in `/app/examples/echo/hoon` to
-reflect the code below). Say we want to only accept a number, and then print out
-the square of that number.
+Let's look at another example (edit your code in
+`/app/examples/echo/hoon` to reflect the code below). Say we want to
+only accept a number, and then print out the square of that number.
 
     ::  Accepts an atom from the dojo and squares it.
     ::
@@ -109,23 +111,26 @@ A few things have changed. Firstly, we no longer accept arbitrary nouns because
 we can only square atoms (integers, in this case an unsigned one). Thus, our
 argument is now `tom/@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
 
-# Intro to marks
+Intro to marks
+==============
 
-Are there other `++poke`s? Yes. In fact, `noun` and `atom` are just two of
-arbitrarily many "marks". A mark is fundamentally a type definition, but
-accessible at the Arvo level. Each mark is defined in the `/mar` directory. Some
-marks have conversion routines to other marks, and some have diff, patch, and
-merge algorithms. None of these are required for a mark to exist, however.
+Are there other `++poke`s? Yes. In fact, `noun` and `atom` are just two
+of arbitrarily many "marks". A mark is fundamentally a type definition,
+but accessible at the Arvo level. Each mark is defined in the `/mar`
+directory. Some marks have conversion routines to other marks, and some
+have diff, patch, and merge algorithms. None of these are required for a
+mark to exist, however.
 
-`noun` and `atom` are two predefined marks. In your `/mar` directory, there are
-already many more, and you may add more at will. The type associated with `noun`
-is `*`, and the type associated with `atom` is `@`.
+`noun` and `atom` are two predefined marks. In your `/mar` directory,
+there are already many more, and you may add more at will. The type
+associated with `noun` is `*`, and the type associated with `atom` is
+`@`.
 
-When we poke an app from anywhere, we do so with a mark that searches for the
-corresponding (`++poke-[mark]`) arm. Data constructed on the command line is by
-default marked with `noun`. In this case, the app is expecting an atom, so we
-have to explicitly mark the data with `atom` using `&[mark]`. Try the following
-commands:
+When we poke an app from anywhere, we do so with a mark that searches
+for the corresponding (`++poke-[mark]`) arm. Data constructed on the
+command line is by default marked with `noun`. In this case, the app is
+expecting an atom, so we have to explicitly mark the data with `atom`
+using `&[mark]`. Try the following commands:
 
     ~fintud-macrep:dojo> |start %square
     >=
@@ -137,15 +142,16 @@ commands:
 
 > Recall the bug where `%square` may get printed above the input line.
 
-Marks are powerful, and they're the backbone of Urbit's data pipeline, so we'll
-be getting quite used to them.
+Marks are powerful, and they're the backbone of Urbit's data pipeline,
+so we'll be getting quite used to them.
 
 **Exercise**:
 
 -   Write an app that computes fizzbuzz on its input (as in the previous
     section).
 
-# Sending a message to another urbit
+Sending a message to another urbit
+==================================
 
 Let's write our first network message! Here's `examples/app/pong.hoon`:
 
@@ -271,7 +277,7 @@ The point to take home is that whatever caused `++poke-urbit` to be called is
 also the root cause for the network message we're trying to send. Thus, we say
 to send the network message along the given bone `ost`.
 
-##### Wire ('tack on new layer to duct')
+##### Wire (path)
 
 Of course, we have to push a new wire onto our duct before passing it along (or
 responding to it directly) anywhere. This wire can have any data we want in it,
@@ -296,56 +302,58 @@ marked data, then pokes the arm of the corresponding mark on that app on that
 urbit with that data. `[to-urbit-address %pong]` is the target urbit and app,
 `%atom` is the `mark`, and`'Pong'` is the data.
 
-When Arvo receives a `%poke` move, it calls the appropriate `++poke`. The same
-mechanism is used for sending messages between apps on the same urbit as for
-sending messages between apps on different urbits.
+When Arvo receives a `%poke` move, it calls the appropriate `++poke`.
+The same mechanism is used for sending messages between apps on the same
+urbit as for sending messages between apps on different urbits.
 
-> We said earlier that we're not expecting a response. This is not entirely
-> true: the `++coup` is called when we receive acknowledgment that the `++poke`
-> was called. We don't do anything with this information right now, but we
-> could.
+> We said earlier that we're not expecting a response. This is not
+> entirely true: the `++coup` is called when we receive acknowledgment
+> that the `++poke` was called. We don't do anything with this
+> information right now, but we could.
 
 **Exercises**:
 
--   Extend either of the apps in the first two exercises to accept input over
-    the network in the same way as `pong`.
+-   Extend either of the apps in the first two exercises to accept input
+    over the network in the same way as `pong`.
 
 -   Modify `pong.hoon` to print out a message when it receives
     acknowledgement.
 
--   Write two apps, `even` and `odd`. When you pass an atom to `even`, check
-    whether it's even. If so, divide it by two and recurse; otherwise, poke
-    `odd` with it. When `odd` receives an atom, check whether it's equal to one.
-    If so, terminate, printing "%success". Otherwise, check whether it's odd. If
-    so, multiply it by three, add one, and recurse; otherwise, poke `even` with
-    it. When either app receives a number, print it out along with the name of
-    the app. In the end, you should be able to watch Collatz's conjecture play
-    out between the two apps. Sample output:
+-   Write two apps, `even` and `odd`. When you pass an atom to `even`,
+    check whether it's even. If so, divide it by two and recurse;
+    otherwise, poke `odd` with it. When `odd` receives an atom, check
+    whether it's equal to one. If so, terminate, printing "%success".
+    Otherwise, check whether it's odd. If so, multiply it by three, add
+    one, and recurse; otherwise, poke `even` with it. When either app
+    receives a number, print it out along with the name of the app. In
+    the end, you should be able to watch Collatz's conjecture play out
+    between the two apps. Sample output:
 
-<!-- -->
+```
+~fintud-macrep:dojo> :even &atom 18
+[%even 18]
+[%odd 9]
+[%even 28]
+[%even 14]
+[%odd 7]
+[%even 22]
+[%odd 11]
+[%even 34]
+[%odd 17]
+[%even 52]
+[%even 26]
+[%odd 13]
+[%even 40]
+[%even 20]
+[%even 10]
+[%odd 5]
+[%even 16]
+[%even 8]
+[%even 4]
+[%even 2]
+%success
+```
 
-    ~fintud-macrep:dojo> :even &atom 18
-    [%even 18]
-    [%odd 9]
-    [%even 28]
-    [%even 14]
-    [%odd 7]
-    [%even 22]
-    [%odd 11]
-    [%even 34]
-    [%odd 17]
-    [%even 52]
-    [%even 26]
-    [%odd 13]
-    [%even 40]
-    [%even 20]
-    [%even 10]
-    [%odd 5]
-    [%even 16]
-    [%even 8]
-    [%even 4]
-    [%even 2]
-    %success
-
--   Put `even` and `odd` on two separate urbits and pass the messages over the
-    network. Post a link to a working solution in :talk to receive a cookie.
+-   Put `even` and `odd` on two separate urbits and pass the messages
+    over the network. Post a link to a working solution in :talk to
+    receive a cookie.

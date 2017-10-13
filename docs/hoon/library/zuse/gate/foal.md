@@ -1,25 +1,30 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
+
 
 ### `++foal`
 
 Write high-level change
 
-Produces a [`++toro`](), a change intended for whatever file is located at
-`pax`. Handled by `%clay`.
+Produces a [`++toro`](), a change intended for whatever file is located
+at `pax`. Handled by `%clay`.
 
-## Accepts
+Accepts
+-------
 
 `pax` is a [`++path`]().
 
 `val` is a value as a [noun]().
 
-## Produces
+Produces
+--------
 
 A [`++toro`]().
 
-## Source
+Source
+------
 
     ++  foal                                                ::  high-level write
           |=  [pax=path val=*]
@@ -28,7 +33,8 @@ A [`++toro`]().
           [i.t.pax [%& [*cart [[t.t.t.pax (feel pax val)] ~]]]]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> + %/mek 'a'
     + /~zod/try/4/mek
@@ -39,3 +45,4 @@ A [`++toro`]().
     ]
     ~zod/try=> (feel %/mek 'b')
     [%mut p=[p=%a q=[%a p=97 q=98]]]
+

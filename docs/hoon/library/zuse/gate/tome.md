@@ -1,22 +1,27 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
+
 
 ### `++tome`
 
 Parse path to beam
 
-Parses a [`++path`]() `pax` to a [\`++beam](), a well-typed location.
+Parses a [`++path`]() `pax` to a [`++beam](), a well-typed location.
 
-## Accepts
+Accepts
+-------
 
 `pax` is a [`++path`]().
 
-## Produces
+Produces
+--------
 
 A `(unit beam)`.
 
-## Source
+Source
+------
 
     ++  tome                                                ::  parse path to beam
           |=  pax=path
@@ -32,7 +37,8 @@ A `(unit beam)`.
           `(unit beam)`[~ [who dex `case`p.cis] (flop t.t.t.pax)]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=/zop> (tome /~fyr/try/2/for/me)
     [~ [[p=~fyr q=%try r=[%ud p=2]] s=/me/for]]
@@ -42,3 +48,4 @@ A `(unit beam)`.
     ~
     ~zod/try=/zop> (tome /~zod/main/0x12)
     ~
+

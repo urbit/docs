@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++poxo`
 
@@ -8,21 +9,25 @@ Print XML
 
 Renders a `++manx` `a` as a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `a` is a [`++manx`]().
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  poxo                                                ::  node to tape
       =<  |=(a=manx `tape`(apex a ~))
       |_  unq=?                                             ::  unq
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (poxo ;div;)
     "<div></div>"
@@ -30,6 +35,7 @@ A `++tape`.
     "<div><p></p><a></a></div>"
     ~zod/try=> (poxo ;div:(p:"tree > text" a))
     "<div><p>tree &gt; text</p><a></a></div>"
+
 
 ### `++apex`
 
@@ -39,15 +45,18 @@ Renders a [`++manx`]() as a [`++tape`](), appending a suffix `rez`.
 
 XX is `rez/` a typo or is the `/` intentional
 
-## Accepts
+Accepts
+-------
 
 `rez` is a [`++tape`]().
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
       ++  apex                                              ::  top level
         |=  [mex=manx rez=tape]
@@ -65,7 +74,8 @@ A `++tape`.
         ?~(att rez [' ' (attr att rez)])
       ::  
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (apex:poxo ;div; "")
     "<div></div>"
@@ -84,17 +94,20 @@ Print attributes
 
 Render XML attributes as a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `tat` is a [`++mart`]().
 
 `rez` is a `++tape`.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
       ++  attr                                              ::  attributes to tape
         |=  [tat=mart rez=tape]
@@ -107,7 +120,8 @@ A `++tape`.
           (escp(unq |) v.i.tat '"' ?~(t.tat rez [' ' rez]))
         ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (attr:poxo ~ "")
     ""
@@ -122,17 +136,20 @@ Escape XML
 
 Escapes the XML special characters `"`, `&`, `'`, `<`, `>`.
 
-## Accepts
+Accepts
+-------
 
 `tex`is a [`++tape`]().
 
 `rez` is a `++tape`.
 
-## Produces
+Produces
+--------
 
 `++tape`.
 
-## Source
+Source
+------
 
       ++  escp                                              ::  escape for xml
         |=  [tex=tape rez=tape]
@@ -154,7 +171,8 @@ Escapes the XML special characters `"`, `&`, `'`, `<`, `>`.
         ==
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (escp:poxo "astra" ~)
     ~[~~a ~~s ~~t ~~r ~~a]
@@ -171,15 +189,18 @@ Print name
 
 Renders a [`++mane`]() as a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `man` is a `++mane`.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
       ++  name                                              ::  name to tape
         |=  man=mane  ^-  tape
@@ -187,7 +208,8 @@ A `++tape`.
         (weld (trip -.man) `tape`[':' (trip +.man)])
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (name:poxo %$)
     ""
@@ -202,17 +224,20 @@ Print node list
 
 Renders multiple XML nodes as a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `lix` is a [`++list`]() of [`++manx`]().
 
 `rez` is a `++tape`.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
       ++  many                                              ::  nodelist to tape
         |=  [lix=(list manx) rez=tape]
@@ -221,7 +246,8 @@ A `++tape`.
         (apex i.lix $(lix t.lix))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (many:poxo ~ "")
     ""
@@ -231,3 +257,4 @@ A `++tape`.
     "hare<lep></lep>ton"
     ~zod/try=> ;"hare;{lep}ton"
     [[[%~. [%~. "hare"] ~] ~] [[%lep ~] ~] [[%~. [%~. "ton"] ~] ~] ~]
+

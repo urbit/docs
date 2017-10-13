@@ -1,11 +1,12 @@
 ---
-navhome: '/docs/'
-next: True
+navhome: /docs/
+next: true
 sort: 14
 title: State
 ---
 
-# State
+State
+=====
 
 In the last section we built a few small apps that sent moves. These apps were
 entirely stateless, however. Most useful apps require some amount of state.

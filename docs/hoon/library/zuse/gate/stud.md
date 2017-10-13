@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++stud`
 
@@ -9,15 +10,18 @@ Parse UTC format
 Accepts a [`++tape`]() containing a date in UTC format and produces the
 [`++unit`]() of a [`++date`]().
 
-## Accepts
+Accepts
+-------
 
 `cud` is a `++tape`.
 
-## Produces
+Produces
+--------
 
 The `++unit` of a `++date`.
 
-## Source
+Source
+------
 
     ++  stud                                                ::  parse UTC format
       |=  cud=tape
@@ -46,7 +50,8 @@ The `++unit` of a `++date`.
       ==
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (stud "Tue, 21 Oct 2014 21:21:55 +0000")
     [~ [[a=%.y y=2.014] m=10 t=[d=21 h=21 m=21 s=55 f=~]]]
@@ -54,3 +59,5 @@ The `++unit` of a `++date`.
     [~ [[a=%.y y=2.002] m=10 t=[d=11 h=12 m=20 s=55 f=~]]]
     ~zod/try=> (stud "Wed, 11 Oct 2002")
     ~
+
+

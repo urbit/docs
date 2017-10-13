@@ -1,5 +1,5 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 11
 ---
 
@@ -9,11 +9,15 @@ sort: 11
 
 ## Expands to
 
-    :lest  p
-      !!
-    q
+```
+:lest  p
+  !!
+q
+```
 
-    ?.(p !! q)
+```
+?.(p !! q)
+```
 
 ## Syntax
 
@@ -21,8 +25,12 @@ Regular: *2-fixed*.
 
 ## Examples
 
-    ~zod:dojo> :sure(=(3 3) %foo)
-    %foo
+```
+~zod:dojo> :sure(=(3 3) %foo)
+%foo
+```
 
-    ~zod:dojo> ?>(=(3 3) %foo)
-    %foo
+```
+~zod:dojo> ?>(=(3 3) %foo)
+%foo
+```

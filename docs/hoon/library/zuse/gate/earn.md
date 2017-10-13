@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++earn`
 
@@ -8,15 +9,18 @@ Purl to tape
 
 Parses a [`++purl`]() `pul` to a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `pul` is a `++purl`.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  earn                                                ::  purl to tape
           |^  |=  pul=purl
@@ -24,7 +28,8 @@ A `++tape`.
               :(weld (head p.pul) "/" (body q.pul) (tail r.pul))
           ::
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (earn [| ~ [%| .127.0.0.1]] [~ ~] ~)
     "http://127.0.0.1/"
@@ -49,15 +54,18 @@ Render URL path
 
 Renders URL path `pok` as a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `pok` is a [`++pork`]().
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  body
             |=  pok=pork  ^-  tape
@@ -69,8 +77,8 @@ A `++tape`.
             (welp seg '/' $(q.pok t.q.pok))
           ::
           
-
-## Examples
+Examples
+--------
 
     ~zod/main=> (body:earn ~ /foo/mol/lok)
     "foo/mol/lok"
@@ -83,18 +91,21 @@ A `++tape`.
 
 Render URL beginning
 
-Renders a `++hart`, usually the beginning of a URL, as the [`++tape`]() of a
-traditional URL.
+Renders a `++hart`, usually the beginning of a URL, as the [`++tape`]()
+of a traditional URL.
 
-## Accepts
+Accepts
+-------
 
 `har` is a `++heart`.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  head
             |=  har=hart
@@ -113,7 +124,8 @@ A `++tape`.
             ==
           ::
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (head:earn | ~ %| .127.0.0.1)
     "http://127.0.0.1"
@@ -131,15 +143,18 @@ Render query string
 Renders a [`++quay`](), a query string in hoon, to the [`++tape`]() of a
 traditional query string.
 
-## Accepts
+Accepts
+-------
 
 `kay` is a `++quay`.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  tail
             |=  kay=quay
@@ -157,7 +172,8 @@ A `++tape`.
           --
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (tail:earn ~)
     ""
@@ -165,3 +181,5 @@ A `++tape`.
     "?ask=bid"
     ~zod/main=> (tail:earn [%ask 'bid'] [%make 'well'] ~)
     "?ask=bid&make=well"
+
+

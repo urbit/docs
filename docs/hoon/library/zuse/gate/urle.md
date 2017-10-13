@@ -1,23 +1,28 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++urle`
 
 Encode URL
 
-The inverse of [`++urld`](). Accepts a tape `tep` and replaces all characters
-other than alphanumerics and `.`, `-`, `~`, and `_`, with URL escape sequences.
+The inverse of [`++urld`](). Accepts a tape `tep` and replaces all
+characters other than alphanumerics and `.`, `-`, `~`, and `_`, with URL
+escape sequences.
 
-## Accepts
+Accepts
+-------
 
 `tep` is a [`++tape`]().
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  urle                                                ::  URL encode
           |=  tep=tape
@@ -38,7 +43,8 @@ A `++tape`.
           ['%' (xen (rsh 0 4 tap)) (xen (end 0 4 tap)) ~]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (urle "hello")
     "hello"
@@ -46,3 +52,5 @@ A `++tape`.
     "hello%20dear"
     ~zod/main=> (urle "hello-my?=me  !")
     "hello-my%3F%3Dme%20%20%21"
+
+
