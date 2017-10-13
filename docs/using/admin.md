@@ -17,7 +17,7 @@ Your Urbit is a persistent Unix process that you mainly control from the console
 
 ## Shutdown
 
-You can turn your Urbit off with `ctrl-d` from the `:talk` or `:dojo` prompts.
+You can turn your Urbit off with `ctrl-d` from the Talk or Dojo prompts.
 
 ## Restart
 
@@ -50,13 +50,13 @@ To move a pier, simply move the contents of the directory it lives in.  To keep 
 
 Your Urbit terminal is separated into two parts: the prompt (the bottom line) and the record (everything above that).  The record is shared; all the output from all the apps in your command set appears in it.  The prompt is multiplexed.
 
-In the CLI Urbit apps can process your input before you hit return.  To see this in action try entering `)` as the first character at the `:dojo` prompt.  Since there is no dojo command or hoon expression that starts with ')', the dojo rejects it.
+In the CLI Urbit apps can process your input before you hit return.  To see this in action try entering `)` as the first character at the Dojo prompt.  Since there is no dojo command or hoon expression that starts with ')', the dojo rejects it.
 
 `ctrl-x` - Switches the prompt between running console apps
 
 `ctrl-c` - Crash current event.  Processed at the Unix layer and prints a stack trace.
 
-`ctrl-d` - From `:talk` or `:dojo` stops your Urbit process.
+`ctrl-d` - From Talk or Dojo stops your Urbit process.
 
 `↑` / `↓` - History navigation
 
@@ -76,7 +76,7 @@ The following emacs-style key bindings are available:
     ctrl-u    kill to beginning of line
     ctrl-y    yank from kill buffer
 
-Full coverage of the Urbit shell, the `:dojo` is covered in the [Shell walkthrough](/docs/using/shell).
+Full coverage of the Urbit shell, the Dojo is covered in the [Shell walkthrough](/docs/using/shell).
 
 ## Web
 
