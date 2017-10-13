@@ -12,10 +12,10 @@ sort: 4
 
 <div class="row">
   <div class="col-md-12">
-    <h2>This Week in Urbit</h2>
+    <h2>Latest</h2>
   </div>
   <div class="col-md-4">
-    <h3>Weekly Updates</h3>
+    <h3>This Week in Urbit</h3>
     <ul class="list">
       <li>
         <h1><a href="https://urbit.org/blog">~2017.10.13 This Week in Urbit 4</a></h1>
