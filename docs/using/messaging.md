@@ -1,30 +1,30 @@
 ---
-navhome: '/docs'
-next: True
-sort: 4
-title: Messaging (:talk)
+navhome: /docs
+next: true
+sort: 5
+title: Messaging (Talk)
 ---
 
-# Messaging (`:talk`)
+# Messaging (Talk)
 
 <div class="row">
 
 <div class="col-md-8">
 
-`:talk` is the Urbit messaging and notifications protocol. Today we use
-`:talk` just to chat and coordinate, but it's really a general purpose
+Talk is the Urbit messaging and notifications protocol. Today we use
+Talk just to chat and coordinate, but it's really a general purpose
 piece of infrastructure.
 
 For the time being come join us in `/urbit-meta` by using the
 <a href="#-quickstart">quickstart</a> below.
 
-Today `:talk` is sort of like a distributed, encrypted Slack that can be
-used from the CLI and the browser. There’s no central `:talk` server.
+Today Talk is sort of like a distributed, encrypted Slack that can be
+used from the CLI and the browser. There’s no central Talk server.
 Any Urbit can host one.
 
-`:talk` is a general purpose tool for both aggregating and publishing
-streams of messages. Applications can use `:talk` as their transport
-protcol, API connectors can push disparate data sources into `:talk`,
+Talk is a general purpose tool for both aggregating and publishing
+streams of messages. Applications can use Talk as their transport
+protcol, API connectors can push disparate data sources into Talk,
 and so on. There are lots of things a distributed message protocol can
 be used for that we haven't even thought of.
 
@@ -34,14 +34,14 @@ be used for that we haven't even thought of.
 
 ## Quickstart
 
-For the most part we use `:talk` as a single-instance of Slack: one main
+For the most part we use Talk as a single-instance of Slack: one main
 channel (`/urbit-meta`) and dms. Everyone is more than welcome in
 `/urbit-meta`. It's the place to get help, ask questions and chat about
 Urbit in general.
 
 Let's join `/urbit-meta`:
 
-Use `ctrl-x` to switch from `:dojo` to `:talk`.
+Use `ctrl-x` to switch from Dojo to Talk.
 
 If you're a planet:
 
@@ -86,7 +86,7 @@ Use `;leave` to unsubscribe from a channel:
 
     ~your-urbit:talk> ;leave ~binzod/urbit-meta
 
-There are two ways of using `:talk`: from the CLI or through a web ui
+There are two ways of using Talk: from the CLI or through a web ui
 available at `http://your-urbit.urbit.org/talk` (or
 `http://localhost:8080/talk`).
 
@@ -101,11 +101,11 @@ Now you can tell your friends to `;join ~your-urbit/my-channel`.
 
 ## Manual
 
-`:talk`'s design is similar in spirit to
+Talk's design is similar in spirit to
 [nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol),
 the underlying protocol for Usenet.
 
-Our design is pretty simple: `:talk` messages are called ‘posts’. Posts
+Our design is pretty simple: Talk messages are called ‘posts’. Posts
 go to ‘stations’. Any urbit can host or subscribe to any number of
 stations.
 
@@ -123,7 +123,7 @@ For the time being a post is either a line, a URL or a command.
 A line is 64 bytes of ASCII lowercase, spaces and punctuation. If the
 line starts with '@', it's an action (IRC `/me`).
 
-The `:talk` interface will let you keep typing past 64 bytes, but insert
+The Talk interface will let you keep typing past 64 bytes, but insert
 a Unicode bullet-point character in an appropriate space in your post,
 to show you the prospective linebreak. Your essay will be posted in
 multiple lines.
@@ -288,7 +288,7 @@ Posting a line clears the typing and activation configurations.
 All nicknames must be 14 characters or less, lowercase. Nicknames are
 strictly local - like the names on entries in a phonebook. Sometimes in
 a post you want to mention someone you know by a nickname. Just type
-`~plato`, and `:talk` will replace it with `~your-urbit`.
+`~plato`, and Talk will replace it with `~your-urbit`.
 
 ### Timestamps
 

@@ -1,11 +1,11 @@
 ---
-navhome: /docs/
+navhome: /docs
 next: true
-sort: 3
-title: Administration and Operation
+sort: 4
+title: Administration and operation
 ---
 
-# Administration
+# Administration and operation
 
 <div class="row">
 <div class="col-md-8">

@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 9
+navhome: /docs
+sort: 3
 title: Source layout
 ---
 

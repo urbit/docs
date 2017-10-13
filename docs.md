@@ -177,13 +177,12 @@ sort: 4
         These short guides will walk you through the basic features of Urbit.
         </p>
         <ul class="list">
-            <li><h1><a href="./using/admin">Administration and Operation</a></h1></li>
-            <li><h1><a href="./using/messaging">Messaging (:talk)</a></h1></li>
-            <li><h1><a href="./using/shell">Messaging (:dojo)</a></h1></li>
-            <li><h1><a href="./using/filesystem">Filesystem</a></h1></li>
-            <li><h1><a href="./using/web">Web</a></h1></li>
-            <li><h1><a href="./using/urb">From Unix</a></h1></li>
             <li><h1><a href="./using/layout">Source layout</a></h1></li>
+            <li><h1><a href="./using/admin">Administration and Operation</a></h1></li>
+            <li><h1><a href="./using/messaging">Messaging (Talk)</a></h1></li>
+            <li><h1><a href="./using/shell">Shell (Dojo)</a></h1></li>
+            <li><h1><a href="./using/filesystem">Filesystem (Clay)</a></h1></li>
+            <li><h1><a href="./using/web">Web (Eyre)</a></h1></li>
         </ul>
     </div>
 </div>

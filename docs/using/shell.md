@@ -1,18 +1,18 @@
 ---
-navhome: '/docs'
-next: True
-sort: 5
-title: Shell (:dojo)
+navhome: /docs
+next: true
+sort: 6
+title: Shell (Dojo)
 ---
 
-# Shell (`:dojo`)
+# Shell (Dojo)
 
 <div class="row">
 
 <div class="col-md-8">
 
-The `:dojo` is the place to quickly experiment with Urbit. On the
-surface the `:dojo` is just a Hoon REPL. On the inside, the `:dojo` is a
+The Dojo is the place to quickly experiment with Urbit. On the
+surface the Dojo is just a Hoon REPL. On the inside, the Dojo is a
 system for operating on and transforming data in Urbit.
 
 </div>
@@ -232,7 +232,7 @@ Create a random moon (from any planet):
 
 ### Variables
 
-You can use `=` to set an environment variable in `:dojo`, but there are
+You can use `=` to set an environment variable in Dojo, but there are
 a few reserved names that have special uses.
 
 #### `dir`
