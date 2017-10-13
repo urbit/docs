@@ -308,7 +308,7 @@ sending messages between apps on different urbits.
 **Exercises**:
 
 -   Extend either of the apps in the first two exercises to accept input over
-    the network in the same way as `%pong`.
+    the network in the same way as `pong`.
 
 -   Modify `pong.hoon` to print out a message when it receives
     acknowledgement.
