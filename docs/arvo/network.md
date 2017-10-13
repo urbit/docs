@@ -205,11 +205,12 @@ urbit, this output:
     [%pong %received 'Pong']
 
 Most of the code should be straightforward. In `++poke-atom`, the only new thing
-is the expression `` `@t`tom ``, which is casting the argument `tom` to type 
-`@t`. As we already know, `@t` is the type of "cord" text strings. In Hoon, 
-when types are called using tick marks, they serve as a validator function 
-called a "clam" -- that is, a function whose domain is all nouns, and
-range is the given type (in this case, `@t`).
+is the expression `` `@t`tom ``, which is *casting* the argument `tom` to type 
+`@t`. As we already know, `@t` is the type of "cord" (text string). In Hoon, 
+when types are called using tick marks, they serve as a validator function-- 
+that is, a function whose domain is all nouns, and range is the given type 
+(in this case, `@t`). When a type is called as a function (`(@t tom)`, for 
+example), it is called a "clam". A clam behaves the same as a cast.
 
 In simpler terms, if a clam is passed a value of its own type, it produces that
 value. Otherwise, it produces the default value (aka the "bunt") of its type.
