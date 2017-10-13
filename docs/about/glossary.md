@@ -1,7 +1,7 @@
 ---
-navhome: '/docs'
-next: True
-sort: 3
+navhome: /docs
+next: true
+sort: 2
 title: Urbit glossary
 ---
 

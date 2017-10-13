@@ -1,6 +1,6 @@
 ---
-navhome: '/docs'
-next: True
+navhome: /docs
+next: true
 sort: 4
 title: Contributing to Urbit
 ---
