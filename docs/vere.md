@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
-sort: 6
+sort: 8
+title: Vere
 ---
 
 # Vere

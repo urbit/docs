@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
-sort: 9
+sort: 5
+title: Arvo
 ---
 
 # Arvo

@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
 sort: 4
+title: Learn
 ---
 
 # Learn
