@@ -207,15 +207,14 @@ urbit, this output:
 Most of the code should be straightforward. In `++poke-atom`, the only new thing
 is the expression `` `@t`tom ``, which is *casting* the argument `tom` to type 
 `@t`. As we already know, `@t` is the type of "cord" (text string). In Hoon, 
-when types are called using tick marks, they serve as a validator function-- 
-that is, a function whose domain is all nouns, and range is the given type 
-(in this case, `@t`). When a type is called as a function (`(@t tom)`, for 
-example), it is called a "clam". A clam behaves the same as a cast.
-
-In simpler terms, if a clam is passed a value of its own type, it produces that
-value. Otherwise, it produces the default value (aka the "bunt") of its type.
-Here we call this `@t` function on the argument. This coerces the argument to
-text, so that we can print it out prettily no matter what we're passed.
+another way to perform a kind of casting is to use a type as a function, like 
+this: `(@t tom)`. When types are called like this, they are called "clams", 
+and they serve as validator functions-- that is, functions whose domain is all 
+nouns, and range is the given type (in this case, `@t`). Clams will "bunt" the 
+default value of the mold whereas casts (`@t`tom) may `nest-fail` if the 
+argument passed to it does not fit. An example of such a failure case is 
+passing a cell to an atom: `` `@`[1 2] ``. Using a clam here instead 
+(`(@ [1 2])`) will bunt the default value of `@`, which is `0`. Try it in dojo!
 
 The more interesting part is in `++poke-urbit`. The `urbit` mark is an urbit
 identity, and the Hoon type associated with it is `ship` or `@p` (the "p" 
