@@ -18,16 +18,16 @@ sort: 4
     <h3>This Week in Urbit</h3>
     <ul class="list">
       <li>
-        <h1><a href="https://urbit.org/blog">~2017.10.13 This Week in Urbit 4</a></h1>
+        <h1><a href="https://urbit.org/blog">This Week in Urbit 4: ~2017.10.13 </a></h1>
       </li>
       <li>
-        <h1><a href="https://urbit.org/blog">~2017.10.6 This Week in Urbit 3</a></h1>
+        <h1><a href="https://urbit.org/blog">This Week in Urbit 3: ~2017.10.6</a></h1>
       </li>
       <li>
-        <h1><a href="https://urbit.org/blog">~2017.9.28 This Week in Urbit 2</a></h1>
+        <h1><a href="https://urbit.org/blog">This Week in Urbit 2: ~2017.9.28</a></h1>
       </li>
       <li>
-        <h1><a href="https://urbit.org/blog">~2017.9.21 This Week in Urbit 1</a></h1>
+        <h1><a href="https://urbit.org/blog">This Week in Urbit 1: ~2017.9.21</a></h1>
       </li>
     </ul>
   </div>
