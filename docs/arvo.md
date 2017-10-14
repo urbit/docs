@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 5
+navhome: /docs
+sort: 17
 title: Arvo
 ---
 

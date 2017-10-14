@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 4
+navhome: /docs
+sort: 16
 title: Learn
 ---
 

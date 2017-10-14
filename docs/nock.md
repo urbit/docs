@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 7
+navhome: /docs
+sort: 19
 title: Nock
 ---
 

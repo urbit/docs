@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 1
+navhome: /docs
+sort: 14
 title: Community
 ---
 

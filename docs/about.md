@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 3
+navhome: /docs
+sort: 15
 title: About
 ---
 

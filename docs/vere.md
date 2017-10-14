@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 8
+navhome: /docs
+sort: 20
 title: Vere
 ---
 

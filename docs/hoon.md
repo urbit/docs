@@ -1,6 +1,6 @@
 ---
-navhome: /docs/
-sort: 6
+navhome: /docs
+sort: 18
 title: Hoon
 ---
 
