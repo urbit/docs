@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 title: Community projects
 sort: 2
 ---

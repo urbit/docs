@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 next: true
 sort: 5
 title: Contributing to Urbit

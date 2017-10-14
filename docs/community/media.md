@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 sort: 1
 title: Community media
 ---

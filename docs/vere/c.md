@@ -1,5 +1,5 @@
 ---
-navhome: /docs
+navhome: /docs/
 sort: 2
 title: C in Urbit
 next: true
