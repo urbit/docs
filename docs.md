@@ -146,21 +146,21 @@ sort: 4
   <div class="col-md-4">
     <ul class="list">
       <li>
-        <h1><a href="./community/media">More</a></h1>
+        <h1><a href="/docs/community/media">More</a></h1>
       </li>
     </ul>
   </div>
   <div class="col-md-4">
     <ul class="list">
       <li>
-        <h1><a href="./community/projects">More</a></h1>
+        <h1><a href="/docs/community/projects">More</a></h1>
       </li>
     </ul>
   </div>
   <div class="col-md-4">
     <ul class="list">
       <li>
-        <h1><a href="./community/docs">More</a></h1>
+        <h1><a href="/docs/community/docs">More</a></h1>
       </li>
     </ul>
   </div>
@@ -174,8 +174,8 @@ sort: 4
         These short guides will get you installed and setup on Urbit.
         </p>
         <ul class="list">
-            <li><h1><a href="./using/install">Install</a></h1></li>
-            <li><h1><a href="./using/setup">Setup</a></h1></li>
+            <li><h1><a href="/docs/using/install">Install</a></h1></li>
+            <li><h1><a href="/docs/using/setup">Setup</a></h1></li>
         </ul>
     </div>
     <div class="col-md-4">
@@ -184,12 +184,12 @@ sort: 4
         These short guides will walk you through the basic features of Urbit.
         </p>
         <ul class="list">
-            <li><h1><a href="./using/layout">Source layout</a></h1></li>
-            <li><h1><a href="./using/admin">Administration and Operation</a></h1></li>
-            <li><h1><a href="./using/messaging">Messaging (Talk)</a></h1></li>
-            <li><h1><a href="./using/shell">Shell (Dojo)</a></h1></li>
-            <li><h1><a href="./using/filesystem">Filesystem (Clay)</a></h1></li>
-            <li><h1><a href="./using/web">Web (Eyre)</a></h1></li>
+            <li><h1><a href="/docs/using/layout">Source layout</a></h1></li>
+            <li><h1><a href="/docs/using/admin">Administration and Operation</a></h1></li>
+            <li><h1><a href="/docs/using/messaging">Messaging (Talk)</a></h1></li>
+            <li><h1><a href="/docs/using/shell">Shell (Dojo)</a></h1></li>
+            <li><h1><a href="/docs/using/filesystem">Filesystem (Clay)</a></h1></li>
+            <li><h1><a href="/docs/using/web">Web (Eyre)</a></h1></li>
         </ul>
     </div>
 </div>
