@@ -41,7 +41,7 @@ sort: 4
   </div>
 </div>
 
-<div class="row">
+<div class="row head">
     <div class="col-md-12">
       <h2>Community</h2>
     </div>
@@ -72,6 +72,9 @@ sort: 4
               Curtis gives a technical talk, <i>Urbit: A Clean Slate Functional Operating Stack</i><b> </b>at the LambdaConf 2016 conference in Boulder, Colorado.
               </p>
             </li>
+            <li>
+              <h1><a href="/docs/community/media">More</a></h1>
+            </li>
         </ul>
     </div>
     <div class="col-md-4">
@@ -100,6 +103,10 @@ sort: 4
               </p>
               <h1><a href="https://urbit.org/fora/posts/~2017.9.20..22.45.02..0f8d~">Fora post</a>
               </h1>
+            </li>
+            <br />
+            <li>
+              <h1><a href="/docs/community/projects">More</a></h1>
             </li>
         </ul>
     </div>
@@ -138,32 +145,13 @@ sort: 4
               Subject-oriented programming, functions and lambdas in Hoon and an attempt to draw parallels with object-oriented programming.
               </p>
             </li>
+            <br />
+            <br />
+            <li>
+              <h1><a href="/docs/community/docs">More</a></h1>
+            </li>
         </ul>
     </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-    <ul class="list">
-      <li>
-        <h1><a href="/docs/community/media">More</a></h1>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-4">
-    <ul class="list">
-      <li>
-        <h1><a href="/docs/community/projects">More</a></h1>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-4">
-    <ul class="list">
-      <li>
-        <h1><a href="/docs/community/docs">More</a></h1>
-      </li>
-    </ul>
-  </div>
 </div>
 
 <h2>Users</h2>
