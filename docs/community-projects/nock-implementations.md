@@ -1,8 +1,8 @@
 ---
-navhome: '/docs/'
-next: True
+navhome: /docs/
 sort: 4
 title: Nock implementations
+next: true
 ---
 
 # Community Nock implementations

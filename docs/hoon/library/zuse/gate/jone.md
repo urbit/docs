@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++jone`
 
@@ -8,15 +9,18 @@ navhome: '/docs/'
 
 Produces a `++json` number from an unsigned atom.
 
-## Accepts
+Accepts
+-------
 
 `a` is an atom of odor [`@u`]().
 
-## Produces
+Produces
+--------
 
 A [`++json`]().
 
-## Source
+Source
+------
 
     ++  jone                                                ::  number from unsigned
       |=  a=@u
@@ -26,7 +30,8 @@ A [`++json`]().
       (crip (flop |-(^-(tape ?:(=(0 a) ~ [(add '0' (mod a 10)) $(a (div a 10))])))))
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (jone 1)
     [%n p=~.1]
@@ -36,3 +41,5 @@ A [`++json`]().
     [%n p=~.1203196]
     ~zod/try=> (pojo (jone 1.203.196))
     "1203196"
+
+

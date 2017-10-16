@@ -1,5 +1,5 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 3
 ---
 
@@ -9,9 +9,13 @@ sort: 3
 
 ## Expands to
 
-    :per(:cons(p .) q)
+```
+:per(:cons(p .) q)
+```
 
-    =>([p .] q)
+```
+=>([p .] q)
+```
 
 ## Syntax
 
@@ -22,17 +26,21 @@ Regular: *2-fixed*.
 `:pin` is the simplest way of "declaring a variable."
 
 ## Examples
+ 
+```
+~zod:dojo> =foo  :gate  a/@
+                 :pin  :name(b 1)
+                 :pin  :name(c 2)
+                 :(add a b c)
+~zod:dojo> (foo 5)
+8
+```
 
-    ~zod:dojo> =foo  :gate  a/@
-                     :pin  :name(b 1)
-                     :pin  :name(c 2)
-                     :(add a b c)
-    ~zod:dojo> (foo 5)
-    8
-
-    ~zod:dojo> =foo  |=  a/@
-                     =+  b=1
-                     =+  c=2
-                     :(add a b c)
-    ~zod:dojo> (foo 5)
-    8
+```
+~zod:dojo> =foo  |=  a/@
+                 =+  b=1
+                 =+  c=2
+                 :(add a b c)
+~zod:dojo> (foo 5)
+8
+```

@@ -1,6 +1,7 @@
 ---
-navhome: '/docs'
+navhome: /docs
 sort: 10
+
 ---
 
 # `:port  |~  "barsig"`
@@ -9,9 +10,13 @@ sort: 10
 
 ## Expands to
 
-    :iron  :gate(p q)
+```
+:iron  :gate(p q)
+```
 
-    ^|  |=(p q)
+```
+^|  |=(p q)
+```
 
 ## Syntax
 
@@ -23,7 +28,11 @@ See [this discussion of core variance models](../../../advanced)
 
 ## Examples
 
-    ~zod:dojo> :per  ~  :like(:port(a/@ *@) :gate(a/* *@))
+```
+~zod:dojo> :per  ~  :like(:port(a/@ *@) :gate(a/* *@))
+```
 
-    ~zod:dojo> =>  ~  ^+(|~(a/@ *@) |=(a/* *@))
-    <1|usl {a/@ $~}>
+```
+~zod:dojo> =>  ~  ^+(|~(a/@ *@) |=(a/* *@))
+<1|usl {a/@ $~}>
+```

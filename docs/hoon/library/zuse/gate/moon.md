@@ -1,21 +1,26 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++moon`
 
 Mime type to `++cord`
 
-Renders a [mime](http://en.wikipedia.org/wiki/MIME) type path with infix `/` to
-a [`++cord`](). Accepts -------
+Renders a [mime](http://en.wikipedia.org/wiki/MIME) type path with infix
+`/` to a [`++cord`]().
+Accepts
+-------
 
 `myn` is a ++[`mite`](), a [`++list`]() of [`@ta`]().
 
-## Produces
+Produces
+--------
 
 A `++cord`.
 
-## Source
+Source
+------
 
     ++  moon                                                ::  mime type to text
       |=  myn=mite
@@ -27,7 +32,8 @@ A `++cord`.
       (weld (trip i.myn) `tape`['/' $(myn t.myn)])
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `@t`(moon /image/png)
     'image/png'
@@ -35,3 +41,5 @@ A `++cord`.
     'text/x-hoon'
     ~zod/try=> `@t`(moon /application/x-pnacl)
     'application/x-pnacl'
+
+

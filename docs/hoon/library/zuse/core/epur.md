@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++epur`
 
@@ -8,21 +9,25 @@ Top-level URL parser
 
 Parses an entire URL.
 
-## Accepts
+Accepts
+-------
 
 `a` is a [`++cord`](/docs/hoon/library/1#++cord).
 
-## Produces
+Produces
+--------
 
 A [`++purl`]().
 
-## Source
+Source
+------
 
     ++  epur                                                ::  url/header parser
           =<  |=(a=cord (rush a auri))
           |%
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (epur 'http://127.0.0.1/')
     [~ [p=[p=%.n q=~ r=[%.n p=.127.0.0.1]] q=[p=~ q=<||>] r=~]]
@@ -70,17 +75,20 @@ URL path as ++pork
 
 Parses a URL path as a [`++pork`]().
 
-## Produces
+Produces
+--------
 
 A [`++rule`]().
 
-## Source
+Source
+------
 
     ++  apat                                              ::  2396 abs_path
             %+  cook  deft
             (ifix [fas ;~(pose fas (easy ~))] (more fas smeg))
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "/foo/mol/lok" apat:epur)
     [p=~ q=<|foo mol lok|>]
@@ -91,15 +99,18 @@ A [`++rule`]().
 
 URL parsing rule
 
-## Accepts
+Accepts
+-------
 
 A [`++purl`]().
 
-## Produces
+Produces
+--------
 
 XX
 
-## Source
+Source
+------
 
     ++  auri
             %+  cook
@@ -117,7 +128,8 @@ XX
               ;~(plug ;~(pose apat (easy *pork)) yque)
             ==
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (auri:epur [1 1] "http://127.0.0.1/")
     [ p=[p=1 q=18] 
@@ -208,16 +220,20 @@ XX
 
 HTTP cookies, results in associative list of cord to cord.
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  cock                                              ::  cookie
             (most ;~(plug sem ace) ;~(plug toke ;~(pfix tis tosk)))
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "sam=lop" cock:epur)
     [['sam' 'lop'] ~]
@@ -231,11 +247,14 @@ HTTP cookies, results in associative list of cord to cord.
 
 Domain label: alphanumeric, with `-` allowed in middle.
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  dlab                                              ::  2396 domainlabel
             %+  sear
@@ -245,7 +264,8 @@ Domain label: alphanumeric, with `-` allowed in middle.
             ;~(plug aln (star alp))
           ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "google" dlab:epur)
     ~.google
@@ -261,15 +281,19 @@ Domain label: alphanumeric, with `-` allowed in middle.
 
 One or more query string characters
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  fque  (cook crip (plus pquo))                     ::  normal query field
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "%20" fque:epur)
     ' '
@@ -287,15 +311,19 @@ One or more query string characters
 
 Zero or more query string characters
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  fquu  (cook crip (star pquo))                     ::  optional field
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "%20" fquu:epur)
     ' '
@@ -310,17 +338,22 @@ Zero or more query string characters
 
 ### `++pcar`
 
-Single URL path character: literal, `%` escape, subpath delimiter, `:` or `@`
+Single URL path character: literal, `%` escape, subpath delimiter, `:`
+or `@`
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pcar  ;~(pose pure pesc psub col pat)             ::  2396 path char
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "a" pcar:epur)
     ~~a
@@ -340,15 +373,19 @@ Single URL path character: literal, `%` escape, subpath delimiter, `:` or `@`
 
 Cookie character
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pcok  ;~(less bas sem com doq prn)                ::  cookie char
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "a" pcok:epur)
     ~~a
@@ -365,15 +402,19 @@ Cookie character
 
 URL `%` escape, by two hex characters.
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pesc  ;~(pfix cen mes)                            ::  2396 escaped
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `@t`(scan "%22" pesc:epur)
     '"'
@@ -384,15 +425,19 @@ URL `%` escape, by two hex characters.
 
 Old URL `' '` escape
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pold  (cold ' ' (just '+'))                       ::  old space code
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `@t`(scan "+" pold:epur)
     ' '
@@ -404,15 +449,19 @@ Old URL `' '` escape
 
 Irregular query string character.
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pque  ;~(pose pcar fas wut)                       ::  3986 query char
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `@t`(scan "a" pque:epur)
     'a'
@@ -427,15 +476,19 @@ Irregular query string character.
 
 Character in query string key/value
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pquo  ;~(pose pure pesc pold)                     ::  normal query char
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "a" pquo:epur)
     'a'
@@ -453,15 +506,19 @@ Character in query string key/value
 
 URL-safe character
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  pure  ;~(pose aln hep dot cab sig)                ::  2396 unreserved
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "a" pure:epur)
     ~~a
@@ -477,18 +534,22 @@ URL-safe character
 
 URL path subdelimeter
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  psub  ;~  pose                                    ::  3986 sub-delims
                       zap  buc  pam  soq  pel  per
                       tar  lus  com  sem  tis
                     ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `@t`(scan "+" psub:epur)
     '+'
@@ -504,18 +565,22 @@ URL path subdelimeter
 
 Character valid in HTTP token
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  ptok  ;~  pose                                    ::  2616 token
                       aln  zap  hax  buc  cen  pam  soq  tar  lus
                       hep  dot  ket  cab  tec  bar  sig
                     ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `tape`(murn =+(a=' ' |-(`tape`?:(=(0x7f a) ~ [a $(a +(a))]))) (curr rush ptok):epur)
     "!#$%&'*+-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ^_`abcdefghijklmnopqrstuvwxyz|~"
@@ -524,21 +589,25 @@ Character valid in HTTP token
 
 ### `++scem`
 
-URI scheme: alphabetic character, followed by any number of alphanumeric, `+`
-`-` or `.`
+URI scheme: alphabetic character, followed by any number of
+alphanumeric, `+` `-` or `.`
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  scem                                              ::  2396 scheme
             %+  cook  cass
             ;~(plug alf (star ;~(pose aln lus hep dot)))
           ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> `@t`(scan "http" scem:epur)
     'http'
@@ -551,15 +620,19 @@ URI scheme: alphabetic character, followed by any number of alphanumeric, `+`
 
 URL path segment
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  smeg  (cook crip (plus pcar))                     ::  2396 segment
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "foo" smeg:epur)
     'foo'
@@ -570,15 +643,19 @@ URL path segment
 
 HTTP cookie value
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  tock  (cook crip (plus pcok))                     ::  6265 cookie-value
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (rush 'sam' tock:epur)
     [~ 'sam']
@@ -593,15 +670,19 @@ HTTP cookie value
 
 Possibly quoted HTTP cookie value
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  tosk  ;~(pose tock (ifix [doq doq] tock))         ::  6265 cookie-value
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (rush 'sam' tosk:epur)
     [~ 'sam']
@@ -616,15 +697,19 @@ Possibly quoted HTTP cookie value
 
 HTTP cookie name
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  toke  (cook crip (plus ptok))                     ::  2616 token
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (rush 'sam' toke:epur)
     [~ 'sam']
@@ -639,11 +724,14 @@ HTTP cookie name
 
 Parse ++host and unit `@ui` port.
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  thor                                              ::  2396 host/port
             %+  cook  |*(a=[* *] [+.a -.a])
@@ -652,7 +740,8 @@ Parse ++host and unit `@ui` port.
               ;~(pose (stag ~ ;~(pfix col dim:ag)) (easy ~))
             ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "localhost" thor:epur)
     [~ [%.y i='localhost' t=~]]
@@ -667,11 +756,14 @@ Parse ++host and unit `@ui` port.
 
 URI host: dot-separated segments, or IP address.
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  thos                                              ::  2396 host, no local
             ;~  plug
@@ -692,7 +784,8 @@ URI host: dot-separated segments, or IP address.
               ==
             ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "localhost" thos:epur)
     [%.y i='localhost' t=~]
@@ -708,11 +801,14 @@ URI host: dot-separated segments, or IP address.
 
 Parses query string, or lack thereof. Result type ++quay
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  yque                                              ::  query ending
             ;~  pose
@@ -720,7 +816,8 @@ Parses query string, or lack thereof. Result type ++quay
               (easy ~)
             ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "?sar=tok" yque:epur)
     [['sar' 'tok'] ~]
@@ -733,11 +830,14 @@ Parses query string, or lack thereof. Result type ++quay
 
 Parse query string after `?`
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  yquy                                              ::  query
             ;~  pose                                            ::  proper query
@@ -750,7 +850,8 @@ Parse query string after `?`
               (star pque)
             ==
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "sar=tok" yquy:epur)
     [['sar' 'tok'] ~]
@@ -763,11 +864,14 @@ Parse query string after `?`
 
 Parse ++quri absolute or relative request path
 
-## Accepts
+Accepts
+-------
 
-## Produces
+Produces
+--------
 
-## Source
+Source
+------
 
     ++  zest                                              ::  2616 request-uri
             ;~  pose
@@ -776,9 +880,11 @@ Parse ++quri absolute or relative request path
             ==
           --
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (scan "http://www.google.com:80/search?q=foo" zest:epur)
     [%.y p=[p=%.n q=[~ 80] r=[%.y p=<|com google www|>]] q=[p=~ q=<|search|>] r=~[[p='q' q='foo']]]
     ~zod/try=> (scan "/rel/bat" zest:epur)
     [%.n [p=~ q=<|rel bat|>] ~]
+

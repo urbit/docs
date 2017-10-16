@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++pojo`
 
@@ -8,15 +9,18 @@ Print JSON
 
 Renders a [`++json`]() `val` as a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `val` is a [`json`]().
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  pojo                                                ::  print json
       |=  val=json
@@ -60,7 +64,8 @@ A `++tape`.
       ==
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (pojo [%n '12.6'])
     "12.6"
@@ -74,3 +79,5 @@ A `++tape`.
     '[12,null,"ha"]'
     ~zod/try=> (crip (pojo %o (mo sale/(jone 12) same/b/| ~)))
     '{"same":false,"sale":12}'
+
+

@@ -1,6 +1,8 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
+
 
 ### `++jo`
 
@@ -8,18 +10,21 @@ JSON reparsing core
 
 Contains converters of [`++json`]() to [`++unit`]()s of well-typed structures.
 
-## Accepts
+Accepts
+-------
 
 A `fist` is a gate that produces a `grub`.
 
 A `grub` is a unit of some JSON value.
 
-## Source
+Source
+------
 
     ++  jo                                                  ::  json reparser
       =>  |%  ++  grub  (unit ,*) 
               ++  fist  $+(json grub)
       |%
+
 
 ### `++ar`
 
@@ -30,16 +35,19 @@ Reparser modifier. Reparses an array to the [`++unit`]() of a homogenous
 
 `wit` is a [`++fist`](), a JSON reparser.
 
-## Accepts
+
+Accepts
+-------
 
 A [`++fist`]().
 
-## Produces
+Produces
+--------
 
 A [`++rule`]().
 
-## Source
-
+Source
+------
       ++  ar                                                ::  array as list
         |*  wit=fist
         |=  jon=json
@@ -50,28 +58,33 @@ A [`++rule`]().
         [i=(wit i.p.jon) t=$(p.jon t.p.jon)]
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> :type; ((ar ni):jo a/~[n/'1' n/'2'])
     [~ u=~[1 2]]
     {[%~ u=it(@)] %~}
 
+
 ### `++at`
 
 Reparse array as tuple
 
-Reparser generator. Reparses an array as a fixed-length tuple of [`++unit`]()s,
-using a list of `++fist`s.
+Reparser generator. Reparses an array as a fixed-length tuple of
+[`++unit`]()s, using a list of `++fist`s.
 
-## Accepts
+Accepts
+-------
 
 `wil` is a [`++pole`](), a [`face`]()less list of [`++fist`]()s.
 
-## Produces
+Produces
+--------
 
 A [`++rule`]().
 
-## Source
+Source
+------
 
       ++  at                                                ::  array as tuple
         |*  wil=(pole fist)
@@ -81,7 +94,8 @@ A [`++rule`]().
         ?.((za raw) ~ (some (zp raw)))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((at ni so ni ~):jo a/~[n/'3' s/'to' n/'4'])
     [~ u=[q=3 ~.to q=4]]
@@ -95,18 +109,20 @@ A [`++rule`]().
 
 Reparse array to tuple
 
-Reparser generator. Reparses a list of [`++json`]() with `wil` to a tuple of
-[`++unit`]()s.
+Reparser generator. Reparses a list of [`++json`]() with `wil` to a tuple of [`++unit`]()s.
 
-## Accepts
+Accepts
+-------
 
 `wil` is a [`++pole`](), a [face]()less list of [`++fist`]()s.
 
-## Produces
+Produces
+--------
 
 A [`++rule`]().
 
-## Source
+Source
+------
 
         ++  at-raw                                            ::  array as tuple
         |*  wil=(pole fist)
@@ -116,7 +132,8 @@ A [`++rule`]().
         ((at-raw +.wil) ?~(jol ~ t.jol))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((at-raw ni ni bo ~):jo ~[s/'hi' n/'1' b/&])
     [~ [~ 1] [~ u=%.y] ~]
@@ -125,23 +142,28 @@ A [`++rule`]().
 
 Reparse boolean
 
-Reparser modifier. Reparses a boolean to the [`++unit`]() of a boolean.
+Reparser modifier. Reparses a boolean to the [`++unit`]() of a
+boolean.
 
-## Accepts
+Accepts
+-------
 
 A [`++json`]().
 
-## Produces
+Produces
+--------
 
 A [`++fist`]().
 
-## Source
+Source
+------
 
       ++  bo                                                ::  boolean
         |=(jon=json ?.(?=([%b *] jon) ~ [~ u=p.jon]))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (bo:jo [%b &])
     [~ u=%.y]
@@ -154,24 +176,29 @@ A [`++fist`]().
 
 Reparse boolean not
 
-Reparser modifier. Reparses the inverse of a boolean to the [`++unit`]() of a
-loobean.
+Reparser modifier. Reparses the inverse of a boolean to the [`++unit`]()
+of a loobean.
 
-## Accepts
+
+Accepts
+-------
 
 A [`++json`]().
 
-## Produces
+Produces
+--------
 
 A [`++fist`]().
 
-## Source
+Source
+------
 
       ++  bu                                                ::  boolean not
         |=(jon=json ?.(?=([%b *] jon) ~ [~ u=!p.jon]))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (bu:jo [%b &])
     [~ u=%.n]
@@ -184,20 +211,23 @@ A [`++fist`]().
 
 Reparse and transform
 
-Reparser modifier. Reparses `jon` and slams the result through `wit`, producing
-a [`++unit`]().
+Reparser modifier. Reparses `jon` and slams the result through `wit`,
+producing a [`++unit`]().
 
-## Accepts
+Accepts
+-------
 
 `wit` is a [`++fist`]().
 
 `poq` is a [`gate`]() that accepts and returns a [noun]().
 
-## Produces
+Produces
+--------
 
 A [`++fist`]().
 
-## Source
+Source
+------
 
       ++  cu                                                ::  transform
         |*  [poq=$+(* *) wit=fist]
@@ -205,7 +235,8 @@ A [`++fist`]().
         (bind (wit jon) poq)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((cu dec ni):jo [%n '20'])
     [~ 19]
@@ -218,15 +249,18 @@ Reparse UTC date
 
 Reparser modifier. Reparses a UTC date string to a [`++unit`]().
 
-## Accepts
+Accepts
+-------
 
 `jon` is a [`++json`]().
 
-## Produces
+Produces
+--------
 
 A [`++fist`]().
 
-## Source
+Source
+------
 
       ++  da                                                ::  UTC date
         |=  jon=json
@@ -234,7 +268,8 @@ A [`++fist`]().
         (bind (stud (trip p.jon)) |=(a=date (year a)))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (da:jo [%s 'Wed, 29 Oct 2014 0:26:15 +0000'])
     [~ ~2014.10.29..00.26.15]
@@ -250,15 +285,18 @@ Reparse millisecond date
 Reparser modifier. Reparses the javascript millisecond date integer to a
 [`++unit`]().
 
-## Accepts
+Accepts
+-------
 
 `jon` is a [`++json`]().
 
-## Produces
+Produces
+--------
 
 A [`++fist`]().
 
-## Source
+Source
+------
 
       ++  di                                                ::  millisecond date
         |=  jon=json
@@ -267,7 +305,8 @@ A [`++fist`]().
         (add ~1970.1.1 (div (mul ~s1 a) 1.000))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (di:jo [%s '2014-10-29'])
     ~
@@ -284,18 +323,21 @@ Reparse unit
 
 Reparser modifier. Reparses `wit` to a [`++unit`]().
 
-JSON units are considered to be either JSON null or the requested value, and are
-reparsed to results of ~ or (some {value}) respectively.
+JSON units are considered to be either JSON null or the requested
+value, and are reparsed to results of \~ or (some {value}) respectively.
 
-## Accepts
+Accepts
+-------
 
 `wit` is a [`++fist`]().
 
-## Produces
+Produces
+--------
 
 A [`++fist`]().
 
-## Source
+Source
+------
 
       ++  mu                                                ::  true unit
         |*  wit=fist
@@ -303,7 +345,8 @@ A [`++fist`]().
         ?~(jon (some ~) (bind (wit jon) some))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((mu ni):jo [%n '20'])
     [~ [~ u=q=20]]
@@ -320,24 +363,27 @@ Reparse number as real
 
 XX Currently unimplemented
 
-A- yup, this will eventually reparse a floating point atom, but interfaces for
-the latter are not currently stable.
+A- yup, this will eventually reparse a floating point atom, but
+interfaces for the latter are not currently stable.
 
 ### `++ni`
 
 Reparse number as integer
 
-Reparser modifier. Reparses an integer representation to a [\`++unit]().
+Reparser modifier. Reparses an integer representation to a [`++unit]().
 
-## Accepts
+Accepts
+-------
 
 `jon` is a ++[`++json`]().
 
-## Produces
+Produces
+--------
 
 The `++unit` of an atom.
 
-## Source
+Source
+------
 
       ++  ni                                                ::  number as integer
         |=  jon=json 
@@ -345,7 +391,8 @@ The `++unit` of an atom.
         (rush p.jon dem)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (ni:jo [%n '0'])
     [~ q=0]
@@ -368,15 +415,18 @@ Reparse number as text
 
 Reparser modifier. Reparses a numeric representation to a [++cord]().
 
-## Accepts
+Accepts
+-------
 
 `jon` is a `++json`.
 
-## Produces
+Produces
+--------
 
 The [`++unit`]() of a `++cord`.
 
-## Source
+Source
+------
 
       ++  no                                                ::  number as text
         |=  jon=json
@@ -384,7 +434,8 @@ The [`++unit`]() of a `++cord`.
         (some p.jon)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (no:jo [%n '0'])
     [~ u=~.0]
@@ -405,19 +456,22 @@ The [`++unit`]() of a `++cord`.
 
 Reparse object to frond
 
-Reparser generator. Reparses an object, succeeding if it corresponds to one of
-the key-value pairs in `wer`.
+Reparser generator. Reparses an object, succeeding if it corresponds to
+one of the key-value pairs in `wer`.
 
-## Accepts
+Accepts
+-------
 
 `wer` is a [`++pole`](), a [`++face`]()less list of [`++cord`]() and
 [`++fist`]() key-value pairs.
 
-## Produces
+Produces
+--------
 
 The [`++unit`]() of a cell of a.....
 
-## Source
+Source
+------
 
       ++  of                                                ::  object as frond
         |*  wer=(pole ,[cord fist])
@@ -430,7 +484,8 @@ The [`++unit`]() of a cell of a.....
         ((of +.wer) jon)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((of sem/sa som/ni ~):jo %o [%sem s/'hi'] ~ ~)
     [~ [%sem "hi"]]
@@ -456,18 +511,22 @@ The [`++unit`]() of a cell of a.....
 Reparse object as tuple
 
 Reparser generator. For every key in `wer` that matches a key in the
-\[`++edge`\], the fist in `wer` is applied to the corresponding value in the
-[`++edge`](), the results of which are produced in a tuple.
+[`++edge`], the fist in `wer` is applied to the corresponding value in
+the [`++edge`](), the results of which are produced in a tuple.
 
-## Accepts
+
+Accepts
+-------
 
 `wer` is a [`++pole`]() of [`++cord`]() to [`++fist`]() key-value pairs.
 
-## Produces
+Produces
+--------
 
 A [`++unit`]() of a tuple XX?
 
-## Source
+Source
+------
 
       ++  ot                                                ::  object as tuple
         |*  wer=(pole ,[cord fist])
@@ -477,7 +536,8 @@ A [`++unit`]() of a tuple XX?
         ?.((za raw) ~ (some (zp raw)))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (jobe [%sem s/'ha'] [%som n/'20'] ~)
     [%o p={[p='sem' q=[%s p=~.ha]] [p='som' q=[%n p=~.20]]}]
@@ -486,19 +546,24 @@ A [`++unit`]() of a tuple XX?
 
 ### `++ot-raw`
 
-Reparser generator. Reparses a map `jom` using `wer`; for every key in `wer`
-that matches a key in `map`, the corresponding `++fist` is applied to the
-corresponding value in `jom`, the results of which are produced in a tuple.
+Reparser generator. Reparses a map `jom` using `wer`; for every key in
+`wer` that matches a key in `map`, the corresponding `++fist` is applied
+to the corresponding value in `jom`, the results of which are produced
+in a tuple.
 
-## Accepts
+
+Accepts
+-------
 
 `wer` is a [`++pole`]() of [`++cord`]() to [`++fist`]() key-value pairs.
 
-## Produces
+Produces
+--------
 
 A [`++unit`]() of.
 
-## Source
+Source
+------
 
         ++  ot-raw                                            ::  object as tuple
         |*  wer=(pole ,[cord fist])
@@ -508,7 +573,8 @@ A [`++unit`]() of.
         [?~(ten ~ (+.-.wer u.ten)) ((ot-raw +.wer) jom)]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((ot-raw sem/sa som/ni sem/sa ~):jo (mo [%sem s/'ha'] [%som n/'20'] ~))
     [[~ u="ha"] [~ q=20] [~ u="ha"] ~]
@@ -519,18 +585,21 @@ A [`++unit`]() of.
 
 Parse object to map
 
-Reparser modifier. Reparses a [`++json`]() object to a homogenous map using
-`wit`.
+Reparser modifier. Reparses a [`++json`]() object to a homogenous map
+using `wit`.
 
-## Accepts
+Accepts
+-------
 
 `wit` is a [`++fist`]().
 
-## Produces
+Produces
+--------
 
 A [`++unit`]() of...
 
-## Source
+Source
+------
 
         ++  om                                                ::  object as map
         |*  wit=fist
@@ -539,7 +608,8 @@ A [`++unit`]() of...
         (zm ~(run by p.jon) wit)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((om ni):jo (jobe [%sap n/'20'] [%sup n/'5'] [%sop n/'177'] ~))
     [~ {[p='sup' q=q=5] [p='sop' q=q=177] [p='sap' q=q=20]}]
@@ -550,25 +620,29 @@ A [`++unit`]() of...
 
 Add prefix
 
-Reparser modifier. Adds a static prefix `pre` to the parse result of `wit`. See
-also: [`++stag`]().
+Reparser modifier. Adds a static prefix `pre` to the parse result of
+`wit`. See also: [`++stag`]().
 
-## Accepts
+Accepts
+-------
 
 `pre` is a prefix [`noun`]().
 
-## Produces
+Produces
+--------
 
 The [`++unit`]() of a cell of [noun]() and the result of parsing `wit`.
 
-## Source
+Source
+------
 
       ++  pe                                                ::  prefix
         |*  [pre=* wit=fist]
         (cu |*(a=* [pre a]) wit)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (ni:jo n/'2')
     [~ q=2]
@@ -585,22 +659,26 @@ Reparse string to tape
 
 Reparser modifier. Reparses a [`++json`]() string to a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `jon` is a [`++json`]().
 
-## Produces
+Produces
+--------
 
 The [`++unit`]() of a [`++tape`]().
 
-## Source
+Source
+------
 
       ++  sa                                                ::  string as tape
         |=  jon=json
         ?.(?=([%s *] jon) ~ (some (trip p.jon)))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (sa:jo s/'value')
     [~ u="value"]
@@ -615,22 +693,26 @@ Reparse string to cord
 
 Reparser modifier. Reparses a string to a [`++cord`]().
 
-## Accepts
+Accepts
+-------
 
 `jon` is a [`++json`]().
 
-## Produces
+Produces
+--------
 
 The [`++unit`]() of a [`++cord`]().
 
-## Source
+Source
+------
 
       ++  so                                                ::  string as cord
         |=  jon=json
         ?.(?=([%s *] jon) ~ (some p.jon))
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (so:jo s/'value')
     [~ u=~.value]
@@ -645,15 +727,18 @@ Reparse string
 
 Reparser generator. Produces a reparser that applies `sab` to a string.
 
-## Accepts
+Accepts
+-------
 
-`sab` is a \[`++rule`\].
+`sab` is a [`++rule`].
 
-## Produces
+Produces
+--------
 
 A [`++rule`]().
 
-## Source
+Source
+------
 
       ++  su                                                ::  parse string
         |*  sab=rule
@@ -662,7 +747,8 @@ A [`++rule`]().
         (rush p.jon sab)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> ((su:jo fed:ag) s/'zod')
     [~ 0]
@@ -679,19 +765,23 @@ Reparse null
 
 Reparser modifier. Reparses a null value.
 
-## Accepts
+Accepts
+-------
 
 `jon` is a [`++json`]().
 
-## Produces
+Produces
+--------
 
 The [`++unit`]() of null.
 
-## Source
+Source
+------
 
       ++  ul  |=(jon=json ?~(jon (some ~) ~))               ::  null
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (ul:jo `json`~)
     [~ u=~]
@@ -709,15 +799,18 @@ Pole of nonempty units
 Determines if `pod` contains all non-empty units, producing a boolean. Used
 internally.
 
-## Accepts
+Accepts
+-------
 
 `pod` is a [`++pole`]() of [`++unit`]().
 
-## Produces
+Produces
+--------
 
 A boolean.
 
-## Source
+Source
+------
 
       ++  za                                                ::  full unit pole
         |*  pod=(pole (unit))
@@ -726,7 +819,8 @@ A boolean.
         (za +.pod)
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (za:jo ~[`1 `2 `3])
     %.y
@@ -737,18 +831,21 @@ A boolean.
 
 Collapse unit list
 
-Produces a unit of the values of `lut` if every unit in `lut` is nonempty.
-Otherwise, produces `~`.
+Produces a unit of the values of `lut` if every unit in `lut` is
+nonempty. Otherwise, produces `~`. 
 
-## Accepts
+Accepts
+-------
 
 `lut` is a [`++list`]() of [`++unit`]()s.
 
-## Produces
+Produces
+--------
 
 A boolean.
 
-## Source
+Source
+------
 
       ++  zl                                                ::  collapse unit list
         |*  lut=(list (unit))
@@ -761,7 +858,8 @@ A boolean.
         [i=u:+.i.lut t=$(lut t.lut)]
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (zl:jo `(list (unit))`~[`1 `2 `3])
     [~ u=~[1 2 3]]
@@ -776,15 +874,18 @@ XX
 
 Collapses a `++pole` of `++unit`s `but`, producing a tuple.
 
-## Accepts
+Accepts
+-------
 
 `but` is a [`++pole`]() of [`++unit`]().
 
-## Produces
+Produces
+--------
 
 ??
 
-## Source
+Source
+------
 
       ++  zp                                                ::  unit tuple
         |*  but=(pole (unit))
@@ -794,7 +895,8 @@ Collapses a `++pole` of `++unit`s `but`, producing a tuple.
         [u:->.but (zp +.but)]
       ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (zp:jo `(pole (unit))`~[`1 `2 `3])
     [1 2 3]
@@ -808,19 +910,22 @@ Collapses a `++pole` of `++unit`s `but`, producing a tuple.
 Collapse unit map
 
 Produces a [`++unit`]() of the [`++map`]() `lum` of term to `++unit` key value
-pairs, with all of the nonempty values stripped of their `++unit` wrappers. If
-any of the `++units` in `lum` are empty, `~` is produced. See also: [`++zp`](),
-[`++zl`]().
+pairs, with all of the nonempty values stripped of their `++unit`
+wrappers. If any of the `++units` in `lum` are empty, `~` is produced.
+See also: [`++zp`](), [`++zl`]().
 
-## Accepts
+Accepts
+-------
 
 `lum` is a map of [`++term`]() to [`++unit`]()s.
 
-## Produces
+Produces
+--------
 
 The `++unit` of a tuple of what were the key-value pairs of `lum`.
 
-## Source
+Source
+------
 
       ++  zm                                                ::  collapse unit map
         |*  lum=(map term (unit))
@@ -829,7 +934,8 @@ The `++unit` of a tuple of what were the key-value pairs of `lum`.
         (some (~(run by lum) need))
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (zm:jo `(map term (unit ,@u))`(mo a/`4 b/`1 c/`2 ~))
     [~ {[p=%a q=4] [p=%c q=2] [p=%b q=1]}]
@@ -843,3 +949,5 @@ The `++unit` of a tuple of what were the key-value pairs of `lum`.
     ~
     ~zod/try=> (~(run by `(map ,@t ,@u)`(mo a/1 b/7 c/3 ~)) (flit |=(a=@ (lth a 5))))
     {[p='a' q=[~ u=1]] [p='c' q=[~ u=3]] [p='b' q=~]}
+
+

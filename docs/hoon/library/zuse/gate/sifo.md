@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++sifo`
 
@@ -8,15 +9,18 @@ navhome: '/docs/'
 
 Encodes an atom to MIME base64, producing a [`++tape`]().
 
-## Accepts
+Accepts
+-------
 
 `tig` is an atom.
 
-## Produces
+Produces
+--------
 
 A `++tape`.
 
-## Source
+Source
+------
 
     ++  sifo                                                ::  64-bit encode
           |=  tig=@
@@ -34,7 +38,8 @@ A `++tape`.
           (weld (flop (slag poc sif)) (trip (fil 3 poc '=')))
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/main=> (sifo 'foobar')
     "Zm9vYmFy"
@@ -42,3 +47,5 @@ A `++tape`.
     "Q=="
     ~zod/main=> (sifo (shax %hi))
     "j0NDRmSPa5bfid2pAcUXaxCm2Dlh3TwayItZstwyeqQ="
+
+

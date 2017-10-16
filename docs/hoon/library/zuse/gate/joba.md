@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++joba`
 
@@ -8,17 +9,20 @@ navhome: '/docs/'
 
 Produces a ++json object with one key-value pair.
 
-## Accepts
+Accepts
+-------
 
 `p` is a `@t` key.
 
 `q` is a [`++json`]().
 
-## Produces
+Produces
+--------
 
 A [`++json`]().
 
-## Source
+Source
+------
 
     ++  joba                                                ::  object from k-v pair
       |=  [p=@t q=json]
@@ -26,7 +30,8 @@ A [`++json`]().
       [%o [[p q] ~ ~]]
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (joba %hi %b |)
     [%o p={[p='hi' q=[%b p=%.n]]}]
@@ -36,3 +41,5 @@ A [`++json`]().
     [%o p={[p='hi' q=[%n p=~.2130]]}]
     ~zod/try=> (crip (pojo (joba %hi (jone 2.130))))
     '{"hi":2130}'
+
+

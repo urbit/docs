@@ -1,23 +1,27 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++dawn`
 
 Weekday of Jan 1
 
-Computes which day of the week January 1st falls on for a year `yer`, producing
-an atom. Weeks are zero-indexed beginning on Sunday.
+Computes which day of the week January 1st falls on for a year `yer`,
+producing an atom. Weeks are zero-indexed beginning on Sunday.
 
-## Accepts
+Accepts
+-------
 
 `yer` is an unsigned decimal, [`@ud`]().
 
-## Produces
+Produces
+--------
 
 An atom.
 
-## Source
+Source
+------
 
     ++  dawn                                                ::  weekday of jan 1
       |=  yer=@ud
@@ -26,7 +30,8 @@ An atom.
       :(add 1 (mul 5 (mod yet 4)) (mul 4 (mod yet 100)) (mul 6 (mod yet 400)))
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (dawn 2.015)
     4
@@ -35,3 +40,5 @@ An atom.
     ~zod/try=> (dawn 0)
     ! subtract-underflow
     ! exit
+
+

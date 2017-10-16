@@ -1,55 +1,53 @@
 ---
-navhome: '/docs/'
-next: True
+navhome: /docs/
+next: true
 sort: 1
 title: Install
 ---
 
 # Install
 
-Installing Urbit is easy. It just takes a few minutes to get an instance up and
-running on the network.
+Installing Urbit is easy.  It just takes a few minutes to get an
+instance up and running on the network.  
 
-Urbit is designed to run on any Unix box with an internet connection. Debian
-(jessie), Mac OS X, FreeBSD and Fedora all work well.
+Urbit is designed to run on any Unix box with an internet connection.
+Debian (jessie), Mac OS X, FreeBSD and Fedora all work well.
 
-If you run into trouble installing Urbit, please let us know via email,
-<questions@urbit.org>, or on the forum:
-[urbit.org/fora](https://urbit.org/fora). You can also chat with us at
-[urbit.org/stream](https://urbit.org/stream).
+If you run into trouble installing Urbit, please let us know via
+email, [questions@urbit.org](mailto:questions@urbit.org), or on the
+forum: [urbit.org/fora](https://urbit.org/fora).  You can also chat
+with us at [urbit.org/stream](https://urbit.org/stream).
 
-> Urbit is alpha software. It’s not yet completely stable, its crypto hasn’t
-> been audited, and there are plenty of rough edges. Urbit is lots of fun to
-> play with, but not quite ready for your important or sensitive data.
+> Urbit is alpha software.  It’s not yet completely stable, its crypto
+> hasn’t been audited, and there are plenty of rough edges.  Urbit is
+> lots of fun to play with, but not quite ready for your important or
+> sensitive data.
 
 ## Packages
 
-Urbit may be in your system's package repository — check there first. If not, we
-host packages for some platforms. If you'd prefer to install from source, see
+Urbit may be in your system's package repository — check there first.  If not,
+we host packages for some platforms. If you'd prefer to install from source, see
 below.
 
 **Mac OS X (Homebrew)**
 
--   `brew update`
--   `brew install urbit`
+- `brew update`
+- `brew install urbit`
 
 **FreeBSD**
 
--   Download `urbit-0.4.3.txz`
-    [here](https://media.urbit.org/dist/freebsd/urbit-0.4.3.txz).
--   Install with `pkg install urbit-0.4.3.txz`
+- Download `urbit-0.4.3.txz` [here](https://media.urbit.org/dist/freebsd/urbit-0.4.3.txz).
+- Install with `pkg install urbit-0.4.3.txz`
 
 **Debian**
 
--   Download `urbit_0.4.5-1_amd64.deb`
-    [here](https://media.urbit.org/dist/debian/urbit_0.4.5-1_amd64.deb).
--   Install with `dpkg -i urbit_0.4.5-1_amd64.deb`
--   Then `apt-get install -f` to install any missing dependencies
+- Download `urbit_0.4.5-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4.5-1_amd64.deb).
+- Install with `dpkg -i urbit_0.4.5-1_amd64.deb`
+- Then `apt-get install -f` to install any missing dependencies
 
 ## Source
 
-First, fetch the source tarball:
-**[urbit-0.4.5.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.5.tar.gz)**.
+First, fetch the source tarball: **[urbit-0.4.5.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.5.tar.gz)**.
 
 ### Dependencies
 
@@ -99,8 +97,7 @@ Once your dependencies are installed the rest is easy:
     $ cd urbit-0.4.5
     $ make # gmake on FreeBSD
 
-After running `make`, your Urbit executable is in `bin/urbit`. Install it
-wherever you'd like.
+After running `make`, your Urbit executable is in `bin/urbit`. Install it wherever you'd like.
 
     # sudo install -m 0755 bin/urbit /usr/local/bin
 
@@ -114,15 +111,14 @@ Test that it works:
 
 ## Setting up swap
 
-Urbit wants to map 2GB of memory when it boots up. We won’t necessarily use all
-this memory, we just want to see it. On a normal modern PC or Mac, this is not
-an issue. On some small cloud virtual machines (Amazon or Digital Ocean), the
-default memory configuration is smaller than this, and you need to manually
-configure a swapfile.
+Urbit wants to map 2GB of memory when it boots up.  We won’t
+necessarily use all this memory, we just want to see it.  On a
+normal modern PC or Mac, this is not an issue.  On some small
+cloud virtual machines (Amazon or Digital Ocean), the default
+memory configuration is smaller than this, and you need to
+manually configure a swapfile.
 
-Digital Ocean has a post on adding swap
-[here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).
-For Amazon there’s a StackOverflow thread
-[here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
+Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there’s a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
 
-Don’t spend a lot of time tweaking these settings; the simplest thing is fine.
+Don’t spend a lot of time tweaking these settings; the simplest
+thing is fine.

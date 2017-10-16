@@ -1,22 +1,27 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++lead`
 
 Subtract leap seconds
 
-Produces an absolute date ([`@ud`]()) with the 25 leap seconds subtracted.
+Produces an absolute date ([`@ud`]()) with the 25 leap seconds
+subtracted.
 
-## Accepts
+Accepts
+-------
 
 `ley` is a [`++date`]().
 
-## Produces
+Produces
+--------
 
 An atom of [odor]() [`@da`](), which represents an absolute date.
 
-## Source
+Source
+------
 
     ++  lead                                                ::  from leap sec time
       |=  ley=date
@@ -35,7 +40,8 @@ An atom of [odor]() [`@da`](), which represents an absolute date.
       $(n +(n))
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (yore `@da`(bex 127))
     [[a=%.y y=226] m=12 t=[d=5 h=15 m=30 s=8 f=~]]
@@ -43,3 +49,5 @@ An atom of [odor]() [`@da`](), which represents an absolute date.
     ~226.12.5..15.29.43
     ~zod/try=> (lead (yore `@da`(bex 126)))
     ~146138512088-.6.19..07.44.39
+
+

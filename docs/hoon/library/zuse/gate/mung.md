@@ -1,15 +1,17 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++mung`
 
 Virtualize slamming gate
 
-Produces a [`++tone`]() computation result from slamming `gat` with `sam`, using
-`sky` to compute or block on nock 11 when applicable.
+Produces a [`++tone`]() computation result from slamming `gat` with
+`sam`, using `sky` to compute or block on nock 11 when applicable.
 
-## Accepts
+Accepts
+-------
 
 `gat` is a [noun]() that is generally a [`gate`]().
 
@@ -17,11 +19,13 @@ Produces a [`++tone`]() computation result from slamming `gat` with `sam`, using
 
 `sky` is an [%iron]() gate invoked with [nock operator 11]().
 
-## Produces
+Produces
+--------
 
 A `++tone`.
 
-## Source
+Source
+------
 
     ++  mung
       |=  [[gat=* sam=*] sky=$+(* (unit))]
@@ -31,7 +35,8 @@ A `++tone`.
       (mink [[-.gat [sam +>.gat]] -.gat] sky)
     ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (mung [|=(@ 20) ~] ,~)
     [%0 p=20]
@@ -51,3 +56,5 @@ A `++tone`.
     [%0 p=[0 6]]
     ~zod/try=> (mung [|=(a=@ .^(a)) 8] |=(a=* [~ a 6]))
     [%0 p=[8 6]]
+
+

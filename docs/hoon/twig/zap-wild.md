@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 sort: 13
+
 ---
 
 # Wild, `!` ("zap")

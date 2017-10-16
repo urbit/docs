@@ -1,6 +1,7 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++meat`
 
@@ -8,15 +9,18 @@ Kite to .^ path
 
 Converts a type request name to a [`++path`]().
 
-## Accepts
+Accepts
+-------
 
 `kit` is a [`++kite`]().
 
-## Produces
+Produces
+--------
 
 A `++path`.
 
-## Source
+Source
+------
 
     ++  meat                                                ::  kite to .^ path
           |=  kit=kite
@@ -24,7 +28,8 @@ A `++path`.
           [(cat 3 'c' p.kit) (scot %p r.kit) s.kit (scot `dime`q.kit) t.kit]
         ::
 
-## Examples
+Examples
+--------
 
     zod/try=/zop> `kite`[%x ud/1 ~zod %main /sur/down/gate/hook]
     [p=%x q=[%ud p=1] r=~zod s=%main t=/sur/down/gate/hook]
@@ -44,3 +49,5 @@ A `++path`.
     down
 
     '''
+
+

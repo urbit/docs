@@ -1,23 +1,27 @@
 ---
-navhome: '/docs/'
+navhome: /docs/
 ---
+
 
 ### `++deft`
 
 Import URL path
 
-Parse the extension the from last element of url, which is delimited either by a
-`.` or a `/`.
+Parse the extension the from last element of url, which is delimited
+either by a `.` or a `/`.
 
-## Accepts
+Accepts
+-------
 
 `rax` is a [`++list`]() of [`@t`]().
 
-## Produces
+Produces
+--------
 
 A [`++pork`]().
 
-## Source
+Source
+------
 
     ++  deft                                                ::  import url path
           |=  rax=(list ,@t)
@@ -38,9 +42,12 @@ A [`++pork`]().
           [i.rax q.pok]
         ::
 
-## Examples
+Examples
+--------
 
     ~zod/try=> (deft /foo/bar/'baz.txt')
     [p=[~ ~.txt] q=<|foo bar baz|>]
     ~zod/try=> (deft /foo/bar/baz)
     [p=~ q=<|foo bar baz|>]
+
+
