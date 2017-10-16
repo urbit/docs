@@ -46,7 +46,7 @@ sort: 4
       <h2>Community</h2>
     </div>
     <div class="col-md-4">
-        <h3>Media</h3>
+        <h3>Community media</h3>
         <ul class="list">
             <li>
               <h1><a href="https://www.youtube.com/watch?v=5B7JDdX-6IY">[Video] Mars Talks, Ep. 3</a></h1>
@@ -75,7 +75,7 @@ sort: 4
         </ul>
     </div>
     <div class="col-md-4">
-        <h3>Projects</h3>
+        <h3>Community projects</h3>
         <ul class="list">
             <li>
               <h1><a href="https://github.com/frodwith/jaque">Vere on the JVM via Graal and Truffle</a></h1>
@@ -104,7 +104,7 @@ sort: 4
         </ul>
     </div>
     <div class="col-md-4">
-        <h3>Docs</h3>
+        <h3>Community docs</h3>
         <ul class="list">
             <li>
               <code>~palfun-foslup</code>
