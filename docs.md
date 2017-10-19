@@ -32,10 +32,10 @@ sort: 4
         <h1><a href="http://urbit.org/fora">Fora: Urbit-based discussion forum</a></h1>
       </li>
       <li>
-        <h1><a href="https://twitter.com/urbit">Twitter: the official @urbit account</a></h1>
+        <h1><a href="https://twitter.com/urbit">Twitter</a></h1>
       </li>
       <li>
-        <h1><a href="https://github.com/urbit">Github: home for Urbit development</a></h1>
+        <h1><a href="https://github.com/urbit">Github</a></h1>
       </li>
     </ul>
   </div>
