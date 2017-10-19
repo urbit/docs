@@ -75,27 +75,32 @@ sort: 4
         <h3>Community media</h3>
         <ul class="list">
             <li>
-              <h1><a href="https://www.youtube.com/watch?v=5B7JDdX-6IY">[Video] Mars Talks, Ep. 3</a></h1>
+              <h1><a href="https://www.youtube.com/watch?v=YmE4Rm3jX0w">Mars Talks, Ep. 4</a></h1>
               <p>
-              <code>~palfun-foslup</code><b> </b>talks about new Talk, improving Gall and bootstrapping Urbit on Ethereum.
+              <b>Video </b>
+              <code>~2017.10.18</code>
+              </p>
+              <p>
+              <code>~tonlur-sarret</code><b> </b>talks organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
               </p>
             </li>
             <li>
-              <h1><a href="https://medium.com/@IsaacSimpson/urbit-and-the-not-so-dark-future-of-the-internet-400c9b667e2">[Article] Urbit and the Not-So-Dark Future of the Internet</a></h1>
+              <h1><a href="https://epicenter.tv/episode/205/">Epicenter: Episode 205</a></h1>
               <p>
-              <code>~fitseb-ropnux</code><b> </b>writes about the problems of the modern Internet and why Urbit could be the future.
+              <b>Podcast </b>
+              <code>~2017.10.18</code>
               </p>
-            </li>
-            <li>
-              <h1><a href="https://epicenter.tv/episode/205/">[Podcast] Epicenter: Episode 205</a></h1>
               <p>
               Galen talks with Brian Fabian Crain and Meher Roy of the <i>Epicenter</i><b> </b>podcast about what a radically different internet could look like and Urbit's path to getting there.
               </p>
             </li>
             <li>
-              <h1><a href="https://www.youtube.com/watch?v=bTisf4oxIFo">[Video] Urbit at LambdaConf 2016</a></h1>
+              <h1><a href="https://www.youtube.com/watch?v=bTisf4oxIFo">Urbit at LambdaConf</a></h1>
               <p>
-              Curtis gives a technical talk, <i>Urbit: A Clean Slate Functional Operating Stack</i><b> </b>at the LambdaConf 2016 conference in Boulder, Colorado.
+              <b>Talk </b>
+              </p>
+              <p>
+              Curtis gives a technical talk, <i>Urbit: A Clean Slate Functional Operating Stack</i><b> </b>at the LambdaConf functional programming conference.
               </p>
             </li>
             <li>

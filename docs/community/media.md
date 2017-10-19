@@ -11,6 +11,12 @@ title: Community media
   <div class="col-md-8">
     <ul class="list">
       <li>
+        <h1><a href="https://www.youtube.com/watch?v=YmE4Rm3jX0w">[Video] Mars Talks, Ep. 4</a></h1>
+        <p>
+        <code>~tonlur-sarret</code><b> </b>talks organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
+        </p>
+      </li>
+      <li>
         <h1><a href="https://www.youtube.com/watch?v=5B7JDdX-6IY">[Video] Mars Talks, Ep. 3</a></h1>
         <p>
         <code>~palfun-foslup</code><b> </b>talks about new Talk, improving Gall and bootstrapping Urbit on Ethereum.
