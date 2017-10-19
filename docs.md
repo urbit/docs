@@ -172,7 +172,6 @@ sort: 4
               </p>
             </li>
             <br />
-            <br />
             <li>
               <h1><a href="/docs/community/docs">More</a></h1>
             </li>
