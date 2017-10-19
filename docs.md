@@ -107,6 +107,15 @@ sort: 4
         <h3>Community projects</h3>
         <ul class="list">
             <li>
+              <h1><a href="https://github.com/eglaysher/arvo/blob/new-stdlib/lib/new-hoon.hoon">Thoughts for New Libraries</a></h1>
+              <p>
+              <code>~littel-ponnys</code><b> </b>has been working on porting analogues of Haskell's data structures to the Hoon standard library and moving <code>hoon.hoon</code><b> </b>away from exclusively four-letter identifier names.
+              </p>
+              <h1><a href="https://urbit.org/fora/posts/~2017.10.17..04.09.16..7eb8~">Fora post</a>
+              </h1>
+            </li>
+            <br />
+            <li>
               <h1><a href="https://github.com/frodwith/jaque">Vere on the JVM via Graal and Truffle</a></h1>
               <p>
               <code>~fodwyt-nimbus</code><b> </b>has been reimplementing Vere using the Truffle language-implementation framework for the Graal JVM compiler. It's currently roughly 15x faster than current Vere.
@@ -117,15 +126,6 @@ sort: 4
               <h1><a href="https://github.com/asssaf/urbit-package">A Simple Urbit Package Manager</a></h1>
               <p>
               <code>~rophex-hashes</code><b> </b>built a simple package manager to automate app installation over the Urbit peer-to-peer network.
-              </p>
-              <h1><a href="https://urbit.org/fora/posts/~2017.9.20..22.45.02..0f8d~">Fora post</a>
-              </h1>
-            </li>
-            <br />
-            <li>
-              <h1><a href="https://github.com/vvisigoth/unfurl">Link Unfurling for Web Talk</a></h1>
-              <p>
-              <code>~poldec-tonteg</code><b> </b>has been modifying the Talk web front-end to "unfurl" incoming links, giving previews of links and expanding images and videos.
               </p>
               <h1><a href="https://urbit.org/fora/posts/~2017.9.20..22.45.02..0f8d~">Fora post</a>
               </h1>

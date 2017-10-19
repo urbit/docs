@@ -12,6 +12,11 @@ sort: 2
       <li>
         <code>~littel-ponnys</code>
         <br />
+        <h1><a href="https://github.com/eglaysher/arvo/blob/new-stdlib/lib/new-hoon.hoon">Thoughts for New Libraries</a></h1>
+        <b> </b>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.17..04.09.16..7eb8~">Fora post</a>
+        </h1>
+        <br />
         <a href="https://urbit.org/fora/posts/~2017.1.16..06.08.17..ae0f~">Hoon Doccords</a>
         <b> </b>
         <h1><a href="https://urbit.org/fora/posts/~2017.1.16..06.08.17..ae0f~">Fora 1</a>
