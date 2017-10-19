@@ -52,7 +52,6 @@ title: Community media
         <code>~poldec-tonteg</code><b> </b>gives a local community talk about what he finds exciting about Urbit.
         </p>
       </li>
-      <li>
         <h1><a href="https://softwareengineeringdaily.com/2017/01/20/urbit-with-curtis-yarvin-and-galen-wolfe-pauly">[Podcast] Software Engineering Daily</a></h1>
         <p>
         Urbit CEO Galen Wolfe-Pauly (<code>~ravmel-ropdyl</code>) and CTO Curtis Yarvin (<code>~sorreg-namtyv</code>) talk with Jeff Meyerson of the <i>Software Engineering Daily</i> <b> </b>podcast about the origin story of Urbit.
@@ -62,6 +61,12 @@ title: Community media
         <h1><a href="https://etherreview.info/the-ether-review-46-smoking-dmt-with-mencius-moldbug-8360845941ff">[Podcast] The Ether Review #46</a></h1>
         <p>
         Galen and Curtis talk with Arthur Falls of <i>The Ether Review</i><b> </b>podcast and give a non-technical overview of Urbit.
+        </p>
+      </li>
+      <li>
+        <h1><a href="https://epicenter.tv/episode/205/">[Podcast] Epicenter: Episode 205</a></h1>
+        <p>
+        Galen talks with Brian Fabian Crain and Meher Roy of the <i>Epicenter</i><b> </b>podcast about what a radically different internet could look like and our path to getting there.
         </p>
       </li>
       <li>

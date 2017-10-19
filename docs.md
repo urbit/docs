@@ -87,9 +87,9 @@ sort: 4
               </p>
             </li>
             <li>
-              <h1><a href="http://podcast.hajak.se/104117/548011-e09-galen-wolfe-pauly-urbit-a-user-owned-internet-on-top-of-the-internet">[Podcast] Governing the Future: E09</a></h1>
+              <h1><a href="https://epicenter.tv/episode/205/">[Podcast] Epicenter: Episode 205</a></h1>
               <p>
-              Galen talks with Hampus Jakobsson of the <i>Governing the Future</i><b> </b>podcast about the Urbit user experience.
+              Galen talks with Brian Fabian Crain and Meher Roy of the <i>Epicenter</i><b> </b>podcast about what a radically different internet could look like and Urbit's path to getting there.
               </p>
             </li>
             <li>
