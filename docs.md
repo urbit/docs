@@ -19,8 +19,15 @@ sort: 4
     <list dataPath="/docs/week"></list>
   </div>
   <div class="col-md-4">
-    <h3>Urbit Projects</h3>
-    <list dataPath="/docs/up"></list>
+    <h3>Urbit Proposals</h3>
+    <ul class="list">
+      <li>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.19..04.47.50..c107~">UP 1 - Ford Caching Redux</a></h1>
+      </li>
+      <li>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.19..03.45.26..dbec~">UP 0 - Urbit Proposals</a></h1>
+      </li>
+    </ul>
   </div>
   <div class="col-md-4">
     <h3>Feeds</h3>
