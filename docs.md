@@ -158,7 +158,7 @@ sort: 4
     </div>
 </div>
 
-<h2>Users</h2>
+<h2>Using</h2>
 <div class="row">
     <div class="col-md-4">
         <h3>Get Started</h3>
@@ -187,7 +187,7 @@ sort: 4
 </div>
 <div class="row">
   <div class="col-md-12">
-    <h2>Developers</h2>
+    <h2>Documentation</h2>
     <div class="row">
     <div class="col-md-6">
         <h3>About</h3>
