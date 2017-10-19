@@ -16,7 +16,26 @@ sort: 4
   </div>
   <div class="col-md-4">
     <h3>This Week in Urbit</h3>
-    <list dataPath="/docs/week"></list>
+    <ul class="list">
+      <li>
+        <h1><a href="/docs/week/~2017.10.16~">Week of ~2017.10.16</a></h1>
+        <p>
+        </p>
+      </li>
+      <li>
+        <h1><a href="/docs/week/~2017.10.9~">Week of ~2017.10.9</a></h1>
+        <p>
+        </p>
+      </li>
+      <li>
+        <h1><a href="/docs/week/~2017.10.2~">Week of ~2017.10.2</a></h1>
+        <p>
+        </p>
+      </li>
+      <li>
+        <h1><a href="/docs/week">More</a></h1>
+      </li>
+    </ul>
   </div>
   <div class="col-md-4">
     <h3>Urbit Proposals</h3>
