@@ -42,9 +42,6 @@ sort: 4
 </div>
 
 <div class="row head">
-    <div class="col-md-12">
-      <h2>Community</h2>
-    </div>
     <div class="col-md-4">
         <h3>Community media</h3>
         <ul class="list">
