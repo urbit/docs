@@ -170,7 +170,7 @@ sort: 4
         </p>
         <ul class="list">
             <li><h1><a href="/docs/using/layout">Source layout</a></h1></li>
-            <li><h1><a href="/docs/using/admin">Administration and Operation</a></h1></li>
+            <li><h1><a href="/docs/using/admin">Administration and operation</a></h1></li>
             <li><h1><a href="/docs/using/messaging">Messaging (Talk)</a></h1></li>
             <li><h1><a href="/docs/using/shell">Shell (Dojo)</a></h1></li>
             <li><h1><a href="/docs/using/filesystem">Filesystem (Clay)</a></h1></li>
