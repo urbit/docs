@@ -13,7 +13,7 @@ title: Community media
       <li>
         <h1><a href="https://www.youtube.com/watch?v=YmE4Rm3jX0w">[Video] Mars Talks, Ep. 4</a></h1>
         <p>
-        <code>~tonlur-sarret</code><b> </b>talks organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
+        <code>~tonlur-sarret</code><b> </b>talks about organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
         </p>
       </li>
       <li>

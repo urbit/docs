@@ -81,7 +81,7 @@ sort: 4
               <code>~2017.10.18</code>
               </p>
               <p>
-              <code>~tonlur-sarret</code><b> </b>talks organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
+              <code>~tonlur-sarret</code><b> </b>talks about organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
               </p>
             </li>
             <li>
@@ -94,6 +94,15 @@ sort: 4
               Galen talks with Brian Fabian Crain and Meher Roy of the <i>Epicenter</i><b> </b>podcast about what a radically different internet could look like and Urbit's path to getting there.
               </p>
             </li>
+           <li>
+             <h1><a href="http://podcast.hajak.se/104117/548011-e09-galen-wolfe-pauly-urbit-a-user-owned-internet-on-top-of-the-internet">Governing the Future: E09</a></h1>
+             <p>
+             <b>Podcast </b>
+             </p>
+             <p>
+             Galen talks with Hampus Jakobsson of the <i>Governing the Future</i><b> </b>podcast about the Urbit user experience.
+             </p>
+           </li>
             <li>
               <h1><a href="https://www.youtube.com/watch?v=bTisf4oxIFo">Urbit at LambdaConf</a></h1>
               <p>
@@ -114,6 +123,9 @@ sort: 4
             <li>
               <h1><a href="https://github.com/eglaysher/arvo/blob/new-stdlib/lib/new-hoon.hoon">Thoughts for New Libraries</a></h1>
               <p>
+              <code>~2017.10.17</code>
+              </p>
+              <p>
               <code>~littel-ponnys</code><b> </b>has been working on porting analogues of Haskell's data structures to the Hoon standard library and moving <code>hoon.hoon</code><b> </b>away from exclusively four-letter identifier names.
               </p>
               <h1><a href="https://urbit.org/fora/posts/~2017.10.17..04.09.16..7eb8~">Fora post</a>
@@ -123,11 +135,17 @@ sort: 4
             <li>
               <h1><a href="https://github.com/frodwith/jaque">Vere on the JVM via Graal and Truffle</a></h1>
               <p>
+              <code>~2017.10.10</code>
+              </p>
+              <p>
               <code>~fodwyt-nimbus</code><b> </b>has been reimplementing Vere using the Truffle language-implementation framework for the Graal JVM compiler. It's currently roughly 15x faster than current Vere.
               </p>
             </li>
             <li>
               <h1><a href="https://github.com/asssaf/urbit-package">A Simple Urbit Package Manager</a></h1>
+              <p>
+              <code>~2017.10.12</code>
+              </p>
               <p>
               <code>~rophex-hashes</code><b> </b>built a simple package manager to automate app installation over the Urbit peer-to-peer network.
               </p>
@@ -175,6 +193,7 @@ sort: 4
               A dysfunctional programmer's guide to making things in Hoon. A series of tutorials that focus on writing Hoon applications from scratch.
               </p>
             </li>
+            <br />
             <br />
             <li>
               <h1><a href="/docs/community/docs">More</a></h1>
