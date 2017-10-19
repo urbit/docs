@@ -121,7 +121,6 @@ sort: 4
               <code>~fodwyt-nimbus</code><b> </b>has been reimplementing Vere using the Truffle language-implementation framework for the Graal JVM compiler. It's currently roughly 15x faster than current Vere.
               </p>
             </li>
-            <br />
             <li>
               <h1><a href="https://github.com/asssaf/urbit-package">A Simple Urbit Package Manager</a></h1>
               <p>
