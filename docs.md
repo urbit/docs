@@ -140,15 +140,6 @@ sort: 4
         <h3>Community docs</h3>
         <ul class="list">
             <li>
-              <code>~palfun-foslup</code>
-              <br />
-              <h1><a href="https://github.com/Fang-/Urbit-By-Doing">Urbit by Doing</a></h1>
-              <p>
-              A dysfunctional programmer's guide to making things in Hoon. A series of tutorials that focus on writing Hoon applications from scratch.
-              </p>
-            </li>
-            <br />
-            <li>
               <code>~master-morzod</code>
               <br />
               <h1><a href="https://mardev.urbit.org/docs">Docs</a></h1>
@@ -169,6 +160,15 @@ sort: 4
               </h1>
               <p>
               Subject-oriented programming, functions and lambdas in Hoon and an attempt to draw parallels with object-oriented programming.
+              </p>
+            </li>
+            <br />
+            <li>
+              <code>~palfun-foslup</code>
+              <br />
+              <h1><a href="https://github.com/Fang-/Urbit-By-Doing">Urbit by Doing</a></h1>
+              <p>
+              A dysfunctional programmer's guide to making things in Hoon. A series of tutorials that focus on writing Hoon applications from scratch.
               </p>
             </li>
             <br />
