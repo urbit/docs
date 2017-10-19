@@ -45,16 +45,26 @@ sort: 4
     <h3>Feeds</h3>
     <ul class="list">
       <li>
-        <h1><a href="https://urbit.org/stream">Talk: Urbit-based chat</a></h1>
+        <h1><a href="https://urbit.org/stream">Talk</a></h1>
+        <p>
+        Urbit-based chat
+        </p>
       </li>
       <li>
-        <h1><a href="http://urbit.org/fora">Fora: Urbit-based discussion forum</a></h1>
+        <h1><a href="http://urbit.org/fora">Fora</a></h1>
+        <p>
+        Urbit-based discussion forum
+        </p>
       </li>
       <li>
         <h1><a href="https://twitter.com/urbit">Twitter</a></h1>
+        <p>
+        </p>
       </li>
       <li>
         <h1><a href="https://github.com/urbit">Github</a></h1>
+        <p>
+        </p>
       </li>
     </ul>
   </div>
