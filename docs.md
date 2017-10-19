@@ -83,7 +83,7 @@ sort: 4
             <li>
               <h1><a href="https://medium.com/@IsaacSimpson/urbit-and-the-not-so-dark-future-of-the-internet-400c9b667e2">[Article] Urbit and the Not-So-Dark Future of the Internet</a></h1>
               <p>
-              <code>~fitseb-ropnux</code><b> </b>writes about the problems of the modern Internet and why Urbit could be the solution.
+              <code>~fitseb-ropnux</code><b> </b>writes about the problems of the modern Internet and why Urbit could be the future.
               </p>
             </li>
             <li>
