@@ -23,7 +23,7 @@ Anything Nock can do, Hoon can do also.
 
 ### .+ dotlus :bump
 
-[docs](/developer/docs/hoon/twig/dot-nock/lus-bump/) \\+  
+[docs](/developer/docs/hoon/twig/dot/lus-bump/) \\+  
 `{$bump p/atom}`: increment an atom with Nock 4.
 
 R: `.+(p)`  
@@ -31,7 +31,7 @@ I: `+(p)`
 
 ### .= dottis :same
 
-[docs](/developer/docs/hoon/twig/dot-nock/tis-same/) \\=  
+[docs](/developer/docs/hoon/twig/dot/tis-same/) \\=  
 `{$same p/seed q/seed}`: test for equality with Nock 5.
 
 R: `.=(p q)`  
