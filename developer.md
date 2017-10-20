@@ -18,18 +18,15 @@ sort: 4
     <h3>This Week in Urbit</h3>
     <ul class="list">
       <li>
-        <h1><a href="/developer/week/~2017.10.16~">Week of ~2017.10.16</a></h1>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.14..00.00.00..0000~.md/">Week of ~2017.10.13</a></h1>
         <p>
+        <code>~palfun-foslup</code><b> </b>joins Mars Talks to talk about Talk. <code>~littel-ponnys</code><b> </b>demos a patch for using Ford to generate tables for Unicode conversion. <code>~fodwyt-nimbus</code><b> </b>and <code>~savfex_macned</code><b> </b>have a conversation about doors.
         </p>
       </li>
       <li>
-        <h1><a href="/developer/week/~2017.10.9~">Week of ~2017.10.9</a></h1>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.7..00.00.00..0000~.md/">Week of ~2017.10.6</a></h1>
         <p>
-        </p>
-      </li>
-      <li>
-        <h1><a href="/developer/week/~2017.10.2~">Week of ~2017.10.2</a></h1>
-        <p>
+        <code>~master-morzod</code><b> </b>joins Mars Talks to talk about the Urbit operating system. The core team and contributors talk about how to best teach Urbit. Ted explains Hoon casting and does a full expansion of the Nock macros to draw a better connection between Hoon and Nock.
         </p>
       </li>
       <li>
