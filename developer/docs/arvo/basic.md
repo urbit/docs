@@ -234,7 +234,7 @@ takes two children:
 As above, `++three` takes an integer argument, `a`, and then executes
 the remainder of the code with `a` set to the actual arguments.
 
-Similarly, `=|` ('[tisbar](../../hoon/twig/tis-flow/bar-new/)') pushes its first child, `b` into our context
+Similarly, `=|` ('[tisbar](../../hoon/twig/tis/bar-new/)') pushes its first child, `b` into our context
 (in other words, it declares a variable `b`) and executes the remainder
 of the code. However, `b` is not an argument; `=|` sets `b` to the
 default value of whatever type it is declared as. Since the default

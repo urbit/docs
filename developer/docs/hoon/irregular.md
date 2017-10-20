@@ -77,7 +77,7 @@ Flow twigs change the subject. All non-flow twigs (except cores) pass the subjec
 
 ### =< tisgal :rap
 
-[docs](/developer/docs/hoon/twig/tis-flow/gal-rap/) \\:  
+[docs](/developer/docs/hoon/twig/tis/gal-rap/) \\:  
 `{$rap p/seed q/seed}`: compose two twigs, inverted.
 
 R: `=<(p q)`  
