@@ -158,7 +158,7 @@ Cheat sheet:
 <!-- One thing to watch out for in hoon: if you do `?~`, it
       affects the type of the conditional value: XXexample -->
 
--   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
+-   `:_` ([colcab](../../hoon/twig/col/cab-scon/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
 
 -   `++bowl` is the type of the system state within our app. For

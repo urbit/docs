@@ -55,7 +55,7 @@ The cell twigs.
 
 ### :- colhep :cons
 
-[docs](/developer/docs/hoon/twig/col-cell/hep-cons/)  \\[\\]\\^\\+\\\`\\~  
+[docs](/developer/docs/hoon/twig/col/hep-cons/)  \\[\\]\\^\\+\\\`\\~  
 `{$cons p/seed q/seed}`: construct a cell (2-tuple).
 
 R: `:-(p q)`  
