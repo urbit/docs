@@ -197,7 +197,7 @@ Lets us adjust spans without violating type constraints.
 
 ### ^- kethep :cast
 
-[docs](/developer/docs/hoon/twig/ket-cast/hep-cast/) \\\`  
+[docs](/developer/docs/hoon/twig/ket/hep-cast/) \\\`  
 `{$cast p/moss q/seed}`: typecast by mold.
 
 R: `^-(p q)`  
@@ -205,7 +205,7 @@ I: ```p`q``
 
 ### ^= kettis :name
 
-[docs](/developer/docs/hoon/twig/ket-cast/tis-name/) \\=  
+[docs](/developer/docs/hoon/twig/ket/tis-name/) \\=  
 `{$name p/toga q/seed}`: name a value.
 
 R: `^=(p q)`  
