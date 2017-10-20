@@ -152,15 +152,6 @@ sort: 4
             </li>
             <br />
             <li>
-              <h1><a href="https://github.com/frodwith/jaque">Vere on the JVM via Graal and Truffle</a></h1>
-              <p>
-              <code>~2017.10.10</code>
-              </p>
-              <p>
-              <code>~fodwyt-nimbus</code><b> </b>has been reimplementing Vere using the Truffle language-implementation framework for the Graal JVM compiler. It's currently roughly 15x faster than current Vere.
-              </p>
-            </li>
-            <li>
               <h1><a href="https://github.com/asssaf/urbit-package">A Simple Urbit Package Manager</a></h1>
               <p>
               <code>~2017.10.12</code>
@@ -172,6 +163,15 @@ sort: 4
               </h1>
             </li>
             <br />
+            <li>
+              <h1><a href="https://github.com/frodwith/jaque">Vere on the JVM via Graal and Truffle</a></h1>
+              <p>
+              <code>~2017.10.10</code>
+              </p>
+              <p>
+              <code>~fodwyt-nimbus</code><b> </b>has been reimplementing Vere using the Truffle language-implementation framework for the Graal JVM compiler. It's currently roughly 15x faster than current Vere.
+              </p>
+            </li>
             <li>
               <h1><a href="/developer/community/projects">More</a></h1>
             </li>
