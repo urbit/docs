@@ -1,0 +1,298 @@
+---
+navhome: /developer/
+navuptwo: true
+next: true
+sort: 5
+title: Messaging (Talk)
+---
+
+# Messaging (Talk)
+
+<div class="row">
+
+<div class="col-md-8">
+
+Talk is the Urbit messaging and notifications protocol. Today we use
+Talk just to chat and coordinate, but it's really a general purpose
+piece of infrastructure.
+
+For the time being come join us in `/urbit-meta` by using the
+<a href="#-quickstart">quickstart</a> below.
+
+Today Talk is sort of like a distributed, encrypted Slack that can be
+used from the CLI and the browser. There’s no central Talk server.
+Any Urbit can host one.
+
+Talk is a general purpose tool for both aggregating and publishing
+streams of messages. Applications can use Talk as their transport
+protcol, API connectors can push disparate data sources into Talk,
+and so on. There are lots of things a distributed message protocol can
+be used for that we haven't even thought of.
+
+</div>
+
+</div>
+
+## Quickstart
+
+For the most part we use Talk as a single-instance of Slack: one main
+channel (`/urbit-meta`) and dms. Everyone is more than welcome in
+`/urbit-meta`. It's the place to get help, ask questions and chat about
+Urbit in general.
+
+Let's join `/urbit-meta`:
+
+Use `ctrl-x` to switch from Dojo to Talk.
+
+If you're a planet:
+
+    ~your-urbit:talk> ;join /urbit-meta
+
+If you're a comet:
+
+    ~your-really-long-urbit:talk> ;join ~binzod/urbit-meta
+
+You'll see:
+
+    ---------:talk| %porch subscribed to /urbit-meta, called `>`
+    ---------:talk| rules of /urbit-meta:
+    ---------:talk|   don't be rude
+    ---------:talk|   urbit-meta is politically correct and safe for work
+           ~binzod= ~your-urbit admitted to %urbit-meta
+    ~your-urbit:talk>
+
+Post a line to `/urbit-meta`:
+
+    ~your-urbit:talk> hello, world
+
+You'll see, echoed back at you through `~binzod`:
+
+    ~your-urbit> hello, world
+
+To send a direct message to someone, first set your audience:
+
+    ~your-urbit:talk> ;~talsur-todres
+
+You'll see your prompt change:
+
+    ~your-urbit:talk[~talsur-todres]
+
+Now you and `~talsur-todres` can exchange messages directly.
+
+To set your audience back to `/urbit-meta`:
+
+    ~your-urbit:talk> ;~binzod/urbit-meta
+
+Use `;leave` to unsubscribe from a channel:
+
+    ~your-urbit:talk> ;leave ~binzod/urbit-meta
+
+There are two ways of using Talk: from the CLI or through a web ui
+available at `http://your-urbit.urbit.org/talk` (or
+`http://localhost:8080/talk`).
+
+The web ui ships as compiled JavaScript on your Urbit, but has its own
+source repo [here](https://github.com/urbit/talk).
+
+Last, let's create a channel we can invite some friends to:
+
+    ~your-urbit:talk> ;create channel %my-channel 'some description'
+
+Now you can tell your friends to `;join ~your-urbit/my-channel`.
+
+## Manual
+
+Talk's design is similar in spirit to
+[nntp](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol),
+the underlying protocol for Usenet.
+
+Our design is pretty simple: Talk messages are called ‘posts’. Posts
+go to ‘stations’. Any urbit can host or subscribe to any number of
+stations.
+
+There are four kinds of stations: a write-only `%mailbox` for direct
+messages, an invite-only `%party` for private conversation, a read-only
+`%journal` for curated content, and a public-access `%channel` for
+general use.
+
+### Posts
+
+For the time being a post is either a line, a URL or a command.
+
+#### Lines
+
+A line is 64 bytes of ASCII lowercase, spaces and punctuation. If the
+line starts with '@', it's an action (IRC `/me`).
+
+The Talk interface will let you keep typing past 64 bytes, but insert
+a Unicode bullet-point character in an appropriate space in your post,
+to show you the prospective linebreak. Your essay will be posted in
+multiple lines.
+
+    ~your-urbit:talk> this is a long message, so it will by truncated right at this•spot
+
+will print as
+
+    ~your-urbit; this is a long message, so it will by truncated right at this
+    ~your-urbit; spot
+
+#### URLs
+
+A URL is any valid URL.
+
+    ~your-urbit:talk> http://example.com
+
+### Commands
+
+A command is a hoon expression, prefaced by '\#'.
+
+    ~your-urbit:talk> #(add 2 2)
+
+### Activating Lines
+
+A line number identifying the *subsequent* line is displayed every 5
+lines.
+
+    ---------[0]
+    ~your-urbit; this is my message
+    ~your-urbit@ this is an @ message
+    ~your-urbit; this is a long message, so it will by truncated right at this
+    ~your-urbit; spot
+    ~your-urbit/ http://example.com/
+    ---------[5]
+    ~your-urbit# (add 2 2)  4
+
+You can use a line number to *activate* a line:
+
+    ~your-urbit:talk> ;0
+
+which prints the number, line identifier, timestamp, sender, audience,
+and contents:
+
+    ? 0
+      0v3.hl51p.jhege.amhec.vb37r.3rejr at ~2016.6.24..04.48.21..a235
+      ~your-urbit to ~another-urbit
+    this is my message
+
+Activating a URL will print the full URL (it could have been truncated),
+and activating a command will evaluate it.
+
+You can activate the most recent line with `;`, the second-most recent
+with `;;`, and so on.
+
+### Creating and managing stations
+
+`;create journal %serious-journal 'description'` - Creates a `%journal`,
+a privately writable publicly readable station.
+
+`;create channel %serious-channel 'description'` - Creates a `%channel`,
+a publicly readable publicly writeable station.
+
+### Presence
+
+You'll see presence notifications when people enter or leave stations
+you're subscribed to.
+
+`;set quiet` - Turn off presence notifications
+
+`;unset quiet` - Turn on presence notifications
+
+`;who` - list everyone in all your stations
+
+### Station Glyphs
+
+Glyphs are assigned by station hash out of the following list
+
+    > = + - } ) , . " ' ^ $ % & @
+
+Alphanumeric characters and `|#;:*~_` are reserved; all others (the
+above lists, and `\/!?({<`) can be manually assigned.
+
+`;bind > /urbit-test` - assigns the `>` glyph to `/urbit-test`.
+
+To see what station is bound to a glyph:
+
+    ;what +  
+    {[%.y p=[p=~binzod q=~.urbit-meta]]}
+
+### Prefixes
+
+Received posts are prefixed with a glyph to let you know what the
+audience is. You can activate an individual post to see the full
+audience.
+
+`|` - Informational messages
+
+`:` - Posts directly to you
+
+`;` - Posts to you and others (a multiparty conversation)
+
+`*` - Posts to a complex audience that doesn't directly include you.
+
+### Audience
+
+#### Prompt
+
+The audience you're sending to is always shown in your prompt. If
+there's a glyph for it, it's shown as the glyph.
+
+Here we're talking to the station bound to `=`:
+
+    ~your-urbit:talk=
+
+Here we're talking directly to `~dannum-mitryl`:
+
+    ~your-urbit:talk(~dannum-mitryl)
+
+#### Configuration
+
+`;~urbit/station` - Set audience to `~urbit/station`
+
+`;=` - Set audience to the station bound to the `=` glyph
+
+`;~dannum-mitryl` - Set audience to `~dannum-mitryl` (a direct post).
+
+`;%station` - Set audience to a station on your own ship
+
+`;~dannum-mitryl this is a private message` - Set the audience and send
+a post in the same line. This works for all of the above.
+
+Your audience is configured 'implicitly' with regard to the following
+rules (in order):
+
+-   if you manually locked the audience, that audience.
+-   if typing a post, the audience when you started typing.
+-   if you activated a post, the post you activated.
+-   audience of the last post received.
+-   audience of the last post sent.
+
+Clear any 'implicit' audience setting by moving your cursor to the start
+of the line and pressing backspace (whether the line is empty or not).
+Posting a line clears the typing and activation configurations.
+
+### Nicknames
+
+`;nick` - list all nicknames
+
+`;nick ~your-urbit` - look up a nickname
+
+`;nick plato` - search in reverse
+
+`;nick ~your-urbit plato` create a nickname
+
+`;nick ~your-urbit ~` clear an assigned nickname
+
+`;set noob` show nicknames instead of urbit names
+
+`;unset noob` show urbit names instead of nicknames
+
+All nicknames must be 14 characters or less, lowercase. Nicknames are
+strictly local - like the names on entries in a phonebook. Sometimes in
+a post you want to mention someone you know by a nickname. Just type
+`~plato`, and Talk will replace it with `~your-urbit`.
+
+### Timestamps
+
+`;set showtime` - Show the timestamp for each message
+
+`;unset showtime` - Stop showing the timestamp for each message
