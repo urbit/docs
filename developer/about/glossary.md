@@ -217,7 +217,7 @@ producing a range with a useful span.
     sample
 -   *icon*: the span of the mold's range
 
-*See [mold twigs](../../docs/hoon/twig/buc-mold/).*
+*See [mold twigs](../../docs/hoon/twig/buc/).*
 
 ###### nest: type compatibility test
 

@@ -153,7 +153,7 @@ Cheat sheet:
     if-then-else that checks whether condition `p` is `~` (null). `?~`
     is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
-    ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
+    ([buctis](../../hoon/twig/buc/tis-coat/)) tests whether value `q` is
     of type `p`.
 <!-- One thing to watch out for in hoon: if you do `?~`, it
       affects the type of the conditional value: XXexample -->
@@ -165,7 +165,7 @@ Cheat sheet:
     example, it includes things like `our`, the name of the host urbit,
     and `now`, the current time.
 
--   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
+-   `$%` ([buccen](../../hoon/twig/buc/cen-book/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
     `*`, or a cell `^`.

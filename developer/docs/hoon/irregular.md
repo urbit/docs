@@ -133,7 +133,7 @@ A mold is a gate (function) that helps us build simple and rigorous data structu
 
 ### $: buccol :bank
 
-[docs](/developer/docs/hoon/twig/buc-mold/col-bank/) \\{\\}  
+[docs](/developer/docs/hoon/twig/buc/col-bank/) \\{\\}  
 `{$bank p/(list moss)}`: form a mold which recognizes a tuple.
 
 R: `$:(p q)`  
@@ -141,7 +141,7 @@ I: `{p q}`
 
 ### $= buctis :coat
 
-[docs](/developer/docs/hoon/twig/buc-mold/tis-coat/) \\/  
+[docs](/developer/docs/hoon/twig/buc/tis-coat/) \\/  
 `{$coat p/@tas q/moss}`: mold which wraps a face around another mold.
 
 R: `$=(p q)`  
@@ -149,7 +149,7 @@ I: `p/q`
 
 ### $? bucwut :pick
 
-[docs](/developer/docs/hoon/twig/buc-mold/wut-pick/) \\?  
+[docs](/developer/docs/hoon/twig/buc/wut-pick/) \\?  
 `{$pick p/(list moss)}`: mold which normalizes a general union.
 
 R: `$?(p)`  
@@ -157,7 +157,7 @@ I: `?(p)`
 
 ### $_ buccab :shoe
 
-[docs](/developer/docs/hoon/twig/buc-mold/cab-shoe/) \\_  
+[docs](/developer/docs/hoon/twig/buc/cab-shoe/) \\_  
 `{$shoe p/seed}`: mold which normalizes to an example.
 
 R: `$_(p)`  
