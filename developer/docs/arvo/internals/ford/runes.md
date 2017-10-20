@@ -24,7 +24,7 @@ generators, see the [generator docs](https://urbit.org/docs/arvo/generators).
 /+  time-to-id
 ::
 :-  %say
-|=  {now/@da * *} $~ $~}
+|=  {{now/@da * *} $~ $~}
 :-  %noun
 (time-to-id now)
 ```

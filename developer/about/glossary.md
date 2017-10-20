@@ -66,14 +66,14 @@ A ship's *pier* is its Unix directory.  For planets the name of the pier is usua
 
 > Nock is a Turing-complete, non-lambda combinator interpreter.
 
--   *noun*: an *atom* or a *cell*
 -   *atom*: any natural number
 -   *cell*: any ordered pair of nouns
--   *subject*: a noun - the data against which a `formula` is
-    evaluated
 -   *formula*: a noun - a function at the Nock level
+-   *noun*: an *atom* or a *cell*
 -   *product*: a noun - the result of evaluating a formula against a
     subject
+-   *subject*: a noun - the data against which a `formula` is
+    evaluated
 
 *See [Nock definition](../../nock/definition/).*
 
@@ -81,25 +81,6 @@ A ship's *pier* is its Unix directory.  For planets the name of the pier is usua
 
 > Hoon is a strict, higher-order typed functional language that compiles
 > itself to Nock.
-
-###### <h6 id="span">span:</h6> an inferred type
-
-A *span* defines a set (finite or infinite) of nouns and ascribes some
-semantics to it. There is no Hoon syntax for a span; it is always
-produced as the inferred range of an expression (*twig*).
-
-*See [basic types](../../hoon/basic/#-type-span-and-mold).*
-
-###### <h6 id="core">core:</h6> a code-data cell
-
-The code (*battery*) is the head, the data (*payload*) is the tail. All
-code-data structures in normal languages (functions, objects, modules,
-etc) become *core*s in Hoon.
-
--   <h6 id="battery">*battery*:</h6> the code of a core, a tree of *arms*
--   <h6 id="payload">*payload*:</h6> the data in a core
-
-*See [basic types](../../hoon/basic)*.
 
 ###### <h6 id="arm">arm:</h6> a named, functionally-computed attribute of a core
 
@@ -120,46 +101,6 @@ path, which works as if we expanded the callee with the caller's
 context.
 
 *See [advanced types](/hoon/advanced)*.
-
-###### metal: a variance model
-
-Every core has a *metal* which defines its variance model (ie, the
-properties of the span of a compatible core). The default is `gold`
-(invariant).
-
--   `gold`: *invariant*
--   `lead`: *bivariant*
--   `zinc`: *covariant*
--   `iron`: *contravariant*
-
-*See [advanced types](/hoon/advanced)*.
-
-###### <h6 id="gate">gate:</h6> a function/lambda/closure
-
-A *gate* is a core with one arm. To call a gate on an argument,
-replace the sample (at [tree
-address](../../hoon/twig/limb/limb/) `+6` in the core) with the
-argument, and then compute the arm.
-
-The payload of a gate has a shape of `{sample context}`.
-
--   *sample*: the argument tuple
--   *context*: the subject in which the gate was defined
-
-*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span),
-[`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for
-calling a `gate`).*
-
-###### <h6 id="mold">mold:</h6> a type constructor / validator
-
-A *mold* is an idempotent gate (function), accepting any noun, and
-producing a range with a useful span.
-
--   *bunt*: the value a mold produces when normalizing its default
-    sample
--   *icon*: the span of the mold's range
-
-*See [mold twigs](/hoon/twig/buc-mold/).*
 
 ###### atom
 
@@ -197,6 +138,109 @@ Some common auras and their aliases:
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
 
+###### <h6 id="core">core:</h6> a code-data cell
+
+The code (*battery*) is the head, the data (*payload*) is the tail. All
+code-data structures in normal languages (functions, objects, modules,
+etc) become *core*s in Hoon.
+
+-   <h6 id="battery">*battery*:</h6> the code of a core, a tree of *arms*
+-   <h6 id="payload">*payload*:</h6> the data in a core
+
+*See [basic types](../../hoon/basic)*.
+
+###### face: a labeled subtree
+
+Hoon has no scope or symbol-table; there is only the subject. To
+"declare" a "variable" is to construct a new subject:
+`[name=value old-subject]`.
+
+A *face* is a span that wraps a name (`@tas`) around another span.
+
+*See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
+
+###### <h6 id="gate">gate:</h6> a function/lambda/closure
+
+A *gate* is a core with one arm. To call a gate on an argument,
+replace the sample (at [tree
+address](../../hoon/twig/limb/limb/) `+6` in the core) with the
+argument, and then compute the arm.
+
+The payload of a gate has a shape of `{sample context}`.
+
+-   *sample*: the argument tuple
+-   *context*: the subject in which the gate was defined
+
+*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span),
+[`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for
+calling a `gate`).*
+
+###### limb: attribute or variable reference
+
+To resolve a *limb* named "foo", the subject is searched depth-first,
+head-first for either a face named "foo" or a core with an arm of
+"foo". If a face is found, the result is a leg, if a core is
+found, the result is the product of the arm.
+
+-   *leg*: a subexpression, or subtree of the subject.
+-   *wing*: a list of limbs, searched from right to left (`a.b` means
+    `b` within `a`).
+
+*See [Limbs and wings](../../hoon/twig/limb)*
+
+###### loobean: a Hoon boolean
+
+`0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
+
+> Why? It's fresh, it's different, it's new. And it's annoying. And it
+> keeps you on your toes. And it's also just intuitively right.
+
+###### metal: a variance model
+
+Every core has a *metal* which defines its variance model (ie, the
+properties of the span of a compatible core). The default is `gold`
+(invariant).
+
+-   `gold`: *invariant*
+-   `lead`: *bivariant*
+-   `zinc`: *covariant*
+-   `iron`: *contravariant*
+
+*See [advanced types](/hoon/advanced)*.
+
+###### <h6 id="mold">mold:</h6> a type constructor / validator
+
+A *mold* is an idempotent gate (function), accepting any noun, and
+producing a range with a useful span.
+
+-   *bunt*: the value a mold produces when normalizing its default
+    sample
+-   *icon*: the span of the mold's range
+
+*See [mold twigs](/hoon/twig/buc-mold/).*
+
+###### nest: type compatibility test
+
+*nest* is an internal function on two spans, which produces yes if the
+set of nouns in the second span is provably a subset of the first.
+
+*See [advanced types](../../hoon/advanced/)*.
+
+###### slot: a tree addressing scheme
+
+Every cell has a head and a tail, each of which may be either an atom or
+a cell. Therefore every noun is a binary tree. `+1` or `.` resolves to
+the whole cell (technically this would work against an atom as well).
+The head of `+n` is `+2n`, the tail is `+(2n+1)`. 
+
+###### <h6 id="span">span:</h6> an inferred type
+
+A *span* defines a set (finite or infinite) of nouns and ascribes some
+semantics to it. There is no Hoon syntax for a span; it is always
+produced as the inferred range of an expression (*twig*).
+
+*See [basic types](../../hoon/basic/#-type-span-and-mold).*
+
 ###### <h6 id="twig">twig:</h6> a Hoon expression
 
 A *twig* is a Hoon expression. Specifically, twig is the mold for the
@@ -230,47 +274,3 @@ forms are flat.
 
 *See [twig concept](../../hoon/concepts/#-twig-expression),
 [expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*.
-
-###### limb: attribute or variable reference
-
-To resolve a *limb* named "foo", the subject is searched depth-first,
-head-first for either a face named "foo" or a core with an arm of
-"foo". If a face is found, the result is a leg, if a core is
-found, the result is the product of the arm.
-
--   *leg*: a subexpression, or subtree of the subject.
--   *wing*: a list of limbs, searched from right to left (`a.b` means
-    `b` within `a`).
-
-*See [Limbs and wings](../../hoon/twig/limb)*
-
-###### slot: a tree addressing scheme
-
-Every cell has a head and a tail, each of which may be either an atom or
-a cell. Therefore every noun is a binary tree. `+1` or `.` resolves to
-the whole cell (technically this would work against an atom as well).
-The head of `+n` is `+2n`, the tail is `+(2n+1)`. 
-
-###### face: a labeled subtree
-
-Hoon has no scope or symbol-table; there is only the subject. To
-"declare" a "variable" is to construct a new subject:
-`[name=value old-subject]`.
-
-A *face* is a span that wraps a name (`@tas`) around another span.
-
-*See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
-
-###### nest: type compatibility test
-
-*nest* is an internal function on two spans, which produces yes if the
-set of nouns in the second span is provably a subset of the first.
-
-*See [advanced types](../../hoon/advanced/)*.
-
-###### loobean: a Hoon boolean
-
-`0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
-
-> Why? It's fresh, it's different, it's new. And it's annoying. And it
-> keeps you on your toes. And it's also just intuitively right.
