@@ -172,7 +172,7 @@ The payload of a gate has a shape of `{sample context}`.
 -   *context*: the subject in which the gate was defined
 
 *See [basic types](../../docs/hoon/basic/#-core-p-span-q-map-term-span),
-[`%-` or `:call`](../../docs/hoon/twig/cen-call/hep-call/) (the `twig` for
+[`%-` or `:call`](../../docs/hoon/twig/cen/hep-call/) (the `twig` for
 calling a `gate`).*
 
 ###### limb: attribute or variable reference

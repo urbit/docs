@@ -103,7 +103,7 @@ The invocation family of twigs.
 
 ### %= centis :make
 
-[docs](/developer/docs/hoon/twig/cen-call/tis-make/)  \\(\\)  
+[docs](/developer/docs/hoon/twig/cen/tis-make/)  \\(\\)  
 `{$make p/wing q/(list (pair wing seed))}`: take a wing with changes.
 
 R: `%=(p a 1)`  
@@ -111,7 +111,7 @@ I: `p(a 1)`
 
 ### %~ censig :open
 
-[docs](/developer/docs/hoon/twig/cen-call/sig-open/) \\~  
+[docs](/developer/docs/hoon/twig/cen/sig-open/) \\~  
 `{$cnsg p/wing q/seed r/seed}`: call with multi-armed door.
 
 R: `%~(p q r)`  
@@ -119,7 +119,7 @@ I: `~(p q r)`
 
 ### %- cenhep :call
 
-[docs](https://urbit.org/~~/docs/hoon/twig/cen-call/hep-call/) \\(\\)  
+[docs](https://urbit.org/~~/docs/hoon/twig/cen/hep-call/) \\(\\)  
 `{$call p/seed q/seed}`: call a gate (function).
 
 R: `%-(p q)`  
