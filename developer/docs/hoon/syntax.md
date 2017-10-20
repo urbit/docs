@@ -111,10 +111,10 @@ line comment at column 57.
 ## Expressions and Runes
 
 Each regular Hoon expression begins with a 
-[rune](https://urbit.org/docs/about/glossary#rune). A rune is a pair 
+[rune](/developer/about/glossary#rune). A rune is a pair 
 of ASCII punctuation marks (a digraph)&mdash;e.g., `:-`.  The first 
 glyph in the rune indicates the category&mdash;e.g., `:` runes make 
-[cells](https://urbit.org/docs/about/glossary#cell) (i.e., ordered 
+[cells](/developer/about/glossary#cell) (i.e., ordered 
 pairs). We pronounce runes using their glyph names&mdash;for `:-`, 
 we say "colhep".
 
@@ -132,7 +132,7 @@ the first of which, when evaluated, becomes the *head* (i.e., the left)
 and the second of which becomes the *tail* (i.e., the right).
 
 Hoon expressions are sometimes called 
-[twigs](https://urbit.org/docs/about/glossary#twig). You'll find that 
+[twigs](/developer/about/glossary#twig). You'll find that 
 Hoon code has a tree-like structure, so you can think of the various 
 expressions as twigs of the tree.  The subexpressions following the 
 rune are sometimes called the *children* of that twig.
@@ -184,7 +184,7 @@ subexpressions by a `gap`.
 
 Let's call everything in the twig after the initial rune the twig 
 *body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
-and *[battery](https://urbit.org/docs/about/glossary#battery)*. 
+and *[battery](/developer/about/glossary#battery)*. 
 
 Runes with a *fixed* number of subexpressions self-terminate. For 
 instance, the `:-` and `.=` runes each have two subexpressions 
@@ -295,9 +295,9 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 ### Conventions: *battery*
 
 A *battery* body has a list of symbol-child pairs, for the
-[battery](https://urbit.org/docs/about/glossary#battery)
+[battery](/developer/about/glossary#battery)
 of a 
-[core](https://urbit.org/docs/about/glossary#core).  A 
+[core](/developer/about/glossary#core).  A 
 conventional example:
 
 ```
@@ -355,7 +355,7 @@ appropriate.
 
 In the *ultralapidary* naming style, labels are single letters,
 starting in order of construction from `a`, or within a tuple
-[mold](https://urbit.org/docs/about/glossary#mold) `p`.  Hoon 
+[mold](/developer/about/glossary#mold) `p`.  Hoon 
 uses single-letter names for the same reason Algol style 
 languages pass arguments by order, rather than keyword.  Naming 
 items by order makes sense when there are no more than three or 
