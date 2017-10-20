@@ -100,7 +100,7 @@ sort: 4
               <code>~2017.10.18</code>
               </p>
               <p>
-              <code>~tonlur-sarret</code><b> </b>talks about organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
+              <code>~tonlur-sarret</code><b> </b>and <code>~rovnys-ricfer</code><b> </b>talk about organizing the Urbit developer community, new ideas for the Urbit docs and some big projects on the horizon.
               </p>
             </li>
             <li>
