@@ -258,10 +258,10 @@ also have a syntactic *irregular form*; a few have *only* an *irregular form*.
 
 -   <h6 id="rune">*rune*:</h6> a pair of ASCII symbols used to begin a twig.
 
-For example, the rune [`?:`](../../docs/hoon/twig/wut-test/col-if/) is 
+For example, the rune [`?:`](../../docs/hoon/twig/wut/col-if/) is 
 Hoon's most common conditional, a branch on a boolean test.  The first symbol 
 in a rune represents a family of related `twig`s. For example, the 
-[`?` family](../../docs/hoon/twig/wut-test/) are all conditionals.
+[`?` family](../../docs/hoon/twig/wut/) are all conditionals.
 
 A regular twig has two syntactic forms, *tall* and *flat*:
 

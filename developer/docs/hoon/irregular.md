@@ -169,7 +169,7 @@ Hoon has the usual branches and logical tests.
 
 ### ?! wutzap :not
 
-[docs](/developer/docs/hoon/twig/wut-test/zap-not/) \\!  
+[docs](/developer/docs/hoon/twig/wut/zap-not/) \\!  
 `{$not p/seed}`: logical not.
 
 R: `?!(p)`  
@@ -177,7 +177,7 @@ I: `!(p)`
 
 ### ?& wutpam :and
 
-[docs](/developer/docs/hoon/twig/wut-test/pam-and/) \\&  
+[docs](/developer/docs/hoon/twig/wut/pam-and/) \\&  
 `{$and p/(list seed)}`: logical and.
 
 R: `?&(p)`  
@@ -185,7 +185,7 @@ I: `&(p)`
 
 ### ?& wutbar :or
 
-[docs](/developer/docs/hoon/twig/wut-test/bar-or/) \\|  
+[docs](/developer/docs/hoon/twig/wut/bar-or/) \\|  
 `{$or p/(list seed)}`: logical or.
 
 R: `?|(p)`  

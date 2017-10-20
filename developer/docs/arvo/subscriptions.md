@@ -137,19 +137,19 @@ Cheat sheet:
 
 -   `&` (pam) can either be the boolean true (as can `%.y`, `0`), or
     the irregular wide form of the `?&`
-    ([wutpam](../../hoon/twig/wut-test/pam-and)) rune, which computes
+    ([wutpam](../../hoon/twig/wut/pam-and)) rune, which computes
     logical `AND` on its two children.
 
 -   Similar to `&`,`|` is either the boolean false (along with `%.n` and
     `1`), or the irregular short for of `?|`
-    ([wutbar](../../hoon/twig/wut-test/bar-or)), which computes logical `OR`
+    ([wutbar](../../hoon/twig/wut/bar-or)), which computes logical `OR`
     on its two children.
 
 -   `!` is the irregular wide form of `?!`
-    ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical
+    ([wutzap](../../hoon/twig/wut/zap-not/)), which computes logical
     `NOT` on its child.
 
--   `?~` ([wutsig](../../hoon/twig/wut-test/sig-ifno/)) is basically an
+-   `?~` ([wutsig](../../hoon/twig/wut/sig-ifno/)) is basically an
     if-then-else that checks whether condition `p` is `~` (null). `?~`
     is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
