@@ -85,7 +85,7 @@ I: `p:q`
 
 ## | bar (core)
 
-[docs](/developer/docs/hoon/twig/bar-core/) \\$  
+[docs](/developer/docs/hoon/twig/bar/) \\$  
 Core twigs are flow twigs.
 
 Technically not irregular syntax, but worth mentioning.

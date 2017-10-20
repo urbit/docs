@@ -172,8 +172,8 @@ Cheat sheet:
 <!-- XX this is a union, right? -->
 
 -   You may have noticed the separate `|%`
-    ([barcen](../../hoon/twig/bar-core/cen-core/)) above the application core
-    `|_` ([barcab](../../hoon/twig/bar-core/cab-door/). We usually put our
+    ([barcen](../../hoon/twig/bar/cen-core/)) above the application core
+    `|_` ([barcab](../../hoon/twig/bar/cab-door/). We usually put our
     types in another core on top of the application core. We can access
     these type from our `|_` because in `hoon.hoon` files, all cores are
     called against each other. (The shorthand for 'called' is `=>`.)
