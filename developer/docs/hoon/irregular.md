@@ -43,7 +43,7 @@ Miscellaneous useful macros.
 
 ### ;: semcol :wad
 
-[docs](/developer/docs/hoon/twig/sem-make/col-wad/) \\:  
+[docs](/developer/docs/hoon/twig/sem/col-wad/) \\:  
 `{$wad p/seed q/(list seed)}`: call a binary function as an n-ary function.
 
 R: `;:(p q)`  
