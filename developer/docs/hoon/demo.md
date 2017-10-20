@@ -39,7 +39,7 @@ The code produces a list in which each item is either a number
 "null" and indicates the end of the list.
 
 Line 1 uses the `|=` 
-*[rune](https://urbit.org/docs/about/glossary#rune)* to define a 
+*[rune](/developer/about/glossary#rune)* to define a 
 function of one argument, `end`, which is of the type `atom` (i.e. 
 an unsigned integer).
 
@@ -74,5 +74,5 @@ Clojure `recur`), with `count` incremented.
 You can test this code by mounting your home desk with 
 `|mount %` from the dojo; saving the above code as 
 `home/gen/fizzbuzz.hoon` in your Urbit 
-[pier](https://urbit.org/docs/about/glossary#pier); then typing 
+[pier](/developer/about/glossary#pier); then typing 
 `+fizzbuzz 100` in the dojo.

@@ -199,7 +199,7 @@ retrieve it from.
 
 This is how we represent the static resources hook files can load. The
 discussion of their use from a user's perspective is documented in the [runes
-documentation](https://urbit.org/docs/arvo/internals/runes), so we will here
+documentation](/developer/docs/arvo/internals/runes), so we will here
 only give a description of the data structure itself.
 
 A `%ape` horn is simply a twig that gets evaluated and placed in the

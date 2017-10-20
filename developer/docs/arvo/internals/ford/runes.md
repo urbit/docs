@@ -18,7 +18,7 @@ library in urbit.
 
 To run this example, put this code in your desk at `gen/faslus.hoon` and run
 `+faslus` in your dojo. This example is a generator. For more information on
-generators, see the [generator docs](https://urbit.org/docs/arvo/generators).
+generators, see the [generator docs](/developer/docs/arvo/generators).
 
 ```
 /+  time-to-id
@@ -84,7 +84,7 @@ for those features.
 
 `/~  <twig>` produces a "horn" that evaluates a twig and places the product in
 the subject. Arbitrary hoon can be in the twig. A
-[horn](https://urbit.org/docs/arvo/internals/ford/commentary/#-horn) is a data
+[horn](/developer/docs/arvo/internals/ford/commentary/#-horn) is a data
 structure representing a `%ford` static resource.
 
 Example:
@@ -169,7 +169,7 @@ produces the text of the hoon file at "/path/to/hoon-file/hoon".
 passes the contents through unchanged.  In general, rendering a file with a
 mark will potentially run the contents through a series of conversion
 operations. For details on marks, see the
-[marks docs](https://urbit.org/docs/arvo/marks).
+[marks docs](/developer/docs/arvo/marks).
 
 Here's an example that includes a mark conversion:
 ```

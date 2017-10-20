@@ -20,8 +20,8 @@ To run this code, you'll need an urbit, and will have to either sync or copy the
 ## Installation
 
 First, you'll need a running urbit. Follow our urbit.org [install 
-instructions](https://urbit.org/docs/using/install), then 
-[setup](https://urbit.org/docs/using/setup) and urbit.
+instructions](/developer/using/install), then 
+[setup](/developer/using/setup) and urbit.
 
 Follow the *Network install* below if your urbit is running on the live network 
 (comets are usually best for development). Follow the *Local install* instead 
