@@ -227,7 +227,7 @@ Examples
 Find common
 
 Finds a subsequence of repeated elements within two
-[`++list`](/docs/hoon/library/1#++list)s, producing a [\`++tape]().
+[`++list`](/developer/docs/hoon/library/1#++list)s, producing a [\`++tape]().
 
 Accepts
 -------

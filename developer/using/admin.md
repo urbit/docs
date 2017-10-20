@@ -77,7 +77,7 @@ The following emacs-style key bindings are available:
     ctrl-u    kill to beginning of line
     ctrl-y    yank from kill buffer
 
-Full coverage of the Urbit shell, the Dojo is covered in the [Shell walkthrough](/docs/using/shell).
+Full coverage of the Urbit shell, the Dojo is covered in the [Shell walkthrough](/developer/using/shell).
 
 ## Web
 
@@ -86,7 +86,7 @@ On startup Urbit tries to bind to `localhost:8080`.  If you're already running s
 
 Your Urbit serves a simple homepage from `http://localhost:8080` or `https://your-urbit.urbit.org` that should be self-explanatory.  Since our HTTPS isn't audited / battle tested we just call it "secure" HTTPS.  You can find that on `8443`.  Or `8444` (and so on) if you're already running something on `8443`.
 
-A complete walkthrough of the Urbit web interface is [here](/docs/using/web).
+A complete walkthrough of the Urbit web interface is [here](/developer/using/web).
 
 ## Continuity breaches
 

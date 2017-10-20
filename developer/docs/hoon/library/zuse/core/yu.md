@@ -153,7 +153,7 @@ Examples
 Back-shifted leap second dates
 
 Produces a [`++list`]() of absolute dates ([`@da`]()s) that represent the Urbit
-Galactc Time equivalents of the UTC leap second dates in [`++les`](/docs/hoon/library/3bc#++les).
+Galactc Time equivalents of the UTC leap second dates in [`++les`](/developer/docs/hoon/library/3bc#++les).
 
 Produces
 --------

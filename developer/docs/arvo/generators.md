@@ -15,7 +15,7 @@ when you run a command like `+ls` or `|merge`, there are no marks in
 sight.
 
 We've used generators before, back in [Basic
-Operation](/docs/using/admin). At that point, we just used the
+Operation](/developer/using/admin). At that point, we just used the
 generators to produce values -- we didn't pipe their results into apps.
 In the dojo cast, the role of a generator is to take a list of arguments
 and produce a value, which is often, though not always, piped into an
@@ -54,7 +54,7 @@ generators for the `:hood` app, `:hood|generator <args>` can be
 shortened to `|generator <args>`.
 
 Let's write a generator for a modified version of `:examples-pong` from
-the chapter on [Network Messages](/docs/arvo/system/network). Recall
+the chapter on [Network Messages](/developer/docs/arvo/system/network). Recall
 that `:examples-pong` takes an urbit address, which is of mark `urbit`,
 and sends that urbit the message `'howdy'`. First--without a
 generator--let's make `:examples-ping` that does the same, except that
@@ -170,9 +170,9 @@ Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and
 **Exercises**:
 
 -   Create a generator for `:examples-sum` from
-    [State](/docs/arvo/state) so that you can run `:examples-sum|add 5`
+    [State](/developer/docs/arvo/state) so that you can run `:examples-sum|add 5`
     to add numbers to it.
 
 -   Create a generator for `:examples-click` from [Web
-    Apps](/docs/arvo/web-apps) so that you can run
+    Apps](/developer/docs/arvo/web-apps) so that you can run
     `:examples-click|poke` to poke it.

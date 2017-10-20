@@ -28,7 +28,7 @@ Your Urbit runs a web server and can be found at either `http://localhost:8080/`
 
 <span class="red">
 (Make sure you have a desk mounted to unix, as covered in the
-[filesystem walkthrough](/docs/using/filesystem)).
+[filesystem walkthrough](/developer/using/filesystem)).
 </span>
 
 To switch the desk you're serving from:

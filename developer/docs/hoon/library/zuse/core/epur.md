@@ -12,7 +12,7 @@ Parses an entire URL.
 Accepts
 -------
 
-`a` is a [`++cord`](/docs/hoon/library/1#++cord).
+`a` is a [`++cord`](/developer/docs/hoon/library/1#++cord).
 
 Produces
 --------

@@ -7,7 +7,7 @@ navhome: /developer/docs/
 
 Escape JSON character
 
-Produces a [`++tape`]() of an escaped [`++json`](/docs/hoon/library/3bi#++json) character `a`.
+Produces a [`++tape`]() of an escaped [`++json`](/developer/docs/hoon/library/3bi#++json) character `a`.
 
 Accepts
 -------

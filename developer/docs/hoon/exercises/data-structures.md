@@ -20,7 +20,7 @@ The `++in` core contains library functions for dealing with sets.
 For example, `++has:in` checks whether an element is in the set.
 Thus, `(~(has in s) 'arvo')` returns yes.  To complete these
 exercises, you'll need to refer to the [library reference for
-`++in`](/docs/hoon/library/2h).
+`++in`](/developer/docs/hoon/library/2h).
 
 1.  Create another set, `l`, with members `'c'`, `'hoon'`,
     `'javacript'`, `'python'`.
@@ -36,7 +36,7 @@ exercises, you'll need to refer to the [library reference for
     `a` is in `s` and `b` is in `l`.
 
 The `++by` core is to maps as `++in` is to sets.  Refer to its
-[library reference](/docs/hoon/library/2i).  Note that since a
+[library reference](/developer/docs/hoon/library/2i).  Note that since a
 map is basically a set of pairs (although not every set of pairs
 is a map), most functions in `++in` have analogues in `++by`.
 
