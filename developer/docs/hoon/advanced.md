@@ -73,7 +73,7 @@ polymorphism relies on genericity.
 
 For a dry arm, we apply the Liskov substitution principle: we
 ask, "can we use any `p` as if it was a `q.q`?"  This is the same
-test as in `:cast` or any type comparison (`nest`).  Intuitively,
+test as in `^-` or any type comparison (`nest`).  Intuitively,
 we ask: "is the new payload compatible with the old payload?"
 
 For a core `a`, if `p.a` fits in `q.q.a`, we can use arms on the
