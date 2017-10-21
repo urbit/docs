@@ -318,7 +318,7 @@ Flat regular form starts with the rune, followed by `pal`, `(`
 are separated by `ace` (one space), followed by `par`, `)` (right
 parenthesis).
 
-A twig in flat form, `:if`, `?:`, `{$if p/twig q/twig r/twig}`:
+A twig in flat form, `?:`, `?:`, `{$wtcl p/twig q/twig r/twig}`:
 
 `?:(p q r)`
 
