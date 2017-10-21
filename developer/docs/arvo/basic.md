@@ -190,7 +190,7 @@ Using this scheme, we would pronounce `?:` as 'wutcol'.
 ### Lines 14-37
 
 Now let's quickly walk through this code line-by-line. Lines 14-37 are wrapped
-in a `|%` ('[barcen](../../hoon/twig/bar/cen-core/)'), which produces a
+in a `|%` ('[barcen](../../hoon/twig/bar/cen/)'), which produces a
 core. Cores are a fundamental datatype in Hoon, similar to a struct, class, or
 object. A core is just a map of names to any kind of code, whether it be
 functions or data. Each element, called an arm, in this map begins with a `++` 
@@ -209,7 +209,7 @@ Let's step into each of the three arms within our core.
       (add (five a) (three a))
     --
 
-`|=` ('[bartis](../../hoon/twig/bar/tis-gate/)') produces a function, much like a lambda in lisp. It
+`|=` ('[bartis](../../hoon/twig/bar/tis/)') produces a function, much like a lambda in lisp. It
 takes two children:
 
 1.  A set of argument(s). In this case our argument set only contains
@@ -234,7 +234,7 @@ takes two children:
 As above, `++three` takes an integer argument, `a`, and then executes
 the remainder of the code with `a` set to the actual arguments.
 
-Similarly, `=|` ('[tisbar](../../hoon/twig/tis/bar-new/)') pushes its first child, `b` into our context
+Similarly, `=|` ('[tisbar](../../hoon/twig/tis/bar/)') pushes its first child, `b` into our context
 (in other words, it declares a variable `b`) and executes the remainder
 of the code. However, `b` is not an argument; `=|` sets `b` to the
 default value of whatever type it is declared as. Since the default
@@ -252,7 +252,7 @@ value of an atom is `0`, b is set to `0`.
 So now we have two variables: `a` is set to our input, and `b` is
 initialized to `0`.
 
-One way to think about `|-` ('[barhep](../../hoon/twig/bar/hep-loop/)') is that it lays down a recursion
+One way to think about `|-` ('[barhep](../../hoon/twig/bar/hep/)') is that it lays down a recursion
 point. More on this later.
 
 `^-` ('[kethep](../../hoon/core/ket-cast/hep-cast/)') is just a cast that sets the result of the remainder of
@@ -324,7 +324,7 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
     Surrounding a function with `()` is an irregular wide form syntax for
     calling a function with *N* arguments. More on this later.
 
-2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar/tis-gate/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
+2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar/tis/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
 
 3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the

@@ -23,7 +23,7 @@ Anything Nock can do, Hoon can do also.
 
 ### .+ dotlus :bump
 
-[docs](/developer/docs/hoon/twig/dot/lus-bump/) \\+  
+[docs](/developer/docs/hoon/twig/dot/lus/) \\+  
 `{$bump p/atom}`: increment an atom with Nock 4.
 
 R: `.+(p)`  
@@ -31,7 +31,7 @@ I: `+(p)`
 
 ### .= dottis :same
 
-[docs](/developer/docs/hoon/twig/dot/tis-same/) \\=  
+[docs](/developer/docs/hoon/twig/dot/tis/) \\=  
 `{$same p/seed q/seed}`: test for equality with Nock 5.
 
 R: `.=(p q)`  
@@ -43,7 +43,7 @@ Miscellaneous useful macros.
 
 ### ;: semcol :wad
 
-[docs](/developer/docs/hoon/twig/sem/col-wad/) \\:  
+[docs](/developer/docs/hoon/twig/sem/col/) \\:  
 `{$wad p/seed q/(list seed)}`: call a binary function as an n-ary function.
 
 R: `;:(p q)`  
@@ -55,7 +55,7 @@ The cell twigs.
 
 ### :- colhep :cons
 
-[docs](/developer/docs/hoon/twig/col/hep-cons/)  \\[\\]\\^\\+\\\`\\~  
+[docs](/developer/docs/hoon/twig/col/hep/)  \\[\\]\\^\\+\\\`\\~  
 `{$cons p/seed q/seed}`: construct a cell (2-tuple).
 
 R: `:-(p q)`  
@@ -77,7 +77,7 @@ Flow twigs change the subject. All non-flow twigs (except cores) pass the subjec
 
 ### =< tisgal :rap
 
-[docs](/developer/docs/hoon/twig/tis/gal-rap/) \\:  
+[docs](/developer/docs/hoon/twig/tis/gal/) \\:  
 `{$rap p/seed q/seed}`: compose two twigs, inverted.
 
 R: `=<(p q)`  
@@ -103,7 +103,7 @@ The invocation family of twigs.
 
 ### %= centis :make
 
-[docs](/developer/docs/hoon/twig/cen/tis-make/)  \\(\\)  
+[docs](/developer/docs/hoon/twig/cen/tis/)  \\(\\)  
 `{$make p/wing q/(list (pair wing seed))}`: take a wing with changes.
 
 R: `%=(p a 1)`  
@@ -111,7 +111,7 @@ I: `p(a 1)`
 
 ### %~ censig :open
 
-[docs](/developer/docs/hoon/twig/cen/sig-open/) \\~  
+[docs](/developer/docs/hoon/twig/cen/sig/) \\~  
 `{$cnsg p/wing q/seed r/seed}`: call with multi-armed door.
 
 R: `%~(p q r)`  
@@ -119,7 +119,7 @@ I: `~(p q r)`
 
 ### %- cenhep :call
 
-[docs](https://urbit.org/~~/docs/hoon/twig/cen/hep-call/) \\(\\)  
+[docs](https://urbit.org/~~/docs/hoon/twig/cen/hep/) \\(\\)  
 `{$call p/seed q/seed}`: call a gate (function).
 
 R: `%-(p q)`  
@@ -133,7 +133,7 @@ A mold is a gate (function) that helps us build simple and rigorous data structu
 
 ### $: buccol :bank
 
-[docs](/developer/docs/hoon/twig/buc/col-bank/) \\{\\}  
+[docs](/developer/docs/hoon/twig/buc/col/) \\{\\}  
 `{$bank p/(list moss)}`: form a mold which recognizes a tuple.
 
 R: `$:(p q)`  
@@ -141,7 +141,7 @@ I: `{p q}`
 
 ### $= buctis :coat
 
-[docs](/developer/docs/hoon/twig/buc/tis-coat/) \\/  
+[docs](/developer/docs/hoon/twig/buc/tis/) \\/  
 `{$coat p/@tas q/moss}`: mold which wraps a face around another mold.
 
 R: `$=(p q)`  
@@ -149,7 +149,7 @@ I: `p/q`
 
 ### $? bucwut :pick
 
-[docs](/developer/docs/hoon/twig/buc/wut-pick/) \\?  
+[docs](/developer/docs/hoon/twig/buc/wut/) \\?  
 `{$pick p/(list moss)}`: mold which normalizes a general union.
 
 R: `$?(p)`  
@@ -157,7 +157,7 @@ I: `?(p)`
 
 ### $_ buccab :shoe
 
-[docs](/developer/docs/hoon/twig/buc/cab-shoe/) \\_  
+[docs](/developer/docs/hoon/twig/buc/cab/) \\_  
 `{$shoe p/seed}`: mold which normalizes to an example.
 
 R: `$_(p)`  
@@ -169,7 +169,7 @@ Hoon has the usual branches and logical tests.
 
 ### ?! wutzap :not
 
-[docs](/developer/docs/hoon/twig/wut/zap-not/) \\!  
+[docs](/developer/docs/hoon/twig/wut/zap/) \\!  
 `{$not p/seed}`: logical not.
 
 R: `?!(p)`  
@@ -177,7 +177,7 @@ I: `!(p)`
 
 ### ?& wutpam :and
 
-[docs](/developer/docs/hoon/twig/wut/pam-and/) \\&  
+[docs](/developer/docs/hoon/twig/wut/pam/) \\&  
 `{$and p/(list seed)}`: logical and.
 
 R: `?&(p)`  
@@ -185,7 +185,7 @@ I: `&(p)`
 
 ### ?& wutbar :or
 
-[docs](/developer/docs/hoon/twig/wut/bar-or/) \\|  
+[docs](/developer/docs/hoon/twig/wut/bar/) \\|  
 `{$or p/(list seed)}`: logical or.
 
 R: `?|(p)`  
@@ -197,7 +197,7 @@ Lets us adjust spans without violating type constraints.
 
 ### ^- kethep :cast
 
-[docs](/developer/docs/hoon/twig/ket/hep-cast/) \\\`  
+[docs](/developer/docs/hoon/twig/ket/hep/) \\\`  
 `{$cast p/moss q/seed}`: typecast by mold.
 
 R: `^-(p q)`  
@@ -205,7 +205,7 @@ I: ```p`q``
 
 ### ^= kettis :name
 
-[docs](/developer/docs/hoon/twig/ket/tis-name/) \\=  
+[docs](/developer/docs/hoon/twig/ket/tis/) \\=  
 `{$name p/toga q/seed}`: name a value.
 
 R: `^=(p q)`  

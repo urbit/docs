@@ -61,7 +61,7 @@ from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
 In this case, `++poke-noun` takes an argument (*sample*) `arg` and 
-prints it to dojo with `~&` ([sigpam](../../hoon/twig/sig/pam-dump/)). 
+prints it to dojo with `~&` ([sigpam](../../hoon/twig/sig/pam/)). 
 This is an unusual rune that formally "does nothing", but the interpreter 
 detects it and printfs the first child, before executing the second as if the
 first didn't exist. This is a slightly hacky way of printing to the console, 
