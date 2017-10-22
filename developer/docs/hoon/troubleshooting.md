@@ -24,8 +24,8 @@ a correct Hoon file.  These values are always correct.
 Usually, the line and column tell you everything you need to
 know.  But the worst-case scenario for a syntax error is that,
 somewhere above, you've confused Hoon's tall form by using the
-wrong fanout for a rune.  For example, `%+` (`:calt`, a function
-call whose sample is a cell) has three subtwigs:
+wrong fanout for a rune.  For example, `%+` ([*cenlus*](../twig/cen/lus), 
+a function call whose sample is a cell) has three subtwigs:
 
 ```
 %+  foo
@@ -104,7 +104,7 @@ means you tried to pound a square peg into a round hole.
 What was the peg and what was the hole?  Hoon doesn't tell you by
 default, because moral fiber, and also because in too many cases
 trivial errors lead to large intimidating dumps.  However, you
-can use the `~!` rune ("sigzap", `:peep`) to print the type of
+can use the `~!` rune ([*sigzap*}(../twig/sig/zap)) to print the type of
 any twig in your stack trace.
 
 For instance, you wrote `(foo bar)` and got a `nest-fail`.  Change
@@ -130,14 +130,14 @@ use a twig that does not produce a gate/mold, as a gate/mold.
 
 For instance, `(foo bar)` will give `find.$` if `foo` is not
 actually a function.  `?=([%foo %bar] baz)` will give `find.$`,
-because `?=` ("wuttis", `:fits`) needs a mold rather than a seed
+because `?=` ([*wuttis*](../twig/wut/wis)) needs a mold rather than a seed
 (you probably meant `?=({$foo $bar} baz)`).
 
 ### `mint-vain` and `mint-lost`
 
 These are errors caused by type inference in pattern matching.
 `mint-vain` means this twig is never executed.  `mint-lost` means
-there's a case in a `?-` ("wuthep", `:case`) that isn't handled.
+there's a case in a `?-` ([*wuthep*](../twig/wut/hep)) that isn't handled.
 
 ## Runtime crashes
 
@@ -150,8 +150,8 @@ need to be developing on the local console; otherwise, the
 infinite loop will time out either too slowly or too fast).  The
 stack trace will show what your code was doing when interrupted.
 
-The counterpart of `~!` for runtime crashes is `~|` ("sigbar",
-`:show`):
+The counterpart of `~!` for runtime crashes is `~|` 
+([*sigbar*](../twig/sig/bar)):
 
 ```
 ~|  foo
@@ -167,8 +167,8 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing.  This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ("sigpam", `:dump`) is Hoon's debugging printf.  This
-pretty-prints its argument:
+`~&` ([*sigpam*](../twig/sig/pam)) is Hoon's debugging printf.  
+This pretty-prints its argument:
 
 ```
 ~&  foo
@@ -176,7 +176,7 @@ pretty-prints its argument:
 ```
 
 will always print `foo` every time it executes.  A variant is
-`~?` ("sigwut", `:warn`), which prints only if a condition is
+`~?` ([*sigwut*](../twig/sig/wut)), which prints only if a condition is
 true:
 
 ```
