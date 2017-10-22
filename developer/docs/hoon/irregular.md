@@ -21,18 +21,18 @@ Want to `ctrl-f` to find out the meaning of something weird you saw? Search for 
 
 Anything Nock can do, Hoon can do also.
 
-### .+ dotlus :bump
+### .+ dotlus
 
 [docs](/developer/docs/hoon/twig/dot/lus/) \\+  
-`{$bump p/atom}`: increment an atom with Nock 4.
+`{$dtls p/atom}`: increment an atom with Nock 4.
 
 R: `.+(p)`  
 I: `+(p)`
 
-### .= dottis :same
+### .= dottis
 
 [docs](/developer/docs/hoon/twig/dot/tis/) \\=  
-`{$same p/seed q/seed}`: test for equality with Nock 5.
+`{$dtts p/seed q/seed}`: test for equality with Nock 5.
 
 R: `.=(p q)`  
 I: `=(p q)`
@@ -41,10 +41,10 @@ I: `=(p q)`
 
 Miscellaneous useful macros.
 
-### ;: semcol :wad
+### ;: semcol
 
 [docs](/developer/docs/hoon/twig/sem/col/) \\:  
-`{$wad p/seed q/(list seed)}`: call a binary function as an n-ary function.
+`{$smcl p/seed q/(list seed)}`: call a binary function as an n-ary function.
 
 R: `;:(p q)`  
 I: `:(p q)`
@@ -53,10 +53,10 @@ I: `:(p q)`
 
 The cell twigs.
 
-### :- colhep :cons
+### :- colhep
 
 [docs](/developer/docs/hoon/twig/col/hep/)  \\[\\]\\^\\+\\\`\\~  
-`{$cons p/seed q/seed}`: construct a cell (2-tuple).
+`{$clhp p/seed q/seed}`: construct a cell (2-tuple).
 
 R: `:-(p q)`  
 I:
@@ -75,10 +75,10 @@ I:
 
 Flow twigs change the subject. All non-flow twigs (except cores) pass the subject down unchanged.
 
-### =< tisgal :rap
+### =< tisgal
 
 [docs](/developer/docs/hoon/twig/tis/gal/) \\:  
-`{$rap p/seed q/seed}`: compose two twigs, inverted.
+`{$tsgl p/seed q/seed}`: compose two twigs, inverted.
 
 R: `=<(p q)`  
 I: `p:q`
@@ -90,26 +90,26 @@ Core twigs are flow twigs.
 
 Technically not irregular syntax, but worth mentioning.
 
-* `|= bartis :gate`
-* `|. bardot :trap`
-* `|- barhep :loop`
-* `|* bartar :gill`
+* `|= bartis`
+* `|. bardot`
+* `|- barhep`
+* `|* bartar`
 
-The above runes produce a core with a single arm, named `$` (or `:moar`). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=`, `:make`, like so: `$()`.
+The above runes produce a core with a single arm, named `$` (or `:moar`). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=` (*centis*), like so: `$()`.
 
 ## % cen (call)
 
 The invocation family of twigs.
 
-### %= centis :make
+### %= centis
 
 [docs](/developer/docs/hoon/twig/cen/tis/)  \\(\\)  
-`{$make p/wing q/(list (pair wing seed))}`: take a wing with changes.
+`{$cnts p/wing q/(list (pair wing seed))}`: take a wing with changes.
 
 R: `%=(p a 1)`  
 I: `p(a 1)`
 
-### %~ censig :open
+### %~ censig
 
 [docs](/developer/docs/hoon/twig/cen/sig/) \\~  
 `{$cnsg p/wing q/seed r/seed}`: call with multi-armed door.
@@ -117,10 +117,10 @@ I: `p(a 1)`
 R: `%~(p q r)`  
 I: `~(p q r)`
 
-### %- cenhep :call
+### %- cenhep
 
 [docs](https://urbit.org/~~/docs/hoon/twig/cen/hep/) \\(\\)  
-`{$call p/seed q/seed}`: call a gate (function).
+`{$cnhp p/seed q/seed}`: call a gate (function).
 
 R: `%-(p q)`  
 I: `(p q)`
@@ -131,34 +131,34 @@ Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (func c
 
 A mold is a gate (function) that helps us build simple and rigorous data structures.
 
-### $: buccol :bank
+### $: buccol
 
 [docs](/developer/docs/hoon/twig/buc/col/) \\{\\}  
-`{$bank p/(list moss)}`: form a mold which recognizes a tuple.
+`{$bccl p/(list moss)}`: form a mold which recognizes a tuple.
 
 R: `$:(p q)`  
 I: `{p q}`
 
-### $= buctis :coat
+### $= buctis
 
 [docs](/developer/docs/hoon/twig/buc/tis/) \\/  
-`{$coat p/@tas q/moss}`: mold which wraps a face around another mold.
+`{$bcts p/@tas q/moss}`: mold which wraps a face around another mold.
 
 R: `$=(p q)`  
 I: `p/q`
 
-### $? bucwut :pick
+### $? bucwut
 
 [docs](/developer/docs/hoon/twig/buc/wut/) \\?  
-`{$pick p/(list moss)}`: mold which normalizes a general union.
+`{$bcwt p/(list moss)}`: mold which normalizes a general union.
 
 R: `$?(p)`  
 I: `?(p)`
 
-### $_ buccab :shoe
+### $_ buccab
 
 [docs](/developer/docs/hoon/twig/buc/cab/) \\_  
-`{$shoe p/seed}`: mold which normalizes to an example.
+`{$bccb p/seed}`: mold which normalizes to an example.
 
 R: `$_(p)`  
 I: `_p`
@@ -167,26 +167,26 @@ I: `_p`
 
 Hoon has the usual branches and logical tests.
 
-### ?! wutzap :not
+### ?! wutzap
 
 [docs](/developer/docs/hoon/twig/wut/zap/) \\!  
-`{$not p/seed}`: logical not.
+`{$wtzp p/seed}`: logical not.
 
 R: `?!(p)`  
 I: `!(p)`
 
-### ?& wutpam :and
+### ?& wutpam
 
 [docs](/developer/docs/hoon/twig/wut/pam/) \\&  
-`{$and p/(list seed)}`: logical and.
+`{$wtpm p/(list seed)}`: logical and.
 
 R: `?&(p)`  
 I: `&(p)`
 
-### ?& wutbar :or
+### ?& wutbar
 
 [docs](/developer/docs/hoon/twig/wut/bar/) \\|  
-`{$or p/(list seed)}`: logical or.
+`{$wtbr p/(list seed)}`: logical or.
 
 R: `?|(p)`  
 I: `|(p)`
@@ -195,18 +195,18 @@ I: `|(p)`
 
 Lets us adjust spans without violating type constraints.
 
-### ^- kethep :cast
+### ^- kethep
 
 [docs](/developer/docs/hoon/twig/ket/hep/) \\\`  
-`{$cast p/moss q/seed}`: typecast by mold.
+`{$kthp p/moss q/seed}`: typecast by mold.
 
 R: `^-(p q)`  
-I: ```p`q``
+I: `` `p`q ``
 
-### ^= kettis :name
+### ^= kettis
 
 [docs](/developer/docs/hoon/twig/ket/tis/) \\=  
-`{$name p/toga q/seed}`: name a value.
+`{$ktts p/toga q/seed}`: name a value.
 
 R: `^=(p q)`  
 I: `p=q`
