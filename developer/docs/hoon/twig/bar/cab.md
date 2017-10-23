@@ -1,22 +1,15 @@
 ---
 navhome: /developer/docs/
 sort: 5
-
+title: |_  "barcab"
 ---
 
-# `:door  |_  "barcab"` 
+# `|_  "barcab"` 
 
-`{$door p/moss q/(map term foot)}`: form a door, a many-armed core
+`{$brcb p/moss q/(map term foot)}`: form a door, a many-armed core
 with a sample.
 
 ## Expands to
-
-```
-:new  p
-:core 
-  q
-==
-```
 
 ```
 =|  p
@@ -41,22 +34,11 @@ structure becomes a door.
 Calling a door is just like calling a gate, but the caller needs
 to specify the arm.  For instance, to call the gate `foo` as a
 door, instead of `(foo bar)` we would write `~($ foo bar)`.  This
-is an irregular form for `:open($ foo bar)`, `%~`, "censig".
+is an irregular form for `%~($ foo bar)`, ["censig"](../../cen/sig).
 
 ## Examples
 
 A trivial door:
-
-```
-/~zod:dojo> =mol  :door  a/@ud
-                  ++  succ  +(a)
-                  ++  prev  (dec a)
-                  --
-/~zod:dojo> :call(succ mol 1)
-2
-/~zod:dojo> :call(succ mol :call(succ mol :call(prev mol 5)))
-6
-```
 
 ```
 /~zod:dojo> =mol  |_  a/@ud

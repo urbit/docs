@@ -1,18 +1,14 @@
 ---
 navhome: /docs
 sort: 9
-
+title: |?  "barwut"
 ---
 
-# `:tray  |?  "barwut"`
+# `|?  "barwut"`
 
-`{$tray p/seed}`: form a lead trap.
+`{$brwt p/seed}`: form a lead trap.
 
 ## Expands to
-
-```
-:lead  :trap  p
-```
 
 ```
 ^?  |.  p
@@ -28,12 +24,6 @@ See this [discussion of the core variance model](../../../advanced).
 
 ## Examples
 
-```
-~zod:dojo> :per  ~  :like  :tray(%a)  :trap(%a)
-<1?pqz $~>
-~zod:dojo> :per  ~  :like  :tray(%a)  :trap(%b)
-nest-fail
-```
 ```
 ~zod:dojo> =>  ~  ^+  |?(%a)  |.(%a)
 <1?pqz $~>

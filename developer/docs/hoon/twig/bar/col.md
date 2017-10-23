@@ -1,19 +1,14 @@
 ---
 navhome: /docs
 sort: 8
-
+title: |:  "barcol"
 ---
 
-# `:gasp  |:  "barcol"`
+# `|:  "barcol"`
 
-`{$gasp p/seed q/seed}`: form a gate with burnt sample.
+`{$brcl p/seed q/seed}`: form a gate with burnt sample.
 
 ## Expands to
-
-```
-:pin  :burn(p)
-:trap(q)
-```
 
 ```
 =>  ^~  p
@@ -22,8 +17,8 @@ sort: 8
 
 ## Discussion
 
-Note that `p` is a seed, not a moss; `:gasp` doesn't bunt your sample as
-`:gate` does.
+Note that `p` is a seed, not a moss; `|:` doesn't bunt your sample as
+[`|=`](../tis) does.
 
 ## Syntax
 

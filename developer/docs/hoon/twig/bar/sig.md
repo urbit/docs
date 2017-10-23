@@ -1,18 +1,14 @@
 ---
 navhome: /docs
 sort: 10
-
+title: |~  "barsig"
 ---
 
-# `:port  |~  "barsig"`
+# `|~  "barsig"`
 
-`{$port p/moss q/seed}`: form an iron gate.
+`{$brsg p/moss q/seed}`: form an iron gate.
 
 ## Expands to
-
-```
-:iron  :gate(p q)
-```
 
 ```
 ^|  |=(p q)
@@ -27,10 +23,6 @@ Regular: *2-fixed*.
 See [this discussion of core variance models](../../../advanced)
 
 ## Examples
-
-```
-~zod:dojo> :per  ~  :like(:port(a/@ *@) :gate(a/* *@))
-```
 
 ```
 ~zod:dojo> =>  ~  ^+(|~(a/@ *@) |=(a/* *@))
