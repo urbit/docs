@@ -10,7 +10,7 @@ Basic Hoon
 
 Our goal is to get you programming interesting and useful things as soon
 as possible. To get there, we have to quickly cover some of the
-fundamentals of [Hoon](/docs/hoon/). To do this, we'll walk through two simple
+fundamentals of [Hoon](/developer/docs/hoon/). To do this, we'll walk through two simple
 programs: the first [Project Euler](https://projecteuler.net/) problem
 and [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
 
