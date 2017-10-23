@@ -1,5 +1,5 @@
 ---
-navhome: '/developer/docs'
+navhome: /developer/docs
 next: True
 sort: 18
 title: Using generators with apps
@@ -13,7 +13,7 @@ convenient for users to input. This is the "plumbing" way to interact with
 apps. Generators are the "porcelain" layer. This is why when you run a command 
 like `+ls` or `|merge`, there are no marks in sight.
 
-We've used generators before, back in [Basic Operation](/docs/using/admin). At 
+We've used generators before, back in [Basic Operation](/developer/using/admin). At 
 that point, we just used the generators to produce values-- we didn't pipe 
 their results into apps. In the dojo cast, the role of a generator is to take 
 a list of arguments and produce a value, which is often, though not always, 
@@ -51,7 +51,7 @@ pattern is so common, this can be abbreviated to
 for the `:hood` app, `:hood|generator <args>` can be shortened to `|generator <args>`.
 
 Let's write a generator for a modified version of `:pong` from the chapter on 
-[Network Messages](/docs/arvo/system/network). Recall that `:pong` takes an 
+[Network Messages](/developer/docs/arvo/system/network). Recall that `:pong` takes an 
 urbit address, which is of mark `urbit`, and sends that urbit the message 
 `'howdy'`. First-- without a generator--let's make `:ping` that does the same, 
 except that it lets the user optionally specify the message as well.

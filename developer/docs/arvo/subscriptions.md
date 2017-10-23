@@ -152,7 +152,7 @@ Cheat sheet:
     ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical
     `NOT` on its child.
 
--   `?~` ([wutsig](../../hoon/twig/wut-test/sig-ifno/)) is basically an
+-   `?~` ([wutsig](../../hoon/twig/wut/sig/)) is basically an
     if-then-else that checks whether condition `p` is `~` (null). `?~`
     is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
@@ -161,14 +161,14 @@ Cheat sheet:
 <!-- One thing to watch out for in hoon: if you do `?~`, it
       affects the type of the conditional value: XXexample -->
 
--   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
+-   `:_` ([colcab](../../hoon/twig/col/cab/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
 
 -   `++bowl` is the type of the system state within our app. For
     example, it includes things like `our`, the name of the host urbit,
     and `now`, the current time.
 
--   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
+-   `$%` ([buccen](../../hoon/twig/buc/cen/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
     `*`, or a cell `^`.

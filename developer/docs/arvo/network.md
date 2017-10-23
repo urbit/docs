@@ -65,7 +65,7 @@ from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
 In this case, `++poke-noun` takes an argument (*sample*) `arg` and 
-prints it to dojo with `~&` ([sigpam](../../hoon/twig/sig-hint/pam-dump/)). 
+prints it to dojo with `~&` ([sigpam](../../hoon/twig/sig/pam/)). 
 This is an unusual rune that formally "does nothing", but the interpreter 
 detects it and printfs the first child, before executing the second as if the
 first didn't exist. This is a slightly hacky way of printing to the console, 
@@ -209,7 +209,7 @@ Run it with these commands:
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to do is to start
 a comet, a free and disposable Urbit identity. If you don't know how to start a
-comet, see [the user setup section](/docs/using/setup/). Don't forget to start
+comet, see [the user setup section](/developer/docs/using/setup/). Don't forget to start
 the `%pong` app on that urbit, too. You should see, on the foreign
 urbit, this output:
 

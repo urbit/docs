@@ -121,7 +121,7 @@ the mark which will be applied to this result.
 When you send this request, you can expect a `%sigh` with the response, which 
 we handle later on in `++sigh-httr`.
 
-For `%wait`, you just pass a [`@da`](/docs/hoon/library/3c/) (absolute date), 
+For `%wait`, you just pass a [`@da`](/../../hoon/library/3c/) (absolute date), 
 and arvo will produce a `%wake` when the time comes.
 
 > A timer is guaranteed to not be triggered before the given
@@ -163,7 +163,7 @@ If the argument is neither 'off' nor 'on', then we assume it's an
 actual url, so we save it in `target`.
 
 Here's the move that sends the HTTP request, which is just a null-terminated 
-list constructed with [`:~`](/docs/hoon/twig/col-cell/sig-conl/) ('colsig'):
+list constructed with [`:~`](/../../hoon/twig/col/sig/) ('colsig'):
 ```
           :~  :*  ost.bow                               ::  33
                   %hiss                                 ::  34
