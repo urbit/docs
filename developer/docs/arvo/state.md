@@ -13,48 +13,52 @@ entirely stateless, however. Most useful apps require some amount of state.
 Let's build a trivial stateful app. It'll keep a running the sum of all the
 atoms we poke it with. Here's `examples/app/sum.hoon`:
     
-    ::  Keeps track of the sum of all the atoms it has been 
-    ::	poked with and prints the sum out
-    ::
-    ::::  /===/app/sum/hoon
-      ::
-    !:
-    |%
-    ++	move  {bone card}
-    ++	card  $%  $~
-	      ==
-    --
-    |_	{bow/bowl sum/@}
-    ::
-    ++	poke-atom
-      |=  tom/@
-      ^-  {(list move) _+>.$}
-      ~&  sum+(add sum tom)
-      [~ +>.$(sum (add sum tom))]
-    ::
-    ++	coup
-      |=  {wir/wire err/(unit tang)}
-      ^-  {(list move) _+>.$}
-      ?~  err
-	~&  sum+success+'Poke succeeded!'
-	[~ +>.$]
-      ~&  sum+error+'Poke failed. Error:'
-      ~&  sum+error+err
-      [~ +>.$]
-    ::
-    --
+```
+::  Keeps track of the sum of all the atoms it has been ::  1
+::  poked with and prints the sum out                   ::  2
+::                                                      ::  3
+::::  /===/app/sum/hoon                                 ::  4
+  ::                                                    ::  5
+!:                                                      ::  6
+|%                                                      ::  7
+++      move  {bone card}                               ::  8
+++      card  $%  $~                                    ::  9
+          ==                                            ::  10
+--                                                      ::  11
+|_      {bow/bowl sum/@}                                ::  12
+::                                                      ::  13
+++      poke-atom                                       ::  14
+  |=  tom/@                                             ::  15
+  ^-  {(list move) _+>.$}                               ::  16
+  ~&  sum+(add sum tom)                                 ::  17
+  [~ +>.$(sum (add sum tom))]                           ::  18
+::                                                      ::  19
+++      coup                                            ::  20
+  |=  {wir/wire err/(unit tang)}                        ::  21
+  ^-  {(list move) _+>.$}                               ::  22
+  ?~  err                                               ::  23
+    ~&  sum+success+'Poke succeeded!'                   ::  24
+    [~ +>.$]                                            ::  25
+  ~&  sum+error+'Poke failed. Error:'                   ::  26
+  ~&  sum+error+err                                     ::  27
+  [~ +>.$]                                              ::  28
+::                                                      ::  29
+--                                                      ::  30
+```
 
 We can start it with `|start %sum`, and then run it:
 
-    ~fintud-macrep:dojo> :sum &atom 5
-    [%sum 5]
-    >=
-    ~fintud-macrep:dojo> :sum &atom 2
-    [%sum 7]
-    >=
-    ~fintud-macrep:dojo> :sum &atom 15
-    [%sum 22]
-    >=
+```
+~fintud-macrep:dojo/examples> :sum &atom 5
+[%sum 5]
+>=
+~fintud-macrep:dojo/examples> :sum &atom 2
+[%sum 7]
+>=
+~fintud-macrep:dojo/examples> :sum &atom 15
+[%sum 22]
+>=
+```
 
 We can see that app state is being saved, but when, where, and how?
 
@@ -114,11 +118,14 @@ to set up and write to a database.
 
 <!-- -->
 
-    ~fintud-macrep:dojo> :last 7
-    [%last 0]
-    >=
-    ~fintud-macrep:dojo> :last [1 2 3]
-    [%last 7]
-    >=
-    ~fintud-macrep:dojo> :last 'howdy'
-    [%last [1 2 3]]
+```
+~fintud-macrep:dojo/examples> :last 7
+[%last 0]
+>=
+~fintud-macrep:dojo/examples> :last [1 2 3]
+[%last 7]
+>=
+~fintud-macrep:dojo/examples> :last 'howdy'
+[%last [1 2 3]]
+```
+
