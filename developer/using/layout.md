@@ -1,6 +1,7 @@
 ---
 navhome: /developer/
 navuptwo: true
+next: true
 sort: 3
 title: Source layout
 ---
@@ -30,7 +31,7 @@ Looking at the top level of [the Arvo repo](http://github.com/urbit/arvo), or an
 
 Let's step through directory by directory.
 
-## `app/` 
+## `app/`
 
 This is where Gall apps live.  Gall apps are stateful servers, sort of like unix daemons.  One familiar one is `app/talk.hoon` which is the source code for Talk the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
 
@@ -74,7 +75,7 @@ Hoon is our programming langauge.  Since Hoon compiles itself the language is ac
 
 Zuse is the Hoon library.  
 
-That's it.  That's the whole system. 
+That's it.  That's the whole system.
 
 ## `gen/`
 
@@ -105,4 +106,3 @@ There are the files publicly accessible to the web, as made possible by Eyre.
 ## `web.md`
 
 This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://fintud-macrep.urbit.org/`.
-

@@ -1,7 +1,6 @@
 ---
 navhome: /developer/
 navuptwo: true
-next: true
 sort: 8
 title: Web (Eyre)
 ---
@@ -53,7 +52,7 @@ Now modify `/sandbox/web/test.md` to list the children using the `<list/>` JSX:
     This is a simple markdown file.
 
     <div><list /></div>
-    
+
 To view your file rendered using tree:
 
     http://localhost:8080/test/
