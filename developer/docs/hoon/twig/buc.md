@@ -1,10 +1,10 @@
 ---
 navhome: /developer/docs/
 sort: 7
-
+title: Mold $ "buc"
 ---
 
-# Mold, `$` ("buc")
+# Mold `$` "buc"
 
 A *mold* is a `gate` (function) that helps us build simple and
 rigorous data structures.  (In fact, since "mold" sounds nasty,
@@ -25,7 +25,7 @@ Twigs in the `$` family are macros designed for making molds.
 But any Hoon twig may produce a mold.  (This is why `moss` is a
 synonym for `twig`).
 
-Many macros *bunt* a mold, producing `:burn(:per(mold $))`.  This
+Many macros *bunt* a mold, producing `^~(=>(mold $))`.  This
 produces a constant default value.  The formal range of a mold
 (the span of its bunt) is called its *icon*.
 
