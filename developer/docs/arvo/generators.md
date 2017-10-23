@@ -1,5 +1,5 @@
 ---
-navhome: /developer/docs
+navhome: /developer/docs/
 next: True
 sort: 18
 title: Using generators with apps
