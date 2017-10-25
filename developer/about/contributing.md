@@ -1,12 +1,11 @@
 ---
 navhome: /developer
 navuptwo: true
-next: true
 sort: 5
 title: Contributing to Urbit
 ---
 
-# Contributing to Urbit
+# Contributing
 
 It's always a good day for pull requests! We gladly accept submissions
 for improving our [code](https://github.com/urbit/urbit/) and
@@ -35,7 +34,7 @@ and make sure to format your edited files with the following flags:
 
 If you are editing an existing page, reformatting the entire page with pandoc
 will make the diff hard to read. Instead, just make sure that your edits generally
-conform to the style of the existing docs around it. For example, you'll notice 
+conform to the style of the existing docs around it. For example, you'll notice
 that the paragraphs mostly wrap at column 80.
 
 **Note:** If you have an old version of Pandoc, it may convert the

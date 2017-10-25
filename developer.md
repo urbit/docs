@@ -7,7 +7,7 @@ sort: 4
 
 <div class="lead">
     <div class="logo inverse"></div>
-    <h1 class="blue i-b">Urbit developer</h1>
+    <h1 class="i-b">Urbit developer</h1>
 </div>
 
 <div class="row">
@@ -18,19 +18,19 @@ sort: 4
     <h3>This Week in Urbit</h3>
     <ul class="list">
       <li>
-        <h1><a href="https://urbit.org/fora/posts/~2017.10.14..00.00.00..0000~.md/">Week of ~2017.10.13</a></h1>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.14..00.00.00..0000~/">Week of ~2017.10.13</a></h1>
         <p>
         <code>~palfun-foslup</code><b> </b>joins Mars Talks to talk about Talk. <code>~littel-ponnys</code><b> </b>demos a patch for using Ford to generate tables for Unicode conversion. <code>~fodwyt-nimbus</code><b> </b>and <code>~savfex_macned</code><b> </b>have a conversation about doors.
         </p>
       </li>
       <li>
-        <h1><a href="https://urbit.org/fora/posts/~2017.10.7..00.00.00..0000~.md/">Week of ~2017.10.6</a></h1>
+        <h1><a href="https://urbit.org/fora/posts/~2017.10.7..00.00.00..0000~/">Week of ~2017.10.6</a></h1>
         <p>
         <code>~master-morzod</code><b> </b>joins Mars Talks to talk about the Urbit operating system. The core team and contributors talk about how to best teach Urbit. Ted explains Hoon casting and does a full expansion of the Nock macros to draw a better connection between Hoon and Nock.
         </p>
       </li>
       <li>
-        <h1><a href="/developer/week">More</a></h1>
+        <h1><a href="activity/week">More</a></h1>
       </li>
     </ul>
   </div>
@@ -86,9 +86,9 @@ sort: 4
   </div>
 </div>
 
-<div class="row head">
+<div class="row">
     <div class="col-md-4">
-        <h3>Community media</h3>
+        <h3>Media</h3>
         <ul class="list">
             <li>
               <h1><a href="https://www.youtube.com/watch?v=YmE4Rm3jX0w">Mars Talks, Ep. 4</a></h1>
@@ -129,7 +129,7 @@ sort: 4
               </p>
             </li>
             <li>
-              <h1><a href="/developer/community/media">More</a></h1>
+              <h1><a href="activity/community/#-media">More</a></h1>
             </li>
         </ul>
     </div>
@@ -170,7 +170,7 @@ sort: 4
               </p>
             </li>
             <li>
-              <h1><a href="/developer/community/projects">More</a></h1>
+              <h1><a href="activity/community/#-projects">More</a></h1>
             </li>
         </ul>
     </div>
@@ -212,13 +212,22 @@ sort: 4
             <br />
             <br />
             <li>
-              <h1><a href="/developer/community/docs">More</a></h1>
+              <h1><a href="activity/community/#-docs">More</a></h1>
             </li>
         </ul>
     </div>
 </div>
 
-<h2>Using</h2>
+## About
+
+<div class="row">
+  <div class="col-md-4">
+    <list dataPath="/developer/about"></list>
+  </div>
+</div>
+
+## Using
+
 <div class="row">
     <div class="col-md-4">
         <h3>Get Started</h3>
@@ -245,15 +254,10 @@ sort: 4
         </ul>
     </div>
 </div>
+
 <div class="row">
   <div class="col-md-12">
     <h2>Documentation</h2>
-    <div class="row">
-    <div class="col-md-6">
-        <h3>About</h3>
-        <list dataPath="/developer/about"></list>
-    </div>
-    </div>
     <div class="row">
     <div class="col-md-6">
         <h3>Learn</h3>

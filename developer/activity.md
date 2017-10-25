@@ -1,9 +1,9 @@
 ---
 navhome: /developer/
-sort: 14
-title: Community
+sort: 0
+title: Activity
 ---
 
-# Community
+# Activity
 
 <list/>

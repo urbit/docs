@@ -1,4 +1,5 @@
 ---
+navuptwo: true
 navhome: /developer/
 sort: 12
 title: Urbit Proposals

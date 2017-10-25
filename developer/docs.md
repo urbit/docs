@@ -2,12 +2,11 @@
 navhome: /developer/
 footer: true
 title: Docs
-sort: 17
+sort: 3
 ---
 
 <div class="lead">
-    <div class="logo inverse"></div>
-    <h1 class="blue i-b">Urbit developer docs</h1>
+    <h1 class="i-b">Developer docs</h1>
 </div>
 
 <div class="row">

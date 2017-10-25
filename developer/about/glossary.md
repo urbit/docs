@@ -3,10 +3,10 @@ navhome: /developer
 navuptwo: true
 next: true
 sort: 3
-title: Urbit glossary
+title: Glossary
 ---
 
-# Urbit Glossary
+# Glossary
 
 Urbit is renowned for its exotic terminology. Here's a simple overview
 from the strange words in.
@@ -16,8 +16,8 @@ to create a new semantic level in which one can be absolutely precise."
 
 ## Ships
 
-An Urbit *ship* is a cryptographic title on a *will* signed by private 
-key, a human-memorable name, and a packet routing address. Ships are 
+An Urbit *ship* is a cryptographic title on a *will* signed by private
+key, a human-memorable name, and a packet routing address. Ships are
 classed by the number of bits in their address:
 
     Size   Name    Parent  Object      Example
@@ -30,11 +30,11 @@ classed by the number of bits in their address:
 
 Any ship can be called an "urbit."
 
-> A summary [here](http://urbit.org/posts/address-space/).
+> You can find a longer-form summary here: [`urbit.org/posts/address-space/`](http://urbit.org/posts/address-space/).
 
 An Urbit identity is a string like `~firbyr-napbes`. It means nothing,
 but it's easy to remember and say out loud. `~firbyr-napbes` is actually
-just a 32-bit number, like an IP address, that we turn into a
+just a 32-bit number (`3.237.967.392`, to be exact), like an IP address, that we turn into a
 human-memorable string.
 
 Technically, an urbit is a secure digital identity that you own and
@@ -231,7 +231,7 @@ set of nouns in the second span is provably a subset of the first.
 Every cell has a head and a tail, each of which may be either an atom or
 a cell. Therefore every noun is a binary tree. `+1` or `.` resolves to
 the whole cell (technically this would work against an atom as well).
-The head of `+n` is `+2n`, the tail is `+(2n+1)`. 
+The head of `+n` is `+2n`, the tail is `+(2n+1)`.
 
 ###### <h6 id="span">span:</h6> an inferred type
 
@@ -253,7 +253,7 @@ atomic symbol.
 -   <h6 id="stem">*stem*:</h6> an atomic symbol (`@tas`) - the name of a twig.
 -   <h6 id="bulb">*bulb*:</h6> The mold of the twig's contents.
 
-Most twigs have a *regular form*, beginning with a *rune*. Some twigs 
+Most twigs have a *regular form*, beginning with a *rune*. Some twigs
 also have a syntactic *irregular form*; a few have *only* an *irregular form*.
 
 -   <h6 id="rune">*rune*:</h6> a pair of ASCII symbols used to begin a twig.
