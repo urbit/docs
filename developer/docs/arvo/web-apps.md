@@ -29,50 +29,52 @@ Let's first checkout the app `/examples/app/click.hoon`:
 [. click]                                               ::  6
 !:                                                      ::  7
 |%                                                      ::  8
-++  move  {bone card}                                   ::  9
-++  card  $%  {$diff diff-content}                      ::  10
+++  move  [bone card]                                   ::  9
+++  card  $%  [$diff diff-content]                      ::  10
           ==                                            ::  11
-++  diff-content  $%  {$click-clicks clicks}            ::  12
+++  diff-content  $%  [$click-clicks clicks]            ::  12
                   ==                                    ::  13
 --                                                      ::  14
 ::                                                      ::  15
-|_  {bow/bowl cis/clicks}                               ::  16
+|_  [bow=bowl cis=clicks]                               ::  16
 ::                                                      ::  17
-++  poke-click-click                                    ::  18
-  |=  cik/^click                                        ::  19
-  ^-  {(list move) _+>.$}                               ::  20
-  ~&  click+clicked++(cis)                              ::  21
-  :_  +>.$(cis +(cis))                                  ::  22
-  %+  turn  (prey /click bow)                           ::  23
-  |=  {o/bone *}                                        ::  24
-  [o %diff %click-clicks +(cis)]                        ::  25
-::                                                      ::  26
-++  peer-click                                          ::  27
-  |=  pax/path                                          ::  28
-  ^-  {(list move) _+>.$}                               ::  29
-  [~[[ost.bow %diff %click-clicks cis]] +>.$]           ::  30
-::                                                      ::  31
-++  coup                                                ::  32
-  |=  {wir/wire err/(unit tang)}                        ::  33
-  ^-  {(list move) _+>.$}                               ::  34
-  ?~  err                                               ::  35
-    ~&  click+success+'Poke succeeded!'                 ::  36
-    [~ +>.$]                                            ::  37
-  ~&  click+error+'Poke failed. Error:'                 ::  38
-  ~&  click+error+err                                   ::  39
-  [~ +>.$]                                              ::  40
-::                                                      ::  41
-++  reap                                                ::  42
-  |=  {wir/wire err/(unit tang)}                        ::  43
-  ^-  {(list move) _+>.$}                               ::  44
-  ?~  err                                               ::  45
-    ~&  click+success+'Peer succeeded!'                 ::  46
-    [~ +>.$]                                            ::  47
-  ~&  click+error+'Peer failed. Error:'                 ::  48
-  ~&  click+error+err                                   ::  49
-  [~ +>.$]                                              ::  51
-::                                                      ::  52
---                                                      ::  53
+++  prep  _`.                                           ::  18 
+::                                                      ::  19 
+++  poke-click-click                                    ::  20 
+  |=  cik=^click                                        ::  21 
+  ^-  [(list move) _+>.$]                               ::  22 
+  ~&  click+clicked++(cis)                              ::  23 
+  :_  +>.$(cis +(cis))                                  ::  24 
+  %+  turn  (prey /click bow)                           ::  25 
+  |=  [o=bone *]                                        ::  26 
+  [o %diff %click-clicks +(cis)]                        ::  27 
+::                                                      ::  28 
+++  peer-click                                          ::  29 
+  |=  pax/path                                          ::  30 
+  ^-  [(list move) _+>.$]                               ::  31 
+  [~[[ost.bow %diff %click-clicks cis]] +>.$]           ::  32 
+::                                                      ::  33 
+++  coup                                                ::  34 
+  |=  [wir=wire err=(unit tang)}                        ::  35 
+  ^-  [(list move) _+>.$]                               ::  36 
+  ?~  err                                               ::  37 
+    ~&  click+success+'Poke succeeded!'                 ::  38 
+    [~ +>.$]                                            ::  39 
+  ~&  click+error+'Poke failed. Error:'                 ::  40 
+  ~&  click+error+err                                   ::  41 
+  [~ +>.$]                                              ::  42 
+::                                                      ::  43 
+++  reap                                                ::  44 
+  |=  [wir=wire err=(unit tang)]                        ::  45 
+  ^-  [(list move) _+>.$}                               ::  46 
+  ?~  err                                               ::  47 
+    ~&  click+success+'Peer succeeded!'                 ::  48 
+    [~ +>.$]                                            ::  49 
+  ~&  click+error+'Peer failed. Error:'                 ::  51 
+  ~&  click+error+err                                   ::  52 
+  [~ +>.$]                                              ::  53 
+::                                                      ::  54
+--                                                      ::  55
 ```
 
 There's nothing really new here, except that we use a couple of new marks, 
@@ -91,13 +93,13 @@ Let's take a look at the new marks. Here's `/examples/mar/click/click.hoon`:
 /-  click                                               ::  5
 [. click]                                               ::  6
 !:                                                      ::  7
-|_  cik/^click                                          ::  8
+|_  cik=^click                                          ::  8
 ++  grab                                                ::  9
   |%                                                    ::  10
   ++  noun  |=(* %click)                                ::  11
   ++  json                                              ::  12
-    |=  jon/^json                                       ::  13
-    ?>  =('click' (need (so:jo jon)))                   ::  14
+    |=  jon=^json                                       ::  13
+    ?>  =('click' (need (so:dejs-soft:format jon)))     ::  14
     %click                                              ::  15
   --                                                    ::  16
 --                                                      ::  17
@@ -106,20 +108,20 @@ Let's take a look at the new marks. Here's `/examples/mar/click/click.hoon`:
 The mark `click-click` has hoon type `%click`, which means the only valid 
 value is `%click`. We can convert from `noun` by just producing `%click`.
 
-We also convert from json by parsing a json string with `so:jo`, asserting 
-the parsing succeeded with `need`, and asserting the result was 'click' with 
-`?>`, which asserts that its first child is true.
+We also convert from json by parsing a json string with `so:dejs-soft:format`, 
+asserting the parsing succeeded with `need`, and asserting the result was 
+'click' with `?>`, which asserts that its first child is true.
 
-> Note the argument to `++json`is `jon/^json`.  Why `^json`?
+> Note the argument to `++json`is `jon=^json`.  Why `^json`?
 > `++json` shadows the type definition, so if we want to refer to
 > the type, we have to prepend a `^`.  This extends to multiple
 > levels: `^^^foo` means the fourth innermost instance of `foo`.
 
-> `++jo` in `zuse` is a useful library for parsing complex json
+> `++dejs-soft:format` in `zuse` is a useful library for parsing complex json
 > into hoon structures. In this case, the `:` between `so` and
-> `jo` means 'inside of', because `so` is an arm contained within
-> the core `jo`.  Our case is actually simple enough that the
-> `?>` line could have been `?>  =([%s 'click'] jon)`.
+> `dejs-soft:format` means 'inside of', because `so` is an arm contained within
+> the core `dejs-soft` which is itself within `format`. Our case is actually 
+> simple enough that the `?>` line could have been `?>  =([%s 'click'] jon)`.
 
 We can test this mark from the command line (don't forget to start your app 
 with `|start %click`).
@@ -147,11 +149,11 @@ And `/examples/mar/click/clicks.hoon`:
 /-  click                                               ::  5
 [. click]                                               ::  6
 !:                                                      ::  7
-|_  cis/clicks                                          ::  8
+|_  cis=clicks                                          ::  8
 ++  grow                                                ::  9
   |%                                                    ::  10
   ++  json                                              ::  11
-    (joba %clicks (jone cis))                           ::  12
+    (frond:enjs:format %clicks (numb:enjs:format cis))  ::  12
   --                                                    ::  13
 --                                                      ::  14
 ```
@@ -159,8 +161,8 @@ And `/examples/mar/click/clicks.hoon`:
 `clicks-clicks` is just an atom. We convert to json by creating an object with 
 a single field "clicks" with our value.
 
-> Be sure to checkout section 3bD, JSON and XML, in zuse.hoon
-> `++joba` is just a function that takes a key-value pair and
+> Be sure to checkout `++enjs` of `zuse.hoon`.
+> `++frond` is just a function that takes a key-value pair and
 > produces a JSON object with one element.
 
 ```
