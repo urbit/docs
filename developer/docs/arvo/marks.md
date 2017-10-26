@@ -17,10 +17,10 @@ text, but there's no predefined mark for it.  Let's put the following code in:
 
 ```
 /?  314                                                 ::  1
-|_  cod/@t                                              ::  2
+|_  cod=@t                                              ::  2
 ++  grab                                                ::  3
   |%                                                    ::  4
-  ++  atom  |=(arg/@ `@t`(scot %ud arg))                ::  5
+  ++  atom  |=(arg=@ `@t`(scot %ud arg))                ::  5
   --                                                    ::  6
 ++  grow                                                ::  7
   |%                                                    ::  8
@@ -71,10 +71,10 @@ an arm to `++grow` which allows us to convert cords to markdown. Our
 
 ```
 /?  314                                                 ::  1
-|_  cod/@t                                              ::  2
+|_  cod=@t                                              ::  2
 ++  grab                                                ::  3
   |%                                                    ::  4
-  ++  atom  |=(arg/@ `@t`(scot %ud arg))                ::  5
+  ++  atom  |=(arg=@ `@t`(scot %ud arg))                ::  5
   --                                                    ::  6
 ++  grow                                                ::  7
   |%                                                    ::  8
