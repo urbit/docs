@@ -24,32 +24,32 @@ Let's take a look at two apps, `:source` and `:sink`. First,
 !:                                                      ::  5
 ::                                                      ::  6
 |%                                                      ::  7
-++      move  {bone card}                               ::  8
-++      card  $%  {$diff diff-contents}                 ::  9
-          ==                                            ::  10
-++      diff-contents  $%  {$noun *}                    ::  11
-               ==                                       ::  12
+++  move  [bone card]                                   ::  8
+++  card  $%  [$diff diff-contents]                     ::  9
+      ==                                                ::  10
+++  diff-contents  $%  [$noun *]                        ::  11
+                   ==                                   ::  12
 --                                                      ::  13
 ::                                                      ::  14
-|_      {bow/bowl $~}                                   ::  15
+|_  [bow=bowl $~]                                       ::  15
 ::                                                      ::  16
-++      poke-noun                                       ::  17
-  |= non/*                                              ::  18
-  ^-  {(list move) _+>.$}                               ::  19
+++  poke-noun                                           ::  17
+  |= non=*                                              ::  18
+  ^-  [(list move) _+>.$]                               ::  19
   :_  +>.$                                              ::  20
-  %+  turn      (prey /example-path bow)                ::  21
-  |=({o/bone *} [o %diff %noun non])                    ::  22
+  %+  turn  (prey /example-path bow)                    ::  21
+  |=([o=bone *] [o %diff %noun non])                    ::  22
 ::                                                      ::  23
-++      peer-example-path                               ::  24
-  |=  pax/path                                          ::  25
-  ^-  {(list move) _+>.$}                               ::  26
+++  peer-example-path                                   ::  24
+  |=  pax=path                                          ::  25
+  ^-  [(list move) _+>.$]                               ::  26
   ~&  source+peer-notify+'Someone subscribed to you!'   ::  27
   ~&  source+[ship+src.bow path+pax]                    ::  28
   [~ +>.$]                                              ::  29
 ::                                                      ::  30
 ++  coup                                                ::  31
-  |=  {wir/wire err/(unit tang)}                        ::  32
-  ^-  {(list move) _+>.$}                               ::  33
+  |=  [wir=wire err=(unit tang)]                        ::  32
+  ^-  [(list move) _+>.$]                               ::  33
   ?~  err                                               ::  34
     ~&  source+success+'Poke succeeded!'                ::  35
     [~ +>.$]                                            ::  36
@@ -58,8 +58,8 @@ Let's take a look at two apps, `:source` and `:sink`. First,
   [~ +>.$]                                              ::  39
 ::                                                      ::  40
 ++      reap                                            ::  41
-  |=  {wir/wire err/(unit tang)}                        ::  42
-  ^-  {(list move) _+>.$}                               ::  43
+  |=  [wir=wire err=(unit tang)]                        ::  42
+  ^-  [(list move) _+>.$]                               ::  43
   ?~  err                                               ::  44
     ~&  source+success+'Peer succeeded!'                ::  45
     [~ +>.$]                                            ::  46
@@ -78,17 +78,17 @@ And secondly, `:sink`:
   ::                                                    ::  4
 !:                                                      ::  5
 |%                                                      ::  6
-++      move  {bone card}                               ::  7
-++      card  $%  {$peer wire dock path}                ::  8
-          {$pull wire dock $~}                          ::  9
+++  move  [bone card]                                   ::  7
+++  card  $%  [$peer wire dock path]                    ::  8
+              [$pull wire dock $~]                      ::  9
           ==                                            ::  10
 --                                                      ::  11
 ::                                                      ::  12
-|_      {bow/bowl val/?}                                ::  13
+|_  [bow=bowl val=?]                                    ::  13
 ::                                                      ::  14
-++      poke-noun                                       ::  15
-  |=  non/*                                             ::  16
-  ^-  {(list move) _+>.$}                               ::  17
+++  poke-noun                                           ::  15
+  |=  non=*                                             ::  16
+  ^-  [(list move) _+>.$]                               ::  17
   ?:  &(=(%on non) val)                                 ::  18
     :_  +>.$(val |)                                     ::  19
     :~  :*      ost.bow                                 ::  20
@@ -106,16 +106,16 @@ And secondly, `:sink`:
       sink+subscribed+'You are now subscribed!'         ::  32
   [~ +>.$]                                              ::  33
 ::                                                      ::  34
-++      diff-noun                                       ::  35
-  |=  {wir/wire non/*}                                  ::  36
-  ^-  {(list move) _+>.$}                               ::  37
+++  diff-noun                                           ::  35
+  |=  [wir=wire non=*]                                  ::  36
+  ^-  [(list move) _+>.$]                               ::  37
   ~&  sink+received-data+'You got something!'           ::  38
   ~&  sink+data+non                                     ::  39
   [~ +>.$]                                              ::  40
 ::                                                      ::  41
-++      coup                                            ::  42
-  |=  {wir/wire err/(unit tang)}                        ::  43
-  ^-  {(list move) _+>.$}                               ::  44
+++  coup                                                ::  42
+  |=  [wir=wire err=(unit tang)]                        ::  43
+  ^-  [(list move) _+>.$]                               ::  44
   ?~  err                                               ::  45
     ~&  sink+success+'Poke succeeded!'                  ::  46
     [~ +>.$]                                            ::  47
@@ -123,9 +123,9 @@ And secondly, `:sink`:
   ~&  sink+error+err                                    ::  49
   [~ +>.$]                                              ::  50
 ::                                                      ::  51
-++      reap                                            ::  52
-  |=  {wir/wire err/(unit tang)}                        ::  53
-  ^-  {(list move) _+>.$}                               ::  54
+++  reap                                                ::  52
+  |=  [wir=wire err=(unit tang)]                        ::  53
+  ^-  [(list move) _+>.$]                               ::  54
   ?~  err                                               ::  55
     ~&  sink+success+'Peer succeeded!'                  ::  56
     [~ +>.$]                                            ::  57
@@ -244,7 +244,7 @@ subscribe to a path on that app. This path comes in as the argument to `++peer`.
 In our case, we don't care what path you subscribed on, and all we do is print
 out that you subscribed. Arvo keeps track of your subscriptions, so you don't
 have to. You can access your subscribers by looking at `sup` in the bowl that's
-passed in. `sup` is of type `(map bone {@p path})`, which associates bones with
+passed in. `sup` is of type `(map bone [@p path])`, which associates bones with
 the urbit who subscribed, and which path they subscribed on. If you want to
 communicate with your subscribers, send them messages along their bone.
 
@@ -266,7 +266,7 @@ that begins with the given path. "Prey" is short for "prefix".
 Now we have the list of relevant subscribers. This a list of triples,
 `{bone @p path}`, where the only thing we really need is the bone, because we
 don't need to know their urbit or what exact path they subscribed on. Thus, our
-transformer function takes `{o/bone *}` and produces `[o %diff %noun non]`,
+transformer function takes `[o=bone *]` and produces `[o %diff %noun non]`,
 which is a move that provides bone `o` with this subscription update:
 `[%noun non]`". This is fairly dense code, but what it's doing is
 straightforward!
@@ -290,7 +290,7 @@ your bone and wire are the same as when you subscribed, then the cancellation
 will happen correctly.
 
 The only state we need for `:sink` is a boolean to indicate whether
-we're already subscribed to `:source`. We use `val/?`, where `?`
+we're already subscribed to `:source`. We use `val=?`, where `?`
 is the sign of type boolean (similar to `*`, `@`), which defaults to true (that
 is, `0`).
 
