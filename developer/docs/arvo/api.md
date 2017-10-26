@@ -7,35 +7,36 @@ title: API Connectors
 
 # API Connectors
 
-Most people have lots of data stored in online services, many of
-which have APIs.  API connectors allow the user to access this
-data from within their Urbit.
+Most people have lots of data stored in online services, many of which have 
+APIs. API connectors allow the user to access this data from within their 
+Urbit.
 
-A security driver allows the user to make authenticated requests
-to the service's API, but the user still needs to know the API
-and send and receive JSON.  An API connector puts a layer of
-porcelain over this to allow the user easier control over their
-data.
+A security driver allows the user to make authenticated requests to the 
+service's API, but the user still needs to know the API and send and receive 
+JSON. An API connector puts a layer of porcelain over this to allow the user 
+easier control over their data.
 
-Each connector should perform two basic functions.  First, it
-should expose a tree of the data in the service that's accessible
-through `.^` and FUSE.  Second, it should expose event streams as
-actions occur in the service.  Let's take a look at how the `%gh`
-app accomplishes both for Github.
+Each connector should perform two basic functions. First, it should expose a 
+tree of the data in the service that's accessible through `.^` and FUSE. 
+Second, it should expose event streams as actions occur in the service. Let's 
+take a look at how the `%gh` app accomplishes both for GitHub.
 
-After starting `%gh` (`|start %gh`), let's look at the root of
-the tree that `%gh` exposes:
+After starting `%gh` (`|start %gh`), let's look at the root of the tree that 
+`%gh` exposes:
 
-    ~your-urbit:dojo> .^(arch %gy /=gh=)
-    [fil=~ dir={[p=~.issues q=~]}]
+```
+~your-urbit:dojo/examples> .^(arch %gy /=gh=)
+[fil=~ dir={[p=~.issues q=~]}]
+```
 
-`%gh` is currently a skeleton -- it contains examples of all the
-functionality necessary for a connector, but many endpoints
-aren't implemented.  As we can see here, only issues are
-implemented.  We can explore this tree:
+`%gh` is currently a skeleton-- it contains examples of all the functionality 
+necessary for a connector, but many endpoints aren't implemented. As we can 
+see here, only issues are implemented. We can explore this tree:
 
-    ~your-urbit:dojo> .^(arch %gy /=gh=/issues)
-    [fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
+```
+~your-urbit:dojo/examples> .^(arch %gy /=gh=/issues)
+[fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
+```
 
 And eventually:
 
@@ -60,7 +61,7 @@ You'll also get notifications of issue status changes and
 comments.
 
 As is often the case, the best way to write an API connector is
-to copy an existing one and modify it.  We'll dissect the Github
+to copy an existing one and modify it.  We'll dissect the GitHub
 connector here.  This code is in `/=home=/app/gh/hoon`, and it's
 also reproduced at the bottom of this page (in case the code
 drifts out of sync with this doc).
@@ -78,7 +79,7 @@ Unix `ls`.
 
 > Sometimes you wish to expose a tree where a part of the path
 > can't be enumerated.  For example, a `%y` of `/issues/by-repo`
-> "should" produce a list of all Github users, but we don't do
+> "should" produce a list of all GitHub users, but we don't do
 > that because it's too long.  Instead, we just produce our own
 > username (from the `web.plan` file).  You can still access
 > repos from other users, you just don't see them in the
@@ -95,7 +96,7 @@ main core:
 
     =+  connector=(connector move sub-result)  ::  Set up connector library
 
-Most of the Github-specific logic is in `++places`, which is a
+Most of the GitHub-specific logic is in `++places`, which is a
 list of all the places we can request.  A place consists of:
 
     ++  place
@@ -175,10 +176,10 @@ Listening for events is fairly service-specific.  In some
 services, we poll for changes.  The Twitter connector has an
 example of this, but note that it predates the `connector`
 library and is thus more complicated than it needs to be, and the
-interface it exposes isn't standard.  In Github, we power our
+interface it exposes isn't standard.  In GitHub, we power our
 event streams with webhooks.
 
-For Github, when someone subscribes to
+For GitHub, when someone subscribes to
 `/listen/<user>/<repo>/<events...>`, we want to produce
 well-typed results when they occur.
 
@@ -192,11 +193,11 @@ Flow of control starts in `++peer-listen`, where we just call
 we check to see if we have that hook set up (by checking whether
 it exists in `hook`).  If so, we call `++update-hook` to add the
 current bone to the set of listeners.  Otherwise, we call
-`++create-hook`, which sends a request to Github to set up the
+`++create-hook`, which sends a request to GitHub to set up the
 new webhook.  We also create an entry in `hook` with the current
 bone.
 
-When we created the webhook, we told Github to send the event to
+When we created the webhook, we told GitHub to send the event to
 `/~/to/gh/gh-<event>.json?anon&wire=/`.  This turns into a poke.
 Let's parse out this url.  The first `gh` is the app name to
 poke.  The next portion, `gh-<event>` is the mark to convert the
@@ -216,13 +217,13 @@ webhooks, your listening code might look rather different.  The
 point is to expose the correct interface.
 
 
-## Github API Connector Code
+## GitHub API Connector Code
 
 In case the code in `/=home=/app/gh/hoon` drifts out of sync with
 this doc:
 
 ```
-::  This is a connector for the Github API v3.
+::  This is a connector for the GitHub API v3.
 ::
 ::  You can interact with this in a few different ways:
 ::

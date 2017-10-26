@@ -7,81 +7,99 @@ title: HTTP requests and timers
 
 # Writing an HTTP request
 
-There's a variety of arvo services we haven't touched on yet.
-Let's figure out how to make HTTP requests and set timers.
+There's a variety of arvo services we haven't touched on yet. Let's figure out 
+how to make HTTP requests and set timers.
 
-Let's build an uptime-monitoring system.  It'll ping a web
-service periodically and print out an error when the response
-code isn't 2xx.  Here's `app/up.hoon`:
+Let's build an uptime-monitoring system. It'll ping a web service periodically 
+and print out an error when the response code isn't 2xx. Here's 
+`/examples/app/up.hoon`:
 
+```                                                         
+::  Up-ness monitor. Accepts atom url, 'on', or 'off'   ::  1
+::                                                      ::  2
+::::  /===/app/up/hoon                                  ::  3
+  ::                                                    ::  4
+!:                                                      ::  5
+::                                                      ::  6
+|%                                                      ::  7
+++  move  {bone card}                                   ::  8
+++  card                                                ::  9
+  $%  {$hiss wire $~ $httr {$purl p/purl}}              ::  10
+      {$wait wire @da}                                  ::  11
+  ==                                                    ::  12
+++  action                                              ::  13
+  $%  {$on $~}                                          ::  14
+      {$off $~}                                         ::  15
+      {$target p/cord}                                  ::  16
+  ==                                                    ::  17
+--                                                      ::  18
+|_  {hid/bowl on/_| in-progress/_| target/@t}           ::  19
+::                                                      ::  20
+++  poke-atom                                           ::  21
+  |=  url-or-command/@t                                 ::  22
+  ^-  (quip move +>)                                    ::  23
+  =+  ^-  act/action                                    ::  24
+      ?:  ?=($on url-or-command)  [%on ~]               ::  25
+      ?:  ?=($off url-or-command)  [%off ~]             ::  26
+      [%target url-or-command]                          ::  27
+  ?-  -.act                                             ::  28
+    $target  [~ +>.$(target p.act)]                     ::  29
+    $off  [~ +>.$(on |)]                                ::  30
+    $on                                                 ::  31
+      :-  ?:  |(on in-progress)  ~                      ::  32
+          :~  :*  ost.bow                               ::  33
+                  %hiss                                 ::  34
+                  /request                              ::  35
+                  ~                                     ::  36
+                  %httr                                 ::  37
+                  %purl                                 ::  38
+                  (need (epur target))                  ::  39
+              ==                                        ::  40 
+          ==                                            ::  41 
+      +>.$(on &, in-progress &)                         ::  42 
+  ==                                                    ::  43 
+++  sigh-httr                                           ::  44 
+  |=  {wir/wire code/@ud headers/mess body/(unit octs)} ::  45 
+  ~&  'arrive here'                                     ::  46 
+  ^-  {(list move) _+>.$}                               ::  47 
+  ?:  &((gte code 200) (lth code 300))                  ::  48 
+    ~&  [%all-is-well code]                             ::  49 
+    :_  +>.$                                            ::  50 
+    [ost.bow %wait /timer (add ~s10 now.bow)]~          ::  51 
+  ~&  [%we-have-a-problem code]                         ::  52 
+  ~&  [%headers headers]                                ::  53 
+  ~&  [%body body]                                      ::  54 
+  :_  +>.$                                              ::  55 
+  [ost.bow %wait /timer (add ~s10 now.bow)]~            ::  56 
+++  wake-timer                                          ::  57 
+  |=  {wir/wire $~}  ^-  (quip move +>)                 ::  58 
+  ?:  on                                                ::  59 
+    :_  +>.$                                            ::  60 
+    :~  :*  ost.bow                                     ::  61 
+            %hiss                                       ::  62 
+            /request                                    ::  63 
+            ~                                           ::  64 
+            %httr                                       ::  65 
+            %purl                                       ::  66 
+            (need (epur target))                        ::  67 
+        ==                                              ::  68
+    ==                                                  ::  69 
+  [~ +>.$(in-progress |)]                               ::  70 
+::                                                      ::  71 
+++  prep  ~&  target  _`.                               ::  72 
+--                                                      ::  73
 ```
-::  Up-ness monitor. Accepts atom url, 'on', or 'off'
-::
-::::  /hoon/up/examples/app
-  ::
-/?    314
-|%
-++  move  {bone card}
-++  card
-  $%  {$hiss wire unit-iden/$~ mark/$httr cage/{mark/$purl vase/purl}}
-      {$wait wire @da}
-  ==
-++  action
-  $%  {$on $~}            ::  enable polling('on')
-      {$off $~}           ::  disable polling('off)
-      {$target p/cord}    ::  set poll target('http://...')
-  ==
---
-|_  {hid/bowl on/_| in-progress/_| target/@t}
-++  poke-atom
-  |=  url-or-command/@t  ^-  (quip move +>)
-  =+  ^-  act/action
-      ?:  ?=($on url-or-command)  [%on ~]
-      ?:  ?=($off url-or-command)  [%off ~]
-      [%target url-or-command]
-  ?-  -.act
-    $target  [~ +>.$(target p.act)]
-    $off  [~ +>.$(on |)]
-    $on
-      :-  ?:  |(on in-progress)  ~
-          [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
-      +>.$(on &, in-progress &)
-  ==
-++  sigh-httr
-  |=  {wir/wire code/@ud headers/mess body/(unit octs)}
-  ~&  'arrive here'
-  ^-  {(list move) _+>.$}
-  ?:  &((gte code 200) (lth code 300))
-    ~&  [%all-is-well code]
-    :_  +>.$
-    [ost.hid %wait /timer (add ~s10 now.hid)]~
-  ~&  [%we-have-a-problem code]
-  ~&  [%headers headers]
-  ~&  [%body body]
-  :_  +>.$
-  [ost.hid %wait /timer (add ~s10 now.hid)]~
-++  wake-timer
-  |=  {wir/wire $~}  ^-  (quip move +>)
-  ?:  on
-    :_  +>.$
-    [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
-  [~ +>.$(in-progress |)]
-::
-++  prep  ~&  target  _`.  :: computed when the source file changes;
---                         :: here it prints target then resets our state
-```
 
-There's some fancy stuff going on here.  We'll go through it line by
-line, though.
+There's some fancy stuff going on here. We'll go through it line by line, 
+though.
 
-There's two kinds of cards we're sending to arvo. A `%hiss` move tells
-`%eyre` to make an HTTP request. It expects a `(unit iden)`, which will
-be null here because we aren't doing any authentication; a mark, in this
-case the http request mark `&httr`; and some data in the form of a
-`cage`, which is a `{mark vase}`. This is confusing, so the mold in the
-code quoted above includes a bunch of otherwise unnecessary faces for
-the purpose of illustration. Compare: `{$hiss p/(unit iden) q/mark
-r/cage}` from `zuse`.
+There's two kinds of cards we're sending to arvo. A `%hiss` move tells `%eyre` 
+to make an HTTP request. It expects a `(unit iden)`, which will be null here 
+because we aren't doing any authentication; a mark, in this case the http 
+request mark `&httr`; and some data in the form of a `cage`, which is a 
+`{mark vase}`. This is confusing, so the mold in the code quoted above 
+includes a bunch of otherwise unnecessary faces for the purpose of 
+illustration. Compare: `{$hiss p/(unit iden) q/mark r/cage}` from `zuse`.
 
 > You can grep zuse.hoon and arvo.hoon for most of these definitions.
 > However, beware the ambiguity surrounding "hiss": there's ++hiss in
@@ -95,47 +113,46 @@ r/cage}` from `zuse`.
 > verify that the unit is not null (for example with `?~`). See
 > `++need`.
 
-A `purl` is a parsed url structure, which can be created with `++epur`,
-which is a function that takes a url as text and parses it into a `(unit
-purl)`.  Thus, the result is null if and only if the url is malformed.
-'Purl' is also the mark which will be applied to this result.  
+A `purl` is a parsed url structure, which can be created with `++epur`, which 
+is a function that takes a url as text and parses it into a `(unit purl)`. 
+Thus, the result is null if and only if the url is malformed. `&purl` is also 
+the mark which will be applied to this result.  
 
-When you send this request, you can expect a `%sigh` with the
-response, which we handle later on in `++sigh-httr`.
+When you send this request, you can expect a `%sigh` with the response, which 
+we handle later on in `++sigh-httr`.
 
-For `%wait`, you just pass a [`@da`]() (absolute date), and arvo will
-produce a `%wake` when the time comes.
+For `%wait`, you just pass a [`@da`](/../../hoon/library/3c/) (absolute date), 
+and arvo will produce a `%wake` when the time comes.
 
 > A timer is guaranteed to not be triggered before the given
 > time, but it's currently impossible to guarantee the timer will be
-> triggered at exactly the requested time.
+> triggered at *exactly* the requested time.
 
 Let's take a look at our state:
 
 ```
-|_  {hid/bowl on/_| in-progress=_| target/@t}
+|_  {bow/bowl on/_| in-progress=_| target/@t}
 ```
 
-We have three pieces of app-specific state.  `target` is the url
-we're monitoring.  `on` and `in-progress` are booleans
-representing, respectively, whether or not we're supposed to keep
-monitoring and whether or not we're in the middle of a request.
+We have three pieces of app-specific state. `target` is the url we're 
+monitoring. `on` and `in-progress` are booleans representing, respectively, 
+whether or not we're supposed to keep monitoring and whether or not we're in 
+the middle of a request.
 
-The type of booleans is usually written as `?`, which is a union
-of `&` (true) and `|` false.  This type defaults to `&` (true).  In our
-case, we want both of these to default to `|` (false).  Because
-of that, we use `_|` as the type.  `_value` means "take the type
-of `value`, but make the default value be `value`".  Thus, our
-type is still a boolean, just like `?`, but the default value is
-`|` (false).
+The type of booleans is usually written as `?`, which is a union of `&` (true) 
+and `|` false.  This type defaults to `&` (true).  In our case, we want both 
+of these to default to `|` (false). Because of that, we use `_|` as the type. 
+`_value` means "take the type of `value`, but make the default value be 
+`value`". Thus, our type is still a boolean, just like `?`, but the default 
+value is `|` (false).
 
 > This is the same `_` used in `_+>.$`, which means "the same
-> type as the value "+>.$".  In other words, the same type as our
+> type as the value "+>.$". In other words, the same type as our
 > current context and state.
 
-Let's take a look at `++poke-atom`.  When we're poked with an atom, we
-first check whether the atom is `'off'`.  If so, we set our state
-variable `on` to false.
+Let's take a look at `++poke-atom`. When we're poked with an atom, we first 
+check whether the atom is `'off'`. If so, we set our state variable `on` to 
+false.
 
 If not, we check whether the atom is `'on'`.  If so, we set `on` and
 `in-progress` to true.  If it was already either on or in progress, then
@@ -145,63 +162,76 @@ progress, then we send an HTTP request.
 If the argument is neither 'off' nor 'on', then we assume it's an
 actual url, so we save it in `target`.
 
-Here's the move that sends the HTTP request:
+Here's the move that sends the HTTP request, which is just a null-terminated 
+list constructed with [`:~`](/../../hoon/twig/col/sig/) ('colsig'):
 ```
-[ost.hid %hiss /request ~ %httr %purl (need (epur target))]
-```
-
-> Remember, we are expected to produce a *list* of moves. Note the `~`
-> after the move in the full example. This is a convenient shortcut for
-> creating a list of a single element.  It's part of a small family of
-> such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c]
-> ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to
-> create various convoluted structures and emojis.
-
-The correspondence between this move and `{bone card}` can be hard to
-visualize on one line. Here it is more pedantically:
-
-```
-:*  bone=ost.hid                                        :: the move
-    term=%hiss
-    wire=/request
-    unit-iden=~
-    mark=%httr
-    cage=[%purl (need (epur target))]
-==
+          :~  :*  ost.bow                               ::  33
+                  %hiss                                 ::  34
+                  /request                              ::  35
+                  ~                                     ::  36
+                  %httr                                 ::  37
+                  %purl                                 ::  38
+                  (need (epur target))                  ::  39
+              ==                                        ::  40 
+          ==                                            ::  41 
 ```
 
-When the HTTP response comes back, we handle it with
-`++sigh-httr`, which, along with the wire the request was sent
-on, takes the status code, the response headers, and the response
-body.
+> Remember, we are expected to produce a *list* of moves. We could normally 
+> construct our list of moves using the common square bracket syntax (as shown 
+> below this note), but our move is too wide to use wide form. Instead,
+> we use a combination of cell-construction runes for what we need to produce. 
+> The first rune (`:~`) constructs a null-terminated list. The second (`:*`) 
+> constructs an n-tuple. The final product is a null-terminated list with one 
+> element (itself a list) which contains our move.
 
-We check whether the status code is between 200 and 300.  If so,
-all is well, and we print a message saying so.  We start the
-timer for ten seconds after the present time.
+Check out how we could produce the same list of moves using wide form: 
+```
+[ost.bow %hiss /request ~ %httr %purl (need (epur target))]~
+```
 
-If we got a bad status code, then we print out the entire
-response and start the timer again.
+> With this, notice how the move is followed by a `~`. This is a convenient 
+> shortcut for creating a list of a single element. It's part of a small 
+> family of creating a list of a single element. It's part of a small family 
+> of such shortcuts. `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` 
+> and `\`[a bc]` is `[~ a b c]`. These may be mixed and matched to create 
+> various convoluted structures and emojis. The problem with this code is that 
+> it extends wider than 55 columns, which is beyond what is recommended.
 
-After ten seconds, arvo will give us a `%wake` event, which will
-be handled in `++wake-timer`.  If we're still supposed to keep
-monitoring, we send the same HTTP request as before.  Otherwise,
-we set `in-progress` to false.
+When the HTTP response comes back, we handle it with `++sigh-httr`, which, 
+along with the wire the request was sent on, takes the status code, the 
+response headers, and the response body.
+
+We check whether the status code is between 200 and 300. If so, all is well, 
+and we print a message saying so. We start the timer for ten seconds after the 
+present time.
+
+If we got a bad status code, then we print out the entire response and start 
+the timer again.
+
+After ten seconds, arvo will give us a `%wake` event, which will be handled in 
+`++wake-timer`. If we're still supposed to keep monitoring, we send the same 
+HTTP request as before. Otherwise, we set `in-progress` to false.
 
 Let's try it out:
 
 ```
-~fintud-macrep:dojo> |start %up
+~fintud-macrep:dojo/examples> |start %up
 >=
-~fintud-macrep:dojo> :examples-up &atom 'http://www.google.com'
->=
-[%all-is-well 200]
-[%all-is-well 200]
-~fintud-macrep:dojo> :examples-up &atom 'http://example.com'
+~fintud-macrep:dojo/examples> :up &atom 'on'
+~fintud-macrep:dojo/examples> :up &atom 'http://www.google.com'
 >=
 [%all-is-well 200]
-~fintud-macrep:dojo> :examples-up &atom 'http://google.com'
+'arrive here'
+[%all-is-well 200]
+'arrive here'
+~fintud-macrep:dojo/examples> :up &atom 'http://example.com'
+>=
+[%all-is-well 200]
+'arrive here'
+~fintud-macrep:dojo/examples> :up &atom 'http://google.com'
 >=
 [%we-have-a-problem 301]
+'arrive here'
 [ %headers
   ~[
     [p='X-Frame-Options' q='SAMEORIGIN']
@@ -226,5 +256,5 @@ Let's try it out:
     ]
   ]
 ]
-~fintud-macrep:dojo> :up &atom 'off'
+~fintud-macrep:dojo/examples> :up &atom 'off'
 ```

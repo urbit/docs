@@ -14,7 +14,8 @@ Now we're going to cover the boiler plate that we skimmed over earlier.
     :-  %noun
     =<  (sum [1.000 2.000])
 
-The first rune, `:-` ([colhep](../../hoon/twig/col/hep/)), constructs the 2-element cell
+The first rune, `:-` (colhep, aka
+[:cons](../../hoon/twig/col/hep/)), constructs the 2-element cell
 that will be our program. The first element, `%say`, tells the
 interpreter what to produce--in this case a value.
 
