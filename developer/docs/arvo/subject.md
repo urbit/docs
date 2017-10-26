@@ -10,9 +10,11 @@ The subject
 
 Now we're going to cover the boiler plate that we skimmed over earlier.
 
-    :-  %say  |=  *  
-    :-  %noun
-    =<  (sum [1.000 2.000])
+```
+:-  %say  |=  *  
+:-  %noun
+=<  (sum [1.000 2.000])
+```
 
 The first rune, `:-` (colhep, aka
 [:cons](../../hoon/twig/col/hep/)), constructs the 2-element cell
@@ -35,33 +37,35 @@ child. So in this case, we are running the expression
 Hoon, we call the code executed the "formula" and its context the
 "subject".
 
-    ::::::::::::::::::::::::::::::
-    =<  (sum [1.000 2.000])     :: formula
-    ::::::::::::::::::::::::::::::
-    |%                          ::
-    ++  three                   ::
-      |=  a/@                   ::
-      =|  b/@                   ::
-      |-  ^-  @u                ::
-      ?:  (lth a b)             ::
-        0                       ::
-      (add b $(b (add 3 b)))    ::
-    ::                          ::
-    ++  five                    ::
-      |=  a/@                   ::  subject
-      =|  b/@                   ::
-      |-  ^-  @                 ::
-      ?:  (lte a b)             ::
-        0                       ::
-      ?:  =((mod b 3) 0)        ::
-        $(b (add b 5))          ::
-      (add b $(b (add b 5)))    ::
-    ::                          ::
-    ++  sum                     ::
-      |=  {a/@u b/@u}           ::
-      (add (five a) (three b))  ::
-    --                          ::
-    ::::::::::::::::::::::::::::::
+```
+::::::::::::::::::::::::::::::
+=<  (sum [1.000 2.000])     :: formula
+::::::::::::::::::::::::::::::
+|%                          ::
+++  three                   ::
+  |=  a=@                   ::
+  =|  b=@                   ::
+  |-  ^-  @u                ::
+  ?:  (lth a b)             ::
+    0                       ::
+  (add b $(b (add 3 b)))    ::
+::                          ::
+++  five                    ::
+  |=  a=@                   ::  subject
+  =|  b=@                   ::
+  |-  ^-  @                 ::
+  ?:  (lte a b)             ::
+    0                       ::
+  ?:  =((mod b 3) 0)        ::
+    $(b (add b 5))          ::
+  (add b $(b (add b 5)))    ::
+::                          ::
+++  sum                     ::
+  |=  [a=@u b=@u]           ::
+  (add (five a) (three b))  ::
+--                          ::
+::::::::::::::::::::::::::::::
+```
 
 In nearly every language there is a similar concept of a "context" in
 which expressions are executed. For example, in C this includes things
@@ -93,7 +97,7 @@ Cheatsheet:
 
 -   To pass arguments from the command line to a program, you replace
     the `*` in the first line of the boiler plate to
-    `{^ {{arg/TYPE $~} $~}}` where `TYPE` is replaced with the type of
+    `[^ [[arg=TYPE $~] $~]]` where `TYPE` is replaced with the type of
     argument you're expecting. Then `+euler1 a` from the dojo sets `arg`
     to `a`.
 -   The empty list is `~`
