@@ -116,7 +116,6 @@ title: Community
     <h1><a href="https://urbit.org/fora/posts/~2016.11.27..01.04.25..ffcf~">Fora post</a>
     </h1>
   </li>
-  <br />
   <li>
     <code>~fodwyt-nimbus</code>
     <br />
@@ -124,13 +123,11 @@ title: Community
     <br />
     <h1><a href="https://urbit.org/fora/posts/~2017.7.13..01.16.44..08fe~">Functor and Applicative in Hoon</a></h1>
   </li>
-  <br />
   <li>
     <code>~master-morzod</code>
     <br />
     <h1><a href="https://urbit.org/fora/posts/~2017.7.21..01.15.32..44c0~">Tweet From Your Urbit</a></h1>
   </li>
-  <br />
   <li>
     <code>~palfun-foslup</code>
     <br />
@@ -147,7 +144,6 @@ title: Community
     <h1><a href="https://github.com/Fang-/talkbot"><code>~talkbot</code>: The One and Only</a></h1>
     <br />
   </li>
-  <br />
   <li>
     <code>~rophex-hashes</code>
     <br />
@@ -165,7 +161,6 @@ title: Community
     <br />
     <h1><a href="https://github.com/asssaf/urbit-mobile-talk">Mobile Talk: A React Native App</a></h1>
   </li>
-  <br />
   <li>
     <code>~poldec-tonteg</code>
     <br />
@@ -187,7 +182,6 @@ title: Community
     <h1><a href="https://urbit.org/fora/posts/~2017.6.29..19.48.19..6a1e~">Fora</a>
     </h1>
   </li>
-  <br />
   <li>
     <code>~taglux-nidsep</code>
     <br />
@@ -203,7 +197,6 @@ title: Community
     <b> </b>
     <h1><a href="https://urbit.org/fora/posts/~2017.5.31..04.21.49..654b~">Part 2</a></h1>
   </li>
-  <br />
   <li>
     <h1><a href="./nock/implementations">Community Nock implementations</a></h1>
   </li>
@@ -223,7 +216,6 @@ title: Community
     How to read the Twig docs, a background on the Urbit type system and an overview of Hoon generators.
     </p>
   </li>
-  <br />
   <li>
     <code>~fosnut-dandut</code>
     <br />
@@ -235,7 +227,6 @@ title: Community
     Subject-oriented programming, functions and lambdas in Hoon and an attempt to draw parallels with object-oriented programming.
     </p>
   </li>
-  <br />
   <li>
     <code>~palfun-foslup</code>
     <br />
@@ -244,7 +235,6 @@ title: Community
     A dysfunctional programmer's guide to making things in Hoon. A series of tutorials that focus on writing Hoon applications from scratch.
     </p>
   </li>
-  <br />
   <li>
     <code>@knubie</code>
     <br />

@@ -147,7 +147,6 @@ sort: 4
               <h1><a href="https://urbit.org/fora/posts/~2017.10.17..04.09.16..7eb8~">Fora post</a>
               </h1>
             </li>
-            <br />
             <li>
               <h1><a href="https://github.com/asssaf/urbit-package">A Simple Urbit Package Manager</a></h1>
               <p>
@@ -159,7 +158,6 @@ sort: 4
               <h1><a href="https://urbit.org/fora/posts/~2017.9.20..22.45.02..0f8d~">Fora post</a>
               </h1>
             </li>
-            <br />
             <li>
               <h1><a href="https://github.com/frodwith/jaque">Vere on the JVM via Graal and Truffle</a></h1>
               <p>
@@ -188,7 +186,6 @@ sort: 4
               How to read the Twig docs, a background on the Urbit type system and an overview of Hoon generators.
               </p>
             </li>
-            <br />
             <li>
               <code>~fosnut-dandut</code>
               <br />
@@ -200,7 +197,6 @@ sort: 4
               Subject-oriented programming, functions and lambdas in Hoon and an attempt to draw parallels with object-oriented programming.
               </p>
             </li>
-            <br />
             <li>
               <code>~palfun-foslup</code>
               <br />
@@ -209,8 +205,6 @@ sort: 4
               A dysfunctional programmer's guide to making things in Hoon. A series of tutorials that focus on writing Hoon applications from scratch.
               </p>
             </li>
-            <br />
-            <br />
             <li>
               <h1><a href="activity/community/#-docs">More</a></h1>
             </li>
