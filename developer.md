@@ -20,13 +20,13 @@ sort: 4
       <li>
         <h1><a href="https://urbit.org/fora/posts/~2017.10.14..00.00.00..0000~/">Week of ~2017.10.13</a></h1>
         <p>
-        <code>~palfun-foslup</code><b> </b>joins Mars Talks to talk about Talk. <code>~littel-ponnys</code><b> </b>demos a patch for using Ford to generate tables for Unicode conversion. <code>~fodwyt-nimbus</code><b> </b>and <code>~savfex_macned</code><b> </b>have a conversation about doors.
+        <code>~palfun-foslup</code><b> </b>talks about Talk. A cool Ford patch. A conversation on doors.
         </p>
       </li>
       <li>
         <h1><a href="https://urbit.org/fora/posts/~2017.10.7..00.00.00..0000~/">Week of ~2017.10.6</a></h1>
         <p>
-        <code>~master-morzod</code><b> </b>joins Mars Talks to talk about the Urbit operating system. The core team and contributors talk about how to best teach Urbit. Ted explains Hoon casting and does a full expansion of the Nock macros to draw a better connection between Hoon and Nock.
+        <code>~master-morzod</code><b> </b>talks about Arvo. The core team discusses how to best teach Urbit. A conversation on Hoon casting and Nock macro expansions.
         </p>
       </li>
       <li>
@@ -52,7 +52,7 @@ sort: 4
         <code>~2017.10.18</code>
         </p>
         <p>
-        <code>~tonlur-sarret</code>, <code>~ravmel-ropdyl</code><b> </b>and <code>~rovnys-ricfer</code><b> </b>propose a new system for proposing upgrades or improvements to Urbit and publicly tracking progress.
+        <code>~tonlur-sarret</code>, <code>~ravmel-ropdyl</code><b> </b>and <code>~rovnys-ricfer</code><b> </b>propose a new system for proposing upgrades and improvements to Urbit and publicly tracking progress.
         </p>
       </li>
     </ul>
