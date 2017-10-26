@@ -16,24 +16,25 @@ then disappear. To listen for and receive messages from other planets, we'll
 need an app. Let's look at a very simple one, `echo.hoon`:
 
 ```
-::  Accepts any noun from dojo and prints it out
-::
-::::  /===/app/echo/hoon
-  ::
-!:                                                      ::  1
-|%                                                      ::  2
-++  move  {bone card}                                   ::  3
-++  card  $%  $~                                        ::  4
-          ==                                            ::  5
---                                                      ::  6
-::                                                      ::  7
-|_  {bow/bowl $~}                                       ::  8
-++  poke-noun                                           ::  9
-  |=  non/*                                             ::  10
-  ^-  {(list move) _+>.$}                               ::  11
-  ~&  echo+noun+non                                     ::  12
-  [~ +>.$]                                              ::  13
---                                                      ::  14
+::  Accepts any noun from dojo and prints it out        ::  1 
+::                                                      ::  2 
+::::  /===/app/echo/hoon                                ::  3 
+  ::                                                    ::  4 
+!:                                                      ::  5 
+|%                                                      ::  6 
++=  move  {bone card}                                   ::  7 
++=  card  $%  $~                                        ::  8 
+          ==                                            ::  9 
+--                                                      ::  10
+::                                                      ::  11
+|_  [bow=bowl:gall $~]                                  ::  12
+++  poke-noun                                           ::  13
+  |=  non=*                                             ::  14
+  ^-  [(list move) _+>.$]                               ::  15
+  ~&  echo+noun+non                                     ::  16
+  [~ +>.$]                                              ::  17
+::                                                      ::  18
+--                                                      ::  19
 ```
 
 This is a very simple app that does only one thing. If you poke it with
@@ -99,23 +100,34 @@ only accept a number, and then print out the square of that number.
   ::                                                    ::  4
 !:                                                      ::  5
 |%                                                      ::  6
-++  move  {bone card}                                   ::  7
-++  card  $%  $~                                        ::  8
++=  move  [bone card]                                   ::  7
++=  card  $%  $~                                        ::  8
           ==                                            ::  9
 --                                                      ::  10
 ::                                                      ::  11
-|_  {bow/bowl $~}                                       ::  12
-++  poke-atom                                           ::  13
-  |=  tom/@                                             ::  14
-  ^-  {(list move) _+>.$}                               ::  15
-  ~&  square+(mul tom tom)                              ::  16
-  [~ +>.$]                                              ::  17
---                                                      ::  18
+|_  [bow=bowl:gall $~]                                  ::  12
+::                                                      ::  13
+++  poke-atom                                           ::  14
+  |=  tom=@                                             ::  15
+  ^-  [(list move) _+>.$]                               ::  16
+  ~&  square+(mul tom tom)                              ::  17
+  [~ +>.$]                                              ::  18
+::                                                      ::  19
+++  coup                                                ::  20
+  |=  [wir=wire err=(unit tang)]                        ::  21
+  ^-  [(list move) _+>.$]                               ::  22
+  ?~  err                                               ::  23
+    ~&  square+success+'Poke succeeded!'                ::  24
+    [~ +>.$]                                            ::  25
+  ~&  square+error+'Poke failed. Error:'                ::  26
+  ~&  square+error+err                                  ::  27
+  [~ +>.$]                                              ::  28
+::                                                      ::  29
 ```
 
 A few things have changed. Firstly, we no longer accept arbitrary nouns because
 we can only square atoms (integers, in this case an unsigned one). Thus, our
-argument is now `tom/@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
+argument is now `tom=@`. Secondly, it's `++poke-atom` rather than `++poke-noun`.
 
 Intro to marks
 ==============
@@ -171,24 +183,24 @@ Let's write our first network message! Here's `examples/app/pong.hoon`:
   ::                                                    ::  5
 !:                                                      ::  6
 |%                                                      ::  7
-++  move  {bone card}                                   ::  8
-++  card  $%  {$poke wire dock poke-contents}           ::  9
++=  move  [bone card]                                   ::  8
++=  card  $%  [$poke wire dock poke-contents]           ::  9
           ==                                            ::  10
-++  poke-contents  $%  {$atom @}                        ::  11
++=  poke-contents  $%  [$atom @]                        ::  11
                    ==                                   ::  12
 --                                                      ::  13
-|_  {bow/bowl $~}                                       ::  14
+|_  [bow/bowl $~]                                       ::  14
 ::                                                      ::  15
 ++  poke-urbit                                          ::  16
-  |=  to/ship                                           ::  17
-  ^-  {(list move) _+>.$}                               ::  18
+  |=  to=ship                                           ::  17
+  ^-  [(list move) _+>.$]                               ::  18
   ~&  pong+'Outgoing pong!'                             ::  19
   :_  +>.$						::  20
   ~[[ost.bow %poke /sending [to dap.bow] %atom 'Pong']] ::  21
 ::							::  22
 ++  poke-atom						::  23
-  |=  tom/@						::  24
-  ^-  {(list move) _+>.$}				::  25
+  |=  tom=@						::  24
+  ^-  [(list move) _+>.$]				::  25
   ~&  pong+'Incoming pong!'				::  26
   ~&  pong+received+`@t`tom				::  27
   [~ +>.$]						::  28
