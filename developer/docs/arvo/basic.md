@@ -122,16 +122,16 @@ Here is the hoon solution (which should be in your pier directory under
 ::                                                      ::  14
 |%                                                      ::  15
 ++  three                                               ::  16
-  |=  a/@                                               ::  17
-  =|  b/@                                               ::  18
+  |=  a=@                                               ::  17
+  =|  b=@                                               ::  18
   |-  ^-  @u                                            ::  19
   ?:  (lth a b)                                         ::  20
     0                                                   ::  21
   (add b $(b (add 3 b)))                                ::  22
 ::                                                      ::  23
 ++  five                                                ::  24
-  |=  a/@                                               ::  25
-  =|  b/@                                               ::  26
+  |=  a=@                                               ::  25
+  =|  b=@                                               ::  26
   |-  ^-  @                                             ::  27
   ?:  (lte a b)                                         ::  28
     0                                                   ::  29
@@ -140,7 +140,7 @@ Here is the hoon solution (which should be in your pier directory under
   (add b $(b (add b 5)))                                ::  32
 ::                                                      ::  33
 ++  sum                                                 ::  34
-  |=  a/@u                                              ::  35
+  |=  a=@u                                              ::  35
   (add (five a) (three a))                              ::  36
 --                                                      ::  37
 ```
@@ -229,7 +229,7 @@ Let's step into each of the three arms within our core.
 
 ```
 ++  sum                                                 ::  34
-  |=  a/@u                                              ::  35
+  |=  a=@u                                              ::  35
   (add (five a) (three a))                              ::  36
 --                                                      ::  37
 ```
@@ -250,8 +250,8 @@ takes two children:
 
 ```
 ++  three                                               ::  16
-  |=  a/@                                               ::  17
-  =|  b/@                                               ::  18
+  |=  a=@                                               ::  17
+  =|  b=@                                               ::  18
   |-  ^-  @u                                            ::  19
   ?:  (lth a b)                                         ::  20
     0                                                   ::  21
@@ -351,7 +351,7 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
     Surrounding a function with `()` is an irregular wide form syntax for
     calling a function with *N* arguments. More on this later.
 
-2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar/tis/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
+2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar/tis/)'), use `[` 'sel' and `]` 'ser.' For example: `[a=@u b=@u]`.
 
 3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the
