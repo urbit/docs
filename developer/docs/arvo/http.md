@@ -22,23 +22,23 @@ and print out an error when the response code isn't 2xx. Here's
 !:                                                      ::  5
 ::                                                      ::  6
 |%                                                      ::  7
-++  move  {bone card}                                   ::  8
-++  card                                                ::  9
-  $%  {$hiss wire $~ $httr {$purl p/purl}}              ::  10
-      {$wait wire @da}                                  ::  11
++=  move  [bone card]                                   ::  8
++=  card                                                ::  9
+  $%  [$hiss wire $~ $httr [$purl p=purl:eyre]]         ::  10
+      [$wait wire @da]                                  ::  11
   ==                                                    ::  12
-++  action                                              ::  13
-  $%  {$on $~}                                          ::  14
-      {$off $~}                                         ::  15
-      {$target p/cord}                                  ::  16
++=  action                                              ::  13
+  $%  [$on $~]                                          ::  14
+      [$off $~]                                         ::  15
+      [$target p=cord]                                  ::  16
   ==                                                    ::  17
 --                                                      ::  18
-|_  {hid/bowl on/_| in-progress/_| target/@t}           ::  19
+|_  [bow=bowl:gall on=_| in-progress=_| target=@t]      ::  19
 ::                                                      ::  20
 ++  poke-atom                                           ::  21
-  |=  url-or-command/@t                                 ::  22
+  |=  url-or-command=@t                                 ::  22
   ^-  (quip move +>)                                    ::  23
-  =+  ^-  act/action                                    ::  24
+  =+  ^-  act=action                                    ::  24
       ?:  ?=($on url-or-command)  [%on ~]               ::  25
       ?:  ?=($off url-or-command)  [%off ~]             ::  26
       [%target url-or-command]                          ::  27
@@ -53,15 +53,15 @@ and print out an error when the response code isn't 2xx. Here's
                   ~                                     ::  36
                   %httr                                 ::  37
                   %purl                                 ::  38
-                  (need (epur target))                  ::  39
+                  (need (de-purl:html target))          ::  39
               ==                                        ::  40 
           ==                                            ::  41 
       +>.$(on &, in-progress &)                         ::  42 
   ==                                                    ::  43 
 ++  sigh-httr                                           ::  44 
-  |=  {wir/wire code/@ud headers/mess body/(unit octs)} ::  45 
+  |=  [wir=wire code=@ud headers=mess body=(unit octs)] ::  45 
   ~&  'arrive here'                                     ::  46 
-  ^-  {(list move) _+>.$}                               ::  47 
+  ^-  [(list move) _+>.$]                               ::  47 
   ?:  &((gte code 200) (lth code 300))                  ::  48 
     ~&  [%all-is-well code]                             ::  49 
     :_  +>.$                                            ::  50 
@@ -72,7 +72,7 @@ and print out an error when the response code isn't 2xx. Here's
   :_  +>.$                                              ::  55 
   [ost.bow %wait /timer (add ~s10 now.bow)]~            ::  56 
 ++  wake-timer                                          ::  57 
-  |=  {wir/wire $~}  ^-  (quip move +>)                 ::  58 
+  |=  [wir=wire $~]  ^-  (quip move +>)                 ::  58 
   ?:  on                                                ::  59 
     :_  +>.$                                            ::  60 
     :~  :*  ost.bow                                     ::  61 
@@ -81,7 +81,7 @@ and print out an error when the response code isn't 2xx. Here's
             ~                                           ::  64 
             %httr                                       ::  65 
             %purl                                       ::  66 
-            (need (epur target))                        ::  67 
+            (need (de-purl:html target))                ::  67 
         ==                                              ::  68
     ==                                                  ::  69 
   [~ +>.$(in-progress |)]                               ::  70 
@@ -97,9 +97,9 @@ There's two kinds of cards we're sending to arvo. A `%hiss` move tells `%eyre`
 to make an HTTP request. It expects a `(unit iden)`, which will be null here 
 because we aren't doing any authentication; a mark, in this case the http 
 request mark `&httr`; and some data in the form of a `cage`, which is a 
-`{mark vase}`. This is confusing, so the mold in the code quoted above 
+`[mark vase]`. This is confusing, so the mold in the code quoted above 
 includes a bunch of otherwise unnecessary faces for the purpose of 
-illustration. Compare: `{$hiss p/(unit iden) q/mark r/cage}` from `zuse`.
+illustration. Compare: `[$hiss p=(unit iden) q=mark r=cage]` from `zuse`.
 
 > You can grep zuse.hoon and arvo.hoon for most of these definitions.
 > However, beware the ambiguity surrounding "hiss": there's ++hiss in
@@ -113,7 +113,7 @@ illustration. Compare: `{$hiss p/(unit iden) q/mark r/cage}` from `zuse`.
 > verify that the unit is not null (for example with `?~`). See
 > `++need`.
 
-A `purl` is a parsed url structure, which can be created with `++epur`, which 
+A `purl` is a parsed url structure, which can be created with `++de-purl`, which 
 is a function that takes a url as text and parses it into a `(unit purl)`. 
 Thus, the result is null if and only if the url is malformed. `&purl` is also 
 the mark which will be applied to this result.  
@@ -131,7 +131,7 @@ and arvo will produce a `%wake` when the time comes.
 Let's take a look at our state:
 
 ```
-|_  {bow/bowl on/_| in-progress=_| target/@t}
+|_  [bow=bowl:gall on=_| in-progress=_| target=@t]
 ```
 
 We have three pieces of app-specific state. `target` is the url we're 
@@ -171,7 +171,7 @@ list constructed with [`:~`](/../../hoon/twig/col/sig/) ('colsig'):
                   ~                                     ::  36
                   %httr                                 ::  37
                   %purl                                 ::  38
-                  (need (epur target))                  ::  39
+                  (need (de-pur:html target))           ::  39
               ==                                        ::  40 
           ==                                            ::  41 
 ```
@@ -186,7 +186,7 @@ list constructed with [`:~`](/../../hoon/twig/col/sig/) ('colsig'):
 
 Check out how we could produce the same list of moves using wide form: 
 ```
-[ost.bow %hiss /request ~ %httr %purl (need (epur target))]~
+[ost.bow %hiss /request ~ %httr %purl (need (de-purl:html target))]~
 ```
 
 > With this, notice how the move is followed by a `~`. This is a convenient 
