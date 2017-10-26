@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 10
 next: true
+sort: 10
 title: Mission
 ---
 

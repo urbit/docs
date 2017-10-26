@@ -1,7 +1,7 @@
 ---
 navhome: /developer
 navuptwo: true
-sort: 5
+sort: 4
 title: Contributing to Urbit
 ---
 

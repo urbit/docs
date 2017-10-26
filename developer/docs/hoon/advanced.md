@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 16
 next: true
+sort: 16
 title: Advanced types
 ---
 

@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 12
 next: true
+sort: 12
 title: Syntax
 ---
 

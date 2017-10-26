@@ -1,8 +1,8 @@
 ---
 navhome: /developer/docs/
+next: true
 sort: 17
 title: Examples
-next: true
 ---
 
 # Examples

@@ -1,5 +1,6 @@
 ---
 navhome: /developer/docs/
+next: true
 sort: 23
 title: Cheat sheet
 ---

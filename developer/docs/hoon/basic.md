@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 15
 next: true
+sort: 15
 title: Basic types
 ---
 

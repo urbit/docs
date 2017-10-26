@@ -1,5 +1,6 @@
 ---
 navhome: /developer/docs/
+next: true
 sort: 20
 title: Standard library
 ---

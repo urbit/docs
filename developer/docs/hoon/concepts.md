@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 13
 next: true
+sort: 13
 title: Concepts
 ---
 

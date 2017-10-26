@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 14
 next: true
+sort: 14
 title: Expressions
 ---
 

@@ -2,7 +2,7 @@
 navhome: /developer
 navuptwo: true
 next: true
-sort: 4
+sort: 3
 title: Common objections to Urbit
 ---
 

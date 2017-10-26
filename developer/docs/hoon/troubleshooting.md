@@ -1,8 +1,8 @@
 ---
 navhome: /developer/docs/
+next: true
 sort: 19
 title: Troubleshooting
-next: true
 ---
 
 # Troubleshooting

@@ -1,7 +1,7 @@
 ---
 navhome: /developer/docs/
-sort: 11
 next: true
+sort: 11
 title: Demo
 ---
 

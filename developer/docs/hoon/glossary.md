@@ -1,8 +1,6 @@
 ---
-navhome: /developer
-navuptwo: true
-next: true
-sort: 3
+navhome: /developer/docs/
+sort: 24
 title: Glossary
 ---
 
