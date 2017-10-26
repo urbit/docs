@@ -90,10 +90,10 @@ The app can easily be modified to use this (`/examples/app/ping.hoon`):
 ::                                                      ::  6
 !:                                                      ::  7
 |%                                                      ::  8
-++  move  [bone card]                                   ::  9
-++  card  $%  [$poke wire dock poke-contents]           ::  10
++=  move  [bone card]                                   ::  9
++=  card  $%  [$poke wire dock poke-contents]           ::  10
           ==                                            ::  11
-++  poke-contents $%  [$atom @]                         ::  12
++=  poke-contents $%  [$atom @]                         ::  12
                   ==                                    ::  13
 --                                                      ::  14
 |_  [bow=bowl $]                                        ::  15
