@@ -90,27 +90,27 @@ The app can easily be modified to use this (`/examples/app/ping.hoon`):
 ::                                                      ::  6
 !:                                                      ::  7
 |%                                                      ::  8
-++  move  {bone card}                                   ::  9
-++  card  $%  {$poke wire dock poke-contents}           ::  10
+++  move  [bone card]                                   ::  9
+++  card  $%  [$poke wire dock poke-contents]           ::  10
           ==                                            ::  11
-++  poke-contents $%  {$atom @}                         ::  12
+++  poke-contents $%  [$atom @]                         ::  12
                   ==                                    ::  13
 --                                                      ::  14
-|_  {bow/bowl $}                                        ::  15
+|_  [bow=bowl $]                                        ::  15
 ::                                                      ::  16
 ++  poke-ping-message                                   ::  17
   |=  ping-message                                      ::  18
   ~&  ping+'Message sent!'                              ::  19
-  ^-  {(list move) _+>.$}                               ::  20
+  ^-  [(list move) _+>.$]                               ::  20
   :_  +>.$                                              ::  21
   :_  ~                                                 ::  22
   [ost.bow %poke /sending [to dap.bow] %atom message]   ::  23
 ::                                                      ::  24
 ++  poke-atom                                           ::  25
-  |=  arg/@                                             ::  26
+  |=  arg=@                                             ::  26
   ~&  ping+'Message received!'                          ::  27
-  ^-  {(list move) _+>.$}                               ::  28
-  ~7  ping+message+(@t arg)                             ::  29
+  ^-  [(list move) _+>.$]                               ::  28
+  ~&  ping+message+(@t arg)                             ::  29
   [~ +>.$]                                              ::  30
 ::                                                      ::  31
 ++  coup  |=(* `+>)                                     ::  32
@@ -136,11 +136,11 @@ everything nicer. Since it's specific to `:ping`, let's put it in
 
 ```
 :-  %say
-|=  {^ {to/@p message/?($~ {text/@t $~})} $~}
+|=  [^ {to=@p message=?($~ [text=@t $~])} $~}
 [%ping-message to ?~(message 'howdy' text.message)]
 ```
 
-A couple of new things here. Firstly, `message/?($~ {text/@t $~})` should be 
+A couple of new things here. Firstly, `message=?($~ [text=@t $~])` should be 
 read as "the message is either null or a pair of text and null". Generator 
 argument lists are always null-terminated, which makes it convenient to accept 
 lists in tail position (which are particularly annoying without generators). 
