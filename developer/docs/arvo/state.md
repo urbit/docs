@@ -21,21 +21,21 @@ atoms we poke it with. Here's `examples/app/sum.hoon`:
   ::                                                    ::  5
 !:                                                      ::  6
 |%                                                      ::  7
-++      move  {bone card}                               ::  8
-++      card  $%  $~                                    ::  9
++=  move  [bone card]                                   ::  8
++=  card  $%  $~                                        ::  9
           ==                                            ::  10
 --                                                      ::  11
-|_      {bow/bowl sum/@}                                ::  12
+|_  [bow=bowl sum=@]                                    ::  12
 ::                                                      ::  13
-++      poke-atom                                       ::  14
-  |=  tom/@                                             ::  15
-  ^-  {(list move) _+>.$}                               ::  16
+++  poke-atom                                           ::  14
+  |=  tom=@                                             ::  15
+  ^-  [(list move) _+>.$]                               ::  16
   ~&  sum+(add sum tom)                                 ::  17
   [~ +>.$(sum (add sum tom))]                           ::  18
 ::                                                      ::  19
-++      coup                                            ::  20
-  |=  {wir/wire err/(unit tang)}                        ::  21
-  ^-  {(list move) _+>.$}                               ::  22
+++  coup                                                ::  20
+  |=  [wir=wire err=(unit tang)]                        ::  21
+  ^-  [(list move) _+>.$]                               ::  22
   ?~  err                                               ::  23
     ~&  sum+success+'Poke succeeded!'                   ::  24
     [~ +>.$]                                            ::  25
@@ -78,7 +78,7 @@ memory, which you need to serialize to disk if you want to keep it around for
 very long.
 
 In Urbit, app state is a single (usually complex) value. In our example, we have
-very simple state, so we defined `sum/@`, meaning that our state is an atom.
+very simple state, so we defined `sum=@`, meaning that our state is an atom.
 Of course, `sum` is just a name, and you're free to name your state whatever
 you like. But let's clarify a couple other things before we continue.
 
