@@ -64,7 +64,7 @@ Urbit depends on:
     curses
     gmp
     libsigsegv
-    openssl
+    openssl 1.0.0
 
 Which can usually be installed with the following one-liners:
 
