@@ -270,9 +270,10 @@ you.)
 - `idle` - inactive
 - `gone` - not present
 
-`;name ~some/circle 'my nickname'`  
-Set a nickname for yourself in a specific circle. It will display to users
-who have done `;set nick`.
+`;name ~some/circle 'my handle'`  
+Set a handle ("name") for yourself in a specific circle. It will display
+to users who have done `;set nick`, but gets truncated if it's longer
+than 14 characters.
 
 ### Audience
 
@@ -374,13 +375,14 @@ Clear an assigned nickname.
 
 `;set nicks`  
 Show nicknames instead of urbit names. If no local nickname is set, uses
-that user's self-set name.
+that user's handle. If the user has no handle, just the urbit name.
 
 `;unset nicks`  
 Show urbit names instead of nicknames.
 
-Nicknames longer than 14 character will be truncated in output. Nicknames
-are strictly local - like the names on entries in a phonebook.
+Nicknames and handles longer than 14 character will be truncated in
+output. Nicknames are strictly local - like the names on entries in a
+phonebook.
 
 ### Miscellaneous configuration
 
