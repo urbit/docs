@@ -14,32 +14,68 @@ fundamentals of [Hoon](/docs/hoon/). To do this, we'll walk through two simple
 programs: the first [Project Euler](https://projecteuler.net/) problem
 and [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz).
 
-To run this code, you'll need an urbit, and will have to copy the
+To run this code, you'll need an urbit, and will have to either sync or copy the
 [examples repo](https://github.com/urbit/examples) into it.
 
-If you haven't installed urbit yet, check out the [installation
-instructions](/docs/using/install). Once urbit is installed, take a look
-at the [basic operation](/docs/using/admin) of your urbit.
+## Installation
 
-If you haven't copied in the examples repo, running the following
-commands from your urbit directory should do the trick:
+First, you'll need a running urbit. Follow our urbit.org [install 
+instructions](https://urbit.org/docs/using/install), then 
+[setup](https://urbit.org/docs/using/setup) and urbit.
 
-Make sure you've mounted your `%home` desk:
+Follow the *Network install* below if your urbit is running on the live network 
+(comets are usually best for development). Follow the *Local install* instead 
+if you're on a 
+[fake ship](https://urbit.org/fora/posts/~2017.1.5..21.31.04..20f3~/) or are 
+otherwise experiencing problems with the network install.  
 
-```
-~fintud-macrep:dojo> |mount %
-```
+### Network install
 
-Then, copy the example into it
+In your urbit's `:dojo`, run the command:
 
-```
-$ cp -r {urbit-examples}/gall/*/* {your-pier}/home/
-$ cp -r {urbit-examples}/dojo/*/* {your-pier}/home/
-```
+    ~your-urbit:dojo> |sync %examples ~ropmev-pocseb %examples
+
+Depending on network traffic, this initial merge and sync could take anywhere
+between thirty seconds to several minutes. Upon a successful sync you'll see the
+output:
+
+    sync succeeded from %examples on ~ropmev-pocseb to %examples
+
+In which case, next run the commands:
+
+    ~your-urbit:dojo> =dir /=examples=
+    ~your-urbit:dojo/examples> |serve %/web
+    ~your-urbit:dojo/examples> |mount %
+
+If your sync isn't succeeding after a few minutes for whatever reason, run
+`|cancel %examples` in your `:dojo` and follow the local install below instead.
+
+### Local install
+
+In your urbit's `:dojo`:
+
+    ~your-urbit:dojo> |merge %examples our %base, =gem %init
+    ~your-urbit:dojo> =dir /=examples=
+    ~your-urbit:dojo/examples> |serve %/web
+    ~your-urbit:dojo/examples> |mount %
+
+If `~your-urbit` was installed at `/urbit/path` on your Unix machine, you can
+now find your `%examples` desk at the path `/urbit/path/your-urbit/examples`.
+
+Lastly, in Unix, clone this repo somewhere and copy in the `examples` files to
+your urbit's new mounted `%examples` desk. You can run the following shell
+commands (*replacing your urbit's examples desk path as necessary*):
+
+    $ git clone https://github.com/urbit/examples
+    $ for dir in {app,gen,lib,mar,sec,sur,web}; do cp -r ./examples/$dir* /urbit/path/your-urbit/examples; done
+
+Your `%clay` filesystem should acknowledge the newly added files.
+
+## Get started!
 
 Run an example to ensure it worked:
 
-    ~fintud-macrep:dojo> +examples-euler1
+    ~fintud-macrep:dojo> +project-euler/p1
     233.168
 
 Euler 1
@@ -53,42 +89,44 @@ Let's check out the code for Euler 1. First, the problem:
     Find the sum of all the multiples of 3 or 5 below 1000.
 
 Here is the hoon solution (which should be in your pier directory under
-`/gen/examples/euler1`):
+`/examples/gen/project-euler/p1`):
 
-    ::    project euler 1
-    ::    https://projecteuler.net/problem=1
-    ::  run in dojo with +examples-euler1
+    ::  Project Euler 1
+    ::  https://projecteuler.net/problem=1
     ::
-    ::::  /hoon/euler1/examples/gen
-      ::
-    :-  %say  |=  *  
+    ::  run in dojo with:
+    ::    ~your-urbit:dojo/examples> +project-euler/p1
+    ::
+    ::::  /===/gen/project-euler/p1/hoon
+      ::  
+    !:
+    ::
+    :-  %say  |=  *
     :-  %noun
     =<  (sum 1.000)
     ::
-    ::::  ~sivtyv-barnel
-      ::
     |%
     ++  three
-      |=  a/@
-      =|  b/@
-      |-  ^-  @u
+      |=  a/@ 
+      =|  b/@ 
+      |-  ^-  @u  
       ?:  (lth a b)
-        0
+        0   
       (add b $(b (add 3 b)))
     ::
     ++  five
-      |=  a/@
-      =|  b/@
+      |=  a/@ 
+      =|  b/@ 
       |-  ^-  @
       ?:  (lte a b)
-        0
+        0   
       ?:  =((mod b 3) 0)
-        $(b (add b 5))
+        $(b (add b 5)) 
       (add b $(b (add b 5)))
     ::
-    ++  sum
+    ++  sum 
       |=  a/@u
-      (add (five a) (three a))
+      (add (five a) (three a)) 
     --
 
 > Hoon is not generally whitespace sensitive, but we do have two
@@ -97,7 +135,7 @@ Here is the hoon solution (which should be in your pier directory under
 > Really. For a more detailed explanation of when to use spaces vs.
 > gaps, see the syntax section before the first exercises.
 
-### Lines 1-11:
+### Lines 1-13:
 
 Any line that begins with `::` is a comment.
 
@@ -117,8 +155,8 @@ rune takes a specific number of children, either expressions formed by
 other runes or literals that produce their own value (some runes take
 *N* children, and are usually closed with `==`).
 
-For example, the rune `?:` from line 18 is the classic 'if-then-else'
-statement, and thus takes three children:
+For example, the rune `?:` from line 20 is the classic 'if-then-else' statement,
+and thus takes three children:
 
       ?:  (lth a b)           ::  if first child evals to true
         0                     ::  then produce result of second
@@ -134,46 +172,30 @@ remembered and easily pronounced in conjunction with the other glyphs
 
 See the entire naming scheme below.
 
-        ace [1 space]   gal <               pel (
-        bar |           gap [>1 space, \n]  per )
+        ace [1 space]   gal <               pal (
+        bar |           gap [>1 space, nl]  par )
         bas \           gar >               sel [
         buc $           hax #               sem ;
         cab _           hep -               ser ]
-        cen %           kel {               soq '
-        col :           ker }               tar *
-        com ,           ket ^               tec `
-        doq "           lus +               tis =
-        dot .           pam &               wut ?
-        fas /           pat @               zap !
+        cen %           kel {               sig ~
+        col :           ker }               soq '
+        com ,           ket ^               tar *
+        doq "           lus +               tec `
+        dot .           pam &               tis =
+        fas /           pat @               wut ?
+        zap !
 
 Using this scheme, we would pronounce `?:` as 'wutcol'.
 
-For those who prefer to use reserved words to form expressions, you can
-substitute any rune with that rune's keyword, which you can find in
-`++twig` in `/arvo/hoon.hoon`. For example, here's the code for `?:` in
-`++twig`:
+### Lines 14-37
 
-`{$if p/twig q/twig r/twig}                          ::  ?:  if/then/else`
-
-Instead of:
-
-    ?:(=(1 2) 'this is true' 'this is false')
-    'this is false'`
-
-You can write:
-
-    :if(=(1 2) 'this is true' 'this is false')
-    'this is false'
-
-### Lines 13-35
-
-Now let's quickly walk through this code line-by-line. Lines 13-35 are
-wrapped in a `|%` ('[barcen](../../hoon/twig/bar-core/cen-core/)'), which produces a core. Cores are a
-fundamental datatype in Hoon, similar to a struct, class, or object. A
-core is just a map of names to any kind of code, whether it be functions
-or data. Each element in this map begins with a `++` followed by the
-name and the corresponding code. Since `|%` takes an arbitrary number of
-children, it needs to be closed with a `--`.
+Now let's quickly walk through this code line-by-line. Lines 14-37 are wrapped
+in a `|%` ('[barcen](../../hoon/twig/bar-core/cen-core/)'), which produces a
+core. Cores are a fundamental datatype in Hoon, similar to a struct, class, or
+object. A core is just a map of names to any kind of code, whether it be
+functions or data. Each element, called an arm, in this map begins with a `++` 
+followed by the name and the corresponding code. Since `|%` takes an arbitrary 
+number of children, it needs to be closed with a `--`.
 
 > `++` ('luslus') is not technically a rune, since it is only used in
 > core syntax, as shown above.
@@ -183,7 +205,7 @@ Let's step into each of the three arms within our core.
 ### `++  sum`
 
     ++  sum
-      |=  a/@
+      |=  a/@u
       (add (five a) (three a))
     --
 
@@ -194,10 +216,10 @@ takes two children:
     one: `a`, which is required to be an atom or natural number, denoted
     by `@`.
 
-2.  The body of the function itself, which is executed when the function
-    is called (in this case, with `(sum 1.000)`). This particular
-    function adds the results of evaluating the gates `++   five` and
-    `++three` with each of their respective input parameters set to `a`.
+2.  The body of the function itself, which is executed when the function is
+    called (in this case, with `(sum 1.000)`). This particular function adds the
+    results of evaluating the gates `++five` and `++three` with each of their
+    respective input parameters set to `a`.
 
 ### ++ three
 
@@ -261,7 +283,7 @@ our cheatsheat at the bottom.
 
 2.  Change `++sum` to accept two variables, `a` and `b`. Pass `a` to
     `three` and `b` to `five`. Then run the code with `a` set to `1.000`
-    and `q` set to `2.000`.
+    and `b` set to `2.000`.
 
 3.  Check if this new result is under one thousand. If it is, return the
     string `'result < 1.000'`. If not, return `'result >= 1.000'`.
@@ -283,33 +305,33 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
 
 1.  There are two syntaxes for writing Hoon: tallform and wideform.
 
-In tallform, expressions are formed with either two spaces or a line
-break separating both a rune from its children and each of its children
-from one another. We use tallform when writing multiline expressions.
+    In tallform, expressions are formed with either two spaces or a line
+    break separating both a rune from its children and each of its children
+    from one another. We use tallform when writing multiline expressions.
 
-For more concise expressions, we use wideform, which is always a single
-line. Wideform can be used inside tallform expressions, but not vice
-versa.
+    For more concise expressions, we use wideform, which is always a single
+    line. Wideform can be used inside tallform expressions, but not vice
+    versa.
 
-Wideform expressions are formed with a rune followed by `()` containing
-its children, all of which are separated by a single space. For example,
-to make a cell of two elements:
+    Wideform expressions are formed with a rune followed by `()` containing
+    its children, all of which are separated by a single space. For example,
+    to make a cell of two elements, use `:-(a b)`.
 
-      :-(a b)
+    We've already seen wideform in action, for example with
+    `=((mod b 3) 0)`. In this case, `=` is actually an irregular form of
+    `.=`, which tests its two children for equality.
 
-We've already seen wideform in action, for example with
-`=((mod b 3) 0)`. In this case, `=` is actually an irregular form of
-`.=`, which tests its two children for equality.
+    Surrounding a function with `()` is an irregular wide form syntax for
+    calling a function with *N* arguments. More on this later.
 
-Surrounding a function with `()` is an irregular wide form syntax for
-calling a function with *N* arguments. More on this later.
+2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar-core/tis-gate/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
 
-1.  `:-` makes a cell of values. The irregular wide form of this is
+3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the
     regular form of this rune takes a fixed number of children (two),
-    its irregular wide form can accept *N* expressions: `[a1..an]`
+    its irregular wide form can accept *N* expressions: `[a1..an]`.
 
-2.  Cords are one datatype for text in Hoon. They're just a big atom
+4.  Cords are one datatype for text in Hoon. They're just a big atom
     formed from adjacent unicode bytes -- a "c string". To produce a
     cord, enclose text within single quotes. To set the type of an
     argument to a cord, use `@t`.

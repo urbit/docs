@@ -16,7 +16,7 @@ Debian (jessie), Mac OS X, FreeBSD and Fedora all work well.
 If you run into trouble installing Urbit, please let us know via
 email, [questions@urbit.org](mailto:questions@urbit.org), or on the
 forum: [urbit.org/fora](https://urbit.org/fora).  You can also chat
-with us at [urbit.org/stream](https://urbit.org/fora).
+with us at [urbit.org/stream](https://urbit.org/stream).
 
 > Urbit is alpha software.  It’s not yet completely stable, its crypto
 > hasn’t been audited, and there are plenty of rough edges.  Urbit is
@@ -41,13 +41,13 @@ below.
 
 **Debian**
 
-- Download `urbit_0.4.3-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4.3-1_amd64.deb).
-- Install with `dpkg -i urbit_0.4.3-1_amd64.deb`
+- Download `urbit_0.4.5-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4.5-1_amd64.deb).
+- Install with `dpkg -i urbit_0.4.5-1_amd64.deb`
 - Then `apt-get install -f` to install any missing dependencies
 
 ## Source
 
-First, fetch the source tarball: **[urbit-0.4.3.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.3.tar.gz)**.
+First, fetch the source tarball: **[urbit-0.4.5.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.5.tar.gz)**.
 
 ### Dependencies
 
@@ -87,14 +87,14 @@ Which can usually be installed with the following one-liners:
     $ pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses curl
 
     # AWS
-    $ sudo yum —enablerepo epel install gcc gcc-c++ gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
+    $ sudo yum --enablerepo epel install gcc gcc-c++ gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
 
 ### Clone and make
 
 Once your dependencies are installed the rest is easy:
 
-    $ tar xfvz urbit-0.4.tar.gz
-    $ cd urbit-0.4
+    $ tar xfvz urbit-0.4.5.tar.gz
+    $ cd urbit-0.4.5
     $ make # gmake on FreeBSD
 
 After running `make`, your Urbit executable is in `bin/urbit`. Install it wherever you'd like.

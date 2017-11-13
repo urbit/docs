@@ -11,13 +11,13 @@ sort: 1
 
 ```
 :pin  :name(a (p q))
-:sure  =(a (p a))
+:sure  =(`*`a `*`q)
 a
 ```
 
 ```
 =+  a=(p q)
-?>  =(a (p a))
+?>  =(`*`a `*`q)
 a
 ```
 

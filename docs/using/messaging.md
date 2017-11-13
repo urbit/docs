@@ -109,7 +109,7 @@ Our design is pretty simple: `:talk` messages are called ‘posts’. Posts
 go to ‘stations’. Any urbit can host or subscribe to any number of
 stations.
 
-There are four kinds of station: a write-only `%mailbox` for direct
+There are four kinds of stations: a write-only `%mailbox` for direct
 messages, an invite-only `%party` for private conversation, a read-only
 `%journal` for curated content, and a public-access `%channel` for
 general use.
@@ -209,6 +209,11 @@ above lists, and `\/!?({<`) can be manually assigned.
 
 `;bind > /urbit-test` - assigns the `>` glyph to `/urbit-test`.
 
+To see what station is bound to a glyph:
+
+    ;what +  
+    {[%.y p=[p=~binzod q=~.urbit-meta]]}
+
 ### Prefixes
 
 Received posts are prefixed with a glyph to let you know what the
@@ -284,3 +289,9 @@ All nicknames must be 14 characters or less, lowercase. Nicknames are
 strictly local - like the names on entries in a phonebook. Sometimes in
 a post you want to mention someone you know by a nickname. Just type
 `~plato`, and `:talk` will replace it with `~your-urbit`.
+
+### Timestamps
+
+`;set showtime` - Show the timestamp for each message
+
+`;unset showtime` - Stop showing the timestamp for each message

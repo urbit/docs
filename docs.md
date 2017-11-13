@@ -1,13 +1,13 @@
 ---
 anchor: none
 footer: true
-title: Documentation
+title: Docs
 sort: 4
 ---
 
 <div class="lead">
     <div class="logo inverse"></div>
-    <h1 class="blue i-b">Urbit documentation</h1>
+    <h1 class="blue i-b">Urbit docs</h1>
 </div>
 
 <div class="col-md-12 head">
@@ -19,9 +19,7 @@ sort: 4
 Check out the [technical overview](about/overview) for a high-level
 architecture description.  To install and run Urbit, head to the Using section, starting with the [installation guide](using/install) and continuing forward.
 
-To begin developing for Urbit, start by learning Hoon [syntax](hoon/syntax),
-then walk through the [Arvo tutorials](arvo). The examples and exercises
-in Arvo will teach you to build high-level programs and interact with the network.
+To begin developing for Urbit, start by walking through [Urbytes](https://urbit.org/docs/byte/0). After that, delve into Hoon [syntax](hoon/syntax) directly, then walk through the [Arvo tutorials](arvo). The examples and exercises in Arvo will teach you to build high-level programs and interact with the network.
 
 Dig into the mechanics of Urbit with [Core Hoon](hoon). Refer back
 there for pure-code exercises and functions in the [standard library](hoon/library).
@@ -41,8 +39,7 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 <ul>
 <li>Chat with us on <a href="https://urbit.org/stream"><code>:talk</code></a></li>
 <li>Our discussion forum <a href="http://urbit.org/fora"><code>fora</code></a></li>
-<li>On Twitter <a href="https://twitter.com/urbit_">@urbit_</a></li>
-<li>On Reddit <a href="https://reddit.com/r/urbit">/r/urbit</a></li>
+<li>On Twitter <a href="https://twitter.com/urbit">@urbit</a></li>
 <li>Or email us at <a href="mailto:urbit@urbit.org">urbit@urbit.org</a></li>
 </ul>
 

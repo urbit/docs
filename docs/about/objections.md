@@ -139,9 +139,7 @@ TLDR: no, it doesn't.
 
 We can prune the event log because the Urbit transition function doesn't have any access to the event history -- just the current state and the current event.
 
-Urbit defines the semantics of a complete event log.  It doesn't and can't require an implementation to maintain the whole log.  It can maintain a checkpoint and the log since that checkpoint.  The current implementation of Urbit maintains
-
-However, any practical urbit maintains a periodically updated checkpoint.  Our present implementation doesn't provide a way to prune the event log, but that's just a missing feature.
+Urbit defines the semantics of a complete event log.  It doesn't and can't require an implementation to maintain the whole log.  It can maintain a checkpoint and the log since that checkpoint.  The current implementation of Urbit keeps the whole log, but the next release will optionally prune it.
 
 ## Urbit will never be able to call any existing code.
 
