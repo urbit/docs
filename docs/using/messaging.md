@@ -246,16 +246,16 @@ Adds a circle to your public membership list.
 `;hide ~some/circle`  
 Removes a circle from your public membership list.
 
-### Presence
+### Status
 
-You'll see presence notifications when people enter or leave stations
+You'll see status notifications when people enter or leave stations
 you're subscribed to.
 
 `;set quiet`  
-Turn off presence notifications
+Turn off status (and config) notifications.
 
 `;unset quiet`  
-Turn on presence notifications
+Turn on status (and config) notifications.
 
 `;who`  
 List everyone in all your subscribed circles. Optionally specify a
