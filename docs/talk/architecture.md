@@ -9,13 +9,14 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 
 * [Introduction](#introduction)
 * [Structures & functionality](#structures--functionality)
-  * [Partners](#partners)
+  * [Circles](#circles)
   * [Messages](#messages)
   * [Participant metadata](#participant-metadata)
   * [Configurations](#configurations)
   * [Stories](#stories)
   * [General use](#general-use)
   * [Federation](#federation)
+  * [Public membership](#public-membership)
 * [Interfaces for applications](#interfaces-for-applications)
   * [Interactions](#interactions)
   * [Queries, prizes and rumors](#queries-prizes-and-rumors)
@@ -36,25 +37,18 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 
 Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but does so as two separate applications this time.
 
-The messaging parts of talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as Hall *readers*. One such application, as you might have guessed, is `Talk`.
+The messaging parts of Talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as *clients*. One such application, as you might have guessed, is `Talk`.
 
 
 ## Structures & functionality
 
-### Partners
-
-One of Hall's strengths is that it can not only interface with other Hall instances (Halls, if you will), but also external services. We define a single structure that can be used to specify both kinds of messaging targets.
+### Circles
 
 ```
-++  partner    (each circle passport)                   :<  message target
-++  circle     {hos/ship nom/knot}                      :<  native target
-++  passport                                            :>  foreign target
-  $%  {$twitter p/cord}                                 :<  twitter handle
-  ==                                                    ::
+++  circle     {hos/ship nom/term}                      :<  native target
 ```
 
-A `partner` is either a `circle` or a `passport`. A `circle` is a native partner, essentially a named collection of messages created by and hosted on a ship's Hall, usually represented as `~ship-name/circle-name`.  
-A `passport` is a non-native partner, such as a Twitter feed. The possibilities for passports are endless... but none of them are properly implemented yet. For the rest of this document we'll assume a `partner` is always a `circle`.
+A `circle` is essentially a named collection of messages created by and hosted on a ship's Hall, usually represented as `~ship-name/circle-name`. Most of Hall revolves around doing things with circles.
 
 ### Messages
 
@@ -63,46 +57,36 @@ When we subscribe to a circle, the primary thing we're interested in is its mess
 ```
 ++  speech                                              :>  content body
   $%  {$lin pat/? msg/cord}                             :<  no/@ text line
-      {$ire tos/serial sep/speech}                      :<  in-reply-to
-      {$url url/purf}                                   :<  parsed url
-      {$app app/term msg/cord}                          :<  app message
-      {$ext nom/term dat/*}                             :<  extended action
-      ::  ...                                           ::
+      {$url url/purf:eyre}                              :<  parsed url
+      {$exp exp/cord res/(list tank)}                   :<  hoon line
+      {$ire top/serial sep/speech}                      :<  in reply to
+      {$fat tac/attache sep/speech}                     :<  attachment
+      {$app app/term sep/speech}                        :<  app message
+      {$inv inv/? cir/circle}                           :<  inv/ban for circle
   ==                                                    ::
 ```
 
-At the heart of every message lies a `speech` that describes the message body. There's a large number of different speech types, from simple text messages to parsed URLs, Hoon expressions and more. Thought the system strives to eventually accommodate all use cases, the `%ext` speech type provides extensibility for applications that feel their needs aren't covered.
+At the heart of every message lies a `speech` that describes the message body. There's a large number of different speech types, from simple text messages to parsed URLs, Hoon expressions and more.
 
 ```
-++  statement  {wen/@da boq/bouquet sep/speech}         :<  when what body
-++  bouquet    (set flavor)                             :<  complete aroma
-++  flavor     path                                     :<  content flavor
-```
-
-Message bodies are wrapped in a `statement` which specifies the timestamp and  `flavor` of its content, the latter of which can in the future be used to filter out the kinds of content you personally do not wish to see.
-
-```
-++  audience   (map partner (pair envelope delivery))   :<  destination + state
-++  envelope   {vis/? sen/(unit partner)}               :<  visible sender
-++  delivery                                            :>  delivery state
-  $?  $pending                                          :<  undelivered
-      $received                                         :<  delivered
-      $rejected                                         :<  undeliverable
-      $released                                         :<  sent one-way
-      $accepted                                         :<  fully processed
-  ==                                                    ::
-```
-
-When specifying a message's destination, an `audience` is used. It contains all the recipients of the message, as well as the delivery state for each of those recipients.
-
-```
-++  telegram   {aut/ship tot/thought}                   :<  who thought
-++  thought    {uid/serial aud/audience sam/statement}  :<  which whom this
+++  audience   (set circle)                             :<  destinations
 ++  serial     @uvH                                     :<  unique identifier
+++  thought                                             :>  inner message
+  $:  uid/serial                                        :<  unique identifier
+      aud/audience                                      :<  destinations
+      wen/@da                                           :<  timestamp
+      sep/speech                                        :<  content
+  ==                                                    ::
 ```
 
-The message and its destination get put into a `thought`, which also carries a universally unique identifier. This way, recipients can easily check whether they're receiving a new message or a potentially modified version of an existing one.  
-Finally, all this gets put into a `telegram` which tags it with the message's author.
+A `speech` is always accompanied by various bits of metadata. We include a unique identifier, a message timestamp and an `audience`, the set of all intended recipients of the message.
+
+```
+++  telegram   {aut/ship thought}                       :<  whose message
+++  envelope   {num/@ud gam/telegram}                   :<  outward message
+```
+
+Finally, before sending the message over the wire, we add on the message's original author. In most cases, we also include a sequence number, the index of the message in the originating circle's list of messages. This can be a useful point of reference for clients.
 
 ### Participant metadata
 
@@ -119,20 +103,21 @@ Messages aren't the only thing a subscription gets us. We're also kept up to dat
       $talk                                             :<  typing
   ==                                                    ::
 ++  human                                               :>  human identifier
-  $:  tru/(unit (trel cord (unit cord) cord))           :<  true name
-      han/(unit cord)                                   :<  handle
+  $:  han/(unit cord)                                   :<  handle
+      tru/(unit truename)                               :<  true name
   ==                                                    ::
+++  truename   {fir/cord mid/(unit cord) las/cord}      :<  real-life name
 ```
 
 `status` is user-set metadata that describes, well, the status of users in a circle. This encompasses their `presence`, which shows their activity, and their `human` identity, which includes their display handle.  
-For reasons we'll discover shortly, circles keep track of both their own `group` and those of the partners they're subscribed to. `crowd` encapsulates this.
+For reasons we'll discover shortly, circles keep track of both their own `group` and those of the circles they're subscribed to. `crowd` encapsulates this.
 
 ### Configurations
 
 ```
 ++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
 ++  config                                              :>  circle config
-  $:  src/(set partner)                                 :<  active sources
+  $:  src/(set circle)                                  :<  active sources
       cap/cord                                          :<  description
       fit/filter                                        :<  message rules
       con/control                                       :<  restrictions
@@ -154,10 +139,10 @@ Lastly, there's a `control` structure that contains both a security mode and a l
 
 ```
 ++  security                                            :>  security mode
-  $?  $black                                            :<  channel, blacklist
-      $white                                            :<  village, whitelist
-      $green                                            :<  journal, author list
-      $brown                                            :<  mailbox, our r, bl w
+  $?  $channel                                          :<  blacklist
+      $village                                          :<  whitelist
+      $journal                                          :<  pub r, whitelist w
+      $mailbox                                          :<  our r, blacklist w
   ==                                                    ::
 ```
 
@@ -172,13 +157,13 @@ To see how that all ties together, we're going to take a look at Hall's state.
 
 ```
 ++  state                                               :>  hall state
-  $:  stories/(map knot story)                          :<  conversations
+  $:  stories/(map term story)                          :<  conversations
       ::  ...                                           ::
   ==                                                    ::
 ++  story                                               :>  wire content
   $:  grams/(list telegram)                             :<  all messages
       locals/group                                      :<  local presence
-      remotes/(map partner group)                       :<  remote presence
+      remotes/(map circle group)                        :<  remote presence
       shape/config                                      :<  configuration
       mirrors/(map circle config)                       :<  remote config
       ::  ...                                           ::
@@ -191,23 +176,27 @@ With the configuration described above in mind, we can try and imagine the thing
 
 ### General use
 
-Upon initial startup, Hall creates a default story, a mailbox named `porch`. (This name is different for stars and galaxies: `floor` and `court` respectively.) This mailbox is the primary target for anyone and anything that wants to reach its owner. Applications can use it to send notifications and other information to the user (Hall itself does this as well), and users can use it to direct-message others.
+Upon initial startup, Hall creates a default story, a mailbox named `inbox`. This mailbox is the primary target for anyone and anything that wants to reach its owner. Applications can use it to send notifications and other information to the user (Hall itself does this as well), and users can use it to send direct messages to each other.
 
-Applications that use Hall are encouraged to use the default mailbox as the primary messaging hub. This way, users can easily switch between different applications without "losing" their subscriptions, message backlog, etc.
+Applications that use Hall, especially clients, are encouraged to use the default mailbox as the primary messaging hub. This way, users can easily switch between different applications without "losing" their subscriptions, message backlog, etc.
 
-As an example, Talk operates like this, serving as an interface for reading from and managing the user's mailbox. Local stories are subscribed to through the `porch`, which ends up containing all messages the user receives.
+As an example, Talk operates like this, serving as an interface for reading from and managing the user's mailbox. Local stories are subscribed to through the `inbox`, which ends up containing all messages the user receives.
 
 ### Federation
 
 Some places, like `urbit-meta`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both these desired can be met through federation.
 
 In federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).  
-This way, all planets and comets will be able to subscribe to `/urbit-meta` and get all updates on the story, regardless of where on the network they originated.
+This way, all planets and comets will be able to subscribe to `/urbit-meta` (that is, the `urbit-meta` circle on their parent ship) and get all updates on the story, regardless of where on the network they originated.
+
+### Public membership
+
+To aid in discoverability of circles, it is possible for users to make their participation in any given circle public. This data can then be used by things like profile widgets, or read out directly by other users.
 
 
 ## Interfaces for applications
 
-Applications can interact with Hall in two complementary ways: they can tell it what actions to perform, and they can subscribe to its state changes.
+Applications can interact with Hall in two complementary ways: they can tell it what actions to perform, and they can subscribe to its state and the changes made to it.
 
 ### Interactions
 
@@ -216,21 +205,23 @@ Hall can be commanded by poking it with `action`s.
 ```
 ++  action                                              :>  user action
   $%  ::  circle configuration                          ::
-      {$create nom/knot des/cord sec/security}          :<  create circle
-      {$delete nom/knot why/(unit cord)}                :<  delete + announce
-      {$depict nom/knot des/cord}                       :<  change description
-      {$filter nom/knot fit/filter}                     :<  change message rules
-      {$permit nom/knot inv/? sis/(set ship)}           :<  invite/banish
-      {$source nom/knot sub/? src/(set partner)}        :<  un/sub to/from src
+      {$create nom/term des/cord sec/security}          :<  create circle
+      {$delete nom/term why/(unit cord)}                :<  delete + announce
+      {$depict nom/term des/cord}                       :<  change description
+      {$filter nom/term fit/filter}                     :<  change message rules
+      {$permit nom/term inv/? sis/(set ship)}           :<  invite/banish
+      {$source nom/term sub/? srs/(set source)}         :<  un/sub to/from src
       ::  messaging                                     ::
       {$convey tos/(list thought)}                      :<  post exact
-      {$phrase aud/(set partner) ses/(list speech)}     :<  post easy
+      {$phrase aud/audience ses/(list speech)}          :<  post easy
       ::  personal metadata                             ::
-      {$notify nos/(set knot) pes/presence}             :<  our presence update
-      {$naming nos/(set knot) man/human}                :<  our name update
+      {$notify aud/audience pes/(unit presence)}        :<  our presence update
+      {$naming aud/audience man/human}                  :<  our name update
       ::  changing shared ui                            ::
-      {$human sip/ship man/human}                       :<  new identity
-      {$glyph gyf/char pas/(set partner) bin/?}         :<  un/bind a glyph
+      {$glyph gyf/char aud/audience bin/?}              :<  un/bind a glyph
+      {$nick who/ship nic/cord}                         :<  new identity
+      ::  misc changes                                  ::
+      {$public add/? cir/circle}                        :<  show/hide membership
   ==                                                    ::
 ```
 
@@ -242,32 +233,38 @@ To send messages, two interfaces are available. `%convey` lets you specify all d
 
 "Shared UI" encompasses UI data that should be consistent across applications. For example, if the user sets a local nickname for an identity, they expect to see that nickname regardless of the application they're currently using. The same goes for glyph bindings, for easy audience targeting.
 
-Sometimes, in response to a user action, Hall will respond with a `reaction`.
-
-```
-++  reaction                                            :>  user information
-  $:  res/?($info $fail)                                :<  result
-      wat/cord                                          :<  explain
-      why/(unit action)                                 :<  cause
-  ==                                                    ::
-```
-
-These are used to inform the application (and thus the user) of any unexpected side effects or errors that occurred as a result of the action they issued.
-
 ### Queries, prizes and rumors
 
-To receive data from Hall, applications will have to query it. There are two paths that are useful for readers to query. Let's look at them and their results.
+To receive data from Hall, applications will have to query it. There are two paths that are useful for clients to query. Let's look at them and their results.
 
 ```
 ++  query                                               :>  query paths
-  $%  {$reader $~}                                      :<  shared ui state
-      {$circle nom/knot ran/range}                      :<  story query
+  $%  {$client $~}                                      :<  shared ui state
+      $:  $circle                                       :>  story query
+          nom/naem                                      :<  circle name
+          wat/(set circle-data)                         :<  data to get
+          ran/range                                     :<  query duration
+      ==                                                ::
       ::  ...                                           ::
   ==                                                    ::
-++  range  (unit {hed/place tal/(unit place)})          :<  msg range, @ud/@da
-++  place  $%({$da @da} {$ud @ud})                      :<  point for range
+++  circle-data                                         :>  kinds of circle data
+  $?  $grams                                            :<  messages
+      $group-l                                          :<  local presence
+      $group-r                                          :<  remote presences
+      $config-l                                         :<  local config
+      $config-r                                         :<  remote configs
+  ==                                                    ::
+++  range                                               :>  inclusive msg range
+  %-  unit                                              :<  ~ means everything
+  $:  hed/place                                         :<  start of range
+      tal/(unit place)                                  :<  opt end of range
+  ==                                                    ::
+++  place                                               :>  range indicators
+  $%  {$da @da}                                         :<  date
+      {$ud @ud}                                         :<  message number
+  ==                                                    ::
 ++  prize                                               :>  query result
-  $%  $:  $reader                                       :<  /reader
+  $%  $:  $client                                       :<  /client
           gys/(jug char (set partner))                  :<  glyph bindings
           nis/(map ship cord)                           :<  nicknames
       ==                                                ::
@@ -281,37 +278,38 @@ To receive data from Hall, applications will have to query it. There are two pat
   ==                                                    ::
 ```
 
-To be clear, the paths for those queries are `/reader` and `/circle/[name]/[start]/[end]`, where `start` and `end` are optional and can be either a date or a message number.  
-`/reader` queries produce shared UI state. That is, glyph bindings and nicknames.  
+To be clear, the paths for those queries are `/client` and `/circle/[name]/[data]/[start]/[end]`, where data is at least one `circle-data`, and `start` and `end` are optional and can be either a date or a message number.  
+`/client` queries produce shared UI state. That is, glyph bindings and nicknames.  
 `/circle` queries produce the entire public state of the requested story, including remotes.
 
 Any changes to the results of these queries are communicated via the following `rumor`s. It's a fairly long list of potential changes,
 
 ```
 ++  rumor                                               :<  query result change
-  $%  $:  $reader                                       :<  /reader
-          $=  dif                                       ::
-          $%  {$glyph diff-glyph}                       ::
-              {$nick diff-nick}                         ::
-          ==                                            ::
-      ==                                                ::
-      {$circle dif/diff-story}                          :<  /circle
+  $%  {$client rum/rumor-client}                        :<  /client
+      {$circle rum/rumor-story}                         :<  /circle
       ::  ...                                           ::
   ==                                                    ::
-++  diff-glyph  {bin/? gyf/char pas/(set partner)}      :<  un/bound glyph
+++  rumor-client                                        :<  changed ui state
+  $%  {$glyph diff-glyph}                               :<  un/bound glyph
+      {$nick diff-nick}                                 :<  changed nickname
+  ==                                                    ::
+++  diff-glyph  {bin/? gyf/char aud/audience}           :<  un/bound glyph
 ++  diff-nick   {who/ship nic/cord}                     :<  changed nickname
-++  diff-story                                          ::
+++  diff-story                                          :>  story change
   $%  {$new cof/config}                                 :<  new story
-      {$grams gaz/(list telegram)}                      :<  new/changed msgs
       {$config cir/circle dif/diff-config}              :<  new/changed config
-      {$status pan/partner who/ship dif/diff-status}    :<  new/changed status
-      {$follow sub/? pas/(set partner)}                 :<  un/subscribe
+      {$status cir/circle who/ship dif/diff-status}     :<  new/changed status
       {$remove $~}                                      :<  removed story
       ::  ...                                           ::
   ==                                                    ::
+++  rumor-story                                         ::>  story rumor
+  $?  diff-story                                        ::<  both in & outward
+  $%  {$gram nev/envelope}                              ::<  new/changed msgs
+  ==  ==                                                ::
 ++  diff-config                                         :>  config change
   $%  {$full cof/config}                                :<  set w/o side-effects
-      {$source add/? pas/(set partner)}                 :<  add/rem sources
+      {$source add/? src/source}                        :<  add/rem sources
       {$caption cap/cord}                               :<  changed description
       {$filter fit/filter}                              :<  changed filter
       {$secure sec/security}                            :<  changed security
@@ -322,16 +320,16 @@ Any changes to the results of these queries are communicated via the following `
   $%  {$full sat/status}                                :<  fully changed status
       {$presence pec/presence}                          :<  changed presence
       {$human dif/diff-human}                           :<  changed name
-      {$remove $~}                                      :<  removed config
+      {$remove $~}                                      :<  removed status
   ==                                                    ::
 ++  diff-human                                          :>  name change
   $%  {$full man/human}                                 :<  fully changed name
-      {$true tru/(unit (trel cord (unit cord) cord))}   :<  changed true name
       {$handle han/(unit cord)}                         :<  changed handle
+      {$true tru/(unit truename)}                       :<  changed true name
   ==                                                    ::
 ```
 
-These are, as enforced by Gall, the changes as they happen. This makes it possible for very minimal Hall readers to be implemented that only show a stream of changes, rather than keeping state themselves.
+These are, as enforced by Gall, the changes as they happen. This makes it possible for very minimal Hall clients to be implemented that only display a stream of changes, rather than keeping state themselves.
 
 
 ## Communication between Halls
@@ -345,7 +343,7 @@ To request changes to a story, Halls can send `command`s.
 ```
 ++  command                                             :>  effect on story
   $%  {$publish tos/(list thought)}                     :<  deliver
-      {$present nos/(set knot) dif/diff-status}         :<  status update
+      {$present nos/(set term) dif/diff-status}         :<  status update
       ::  ...                                           ::
   ==                                                    ::
 ```
@@ -361,14 +359,14 @@ Halls can query other halls. Here's the peer move we send when we open a query o
 ```
 :*  ost.bol                                             :<  bone
     %peer                                               :<  move type
-    /circle/[our-circle]/[host]/[their-circle]          :<  rumor path
+    /[our-circle]/[host]/[query-path]                   :<  rumor path
     [host %hall]                                        :<  query target
-    /circle/[their-circle]/[start]/[end]                :<  query path
+    /circle/[their-circle]/[data]/[start]/[end]         :<  query path
 ==                                                      ::
 ```
 
 Again, the rumor path is what our Hall uses to identify what query a received message originates from. Our circle is specified so that we know what story is interested in the changes we get.  
-The query path is slightly more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can (optionally) be used to specify the range of messages we want to get from our query. Once we're out of that range, we stop receiving updates.
+The query path is slightly more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can (optionally) be used to specify the range of messages we want to get from our query. Once that range has passed, we stop receiving updates.
 
 ### Federation
 
@@ -381,23 +379,27 @@ Along the way so far, we've skipped some parts of structures. Most of these rela
       ::  ...                                           ::
   ==                                                    ::
 ++  prize                                               :>  query result
-  $%  {$burden sos/(map knot burden)}                   :<  /burden
+  $%  {$burden sos/(map term burden)}                   :<  /burden
       ::  ...                                           ::
   ==                                                    ::
 ++  rumor                                               :<  query result change
-  $%  {$burden nom/knot dif/diff-story}                 :<  /burden
+  $%  {$burden nom/term rum/rumor-story}                :<  /burden
       ::  ...                                           ::
   ==                                                    ::
 ++  diff-story                                          ::
   $%  {$bear bur/burden}                                :<  new inherited story
-      {$burden bur/?}                                   :<  burden flag
       ::  ...                                           ::
+  ==                                                    ::
+++  burden                                              :>  full story state
+  $:  gaz/(list telegram)                               :<  all messages
+      cos/lobby                                         :<  loc & rem configs
+      pes/crowd                                         :<  loc & rem presences
   ==                                                    ::
 ```
 
 We briefly touched upon how federation works on the higher level. On the lower, this is how things go down.
 
-1. When Hall boots on a star or galaxy, it starts querying its parent's (~zod for galaxies) `/burden` path.
+1. When Hall boots on a star or galaxy, it starts querying its parent's `/burden` path. (Galaxies query ~zod.)
 2. Upon receiving that query, the parent sends a `%burden` prize containing all state of its channels (fully public circles) to the child. It also subscribes to `/report` on that child.
 3. When a new story gets created on the parent, its children get a `%burden` rumor with a `%bear` story diff, and they create a local copy of that channel.
 4. When something about a parent's story changes, a `%burden` rumor is sent to all its children (because they're querying `/burden`). The children apply this change to their local version of the story.
@@ -423,7 +425,7 @@ For brevity, utility arms that aren't a direct and important part of the flow ha
 
 (You will find that the origins still use old Gall arms, with some glue code in between. At the time of writing, new Gall has not yet been implemented, so this will have to do.)
 
-We will generally only display the delta generation parts of the flow. Delta application is usually implemented simply enough to deduce what it does from looking at the label.
+We will only display the delta generation parts of the flow. Delta application is usually implemented simply enough to deduce what it does from looking at the label.
 
 ### Subscriptions
 
@@ -485,9 +487,9 @@ Hall is neither complete nor perfect. There are features that need to be impleme
 
 ### Features and functionality
 
-To turn talk into a [sustainable social platform](https://urbit.org/fora/posts/~2017.4.26..18.00.25..b93c~/), it needs a number of things.
+To turn Talk into a [sustainable social platform](https://urbit.org/fora/posts/~2017.4.26..18.00.25..b93c~/), it needs a number of things.
 
-Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their Hall subscribe to a list of circles the added friends are in. Of course, one will be able to set joined circles as "private" to keep them from being visible to others.
+Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their Hall subscribe to a list of circles the added friends are in. The existing public membership functionality can be leveraged for this.
 
 Eventually, content self-moderation might need to be implemented. Users would flag their content if it is potentially offensive. Others would easily be able to filter out content that might offend them.  
 This functionality brings its own large sets of challenges that need to be tackled.
@@ -500,7 +502,6 @@ Other changes that might have a fair impact on the functioning of Hall are un/re
 Smaller functionality that still needs to be implemented includes:
 * Extended permissions management. Being able to black-/whitelist entire ship classes.
 * Improved presence functionality. Actually using the presence system, and sending "typing", "idle", etc. statuses.
-* Flexible on-subscribe scrollback. Some cases may want more than just a day's worth.
 * Polls.
 
 And of course there's a lot Talk, the client, can improve on as well.
@@ -509,7 +510,7 @@ And of course there's a lot Talk, the client, can improve on as well.
 ## Further reading
 
 To gain a more thorough understanding of Hall's inner workings, take a look at its source code. It comes with inline documentation.  
-[link]
+[On Github.](https://github.com/urbit/arvo/blob/master/app/hall.hoon)
 
-To see an expansive example of an application that uses Hall, take a look at the code of Talk. It, too, comes with inline documentation.  
-[link]
+To see an expansive example of a Hall client, take a look at the code of Talk. It, too, comes with inline documentation.  
+[On Github.](https://github.com/urbit/arvo/blob/master/app/talk.hoon)
