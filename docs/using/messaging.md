@@ -392,6 +392,9 @@ Show the timestamp for each message.
 `;unset showtime`  
 Stop showing the timestamp for each message.
 
+`;set timezone [+/-][hours]`  
+Adjust the display of the timestamps to a specific timezone. Relative to UTC.
+
 `;set notify`  
 Emit a terminal bell sound if your six-syllable ship name is mentioned in
 a message.
