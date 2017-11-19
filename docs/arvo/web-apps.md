@@ -230,7 +230,7 @@ of the available ones:
 
 In our case, we specify only that the mark is "click".
 
-The callback funciton is called when we receive an
+The callback function is called when we receive an
 acknowledgment.  If there was an error, we put it in the `err`
 div that we defined above.  Otherwise, we printf to the console a
 message saying the poke succeeded.  As is common, we gray
