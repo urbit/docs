@@ -21,7 +21,7 @@ While the structures here are given in Hoon, they match fairly closely to their 
   * [/circle](#circle)
     * [/circle prize](#circle-prize)
     * [/circle rumor](#circle-rumor)
-* [Actions][#actions]
+* [Actions](#actions)
   * [Circle configuration](#circle-configuration)
   * [Messaging](#messaging)
   * [Personal metadata](#personal-metadata)
