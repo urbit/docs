@@ -1,7 +1,7 @@
 
 # The new Gall model
 
-This document is complemented by the source code of applications that use the new Gall model (like hall), but doesn't require it. Code snippets and diagrams will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
+This document is complemented by the source code of applications that use the new Gall model (like [hall](https://github.com/urbit/arvo/blob/master/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
 
 New Gall has not yet fully solidified. As such, structure and naming are tentative to change.
 
@@ -242,5 +242,4 @@ While it's technically easier to produce a list in reverse order, semantically i
 
 ## Further reading
 
-[Original new gall spec by ~sorreg-namtyv](gall-spec_orig.hoon)
-@TODO proposed gall-spec.hoon
+[Original new Gall spec by ~sorreg-namtyv](gall-spec_orig.hoon)  
