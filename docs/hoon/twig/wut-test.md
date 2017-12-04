@@ -15,7 +15,7 @@ learning from `$fits` tests in the condition of `:if` twigs.
 All `?` runes expand to `$if` (`?:`) and/or `$fits` (`?=`).
 
 If the condition of an `$if` is a `$fits`, *and* the `$fits` is
-testing a leg of the subject, the compile specializes the subject
+testing a leg of the subject, the compiler specializes the subject
 span for the branches of the `$if`.  Branch inference also works
 for twigs which expand to `$if`.
 

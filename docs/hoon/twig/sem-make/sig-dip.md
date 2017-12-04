@@ -13,6 +13,40 @@ product-sample adapter.
 The gates in `q` connected together using the gate `p`, which 
 transforms a `q` product and a `q` gate into a `q` sample.
 
+## Expands to
+
+*Note: these are structurally correct, but elide some type-system complexity.*
+
+`;~(a b)` reduces to `b`.
+
+`;~(a b c)` expands to
+
+```
+|=  arg/*
+(a (b arg) c(+6 arg))
+```
+
+`;~(a b c d)` expands to
+
+```
+|=  arg/*
+%+  a (b arg)
+=+  arg=arg
+|.  (a (c arg) d(+6 arg))
+```
+
+### Compiler macro
+
+```
+?~  q  !!
+|-
+?~  t.q  i.q
+=/  a  $(q t.q)
+=/  b  i.q
+=/  c  ,.+6.b
+|.  (p (b c) a(,.+6 c))
+```
+
 ## Discussion
 
 Apparently `:dip` is a "Kleisli arrow."  Whatevs.  It's also 
@@ -21,6 +55,11 @@ you either.  Hoon doesn't know anything about category theory,
 so you don't need to either.
 
 `:dip` is often used in parsers, but is not only for parsers.
+
+This can be thought of as user-defined function composition; instead of simply
+nesting the gates in `q`, each is passed individually to `p` with the product
+of the previous gate, allowing arbitrary filtering, transformation, or
+conditional application.
 
 ## Syntax
 
@@ -32,9 +71,9 @@ A simple "parser."  `trip` converts a `cord` (atomic string) to
 a `tape` (linked string).
 
 ```
-~zod:dojo> =cmp |=({a/tape b/$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
+~zod:dojo> =cmp |=({a/tape b/$-(char tape)} `tape`?~(a ~ (weld (b i.a) t.a)))
 ~zod:dojo> ;~(cmp trip)
-<1.xef [a=@ <374.hzt 100.kzl 1.ypj %164>]>
+<1.zje {a/@ <409.yxa 110.lxv 1.ztu $151>}>
 ~zod:dojo> (;~(cmp trip) 'a')
 "a"
 ```

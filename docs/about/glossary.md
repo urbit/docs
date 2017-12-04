@@ -57,18 +57,22 @@ whose number is its bottom half. So the planet `~firbyr-napbes`,
 `48.879`, whose parent is `~mun`, `0xef`, `239`. The parent of `~mun`
 and all galaxies is `~zod`, `0`.
 
+##### <h5 id="pier">Pier</h5>
+
+A ship's *pier* is its Unix directory.  For planets the name of the pier is usually the planet name.
+
 ### Nock
 
 > Nock is a Turing-complete, non-lambda combinator interpreter.
 
--   *noun*: an *atom* or a *cell*
 -   *atom*: any natural number
 -   *cell*: any ordered pair of nouns
--   *subject*: a noun - the data against which a `formula` is
-    evaluated
 -   *formula*: a noun - a function at the Nock level
+-   *noun*: an *atom* or a *cell*
 -   *product*: a noun - the result of evaluating a formula against a
     subject
+-   *subject*: a noun - the data against which a `formula` is
+    evaluated
 
 *See [Nock definition](../../nock/definition/).*
 
@@ -77,26 +81,7 @@ and all galaxies is `~zod`, `0`.
 > Hoon is a strict, higher-order typed functional language that compiles
 > itself to Nock.
 
-###### span: an inferred type
-
-A *span* defines a set (finite or infinite) of nouns and ascribes some
-semantics to it. There is no Hoon syntax for a span; it is always
-produced as the inferred range of an expression (*twig*).
-
-*See [basic types](../../hoon/basic/#-type-span-and-mold).*
-
-###### core: a code-data cell
-
-The code (*battery*) is the head, the data (*payload*) is the tail. All
-code-data structures in normal languages (functions, objects, modules,
-etc) become *core*s in Hoon.
-
--   *battery*: the code of a core, a tree of *arms*
--   *payload*: the data in a core
-
-*See [basic types](../../hoon/basic)*.
-
-###### arm: a named, functionally-computed attribute of a core
+###### <h6 id="arm">arm:</h6> a named, functionally-computed attribute of a core
 
 The *twig* of each arm is compiled to a Nock formula, with the
 enclosing `core` itself as the subject.
@@ -115,46 +100,6 @@ path, which works as if we expanded the callee with the caller's
 context.
 
 *See [advanced types](/hoon/advanced)*.
-
-###### metal: a variance model
-
-Every core has a *metal* which defines its variance model (ie, the
-properties of the span of a compatible core). The default is `gold`
-(invariant).
-
--   `gold`: *invariant*
--   `lead`: *bivariant*
--   `zinc`: *covariant*
--   `iron`: *contravariant*
-
-*See [advanced types](/hoon/advanced)*.
-
-###### gate: a function/lambda/closure
-
-A *gate* is a core with one arm. To call a gate on an argument,
-replace the sample (at [tree
-address](../../hoon/twig/limb/limb/) `+6` in the core) with the
-argument, and then compute the arm.
-
-The payload of a gate has a shape of `{sample context}`.
-
--   *sample*: the argument tuple
--   *context*: the subject in which the gate was defined
-
-*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span),
-[`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for
-calling a `gate`).*
-
-###### mold: a type constructor / validator
-
-A *mold* is an idempotent gate (function), accepting any noun, and
-producing a range with a useful span.
-
--   *bunt*: the value a mold produces when normalizing its default
-    sample
--   *icon*: the span of the mold's range
-
-*See [mold twigs](/hoon/twig/buc-mold/).*
 
 ###### atom
 
@@ -192,46 +137,42 @@ Some common auras and their aliases:
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
 
-###### twig: a Hoon expression
+###### <h6 id="core">core:</h6> a code-data cell
 
-A *twig* is a Hoon expression. Specifically, twig is the mold for the
-noun that a Hoon source expression compiles to. A twig is always a cell.
+The code (*battery*) is the head, the data (*payload*) is the tail. All
+code-data structures in normal languages (functions, objects, modules,
+etc) become *core*s in Hoon.
 
-A twig has one of two forms: `{twig twig}`, which produces the ordered
-pair of the two twigs, or a cell `{stem bulb}`, where `stem` is an
-atomic symbol.
+-   <h6 id="battery">*battery*:</h6> the code of a core, a tree of *arms*
+-   <h6 id="payload">*payload*:</h6> the data in a core
 
--   *stem*: an atomic symbol (`@tas`) - the name of a twig.
--   *bulb*: The mold of the twig's contents.
+*See [basic types](../../hoon/basic)*.
 
-Most twigs have a *regular form*, beginning with a *sigil* which is
-either a *keyword* or a *rune*. Some twigs also have a syntactic
-*irregular form*; a few have *only* an *irregular form*.
+###### face: a labeled subtree
 
--   *sigil*: a *keyword* or *rune* used to begin a twig
--   *keyword*: the value of a stem, prefixed with `:`.
--   *rune*: a pair of ASCII symbols used to begin a twig.
+Hoon has no scope or symbol-table; there is only the subject. To
+"declare" a "variable" is to construct a new subject:
+`[name=value old-subject]`.
 
-For example, the stem `%if` becomes the keyword
-[`:if`](../../hoon/twig/wut-test/col-if/), with the rune `?:`. The first
-symbol in a rune represents a family of related `twig`s. For example,
-the [`?` family](../../hoon/twig/wut-test/) are all conditionals.
+A *face* is a span that wraps a name (`@tas`) around another span.
 
-The keyword or rune forms are up to the programmer's choice. Most
-existing code uses runes, but the keyword form makes the learning path
-easier.
+*See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
 
-A regular twig has two syntactic forms, *tall* and *flat*:
+###### <h6 id="gate">gate:</h6> a function/lambda/closure
 
--   *tall*: multiple lines, no parentheses, two or more spaces between
-    tokens
--   *flat*: one line, parentheses, one space between tokens
+A *gate* is a core with one arm. To call a gate on an argument,
+replace the sample (at [tree
+address](../../hoon/twig/limb/limb/) `+6` in the core) with the
+argument, and then compute the arm.
 
-Tall twigs can contain flat ones, but not vice versa. All irregular
-forms are flat.
+The payload of a gate has a shape of `{sample context}`.
 
-*See [twig concept](../../hoon/concepts/#-twig-expression),
-[expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*.
+-   *sample*: the argument tuple
+-   *context*: the subject in which the gate was defined
+
+*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span),
+[`%-` or `:call`](../../hoon/twig/cen-call/hep-call/) (the `twig` for
+calling a `gate`).*
 
 ###### limb: attribute or variable reference
 
@@ -246,22 +187,36 @@ found, the result is the product of the arm.
 
 *See [Limbs and wings](../../hoon/twig/limb)*
 
-###### slot: a tree addressing scheme
+###### loobean: a Hoon boolean
 
-Every cell has a head and a tail, each of which may be either an atom or
-a cell. Therefore every noun is a binary tree. `+1` or `.` resolves to
-the whole cell (technically this would work against an atom as well).
-The head of `+n` is `+2n`, the tail is `+(2n+1)`. 
+`0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
 
-###### face: a labeled subtree
+> Why? It's fresh, it's different, it's new. And it's annoying. And it
+> keeps you on your toes. And it's also just intuitively right.
 
-Hoon has no scope or symbol-table; there is only the subject. To
-"declare" a "variable" is to construct a new subject:
-`[name=value old-subject]`.
+###### metal: a variance model
 
-A *face* is a span that wraps a name (`@tas`) around another span.
+Every core has a *metal* which defines its variance model (ie, the
+properties of the span of a compatible core). The default is `gold`
+(invariant).
 
-*See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
+-   `gold`: *invariant*
+-   `lead`: *bivariant*
+-   `zinc`: *covariant*
+-   `iron`: *contravariant*
+
+*See [advanced types](/hoon/advanced)*.
+
+###### <h6 id="mold">mold:</h6> a type constructor / validator
+
+A *mold* is an idempotent gate (function), accepting any noun, and
+producing a range with a useful span.
+
+-   *bunt*: the value a mold produces when normalizing its default
+    sample
+-   *icon*: the span of the mold's range
+
+*See [mold twigs](/hoon/twig/buc-mold/).*
 
 ###### nest: type compatibility test
 
@@ -270,9 +225,51 @@ set of nouns in the second span is provably a subset of the first.
 
 *See [advanced types](../../hoon/advanced/)*.
 
-###### loobean: a Hoon boolean
+###### slot: a tree addressing scheme
 
-`0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
+Every cell has a head and a tail, each of which may be either an atom or
+a cell. Therefore every noun is a binary tree. `+1` or `.` resolves to
+the whole cell (technically this would work against an atom as well).
+The head of `+n` is `+2n`, the tail is `+(2n+1)`. 
 
-> Why? It's fresh, it's different, it's new. And it's annoying. And it
-> keeps you on your toes. And it's also just intuitively right.
+###### <h6 id="span">span:</h6> an inferred type
+
+A *span* defines a set (finite or infinite) of nouns and ascribes some
+semantics to it. There is no Hoon syntax for a span; it is always
+produced as the inferred range of an expression (*twig*).
+
+*See [basic types](../../hoon/basic/#-type-span-and-mold).*
+
+###### <h6 id="twig">twig:</h6> a Hoon expression
+
+A *twig* is a Hoon expression. Specifically, twig is the mold for the
+noun that a Hoon source expression compiles to. A twig is always a cell.
+
+A twig has one of two forms: `{twig twig}`, which produces the ordered
+pair of the two twigs, or a cell `{stem bulb}`, where `stem` is an
+atomic symbol.
+
+-   <h6 id="stem">*stem*:</h6> an atomic symbol (`@tas`) - the name of a twig.
+-   <h6 id="bulb">*bulb*:</h6> The mold of the twig's contents.
+
+Most twigs have a *regular form*, beginning with a *rune*. Some twigs 
+also have a syntactic *irregular form*; a few have *only* an *irregular form*.
+
+-   <h6 id="rune">*rune*:</h6> a pair of ASCII symbols used to begin a twig.
+
+For example, the rune [`?:`](../../hoon/twig/wut-test/col-if/) is 
+Hoon's most common conditional, a branch on a boolean test.  The first symbol 
+in a rune represents a family of related `twig`s. For example, the 
+[`?` family](../../hoon/twig/wut-test/) are all conditionals.
+
+A regular twig has two syntactic forms, *tall* and *flat*:
+
+-   *tall*: multiple lines, no parentheses, two or more spaces between
+    tokens
+-   *flat*: one line, parentheses, one space between tokens
+
+Tall twigs can contain flat ones, but not vice versa. All irregular
+forms are flat.
+
+*See [twig concept](../../hoon/concepts/#-twig-expression),
+[expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*.

@@ -1,13 +1,13 @@
 ---
 anchor: none
 footer: true
-title: Documentation
+title: Docs
 sort: 4
 ---
 
 <div class="lead">
     <div class="logo inverse"></div>
-    <h1 class="blue i-b">Urbit documentation</h1>
+    <h1 class="blue i-b">Urbit docs</h1>
 </div>
 
 <div class="col-md-12 head">
@@ -39,8 +39,7 @@ etc, should start with the [Nock definition](nock/definition) and work upward fr
 <ul>
 <li>Chat with us on <a href="https://urbit.org/stream"><code>:talk</code></a></li>
 <li>Our discussion forum <a href="http://urbit.org/fora"><code>fora</code></a></li>
-<li>On Twitter <a href="https://twitter.com/urbit_">@urbit_</a></li>
-<li>On Reddit <a href="https://reddit.com/r/urbit">/r/urbit</a></li>
+<li>On Twitter <a href="https://twitter.com/urbit">@urbit</a></li>
 <li>Or email us at <a href="mailto:urbit@urbit.org">urbit@urbit.org</a></li>
 </ul>
 
