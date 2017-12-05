@@ -238,7 +238,7 @@ Removes `~other/circle` as a source for circle `%name`.
 ### Membership
 
 If you have joined a circle, you can make this information publicly
-publicly available to help others find that circle as well.
+available to help others find that circle as well.
 
 `;show ~some/circle`  
 Adds a circle to your public membership list.
@@ -343,34 +343,27 @@ Set audience to a station on your own ship.
 `;~dannum-mitryl this is a private message`  
 Set the audience and send a post to it. This works for all of the above.
 
-Your audience is configured 'implicitly' with regard to the following
-rules (in order):
+Your audience is configured with regard to the following rules (in order):
 
--   if you manually locked the audience, that audience.
--   if typing a post, the audience when you started typing.
+-   if you manually set the audience, that audience.
 -   if you activated a post, the post you activated.
--   audience of the last post received.
 -   audience of the last post sent.
-
-Clear any 'implicit' audience setting by moving your cursor to the start
-of the line and pressing backspace (whether the line is empty or not).
-Posting a line clears the typing and activation configurations.
 
 ### Local nicknames
 
 `;nick`  
 List all local nicknames.
 
-`;nick ~your-urbit`  
+`;nick ~some-urbit`  
 Look up a nickname.
 
 `;nick plato`  
 Search in reverse.
 
-`;nick ~your-urbit plato`  
+`;nick ~some-urbit plato`  
 Create a nickname.
 
-`;nick ~your-urbit ~`  
+`;nick ~some-urbit ~`  
 Clear an assigned nickname.
 
 `;set nicks`  
