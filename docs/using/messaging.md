@@ -272,7 +272,7 @@ you.)
 
 `;name ~some/circle 'my handle'`  
 Set a handle ("name") for yourself in a specific circle. It will display
-to users who have done `;set nick`, but gets truncated if it's longer
+to users who have done `;set nicks`, but gets truncated if it's longer
 than 14 characters.
 
 ### Audience
