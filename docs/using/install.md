@@ -1,5 +1,6 @@
 ---
 navhome: /docs/
+navuptwo: true
 next: true
 sort: 1
 title: Install
@@ -23,31 +24,16 @@ with us at [urbit.org/stream](https://urbit.org/stream).
 > lots of fun to play with, but not quite ready for your important or
 > sensitive data.
 
-## Packages
+### Update: `~2017.12.7`
 
-Urbit may be in your system's package repository — check there first.  If not,
-we host packages for some platforms. If you'd prefer to install from source, see
-below.
+Urbit `0.5.1` is now live! We expect there to be a delay in getting our
+updated `urbit-0.5.1` binary packages propagated to Homebrew, APT and
+the other various package managers. So for now, **please
+build and install Urbit from source**. The instructions below will walk
+you through how to do that. You'll then be free to continue the boot 
+and setup process as normal, per the rest of this Using docs section.
 
-**Mac OS X (Homebrew)**
-
-- `brew update`
-- `brew install urbit`
-
-**FreeBSD**
-
-- Download `urbit-0.4.3.txz` [here](https://media.urbit.org/dist/freebsd/urbit-0.4.3.txz).
-- Install with `pkg install urbit-0.4.3.txz`
-
-**Debian**
-
-- Download `urbit_0.4.5-1_amd64.deb` [here](https://media.urbit.org/dist/debian/urbit_0.4.5-1_amd64.deb).
-- Install with `dpkg -i urbit_0.4.5-1_amd64.deb`
-- Then `apt-get install -f` to install any missing dependencies
-
-## Source
-
-First, fetch the source tarball: **[urbit-0.4.5.tar.gz](https://media.urbit.org/dist/src/urbit-0.4.5.tar.gz)**.
+## Build from source
 
 ### Dependencies
 
@@ -93,8 +79,8 @@ Which can usually be installed with the following one-liners:
 
 Once your dependencies are installed the rest is easy:
 
-    $ tar xfvz urbit-0.4.5.tar.gz
-    $ cd urbit-0.4.5
+    $ git clone https://github.com/urbit/urbit
+    $ cd urbit
     $ make # gmake on FreeBSD
 
 After running `make`, your Urbit executable is in `bin/urbit`. Install it wherever you'd like.
@@ -109,16 +95,28 @@ Test that it works:
        urbit -w <myplanet> -t <myticket> if you have a ticket
        urbit <myplanet or mycomet> to restart an existing urbit
 
-## Setting up swap
+### Boot your urbit
 
-Urbit wants to map 2GB of memory when it boots up.  We won’t
-necessarily use all this memory, we just want to see it.  On a
-normal modern PC or Mac, this is not an issue.  On some small
-cloud virtual machines (Amazon or Digital Ocean), the default
-memory configuration is smaller than this, and you need to
-manually configure a swapfile.
+And you're done! If you're running Urbit on a normal modern PC or Mac, or
+on a large cloud instance, move onto the next [setup](../setup/) section to 
+boot your urbit. 
 
-Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  For Amazon there’s a StackOverflow thread [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
+If you're running Urbit in the cloud on a small instance, however, read
+the below section, as you may need to additionally configure swap space.
+
+### (Set up swap)
+
+Urbit wants to map 2GB of memory when it boots up.  We won’t necessarily 
+use all this memory, we just want to see it.  On a normal modern PC or Mac, 
+or on a large cloud virtual machine, this is not an issue.  On some small 
+cloud virtual machines (Amazon or Digital Ocean), the default memory 
+configuration is smaller than this, and you need to manually configure a 
+swapfile.
+
+Digital Ocean has a post on adding swap 
+[here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  
+For Amazon there’s a StackOverflow thread 
+[here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
 
 Don’t spend a lot of time tweaking these settings; the simplest
 thing is fine.
