@@ -1,8 +1,8 @@
 ---
 navhome: /docs/
-sort: 8
+sort: 9
+title: Community projects
 ---
-
 
 # Community projects
 
