@@ -432,7 +432,7 @@ We will only display the delta generation parts of the flow. Delta application i
 Hall-to-Hall subscriptions happen when a source gets added to a story. This is done with a `%source` action, and results in a `%peer` move being sent (prompted by a `%story %follow` delta).  
 Upon receiving a valid peer on a `/circle` path, the subscribing ship is added to that circle's presence map.
 
-![subscriptions implementation flow](./diagrams/flow-subscriptions.png "subscriptions implementation flow")
+![subscriptions implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-subscriptions.png "subscriptions implementation flow")
 
 ```
 ++  poke-talk-action      :<  we got poked with an action.
@@ -449,7 +449,7 @@ Upon receiving a valid peer on a `/circle` path, the subscribing ship is added t
 
 Once a query has opened, Hall will receive updates on it, rumors. The changes describes in these rumors are applied via the following flow.
 
-![rumor implementation flow](./diagrams/flow-rumors.png "report diff implementation flow")
+![rumor implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-rumors.png "report diff implementation flow")
 
 ```
 ++  diff-talk-rumor       :<  we got a query update.
@@ -464,7 +464,7 @@ Once a query has opened, Hall will receive updates on it, rumors. The changes de
 
 To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%publish` command being sent to the involved partners. Receiving a `%publish` command causes its messages to be added to the story through the creation of a `%story %grams` delta.
 
-![messaging implementation flow](./diagrams/flow-messaging.png "messaging implementation flow")
+![messaging implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-messaging.png "messaging implementation flow")
 
 ```
 ++  poke-talk-action      :<  we got poked with an action.
