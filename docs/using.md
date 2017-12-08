@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
 sort: 1
+title: Using
 ---
 
 # Get Started

@@ -1,21 +1,22 @@
 ---
-navhome: '/docs'
-next: True
-sort: 6
-title: Filesystem
+navhome: /docs/
+navuptwo: true
+next: true
+sort: 7
+title: Filesystem (Clay)
 ---
 
-# Filesystem (`%clay`)
+# Filesystem (Clay)
 
 <div class="row">
 
 <div class="col-md-8">
 
-Urbit has its own revision-controlled filesystem, `%clay`. `%clay` is a
+Urbit has its own revision-controlled filesystem, Clay. Clay is a
 typed, global, referentially transparent namespace. An easy way to think
 about it is like typed `git` with continuous sync.
 
-The most common way to use `%clay` is to mount a `%clay` node in a Unix
+The most common way to use Clay is to mount a Clay node in a Unix
 directory. The Urbit process will watch this directory and automatically
 record edits as changes, Dropbox style. The mounted directory is always
 at the root of your pier directory.
@@ -32,7 +33,7 @@ Create a `%sandbox` desk based on the `%home` desk:
 
     |merge %sandbox ~your-urbit %home
 
-Most of the time we want to use `%clay` from Unix.
+Most of the time we want to use Clay from Unix.
 
 Mount the entire contents of your `sandbox` desk to Unix:
 
@@ -57,7 +58,7 @@ Sync from your friend `~some-ship`'s `%experiment` desk to your
 Paths
 </h3>
 
-A path in `%clay` is a list of URL-safe text, restricted to
+A path in Clay is a list of URL-safe text, restricted to
 `[a z]`,`[0 9]`, `.`, `-`, `_` and `~`. Formally this is a `(list knot)`
 where each segment is a `@ta`.
 
@@ -228,7 +229,7 @@ Copy the file at `from` into the path `to`.
 
 Move the file at `from` into the path `to`.
 
-In `%clay`, `|mv` is just a shorthand for `|cp` then `|rm`. The `|rm`
+In Clay, `|mv` is just a shorthand for `|cp` then `|rm`. The `|rm`
 doesn't happen unless the `|cp` succeeds.
 
 ### Generators

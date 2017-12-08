@@ -1,18 +1,18 @@
 ---
 navhome: /docs/
-next: true
-sort: 7
-title: Web
+navuptwo: true
+sort: 8
+title: Web (Eyre)
 ---
 
-# Web
+# Web (Eyre)
 
 <div class="row">
 <div class="col-md-8">
 
-Your Urbit runs its own webserver, `%eyre`, that handles all things HTTP.  Here we'll cover the features of `%eyre` that most resemble a traditional web server.
+Your Urbit runs its own webserver, Eyre, that handles all things HTTP.  Here we'll cover the features of Eyre that most resemble a traditional web server.
 
-By default `%eyre` uses Tree, which is sort of like a combination of [Jekyll](https://jekyllrb.com/) or [Kirby](https://getkirby.com/) and Finder on OSX.  Tree is a simple ui for browsing the contents of the filesystem, statically publishing a blog or any kind of content and for running single-page apps.  
+By default Eyre uses Tree, which is sort of like a combination of [Jekyll](https://jekyllrb.com/) or [Kirby](https://getkirby.com/) and Finder on OSX.  Tree is a simple ui for browsing the contents of the filesystem, statically publishing a blog or any kind of content and for running single-page apps.
 
 Tree was built primarily to display both our documentation and the contents of `urbit.org`.  We provide a few simple examples [here](#-examples) of how to publish using Tree.  If you're interested in doing anything complex it's worth checking out the [docs source](https://github.com/urbit/docs) and the [urbit.org](https://github.com/urbit/urbit.org) source.
 
@@ -52,7 +52,7 @@ Now modify `/sandbox/web/test.md` to list the children using the `<list/>` JSX:
     This is a simple markdown file.
 
     <div><list /></div>
-    
+
 To view your file rendered using tree:
 
     http://localhost:8080/test/
@@ -289,7 +289,7 @@ Each JSON message sent to your Urbit needs an app endpoint.  Can be set as a glo
 
 ### `window.urb.oryx`
 
-CSRF token.  Written to the page by `%eyre`, our webserver, when logged in.  Required part of any authenticated request and included by default.
+CSRF token.  Written to the page by Eyre, our webserver, when logged in.  Required part of any authenticated request and included by default.
 
 ### `window.urb.req(method,url,params,json,cb)`
 

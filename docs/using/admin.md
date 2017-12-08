@@ -1,11 +1,12 @@
 ---
 navhome: /docs/
+navuptwo: true
 next: true
-sort: 3
-title: Administration and Operation
+sort: 4
+title: Administration and operation
 ---
 
-# Administration
+# Administration and operation
 
 <div class="row">
 <div class="col-md-8">
@@ -17,7 +18,7 @@ Your Urbit is a persistent Unix process that you mainly control from the console
 
 ## Shutdown
 
-You can turn your Urbit off with `ctrl-d` from the `:talk` or `:dojo` prompts.
+You can turn your Urbit off with `ctrl-d` from the Talk or Dojo prompts.
 
 ## Restart
 
@@ -50,13 +51,13 @@ To move a pier, simply move the contents of the directory it lives in.  To keep 
 
 Your Urbit terminal is separated into two parts: the prompt (the bottom line) and the record (everything above that).  The record is shared; all the output from all the apps in your command set appears in it.  The prompt is multiplexed.
 
-In the CLI Urbit apps can process your input before you hit return.  To see this in action try entering `)` as the first character at the `:dojo` prompt.  Since there is no dojo command or hoon expression that starts with ')', the dojo rejects it.
+In the CLI Urbit apps can process your input before you hit return.  To see this in action try entering `)` as the first character at the Dojo prompt.  Since there is no dojo command or hoon expression that starts with ')', the dojo rejects it.
 
 `ctrl-x` - Switches the prompt between running console apps
 
 `ctrl-c` - Crash current event.  Processed at the Unix layer and prints a stack trace.
 
-`ctrl-d` - From `:talk` or `:dojo` stops your Urbit process.
+`ctrl-d` - From Talk or Dojo stops your Urbit process.
 
 `↑` / `↓` - History navigation
 
@@ -76,7 +77,7 @@ The following emacs-style key bindings are available:
     ctrl-u    kill to beginning of line
     ctrl-y    yank from kill buffer
 
-Full coverage of the Urbit shell, the `:dojo` is covered in the [Shell walkthrough](/docs/using/shell).
+Full coverage of the Urbit shell, the Dojo is covered in the [Shell walkthrough](/docs/using/shell).
 
 ## Web
 
@@ -86,18 +87,6 @@ On startup Urbit tries to bind to `localhost:8080`.  If you're already running s
 Your Urbit serves a simple homepage from `http://localhost:8080` or `https://your-urbit.urbit.org` that should be self-explanatory.  Since our HTTPS isn't audited / battle tested we just call it "secure" HTTPS.  You can find that on `8443`.  Or `8444` (and so on) if you're already running something on `8443`.
 
 A complete walkthrough of the Urbit web interface is [here](/docs/using/web).
-
-## Moons
-
-Urbit namespace is distributed by having parent nodes sign the keys for child nodes.  If you have a planet, your parent star issued your ticket.  As a planet you, in turn, can sign the keys for moons.  The basic idea is: your planet runs permanently in a data center somewhere and moons run on all your devices.  Each planet can issue ~4 billion (`2^32`) moons.
-
-To generate a random moon from your planet run:
-
-    ~your-urbit:dojo> +moon
-
-You can use the resulting output in the same installation flow from [install](/docs/using/install).  
-
-Moons are automatically synced to their parent `%kids` desk, and can control applications on their parent planet using `|link`.  You can read more about those things in the [filesystem](/docs/using/filesystem) and [console](/docs/using/shell) walkthroughs.
 
 ## Continuity breaches
 

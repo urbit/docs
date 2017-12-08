@@ -77,10 +77,24 @@ Which can usually be installed with the following one-liners:
 
 ### Clone and make
 
-Once your dependencies are installed the rest is easy:
+Once your dependencies are installed the rest is easy.
+
+If you're cloning the `urbit/urbit` Git repository for the first time, run:
 
     $ git clone https://github.com/urbit/urbit
     $ cd urbit
+    $ make # gmake on FreeBSD
+
+_**Updated for the `2017.12.7` continuity breach**_
+
+If you already have a clone of the `urbit/urbit` Git repository, assuming
+your `origin` upstream is the `urbit/urbit` repository on Github, run the
+following commands to make sure you're on the correct, clean Git branch:
+
+    $ cd urbit
+    $ git fetch --all
+    $ git checkout master
+    $ git reset --hard origin/master
     $ make # gmake on FreeBSD
 
 After running `make`, your Urbit executable is in `bin/urbit`. Install it wherever you'd like.

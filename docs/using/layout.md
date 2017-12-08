@@ -1,6 +1,8 @@
 ---
 navhome: /docs/
-sort: 9
+navuptwo: true
+next: true
+sort: 3
 title: Source layout
 ---
 
@@ -29,63 +31,63 @@ Looking at the top level of [the Arvo repo](http://github.com/urbit/arvo), or an
 
 Let's step through directory by directory.
 
-## `app/` 
+## `app/`
 
-This is where `%gall` apps live.  `%gall` apps are stateful servers, sort of like unix daemons.  One familiar one is `app/talk.hoon` which is the source code for `:talk` the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
+This is where Gall apps live.  Gall apps are stateful servers, sort of like unix daemons.  One familiar one is `app/talk.hoon` which is the source code for Talk the urbit messaging transport layer.  And there's also `app/dojo.hoon` — that's your shell.
 
 ## `arvo/`
 
-This is where the `%arvo` vanes live.  Vanes are sort of like kernel modules. These are worth listing one by one:
+This is where the Arvo vanes live.  Vanes are sort of like kernel modules. These are worth listing one by one:
 
 ### `arvo/ames.hoon`
 
-`%ames` is our network protocol.
+Ames is our network protocol.
 
 ### `arvo/behn.hoon`
 
-`%behn` is a simple timer.
+Behn is a simple timer.
 
 ### `arvo/clay.hoon`
 
-`%clay` is our filesystem.
+Clay is our filesystem.
 
 ### `arvo/dill.hoon`
 
-`%dill` is our terminal driver.
+Dill is our terminal driver.
 
 ### `arvo/eyre.hoon`
 
-`%eyre` is our webserver.
+Eyre is our webserver.
 
 ### `arvo/ford.hoon`
 
-`%ford` is our build system.
+Ford is our build system.
 
 ### `arvo/gall.hoon`
 
-`%gall` is our application model.
+Gall is our application model.
 
 ### `arvo/hoon.hoon`
 
-`%hoon` is our programming langauge.  Since Hoon compiles itself the language is actually specified in this source file.
+Hoon is our programming langauge.  Since Hoon compiles itself the language is actually specified in this source file.
 
 ### `arvo/zuse.hoon`
 
-`%zuse` is the Hoon library.  
+Zuse is the Hoon library.  
 
-That's it.  That's the whole system. 
+That's it.  That's the whole system.
 
 ## `gen/`
 
-`gen/` holds generators.  Generators are short `:dojo` scripts.
+`gen/` holds generators.  Generators are short Dojo scripts.
 
 ## `lib/`
 
-`lib/` holds shared libraries for programs. `lib/sole` is a good example — that's the console library that's shared by both `:dojo` in the command line, and the `dojo` web client.
+`lib/` holds shared libraries for programs. `lib/sole` is a good example — that's the console library that's shared by both Dojo in the command line, and the Dojo web client.
 
 ## `mar/`
 
-This is where marks live.  Marks are data type definitions used by `%ford`.  A mark is like a mime-type, but specified in executable code.  
+This is where marks live.  Marks are data type definitions used by Ford.  A mark is like a mime-type, but specified in executable code.  
 
 ## `ren/`
 
@@ -99,9 +101,8 @@ Default web requests in urbit are handled as a `.urb`, which is caught by the `u
 
 ## `web/`
 
-There are the files publicly accessible to the web, as made possible by `%eyre`.
+There are the files publicly accessible to the web, as made possible by Eyre.
 
 ## `web.md`
 
 This is the homepage for your urbit.  You'll see it at `http://localhost:8080/` or `http://fintud-macrep.urbit.org/`.
-
