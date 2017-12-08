@@ -1,3 +1,10 @@
+---
+navhome: /docs/
+navuptwo: true
+next: true
+sort: 2
+title: Hall interface
+---
 
 # Hall interface
 

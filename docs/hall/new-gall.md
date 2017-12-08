@@ -1,7 +1,13 @@
+---
+navhome: /docs/
+navuptwo: true
+sort: 3
+title: The new Gall model
+---
 
 # The new Gall model
 
-This document is complemented by the source code of applications that use the new Gall model (like [hall](https://github.com/urbit/arvo/blob/master/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
+This document is complemented by the source code of applications that use the new Gall model (like [Hall](https://github.com/urbit/arvo/blob/master/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
 
 New Gall has not yet fully solidified. As such, structure and naming are tentative to change.
 
@@ -102,7 +108,7 @@ For a more verbose specification of all of these, see the new Gall spec.
 ## By example
 
 To help solidify this and see what this would looks like in the wild, let's make a very simple example app. It's a counter that can go up and down, and can be queried for its value, or whether or not its value is a multiple of x. First we write all the structures that will support our app, and then we implement the arms that operate on them.  
-(The app code in its entirety can be found [here](gall-eg.hoon).)
+(The app code in its entirety can be found [here](example).)
 
 ### State & deltas
 
@@ -242,4 +248,5 @@ While it's technically easier to produce a list in reverse order, semantically i
 
 ## Further reading
 
-[Original new Gall spec by ~sorreg-namtyv](gall-spec_orig.hoon)  
+- [Original new-Gall spec by ~sorreg-namtyv](spec)  
+- [A new-Gall example app](example)  

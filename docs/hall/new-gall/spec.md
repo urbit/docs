@@ -1,3 +1,17 @@
+---
+navhome: /docs/
+next: true
+sort: 1
+title: The original new-Gall spec
+---
+
+# The original new-Gall spec
+
+`~sorreg-namtyv`
+
+<br />
+
+```
 =>  |%
     --
 |*  $:  :>  vinyl: historical state (including version)
@@ -147,3 +161,4 @@
   ^-  (list delta)
   !!
 --
+```

@@ -1,3 +1,13 @@
+---
+navhome: /docs/
+next: true
+sort: 2
+title: A new-Gall example app 
+---
+
+# A new-Gall example app 
+
+```
 ::  counter app
 ::  new gall example, may or may not compile.
 ::
@@ -84,3 +94,4 @@
 ::
 ::  not pictured: ++path-to-query
 --
+```
