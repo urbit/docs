@@ -32,7 +32,7 @@ a few new words is a small price for avoiding this pain point.
 ## Concepts
 
 A few major Hoon concepts: `noun` (data), `nock` (interpreter),
-[`mint`](#mint) (compiler), [`hoon`](#hoon) (AST node),
+[`hoon`](#hoon) (AST node), [`mint`](#mint) (compiler), 
 `gate` (function), `mold` (constructor), `core` (object), `mark`
 (protocol).
 
@@ -117,11 +117,12 @@ Try it in the `:dojo` to get:
 
 ### <a name="mint">`mint`</a> (compiler)
 
-[`mint`](#mint) is the Hoon compiler.  It maps a cell `[type hoon]` to a
-cell `[type nock]`, where a [`type`](#type) is a type, a [`hoon`](#hoon)
-is a parsed expression (AST), and a `nock` is a Nock formula.  `mint` accepts
-a subject type and a parsed source expression; it produces a product type
-and an executable formula.
+[`mint`](#mint) is the Hoon compiler.  It maps a cell `[type hoon]`
+to a cell `[type nock]`, where a [`type`](#type) is type 
+information, a [`hoon`](#hoon) is a parsed expression (AST), and a 
+`nock` is a Nock formula.  `mint` accepts a subject type and a parsed 
+source expression; it produces a product type and an executable 
+formula.
 
 Calculating the output type from the input type and the source
 code is called "type inference". If you've used another typed
