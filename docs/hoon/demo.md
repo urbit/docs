@@ -55,7 +55,7 @@ function is to return.
 Line 5 uses the `?:` rune, which is a conditional. This line 
 checks whether `count` equals `end`.  If so, line 6 (and the
 whole loop) returns the value `~`.  The list is finished.  If not, 
-line 7 produces a `cell`, which is an ordered pair. The pair will 
+line 7 produces a 'cell', which is an ordered pair. The pair will 
 be: (a) the next item in the list, determined by lines 8-14; and 
 (b) the rest of the list, determined by line 15.
 
