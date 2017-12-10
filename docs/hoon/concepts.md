@@ -10,25 +10,19 @@ title: Concepts
 Usually, a new language is an improvement on one you already
 know.  If it isn't, it probably at least shares concepts with a
 large family of relatives.  These concepts come with words, like
-*type* or *function*, that map cleanly onto its semantics.
+*variable* or *function*, that map cleanly onto its semantics.
 
-In Hoon we throw away almost all these words and invent new
+In Hoon we throw away many of these words and invent new
 ones, which mean almost the same things.  But why?
 
 ## Motivation
 
 Hoon has no close relatives.  The normal jargon of programming
-maps poorly onto its semantics.  For example, although Hoon is a
-typed language, the term "type" is not formally defined in Hoon.
-"Type" is a great word, but Hoon has three separate concepts
-which could comfortably claim it.  We say "type" all the time; we
-mean [`span`](#span), or `mold`, or `mark`, or possibly all three.
-
-Other common programming concepts used only informally in Hoon
-are "function," "object," "event," "expression," "variable,"
-"label," "closure", "environment," "scope," and probably a few
-more.  We do use these words informally, but we're always making
-an analogy whose precision depends on context.
+maps poorly onto its semantics. Some of the common concepts used 
+only informally in Hoon include "function," "object," "event," 
+"variable," "label," "closure", "environment," "scope," and probably 
+a few more.  We do use these words informally, but we're always 
+making an analogy whose precision depends on context.
 
 Hoon has concepts *like* all these abstractions, but they remain
 *false cognates*.  The closer an inexact cognate, the more
@@ -38,7 +32,7 @@ a few new words is a small price for avoiding this pain point.
 ## Concepts
 
 A few major Hoon concepts: `noun` (data), `nock` (interpreter),
-[`mint`](#mint) (compiler), [`span`](#span) (type), [`twig`](#twig) (expression),
+[`mint`](#mint) (compiler), [`hoon`](#hoon) (AST node),
 `gate` (function), `mold` (constructor), `core` (object), `mark`
 (protocol).
 
@@ -53,20 +47,21 @@ The simplest noun syntax uses brackets, like `[a b]` for the cell
 of `a` and `b`.  Brackets nest right; `[a b c d]` is `[a [b [c
 d]]]`.  You'll also see braces: `{a b c d}`.
 
-A noun list, by convention, points right and is zero-terminated.
-Hoon uses tuples (improper nouns) more freely than Lisp; only
-genuinely iterative structures are null-terminated lists.
+A noun list, by convention, goes from left to right and is 
+null-terminated. That said, Hoon uses tuples (improper nouns) more 
+freely than Lisp; only genuinely iterative structures are 
+null-terminated lists.
 
 When an atom is used as a string (a `cord`), the bytes are always
-UTF-8 in LSB first order.  When you see `foo`, `$foo`, `%foo`,
+UTF-8 in LSB-first order.  When you see `foo`, `$foo`, `%foo`,
 etc, this refers to the integer `0x6f.6f66`, aka `7.303.014`.
-(Hoon syntax breaks integer atoms in the German style.)
+(Hoon syntax uses `.` to break integer atoms in the German style.)
 
 One common operation on nouns is `slot`, a tree addressing
 scheme which maps an atom to a subtree.  The whole noun is slot
 `1`; the left child of `n` is `2n`, the right child `2n+1`.
 
-Nothing in Nock, Hoon or Urbit can create cycles in a noun or
+Nothing in Nock, Hoon, or Urbit can create cycles in a noun or
 detect pointer equivalence.  Nouns are generally implemented
 with reference counting, and have a lazy short Merkle hash to
 help with equality testing and associative containers.
@@ -82,16 +77,54 @@ it's still fun and useful to [learn more](../../nock).
 
 ## Compilation concepts
 
+### <a name="hoon">`hoon`</a> (AST node)
+
+A [`hoon`](../reference) is the result of parsing a Hoon source 
+expression into an AST node. Because every Hoon programs is, 
+in its entirety, a single expression of Hoon, the result of parsing 
+a whole Hoon program into an AST is a single `hoon`.
+
+As the noun that the parser produces, a hoon is a tagged union of
+the form `[tag data]`, where the tag is a constant such as `%brts`
+which matches up with the appropriate type of data (often more 
+`hoon`s).  For example, the expression `:-(p q)`, once parsed into 
+an AST, becomes the tagged union:
+
+```
+[%clhp p=hoon q=hoon]
+```
+
+The %clhp is for "colhep".
+
+Keep in mind that `p` and `q` would be parsed too.  So if `p` is `2` 
+and `q` is 17, the parsed result is:
+
+```
+[%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
+```
+
+To parse Hoon source into a hoon AST, use `ream` on a `cord`, e.g.:
+
+```
+(ream ':-(2 17)')
+```
+
+Try it in the `:dojo` to get:
+
+```
+[%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
+```
+
 ### <a name="mint">`mint`</a> (compiler)
 
-[`mint`](#mint) is the Hoon compiler.  It maps a cell `{span twig}` to a
-cell `{span nock}`, where a [`span`](#span) is a type, a [`twig`](#twig)
-is a compiled expression (AST), and a `nock` is a Nock formula.  `mint` accepts
-a subject type and a source expression; it produces a product type
+[`mint`](#mint) is the Hoon compiler.  It maps a cell `[type hoon]` to a
+cell `[type nock]`, where a [`type`](#type) is a type, a [`hoon`](#hoon)
+is a parsed expression (AST), and a `nock` is a Nock formula.  `mint` accepts
+a subject type and a parsed source expression; it produces a product type
 and an executable formula.
 
 Calculating the output type from the input type and the source
-code is called "type inference." If you've used another typed
+code is called "type inference". If you've used another typed
 functional language, like Haskell, Hoon's type inference does the
 same job but with less intelligence.
 
@@ -105,52 +138,21 @@ which makes your program more readable anyway.  Also, the dumber
 the compiler, the easier it is for a dumb human to understand
 what the compiler is thinking.
 
-### <a name="twig">`twig`</a> (expression)
-
-A [`twig`](../reference) is a Hoon AST node, the result of parsing a
-source expression.  A Hoon source file encodes one twig.
-
-As the noun that the parser produces, a twig is a tagged union of
-the form `{stem bulb}`, where `stem` (the tag) is a `cord` which
-controls the type of `bulb` (the data).
-
-As text, each twig has both regular and irregular syntax forms.
-Regular syntax can be either *tall* or *flat*: multiline or
-single-line.  Irregular syntax is always flat.   Tall twigs can
-contain flat twigs, but not vice versa.
-
-Regular forms always start with a *sigil*, which is either a
-*keyword* or a *rune* at the programmer's choice.  A keyword is
-the stem cord.
-
-For most stems, tall regular form has no delimiter or terminator,
-eliminating the `)))))` problem common in functional languages.
-Hoon also uses an unusual "backstep" indentation pattern to
-control left-margin drift.
-
-Hoon is mildly whitespace-sensitive.  It knows the difference
-between no whitespace, one-space, and more-space.  But all cases
-of more-space mean the same thing.  Flat syntax uses one-space,
-tall syntax more-space.
-
-As an example, the regular flat keyword syntax `:call(a b)` means
-the same thing as the flat rune syntax `%-(a b)`, the tall
-keyword syntax
+To compile the hoon from the last subsection into Nock, try the 
+following in `:dojo`:
 
 ```
-:call  a
-b
-```
-or the tall rune syntax (here on one line, with double spaces):
-```
-%-  a  b
+(mint:ut %noun [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]])
 ```
 
-### <a name="span">`span`</a> (type, as range)
+The `%noun` is type information, and the tagged union after that 
+is the hoon.
 
-A `span` is a Hoon type.  It defines a set (finite or
-infinite) of nouns and ascribes some semantics to it.  There is
-no syntax for spans; they are always defined by inference (ie, by
+### <a name="type">`type`</a> (type, as range)
+
+A `type` defines a set (finite or infinite) of nouns and ascribes 
+some semantics to it.  There is no direct syntax for defining 
+types; they are always defined by inference (ie, by
 [`mint`](#mint)), usually using a constructor (`mold`).
 
 ### `gate` (function)
@@ -179,9 +181,9 @@ A `mold` is a constructor function (`gate`).  Its sample is any
 noun; its product is a structured noun.  A mold is idempotent;
 `(mold (mold x))` always equals `(mold x)`.
 
-Since there's no such thing as a [`span`](#span) declaration, we use molds
-to define useful spans by example; we also use them to validate
-untrusted network input.
+Because there's no such thing as a [`type`](#type) declaration, 
+we use molds to define useful types by example; we also use them 
+to validate untrusted network input.
 
 ### `face` (named variable)
 
@@ -189,21 +191,22 @@ In a conventional language, we have a scope, environment or
 symbol table.  Declaring a variable, like `var foo: atom`, adds
 the name `foo` to the table with type `atom`.
 
-The Hoon equivalent is `:var  foo  atom`.   But Hoon has a
+The Hoon analogue is `=|(foo atom)`.   But Hoon has a
 homoiconic heap; there is no inscrutable scope or environment.
 There is just the subject, which is one noun.  To "declare a
-variable" is to make a cell `[variable old-subject]`, and use it
-as the subject of the [`twig`](#twig) below.
+variable" is to make a cell `[variable old-subject]`, and use that
+as the subject of the next expression.
 
-So the labe[`twig`](#twig)l `foo` isn't a key in a symbol table; it's in the
-type ([`span`](#span)) of the new value.  It's not a variable named `foo`,
-whose value is of type `atom`; it's a subtree of type `foo:atom`.
+The label `foo` isn't a key in a symbol table; it's stored as a kind 
+of metadata, in the type ([`type`](#type)) of the new value.  It's not 
+a variable named `foo`, whose value is of type `atom`; it's a subtree 
+of type `foo:atom`.
 
 ### <a name="limb">`limb`</a> (attribute or variable reference)
 
 A [`limb`](../twig/limb/limb), like `foo`, is Hoon's equivalent of a variable
-reference.  A limb is a [`twig`](#twig); given a subject [`span`](#span),
-[`mint`](#mint) resolves it to a Nock formula and a product [`span`](#span).
+reference.  A limb is a [`hoon`](#hoon); given a subject [`type`](#type),
+[`mint`](#mint) resolves it to a Nock formula and a product [`type`](#type).
 
 To resolve limb `foo`, [`mint`](#mint) searches the subject depth-first,
 head-first for either a `face` named `foo`, or a `core` with the
@@ -212,6 +215,9 @@ subtree of the subject.  If it finds a core, it computes the arm
 formula with that core as the subject.
 
 A limb can also be a slot (direct tree address), like `+15`.
+
+`boo:[foo=12 baz=23 boo=34]` evaluates to `34`. 
+`+6:[foo=12 baz=23 boo=34]` evaluates to `baz=23`.
 
 ### `wing` ([`limb`](#limb) path)
 
