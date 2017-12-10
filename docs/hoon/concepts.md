@@ -94,10 +94,8 @@ an AST, becomes the tagged union:
 [%clhp p=hoon q=hoon]
 ```
 
-The %clhp is for "colhep".
-
-Keep in mind that `p` and `q` would be parsed too.  So if `p` is `2` 
-and `q` is 17, the parsed result is:
+The `%clhp` is for "colhep". Keep in mind that `p` and `q` would be 
+parsed too.  So if `p` is `2` and `q` is 17, the parsed result is:
 
 ```
 [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
