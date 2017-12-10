@@ -85,8 +85,8 @@ in its entirety, a single expression of Hoon, the result of parsing
 a whole Hoon program into an AST is a single `hoon`.
 
 As the noun that the parser produces, a hoon is a tagged union of
-the form `[tag data]`, where the tag is a constant such as `%brts`
-which matches up with the appropriate type of data (often more 
+the form `[tag data]`, where the tag is a constant such as `%brts`,
+which is matched up with the appropriate type of data (often more 
 `hoon`s).  For example, the expression `:-(p q)`, once parsed into 
 an AST, becomes the tagged union:
 
