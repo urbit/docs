@@ -29,19 +29,19 @@ $(count (add 1 count))          :: 15
 ```
 
 Hoon is a functional language.  FizzBuzz is usually defined as a
-side effect, but officially Hoon has no side effects.  This code 
-will *return* a list of strings, not *print* a list of strings. 
-(Of course, if you run this code from the Urbit `dojo` (shell) you 
-will be able to see the product.)
+side effect, but officially Hoon has no side effects.  Accordingly, 
+this code will *return* a list of strings, not *print* a list of 
+strings. (Of course, if you run this code from the Urbit `dojo` 
+(shell) you will be able to see the product.)
 
 The code produces a list in which each item is either a number 
 (as a string), "Fizz", "Buzz", or "Fizzbuzz". The value `~` is 
 "null" and indicates the end of the list.
 
 Line 1 uses the `|=` 
-*[rune](https://urbit.org/docs/about/glossary#rune)* to define a 
-function of one argument, `end`, which is of the type `atom` (i.e. 
-an unsigned integer).
+[rune](https://urbit.org/docs/about/glossary#rune) to define a 
+function that takes one argument, labelled `end`.  The argument 
+is of the type `atom` (i.e. an unsigned integer).
 
 Line 2 declares a variable, `count`, with initial value `1`.
 
@@ -49,8 +49,8 @@ Line 3 begins a loop.
 
 Line 4 defines the product of the loop as a list of `tape`s. 
 (A `tape` is a list of characters, one of Hoon's two string 
-types.)  The `^-` rune is used for defining the product type the function 
-is to return. 
+types.)  The `^-` rune is used for defining the type of data the 
+function is to return. 
 
 Line 5 uses the `?:` rune, which is a conditional. This line 
 checks whether `count` equals `end`.  If so, line 6 (and the
