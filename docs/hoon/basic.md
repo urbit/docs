@@ -7,85 +7,125 @@ title: Basic types
 
 # Basic types
 
-A `span` is a set of nouns and an interpretation of these nouns.
-Officially, we don't use the word "type" in Hoon.  But if we had
-to say "type," it would mean `span`.
+A Hoon `type` is a set of nouns. There is no syntax for directly 
+defining the data type of a Hoon expression. Instead, the compiler 
+infers the type of a Hoon expression by calculating the range of 
+possible values of that expression.
 
-## Type, span and mold
+Working with a type in Hoon requires the use of a `mold`. Each 
+type is defined by a mold. To define a custom type, you must create 
+a custom mold.
 
-There is no Hoon syntax for a span.  The programmer never defines
-a span explicitly.  It is always produced as the inferred range
-of an expression (`twig`).
+## Molds
 
-But we still need simple, well-formed expressions that produce
-regular and well-shaped ranges, for three reasons.
+A mathematical function is a mapping from one set (the domain) to 
+another (the range). Pass an object from the domain to some 
+function *f*, and *f* returns an object from the range. In Hoon we 
+can think of a `gate` as a function, where the gate's `sample` is 
+its argument.
 
-First: in most cases, this trivial generator should be much
-simpler than the computation itself.  Casting the actual result
-to its ideal shape makes sure we know what we're building.
+A `mold` is an idempotent function (i.e., gate) that takes any noun 
+as its input (i.e., its domain is the set of all nouns). An 
+idempotent function *f* is one such that, if *f(x)* terminates, 
+*f(x) = f(f(x))*.  The product range of a mold is the type defined 
+by that mold. That is, each mold's type is the set of possible 
+outputs of that mold.
 
-Second: we can define a standard form for such generators, and
-the standard form is useful.  The standard form is a constructor
-function, or *mold*.
+Essentially, molds are constructor functions. You can pass a mold 
+any data you like, and the product is guaranteed be of the type 
+defined by that mold. Molds are the perfect tool for validating 
+untrusted foreign data: just call the relevant mold with that data. 
+But this use case is unusual for beginners; otherwise you shouldn't 
+call molds directly.
 
-A mold is an idempotent function (`gate`), accepting any noun.
-(An idempotent function is one such that *f(f(x))* equals *f(x)*
-if *f(x)* terminates.)  The product range of the function is the
-span, or *icon*, of the mold.
+More frequently, molds are used when we want to `cast`. We use a 
+cast when we want the Hoon compiler's type-checker to test whether 
+a Hoon expression is guaranteed to evaluate to a product of the 
+desired type. If it isn't, then the compiler will halt with a 
+`nest-fail` crash. Proper Hoon code will include a cast for each
+gate.
 
-Usually we use molds purely in the first sense: as an abstract
-definition of a noun.  Don't actually call a mold unless you're
-actually validating untrusted foreign data.  As a beginner,
-hopefully you aren't!
+The `^` family of runes is for casting. In particular, `^-` allows 
+us to cast with a mold. For example, we can cast for an `atom` using 
+the `@` mold as follows:
 
-## `span`: a set of nouns
+```
+^-(@ 17)
+```
 
-Below is the mold for `span`.  You haven't seen this syntax before,
-and we haven't explained it yet; just treat it as pseudocode.
+Evaluating the above in `dojo` should return 17, because 17 is of 
+the type `atom`.  On the other hand,
 
-This is a slightly simplified version of `span`.  We undo and explain the
-simplifications in the [advanced types](../advanced) section.
+```
+^-(@ [17 18])
+```
+
+...this should result in a `nest-fail`, because `[17 18]` is a cell, 
+not an atom.
+
+See the documentation on the `^` family of runes for more information 
+on casts. See the documentation on the `$` family of runes for 
+building molds. (Also check out the irregular `,` operator.)
+
+## `type`: a set of types
+
+Below is the mold for `type`, written in Hoon. This mold's range is 
+the set of all types. (Don't let yourself get too dizzy thinking 
+about it! Strictly speaking, the range is of trees of type-*labels* 
+used by the compiler's type-checker. We don't mess around with 
+set-theoretic paradoxes.)
+
+You haven't seen this syntax before, and we haven't explained it yet; 
+just treat it as pseudocode.
+
+This is a slightly simplified version of `type`.  We undo and 
+explain the simplifications in the [advanced types](../advanced) 
+section.
 
 ```
 ++  term  @tas
-++  span
+++  type
   $@  $?  $noun
           $void
   ==  $%  {$atom p/term q/(unit atom)}
-          {$cell p/span q/span}
-          {$core p/span q/(map term twig)}
-          {$face p/term q/span}
-          {$fork p/(set span)}
-          {$hold p/span q/twig}
+          {$cell p/type q/type}
+          {$core p/type q/(map term hoon)}
+          {$face p/term q/type}
+          {$fork p/(set type)}
+          {$hold p/type q/hoon}
       ==
 ```
 
-If a span is an atom, it's either the atomic string `noun` or
-`void`; if a cell, it's a tuple with one of the heads `atom`,
-`cell`, `core`, etc.  We'll go through each of these cases below.
+If a type is an atom, it's labelled with either the atomic string 
+`%noun` or `%void`; if a cell, it's labelled with a tuple with one of 
+the heads `%atom`, `%cell`, `%core`, etc.  We'll go through each of 
+these cases below.
 
 ### `?($noun $void)`
 
-`$noun` is the set of all nouns.  `$void` is the set of no nouns.
+`%noun` is the label for the set of all nouns. `%void` is the label 
+for the empty set. 
 
-### `{$cell p/span q/span}`
+(For now, don't worry too much about the switch from `$` to `%`.)
 
-`{$cell p/span q/span}` is the set of all cells with head `p` and
+### `{$cell p/type q/type}`
+
+`[%cell p/type q/type]` is for the set of all cells with head `p` and
 tail `q`.
 
-### `{$fork p/(set span)}`
+### `{$fork p/(set type)}`
 
-`{$fork p/(set span)}` is the union of all spans in the set `p`.
+`[%fork p/(set type)]` is for the union of all types in the set `p`.
 
-### `{$hold p/span q/twig}`
+### `{$hold p/type q/hoon}`
 
-A `$hold` span, with span `p` and twig `q`, is a lazy reference
-to the span of `(mint p q)`.  In English, it means: "the type of
+A `%hold` type, with type `p` and hoon `q`, is a lazy reference
+to the type of `(mint p q)`.  In English, it means: "the type of
 the product when we compile `q` against subject `p`."
 
-### `{$face p/term q/span}`
+### `{$face p/term q/type}`
 
-A `{$face p/term q/span}` wraps the label `p` around the span
+A `[%face p/term q/type]` wraps the label `p` around the type
 `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which
 obeys symbol rules: lowercase and digit only, infix hyphen,
 first character must be lowercase.
@@ -95,10 +135,10 @@ nontrivial.
 
 ### `{%atom p/term q/(unit atom))}`
 
-An `$atom` is an atom, with two twists.  `q` is a `unit`, Hoon's
+`%atom` is for an atom, with two twists.  `q` is a `unit`, Hoon's
 equivalent of a nullable pointer or a Haskell `Maybe`.  If `q`
-is `~`, null, the span is *warm*; any atom is in the span.  
-If `q` is `[~ x]`, where `x` is any atom, the span is *cold*;
+is `~`, null, the type is *warm*; any atom is in the type.  
+If `q` is `[~ x]`, where `x` is any atom, the type is *cold*;
 its only legal value is the constant `x`.
 
 `p` in the atom is a terminal used as an *aura*, or soft atom
@@ -125,7 +165,6 @@ here are some conventions bound to constant syntax:
 @d              date
   @da           absolute date
   @dr           relative date (ie, timespan)
-@f              yes or no (inverse boolean)
 @n              nil
 @p              phonemic base (plot)
 @r              IEEE floating-point
@@ -155,14 +194,14 @@ statically, by casting through the empty aura `@`.  Hoon is not
 dependently typed and can't statically enforce data constraints
 (for example, it can't enforce that a `@tas` is really a symbol).
 
-### `{$core p/span q/(map term span)}`
+### `{$core p/type q/(map term type)}`
 
-A `$core` is a code-data cell.  The data (or *payload*) is the
-tail; the code (or *battery*) is the head.  `p`, a span, is the
-span of the payload.  `q`, a name-twig table, is the source code
+`%core` is for a code-data cell.  The data (or *payload*) is the
+tail; the code (or *battery*) is the head.  `p`, a type, is the
+type of the payload.  `q`, a name-hoon table, is the source code
 for the battery.
 
-Each twig in the battery source is compiled to a formula, with
+Each hoon in the battery source is compiled to a formula, with
 the core itself as the subject.  The battery is a tree of these
 formulas, or *arms*.  An arm is a computed attribute against its
 core.
