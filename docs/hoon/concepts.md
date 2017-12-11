@@ -80,7 +80,7 @@ it's still fun and useful to [learn more](../../nock).
 ### <a name="hoon">`hoon`</a> (AST node)
 
 A [`hoon`](../reference) is the result of parsing a Hoon source 
-expression into an AST node. Because every Hoon programs is, 
+expression into an AST node. Because every Hoon program is, 
 in its entirety, a single expression of Hoon, the result of parsing 
 a whole Hoon program into an AST is a single `hoon`.
 
@@ -101,7 +101,9 @@ parsed too.  So if `p` is 2 and `q` is 17, the parsed result is:
 [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
 ```
 
-To parse Hoon source into a hoon AST, use `ream` on a `cord`, e.g.:
+The 2 and 17 have each been parsed as `%sand`-tagged `hoon`s, which 
+represent constant atoms. To parse Hoon source into a hoon AST, use 
+`ream` on a `cord`, e.g.:
 
 ```
 (ream ':-(2 17)')
@@ -151,8 +153,13 @@ is the hoon.
 
 A `type` defines a set (finite or infinite) of nouns and ascribes 
 some semantics to it.  There is no direct syntax for defining 
-types; they are always defined by inference (ie, by
+types; they are always defined by inference (i.e., by
 [`mint`](#mint)), usually using a constructor (`mold`).
+
+All types are assembled out of base types defined in `++type`. 
+(Look up `++  type` in hoon.hoon for examples.) When the compiler 
+does type-inference on a prorgam, it assembles complex types out 
+of the simpler built-in types.
 
 ### `gate` (function)
 
@@ -211,9 +218,11 @@ To resolve limb `foo`, [`mint`](#mint) searches the subject depth-first,
 head-first for either a `face` named `foo`, or a `core` with the
 arm `foo`.  If it finds a face, the product is a *leg*, or
 subtree of the subject.  If it finds a core, it computes the arm
-formula with that core as the subject.
+formula with that core as the subject. A limb can also be a slot 
+(direct tree address), like `+15`.
 
-A limb can also be a slot (direct tree address), like `+15`.
+The hoon compiler always resolves a limb to a tree axis lookup, 
+regardless of the kind of limb.
 
 `boo:[foo=12 baz=23 boo=34]` evaluates to `34`. 
 `+6:[foo=12 baz=23 boo=34]` evaluates to `baz=23`.
