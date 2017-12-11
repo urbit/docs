@@ -146,8 +146,8 @@ following in `:dojo`:
 (mint:ut %noun [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]])
 ```
 
-The `%noun` is type information, and the tagged union after that 
-is the hoon.
+The `%noun` is for the data type of the subject, and the tagged 
+union after that is the hoon.
 
 ### <a name="type">`type`</a> (type, as range)
 
