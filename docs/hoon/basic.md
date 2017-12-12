@@ -12,9 +12,9 @@ defining the data type of a Hoon expression. Instead, the compiler
 infers the type of a Hoon expression by calculating the range of 
 possible values of that expression.
 
-Working with a type in Hoon requires the use of a `mold`. Each 
-type is defined by a mold. To define a custom type, you must create 
-a custom mold.
+Working with a type in Hoon normally requires the use of a `mold`. 
+Each type is defined by a mold. To define a custom type, you must 
+create a custom mold.
 
 ## Molds
 
@@ -24,40 +24,45 @@ function *f*, and *f* returns an object from the range. In Hoon we
 can think of a `gate` as a function, where the gate's `sample` is 
 its argument.
 
-A `mold` is an idempotent function (i.e., gate) that takes any noun 
-as its input (i.e., its domain is the set of all nouns). An 
-idempotent function *f* is one such that, if *f(x)* terminates, 
-*f(x) = f(f(x))*.  The product range of a mold is the type defined 
-by that mold. That is, each mold's type is the set of possible 
-outputs of that mold.
+A `mold` is an idempotent function whose domain is the set of all 
+nouns. (That is, it's an idempotent gate that takes any noun for its 
+sample.) An idempotent function *f* is one such that, if *f(x)* 
+terminates, *f(x) = f(f(x))*.  The product range of a mold is the 
+type defined by that mold. That is, each mold's type is the set of 
+possible outputs of that mold.
 
 Essentially, molds are constructor functions. You can pass a mold 
 any data you like, and the product is guaranteed be of the type 
 defined by that mold. Molds are the perfect tool for validating 
-untrusted foreign data: just call the relevant mold with that data. 
-But this use case is unusual for beginners; otherwise you shouldn't 
-call molds directly.
+untrusted foreign data. Just call the relevant mold with that data 
+and check that the input equals the output. This is one reason why 
+molds must be idempotent; if the untrusted data is of the correct 
+type, passing it to the mold shouldn't change it. But this use case 
+is unusual for beginners; otherwise you shouldn't call molds 
+directly.
 
 More frequently, molds are used when we want to `cast`. We use a 
 cast when we want the Hoon compiler's type-checker to test whether 
 a Hoon expression is guaranteed to evaluate to a product of the 
 desired type. If it isn't, then the compiler will halt with a 
-`nest-fail` crash. Proper Hoon code will include a cast for each
-gate.
+`nest-fail` crash. Proper Hoon code will include a cast for the 
+product type of each gate.
 
 The `^` family of runes is for casting. In particular, `^-` allows 
 us to cast with a mold. For example, we can cast for an `atom` using 
 the `@` mold as follows:
 
 ```
-^-(@ 17)
+^-  @
+17
 ```
 
 Evaluating the above in `dojo` should return 17, because 17 is of 
 the type `atom`.  On the other hand,
 
 ```
-^-(@ [17 18])
+^-  @
+[17 18]
 ```
 
 ...this should result in a `nest-fail`, because `[17 18]` is a cell, 
@@ -69,11 +74,14 @@ building molds. (Also check out the irregular `,` operator.)
 
 ## `type`: a set of types
 
-Below is the mold for `type`, written in Hoon. This mold's range is 
-the set of all types. (Don't let yourself get too dizzy thinking 
-about it! Strictly speaking, the range is of trees of type-*labels* 
-used by the compiler's type-checker. We don't mess around with 
-set-theoretic paradoxes.)
+Below is the mold for `type`, which effectively defines all the types 
+available in Hoon.
+
+Strictly speaking, this mold defines the tree data structure the Hoon 
+compiler uses to represent type information. It has a label for each 
+of the base types, and it's recursive, so a complex type is 
+represented as a nested combination of base types and various other 
+odds and ends.
 
 You haven't seen this syntax before, and we haven't explained it yet; 
 just treat it as pseudocode.
@@ -96,10 +104,9 @@ section.
       ==
 ```
 
-If a type is an atom, it's labelled with either the atomic string 
-`%noun` or `%void`; if a cell, it's labelled with a tuple with one of 
-the heads `%atom`, `%cell`, `%core`, etc.  We'll go through each of 
-these cases below.
+If the `type`-tree is an atom, it's either a `%noun` or a `%void`; if 
+the `type`-tree is a cell, it's a tuple with one of the heads `%atom`, 
+`%cell`, `%core`, etc.  We'll go through each of these cases below.
 
 ### `?($noun $void)`
 
@@ -122,6 +129,9 @@ tail `q`.
 A `%hold` type, with type `p` and hoon `q`, is a lazy reference
 to the type of `(mint p q)`.  In English, it means: "the type of
 the product when we compile `q` against subject `p`."
+
+Note that this means we can have parsed Hoon AST data in the 
+`type`-tree.
 
 ### `{$face p/term q/type}`
 
