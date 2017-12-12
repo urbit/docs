@@ -38,8 +38,8 @@ untrusted foreign data. Just call the relevant mold with that data
 and check that the input equals the output. This is one reason why 
 molds must be idempotent; if the untrusted data is of the correct 
 type, passing it to the mold shouldn't change it. But this use case 
-is unusual for beginners; otherwise you shouldn't call molds 
-directly.
+is unusual for beginners; in normal practice you shouldn't call 
+molds directly.
 
 More frequently, molds are used when we want to `cast`. We use a 
 cast when we want the Hoon compiler's type-checker to test whether 
