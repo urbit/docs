@@ -80,39 +80,35 @@ it's still fun and useful to [learn more](../../nock).
 ### <a name="hoon">`hoon`</a> (AST node)
 
 A [`hoon`](../reference) is the result of parsing a Hoon source 
-expression into an AST node. Because every Hoon program is, 
-in its entirety, a single expression of Hoon, the result of parsing 
-a whole Hoon program into an AST is a single `hoon`.
+expression into an AST node. These AST nodes are nouns, like all 
+other Hoon data. Because every Hoon program is, in its entirety, a 
+single expression of Hoon, the result of parsing the whole thing 
+into an AST is a single `hoon`.
 
-As the noun that the parser produces, a hoon is a tagged union of
-the form `[tag data]`, where the tag is a constant such as `%brts`,
-which is matched up with the appropriate type of data (often more 
-`hoon`s).  For example, the expression `:-(p q)`, once parsed into 
-an AST, becomes the tagged union:
-
-```
-[%clhp p=hoon q=hoon]
-```
-
-The `%clhp` is for "colhep". Keep in mind that `p` and `q` would be 
-parsed too.  So if `p` is 2 and `q` is 17, the parsed result is:
+A hoon is a tagged union of the form `[%tag data]`, where the tag 
+is a constant such as `%brts` (from the source `|=`, i.e. "bartis"), 
+and is matched up with the appropriate type of data (often more 
+`hoon`s, from source subexpressions). For example, the expression 
+`:-(2 17)`, once parsed into an AST, becomes the following:
 
 ```
 [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
 ```
 
-The 2 and 17 have each been parsed as `%sand`-tagged `hoon`s, which 
-represent constant atoms. To parse Hoon source into a hoon AST, use 
-`ream` on a `cord`, e.g.:
+The `%clhp` is produced from the rune `:-` (i.e. "colhep"). The 2 and 
+17 have each been parsed as `%sand`-tagged hoons, which represent 
+atoms (in this case each with an aura of `%ud`, i.e. unsigned 
+decimal). To parse Hoon source into a hoon AST, use `ream` on a `cord` 
+containing Hoon source, e.g.:
 
 ```
-(ream ':-(2 17)')
+(ream ':+(12 7 %a)')
 ```
 
-Try it in the `:dojo` to get:
+Try the above in the `:dojo` to get:
 
 ```
-[%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
+[%clls p=[%sand p=%ud q=12] q=[%sand p=%ud q=7] r=[%rock p=%tas q=97]]
 ```
 
 ### <a name="mint">`mint`</a> (compiler)
@@ -120,14 +116,19 @@ Try it in the `:dojo` to get:
 [`mint`](#mint) is the Hoon compiler.  It maps a cell `[type hoon]`
 to a cell `[type nock]`, where a [`type`](#type) is type 
 information, a [`hoon`](#hoon) is a parsed expression (AST), and a 
-`nock` is a Nock formula.  `mint` accepts a subject type and a parsed 
+`nock` is a Nock formula. `mint` accepts a type and a parsed 
 source expression; it produces a product type and an executable 
 formula.
 
-Calculating the output type from the input type and the source
-code is called "type inference". If you've used another typed
-functional language, like Haskell, Hoon's type inference does the
-same job but with less intelligence.
+As part of the type-checking process, mint checks that the output 
+type "nests" within the input type, i.e. that the output type is a 
+subset of the input type. If not, mint halts with a `nest-fail` 
+crash.
+
+Calculating the output type from the input `hoon` is called "type 
+inference". If you've used another typed functional language, like 
+Haskell, Hoon's type inference does the same job but with less 
+intelligence.
 
 Haskell infers backward and forward; Hoon only infers forward.
 Hoon can't figure out the type of a noun from how you use it,
@@ -139,15 +140,15 @@ which makes your program more readable anyway.  Also, the dumber
 the compiler, the easier it is for a dumb human to understand
 what the compiler is thinking.
 
-To compile the hoon from the last subsection into Nock, try the 
-following in `:dojo`:
+To compile an example `hoon` from the last subsection into Nock, 
+try the following in `:dojo`:
 
 ```
 (mint:ut %noun [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]])
 ```
 
-The `%noun` is for the data type of the subject, and the tagged 
-union after that is the hoon.
+The `%noun` is the input `type` for `mint`, and the tree after that 
+is the input `hoon`.
 
 ### <a name="type">`type`</a> (type, as range)
 
@@ -158,7 +159,7 @@ types; they are always defined by inference (i.e., by
 
 All types are assembled out of base types defined in `++type`. 
 (Look up `++  type` in hoon.hoon for examples.) When the compiler 
-does type-inference on a prorgam, it assembles complex types out 
+does type-inference on a program, it assembles complex types out 
 of the simpler built-in types.
 
 ### `gate` (function)
@@ -181,7 +182,7 @@ A gate is a special case of a core: a core with one arm, whose
 name is the empty string.  The shape of a core is `[battery
 payload]`, where *battery* is a tree of Nock formulas
 
-### `mold` (type, as constructor)
+### `mold` (constructor)
 
 A `mold` is a constructor function (`gate`).  Its sample is any
 noun; its product is a structured noun.  A mold is idempotent;
@@ -194,14 +195,15 @@ to validate untrusted network input.
 ### `face` (named variable)
 
 In a conventional language, we have a scope, environment or
-symbol table.  Declaring a variable, like `var foo: atom`, adds
-the name `foo` to the table with type `atom`.
+symbol table.  Declaring a variable, like e.g. `int foo = 3`, 
+adds the name `foo` to the table with type `int`.
 
-The Hoon analogue is `=|(foo atom)`.   But Hoon has a
-homoiconic heap; there is no inscrutable scope or environment.
-There is just the subject, which is one noun.  To "declare a
-variable" is to make a cell `[variable old-subject]`, and use that
-as the subject of the next expression.
+The Hoon analogue is `=/(foo atom 3 ...)`, where `foo` is a `face` 
+and `atom` is the type. But Hoon has a homoiconic heap; there is no 
+inscrutable scope or environment. There is just the subject, which 
+is one noun.  To "declare a variable" is to make a cell 
+`[variable old-subject]`, and use thatas the subject of the next 
+expression.
 
 The label `foo` isn't a key in a symbol table; it's stored as a kind 
 of metadata, in the type ([`type`](#type)) of the new value.  It's not 
