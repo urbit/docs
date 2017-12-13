@@ -98,14 +98,16 @@ and is matched up with the appropriate type of data (often more
 The `%clhp` is produced from the rune `:-` (i.e. "colhep"). The 2 and 
 17 have each been parsed as `%sand`-tagged hoons, which represent 
 atoms (in this case each with an aura of `%ud`, i.e. unsigned 
-decimal). To parse Hoon source into a hoon AST, use `ream` on a `cord` 
-containing Hoon source, e.g.:
+decimal).
+
+To parse Hoon source into a hoon AST, use `ream` on a `cord` 
+containing Hoon source, try the following in `dojo`:
 
 ```
 (ream ':+(12 7 %a)')
 ```
 
-Try the above in the `:dojo` to get:
+The result should be:
 
 ```
 [%clls p=[%sand p=%ud q=12] q=[%sand p=%ud q=7] r=[%rock p=%tas q=97]]
@@ -116,19 +118,14 @@ Try the above in the `:dojo` to get:
 [`mint`](#mint) is the Hoon compiler.  It maps a cell `[type hoon]`
 to a cell `[type nock]`, where a [`type`](#type) is type 
 information, a [`hoon`](#hoon) is a parsed expression (AST), and a 
-`nock` is a Nock formula. `mint` accepts a type and a parsed 
-source expression; it produces a product type and an executable 
-formula.
-
-As part of the type-checking process, mint checks that the output 
-type "nests" within the input type, i.e. that the output type is a 
-subset of the input type. If not, mint halts with a `nest-fail` 
-crash.
+`nock` is a Nock formula. `mint` takes as input the subject type 
+and a parsed source expression; it produces a product type and an 
+executable formula.
 
 Calculating the output type from the input `hoon` is called "type 
 inference". If you've used another typed functional language, like 
-Haskell, Hoon's type inference does the same job but with less 
-intelligence.
+Haskell, the Hoon compiler's type inference does the same job but 
+with less intelligence.
 
 Haskell infers backward and forward; Hoon only infers forward.
 Hoon can't figure out the type of a noun from how you use it,
@@ -140,15 +137,27 @@ which makes your program more readable anyway.  Also, the dumber
 the compiler, the easier it is for a dumb human to understand
 what the compiler is thinking.
 
-To compile an example `hoon` from the last subsection into Nock, 
-try the following in `:dojo`:
+The `mint` gate is inside the core `++  ut`, so call it using the 
+following syntax:
 
 ```
-(mint:ut %noun [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]])
+(~(<gate> <core> <arg 1>) <arg 2> <arg 3>)
 ```
 
-The `%noun` is the input `type` for `mint`, and the tree after that 
-is the input `hoon`.
+The `<gate>` is mint, the `<core>` is `ut`, `<arg 1>` is the subject 
+type, and `<arg 3>` is the parsed Hoon AST (i.e., a `hoon` from the 
+last section). What's `<arg 2>`? It's another piece of type 
+information. As part of the type-checking process, mint checks that 
+the output type "nests" within the input type, i.e. that the output 
+type is a subset of the input type. If not, mint halts with a 
+`nest-fail` crash. 
+
+Let's compile an example `hoon` from the last subsection into Nock. 
+Try the following in `:dojo`:
+
+```
+(~(mint ut %noun) %noun [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]])
+```
 
 ### <a name="type">`type`</a> (type, as range)
 
