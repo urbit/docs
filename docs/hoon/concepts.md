@@ -101,7 +101,7 @@ atoms (in this case each with an aura of `%ud`, i.e. unsigned
 decimal).
 
 To parse Hoon source into a hoon AST, use `ream` on a `cord` 
-containing Hoon source, try the following in `dojo`:
+containing Hoon source. Try the following in `dojo`:
 
 ```
 (ream ':+(12 7 %a)')
@@ -122,10 +122,10 @@ information, a [`hoon`](#hoon) is a parsed expression (AST), and a
 and a parsed source expression; it produces a product type and an 
 executable formula.
 
-Calculating the output type from the input `hoon` is called "type 
-inference". If you've used another typed functional language, like 
-Haskell, the Hoon compiler's type inference does the same job but 
-with less intelligence.
+Calculating the output type from the input `hoon` and subject type 
+is called "type inference". If you've used another typed functional 
+language, like Haskell, the Hoon compiler's type inference does the 
+same job but with less intelligence.
 
 Haskell infers backward and forward; Hoon only infers forward.
 Hoon can't figure out the type of a noun from how you use it,
