@@ -111,50 +111,46 @@ line comment at column 57.
 ## Expressions and Runes
 
 Each regular Hoon expression begins with a 
-[rune](https://urbit.org/docs/about/glossary#rune). A rune is a pair 
+[rune](../about/glossary/#-rune). A rune is a pair 
 of ASCII punctuation marks (a digraph)&mdash;e.g., `:-`.  The first 
 glyph in the rune indicates the category&mdash;e.g., `:` runes make 
-[cells](https://urbit.org/docs/about/glossary#cell) (i.e., ordered 
+[cells](../about/glossary/#-cell) (i.e., ordered 
 pairs). We pronounce runes using their glyph names&mdash;for `:-`, 
 we say "colhep".
 
 Each rune is followed by one or more subexpressions. The number and 
-kind of subexpressions depend on which rune is used.
+kind of subexpressions depend on the rune used.
 
 ```
 :-  25
 3
 ```
 
-The `:-` rune is always followed by two 'value' subexpressions to 
-produce a cell: `[25 3]`. The first subexpression, when evaluated, 
-becomes the *head* (i.e., the left) of the cell, and the second 
-becomes the *tail* (i.e., the right).
+This Hoon uses `:-` to produce a cell: `[25 3]`. There are always two 
+subexpressions following the `:-` in syntactically correct Hoon code, 
+the first of which, when evaluated, becomes the *head* (i.e., the left) 
+and the second of which becomes the *tail* (i.e., the right).
 
-There are two kinds of expressions in Hoon: *value* and *pattern*. 
-Value expressions evaluate to any sort of data. They can be as simple 
-as `25`, or they may require more computation, as in `(add 22 3)`. The 
-`:-` expression above is itself a value expression, as are the vast 
-majority of Hoon expressions.
+Hoon expressions are just called 
+[hoons](../about/glossary/#-twig), because a rune's subexpression can itself
+be a Hoon expression (i.e. another rune). You'll start to see this tree-like, 
+recursive structure the more you program in Hoon. You can think of one Hoon 
+file being composed of multiple hoons. The subexpressions following the 
+rune are sometimes called the *children* of that hoon.
 
-A pattern expression must be a *mold*, which we'll explain a bit 
-[later](https://urbit.org/docs/hoon/basic).
+## Tall and flat forms
 
-## Tall and flat styles
+There are two kinds of Hoon expression syntax: *tall* and *flat*.
+Most runes can be used in both tall and flat twigs. Tall hoons can 
+contain flat hoons, but not vice versa.
 
-There are two styles of Hoon expression syntax: *tall* and *flat*.
-Most runes can be used in both tall and flat styles. Tall expressions 
-are (typically) multi-line, but flat expressions must not have line 
-breaks in them. Tall expressions may contain flat ones, but not vice 
-versa.
-
-The `:-` expression in the last subsection was in tall style.  Here's 
+The `:-` expression in the last subsection was in tall form.  Here's 
 the flat equivalent:
 
 `:-(25 3)`
 
-Visually, the tall style looks more "statement"-like and flat-style 
-looks "expression"-like, preserving the attractive visual shape of
+Visually, a tall hoon looks like a "statement" and a flat hoon
+like an "expression," preserving the attractive visual shape of
 procedural code without the nasty side effects.
 
 ## Regular and irregular forms
@@ -164,7 +160,7 @@ There is a regular flat form and a regular tall form; most runes
 have both kinds of implementation.  All tall forms are regular.
 
 Some runes also have *irregular forms*, which follow no
-general principles at all.  All irregular forms are flat.
+principles at all.  All irregular forms are flat.
 
 ```
 .=  22
@@ -177,51 +173,52 @@ follow, and returns a boolean. Above is the tall, regular form of
 
 `=(22 23)`
 
-Some kinds of expression have *only* irregular forms.
+Some hoons have *only* irregular forms.
 
 ## Tall regular form
 
 Tall regular forms start with a rune followed by a `gap`.
-(Remember, a `gap` is any whitespace other than `ace`, or a line 
-break.) After that are the number and types of subexpressions 
-appropriate for that rune.  Each subexpression is separated from 
-its neighboring subexpressions by a `gap`.
+(Remember, a `gap` is any whitespace other than `ace`.) After 
+that are the number and types of subexpressions appropriate for 
+that rune.  Each subexpression is separated from its neighboring 
+subexpressions by a `gap`.
 
-Everything after the initial rune in an expression is called the 
-*body*. There are four body types: *fixed*, *running*, *jogging*, 
-and *[battery](https://urbit.org/docs/about/glossary#battery)*. 
+Let's call everything in the hoon after the initial rune the hoon 
+*body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
+and *[battery](../about/glossary/#-battery)*. 
 
 Runes with a *fixed* number of subexpressions self-terminate. For 
 instance, the `:-` and `.=` runes each have two subexpressions 
-and are self-terminating.  Otherwise the body is terminated by a 
-`gap` followed by either `==` (*running* or *jogging*, most runes) 
-or `--` (*battery*).
+and are self-terminating.  Otherwise the hoon is terminated by both
+a `gap`, then either `==` (*running* or *jogging*, most hoons) or
+`--` (*battery*).
 
-The *running* body is a list of *children* (i.e., subexpressions). 
-The *jogging* body is a list of child pairs, where the members of 
+The *running* body has a list of *children* (i.e., subexpressions). 
+The *jogging* body has a list of child pairs, where the members of 
 each pair are separated by a `gap`.  The *battery* body is
-a list of symbol-child pairs, each separated by a `gap`. See below 
-for examples of each body type.
+a list of symbol-child pairs, separated by a gap, prefixed by `++`
+and then a gap.
 
 This definition is enough to write Hoon that will parse.  But 
 writing code with optimal whitespace management requires some 
 additional informal conventions.
 
 Whitespace design in Hoon is an art, not a science.  It involves
-both tall/flat style switches and well-shaped gaps.  (Hoon layout
+both tall/flat mode switches and well-shaped gaps.  (Hoon layout
 could probably be done automatically with reasonable quality.
 But it would at least take machine learning, not a rule engine.)
 
 There are only two real *rules* in Hoon whitespace design: don't
 go past 80 characters, and don't use (completely) blank lines.
-Otherwise, if it looks good and is easy to read, it's fine.  The 
+Otherwise, if it looks good and is easy to read, it's good.  The 
 best way to learn the art is to do everything by convention
 until you know what you're doing.  Here are the conventions:
 
 ### Conventions: *fixed*
 
-Expressions with *fixed* bodies use "backstep" indentation, which 
-slopes backward and to the right by two spaces per line.
+Twig bodies with *fixed* fanout use "backstep" indentation, which 
+slopes backward and to the right by two spaces per line.  The first
+hoon child is two spaces after the end of the rune.
 
 Some *1-fixed*, *2-fixed*, *3-fixed* and *4-fixed* examples:
 
@@ -242,15 +239,14 @@ r
 s
 ```
 
-In optimal usage of backstep indentation, the most complicated 
-expressions are at the bottom, keeping code flow vertical rather than 
-diagonal.
+In optimal usage of backstep indentation, the most complicated hoons 
+are at the bottom, keeping code flow vertical rather than diagonal.
 
 ### Conventions: *running*
 
-A *running* body (a simple child list of arbitrary length) puts the 
-first child two spaces after the end of the rune, and the following 
-children straight down:
+A *running* hoon body (a simple child list) puts the first child two
+spaces after the end of the rune, and the following children straight 
+down:
 
 A *running* example:
 
@@ -265,10 +261,10 @@ A *running* example:
 
 ### Conventions: *jogging*
 
-A *jogging* body (a list of child pairs of arbitrary length) is like 
-a running body, but with a pair of children on each line separated by 
+A *jogging* hoon body (a list of child pairs) is like a running 
+body, but with a pair of children on each line, separated by 
 two spaces. Most jogging bodies start with a *fixed* sequence; 
-the first pair is below and two steps backward from the 
+the first jogging pair is below and two steps backward from the 
 last fixed child.
 
 There are two jogging conventions: *flat* (pair on one line) and
@@ -300,9 +296,9 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 ### Conventions: *battery*
 
 A *battery* body has a list of symbol-child pairs, for the
-[battery](https://urbit.org/docs/about/glossary#battery)
+[battery](../about/glossary/#-battery)
 of a 
-[core](https://urbit.org/docs/about/glossary#core).  A 
+[core](../about/glossary/#-core).  A 
 conventional example:
 
 ```
@@ -320,10 +316,10 @@ conventional example:
 
 Flat regular form starts with the rune, followed by `pal`, `(` 
 (left parenthesis), followed by a body whose subexpressions
-are all separated by `ace`s (single spaces), followed by `par`, 
-`)` (right parenthesis).
+are separated by `ace` (one space), followed by `par`, `)` (right
+parenthesis).
 
-A expression in flat form, `?:`, which is 3-fixed:
+A hoon in flat form, `?:` ("wutcol"), `[%if p=hoon q=hoon r=hoon]`:
 
 `?:(p q r)`
 
@@ -360,7 +356,7 @@ appropriate.
 
 In the *ultralapidary* naming style, labels are single letters,
 starting in order of construction from `a`, or within a tuple
-[mold](https://urbit.org/docs/about/glossary#mold) `p`.  Hoon 
+[mold](../about/glossary/#-mold) `p`.  Hoon 
 uses single-letter names for the same reason Algol style 
 languages pass arguments by order, rather than keyword.  Naming 
 items by order makes sense when there are no more than three or 
@@ -389,7 +385,7 @@ long names and/or kebab-case.
 
 If you came all this way to learn how to write apps, you're all
 set. This is about all you need to know to start getting your
-hands dirty. Refer back here or to the [standard library](../../hoon/library) when
-needed, but for now, move on to [Arvo](../../arvo) to continue learning.
+hands dirty. Refer back here or to the [standard library](../library/) when
+needed, but for now, move on to [Arvo](../../arvo/) to continue learning.
 
 If, however, good enough is *not* enough, feel free to dive deeper:
