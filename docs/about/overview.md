@@ -1,5 +1,6 @@
 ---
 navhome: /docs/
+navuptwo: true
 next: true
 sort: 1
 title: Technical overview
@@ -61,10 +62,10 @@ Arvo is an event-driven OS written in Hoon.  It can upgrade
 itself and everything inside it over the network.  The Arvo
 kernel proper is 500 lines of Hoon, which implements a typed
 event system with explicit call-stack structure.  Arvo ships
-with modules that provide P2P networking (`%ames`), a revision-
-control system (`%clay`), a web client/server (`%eyre`), a
-functional build system (`%ford`), and an application engine
-`(%gall)`.
+with modules that provide P2P networking (Ames), a revision-
+control system (Clay), a web client/server (Eyre), a
+functional build system (Ford), and an application engine
+(Gall).
 
 ### Ames
 
@@ -78,11 +79,12 @@ a supernode routing system for NAT traversal.
 
 ### Dojo and talk
 
-Urbit ships with two default applications: a REPL or shell
-`:dojo`, and a distributed user-level message-bus `:talk`.
-`:talk` under the hood resembles NNTP; to the user, it looks like
-a self-hosted Slack or persistent IRC.
+Urbit ships with two default applications: a REPL and shell
+_Dojo_, and a distributed user-level message-bus _Hall_.
+Hall under the hood resembles NNTP; to the user, through the 
+client _Talk_, it looks like a self-hosted Slack or persistent 
+IRC.
 
 The full Urbit stack (compiler, standard library, kernel,
-modules, and applications) is about 25,000 lines of Hoon.
+modules, and applications) is about 30,000 lines of Hoon.
 Urbit is patent-free and MIT licensed.

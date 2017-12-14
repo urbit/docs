@@ -1,6 +1,8 @@
 ---
 navhome: /docs/
+next: true
 sort: 5
+title: Hoon
 ---
 
 # Hoon

@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
-sort: 7
+next: true
+sort: 8
 title: Hall
 ---
 

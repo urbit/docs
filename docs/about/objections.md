@@ -1,8 +1,9 @@
 ---
-navhome: '/docs'
-next: True
-sort: 5
-title: Common objections to Urbit
+navhome: /docs/
+navuptwo: true
+next: true
+sort: 2
+title: Common objections
 ---
 
 # Common objections to Urbit
@@ -29,7 +30,7 @@ Ethically, what makes "premining" feel wrong is that the creators of the currenc
 
 To put it bluntly, Galen drives a 2004 Saab and Curtis drives a moldy '99 Cougar covered with raven shit.  And we both love cars.  We also have kids.  And our spouses are more skeptical of Urbit than anyone else could ever be.  (Our next startup definitely *will* be a get-rich-quick scheme, though.)
 
-Curtis created Urbit.  So by the [homesteading principle](https://en.wikipedia.org/wiki/Homestead_principle), he started out owning all of it.  But by now, Urbit's 8-bit galaxies have already been distributed among [57 separate individuals]().  Curtis owns 4 -- or 24, counting his whole family.  (Some of whom he still owes money.)
+Curtis created Urbit.  So by the [homesteading principle](https://en.wikipedia.org/wiki/Homestead_principle), he started out owning all of it.  But by now, Urbit's 8-bit galaxies have already been distributed among [57 separate individuals](https://github.com/urbit/arvo/blob/master/sys/vane/ames.hoon#L117-L372).  Curtis owns 4 -- or 24, counting his whole family.  (Some of whom he still owes money.)
 
 Tlon, the corporation which still runs Urbit development, has 95.  (Without Tlon, there is basically no Arvo.)  50 are reserved for a hypothetical Urbit Foundation.  Tlon employees have another 16.
 

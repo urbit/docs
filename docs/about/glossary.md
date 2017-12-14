@@ -1,6 +1,8 @@
 ---
 navhome: /docs/
-sort: 3
+navuptwo: true
+next: true
+sort: 5
 title: Glossary
 ---
 
@@ -14,8 +16,8 @@ to create a new semantic level in which one can be absolutely precise."
 
 ## Ships
 
-An Urbit *ship* is a cryptographic title on a *will* signed by private 
-key, a human-memorable name, and a packet routing address. Ships are 
+An Urbit *ship* is a cryptographic title on a *will* signed by private
+key, a human-memorable name, and a packet routing address. Ships are
 classed by the number of bits in their address:
 
     Size   Name    Parent  Object      Example
@@ -86,7 +88,7 @@ A ship's *pier* is its Unix directory.  For planets the name of the pier is usua
 An _arm_ is a named, functionally-computed attribute of a [core](#-core).
 
 The [hoon](#-a-hoon) of each arm is compiled to a Nock formula, with the
-enclosing `core` itself as the subject.
+enclosing [core](#-core) itself as the subject.
 
 There are two kinds of arms: *dry* and *wet*. Most arms are dry.
 
@@ -110,9 +112,10 @@ of metadata: an *aura*, and an optional constant.
 
 An atom type is *warm* or *cold* based on whether the constant exists.
 
--   <h6 id="-atom-warm">warm:</h6> if the constant is `~` (null), any atom is in the type
--   <h6 id="-atom-cold">cold:</h6> if the constant is `[~ atom]`, its only legal value is
-    `atom`.
+-   <h6 id="-atom-warm">warm:</h6> if the constant is `~` (null), any
+    atom is in the type
+-   <h6 id="-atom-cold">cold:</h6> if the constant is `[~ atom]`, its
+    only legal value is `atom`.
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*
 
@@ -264,7 +267,7 @@ properties of the type of a compatible core). The default is `gold`
 -   `zinc`: *covariant*
 -   `iron`: *contravariant*
 
-*See [advanced types](/hoon/advanced)*.
+*See [advanced types](../../hoon/advanced)*.
 
 #### mold
 
@@ -336,7 +339,6 @@ forms are flat.
 
 *See [hoon concept](../../hoon/concepts/#-hoon),
 [expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*.
-
 
 #### slot 
 
