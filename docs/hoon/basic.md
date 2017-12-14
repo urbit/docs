@@ -68,9 +68,10 @@ the type `atom`.  On the other hand,
 ...this should result in a `nest-fail`, because `[17 18]` is a cell, 
 not an atom.
 
-See the documentation on the `^` family of runes for more information 
-on casts. See the documentation on the `$` family of runes for 
-building molds. (Also check out the irregular `,` operator.)
+See the documentation on the [`^` family](../twig/ket-cast/) of runes
+for more information on casts. See the documentation on the
+[`$` family](../twig/buc-mold/) of runes for building molds.
+(Also check out the irregular `,` operator.)
 
 ## `type`: a set of types
 
@@ -107,6 +108,7 @@ section.
 If the `type`-tree is an atom, it's either a `%noun` or a `%void`; if 
 the `type`-tree is a cell, it's a tuple with one of the heads `%atom`, 
 `%cell`, `%core`, etc.  We'll go through each of these cases below.
+these cases below.
 
 ### `?($noun $void)`
 
@@ -117,12 +119,12 @@ for the empty set.
 
 ### `{$cell p/type q/type}`
 
-`[%cell p/type q/type]` is for the set of all cells with head `p` and
+`[%cell p=type q=type]` is for the set of all cells with head `p` and
 tail `q`.
 
 ### `{$fork p/(set type)}`
 
-`[%fork p/(set type)]` is for the union of all types in the set `p`.
+`[%fork p=(set type)]` is for the union of all types in the set `p`.
 
 ### `{$hold p/type q/hoon}`
 
@@ -135,12 +137,12 @@ Note that this means we can have parsed Hoon AST data in the
 
 ### `{$face p/term q/type}`
 
-A `[%face p/term q/type]` wraps the label `p` around the type
+A `[%face p=term q=type]` wraps the label `p` around the type
 `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which
 obeys symbol rules: lowercase and digit only, infix hyphen,
 first character must be lowercase.
 
-See [`:limb`](../twig/limb/limb) for how labels are resolved.  It's
+See [`%limb`](../twig/limb/limb) for how labels are resolved.  It's
 nontrivial.
 
 ### `{%atom p/term q/(unit atom))}`
