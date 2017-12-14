@@ -1,12 +1,12 @@
 ---
 navhome: /docs/
 sort: 21
-title: Twig reference
+title: Expression reference
 ---
 
-# Twig reference
+# Expression reference
 
-#### A catalog of all twig stems:
+#### A catalog of expressions:
 
 <div class="book">
 
