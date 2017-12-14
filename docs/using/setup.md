@@ -66,7 +66,7 @@ Good.
 Use `ctrl-x` to change your prompt. Let's join the main Urbit chat
 channel, `/urbit-meta`:
 
-    ~your-urbit:talk[] ;join /urbit-meta
+    ~your-urbit:talk[] ;join ~samzod/urbit-meta
 
 Talk is stateful, so your urbit will download a backlog.
 `/urbit-meta` is the place to ask questions, get help and talk about
