@@ -1,6 +1,6 @@
 ---
-navhome: '/docs'
-next: True
+navhome: /docs/
+next: true
 sort: 18
 title: Using generators with apps
 ---

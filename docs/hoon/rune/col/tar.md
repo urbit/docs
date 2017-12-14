@@ -1,0 +1,54 @@
+---
+navhome: /docs/
+next: true
+sort: 5
+title: :* "coltar"
+---
+
+# `:* "coltar"`
+
+`[%cltr p=(list hoon)]`: construct an n-tuple.
+
+## Expands to
+
+*Pseudocode*: `a`, `b`, `c`, ... as elements of `p`:
+
+```
+:-(a :-(b :-(c :-(... z)))))
+```
+
+### Compiler macro
+
+```
+|-
+?~  p
+  !!
+?~  t.p
+  i.p
+:-  i.p
+$(p t.p)
+```
+
+## Syntax
+
+Regular: *running*.
+
+## Examples
+
+```
+/~zod:dojo> :*(5 3 4 1 4 9 0 ~ 'a')
+[5 3 4 1 4 9 0 ~ 'a']
+/~zod:dojo> [5 3 4 1 4 9 0 ~ 'a']
+[5 3 4 1 4 9 0 ~ 'a']
+/~zod:dojo> :*  5
+                3
+                4 
+                1
+                4
+                9
+                0
+                ~
+                'a'
+            ==
+[5 3 4 1 4 9 0 ~ 'a']
+```

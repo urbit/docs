@@ -1,6 +1,7 @@
 ---
 navhome: /docs/
-sort: 21
+next: true
+sort: 24
 title: Expression reference
 ---
 
@@ -10,72 +11,73 @@ title: Expression reference
 
 <div class="book">
 
-### [Atoms and strings](../twig/atom)
+### [Atoms and strings](../atom/)
 
-### [Limbs and wings](../twig/limb)
-
-## `$ buc` (mold)
-
-<list src="../twig/buc-mold" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `| bar` (core)
-
-<list src="../twig/bar-core" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `: col` (cell)
-
-<list src="../twig/col-cell" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `% cen` (call)
-
-<list src="../twig/cen-call" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
+### [Limbs and wings](../limb/)
 
 ## `. dot` (nock)
 
-<list src="../twig/dot-nock" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `^ ket` (cast)
-
-<list src="../twig/ket-cast" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `~ sig` (hint)
-
-<list src="../twig/sig-hint" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `; sem` (make)
-
-<list src="../twig/sem-make" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `= tis` (flow)
-
-<list src="../twig/tis-flow" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `? wut` (test)
-
-<list src="../twig/wut-test" dataPreview="true" className="runes" childIsFragment="true"></list>
+<list src="../rune/dot" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 ---
 
 ## `! zap` (wild)
 
-<list src="../twig/zap-wild" dataPreview="true" className="runes" childIsFragment="true"></list>
+<list src="../rune/zap" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `= tis` (flow)
+
+<list src="../rune/tis" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `? wut` (test)
+
+<list src="../rune/wut" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `| bar` (core)
+
+<list src="../rune/bar" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `~ sig` (hint)
+
+<list src="../rune/sig" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `: col` (cell)
+
+<list src="../rune/col" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `% cen` (call)
+
+<list src="../rune/cen" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `^ ket` (cast)
+
+<list src="../rune/ket" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `$ buc` (mold)
+
+<list src="../rune/buc" dataPreview="true" className="runes" childIsFragment="true"></list>
+
+---
+
+## `; sem` (make)
+
+<list src="../rune/sem" dataPreview="true" className="runes" childIsFragment="true"></list>
 
 </div>
+

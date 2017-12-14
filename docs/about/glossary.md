@@ -140,7 +140,7 @@ Some common auras and their aliases:
 -   <h6 id="-aura-char">char:</h6> (`@tD`): a character, a single unicode byte (for multi-byte
     characters and codepoints, see `@c`)
 
-You can find the list of all auras [here](../../hoon/twig/atom/sand/).
+You can find the list of all auras [here](../../hoon/atom/sand/).
 
 *See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
 
@@ -173,7 +173,7 @@ A face is a type that wraps a named symbol (of [aura](#-aura)
 
 A _gate_ is a [core](#-core) with one [arm](#-arm) -- Hoon's closest 
 analog to a function/lambda/closure. To call a gate on an argument,
-replace the sample (at [tree address](../../hoon/twig/limb/limb/) `+6` 
+replace the sample (at [tree address](../../hoon/limb/limb/) `+6` 
 in the core) with the argument, and then compute the arm.
 
 The payload of a gate has a shape of `[sample context]`.
@@ -181,8 +181,8 @@ The payload of a gate has a shape of `[sample context]`.
 -   <h6 id="-gate-sample">sample:</h6> the argument tuple
 -   <h6 id="-gate-context">context:</h6> the subject in which the gate was defined
 
-*See [basic types](../../hoon/basic/#-core-p-span-q-map-term-span),
-[`%-` ("cenhep")](../../hoon/twig/cen-call/hep-call/) (the 
+*See [basic types](../../hoon/basic/#-core-p-type-q-map-term-type),
+[`%-` ("cenhep")](../../hoon/rune/cen-call/hep-call/) (the 
 [rune](#-rune) for calling a `gate`).*
 
 #### <h4 id="-a-hoon">hoon</h4>
@@ -234,7 +234,7 @@ found, the result is the product of the arm.
 -   <h6 id="-limb-wing">wing:</h6> a list of limbs, searched from right to left (`a.b` means
     `b` within `a`).
 
-*See [Limbs and wings](../../hoon/twig/limb/)*
+*See [Limbs and wings](../../hoon/limb/)*
 
 #### loobean
 
@@ -284,7 +284,7 @@ Here's some common mold terminology:
     sample
 -   <h6 id="-mold-icon">icon:</h6> the type of the mold's range
 
-*See [mold hoons](../../hoon/twig/buc-mold/).*
+*See [mold hoons](../../hoon/rune/buc-mold/).*
 
 #### nest 
 
@@ -302,10 +302,10 @@ error. This is one of the most commons errors in Hoon programming.
 A Hoon _rune_ is a pair of ASCII symbols used to begin a 
 [Hoon expression](#-a-hoon).
 
-For example, the rune [`?:`](../../hoon/twig/wut-test/col-if/) is 
+For example, the rune [`?:`](../../hoon/rune/wut-test/col-if/) is 
 Hoon's most common conditional, a branch on a boolean test. The first 
 symbol in a rune represents a family of related runes. For example, the 
-[`?` family](../../hoon/twig/wut-test/) are all conditionals.
+[`?` family](../../hoon/rune/wut-test/) are all conditionals.
 
 The result of parsing a Hoon source expression&mdash;the rune, followed
 by its respective children&mdash;into an AST node is simply called
@@ -338,7 +338,7 @@ Tall hoons can contain flat hoons, but not vice versa. All irregular
 forms are flat.
 
 *See [hoon concept](../../hoon/concepts/#-hoon),
-[expressions](../../hoon/twig/), and [syntax](../../hoon/syntax/)*.
+[expressions](../../hoon/rune/), and [syntax](../../hoon/syntax/)*.
 
 #### slot 
 
@@ -361,5 +361,5 @@ All types are assembled out of base types defined in `++type`.
 does type-inference on a program, it assembles complex types out 
 of the simpler built-in types.
 
-*See [basic types](../../hoon/basic/#-type-span-and-mold).*
+*See [basic types](../../hoon/basic/).*
 

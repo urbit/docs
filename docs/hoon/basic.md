@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 15
+sort: 19
 next: true
 title: Basic types
 ---
@@ -68,9 +68,9 @@ the type `atom`.  On the other hand,
 ...this should result in a `nest-fail`, because `[17 18]` is a cell, 
 not an atom.
 
-See the documentation on the [`^` family](../twig/ket-cast/) of runes
+See the documentation on the [`^` family](../rune/ket/) of runes
 for more information on casts. See the documentation on the
-[`$` family](../twig/buc-mold/) of runes for building molds.
+[`$` family](../rune/buc/) of runes for building molds.
 (Also check out the irregular `,` operator.)
 
 ## `type`: a set of types
@@ -94,14 +94,14 @@ section.
 ```
 ++  term  @tas
 ++  type
-  $@  $?  $noun
-          $void
-  ==  $%  {$atom p/term q/(unit atom)}
-          {$cell p/type q/type}
-          {$core p/type q/(map term hoon)}
-          {$face p/term q/type}
-          {$fork p/(set type)}
-          {$hold p/type q/hoon}
+  $@  $?  %noun
+          %void
+  ==  $%  [%atom p=term q=(unit atom)]
+          [%cell p=type q=type]
+          [%core p=type q=(map term hoon)]
+          [%face p=term q=type]
+          [%fork p=(set type)]
+          [%hold p=type q=hoon]
       ==
 ```
 
@@ -110,23 +110,23 @@ the `type`-tree is a cell, it's a tuple with one of the heads `%atom`,
 `%cell`, `%core`, etc.  We'll go through each of these cases below.
 these cases below.
 
-### `?($noun $void)`
+### `?(%noun %void)`
 
 `%noun` is the label for the set of all nouns. `%void` is the label 
 for the empty set. 
 
 (For now, don't worry too much about the switch from `$` to `%`.)
 
-### `{$cell p/type q/type}`
+### `[%cell p=type q=type]`
 
 `[%cell p=type q=type]` is for the set of all cells with head `p` and
 tail `q`.
 
-### `{$fork p/(set type)}`
+### `[%fork p=(set type)]`
 
 `[%fork p=(set type)]` is for the union of all types in the set `p`.
 
-### `{$hold p/type q/hoon}`
+### `[%hold p=type q=hoon]`
 
 A `%hold` type, with type `p` and hoon `q`, is a lazy reference
 to the type of `(mint p q)`.  In English, it means: "the type of
@@ -135,17 +135,17 @@ the product when we compile `q` against subject `p`."
 Note that this means we can have parsed Hoon AST data in the 
 `type`-tree.
 
-### `{$face p/term q/type}`
+### `[%face p=term q=type]`
 
 A `[%face p=term q=type]` wraps the label `p` around the type
 `q`.  `p` is a `term` or `@tas`, an atomic ASCII string which
 obeys symbol rules: lowercase and digit only, infix hyphen,
 first character must be lowercase.
 
-See [`%limb`](../twig/limb/limb) for how labels are resolved.  It's
+See [`%limb`](../limb/limb/) for how labels are resolved.  It's
 nontrivial.
 
-### `{%atom p/term q/(unit atom))}`
+### `[%atom p=term q=(unit atom))]`
 
 `%atom` is for an atom, with two twists.  `q` is a `unit`, Hoon's
 equivalent of a nullable pointer or a Haskell `Maybe`.  If `q`
@@ -191,8 +191,8 @@ here are some conventions bound to constant syntax:
   @sw           signed base64
   @sx           signed hexadecimal
 @t              UTF-8 text (cord)
-  @ta           ASCII text (span)
-    @tas        ASCII symbol (term)
+  @ta           ASCII text (knot)
+    @tas        ASCII text symbol (term)
 @u              unsigned integer
   @ub           unsigned binary
   @ud           unsigned decimal
@@ -206,7 +206,7 @@ statically, by casting through the empty aura `@`.  Hoon is not
 dependently typed and can't statically enforce data constraints
 (for example, it can't enforce that a `@tas` is really a symbol).
 
-### `{$core p/type q/(map term type)}`
+### `[%core p=type q=(map term type)]`
 
 `%core` is for a code-data cell.  The data (or *payload*) is the
 tail; the code (or *battery*) is the head.  `p`, a type, is the
@@ -225,8 +225,8 @@ sense.  An arm is a computed attribute.  A method is an arm whose
 product is a Hoon function (or *gate*).
 
 A gate (function, lambda, etc) is a core with one arm, whose name
-is the empty symbol `$`, and a payload whose shape is `{sample
-context}`.  The *context* is the subject in which the gate was
+is the empty symbol `$`, and a payload whose shape is `[sample
+context]`.  The *context* is the subject in which the gate was
 defined; the *sample* is the argument.
 
 To call this function on an argument `x`, replace the sample (at

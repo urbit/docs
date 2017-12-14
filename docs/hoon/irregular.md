@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 22
+sort: 25
 title: Irregular forms
 comments: true
 ---
@@ -10,29 +10,29 @@ comments: true
 
 <br />
 
-*Original `fora` post* [*here*](http://urbit.org/fora/posts/~2016.12.29..19.37.08..89d5~/).
+*Original Fora post* [*here*](https://urbit.org/fora/posts/~2016.12.29..19.37.08..89d5~/).
 
 ##### Reading guide
 Headings contain runes, phonetics and tokens. Description contains a link to the docs and a short description of the rune. Both regular (R) and irregular (I) forms are given.
 
-Want to `ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
+Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
 ## . dot (nock)
 
 Anything Nock can do, Hoon can do also.
 
-### .+ dotlus :bump
+### .+ dotlus
 
-[docs](https://urbit.org/docs/hoon/twig/dot-nock/lus-bump/) \\+  
-`{$bump p/atom}`: increment an atom with Nock 4.
+[docs](../rune/dot/lus/) \\+  
+`[%dtls p=atom]`: increment an atom with Nock 4.
 
 R: `.+(p)`  
 I: `+(p)`
 
-### .= dottis :same
+### .= dottis
 
-[docs](https://urbit.org/docs/hoon/twig/dot-nock/tis-same/) \\=  
-`{$same p/seed q/seed}`: test for equality with Nock 5.
+[docs](../rune/dot/tis/) \\=  
+`[%dtls p=hoon q=hoon]`: test for equality with Nock 5.
 
 R: `.=(p q)`  
 I: `=(p q)`
@@ -41,22 +41,22 @@ I: `=(p q)`
 
 Miscellaneous useful macros.
 
-### ;: semcol :wad
+### ;: semcol
 
-[docs](https://urbit.org/docs/hoon/twig/sem-make/col-wad/) \\:  
-`{$wad p/seed q/(list seed)}`: call a binary function as an n-ary function.
+[docs](../rune/sem/col/) \\:  
+`[%smcl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 R: `;:(p q)`  
 I: `:(p q)`
 
 ## : col (cells)
 
-The cell twigs.
+The cell runes.
 
-### :- colhep :cons
+### :- colhep
 
-[docs](https://urbit.org/docs/hoon/twig/col-cell/hep-cons/)  \\[\\]\\^\\+\\\`\\~  
-`{$cons p/seed q/seed}`: construct a cell (2-tuple).
+[docs](../rune/col/hep/)  \\[\\]\\^\\+\\\`\\~  
+`[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
 R: `:-(p q)`  
 I:
@@ -65,7 +65,7 @@ I:
   [a b]   ==>   :-(a b)
 [a b c]   ==>   [a [b c]]
   a^b^c   ==>   [a b c]
-    a+b   ==>   [%a b]
+    a/b   ==>   [%a b]
      `a   ==>   [~ a]
  ~[a b]   ==>   [a b ~]
   [a b]~  ==>   [[a b] ~]
@@ -73,54 +73,54 @@ I:
 
 ## = tis (flow)
 
-Flow twigs change the subject. All non-flow twigs (except cores) pass the subject down unchanged.
+Flow hoons change the subject. All non-flow hoons (except cores) pass the subject down unchanged.
 
-### =< tisgal :rap
+### =< tisgar
 
-[docs](https://urbit.org/docs/hoon/twig/tis-flow/gal-rap/) \\:  
-`{$rap p/seed q/seed}`: compose two twigs, inverted.
+[docs](../rune/tis/gal/) \\:  
+`[%tsgl p=hoon q=hoon]`: compose two hoons, inverted.
 
 R: `=<(p q)`  
 I: `p:q`
 
 ## | bar (core)
 
-[docs](https://urbit.org/docs/hoon/twig/bar-core/) \\$  
-Core twigs are flow twigs.
+[docs](../rune/bar/) \\$  
+Core hoons are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.
 
-* `|= bartis :gate`
-* `|. bardot :trap`
-* `|- barhep :loop`
-* `|* bartar :gill`
+* `|= bartis` (gate)
+* `|. bardot` (trap)
+* `|- barhep` (loop)
+* `|* bartar` (gill)
 
-The above runes produce a core with a single arm, named `$` (or `:moar`). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=`, `:make`, like so: `$()`.
+The above runes produce a core with a single arm, named `$` ("buc"). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=`, `:make`, like so: `$()`.
 
 ## % cen (call)
 
-The invocation family of twigs.
+The invocation family of runes.
 
-### %= centis :make
+### %= centis
 
-[docs](https://urbit.org/docs/hoon/twig/cen-call/tis-make/)  \\(\\)  
-`{$make p/wing q/(list (pair wing seed))}`: take a wing with changes.
+[docs](../rune/cen/tis/)  \\(\\)  
+`[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
 
 R: `%=(p a 1)`  
 I: `p(a 1)`
 
-### %~ censig :open
+### %~ censig
 
-[docs](https://urbit.org/docs/hoon/twig/cen-call/sig-open/) \\~  
-`{$cnsg p/wing q/seed r/seed}`: call with multi-armed door.
+[docs](../rune/cen/sig/) \\~  
+`[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
 R: `%~(p q r)`  
 I: `~(p q r)`
 
-### %- cenhep :call
+### %- cenhep
 
-[docs](https://urbit.org/~~/docs/hoon/twig/cen-call/hep-call/) \\(\\)  
-`{$call p/seed q/seed}`: call a gate (function).
+[docs](../rune/cen/hep/) \\(\\)  
+`[%cnhp p=hoon q=hoon]`: call a gate (function).
 
 R: `%-(p q)`  
 I: `(p q)`
@@ -131,34 +131,18 @@ Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (func c
 
 A mold is a gate (function) that helps us build simple and rigorous data structures.
 
-### $: buccol :bank
+### $? bucwut
 
-[docs](https://urbit.org/docs/hoon/twig/buc-mold/col-bank/) \\{\\}  
-`{$bank p/(list moss)}`: form a mold which recognizes a tuple.
-
-R: `$:(p q)`  
-I: `{p q}`
-
-### $= buctis :coat
-
-[docs](https://urbit.org/docs/hoon/twig/buc-mold/tis-coat/) \\/  
-`{$coat p/@tas q/moss}`: mold which wraps a face around another mold.
-
-R: `$=(p q)`  
-I: `p/q`
-
-### $? bucwut :pick
-
-[docs](https://urbit.org/docs/hoon/twig/buc-mold/wut-pick/) \\?  
-`{$pick p/(list moss)}`: mold which normalizes a general union.
+[docs](../rune/buc/wut/) \\?  
+`[%bcwt p=(list model)]`: mold which normalizes a general union.
 
 R: `$?(p)`  
 I: `?(p)`
 
-### $_ buccab :shoe
+### $_ buccab
 
-[docs](https://urbit.org/docs/hoon/twig/buc-mold/cab-shoe/) \\_  
-`{$shoe p/seed}`: mold which normalizes to an example.
+[docs](../rune/buc/cab/) \\_  
+`[%bccb p=value]`: mold which normalizes to an example.
 
 R: `$_(p)`  
 I: `_p`
@@ -167,46 +151,46 @@ I: `_p`
 
 Hoon has the usual branches and logical tests.
 
-### ?! wutzap :not
+### ?! wutzap
 
-[docs](https://urbit.org/docs/hoon/twig/wut-test/zap-not/) \\!  
-`{$not p/seed}`: logical not.
+[docs](../rune/wut/zap/) \\!  
+`[%wtzp p=hoon]`: logical not.
 
 R: `?!(p)`  
 I: `!(p)`
 
-### ?& wutpam :and
+### ?& wutpam
 
-[docs](https://urbit.org/docs/hoon/twig/wut-test/pam-and/) \\&  
-`{$and p/(list seed)}`: logical and.
+[docs](../rune/wut/pam/) \\&  
+`[%wtpm p=(list hoon)]`: logical and.
 
 R: `?&(p)`  
 I: `&(p)`
 
-### ?& wutbar :or
+### ?| wutbar
 
-[docs](https://urbit.org/docs/hoon/twig/wut-test/bar-or/) \\|  
-`{$or p/(list seed)}`: logical or.
+[docs](../rune/wut/bar/) \\|  
+`[%wtbr p=(list hoon)]`: logical or.
 
 R: `?|(p)`  
 I: `|(p)`
 
 ## ^ ket (cast)
 
-Lets us adjust spans without violating type constraints.
+Lets us adjust types without violating type constraints.
 
-### ^- kethep :cast
+### ^- kethep
 
-[docs](https://urbit.org/docs/hoon/twig/ket-cast/hep-cast/) \\\`  
-`{$cast p/moss q/seed}`: typecast by mold.
+[docs](../rune/ket/hep/) \\\`  
+`[%kthp p=model q=value]`: typecast by mold.
 
 R: `^-(p q)`  
-I: ```p`q``
+I: `` `p`q ``
 
-### ^= kettis :name
+### ^= kettis
 
-[docs](https://urbit.org/docs/hoon/twig/ket-cast/tis-name/) \\=  
-`{$name p/toga q/seed}`: name a value.
+[docs](../rune/ket/tis/) \\=  
+`[%ktts p=toga q=value]`: name a value.
 
 R: `^=(p q)`  
 I: `p=q`
@@ -220,27 +204,27 @@ I: `p=q`
 * `*` noun.
 * `^` cell.
 * `?` loobean.
-* `$~` null.
+* `~` null.
 
 ### Values
 
 \\~\\-\\.\\&\\|
-
+}
 * `~` null.
 * `&` loobean true.
 * `|` loobean false.
 * `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
 
-See [:sand](https://urbit.org/docs/hoon/twig/atom/sand/) for other irregular definitions of atoms.
+See [%sand](../atom/sand/) for other irregular definitions of atoms.
 
-### List addressing
+### List addressing}
 * `&n` nth element of a list.
 * `|n` tail of list after nth element (i.e. n is the head).
 
-### Limbs :limb
+### Limbs
 
-[docs](https://urbit.org/docs/hoon/twig/limb/limb/) \\+\\.\\^  
-`{$limb p/(each @ud {p/@ud q/@tas})}`: attribute of subject.
+[docs](../limb/limb/) \\+\\.\\^  
+`[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
 * `+15` is slot 15
 * `.` is the whole subject (slot 1)
@@ -260,17 +244,17 @@ See [:sand](https://urbit.org/docs/hoon/twig/atom/sand/) for other irregular def
 ```
 
 
-### Wings :wing
+### Wings
 
-[docs](https://urbit.org/~~/docs/hoon/twig/limb/wing/) \\.  
-`{$wing p/(list limb)`; a limb search path.
-
+[docs](../limb/wing/) \\.  
+`[%wing p=(list limb)]`; a limb search path.
+}
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 
 ### Printing stuff
 
-* `<a b c>` prints a [tape](https://urbit.org/docs/hoon/library/2q/#-tape).
-* `>a b c<` prints a [tank](https://urbit.org/docs/hoon/library/2q/#-tank).
+* `<a b c>` prints a [tape](../library/2q/#-tape).
+* `>a b c<` prints a [tank](../library/2q/#-tank).
 
 ## Commentary
 

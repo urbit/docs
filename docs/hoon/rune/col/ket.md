@@ -1,0 +1,32 @@
+---
+navhome: /docs/
+next: true
+sort: 4
+title: :^ "colket"
+---
+
+# `:^ "colket"`
+
+`[%clkt p=hoon q=hoon r=hoon s=hoon]`: construct a quadruple (4-tuple).
+
+## Expands to
+
+```
+:-(p :-(q :-(r s)))
+```
+
+## Syntax
+
+Regular: *4-fixed*.
+
+## Examples
+
+```
+/~zod:dojo> :^(1 2 3 4)
+[1 2 3 4]
+/~zod:dojo> :^     5
+                 6
+               7
+             8
+[5 6 7 8]
+```

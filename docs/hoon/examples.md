@@ -1,8 +1,8 @@
 ---
 navhome: /docs/
-sort: 17
-title: Examples
 next: true
+sort: 21
+title: Examples
 ---
 
 # Examples
@@ -18,29 +18,30 @@ side of simple manual construction over high-octane FP.)
 
 A function that produces the list of primes less than or equal to
 its argument, an atom:
+
 ```
-:gate  thru/atom                                        ::  1
-:cast  (list atom)                                      ::  2
-:var   field/(set atom)  (silt (gulf 2 thru))           ::  3
-:rap   abet:main                                        ::  4
-:core                                                   ::  5
+|=  thru/@                                              ::  1
+^-  (list @)                                            ::  2
+=/  field/(set @)  (silt (gulf 2 thru))                 ::  3
+=<  abet:main                                           ::  4
+|%                                                      ::  5
 ++  abet                                                ::  6
   (sort (~(tap in field) ~) lth)                        ::  7
 ::                                                      ::  8
 ++  main                                                ::  9
-  :var   factor/atom  2                                 ::  10
-  :loop  :like  ..main                                  ::  11
-  :if    (gth (mul factor factor) thru)                 ::  12
+  =/  factor/@  2                                       ::  10
+  |-  ^+  ..main                                        ::  11
+  ?:  (gth (mul factor factor) thru)                    ::  12
     ..main                                              ::  13
-  :moar(factor +(factor), ..main (reap factor))         ::  14
+  $(factor +(factor), ..main (reap factor))             ::  14
 ::                                                      ::  15
 ++  reap                                                ::  16
-  :gate  factor/atom                                    ::  17
-  :var   count/atom  (mul 2 factor)                     ::  18
-  :loop  :like  ..reap                                  ::  19
-  :if    (gth count thru)                               ::  20
+  |=  factor/@                                          ::  17
+  =/  count/@  (mul 2 factor)                           ::  18
+  |-  ^+  ..reap                                        ::  19
+  ?:  (gth count thru)                                  ::  20
     ..reap                                              ::  21
-  :moar                                                 ::  22
+  %=  $                                                 ::  22
     count  (add count factor)                           ::  23
     field  (~(del in field) count)                      ::  24
   ==                                                    ::  25
@@ -50,9 +51,9 @@ its argument, an atom:
 ## `sieve`: explanation
 
 ```
-:gate  thru/atom                                        ::  1
-:cast  (list atom)                                      ::  2
-:var   field/(set atom)  (silt (gulf 2 thru))           ::  3
+|=  thru/@                                              ::  1
+^-  (list @)                                            ::  2
+=/  field/(set @)  (silt (gulf 2 thru))                 ::  3
 ```
 
 Line `1`: we are building a gate (function) whose sample
@@ -67,13 +68,13 @@ list of atoms.
 
 Line `4`: below, we introduce a core which does our work.  With
 reverse flow, we compute `main` on this core, then `abet` on the
-product of `main`.  (`abet:main` means `:rap(abet main)`.)
+product of `main`.  (`abet:main` means `=<(abet main)`.)
 
 The core is a state machine; `main` produces the core itself,
 with the computation completed.  `abet` then extracts the result.
 
 ```
-:core                                                   ::  5
+|%                                                      ::  5
 ++  abet                                                ::  6
   (sort (~(tap in field) ~) lth)                        ::  7
 ```
@@ -90,8 +91,8 @@ list in ascending order with `lth` (less-than).
 
 ```
 ++  main                                                ::  9
-  :var   factor/atom  2                                 ::  10
-  :loop  :like  ..main                                  ::  11
+  =/  factor/@  2                                       ::  10
+  |-  ^+  ..main                                        ::  11
 ```
 
 Line `9`: the `main` arm, which performs the main calculation.
@@ -103,9 +104,9 @@ Line `11`: we start a loop.  The product of the loop is cast to
 `..main`, which is the core we're in (`+1.main`).
 
 ```
-  :if    (gth (mul factor factor) thru)                 ::  12
+  ?:  (gth (mul factor factor) thru)                    ::  12
     ..main                                              ::  13
-  :moar(factor +(factor), ..main (reap factor))         ::  14
+  $(factor +(factor), ..main (reap factor))             ::  14
 ```
 
 Lines `12` and `13`: we terminate the loop, returning `..main`,
@@ -116,8 +117,8 @@ replacing the core with a version sieved by `reap`.
 
 ```
 ++  reap                                                ::  16
-  :gate  factor/atom                                    ::  17
-  :var   count/atom  (mul 2 factor)                     ::  18
+  |=  factor/@                                          ::  17
+  =/  count/@  (mul 2 factor)                           ::  18
 ```
 
 Lines `16` and `17`: the `reap` arm, which produces a gate that
@@ -128,10 +129,10 @@ Line `18`: we declare a variable `count`, an atom, with the
 initial value `(mul 2 factor)`.
 
 ```
-  :loop  :like  ..reap                                  ::  19
-  :if    (gth count thru)                               ::  20
+  |-  ^+  ..reap                                        ::  19
+  ?:  (gth count thru)                                  ::  20
     ..reap                                              ::  21
-  :moar                                                 ::  22
+  %=  $                                                 ::  22
     count  (add count factor)                           ::  23
     field  (~(del in field) count)                      ::  24
   ==                                                    ::  25
@@ -147,9 +148,7 @@ multiple of `factor`, and deleting it from `field`.
 
 ## `sieve`: code in kernel style
 
-Finally, the same code transliterated into runes (and in a more
-concise "kernel" style).
-
+Finally, the same code in a more concise "kernel" style.
 ```
 |=  top/@
 ^-  (list @)
@@ -165,7 +164,7 @@ concise "kernel" style).
   $(fac +(fac), ..main (reap fac))
 ::
 ++  reap
-  |=  fac/atom
+  |=  fac/@
   =+  cot=(mul 2 fac)
   |-  ^+  ..reap
   ?:  (gth cot top)
@@ -181,65 +180,65 @@ state, producing a list of game actions.  Events are tic-tac-toe
 moves (`move)`; actions are tic-tac-toe results (`fact`).
 
 ```
-:rap  :gate  feed/(list move)                           ::  1
-      :new   game/game                                  ::  2
-      :loop  :cast  (list fact)                         ::  3
-      :ifno  feed  ~                                    ::  4
-      :sip  this/(unit fact)                            ::  5
-          game                                          ::  6
-        (~(do go game) i.feed)                          ::  7
-      :var   rest/(list fact)  :moar(feed t.feed)       ::  8
-      :ifno(this rest [u.this rest])                    ::  9
+=<  |=  feed/(list move)                                ::  1
+    =|  game/game                                       ::  2
+    |-  ^-  (list fact)                                 ::  3
+    ?~  feed  ~                                         ::  4
+    =^    this/(unit fact)                              ::  5
+        game                                            ::  6
+      (~(do go game) i.feed)                            ::  7
+    =/  rest/(list fact)  $(feed t.feed)                ::  8
+    ?~(this rest [u.this rest])                         ::  9
 ::                                                      ::  10
-:per  :core                                             ::  11
-      ++  side   atom                                   ::  12
-      ++  spot   {x/atom y/atom}                        ::  13
-      ++  fact   :book  {$tie $~}                       ::  14
-                        {$win p/cord}                   ::  15
-                 ==                                     ::  16
-      ++  move   :book  {$x p/spot}                     ::  17
-                        {$o p/spot}                     ::  18
-                        {$z $~}                         ::  19
-                 ==                                     ::  20
-      ++  game   :bank  w/?                             ::  21
-                        a/side                          ::  22
-                        z/side                          ::  23
-                 ==                                     ::  24
-      --                                                ::  25
-:core                                                   ::  26
+=>  |%                                                  ::  11
+    ++  side  @                                         ::  12
+    ++  spot  {x/@ y/@}                                 ::  13
+    ++  fact  $%  {$tie $~}                             ::  14
+                  {$win p/cord}                         ::  15
+              ==                                        ::  16
+    ++  move  $%  {$x p/spot}                           ::  17
+                  {$o p/spot}                           ::  18
+                  {$z $~}                               ::  19
+              ==                                        ::  20
+    ++  game  $:  w/?                                   ::  21
+                  a/side                                ::  22
+                  z/side                                ::  23
+              ==                                        ::  24
+    --                                                  ::  25
+|%                                                      ::  26
 ++  bo                                                  ::  27
-  :door   half/side                                     ::  28
-  ++  bit  :gate(a/atom =(1 (cut 0 [a 1] half)))        ::  29
-  ++  off  :gate(a/spot (add x.a (mul 3 y.a)))          ::  30
-  ++  get  :gate(a/spot (bit (off a)))                  ::  31
-  ++  set  :gate(a/spot (con half (bex (off a))))       ::  32
-  ++  win  :calt  lien                                  ::  33
+  |_  half/side                                         ::  28
+  ++  bit  |=(a/@ =(1 (cut 0 [a 1] half)))              ::  29
+  ++  off  |=(a/spot (add x.a (mul 3 y.a)))             ::  30
+  ++  get  |=(a/spot (bit (off a)))                     ::  31
+  ++  set  |=(a/spot (con half (bex (off a))))          ::  32
+  ++  win  %+  lien                                     ::  33
              (rip 4 0wl04h0.4A0Aw.4A00s.0e070)          ::  34
-           :gate(a/atom =(a (dis a half)))              ::  35
+           |=(a/@ =(a (dis a half)))                    ::  35
   --                                                    ::  36
 ++  go                                                  ::  37
-  :door  game/game                                      ::  38
+  |_  game/game                                         ::  38
   ++  do                                                ::  39
-    :gate  act/move                                     ::  40
-    :cast  {(unit fact) ^game}                          ::  41
-    :case  act                                          ::  42
-      {$x *}  :sure(w.game ~(mo on p.act))              ::  43
-      {$o *}  :deny(w.game ~(mo on p.act))              ::  44
+    |=  act/move                                        ::  40
+    ^-  {(unit fact) ^game}                             ::  41
+    ?-  act                                             ::  42
+      {$x *}  ?>(w.game ~(mo on p.act))                 ::  43
+      {$o *}  ?<(w.game ~(mo on p.act))                 ::  44
       {$z *}  [~ nu]                                    ::  45
     ==                                                  ::  46
   ::                                                    ::  47
-  ++  nu  :like(game [& 0 0])                           ::  48
+  ++  nu  ^+(game [& 0 0])                              ::  48
   ++  on                                                ::  49
-    :door    here/spot                                  ::  50
-    ++  is   :or  (~(get bo a.game) here)               ::  51
-                  (~(get bo z.game) here)               ::  52
-             ==                                         ::  53
-    ++  mo   :cast  {(unit fact) ^game}                 ::  54
-             :deny  is                                  ::  55
-             :var   next/side  (~(set bo a.game) here)  ::  56
-             :if    ~(win bo next)                      ::  57
-                [[~ %win ?:(w.game %x %o)] nu]          ::  58
-             [~ game(w !w.game, a z.game, z next)]      ::  59
+    |_  here/spot                                       ::  50
+    ++  is  ?|  (~(get bo a.game) here)                 ::  51
+                (~(get bo z.game) here)                 ::  52
+            ==                                          ::  53
+    ++  mo  ^-  {(unit fact) ^game}                     ::  54
+            ?<  is                                      ::  55
+            =/  next/side  (~(set bo a.game) here)      ::  56
+            ?:  ~(win bo next)                          ::  57
+               [[~ %win ?:(w.game %x %o)] nu]           ::  58
+            [~ game(w !w.game, a z.game, z next)]       ::  59
     --                                                  ::  60
   --                                                    ::  62
 --                                                      ::  63
@@ -248,10 +247,10 @@ moves (`move)`; actions are tic-tac-toe results (`fact`).
 ### `toe`: explanation
 
 ```
-:rap  :gate  feed/(list move)                           ::  1
-      :new   game/game                                  ::  2
-      :loop  :cast  (list fact)                         ::  3
-      :ifno  feed  ~                                    ::  4
+=<  |=  feed/(list move)                                ::  1
+    =|  game/game                                       ::  2
+    |-  ^-  (list fact)                                 ::  3
+    ?~  feed  ~                                         ::  4
 ```
 
 Line `1` wraps a conclusion around a stack of cores.  The cores
@@ -268,7 +267,7 @@ Line `3` enters a loop producing a list of game events, `fact`.
 Line `4` produces nil, `~`, if `feed` is empty.
 
 ```
-      :sip  this/(unit fact)                            ::  5
+      =^  this/(unit fact)                              ::  5
           game                                          ::  6
         (~(do go game) i.feed)                          ::  7
 ```
@@ -277,12 +276,12 @@ Lines `5` through `7` apply the move.  We open a `go` core on the
 current game state, produce a `do` gate, and call that gate on
 the move.  The product of the `do` gate is a pair; the head is
 `(unit fact)`, either `~` or `[~ fact]`; the tail is a new
-`game`.  The `:sip` twig declares the head as a new variable,
+`game`.  The `=^` hoon declares the head as a new variable,
 `this`; it modifies the subject by setting `game` to the tail.
 
 ```
-      :var   rest/(list fact)  :moar(feed t.feed)       ::  8
-      :ifno(this rest [u.this rest])                    ::  9
+      =/  rest/(list fact)  $(feed t.feed)              ::  8
+      ?~(this rest [u.this rest])                       ::  9
 ```
 
 Line `8` declares a new variable, `rest`, which is all the facts
@@ -292,9 +291,9 @@ generated by the moves in `t.feed`, the tail of the move list.
 prepends the new fact to `rest`.
 
 ```
-:per  :core                                             ::  11
-      ++  side   atom                                   ::  12
-      ++  spot   {x/atom y/atom}                        ::  13
+=>  |%                                                  ::  11
+    ++  side  @                                         ::  12
+    ++  spot  {x/@ y/@}                                 ::  13
 ```
 
 Line `11` wraps a library core around a data structure core, a
@@ -308,9 +307,9 @@ A side is a half of the board, as a marked/unmarked bitfield.
 Line `13` defines the `spot` mold, a 2D coordinate.
 
 ```
-      ++  fact   :book  {$tie $~}                       ::  14
-                        {$win p/cord}                   ::  15
-                 ==                                     ::  16
+    ++  fact  $%  {$tie $~}                             ::  14
+                  {$win p/cord}                         ::  15
+              ==                                        ::  16
 ```
 
 Lines `14` to `16` define the `fact` mold, a game event (i.e.,
@@ -319,21 +318,21 @@ output action), as a book (tagged union).  There are two forms of
 (reporting that `'X'` or `'O'` won a game.
 
 ```
-      ++  move   :book  {$x p/spot}                     ::  17
-                        {$o p/spot}                     ::  18
-                        {$z $~}                         ::  19
-                 ==                                     ::  20
+    ++  move  $%  {$x p/spot}                           ::  17
+                  {$o p/spot}                           ::  18
+                  {$z $~}                               ::  19
+              ==                                        ::  20
 ```
 
 Lines `17` to `20` define the `move` mold, a game move.  This is
 either `[%x spot]`, `[%o spot]`, or `[%z ~]` to reset the board.
 
 ```
-      ++  game   :bank  w/?                             ::  21
-                        a/side                          ::  22
-                        z/side                          ::  23
-                 ==                                     ::  24
-      --                                                ::  25
+    ++  game  $:  w/?                                   ::  21
+                  a/side                                ::  22
+                  z/side                                ::  23
+              ==                                        ::  24
+    --                                                  ::  25
 ```
 
 Lines `21` to `23` define the `game` mold, the game state.  This
@@ -342,13 +341,13 @@ side; and `w`, which is `&` (yes) if `a` is X and `b` is O; `|`
 otherwise.  (Obviously, we swap `a` and `z` on every move.)
 
 ```
-:core                                                   ::  26
+|%                                                      ::  26
 ++  bo                                                  ::  27
-  :door   half/side                                     ::  28
-  ++  bit  :gate(a/atom =(1 (cut 0 [a 1] half)))        ::  29
-  ++  off  :gate(a/spot (add x.a (mul 3 y.a)))          ::  30
-  ++  get  :gate(a/spot (bit (off a)))                  ::  31
-  ++  set  :gate(a/spot (con half (bex (off a))))       ::  32
+  |_  half/side                                         ::  28
+  ++  bit  |=(a/@ =(1 (cut 0 [a 1] half)))              ::  29
+  ++  off  |=(a/spot (add x.a (mul 3 y.a)))             ::  30
+  ++  get  |=(a/spot (bit (off a)))                     ::  31
+  ++  set  |=(a/spot (con half (bex (off a))))          ::  32
 ```
 
 Line `26` introduces the library core, which contains the doors
@@ -369,9 +368,9 @@ bit at a `spot` set.  It works by ORing (`con`) `half` with the
 binary exponent (`bex`) of the offset (`off`) of the spot.
 
 ```
-  ++  win  :calt  lien                                  ::  33
+  ++  win  %+  lien                                     ::  33
              (rip 4 0wl04h0.4A0Aw.4A00s.0e070)          ::  34
-           :gate(a/atom =(a (dis a half)))              ::  35
+           |=(a/@ =(a (dis a half)))                    ::  35
   --                                                    ::  36
 ```
 
@@ -383,10 +382,10 @@ of which must equal itself when ANDed (`dis`) with `half`.
 
 ```
 ++  go                                                  ::  37
-  :door  game/game                                      ::  38
+  |_  game/game                                         ::  38
   ++  do                                                ::  39
-    :gate  act/move                                     ::  40
-    :cast  {(unit fact) ^game}                          ::  41
+    |=  act/move                                        ::  40
+    ^-  {(unit fact) ^game}                             ::  41
 ```
 
 Lines `37` to `38` begin the `go` core, a door around a `game`.
@@ -398,9 +397,9 @@ move.  The product is cast to a pair of `(unit fact)` and a new
 game state, written `^game` to skip to the second binding.
 
 ```
-    :case  act                                          ::  42
-      {$x *}  :sure(w.game ~(mo on p.act))              ::  43
-      {$o *}  :deny(w.game ~(mo on p.act))              ::  44
+    ?-  act                                             ::  42
+      {$x *}  ?>(w.game ~(mo on p.act))                 ::  43
+      {$o *}  ?<(w.game ~(mo on p.act))                 ::  44
       {$z *}  [~ nu]                                    ::  45
     ==                                                  ::  46
   ::                                                    ::  47
@@ -412,12 +411,12 @@ the `mo` door to apply the move.  If it's a `%z` move, we clear
 the board.
 
 ```
-  ++  nu  :like(game [& 0 0])                           ::  48
+  ++  nu  ^+(game [& 0 0])                              ::  48
   ++  on                                                ::  49
-    :door    here/spot                                  ::  50
-    ++  is   :or  (~(get bo a.game) here)               ::  51
-                  (~(get bo z.game) here)               ::  52
-             ==                                         ::  53
+    |_  here/spot                                       ::  50
+    ++  is  ?|  (~(get bo a.game) here)                 ::  51
+                (~(get bo z.game) here)                 ::  52
+            ==                                          ::  53
 ```
 
 Line `48` is the `nu` arm, which produces a blank game state.
@@ -427,16 +426,16 @@ Lines `49` to `50` begin the `on` door, a door around `here`, a
 game state, we have multiple computed attributes (`is` and `mo`)
 against the combination of game state and coordinate.
 
-Lines `51` to `53` define the `is` arm, which is `&` (yes) iff
+Lines `51` to `53` define the `is` arm, which is `&` (yes) if
 either `a` or `z` has played `here`.
 
 ```
-    ++  mo   :cast  {(unit fact) ^game}                 ::  54
-             :deny  is                                  ::  55
-             :var   next/side  (~(set bo a.game) here)  ::  56
-             :if    ~(win bo next)                      ::  57
-                [[~ %win ?:(w.game %x %o)] nu]          ::  58
-             [~ game(w !w.game, a z.game, z next)]      ::  59
+    ++  mo  ^-  {(unit fact) ^game}                     ::  54
+            ?<  is                                      ::  55
+            =/  next/side  (~(set bo a.game) here)      ::  56
+            ?:  ~(win bo next)                          ::  57
+               [[~ %win ?:(w.game %x %o)] nu]           ::  58
+            [~ game(w !w.game, a z.game, z next)]       ::  59
     --                                                  ::  60
   --                                                    ::  62
 --                                                      ::  63
@@ -487,13 +486,13 @@ side `z`, and replaces `z` with `next`.
 |%
 ++  bo
   |_  haf/side
-  ++  bit  |=(a/atom =(1 (cut 0 [a 1] haf)))
+  ++  bit  |=(a/@ =(1 (cut 0 [a 1] haf)))
   ++  get  |=(a/spot (bit (off a)))
   ++  off  |=(a/spot (add x.a (mul 3 y.a)))
   ++  set  |=(a/spot (con haf (bex (off a))))
   ++  win  %+  lien
              (rip 4 0wl04h0.4A0Aw.4A00s.0e070)
-           |=(a/atom =(a (dis a haf)))
+           |=(a/@ =(a (dis a haf)))
   --
 ++  go
   |_  mag/game
@@ -510,9 +509,9 @@ side `z`, and replaces `z` with `next`.
   ++  on
     =|  her/spot
     |%
-    ++  is   ?|  (~(get bo a.mag) her)
-                 (~(get bo z.mag) her)
-             ==
+    ++  is  ?|  (~(get bo a.mag) her)
+                (~(get bo z.mag) her)
+            ==
     ++  mo  ^-  {(unit fact) game}
             ?<  is
             =+  next=(~(set bo a.mag) her)
@@ -563,28 +562,28 @@ side `z`, and replaces `z` with `next`.
 ::::
 ::::
 
-++  tree  |*  a/gate                                 ::  binary tree
+++  tree  |*  a/gate                                    ::  binary tree
           $@($~ {n/a l/(tree a) r/(tree a)})            ::
 ++  trap  |*(a/_* _|?(*a))                              ::  makes perfect sense
-++  trel  |*  {a/gate b/gate c/gate}           ::  just a triple
+++  trel  |*  {a/gate b/gate c/gate}                    ::  just a triple
           {p/a q/b r/c}                                 ::
 ++  each  |*  {a/gate b/gate}                           ::  either a or b
           $%({$& p/a} {$| p/b})                         ::    a default
 
-++  qual  |*  {a/gate b/gate c/gate d/gate} ::  just a quadruple
+++  qual  |*  {a/gate b/gate c/gate d/gate}             ::  just a quadruple
           {p/a q/b r/c s/d}                             ::
-++  pair  |*({a/gate b/gate} {p/a q/b})           ::  just a pair
-++  quid  |*({a/gate b/*} {a _b})                    ::  for =^
-++  quip  |*({a/gate b/*} {(list a) _b})             ::  for =^
-++  unit  |*  a/gate                                 ::  maybe
+++  pair  |*({a/gate b/gate} {p/a q/b})                 ::  just a pair
+++  quid  |*({a/gate b/*} {a _b})                       ::  for =^
+++  quip  |*({a/gate b/*} {(list a) _b})                ::  for =^
+++  unit  |*  a/gate                                    ::  maybe
           $@($~ {$~ u/a})                               ::
-++  list  |*  a/gate                                 ::  null-term list
+++  list  |*  a/gate                                    ::  null-term list
           $@($~ {i/a t/(list a)})                       ::
-++  lone  |*(a/gate p/a)                             ::  just one thing
+++  lone  |*(a/gate p/a)                                ::  just one thing
 
 ::::
 ::::
-++  map  |*  {a/gate b/gate}                      ::  associative tree
+++  map  |*  {a/gate b/gate}                            ::  associative tree
          $@($~ {n/{p/a q/b} l/(map a b) r/(map a b)})   ::
 ++  qeu  |*  a/gate                                     ::  queue
          $@($~ {n/a l/(qeu a) r/(qeu a)})               ::

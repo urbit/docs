@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 12
+sort: 13
 next: true
 title: Syntax
 ---
@@ -132,7 +132,7 @@ the first of which, when evaluated, becomes the *head* (i.e., the left)
 and the second of which becomes the *tail* (i.e., the right).
 
 Hoon expressions are just called 
-[hoons](../about/glossary/#-twig), because a rune's subexpression can itself
+[hoons](../about/glossary/#-a-hoon), because a rune's subexpression can itself
 be a Hoon expression (i.e. another rune). You'll start to see this tree-like, 
 recursive structure the more you program in Hoon. You can think of one Hoon 
 file being composed of multiple hoons. The subexpressions following the 
@@ -141,7 +141,7 @@ rune are sometimes called the *children* of that hoon.
 ## Tall and flat forms
 
 There are two kinds of Hoon expression syntax: *tall* and *flat*.
-Most runes can be used in both tall and flat twigs. Tall hoons can 
+Most runes can be used in both tall and flat hoons. Tall hoons can 
 contain flat hoons, but not vice versa.
 
 The `:-` expression in the last subsection was in tall form.  Here's 

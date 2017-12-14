@@ -220,7 +220,7 @@ of type `foo:atom`.
 
 ### <a name="-limb">`limb`</a> (attribute or variable reference)
 
-A [`limb`](../twig/limb/limb/), like `foo`, is Hoon's equivalent of a variable
+A [`limb`](../limb/limb/), like `foo`, is Hoon's equivalent of a variable
 reference.  A limb is a [`hoon`](#-hoon); given a subject [`type`](#-type),
 [`mint`](#-mint) resolves it to a Nock formula and a product [`type`](#-type).
 
@@ -239,7 +239,7 @@ regardless of the kind of limb.
 
 ### <a name="-wing">`wing`</a> ([`limb`](#-limb) path)
 
-A [wing](../twig/limb/wing/) is a list of limbs.  Like attribute 
+A [wing](../limb/wing/) is a list of limbs.  Like attribute 
 references in a conventional language, it uses the syntax `a.b.c`, 
 but inside out: Hoon `a.b.c` means "a within b within c", the equivalent 
 of `c.b.a` in any other language.  All limbs but the last, here `a`, 

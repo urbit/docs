@@ -1,0 +1,39 @@
+---
+navhome: /docs/
+next: true
+sort: 11
+title: ?^ "wutket"
+---
+
+# `?^ "wutket"`
+
+`[%wtkt p=wing q=hoon r=hoon]`: branch on whether a wing 
+of the subject is a cell.
+
+## Expands to
+
+```
+?:(?=(^ p) q r)
+```
+
+## Syntax
+
+Regular: *3-fixed*.
+
+## Discussion
+
+Regular form: *3-fixed*
+
+## Examples
+
+```
+~zod:dojo> ?^(0 1 2)
+! mint-vain
+! exit
+
+~zod:dojo> ?^(`*`0 1 2)
+2
+
+~zod:dojo> ?^(`*`[1 2] 3 4)
+3
+```

@@ -1,8 +1,8 @@
 ---
 navhome: /docs/
-sort: 19
-title: Troubleshooting
 next: true
+sort: 23
+title: Troubleshooting
 ---
 
 # Troubleshooting
@@ -24,8 +24,8 @@ a correct Hoon file.  These values are always correct.
 Usually, the line and column tell you everything you need to
 know.  But the worst-case scenario for a syntax error is that,
 somewhere above, you've confused Hoon's tall form by using the
-wrong fanout for a rune.  For example, `%+` (`:calt`, a function
-call whose sample is a cell) has three subtwigs:
+wrong fanout for a rune.  For example, `%+` ([*cenlus*](../rune/cen/lus), 
+a function call whose sample is a cell) has three subhoons:
 
 ```
 %+  foo
@@ -40,12 +40,12 @@ But if you make a mistake and write
 bar
 ```
 
-the parser will eat the next twig below and try to treat it as a
+the parser will eat the next hoon below and try to treat it as a
 part of the `%+`.  This can cause a cascading error somewhere
 below, usually stopped by a `==` or `--`.
 
 When this happens, don't panic!  Binary search actually works
-quite well.  Any twig can be stubbed out as `!!`.  Find the
+quite well.  Any hoon can be stubbed out as `!!`.  Find the
 prefix of your file that compiles, then work forward until
 the actual error appears.
 
@@ -57,12 +57,12 @@ Now your code parses but doesn't compile.
 
 Your first step should be to put a `!:` ("zapcol") rune at the
 top of the file.  This is like calling the C compiler with `-g`;
-it tells the Hoon compiler to generate tracing twigs.
+it tells the Hoon compiler to generate tracing hoons.
 
 Bear in mind that `!:` breaks tail-call optimization.  This is a
 bug, but a relatively low-priority bug.  `!.` turns off `!:`.
-Note that `!:` and `!.` are twig-level, not file-level; you can
-wrap any twig in either.
+Note that `!:` and `!.` are hoon-level, not file-level; you can
+wrap any hoon in either.
 
 ### Error trace
 
@@ -78,7 +78,7 @@ If you have `!:` on, you'll see an error trace, like
 nest-fail
 ```
 
-The bottom of this trace is the line and column of the twig which
+The bottom of this trace is the line and column of the hoon which
 failed to compile, then the cause of the error (`nest-fail`).
 
 Hoon does not believe in inundating you with possibly irrelevant
@@ -104,8 +104,8 @@ means you tried to pound a square peg into a round hole.
 What was the peg and what was the hole?  Hoon doesn't tell you by
 default, because moral fiber, and also because in too many cases
 trivial errors lead to large intimidating dumps.  However, you
-can use the `~!` rune ("sigzap", `:peep`) to print the type of
-any twig in your stack trace.
+can use the `~!` rune ([*sigzap*](../rune/sig/zap)) to print the type of
+any hoon in your stack trace.
 
 For instance, you wrote `(foo bar)` and got a `nest-fail`.  Change
 your code to be:
@@ -126,18 +126,15 @@ In other words, "undeclared variable."
 
 The most common subspecies of `find` error is `find.$`, meaning
 the empty name `$` was not found.  This often happens when you
-use a twig that does not produce a gate/mold, as a gate/mold.
-
-For instance, `(foo bar)` will give `find.$` if `foo` is not
-actually a function.  `?=([%foo %bar] baz)` will give `find.$`,
-because `?=` ("wuttis", `:fits`) needs a mold rather than a seed
-(you probably meant `?=({$foo $bar} baz)`).
+use a hoon that does not produce a gate/mold, as a gate/mold. For 
+instance, `(foo bar)` will give `find.$` if `foo` is not actually a 
+function. 
 
 ### `mint-vain` and `mint-lost`
 
 These are errors caused by type inference in pattern matching.
-`mint-vain` means this twig is never executed.  `mint-lost` means
-there's a case in a `?-` ("wuthep", `:case`) that isn't handled.
+`mint-vain` means this hoon is never executed.  `mint-lost` means
+there's a case in a `?-` ([*wuthep*](../rune/wut/hep)) that isn't handled.
 
 ## Runtime crashes
 
@@ -150,8 +147,8 @@ need to be developing on the local console; otherwise, the
 infinite loop will time out either too slowly or too fast).  The
 stack trace will show what your code was doing when interrupted.
 
-The counterpart of `~!` for runtime crashes is `~|` ("sigbar",
-`:show`):
+The counterpart of `~!` for runtime crashes is `~|` 
+([*sigbar*](../rune/sig/bar)):
 
 ```
 ~|  foo
@@ -167,8 +164,8 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing.  This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ("sigpam", `:dump`) is Hoon's debugging printf.  This
-pretty-prints its argument:
+`~&` ([*sigpam*](../rune/sig/pam)) is Hoon's debugging printf.  
+This pretty-prints its argument:
 
 ```
 ~&  foo
@@ -176,7 +173,7 @@ pretty-prints its argument:
 ```
 
 will always print `foo` every time it executes.  A variant is
-`~?` ("sigwut", `:warn`), which prints only if a condition is
+`~?` ([*sigwut*](../rune/sig/wut)), which prints only if a condition is
 true:
 
 ```

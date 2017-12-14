@@ -1,0 +1,51 @@
+---
+navhome: /docs/
+next: true
+sort: 1
+title: :- "colhep"
+---
+
+# `:- "colhep"`
+
+`[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
+
+## Produces
+
+The cell of `p` and `q`.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+Irregular: `[a b]` is `:-(a b)`.
+
+Irregular: `[a b c]` is `[a [b c]]`.
+
+Irregular: `a^b^c` is `[a b c]`.
+
+Irregular: `a/b` is `[%a b]`.
+
+Irregular: `` `a `` is `[~ a]`.
+
+Irregular: `~[a b]` is `[a b ~]`.
+
+Irregular: `[a b c]~` is `[[a b c] ~]`.
+
+## Discussion
+
+Hoon hoons actually use the same "autocons" pattern as Nock 
+formulas.  If you're assembling hoons (which usually only the
+compiler does), `[a b]` is the same as `[%clhp a b]`.
+
+## Examples
+
+```
+~zod:dojo> :-(1 2)
+[1 2]
+~zod:dojo> 1^2
+[1 2]
+~zod:dojo> 1/2
+[%1 2]
+~zod:dojo> `1
+[~ 1]
+```

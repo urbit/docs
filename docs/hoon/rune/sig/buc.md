@@ -1,0 +1,29 @@
+---
+navhome: /docs/
+next: true
+sort: 8
+title: ~$ "sigbuc"
+---
+
+# `~$ "sigbuc"`
+
+`[%sgbc p=term q=hoon]`: profiling hit counter.
+
+## Expands to
+
+`q`.
+
+## Convention
+
+If profiling is on, adds 1 to the hit counter for `p`.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ~$(%foo 3)
+3
+```
