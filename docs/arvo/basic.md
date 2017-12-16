@@ -33,13 +33,13 @@ otherwise experiencing problems with the network install.
 
 In your urbit's `:dojo`, run the command:
 
-    ~your-urbit:dojo> |sync %examples ~ropmev-pocseb %examples
+    ~your-urbit:dojo> |sync %examples ~ladnub-lorwyn %examples
 
 Depending on network traffic, this initial merge and sync could take anywhere
 between thirty seconds to several minutes. Upon a successful sync you'll see the
 output:
 
-    sync succeeded from %examples on ~ropmev-pocseb to %examples
+    sync succeeded from %examples on ~ladnub-lorwyn to %examples
 
 In which case, next run the commands:
 
