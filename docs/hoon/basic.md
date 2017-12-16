@@ -1,6 +1,6 @@
 ---
 navhome: /docs/
-sort: 19
+sort: 15
 next: true
 title: Basic types
 ---

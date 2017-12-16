@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: true
-sort: 15
+sort: 19
 title: Atoms and strings
 ---
 

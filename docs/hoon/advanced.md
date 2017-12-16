@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 next: true
-sort: 20
+sort: 16
 title: Advanced types
 ---
 
