@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: C
-sort: 6
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'C'
+        sort/'6'
+        next/'true'
+    ==
+;>
 
 # C
 
@@ -158,7 +158,7 @@ nock(u3_noun bus, u3_noun fol)
         u3x_cell(gal, &b_gal, &c_gal);
         {
           u3_noun seb = nock(bus, u3k(c_gal));
-         
+
           if ( c3n == u3r_ud(b_gal) ) {
             return u3m_bail(c3__exit);
           }
@@ -210,3 +210,4 @@ nock(u3_noun bus, u3_noun fol)
   }
 }
 ```
+

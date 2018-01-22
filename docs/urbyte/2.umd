@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 3
-title: Subject-oriented programming
----
+:-  :~  navhome/'/docs/'
+        sort/'3'
+        title/'Subject-oriented programming'
+    ==
+;>
 
 # Urbyte 2: Subject-oriented programming
 
@@ -81,10 +81,10 @@ Now trying to use `a` is an error.
 
 ## Subject-oriented programming
 
-What is this *subject* thing, anyway?  We put `a` in what?
+What is this _subject_ thing, anyway?  We put `a` in what?
 
-Most programming languages have something called a *scope* or an
-*environment* or a *context*.  This is a data structure that
+Most programming languages have something called a _scope_ or an
+_environment_ or a _context_.  This is a data structure that
 contains the variables and functions an expression can use.
 
 In a normal language, the environment is not a first-class value.
@@ -92,7 +92,7 @@ You cannot save an environment in a variable, compute an
 expression against the environment in the variable, etc, etc.
 
 In Hoon or any "subject-oriented" language, an expression is
-executed against one normal value, the *subject*.  In Hoon, of
+executed against one normal value, the _subject_.  In Hoon, of
 course, the subject is a noun.
 
 ## First experiments
@@ -137,13 +137,14 @@ that there really isn't a scope or environment in Hoon.
 So what can we do with this subject?  How can we get data out of
 it?  Let's keep working with our little test subject `a`.
 
-The most basic way to access the subject is *tree geometry*.
+The most basic way to access the subject is _tree geometry_.
 Every noun is a binary tree; every noun in the tree has a number
 which is its address.  The root of the tree is `1`.  If the
 address of a cell is `n`, the address of its head is `2n` and the
 address of its tail is `2n+1`.
 
 A picture might help:
+
 ```
             1
          /     \
@@ -155,7 +156,7 @@ A picture might help:
 ```
 
 The syntax for a fragment of the subject at a tree address, or
-*axis*, is just `+axis`.  So:
+_axis_, is just `+axis`.  So:
 
 ```
 > +3:a
@@ -184,7 +185,7 @@ is at `1110`, and the tail is at `1111`.
 
 We can obviously get anything we want out of the subject by tree
 geometry.  But that's not really how we'd like to program.  We'd
-much rather *label* subtrees with convenient, memorable symbols.
+much rather _label_ subtrees with convenient, memorable symbols.
 
 For example, suppose our tree looked like:
 
@@ -203,7 +204,7 @@ For example, suppose our tree looked like:
 Then instead of writing `+2`, we could write `x`, and so on.
 
 Let's replace our test subject `a` with a new noun built around
-this tree of *labeled surfaces*.
+this tree of _labeled surfaces_.
 
 ```
 > =a [x=42 y=[p=%foo q=.6.28 r=~m45] z=0xdead.beef]
@@ -227,7 +228,7 @@ table here -- just a tree search.
 
 An expression like the label `x` or the axis `+2`, which
 designates a fragment or feature of the subject, is called a
-*limb*.  A list of limbs connected with `.` is a *wing*.
+_limb_.  A list of limbs connected with `.` is a _wing_.
 
 To remind you that you're not in Kansas anymore, the syntax for a
 wing, like `q.y` above, means means "q inside y."  In a classic
@@ -256,8 +257,8 @@ x=42
 42
 ```
 
-When we take fragment 2 of the labeled subject, the *surface
-comes with it*.  `+2` is not `42` but rather `x=42`.  We can
+When we take fragment 2 of the labeled subject, the _surface
+comes with it_.  `+2` is not `42` but rather `x=42`.  We can
 take the surface off with `x.+2`.
 
 ## The search algorithm
@@ -295,7 +296,7 @@ z=0xdead.beef
 ```
 
 We don't want to hide any part of the noun from an expression.
-So the modified limb `^x` *skips* the first match with a surface
+So the modified limb `^x` _skips_ the first match with a surface
 `x`, getting us to our `0xdead.beef`.  This is a unary notation:
 `^^x` would skip the first two matches.
 
@@ -329,13 +330,13 @@ surfaces parallels variables, records or structures in a
 classical language.  But where is Hoon's equivalent of objects:
 values which bind code to data?
 
-The Hoon equivalent of an object is a *core*.  As usual in Hoon,
+The Hoon equivalent of an object is a _core_.  As usual in Hoon,
 the resemblance is inexact.  A core has a set of computed
-attributes, or *arms*.  Each arm is an expression whose subject
+attributes, or _arms_.  Each arm is an expression whose subject
 is the core.  There is no argument, so an arm is not a method.
 
 Physically, a core is always a cell `[battery payload]`, where
-the *payload* is any noun, and the *battery* is a tree of
+the _payload_ is any noun, and the _battery_ is a tree of
 formulas in Nock (Hoon's functional assembly language) that
 implements the arms.  (A battery is like a C++ vtable, sort of.)
 
@@ -345,7 +346,7 @@ As you'd expect with a computed attribute, there is only one
 namespace and one search algorithm.  We just extend the algorithm
 described above.  And an expression which uses a label can't know
 whether the subject will resolve it to a surface fragment (a
-*leg*) or to an arm.
+_leg_) or to an arm.
 
 If we're searching a core and the label matches one of the core's
 arms, we compute the arm against the core.  If the label is not
@@ -454,7 +455,7 @@ directly at the real dojo subject:
 
 We see a bunch of surfaces: our custom `a` and `b`; standard
 surfaces for identity, date, and entropy; and a ginormous core
-stack with *over eight hundred* total arms.
+stack with _over eight hundred_ total arms.
 
 To be exact, the syntax `<283.xzp 42.ajz 407.xtr 110.xht 1.ztu
 $151>` denotes a stack of six cores, each of whose payload is
@@ -497,8 +498,9 @@ $
 
 As always, these questions are optional and only for fun.
 
-What's the best way to construct a core which acts as a function?
-What do you do to call the function?
+- What's the best way to construct a core which acts as a function?
+  What do you do to call the function?
 
-Why don't any other languages use subject-oriented programming?
-Which languages are most similar to it?
+- Why don't any other languages use subject-oriented programming?
+  Which languages are most similar to it?
+

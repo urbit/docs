@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 12
-title: =^ "tisket"
----
+:-  :~  navhome/'/docs/'
+        sort/'12'
+        title/'=^ "tisket"'
+    ==
+;>
 
 # `=^ "tisket"`
 
@@ -17,7 +17,7 @@ a leg with the tail.
 
 ## Syntax
 
-Regular: *4-fixed*.
+Regular: _4-fixed_.
 
 ## Discussion
 
@@ -41,3 +41,4 @@ random number, so we use `=^`:
            [r1 r2]
 [99 46]
 ```
+

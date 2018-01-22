@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 15
-next: true
-title: Basic types
----
+:-  :~  navhome/'/docs/'
+        sort/'15'
+        next/'true'
+        title/'Basic types'
+    ==
+;>
 
 # Basic types
 
@@ -20,14 +20,14 @@ create a custom mold.
 
 A mathematical function is a mapping from one set (the domain) to 
 another (the range). Pass an object from the domain to some 
-function *f*, and *f* returns an object from the range. In Hoon we 
+function _f_, and _f_ returns an object from the range. In Hoon we 
 can think of a `gate` as a function, where the gate's `sample` is 
 its argument.
 
 A `mold` is an idempotent function whose domain is the set of all 
 nouns. (That is, it's an idempotent gate that takes any noun for its 
-sample.) An idempotent function *f* is one such that, if *f(x)* 
-terminates, *f(x) = f(f(x))*.  The product range of a mold is the 
+sample.) An idempotent function _f_ is one such that, if _f(x)_ 
+terminates, _f(x) = f(f(x))_.  The product range of a mold is the 
 type defined by that mold. That is, each mold's type is the set of 
 possible outputs of that mold.
 
@@ -149,11 +149,10 @@ nontrivial.
 
 `%atom` is for an atom, with two twists.  `q` is a `unit`, Hoon's
 equivalent of a nullable pointer or a Haskell `Maybe`.  If `q`
-is `~`, null, the type is *warm*; any atom is in the type.  
-If `q` is `[~ x]`, where `x` is any atom, the type is *cold*;
+is `~`, null, the type is _warm_; any atom is in the type.<br>If `q` is `[~ x]`, where `x` is any atom, the type is _cold_;
 its only legal value is the constant `x`.
 
-`p` in the atom is a terminal used as an *aura*, or soft atom
+`p` in the atom is a terminal used as an _aura_, or soft atom
 type.  Auras are a lightweight, advisory representation of the
 units, semantics, and/or syntax of an atom.  An aura is an atomic
 string; two auras are compatible if one is a prefix of the other.
@@ -208,27 +207,28 @@ dependently typed and can't statically enforce data constraints
 
 ### `[%core p=type q=(map term type)]`
 
-`%core` is for a code-data cell.  The data (or *payload*) is the
-tail; the code (or *battery*) is the head.  `p`, a type, is the
+`%core` is for a code-data cell.  The data (or _payload_) is the
+tail; the code (or _battery_) is the head.  `p`, a type, is the
 type of the payload.  `q`, a name-hoon table, is the source code
 for the battery.
 
 Each hoon in the battery source is compiled to a formula, with
 the core itself as the subject.  The battery is a tree of these
-formulas, or *arms*.  An arm is a computed attribute against its
+formulas, or _arms_.  An arm is a computed attribute against its
 core.
 
 All code-data structures in normal languages (functions, objects,
 modules, etc) become cores in Hoon.  A Hoon battery looks a bit
 like a method table, but not every arm is a "method" in the OO
 sense.  An arm is a computed attribute.  A method is an arm whose
-product is a Hoon function (or *gate*).
+product is a Hoon function (or _gate_).
 
 A gate (function, lambda, etc) is a core with one arm, whose name
 is the empty symbol `$`, and a payload whose shape is `[sample
-context]`.  The *context* is the subject in which the gate was
-defined; the *sample* is the argument.
+context]`.  The _context_ is the subject in which the gate was
+defined; the _sample_ is the argument.
 
 To call this function on an argument `x`, replace the sample (at
 tree address `6` in the core) with `x`, then compute the arm.
 (Of course, we don't mutate the noun, we make a mutant copy.)
+

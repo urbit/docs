@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: $: "buccol"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'$: "buccol"'
+    ==
+;>
 
-# `$: "buccol"` 
+# `$: "buccol"`
 
 `[%bccl p=(list model)]`: form a mold which recognizes a tuple.
 
@@ -24,7 +24,7 @@ Crashes if `p` is empty.
 
 ## Syntax
 
-Regular: *running*.
+Regular: _running_.
 
 Irregular (noun mode): `,[a b c]` is `$:(a b c)`.
 Irregular (mold mode): `[a b c]` is `$:(a b c)`.
@@ -43,3 +43,4 @@ Irregular (mold mode): `[a b c]` is `$:(a b c)`.
 ~zod:dojo> $:foo
 [p=0 q=%$]
 ```
+

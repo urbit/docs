@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 4
-title: Source layout
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'4'
+        title/'Source layout'
+    ==
+;>
 
 # Arvo source
 
@@ -50,7 +50,7 @@ Zuse is the Arvo standard library.
 
 This is the source file for the central Arvo event dispatcher.
 
-### `sys/vane` 
+### `sys/vane`
 
 Vanes are sort of like kernel modules. These are worth listing one by one:
 

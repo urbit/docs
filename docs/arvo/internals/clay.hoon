@@ -1,10 +1,10 @@
----
-navhome: /docs/
-sort: 3
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        sort/'3'
+    ==
+;>
 
-`%clay`
-=======
+# `%clay`
 
 Our filesystem.
 
@@ -23,4 +23,4 @@ zuse. Second is the write, query, and subscription logic. Finally, there
 is the logic for communicating requests to, and receiving requests from,
 foreign ships.
 
-<list></list>
+;+  (kids %title datapath/'/docs/arvo/internals/clay/' ~)

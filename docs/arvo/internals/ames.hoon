@@ -1,10 +1,10 @@
----
-navhome: /docs/
-sort: 1
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        sort/'1'
+    ==
+;>
 
-`%ames`
-=======
+# `%ames`
 
 Our networking protocol.
 
@@ -25,4 +25,4 @@ routing is handled entirely in `%ames`. Finally, the actual `%ames`
 protocol itself, including how to route incoming packets to the correct
 vane or app, is defined in `%ames`.
 
-<list></list>
+;+  (kids %title datapath/'/docs/arvo/internals/ames/' ~)

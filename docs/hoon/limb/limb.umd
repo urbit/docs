@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: Limb
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'Limb'
+    ==
+;>
 
 # Limb
 
@@ -38,9 +38,9 @@ and alternates for readability.
 
 ### Traverse
 
-The search traverse takes a name `q` and a *skip count* `p`.
+The search traverse takes a name `q` and a _skip count_ `p`.
 
-The search product may be an *arm* or a *leg*.  A *leg* is a
+The search product may be an _arm_ or a _leg_.  A _leg_ is a
 subtree of the subject.  An arm defines a Nock formula and a
 subject leg to compute the result.  Logically, a limb is an
 attribute -- computation or subtree, "synthesized" or "natural"
@@ -79,3 +79,4 @@ that `=variable value` is not Hoon (language) syntax; it's Dojo
 ~zod:dojo> foo
 %bar
 ```
+

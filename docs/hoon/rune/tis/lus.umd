@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 4
-title: =+ "tislus"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'=+ "tislus"'
+    ==
+;>
 
 # `=+ "tislus"`
 
@@ -17,14 +17,14 @@ title: =+ "tislus"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
 `=+` ("tislus") is the simplest way of "declaring a variable."
 
 ## Examples
- 
+
 ```
 ~zod:dojo> =foo  |=  a=@
                  =+  b=1
@@ -33,3 +33,4 @@ Regular: *2-fixed*.
 ~zod:dojo> (foo 5)
 8
 ```
+

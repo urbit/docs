@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 8
-title: $= "buctis"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'$= "buctis"'
+    ==
+;>
 
 # `$= "buctis"`
 
@@ -18,7 +18,7 @@ title: $= "buctis"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 Irregular (mold mode): `foo=bar` is `$=(foo bar)`.
 
@@ -39,3 +39,4 @@ p=%foo
 ~zod:dojo> (a %bar)
 p=%foo
 ```
+

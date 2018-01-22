@@ -1,15 +1,16 @@
----
-navhome: /docs/
-sort: 22
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        sort/'22'
+    ==
+;>
 
 # Arvo internals
 
 Arvo is composed of modules called vanes:
 
-<list dataPreview="true"></list>
+;+  (kids %title datapath/'/docs/arvo/internals/' ~)
 
-<hr></hr>
+---
 
 At a high level `%arvo` takes a mess of unix io events and turns them
 into something clean and structured for the programmer.
@@ -22,8 +23,7 @@ sync, or timer event. We push every step in the path the request takes
 onto the chain until we get to the terminal cause of the computation.
 Then we use this causal stack to route results back to the caller.
 
-`++ducts`
----------
+## `++ducts`
 
 The `%arvo` causal stack is called a `++duct`. This is represented
 simply as a list of paths, where each path represents a step in the
@@ -33,13 +33,15 @@ for unix.
 
 Here's a duct that was recently observed in the wild:
 
-    ~[
-      /g/a/~zod/4_shell_terminal/u/time
-      /g/a/~zod/shell_terminal/u/child/4/main
-      /g/a/~zod/terminal/u/txt
-      /d/term-mess
-      //term/1
-    ]
+```
+~[
+  /g/a/~zod/4_shell_terminal/u/time
+  /g/a/~zod/shell_terminal/u/child/4/main
+  /g/a/~zod/terminal/u/txt
+  /d/term-mess
+  //term/1
+]
+```
 
 This is the duct the timer vane receives when "timer" sample app asks
 the timer vane to set a timer. This is also the duct over which the
@@ -65,15 +67,16 @@ citizen. You can respond over a duct zero, one, or many times. You can
 save ducts for later use. There are definitely parallels to Scheme-style
 continuations, but simpler and with more structure.
 
-Making Moves
-------------
+## Making Moves
 
 If ducts are a call stack, then how do we make calls and produce
 results? Arvo processes "moves" which are a combination of message data
 and metadata. There are two types of moves. A `%pass` move is analogous
 to a call:
 
-    [duct %pass return-path=path vane-name=@tD data=card]
+```
+[duct %pass return-path=path vane-name=@tD data=card]
+```
 
 Arvo pushes the return path (preceded by the first letter of the vane
 name) onto the duct and sends the given data, a card, to the vane we
@@ -82,13 +85,14 @@ specified. Any response will come along the same duct with the path
 
 A `%give` move is analogous to a return:
 
-    [duct %give data=card]
+```
+[duct %give data=card]
+```
 
 Arvo pops the top path off the duct and sends the given card back to the
 caller.
 
-Vanes
------
+## Vanes
 
 As shown above, we use arvo proper to route and control the flow of
 moves. However, arvo proper is rarely directly responsible for
@@ -101,21 +105,20 @@ well-defined, stable, and general-purpose piece of functionality.
 As of this writing, we have seven vanes, which each provide the
 following services:
 
--   `%ames` name of both our network and the vane that communicates over
-    it
--   `%behn` a simple timer
--   `%clay` version-controlled, referentially- transparent, and global
-    filesystem
--   `%dill` terminal driver. Unix sends keyboard events to `%dill` from
-    either the console or telnet, and `%dill` produces terminal output.
--   `%eyre` http server. Unix sends http messages to `%eyre`, and
-    `%eyre` produces http messages in response
--   `%ford` handles resources and publishing
--   `%gall` manages our userspace applications. `%gall` keeps state and
-    manages subscribers
+- `%ames` name of both our network and the vane that communicates over
+  it
+- `%behn` a simple timer
+- `%clay` version-controlled, referentially- transparent, and global
+  filesystem
+- `%dill` terminal driver. Unix sends keyboard events to `%dill` from
+  either the console or telnet, and `%dill` produces terminal output.
+- `%eyre` http server. Unix sends http messages to `%eyre`, and
+  `%eyre` produces http messages in response
+- `%ford` handles resources and publishing
+- `%gall` manages our userspace applications. `%gall` keeps state and
+  manages subscribers
 
-Cards
------
+## Cards
 
 Cards are the vane-specific portion of a move. Each vane defines a
 protocol for interacting with other vanes (via arvo) by defining four
@@ -146,3 +149,4 @@ This overview has detailed how to pass a card to a particular vane. To
 see the cards each vane can be `%pass`ed as a `++kiss` or return as a
 `++gift` (as well as the semantics tied to them), each vane's public
 interface is explained in detail in its respective overview.
+

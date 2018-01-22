@@ -1,509 +1,497 @@
----
-navhome: /docs/
----
-
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
 # 1a: basic arithmetic
+
 ### `++add`
 
 Add
 
 Produces the sum of `a` and `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  add                                                 ::  add
-      ~/  %add
-      |=  [a/@ b/@]
-      ^-  @
-      ?:  =(0 a)  b
-      $(a (dec a), b +(b))
+```
+++  add                                                 ::  add
+  ~/  %add
+  |=  [a/@ b/@]
+  ^-  @
+  ?:  =(0 a)  b
+  $(a (dec a), b +(b))
+```
 
-Examples
---------
+## Examples
 
-    > (add 2 2)
-    4
-    > (add 1 1.000.000)
-    1.000.001
-    > (add 1.333 (mul 2 2))
-    1.337
+```
+> (add 2 2)
+4
+> (add 1 1.000.000)
+1.000.001
+> (add 1.333 (mul 2 2))
+1.337
+```
 
-***
+---
+
 ### `++dec`
 
 Decrement
 
 Decrements `a` by `1`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  dec                                                 ::  decrement
-      ~/  %dec
-      |=  a/@
-      ~|  %decrement-underflow
-      ?<  =(0 a)
-      =+  b=0
-      |-  ^-  @
-      ?:  =(a +(b))  b
-      $(b +(b))
+```
+++  dec                                                 ::  decrement
+  ~/  %dec
+  |=  a/@
+  ~|  %decrement-underflow
+  ?<  =(0 a)
+  =+  b=0
+  |-  ^-  @
+  ?:  =(a +(b))  b
+  $(b +(b))
+```
 
-Examples
---------
+## Examples
 
-    > (dec 7)
-    6
-    > (dec 0)
-    ! decrement-underflow
-    ! exit
+```
+> (dec 7)
+6
+> (dec 0)
+! decrement-underflow
+! exit
+```
 
+---
 
-
-***
 ### `++div`
 
 Divide
 
 Computes `a` divided by `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  div                                                 ::  divide
-      ~/  %div
-      |=  [a/@ b/@]
-      ^-  @
-      ~|  'div'
-      ?<  =(0 b)
-      =+  c=0
-      |-
-      ?:  (lth a b)  c
-      $(a (sub a b), c +(c))
-    ::
+```
+++  div                                                 ::  divide
+  ~/  %div
+  |=  [a/@ b/@]
+  ^-  @
+  ~|  'div'
+  ?<  =(0 b)
+  =+  c=0
+  |-
+  ?:  (lth a b)  c
+  $(a (sub a b), c +(c))
+::
+```
 
-Examples
---------
+## Examples
 
-    > (div 4 2)
-    2
-    > (div 17 8)
-    2
-    > (div 20 30)
-    0
+```
+> (div 4 2)
+2
+> (div 17 8)
+2
+> (div 20 30)
+0
+```
 
+---
 
-***
 ### `++gte`
 
 Greater-than/equal
 
 Tests whether `a` is greater than a number `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 A boolean.
 
-Source
-------
+## Source
 
-    ++  gte                                                 ::  greater-equal
-      ~/  %gte
-      |=  {a/@ b/@}
-      ^-  ?
-      !(lth a b)
+```
+++  gte                                                 ::  greater-equal
+  ~/  %gte
+  |=  {a/@ b/@}
+  ^-  ?
+  !(lth a b)
+```
 
+## Examples
 
-Examples
---------
+```
+> (gte 100 10)
+%.y
+> (gte 4 4)
+%.y
+> (gte 3 4)
+%.n
+```
 
-    > (gte 100 10)
-    %.y
-    > (gte 4 4)
-    %.y
-    > (gte 3 4)
-    %.n
+---
 
-
-
-***
 ### `++gth`
 
 Greater-than
 
 Tests whether `a` is greater than `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 A boolean.
 
-Source
-------
+## Source
 
-    ++  gth                                                 ::  greater-than
-      ~/  %gth
-      |=  {a/@ b/@}
-      ^-  ?
-      !(lte a b)
+```
+++  gth                                                 ::  greater-than
+  ~/  %gth
+  |=  {a/@ b/@}
+  ^-  ?
+  !(lte a b)
+```
 
+## Examples
 
+```
+> (gth 'd' 'c')
+%.y
+> (gth ~h1 ~m61)
+%.n
+```
 
-Examples
---------
+---
 
-    > (gth 'd' 'c')
-    %.y
-    > (gth ~h1 ~m61)
-    %.n
-
-
-
-***
 ### `++lte`
 
 Less-than/equal
 
 Tests whether `a` is less than or equal to `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 A boolean.
 
-Source
-------
+## Source
 
-    ++  lte                                                 ::  less-equal
-      ~/  %lte
-      |=  {a/@ b/@}
-      |(=(a b) (lth a b))
+```
+++  lte                                                 ::  less-equal
+  ~/  %lte
+  |=  {a/@ b/@}
+  |(=(a b) (lth a b))
 
-    ::
+::
+```
 
-Examples
---------
+## Examples
 
-    > (lte 4 5)
-    %.y
-    > (lte 5 4)
-    %.n
-    > (lte 5 5)
-    %.y
-    > (lte 0 0)
-    %.y
+```
+> (lte 4 5)
+%.y
+> (lte 5 4)
+%.n
+> (lte 5 5)
+%.y
+> (lte 0 0)
+%.y
+```
 
+---
 
-
-***
 ### `++lth`
 
 Less-than
 
 Tests whether `a` is less than `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 A boolean.
 
-Source
-------
+## Source
 
-    ++  lth                                                 ::  less-than
-      ~/  %lth
-      |=  {a/@ b/@}
-      ^-  ?
-      ?&  !=(a b)
-          |-
-          ?|  =(0 a)
-              ?&  !=(0 b)
-                  $(a (dec a), b (dec b))
-      ==  ==  ==
+```
+++  lth                                                 ::  less-than
+  ~/  %lth
+  |=  {a/@ b/@}
+  ^-  ?
+  ?&  !=(a b)
+      |-
+      ?|  =(0 a)
+          ?&  !=(0 b)
+              $(a (dec a), b (dec b))
+  ==  ==  ==
+```
 
-Examples
---------
+## Examples
 
-    > (lth 4 5)
-    %.y
-    > (lth 5 4)
-    %.n
-    > (lth 5 5)
-    %.n
-    > (lth 5 0)
-    %.n
+```
+> (lth 4 5)
+%.y
+> (lth 5 4)
+%.n
+> (lth 5 5)
+%.n
+> (lth 5 0)
+%.n
+```
 
+---
 
-***
 ### `++max`
 
 Maximum
 
 Computes the greater of `a` and `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  max                                                 ::  maximum
-      ~/  %max
-      |=  {a/@ b/@}
-      ^-  @
-      ?:  (gth a b)  a
-      b
+```
+++  max                                                 ::  maximum
+  ~/  %max
+  |=  {a/@ b/@}
+  ^-  @
+  ?:  (gth a b)  a
+  b
+```
 
-Examples
---------
+## Examples
 
-    > (max 10 100)
-    100
-    > (max 10.443 9)
-    10.443
-    > (max 0 1)
-    1
+```
+> (max 10 100)
+100
+> (max 10.443 9)
+10.443
+> (max 0 1)
+1
+```
 
+---
 
-
-***
 ### `++min`
 
 Minimum
 
 Computes the lesser of `a` and `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  min                                                 ::  minimum
-      ~/  %min
-      |=  {a/@ b/@}
-      ^-  @
-      ?:  (lth a b)  a
-      b
-        
-Examples
---------
+```
+++  min                                                 ::  minimum
+  ~/  %min
+  |=  {a/@ b/@}
+  ^-  @
+  ?:  (lth a b)  a
+  b
+```
 
-    > (min 10 100)
-    10
-    > (min 10.443 9)
-    9
-    > (min 0 1)
-    0
+## Examples
 
+```
+> (min 10 100)
+10
+> (min 10.443 9)
+9
+> (min 0 1)
+0
+```
 
+---
 
-***
 ### `++mod`
 
 Modulus
 
 Computes the remainder of dividing `a` by `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  mod                                                 ::  remainder
-      ~/  %mod
-      |:  [a=`@`1 b=`@`1]
-      ^-  @
-      ?<  =(0 b)
-      (sub a (mul b (div a b)))
-        
+```
+++  mod                                                 ::  remainder
+  ~/  %mod
+  |:  [a=`@`1 b=`@`1]
+  ^-  @
+  ?<  =(0 b)
+  (sub a (mul b (div a b)))
+```
 
-Examples
---------
+## Examples
 
-    > (mod 5 2)
-    1
-    > (mod 5 5)
-    0
+```
+> (mod 5 2)
+1
+> (mod 5 5)
+0
+```
 
+---
 
-
-***
 ### `++mul`
 
 Multiply
 
 Multiplies `a` by `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-    ++  mul                                                 ::  multiply
-      ~/  %mul
-      |:  [a=`@`1 b=`@`1]
-      ^-  @
-      =+  c=0
-      |-
-      ?:  =(0 a)  c
-      $(a (dec a), c (add b c))
-        
-Examples
---------
+```
+++  mul                                                 ::  multiply
+  ~/  %mul
+  |:  [a=`@`1 b=`@`1]
+  ^-  @
+  =+  c=0
+  |-
+  ?:  =(0 a)  c
+  $(a (dec a), c (add b c))
+```
 
-    > (mul 3 4)
-     12 
-    > (mul 0 1) 
-    0
+## Examples
 
+```
+> (mul 3 4)
+ 12 
+> (mul 0 1) 
+0
+```
 
+---
 
-***
 ### `++sub`
 
 Subtract
 
 Subtracts `b` from `a`.
 
-Accepts
--------
+## Accepts
 
 `a` is an atom.
 
 `b` is an atom.
 
-Produces
---------
+## Produces
 
 An atom.
 
-Source
-------
+## Source
 
-        ++  sub                                                 ::  subtract
-          ~/  %sub
-          |=  [a/@ b/@]
-          ~|  %subtract-underflow
-          ^-  @
-          ?:  =(0 b)  a
-          $(a (dec a), b (dec b))
+```
+    ++  sub                                                 ::  subtract
+      ~/  %sub
+      |=  [a/@ b/@]
+      ~|  %subtract-underflow
+      ^-  @
+      ?:  =(0 b)  a
+      $(a (dec a), b (dec b))
+```
 
-Examples
---------
+## Examples
 
-    > (sub 10 5)
-    5
-    > (sub 243 44)
-    199
-    > (sub 5 0)
-    5
-    > (sub 0 5)
-    ! subtract-underflow
-    ! exit
+```
+> (sub 10 5)
+5
+> (sub 243 44)
+199
+> (sub 5 0)
+5
+> (sub 0 5)
+! subtract-underflow
+! exit
+```
 
+---
 
-
-***

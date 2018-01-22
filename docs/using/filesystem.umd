@@ -1,16 +1,12 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 7
-title: Filesystem (Clay)
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'7'
+        title/'Filesystem (Clay)'
+    ==
+;>
 
 # Filesystem (Clay)
-
-<div class="row">
-
-<div class="col-md-8">
 
 Urbit has its own revision-controlled filesystem, Clay. Clay is a
 typed, global, referentially transparent namespace. An easy way to think
@@ -21,42 +17,46 @@ directory. The Urbit process will watch this directory and automatically
 record edits as changes, Dropbox style. The mounted directory is always
 at the root of your pier directory.
 
-</div>
-
-</div>
-
 ## Quickstart
 
 When developing it's a good idea to use a separate desk.
 
 Create a `%sandbox` desk based on the `%home` desk:
 
-    |merge %sandbox ~your-urbit %home
+```
+|merge %sandbox ~your-urbit %home
+```
 
 Most of the time we want to use Clay from Unix.
 
 Mount the entire contents of your `sandbox` desk to Unix:
 
-    ~your-urbit:dojo> |mount /=sandbox=
+```
+~your-urbit:dojo> |mount /=sandbox=
+```
 
 To explore the filesystem from inside Urbit `+ls` and `+cat` are useful:
 
-    ~your-urbit:dojo> +ls /=sandbox=/web
+```
+~your-urbit:dojo> +ls /=sandbox=/web
+```
 
 Let's see the contents of `/=sandbox=/web/md`:
 
-    ~your-urbit:dojo> +cat /=sandbox=/web/md
+```
+~your-urbit:dojo> +cat /=sandbox=/web/md
+```
 
 Sync from your friend `~some-ship`'s `%experiment` desk to your
 `%sandbox` desk:
 
-    |sync %sandbox ~some-ship %experiment
+```
+|sync %sandbox ~some-ship %experiment
+```
 
 ## Manual
 
-<h3 class="first child">
-Paths
-</h3>
+;h3(class "first child"): Paths
 
 A path in Clay is a list of URL-safe text, restricted to
 `[a z]`,`[0 9]`, `.`, `-`, `_` and `~`. Formally this is a `(list knot)`
@@ -86,19 +86,21 @@ number in the `dojo`. Instead of writing
 
 ### Revision-control
 
-<h3 class="first child">
-<code>|mount clay-path [unix-name]</code>
-</h3>
+;h3(class "first child"): <code>|mount clay-path [unix-name]</code>
 
 Mount the `clay-path` at the unix mount point `unix-name`.
 
-**Examples:**
+*Examples:*
 
-    |mount %/web
+```
+|mount %/web
+```
 
 Mounts `%/web` to `/web` inside your pier directory.
 
-    |mount %/gen generators
+```
+|mount %/gen generators
+```
 
 Mounts `%/gen` to `/generators` inside your pier directory.
 
@@ -106,13 +108,17 @@ Mounts `%/gen` to `/generators` inside your pier directory.
 
 Unmount the path or name from Unix.
 
-**Examples:**
+*Examples:*
 
-    |unmount %/web
+```
+|unmount %/web
+```
 
 Unmounts the path `%/web` from whatever name it was mounted as.
 
-    |unmount %generators
+```
+|unmount %generators
+```
 
 Unmounts the Unix path `/generators`.
 
@@ -123,13 +129,17 @@ Merges a `beak` into a `desk` using an optional merge `strategy`.
 A `beak` is a ship-desk-case triple, encoded as a
 path(`/~dozbud/home/2`)
 
-**Examples:**
+*Examples:*
 
-    |merge %home-work /=home=, =gem %fine
+```
+|merge %home-work /=home=, =gem %fine
+```
 
 Merge `/=home=` into `%home-work` using merge strategy `%fine`.
 
-    |merge %examples ~wacbex-ribmex %examples
+```
+|merge %examples ~wacbex-ribmex %examples
+```
 
 Merge the `%examples` desk from `~waxbex-ribmex`
 
@@ -142,11 +152,13 @@ defaulted to being the same as `desk`. Non-comet urbits have
 planet that issued a moon, the star that issued a planet, or the galaxy
 that issued a star).
 
-**Examples:**
+*Examples:*
 
-    |sync %home-local ~dozbud %home
+```
+|sync %home-local ~dozbud %home
 
-    |sync %home ~doznec
+|sync %home ~doznec
+```
 
 ### `|unsync desk plot [plot-desk]`
 
@@ -155,7 +167,9 @@ optional `plot-desk`. Arguments must match original `|sync` command.
 
 Example:
 
-    |unsync %home-local ~dozbud %home
+```
+|unsync %home-local ~dozbud %home
+```
 
 ### `|label desk name`
 
@@ -163,7 +177,9 @@ Label the current version of `desk` `name`.
 
 Example:
 
-    |label %home release
+```
+|label %home release
+```
 
 ### Merge strategies
 
@@ -214,9 +230,9 @@ annotate any conflicts, if we know how.
 
 ### Manipulation
 
-<h3 class="first child">
-<code>|rm path</code>
-</h3>
+;h3(class "first child")
+  ;code: |rm path
+==
 
 Remove the data at `path`. `path` must be a path to actual node, not a
 'directory'
@@ -234,9 +250,9 @@ doesn't happen unless the `|cp` succeeds.
 
 ### Generators
 
-<h3 class="first child">
-<code>+cat path [path ...]</code>
-</h3>
+;h3(class "first child")
+  ;code: +cat path [path ...]
+==
 
 Similar to Unix `cat`. `+cat` takes one or more `path`s, and prints
 their contents.
@@ -246,3 +262,4 @@ their contents.
 Similar to Unix `ls`. `+ls` takes a single `path`.
 
 Produces a list of names at the `path`.
+

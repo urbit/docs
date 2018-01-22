@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 16
-title: Marks
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'16'
+        title/'Marks'
+    ==
+;>
 
 # Marks
 
@@ -129,3 +129,4 @@ gives a different result than passing it through the `hymn`
 mark.
 
 The minimal correct input, then, is `&mime &hymn &examples-cord &atom 17`.
+

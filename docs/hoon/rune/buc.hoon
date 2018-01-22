@@ -1,19 +1,20 @@
----
-navhome: /docs/
-next: true
-sort: 20
-title: Mold $ "buc"
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'20'
+        title/'Mold $ "buc"'
+    ==
+;>
 
 # Mold `$` "buc"
 
-A *mold* is a `gate` (function) that helps us build simple and
+A _mold_ is a `gate` (function) that helps us build simple and
 rigorous data structures.  (In fact, since "mold" sounds nasty,
 we often call molds and mold builders "structures.")
 
 ## Overview
 
-A correct mold is a *normalizer*: an idempotent function across
+A correct mold is a _normalizer_: an idempotent function across
 all nouns.  If the sample of a gate has type `%noun`, and its
 body obeys the constraint that for any x, `=((mold x) (mold (mold
 x)))`, it's a normalizer and can be used as a mold.
@@ -26,9 +27,9 @@ Twigs in the `$` family are macros designed for making molds.
 But any hoon may produce a mold. (This is why `model` is a
 synonym for `hoon`).
 
-Many macros *bunt* a mold, producing `^~(=>(mold $))`.  This
+Many macros _bunt_ a mold, producing `^~(=>(mold $))`.  This
 produces a constant default value.  The formal range of a mold
-(the type of its bunt) is called its *icon*.
+(the type of its bunt) is called its _icon_.
 
 Molds have two uses: defining simple and rigorous structures, and
 validating untrusted input data.  Validation, though very
@@ -50,4 +51,4 @@ Molds and mold builders are generally described together.
 
 ## Stems
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/rune/buc/' ~)

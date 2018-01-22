@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 24
-title: Expression reference
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'24'
+        title/'Expression reference'
+    ==
+;>
 
 # Expression reference
 

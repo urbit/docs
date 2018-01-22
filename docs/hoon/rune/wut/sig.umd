@@ -1,15 +1,15 @@
----
-navhome: /docs/
-next: true
-sort: 9
-title: ?~ "wutsig"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'?~ "wutsig"'
+    ==
+;>
 
-# `?~ "wutsig"` 
+# `?~ "wutsig"`
 
 `[%wtsg p=wing q=hoon r=hoon]`: branch on whether a wing 
 of the subject is null.
- 
+
 ## Expands to
 
 ```
@@ -18,7 +18,7 @@ of the subject is null.
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 
@@ -32,3 +32,4 @@ only for a true null, `~`.
 ~zod:dojo> ?~(foo 1 2)
 1
 ```
+

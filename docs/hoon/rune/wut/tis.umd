@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 8
-title: ?= "wuttis"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'?= "wuttis"'
+    ==
+;>
 
 # `?= "wuttis"`
 
@@ -16,7 +16,7 @@ title: ?= "wuttis"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
@@ -41,3 +41,4 @@ A common error is `find.$`, meainng `p` is not a mold.
 ~zod:dojo> ?=([%foo *] bar)
 %.y
 ```
+

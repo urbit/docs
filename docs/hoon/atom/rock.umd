@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 2
-title: Rock
----
+:-  :~  navhome/'/docs/'
+        sort/'2'
+        title/'Rock'
+    ==
+;>
 
 # Rock
 
@@ -35,3 +35,4 @@ Irregular: `~`, `@n`, null (`0`).
   [%atom %t ~]
 'foobar'
 ```
+

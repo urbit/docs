@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: ?& "wutpam"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'?& "wutpam"'
+    ==
+;>
 
 # `?& "wutpam"`
 
@@ -11,7 +11,7 @@ title: ?& "wutpam"
 
 ## Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `p`:
+_Pseudocode_: `a`, `b`, `c`, ... as elements of `p`:
 
 ```
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
@@ -30,7 +30,7 @@ $(p t.p)
 
 ## Syntax
 
-Regular: *running*.
+Regular: _running_.
 
 Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 
@@ -43,3 +43,4 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 ~zod:dojo> &(=(6 7) =(42 43))
 %.n
 ```
+

@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 1
-title: Hall architecture
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'1'
+        title/'Hall architecture'
+    ==
+;>
 
 # Hall architecture
 
@@ -14,38 +14,36 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 
 ## Table of contents
 
-* [Introduction](#introduction)
-* [Structures & functionality](#structures--functionality)
-  * [Circles](#circles)
-  * [Messages](#messages)
-  * [Participant metadata](#participant-metadata)
-  * [Configurations](#configurations)
-  * [Stories](#stories)
-  * [General use](#general-use)
-  * [Federation](#federation)
-  * [Public membership](#public-membership)
-* [Interfaces for applications](#interfaces-for-applications)
-  * [Interactions](#interactions)
-  * [Queries, prizes and rumors](#queries-prizes-and-rumors)
-* [Communication between Halls](#communication-between-halls)
-  * [Interactions](#interactions-1)
-  * [Querying](#querying)
-  * [Federation](#federation)
-* [Hall implementation](#hall-implementation)
-  * [Subscriptions](#subscriptions)
-  * [Rumors](#rumors)
-  * [Messaging](#messaging)
-* [The future](#the-future)
-  * [Features and functionality](#features-and-functionality)
-* [Further reading](#further-reading)
-
+- [Introduction](#introduction)
+- [Structures & functionality](#structures--functionality)
+  - [Circles](#circles)
+  - [Messages](#messages)
+  - [Participant metadata](#participant-metadata)
+  - [Configurations](#configurations)
+  - [Stories](#stories)
+  - [General use](#general-use)
+  - [Federation](#federation)
+  - [Public membership](#public-membership)
+- [Interfaces for applications](#interfaces-for-applications)
+  - [Interactions](#interactions)
+  - [Queries, prizes and rumors](#queries-prizes-and-rumors)
+- [Communication between Halls](#communication-between-halls)
+  - [Interactions](#interactions-1)
+  - [Querying](#querying)
+  - [Federation](#federation)
+- [Hall implementation](#hall-implementation)
+  - [Subscriptions](#subscriptions)
+  - [Rumors](#rumors)
+  - [Messaging](#messaging)
+- [The future](#the-future)
+  - [Features and functionality](#features-and-functionality)
+- [Further reading](#further-reading)
 
 ## Introduction
 
 Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but does so as two separate applications this time.
 
-The messaging parts of Talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as *clients*. One such application, as you might have guessed, is `Talk`.
-
+The messaging parts of Talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as _clients_. One such application, as you might have guessed, is `Talk`.
 
 ## Structures & functionality
 
@@ -116,7 +114,8 @@ Messages aren't the only thing a subscription gets us. We're also kept up to dat
 ++  truename   {fir/cord mid/(unit cord) las/cord}      :<  real-life name
 ```
 
-`status` is user-set metadata that describes, well, the status of users in a circle. This encompasses their `presence`, which shows their activity, and their `human` identity, which includes their display handle.  
+`status` is user-set metadata that describes, well, the status of users in a circle. This encompasses their `presence`, which shows their activity, and their `human` identity, which includes their display handle.
+;br;
 For reasons we'll discover shortly, circles keep track of both their own `group` and those of the circles they're subscribed to. `crowd` encapsulates this.
 
 ### Configurations
@@ -153,9 +152,12 @@ Lastly, there's a `control` structure that contains both a security mode and a l
   ==                                                    ::
 ```
 
-A `channel` is publicly readable and writable, with a blacklist for blocking.  
-A `village` is privately readable and writable, with a whitelist for inviting.  
-A `journal` is publicly readable and privately writable, with a whitelist for authors.  
+A `channel` is publicly readable and writable, with a blacklist for blocking.
+;br;
+A `village` is privately readable and writable, with a whitelist for inviting.
+;br;
+A `journal` is publicly readable and privately writable, with a whitelist for authors.
+;br;
 A `mailbox` is readable by its owner and publicly writable, with a blacklist for blocking.
 
 ### Stories
@@ -193,13 +195,13 @@ As an example, Talk operates like this, serving as an interface for reading from
 
 Some places, like `urbit-meta`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both these desired can be met through federation.
 
-In federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).  
+In federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).
+;br;
 This way, all planets and comets will be able to subscribe to `/urbit-meta` (that is, the `urbit-meta` circle on their parent ship) and get all updates on the story, regardless of where on the network they originated.
 
 ### Public membership
 
 To aid in discoverability of circles, it is possible for users to make their participation in any given circle public. This data can then be used by things like profile widgets, or read out directly by other users.
-
 
 ## Interfaces for applications
 
@@ -285,8 +287,10 @@ To receive data from Hall, applications will have to query it. There are two pat
   ==                                                    ::
 ```
 
-To be clear, the paths for those queries are `/client` and `/circle/[name]/[data]/[start]/[end]`, where data is at least one `circle-data`, and `start` and `end` are optional and can be either a date or a message number.  
-`/client` queries produce shared UI state. That is, glyph bindings and nicknames.  
+To be clear, the paths for those queries are `/client` and `/circle/[name]/[data]/[start]/[end]`, where data is at least one `circle-data`, and `start` and `end` are optional and can be either a date or a message number.
+;br;
+`/client` queries produce shared UI state. That is, glyph bindings and nicknames.
+;br;
 `/circle` queries produce the entire public state of the requested story, including remotes.
 
 Any changes to the results of these queries are communicated via the following `rumor`s. It's a fairly long list of potential changes,
@@ -338,7 +342,6 @@ Any changes to the results of these queries are communicated via the following `
 
 These are, as enforced by Gall, the changes as they happen. This makes it possible for very minimal Hall clients to be implemented that only display a stream of changes, rather than keeping state themselves.
 
-
 ## Communication between Halls
 
 Halls can communicate with other Halls to send commands and subscription updates.
@@ -372,7 +375,8 @@ Halls can query other halls. Here's the peer move we send when we open a query o
 ==                                                      ::
 ```
 
-Again, the rumor path is what our Hall uses to identify what query a received message originates from. Our circle is specified so that we know what story is interested in the changes we get.  
+Again, the rumor path is what our Hall uses to identify what query a received message originates from. Our circle is specified so that we know what story is interested in the changes we get.
+;br;
 The query path is slightly more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can (optionally) be used to specify the range of messages we want to get from our query. Once that range has passed, we stop receiving updates.
 
 ### Federation
@@ -406,12 +410,11 @@ Along the way so far, we've skipped some parts of structures. Most of these rela
 
 We briefly touched upon how federation works on the higher level. On the lower, this is how things go down.
 
-1. When Hall boots on a star or galaxy, it starts querying its parent's `/burden` path. (Galaxies query ~zod.)
-2. Upon receiving that query, the parent sends a `%burden` prize containing all state of its channels (fully public circles) to the child. It also subscribes to `/report` on that child.
-3. When a new story gets created on the parent, its children get a `%burden` rumor with a `%bear` story diff, and they create a local copy of that channel.
-4. When something about a parent's story changes, a `%burden` rumor is sent to all its children (because they're querying `/burden`). The children apply this change to their local version of the story.
-5. When a child's story has a `%grams` or `%status` change, a `%burden` rumor is sent to the parent (because they're querying `/report`). The parent applies this change to their local version of the story, and #4 happens.
-
++ When Hall boots on a star or galaxy, it starts querying its parent's `/burden` path. (Galaxies query ~zod.)
++ Upon receiving that query, the parent sends a `%burden` prize containing all state of its channels (fully public circles) to the child. It also subscribes to `/report` on that child.
++ When a new story gets created on the parent, its children get a `%burden` rumor with a `%bear` story diff, and they create a local copy of that channel.
++ When something about a parent's story changes, a `%burden` rumor is sent to all its children (because they're querying `/burden`). The children apply this change to their local version of the story.
++ When a child's story has a `%grams` or `%status` change, a `%burden` rumor is sent to the parent (because they're querying `/report`). The parent applies this change to their local version of the story, and #4 happens.
 
 ## Hall implementation
 
@@ -419,15 +422,17 @@ Now that we know what gets sent over the wire and why, let's see what happens wh
 
 First though, it's useful to understand how Hall's code is structured. It consists of primary cores, designed to work optimally with Gall.
 
-* `++ta` is the transaction core. For every event that happens, be it a poke, peer or diff, the transaction core gets put to work to process it. Once it's done, it produces a list of deltas that describe how our state needs to be modified.
-* `++da` is the delta application core. It is used to apply `++ta`'s deltas to our application state, and produce a list of side-effects.
+- `++ta` is the transaction core. For every event that happens, be it a poke, peer or diff, the transaction core gets put to work to process it. Once it's done, it produces a list of deltas that describe how our state needs to be modified.
+- `++da` is the delta application core. It is used to apply `++ta`'s deltas to our application state, and produce a list of side-effects.
 
 Both those cores also have a core within themselves dedicated solely to dealing with stories, `++so` and `++sa` respectively.
 
 Once all work in an engine core has finished, its `-done` arm is called to produce the result of all the core's computation.
 
-In the diagrams that follow, regular lines indicate flows that always happen. Dashed lines indicate flows that are traversed if the described condition is met.  
-Below the diagrams you will find brief explanations of the involved arms. In a particularly bright future, these might be available on-hover instead.  
+In the diagrams that follow, regular lines indicate flows that always happen. Dashed lines indicate flows that are traversed if the described condition is met.
+;br;
+Below the diagrams you will find brief explanations of the involved arms. In a particularly bright future, these might be available on-hover instead.
+;br;
 For brevity, utility arms that aren't a direct and important part of the flow have been omitted.
 
 (You will find that the origins still use old Gall arms, with some glue code in between. At the time of writing, new Gall has not yet been implemented, so this will have to do.)
@@ -436,10 +441,11 @@ We will only display the delta generation parts of the flow. Delta application i
 
 ### Subscriptions
 
-Hall-to-Hall subscriptions happen when a source gets added to a story. This is done with a `%source` action, and results in a `%peer` move being sent (prompted by a `%story %follow` delta).  
+Hall-to-Hall subscriptions happen when a source gets added to a story. This is done with a `%source` action, and results in a `%peer` move being sent (prompted by a `%story %follow` delta).
+;br;
 Upon receiving a valid peer on a `/circle` path, the subscribing ship is added to that circle's presence map.
 
-![subscriptions implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-subscriptions.png "subscriptions implementation flow")
+;img(src "https://media.urbit.org/docs/hall/diagrams/flow-subscriptions.png", alt "subscriptions implementation flow", title "subscriptions implementation flow");
 
 ```
 ++  poke-talk-action      :<  we got poked with an action.
@@ -456,7 +462,7 @@ Upon receiving a valid peer on a `/circle` path, the subscribing ship is added t
 
 Once a query has opened, Hall will receive updates on it, rumors. The changes describes in these rumors are applied via the following flow.
 
-![rumor implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-rumors.png "report diff implementation flow")
+;img(src "https://media.urbit.org/docs/hall/diagrams/flow-rumors.png", alt "rumor implementation flow", title "report diff implementation flow");
 
 ```
 ++  diff-talk-rumor       :<  we got a query update.
@@ -471,7 +477,7 @@ Once a query has opened, Hall will receive updates on it, rumors. The changes de
 
 To send messages, the user sends a `%convey` or `%phrase` action, resulting in a `%publish` command being sent to the involved partners. Receiving a `%publish` command causes its messages to be added to the story through the creation of a `%story %grams` delta.
 
-![messaging implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-messaging.png "messaging implementation flow")
+;img(src "https://media.urbit.org/docs/hall/diagrams/flow-messaging.png", alt "messaging implementation flow", title "messaging implementation flow");
 
 ```
 ++  poke-talk-action      :<  we got poked with an action.
@@ -487,7 +493,6 @@ To send messages, the user sends a `%convey` or `%phrase` action, resulting in a
     ++  so-learn          :<  either adds or modifies a message.
 ```
 
-
 ## The future
 
 Hall is neither complete nor perfect. There are features that need to be implemented, varying from small quality of life changes to broad-reaching functionality.
@@ -498,26 +503,31 @@ To turn Talk into a [sustainable social platform](https://urbit.org/fora/posts/~
 
 Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their Hall subscribe to a list of circles the added friends are in. The existing public membership functionality can be leveraged for this.
 
-Eventually, content self-moderation might need to be implemented. Users would flag their content if it is potentially offensive. Others would easily be able to filter out content that might offend them.  
+Eventually, content self-moderation might need to be implemented. Users would flag their content if it is potentially offensive. Others would easily be able to filter out content that might offend them.
+;br;
 This functionality brings its own large sets of challenges that need to be tackled.
 
-Additionally, federation might be put to broader use. Knowing a circle is federated could help fall back to alternative hosts in case the one Hall originally subscribed to is unavailable.  
+Additionally, federation might be put to broader use. Knowing a circle is federated could help fall back to alternative hosts in case the one Hall originally subscribed to is unavailable.
+;br;
 Implementation-wise, care would need to be taken for this to not get ugly. Not to mention, when/how would availability of a host be verified?
 
 Other changes that might have a fair impact on the functioning of Hall are un/read states for messages, and being able to use moons to allow your friends to chat with you in a local channel.
 
 Smaller functionality that still needs to be implemented includes:
-* Extended permissions management. Being able to black-/whitelist entire ship classes.
-* Improved presence functionality. Actually using the presence system, and sending "typing", "idle", etc. statuses.
-* Polls.
+
+- Extended permissions management. Being able to black-/whitelist entire ship classes.
+- Improved presence functionality. Actually using the presence system, and sending "typing", "idle", etc. statuses.
+- Polls.
 
 And of course there's a lot Talk, the client, can improve on as well.
 
-
 ## Further reading
 
-To gain a more thorough understanding of Hall's inner workings, take a look at its source code. It comes with inline documentation.  
+To gain a more thorough understanding of Hall's inner workings, take a look at its source code. It comes with inline documentation.
+;br;
 [On Github.](https://github.com/urbit/arvo/blob/master/app/hall.hoon)
 
-To see an expansive example of a Hall client, take a look at the code of Talk. It, too, comes with inline documentation.  
+To see an expansive example of a Hall client, take a look at the code of Talk. It, too, comes with inline documentation.
+;br;
 [On Github.](https://github.com/urbit/arvo/blob/master/app/talk.hoon)
+

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 21
-title: API Connectors
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'21'
+        title/'API Connectors'
+    ==
+;>
 
 # API Connectors
 
@@ -26,35 +26,45 @@ app accomplishes both for Github.
 After starting `%gh` (`|start %gh`), let's look at the root of
 the tree that `%gh` exposes:
 
-    ~your-urbit:dojo> .^(arch %gy /=gh=)
-    [fil=~ dir={[p=~.issues q=~]}]
+```
+~your-urbit:dojo> .^(arch %gy /=gh=)
+[fil=~ dir={[p=~.issues q=~]}]
+```
 
 `%gh` is currently a skeleton -- it contains examples of all the
 functionality necessary for a connector, but many endpoints
 aren't implemented.  As we can see here, only issues are
 implemented.  We can explore this tree:
 
-    ~your-urbit:dojo> .^(arch %gy /=gh=/issues)
-    [fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
+```
+~your-urbit:dojo> .^(arch %gy /=gh=/issues)
+[fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
+```
 
 And eventually:
 
-    /-  gh
-    .^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
-    <issue...>
-    login.user:.^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
-    'philipcmonktest'
+```
+/-  gh
+.^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
+<issue...>
+login.user:.^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
+'philipcmonktest'
+```
 
 The other thing an API connector needs to do is expose event
 streams.  One straightforward way to use this capacity is with
 the `:pipe` app:
 
-    :pipe|connect %gh /listen/philipcmonktest/testing/issues/'issue_comment' %public
+```
+:pipe|connect %gh /listen/philipcmonktest/testing/issues/'issue_comment' %public
+```
 
 Now creating an issue results in the following message in your
 `%public` `:talk` channel:
 
-    ~your-urbit[philipcmonktest@github]: opened issue #11: i found a bug!
+```
+~your-urbit[philipcmonktest@github]: opened issue #11: i found a bug!
+```
 
 You'll also get notifications of issue status changes and
 comments.
@@ -71,18 +81,18 @@ for events) separately.
 ## Reading
 
 A connector exposes a tree of data.  Every read request has a
-`care`, which is generally either `%x` or `%y.  `%x` is a request
-for a particular piece of data, while `%y` is a request for a
-directory listing.  Roughly, `%x` means Unix `cat` and `%y` means
-Unix `ls`.
+`care`, which is generally either `%x` or `%y.`%x`is a request
+for a particular piece of data, while`%y`is a request for a
+directory listing.  Roughly,`%x`means Unix`cat`and`%y`means
+Unix`ls`.
 
 > Sometimes you wish to expose a tree where a part of the path
-> can't be enumerated.  For example, a `%y` of `/issues/by-repo`
-> "should" produce a list of all Github users, but we don't do
-> that because it's too long.  Instead, we just produce our own
-> username (from the `web.plan` file).  You can still access
-> repos from other users, you just don't see them in the
-> directory listing.
+  can't be enumerated.  For example, a `%y` of `/issues/by-repo`
+  "should" produce a list of all Github users, but we don't do
+  that because it's too long.  Instead, we just produce our own
+  username (from the `web.plan` file).  You can still access
+  repos from other users, you just don't see them in the
+  directory listing.
 
 The usual flow for implementing this tree of data makes heavy use
 of the `connector` library.  This library is well documented in
@@ -93,40 +103,44 @@ of `move` and `sub-result` (all the types of data that can be
 returned by a place).  This can just be a line at the top of the
 main core:
 
-    =+  connector=(connector move sub-result)  ::  Set up connector library
+```
+=+  connector=(connector move sub-result)  ::  Set up connector library
+```
 
 Most of the Github-specific logic is in `++places`, which is a
 list of all the places we can request.  A place consists of:
 
-    ++  place
-      $:  guard/mold
-          read-x/$-(path move)
-          read-y/$-(path move)
-          sigh-x/$-(jon/json (unit sub-result))
-          sigh-y/$-(jon/json (unit arch))
-      ==
+```
+++  place
+  $:  guard/mold
+      read-x/$-(path move)
+      read-y/$-(path move)
+      sigh-x/$-(jon/json (unit sub-result))
+      sigh-y/$-(jon/json (unit arch))
+  ==
+```
 
--  `guard`, the type of the paths we should match.  For example,
-   to match `/issues/<user>/<repo>` use `{$issues @t @t $~}`.
+- `guard`, the type of the paths we should match.  For example,
+  to match `/issues/<user>/<repo>` use `{$issues @t @t $~}`.
 
--  `read-x`, called when someone tries to read the place with
-   `care` `%x`.  Should produce a single move, usually either a
-   `%diff` response if we can immediately answer or a `%hiss`
-   http request if we need to make a request to the api.  See the
-   `++read-*` functions in `++helpers` for some common handlers.
+- `read-x`, called when someone tries to read the place with
+  `care` `%x`.  Should produce a single move, usually either a
+  `%diff` response if we can immediately answer or a `%hiss`
+  http request if we need to make a request to the api.  See the
+  `++read-*` functions in `++helpers` for some common handlers.
 
--  `read-y`, same as `read-x` except with care `%y`.
+- `read-y`, same as `read-x` except with care `%y`.
 
--  `sigh-x`, called when an http response comes back on this
-   place.  You're given the json of the result, and you should
-   produce either a result or null.  Null represents an error.
-   If you didn't create an http request in `read-x`, then this
-   should never be called.  Use `++sigh-strange` from `++helpers`
-   to unconditionally signal an error.
+- `sigh-x`, called when an http response comes back on this
+  place.  You're given the json of the result, and you should
+  produce either a result or null.  Null represents an error.
+  If you didn't create an http request in `read-x`, then this
+  should never be called.  Use `++sigh-strange` from `++helpers`
+  to unconditionally signal an error.
 
--  `sigh-y`, same as `sigh-x` except with care `%y`.  Note that a
-   `%y` request must produce an arch, unlike a `%x` request,
-   which may produce data of any mark.
+- `sigh-y`, same as `sigh-x` except with care `%y`.  Note that a
+  `%y` request must produce an arch, unlike a `%x` request,
+  which may produce data of any mark.
 
 Filling out the list of places is a lot of grunt work, but most
 places are fairly straightforward, and the `++read-*` helper
@@ -214,7 +228,6 @@ That's really all there is to it.  Webhook flow isn't well
 standardized, so even if your chosen service is powered by
 webhooks, your listening code might look rather different.  The
 point is to expose the correct interface.
-
 
 ## Github API Connector Code
 
@@ -524,3 +537,4 @@ this doc:
   [ost %diff response]
 --
 ```
+

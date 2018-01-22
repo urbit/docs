@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 11
-title: =: "tiscol"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'11'
+        title/'=: "tiscol"'
+    ==
+;>
 
-# `=: "tiscol"` 
+# `=: "tiscol"`
 
 `[%tscl p=(list (pair wing hoon)) q=hoon]`: change multiple legs in the subject.
 
@@ -17,7 +17,7 @@ title: =: "tiscol"
 
 ## Syntax
 
-Regular: *jogging*, then *1-fixed*.
+Regular: _jogging_, then _1-fixed_.
 
 ## Examples
 
@@ -29,3 +29,4 @@ Regular: *jogging*, then *1-fixed*.
            a
 [b=3 c=4]
 ```
+

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: ^- "kethep"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'^- "kethep"'
+    ==
+;>
 
 # `^- "kethep"`
 
@@ -17,9 +17,9 @@ title: ^- "kethep"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
-Irregular: `` `foo`bar`` is `^-(foo bar)`.
+Irregular: ``foo`bar` is `^-(foo bar)`.
 
 ## Discussion
 
@@ -44,3 +44,4 @@ infinite loop in the compiler).
 /~zod:dojo> (foo 97)
 [~ ~.a]
 ```
+

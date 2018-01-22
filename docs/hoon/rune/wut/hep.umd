@@ -1,18 +1,18 @@
----
-navhome: /docs/
-next: true
-sort: 12
-title: ?- "wuthep"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'12'
+        title/'?- "wuthep"'
+    ==
+;>
 
-# `?- "wuthep"` 
+# `?- "wuthep"`
 
 `[%wthp p=wing q=(list (pair model value))]`: switch against a 
 union, with no default.
 
 ## Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `q`:
+_Pseudocode_: `a`, `b`, `c`, ... as elements of `q`:
 
 ```
 ?:  ?=(p.a)  q.a
@@ -35,7 +35,7 @@ $(q t.q)
 
 ## Syntax
 
-Regular: *1-fixed*, then *jogging*.
+Regular: _1-fixed_, then _jogging_.
 
 ## Discussion
 
@@ -62,5 +62,4 @@ will throw `mint-vain`.  (Ecclesiastes did nothing wrong.)
 ~zod:dojo> (cor %c)
 ! nest-fail
 ```
-
 

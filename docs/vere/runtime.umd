@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 1
-title: C runtime system
-next: true
----
+:-  :~  navhome/'/docs/'
+        sort/'1'
+        title/'C runtime system'
+        next/'true'
+    ==
+;>
 
 # C runtime system
 
@@ -44,3 +44,4 @@ don't need to use this feature if you don't want, and your kernel
 doesn't have to be Arvo proper - just Arvo-compatible.  Think of
 `u3` as the BIOS and Arvo as the boot kernel.  And there are no
 dependencies at all between Hoon the language and `u3`.)
+

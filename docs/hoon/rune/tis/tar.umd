@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 9
-title: =* "tistar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'=* "tistar"'
+    ==
+;>
 
 # `=* "tistar"`
 
@@ -15,7 +15,7 @@ title: =* "tistar"
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 
@@ -39,3 +39,4 @@ noun stays the same; the alias is just recorded in its type.
     [a b]
 [2 2]
 ```
+

@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 7
-title: $^ "bucket"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'$^ "bucket"'
+    ==
+;>
 
-# `$^ "bucket"` 
+# `$^ "bucket"`
 
 `[%bckt p=model q=model]`: mold which normalizes a union tagged by head depth (cell).
 
@@ -20,7 +20,7 @@ The default of `p`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 

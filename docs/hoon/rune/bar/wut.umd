@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 11
-title: |? "barwut"
----
+:-  :~  navhome/'/docs/'
+        sort/'11'
+        title/'|? "barwut"'
+    ==
+;>
 
 # `|? "barwut"`
 
@@ -16,7 +16,7 @@ title: |? "barwut"
 
 ## Syntax
 
-Regular: *1-fixed*.
+Regular: _1-fixed_.
 
 ## Discussion
 
@@ -30,3 +30,4 @@ See this [discussion of the core variance model](../../../advanced).
 ~zod:dojo> =>  ~  ^+  |?(%a)  |.(%b)
 nest-fail
 ```
+

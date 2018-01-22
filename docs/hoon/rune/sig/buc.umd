@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 8
-title: ~$ "sigbuc"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'~$ "sigbuc"'
+    ==
+;>
 
 # `~$ "sigbuc"`
 
@@ -19,7 +19,7 @@ If profiling is on, adds 1 to the hit counter for `p`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -27,3 +27,4 @@ Regular: *2-fixed*.
 ~zod:dojo> ~$(%foo 3)
 3
 ```
+

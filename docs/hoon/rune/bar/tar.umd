@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 9
-title: |* "bartar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'|* "bartar"'
+    ==
+;>
 
-# `|* "bartar"` 
+# `|* "bartar"`
 
 `[%brtr p=model q=hoon]`: form a gill, a wet one-armed 
 core with sample.
@@ -22,7 +22,7 @@ core with sample.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
@@ -38,7 +38,7 @@ Just as with a [gate](../tis), we can recurse back into a gill
 with `$()`.
 
 > `$()` expands to `%=($)` (["centis"](../../cen/tis)), accepting 
-> a *jogging* body containing a list of changes to the subject.
+  a _jogging_ body containing a list of changes to the subject.
 
 ## Examples
 
@@ -55,3 +55,4 @@ Wet and dry gates in a nutshell:
 
 The dry gate does not preserve the type of `a` and `b`; the wet
 gate does.
+

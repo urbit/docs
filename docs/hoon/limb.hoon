@@ -1,15 +1,16 @@
----
-navhome: /docs/
-next: true
-sort: 20
-title: Limbs and wings
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'20'
+        title/'Limbs and wings'
+    ==
+;>
 
 # Limbs and wings
 
 One feature Hoon lacks: a context that isn't a first-class value.
 Hoon has no concept of scope, environment, etc.  A hoon has one
-data source, the *subject*, a noun like any other.
+data source, the _subject_, a noun like any other.
 
 In most languages "variable" and "attribute" are different
 things.  They are both symbols, but a variable is in "the
@@ -22,4 +23,4 @@ is an attribute path, ie, a list of limbs.
 
 ## Stems
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/limb/' ~)

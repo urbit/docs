@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 4
-title: $? "bucwut"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'$? "bucwut"'
+    ==
+;>
 
 # `$? "bucwut"`
 
@@ -22,7 +22,7 @@ The first item in `p`.
 
 ## Syntax
 
-Regular: *running*.
+Regular: _running_.
 
 Irregular: `?(%foo %bar)` is `$?(%foo %bar)`.
 
@@ -47,3 +47,4 @@ normalizer.
 ~zod:dojo> $:a
 %baz
 ```
+

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 8
-title: =| "tisbar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'=| "tisbar"'
+    ==
+;>
 
 # `=| "tisbar"`
 
@@ -17,7 +17,7 @@ title: =| "tisbar"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
@@ -34,3 +34,4 @@ because you'll set it in a loop or similar.
 ~zod:dojo> (foo 5)
 7
 ```
+

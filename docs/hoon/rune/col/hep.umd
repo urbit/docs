@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: :- "colhep"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/':- "colhep"'
+    ==
+;>
 
 # `:- "colhep"`
 
@@ -15,7 +15,7 @@ The cell of `p` and `q`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 Irregular: `[a b]` is `:-(a b)`.
 
@@ -25,7 +25,7 @@ Irregular: `a^b^c` is `[a b c]`.
 
 Irregular: `a/b` is `[%a b]`.
 
-Irregular: `` `a `` is `[~ a]`.
+Irregular: ``a` is `[~ a]`.
 
 Irregular: `~[a b]` is `[a b ~]`.
 
@@ -49,3 +49,4 @@ compiler does), `[a b]` is the same as `[%clhp a b]`.
 ~zod:dojo> `1
 [~ 1]
 ```
+

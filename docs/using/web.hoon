@@ -1,14 +1,12 @@
----
-navhome: /docs/
-navuptwo: true
-sort: 8
-title: Web (Eyre)
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'8'
+        title/'Web (Eyre)'
+    ==
+;>
 
 # Web (Eyre)
-
-<div class="row">
-<div class="col-md-8">
 
 Your Urbit runs its own webserver, Eyre, that handles all things HTTP.  Here we'll cover the features of Eyre that most resemble a traditional web server.
 
@@ -18,27 +16,27 @@ Tree was built primarily to display both our documentation and the contents of `
 
 We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its own repo [here](https://github.com/urbit/tree).
 
-</div>
-</div>
-
 ## Quickstart
 
 Your Urbit runs a web server and can be found at either `http://localhost:8080/` (or `8081` if you're running other processes that might be occupying `8080`, you can determine which port your urbit is on by looking at your boot sequence — it's specified there), or `http://your-urbit.urbit.org/`.
 
-<span class="red">
-(Make sure you have a desk mounted to unix, as covered in the
-[filesystem walkthrough](/docs/using/filesystem)).
-</span>
+;span.red
+  (Make sure you have a desk mounted to unix, as covered in the [filesystem walkthrough](/docs/using/filesystem)).
+==
 
 To switch the desk you're serving from:
 
-    |serve %sandbox
+```
+|serve %sandbox
+```
 
 To host a file on the web try putting the following in `/sandbox/web/test.md` (from Unix):
 
-    # Hello
+```
+# Hello
 
-    This is a simple markdown file.
+This is a simple markdown file.
+```
 
 Create the directory `/sandbox/web/test/` and add two more markdown files in it.
 
@@ -47,23 +45,31 @@ succession using something like `mkdir sandbox/web/test && touch sandbox/web/tes
 
 Now modify `/sandbox/web/test.md` to list the children using the `<list/>` JSX:
 
-    # Hello
+```
+# Hello
 
-    This is a simple markdown file.
+This is a simple markdown file.
 
-    <div><list /></div>
+<div><list /></div>
+```
 
 To view your file rendered using tree:
 
-    http://localhost:8080/test/
+```
+http://localhost:8080/test/
+```
 
 To view your file as raw `md`:
 
-    http://localhost:8080/test.md
+```
+http://localhost:8080/test.md
+```
 
 To view your file as raw `html`:
 
-    http://localhost:8080/test.html
+```
+http://localhost:8080/test.html
+```
 
 You may have noticed that we just created both `test.md` and `test/`. In Urbit, there is no distinction between a directory and a file. So, if you're adding files directly from unix, simply `mkdir test` and Urbit will treat the file and directory as the same entity.
 
@@ -73,7 +79,7 @@ You can use this feature to change your homepage at `your-urbit.urbit.org` with 
 
 We've created a few simple examples of how to get set up publishing content from your Urbit.  Feel free to ask questions in the comments.
 
-<list/>
+;+  (kids %title datapath/'/docs/using/web/' ~)
 
 ## Manual
 
@@ -83,7 +89,9 @@ This is the equivalent of a `public_html` directory.  Your Urbit looks in this d
 
 Switch to the `%sandbox` desk:
 
-    |serve %sandbox
+```
+|serve %sandbox
+```
 
 Let's quickly step through the default contents of `web/`:
 
@@ -310,3 +318,4 @@ Mechanics of the continuous long poll.  Used mostly internally.
 ### `window.urb.util`
 
 Library of utility and helper functions.
+

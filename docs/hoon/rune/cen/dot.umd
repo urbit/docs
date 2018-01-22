@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: %. "cendot"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'%. "cendot"'
+    ==
+;>
 
-# `%. "cendot"` 
+# `%. "cendot"`
 
 `[%cndt p=hoon q=hoon]`: call a gate (function), reversed.
 
@@ -17,7 +17,7 @@ title: %. "cendot"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 

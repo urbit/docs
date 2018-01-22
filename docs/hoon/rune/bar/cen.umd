@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: |% "barcen"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'|% "barcen"'
+    ==
+;>
 
 # `|% "barcen"`
 
@@ -15,7 +15,7 @@ A core with battery `p`.  Payload is the subject.
 
 ## Syntax
 
-Regular: *battery*.
+Regular: _battery_.
 
 ## Discussion
 

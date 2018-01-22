@@ -1,9 +1,9 @@
----
-navhome: /docs/
-navuptwo: true
-sort: 4
-title: Contributing
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'4'
+        title/'Contributing'
+    ==
+;>
 
 # Contributing
 

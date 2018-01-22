@@ -1,11 +1,10 @@
----
-navhome: /docs/
-sort: 6
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        sort/'6'
+    ==
+;>
 
-
-`%ford`
-=======
+# `%ford`
 
 Our typed and marked computation engine.
 
@@ -23,10 +22,9 @@ while `%gall` uses `%ford` to control the execution of applications.
 `%clay` is intended to use `%ford` to managed marked data, but this is
 not yet reality.
 
-<list></list>
+;+  (kids %title datapath/'/docs/arvo/internals/ford/' ~)
 
-Cards
------
+## Cards
 
 `%ford` accepts just one card, `%exec`. This is misleading, however,
 since there are fourteen different `silk`s that may be used with it. In
@@ -110,3 +108,4 @@ Slaps a twig against a subject silk. The mark of the result is `%noun`.
 
 Validates untyped data from a ship against a given mark. This is an
 extremely useful function.
+

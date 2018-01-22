@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 2
-title: Setup
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'2'
+        title/'Setup'
+    ==
+;>
 
 # Getting started
 
@@ -33,10 +33,10 @@ This will create a directory `fintud-macrep/` and begin building your
 urbit. This may take a few minutes.
 
 > If you are booting a star, the process is the same as above, with your
-> respective star name and ticket. 
->
-> If you are booting a galaxy, see 
-> [this Fora post](https://urbit.org/fora/posts/~2016.8.17..21.04.11..1450~/).
+  respective star name and ticket. 
+
+  If you are booting a galaxy, see 
+  [this Fora post](https://urbit.org/fora/posts/~2016.8.17..21.04.11..1450~/).
 
 If you do not have a ticket, you can still make a _comet_, a wild urbit
 drifting through cyberspace. Pick your own directory name, it doesn't
@@ -75,7 +75,6 @@ Should produce:
 
 Good.
 
-
 ### Messaging — Talk
 
 Use `ctrl-x` to change your prompt. Let's join the main Urbit chat
@@ -104,7 +103,6 @@ Or if you're running your urbit on a cloud instance with a static IP
 address (which we recommend!), something like `212.131.240.20`, assuming
 you've opened up the HTTP/HTTPS ports that Urbit uses (`8080` and `8443`
 by default), try opening:
-
 
 ```
 http://212.131.240.20:8080/~~/
@@ -151,7 +149,7 @@ which indicates the command was processed.
 `|mount %` will cause a `home/` directory to appear inside your pier
 folder. Changes to these files are automatically synced into your urbit.
 
-<br />
+;br;
 
 Here are a few other things you can do to get up and running:
 

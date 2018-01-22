@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 11
-title: ~> "siggar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'11'
+        title/'~> "siggar"'
+    ==
+;>
 
 # `~> "siggar"`
 
@@ -16,7 +16,7 @@ to computation.
 
 ## Syntax
 
-Regular: *2-fixed*.  For the dynamic form, write `%term.hoon`.
+Regular: _2-fixed_.  For the dynamic form, write `%term.hoon`.
 
 ## Discussion
 
@@ -39,3 +39,4 @@ Running the compiler:
 ~zod:dojo> (make '~>(%a.+(2) 42)')
 [%10 p=[p=97 q=[%4 p=[%1 p=2]]] q=[%1 p=42]]
 ```
+

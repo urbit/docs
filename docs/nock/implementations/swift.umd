@@ -1,13 +1,13 @@
----
-navhome: /docs/
-title: Swift
-sort: 10
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'Swift'
+        sort/'10'
+        next/'true'
+    ==
+;>
 
 # Swift
 
-```swift
+```
 import Foundation
 //  1   ::  A noun is an atom or a cell.
 //  2   ::  An atom is a natural number.
@@ -54,17 +54,17 @@ public indirect enum Noun: IntegerLiteralConvertible, ArrayLiteralConvertible, E
 {
     //  2   ::  An atom is a natural number.
     public typealias ATOM = UIntMax
-    
+
     case Atom(ATOM)
     //  3   ::  A cell is an ordered pair of nouns.
     case Cell(Noun, Noun)
     case Invalid
-    
+
     public static var YES: Noun { return .Atom(0) }
     public static var NO: Noun  { return .Atom(1) }
-    
+
     public init(_ noun: Noun) { self = noun }
-    
+
     //  6   ::  [a b c]          [a [b c]]
     public init(_ nouns: [Noun]) {
         self = .Invalid
@@ -76,24 +76,24 @@ public indirect enum Noun: IntegerLiteralConvertible, ArrayLiteralConvertible, E
             }
         }
     }
-    
+
     // protocol IntegerLiteralConvertible
     public typealias IntegerLiteralType = ATOM
     public init(integerLiteral value: IntegerLiteralType) {
         self = .Atom(value)
     }
-    
+
     // protocol ArrayLiteralConvertible
     public typealias Element = Noun
     public init(arrayLiteral elements: Element...) {
         self = Noun(elements)
     }
-    
+
     // Array subscript
     public subscript(axis: ATOM) -> Noun {
         return fas(.Cell(.Atom(axis), self))
     }
-    
+
     // protocol Hashable
     public var hashValue: Int {
         //return self.description.hashValue
@@ -111,7 +111,7 @@ public indirect enum Noun: IntegerLiteralConvertible, ArrayLiteralConvertible, E
     public var description: String {
         return describe()
     }
-    
+
     private func describe(depth: Int = 0) -> String {
         var sub = ""
         let next = depth+1
@@ -211,55 +211,55 @@ public func tar(noun: Noun) -> Noun
             // 23   ::  *[a [b c] d]     [*[a b c] *[a d]]
         case let .Cell(.Cell(b, c), d):
             return .Cell(tar([a, b, c]), tar([a, d]))
-            
+
             // 25   ::  *[a 0 b]         /[b a]
         case let .Cell(0, b):
             return fas([b, a])
-            
+
             // 26   ::  *[a 1 b]         b
         case let .Cell(1, b):
             return b
-            
+
             // 27   ::  *[a 2 b c]       *[*[a b] *[a c]]
         case let .Cell(2, .Cell(b, c)):
             return tar([tar([a, b]), tar([a, c])])
-            
+
             // 28   ::  *[a 3 b]         ?*[a b]
         case let .Cell(3, b):
             return wut(tar([a, b]))
-            
+
             // 29   ::  *[a 4 b]         +*[a b]
         case let .Cell(4, b):
             return lus(tar([a, b]))
-            
+
             // 30   ::  *[a 5 b]         =*[a b]
         case let .Cell(5, b):
             return tis(tar([a, b]))
-            
+
             // 32   ::  *[a 6 b c d]     *[a 2 [0 1] 2 [1 c d] [1 0] 2 [1 2 3] [1 0] 4 4 b]
         case let .Cell(6, .Cell(b, .Cell(c, d))):
             return tar([a, 2, [0, 1], 2, [1, c, d], [1, 0], 2, [1, 2, 3], [1, 0], 4, 4, b])
-            
+
             // 33   ::  *[a 7 b c]       *[a 2 b 1 c]
         case let .Cell(7, .Cell(b, c)):
             return tar([a, 2, b, 1, c])
-            
+
             // 34   ::  *[a 8 b c]       *[a 7 [[7 [0 1] b] 0 1] c]
         case let .Cell(8, .Cell(b, c)):
             return tar([a, 7, [[7, [0, 1], b], 0, 1], c])
-            
+
             // 35   ::  *[a 9 b c]       *[a 7 c 2 [0 1] 0 b]
         case let .Cell(9, .Cell(b, c)):
             return tar([a, 7, c, 2, [0, 1], 0, b])
-            
+
             // 36   ::  *[a 10 [b c] d]  *[a 8 c 7 [0 3] d]
         case let .Cell(10, .Cell(.Cell(_, c), d)):
             return tar([a, 8, c, 7, [0, 3], d])
-            
+
             // 37   ::  *[a 10 b c]      *[a c]
         case let .Cell(10, .Cell(_, c)):
             return tar([a, c]);
-            
+
         default:
             //return tar(noun)
             abort()
@@ -270,7 +270,6 @@ public func tar(noun: Noun) -> Noun
     }
 }
 
-
 public var nock_functions = Dictionary<Noun, Noun -> Noun>()
 
 public func dao(formula: Noun) -> Noun->Noun
@@ -278,35 +277,35 @@ public func dao(formula: Noun) -> Noun->Noun
     if let cached = nock_functions[formula] {
         return cached
     }
-    
+
     let compiler = { () -> Noun -> Noun in
         switch formula {
         case let .Cell(.Cell(b, c), d):     // Distribution
             let (p, q) = (dao(.Cell(b, c)), dao(d))
             return { a in .Cell(p(a), q(a)) }
-        
+
         case let .Cell(0, b):               // Axis
             return { a in fas(.Cell(b, a)) }
-        
+
         case let .Cell(1, b):               // Just
             return { _ in b }
-        
+
         case let .Cell(2, .Cell(b, c)):     // Fire
             let (f, g) = (dao(b), dao(c))
             return { a in dao(g(a))(f(a)) }
-        
+
         case let .Cell(3, b):               // Depth
             let f = dao(b)
             return { a in wut(f(a)) }
-        
+
         case let .Cell(4, b):               // Bump
             let f = dao(b)
             return { a in lus(f(a)) }
-        
+
         case let .Cell(5, b):               // Same
             let f = dao(b)
             return { a in tis(f(a)) }
-        
+
         case let .Cell(6, .Cell(b, .Cell(c, d))): // If
             let (p, q, r) = (dao(b), dao(c), dao(d))
             return { a in
@@ -319,15 +318,15 @@ public func dao(formula: Noun) -> Noun->Noun
                     return tar(.Cell(a, formula))
                 }
             }
-        
+
         case let .Cell(7, .Cell(b, c)):     // Compose
             let (f, g) = (dao(b), dao(c))
             return { a in g(f(a)) }
-        
+
         case let .Cell(8, .Cell(b, c)):     // Push
             let (f, g) = (dao(b), dao(c))
             return { a in g(.Cell(f(a), a)) }
-        
+
         case let .Cell(9, .Cell(b, c)):     // Call
             let f = dao(c)
             return { a in
@@ -335,21 +334,21 @@ public func dao(formula: Noun) -> Noun->Noun
                 let arm = dao(fas(.Cell(b, core)))
                 return arm(core)
             }
-        
+
         case let .Cell(10, .Cell(.Cell(_, c), d)): // Hint
             let ignore = dao(c)
             let f = dao(d)
             return { a in ignore(a); return f(a) }
-        
+
         case let .Cell(10, .Cell(_, c)):    // Hint
             let f = dao(c)
             return { a in f(a) }
-        
+
         default:
             return { a in tar(.Cell(a, formula)) }
         }
     }
-    
+
     let r = compiler()
     nock_functions[formula] = r
     return r
@@ -364,3 +363,4 @@ public func nock(n: Noun) -> Noun
     return nock(n)
 }
 ```
+

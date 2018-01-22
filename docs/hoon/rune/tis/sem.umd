@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 7
-title: =; "tissem"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'=; "tissem"'
+    ==
+;>
 
 # `=; "tissem"`
 
@@ -18,7 +18,7 @@ subject, inverted.
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Examples
 
@@ -30,3 +30,4 @@ Regular: *3-fixed*.
 ~zod:dojo> (foo 5)
 8
 ```
+

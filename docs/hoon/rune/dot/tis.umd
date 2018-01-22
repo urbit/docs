@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 4
-title: .= "dottis"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'.= "dottis"'
+    ==
+;>
 
-# `.=  "dottis"` 
+# `.=  "dottis"`
 
 `[%dtts p=hoon q=hoon]`: test for equality with Nock `5`.
 
@@ -15,7 +15,7 @@ title: .= "dottis"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 Irregular: `=(a b)` is `.=(a b)`.
 
@@ -40,3 +40,4 @@ is a common cause of performance bugs.)
 ~zod:dojo> =(1 2)
 %.n
 ```
+

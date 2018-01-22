@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Clojure
-sort: 5
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'Clojure'
+        sort/'5'
+        next/'true'
+    ==
+;>
 
 # Clojure
 
@@ -123,3 +123,4 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
     (throw (anock.NockException. "Cannot convert atom to cell."))
     (apply* bracket nouns)))
 ```
+

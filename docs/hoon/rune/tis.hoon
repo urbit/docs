@@ -1,9 +1,10 @@
----
-navhome: /docs/
-next: true
-sort: 13
-title: Flow = ("tis")
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'13'
+        title/'Flow = ("tis")'
+    ==
+;>
 
 # Flow `=` ("tis")
 
@@ -25,11 +26,11 @@ cell of `p` and the old subject.  `=+` is the simplest Hoon equivalent of
 
 Another way to change the subject is to mutate it.  With the
 `=.` ("tisdot") rune, given a wing that resolves to a leg, we can write
-instead of reading, *installing* a new value at that leg.  Of
+instead of reading, _installing_ a new value at that leg.  Of
 course, we are creating a copy, not modifying the original.
 
 There are many flow stems, all small variations on these three.
 
 ## Twigs
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/rune/tis/' ~)

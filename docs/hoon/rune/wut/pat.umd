@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 10
-title: ?@ "wutpat"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'10'
+        title/'?@ "wutpat"'
+    ==
+;>
 
 # `?@ "wutpat"`
 
@@ -18,7 +18,7 @@ of the subject is an atom.
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Examples
 
@@ -31,3 +31,4 @@ Regular: *3-fixed*.
 ~zod:dojo> ?@(`*`[1 2] 3 4)
 4
 ```
+

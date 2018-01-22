@@ -1,14 +1,14 @@
----
-navhome: /docs/
-next: true
-sort: 6
-title: $@ "bucpat"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'$@ "bucpat"'
+    ==
+;>
 
 # `$@ "bucpat"`
 
 `[%bcpt p=model q=model]`: mold which normalizes a union tagged by head depth (atom).
-  
+
 ## Normalizes to
 
 Default, if the sample is an atom; `p`, if the head of the sample
@@ -20,12 +20,12 @@ The default of `p`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 Product: a mold which applies `p` if its sample is an atom, 
 `q` if its sample is a cell.
 
-Regular form: *2-fixed*.
+Regular form: _2-fixed_.
 
 Example:
 
@@ -41,3 +41,4 @@ Example:
 ~zod:dojo> $:a
 [%foo p=0 q=0]
 ```
+

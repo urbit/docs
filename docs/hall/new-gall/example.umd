@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: A new-Gall example app 
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'A new-Gall example app'
+    ==
+;>
 
-# A new-Gall example app 
+# A new-Gall example app
 
 ```
 ::  counter app
@@ -95,3 +95,4 @@ title: A new-Gall example app
 ::  not pictured: ++path-to-query
 --
 ```
+

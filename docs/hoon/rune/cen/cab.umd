@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 8
-title: %_ "cencab"
----
+:-  :~  navhome/'/docs/'
+        sort/'8'
+        title/'%_ "cencab"'
+    ==
+;>
 
 # `%_ "cencab"`
 
@@ -17,7 +17,7 @@ preserving type.
 
 ## Syntax
 
-Regular: *1-fixed*, then *jogging*.
+Regular: _1-fixed_, then _jogging_.
 
 ## Discussion
 
@@ -37,3 +37,4 @@ can change the type of a limb with mutations.
 ~zod:dojo> %_(foo p [55 99])
 ! nest-fail
 ```
+

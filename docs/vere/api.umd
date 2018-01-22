@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 4
-title: API overview by prefix
----
+:-  :~  navhome/'/docs/'
+        sort/'4'
+        title/'API overview by prefix'
+    ==
+;>
 
 ## u3: API overview by prefix
 
@@ -13,10 +13,12 @@ functions are commented, but the comments may be cryptic.
 
 To start `u3`, run 
 
-    /* u3m_boot(): start the u3 system.
-    */
-      void
-      u3m_boot(c3_o nuu_o, c3_o bug_o, c3_c* dir_c);
+```
+/* u3m_boot(): start the u3 system.
+*/
+  void
+  u3m_boot(c3_o nuu_o, c3_o bug_o, c3_c* dir_c);
+```
 
 `nuu_o` is `c3y` (yes, `0`) if you're creating a new pier,
 `c3n` (no, `1`) if you're loading an existing one.  `bug_o`
@@ -31,12 +33,14 @@ complete, should be run (a) virtualized and (b) in an inner road.
 These are slightly different things, but at the highest level we
 bundle them together for your convenience, in `u3m_soft()`:
 
-    /* u3m_soft(): system soft wrapper.  unifies unix and nock errors.
-    **
-    **  Produces [%$ result] or [%error (list tank)].
-    */
-      u3_noun
-      u3m_soft(c3_w sec_w, u3_funk fun_f, u3_noun arg);
+```
+/* u3m_soft(): system soft wrapper.  unifies unix and nock errors.
+**
+**  Produces [%$ result] or [%error (list tank)].
+*/
+  u3_noun
+  u3m_soft(c3_w sec_w, u3_funk fun_f, u3_noun arg);
+```
 
 `sec_w` is the number of seconds to time out the computation.
 `fun_f` is a C function accepting `arg`.
@@ -53,14 +57,14 @@ use `u3m_soft_sure()`, `u3m_soft_slam()`, or `u3m_soft_nock()`
 for C functions, Hoon function calls, and Nock invocations.
 Caution - this returns just the result, and asserts globally.
 
-All the `u3m_soft` functions above work *only on the surface*.
+All the `u3m_soft` functions above work _only on the surface_.
 Within the surface, virtualize with `u3m_soft_run()`.  Note that
 this takes a `fly` (a namespace gate), thus activating the `11`
 super-operator in the nock virtualizer, `++mock`.  When actually
 using the `fly`, call `u3m_soft_esc()`.  Don't do either unless
 you know what you're doing!
 
-For descending into a subroad *without* Nock virtualization,
+For descending into a subroad _without_ Nock virtualization,
 use `u3m_hate()` and `u3m_love` respectively.  Hating enters
 a subroad; loving leaves it, copying out a product noun.
 
@@ -86,7 +90,7 @@ dumber than most) - `u3j` is the most interesting code in `u3`.
 
 Let's consider the minor miracle of driver-to-battery binding
 which lets `u3j` work - and decrement not be `O(n)` - without
-violating the precisely defined semantics of pure Nock, *ever*.
+violating the precisely defined semantics of pure Nock, _ever_.
 
 It's easy to assume that jets represent an architectural coupling
 between Hoon language semantics and Nock interpreter internals.
@@ -107,7 +111,7 @@ code]`, any high-level language transforming itself to Nock would
 use this design.
 
 So jets are in fact fully general.  Broadly speaking, the jet
-system works by matching a C *driver* to a battery.  When the
+system works by matching a C _driver_ to a battery.  When the
 battery is invoked with Nock operator `9`, it must be found in
 associative memory and linked to its driver.  Then we link the
 formula axis of the operation (`a` in `[9 a b]`) to a specific
@@ -133,21 +137,27 @@ expect the simplest case of it to be `[formula subject]`.  That
 is: to execute a simple core whose battery is a single formula,
 we compute 
 
-    nock(+.a -.a)
+```
+nock(+.a -.a)
+```
 
 Then, naturally, when we go from Hoon or a high-level language
 containing functions down to Nock, `[function arguments]` turns
 into `[formula subject]`.  This seems like an obvious design, and
-we mention it only because it is *completely wrong*.
+we mention it only because it is _completely wrong_.
 
 Rather, to execute a one-armed core like the above, we run
 
-    nock(a -.a)
+```
+nock(a -.a)
+```
 
 and the normal structure of a `gate`, which is simply Urbitese
 for "function," is:
 
-    [formula [sample context]]
+```
+[formula [sample context]]
+```
 
 where `sample` is Urbitese for "arguments" - and `context`, any
 Lisper will at once recognize, is Urbitese for "environment."
@@ -162,13 +172,17 @@ an atomic constant, conventionally is the kernel version number.
 
 Thus a (highly desirable) `static` core is one of the form
 
-    [battery constant]
-    [battery static-core]
+```
+[battery constant]
+[battery static-core]
+```
 
 ie, a solid stack of nested libraries without any dynamic data.
 The typical gate will thus be, for example,
 
-    [formula [sample [battery battery battery constant]]]
+```
+[formula [sample [battery battery battery constant]]]
+```
 
 but we would be most foolish to restrict the jet mechanism to 
 cores of this particular structure.  We cannot constrain a 
@@ -208,63 +222,69 @@ numbering itself on process initialization.  This structure -
 which embeds function pointers to all the jets - is defined 
 in `j/tree.c`.  The data structures:
 
-    /* u3j_harm: driver arm.
-    */
-      typedef struct _u3j_harm {
-        c3_c*               fcs_c;            //  `.axe` or name
-        u3_noun           (*fun_f)(u3_noun);  //  compute or 0 / semitransfer
-        c3_o                ice;              //  perfect (don't test)
-        c3_o                tot;              //  total (never punts)
-        c3_o                liv;              //  live (enabled)
-      } u3j_harm;
+```
+/* u3j_harm: driver arm.
+*/
+  typedef struct _u3j_harm {
+    c3_c*               fcs_c;            //  `.axe` or name
+    u3_noun           (*fun_f)(u3_noun);  //  compute or 0 / semitransfer
+    c3_o                ice;              //  perfect (don't test)
+    c3_o                tot;              //  total (never punts)
+    c3_o                liv;              //  live (enabled)
+  } u3j_harm;
 
-    /* u3j_core: C core driver.
-    */
-      typedef struct _u3j_core {
-        c3_c*             cos_c;              //  control string
-        struct _u3j_harm* arm_u;              //  blank-terminated static list
-        struct _u3j_core* dev_u;              //  blank-terminated static list
-        struct _u3j_core* par_u;              //  dynamic parent pointer 
-        c3_l              jax_l;              //  dynamic jet index 
-      } u3j_core;
+/* u3j_core: C core driver.
+*/
+  typedef struct _u3j_core {
+    c3_c*             cos_c;              //  control string
+    struct _u3j_harm* arm_u;              //  blank-terminated static list
+    struct _u3j_core* dev_u;              //  blank-terminated static list
+    struct _u3j_core* par_u;              //  dynamic parent pointer 
+    c3_l              jax_l;              //  dynamic jet index 
+  } u3j_core;
 
-    /* u3e_dash, u3_Dash, u3D: jet dashboard singleton
-    */
-      typedef struct _u3e_dash {
-        u3j_core* dev_u;                      //  null-terminated static list
-        c3_l      len_l;                      //  ray_u filled length
-        c3_l      all_l;                      //  ray_u allocated length
-        u3j_core* ray_u;                      //  dynamic driver array
-      } u3j_dash;
+/* u3e_dash, u3_Dash, u3D: jet dashboard singleton
+*/
+  typedef struct _u3e_dash {
+    u3j_core* dev_u;                      //  null-terminated static list
+    c3_l      len_l;                      //  ray_u filled length
+    c3_l      all_l;                      //  ray_u allocated length
+    u3j_core* ray_u;                      //  dynamic driver array
+  } u3j_dash;
+```
 
-Warm and cold state is *per road*.  In other words, as we nest
+Warm and cold state is _per road_.  In other words, as we nest
 roads, we also nest jet state.  The jet state in the road is:
 
-      struct {                                //  jet dashboard
-        u3p(u3h_root) har_p;                  //  warm state
-        u3_noun       das;                    //  cold state
-      } jed;
+```
+  struct {                                //  jet dashboard
+    u3p(u3h_root) har_p;                  //  warm state
+    u3_noun       das;                    //  cold state
+  } jed;
+```
 
 In case you understand Hoon, `das` (cold state) is a `++dash`, 
 and `har_p` (warm state) is a map from battery to `++calx`:
 
-    ++  bane  ,@tas                                 ::  battery name
-    ++  bash  ,@uvH                                 ::  label hash
-    ++  bosh  ,@uvH                                 ::  local battery hash
-    ++  batt  ,*                                    ::  battery
-    ++  calf                                        ::  
-      $:  jax=,@ud                                  ::  hot core index
-          hap=(map ,@ud ,@ud)                       ::  axis/hot arm index
-          lab=path                                  ::  label as path
-          jit=*                                     ::  arbitrary data
-      ==                                            ::
-    ++  calx  (trel calf (pair bash cope) club)     ::  cached by battery
-    ++  clog  (pair cope (map batt club))           ::  identity record
-    ++  club  (pair corp (map term nock))           ::  battery pattern
-    ++  cope  (trel bane axis (each bash noun))     ::  core pattern
-    ++  core  ,*                                    ::  core
-    ++  corp  (each core batt)                      ::  parent or static
-    ++  dash  (map bash clog)                       ::  jet system
+```
+++  bane  ,@tas                                 ::  battery name
+++  bash  ,@uvH                                 ::  label hash
+++  bosh  ,@uvH                                 ::  local battery hash
+++  batt  ,*                                    ::  battery
+++  calf                                        ::  
+  $:  jax=,@ud                                  ::  hot core index
+      hap=(map ,@ud ,@ud)                       ::  axis/hot arm index
+      lab=path                                  ::  label as path
+      jit=*                                     ::  arbitrary data
+  ==                                            ::
+++  calx  (trel calf (pair bash cope) club)     ::  cached by battery
+++  clog  (pair cope (map batt club))           ::  identity record
+++  club  (pair corp (map term nock))           ::  battery pattern
+++  cope  (trel bane axis (each bash noun))     ::  core pattern
+++  core  ,*                                    ::  core
+++  corp  (each core batt)                      ::  parent or static
+++  dash  (map bash clog)                       ::  jet system
+```
 
 The driver index `jax` in a `++calx` is an index into `ray_u` in the
 dashboard - ie, a pointer into hot state.  This is why the warm
@@ -294,7 +314,9 @@ produced by the runes `~%`, for the general case, or `~/`
 for simple functions.)  To bind a jet, execute a formula of the
 form:
 
-    [10 [%fast clue-formula] core-formula]
+```
+[10 [%fast clue-formula] core-formula]
+```
 
 `core-formula` assembles the core to be jet-propelled.
 `clue-formula` produces the hint information, or `++clue`
@@ -302,28 +324,32 @@ above, which we want to annotate it with.
 
 A clue is a triple of name, parent, and hooks:
 
-    ++  clue  (trel chum nock (list (pair term nock)))
+```
+++  clue  (trel chum nock (list (pair term nock)))
+```
 
 The name, or `++chum`, has a bunch of historical structure which
 we don't need (cleaning these things up is tricky), but just gets
 flattened into a term.
 
 The parent axis is a nock formula, but always reduces to a simple
-axis, which is the address of this core's *parent*.  Consider
+axis, which is the address of this core's _parent_.  Consider
 again an ordinary gate
 
-    [formula [sample context]]
+```
+[formula [sample context]]
+```
 
 Typically the `context` is itself a library core, which itself
 has a jet binding.  If so, the parent axis of this gate is `7`.
 
-If the parent is already bound - and the parent *must* be already
+If the parent is already bound - and the parent _must_ be already
 bound, in this road or a road containing it - we can hook this core 
 bottom-up into a tree hierarchy.  Normally the child core is 
 produced by an arm of the parent core, so this is not a problem -
 we wouldn't have the child if we hadn't already made the parent.
 
-The clue also contains a list of *hooks*, named nock formulas on
+The clue also contains a list of _hooks_, named nock formulas on
 the core.  Usually these are arms, but they need not be.  The
 point is that we often want to call a core from C, in a situation
 where we have no type or other source information.  A common case
@@ -342,14 +368,14 @@ instance, if the core is a Hoon gate - a function - we will call
 ### u3j: the cold jet dashboard
 
 For even more fun, the jet tree is not actually a tree of
-batteries.  It's a tree of battery *labels*, where a label is 
+batteries.  It's a tree of battery _labels_, where a label is 
 an [axis term] path from the root of the tree.  (At the root,
 if the core pattern is always followed properly, is a core whose
 payload is an atomic constant, conventionally the Hoon version.)
 
 Under each of these labels, it's normal to have an arbitrary
 number of different Nock batteries (not just multiple copies
-of the same noun, a situation we *do* strive to avoid).  For
+of the same noun, a situation we _do_ strive to avoid).  For
 instance, one might be compiled with debugging hints, one not.
 
 We might even have changed the semantics of the battery without
@@ -365,12 +391,16 @@ hierarchy is a constant, by convention the Hoon kernel version
 because any normal jet-propelled core has, at the bottom of its
 onion of libraries, the standard kernel.  Thus if the core is
 
-    [foo-battery [bar-battery [moo-battery 164]]]
+```
+[foo-battery [bar-battery [moo-battery 164]]]
+```
 
 we can reverse the nesting to construct a hierarchical core
 path.  The static core
 
-    164/moo/bar/foo
+```
+164/moo/bar/foo
+```
 
 extends the static core `164/moo/bar` by wrapping the `foo`
 battery (ie, in Hoon, `|%`) around it.  With the core above,
@@ -393,7 +423,7 @@ of information: the `++cope`, or per-location noun; and a map of
 batteries to a per-battery `++club`.
 
 The `cope` is a triple of `++bane` (battery name, right now just
-a `term`); `++axis`, the axis, within *this* core, of the parent;
+a `term`); `++axis`, the axis, within _this_ core, of the parent;
 and `(each bash noun)`, which is either `[0 bash]` if the parent
 is another core, or `[1 noun]`, for the constant noun (like
 `164`) if there is no parent core.
@@ -415,7 +445,9 @@ There are two cases for a jet-propelled core - either the entire
 core is a static constant, or it isn't.  Hence the definition
 of `corp`:
 
-    ++  corp  (each core batt)                ::  parent or static
+```
+++  corp  (each core batt)                ::  parent or static
+```
 
 Ie, a `corp` is `[0 core]` or `[1 batt]`.  If it's static -
 meaning that the jet only works with one specific core, ie, the
@@ -424,7 +456,7 @@ validate with a single comparison.  Otherwise, we have to recurse
 upward by checking the parent.
 
 Note that there is at present no way to force a jet to depend on
-static *data*.
+static _data_.
 
 ### u3j: the warm jet dashboard
 
@@ -490,7 +522,7 @@ in the `u3j_harm` which tell us how to call the arm function.
 
 If `ice` is yes (`&`, `0`), the jet is known to be perfect and we
 can just trust the product of `fun_f`.  Otherwise, we need to run
-*both* the Nock arm and `fun_f`, and compare their results.
+_both_ the Nock arm and `fun_f`, and compare their results.
 
 (Note that while executing the C side of this test, we have to
 set `ice` to yes; on the Nock side, we have to set `liv` to no. 
@@ -502,9 +534,9 @@ test is on the outermost layer of recursion.)
 environment has a slight locking problem with these flags if arm
 testing is multi-threaded.)
 
-If `tot` is yes, (`&`, `0`), the arm function is *total* and has
-to return properly (though it can still return *u3_none*).
-Otherwise, it is *partial* and can `u3_cm_bail()` out with
+If `tot` is yes, (`&`, `0`), the arm function is _total_ and has
+to return properly (though it can still return _u3_none_).
+Otherwise, it is _partial_ and can `u3_cm_bail()` out with
 c3__punt.  This feature has a cost: the jet runs in a subroad.
 
 Finally, if `liv` is no (`|`, 1), the jet is off and doesn't run.
@@ -541,10 +573,10 @@ caller passes the entire core, which is retained if the function
 returns `u3_none`, transferred otherwise.  Why?   Again, use
 counts of 1 are special and precious for performance hackers.
 
-`u3q` interfaces break the core into C arguments, *retain* noun
-arguments, and *transfer* noun returns.  `u3k` interfaces are the
+`u3q` interfaces break the core into C arguments, _retain_ noun
+arguments, and _transfer_ noun returns.  `u3k` interfaces are the
 same, except with more use of `u3_none` and other simple C
-variations on the Hoon original, but *transfer* both arguments
+variations on the Hoon original, but _transfer_ both arguments
 and returns.  Generally, `u3k` are most convenient for new code.
 
 Following `u3k/q/w` is `[a-f]`, corresponding to the 6 logical
@@ -557,7 +589,7 @@ For instance, `++add` is `u3wa_add(cor)`, `u3qa_add(a, b)`, or
 `u3wdb_get(cor)`, `u3kdb_get(a, b)`, etc, in `j/d/by_get.c`.
 
 For historical reasons, all internal jet code in `j/[a-f]`
-*retains* noun arguments, and *transfers* noun results.  Please
+_retains_ noun arguments, and _transfers_ noun results.  Please
 do not do this in new `g` jets!  The new standard protocol is to
 transfer both arguments and results.
 
@@ -575,56 +607,60 @@ the macros `u3k()` and `u3z()` respectively.
 Normally we create nouns through `u3i` functions, and don't call
 the `u3a` allocators directly.  But if you do:
 
-One, there are *two* sets of allocators: the word-aligned
+One, there are _two_ sets of allocators: the word-aligned
 allocators and the fully-aligned (ie, malloc compatible)
 allocators.  For instance, on a typical OS X setup, malloc
 produces 16-byte aligned results - needed for some SSE
 instructions.
 
-These allocators are *not compatible*.  For 32-bit alignment
+These allocators are _not compatible_.  For 32-bit alignment
 as used in nouns, call
 
-    /* u3a_walloc(): allocate storage measured in words.
-    */
-      void*
-      u3a_walloc(c3_w len_w);
+```
+/* u3a_walloc(): allocate storage measured in words.
+*/
+  void*
+  u3a_walloc(c3_w len_w);
 
-    /* u3a_wfree(): free storage.
-    */
-      void
-      u3a_wfree(void* lag_v);
+/* u3a_wfree(): free storage.
+*/
+  void
+  u3a_wfree(void* lag_v);
 
-    /* u3a_wealloc(): word realloc.
-    */
-      void*
-      u3a_wealloc(void* lag_v, c3_w len_w);
+/* u3a_wealloc(): word realloc.
+*/
+  void*
+  u3a_wealloc(void* lag_v, c3_w len_w);
+```
 
 For full alignment, call:
 
-    /* u3a_malloc(): aligned storage measured in bytes.
-    */
-      void*
-      u3a_malloc(size_t len_i);
+```
+/* u3a_malloc(): aligned storage measured in bytes.
+*/
+  void*
+  u3a_malloc(size_t len_i);
 
-    /* u3a_realloc(): aligned realloc in bytes.
-    */
-      void*
-      u3a_realloc(void* lag_v, size_t len_i);
+/* u3a_realloc(): aligned realloc in bytes.
+*/
+  void*
+  u3a_realloc(void* lag_v, size_t len_i);
 
-    /* u3a_realloc2(): gmp-shaped realloc.
-    */
-      void*
-      u3a_realloc2(void* lag_v, size_t old_i, size_t new_i);
+/* u3a_realloc2(): gmp-shaped realloc.
+*/
+  void*
+  u3a_realloc2(void* lag_v, size_t old_i, size_t new_i);
 
-    /* u3a_free(): free for aligned malloc.
-    */
-      void
-      u3a_free(void* tox_v);
+/* u3a_free(): free for aligned malloc.
+*/
+  void
+  u3a_free(void* tox_v);
 
-    /* u3a_free2(): gmp-shaped free.
-    */
-      void
-      u3a_free2(void* tox_v, size_t siz_i);
+/* u3a_free2(): gmp-shaped free.
+*/
+  void
+  u3a_free2(void* tox_v, size_t siz_i);
+```
 
 There are also a set of special-purpose allocators for building
 atoms.  When building atoms, please remember that it's incorrect
@@ -637,7 +673,7 @@ allocate a block of raw space with `u3a_slab()`, then chop off
 the end with `u3a_malt()` (which does the measuring itself)
 or `u3a_mint()` in case you've measured it yourself.
 
-Once again, *do not call `malloc()`* (or C++ `new`) within any
+Once again, _do not call `malloc()`_ (or C++ `new`) within any
 code that may be run within a jet.  This will cause rare sporadic
 corruption when we interrupt execution within a `malloc()`.  We'd
 just override the symbol, but `libuv` uses `malloc()` across
@@ -654,7 +690,7 @@ would expect, quite slow.  (There is no such thing as a fast tree
 interpreter.)
 
 There is only one Nock, but there are lots of ways to call it.
-(Remember that all `u3n` functions *transfer* C arguments and
+(Remember that all `u3n` functions _transfer_ C arguments and
 returns.)
 
 The simplest interpreter, `u3n_nock_on(u3_noun bus, u3_noun fol)`
@@ -663,31 +699,35 @@ invokes Nock on `bus` (the subject) and `fol` (the formula).
 reason `0` is true and `1` is false.)
 
 A close relative is `u3n_slam_on(u3_noun gat, u3_noun sam)`,
-which slams a *gate* (`gat`) on a sample (`sam`).  (In a normal
+which slams a _gate_ (`gat`) on a sample (`sam`).  (In a normal
 programming language which didn't talk funny and was retarded,
 `u3n_slam_on()` would call a function on an argument.)  We could
 write it most simply as:
- 
-    u3_noun 
-    u3n_slam_on(u3_noun gat, u3_noun sam)
-    {
-      u3_noun pro = u3n_nock_on
-                      (u3nc(u3k(u3h(gat)), 
-                            u3nc(sam, u3k(u3t(u3t(gat))))),
-                       u3k(u3h(gat)));
-      u3z(gat);
-      return pro;
-    }
+
+```
+u3_noun 
+u3n_slam_on(u3_noun gat, u3_noun sam)
+{
+  u3_noun pro = u3n_nock_on
+                  (u3nc(u3k(u3h(gat)), 
+                        u3nc(sam, u3k(u3t(u3t(gat))))),
+                   u3k(u3h(gat)));
+  u3z(gat);
+  return pro;
+}
+```
 
 Simpler is `u3n_kick_on(u3_noun gat)`, which slams a gate (or,
-more generally, a *trap* - because sample structure is not even
+more generally, a _trap_ - because sample structure is not even
 needed here) without changing its sample:
 
-    u3_noun 
-    u3n_kick_on(u3_noun gat, u3_noun sam)
-    {
-      return u3n_nock_on(gat, u3k(u3h(gat)));
-    }
+```
+u3_noun 
+u3n_kick_on(u3_noun gat, u3_noun sam)
+{
+  return u3n_nock_on(gat, u3k(u3h(gat)));
+}
+```
 
 The `_on` functions in `u3n` are all defined as pure Nock.  But
 actually, even though we say we don't extend Nock, we do.  But we
@@ -721,24 +761,26 @@ to a `fly` is a `++path`, just a list of text `span`.
 
 `mock` functions produce a `++toon`.  Fully elaborated:
 
-    ++  noun  ,*                                      ::  any noun
-    ++  path  (list ,@ta)                             ::  namespace path
-    ++  span  ,@ta                                    ::  text-atom (ASCII)
-    ++  toon  $%  [%0 p=noun]                         ::  success
-                  [%1 p=(list path)]                  ::  blocking paths
-                  [%2 p=(list tank)]                  ::  stack trace
-              ==                                      :: 
-    ++  tank                                          ::  printable 
-              $%  [%leaf p=tape]                      ::  flat text
-                  $:  %palm                           ::  backstep list
-                      p=[p=tape q=tape r=tape s=tape] ::  mid cap open close
-                      q=(list tank)                   ::  contents
-                  ==                                  ::
-                  $:  %rose                           ::  straight list
-                      p=[p=tape q=tape r=tape]        ::  mid open close
-                      q=(list tank)                   ::  contents
-                  ==                                  ::
-              ==     
+```
+++  noun  ,*                                      ::  any noun
+++  path  (list ,@ta)                             ::  namespace path
+++  span  ,@ta                                    ::  text-atom (ASCII)
+++  toon  $%  [%0 p=noun]                         ::  success
+              [%1 p=(list path)]                  ::  blocking paths
+              [%2 p=(list tank)]                  ::  stack trace
+          ==                                      :: 
+++  tank                                          ::  printable 
+          $%  [%leaf p=tape]                      ::  flat text
+              $:  %palm                           ::  backstep list
+                  p=[p=tape q=tape r=tape s=tape] ::  mid cap open close
+                  q=(list tank)                   ::  contents
+              ==                                  ::
+              $:  %rose                           ::  straight list
+                  p=[p=tape q=tape r=tape]        ::  mid open close
+                  q=(list tank)                   ::  contents
+              ==                                  ::
+          ==     
+```
 
 (Note that `tank` is overdesigned and due for replacement.)
 
@@ -757,25 +799,27 @@ In any case, the simplest `mock` functions are `u3n_nock_un()`
 and `u3n_slam_un()`.  These provide exception control without
 any namespace change, as you can see by the code:
 
-    /* u3n_nock_un(): produce .*(bus fol), as ++toon.
-    */
-    u3_noun
-    u3n_nock_un(u3_noun bus, u3_noun fol)
-    {
-      u3_noun fly = u3nt(u3nt(11, 0, 6), 0, 0);  //  |=(a=* .^(a))
+```
+/* u3n_nock_un(): produce .*(bus fol), as ++toon.
+*/
+u3_noun
+u3n_nock_un(u3_noun bus, u3_noun fol)
+{
+  u3_noun fly = u3nt(u3nt(11, 0, 6), 0, 0);  //  |=(a=* .^(a))
 
-      return u3n_nock_in(fly, bus, fol);
-    }
+  return u3n_nock_in(fly, bus, fol);
+}
 
-    /* u3n_slam_un(): produce (gat sam), as ++toon.
-    */
-    u3_noun
-    u3n_slam_un(u3_noun gat, u3_noun sam)
-    {
-      u3_noun fly = u3nt(u3nt(11, 0, 6), 0, 0);  //  |=(a=* .^(a))
+/* u3n_slam_un(): produce (gat sam), as ++toon.
+*/
+u3_noun
+u3n_slam_un(u3_noun gat, u3_noun sam)
+{
+  u3_noun fly = u3nt(u3nt(11, 0, 6), 0, 0);  //  |=(a=* .^(a))
 
-      return u3n_slam_in(fly, gat, sam);
-    }
+  return u3n_slam_in(fly, gat, sam);
+}
+```
 
 The `fly` is added as the first argument to `u3n_nock_in()` and
 `u3n_slam_in()`.  Of course, logically, `fly` executes in the
@@ -809,7 +853,7 @@ of `axis`, `u3_noun *`.  For cells, triples, etc, decompose with
 `u3r_pq()` and friends.
 
 `u3r_sing(u3_noun a, u3_noun b)` (true if `a` and `b` are a
-*single* noun) are interesting because it uses mugs to help it
+_single_ noun) are interesting because it uses mugs to help it
 out.  Clearly, different nouns may have the same mug, but the
 same nouns cannot have a different mug.  It's important to
 understand the performance characteristics of `u3r_sing()`:
@@ -866,7 +910,7 @@ the memoization facility is a general-purpose cache.
 (It's also used for partial memoization - a feature that'll
 probably be removed, in which conservative worklist algorithms
 (which would otherwise be exponential) memoize everything in the
-subject *except* the worklist.  This is used heavily in the Hoon
+subject _except_ the worklist.  This is used heavily in the Hoon
 compiler jets (j/f/*.c).  Unfortunately, it's probably not
 possible to make this work perfectly in that it can't be abused
 to violate Nock, so we'll probably remove it at a later date,
@@ -876,26 +920,32 @@ Each `u3z` function comes with a `c3_m` mote which disambiguates
 the function mapping key to value.  For Nock itself, use 0.  For
 extra speed, small tuples are split out in C; thus, find with
 
-    u3_weak u3z_find(c3_m, u3_noun);
-    u3_weak u3z_find_2(c3_m, u3_noun, u3_noun);
-    u3_weak u3z_find_3(c3_m, u3_noun, u3_noun, u3_noun);
-    u3_weak u3z_find_4(c3_m, u3_noun, u3_noun, u3_noun, u3_noun);
+```
+u3_weak u3z_find(c3_m, u3_noun);
+u3_weak u3z_find_2(c3_m, u3_noun, u3_noun);
+u3_weak u3z_find_3(c3_m, u3_noun, u3_noun, u3_noun);
+u3_weak u3z_find_4(c3_m, u3_noun, u3_noun, u3_noun, u3_noun);
+```
 
 and save with
 
-    u3_noun u3z_save(c3_m, u3_noun, u3_noun);
-    u3_noun u3z_save_2(c3_m, u3_noun, u3_noun, u3_noun);
-    u3_noun u3z_save_3(c3_m, u3_noun, u3_noun, u3_noun, u3_noun);
-    u3_noun u3z_save_4(c3_m, u3_noun, u3_noun, u3_noun, u3_noun, u3_noun);
+```
+u3_noun u3z_save(c3_m, u3_noun, u3_noun);
+u3_noun u3z_save_2(c3_m, u3_noun, u3_noun, u3_noun);
+u3_noun u3z_save_3(c3_m, u3_noun, u3_noun, u3_noun, u3_noun);
+u3_noun u3z_save_4(c3_m, u3_noun, u3_noun, u3_noun, u3_noun, u3_noun);
+```
 
 where the value is the last argument.  To eliminate duplicate
 nouns, there is also 
 
-    u3_noun 
-    u3z_uniq(u3_noun);
+```
+u3_noun 
+u3z_uniq(u3_noun);
+```
 
 `u3z` functions retain keys and transfer values.
- 
+
 The `u3z` cache, built on `u3h` hashes, is part of the current
 road, and goes away when it goes away.  (In future, we may wish
 to promote keys/values which outlive the road, as we do with jet
@@ -911,30 +961,32 @@ An Arvo kernel - or at least, a core that compiles with the Arvo
 interface - is part of the global `u3` state.  What is an Arvo
 core?  Slightly pseudocoded:
 
-    ++  arvo
-      |%
-      ++  come  |/  {yen/@ ova/(list ovum) nyf/pone}  ::  11
-                ^-  {(list ovum) _+>}
-                !!
-      ++  keep  |/  {now/@da hap/path}                ::  4
-                ^-  (unit ,@da) 
-                !!
-      ++  load  |/  {yen/@ ova/(list ovum) nyf/pane}  ::  86
-                ^-  {(list ovum) _+>}
-                !!
-      ++  peek  |/  {now/@da path}                    ::  87
-                ^-  (unit)
-                !!
-      ++  poke  |/  {now/@da ovo/ovum}                ::  42
-                ^-  {(list ovum) _+>}
-                !!
-      ++  wish  |/  txt/@ta                           ::  20
-                ^-  *
-                !!
-      --
-    ++  card  {p/@tas q/*}                           ::  typeless card
-    ++  ovum  {p/wire q/card}                        ::  Arvo event
-    ++  wire  path                                    ::  event cause
+```
+++  arvo
+  |%
+  ++  come  |/  {yen/@ ova/(list ovum) nyf/pone}  ::  11
+            ^-  {(list ovum) _+>}
+            !!
+  ++  keep  |/  {now/@da hap/path}                ::  4
+            ^-  (unit ,@da) 
+            !!
+  ++  load  |/  {yen/@ ova/(list ovum) nyf/pane}  ::  86
+            ^-  {(list ovum) _+>}
+            !!
+  ++  peek  |/  {now/@da path}                    ::  87
+            ^-  (unit)
+            !!
+  ++  poke  |/  {now/@da ovo/ovum}                ::  42
+            ^-  {(list ovum) _+>}
+            !!
+  ++  wish  |/  txt/@ta                           ::  20
+            ^-  *
+            !!
+  --
+++  card  {p/@tas q/*}                           ::  typeless card
+++  ovum  {p/wire q/card}                        ::  Arvo event
+++  wire  path                                    ::  event cause
+```
 
 This is the Arvo ABI in a very real sense.  Arvo is a core with
 these six arms.  To use these arms, we hardcode the axis of the
@@ -982,8 +1034,10 @@ you're not writing the next event system.  There are only two.
 calling Hoon kernel functions by name.  Even more conveniently, 
 we tend to call `u3v_do()` with these convenient aliases:
 
-    #define  u3do(txt_c, arg)         u3v_do(txt_c, arg)
-    #define  u3dc(txt_c, a, b)        u3v_do(txt_c, u3nc(a, b))
-    #define  u3dt(txt_c, a, b, c)     u3v_do(txt_c, u3nt(a, b, c))
-    #define  u3dq(txt_c, a, b, c, d)  u3v_do(txt_c, u3nt(a, b, c, d))
+```
+#define  u3do(txt_c, arg)         u3v_do(txt_c, arg)
+#define  u3dc(txt_c, a, b)        u3v_do(txt_c, u3nc(a, b))
+#define  u3dt(txt_c, a, b, c)     u3v_do(txt_c, u3nt(a, b, c))
+#define  u3dq(txt_c, a, b, c, d)  u3v_do(txt_c, u3nt(a, b, c, d))
+```
 

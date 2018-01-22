@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 8
-title: |: "barcol"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'|: "barcol"'
+    ==
+;>
 
 # `|: "barcol"`
 
@@ -23,4 +23,5 @@ Note that `p` is a hoon, not a model; `|:` doesn't bunt your sample as
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
+

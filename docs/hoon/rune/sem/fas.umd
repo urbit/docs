@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 4
-title: ;/ "semfas"
----
+:-  :~  navhome/'/docs/'
+        sort/'4'
+        title/';/ "semfas"'
+    ==
+;>
 
 # `;/ "semfas"`
 
@@ -15,7 +15,9 @@ title: ;/ "semfas"
 ```
 
 ## Examples
+
 ```
 ~zod/try=> :/"foo"
 [[%~. [%~. "foo] ~] ~]
 ```
+

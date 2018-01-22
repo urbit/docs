@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 2
-title: Common objections
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'2'
+        title/'Common objections'
+    ==
+;>
 
 # Common objections to Urbit
 
@@ -28,7 +28,7 @@ But any altcoin or metacoin is just way less work than Urbit.  An altcoin can af
 
 Ethically, what makes "premining" feel wrong is that the creators of the currency are rewarded disproportionately for their effort.  The scamcoin is a get-rich-quick scheme, vaguely pyramid-shaped.  Nothing about Urbit matches this pattern at all.
 
-To put it bluntly, Galen drives a 2004 Saab and Curtis drives a moldy '99 Cougar covered with raven shit.  And we both love cars.  We also have kids.  And our spouses are more skeptical of Urbit than anyone else could ever be.  (Our next startup definitely *will* be a get-rich-quick scheme, though.)
+To put it bluntly, Galen drives a 2004 Saab and Curtis drives a moldy '99 Cougar covered with raven shit.  And we both love cars.  We also have kids.  And our spouses are more skeptical of Urbit than anyone else could ever be.  (Our next startup definitely _will_ be a get-rich-quick scheme, though.)
 
 Curtis created Urbit.  So by the [homesteading principle](https://en.wikipedia.org/wiki/Homestead_principle), he started out owning all of it.  But by now, Urbit's 8-bit galaxies have already been distributed among [57 separate individuals](https://github.com/urbit/arvo/blob/master/sys/vane/ames.hoon#L117-L372).  Curtis owns 4 -- or 24, counting his whole family.  (Some of whom he still owes money.)
 
@@ -60,7 +60,7 @@ By fragmenting the galaxy space into 57 separate partitions, we've created a glo
 
 In the long run, every galaxy should have a separate owner, who is a human being rather than a corporation.  Combining galaxy holdings is regarded as creepy, and damages the value of both galaxies.  Splitting up any remaining clumps is meritorious.
 
-The technical goal of Urbit is to create a network which, *if it actually takes over the world*, inevitably becomes decentralized.  Even if Urbit takes over the world, nobody takes over the world.  World domination must be technically implausible.
+The technical goal of Urbit is to create a network which, _if it actually takes over the world_, inevitably becomes decentralized.  Even if Urbit takes over the world, nobody takes over the world.  World domination must be technically implausible.
 
 This is the goal of all the new "web3" decentralized systems.  If IPFS, Sandstorm or Ethereum takes over the world, nobody takes over the world.  (The same is almost true of the Internet -- though it wouldn't be that surprising if a time traveler from 2116 revealed that ICANN had become a planetary government.)
 
@@ -100,7 +100,7 @@ One reason we want the decentralized Internet is that we're tired of giant corpo
 
 A general-purpose virtual machine is special from a privacy standpoint, just because it's commercially realistic to design terms of service that prevent the host from peeking and poking at the customer's machine.   Crossing this moat is technically nontrivial and can't possibly happen by any reasonable accident.  No hosting contract could contemplate it.
 
-Whereas when your cloud computer is a special-purpose machine -- just a database row on some corporation's mainframe -- there is no way these services can promise not to handle your data.  Handling your data is *what they do*.  On a special-purpose server, the concept of privacy is not even defined.
+Whereas when your cloud computer is a special-purpose machine -- just a database row on some corporation's mainframe -- there is no way these services can promise not to handle your data.  Handling your data is _what they do_.  On a special-purpose server, the concept of privacy is not even defined.
 
 Where even a general-purpose server falls down is where the user has a sovereign adversary, which can secretly violate explicit or implicit hosting contracts.  Users with a sovereign adversary must rely only on their own physical security.  However, most users don't have a sovereign adversary.  And those who do maximize their "herd immunity" if they can use the same protocols as those who don't.
 
@@ -114,11 +114,11 @@ A "jet" is a sort of software device driver in Urbit.  Urbit is precisely define
 
 The only way an efficient Nock interpreter can work is to recognize algorithms like decrement, and implement them non-naively.  By far the easiest way to do this is not to analyze arbitrary code as it's being executed, but to register and match well-known implementations in the standard library.  No one should be writing their own decrement.
 
-But the semantics of the interpreter, *so long as the jet and the jet harness are defined correctly*, are exactly those of Nock.  We are not extending or changing Nock in any way.  We are just taking a shortcut in certain cases we understand perfectly.
+But the semantics of the interpreter, _so long as the jet and the jet harness are defined correctly_, are exactly those of Nock.  We are not extending or changing Nock in any way.  We are just taking a shortcut in certain cases we understand perfectly.
 
 It's not at all unprecedented to have implementations much more complex than the corresponding specification.  The x86 instruction set is relatively simple; the complexity of its decoding and execution path in a modern CPU is enormous.  This path may well have "peephole optimizations" that replace matched algorithms, and if it doesn't the modern C compiler does.
 
-So jets are *morally* defensible.  The fact remains, however, that a Nock interpreter without jets is completely useless.  And there is not even an informal document that tells you what jets you need for a reasonably efficient Urbit.  (This last, we can agree, should be corrected.)
+So jets are _morally_ defensible.  The fact remains, however, that a Nock interpreter without jets is completely useless.  And there is not even an informal document that tells you what jets you need for a reasonably efficient Urbit.  (This last, we can agree, should be corrected.)
 
 The correct way to think about jets is not to compare them to a perfect interpreter implemented by unicorns.  Jets are a combined replacement for two other techniques in language implementation: intrinsics and a foreign-function interface.
 
@@ -188,7 +188,7 @@ TLDR: patience, grasshopper.
 
 There's quite a straightforward way to implement any perfectly specified language with a reliable interpreter in Hoon.  First, write an interpreter for that language in Hoon.  Second, jet that intepreter function with the existing implementation.
 
-It is not clear that Javascript is *quite* well-defined enough for this treatment.  But Lua probably is.
+It is not clear that Javascript is _quite_ well-defined enough for this treatment.  But Lua probably is.
 
 ## Ordinary users will never be able to manage an Urbit server.
 
@@ -222,7 +222,7 @@ From the developer's perspective, Urbit's advantage is that it's a network stack
 
 From the user's perspective, there's one task that any personal server can perform, that can't be performed by any Web service: unrestricted API aggregation.
 
-Well before Urbit is ready to *replace* any conventional web services, it should be ready to *command* them in place by API.  (Or if needed, by scraping.)  If all you care about is being in control of your own data, it's fine to leave it in the hands of these services, as you have the API secrets to get it out.
+Well before Urbit is ready to _replace_ any conventional web services, it should be ready to _command_ them in place by API.  (Or if needed, by scraping.)  If all you care about is being in control of your own data, it's fine to leave it in the hands of these services, as you have the API secrets to get it out.
 
 Managing a set of security connections to your existing services is one of the first important tasks of a modern personal server.  This is a stateful task that typically requires both a durable API key and a temporary OAuth token.  APIs change all the time, so connection maintenance also requires evergreen updates.
 
@@ -254,7 +254,7 @@ It is a common mistake to confuse a design pattern with a layer or feature, and 
 
 ### Let's be clear about why DSLs suck
 
-DSLs suck not because they are difficult to newbies in the base language.  DSLs suck because every time a programmer, even one *experienced* in the base language, comes into a new codebase or project, she has to learn a new custom language.
+DSLs suck not because they are difficult to newbies in the base language.  DSLs suck because every time a programmer, even one _experienced_ in the base language, comes into a new codebase or project, she has to learn a new custom language.
 
 You need enormous wins to justify this cost.  It's the goal of the base language designer to preempt these wins, creating a language which is almost never so tiresome and full of boilerplate that it requires a DSL or template layer.
 
@@ -267,3 +267,4 @@ Fare' is totally right that an urbit's data is meant for itself alone.  In fact,
 The whole point of Nock is that it's so low-level that there is no conceivable advantage in upgrading it.  Divergence is just pointless.  This is not a question of network integrity, just of practical standardization.
 
 This consistency stops at Nock.  Without anyone violating the correctness of their lifecycle functions, anyone or everyone in Urbit could replace Hoon with Javascript.  Determinism does not cramp Urbit's semantic style in any way, shape or form.
+

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: ;; "semsem"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/';; "semsem"'
+    ==
+;>
 
 # `;; "semsem"`
 
@@ -18,11 +18,11 @@ a
 ```
 
 > Note: the expansion implementation is hygienic -- it doesn't actually add the
-> `a` face to the subject.
+  `a` face to the subject.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -54,3 +54,4 @@ Fails because not a fixpoint:
 ~zod:dojo> ;;(tape [50 51 52])
 ! exit
 ```
+

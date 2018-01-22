@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: %= "centis"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'%= "centis"'
+    ==
+;>
 
 # `%= "centis"`
 
@@ -19,7 +19,7 @@ containing that arm.  We compute the arm on the modified core.
 
 ## Syntax
 
-Regular: *1-fixed*, then *jogging*.
+Regular: _1-fixed_, then _jogging_.
 
 Irregular: `foo(x 1, y 2, z 3)` is `%=(foo x 1, y 2, z 3)`.
 
@@ -32,10 +32,11 @@ at slot `+6` with `bar`, and taking the `$` limb, you might think
 
 But it's actually `=+(foo =>(%=(+2 +6 bar) $))`. Even if `foo` is
 a wing, we would just be mutating `+6` within the core that defines the
-`foo` arm.  Instead we want to modify the *product* of `foo` -- the gate
+`foo` arm.  Instead we want to modify the _product_ of `foo` -- the gate
 -- so we have to pin it into the subject.
 
 Here's that again in tall form:
+
 ```
 =+  foo
 =>  %=  +2
@@ -53,3 +54,4 @@ Here's that again in tall form:
 ~zod:dojo> foo(+3 99)
 [p=5 99]
 ```
+

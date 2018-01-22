@@ -1,11 +1,11 @@
----
-navhome: /docs/
-title: C#
-sort: 12
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'C#'
+        sort/'12'
+        next/'true'
+    ==
+;>
 
-# C#
+# C
 
 From [Julien Beasley](https://github.com/zass30/Nock5KCSharp):
 
@@ -476,3 +476,4 @@ namespace NockInterpreter
     }
 }
 ```
+

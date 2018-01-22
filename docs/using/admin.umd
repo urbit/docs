@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 3
-title: Administration and operation
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'3'
+        title/'Administration and operation'
+    ==
+;>
 
 # Administration and operation
 
@@ -122,3 +122,4 @@ Urbit network.
 
 When this happens, back up any files you'd like to save, shut down your
 Urbit and recreate it (as if you were starting for the first time).
+

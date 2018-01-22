@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: .+ "dotlus"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'.+ "dotlus"'
+    ==
+;>
 
 # `.+ "dotlus"`
 
@@ -16,7 +16,7 @@ atom has no aura.
 
 ## Syntax
 
-Regular: *1-fixed*.
+Regular: _1-fixed_.
 
 Irregular: `+(6)` is `.+(6)`.
 
@@ -32,3 +32,4 @@ Irregular: `+(6)` is `.+(6)`.
 ~zod:dojo> +([1 2])
 ! nest-fail
 ```
+

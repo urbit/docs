@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 14
-next: true
-title: Concepts
----
+:-  :~  navhome/'/docs/'
+        sort/'14'
+        next/'true'
+        title/'Concepts'
+    ==
+;>
 
 # Concepts and terminology
 
@@ -24,8 +24,8 @@ only informally in Hoon include "function," "object," "event,"
 a few more.  We do use these words informally, but we're always 
 making an analogy whose precision depends on context.
 
-Hoon has concepts *like* all these abstractions, but they remain
-*false cognates*.  The closer an inexact cognate, the more
+Hoon has concepts _like_ all these abstractions, but they remain
+_false cognates_.  The closer an inexact cognate, the more
 unsettling it feels when the abstractions don't match.  Learning
 a few new words is a small price for avoiding this pain point.
 
@@ -175,20 +175,20 @@ of the simpler built-in types.
 A `gate` is a Hoon function (lambda or closure).  Other
 constructs in Urbit are functions in the mathematical sense -- for
 instance, a Nock formula is also a function.  But a gate is not a
-formula.  The gate's argument is its *sample*; the result is its
-*product*.
+formula.  The gate's argument is its _sample_; the result is its
+_product_.
 
 ### <a name="-core">`core`</a> (object)
 
 A `core` has no exact equivalent in conventional languages, but
 the closest equivalent is an object.  An object has methods; a
-core has functionally computed attributes (*arms*).  An arm that
+core has functionally computed attributes (_arms_).  An arm that
 produces a gate is the Hoon equivalent of a conventional method;
 think of it as a computed attribute whose value is a lambda.
 
 A gate is a special case of a core: a core with one arm, whose
 name is the empty string.  The shape of a core is `[battery
-payload]`, where *battery* is a tree of Nock formulas
+payload]`, where _battery_ is a tree of Nock formulas
 
 ### <a name="-mold">`mold`</a> (constructor)
 
@@ -226,7 +226,7 @@ reference.  A limb is a [`hoon`](#-hoon); given a subject [`type`](#-type),
 
 To resolve limb `foo`, [`mint`](#-mint) searches the subject depth-first,
 head-first for either a `face` named `foo`, or a `core` with the
-arm `foo`.  If it finds a face, the product is a *leg*, or
+arm `foo`.  If it finds a face, the product is a _leg_, or
 subtree of the subject.  If it finds a core, it computes the arm
 formula with that core as the subject. A limb can also be a slot 
 (direct tree address), like `+15`.
@@ -258,3 +258,4 @@ If this sounds like magic, it isn't quite magic.  There's no way
 for different urbits to make sure they mean the same thing by the
 same mark.  However, when incompatibility happens, marks ensure
 that we at least handle the situation in a predictable way.
+

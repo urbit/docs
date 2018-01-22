@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 2
-title: Wing
----
+:-  :~  navhome/'/docs/'
+        sort/'2'
+        title/'Wing'
+    ==
+;>
 
 # Wing
 
@@ -48,3 +48,4 @@ is the same limb as `+`, `..foo` is the same wing as `+1.foo`.
 ~zod:dojo> moo.bar.a
 2
 ```
+

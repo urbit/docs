@@ -1,9 +1,10 @@
----
-navhome: /docs/
-next: true
-sort: 19
-title: Cast ^ ("ket")
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'19'
+        title/'Cast ^ ("ket")'
+    ==
+;>
 
 # Cast `^` ("ket")
 
@@ -16,4 +17,4 @@ it never allows invalid nests, it sometimes rejects valid nests.
 
 ## Twigs
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/rune/ket/' ~)

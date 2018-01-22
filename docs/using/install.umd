@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 1
-title: Install
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'1'
+        title/'Install'
+    ==
+;>
 
 # Install
 
@@ -20,16 +20,16 @@ forum: [urbit.org/fora](https://urbit.org/fora). You can also chat
 with us at [urbit.org/stream](https://urbit.org/stream).
 
 > Urbit is alpha software. It’s not yet completely stable, its crypto
-> hasn’t been audited, and there are plenty of rough edges. Urbit is
-> lots of fun to play with, but not quite ready for your important or
-> sensitive data.
+  hasn’t been audited, and there are plenty of rough edges. Urbit is
+  lots of fun to play with, but not quite ready for your important or
+  sensitive data.
 
 ### Update: `~2017.12.7`
 
 Urbit `0.5.1` is now live! We expect there to be a delay in getting our
 updated `urbit-0.5.1` binary packages propagated to Homebrew, APT and
-the other various package managers. So for now, **please build and
-install Urbit from source**. The instructions below will walk you through
+the other various package managers. So for now, *please build and
+install Urbit from source*. The instructions below will walk you through
 how to do that. You'll then be free to continue the boot and setup
 process as normal, per the rest of this Using docs section.
 
@@ -91,7 +91,7 @@ $ cd urbit
 $ make # gmake on FreeBSD
 ```
 
-_**Updated for the `2017.12.7` continuity breach**_
+_*Updated for the `2017.12.7` continuity breach*_
 
 If you already have a clone of the `urbit/urbit` Git repository, assuming
 your `origin` upstream is the `urbit/urbit` repository on Github, run the
@@ -141,8 +141,7 @@ configuration is smaller than this, and you need to manually configure a
 swapfile.
 
 Digital Ocean has a post on adding swap 
-[here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).  
-For Amazon there’s a StackOverflow thread 
+[here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04).<br>For Amazon there’s a StackOverflow thread 
 [here](http://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
 
 Don’t spend a lot of time tweaking these settings; the simplest

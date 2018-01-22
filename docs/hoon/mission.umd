@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 11
-next: true
-title: Mission
----
+:-  :~  navhome/'/docs/'
+        sort/'11'
+        next/'true'
+        title/'Mission'
+    ==
+;>
 
 # Mission
 
@@ -44,3 +44,4 @@ priority.  In a sense, Hoon is to Haskell as C is to Pascal.
 There is no opaque high-level abstraction of Hoon's semantics;
 the language is what the compiler does.  This design only works
 when the compilation process is trivial or nearly so.
+

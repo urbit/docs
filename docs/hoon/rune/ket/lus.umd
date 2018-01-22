@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: ^+ "ketlus"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'^+ "ketlus"'
+    ==
+;>
 
 # `^+ "ketlus"`
 
@@ -16,7 +16,7 @@ within the type of `p`.  Otherwise, `nest-fail`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -24,3 +24,4 @@ Regular: *2-fixed*.
 ~zod:dojo> ^+('text' %a)
 'a'
 ```
+

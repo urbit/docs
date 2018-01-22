@@ -1,15 +1,14 @@
----
-navhome: /docs/
----
-
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
 ### `++udal`
 
-Source
-------
+## Source
 
-        ++  udal                                                ::  atomic change (%b)
+```
+    ++  udal                                                ::  atomic change (%b)
+```
 
-Examples
---------
+## Examples
 

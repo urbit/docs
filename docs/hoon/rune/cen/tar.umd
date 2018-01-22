@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 7
-title: %* "centar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'%* "centar"'
+    ==
+;>
 
 # `%* "centar"`
 
@@ -20,7 +20,7 @@ r
 
 ## Syntax
 
-Regular: *2-fixed*, then *jogging*.
+Regular: _2-fixed_, then _jogging_.
 
 ## Discussion
 
@@ -41,3 +41,4 @@ and then change some parts of the limb before using it.
 ~zod:dojo> %*(foo [foo=[a=1 b=2 c=3]] b 7, c 10)
 [a=1 b=7 c=10]
 ```
+

@@ -1,9 +1,10 @@
----
-navhome: /docs/
-title: Implementation
-sort: 6
-next: true
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        title/'Implementations'
+        sort/'6'
+        next/'true'
+    ==
+;>
 
 # C implementation
 
@@ -211,4 +212,6 @@ nock(u3_noun bus, u3_noun fol)
 }
 ```
 
-Building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations [here](../../community-projects/nock-implementations)!
+Building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations:
+
+;+  (kids %title datapath/'/docs/nock/implementations/' ~)

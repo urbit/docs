@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Ruby
-sort: 2
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'Ruby'
+        sort/'2'
+        next/'true'
+    ==
+;>
 
 # Ruby
 
@@ -65,7 +65,6 @@ def slot(axis, arr, allow_error = true)
   return slot(3, slot(axis/2, arr))
 end
 
-
 def nock(arr)
   raise "error: nocking an atom" unless arr.is_a?(Array)
 
@@ -77,19 +76,18 @@ def nock(arr)
     return  [ nock( [ a, [b, c]]), nock( [a, d]) ] 
   end
 
-
   case oper
     when 0 then
     slot(b,a )
 
     when 1 then 
     b
-    
+
     when 2 then       
     b_prime = slot(2, b)
     c       = slot(3,b)
     nock( [ nock([a, b_primce]), nock([a, c]) ])
-            
+
     when 3 then 
     wut(nock([a, b]))
 
@@ -104,7 +102,7 @@ def nock(arr)
     c = slot(6,b)
     d = slot(7,b)
     nock( norm([a, 2, [0, 1], 2, [1, c, d], [1, 0], 2, [1, 2, 3], [1, 0], 4, 4, b]) )
-      
+
     when 7 then
     b_prime = slot(2, b)
     c = slot(3,b)
@@ -137,3 +135,4 @@ def nock(arr)
     end
 end
 ```
+

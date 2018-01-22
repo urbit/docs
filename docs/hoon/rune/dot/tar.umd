@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: .* "dottar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'.* "dottar"'
+    ==
+;>
 
 # `.* "dottar"`
 
@@ -15,7 +15,7 @@ Nock of formula `q` and subject `p`, with type `%noun`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
@@ -39,3 +39,4 @@ perfectly practical to use Hoon as a typeless language.
 ~zod:dojo> .*(~ [5 1^5 [4 1^3]])
 1
 ```
+

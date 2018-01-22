@@ -1,10 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: ^= "kettis"
----
-
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'^= "kettis"'
+    ==
+;>
 
 # `^= "kettis"`
 
@@ -18,7 +17,7 @@ may also be a tuple of terms, or a term-toga pair; the type of
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 Irregular: `foo=bar` is `^=(foo bar)`.
 
@@ -37,3 +36,4 @@ a=1
 ~zod:dojo> [b c d=[x y]]=[1 2 3 4]
 [b=1 c=2 d=[x=3 y4]]
 ```
+

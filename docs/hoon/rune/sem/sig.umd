@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: ;~ "semsig"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/';~ "semsig"'
+    ==
+;>
 
 # `;~ "semsig"`
 
@@ -17,7 +17,7 @@ transforms a `q` product and a `q` gate into a `q` sample.
 
 ## Expands to
 
-*Note: these are structurally correct, but elide some type-system complexity.*
+_Note: these are structurally correct, but elide some type-system complexity._
 
 `;~(a b)` reduces to `b`.
 
@@ -65,7 +65,7 @@ conditional application.
 
 ## Syntax
 
-Regular: *1-fixed*, then *running*.
+Regular: _1-fixed_, then _running_.
 
 ## Examples
 
@@ -103,3 +103,4 @@ But for multiple gates, we need it to connect the pipeline:
 ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a]) |=(a=@ <(dec a)>)) 'acd')
 "96acd"
 ```
+

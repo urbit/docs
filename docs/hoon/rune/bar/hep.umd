@@ -1,13 +1,13 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: |- "barhep"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'|- "barhep"'
+    ==
+;>
 
 # `|- "barhep"`
 
-`[%brhp p=hoon]`: form a trap and kick ("*call*") it.
+`[%brhp p=hoon]`: form a trap and kick ("_call_") it.
 
 ## Expands to
 
@@ -17,7 +17,7 @@ title: |- "barhep"
 
 ## Syntax
 
-Regular: *1-fixed*.
+Regular: _1-fixed_.
 
 ## Discussion
 
@@ -26,8 +26,8 @@ point". Since `|-` makes a `|.` (["bardot"](../dot), a core
 with one arm named `$`, we can recurse back into it with `$()`.
 
 > `$()` expands to `%=($)` (["centis"](../../cen/tis)), 
-> accepting a *jogging* body containing a list of changes to 
-> the subject.
+  accepting a _jogging_ body containing a list of changes to 
+  the subject.
 
 ## Examples
 
@@ -50,3 +50,4 @@ The classic loop is a decrement:
 ~zod:dojo> foo
 41
 ```
+

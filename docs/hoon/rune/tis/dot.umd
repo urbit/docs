@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 10
-title: =. "tisdot"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'10'
+        title/'=. "tisdot"'
+    ==
+;>
 
-# `=. "tisdot"` 
+# `=. "tisdot"`
 
 `[%tsdt p=wing q=hoon r=hoon]`: change one leg in the subject.
 
@@ -17,7 +17,7 @@ title: =. "tisdot"
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 
@@ -37,3 +37,4 @@ a new subject with a changed value.  Note that the mutation uses
            =.(b.a 3 a)
 [b=3 c=2]
 ```
+

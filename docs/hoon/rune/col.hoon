@@ -1,9 +1,10 @@
----
-navhome: /docs/
-next: true
-sort: 17
-title: Cell : ("col")
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'17'
+        title/'Cell : ("col")'
+    ==
+;>
 
 # Cell `:` ("col")
 
@@ -13,4 +14,4 @@ All `:` hoons expand to `:-` ("colhep"), which makes a pair
 
 ## Stems
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/rune/col/' ~)

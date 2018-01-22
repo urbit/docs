@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 13
-next: true
-title: Syntax
----
+:-  :~  navhome/'/docs/'
+        sort/'13'
+        next/'true'
+        title/'Syntax'
+    ==
+;>
 
 # Hoon syntax
 
@@ -14,12 +14,12 @@ learns Hoon syntax will find that it has a number of advantages.
 # Motivation
 
 Hoon syntax is trying to solve three serious
-problems in functional syntax design.  These are *terminator
-piles*, *indentation creep*, and *feature/label confusion*.
+problems in functional syntax design.  These are _terminator
+piles_, _indentation creep_, and _feature/label confusion_.
 
 ## Terminator piles
 
-*Terminator piles* are like Lisp's stacks of right parentheses. 
+_Terminator piles_ are like Lisp's stacks of right parentheses. 
 Significant whitespace solves this problem and creates others.
 
 Hoon has no terminator piles.  Except for a 1-space / more-space
@@ -27,7 +27,7 @@ distinction, it has no significant whitespace.
 
 ## Indentation creep
 
-*Indentation creep* is a problem caused by indentation conventions
+_Indentation creep_ is a problem caused by indentation conventions
 where the indentation point is a function of expression tree
 depth. This problem is especially irritating when working with 
 long functions.  It's true that short functions are better, but 
@@ -35,19 +35,19 @@ long ones sometimes need to be written.
 
 A procedural block has a backbone of statements which flows
 straight down.  Most expressions are flat and of limited depth.
-With some bulging, a long function flows *down* the page.
+With some bulging, a long function flows _down_ the page.
 
 A functional language lacks the expression/statement distinction.
 So a long function means a deep tree.  Given normal indentation
-conventions, a long function wants to flow *down and across*.
-This *diagonal* shape fits poorly into most editor windows.
+conventions, a long function wants to flow _down and across_.
+This _diagonal_ shape fits poorly into most editor windows.
 
 Thanks to backstep indentation (see below), Hoon programs are
 shaped more or less like procedural programs.
 
 ## Feature/label confusion
 
-*Feature/label confusion* (FLC) is the result of any syntax that
+_Feature/label confusion_ (FLC) is the result of any syntax that
 makes it hard for the eye to tell whether a token on the screen is 
 a feature of the language, or a label in the program.  For example, 
 in Lisp a special form has the same syntax as a function call.
@@ -128,19 +128,19 @@ kind of subexpressions depend on the rune used.
 
 This Hoon uses `:-` to produce a cell: `[25 3]`. There are always two 
 subexpressions following the `:-` in syntactically correct Hoon code, 
-the first of which, when evaluated, becomes the *head* (i.e., the left) 
-and the second of which becomes the *tail* (i.e., the right).
+the first of which, when evaluated, becomes the _head_ (i.e., the left) 
+and the second of which becomes the _tail_ (i.e., the right).
 
 Hoon expressions are just called 
 [hoons](../about/glossary/#-a-hoon), because a rune's subexpression can itself
 be a Hoon expression (i.e. another rune). You'll start to see this tree-like, 
 recursive structure the more you program in Hoon. You can think of one Hoon 
 file being composed of multiple hoons. The subexpressions following the 
-rune are sometimes called the *children* of that hoon.
+rune are sometimes called the _children_ of that hoon.
 
 ## Tall and flat forms
 
-There are two kinds of Hoon expression syntax: *tall* and *flat*.
+There are two kinds of Hoon expression syntax: _tall_ and _flat_.
 Most runes can be used in both tall and flat hoons. Tall hoons can 
 contain flat hoons, but not vice versa.
 
@@ -155,11 +155,11 @@ procedural code without the nasty side effects.
 
 ## Regular and irregular forms
 
-Most runes have *regular forms*, which share a common design.
+Most runes have _regular forms_, which share a common design.
 There is a regular flat form and a regular tall form; most runes
 have both kinds of implementation.  All tall forms are regular.
 
-Some runes also have *irregular forms*, which follow no
+Some runes also have _irregular forms_, which follow no
 principles at all.  All irregular forms are flat.
 
 ```
@@ -173,7 +173,7 @@ follow, and returns a boolean. Above is the tall, regular form of
 
 `=(22 23)`
 
-Some hoons have *only* irregular forms.
+Some hoons have _only_ irregular forms.
 
 ## Tall regular form
 
@@ -184,18 +184,18 @@ that rune.  Each subexpression is separated from its neighboring
 subexpressions by a `gap`.
 
 Let's call everything in the hoon after the initial rune the hoon 
-*body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
-and *[battery](../about/glossary/#-battery)*. 
+_body_. There are four body subtypes: _fixed_, _running_, _jogging_, 
+and _[battery](../about/glossary/#-battery)_. 
 
-Runes with a *fixed* number of subexpressions self-terminate. For 
+Runes with a _fixed_ number of subexpressions self-terminate. For 
 instance, the `:-` and `.=` runes each have two subexpressions 
 and are self-terminating.  Otherwise the hoon is terminated by both
-a `gap`, then either `==` (*running* or *jogging*, most hoons) or
-`--` (*battery*).
+a `gap`, then either `==` (_running_ or _jogging_, most hoons) or
+`--` (_battery_).
 
-The *running* body has a list of *children* (i.e., subexpressions). 
-The *jogging* body has a list of child pairs, where the members of 
-each pair are separated by a `gap`.  The *battery* body is
+The _running_ body has a list of _children_ (i.e., subexpressions). 
+The _jogging_ body has a list of child pairs, where the members of 
+each pair are separated by a `gap`.  The _battery_ body is
 a list of symbol-child pairs, separated by a gap, prefixed by `++`
 and then a gap.
 
@@ -208,19 +208,19 @@ both tall/flat mode switches and well-shaped gaps.  (Hoon layout
 could probably be done automatically with reasonable quality.
 But it would at least take machine learning, not a rule engine.)
 
-There are only two real *rules* in Hoon whitespace design: don't
+There are only two real _rules_ in Hoon whitespace design: don't
 go past 80 characters, and don't use (completely) blank lines.
 Otherwise, if it looks good and is easy to read, it's good.  The 
 best way to learn the art is to do everything by convention
 until you know what you're doing.  Here are the conventions:
 
-### Conventions: *fixed*
+### Conventions: _fixed_
 
-Twig bodies with *fixed* fanout use "backstep" indentation, which 
+Twig bodies with _fixed_ fanout use "backstep" indentation, which 
 slopes backward and to the right by two spaces per line.  The first
 hoon child is two spaces after the end of the rune.
 
-Some *1-fixed*, *2-fixed*, *3-fixed* and *4-fixed* examples:
+Some _1-fixed_, _2-fixed_, _3-fixed_ and _4-fixed_ examples:
 
 ```
 |.
@@ -242,13 +242,13 @@ s
 In optimal usage of backstep indentation, the most complicated hoons 
 are at the bottom, keeping code flow vertical rather than diagonal.
 
-### Conventions: *running*
+### Conventions: _running_
 
-A *running* hoon body (a simple child list) puts the first child two
+A _running_ hoon body (a simple child list) puts the first child two
 spaces after the end of the rune, and the following children straight 
 down:
 
-A *running* example:
+A _running_ example:
 
 ```
 :*  p
@@ -259,18 +259,18 @@ A *running* example:
 ==
 ```
 
-### Conventions: *jogging*
+### Conventions: _jogging_
 
-A *jogging* hoon body (a list of child pairs) is like a running 
+A _jogging_ hoon body (a list of child pairs) is like a running 
 body, but with a pair of children on each line, separated by 
-two spaces. Most jogging bodies start with a *fixed* sequence; 
+two spaces. Most jogging bodies start with a _fixed_ sequence; 
 the first jogging pair is below and two steps backward from the 
 last fixed child.
 
-There are two jogging conventions: *flat* (pair on one line) and
-*tall* (pair split across lines).
+There are two jogging conventions: _flat_ (pair on one line) and
+_tall_ (pair split across lines).
 
-A *flat jogging* example (preceded by *1-fixed* `p`)
+A _flat jogging_ example (preceded by _1-fixed_ `p`)
 
 ```
 ?-  p
@@ -280,7 +280,7 @@ A *flat jogging* example (preceded by *1-fixed* `p`)
 ==
 ```
 
-A *tall jogging* example (preceded by *1-fixed* `p`):
+A _tall jogging_ example (preceded by _1-fixed_ `p`):
 
 ```
 ?-    p
@@ -293,9 +293,9 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 ==
 ```
 
-### Conventions: *battery*
+### Conventions: _battery_
 
-A *battery* body has a list of symbol-child pairs, for the
+A _battery_ body has a list of symbol-child pairs, for the
 [battery](../about/glossary/#-battery)
 of a 
 [core](../about/glossary/#-core).  A 
@@ -323,14 +323,14 @@ A hoon in flat form, `?:` ("wutcol"), `[%if p=hoon q=hoon r=hoon]`:
 
 `?:(p q r)`
 
-The only exception is *jogging* bodies, in which subexpression
+The only exception is _jogging_ bodies, in which subexpression
 pairs are separated by commas:
 
 ```
 foo(bar 42, baz 55, moo 17)
 ```
 
-There is no flat regular form for *battery* bodies.  Be tall.
+There is no flat regular form for _battery_ bodies.  Be tall.
 
 ## Naming conventions
 
@@ -342,19 +342,19 @@ Naming things is one of the hard problems in CS.  Dodging this
 problem is one of the reasons mathematicians use Greek letters,
 not variable names.  Meaningful names also interpose a verbal
 interpretation, distracting at best and confusing at worst, on
-the formula or algorithm.  Greek letters are not *meaningful*,
-but they are *memorable*.  And their interpretation is defined by
+the formula or algorithm.  Greek letters are not _meaningful_,
+but they are _memorable_.  And their interpretation is defined by
 the formula and nothing else.
 
 ### Lapidary and ultralapidary
 
-In the *lapidary* naming style, labels are pronounceable
+In the _lapidary_ naming style, labels are pronounceable
 three-letter strings, usually CVC (consonant-vowel-consonant).
 Sometimes they encode a mnemonic, but usually they are just
 memorable.  Labels are reused wherever the analogy seems
 appropriate.
 
-In the *ultralapidary* naming style, labels are single letters,
+In the _ultralapidary_ naming style, labels are single letters,
 starting in order of construction from `a`, or within a tuple
 [mold](../about/glossary/#-mold) `p`.  Hoon 
 uses single-letter names for the same reason Algol style 
@@ -371,11 +371,11 @@ algorithm, the simpler its names should be.
 
 This works in the other direction: namelessness doesn't scale.
 Most normal code shouldn't use lapidary naming at all.  (Everyone
-agrees: there is *way* too much lapidary Hoon in Urbit.)
+agrees: there is _way_ too much lapidary Hoon in Urbit.)
 
-Lapidary naming is only for *inherently simple code*: code that
-both aspires to high elegance and clarity, and *is solving a
-simple and elegant problem*.
+Lapidary naming is only for _inherently simple code_: code that
+both aspires to high elegance and clarity, and _is solving a
+simple and elegant problem_.
 
 Given an ugly or complex problem, lapidary naming is a liability,
 no matter the excellence of the programmer.  When in doubt, use
@@ -388,4 +388,5 @@ set. This is about all you need to know to start getting your
 hands dirty. Refer back here or to the [standard library](../library/) when
 needed, but for now, move on to [Arvo](../../arvo/) to continue learning.
 
-If, however, good enough is *not* enough, feel free to dive deeper:
+If, however, good enough is _not_ enough, feel free to dive deeper:
+

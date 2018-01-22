@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 7
-title: ~= "sigtis"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'~= "sigtis"'
+    ==
+;>
 
-# `~= "sigtis"` 
+# `~= "sigtis"`
 
 `[%sgts p=hoon q=hoon]`: detect duplicate.
 
@@ -35,3 +35,4 @@ This code traverses a tree and replaces all instances of `42` with
 ```
 
 Without `~=`, it would build a copy of a completely unchanged tree.  Sad!
+

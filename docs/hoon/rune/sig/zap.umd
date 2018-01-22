@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: ~! "sigzap"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'~! "sigzap"'
+    ==
+;>
 
-# `~! "sigzap"` 
+# `~! "sigzap"`
 
 `[%sgzp p=hoon q=hoon]`: print type on compilation fail.
 
@@ -19,7 +19,7 @@ If compilation of `q` fails, prints the type of `p` in the trace.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -36,3 +36,4 @@ Regular: *2-fixed*.
 ! @t
 ! find.a
 ```
+

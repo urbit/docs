@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: ~? "sigwut"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'~? "sigwut"'
+    ==
+;>
 
 # `~? "sigwut"`
 
@@ -13,13 +13,13 @@ title: ~? "sigwut"
 
 `r`.
 
-## Convention 
+## Convention
 
 If `p` is true, prettyprints `q` on the console before computing `r`.
 
 ## Syntax
 
-Regular: *4-fixed*.
+Regular: _4-fixed_.
 
 ## Examples
 
@@ -42,3 +42,4 @@ Regular: *4-fixed*.
 'oops'
 ~
 ```
+

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: false
-sort: 20
-title: Security drivers
----
+:-  :~  navhome/'/docs/'
+        next/'false'
+        sort/'20'
+        title/'Security drivers'
+    ==
+;>
 
 # Security drivers
 
@@ -34,9 +34,11 @@ models.
 Still, it's worth seeing one or two built from the ground up.
 Here, we'll build a connector for the Github API v3.  The
 simplest way to interact with the Github API is to just fetch
-https://api.github.com from the dojo:
+[https://api.github.com](https://api.github.com) from the dojo:
 
-    ~your-urbit:dojo> +https://api.github.com
+```
+~your-urbit:dojo> +https://api.github.com
+```
 
 Github exposes a few endpoints to the general web, and the root
 endpoint is one of them.  This gives you a textual representation
@@ -87,7 +89,9 @@ you're logged in as.
 
 You can similarly POST:
 
-    ~your-urbit:dojo> +https://api.github.com/gists &json _(cork poja need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
+```
+~your-urbit:dojo> +https://api.github.com/gists &json _(cork poja need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
+```
 
 This creates a gist, go to `https://gist.github.com/<username>` to
 see it.
@@ -101,7 +105,9 @@ can send data of any mark as long as it has a conversion path to
 Let's take a look at the code and see if we can figure out what's
 happening here:
 
-    /+    basic-auth
+```
+/+    basic-auth
+```
 
 First, we load a library called `basic-auth`.  This library
 exposes two items.  `keys` is the type of the basic auth key,
@@ -131,15 +137,15 @@ five "special" arms:
   request) and produces a `sec-move` (defined in zuse), which is
   one of:
 
-  * `[%send hiss]`, which sends the new hiss.  This is the
+  - `[%send hiss]`, which sends the new hiss.  This is the
     case in, for example, basic auth, where all we need to do is
     add an extra header to the request.
-  * `[%give httr]`, where httr is an http response.  This
+  - `[%give httr]`, where httr is an http response.  This
     immediately returns an http response to the sender.
-  * `[%show purl]`, where a purl is a parsed url.  This displays
+  - `[%show purl]`, where a purl is a parsed url.  This displays
     a message asking the user to visit the given url to continue
     the authentication process.
-  * `[%redo ~]`, which redoes the request.
+  - `[%redo ~]`, which redoes the request.
 
   `%eyre` calls `++filter-request` just before sending an HTTP
   request to the specified domain.  This allows the security
@@ -300,3 +306,4 @@ library.
 
 Remember, of course, that the best strategy for building security
 drivers is to copy a similar one and tweak it to taste.
+

@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 1
-title: Technical overview
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'1'
+        title/'Technical overview'
+    ==
+;>
 
 # Technical overview
 
@@ -42,7 +42,7 @@ codebase both simple and practical.  Hoon and Nock are two
 layers: Hoon compiles itself to pure Nock.  Since Urbit is
 defined in Nock, not Hoon, we can upgrade Hoon over the air.
 
-The Nock data model is especially trivial.  A *noun* is an atom
+The Nock data model is especially trivial.  A _noun_ is an atom
 or a cell.  An atom is any unsigned integer.  A cell is an
 ordered pair of nouns.  Nouns are acyclic and expose no pointer
 equality test.
@@ -72,7 +72,7 @@ functional build system (Ford), and an application engine
 Ames, the Urbit network, is an encrypted P2P protocol over UDP.
 Its address space is semi-decentralized; 64-bit addresses are
 hierarchically distributed, 128-bit addresses are self-created.
-Addresses (or *plots*) are rendered in a phonemic syntax for
+Addresses (or _plots_) are rendered in a phonemic syntax for
 memorability.  The scarcity of short plots helps control spam and
 other Sybil attacks.  The short plot hierarchy is also reused as
 a supernode routing system for NAT traversal.
@@ -88,3 +88,4 @@ IRC.
 The full Urbit stack (compiler, standard library, kernel,
 modules, and applications) is about 30,000 lines of Hoon.
 Urbit is patent-free and MIT licensed.
+

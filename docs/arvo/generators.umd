@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 18
-title: Using generators with apps
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'18'
+        title/'Using generators with apps'
+    ==
+;>
 
 # Generators
 
@@ -29,10 +29,12 @@ themselves, so we generally don't pipe the results into an app.
 Another generator is `+hood/merge`. Try running `+hood/merge` with the
 normal arguments for `|merge`:
 
-    ~fintud-macrep:dojo> +hood/merge %home our %they
-    [syd=%home her=~fintud-macrep sud=%they gem=%auto]
-    ~fintud-macrep:dojo> +hood/merge %home our %they, =gem %this
-    [syd=%home her=~fintud-macrep sud=%they gem=%auto]
+```
+~fintud-macrep:dojo> +hood/merge %home our %they
+[syd=%home her=~fintud-macrep sud=%they gem=%auto]
+~fintud-macrep:dojo> +hood/merge %home our %they, =gem %this
+[syd=%home her=~fintud-macrep sud=%they gem=%auto]
+```
 
 This didn't run any merge, it just constructed the command that, if sent
 to `:hood`, would run it. Note first that, even though it's not printed,
@@ -64,60 +66,66 @@ We'll need a new mark for our arguments. Let's call it
 `examples-ping-message`.
 
 > For app-specific marks, it's good style to prefix the name of the mark
-> with the name of the app. Since many apps have several such marks,
-> subdirectories in `/mar` are rendered as `-`, so that `ping-message`
-> is written in (/mar/examples/ping/message.hoon).
+  with the name of the app. Since many apps have several such marks,
+  subdirectories in `/mar` are rendered as `-`, so that `ping-message`
+  is written in (/mar/examples/ping/message.hoon).
 
-    ::
-    ::::  /hoon/message/ping/examples/app
-      ::
-    /?    314
-    |_  {to/@p message/@t}
-    ++  grab
-      |%
-      ++  noun  {@p @t}
-      --
-    --
+```
+::
+::::  /hoon/message/ping/examples/app
+  ::
+/?    314
+|_  {to/@p message/@t}
+++  grab
+  |%
+  ++  noun  {@p @t}
+  --
+--
+```
 
 The app can easily be modified to use this (`/app/examples/ping.hoon`):
 
-    ::  Allows one ship to ping another with a string of text
-    ::
-    ::::  /hoon/ping/examples/app
-      ::
-    /?    314
-    |%
-      ++  move  {bone term wire *}
-    --
-    !:
-    |_  {bowl state/$~}
-    ::
-    ++  poke-examples-ping-message
-      |=  {to/@p message/@t}
-      ~&  'sent'
-      ^-  {(list move) _+>.$}
-      :-  ^-  (list move)
-          :~  `move`[ost %poke /sending [to dap] %atom message]
-          ==
-      +>.$
-    ::
-    ++  poke-atom
-      |=  arg/@
-      ~&  'received'
-      ^-  {(list move) _+>.$}
-      ::
-      ~&  [%receiving (@t arg)]
-      [~ +>.$]
-    ::
-    ++  coup  |=(* `+>)
-    --
+```
+::  Allows one ship to ping another with a string of text
+::
+::::  /hoon/ping/examples/app
+  ::
+/?    314
+|%
+  ++  move  {bone term wire *}
+--
+!:
+|_  {bowl state/$~}
+::
+++  poke-examples-ping-message
+  |=  {to/@p message/@t}
+  ~&  'sent'
+  ^-  {(list move) _+>.$}
+  :-  ^-  (list move)
+      :~  `move`[ost %poke /sending [to dap] %atom message]
+      ==
+  +>.$
+::
+++  poke-atom
+  |=  arg/@
+  ~&  'received'
+  ^-  {(list move) _+>.$}
+  ::
+  ~&  [%receiving (@t arg)]
+  [~ +>.$]
+::
+++  coup  |=(* `+>)
+--
+```
 
 Now we can run this with:
 
-    ~fintud-macrep:dojo> |start %examples-ping
-    >=
-    ~fintud-macrep:dojo> :examples-ping &examples-ping-message [~sampel-sipnym 'heyya']
-    >=
+```
+~fintud-macrep:dojo> |start %examples-ping
+>=
+~fintud-macrep:dojo> :examples-ping &examples-ping-message [~sampel-sipnym 'heyya']
+>=
+```
 
 And on `~sampel-sipnym`, assuming it's running `:examples-ping` as well,
 we see `[%receiving 'heyya']`.
@@ -127,9 +135,11 @@ mandatory, and optional arguments are hard. Let's make a generator,
 `+examples-send` to make everything nicer. Since it's specific to
 `:examples-ping`, let's put it in `/gen/examples/ping/send.hoon`:
 
-    :-  %say
-    |=  {^ {to/@p message/?($~ {text/@t $~})} $~}
-    [%examples-ping-message to ?~(message 'howdy' text.message)]
+```
+:-  %say
+|=  {^ {to/@p message/?($~ {text/@t $~})} $~}
+[%examples-ping-message to ?~(message 'howdy' text.message)]
+```
 
 A couple of new things here. Firstly, `message/?($~ {text/@t $~})`
 should be read as "the message is either null or a pair of text and
@@ -144,35 +154,38 @@ Secondly, `?~(a b c)` is a rune which means "if the `a` is null, do `b`,
 else `c`". It is roughly equivalent to `?:(=(~ a) b c)`.
 
 > `?~(a b c)` is actually equivalent to `?:=(?=(~ a) b c)`, which,
-> although identical at run time, is subtly different at compile time.
-> Specifically, using `?=` rather than `=` means that we're checking
-> whether `a` is in the *type* of `~`, and so the compiler knows that in
-> the `b` case `a` is null, and in the `c` case `a` is not null. Since
-> `=` is purely a runtime value check with no type implications, the
-> compiler doesn't gain any information.
->
-> At any rate, this is the reason why we can refer to `text.message` in
-> the `c` clause. The compiler knows that `message` is not null, so it
-> must have `text` within it. If you used
-> `?:(=(~ message) 'howdy' text.message)` the compiler would complain
-> that it doesn't know whether `message` has `text` within it.
+  although identical at run time, is subtly different at compile time.
+  Specifically, using `?=` rather than `=` means that we're checking
+  whether `a` is in the _type_ of `~`, and so the compiler knows that in
+  the `b` case `a` is null, and in the `c` case `a` is not null. Since
+  `=` is purely a runtime value check with no type implications, the
+  compiler doesn't gain any information.
+
+  At any rate, this is the reason why we can refer to `text.message` in
+  the `c` clause. The compiler knows that `message` is not null, so it
+  must have `text` within it. If you used
+  `?:(=(~ message) 'howdy' text.message)` the compiler would complain
+  that it doesn't know whether `message` has `text` within it.
 
 This is run as follows:
 
-    ~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym
-    >=
-    ~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym 'how do you do'
-    >=
+```
+~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym
+>=
+~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym 'how do you do'
+>=
+```
 
 Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and
 `[%receiving 'how do you do']`.
 
-**Exercises**:
+*Exercises*:
 
--   Create a generator for `:examples-sum` from
-    [State](/docs/arvo/state) so that you can run `:examples-sum|add 5`
-    to add numbers to it.
+- Create a generator for `:examples-sum` from
+  [State](/docs/arvo/state) so that you can run `:examples-sum|add 5`
+  to add numbers to it.
 
--   Create a generator for `:examples-click` from [Web
-    Apps](/docs/arvo/web-apps) so that you can run
-    `:examples-click|poke` to poke it.
+- Create a generator for `:examples-click` from [Web
+  Apps](/docs/arvo/web-apps) so that you can run
+  `:examples-click|poke` to poke it.
+

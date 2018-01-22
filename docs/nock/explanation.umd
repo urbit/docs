@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 2
-next: true
-title: Explanation
----
+:-  :~  navhome/'/docs/'
+        sort/'2'
+        next/'true'
+        title/'Explanation'
+    ==
+;>
 
 # An explanation of Nock
 
@@ -22,7 +22,7 @@ XML and XML look like ASN.1.  It may also remind you of Lisp's
 S-expressions - you can think of nouns as "S-expressions without
 the S."
 
-To be exact, a noun *is* an S-expression, except that classic
+To be exact, a noun _is_ an S-expression, except that classic
 S-expressions have multiple atom types ("S" is for "symbol").
 Since Nock is designed to be used with a higher-level type system
 (such as Hoon's), it does not need low-level types.  An atom is
@@ -32,8 +32,8 @@ For instance, it's common to represent strings (or even whole
 text files) as atoms, arranging them LSB first - so "foo" becomes
 `0x6f6f66`.  How do we know to print this as "foo", not `0x6f6f66`?
 We need external information - such as a Hoon type.  Similarly,
-other common atomic types - signed integers, floating point, etc
-- are all straightforward to map into atoms.
+other common atomic types - signed integers, floating point, 
+etc - are all straightforward to map into atoms.
 
 It's also important to note that, unlike Lisp, Nock cannot create
 cyclical data structures.  It is normal and common for nouns in a
@@ -93,7 +93,7 @@ Normally `a` in `nock(a)` is a cell `[s f]`, or as we say
 Intuitively, the formula is your function and the subject is
 its argument.  We call them something different because Hoon,
 or any other high-level language built on Nock, will build its
-own function calling convention which *does not* map directly
+own function calling convention which _does not_ map directly
 to `*[subject formula]`.
 
 ### Noun syntax
@@ -196,13 +196,13 @@ is `[[4 5] [6 14 15]]`
 is `[4 5]`
 
 ```
-/[3 [[4 5] [6 14 15]]]  
+/[3 [[4 5] [6 14 15]]]
 ```
 
 is `[6 14 15]`, and
 
 ```
-/[7 [[4 5] [6 14 15]]]  
+/[7 [[4 5] [6 14 15]]]
 ```
 
 is `[14 15]`
@@ -226,6 +226,7 @@ Note that we're using Hoon syntax here.  Since we do not use Nock
 from Hoon all that often (it's sort of like embedding assembly in
 C), we've left it a little cumbersome.  In Hoon, instead of
 writing `*[a 0 b]`, we write
+
 ```
 .*(a [0 b])
 ```
@@ -321,7 +322,7 @@ We could write this line less formally:
 In other words, if you have two Nock formulas `x` and `y`, a
 formula that computes the pair of them is just `[x y]`.  We can
 recognize this because no atom is a valid formula, and
-every formula that *does not* use line 19 has an atomic head.
+every formula that _does not_ use line 19 has an atomic head.
 
 If you know Lisp, you can think of this feature as a sort of
 "implicit cons."  Where in Lisp you would write `(cons x y)`,
@@ -478,7 +479,7 @@ For extra credit, explain why we can't just define
 ```
 
 With `c`, we produce a noun which contains both code and data - a
-*core*.  We use this core as the subject, and evaulate the
+_core_.  We use this core as the subject, and evaulate the
 formula within it at slot `b`.
 
 ### `6`, if-then-else
@@ -560,3 +561,4 @@ never do anything as funky as these `6` macro internals.  There's
 no reason we couldn't build formulas at runtime, but we have no
 reason to and we don't - except when actually metaprogramming.
 As in most languages, normally code is code and data is data.)
+

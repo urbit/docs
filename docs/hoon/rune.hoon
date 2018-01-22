@@ -1,77 +1,89 @@
----
-navhome: /docs/
-next: true
-sort: 17
-title: Runes
----
-
+/=  dot  /:  /%/dot  /%  /tree-kids/
+/=  zap  /:  /%/zap  /%  /tree-kids/
+/=  tis  /:  /%/tis  /%  /tree-kids/
+/=  wut  /:  /%/wut  /%  /tree-kids/
+/=  bar  /:  /%/bar  /%  /tree-kids/
+/=  sig  /:  /%/sig  /%  /tree-kids/
+/=  col  /:  /%/col  /%  /tree-kids/
+/=  cen  /:  /%/cen  /%  /tree-kids/
+/=  ket  /:  /%/ket  /%  /tree-kids/
+/=  buc  /:  /%/buc  /%  /tree-kids/
+/=  sem  /:  /%/sem  /%  /tree-kids/
+:-  :~
+navhome/'/docs/'
+sort/'17'
+title/'Runes'
+==
+;>
+ 
 # Runes
+ 
+;div.book
 
-<div class="book">
+  ## `. dot` (nock)
+ 
+  ;+  (dot %title show+%preview class+'runes' datapath/'/docs/hoon/rune/dot/' ~)
+ 
+  ---
 
-## `. dot` (nock)
+  ## `! zap` (wild)
+ 
+  ;+  (zap %title show+%preview class+'runes' datapath/'/docs/hoon/rune/zap/' ~)
+ 
+  ---
 
-<list src="./dot" dataPreview="true" className="runes" childIsFragment="true"></list>
+  ## `= tis` (flow)
+ 
+  ;+  (tis %title show+%preview class+'runes' datapath/'/docs/hoon/rune/tis/' ~)
+ 
+  ---
 
----
+  ## `? wut` (test)
+ 
+  ;+  (wut %title show+%preview class+'runes' datapath/'/docs/hoon/rune/wut/' ~)
+ 
+  ---
 
-## `! zap` (wild)
+  ## `| bar` (core)
+ 
+  ;+  (bar %title show+%preview class+'runes' datapath/'/docs/hoon/rune/bar/' ~)
+ 
+  ---
 
-<list src="./zap" dataPreview="true" className="runes" childIsFragment="true"></list>
+  ## `~ sig` (hint)
+ 
+  ;+  (sig %title show+%preview class+'runes' datapath/'/docs/hoon/rune/sig/' ~)
+ 
+  ---
 
----
+  ## `: col` (cell)
+ 
+  ;+  (col %title show+%preview class+'runes' datapath/'/docs/hoon/rune/col/' ~)
+ 
+  ---
 
-## `= tis` (flow)
+  ## `% cen` (call)
+ 
+  ;+  (cen %title show+%preview class+'runes' datapath/'/docs/hoon/rune/cen/' ~)
+ 
+  ---
 
-<list src="./tis" dataPreview="true" className="runes" childIsFragment="true"></list>
+  ## `^ ket` (cast)
+ 
+  ;+  (ket %title show+%preview class+'runes' datapath/'/docs/hoon/rune/ket/' ~)
+ 
+  ---
 
----
+  ## `$ buc` (mold)
+ 
+  ;+  (buc %title show+%preview class+'runes' datapath/'/docs/hoon/rune/buc/' ~)
+ 
+  ---
 
-## `? wut` (test)
+  ## `; sem` (make)
+ 
+  ;+  (sem %title show+%preview class+'runes' datapath/'/docs/hoon/rune/sem/' ~)
+ 
+  ---
 
-<list src="./wut" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `| bar` (core)
-
-<list src="./bar" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `~ sig` (hint)
-
-<list src="./sig" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `: col` (cell)
-
-<list src="./col" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `% cen` (call)
-
-<list src="./cen" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `^ ket` (cast)
-
-<list src="./ket" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `$ buc` (mold)
-
-<list src="./buc" dataPreview="true" className="runes" childIsFragment="true"></list>
-
----
-
-## `; sem` (make)
-
-<list src="./sem" dataPreview="true" className="runes" childIsFragment="true"></list>
-
-</div>
-
+==

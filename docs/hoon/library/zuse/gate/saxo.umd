@@ -1,7 +1,6 @@
----
-navhome: /docs/
----
-
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
 ### `++saxo`
 
@@ -9,34 +8,33 @@ List ancestors
 
 Lists the ancestors of `who`.
 
-Accepts
--------
+## Accepts
 
 `who` is a [`++ship`]().
 
-Produces
---------
+## Produces
 
 A [`++list`]() of `++ship`.
 
-Source
-------
+## Source
 
-    ++  saxo                                                ::  autocanon
-      |=  who=ship
-      ^-  (list ship)
-      ?:  (lth who 256)  [who ~]
-      [who $(who (sein who))]
-    ::
-    
-Examples
---------
+```
+++  saxo                                                ::  autocanon
+  |=  who=ship
+  ^-  (list ship)
+  ?:  (lth who 256)  [who ~]
+  [who $(who (sein who))]
+::
+```
 
-    ~zod/main=> (saxo ~pittyp-pittyp)
-    ~[~pittyp-pittyp ~dalnel ~del]
-    ~zod/main=> (saxo ~tasfyn-partyv)
-    ~[~tasfyn-partyv ~doznec ~zod]
-    ~zod/main=> (saxo ~ractul-fodsug-sibryg-modsyl--difrun-mirfun-filrec-patmet)
-    ~[~ractul-fodsug-sibryg-modsyl--difrun-mirfun-filrec-patmet ~zod]
+## Examples
 
+```
+~zod/main=> (saxo ~pittyp-pittyp)
+~[~pittyp-pittyp ~dalnel ~del]
+~zod/main=> (saxo ~tasfyn-partyv)
+~[~tasfyn-partyv ~doznec ~zod]
+~zod/main=> (saxo ~ractul-fodsug-sibryg-modsyl--difrun-mirfun-filrec-patmet)
+~[~ractul-fodsug-sibryg-modsyl--difrun-mirfun-filrec-patmet ~zod]
+```
 

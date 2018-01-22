@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 11
-title: ?^ "wutket"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'11'
+        title/'?^ "wutket"'
+    ==
+;>
 
 # `?^ "wutket"`
 
@@ -18,11 +18,11 @@ of the subject is a cell.
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 
-Regular form: *3-fixed*
+Regular form: _3-fixed_
 
 ## Examples
 
@@ -37,3 +37,4 @@ Regular form: *3-fixed*
 ~zod:dojo> ?^(`*`[1 2] 3 4)
 3
 ```
+

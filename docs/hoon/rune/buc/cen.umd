@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: $% "buccen"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'$% "buccen"'
+    ==
+;>
 
-# `$% "buccen"` 
+# `$% "buccen"`
 
 `[%bccn p=(list [[aura @] model])]`: mold which recognizes a union tagged by head atom.
 
@@ -21,9 +21,9 @@ Void if `p` is empty.
 For the first item `i` in `p`, the cell `[q.p.i.p $:q.i.p]`.
 Crashes if `p` is empty.
 
-## Syntax 
+## Syntax
 
-Regular form: *2-running*.
+Regular form: _2-running_.
 
 ## Discussion
 
@@ -43,3 +43,4 @@ be an infinite loop!
 ~zod:dojo> $:foo
 [%foo p=0 q=0]~
 ```
+

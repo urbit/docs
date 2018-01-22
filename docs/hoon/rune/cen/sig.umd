@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 6
-title: %~ "censig"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'%~ "censig"'
+    ==
+;>
 
 # `%~ "censig"`
 
@@ -17,11 +17,11 @@ title: %~ "censig"
 ```
 
 > Note: the expansion implementation is hygienic -- it doesn't actually add the
-> `a` face to the subject. It's shown here because `%=` ("centis") requires a `wing`.
+  `a` face to the subject. It's shown here because `%=` ("centis") requires a `wing`.
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 Irregular: `~(a b c)` is `%~(a b c)`; `~(a b c d e)` is `%~(a b
 [c d e])`.

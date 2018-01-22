@@ -1,10 +1,10 @@
----
-navhome: /docs/
-sort: 12
-title: ~< "siggal"
----
+:-  :~  navhome/'/docs/'
+        sort/'12'
+        title/'~< "siggal"'
+    ==
+;>
 
-# `~< "siggal"` 
+# `~< "siggal"`
 
 `[%sggl p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied to 
 product.
@@ -15,7 +15,7 @@ product.
 
 ## Syntax
 
-Regular: *2-fixed*.  For the dynamic form, write `%term.hoon`.
+Regular: _2-fixed_.  For the dynamic form, write `%term.hoon`.
 
 ## Discussion
 
@@ -32,3 +32,4 @@ rather about its product.
 ~zod:dojo> (make '~<(%a.+(.) 42)')
 [%7 p=[%1 p=42] q=[%10 p=[p=97 q=[%4 p=[%0 p=1]]] q=[%0 p=1]]]
 ```
+

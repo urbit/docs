@@ -1,14 +1,15 @@
----
-navhome: /docs/
-next: true
-sort: 26
-title: Cheat sheet
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'26'
+        title/'Cheat sheet'
+    ==
+;>
 
 # Hoon cheat sheet
+
 ##### `~rovnys-ricfer`
 
-_Original Fora post_ [*here*](https://urbit.org/fora/posts/~2017.9.18..22.31.06..24d5~).
+_Original Fora post_ [_here_](https://urbit.org/fora/posts/~2017.9.18..22.31.06..24d5~).
 
 <br />
 
@@ -36,3 +37,4 @@ $*  ::  bunt (irregular form is *)
 ```
 
 Hope this helps!
+

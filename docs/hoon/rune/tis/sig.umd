@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: =~ "tissig"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'=~ "tissig"'
+    ==
+;>
 
-# `=~ "tissig"` 
+# `=~ "tissig"`
 
 `[%tssg p=(list hoon)]`: compose many hoons.
 
@@ -15,7 +15,7 @@ The product of the chain composition.
 
 ## Syntax
 
-Regular: *running*.
+Regular: _running_.
 
 ## Examples
 
@@ -34,3 +34,4 @@ Regular: *running*.
 ~zod:dojo> foo
 3
 ```
+

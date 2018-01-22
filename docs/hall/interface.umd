@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 2
-title: Hall interface
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'2'
+        title/'Hall interface'
+    ==
+;>
 
 # Hall interface
 
@@ -12,29 +12,27 @@ This document describes the different interfaces Hall provides and the data that
 
 While the structures here are given in Hoon, they match fairly closely to their JSON equivalent. Most important to note is that `$%({$x y/z})` becomes accessible as `json.x.y`.
 
-
 ## Table of contents
 
-* [Queries](#queries)
-  * [/client](#client)
-    * [/client prize](#client-prize)
-    * [/client rumor](#client-rumor)
-  * [/public](#public)
-    * [/public prize](#public-prize)
-    * [/public rumor](#public-rumor)
-  * [/peers](#peers)
-    * [/peers prize](#peers-prize)
-    * [/peers rumor](#peers-rumor)
-  * [/circle](#circle)
-    * [/circle prize](#circle-prize)
-    * [/circle rumor](#circle-rumor)
-* [Actions](#actions)
-  * [Circle configuration](#circle-configuration)
-  * [Messaging](#messaging)
-  * [Personal metadata](#personal-metadata)
-  * [Changing shared UI](#changing-shared-ui)
-  * [Miscellaneous changes](#miscellaneous-changes)
-
+- [Queries](#queries)
+  - [/client](#client)
+    - [/client prize](#client-prize)
+    - [/client rumor](#client-rumor)
+  - [/public](#public)
+    - [/public prize](#public-prize)
+    - [/public rumor](#public-rumor)
+  - [/peers](#peers)
+    - [/peers prize](#peers-prize)
+    - [/peers rumor](#peers-rumor)
+  - [/circle](#circle)
+    - [/circle prize](#circle-prize)
+    - [/circle rumor](#circle-rumor)
+- [Actions](#actions)
+  - [Circle configuration](#circle-configuration)
+  - [Messaging](#messaging)
+  - [Personal metadata](#personal-metadata)
+  - [Changing shared UI](#changing-shared-ui)
+  - [Miscellaneous changes](#miscellaneous-changes)
 
 ## Queries
 
@@ -90,7 +88,6 @@ Contains either a bound or unbound glyph and its target, or a ship with its new 
 ++  diff-nick   {who/ship nic/nick}                     :<  changed nickname
 ```
 
-
 ### /public
 
 To aid in circle discoverability, users can add circles to their "public membership" list. This can then be queried for by, for example, a profile page.
@@ -106,7 +103,7 @@ Valid paths include:
 
 ```
 :>  all public memberships
-/public                                               
+/public
 ```
 
 #### /public prize
@@ -261,9 +258,7 @@ Contains (where applicable) messages in envelopes (with message numbers), local 
 
 #### /circle rumor
 
-Contains a detailed change description of the data relevant to the query that changed.  
-Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from.  
-Configuration and status changes specify the circle they apply to.
+Contains a detailed change description of the data relevant to the query that changed.<br>Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from.<br>Configuration and status changes specify the circle they apply to.
 
 ```
 ++  rumor                                               :>  query result change
@@ -298,7 +293,6 @@ Configuration and status changes specify the circle they apply to.
       {$true tru/(unit truename)}                       :<  changed true name
   ==                                                    ::
 ```
-
 
 ## Actions
 
@@ -376,7 +370,6 @@ When the user makes any changes to shared UI elements (elements that should pers
   ==
 ```
 
-
 `%glyph`: Adds or removed a binding of a glyph to an audience.
 
 `%nick`: Sets a local nickname for a ship. An empty nickname `''` means the ship has no nickname.
@@ -391,3 +384,4 @@ When the user makes any changes to shared UI elements (elements that should pers
 ```
 
 `%public`: Adds or removes a circle to/from the user's public membership list.
+

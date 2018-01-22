@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: ?: "wutcol"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'?: "wutcol"'
+    ==
+;>
 
 # `?: "wutcol"`
 
@@ -27,7 +27,7 @@ an untaken branch can be indicated with the `%lost` hoon.
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 
@@ -57,3 +57,4 @@ Note also that all other branching hoons reduce to `?:`.
            4
 4
 ```
+

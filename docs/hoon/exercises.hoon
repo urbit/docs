@@ -1,9 +1,10 @@
----
-navhome: /docs/
-next: true
-sort: 22
-title: Exercises
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'22'
+        title/'Exercises'
+    ==
+;>
 
 # Exercises
 
@@ -15,4 +16,4 @@ Feel free to ask questions in the comments.  You can subscribe to the
 `/comments` `:talk` channel on this ship to keep abreast of the
 conversation.
 
-<list />
+;+  (kids %title datapath/'/docs/hoon/exercises/' ~)

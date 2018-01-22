@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: =< "tisgal"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'=< "tisgal"'
+    ==
+;>
 
 # `=< "tisgal"`
 
@@ -17,7 +17,7 @@ title: =< "tisgal"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 Irregular: `foo:bar` is `=<(foo bar)`.
 
@@ -37,3 +37,4 @@ Irregular: `foo:bar` is `=<(foo bar)`.
 ~zod:dojo> [. .]:(add 2 4)
 [6 6]
 ```
+

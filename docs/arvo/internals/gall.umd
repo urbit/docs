@@ -1,11 +1,9 @@
----
-navhome: /docs/
-sort: 7
----
+:-  :~  navhome/'/docs/'
+        sort/'7'
+    ==
+;>
 
-
-`%gall`
-=======
+# `%gall`
 
 Our application server manager.
 
@@ -24,8 +22,7 @@ applications. Eyre exposes `%gall`'s interface over http, and ames does
 the same over the ames network. `%gall` uses ford to compile and run the
 applications.
 
-Cards
------
+## Cards
 
 `%gall` accepts the following cards. The first three are the most
 commonly used, while the others are primarily used internally.
@@ -47,7 +44,6 @@ either a differential or full update to the data stream. There may be a
 `%mean`, which indicates that the subscription has been canceled and no
 more responses will be received along this stream.
 
-
 ### `%nuke`
 
 Unsubscribes the current duct from its stream. This receives a response
@@ -65,7 +61,6 @@ Instantiates a child app. The app will be at path `[p parent-path]`, and
 it will be an instance of the `q` app. The only response will be `%gone`
 when the child dies.
 
-
 ### `%rote`
 
 Signifies a remote request from ames. `r` should be of type `rook`. This
@@ -76,7 +71,6 @@ should use `%rote` and `%roth` is ames. Formally, the response is either
 a `%nice` or a `%mean`, which ames uses to give a positive or negative
 ack. A logical response comes by passing a `%roth` card.
 
-
 ### `%roth`
 
 Gives the response received from a remote request. `r` should be of type
@@ -86,7 +80,6 @@ Gives the response received from a remote request. `r` should be of type
 need to acknowledge these responses since they're really independent
 one-way messages.
 
-
 ### `%wipe`
 
 Wipes the given app from memory. This is generally considered a hack,
@@ -94,7 +87,6 @@ but it is sometimes useful during development to wipe the state of an
 app. We don't guarantee that this actually completely wipes the app.
 Generally, you want to use a `%cide` card if you actually want to kill
 an app. This gives no response.
-
 
 ### `%cide`
 
@@ -104,8 +96,7 @@ called from the outside, it's worth mentioning `%cide`, which may be
 called from within `%gall` apps. It should call `++part` to allow the
 app any last words. This gives no response.
 
-Service Gates
--------------
+## Service Gates
 
 ### `++poke`
 
@@ -131,3 +122,4 @@ Save state on update.
 ### `++prep`
 
 Load state on update.
+

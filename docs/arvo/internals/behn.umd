@@ -1,10 +1,9 @@
----
-navhome: /docs/
-sort: 2
----
+:-  :~  navhome/'/docs/'
+        sort/'2'
+    ==
+;>
 
-`%behn`
-=======
+# `%behn`
 
 Our simple timer.
 
@@ -20,3 +19,4 @@ request to not be woken until after the given time.
 for keeping track of time-specified file requests. `%ames` should
 probably use `%behn` to keep track of things like network timeouts and
 retry timing, but it currently uses its own alarm system.
+

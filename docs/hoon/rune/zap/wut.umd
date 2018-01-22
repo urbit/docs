@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 4
-title: !? "zapwut"
----
+:-  :~  navhome/'/docs/'
+        sort/'4'
+        title/'!? "zapwut"'
+    ==
+;>
 
 # `!? "zapwut"`
 
@@ -15,7 +15,7 @@ title: !? "zapwut"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -27,3 +27,4 @@ Regular: *2-fixed*.
 ~zod:dojo> !?(64 (add 2 2))
 ! exit
 ```
+

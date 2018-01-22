@@ -1,9 +1,9 @@
----
-navhome: /docs/
----
-
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
 # 2a: unit logic
+
 ### `++biff`
 
 Unit as argument
@@ -11,38 +11,36 @@ Unit as argument
 Applies a function `b` that produces a unit to the unwrapped value of ++unit
 `a` (`u.a`). If `a` is empty, `~` is produced.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
 `b` is a function that accepts a noun and produces a unit.
 
-Produces
---------
+## Produces
 
 A unit.
 
-Source
-------
+## Source
 
-    ++  biff                                                ::  apply
-      |*  {a/(unit) b/$-(* (unit))}
-      ?~  a  ~
-      (b u.a)
+```
+++  biff                                                ::  apply
+  |*  {a/(unit) b/$-(* (unit))}
+  ?~  a  ~
+  (b u.a)
+```
 
+## Examples
 
-Examples
---------
+```
+> (biff (some 5) |=(a/@ (some (add a 2))))
+[~ u=7]
+> (biff ~ |=(a/@ (some (add a 2))))
+~
+```
 
-    > (biff (some 5) |=(a/@ (some (add a 2))))
-    [~ u=7]
-    > (biff ~ |=(a/@ (some (add a 2))))
-    ~
+---
 
-
-
-***
 ### `++bind`
 
 Non-unit function to unit, producing unit
@@ -51,39 +49,37 @@ Applies a function `b` to the value (`u.a`) of a ++unit `a`, producing
 a unit. Used when you want a function that does not accept or produce a
 unit to both accept and produce a unit.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
 `b` is a function.
 
-Produces
---------
+## Produces
 
 A unit.
 
-Source
-------
+## Source
 
-    ++  bind                                                ::  argue
-      |*  {a/(unit) b/gate}
-      ?~  a  ~
-      [~ u=(b u.a)]
+```
+++  bind                                                ::  argue
+  |*  {a/(unit) b/gate}
+  ?~  a  ~
+  [~ u=(b u.a)]
+```
 
+## Examples
 
-Examples
---------
+```
+> (bind ((unit @) [~ 97]) ,@t)
+[~ `a`]
+> =a |=(a/@ (add a 1))
+> (bind ((unit @) [~ 2]) a)
+[~ 3]
+```
 
-    > (bind ((unit @) [~ 97]) ,@t)
-    [~ `a`]
-    > =a |=(a/@ (add a 1))
-    > (bind ((unit @) [~ 2]) a)
-    [~ 3]
+---
 
-
-
-***
 ### `++bond`
 
 Replace null
@@ -91,41 +87,39 @@ Replace null
 Replaces an empty ++unit `b` with the product of a called trap
 `a`. If the unit is not empty, then the original unit is produced.
 
-Accepts
--------
+## Accepts
 
 `a` is a trap.
 
 `b` is a unit.
 
-Produces
---------
+## Produces
 
 Either the product of `a` or the value inside of unit `b`.
 
-Source
-------
+## Source
 
-    ++  bond                                                ::  replace
-      |*  a/(trap)
-      |*  b/(unit)
-      ?~  b  $:a
-      u.b
+```
+++  bond                                                ::  replace
+  |*  a/(trap)
+  |*  b/(unit)
+  ?~  b  $:a
+  u.b
+```
 
+## Examples
 
-Examples
---------
+```
+> (bex 10)
+1.024
+> ((bond |.((bex 10))) ~)
+1.024
+> ((bond |.((bex 10))) (slaw %ud '123'))
+123
+```
 
-    > (bex 10)
-    1.024
-    > ((bond |.((bex 10))) ~)
-    1.024
-    > ((bond |.((bex 10))) (slaw %ud '123'))
-    123
+---
 
-
-
-***
 ### `++both`
 
 Group unit values into pair
@@ -134,38 +128,37 @@ Produces `~` if either `a` or `b` are empty. Otherwise, produces a
 ++unit whose value is a cell of the values of two input units `a` and
 `b`.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
 `b` is a unit.
 
-Produces
---------
+## Produces
 
 A unit of the two initial values.
 
-Source
-------
+## Source
 
-    ++  both                                                ::  all the above
-      |*  {a/(unit) b/(unit)}
-      ?~  a  ~
-      ?~  b  ~
-      [~ u=[u.a u.b]]
+```
+++  both                                                ::  all the above
+  |*  {a/(unit) b/(unit)}
+  ?~  a  ~
+  ?~  b  ~
+  [~ u=[u.a u.b]]
+```
 
+## Examples
 
-Examples
---------
+```
+> (both (some 1) (some %b))
+[~ u=[1 %b]]
+> (both ~ (some %b))
+~
+```
 
-    > (both (some 1) (some %b))
-    [~ u=[1 %b]]
-    > (both ~ (some %b))
-    ~
+---
 
-
-***
 ### `++clap`
 
 Apply function to two units
@@ -173,8 +166,7 @@ Apply function to two units
 Applies a binary function `c`--which does not usually accept or produce a `++unit`--
 to the values of two units, `a` and `b`, producing a unit.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
@@ -182,112 +174,107 @@ Accepts
 
 `c` is a function that performs a binary operation.
 
-Produces
---------
+## Produces
 
 A unit.
 
-Source
-------
+## Source
 
-    ++  clap                                                ::  combine
-      |*  {a/(unit) b/(unit) c/_|=(^ +<-)}
-      ?~  a  b
-      ?~  b  a
-      [~ u=(c u.a u.b)]
+```
+++  clap                                                ::  combine
+  |*  {a/(unit) b/(unit) c/_|=(^ +<-)}
+  ?~  a  b
+  ?~  b  a
+  [~ u=(c u.a u.b)]
+```
 
+## Examples
 
-Examples
---------
+```
+> =u ((unit @t) [~ 'a'])
+> =v ((unit @t) [~ 'b'])
+> (clap u v |=([a=@t b=@t] (welp (trip a) (trip b))))
+[~ u="ab"] 
+> =a ((unit @u) [~ 1])
+> =b ((unit @u) [~ 2])
+> =c |=([a=@ b=@] (add a b))
+> (clap a b c)
+[~ 3]
+```
 
-    > =u ((unit @t) [~ 'a'])
-    > =v ((unit @t) [~ 'b'])
-    > (clap u v |=([a=@t b=@t] (welp (trip a) (trip b))))
-    [~ u="ab"] 
-    > =a ((unit @u) [~ 1])
-    > =b ((unit @u) [~ 2])
-    > =c |=([a=@ b=@] (add a b))
-    > (clap a b c)
-    [~ 3]
-      
+---
 
-
-***
 ### `++drop`
 
 Unit to list
 
 Makes a ++list of the unwrapped value (`u.a`) of a `++unit` `a`.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
-Produces
---------
+## Produces
 
 A list.
 
-Source
-------
+## Source
 
-    ++  drop                                                ::  enlist
-      |*  a/(unit)
-      ?~  a  ~
-      [i=u.a t=~]
+```
+++  drop                                                ::  enlist
+  |*  a/(unit)
+  ?~  a  ~
+  [i=u.a t=~]
+```
 
+## Examples
 
-Examples
---------
+```
+> =a ((unit @) [~ 97])
+> (drop a)
+[i=97 t=~] 
+> =a ((unit @) [~])
+> (drop a)
+~
+```
 
-    > =a ((unit @) [~ 97])
-    > (drop a)
-    [i=97 t=~] 
-    > =a ((unit @) [~])
-    > (drop a)
-    ~
+---
 
-
-
-***
 ### `++fall`
 
 Give unit a default value
 
 Produces a default value `b` for a `++unit` `a` in cases where `a` is null.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
 `b` is a noun that's used as the default value.
 
-Produces
---------
+## Produces
 
 Either a noun `b` or the unwrapped value of unit `a`.
 
-Source
-------
+## Source
 
-    ++  fall                                                ::  default
-      |*  {a/(unit) b/*}
-      ?~(a b u.a)
+```
+++  fall                                                ::  default
+  |*  {a/(unit) b/*}
+  ?~(a b u.a)
+```
 
+## Examples
 
-Examples
---------
+```
+> (fall ~ `a`)
+`a`
+> (fall [~ u=0] `a`)
+0
+```
 
-    > (fall ~ `a`)
-    `a`
-    > (fall [~ u=0] `a`)
-    0
+---
 
-
-
-***
 ### `++lift`
 
 Curried bind
@@ -296,38 +283,36 @@ Accepts a `++gate` `a` and produces a function that accepts `++unit`
 `b` to which it applies `a`. Used when you want a function that does not accept
 or produce a unit to both accept and produce a unit.
 
-Accepts
--------
+## Accepts
 
 `a` is a gate.
 
 `b` is a unit.
 
-Produces
---------
+## Produces
 
 A unit.
 
-Source
-------
+## Source
 
-    ++  lift                                                ::  lift gate (fmap)
-      |*  a/gate                                            ::  flipped
-      |*  b/(unit)                                          ::  curried
-      (bind b a)                                            ::  bind
+```
+++  lift                                                ::  lift gate (fmap)
+  |*  a/gate                                            ::  flipped
+  |*  b/(unit)                                          ::  curried
+  (bind b a)                                            ::  bind
+```
 
+## Examples
 
-Examples
---------
+```
+> ((lift dec) `(unit @)`~)
+~
+> ((lift dec) `(unit @)`[~ 20])
+[~ 19]
+```
 
-    > ((lift dec) `(unit @)`~)
-    ~
-    > ((lift dec) `(unit @)`[~ 20])
-    [~ 19]
+---
 
-
-
-***
 ### `++mate`
 
 Choose
@@ -338,120 +323,115 @@ If neither are empty, it asserts that both values are the same and
 produces that value. If the assertion fails, `++mate` crashes with
 `'mate'` in the stack trace.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
 `b` is a unit.
 
-Produces
---------
+## Produces
 
 A unit or crash.
 
-Source
-------
+## Source
 
-    ++  mate                                                ::  choose
-      |*  {a/(unit) b/(unit)}
-      ?~  b  a
-      ?~  a  b
-      ?.(=(u.a u.b) ~|('mate' !!) a)
+```
+++  mate                                                ::  choose
+  |*  {a/(unit) b/(unit)}
+  ?~  b  a
+  ?~  a  b
+  ?.(=(u.a u.b) ~|('mate' !!) a)
+```
 
+## Examples
 
-Examples
---------
+```
+> =a ((unit @) [~ 97])
+> =b ((unit @) [~ 97])
+> (mate a b)
+[~ 97]
+> =a ((unit @) [~ 97])
+> =b ((unit @) [~])
+> (mate a b)
+[~ 97]
+> =a ((unit @) [~ 97])
+> =b ((unit @) [~ 98])
+> (mate a b)
+! 'mate'
+! exit
+```
 
-    > =a ((unit @) [~ 97])
-    > =b ((unit @) [~ 97])
-    > (mate a b)
-    [~ 97]
-    > =a ((unit @) [~ 97])
-    > =b ((unit @) [~])
-    > (mate a b)
-    [~ 97]
-    > =a ((unit @) [~ 97])
-    > =b ((unit @) [~ 98])
-    > (mate a b)
-    ! 'mate'
-    ! exit
+---
 
-
-
-***
 ### `++need`
 
 Unwrap unit
 
 Retrieve the value from a `++unit` and crash if the unit is null.
 
-Accepts
--------
+## Accepts
 
 `a` is a unit.
 
-Produces
---------
+## Produces
 
 Either the unwrapped value of `a` (`u.a`), or crash.
 
-Source
-------
+## Source
 
-    ++  need                                                ::  demand
-      |*  a/(unit)
-      ?~  a  ~|(%need !!)
-      u.a
+```
+++  need                                                ::  demand
+  |*  a/(unit)
+  ?~  a  ~|(%need !!)
+  u.a
+```
 
+## Examples
 
-Examples
---------
+```
+> =a ((unit [@t @t]) [~ ['a' 'b']])
+> (need a)
+['a' 'b']
+> =a ((unit @ud) [~ 17])
+> (need a)
+17
+> =a ((unit @) [~])
+> (need a)
+! exit
+```
 
-    > =a ((unit [@t @t]) [~ ['a' 'b']])
-    > (need a)
-    ['a' 'b']
-    > =a ((unit @ud) [~ 17])
-    > (need a)
-    17
-    > =a ((unit @) [~])
-    > (need a)
-    ! exit
+---
 
-
-
-***
 ### `++some`
 
 Wrap value in a unit
 
 Takes any atom `a` and produces a [`++unit`]() with the value set to `a`.
 
-Accepts
--------
+## Accepts
 
 `a` is a [noun]().
 
-Produces
---------
+## Produces
 
 A unit.
 
-Source
-------
+## Source
 
-    ++  some                                                ::  lift (pure)
-      |*  a=*
-      [~ u=a]
+```
+++  some                                                ::  lift (pure)
+  |*  a=*
+  [~ u=a]
+```
 
-Examples
---------
+## Examples
 
-    > (some [`a` `b`])
-    [~ u=[`a` `b`]]
-    > (some &)
-    [~ u=%.y]
+```
+> (some [`a` `b`])
+[~ u=[`a` `b`]]
+> (some &)
+[~ u=%.y]
+```
 
+---
 
-
-***

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 10
-title: ~% "sigcen"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'10'
+        title/'~% "sigcen"'
+    ==
+;>
 
 # `~% "sigcen"`
 
@@ -20,7 +20,7 @@ the named formulas `r`, constructed by `s`.
 
 ## Syntax
 
-Regular: *4-fixed*.  For `r`, use `~` if empty.  Otherwise, *jogging* 
+Regular: _4-fixed_.  For `r`, use `~` if empty.  Otherwise, _jogging_ 
 between opening and closing `==`.
 
 ## Discussion
@@ -71,26 +71,29 @@ The interpreter can thus
 
 Registers a jet in core `s` so that it can be called when that code is run.
 
-Regularm form: *4-fixed*
+Regularm form: _4-fixed_
 
 ## Examples
 
 Here's the AES 
 
-    ++  aesc                                                ::  AES-256
-      ~%  %aesc  +  ~
-      |%
-      ++  en                                                ::  ECB enc
-        ~/  %en
-        |=  [a=@I b=@H]  ^-  @uxH
-        =+  ahem
-        (be & (ex a) b)
-      ++  de                                                ::  ECB dec
-        ~/  %de
-        |=  [a=@I b=@H]  ^-  @uxH
-        =+  ahem
-        (be | (ix (ex a)) b)
-      --
+```
+++  aesc                                                ::  AES-256
+  ~%  %aesc  +  ~
+  |%
+  ++  en                                                ::  ECB enc
+    ~/  %en
+    |=  [a=@I b=@H]  ^-  @uxH
+    =+  ahem
+    (be & (ex a) b)
+  ++  de                                                ::  ECB dec
+    ~/  %de
+    |=  [a=@I b=@H]  ^-  @uxH
+    =+  ahem
+    (be | (ix (ex a)) b)
+  --
+```
 
 Here we label the entire `++aesc` core for optimization. You can see the
 jet in `jets/e/aesc.c`.
+

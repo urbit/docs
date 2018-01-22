@@ -1,60 +1,63 @@
----
-navhome: /docs/
-next: true
-sort: 14
-title: State
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'14'
+        title/'State'
+    ==
+;>
 
-State
-=====
+# State
 
 In the last section we built a few small apps that sent moves. These apps were
 entirely stateless, however. Most useful apps require some amount of state.
 Let's build a trivial stateful app. It'll keep a running the sum of all the
 atoms we poke it with. Here's `examples/app/sum.hoon`:
-    
-    ::  Keeps track of the sum of all the atoms it has been 
-    ::	poked with and prints the sum out
-    ::
-    ::::  /===/app/sum/hoon
-      ::
-    !:
-    |%
-    ++	move  {bone card}
-    ++	card  $%  $~
-	      ==
-    --
-    |_	{bow/bowl sum/@}
-    ::
-    ++	poke-atom
-      |=  tom/@
-      ^-  {(list move) _+>.$}
-      ~&  sum+(add sum tom)
-      [~ +>.$(sum (add sum tom))]
-    ::
-    ++	coup
-      |=  {wir/wire err/(unit tang)}
-      ^-  {(list move) _+>.$}
-      ?~  err
-	~&  sum+success+'Poke succeeded!'
-	[~ +>.$]
-      ~&  sum+error+'Poke failed. Error:'
-      ~&  sum+error+err
-      [~ +>.$]
-    ::
-    --
+
+```
+::  Keeps track of the sum of all the atoms it has been 
+::    poked with and prints the sum out
+::
+::::  /===/app/sum/hoon
+  ::
+!:
+|%
+++    move  {bone card}
+++    card  $%  $~
+      ==
+--
+|_    {bow/bowl sum/@}
+::
+++    poke-atom
+  |=  tom/@
+  ^-  {(list move) _+>.$}
+  ~&  sum+(add sum tom)
+  [~ +>.$(sum (add sum tom))]
+::
+++    coup
+  |=  {wir/wire err/(unit tang)}
+  ^-  {(list move) _+>.$}
+  ?~  err
+~&  sum+success+'Poke succeeded!'
+[~ +>.$]
+  ~&  sum+error+'Poke failed. Error:'
+  ~&  sum+error+err
+  [~ +>.$]
+::
+--
+```
 
 We can start it with `|start %sum`, and then run it:
 
-    ~fintud-macrep:dojo> :sum &atom 5
-    [%sum 5]
-    >=
-    ~fintud-macrep:dojo> :sum &atom 2
-    [%sum 7]
-    >=
-    ~fintud-macrep:dojo> :sum &atom 15
-    [%sum 22]
-    >=
+```
+~fintud-macrep:dojo> :sum &atom 5
+[%sum 5]
+>=
+~fintud-macrep:dojo> :sum &atom 2
+[%sum 7]
+>=
+~fintud-macrep:dojo> :sum &atom 15
+[%sum 22]
+>=
+```
 
 We can see that app state is being saved, but when, where, and how?
 
@@ -85,16 +88,16 @@ of things in `++bowl`, search for `++  bowl` (note: two spaces) in
 `/arvo/zuse.hoon`.
 
 > This is, perhaps, the most common way to learn Hoon. The easiest way to learn
-> about an identifier you see in code is to search in `/arvo/zuse.hoon` and
-> `/arvo/hoon.hoon` for it.\\ These "standard libraries" are usually simple to
-> read. Since Urbit's codebase is less than 15000 lines of code combined,
-> including the hoon parser, the compiler, and the `/arvo` microkernel, you can
-> usually use the code and its comments as a reference doc.
->
-> You can also read
-> [zuse.hoon](https://github.com/urbit/arvo/blob/master/arvo/zuse.hoon) and
-> [hoon.hoon](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon) in your
-> browser.
+  about an identifier you see in code is to search in `/arvo/zuse.hoon` and
+  `/arvo/hoon.hoon` for it.\ These "standard libraries" are usually simple to
+  read. Since Urbit's codebase is less than 15000 lines of code combined,
+  including the hoon parser, the compiler, and the `/arvo` microkernel, you can
+  usually use the code and its comments as a reference doc.
+
+  You can also read
+  [zuse.hoon](https://github.com/urbit/arvo/blob/master/arvo/zuse.hoon) and
+  [hoon.hoon](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon) in your
+  browser.
 
 The second thing we should clear up is this: Urbit needs no "serialize to disk"
 step. Everything you produce in the app state is persistent across calls to the
@@ -105,20 +108,21 @@ system](https://en.wikipedia.org/wiki/ACID). Thus, you don't have to worry about
 persistence when programming in Urbit, or ever go through the hassle of having
 to set up and write to a database. 
 
-**Exercises**:
+*Exercises*:
 
--   Modify `:sum` to reset the counter when you poke it with 0.
+- Modify `:sum` to reset the counter when you poke it with 0.
 
--   Write an app called `last` that prints out the previous value you poked it with. 
-    Sample output:
+- Write an app called `last` that prints out the previous value you poked it with. 
+  Sample output:
 
-<!-- -->
+```
+~fintud-macrep:dojo> :last 7
+[%last 0]
+>=
+~fintud-macrep:dojo> :last [1 2 3]
+[%last 7]
+>=
+~fintud-macrep:dojo> :last 'howdy'
+[%last [1 2 3]]
+```
 
-    ~fintud-macrep:dojo> :last 7
-    [%last 0]
-    >=
-    ~fintud-macrep:dojo> :last [1 2 3]
-    [%last 7]
-    >=
-    ~fintud-macrep:dojo> :last 'howdy'
-    [%last [1 2 3]]

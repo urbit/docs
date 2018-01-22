@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: ?. "wutdot"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'?. "wutdot"'
+    ==
+;>
 
-# `?. "wutdot"` 
+# `?. "wutdot"`
 
 `[%wtdt p=hoon q=hoon r=hoon]`: branch on a boolean test, inverted.
 
@@ -17,7 +17,7 @@ title: ?. "wutdot"
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 
@@ -40,3 +40,4 @@ hoon of an `?:` ("wutcol") is much heavier than the negative hoon.
            'but see how \'r is much heavier than \'q?'
 'but see how \'r is much heavier than \'q?'
 ```
+

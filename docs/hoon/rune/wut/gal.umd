@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 4
-title: ?< "wutgal"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'?< "wutgal"'
+    ==
+;>
 
 # `?< "wutgal"`
 
@@ -17,7 +17,7 @@ title: ?< "wutgal"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: ~& "sigpam"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'~& "sigpam"'
+    ==
+;>
 
 # `~& "sigpam"`
 
@@ -19,7 +19,7 @@ Prettyprints `p` on the console before computing `q`.
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -33,3 +33,4 @@ Regular: *2-fixed*.
 'halp'
 ~
 ```
+

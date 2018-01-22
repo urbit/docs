@@ -1,11 +1,11 @@
----
-navhome: /docs/
-title: Scheme
-sort: 8
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'Scheme'
+        sort/'8'
+        next/'true'
+    ==
+;>
 
-# Scheme 
+# Scheme
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock.ss):
 
@@ -126,3 +126,4 @@ From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock
                                          (lambda (p) (r p))))
                       (else (raise 13)))))))))))))
 ```
+

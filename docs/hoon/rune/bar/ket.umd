@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 6
-title: |^ "barket"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'|^ "barket"'
+    ==
+;>
 
 # `|^ "barket"`
 
@@ -22,7 +22,7 @@ $
 
 ## Syntax
 
-Regular: *1-fixed*, then *battery*.
+Regular: _1-fixed_, then _battery_.
 
 ## Examples
 

@@ -1,12 +1,13 @@
----
-navhome: /docs/
-next: true
-sort: 12
-title: Wild ! ("zap")
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'12'
+        title/'Wild ! ("zap")'
+    ==
+;>
 
 # Wild `!` ("zap")
 
 ## Twigs
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/rune/zap/' ~)

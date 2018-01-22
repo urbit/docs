@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: ^| "ketbar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'^| "ketbar"'
+    ==
+;>
 
 # `^| "ketbar"`
 
@@ -15,7 +15,7 @@ title: ^| "ketbar"
 
 ## Syntax
 
-Regular: *1-fixed*.
+Regular: _1-fixed_.
 
 ## Discussion
 

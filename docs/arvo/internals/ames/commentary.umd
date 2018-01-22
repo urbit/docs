@@ -1,10 +1,8 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
-
-`%ames` commentary
-==================
+# `%ames` commentary
 
 `%ames` is our networking protocol.
 
@@ -35,8 +33,7 @@ that another tab is kept open for easy access to the data structure
 reference documentation. The code for these is split between
 `arvo/ames.hoon` and `arvo/zuse.hoon`.
 
-The Lifecycle of a Packet (or, How a Packet Becomes Law)
---------------------------------------------------------
+## The Lifecycle of a Packet (or, How a Packet Becomes Law)
 
 Here, we will trace a packet as it makes its way through ames. There are
 actually two pathways through ames: the legacy path through `%want`, and
@@ -47,7 +44,9 @@ the path is the same for both.
 When an app (or a vane) wishes to send a packet to another ship, it must
 send a `%wont` card:
 
-                  [%wont p=sock q=path r=*]                 ::  e2e send message
+```
+              [%wont p=sock q=path r=*]                 ::  e2e send message
+```
 
 This card takes three arguments. The `p` is a `sock`, that is, a pair of
 two ships, the first of which is the sender and the second is the
@@ -76,10 +75,12 @@ find that it appears in exactly two places: at its definition in
 `++kiss`, and in `++knob`, where it is handled. We see that we go
 directly into `++wise:am`.
 
-        ++  wise                                            ::    wise:am
-          |=  [soq=sock hen=duct cha=path val=* ete=?]      ::  send a statement
-          ^-  [p=(list boon) q=fort]
-          zork:zank:(wool:(ho:(um p.soq) q.soq) hen cha val ete)
+```
+    ++  wise                                            ::    wise:am
+      |=  [soq=sock hen=duct cha=path val=* ete=?]      ::  send a statement
+      ^-  [p=(list boon) q=fort]
+      zork:zank:(wool:(ho:(um p.soq) q.soq) hen cha val ete)
+```
 
 The inputs to this gate are exactly the sort of thing you'd expect. In
 particular, everything in the `%wont` gate is here plus the calling duct
@@ -97,22 +98,24 @@ The code predates the widespread usage of that name.
 The interesting part, then, is in `++wool:ho:um:am`. Let's look at the
 code.
 
-            ++  wool                                        ::    wool:ho:um:am
-              |=  [hen=duct cha=path val=* ete=?]           ::  send a statement
-              ^+  +>
-              =+  ^=  rol  ^-  rill
-                  =+  rol=(~(get by ryl.bah) cha)
-                  ?~(rol *rill u.rol)
-              =+  sex=sed.rol
-              ::  ~&  [%tx [our her] cha sex]
-              =.  ryl.bah
-                  %+  ~(put by ryl.bah)  cha
-                  rol(sed +(sed.rol), san (~(put by san.rol) sex hen))
-              =+  cov=[p=p:sen:gus q=clon:diz]
-              %+  wind  [cha sex]
-              ?:  ete
-                [%bund q.cov cha sex val]
-              [%bond q.cov cha sex val]
+```
+        ++  wool                                        ::    wool:ho:um:am
+          |=  [hen=duct cha=path val=* ete=?]           ::  send a statement
+          ^+  +>
+          =+  ^=  rol  ^-  rill
+              =+  rol=(~(get by ryl.bah) cha)
+              ?~(rol *rill u.rol)
+          =+  sex=sed.rol
+          ::  ~&  [%tx [our her] cha sex]
+          =.  ryl.bah
+              %+  ~(put by ryl.bah)  cha
+              rol(sed +(sed.rol), san (~(put by san.rol) sex hen))
+          =+  cov=[p=p:sen:gus q=clon:diz]
+          %+  wind  [cha sex]
+          ?:  ete
+            [%bund q.cov cha sex val]
+          [%bond q.cov cha sex val]
+```
 
 This is slightly more complicated, but it's still not all that bad. Our
 inputs, at least, are fairly obvious.
@@ -140,20 +143,24 @@ Finally, we call `++wind:ho:um:am` with the `++soup` of the path and
 message number and the `++meal` of the payload itself. For end-to-end
 acknowledged messages, we use `%bund`.
 
-                  [%bund p=life q=path r=@ud s=*]           ::  e2e message
+```
+              [%bund p=life q=path r=@ud s=*]           ::  e2e message
+```
 
 Looking at how we create the `%bund`, we can easily see what each field
 is for.
 
 Following the trail a little further, we go to `++wind:ho:um:am`.
 
-            ++  wind                                        ::    wind:ho:um:am
-              |=  [gom=soup ham=meal]
-              ::  ~&  [%wind her gom]
-              ^+  +>
-              =^  wyv  diz  (zuul:diz now ham)
-              =^  feh  puz  (whap:puz now gom wyv)
-              (busk xong:diz feh)
+```
+        ++  wind                                        ::    wind:ho:um:am
+          |=  [gom=soup ham=meal]
+          ::  ~&  [%wind her gom]
+          ^+  +>
+          =^  wyv  diz  (zuul:diz now ham)
+          =^  feh  puz  (whap:puz now gom wyv)
+          (busk xong:diz feh)
+```
 
 `++wind` does three things: it (1) encodes the message into a list of
 possibly-encrypted packets, (2) puts the message into the packet pump,
@@ -164,13 +171,15 @@ gate is over. We'll go in order here.
 `++zuul:lax:as:go` is the what converts a `++meal` into a list of
 actual, 1KB packets.
 
-            ++  zuul                                        ::    zuul:lax:as:go
-              |=  [now=@da ham=meal]                        ::  encode message
-              ^-  [p=(list rock) q=_+>]
-              =<  weft
-              ++  wasp                                      ::  null security
-              ++  weft                                      ::  fragment message
-              ++  wisp                                      ::  generate message
+```
+        ++  zuul                                        ::    zuul:lax:as:go
+          |=  [now=@da ham=meal]                        ::  encode message
+          ^-  [p=(list rock) q=_+>]
+          =<  weft
+          ++  wasp                                      ::  null security
+          ++  weft                                      ::  fragment message
+          ++  wisp                                      ::  generate message
+```
 
 For organizational purposes, `++zuul` constructs an internal core with
 three arms. `++wasp` encodes the meal into an atom with no encryption.
@@ -178,80 +187,98 @@ three arms. `++wasp` encodes the meal into an atom with no encryption.
 `++wasp`). `++weft` takes the result of `++wisp` and splits it into
 actual packets.
 
-              ++  wasp                                      ::  null security
-                ^-([p=skin q=@] [%none (jam ham)])
+```
+          ++  wasp                                      ::  null security
+            ^-([p=skin q=@] [%none (jam ham)])
+```
 
 This simply jams the meal, wrapping it with the `skin` of `%none`,
 meaning no encryption.
 
 Since `++wisp` is a little long, we'll go through it line-by-line.
 
-              ++  wisp                                      ::  generate message
-                ^-  [[p=skin q=@] q=_..wisp]
+```
+          ++  wisp                                      ::  generate message
+            ^-  [[p=skin q=@] q=_..wisp]
+```
 
 `++wisp` produces a pair of a `skin` and an atom, which is the meal
 encoded as a single atom and possibly encrypted.
 
-                ?:  =(%carp -.ham)
-                  [wasp ..wisp]
+```
+            ?:  =(%carp -.ham)
+              [wasp ..wisp]
+```
 
 If the meal that we're encoding is a `%carp`, then we don't encrypt it.
 A `%carp` meal is a partial meal, used when a message is more than 1KB.
 Since the entire message is already encrypted, we don't need to encrypt
 each packet individually again.
 
-                ?:  !=(~ yed.caq.dur)
-                  ?>  ?=(^ yed.caq.dur)
-                  :_  ..wisp
-                  :-  %fast
-                  %^  cat  7
-                    p.u.yed.caq.dur
-                  (en:r:cluy q.u.yed.caq.dur (jam ham))
+```
+            ?:  !=(~ yed.caq.dur)
+              ?>  ?=(^ yed.caq.dur)
+              :_  ..wisp
+              :-  %fast
+              %^  cat  7
+                p.u.yed.caq.dur
+              (en:r:cluy q.u.yed.caq.dur (jam ham))
+```
 
 If we have a symmetric key set up with this neighbor, then we simply use
 it. The skin `%fast` is used to indicate a symmetric key.
 
-                ?:  &(=(~ lew.wod.dur) |(=(%back -.ham) =(%buck -.ham)))
-                  [wasp ..wisp]
+```
+            ?:  &(=(~ lew.wod.dur) |(=(%back -.ham) =(%buck -.ham)))
+              [wasp ..wisp]
+```
 
 If we do not yet have our neighbor's will, then there is no way that we
 can seal the message so that only they may read it. If what we're
 sending is an acknowledgment, then we go ahead and just send it in the
 clear.
 
-                =^  tuy  +>.$
-                  ?:(=(~ lew.wod.dur) [*code +>.$] (griz now))
+```
+            =^  tuy  +>.$
+              ?:(=(~ lew.wod.dur) [*code +>.$] (griz now))
+```
 
 If we don't have our neighbor's will, then we "encrypt" with a key of 0.
 If we do have their will, then we generate a new symmetric key that we
 will propose.
 
-                :_  ..wisp
-                =+  yig=sen
-                =+  bil=law.saf                             ::  XX send whole will
-                =+  hom=(jam ham)
+```
+            :_  ..wisp
+            =+  yig=sen
+            =+  bil=law.saf                             ::  XX send whole will
+            =+  hom=(jam ham)
+```
 
 `yig` will be the life and engine for our current crypto. `bil` is our
 will. `hom` is the meal encoded as a single atom.
 
-                ?:  =(~ lew.wod.dur)
-                  :-  %open
-                  %^    jam
-                      [~ `life`p.yig]
-                    bil
-                  (sign:as:q.yig tuy hom)
+```
+            ?:  =(~ lew.wod.dur)
+              :-  %open
+              %^    jam
+                  [~ `life`p.yig]
+                bil
+              (sign:as:q.yig tuy hom)
+```
 
 If we do not have our neighbor's will, then we send our current life
 along with our will and the message. The message itself is "signed" with
 a key of 0.
 
-                :-  %full
-                  =+  cay=cluy
-                  %^    jam
-                      [`life`p.cay `life`p.yig]
-                    bil
-                  (seal:as:q.yig pub:ex:r.cay tuy hom)
-              --                                            ::  --zuul:lax:as:go
+```
+            :-  %full
+              =+  cay=cluy
+              %^    jam
+                  [`life`p.cay `life`p.yig]
+                bil
+              (seal:as:q.yig pub:ex:r.cay tuy hom)
+          --                                            ::  --zuul:lax:as:go
+```
 
 If we do have our neighbor's will, then we send our perception of their
 current life, our current life, our will, and the message. The message
@@ -259,67 +286,79 @@ is sealed with their public key so that only they can read our message.
 
 Once we have the message encoded as an atom, `++weft` goes to work.
 
-              ++  weft                                      ::  fragment message
-                ^-  [p=(list rock) q=_+>.$]
-                =^  gim  ..weft  wisp
-                :_  +>.$
-                ^-  (list rock)
+```
+          ++  weft                                      ::  fragment message
+            ^-  [p=(list rock) q=_+>.$]
+            =^  gim  ..weft  wisp
+            :_  +>.$
+            ^-  (list rock)
+```
 
 We're going to produce a list of the packets to send. First, we use the
 aforementioned `++wisp` to get the message as an atom.
 
-                =+  wit=(met 13 q.gim)
-                ?<  =(0 wit)
+```
+            =+  wit=(met 13 q.gim)
+            ?<  =(0 wit)
+```
 
 `wit` is the number of 1KB (2\^13 bit) blocks in the message. We assert
 that there is at least one block.
 
-                ?:  =(1 wit)
-                  =+  yup=(spit [our her] p.gim q.gim)
-                  [yup ~]
+```
+            ?:  =(1 wit)
+              =+  yup=(spit [our her] p.gim q.gim)
+              [yup ~]
+```
 
 If there is exactly one block, then we just call `++spit` to turn the
 message into a packet. We'll explain what `++spit` does momentarily.
 
-                =+  ruv=(rip 13 q.gim)
-                =+  gom=(shaf %thug q.gim)
-                =+  inx=0
+```
+            =+  ruv=(rip 13 q.gim)
+            =+  gom=(shaf %thug q.gim)
+            =+  inx=0
+```
 
 If there is more than one block, then we rip it into blocks in `ruv`.
 `gom` is a hash of the message, used as an id. `inx` is the number of
 packets we've already made.
 
-                |-  ^-  (list rock)
-                ?~  ruv  ~
-                =+  ^=  vie
-                    %+  spit
-                      [our her]
-                    wasp(ham [%carp (ksin p.gim) inx wit gom i.ruv])
-                :-  vie
-                $(ruv t.ruv, inx +(inx))
+```
+            |-  ^-  (list rock)
+            ?~  ruv  ~
+            =+  ^=  vie
+                %+  spit
+                  [our her]
+                wasp(ham [%carp (ksin p.gim) inx wit gom i.ruv])
+            :-  vie
+            $(ruv t.ruv, inx +(inx))
+```
 
 Here we package each block into a packet with `++spit` and produce the
 list of packets.
 
-      ++  spit                                              ::  cake to packet
-        |=  kec=cake  ^-  @
-        =+  wim=(met 3 p.p.kec)
-        =+  dum=(met 3 q.p.kec)
-        =+  yax=?:((lte wim 2) 0 ?:((lte wim 4) 1 ?:((lte wim 8) 2 3)))
-        =+  qax=?:((lte dum 2) 0 ?:((lte dum 4) 1 ?:((lte dum 8) 2 3)))
-        =+  wix=(bex +(yax))
-        =+  vix=(bex +(qax))
-        =+  bod=:(mix p.p.kec (lsh 3 wix q.p.kec) (lsh 3 (add wix vix) r.kec))
-        =+  tay=(ksin q.kec)
-        %+  mix
-          %+  can  0
-          :~  [3 1]
-              [20 (mug bod)]
-              [2 yax]
-              [2 qax]
-              [5 tay]
-          ==
-        (lsh 5 1 bod)
+```
+  ++  spit                                              ::  cake to packet
+    |=  kec=cake  ^-  @
+    =+  wim=(met 3 p.p.kec)
+    =+  dum=(met 3 q.p.kec)
+    =+  yax=?:((lte wim 2) 0 ?:((lte wim 4) 1 ?:((lte wim 8) 2 3)))
+    =+  qax=?:((lte dum 2) 0 ?:((lte dum 4) 1 ?:((lte dum 8) 2 3)))
+    =+  wix=(bex +(yax))
+    =+  vix=(bex +(qax))
+    =+  bod=:(mix p.p.kec (lsh 3 wix q.p.kec) (lsh 3 (add wix vix) r.kec))
+    =+  tay=(ksin q.kec)
+    %+  mix
+      %+  can  0
+      :~  [3 1]
+          [20 (mug bod)]
+          [2 yax]
+          [2 qax]
+          [5 tay]
+      ==
+    (lsh 5 1 bod)
+```
 
 This is how we turn a message into a real packet. This has the
 definition of the packet format.
@@ -348,11 +387,13 @@ there are three unused bits here. This adds up to 32 bits of header
 data. Finally, we concatenate this onto the front of the packet. Thus,
 we can summarize the packet header format as follows.
 
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |Proto|             Hash of Body              |yax|qax| Crypto  |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Proto|             Hash of Body              |yax|qax| Crypto  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
 
 After this, there are `yax` bits of the sender name, `qax` bits of the
 receiver name, and up to 8192 bits of data. Thus, the maximum size of a
@@ -364,20 +405,22 @@ This concludes our discussion of `++zuul:lax:as:go`. If you recall from
 `++whap:pu` to update the packet pump and get any packets that can be
 sent immediately.
 
-        ++  whap                                            ::    whap:pu
-          |=  [now=@da gom=soup wyv=(list rock)]            ::  send a message
-          ^-  [(list rock) _+>]
-          =.  pyz  (~(put by pyz) gom (lent wyv))
-          =.  +>
-            |-  ^+  +>.^$
-            ?~  wyv  +>.^$
-            %=  $
-              wyv  t.wyv
-              nus  +(nus)
-              diq  (~(put by diq) (shaf %flap i.wyv) nus)
-              puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
-            ==
-          (harv now)
+```
+    ++  whap                                            ::    whap:pu
+      |=  [now=@da gom=soup wyv=(list rock)]            ::  send a message
+      ^-  [(list rock) _+>]
+      =.  pyz  (~(put by pyz) gom (lent wyv))
+      =.  +>
+        |-  ^+  +>.^$
+        ?~  wyv  +>.^$
+        %=  $
+          wyv  t.wyv
+          nus  +(nus)
+          diq  (~(put by diq) (shaf %flap i.wyv) nus)
+          puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
+        ==
+      (harv now)
+```
 
 First, we put into `pyz` the id for this message and the number of its
 packets that have not yet been acknowledged, which is of course the
@@ -392,15 +435,17 @@ the packet itself.
 
 Finally, we harvest the packet pump.
 
-        ++  harv                                            ::    harv:pu
-          |=  now=@da                                       ::  harvest queue
-          ^-  [(list rock) _+>]
-          ?:  =(~ puq)  [~ +>(rtn ~)]
-          ?.  (gth caw nif)  [~ +>]
-          =+  wid=(sub caw nif)
-          =|  rub=(list rock)
-          =<  abet  =<  apse
-          |%
+```
+    ++  harv                                            ::    harv:pu
+      |=  now=@da                                       ::  harvest queue
+      ^-  [(list rock) _+>]
+      ?:  =(~ puq)  [~ +>(rtn ~)]
+      ?.  (gth caw nif)  [~ +>]
+      =+  wid=(sub caw nif)
+      =|  rub=(list rock)
+      =<  abet  =<  apse
+      |%
+```
 
 `++harv` contains a core for most of its work. The meat is in `++apse`.
 First, though, it sets itself up. If there aren't any packets in the
@@ -414,23 +459,25 @@ we initialize `rub` to nil. `rub` will be the list of packets that are
 ready to be sent. We then call `++apse` and pass the result to `++abet`.
 `++apse` decides which packets are ready to be sent.
 
-          ++  apse
-            ^+  .
-            ?~  puq  .
-            ?:  =(0 wid)  .
-            =>  rigt  =<  left
-            ?>  ?=(^ puq)
-            ?:  =(0 wid)  .
-            ?.  =(| liv.q.n.puq)  .
-            ::  ~&  [%harv nux.q.n.puq p.n.puq]
-            %_    .
-              wid          (dec wid)
-              rub          [pac.q.n.puq rub]
-              nif          +(nif)
-              liv.q.n.puq  &
-              nux.q.n.puq  +(nux.q.n.puq)
-              lys.q.n.puq  now
-            ==
+```
+      ++  apse
+        ^+  .
+        ?~  puq  .
+        ?:  =(0 wid)  .
+        =>  rigt  =<  left
+        ?>  ?=(^ puq)
+        ?:  =(0 wid)  .
+        ?.  =(| liv.q.n.puq)  .
+        ::  ~&  [%harv nux.q.n.puq p.n.puq]
+        %_    .
+          wid          (dec wid)
+          rub          [pac.q.n.puq rub]
+          nif          +(nif)
+          liv.q.n.puq  &
+          nux.q.n.puq  +(nux.q.n.puq)
+          lys.q.n.puq  now
+        ==
+```
 
 If there are no remaining packets to send, or if we've filled the packet
 window, do nothing. We call `++rigt` and `++left` to process the left
@@ -447,21 +494,25 @@ send; (3) increment `nif`, the number of live packets; (4) set the
 packet to be live; (5) increment the number of transmissions of the
 packet; and (6) set the last sent time of the packet to now.
 
-          ++  left
-            ?>  ?=(^ puq)
-            ^+(. =+(lef=apse(puq l.puq) lef(puq [n.puq puq.lef r.puq])))
-          ++  rigt
-            ?>  ?=(^ puq)
-            ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
+```
+      ++  left
+        ?>  ?=(^ puq)
+        ^+(. =+(lef=apse(puq l.puq) lef(puq [n.puq puq.lef r.puq])))
+      ++  rigt
+        ?>  ?=(^ puq)
+        ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
+```
 
 These do exactly what you would expect: they traverse the packet queue
 so that `++apse` gets called recursively through it.
 
 Finally, `++abet` gets called, which resolves the changes.
 
-          ++  abet
-            ?~  rub  [~ +>.$]
-            [(flop rub) +>.$(rtn [~ (add rto now)])]
+```
+      ++  abet
+        ?~  rub  [~ +>.$]
+        [(flop rub) +>.$(rtn [~ (add rto now)])]
+```
 
 This returns the packets that we wish to send, and it updates the
 timeout so that we know when to try resending unacknowledged packets.
@@ -472,17 +523,19 @@ wait, in the call to `++busk`, the first argument is `xong:diz`. What is
 this? This, my dear reader, is one more detour, this time into
 `++xong:lax:as:go`.
 
-            ++  xong                                        ::    xong:lax:as:go
-              ^-  (list ship)                               ::  route unto
-              =+  [fro=xen too=xeno]
-              =+  ^=  oot  ^-  (list ship)
-                  =|  oot=(list ship)
-                  |-  ^+  oot
-                  ?~  too  ~
-                  ?:  (lien fro |=(a=ship =(a i.too)))  ~
-                  [i.too $(too t.too)]
-              ::  ~&  [%xong-to [our her] (weld oot ?>(?=(^ fro) t.fro))]
-              (weld oot ?>(?=(^ fro) t.fro))
+```
+        ++  xong                                        ::    xong:lax:as:go
+          ^-  (list ship)                               ::  route unto
+          =+  [fro=xen too=xeno]
+          =+  ^=  oot  ^-  (list ship)
+              =|  oot=(list ship)
+              |-  ^+  oot
+              ?~  too  ~
+              ?:  (lien fro |=(a=ship =(a i.too)))  ~
+              [i.too $(too t.too)]
+          ::  ~&  [%xong-to [our her] (weld oot ?>(?=(^ fro) t.fro))]
+          (weld oot ?>(?=(^ fro) t.fro))
+```
 
 This gets the list of intermediate ships needed to get a packet from us
 to our neighbor. First, we get `fro` and `too`, the "canons" of ourself
@@ -492,8 +545,10 @@ What is this "canon", you ask? A canon is simply a ship plus its
 "ancestors", as defined by `++sein`. For example, the canon of
 `~hoclur-bicrel` is:
 
-    ~hoclur-bicrel/try=> (saxo ~hoclur-bicrel)
-    ~[~hoclur-bicrel ~tasruc ~tug]
+```
+~hoclur-bicrel/try=> (saxo ~hoclur-bicrel)
+~[~hoclur-bicrel ~tasruc ~tug]
+```
 
 If we follow the algorithm in `++xong`, we see that we are simply
 creating a list of ships that form a path from our neighbor to ourself.
@@ -507,49 +562,53 @@ trying, in order, to find a lane to these.
 
 Now, we can finally get to `++busk:ho:um:am`.
 
-            ++  busk                                        ::    busk:ho:um:am
-              |=  [waz=(list ship) pax=(list rock)]         ::  send packets
-              %_    +>
-                  bin
-                |-  ^+  bin
-                ?~  pax  bin
-                $(pax t.pax, bin (weld (flop (wist:diz now waz ~ i.pax)) bin))
-              ==
+```
+        ++  busk                                        ::    busk:ho:um:am
+          |=  [waz=(list ship) pax=(list rock)]         ::  send packets
+          %_    +>
+              bin
+            |-  ^+  bin
+            ?~  pax  bin
+            $(pax t.pax, bin (weld (flop (wist:diz now waz ~ i.pax)) bin))
+          ==
+```
 
 Thankfully, `++busk` is fairly simple. We go through the list of packets
 and convert them to `++boon`s with `++wist:lax:as:go`. These boons are
 placed into `bin`, and they end up getting processed by `++clop` (this
 happens in `++knob`).
 
-            ++  wist                                        ::    wist:lax:as:go
-              |=  $:  now=@da                               ::  route via
-                      waz=(list ,@p)
-                      ryn=(unit lane)
-                      pac=rock
-                  ==
-              ^-  (list boon)
-              ?:  =(our her)  [[%ouzo *lane pac] ~]
-              ?~  waz  ~
-              =+  dyr=?:(=(her i.waz) dur (gur i.waz))
-              ?.  ?&  !=(our i.waz)
-                      ?=(^ lun.wod.dyr)
-                  ==
-                $(waz t.waz)
-              :_  ?:  ?=(%ix -.u.lun.wod.dyr)
-                    $(waz t.waz)
-                  ~
-              :+  %ouzo  u.lun.wod.dyr
-              ?:  &(=(i.waz her) =(~ ryn))  pac
-              =+  mal=(jam `meal`[%fore her ryn pac])
-              %-  spit
-              ^-  cake
-              :*  [our i.waz]
-                  ?~  yed.caq.dyr  [%none mal]
-                  :-  %fast
-                  %^  cat  7
-                    p.u.yed.caq.dyr
-                  (en:crua q.u.yed.caq.dyr mal)
+```
+        ++  wist                                        ::    wist:lax:as:go
+          |=  $:  now=@da                               ::  route via
+                  waz=(list ,@p)
+                  ryn=(unit lane)
+                  pac=rock
               ==
+          ^-  (list boon)
+          ?:  =(our her)  [[%ouzo *lane pac] ~]
+          ?~  waz  ~
+          =+  dyr=?:(=(her i.waz) dur (gur i.waz))
+          ?.  ?&  !=(our i.waz)
+                  ?=(^ lun.wod.dyr)
+              ==
+            $(waz t.waz)
+          :_  ?:  ?=(%ix -.u.lun.wod.dyr)
+                $(waz t.waz)
+              ~
+          :+  %ouzo  u.lun.wod.dyr
+          ?:  &(=(i.waz her) =(~ ryn))  pac
+          =+  mal=(jam `meal`[%fore her ryn pac])
+          %-  spit
+          ^-  cake
+          :*  [our i.waz]
+              ?~  yed.caq.dyr  [%none mal]
+              :-  %fast
+              %^  cat  7
+                p.u.yed.caq.dyr
+              (en:crua q.u.yed.caq.dyr mal)
+          ==
+```
 
 This takes a sample of the current time, the list of ships that we just
 generated, a lane if we already know it, and the packet itself.
@@ -586,10 +645,12 @@ of moves. In `++clop`, we see the handling of each specific boon. The
 one we are interested in is `%ouzo`, since that is the only one we have
 sent thus far.
 
-            %ouzo
-          ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))] 
-          :_  fox
-          [[gad.fox [%give %send p.bon q.bon]] ~]
+```
+        %ouzo
+      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))] 
+      :_  fox
+      [[gad.fox [%give %send p.bon q.bon]] ~]
+```
 
 Very simply, we give a `%send` gift along the special duct that goes
 straight into the bowels of unix. This is the last stop before we drop
@@ -605,8 +666,10 @@ And now we reenter the kernel.
 The `%hear` kiss goes straight to `++knob`, just as did the `%wont` kiss
 earlier.
 
-                %hear
-              (~(gnaw am [now fox]) %good p.kyz q.kyz)
+```
+            %hear
+          (~(gnaw am [now fox]) %good p.kyz q.kyz)
+```
 
 Here, though, we call `++gnaw:am` to process the packet. The arguments
 to `++gnaw` are the same as those to the `%hear` kiss: the lane on which
@@ -617,18 +680,20 @@ event system, the `%hear` event will never be considered to have
 actually happened, and unix will send a `%hole` kiss so that we may send
 a negative acknowledgment.
 
-        ++  gnaw                                            ::    gnaw:am
-          |=  [kay=cape ryn=lane pac=rock]                  ::  process packet
-          ^-  [p=(list boon) q=fort]
-          ?.  =(2 (end 0 3 pac))  [~ fox]
-          =+  kec=(bite pac)
-          ?:  (goop p.p.kec)  [~ fox]
-          ?.  (~(has by urb.ton.fox) q.p.kec)
-            [~ fox]
-          =<  zork
-          =<  zank
-          %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
-          [q.kec r.kec]
+```
+    ++  gnaw                                            ::    gnaw:am
+      |=  [kay=cape ryn=lane pac=rock]                  ::  process packet
+      ^-  [p=(list boon) q=fort]
+      ?.  =(2 (end 0 3 pac))  [~ fox]
+      =+  kec=(bite pac)
+      ?:  (goop p.p.kec)  [~ fox]
+      ?.  (~(has by urb.ton.fox) q.p.kec)
+        [~ fox]
+      =<  zork
+      =<  zank
+      %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
+      [q.kec r.kec]
+```
 
 First, we check the protocol number. If it is not correct, then we
 simply ignore the packet entirely. Otherwise, we parse the packet with
@@ -636,20 +701,22 @@ simply ignore the packet entirely. Otherwise, we parse the packet with
 of the `sock` (pair of sender and receiver), the `skin` (encryption
 type), and the data.
 
-      ++  bite                                              ::  packet to cake
-        |=  pac=rock  ^-  cake
-        =+  [mag=(end 5 1 pac) bod=(rsh 5 1 pac)]
-        =+  :*  vez=(end 0 3 mag)                           ::  protocol version
-                chk=(cut 0 [3 20] mag)                      ::  checksum
-                wix=(bex +((cut 0 [23 2] mag)))             ::  width of receiver
-                vix=(bex +((cut 0 [25 2] mag)))             ::  width of sender
-                tay=(cut 0 [27 5] mag)                      ::  message type
-            ==
-        ?>  =(2 vez)
-        ?>  =(chk (end 0 20 (mug bod)))
-        :+  [(end 3 wix bod) (cut 3 [wix vix] bod)]
-          (kins tay)
-        (rsh 3 (add wix vix) bod)
+```
+  ++  bite                                              ::  packet to cake
+    |=  pac=rock  ^-  cake
+    =+  [mag=(end 5 1 pac) bod=(rsh 5 1 pac)]
+    =+  :*  vez=(end 0 3 mag)                           ::  protocol version
+            chk=(cut 0 [3 20] mag)                      ::  checksum
+            wix=(bex +((cut 0 [23 2] mag)))             ::  width of receiver
+            vix=(bex +((cut 0 [25 2] mag)))             ::  width of sender
+            tay=(cut 0 [27 5] mag)                      ::  message type
+        ==
+    ?>  =(2 vez)
+    ?>  =(chk (end 0 20 (mug bod)))
+    :+  [(end 3 wix bod) (cut 3 [wix vix] bod)]
+      (kins tay)
+    (rsh 3 (add wix vix) bod)
+```
 
 This is exactly the inverse of `++spit`. Note that here we check both
 the protocol number and the hash, crashing on error. Remember that a
@@ -672,20 +739,22 @@ and a hash of the packet, used as an id.
 contains a little helper core inside of it, which starts immediately
 with `++apse`.
 
-                ++  apse
-                  ^+  +>.$
-                  =+  oub=bust:puz
-                  =+  neg==(~ yed.caq.dur.diz)
-                  =.  +>.$  east
-                  =+  eng==(~ yed.caq.dur.diz)
-                  =+  bou=bust:puz
-                  =.  bin
-                    ?.  &(oub !bou)  bin
-                    :_(bin [%wine [our her] " is ok"])
-                  =.  bin
-                    ?.  &(neg !eng)  bin
-                    :_(bin [%wine [our her] " is your neighbor"])
-                  +>.$
+```
+            ++  apse
+              ^+  +>.$
+              =+  oub=bust:puz
+              =+  neg==(~ yed.caq.dur.diz)
+              =.  +>.$  east
+              =+  eng==(~ yed.caq.dur.diz)
+              =+  bou=bust:puz
+              =.  bin
+                ?.  &(oub !bou)  bin
+                :_(bin [%wine [our her] " is ok"])
+              =.  bin
+                ?.  &(neg !eng)  bin
+                :_(bin [%wine [our her] " is your neighbor"])
+              +>.$
+```
 
 First, we let `oub` be true if our neighbor hasn't been responding to us
 for more than sixteen seconds. Let `neg` be true if we haven't yet
@@ -705,15 +774,17 @@ first decrypts the message, then calls `++chow:la:ho:um:am` with the
 resultant meal. We'll go through each of the four cases in turn, but
 first since each one calls `++bilk:pu`, we'll take a brief detour.
 
-        ++  bilk                                            ::    bilk:pu
-          |=  now=@da                                       ::  inbound packet
-          ^+  +>
-          =+  trt=(mul 2 rtt)
-          %=  +>.$
-            rue  [~ now]
-            rto  trt
-            rtn  ?~(puq ~ [~ (add now trt)])
-          ==
+```
+    ++  bilk                                            ::    bilk:pu
+      |=  now=@da                                       ::  inbound packet
+      ^+  +>
+      =+  trt=(mul 2 rtt)
+      %=  +>.$
+        rue  [~ now]
+        rto  trt
+        rtn  ?~(puq ~ [~ (add now trt)])
+      ==
+```
 
 This updates the timing information in our packet pump. `rue`, the last
 time we have heard from this neighbor, is set to now. `rto`, the
@@ -723,9 +794,11 @@ we've just heard a message.
 
 Back to `++east`.
 
-                      %none
-                    =.  puz  (bilk:puz now)
-                    (chow ((hard meal) (cue msg)))
+```
+                  %none
+                =.  puz  (bilk:puz now)
+                (chow ((hard meal) (cue msg)))
+```
 
 The simplest case is when the encryption type is `%none`. We first call
 `++bilk` to update the packet pump, then we cue (unjam) the message into
@@ -733,15 +806,17 @@ a meal. We hard cast it into a meal -- if the cast fails, then we do
 want to crash since someone is sending us malformed data. Finally, we
 send the result to `++chow` for interpretation and handling.
 
-                      %fast
-                    =+  [mag=`hand`(end 7 1 msg) bod=(rsh 7 1 msg)]
-                    =+  dey=(kuch:diz mag)
-                    ?~  dey
-                      ~&  [%bad-key her mag]
-                      +>.$                           ::  ignore unknown key
-                    =.  puz  (bilk:puz now)
-                    =^  key  diz  u.dey
-                    (chow(aut sin) ((hard meal) (cue (dy:q:sen:gus key bod))))
+```
+                  %fast
+                =+  [mag=`hand`(end 7 1 msg) bod=(rsh 7 1 msg)]
+                =+  dey=(kuch:diz mag)
+                ?~  dey
+                  ~&  [%bad-key her mag]
+                  +>.$                           ::  ignore unknown key
+                =.  puz  (bilk:puz now)
+                =^  key  diz  u.dey
+                (chow(aut sin) ((hard meal) (cue (dy:q:sen:gus key bod))))
+```
 
 For symmetric encryption, we first get the `hand`, which is the hash of
 the symmetric key. We pass it to `++kuch:lax:as:go`, which returns the
@@ -753,16 +828,18 @@ message.
 Otherwise, we call `++bilk` as before to update the packet pump and pass
 into `++chow` the decrypted data.
 
-                      %full
-                    =+  mex=((hard ,[p=[p=life q=life] q=will r=@]) (cue msg))
-                    =.  diz  (deng:diz q.mex)
-                    =+  wug=cluy:diz
-                    ?>  =(q.p.mex p.wug)
-                    =+  gey=(sev:gus p.p.mex)
-                    =+  mes=(need (tear:as:q.gey pub:ex:r.wug r.mex))
-                    =.  diz  (wasc:diz p.mes)
-                    =.  puz  (bilk:puz now)
-                    (west(msg q.mes))
+```
+                  %full
+                =+  mex=((hard ,[p=[p=life q=life] q=will r=@]) (cue msg))
+                =.  diz  (deng:diz q.mex)
+                =+  wug=cluy:diz
+                ?>  =(q.p.mex p.wug)
+                =+  gey=(sev:gus p.p.mex)
+                =+  mes=(need (tear:as:q.gey pub:ex:r.wug r.mex))
+                =.  diz  (wasc:diz p.mes)
+                =.  puz  (bilk:puz now)
+                (west(msg q.mes))
+```
 
 For sealed asymmetric encryption, we first take off the the layer of
 data that gives us the life and will of our neighbor, and we apply try
@@ -776,14 +853,16 @@ key from our neighbor's crypto. We register the proposed symmetric key,
 update the packet pump, and call `++west`, which simply casts the
 message to a meal and calls `++chow`, reporting any error.
 
-                      %open
-                    =+  mex=((hard ,[p=[~ q=life] q=will r=@]) (cue msg))
-                    =.  diz  (deng:diz q.mex)
-                    =+  wug=cluy:diz
-                    ?>  =(q.p.mex p.wug)
-                    =+  mes=(need (sure:as:r.wug *code r.mex))
-                    =.  puz  (bilk:puz now)
-                    (west(msg mes))
+```
+                  %open
+                =+  mex=((hard ,[p=[~ q=life] q=will r=@]) (cue msg))
+                =.  diz  (deng:diz q.mex)
+                =+  wug=cluy:diz
+                ?>  =(q.p.mex p.wug)
+                =+  mes=(need (sure:as:r.wug *code r.mex))
+                =.  puz  (bilk:puz now)
+                (west(msg mes))
+```
 
 Finally, for signed asymmetric encryption, we, as before, take off the
 layer of data that gives us the life and will of our neighbor. This
@@ -794,11 +873,13 @@ The rest you have seen. We call `++deng` to extend the will, we verify
 that their crypto life is what we think it ought to be, we "decrypt" the
 data, we update the packet pump, and we call `++west` to call `++chow`.
 
-              ++  chow                                      ::    chow:la:ho:um:am
-                |=  fud=meal                                ::  interpret meal
-                ^+  +>
-                =.  diz  ?:(=(%none aut) diz (wast:diz ryn))
-                (dine fud)
+```
+          ++  chow                                      ::    chow:la:ho:um:am
+            |=  fud=meal                                ::  interpret meal
+            ^+  +>
+            =.  diz  ?:(=(%none aut) diz (wast:diz ryn))
+            (dine fud)
+```
 
 Here, if the message was encrypted at all, then we call
 `++wast:lax:as:go`, which simply updates the lane (route) to our
@@ -810,16 +891,18 @@ we want to do with it. The telos is of any meal to be dined on. We will
 choose out the cases here that are important to our current
 investigation.
 
-                    %fore
-                  =+  ^=  lyn  ^-  lane
-                      ?~  q.fud  ryn
-                      ?.  ?=(%if -.u.q.fud)  u.q.fud
-                      [%ix +.u.q.fud]
-                      ::  u.q.fud
-                  ?:  =(our p.fud)
-                    (emit %mead lyn r.fud)
-                  =+  zid=(myx:gus p.fud)
-                  (emir (wist:zid now xong:zid [~ lyn] r.fud))
+```
+                %fore
+              =+  ^=  lyn  ^-  lane
+                  ?~  q.fud  ryn
+                  ?.  ?=(%if -.u.q.fud)  u.q.fud
+                  [%ix +.u.q.fud]
+                  ::  u.q.fud
+              ?:  =(our p.fud)
+                (emit %mead lyn r.fud)
+              =+  zid=(myx:gus p.fud)
+              (emir (wist:zid now xong:zid [~ lyn] r.fud))
+```
 
 Forwarding is the simplest case, since we've seen all the arms before,
 except perhaps `++emit` and `++emir`, which simply take a boon or list
@@ -828,31 +911,33 @@ resolves. If we're told to forward a packet to ourselves, then we emit a
 `%mead` boon which simply sends another `%hear` kiss to ourselves with
 the data. Otherwise, we try to find a route to the recipient, as before.
 
-                    %carp
-                  =+  zol=(~(get by olz.weg) s.fud)
-                  ?^  zol  cock(kay u.zol)
-                  =^  neb  nys.weg
-                      =+  neb=(~(get by nys.weg) s.fud)
-                      ?^  neb  [u.neb nys.weg]
-                      =+  neb=`bait`[(kins p.fud) 0 r.fud ~]
-                      [neb (~(put by nys.weg) s.fud neb)]
-                  ?>  (lth q.fud p.r.neb)
-                  ?>  =((kins p.fud) p.neb)
-                  ?>  =(r.fud p.r.neb)
-                  =+  doy=`(unit ,@)`(~(get by q.r.neb) q.fud)
-                  ?^  doy  cock
-                  =>  ^+  .   %=  .
-                        q.r.neb  (~(put by q.r.neb) q.fud t.fud)
-                        q.neb    +(q.neb)
-                      ==
-                  ::  ~&  [%carp q.fud s.fud q.neb p.r.neb]
-                  ?:  =(q.neb p.r.neb)
-                    =:  nys.weg  (~(del by nys.weg) s.fud)
-                        olz.weg  (~(put by olz.weg) s.fud kay)
-                      ==
-                    (golf p.neb r.neb)
-                  =.  +>.$  cock
-                  +>.$(nys.weg (~(put by nys.weg) s.fud neb))
+```
+                %carp
+              =+  zol=(~(get by olz.weg) s.fud)
+              ?^  zol  cock(kay u.zol)
+              =^  neb  nys.weg
+                  =+  neb=(~(get by nys.weg) s.fud)
+                  ?^  neb  [u.neb nys.weg]
+                  =+  neb=`bait`[(kins p.fud) 0 r.fud ~]
+                  [neb (~(put by nys.weg) s.fud neb)]
+              ?>  (lth q.fud p.r.neb)
+              ?>  =((kins p.fud) p.neb)
+              ?>  =(r.fud p.r.neb)
+              =+  doy=`(unit ,@)`(~(get by q.r.neb) q.fud)
+              ?^  doy  cock
+              =>  ^+  .   %=  .
+                    q.r.neb  (~(put by q.r.neb) q.fud t.fud)
+                    q.neb    +(q.neb)
+                  ==
+              ::  ~&  [%carp q.fud s.fud q.neb p.r.neb]
+              ?:  =(q.neb p.r.neb)
+                =:  nys.weg  (~(del by nys.weg) s.fud)
+                    olz.weg  (~(put by olz.weg) s.fud kay)
+                  ==
+                (golf p.neb r.neb)
+              =.  +>.$  cock
+              +>.$(nys.weg (~(put by nys.weg) s.fud neb))
+```
 
 Here, we have received a partial message, and we're just assembling the
 individual packets into a message. Most of this code is fairly
@@ -869,10 +954,12 @@ complete message into `olz.weg`, and call `++golf`, which assembles the
 message and calls `++chew`, to start the dance again with the complete
 message.
 
-                    %bund
-                  ::  ~&  [%bund q.fud r.fud]
-                  ?>  =(p:sen:gus p.fud)
-                  (deer q.fud r.fud ?-(kay %dead ~, %good [~ s.fud]))
+```
+                %bund
+              ::  ~&  [%bund q.fud r.fud]
+              ?>  =(p:sen:gus p.fud)
+              (deer q.fud r.fud ?-(kay %dead ~, %good [~ s.fud]))
+```
 
 What if we're just receiving a regular old, garden variety message? We
 call `++deer` with the data from the message. If we already know that
@@ -881,22 +968,24 @@ unix rather than a `%hear` card), then we don't even send the data at
 all. Remember, if a packet fails to process, it's as if it never even
 arrived, except that we send a negative acknowledgment.
 
-              ++  deer                                      ::    deer:la:ho:um:am
-                |=  [cha=path num=@ud dut=(unit)]           ::  interpret message
-                ^+  +>
-                =+  rum=(fall (~(get by raz.bah) cha) *race)
-                %=    +>.$
-                    +>
-                  ?.  (gte num did.rum)                     ::  always ack a dup
-                    (cook (~(get by bum.rum) num) cha ~ ryn dam)
-                  ?:  dod.rum
-                    (coat cha rum(mis (~(put by mis.rum) num [kay ryn dam dut])))
-                  %=    +>.+>.$
-                      raz.bah
-                    %+  ~(put by raz.bah)  cha
-                    rum(mis (~(put by mis.rum) num [kay ryn dam dut]))
-                  ==
-                ==
+```
+          ++  deer                                      ::    deer:la:ho:um:am
+            |=  [cha=path num=@ud dut=(unit)]           ::  interpret message
+            ^+  +>
+            =+  rum=(fall (~(get by raz.bah) cha) *race)
+            %=    +>.$
+                +>
+              ?.  (gte num did.rum)                     ::  always ack a dup
+                (cook (~(get by bum.rum) num) cha ~ ryn dam)
+              ?:  dod.rum
+                (coat cha rum(mis (~(put by mis.rum) num [kay ryn dam dut])))
+              %=    +>.+>.$
+                  raz.bah
+                %+  ~(put by raz.bah)  cha
+                rum(mis (~(put by mis.rum) num [kay ryn dam dut]))
+              ==
+            ==
+```
 
 First, we get the race for this particular triple of sender, receiver,
 and path, creating it if it doesn't exist. If we've already acked the
@@ -919,23 +1008,25 @@ acknowledgment.
 
 Otherwise, we're ready for a packet, so we process it.
 
-            ++  coat                                        ::    coat:ho:um:am
-              |=  [cha=path rum=race]                       ::  update input race
-              ^+  +>
-              =+  cun=(~(get by mis.rum) did.rum)
-              ?~  cun
-                +>.$(raz.bah (~(put by raz.bah) cha rum))
-              ?.  =(%good p.u.cun)  +>.$
-              ?>  ?=(^ s.u.cun)
-              %=    +>.$
-                  raz.bah  (~(put by raz.bah) cha rum(dod |))
-                  bin
-                :_  bin
-                :^    %mulk
-                    [our her]
-                  `soap`[[p:sen:gus clon:diz] cha did.rum]
-                u.s.u.cun
-              ==
+```
+        ++  coat                                        ::    coat:ho:um:am
+          |=  [cha=path rum=race]                       ::  update input race
+          ^+  +>
+          =+  cun=(~(get by mis.rum) did.rum)
+          ?~  cun
+            +>.$(raz.bah (~(put by raz.bah) cha rum))
+          ?.  =(%good p.u.cun)  +>.$
+          ?>  ?=(^ s.u.cun)
+          %=    +>.$
+              raz.bah  (~(put by raz.bah) cha rum(dod |))
+              bin
+            :_  bin
+            :^    %mulk
+                [our her]
+              `soap`[[p:sen:gus clon:diz] cha did.rum]
+            u.s.u.cun
+          ==
+```
 
 First, we grab the message we want to process and store it in `cun`. If
 it's a good packet, then we change `dod.rum` to false, meaning that
@@ -952,33 +1043,35 @@ been here before, if you recall, when we handled the `%cake` boon to
 send a message. Now, we're handling the `%mulk` boon, which is
 unfortunately slightly more complicated.
 
-            %mulk
-          ::  ~&  [%mulk p.bon q.bon]
-          ?>  ?=([@ @ *] q.q.bon)
-          ?>  ?=(%q i.q.q.bon)
-          ?+  i.t.q.q.bon
-            ~&  %mulk-bad
-            :_  fox
-            :~  :-  (claw p.p.bon)
-                [%sick %wart p.bon i.t.q.q.bon t.t.q.q.bon r.bon]
-            ==
-              %ge                                         ::  %gall request
-            ?>  ?=([@ ~] t.t.q.q.bon)
-            =+  app=`term`(need ((sand %tas) i.t.t.q.q.bon))
-            =+  ^=  pax
-                :+  (scot %p p.p.bon)
-                  (scot %p q.p.bon)
-                q.q.bon
-            :_  fox  [hen %pass pax %g %rote p.bon app r.bon]~
-              %gh                                         ::  %gall response
-            ?>  ?=([@ ~] t.t.q.q.bon)
-            =+  app=`term`(need ((sand %tas) i.t.t.q.q.bon))
-            =+  ^=  pax
-                :+  (scot %p p.p.bon)
-                  (scot %p q.p.bon)
-                q.q.bon
-            :_  fox  [hen %pass pax %g %roth p.bon app r.bon]~
-          ==
+```
+        %mulk
+      ::  ~&  [%mulk p.bon q.bon]
+      ?>  ?=([@ @ *] q.q.bon)
+      ?>  ?=(%q i.q.q.bon)
+      ?+  i.t.q.q.bon
+        ~&  %mulk-bad
+        :_  fox
+        :~  :-  (claw p.p.bon)
+            [%sick %wart p.bon i.t.q.q.bon t.t.q.q.bon r.bon]
+        ==
+          %ge                                         ::  %gall request
+        ?>  ?=([@ ~] t.t.q.q.bon)
+        =+  app=`term`(need ((sand %tas) i.t.t.q.q.bon))
+        =+  ^=  pax
+            :+  (scot %p p.p.bon)
+              (scot %p q.p.bon)
+            q.q.bon
+        :_  fox  [hen %pass pax %g %rote p.bon app r.bon]~
+          %gh                                         ::  %gall response
+        ?>  ?=([@ ~] t.t.q.q.bon)
+        =+  app=`term`(need ((sand %tas) i.t.t.q.q.bon))
+        =+  ^=  pax
+            :+  (scot %p p.p.bon)
+              (scot %p q.p.bon)
+            q.q.bon
+        :_  fox  [hen %pass pax %g %roth p.bon app r.bon]~
+      ==
+```
 
 We're dispatching messages based on the prefix of their path. Since only
 `%gall` apps use end-to-end acknowledgments at the moment, every path
@@ -1026,21 +1119,23 @@ After this brief interlude, our story resumes in `++knap`, where we
 receive responses. In particular, a `%mean` indicates a negative
 acknowledgment while a `%nice` indicates a positive acknowledgment.
 
-            ?(%mean %nice)
-          ?>  ?=([@ @ @ *] tea)
-          =+  soq=[(slav %p i.tea) (slav %p i.t.tea)]
-          =+  pax=t.t.tea
-          =+  ^=  fuy
-              =<  zork  =<  zank
-              %^  ~(rack am [now fox])  soq  pax
-              ?-(+<.sih %mean `p.+.sih, %nice ~)
-          =>  %_(. fox q.fuy)
-          =|  out=(list move)
-          |-  ^-  [p=(list move) q=_+>.^$]
-          ?~  p.fuy
-            [(flop out) +>.^$]
-          =^  toe  fox  (clop now hen i.p.fuy)
-          $(p.fuy t.p.fuy, out (weld (flop toe) out))
+```
+        ?(%mean %nice)
+      ?>  ?=([@ @ @ *] tea)
+      =+  soq=[(slav %p i.tea) (slav %p i.t.tea)]
+      =+  pax=t.t.tea
+      =+  ^=  fuy
+          =<  zork  =<  zank
+          %^  ~(rack am [now fox])  soq  pax
+          ?-(+<.sih %mean `p.+.sih, %nice ~)
+      =>  %_(. fox q.fuy)
+      =|  out=(list move)
+      |-  ^-  [p=(list move) q=_+>.^$]
+      ?~  p.fuy
+        [(flop out) +>.^$]
+      =^  toe  fox  (clop now hen i.p.fuy)
+      $(p.fuy t.p.fuy, out (weld (flop toe) out))
+```
 
 Recall the format of the path we sent the message on, and you'll
 understand why `soq` and `pax` are the sender/receiver pair and path on
@@ -1048,11 +1143,13 @@ which the message was sent. The rest of this is structured much like
 `++knob`, so we call `++rack:am` and send the resulting boons to
 `++clop`. Business as usual.
 
-        ++  rack                                            ::    rack:am
-          |=  [soq=sock cha=path cop=coop]                  ::  e2e ack
-          =+  oh=(ho:(um p.soq) q.soq)
-          =.  oh  (cook:oh cop cha ~)
-          (cans:oh cha)
+```
+    ++  rack                                            ::    rack:am
+      |=  [soq=sock cha=path cop=coop]                  ::  e2e ack
+      =+  oh=(ho:(um p.soq) q.soq)
+      =.  oh  (cook:oh cop cha ~)
+      (cans:oh cha)
+```
 
 First, we set up `++um` and `++ho`, as we've done twice before, for our
 domestic and foreign servers, respectively. The other two things are
@@ -1060,22 +1157,24 @@ new, though. Well, `++cook` is not actually new, but we delayed the
 explanation saying only that it sends an acknowledgment. The time has
 come.
 
-            ++  cook                                        ::    cook:ho:um:am
-              |=  [cop=coop cha=path ram=(unit ,[ryn=lane dam=flap])]
-              ^+  +>                                        ::  acknowledgment
-              =+  rum=(need (~(get by raz.bah) cha))
-              =+  lat=(~(get by mis.rum) did.rum)
-              ?:  &(?=(~ lat) ?=(~ ram))  ~&(%ack-late-or-redundant +>.$)
-              =+  ^-  [ryn=lane dam=flap]
-                  ?^  ram  [ryn.u.ram dam.u.ram]
-                  ?<  ?=(~ lat)
-                  [q r]:u.lat
-              =.  raz.bah
-                ?^  ram  raz.bah
-                %+  ~(put by raz.bah)  cha
-                rum(dod &, bum ?~(cop bum.rum (~(put by bum.rum) did.rum u.cop)))
-              =^  roc  diz  (zuul:diz now [%buck cop dam ~s0])
-              (busk(diz (wast:diz ryn)) xong:diz roc)
+```
+        ++  cook                                        ::    cook:ho:um:am
+          |=  [cop=coop cha=path ram=(unit ,[ryn=lane dam=flap])]
+          ^+  +>                                        ::  acknowledgment
+          =+  rum=(need (~(get by raz.bah) cha))
+          =+  lat=(~(get by mis.rum) did.rum)
+          ?:  &(?=(~ lat) ?=(~ ram))  ~&(%ack-late-or-redundant +>.$)
+          =+  ^-  [ryn=lane dam=flap]
+              ?^  ram  [ryn.u.ram dam.u.ram]
+              ?<  ?=(~ lat)
+              [q r]:u.lat
+          =.  raz.bah
+            ?^  ram  raz.bah
+            %+  ~(put by raz.bah)  cha
+            rum(dod &, bum ?~(cop bum.rum (~(put by bum.rum) did.rum u.cop)))
+          =^  roc  diz  (zuul:diz now [%buck cop dam ~s0])
+          (busk(diz (wast:diz ryn)) xong:diz roc)
+```
 
 If we are acknowledging a message that we have already acked, the `ram`
 will contain the new lane and flap to send the duplicate ack to. This
@@ -1133,15 +1232,17 @@ The last thing we need to do on this ship is move on to the next packet
 in the queue if there is one. If you recall, in `++rack` after the call
 to `++cook` there was a call to `++cans:ho:um:am`.
 
-            ++  cans                                        ::    cans:ho:um:am
-              |=  cha=path
-              =+  rum=(need (~(get by raz.bah) cha))
-              =.  rum
-                %=  rum
-                  did  +(did.rum)
-                  mis  (~(del by mis.rum) did.rum)
-                ==
-              (coat cha rum)
+```
+        ++  cans                                        ::    cans:ho:um:am
+          |=  cha=path
+          =+  rum=(need (~(get by raz.bah) cha))
+          =.  rum
+            %=  rum
+              did  +(did.rum)
+              mis  (~(del by mis.rum) did.rum)
+            ==
+          (coat cha rum)
+```
 
 This is very simple. We increment the number of packets that we've
 acknowledged on this race and we delete the packet that we just
@@ -1163,9 +1264,11 @@ going over to `++chew`, `++apse`, `++chow`, and eventualy to `++dine`.
 We've seen most of the cases in `++dine`, but we haven't yet looked at
 the handling of this `%buck` meal.
 
-                    %buck
-                  =.  +>  ?.(=(%full aut) +> cock)          ::  finish key exch
-                  +>(..la (tock p.fud q.fud r.fud))
+```
+                %buck
+              =.  +>  ?.(=(%full aut) +> cock)          ::  finish key exch
+              +>(..la (tock p.fud q.fud r.fud))
+```
 
 We send a packet level acknowledgment if we're finishing a key exchange,
 else we call `++tock` to process the acknowledgment.
@@ -1176,21 +1279,23 @@ as a `%woot` card back to the app who sent it. For those brave souls who
 wish to see this thing through to the end, it's once more into the
 breach.
 
-            ++  tock                                        ::    tock:ho:um:am
-              |=  [cop=coop fap=flap cot=@dr]               ::  e2e ack by hash
-              ^+  +>
-              =^  yoh  puz  (bick:puz now fap)
-              =.  +>.$
-                ?~  p.yoh  +>.$
-                =^  hud  +>.$
-                  (done p.u.p.yoh q.u.p.yoh)
-                ?~  hud  +>.$
-                %=    +>.$
-                    bin
-                  :_  bin
-                  `boon`[%cake [our her] [[p:sen:gus clon:diz] u.p.yoh] cop u.hud]
-                ==
-              (busk xong:diz q.yoh)
+```
+        ++  tock                                        ::    tock:ho:um:am
+          |=  [cop=coop fap=flap cot=@dr]               ::  e2e ack by hash
+          ^+  +>
+          =^  yoh  puz  (bick:puz now fap)
+          =.  +>.$
+            ?~  p.yoh  +>.$
+            =^  hud  +>.$
+              (done p.u.p.yoh q.u.p.yoh)
+            ?~  hud  +>.$
+            %=    +>.$
+                bin
+              :_  bin
+              `boon`[%cake [our her] [[p:sen:gus clon:diz] u.p.yoh] cop u.hud]
+            ==
+          (busk xong:diz q.yoh)
+```
 
 We're going to work through this one a little backwards since it's
 mostly fairly simple except the call to `++bick:pu`. In fact, we'll just
@@ -1198,17 +1303,19 @@ skip `++bick` for the moment and finish the rest.
 
 If `++bick` succesfully acks the message, then we call `++done`.
 
-            ++  done                                        ::    done:ho:um:am
-              |=  [cha=path num=@ud]                        ::  complete outgoing
-              ^-  [(unit duct) _+>]
-              =+  rol=(need (~(get by ryl.bah) cha))
-              =+  rix=(~(get by san.rol) num)
-              ?~  rix  [~ +>.$]
-              :-  rix
-              %_    +>.$
-                  ryl.bah
-                (~(put by ryl.bah) cha rol(san (~(del by san.rol) num)))
-              ==
+```
+        ++  done                                        ::    done:ho:um:am
+          |=  [cha=path num=@ud]                        ::  complete outgoing
+          ^-  [(unit duct) _+>]
+          =+  rol=(need (~(get by ryl.bah) cha))
+          =+  rix=(~(get by san.rol) num)
+          ?~  rix  [~ +>.$]
+          :-  rix
+          %_    +>.$
+              ryl.bah
+            (~(put by ryl.bah) cha rol(san (~(del by san.rol) num)))
+          ==
+```
 
 This very simply gets the rill (the outgoing counterpart to a race, if
 you recall), pulls out of the map of outstanding messages the duct over
@@ -1229,10 +1336,12 @@ ones have been acknowledged.
 We'll look at the processing of the `%cake` boon in `++clop` before we
 get back to talking about `++bick`.
 
-            %cake
-          :_  fox
-          :~  [s.bon %give %woot q.p.bon r.bon]
-          ==
+```
+        %cake
+      :_  fox
+      :~  [s.bon %give %woot q.p.bon r.bon]
+      ==
+```
 
 We very simply give, along the duct we found above, a `%woot` card with
 the ship who sent us the ack and the ack itself. This allows the
@@ -1244,16 +1353,18 @@ the application. Our job is done.
 
 Well, except that we skipped `++bick:pu`. Let's go back to that.
 
-        ++  bick                                            ::    bick:pu
-          |=  [now=@da fap=flap]                            ::  ack by hash
-          ^-  [[p=(unit soup) q=(list rock)] _+>]
-          =+  sun=(~(get by diq) fap)
-          ?~  sun
-            [[~ ~] +>.$]
-          =.  diq  (~(del by diq) fap)
-          =^  gub  +>.$  (bock now u.sun)
-          =^  yop  +>.$  (harv now)
-          [[gub yop] +>.$]
+```
+    ++  bick                                            ::    bick:pu
+      |=  [now=@da fap=flap]                            ::  ack by hash
+      ^-  [[p=(unit soup) q=(list rock)] _+>]
+      =+  sun=(~(get by diq) fap)
+      ?~  sun
+        [[~ ~] +>.$]
+      =.  diq  (~(del by diq) fap)
+      =^  gub  +>.$  (bock now u.sun)
+      =^  yop  +>.$  (harv now)
+      [[gub yop] +>.$]
+```
 
 If you recall, in `++whap:pu` we created the packet pump's
 representation of the message, which included putting the message into
@@ -1269,29 +1380,31 @@ In `++bock`, there are three arms we haven't seen before: `++bine`,
 `+wept`, and `++beet`. We'll describe each of these before we get to
 `++bock`. `++bine` looks scariest.
 
-        ++  bine                                            ::    bine:pu
-          |=  [now=@da num=@ud]                             ::  apply ack
-          ^-  [(unit soup) _+>]
-          ?~  puq  !!
-          ?.  =(num p.n.puq)
-            ?:  (gth num p.n.puq)
-              =+  lef=$(puq l.puq)
-              [-.lef +.lef(puq [n.puq puq.lef r.puq])]
-            =+  rig=$(puq r.puq)
-            [-.rig +.rig(puq [n.puq l.puq puq.rig])]
-          =:  rtt  ?.  &(liv.q.n.puq =(1 nux.q.n.puq))  rtt
-                   =+  gap=(sub now lys.q.n.puq)
-                   ::  ~&  [%bock-trip num (div gap (div ~s1 1.000))]
-                   (div (add (mul 2 rtt) gap) 3)
-              nif  (sub nif !liv.q.n.puq)
-            ==
-          =+  lez=(dec (need (~(get by pyz) gom.q.n.puq)))
-          =^  gub  pyz
-              ?:  =(0 lez)
-                [[~ gom.q.n.puq] (~(del by pyz) gom.q.n.puq)]
-              [~ (~(put by pyz) gom.q.n.puq lez)]
-          :-  gub
-          +>.$(puq ~(nap to puq))
+```
+    ++  bine                                            ::    bine:pu
+      |=  [now=@da num=@ud]                             ::  apply ack
+      ^-  [(unit soup) _+>]
+      ?~  puq  !!
+      ?.  =(num p.n.puq)
+        ?:  (gth num p.n.puq)
+          =+  lef=$(puq l.puq)
+          [-.lef +.lef(puq [n.puq puq.lef r.puq])]
+        =+  rig=$(puq r.puq)
+        [-.rig +.rig(puq [n.puq l.puq puq.rig])]
+      =:  rtt  ?.  &(liv.q.n.puq =(1 nux.q.n.puq))  rtt
+               =+  gap=(sub now lys.q.n.puq)
+               ::  ~&  [%bock-trip num (div gap (div ~s1 1.000))]
+               (div (add (mul 2 rtt) gap) 3)
+          nif  (sub nif !liv.q.n.puq)
+        ==
+      =+  lez=(dec (need (~(get by pyz) gom.q.n.puq)))
+      =^  gub  pyz
+          ?:  =(0 lez)
+            [[~ gom.q.n.puq] (~(del by pyz) gom.q.n.puq)]
+          [~ (~(put by pyz) gom.q.n.puq lez)]
+      :-  gub
+      +>.$(puq ~(nap to puq))
+```
 
 The first few lines are simply looking through the packet queue until we
 find the correct packet to ack. This is basic queue manipulation that
@@ -1324,27 +1437,29 @@ message. Otherwise, we simply update `pyz` with the new number of
 unacked messages. In either case, we remove the packet from the packet
 queue.
 
-        ++  wept                                            ::    wept:pu
-          |=  [fip=@ud lap=@ud]                             ::  fip thru lap-1
-          =<  abet  =<  apse
-          |%
-          ++  abet  +>.$
-          ++  apse
-            ^+  .
-            ?~  puq  .
-            ?:  (lth p.n.puq fip)  ?~(l.puq . left)
-            ?:  (gte p.n.puq lap)  ?~(r.puq . rigt)
-            =>  rigt  =<  left
-            ?>  ?=(^ puq)
-            ?.(liv.q.n.puq . .(nif (dec nif), liv.q.n.puq |))
-          ::
-          ++  left
-            ?>  ?=(^ puq)
-            ^+(. =+(lef=apse(puq l.puq) lef(puq [n.puq puq.lef r.puq])))
-          ++  rigt
-            ?>  ?=(^ puq)
-            ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
-          --
+```
+    ++  wept                                            ::    wept:pu
+      |=  [fip=@ud lap=@ud]                             ::  fip thru lap-1
+      =<  abet  =<  apse
+      |%
+      ++  abet  +>.$
+      ++  apse
+        ^+  .
+        ?~  puq  .
+        ?:  (lth p.n.puq fip)  ?~(l.puq . left)
+        ?:  (gte p.n.puq lap)  ?~(r.puq . rigt)
+        =>  rigt  =<  left
+        ?>  ?=(^ puq)
+        ?.(liv.q.n.puq . .(nif (dec nif), liv.q.n.puq |))
+      ::
+      ++  left
+        ?>  ?=(^ puq)
+        ^+(. =+(lef=apse(puq l.puq) lef(puq [n.puq puq.lef r.puq])))
+      ++  rigt
+        ?>  ?=(^ puq)
+        ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
+      --
+```
 
 The algorithm is a simple case of traversing the packet queue.
 Essentialy, we mark as dead all packets in the queue between `fip` and
@@ -1353,15 +1468,17 @@ mourn too much the passing of these packets, know that they shall soon
 rise again. Recall that in `++bick` after the call to `++bock` we call
 `++harv`. This will resend the packets that have just been labeled dead.
 
-        ++  beet                                            ::    beet:pu
-          ^+  .                                             ::  advance unacked
-          =-  +(nep ?~(foh nus u.foh))
-          ^=  foh
-          |-  ^-  (unit ,@ud)
-          ?~  puq  ~
-          ?:  (lte p.n.puq nep)  $(puq l.puq)
-          =+  rig=$(puq r.puq)
-          ?^(rig rig [~ p.n.puq])
+```
+    ++  beet                                            ::    beet:pu
+      ^+  .                                             ::  advance unacked
+      =-  +(nep ?~(foh nus u.foh))
+      ^=  foh
+      |-  ^-  (unit ,@ud)
+      ?~  puq  ~
+      ?:  (lte p.n.puq nep)  $(puq l.puq)
+      =+  rig=$(puq r.puq)
+      ?^(rig rig [~ p.n.puq])
+```
 
 Here we search for the next expected packet number. Basically, we search
 the queue for the leftmost packet whose number is greater than the
@@ -1370,22 +1487,24 @@ number of packets sent.
 
 We can now dive into `++bock`, our last arm.
 
-        ++  bock                                            ::    bock:pu
-          |=  [now=@da num=@ud]                             ::  ack by sequence
-          ^-  [(unit soup) _+>]
-          =^  gym  +>  (bine now num)
-          :-  gym
-          ?:  (gth num nep)
-            =+  cam=(max 2 (div caw 2))
-            ::  ~&  [%bock-hole num nep cam]
-            beet:(wept(nep num, cag cam, caw cam) nep num)
-          =.  caw  ?:  (lth caw cag)  +(caw)
-                   (add caw !=(0 (mod (mug now) caw)))
-          ?:  =(num nep)
-            ::  ~&  [%bock-fine num nif caw cag]
-            beet
-          ::  ~&  [%bock-fill num nif caw cag]
-          +>.$
+```
+    ++  bock                                            ::    bock:pu
+      |=  [now=@da num=@ud]                             ::  ack by sequence
+      ^-  [(unit soup) _+>]
+      =^  gym  +>  (bine now num)
+      :-  gym
+      ?:  (gth num nep)
+        =+  cam=(max 2 (div caw 2))
+        ::  ~&  [%bock-hole num nep cam]
+        beet:(wept(nep num, cag cam, caw cam) nep num)
+      =.  caw  ?:  (lth caw cag)  +(caw)
+               (add caw !=(0 (mod (mug now) caw)))
+      ?:  =(num nep)
+        ::  ~&  [%bock-fine num nif caw cag]
+        beet
+      ::  ~&  [%bock-fill num nif caw cag]
+      +>.$
+```
 
 First, we call `++bine` to apply the ack to the packet pump information.
 We produce `gym`, which, if it exists, is the id of the packet that was
@@ -1411,18 +1530,19 @@ code involves initialization, timeouts, and the like.
 Below, we give detailed reference documentation for the data models
 involved.
 
-Data Models
------------
+## Data Models
 
 ### `++fort`, formal state
 
-    ++  fort                                                ::  formal state
-              $:  %0                                        ::  version
-                  gad=duct                                  ::  client interface
-                  hop=@da                                   ::  network boot date
-                  ton=town                                  ::  security
-                  zac=(map ship corn)                       ::  flows by server
-              ==                                            ::
+```
+++  fort                                                ::  formal state
+          $:  %0                                        ::  version
+              gad=duct                                  ::  client interface
+              hop=@da                                   ::  network boot date
+              ton=town                                  ::  security
+              zac=(map ship corn)                       ::  flows by server
+          ==                                            ::
+```
 
 This is the state of our vane. Anything that must be remembered between
 calls to ames must be stored in this state.
@@ -1449,12 +1569,14 @@ The keys to this map are the ships on the current pier.
 
 ### `++town`, all security state
 
-    ++  town                                                ::  all security state
-              $:  lit=@ud                                   ::  imperial modulus
-                  any=@                                     ::  entropy
-                  urb=(map ship sufi)                       ::  all keys and routes
-                  fak=?                                     ::
-              ==                                            ::
+```
+++  town                                                ::  all security state
+          $:  lit=@ud                                   ::  imperial modulus
+              any=@                                     ::  entropy
+              urb=(map ship sufi)                       ::  all keys and routes
+              fak=?                                     ::
+          ==                                            ::
+```
 
 This is the security state of our pier.
 
@@ -1477,13 +1599,15 @@ for development. To use, run vere with the `-F` option (and the
 
 ### `++sufi`, domestic host
 
-    ++  sufi                                                ::  domestic host
-              $:  hoy=(list ship)                           ::  hierarchy
-                  val=wund                                  ::  private keys
-                  law=will                                  ::  server will
-                  seh=(map hand ,[p=ship q=@da])            ::  key cache
-                  hoc=(map ship dore)                       ::  neighborhood
-              ==                                            ::
+```
+++  sufi                                                ::  domestic host
+          $:  hoy=(list ship)                           ::  hierarchy
+              val=wund                                  ::  private keys
+              law=will                                  ::  server will
+              seh=(map hand ,[p=ship q=@da])            ::  key cache
+              hoc=(map ship dore)                       ::  neighborhood
+          ==                                            ::
+```
 
 This is the security state of a domestic server.
 
@@ -1503,7 +1627,9 @@ informatoin about foreign ships. The keys to this map are the neighbors
 
 ### `++wund`, private keys
 
-    ++  wund  (list ,[p=life q=ring r=acru])                ::  mace in action
+```
+++  wund  (list ,[p=life q=ring r=acru])                ::  mace in action
+```
 
 This is a list of our own private keys, indexed by life. The key itself
 is the `++ring`, and the `++acru` is the encryption engine. We generate
@@ -1513,7 +1639,9 @@ at the head of the list and can be accessed with `++sen:as:go`.
 
 ### `++ring`, private key
 
-    ++  ring  ,@                                            ::  private key
+```
+++  ring  ,@                                            ::  private key
+```
 
 This is a private key. The first byte is reserved to identify the type
 of cryptography. Lower-case means public key, upper-case means public
@@ -1521,7 +1649,9 @@ key, and the letter identifies which `++acru` to use.
 
 ### `++pass`, public key
 
-    ++  pass  ,@                                            ::  public key
+```
+++  pass  ,@                                            ::  public key
+```
 
 This is a public key. The first byte is reserved to identify the type of
 cryptography. Lower-case means public key, upper-case means public key,
@@ -1529,14 +1659,18 @@ and the letter identifies which `++acru` to use.
 
 ### `++mace`, private secrets
 
-    ++  mace  (list ,[p=life q=ring])                       ::  private secrets
+```
+++  mace  (list ,[p=life q=ring])                       ::  private secrets
+```
 
 This is a list of the our private keys, indexed by life. From this we
 can generate a `++wund` for actual use.
 
 ### `++skin`, encoding stem
 
-    ++  skin  ?(%none %open %fast %full)                    ::  encoding stem
+```
+++  skin  ?(%none %open %fast %full)                    ::  encoding stem
+```
 
 This defines the type of encryption used for each message. `%none`
 refers to messages sent in the clear, `%open` refers to signed messages,
@@ -1545,30 +1679,32 @@ encrypted messages. See `++acru` for details.
 
 ### `++acru`, asymmetric cryptosuite
 
-    ++  acru                                                ::  asym cryptosuite
-              $_  ^?  |%                                    ::  opaque object
-              ++  as  ^?                                    ::  asym ops
-                |%  ++  seal  |=([a=pass b=@ c=@] _@)       ::  encrypt to a
-                    ++  sign  |=([a=@ b=@] _@)              ::  certify as us
-                    ++  sure  |=([a=@ b=@] *(unit ,@))      ::  authenticate from us
-                    ++  tear  |=  [a=pass b=@]              ::  accept from a 
-                              *(unit ,[p=@ q=@])            ::
-                --                                          ::
-              ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
-              ++  dy  |+([a=@ b=@] _@)                      ::  symmetric de, hard
-              ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
-              ++  ex  ^?                                    ::  export
-                |%  ++  fig  _@uvH                          ::  fingerprint
-                    ++  pac  _@uvG                          ::  default passcode
-                    ++  pub  *pass                          ::  public key
-                    ++  sec  *ring                          ::  private key
-                --
-              ++  nu  ^?                                    ::  reconstructors
-                 |%  ++  pit  |=([a=@ b=@] ^?(..nu))        ::  from [width seed]
-                     ++  nol  |=(a=@ ^?(..nu))              ::  from naked ring
-                     ++  com  |=(a=@ ^?(..nu))              ::  from naked pass
-                --
-              --
+```
+++  acru                                                ::  asym cryptosuite
+          $_  ^?  |%                                    ::  opaque object
+          ++  as  ^?                                    ::  asym ops
+            |%  ++  seal  |=([a=pass b=@ c=@] _@)       ::  encrypt to a
+                ++  sign  |=([a=@ b=@] _@)              ::  certify as us
+                ++  sure  |=([a=@ b=@] *(unit ,@))      ::  authenticate from us
+                ++  tear  |=  [a=pass b=@]              ::  accept from a 
+                          *(unit ,[p=@ q=@])            ::
+            --                                          ::
+          ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
+          ++  dy  |+([a=@ b=@] _@)                      ::  symmetric de, hard
+          ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
+          ++  ex  ^?                                    ::  export
+            |%  ++  fig  _@uvH                          ::  fingerprint
+                ++  pac  _@uvG                          ::  default passcode
+                ++  pub  *pass                          ::  public key
+                ++  sec  *ring                          ::  private key
+            --
+          ++  nu  ^?                                    ::  reconstructors
+             |%  ++  pit  |=([a=@ b=@] ^?(..nu))        ::  from [width seed]
+                 ++  nol  |=(a=@ ^?(..nu))              ::  from naked ring
+                 ++  com  |=(a=@ ^?(..nu))              ::  from naked pass
+            --
+          --
+```
 
 This is an opaque interface for a general asymmetric cryptosuite. Any
 form of asymmetric cryptography can be dropped in to be used instead of
@@ -1578,13 +1714,15 @@ mostly stubbed out at the moment.
 
 #### `++as:acru`, asymmetric operations
 
-              ++  as  ^?                                    ::  asym ops
-                |%  ++  seal  |=([a=pass b=@ c=@] _@)       ::  encrypt to a
-                    ++  sign  |=([a=@ b=@] _@)              ::  certify as us
-                    ++  sure  |=([a=@ b=@] *(unit ,@))      ::  authenticate from us
-                    ++  tear  |=  [a=pass b=@]              ::  accept from a 
-                              *(unit ,[p=@ q=@])            ::
-                --                                          ::
+```
+          ++  as  ^?                                    ::  asym ops
+            |%  ++  seal  |=([a=pass b=@ c=@] _@)       ::  encrypt to a
+                ++  sign  |=([a=@ b=@] _@)              ::  certify as us
+                ++  sure  |=([a=@ b=@] *(unit ,@))      ::  authenticate from us
+                ++  tear  |=  [a=pass b=@]              ::  accept from a 
+                          *(unit ,[p=@ q=@])            ::
+            --                                          ::
+```
 
 This is the core that defines the standard asymmetric cryptography
 operations.
@@ -1613,9 +1751,11 @@ associated with the `++skin` `%full`.
 
 #### `++de:acru`, `++dy:acru`, and `++en:acru`, symmetric encryption/decryption
 
-              ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
-              ++  dy  |+([a=@ b=@] _@)                      ::  symmetric de, hard
-              ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
+```
+          ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
+          ++  dy  |+([a=@ b=@] _@)                      ::  symmetric de, hard
+          ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
+```
 
 Symmetric encryption is associated with the `++skin` `%fast`.
 
@@ -1630,12 +1770,14 @@ semantically equivalent to, `(need (de a b))`.
 
 #### `++ex:acru`, exporting data
 
-              ++  ex  ^?                                    ::  export
-                |%  ++  fig  _@uvH                          ::  fingerprint
-                    ++  pac  _@uvG                          ::  default passcode
-                    ++  pub  *pass                          ::  public key
-                    ++  sec  *ring                          ::  private key
-                --
+```
+          ++  ex  ^?                                    ::  export
+            |%  ++  fig  _@uvH                          ::  fingerprint
+                ++  pac  _@uvG                          ::  default passcode
+                ++  pub  *pass                          ::  public key
+                ++  sec  *ring                          ::  private key
+            --
+```
 
 `++fig:ex:acru` is our fingerprint, usually a hash of our public key.
 This is used, for example, in `++zeno`, where every carrier owner's
@@ -1650,11 +1792,13 @@ owned by their owners
 
 #### `++nu:acru`, reconstructors
 
-              ++  nu  ^?                                    ::  reconstructors
-                 |%  ++  pit  |=([a=@ b=@] ^?(..nu))        ::  from [width seed]
-                     ++  nol  |=(a=@ ^?(..nu))              ::  from naked ring
-                     ++  com  |=(a=@ ^?(..nu))              ::  from naked pass
-                --
+```
+          ++  nu  ^?                                    ::  reconstructors
+             |%  ++  pit  |=([a=@ b=@] ^?(..nu))        ::  from [width seed]
+                 ++  nol  |=(a=@ ^?(..nu))              ::  from naked ring
+                 ++  com  |=(a=@ ^?(..nu))              ::  from naked pass
+            --
+```
 
 These arms allow us to reconstruct a `++acru` from basic data.
 
@@ -1674,18 +1818,22 @@ and `++hail` for `++crub`.
 
 ### `++will`, certificate
 
-    ++  will  (list deed)                                   ::  certificate
+```
+++  will  (list deed)                                   ::  certificate
+```
 
 This is a list of deeds associated with the current ship. There should
 be an item in this list for every ship from this point up in the
 hierarchy times the number of lives that each ship has had. For example,
-\~hoclur-bicrel may have a will with three items: one for itself, one
-for \~tasruc (who issued \~hoclur-bicrel's deed) and one for \~tug (who
-issued \~tasruc's deed).
+~hoclur-bicrel may have a will with three items: one for itself, one
+for ~tasruc (who issued ~hoclur-bicrel's deed) and one for ~tug (who
+issued ~tasruc's deed).
 
 ### `++deed`, identity
 
-    ++  deed  ,[p=@ q=step r=?]                             ::  sig, stage, fake?
+```
+++  deed  ,[p=@ q=step r=?]                             ::  sig, stage, fake?
+```
 
 `p` is the signature of a particular deed, which is a signed copy of
 `q`.
@@ -1698,7 +1846,9 @@ networks for development without interfering with the real network.
 
 ### `++step`, identity stage
 
-    ++  step  ,[p=bray q=gens r=pass]                       ::  identity stage
+```
+++  step  ,[p=bray q=gens r=pass]                       ::  identity stage
+```
 
 This is a single stage in our identity. Thus, this is specific to a
 single life in a single ship. Everything in here may change between
@@ -1712,13 +1862,17 @@ lives.
 
 ### `++bray`
 
-    ++  bray  ,[p=life q=(unit life) r=ship s=@da]          ::  our parent us now
+```
+++  bray  ,[p=life q=(unit life) r=ship s=@da]          ::  our parent us now
+```
 
 XXX
 
 ### `++gens`, general identity
 
-    ++  gens  ,[p=lang q=gcos]                              ::  general identity
+```
+++  gens  ,[p=lang q=gcos]                              ::  general identity
+```
 
 `p` is the IETF language code for the preferred language of this
 identity. This is unused at the moment, but in the future text should be
@@ -1728,13 +1882,15 @@ localized based on this.
 
 ### `++gcos`, identity description
 
-    ++  gcos                                                ::  id description
-              $%  [%czar ~]                                 ::  8-bit ship
-                  [%duke p=what]                            ::  32-bit ship
-                  [%earl p=@t]                              ::  64-bit ship
-                  [%king p=@t]                              ::  16-bit ship
-                  [%pawn p=(unit ,@t)]                      ::  128-bit ship
-              ==                                            ::
+```
+++  gcos                                                ::  id description
+          $%  [%czar ~]                                 ::  8-bit ship
+              [%duke p=what]                            ::  32-bit ship
+              [%earl p=@t]                              ::  64-bit ship
+              [%king p=@t]                              ::  16-bit ship
+              [%pawn p=(unit ,@t)]                      ::  128-bit ship
+          ==                                            ::
+```
 
 This is the description of the identity of a ship. Most types of
 identity have a `@t` field, which is their human-readable name. The
@@ -1760,23 +1916,25 @@ A `%earl`, a yacht, is a ship with a 64-bit address. Thus, there are
 A `%pawn`, a submarine, is a ship with a 128-bit address. Thus, there
 are a lot of submarines. The chance of random name collision is
 negligible, so submarines are not issued by any ship. They must simply
-assert their presence, and they are all considered children of \~zod.
+assert their presence, and they are all considered children of ~zod.
 This is the underworld of Urbit, where anonymity reigns supreme.
 
 ### `++what`, logical destroyer identity
 
-    ++  what                                                ::  logical identity
-              $%  [%anon ~]                                 ::  anonymous
-                  [%lady p=whom]                            ::  female person ()
-                  [%lord p=whom]                            ::  male person []
-                  [%punk p=sect q=@t]                       ::  opaque handle ""
-              ==                                            ::
+```
+++  what                                                ::  logical identity
+          $%  [%anon ~]                                 ::  anonymous
+              [%lady p=whom]                            ::  female person ()
+              [%lord p=whom]                            ::  male person []
+              [%punk p=sect q=@t]                       ::  opaque handle ""
+          ==                                            ::
+```
 
 This is the logical identity of a destroyer.
 
 A `%anon` is a completely anonymous destroyer. The difference between
 this and a submarine is that a submarine is ephemeral while a `%anon`
-destroyer is not. Thus, we may not know who \~hoclur-bicrel is, but we
+destroyer is not. Thus, we may not know who ~hoclur-bicrel is, but we
 do know that it's always the same person.
 
 A `%lady` is a female person. The name used here should be a real name.
@@ -1787,7 +1945,9 @@ A `%punk` is a person who is identified only by a handle.
 
 ### `++whom`, real person
 
-    ++  whom  ,[p=@ud q=govt r=sect s=name]                 ::  year/govt/id
+```
+++  whom  ,[p=@ud q=govt r=sect s=name]                 ::  year/govt/id
+```
 
 Ths is the information associated with a real person. It is mostly
 information that could be observed with the briefest of interactions.
@@ -1802,19 +1962,26 @@ information that could be observed with the briefest of interactions.
 
 ### `++govt`
 
-    ++  govt  path                                          ::  country/postcode
+```
+++  govt  path                                          ::  country/postcode
+```
 
 This is the location of the user, usually of the form "country/zip".
 
 ### `++sect`
 
-    ++  sect  ?(%black %blue %red %orange %white)           ::  banner
+```
+++  sect  ?(%black %blue %red %orange %white)           ::  banner
+```
 
 XXX
 
 ### `++name`
 
-    ++  name  ,[p=@t q=(unit ,@t) r=(unit ,@t) s=@t]        ::  first mid/nick last
+```
+++  name  ,[p=@t q=(unit ,@t) r=(unit ,@t) s=@t]        ::  first mid/nick last
+```
 
 This is the given name, possible middle name/initial, possible nickname,
 and surname of a user.
+

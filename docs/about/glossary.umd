@@ -1,10 +1,10 @@
----
-navhome: /docs/
-navuptwo: true
-next: true
-sort: 5
-title: Glossary
----
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'5'
+        title/'Glossary'
+    ==
+;>
 
 # Glossary
 
@@ -16,23 +16,25 @@ to create a new semantic level in which one can be absolutely precise."
 
 ## Ships
 
-An Urbit *ship* is a cryptographic title on a *will* signed by private
+An Urbit _ship_ is a cryptographic title on a _will_ signed by private
 key, a human-memorable name, and a packet routing address. Ships are
 classed by the number of bits in their address:
 
-    Size   Name    Parent  Object      Example
-    -----  ------  ------  ------      -------
-    2^8    galaxy  ~       supernode   ~zod
-    2^16   star    galaxy  supernode   ~dozbud
-    2^32   planet  star    user        ~tasfyn-partyv
-    2^64   moon    planet  device      ~sigsam-nimbot-tasfyn-partyv
-    2^128  comet   ~       bot         ~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex
+```
+Size   Name    Parent  Object      Example
+-----  ------  ------  ------      -------
+2^8    galaxy  ~       supernode   ~zod
+2^16   star    galaxy  supernode   ~dozbud
+2^32   planet  star    user        ~tasfyn-partyv
+2^64   moon    planet  device      ~sigsam-nimbot-tasfyn-partyv
+2^128  comet   ~       bot         ~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex
+```
 
 Any ship can be called an "urbit."
 
 > You can find a longer-form summary here: 
->  [`urbit.org/posts/address-space/`](https://urbit.org/posts/address-space/).
- 
+  [`urbit.org/posts/address-space/`](https://urbit.org/posts/address-space/).
+
 An Urbit identity is a string like `~firbyr-napbes`. It means nothing,
 but it's easy to remember and say out loud. `~firbyr-napbes` is actually
 just a 32-bit number (`3.237.967.392`, to be exact), like an IP address, 
@@ -48,12 +50,12 @@ Shorter names are easier to remember, so they're more valuable. So
 urbits are classified by the number of bits in their name. (A ship name
 is just a scrambled base-256 representation of the number.)
 
-A 32-bit urbit (like `~firbyr-napbes`) is called a *planet.* A 16-bit
-urbit (like `~pollev)` is a *star.* An 8-bit ship (like `~mun`) is a
-*galaxy.* A planet is an identity for an independent, adult human. Stars
+A 32-bit urbit (like `~firbyr-napbes`) is called a _planet._ A 16-bit
+urbit (like `~pollev)` is a _star._ An 8-bit ship (like `~mun`) is a
+_galaxy._ A planet is an identity for an independent, adult human. Stars
 and galaxies are network infrastructure.
 
-Each planet or star is launched by its *parent,* the star or galaxy
+Each planet or star is launched by its _parent,_ the star or galaxy
 whose number is its bottom half. So the planet `~firbyr-napbes`,
 `0xdead.beef` or `3.735.928.559`, is the child of `~pollev`, `0xbeef` or
 `48.879`, whose parent is `~mun`, `0xef`, `239`. The parent of `~mun`
@@ -61,27 +63,31 @@ and all galaxies is `~zod`, `0`.
 
 #### pier
 
-A ship's *pier* is its Unix directory.  For planets the name of the pier is usually the planet name.
+A ship's _pier_ is its Unix directory.  For planets the name of the pier is usually the planet name.
 
 ### Nock
 
 > Nock is a Turing-complete, non-lambda combinator interpreter.
 
--   <h6 id="-nock-noun">noun:</h6> an _atom_ or a _cell_
--   <h6 id="-nock-atom">atom:</h6> any natural number
--   <h6 id="-nock-cell">cell:</h6> any ordered pair of nouns
--   <h6 id="-nock-subject">subject:</h6> a noun - the data against which a _formula_ is
-    evaluated
--   <h6 id="-nock-formula">formula:</h6> a noun - a function at the Nock level
--   <h6 id="-nock-product">product:</h6> a noun - the result of evaluating a formula against a
-    subject
+- ;h6(id "-nock-noun"): noun
+  an _atom_ or a _cell_
+- ;h6(id "-nock-atom"): atom
+  any natural number
+- ;h6(id "-nock-cell"): cell
+  any ordered pair of nouns
+- ;h6(id "-nock-subject"): subject
+  a noun - the data against which a _formula_ is evaluated
+- ;h6(id "-nock-formula"): formula
+  a noun - a function at the Nock level
+- ;h6(id "-nock-product"): product
+  a noun - the result of evaluating a formula against a subject
 
-*See [Nock definition](../../nock/definition/).*
+_See [Nock definition](../../nock/definition/)._
 
 ## Hoon
 
 > Hoon is a strict, higher-order typed functional language that compiles
-> itself to Nock.
+  itself to Nock.
 
 #### arm
 
@@ -90,38 +96,40 @@ An _arm_ is a named, functionally-computed attribute of a [core](#-core).
 The [hoon](#-a-hoon) of each arm is compiled to a Nock formula, with the
 enclosing [core](#-core) itself as the subject.
 
-There are two kinds of arms: *dry* and *wet*. Most arms are dry.
+There are two kinds of arms: _dry_ and _wet_. Most arms are dry.
 
--   <h6 id="-arm-dry">dry:</h6> normal, `++`, polymorphic by means of *variance*
+- ;h6(id "-arm-dry"): dry
+  normal, `++`, polymorphic by means of _variance_
 
 For a dry arm, we ask, is the new payload compatible with the old
 payload (against which the core was compiled)?
 
--   <h6 id="-arm-wet">wet:</h6> unusual, `+-`, polymorphic by means of *genericity*
+- ;h6(id "-arm-wet"): wet
+  unusual, `+-`, polymorphic by means of _genericity_
 
 A wet arm uses the hoon as a macro. We create a new type analysis
 path, which works as if we expanded the callee with the caller's
 context.
 
-*See [advanced types](../../hoon/advanced/)*.
+_See [advanced types](../../hoon/advanced/)_.
 
 #### atom
 
 A Hoon _atom_ type describes a Nock atom, with two additional pieces
-of metadata: an *aura*, and an optional constant.
+of metadata: an _aura_, and an optional constant.
 
-An atom type is *warm* or *cold* based on whether the constant exists.
+An atom type is _warm_ or _cold_ based on whether the constant exists.
 
--   <h6 id="-atom-warm">warm:</h6> if the constant is `~` (null), any
-    atom is in the type
--   <h6 id="-atom-cold">cold:</h6> if the constant is `[~ atom]`, its
-    only legal value is `atom`.
+- ;h6(id "-atom-warm"): warm
+  if the constant is `~` (null), any atom is in the type
+- ;h6(id "-atom-cold"): cold
+  if the constant is `[~ atom]`, its only legal value is `atom`.
 
-*See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*
+_See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)_
 
 #### aura
 
-An *aura* is a soft atom type. It represents the structure of an
+An _aura_ is a soft atom type. It represents the structure of an
 atom in a string beginning with `@`. An aura may represent print 
 format or other semantics. Its constraints on the value of an
 atom aren't enforced in any way.
@@ -133,16 +141,16 @@ auras.
 
 Some common auras and their aliases:
 
--   <h6 id="-aura-term">term:</h6> (`@tas`): a symbol - an atomic ASCII string which obeys
-    symbol rules: lowercase and digit only, infix hyphen ("kebab-case"),
-    first character must be lowercase alphabetic.
--   <h6 id="-aura-cord">cord:</h6> (`@t`): UTF-8 text, least-significant-byte first
--   <h6 id="-aura-char">char:</h6> (`@tD`): a character, a single unicode byte (for multi-byte
-    characters and codepoints, see `@c`)
+- ;h6(id "-aura-term"): term
+  (`@tas`): a symbol - an atomic ASCII string which obeys symbol rules: lowercase and digit only, infix hyphen ("kebab-case"), first character must be lowercase alphabetic.
+- ;h6(id "-atom-cord"): cord
+  (`@t`): UTF-8 text, least-significant-byte first
+- ;h6(id "-atom-char"): char
+  (`@tD`): a character, a single unicode byte (for multi-byte characters and codepoints, see `@c`)
 
 You can find the list of all auras [here](../../hoon/atom/sand/).
 
-*See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)*.
+_See [basic types](../../hoon/basic/#-atom-p-term-q-unit-atom)_.
 
 #### core
 
@@ -151,12 +159,14 @@ code head the _battery_ and the data tail the _payload_. All code-data
 structures in normal languages (functions, objects, modules, etc.)
 become _core_s in Hoon.
 
--   <h6 id="-core-battery">battery:</h6> the code of a core, a tree of *arms*
--   <h6 id="-core-payload">payload:</h6> the data in a core
+- ;h6(id "-core-battery"): battery
+  the code of a core, a tree of _arms_
+- ;h6(id "-core-payload"): payload
+  the data in a core
 
-*See [basic types](../../hoon/basic)*.
+_See [basic types](../../hoon/basic)_.
 
-#### face 
+#### face
 
 A Hoon _face_ is a labeled subtree. 
 
@@ -167,7 +177,7 @@ Hoon has no scope or symbol-table; there is only the subject. To
 A face is a type that wraps a named symbol (of [aura](#-aura) 
 `@tas`) around another type.
 
-*See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
+_See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)_.
 
 #### gate
 
@@ -178,14 +188,16 @@ in the core) with the argument, and then compute the arm.
 
 The payload of a gate has a shape of `[sample context]`.
 
--   <h6 id="-gate-sample">sample:</h6> the argument tuple
--   <h6 id="-gate-context">context:</h6> the subject in which the gate was defined
+- ;h6(id "-gate-sample"): sample
+  the argument tuple
+- ;h6(id "-gate-context"): context
+  the subject in which the gate was defined
 
-*See [basic types](../../hoon/basic/#-core-p-type-q-map-term-type),
+_See [basic types](../../hoon/basic/#-core-p-type-q-map-term-type),
 [`%-` ("cenhep")](../../hoon/rune/cen-call/hep-call/) (the 
-[rune](#-rune) for calling a `gate`).*
+[rune](#-rune) for calling a `gate`)._
 
-#### <h4 id="-a-hoon">hoon</h4>
+;h4(id "-a-hoon"): hoon
 
 A [`hoon`](../../hoon/reference/) is the result of parsing a Hoon source 
 expression into an AST node. These AST nodes are nouns, like all 
@@ -225,23 +237,24 @@ The result should be:
 
 A _limb_ is an attribute or variable reference. 
 
-To resolve a *limb* named "foo", the subject is searched depth-first,
+To resolve a _limb_ named "foo", the subject is searched depth-first,
 head-first for either a face named "foo" or a core with an arm of
 "foo". If a face is found, the result is a leg, if a core is
 found, the result is the product of the arm.
 
--   <h6 id="-limb-leg">leg:</h6> a subexpression, or subtree of the subject.
--   <h6 id="-limb-wing">wing:</h6> a list of limbs, searched from right to left (`a.b` means
-    `b` within `a`).
+- ;h6(id "-limb-leg"): leg
+  a subexpression, or subtree of the subject.
+- ;h6(id "-limb-wing"): wing
+  a list of limbs, searched from right to left (`a.b` means `b` within `a`).
 
-*See [Limbs and wings](../../hoon/limb/)*
+_See [Limbs and wings](../../hoon/limb/)_
 
 #### loobean
 
-A _loobean_ is a Hoon boolean. `0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
+A _loobean_ is a Hoon boolean. `0` (`%.y`) is _yes_, `1` (`%.n`) is _no_.
 
 > Why? It's fresh, it's different, it's new. And it's annoying. And it
-> keeps you on your toes. And it's also just intuitively right.
+  keeps you on your toes. And it's also just intuitively right.
 
 #### mark
 
@@ -262,12 +275,12 @@ Every core has a _metal_ which defines its variance model (ie, the
 properties of the type of a compatible core). The default is `gold`
 (invariant).
 
--   `gold`: *invariant*
--   `lead`: *bivariant*
--   `zinc`: *covariant*
--   `iron`: *contravariant*
+- `gold`: _invariant_
+- `lead`: _bivariant_
+- `zinc`: _covariant_
+- `iron`: _contravariant_
 
-*See [advanced types](../../hoon/advanced)*.
+_See [advanced types](../../hoon/advanced)_.
 
 #### mold
 
@@ -280,13 +293,14 @@ validate untrusted network data.
 
 Here's some common mold terminology:
 
--   <h6 id="-mold-bunt">bunt:</h6> the value a mold produces when normalizing its default
-    sample
--   <h6 id="-mold-icon">icon:</h6> the type of the mold's range
+- ;h6(id "-mold-bunt"): bunt
+  the value a mold produces when normalizing its default sample
+- ;h6(id "-mold-icon"): icon
+  the type of the mold's range
 
-*See [mold hoons](../../hoon/rune/buc-mold/).*
+_See [mold hoons](../../hoon/rune/buc-mold/)._
 
-#### nest 
+#### nest
 
 `nest` is an internal Hoon function on two types which performs a type 
 compatibility test. `nest` produces yes if the
@@ -294,8 +308,8 @@ set of nouns in the second type is provably a subset of the first.
 If `nest` produces no, the Hoon programmer will receive a `nest-fail`
 error. This is one of the most commons errors in Hoon programming.
 
-*See [advanced types](../../hoon/advanced/)*.
-*See [troubleshooting](../../hoon/troubleshooting/#-nest-fail)*.
+_See [advanced types](../../hoon/advanced/)_.
+_See [troubleshooting](../../hoon/troubleshooting/#-nest-fail)_.
 
 #### rune
 
@@ -313,34 +327,36 @@ a [`hoon`](#-a-hoon).
 
 Runes have two syntactic forms, _tall_ and _flat_:
 
--   <h6 id="-rune-tall">tall:</h6> multiple lines, no parentheses, two or more spaces between
-    tokens
+- ;h6(id "-rune-tall"): tall
+  multiple lines, no parentheses, two or more spaces between tokens
 
-    Example:
+  Example:
 
-    ```
-    ~zod:dojo> %+  add  2  2
-    4
-    ```
--   <h6 id="-rune-flat">flat:</h6> one line, parentheses, one space between tokens
+  ```
+  ~zod:dojo> %+  add  2  2
+  4
+  ```
 
-    Example:
+- ;h6(id "-rune-flat"): flat
+  one line, parentheses, one space between tokens
 
-    ```
-    ~zod:dojo> %+(add 2 2)                              ::  regular flat form
-    4
+  Example:
 
-    ~zod:dojo> (add 2 2)                                ::  irregular flat form
-    4
-    ```
+  ```
+  ~zod:dojo> %+(add 2 2)                              ::  regular flat form
+  4
+
+  ~zod:dojo> (add 2 2)                                ::  irregular flat form
+  4
+  ```
 
 Tall hoons can contain flat hoons, but not vice versa. All irregular 
 forms are flat.
 
-*See [hoon concept](../../hoon/concepts/#-hoon),
-[expressions](../../hoon/rune/), and [syntax](../../hoon/syntax/)*.
+_See [hoon concept](../../hoon/concepts/#-hoon),
+[expressions](../../hoon/rune/), and [syntax](../../hoon/syntax/)_.
 
-#### slot 
+#### slot
 
 `slot` is the name for Hoon's tree addressing scheme.
 
@@ -361,5 +377,5 @@ All types are assembled out of base types defined in `++type`.
 does type-inference on a program, it assembles complex types out 
 of the simpler built-in types.
 
-*See [basic types](../../hoon/basic/).*
+_See [basic types](../../hoon/basic/)._
 

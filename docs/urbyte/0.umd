@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 1
-next: true
-title: Setup and nouns
----
+:-  :~  navhome/'/docs/'
+        sort/'1'
+        next/'true'
+        title/'Setup and nouns'
+    ==
+;>
 
 # Urbyte 0: Setup and nouns
 
@@ -37,9 +37,9 @@ While you're downloading, read about Urbit ships:
 ## Ships
 
 In the Urbyte exercises you'll be running what we call a "comet". A string starting with `~`, like `~zod`, is what Urbit
-calls a *ship*.
+calls a _ship_.
 
-A *ship* is one number which means four things: a network address,
+A _ship_ is one number which means four things: a network address,
 a cryptographic identity, a memorable name, and a single virtual
 computer.
 
@@ -50,7 +50,7 @@ is ship zero (making it a very important ship indeed!). An ordinary
 user-level ship is a "planet", a 32-bit number which becomes
 a four-syllable string, like `~talsur-todres`.
 
-*Comets*, at 128-bits or 16 syllables, are
+_Comets_, at 128-bits or 16 syllables, are
 disposable identities that anyone can make for free to
 join the live network. Thus, comets make the ideal ship for
 playing around with Hoon, asking for help from other Urbit devs in [Talk](../../using/messaging/) if you
@@ -101,7 +101,7 @@ few more in a second.  First, quit Urbit with `ctrl-d`:
 $
 ```
 
-You now have an Urbit image, or *pier*, in the `mycomet` directory.
+You now have an Urbit image, or _pier_, in the `mycomet` directory.
 Right now the only thing in your pier is Urbit's system files:
 
 ```
@@ -131,9 +131,8 @@ manage to corrupt a pier, it's a bug; please let us know.
 
 You've already made a noun.  Let's make another!
 
-*We won't show the `~palnul_nocser:dojo> ` prompt from here on out.
-We'll just show the echoed command.*
-
+_We won't show the `~palnul_nocser:dojo>` prompt from here on out.
+We'll just show the echoed command._
 
 ```
 ~palnul_nocser:dojo> 42
@@ -149,8 +148,8 @@ You'll see:
 
 ## Understanding nouns
 
-A value in Urbit is called a *noun*.  A noun is either an *atom*
-(an unsigned integer of any size) or a *cell* (an ordered pair of
+A value in Urbit is called a _noun_.  A noun is either an _atom_
+(an unsigned integer of any size) or a _cell_ (an ordered pair of
 any two nouns).
 
 In a sentence, a noun is a binary tree whose leaves are numbers.
@@ -197,7 +196,7 @@ Can we add another zero?
 ```
 
 Wat?  When you tried to type that next zero and turn `420` into
-`4200`, Urbit actually *deleted the `0` and beeped at you.*
+`4200`, Urbit actually _deleted the `0` and beeped at you._
 
 But isn't an atom an unsigned integer of any size?  It is.
 But the syntax is actually `4.200`:
@@ -232,7 +231,7 @@ tail, and puts brackets around them:
 [42 420]
 ```
 
-`42` is the *head* and `420` is the *tail* of the cell.  Cell
+`42` is the _head_ and `420` is the _tail_ of the cell.  Cell
 syntax nests to the right:
 
 ```
@@ -275,10 +274,10 @@ And we're done with our very first Urbyte!  Here are some questions to
 think about.  These exercises are never mandatory, but they may
 be fun and/or interesting.  Skip them if they're obvious.
 
-* What is the right way to represent common
-data structures as nouns?
-* A linked list?
-* A string?  A *signed* integer?
-* A table or associative array?
+- What is the right way to represent common data structures as nouns?
+- A linked list?
+- A string?  A *signed* integer?
+- A table or associative array?
 
 Just try to picture these structures in your head, or draw them on a piece of paper.
+

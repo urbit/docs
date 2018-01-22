@@ -1,13 +1,15 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: Hoon
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'Hoon'
+    ==
+;>
 
 # Hoon
 
 An in-depth technical reference for Hoon.  Best for readers with
 an interest or background in programming languages.
 
-<list/>
+;+  (kids %title datapath+'/docs/hoon/' ~)
+

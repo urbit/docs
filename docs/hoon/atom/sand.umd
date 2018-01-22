@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 1
-title: Sand
----
+:-  :~  navhome/'/docs/'
+        sort/'1'
+        title/'Sand'
+    ==
+;>
 
 # Sand
 
@@ -55,3 +55,4 @@ Irregular.  A table of examples:
 
 The `@uv` characters are `0-9`, `a-v`.  The `@uw` characters are 
 `0-9`, `a-z`, `A-Z`, `-` and `~`.
+

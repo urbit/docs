@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: !! "zapzap"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'!! "zapzap"'
+    ==
+;>
 
 # `!! "zapzap"`
 
@@ -27,3 +27,4 @@ Nothing.  Always crashes, with type `%void`.
 ~zod:dojo> !!
 ford: build failed
 ```
+

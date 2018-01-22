@@ -1,6 +1,6 @@
----
-navhome: /docs/
----
-
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
 # 5b: macro expansion
+

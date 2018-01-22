@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 21
-title: Examples
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'21'
+        title/'Examples'
+    ==
+;>
 
 # Examples
 
@@ -149,6 +149,7 @@ multiple of `factor`, and deleting it from `field`.
 ## `sieve`: code in kernel style
 
 Finally, the same code in a more concise "kernel" style.
+
 ```
 |=  top/@
 ^-  (list @)
@@ -524,6 +525,7 @@ side `z`, and replaces `z` with `next`.
 ```
 
 ## Basic molds
+
 ```
 ++  atom  @                                             ::  just an atom
 ++  axis  @                                             ::  tree address
@@ -593,4 +595,5 @@ side `z`, and replaces `z` with `next`.
 ++  jug  |*({a/gate b/gate} (map a (set b)))            ::  map of sets
 ```
 
-###  Basic libraries
+### Basic libraries
+

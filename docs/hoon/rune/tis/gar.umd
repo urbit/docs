@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 1
-title: => "tisgar"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'=> "tisgar"'
+    ==
+;>
 
-# `=> "tisgar"` 
+# `=> "tisgar"`
 
 `[%tsgr p=hoon q=hoon]`: compose two hoons.
 
@@ -15,7 +15,7 @@ title: => "tisgar"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Examples
 
@@ -25,3 +25,4 @@ Regular: *2-fixed*.
 ~zod:dojo> =>((add 2 4) [. .])
 [6 6]
 ```
+

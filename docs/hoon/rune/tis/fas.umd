@@ -1,24 +1,24 @@
----
-navhome: /docs/
-next: true
-sort: 6
-title: =/ "tisfas"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'=/ "tisfas"'
+    ==
+;>
 
-# `=/ "tisfas"` 
+# `=/ "tisfas"`
 
 `[%tsfs p=taco q=hoon r=hoon]`: combine a named and/or typed 
 noun with the subject.
 
 ## Expands to
 
-*if `p` is a symbol*:
+_if `p` is a symbol_:
 
 ```
 =+(^=(p q) r)
 ```
 
-*if `p` is a symbol with a mold*:
+_if `p` is a symbol with a mold_:
 
 ```
 =+(^-(p q) r)
@@ -36,7 +36,7 @@ r
 
 ## Syntax
 
-Regular: *3-fixed*.
+Regular: _3-fixed_.
 
 ## Discussion
 

@@ -1,9 +1,9 @@
----
-navhome: /docs/
----
-
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
 # 2f: noun ordering
+
 ### `++aor`
 
 Alphabetic order
@@ -11,63 +11,60 @@ Alphabetic order
 Computes whether `a` and `b` are in alphabetical order, producing a
 boolean.
 
-Accepts
--------
+## Accepts
 
 `a` is a noun.
 
 `b` is a noun.
 
-Produces
---------
+## Produces
 
 A boolean atom.
 
+## Source
 
-Source
-------
+```
+++  aor                                                 ::  a-order
+  ~/  %aor
+  |=  {a/* b/*}
+  ^-  ?
+  ?:  =(a b)  &
+  ?.  ?=(@ a)
+    ?:  ?=(@ b)  |
+    ?:  =(-.a -.b)
+      $(a +.a, b +.b)
+    $(a -.a, b -.b)
+  ?.  ?=(@ b)  &
+  |-
+  =+  [c=(end 3 1 a) d=(end 3 1 b)]
+  ?:  =(c d)
+    $(a (rsh 3 1 a), b (rsh 3 1 b))
+  (lth c d)
+```
 
-    ++  aor                                                 ::  a-order
-      ~/  %aor
-      |=  {a/* b/*}
-      ^-  ?
-      ?:  =(a b)  &
-      ?.  ?=(@ a)
-        ?:  ?=(@ b)  |
-        ?:  =(-.a -.b)
-          $(a +.a, b +.b)
-        $(a -.a, b -.b)
-      ?.  ?=(@ b)  &
-      |-
-      =+  [c=(end 3 1 a) d=(end 3 1 b)]
-      ?:  =(c d)
-        $(a (rsh 3 1 a), b (rsh 3 1 b))
-      (lth c d)
+## Examples
 
+```
+> (aor 'a' 'b')
+%.y
+> (aor 'b' 'a')
+%.n
+> (aor "foo" "bar")
+%.n
+> (aor "bar" "foo")
+%.y
+> (aor "abcdefz" "abcdefa")
+%.n
+> (aor "abcdefa" "abcdefz")
+%.y
+> (aor 10.000 17.000)
+%.y
+> (aor 10 9)
+%.n
+```
 
-Examples
---------
+---
 
-    > (aor 'a' 'b')
-    %.y
-    > (aor 'b' 'a')
-    %.n
-    > (aor "foo" "bar")
-    %.n
-    > (aor "bar" "foo")
-    %.y
-    > (aor "abcdefz" "abcdefa")
-    %.n
-    > (aor "abcdefa" "abcdefz")
-    %.y
-    > (aor 10.000 17.000)
-    %.y
-    > (aor 10 9)
-    %.n
-
-
-
-***
 ### `++dor`
 
 Numeric order
@@ -75,113 +72,109 @@ Numeric order
 Computes whether `a` and `b` are in ascending numeric order, producing a
 boolean.
 
-Accepts
--------
+## Accepts
 
 `a` is a noun.
 
 `b` is a noun.
 
-Produces
---------
+## Produces
 
 A boolean atom.
 
-Source
-------
+## Source
 
-    ++  dor                                                 ::  d-order
-      ~/  %dor
-      |=  {a/* b/*}
-      ^-  ?
-      ?:  =(a b)  &
-      ?.  ?=(@ a)
-        ?:  ?=(@ b)  |
-        ?:  =(-.a -.b)
-          $(a +.a, b +.b)
-        $(a -.a, b -.b)
-      ?.  ?=(@ b)  &
-      (lth a b)
+```
+++  dor                                                 ::  d-order
+  ~/  %dor
+  |=  {a/* b/*}
+  ^-  ?
+  ?:  =(a b)  &
+  ?.  ?=(@ a)
+    ?:  ?=(@ b)  |
+    ?:  =(-.a -.b)
+      $(a +.a, b +.b)
+    $(a -.a, b -.b)
+  ?.  ?=(@ b)  &
+  (lth a b)
+```
 
+## Examples
 
-Examples
---------
+```
+> (dor 1 2)
+%.y
+> (dor 2 1)
+%.n
+> (dor ~[1 2 3] ~[1 2 4])
+%.y
+> (dor ~[1 2 4] ~[1 2 3])
+%.n
+> (dor (limo ~[99 100 10.000]) ~[99 101 10.000])
+%.y
+> (dor ~[99 101 10.999] (limo ~[99 100 10.000]))
+%.n
+```
 
-    > (dor 1 2)
-    %.y
-    > (dor 2 1)
-    %.n
-    > (dor ~[1 2 3] ~[1 2 4])
-    %.y
-    > (dor ~[1 2 4] ~[1 2 3])
-    %.n
-    > (dor (limo ~[99 100 10.000]) ~[99 101 10.000])
-    %.y
-    > (dor ~[99 101 10.999] (limo ~[99 100 10.000]))
-    %.n
+---
 
-
-
-***
 ### `++gor`
 
 Hash order
 
 XX revisit
 
-Accepts
--------
+## Accepts
 
 `a` is a noun.
 
 `b` is a noun.
 
-Produces
---------
+## Produces
 
 A boolean atom.
 
-Source
-------
+## Source
 
-    ++  gor                                                 ::  g-order
-      ~/  %gor
-      |=  {a/* b/*}
-      ^-  ?
-      =+  [c=(mug a) d=(mug b)]
-      ?:  =(c d)
-        (dor a b)
-      (lth c d)
+```
+++  gor                                                 ::  g-order
+  ~/  %gor
+  |=  {a/* b/*}
+  ^-  ?
+  =+  [c=(mug a) d=(mug b)]
+  ?:  =(c d)
+    (dor a b)
+  (lth c d)
+```
 
+## Examples
 
-Examples
---------
+```
+> (gor 'd' 'c')
+%.y
+> 'd'
+'d'
+> 'c'
+> `@ud`'d'
+100
+> `@ud`'c'
+99
+> (mug 'd')
+1.628.185.714
+> (mug 'c')
+1.712.073.811
+> (gor 'd' 'c')
+%.y
+> (gor 'c' 'd')
+%.n
+> (gor "foo" "bar")
+%.n
+> (gor (some 10) (limo [1 2 3 ~]))
+%.n
+```
 
-    > (gor 'd' 'c')
-    %.y
-    > 'd'
-    'd'
-    > 'c'
-    > `@ud`'d'
-    100
-    > `@ud`'c'
-    99
-    > (mug 'd')
-    1.628.185.714
-    > (mug 'c')
-    1.712.073.811
-    > (gor 'd' 'c')
-    %.y
-    > (gor 'c' 'd')
-    %.n
-    > (gor "foo" "bar")
-    %.n
-    > (gor (some 10) (limo [1 2 3 ~]))
-    %.n
+---
 
-
-
-***
 ### `++hor`
 
 Hash order
@@ -190,90 +183,85 @@ XX revisit
 
 Recursive hash comparator gate.
 
-Accepts
--------
+## Accepts
 
 `a` is a noun.
 
 `b` is a noun.
 
-Produces
---------
+## Produces
 
 A boolean atom. 
 
+## Source
 
-Source
-------
+```
+++  hor                                                 ::  h-order
+  ~/  %hor
+  |=  {a/* b/*}
+  ^-  ?
+  ?:  ?=(@ a)
+    ?.  ?=(@ b)  &
+    (gor a b)
+  ?:  ?=(@ b)  |
+  ?:  =(-.a -.b)
+    (gor +.a +.b)
+  (gor -.a -.b)
+::
+```
 
-    ++  hor                                                 ::  h-order
-      ~/  %hor
-      |=  {a/* b/*}
-      ^-  ?
-      ?:  ?=(@ a)
-        ?.  ?=(@ b)  &
-        (gor a b)
-      ?:  ?=(@ b)  |
-      ?:  =(-.a -.b)
-        (gor +.a +.b)
-      (gor -.a -.b)
-    ::
+## Examples
 
+```
+> (hor . 1)
+%.n
+> (hor 1 2)
+%.y
+> (hor "abc" "cba")
+%.y
+> (hor 'c' 'd')
+%.n
+```
 
-Examples
---------
+---
 
-    > (hor . 1)
-    %.n
-    > (hor 1 2)
-    %.y
-    > (hor "abc" "cba")
-    %.y
-    > (hor 'c' 'd')
-    %.n
-
-
-
-***
 ### `++vor`
 
 Double hash comparator gate.
 
 XX revisit
 
-Accepts
--------
+## Accepts
 
 `a` is a noun
 
 `b` is a noun
 
-Produces
--------
+## Produces
 
-Source
-------
+## Source
 
-    ++  vor                                                 ::  v-order
-      ~/  %vor
-      |=  {a/* b/*}
-      ^-  ?
-      =+  [c=(mug (mug a)) d=(mug (mug b))]
-      ?:  =(c d)
-        (dor a b)
-      (lth c d)
+```
+++  vor                                                 ::  v-order
+  ~/  %vor
+  |=  {a/* b/*}
+  ^-  ?
+  =+  [c=(mug (mug a)) d=(mug (mug b))]
+  ?:  =(c d)
+    (dor a b)
+  (lth c d)
+```
 
+## Examples
 
-Examples
---------
+```
+> (vor 'f' 'g')
+%.y
+> (vor 'a' 'z')
+%.n
+> (vor 43.326 41.106)
+%.n
+```
 
-    > (vor 'f' 'g')
-    %.y
-    > (vor 'a' 'z')
-    %.n
-    > (vor 43.326 41.106)
-    %.n
+---
 
-
-
-***

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 6
-title: ~+ "siglus"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'~+ "siglus"'
+    ==
+;>
 
 # `~+ "siglus"`
 
@@ -20,7 +20,7 @@ transient in the current event).
 
 ## Syntax
 
-Regular: *1-fixed*.
+Regular: _1-fixed_.
 
 ## Examples
 
@@ -44,3 +44,4 @@ This should work fine:
 ~zod:dojo> %.(100 |=(a=@ ~+(?:((lth a 2) 1 (add $(a (sub a 2)) $(a (dec a)))))))
 573.147.844.013.817.084.101
 ```
+

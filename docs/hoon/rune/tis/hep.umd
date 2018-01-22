@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: =- "tishep"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'=- "tishep"'
+    ==
+;>
 
 # `=- "tishep"`
 
@@ -17,7 +17,7 @@ title: =- "tishep"
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
@@ -25,7 +25,7 @@ Regular: *2-fixed*.
 is much smaller than the hoon that uses it.
 
 ## Examples
- 
+
 ```
 ~zod:dojo> =foo  |=  a=@
                  =+  b=1
@@ -34,3 +34,4 @@ is much smaller than the hoon that uses it.
 ~zod:dojo> (foo 5)
 8
 ```
+

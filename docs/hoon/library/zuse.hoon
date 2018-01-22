@@ -1,8 +1,9 @@
----
-navhome: /docs/
-sort: 3
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        sort/'3'
+    ==
+;>
 
 # `%zuse` (Arvo standard library)
 
-<list></list>
+;+  (kids %title datapath/'/docs/hoon/library/zuse/' ~)

@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Haskell
-sort: 3
-next: true
----
+:-  :~  navhome/'/docs/'
+        title/'Haskell'
+        sort/'3'
+        next/'true'
+    ==
+;>
 
 # Haskell
 
@@ -61,3 +61,4 @@ tar (a :- Atom 10 :- b :- c)         = tar (a :- c)
 
 tar a                                = Left "*a"
 ```
+

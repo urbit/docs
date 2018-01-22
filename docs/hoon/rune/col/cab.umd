@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 2
-title: :_ "colcab"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/':_ "colcab"'
+    ==
+;>
 
 # `:_ "colcab"`
 
@@ -17,7 +17,7 @@ title: :_ "colcab"
 
 ### Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ### Examples
 
@@ -25,3 +25,4 @@ Regular: *2-fixed*.
 ~zod:dojo> :_(1 2)
 [2 1]
 ```
+

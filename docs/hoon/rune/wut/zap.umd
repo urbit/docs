@@ -1,15 +1,15 @@
----
-navhome: /docs/
-next: true
-sort: 7
-title: ?: "wutzap"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'?: "wutzap"'
+    ==
+;>
 
 # `?! "wutzap"`
 
 `[%wtzp p=hoon]`: logical not.
 
-## Expands to 
+## Expands to
 
 ```
 .=(| p)
@@ -19,7 +19,7 @@ Produces the logical "not" of `p`.
 
 ## Syntax
 
-Regular: *1-fixed*.
+Regular: _1-fixed_.
 
 Irregular: `!foo` is `?!(foo)`.
 
@@ -38,3 +38,4 @@ Irregular: `!foo` is `?!(foo)`.
 ~zod:dojo> !(gth 5 6)
 %.y
 ```
+

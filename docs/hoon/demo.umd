@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 12
-next: true
-title: Demo
----
+:-  :~  navhome/'/docs/'
+        sort/'12'
+        next/'true'
+        title/'Demo'
+    ==
+;>
 
 # Demo
 
@@ -30,7 +30,7 @@ $(count (add 1 count))                                  ::  15
 
 Hoon is a functional language.  FizzBuzz is usually defined as a
 side effect, but officially Hoon has no side effects.  Accordingly,
-this code will *produce* a list of strings, not *print* a list of 
+this code will _produce_ a list of strings, not _print_ a list of 
 strings. (Of course, if you run this code from the Urbit 
 [_Dojo_](../../using/shell) (shell) you will be able to see the 
 product.)
@@ -86,3 +86,4 @@ You can test this code by mounting your home desk with
 `home/gen/fizzbuzz.hoon` in your Urbit 
 [pier](../../about/glossary#pier); then typing 
 `+fizzbuzz 100` in the dojo.
+

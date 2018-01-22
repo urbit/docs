@@ -1,9 +1,10 @@
----
-navhome: /docs/
-next: true
-sort: 16
-title: Hint ~ ("sig")
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'16'
+        title/'Hint ~ ("sig")'
+    ==
+;>
 
 # Hint `~` ("sig")
 
@@ -12,4 +13,4 @@ interpreter.
 
 ## Twigs
 
-<list dataPreview="true" className="runes"></list>
+;+  (kids %title datapath/'/docs/hoon/rune/sig/' ~)

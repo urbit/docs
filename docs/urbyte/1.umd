@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 2
-next: true
-title: Atoms, auras, types
----
+:-  :~  navhome/'/docs/'
+        sort/'2'
+        next/'true'
+        title/'Atoms, auras, types'
+    ==
+;>
 
 # Urbyte 1: Atoms, auras, types
 
@@ -35,7 +35,7 @@ These tags are effectively dynamic types.
 
 Hoon also tracks the meaning of atoms.  But Hoon is statically
 typed, so an atom description is obviously a type.  An atomic type
-in Hoon is called an *aura*.  The aura syntax is just an ASCII
+in Hoon is called an _aura_.  The aura syntax is just an ASCII
 string starting with `@`, like `@ud` for unsigned decimal.
 
 Hoon has a wide (but not extensible) variety of atom syntaxes.
@@ -72,11 +72,10 @@ Let's type in some aura examples:
 > ? `@ud`0x42
   @ud
 66
-
 ```
 
 So decimal is aura `@ud`, hexadecimal is `@ux`.  The cast
-syntax&mdash;`` `@ud` ``&mdash;lets us change the type of an 
+syntax&mdash;``@ud``&mdash;lets us change the type of an 
 atom, converting hex `0x42` to a decimal `66`.
 
 An aura is soft type.   The programmer can always insist on how
@@ -225,8 +224,8 @@ explicit cast.
 ## Constants, symbols, loobeans and null
 
 An atom type isn't just an aura.  There's another choice: the
-type can be *general* and contain all atoms (like the types we've
-seen above), or *constant* and contain just one atom.
+type can be _general_ and contain all atoms (like the types we've
+seen above), or _constant_ and contain just one atom.
 
 A type describes a set of values.  While auras may informally
 describe a format for which not all atoms are valid, any atom can
@@ -301,7 +300,7 @@ The symbol rules, which are enforced by the Hoon parser but not
 infix hyphens ("kebab-case").
 
 Loobeans are not true and false, but yes (`%.y` or `&`) and no
-(`%.n` or `|`).  This is because *yes is zero and no is one*.
+(`%.n` or `|`).  This is because _yes is zero and no is one_.
 This makes sense at a certain mathematical level, though it
 was probably a mistake from a practical perspective.
 
@@ -345,21 +344,22 @@ As always, these questions are optional and only for fun.
 We didn't include anywhere near all Hoon's auras or syntaxes in
 this lesson.  It's just a set of examples.
 
-* Try using the dojo's magic error erasure to stumble around the
-rest of Hoon's atom syntax.  Any string that can't be extended
-into a valid expression will be trimmed back, with a beep, until
-it can.  Return will beep if the expression is not complete.
-This feedback is harmless and does not use an electric shock.
-It enables stochastic reinforcement learning of Hoon syntax.
+- Try using the Dojo's magic error erasure to stumble around the
+  rest of Hoon's atom syntax.  Any string that can't be extended
+  into a valid expression will be trimmed back, with a beep, until
+  it can.  Return will beep if the expression is not complete.
+  This feedback is harmless and does not use an electric shock.
+  It enables stochastic reinforcement learning of Hoon syntax.
 
-* If `~h6` is six hours, how do you write forty-five minutes?  Two
-days, six hours and forty-five minutes?
+- If `~h6` is six hours, how do you write forty-five minutes? Two 
+  days, six hours and forty-five minutes?
 
-* What would you expect the syntax for double-precision float to
-be?  What about base64?
+- What would you expect the syntax for double-precision float to
+  be? What about base64?
 
-* Does an absolute date have to include every zillisecond, or can
-it be pruned to a day or a year?
+- Does an absolute date have to include every zillisecond, or can
+  it be pruned to a day or a year?
 
-* If there's an IP syntax, what about bitcoin addresses?  What
-other auras do you think should be supported?
+- If there's an IP syntax, what about bitcoin addresses?  What
+  other auras do you think should be supported?
+

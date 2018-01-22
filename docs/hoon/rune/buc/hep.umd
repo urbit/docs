@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 10
-title: $- "buchep"
----
+:-  :~  navhome/'/docs/'
+        sort/'10'
+        title/'$- "buchep"'
+    ==
+;>
 
 # `$- "buchep"`
 
@@ -17,13 +17,13 @@ $_  ^|
 
 ## Syntax
 
-Regular: *2-fixed*.
+Regular: _2-fixed_.
 
 ## Discussion
 
 Since a `$-` ("buchep") is a [`$_` ("buccab")](../cab/), it is not useful for 
 normalizing, just for typechecking.  In particular, the existence of `$-`s does 
-*not* let us send gates or other cores over the network!
+_not_ let us send gates or other cores over the network!
 
 ## Examples
 
@@ -33,3 +33,4 @@ normalizing, just for typechecking.  In particular, the existence of `$-`s does
 ~zod:dojo> ($:foo %foo)
 %bar
 ```
+

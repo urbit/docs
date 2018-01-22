@@ -1,10 +1,10 @@
----
-navhome: /docs/
-sort: 5
----
+/=  kids  /%  /tree-kids/
+:-  :~  navhome/'/docs/'
+        sort/'5'
+    ==
+;>
 
-`%eyre`
-=======
+# `%eyre`
 
 Our http server.
 
@@ -19,4 +19,4 @@ essentially stateless, like functional publishing with `%ford`.
 Additionally, there's a fairly significant component that handles
 `%gall` messaging and subscriptions, which must be stateful.
 
-<div><list/></div>
+;+  (kids %title datapath/'/docs/arvo/internals/eyre/' ~)

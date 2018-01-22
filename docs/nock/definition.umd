@@ -1,9 +1,9 @@
----
-navhome: /docs/
-sort: 1
-next: true
-title: Definition
----
+:-  :~  navhome/'/docs/'
+        sort/'1'
+        next/'true'
+        title/'Definition'
+    ==
+;>
 
 # Definition
 
@@ -120,7 +120,7 @@ an axiomatic operator. `3` is `?`, `4` is `+`, `5` is `=`.
 Instructions `6` through `10` are macros; deleting them
 from Nock would decrease compactness, but not expressiveness.
 
-`[6 b c d]` is *if* `b`, *then* `c`, *else* `d`.  Each of `b`,
+`[6 b c d]` is _if_ `b`, _then_ `c`, _else_ `d`.  Each of `b`,
 `c`, `d` is a formula against the subject.  Remember that `0` is
 true and `1` is false.
 
@@ -136,9 +136,9 @@ subject; from that product `d` it extracts a formula `e` at tree
 address `b`, then computes `*[d e]`.  (`9` is designed to fit
 Hoon; `d` is a `core` (object), `e` points to an arm (method).)
 
-`[10 b c]` is a *hint* semantically equivalent to the formula
-`c`.  If `b` is an atom, it's a *static hint*, which is just
-discarded.  If `b` is a cell, it's a *dynamic* hint; the head of
+`[10 b c]` is a _hint_ semantically equivalent to the formula
+`c`.  If `b` is an atom, it's a _static hint_, which is just
+discarded.  If `b` is a cell, it's a _dynamic_ hint; the head of
 `b` is discarded, and the tail of `b` is executed as a formula
 against the current subject; the product of this is discarded.
 
@@ -154,7 +154,7 @@ The reader might wonder how an interpreter whose only arithmetic
 operation is increment can ever be practical.
 
 The short answer is that a Nock interpreter doesn't have to use
-the algorithm above.  It just has to get the *same result* as the
+the algorithm above.  It just has to get the _same result_ as the
 algorithm above.
 
 The algorithm for decrementing an atom is to count up to it, an
@@ -166,3 +166,4 @@ like decrement, is a hard problem.  But in practice there is only
 one decrement we run -- the decrement in the kernel library.
 Declaring this formula (with a hint, instruction `10` above)
 and recognizing it is not hard.
+

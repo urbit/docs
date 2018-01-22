@@ -1,9 +1,9 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: ~_ "sigcab"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'~_ "sigcab"'
+    ==
+;>
 
 # `~_ "sigcab"`
 
@@ -33,3 +33,4 @@ ford: build failed
 "sample error message"
 ford: build failed
 ```
+

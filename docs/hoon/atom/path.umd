@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 4
-title: Path
----
+:-  :~  navhome/'/docs/'
+        sort/'4'
+        title/'Path'
+    ==
+;>
 
 # Path
 
@@ -29,3 +29,4 @@ Irregular: `/foo/bar/baz`.
 ~zod:dojo> /
 ~
 ```
+

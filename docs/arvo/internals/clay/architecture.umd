@@ -1,9 +1,8 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+    ==
+;>
 
-
-# clay
+# `%clay` architecture
 
 ## high-level
 
@@ -199,19 +198,21 @@ marks. In `++grad` is `++diff`, `++pact`, `++join`, and `++mash`.
 
 The types are as follows, in an informal pseudocode:
 
-    ++  grab:
-      ++  mime: <mime> -> <mark-type>
-      ++  txt: <txt> -> <mark-type>
-      ...
-    ++  grow:
-      ++  mime: <mark-type> -> <mime>
-      ++  txt: <mark-type> -> <txt>
-      ...
-    ++  grad
-      ++  diff: (<mark-type>, <mark-type>) -> <diff-type>
-      ++  pact: (<mark-type>, <diff-type>) -> <mark-type>
-      ++  join: (<diff-type>, <diff-type>) -> <diff-type> or NULL
-      ++  mash: (<diff-type>, <diff-type>) -> <diff-type>
+```
+++  grab:
+  ++  mime: <mime> -> <mark-type>
+  ++  txt: <txt> -> <mark-type>
+  ...
+++  grow:
+  ++  mime: <mark-type> -> <mime>
+  ++  txt: <mark-type> -> <txt>
+  ...
+++  grad
+  ++  diff: (<mark-type>, <mark-type>) -> <diff-type>
+  ++  pact: (<mark-type>, <diff-type>) -> <mark-type>
+  ++  join: (<diff-type>, <diff-type>) -> <diff-type> or NULL
+  ++  mash: (<diff-type>, <diff-type>) -> <diff-type>
+```
 
 These types are basically what you would expect. Not every mark
 has each of these functions defined -- all of them are optional
@@ -251,7 +252,7 @@ it.
 Additionally, if a file is to be synced out to unix, then it must
 have conversion routines to and from the `%mime` mark.
 
-##Using clay
+## Using clay
 
 ### Reading and Subscribing
 
@@ -418,3 +419,4 @@ Additionally, it's fine to set up an autosync even if one desk,
 the other desk, or both desks do not exist. The sync will be
 activated when the upstream desk comes into existence and will
 create the downstream desk if needed.
+

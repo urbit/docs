@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 3
-title: |_ "barcab"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'|_ "barcab"'
+    ==
+;>
 
-# `|_ "barcab"` 
+# `|_ "barcab"`
 
 `[%brcb p=model q=(map term foot)]`: form a door, a many-armed core
 with a sample.
@@ -20,7 +20,7 @@ with a sample.
 
 ## Syntax
 
-Regular: *1-fixed*, then *battery*.
+Regular: _1-fixed_, then _battery_.
 
 ## Discussion
 
@@ -70,3 +70,4 @@ The `ne` door prints a digit in base 10, 16, 32 or 64:
 ~zod:dojo> `@t`~(x ne 12)
 'c'
 ```
+

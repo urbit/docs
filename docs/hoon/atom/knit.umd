@@ -1,8 +1,8 @@
----
-navhome: /docs/
-sort: 3
-title: Knit
----
+:-  :~  navhome/'/docs/'
+        sort/'3'
+        title/'Knit'
+    ==
+;>
 
 # Knit
 
@@ -42,3 +42,4 @@ String with interpolated prettyprinting:
 ~zod:dojo> =+(planet=%world "hello, {<planet>}.")
 "hello, %world."
 ```
+

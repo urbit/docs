@@ -1,11 +1,11 @@
----
-navhome: /docs/
-next: true
-sort: 5
-title: %^ "cenket"
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'%^ "cenket"'
+    ==
+;>
 
-# `%^ "cenket"` 
+# `%^ "cenket"`
 
 `[%cnkt p=hoon q=hoon r=hoon s=hoon]`: call with triple sample.
 
@@ -17,7 +17,7 @@ title: %^ "cenket"
 
 ## Syntax
 
-Regular: *4-fixed*.
+Regular: _4-fixed_.
 
 ## Examples
 
@@ -26,3 +26,4 @@ Regular: *4-fixed*.
 ~zod:dojo> %^(add-triple 1 2 3)
 6
 ```
+
