@@ -2,14 +2,14 @@
 navhome: /docs/
 next: true
 sort: 7
-title: ?: "wutzap"
+title: ?! "wutzap"
 ---
 
 # `?! "wutzap"`
 
 `[%wtzp p=hoon]`: logical not.
 
-## Expands to 
+## Expands to
 
 ```
 .=(| p)
