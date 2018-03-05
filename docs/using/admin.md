@@ -109,6 +109,19 @@ running something on `8443`.
 A complete walkthrough of the Urbit web interface is
 [here](../web/).
 
+## Moons
+
+Urbit namespace is distributed by having parent nodes sign the keys for child nodes.  If you have a planet, your parent star issued your ticket.  As a planet you, in turn, can sign the keys for moons.  The basic idea is: your planet runs permanently in a data center somewhere and moons run on all your devices.  Each planet can issue ~4 billion (`2^32`) moons.
+
+To generate a random moon from your planet run:
+
+    ~your-urbit:dojo> +moon
+
+You can use the resulting output in the same installation flow from [install](/docs/using/install) and [setup](/docs/using/setup).  
+
+Moons are automatically synced to their parent `%kids` desk, and can control applications on their parent planet using `|link`.  You can read more about those things in the [filesystem](/docs/using/filesystem) and [console](/docs/using/shell) walkthroughs.
+
+
 ## Continuity breaches
 
 While the Urbit network is in this alpha state we sometimes have to
