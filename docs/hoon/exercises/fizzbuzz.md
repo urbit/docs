@@ -23,7 +23,7 @@ comments: true
         "Fizz"
       ?:  =(0 (mod count 3))
         "Buzz"
-      (pave !>(count))
+      (scow %ud count)
     $(count (add 1 count))
     ```
 
