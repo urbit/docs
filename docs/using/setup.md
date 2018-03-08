@@ -22,14 +22,14 @@ or a 128-bit _comet_. For a quick terminology guide and high-level
 refresher, refer to this [handy reference sheet](../../about/glossary/).
 
 If you have an Urbit invitation, you'll have a planet like
-`~fintud-macrep` and `~fortyv-tombyt-tabsen-sonres`. To create your
+`~sampel-palnet` and `~sampel-sompel-simpel-sampel`. To create your
 pier:
 
 ```
-$ urbit -w fintud-macrep -t fortyv-tombyt-tabsen-sonres
+$ urbit -w sampel-palnet -t sampel-sompel-simpel-sampel
 ```
 
-This will create a directory `fintud-macrep/` and begin building your
+This will create a directory `sampel-palnet/` and begin building your
 urbit. This may take a few minutes.
 
 > If you are booting a star, the process is the same as above, with your
