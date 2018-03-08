@@ -163,7 +163,7 @@ Urbit and served over HTTP via Eyre, Urbit's web server.
 Head on over to:
 
 ```
-https://urbit.org/~~/fora
+https://fora.urbit.org/~~/
 ```
 
 Like on your own web interface, you'll be redirected to a login page and
@@ -204,7 +204,7 @@ install steps.
 Otherwise, your docs are now live, and you can view them at:
 
 ```
-http://localhost:8443/~~/docs
+http://localhost:8080/~~/docs
 ```
 
 We'll update our planet's desk with new doc changes as they happen. You
