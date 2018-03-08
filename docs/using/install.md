@@ -24,15 +24,6 @@ with us at [urbit.org/stream](https://urbit.org/stream).
 > lots of fun to play with, but not quite ready for your important or
 > sensitive data.
 
-### Update: `~2017.12.7`
-
-Urbit `0.5.1` is now live! We expect there to be a delay in getting our
-updated `urbit-0.5.1` binary packages propagated to Homebrew, APT and
-the other various package managers. So for now, **please build and
-install Urbit from source**. The instructions below will walk you through
-how to do that. You'll then be free to continue the boot and setup
-process as normal, per the rest of this Using docs section.
-
 ## Build from source
 
 ### Dependencies
@@ -40,68 +31,55 @@ process as normal, per the rest of this Using docs section.
 Urbit depends on:
 
 ```
-C compiler (gcc or clang)
-automake
 autoconf
-libtool
+automake
+C compiler (gcc or clang)
 cmake
+curses
+git
+gmp
+libcurl
+libsigsegv
+libtool
+openssl
+python2
 ragel
 re2c
-libcurl
-curses
-gmp
-libsigsegv
-openssl
 ```
 
 Which can usually be installed with the following one-liners:
 
 ```
-# Mac OS X [Homebrew]
-$ brew install gmp libsigsegv openssl libtool autoconf automake cmake
+# macOS (Homebrew) https://treehouse.github.io/installation-guides/mac/homebrew
+# Linuxbrew http://linuxbrew.sh/
+$ brew install autoconf automake cmake gcc git gmp libsigsegv libtool python2 openssl
 
-# Mac OS X [Macports]
-$ sudo port install gmp libsigsegv openssl autoconf automake cmake
+# macOS (Macports)
+$ sudo port install autoconf automake cmake gmp libsigsegv openssl
 
 # Ubuntu or Debian
-$ sudo apt-get install libgmp3-dev libsigsegv-dev openssl libssl-dev libncurses5-dev make exuberant-ctags automake autoconf libtool g++ ragel cmake re2c libcurl4-gnutls-dev
+$ sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make openssl python ragel re2c zlib1g-dev
 
 # Fedora
-$ sudo dnf install gcc gcc-c++ gmp-devel openssl-devel openssl ncurses-devel libsigsegv-devel ctags automake autoconf libtool ragel cmake re2c libcurl-devel
+$ sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel openssl openssl-devel python2 ragel re2c
 
 # FreeBSD
-$ pkg install gmake gmp libsigsegv curl python automake autoconf ragel cmake re2c libtool curl
+$ pkg install autoconf automake cmake curl gcc git gmake gmp libsigsegv libtool python ragel re2c
 
 # Arch
-$ pacman -S gcc gmp libsigsegv openssl automake autoconf ragel cmake re2c libtool ncurses curl
+$ pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses openssl python ragel re2c
 
 # AWS
-$ sudo yum --enablerepo epel install gcc gcc-c++ gmp-devel openssl-devel ncurses-devel libsigsegv-devel ctags automake autoconf libtool cmake re2c libcurl-devel
+$ sudo yum install --enablerepo epel autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel openssl-devel python re2c
 ```
 
 ### Clone and make
 
-Once your dependencies are installed the rest is easy.
-
-If you're cloning the `urbit/urbit` Git repository for the first time, run:
+Once your dependencies are installed the rest is easy:
 
 ```
 $ git clone https://github.com/urbit/urbit
 $ cd urbit
-$ make # gmake on FreeBSD
-```
-
-_**Updated for the `2017.12.7` continuity breach**_
-
-If you already have a clone of the `urbit/urbit` Git repository, assuming
-your `origin` upstream is the `urbit/urbit` repository on Github, run the
-following commands to make sure you're on the correct, clean Git branch:
-
-```
-$ cd urbit
-$ git fetch --all
-$ git checkout master
-$ git reset --hard origin/master
 $ make # gmake on FreeBSD
 ```
 
@@ -116,7 +94,51 @@ Test that it works:
 
 ```
 $ urbit
-simple usage:
+Urbit: a personal server operating function
+https://urbit.org
+Version 0.5.1
+
+Usage: urbit [options...] ship_name
+where ship_name is a @p phonetic representation of an urbit address
+without the leading '~', and options is some subset of the following:
+
+-A dir        Use dir for initial galaxy sync
+-b            Batch create
+-B pill       Bootstrap from this pill
+-c pier       Create a new urbit in pier/
+-d            Daemon mode
+-D            Recompute from events
+-F            Fake keys; also disables networking
+-f            Fuzz testing
+-g            Set GC flag
+-H domain     Set ames bootstrap domain (default urbit.org)
+-I galaxy     Start as ~galaxy
+-k stage      Start at Hoon kernel version stage
+-l port       Initial peer port
+-M            Memory madness
+-n host       Set unix hostname
+-N            Enable networking in fake mode (-F)
+-p ames_port  Set the HTTP port to bind to
+-P            Profiling
+-q            Quiet
+-r host       Initial peer address
+-R            Report urbit build info
+-s            Pill URL from arvo git hash
+-t ticket     Use ~ticket automatically
+-u url        URL from which to download pill
+-v            Verbose
+-w name       Immediately upgrade to ~name
+-x            Exit immediately
+-Xwtf         Skip last event
+
+Development Usage:
+   To create a development ship, use a fakezod:
+   urbit -FI zod -A /path/to/arvo/folder -B /path/to/pill -c zod
+
+   For more information about developing on urbit, see:
+   https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md
+
+Simple Usage:
    urbit -c <mycomet> to create a comet (anonymous urbit)
    urbit -w <myplanet> -t <myticket> if you have a ticket
    urbit <myplanet or mycomet> to restart an existing urbit
