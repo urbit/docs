@@ -52,7 +52,7 @@ Which can usually be installed with the following one-liners:
 ```
 # macOS (Homebrew) https://treehouse.github.io/installation-guides/mac/homebrew
 # Linuxbrew http://linuxbrew.sh/
-$ brew install autoconf automake cmake gcc git gmp libsigsegv libtool python2 openssl
+$ brew install autoconf automake cmake gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl re2c
 
 # macOS (Macports)
 $ sudo port install autoconf automake cmake gmp libsigsegv openssl
@@ -80,11 +80,12 @@ Once your dependencies are installed the rest is easy:
 ```
 $ git clone https://github.com/urbit/urbit
 $ cd urbit
-$ make # gmake on FreeBSD
+$ ./scripts/bootstrap
+$ ./scripts/build
 ```
 
-After running `make`, your Urbit executable is in `bin/urbit`. Install
-it wherever you'd like.
+After running the build script, your Urbit executable is in `bin/urbit`.
+Install it wherever you'd like.
 
 ```
 $ sudo install -m 0755 bin/urbit /usr/local/bin
