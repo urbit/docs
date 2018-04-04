@@ -36,7 +36,9 @@ Any ship can be called an "urbit."
 An Urbit identity is a string like `~firbyr-napbes`. It means nothing,
 but it's easy to remember and say out loud. `~firbyr-napbes` is actually
 just a 32-bit number (`3.237.967.392`, to be exact), like an IP address, 
-that we turn into a human-memorable string.
+that we turn into a human-memorable string. The full name of this string 
+can be viewed by typing `our` in the Dojo, Urbit's shell. This is useful 
+when running a ship with a longer name, such as a *moon* or a *comet*.
 
 Technically, an urbit is a secure digital identity that you own and
 control with a cryptographic key, like a Bitcoin wallet. As in Bitcoin,
