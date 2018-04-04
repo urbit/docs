@@ -184,7 +184,7 @@ The payload of a gate has a shape of `[sample context]`.
 -   <h6 id="-gate-context">context:</h6> the subject in which the gate was defined
 
 *See [basic types](../../hoon/basic/#-core-p-type-q-map-term-type),
-[`%-` ("cenhep")](../../hoon/rune/cen-call/hep-call/) (the 
+[`%-` ("cenhep")](../../hoon/rune/cen/hep/) (the 
 [rune](#-rune) for calling a `gate`).*
 
 #### <h4 id="-a-hoon">hoon</h4>
@@ -286,7 +286,7 @@ Here's some common mold terminology:
     sample
 -   <h6 id="-mold-icon">icon:</h6> the type of the mold's range
 
-*See [mold hoons](../../hoon/rune/buc-mold/).*
+*See [mold hoons](../../hoon/rune/buc/).*
 
 #### nest 
 
@@ -304,10 +304,10 @@ error. This is one of the most commons errors in Hoon programming.
 A Hoon _rune_ is a pair of ASCII symbols used to begin a 
 [Hoon expression](#-a-hoon).
 
-For example, the rune [`?:`](../../hoon/rune/wut-test/col-if/) is 
+For example, the rune [`?:`](../../hoon/rune/wut/col/) is 
 Hoon's most common conditional, a branch on a boolean test. The first 
 symbol in a rune represents a family of related runes. For example, the 
-[`?` family](../../hoon/rune/wut-test/) are all conditionals.
+[`?` family](../../hoon/rune/wut/) are all conditionals.
 
 The result of parsing a Hoon source expression&mdash;the rune, followed
 by its respective children&mdash;into an AST node is simply called
