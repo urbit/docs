@@ -84,11 +84,11 @@ $ ./scripts/bootstrap
 $ ./scripts/build
 ```
 
-After running the build script, your Urbit executable is in `bin/urbit`.
+After running the build script, your Urbit executable is in `build/urbit`.
 Install it wherever you'd like.
 
 ```
-$ sudo install -m 0755 bin/urbit /usr/local/bin
+$ sudo install -m 0755 build/urbit /usr/local/bin
 ```
 
 Test that it works:
