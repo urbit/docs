@@ -39,12 +39,12 @@ a value, it prints that value out. To try this out, you have to start
 the app, then you can poke it from the command line with the following
 commands:
 
-    ~fintud-macrep:dojo> |start %echo
+    ~fintud-macrep:dojo> |start %examples %echo
     >=
     ~fintud-macrep:dojo> :echo 5
     [%echo %noun 5]
     >=
-    ~fintud-macrep:dojo> :examples-echo [1 2]
+    ~fintud-macrep:dojo> :echo [1 2]
     [%echo %noun [1 2]]
     >=
 
@@ -61,7 +61,7 @@ from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
 In this case, `++poke-noun` takes an argument (*sample*) `arg` and 
-prints it to dojo with `~&` ([sigpam](../../hoon/twig/sig-hint/pam-dump/)). 
+prints it to dojo with `~&` ([sigpam](../../hoon/rune/sig/pam/)). 
 This is an unusual rune that formally "does nothing", but the interpreter 
 detects it and printfs the first child, before executing the second as if the
 first didn't exist. This is a slightly hacky way of printing to the console, 
