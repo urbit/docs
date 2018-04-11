@@ -49,7 +49,21 @@ option in `tar`. With a pier `your-urbit/` something like this (from
 inside `urbit/`) should work:
 
 ```
-tar -Scvzf your-urbit.tar.gz ./your-urbit/
+tar -Scvzf ~/your-urbit.tar.gz ~/your-urbit/
+scp your-old-server:~/your-urbit.tar.gz your-new-server:~
+```
+
+Then to unzip it, on your other Unix server, run:
+
+```
+tar xfvz your-urbit.tar.gz
+```
+
+Delete the tar file, and, after installing Urbit on your new server,
+start your urbit back up with:
+
+```
+urbit your-urbit
 ```
 
 ## Console
