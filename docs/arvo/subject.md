@@ -15,7 +15,7 @@ Now we're going to cover the boiler plate that we skimmed over earlier.
     =<  (sum [1.000 2.000])
 
 The first rune, `:-` (colhep, aka
-[:cons](../../hoon/twig/col-cell/hep-cons/)), constructs the 2-element cell
+[:cons](../../hoon/rune/col/hep/)), constructs the 2-element cell
 that will be our program. The first element, `%say`, tells the
 interpreter what to produce--in this case a value.
 
@@ -28,7 +28,7 @@ Similarly, the rest of the program (which we construct with another
 producing a value of type `noun`, and the code that we run to actually
 produce our value of the type `noun`.
 
-`=<` ([tisgal](../../hoon/twig/tis-flow/gal-rap/)) is a rune that takes two
+`=<` ([tisgal](../../hoon/rune/tis/gal/)) is a rune that takes two
 children. The second child is the context against which we run the first
 child. So in this case, we are running the expression
 `(sum [1.000 2.000])` against everything contained within the `|%`. In
@@ -93,7 +93,7 @@ Cheatsheet:
 
 -   To pass arguments from the command line to a program, you replace
     the `*` in the first line of the boiler plate to
-    `{^ {{arg/TYPE $~} $~}}` where `TYPE` is replaced with the type of
+    `[^ [[arg=TYPE ~] ~]]` where `TYPE` is replaced with the type of
     argument you're expecting. Then `+euler1 a` from the dojo sets `arg`
     to `a`.
 -   The empty list is `~`

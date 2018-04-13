@@ -36,7 +36,9 @@ Any ship can be called an "urbit."
 An Urbit identity is a string like `~firbyr-napbes`. It means nothing,
 but it's easy to remember and say out loud. `~firbyr-napbes` is actually
 just a 32-bit number (`3.237.967.392`, to be exact), like an IP address, 
-that we turn into a human-memorable string.
+that we turn into a human-memorable string. The full name of this string 
+can be viewed by typing `our` in the Dojo, Urbit's shell. This is useful 
+when running a ship with a longer name, such as a *moon* or a *comet*.
 
 Technically, an urbit is a secure digital identity that you own and
 control with a cryptographic key, like a Bitcoin wallet. As in Bitcoin,
@@ -182,7 +184,7 @@ The payload of a gate has a shape of `[sample context]`.
 -   <h6 id="-gate-context">context:</h6> the subject in which the gate was defined
 
 *See [basic types](../../hoon/basic/#-core-p-type-q-map-term-type),
-[`%-` ("cenhep")](../../hoon/rune/cen-call/hep-call/) (the 
+[`%-` ("cenhep")](../../hoon/rune/cen/hep/) (the 
 [rune](#-rune) for calling a `gate`).*
 
 #### <h4 id="-a-hoon">hoon</h4>
@@ -284,7 +286,7 @@ Here's some common mold terminology:
     sample
 -   <h6 id="-mold-icon">icon:</h6> the type of the mold's range
 
-*See [mold hoons](../../hoon/rune/buc-mold/).*
+*See [mold hoons](../../hoon/rune/buc/).*
 
 #### nest 
 
@@ -302,10 +304,10 @@ error. This is one of the most commons errors in Hoon programming.
 A Hoon _rune_ is a pair of ASCII symbols used to begin a 
 [Hoon expression](#-a-hoon).
 
-For example, the rune [`?:`](../../hoon/rune/wut-test/col-if/) is 
+For example, the rune [`?:`](../../hoon/rune/wut/col/) is 
 Hoon's most common conditional, a branch on a boolean test. The first 
 symbol in a rune represents a family of related runes. For example, the 
-[`?` family](../../hoon/rune/wut-test/) are all conditionals.
+[`?` family](../../hoon/rune/wut/) are all conditionals.
 
 The result of parsing a Hoon source expression&mdash;the rune, followed
 by its respective children&mdash;into an AST node is simply called

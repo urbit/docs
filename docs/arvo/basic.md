@@ -75,7 +75,7 @@ Your `%clay` filesystem should acknowledge the newly added files.
 
 Run an example to ensure it worked:
 
-    ~fintud-macrep:dojo> +project-euler/p1
+    ~fintud-macrep:dojo/examples> +project-euler-p1
     233.168
 
 Euler 1
