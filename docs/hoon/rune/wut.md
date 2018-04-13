@@ -30,6 +30,6 @@ analyzed.
 If the compiler detects that the branch is degenerate (only one
 side is taken), it fails with an error.
 
-## hoons
+## Hoons
 
 <list dataPreview="true" className="runes"></list>

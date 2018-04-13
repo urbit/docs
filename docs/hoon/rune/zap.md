@@ -7,6 +7,6 @@ title: Wild ! ("zap")
 
 # Wild `!` ("zap")
 
-## hoons
+## Hoons
 
 <list dataPreview="true" className="runes"></list>

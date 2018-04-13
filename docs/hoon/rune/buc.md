@@ -48,6 +48,6 @@ instance, `(map foo bar)` is a table from mold `foo` to mold
 `bar`.  `map` is not a mold; it's a function that makes a mold.
 Molds and mold builders are generally described together.
 
-## hoons
+## Hoons
 
 <list dataPreview="true" className="runes"></list>
