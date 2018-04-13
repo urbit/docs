@@ -9,6 +9,6 @@ title: Nock . ("dot")
 
 Anything Nock can do, Hoon can do also.
 
-## Twigs
+## hoons
 
 <list dataPreview="true" className="runes"></list>

@@ -14,6 +14,6 @@ constraints.
 The `nest` algorithm which tests subtyping is conservative;
 it never allows invalid nests, it sometimes rejects valid nests.
 
-## Twigs
+## hoons
 
 <list dataPreview="true" className="runes"></list>

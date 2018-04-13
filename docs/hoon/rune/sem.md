@@ -8,6 +8,6 @@ title: Make ; ("sem")
 
 Miscellaneous useful macros.
 
-## Twigs
+## hoons
 
 <list dataPreview="true" className="runes"></list>

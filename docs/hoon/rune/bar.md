@@ -22,6 +22,6 @@ with changes, useful for recursion among other things:
 > `$()` expands to `%=($)` (["cenhep"](../cen/hep)), accepting 
 > a *jogging* body containing a list of changes to the subject.
 
-## Stems
+## hoons
 
 <list dataPreview="true" className="runes"></list>

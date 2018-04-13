@@ -30,6 +30,6 @@ course, we are creating a copy, not modifying the original.
 
 There are many flow stems, all small variations on these three.
 
-## Twigs
+## hoons
 
 <list dataPreview="true" className="runes"></list>

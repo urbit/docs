@@ -10,6 +10,6 @@ title: Hint ~ ("sig")
 Twigs that use Nock `10` to pass non-semantic info to the
 interpreter.
 
-## Twigs
+## hoons
 
 <list dataPreview="true" className="runes"></list>
