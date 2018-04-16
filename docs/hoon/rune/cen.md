@@ -11,6 +11,6 @@ We've already covered [`%wing`](../limb/wing) and [`%limb`](../limb/limb).  Thes
 forms of the *invocation* family of hoons, `%`, whose general 
 form is `%=` ("centis").
 
-## Stems
+## Hoons
 
 <list dataPreview="true" className="runes"></list>
