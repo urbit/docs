@@ -104,17 +104,17 @@ As of this writing, we have seven vanes, which each provide the
 following services:
 
 -   `%ames`: the name of both our network and the vane that communicates over
-    it
--   `%behn`: a simple timer
+    it.
+-   `%behn`: a simple timer.
 -   `%clay`: our version-controlled, referentially- transparent, and global
-    filesystem
+    filesystem.
 -   `%dill`: a terminal driver. Unix sends keyboard events to `%dill` from
     either the console or telnet, and `%dill` produces terminal output.
 -   `%eyre`: an http server. Unix sends http messages to `%eyre`, and
     `%eyre` produces http messages in response.
 -   `%ford`: handles resources and publishing.
 -   `%gall`: manages our userspace applications. `%gall` keeps state and
-    manages subscribers
+    manages subscribers.
 
 Cards
 -----

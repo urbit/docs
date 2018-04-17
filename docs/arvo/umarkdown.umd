@@ -1,14 +1,15 @@
 ---
 navhome: /docs/
 next: true
-sort: 22
+sort: 23
 Title: Internals
 ---
-_thanks to ~rovnys-ricfer for writing the original version of this_
+
+_thanks to ~rovnys-ricfer for writing this_
 
 # Urbit-Flavored Markdown
 
-## overview
+## Overview
 
 Urbit-Flavored Markdown (UFM) is a minimal markup language for creating and rendering text documents,
 with a [Markdown](https://en.wikipedia.org/wiki/Markdown)-inspired syntax. It's integrated with the Hoon programming
@@ -19,7 +20,7 @@ using Hoon's `sail` datatype.
 UFM is stricter than Markdown and generally supports only one syntax for each
 type of HTML node that it emits.
 
-### headers
+### Headers
 
 Headers in UFM begin with one or more `#` characters, followed by a space. The
 number of leading `#`s corresponds to the resulting HTML element: `#` yields an
@@ -37,7 +38,7 @@ produces:
 
   ##### Header (h5)
 
-### lists
+### Lists
 
 A line beginning with a `-` or `+` followed by a space is interpreted as an
 element of a list. `-` means unordered list (`<ul>`) and `+` means ordered list
@@ -87,7 +88,7 @@ produces:
     + nested item 1
     + nested item 2
 
-### blockquotes
+### Blockquotes
 
 A section of text beginning with `> ` and indented by two spaces yields a
 `<blockquote>` element. This blockquote can itself turn contain more UFM,
@@ -105,7 +106,7 @@ produces:
 > > As Gregor Samsa awoke one morning from uneasy dreams
     he found himself _transformed_ in his bed into a *monstrous* vermin.
 
-### code blocks
+### Code blocks
 
 By enclosing a block of text in `\`\`\` on their own lines
 before and after the block, the text will be treated as a code block.
@@ -134,7 +135,7 @@ produces:
                  ((x x) y)))))))
   ```
 
-### poems
+### Poems
 
 A poem is a section of text with meaningful newlines.  Normally in UFM,
 newlines are treated as spaces and do not create a new line of text. If you
@@ -154,7 +155,7 @@ produces:
           Is moving its slow thighs, while all about it
           Reel shadows of the indignant desert birds.
 
-### sail expressions
+### Sail expressions
 
 It's possible to use Urbit-Flavored Markdown as an HTML-templating language akin to
 PHP, ERB, JSP, or Handlebars templates. This facility derives
@@ -191,7 +192,7 @@ currently does not apply `<style>` elements or element attributes,
 which are supported in `sail` syntax. Future versions of the publishing
 system will rectify this._
 
-### horizontal rules
+### Horizontal rules
 
 `---` on its own line produces an `<hr>` element, the 'horizontal rule'.
 This is rendered as a horizontal line the width of its containing paragraph.
@@ -207,12 +208,12 @@ Below the line
   ---
   Below the line
 
-### inline markup
+### Inline markup
 
 In addition to the above, UFM includes several options for marking up
 inline text.
 
-##### bold
+##### Bold
 
 Enclose some text in asterisks to boldly render it inside a `<b>` element.
 
@@ -226,7 +227,7 @@ produces:\
 > The first rule of tautology club is
   *the first rule of tautology club*.
 
-##### italics
+##### Italics
 
 Surrounding text with `_` on each side will cause it to appear
 in italics, using an <i> element.
@@ -240,7 +241,7 @@ produces:
 
 Bueller? _Bueller?_
 
-##### double quote
+##### Double quote
 
 Text enclosed in double quotes (`"`) will be rendered with
 opening and closing quotes.
@@ -253,7 +254,7 @@ produces:\
 
 "Yes," he said. "That is the way with him."
 
-##### backslash escape
+##### Backslash escape
 
 A backslash directly before a word (with no spaces) will be interpreted
 as an escape character, causing it to be rendered raw.
@@ -268,7 +269,7 @@ produces:
 Here is some *bold* text.
 Here is some \*not bold\* text.
 
-##### trailing backslash
+##### Trailing backslash
 
 A backslash at the end of a line inserts a line break (`<br>`)
 after that line. This contrasts with the normal UFM behavior of
@@ -286,7 +287,7 @@ I wonder how long each line
 will be if I put backslashes\
 at the ends of the lines.
 
-##### inline code literal
+##### Inline code literal
 
 Enclosing some text in ``` characters will cause it to be displayed as code,
 inside a <code> element with monospace font and a different background color.
@@ -331,7 +332,7 @@ produces:\
 0xdead.beef \
 %term
 
-##### url
+##### Url
 
 To insert a hyperlink, put the text content of the link in `[]` brackets
 followed by the destination URL in `()` parentheses. Note that the text
@@ -341,9 +342,9 @@ Example:
 
 ```
 A [Hoon `core`](https://urbit.org/docs/hoon/concepts/#-core-object)
-is similar to an object in a traditional programming langauge.
+is similar to an object in a traditional programming language.
 ```
 produces:\
 
 A [Hoon `core`](https://urbit.org/docs/hoon/concepts/#-core-object)
-is similar to an object in a traditional programming langauge.
+is similar to an object in a traditional programming language.
