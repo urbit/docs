@@ -46,8 +46,8 @@ Here's a duct that was recently observed in the wild:
 This is the duct the timer vane receives when "timer" sample app asks
 the timer vane to set a timer. This is also the duct over which the
 response is produced at the specified time. Unix sent a terminal
-keystroke event (enter), and Arvo routed it to %dill(our terminal),
-which passed it on to the %gall app terminal, which sent it to shell,
+keystroke event (enter), and Arvo routed it to `%dill` (our terminal),
+which passed it on to the `%gall` app terminal, which sent it to shell,
 its child, which created a new child (with process id 4), which on
 startup asked the timer vane to set a timer.
 
@@ -103,17 +103,17 @@ well-defined, stable, and general-purpose piece of functionality.
 As of this writing, we have seven vanes, which each provide the
 following services:
 
--   `%ames` name of both our network and the vane that communicates over
+-   `%ames`: the name of both our network and the vane that communicates over
     it
--   `%behn` a simple timer
--   `%clay` version-controlled, referentially- transparent, and global
+-   `%behn`: a simple timer
+-   `%clay`: our version-controlled, referentially- transparent, and global
     filesystem
--   `%dill` terminal driver. Unix sends keyboard events to `%dill` from
+-   `%dill`: a terminal driver. Unix sends keyboard events to `%dill` from
     either the console or telnet, and `%dill` produces terminal output.
--   `%eyre` http server. Unix sends http messages to `%eyre`, and
-    `%eyre` produces http messages in response
--   `%ford` handles resources and publishing
--   `%gall` manages our userspace applications. `%gall` keeps state and
+-   `%eyre`: an http server. Unix sends http messages to `%eyre`, and
+    `%eyre` produces http messages in response.
+-   `%ford`: handles resources and publishing.
+-   `%gall`: manages our userspace applications. `%gall` keeps state and
     manages subscribers
 
 Cards
