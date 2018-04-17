@@ -15,7 +15,7 @@ that it's built into arvo.
 
 Let's take a look at two apps, `:source` and `:sink`. First,
 `:source`:
-    
+
     ::	Sends subscription updates to sink.hoon
     ::
     ::::  /===/app/source/hoon
@@ -69,7 +69,7 @@ Let's take a look at two apps, `:source` and `:sink`. First,
     --
 
 And secondly, `:sink`:
-    
+
     ::	Sets up a simple subscription to source.hoon
     ::
     ::::  /===/app/sink/hoon
@@ -232,8 +232,8 @@ added to it. This is why no wire is needed for the move -- we won't
 receive anything in response to it.
 
 Anyways, there are four functions (arms) inside the `|_`. We already know when
-`++poke-noun` is called. `++peer-example-path` is called when someone tries to 
-subscribe to our app. Of course, you don't just subscribe to an app; you 
+`++poke-noun` is called. `++peer-example-path` is called when someone tries to
+subscribe to our app. Of course, you don't just subscribe to an app; you
 subscribe to a path on that app. This path comes in as the argument to `++peer`.
 
 In our case, we don't care what path you subscribed on, and all we do is print
@@ -254,8 +254,8 @@ languages call "map" -- it runs a function on every item in a list and collects
 the results in a list. The list is `(prey /example-path bow)` and the function
 is the `|=` line right after it.
 
-`++prey` is a standard library function defined in `zuse.hoon`. It takes a path 
-and a bowl and gives you a list of the subscribers who are subscribed on a path 
+`++prey` is a standard library function defined in `zuse.hoon`. It takes a path
+and a bowl and gives you a list of the subscribers who are subscribed on a path
 that begins with the given path. "Prey" is short for "prefix".
 
 Now we have the list of relevant subscribers. This a list of triples,
@@ -268,7 +268,7 @@ straightforward!
 
 ### :sink
 
-`:source` should now make sense. `:sink` is a little longer, but not much more 
+`:source` should now make sense. `:sink` is a little longer, but not much more
 complicated.
 
 In `:sink`, our definition of of `++move` is different. All moves start
@@ -290,7 +290,7 @@ is the sign of type boolean (similar to `*`, `@`), which defaults to true (that
 is, `0`).
 
 In `++poke-noun` we check our input to see both if it's `%on` and we're
-available (`val` is true). If so, we produce the move to subscribe to 
+available (`val` is true). If so, we produce the move to subscribe to
 `:source`:
 
     :~	:*  ost.bow
@@ -301,15 +301,15 @@ available (`val` is true). If so, we produce the move to subscribe to
 	==
     ==
 
-Also, in the preceding lines, we set `val` to false (`|`) with `+>.$(val |)`. 
-Remember that the `:_` constructs an inverted cell, with the first child 
-(`+>.$(val |` in our case) as the tail and the second child as the head. Here, 
-the cell we produce when our subscription is `%on` and `val` is true has a 
-head with our new state where `val` is set to false and a tail of our list of 
+Also, in the preceding lines, we set `val` to false (`|`) with `+>.$(val |)`.
+Remember that the `:_` constructs an inverted cell, with the first child
+(`+>.$(val |` in our case) as the tail and the second child as the head. Here,
+the cell we produce when our subscription is `%on` and `val` is true has a
+head with our new state where `val` is set to false and a tail of our list of
 moves, which is shown in the code block above.
 
 Otherwise, if our input is `%off` and we're already subscribed (i.e. `val`
-is false), then we unsubscribe from `:source` and set `val` back to true (`&`), 
+is false), then we unsubscribe from `:source` and set `val` back to true (`&`),
 again using our handy inverted cell constructor mold `:_`:
 
     :_	+>.$(val &)
@@ -319,7 +319,7 @@ It's important to send over the same bone and wire (`/subscribe`) as the
 one we originally subscribed on.
 
 If neither of these cases are true, then we print our current subscription
-state, based on whether `val` is true or false, and return a cell containing 
+state, based on whether `val` is true or false, and return a cell containing
 a null list of moves and our unchanged app state:
 
     ~&	?:  val

@@ -1,6 +1,8 @@
 ---
 navhome: /docs/
+next: true
 sort: 22
+Title: Internals
 ---
 
 # Arvo internals
@@ -137,7 +139,7 @@ as seen by the caller, a `++sign`.
 When a `++kiss` card is passed to a vane, arvo calls its `++call` gate,
 passing it both the card and its duct. This gate must be defined in
 every vane. It produces two things in the following order: a list of
-moves and a possibly-modified copy of its context. The moves are used to
+moves and a possibly modified copy of its context. The moves are used to
 interact with other vanes, while the new context allows the vane to save
 its state. The next time arvo activates the vane it will have this
 context as its subject.
