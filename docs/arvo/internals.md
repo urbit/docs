@@ -13,13 +13,13 @@ Arvo is composed of modules called vanes:
 
 <hr></hr>
 
-At a high level `%arvo` takes a mess of unix io events and turns them
+At a high level `%arvo` takes a mess of Unix I/O events and turns them
 into something clean and structured for the programmer.
 
 `%arvo` is designed to avoid the usual state of complex event networks:
 event spaghetti. We keep track of every event's cause so that we have a
 clear causal chain for every computation. At the bottom of every chain
-is a unix io event, such as a network request, terminal input, file
+is a Unix I/O event, such as a network request, terminal input, file
 sync, or timer event. We push every step in the path the request takes
 onto the chain until we get to the terminal cause of the computation.
 Then we use this causal stack to route results back to the caller.
@@ -31,7 +31,7 @@ The `%arvo` causal stack is called a `++duct`. This is represented
 simply as a list of paths, where each path represents a step in the
 causal chain. The first element in the path is the first letter of
 whichever vane handled that step in the computation, or the empty span
-for unix.
+for Unix.
 
 Here's a duct that was recently observed in the wild:
 
@@ -46,20 +46,20 @@ Here's a duct that was recently observed in the wild:
 This is the duct the timer vane receives when "timer" sample app asks
 the timer vane to set a timer. This is also the duct over which the
 response is produced at the specified time. Unix sent a terminal
-keystroke event (enter), and arvo routed it to %dill(our terminal),
+keystroke event (enter), and Arvo routed it to %dill(our terminal),
 which passed it on to the %gall app terminal, which sent it to shell,
 its child, which created a new child (with process id 4), which on
 startup asked the timer vane to set a timer.
 
 The timer vane saves this duct, so that when the specified time arrives
-and unix sends a wakeup event to the timer vane, it can produce the
+and Unix sends a wakeup event to the timer vane, it can produce the
 response on the same duct. This response is routed to the place we
 popped off the top of the duct, i.e. the time app. This app produces the
 text "ding", which falls down to the shell, which drops it through to
 the terminal. Terminal drops this down to dill, which converts it into
-an effect that unix will recognize as a request to print "ding" to the
+an effect that Unix will recognize as a request to print "ding" to the
 screen. When dill produces this, the last path in the duct has an
-initial element of the empty span, so this is routed to unix, which
+initial element of the empty span, so this is routed to Unix, which
 applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class
@@ -92,11 +92,11 @@ caller.
 Vanes
 -----
 
-As shown above, we use arvo proper to route and control the flow of
-moves. However, arvo proper is rarely directly responsible for
+As shown above, we use Arvo proper to route and control the flow of
+moves. However, Arvo proper is rarely directly responsible for
 processing the event data that directly causes the desired outcome of a
 move. This event data is contained within a card, which is simply a
-`(pair term noun)`. Instead, arvo proper passes the card off to one of
+`(pair term noun)`. Instead, Arvo proper passes the card off to one of
 its vanes, which each present an interface to clients for a particular
 well-defined, stable, and general-purpose piece of functionality.
 
@@ -120,14 +120,14 @@ Cards
 -----
 
 Cards are the vane-specific portion of a move. Each vane defines a
-protocol for interacting with other vanes (via arvo) by defining four
+protocol for interacting with other vanes (via Arvo) by defining four
 types of cards: kisses, gifts, notes, and signs.
 
-When one vane is `%pass`ed a card in its `++kiss`, arvo activates the
+When one vane is `%pass`ed a card in its `++kiss`, Arvo activates the
 `++call` gate with the card as its argument. To produce a result, the
 vane `%give`s one of the cards defined in its `++gift`. If the vane
 needs to request something of another vane, it `%pass`es it a `++note`
-card. When that other vane returns a result, arvo activates the `++take`
+card. When that other vane returns a result, Arvo activates the `++take`
 gate of the initial vane with one of the cards defined in its `++sign`.
 
 In other words, there are only four ways of seeing a move: (1) as a
@@ -136,12 +136,12 @@ seen by the callee, a `++kiss`. (3) the response to that first request
 as seen by the callee, a `++gift`. (4) the response to the first request
 as seen by the caller, a `++sign`.
 
-When a `++kiss` card is passed to a vane, arvo calls its `++call` gate,
+When a `++kiss` card is passed to a vane, Arvo calls its `++call` gate,
 passing it both the card and its duct. This gate must be defined in
 every vane. It produces two things in the following order: a list of
 moves and a possibly modified copy of its context. The moves are used to
 interact with other vanes, while the new context allows the vane to save
-its state. The next time arvo activates the vane it will have this
+its state. The next time Arvo activates the vane it will have this
 context as its subject.
 
 This overview has detailed how to pass a card to a particular vane. To
