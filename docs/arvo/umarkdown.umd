@@ -1,10 +1,10 @@
----
-navhome: /docs/
-sort: 23
-Title: Markdown
----
+:-  :~  navhome/'/docs/'
+        sort/'23'
+        title/'Markdown'
+    ==
+;>
 
-_thanks to ~rovnys-ricfer for writing this_
+_Thanks to ~rovnys-ricfer for writing this._
 
 # Urbit-Flavored Markdown
 
