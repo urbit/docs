@@ -1,6 +1,5 @@
 ---
 navhome: /docs/
-next: true
 sort: 26
 title: Cheat sheet
 ---
@@ -16,12 +15,12 @@ _Original Fora post_ [*here*](https://urbit.org/fora/posts/~2017.9.18..22.31.06.
 
 <br />
 
-We've found it's useful to have a quick reference of Hoon's syntax always at 
-hand. So above is a download link to a Hoon cheatsheet .pdf. It's missing a 
-few of the literal syntaxes, but it covers the most common ones. 
+We've found it's useful to have a quick reference of Hoon's syntax always at
+hand. So above is a download link to a Hoon cheatsheet .pdf. It's missing a
+few of the literal syntaxes, but it covers the most common ones.
 
-This doesn't list any of the Ford runes, although there is now at least 
-some documentation for those [here](/docs/arvo/internals/ford/runes). 
+This doesn't list any of the Ford runes, although there is now at least
+some documentation for those [here](/docs/arvo/internals/ford/runes).
 
 The following runes also exist, but are currently undocumented and not listed in the cheat sheet:
 

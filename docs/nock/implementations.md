@@ -2,7 +2,6 @@
 navhome: /docs/
 title: Implementation
 sort: 6
-next: true
 ---
 
 # C implementation
