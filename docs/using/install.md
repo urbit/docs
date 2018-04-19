@@ -76,7 +76,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
@@ -91,7 +91,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
@@ -110,7 +110,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo env "PATH=$PATH" ninja -C build meson-install
 urbit
 ```
 
@@ -125,7 +125,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
@@ -140,7 +140,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
@@ -155,7 +155,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
@@ -170,7 +170,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
@@ -185,7 +185,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo install -m 0755 ./build/urbit /usr/local/bin
+sudo ninja -C build meson-install
 urbit
 ```
 
