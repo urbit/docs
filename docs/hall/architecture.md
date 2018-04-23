@@ -10,7 +10,7 @@ title: Hall architecture
 
 This document is complemented by Hall's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
 
-Hall's implementation is structured according to the new Gall model. Familiarity with its concepts is assumed. See [the new Gall model](new-gall).
+Hall's implementation is structured according to the new Gall model. Familiarity with its concepts is assumed. See [the new Gall model](new-gall.md).
 
 ## Table of contents
 
