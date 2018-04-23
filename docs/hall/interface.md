@@ -8,7 +8,7 @@ title: Hall interface
 
 # Hall interface
 
-This document describes the different interfaces Hall provides and the data that is accessible and modifyable through them. Knowledge of the Urbit application model (including [new gall](new-gall.md)) and [Hall's architecture](architecture.md) is assumed.
+This document describes the different interfaces Hall provides and the data that is accessible and modifyable through them. Knowledge of the Urbit application model (including [new gall](../new-gall.md)) and [Hall's architecture](../architecture.md) is assumed.
 
 While the structures here are given in Hoon, they match fairly closely to their JSON equivalent. Most important to note is that `$%({$x y/z})` becomes accessible as `json.x.y`.
 
@@ -75,7 +75,7 @@ Contains a map of glyphs and the audiences they map to, as well as a map of ship
 
 #### /client rumor
 
-Contains either a bound or unbound glyph and its target, or a ship with its new ncikname. A `nic`kname of `''` means the associated ship no longer has a nickname set for it.
+Contains either a bound or unbound glyph and its target, or a ship with its new nickname. A `nic`kname of `''` means the associated ship no longer has a nickname set for it.
 
 ```
 ++  rumor                                               :>  query result change
