@@ -8,7 +8,7 @@ title: Hall interface
 
 # Hall interface
 
-This document describes the different interfaces Hall provides and the data that is accessible and modifyable through them. Knowledge of the Urbit application model (including [new gall](new-gall)) and [Hall's architecture](architecture) is assumed.
+This document describes the different interfaces Hall provides and the data that is accessible and modifiable through them. Knowledge of the Urbit application model (including [new gall](new-gall)) and [Hall's architecture](architecture) is assumed.
 
 While the structures here are given in Hoon, they match fairly closely to their JSON equivalent. Most important to note is that `$%({$x y/z})` becomes accessible as `json.x.y`.
 
@@ -179,9 +179,9 @@ Contains a ship and a query, and a flag to indicate whether that subscription ha
 
 ### /circle
 
-Circle queries allow for the retrieving of data from stories. Their messages, configuration, presences, can all be accessed. Since this is a lot of data, there are lots of possibilities for filtering it built in to the query itself.
+Circle queries allow for the retrieving of data from stories. Their messages, configuration, and presences can all be accessed. Since this is a lot of data, there are lots of possibilities for filtering it built in to the query itself.
 
-A quick refresher on the difference between "local" and "remote" presence and configuration: "local" means it pertains to the circle itself, "remote" means it pertains to one of its configured sources. The latter is primarily useful to clients when using a circle for aggregation, like the `%inbox`.
+A quick refresher on the difference between "local" and "remote" presence and configuration: "local" means it pertains to the circle itself; "remote" means it pertains to one of its configured sources. The latter is primarily useful to clients when using a circle for aggregation, like the `%inbox`.
 
 ```
 ++  query                                               ::
@@ -245,7 +245,7 @@ Valid paths include:
 
 #### /circle prize
 
-Contains (where applicable) messages in envelopes (with message numbers), local and remote configurations and presences.
+Contains (where applicable) messages in envelopes (with message numbers), as well as local and remote configurations and presences.
 
 ```
 ++  prize                                               :>  query result
@@ -377,7 +377,7 @@ When the user makes any changes to shared UI elements (elements that should pers
 ```
 
 
-`%glyph`: Adds or removed a binding of a glyph to an audience.
+`%glyph`: Adds or removes a binding of a glyph to an audience.
 
 `%nick`: Sets a local nickname for a ship. An empty nickname `''` means the ship has no nickname.
 
