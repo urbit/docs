@@ -8,7 +8,7 @@ title: Hall interface
 
 # Hall interface
 
-This document describes the different interfaces Hall provides and the data that is accessible and modifyable through them. Knowledge of the Urbit application model (including [new gall](gall.md)) and #[Hall's architecture](architecture.md) is assumed.
+This document describes the different interfaces Hall provides and the data that is accessible and modifiable through them. Knowledge of the Urbit application model (including [new gall](new-gall)) and [Hall's architecture](architecture) is assumed.
 
 While the structures here are given in Hoon, they match fairly closely to their JSON equivalent. Most important to note is that `$%({$x y/z})` becomes accessible as `json.x.y`.
 
@@ -60,7 +60,7 @@ Valid paths include:
 
 #### /client prize
 
-Contains a map of glyphs and the audiences they map to, as well as a map of ships and their locally set nicknames.
+Contains a map of glyphs and the audiences that they map to, as well as a map of ships and their locally set nicknames.
 
 ```
 ++  prize                                               :>  query result
@@ -75,7 +75,7 @@ Contains a map of glyphs and the audiences they map to, as well as a map of ship
 
 #### /client rumor
 
-Contains either a bound or unbound glyph and its target, or a ship with its new ncikname. A `nic`kname of `''` means the associated ship no longer has a nickname set for it.
+Contains either a bound or unbound glyph and its target, or a ship with its new nickname. A nickname of `''` means the associated ship no longer has a nickname set for it.
 
 ```
 ++  rumor                                               :>  query result change
@@ -133,7 +133,7 @@ Contains a circle that was either added or removed from the public list.
 
 ### /peers
 
-To allow a circle owner to inspect who is actually currently subscribed to their stories, they can issue a query to retrieve subscription data.
+To allow a circle owner to inspect who is currently subscribed to their stories, they can issue a query to retrieve subscription data.
 
 ```
 ++  query                                               ::
@@ -181,7 +181,7 @@ Contains a ship and a query, and a flag to indicate whether that subscription ha
 
 Circle queries allow for the retrieving of data from stories. Their messages, configuration, presences, can all be accessed. Since this is a lot of data, there are lots of possibilities for filtering it built in to the query itself.
 
-A quick refresher on the difference between "local" and "remote" presence and configuration: "local" means it pertains to the circle itself, "remote" means it pertains to one of its configured sources. The latter is primarily useful to clients when using a circle for aggregation, like the `%inbox`.
+A quick refresher on the difference between "local" and "remote" presence and configuration: "local" means it pertains to the circle itself, "remote" means it pertains to one of its configured sources. The latter is useful to clients when using a circle for aggregation, like the `%inbox`.
 
 ```
 ++  query                                               ::
@@ -262,8 +262,8 @@ Contains (where applicable) messages in envelopes (with message numbers), local 
 #### /circle rumor
 
 Contains a detailed change description of the data relevant to the query that changed.  
-Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from.  
-Configuration and status changes specify the circle they apply to.
+
+Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from. Configuration and status changes specify the circle they apply to.
 
 ```
 ++  rumor                                               :>  query result change
@@ -334,7 +334,7 @@ Since all of these apply to a specific circle, they all specify a name `nom` of 
 
 ### Messaging
 
-There are two interfaces for telling hall to send a message. The first takes entire `thought`s, the second only `speech`es and the audience to send them to.
+There are two interfaces for telling Hall to send a message. The first takes entire `thought`s, the second only `speech`es and the audience to send them to.
 
 ```
 ++  action                                              :>  user action
