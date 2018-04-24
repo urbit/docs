@@ -9,7 +9,7 @@ title: The new Gall model
 
 This document is complemented by the source code of applications that use the new Gall model (like [Hall](https://github.com/urbit/arvo/blob/master/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
 
-New Gall has not yet fully solidified. As such, structure and naming are tentative to change.
+New `%gall` has not yet fully solidified. As such, its structure and naming are tentative.
 
 ## Table of contents
 
@@ -30,7 +30,8 @@ New Gall has not yet fully solidified. As such, structure and naming are tentati
 ## Renewing a pillar of Arvo
 
 When you write an app, Gall is responsible for making sure its event arms like `++poke` get called when they need to. In essence, it provides developers with a consistent interface for hooking their app up to the operating system.  
-It's not doing a lot to make sure this is done in a structured way though, which results in apps (especially larger ones) feeling like big tangled messes. Something needs to be done about this.
+
+It's not doing a lot to make sure this is done in a structured way, though, which results in apps (especially larger ones) feeling like big, tangled messes. Something needs to be done about this.
 
 ### Problems
 
@@ -39,7 +40,8 @@ Imagine a `++poke`, `++diff`, or even a `++peer` arm. In current implementations
 Or (sadly) more commonly:  
 `^-  {(list move) _+>.$}`
 
-These arms are producing both side-effects and new state. To do this, their code has to simultaneously figure out "how does this poke/diff/whatever change our state?" and "what side-effects does this change have?".  
+These arms are producing both side-effects and new state. To do this, their code has to simultaneously figure out "how does this poke/diff/whatever change our state?" and "what side-effects does this change have?"
+
 You'll find that the logic relating to these two often becomes tangled, making the flow of the whole more difficult to understand. And the side-effects more often than not relate to subscriptions, for which the developer may be writing a lot of boilerplate code. Gall currently does not help in either of these places.
 
 > The main significant cost of software development is the cost of
@@ -51,27 +53,26 @@ cost is extremely welcome.
 
 ### Solutions
 
-Let's imagine a world in which Gall *does* help, in both those places.
+Let's imagine a world in which Gall *does* help, in both of those places.
 
-It would be wonderful if Gall could take care of all standard subscription management logic for you, and direct the flow of code as it concludes is appropriate.  
-Applications, then, would have to help Gall by providing the different parts of this flow, and the checks that allow Gall to make the right decisions. This takes some work out of the developer's hands and results in more structured application code.
+It would be wonderful if Gall could take care of all standard subscription management logic for you, and direct the flow of code as it concludes is appropriate. Applications, then, would have to help Gall by providing the different parts of this flow, and providing the checks that allow Gall to make the right decisions. This takes some work out of the developer's hands and results in more structured application code.
 
-If we expand on that a bit we can even have Gall help us in untangling state changes from side effects. We do so by separating state changes into two phases: *analyzing* what changes need to be made, and *applying* those changes.  
-But where do the side-effects go then? We need to realize there's two kinds: side-effects that are subscription updates, and those that aren't. The latter get produces by applying state changes, while the former get integrated into the Gall flow we described above.  
-Since subscriptions are essentially queries to an app, requesting a specific part of its data/state, we can deduce subscription updates from state changes. We merely provide the logic, and Gall chains it all together.
+If we expand on that a bit, then we can even have Gall help us in untangling state changes from side effects. We do so by separating state changes into two phases: *analyzing* what changes need to be made, and *applying* those changes.  
 
-Having Gall support all this allows us to cleanly and structurally untangle state change analysis, application, and subscription logic into their own arms.  
-For trivial apps, this might result in some arms with trivial code. Though it may feel like writing cruft, it makes understanding the app just as simple as it actually as.  
-For more complex apps, all logic is no longer a big chunk of "what do we do when x happens?", but rather a couple of smaller chunks, like "x happened, how does that change our state?" and "if our state changes like y, what does that mean for subscription z?" These are precisely the kinds of questions that application developers should be asked.
+But where do the side-effects go, then? We need to realize there's two kinds: side-effects that are subscription updates, and side-effects that aren't. The latter get produces by applying state changes, while the former get integrated into the Gall flow we described above.  
+
+Since subscriptions are essentially queries to an app, requesting a specific part of its data/state, we can deduce subscription updates from state changes. We merely provide the logic, and Gall chains it all together. Having Gall support all this allows us to cleanly and structurally untangle state change analysis, application, and subscription logic into their own arms.  
+
+For trivial apps, this might result in some arms with trivial code. Though it may feel like writing cruft, it makes understanding the app just as simple as it actually as. For more complex apps, all logic is no longer a big chunk of "what do we do when x happens?" Rather, it's a few smaller chunks, like "x happened, how does that change our state?" and "if our state changes like y, what does that mean for subscription z?" These are precisely the kinds of questions that application developers should be asked.
 
 
 ## As seen in new Gall
 
-Of course for the above to be made into reality, Gall will need to see some changes. Let's outline the new structures and the arms they get passed between.
+Of course, for the above to be made into reality, Gall will need to see some changes. Let's outline the new structures and the arms they get passed between.
 
 ### Structures
 
-This wouldn't be Urbit if we had some cool new terminology for people to learn. These ones are (for the most part) semantically sensible though, and you might already see how these relate to the story above.
+This wouldn't be Urbit if we didn't have cool terminology for people to learn. These ones are (for the most part) semantically sensible, and you might already see how they relate to the story above.
 
 `brain`: application state.  
 `delta`: change to application state.  
@@ -97,11 +98,13 @@ This also wouldn't be Urbit if we couldn't boil that down to a few simple pseudo
     (gain rumor:(feel query delta) prize:(peek brain query))
 ```
 
-There, in the first three arms we already have the bulk of new Gall! `++gain` won't be part of it, since most applications don't need to keep track of `prize`s directly. Those that do may still implement and hook it up themselves though.
+There. In the first three arms we already have the bulk of new Gall! `++gain` won't be part of it, since most applications don't need to keep track of `prize`s directly. Those that do may still implement and hook it up themselves though.
 
 Of course, these aren't all of the new Gall arms. Most important to still mention is `++leak`, which takes a `ship` and `query` and checks if the former has permission to ask for the latter.  
-There's also `++look` for asynchronous reads, `++hear` for subscription updates (rumors), `++fail` for dealing with process errors, `++cope` for dealing with transaction results, and `++pour` for dealing with responses from arvo.  
+
+There's also `++look` for asynchronous reads, `++hear` for subscription updates (rumors), `++fail` for dealing with process errors, `++cope` for dealing with transaction results, and `++pour` for dealing with responses from Arvo.  
 `++prep`, `++poke` and `++pull` continue to function as they do right now.  
+
 For a more verbose specification of all of these, see the new Gall spec.
 
 
@@ -160,7 +163,7 @@ Now, let's implement all the arms that will be called as things start happening.
   &  ::  everyone's allowed
 ```
 
-Next, let's create the `prize`s for the folks that make it through `++leak`. We'll be producing a `(unit (unit prize))` so we can potentially say `~` for "unavailable" and `[~ ~]` for "invalid query".
+Next, let's create the `prize`s for the folks that make it through `++leak`. We'll be producing a `(unit (unit prize))` so we can potentially say `~` for "unavailable" and `[~ ~]` for "invalid query."
 
 ```
 ++  peek                                                :>  synchronous read
@@ -173,9 +176,10 @@ Next, let's create the `prize`s for the folks that make it through `++leak`. We'
   ==
 ```
 
+
 ### Updating state & query results
 
-Our app can get queried! If they're interested enough, they'll want to receive updates on that whenever relevant state changes. First, let's see how state changes happen. We still have regular old `++poke` arms, let's use that to prompt our application to change its state.
+Our app can be queried! If they're interested enough, they'll want to receive updates on that whenever relevant state changes. First, let's see how state changes happen. We still have regular old `++poke` arms, let's use that to prompt our application to change its state.
 
 ```
 ++  poke-loob                                           :>  regular old poke
@@ -231,13 +235,11 @@ As we saw earlier, for `/number` queries the `delta`s match one-on-one with the 
 
 ## Criticism
 
-* Where event arms currently get passed a `wire`, and the new Gall described above passes them a custom `query` structure, the original new Gall spec gave them `(list coin)`, a "pre-parsed wire". These structures (eg `[%$ p=[p=~.ud q=123]]`) are uncomfortable to work with. Even with a "coin list parsing library" it still doesn't feel ideal.  
-Because of custom structures being easier to work with than lists of knots or coins, writing a `++path-to-query` arm by hand is a small cost for huge gains.
+* Where event arms currently get passed a `wire`, and the new Gall described above passes them a custom `query` structure, the original new Gall spec gave them `(list coin)`, a "pre-parsed wire". These structures (eg `[%$ p=[p=~.ud q=123]]`) are uncomfortable to work with. Even with a "coin list parsing library" it still doesn't feel ideal. Because of custom structures being easier to work with than lists of `++knot`s or `++coin`s, writing a `++path-to-query` arm by hand is a small cost for huge gains.
 
-* Why do `prize` units mean what they do? Would have expected `~` to mean "invalid" and `[~ ~]` to mean "unavailable" as opposed to the other way around.
+* Why do `prize` units mean what they do? One would expect `~` to mean "invalid" and `[~ ~]` to mean "unavailable" as opposed to the other way around.
 
-* The original new Gall spec mentions output lists (like `(list delta)` etc.) to be in reverse order. This was done because adding to the head of a list (`[item list]`) is easier than appending to the tail of a list (`(weld list [item ~])` or other).  
-While it's technically easier to produce a list in reverse order, semantically it's yet another thing to keep in mind. Luckily, most of the "add to x, produce all of it later" code is set-and-forget, so probably not a huge deal, but do we really fear a few stray `++flop`s that much?
+* The original new Gall spec mentions output lists (like `(list delta)` etc.) to be in reverse order. This was done because adding to the head of a list (`[item list]`) is easier than appending to the tail of a list (`(weld list [item ~])` or other). While it's technically easier to produce a list in reverse order, semantically it's yet another thing to keep in mind. Luckily, most of the "add to x, produce all of it later" code is set-and-forget, so probably not a huge deal. But do we really fear a few stray `++flop`s that much?
 
 * There's some weirdness with relation to relying on old state in `++feel` to determine whether a query result actually changed. Just relying on state in general for delta-to-rumor conversion may or may not violate the new Gall spec.
 
