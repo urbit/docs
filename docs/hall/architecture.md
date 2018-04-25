@@ -379,7 +379,7 @@ Again, the rumor path is what our Hall uses to identify what query a received me
 
 The query path is slightly more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can (optionally) be used to specify the range of messages we want to get from our query. Once that range has passed, we stop receiving updates.
 
-### Advanced federation
+### Federation implementation
 
 Along the way so far, we've skipped some parts of structures. Most of these relate to federation. Let's see what we missed.
 
