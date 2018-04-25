@@ -30,7 +30,7 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 * [Communication between Halls](#communication-between-halls)
   * [Commands](#commands)
   * [Querying](#querying)
-  * [Advanced federation](#advanced-federation)
+  * [Federation implementation](#federation-implementation)
 * [Hall implementation](#hall-implementation)
   * [Subscriptions](#subscriptions)
   * [Rumors](#rumors)
