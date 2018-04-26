@@ -7,8 +7,8 @@ title: Syntax
 
 # Hoon syntax
 
-Hoon's syntax is unusual, and to beginners it can look a lot more 
-complex than it really is. However, we believe that anyone who 
+Hoon's syntax is unusual, and to beginners it can look a lot more
+complex than it really is. However, we believe that anyone who
 learns Hoon syntax will find that it has a number of advantages.
 
 # Motivation
@@ -19,7 +19,7 @@ piles*, *indentation creep*, and *feature/label confusion*.
 
 ## Terminator piles
 
-*Terminator piles* are like Lisp's stacks of right parentheses. 
+*Terminator piles* are like Lisp's stacks of right parentheses.
 Significant whitespace solves this problem and creates others.
 
 Hoon has no terminator piles.  Except for a 1-space / more-space
@@ -29,8 +29,8 @@ distinction, it has no significant whitespace.
 
 *Indentation creep* is a problem caused by indentation conventions
 where the indentation point is a function of expression tree
-depth. This problem is especially irritating when working with 
-long functions.  It's true that short functions are better, but 
+depth. This problem is especially irritating when working with
+long functions.  It's true that short functions are better, but
 long ones sometimes need to be written.
 
 A procedural block has a backbone of statements which flows
@@ -48,19 +48,19 @@ shaped more or less like procedural programs.
 ## Feature/label confusion
 
 *Feature/label confusion* (FLC) is the result of any syntax that
-makes it hard for the eye to tell whether a token on the screen is 
-a feature of the language, or a label in the program.  For example, 
+makes it hard for the eye to tell whether a token on the screen is
+a feature of the language, or a label in the program.  For example,
 in Lisp a special form has the same syntax as a function call.
 
 The worst-case result of FLC is "DSL cancer."  Every source file
 is effectively written in its own domain-specific language.  To
 read a new file is to learn a new language&mdash;"write-only code."
 
-User-level macros, operator overloading, even excessive use of 
-higher-order programming, can all lead quickly to the tragedy of 
+User-level macros, operator overloading, even excessive use of
+higher-order programming, can all lead quickly to the tragedy of
 write-only code.
 
-Hoon has no FLC, user-level macros, or overloading. It does 
+Hoon has no FLC, user-level macros, or overloading. It does
 support higher-order programming; write-only Hoon can certainly be
 (and has been) written.  But good Hoon style is to avoid it.
 
@@ -71,12 +71,12 @@ regularities.  We'll cover those here.
 
 ## Glyphs and characters
 
-Hoon source uses ASCII text. Hoon does not accept non-ASCII 
+Hoon source uses ASCII text. Hoon does not accept non-ASCII
 text in source files, except UTF-8 in quoted strings. Hard
 tab characters are illegal.
 
-Hoon is a heavy punctuation user.  Reading off code aloud 
-using the proper names of ASCII symbols is tedious, so we've 
+Hoon is a heavy punctuation user.  Reading off code aloud
+using the proper names of ASCII symbols is tedious, so we've
 mapped each punctuation glyph to a syllable:
 
 ```
@@ -94,31 +94,31 @@ fas /           pat @               wut ?
 zap !
 ```
 
-You don't need to memorize these glyph names, but it might help. 
+You don't need to memorize these glyph names, but it might help.
 Code is often vocalized or subvocalized. "pal" is easier to say,
 aloud or silently, than "left paren".
 
 Note that the list includes two separate whitespace forms: `ace`
 for a single space; `gap` is either 2+ spaces or a newline.  In Hoon,
 the only significance in whitespace is the difference between
-`ace` and `gap`. Comments also count as `gap` whitespace&mdash;they 
+`ace` and `gap`. Comments also count as `gap` whitespace&mdash;they
 start with `::` and run to the end of the line.
 
-An 80-column right margin is strongly encouraged.  Really 
-well-groomed Hoon uses a 55-column code margin and puts a standard 
+An 80-column right margin is strongly encouraged.  Really
+well-groomed Hoon uses a 55-column code margin and puts a standard
 line comment at column 57.
 
 ## Expressions and Runes
 
-Each regular Hoon expression begins with a 
-[rune](../about/glossary/#-rune). A rune is a pair 
-of ASCII punctuation marks (a digraph)&mdash;e.g., `:-`.  The first 
-glyph in the rune indicates the category&mdash;e.g., `:` runes make 
-[cells](../about/glossary/#-cell) (i.e., ordered 
-pairs). We pronounce runes using their glyph names&mdash;for `:-`, 
+Each regular Hoon expression begins with a
+[rune](../about/glossary/#-rune). A rune is a pair
+of ASCII punctuation marks (a digraph)&mdash;e.g., `:-`.  The first
+glyph in the rune indicates the category&mdash;e.g., `:` runes make
+[cells](../about/glossary/#-cell) (i.e., ordered
+pairs). We pronounce runes using their glyph names&mdash;for `:-`,
 we say "colhep".
 
-Each rune is followed by one or more subexpressions. The number and 
+Each rune is followed by one or more subexpressions. The number and
 kind of subexpressions depend on the rune used.
 
 ```
@@ -126,25 +126,25 @@ kind of subexpressions depend on the rune used.
 3
 ```
 
-This Hoon uses `:-` to produce a cell: `[25 3]`. There are always two 
-subexpressions following the `:-` in syntactically correct Hoon code, 
-the first of which, when evaluated, becomes the *head* (i.e., the left) 
+This Hoon uses `:-` to produce a cell: `[25 3]`. There are always two
+subexpressions following the `:-` in syntactically correct Hoon code,
+the first of which, when evaluated, becomes the *head* (i.e., the left)
 and the second of which becomes the *tail* (i.e., the right).
 
-Hoon expressions are just called 
+Hoon expressions are just called
 [hoons](../about/glossary/#-a-hoon), because a rune's subexpression can itself
-be a Hoon expression (i.e. another rune). You'll start to see this tree-like, 
-recursive structure the more you program in Hoon. You can think of one Hoon 
-file being composed of multiple hoons. The subexpressions following the 
+be a Hoon expression (i.e. another rune). You'll start to see this tree-like,
+recursive structure the more you program in Hoon. You can think of one Hoon
+file being composed of multiple hoons. The subexpressions following the
 rune are sometimes called the *children* of that hoon.
 
 ## Tall and flat forms
 
 There are two kinds of Hoon expression syntax: *tall* and *flat*.
-Most runes can be used in both tall and flat hoons. Tall hoons can 
+Most runes can be used in both tall and flat hoons. Tall hoons can
 contain flat hoons, but not vice versa.
 
-The `:-` expression in the last subsection was in tall form.  Here's 
+The `:-` expression in the last subsection was in tall form.  Here's
 the flat equivalent:
 
 `:-(25 3)`
@@ -167,8 +167,8 @@ principles at all.  All irregular forms are flat.
 23
 ```
 
-The `.=` rune tests for equality the two subexpressions that 
-follow, and returns a boolean. Above is the tall, regular form of 
+The `.=` rune tests for equality the two subexpressions that
+follow, and returns a boolean. Above is the tall, regular form of
 `.=`.  Below is the irregular form:
 
 `=(22 23)`
@@ -178,29 +178,29 @@ Some hoons have *only* irregular forms.
 ## Tall regular form
 
 Tall regular forms start with a rune followed by a `gap`.
-(Remember, a `gap` is any whitespace other than `ace`.) After 
-that are the number and types of subexpressions appropriate for 
-that rune.  Each subexpression is separated from its neighboring 
+(Remember, a `gap` is any whitespace other than `ace`.) After
+that are the number and types of subexpressions appropriate for
+that rune.  Each subexpression is separated from its neighboring
 subexpressions by a `gap`.
 
-Let's call everything in the hoon after the initial rune the hoon 
-*body*. There are four body subtypes: *fixed*, *running*, *jogging*, 
-and *[battery](../about/glossary/#-battery)*. 
+Let's call everything in the hoon after the initial rune the hoon
+*body*. There are four body subtypes: *fixed*, *running*, *jogging*,
+and *[battery](../about/glossary/#-battery)*.
 
-Runes with a *fixed* number of subexpressions self-terminate. For 
-instance, the `:-` and `.=` runes each have two subexpressions 
+Runes with a *fixed* number of subexpressions self-terminate. For
+instance, the `:-` and `.=` runes each have two subexpressions
 and are self-terminating.  Otherwise the hoon is terminated by both
 a `gap`, then either `==` (*running* or *jogging*, most hoons) or
 `--` (*battery*).
 
-The *running* body has a list of *children* (i.e., subexpressions). 
-The *jogging* body has a list of child pairs, where the members of 
+The *running* body has a list of *children* (i.e., subexpressions).
+The *jogging* body has a list of child pairs, where the members of
 each pair are separated by a `gap`.  The *battery* body is
 a list of symbol-child pairs, separated by a gap, prefixed by `++`
 and then a gap.
 
-This definition is enough to write Hoon that will parse.  But 
-writing code with optimal whitespace management requires some 
+This definition is enough to write Hoon that will parse.  But
+writing code with optimal whitespace management requires some
 additional informal conventions.
 
 Whitespace design in Hoon is an art, not a science.  It involves
@@ -210,13 +210,13 @@ But it would at least take machine learning, not a rule engine.)
 
 There are only two real *rules* in Hoon whitespace design: don't
 go past 80 characters, and don't use (completely) blank lines.
-Otherwise, if it looks good and is easy to read, it's good.  The 
+Otherwise, if it looks good and is easy to read, it's good.  The
 best way to learn the art is to do everything by convention
 until you know what you're doing.  Here are the conventions:
 
 ### Conventions: *fixed*
 
-Twig bodies with *fixed* fanout use "backstep" indentation, which 
+Rune bodies with *fixed* fanout use "backstep" indentation, which
 slopes backward and to the right by two spaces per line.  The first
 hoon child is two spaces after the end of the rune.
 
@@ -239,13 +239,13 @@ r
 s
 ```
 
-In optimal usage of backstep indentation, the most complicated hoons 
+In optimal usage of backstep indentation, the most complicated hoons
 are at the bottom, keeping code flow vertical rather than diagonal.
 
 ### Conventions: *running*
 
 A *running* hoon body (a simple child list) puts the first child two
-spaces after the end of the rune, and the following children straight 
+spaces after the end of the rune, and the following children straight
 down:
 
 A *running* example:
@@ -261,10 +261,10 @@ A *running* example:
 
 ### Conventions: *jogging*
 
-A *jogging* hoon body (a list of child pairs) is like a running 
-body, but with a pair of children on each line, separated by 
-two spaces. Most jogging bodies start with a *fixed* sequence; 
-the first jogging pair is below and two steps backward from the 
+A *jogging* hoon body (a list of child pairs) is like a running
+body, but with a pair of children on each line, separated by
+two spaces. Most jogging bodies start with a *fixed* sequence;
+the first jogging pair is below and two steps backward from the
 last fixed child.
 
 There are two jogging conventions: *flat* (pair on one line) and
@@ -297,8 +297,8 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 
 A *battery* body has a list of symbol-child pairs, for the
 [battery](../about/glossary/#-battery)
-of a 
-[core](../about/glossary/#-core).  A 
+of a
+[core](../about/glossary/#-core).  A
 conventional example:
 
 ```
@@ -314,7 +314,7 @@ conventional example:
 
 ## Flat regular form
 
-Flat regular form starts with the rune, followed by `pal`, `(` 
+Flat regular form starts with the rune, followed by `pal`, `(`
 (left parenthesis), followed by a body whose subexpressions
 are separated by `ace` (one space), followed by `par`, `)` (right
 parenthesis).
@@ -356,10 +356,10 @@ appropriate.
 
 In the *ultralapidary* naming style, labels are single letters,
 starting in order of construction from `a`, or within a tuple
-[mold](../about/glossary/#-mold) `p`.  Hoon 
-uses single-letter names for the same reason Algol style 
-languages pass arguments by order, rather than keyword.  Naming 
-items by order makes sense when there are no more than three or 
+[mold](../about/glossary/#-mold) `p`.  Hoon
+uses single-letter names for the same reason Algol style
+languages pass arguments by order, rather than keyword.  Naming
+items by order makes sense when there are no more than three or
 four; five is stretching it; six is outright ridiculous.
 
 For example, when defining `add`, we want to name the operands

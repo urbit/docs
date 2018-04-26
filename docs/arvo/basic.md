@@ -19,14 +19,14 @@ To run this code, you'll need an urbit, and will have to either sync or copy the
 
 ## Installation
 
-First, you'll need a running urbit. Follow our urbit.org [install 
-instructions](https://urbit.org/docs/using/install), then 
+First, you'll need a running urbit. Follow our urbit.org [install
+instructions](https://urbit.org/docs/using/install), then
 [setup](https://urbit.org/docs/using/setup) and urbit.
 
-Follow the *Network install* below if your urbit is running on the live network 
-(comets are usually best for development). Follow the *Local install* instead 
-if you're on a 
-[fake ship](https://urbit.org/fora/posts/~2017.1.5..21.31.04..20f3~/) or are 
+Follow the *Network install* below if your urbit is running on the live network
+(comets are usually best for development). Follow the *Local install* instead
+if you're on a
+[fake ship](https://urbit.org/fora/posts/~2017.1.5..21.31.04..20f3~/) or are
 otherwise experiencing problems with the network install.  
 
 ### Network install
@@ -107,26 +107,26 @@ Here is the hoon solution (which should be in your pier directory under
     ::
     |%
     ++  three
-      |=  a/@ 
-      =|  b/@ 
+      |=  a/@
+      =|  b/@
       |-  ^-  @u  
       ?:  (lth a b)
         0   
       (add b $(b (add 3 b)))
     ::
     ++  five
-      |=  a/@ 
-      =|  b/@ 
+      |=  a/@
+      =|  b/@
       |-  ^-  @
       ?:  (lte a b)
         0   
       ?:  =((mod b 3) 0)
-        $(b (add b 5)) 
+        $(b (add b 5))
       (add b $(b (add b 5)))
     ::
-    ++  sum 
+    ++  sum
       |=  a/@u
-      (add (five a) (three a)) 
+      (add (five a) (three a))
     --
 
 > Hoon is not generally whitespace sensitive, but we do have two
@@ -190,11 +190,11 @@ Using this scheme, we would pronounce `?:` as 'wutcol'.
 ### Lines 14-37
 
 Now let's quickly walk through this code line-by-line. Lines 14-37 are wrapped
-in a `|%` ('[barcen](../../hoon/twig/bar-core/cen-core/)'), which produces a
+in a `|%` ('[barcen](../../hoon/rune/bar/cen/)'), which produces a
 core. Cores are a fundamental datatype in Hoon, similar to a struct, class, or
 object. A core is just a map of names to any kind of code, whether it be
-functions or data. Each element, called an arm, in this map begins with a `++` 
-followed by the name and the corresponding code. Since `|%` takes an arbitrary 
+functions or data. Each element, called an arm, in this map begins with a `++`
+followed by the name and the corresponding code. Since `|%` takes an arbitrary
 number of children, it needs to be closed with a `--`.
 
 > `++` ('luslus') is not technically a rune, since it is only used in
@@ -209,7 +209,7 @@ Let's step into each of the three arms within our core.
       (add (five a) (three a))
     --
 
-`|=` ('[bartis](../../hoon/twig/bar-core/tis-gate/)') produces a function, much like a lambda in lisp. It
+  `|=` ('[bartis](../../hoon/rune/bar/tis/)') produces a function, much like a lambda in lisp. It
 takes two children:
 
 1.  A set of argument(s). In this case our argument set only contains
@@ -234,7 +234,7 @@ takes two children:
 As above, `++three` takes an integer argument, `a`, and then executes
 the remainder of the code with `a` set to the actual arguments.
 
-Similarly, `=|` ('[tisbar](../../hoon/twig/tis-flow/bar-new/)') pushes its first child, `b` into our context
+Similarly, `=|` ('[tisbar](../../hoon/rune/tis-flow/bar-new/)') pushes its first child, `b` into our context
 (in other words, it declares a variable `b`) and executes the remainder
 of the code. However, `b` is not an argument; `=|` sets `b` to the
 default value of whatever type it is declared as. Since the default
@@ -252,10 +252,10 @@ value of an atom is `0`, b is set to `0`.
 So now we have two variables: `a` is set to our input, and `b` is
 initialized to `0`.
 
-One way to think about `|-` ('[barhep](../../hoon/twig/bar-core/hep-loop/)') is that it lays down a recursion
+One way to think about `|-` ('[barhep](../../hoon/rune/bar/hep/)') is that it lays down a recursion
 point. More on this later.
 
-`^-` ('[kethep](../../hoon/core/ket-cast/hep-cast/)') is just a cast that sets the result of the remainder of
+`^-` ('[kethep](../../hoon/rune/ket/hep/)') is just a cast that sets the result of the remainder of
 the code to an unsigned integer, `@u`.
 
 In pseudocode, the last three lines read like this: if `a` is less than
@@ -299,7 +299,7 @@ our cheatsheat at the bottom.
     =(a b)  test equality
     (function args ...)  call function with args
 
-Lookup each of these expressions (and all others!) in the [Twig Expressions](../../hoon/twig/) definition.
+Lookup each of these expressions (and all others!) in the [Rune Expressions](../../hoon/rune/) definition.
 
 ### New material
 
@@ -324,7 +324,7 @@ Lookup each of these expressions (and all others!) in the [Twig Expressions](../
     Surrounding a function with `()` is an irregular wide form syntax for
     calling a function with *N* arguments. More on this later.
 
-2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/twig/bar-core/tis-gate/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
+2.  For a set of multiple arguments following `|=` ('[bartis](../../hoon/rune/bar/tis/)'), use `{` 'kel' and `}` 'ker.' For example: `{a/@u b/@u}`.
 
 3.  `:-` makes a cell of values. The irregular wide form of this is
     `[a b]`, with two expressions separated by a single space. While the

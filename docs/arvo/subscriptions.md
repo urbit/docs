@@ -11,7 +11,7 @@ We've dealt fairly extensively with "poke" messages to an app, but these
 are somewhat limited. A poke is a one-way message, but more often we
 want to subscribe to updates from another app. You could build a
 subscription model out of one-way pokes, but it's such a common pattern
-that it's built into arvo.
+that it's built into Arvo.
 
 Let's take a look at two apps, `:source` and `:sink`. First,
 `:source`:
@@ -137,43 +137,43 @@ Cheat sheet:
 
 -   `&` (pam) can either be the boolean true (as can `%.y`, `0`), or
     the irregular wide form of the `?&`
-    ([wutpam](../../hoon/twig/wut-test/pam-and)) rune, which computes
+    ([wutpam](../../hoon/rune/wut/pam)) rune, which computes
     logical `AND` on its two children.
 
 -   Similar to `&`,`|` is either the boolean false (along with `%.n` and
     `1`), or the irregular short for of `?|`
-    ([wutbar](../../hoon/twig/wut-test/bar-or)), which computes logical `OR`
+    ([wutbar](../../hoon/rune/wut/bar)), which computes logical `OR`
     on its two children.
 
 -   `!` is the irregular wide form of `?!`
-    ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical
+    ([wutzap](../../hoon/rune/wut/zap/)), which computes logical
     `NOT` on its child.
 
--   `?~` ([wutsig](../../hoon/twig/wut-test/sig-ifno/)) is basically an
+-   `?~` ([wutsig](../../hoon/rune/wut/sig/)) is basically an
     if-then-else that checks whether condition `p` is `~` (null). `?~`
     is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
-    ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
+    ([buctis](../../hoon/rune/buc/tis/)) tests whether value `q` is
     of type `p`.
-<!-- One thing to watch out for in hoon: if you do `?~`, it
+<!-- One thing to watch out for in Hoon: if you do `?~`, it
       affects the type of the conditional value: XXexample -->
 
--   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
+-   `:_` ([colcab](../../hoon/rune/col/cab/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
 
 -   `++bowl` is the type of the system state within our app. For
     example, it includes things like `our`, the name of the host urbit,
     and `now`, the current time.
 
--   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
+-   `$%` ([buccen](../../hoon/rune/buc/cen/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
     `*`, or a cell `^`.
 <!-- XX this is a union, right? -->
 
 -   You may have noticed the separate `|%`
-    ([barcen](../../hoon/twig/bar-core/cen-core/)) above the application core
-    `|_` ([barcab](../../hoon/twig/bar-core/cab-door/). We usually put our
+    ([barcen](../../hoon/rune/bar/cen/)) above the application core
+    `|_` ([barcab](../../hoon/rune/bar/cab/). We usually put our
     types in another core on top of the application core. We can access
     these type from our `|_` because in `hoon.hoon` files, all cores are
     called against each other. (The shorthand for 'called' is `=>`.)

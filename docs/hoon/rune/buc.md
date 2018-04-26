@@ -22,7 +22,7 @@ x)))`, it's a normalizer and can be used as a mold.
 statically, so we can't actually tell if a mold matches this
 definition perfectly.  This is not actually a problem.)
 
-Twigs in the `$` family are macros designed for making molds.
+Runes in the `$` family are macros designed for making molds.
 But any hoon may produce a mold. (This is why `model` is a
 synonym for `hoon`).
 

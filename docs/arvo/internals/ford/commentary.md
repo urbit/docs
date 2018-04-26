@@ -43,7 +43,7 @@ number. Thus, the keys of `q.tad` are a subset of the numbers less than
 `jav` is the cache of previously-solved problems. The keys are a pair of
 a term (either `%hood`, `%slap`, or `%slam`) and a noun that represents
 the exact problem solved. In the case of a `%hood`, then, the key is of
-the form `[%hood beam cage]`. For `%slap`, there is `[%slap vase twig]`.
+the form `[%hood beam cage]`. For `%slap`, there is `[%slap vase hoon]`.
 For `%slam`, there is `[%slam vase vase]`. The values are the result of
 solving the problem. Note that this cache is wiped in `++stay` when ford
 is reloaded.
@@ -79,7 +79,7 @@ stored by index in `q.kig`, and the next available index is `p.kig`.
                   [%pact p=silk q=silk]                     ::  patch
                   [%plan p=beam q=spur r=hood]              ::  structured assembly
                   [%reef ~]                                 ::  kernel reef
-                  [%ride p=twig q=silk]                     ::  silk thru twig
+                  [%ride p=hoon q=silk]                     ::  silk thru hoon
                   [%vale p=mark q=ship r=*]                 ::  validate [our his]
               ==                                            ::
 
@@ -95,7 +95,7 @@ discussion of the public interface to ford below.
 
     ++  calx                                                ::  concrete cache line
       $%  [%hood p=calm q=(pair beam cage) r=hood]          ::  compile
-          [%slap p=calm q=[p=vase q=twig] r=vase]           ::  compute
+          [%slap p=calm q=[p=vase q=hoon] r=vase]           ::  compute
           [%slam p=calm q=[p=vase q=vase] r=vase]           ::  compute
       ==                                                    ::
 
@@ -106,7 +106,7 @@ The input to a `%hood` is the location of the resource and a cage
 representing the data at that location. The output is the hood found by
 compiling the given cage at the given location.
 
-The input to a `%slap` is the vase of the subject and the twig of the
+The input to a `%slap` is the vase of the subject and the hoon of the
 formula against which we are slapping the subject. The output is the
 vase produced by slapping them.
 
@@ -158,7 +158,7 @@ subject of the body with a `=>`.
 different ways and may load resources from any location. These are
 placed in the subject of the body with a `=~`.
 
-`src` is the set of twigs or references to twigs in the body of the
+`src` is the set of hoons or references to hoons in the body of the
 program. Generally, each of these will represent a core, but this is not
 required. When compiling, these are strung together in a `=~`.
 
@@ -181,8 +181,8 @@ retrieve it from.
 ### `++horn`
 
     ++  horn                                                ::  resource tree
-              $%  [%ape p=twig]                             ::  /~  twig by hand
-                  [%arg p=twig]                             ::  /$  argument
+              $%  [%ape p=hoon]                             ::  /~  hoon by hand
+                  [%arg p=hoon]                             ::  /$  argument
                   [%day p=horn]                             ::  /|  list by @dr
                   [%dub p=term q=horn]                      ::  /=  apply face
                   [%fan p=(list horn)]                      ::  /.  list
@@ -191,7 +191,7 @@ retrieve it from.
                   [%man p=(map span horn)]                  ::  /*  hetero map
                   [%nap p=horn]                             ::  /%  homo map
                   [%now p=horn]                             ::  /&  list by @da
-                  [%saw p=twig q=horn]                      ::  /;  operate on
+                  [%saw p=hoon q=horn]                      ::  /;  operate on
                   [%see p=beam q=horn]                      ::  /:  relative to
                   [%sic p=tile q=horn]                      ::  /^  cast
                   [%toy p=mark]                             ::  /mark/  static
@@ -202,7 +202,7 @@ discussion of their use from a user's perspective is documented in the [runes
 documentation](https://urbit.org/docs/arvo/internals/runes), so we will here
 only give a description of the data structure itself.
 
-A `%ape` horn is simply a twig that gets evaluated and placed in the
+A `%ape` horn is simply a hoon that gets evaluated and placed in the
 subject.
 
 A `%arg` is a gate that gets evaluated with a sample of our location and
@@ -232,7 +232,7 @@ with the same horn and is given a face according to its name.
 A `%now` is a horn that applies to each of a list of `@da`-named files
 in the directory.
 
-A `%saw` is a twig and a horn, where the twig operates on the result of
+A `%saw` is a hoon and a horn, where the hoon operates on the result of
 the horn.
 
 A `%see` is a beam and a horn, where the horn is evaluated at a location
@@ -246,7 +246,7 @@ A `%toy` is simply a mark to be baked.
 ### `++hoop`, body
 
     ++  hoop                                                ::  source in hood
-              $%  [%& p=twig]                               ::  direct twig
+              $%  [%& p=hoon]                               ::  direct hoon
                   [%| p=beam]                               ::  resource location
               ==                                            ::
 
@@ -358,7 +358,7 @@ There are twelve possible computations defined in `++silk`.
                   [%mute p=silk q=(list (pair wing silk))]  ::  mutant
                   [%plan p=beam q=spur r=hood]              ::  structured assembly
                   [%reef ~]                                 ::  kernel reef
-                  [%ride p=twig q=silk]                     ::  silk thru twig
+                  [%ride p=hoon q=silk]                     ::  silk thru hoon
                   [%vale p=mark q=ship r=*]                 ::  validate [our his]
               ==                                            ::
 
@@ -409,7 +409,7 @@ functionality. We don't usually have naked hoods outside ford.
 `%reef` produces a core containing the entirety of zuse and hoon,
 suitable for running arbitrary code against. The mark is `%noun`.
 
-`%ride` slaps a twig against a subject silk. The mark of the result is
+`%ride` slaps a hoon against a subject silk. The mark of the result is
 `%noun`.
 
 `%vale` validates untyped data from a ship against a given mark. This is
@@ -481,7 +481,7 @@ Fourth, we may have zero or more other `/` runes (as described in
 `++horn`), which represent program-specific resources to be loaded.
 
 Fifth and finally, we must have one or more body statements (hoops),
-which are either direct twigs or `//` runes.
+which are either direct hoons or `//` runes.
 
           ++  hoot
             ;~  pose
@@ -491,7 +491,7 @@ which are either direct twigs or `//` runes.
 
 A structure can either be a direct gate, or it can be a simple core.
 Either one is parsed with `++hoof`, so we distinguish the two cases by
-requireing core references to be prefixed by a `*`.
+requiring core references to be prefixed by a `*`.
 
           ++  hoof
             %+  cook  |=(a=^hoof a)
@@ -529,10 +529,10 @@ parse, so we'll discuss those first.
               (stag %& tall:vez)
             ==
 
-There are two types of hoops. Direct twigs are parsed with
-`++tall:vast`, which is the just the hoon parser for a tall-form twig.
+There are two types of hoops. Direct hoons are parsed with
+`++tall:vast`, which is the just the Hoon parser for a tall-form rune.
 
-References to external twigs are marked with a `//` rune followed by a
+References to external hoons are marked with a `//` rune followed by a
 beam, which is parsed with `++have`.
 
           ++  hath  (sear plex:voz (stag %clsg poor:voz))   ::  hood path
@@ -600,9 +600,9 @@ the wide form rule.
                     ;~(pfix gap tall:vez)
 
 `++ape:read` parses for both the `/~` and the `/$` runes. It produces a
-twig. The wide form is a tuple of one or more ace-separated wide-form
-twigs parsed with `++wide:vast` and surrounded by `[` and `]`. The tall
-form is a single tall form twig parsed by `++tall:vast`
+hoon. The wide form is a tuple of one or more ace-separated wide-form
+hoons parsed with `++wide:vast` and surrounded by `[` and `]`. The tall
+form is a single tall form hoon parsed by `++tall:vast`
 
                   ++  day
                     %+  rail
@@ -665,10 +665,10 @@ horn is inserted into the produced map as a key-value pair.
                       ;~(plug ;~(sfix wide:vez sem) apex(tol |))
                     ;~(pfix gap ;~(plug tall:vez ;~(pfix gap apex)))
 
-This parses for the `/;` rune. It produces a twig and a horn. The wide
-form is a wide-form twig followed by a `;` and, recursively, the entire
+This parses for the `/;` rune. It produces a hoon and a horn. The wide
+form is a wide-form hoon followed by a `;` and, recursively, the entire
 horn parser with tall form disabled. The tall form is a gap followed by
-a tall-form twig, another gap, and, recursively, the entire horn parser.
+a tall-form hoon, another gap, and, recursively, the entire horn parser.
 
                   ++  see
                     %+  rail
@@ -701,12 +701,12 @@ assembling is handled entirely within the `++meow:zo:za` core.
 
         ++  meow                                            ::  assemble
           |=  [how=beam arg=heel]
-          =|  $:  rop=(map term (pair hoof twig))           ::  structure/complex
+          =|  $:  rop=(map term (pair hoof hoon))           ::  structure/complex
                   zog=(set term)                            ::  structure guard
-                  bil=(map term (pair hoof twig))           ::  libraries known
+                  bil=(map term (pair hoof hoon))           ::  libraries known
                   lot=(list term)                           ::  library stack
                   zeg=(set term)                            ::  library guard
-                  boy=(list twig)                           ::  body stack
+                  boy=(list hoon)                           ::  body stack
                   hol=?                                     ::  horns allowed?
               ==
           |%
@@ -715,7 +715,7 @@ We take two arguments and keep seven pieces of state. `how` is the
 location of the hook file we're assembling, and `arg` is the heel, or
 virtual path extension, of the file.
 
-In `rop`, we maintain a map of terms to pairs of hooves and twigs to
+In `rop`, we maintain a map of terms to pairs of hooves and hoons to
 represent the structures we've encountered that we will put together in
 a core at the top of the file.
 
@@ -724,7 +724,7 @@ loading. If we try to load a structure already in our dependency
 ancestry, then we fail because we do not allow circular dependencies.
 This enforces that our structure dependency graph is a DAG.
 
-In `bil`, we maintain a map of terms to pairs of hooves and twigs to
+In `bil`, we maintain a map of terms to pairs of hooves and hoons to
 represent the libraries we've encountered that we will put together in a
 series of cores after the structure core.
 
@@ -740,7 +740,7 @@ loading. If we try to load a library already in our dependency ancestry,
 then we fail because we do not allow circular dependencies. This
 enforces that our library dependency graph is a DAG.
 
-In `boy`, we maintain a stack of body twigs, which we'll put together in
+In `boy`, we maintain a stack of body hoons, which we'll put together in
 a series of cores at the end of the file.
 
 In `hol`, we decide if we're allowed to contain horns. Libraries and
@@ -823,7 +823,7 @@ this is that it does essentially five things.
 First, we call `++apex` to process the structures, libraries, and body.
 This changes our state, so we set our context to the produced context.
 Second, we call `++able` to assemble the strucutres and libraries into a
-twig, which we slap against zuse with `++maim`. Third, we call `++chap`
+hoon, which we slap against zuse with `++maim`. Third, we call `++chap`
 to process the resources in the context of the already-loaded structures
 and libraries. Fourth, we slap the body against the structures,
 libraries, and resources. Fifth and finally, we produce the resultant
@@ -916,7 +916,7 @@ individual hoop and recurse.
               (fine cof sel(boy [[%brcn mav] boy]))
             ==
 
-In the case of a direct twig hoop, we just push it onto `boy` and we're
+In the case of a direct hoon hoop, we just push it onto `boy` and we're
 done. In the case of an indirect hoop, we must compile the referenced
 file.
 
@@ -958,8 +958,8 @@ we are accumulating all the structures and libraries referenced in all
 the referenced hook files in one group, which we will put at the top of
 the product.
 
-After this, we put the new list of body twigs into a `=~`, push this
-onto our old list of body twigs, and produce the result.
+After this, we put the new list of body hoons into a `=~`, push this
+onto our old list of body hoons, and produce the result.
 
 If there is no hoon file here, then we descend into each of our children
 until we find a hoon file. First, we produce a list of all our children
@@ -986,8 +986,8 @@ those children whose names are not terms.
 Next, we will produce a map from terms to feet. Each of these feet will
 be placed in a core named by the child name, and it will contain arms
 according to its children. Thus, if the indirect hoop references
-`/path`, then to access the twig defined in `/path/to/twig/hoon`, our
-body must refer to `twig:to`.
+`/path`, then to access the hoon defined in `/path/to/hoon/hoon`, our
+body must refer to `hoon:to`.
 
 If there are no more children, then we are done, so we produce our
 current context.
@@ -1004,7 +1004,7 @@ We also produce the new context so that all external structures,
 libraries, and resources are collected into the same place.
 
 Finally, we have a map of names to feet. If this map is empty, then
-there were no twigs at the requested path, so we give an error with
+there were no hoons at the requested path, so we give an error with
 `++flaw`.
 
 If the map is nonempty, then we finally produce our context with with
@@ -1080,7 +1080,7 @@ that it takes a beam and parses the hook file there into a hood.
 We recurse on this to compile the library. During the compilation, we
 let `zeg` be `gez` to avoid circular dependencies, we let `hol` be false
 since we don't allow horns in libraries, and we let `boy` be null so
-that we can isolate the new body twigs.
+that we can isolate the new body hoons.
 
 Next, we reintegrate the new data into our context. We use the context
 created by the recursion with four changes. First, we reset `zeg` to our
@@ -1088,7 +1088,7 @@ old `zeg`. Second, we reset `hol` to our old `hol`. Third, we put the
 name of our library onto the stack of libraries. This means all of a
 libraries dependencies will be earlier in `lot` than the library itself,
 making `lot` a topological ordering on the dependency graph. Fourth, we
-put in `bil` the library hoof and body (with all body twigs collected in
+put in `bil` the library hoof and body (with all body hoons collected in
 a `=~`), keyed by the library name.
 
 Finally, we recurse, processing the next library in our list.
@@ -1135,7 +1135,7 @@ structures to process. If not, we're done, so we produce our context.
 
 Otherwise, we let `goz` be `zog` plus the current structure so that
 while compiling the dependencies of this structure we don't later create
-a circular dependency. We check next to see if this structure is alredy
+a circular dependency. We check next to see if this structure is already
 in `rop`. If so, then we have already included this structure earlier,
 so we check to see if this is the same version of the structure as we
 included earlier. If so, we skip it. Else, we fail since we can't
@@ -1147,19 +1147,19 @@ true, then we're looking for a gate; otherwise, we're looking for a
 core. We parse this file with `++fade`.
 
 Now, we recurse on this to compile the structure. During the recursion,
-there we have threee changes. Frist, we let `zog` be `goz` so that we
+there we have three changes. Frist, we let `zog` be `goz` so that we
 don't create a circular dependency. Second, we let `hol` be false since
 we do not allow horns in structures. Third, we let `boy` be null so that
-we can isolate the new body twigs.
+we can isolate the new body hoons.
 
 Next, we reintegrate the new data into our context. We use the context
 cretaed by the recursion with four changes. First, if we're including a
 gate structure, then we reset the body to its original body. Else we put
-on the top of our list of body twigs what is essentially a
+on the top of our list of body hoons what is essentially a
 `=+  structure-name` to take off the face of the structure. Second, we
 reset `zog` to our old `zog`. Third, we reset `hol` to our old `hol`.
 Finally, we put in `rop` the structure hoof and body (with all body
-twiggs collected in a `=~`), keyed by the structure name.
+hoongs collected in a `=~`), keyed by the structure name.
 
 Finally, we recurse, processing the next structure in our list.
 
@@ -1180,13 +1180,13 @@ This concludes our discussion of `++apex`.
             (fine cof fin)
 
 Returning to `++abut`, we have now processed the structures, libraries
-and body twigs. Next, we slap our preamble (structures and libraries)
+and body hoons. Next, we slap our preamble (structures and libraries)
 against zuse. First, we construct our preamble in `++able`.
 
           ++  able                                          ::  assemble preamble
-            ^-  twig
+            ^-  hoon
             :+  %tsgr
-              ?:(=(~ rop) [%$ 1] [%brcn (~(run by rop) |=([* a=twig] [%ash a]))])
+              ?:(=(~ rop) [%$ 1] [%brcn (~(run by rop) |=([* a=hoon] [%ash a]))])
             [%tssg (turn (flop lot) |=(a=term q:(need (~(get by bil) a))))]
 
 We first put the structures in `rop` into a single `|%` at the top and
@@ -1197,10 +1197,10 @@ libraries are in consecutive cores.
 We slap the preamble against zuse with `++maim`.
 
         ++  maim                                            ::  slap
-          |=  [cof=cafe vax=vase gen=twig]
+          |=  [cof=cafe vax=vase gen=hoon]
           ^-  (bolt vase)
           %+  (clef %slap)  (fine cof vax gen)
-          |=  [cof=cafe vax=vase gen=twig]
+          |=  [cof=cafe vax=vase gen=hoon]
           =+  puz=(mule |.((~(mint ut p.vax) [%noun gen])))
           ?-  -.puz
             |  (flaw cof p.puz)
@@ -1215,7 +1215,7 @@ is not already in our cache. First we'll discuss the computation, then
 we'll discuss the caching system.
 
 We call `++mule` with a call to `++mint:ut` on the type of our subject
-vase against the given twig. In other words, we're compiling the twig
+vase against the given hoon. In other words, we're compiling the hoon
 with against the subject type in the given subject vase.
 
 If compilation fails, then we produce an error bolt with the produced
@@ -1343,14 +1343,14 @@ through them one by one.
             ?-    -.hon
                 %ape  (maim cof bax p.hon)
 
-This is `/~`. We slap the twig against our context.
+This is `/~`. We slap the hoon against our context.
 
                 %arg
               %+  cope  (maim cof bax p.hon)
               |=  [cof=cafe gat=vase]
               (maul cof gat !>([how arg]))
 
-This is `/$`. We slap the twig against our context, which we expect to
+This is `/$`. We slap the hoon against our context, which we expect to
 produce a gate. We slam this gate with a sample of `how` and `arg`,
 which is our location and the heel (virtual path extension).
 
@@ -1549,7 +1549,7 @@ This is `/:`. We process the given horn at the given beam.
               (maul cof gat sam)
 
 This is `/;`. First, we process the given horn. Then, we slap the given
-twig against our context to produce (hopefully) a gate. Finally, we slam
+hoon against our context to produce (hopefully) a gate. Finally, we slam
 the vase we got from processing the horn against the gate.
 
                 %sic
@@ -1599,12 +1599,12 @@ We return once more to `++abut`.
             |=  [cof=cafe gox=vase]
             %+  cope  (maim cof (slop gox bax) [%tssg (flop boy)])
             |=  [cof=cafe fin=vase]
-            (fine cof fin) 
+            (fine cof fin)
 
 Recall that we processed our structures, libraries and body with
 `++apex`. We slapped our structures and libraries against zuse with
 `++maim`. We processed our resources with `++chap`. Now, all our body
-twigs are collected in a `=~` and slapped against our structures,
+hoons are collected in a `=~` and slapped against our structures,
 libraries, and resources. This produces our final result.
 
 The hook file has been assembled. And there was great rejoicing.
@@ -2346,23 +2346,23 @@ of the main silk, so we mark the produced vase with the original mark.
         ++  keel                                            ::  apply mutations
           |=  [cof=cafe suh=vase yom=(list (pair wing vase))]
           ^-  (bolt vase)
-          %^  maim  cof 
+          %^  maim  cof
             %+  slop  suh
             |-  ^-  vase
             ?~  yom  [[%atom %n] ~]
             (slop q.i.yom $(yom t.yom))
-          ^-  twig
+          ^-  hoon
           :+  %cncb  [%& 2]~
           =+  axe=3
-          |-  ^-  (list (pair wing twig))
+          |-  ^-  (list (pair wing hoon))
           ?~  yom  ~
           :-  [p.i.yom [%$ (peg axe 2)]]
           $(yom t.yom, axe (peg axe 3))
 
 We first put the vases together in one big tuple starting with the
 subject and going through the mutations. We slap against this tuple a
-`%_` twig we directly construct. Since a `%_` twig takes a list of pairs
-of wings and twigs, we simply have to generate twigs referring to the
+`%_` hoon we directly construct. Since a `%_` hoon takes a list of pairs
+of wings and hoons, we simply have to generate hoons referring to the
 correct axes in the subject. This is very easy since we just recur on
 axis 3 of whatever axis we were already at.
 
@@ -2483,7 +2483,7 @@ Lifcycle of a `%ride`
             (fine cof %noun vax)
 
 This slaps evaluates the given silk, then it slaps the result against
-the given twig. Since we don't know what of what mark (if any) is the
+the given hoon. Since we don't know what of what mark (if any) is the
 result, we give it a mark of `%noun`.
 
 Lifecycle of a `%vale`
@@ -2532,7 +2532,7 @@ At any rate, `++lake` coerces a noun into the correct type for a mark.
             (flaw cof [%leaf "ford: no noun: {<[for bek]>}"]~)
           %+  cope  (maul cof (slap gab [%cnzy %noun]) [%noun q.sam])
           |=  [cof=cafe pro=vase]
-          ?:  =(+<.q.pro q.sam) 
+          ?:  =(+<.q.pro q.sam)
             (fine cof (slot 6 pro))
           (flaw cof [%leaf "ford: invalid content: {<[for bek]>}"]~)
 
