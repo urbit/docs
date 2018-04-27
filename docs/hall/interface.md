@@ -75,7 +75,7 @@ Contains a map of glyphs and the audiences they map to, as well as a map of ship
 
 #### /client rumor
 
-Contains either a bound or unbound glyph and its target, or a ship with its new ncikname. A `nic`kname of `''` means the associated ship no longer has a nickname set for it.
+Contains either a bound or unbound glyph and its target, or a ship with its new nickname. A nickname of `''` means the associated ship no longer has a nickname set for it.
 
 ```
 ++  rumor                                               :>  query result change
