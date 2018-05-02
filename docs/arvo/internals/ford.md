@@ -10,7 +10,7 @@ sort: 6
 Our typed and marked computation engine.
 
 A variety of different services are provided by `%ford`, but they mostly
-involve compiling hook files, slapping/slammming code with marked data,
+involve compiling hook files, slapping/slamming code with marked data,
 and converting data between marks, including validating data to a mark.
 Throughout every computation, `%ford` keeps track of which resources are
 dependencies so that the client may be aware when one or more
@@ -99,12 +99,12 @@ functionality. We don't usually have naked hoods outside ford.
 
 ### `%reef`
 
-Produces a core containing the entirety of zuse and hoon, suitable for
+Produces a core containing the entirety of Zuse and Hoon, suitable for
 running arbitrary code against. The mark is `%noun`.
 
 ### `%ride`
 
-Slaps a twig against a subject silk. The mark of the result is `%noun`.
+Slaps a hoon against a subject silk. The mark of the result is `%noun`.
 
 ### `%vale`
 

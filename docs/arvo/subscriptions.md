@@ -11,11 +11,11 @@ We've dealt fairly extensively with "poke" messages to an app, but these
 are somewhat limited. A poke is a one-way message, but more often we
 want to subscribe to updates from another app. You could build a
 subscription model out of one-way pokes, but it's such a common pattern
-that it's built into arvo.
+that it's built into Arvo.
 
 Let's take a look at two apps, `:source` and `:sink`. First,
 `:source`:
-    
+
     ::	Sends subscription updates to sink.hoon
     ::
     ::::  /===/app/source/hoon
@@ -69,7 +69,7 @@ Let's take a look at two apps, `:source` and `:sink`. First,
     --
 
 And secondly, `:sink`:
-    
+
     ::	Sets up a simple subscription to source.hoon
     ::
     ::::  /===/app/sink/hoon
@@ -137,43 +137,43 @@ Cheat sheet:
 
 -   `&` (pam) can either be the boolean true (as can `%.y`, `0`), or
     the irregular wide form of the `?&`
-    ([wutpam](../../hoon/twig/wut-test/pam-and)) rune, which computes
+    ([wutpam](../../hoon/rune/wut/pam)) rune, which computes
     logical `AND` on its two children.
 
 -   Similar to `&`,`|` is either the boolean false (along with `%.n` and
     `1`), or the irregular short for of `?|`
-    ([wutbar](../../hoon/twig/wut-test/bar-or)), which computes logical `OR`
+    ([wutbar](../../hoon/rune/wut/bar)), which computes logical `OR`
     on its two children.
 
 -   `!` is the irregular wide form of `?!`
-    ([wutzap](../../hoon/twig/wut-test/zap-not/)), which computes logical
+    ([wutzap](../../hoon/rune/wut/zap/)), which computes logical
     `NOT` on its child.
 
--   `?~` ([wutsig](../../hoon/twig/wut-test/sig-ifno/)) is basically an
+-   `?~` ([wutsig](../../hoon/rune/wut/sig/)) is basically an
     if-then-else that checks whether condition `p` is `~` (null). `?~`
     is slightly different from `?:(~ %tru %fal)` in that `?~` reduces to
     `?:($=(%type value) %tru %false)`. `$=`
-    ([buctis](../../hoon/twig/buc-mold/tis-coat/)) tests whether value `q` is
+    ([buctis](../../hoon/rune/buc/tis/)) tests whether value `q` is
     of type `p`.
-<!-- One thing to watch out for in hoon: if you do `?~`, it
+<!-- One thing to watch out for in Hoon: if you do `?~`, it
       affects the type of the conditional value: XXexample -->
 
--   `:_` ([colcab](../../hoon/twig/col-cell/cab-scon/)) is inverted `:-`: it
+-   `:_` ([colcab](../../hoon/rune/col/cab/)) is inverted `:-`: it
     accepts `p` and `q`, and produces `[q p]`.
 
 -   `++bowl` is the type of the system state within our app. For
     example, it includes things like `our`, the name of the host urbit,
     and `now`, the current time.
 
--   `$%` ([buccen](../../hoon/twig/buc-mold/cen-book/)) is a type
+-   `$%` ([buccen](../../hoon/rune/buc/cen/)) is a type
     constructor: it defines a new type, composed of `n` types that it is
     passed. For example `$%  @  *  ^  ==` is the type of either `@`,
     `*`, or a cell `^`.
 <!-- XX this is a union, right? -->
 
 -   You may have noticed the separate `|%`
-    ([barcen](../../hoon/twig/bar-core/cen-core/)) above the application core
-    `|_` ([barcab](../../hoon/twig/bar-core/cab-door/). We usually put our
+    ([barcen](../../hoon/rune/bar/cen/)) above the application core
+    `|_` ([barcab](../../hoon/rune/bar/cab/). We usually put our
     types in another core on top of the application core. We can access
     these type from our `|_` because in `hoon.hoon` files, all cores are
     called against each other. (The shorthand for 'called' is `=>`.)
@@ -232,8 +232,8 @@ added to it. This is why no wire is needed for the move -- we won't
 receive anything in response to it.
 
 Anyways, there are four functions (arms) inside the `|_`. We already know when
-`++poke-noun` is called. `++peer-example-path` is called when someone tries to 
-subscribe to our app. Of course, you don't just subscribe to an app; you 
+`++poke-noun` is called. `++peer-example-path` is called when someone tries to
+subscribe to our app. Of course, you don't just subscribe to an app; you
 subscribe to a path on that app. This path comes in as the argument to `++peer`.
 
 In our case, we don't care what path you subscribed on, and all we do is print
@@ -254,8 +254,8 @@ languages call "map" -- it runs a function on every item in a list and collects
 the results in a list. The list is `(prey /example-path bow)` and the function
 is the `|=` line right after it.
 
-`++prey` is a standard library function defined in `zuse.hoon`. It takes a path 
-and a bowl and gives you a list of the subscribers who are subscribed on a path 
+`++prey` is a standard library function defined in `zuse.hoon`. It takes a path
+and a bowl and gives you a list of the subscribers who are subscribed on a path
 that begins with the given path. "Prey" is short for "prefix".
 
 Now we have the list of relevant subscribers. This a list of triples,
@@ -268,7 +268,7 @@ straightforward!
 
 ### :sink
 
-`:source` should now make sense. `:sink` is a little longer, but not much more 
+`:source` should now make sense. `:sink` is a little longer, but not much more
 complicated.
 
 In `:sink`, our definition of of `++move` is different. All moves start
@@ -290,7 +290,7 @@ is the sign of type boolean (similar to `*`, `@`), which defaults to true (that
 is, `0`).
 
 In `++poke-noun` we check our input to see both if it's `%on` and we're
-available (`val` is true). If so, we produce the move to subscribe to 
+available (`val` is true). If so, we produce the move to subscribe to
 `:source`:
 
     :~	:*  ost.bow
@@ -301,15 +301,15 @@ available (`val` is true). If so, we produce the move to subscribe to
 	==
     ==
 
-Also, in the preceding lines, we set `val` to false (`|`) with `+>.$(val |)`. 
-Remember that the `:_` constructs an inverted cell, with the first child 
-(`+>.$(val |` in our case) as the tail and the second child as the head. Here, 
-the cell we produce when our subscription is `%on` and `val` is true has a 
-head with our new state where `val` is set to false and a tail of our list of 
+Also, in the preceding lines, we set `val` to false (`|`) with `+>.$(val |)`.
+Remember that the `:_` constructs an inverted cell, with the first child
+(`+>.$(val |` in our case) as the tail and the second child as the head. Here,
+the cell we produce when our subscription is `%on` and `val` is true has a
+head with our new state where `val` is set to false and a tail of our list of
 moves, which is shown in the code block above.
 
 Otherwise, if our input is `%off` and we're already subscribed (i.e. `val`
-is false), then we unsubscribe from `:source` and set `val` back to true (`&`), 
+is false), then we unsubscribe from `:source` and set `val` back to true (`&`),
 again using our handy inverted cell constructor mold `:_`:
 
     :_	+>.$(val &)
@@ -319,7 +319,7 @@ It's important to send over the same bone and wire (`/subscribe`) as the
 one we originally subscribed on.
 
 If neither of these cases are true, then we print our current subscription
-state, based on whether `val` is true or false, and return a cell containing 
+state, based on whether `val` is true or false, and return a cell containing
 a null list of moves and our unchanged app state:
 
     ~&	?:  val

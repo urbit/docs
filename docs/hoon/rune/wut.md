@@ -6,7 +6,7 @@ title: Test ? ("wut")
 ---
 
 # Test `?` ("wut")
- 
+
 Hoon has the usual branches and logical tests.  For pattern
 matching, it also has a [`?=` ("wuttis")](./tis/) rune that tests whether a value
 matches the icon of a mold.  And it has branch inference,
@@ -22,9 +22,9 @@ type for the branches of the `?:`.  Branch inference also works
 for expressions which expand to `?:`.
 
 The test does not have to be a single `?=`; the compiler can
-analyze arbitrary boolean logic ([`?&` ("wutpam")](./pam/), 
-[`?|` ("wutbar")](./bar/), [`?!` ("wutzap")](./zap/)) with full 
-short-circuiting.  Equality tests ([`.=` ("dottis")](../dot/tis/)) are *not* 
+analyze arbitrary boolean logic ([`?&` ("wutpam")](./pam/),
+[`?|` ("wutbar")](./bar/), [`?!` ("wutzap")](./zap/)) with full
+short-circuiting.  Equality tests ([`.=` ("dottis")](../dot/tis/)) are *not*
 analyzed.
 
 If the compiler detects that the branch is degenerate (only one

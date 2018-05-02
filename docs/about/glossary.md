@@ -1,7 +1,6 @@
 ---
 navhome: /docs/
 navuptwo: true
-next: true
 sort: 5
 title: Glossary
 ---
@@ -30,14 +29,14 @@ classed by the number of bits in their address:
 
 Any ship can be called an "urbit."
 
-> You can find a longer-form summary here: 
+> You can find a longer-form summary here:
 >  [`urbit.org/posts/address-space/`](https://urbit.org/posts/address-space/).
- 
+
 An Urbit identity is a string like `~firbyr-napbes`. It means nothing,
 but it's easy to remember and say out loud. `~firbyr-napbes` is actually
-just a 32-bit number (`3.237.967.392`, to be exact), like an IP address, 
-that we turn into a human-memorable string. The full name of this string 
-can be viewed by typing `our` in the Dojo, Urbit's shell. This is useful 
+just a 32-bit number (`3.237.967.392`, to be exact), like an IP address,
+that we turn into a human-memorable string. The full name of this string
+can be viewed by typing `our` in the Dojo, Urbit's shell. This is useful
 when running a ship with a longer name, such as a *moon* or a *comet*.
 
 Technically, an urbit is a secure digital identity that you own and
@@ -124,7 +123,7 @@ An atom type is *warm* or *cold* based on whether the constant exists.
 #### aura
 
 An *aura* is a soft atom type. It represents the structure of an
-atom in a string beginning with `@`. An aura may represent print 
+atom in a string beginning with `@`. An aura may represent print
 format or other semantics. Its constraints on the value of an
 atom aren't enforced in any way.
 
@@ -148,8 +147,8 @@ You can find the list of all auras [here](../../hoon/atom/sand/).
 
 #### core
 
-A _core_ is a [cell](#-nock-cell) of `[code data]`, where we call the 
-code head the _battery_ and the data tail the _payload_. All code-data 
+A _core_ is a [cell](#-nock-cell) of `[code data]`, where we call the
+code head the _battery_ and the data tail the _payload_. All code-data
 structures in normal languages (functions, objects, modules, etc.)
 become _core_s in Hoon.
 
@@ -158,24 +157,24 @@ become _core_s in Hoon.
 
 *See [basic types](../../hoon/basic)*.
 
-#### face 
+#### face
 
-A Hoon _face_ is a labeled subtree. 
+A Hoon _face_ is a labeled subtree.
 
 Hoon has no scope or symbol-table; there is only the subject. To
 "declare" a "variable" is to construct a new subject:
 `[name=value old-subject]`.
 
-A face is a type that wraps a named symbol (of [aura](#-aura) 
+A face is a type that wraps a named symbol (of [aura](#-aura)
 `@tas`) around another type.
 
 *See [advanced types](../../hoon/advanced/#-face-aliases-and-bridges)*.
 
 #### gate
 
-A _gate_ is a [core](#-core) with one [arm](#-arm) -- Hoon's closest 
+A _gate_ is a [core](#-core) with one [arm](#-arm) -- Hoon's closest
 analog to a function/lambda/closure. To call a gate on an argument,
-replace the sample (at [tree address](../../hoon/limb/limb/) `+6` 
+replace the sample (at [tree address](../../hoon/limb/limb/) `+6`
 in the core) with the argument, and then compute the arm.
 
 The payload of a gate has a shape of `[sample context]`.
@@ -184,33 +183,33 @@ The payload of a gate has a shape of `[sample context]`.
 -   <h6 id="-gate-context">context:</h6> the subject in which the gate was defined
 
 *See [basic types](../../hoon/basic/#-core-p-type-q-map-term-type),
-[`%-` ("cenhep")](../../hoon/rune/cen/hep/) (the 
+[`%-` ("cenhep")](../../hoon/rune/cen/hep/) (the
 [rune](#-rune) for calling a `gate`).*
 
 #### <h4 id="-a-hoon">hoon</h4>
 
-A [`hoon`](../../hoon/reference/) is the result of parsing a Hoon source 
-expression into an AST node. These AST nodes are nouns, like all 
-other Hoon data. Because every Hoon program is, in its entirety, a 
-single expression of Hoon, the result of parsing the whole thing 
+A [`hoon`](../../hoon/reference/) is the result of parsing a Hoon source
+expression into an AST node. These AST nodes are nouns, like all
+other Hoon data. Because every Hoon program is, in its entirety, a
+single expression of Hoon, the result of parsing the whole thing
 into an AST is a single `hoon`.
 
-A hoon is a tagged union of the form `[%tag data]`, where the tag 
-is a constant such as `%brts` (from the source [rune](#-rune) `|=`, 
-i.e. "bartis"), and is matched up with the appropriate type of data 
-(often more `hoon`s, from source subexpressions). For example, the 
+A hoon is a tagged union of the form `[%tag data]`, where the tag
+is a constant such as `%brts` (from the source [rune](#-rune) `|=`,
+i.e. "bartis"), and is matched up with the appropriate type of data
+(often more `hoon`s, from source subexpressions). For example, the
 expression `:-(2 17)`, once parsed into an AST, becomes the following:
 
 ```
 [%clhp p=[%sand p=%ud q=2] q=[%sand p=%ud q=17]]
 ```
 
-The `%clhp` is produced from the rune `:-` (i.e. "colhep"). The 2 and 
-17 have each been parsed as `%sand`-tagged hoons, which represent 
-atoms (in this case each with an aura of `%ud`, i.e. unsigned 
+The `%clhp` is produced from the rune `:-` (i.e. "colhep"). The 2 and
+17 have each been parsed as `%sand`-tagged hoons, which represent
+atoms (in this case each with an aura of `%ud`, i.e. unsigned
 decimal).
 
-To parse Hoon source into a hoon AST, use `ream` on a `cord` 
+To parse Hoon source into a hoon AST, use `ream` on a `cord`
 containing Hoon source. Try the following in [Dojo](../../using/shell):
 
 ```
@@ -225,7 +224,7 @@ The result should be:
 
 #### limb
 
-A _limb_ is an attribute or variable reference. 
+A _limb_ is an attribute or variable reference.
 
 To resolve a *limb* named "foo", the subject is searched depth-first,
 head-first for either a face named "foo" or a core with an arm of
@@ -247,10 +246,10 @@ A _loobean_ is a Hoon boolean. `0` (`%.y`) is *yes*, `1` (`%.n`) is *no*.
 
 #### mark
 
-A _mark_ is Urbit's version of a MIME type, if a MIME type was an 
-executable specification. The mark is just a label that's used as a path 
-to a local source file in the Arvo filesystem.  This source file defines 
-a core that can mold untrusted data, diff and patch, convert to other 
+A _mark_ is Urbit's version of a MIME type, if a MIME type was an
+executable specification. The mark is just a label that's used as a path
+to a local source file in the Arvo filesystem.  This source file defines
+a core that can mold untrusted data, diff and patch, convert to other
 marks, etc.
 
 If this sounds like magic, it isn't quite magic.  There's no way
@@ -273,11 +272,11 @@ properties of the type of a compatible core). The default is `gold`
 
 #### mold
 
-A _mold_ is an idempotent [gate](#-gate) (function), accepting any noun, 
+A _mold_ is an idempotent [gate](#-gate) (function), accepting any noun,
 and producing a range with a type, a set of nouns.
 
-Molds act as type constructor/validators in Hoon. An example: Arvo 
-[marks](#-marks) use Hoon's type system under the hood via molds to 
+Molds act as type constructor/validators in Hoon. An example: Arvo
+[marks](#-marks) use Hoon's type system under the hood via molds to
 validate untrusted network data.
 
 Here's some common mold terminology:
@@ -288,9 +287,9 @@ Here's some common mold terminology:
 
 *See [mold hoons](../../hoon/rune/buc/).*
 
-#### nest 
+#### nest
 
-`nest` is an internal Hoon function on two types which performs a type 
+`nest` is an internal Hoon function on two types which performs a type
 compatibility test. `nest` produces yes if the
 set of nouns in the second type is provably a subset of the first.
 If `nest` produces no, the Hoon programmer will receive a `nest-fail`
@@ -301,12 +300,12 @@ error. This is one of the most commons errors in Hoon programming.
 
 #### rune
 
-A Hoon _rune_ is a pair of ASCII symbols used to begin a 
+A Hoon _rune_ is a pair of ASCII symbols used to begin a
 [Hoon expression](#-a-hoon).
 
-For example, the rune [`?:`](../../hoon/rune/wut/col/) is 
-Hoon's most common conditional, a branch on a boolean test. The first 
-symbol in a rune represents a family of related runes. For example, the 
+For example, the rune [`?:`](../../hoon/rune/wut/col/) is
+Hoon's most common conditional, a branch on a boolean test. The first
+symbol in a rune represents a family of related runes. For example, the
 [`?` family](../../hoon/rune/wut/) are all conditionals.
 
 The result of parsing a Hoon source expression&mdash;the rune, followed
@@ -336,32 +335,31 @@ Runes have two syntactic forms, _tall_ and _flat_:
     4
     ```
 
-Tall hoons can contain flat hoons, but not vice versa. All irregular 
+Tall hoons can contain flat hoons, but not vice versa. All irregular
 forms are flat.
 
 *See [hoon concept](../../hoon/concepts/#-hoon),
 [expressions](../../hoon/rune/), and [syntax](../../hoon/syntax/)*.
 
-#### slot 
+#### slot
 
 `slot` is the name for Hoon's tree addressing scheme.
 
 Every cell has a head and a tail, each of which may be either an atom or
 a cell. Therefore every noun is a binary tree. `+1` or `.` resolves to
 the whole cell (technically this would work against an atom as well).
-The head of `+n` is `+2n`, the tail is `+(2n+1)`. 
+The head of `+n` is `+2n`, the tail is `+(2n+1)`.
 
 #### type
 
-A Hoon _type_ defines a set (finite or infinite) of nouns and ascribes 
-some semantics to it.  There is no direct syntax for defining 
+A Hoon _type_ defines a set (finite or infinite) of nouns and ascribes
+some semantics to it.  There is no direct syntax for defining
 types; they are always defined by inference (i.e., by
 [`mint`](#-mint)), usually using a constructor ([`mold`](#-mold)).
 
-All types are assembled out of base types defined in `++type`. 
-(Look up `++  type` in hoon.hoon for examples.) When the compiler 
-does type-inference on a program, it assembles complex types out 
+All types are assembled out of base types defined in `++type`.
+(Look up `++  type` in hoon.hoon for examples.) When the compiler
+does type-inference on a program, it assembles complex types out
 of the simpler built-in types.
 
 *See [basic types](../../hoon/basic/).*
-

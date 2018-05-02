@@ -28,9 +28,9 @@ Hall's implementation is structured according to the new Gall model. Familiarity
   * [Interactions](#interactions)
   * [Queries, prizes and rumors](#queries-prizes-and-rumors)
 * [Communication between Halls](#communication-between-halls)
-  * [Interactions](#interactions-1)
+  * [Commands](#commands)
   * [Querying](#querying)
-  * [Federation](#federation)
+  * [Federation implementation](#federation-implementation)
 * [Hall implementation](#hall-implementation)
   * [Subscriptions](#subscriptions)
   * [Rumors](#rumors)
@@ -42,9 +42,9 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 
 ## Introduction
 
-Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but does so as two separate applications this time.
+Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but now does so as two separate applications.
 
-The messaging parts of Talk have been separated from its user interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as *clients*. One such application, as you might have guessed, is `Talk`.
+The messaging parts of Talk have been separated from its user-interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as *clients*. One such application, as you might have guessed, is `:talk`.
 
 
 ## Structures & functionality
@@ -117,6 +117,7 @@ Messages aren't the only thing a subscription gets us. We're also kept up to dat
 ```
 
 `status` is user-set metadata that describes, well, the status of users in a circle. This encompasses their `presence`, which shows their activity, and their `human` identity, which includes their display handle.  
+
 For reasons we'll discover shortly, circles keep track of both their own `group` and those of the circles they're subscribed to. `crowd` encapsulates this.
 
 ### Configurations
@@ -191,9 +192,10 @@ As an example, Talk operates like this, serving as an interface for reading from
 
 ### Federation
 
-Some places, like `urbit-meta`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both these desired can be met through federation.
+Some places, like `urbit-meta`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both of these desires can be achieved through federation.
 
-In federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).  
+With federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).  
+
 This way, all planets and comets will be able to subscribe to `/urbit-meta` (that is, the `urbit-meta` circle on their parent ship) and get all updates on the story, regardless of where on the network they originated.
 
 ### Public membership
@@ -286,6 +288,7 @@ To receive data from Hall, applications will have to query it. There are two pat
 ```
 
 To be clear, the paths for those queries are `/client` and `/circle/[name]/[data]/[start]/[end]`, where data is at least one `circle-data`, and `start` and `end` are optional and can be either a date or a message number.  
+
 `/client` queries produce shared UI state. That is, glyph bindings and nicknames.  
 `/circle` queries produce the entire public state of the requested story, including remotes.
 
@@ -341,9 +344,9 @@ These are, as enforced by Gall, the changes as they happen. This makes it possib
 
 ## Communication between Halls
 
-Halls can communicate with other Halls to send commands and subscription updates.
+Halls can communicate with other Halls by sending commands and subscription updates.
 
-### Interactions
+### Commands
 
 To request changes to a story, Halls can send `command`s.
 
@@ -373,11 +376,12 @@ Halls can query other halls. Here's the peer move we send when we open a query o
 ```
 
 Again, the rumor path is what our Hall uses to identify what query a received message originates from. Our circle is specified so that we know what story is interested in the changes we get.  
+
 The query path is slightly more interesting. Of course it specifies the name of their story we want to subscribe our story to, but also a "start" and "end". These can (optionally) be used to specify the range of messages we want to get from our query. Once that range has passed, we stop receiving updates.
 
-### Federation
+### Federation implementation
 
-Along the way so far, we've skipped some parts of structures. Most of these relate to federation. Let's see what we missed.
+Along the way so far, we've skipped some parts of structures. Most of those relate to federation. Let's see what we missed.
 
 ```
 ++  query                                               :>  query paths
@@ -496,22 +500,21 @@ Hall is neither complete nor perfect. There are features that need to be impleme
 
 To turn Talk into a [sustainable social platform](https://urbit.org/fora/posts/~2017.4.26..18.00.25..b93c~/), it needs a number of things.
 
-Primarily, discoverability of circles. A possible solution for realizing this is making it possible for users to add friends, which would have their Hall subscribe to a list of circles the added friends are in. The existing public membership functionality can be leveraged for this.
+We want to have some kind of discoverability for circles. This could be realized by making it possible for users to add friends, who would have their Hall subscribe to a list of circles the added friends are in. The existing public membership functionality can be leveraged for this.
 
 Eventually, content self-moderation might need to be implemented. Users would flag their content if it is potentially offensive. Others would easily be able to filter out content that might offend them.  
 This functionality brings its own large sets of challenges that need to be tackled.
 
-Additionally, federation might be put to broader use. Knowing a circle is federated could help fall back to alternative hosts in case the one Hall originally subscribed to is unavailable.  
-Implementation-wise, care would need to be taken for this to not get ugly. Not to mention, when/how would availability of a host be verified?
+Additionally, federation might be put to broader use. Knowing that a circle is federated could help fall back to alternative hosts in case the one Hall originally subscribed to is unavailable. Implementation-wise, care would need to be taken for this to not get ugly. Not to mention, when/how would availability of a host be verified?
 
 Other changes that might have a fair impact on the functioning of Hall are un/read states for messages, and being able to use moons to allow your friends to chat with you in a local channel.
 
-Smaller functionality that still needs to be implemented includes:
+More minor functionalities that need to be implemented include:
 * Extended permissions management. Being able to black-/whitelist entire ship classes.
 * Improved presence functionality. Actually using the presence system, and sending "typing", "idle", etc. statuses.
 * Polls.
 
-And of course there's a lot Talk, the client, can improve on as well.
+And, of course, there's a lot that the Talk client can improve on as well.
 
 
 ## Further reading

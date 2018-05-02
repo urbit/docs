@@ -60,7 +60,7 @@ Valid paths include:
 
 #### /client prize
 
-Contains a map of glyphs and the audiences they map to, as well as a map of ships and their locally set nicknames.
+Contains a map of glyphs and the audiences that they map to, as well as a map of ships and their locally set nicknames.
 
 ```
 ++  prize                                               :>  query result
@@ -133,7 +133,7 @@ Contains a circle that was either added or removed from the public list.
 
 ### /peers
 
-To allow a circle owner to inspect who is actually currently subscribed to their stories, they can issue a query to retrieve subscription data.
+To allow a circle owner to inspect who is currently subscribed to their stories, they can issue a query to retrieve subscription data.
 
 ```
 ++  query                                               ::
@@ -180,6 +180,7 @@ Contains a ship and a query, and a flag to indicate whether that subscription ha
 ### /circle
 
 Circle queries allow for the retrieving of data from stories. Their messages, configuration, and presences can all be accessed. Since this is a lot of data, there are lots of possibilities for filtering it built in to the query itself.
+
 
 A quick refresher on the difference between "local" and "remote" presence and configuration: "local" means it pertains to the circle itself; "remote" means it pertains to one of its configured sources. The latter is primarily useful to clients when using a circle for aggregation, like the `%inbox`.
 
@@ -262,8 +263,8 @@ Contains (where applicable) messages in envelopes (with message numbers), as wel
 #### /circle rumor
 
 Contains a detailed change description of the data relevant to the query that changed.  
-Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from.  
-Configuration and status changes specify the circle they apply to.
+
+Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from. Configuration and status changes specify the circle they apply to.
 
 ```
 ++  rumor                                               :>  query result change
@@ -334,7 +335,7 @@ Since all of these apply to a specific circle, they all specify a name `nom` of 
 
 ### Messaging
 
-There are two interfaces for telling hall to send a message. The first takes entire `thought`s, the second only `speech`es and the audience to send them to.
+There are two interfaces for telling Hall to send a message. The first takes entire `thought`s, the second only `speech`es and the audience to send them to.
 
 ```
 ++  action                                              :>  user action
