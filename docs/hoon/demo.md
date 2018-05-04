@@ -7,12 +7,13 @@ title: Demo
 
 # Demo
 
-Here's everyone's favorite whiteboard example, FizzBuzz.  Each
+Here's everyone's favorite whiteboard example, 
+[FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz).  Each 
 line is commented with its number:
 
 ```
-|=  end=@ud                                             ::  1
-=/  count=@ud  1                                        ::  2
+|=  end=@                                               ::  1
+=/  count=@  1                                          ::  2
 |-                                                      ::  3
 ^-  (list tape)                                         ::  4
 ?:  =(end count)                                        ::  5
@@ -24,65 +25,59 @@ line is commented with its number:
     "Fizz"                                              ::  11
   ?:  =(0 (mod count 3))                                ::  12
     "Buzz"                                              ::  13
-  (scow %ud count)                                      ::  14
+  <count>                                               ::  14
 $(count (add 1 count))                                  ::  15
 ```
 
-Hoon is a functional language.  FizzBuzz is usually defined as a
-side effect, but officially Hoon has no side effects.  Accordingly,
-this code will *produce* a list of strings, not *print* a list of
-strings. (Of course, if you run this code from the Urbit
-[_Dojo_](../../using/shell) (shell) you will be able to see the
-product.)
+When FizzBuzz is written in non-functional languages the 
+output is generated as a side effect of the program, e.g., with 
+`printf()`.  Hoon is a functional language so technically it 
+has no side effects.  Accordingly, the code above *returns* a 
+list of strings, it doesn't print them. (If you run it from the 
+Urbit shell, [_Dojo_](../../using/shell), you will of course be 
+able to see the product.)
 
-The code produces a list in which each item is either a number
-(as a string), "Fizz", "Buzz", or "Fizzbuzz". The value `~` is
-"null" and indicates the end of the list.
+The code produces a list in which each item is either a number, 
+"Fizz", "Buzz", or "Fizzbuzz". The value `~` is "null" and indicates 
+the end of the list.
 
-Line 1 uses the _[rune](../../about/glossary#rune)_ `|=` (pronounced
-["bar-tis"](../syntax/#-glyphs-and-characters)) to define a function
-that takes one argument, labelled `end`. The argument must be of the
-type `@ud`, an unsigned decimal number.
+Line 1 uses the _[rune](../../about/glossary#rune)_ `|=` to define 
+a function that takes one input, `end`. The input value must be of 
+the type `@`, an atom (i.e., an unsigned integer).
 
-Line 2 uses the rune `=/` (pronounced "tis-fas") to declare a variable,
-`count` of the unsigned decimal number type, with initial value `1`.
+Line 2 uses `=/` to declare a variable, `count`, as an atom with an 
+initial value of `1`.
 
-Line 3 uses the rune `|-` ("bar-hep") to begin a loop.
+Line 3 uses `|-` to indicate the starting point of a loop.
 
 Line 4 defines the product of the loop as a list of `tape`s.
 (A `tape` is a list of characters, one of Hoon's two string 
-types.)  The rune `^-` ("ket-hep") is used for defining
-the type of value the function must produce.
+types.)  The rune `^-` is used for defining the type of value the 
+function is required to produce.
 
-Line 5 uses the rune `?:` ("wut-col"), which is your classic "if, then,
-else" conditional. The "if" clause uses the irregular form of the rune
-`.=` ("dot-tis"), one of the fundamental [Nock](../../nock/definition)
-instructions, to perform an equality test on the values of `count` and
-`end`. This will produce either `%.y` (yes, the number 0) or `%.n`
-(no, 1) and consequently compute the "then" or "else" clause
-respectively.
+Line 5 uses the rune `?:` which is an ordinary "if-then-else" 
+conditional.  If `=(end count)` evaluates as true, then line 6 is 
+evaluated next.  Otherwise line 7 and on is evaluated.
 
-If the values of `count` and `end` are equal, line 6 (and the whole loop)
-returns the value `~`. The list is finished.  
+If the values of `count` and `end` are equal then line 6 produces the 
+value `~`, indicating the end of the list. The program is finished.  
 
-If not, line 7 uses the rune `:-` ("col-hep") to produce a 'cell', which
-is an ordered pair of Hoon values. This pair will be: (a) the next item
-in the list, determined by more `?:` conditionals in lines 8-14; and (b)
-the rest of the list, determined by line 15.
+If not, line 7 uses the rune `:-` to produce an 
+[ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of values. 
+The pair created will be `[a b]`: (a) the product of lines 8-14; and 
+(b) the product of line 15.
 
-(a) The head of the pair is: (i) "FizzBuzz", or "Fizz", or
-"Buzz", if the respective tests hit; otherwise, it's
+(a) The first value of the pair is: (i) "FizzBuzz", or "Fizz", or
+"Buzz", if the respective conditional tests hit; otherwise, it's
 (ii) the number in question, `count`.  In case (ii), line 14
-uses the Hoon standard library function `++scow` to take the value of
-`count`, of type `@ud`, and pretty-print it as a `tape`.
+uses the `< >` symbols to convert `count` from an `@` to a `tape`.
 
-(b) The tail of the pair&mdash;the rest of the output list&mdash;is
-produced at line 15, which uses the irregular `$()` syntax for the rune
-`%=` ("cen-tis") to repeat the loop set above (with the `|-` in line 3)
-with `count` incremented.
+(b) The second value of the pair&mdash;i.e., the rest of the output 
+list&mdash;is produced by line 15.  This line uses `$()` to loop back 
+to the `|-` in line 3, but with `count` increased in value by `1`.
 
-You can test this code by mounting your home desk with
-`|mount %` from the Dojo; saving the above code as
-`home/gen/fizzbuzz.hoon` in your Urbit
-[pier](../../about/glossary#pier); then typing
-`+fizzbuzz 100` in the dojo.
+You can test this code for yourself by (i) entering `|mount %` in the 
+Dojo to mount your home desk, if you haven't already done so; (ii) 
+saving the above code as `home/gen/fizzbuzz.hoon` in your Urbit's 
+[pier](../../about/glossary#pier); then (iii) entering `+fizzbuzz 100` 
+in the dojo.
