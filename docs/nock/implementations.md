@@ -210,4 +210,4 @@ nock(u3_noun bus, u3_noun fol)
 }
 ```
 
-Building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations [here](../../community-projects/nock-implementations)!
+Building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations [here](../../nock/implementations)!
