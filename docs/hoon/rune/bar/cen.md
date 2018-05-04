@@ -7,7 +7,7 @@ title: |% "barcen"
 
 # `|% "barcen"`
 
-Form a core `[battery payload]` with subject as the payload.
+[%brcb p=(map term foot)]: Form a core `[battery payload]` with subject as the payload.
 
 ## Produces
 
