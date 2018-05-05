@@ -74,6 +74,7 @@ The core is a state machine; `main` produces the core itself,
 with the computation completed.  `abet` then extracts the result.
 
 ```
+=<  abet:main                                           ::  4
 |%                                                      ::  5
 ++  abet                                                ::  6
   (sort (~(tap in field) ~) lth)                        ::  7
