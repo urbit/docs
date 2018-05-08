@@ -26,7 +26,7 @@ its argument, an atom:
 =<  abet:main                                           ::  4
 |%                                                      ::  5
 ++  abet                                                ::  6
-  (sort (~(tap in field) ~) lth)                        ::  7
+  (sort ~(tap in field) lth)                            ::  7
 ::                                                      ::  8
 ++  main                                                ::  9
   =/  factor/@  2                                       ::  10
@@ -76,7 +76,7 @@ with the computation completed.  `abet` then extracts the result.
 ```
 |%                                                      ::  5
 ++  abet                                                ::  6
-  (sort (~(tap in field) ~) lth)                        ::  7
+  (sort ~(tap in field) lth)                            ::  7
 ```
 
 Line `5`: we wrap a core around our existing subject.  The
@@ -84,10 +84,9 @@ Line `5`: we wrap a core around our existing subject.  The
 remain accessible.
 
 Lines `6` and `7`: the `abet` arm, which produces the field as a
-sorted list.  `in` is the set core; `tap` is an arm which
-produces a gate that exports the set as a list, prepending it to
-a tail which is nil in this case (and most cases).  We sort this
-list in ascending order with `lth` (less-than).
+sorted list.  `in` is the set core; `tap` is an arm that exports 
+the set as a list.  We sort this list in ascending order with 
+`lth` (less-than).
 
 ```
 ++  main                                                ::  9
