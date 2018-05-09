@@ -45,6 +45,7 @@ libuv
 meson
 ninja
 openssl
+pkg-config
 python2
 ragel
 re2c
@@ -120,7 +121,7 @@ urbit
 # Bash
 
 sudo apt-get update
-sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make meson openssl python ragel re2c zlib1g-dev
+sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make meson openssl pkg-config python ragel re2c zlib1g-dev
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -135,7 +136,7 @@ urbit
 # Bash
 
 sudo dnf upgrade
-sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool meson ncurses-devel openssl openssl-devel python2 ragel re2c
+sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool meson ncurses-devel openssl openssl-devel pkgconfig python2 ragel re2c
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -180,7 +181,7 @@ urbit
 # Bash
 
 sudo yum update
-sudo yum install --enablerepo epel autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool meson ncurses-devel openssl-devel python re2c
+sudo yum install --enablerepo epel autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool meson ncurses-devel openssl-devel pkgconfig python re2c
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
