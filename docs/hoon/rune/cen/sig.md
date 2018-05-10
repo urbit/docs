@@ -7,7 +7,7 @@ title: %~ "censig"
 
 # `%~ "censig"`
 
-`[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
+`[%cnsg p=wing q=hoon r=(list hoon)]`: call with multi-armed door.
 
 ## Expands to
 
