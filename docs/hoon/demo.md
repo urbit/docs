@@ -8,7 +8,7 @@ title: Demo
 # Demo
 
 Here's everyone's favorite whiteboard example, 
-[FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz).  Each 
+[FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz). Each 
 line is commented with its number:
 
 ```
@@ -29,11 +29,11 @@ line is commented with its number:
 $(count (add 1 count))                                  ::  15
 ```
 
-When FizzBuzz is written in non-functional languages the 
+When FizzBuzz is written in non-functional languages, the 
 output is generated as a side effect of the program, e.g., with 
-`printf()`.  Hoon is a functional language so technically it 
-has no side effects.  Accordingly, the code above *returns* a 
-list of strings, it doesn't print them. (If you run it from the 
+`printf()`.  Hoon is a functional language, so technically it 
+has no side effects.  Accordingly, the code above *produces* a 
+list of strings; it doesn't print them. (If you run it from the 
 Urbit shell, [_Dojo_](../../using/shell), you will of course be 
 able to see the product.)
 
@@ -72,8 +72,8 @@ The pair created will be `[a b]`: (a) the product of lines 8-14; and
 (ii) the number in question, `count`.  In case (ii), line 14
 uses the `< >` symbols to convert `count` from an `@` to a `tape`.
 
-(b) The second value of the pair&mdash;i.e., the rest of the output 
-list&mdash;is produced by line 15.  This line uses `$()` to loop back 
+(b) The second value of the pair -- i.e., the rest of the output 
+list -- is produced by line 15.  This line uses `$()` to loop back 
 to the `|-` in line 3, but with `count` increased in value by `1`.
 
 You can test this code for yourself by (i) entering `|mount %` in the 
