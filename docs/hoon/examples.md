@@ -20,24 +20,24 @@ A function that produces the list of primes less than or equal to
 its argument, an atom:
 
 ```
-|=  thru/@                                              ::  1
+|=  thru=@                                              ::  1
 ^-  (list @)                                            ::  2
-=/  field/(set @)  (silt (gulf 2 thru))                 ::  3
+=/  field=(set @)  (sy (gulf 2 thru))                   ::  3
 =<  abet:main                                           ::  4
 |%                                                      ::  5
 ++  abet                                                ::  6
-  (sort (~(tap in field) ~) lth)                        ::  7
+  (sort ~(tap in field) lth)                            ::  7
 ::                                                      ::  8
 ++  main                                                ::  9
-  =/  factor/@  2                                       ::  10
+  =/  factor=@  2                                       ::  10
   |-  ^+  ..main                                        ::  11
   ?:  (gth (mul factor factor) thru)                    ::  12
     ..main                                              ::  13
   $(factor +(factor), ..main (reap factor))             ::  14
 ::                                                      ::  15
 ++  reap                                                ::  16
-  |=  factor/@                                          ::  17
-  =/  count/@  (mul 2 factor)                           ::  18
+  |=  factor=@                                          ::  17
+  =/  count=@  (mul 2 factor)                           ::  18
   |-  ^+  ..reap                                        ::  19
   ?:  (gth count thru)                                  ::  20
     ..reap                                              ::  21
@@ -51,9 +51,9 @@ its argument, an atom:
 ## `sieve`: explanation
 
 ```
-|=  thru/@                                              ::  1
+|=  thru=@                                              ::  1
 ^-  (list @)                                            ::  2
-=/  field/(set @)  (silt (gulf 2 thru))                 ::  3
+=/  field=(set @)  (sy (gulf 2 thru))                   ::  3
 ```
 
 Line `1`: we are building a gate (function) whose sample
@@ -62,7 +62,7 @@ Line `1`: we are building a gate (function) whose sample
 Line `2`: the product of this gate is a list of atoms.
 
 Line `3`: we introduce a variable `field`, whose type is a set of
-atoms.  The `silt` function converts a list to a set.  The `gulf`
+atoms.  The `sy` function converts a list to a set.  The `gulf`
 function creates the range `2` through `thru` inclusive, as a
 list of atoms.
 
@@ -76,7 +76,7 @@ with the computation completed.  `abet` then extracts the result.
 ```
 |%                                                      ::  5
 ++  abet                                                ::  6
-  (sort (~(tap in field) ~) lth)                        ::  7
+  (sort ~(tap in field) lth)                            ::  7
 ```
 
 Line `5`: we wrap a core around our existing subject.  The
@@ -84,14 +84,13 @@ Line `5`: we wrap a core around our existing subject.  The
 remain accessible.
 
 Lines `6` and `7`: the `abet` arm, which produces the field as a
-sorted list.  `in` is the set core; `tap` is an arm which
-produces a gate that exports the set as a list, prepending it to
-a tail which is nil in this case (and most cases).  We sort this
-list in ascending order with `lth` (less-than).
+sorted list.  `in` is the set core; `tap` is an arm that exports 
+the set as a list.  We sort this list in ascending order with 
+`lth` (less-than).
 
 ```
 ++  main                                                ::  9
-  =/  factor/@  2                                       ::  10
+  =/  factor=@  2                                       ::  10
   |-  ^+  ..main                                        ::  11
 ```
 
@@ -117,8 +116,8 @@ replacing the core with a version sieved by `reap`.
 
 ```
 ++  reap                                                ::  16
-  |=  factor/@                                          ::  17
-  =/  count/@  (mul 2 factor)                           ::  18
+  |=  factor=@                                          ::  17
+  =/  count=@  (mul 2 factor)                           ::  18
 ```
 
 Lines `16` and `17`: the `reap` arm, which produces a gate that
@@ -150,9 +149,9 @@ multiple of `factor`, and deleting it from `field`.
 
 Finally, the same code in a more concise "kernel" style.
 ```
-|=  top/@
+|=  top=@
 ^-  (list @)
-=+  fed=(silt (gulf 2 top))
+=+  fed=(sy (gulf 2 top))
 =<  abet:main
 |%
 ++  abet  (sort (~(tap in fed)) lth)
@@ -164,7 +163,7 @@ Finally, the same code in a more concise "kernel" style.
   $(fac +(fac), ..main (reap fac))
 ::
 ++  reap
-  |=  fac/@
+  |=  fac=@
   =+  cot=(mul 2 fac)
   |-  ^+  ..reap
   ?:  (gth cot top)
