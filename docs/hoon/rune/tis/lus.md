@@ -26,10 +26,10 @@ Regular: *2-fixed*.
 ## Examples
  
 ```
-~zod:dojo> =foo  |=  a=@
-                 =+  b=1
-                 =+  c=2
-                 :(add a b c)
+~zod:dojo> =foo |=  a=@
+                =+  b=1
+                =+  c=2
+                :(add a b c)
 ~zod:dojo> (foo 5)
 8
 ```
