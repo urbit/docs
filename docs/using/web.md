@@ -224,7 +224,7 @@ On the Urbit side we have a type for html: `++manx`.  Our wire format for sendin
 "string" || {gn:"string", ga:{key:"string", [...]}, c:[...]}
 ```
 
-To make this clearer let's look at some HTML and it's JSON representation:
+To make this clearer let's look at some HTML and its JSON representation:
 
 ```
 <div class="blue">
