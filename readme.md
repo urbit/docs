@@ -21,13 +21,13 @@ experiencing problems with the network install.
 
 In your urbit's `:dojo`, run the command:
 
-    ~your-urbit:dojo> |sync %home ~ladnub-lorwyn %docs
+    ~your-urbit:dojo> |sync %home ~nosnup-nomzod %docs
 
 Depending on network traffic, this initial merge and sync could take anywhere
 between thirty seconds to several minutes. Upon a successful sync you'll see the
 output:
 
-    sync succeeded from %docs on ~ladnub-lorwyn to %home
+    sync succeeded from %docs on ~nosnup-nomzod to %home
 
 If your sync isn't succeeding after a few minutes for whatever reason, run
 `|cancel %home` in your `:dojo` and follow the local install below instead.
