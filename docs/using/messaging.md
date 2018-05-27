@@ -65,15 +65,15 @@ You'll see something like:
 
 Post a line to `/urbit-meta`:
 
-    ~your-urbit:talk- Hello, world!
+    ~your-urbit:talk= Hello, world!
 
 You'll see, echoed back at you:
 
-    ~your-urbit- Hello, world!
+    ~your-urbit= Hello, world!
 
 To send a direct message to someone, first set your audience:
 
-    ~your-urbit:talk- ;~talsur-todres
+    ~your-urbit:talk= ;~talsur-todres
 
 You'll see your prompt change:
 
@@ -89,18 +89,18 @@ To set your audience back to `/urbit-meta`:
 
 You'll see your prompt change back:
 
-    ~your-urbit:talk-
+    ~your-urbit:talk=
 
 You can also use the ASCII "glyph" assigned to your `/urbit-meta` circle as a shortcut:
 
     ~your-urbit:talk[~talsur-todres] ;-
-    ~your-urbit:talk-
+    ~your-urbit:talk=
 
 (Your ship may have a different glyph than `-` for your circle)
 
 Use `;leave` to unsubscribe from a channel:
 
-    ~your-urbit:talk- ;leave /urbit-meta
+    ~your-urbit:talk= ;leave /urbit-meta
 
 There are two ways of using Talk: from the CLI or through a web UI
 available at `http://your-urbit.urbit.org/~~/talk` (or
@@ -111,7 +111,7 @@ source repo [here](https://github.com/urbit/talk).
 
 Last, let's create a channel we can invite some friends to:
 
-    ~your-urbit:talk> ;create channel %my-channel 'Some description.'
+    ~your-urbit:talk= ;create channel %my-channel 'Some description.'
 
 Now you can tell your friends to `;join ~your-urbit/my-channel`.
 
@@ -143,7 +143,7 @@ characters.
 
 If the line starts with `@`, it's an action (IRC `/me`).
 
-    ~your-urbit:talk> @sends a message.
+    ~your-urbit:talk= @sends a message.
 
 will print as
 
@@ -153,14 +153,14 @@ will print as
 
 A URL is any valid URL.
 
-    ~your-urbit:talk> https://example.com/
+    ~your-urbit:talk= https://example.com/
 
 ### Hoon
 
 You can use Talk to evaluate Hoon code and share the result with everyone in a 
 Hall circle. To do so, preface your Hoon with `#`.
 
-    ~your-urbit:talk- #(add 2 2)
+    ~your-urbit:talk= #(add 2 2)
 
 will print as
 
@@ -173,12 +173,12 @@ To indicate what you're saying is in direct response to a specific
 message, select the message (see Activating Lines below) and type your
 response.
 
-    ~some-urbit- Hello! How are you?
-    ~your-urbit:talk> ; Good, thanks!
+    ~some-urbit= Hello! How are you?
+    ~your-urbit:talk= ; Good, thanks!
 
 will print as
 
-    ~your-urbit>^ Good, thanks!
+    ~your-urbit=^ Good, thanks!
 
 ### Activating Lines
 
@@ -186,18 +186,18 @@ A line number identifying the *subsequent* line is displayed every 5
 lines.
 
     ---------[0]
-    ~your-urbit- This is my message.
-    ~your-urbit- This is another message.
+    ~your-urbit= This is my message.
+    ~your-urbit= This is another message.
     ~your-urbit sends a message.
     ~your-urbit/ http://example.com/
     ~your-urbit# (add 2 2)  
                  4
     ---------[5]
-    ~your-urbit>^ That's my message!
+    ~your-urbit=^ That's my message!
 
 You can use a line number to *activate* a line:
 
-    ~your-urbit:talk- ;5
+    ~your-urbit:talk= ;5
 
 which prints the number, line identifier, timestamp, sender, audience,
 and contents:
