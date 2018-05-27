@@ -40,7 +40,7 @@ take a look at its [documentation](../../hall/architecture).
 ## Quickstart
 
 For the most part we use Talk as a single-instance of Slack: one main
-channel (/urbit-meta`) and direct messages. Everyone is more than welcome 
+channel (`/urbit-meta`) and direct messages. Everyone is more than welcome 
 in `/urbit-meta`. It's the place to get help, ask questions and chat about
 Urbit in general.
 
