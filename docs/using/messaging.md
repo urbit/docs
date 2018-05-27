@@ -50,16 +50,18 @@ Use `ctrl-x` to switch from Dojo to Talk.
 
 To join `/urbit-meta`:
 
-    ~your-urbit:talk> ;join ~samzod/urbit-meta
+    ~your-urbit:talk> ;join /urbit-meta
 
 You'll see something like:
 
-    --------------| ;join ~samzod/urbit-meta
-    --------------| :: onn ~samzod/urbit-meta
-    --------------| bound '=' {[hos=~samzod nom=%urbit-meta]}
-    --------------| new = ~samzod/urbit-meta
-    --------------| ~samzod/urbit-meta: hey ~samzod hear
-    ~your-urbit:talk-
+    --------------| ;join /urbit-meta
+    --------------| :: onn /urbit-meta
+    --------------| bound '=' {[hos=~binzod nom=%urbit-meta]}
+    --------------| new = /urbit-meta
+    --------------| /urbit-meta: cap: For Urbit-related discussion. Politically
+                  | correct and safe for work. Don't be rude!
+    --------------| /urbit-meta: fit: caps:n unic:n
+    ~your-urbit:talk=
 
 Post a line to `/urbit-meta`:
 
@@ -83,7 +85,7 @@ Now you and `~talsur-todres` can exchange messages directly.
 
 To set your audience back to `/urbit-meta`:
 
-    ~your-urbit:talk[~talsur-todres] ;~samzod/urbit-meta
+    ~your-urbit:talk[~talsur-todres] ;/urbit-meta
 
 You'll see your prompt change back:
 
@@ -98,7 +100,7 @@ You can also use the ASCII "glyph" assigned to your `/urbit-meta` circle as a sh
 
 Use `;leave` to unsubscribe from a channel:
 
-    ~your-urbit:talk- ;leave ~samzod/urbit-meta
+    ~your-urbit:talk- ;leave /urbit-meta
 
 There are two ways of using Talk: from the CLI or through a web UI
 available at `http://your-urbit.urbit.org/~~/talk` (or

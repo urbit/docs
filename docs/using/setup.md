@@ -82,7 +82,7 @@ Use `ctrl-x` to change your prompt. Let's join the main Urbit chat
 channel, `/urbit-meta`:
 
 ```
-~your-urbit:talk[] ;join ~samzod/urbit-meta
+~your-urbit:talk[] ;join /urbit-meta
 ```
 
 Talk is stateful, so your urbit will download a backlog.
