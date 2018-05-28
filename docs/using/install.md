@@ -126,7 +126,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo ninja -C ./build/ meson-install
+sudo ninja -C ./build/ install
 urbit
 ```
 
