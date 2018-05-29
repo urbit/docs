@@ -1,6 +1,6 @@
 # Urbit docs
 
-These are the urbit docs as they appear on [urbit.org](urbit.org/docs/).
+These are the urbit docs as they appear on [urbit.org](https://urbit.org/docs/).
 
 We've found it helps to have a clone of the docs on hand in case urbit.org
 experiences high traffic. Follow these steps to get these into your ship:
