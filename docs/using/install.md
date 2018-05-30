@@ -121,7 +121,9 @@ urbit
 # Bash
 
 sudo apt-get update
-sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make meson openssl pkg-config python ragel re2c zlib1g-dev
+sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make ninja-build openssl pkg-config python python3 ragel re2c zlib1g-dev
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install meson 
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -136,7 +138,9 @@ urbit
 # Bash
 
 sudo dnf upgrade
-sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool meson ncurses-devel openssl openssl-devel pkgconfig python2 ragel re2c
+sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python2 python3 ragel re2c
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install meson 
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -151,7 +155,9 @@ urbit
 # Bash
 
 pkg upgrade
-pkg install autoconf automake cmake curl gcc git gmake gmp libsigsegv libtool meson python ragel re2c
+pkg install autoconf automake cmake curl gcc git gmake gmp libsigsegv libtool python python3 ragel re2c
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install meson 
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -166,7 +172,9 @@ urbit
 # Bash
 
 pacman -Syu
-pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool meson ncurses openssl python ragel re2c
+pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install meson 
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
