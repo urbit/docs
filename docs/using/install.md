@@ -121,7 +121,7 @@ urbit
 # Bash
 
 sudo apt-get update
-sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make ninja-build openssl pkg-config python python3 ragel re2c zlib1g-dev
+sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make ninja-build openssl pkg-config python python3 python3-pip ragel re2c zlib1g-dev
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install meson 
 git clone https://github.com/urbit/urbit
