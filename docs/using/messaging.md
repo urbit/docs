@@ -93,10 +93,10 @@ You'll see your prompt change back:
 
 You can also use the ASCII "glyph" assigned to your `/urbit-meta` circle as a shortcut:
 
-    ~your-urbit:talk[~talsur-todres] ;-
+    ~your-urbit:talk[~talsur-todres] ;=
     ~your-urbit:talk=
 
-(Your ship may have a different glyph than `-` for your circle)
+(Your ship may have a different glyph than `=` for your circle)
 
 Use `;leave` to unsubscribe from a channel:
 
