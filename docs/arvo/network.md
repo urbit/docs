@@ -26,7 +26,7 @@ need an app. Let's look at a very simple one, `echo.hoon`:
               ==                :: end of mold definition; see $%
     --                          :: end of card arm definition
     ::                          ::
-    |_  {bow/bowl $~}           :: forms a core with bowl (app state) as sample
+    |_  {bow/bowl:gall $~}      :: forms a core with bowl (app state) as sample
     ++  poke-noun               :: begin definition of poke-noun arm
       |=  non/*                 :: forms a gate which accepts any noun
       ^-  {(list move) _+>.$}   :: casts product to mold of moves and context
@@ -39,7 +39,7 @@ a value, it prints that value out. To try this out, you have to start
 the app, then you can poke it from the command line with the following
 commands:
 
-    ~fintud-macrep:dojo> |start %examples %echo
+    ~fintud-macrep:dojo> |start %echo
     >=
     ~fintud-macrep:dojo> :echo 5
     [%echo %noun 5]
@@ -99,7 +99,7 @@ only accept a number, and then print out the square of that number.
               ==                
     --                          
     ::                                                  ::<  stateless
-    |_  {bow/bowl $~}           
+    |_  {bow/bowl:gall $~}           
     ++  poke-atom
       |=  tom/@                 
       ^-  {(list move) _+>.$}   
@@ -168,7 +168,7 @@ Let's write our first network message! Here's `examples/app/pong.hoon`:
     ++  poke-contents  $%  {$atom @}
                        ==
     --
-    |_  {bow/bowl $~}                                       ::<  stateless
+    |_  {bow/bowl:gall $~}                                    ::<  stateless
     ::
     ++  poke-urbit
       |=  to/ship
