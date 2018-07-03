@@ -132,6 +132,23 @@ sudo ninja -C ./build/ install
 urbit
 ```
 
+N.B. if the step `./scripts/build` fails when attempting to build
+libh2o, it could be caused by a bug in version 0.46 of meson (the bug
+is not present in 0.45 and is fixed in 0.47).
+
+If the command `meson -v` returns a version starting with 0.46, try these steps:
+
+```
+brew uninstall meson
+pip install meson=0.47.0
+rm -rf build
+build/scripts
+```
+
+If that is successful, resume the above instructions after the `build` step.
+
+
+
 ##### Fedora
 
 ```
