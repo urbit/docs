@@ -149,7 +149,7 @@ If that is successful, resume the above instructions after the `build` step.
 
 
 
-##### Fedora
+##### Fedora / Redhat
 
 ```
 # Bash
@@ -169,19 +169,24 @@ urbit
 ##### FreeBSD
 
 ```
-# Bash
+# Bash or Sh
 
 pkg upgrade
-pkg install autoconf automake cmake curl gcc git gmake gmp libsigsegv libtool python python3 ragel re2c
-sudo -H pip3 install --upgrade pip
-sudo -H pip3 install meson 
+sudo pkg install autoconf automake cmake curl gcc git gmake gmp libsigsegv libtool python python3 ragel re2c ncurses openssl gmp 
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3 get-pip.py
+sudo -H pip install --upgrade pip
+sudo -H pip install meson
+sudo pkg install ninja
 git clone https://github.com/urbit/urbit
 cd urbit
-./scripts/bootstrap
-./scripts/build
+sh ./scripts/bootstrap
+sh ./scripts/build
 sudo ninja -C ./build/ meson-install
 urbit
 ```
+
+(tested on Google Cloud Platform FreeBSD 10.4 and 11.2 on 4 July 2018)
 
 ##### Arch
 
