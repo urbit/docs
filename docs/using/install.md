@@ -152,19 +152,46 @@ If that is successful, resume the above instructions after the `build` step.
 ##### Fedora / Redhat
 
 ```
-# Bash
+# Bash 
 
-sudo dnf upgrade
-sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python2 python3 ragel re2c
-sudo -H pip3 install --upgrade pip
-sudo -H pip3 install meson 
+sudo yum upgrade
+sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python2 python3 ragel re2c wget
+
+# meson requires python 3.5; RHEL supplies wrong version
+pushd /usr/src
+	sudo wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tgz
+	sudo tar xzf Python-3.5.5.tgz
+	cd Python-3.5.5
+	sudo ./configure --enable--optimizations
+	sudo make altinstall
+	which python3.5
+	cd /usr/local/bin
+	sudo ln -s python3.5 python3
+	hash python3
+popd
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo /usr/local/bin/python3 get-pip.py
+# downgrade meson to avoid dependencies that redhat can't meet
+sudo /usr/local/bin/pip3 install meson==0.29
+
+
+git clone git://github.com/ninja-build/ninja.git && cd ninja
+git checkout release
+./configure.py --boostrap
+sudo cp ./ninja /usr/local/bin
+
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo ninja -C ./build/ meson-install
+sudo /usr/local/bin/ninja -C ./build/ meson-install
 urbit
+
 ```
+
+(tested on Google Cloud Platform Red Hat Enterprise Linux 6.1 and 7.1 on 5 July 2018)
+
 
 ##### FreeBSD
 
