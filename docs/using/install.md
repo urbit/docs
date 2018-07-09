@@ -85,7 +85,7 @@ urbit
 
 ```
 # Bash
-
+ 
 sudo port selfupdate
 sudo port install autoconf automake cmake gmp libsigsegv meson openssl
 git clone https://github.com/urbit/urbit
@@ -111,24 +111,7 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo env "PATH=$PATH" ninja -C ./build/ meson-install
-urbit
-```
-
-##### Ubuntu or Debian
-
-```
-# Bash
-
-sudo apt-get update
-sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make ninja-build openssl pkg-config python python3 python3-pip ragel re2c zlib1g-dev
-sudo -H pip3 install --upgrade pip
-sudo -H pip3 install meson 
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-sudo ninja -C ./build/ install
+sudo env "PATH=$PATH" ninja -C ./build/ install
 urbit
 ```
 
@@ -137,6 +120,7 @@ build libh2o, it could be caused by a bug in version 0.46 of meson (the bug
 is not present in 0.45 and is fixed in 0.47).
 
 If the command `meson -v` returns a version starting with 0.46, try these steps:
+
 
 ```
 brew uninstall meson
@@ -148,6 +132,45 @@ build/scripts
 If that is successful, resume the above instructions after the `build` step.
 
 
+
+##### Ubuntu or Debian
+
+```
+# Bash
+
+sudo apt-get update
+sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make openssl pkg-config python python3 python3-pip ragel re2c zlib1g-dev
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install meson==0.29
+
+# we need ninja 1.5.1
+# 'apt-get install ninja-build' gives us 0.1.3
+# 'apt-get install ninja-build' gives us 1.3.4
+# 
+git clone git://github.com/ninja-build/ninja.git
+pushd ninja
+	git checkout release
+	./configure.py --bootstrap
+	sudo cp ./ninja /usr/local/bin
+popd
+
+
+git clone https://github.com/urbit/urbit
+cd urbit
+./scripts/bootstrap
+./scripts/build
+sudo ninja -C ./build/ install
+urbit
+```
+
+
+
+(tested on Google Cloud Platform
+   * Ubuntu Trusty Linux (14.04 LTS) 
+   * Ubuntu Xenial Linux (16.04 LTS)
+   * Debian 8 (Jessie)
+   * Debian 9 (Stretch)
+on 6 July 2018)
 
 ##### Fedora / Redhat
 
@@ -173,7 +196,7 @@ popd
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo /usr/local/bin/python3 get-pip.py
 # downgrade meson to avoid dependencies that redhat can't meet
-sudo /usr/local/bin/pip3 install meson==0.29
+sudo -H /usr/local/bin/pip3 install meson==0.29
 
 
 git clone git://github.com/ninja-build/ninja.git && cd ninja
@@ -185,12 +208,15 @@ git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo /usr/local/bin/ninja -C ./build/ meson-install
+sudo /usr/local/bin/ninja -C ./build/ install
 urbit
 
 ```
 
-(tested on Google Cloud Platform Red Hat Enterprise Linux 6.1 and 7.1 on 5 July 2018)
+(tested on Google Cloud Platform
+    * Red Hat Enterprise Linux 6.1
+	* Red Hat Enterprise Linux 7.1
+on 5 July 2018)
 
 
 ##### FreeBSD
@@ -213,17 +239,20 @@ sudo ninja -C ./build/ meson-install
 urbit
 ```
 
-(tested on Google Cloud Platform FreeBSD 10.4 and 11.2 on 4 July 2018)
+(tested on Google Cloud Platform
+    * FreeBSD 10.4
+	* FreeBSD 11.2
+on 4 July 2018)
 
 ##### Arch
 
 ```
 # Bash
 
-pacman -Syu
-pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c
-sudo -H pip3 install --upgrade pip
-sudo -H pip3 install meson 
+sudo pacman -Syu
+sudo pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3 get-pip.py
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -231,6 +260,12 @@ cd urbit
 sudo ninja -C ./build/ meson-install
 urbit
 ```
+
+(tested on Amazon EC2 using Amazon Machine Image
+    *  Release 2018.06.15 / ebs hvm x86_64 lts (  ami-a40a47db via  https://www.uplinklabs.net/projects/arch-linux-on-ec2/ )
+on 6 July 2018)
+
+
 
 ##### AWS
 
@@ -238,14 +273,45 @@ urbit
 # Bash
 
 sudo yum update
-sudo yum install --enablerepo epel autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool meson ncurses-devel openssl-devel pkgconfig python re2c
+sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel openssl openssl-devel pkgconfig python2 python3 python3-pip ragel re2c wget git 
+sudo env "PATH=$PATH" pip3 install --upgrade pip
+sudo env "PATH=$PATH" pip3 install meson
+
+
+# we need libsigsegv
+#
+
+wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-2.10-10.fc24.x86_64.rpm
+wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-devel-2.10-10.fc24.x86_64.rpm
+sudo yum localinstall libsigsegv-2.10-10.fc24.x86_64.rpm
+sudo yum localinstall libsigsegv-devel-2.10-10.fc24.x86_64.rpm
+
+# we need re2c
+#
+wget https://rpmfind.net/linux/dag/redhat/el6/en/x86_64/dag/RPMS/re2c-0.13.5-1.el6.rf.x86_64.rpm
+sudo yum localinstall re2c-0.13.5-1.el6.rf.x86_64.rpm
+
+git clone git://github.com/ninja-build/ninja.git
+pushd ninja
+	git checkout release
+	./configure.py --bootstrap
+	sudo cp ./ninja /usr/local/bin
+popd
+
+
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo ninja -C ./build/ meson-install
+sudo env "PATH=$PATH" ninja -C ./build/ install
+
 urbit
 ```
+
+(tested on Amazon EC2 using Amazon Machine Image
+    *  Amazon Linux 2 AMI (HVM), SSD Volume Type - ami-b70554c8
+on 6 July 2018)
+
 
 ### Test for successful installation
 
