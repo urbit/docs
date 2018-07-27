@@ -8,7 +8,7 @@ sort: 6
 
 The actual production Nock interpreter.  Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
-in the [runtime system documentation](../../../runtime).
+in the [runtime system documentation](../../vere/runtime).
 
 ```
 /* nock(): produce .*(bus fol).  Do not virtualize.
