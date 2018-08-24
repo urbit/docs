@@ -391,17 +391,19 @@ information in speech. [`Runes`](#-rune) are composed of two glyphs.
 Below is a complete list of glyphs with their associated pronunciations.
 
 ```
-ace  space      gal  <          per  )
-bar  |          gar  >          sel  [
-bas  \          hax  #          mic  ;
-buc  $          hep  -          ser  ]
-cab  _          kel  {          sig  ~
-cen  %          ker  }          soq  '
-col  :          ket  ^          tar  *
-com  ,          lus  +          tec  `
-doq  "          pam  &          tis  =
-dot  .          pat  @          wut  ?
-fas  /          pel  (          zap  !
+ace [1 space]   gal <               pal (
+bar |           gap [>1 space, nl]  par )
+bas \           gar >               sel [
+buc $           hax #               mic ;
+cab _           hep -               ser ]
+cen %           kel {               sig ~
+col :           ker }               soq '
+com ,           ket ^               tar *
+doq "           lus +               tec `
+dot .           pam &               tis =
+fas /           pat @               wut ?
+zap !
+
 ```
 
 ### Hall
