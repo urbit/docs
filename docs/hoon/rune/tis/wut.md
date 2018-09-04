@@ -12,7 +12,8 @@ title: =? "tiswut"
 ## Expands to
 
 ```
-=. a ?. =(b c) a c
+=.  p  ?:(q r p)
+s
 ```
 
 ## Syntax
