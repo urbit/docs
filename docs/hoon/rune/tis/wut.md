@@ -1,0 +1,41 @@
+---
+navhome: /docs/
+next: true
+sort: 13
+title: =? "tiswut"
+---
+
+# `=? "tiswut"`
+
+`[$tswt p/wing q/hoon r/hoon s/hoon]`: conditionally change one leg in the subject.
+
+## Expands to
+
+```
+=.  p  ?:(q r p)
+s
+```
+
+## Syntax
+
+Regular: *4-fixed*.
+
+## Discussion
+
+Use `=?` to replace the value of leg `p` with `r` on condition `q`. As
+usual, we are not actually mutating the subject, just creating
+a new subject with a changed value.  The change in value includes a
+type check against the old subject; the type of `r` must nest under
+the type of `p`.
+
+## Examples
+
+```
+> =a 12
+
+> =?(a =(1 1) 22 a)
+22
+
+> =?(a =(1 2) 22 a)
+12
+```
