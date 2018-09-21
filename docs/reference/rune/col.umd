@@ -1,0 +1,14 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'Cells : ("col")'
+    ==
+;>
+
+# Cells `:` ("col")
+
+The `:` ("col") expressions are used to produce cells, which are pairs of values.  E.g., `:-(p q)` produces the cell `[p q]`.  All `:` runes reduce to `:-`.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

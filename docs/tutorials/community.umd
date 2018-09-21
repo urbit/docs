@@ -1,0 +1,19 @@
+:-  :~  navhome/'/docs/'
+        next/'false'
+        sort/'9'
+        title/'Community Tutorials'
+    ==
+;>
+
+# Community docs
+
+Here are some tutorials written by members of the Urbit community.  Some are a little outdated, but they may still prove useful.
+
+- `~master-morzod`
+  - [Fora post](https://urbit.org/fora/posts/~2016.12.25..06.35.44..a1ec~/)
+- `~hidduc-posmeg`
+  - [Fora post](https://urbit.org/fora/posts/~2017.2.12..21.54.40..6fde~/)
+- `~palfun-foslup`
+  - [Urbit by Doing](https://github.com/Fang-/Urbit-By-Doing)
+- `@knubie`
+  - [Learning Hoon](https://github.com/knubie/learning-hoon)

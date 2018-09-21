@@ -1,0 +1,16 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'1'
+        title/'Atoms and strings'
+    ==
+;>
+
+# Atoms and strings
+
+The simplest expressions in every language are constants:
+atoms, strings, paths.  (Strings and paths aren't all constants per
+se, because they have interpolations.)
+
+## Expressions
+
+;list(datapreview "true", classname "runes");

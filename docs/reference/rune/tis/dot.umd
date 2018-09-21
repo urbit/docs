@@ -1,0 +1,43 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'=. "tisdot"'
+    ==
+;>
+
+# `=. "tisdot"`
+
+`[%tsdt p=wing q=hoon r=hoon]`: change one leg in the subject.
+
+## Expands to
+
+```
+=>(%_(. p q) r)
+```
+
+## Syntax
+
+Regular: *3-fixed*.
+
+## Discussion
+
+As usual, we are not actually mutating the subject, just creating
+a new subject with a changed value.  Note that the mutation uses
+[`%_` ("cencab")](../../cen/cab/), so the type doesn't change.  Trying to change the value type results in a `nest-fail`.
+
+## Examples
+
+```
+> =+  a=[b=1 c=2]
+  =.  b.a  3
+  a
+[b=3 c=2]
+
+> =+  a=[b=1 c=2]
+  =.(b.a 3 a)
+[b=3 c=2]
+
+> =+  a=[b=1 c=2]
+  =.(b.a "hello" a)
+nest-fail
+```

@@ -1,0 +1,28 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'=> "tisban"'
+    ==
+;>
+
+# `=> "tisban"`
+
+`[%tsgr p=hoon q=hoon]`: compose two expressions.
+
+## Produces
+
+`q`, evaluated with the product of `p` as its subject.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+> =>([a=1 b=2 c=3] b)
+2
+
+> =>((add 2 4) [. .])
+[6 6]
+```

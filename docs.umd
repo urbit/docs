@@ -1,0 +1,49 @@
+:-  :~  anchor/'none'
+        footer/'true'
+        title/'Docs'
+        sort/'4'
+    ==
+;>
+
+;div(class "lead")
+  ;div(class "logo inverse");
+  ;h1.i-b: Urbit docs
+==
+
+;div(class "col-md-12 head")
+  ;div(class "col-md-8")
+
+*Urbit* is a secure peer-to-peer network of personal servers, built on a clean-slate system software stack.
+
+Check out the [technical overview](about/overview) for a high-level architecture description.  To install and run Urbit head to the Using section, starting with the [installation guide](using/install) and continuing forward.
+
+To begin developing for Urbit, you can start by walking through the tutorial series for [Hoon](tutorials/ch1).  Hoon is Urbit's high-level programming language.  Anyone obsessed with math, theory, fundamentals of computation, etc., should start with [Nock](tutorials/nock), the low-level language to which Hoon is compiled.
+
+  ==
+
+  ;div(class "col-md-4")
+    ;b: Community & contact
+    ;ul
+      ;li
+        ; Chat with us on
+        ;a/"https://urbit.org/stream": Talk
+      ==
+      ;li
+        ; Our discussion forum
+        ;a/"http://urbit.org/fora": Fora
+      ==
+      ;li
+        ; On Twitter
+        ;a/"https://twitter.com/urbit": @urbit
+      ==
+      ;li
+        ; Or email us at
+        ;a/"mailto:urbit@urbit.org": urbit@urbit.org
+      ==
+    ==
+  ==
+==
+
+;div(class "sections")
+  ;kids(grid "true");
+==

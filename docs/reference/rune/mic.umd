@@ -1,0 +1,14 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'13'
+        title/'Make ; ("mic")'
+    ==
+;>
+
+# Make `;` ("sem")
+
+Miscellaneous useful macros.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

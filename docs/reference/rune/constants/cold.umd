@@ -1,0 +1,40 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'2'
+        title/'Cold Atoms'
+    ==
+;>
+
+# Cold Atoms
+
+`[%rock p=term q=@]`; a constant, cold atom.
+
+A cold atom is one whose type is inferred to be of a single atom constant.
+
+### Produces
+
+A cold (fixed) atom `q` with aura `p`.
+
+### Syntax
+
+Irregular: any warm atom [(`%sand`)](../sand/) form, prefixed with `%`.
+
+Irregular: e.g., `%hi`.  Character constraints: `a-z`
+lowercase to start, `a-z` or `0-9` thereafter, with infix
+hyphens (`hep`), "kebab-case."
+
+Irregular: `~`, `@n`, null (`0`).
+
+### Examples
+
+We can see the contrast with warm atoms by using the compiler parser function, `ream`:
+
+```
+> (ream '%hi')
+[%rock p=%tas q=26.984]
+
+> (ream '\'hi\'')
+[%sand p=%t q=26.984]
+```
+
+Cold atoms all have the aura `@tas`.  (Hence the `p=%tas` in the parsed result of `%12`.)

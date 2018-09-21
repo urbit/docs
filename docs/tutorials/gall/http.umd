@@ -1,0 +1,231 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'7'
+        title/'HTTP requests and timers'
+    ==
+;>
+
+# Writing an HTTP request
+
+There's a variety of arvo services we haven't touched on yet.
+Let's figure out how to make HTTP requests and set timers.
+
+Let's build an uptime-monitoring system.  It'll ping a web
+service periodically and print out an error when the response
+code isn't 2xx.  Here's `app/up.hoon`:
+
+```
+::  Up-ness monitor. Accepts atom url, 'on', or 'off'
+::
+::::  /hoon/up/examples/app
+  ::
+/?    314
+|%
++$  move  [bone card]
++$  card
+  $%  [%hiss wire unit-iden=$~ mark=%httr cage=[mark=%purl vase=purl]]
+      [%wait wire @da]
+  ==
++$  action
+  $%  [%on $~]            ::  enable polling('on')
+      [%off $~]           ::  disable polling('off)
+      [%target p=cord]    ::  set poll target('http://...')
+  ==
+--
+|_  [hid=bowl:gall on=_| in-progress=_| target=@t}
+++  poke-atom
+  |=  url-or-command=@t  ^-  (quip move +>)
+  =+  ^-  act/action
+      ?:  ?=($on url-or-command)  [%on ~]
+      ?:  ?=($off url-or-command)  [%off ~]
+      [%target url-or-command]
+  ?-  -.act
+    $target  [~ +>.$(target p.act)]
+    $off  [~ +>.$(on |)]
+    $on
+      :-  ?:  |(on in-progress)  ~
+          [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+      +>.$(on &, in-progress &)
+  ==
+++  sigh-httr
+  |=  [wir=wire code=@ud headers=mess body=(unit octs)]
+  ~&  'arrive here'
+  ^-  [(list move) _+>.$]
+  ?:  &((gte code 200) (lth code 300))
+    ~&  [%all-is-well code]
+    :_  +>.$
+    [ost.hid %wait /timer (add ~s10 now.hid)]~
+  ~&  [%we-have-a-problem code]
+  ~&  [%headers headers]
+  ~&  [%body body]
+  :_  +>.$
+  [ost.hid %wait /timer (add ~s10 now.hid)]~
+++  wake-timer
+  |=  [wir=wire $~]  ^-  (quip move +>)
+  ?:  on
+    :_  +>.$
+    [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+  [~ +>.$(in-progress |)]
+::
+++  prep  ~&  target  _`.  :: computed when the source file changes;
+--                         :: here it prints target then resets our state
+```
+
+There's some fancy stuff going on here.  We'll go through it line by
+line, though.
+
+There's two kinds of cards we're sending to arvo. A `%hiss` move tells
+`%eyre` to make an HTTP request. It expects a `(unit iden)`, which will
+be null here because we aren't doing any authentication; a mark, in this
+case the http request mark `&httr`; and some data in the form of a
+`cage`, which is a `[mark vase]`. This is confusing, so the mold in the
+code quoted above includes a bunch of otherwise unnecessary faces for
+the purpose of illustration. Compare: `[%hiss p=(unit iden) q=mark
+r=cage]` from `zuse`.
+
+> You can grep zuse.hoon and arvo.hoon for most of these definitions.
+> However, beware the ambiguity surrounding "hiss": there's ++hiss in
+> section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the
+> move that is sent to %eyre to make our HTTP request happen. Here we're
+> talking about the latter. See `++kiss-eyre` in `zuse`.
+
+> Recall that `++unit` means "maybe".  Formally, "`(unit a)` is
+> either null or a pair of null and a value in `a`". Also recall
+> that to pull a value out of a unit (`u.unit`), you must first
+> verify that the unit is not null (for example with `?~`). See
+> `++need`.
+
+A `purl` is a parsed url structure, which can be created with `++epur`,
+which is a function that takes a url as text and parses it into a `(unit
+purl)`.  Thus, the result is null if and only if the url is malformed.
+'Purl' is also the mark which will be applied to this result.
+
+When you send this request, you can expect a `%sigh` with the
+response, which we handle later on in `++sigh-httr`.
+
+For `%wait`, you just pass a [`@da`]() (absolute date), and arvo will
+produce a `%wake` when the time comes.
+
+> A timer is guaranteed to not be triggered before the given
+> time, but it's currently impossible to guarantee the timer will be
+> triggered at exactly the requested time.
+
+Let's take a look at our state:
+
+```
+|_  [hid=bowl:gall on=_| in-progress=_| target=@t}
+```
+
+We have three pieces of app-specific state.  `target` is the url
+we're monitoring.  `on` and `in-progress` are booleans
+representing, respectively, whether or not we're supposed to keep
+monitoring and whether or not we're in the middle of a request.
+
+The type of booleans is usually written as `?`, which is a union
+of `&` (true) and `|` false.  This type defaults to `&` (true).  In our
+case, we want both of these to default to `|` (false).  Because
+of that, we use `_|` as the type.  `_value` means "take the type
+of `value`, but make the default value be `value`".  Thus, our
+type is still a boolean, just like `?`, but the default value is
+`|` (false).
+
+> This is the same `_` used in `_+>.$`, which means "the same
+> type as the value "+>.$".  In other words, the same type as our
+> current context and state.
+
+Let's take a look at `++poke-atom`.  When we're poked with an atom, we
+first check whether the atom is `'off'`.  If so, we set our state
+variable `on` to false.
+
+If not, we check whether the atom is `'on'`.  If so, we set `on` and
+`in-progress` to true.  If it was already either on or in progress, then
+we don't take any other immediate action. If it was both off and not in
+progress, then we send an HTTP request.
+
+If the argument is neither 'off' nor 'on', then we assume it's an
+actual url, so we save it in `target`.
+
+Here's the move that sends the HTTP request:
+```
+[ost.hid %hiss /request ~ %httr %purl (need (epur target))]
+```
+
+> Remember, we are expected to produce a *list* of moves. Note the `~`
+> after the move in the full example. This is a convenient shortcut for
+> creating a list of a single element.  It's part of a small family of
+> such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c]
+> ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to
+> create various convoluted structures and emojis.
+
+The correspondence between this move and `[bone card]` can be hard to
+visualize on one line. Here it is more pedantically:
+
+```
+:*  bone=ost.hid                                        :: the move
+    term=%hiss
+    wire=/request
+    unit-iden=~
+    mark=%httr
+    cage=[%purl (need (epur target))]
+==
+```
+
+When the HTTP response comes back, we handle it with
+`++sigh-httr`, which, along with the wire the request was sent
+on, takes the status code, the response headers, and the response
+body.
+
+We check whether the status code is between 200 and 300.  If so,
+all is well, and we print a message saying so.  We start the
+timer for ten seconds after the present time.
+
+If we got a bad status code, then we print out the entire
+response and start the timer again.
+
+After ten seconds, arvo will give us a `%wake` event, which will
+be handled in `++wake-timer`.  If we're still supposed to keep
+monitoring, we send the same HTTP request as before.  Otherwise,
+we set `in-progress` to false.
+
+Let's try it out:
+
+```
+~fintud-macrep:dojo> |start %up
+>=
+~fintud-macrep:dojo> :examples-up &atom 'http://www.google.com'
+>=
+[%all-is-well 200]
+[%all-is-well 200]
+~fintud-macrep:dojo> :examples-up &atom 'http://example.com'
+>=
+[%all-is-well 200]
+~fintud-macrep:dojo> :examples-up &atom 'http://google.com'
+>=
+[%we-have-a-problem 301]
+[ %headers
+  ~[
+    [p='X-Frame-Options' q='SAMEORIGIN']
+    [p='X-XSS-Protection' q='1; mode=block']
+    [p='Content-Length' q='219']
+    [p='Server' q='gws']
+    [p='Cache-Control' q='public, max-age=2592000']
+    [p='Expires' q='Sun, 10 Jan 2016 23:45:05 GMT']
+    [p='Date' q='Fri, 11 Dec 2015 23:45:05 GMT']
+    [p='Content-Type' q='text/html; charset=UTF-8']
+    [p='Location' q='http://www.google.com/']
+  ]
+]
+[ %body
+  [ ~
+    [ p=219
+        q
+      \/'<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">\0a<TITLE>301 Moved</TI\/
+        TLE></HEAD><BODY>\0a<H1>301 Moved</H1>\0aThe document has moved\0a<A HREF="http://www.google.com/">her
+        e</A>.\0d\0a</BODY></HTML>\0d\0a'
+      \/                                                                                                      \/
+    ]
+  ]
+]
+~fintud-macrep:dojo> :up &atom 'off'
+```

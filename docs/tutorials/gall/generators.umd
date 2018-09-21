@@ -1,0 +1,170 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'6'
+        title/'Using generators with apps'
+    ==
+;>
+
+# Generators
+
+Up until now we've poked apps directly. This requires the user to
+specify the mark, and it requires the app to accept the arguments in a
+way that's convenient for users to input. This is the "plumbing" way to
+interact with apps. Generators are the "porcelain" layer. This is why
+when you run a command like `+ls` or `|merge`, there are no marks in
+sight.
+
+We've used generators before, back in [Basic
+Operation](/docs/using/admin). At that point, we just used the
+generators to produce values -- we didn't pipe their results into apps.
+In the dojo cast, the role of a generator is to take a list of arguments
+and produce a value, which is often, though not always, piped into an
+app. Generators are pure, stateless functions, and they cannot send
+moves.
+
+`+ls` and `+cat` are commonly-used generators that produce a directory
+listing and print out a file, respectively. These are useful in
+themselves, so we generally don't pipe the results into an app.
+
+Another generator is `+hood/merge`. Try running `+hood/merge` with the
+normal arguments for `|merge`:
+
+```
+    ~fintud-macrep:dojo> +hood/merge %home our %they
+    [syd=%home her=~fintud-macrep sud=%they gem=%auto]
+    ~fintud-macrep:dojo> +hood/merge %home our %they, =gem %this
+    [syd=%home her=~fintud-macrep sud=%they gem=%auto]
+```
+
+This didn't run any merge, it just constructed the command that, if sent
+to `:hood`, would run it. Note first that, even though it's not printed,
+this value has mark `kiln-merge`. Also, the merge strategy `gem=%auto`
+was added automatically. Optional arguments are straightforward with
+generators.
+
+In general, generators are prepended by either `+` or `|`. The general
+form is `+generator`, but often generators are created specifically to
+work with a single app, they're usually placed in a subdirectory of gen
+and run with `|`. Thus, if `my-generator` generator is made for use with
+`:my-app`, then `my-generator` is put in
+`/gen/my-app/my-generator.hoon`, and can be run directly with
+`+my-app/my-generator <args>`. If you want to pipe the result into
+`:my-app`, then run `:my-app +my-app/my-generator <args>`. Because this
+pattern is so common, this can be abbreviated to
+`:my-app|my-generator <args>`. Because most built-in commands are
+generators for the `:hood` app, `:hood|generator <args>` can be
+shortened to `|generator <args>`.
+
+Let's write a generator for a modified version of `:examples-pong` from
+the chapter on [Network Messages](/docs/arvo/system/network). Recall
+that `:examples-pong` takes an urbit address, which is of mark `urbit`,
+and sends that urbit the message `'howdy'`. First--without a
+generator--let's make `:examples-ping` that does the same, except that
+it lets the user optionally specify the message as well.
+
+We'll need a new mark for our arguments. Let's call it
+`examples-ping-message`.
+
+> For app-specific marks, it's good style to prefix the name of the mark
+> with the name of the app. Since many apps have several such marks,
+> subdirectories in `/mar` are rendered as `-`, so that `ping-message`
+> is written in (/mar/examples/ping/message.hoon).
+
+```
+    ::
+    ::::  /hoon/message/ping/examples/app
+      ::
+    /?    314
+    |_  [to=@p message=@t]
+    ++  grab
+      |%
+      ++  noun  [@p @t]
+      --
+    --
+```
+
+The app can easily be modified to use this (`/app/examples/ping.hoon`):
+
+```
+    ::  Allows one ship to ping another with a string of text
+    ::
+    ::::  /hoon/ping/examples/app
+      ::
+    /?    314
+    |%
+      ++  move  [bone term wire *]
+    --
+    !:
+    |_  [bowl:gall state=$~]
+    ::
+    ++  poke-examples-ping-message
+      |=  [to=@p message/@t}
+      ~&  'sent'
+      ^-  [(list move) _+>.$]
+      :-  ^-  (list move)
+          :~  `move`[ost %poke /sending [to dap] %atom message]
+          ==
+      +>.$
+    ::
+    ++  poke-atom
+      |=  arg=@
+      ~&  'received'
+      ^-  [(list move) _+>.$]
+      ::
+      ~&  [%receiving (@t arg)]
+      [~ +>.$]
+    ::
+    ++  coup  |=(* `+>)
+    --
+```
+
+Now we can run this with:
+
+```
+    ~fintud-macrep:dojo> |start %examples-ping
+    >=
+    ~fintud-macrep:dojo> :examples-ping &examples-ping-message [~sampel-sipnym 'heyya']
+    >=
+```
+
+And on `~sampel-sipnym`, assuming it's running `:examples-ping` as well,
+we see `[%receiving 'heyya']`.
+
+This is an annoying way to invoke the app, though. The `[]` are
+mandatory, and optional arguments are hard. Let's make a generator,
+`+examples-send` to make everything nicer. Since it's specific to
+`:examples-ping`, let's put it in `/gen/examples/ping/send.hoon`:
+
+```
+    :-  %say
+    |=  [^ [to=@p message=?($~ [text=@t $~])] $~]
+    [%examples-ping-message to ?~(message 'howdy' text.message)]
+```
+
+A couple of new things here. Firstly, `message=?($~ [text=@t $~])`
+should be read as "the message is either null or a pair of text and
+null". Generator argument lists are always null-terminated, which makes
+it convenient to accept lists in tail position (which are particularly
+annoying without generators). `?(a b)` is the irregular form of
+`$?(a b)`, which is a union type. Thus, `?(a b)` means the type of
+anything that's in either `a` or `b`. Thus, in our case,
+`?(~ [text=@t ~])` is either null or a pair of text and null.
+
+This is run as follows:
+
+```
+    ~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym
+    >=
+    ~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym 'how do you do'
+    >=
+```
+
+Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and
+`[%receiving 'how do you do']`.
+
+*Exercises*:
+
+- Create a generator for `:examples-sum` from [State](../../state) so that you can run `:examples-sum|add 5` to add numbers to it.
+
+- Create a generator for `:examples-click` from [Web Apps](../../web-apps) so that you can run `:examples-click|poke` to poke it.

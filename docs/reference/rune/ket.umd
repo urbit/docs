@@ -1,0 +1,19 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'11'
+        title/'Casts ^ ("ket")'
+    ==
+;>
+
+# Casts `^` ("ket")
+
+[`^-` ("kethep")](./hep/), [`^+` ("ketlus")](./lus/), and
+[`^=` ("kettis")](./tis/) let us adjust types without violating type
+constraints.
+
+The `nest` algorithm which tests subtyping is conservative;
+it never allows invalid nests, it sometimes rejects valid nests.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

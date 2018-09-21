@@ -1,0 +1,14 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'Gall Apps'
+    ==
+;>
+
+# Gall Apps
+
+This is documentation about how to write Gall apps.  Some knowledge of Hoon is assumed.
+
+Note: these lessons were first written in 2016.  They need to be rewritten; in some ways they are outdated, and in other ways they were not always accessible enough to beginners.  We are planning to rewrite these in the near future.  In the meantime there is still useful information to be found here.
+
+;list;

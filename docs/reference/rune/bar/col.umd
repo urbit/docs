@@ -1,0 +1,26 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'|: "barcol"'
+    ==
+;>
+
+# `|: "barcol"`
+
+`[%brcl p=hoon q=hoon]`: form a gate with burnt sample.
+
+## Expands to
+
+```
+=>  ^~  p
+  |.  q
+```
+
+## Discussion
+
+Pick your own default value for the sample.  Note that `p` is an ordinary expression, not a type; `|:` doesn't bunt a sample as
+[`|=`](../tis) does.
+
+## Syntax
+
+Regular: *2-fixed*.

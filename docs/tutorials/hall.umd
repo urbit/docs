@@ -1,0 +1,14 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'7'
+        title/'Hall'
+    ==
+;>
+
+# Hall
+
+Hall is the Urbit messaging and notifications protocol. Read up on Hall's
+architecture, its interfaces and the new Gall model it's built to target.
+
+;list;
