@@ -1,39 +1,41 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'38'
+        title/'4k: Atom Printing'
+    ==
 
+;>
 
 # 4k: atom printing
+
 ### `++co`
 
 Literal rendering engine
 
 A door that contains arms that operate on the sample coin `lot`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
 `lot` is a `++coin`.
 
-Source
-------
+#### Source
 
+```
     ++  co  !.
       ~%  %co  ..co  ~
       =<  |_  lot/coin
+```
 
+#### Examples
 
-Examples
---------
-
+```
         > < 3.nta
         { lot/{$many {$~ $ta @t} {$~ $ud @ud} $~}
           <10.cfg 4.jjn {rep/"" <402.arm 110.jyx 1.ztu $151>}>
         }
         >
+```
 
 ------------------------------------------------------------------------
 
@@ -43,26 +45,26 @@ Prepend & render as tape
 
 Renders a coin `lot` as a tape prepended to the sample tape `rom`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
 `rom` is a `pe`
 
 `lot` is a `++coin`.
 
-Source
-------
+#### Source
 
+```
           ++  rear  |=(rom/tape =>(.(rex rom) rend))
+```
 
-Examples
---------
+#### Examples
 
+```
     > (~(rear co %$ %ux 200) "--ha")
     "0xc8--ha"
+```
 
 ------------------------------------------------------------------------
 
@@ -72,27 +74,27 @@ Render as span
 
 Renders a coin `lot` as a span.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
 `lot` is a `++coin`.
 
-Source
-------
+#### Source
 
+```
           ++  rent  `@ta`(rap 3 rend)
+```
 
-Examples
---------
+#### Examples
 
+```
     > ~(rent co %$ %ux 200)
     ~.0xc8
+
     > `@t`~(rent co %$ %ux 200)
     '0xc8'
-
+```
 ------------------------------------------------------------------------
 
 ### `++rend`
@@ -101,17 +103,15 @@ Render as tape
 
 Renders a coin `lot` as a tape.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
 `lot` is a `++coin`.
 
-Source
-------
+#### Source
 
+```
       ++  rend
         ^-  tape
         ?:  ?=($blob -.lot)
@@ -239,106 +239,125 @@ Source
           ['~' '~' (weld (rip 3 (wood q.p.lot)) rep)]
         ==
       --
+```
 
-Examples
---------
+#### Examples
 
+```
     > ~(rend co ~ %ux 200)
     "0xc8"
+
     > ~(rend co %many ~[[%$ ux+200] [%$ p+40]])
     "._0xc8_~~tem__"
+
     > ~(rend co ~ %p 32.819)
     "~pillyt"
+
     > ~(rend co ~ %ux 18)
     "0x12"
+
     > ~(rend co [~ p=[p=%if q=0x7f00.0001]])
     ".127.0.0.1"
+
     > `@ux`.127.0.0.1
     2.130.706.433
+
     > ~(rend co %many ~[[~ %ud 20] [~ %uw 133] [~ %tas 'sam']])
     "._20_0w25_sam__"
+
     > ~(rend co %blob [1 1])
     "~0ph"
+
     > ~0ph
     [1 1]
+
     > `@uv`(jam [1 1])
     0vph
+```
 
 
-
-***
+---
 ### `++alf`
 
 Alphabetic characters
 
 Parse alphabetic characters, both upper and lowercase.
 
-Source
-------
+#### Source
 
+```
     ++  alf  ;~(pose low hig)                               ::  alphabetic
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "a" alf)
         ~~a
+
         > (scan "A" alf)
         ~~~41.
+
         > (scan "AaBbCc" (star alf))
         "AaBbCc"
+```
 
 
-
-***
+---
 ### `++aln`
 
 Alphanumeric characters
 
 Parse alphanumeric characters - both alphabetic characters and numbers.
 
-Source
-------
+#### Source
 
+```
     ++  aln  ;~(pose low hig nud)                           ::  alphanumeric
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "0" aln)
         ~~0
+
         > (scan "alf42" (star aln))
         "alf42"
+
         > (scan "0123456789abcdef" (star aln))
         "0123456789abcdef"
+```
 
 
-
-***
+---
 ### `++alp`
 
 Alphanumeric and `-`
 
 Parse alphanumeric strings and hep, "-".
 
-Source
-------
+#### Source
 
+```
     ++  alp  ;~(pose low hig nud hep)                       ::  alphanumeric and -
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "7" alp)
         ~~7
+
         > (scan "s" alp)
         ~~s
+
         > (scan "123abc-" (star alp))
         "123abc-"
+```
 
 
-
-***
+---
 
 ### `++bet`
 
@@ -346,62 +365,69 @@ Axis syntax `-`, `+`
 
 Parse the hep and lus axis syntax.
 
-Source
-------
+#### Source
 
+```
     ++  bet  ;~(pose (cold 2 hep) (cold 3 lus))             ::  axis syntax - +
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "-" bet)
         2
+
         > (scan "+" bet)
         3
+```
 
 
-
-***
+---
 ### `++bin`
 
 Binary to atom
 
 Parse a tape of binary (0s and 1s) and produce its atomic representation.
 
-Source
-------
+#### Source
 
+```
     ++  bin  (bass 2 (most gon but))                        ::  binary to atom
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "0000" bin)
         0
+
         > (scan "0001" bin)
         1
+
         > (scan "0010" bin)
         2
+
         > (scan "100000001111" bin)
         2.063
+```
 
 
-
-***
+---
 ### `++but`
 
 Binary digit
 
 Parse a single binary digit.
 
-Source
-------
+#### Source
 
+```
     ++  but  (cook |=(a=@ (sub a '0')) (shim '0' '1'))      ::  binary digit
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "0" but)
         0
         > (scan "1" but)
@@ -412,24 +438,25 @@ Examples
         ! exit
         > (scan "01" (star but))
         ~[0 1]
+```
 
 
-
-***
+---
 ### `++cit`
 
 Octal digit
 
 Parse a single octal digit.
 
-Source
-------
+#### Source
 
+```
     ++  cit  (cook |=(a=@ (sub a '0')) (shim '0' '7'))      ::  octal digit
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "1" cit)
         1
         > (scan "7" cit)
@@ -440,24 +467,25 @@ Examples
         ! exit
         > (scan "60" (star cit))
         ~[6 0]
+```
 
 
-
-***
+---
 ### `++dem`
 
 Decimal to atom
 
 Parse a decimal number to an atom.
 
-Source
-------
+#### Source
 
+```
     ++  dem  (bass 10 (most gon dit))                       ::  decimal to atom
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "7" dem)
         7
         > (scan "42" dem)
@@ -466,71 +494,75 @@ Examples
         150.000.000
         > (scan "12456" dem)
         12.456
+```
 
 
-
-***
+---
 ### `++dit`
 
 Decimal digit
 
 Parse a single decimal digit.
 
-Source
-------
+#### Source
 
+```
     ++  dit  (cook |=(a=@ (sub a '0')) (shim '0' '9'))      ::  decimal digit
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "7" dit)
         7
         > (scan "42" (star dit))
         ~[4 2]
         > (scan "26000" (star dit))
         ~[2 6 0 0 0]
+```
 
 
-
-***
+---
 ### `++dog`
 
 `.` optional gap
 
 Dot followed by an optional gap, used with numbers.
 
-Source
-------
+#### Source
 
+```
     ++  dog  ;~(plug dot gay)                               ::
+```
 
-Examples
---------
+#### Examples
 
-    /> 1.234.
+```
+    > 1.234.703
                 703
     1.234.703
+
     > (scan "a.        " ;~(pfix alf dog))
     [~~~. ~]
+```
 
 
-
-***
+---
 ### `++doh`
 
 `@p` separator
 
 Phonetic base phrase separator
 
-Source
-------
+#### Source
 
+```
     ++  doh  ;~(plug ;~(plug hep hep) gay)                  ::
+```
 
-Examples
---------
+#### Examples
 
+```
     /> ~nopfel-botduc-nilnev-dolfyn--haspub-natlun-lodmur-holtyd
     ~nopfel-botduc-nilnev-dolfyn--haspub-natlun-lodmur-holtyd
     /> ~nopfel-botduc-nilnev-dolfyn--
@@ -540,32 +572,33 @@ Examples
     [[~~- ~~-] ~]
     > (scan "--      " doh)
     [[~~- ~~-] ~]
+```
 
 
-
-***
+---
 ### `++dun`
 
 `--` to `~`
 
 Parse phep, `--`, to null, `~`.
 
-Source
-------
+#### Source
 
+```
     ++  dun  (cold ~ ;~(plug hep hep))                      ::  -- (phep) to ~
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "--" dun)
     ~
     > (dun [[1 1] "--"])
     [p=[p=1 q=3] q=[~ u=[p=~ q=[p=[p=1 q=3] q=""]]]]
+```
 
 
-
-***
+---
 
 ### `++duz`
 
@@ -573,22 +606,23 @@ Examples
 
 Parse stet, `==`, to null `~`.
 
-Source
-------
+#### Source
 
+```
     ++  duz  (cold ~ ;~(plug tis tis))                      ::  == (stet) to ~
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "==" duz)
     ~
     > (duz [[1 1] "== |=..."])
     [p=[p=1 q=3] q=[~ u=[p=~ q=[p=[p=1 q=3] q=" |=..."]]]]
+```
 
 
-
-***
+---
 
 ### `++gah`
 
@@ -596,14 +630,15 @@ Newline or ' '
 
 Whitespace component, either newline or space.
 
-Source
-------
+#### Source
 
+```
     ++  gah  (mask [`@`10 ' ' ~])                           ::  newline or ace
+```
 
-Examples
---------
+#### Examples
 
+```
     /> ^-  *  ::  show spaces
                 """
                    -
@@ -622,130 +657,133 @@ Examples
 
                 """
     ~[32 32 32 10 32 10 32 32]
+```
 
 
-
-***
+---
 ### `++gap`
 
 Plural whitespace
 
 Separates tall runes
 
-Source
-------
+#### Source
 
+```
     ++  gap  (cold ~ ;~(plug gaq (star ;~(pose vul gah))))  ::  plural whitespace
+```
 
 
-
-***
+---
 ### `++gaq`
 
 End of line
 
 Two spaces, a newline, or comment.
-    
-Source
-------
 
+#### Source
+
+```
     ++  gaq  ;~  pose                                       ::  end of line
                  (just `@`10)
                  ;~(plug gah ;~(pose gah vul))
                  vul
              ==
+```
 
 
 
-
-***
+---
 ### `++gaw`
 
 Classic whitespace
 
 Terran whitespace.
 
-Source
-------
+#### Source
 
+```
     ++  gaw  (cold ~ (star ;~(pose vul gah)))               ::  classic white
+```
 
 
-
-***
+---
 ### `++gay`
 
 Optional gap
 
 Optional gap.
 
-Source
-------
+#### Source
 
+```
     ++  gay  ;~(pose gap (easy ~))                          ::
+```
 
-
-
-***
+---
 ### `++gon`
 
 Long numbers
 
 Parse long numbers - Numbers which wrap around the shell with the line
 
-Source
-------
+#### Source
 
-break     ++  gon  ;~(pose ;~(plug bas gay fas) (easy ~))         ::  long numbers \ /
+```
+     ++  gon  ;~(pose ;~(plug bas gay fas) (easy ~))         ::  long numbers \ /
+```
 
-Examples
---------
-characters bas and fas.
+#### Examples
 
+```
         > (scan "\\/" gon)
         [~~~5c. ~ ~~~2f.]
+
         > (gon [[1 1] "\\/"])
         [p=[p=1 q=3] q=[~ u=[p=[~~~5c. ~ ~~~2f.] q=[p=[p=1 q=3] q=""]]]]
+```
 
 
-
-***
+---
 ### `++gul`
 
 Axis syntax `<` or `>`
 
 Parse the axis gal and gar axis syntax.
 
-Source
-------
+#### Source
 
+```
     ++  gul  ;~(pose (cold 2 gal) (cold 3 gar))             ::  axis syntax < >
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "<" gul)
         2
+
         > (scan ">" gul)
         3
+```
 
 
-
-***
+---
 ### `++hex`
 
 Hex to atom
 
 Parse any hexadecimal number to an atom.
 
-Source
-------
+#### Source
 
+```
     ++  hex  (bass 16 (most gon hit))                       ::  hex to atom
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "a" hex)
         10
         > (scan "A" hex)
@@ -760,53 +798,58 @@ Examples
         2.025.463
         > `@ux`(scan "1EE7F7" hex)
         0x1e.e7f7
+```
 
-
-***
+---
 ### `++hig`
 
 Uppercase
 
 Parse a single uppercase letter.
 
-Source
-------
+#### Source
 
+```
     ++  hig  (shim 'A' 'Z')                                 ::  uppercase
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "G" hig)
         ~~~47.
+
         > `cord`(scan "G" hig)
         'G'
+
         > (scan "ABCDEFGHIJKLMNOPQRSTUVWXYZ" (star hig))
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
         > (hig [[1 1] "G"])
         [p=[p=1 q=2] q=[~ [p=~~~47. q=[p=[p=1 q=2] q=""]]]]
+```
 
 
-
-***
+---
 ### `++hit`
 
 Hex digits
 
 Parse a single hexadecimal digit.
 
-Source
-------
+#### Source
 
+```
     ++  hit  ;~  pose                                       ::  hex digits
                dit
                (cook |=(a=char (sub a 87)) (shim 'a' 'f'))
                (cook |=(a=char (sub a 55)) (shim 'A' 'F'))
              ==
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "a" hit)
         10
         > (scan "A" hit)
@@ -815,9 +858,9 @@ Examples
         [p=[p=1 q=2] q=[~ [p=10 q=[p=[p=1 q=2] q=""]]]]
         > (scan "2A" (star hit))
         ~[2 10]
+```
 
-
-***
+---
 ### `++iny`
 
 Indentation block
@@ -825,19 +868,17 @@ Indentation block
 Apply `++rule` to indented block starting at current column number, omitting
 the leading whitespace.
 
-Accepts
--------
+#### Accepts
 
 `sef` is a `++rule`
 
-Produces
---------
+#### Produces
 
 A `++rule`.
 
-Source
-------
+#### Source
 
+```
     ++  inde  |*  sef/rule                                  :: indentation block
       |=  nail  ^+  (sef)
       =+  [har tap]=[p q]:+<
@@ -857,10 +898,11 @@ Source
       ?.  =(10 -.res)  [-.res $(res +.res)]
       (welp [`@t`10 (trip lev)] $(res +.res))
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "abc" (iny (star ;~(pose prn (just `@`10)))))
     "abc"
     > (scan "abc" (star ;~(pose prn (just `@`10))))
@@ -874,24 +916,25 @@ Examples
     > (scan "  abc\0a  de" ;~(pfix ace ace (iny (star ;~(pose prn (just `@`10))))))
     "abc
         de"
+```
 
 
-
-***
+---
 ### `++low`
 
 Lowercase
 
 Parse a single lowercase letter.
 
-Source
-------
+#### Source
 
+```
     ++  low  (shim 'a' 'z')                                 ::  lowercase
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "g" low)
         ~~g
         > `cord`(scan "g" low)
@@ -900,58 +943,61 @@ Examples
         "abcdefghijklmnopqrstuvwxyz"
         > (low [[1 1] "g"])
         [p=[p=1 q=2] q=[~ [p=~~g q=[p=[p=1 q=2] q=""]]]]
+```
 
 
-
-***
+---
 ### `++mes`
 
 Hexbyte
 
 Parse a hexbyte.
 
-Source
-------
+#### Source
 
+```
     ++  mes  %+  cook                                       ::  hexbyte
                |=({a/@ b/@} (add (mul 16 a) b))
              ;~(plug hit hit)
+```
 
-Examples
---------
+#### Examples
 
+```
         > (scan "2A" mes)
         42
         > (mes [[1 1] "2A"])
         [p=[p=1 q=3] q=[~ u=[p=42 q=[p=[p=1 q=3] q=""]]]]
         > (scan "42" mes)
         66
+```
 
 
-
-***
+---
 ### `++nix`
 
 Letters and `-`
 
 Parse Letters and `-`.
 
-Source
-------
+#### Source
 
+```
     ++  nix  (boss 256 (star ;~(pose aln cab)))             ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "as_me" nix)
     q=435.626.668.897
+
     > `@t`(scan "as_me" nix)
     'as_me'
+```
 
 
-
-***
+---
 
 ### `++nud`
 
@@ -959,14 +1005,15 @@ Numeric
 
 Parse a numeric character - A number.
 
-Source
-------
+#### Source
 
+```
     ++  nud  (shim '0' '9')                                 ::  numeric
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "0" nud)
     ~~0
     > (scan "7" nud)
@@ -975,23 +1022,24 @@ Examples
     [p=[p=1 q=2] q=[~ [p=~~1 q=[p=[p=1 q=2] q=""]]]]
     > (scan "0123456789" (star nud))
     "0123456789"
+```
 
-
-***
+---
 ### `++prn`
 
 Printable character
 
 Parse any printable character.
 
-Source
-------
+#### Source
 
+```
     ++  prn  ;~(less (just `@`127) (shim 32 256))
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "h" prn)
     ~~h
     > (scan "!" prn)
@@ -999,27 +1047,28 @@ Examples
     > (scan "\01" prn)
     ! {1 1}
     ! exit
+```
 
 
-
-***
+---
 ### `++qit`
 
 Chars in cord
 
 Parse an individual character to its cord atom representation.
 
-Source
-------
+#### Source
 
+```
     ++  qit  ;~  pose                                       ::  chars in a cord
                  ;~(less bas soq prn)
                  ;~(pfix bas ;~(pose bas soq mes))          ::  escape chars
              ==
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "%" qit)
     37
     > `@t`(scan "%" qit)
@@ -1036,27 +1085,28 @@ Examples
     0xa
     > (scan "cord" (star qit))
     ~[99 111 114 100]
+```
 
 
-
-***
+---
 ### `++qit`
 
 Chars in cord
 
 Parse an individual character to its cord atom representation.
 
-Source
-------
+#### Source
 
+```
     ++  qit  ;~  pose                                       ::  chars in a cord
                  ;~(less bas soq prn)
                  ;~(pfix bas ;~(pose bas soq mes))          ::  escape chars
              ==
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "%" qit)
     37
     > `@t`(scan "%" qit)
@@ -1073,11 +1123,11 @@ Examples
     0xa
     > (scan "cord" (star qit))
     ~[99 111 114 100]
+```
 
 
 
-
-***
+---
 ### `++qut`
 
 Cord
@@ -1085,9 +1135,9 @@ Cord
 Parse single-soq cord with `\{gap}/` anywhere in the middle, or triple-single
 quote (aka triple-soq) cord, between which must be in an indented block.
 
-Source
-------
+#### Source
 
+```
      ++  qut  ;~  pose                                       ::  cord
                  ;~  less  soqs
                    (ifix [soq soq] (boss 256 (more gon qit)))
@@ -1100,84 +1150,87 @@ Source
                  (boss 256 (star qat))
              ==
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "'cord'" qut)
     q=1.685.221.219
     > 'cord'
     'cord'
     > `@ud`'cord'
     1.685.221.219
-    /> '''
+    > '''
                 Heredoc isn't prohibited from containing quotes
                 '''
     'Heredoc isn't prohibited from containing quotes'
+```
 
 
-
-***
+---
 ### `++soz`
 
 Delimiting `'''`
 
 Parse a triple-single quote, used for multiline strings.
 
-Source
-------
+#### Source
 
+```
     ++  soz  ;~(plug soq soq soq)                          ::  delimiting '''
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "'''" soz)
     [~~~27. ~~~27. ~~~27.]
     > (rash '"""' soz)
     ! {1 1}
     ! exit
+```
 
 
-
-***
+---
 ### `++sym`
 
 Term
 
 A term: a letter(lowercase), followed by letters, numbers, or `-`.
 
-Source
-------
+#### Source
 
+```
     ++  sym
       %+  cook
         |=(a=tape (rap 3 ^-((list ,@) a)))
       ;~(plug low (star ;~(pose nud low hep)))
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "sam-2" sym)
     215.510.507.891
     > `@t`(scan "sam-2" sym)
     'sam-2'
     > (scan "sym" sym)
     7.174.515
+```
 
 
-
-***
+---
 ### `++ven`
 
 `+>-` axis syntax
 
 Axis syntax parser
 
-Source
-------
+#### Source
 
+```
     ++  ven  ;~  (comp |=({a/@ b/@} (peg a b)))             ::  +>- axis syntax
                bet
                =+  hom=`?`|
@@ -1190,31 +1243,35 @@ Source
                ?>  ?=(^ q.wag)
                [p.wag [~ (peg p.u.q.vex p.u.q.wag) q.u.q.wag]]
              ==
+```
 
-Examples
---------
+#### Examples
 
+```
     ~zod/arvo=/hoon/hoon> (scan "->+" ven)
     11
+
     ~zod/arvo=/hoon/hoon> `@ub`(scan "->+" ven)
     0b1011
+
     ~zod/arvo=/hoon/hoon> (peg (scan "->" ven) (scan "+" ven))
     11
+
     ~zod/arvo=/hoon/hoon> ->+:[[1 2 [3 4]] 5]
     [3 4]
+```
 
 
-
-***
+---
 ### `++vit`
 
 Base64 digit
 
 Parse a standard base64 digit.
 
-Source
-------
+#### Source
 
+```
     ++  vit                                                 ::  base64 digit
       ;~  pose
         (cook |=(a/@ (sub a 65)) (shim 'A' 'Z'))
@@ -1223,10 +1280,11 @@ Source
         (cold 62 (just '-'))
         (cold 63 (just '+'))
       ==
+```
 
-Examples
---------
+#### Examples
 
+```
     ~zod/arvo=/hoon/hoon> (scan "C" vit)
     2
     ~zod/arvo=/hoon/hoon> (scan "c" vit)
@@ -1235,34 +1293,35 @@ Examples
     54
     ~zod/arvo=/hoon/hoon> (scan "-" vit)
     62
+```
 
-
-***
+---
 ### `++vul`
 
 Comments to null
 
-Source
-------
+#### Source
 
+```
     ++  vul  %+  cold   ~                                   ::  comments
              ;~  plug  col  col
                (star prn)
                (just `@`10)
              ==
+```
 
 Parse comments and produce a null. Note that a comment must be ended
 with a newline character.
 
-Examples
---------
+#### Examples
 
+```
     > (scan "::this is a comment \0a" vul)
     ~
     > (scan "::this is a comment " vul)
     ! {1 21}
     ! exit
+```
 
 
-
-***
+---

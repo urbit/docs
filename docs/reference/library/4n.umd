@@ -1,9 +1,13 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'41'
+        title/'4n: Virtualization'
+    ==
+
+;>
 
 
 # 4n: virtualization
+
 ### `++mack`
 
 Nock subject to unit
@@ -12,32 +16,30 @@ Accepts a nock subject-formula cell and wraps it into a `++unit`.
 `fol` is pure nock, meaning that nock `11` operations result in a block,
 producing a `~`.
 
-Accepts
--------
+#### Accepts
 
 `sub` is a subject noun.
 
 `fol` is a formula noun, which is generally a `++nock`.
 
-Produces
---------
+#### Produces
 
 The `++unit` of a noun.
 
-Source
-------
+#### Source
 
+```
     ++  mack
       |=  {sub/* fol/*}
       ^-  (unit)
       =+  ton=(mink [sub fol] |=({* *} ~))
       ?.(?=({$0 *} ton) ~ [~ p.ton])
     ::
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > (mack [[1 2 3] [0 1]])
     [~ [1 2 3]]
     > (mack [41 4 0 1])
@@ -48,10 +50,10 @@ Examples
     [~ 6]
     > ;;((unit @tas) (mack [[1 %yes %no] 6 [0 2] [0 6] 0 7]))
     [~ %no]
+```
 
 
-
-***
+---
 ### `++mink`
 
 Mock interpreter
@@ -61,8 +63,7 @@ Bottom-level mock (virtual nock) interpreter. Produces a
 computes on the subject and produces a `++unit` result. An empty
 result becomes a `%1` `++tone`, indicating a block.
 
-Accepts
--------
+#### Accepts
 
 `sub` is the subject as a noun.
 
@@ -70,14 +71,13 @@ Accepts
 
 `sky` is an `%iron` gate invoked with nock operator 11.
 
-Produces
---------
+#### Produces
 
 A `++tone`.
 
-Source
-------
+#### Source
 
+```
     ++  mink
       ~/  %mink
       |=  {{sub/* fol/*} gul/$-({* *} (unit (unit)))}
@@ -154,11 +154,11 @@ Source
         ?~(val [%1 p.ben ~] ?~(u.val [%2 [[%hunk (mush p.ben)] tax]] [%0 u.u.val]))
       ==
     ::
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > (mink [20 [4 0 1]] $~)
     [%0 p=21]
     > (mink [[90 5 3] [0 3]] $~)
@@ -175,9 +175,9 @@ Examples
     [%2 p=~]
     > (mink [5]^[10 yelp/[0 1] 0 0] $~)
     [%2 p=~[[~.yelp 5]]]
+```
 
-
-***
+---
 ### `++mock`
 
 Compute formula on subject with hint
@@ -187,8 +187,7 @@ crashed result. If nock 11 is invoked, `sky` computes on the subject and
 produces a `++unit` result. An empty result becomes a `%1` `++tune`,
 indicating a block.
 
-Accepts
--------
+#### Accepts
 
 `sub` is the subject as a noun.
 
@@ -196,23 +195,22 @@ Accepts
 
 `sky` is an %iron gate invoked with nock operator 11.
 
-Produces
---------
+#### Produces
 
 The `++unit` of a noun.
 
-Source
-------
+#### Source
 
+```
     ++  mock
       |=  {{sub/* fol/*} gul/$-({* *} (unit (unit)))}
       (mook (mink [sub fol] gul))
     ::
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > (mock [5 4 0 1] ,~)
     [%0 p=6]
     > (mock [~ 11 1 0] |=(* `999))
@@ -227,10 +225,10 @@ Examples
     [%0 p=[49 52 0]]
     > ;;(tape +:(mock [[[4 4 4 4 0 3] 10] 11 9 2 0 1] |=(* `[<+<>])))
     "14"
+```
 
 
-
-***
+---
 ### `++mong`
 
 Slam gate with sample
@@ -238,8 +236,7 @@ Slam gate with sample
 Produces a `++toon` computation result from slamming `gat` with
 `sam`, using `sky` to compute or block on nock 11 when applicable.
 
-Accepts
--------
+#### Accepts
 
 `gat` is a noun that is generally a `gate`.
 
@@ -247,14 +244,13 @@ Accepts
 
 `sky` is an %iron gate invoked with nock operator 11.
 
-Produces
---------
+#### Produces
 
 A `++toon`.
 
-Source
-------
+#### Source
 
+```
     ++  mong
       |=  {{gat/* sam/*} gul/$-({* *} (unit (unit)))}
       ^-  toon
@@ -262,10 +258,11 @@ Source
         [%2 ~]
       (mock [[-.gat [sam +>.gat]] -.gat] gul)
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (mong [|=(@ 20) ~] ,~)
     [%0 p=20]
     > (mong [|=(@ !!) ~] ,~)
@@ -284,10 +281,10 @@ Examples
     [%0 p=[0 6]]
     > (mong [|=(a/@ .^(a)) 8] |=(a/* [~ a 6]))
     [%0 p=[8 6]]
+```
 
 
-
-***
+---
 ### `++mook`
 
 Intelligently render crash annotation
@@ -295,19 +292,17 @@ Intelligently render crash annotation
 Converts a `%2` `++tone` nock stack trace to a list of `++tank`.
 Each may be a tank, cord, `++spot`, or trapped tank.
 
-Accepts
--------
+#### Accepts
 
 `ton` is a `++tone`.
 
-Produces
---------
+#### Produces
 
 A `++toon`.
 
-Source
-------
+#### Source
 
+```
     ++  mook
       |=  ton/tone
       ^-  toon
@@ -343,10 +338,11 @@ Source
                      leaf+"<[{(ud p.p)} {(ud q.p)}].[{(ud p.q)} {(ud q.q)}]>"
       ==         ==
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (mook [%0 5 4 5 1])
     [%0 p=[5 4 5 1]]
     > (mook [%2 ~[[%hunk %rose ["<" "," ">"] ~[[%leaf "err"]]]]])
@@ -357,10 +353,10 @@ Examples
     [%2 p=~[[%leaf p="11"]]]
     > (mook [%2 ~[[%spot /b/repl [1 1]^[1 2]] [%mean |.(!!)]]])
     [%2 p=~[[%leaf p="/b/repl/:<[1 1].[1 2]>"] [%leaf p="####"]]]
+```
 
 
-
-***
+---
 ### `++mule`
 
 Typed virtual
@@ -368,19 +364,17 @@ Typed virtual
 Kicks a `++trap`, producing its results or any errors that occur along
 the way. Used to lazily compute stack traces.
 
-Accepts
--------
+#### Accepts
 
 `taq` is a `++trap`, generally producing a list of `++tank`s.
 
-Produces
---------
+#### Produces
 
 XX
 
-Source
-------
+#### Source
 
+```
     ++  mule                                                ::  typed virtual
       ~/  %mule
       |*  taq/_|.(**)
@@ -390,11 +384,11 @@ Source
         $|  [%| p=p.mud]
       ==
     ::
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > (mule |.(leaf/"hello"))
     [%.y p=[%leaf "hello"]]
     > (mule |.(!!))
@@ -406,16 +400,16 @@ Examples
         [ %rose
           p=[p="/" q="/" r="/"]
             q
-          [ i=[%leaf p="a"] 
+          [ i=[%leaf p="a"]
             t=[i=[%leaf p="~zod"] t=[i=[%leaf p="pals"] t=[i=[%leaf p="1"] t=~]]]
           ]
         ]
       ]
     ]
+```
 
 
-
-***
+---
 ### `++mute`
 
 Untyped virtual
@@ -424,18 +418,16 @@ Kicks a `++trap`, producing its result as a noun or the tanks of any
 error that occurs. Similar to `++mule`, but preserves no type
 information.
 
-Accepts
--------
+#### Accepts
 
 `taq` is a `++trap`.
-Produces
---------
+#### Produces
 
 Either a noun or a `++list` of `++tank`.
 
-Source
-------
+#### Source
 
+```
     ++  mute                                                ::  untyped virtual
       |=  taq/_^?(|.(**))
       ^-  (each * (list tank))
@@ -445,15 +437,15 @@ Source
         $1  [%| (turn p.ton |=(a/* (smyt (path a))))]
         $2  [%| p.ton]
       ==
+```
 
+#### Examples
 
-Examples
---------
-
+```
     >  (mute |.(leaf/"hello"))
     [%.y p=[1.717.658.988 104 101 108 108 111 0]]
     > (mute |.(!!))
     [%.n p=~]
+```
 
-
-***
+---

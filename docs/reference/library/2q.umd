@@ -1,9 +1,13 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'20'
+        title/'2q: Molds and Mold-Builders'
+    ==
+
+;>
 
 
 # 2q: molds and mold builders
+
 ### `++char`
 
 Character
@@ -14,19 +18,21 @@ consume `tape`s, which are lists of `char`.
 
 #### Source
 
-    ++  char  @tD                                          
+```
+    ++  char  @tD
+```
 
 #### Examples
 
+```
     > *char
     ''
-    
+
     > `@tD`97
     'a'
+```
 
-
-
-***
+---
 ### `++cord`
 
 UTF-8 text
@@ -36,14 +42,16 @@ atom of UTF-8 text.
 
 #### Source
 
-    ++  cord  @t                                           
+```
+    ++  cord  @t
+```
 
 #### Examples
 
-
+```
     > *cord
     ''
-    
+
     > `@ux`'foobar'
     0x7261.626f.6f66
 
@@ -55,7 +63,7 @@ atom of UTF-8 text.
 
     > `@t`499.984.265.845
     'urbit'
-
+```
 
 #### Discussion
 
@@ -67,7 +75,7 @@ from `tape` to `cord`.
 
 
 
-***
+---
 ### `++date`
 
 Point in time
@@ -77,11 +85,13 @@ which is a day atom and a time.
 
 #### Source
 
-    ++  date  [[a=? y=@ud] m=@ud t=tarp]                
-
+```
+    ++  date  [[a=? y=@ud] m=@ud t=tarp]
+```
 
 #### Examples
 
+```
     > *date
     [[a=%.y y=0] m=0 t=[d=0 h=0 m=0 s=0 f=~]]
 
@@ -90,14 +100,14 @@ which is a day atom and a time.
 
     > now
     ~2018.5.25..17.55.15..9ad8
-
+```
 
 
 #### Discussion
 
 See also: [`year`](../3c), [`yore`](../3c) [`stud`](../2q), [`dust`](../2q)
 
-***
+---
 ### `++knot`
 
 ASCII
@@ -106,18 +116,22 @@ An atom type that only permits ASCII characters.
 
 #### Source
 
-++  knot  @ta
+```
+
+    ++  knot  @ta
+```
 
 #### Examples
 
+```
     > *knot
     ~.
-    
+
     > `@ta`105
     ~.i
+```
 
-
-***
+---
 ### `++tang`
 
 Generic print structure
@@ -127,10 +141,13 @@ traces.
 
 #### Source
 
-++  tang  (list tank)  
+```
+    ++  tang  (list tank)
+```
 
 #### Examples
 
+```
     > *tang
     ~
 
@@ -145,34 +162,38 @@ traces.
 
     > (~(win re [%rose ["1" "2" "3"] [%leaf "foobar"] [%leaf "bazbud"] ~]) 0 10)
     <<"2 foobar" "  bazbud" "3">>
+```
 
-
-***
+---
 ### `++tank`
 
 Pretty-printing structure
 
 A `tank` is one of three cases: a `%leaf` is simply a string (a printed line);
- a `%palm` is list of `tank` delimited by the strings in `p`, with back-steps at
+a `%palm` is list of `tank` delimited by the strings in `p`, with back-steps at
 new lines; and a `%rose` is a list of `tank` delimited by the strings in `p`
 without back-steps at new lines.
 
 
 #### Source
 
-    ++  tank  $%  [$leaf p=tape]                            
-                  $:  $palm                                 
-                      p=[p=tape q=tape r=tape s=tape]       
-                      q=(list tank)                         
-                  ==                                        
-                  $:  $rose                                
-                      p=[p=tape q=tape r=tape]             
-                      q=(list tank)                        
-                  ==                                      
-              ==                                    
+```
+    ++  tank  $%  [$leaf p=tape]
+                  $:  $palm
+                      p=[p=tape q=tape r=tape s=tape]
+                      q=(list tank)
+                  ==
+                  $:  $rose
+                      p=[p=tape q=tape r=tape]
+                      q=(list tank)
+                  ==
+              ==
+```
 
 #### Examples
 
+
+```
     > *tank
     [%rose p=[p="" q="" r=""] q=~]
 
@@ -187,7 +208,7 @@ without back-steps at new lines.
       2.854.495.385.411.919.762.116.571.938.898.990.272.765.493.248
     ]
 
-    > (wash [0 40] >(bex 150) (bex 151)<)          
+    > (wash [0 40] >(bex 150) (bex 151)<)
     <<
       "[ \\/1.427.247.692.705.959.881.058.285.\\/"
       "    969.449.495.136.382.746.624"
@@ -196,11 +217,11 @@ without back-steps at new lines.
       "    938.898.990.272.765.493.248"
       "  \\/                                  \\/"
       "]"
-    >>                  
+    >>
+```
 
 
-
-***
+---
 ### `++tape`
 
 List of characters
@@ -210,13 +231,16 @@ One of Hoon's two string types, the other being `++cord`. A tape is a list of
 
 #### Source
 
-    ++  tape  (list @tD)                                   
+```
+    ++  tape  (list @tD)
+```
 
 #### Examples
 
+```
     > *tape
     ""
-    
+
     > `tape`"foobar"
     "foobar"
 
@@ -228,24 +252,25 @@ One of Hoon's two string types, the other being `++cord`. A tape is a list of
 
     > `(list @)`"foobar"
     ~[102 111 111 98 97 114]
+```
 
-
-***
+---
 ### `++tarp`
 
 Parsed time
 
 The time component of a `date`: day, hour, minute, second and a list of `@ux`
- for precision.
+for precision.
 
 #### Source
 
-    ++  tarp  [d=@ud h=@ud m=@ud s=@ud f=(list @ux)]      
-
+```
+    ++  tarp  [d=@ud h=@ud m=@ud s=@ud f=(list @ux)]
+```
 
 #### Examples
 
-
+```
     > *tarp
     [d=0 h=0 m=0 s=0 f=~]
 
@@ -257,10 +282,10 @@ The time component of a `date`: day, hour, minute, second and a list of `@ux`
 
     > (yell ~d20)
     [d=20 h=0 m=0 s=0 f=~]
+```
 
 
-
-***
+---
 ### `++term`
 
 Hoon constant
@@ -274,10 +299,13 @@ special syntax, `$`.
 
 #### Source
 
-        ++  term  @tas                                       
+```
+        ++  term  @tas
+```
 
 #### Examples
 
+```
     > *term
     %$
 
@@ -289,31 +317,34 @@ special syntax, `$`.
 
     > -:!>(%dead-fish9)
     #t/$dead-fish9
+```
 
 
-
-***
+---
 ### `++wain`
 
-List of strings                             
+List of strings
 
 A list of `cord`s. A `wain` is used instead of a single `cord` with `\n`.
 
 
 #### Source
 
-    ++  wain  (list cord)   
+```
+    ++  wain  (list cord)
+```
 
 #### Examples
 
+```
     > *wain
     <||>
 
     > `wain`/som/del/rok
     <|som del rok|>
+```
 
-
-***
+---
 ### `++wall`
 
 List of list of characters
@@ -322,13 +353,15 @@ A list of `tape`s. `wall` is used instead of a single `tape` with `\n`.
 
 #### Source
 
-    ++  wall  (list tape)                                 
-
+```
+    ++  wall  (list tape)
+```
 #### Examples
 
+```
     > *wall
     <<>>
-    
+
     > `wall`(wash [0 20] leaf+<(bex 256)>)
     <<
       "\\/115.792.089.237.\\/"
@@ -340,7 +373,7 @@ A list of `tape`s. `wall` is used instead of a single `tape` with `\n`.
       "  639.936"
       "\\/                \\/"
     >>
+```
 
 
-
-***
+---

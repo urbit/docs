@@ -1,8 +1,9 @@
+:-  :~  navhome/'/docs/'
+        sort/'23'
+        title/'3c: Urbit Time'
+    ==
 
----
-navhome: /docs/
----
-
+;>
 
 # 3c: urbit time
 
@@ -23,7 +24,8 @@ A cell of unsigned decimals.
 
 #### Source
 
-    ++  yall                                                
+```
+    ++  yall
       |=  day=@ud
       ^-  [y=@ud m=@ud d=@ud]
       =+  [era=0 cet=0 lep=*?]
@@ -46,10 +48,11 @@ A cell of unsigned decimals.
       ?:  (lth day zis)
         [yer +(mot) +(day)]
       $(mot +(mot), day (sub day zis))
-
+```
 
 #### Examples
 
+```
     > (yall 198)
     [y=0 m=7 d=17]
 
@@ -58,10 +61,10 @@ A cell of unsigned decimals.
 
     > (yall 0)
     [y=0 m=1 d=1]
+```
 
 
-
-***
+---
 ### `++yawn`
 
 Days since beginning of time
@@ -83,7 +86,8 @@ An unsigned decimal.
 
 #### Source
 
-    ++  yawn                                                
+```
+    ++  yawn
       |=  [yer=@ud mot=@ud day=@ud]
       ^-  @ud
       =>  .(mot (dec mot), day (dec day))
@@ -107,9 +111,11 @@ An unsigned decimal.
         =+  nec=(sub yer 100)
         $(yer nec, day (add day ?:((yelp nec) 36.525 36.524)))
       (add day (mul (div yer 400) (add 1 (mul 4 36.524))))
+```
 
 #### Examples
 
+```
     > (yawn 2.018 7 4)
     737.244
 
@@ -118,9 +124,9 @@ An unsigned decimal.
 
     > (yawn 1.990 10 11)
     727.116
+```
 
-
-***
+---
 ### `++year`
 
 Date to @d
@@ -138,7 +144,8 @@ A `@d`.
 
 #### Source
 
-    ++  year                                                
+```
+    ++  year
       |=  det=date
       ^-  @da
       =+  ^=  yer
@@ -147,15 +154,16 @@ A `@d`.
           (sub 292.277.024.400 (dec y.det))
       =+  day=(yawn yer m.det d.t.det)
       (yule day h.t.det m.t.det s.t.det f.t.det)
-
+```
 
 #### Examples
 
+```
     > (year [[a=%.y y=2.014] m=8 t=[d=4 h=20 m=4 s=57 f=~[0xd940]]])
     0x8000000d227df4e9d940000000000000
+```
 
-
-***
+---
 ### `++yell`
 
 Tarp from atomic date
@@ -172,7 +180,8 @@ A `tarp`.
 
 #### Source
 
-    ++  yell                                                
+```
+    ++  yell
       |=  now=@d
       ^-  tarp
       =+  sec=(rsh 6 1 now)
@@ -190,10 +199,11 @@ A `tarp`.
       =+  mit=(div sec mit:yo)
       =>  .(sec (mod sec mit:yo))
       [day hor mit sec fan]
-
+```
 
 #### Examples
 
+```
     > (yell ~2014.3.20..05.42.53..7456)
     [d=106.751.991.820.094 h=5 m=42 s=53 f=~[0x7456]]
 
@@ -202,9 +212,9 @@ A `tarp`.
 
     > (yell ~1776.7.4)
     [d=106.751.991.733.273 h=0 m=0 s=0 f=~]
+```
 
-
-***
+---
 ### `++yelp`
 
 Leap-week?
@@ -221,12 +231,15 @@ A flag.
 
 #### Source
 
-    ++  yelp                                               
+```
+    ++  yelp
       |=  yer=@ud  ^-  ?
       &(=(0 (mod yer 4)) |(!=(0 (mod yer 100)) =(0 (mod yer 400))))
+```
 
 #### Examples
 
+```
     > (yelp 2.014)
     %.n
 
@@ -238,9 +251,9 @@ A flag.
 
     > (yelp 14.011)
     %.n
+```
 
-
-***
+---
 ### `++yore`
 
 Date from atomic date
@@ -257,7 +270,8 @@ A `date`.
 
 #### Source
 
-    ++  yore                                                
+```
+    ++  yore
       |=  now=@da
       ^-  date
       =+  rip=(yell now)
@@ -266,15 +280,16 @@ A `date`.
             [a=& y=(sub y.ger 292.277.024.400)]
           [a=| y=+((sub 292.277.024.400 y.ger))]
       [m.ger d.ger h.rip m.rip s.rip f.rip]
-
+```
 
 #### Examples
 
+```
     > (yore ~2014.6.6..21.09.15..0a16)
     [[a=%.y y=2.014] m=6 t=[d=6 h=21 m=9 s=15 f=~[0xa16]]]
+```
 
-
-***
+---
 ### `++yule`
 
 Daily time to time atom
@@ -292,6 +307,7 @@ A time atom, `@d`.
 
 #### Source
 
+```
     ++  yule                                                ::  time atom
       |=  rip=tarp
       ^-  @d
@@ -309,9 +325,11 @@ A time atom, `@d`.
                    (add (lsh 4 muc i.f.rip) $(f.rip t.f.rip))
       (con (lsh 6 1 sec) fac)
     ::
+```
 
 #### Examples
 
+```
     > =murica (yell ~1776.7.4)
 
     > murica
@@ -331,9 +349,9 @@ A time atom, `@d`.
 
     > `@dr`(yule `tarp`[31 12 30 0 ~])
     ~d31.h12.m30
+```
 
-
-***
+---
 ### `++yo`
 
 Time constants core
@@ -342,9 +360,11 @@ Core whose arms contain constants for interacting with earth time.
 
 #### Source
 
-    ++  yo                                                  
+```
+    ++  yo
+```
 
-***
+---
 ### `++cet:yo`
 
 Days in a century
@@ -359,10 +379,13 @@ An atom.
 
 #### Source
 
-      |%  ++  cet  36.524                 
+```
+      |%  ++  cet  36.524
+```
 
 #### Examples
 
+```
     > cet:yo
     36.524
 
@@ -371,9 +394,9 @@ An atom.
 
     > (sub (add 24 (mul 100 365)) cet:yo)
     0
+```
 
-
-***
+---
 ### `++day:yo`
 
 Seconds in day
@@ -386,17 +409,21 @@ An atom.
 
 #### Source
 
-          ++  day  86.400                
+```
+          ++  day  86.400
+```
 
 #### Examples
 
+```
     > day:yo
     86.400
 
     > (add 60 day:yo)
     86.460
+```
 
-***
+---
 ### `++era:yo`
 
 Leap-year period
@@ -411,25 +438,29 @@ An atom.
 
 #### Source
 
-          ++  era  146.097               
+```
+          ++  era  146.097
+```
 
 #### Examples
 
+```
     > era:yo
     146.097
 
     > (sub era:yo (mul 4 cet:yo))
     1
+```
 
 #### Discussion
 
 A year is a leap-year if:
 
-  - it's divisible by 4;
-  - *unless* it's divisible by 100;
-  - *or* if it's divisible by 400.
+- it's divisible by 4;
+- *unless* it's divisible by 100;
+- *or* if it's divisible by 400.
 
-***
+---
 ### `++hor:yo`
 
 Seconds in hour
@@ -443,17 +474,21 @@ An atom.
 
 #### Source
 
-          ++  hor  3.600                 
+```
+          ++  hor  3.600
+```
 
 #### Examples
 
+```
     > hor:yo
     3.600
 
     > (div hor:yo 60)
     60
+```
 
-***
+---
 ### `++jes:yo`
 
 Maximum 64-bit timestamp
@@ -467,19 +502,22 @@ An atom.
 
 #### Source
 
+```
           ++  jes  106.751.991.084.417
+```
 
 #### Examples
 
+```
     > jes:yo
     106.751.991.084.417
-
+```
 
 #### Discussion
 
 The date is December 4, 292,277,026,596.
 
-***
+---
 ### `++mit:yo`
 
 Seconds in minute
@@ -492,14 +530,18 @@ An atom.
 
 #### Source
 
+```
           ++  mit  60
+```
 
 #### Examples
 
+```
     > mit:yo
     60
+```
 
-***
+---
 ### `++moh:yo`
 
 Days in month
@@ -514,18 +556,21 @@ A `list` of `@ud`
 
 #### Source
 
+```
           ++  moh  `(list @ud)`[31 28 31 30 31 30 31 31 30 31 30 31 ~]
+```
 
 #### Examples
 
+```
     > moh:yo
     ~[31 28 31 30 31 30 31 31 30 31 30 31]
 
     > (snag 4 moh:yo)
     31
+```
 
-
-***
+---
 ### `++moy:yo`
 
 Days in months of leap-year
@@ -540,17 +585,21 @@ A `list` of `@ud`.
 
 #### Source
 
+```
           ++  moy  `(list @ud)`[31 29 31 30 31 30 31 31 30 31 30 31 ~]
+```
 
 #### Examples
 
+```
     > moy:yo
     ~[31 29 31 30 31 30 31 31 30 31 30 31]
 
     > (snag 1 moy:yo)
     29
+```
 
-***
+---
 ### `++qad:yo`
 
 Seconds in 4 years
@@ -564,14 +613,18 @@ An atom.
 
 #### Source
 
-          ++  qad  126.144.001          
+```
+          ++  qad  126.144.001
+```
 
 #### Examples
 
+```
     > qad:yo
     126.144.001
+```
 
-***
+---
 ### `++yer:yo`
 
 Seconds in year
@@ -585,12 +638,15 @@ An atom.
 
 #### Source
 
-          ++  yer  31.536.000            
+```
+          ++  yer  31.536.000
+```
 
 #### Examples
 
+```
     > yer:yo
     31.536.000
+```
 
-
-***
+---

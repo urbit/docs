@@ -1,9 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'27'
+        title/'3g: Molds and Mold-Builders'
+    ==
 
+;>
 
 # 3g: molds and mold builders
+
 ### `++coin`
 
 
@@ -14,14 +17,17 @@ and printed using `++so` and `++co` cores.
 
 #### Source
 
-    ++  coin  $%  [$$ p=dime]                               
-                  [$blob p=*]                               
-                  [$many p=(list coin)]                     
-              ==                                            
+```
+    ++  coin  $%  [$$ p=dime]
+                  [$blob p=*]
+                  [$many p=(list coin)]
+              ==
+```
 
-***
+---
 #### Examples
 
+```
     > `coin`(need (slay '~s1'))
     [%$ p=[p=~.dr q=18.446.744.073.709.551.616]]
 
@@ -41,10 +47,10 @@ and printed using `++so` and `++co` cores.
 
     > ~02cd1
     [3 4]
+```
 
 
-
-***
+---
 ### `++dime`
 
 Aura-atom pair
@@ -56,14 +62,18 @@ to parse atoms of specific auras.
 
 #### Source
 
+```
         ++  dime  [p=@ta q=@]
+```
 
 #### Examples
 
+```
     > +>:(slay '0x123')
     p=[p=~.ux q=291]
+```
 
-***
+---
 ### `++edge`
 
 Parsing location metadata
@@ -72,24 +82,26 @@ Optional result `p` and parsing continuation `q`.
 
 #### Source
 
-    ++  hair  [p=@ud q=@ud]                             
-
+```
+    ++  hair  [p=@ud q=@ud]
+```
 
 #### Examples
 
-
+```
     > *edge
     [p=[p=0 q=0] q=~]
 
     > (tall:vast [1 1] "a b")
     [p=[p=1 q=3] q=[~ u=[p=[%wing p=~[%a]] q=[p=[p=1 q=2] q=" b"]]]]
+```
 
 #### Discussion
 
 See also: [Section 2e](../2e.md), `++rule`
 
 
-***
+---
 ### `++hair`
 
 Parsing line and column
@@ -98,11 +110,13 @@ A pair of two `@ud` used in parsing indicating line and column number.
 
 #### Source
 
-    ++  hair  [p=@ud q=@ud]                              
-
+```
+    ++  hair  [p=@ud q=@ud]
+```
 
 #### Examples
 
+```
     > *hair
     [p=0 q=0]
 
@@ -114,9 +128,9 @@ A pair of two `@ud` used in parsing indicating line and column number.
 
     > `hair`p:((plus ace) [1 1] "   --")
     [p=1 q=4]
+```
 
-
-***
+---
 ### `++like`
 
 Generic edge
@@ -125,16 +139,18 @@ Generates an `++edge` with a parsed result set to a specific type.
 
 #### Source
 
-    ++  like  |*  a=gate                                   
-              |=  b=_`*`[(hair) ~]                          
-              :-  p=(hair -.b)                              
-              ^=  q                                         
-              :-  ~                                         
+```
+    ++  like  |*  a=gate
+              |=  b=_`*`[(hair) ~]
+              :-  p=(hair -.b)
+              ^=  q
+              :-  ~
               u=[p=(a +>-.b) q=[p=(hair -.b) q=(tape +.b)]]
-
+```
 
 #### Examples
 
+```
     > *(like char)
     [p=[p=0 q=0] q=~]
 
@@ -146,9 +162,9 @@ Generates an `++edge` with a parsed result set to a specific type.
 
     > `(like ,@)`(ace [1 1] " a")
     [p=[p=1 q=2] q=[~ u=[p=32 q=[p=[p=1 q=2] q="a"]]]]
+```
 
-
-***
+---
 ### `++nail`
 
 Location, remainder of parsed text
@@ -157,15 +173,18 @@ Indicates parsing position `p`, and remaining text to be parsed `q`.
 
 #### Source
 
-    ++  nail  [p=hair q=tape]                             
-
+```
+    ++  nail  [p=hair q=tape]
+```
 
 #### Examples
 
+```
     > +<:;~(plug cab cab)
     c=[p=[p=0 q=0] q=""]
+```
 
-***
+---
 ### `++path`
 
 Filesystem path
@@ -174,19 +193,22 @@ A list of `++knot`s. `++knot` is another name for `@ta`.
 
 #### Source
 
-    ++  path  (list knot)                                  
-
+```
+    ++  path  (list knot)
+```
 
 #### Examples
 
+```
     > `path`"abc"
     /a/b/c
+```
 
 #### Discussion
 
 Used in `%clay` and `%eyre` extensively.
 
-***
+---
 ### `++pint`
 
 Parsing range
@@ -196,20 +218,22 @@ stack traces.
 
 #### Source
 
-    ++  pint  [p=[p=@ q=@] q=[p=@ q=@]]                  
-
+```
+    ++  pint  [p=[p=@ q=@] q=[p=@ q=@]]
+```
 
 #### Examples
 
+```
     > !:(!!)                                                    :: !! always produces a crash
     /~zod/home/~2014.9.20..01.22.04..52e3/:<[1 4].[1 6]>
 
     > `pint`[[1 4] [1 6]]
     [p=[p=1 q=4] q=[p=1 q=6]]
+```
 
 
-
-***
+---
 ### `++rule`
 
 Parsing rule
@@ -219,16 +243,18 @@ An empty parsing rule, but used to check that parsing rules match this with `_`.
 
 #### Source
 
-    ++  rule  _|=(nail *edge)                               
-
+```
+    ++  rule  _|=(nail *edge)
+```
 
 #### Examples
 
+```
     > ([|=(a=nail [p.a ~ u=['a' a]])]:|6 [1 1] "hi")
     [[p=1 q=1] ~ u=['a' p=[p=1 q=1] q="hi"]]
+```
 
-
-***
+---
 ### `++spot`
 
 Stack trace line
@@ -237,16 +263,19 @@ The stack trace that is printed after crashing.
 
 #### Source
 
-    ++  spot  [p=path q=pint]                            
+```
+    ++  spot  [p=path q=pint]
+```
 
 #### Examples
 
+```
     > !:  !!                                                    :: !! always produces a crash
       /~zod/home/~2018.8.8..21.42.40..7852:<[1 5].[1 7]>
     ! exit
+```
 
-
-***
+---
 ### `++tone`
 
 Nock result, error report
@@ -257,13 +286,16 @@ or failure with an error report (`%2`).
 
 #### Source
 
+```
     ++  tone  $%  [$0 p=*]                                  ::  success
                   [$1 p=(list)]                             ::  blocks
                   [$2 p=(list [@ta *])]                     ::  error report
-              ==                                          
+              ==
+```
 
 #### Examples
 
+```
     > (mink [[20 21] 0 3] $~)
     [%0 p=21]
 
@@ -289,9 +321,9 @@ or failure with an error report (`%2`).
         ]
       ]
     ]
+```
 
-
-***
+---
 ### `++toon`
 
 Nock result, stack trace
@@ -302,22 +334,24 @@ or failure with a stack trace (`%2`).
 
 #### Source
 
+```
             ++  toon  $%  [$0 p=*]                                  ::  success
                           [$1 p=(list)]                             ::  blocks
                           [$2 p=(list tank)]                        ::  stack trace
-                      ==                                           
-
+                      ==
+```
 
 #### Examples
 
+```
     > (mock [[20 21] 0 3] $~)
     [%0 p=21]
 
     > (mock [[1 2] !=(!:(+(.)))] ,~)
     [%2 p=~[[%leaf p="/~zod/try/~2014.9.23..18.34.32..d3c5/:<[1 20].[1 24]>"]]]
+```
 
-
-***
+---
 ### `++wonk`
 
 Product from edge
@@ -326,10 +360,13 @@ Pull result out of a `++edge`, or crash if there's no result.
 
 #### Source
 
-        ++  wonk  |*(veq=edge ?~(q.veq !! p.u.q.veq))        
+```
+        ++  wonk  |*(veq=edge ?~(q.veq !! p.u.q.veq))
+```
 
 #### Examples
 
+```
     > (wide:vast [1 1] "(add 2 2)")
     [ p=[p=1 q=10]
         q
@@ -343,9 +380,10 @@ Pull result out of a `++edge`, or crash if there's no result.
 
     > (wonk (wide:vast [1 1] "(add 2 2)"))
     [%cnhp p=[%wing p=~[%add]] q=~[[%sand p=%ud q=2] [%sand p=%ud q=2]]]
+```
 
 #### Discussion
 
 See also: `++edge`
 
-***
+---

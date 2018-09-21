@@ -1,9 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'32'
+        title/'4e: Parsing (Combinators)'
+    ==
 
+;>
 
 # 4e: parsing (combinators)
+
 ### `++bend`
 
 Conditional composer
@@ -14,8 +17,7 @@ result. If there is no suffix, or if the suffix fails to be composed
 with the current result, the current result is produced. Used to map a
 group of rules to a specified output.
 
-Accepts
--------
+#### Accepts
 
 `raq` is a gate.
 
@@ -23,14 +25,13 @@ Accepts
 
 `vex` is an edge.
 
-Produces
---------
+#### Produces
 
 A `++rule`.
 
-Source
-------
+#### Source
 
+```
     ++  bend                                                ::  conditional comp
       ~/  %bend
       |*  raq/_|*({a/* b/*} [~ u=[a b]])
@@ -47,27 +48,33 @@ Source
         [p=yur q=q.vex]
       [p=yur q=[~ u=[p=u.vux q=q.u.q.yit]]]
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (;~((bend |=([a/char b/char] ?.(=(a b) ~ (some +(a))))) prn prn) [1 1] "qs")
     [p=[p=1 q=3] q=[~ u=[p=~~q q=[p=[p=1 q=2] q="s"]]]]
+
     > (;~((bend |=([a/char b/char] ?.(=(a b) ~ (some +(a))))) prn prn) [1 1] "qqq")
     [p=[p=1 q=3] q=[~ u=[p=~~r q=[p=[p=1 q=3] q="q"]]]]
+
     > (scan "aa" ;~((bend |=([a/char b/char] ?.(=(a b) ~ (some +(a))))) prn prn))
     ~~b
+
     > (scan "ba" ;~((bend |=([a/char b/char] ?.(=(a b) ~ (some +(a))))) prn prn))
     ! {1 3}
     ! exit
+
     > `(unit @tas)`(scan "" ;~((bend) (easy ~) sym))
     ~
+
     > `(unit @tas)`(scan "sep" ;~((bend) (easy ~) sym))
     [~ %sep]
+```
 
 
-
-***
+---
 ### `++comp`
 
 Arbitrary compose
@@ -76,8 +83,7 @@ Parsing composer: connects the `++edge` `vex` with a following `++rule` `sab`,
 combining the contents of `vex` with the result of `sab` using a binary
 gate `raq`. Used to fold over the results of several `++rules`.
 
-Accepts
--------
+#### Accepts
 
 `raq` is a gate that accepts a cell of two nouns, `a` and `b`, and
 produces a cell of two nouns.
@@ -86,14 +92,13 @@ produces a cell of two nouns.
 
 `vex` is an edge.
 
-Produces
---------
+#### Produces
 
 A `++rule`.
 
-Source
-------
+#### Source
 
+```
     ++  comp
       ~/  %comp
       |*  raq/_|*({a/* b/*} [a b])                       ::  arbitrary compose
@@ -108,17 +113,19 @@ Source
         [p=yur q=q.yit]
       [p=yur q=[~ u=[p=(raq p.u.q.vex p.u.q.yit) q=q.u.q.yit]]]
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "123" ;~((comp |=([a/@u b/@u] (add a b))) dit dit dit))
     6
     > (scan "12" ;~((comp |=([a/@u b/@u] (add a b))) dit dit dit))
     ! {1 3}
     ! exit
+```
 
-***
+---
 ### `++fail`
 
 Never parse
@@ -126,32 +133,32 @@ Never parse
 Produces an `++edge` at the same text position (`++hair`) with a failing
 result (`q=~`).
 
-Accepts
--------
+#### Accepts
 
 `tub` is a `++nail`.
 
-Produces
---------
+#### Produces
 
 An `++edge`.
 
-Source
-------
+#### Source
 
+```
     ++  fail  |=(tub/nail [p=p.tub q=~])                    ::  never parse
+```
 
-Examples
---------
+#### Examples
 
+```
     > (fail [[1 1] "abc"])
     [p=[p=1 q=1] q=~]
+
     > (fail [[p=1.337 q=70] "Parse me, please?"])
     [p=[p=1.337 q=70] q=~]
+```
 
 
-
-***
+---
 ### `++glue`
 
 Skip delimiter
@@ -160,8 +167,7 @@ Parsing composer: connects an `++edge` `vex` with a following `++rule` `sab` by
 parsing the `++rule` `bus` (the delimiting symbol) and throwing out the
 result.
 
-Accepts
--------
+#### Accepts
 
 `bus` is a `++rule`.
 
@@ -169,14 +175,13 @@ Accepts
 
 `vex` is an `++edge`.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  glue                                                ::  add rule
       ~/  %glue
       |*  bus/rule
@@ -184,22 +189,25 @@ Source
       |*  {vex/edge sab/rule}
       (plug vex ;~(pfix bus sab))
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "200|mal|bon" ;~((glue bar) dem sym sym))
     [q=200 7.102.829 7.237.474]
+
     > `[@u @tas @tas]`(scan "200|mal|bon" ;~((glue bar) dem sym sym))
     [200 %mal %bon]
+
     >  (scan "200|;|bon" ;~((glue bar) dem sem sym))
     [q=200 ~~~3b. 7.237.474]
+
     >  (scan "200.;.bon" ;~((glue dot) dem sem sym))
     [q=200 ~~~3b. 7.237.474]
+```
 
-
-
-***
+---
 ### `++less`
 
 Parse unless
@@ -207,21 +215,19 @@ Parse unless
 Parsing composer: if an `++edge` `vex` reflects a success, fail. Otherwise,
 connect `vex` with the following `++rule`.
 
-Accepts
--------
+#### Accepts
 
 `sab` is a `++rule`.
 
 `vex` is an `++edge`.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  less                                                ::  no first and second
       |*  {vex/edge sab/rule}
       ?~  q.vex
@@ -229,22 +235,25 @@ Source
         [p=(last p.vex p.roq) q=q.roq]
       (fail +<.sab)
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "sas-/lo" (star ;~(less lus bar prn)))
     "sas-/lo"
+
     > (scan "sas-/l+o" (star ;~(less lus bar prn)))
     ! {1 8}
     ! exit
+
     > (scan "sas|-/lo" (star ;~(less lus bar prn)))
     ! {1 5}
     ! exit
+```
 
 
-
-***
+---
 ### `++pfix`
 
 Discard first rule
@@ -252,34 +261,34 @@ Discard first rule
 Parsing composer: connects an `++edge` `vex` with two subsequent `++rule`s,
 ignoring the result of the first and producing the result of the second.
 
-Accepts
--------
+#### Accepts
 
 `vex` is an edge.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  pfix                                                ::  discard first rule
       ~/  %pfix
       (comp |*({a/* b/*} b))
+```
 
-Examples
---------
+#### Examples
 
+```
     > `@t`(scan "%him" ;~(pfix cen sym))
     'him'
+
     > (scan "+++10" ;~(pfix (star lus) dem))
     q=10
+```
 
 
-
-***
+---
 ### `++plug`
 
 Parse to tuple
@@ -288,21 +297,19 @@ Parsing composer: connects an `++edge` `vex` with a following `++rule` `sab`, pr
 a cell of both the results. See also: the monad applicator ;\~ for a
 more detailed explanation.
 
-Accepts
--------
+#### Accepts
 
 `sab` is a `++rule`.
 
 `vex` is an `++edge`.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  plug                                                ::  first then second
       ~/  %plug
       |*  {vex/edge sab/rule}
@@ -314,20 +321,23 @@ Source
         [p=yur q=q.yit]
       [p=yur q=[~ u=[p=[p.u.q.vex p.u.q.yit] q=q.u.q.yit]]]
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "1..20" ;~(plug dem dot dot dem))
     [q=1 ~~~. ~~~. q=20]
+
     > (scan "moke/~2014.1.1" ;~(plug sym fas nuck:so))
     [1.701.539.693 ~~~2f. [% p=[p=~.da q=170.141.184.500.766.106.671.844.917.172.921.958.400]]]
+
     > ;;(,[@tas @t ~ %da @da] (scan "moke/~2014.1.1" ;~(plug sym fas nuck:so)))
     [%moke '/' ~ %da ~2014.1.1]
+```
 
 
-
-***
+---
 ### `++pose`
 
 Parse options
@@ -335,21 +345,19 @@ Parse options
 Parsing composer: if `vex` reflects a failure, connect it with the
 following rule `sab`. See also: the monad applicator ;\~
 
-Accepts
--------
+#### Accepts
 
 `sab` is a `++rule`.
 
 `vex` is an `++edge`.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  pose                                                ::  first or second
       ~/  %pose
       |*  {vex/edge sab/rule}
@@ -358,24 +366,27 @@ Source
         [p=(last p.vex p.roq) q=q.roq]
       vex
     ::
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > `@t`(scan "+" ;~(pose lus tar cen))
     '+'
+
     > `@t`(scan "*" ;~(pose lus tar cen))
     '*'
+
     > `@t`(scan "%" ;~(pose lus tar cen))
     '%'
+
     > `@t`(scan "-" ;~(pose lus tar cen))
     ! {1 1}
     ! exit
+```
 
 
-
-***
+---
 ### `++sfix`
 
 Discard second rule
@@ -383,37 +394,36 @@ Discard second rule
 Parsing composer: connects `++edge`s `vex` with two subsequent `++rule`s returning the
 result of the first and discarding the result of the second.
 
-Accepts
--------
+#### Accepts
 
 `a` is the result of parsing the first `++rule`.
 
 `b` is the result of of parsing the second `++rule`.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  sfix                                                ::  discard second rule
       ~/  %sfix
       (comp |*({a/* b/*} a))
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > `@t`(scan "him%" ;~(sfix sym cen))
     'him'
+
     > (scan "10+++" ;~(sfix dem (star lus)))
     q=10
+```
 
 
-
-***
+---
 ### `++simu`
 
 First and second
@@ -421,21 +431,19 @@ First and second
 Parsing composer: if an `++edge` `vex` reflects a failure, fail. Otherwise,
 connect `vex` with the following `++rule`.
 
-Accepts
--------
+#### Accepts
 
 `sab` is a `++rule`.
 
 `vex` is an `++edge`.
 
-Produces
---------
+#### Produces
 
 
 
-Source
-------
+#### Source
 
+```
     ++  simu                                                ::  first and second
       |*  {vex/edge sab/rule}
       ?~  q.vex
@@ -443,20 +451,24 @@ Source
       =+  roq=(sab)
       roq
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "~zod" scat:vast)
     [%dtzy p=%p q=0]
+
     > (scan "%zod" scat:vast)
     [%dtzz p=%tas q=6.582.138]
+
     > (scan "%zod" ;~(simu cen scat:vast))
     [%dtzz p=%tas q=6.582.138]
+
     > (scan "~zod" ;~(simu cen scat:vast))
     ! {1 1}
     ! exit
+```
 
 
-
-***
+---

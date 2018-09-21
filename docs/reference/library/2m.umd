@@ -1,6 +1,10 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'16'
+        title/'2m: Container from Noun'
+    ==
+
+;>
+
 
 # 2m: container from noun
 
@@ -20,22 +24,26 @@ A `list`.
 
 #### Source
 
-    ++  ly                                                  
+```
+    ++  ly
       le:nl
+```
 
 #### Examples
 
+```
     > (ly [1 2 3 ~])
     ~[1 2 3]
 
     > (ly "abc")
     ~['a' 'b' 'c']
+```
 
 #### Discussion.
 
 `ly` is an alias for `le:nl`.
 
-***
+---
 ### `++my`
 
 Map from raw noun
@@ -52,19 +60,23 @@ A `map`.
 
 #### Source
 
-    ++  my                                                  
+```
+    ++  my
       my:nl
+```
 
 #### Examples
 
+```
     > (my [['a' 1] ['b' 2] ~])
     [n=[p='b' q=2] l={[p='a' q=1]} r={}]
+```
 
 #### Discussion.
 
 `my` is an alias for `my:nl`.
 
-***
+---
 ### `++sy`
 
 Set from raw noun
@@ -81,11 +93,14 @@ A `set`.
 
 #### Source
 
-    ++  sy                                                  
+```
+    ++  sy
       si:nl
+```
 
 #### Examples
 
+```
     > (sy [1 2 3 ~])
     [n=2 l={1 3} r={}]
 
@@ -94,12 +109,13 @@ A `set`.
 
     > (sy "abc")
     [n='b' l={'a' 'c'} r={}]
+```
 
 #### Discussion.
 
 `sy` is an alias for `si:nl`.
 
-***
+---
 ### `++nl`
 
 Noun-to-container operations
@@ -109,10 +125,12 @@ nouns.
 
 #### Source
 
+```
     ++  nl
       |%
+```
 
-***
+---
 ### `++le:nl`
 
 Construct list
@@ -129,22 +147,26 @@ A list.
 
 #### Source
 
-      ++  le                                             
+```
+      ++  le
         |*  a=(list)
         ^+  =<  $
           |%  +-  $  ?:(*? ~ [i=(snag 0 a) t=$])
           --
         a
+```
 
 #### Examples
 
+```
     > (le:nl [1 2 3 ~])
     ~[1 2 3]
 
     > (le:nl "abc")
     ~['a' 'b' 'c']
+```
 
-***
+---
 ### `++my:nl`
 
 Construct map
@@ -162,17 +184,21 @@ A map.
 
 #### Source
 
-      ++  my                                               
+```
+      ++  my
         |*  a=(list (pair))
         =>  .(a ^+((le a) a))
         (~(gas by `(map _p.i.-.a _q.i.-.a)`~) a)
+```
 
 #### Examples
 
+```
     > (my:nl [['a' 1] ['b' 2] ~])
     [n=[p='b' q=2] l={[p='a' q=1]} r={}]
+```
 
-***
+---
 ### `++si:nl`
 
 Construct set
@@ -189,23 +215,27 @@ A set.
 
 #### Source
 
-    ++  si                                                
+```
+    ++  si
       |*  a=(list)
       =>  .(a ^+((le a) a))
       (~(gas in `(set _i.-.a)`~) a)
+```
 
 #### Examples
 
+```
     > (si:nl `(list [@t *])`[['a' 1] ['b' [2 3]] ~])
     [n=['b' [2 3]] l={['a' 1]} r={}]
+```
 
-***
+---
 ### `++snag:nl`
 
 Index
 
 Produces the element at the index `a` of null-terminated noun `b` and failing if
- the noun is null. Lists are 0-indexed.
+the noun is null. Lists are 0-indexed.
 
 #### Accepts
 
@@ -219,16 +249,19 @@ A noun.
 
 #### Sources
 
-    ++  snag                                         
+```
+    ++  snag
       |*  [a=@ b=(list)]
       ?~  b
         ~_  leaf+"snag-fail"
         !!
       ?:  =(0 a)  i.b
       $(b t.b, a (dec a))
+```
 
 #### Examples
 
+```
     > =b [[2 3] [1 4] ~]
     > (snag:nl 0 b)
     [2 3]
@@ -236,8 +269,9 @@ A noun.
     > (snag:nl 2 b)
     ! snag-fail
     ! exit
+```
 
-***
+---
 #### `++weld:nl`
 
 Concatenate
@@ -256,20 +290,23 @@ A list.
 
 #### Source
 
-    ++  weld                                              
+```
+    ++  weld
       |*  [a=(list) b=(list)]
       =>  .(a ^+((le a) a), b ^+((le b) b))
       =+  42
       |-
       ?~  a  b
       [i=i.a t=$(a t.a)]
+```
 
 #### Examples
 
+```
     > =b [[2 3] [1 4] ~]
 
     > (weld:nl b [8 9 ~])
     [i=[2 3] t=[i=[1 4] t=~[8 9]]]
+```
 
-
-***
+---

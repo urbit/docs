@@ -1,9 +1,13 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'19'
+        title/'2p: Serialization'
+    ==
+
+;>
 
 
 # 2p: serialization
+
 ### `++cue`
 
 Unpack atom to noun
@@ -12,6 +16,7 @@ Produces a noun unpacked from atom `a`. The inverse of `jam`.
 
 #### Accepts
 
+An Atom.
 
 #### Produces
 
@@ -19,7 +24,8 @@ A noun.
 
 #### Source
 
-    ++  cue                                                 
+```
+    ++  cue
       ~/  %cue
       |=  a=@
       ^-  *
@@ -38,9 +44,11 @@ A noun.
         [(add 2 (add p.u p.v)) w (~(put by r.v) b w)]
       =+  d=(rub c a)
       [(add 2 p.d) (need (~(get by m) q.d)) m]
+```
 
 #### Examples
 
+```
     > (cue 12)
     1
 
@@ -52,9 +60,9 @@ A noun.
 
     > (cue 39.689)
     [0 19]
+```
 
-
-***
+---
 ### `++jam`
 
 Pack noun to atom
@@ -71,7 +79,8 @@ An atom.
 
 #### Source
 
-    ++  jam                                                
+```
+    ++  jam
       ~/  %jam
       |=  a=*
       ^-  @
@@ -94,10 +103,11 @@ An atom.
         [(add 1 p.d) (lsh 0 1 q.d) m]
       =+  d=(mat u.c)
       [(add 2 p.d) (mix 3 (lsh 0 2 q.d)) m]
-
+```
 
 #### Examples
 
+```
     > (jam 1)
     12
 
@@ -109,12 +119,13 @@ An atom.
 
     > (jam [~ u=19])
     39.689
+```
 
 #### Discussion
 
 `mat` is only used internally as a helper to `jam`.
 
-***
+---
 ### `++mat`
 
 Length-encode
@@ -133,7 +144,8 @@ A cell of two atoms.
 
 #### Source
 
-    ++  mat                                              
+```
+    ++  mat
       ~/  %mat
       |=  a=@
       ^-  [p=@ q=@]
@@ -143,9 +155,11 @@ A cell of two atoms.
       =+  c=(met 0 b)
       :-  (add (add c c) b)
       (cat 0 (bex c) (mix (end 0 (dec c) b) (lsh 0 (dec c) a)))
+```
 
 #### Examples
 
+```
     > (mat 0xaaa)
     [p=20 q=699.024]
 
@@ -167,12 +181,12 @@ A cell of two atoms.
     > =c =-(~&(- -) (xeb b))
     4
 
-    >  [`@ub`a `@ub`(end 0 (dec c) b) `@ub`(bex c)]
+    > [`@ub`a `@ub`(end 0 (dec c) b) `@ub`(bex c)]
     [0b1010.1010.1010 0b100 0b1.0000]
+```
 
 
-
-***
+---
 ### `++rub`
 
 Length-decode
@@ -194,7 +208,8 @@ A cell of two atoms.
 
 #### Source
 
-    ++  rub                                               
+```
+    ++  rub
       ~/  %rub
       |=  [a=@ b=@]
       ^-  [p=@ q=@]
@@ -209,10 +224,11 @@ A cell of two atoms.
       =+  d=(add a +(c))
       =+  e=(add (bex (dec c)) (cut 0 [d (dec c)] b))
       [(add (add c c) e) (cut 0 [(add d (dec c)) e] b)]
-
+```
 
 #### Examples
 
+```
     > `@ub`(jam 0xaaa)
     0b1.0101.0101.0101.0010.0000
 
@@ -221,10 +237,10 @@ A cell of two atoms.
 
     > `@ux`q:(rub 1 0b1.0101.0101.0101.0010.0000)
     0xaaa
-
+```
 
 #### Discussion
 
 `rub` is only used internally as a helper to `cue`.
 
-***
+---

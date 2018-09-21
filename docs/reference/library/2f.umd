@@ -1,9 +1,13 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'9'
+        title/'2f: Noun Ordering'
+    ==
+
+;>
 
 
 # 2f: noun ordering
+
 ### `++aor`
 
 Alphabetical order
@@ -22,7 +26,8 @@ A flag.
 
 #### Source
 
-    ++  aor                                                 
+```
+    ++  aor
       ~/  %aor
       |=  [a=* b=*]
       ^-  ?
@@ -38,9 +43,11 @@ A flag.
       ?:  =(c d)
         $(a (rsh 3 1 a), b (rsh 3 1 b))
       (lth c d)
+```
 
 #### Examples
 
+```
     > (aor 'a' 'b')
     %.y
 
@@ -67,10 +74,10 @@ A flag.
 
     > (aor 10 9)
     %.n
+```
 
 
-
-***
+---
 ### `++dor`
 
 Numeric order
@@ -89,7 +96,8 @@ A flag.
 
 #### Source
 
-    ++  dor                                               
+```
+    ++  dor
       ~/  %dor
       |=  [a=* b=*]
       ^-  ?
@@ -101,10 +109,11 @@ A flag.
         $(a -.a, b -.b)
       ?.  ?=(@ b)  &
       (lth a b)
-
+```
 
 #### Examples
 
+```
     > (dor 1 2)
     %.y
 
@@ -122,6 +131,7 @@ A flag.
 
     > (dor ~[99 101 10.999] `(list @)`~[99 100 10.000])
     %.n
+```
 
 #### Discussion
 
@@ -133,7 +143,7 @@ If one sample is a cell and the other is an atom, the cell sample is treated as
 "greater."
 
 
-***
+---
 ### `++gor`
 
 Hash order
@@ -156,7 +166,8 @@ A flag.
 
 #### Source
 
-    ++  gor                                               
+```
+    ++  gor
       ~/  %gor
       |=  [a=* b=*]
       ^-  ?
@@ -164,10 +175,11 @@ A flag.
       ?:  =(c d)
         (dor a b)
       (lth c d)
-
+```
 
 #### Examples
 
+```
     > (gor 'd' 'c')
     %.y
 
@@ -183,7 +195,7 @@ A flag.
     > `@ud`'c'
     99
 
-    > (mug 'd')                               
+    > (mug 'd')
     1.628.185.714
 
     > (mug 'c')
@@ -200,6 +212,7 @@ A flag.
 
     > (gor (some 10) `(list @)`[1 2 3 ~])
     %.n
+```
 
 #### Discussion
 
@@ -207,7 +220,7 @@ A flag.
 vertical order. `map`s only look at the keys (the head of the key-value pair
 elements) for ordering.
 
-***
+---
 ### `++hor`
 
 Horizontal hash order
@@ -234,7 +247,8 @@ A flag.
 
 #### Source
 
-    ++  hor                                            
+```
+    ++  hor
       ~/  %hor
       |=  [a=* b=*]
       ^-  ?
@@ -245,10 +259,11 @@ A flag.
       ?:  =(-.a -.b)
         (gor +.a +.b)
       (gor -.a -.b)
-
+```
 
 #### Examples
 
+```
     > (hor . 1)
     %.n
 
@@ -281,7 +296,7 @@ A flag.
 
     > (hor `(list @)`[50 500 5.000 ~] 1)
     %.n
-
+```
 
 #### Discussion
 
@@ -289,7 +304,7 @@ Sets (+set, +in) use `hor` for their horizontal order and `vor` for their
 vertical order. See [`apt:in`](../2h) to see how a set verifies its correctness.
 `vor` is used to verify.
 
-***
+---
 ### `++lor`
 
 Leg order
@@ -309,7 +324,8 @@ A flag.
 
 #### Source
 
-    ++  lor                                                
+```
+    ++  lor
       ~/  %lor
       |=  [a=* b=*]
       ^-  ?
@@ -320,17 +336,18 @@ A flag.
       ?:  =(-.a -.b)
         $(a +.a, b +.b)
       $(a -.a, b -.b)
-
+```
 
 #### Examples
 
+```
     > (lor 1 2)
     %.y
 
     > (lor 2 1)
     %.n
 
-    > (lor 9 [1 2])                                     
+    > (lor 9 [1 2])
     %.y
 
     > (lor `(list @)`[1 2 3 ~] `(list @)`[1 2 3 4 ~])
@@ -350,13 +367,13 @@ A flag.
 
     > (lor [1 2 3] [1 2])
     !! exit
-
+```
 
 #### Discussion
 
 `lor` is no longer used internally.
 
-***
+---
 ### `++vor`
 
 Vertical order
@@ -380,7 +397,8 @@ A flag.
 
 #### Source
 
-    ++  vor                                                 
+```
+    ++  vor
       ~/  %vor
       |=  [a=* b=*]
       ^-  ?
@@ -388,10 +406,11 @@ A flag.
       ?:  =(c d)
         (dor a b)
       (lth c d)
-
+```
 
 #### Examples
 
+```
     > (vor 'f' 'g')
     %.y
 
@@ -406,7 +425,7 @@ A flag.
 
     > (vor 43.326 41.106)
     %.n
-
+```
 
 #### Discussion
 
@@ -419,4 +438,421 @@ correlation  with single-`mug`ged `hor`. Vertical order becomes uncorrelated
 with horizontal order.
 
 
-***
+---
+
+### `++noun`
+
+```
+    ++  noun  ,*                                            ::  any noun
+```
+
+Used nowhere XX
+
+```
+    > `noun`~[1 2 3]
+    [1 2 3 0]
+```
+
+
+---
+
+### `++null`
+
+```
+    ++  null  ,~                                            ::  null, nil, etc
+```
+
+Used nowhere XX
+
+```
+    > :type; *null
+    ~
+    %~
+```
+
+
+---
+
+### `++port`
+
+XX move to `++ut`
+
+Type and location of core-shaped thing? XX Compiler Internals
+
+#### Source
+
+```
+    ++  port  $:  p=axis                                    ::
+                  $=  q                                     ::
+                  $%  [%& p=type]                           ::
+                      [%| p=axis q=(list ,[p=type q=foot])] ::
+                  ==                                        ::
+              ==                                            ::
+```
+
+#### Examples
+
+```
+    > *port
+    [p=0 q=[%.y p=%void]]
+```
+
+
+---
+
+### `++span`
+
+ASCII atom
+
+A restricted text atom for canonical atom syntaxes. The prefix is `~.`.
+There are no escape sequences except `~~`, which means `~`, and `~-`,
+which means `_`. `-` and `.` encode themselves. No other characters
+besides numbers and lowercase letters are permitted.
+
+#### Source
+
+```
+        ++  span  ,@ta                                     ::  text-atom (ASCII)
+```
+
+
+#### Examples
+
+```
+    > *span
+    ~.
+
+    > `@t`~.foo
+    'foo'
+    > `@t`~.foo.bar
+    'foo.bar'
+    > `@t`~.foo~~bar
+    'foo~bar'
+    > `@t`~.foo~-bar
+    'foo_bar'
+    > `@t`~.foo-bar
+    'foo-bar'
+```
+
+
+---
+
+### `++tiki`
+
+XX move to `++ut`
+
+#### Source
+
+```
+        ++  tiki                                                ::  test case
+```
+
+#### Examples
+
+```
+A `++wing` or `++hoon`.
+
+    > (ream '=+  a=4  ?-(a @ ~)')
+    [ %tsls
+      p=[%ktts p=p=%a q=[%dtzy p=%ud q=4]]
+        q
+      [ %wthz
+        p=[%.y p=~ q=~[%a]]
+        q=~[[p=[%axil p=[%atom p=~.]] q=[%bczp p=%null]]]
+      ]
+    ]
+    > (ream '=+  a=4  ?-(4 @ ~)')
+    [ %tsls
+      p=[%ktts p=p=%a q=[%dtzy p=%ud q=4]]
+        q
+      [ %wthz
+        p=[%.n p=~ q=[%dtzy p=%ud q=4]]
+        q=~[[p=[%axil p=[%atom p=~.]] q=[%bczp p=%null]]]
+      ]
+    ]
+```
+
+
+---
+
+### `++toga`
+
+Tree of faces
+
+A face, or tree of faces. A `++toga` is applied to anything assigned
+using `^=`.
+
+XX move to `++ut` and rune doc (for \^= examples)
+
+#### Source
+
+```
+        ++  toga                                                ::  face control
+                  [2 p=toga q=toga]                         ::  cell toga
+              ==                                            ::
+```
+
+#### Examples
+
+```
+    > a=1
+    a=1
+    > (ream 'a=1')
+    [%ktts p=p=%a q=[%dtzy p=%ud q=1]]
+    > [a b]=[1 2 3]
+    [a=1 b=[2 3]]
+    > (ream '[a b]=[1 2 3]')
+    [ %ktts
+      p=[%2 p=p=%a q=p=%b]
+      q=[%cltr p=~[[%dtzy p=%ud q=1] [%dtzy p=%ud q=2] [%dtzy p=%ud q=3]]]
+    ]
+
+    > [a ~]=[1 2 3]
+    [a=1 2 3]
+    > (ream '[a ~]=[1 2 3]')
+    [ %ktts
+      p=[%2 p=p=%a q=[%0 ~]]
+      q=[%cltr p=~[[%dtzy p=%ud q=1] [%dtzy p=%ud q=2] [%dtzy p=%ud q=3]]]
+    ]
+```
+
+
+---
+
+### `++tone`
+
+Intermediate Nock computation result
+
+Similar to `++toon`, but stack trace is not yet rendered.
+
+#### Source
+
+```
+        ++  tone  $%  [%0 p=*]                                  ::  success
+```
+
+#### Examples
+
+```
+    > (mink [[20 21] 0 3] ,~)
+    [%0 p=21]
+
+    > (mink [[0] !=(.^(cy//=main/1))] ,~)
+    [%1 p=~[[31.075 1.685.027.454 1.852.399.981 49 0]]]
+    > (path [31.075 1.685.027.454 1.852.399.981 49 0])
+    /cy/~zod/main/1
+
+    > (mink [[1 2] !=(~|(%hi +(.)))] ,~)
+    [%2 p=~[[~.yelp 26.984]]]
+    > (mink [[1 2] !=(!:(+(.)))] ,~)
+    [ %2
+        p
+      ~[
+        [ ~.spot
+          [ [ 1.685.027.454
+              7.959.156
+              \/159.445.990.350.374.058.574.398.238.344.143.957.205.628.479.572.65\/
+                8.112.403.878.526
+              \/                                                                  \/
+              0
+            ]
+            [1 20]
+            1
+            24
+          ]
+        ]
+      ]
+    ]
+```
+
+
+---
+
+### `++tuna`
+
+XML template tree
+
+An XML template tree.
+
+#### Source
+
+```
+        ++  tuna                                                ::  tagflow
+                  [%d p=hoon]                               ::  dynamic list
+                  [%e p=hoon q=(list tuna)]                 ::  element
+                  [%f p=(list tuna)]                        ::  subflow
+              ==                                            ::
+```
+
+#### Examples
+
+Leaf %a contains plain-text, %b an empty tag, %c a static list, %d a
+dynamic list, %e a full node element containing a hoon and a list of
+tuna, and %f is a empty node.
+
+See also: `++sail`
+
+
+
+---
+
+### `++tusk`
+
+List of expressions
+
+List of `++hoon`s. In `:*`, for example, your contents is
+a `++tusk`.
+
+#### Source
+
+```
+        ++  tusk  (list hoon)                                   ::
+```
+
+#### Examples
+
+```
+    > (ream '[1 2 3]')
+    [%cltr p=~[[%dtzy p=%ud q=1] [%dtzy p=%ud q=2] [%dtzy p=%ud q=3]]]
+    > (tusk +:(ream '[1 2 3]'))
+    ~[[%dtzy p=%ud q=1] [%dtzy p=%ud q=2] [%dtzy p=%ud q=3]]
+```
+
+
+---
+
+### `++hoon`
+
+Expression
+
+An expression, or AST.
+
+See Rune section of Hoon reference
+
+
+
+---
+
+### `++tyke`
+
+List of 'maybe' hoons
+
+List of `++unit` `++hoon`, or gaps left to be inferred, in `++path`
+parsing. When you use a path such as `/=main=/pub/src/doc` the path is in fact
+a `++tyke`, where the `=` are inferred from your current path.
+
+
+#### Source
+
+```
+        ++  tyke  (list (unit hoon))                            ::
+```
+
+#### Examples
+
+```
+    > (scan "/==as=" porc:vast)
+    [0 ~[~ ~ [~ [%dtzy p=%tas q=29.537]] ~]]
+    > `tyke`+:(scan "/==as=" porc:vast)
+    ~[~ ~ [~ [%dtzy p=%tas q=29.537]] ~]
+```
+
+
+---
+
+### `++typo`
+
+Pointer for `++type`
+
+Pointer for `++type`. `++typo` preserves the previous `++type` in your
+context when upating.
+
+#### Source
+
+```
+        ++  typo  type                                          ::  old type
+```
+
+#### Examples
+
+See also: `++seem`, `++vise`, `++type`
+
+
+
+---
+
+### `++tyre`
+
+List, term hoon
+
+Associative list of `++term` `++hoon`, used in jet hint processing.
+
+#### Source
+
+```
+        ++  tyre  (list ,[p=term q=hoon])                       ::
+```
+
+
+---
+
+### `++vase`
+
+Typed data. A `++vase` is used wherever typed data is explicitly worked
+with.
+
+#### Source
+
+```
+        ++  vase  ,[p=type q=*]                                 ::  type-value pair
+```
+
+#### Examples
+
+```
+    > `vase`!>(~)
+    [p=[%cube p=0 q=[%atom p=%n]] q=0]
+```
+
+
+---
+
+### `++vise`
+
+Convert during reboot
+
+Used to convert from previously-typed data during reboot.
+
+#### Source
+
+```
+    ++  vise  ,[p=typo q=*]                                 ::  old vase
+```
+
+#### Examples
+
+See also: `++typo`, `++seer`
+
+
+
+---
+
+### `++wing`
+
+```
+    ++  wing  (list limb)                                   ::
+```
+
+Address in subject. A `++wing` is a path to a value in the subject. A
+term alone is the trivial case of a `++wing`.
+
+See also: `++hoon`
+
+```
+    > (ream 'a.+.c')
+    [%cnzz p=~[%a [%.y p=3] %c]]
+    > (wing +:(ream 'a.+.c'))
+    ~[%a [%.y p=3] %c]
+```
+
+---

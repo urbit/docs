@@ -1,9 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'5'
+        title/'2b: List Logic'
+    ==
 
+;>
 
 # 2b: list logic
+
 ### `++fand`
 
 All indices in `list`
@@ -23,7 +26,8 @@ A `list`.
 
 #### Source
 
-    ++  fand                                                
+```
+    ++  fand
       ~/  %fand
       |=  [nedl=(list) hstk=(list)]
       =|  i=@ud
@@ -38,10 +42,11 @@ A `list`.
           ^$(i +(i), hstk +.hstk, fnd [i fnd])
         $(n t.n, h t.h)
       ^$(i +(i), hstk +.hstk)
-
+```
 
 #### Examples
 
+```
     > (fand ~[3] ~[1 2 3])
     ~[2]
 
@@ -53,10 +58,10 @@ A `list`.
 
     > (fand "ba" "cbabab")
     ~[1 3]
+```
 
 
-
-***
+---
 ### `++find`
 
 First index in `list`
@@ -76,7 +81,8 @@ The `unit` of an atom.
 
 #### Source
 
-    ++  find                                                
+```
+    ++  find
       ~/  %find
       |=  [nedl=(list) hstk=(list)]
       =|  i=@ud
@@ -90,10 +96,11 @@ The `unit` of an atom.
           `i
         $(n t.n, h t.h)
       ^$(i +(i), hstk +.hstk)
-
+```
 
 #### Examples
 
+```
     > (find [3]~ ~[1 2 3])
     [~ u=2]
 
@@ -108,9 +115,9 @@ The `unit` of an atom.
 
     > (find "bab" "cbabab")
     [~ u=2]
+```
 
-
-***
+---
 ### `++flop`
 
 Reverse
@@ -127,7 +134,8 @@ A `list`.
 
 #### Source
 
-    ++  flop                                              
+```
+    ++  flop
       ~/  %flop
       |*  a=(list)
       =>  .(a (homo a))
@@ -136,19 +144,21 @@ A `list`.
       |-
       ?~  a  b
       $(a t.a, b [i.a b])
-
+```
 
 
 #### Examples
 
+```
     > =a [1 2 3 ~]
     > (flop a)
     ~[3 2 1]
 
     > (flop (flop a))
     ~[1 2 3]
+```
 
-***
+---
 ### `++gulf`
 
 List from range
@@ -168,27 +178,31 @@ a `list`.
 
 #### Source
 
-    ++  gulf                                                
+```
+    ++  gulf
       |=  [a=@ b=@]
       ^-  (list @)
       ?:(=(a +(b)) ~ [a $(a +(a))])
+```
 
 #### Examples
 
+```
     > (gulf 1 6)
     ~[1 2 3 4 5 6]
 
     > `(list @t)`(gulf 99 106)
     <|c d e f g h i j|>
+```
 
-***
+---
 ### `++homo`
 
 Homogenize
 
 Produces a `list` whose type is a fork of all the contained types in the
 list `a`. Used when you want to make all the types of the elements of a list the
- same.
+same.
 
 #### Accepts
 
@@ -200,16 +214,18 @@ a `list`.
 
 #### Source
 
-    ++  homo                                                
+```
+    ++  homo
       |*  a=(list)
       ^+  =<  $
         |%  +-  $  ?:(*? ~ [i=(snag 0 a) t=$])
         --
       a
-
+```
 
 #### Examples
 
+```
     > lyst
     [i=1 t=[i=97 t=[i=2 t=[i=98 t=[i=[~ u=10] t=~]]]]]
 
@@ -222,10 +238,10 @@ a `list`.
 
     > (homo a)
     ~[1 2 3]
+```
 
 
-
-***
+---
 ### `++lent`
 
 List length
@@ -242,7 +258,8 @@ an atom.
 
 #### Source
 
-    ++  lent                                                
+```
+    ++  lent
       ~/  %lent
       |=  a=(list)
       ^-  @
@@ -250,19 +267,20 @@ an atom.
       |-
       ?~  a  b
       $(a t.a, b +(b))
-
+```
 
 #### Examples
 
+```
     > (lent [1 2 3 4 ~]))
     4
 
     > (lent [1 'a' 2 'b' (some 10) ~])
     5
+```
 
 
-
-***
+---
 ### `++levy`
 
 Logical "and" on list
@@ -281,6 +299,7 @@ A boolean.
 
 #### Source
 
+```
     ++  levy
       ~/  %levy                                             ::  all of
       |*  [a=(list) b=$-(* ?)]
@@ -288,10 +307,11 @@ A boolean.
       ?~  a  &
       ?.  (b i.a)  |
       $(a t.a)
-
+```
 
 #### Examples
 
+```
     > =a |=(a=@ (lte a 1))
     > (levy `(list @)`[0 1 2 1 ~] a)
     %.n
@@ -299,10 +319,11 @@ A boolean.
     > =a |=(a=@ (lte a 3))
     > (levy `(list @)`[0 1 2 1 ~] a)
     %.y
+```
 
 
+---
 
-***
 ### `++lien`
 
 Logical "or" on list
@@ -318,16 +339,19 @@ every element of `++list` `a`.
 
 #### Source
 
-    ++  lien                                                
+```
+    ++  lien
       ~/  %lien
       |*  [a=(list) b=$-(* ?)]
       |-  ^-  ?
       ?~  a  |
       ?:  (b i.a)  &
       $(a t.a)
+```
 
 #### Examples
 
+```
     > =a |=(a=@ (gte a 1))
     > (lien `(list @)`[0 1 2 1 ~] a)
     %.y
@@ -335,10 +359,10 @@ every element of `++list` `a`.
     > =a |=(a=@ (gte a 3))
     > (lien `(list @)`[0 1 2 1 ~]) a)
     %.n
+```
 
 
-
-***
+---
 ### `++limo`
 
 List Constructor
@@ -355,21 +379,24 @@ A `++list`.
 
 #### Source
 
+```
     ++  limo                                                ::  listify
       |*  a=*
       ^+  =<  $
         |%  +-  $  ?~(a ~ ?:(_? i=-.a t=$ $(a +.a)))
         --
       a
+```
 
 #### Examples
 
+```
     > (limo [1 2 3 ~])
     [i=1 t=[i=2 t=[i=3 t=~]]]
+```
 
 
-
-***
+---
 ### `++murn`
 
 Maybe transform
@@ -390,6 +417,7 @@ A unit.
 
 #### Source
 
+```
     ++  murn                                                ::  maybe transform
       ~/  %murn
       |*  [a=(list) b=$-(* (unit))]
@@ -399,16 +427,18 @@ A unit.
       ?~  c
         $(a t.a)
       [i=u.c t=$(a t.a)]
+```
 
 #### Examples
 
+```
     > =a |=(a=@ ?.((gte a 2) ~ (some (add a 10))))
     > (murn `(list @)`[0 1 2 3 ~] a)
     [i=12 t=[i=13 t=~]]
+```
 
 
-
-***
+---
 ### `++oust`
 
 Remove
@@ -426,22 +456,25 @@ A `++list`.
 
 #### Source
 
+```
     ++  oust                                                ::  remove
       ~/  %oust
       |*  [[a=@ b=@] c=(list)]
       (weld (scag a c) (slag (add a b) c))
+```
 
 #### Examples
 
+```
     > (oust [4 5] "good day, urbit!")
     "good urbit!"
 
     > (oust [2 2] `(list @)`[1 2 3 4 ~])
     ~[1 2]
+```
 
 
-
-***
+---
 ### `++reap`
 
 Replicate
@@ -460,15 +493,18 @@ A list.
 
 #### Source
 
+```
     ++  reap                                                ::  replicate
       ~/  %reap
       |*  [a=@ b=*]
       |-  ^-  (list _b)
       ?~  a  ~
       [b $(a (dec a))]
+```
 
 #### Examples
 
+```
     > (reap 20 %a)
     ~[%a %a %a %a %a %a %a %a %a %a %a %a %a %a %a %a %a %a %a %a]
 
@@ -477,10 +513,10 @@ A list.
 
     > `@dr`(roll (reap 5 ~s1) add)
     ~s5
+```
 
 
-
-***
+---
 ### `++reel`
 
 Right fold
@@ -504,17 +540,19 @@ The accumulator, which is a noun.
 
 #### Source
 
-    ++  reel                                                ::  right fold
+```
+    ++  reel
       ~/  %reel
       |*  [a=(list) b=_|=([* *] +<+)]
       |-  ^+  +<+.b
       ?~  a
         +<+.b
       (b i.a $(a t.a))
-
+```
 
 #### Examples
 
+```
     > =sum =|([p=@ q=@] |.((add p q)))
     > (reel (limo [1 2 3 4 5 ~]) sum)
     15
@@ -526,10 +564,10 @@ The accumulator, which is a noun.
     > (reel (limo [3 6 1 ~]) a)
     ! subtract-underflow
     ! exit
+```
 
 
-
-***
+---
 ### `++roll`
 
 Left fold
@@ -553,6 +591,7 @@ The accumulator, which is a noun.
 
 #### Source
 
+```
     ++  roll                                                ::  left fold
       ~/  %roll
       |*  [a=(list) b=_|=([* *] +<+)]
@@ -560,22 +599,26 @@ The accumulator, which is a noun.
       ?~  a
         +<+.b
       $(a t.a, b b(+<+ (b i.a +<+.b)))
+```
 
 #### Examples
 
+```
     > =sum =|([p=@ q=@] |.((add p q)))
     > (roll (limo [1 2 3 4 5 ~]) sum)
     q=15
+
     > =a =|([p=@ q=@] |.((sub p q)))
     > (roll (limo [6 3 1 ~]) a)
     ! subtract-underflow
     ! exit
+
     > (roll (limo [1 3 6 ~]) a)
     q=4
+```
 
 
-
-***
+---
 ### `++scag`
 
 Prefix
@@ -595,24 +638,27 @@ A list of the same type as `b`.
 
 #### Source
 
+```
     ++  scag                                                ::  prefix
       ~/  %scag
       |*  [a=@ b=(list)]
       |-  ^+  b
       ?:  |(?=(~ b) =(0 a))  ~
       [i.b $(b t.b, a (dec a))]
+```
 
 #### Examples
 
+```
     > (scag 2 `(list @)`[1 2 3 4 ~])
     [i=0 t=~[1]]
 
     > (scag 10 `(list @)`[1 2 3 4 ~])
     [i=1 t=~[2 3 4]]
+```
 
 
-
-***
+---
 ### `++skid`
 
 Separate
@@ -635,6 +681,7 @@ A cell of two lists.
 
 #### Source
 
+```
     ++  skid                                                ::  separate
       ~/  %skid
       |*  [a=(list) b=$-(* ?)]
@@ -642,18 +689,19 @@ A cell of two lists.
       ?~  a  [~ ~]
       =+  c=$(a t.a)
       ?:((b i.a) [[i.a p.c] q.c] [p.c [i.a q.c]])
-
+```
 
 
 #### Examples
 
+```
     > =a |=(a=@ (gth a 1))
     > (skid `(list @)`[0 1 2 3 ~]) a)
     (skid `(list @)`[0 1 2 3 ~]) a)
+```
 
 
-
-***
+---
 ### `++skim`
 
 Suffix
@@ -674,6 +722,7 @@ A flag.
 
 #### Source
 
+```
     ++  skim                                                ::  only
       ~/  %skim
       |*  [a=(list) b=$-(* ?)]
@@ -681,17 +730,17 @@ A flag.
       ^+  a
       ?~  a  ~
       ?:((b i.a) [i.a $(a t.a)] $(a t.a))
-
+```
 
 #### Examples
 
+```
     > =a |=(a=@ (gth a 1))
     > (skim `(list @)`[0 1 2 3 ~] a)
     [i=2 t=~[3]]
+```
 
-
-
-***
+---
 ### `++skip`
 
 Except
@@ -712,6 +761,7 @@ A list of the same type as `a`.
 
 #### Source
 
+```
     ++  skip                                                ::  except
       ~/  %skip
       |*  [a=(list) b=$-(* ?)]
@@ -719,17 +769,18 @@ A list of the same type as `a`.
       ^+  a
       ?~  a  ~
       ?:((b i.a) $(a t.a) [i.a $(a t.a)])
-
+```
 
 #### Examples
 
+```
     > =a |=(a=@ (gth a 1))
     > (skip `(l)`[0 1 2 3 ~]) a)
     [i=0 t=[i=1 t=~]]
+```
 
 
-
-***
+---
 ### `++slag`
 
 Suffix
@@ -747,6 +798,7 @@ A list of the same type as `b`.
 
 #### Source
 
+```
     ++  slag                                                ::  suffix
       ~/  %slag
       |*  [a=@ b=(list)]
@@ -754,18 +806,19 @@ A list of the same type as `b`.
       ?:  =(0 a)  b
       ?~  b  ~
       $(b t.b, a (dec a))
-
+```
 
 #### Examples
 
+```
     > (slag 2 (limo [1 2 3 4 ~]))
     [i=3 t=[i=4 t=~]]
     > (slag 1 (limo [1 2 3 4 ~]))
     [i=2 t=[i=3 t=[i=4 t=~]]]
+```
 
 
-
-***
+---
 ### `++snag`
 
 Index
@@ -783,6 +836,7 @@ Produces an element of `b`, or crashes if no element exists at that index.
 
 #### Source
 
+```
     ++  snag                                                ::  index
       ~/  %snag
       |*  [a=@ b=(list)]
@@ -791,18 +845,19 @@ Produces an element of `b`, or crashes if no element exists at that index.
         ~|('snag-fail' !!)
       ?:  =(0 a)  i.b
       $(b t.b, a (dec a))
-
+```
 
 #### Examples
 
+```
     > (snag 2 "asdf")
     ~~d
     > (snag 0 `(list @ud)`~[1 2 3 4])
     1
+```
 
 
-
-***
+---
 ### `++sort`
 
 Quicksort
@@ -821,6 +876,7 @@ A list
 
 #### Source
 
+```
     ++  sort   !.                                           ::  quicksort
       ~/  %sort
       |*  [a=(list) b=$-([* *] ?)]
@@ -831,17 +887,18 @@ A list
         $(a (skim t.a |=(c/_i.a (b c i.a))))
       ^+  t.a
       [i.a $(a (skim t.a |=(c/_i.a !(b c i.a))))]
-
+```
 
 #### Examples
 
+```
         > =a =|([p/@ q/@] |.((gth p q)))
         > (sort (limo [0 1 2 3 ~]) a)
         ~[3 2 1 0]
+```
 
 
-
-***
+---
 ### `++spin`
 
 Gate to list, with state
@@ -866,6 +923,7 @@ A list.
 
 #### Source
 
+```
     ++  spin
       ~/ %spin
       |* [a=(list) b=* c=_|=(^ [** +<+])]
@@ -876,11 +934,11 @@ A list.
         [(flop acc) b]
       =^ res b (c i.a b)
       $(acc [res acc], a t.a)
-
+```
 
 #### Examples
 
-
+```
     > %^  spin  (limo ~[4 5 6])         ::  trivial example -- does nothing with the state
         |=([n=@ a=@] [n a])
       0
@@ -895,6 +953,7 @@ A list.
       |=([n=@ rng=_og] (rads:rng 10))
       ~(. og eny)
     ~[5 5 9 4 1 7 9 9 9 6]
+```
 
 #### Discussion
 
@@ -904,7 +963,7 @@ is the continuation of the RNG.
 
 
 
-***
+---
 ### `++spun`
 
 Gate to list, with state
@@ -913,7 +972,7 @@ Accepts a `list` `a` and a gate `b`. `c` is internal state, initially
 derived by *bunting* the tail of the sample of gate `b`, instead of
 being passed in explicitly as in `++spin`. Produces a list with the
 gate applied to each element of the original list. `b` is called with a tuple --
- the head is an element of `a` and the tail is the state `c`, and should
+the head is an element of `a` and the tail is the state `c`, and should
 produce a tuple of the transformed element and the (potentially modified)
 state `c`.
 
@@ -929,26 +988,28 @@ A list.
 
 #### Source
 
+```
     ++  spun
       ~/ %spun
       |* [a=(list) b=_|=(^ [** +<+])]
       p:(spin a +<+.b b)
-
+```
 
 #### Examples
 
+```
     > %+  spun  (limo ~[4 5 6])            ::  `p` as the index and `q` as the list element
       |=([n=@ a=@] [`(pair)`[a n] +(a)])
     ~[[p=0 q=4] [p=1 q=5] [p=2 q=6]]
 
-    > =l (limo ~[7 8 9])                   
+    > =l (limo ~[7 8 9])
     > %+  spun  (limo ~[4 5 6])            ::  joins two lists into a list of pairs
       |=([n=@ a=@] [`(pair)`[(snag a l) n] +(a)])
     ~[[p=7 q=4] [p=8 q=5] [p=9 q=6]]
+```
 
 
-
-***
+---
 ### `++swag`
 
 Infix
@@ -966,22 +1027,24 @@ A list of the same type as `c`.
 
 #### Source
 
-    ++  swag                                                
+```
+    ++  swag
       |*  [[a=@ a=@] c=(list)]
       (scag +<-> (slag +<-< c))
-
+```
 
 #### Examples
 
+```
     > (swag [2 5] "roly poly")
     "ly po"
 
     > (swag [2 2] (limo [1 2 3 4 ~]))
     [i=3 t=[i=4 t=~]]
+```
 
 
-
-***
+---
 ### `++turn`
 
 Gate to list
@@ -999,28 +1062,31 @@ A list.
 
 #### Source
 
-    ++  turn                                                
+```
+    ++  turn
       ~/  %turn
       |*  [a=(list) b=gate]
       |-
       ?~  a  ~
       [i=(b i.a) t=$(a t.a)]
-
+```
 
 #### Examples
 
+```
     > (turn (limo [104 111 111 110 ~]) @t)
     <|h o o n|>
 
     > =a |=(a=@ (add a 4))
     > (turn (limo [1 2 3 4 ~]) a)
     ~[5 6 7 8]
+```
 
 #### Discussion
 
 `turn` is Hoon's version of 'map' in Haskell.
 
-***
+---
 ### `++weld`
 
 Concatenate
@@ -1033,26 +1099,28 @@ Concatenate two `++list`s `a` and `b`.
 
 #### Source
 
-    ++  weld                                               
+```
+    ++  weld
       ~/  %weld
       |*  [a=(list) b=(list)]
       =>  .(a ^.(homo a), b ^.(homo b))
       |-  ^+  b
       ?~  a  b
       [i.a $(a t.a)]
-
+```
 
 #### Examples
 
+```
     > (weld "urb" "it")
     ~[~~u ~~r ~~b ~~i ~~t]
 
     > (weld (limo [1 2 ~]) (limo [3 4 ~]))
     ~[1 2 3 4]
+```
 
 
-
-***
+---
 ### `++welp`
 
 Perfect weld
@@ -1072,7 +1140,8 @@ A list.
 
 #### Source
 
-    ++  welp                                                
+```
+    ++  welp
       =|  [* *]
       |%
       +-  $
@@ -1080,10 +1149,11 @@ A list.
           +<-(. +<+)
         +<-(+ $(+<- +<->))
       --
-
+```
 
 #### Examples
 
+```
     > (welp "foo" "bar")
     "foobar"
 
@@ -1096,10 +1166,10 @@ A list.
 
     > (welp [sa+1 so+2 ~] si=3)
     [[%sa 1] [%so 2] si=3]
+```
 
 
-
-***
+---
 ### `++zing`
 
 Cons
@@ -1117,7 +1187,8 @@ A list.
 
 #### Source
 
-    ++  zing                                                
+```
+    ++  zing
       =|  *
       |%
       +-  $
@@ -1125,16 +1196,17 @@ A list.
           +<
         (welp +<- $(+< +<+))
       --
-
+```
 
 
 #### Examples
 
+```
     > (zing (limo [(limo ['a' 'b' 'c' ~]) (limo ['e' 'f' 'g' ~]) (limo ['h' 'i' 'j' ~]) ~]))
     ~['a' 'b' 'c' 'e' 'f' 'g' 'h' 'i' 'j']
 
     > (zing (limo [(limo [1 'a' 2 'b' ~]) (limo [3 'c' 4 'd' ~]) ~]))
     ~[1 97 2 98 3 99 4 100]
+```
 
-
-***
+---

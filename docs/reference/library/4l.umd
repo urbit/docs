@@ -1,32 +1,36 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'39'
+        title/'4l: Atom Parsing'
+    ==
+
+;>
 
 
 # 4l: atom parsing
+
 ### `++so`
 
 Coin parser engine
 
 Core containing arms that parse `++coin`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
     ++  so
       |%
+```
 
-Examples
---------
+#### Examples
 
+```
     > so
     <10.mkn 414.hhh 100.xkc 1.ypj %164>
+```
 
 ------------------------------------------------------------------------
 
@@ -37,15 +41,13 @@ Parse odor-atom pair
 Parsing rule. Parses an unsigned integer of any permitted base,
 producing a `++dime`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
       ++  bisk
         ;~  pose
           ;~  pfix  (just '0')
@@ -59,14 +61,16 @@ Source
           ==
           (stag %ud dem:ag)
         ==
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "25" bisk:so)
     [%ud q=25]
     > (scan "0x12.6401" bisk:so)
     [%ux q=1.205.249]
+```
 
 ------------------------------------------------------------------------
 
@@ -78,15 +82,13 @@ Parsing rule. Parses any atom of any of the following odors after a
 leading sig, `~` into a `++dime`: `@da`, `@dr`, `@p`,
 and `@t`, producing a `++dime`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
       ++  crub
         ~+
         ;~  pose
@@ -243,10 +245,11 @@ Source
           royl
         ==
       --
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "1926.5.12" crub:so)
     [p=~.da q=170.141.184.449.747.016.871.285.095.307.149.312.000]
     > ([%da @da] (scan "1926.5.12" crub:so))
@@ -259,6 +262,7 @@ Examples
     [%p 256]
     > (scan ".mas" crub:so)
     [%ta 7.561.581]
+```
 
 ------------------------------------------------------------------------
 
@@ -269,15 +273,13 @@ Top-level coin parser
 Parsing rule. Switches on the first character and applies the
 corresponding `++coin` parser.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
         ++  nuck
           ~/  %nuck  |=  a/nail  %.  a
           %+  knee  *coin  |.  ~+
@@ -289,12 +291,12 @@ Source
               :-  '.'        ;~(pfix dot perd)
               :-  '~'        ;~(pfix sig ;~(pose twid (easy [%$ %n 0])))
           ==
+```
 
 
+#### Examples
 
-Examples
---------
-
+```
     > (scan "~pillyt" nuck:so)
     [% p=[p=~.p q=32.819]]
     > (scan "0x12" nuck:so)
@@ -304,7 +306,7 @@ Examples
     > `@ud`.127.0.0.1
     2.130.706.433
     > (scan "._20_0w25_sam__" nuck:so)
-    [ %many 
+    [ %many
         p
       ~[[% p=[p=~.ud q=20]] [% p=[p=~.uw q=133]] [% p=[p=~.tas q=7.168.371]]]
     ]
@@ -316,6 +318,7 @@ Examples
     [1 1]
     > `@uv`(jam [1 1])
     0vph
+```
 
 ------------------------------------------------------------------------
 
@@ -326,21 +329,20 @@ Parse coin literal with escapes
 Parsing rule. Parses a coin literal with escapes. (See also: xx tuple
 formatting).
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
       ++  nusk
         (sear |=(a/@ta (rush (wick a) nuck)) urt:ab)
+```
 
-Examples
---------
+#### Examples
 
+```
     > ~.asd_a
     ~.asd_a
     > ._1_~~.asd~-a__
@@ -349,6 +351,7 @@ Examples
     [% p=[p=~.ta q=418.212.246.369]]
     > ([~ %ta @ta] (scan "~~.asd~-a" nusk:so))
     [~ %ta ~.asd_a]
+```
 
 ------------------------------------------------------------------------
 
@@ -359,24 +362,23 @@ Parsing rule.
 Parsing rule. Parses a dime or tuple without their respective standard
 prefixes.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
       ++  perd
         ;~  pose
           (stag ~ zust)
           (stag %many (ifix [cab ;~(plug cab cab)] (more cab nusk)))
         ==
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "y" perd:so)
     [~ [%f %.y]]
     > (scan "n" perd:so)
@@ -385,6 +387,7 @@ Examples
     %.n
     > (scan "_20_x__" perd:so)
     [%many [[% p=[p=~.ud q=20]] ~[[% p=[p=~.tas q=120]]]]]
+```
 
 ------------------------------------------------------------------------
 
@@ -394,15 +397,13 @@ Parse dime float
 
 Parsing rule. Parses a number into a `++dime` float.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
   ++  royl
     ~+
     =+  ^=  moo
@@ -448,14 +449,16 @@ Source
       (stag %rs (cook ryls voy))
     ==
   ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "~3.14" royl:so)
     [%rd .~3.13999999999999]
     > .~3.14
     .~3.13999999999999
+```
 
 ------------------------------------------------------------------------
 
@@ -465,6 +468,7 @@ XX still not fully functional
 
 Intermediate parsed float convereter
 
+```
       ++  royl-cell
         |=  rn
         ^-  dn
@@ -473,6 +477,7 @@ Intermediate parsed float convereter
           (dif:si (new:si f.b i.b) (sun:si d.b))
         [%d a h (add (mul c.b (pow 10 d.b)) e.b)]
       ::
+```
 
 ------------------------------------------------------------------------
 
@@ -480,17 +485,15 @@ Intermediate parsed float convereter
 
 Parse signed dime
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
 Parsing rule. Parses a signed number into a `++dime`.
 
-Source
-------
+#### Source
 
+```
       ++  tash
         ~+
         =+  ^=  neg
@@ -504,10 +507,11 @@ Source
           ==
         ==
       ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "-20" tash:so)
     [p=~.sd q=39]
     > (,[%sd @sd] (scan "-20" tash:so))
@@ -516,6 +520,7 @@ Examples
     [%sd --20]
     > (,[%sx @sx] (scan "--0x2e" tash:so))
     [%sx --0x2e]
+```
 
 ------------------------------------------------------------------------
 
@@ -525,25 +530,24 @@ Parse coins without `~` prefix
 
 Parsing rule. Parses coins after a leading sig, `~`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
       ++  twid
         ;~  pose
           (cook |=(a/@ [%blob (cue a)]) ;~(pfix (just '0') vum:ag))
           (stag ~ crub)
         ==
       ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "zod" twid:so)
     [~ [%p 0]]
     > (scan ".sam" twid:so)
@@ -554,6 +558,7 @@ Examples
     'sam'
     > (scan "0ph" twid:so)
     [%blob [1 1]]
+```
 
 ------------------------------------------------------------------------
 
@@ -564,15 +569,13 @@ Parse prefixed dimes from `@if`, `@f`, `@rd`
 Parsing rule. Parses an atom of either `@if` (IP address), `@f`
 (loobean), or `rf`(floating point) into a `++dime`.
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
+```
       ++  zust
         ;~  pose
           (stag %is bip:ag)
@@ -581,23 +584,29 @@ Source
           royl
         ==
       --
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scan "127.0.0.1" zust:so)
     [%if q=2.130.706.433]
+
     > (scan "af.0.0.0.0.e7a5.30d2.7" zust:so)
     [%is q=908.651.950.243.594.834.993.091.554.288.205.831]
+
     > (,[%is @is] (scan "af.0.0.0.0.e7a5.30d2.7" zust:so))
     [%is .af.0.0.0.0.e7a5.30d2.7]
+
     > (,[%is @ux] (scan "af.0.0.0.0.e7a5.30d2.7" zust:so))
     [%is 0xaf.0000.0000.0000.0000.e7a5.30d2.0007]
+
     > (scan "y" zust:so)
     [%f %.y]
+
     > (scan "12.09" zust:so)
     [%rd .~12.00999999999999]
+```
 
 
-
-***
+---

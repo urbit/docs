@@ -1,10 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'25'
+        title/'3e: (Removed)'
+    ==
 
+;>
 
 # 3e: AES encryption
 
 The standard-library functions in this section have been removed.
 
-***
+---

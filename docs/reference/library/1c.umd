@@ -1,6 +1,9 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'3'
+        title/'1c: Molds and Mold-Builders'
+    ==
+
+;>
 
 
 # 1c: molds and mold builders
@@ -13,22 +16,25 @@ Atom representing block size. A block of size `a` has a bitwidth of `2^a`.
 
 #### Source
 
-    ++  bloq  @                                         
+```
+    ++  bloq  @
+```
 
 #### Examples
 
+```
     ::  ++met measures how many a-bloqs long an atom is.
 
-    > (met 3 256)                      
+    > (met 3 256)
     2
 
-    > (met 3 255)                      
+    > (met 3 255)
     1
 
-    > (met 3 65.535)                              
-    2              
+    > (met 3 65.535)
+    2
 
-    > (met 2 65.536)                   
+    > (met 2 65.536)
     > 3
 
     > (met 0 4)
@@ -42,6 +48,7 @@ Atom representing block size. A block of size `a` has a bitwidth of `2^a`.
 
     > (met 2 0xb5)
     2
+```
 
 #### Discussion
 
@@ -62,7 +69,7 @@ And so on.
 
 See the [bit arithmetic](../2c) section for operations that use `bloq`s.
 
-***
+---
 
 ### `++each`
 
@@ -79,6 +86,7 @@ A mold generator. Produces a discriminated fork between two types, defaulting to
 
 #### Examples
 
+```
     > ? *(each cord time)
       ?({$.y p/@t} {$.n p/@da})
     [%.y p='']
@@ -86,8 +94,9 @@ A mold generator. Produces a discriminated fork between two types, defaulting to
     > ? *(each * tape)
       ?({$.y p/*} {$.n p/""})
     [%.y p=0]
+```
 
-***
+---
 ### `++gate`
 
 Function
@@ -99,12 +108,14 @@ product noun. If used dryly as a type, the subject must have a sample type of
 
 #### Source
 
-    ++  gate  
-      $-(* *)                                       
-
+```
+    ++  gate
+      $-(* *)
+```
 
 #### Examples
 
+```
     > ? gate
       <1.rdl {* <31.ohr 1.jmk $143>}>
     <1.rdl {* <31.ohr 1.jmk $143>}>
@@ -115,6 +126,7 @@ product noun. If used dryly as a type, the subject must have a sample type of
     > (`gate`|=(a=@ [a 'b']) 1)
     ! nest-fail
     ! exit
+```
 
 #### Discussion
 
@@ -124,7 +136,7 @@ mathematical sense. Any `gate` normalizes to an iron `gate`.
 
 See also: [`++lift`](../2a), [`++cork`](../2n)
 
-***
+---
 ### `++list`
 
 List
@@ -135,12 +147,14 @@ homogenous type.
 
 #### Source
 
-    ++  list  
+```
+    ++  list
       |*(a=mold $@($~ (lest a)))
-
+```
 
 #### Examples
 
+```
     > *(list)
     ~
 
@@ -153,11 +167,12 @@ homogenous type.
     > `(list @)`[1 2 'j' ~]
     ~[1 2 106]
 
+```
 #### Discussion
 
 See also: [`++turn`](../2b), [`++snag`](../2b)
 
-***
+---
 ### `++lone`
 
 Face on mold
@@ -166,12 +181,14 @@ A mold generator. Puts face of `p` on the passed-in mold.
 
 #### Source
 
+```
     ++  lone
       |*(a=mold [p=a])
+```
 
 #### Examples
 
-
+```
     > ? *cord
       @t
     ''
@@ -185,8 +202,9 @@ A mold generator. Puts face of `p` on the passed-in mold.
     > ? *@
       @
     0
+```
 
-***
+---
 ### `++pair`
 
 Mold of pair of types
@@ -196,21 +214,23 @@ A mold generator. Produces a tuple of two of the types passed in.
 
 #### Source
 
+```
     ++  pair
       |*([a=mold b=mold] [p=a q=b])
-
-
+```
 
 #### Examples
 
+```
     > *(pair ? cord)
     [p=%.y q='']
 
     > *(pair tape @)
     [p="" q=0]
 
+```
 
-***
+---
 ### `++pole`
 
 Faceless list
@@ -219,22 +239,24 @@ A mold generator. A `list` without the faces `i` and `t`.
 
 #### Source
 
+```
     ++  pole
       |*(a=mold $@($~ [a (pole a)]))
-
+```
 
 
 #### Examples
 
+```
     > =/(a "asdf" ?>(?=(^ a) `(lest @tD)`a))
     [i='a' t=[i='s' t=[i='d' t=[i='f' t=~]]]]
 
     > `(pole char)`"asdf"
     ['a' ['s' ['d' ['f' ~]]]]
+```
 
 
-
-***
+---
 ### `++qual`
 
 Mold of 4-type tuple
@@ -243,20 +265,23 @@ A mold generator. Produces a tuple of four of the types passed in.
 
 #### Source
 
-    ++  qual  
+```
+    ++  qual
       |*  [a=mold b=mold c=mold d=mold]
-      [p=a q=b r=c s=d]                             
+      [p=a q=b r=c s=d]
+```
 
 #### Examples
 
+```
     > *(qual date time tape cord)
     [p=[[a=%.y y=0] m=0 t=[d=0 h=0 m=0 s=0 f=~]] q=~292277024401-.1.1 r="" s='']
 
     > *(qual (list @) @u @ud @ux)
     [p=~ q=0 r=0 s=0x0]
+```
 
-
-***
+---
 ### `++quip`
 
 Mold of pair of `list` and type
@@ -265,23 +290,27 @@ A mold generator. Produces a tuple of a `list` of `a` and the mold of `b`.
 
 #### Source
 
-    ++  quip  
-      |*([a=mold b=mold] [(list a) b])          
+```
+    ++  quip
+      |*([a=mold b=mold] [(list a) b])
+```
 
 #### Examples
 
+```
     > *(quip @ _'hi')
     [~ 'hi']
 
     > `(quip @ @ux)`[[1 2 3 4 ~] 0x10]
     [~[1 2 3 4] 0x10]
+```
 
 #### Discussion
 
 A common pattern in Hoon code is to return a `list` of changes, along with a
 new state. You'll often see `quip` used in Gall apps.
 
-***
+---
 ### `++trap`
 
 Core with one arm `$`
@@ -290,12 +319,14 @@ A trap is a core with one arm `$`.
 
 #### Source
 
+```
     ++  trap
       |*(a=mold _|?(*a))
-
+```
 
 #### Examples
 
+```
     > (*trap)
     <1?dxy 1.oeg {a/<1|rbb {* <31.ohr 1.jmk $143>}> <31.ohr 1.jmk $143>}>
 
@@ -304,10 +335,10 @@ A trap is a core with one arm `$`.
 
     > (|.(42))
     42
+```
 
 
-
-***
+---
 ### `++tree`
 
 Tree mold generator
@@ -317,18 +348,20 @@ left/right sub `tree` of the same type. Pretty-printed with `{}`.
 
 #### Source
 
-    ++  tree                                 
-      |*(a=mold $@($~ [n=a l=(tree a) r=(tree a)]))           
-
+```
+    ++  tree
+      |*(a=mold $@($~ [n=a l=(tree a) r=(tree a)]))
+```
 
 #### Examples
 
+```
     > `(tree [@ tape])`[[1 "hi"] [[2 "bye"] ~ ~] ~]
     {[2 "bye"] [1 "hi"]}
+```
 
 
-
-***
+---
 ### `++trel`
 
 Mold of three types
@@ -337,20 +370,22 @@ A mold generator. A mold of the tuple of the three types passed in.
 
 #### Source
 
+```
     ++  trel
       |*([a=mold b=mold c=mold] [p=a q=b r=c])
-
+```
 
 #### Examples
 
+```
     > *(trel @ud @t @s)
     [p=0 q='' r=--0]
 
     > *(trel cord bloq tape)
     [p='' q=0 r=""]
+```
 
-
-***
+---
 ### `++unit`
 
 Maybe
@@ -361,22 +396,25 @@ type that was passed in.
 
 #### Source
 
-    ++  unit  
+```
+    ++  unit
       |*(a=mold $@($~ [$~ u=a]))
+```
 
 #### Examples
 
-
+```
     > ? *(unit time)
       ?({$~ u/@da} $~)
      ~
 
-    > =a |=  a=@  
+    > =a |=  a=@
     ^-  (unit @)
     ?~  a  ~
     [~ a]
     > (a 2)
     [~ u=2]
+```
 
 #### Discussion
 
@@ -384,4 +422,4 @@ Using a `unit` allows you to specify something that may not be there.
 
 See also: [`++bind`](../2b)
 
-***
+---

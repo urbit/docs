@@ -1,10 +1,13 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'26'
+        title/'3f: Scrambling'
+    ==
+
+;>
 
 # 3f: scrambling
 
-### `++un`
+### `++un`*
 
 Reversible scrambling
 
@@ -13,10 +16,12 @@ Used in the `@p` phonetic base.
 
 #### Source
 
-    ++  un                                                
+```
+    ++  un
       |%
+```
 
-***
+---
 ### `++wren`
 
 Conceal structure
@@ -35,7 +40,8 @@ An atom.
 
 #### Source
 
-      ++  wren                                              
+```
+      ++  wren
         |=  pyn=@  ^-  @
         =+  len=(met 3 pyn)
         ?:  =(0 len)
@@ -52,10 +58,11 @@ An atom.
         =+  mog=(zyft :(mix mig (end 3 1 len) (cut 3 [len 1] pyn)))
         [[1 mog] $(mig mog)]
       ::
-
+```
 
 #### Examples
 
+```
     > `@ux`(wren:un 'testing')
     0x30.bf6a.b9fe.7d8f
 
@@ -64,8 +71,9 @@ An atom.
 
     > `@da`(wred:un (wren:un ~2001.2.5))
     ~2001.2.5
+```
 
-***
+---
 ### `++wred`
 
 Restore structure
@@ -84,7 +92,8 @@ An atom.
 
 #### Source
 
-      ++  wred                                              
+```
+      ++  wred
         |=  cry=@  ^-  @
         =+  len=(met 3 cry)
         ?:  =(0 len)
@@ -101,9 +110,11 @@ An atom.
         =+  mog=(cut 3 [len 1] cry)
         [[1 :(mix mig (end 3 1 len) (zyrt mog))] $(mig mog)]
       ::
+```
 
 #### Examples
 
+```
     > (wred:un 0x30.bf6a.b9fe.7d8f)
     29.113.321.805.538.676
 
@@ -112,8 +123,9 @@ An atom.
 
     > (wred:un (wren:un 200.038.426))
     200.038.426
+```
 
-***
+---
 ### `++xafo`
 
 Add modulo 255
@@ -133,10 +145,13 @@ An atom.
 
 #### Source
 
+```
       ++  xafo  |=([a=@ b=@] +((mod (add (dec b) a) 255)))
+```
 
 #### Examples
 
+```
     > (xafo:un 5 6)
     11
 
@@ -145,8 +160,9 @@ An atom.
 
     > (xafo:un 256 (xaro:un 256 20))
     20
+```
 
-***
+---
 ### `++xaro`
 
 Subtract modulo 255
@@ -166,10 +182,13 @@ An atom.
 
 #### Source
 
+```
       ++  xaro  |=([a=@ b=@] +((mod (add (dec b) (sub 255 (mod a 255))) 255)))
+```
 
 #### Examples
 
+```
     > (xaro:un 17 57)
     40
 
@@ -178,8 +197,9 @@ An atom.
 
     > (xaro:un 256 (xafo:un 256 20))
     20
+```
 
-***
+---
 ### `++zaft`
 
 Look up in 255 sub box
@@ -197,7 +217,8 @@ An atom.
 
 #### Source
 
-      ++  zaft                                              
+```
+      ++  zaft
         |=  a=@D
         =+  ^=  b
             0xcc.75bc.86c8.2fb1.9a42.f0b3.79a0.92ca.21f6.1e41.cde5.fcc0.
@@ -212,10 +233,11 @@ An atom.
             3750.6ef1.44dd.89ef.6576.d00a.fbda.9ed2.3b6c.7b0c.bde9.2ade.
             5c88.c182.481a.1b0f.2bfd.d591.2726.57ba
         (cut 3 [(dec a) 1] b)
-      ::
+```
 
 #### Examples
 
+```
     > (zaft:un 0x12)
     42
 
@@ -227,8 +249,9 @@ An atom.
     > (zaft:un 0x0)
     ! decrement-underflow
     ! exit
+```
 
-***
+---
 ### `++zart`
 
 Reverse look up in 255 sub box
@@ -246,6 +269,7 @@ An atom.
 
 #### Source
 
+```
       ++  zart                                              ::  reverse 255-sbox
         |=  a=@D
         =+  ^=  b
@@ -262,9 +286,11 @@ An atom.
             e409.7b9f.1598.1d3f.33de.8ce3.8970.8e7a
         (cut 3 [(dec a) 1] b)
       ::
+```
 
 #### Examples
 
+```
     > `@ux`(zart:un 204)
     0xff
 
@@ -273,8 +299,9 @@ An atom.
 
     > (zaft:un 0x12)
     42
+```
 
-***
+---
 ### `++zyft`
 
 Lookup byte in 256 sub box
@@ -292,6 +319,7 @@ An atom.
 
 #### Source
 
+```
       ++  zyft                                              ::  forward 256-sbox
         |=  a=@D
         =+  ^=  b
@@ -309,9 +337,11 @@ An atom.
               9068.1edf.8f33.b632.d427.97fa.9ee1
         (cut 3 [a 1] b)
       ::
+```
 
 #### Examples
 
+```
     > (zyft:un 0x12)
     57
 
@@ -322,8 +352,9 @@ An atom.
     187
     > `@ux`(zyrt:un 187)
     0xff
+```
 
-***
+---
 ### `++zyrt`
 
 Reverse lookup byte in 256 sub box
@@ -341,6 +372,7 @@ An atom.
 
 #### Source
 
+```
       ++  zyrt                                              ::  reverse 256-sbox
         |=  a=@D
         =+  ^=  b
@@ -357,9 +389,11 @@ An atom.
               1c4a.28ac.fc0b.26ca.5870.e576.f7f1.616d.905f.ef41.33bc.
               df4d.225e.2d56.7fd6.1395.a3f8.c582
         (cut 3 [a 1] b)
+```
 
 #### Examples
 
+```
     > `@ux`(zyrt:un 57)
     0x12
 
@@ -370,19 +404,22 @@ An atom.
     0xff
     > (zyft:un 0xff)
     187
+```
 
-***
+---
 ### `++ob`
 
 Reversible scrambling, v2
 
+```
     ++  ob
       |%
+```
 
 A core for performing reversible scrambling operations for the `@p` phonetic
 base.
 
-***
+---
 ### `++feen`
 
 Conceal structure, v2
@@ -401,7 +438,8 @@ An atom.
 
 #### Source
 
-      ++  feen                                              
+```
+      ++  feen
         |=  pyn=@  ^-  @
         ?:  &((gte pyn 0x1.0000) (lte pyn 0xffff.ffff))
           (add 0x1.0000 (fice (sub pyn 0x1.0000)))
@@ -412,10 +450,11 @@ An atom.
           (add 0x1.0000 (fice (sub lo 0x1.0000)))
         pyn
       ::
-
+```
 
 #### Examples
 
+```
     > `@p`(feen:ob 111.103)
     ~mophul-pagwyx
 
@@ -427,8 +466,9 @@ An atom.
 
     > `@p`(feen:ob ~wex)
     ~wex
+```
 
-***
+---
 ### `++fend`
 
 Restore structure, v2
@@ -448,7 +488,8 @@ An atom.
 
 #### Source
 
-      ++  fend                                              
+```
+      ++  fend
         |=  cry=@  ^-  @
         ?:  &((gte cry 0x1.0000) (lte cry 0xffff.ffff))
           (add 0x1.0000 (teil (sub cry 0x1.0000)))
@@ -459,9 +500,11 @@ An atom.
           (add 0x1.0000 (teil (sub lo 0x1.0000)))
         cry
       ::
+```
 
 #### Examples
 
+```
     > `@p`(fend:ob 111.103)
     ~doznec-sapfes
 
@@ -476,9 +519,9 @@ An atom.
 
     > `@p`(fend:ob ~tarmed)
     ~tarmed
+```
 
-
-***
+---
 ### `++fice`
 
 Feistel-like cipher
@@ -498,6 +541,7 @@ An atom.
 
 #### Source
 
+```
           ++  fice                                              ::  adapted from
             |=  nor=@                                           ::  black and rogaway
             ^-  @                                               ::  "ciphers with
@@ -508,17 +552,19 @@ An atom.
             [(mod nor 65.535) (div nor 65.535)]
             (add (mul 65.535 -.sel) +.sel)
           ::
-
+```
 
 #### Examples
 
+```
     > (fice:ob 11)
     776.343.932
 
     > (fice:ob (teil:ob 11))
     11
+```
 
-***
+---
 ### `++teil`
 
 Reverse Feistel-like cipher
@@ -538,6 +584,7 @@ An atom.
 
 #### Source
 
+```
       ++  teil                                              ::  reverse ++fice
         |=  vip=@
         ^-  @
@@ -548,19 +595,20 @@ An atom.
         [(mod vip 65.535) (div vip 65.535)]
         (add (mul 65.535 -.sel) +.sel)
       ::
-
+```
 
 
 #### Examples
 
+```
     > (teil:ob 11)
     514.230.493
 
     > (teil:ob (fice:ob 11))
     11
+```
 
-
-***
+---
 ### `++rynd`
 
 Reverse Feistel-like cipher
@@ -582,24 +630,27 @@ A cell of two atoms.
 
 #### Source
 
-    ++  rynd                                              
+```
+    ++  rynd
       |=  [n=@ l=@ r=@]
       ^-  [@ @]
       :-  r
       ?~  (mod n 2)
         (~(sum fo 65.535) l (en:aesc (snag n raku) r))
       (~(sum fo 65.536) l (en:aesc (snag n raku) r))
+```
 
 #### Examples
 
+```
     > (rynd:ob 2 261 9)
     [9 37.422]
 
     > (rynd:ob 2 (rund:ob 2 37.422 9))
     [261 32.902]
+```
 
-
-***
+---
 ### `++rund`
 
 Reverse single Feistel-like
@@ -621,23 +672,27 @@ A cell of two atoms.
 
 #### Source
 
-  ++  rund                                              
+```
+  ++  rund
     |=  [n=@ l=@ r=@]
     ^-  [@ @]
     :-  r
     ?~  (mod n 2)
       (~(dif fo 65.535) l (muk (snag n raku) 2 r))
     (~(dif fo 65.536) l (muk (snag n raku) 2 r))
+```
 
 #### Examples
 
+```
     > (rund:ob 2 261 9)
     [9 28.635]
 
     > (rund:ob 2 (rynd:ob 2 28.635 9))
     [261 32.651]
+```
 
-***
+---
 ### `++raku`
 
 Key list
@@ -650,6 +705,7 @@ A list of atoms of aura `@ux` (hexadecimal).
 
 #### Source
 
+```
   ++  raku
     ^-  (list @ux)
     :~  0xb76d.5eed
@@ -658,10 +714,13 @@ A list of atoms of aura `@ux` (hexadecimal).
         0x4b38.7af7
     ==
     --
+```
 
 #### Examples
 
+```
     > raku:ob
     ~[0xb76d.5eed 0xee28.1300 0x85bc.ae01 0x4b38.7af7]
+```
 
-***
+---

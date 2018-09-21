@@ -1,51 +1,54 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'30'
+        title/'4c: Tank Printer'
+    ==
 
+;>
 
 # 4c: tank printer
+
 ### `++re`
 
 Pretty-printing engine
 
 Pretty-printing engine that accepts a `++tank` sample and contains arms that perform computation on it.
 
-Accepts
--------
+#### Accepts
 
 `tac` is a `++tank`.
 
-Produces
---------
+#### Produces
 
+```
     ++  re
       |_  tac/tank
+```
 
-Examples
---------
+#### Examples
 
-    /> ~(. re leaf+"ham")
+```
+    > ~(. re leaf+"ham")
     <2.gdc {tac/{$leaf ""} <402.arm 110.jyx 1.ztu $151>}>
+```
 
+---
 ### `++ram`
 
 Flatten to tape
 
 Flatten `++tank` out into a `++tape`.
 
-Accepts
--------
+#### Accepts
 
 `tac` is a `++tank`, taken from sample of `++re` core.
 
-Produces
---------
+#### Produces
 
 A `++tape`.
 
-Source
-------
+#### Source
 
+```
       ++  ram
         ^-  tape
         ?-    -.tac
@@ -61,36 +64,36 @@ Source
           (weld ram(tac i.q.tac) ?~(t.q.tac voz (weld p.p.tac voz)))
         ==
       ::
+```
 
-Examples
---------
+#### Examples
 
-    /> ~(ram re leaf+"foo")
+```
+    > ~(ram re leaf+"foo")
     "foo"
-    /> ~(ram re rose+["." "(" ")"]^~[leaf+"bar" leaf+"baz" leaf+"bam"])
+    > ~(ram re rose+["." "(" ")"]^~[leaf+"bar" leaf+"baz" leaf+"bam"])
     "(bar.baz.bam)"
-
+```
+---
 ### `++win`
 
 Render at indent
 
 Render at indent level `tab` and width `edg`.
 
-Accepts
--------
+#### Accepts
 
 `tac` is a `++tank`, taken from sample of `++re` core.
 
 `tab` and `edg` are atoms.
 
-Produces
---------
+#### Produces
 
 A `++wall` (`++list` of `++tapes`).
 
-Source
-------
+#### Source
 
+```
       ++  win
         |=  {tab/@ edg/@}
         =+  lug=`wall`~
@@ -117,36 +120,39 @@ Source
                   ==
               (wig(lug qyr) q.p.tac)
             ::
+```
 
-Examples
---------
+#### Examples
 
-    /> (~(win re leaf+"samoltekon-lapdok") 0 20)
+```
+    > (~(win re leaf+"samoltekon-lapdok") 0 20)
     <<"samoltekon-lapdok">>
-    /> (~(win re leaf+"samoltekon-lapdok") 0 10)
-    <<"\/samolt\/" "  ekon-l" "  apdok" "\/      \/">>
-    /> (~(win re rose+["--" "[" "]"]^~[leaf+"1423" leaf+"2316"]) 0 20)
-    <<"[1423--2316]">>
-    /> (~(win re rose+["--" "[" "]"]^~[leaf+"1423" leaf+"2316"]) 0 10)
-    <<"[ 1423" "  2316" "]">>
 
+    > (~(win re leaf+"samoltekon-lapdok") 0 10)
+    <<"\/samolt\/" "  ekon-l" "  apdok" "\/      \/">>
+
+    > (~(win re rose+["--" "[" "]"]^~[leaf+"1423" leaf+"2316"]) 0 20)
+    <<"[1423--2316]">>
+
+    > (~(win re rose+["--" "[" "]"]^~[leaf+"1423" leaf+"2316"]) 0 10)
+    <<"[ 1423" "  2316" "]">>
+```
+
+---
 ### `++din`
 
 XX document
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
         ++  din  (mod (add 2 tab) (mul 2 (div edg 3)))
 
 
-----------------------------------------------------------------------
+---
 
 ### `++fit`
 
@@ -154,25 +160,21 @@ Fit on one line test
 
 Determine whether `tac` fits on one line. Internal to `++win`
 
-Accepts
--------
+#### Accepts
 
-Produces
---------
+#### Produces
 
-Source
-------
+#### Source
 
 ++  fit  (lte (lent ram) (sub edg tab))
 
 
-Examples
---------
+#### Examples
 
 
 
 
-----------------------------------------------------------------------
+---
 
 ### `++rig`
 
@@ -181,21 +183,19 @@ Wrap in `\/`
 Wrap `++tape` in `\/` if it doesn't fit at current indentation. Internal to
 `++win`
 
-Accepts
--------
+#### Accepts
 
 `tac` is a `++tank`, taken from sample of `++re` core.
 
 `hom` is a `++tape`.
 
-Produces
---------
+#### Produces
 
 A `++wall` (list of `++tape`s).
 
-Source
-------
+#### Source
 
+```
         ++  rig
           |=  hom/tape
           ^-  wall
@@ -214,26 +214,26 @@ Source
           =>  .(mut (trim (sub edg tab) hom))
           [(runt [tab ' '] p.mut) $(hom q.mut)]
         ::
+```
 
-Examples
---------
+#### Examples
 
+---
 ### `++wig`
 
 `++win` render tape
 
 Render `++tape`. Internal to `++win`.
 
-Accepts
--------
+#### Accepts
 
 `tac` is a `++tank`, taken from sample of `++re` core.
 
 `hom` is a `++tape`.
 
-Produces
---------
+#### Produces
 
+```
         ++  wig
           |=  hom/tape
           ^-  wall
@@ -249,13 +249,14 @@ Produces
           [(runt [tab ' '] (weld hom `tape`[' ' (slag wug i.lug)])) t.lug]
         --
       --
+```
 
 
 
-
-***
+---
 ### `++show`
 
+```
     ++  show                            ::  XX deprecated, use span
       |=  vem/*
       |^  ^-  tank
@@ -312,11 +313,13 @@ Produces
               {s/$z c/*}        $(vem [[%r %$ %$ %$] c.vem])
               *                 !!
           ==
+```
 
 XX document
 
 ### `++shep`
 
+```
       ++  shep
         |=  {fom/@ gar/*}
         ^-  tank
@@ -334,11 +337,13 @@ XX document
           ['\\' '#' $(i (add 2 i))]
         (weld ~(ram re (show d -.gar)) $(i (add 2 i), gar +.gar))
       ::
+```
 
 XX document
 
 ### `++shop`
 
+```
      ++  shop
         |=  {aug/* vel/$-(a/@ tape)}
         ^-  tank
@@ -352,6 +357,7 @@ XX document
           [^$ ~]
         [^$(aug -.aug) $(aug +.aug)]
       ::
+```
 
 
 XX document

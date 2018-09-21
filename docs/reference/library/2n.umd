@@ -1,7 +1,9 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'17'
+        title/'2n: Functional Hacks'
+    ==
 
+;>
 
 # 2n: functional hacks
 
@@ -19,10 +21,13 @@ Build `f` such that `(f x) .= (b (a x))`.
 
 #### Source
 
-    ++  cork  |*([a=_|=(* **) b=gate] (corl b a))     
+```
+    ++  cork  |*([a=_|=(* **) b=gate] (corl b a))
+```
 
 #### Examples
 
+```
     > (:(cork dec dec dec) 20)
     17
 
@@ -32,9 +37,9 @@ Build `f` such that `(f x) .= (b (a x))`.
 
     > ((cork ~(got by mal) dec) %b)
     22
+```
 
-
-***
+---
 ### `++corl`
 
 Compose backward
@@ -49,20 +54,22 @@ Build `f` such that
 
 #### Source
 
-    ++  corl                                                
+```
+    ++  corl
       |*  [a=gate b=_|=(* **)]
       =<  +:|.((a (b)))      ::  span check
       |*  c=_+<.b
       (a (b c))
-    ::
+```
 
 #### Examples
 
+```
     > ((corl (lift bex) (slat %ud)) '2')
     [~ 4]
+```
 
-
-***
+---
 ### `++curr`
 
 Right curry
@@ -81,22 +88,25 @@ A gate.
 
 #### Source
 
-    ++  curr                                              
-      |*  [a=_|=(^ **) c=*}     
+```
+    ++  curr
+      |*  [a=_|=(^ **) c=*}
       |*  b=_+<+.a
       (a b c)
+```
 
 #### Examples
 
+```
     > =tep (cury scan sym)
     > `@t`(tep "asd")
     'asd'
 
     > `@t`(tep "lek-om")
     'lek-om'
+```
 
-
-***
+---
 ### `++cury`
 
 Curry left
@@ -115,22 +125,25 @@ A gate.
 
 #### Source
 
-    ++  cury                                              
+```
+    ++  cury
       |*  [a=_|=(^ **) b=*}
       |*  c=_+<+.a
       (a b c)
-
+```
 
 #### Examples
 
+```
     > =mol (cury add 2)
     > (mol 4)
     6
 
     > (mol 7)
     9
+```
 
-***
+---
 ### `++hard`
 
 Force remold
@@ -140,16 +153,18 @@ not.
 
 #### Source
 
-    ++  hard                                               
+```
+    ++  hard
       |*  han=gate
       |=  fud=*  ^-  han
       ~_  leaf+"hard"
       =+  gol=(han fud)
       ?>(=(gol fud) gol)
-    ::
+```
 
 #### Examples
 
+```
     > ((hard (list)) (limo [1 2 3 ~]))
     ~[1 2 3]
     > ((hard @) (add 2 2))
@@ -159,10 +174,10 @@ not.
     > ((hard tape) (crip "...Tape to cord, bro?..."))
     ! hard
     ! exit
+```
 
 
-
-***
+---
 ### `++soft`
 
 Maybe remold
@@ -172,29 +187,35 @@ is not.
 
 #### Source
 
-    ++  soft                                              
+```
+    ++  soft
       |*  han=gate
       |=  fud=*  ^-  (unit han)
       =+  gol=(han fud)
       ?.(=(gol fud) ~ [~ gol])
-    ::
+```
 
 #### Examples
 
+```
     > ((soft %4) (add 2 2))
     [~ %4]
+
     > ((soft @) (add 2 2))
     [~ 4]
+
     > ((soft %5) (add 2 2))
     ~
+
     > ((soft @t) (crip "Tape to cord, Woohoo!"))
     [~ 'Tape to cord, Woohoo!']
+
     > ((soft @t) (trip 'Cmon man... Tape to cord? Please?!'))
     ~
+```
 
 
-
-***
+---
 ### `++head`
 
 Get head
@@ -211,10 +232,13 @@ An atom.
 
 #### Source
 
-    ++  head  |*(^ ,:+<-)                                  
+```
+    ++  head  |*(^ ,:+<-)
+```
 
 #### Examples
 
+```
     > (head [1 2])
     1
 
@@ -223,9 +247,9 @@ An atom.
 
     > (head "hello")
     'h'
+```
 
-
-***
+---
 ### `++same`
 
 Identity
@@ -242,10 +266,13 @@ A noun.
 
 #### Source
 
-    ++  same  |*(* +<)                                      
+```
+    ++  same  |*(* +<)
+```
 
 #### Examples
 
+```
     > (same [1 2])
     [1 2]
 
@@ -254,8 +281,9 @@ A noun.
 
     > (same "hello")
     "hello"
+```
 
-***
+---
 ### `++slog`
 
 Deify printf
@@ -273,15 +301,19 @@ A `tang`.
 
 #### Source
 
-    ++  slog                                                
-      =|  pri=@                                            
-      |=  a=tang  ^+  same                                 
-      ?~(a same ~>(%slog.[pri i.a] $(a t.a)))            
+```
+    ++  slog
+      =|  pri=@
+      |=  a=tang  ^+  same
+      ?~(a same ~>(%slog.[pri i.a] $(a t.a)))
+```
 
 #### Examples
 
+```
     > =+  result=((slog [%leaf "error-message"]~) [12 13])  [%product result]
     [%product 12 13]
+```
 
 #### Discussion
 
@@ -289,7 +321,7 @@ A `tang`.
 calls that string a piece of data through them, so that an error message will be
 printed if there's one to print.
 
-***
+---
 ### `++mean`
 
 Crash and printf
@@ -306,19 +338,23 @@ A crash.
 
 #### Source
 
-    ++  mean                                           
+```
+    ++  mean
       |=  a=tang
       ^+  !!
       ?~  a  !!
       ~_(i.a $(a t.a))
+```
 
 #### Examples
 
+```
     > ~>(%mean.[%leaf "fuse-loop"] !!)
     ####
     !! crash
+```
 
-***
+---
 ### `++tail`
 
 Get tail
@@ -335,10 +371,13 @@ A noun.
 
 #### Source
 
+```
     ++  tail  |*(^ ,:+<+)
+```
 
 #### Examples
 
+```
     > (tail [1 2])
     2
 
@@ -347,9 +386,9 @@ A noun.
 
     > (tail "hello")
     "ello"
+```
 
-
-***
+---
 ### `++test`
 
 Test for equality
@@ -368,10 +407,13 @@ A flag.
 
 #### Source
 
-    ++  test  |=(^ =(+<- +<+))                              
+```
+    ++  test  |=(^ =(+<- +<+))
+```
 
 #### Examples
 
+```
     > (test 1 1)
     %.y
 
@@ -383,5 +425,6 @@ A flag.
 
     > (test "hello" ['h' 'e' 'l' 'l' 'o' ~])
     %.y
+```
 
-***
+---

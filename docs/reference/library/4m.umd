@@ -1,33 +1,35 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'40'
+        title/'4m: Formatting Functions'
+    ==
 
+;>
 
 # 4m: formatting functions
+
 ### `++scot`
 
 Render dime as cord
 
 Renders a dime `mol` as a cord.
 
-Accepts
--------
+#### Accepts
 
 `mol` is a `++dime`.
 
-Produces
---------
+#### Produces
 
 A `cord`.
 
-Source
-------
+#### Source
 
+```
     ++  scot  |=(mol/dime ~(rent co %$ mol))
+```
 
-Examples
---------
+#### Examples
 
+```
     > (scot %p ~pillyt)
     ~.~pillyt
     > `@t`(scot %p ~pillyt)
@@ -44,34 +46,32 @@ Examples
     ~.~.asd_a
     > `@t`(scot %ta ~.asd_a)
     '~.asd_a'
+```
 
 
-
-***
+---
 ### `++scow`
 
 Render dime as tape
 
 Renders a dime `mol` as a tape.
 
-Accepts
--------
+#### Accepts
 
 `mol` is a `++dime`.
 
-Produces
---------
+#### Produces
 
 A `tape`.
 
-Source
-------
+#### Source
 
+```
     ++  scow  |=(mol/dime ~(rend co %$ mol))
+```
+#### Examples
 
-Examples
---------
-
+```
     > (scow %p ~pillyt)
     "~pillyt"
     > (scow %ux 0x12)
@@ -80,10 +80,10 @@ Examples
     ".127.0.0.1"
     > (scow %ta ~.asd_a)
     "~.asd_a"
+```
 
 
-
-***
+---
 ### `++slat`
 
 Curried slaw
@@ -91,26 +91,25 @@ Curried slaw
 Produces a `gate` that parses a `term` `txt` to an atom of the
 odor specified by `mod`.
 
-Accepts
--------
+#### Accepts
 
 `mod` is a term, an atom of odor `@tas`.
 
 `txt` is a cord, an atom of odor `@ta`.
 
-Produces
---------
+#### Produces
 
 A `gate`.
 
-Source
-------
+#### Source
 
+```
     ++  slat  |=(mod/@tas |=(txt/@ta (slaw mod txt)))
+```
 
-Examples
---------
+#### Examples
 
+```
     > `(unit @p)`((slat %p) '~pillyt')
     [~ ~pillyt]
     > `(unit @ux)`((slat %ux) '0x12')
@@ -119,10 +118,10 @@ Examples
     [~ .127.0.0.1]
     > `(unit @ta)`((slat %ta) '~.asd_a')
     [~ ~.asd_a
+```
 
 
-
-***
+---
 ### `++slav`
 
 Demand: parse cord with input odor
@@ -130,26 +129,25 @@ Demand: parse cord with input odor
 Parses a cord `txt` to an atom of the odor specificed by `mod`.
 Crashes if it fails to parse.
 
-Accepts
--------
+#### Accepts
 
 `mod` is a term, an atom of odor `@tas`.
 
 `txt` is a cord, an atom of odor `@ta`.
 
-Produces
---------
+#### Produces
 
 The atom of a `(unit @)` from `++slaw`, or crash.
 
-Source
-------
+#### Source
 
+```
     ++  slav  |=([mod/@tas txt/@ta] (need (slaw mod txt)))
+```
 
-Examples
---------
+#### Examples
 
+```
     > `@p`(slav %p '~pillyt')
     ~pillyt
     > `@p`(slav %p '~pillam')
@@ -166,42 +164,39 @@ Examples
     ~.asd_a
     > `@ta`(slav %ta '~~asd-a')
     ! exit
+```
 
-
-
-***
+---
 ### `++slaw`
 
 Parse cord to input odor
 
 Parses a cord `txt` to an atom of the odor specified by `mod`.
 
-Accepts
--------
+#### Accepts
 
 `mod` is a term, an atom of odor `@tas`.
 
 `txt` is a cord, an atom of odor `@ta`.
 
-Produces
---------
+#### Produces
 
 A `(unit @)`.
 
-Source
-------
+#### Source
 
+```
     ++  slaw
       ~/  %slaw
       |=  {mod/@tas txt/@ta}
       ^-  (unit @)
       =+  con=(slay txt)
       ?.(&(?=({$~ $$ @ @} con) =(p.p.u.con mod)) ~ [~ q.p.u.con])
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > `(unit @p)`(slaw %p '~pillyt')
     [~ ~pillyt]
     > `(unit @p)`(slaw %p '~pillam')
@@ -218,29 +213,27 @@ Examples
     [~ ~.asd_a]
     > `(unit @ta)`(slaw %ta '~~asd-a')
     ~
+```
 
 
-
-***
+---
 ### `++slay`
 
 Parse cord to coin
 
 Parses a cord `txt` to the unit of a `++coin`.
 
-Accepts
--------
+#### Accepts
 
 `txt` is a `@ta`.
 
-Produces
---------
+#### Produces
 
 A `(unit coin)`.
 
-Source
-------
+#### Source
 
+```
         ++  slay
           |=  txt/@ta  ^-  (unit coin)
           =+  ^=  vex
@@ -251,11 +244,11 @@ Source
             ~
           [~ p.u.q.vex]
         ::
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > (slay '~pillyt')
     [~ [% p=[p=~.p q=32.819]]]
     > (slay '0x12')
@@ -280,10 +273,10 @@ Examples
     [1 1]
     > `@uv`(jam [1 1])
     0vph
+```
 
 
-
-***
+---
 ### `++smyt`
 
 Render path as tank
@@ -291,34 +284,33 @@ Render path as tank
 Renders the path `bon` as a `tank`, which is used for
 pretty-printing.
 
-Accepts
--------
+#### Accepts
 
 `bon` is a `++path`.
 
-Produces
---------
+#### Produces
 
 A `tank`.
 
-Source
-------
+#### Source
 
+```
     ++  smyt                                                ::  pretty print path
       |=  bon/path  ^-  tank
       :+  %rose  [['/' ~] ['/' ~] ~]
       (turn bon |=(a/@ [%leaf (trip a)]))
     ::
+```
 
-Examples
---------
+#### Examples
 
+```
     > (smyt %)
     [ %rose
       p=[p="/" q="/" r="/"]
         q
       ~[ [%leaf p="~zod"]
-         [%leaf p="try"] 
+         [%leaf p="try"]
          [%leaf p="~2014.10.28..18.36.58..a280"]
        ]
     ]
@@ -327,78 +319,76 @@ Examples
       p=[p="/" q="/" r="/"]
       q=~[[%leaf p="as"] [%leaf p="les"] [%leaf p="top"]]
     ]
+```
 
 
-
-***
+---
 ### `++spat`
 
 Render path as cord
 
 Renders a path `pax` as cord.
 
-Accepts
--------
+#### Accepts
 
 `pax` is a `path`.
 
-Produces
---------
+#### Produces
 
 A `cord`.
 
-Source
-------
+#### Source
 
+```
     ++  spat  |=(pax/path (crip (spud pax)))               ::  path to cord
+```
 
-Examples
---------
+#### Examples
 
+```
     > (spat %)
     '~zod/try/~2014.10.28..18.40.20..4287'
     > (spat %/bin)
     '~zod/try/~2014.10.28..18.41.12..3bcd/bin'
     > (spat /as/les/top)
     '/as/les/top'
+```
 
 
-
-***
+---
 ### `++spud`
 
 Render path as tape
 
 Renders a path `pax` as tape.
 
-Accepts
--------
+#### Accepts
 
 `pax` is a `path`.
 
-Produces
---------
+#### Produces
 
 A `tape`.
 
-Source
-------
+#### Source
 
+```
     ++  spud  |=(pax/path ~(ram re (smyt pax)))             ::  path to tape
+```
 
-Examples
---------
+#### Examples
 
+```
     > (spud %)
     "~zod/try/~2014.10.28..18.40.46..e951"
     > (spud %/bin)
     "~zod/try/~2014.10.28..18.41.05..16f2/bin"
     > (spud /as/les/top)
     "/as/les/top"
+```
 
 
-
-***
+---
 ### `++stab`
 
 Parse cord to path
@@ -406,39 +396,42 @@ Parse cord to path
 Parsing rule. Parses a cord `zep` to a static `++path`.
 Crashes if it fails to parse.
 
-Accepts
--------
+#### Accepts
 
 `zep` is a `@t`.
 
-Produces
---------
+#### Produces
 
 A `path`, or crash.
 
-Source
-------
+#### Source
 
+```
     ++  stab                                                ::  parse cord to path
       =+  fel=;~(pfix fas (more fas urs:ab))
       |=(zep/@t `path`(rash zep fel))
+```
 
+#### Examples
 
-Examples
---------
-
+```
     > (stab '/as/lek/tor')
     /as/lek/tor
+
     > `(pole ,@ta)`(stab '/as/lek/tor')
     [~.as [~.lek [~.tor ~]]]
+
     > (stab '~zod/arvo/~2014.10.28..18.48.41..335f/zuse')
     ~zod/arvo/~2014.10.28..18.48.41..335f/zuse
+
     > `(pole ,@ta)`(stab '~zod/arvo/~2014.10.28..18.48.41..335f/zuse')
     [~.~zod [~.arvo [~.~2014.10.28..18.48.41..335f [~.zuse ~]]]]
+
     > (stab '/a/~pillyt/pals/1')
     /a/~pillyt/pals/1
+    
     > `(pole ,@ta)`(stab '/a/~pillyt/pals/1')
     [~.a [~.~pillyt [~.pals [~.1 ~]]]]
+```
 
-
-***
+---

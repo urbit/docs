@@ -1,6 +1,9 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'31'
+        title/'4d: Parsing (Tracing)'
+    ==
+
+;>
 
 
 # 4d: parsing (tracing)
@@ -24,15 +27,17 @@ A `hair`.
 
 #### Source
 
-    ++  last  |=  [zyc=hair naz=hair]                      
+```
+    ++  last  |=  [zyc=hair naz=hair]
               ^-  hair
               ?:  =(p.zyc p.naz)
                 ?:((gth q.zyc q.naz) zyc naz)
               ?:((gth p.zyc p.naz) zyc naz)
-
+```
 
 #### Examples
 
+```
     > (last [1 1] [1 2])
     [p=1 q=2]
 
@@ -44,7 +49,7 @@ A `hair`.
 
     > (last [7 7] [7 7])
     [p=7 q=7]
-
+```
 
 ***
 ### `lust`
@@ -66,14 +71,16 @@ A hair.
 
 #### Source
 
-    ++  lust  |=  [weq=char naz=hair]                     
+```
+    ++  lust  |=  [weq=char naz=hair]
               ^-  hair
               ?:(=(`@`10 weq) [+(p.naz) 1] [p.naz +(q.naz)])
-
+```
 
 
 #### Examples
 
+```
     > (lust `a` [1 1])
     [p=1 q=2]
 
@@ -92,6 +99,6 @@ A hair.
       lokes
       """
     [2 6]
-
+```
 
 ***

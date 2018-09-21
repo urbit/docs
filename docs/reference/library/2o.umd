@@ -1,18 +1,25 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'18'
+        title/'2o: Normalizing Containers'
+    ==
+
+;>
 
 # 2o: normalizing containers
+
 ### `++jar`
 
 Mold generator. A `jar` is a `map` of `list`.
 
 #### Source
 
+```
     ++  jar  |*([a=mold b=mold] (map a (list b)))
+```
 
 #### Examples
 
+```
     > =a (ly [1 2 ~])
     > a
     ~[1 2]
@@ -30,24 +37,26 @@ Mold generator. A `jar` is a `map` of `list`.
 
     > (~(get ja c) %c)
     ~
-
+```
 
 #### Discussion
 
 See also: [`ja`](../2j), [`by`](../2i), [`map`](../2i), [`list`](../2b)
 
-***
+---
 ### `++jug`
 
 Mold generator.  A `jug` is a `map` of `set`.
 
 #### Source
 
-    ++  jug  |*([a=mold b=mold] (map a (set b)))   
-
+```
+    ++  jug  |*([a=mold b=mold] (map a (set b)))
+```
 
 #### Examples
 
+```
     > =a (sy [1 2 ~])
     > a
     [n=2 l={1} r={}]
@@ -68,12 +77,13 @@ Mold generator.  A `jug` is a `map` of `set`.
       l=[n=[p=%a q=[n=2 l=[n=1 l={} r={}] r=~]] l={} r={}]
       r=~
     ]
+```
 
 #### Discussion
 
 See also: [`ja`](../2j), [`by`](../2i), [`map`](../2i), [`set`](..2h)
 
-***
+---
 ### `++map`
 
 Map
@@ -84,26 +94,29 @@ key-value pairs.
 
 #### Source
 
-    ++  map  |*  [a=mold b=mold]                          
-             %+  cork  (tree (pair a b))                    
-             |=  c=(tree (pair a b))  ^+  c   
+```
+    ++  map  |*  [a=mold b=mold]
+             %+  cork  (tree (pair a b))
+             |=  c=(tree (pair a b))  ^+  c
              ?.(~(apt by c) ~ c)
+```
 
 #### Examples
 
-
+```
     > ? *(map @t @u)
       nlr({p/@t q/@u})
-    {}   
+    {}
 
     > (molt `(list (pair * *))`[[a+1 b+2] ~])
     [n=[p=[97 1] q=[98 2]] l={} r={}]
+```
 
 #### Discussion
 
 See also: [`by`](../2i)
 
-***
+---
 ### `++qeu`
 
 Queue
@@ -113,12 +126,14 @@ items.
 
 #### Source
 
-    ++  qeu  |*(a=mold (tree a))                                
-
+```
+    ++  qeu  |*(a=mold (tree a))
+```
 
 
 #### Examples
 
+```
     > (qeu time)
     < 1.huj
       { *
@@ -132,13 +147,13 @@ items.
 
     > (~(gas to *(qeu time)) [~2014.1.1 ~2014.1.2 ~])
     [n=~2014.1.2 l={} r={~2014.1.1}]
-
+```
 
 #### Discussion
 
 See also: [`qeu`](../2k)
 
-***
+---
 ### `++set`
 
 Set
@@ -148,15 +163,16 @@ items.
 
 #### Source
 
-    ++  set  |*  a=mold                                     
-             %+  cork  (tree a)                          
-             |=  b=(tree a)  ^+  b                        
-             ?.(~(apt in b) ~ b)       
-
+```
+    ++  set  |*  a=mold
+             %+  cork  (tree a)
+             |=  b=(tree a)  ^+  b
+             ?.(~(apt in b) ~ b)
+```
 
 #### Examples
 
-
+```
     > (sy "abc")
     [n='b' l={'a' 'c'} r={}]
 
@@ -165,9 +181,10 @@ items.
 
     > (~(put in (sy "abc")) %a)
     [n='b' l=[n='c' l={'a'} r={}] r=~]
+```
 
 #### Discussion
 
 See also: [`in`](../2h)
 
-***
+---

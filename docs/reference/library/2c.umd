@@ -1,9 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'6'
+        title/'2c: Bit Arithmetic'
+    ==
 
+;>
 
 # 2c: bit arithmetic
+
 ### `++bex`
 
 Binary exponent
@@ -20,15 +23,18 @@ An atom.
 
 #### Source
 
-    ++  bex                                                
+```
+    ++  bex
       ~/  %bex
       |=  a=@
       ^-  @
       ?:  =(0 a)  1
       (mul 2 $(a (dec a)))
+```
 
 #### Examples
 
+```
     > (bex 4)
     16
 
@@ -37,9 +43,9 @@ An atom.
 
     > (bex 0)
     1
+```
 
-***
-
+---
 ### `++can`
 
 Assemble
@@ -60,22 +66,25 @@ An atom.
 
 #### Source
 
-    ++  can                                                 
+```
+    ++  can
       ~/  %can
       |=  [a=bloq b=(list [p=@ q=@])]
       ^-  @
       ?~  b  0
       (add (end a p.i.b q.i.b) (lsh a p.i.b $(b t.b)))
+```
 
 #### Examples
 
+```
     > `@ub`21                                         ::  @ub is the binary aura
-    0b1.0101                          
-
-    > `@ub`(can 3 ~[[1 21]])                          
     0b1.0101
 
-    > `@ub`(can 3 ~[[1 1]])                           
+    > `@ub`(can 3 ~[[1 21]])
+    0b1.0101
+
+    > `@ub`(can 3 ~[[1 1]])
     0b1
 
     > `@ub`(can 0 ~[[1 255]])
@@ -92,9 +101,9 @@ An atom.
 
     > `@ux`(can 3 ~[[1 'a'] [2 'bc']])
     0x63.6261
+```
 
-
-***
+---
 ### `++cat`
 
 Concatenate
@@ -116,14 +125,16 @@ An atom.
 
 #### Source
 
-    ++  cat                                                 
+```
+    ++  cat
       ~/  %cat
       |=  [a=bloq b=@ c=@]
       (add (lsh a (met a b) c) b)
-
+```
 
 #### Examples
 
+```
     > `@ub`(cat 3 1 0)                           ::  @ub is the binary aura
     0b1
 
@@ -153,9 +164,9 @@ An atom.
 
     > (cat 2 256 255)
     1.044.736
+```
 
-
-***
+---
 ### `++cut`
 
 Slice
@@ -179,13 +190,16 @@ An atom.
 
 #### Source
 
-    ++  cut                                                 
+```
+    ++  cut
       ~/  %cut
       |=  [a=bloq [b=@u c=@u] d=@]
       (end a c (rsh a b d))
+```
 
 #### Examples
 
+```
     > (cut 0 [1 1] 2)
     1
 
@@ -209,10 +223,10 @@ An atom.
 
     > `@ub`(cut 0 [3 6] 0b1111.0000.1101)
     0b10.0001
+```
 
 
-
-***
+---
 ### `++end`
 
 Tail
@@ -234,14 +248,16 @@ An atom.
 
 #### Source
 
-    ++  end                                                 
+```
+    ++  end
       ~/  %end
       |=  [a=bloq b=@u c=@]
       (mod c (bex (mul (bex a) b)))
-
+```
 
 #### Examples
 
+```
     > (end 2 2 255)
     255
 
@@ -274,10 +290,10 @@ An atom.
 
     > `@t`(end 3 2 'abc')                        ::  @t is the cord aura
     'ab'
+```
 
 
-
-***
+---
 ### `++fil`
 
 Fill bloqstream
@@ -298,7 +314,8 @@ An atom.
 
 #### Source
 
-    ++  fil                                                 
+```
+    ++  fil
       |=  [a=bloq b=@u c=@]
       =+  n=0
       =+  d=c
@@ -306,10 +323,11 @@ An atom.
       ?:  =(n b)
         (rsh a 1 d)
       $(d (add c (lsh a 1 d)), n +(n))
-
+```
 
 #### Examples
 
+```
     > `@t`(fil 3 5 %a)                                ::  @t is the cord (string) aura
     'aaaaa'
 
@@ -324,10 +342,10 @@ An atom.
 
     > `@ub`(fil 2 6 1)                                ::  @ub is the binary aura
     0b1.0001.0001.0001.0001.0001
+```
 
 
-
-***
+---
 ### `++lsh`
 
 Left-shift
@@ -348,14 +366,16 @@ An atom.
 
 #### Source
 
-    ++  lsh                                                
+```
+    ++  lsh
       ~/  %lsh
       |=  [a=bloq b=@u c=@]
       (mul (bex (mul (bex a) b)) c)
-
+```
 
 #### Examples
 
+```
     > `@ub`1                                     ::  @ub is the binary aura
     0b1
 
@@ -373,10 +393,10 @@ An atom.
 
     > (lsh 3 1 255)
     65.280
+```
 
 
-
-***
+---
 ### `++met`
 
 Measure
@@ -391,7 +411,8 @@ Computes the number of blocks of size `a` in `b`, producing an atom.
 
 #### Source
 
-    ++  met                                                 
+```
+    ++  met
       ~/  %met
       |=  [a=bloq b=@]
       ^-  @
@@ -399,9 +420,11 @@ Computes the number of blocks of size `a` in `b`, producing an atom.
       |-
       ?:  =(0 b)  c
       $(b (rsh a 1 b), c +(c))
+```
 
 #### Examples
 
+```
     > (met 0 1)
     1
 
@@ -416,10 +439,10 @@ Computes the number of blocks of size `a` in `b`, producing an atom.
 
     > (met 3 'abcde')
     5
+```
 
 
-
-***
+---
 ### `++rap`
 
 Assemble non-zero
@@ -438,16 +461,19 @@ An atom.
 
 #### Source
 
-    ++  rap                                                 
+```
+    ++  rap
       ~/  %rap
       |=  [a=bloq b=(list @)]
       ^-  @
       =+  ~
       ?~  b  0
       (cat a i.b $(b t.b))
+```
 
 #### Examples
 
+```
     > `@ub`(rap 2 [1 2 3 4 ~])                   ::  @ub is the binary aura
     0b100.0011.0010.0001
 
@@ -471,12 +497,13 @@ An atom.
 
     > `@ub`11
     0b1011
+```
 
 #### Discussion
 
 Any element of the value `0` is not included in concatenation.
 
-***
+---
 ### `++rep`
 
 Assemble single
@@ -495,7 +522,8 @@ An atom.
 
 #### Source
 
-    ++  rep                                                 
+```
+    ++  rep
       ~/  %rep
       |=  [a=bloq b=(list @)]
       ^-  @
@@ -503,9 +531,11 @@ An atom.
       |-
       ?~  b  0
       (add (lsh a c (end a 1 i.b)) $(c +(c), b t.b))
+```
 
 #### Examples
 
+```
     > `@ub`(rep 2 [1 2 3 4 ~])                   ::  @ub is the binary aura
     0b100.0011.0010.0001
 
@@ -535,10 +565,10 @@ An atom.
 
     > `@ub`(rep 3 [12 166 8 34 ~])
     0b10.0010.0000.1000.1010.0110.0000.1100
+```
 
 
-
-***
+---
 ### `++rip`
 
 Disassemble
@@ -557,15 +587,18 @@ A list of atoms.
 
 #### Source
 
-    ++  rip                                                 
+```
+    ++  rip
       ~/  %rip
       |=  [a=bloq b=@]
       ^-  (list @)
       ?:  =(0 b)  ~
       [(end a 1 b) $(b (rsh a 1 b))]
+```
 
 #### Examples
 
+```
     > `@ub`155                                   ::  @ub is the binary aura
     0b1001.1011
 
@@ -592,10 +625,10 @@ A list of atoms.
 
     > (rip 3 256)
     ~[0 1]
+```
 
 
-
-***
+---
 ### `++rsh`
 
 Right-shift
@@ -616,13 +649,16 @@ An atom.
 
 #### Source
 
-    ++  rsh                                             
+```
+    ++  rsh
       ~/  %rsh
       |=  [a=bloq b=@u c=@]
       (div c (bex (mul (bex a) b)))
+```
 
 #### Examples
 
+```
     > `@ub`145                                   ::  @ub is the binary aura
     0b1001.0001
 
@@ -655,10 +691,10 @@ An atom.
 
     > `@ux`(rsh 3 1 'abc')
     0x6362
+```
 
 
-
-***
+---
 ### `++swp`
 
 Reverse block order
@@ -679,10 +715,13 @@ An atom
 
 #### Source
 
-    ++  swp  |=([a=bloq b=@] (rep a (flop (rip a b))))     
+```
+    ++  swp  |=([a=bloq b=@] (rep a (flop (rip a b))))
+```
 
 #### Examples
 
+```
     > `@ub`24                                    ::  @ub is the binary aura
     0b1.1000
 
@@ -697,10 +736,10 @@ An atom
 
     > (swp 0 128)
     1
+```
 
 
-
-***
+---
 ### `++xeb`
 
 Binary logarithm
@@ -717,14 +756,17 @@ An atom.
 
 #### Source
 
-    ++  xeb                                                
+```
+    ++  xeb
       ~/  %xeb
       |=  a=@
       ^-  @
       (met 0 a)
+```
 
 #### Examples
 
+```
     > (xeb 31)
     5
 
@@ -742,11 +784,11 @@ An atom.
 
     > (xeb 2)
     2
+```
 
 
-
-***
-### `++fe`                                                 
+---
+### `++fe`
 
 Modulo bloq
 
@@ -758,9 +800,11 @@ Core that contains arms for `bloq` and modular integer operations.
 
 #### Source
 
+```
     |_  a=bloq
+```
 
-****
+---
 ### `++dif`
 
 Produces the difference between two atoms in the modular basis
@@ -780,10 +824,13 @@ A `@s`
 
 #### Source
 
+```
       ++  dif  |=([b=@ c=@] (sit (sub (add out (sit b)) (sit c))))
+```
 
 #### Examples
 
+```
     > (~(dif fe 3) 63 64)
     255
 
@@ -807,8 +854,9 @@ A `@s`
 
     > (~(dif fe 2) 63 64)
     15
+```
 
-***
+---
 ### `++inv`
 
 Inverse
@@ -825,10 +873,13 @@ An atom.
 
 #### Source
 
-      ++  inv  |=(b=@ (sub (dec out) (sit b)))   
+```
+      ++  inv  |=(b=@ (sub (dec out) (sit b)))
+```
 
 #### Examples
 
+```
     > (~(inv fe 3) 255)
     0
 
@@ -846,8 +897,9 @@ An atom.
 
     > (~(inv fe 3) 55)
     200
+```
 
-***
+---
 ### `++net`
 
 Flip endianness
@@ -864,7 +916,8 @@ An atom.
 
 #### Source
 
-      ++  net  |=  b=@  ^-  @                              
+```
+      ++  net  |=  b=@  ^-  @
                =>  .(b (sit b))
                ?:  (lte a 3)
                  b
@@ -872,9 +925,11 @@ An atom.
                %+  con
                  (lsh c 1 $(a c, b (cut c [0 1] b)))
                $(a c, b (cut c [1 1] b))
+```
 
 #### Examples
 
+```
     > (~(net fe 3) 64)
     64
 
@@ -931,8 +986,9 @@ An atom.
 
     > (~(net fe 6) 5)
     360.287.970.189.639.680
+```
 
-***
+---
 ### `++out`
 
 Max integer value
@@ -949,10 +1005,13 @@ An atom.
 
 #### Source
 
+```
       ++  out  (bex (bex a))
+```
 
 #### Examples
 
+```
     > ~(out fe 0)
     2
 
@@ -976,8 +1035,9 @@ An atom.
       462.881.473.913.110.540.827.237.163.350.510.684.586.298.239.947.245.938.479
       .716.304.835.356.329.624.224.137.216
     \/                                                                           \/
+```
 
-***
+---
 ### `++rol`
 
 Roll left
@@ -1000,14 +1060,17 @@ An atom.
 
 #### Source
 
-      ++  rol  |=  [b=bloq c=@ d=@]  ^-  @                  
+```
+      ++  rol  |=  [b=bloq c=@ d=@]  ^-  @
                =+  e=(sit d)
                =+  f=(bex (sub a b))
                =+  g=(mod c f)
                (sit (con (lsh b g e) (rsh b (sub f g) e)))
+```
 
 #### Examples
 
+```
     > `@ux`(~(rol fe 6) 4 3 0xabac.dedf.1213)
     0x1213.0000.abac.dedf
 
@@ -1022,8 +1085,9 @@ An atom.
 
     > `@t`(~(rol fe 5) 3 0 'dfgh')
     'dfgh'
+```
 
-***
+---
 ### `++ror`
 
 Roll right
@@ -1046,15 +1110,17 @@ An atom.
 
 #### Source
 
-      ++  ror  |=  [b=bloq c=@ d=@]  ^-  @            
+```
+      ++  ror  |=  [b=bloq c=@ d=@]  ^-  @
                =+  e=(sit d)
                =+  f=(bex (sub a b))
                =+  g=(mod c f)
                (sit (con (rsh b g e) (lsh b (sub f g) e)))
-
+```
 
 #### Examples
 
+```
     > `@ux`(~(ror fe 6) 4 1 0xabac.dedf.1213)
     0x1213.0000.abac.dedf
 
@@ -1072,8 +1138,9 @@ An atom.
 
     > `@t`(~(rol fe 5) 3 2 'hijk')
     'jkhi'
+```
 
-***
+---
 ### `++sit`
 
 Enforce modulo
@@ -1092,10 +1159,13 @@ An atom.
 
 #### Source
 
-      ++  sit  |=(b=@ (end a 1 b))                          
+```
+      ++  sit  |=(b=@ (end a 1 b))
+```
 
 #### Examples
 
+```
     > (~(sit fe 3) 255)
     255
 
@@ -1128,8 +1198,9 @@ An atom.
 
     > (~(sit fe 0) 1)
     1
+```
 
-***
+---
 
 ### `++sum`
 
@@ -1151,10 +1222,13 @@ An atom.
 
 #### Source
 
-      ++  sum  |=([b=@ c=@] (sit (add b c)))               
+```
+      ++  sum  |=([b=@ c=@] (sit (add b c)))
+```
 
 #### Examples
 
+```
     > (~(sum fe 3) 10 250)
     4
 
@@ -1175,5 +1249,6 @@ An atom.
 
     > (~(sum fe 4) 10.000 100.000)
     44.464
+```
 
-***
+---

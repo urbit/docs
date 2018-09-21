@@ -1,6 +1,9 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'15'
+        title/'2l: Container from Container'
+    ==
+
+;>
 
 # 2l: container from container
 
@@ -20,19 +23,26 @@ A map.
 
 #### Source
 
-    ++  malt                                                
-      |*  a=(list)
-      (molt `(list [p=_-<.a q=_->.a])`a)
+```
+:-  :~  navhome/'/docs/'
+        sort/'14'
+        title/'2k: Jar and Jug Logic'
+    ==
+
+;>
+```
 
 #### Examples
 
+```
     > (malt [['ok' 'no'] ['a' 'b'] ['x' 'y'] ~])
     [n=[p='x' q='y'] l={[p='a' q='b'] [p='ok' q='no']} r={}]
 
     > (malt ~[[1 2 3] [4 5 6] [7 8 9]])
     [n=[p=1 q=[2 3]] l={[p=4 q=[5 6]] [p=7 q=[8 9]]} r={}]
+```
 
-***
+---
 ### `++molt`
 
 Map from pair list
@@ -49,24 +59,28 @@ A map.
 
 #### Source
 
-    ++  molt                                              
-      |*  a=(list (pair))  
-      (~(gas by `(tree [p=_p.i.-.a q=_q.i.-.a})`~) a)   
+```
+    ++  molt
+      |*  a=(list (pair))
+      (~(gas by `(tree [p=_p.i.-.a q=_q.i.-.a})`~) a)
+```
 
 #### Examples
 
+```
     > =a `(list (pair))`[[1 2] [4 3] [11 0] ~]
     > a
     > ~[[p=1 q=2] [p=4 q=3] [p=11 q=0]]
 
     > (molt a)
     [n=[p=11 q=0] l={[p=4 q=3] [p=1 q=2]} r={}]
+```
 
 #### Discussion
 
 Only used internally as a helper to `malt`.
 
-***
+---
 ### `++silt`
 
 Set from list
@@ -83,14 +97,18 @@ A set.
 
 #### Source
 
-    ++  silt                                                
-      |*  a=(list)  
+```
+    ++  silt
+      |*  a=(list)
       =+  b=*(tree _?>(?=(^ a) i.a))
       (~(gas in b) a)
+```
 
 #### Examples
 
+```
     > (silt `(list @t)`['c' 'hoon' 'javascript' 'python' ~])
     [n='javascript' l={} r={'python' 'hoon' 'c'}]
+```
 
-***
+---

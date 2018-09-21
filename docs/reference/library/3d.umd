@@ -1,6 +1,9 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'24'
+        title/'3d: SHA Hash Family'
+    ==
+
+;>
 
 # 3d: SHA hash family
 
@@ -21,13 +24,17 @@ An atom.
 
 #### Source
 
-    ++  shad  |=(ruz=@ (shax (shax ruz)))                   
+```
+    ++  shad  |=(ruz=@ (shax (shax ruz)))
+```
 
 #### Examples
 
+```
     > (shad 11)
     \/20.519.637.820.582.103.109.435.907.615.585.653.479.776.629.591.855.451.248.\/
       718.295.626.625.655.417.234
+```
 
 ***
 ### `++shaf`
@@ -44,22 +51,25 @@ first and last halves of the 256-bit salted hash `shas`.
 `ruz` is an atom.
 
 #### Source
+
+```
     ++  shaf                                                ::  half sha-256
       |=  [sal=@ ruz=@]
       =+  haz=(shas sal ruz)
       (mix (end 7 1 haz) (rsh 7 1 haz))
-    ::
+```
 
 #### Examples
 
+```
     > (shaf 17 8)
     52.667.672.807.485.289.251.324.336.639.183.409.041
 
     > `@ub`(shaf 17 8)
     \/0b1011.1111.1101.0110.1110.1000.0100.1110.1100.1000.0010.0100.1111.0001.0010.0010\/
       .0100.1110.1110.0011.1100.1111.0001.1101.1101.1100.1110.1111.0100.0101.0001.0100
-    \/          
-
+    \/
+```
 
 ***
 ### `++shal`
@@ -81,7 +91,8 @@ An atom.
 
 #### Source
 
-    ++  shal                                                
+```
+    ++  shal
       ~/  %shal
       |=  [len=@ ruz=@]  ^-  @
       =>  .(ruz (cut 3 [0 len] ruz))
@@ -192,21 +203,23 @@ An atom.
       =+  p=(mix (dis e f) (dis (inv e) g))                 ::  ch
       =+  q=:(sum h o p (wac j kbx) (wac j wox))            ::  t1
       $(j +(j), a (sum q n), b a, c b, d c, e (sum d q), f e, g f, h g)
-    ::
+```
 
 #### Examples
 
+```
     > (shal 1 'hello')
     \/7.956.615.373.791.575.273.027.009.123.631.914.645.972.441.264.528.176.292.399.908\/
       .424.469.676.078.106.561.839.264.176.650.109.335.825.608.088.511.266.620.100.157.
       847.055.280.028.606.252.747.432.021.213.474
-    \/        
+    \/
 
     > (shal 1 'hello')
     \/7.956.615.373.791.575.273.027.009.123.631.914.645.972.441.264.528.176.292.399.908\/
       .424.469.676.078.106.561.839.264.176.650.109.335.825.608.088.511.266.620.100.157.
       847.055.280.028.606.252.747.432.021.213.474
-    \/       
+    \/
+```
 
 #### Discussion
 
@@ -233,20 +246,24 @@ An atom.
 
 #### Source
 
-    ++  sham                                                
+```
+    ++  sham
       |=  yux=*  ^-  @uvH  ^-  @
       ?@  yux
         (shaf %mash yux)
       (shaf %sham (jam yux))
     ::
+```
 
 #### Examples
 
+```
     > (sham [2 4])
     0v3.71s52.4bqnp.ki2b8.9hhsp.2ufgg
 
     > (sham "hello")
     0v1.hg8mv.t7s3f.u4f8a.q5noe.dvqvh
+```
 
 ***
 ### `++shan`
@@ -265,7 +282,8 @@ An atom.
 
 #### Source
 
-    ++  shan                                              
+```
+    ++  shan
       |=  ruz=@
       =+  [few==>(fe .(a 5)) wac=|=([a=@ b=@] (cut 5 [a 1] b))]
       =+  [sum=sum.few ror=ror.few rol=rol.few net=net.few inv=inv.few]
@@ -330,13 +348,14 @@ An atom.
             :(sum (rol 0 5 a) fz e (wac 2 kbx) (wac j wox))
           :(sum (rol 0 5 a) fy e (wac 3 kbx) (wac j wox))
       $(j +(j), a tem, b a, c (rol 0 30 b), d c, e d)
-    ::
-
+```
 
 #### Examples
 
+```
     > (shan 'hello')
     975.987.071.262.755.080.377.722.350.727.279.193.143.145.743.181
+```
 
 #### Discussion
 
@@ -359,18 +378,20 @@ of that logical operation is then itself hashed with SHA-256.
 
 #### Source
 
-    ++  shas                                               
+```
+    ++  shas
       |=  [sal=@ ruz=@]
       (shax (mix sal (shax ruz)))
-    ::
+```
 
 #### Examples
 
+```
     > (shas 12.845 6)
     \/111.115.941.493.032.291.043.932.789.632.248.509.108.945.255.494.251.860.287\/
       .707.279.709.200.349.471.936
-    \/                             
-
+    \/
+```
 
 ***
 ### `++shaw`
@@ -394,18 +415,21 @@ An atom.
 
 #### Source
 
-    ++  shaw                                              
+```
+    ++  shaw
       |=  [sal=@ len=@ ruz=@]
       (~(raw og (shas sal (mix len ruz))) len)
-    ::
+```
 
 #### Examples
 
+```
     > `@ub`(shaw 3 6 98)
     0b11.0111
 
     > `@ub`(shaw 2 6 98)
     0b11
+```
 
 ***
 ### `++shax`
@@ -416,18 +440,21 @@ Produces an atom by hashing an atom `ruz` with SHA-256.
 
 #### Sources
 
-    ++  shax                                                
+```
+    ++  shax
           ~/  %shax
           |=  ruz=@  ^-  @
           (shay [(met 3 ruz) ruz])
-        ::
+```
 
 #### Examples
 
+```
     > (shax 'hello')
     \/16.552.786.619.039.860.277.601.417.878.457.384.195.409.020.923.835.016.617.984.82\/
       0.774.431.701.725.740
-    \/                   
+    \/
+```
 
 ***
 ### `++shay`
@@ -445,7 +472,8 @@ the byte-length of the theoretical buffer represented by the atom.
 
 #### Source
 
-    ++  shay                                          
+```
+    ++  shay
       ~/  %shay
       |=  [len=@u ruz=@]  ^-  @
       =>  .(ruz (cut 3 [0 len] ruz))
@@ -530,19 +558,21 @@ the byte-length of the theoretical buffer represented by the atom.
       =+  p=(mix (dis e f) (dis (inv e) g))                 ::  ch
       =+  q=:(sum h o p (wac j kbx) (wac j wox))            ::  t1
       $(j +(j), a (sum q n), b a, c b, d c, e (sum d q), f e, g f, h g)
-
+```
 
 #### Examples
 
+```
     > (shay 1 'hello')
     \/16.144.219.278.061.159.438.339.586.294.967.166.038.336.988.797.862.808.055.174.98\/
     7.398.597.302.069.674
-    \/   
+    \/
 
     > (shay 2 'hello')
     \/100.467.333.538.737.303.691.714.735.404.408.035.555.613.179.595.938.688.113.300.8\/
       01.974.878.934.544.183
-    \/      
+    \/
+```
 
 #### Discussion
 
@@ -567,17 +597,21 @@ An atom.
 
 #### Source
 
-    ++  shaz                                                
+```
+    ++  shaz
       |=  ruz=@  ^-  @
       (shal [(met 3 ruz) ruz])
+```
 
 #### Examples
 
+```
     > (shaz 'hello')
     \/3.548.533.422.469.437.734.729.094.584.175.910.682.076.656.883.559.953.324.378.007\/
       .735.849.386.038.666.450.748.109.671.344.747.196.048.200.348.948.408.339.256.384.
       360.070.359.656.053.016.948.640.159.265.179
     \/
+```
 
 ***
 ### `++og`
@@ -594,14 +628,19 @@ atom that is used as a seed for the hash.
 A core.
 
 #### Source
-    ++  og                                                
+
+```
+    ++  og
       ~/  %og
       |_  a=@
+```
 
 #### Examples
 
+```
     > ~(. og 919)
     <4.wmp {a/@ud <54.tyv 119.olq 31.ohr 1.jmk $143>}>
+```
 
 #### Discussion
 
@@ -627,13 +666,16 @@ An atom.
 
 #### Source
 
-      ++  rad                                              
+```
+      ++  rad
         |=  b=@  ^-  @
         =+  c=(raw (met 0 b))
         ?:((lth c b) c $(a +(a)))
+```
 
 #### Examples
 
+```
     > (~(rad og 5) 11)
     4
 
@@ -645,6 +687,7 @@ An atom.
 
     > (~(rad og eny) 11)                         ::  `eny` acts as a random sample
     7
+```
 
 ***
 ### `++rads`
@@ -665,13 +708,16 @@ A cell.
 
 #### Source
 
-      ++  rads                                             
+```
+      ++  rads
         |=  b=@
         =+  r=(rad b)
         [r +>.$(a (shas %og-s (mix a r)))]
+```
 
 #### Examples
 
+```
     > (~(rads og 4) 10)
     [2 <4.wmp {a/@ <54.tyv 119.olq 31.ohr 1.jmk $143>}>]
 
@@ -680,6 +726,7 @@ A cell.
         =^  b  rng  (rads:rng 10)
         [a b]
     [2 8]
+```
 
 #### Discussion
 
@@ -704,7 +751,8 @@ An atom.
 
 #### Source
 
-      ++ raw                                             
+```
+      ++ raw
         ~/  %raw
         |=  b=@  ^-  @
         %+  can
@@ -717,9 +765,11 @@ An atom.
         ?:  (lth b 256)
           [[b (end 0 b d)] ~]
         [[256 d] $(c d, b (sub b 256))]
+```
 
 #### Examples
 
+```
     > `@ud`(~(raw og 27) 4)
     0b1001
 
@@ -731,6 +781,7 @@ An atom.
 
     > `@ub`(~(raw og 11) 3)
     0b100
+```
 
 ***
 ### `++raws`
@@ -743,14 +794,17 @@ parent core with `(raw b)`.
 
 #### Source
 
-      ++  raws                                              
+```
+      ++  raws
         |=  b=@
         =+  r=(raw b)
         [r +>.$(a (shas %og-s r))]
       --
+```
 
 #### Examples
 
+```
     > `[@ub _og]`(~(raws og 7) 4)
     [0b1100 <4.wmp {a/@ <54.tyv 119.olq 31.ohr 1.jmk $143>}>]
 
@@ -759,6 +813,7 @@ parent core with `(raw b)`.
               =^  b  rng  (rads:rng 4)
               [`@ub`a `@ub`b]
     [0b10 0b1]
+```
 
 #### Discussion
 

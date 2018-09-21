@@ -1,9 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'7'
+        title/'2d: Bit Logic'
+    ==
 
+;>
 
 # 2d: bit logic
+
 ### `++con`
 
 Binary OR
@@ -22,7 +25,8 @@ An atom.
 
 #### Source
 
-    ++  con                                               
+```
+    ++  con
       ~/  %con
       |=  [a=@ b=@]
       =+  [c=0 d=0]
@@ -38,9 +42,11 @@ An atom.
                   =(0 (end 0 1 b))
               ==
       ==
+```
 
 #### Examples
 
+```
     > (con 0b0 0b1)
     1
 
@@ -51,7 +57,7 @@ An atom.
     0
 
     > `@ub`(con 0b1111.0000 0b1.0011)
-    0b1111.0011    
+    0b1111.0011
 
     > (con 4 4)
     4
@@ -70,7 +76,7 @@ An atom.
 
     > (con 534 987)
     991
-
+```
 
 #### Discussion
 
@@ -80,11 +86,13 @@ sample. If either bit is 1, the corresponding product bit is set
 to 1. Otherwise, the corresponding product bit is set to 0.
 
 Take the example of `(con 8 12)`. It's easy to see how this operation works when
- its samples and its product are stacked.
+its samples and its product are stacked.
 
+```
     0b1000     ::  8  (sample)
     0b1100     ::  12 (sample)
     0b1100     ::  12 (product)
+```
 
 Note that the names `con` (conjunction) for OR and `dis` (disjunction) for AND
 are given to opposite operators in Hoon when compared to other computing
@@ -93,7 +101,7 @@ where `0` is false and `1` is true, bitwise OR is the logical disjunction and
 bitwise AND is the logical conjunction.
 
 
-***
+---
 ### `++dis`
 
 Binary AND
@@ -112,7 +120,8 @@ An atom.
 
 #### Source
 
-    ++  dis                                                 
+```
+    ++  dis
       ~/  %dis
       |=  [a=@ b=@]
       =|  [c=@ d=@]
@@ -128,9 +137,11 @@ An atom.
                   =(0 (end 0 1 b))
               ==
       ==
+```
 
 #### Examples
 
+```
     > `@ub`9
     0b1001
 
@@ -154,7 +165,7 @@ An atom.
 
     > (dis 534 987)
     530
-
+```
 
 #### Discussion
 
@@ -166,9 +177,11 @@ corresponding product bit is set to 0.
 Take the example of `(dis 8 12)`. It's easy to see how this operation works when
 its samples and its product are stacked.
 
-    0b1000     ::  8  (sample)  
-    0b1100     ::  12 (sample)  
-    0b1000     ::  8  (product)  
+```
+    0b1000     ::  8  (sample)
+    0b1100     ::  12 (sample)
+    0b1000     ::  8  (product)
+```
 
 Note that the names `dis` (disjunction) for AND and `con` (conjuction) for OR
 are given to opposite operators in Hoon when compared to other computing
@@ -176,7 +189,7 @@ contexts. That's because `0` is true in Hoon and `1` is false. Outside of Hoon,
 where `0` is false and `1` is true, bitwise OR is the logical disjunction and
 bitwise AND is the logical conjunction.
 
-***
+---
 ### `++mix`
 
 Binary XOR
@@ -195,7 +208,8 @@ An atom.
 
 #### Source
 
-    ++  mix                                               
+```
+    ++  mix
       ~/  %mix
       |=  [a=@ b=@]
       ^-  @
@@ -208,9 +222,11 @@ An atom.
         c   +(c)
         d   (add d (lsh 0 c =((end 0 1 a) (end 0 1 b))))
       ==
+```
 
 #### Examples
 
+```
     > `@ub`2
     0b10
 
@@ -240,6 +256,7 @@ An atom.
 
     > (mix 534 987)
     461
+```
 
 #### Discussion
 
@@ -251,11 +268,13 @@ bit is set to 1. Otherwise, the corresponding product bit is set to 0.
 Take the example of `(mix 8 12)`. It's easy to see how this operation works when
 its samples and its product are stacked.
 
-    0b1000     ::  8  (sample)  
-    0b1100     ::  12 (sample)  
-     0b100     ::  4 (product)  
+```
+    0b1000     ::  8  (sample)
+    0b1100     ::  12 (sample)
+     0b100     ::  4 (product)
+```
 
-***
+---
 ### `++not`
 
 Binary NOT
@@ -277,12 +296,14 @@ An atom.
 
 #### Source
 
-    ++  not  |=  [a=bloq b=@ c=@]                         
+```
+    ++  not  |=  [a=bloq b=@ c=@]
       (mix c (dec (bex (mul b (bex a)))))
-
+```
 
 #### Examples
 
+```
     > `@ub`24
     0b1.1000
 
@@ -300,6 +321,7 @@ An atom.
 
     > (not 1 1 (not 1 1 10))
     10
+```
 
 #### Discussion
 
@@ -312,37 +334,43 @@ their [block size](../1c). Decimal `7`, for example, is `0b111` in binary, and
 has one implicit zero in the context of a block of size `2`, which has a
 bitwidth of 4. Let's try `not` on `7` with a single block of size `2`.
 
+```
     > `@ub`(not 2 1 0b111)
     0b1000
 
     > `@u`0b1000
     8
+```
 
 This happened because `0b111` is considered as `0b0111` by the `not` operator
 when dealing with a single block of size `2`. The NOT of `7`, then, is `0b1000`,
- or `8` in decimal.
+or `8` in decimal.
 
 When we pass `not` a single block of size `3`, there is a bitwidth of 8 to
 fill with binary information. So the remaining leading digits of `0b111` are,
 again, treated as `0`.
 
+```
     > `@ub`(not 3 1 0b111)
     0b1111.1000
 
     > `@u`0b1111.1000
     248
+```
 
 This works when going to a smaller block size, too.
 
+```
     > `@ub`(not 1 1 0b1011)
     0b100
 
     > `@u`0b100
     4
+```
 
 What's happening here may not be readily apparent. But we're only flipping the
 last block of size `1` (bitwidth 2) of the binary `0b111`. That is, we leave
 the "0b1" piece just the same and manipulate the "11" that the number ends with.
 
 
-***
+---

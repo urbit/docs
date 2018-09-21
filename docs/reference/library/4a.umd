@@ -1,9 +1,14 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'28'
+        title/'4a: Exotic Bases'
+    ==
+
+;>
+
 
 
 # 4a: exotic bases
+
 ### `++po`
 
 Phonetic base
@@ -14,6 +19,7 @@ contained arms.
 
 #### Source
 
+```
     ~/  %po
     =+  :-  ^=  sis                                       ::  prefix syllables
         'dozmarbinwansamlitsighidfidlissogdirwacsabwissib\
@@ -50,9 +56,9 @@ contained arms.
         /remlysfynwerrycsugnysnyllyndyndemluxfedsedbecmun\
         /lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes'
     |%
+```
 
-
-***
+---
 ### `++ind`
 
 Parse suffix
@@ -69,13 +75,17 @@ A `unit`.
 
 #### Source
 
-      ++  ind  ~/  %ind                                     
+```
+      ++  ind  ~/  %ind
                |=  a=@tas
                =+  b=0
                |-  ^-  (unit @)
                ?:(=(256 b) ~ ?:(=(a (tod b)) [~ b] $(b +(b))))
+```
+
 #### Examples
 
+```
     > (ind:po 'zod')
     [~ u=0]
 
@@ -84,8 +94,9 @@ A `unit`.
 
     > (ind:po 'del')
     [~ u=37]
+```
 
-***
+---
 ### `++ins`
 
 Parse prefix
@@ -102,14 +113,17 @@ A `unit` of an atom.
 
 #### Source
 
-      ++  ins  ~/  %ins                                   
+```
+      ++  ins  ~/  %ins
                |=  a=@tas
                =+  b=0
                |-  ^-  (unit @)
                ?:(=(256 b) ~ ?:(=(a (tos b)) [~ b] $(b +(b))))
+```
 
 #### Examples
 
+```
     > (ins:po 'mar')
     [~ u=1]
 
@@ -121,8 +135,9 @@ A `unit` of an atom.
 
     > (ins:po 'pok')
     ~
+```
 
-***
+---
 ### `++tod`
 
 Fetch suffix
@@ -139,11 +154,14 @@ An atom.
 
 #### Source
 
-      ++  tod  ~/  %tod                                    
+```
+      ++  tod  ~/  %tod
                |=(a=@ ?>((lth a 256) (cut 3 [(mul 3 a) 3] dex)))
+```
 
 #### Examples
 
+```
     > `@t`(tod:po 1)
     'nec'
 
@@ -161,8 +179,9 @@ An atom.
 
     > `@t`(tod:po 256)
     ! exit
+```
 
-***
+---
 ### `++tos`
 
 Fetch prefix
@@ -179,11 +198,14 @@ An atom.
 
 #### Source
 
-      ++  tos  ~/  %tos                              
+```
+      ++  tos  ~/  %tos
                |=(a=@ ?>((lth a 256) (cut 3 [(mul 3 a) 3] sis)))
+```
 
 #### Examples
 
+```
     > `@t`(tos:po 0)
     'doz'
 
@@ -195,5 +217,6 @@ An atom.
 
     > `@t`(tos:po 253)
     'mat'
+```
 
-***
+---

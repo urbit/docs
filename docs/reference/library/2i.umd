@@ -1,9 +1,12 @@
----
-navhome: /docs/
----
+:-  :~  navhome/'/docs/'
+        sort/'12'
+        title/'2i: Map Logic'
+    ==
 
+;>
 
 # 2i: map logic
+
 ### `++by`
 
 Map operations
@@ -17,13 +20,16 @@ contained arms inherit its sample map, `a`.
 
 #### Source
 
-    ++  by                                                  
+```
+    ++  by
       ~/  %by
-      =|  a=(tree (pair))  
+      =|  a=(tree (pair))
       =*  node  ?>(?=(^ a) n.a)
+```
 
 #### Examples
 
+```
     > ~(. by (my [%a 1] [%b 2] ~))
     < 27.zjr
     {   a
@@ -36,8 +42,9 @@ contained arms inherit its sample map, `a`.
       )
       <119.wim 31.ohr 1.jmk $143>
     }
+```
 
-***
+---
 ### `+-all:by`
 
 Logical AND
@@ -57,16 +64,19 @@ A flag.
 
 #### Source
 
-      +-  all                                             
+```
+      +-  all
         ~/  %all
         |*  b=$-(* ?)
         |-  ^-  ?
         ?~  a
           &
         ?&((b q.n.a) $(a l.a) $(a r.a))
+```
 
 #### Examples
 
+```
     > =b (my [['a' 1] ['b' [2 3]] ~])
     > (~(all by b) |=(a=* ?@(a & |)))
     %.n
@@ -77,8 +87,9 @@ A flag.
 
     > (~(all by a) |=(a=@ (lte a 4)))
     %.n
+```
 
-***
+---
 ### `+-any:by`
 
 Logical OR
@@ -98,16 +109,19 @@ A flag.
 
 #### Source
 
-      +-  any                                                
+```
+      +-  any
         ~/  %any
         |*  b=$-(* ?)
         |-  ^-  ?
         ?~  a
           |
         ?|((b q.n.a) $(a l.a) $(a r.a))
+```
 
 #### Examples
 
+```
     > =b (my [['a' 1] ['b' [2 3]] ~])
     > (~(any by b) |=(a=* ?@(a & |)))
     %.y
@@ -115,8 +129,9 @@ A flag.
     > =a (my [['a' 1] ['b' 2] ['c' 3] ['d' 4] ['e' 5] ~])
     > (~(any by a) |=(a=@ (lte a 4)))
     %.y
+```
 
-***
+---
 ###`+-apt:by`
 
 Check correctness
@@ -134,7 +149,8 @@ A flag.
 
 #### Source
 
-      +-  apt                                           
+```
+      +-  apt
         =|  [l=(unit) r=(unit)]
         |-  ^-  ?
         ?~  a   &
@@ -143,9 +159,11 @@ A flag.
             ?~(l.a & ?&((vor p.n.a p.n.l.a) $(a l.a, l `p.n.a)))
             ?~(r.a & ?&((vor p.n.a p.n.r.a) $(a r.a, r `p.n.a)))
         ==
+```
 
 #### Examples
 
+```
     > =a (my [['a' 1] ['b' [2 3]] ~])
     > ~(apt by a)
     %.y
@@ -157,6 +175,7 @@ A flag.
 
     > ~(apt by z)
     %.n
+```
 
 #### Discussion
 
@@ -182,7 +201,8 @@ A cell of two maps.
 
 #### Source
 
-      +-  bif                                               
+```
+      +-  bif
         ~/  %bif
         |*  [b=* c=*]
         ^+  [l=a r=a]
@@ -201,14 +221,16 @@ A cell of two maps.
         =+  d=$(a r.a)
         ?>  ?=(^ d)
         [n.d [n.a l.a l.d] r.d]
+```
 
 #### Examples
 
+```
     > =a (my [['a' 1] ['b' 2] ['c' 3] ~])
 
     > (~(bif by a) ['b' 2])
     [l=[n=[p='c' q=3] l=[n=[p='a' q=1] l={} r={}] r=~] r=~]
-
+```
 
 ###`+-def:by`
 
@@ -226,15 +248,17 @@ A map.
 
 #### Source
 
-      +-  def                                               
+```
+      +-  def
         |*  b=_a
         ^-  (map _p:node (pair (unit _q:node) (unit _q:node)))
         !!
+```
 
 #### Examples
 
-***
-###`+-dep`
+---
+###`+-dep:by`
 
 Difference as patch
 
@@ -251,7 +275,8 @@ A cell of maps.
 
 #### Source
 
-      +-  dep                                             
+```
+      +-  dep
         |*  b=_a
         ^+  [p=a q=a]
         =+  c=~(tap by (def b))
@@ -263,12 +288,13 @@ A cell of maps.
           d  ?~(q.q.i.c d (~(put by d) p.i.c u.q.q.i.c))
           e  ?~(p.q.i.c e (~(put by e) p.i.c u.p.q.i.c))
         ==
+```
 
 #### Examples
 
 
 
-***
+---
 ### `+-del:by`
 
 Delete
@@ -287,7 +313,8 @@ A map.
 
 #### Source
 
-      +-  del                                              
+```
+      +-  del
         ~/  %del
         |*  b=*
         |-  ^+  a
@@ -303,14 +330,17 @@ A map.
         ?:  (vor p.n.l.a p.n.r.a)
           [n.l.a l.l.a $(l.a r.l.a)]
         [n.r.a $(r.a l.r.a) r.r.a]
+```
 
 #### Examples
 
+```
     > =b (my [['a' 1] ['b' [2 3]] ~])
     > (~(del by b) 'a')
     [n=[p='b' q=[2 3]] l=~ r=~]
+```
 
-***
+---
 ### `+-dig:by`
 
 Address of key
@@ -329,7 +359,8 @@ A unit.
 
 #### Source
 
-      +-  dig                                               
+```
+      +-  dig
         |=  b=*
         =+  c=1
         |-  ^-  (unit @)
@@ -338,15 +369,17 @@ A unit.
         ?:  (gor b p.n.a)
           $(a l.a, c (peg c 6))
         $(a r.a, c (peg c 7))
-
+```
 
 #### Examples
 
-        > =b (my [['a' 1] ['b' [2 3]] ~])  
+```
+        > =b (my [['a' 1] ['b' [2 3]] ~])
         > (~(dig by b) 'b')
         [~ u=2]
+```
 
-***
+---
 ### `+-gas:by`
 
 Concatenate
@@ -365,7 +398,8 @@ A map.
 
 #### Source
 
-      +-  gas                                         
+```
+      +-  gas
         ~/  %gas
         |*  b=(list [p=* q=*])
         =>  .(b `(list _?>(?=(^ a) n.a))`b)
@@ -373,16 +407,19 @@ A map.
         ?~  b
           a
         $(b t.b, a (put p.i.b q.i.b))
+```
 
 #### Examples
 
+```
     > =a (my [['a' 1] ['b' 2] ~])
     > =b [['c' 3] ['d' 4] ~]
 
     > (~(gas by a) b)
     [n=[p='b' q=2] l=[n=[p='d' q=4] l={} r={[p='a' q=1] [p='c' q=3]}] r=~]
+```
 
-***
+---
 ### `+-get:by`
 
 Grab unit value
@@ -401,7 +438,8 @@ A unit.
 
 #### Source
 
-      +-  get                                       
+```
+      +-  get
         ~/  %get
         |=  b=*
         ^-  [$@(~ [~ u=_?>(?=(^ a) q.n.a)])]
@@ -413,10 +451,12 @@ A unit.
         ?:  (gor b p.n.a)
           $(a l.a)
         $(a r.a)
+```
 
 #### Examples
 
-    > =b (my [['a' 1] ['b' [2 3]] ~])  
+```
+    > =b (my [['a' 1] ['b' [2 3]] ~])
     > (~(get by b) 'b')
     [~ u=[2 3]]
 
@@ -424,9 +464,9 @@ A unit.
     > =m (my [['a' 1] ['b' 2] ~])
     > (~(get by m) 'a')
     [~ u=1]
+```
 
-
-***
+---
 ### `+-got:by`
 
 Assert
@@ -446,12 +486,15 @@ A noun.
 
 ####  Source
 
+```
       +-  got
         |*  b=*
         (need (get b))
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
     > m
     [n=[p='b' q=2] l={[p='a' q=1]} r={}]
@@ -461,9 +504,9 @@ A noun.
 
     > (~(got by m) 'c')
     ! exit
+```
 
-
-***
+---
 ### `+-has:by`
 
 Key existence check
@@ -482,21 +525,25 @@ A flag.
 
 #### Source
 
-    +-  has                                               
+```
+    +-  has
       ~/  %has
       |*  b=*
       !=(~ (get b))
+```
 
 #### Examples
 
+```
     > =b (my [['a' 1] ['b' [2 3]] ~])
     > (~(has by b) 'b')
     %.y
 
     > (~(has by b) 'c')
     %.n
+```
 
-***
+---
 ### `+-int:by`
 
 Intersection
@@ -517,7 +564,8 @@ A map.
 
 #### Source
 
-      +-  int                                        
+```
+      +-  int
         ~/  %int
         |*  b=_a
         |-  ^+  a
@@ -536,9 +584,11 @@ A map.
         ?:  (gor p.n.a p.n.b)
           %-  uni(a $(b l.b, a [n.a l.a ~]))  $(a r.a)
         %-  uni(a $(b r.b, a [n.a ~ r.a]))  $(a l.a)
+```
 
 #### Examples
 
+```
     > =n (my [['a' 1] ['c' 3] ~])
     > =m (my [['a' 1] ['b' 2] ~])
 
@@ -560,9 +610,9 @@ A map.
     > =o (my [['c' 3] ['d' 4] ~])
     > (~(int by m) o)
     ~
+```
 
-
-***
+---
 ### `+-mar:by`
 
 Assert and add
@@ -586,14 +636,17 @@ A map.
 
 #### Assert and Add
 
-      +-  mar                                               
+```
+      +-  mar
         |*  [b=_?>(?=(^ a) p.n.a) c=(unit ,_?>(?=(^ a) q.n.a))]
         ?~  c
           (del b)
         (put b u.c)
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
     > (~(mar by m) 'c' (some 3))
     [n=[p='b' q=2] l=[n=[p='c' q=3] l=[n=[p='a' q=1] l={} r={}] r=~] r=~]
@@ -603,8 +656,9 @@ A map.
 
     > (~(mar by m) 'b' ~)
     [n=[p='a' q=1] l=~ r=~]
+```
 
-***
+---
 ### `+-put:by`
 
 Add key-value pair
@@ -625,7 +679,8 @@ A map.
 
 #### Source
 
-      +-  put                                              
+```
+      +-  put
         ~/  %put
         |*  [b=* c=*]
         |-  ^+  a
@@ -646,9 +701,11 @@ A map.
         ?:  (vor p.n.a p.n.d)
           [n.a l.a d]
         [n.d [n.a l.a l.d] r.d]
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
     > (~(put by ~) 'c' 3)
     [n=[p='b' q=2] l=[n=[p='c' q=3] l={[p='a' q=1]} r={}] r=~]
@@ -662,9 +719,9 @@ A map.
 
     > (put:by m 'a' 2)
     {[p=[[98 2] [[97 1] 0 0] 0] q=[97 2]]}
+```
 
-
-***
+---
 ### `+-rep:by`
 
 Replace by product
@@ -683,20 +740,23 @@ A noun.
 
 #### Source
 
-      +-  rep                                              
+```
+      +-  rep
         |*  b=_|=([* *] +<+)
         |-
         ?~  a  +<+.b
         $(a r.a, +<+.b $(a l.a, +<+.b (b n.a +<+.b)))
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
     > (~(rep by m) |=(a=(pair * *) p.a))
     q=[97 1]
+```
 
-
-***
+---
 ### `+-rib:by`
 
 Replace values with accumulator
@@ -715,7 +775,8 @@ A cell of nouns.
 
 #### Source
 
-      +-  rib                                           
+```
+      +-  rib
         |*  [b=* c=gate]
         |-  ^+  [b a]
         ?~  a  [b ~]
@@ -724,15 +785,18 @@ A cell of nouns.
         =+  e=$(a l.a, b -.d)
         =+  f=$(a r.a, b -.e)
         [-.f [n.a +.e +.f]]
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
     > (~(rib by m) [1 2] (con by m))
 
     > (~(rep by m) [1 2] |=(a=(pair * *) p.a))
+```
 
-***
+---
 ### `+-run:by`
 
 Transform values
@@ -751,14 +815,17 @@ A map.
 
 #### Source
 
-      +-  run                                              
+```
+      +-  run
         |*  b=gate
         |-
         ?~  a  a
         [n=[p=p.n.a q=(b q.n.a)] l=$(a l.a) r=$(a r.a)]
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
 
     > ^+(m (~(run by m) dec))
@@ -766,9 +833,9 @@ A map.
 
     > `(map @tas @t)`(~(run by m) (cury scot %ux))
     {[p=%a q='0x1'] [p=%b q='0x2']}
+```
 
-
-***
+---
 ### `+-rut:by`
 
 Transform nodes
@@ -787,17 +854,21 @@ A map.
 
 #### Source
 
+```
     +-  rut
       |*  b=gate
       |-
       ?~  a  a
       [n=[p=p.n.a q=(b p.n.a q.n.a)] l=$(a l.a) r=$(a r.a)]
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
+```
 
-***
+---
 ### `+-tap:by`
 
 Listify pairs
@@ -817,7 +888,8 @@ A list.
 
 #### Source
 
-      +-  tap                                              
+```
+      +-  tap
         =<  $
         ~/  %tap
         =|  b=(list _?>(?=(^ a) n.a))
@@ -825,9 +897,11 @@ A list.
         ?~  a
           b
         $(a r.a, b [n.a $(a l.a)])
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
     [n=[p='b' q=2] l={[p='a' q=1]} r={}]
     > `*`m
@@ -837,8 +911,9 @@ A list.
     ~[[p='b' q=2] [p='a' q=1]]
     > `*`~(tap by m)
     [[98 2] [97 1] 0]
+```
 
-***
+---
 ### `+-uni:by`
 
 Union
@@ -858,7 +933,8 @@ A map.
 
 #### Source
 
-      +-  uni                                               
+```
+      +-  uni
         ~/  %uni
         |*  b=_a
         |-  ^+  a
@@ -877,9 +953,11 @@ A map.
         ?:  (gor p.n.a p.n.b)
           $(b [n.b $(b l.b, a [n.a l.a ~]) r.b], a r.a)
         $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
 
     > =o (my [['c' 3] ['d' 4] ~])
@@ -894,9 +972,9 @@ A map.
     {[p='a' q=1] [p='c' q=3]}
     > (~(uni by o) n)
     {[p='d' q=4] [p='a' q=1] [p='c' q=3]}
+```
 
-
-***
+---
 ### `+-urn:by`
 
 Turn (with key)
@@ -916,15 +994,17 @@ A noun.
 
 #### Source
 
-      +-  urn                                              
+```
+      +-  urn
         |*  b=$-({* *} *)
         |-
         ?~  a  ~
         [n=[p=p.n.a q=(b p.n.a q.n.a)] l=$(a l.a) r=$(a r.a)
-
+```
 
 #### Examples
 
+```
     > m
     {[p='a' q=1] [p='b' q=2]}
 
@@ -936,8 +1016,9 @@ A noun.
 
     > (~(urn by m) |=(a=(pair * *) p.a))
     {[p='a' q=97] [p='b' q=98]}
+```
 
-***
+---
 
 ### `+-wyt:by`
 
@@ -955,12 +1036,15 @@ An atom.
 
 #### Source
 
-      +-  wyt                                              
+```
+      +-  wyt
         |-  ^-  @
         ?~(a 0 +((add $(a l.a) $(a r.a))))
+```
 
 #### Examples
 
+```
     > =m (my [['a' 1] ['b' 2] ~])
 
     > =o (my [['c' 3] ['d' 4] ~])
@@ -973,6 +1057,6 @@ An atom.
 
     > ~(wyt by (~(uni by m) o))
     4
+```
 
-
-***
+---
