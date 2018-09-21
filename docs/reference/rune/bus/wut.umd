@@ -1,0 +1,49 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'$? "buswut"'
+    ==
+;>
+
+# `$? "buswut"`
+
+`[%bswt p=(list spec)]`: form a type from a union of other types.
+
+## Normalizes to
+
+The first item in `p` which normalizes the sample to itself;
+otherwise, default.
+
+Void, if `p` is empty.
+
+## Defaults to
+
+The first item in `p`.
+
+## Syntax
+
+Regular: *running*.
+
+Irregular: `?(%foo %bar)` is `$?(%foo %bar)`.
+
+## Discussion
+
+For a union of atoms, a `$?` ("buswut") is fine.  For more complex nouns,
+always try to use a [`$%` ("buscen")](../cen/), [`$@` ("busvat")](../vat/) or
+[`$^` ("busket")](../ket/), at least if you expect your structure to be used as a
+normalizer.
+
+## Examples
+
+```
+~zod:dojo> =a ?(%foo %bar %baz)
+
+~zod:dojo> (a %baz)
+%baz
+
+~zod:dojo> (a [37 45])
+%baz
+
+~zod:dojo> $:a
+%baz
+```

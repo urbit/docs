@@ -1,0 +1,51 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'3'
+        title/'Text /w Interpolation'
+    ==
+;>
+
+# Text with Interpolation
+
+`[%knit p=(list (each @t hoon))]`: text string with interpolation.
+
+### Produces
+
+A tape.
+
+### Syntax
+
+Irregular: `"abcdefg"`.
+
+Irregular: `"abc{(weld "lmnop" "xyz")}defg"`.
+
+```
+> "abcdefg"
+"abcdefg"
+
+> "abc{(weld "lmnop" "xyz")}defg"
+"abclmnopxyzdefg"
+```
+
+### Examples
+
+String:
+
+```
+> "hello, world."
+"hello, world."
+```
+
+String with interpolation:
+
+```
+> =+(planet="world" "hello, {planet}.")
+"hello, world."
+```
+
+String with interpolated prettyprinting:
+
+```
+> =+(planet=%world "hello, {<planet>}.")
+"hello, %world."
+```

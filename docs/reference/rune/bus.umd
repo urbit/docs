@@ -1,0 +1,36 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'12'
+        title/'Structures $ ("bus")'
+    ==
+;>
+
+# Structures $ ("bus")
+
+The `$` family of runes is used for defining custom types.  Strictly speaking, these runes are used to produce 'structures'.  A structure is a compile-time value that at runtime can be converted to either an example value (sometimes called a 'bunt' value) for its corresponding type, or to a 'factory' (sometimes called a 'mold').  An example value is used as a placeholder for sample values, among other things.  A factory/mold is used as a data validator.
+
+## Overview
+
+A correct mold is a *normalizer*: an idempotent function across
+all nouns.  If the sample of a gate has type `%noun`, and its
+body obeys the constraint that for any x, `=((mold x) (mold (mold
+x)))`, it's a normalizer and can be used as a mold.
+
+(Hoon is not dependently typed and so can't check idempotence
+statically, so we can't actually tell if a mold matches this
+definition perfectly.  This is not actually a problem.)
+
+Validation, though very
+important, is a rare use case.  Except for direct raw input,
+it's generally a faux pas to rectify nouns at runtime -- or even
+in userspace.
+
+In any case, since molds are just functions, we can use
+functional programming to assemble interesting molds.  For
+instance, `(map foo bar)` is a table from mold `foo` to mold
+`bar`.  `map` is not a mold; it's a function that makes a mold.
+Molds and mold builders are generally described together.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

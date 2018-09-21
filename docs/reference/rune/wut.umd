@@ -1,0 +1,32 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'Conditionals ? ("wut")'
+    ==
+;>
+
+# Conditionals ? ("wut")
+
+Hoon has the usual program control branches.  It also has the usual logical operators: AND `?&`, OR `?|`, and NOT `?!`.  It also has a `?=` rune that tests whether a value matches a given type.  In the course of type inference, Hoon learns from `?=` tests in the test condition of [`?:` ("wutcol")](./col/) expressions.
+
+## Overview
+
+All `?` runes reduce to `?:` and/or `?=`.
+
+If the condition of an `?:` is a `?=`, *and* the `?=` is
+testing a leg of the subject, the compiler specializes the subject
+type for the branches of the `?:`.  Branch inference also works
+for expressions which expand to `?:`.
+
+The test does not have to be a single `?=`; the compiler can
+analyze arbitrary boolean logic ([`?&` ("wutpam")](./pam/),
+[`?|` ("wutbar")](./bar/), [`?!` ("wutzap")](./zap/)) with full
+short-circuiting.  Equality tests ([`.=` ("dottis")](../dot/tis/)) are *not*
+analyzed.
+
+If the compiler detects that the branch is degenerate (only one
+side is taken), it fails with an error.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

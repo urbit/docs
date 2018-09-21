@@ -1,0 +1,139 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        next/'true'
+        sort/'4'
+        title/'Source layout'
+    ==
+;>
+
+# Arvo source
+
+When you boot an Urbit we transfer the current version of the Arvo
+operating environment to your Urbit over our network. That is, the
+source for the system lives on your Urbit. Here we'll take a brief tour
+through the structure of a base Arvo desk.
+
+Looking at the top level of
+[the Arvo repo](http://github.com/urbit/arvo), or any Urbit desk that
+has been mounted to Unix we see something like:
+
+```
+app/
+arvo/
+gen/
+lib/
+mar/
+ren/
+sec/
+sur/
+sys/
+web/
+web.md
+```
+
+Let's step through directory by directory.
+
+## `sys/`
+
+This is where the Arvo kernel lives. `sys/` contains:
+
+### `sys/hoon.hoon`
+
+Hoon is our programming langauge. Since Hoon compiles itself the
+language is actually specified in this source file.
+
+### `sys/zuse.hoon`
+
+Zuse is the Arvo standard library.
+
+### `sys/arvo/hoon`
+
+This is the source file for the central Arvo event dispatcher.
+
+### `sys/vane`
+
+Vanes are sort of like kernel modules. These are worth listing one by one:
+
+### `sys/vane/ames.hoon`
+
+Ames is our network protocol.
+
+### `sys/vane/behn.hoon`
+
+Behn is a simple timer.
+
+### `sys/vane/clay.hoon`
+
+Clay is our filesystem.
+
+### `sys/vane/dill.hoon`
+
+Dill is our terminal driver.
+
+### `sys/vane/eyre.hoon`
+
+Eyre is our webserver.
+
+### `sys/vane/ford.hoon`
+
+Ford is our build system.
+
+### `sys/vane/gall.hoon`
+
+Gall is our application model.
+
+### `sys/vane/jael.hoon`
+
+Jael is our secret vault.
+
+### `sys/vane/xmas.hoon`
+
+Xmas is the new Ames, which will go live in our next big release.
+
+That's it. That's the whole system.
+
+## `app/`
+
+This is where Gall apps live. Gall apps are stateful servers, sort of
+like unix daemons. One familiar one is `app/hall.hoon` which is the
+source code for Hall, the Urbit messaging transport layer. And there's
+also `app/dojo.hoon` — that's your shell.
+
+## `gen/`
+
+`gen/` holds generators. Generators are short Dojo scripts.
+
+## `lib/`
+
+`lib/` holds shared libraries for programs. `lib/sole` is a good
+example — that's the console library that's shared by both Dojo in the
+command line, and the Dojo web client.
+
+## `mar/`
+
+This is where marks live. Marks are data type definitions used by Ford.
+A mark is like a mime-type, but specified in executable code.
+
+## `ren/`
+
+These are web renderers. A renderer handles web requests of a particular
+type.
+
+Default web requests in urbit are handled as a `.urb`, which is caught
+by the `urb.hoon` renderer. This wraps the request in our default `CSS`
+and `JS` and adds some routing magic for certain paths.
+
+## `sur/`
+
+`sur/` contains shared data structures. Files in `sur` are like header
+files in C.
+
+## `web/`
+
+There are the files publicly accessible to the web, as made possible by
+Eyre.
+
+## `web.md`
+
+This is the homepage for your urbit. You'll see it at
+`http://localhost:8080/` or `https://your-urbit.urbit.org/`.

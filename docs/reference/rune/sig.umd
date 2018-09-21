@@ -1,0 +1,14 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'Hints ~ ("sig")'
+    ==
+;>
+
+# Hints `~` ("sig")
+
+Runes that use Nock `10` to pass non-semantic info to the interpreter.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

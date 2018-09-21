@@ -1,0 +1,18 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'Cores | ("bar")'
+    ==
+;>
+
+# Cores `|` "bar"
+
+Core expressions produce cores. A core is a cell of `[battery payload]`.  The `battery` is code, a battery of Nock formulas.  The `payload` is the data needed to run those formulas correctly.
+
+Four core runes (`|=`, `|.`, `|-`, and `|*`) produce a
+core with a single arm, named `$`. We can recompute this arm
+with changes, which useful for recursion among other things:
+
+## Runes
+
+;list(datapreview "true", classname "runes");

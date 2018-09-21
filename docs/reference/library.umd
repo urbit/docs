@@ -1,0 +1,9 @@
+:-  :~  navhome/'/docs/'
+        sort/'3'
+        title/'Standard library'
+    ==
+;>
+
+# Standard library
+
+;list(datapreview "true", titlesonly "true");

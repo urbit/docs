@@ -1,0 +1,12 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'Wild . ("zap")'
+    ==
+;>
+
+# Wild `!` ("zap")
+
+## Runes
+
+;list(datapreview "true", classname "runes");
