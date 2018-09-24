@@ -1,12 +1,11 @@
 :-  :~  navhome/'/docs/'
-        sort/'11'
+        sort/'5'
+        next/'true'
         title/'Urbit Markdown'
      ==
-
 ;>
 
 # Urbit Markdown: A Guide
-
 
 ### What is Urbit Markdown?
 
