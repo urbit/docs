@@ -1,11 +1,9 @@
 :-  :~  navhome/'/docs/'
-        sort/'10'
+        sort/'4'
+        next/'true'
         title/'Introduction to Sail'
     ==
-
 ;>
-
-
 
 # Introduction to Sail
 
