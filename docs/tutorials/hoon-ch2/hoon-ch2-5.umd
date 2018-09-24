@@ -1,8 +1,8 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'5'
-        title/'Type Checking and Type Inference'
+        sort/'25'
+        title/'2.5 Type Checking and Type Inference'
     ==
 ;>
 
@@ -144,7 +144,7 @@ It's helpful to know *that* Hoon infers the type of any given expression, but it
 
 ### Literals
 
-[Literals](https://en.wikipedia.org/wiki/Literal_(computer_programming)) are expressions that represent fixed values.  Some examples (with the inferred type on the right):
+[Literals](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) are expressions that represent fixed values.  Some examples (with the inferred type on the right):
 
 ```
 123                   @ud
@@ -482,7 +482,7 @@ This code is a little more tricky.  The basic idea, however, is simple.  We have
 
 What makes this program is little harder to follow is that it has a recursion call within a recursion call.  The first recursion expression on line 6 makes changes to two face values: `c`, the counter, and `a`, the input noun.  The new value for `c` defined in line 7 is another recursion call (this time in irregular syntax).  The new value for `c` is to be: the result of running the same function on the the head of `a`, `-.a`, and with `1` added to `c`.  We add `1` because we know that `a` must be a cell.  Otherwise, we're asking for the number of cells in the rest of `-.a`.
 
-Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`.  We'e already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
+Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`.  We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
 
 ####  'Samefringe' Exercise
 

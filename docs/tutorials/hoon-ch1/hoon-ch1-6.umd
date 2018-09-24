@@ -1,11 +1,11 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         sort/'6'
-        title/'Producing Gates with Cores'
+        title/'1.6 Producing Gates with Core Arms'
     ==
 ;>
 
-# 1.6 Producing Gates with Cores
+# 1.6 Producing Gates with Core Arms
 
 It's useful to have cores whose arms evaluate to make gates.  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
 
@@ -274,7 +274,7 @@ battery      .
 
 It follows from this definition that a gate is a special case of a door.  A gate is a door with exactly one arm, named `$`.
 
-Gates are useful for defining functions.  But there are many-armed doors as well.  How are they used?  Doors are quite useful data structures.  In Chapter 2 of the Hoon tutorial series you'll learn how to use doors to implement state machines, where the sample stores the relevant state data.  For let's talk about how to use doors for simpler purposes.
+Gates are useful for defining functions.  But there are many-armed doors as well.  How are they used?  Doors are quite useful data structures.  In Chapter 2 of the Hoon tutorial series you'll learn how to use doors to implement state machines, where the sample stores the relevant state data.  For now let's talk about how to use doors for simpler purposes.
 
 ### An Example Door
 
@@ -367,7 +367,7 @@ There's a more direct way of passing arguments for both the door sample and the 
 %.n
 ```
 
-Readers of a particular mathematical background may notice that `~( )` expressions allow us to [curry](https://en.wikipedia.org/wiki/Currying).  For each of the arms above, the `~( )` expression is used to create different versions of the same gate:
+Readers with some mathematical background may notice that `~( )` expressions allow us to [curry](https://en.wikipedia.org/wiki/Currying).  For each of the arms above, the `~( )` expression is used to create different versions of the same gate:
 
 ```
 > ~(plus c 7)
@@ -512,4 +512,4 @@ It's better simply to use the `~(arm rs arg)` syntax to replace the value of the
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.  Continue to Chapter 2 to get started.
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.  Continue to [Chapter 2](../../hoon-ch2) to get started.

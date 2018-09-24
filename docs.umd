@@ -17,7 +17,7 @@
 
 Check out the [technical overview](about/overview) for a high-level architecture description.  To install and run Urbit head to the Using section, starting with the [installation guide](using/install) and continuing forward.
 
-To begin developing for Urbit, you can start by walking through the tutorial series for [Hoon](tutorials/ch1).  Hoon is Urbit's high-level programming language.  Anyone obsessed with math, theory, fundamentals of computation, etc., should start with [Nock](tutorials/nock), the low-level language to which Hoon is compiled.
+To begin developing for Urbit, you can start by walking through the tutorial series for [Hoon](tutorials/hoon-ch1).  Hoon is Urbit's high-level programming language.  Anyone obsessed with math, theory, fundamentals of computation, etc., should start with [Nock](tutorials/nock), the low-level language to which Hoon is compiled.
 
   ==
 

@@ -35,7 +35,7 @@ for Unix.
 
 Here's a duct that was recently observed in the wild:
 
-````
+```
 ~[
   /g/a/~zod/4_shell_terminal/u/time
   /g/a/~zod/shell_terminal/u/child/4/main
@@ -43,7 +43,7 @@ Here's a duct that was recently observed in the wild:
   /d/term-mess
   //term/1
 ]
-````
+```
 
 This is the duct the timer vane receives when "timer" sample app asks
 the timer vane to set a timer. This is also the duct over which the

@@ -1,8 +1,8 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'10'
-        title/'Hoon Standard Library: Trees, Sets, and Maps'
+        sort/'30'
+        title/'2.10 Standard Library: Trees, Sets, and Maps'
     ==
 ;>
 

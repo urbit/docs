@@ -2,7 +2,7 @@
         navuptwo/'true'
         next/'true'
         sort/'4'
-        title/'Arms and Cores'
+        title/'1.4 Arms and Cores'
     ==
 ;>
 
@@ -24,7 +24,7 @@ Now you just need to know what a 'Nock formula' is, what a 'battery' is, and wha
 
 Hoon runs on your urbit, which is a virtual computer.  However, this virtual computer doesn't directly understand Hoon; it has a Nock interpreter instead.  Any Hoon code you want to run must first be compiled to Nock.  You certainly don't have to know Nock to understand Hoon, but it helps to be aware of a few of Nock's general features.
 
-Nock is a [low-level](https://en.wikipedia.org/wiki/Low-level_programming_language), [functional programming](https://en.wikipedia.org/wiki/Functional_programming) language.  As a consequence Nock itself can be understood as a function, called the 'Nock function'.  Nock is officially defined by the Nock spec (link).
+Nock is a [low-level](https://en.wikipedia.org/wiki/Low-level_programming_language), [functional programming](https://en.wikipedia.org/wiki/Functional_programming) language.  As a consequence Nock itself can be understood as a function, called the 'Nock function'.  Nock is officially defined by the [Nock spec](../../nock/definition).
 
 ### What is a Function?
 
@@ -45,7 +45,7 @@ Here's an example of some Nock run in the dojo, using `.*( )`:
 
 In this example `[15 17]` is the subject, `[[4 0 2] [0 3]]` is the formula, and `[16 17]` is the product.
 
-This tutorial series is designed to teach you Hoon.  For that purpose it's not important that you know how to read and understand Nock formulas; you just need to know that Nock takes a subject and a formula and returns a product.  (Those who who want to learn more about Nock should head over to the Nock tutorial (link).)
+This tutorial series is designed to teach you Hoon.  For that purpose it's not important that you know how to read and understand Nock formulas; you just need to know that Nock takes a subject and a formula and returns a product.  (Those who who want to learn more about Nock should head over to the [Nock tutorial]([Nock spec](../../nock)).)
 
 ### Nock Formulas Define Functions
 

@@ -1,8 +1,8 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'2'
-        title/'Hoon Syntax'
+        sort/'22'
+        title/'2.2 Hoon Syntax'
     ==
 ;>
 
@@ -10,9 +10,9 @@
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
-The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages)) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Failing to follow these rules when writing a program and then trying to run it will result in a syntax error.
+The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Failing to follow these rules when writing a program and then trying to run it will result in a syntax error.
 
-The [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science)) of a programming language concerns the meaning of the various parts of that language's code.
+The [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
 
 In this lesson we cover Hoon's syntax.  A strict account of Hoon's syntax would refrain from making any reference at all to semantics, but for ease of exposition we won't be quite so fastidious.
 
@@ -56,7 +56,7 @@ Note that the list includes two separate whitespace forms: `ace` for a single sp
 
 ## Expressions of Hoon
 
-An [expression](https://en.wikipedia.org/wiki/Expression_(computer_science)) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
+An [expression](https://en.wikipedia.org/wiki/Expression_(computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
 
 Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called *subexpressions*).
 
@@ -66,7 +66,7 @@ There are many categories of Hoon expressions: noun literals, wing expressions, 
 
 A noun is either an atom or a cell.  An atom is an unsigned integer and a cell is a pair of nouns.
 
-There are [literal](https://en.wikipedia.org/wiki/Literal_(computer_programming)) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
+There are [literal](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
 
 We start with atom literals.  Each of these is a basic expression of Hoon that evaluates to itself.  Examples:
 
@@ -93,7 +93,7 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 0b1101.1001
 ```
 
-Recall from lesson 1.2 (link) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in lesson XXXX.
+Recall from [lesson 1.2](../../hoon-ch1/hoon-ch1-2) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](../hoon-ch2-4).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -111,7 +111,7 @@ Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, be
 [123 [~zod ~ten] .1.2837]
 ```
 
-A murkier case involves putting complex expressions inside square brackets to make a cell.  These are valid expressions but they aren't cell literals, naturally:
+You can also put complex expressions inside square brackets to make a cell.  These are valid expressions but they aren't cell literals, naturally:
 
 ```
 > [(add 22 33) (mul 22 33)]
@@ -120,7 +120,7 @@ A murkier case involves putting complex expressions inside square brackets to ma
 
 ### Wings
 
-A wing expression is a series of limb expressions separated by `.`.  You learned about these in sections 1.3 (link) and 1.4 (link).
+A wing expression is a series of limb expressions separated by `.`.  You learned about these in [sections 1.3](../../hoon-ch1/hoon-ch1-3) and [sections 1.4](../../hoon-ch1/hoon-ch1-4).
 
 Let's start with the base case: a single limb.  A limb expression is a trivial wing expression -- there is only one limb in the series.  Some one-limb wings:
 
@@ -134,7 +134,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `mul`
 - `kebab-case-123`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We covered the role of `$` in lesson 1.5 (link).)
+As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We covered the role of `$` in [lesson 1.5](../../hoon-ch1/hoon-ch1-5).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
@@ -150,7 +150,7 @@ Wing expressions with multiple limbs are complex expressions.  Examples:
 
 Hoon is a statically typed language.  You'll learn more about the type system later in the chapter.  For now, just know that Hoon's type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag).  Each of these symbols can be used as a stand-alone expression of Hoon.  In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
 
-They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in lesson XXXX.)
+They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in [lesson 2.6](../hoon-ch2-6).)
 
 ### Rune Expressions
 
@@ -168,7 +168,7 @@ There are two rune syntax forms: *tall* and *flat*.  Tall form is usually used f
 
 The spacing rules differ in the two forms.  In tall form, each rune and subexpression must be separated from the others by a `gap` -- that is, by two or more spaces, or a line break.  In flat form the rune is immediately followed by parentheses `( )`, and the various subexpressions inside the parentheses must be separated from the others by an `ace` -- that is, by a single space.
 
-Seeing an example will help you understand the difference.  The `:-` rune is used to produce a cell.  Accordingly, it is followed by two subexpressions: the first defines the head of the cell, and the second defines the tail.  Here are three different ways to write a `:-` hoon in tall form:
+Seeing an example will help you understand the difference.  The `:-` rune is used to produce a cell.  Accordingly, it is followed by two subexpressions: the first defines the head of the cell, and the second defines the tail.  Here are three different ways to write a `:-` expression in tall form:
 
 ```
 > :-  11  22
@@ -184,18 +184,18 @@ Seeing an example will help you understand the difference.  The `:-` rune is use
 [11 22]
 ```
 
-These all do the same thing.  The first example shows that, if you really want to, you can write 'tall' form code on a single line.  Notice that there are two spaces between the `:-` rune and `11`, and also between `11` and `22`.  This is the minimum spacing necessary between the various parts of a tall form expression -- any fewer will result in a syntax error.
+These all do the same thing.  The first example shows that, if you want to, you can write 'tall' form code on a single line.  Notice that there are two spaces between the `:-` rune and `11`, and also between `11` and `22`.  This is the minimum spacing necessary between the various parts of a tall form expression -- any fewer will result in a syntax error.
 
-Usually one or more line breaks are used to break up a tall form expression.  This is especially useful when the subexpressions are themselves long stretches of code.  The same `:-` hoon in flat-form is:
+Usually one or more line breaks are used to break up a tall form expression.  This is especially useful when the subexpressions are themselves long stretches of code.  The same `:-` expression in flat-form is:
 
 ```
 > :-(11 22)
 [11 22]
 ```
 
-This is the preferred way to write a hoon on a single line.  The rune itself is followed by a set of parentheses, and the subexpressions inside are separated by a single space.  Any more spacing than that results in a syntax error.
+This is the preferred way to write an expression on a single line.  The rune itself is followed by a set of parentheses, and the subexpressions inside are separated by a single space.  Any more spacing than that results in a syntax error.
 
-Nearly all rune expressions can be written in either form, but there are exceptions.  The `|%` and `|_` expressions, for example, can only be written in tall form.  (Those (link) are a bit too complicated to fit comfortably on one line anyway.)
+Nearly all rune expressions can be written in either form, but there are exceptions.  `|%` and `|_` expressions, for example, can only be written in tall form.  (Those are a bit too complicated to fit comfortably on one line anyway.)
 
 #### Irregular Forms
 
@@ -264,7 +264,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 
 The `( )` gate-calling syntax can be used for gates of any other [arity](https://en.wikipedia.org/wiki/Arity) as well.
 
-You've already seen two other irregular forms.  In lesson 1.5 (link), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
+You've already seen two other irregular forms.  In [lesson 1.5](../../hoon-ch1/hoon-ch1-5), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
 
 ```
 > =inc |=(a=@ (add 1 a))
@@ -308,7 +308,7 @@ The `a=15` expression is the irregular form of `^=(a 15)`:
 35
 ```
 
-You can find other irregular forms in the irregular expression reference document (link).
+You can find other irregular forms in the irregular expression [reference document](../../../reference/irregular).
 
 ### Expressions That Are Only Irregular
 
@@ -349,7 +349,7 @@ b=[16 18]
 [16 18]
 ```
 
-To see other irregular expressions, check the irregular expression reference document (link).
+To see other irregular expressions, check the irregular expression [reference document](../../../reference/irregular).
 
 ## Hoon Style
 
@@ -444,7 +444,7 @@ In optimal usage of backstep indentation the most complicated subexpressions are
 
 #### Running
 
-A *running* body doesn't have a fixed number of subexpressions; hoons with running bodies can be arbitrarily long.
+A *running* body doesn't have a fixed number of subexpressions; expressions with running bodies can be arbitrarily long.
 
 To indicate the end of such expressions in tall form, use the `==` rune.  The first subexpression is two spaces after the initial rune, and all others are indented to line up with the first.  The terminating `==` should align vertically with the initial rune.  In flat form, parentheses are used around the expression body, so the terminating `==` is unnecessary.
 

@@ -1,8 +1,8 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'1'
-        title/'Hoon Programs'
+        sort/'21'
+        title/'2.1 Hoon Programs'
     ==
 ;>
 
@@ -51,7 +51,7 @@ Save this as 'listnum.hoon' in `/home/gen` of your urbit's pier.  To run it ente
 ~[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24]
 ```
 
-### Function Programming, Runes, and Whitespace
+### Functional Programming, Runes, and Whitespace
 
 Before going over how the above code works we should point out three things.
 

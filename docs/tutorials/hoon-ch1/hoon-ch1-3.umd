@@ -2,7 +2,7 @@
         navuptwo/'true'
         next/'true'
         sort/'3'
-        title/'The Subject and Its Legs'
+        title/'1.3 The Subject and Its Legs'
     ==
 ;>
 
@@ -311,25 +311,26 @@ There is no restriction against using the same face name for multiple limbs of t
 5
 ```
 
-Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated against a subject, a head-first binary tree search occurs starting at address `1` of the subject.  If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail.  The total search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
+Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated against a subject, a head-first binary tree search occurs starting at address `1` of the subject.  If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail.  The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
 
-1. `[[4 b=5] [b=6 b=[14 15]]]`
-1. `[4 b=5]`
-1. `4`
-1. `b=5`
-1. `[b=6 b=[14 15]]`
-1. `b=6`
-1. `b=[14 15]`
+
++ `[[4 b=5] [b=6 b=[14 15]]]`
++ `[4 b=5]`
++ `4`
++ `b=5`
++ `[b=6 b=[14 15]]`
++ `b=6`
++ `b=[14 15]`
 
 There are matches at steps 4, 6, and 7 of the total search path, but the search ends when the first match is found at step 4.
 
 The children of legs bearing names aren't included in the search path.  For example, the search path of `[[4 a=5] b=[c=14 15]]` is:
 
-1. `[[4 a=5] b=[c=14 15]]`
-1. `[4 a=5]`
-1. `4`
-1. `a=5`
-1. `b=[c=14 15]`
++ `[[4 a=5] b=[c=14 15]]`
++ `[4 a=5]`
++ `4`
++ `a=5`
++ `b=[c=14 15]`
 
 Neither of the legs `c=14` or `15` is checked.  Accordingly, a search for `c` of `[[4 a=5] b=[c=14 15]]` fails:
 
@@ -347,13 +348,13 @@ There are cases when you don't want the limb of the first matching face.  You ca
 
 Recall that the search path for this noun is:
 
-1. `[[4 b=5] [b=6 b=[14 15]]]`
-1. `[4 b=5]`
-1. `4`
-1. `b=5`
-1. `[b=6 b=[14 15]]`
-1. `b=6`
-1. `b=[14 15]`
++ `[[4 b=5] [b=6 b=[14 15]]]`
++ `[4 b=5]`
++ `4`
++ `b=5`
++ `[b=6 b=[14 15]]`
++ `b=6`
++ `b=[14 15]`
 
 The second match in the search path is step 6, `b=6`, so the value at that leg is produced.  You can stack `^` characters to skip more than one matching face:
 

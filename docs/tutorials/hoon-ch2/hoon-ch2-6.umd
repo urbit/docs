@@ -1,8 +1,8 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'6'
-        title/'Structures and Complex Types'
+        sort/'26'
+        title/'2.6 Structures and Complex Types'
     ==
 ;>
 
@@ -33,7 +33,7 @@ Structures play different roles in different code contexts.  First, let's look a
 
 The `@`, `^`, and `[? *]` subexpressions have no effect at all on the final value produced.
 
-It's important to understand that these casts don't affect the [runtime](https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase)) semantics of a program at all.  They affect only the compiler behavior at compile time.  The compiler does these type-checks when compiling, but the resulting code has no value corresponding to the types above.
+It's important to understand that these casts don't affect the [runtime](https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase%29) semantics of a program at all.  They affect only the compiler behavior at compile time.  The compiler does these type-checks when compiling, but the resulting code has no value corresponding to the types above.
 
 Accordingly, the structures produced by the type subexpressions above aren't part of the program's runtime semantics.  They are compile-time values only.
 
@@ -282,7 +282,7 @@ nest-fail
 
 ### `$?` Define a Union
 
-In set theory, the [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of sets A and B is a set containing all members of both A and B.  For example, the union of the set of even integers and the set of odd integers is the set of all integers.
+In set theory, the [union](https://en.wikipedia.org/wiki/Union_(set_theory%29) of sets A and B is a set containing all members of both A and B.  For example, the union of the set of even integers and the set of odd integers is the set of all integers.
 
 It's useful to be able to define a type that is the union of other types.  The `$?` rune lets us do this.  The `$?` takes a series of subexpressions, each of which must be a structure.  The resulting type is the union of all types indicated in the expression.  For example, `$?(%green %yellow %red)` is the union of the types indicated by `%green`, `%yellow`, and `%red`.
 

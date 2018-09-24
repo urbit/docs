@@ -2,7 +2,7 @@
         navuptwo/'true'
         next/'true'
         sort/'2'
-        title/'Nouns'
+        title/'1.2 Nouns'
     ==
 ;>
 
@@ -123,7 +123,7 @@ As for why the dojo deleted your zero: it parses the command line as you type, a
 
 Atoms are nothing more than unsigned integers, but it's often useful to interpret an atom as being a different kind of data.  This is done with an *aura* -- the aura of an atom is type meta-data used by Hoon to determine how interpret that atom.
 
-We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_(computer_programming)) associated with atom auras.
+We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) associated with atom auras.
 
 In computer science, a 'literal' is an expression that represents and evaluates to a fixed value.  The default syntax of an atom literal is the German-style decimal notation, as seen above.  Let's look at some other atom literal syntaxes: unsigned binary, unsigned hexadecimal, signed decimal, signed binary and hexadecimal.
 
@@ -296,7 +296,7 @@ You can force Hoon to interpret an atom differently by using the aura symbols in
 
 The atoms in the examples above are all exactly the same value.  Only they're interpreted and printed differently, depending on the aura.
 
-For more on atoms and auras, see lesson XXXX.
+You'll learn more about atoms and auras in [lesson 2.4](../../hoon-ch2/hoon-ch2-4).
 
 ## Cells
 
@@ -471,24 +471,24 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet,
 
 ### 1.1.1
 
-1. No
-2. Yes
-3. No
-4. Yes
-5. Yes
++ No
++ Yes
++ No
++ Yes
++ Yes
 
 ### 1.1.2
 
-1. 86
-2. [[[65 35] 54] 77]
-3. [65 35]
-4. 77
-5. 3
++ 86
++ [[[65 35] 54] 77]
++ [65 35]
++ 77
++ 3
 
 ### 1.1.3
 
-1. +2
-2. +6
-3. +14
-4. +15
-5. +31
++ +2
++ +6
++ +14
++ +15
++ +31

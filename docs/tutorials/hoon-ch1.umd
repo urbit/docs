@@ -9,7 +9,7 @@
 
 Hoon is a high-level, statically typed, functional programming language, custom-designed for use with Urbit.  For a functional language it has a surprisingly imperative style, and mastering it doesn't require knowing any advanced mathematics.
 
-Hoon is an unusual language in several respects, both in syntax and semantics.  It uses runes (i.e., ASCII digraphs) in place of keywords, and the spacing rules are a bit strict.  A great deal can be expressed in few lines, though excessively compressed code tends to be hard to read.  Hoon has surprisingly simple semantics, but mastering it requires learning concepts that don't have close analogues in other languages.  We believe that Hoon, if properly taught, is relatively easy to learn and pleasant to use.
+Hoon is an unusual language in several respects, both in syntax and semantics.  It uses runes (i.e., ASCII digraphs) in place of keywords, and the spacing rules are a bit strict.  A great deal can be expressed in few lines, though excessively compressed code tends to be hard to read.  Hoon has surprisingly simple semantics, but mastering it requires learning concepts that don't have close analogues in other languages.
 
 This multi-chapter tutorial series is designed to teach you Hoon without assuming you have an extensive programming background.  In fact, you should be able to follow much of it even if you have no programming experience at all, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  These lessons are meant for the beginner but they aren't meant to be skimmed.
 

@@ -1,8 +1,8 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'8'
-        title/'Cores Again'
+        sort/'28'
+        title/'2.8 Cores Again'
     ==
 ;>
 
@@ -151,7 +151,7 @@ Another way to cast for the type of the parent core of an arm is to use `_+>.$`.
 
 But what does it mean?  First, the `_` indicates the irregular form of the `$_` rune.  That is, `_+>.$` evaluates `+>.$` and produces a type from the resulting noun.
 
-What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in section 1.4, `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
+What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](../../hoon-ch1/hoon-ch1-4), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
 
 Thus, `+>.$` evaluates to `+7` of the gate containing `$`.  For our `plus` arm, the gate in question is the one defined by:
 
@@ -278,7 +278,7 @@ For each random number generation, the `rng` core has a different seed number.  
 \/                                                                                     \/
 ```
 
-`eny` is an environment value for [entropy](https://en.wikipedia.org/wiki/Entropy_(computing)).  Its value changes every time it's evaluated.  We can use `eny` to produce a seed value for `rng` and retry the `=^` expression from above:
+`eny` is an environment value for [entropy](https://en.wikipedia.org/wiki/Entropy_(computing%29).  Its value changes every time it's evaluated.  We can use `eny` to produce a seed value for `rng` and retry the `=^` expression from above:
 
 ```
 > =rng ~(. og eny)
