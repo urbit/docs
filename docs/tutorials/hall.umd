@@ -8,6 +8,8 @@
 
 # Hall
 
+> Last major revision of this tutorial: 2017. Some of the information here may be outdated.
+
 Hall is the Urbit messaging and notifications protocol. Read up on Hall's
 architecture, its interfaces and the new Gall model it's built to target.
 

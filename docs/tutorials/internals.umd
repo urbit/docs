@@ -7,8 +7,7 @@
 
 # Arvo internals
 
-Note: The following documentation was written in 2016.  It needs to be rewritten: it's outdated in some respects, and it's also not always as clear as it could be.  A rewrite is planned at some point.  There is still good information to be found here, but don't bet the farm on anything you read in this section.
-
+> Note: The last major revision of these sections was in 2016.  They need to be rewritten: they're outdated in some respects, and also not always as clear as they could be.  A rewrite is planned.  There is still plenty of good information to be found, but don't bet the farm on anything you read here.
 
 Arvo is composed of modules called vanes:
 
