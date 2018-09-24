@@ -14,50 +14,52 @@ Let's build a trivial stateful app. It'll keep a running the sum of all the
 atoms we poke it with. Here's `examples/app/sum.hoon`:
 
 ```
-    ::  Keeps track of the sum of all the atoms it has been
-    ::  poked with and prints the sum out
-    ::
-    ::::  /===/app/sum/hoon
-      ::
-    !:
-    |%
-    +$  move  [bone card]
-    +$  card  $%  $~
-        ==
-    --
-    |_  [bow=bowl:gall sum=@]
-    ::
-    ++  poke-atom
-      |=  tom=@
-      ^-  [(list move) _+>.$]
-      ~&  sum+(add sum tom)
-      [~ +>.$(sum (add sum tom))]
-    ::
-    ++  coup
-      |=  [wir=wire err=(unit tang)]
-      ^-  [(list move) _+>.$]
-      ?~  err
-  ~&  sum+success+'Poke succeeded!'
+::  Keeps track of the sum of all the atoms it has been
+::  poked with and prints the sum out
+::
+::::  /===/app/sum/hoon
+  ::
+!:
+|%
++$  move  [bone card]
++$  card  $%  $~
+          ==
+--
+|_  [bow=bowl:gall sum=@]
+::
+++  poke-atom
+  |=  tom=@
+  ^-  [(list move) _+>.$]
+  ~&  sum+(add sum tom)
+  [~ +>.$(sum (add sum tom))]
+::
+++  coup
+  |=  [wir=wire err=(unit tang)]
+  ^-  [(list move) _+>.$]
+  ?~  err
+    ~&  sum+success+'Poke succeeded!'
+    [~ +>.$]
+  ~&  sum+error+'Poke failed. Error:'
+  ~&  sum+error+err
   [~ +>.$]
-      ~&  sum+error+'Poke failed. Error:'
-      ~&  sum+error+err
-      [~ +>.$]
-    ::
-    --
+::
+--
 ```
 
 We can start it with `|start %sum`, and then run it:
 
 ```
-    ~fintud-macrep:dojo> :sum &atom 5
-    [%sum 5]
-    >=
-    ~fintud-macrep:dojo> :sum &atom 2
-    [%sum 7]
-    >=
-    ~fintud-macrep:dojo> :sum &atom 15
-    [%sum 22]
-    >=
+~fintud-macrep:dojo> :sum &atom 5
+[%sum 5]
+>=
+
+~fintud-macrep:dojo> :sum &atom 2
+[%sum 7]
+>=
+
+~fintud-macrep:dojo> :sum &atom 15
+[%sum 22]
+>=
 ```
 
 We can see that app state is being saved, but when, where, and how?
@@ -88,17 +90,7 @@ identity), and `eny` (256 bits of guaranteed-fresh entropy). For the full list
 of things in `++bowl`, search for `++  bowl` (note: two spaces) in
 `/arvo/zuse.hoon`.
 
-> This is, perhaps, the most common way to learn Hoon. The easiest way to learn
-> about an identifier you see in code is to search in `/arvo/zuse.hoon` and
-> `/arvo/hoon.hoon` for it.\\ Urbit's codebase is less than 30000 lines of code
-> combined,
-> including the hoon parser, the compiler, and the `/arvo` microkernel, so you
-> can
-> usually use the code and its comments as a reference doc.
-> You can also read
-> [zuse.hoon](https://github.com/urbit/arvo/blob/master/arvo/zuse.hoon) and
-> [hoon.hoon](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon) in your
-> browser.
+> This is, perhaps, the most common way to learn Hoon. The easiest way to learn about an identifier you see in code is to search in `/arvo/zuse.hoon` and `/arvo/hoon.hoon` for it.\\ Urbit's codebase is less than 30000 lines of code combined, including the hoon parser, the compiler, and the `/arvo` microkernel, so you can usually use the code and its comments as a reference doc. You can also read [zuse.hoon](https://github.com/urbit/arvo/blob/master/arvo/zuse.hoon) and [hoon.hoon](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon) in your browser.
 
 The second thing we should clear up is this: Urbit needs no "serialize to disk"
 step. Everything you produce in the app state is persistent across calls to the
@@ -118,12 +110,14 @@ to set up and write to a database.
 Sample output:
 
 ```
-    ~fintud-macrep:dojo> :last 7
-    [%last 0]
-    >=
-    ~fintud-macrep:dojo> :last [1 2 3]
-    [%last 7]
-    >=
-    ~fintud-macrep:dojo> :last 'howdy'
-    [%last [1 2 3]]
+~fintud-macrep:dojo> :last 7
+[%last 0]
+>=
+
+~fintud-macrep:dojo> :last [1 2 3]
+[%last 7]
+>=
+
+~fintud-macrep:dojo> :last 'howdy'
+[%last [1 2 3]]
 ```

@@ -312,8 +312,8 @@ is done by wrapping the code to be inserted in `{}`. In your Dojo prompt, try
 the command below (without the `>`):
 
 ```
-    > "I am a l{(mul 3 11)}t Urbit user."
-    ! exit
+> "I am a l{(mul 3 11)}t Urbit user."
+! exit
 ```
 
 Oh no! That command produced a nest-fail error, which indicates that there was
@@ -325,8 +325,8 @@ Trying the `mul` function on its own will help answer this question. Try the
 following command in your Dojo:
 
 ```
-    > (mul 3 11)
-    33
+> (mul 3 11)
+33
 ```
 
 This should work, producing `33`, an atom. That’s our problem. The
@@ -334,16 +334,16 @@ interpolation expression expects a tape, but our first command tried to
 interpolate with something that results in an atom. Try this now:
 
 ```
-    > <(mul 3 11)>
-    "33"
+> <(mul 3 11)>
+"33"
 ```
 
 We get a similar result, but we know that it’s a tape because it’s wrapped in
 `""`. Bingo!  With this knowledge, let’s perform a successful interpolation:
 
 ```
-    > "I am a l{<(mul 3 11)>}t Urbit user."
-    "I am a l33t Urbit user."
+> "I am a l{<(mul 3 11)>}t Urbit user."
+"I am a l33t Urbit user."
 ```
 
 Great!
@@ -369,7 +369,7 @@ To see this difference, first save the code below to a file at
 Then enter the following command in the Dojo:
 
 ```
-    > .
+> .
 ```
 
 You'll notice that the Sail subject is like a stripped-down version of the Dojo

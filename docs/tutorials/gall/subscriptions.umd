@@ -18,124 +18,124 @@ Let's take a look at two apps, `:source` and `:sink`. First,
 `:source`:
 
 ```
-    ::  Sends subscription updates to sink.hoon
-    ::
-    ::::  /===/app/source/hoon
-      ::
-    !:
-    ::
-    |%
-    +$  move  [bone card]
-    +$  card  $%  [%diff diff-contents]
-        ==
-    +$  diff-contents  $%  [%noun *]
-           ==
-    --
-    ::
-    |_  [bow=bowl:gall $~]
-    ::
-    ++  poke-noun
-      |= non=*
-      ^-  [(list move) _+>.$]
-      :_  +>.$
-      %+  turn  (prey /example-path bow)
-      |=({o=bone *} [o %diff %noun non])
-    ::
-    ++  peer-example-path
-      |=  pax/path
-      ^-  [(list move) _+>.$]
-      ~&  source+peer-notify+'Someone subscribed to you!'
-      ~&  source+[ship+src.bow path+pax]
-      [~ +>.$]
-    ::
-    ++  coup
-      |=  {wir=wire err=(unit tang)}
-      ^-  [(list move) _+>.$]
-      ?~  err
-  ~&  source+success+'Poke succeeded!'
+::  Sends subscription updates to sink.hoon
+::
+::::  /===/app/source/hoon
+  ::
+!:
+::
+|%
+  +$  move  [bone card]
+  +$  card  $%  [%diff diff-contents]
+            ==
++$  diff-contents  $%  [%noun *]
+                   ==
+--
+::
+|_  [bow=bowl:gall $~]
+::
+++  poke-noun
+  |= non=*
+  ^-  [(list move) _+>.$]
+  :_  +>.$
+  %+  turn  (prey /example-path bow)
+  |=({o=bone *} [o %diff %noun non])
+::
+++  peer-example-path
+  |=  pax/path
+  ^-  [(list move) _+>.$]
+  ~&  source+peer-notify+'Someone subscribed to you!'
+  ~&  source+[ship+src.bow path+pax]
   [~ +>.$]
-      ~&  source+error+'Poke failed. Error:'
-      ~&  source+error+err
-      [~ +>.$]
-    ::
-    ++  reap
-      |=  [wir=wire err=(unit tang)]
-      ^-  [(list move) _+>.$]
-      ?~  err
-  ~&  source+success+'Peer succeeded!'
+::
+++  coup
+  |=  {wir=wire err=(unit tang)}
+  ^-  [(list move) _+>.$]
+  ?~  err
+    ~&  source+success+'Poke succeeded!'
+    [~ +>.$]
+  ~&  source+error+'Poke failed. Error:'
+  ~&  source+error+err
   [~ +>.$]
-      ~&  source+error+'Peer failed. Error:'
-      ~&  source+error+err
-      [~ +>.$]
-    ::
-    --
+::
+++  reap
+  |=  [wir=wire err=(unit tang)]
+  ^-  [(list move) _+>.$]
+  ?~  err
+    ~&  source+success+'Peer succeeded!'
+    [~ +>.$]
+  ~&  source+error+'Peer failed. Error:'
+  ~&  source+error+err
+  [~ +>.$]
+::
+--
 ```
 
 And secondly, `:sink`:
 
 ```
-    ::  Sets up a simple subscription to source.hoon
-    ::
-    ::::  /===/app/sink/hoon
-      ::
-    !:
-    |%
-    +$  move  [bone card]
-    +$  card  $%  [%peer wire dock path]
-                  [%pull wire dock $~]
-              ==
-    --
-    ::
-    |_  [bow=bowl:gall val=?]
-    ::
-    ++  poke-noun
-      |=  non=*
-      ^-  [(list move) _+>.$]
-      ?:  &(=(%on non) val)
-  :_  +>.$(val |)
-  :~  :*  ost.bow
+::  Sets up a simple subscription to source.hoon
+::
+::::  /===/app/sink/hoon
+  ::
+!:
+|%
++$  move  [bone card]
++$  card  $%  [%peer wire dock path]
+              [%pull wire dock $~]
+          ==
+--
+::
+|_  [bow=bowl:gall val=?]
+::
+++  poke-noun
+  |=  non=*
+  ^-  [(list move) _+>.$]
+  ?:  &(=(%on non) val)
+    :_  +>.$(val |)
+      :~  :*  ost.bow
           %peer
           /subscribe
           [our.bow %source]
           /example-path
       ==
-  ==
-      ?:  &(=(%off non) !val)
-  :_  +>.$(val &)
-  ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
-      ~&  ?:  val
-      sink+unsubscribed+'You are now unsubscribed!'
-    sink+subscribed+'You are now subscribed!'
-      [~ +>.$]
-    ::
-    ++  diff-noun
-      |=  [wir=wire non=*]
-      ^-  [(list move) _+>.$]
-      ~&  sink+received-data+'You got something!'
-      ~&  sink+data+non
-      [~ +>.$]
-    ::
-    ++  coup
-      |=  [wir=wire err=(unit tang)]
-      ^-  [(list move) _+>.$]
-      ?~  err
-  ~&  sink+success+'Poke succeeded!'
+    ==
+  ?:  &(=(%off non) !val)
+    :_  +>.$(val &)
+    ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
+  ~&  ?:  val
+        sink+unsubscribed+'You are now unsubscribed!'
+      sink+subscribed+'You are now subscribed!'
   [~ +>.$]
-      ~&  sink+error+'Poke failed. Error:'
-      ~&  sink+error+err
-      [~ +>.$]
-    ::
-    ++  reap
-      |=  [wir=wire err=(unit tang)]
-      ^-  [(list move) _+>.$]
-      ?~  err
-  ~&  sink+success+'Peer succeeded!'
+::
+++  diff-noun
+  |=  [wir=wire non=*]
+  ^-  [(list move) _+>.$]
+  ~&  sink+received-data+'You got something!'
+  ~&  sink+data+non
   [~ +>.$]
-      ~&  sink+error+'Peer failed. Error:'
-      ~&  sink+error+err
-      [~ +>.$]
-    ::
-    --
+::
+++  coup
+  |=  [wir=wire err=(unit tang)]
+  ^-  [(list move) _+>.$]
+  ?~  err
+    ~&  sink+success+'Poke succeeded!'
+    [~ +>.$]
+  ~&  sink+error+'Poke failed. Error:'
+  ~&  sink+error+err
+  [~ +>.$]
+::
+++  reap
+  |=  [wir=wire err=(unit tang)]
+  ^-  [(list move) _+>.$]
+  ?~  err
+    ~&  sink+success+'Peer succeeded!'
+    [~ +>.$]
+  ~&  sink+error+'Peer failed. Error:'
+  ~&  sink+error+err
+  [~ +>.$]
+::
+--
 ```
 
 Two notes:
@@ -147,32 +147,39 @@ Two notes:
 Here's some sample output of the two working together:
 
 ```
-    ~fintud-macrep:dojo> |start %source
-    >=
-    ~fintud-macrep:dojo> |start %sink
-    >=
-    ~fintud-macrep:dojo> :sink %on
-    [%source %peer-notify 'Someone subscribed to you!']
-    [%source [%ship ~fintud-macrep] %path /]
-    [%sink %success 'Peer succeeded!']
-    >=
-    ~fintud-macrep:dojo> :source 5
-    [%sink %received-data 'You got something!']
-    [%sink %data 5]
-    >=
-    ~fintud-macrep:dojo> :sink %off
-    >=
-    ~fintud-macrep:dojo> :source 6
-    >=
-    ~fintud-macrep:dojo> :sink %on
-    [%source %peer-notify 'Someone subscribed to you!']
-    [%source [%ship ~fintud-macrep] %path /]
-    [%sink %success 'Peer succeeded!']
-    >=
-    ~fintud-macrep:dojo> :source 7
-    [%sink %received-data 'You got something!']
-    [%sink %data 7]
-    >=
+~fintud-macrep:dojo> |start %source
+>=
+
+~fintud-macrep:dojo> |start %sink
+>=
+
+~fintud-macrep:dojo> :sink %on
+[%source %peer-notify 'Someone subscribed to you!']
+[%source [%ship ~fintud-macrep] %path /]
+[%sink %success 'Peer succeeded!']
+>=
+
+~fintud-macrep:dojo> :source 5
+[%sink %received-data 'You got something!']
+[%sink %data 5]
+>=
+
+~fintud-macrep:dojo> :sink %off
+>=
+
+~fintud-macrep:dojo> :source 6
+>=
+
+~fintud-macrep:dojo> :sink %on
+[%source %peer-notify 'Someone subscribed to you!']
+[%source [%ship ~fintud-macrep] %path /]
+[%sink %success 'Peer succeeded!']
+>=
+
+~fintud-macrep:dojo> :source 7
+[%sink %received-data 'You got something!']
+[%sink %data 7]
+>=
 ```
 
 ### :source
@@ -190,8 +197,8 @@ Our definition of `move` is fairly specific, since we're only going to
 sending one kind of move. The `%diff` move is a subscription update, and
 its content is marked data which gall routes to our subscribers.
 
-This is a slightly different kind of move than [we've dealt with so
-far](/arvo/network). It's producing a result rather than calling other
+This is a slightly different kind of move than we've dealt with so
+far. It's producing a result rather than calling other
 code (i.e. it's a return rather than a function call), so if you recall
 the discussion of ducts, a layer gets popped off the duct rather than
 added to it. This is why no wire is needed for the move -- we won't
@@ -227,7 +234,7 @@ that begins with the given path. "Prey" is short for "prefix".
 Now we have the list of relevant subscribers. This a list of triples,
 `{bone @p path}`, where the only thing we really need is the bone, because we
 don't need to know their urbit or what exact path they subscribed on. Thus, our
-transformer function takes `{o/bone *}` and produces `[o %diff %noun non]`,
+transformer function takes `[o=bone *]` and produces `[o %diff %noun non]`,
 which is a move that provides bone `o` with this subscription update:
 `[%noun non]`". This is fairly dense code, but what it's doing is
 straightforward!
@@ -251,7 +258,7 @@ your bone and wire are the same as when you subscribed, then the cancellation
 will happen correctly.
 
 The only state we need for `:sink` is a boolean to indicate whether
-we're already subscribed to `:source`. We use `val/?`, where `?`
+we're already subscribed to `:source`. We use `val=?`, where `?`
 is the sign of type boolean (similar to `*`, `@`), which defaults to true (that
 is, `0`).
 
@@ -260,13 +267,13 @@ available (`val` is true). If so, we produce the move to subscribe to
 `:source`:
 
 ```
-    :~  :*  ost.bow
-      %peer
-      /subscribe
-      [our.bow %source]
-      /example-path
-  ==
+:~  :*  ost.bow
+    %peer
+    /subscribe
+    [our.bow %source]
+    /example-path
     ==
+==
 ```
 
 Also, in the preceding lines, we set `val` to false (`|`) with `+>.$(val |)`.
@@ -281,8 +288,8 @@ is false), then we unsubscribe from `:source` and set `val` back to true (`&`),
 again using our handy inverted cell constructor mold `:_`:
 
 ```
-    :_  +>.$(val &)
-    ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
+:_  +>.$(val &)
+~[[ost.bow %pull /subscribe [our.bow %source] ~]]
 ```
 
 It's important to send over the same bone and wire (`/subscribe`) as the
@@ -293,10 +300,10 @@ state, based on whether `val` is true or false, and return a cell containing
 a null list of moves and our unchanged app state:
 
 ```
-    ~&  ?:  val
-    sink+unsubscribed+'You are now unsubscribed!'
-  sink+subscribed+'You are now subscribed!'
-    [~ +>.$]
+~&  ?:  val
+      sink+unsubscribed+'You are now unsubscribed!'
+    sink+subscribed+'You are now subscribed!'
+[~ +>.$]
 ```
 
 `++diff-noun` is called when we get a `%diff` update along a subscription with a
@@ -305,8 +312,8 @@ the `%peer` subscription request along and the data we got back. In our case we
 just print out the data:
 
 ```
-    ~&  sink+received-data+'You got something!'
-    ~&  sink+data+non
+~&  sink+received-data+'You got something!'
+~&  sink+data+non
 ```
 
 `++reap` is called when we receive an acknowledgment as to whether the
