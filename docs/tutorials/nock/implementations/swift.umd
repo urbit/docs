@@ -1,13 +1,13 @@
----
-navhome: /docs/
-title: Swift
-sort: 10
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'10'
+        title/'Swift'
+    ==
+;>
 
 # Swift
 
-```swift
+```
 import Foundation
 //  1   ::  A noun is an atom or a cell.
 //  2   ::  An atom is a natural number.

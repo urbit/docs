@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Haskell
-sort: 3
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'Haskell'
+    ==
+;>
 
 # Haskell
 

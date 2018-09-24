@@ -1,15 +1,15 @@
----
-navhome: /docs/
-title: Javascript
-sort: 9
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'Javascript'
+    ==
+;>
 
 # Javascript
 
 From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
-```js
+```
 (function (self, factory) {
   'use strict'
 

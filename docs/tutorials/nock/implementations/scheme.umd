@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Scheme
-sort: 8
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'Scheme'
+    ==
+;>
 
 # Scheme 
 

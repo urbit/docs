@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Python
-sort: 1
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'Python'
+    ==
+;>
 
 # Python 
 

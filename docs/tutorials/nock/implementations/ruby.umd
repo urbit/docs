@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Ruby
-sort: 2
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'Ruby'
+    ==
+;>
 
 # Ruby
 

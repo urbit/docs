@@ -1,9 +1,9 @@
----
-navhome: /docs/
-title: Groovy
-sort: 7
-next: true
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'Groovy'
+    ==
+;>
 
 # Groovy 
 

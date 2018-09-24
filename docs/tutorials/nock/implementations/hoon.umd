@@ -1,8 +1,9 @@
----
-navhome: /docs/
-title: Hoon
-sort: 11
----
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'11'
+        title/'Hoon'
+    ==
+;>
 
 # Hoon 
 
