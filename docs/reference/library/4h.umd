@@ -74,7 +74,7 @@ Parses ASCII character 124, the vertical bar.
 Parse backslash
 
 Parses ASCII character 92, the backslash. Note the extra `\` in the calling of
-`bas` with [`++just`](/docs/hoon/library/2ec#++just) is to escape the escape
+`bas` with [`++just`](../4f) is to escape the escape
 character, `\`.
 
 #### Source
@@ -800,7 +800,7 @@ Parses ASCII character 126, the tilde.
 Parse single quote
 
 Parses ASCII character 39, soq. Note the extra '' is to escape the first
-`soq` because soq delimits a [`++cord`]().
+`soq` because soq delimits a `++cord`.
 
 #### Source
 

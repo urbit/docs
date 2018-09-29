@@ -15,4 +15,6 @@ for improving our [code](https://github.com/urbit/urbit/) and
 
 Our official guide to contributing can be found
 [here](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md),
-which is most useful for large and low-level changes.  For a good example of preferred Hoon coding style, see [ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
+which is most useful for large and low-level changes.  For a good example of
+preferred Hoon coding style, see
+[ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).

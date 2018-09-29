@@ -9,26 +9,55 @@
 # Filesystem (Clay)
 
 
-Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global, referentially transparent namespace. An easy way to think about it is like typed `git` with continuous sync.
+Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global,
+referentially transparent namespace. An easy way to think about it is like typed
+`git` with continuous sync.
 
-The most common way to use Clay is to mount a Clay node in a Unix directory. The Urbit process will watch this directory and automatically record edits as changes, Dropbox style. The mounted directory is always at the root of your pier directory.
+The most common way to use Clay is to mount a Clay node in a Unix directory. The
+Urbit process will watch this directory and automatically record edits as
+changes, Dropbox style. The mounted directory is always at the root of your
+pier directory.
 
 
 ## Quickstart
 
-When developing it's a good idea to use a separate desk.  Create a `%sandbox` desk based on the `%home` desk:
+When developing it's a good idea to use a separate desk.  Create a `%sandbox`
+desk based on the `%home` desk:
 
 ```
 |merge %sandbox ~your-urbit %home
 ```
 
-Most of the time we want to use Clay from Unix.  Mount the entire contents of your `sandbox` desk to Unix:
+Running `our` produces your ship-name, meaning that you can run the following
+command instead of typing out your entire. Useful for comets, due to their very
+long names!
+
+```
+|merge %sandbox our %home
+```
+
+Most of the time we want to use Clay from Unix.  Mount the entire contents of
+your `sandbox` desk to Unix:
 
 ```
 ~your-urbit:dojo> |mount /=sandbox=
 ```
 
-To explore the filesystem from inside Urbit `+ls` and `+cat` are useful:
+To explore the filesystem from inside Urbit `+ls` and `+cat` are useful. `+ls`
+displays files in the current directory, and `+cat` displays the contents of
+a file.
+
+We can use `%` to mean "current directory." The result of the command below
+is just like using `ls` in a Unix terminal.
+
+```
+~your-urbit:dojo> +ls %
+```
+
+Notice how `+cat %` does the same thing. That's because everything in Clay,
+including directories, is a file.
+
+Let's explore the `/web` directory of the `%sandbox` desk.
 
 ```
 ~your-urbit:dojo> +ls /=sandbox=/web
@@ -38,6 +67,19 @@ Let's see the contents of `/=sandbox=/web/md`:
 
 ```
 ~your-urbit:dojo> +cat /=sandbox=/web/md
+```
+
+Now let's navigate to that folder using `=dir`, which is a like `cd` in unix.
+
+```
+~your-urbit:dojo> =dir /=sandbox=/web/md
+```
+
+Youl'll notice that your prompt is now `~your-urbit:dojo/sandbox/web/md>`. To
+change back to our home directory:
+
+```
+~your-urbit:dojo> =dir
 ```
 
 Sync from your friend `~some-ship`'s `%experiment` desk to your
@@ -51,22 +93,22 @@ Sync from your friend `~some-ship`'s `%experiment` desk to your
 
 ### Paths
 
-A path in Clay is a list of URL-safe text, restricted to
-`[a z]`,`[0 9]`, `.`, `-`, `_` and `~`. Formally this is a `(list knot)`
+A path in Clay is a list of URL-safe text, restricted to the characters
+`[a z]`,`[0 9]`, `.`, `-`, `_`, and `~`. Formally this is a `(list knot)`
 where each segment is a `@ta`.
 
 Paths can be expressed as either `/foo/bar/baz` or `[%foo %bar %baz]`.
 The first three segments of an urbit path are `/plot/desk/case`, for
 example `/~dozbud/home/1`.
 
-#### Relative paths
+##### Relative paths
 
-Relative paths are expressed using `%` which is roughly equivalent to
+Relative paths are expressed using `%`, which is roughly equivalent to
 Unix `.`. `%%` is `..` and `%%%` is what you would expect `...` to be.
 There are no local relative paths. `foo/bar` must be written
 `%/foo/bar`.
 
-#### Substitution
+##### Substitution
 
 If the default path is `/foo/bar/baz`, `/=/moo` means `/foo/moo`, and
 `/=/moo/=/goo` means `/foo/moo/baz/goo`. Also, instead of `/=/=/zoo` or
@@ -77,11 +119,33 @@ number in the `dojo`. Instead of writing
 `/~your-urbit/home/4/path/to/file` you can just write
 `/=home=/path/to/file`.
 
-### Revision-control
+##### Changing directories
+
+Change the working directory with `=dir`. It's our equivalent of the Unix `cd`.
+
+For example, the syntax to navigate to `/home/gen/ask` is:
 
 ```
-|mount clay-path [unix-name]
+~your-urbit:dojo> =dir /=gen=/ask
 ```
+
+This command will turn your prompt into something like this:
+
+```
+~your-urbit:dojo/gen/ask>
+```
+
+Using `=dir` without anything else uses the null path, which
+returns you to your home desk.
+
+```
+~your-urbit:dojo> =dir
+```
+
+
+### Revision-control
+
+Syntax: `|mount /clay/path [unix-name]`
 
 Mount the `clay-path` at the unix mount point `unix-name`.
 
@@ -190,7 +254,7 @@ Example:
 
 `%init` - Used if it's the first commit to a desk. Also can be used to
 "reinitialize" a desk -- revision numbers keep going up, but the new
-revision isn't necessarily a descendent of the previously-numbered
+revision isn't necessarily a descendent of the previously numbered
 version, allowing merges to be rerun.
 
 `%this` - Keep what's in Bob's desk, but join the ancestry.

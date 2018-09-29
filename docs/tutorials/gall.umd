@@ -9,6 +9,9 @@
 
 This is documentation about how to write Gall apps.  Some knowledge of Hoon is assumed.
 
-> Note: the last major revision of these lessons was in 2016.  They need to be rewritten; in some ways they are outdated, and in other ways they were not always accessible enough to beginners.  We are planning to rewrite these in the near future.  In the meantime there is still useful information to be found.
+> Note: the last major revision of these lessons was in 2016.  They need to be
+  rewritten; in some ways they are outdated, and in other ways they were not
+  always accessible enough to beginners.  We are planning to rewrite these in the
+  near future.  There is still useful information to be found in the meantime.
 
 ;list;

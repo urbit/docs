@@ -20,9 +20,9 @@ forum: [fora.urbit.org](https://fora.urbit.org). You can also chat
 with us at [urbit.org/stream](https://urbit.org/stream).
 
 > Urbit is alpha software. It’s not yet completely stable, its crypto
-> hasn’t been audited, and there are plenty of rough edges. Urbit is
-> lots of fun to play with, but not quite ready for your important or
-> sensitive data.
+  hasn’t been audited, and there are plenty of rough edges. Urbit is
+  lots of fun to play with, but not quite ready for your important or
+  sensitive data.
 
 ## Build from source
 
@@ -53,13 +53,18 @@ re2c
 
 ### Instructions
 
-First, you'll install the required dependencies to build Urbit from source. Then, you'll clone the Urbit source code, hosted on Github. Next, you'll bootstrap the Git submodules needed for the build. Lastly, you'll run a [Meson](https://github.com/mesonbuild/meson) build on the Urbit source to create your Urbit binary for your host operating system. Then, finally, you'll be able to boot your urbit.
+First, you'll install the required dependencies to build Urbit from source.
+Then, you'll clone the Urbit source code, hosted on Github. Next, you'll
+bootstrap the Git submodules needed for the build. Lastly, you'll run a
+[Meson](https://github.com/mesonbuild/meson) build on the Urbit source to create
+your Urbit binary for your host operating system. Then, finally, you'll be able
+to boot your urbit.
 
 For your host OS platform and relevant package installer, run the respective Bash shell commands listed below in a fresh terminal window to get Urbit installed:
 
 > For those new to the command line, see:
-> - Mac: [Introduction to the Mac OS X Command Line](http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line)
-> - Linux: [An Introduction to the Linux Terminal](https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal)
+  - Mac: [Introduction to the Mac OS X Command Line](http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line)
+  - Linux: [An Introduction to the Linux Terminal](https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal)
 
 #### macOS
 
@@ -318,7 +323,7 @@ After running your installed `urbit` command, check to see if the following outp
 $ urbit
 Urbit: a personal server operating function
 https://urbit.org
-Version 0.5.1
+Version 0.6.0
 
 Usage: urbit [options...] ship_name
 where ship_name is a @p phonetic representation of an urbit address

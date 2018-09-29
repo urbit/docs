@@ -421,11 +421,11 @@ Either the unwrapped value of `a` (`u.a`), or crash.
 
 Wrap value in a unit
 
-Takes any atom `a` and produces a [`++unit`]() with the value set to `a`.
+Takes any atom `a` and produces a `++unit` with the value set to `a`.
 
 #### Accepts
 
-`a` is a [noun]().
+`a` is a noun.
 
 #### Produces
 

@@ -189,7 +189,7 @@ XX document
 
 To lowercase
 
-Produce the case insensitive (all lowercase) [`++cord`]() of a [`++tape`]().
+Produce the case insensitive (all lowercase) `++cord` of a `++tape`.
 
 #### Accepts
 

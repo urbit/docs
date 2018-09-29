@@ -10,10 +10,14 @@ Hosting a static tree of content is easy.  Let's put together a really
 simple site for an imaginary Urbit meetup group.
 
 We assume you have at least followed the beginning of [our first
-example](./blog) and created a desk called `site` and mounted it to
+examples](/../blog) and created a desk called `site` and mounted it to
 unix.
 
-Note: below we use Urbit's implementation of markdown, UMD.  This version of markdown allows you to use snippets of Hoon code but not HTML.  In particular, we use Sail, a subset of Hoon.  This Sail is rendered as HTML when the file is served to a client.  To learn about UMD and Sail, head over to the Tutorial section of the docs.
+Note: below we use Urbit's implementation of Markdown, Urbit Markdown (UMD).
+This version of markdown allows you to use snippets of Hoon code but not HTML.
+In particular, we use Sail, a subset of Hoon.  This Sail is rendered as HTML
+when the file is served to a client.  To learn about UMD and Sail, head over to
+the Tutorial section of the docs.
 
 In `site/web/meet.umd` put:
 
@@ -60,7 +64,9 @@ Then put the following in `site/web/about.umd`:
 
 ## Mission statement
 
-The existing framework cannot subdue the new human force that is increasing day by day alongside the irresistible development of technology and the dissatisfaction of its possible uses in our senseless social life.
+The existing framework cannot subdue the new human force that is increasing day
+by day alongside the irresistible development of technology and the
+dissatisfaction of its possible uses in our senseless social life.
 
 ## Members
 
@@ -133,5 +139,5 @@ Discussion on getting urbit to power Kaneda's motorcycle.
 Here we just use the `comments` frontmatter to enable comments on the page.
 Adding other imaginary projects is left to the reader.
 
-Building a static site takes only a few minutes and a few markdown
+Building a static site takes only a few minutes and a few Urbit Markdown
 files.  Have fun!

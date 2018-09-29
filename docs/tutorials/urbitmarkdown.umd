@@ -16,7 +16,6 @@ allowing it to be used as standalone prose in its own file or embedded inside a
 Hoon source file, in which case it will be parsed into a tree of HTML nodes
 using Hoon's XML-templating syntax, Sail.
 
-
 This document is itself written in Urbit Markdown, and its source file is of the
 Urbit Markdown `.umd` extension. As such, we use some `formatted text` to make
 it clear what is and isn't code, and to display that code to you instead of
@@ -27,6 +26,9 @@ CommonMark standard, but there are enough differences that you shouldn't rely on
 existing knowledge of the latter. Urbit Markdown generally supports only one
 syntax for each type of HTML node it emits. Urbit Markdown is also stricter than
 Markdown: some syntax errors will prevent the file from being parsed at all.
+
+We provide a few simple examples [here](#examples) of how to publish
+Urbit Markdown files using our web interface.
 
 
 ### Getting Started
@@ -39,7 +41,8 @@ web-server, called [Eyre](https://urbit.org/docs/using/web/), that can be found
 at `http://localhost:8080/` if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. If you can't find your ship on one of these for some reason, try the
-next one.
+next one. When a ship starts, it will print a message like
+`http: live (insecure, public) on 8081` to let you know what port it's using.
 
 That server has access to source files located in `/<your-urbit>/home/web` and
 any sub-folders thereof (except for `/home/web/pages`, which has special
@@ -613,3 +616,11 @@ Produces:
     ;small: [reactive publishing intensifies]
   ==
 ==
+;h2
+  ;div(id "examples"): Examples
+==
+
+We've created a few simple examples of how to get set up publishing content from
+your Urbit.  Feel free to ask questions in the comments.
+
+;list;

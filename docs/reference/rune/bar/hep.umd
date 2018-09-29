@@ -26,8 +26,8 @@ point". Since `|-` makes a `|.` (["bardot"](../dot), a core
 with one arm named `$`, we can recurse back into it with `$()`.
 
 > `$()` expands to `%=($)` (["centis"](../../cen/tis)),
-> accepting a *jogging* body containing a list of changes to
-> the subject.
+  accepting a *jogging* body containing a list of changes to
+  the subject.
 
 ## Examples
 

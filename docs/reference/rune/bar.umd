@@ -7,7 +7,9 @@
 
 # Cores `|` "bar"
 
-Core expressions produce cores. A core is a cell of `[battery payload]`.  The `battery` is code, a battery of Nock formulas.  The `payload` is the data needed to run those formulas correctly.
+Core expressions produce cores. A core is a cell of `[battery payload]`.
+The `battery` is code, a battery of Nock formulas.  The `payload` is the data
+needed to run those formulas correctly.
 
 Four core runes (`|=`, `|.`, `|-`, and `|*`) produce a
 core with a single arm, named `$`. We can recompute this arm

@@ -17,7 +17,7 @@ A cold (fixed) atom `q` with aura `p`.
 
 ### Syntax
 
-Irregular: any warm atom [(`%sand`)](../sand/) form, prefixed with `%`.
+Irregular: any warm atom [(`%sand`)](../warm/) form, prefixed with `%`.
 
 Irregular: e.g., `%hi`.  Character constraints: `a-z`
 lowercase to start, `a-z` or `0-9` thereafter, with infix

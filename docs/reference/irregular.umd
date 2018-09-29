@@ -38,13 +38,13 @@ I: `+(p)`
 R: `.=(p q)`
 I: `=(p q)`
 
-## ; sem (make)
+## ; mic (make)
 
 Miscellaneous useful macros.
 
-### ;: semcol
+### ;: miccol
 
-[docs](../rune/sem/col/) \\:
+[docs](../rune/mic/col/) \\:
 `[%smcl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 R: `;:(p q)`
@@ -217,7 +217,7 @@ I: `p=q`
 - `|` loobean false.
 - `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
 
-See [%sand](../atom/sand/) for other irregular definitions of atoms.
+See [%sand](../rune/constant/warm) for other irregular definitions of atoms.
 
 ### List addressing
 
@@ -226,7 +226,7 @@ See [%sand](../atom/sand/) for other irregular definitions of atoms.
 
 ### Limbs
 
-[docs](../limb/limb/) \\+\\.\\^
+[docs](../rune/limb/limb/) \\+\\.\\^
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
 - `+15` is slot 15
@@ -249,7 +249,7 @@ See [%sand](../atom/sand/) for other irregular definitions of atoms.
 
 ### Wings
 
-[docs](../limb/wing/)
+[docs](../rune/limb/wing/)
 `[%wing p=(list limb)]`; a limb search path.
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 

@@ -7,17 +7,17 @@
 
 # Blog comments
 
-If you followed [our previous example](./blog) you should have a
+If you followed [our previous example](../blog) you should have a
 simple blog accessible at `your-urbit.urbit.org/blog`.  Here we'll
 enable comments on a post.
 
-First, turn comments on by editing the frontmatter in `post-1.umd`.  Your frontmatter
-should look like this:
+First, turn comments on by editing the frontmatter in `post-1.umd`.  Your
+frontmatter should look like this:
 
 ```
 :-  :~  navhome/'/blog'
         type/'post'
-        date/'~2016.6.20'
+        date/'~2018.6.20'
         title/'Blog comments'
         comments/'true'
     ==
