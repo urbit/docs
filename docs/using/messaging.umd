@@ -140,6 +140,8 @@ Last, let's create a channel we can invite some friends to:
 
 Now you can tell your friends to `;join ~your-urbit/my-channel`.
 
+---
+
 ;h2
   ;div(id "manual"): Manual
 ==
@@ -165,7 +167,7 @@ ones you can use from within Talk: lines, URLs, Hoon and replies.
 
 A line is simply a string of text. Depending on the filtering rules set
 by the circle's host, these may or may not include uppercase and Unicode
-characters.
+characters (see [filter](#filter)).
 
 If the line starts with `@`, it's an action (like `/me` in IRC).
 
@@ -260,7 +262,7 @@ or if there's additional information available — as is the case with
 replies and attachments — activating the message will show you all the
 details.
 
-You can activate the most recent line with `;`, the second-most recent
+You can also activate the most recent line with `;`, the second-most recent
 with `;;`, and so on.
 
 ### Creating and managing circles
@@ -322,7 +324,9 @@ For example:
 sampel-palnet:talk> ;depict %coolbox 'cool messages only. NO EXCEPTIONS.'
 ```
 
-###### Filter
+;h6
+  ;div(id "filter"): Filter
+==
 
 Syntax: `;filter %name [capitals] [unicode]`
 

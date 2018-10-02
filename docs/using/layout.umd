@@ -41,7 +41,7 @@ LICENSE/txt app/ gen/ lib/ mar/ ren/ sec/com/ sur/ sys/ tests/ web/
 
 Let's step through, directory by directory.
 
-## `sys/`
+## sys/
 
 This is where the Arvo kernel lives. `sys/` contains:
 
@@ -102,7 +102,7 @@ That's it. That's the whole system.
 
 ---
 
-## `app/`
+## app/
 
 This is where [Gall](../../tutorials/gall) apps live. Gall apps are stateful
 servers, sort of like unix daemons. One familiar one is `app/hall.hoon` which is
@@ -111,13 +111,13 @@ layer. And there's also `app/dojo.hoon` — that's your shell.
 
 ---
 
-## `gen/`
+## gen/
 
 `gen/` holds generators. Generators are short Dojo scripts.
 
 ---
 
-## `lib/`
+## lib/
 
 `lib/` holds shared libraries for programs. `lib/sole` is a good
 example — that's the console library that's shared by both Dojo in the
@@ -125,14 +125,14 @@ command line, and the Dojo web client.
 
 ---
 
-## `mar/`
+## mar/
 
 This is where marks live. Marks are data type definitions used by Ford.
 A mark is like a mime-type, but specified in executable code.
 
 ---
 
-## `ren/`
+## ren/
 
 These are web renderers. A renderer handles web requests of a particular
 type.
@@ -143,34 +143,35 @@ and `JS` and adds some routing magic for certain paths.
 
 ---
 
-## `sec/`
+## sec/
 
 Here are security drivers that Urbit uses to log into the APIs of various
 non-Urbit services.
 
 ---
 
-## `sur/`
+## sur/
 
 `sur/` contains shared data structures. Files in `sur` are like header
 files in C.
 
 ---
 
-## `tests/`
+## tests/
 
-`tests/` contains code that tests them.
+`tests/` is the conventional place to put tests that use the +test generator and
+lib/test/*
 
 ---
 
-## `web/`
+## web/
 
 Here are files publicly accessible to the web, as made possible by
 [Eyre](../web).
 
 ---
 
-## `web.md`
+## web.md
 
 This is the homepage for your urbit. You'll see it at
 `http://localhost:8080/` or `https://your-urbit.urbit.org/`.

@@ -170,8 +170,12 @@ Let's quickly step through the default contents of `web/`:
 - `static.umd` - Sample static file
 - `talk/` - Talk compiled JS / CSS
 - `talk.hoon` - Page body that loads the `talk` React module.
+- `testing.umd` - Guide to writing unit tests in Urbit
 - `tree/` - Tree compiled JS / CSS
 - `tree.hoon` - Page body that loads the `tree` React module.
+- `unmark/` - Used for testing `.umd`.
+- `womb/` - Womb compiled by JS/CSS
+- `womb.hoon` - Used for issuing planets on the test network.
 
 ## Tree
 

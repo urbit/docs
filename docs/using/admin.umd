@@ -74,7 +74,7 @@ line) and the record (everything above that). The record is shared; all
 the output from all the apps in your command set appears in it. The
 prompt is multiplexed.
 
-In the CLI Urbit apps can process your input before you hit return. To
+In the CLI, Urbit apps can process your input before you hit return. To
 see this in action try entering `)` as the first character at the Dojo
 prompt. Since there is no Dojo command or Hoon expression that starts
 with ')', the Dojo rejects it.
@@ -136,7 +136,7 @@ you, in turn, can sign the keys for moons.  The basic idea is: your planet runs
 permanently in a data center somewhere and moons run on all your devices.  Each
 planet can issue ~4 billion (`2^32`) moons.
 
-To generate a random moon from your planet run:
+To generate a random moon from your planet, run:
 
 ```
 ~your-urbit:dojo> +moon
@@ -156,14 +156,14 @@ the resulting directory is a rather unwieldy moon name.
 Here's how an example moon might be booted:
 
 ```
-$ urbit -w faswep-navred-sampel-palnet -t habref-mebsem-harrut-batlus -c mymoon
+$ urbit -w faswep-navred-sampel-palnet -t habref-mebsem-parsym-batlus -c mymoon
 ```
 
 
 Moons are automatically synced to their parent `%kids` desk, and can control
 applications on their parent planet using `|link`.  You can read more about
-those things in the [filesystem](/../filesystem) and [console](/../shell)
-walkthroughs.
+those operations in the [filesystem](/../filesystem) and [console](/../shell)
+walkthroughs, respectively.
 
 
 ## Continuity breaches
@@ -193,6 +193,7 @@ $ openssl req -x509 -sha256 -newkey rsa:4096 -keyout private.pem -out certificat
 $ mkdir -p your-urbit/.urb/tls
 $ mv private.pem certificate.pem your-urbit/.urb/tls
 ```
+
 These certificates would have to be manually trusted by your browser, and it's
 advisable that they are used only for your localhost.
 For public-facing webservers, it would be better to create certificates for your

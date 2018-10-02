@@ -8,16 +8,12 @@
 
 # Shell (Dojo)
 
-;div(class "row")
-  ;div(class "col-md-8")
 
 The Dojo is our shell; it processes system commands and returns output. It's a
 good place to quickly experiment with Urbit. On the surface the Dojo is just a
 Hoon REPL. On the inside, the Dojo is a system for operating on and transforming
 data in Urbit.
 
-  ==
-==
 
 ## Quickstart
 
@@ -37,25 +33,24 @@ Tall-form Hoon may require multiple lines:
 
 ```
 ~your-urbit:dojo> %+  add
-~your-urbit:dojo<   2
+~your-urbit:dojo< 2
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the subject](/../../tutorials/hoon-ch1/hoon-ch1-3).
-The Dojo has its own subject, and that's where Hoon's equivalent of variables
-are stored.
+Hoon uses something called [the subject](../../tutorials/hoon-ch1/hoon-ch1-3).
+The Dojo has its own subject, and that's where Hoon's equivalent of variables,
+called faces, are stored.
 
-Use `=var` to save variable to the Dojo subject.
+Use `=var` to save faces to the Dojo subject.
 
 ```
 ~your-urbit:dojo> =foo (add 2 2)
 ```
 
 Note, however, that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a
-variable in a `.hoon` file in this way.
+face in a `.hoon` file in this way.
 
 ##### System Commands
-
 
 Use `=dir` to set the current working directory:
 
@@ -84,76 +79,92 @@ Run system commands from `:hood`, like `reload`, using `|`:
 ~your-urbit:dojo> |reload %eyre
 ```
 
-`_See the [Clay](../fileystem) page for more information on system commands.`
-
 ### Generators
 
 Generators are short Hoon scripts, saved as `.hoon` files in the `/gen`
 directory. Many Dojo commands exist in the form of generators. The syntax for
 running a generator is `+genname` for a generator saved as `genname.hoon`.
 
-`+cat` - Accepts a path and displays the file. Similar to Unix `cat`.
+##### +cat
+
+Accepts a path and displays the file. Similar to Unix `cat`.
 
 ```
-~your-urbit:dojo> +cat /~talsur-todres/home/gen/curl/hoon
+~your-urbit:dojo> +cat %/gen/curl/hoon
 ```
 
-`+code` - Generates a code to remotely log into your ship.
+##### +code
+
+Generates a code that is used to remotely log into your ship. No
+arguments.
 
 ```
 ~your-urbit:dojo> +code
 ```
 
-`+curl` - Retrives data from a URL. Accepts a `tape`. Similar to Unix
-`curl`.
+##### +curl
+
+Retrives data from a URL. Accepts a `tape`. Similar to Unix `curl`.
 
 ```
 ~your-urbit:dojo> +curl "http://nyt.com"
 ```
 
-`+hello` - Just prints the argument. Accepts a `@ta`.
+##### +hello
+
+Just prints the argument. Accepts a `@ta`.
 
 ```
 ~your-urbit:dojo> +hello 'mars'
 ```
 
-`+ls` - Similar to Unix `ls`. Accepts a path.
+##### +ls
+
+Similar to Unix `ls`. Accepts a path.
 
 ```
 ~your-urbit:dojo> +ls %/web
 ~your-urbit:dojo> +ls /~talsur-todres/home/2/web/notes
 ```
 
-`+moon` - Generates a random moon from a planet. No arguments.
+##### +moon
+
+Generates a random moon from a planet. No arguments.
 
 ```
 ~your-urbit:dojo> +moon
 ```
 
-`+solid` - Compile the current state of the kernel and output a
-noun. Usually downloaded to a file in unix. No arguments.
+##### +solid
 
+Compile the current state of the kernel and output a
+noun. Usually downloaded to a file in unix. No arguments.
 
 ```
 ~your-urbit:dojo> .urbit/pill +solid
 ```
 
-`+test` - Testrunner. Can test multiple generators at once, conventionally ones
-in the `/test` folder. Accepts a path.
+##### +test
+
+Testrunner. Can test multiple generators at once, conventionally ones
+in the `/test` folder. Takes a path.
 
 ```
 ~your-urbit:dojo> +test /lib
 ```
 
-`+ticket` - Generate a ticket for an Urbit plot. Takes an Urbit name
-(`@p`).
+##### +ticket
+
+Generate a ticket for an Urbit ship. Takes an Urbit name (`@p`).
 
 
 ```
 ~your-urbit:dojo> +ticket ~talsur-todres-your-urbit
 ```
 
-`+tree` - Generate a recursive directory listing. Takes a path.
+##### +tree
+
+Generate a recursive directory listing. Takes a path.
 
 ```
 ~your-urbit:dojo> +tree %/web
@@ -170,7 +181,7 @@ an urbit name (`@p`) and a string (`tape`, which is text wrapped with double-quo
 ~your-urbit:dojo> |hi ~binzod "you there?"
 ```
 
-`|link` / `|unlink - Link / unlink a remote app. Accepts an
+`|link` / `|unlink` - Link / unlink a remote app. Accepts an
 Urbit name and an app name.
 
 ```
@@ -191,17 +202,19 @@ number of vane names.
 ~your-urbit:dojo> |reload %clay %eyre
 ```
 
-**`|reset`** - Reloads `hoon.hoon` and all modules. No arguments.
+*`|reset`* - Reloads `hoon.hoon` and all modules. No arguments.
 
 ```
 ~your-urbit:dojo> |reset
 ```
 
-**`|start`** - Starts an app. Accepts an app name.
+*`|start`* - Starts an app. Accepts an app name.
 
 ```
 ~your-urbit:dojo> |start %curl
 ```
+
+---
 
 ## Manual
 
@@ -209,7 +222,7 @@ number of vane names.
 Sources and sinks
 ==
 
-A dojo command is either a source or a sink. A source is just something
+A Dojo command is either a *source* or a *sink*. A source is just something
 that can be printed to your console or the result of some computation. A
 sink is an *effect*: a change to the filesystem, a network message, a
 change to your environment, or typed message to an app.
@@ -233,11 +246,11 @@ Set any environment variable:
 Make sure to note that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a
 variable in a `.hoon` file in this way.
 
-#### Special Variables
+##### Special Variables
 
-There are a few special variables that the dojo maintains.
+There are a few special variables that the Dojo maintains.
 
-#### `:` - Send to app
+##### `:` - Send to app
 
 `:app` goes to a local `app`, `:~ship/app` goes to the `app` on `~ship`.
 
@@ -249,18 +262,18 @@ Send a `helm-hi` message to `hood`:
 
 Apps usually expect marked data, so `&` is often used here.
 
-#### `*` - Save in `%clay`
+##### `*` - Save in `%clay`
 
-Save a new `md` file in `web`:
+Save a new `.umd` file in `web`:
 
 ```
-~your-urbit:dojo> *%/web/foo/md '# hello'
+~your-urbit:dojo> *%/web/foo/umd '# hello'
 ```
 
 The last component of the path is expected to be the mark (or mime
 type).
 
-#### `.` - Export to Unix
+##### `.` - Export to Unix
 
 Export a noun to Unix with `.`:
 
@@ -280,7 +293,7 @@ Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`
 
 ### Sources
 
-#### `&` - Mark conversion
+##### `&` - Mark conversion
 
 Convert between marks using `&`:
 
@@ -289,14 +302,14 @@ Convert between marks using `&`:
 '<html><head></head><body><div><h1 id="-hello">hello</h1></div></body></html>'
 ```
 
-#### `_` - Run a function
+##### `_` - Run a function
 
 Use `_` to run a gate (or function):
 
 Write an arbitrary function and pass data to it:
 
 ```
-~your-urbit:dojo> _|=({a/@} (mul a 3)) 3
+~your-urbit:dojo> _|=([a=@] (mul a 3)) 3
 9
 ```
 
@@ -307,7 +320,7 @@ Use a function to get the status code from an http request:
 301
 ```
 
-#### `+` `-` - HTTP requests
+##### `+` `-` - HTTP requests
 
 `+http[s]://example.com` - sends a GET request
 
@@ -319,16 +332,17 @@ JSON `"hi"` in the body.
 
 Note that the first of these is a source while the last two are sinks.
 
-#### `+` - Generators
+##### `+` - Generators
 
-Generators are simple hoon scripts loaded from the filesystem. They live
+Generators are simple Hoon scripts loaded from the filesystem. They live
 in `gen/`.
 
-Create a random moon (from any planet):
+An example of a generator that is built into your urbit is `+code`. It produces
+the code needed to log into your ship remotely.
 
 ```
-~your-urbit:dojo> +moon
-"moon: ~docsun-tamtem-your-urbit; ticket: ~bartug-hodbyr-fognum-ralmud"
+~your-urbit:dojo> +code
+fintyr-haldet-fassev-solhex
 ```
 
 ### Variables
@@ -336,53 +350,49 @@ Create a random moon (from any planet):
 You can use `=` to set an environment variable in Dojo, but there are
 a few reserved names that have special uses.
 
-#### `dir`
+##### dir
 
 Current working `%clay` desk and revision. Read / write.
 
-**Examples:**
+*Examples:*
 
 ```
 ~your-urbit:dojo> =dir %/web
 ~your-urbit:dojo> +ls %
-404/hoon docs/ dojo/hoon lib/ listen/hoon md static/md talk/ tree/main/
+404/hoon docs/ dojo/hoon lib/ listen/hoon md static/umd talk/ testing/umd tree/main/ unmark/ womb/
 ```
 
-#### `lib`
+##### lib
 
-Current set of libraries (`/lib`) in your environment. Can also be set
+Current set of libraries (`/lib`) in your environment. Can be set
 with `/+`. Read / write.
 
-**Examples:**
+*Examples:*
 
 ```
-~your-urbit:dojo> =lib ~[[%react ~]]
-~your-urbit:dojo> ::  this also works:
 ~your-urbit:dojo> /+  react
 ~your-urbit:dojo> ::  now we can use arms from lib/react.hoon
 ~your-urbit:dojo> (react-vale:react %div)
 ```
 
-#### `sur`
+##### sur
 
-Current set of structures (`/sur`) in your environment. Can also be set
+Current set of structures (`/sur`) in your environment. Can be set
 with `/-`. Read / write.
 
-**Examples:**
+*Examples:*
 
 ```
-~your-urbit:dojo> =sur ~[[%sole ~]]
-~your-urbit:dojo> ::  this also works:
 ~your-urbit:dojo> /-  sole
 ~your-urbit:dojo> ::  now we can use arms in sur/sole.hoon
 ~your-urbit:dojo> `sole-effect:sole`[%bel ~]
 ```
 
-#### `now`
+##### now
 
 The current (128-bit `@da`) time. Read-only.
 
-**Example:**
+*Example:*
 
 ```
 ~your-urbit:dojo> now
@@ -390,11 +400,11 @@ The current (128-bit `@da`) time. Read-only.
 ~2016.3.21..21.10.57..429a
 ```
 
-#### `our`
+##### our
 
-The current urbit plot. Read-only.
+The current urbit ship. Read-only.
 
-**Example:**
+*Example:*
 
 ```
 ~your-urbit:dojo> our
@@ -402,11 +412,11 @@ The current urbit plot. Read-only.
 ~your-urbit
 ```
 
-#### `eny`
+##### eny
 
 512 bits of entropy. Read-only.
 
-**Example:**
+*Example:*
 
 ```
 ~your-urbit:dojo> eny
@@ -419,5 +429,5 @@ The current urbit plot. Read-only.
 ## Troubleshooting
 
 If you encounter `%dy-edit-busy` while entering commands, it is
-because your dojo is blocked on a timer or an http request. Type backspace
-and your dojo will end the blocked command.
+because your Dojo is blocked on a timer or an HTTP request. Type backspace
+and your Dojo will end the blocked command.
