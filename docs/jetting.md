@@ -187,7 +187,6 @@ For each jet you will write one u3we() function and one u3qe() function.
           u3_noun u3qe_zzz(u3_noun, u3_noun, u3_atom, u3_atom);
 
 * create a new .c file to hold your jets (both the u3we_() and u3qe_() functions go in the same file).  For example, ~/tlon/urbit/jets/e/secp.c
-  (The choice of subdirectory under 'jets' (a through g) is XXX )
    The new file should have three things:
    1.   \#include "all.h"
    1.   the new u3we() function
@@ -487,7 +486,7 @@ First, you may need to massage your inputs a bit to get them into types that you
 You have received a bunch of u3_nouns or u3_atoms, but you presumably want to do
 things in a native C / non-Hoon manner: computing w raw integers, etc.
 
-A u3_noun will want to be further diassembled into atoms. XXX
+A u3_noun will want to be further diassembled into atoms. 
 
 A u3_atom represents a simple number, but the implementation may or
 may not be simple.  If the value held in the atom is 31 bits or less,
@@ -516,8 +515,6 @@ If you need to get the size
 ```
    u3r_met(3, a);
 ```   
-
-(N.B. You may want to use u3r_bytes regardless, as 
 
 The actual meat of the function is up to you.  What is it supposed to do?
 
@@ -587,8 +584,8 @@ are just recursive calls to the cell constructor u3i_cell() e.g.
 		 u3i_cell(a, u3i_cell(b, u3i_cell(c, d));
 ```
 
-XXX more here about memory model, allocation, ownership
-
+Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important.  
+Some info is available at https://www.urbit.org/docs/vere/nouns/
 
 
 ## Compile the C code
@@ -630,7 +627,7 @@ The only way to run the new code is to follow the following process:
 	1. rm -rf ~/tlon/mypill.pill
     1. ~/tlon/urbit/build/urbit  -FI zod -A ~/bus/tlon/arvo/ -c zod
 	This should take < 90 seconds.
-	1. If you accidentally exit urbit you can restart it XXX
+	1. If you accidentally exit urbit you can restart it 
 1. inside your urbit, from the dojo command line, load the hoon files and compile them into a pill file:
     1. .pill +solid
 	This should take < 90 seconds.
