@@ -74,7 +74,16 @@ If this describes your task, read this section.  If not, skip to the next sectio
 
 The steps above add a submodule to the urbit repo.  Or, more specifically, they add a specific version of the submodule to the repo.
 
-If the submodule has commits made to it (perhaps, the urbit repo will not track those new commits. XXXX)
+If the submodule has commits made to it after that point it time, the urbit repo will not automatically track those new commits.
+
+To make urbit use an updated version of the submodule:
+
+1. change to the submodule directory: cd submodule_dir
+1. checkout desired branch: git checkout master
+1. update: git pull
+1. get back to your project root : cd ..
+1. now the submodules are in the state you want, so: git commit -am "Pulled down update to submodule_dir"
+
 
 
 ## Edit the source code
@@ -502,6 +511,11 @@ or
 ```
    u3r_bytes(c3_w    a_w, c3_w    b_w, c3_y*   c_y, u3_atom d)
 ```
+
+If you need to get the size
+```
+   u3r_met(3, a);
+```   
 
 (N.B. You may want to use u3r_bytes regardless, as 
 
