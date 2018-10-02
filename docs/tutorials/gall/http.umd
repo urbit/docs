@@ -84,17 +84,9 @@ code quoted above includes a bunch of otherwise unnecessary faces for
 the purpose of illustration. Compare: `[%hiss p=(unit iden) q=mark
 r=cage]` from `zuse`.
 
-> You can grep zuse.hoon and arvo.hoon for most of these definitions.
-> However, beware the ambiguity surrounding "hiss": there's ++hiss in
-> section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the
-> move that is sent to %eyre to make our HTTP request happen. Here we're
-> talking about the latter. See `++kiss-eyre` in `zuse`.
+> You can grep zuse.hoon and arvo.hoon for most of these definitions. However, beware the ambiguity surrounding "hiss": there's ++hiss in section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the move that is sent to %eyre to make our HTTP request happen. Here we're talking about the latter. See `++kiss-eyre` in `zuse`.
 
-> Recall that `++unit` means "maybe".  Formally, "`(unit a)` is
-> either null or a pair of null and a value in `a`". Also recall
-> that to pull a value out of a unit (`u.unit`), you must first
-> verify that the unit is not null (for example with `?~`). See
-> `++need`.
+> Recall that `++unit` means "maybe".  Formally, "`(unit a)` is either null or a pair of null and a value in `a`". Also recall that to pull a value out of a unit (`u.unit`), you must first verify that the unit is not null (for example with `?~`). See `++need`.
 
 A `purl` is a parsed url structure, which can be created with `++epur`,
 which is a function that takes a url as text and parses it into a `(unit
@@ -107,9 +99,7 @@ response, which we handle later on in `++sigh-httr`.
 For `%wait`, you just pass a [`@da`]() (absolute date), and arvo will
 produce a `%wake` when the time comes.
 
-> A timer is guaranteed to not be triggered before the given
-> time, but it's currently impossible to guarantee the timer will be
-> triggered at exactly the requested time.
+> A timer is guaranteed to not be triggered before the given time, but it's currently impossible to guarantee the timer will be triggered at exactly the requested time.
 
 Let's take a look at our state:
 
@@ -130,9 +120,7 @@ of `value`, but make the default value be `value`".  Thus, our
 type is still a boolean, just like `?`, but the default value is
 `|` (false).
 
-> This is the same `_` used in `_+>.$`, which means "the same
-> type as the value "+>.$".  In other words, the same type as our
-> current context and state.
+> This is the same `_` used in `_+>.$`, which means "the same type as the value "+>.$".  In other words, the same type as our current context and state.
 
 Let's take a look at `++poke-atom`.  When we're poked with an atom, we
 first check whether the atom is `'off'`.  If so, we set our state
@@ -147,6 +135,7 @@ If the argument is neither 'off' nor 'on', then we assume it's an
 actual url, so we save it in `target`.
 
 Here's the move that sends the HTTP request:
+
 ```
 [ost.hid %hiss /request ~ %httr %purl (need (epur target))]
 ```

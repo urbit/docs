@@ -27,8 +27,8 @@ After starting `%gh` (`|start %gh`), let's look at the root of
 the tree that `%gh` exposes:
 
 ```
-    ~your-urbit:dojo> .^(arch %gy /=gh=)
-    [fil=~ dir={[p=~.issues q=~]}]
+~your-urbit:dojo> .^(arch %gy /=gh=)
+[fil=~ dir={[p=~.issues q=~]}]
 ```
 
 `%gh` is currently a skeleton -- it contains examples of all the
@@ -37,18 +37,18 @@ aren't implemented.  As we can see here, only issues are
 implemented.  We can explore this tree:
 
 ```
-    ~your-urbit:dojo> .^(arch %gy /=gh=/issues)
-    [fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
+~your-urbit:dojo> .^(arch %gy /=gh=/issues)
+[fil=~ dir={[p=~.by-repo q=~] [p=~.mine q=~]}]
 ```
 
 And eventually:
 
 ```
-    /-  gh
-    .^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
-    <issue...>
-    login.user:.^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
-    'philipcmonktest'
+/-  gh
+.^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
+<issue...>
+login.user:.^(issue:gh %gx /=gh=/issues/by-repo/philipcmonktest/testing/7)
+'philipcmonktest'
 ```
 
 The other thing an API connector needs to do is expose event
@@ -56,14 +56,14 @@ streams.  One straightforward way to use this capacity is with
 the `:pipe` app:
 
 ```
-    :pipe|connect %gh /listen/philipcmonktest/testing/issues/'issue_comment' %public
+:pipe|connect %gh /listen/philipcmonktest/testing/issues/'issue_comment' %public
 ```
 
 Now creating an issue results in the following message in your
 `%public` `:talk` channel:
 
 ```
-    ~your-urbit[philipcmonktest@github]: opened issue #11: i found a bug!
+~your-urbit[philipcmonktest@github]: opened issue #11: i found a bug!
 ```
 
 You'll also get notifications of issue status changes and
@@ -104,20 +104,20 @@ returned by a place).  This can just be a line at the top of the
 main core:
 
 ```
-    =+  connector=(connector move sub-result)  ::  Set up connector library
+=+  connector=(connector move sub-result)  ::  Set up connector library
 ```
 
 Most of the Github-specific logic is in `++places`, which is a
 list of all the places we can request.  A place consists of:
 
 ```
-    ++  place
-      $:  guard/mold
-          read-x/$-(path move)
-          read-y/$-(path move)
-          sigh-x/$-(jon/json (unit sub-result))
-          sigh-y/$-(jon/json (unit arch))
-      ==
+++  place
+  $:  guard/mold
+      read-x/$-(path move)
+      read-y/$-(path move)
+      sigh-x/$-(jon/json (unit sub-result))
+      sigh-y/$-(jon/json (unit arch))
+  ==
 ```
 
 - `guard`, the type of the paths we should match.  For example, to match `/issues/<user>/<repo>` use `{$issues @t @t $~}`.

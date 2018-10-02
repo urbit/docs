@@ -142,7 +142,7 @@ Two notes:
 
 - `bowl` is the type of the system state within our app. For example, it includes things like `our`, the name of the host urbit, and `now`, the current time.
 
-- You may have noticed the separate `|%` ([barcen](../../hoon/rune/bar/cen/)) above the application core `|_` ([barcab](../../hoon/rune/bar/cab/). We usually put our types in another core on top of the application core. We can access these type from our `|_` because in `hoon.hoon` files, all cores are called against each other. (The shorthand for 'called' is `=>`.) Thus, the `|%` with the types is in the context of the `|_`, as it lies above it: `hoon.hoon` `=> |% w types => |_`
+- You may have noticed the separate `|%` above the application core `|_`. We usually put our types in another core on top of the application core. We can access these type from our `|_` because in `hoon.hoon` files, all cores are called against each other. (The shorthand for 'called' is `=>`.) Thus, the `|%` with the types is in the context of the `|_`, as it lies above it: `hoon.hoon` `=> |% w types => |_`
 
 Here's some sample output of the two working together:
 

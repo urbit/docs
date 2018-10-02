@@ -62,7 +62,7 @@ from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
 In this case, `++poke-noun` takes an argument (*sample*) `arg` and
-prints it to dojo with `~&` ([sigpam](../../hoon/rune/sig/pam/)).
+prints it to dojo with `~&` ([sigpad](../../../reference/rune/sig/pad/)).
 This is an unusual rune that formally "does nothing", but the interpreter
 detects it and printfs the first child, before executing the second as if the
 first didn't exist. This is a slightly hacky way of printing to the console,
@@ -153,7 +153,7 @@ so we'll be getting quite used to them.
 
 *Exercise*:
 
-- Write an app that computes fizzbuzz on its input (as in the previous section).
+- Write an app that computes fizzbuzz on its input.
 
 ## Sending a message to another urbit
 

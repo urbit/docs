@@ -1,10 +1,10 @@
 :-  :~  navhome/'/docs/'
         sort/'6'
-        title/'Troubleshooting'
+        title/'Hoon Errors'
     ==
 ;>
 
-# Troubleshooting
+# Hoon Errors
 
 Ideally your Hoon works perfectly the first time.  But...
 
@@ -163,7 +163,7 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing.  This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ([*sigpam*](../rune/sig/pam)) is Hoon's debugging printf.
+`~&` ([*sigpad*](../rune/sig/pad)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
 ```

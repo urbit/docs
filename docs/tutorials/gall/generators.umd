@@ -31,10 +31,10 @@ Another generator is `+hood/merge`. Try running `+hood/merge` with the
 normal arguments for `|merge`:
 
 ```
-    ~fintud-macrep:dojo> +hood/merge %home our %they
-    [syd=%home her=~fintud-macrep sud=%they gem=%auto]
-    ~fintud-macrep:dojo> +hood/merge %home our %they, =gem %this
-    [syd=%home her=~fintud-macrep sud=%they gem=%auto]
+~fintud-macrep:dojo> +hood/merge %home our %they
+[syd=%home her=~fintud-macrep sud=%they gem=%auto]
+~fintud-macrep:dojo> +hood/merge %home our %they, =gem %this
+[syd=%home her=~fintud-macrep sud=%they gem=%auto]
 ```
 
 This didn't run any merge, it just constructed the command that, if sent
@@ -66,66 +66,63 @@ it lets the user optionally specify the message as well.
 We'll need a new mark for our arguments. Let's call it
 `examples-ping-message`.
 
-> For app-specific marks, it's good style to prefix the name of the mark
-> with the name of the app. Since many apps have several such marks,
-> subdirectories in `/mar` are rendered as `-`, so that `ping-message`
-> is written in (/mar/examples/ping/message.hoon).
+> For app-specific marks, it's good style to prefix the name of the mark with the name of the app. Since many apps have several such marks, subdirectories in `/mar` are rendered as `-`, so that `ping-message` is written in (/mar/examples/ping/message.hoon).
 
 ```
-    ::
-    ::::  /hoon/message/ping/examples/app
-      ::
-    /?    314
-    |_  [to=@p message=@t]
-    ++  grab
-      |%
-      ++  noun  [@p @t]
-      --
-    --
+::
+::::  /hoon/message/ping/examples/app
+  ::
+/?    314
+|_  [to=@p message=@t]
+++  grab
+  |%
+  ++  noun  [@p @t]
+  --
+--
 ```
 
 The app can easily be modified to use this (`/app/examples/ping.hoon`):
 
 ```
-    ::  Allows one ship to ping another with a string of text
-    ::
-    ::::  /hoon/ping/examples/app
-      ::
-    /?    314
-    |%
-      ++  move  [bone term wire *]
-    --
-    !:
-    |_  [bowl:gall state=$~]
-    ::
-    ++  poke-examples-ping-message
-      |=  [to=@p message/@t}
-      ~&  'sent'
-      ^-  [(list move) _+>.$]
-      :-  ^-  (list move)
-          :~  `move`[ost %poke /sending [to dap] %atom message]
-          ==
-      +>.$
-    ::
-    ++  poke-atom
-      |=  arg=@
-      ~&  'received'
-      ^-  [(list move) _+>.$]
-      ::
-      ~&  [%receiving (@t arg)]
-      [~ +>.$]
-    ::
-    ++  coup  |=(* `+>)
-    --
+::  Allows one ship to ping another with a string of text
+::
+::::  /hoon/ping/examples/app
+  ::
+/?    314
+|%
+  ++  move  [bone term wire *]
+--
+!:
+|_  [bowl:gall state=$~]
+::
+++  poke-examples-ping-message
+  |=  [to=@p message/@t}
+  ~&  'sent'
+  ^-  [(list move) _+>.$]
+  :-  ^-  (list move)
+      :~  `move`[ost %poke /sending [to dap] %atom message]
+      ==
+  +>.$
+::
+++  poke-atom
+  |=  arg=@
+  ~&  'received'
+  ^-  [(list move) _+>.$]
+  ::
+  ~&  [%receiving (@t arg)]
+  [~ +>.$]
+::
+++  coup  |=(* `+>)
+--
 ```
 
 Now we can run this with:
 
 ```
-    ~fintud-macrep:dojo> |start %examples-ping
-    >=
-    ~fintud-macrep:dojo> :examples-ping &examples-ping-message [~sampel-sipnym 'heyya']
-    >=
+~fintud-macrep:dojo> |start %examples-ping
+>=
+~fintud-macrep:dojo> :examples-ping &examples-ping-message [~sampel-sipnym 'heyya']
+>=
 ```
 
 And on `~sampel-sipnym`, assuming it's running `:examples-ping` as well,
@@ -137,9 +134,9 @@ mandatory, and optional arguments are hard. Let's make a generator,
 `:examples-ping`, let's put it in `/gen/examples/ping/send.hoon`:
 
 ```
-    :-  %say
-    |=  [^ [to=@p message=?($~ [text=@t $~])] $~]
-    [%examples-ping-message to ?~(message 'howdy' text.message)]
+:-  %say
+|=  [^ [to=@p message=?($~ [text=@t $~])] $~]
+[%examples-ping-message to ?~(message 'howdy' text.message)]
 ```
 
 A couple of new things here. Firstly, `message=?($~ [text=@t $~])`
@@ -154,10 +151,10 @@ anything that's in either `a` or `b`. Thus, in our case,
 This is run as follows:
 
 ```
-    ~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym
-    >=
-    ~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym 'how do you do'
-    >=
+~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym
+>=
+~fintud-macrep:dojo> :examples-ping|send ~sampel-sipnym 'how do you do'
+>=
 ```
 
 Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and

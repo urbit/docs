@@ -38,7 +38,7 @@ simplest way to interact with the Github API is to just fetch
 https://api.github.com from the dojo:
 
 ```
-    ~your-urbit:dojo> +https://api.github.com
+~your-urbit:dojo> +https://api.github.com
 ```
 
 Github exposes a few endpoints to the general web, and the root
@@ -91,7 +91,7 @@ you're logged in as.
 You can similarly POST:
 
 ```
-    ~your-urbit:dojo> +https://api.github.com/gists &json _(cork poja need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
+~your-urbit:dojo> +https://api.github.com/gists &json _(cork poja need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
 ```
 
 This creates a gist, go to `https://gist.github.com/<username>` to
@@ -107,7 +107,7 @@ Let's take a look at the code and see if we can figure out what's
 happening here:
 
 ```
-    /+    basic-auth
+/+    basic-auth
 ```
 
 First, we load a library called `basic-auth`.  This library
@@ -131,30 +131,14 @@ Additionally, a security driver contains at least one out of the
 five "special" arms:
 
 - `++filter-request` is a function which takes a hiss (http request) and produces a `sec-move` (defined in zuse), which is one of:
-
-```
-  * `[%send hiss]`, which sends the new hiss.  This is the
-    case in, for example, basic auth, where all we need to do is
-    add an extra header to the request.
-  * `[%give httr]`, where httr is an http response.  This
-    immediately returns an http response to the sender.
-  * `[%show purl]`, where a purl is a parsed url.  This displays
-    a message asking the user to visit the given url to continue
-    the authentication process.
-  * `[%redo ~]`, which redoes the request.
-
-  * `%eyre` calls `++filter-request` just before sending an HTTP
-  request to the specified domain.  This allows the security
-  driver to filter the requests, decorating them with
-  authentication data.
-```
-
+  - `[%send hiss]`, which sends the new hiss.  This is the case in, for example, basic auth, where all we need to do is add an extra header to the request.
+  - `[%give httr]`, where httr is an http response.  This immediately returns an http response to the sender.
+  - `[%show purl]`, where a purl is a parsed url.  This displays a message asking the user to visit the given url to continue the authentication process.
+  - `[%redo ~]`, which redoes the request.
+  - `%eyre` calls `++filter-request` just before sending an HTTP request to the specified domain.  This allows the security driver to filter the requests, decorating them with authentication data.
 - `++filter-response` is a function which takes an httr and produces a `sec-move`.  `%eyre` calls it after receiving an HTTP response from the specified domain.  This allows the security driver to handle authentication errors, commonly caused by expired tokens, and retry the request.
-
 - `++receive-auth-query-string` is a function that takes a `quay` (list of query parameters) and produces a `sec-move`.  `%eyre` calls it when it receives a request on the callback url. Generally, this happens in OAuth after the user has granted access to the urbit app, and the service makes a request to the callback url with the code.  The security driver should then make a request to convert the code into an access token.
-
 - `++receive-auth-response` is a function that takes an httr and produces a `sec-move`.  `%eyre` calls it when it gets a response to the request made in `++receive-auth-query-string`.
-
 - `++update` is a function which converts old state to a new format when the security driver gets updated.  If you want to just get rid of the old state, define `++discard-state` as `~`.
 
 For basic auth, we only have to worry about `++filter-request`,
