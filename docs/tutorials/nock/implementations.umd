@@ -12,10 +12,10 @@ and manual reference counting.  More about the C environment can be found
 in the [runtime system documentation](../../../vere/runtime).
 
 ```
-/* nock(): produce .*(bus fol).  Do not virtualize.
+/* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */
 static u3_noun
-nock(u3_noun bus, u3_noun fol)
+_n_nock_on(u3_noun bus, u3_noun fol)
 {
   u3_noun hib, gal;
 
@@ -23,11 +23,15 @@ nock(u3_noun bus, u3_noun fol)
     hib = u3h(fol);
     gal = u3t(fol);
 
+#ifdef U3_CPU_DEBUG
+    u3R->pro.nox_d += 1;
+#endif
+
     if ( c3y == u3r_du(hib) ) {
       u3_noun poz, riv;
 
-      poz = nock(u3k(bus), u3k(hib));
-      riv = nock(bus, u3k(gal));
+      poz = _n_nock_on(u3k(bus), u3k(hib));
+      riv = _n_nock_on(bus, u3k(gal));
 
       u3a_lose(fol);
       return u3i_cell(poz, riv);
@@ -57,8 +61,8 @@ nock(u3_noun bus, u3_noun fol)
       c3_assert(!"not reached");
 
       case 2: {
-        u3_noun nex = nock(u3k(bus), u3k(u3t(gal)));
-        u3_noun seb = nock(bus, u3k(u3h(gal)));
+        u3_noun nex = _n_nock_on(u3k(bus), u3k(u3t(gal)));
+        u3_noun seb = _n_nock_on(bus, u3k(u3h(gal)));
 
         u3a_lose(fol);
         bus = seb;
@@ -70,7 +74,7 @@ nock(u3_noun bus, u3_noun fol)
       case 3: {
         u3_noun gof, pro;
 
-        gof = nock(bus, u3k(gal));
+        gof = _n_nock_on(bus, u3k(gal));
         pro = u3r_du(gof);
 
         u3a_lose(gof); u3a_lose(fol);
@@ -81,7 +85,7 @@ nock(u3_noun bus, u3_noun fol)
       case 4: {
         u3_noun gof, pro;
 
-        gof = nock(bus, u3k(gal));
+        gof = _n_nock_on(bus, u3k(gal));
         pro = u3i_vint(gof);
 
         u3a_lose(fol);
@@ -90,7 +94,7 @@ nock(u3_noun bus, u3_noun fol)
       c3_assert(!"not reached");
 
       case 5: {
-        u3_noun wim = nock(bus, u3k(gal));
+        u3_noun wim = _n_nock_on(bus, u3k(gal));
         u3_noun pro = u3r_sing(u3h(wim), u3t(wim));
 
         u3a_lose(wim); u3a_lose(fol);
@@ -103,7 +107,7 @@ nock(u3_noun bus, u3_noun fol)
 
         u3x_trel(gal, &b_gal, &c_gal, &d_gal);
         {
-          u3_noun tys = nock(u3k(bus), u3k(b_gal));
+          u3_noun tys = _n_nock_on(u3k(bus), u3k(b_gal));
           u3_noun nex;
 
           if ( 0 == tys ) {
@@ -124,7 +128,7 @@ nock(u3_noun bus, u3_noun fol)
 
         u3x_cell(gal, &b_gal, &c_gal);
         {
-          u3_noun bod = nock(bus, u3k(b_gal));
+          u3_noun bod = _n_nock_on(bus, u3k(b_gal));
           u3_noun nex = u3k(c_gal);
 
           u3a_lose(fol);
@@ -140,7 +144,7 @@ nock(u3_noun bus, u3_noun fol)
 
         u3x_cell(gal, &b_gal, &c_gal);
         {
-          u3_noun heb = nock(u3k(bus), u3k(b_gal));
+          u3_noun heb = _n_nock_on(u3k(bus), u3k(b_gal));
           u3_noun bod = u3nc(heb, bus);
           u3_noun nex = u3k(c_gal);
 
@@ -157,18 +161,29 @@ nock(u3_noun bus, u3_noun fol)
 
         u3x_cell(gal, &b_gal, &c_gal);
         {
-          u3_noun seb = nock(bus, u3k(c_gal));
+          u3_noun seb = _n_nock_on(bus, u3k(c_gal));
+          u3_noun pro;
 
-          if ( c3n == u3r_ud(b_gal) ) {
-            return u3m_bail(c3__exit);
+          u3t_off(noc_o);
+          pro = u3j_kick(seb, b_gal);
+          u3t_on(noc_o);
+
+          if ( u3_none != pro ) {
+            u3a_lose(fol);
+            return pro;
           }
           else {
-            u3_noun nex = u3k(u3at(b_gal, seb));
+            if ( c3n == u3r_ud(b_gal) ) {
+              return u3m_bail(c3__exit);
+            }
+            else {
+              u3_noun nex = u3k(u3at(b_gal, seb));
 
-            u3a_lose(fol);
-            bus = seb;
-            fol = nex;
-            continue;
+              u3a_lose(fol);
+              bus = seb;
+              fol = nex;
+              continue;
+            }
           }
         }
       }
@@ -187,7 +202,7 @@ nock(u3_noun bus, u3_noun fol)
             u3_noun d_gal = q_gal;
 
             zep = u3k(b_gal);
-            hod = nock(u3k(bus), u3k(c_gal));
+            hod = _n_nock_on(u3k(bus), u3k(c_gal));
             nex = u3k(d_gal);
           }
           else {
@@ -199,10 +214,39 @@ nock(u3_noun bus, u3_noun fol)
             nex = u3k(c_gal);
           }
 
-          u3a_lose(zep);
-          u3a_lose(hod);
+          u3a_lose(fol);
+          return _n_hint(zep, hod, bus, nex);
+        }
+      }
 
-          return nock(bus, nex);
+      case 11: {
+        u3_noun ref = _n_nock_on(u3k(bus), u3k(u3h(gal)));
+        u3_noun gof = _n_nock_on(bus, u3k(u3t(gal)));
+        u3_noun val;
+
+        u3t_off(noc_o);
+        val = u3m_soft_esc(ref, u3k(gof));
+        u3t_on(noc_o);
+
+        if ( !_(u3du(val)) ) {
+          u3m_bail(u3nt(1, gof, 0));
+        }
+        if ( !_(u3du(u3t(val))) ) {
+          //
+          //  replace with proper error stack push
+          //
+          u3t_push(u3nc(c3__hunk, _n_mush(gof)));
+          return u3m_bail(c3__exit);
+        }
+        else {
+          u3_noun pro;
+
+          u3z(gof);
+          u3z(fol);
+          pro = u3k(u3t(u3t(val)));
+          u3z(val);
+
+          return pro;
         }
       }
       c3_assert(!"not reached");
@@ -211,6 +255,6 @@ nock(u3_noun bus, u3_noun fol)
 }
 ```
 
-Building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations:
+Building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations.  (Note: these were written for a slightly older version of Nock, Nock 5K.  The current version is Nock 4K.):
 
 ;list(src "../../nock/implementations");

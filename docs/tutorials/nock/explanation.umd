@@ -210,6 +210,52 @@ is `[14 15]`
 
 Hopefully this isn't terribly hard to follow.
 
+### Editing a Noun, `#`
+
+```
+#[1 a b]            a
+#[(a + a) b c]      #[a [b /[(a + a + 1) c]] c]
+#[(a + a + 1) b c]  #[a [/[(a + a) c] b] c]
+```
+
+The `#` operator replaces part of a noun with another noun.  `#[x y z]` replaces address `x` of `z` with the noun `y`.
+
+Take some noun, say, `[22 33 44 55]`.  Let's replace part of it with another noun, `[123 456]`.  We can replace the entire original noun as follows:
+
+```
+#[1 [123 456] [22 33 44 55]]
+```
+
+is
+
+```
+[123 456]
+```
+
+If we only want to replace the value at address `2`:
+
+```
+#[2 [123 456] [22 33 44 55]]
+```
+
+is
+
+```
+[[123 456] 33 44 55]
+```
+
+And we can replace address `3`:
+
+```
+#[3 [123 456] [22 33 44 55]]
+```
+
+is
+
+```
+[22 123 456]
+```
+
 ## Instructions
 
 These rules define Nock itself - ie, the `*` operator.
@@ -227,6 +273,7 @@ Note that we're using Hoon syntax here.  Since we do not use Nock
 from Hoon all that often (it's sort of like embedding assembly in
 C), we've left it a little cumbersome.  In Hoon, instead of
 writing `*[a 0 b]`, we write
+
 ```
 .*(a [0 b])
 ```
@@ -281,10 +328,10 @@ This gives the same `[153 218]`
 ```
 *[a 3 b]  ?*[a b]
 *[a 4 b]  +*[a b]
-*[a 5 b]  =*[a b]
+*[a 5 b c]  =[*[a b] *[a c]]
 ```
 
-In lines 23-25, we meet our axiomatic functions again:
+These are axiomatic functions:
 
 For instance, if `x` is a formula that calculates some product,
 `[4 x]` calculates that product plus one.  Hence:
@@ -322,7 +369,7 @@ We could write this line less formally:
 In other words, if you have two Nock formulas `x` and `y`, a
 formula that computes the pair of them is just `[x y]`.  We can
 recognize this because no atom is a valid formula, and
-every formula that *does not* use line 19 has an atomic head.
+every formula that *does not* use distribution has an atomic head.
 
 If you know Lisp, you can think of this feature as a sort of
 "implicit cons."  Where in Lisp you would write `(cons x y)`,
@@ -353,45 +400,45 @@ we get
 [43 1]
 ```
 
-Except for the crash defaults (lines 6, 10, 17, and 35), we've actually
+Except for the crash defaults, we've actually
 completed all the _essential_ aspects of Nock.  The instructions up
 through 5 provide all necessary computational functionality.
 Nock, though very simple, is actually much more complex than it
 formally needs to be.
 
-Operators 6 through 10 are macros.  They exist because Nock is
+Operators 6 through 11 are sugar.  They exist because Nock is
 not a toy, but a practical interpreter.  Let's see them all
 together:
 
-## Macros
+## Sugar
 
 ```
-*[a 6 b c d]     *[a 2 [0 1] 2 [1 c d] [1 0] 2 [1 2 3] [1 0] 4 4 b]
-*[a 7 b c]       *[a 2 b 1 c]
-*[a 8 b c]       *[a 7 [[7 [0 1] b] 0 1] c]
-*[a 9 b c]       *[a 7 c 2 [0 1] 0 b]
-*[a 10 [b c] d]  *[a 8 c 7 [0 3] d]
-*[a 10 b c]      *[a c]
+*[a 6 b c d]        *[a *[[c d] 0 *[[2 3] 0 *[a 4 4 b]]]]
+*[a 7 b c]          *[*[a b] c]
+*[a 8 b c]          *[[*[a b] a] c]
+*[a 9 b c]          *[*[a c] 2 [0 1] 0 b]
+*[a 10 [b c] d]     #[b *[a c] *[a d]]
+
+*[a 11 [b c] d]     *[[*[a c] *[a d]] 0 3]
+*[a 11 b c]         *[a c]
 ```
 
-Notice that instructions `6` through `10` are macros: each just
-expands to a larger formula. Let's try to figure out what these
-macros do, simplest first:
+Let's try to figure out what these do, simplest first:
 
-### `10`, hint
+### `11`, hint
 
 ```
-*[a 10 b c]  *[a c]
+*[a 11 b c]  *[a c]
 ```
 
 If `x` is an atom and `y` is a formula, the formula `[10 x y]`
 appears to be equivalent to... `y`.  For instance:
 
 ```
-.*([132 19] [10 37 [4 0 3]])
+.*([132 19] [11 37 [4 0 3]])
 ```
 
-Why would we want to do this?  `10` is actually a hint instruction.
+Why would we want to do this?  `11` is actually a hint instruction.
 The `37` in this example is discarded information - it is not
 used, formally, in the computation.  It may help the interpreter
 compute the expression more efficiently, however.
@@ -403,13 +450,13 @@ the Nock spec.  Some are defined in Hoon.  Indeed, a naive Nock
 interpreter not optimized for Hoon will run Hoon quite poorly.
 When it gets the product, however, the product will be right.
 
-There is another instruction `10` rule:
+There is another instruction `11` rule:
 
 ```
-*[a 10 [b c] d]  *[a 8 c 7 [0 3] d]
+*[a 11 [b c] d]     *[[*[a c] *[a d]] 0 3]
 ```
 
-Once we see what `7` and `8` do, we'll see that this complex hint
+This complex hint
 throws away an arbitrary `b`, but computes the formula `c`
 against the subject and... throws away the product.  This formula
 is simply equivalent to `d`.  Of course, in practice the product
@@ -418,12 +465,12 @@ wind up as a side effect.
 
 (Why do we even care that `c` is computed?  Because `c` could
 crash.  A correct Nock cannot simply ignore it, and treat both
-variants of `10` as equivalent.)
+variants of `11` as equivalent.)
 
 ### `7`, compose
 
 ```
-*[a 7 b c]  *[a 2 b 1 c]
+*[a 7 b c]          *[*[a b] c]
 ```
 
 Suppose we have two formulas, `b` and `c`.  What is the formula
@@ -435,13 +482,13 @@ Suppose we have two formulas, `b` and `c`.  What is the formula
 ```
 
 Good old composition, on Nock formulas.  It's easy to see how
-this is built out of `2`.  The data to evaluate is simply `b`,
+this is a variant of Nock `2`.  The data to evaluate is simply `b`,
 and the formula is `c` quoted.
 
 ### `8`, extend
 
 ```
-*[a 8 b c]  *[a 7 [[7 [0 1] b] 0 1] c]
+*[a 8 b c]          *[[*[a b] a] c]
 ```
 
 `8` is `7`, except that the subject for `c` is not simply the
@@ -464,22 +511,16 @@ likely to generate an `8`, because the variable is computed
 against the present subject, and used in a calculation which
 depends both on the original subject and the new variable.
 
-For extra credit, explain why we can't just define
-
-```
-*[a 8 b c]  *[a 7 [b 0 1] c]
-```
-
 ### `9`, invoke
 
 `9` is a calling convention:
 
 ```
-*[a 9 b c]  *[a 7 c 2 [0 1] 0 b]
+*[a 9 b c]          *[*[a c] 2 [0 1] 0 b]
 ```
 
 With `c`, we produce a noun which contains both code and data - a
-*core*.  We use this core as the subject, and evaulate the
+*core*.  We use this core as the subject, and evaluate the
 formula within it at slot `b`.
 
 ### `6`, if-then-else
@@ -487,7 +528,7 @@ formula within it at slot `b`.
 This looks much scarier than it is:
 
 ```
-*[a 6 b c d]      *[a 2 [0 1] 2 [1 c d] [1 0] 2 [1 2 3] [1 0] 4 4 b]
+*[a 6 b c d]        *[a *[[c d] 0 *[[2 3] 0 *[a 4 4 b]]]]
 ```
 
 If `b` evaluates to `0`, we produce `c`; if `b` evaluates to `1`,
