@@ -7,6 +7,8 @@
 
 # API Connectors
 
+> Note: This lesson depends on some code that needs to be updated before the examples will work correctly.  This will be addressed in the near future.  We apologize!
+
 Most people have lots of data stored in online services, many of
 which have APIs.  API connectors allow the user to access this
 data from within their Urbit.
@@ -86,13 +88,7 @@ for a particular piece of data, while `%y` is a request for a
 directory listing.  Roughly, `%x` means Unix `cat` and `%y` means
 Unix `ls`.
 
-> Sometimes you wish to expose a tree where a part of the path
-> can't be enumerated.  For example, a `%y` of `/issues/by-repo`
-> "should" produce a list of all Github users, but we don't do
-> that because it's too long.  Instead, we just produce our own
-> username (from the `web.plan` file).  You can still access
-> repos from other users, you just don't see them in the
-> directory listing.
+> Sometimes you wish to expose a tree where a part of the path can't be enumerated.  For example, a `%y` of `/issues/by-repo` "should" produce a list of all Github users, but we don't do that because it's too long.  Instead, we just produce our own username (from the `web.plan` file).  You can still access repos from other users, you just don't see them in the directory listing.
 
 The usual flow for implementing this tree of data makes heavy use
 of the `connector` library.  This library is well documented in

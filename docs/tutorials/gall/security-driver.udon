@@ -33,13 +33,23 @@ cases you'll need to make very few changes to one of these
 models.
 
 Still, it's worth seeing one or two built from the ground up.
-Here, we'll build a connector for the Github API v3.  The
+Here, we'll build a connector for the Github API v3.  (It's already in `/sec/com/github.hoon` if you want to see it.)
+
+The
 simplest way to interact with the Github API is to just fetch
-https://api.github.com from the dojo:
+https://api.github.com from the dojo.  First, run this:
+
+```
+> |init-auth-basic /com/github
+```
+
+Input your Github username and password as directed.  Next:
 
 ```
 ~your-urbit:dojo> +https://api.github.com
 ```
+
+> Note: the current version of this API is outdated, so you'll get a 403 message at this point.  We need to update this so you can follow along with the examples.  We're sorry!
 
 Github exposes a few endpoints to the general web, and the root
 endpoint is one of them.  This gives you a textual representation
@@ -91,7 +101,7 @@ you're logged in as.
 You can similarly POST:
 
 ```
-~your-urbit:dojo> +https://api.github.com/gists &json _(cork poja need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
+~your-urbit:dojo> +https://api.github.com/gists &json _(cork de-json:html need) '{"files":{"file1.txt":{"content":"can\'t stop the signal"}}}'
 ```
 
 This creates a gist, go to `https://gist.github.com/<username>` to
