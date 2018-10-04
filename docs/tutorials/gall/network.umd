@@ -33,6 +33,8 @@ Let's get our planets to talk to each other.  To listen for and receive messages
 --                          :: end of poke-noun arm definition
 ```
 
+Save this as `echo.hoon` in the `/app` directory of your urbit's pier.
+
 This is a very simple app that does only one thing. If you poke it with
 a value, it prints that value out. To try this out, you have to start
 the app, then you can poke it from the command line with the following
@@ -85,8 +87,7 @@ particular address in our subject where our formal app state is stored.
 It'll become clear why this is later on, but for now pretend that `+>.$`
 is a magic invocation that means "app state".
 
-Let's look at another example (edit your code in
-`/app/examples/echo/hoon` to reflect the code below). Say we want to
+Let's look at another example. Say we want to
 only accept a number, and then print out the square of that number.
 
 ```
@@ -109,6 +110,8 @@ only accept a number, and then print out the square of that number.
   [~ +>.$]
 --
 ```
+
+Save this as `square.hoon` in the `/app` directory of your urbit's pier.
 
 A few things have changed. Firstly, we no longer accept arbitrary nouns because
 we can only square atoms (integers, in this case an unsigned one). Thus, our

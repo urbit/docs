@@ -13,12 +13,12 @@ Let's figure out how to make HTTP requests and set timers.
 
 Let's build an uptime-monitoring system.  It'll ping a web
 service periodically and print out an error when the response
-code isn't 2xx.  Here's `app/up.hoon`:
+code isn't 2xx.  Save the following as `app/up.hoon`:
 
 ```
 ::  Up-ness monitor. Accepts atom url, 'on', or 'off'
 ::
-::::  /hoon/up/examples/app
+::::  /hoon/up/app
   ::
 /?    314
 |%
@@ -33,7 +33,7 @@ code isn't 2xx.  Here's `app/up.hoon`:
       [%target p=cord]    ::  set poll target('http://...')
   ==
 --
-|_  [hid=bowl:gall on=_| in-progress=_| target=@t}
+|_  [hid=bowl:gall on=_| in-progress=_| target=@t]
 ++  poke-atom
   |=  url-or-command=@t  ^-  (quip move +>)
   =+  ^-  act/action
@@ -140,12 +140,7 @@ Here's the move that sends the HTTP request:
 [ost.hid %hiss /request ~ %httr %purl (need (epur target))]
 ```
 
-> Remember, we are expected to produce a *list* of moves. Note the `~`
-> after the move in the full example. This is a convenient shortcut for
-> creating a list of a single element.  It's part of a small family of
-> such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c]
-> ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to
-> create various convoluted structures and emojis.
+> Remember, we are expected to produce a *list* of moves. Note the `~` after the move in the full example. This is a convenient shortcut for creating a list of a single element.  It's part of a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to create various convoluted structures and emojis.
 
 The correspondence between this move and `[bone card]` can be hard to
 visualize on one line. Here it is more pedantically:
@@ -182,14 +177,14 @@ Let's try it out:
 ```
 ~fintud-macrep:dojo> |start %up
 >=
-~fintud-macrep:dojo> :examples-up &atom 'http://www.google.com'
+~fintud-macrep:dojo> :up &atom 'http://www.google.com'
 >=
 [%all-is-well 200]
 [%all-is-well 200]
-~fintud-macrep:dojo> :examples-up &atom 'http://example.com'
+~fintud-macrep:dojo> :up &atom 'http://example.com'
 >=
 [%all-is-well 200]
-~fintud-macrep:dojo> :examples-up &atom 'http://google.com'
+~fintud-macrep:dojo> :up &atom 'http://google.com'
 >=
 [%we-have-a-problem 301]
 [ %headers

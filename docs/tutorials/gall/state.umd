@@ -86,7 +86,7 @@ you like. But let's clarify a couple other things before we continue.
 
 First, `bowl` is a set of general global states. This set is managed by the
 system. It includes things like `now` (the current time), `our` (our urbit
-identity), and `eny` (256 bits of guaranteed-fresh entropy). For the full list
+identity), and `eny` (512 bits of guaranteed-fresh entropy). For the full list
 of things in `++bowl`, search for `++  bowl` (note: two spaces) in
 `/arvo/zuse.hoon`.
 

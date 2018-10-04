@@ -39,17 +39,17 @@ Let's take a look at two apps, `:source` and `:sink`. First,
   ^-  [(list move) _+>.$]
   :_  +>.$
   %+  turn  (prey /example-path bow)
-  |=({o=bone *} [o %diff %noun non])
+  |=([o=bone *] [o %diff %noun non])
 ::
 ++  peer-example-path
-  |=  pax/path
+  |=  pax=path
   ^-  [(list move) _+>.$]
   ~&  source+peer-notify+'Someone subscribed to you!'
   ~&  source+[ship+src.bow path+pax]
   [~ +>.$]
 ::
 ++  coup
-  |=  {wir=wire err=(unit tang)}
+  |=  [wir=wire err=(unit tang)]
   ^-  [(list move) _+>.$]
   ?~  err
     ~&  source+success+'Poke succeeded!'
@@ -70,6 +70,8 @@ Let's take a look at two apps, `:source` and `:sink`. First,
 ::
 --
 ```
+
+Save this as `source.hoon` in the `/app` directory of your urbit's pier.
 
 And secondly, `:sink`:
 
@@ -137,6 +139,8 @@ And secondly, `:sink`:
 ::
 --
 ```
+
+Save this as `sink.hoon` in the `/app` directory of your urbit's pier.
 
 Two notes:
 

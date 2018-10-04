@@ -20,7 +20,7 @@ poke it.  There'll be a button to poke the app, and line of text
 below it saying how many times the app has been poked.  We can
 update this by subscribing our page to the relevant path on its app.
 
-Let's first checkout the app `/app/examples/click.hoon`:
+Save the following as `click.hoon` in the `/app` directory of your urbit's pier.
 
 ```
 /?    314
@@ -30,26 +30,26 @@ Let's first checkout the app `/app/examples/click.hoon`:
 --
 !:
 |_  [hid=bowl:gall clicks=@]
-++  poke-examples-click-click
-  |=  click/$click
+++  poke-click
+  |=  click=%click
   ~&  [%poked +(clicks)]
   :_  +>.$(clicks +(clicks))
-  %+  turn  (prey /the-path hid)
-  |=({o=bone *} [o %diff %examples-click-clicks +(clicks)])
+  %+  turn  (prey:pubsub:userlib /the-path hid)
+  |=([o=bone *] [o %diff %clicks +(clicks)])
 ++  peer-the-path
-  |=  pax/path
-  [[[ost.hid %diff %examples-click-clicks clicks] ~] +>.$]
+  |=  pax=path
+  [[[ost.hid %diff %clicks clicks] ~] +>.$]
 --
 ```
 
 There's nothing really new here, except that we use a couple of
 new marks, `click` and `clicks`.  When we get poked with a
 `click`, we increment the variable `clicks` in our state and tell
-all our subcribers the new value.  When someone subscribes to us
+all our subscribers the new value.  When someone subscribes to us
 on the path `/the-path`, we immediately give them the current
 number of clicks.
 
-Let's take a look at the new marks.  Here's `/mar/examples/click/click.hoon`:
+Let's take a look at the new marks.  Save this as `/mar/click.hoon`:
 
 ```
 |_  click=%click
@@ -58,68 +58,66 @@ Let's take a look at the new marks.  Here's `/mar/examples/click/click.hoon`:
   ++  noun  |=(* %click)
   ++  json
     |=  jon=^json
-    ?>  =('click' (need (so:jo jon)))
+    ?>  =('click' (need (so:dejs-soft:format jon)))
     %click
   --
 --
 ```
 
-The mark `examples-click-click` has type `%click`, which means the only
+The mark `click` has type `%click`, which means the only
 valid value is `%click`.  We can convert from `noun` by just
 producing `%click`.
 
-We also convert from json by parsing a json string with `so:jo`,
+We also convert from json by parsing a json string with `so:dejs-soft:format`,
 asserting the parsing succeeded with `need`, and asserting the
 result was 'click' with `?>`, which asserts that its first child
 is true.
 
-> Note the argument to `++json`is `jon=^json`.  Why `^json`?
-> `++json` shadows the type definition, so if we want to refer to
-> the type, we have to prepend a `^`.  This extends to multiple
-> levels:  `^^^foo` means the fourth most innermost instance of `foo`.
+> Note the argument to `++json`is `jon=^json`.  Why `^json`? `++json` shadows the type definition, so if we want to refer to the type, we have to prepend a `^`.  This extends to multiple levels:  `^^^foo` means the fourth most innermost instance of `foo`.
 
-> `++jo` in `zuse` is a useful library for parsing complex json
-> into hoon structures. In this case, the `:` between `so` and
-> `jo` means 'inside of', because `so` is an arm contained within
-> the core `jo`.  Our case is actually simple enough that the
-> `?>` line could have been `?>  =([%s 'click'] jon)`.
+> `dejs-soft:format` in `zuse` is a useful library for parsing complex json into hoon structures. In this case, the `:` between `dejs-soft` and `format` means 'inside of', because `dejs-soft` is an arm contained within the core `format`.  Our case is actually simple enough that the `?>` line could have been `?>  =([%s 'click'] jon)`.
 
-We can test this mark from the command line (don't forget to start your app with `|start %examples-click`)
+We can test this mark from the command line (don't forget to start your app with `|start %click`)
 
 ```
-~fintud-macrep:dojo> &examples-click-click %click
+~fintud-macrep:dojo> &click %click
 %click
-~fintud-macrep:dojo> &examples-click-click &json [%s 'click']
+
+~fintud-macrep:dojo> &click &json [%s 'click']
 %click
-~fintud-macrep:dojo> &examples-click-click &json &mime [/text/json (taco '"click"')]
+
+~fintud-macrep:dojo> &click &json &mime [/text/json (as-octs:mimes:html '"click"')]
 %click
-~fintud-macrep:dojo> &examples-click-click &json &mime [/text/json (taco '"clickety"')]
+
+~fintud-macrep:dojo> &click &json &mime [/text/json (as-octs:mimes:html '"clickety"')]
 /~fintud-macrep/home/0/mar/click:<[7 5].[8 11]>
 ford: casting %json to %click
 ford: cast %click
 ```
 
-And `/mar/examples/click/clicks.hoon`:
+And save the following as `/mar/clicks.hoon`:
 
 ```
 |_  clicks=@
+++  grab
+  |%
+  ++  noun  @
+  --
 ++  grow
   |%
   ++  json
-    (joba %clicks (jone clicks))
+    (frond:enjs:format %clicks (numb:enjs:format clicks))
   --
 --
 ```
 
-`examples-clicks-clicks` is just an atom.  We convert to json by creating an
+`clicks` is just an atom.  We convert to json by creating an
 object with a single field "clicks" with our value.
 
-> Be sure to checkout section 3bD, JSON and XML, in zuse.hoon
-> `++joba` is just a function that takes a key-value pair and
-> produces a JSON object with one element.
+> Be sure to check out section 3bD, JSON and XML, in zuse.hoon `frond:enjs:format` is just a function that takes a key-value pair and produces a JSON object with one element.
 
 ```
-~fintud-macrep:dojo> &json &examples-click-clicks 6
+~fintud-macrep:dojo> &json &clicks 6
 [%o p={[p='clicks' q=[%n p=~.6]]}]
 ```
 
@@ -128,26 +126,26 @@ above.  Everything should be pretty straightforward.  Let's poke
 the app from the command line.
 
 ```
-~fintud-macrep:dojo> |start %examples-click
+~fintud-macrep:dojo> |start %click
 >=
-~fintud-macrep:dojo> :examples-click &examples-click-click %click
+~fintud-macrep:dojo> :click &click %click
 [%poked 1]
 >=
-~fintud-macrep:dojo> :examples-click &examples-click-click %click
+~fintud-macrep:dojo> :click &click %click
 [%poked 2]
 >=
 ```
 
-Please pardon the awkwardness of the name 'examples-click-click', but we used it to stay true to our examples naming convention.
-
 *Exercise*:
 
-- Modify `:sink` from the subcriptions chapter to listen to `:click` and print out the subscription updates on the command line.
+- Modify `:sink` from the subscriptions chapter to listen to `:click` and print out the subscription updates on the command line.
 
 # Frontend
 
+> Note: the instructions below are outdated and do not work in the current version of Urbit.  Feel free to experiment though.
+
 That's all that's needed for the back end.  The front end is just
-some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/pages/examples/click.hoon`:
+some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/pages/click.hoon`:
 
 ```
 ;html
@@ -162,7 +160,7 @@ some "sail" html (Hoon markup for XML) and javascript.  Here's `/web/pages/examp
       ;div#err(class "disabled");
       ;div#clicks;
     ==
-    ;script(type "text/javascript", src "/pages/examples/click/click.js");
+    ;script(type "text/javascript", src "/pages/click/click.js");
   ==
 ==
 ```
@@ -171,12 +169,12 @@ You should recognize the sail syntax from an earlier chapter.
 Aside from jquery, we also include `urb.js`, which is a framework
 for interacting with urbit.
 
-To view the frontend, point your browser at `ship-name.urbit.org/~~/pages/examples/click` if you're on the live network. If you're running a fake galaxy, navigate to whatever port it's running on, which is usually: `https://localhost:8443/~~/pages/examples/click`.
+To view the frontend, point your browser at `ship-name.urbit.org/~~/pages/click` if you're on the live network. If you're running a fake galaxy, navigate to whatever port it's running on, which is usually: `https://localhost:8443/~~/pages/click`.
 
 We have a button labeled "Poke!" and a div with id `clicks` where
 we'll put the number of clicks.  We also include a small
 javascript file where the client-side application logic can be
-found.  It's in `/web/pages/examples/click/click.js`:
+found.  It's in `/web/pages/click.js`:
 
 ```
 $(function() {
@@ -189,7 +187,7 @@ $(function() {
   $go.on("click",
     function() {
       window.urb.send(
-        "click", {mark: "examples-click-click"}
+        "click", {mark: "click-click"}
       ,function(err,res) {
         if(err)
           return $err.text("There was an error. Sorry!")
@@ -202,7 +200,7 @@ $(function() {
       })
   })
 
-  window.urb.appl = "examples-click"
+  window.urb.appl = "click"
   window.urb.bind('/the-path',
     function(err,dat) {
       clicks = dat.data.clicks
