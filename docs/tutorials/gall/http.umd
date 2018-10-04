@@ -24,7 +24,7 @@ code isn't 2xx.  Save the following as `app/up.hoon`:
 |%
 +$  move  [bone card]
 +$  card
-  $%  [%hiss wire unit-iden=$~ mark=%httr cage=[mark=%purl vase=purl]]
+  $%  [%hiss wire unit-iden=$~ mark=%httr cage=[mark=%purl vase=purl:eyre]]
       [%wait wire @da]
   ==
 +$  action
@@ -35,7 +35,7 @@ code isn't 2xx.  Save the following as `app/up.hoon`:
 --
 |_  [hid=bowl:gall on=_| in-progress=_| target=@t]
 ++  poke-atom
-  |=  url-or-command=@t  ^-  (quip move +>)
+  |=  url-or-command=@t  ^-  (quip move _+>)
   =+  ^-  act/action
       ?:  ?=($on url-or-command)  [%on ~]
       ?:  ?=($off url-or-command)  [%off ~]
@@ -45,11 +45,11 @@ code isn't 2xx.  Save the following as `app/up.hoon`:
     $off  [~ +>.$(on |)]
     $on
       :-  ?:  |(on in-progress)  ~
-          [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+          [ost.hid %hiss /request ~ %httr %purl (need (de-purl:html target))]~
       +>.$(on &, in-progress &)
   ==
 ++  sigh-httr
-  |=  [wir=wire code=@ud headers=mess body=(unit octs)]
+  |=  [wir=wire code=@ud headers=mess:eyre body=(unit octs)]
   ~&  'arrive here'
   ^-  [(list move) _+>.$]
   ?:  &((gte code 200) (lth code 300))
@@ -62,10 +62,10 @@ code isn't 2xx.  Save the following as `app/up.hoon`:
   :_  +>.$
   [ost.hid %wait /timer (add ~s10 now.hid)]~
 ++  wake-timer
-  |=  [wir=wire $~]  ^-  (quip move +>)
+  |=  [wir=wire $~]  ^-  (quip move _+>)
   ?:  on
     :_  +>.$
-    [ost.hid %hiss /request ~ %httr %purl (need (epur target))]~
+    [ost.hid %hiss /request ~ %httr %purl (need (de-purl:html target))]~
   [~ +>.$(in-progress |)]
 ::
 ++  prep  ~&  target  _`.  :: computed when the source file changes;
@@ -88,9 +88,9 @@ r=cage]` from `zuse`.
 
 > Recall that `++unit` means "maybe".  Formally, "`(unit a)` is either null or a pair of null and a value in `a`". Also recall that to pull a value out of a unit (`u.unit`), you must first verify that the unit is not null (for example with `?~`). See `++need`.
 
-A `purl` is a parsed url structure, which can be created with `++epur`,
+A `purl:eyre` is a parsed url structure, which can be created with `de-purl:html`,
 which is a function that takes a url as text and parses it into a `(unit
-purl)`.  Thus, the result is null if and only if the url is malformed.
+purl:eyre)`.  Thus, the result is null if and only if the url is malformed.
 'Purl' is also the mark which will be applied to this result.
 
 When you send this request, you can expect a `%sigh` with the
@@ -104,7 +104,7 @@ produce a `%wake` when the time comes.
 Let's take a look at our state:
 
 ```
-|_  [hid=bowl:gall on=_| in-progress=_| target=@t}
+|_  [hid=bowl:gall on=_| in-progress=_| target=@t]
 ```
 
 We have three pieces of app-specific state.  `target` is the url
@@ -137,7 +137,7 @@ actual url, so we save it in `target`.
 Here's the move that sends the HTTP request:
 
 ```
-[ost.hid %hiss /request ~ %httr %purl (need (epur target))]
+[ost.hid %hiss /request ~ %httr %purl (need (de-purl:html target))]
 ```
 
 > Remember, we are expected to produce a *list* of moves. Note the `~` after the move in the full example. This is a convenient shortcut for creating a list of a single element.  It's part of a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to create various convoluted structures and emojis.
@@ -151,7 +151,7 @@ visualize on one line. Here it is more pedantically:
     wire=/request
     unit-iden=~
     mark=%httr
-    cage=[%purl (need (epur target))]
+    cage=[%purl (need (de-purl:html target))]
 ==
 ```
 
