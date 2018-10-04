@@ -264,10 +264,10 @@ Apps usually expect marked data, so `&` is often used here.
 
 ##### `*` - Save in `%clay`
 
-Save a new `.umd` file in `web`:
+Save a new `.udon` ([Udon](/docs/tutorials/udon)) file in `web`:
 
 ```
-~your-urbit:dojo> *%/web/foo/umd '# hello'
+~your-urbit:dojo> *%/web/foo/udon '# hello'
 ```
 
 The last component of the path is expected to be the mark (or mime
@@ -359,7 +359,7 @@ Current working `%clay` desk and revision. Read / write.
 ```
 ~your-urbit:dojo> =dir %/web
 ~your-urbit:dojo> +ls %
-404/hoon docs/ dojo/hoon lib/ listen/hoon md static/umd talk/ testing/umd tree/main/ unmark/ womb/
+404/hoon docs/ dojo/hoon lib/ listen/hoon md static/udon talk/ testing/udon tree/main/ unmark/ womb/
 ```
 
 ##### lib

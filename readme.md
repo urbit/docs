@@ -62,10 +62,10 @@ And now your docs are live! View them at:
     http://localhost:8080/~~/docs
 
 > If you're running multiple ships locally, your port number will be `8081`,
-> `8082`, and so on. Check your Dojo output for the correct local port of
-> your examples urbit, or view these at `https://your-urbit.urbit.org` over DNS
-> instead for live-network ships. You can also replace `localhost` with the IP
-> of your instance, if you're running your urbit in the cloud.
+  `8082`, and so on. Check your Dojo output for the correct local port of
+  your examples urbit, or view these at `https://your-urbit.urbit.org` over DNS
+  instead for live-network ships. You can also replace `localhost` with the IP
+  of your instance, if you're running your urbit in the cloud.
 
 ## Learn a lot, and have fun!
 

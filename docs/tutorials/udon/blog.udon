@@ -7,9 +7,10 @@
 
 # A simple blog
 
-[Urbit Markdown](../../tutorials/urbitmarkdown) is our markup language that
-is able to run Hoon code. Publishing using Urbit Markdown is really easy.  Here
-we'll create a very simple blog and publish our first posts.
+[Udon](../../tutorials/udon) (file extension `.udon`) is our markup
+language that is able to run Hoon code. Publishing using Udon is really easy. It
+uses the file extension `.udon`. Here we'll create a very simple blog and publish
+our first posts.
 
 First, let's setup a desk to serve our posts from:
 
@@ -33,7 +34,7 @@ To begin serving files from this new desk use `|serve`:
 ```
 
 First let's create the landing page for our blog.  Create the file
-`site/web/blog.umd`:
+`site/web/blog.udon`:
 
 ```
 :-  :~  anchor/'none'
@@ -58,10 +59,10 @@ the page seem more like a landing page.
 
 The page looks pretty boring now.  Let's add our first post.  From
 unix run `mkdir your-urbit/site/web/blog; touch
-your-urbit/site/web/blog/post-1.umd`. (Currently [there's a
+your-urbit/site/web/blog/post-1.udon`. (Currently [there's a
 bug](https://github.com/urbit/urbit/issues/321) that prevents empty
 directories from getting created, so we have to `touch` a file inside
-them first.)  In `blog/post-1.umd` let's add some filler content:
+them first.)  In `blog/post-1.udon` let's add some filler content:
 
 ```
 :-  :~  navhome/'/blog'
@@ -89,7 +90,7 @@ Good to get that out of the way.
 ```
 
 You should be able to view this file at:
-`http://localhost:8080/blog/post-1.umd`.
+`http://localhost:8080/blog/post-1.udon`.
 
 You'll also notice that
 now the list of posts here: `http://localhost:8080/blog` has
@@ -104,5 +105,5 @@ Here we use two pieces of front-matter worth noting: `type` and `navhome`.
 - `navhome` sets the path used by the home button (the circle in the top left).
   Since we want to send people back to the root of our blog, we set this to `/blog`
 
-Adding posts is as easy as dropping markdown files into the `blog/`
+Adding posts is as easy as dropping Udon files into the `blog/`
 directory.  Pretty easy!

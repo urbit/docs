@@ -76,36 +76,37 @@ And now, to switch the desk you're serving from:
 
 ##### Hosting files
 
-To host a file on the web, save the following in `/sandbox/web/test.umd` in your
+To host a file on the web, save the following in `/sandbox/web/test.udon` in your
 ship's pier through unix.
 
 ```
 # Hello
 
-This is a simple Urbit markdown file.
+This is a simple Udon file.
 ```
 
 Our Tree system allows for pages to be designated as children of other pages.
 To do this for any given page, simply make a new folder in the directory that
 contains the page that will be the parent, and give that directory the same
-name. So, the children of a page `/home/web/foo.umd` will live in a directory
-called `/home/web/foo.umd`.
+name. So, the children of a page `/home/web/foo.udon` will live in a directory
+called `/home/web/foo.udon`.
 
-Let's continue our with our `test.umd` example. Create `/sandbox/web/test/` and
-add two more Urbit Markdown files in `/sandbox/web/test/daughter.umd`
-`/sandbox/web/test/son.umd`, respectively. Make sure that they contain valid
-Urbit Markdown!
+Let's continue our with our `test.udon` example. Create `/sandbox/web/test/` and
+add two more Udon files in `/sandbox/web/test/daughter.udon`
+`/sandbox/web/test/son.udon`, respectively. Make sure that they contain valid
+Udon. Udon is our markup language, similar to Markdown; check out the guide
+[here](../../tutorials/).
 
 > NOTE: Due to a bug in Urbit, you may have to create the directory and the file
   in it in rapid succession using something like `mkdir sandbox/web/test && touch
   sandbox/web/test/first.md`.
 
-Now modify `/sandbox/web/test.umd` to list the children using `;list;`:
+Now modify `/sandbox/web/test.udon` to list the children using `;list;`:
 
 ```
 # Hello
 
-This is a simple markdown file.
+This is a simple Udon file.
 
 ;list;
 ```
@@ -116,10 +117,10 @@ To view your file rendered using tree:
 http://localhost:8080/test/
 ```
 
-To view your file as raw `umd`:
+To view your file as raw Udon:
 
 ```
-http://localhost:8080/test.umd
+http://localhost:8080/test.udon
 ```
 
 To view your file as raw `html`:
@@ -131,7 +132,7 @@ http://localhost:8080/test.html
 Now navigate to the "daughter" file that you created:
 
 ```
-http://localhost:8080/test/daughter.umd
+http://localhost:8080/test/daughter.udon
 ```
 
 In Urbit, there is no distinction between a directory and a file. So, if you're
@@ -139,8 +140,8 @@ adding files directly from unix, simply `mkdir test` and Urbit will treat the
 file and directory as the same entity.
 
 You can use this feature to change your homepage at `your-urbit.urbit.org` with
-the page `/home/web.umd`, where `home` is the current mounted desk. By default,
-`web.umd` will display some info about your urbit, but you can customize it to
+the page `/home/web.udon`, where `home` is the current mounted desk. By default,
+`web.udon` will display some info about your urbit, but you can customize it to
 your heart's content.
 
 
@@ -167,13 +168,13 @@ Let's quickly step through the default contents of `web/`:
 - `lib/js/hoon.js` - Hoon syntax highlighting
 - `lib/js/sole.js` - `dojo` operational transformation JS
 - `lib/js/urb.js` - Base Urbit JS library.  Handles AJAX and polling.
-- `static.umd` - Sample static file
+- `static.udon` - Sample static file
 - `talk/` - Talk compiled JS / CSS
 - `talk.hoon` - Page body that loads the `talk` React module.
-- `testing.umd` - Guide to writing unit tests in Urbit
+- `testing.udon` - Guide to writing unit tests in Urbit
 - `tree/` - Tree compiled JS / CSS
 - `tree.hoon` - Page body that loads the `tree` React module.
-- `unmark/` - Used for testing `.umd`.
+- `unmark/` - Used for testing `.udon`.
 - `womb/` - Womb compiled by JS/CSS
 - `womb.hoon` - Used for issuing planets on the test network.
 
@@ -217,7 +218,7 @@ yourself?  The docs are all on GitHub [here](https://github.com/urbit/docs).
 
 ## Frontmatter
 
-Most `.umd` files begin with some frontmatter, which determines the title and
+Most `.udon` files begin with some frontmatter, which determines the title and
 other settings for rendering the file correctly.  E.g.:
 
 ```

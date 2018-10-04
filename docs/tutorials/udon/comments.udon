@@ -11,7 +11,7 @@ If you followed [our previous example](../blog) you should have a
 simple blog accessible at `your-urbit.urbit.org/blog`.  Here we'll
 enable comments on a post.
 
-First, turn comments on by editing the frontmatter in `post-1.umd`.  Your
+First, turn comments on by editing the frontmatter in `post-1.udon`.  Your
 frontmatter should look like this:
 
 ```

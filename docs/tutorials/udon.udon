@@ -1,34 +1,34 @@
 :-  :~  navhome/'/docs/'
         sort/'5'
         next/'true'
-        title/'Urbit Markdown'
+        title/'Udon'
      ==
 ;>
 
-# Urbit Markdown: A Guide
+# Udon: A Guide
 
-### What is Urbit Markdown?
+### What is Udon?
 
-Urbit Markdown (UMD) is a way to write content for the web. It's a minimalist
+Udon is a way to write content for the web. It's a minimalist
 markup language for creating and rendering text documents, with a
 Markdown-inspired syntax. It's integrated with our Hoon programming language,
 allowing it to be used as standalone prose in its own file or embedded inside a
 Hoon source file, in which case it will be parsed into a tree of HTML nodes
 using Hoon's XML-templating syntax, Sail.
 
-This document is itself written in Urbit Markdown, and its source file is of the
-Urbit Markdown `.umd` extension. As such, we use some `formatted text` to make
+This document is itself written in Udon, and its source file is of the
+Udon `.udon` extension. As such, we use some `formatted text` to make
 it clear what is and isn't code, and to display that code to you instead of
 actually using its semantics for formatting.
 
-There are quite a few similarities between Urbit Markdown and the
+There are quite a few similarities between Udon and the
 CommonMark standard, but there are enough differences that you shouldn't rely on
-existing knowledge of the latter. Urbit Markdown generally supports only one
-syntax for each type of HTML node it emits. Urbit Markdown is also stricter than
+existing knowledge of the latter. Udon generally supports only one
+syntax for each type of HTML node it emits. Udon is also stricter than
 Markdown: some syntax errors will prevent the file from being parsed at all.
 
 We provide a few simple examples [here](#examples) of how to publish
-Urbit Markdown files using our web interface.
+Udon files using our web interface.
 
 
 ### Getting Started
@@ -36,7 +36,7 @@ Urbit Markdown files using our web interface.
 Before starting, make sure that your urbit is
 [mounted to Unix](https://urbit.org/docs/using/setup/)
 
-To host Urbit Markdown and other kinds of files, your ship also has a
+To host Udon and other kinds of files, your ship also has a
 web-server, called [Eyre](https://urbit.org/docs/using/web/), that can be found
 at `http://localhost:8080/` if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
@@ -50,9 +50,9 @@ rendering rules.) Your ship's `%home` desk is served by default. You can
 [change](https://urbit.org/docs/using/web/) which desk you're serving, however.
 
 Everything in the `/<your-urbit>/home/web/` directory, with the exception of
-`/home/web/pages`, knows how to interpret and files of `.umd` type. So, to
-experiment with UM, create a `.umd` file in that path, and then try to access it
-at `http://localhost:8080/<yourfile>` in your browser -- no `.umd` required in
+`/home/web/pages`, knows how to interpret and files of `.udon` type. So, to
+experiment with UM, create a `.udon` file in that path, and then try to access it
+at `http://localhost:8080/<yourfile>` in your browser -- no `.udon` required in
 the URL. It's a good idea to copy-paste the following examples into your file to
 see how the code works.
 
@@ -73,7 +73,7 @@ As an example, let's look at the front matter of this very page:
 ```
 :-  :~  navhome/'/docs/'
         sort/'11'
-        title/'Urbit Markdown'
+        title/'Udon'
     ==
 ;>
 ```
@@ -82,19 +82,19 @@ What's going on here?
 
 `:-`, the Hoon rune for creating a cell, creates a cell composed of
 the `:~` Hoon rune for creating a list, and `;>`, which is a Sail rune
-for Urbit Markdown.
+for Udon.
 
 `:~` creates a list out of the three elements: `navhome/'/docs/'`, which
 indicates that navigating "home" will bring you to the urbit.org/docs section
 of the website; `sort/'28',` which assigns it the 28th position of the
 immediate section that contains it, the one you see in the sidebar;
-and `title/'Urbit Markdown'`, which gives the page its title. The `==` digraph
+and `title/'Udon'`, which gives the page its title. The `==` digraph
 terminates the list.
 
 `;>` is a Sail rune that creates a node that contains everything that follows
-it, telling the parser that that text should be interpreted as Urbit Markdown.
+it, telling the parser that that text should be interpreted as Udon.
 It's not technically front matter, but you'll always find it following the
-front matter, since all Urbit Markdown must come after this rune.
+front matter, since all Udon must come after this rune.
 
 The categories listed in the example above -- `navhome`, `sort`, and `title` --
 make sense to Eyre by default, but any arbitrary category can be used. The code
@@ -114,7 +114,7 @@ parsing.
 
 ### Headers
 
-Headers in Urbit Markdown begin the line with one or more `#` characters,
+Headers in Udon begin the line with one or more `#` characters,
 'followed by a single space. After that space comes the actual text to be
 displayed. The number of leading `#`s corresponds to the resulting HTML
 header-size element: `#` yields an `<h1>`, `##` yields an `<h2>`, and so on,
@@ -415,7 +415,7 @@ inside a `<code>` HTML element with monospace font and highlighted with a
 different background color.
 
 Using `` ` \`` is useful when you want to designated only part of a line as code.
-Since this page is written in Urbit Markdown, we've been using this operation
+Since this page is written in Udon, we've been using this operation
 throughout this guide to `format text` to distinguish code from prose.
 
 *Example:*
@@ -475,7 +475,7 @@ Most of our examples so far have used.
 ### Hoon Constants
 
 Hoon has several syntactic forms for literals (numbers, strings, dates, etc.)
-that can be used in udon as well. Urbit Markdown detects such code, and so these
+that can be used in udon as well. Udon detects such code, and so these
 forms will automatically appear inside a `<code>` element like inline code.
 
 Example:
@@ -522,8 +522,8 @@ And below this line, too
 
 A section of text with the first line beginning with `>` and a space,
 and each successive newline indented by two spaces yields a
-`<blockquote>` HTML element. This block quote can itself contain more Urbit
-Markdown, including more block quotes to render nested levels of quotation.
+`<blockquote>` HTML element. This block quote can itself contain more Udon,
+including more block quotes to render nested levels of quotation.
 Inline italicization with `_` does not work, however.
 
 Blank newlines do not end the block quote, but a blank newline followed by an
@@ -557,7 +557,7 @@ Quote break.
 ### Poem
 
 A poem is a section of text with meaningful newlines.  Recall that,
-normally in Urbit Markdown, newlines are treated as spaces and do not create a
+normally in Udon, newlines are treated as spaces and do not create a
 new line of text. If you want to embed text where newlines are retained, then
 indent the text in question with *eight spaces*.
 
@@ -583,13 +583,13 @@ indent the text in question with *eight spaces*.
   ==
 ==
 
-It's possible to use Urbit Markdown as an HTML templating language akin to
+It's possible to use Udon as an HTML templating language akin to
 PHP, ERB, JSP, or Handlebars templates. This facility derives
 in part from the support for embedding Hoon code inside the markup.
 
 
 You can Sail is a domain-specific language within Hoon for creating XML nodes,
-including HTML. It can be used directly within Urbit Markdown to provide
+including HTML. It can be used directly within Udon to provide
 scripting capability with Hoon and also to provide more precise control over the
 resulting HTML. The [Sail guide](../sail) is a good place to learn the
 specifics.
