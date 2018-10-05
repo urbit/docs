@@ -35,10 +35,10 @@ Let's take a look at two apps, `:source` and `:sink`. First,
 |_  [bow=bowl:gall $~]
 ::
 ++  poke-noun
-  |= non=*
+  |=  non=*
   ^-  [(list move) _+>.$]
   :_  +>.$
-  %+  turn  (prey /example-path bow)
+  %+  turn  (prey:pubsub:userlib /example-path bow)
   |=([o=bone *] [o %diff %noun non])
 ::
 ++  peer-example-path
@@ -140,7 +140,7 @@ And secondly, `:sink`:
 --
 ```
 
-Save this as `sink.hoon` in the `/app` directory of your urbit's pier.
+Save this as `sink.hoon` in the `/app` directory of your urbit's pier (make sure both `source` and `sink` are on the same ship).
 
 Two notes:
 
@@ -231,12 +231,12 @@ languages call "map" -- it runs a function on every item in a list and collects
 the results in a list. The list is `(prey /example-path bow)` and the function
 is the `|=` line right after it.
 
-`++prey` is a standard library function defined in `zuse.hoon`. It takes a path
+`prey:pubsub:userlib` is a standard library function defined in `zuse.hoon`. It takes a path
 and a bowl and gives you a list of the subscribers who are subscribed on a path
 that begins with the given path. "Prey" is short for "prefix".
 
 Now we have the list of relevant subscribers. This a list of triples,
-`{bone @p path}`, where the only thing we really need is the bone, because we
+`[bone @p path]`, where the only thing we really need is the bone, because we
 don't need to know their urbit or what exact path they subscribed on. Thus, our
 transformer function takes `[o=bone *]` and produces `[o %diff %noun non]`,
 which is a move that provides bone `o` with this subscription update:
