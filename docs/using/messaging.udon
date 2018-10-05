@@ -17,7 +17,7 @@ For the time being come join us in `/urbit-meta` by using the
 
 Today, Hall is sort of like a distributed, encrypted Slack that can be
 used from the CLI and the browser. There’s no central Hall server.
-Any Urbit can host one.
+Any urbit can host one.
 
 Hall is a general purpose tool for both aggregating and publishing
 streams of messages. Applications can use Hall as their transport
@@ -129,7 +129,7 @@ Use `;leave` to unsubscribe from a channel:
 ~your-urbit:talk= ;leave /urbit-meta
 ```
 
-The web UI ships as compiled JavaScript on your Urbit, but has its own
+The web UI ships as compiled JavaScript on your urbit, but has its own
 source repo [here](https://github.com/urbit/talk).
 
 Last, let's create a channel we can invite some friends to:

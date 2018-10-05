@@ -8,13 +8,13 @@
 
 # Arvo source
 
-When you boot an Urbit, we transfer the current version of the Arvo
-operating environment to your Urbit over our network. That is, the
-source for the system lives on your Urbit. Here we'll take a brief tour
+When you boot an urbit, we transfer the current version of the Arvo
+operating environment to your urbit over our network. That is, the
+source for the system lives on your urbit. Here we'll take a brief tour
 through the structure of a base Arvo desk.
 
 Looking at the top level of
-[the Arvo repo](http://github.com/urbit/arvo), or any Urbit desk that
+[the Arvo repo](http://github.com/urbit/arvo), or any urbit desk that
 has been mounted to unix, we see something like:
 
 ```

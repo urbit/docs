@@ -11,7 +11,7 @@
 ;div(class "row")
   ;div(class "col-md-8")
 
-Your Urbit runs its own webserver, Eyre, that handles all things HTTP.  Here
+Your urbit runs its own webserver, Eyre, that handles all things HTTP.  Here
 we'll cover the features of Eyre that most resemble a traditional web server.
 
 By default Eyre uses *Tree*. Tree is a simple ui for browsing the contents of
@@ -23,7 +23,7 @@ Tree was built primarily to display both our documentation and the contents of
 checking out the [docs source](https://github.com/urbit/docs) and the
 [urbit.org](https://github.com/urbit/urbit.org) source.
 
-We ship `tree` as compiled JavaScript on your Urbit, but the source lives in its
+We ship `tree` as compiled JavaScript on your urbit, but the source lives in its
 own repo [here](https://github.com/urbit/tree).
 
   ==
@@ -149,7 +149,7 @@ your heart's content.
 
 ## `/web`
 
-This is the equivalent of a `public_html` directory.  Your Urbit looks in this
+This is the equivalent of a `public_html` directory.  Your urbit looks in this
 directory to serve content to the world.  You can change what desk you're serving from using `|serve`.
 
 Switch to the `%sandbox` desk:
@@ -180,7 +180,7 @@ Let's quickly step through the default contents of `web/`:
 
 ## Tree
 
-Tree is a simple publishing tool for files that live on your Urbit.  You're
+Tree is a simple publishing tool for files that live on your urbit.  You're
 probably reading this file using Tree right now.  The main driving use-case for
 Tree has been for us to host our own documentation and the surrounding
 discussion.  Tree remains a pretty simple and flexible tool for getting content
@@ -197,7 +197,7 @@ a slightly modifed version of [Bootstrap](http://getbootstrap.com/).  On your
 Urbit Tree is a renderer that translates data in `%clay`, our filesystem, into
 JSON / JSX that can be read by the client.
 
-Your Urbit comes with a pre-built copy of the tree (as a single `.js` file).  If
+Your urbit comes with a pre-built copy of the tree (as a single `.js` file).  If
 you're interested in helping to develop tree or learning about how it works, it
 has its own GitHub repo [here](https://github.com/urbit/tree).  We have our own
 fork of Bootstrap, which lives [here](https://github.com/urbit/bootstrap).
@@ -405,18 +405,18 @@ The `<talk>` component isn't a part of Tree — it's loaded first before it's
 executed.
 
 If you're interested in seeing how a module works you can check out the source
-for Talk [here](https://github.com/urbit/talk).  Dojo also ships on your Urbit,
+for Talk [here](https://github.com/urbit/talk).  Dojo also ships on your urbit,
 its source is [here](https://github.com/urbit/sole).
 
 ## `urb.js`
 
-The most basic interface between your browser and your Urbit is `urb.js`.  This
+The most basic interface between your browser and your urbit is `urb.js`.  This
 small library provides the basic utilities for sending and receiving messages
-from an Urbit.
+from an urbit.
 
 ### `window.urb.appl`
 
-Each JSON message sent to your Urbit needs an app endpoint.  Can be set as a
+Each JSON message sent to your urbit needs an app endpoint.  Can be set as a
 global `window.urb.appl` or set on a per-request basis in the payload to
 `send()`.
 
@@ -428,7 +428,7 @@ Required part of any authenticated request and included by default.
 ### `window.urb.req(method,url,params,json,cb)`
 
 Our basic request wrapper.  You can see here how a request needs to be packaged
-to be properly understood by your Urbit.
+to be properly understood by your urbit.
 
 ### `window.urb.subscribe({path:"string"})`
 

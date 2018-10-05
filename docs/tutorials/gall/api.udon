@@ -147,7 +147,7 @@ are used to handle responses when we make HTTP requests.
 That's really all there is to the reading portion of API
 connectors.
 
-One of the most accessbile ways to jump into Arvo programming is
+One of the most accessible ways to jump into Arvo programming is
 to just add more places to an existing API connector.  It's
 useful, small in scope, and comes in bite-sized chunks since most
 places are less than ten lines of code.

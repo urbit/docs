@@ -19,7 +19,7 @@ You can force-quit your urbit with `Ctrl-z` from anywhere.
 
 ## Restart
 
-To restart your Urbit simply pass the name of your pier:
+To restart your urbit simply pass the name of your pier:
 
 ```
 $ urbit some-planet
@@ -33,7 +33,7 @@ $ urbit comet
 
 ## Logging
 
-To log Urbit's command line output to a file, use `script`:
+To log an urbit's command line output to a file, use `script`:
 
 ```
 $ script urbit.log urbit your-urbit
@@ -43,7 +43,7 @@ $ script urbit.log urbit your-urbit
 
 Piers are designed to be portable, but it _must_ be done while the urbit
 is turned off. Urbit networking is stateful, so you can't run two copies
-of the same Urbit in two places.
+of the same urbit in two places.
 
 To move a pier, simply move the contents of the directory it lives in.
 To keep these files as small as possible we usually use the `--sparse`
@@ -119,7 +119,7 @@ that you just started on `8081`, and so on. For planets only, we also proxy web
 domains through Urbit's own servers. Any planet `~your-urbit` is also at
 `your-urbit.urbit.org`.
 
-Your Urbit serves a simple homepage from `http://localhost:8080` or
+Your urbit serves a simple homepage from `http://localhost:8080` or
 `https://your-urbit.urbit.org` that should be self-explanatory. Since
 our HTTPS isn't audited / battle tested, we just call it "secure" HTTPS.
 You can find that on `8443`. Or `8444` (and so on) if you're already
@@ -178,7 +178,7 @@ function after we have breached, but it wont connect to the rest of the
 Urbit network.
 
 When this happens, back up any files you'd like to save, shut down your
-Urbit and recreate it (as if you were starting for the first time).
+urbit and recreate it (as if you were starting for the first time).
 
 ## Creating SSL certificates
 

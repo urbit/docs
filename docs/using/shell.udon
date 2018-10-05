@@ -155,7 +155,7 @@ in the `/test` folder. Takes a path.
 
 ##### +ticket
 
-Generate a ticket for an Urbit ship. Takes an Urbit name (`@p`).
+Generate a ticket for an urbit ship. Takes an urbit name (`@p`).
 
 
 ```
