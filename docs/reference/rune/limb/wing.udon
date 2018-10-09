@@ -5,13 +5,15 @@
     ==
 ;>
 
-# Wings
+# Wing Expressions
 
-`[%wing p=(list limb)]`; a limb search path into the subject.
+`[%wing p=(list limb)]`
+
+A wing is a limb search path into the subject.
 
 ### Produces
 
-A wing is a list of limbs (including a trivial list of one limb).  The limbs are resolved to values in the subject in succession, and the result of the last limb resolution is the value produced by the wing.
+A wing is a list of limbs (including a trivial list of one limb).  The limbs are resolved in succession.  The result of the last limb resolution is the value produced by the wing expression.
 
 ### Syntax
 
@@ -36,8 +38,10 @@ is the same limb as `+`, `..b` is the same wing as `+1.foo`.
 
 ```
 ~zod:dojo> =a [fod=3 bat=[baz=1 moo=2]]
+
 ~zod:dojo> bat.a
 [baz=1 moo=2]
+
 ~zod:dojo> moo.bat.a
 2
 ```

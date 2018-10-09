@@ -7,7 +7,7 @@
 
 # `.+ "dotlus"`
 
-`[%dtls p=atom]`: increment an atom with Nock `4`.
+`[%dtls p=hoon]`: increment an atom with Nock `4`.
 
 ## Produces
 

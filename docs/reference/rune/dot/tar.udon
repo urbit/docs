@@ -19,11 +19,12 @@ Regular: *2-fixed*.
 
 ## Discussion
 
+`.*(p q)` is used to run Nock formula `p` on the subject `q` from within Hoon.
+
 Keep in mind that `p` and `q` can be arbitrary Hoon expressions, as long as they evaluate to the appropriate nouns for Nock evaluation.
 
-Note that `.*` ("dottar") can be used to bypass the type system,
-though its product contains no type information.  It's
-perfectly possible to use Hoon as a typeless language.
+Note also that `.*` ("dottar") can be used to bypass the type system.  It's
+therefore possible to use Hoon as a typeless language.
 
 ## Examples
 

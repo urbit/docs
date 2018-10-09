@@ -1,11 +1,11 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         sort/'3'
-        title/'Text /w Interpolation'
+        title/'Strings'
     ==
 ;>
 
-# Text with Interpolation
+# Strings with Interpolation
 
 `[%knit p=(list (each @t hoon))]`: text string with interpolation.
 
@@ -25,6 +25,9 @@ Irregular: `"abc{(weld "lmnop" "xyz")}defg"`.
 
 > "abc{(weld "lmnop" "xyz")}defg"
 "abclmnopxyzdefg"
+
+> (ream '"abcdefg"')
+[%knit p=~[97 98 99 100 101 102 103]]
 ```
 
 ### Examples

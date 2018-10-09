@@ -5,15 +5,15 @@
     ==
 ;>
 
-# Limbs
+# Limb Expressions
 
-Attribute of subject.
+A limb is an attribute of subject.
 
 ### Produces
 
-If a limb resolves to a leg of the subject, the leg is produced.  If a limb resolves to an arm by way of an arm name, then the arm is evaluated with its parent core as the subject and the result of that evaluation is produced.
+There are two kinds of limbs: arms and legs.  An *arm* is a computation of some core.  A *leg* is a piece of data in the subject.
 
-An arm is a Nock formula in the battery of a core.  A leg is any other piece of data in the subject.
+If a limb expression resolves to a leg, the leg is produced.  If a limb expression resolves to an arm -- in particular, by way of an arm name -- then the arm is computed with its parent core as the subject.  The result of that computation is produced.
 
 ### Syntax
 

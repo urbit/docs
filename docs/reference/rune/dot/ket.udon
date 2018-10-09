@@ -6,7 +6,7 @@
 
 # `.^ "dotket"`
 
-`[%dtkt p=spec q=hoon]`: load from the Arvo namespace with Nock `11`.
+`[%dtkt p=spec q=hoon]`: load from the Arvo namespace with a fake Nock instruction: 'Nock `12`''.
 
 ## Produces
 
@@ -14,8 +14,8 @@ The noun `q`, cast to the type `p`.
 
 ## Discussion
 
-Nock has no `11` instruction, of course.  But the virtual Nock
-used to run userspace code does.  Nock `11` loads from a
+Nock has no `12` instruction!  But the virtual Nock
+used to run userspace code does.  Nock `12` loads from a
 typed immutable namespace defined by its virtual context.
 
 Ordinarily a Hoon expression has access to no information but whatever can be found in the subject.  The one exception is with the `.^` rune.  It essentially allows you to request information from one of the Arvo vanes (modules).
@@ -26,7 +26,7 @@ In principle `.^` takes two subexpressions, but in practice `q` is often given i
 
 ## Examples
 
-In the dojo we can ask Clay for a listing of the files at our current path, `%`:
+In the dojo we can ask Clay -- the Arvo filesystem -- for a listing of the files at our current path, `%`:
 
 ```
 > .^(arch %cy %)

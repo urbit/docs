@@ -17,13 +17,13 @@ A cold (fixed) atom `q` with aura `p`.
 
 ### Syntax
 
-Irregular: any warm atom [(`%sand`)](../warm/) form, prefixed with `%`.
+Irregular: any [warm atom](../warm/) form, prefixed with `%`.
 
 Irregular: e.g., `%hi`.  Character constraints: `a-z`
 lowercase to start, `a-z` or `0-9` thereafter, with infix
 hyphens (`hep`), "kebab-case."
 
-Irregular: `~`, `@n`, null (`0`).
+Irregular: `~`.
 
 ### Examples
 
@@ -35,6 +35,7 @@ We can see the contrast with warm atoms by using the compiler parser function, `
 
 > (ream '\'hi\'')
 [%sand p=%t q=26.984]
-```
 
-Cold atoms all have the aura `@tas`.  (Hence the `p=%tas` in the parsed result of `%12`.)
+> (ream '%12')
+[%rock p=%ud q=12]
+```

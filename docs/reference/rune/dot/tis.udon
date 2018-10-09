@@ -23,7 +23,7 @@ Irregular: `=(a b)` is `.=(a b)`.
 
 The test for equality includes a type check.  Either the type of `p` must nest under the type of `q`, or _vice versa_.  Otherwise the result is a crash.
 
-Like Nock equality, `.=` ("dottis") tests if two nouns are the same,
+Like Nock equality, `.=` ("dottis") tests whether two nouns are the same,
 ignoring invisible pointer structure.  Because in a conventional
 noun implementation each noun has a lazy short hash, comparisons
 are fast unless the hash needs to be computed, or we are comparing
