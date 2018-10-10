@@ -35,7 +35,7 @@ Irregular: `[a b c]~` is `[[a b c] ~]`.
 
 Hoon expressions actually use the same "autocons" pattern as Nock
 formulas.  If you're assembling expressions (which usually only the
-compiler does), `[a b]` is the same as `[%clhp a b]`.
+compiler does), `[a b]` is the same as `:-(a b)`.
 
 ## Examples
 

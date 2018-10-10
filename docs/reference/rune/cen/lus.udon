@@ -7,7 +7,7 @@
 
 # `%+ "cenlus"`
 
-`[%cnls p=hoon q=hoon r=hoon]`: call with pair sample.
+`[%cnls p=hoon q=hoon r=hoon]`: call gate with a cell sample.
 
 ## Expands to
 

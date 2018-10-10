@@ -7,15 +7,13 @@
 
 # `%= "centis"`
 
-`[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
+`[%cnts p=wing q=(list (pair wing hoon))]`: resolve a wing with changes.
 
 ## Produces
 
-`p`, modified by the change list `q`.
+Product of resolution to `p`, modified by the change list `q`.
 
-If `p` resolves to a leg, `q` is a list of changes to that leg.
-If `p` resolves to an arm, `q` is a list of changes to the core
-containing that arm.  We compute the arm on the modified core.
+If `p` resolves to a leg, `q` is a list of changes to that leg.  The modified leg is returned. If `p` resolves to an arm, `q` is a list of changes to the core containing that arm.  The arm is computed with the modified core as the subject, and the product is returned.
 
 ## Syntax
 
@@ -26,20 +24,21 @@ Irregular: `foo(x 1, y 2, z 3)` is `%=(foo x 1, y 2, z 3)`.
 ## Discussion
 
 Note that `p` is a wing, not just any expression.  Knowing that a function
-call `(foo bar)` involves making `foo`, replacing its sample
-at slot `+6` with `bar`, and taking the `$` limb, you might think
-`(foo bar)` would mean `%=(foo +6 bar)`.
+call `(foo baz)` involves making `foo`, replacing its sample
+at slot `+6` with `baz`, and resolving to the `$` limb, you might think
+`(foo baz)` would mean `%=(foo +6 baz)`.
 
-But it's actually `=+(foo =>(%=(+2 +6 bar) $))`. Even if `foo` is
+But it's actually `=+(foo =>(%=(+2 +6 baz) $))`. Even if `foo` is
 a wing, we would just be mutating `+6` within the core that defines the
 `foo` arm.  Instead we want to modify the *product* of `foo` -- the gate
 -- so we have to pin it into the subject.
 
 Here's that again in tall form:
+
 ```
 =+  foo
 =>  %=  +2
-      +6  bar
+      +6  baz
     ==
   $
 ```

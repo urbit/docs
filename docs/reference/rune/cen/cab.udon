@@ -7,7 +7,7 @@
 
 # `%_ "cencab"`
 
-`[%cncb p=wing q=(list (pair wing hoon))]`: take a wing with changes, preserving type.
+`[%cncb p=wing q=(list (pair wing hoon))]`: resolve a wing with changes, preserving type.
 
 ## Expands to
 
@@ -21,21 +21,20 @@ Regular: *1-fixed*, then *jogging*.
 
 ## Discussion
 
-`%_` ("cencab") is different from `%=` ("centis") because `%=`
-can change the type of a limb with mutations.
+`%_` is different from `%=` because `%=` can change the type of a limb with mutations.  `%_` preserves the limb type.
 
 ## Examples
 
 ```
 ~zod:dojo> =foo [p=42 q=6]
 
-~zod:dojo> foo(p %bar)
-[p=%bar q=6]
+~zod:dojo> foo(p %baz)
+[p=%baz q=6]
 
 ~zod:dojo> foo(p [55 99])
 [p=[55 99] q=6]
 
-~zod:dojo> %_(foo p %bar)
+~zod:dojo> %_(foo p %baz)
 [p=7.496.034 99]
 
 ~zod:dojo> %_(foo p [55 99])

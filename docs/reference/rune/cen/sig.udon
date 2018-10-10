@@ -7,7 +7,7 @@
 
 # `%~ "censig"`
 
-`[%cnsg p=wing q=hoon r=(list hoon)]`: call with multi-armed door.
+`[%cnsg p=wing q=hoon r=(list hoon)]`: call an arm in a door.
 
 ## Expands to
 
@@ -16,7 +16,7 @@
 =<(p %=(a +6 r))
 ```
 
-> Note: the expansion implementation is hygienic -- it doesn't actually add the `a` face to the subject. It's shown here because `%=` ("centis") requires a `wing`.
+> Note: the expansion implementation is hygienic -- it doesn't actually add the `a` face to the subject. It's shown here because `%=` requires a `wing`.
 
 ## Syntax
 
@@ -29,11 +29,10 @@ Irregular: `~(a b c)` is `%~(a b c)`; `~(a b c d e)` is `%~(a b
 
 `%~` ("censig") is the general case of a function call, `%-` ("cenhep").  In
 both, we replace the sample (`+6`) of a core.  In `%-` the
-core is a gate and we pull the `$` arm. In `%~` the
-core is a door and we can pull any of its arms.
+core is a gate and the `$` arm is evaluated. In `%~` the
+core is a door and any arm may be evaluated.  You must identify the arm to be run: `%~(arm door arg)`.
 
-Most languages do not have cores, doors, or `%~`.  "Just
-learn to step outside your linear, Western way of thinking."
+See also [`|_`](../../bar/cab).
 
 ## Examples
 
