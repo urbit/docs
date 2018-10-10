@@ -7,8 +7,7 @@
 
 # `?- "wuthep"`
 
-`[%wthp p=wing q=(list (pair model value))]`: switch against a
-union, with no default.
+`[%wthp p=wing q=(list (pair spec value))]`: switch against a union, with no default.
 
 ## Expands to
 
@@ -39,10 +38,12 @@ Regular: *1-fixed*, then *jogging*.
 
 ## Discussion
 
+The `?-` rune is for a conditional expression in which the type of `p` determines which branch is taken.  Usually the type of `p` is a union of other types.  There is no default branch.
+
 The compiler makes sure that your code neither misses a case of
 the union, nor includes a double case that isn't there.  This is
-not special handling for `?-` ("wuthep"), just a consequence of the
-semantics of `?:` ("wutcol"), which `?-` reduces to.
+not special handling for `?-`, just a consequence of the
+semantics of `?:`, which `?-` reduces to.
 
 A missing case will throw the `mint-lost` error.  An extra case
 will throw `mint-vain`.
@@ -50,10 +51,10 @@ will throw `mint-vain`.
 ## Examples
 
 ```
-~zod:dojo> =cor  |=  vat=?($a $b)
+~zod:dojo> =cor  |=  vat=?(%a %b)
                  ?-  vat
-                   $a  20
-                   $b  42
+                   %a  20
+                   %b  42
                  ==
 
 ~zod:dojo> (cor %a)

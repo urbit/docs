@@ -7,8 +7,7 @@
 
 # `?@ "wutvat"`
 
-`[%wtpt p=wing q=hoon r=hoon]`: branch on whether a wing
-of the subject is an atom.
+`[%wtpt p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is an atom.
 
 ## Expands to
 
@@ -19,6 +18,10 @@ of the subject is an atom.
 ## Syntax
 
 Regular: *3-fixed*.
+
+## Discussion
+
+The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time.  `mint-vain` means that one of the `?@` branches, `q` or `r`, is never taken.
 
 ## Examples
 

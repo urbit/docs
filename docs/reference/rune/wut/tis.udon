@@ -11,8 +11,7 @@
 
 ## Produces
 
-`%.y` (yes) if the noun at `q` is in the type of `p`;
-`%.n` (no) otherwise.
+`%.y` (yes) if the noun at `q` is in the type of `p`; `%.n` (no) otherwise.
 
 ## Syntax
 
@@ -20,7 +19,7 @@ Regular: *2-fixed*.
 
 ## Discussion
 
-`?=` ("wuttis") is not as powerful as it might seem.  For instance, it
+`?=` is not as powerful as it might seem.  For instance, it
 can't generate a loop -- you cannot (and should not) use it to
 test whether a `*` is a `(list @)`.  Nor can it validate atomic
 auras.
@@ -28,11 +27,11 @@ auras.
 Patterns should be as weak as possible.  Unpack one layer of
 union at a time.  Don't confirm things the type system knows.
 
-For example, when matching a book containing a page `[%foo p=@
-q=[@ @]]`, the proper pattern is `[%foo *]`.  You have one
+For example, when matching from a tagged union for the type `[%foo p=@
+q=[@ @]]`, the appropriate pattern is `[%foo *]`.  You have one
 question, which is whether the head of the noun is `%foo`.
 
-A common error is `find.$`, meainng `p` is not a type.
+A common error is `find.$`, meaning `p` is not a type.
 
 ## Examples
 

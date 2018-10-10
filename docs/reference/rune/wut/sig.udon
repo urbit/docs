@@ -7,8 +7,7 @@
 
 # `?~ "wutsig"`
 
-`[%wtsg p=wing q=hoon r=hoon]`: branch on whether a wing
-of the subject is null.
+`[%wtsg p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is null.
 
 ## Expands to
 
@@ -22,8 +21,7 @@ Regular: *3-fixed*.
 
 ## Discussion
 
-It's bad style to use `?~` to test for any zero atom.  Use it
-only for a true null, `~`.
+It's bad style to use `?~` to test for any zero atom.  Use it only for a true null, `~`.
 
 ## Examples
 

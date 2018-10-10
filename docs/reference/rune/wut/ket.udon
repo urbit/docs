@@ -22,7 +22,7 @@ Regular: *3-fixed*.
 
 ## Discussion
 
-Regular form: *3-fixed*
+The type of the wing, `p`, must not be known to be either an atom or a cell, or else you'll get a `mint-vain` error at compile time.  `mint-vain` means that one of the `?^` branches, `q` or `r`, is never taken.
 
 ## Examples
 

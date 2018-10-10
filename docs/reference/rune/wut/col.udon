@@ -14,16 +14,11 @@
 If `p` produces yes, `%.y`, then `q`. If `p` produces no, `%.n`, then `r`.
 If `p` is not a boolean, compiler yells at you.
 
-The subjects of `q` and `r` are constrained to match any
-pattern-matching algebra in `p`.  The analysis, which is
-conservative, understands any combination of [`?=` ("wuttis")](../tis/),
-[`?&` ("wutpad")](../pad/), [`?|` ("wutbar")](../bar/), and 
-[`?!` ("wutzap")](../zap/), and reduces the subject appropriately when
-compiling.
+### Type inference
 
-If test analysis reveals that either branch is not taken,
-or if `p` is not a boolean, compilation fails.  However,
-an untaken branch can be indicated with the `%lost` hoon.
+The subject types of `q` and `r` are constrained to match any pattern-matching algebra in `p`.  The analysis, which is conservative, understands any combination of [`?=`](../tis/), [`?&`](../pad/), [`?|`](../bar/), and  [`?!`](../zap/), and infers the type of the subject appropriately when compiling.
+
+If test analysis reveals that either branch is never taken, or if `p` is not a boolean, compilation fails.  An untaken branch is indicated with `mint-lost`.
 
 ## Syntax
 
@@ -36,7 +31,7 @@ and includes the expected inference.  For instance,
 if you write `?&(a b)`, `b` is only executed if `a` is
 positive, and compiled with that assumption.
 
-Note also that all other branching hoons reduce to `?:`.
+Note also that all other branching expressions reduce to `?:`.
 
 ## Examples
 

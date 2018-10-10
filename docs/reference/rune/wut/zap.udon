@@ -15,7 +15,7 @@
 .=(| p)
 ```
 
-Produces the logical "not" of `p`.
+Produces the logical NOT of `p`.
 
 ## Syntax
 

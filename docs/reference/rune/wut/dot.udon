@@ -21,8 +21,9 @@ Regular: *3-fixed*.
 
 ## Discussion
 
-As usual with inverted forms, use `?.` ("wutdot") when the yes-case
-expression is much taller and/or wider than the no-case expression.
+`?.` is just like `?:`, but with its last two subexpressions reversed.
+
+As is usual with inverted forms, use `?.` when the yes-case expression is much taller and/or wider than the no-case expression.
 
 ## Examples
 

@@ -5,9 +5,9 @@
     ==
 ;>
 
-# `?> "wutgar"`
+# `?> "wutban"`
 
-`[%wtgr p=hoon q=hoon]`: positive assertion.
+`[%wtbn p=hoon q=hoon]`: positive assertion.
 
 ## Expands to
 
@@ -19,12 +19,26 @@
 
 Regular: *2-fixed*.
 
+## Discussion
+
+`?>` is used to force a crash when some condition `p` doesn't yield 'yes', `%.y`.
+
+It can be used for type inference, with the `?=` rune, to specify the type of a value.
+
 ## Examples
 
 ```
-~zod:dojo> ?>(=(3 3) %foo)
+> ?>(=(3 3) %foo)
 %foo
 
-~zod:dojo> ?>(=(3 4) %foo)
+> ?>(=(3 4) %foo)
 ford: build failed
+
+> =a `*`123
+
+> `@`a
+nest-fail
+
+> ?>(?=(@ a) `@`a)
+123
 ```

@@ -7,7 +7,7 @@
 
 # `?& "wutpad"`
 
-`[%wtpm p=(list hoon)]`: logical AND.
+`[%wtpd p=(list hoon)]`: logical AND.
 
 ## Expands to
 
