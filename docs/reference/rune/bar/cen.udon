@@ -19,6 +19,10 @@ Regular: *battery*.
 
 ## Discussion
 
+A core is a cell of `[battery payload]`, where the `battery` is code and the `payload` is data.  The `battery` is one or more arms.  An arm is a computation that takes the core itself as its subject.
+
+The `|%` rune is used to construct a core from a series of arm definitions.  Each arm definition in the expression begins with an arm rune (`++`, `+$`, or `+*`).  These arms make up the `battery`.  The subject of the `|%` expression is used to make the core's `payload`.
+
 A core is like an "object" in a conventional language, but its
 attributes (_arms_) are functions on the core, not the core and
 an argument.  A "method" on a core is an arm producing a gate.

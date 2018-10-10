@@ -22,7 +22,7 @@ Regular: *1-fixed*.
 
 ## Discussion
 
-A trap is a deferred computation.
+A trap is used to defer a computation.
 
 ## Examples
 
@@ -30,8 +30,10 @@ A trivial trap:
 
 ```
 ~zod:dojo> =foo |.(42)
+
 ~zod:dojo> $:foo
 42
+
 ~zod:dojo> (foo)
 42
 ```
@@ -53,4 +55,4 @@ A more interesting trap:
 Note that we can use `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)), accepting a *jogging* body containing a list of changes to the subject.
+> `$()` expands to `%=($)` (["centis"](../../cen/tis)).

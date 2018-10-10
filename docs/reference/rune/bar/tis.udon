@@ -7,7 +7,7 @@
 
 # `|= "bartis"`
 
-`[%brts p=model q=hoon]`: form a gate, a dry one-armed core with sample.
+`[%brts p=spec q=hoon]`: form a gate, a dry one-armed core with sample.
 
 ## Expands to
 
@@ -23,11 +23,12 @@ Regular: *2-fixed*.
 
 ## Discussion
 
-A gate is a core with one arm named `$`, so, just as with
-[`|-` ("barhep")](../hep), we can recurse back into it with `$()`.
+Dry gates are used for the vast majority of ordinary functions in Hoon.  `p` defines the type of the 'sample', i.e., the input value of the function, and usually assigns it a name (e.g., `a=@`).  `q` defines the product or the output of the function.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)), accepting
-> a *jogging* body containing a list of changes to the subject.
+A gate is a core with one arm named `$`, so, just as with
+[`|-`](../hep), we can recurse back into it with `$()`.
+
+> `$()` expands to `%=($)` (["centis"](../../cen/tis)).
 
 ## Examples
 
@@ -35,6 +36,7 @@ A trivial gate:
 
 ```
 ~zod:dojo> =foo |=(a=@ +(a))
+
 ~zod:dojo> (foo 20)
 21
 ```
@@ -44,6 +46,6 @@ A slightly less trivial gate:
 ```
 ~zod:dojo> =foo  |=  [a=@ b=@]
                  (add a b)
-~zod:dojo> (foo 20 400)
-420
+~zod:dojo> (foo 30 400)
+430
 ```

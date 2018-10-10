@@ -1,13 +1,13 @@
 :-  :~  navhome/'/docs/'
         next/'true'
         sort/'5'
-        title/'|= "barcab"'
+        title/'|_ "barcab"'
     ==
 ;>
 
 # `|_ "barcab"`
 
-`[%brcb p=spec q=(map term hoon)]`: form a door, a many-armed core
+`[%brcb p=spec q=(map term hoon)]`: produce a door, a many-armed core
 with a sample.
 
 ## Expands to
@@ -27,15 +27,11 @@ Regular: *1-fixed*, then *battery*.
 A door is the general case of a gate (function).  A gate is a
 door with only one arm, which has the empty name `$`.
 
-Other languages have no real equivalent of a door, but we often
-see the pattern of multiple functions with the same argument
-list, or with shared argument structure.  In Hoon, this shared
-structure becomes a door.
+Calling a door is like calling a gate except the caller also needs
+to specify the arm to be computed.  So, for example, if you have some door `d` which contains some arm `a`, and you want to pass some argument (i.e., input value `arg`, you would call it with `~(a d arg)`.
 
-Calling a door is just like calling a gate, but the caller needs
-to specify the arm.  For instance, to call the gate `foo` as a
-door, instead of `(foo bar)` we would write `~($ foo bar)`.  This
-is an irregular form for `%~($ foo bar)`, ["censig"](../../cen/sig).
+Because gates are also doors, you can call them the same way.  To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`.  This
+is an irregular form for `%~($ foo baz)`, [%~](../../cen/sig).
 
 ## Examples
 

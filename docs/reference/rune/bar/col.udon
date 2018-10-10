@@ -7,7 +7,7 @@
 
 # `|: "barcol"`
 
-`[%brcl p=hoon q=hoon]`: form a gate with burnt sample.
+`[%brcl p=hoon q=hoon]`: form a gate with a custom sample.
 
 ## Expands to
 
@@ -20,6 +20,8 @@
 
 Pick your own default value for the sample.  Note that `p` is an ordinary expression, not a type; `|:` doesn't bunt a sample as
 [`|=`](../tis) does.
+
+This is useful if you want a gate to have a sample of a particular type, but you don't want the default value of the gate to be the default value of that type.
 
 ## Syntax
 

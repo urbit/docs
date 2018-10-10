@@ -7,7 +7,7 @@
 
 # `|- "barhep"`
 
-`[%brhp p=hoon]`: form a trap and kick ("*call*") it.
+`[%brhp p=hoon]`: form a trap and evaluate it.
 
 ## Expands to
 
@@ -21,17 +21,14 @@ Regular: *1-fixed*.
 
 ## Discussion
 
-The `|-` ("barhep") rune can be thought of as a "recursion
-point". Since `|-` makes a `|.` (["bardot"](../dot), a core
-with one arm named `$`, we can recurse back into it with `$()`.
+The `|-` rune can be thought of as a 'recursion
+point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](../dot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)),
-  accepting a *jogging* body containing a list of changes to
-  the subject.
+> `$()` expands to `%=($)` (["centis"](../../cen/tis)).
 
 ## Examples
 
-A trivial loop doesn't even recurse:
+A trivial computation doesn't recurse:
 
 ```
 ~zod:dojo> |-(42)
