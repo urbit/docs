@@ -19,7 +19,7 @@
 
 Regular: *2-fixed*.
 
-Irregular: `` `foo`bar`` is `^-(foo bar)`.
+Irregular: `` `foo`baz`` is `^-(foo baz)`.
 
 ## Discussion
 

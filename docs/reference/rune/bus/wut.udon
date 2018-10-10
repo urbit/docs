@@ -11,8 +11,7 @@
 
 ## Normalizes to
 
-The first item in `p` which normalizes the sample to itself;
-otherwise, default.
+The first item in `p` which normalizes the sample to itself.
 
 Void, if `p` is empty.
 
@@ -24,19 +23,19 @@ The first item in `p`.
 
 Regular: *running*.
 
-Irregular: `?(%foo %bar)` is `$?(%foo %bar)`.
+Irregular: `?(%foo %baz)` is `$?(%foo %baz)`.
 
 ## Discussion
 
-For a union of atoms, a `$?` ("buswut") is fine.  For more complex nouns,
-always try to use a [`$%` ("buscen")](../cen/), [`$@` ("busvat")](../vat/) or
-[`$^` ("busket")](../ket/), at least if you expect your structure to be used as a
+For a union of atoms, a `$?` is fine.  For more complex nouns,
+always try to use a [`$%`](../cen/), [`$@`](../vat/) or
+[`$^`](../ket/), at least if you expect your structure to be used as a
 normalizer.
 
 ## Examples
 
 ```
-~zod:dojo> =a ?(%foo %bar %baz)
+~zod:dojo> =a ?(%foo %baz %baz)
 
 ~zod:dojo> (a %baz)
 %baz

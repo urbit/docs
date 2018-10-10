@@ -23,20 +23,20 @@ Irregular: `_foo` is `$_(foo)`.
 
 ## Discussion
 
-`$_` ("buscab") discards the sample it's supposedly normalizing 
+`$_` discards the sample it's supposedly normalizing
 and produces its *example* instead.
 
 ## Examples
 
 ```
-~zod:dojo> =foo $_([%foobar %moobaz])
+~zod:dojo> =foo $_([%foobaz %moobaz])
 
-~zod:dojo> (foo %foo %bar)
-[%foobar %moobaz]
+~zod:dojo> (foo %foo %baz)
+[%foobaz %moobaz]
 
-~zod:dojo> `foo`[%foobar %moobaz]
-[%foobar %moobaz]
+~zod:dojo> `foo`[%foobaz %moobaz]
+[%foobaz %moobaz]
 
 ~zod:dojo $:foo
-[%foobar %moobaz]
+[%foobaz %moobaz]
 ```

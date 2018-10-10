@@ -7,7 +7,7 @@
 
 # `$= "bustis"`
 
-`[%bsts p=@tas q=spec]`: structure which wraps a face around another structure.
+`[%bsts p=skin q=spec]`: structure which wraps a face around another structure.
 
 ## Expands to
 
@@ -20,12 +20,12 @@
 
 Regular: *2-fixed*.
 
-Irregular (mold mode): `foo=bar` is `$=(foo bar)`.
+Irregular (structure mode): `foo=baz` is `$=(foo baz)`.
 
 ## Discussion
 
 Note that the Hoon compiler is at least slightly clever about
-compiling molds, and almost never has to actually put in a gate
+compiling structures, and almost never has to actually put in a gate
 layer (as seen in the expansion above) to apply a `$=`.
 
 ## Examples
@@ -36,6 +36,6 @@ layer (as seen in the expansion above) to apply a `$=`.
 ~zod:dojo> (a %foo)
 p=%foo
 
-~zod:dojo> (a %bar)
+~zod:dojo> (a %baz)
 p=%foo
 ```

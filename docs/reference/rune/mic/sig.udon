@@ -12,8 +12,7 @@ product-sample adapter.
 
 ## Produces
 
-The gates in `q` connected together using the gate `p`, which
-transforms a `q` product and a `q` gate into a `q` sample.
+The gates in `q` are composed together using the gate `p` as an intermediate function, which transforms a `q` product and a `q` gate into a `q` sample.
 
 ## Expands to
 
@@ -51,9 +50,9 @@ transforms a `q` product and a `q` gate into a `q` sample.
 
 ## Discussion
 
-Apparently `;~` ("micsig") is a "Kleisli arrow."  It's also 
+Apparently `;~` is a "Kleisli arrow."  It's also
 a close cousin of the infamous "monad."  Don't let that bother
-you either.  Hoon doesn't know anything about category theory,
+you.  Hoon doesn't know anything about category theory,
 so you don't need to either.
 
 `;~` is often used in parsers, but is not only for parsers.

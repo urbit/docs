@@ -19,20 +19,24 @@ may also be a tuple of terms, or a term-skin pair; the type of
 
 Regular: *2-fixed*.
 
-Irregular: `foo=bar` is `^=(foo bar)`.
+Irregular: `foo=baz` is `^=(foo baz)`.
 
 ## Examples
 
 ```
 ~zod:dojo> a=1
 a=1
+
 ~zod:dojo> ^=  a
            1
 a=1
+
 ~zod:dojo> ^=(a 1)
 a=1
+
 ~zod:dojo> [b c d]=[1 2 3 4]
 [b=1 c=2 d=[3 4]]
+
 ~zod:dojo> [b c d=[x y]]=[1 2 3 4]
 [b=1 c=2 d=[x=3 y4]]
 ```

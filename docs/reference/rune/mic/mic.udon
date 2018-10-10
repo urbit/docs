@@ -17,8 +17,7 @@
 a
 ```
 
-> Note: the expansion implementation is hygienic -- it doesn't actually add the
-> `a` face to the subject.
+> Note: the expansion implementation is hygienic -- it doesn't actually add the `a` face to the subject.
 
 ## Syntax
 
@@ -39,13 +38,6 @@ Succeeds because molds don't care about auras:
 ```
 ~zod:dojo> ;;(tape ~[97 98 99])
 "abc"
-```
-
-Succeeds because the mold normalizes:
-
-```
-~zod:dojo> (tape [50 51 52])
-"23"
 ```
 
 Fails because not a fixpoint:
