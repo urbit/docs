@@ -99,7 +99,7 @@ You'll notice that the `plus` arm of the `num` core above evaluates to a gate.
   [(add a b) this(a (add a b))]
 ```
 
-But this gate doesn't have a cast in it, and that's bad practice.  Any time you produce a gate you should include a cast for the desired output type.  The desired output of the `plus` gate is a cell whose head is an atom and whose tail is a core of the same type as `num`.  The head is easy to case for using `@`, but what about the tail?  How do we cast for a core of the same type as `num`?
+But this gate doesn't have a cast in it, and that's bad practice.  Any time you produce a gate you should include a cast for the desired output type.  The desired output of the `plus` gate is a cell whose head is an atom and whose tail is a core of the same type as `num`.  We know how to cast for the head -- it's just an atom, `@`.  But what about the tail?  How do we cast for a core of the same type as `num`?
 
 There is no straight-forward way of casting for a core in general, and anyway that isn't what is desired in this case.  We don't want `plus` to produce just any core; we want it to produce a core of the same type as `num`.
 
@@ -136,7 +136,7 @@ The irregular form of `$_( )` is just `_`, so we can shorten the cast above to:
   [(add a b) this(a (add a b))]
 ```
 
-This kind of casting is relatively common.  It's generally used in gates of doors used as state machines.
+This kind of casting is relatively common.  It's generally used in cores used as state machines.
 
 #### The `_+>.$` Construction
 
@@ -628,7 +628,7 @@ With this version of the program, you get a different sorted deck of cards each 
 
 ### Dealing Cards with a State Machine
 
-Let's use a door as a state machine.  The state will have two parts: (1) a deck of cards, and (2) `rng` a copy of the `og` core with a seed value.  Instead of having functions that produce a sorted deck of cards or a shuffled deck of cards, let's have the arms of this door compute a new version of the state machine with an appropriately modified state.
+Let's use a door as a state machine.  The state will have two parts: (1) `deck`, a deck of cards, and (2) `rng`, a copy of the `og` core with a seed value.  Instead of having functions that produce a sorted deck of cards or a shuffled deck of cards, let's have the arms of this door compute a new version of the state machine with an appropriately modified state.
 
 We'll use this state machine in a program that deals `a` hands of `b` cards each:
 

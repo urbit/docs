@@ -349,7 +349,7 @@ To use a door as a state machine, put the door in the subject and modify that do
 0
 ```
 
-As you can see, you never actually 'change' the `num` core literally; you actually product a variant of that core and set that as the new value of `num`.  You can see the sample value of `num` using `a.num`.
+As you can see, you never actually 'change' the `num` core literally; you actually produce a variant of that core and set that as the new value of `num`.  You can see the sample value of `num` using `a.num`.
 
 Let's do the same sort of thing in a generator.  Save the following as `numcore.hoon` in the `/gen` directory of your urbit's pier:
 

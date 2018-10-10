@@ -54,7 +54,7 @@ The second way of making a function call involves an expression that _produces_ 
 246
 ```
 
-Pop quiz: Are calls to `add` and `mul` of the Hoon standard library of the first kind, or the second?
+Are calls to `add` and `mul` of the Hoon standard library of the first kind, or the second?
 
 ```
 > (add 12 23)

@@ -28,7 +28,7 @@ Nock is a [low-level](https://en.wikipedia.org/wiki/Low-level_programming_langua
 
 ### What is a Function?
 
-The word 'function' is used in various ways in other programming languages, but we mean it in basically its [mathematical sense](https://en.wikipedia.org/wiki/Function_(mathematics)).  Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  What the return value is depends solely on the argument(s), and nothing else.  For example, we can understand multiplication as a function: it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
+The word 'function' is used in various ways in other programming languages, but we mean it in basically its [mathematical sense](https://en.wikipedia.org/wiki/Function_(mathematics%29).  Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  What the return value is depends solely on the argument(s), and nothing else.  For example, we can understand multiplication as a function: it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
 
 ### The Nock Function
 
@@ -45,7 +45,7 @@ Here's an example of some Nock run in the dojo, using `.*( )`:
 
 In this example `[15 17]` is the subject, `[[4 0 2] [0 3]]` is the formula, and `[16 17]` is the product.
 
-This tutorial series is designed to teach you Hoon.  For that purpose it's not important that you know how to read and understand Nock formulas; you just need to know that Nock takes a subject and a formula and returns a product.  (Those who who want to learn more about Nock should head over to the [Nock tutorial]([Nock spec](../../nock)).)
+This tutorial series is designed to teach you Hoon.  For that purpose it's not important that you know how to read and understand Nock formulas; you just need to know that Nock takes a subject and a formula and returns a product.  (Those who who want to learn more about Nock should head over to the [Nock tutorial](../../nock).)
 
 ### Nock Formulas Define Functions
 

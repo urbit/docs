@@ -198,7 +198,7 @@ There are other set functions in the Hoon standard library we won't cover here.
 
 ### Cartesian Product
 
-Here's a program that takes two sets of atoms and returns the Cartesian product of those sets.  A Cartesian of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
+Here's a program that takes two sets of atoms and returns the Cartesian product of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
 ```
 |=  [a=(set @) b=(set @)]
