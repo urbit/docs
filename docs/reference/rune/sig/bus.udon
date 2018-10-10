@@ -7,7 +7,7 @@
 
 # `~$ "sigbus"`
 
-`[%sgbc p=term q=hoon]`: profiling hit counter.
+`[%sgbs p=term q=hoon]`: profiling hit counter.
 
 ## Expands to
 

@@ -7,7 +7,7 @@
 
 # `~/ "signet"`
 
-`[%sgfs p=term q=hoon]`: jet registration for gate with
+`[%sgnt p=term q=hoon]`: jet registration for gate with
 registered context.
 
 ## Expands to

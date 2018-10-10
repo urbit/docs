@@ -7,7 +7,7 @@
 
 # `~> "sigban"`
 
-`[%sggr p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied
+`[%sgbn p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied
 to computation.
 
 ## Expands to

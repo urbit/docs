@@ -5,9 +5,9 @@
     ==
 ;>
 
-# `~< "sigled"` 
+# `~< "sigled"`
 
-`[%sggl p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied to
+`[%sgld p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied to
 product.
 
 ## Expands to
@@ -20,8 +20,8 @@ Regular: *2-fixed*.  For the dynamic form, write `%term.hoon`.
 
 ## Discussion
 
-`~<` ("siggal") is only used for jet hints ([`~/` ("sigfas")](../fas/)
-and [`~%` ("sigcen")](../cen/)) at the moment; we are not telling the
+`~<` is only used for jet hints ([`~/`](../fas/)
+and [`~%`](../cen/)) at the moment; we are not telling the
 interpreter something about the computation we're about to perform, but
 rather about its product.
 

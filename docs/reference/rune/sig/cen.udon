@@ -25,7 +25,7 @@ between opening and closing `==`.
 
 ## Discussion
 
-`~%` ("sigcen" is for registering cores.  A registered core declares its
+`~%` is for registering cores.  A registered core declares its
 formal identity to the interpreter, which may or may not be able
 to recognize and/or accelerate it.
 
@@ -50,7 +50,7 @@ general-purpose hotspot optimizer or "JIT"; or (c) merely a
 hotspot declaration for profiling.
 
 As always with hints, the programmer has no idea which of (a),
-(b), and (c) will be applied.  She should use `~%`
+(b), and (c) will be applied.  Use `~%`
 indiscriminately on all hotspots, bottlenecks, etc, real or
 suspected.
 
@@ -68,7 +68,7 @@ already registered.
 
 Registers a jet in core `s` so that it can be called when that code is run.
 
-Regularm form: *4-fixed*
+Regular form: *4-fixed*
 
 ## Examples
 
