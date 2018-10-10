@@ -21,7 +21,9 @@ Regular: *2-fixed*.
 
 ## Discussion
 
-`=+` ("tislus") is the simplest way of "declaring a variable."
+The subject of the `=+` expression, call it `a`, becomes the cell `[p a]` for the evaluation of `q`.  That is, `=+` 'pins a value', `p`, to the head of the subject.
+
+Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ## Examples
 

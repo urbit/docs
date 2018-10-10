@@ -22,10 +22,12 @@ Regular: *4-fixed*.
 
 ## Discussion
 
-We use `=^` ("tisket" when we have a state machine with a function that
+`p` is a new name (possibly with type annotation, e.g., `a=@`) of a value to be pinned to the subject.  The value of `p` is the head of the product of `r`.  `q` is given the value of the tail of `r`'s product.  Then `s` is evaluated against this new subject.
+
+We generally use `=^` when we have a state machine with a function, `r`, that
 produces a cell, whose head is a result and whose tail is a new
-state.  We want to use the head as a new variable, and stuff the
-tail back into wherever we stored the old state.
+state.  The head value is given a new name `p`, and the
+tail is stuffed back into wherever we stored the old state, `q`.
 
 This may also remind you of Haskell's State monad.
 

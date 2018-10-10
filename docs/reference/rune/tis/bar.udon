@@ -21,8 +21,9 @@ Regular: *2-fixed*.
 
 ## Discussion
 
-`=|` "declares a variable" which is "uninitialized," presumably
-because you'll set it in a loop or similar.
+The default (or 'bunt') value of `p` is pinned to the head of the subject.  Usually `p` includes a name for ease of reference.
+
+Speaking more loosely, `=|` usually "declares a variable" which is "uninitialized," presumably because you'll set it in a loop or similar.
 
 ## Examples
 

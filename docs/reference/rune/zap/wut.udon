@@ -11,7 +11,7 @@
 ## Produces
 
 `q`, if `p` is greater than or equal to the Hoon kelvin version.
-(Versions count down; the current version is 143.)
+(Versions count down; the current version is 141.)
 
 ## Syntax
 

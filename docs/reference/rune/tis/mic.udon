@@ -7,8 +7,7 @@
 
 # `=; "tismic"`
 
-`[%tssm p=skin q=hoon r=hoon]`: combine a named and/or typed noun with the
-subject, inverted.
+`[%tssm p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
 
 ## Expands to
 
@@ -19,6 +18,10 @@ subject, inverted.
 ## Syntax
 
 Regular: *3-fixed*.
+
+## Discussion
+
+`=;` is exactly like `=/` except that the order of its last two subexpressions is reversed.
 
 ## Examples
 

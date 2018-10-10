@@ -11,7 +11,7 @@
 
 ## Produces
 
-`q`, evaluated with the product of `p` as its subject.
+the product of `q`, with the product of `p` taken as the subject.
 
 ## Syntax
 

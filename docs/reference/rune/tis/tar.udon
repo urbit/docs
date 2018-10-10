@@ -19,9 +19,7 @@ Regular: *3-fixed*.
 
 ## Discussion
 
-The difference between aliasing and pinning is that the subject
-noun stays the same; the alias is just recorded in its type.
-`q` is calculated every time you use the `p` alias.
+The difference between aliasing and pinning is that pinning changes the subject, but for aliasing the subject noun stays the same.  The aliased expression, `q`, is recorded in the type information of `p`. `q` is calculated every time you use the `p` alias.
 
 ## Examples
 

@@ -11,7 +11,7 @@
 
 ## Produces
 
-A cell whose tail is `p`, and whose head is the static type of `p`.
+A cell whose tail is the product of `p`, and whose head is the static type of `p`.
 
 ## Syntax
 

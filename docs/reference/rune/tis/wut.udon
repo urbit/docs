@@ -7,7 +7,7 @@
 
 # `=? "tiswut"`
 
-`[$tswt p/wing q/hoon r/hoon s/hoon]`: conditionally change one leg in the subject.
+`[$tswt p=wing q=hoon r=hoon s=hoon]`: conditionally change one leg in the subject.
 
 ## Expands to
 

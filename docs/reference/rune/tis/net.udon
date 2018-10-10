@@ -7,18 +7,17 @@
 
 # `=/ "tisnet"`
 
-`[%tsfs p=skin q=hoon r=hoon]`: combine a named and/or typed
-noun with the subject.
+`[%tsfs p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation.
 
 ## Expands to
 
-*if `p` is a symbol*, (e.g. `a`):
+*if `p` is a name*, (e.g. `a`):
 
 ```
 =+(^=(p q) r)
 ```
 
-*if `p` is a symbol with a type* (e.g., `a=@`):
+*if `p` is a name with a type* (e.g., `a=@`):
 
 ```
 =+(^-(p q) r)
@@ -40,7 +39,7 @@ Regular: *3-fixed*.
 
 ## Discussion
 
-`p` can be either a symbol or a symbol=type.  If it's just a symbol,
+`p` can be either a name or a name=type.  If it's just a name,
 `=/` ("tisnet") "declares a type-inferred variable."  If it has a type, `=/`
 "declares a type-checked variable."
 
