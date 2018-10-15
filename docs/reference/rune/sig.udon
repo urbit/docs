@@ -7,7 +7,7 @@
 
 # Hints `~` ("sig")
 
-Runes that use Nock `10` to pass non-semantic info to the interpreter.
+Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
 ## Runes
 
