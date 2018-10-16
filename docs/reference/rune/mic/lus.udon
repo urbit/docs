@@ -1,0 +1,51 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/';+ "miclus"'
+    ==
+;>
+
+# `;+ "miclus"`
+
+make an XML node (Sail)
+
+## Produces
+
+A noun that can be rendered as single XML node.
+
+## Syntax
+
+*1-fixed*
+
+```
+;+  p=hoon
+```
+
+`p` is a Hoon expression.
+
+## Discussion
+
+This is a Sail rune.  Sail is a part of Hoon used for generating a static website using the appropriate render pipeline.  See the [Sail tutorial](../../../../tutorial/sail).
+
+In Sail you can produce a single `<p>` node very simply in the following way:
+
+```
+> ;p: This will be rendered as an XML node.
+[[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
+```
+
+One thing that is interesting about Sail is how you can use arbitrary Hoon expressions to choose from among several nodes to render.  This is done with the `;+` rune.
+
+## Examples
+
+```
+> ;+  ?:  (gth 3 2)
+        ;p: This is the node for 'yes'.
+      ;p: This is the node for 'no'.
+[[[%p ~] [[%$ [%$ "This is the node for 'yes'."] ~] ~] ~] ~]
+
+> ;+  ?:  (gth 2 3)
+        ;p: This is the node for 'yes'.
+      ;p: This is the node for 'no'.
+[[[%p ~] [[%$ [%$ "This is the node for 'no'."] ~] ~] ~] ~]
+```

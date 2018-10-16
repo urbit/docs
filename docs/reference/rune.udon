@@ -98,7 +98,7 @@ Limb and wing expressions also lack runes:
 
 ;br;
 
-## Terminators (`--` and `==`)
+## `--`, `==` (Terminators)
 
 ;list(src "./terminators");
 

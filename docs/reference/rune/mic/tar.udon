@@ -1,0 +1,63 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/';* "mictar"'
+    ==
+;>
+
+# `;* "mictar"`
+
+make a list of XML nodes from a tuple (Sail)
+
+## Produces
+
+A list of nouns, each of which can be rendered as an XML node.
+
+## Syntax
+
+*running*
+
+```
+;*  p=hoon  q=hoon  ...  z=hoon  ==
+```
+
+`p`-`z` are Hoon expressions.
+
+## Discussion
+
+This is a Sail rune.  Sail is a part of Hoon used for generating a static website using the appropriate render pipeline.  See the [Sail tutorial](../../../../tutorial/sail).
+
+In Sail you can produce a single `<p>` node very simply in the following way:
+
+```
+> ;p: This will be rendered as an XML node.
+[[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
+```
+
+Sometimes you need a list of such nodes, usually produced with the `;*` rune.  But to use this rune appropriately you must first put the desired nodes together with `;=`.
+
+## Examples
+
+```
+> ;*  ?:  (gth 3 2)
+        ;=  ;p: This is node 1 of 'yes'.
+            ;p: This is node 2 of 'yes'.
+        ==
+      ;=  ;p: This is node 1 of 'no'.
+          ;p: This is node 2 of 'no'.
+      ==
+[ [[%p ~] [[%$ [%$ "This is node 1 of 'yes'."] ~] ~] ~]
+  [[[%p ~] [[%$ [%$ "This is node 2 of 'yes'."] ~] ~] ~] ~]
+]
+
+> ;*  ?:  (gth 2 3)
+          ;=  ;p: This is node 1 of 'yes'.
+              ;p: This is node 2 of 'yes'.
+          ==
+        ;=  ;p: This is node 1 of 'no'.
+            ;p: This is node 2 of 'no'.
+        ==
+[ [[%p ~] [[%$ [%$ "This is node 1 of 'no'."] ~] ~] ~]
+  [[[%p ~] [[%$ [%$ "This is node 2 of 'no'."] ~] ~] ~] ~]
+]
+```
