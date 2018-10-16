@@ -1,0 +1,22 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'11'
+        title/'|@ "barvat"'
+    ==
+;>
+
+# `|@ "barvat"`
+
+[%brvt p=(map term hoon)]: Form a 'wet' core `[battery payload]` with subject as the payload.
+
+## Produces
+
+A wet core with battery `p`.  Payload is the subject.
+
+## Syntax
+
+Regular: *battery*.
+
+## Discussion
+
+The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one.  This allows for type polymorphism of its arms, using 'genericity'.  See [Advanced types](../../../advanced).

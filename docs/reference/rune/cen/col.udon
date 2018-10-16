@@ -1,0 +1,43 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'%: "cencol"'
+    ==
+;>
+
+# `%: "cencol"`
+
+`[%cncl p=hoon q=(list hoon)]`: call gate `p` with sample `q`.
+
+## Syntax
+
+Regular: *1-fixed* then *running*.
+
+```
+%:  p=hoon  r=hoon  s=hoon  ...  z=hoon  ==
+```
+
+## Discussion
+
+`p` is the gate to be called, and a noun is constructed from `r` through `z` and passed to `p`.  If there is only one subexpression after `p`, its product is the sample.  Otherwise a cell is constructed from the whole series of subexpressions after `p`, and that is the sample.
+
+When `%:` is used in tall-form syntax, the series of expressions after `p` must be terminated with `==`.
+
+## Examples
+
+```
+> %:  add  22  33  ==
+55
+
+> =adder |=  a=(list @)
+         =+  c=0
+         |-
+         ?~  a  c
+         $(c (add i.a c), a t.a)
+
+> %:  adder  22  33  44  ~  ==
+99
+
+> %:(adder 22 33 44 ~)
+99
+```

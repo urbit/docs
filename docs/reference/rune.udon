@@ -56,9 +56,9 @@ Limb and wing expressions also lack runes:
 
 ;br;
 
-## `~ sig` (Hints)
+## `+ lus` (Arms)
 
-;list(src "./sig");
+;list(src "./lus");
 
 ;br;
 
@@ -89,5 +89,17 @@ Limb and wing expressions also lack runes:
 ## `; mic` (Make)
 
 ;list(src "./mic");
+
+;br;
+
+## `~ sig` (Hints)
+
+;list(src "./sig");
+
+;br;
+
+## Terminators (`--` and `==`)
+
+;list(src "./terminators");
 
 ==
