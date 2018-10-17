@@ -11,7 +11,7 @@ make an XML node (Sail)
 
 ## Produces
 
-A noun that can be rendered as single XML node.
+A noun that represents a single XML node.
 
 ## Syntax
 
@@ -25,7 +25,7 @@ A noun that can be rendered as single XML node.
 
 ## Discussion
 
-This is a Sail rune.  Sail is a part of Hoon used for generating a static website using the appropriate render pipeline.  See the [Sail tutorial](../../../../tutorial/sail).
+This is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  Among other things it can be used to generate a static website using the appropriate render pipeline.  See the [Sail tutorial](../../../../tutorial/sail).
 
 In Sail you can produce a single `<p>` node very simply in the following way:
 
@@ -34,7 +34,7 @@ In Sail you can produce a single `<p>` node very simply in the following way:
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-One thing that is interesting about Sail is how you can use arbitrary Hoon expressions to choose from among several nodes to render.  This is done with the `;+` rune.
+One interesting thing about Sail is that it allows you to use complex Hoon expressions to choose from among several nodes to render.  This is done with the `;+` rune.
 
 ## Examples
 
