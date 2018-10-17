@@ -7,11 +7,11 @@
 
 # `;= "mictis"`
 
-make a tuple of XML nodes (Sail)
+make a list of XML nodes (Sail)
 
 ## Produces
 
-A tuple of nouns, each of which represents an XML node.
+A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single XML node.
 
 ## Syntax
 
@@ -21,22 +21,22 @@ A tuple of nouns, each of which represents an XML node.
 ;=  p=hoon  q=hoon  ...  z=hoon  ==
 ```
 
-`p`-`z` are Hoon expressions.
+`p`-`z` are Hoon expressions, each of which poduces a `manx`.
 
 ## Discussion
 
-This is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  Among other things it can be used to generate a static website using the appropriate render pipeline.  See the [Sail tutorial](../../../../tutorial/sail).
+`;=` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](../../../../tutorial/sail).
 
-In Sail you can produce a single `<p>` node very simply in the following way:
+In Sail a single XML node is represented by a `manx`.  A single `<p>` node `manx` can be produced in the following way:
 
 ```
 > ;p: This will be rendered as an XML node.
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-Sometimes you need a list of such nodes, usually produced with the `;*` rune.  But to use this rune appropriately you must first put the desired nodes together with `;=`.
+Sometimes what is needed is a `marl`, i.e., a list of `manx`.  To convert a series of `manx` nodes to a `marl`, use the `;=` rune.
 
-(See [`;*`](./tar).)
+(See also [`;*`](./tar).)
 
 ## Examples
 

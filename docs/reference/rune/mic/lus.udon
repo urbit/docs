@@ -7,11 +7,11 @@
 
 # `;+ "miclus"`
 
-make an XML node (Sail)
+make a single XML node (Sail)
 
 ## Produces
 
-A noun that represents a single XML node.
+A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single XML node.
 
 ## Syntax
 
@@ -21,31 +21,45 @@ A noun that represents a single XML node.
 ;+  p=hoon
 ```
 
-`p` is a Hoon expression.
+`p` is a Hoon expression that produces a `manx`.
 
 ## Discussion
 
-This is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  Among other things it can be used to generate a static website using the appropriate render pipeline.  See the [Sail tutorial](../../../../tutorial/sail).
+tl;dr -- `;+` converts a `manx` to a `marl`.
 
-In Sail you can produce a single `<p>` node very simply in the following way:
+`;+` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](../../../../tutorial/sail).
+
+In Sail a single XML node is represented by a `manx`.  A single `<p>` node `manx` can be produced in the following way:
 
 ```
 > ;p: This will be rendered as an XML node.
 [[%p ~] [[%$ [%$ "This will be rendered as an XML node."] ~] ~] ~]
 ```
 
-One interesting thing about Sail is that it allows you to use complex Hoon expressions to choose from among several nodes to render.  This is done with the `;+` rune.
+Sometimes what is needed is a `marl`, i.e., a list of `manx`.  To convert a single `manx` to a `marl`, use the `;+` rune.
+
+One interesting thing about Sail is that it allows you to use complex Hoon expressions to choose from among several nodes to render.  The `;+` rune can take such a complex expression.
 
 ## Examples
 
 ```
-> ;+  ?:  (gth 3 2)
+> ^-  marl
+  ;+  ?:  (gth 3 2)
         ;p: This is the node for 'yes'.
       ;p: This is the node for 'no'.
-[[[%p ~] [[%$ [%$ "This is the node for 'yes'."] ~] ~] ~] ~]
+~[
+  [ g=[n=%p a=~]
+    c=[i=[g=[n=%$ a=~[[n=%$ v="This is the node for 'yes'."]]] c=~] t=~]
+  ]
+]
 
-> ;+  ?:  (gth 2 3)
+> ^-  marl
+  ;+  ?:  (gth 2 3)
         ;p: This is the node for 'yes'.
       ;p: This is the node for 'no'.
-[[[%p ~] [[%$ [%$ "This is the node for 'no'."] ~] ~] ~] ~]
+~[
+  [ g=[n=%p a=~]
+    c=[i=[g=[n=%$ a=~[[n=%$ v="This is the node for 'no'."]]] c=~] t=~]
+  ]
+]
 ```
