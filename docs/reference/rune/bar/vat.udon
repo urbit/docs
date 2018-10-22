@@ -7,15 +7,32 @@
 
 # `|@ "barvat"`
 
-[%brvt p=(map term hoon)]: Form a 'wet' core `[battery payload]` with subject as the payload.
-
-## Produces
-
-A wet core with battery `p`.  Payload is the subject.
+Produce a 'wet' core `[battery payload]`.
 
 ## Syntax
 
-Regular: *battery*.
+Regular:
+
+```
+|@
+++  name-1  a=hoon
+++  name-2  b=hoon
+       ...
+++  name-n  c=hoon
+--
+```
+
+Note: The `++` rune may be replaced with any other rune in the `+` family.
+
+AST:
+
+```
+[%brvt p=(unit term) q=(map term tome)]
+```
+
+## Semantics
+
+A `|@` expression produces a 'wet' core whose payload is the expression's subject.  The various arms in the battery are named and defined explicitly (with `a` through `c` above).
 
 ## Discussion
 

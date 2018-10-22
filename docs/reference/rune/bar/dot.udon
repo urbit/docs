@@ -7,22 +7,38 @@
 
 # `|. "bardot"`
 
-`[%brdt p=hoon]`: form a trap, a core with one arm `$`.
+Produce a trap (a core with one arm `$`).
+
+## Syntax
+
+Regular:
+
+```
+|.  a=hoon
+```
+
+AST:
+
+```
+[%brdt p=hoon]
+```
+
+Semantics:
+
+A `|.` expression produces a core with a single arm, `$`.  The core isn't explicitly given a sample.  `a` is a Hoon expression that defines the computation of the `$` arm.
+
+The payload of the core is the subject of the `|.` expression.
 
 ## Expands to
 
 ```
-|%  ++  $  p
+|%  ++  $  a
 --
 ```
 
-## Syntax
-
-Regular: *1-fixed*.
-
 ## Discussion
 
-A trap is used to defer a computation.
+A trap is generally used to defer a computation.
 
 ## Examples
 
@@ -55,4 +71,4 @@ A more interesting trap:
 Note that we can use `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](../../cen/tis)).

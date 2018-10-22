@@ -7,21 +7,35 @@
 
 # `|* "bartar"`
 
-`[%brtr p=spec q=hoon]`: produce a wet one-armed core with sample.
+Produce a wet gate (one-armed core with sample).
+
+## Syntax
+
+Regular:
+
+```
+|*  a=spec  b=hoon
+```
+
+AST:
+
+```
+[%brtr p=spec q=hoon]
+```
+
+## Semantics
+
+A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b` is a Hoon expression that determines the output value of the gate.
 
 ## Expands to
 
 ```
-=|  p
-|%
-+-  $
-  q
+=|  a
+|@
+++  $
+  b
 --
 ```
-
-## Syntax
-
-Regular: *2-fixed*.
 
 ## Discussion
 
@@ -36,7 +50,7 @@ you know what you're doing.
 Just as with a [gate](../tis), we can recurse back into a wet gate
 with `$()`.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](../../cen/tis)).
 
 ## Examples
 

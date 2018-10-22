@@ -7,25 +7,47 @@
 
 # `|^ "barket"`
 
-`[%brkt p=hoon q=(map term hoon)]`: form a core whose battery includes a `$` arm `$`, and compute the latter.
+Produce a core whose battery includes a `$` arm and compute the latter.
+
+## Syntax
+
+Regular:
+
+```
+|^  a=hoon
+++  name-1  b=hoon
+++  name-2  c=hoon
+       ...
+++  name-n  d=hoon
+--
+```
+
+AST:
+
+```
+[%brkt p=hoon q=(map term tome)]
+```
+
+## Semantics
+
+A `|^` expression produces a multi-arm core whose battery includes a `$` arm, which is evaluated immediately.  `a` is a Hoon expression that defines the product of the `$` arm.  `a` is followed by a series of arm definitions for the rest of the core battery arms.  There must be at least one arm other than the `$` arm.
 
 ## Expands to
 
 ```
 =>  |%
-    ++  $  p
-    q
+    ++  $  a=hoon
+    ++  name-1  b=hoon
+    ++  name-2  c=hoon
+           ...
+    ++  name-n  d=hoon
     --
 $
 ```
 
-## Syntax
-
-Regular: *1-fixed*, then *battery*.
-
 ## Discussion
 
-The `|^` rune is useful when you want to construct a multi-arm core and you immediately want to evaluate a particular arm in it.
+The `|^` rune is useful when you define a multi-arm core in your code and a particular arm in it is to be evaluated immediately.
 
 ## Examples
 

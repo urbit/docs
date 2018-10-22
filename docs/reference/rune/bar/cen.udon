@@ -7,15 +7,36 @@
 
 # `|% "barcen"`
 
-[%brcn p=(map term hoon)]: Form a core `[battery payload]` with subject as the payload.
-
-## Produces
-
-A core with battery `p`.  Payload is the subject.
+Produce a core, `[battery payload]`.
 
 ## Syntax
 
-Regular: *battery*.
+Regular:
+
+```
+|%
+++  name-1  a=hoon
+++  name-2  b=hoon
+       ...
+++  name-n  c=hoon
+--
+```
+
+Note: The `++` rune may be replaced with any other rune in the `+` family.
+
+AST:
+
+```
+[%brcn p=(unit term) q=(map term tome)]
+```
+
+## Semantics
+
+The product of a `|%` expression is a dry core with one or more arms in the battery.
+
+The `|%` rune is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`).  There must be at least one arm, but there may be arbitrarily many.  Each arm must include a name, which is followed by the expression (`a`, `b`, and `c` above) that defines the arm product.
+
+The core payload is the subject of the `|%` expression.
 
 ## Discussion
 
@@ -25,7 +46,7 @@ The `|%` rune is used to construct a core from a series of arm definitions.  Eac
 
 A core is like an "object" in a conventional language, but its
 attributes (_arms_) are functions on the core, not the core and
-an argument.  A "method" on a core is an arm producing a gate.
+an argument.  A "method" on a core is an arm that produces a gate.
 
 ## Examples
 

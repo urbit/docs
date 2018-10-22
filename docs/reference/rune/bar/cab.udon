@@ -7,28 +7,56 @@
 
 # `|_ "barcab"`
 
-`[%brcb p=spec q=(map term hoon)]`: produce a door, a many-armed core
-with a sample.
+Produce a *door* (a core with a sample).
+
+## Syntax
+
+Regular:
+
+```
+|_  a=spec
+++  name-1  b=hoon
+++  name-2  c=hoon
+       ...
+++  name-n  d=hoon
+--
+```
+
+Note: The `++` rune may be replaced with any other rune in the `+` family.
+
+AST:
+
+```
+[%brcb p=spec q=alas r=(map term tome)]
+```
+
+## Semantics
+
+The product of a `|_` expression is a *door*, a core with one or more arms whose payload includes a sample.  That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
+
+`a` defines the door sample type and usually includes a name assignment (e.g., `n=@`).  `a` is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`).  There must be at least one arm, but there may be arbitrarily many.  Each arm must include a name, which is followed by the expression (`b`, `c`, and `d` above) that defines the arm product.
+
+The context of the door is the subject of the `|_` expression.
 
 ## Expands to
 
 ```
-=|  p
-|%  q
-==
+=|  a
+|%
+++  name-1  b
+++  name-2  c
+       ...
+++  name-n  d
+--
 ```
-
-## Syntax
-
-Regular: *1-fixed*, then *battery*.
 
 ## Discussion
 
 A door is the general case of a gate (function).  A gate is a
-door with only one arm, which has the empty name `$`.
+door with only one arm, which has the name `$`.
 
 Calling a door is like calling a gate except the caller also needs
-to specify the arm to be computed.  So, for example, if you have some door `d` which contains some arm `a`, and you want to pass some argument (i.e., input value `arg`, you would call it with `~(a d arg)`.
+to specify the arm to be computed.  So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
 Because gates are also doors, you can call them the same way.  To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`.  This
 is an irregular form for `%~($ foo baz)`, [%~](../../cen/sig).

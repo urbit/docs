@@ -7,17 +7,31 @@
 
 # `|~ "barsig"`
 
-`[%brsg p=spec q=hoon]`: form an iron gate.
+Produce an iron gate.
+
+## Syntax
+
+Regular:
+
+```
+|~  a=spec  b=hoon
+```
+
+AST:
+
+```
+[%brsg p=spec q=hoon]
+```
+
+## Semantics
+
+A `|~` expression produces an iron gate.  `a` defines the sample, and `b` defines the output value of the gate.
 
 ## Expands to
 
 ```
-^|  |=(p q)
+^|  |=(a b)
 ```
-
-## Syntax
-
-Regular: *2-fixed*.
 
 ## Discussion
 

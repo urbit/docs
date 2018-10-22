@@ -7,24 +7,37 @@
 
 # `|- "barhep"`
 
-`[%brhp p=hoon]`: form a trap and evaluate it.
+Produce a trap (a core with one arm `$`) and evaluate it.
+
+## Syntax
+
+Regular:
+
+```
+|-  a=hoon
+```
+
+AST:
+
+```
+[%brhp p=hoon]
+```
+
+## Semantics
+
+A `|-` expression produces a core with one arm named `$` and immediately evaluates `$`.  `a` is a Hoon expression that determines what `$` evaluates to.
 
 ## Expands to
 
 ```
-=<($ |.(p))
+=<($ |.(a))
 ```
-
-## Syntax
-
-Regular: *1-fixed*.
 
 ## Discussion
 
-The `|-` rune can be thought of as a 'recursion
-point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](../dot), a core with one arm named `$`, we can recurse back into it with `$()`.
+The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](../dot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](../../cen/tis)).
 
 ## Examples
 

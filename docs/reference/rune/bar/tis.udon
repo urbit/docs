@@ -7,28 +7,42 @@
 
 # `|= "bartis"`
 
-`[%brts p=spec q=hoon]`: form a gate, a dry one-armed core with sample.
+Produce a gate (a one-armed core with a sample).
+
+## Syntax
+
+Regular:
+
+```
+|=  a=spec  b=hoon
+```
+
+AST:
+
+```
+[%brts p=spec q=hoon]`
+
+## Definition
+
+The product of a `|=` expression is a dry *gate*, i.e., a Hoon function.
+
+`p` defines the gate sample type -- i.e., the input value type -- and usually includes a sample name assignment (e.g., `a=@`).  `q` is an expression that determines the output value of the gate.
 
 ## Expands to
 
 ```
-=|  p
-|%  ++  $  q
+=|  a
+|%  ++  $  b
 --
 ```
 
-## Syntax
-
-Regular: *2-fixed*.
-
 ## Discussion
 
-Dry gates are used for the vast majority of ordinary functions in Hoon.  `p` defines the type of the 'sample', i.e., the input value of the function, and usually assigns it a name (e.g., `a=@`).  `q` defines the product or the output of the function.
+Dry gates are used for the vast majority of ordinary functions in Hoon.
 
-A gate is a core with one arm named `$`, so, just as with
-[`|-`](../hep), we can recurse back into it with `$()`.
+A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$()` expands to `%=($)` (["centis"](../../cen/tis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](../../cen/tis)).
 
 ## Examples
 

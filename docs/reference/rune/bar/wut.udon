@@ -7,17 +7,31 @@
 
 # `|? "barwut"`
 
-`[%brwt p=hoon]`: form a lead trap.
+Produce a lead trap.
+
+## Syntax
+
+Regular:
+
+```
+|?  a=hoon
+```
+
+AST:
+
+```
+[%brwt p=hoon]
+```
+
+## Semantics
+
+A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`).  `a` is a Hoon expression that defines the product of the `$` arm.
 
 ## Expands to
 
 ```
-^?  |.  p
+^?  |.  a
 ```
-
-## Syntax
-
-Regular: *1-fixed*.
 
 ## Discussion
 
