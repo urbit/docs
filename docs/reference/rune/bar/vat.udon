@@ -15,10 +15,10 @@ Regular:
 
 ```
 |@
-++  name-1  a=hoon
-++  name-2  b=hoon
+++  a=term  b=hoon
+++  c=term  d=hoon
        ...
-++  name-n  c=hoon
+++  e=term  f=hoon
 --
 ```
 
@@ -32,7 +32,7 @@ AST:
 
 ## Semantics
 
-A `|@` expression produces a 'wet' core whose payload is the expression's subject.  The various arms in the battery are named and defined explicitly (with `a` through `c` above).
+A `|@` expression produces a 'wet' core whose payload is the expression's subject.  The various arms in the battery are each named (`a`, `c`, and `e` above) and defined explicitly with a Hoon expression (with `b`, `d`, and `f` above).
 
 ## Discussion
 

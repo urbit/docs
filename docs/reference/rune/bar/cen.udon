@@ -15,10 +15,10 @@ Regular:
 
 ```
 |%
-++  name-1  a=hoon
-++  name-2  b=hoon
+++  a=term  b=hoon
+++  c=term  d=hoon
        ...
-++  name-n  c=hoon
+++  e=term  f=hoon
 --
 ```
 
@@ -34,7 +34,7 @@ AST:
 
 The product of a `|%` expression is a dry core with one or more arms in the battery.
 
-The `|%` rune is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`).  There must be at least one arm, but there may be arbitrarily many.  Each arm must include a name, which is followed by the expression (`a`, `b`, and `c` above) that defines the arm product.
+The `|%` rune is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`).  There must be at least one arm, but there may be arbitrarily many.  Each arm must include a name (`a`, `c`, and `e` above), which is followed by the expression (`b`, `d`, and `f` above) that defines the arm product.
 
 The core payload is the subject of the `|%` expression.
 

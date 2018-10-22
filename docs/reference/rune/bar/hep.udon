@@ -30,7 +30,7 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 ## Expands to
 
 ```
-=<($ |.(a))
+=<($ |.(a=hoon))
 ```
 
 ## Discussion

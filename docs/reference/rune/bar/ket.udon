@@ -15,12 +15,14 @@ Regular:
 
 ```
 |^  a=hoon
-++  name-1  b=hoon
-++  name-2  c=hoon
+++  b=term  c=hoon
+++  d=term  e=hoon
        ...
-++  name-n  d=hoon
+++  f=term  g=hoon
 --
 ```
+
+Note: The `++` rune may be replaced with any other rune in the `+` family.
 
 AST:
 
@@ -37,10 +39,10 @@ A `|^` expression produces a multi-arm core whose battery includes a `$` arm, wh
 ```
 =>  |%
     ++  $  a=hoon
-    ++  name-1  b=hoon
-    ++  name-2  c=hoon
+    ++  b=term  c=hoon
+    ++  d=term  e=hoon
            ...
-    ++  name-n  d=hoon
+    ++  f=term  g=hoon
     --
 $
 ```

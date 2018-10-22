@@ -7,17 +7,29 @@
 
 # `%^ "cenket"`
 
-`[%cnkt p=hoon q=hoon r=hoon s=hoon]`: call with triple sample.
+Call gate with triple sample.
+
+## Syntax
+
+Regular:
+
+```
+%^  a=hoon  b=hoon  c=hoon  d=hoon
+```
+
+AST:
+
+```
+[%cnkt p=hoon q=hoon r=hoon s=hoon]
+```
+
+##
 
 ## Expands to
 
 ```
-%-(p [q r s])
+%-(a=hoon [b=hoon c=hoon d=hoon])
 ```
-
-## Syntax
-
-Regular: *4-fixed*.
 
 ## Examples
 

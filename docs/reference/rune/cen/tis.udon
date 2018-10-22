@@ -7,25 +7,44 @@
 
 # `%= "centis"`
 
-`[%cnts p=wing q=(list (pair wing hoon))]`: resolve a wing with changes.
-
-## Produces
-
-Product of resolution to `p`, modified by the change list `q`.
-
-If `p` resolves to a leg, `q` is a list of changes to that leg.  The modified leg is returned. If `p` resolves to an arm, `q` is a list of changes to the core containing that arm.  The arm is computed with the modified core as the subject, and the product is returned.
+Resolve a wing with changes.
 
 ## Syntax
 
-Regular: *1-fixed*, then *jogging*.
+Regular:
 
-Irregular: `foo(x 1, y 2, z 3)` is `%=(foo x 1, y 2, z 3)`.
+```
+%=  a=wing
+  b=wing  c=hoon
+  d=wing  e=hoon
+       ...
+  f=wing  g=hoon
+==
+```
+
+Irregular:
+
+`foo(x 1, y 2, z 3)` is `%=(foo x 1, y 2, z 3)`.
+
+AST:
+
+```
+[%cnts p=wing q=(list (pair wing hoon))]
+```
+
+## Semantics
+
+A `%=` expression resolves a wing of the subject, but with changes made.
+
+If `a` resolves to a leg, a series of changes are made to wings of that leg (`b`, `d`, and `f` above are replaced with the respective products of `c`, `e`, and `g` above).  The modified leg is returned.
+
+If `a` resolves to an arm, a series of changes are made to wings of the parent core of that arm.  (Again, `b`, `d`, and `f` are replaced with the respective products of `c`, `e`, and `g`.)  The arm is computed with the modified core as the subject, and the product is returned.
 
 ## Discussion
 
-Note that `p` is a wing, not just any expression.  Knowing that a function
-call `(foo baz)` involves making `foo`, replacing its sample
-at slot `+6` with `baz`, and resolving to the `$` limb, you might think
+Note that `a` is a wing, not just any expression.  Knowing that a function
+call `(foo baz)` involves evaluating `foo`, replacing its sample
+at slot `+6` with `baz`, and then resolving to the `$` limb, you might think
 `(foo baz)` would mean `%=(foo +6 baz)`.
 
 But it's actually `=+(foo =>(%=(+2 +6 baz) $))`. Even if `foo` is

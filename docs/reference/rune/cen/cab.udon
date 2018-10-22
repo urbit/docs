@@ -7,21 +7,48 @@
 
 # `%_ "cencab"`
 
-`[%cncb p=wing q=(list (pair wing hoon))]`: resolve a wing with changes, preserving type.
+Resolve a wing with changes, preserving type.
+
+## Syntax
+
+Regular, tall:
+
+```
+%_  a=wing
+  b=wing  c=hoon
+  d=wing  e=hoon
+      ...
+  f=wing  g=hoon
+==
+```
+
+Regular, flat:
+
+```
+%_(a=wing b=wing c=hoon, d=wing e=hoon, ...)
+```
+
+AST:
+
+```
+[%cncb p=wing q=(list (pair wing hoon))]
+```
+
+## Semantics
+
+A `%_` expression resolves to the value of the subject at wing `a`, but modified according to a series of changes: `b` is replaced with the product of `c`, `d` with the product of `e`, and so on.  At compile time a type check is performed to ensure that the resulting value is of the same type as `a`.
 
 ## Expands to
 
 ```
-^+(p %=(p q))
+^+(a %=(a b c, d e, ...))
 ```
-
-## Syntax
-
-Regular: *1-fixed*, then *jogging*.
 
 ## Discussion
 
-`%_` is different from `%=` because `%=` can change the type of a limb with mutations.  `%_` preserves the limb type.
+`%_` is different from `%=` because `%=` can change the type of a wing with mutations.  `%_` preserves the wing type.
+
+See [how wings are resolved](../../limb/wing).
 
 ## Examples
 

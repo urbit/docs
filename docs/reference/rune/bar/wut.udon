@@ -25,7 +25,7 @@ AST:
 
 ## Semantics
 
-A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`).  `a` is a Hoon expression that defines the product of the `$` arm.
+A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`).  `a` is a Hoon expression that defines what the `$` arm does.
 
 ## Expands to
 

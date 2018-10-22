@@ -31,8 +31,8 @@ The product of a `|=` expression is a dry *gate*, i.e., a Hoon function.
 ## Expands to
 
 ```
-=|  a
-|%  ++  $  b
+=|  a=spec
+|%  ++  $  b=hoon
 --
 ```
 

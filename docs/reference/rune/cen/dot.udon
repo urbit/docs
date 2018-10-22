@@ -7,17 +7,31 @@
 
 # `%. "cendot"`
 
-`[%cndt p=hoon q=hoon]`: call a gate (function), inverted.
+Call a gate (function), inverted.
+
+## Syntax
+
+Regular:
+
+```
+%.  a=hoon  b=hoon
+```
+
+AST:
+
+```
+[%cndt p=hoon q=hoon]
+```
+
+## Semantics
+
+The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.  `a` is for the desired sample value (i.e., input value), and `b` is the gate.
 
 ## Expands to
 
 ```
-%-(q p)
+%-(b=hoon a=hoon)
 ```
-
-## Syntax
-
-Regular: *2-fixed*.
 
 ## Discussion
 

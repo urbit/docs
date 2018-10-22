@@ -7,17 +7,31 @@
 
 # `%+ "cenlus"`
 
-`[%cnls p=hoon q=hoon r=hoon]`: call gate with a cell sample.
+Call gate with a cell sample.
+
+## Syntax
+
+Regular:
+
+```
+%+  a=hoon  b=hoon  c=hoon
+```
+
+AST:
+
+```
+[%cnls p=hoon q=hoon r=hoon]
+```
+
+## Semantics
+
+A `%+` expression is for calling a gate with a cell sample.  `a` is the gate to be called, `b` is for the head of the sample, and `c` is for the sample tail.
 
 ## Expands to
 
 ```
-%-(p [q r])
+%-(a=hoon [b=hoon c=hoon])
 ```
-
-## Syntax
-
-Regular: *3-fixed*.
 
 ## Examples
 
