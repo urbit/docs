@@ -20,7 +20,8 @@ Regular:
 AST:
 
 ```
-[%brts p=spec q=hoon]`
+[%brts p=spec q=hoon]
+```
 
 ## Definition
 
