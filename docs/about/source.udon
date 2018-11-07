@@ -10,7 +10,8 @@
 
 We host all our source code on GitHub at [github.com/urbit](https://github.com/urbit).
 
-Since there's quite a number of repos, we'll talk about a few of the most important ones here:
+Since there's quite a number of repos, we'll talk about a few of the most
+important ones here:
 
 ;ul(class "list spaced")
   ;li
