@@ -10,5 +10,3 @@ The [Urbit Constitution](https://github.com/urbit/constitution) is a suite of sm
 full control over their Urbit ships. These smart contracts are the foundations
 of our PKI on the Ethereum blockchain.
 
-
-</list>
