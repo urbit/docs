@@ -17,21 +17,6 @@ you're on a [fake
 ship](https://fora.urbit.org/general/posts/~2017.1.5..21.31.04..20f3~/) or are otherwise
 experiencing problems with the network install.
 
-### Network install
-
-In your urbit's Dojo, run the command:
-
-    ~your-urbit:dojo> |sync %home ~nosnup-nomzod %docs
-
-Depending on network traffic, this initial merge and sync could take anywhere
-between thirty seconds to several minutes. Upon a successful sync you'll see the
-output:
-
-    sync succeeded from %docs on ~nosnup-nomzod to %home
-
-If your sync isn't succeeding after a few minutes for whatever reason, run
-`|cancel %home` in your Dojo and follow the local install below instead.
-
 ### Local install
 
 In your urbit's Dojo:
