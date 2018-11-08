@@ -1,7 +1,7 @@
 ---
 navhome: /docs/
 sort: 11
-title: Urbytes
+title: Bridge
 ---
 
 # Bridge
