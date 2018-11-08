@@ -11,12 +11,6 @@ First, you'll need a running urbit. Follow our urbit.org [install
 instructions](https://urbit.org/docs/using/install/), then
 [setup](https://urbit.org/docs/using/setup/) an urbit.
 
-Follow the *Network install* below if your urbit is running on the live network
-(comets are usually best for development). Follow the *Local install* instead if
-you're on a [fake
-ship](https://fora.urbit.org/general/posts/~2017.1.5..21.31.04..20f3~/) or are otherwise
-experiencing problems with the network install.
-
 ### Local install
 
 In your urbit's Dojo:
