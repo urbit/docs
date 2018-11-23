@@ -250,7 +250,7 @@ on 4 July 2018)
 # Bash
 
 sudo pacman -Syu
-sudo pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c
+sudo pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c meson pkgconf
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python3 get-pip.py
 git clone https://github.com/urbit/urbit
