@@ -24,7 +24,7 @@ You've already used two functions from the Hoon standard library: `add` and `mul
 
 A core is a cell: `[battery payload]`.
 
-A gate is a core, but it's not just any core.  It has two distinctive properties: (1) the battery of a gate contains exactly one arm, which has the special name `$`; and (2) the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` arm of the gate correctly.
+A gate is a core, but it's not just any core.  It has two distinctive properties: (1) the battery of a gate contains exactly one arm, which has the special name `$`.  The `$` arm contains the instructions for the function in question.  And (2), the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` arm of the gate correctly.
 
 ```
 A gate:  [$ [sample context]]

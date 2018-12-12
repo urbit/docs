@@ -8,141 +8,100 @@
 
 # 1.4 Arms and Cores
 
-The Hoon subject is made up of arms and legs.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an arm is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we also (1) give a brief overview on Nock, a low-level functional programming language to which Hoon is compiled, and (2) define an important Hoon data structure: 'cores'.
+The Hoon subject is a noun.  Each fragment of this noun is either an arm or a leg.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an arm is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we must also introduce an important Hoon data structure: a 'core'.
 
-After arms are defined and explained we review wing expressions, this time focusing on wing resolution to arms rather than legs.
+After arms are defined and explained we review wing expressions, this time focusing on wing resolution to arms.
 
-## Arms: A Preliminary Explanation
+## A Preliminary Explanation
 
-Arms and legs are limbs of the subject, i.e., noun fragments of the subject.  In the last lesson we said that legs are for data and arms are for computations.  But what _specifically_ is an arm, and how is it used for computation?
+Arms and legs are limbs of the subject, i.e., noun fragments of the subject.  In the last lesson we said that legs are for data and arms are for computations.  But what _specifically_ is an arm, and how is it used for computation?  Let's begin with a preliminary explanation that will be refined later in the lesson.
 
-Let's begin with a preliminary definition that will be refined later in the lesson.  An *arm* is a Nock formula in the battery of a core.
+An *arm* is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can -- it's just a noun like any other.  You virtually always want to think of an arm simply as a way of running some Hoon code.
 
-Now you just need to know what a 'Nock formula' is, what a 'battery' is, and what a 'core' is!  Read on:
+Every expression of Hoon is evaluated relative to a subject.  What subject is the arm to be evaluated against?  Answer: the parent core of that arm.
 
-## Computing Hoon
+So in order to understand fully what an arm is, you must understand what a core is.  Briefly, a *core* is a cell of `[battery payload]`.  The *battery* is a collection of one or more arms, and the *payload* is the data needed by the arms to evaluate correctly.  (The battery is code and the payload is data for that code.)  A given core is the *parent core* of all of the arms in its battery.
 
-Hoon runs on your urbit, which is a virtual computer.  However, this virtual computer doesn't directly understand Hoon; it has a Nock interpreter instead.  Any Hoon code you want to run must first be compiled to Nock.  You certainly don't have to know Nock to understand Hoon, but it helps to be aware of a few of Nock's general features.
+## Your First Core
 
-Nock is a [low-level](https://en.wikipedia.org/wiki/Low-level_programming_language), [functional programming](https://en.wikipedia.org/wiki/Functional_programming) language.  As a consequence Nock itself can be understood as a function, called the 'Nock function'.  Nock is officially defined by the [Nock spec](../../nock/definition).
+To clarify the basic idea, let's look at an example core.
 
-### What is a Function?
+We'll make a core using a multi-line Hoon expression that is more complex than the other examples you've seen up to this point.  The dojo can be used to input multi-line Hoon expressions; just type each line, hitting 'enter' or 'return' at the end.  The expression will be evaluated at the appropriate line break, i.e., when the dojo recognizes it as a complete expression of Hoon.
 
-The word 'function' is used in various ways in other programming languages, but we mean it in basically its [mathematical sense](https://en.wikipedia.org/wiki/Function_(mathematics%29).  Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  What the return value is depends solely on the argument(s), and nothing else.  For example, we can understand multiplication as a function: it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
-
-### The Nock Function
-
-The 'Nock function' takes two arguments: (1) a subject, and (2) a Nock formula.  The subject is a noun.  The formula is, loosely speaking, some instructions encoded as another noun.  The Nock function takes those two arguments and returns another noun called the 'product'.
-
-The Nock function: `[subject formula] -> product`
-
-Here's an example of some Nock run in the dojo, using `.*( )`:
+Use the following to bind `c` to a core.  It begins with a *rune*, `|%`, which is used for creating a core.  (A rune is just a pair of ASCII characters, and it usually indicates the beginning of a complex Hoon expression.)  Take note of the expression spacing -- Hoon uses significant whitespace.  Feel free to cut and paste the following expression into the dojo, starting with `=c`:
 
 ```
-> .*([15 17] [[4 0 2] [0 3]])
-[16 17]
+> =c |%
+  ++  twenty  20
+  ++  double-twenty  (mul 2 twenty)
+  --
 ```
 
-In this example `[15 17]` is the subject, `[[4 0 2] [0 3]]` is the formula, and `[16 17]` is the product.
+This core has two arms, `twenty` and `double-twenty`.  Each arm definition begins with `++` followed by the name of that arm.  After that is the Hoon expression associated with that arm.  The first expression is the trivial `20` (guess what that does?), and the second is the slightly more interesting `(mul 2 twenty)`.
 
-This tutorial series is designed to teach you Hoon.  For that purpose it's not important that you know how to read and understand Nock formulas; you just need to know that Nock takes a subject and a formula and returns a product.  (Those who who want to learn more about Nock should head over to the [Nock tutorial](../../nock).)
+You can run these arms using `twenty.c` and `double-twenty.c`:
 
-### Nock Formulas Define Functions
+```
+> twenty.c
+20
 
-Each Nock formula defines a function of the subject.
+> double-twenty.c
+40
+```
 
-As stated previously, a Nock formula is just a noun that represents a set of instructions.  When the Nock interpreter computes the Nock formula against a subject, the 'instructions' can manipulate and/or modify fragments of the subject, but the instructions have access to no other data.  Accordingly, we may think of each Nock formula as defining a function with the subject itself as the argument.
+Notice that the second arm, `double-twenty`, makes use of the first arm, `twenty`.  It's able to do so because each arm is evaluated with its parent core as the subject.  Hence, each arm is able to use any other arm inside the parent core's battery.
 
-Urbit community members have written Nock formulas for various functions: addition, multiplication, and more.  One obsessive individual went overboard and wrote a Nock formula that tests whether a given number is a counterexample to the [Goldbach conjecture](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture).
+### `|%` Expressions
 
-Keep in mind that Nock is a low-level language.  Programming interesting functions in it isn't especially practical.  That's why you have Hoon.
+Before moving on let's talk about what each part of the `|%` expression is for.
 
-### Arms are Nock formulas
+The `|%` indicates the beginning of an expression that produces a core.  The `++` rune is used to define each of the arms of the core's battery, and is followed by both an arm name and a Hoon expression.  The `--` rune is used to indicate that there are no more arms to be defined, and indicates the end of the expression.
 
-An arm is a _certain kind_ of Nock formula in the battery of a core.  Each arm expects the subject to have a certain arrangement so that it can find the data it needs to operate correctly.  (This point will be discussed in more detail shortly.)  The subject must be a core.  What's a core?
+The battery of the core to be produced is explicitly defined by the `|%` expression.  The payload of the core to be produced is implicitly defined as the subject of the `|%` expression.  Let's unbind `c` to keep the subject clean:
+
+```
+> =c
+```
 
 ## Cores
 
-A *core* is a cell of a *battery* and a *payload*.
+Let's go over what a core is a little more carefully and comprehensively.  As stated before, a *core* is a cell of a *battery* and a *payload*.
 
 ```
 A core:  [battery payload]
 ```
 
-Simply put, the battery is code and the payload is data.  The payload contains all data necessary for running the code in the battery correctly.
-
 ### Battery
 
-A battery is a cell containing one or more arm(s).  That is, a battery is one or more Nock formula(s) that, when computed, expect the subject to be organized as a core.  For Hoon programming it's not important to know just how those arms are arranged in the battery.  Just keep in mind that this is where the core's computations live.
+A battery is a collection of arms.  An arm is an encoded Hoon expression, to be used for running computations.  Each arm has a name.  Arm naming rules are the same kebab-case rules that faces have.  When an arm is evaluated, it uses its parent core as the subject.
+
+That's all you really need to know about the battery.  You can become a master Hoon programmer if you know what is stated above but otherwise think of the battery as a black box.
+
+But, if you'd really like to know, technically a battery is a tree of Nock formulas, one formula per each arm.  Again, however, you don't need to understand the first thing about Nock to understand Hoon.
 
 ### Payload
 
-As stated earlier, the payload is data.  In principle, the payload of a core can have data arranged in any arbitrary configuration.  In practice, the payload often has a predictable structure of its own.
+The payload contains all the data needed for running the arms in the battery correctly.  In principle, the payload of a core can have data arranged in any arbitrary configuration.  In practice, the payload often has a predictable structure of its own.
 
-The payload of a core *C* contains whatever data is necessary to run the arms of *C* correctly.  This data may include other cores.  Consequently, *C*'s payload data can include other 'code' -- cores in the payload have their own arms.
+The payload may include other cores.  Consequently, a core's payload can include other 'code' -- cores in the payload have their own battery arms.
 
-### Each Arm Computes with its Parent Core as the Subject
+### Subject Organization for Arm Computation
 
-Arms are Nock formulas.  But Nock formulas are primitive in many respects.  There is no basic Nock operation for looking up face values in the subject, for example.  So how do arm 'instructions' find what they need in the subject?  The answer is: by assuming that the subject is organized a particular way.
+Why must an arm have its parent core as the subject, when it's computed?  As stated previously, the payload of a core contains all the data needed for computing the arms of that core.  Arms can only access data in the subject.  By requiring that the parent core be the subject we guarantee that each arm has the appropriate data available to it, in the tail of the subject.  It also allows for making reference to sibling arms in the battery, because they are in the head of the subject.
 
-#### Subject Organization for Arm Computation
+Let's look at an example in which the payload information is needed for correct arm evaluation.
 
-Up to this point in our dojo examples we haven't organized the subject according to any intentional pattern.  The subject for most examples was so small that it wasn't worth the effort to bother with tidying it up.
+## Another Example Core
 
-However, if a subject is sufficiently large and complex -- e.g., it has a standard library of Hoon functions, as the dojo subject does -- then organization becomes a pressing practical matter.  It's much better if the subject can be assumed to have a specific, standard arrangement.  This is one reason Hoon enforces subject organization for arm computations.
-
-The subject must be organized as a core.  But not just any core!  For an arm to compute correctly, the subject must be the arm's *parent core*.
-
-#### The Parent Core of an Arm
-
-Each arm is contained in the battery of a core.  That core is the parent core of the arm.  In other words: the *parent core* of an arm *A* is the core whose battery contains *A*.
-
-Why must an arm have its parent core as the subject, when it's computed?  As stated previously, the payload of a core contains all the data needed for computing the arms of that core.  Remember that arms can only access data in the subject.  By requiring that the parent core be the subject we guarantee that each arm has the appropriate data available to it, in the payload.
-
-An arm can also make use of the other arms in its parent core.  This is a useful feature of arms that will be discussed in more detail later.
-
-## Final Definition of an Arm
-
-Now that you have the relevant background knowledge about cores, we can finally give a complete definition of what an arm is.
-
-An arm is a Nock formula in the battery of a core, and it's to be computed with its parent core as the subject.
-
-## Wings that Resolve to Arms
-
-To reinforce your newfound understanding of arms and cores, let's go over various dojo examples illustrating their properties.  These examples use and illustrate how wings resolve to arms.  Face resolution to a leg of the subject produces the leg value unchanged, but resolution to an arm produces the _computed_ value of that arm.
-
-To show how this works, we'll look at how the various wing expressions behave when they resolve to arms instead of legs.
-
-### Building a Core of Your Own
-
-Before getting to the arm examples we need to produce a simple core.  We'll do this using a multi-line Hoon expression that is more complex than the other examples you've seen up to this point.  The dojo can be used to input multi-line Hoon expressions; just type each line, hitting 'enter' or 'return' at the end.  The expression will be evaluated at the appropriate line break, i.e., when the dojo recognizes it as complete.
-
-First let's use the dojo to bind the face `a` to the value `12`, and the face `b` to the value `[22 24]`.  These values will be used in the arms of the core we're going to make.  Afterward use `.` to see the value of the subject:
+First let's use the dojo to bind the face `a` to the value `12`, and the face `b` to the value `[22 24]`.  These values will be used in the arms of the core we're going to make.
 
 ```
 > =a 12
 
 > =b [22 24]
-
-> .
-[ [ [a=12 b=[22 24]]
-    our=~bitnus-holleb-rocmeg-fotfer--migsum-nidsym-hilput-patmus
-    now=~2018.8.17..23.53.43..c6b5
-      eny
-    \/0vqg.quub6.1vjms.es43r.rogsb.91okf.bcvtp.eeoih.or9ge.18ere.jtk15.3afb4.5d\/
-      qp2.f7cqj.tj4bh.m7ja9.r1i9m.5scdh.ih7qa.dqm18.q5b4r
-    \/                                                                         \/
-  ]
-  ~
-  <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-]
 ```
 
-You can see that `a` and `b` have the desired values in the dojo subject.
-
-#### Using `|%`
-
-Now use the following multi-line expression to bind `c` to a core, then evaluate `c` so you can look at the product.  Take note of the expression spacing -- Hoon uses significant whitespace.  Feel free to cut and paste the following expression into the dojo:
+Now use the following multi-line expression to bind `c` to a core.  As before, feel free to cut and paste the following expression into the dojo (starting at `=c`):
 
 ```
 > =c |%
@@ -151,117 +110,13 @@ Now use the following multi-line expression to bind `c` to a core, then evaluate
   ++  double  (mul 2 a)
   ++  sum  (add -.b +.b)
   --
-
-> c
-< 4.oep
-  { {{a/@ud b/{@ud @ud}} our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-  }
->
 ```
 
-Note: binding `c` to the core created by the `|%` expression will fail unless you have already bound `a` and `b` to the relevant values, as we did above.  Our having already bound them is what lets us use them in that expression.
-
-`c`, like all cores, is a cell of battery and payload, and it's pretty printed inside a set of angled brackets: `< >`.  The battery of four arms is represented by the pretty-printer as `4.oep`.  The `4` represents the number of arms in the battery, and the `oep` is a [hash](https://en.wikipedia.org/wiki/Hash_function) of the battery.  The tail is a copy of the subject of the `|%` expression (but it's pretty-printed in a slightly different way).
-
-(You'll notice that there are several other cores in the payload.  For example, `16.igq` is a battery of `16` arms, `19.rrs` is a battery of `19` arms, etc.)
-
-#### `|%` Expressions
-
-We'll cover Hoon syntax thoroughly in lesson 2.2.  For now, take for granted that `|%` is a 'rune' used to produce a core.  The `++` runes are used to define the arms of the core's battery, and is followed by both an arm name and a computation.  The `--` rune is used to indicate that there are no more arms to be defined, and indicates the end of the expression.
+Note: binding `c` to the core created by the `|%` expression will fail unless you have already bound `a` and `b` to the relevant values, as we did above.  Our having already bound them is what lets us use them in the `|%` expression.
 
 The `|%` expression above creates a core with four arms.  The first, named `two`, evaluates to the constant `2`.  The second arm, `inc`, adds `1` to `a`.  `double` returns double the value of `a`, and `sum` returns the sum of the two atoms in `b`.  The computations defined by these arms are pretty simple (and in the case of `two`, trivial), but a good starting point for learning about cores.
 
-#### Payload and Subject
-
-That's enough to specify the battery of the core created by `|%`.  But how is the payload defined?  The `|%` core payload is simply a copy of the subject of that expression.  Remember the subject before we bound `c` to the core?
-
-```
-> .
-[ [ [a=12 b=[22 24]]
-    our=~bitnus-holleb-rocmeg-fotfer--migsum-nidsym-hilput-patmus
-    now=~2018.8.17..23.53.43..c6b5
-      eny
-    \/0vqg.quub6.1vjms.es43r.rogsb.91okf.bcvtp.eeoih.or9ge.18ere.jtk15.3afb4.5d\/
-      qp2.f7cqj.tj4bh.m7ja9.r1i9m.5scdh.ih7qa.dqm18.q5b4r
-    \/                                                                         \/
-  ]
-  ~
-  <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-]
-```
-
-Compare the above with the payload of `c`.  We use `+` to look at the tail of `c`:
-
-```
-> +:c
-[ [ [a=12 b=[22 24]]
-    our=~bitnus-holleb-rocmeg-fotfer--migsum-nidsym-hilput-patmus
-    now=~2018.8.17..23.53.43..c6b5
-      eny
-    \/0vqk.7dj10.kjlpi.nctqg.mp15l.29i8e.s5228.f7iln.79dl9.onrhn.dtf2i.d3eed.8i\/
-      qvp.0mlff.62tqo.uh6ke.k10hp.kuc76.pj2j5.qclgb.o4niq
-    \/                                                                         \/
-  ]
-  ~
-  <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-]
-```
-
-### Address-Based Wings
-
-In the last lesson, you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they *don't* evaluate the arm.  They simply return that fragment of the subject, as if it were a leg.
-
-Let's use `-.c` to look at the head of `c`, i.e., the battery of the core:
-
-```
-> -.c
-[ [1 2]
-  [ [8 [9 318 0 2.047] 9 2 [0 4] [[7 [0 3] 1 2] 0 56] 0 11]
-    8
-    [9 8 0 2.047]
-    9
-    2
-    [0 4]
-    [[7 [0 3] 1 1] 0 56]
-    0
-    11
-  ]
-  8
-  [9 8 0 2.047]
-  9
-  2
-  [0 4]
-  [0 57]
-  0
-  11
-]
-```
-
-The results is a series of uncomputed Nock formulas.  (Don't worry about what they mean -- you don't need to know Nock to become a Hoon expert.)  Let's use `-<.c` to look at the head of the head of `c`, i.e., the first arm:
-
-```
-> -<.c
-[1 2]
-```
-
-The wing `-<.c` correctly resolves to an arm, but returns the uncomputed Nock formula.
-
-### Name-based Wings
-
-To get the arm of a core to compute you must use its name.  The arm names of `c` are in the expression used to create `c`:
-
-```
-> =c |%
-  ++  two  2
-  ++  inc  (add 1 a)
-  ++  double  (mul 2 a)
-  ++  sum  (add -.b +.b)
-  --
-```
-
-Remember that `a` is `12` and `b` is `[22 24]`.  Let's evaluate some arms:
+Let's run the arm names in the dojo:
 
 ```
 > two.c
@@ -277,7 +132,119 @@ Remember that `a` is `12` and `b` is `[22 24]`.  Let's evaluate some arms:
 46
 ```
 
-You can also evaluate the arms of `c` as follows:
+Ideally these wing expressions behave the way you expected!
+
+To reiterate a point made earlier: a wing resolution to a leg returns the value of that leg.  A wing resolution to an arm returns the value produced by the arm computation.
+
+### Dissecting a Core
+
+Enter `c` in the dojo to look at this core as printed data:
+
+```
+> c
+< 4.cvq
+  { {{a/@ud b/{@ud @ud}} our/@p now/@da eny/@uvJ}
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
+  }
+>
+```
+
+`c`, like all cores, is a cell of `[battery payload]`, and it's pretty-printed inside a set of angled brackets: `< >`.  The battery of four arms is represented by the pretty-printer as `4.cvq`.  The `4` represents the number of arms in the battery, and the `cvq` is a [hash](https://en.wikipedia.org/wiki/Hash_function) of the battery.
+
+The tail, i.e., the payload, might look suspiciously familiar.  It looks an awful lot like the default dojo subject, which has `our`, `now`, and `eny` in the head, but it also has `a` and `b`, which we also bound in the dojo subject.  That's exactly what the payload is.  The tail is a copy of what the subject was for the `|%` expression.  (It's pretty-printed in a slightly compressed way).
+
+(You'll notice that there are several other cores in the payload.  For example, `19.anu` is a battery of `19` arms, `24.tmo` is a battery of `24` arms, etc.)
+
+This means, among other things, that we should be able to unbind `a` and `b` in the subject, but the arms of `c` should still work correctly:
+
+```
+> =a
+
+> =b
+
+> a
+-find.a
+
+> b
+-find.b
+
+> double.c
+24
+
+> sum.c
+46
+```
+
+This works because `a` and `b` were copied into the core payload when the core was initially created.  Unbinding them in the dojo subject doesn't matter to the arms in `c`, which only look in `c`'s payload anyway.
+
+The payload stores all the data needed to compute the arms correctly.  That also includes `add` and `mul`, which themselves are arms in a core of the Hoon standard library.  This library core is available as part of the default dojo subject.
+
+## Wings that Resolve to Arms
+
+To reinforce your newfound understanding of arms and cores, let's go over the various ways that wings resolve to arms in cores.  Remember that face resolution to a leg of the subject produces the leg value unchanged, but resolution to an arm produces the _computed_ value of that arm.
+
+### Address-Based Wings
+
+In the last lesson, you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they *don't* evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
+
+Let's use `-.c` to look at the head of `c`, i.e., the battery of the core:
+
+```
+> -.c
+[ [1 2]
+  [ [8 [9 702 0 2.047] 9 2 10 [6 [7 [0 3] 1 2] 0 56] 0 2]
+    8
+    [9 20 0 2.047]
+    9
+    2
+    10
+    [6 [7 [0 3] 1 1] 0 56]
+    0
+    2
+  ]
+  8
+  [9 20 0 2.047]
+  9
+  2
+  10
+  [6 [0 114] 0 115]
+  0
+  2
+]
+```
+
+The result is a tree of uncomputed Nock formulas.  But you virtually never need to see or use this raw data.  Generally speaking, don't use address-based expressions to look at arms for any reason other than to satisfy your curiosity (and even then only if you've learned or plan to learn Nock).  Use name-based expressions instead.
+
+### Name-based Wings
+
+To get the arm of a core to compute you must use its name.  The arm names of `c` are in the expression used to create `c`:
+
+```
+> =c |%
+  ++  two  2
+  ++  inc  (add 1 a)
+  ++  double  (mul 2 a)
+  ++  sum  (add -.b +.b)
+  --
+```
+
+We evaluated the arms of `c` previously:
+
+```
+> two.c
+2
+
+> inc.c
+13
+
+> double.c
+24
+
+> sum.c
+46
+```
+
+You can also evaluate the arms of `c` using `:` instead:
 
 ```
 > two:c
@@ -293,32 +260,7 @@ You can also evaluate the arms of `c` as follows:
 46
 ```
 
-The difference between `two.c` and `two:c` is as follows.  `two.c` is an instruction for finding `two` in `c` in the subject.  `two:c` is an instruction for setting `c` as the subject, and then finding for `two`.  In the examples above both versions amount to the same thing, and so return the same product.
-
-What if we unbind `a` and `b` in the dojo subject?  Will the arms of `c` still run correctly?  Yes.
-
-```
-> =a
-
-> =b
-
-> a
--find.a
-
-> inc.c
-13
-
-> sum.c
-46
-
-> a.c
-12
-
-> b.c
-[22 24]
-```
-
-Notice that `a.c` and `b.c` still evaluate to the values we originally set for `a` and `b`.  That's because when we defined `c` those `a` and `b` were stored as part of `c`'s payload.  The payload stores all the data needed to compute the arms correctly.  That also includes `add` and `mul`, which themselves are arms in a core of the Hoon standard library.
+The difference between `two.c` and `two:c` is as follows.  `two.c` is an instruction for finding `two` in `c` in the subject.  `two:c` is an instruction for setting `c` as the subject, and then for finding `two`.  In the examples above both versions amount to the same thing, and so return the same product.  (There are other cases in which `two.c` and `two:c` _don't_ amount to the same thing.  We'll address the difference in more detail later.)
 
 ### Name Searches and Collisions
 
@@ -337,16 +279,15 @@ When `[double=123 c]` is the subject, the result is a cell of: (1) `double=123` 
 ```
 > [double=123 c]
 [ double=123
-  < 4.oep
+  < 4.cvq
     { {{a/@ud b/{@ud @ud}} our/@p now/@da eny/@uvJ}
-      $~
-      <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+      <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
     }
   >
 ]
 ```
 
-Hoon doesn't automatically know whether `double` is a face or an arm name until it conducts a search looking for name matches.  If it finds a face first, the value of the face is returned.  If it finds an arm first, the arm will be evaluated and the product returned.  You may use `^` to indicate that you want to skip the first match, and multiple `^`s to indicate multiple skips:
+Hoon doesn't know whether `double` is a face or an arm name until it conducts a search looking for name matches.  If it finds a face first, the value of the face is returned.  If it finds an arm first, the arm will be evaluated and the product returned.  You may use `^` to indicate that you want to skip the first match, and multiple `^`s to indicate multiple skips:
 
 ```
 > double:[double=123 c]
@@ -368,10 +309,9 @@ We can produce a modified version of the core `c` in which `a` and `b` have diff
 
 ```
 > c(a 99)
-< 4.oep
+< 4.cvq
   { {{a/@ud b/{@ud @ud}} our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
@@ -427,7 +367,7 @@ We can make multiple changes to `c` at once:
 
 ### Arms on the Search Path
 
-A wing is a search path into the subject.  We've looked at some examples of wings that resolve to arms; e.g., `double.c`, which resolves to `double` in `c` in the subject.  In the latter example the arm `double` is the final limb in the search path.  What if an arm name in a wing isn't the final limb?  What if it's elsewhere on the search path?
+A wing is a search path into the subject.  We've looked at some examples of wings that resolve to arms; e.g., `double.c`, which resolves to `double` in `c` in the subject.  In the latter example the arm `double` is the final limb in the resolution path.  What if an arm name in a wing isn't the final limb?  What if it's elsewhere in the wing path?
 
 Normally we might read a wing expression like `two.double.c` as '`two` in `double` in `c`'.  Does that make sense when `double` is itself an arm?  Try it:
 
@@ -436,11 +376,11 @@ Normally we might read a wing expression like `two.double.c` as '`two` in `doubl
 2
 ```
 
-It produces the value of `two` of `c`.  This is a fact in need of explanation.
+It produces the value of `two` in `c`.  This is a fact in need of explanation.
 
-Arms are raw Nock formulas, and there isn't much reason to follow a search path into those.  There are no faces or other names in arm Nock formulas!  For this reason, when arm names are included in the search path the search behavior is a little different.  Instead of indicating that the search should continue in the arm itself, an arm name indicates that the search should continue in the parent core of the arm.
+When arm names are included in the body of a wing, the resolution behavior is a little different from that of legs.  Instead of indicating that the wing resolution should continue in the arm itself, an arm name indicates that the resolution should continue in the parent core of the arm.
 
-So the meaning of `two.double.c` is, roughly, '`two` in the parent core of `double` in `c`'.  Of course, Hoon doesn't know that `double` is an arm until the search for it ends; but once the `double` arm is found, Hoon continues the search from _the parent core of_ `double`, not `double` itself.  It turns out in this case that this is a redundant step.  `c` is the parent core and was already on the search path.  We can illustrate redundancy more dramatically:
+So the meaning of `two.double.c` is, roughly, '`two` in the parent core of `double` in `c`'.  Of course, Hoon doesn't know that `double` is an arm until the search for it ends; but once the `double` arm is found, Hoon continues the resolution from _the parent core of_ `double`, not `double` itself.  It turns out in this case that this is a redundant step.  `c` is the parent core and was already in the wing path.  We can illustrate redundancy more dramatically:
 
 ```
 > double.two.sum.two.double.inc.c
@@ -466,6 +406,8 @@ Assume `this.is.a.wing` is a wing that resolves to an arm.  You can use the `thi
 > inc.c(a 55)
 56
 ```
+
+This almost looks like a function call of sorts.
 
 ## Summary
 

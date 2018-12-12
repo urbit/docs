@@ -98,8 +98,6 @@ http: live (insecure, loopback) on 12321
 ~palnul_nocser:dojo>
 ```
 
-We should note that your comet's state is [ACID](https://en.wikipedia.org/wiki/ACID).  You can stop your comet politely with `ctrl-d`, abruptly with `ctrl-z`, even violently with `kill -9`.  None of these should cause the comet to lose data.  If you do manage to corrupt your comet, it's a bug -- please let us know.
-
 ## Another Noun
 
 You've already used a standard library function to produce one value, in the dojo.  Now that your comet is running again, let's try another.  Enter the number `17`.

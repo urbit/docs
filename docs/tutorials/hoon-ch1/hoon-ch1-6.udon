@@ -101,7 +101,7 @@ Notice that each arm in core `c` is able to call the other arms of `c` -- `add-t
 
 ### The `..arm` Syntax
 
-Let's say you have a wing that resolves to a leg of the subject.  In this wing is an arm name, e.g., `a.b.arm`.  As you know from lesson 1.3, this should be read as '`a` in `b` in the parent core of `arm`'.  Speaking more directly: the wing search path goes through the parent core of the arm, not the arm itself.
+Let's say you have a wing that resolves to a leg of the subject.  In this wing is an arm name, e.g., `a.b.arm`.  As you know from lesson 1.4, this should be read as '`a` in `b` in the parent core of `arm`'.  Speaking more directly: the wing resolution path goes through the parent core of the arm, not the arm itself.
 
 Recall that `.` by itself returns the whole subject.  With that in mind, take a moment to answer the following question on your own.  In general, what should the expression `..arm` produce?
 
@@ -135,7 +135,7 @@ For an example of this, consider the `add` arm of the Hoon standard library.  Th
 
 ```
 > ..add
-<31.ohr 1.jmk $143>
+<74.dbd 1.qct $141>
 ```
 
 Here you see a core with a battery of 31 arms, and whose payload is another core with one arm.
@@ -204,7 +204,7 @@ Let's look once more at the parent core of the `add` arm in the Hoon standard li
 
 ```
 > ..add
-<31.ohr 1.jmk $143>
+<74.dbd 1.qct $141>
 ```
 
 The battery of this core contains 31 arms, each of which evaluates to a gate in the standard library.  This 'library' is nothing more than a core containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these arms near the beginning of [hoon.hoon](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)

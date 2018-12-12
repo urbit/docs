@@ -36,7 +36,7 @@ In the examples above, the expression on the right-hand, `[[11 22] 33]`, evaluat
 [[11 22] 33]
 ```
 
-...so the subject for the left-hand expression is simply `[[11 22] 33]`.  The `+` operator is used to produce some fragment of the subject at a given address.  E.g., `+2`, returns whatever is at address `2` of the subject.  Hence, we may read `+2:[[11 22] 33]` as "address `2` of the subject produced by `[[11 22] 33]`".
+...so the subject for the left-hand expression, `+1`, is simply `[[11 22] 33]`.  The `+` operator is used to produce some fragment of the subject at a given address.  E.g., `+2`, returns whatever is at address `2` of the subject.  Hence, we may read `+2:[[11 22] 33]` as "address `2` of the subject produced by `[[11 22] 33]`".
 
 Let's create a subject with some computations:
 
@@ -82,7 +82,7 @@ Sometimes a programmer simply wants to produce a value from the subject.  In oth
 
 ### Address-based Limb Expressions
 
-A limb expression is an expression of Hoon that resolves to a limb of the subject.  An address-based limb expression evaluates to a limb of the subject based on its address.  (You learned about the noun address system in the last lesson.)
+A limb expression is an expression of Hoon that resolves to a limb of the subject.  An address-based limb expression evaluates to a limb of the subject based on its noun address.  (You learned about the noun address system in the last lesson.)
 
 In the following you'll learn the various limb expressions available in Hoon, as well as how they work when they resolve to legs.  First we'll explain the limb expressions that return a leg according to subject address.
 
@@ -134,7 +134,7 @@ To think of it another way, `-` is for the left and `+` is for the right.  You c
 
 ```
 > +:12
-ford: build failed [crash message]
+ford: %ride failed to execute:
 ```
 
 What if you want the tail of the tail of the subject?  You might expect that you can double up on `+` for this: `++`.  Not so.  Instead, combine `+` with `>`: `+>`.  `>` means the same thing as `+`, but is used with `+` to make for easier reading.
@@ -252,7 +252,7 @@ As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `
 
 Working with specific addresses of the subject can be cumbersome even when the subject is small.  When the subject is a really large noun -- as is often the case -- it's downright impractical.  Thankfully there's a more convenient method for resolving to a limb of the subject: using names.
 
-A name can resolve to either an arm or a leg of the subject.  Recall that arms are for computations and legs are for data.  When a name resolves to an arm, the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.  We aren't yet ready to talk about arm resolution; for now let's focus on leg names.
+A name can resolve either an arm or a leg of the subject.  Recall that arms are for computations and legs are for data.  When a name resolves to an arm, the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.  We aren't yet ready to talk about arm resolution; for now let's focus on leg names.
 
 #### Faces
 
@@ -311,7 +311,7 @@ There is no restriction against using the same face name for multiple limbs of t
 5
 ```
 
-Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated against a subject, a head-first binary tree search occurs starting at address `1` of the subject.  If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail.  The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
+Why does this return `5` rather than `6` or `[14 15]`?  When a face is evaluated on a subject, a head-first binary tree search occurs starting at address `1` of the subject.  If there is no matching face for address `n` of the subject, first the head of `n` is searched and then `n`'s tail.  The complete search path for `[[4 b=5] [b=6 b=[14 15]]]` is:
 
 
 + `[[4 b=5] [b=6 b=[14 15]]]`
@@ -388,12 +388,10 @@ How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=1
 
 ## Wings
 
-A wing is a search path into the subject, understood as a series of limbs.
-
-A wing expression indicates the search path as a series of limb expressions separated by the `.` character.
+A *wing* is a limb resolution path into the subject.  A wing expression indicates the path as a series of limb expressions separated by the `.` character.  E.g.,
 
 ```
-[limb1].[limb2].[limb3].[and so on....]
+limb1.limb2.limb3
 ```
 
 You can read this as `limb1` in `limb2` in `limb3`, etc.  You can use a wing to get the value of `c` in `[[4 a=5] b=[c=14 15]]`: `c.b`
@@ -443,9 +441,9 @@ r='howdy'
 
 ### Limbs are Trivial Wings
 
-As stated before, a wing is a series of limbs indicating a search path into the subject.  This definition includes as a trivial case a search path of one limb.  Thus, all limbs are wings and all limb expressions are wing expressions.
+As stated before, a wing is a limb resolution path into the subject.  This definition includes as a trivial case a path of just one limb.  Thus, all limbs are wings, and all limb expressions are wing expressions.
 
-We mention this because it is convenient to refer to all limbs and non-trivial wings as simply 'wings'.  This will be our usual practice for the rest of this tutorial series.
+We mention this because it is convenient to refer to all limbs and non-trivial wings as simply 'wings'.  This will be our usual practice for the rest of this series.
 
 ## Exploring the Subject
 
@@ -456,7 +454,7 @@ Earlier we said that every Hoon expression is evaluated relative to a subject.  
 'Hello world!'
 ```
 
-So, the left uses the product of the right as its subject.  But what about the right-hand expression?  What's _its_ subject?  Until now we've included an explicit subject in all the examples, but it's time to remove the training wheels.  Usually the subject of a Hoon expression isn't shown explicitly.
+The left, `b`, uses the product of the right as its subject.  But what about the right-hand expression?  What's _its_ subject?  Until now we've included an explicit subject in all the examples, but it's time to remove the training wheels.  Usually the subject of a Hoon expression isn't shown explicitly.
 
 Consider the expression `(add 2 2)`:
 
@@ -465,46 +463,46 @@ Consider the expression `(add 2 2)`:
 4
 ```
 
-What's its subject?
+What's the subject of this expression?
 
 In fact, you may already know how to find the answer.  The subject is a noun and as such its limbs have addresses.  To see that noun, use `+1`.  You'll see something like the following:
 
 ```
 > +1
-[ [ our=~mipfyl-lodsel-halrul-dilbyt--balluc-havfes-wordeb-pagrem
-    now=~2018.5.24..23.51.31..f5f2
+[ [ our=~zod
+    now=~2018.12.10..22.10.44..09d7
       eny
-    \/0vfq.npac6.eklcb.19rir.el97m.1jaq4.m3ths.ejfa5.cpjiu.fk1uh.kqf9r.jncko.\/
-      7eorl.ciggn.4hi3g.gna8v.qrpvc.rd32q.t60pj.8v7ev.27g2c
+    \/0v2dv.6gdve.pp0br.rh1sq.bq4ok.p9dqn.5r44u.7tqrl.qdrmo.i223s.472gv.hrb44\/
+      .g2h3h.p1dih.3v7ju.58eei.i51es.akbie.290r8.2vt29.qv54q
     \/                                                                       \/
   ]
-  ~
-  <16.swm 19.mtp 41.lur 112.twd 224.bkh 54.tyv 119.wpb 31.ohr 1.jmk $143>
+  <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
 ]
 ```
 
-This noun (or a modified version of it) is the subject used for all Hoon expressions entered into the dojo.
+This noun (or a modified version of it) is the subject used for Hoon expressions entered into the dojo.
 
-We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for a a comet name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_(computing)).  The value for `eny` is different every time it's checked.
+We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_(computing%29).  The value for `eny` is different every time it's checked.
 
 ```
 > our
-~mipfyl-lodsel-halrul-dilbyt--balluc-havfes-wordeb-pagrem
+~zod
 
 > now
-~2018.5.24..23.55.34..1ef0
+~2018.12.10..22.13.25..18ef
 
 > eny
-\/0v10v.b4347.pnopi.p2vb4.bohf6.cog4h.m9hld.o2kuq.5pbfg.esrug.1bc0s.u12fo.uit6c\/
-  .9ets2.g9ssi.kqsg7.j12n3.79aim.d2g3s.aumrs.kis80
-\/                                                                             \/
+\/0v3qd.9lnj9.0up6k.dn4tp.ue9cs.mgsii.5fdqm.p12d6.104o1.6knrb.mkft3.pihte.vdt\/
+  bo.io77f.5uq5a.hrish.va34d.jv2b7.3bn3o.ol9ii.fg9i5
+\/                                                                           \/
+
 > eny
-\/0v2q2.va8mn.f6teu.42skq.sc2rh.4p8r6.klrbg.vovm7.7b13l.3tp1g.f33as.7267s.4tj13\/
-  .p1aa1.um1ee.80fd3.l11b5.sfqen.5aumu.c17vm.3rq45
-\/
+\/0v10n.4lqle.q66jp.rr3uv.3q4nc.dj7pl.t1df4.4a2fe.qh2l5.up998.sj7mp.on646.881\/
+  0g.nfcfj.gempp.tehbd.087g4.cpi7l.2mr25.477mb.mj2va
+\/                                                                           \/
 ```
 
-Also embedded in that subject is the Hoon 'standard library', a library of commonly-used functions.  We've already used two of them: `add` and `mul`.  Have you noticed that these function names look like faces?  They aren't faces, but Hoon searches for them like it searches for faces.  When we call `add`,
+Also embedded in that subject is the Hoon 'standard library', a library of commonly-used functions.  We've already used two of them: `add` and `mul`.  Have you noticed that these function names look like faces?  They aren't actually faces, but Hoon searches for them like it searches for faces.  When we call `add`,
 
 ```
 > (add 22 33)
@@ -528,7 +526,9 @@ It doesn't work because, as far as Hoon is concerned, `add` doesn't exist for th
 55
 ```
 
-And it works!  The subject of the right-hand side expression of the `:` is the same implicit subject we have in the dojo.
+And it works!
+
+The subject of the right-hand side expression of the `:` is the same implicit subject we have in the dojo.
 
 ## Dojo Faces
 
@@ -616,7 +616,7 @@ e=20
 [d=15 e=20]
 ```
 
-### Creating a Modified Leg
+## Creating a Modified Leg
 
 Often a leg of the subject is produced with its value unchanged.  But there is a way to produce a modified version of the leg as well.  To do so, we use an expression of the form:
 
@@ -624,7 +624,7 @@ Often a leg of the subject is produced with its value unchanged.  But there is a
 wing-of-subject(wing-1 new-value-1, wing-2 new-value 2, ...)
 ```
 
-The `wing-of-subject` is a wing path into the subject, followed by a set of parentheses.  `wing-1` and `wing-2` are wing paths into the limb indicated by `wing-of subject`, and their values are replaced with `new-value-1` and `new-value-2`, respectively.  Commas separate each of the `wing` `new-value` pairs.
+The `wing-of-subject` resolves to some limb in the subject.  This is followed by a set of parentheses.  `wing-1` and `wing-2` pick out which parts of that limb we want to change.  Their values are replaced with `new-value-1` and `new-value-2`, respectively.  Commas separate each of the `wing` `new-value` pairs.
 
 Let's create a mutant version of the noun we have stored in `a`.  To do this, type in the face `a` followed by the desired modifications in parentheses:
 
