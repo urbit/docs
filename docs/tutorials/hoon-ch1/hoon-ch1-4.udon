@@ -77,7 +77,7 @@ A battery is a collection of arms.  An arm is an encoded Hoon expression, to be 
 
 That's all you really need to know about the battery.  You can become a master Hoon programmer if you know what is stated above but otherwise think of the battery as a black box.
 
-But, if you'd really like to know, technically a battery is a tree of Nock formulas, one formula per each arm.  Again, however, you don't need to understand the first thing about Nock to understand Hoon.
+If you'd really like to know, technically a battery is a tree of Nock formulas, one formula per each arm.  Again, however, you don't need to understand the first thing about Nock to understand Hoon.
 
 ### Payload
 
@@ -87,7 +87,7 @@ The payload may include other cores.  Consequently, a core's payload can include
 
 ### Subject Organization for Arm Computation
 
-Why must an arm have its parent core as the subject, when it's computed?  As stated previously, the payload of a core contains all the data needed for computing the arms of that core.  Arms can only access data in the subject.  By requiring that the parent core be the subject we guarantee that each arm has the appropriate data available to it, in the tail of the subject.  It also allows for making reference to sibling arms in the battery, because they are in the head of the subject.
+Why must an arm have its parent core as the subject, when it's computed?  As stated previously, the payload of a core contains all the data needed for computing the arms of that core.  Arms can only access data in the subject.  By requiring that the parent core be the subject we guarantee that each arm has the appropriate data available to it.  The tail of its subject contains the payload and thus all the values therein.  The head of the subject is the battery, which allows for making reference to sibling arms of that same core.
 
 Let's look at an example in which the payload information is needed for correct arm evaluation.
 

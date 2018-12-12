@@ -1,11 +1,11 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         sort/'6'
-        title/'1.6 Producing Gates with Core Arms'
+        title/'1.6 Multi-gate Cores and Doors'
     ==
 ;>
 
-# 1.6 Producing Gates with Core Arms
+# 1.6 Multi-gate Cores and Doors
 
 It's useful to have cores whose arms evaluate to make gates.  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
 
@@ -21,26 +21,6 @@ There are two ways of making a function call in Hoon.  First, you can call a gat
 > (inc 10)
 11
 
-> .
-[ [   inc
-    < 1.viz
-      { a/@
-        {our/@p now/@da eny/@uvJ}
-        $~
-        <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-      }
-    >
-    our=~bitnus-holleb-rocmeg-fotfer--migsum-nidsym-hilput-patmus
-    now=~2018.8.24..05.51.53..97b9
-      eny
-    \/0v3vd.sdp3o.ds8eq.5mr1s.du2v6.4a12r.poie2.04123.jaq8r.8qoum.mvb63.dblf7.7\/
-      lt1d.fqebb.pv6dr.lio19.re7lq.016q3.u03ne.c8aiu.7148p
-    \/                                                                         \/
-  ]
-  ~
-  <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-]
-
 > =inc
 ```
 
@@ -54,6 +34,8 @@ The second way of making a function call involves an expression that _produces_ 
 246
 ```
 
+The difference is that `inc` is an already-created gate in the subject when we called it.  The latter calls involve producing a gate that doesn't exist anywhere in the subject, and then calling it.
+
 Are calls to `add` and `mul` of the Hoon standard library of the first kind, or the second?
 
 ```
@@ -64,9 +46,11 @@ Are calls to `add` and `mul` of the Hoon standard library of the first kind, or 
 276
 ```
 
-They're of the second kind.  Neither `add` nor `mul` is a gate; they're each arms that _produce_ gates.  Often the difference doesn't matter much.  Either way you can do a function call using the `(gate arg)` syntax.
+They're of the second kind.  Neither `add` nor `mul` resolves to a gate directly; they're each arms that _produce_ gates.
 
-It's important to learn the difference, however, because for certain use cases you'll want the extra flexibility that comes with having an already produced core in the subject.  This is particularly important when you want to mutate the core as you call it.  It's far more straight-forward to mutate a core that already exists in the subject, than to have to produce it first and then mutate it.
+Often the difference doesn't matter much.  Either way you can do a function call using the `(gate arg)` syntax.
+
+It's important to learn the difference, however, because for certain use cases you'll want the extra flexibility that comes with having an already produced core in the subject.
 
 ## A Gate-Building Core
 
@@ -101,9 +85,9 @@ Notice that each arm in core `c` is able to call the other arms of `c` -- `add-t
 
 ### The `..arm` Syntax
 
-Let's say you have a wing that resolves to a leg of the subject.  In this wing is an arm name, e.g., `a.b.arm`.  As you know from lesson 1.4, this should be read as '`a` in `b` in the parent core of `arm`'.  Speaking more directly: the wing resolution path goes through the parent core of the arm, not the arm itself.
+Let's say you have a wing that resolves to a leg of the subject.  In this wing is an arm name, e.g., `a.b.arm`.  As you learned in lesson 1.4, this should be read as '`a` in `b` in the parent core of `arm`'.  Speaking more directly: the wing resolution path goes through the parent core of the arm, not the arm itself.
 
-Recall that `.` by itself returns the whole subject.  With that in mind, take a moment to answer the following question on your own.  In general, what should the expression `..arm` produce?
+Recall that using `.` by itself returns the whole subject.  With that in mind, take a moment to answer the following question on your own.  In general, what should the expression `..arm` produce?
 
 Do you have an answer?  If not, consider going back and trying to figure it out before moving on.
 
@@ -111,18 +95,16 @@ You may read `..arm` as '`.` of the parent core of `arm`'.  This amounts to just
 
 ```
 > ..inc:c
-< 4.vgw
+< 4.han
   { {our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
 > c
-< 4.vgw
+< 4.han
   { {our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 ```
@@ -138,7 +120,7 @@ For an example of this, consider the `add` arm of the Hoon standard library.  Th
 <74.dbd 1.qct $141>
 ```
 
-Here you see a core with a battery of 31 arms, and whose payload is another core with one arm.
+Here you see a core with a battery of 74 arms (!), and whose payload is another core with one arm.
 
 ### Mutating a Gate
 
@@ -151,7 +133,15 @@ Let's say you want to modify the default sample of the gate for `double`.  We ca
 
 Given that `a x 2 = 0`, `a` must be `0`.  (Remember that `a` is the face for the `double` sample, as defined in the core we bound to `c` above.)
 
-Let's say we want to modify the default sample to be `25`.  There is only one problem: `double` isn't a gate!  It's an arm that produces a gate, and every time it does so the default sample is `0`.  If you want to mutate the gate produced by `double`, you'll first have to put a copy of that gate into the subject:
+Let's say we want to mutate the `double` gate so that the default sample is `25`.  There is only one problem: `double` isn't a gate!
+
+```
+> double.c(a 25)
+-tack.a
+-find.a
+```
+
+It's an arm that produces a gate, and `a` cannot be found in `double` until the gate is created.  Furthermore, every time the gate is created, it has the default sample, `0`.  If you want to mutate the gate produced by `double`, you'll first have to put a copy of that gate into the subject:
 
 ```
 > =double-copy double:c
@@ -174,10 +164,11 @@ Good.  Let's call it with no argument and see if it returns double the value of 
 50
 ```
 
-It does indeed.  Unbind `c` and `double-copy` as follows:
+It does indeed.  Unbind `c` and `double-copy`:
 
 ```
 > =c
+
 > =double-copy
 ```
 
@@ -196,7 +187,7 @@ If you try to mutate the default sample of `add`, it won't work:
 -find.a
 ```
 
-The reason it doesn't work is that `add` is an arm, not a gate.  Hoon can't find an `a` to modify in a gate that doesn't exist yet!
+As before with `double`, Hoon can't find an `a` to modify in a gate that doesn't exist yet.
 
 ## Other Functions in the Hoon Standard Library
 
@@ -207,7 +198,7 @@ Let's look once more at the parent core of the `add` arm in the Hoon standard li
 <74.dbd 1.qct $141>
 ```
 
-The battery of this core contains 31 arms, each of which evaluates to a gate in the standard library.  This 'library' is nothing more than a core containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these arms near the beginning of [hoon.hoon](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)
+The battery of this core contains 74 arms, each of which evaluates to a gate in the standard library.  This 'library' is nothing more than a core containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these arms near the beginning of [hoon.hoon](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)
 
 Here are some of the other gates that can be generated from this core in the Hoon standard library.  It should be fairly obvious what they do:
 
@@ -265,11 +256,11 @@ A brief review: A core is a cell of battery and payload: `[battery payload]`.  T
 New material: A *door* is a core with a sample.  That is, a door is a core whose payload is a cell of sample and context: `[sample context]`.
 
 ```
-        door
+        Door
        /    \
-battery      .
+Battery      .
             / \
-      sample   context
+      Sample   Context
 ```
 
 It follows from this definition that a gate is a special case of a door.  A gate is a door with exactly one arm, named `$`.
@@ -296,7 +287,7 @@ Before getting into what these arms do, let's cover how the `|_` rune works in g
 
 The `|_` rune for making a door works exactly like the `|%` rune for making a core, except it takes one additional subexpression.
 
-The first subexpression after the `|_` rune defines the door sample.  (This is the subexpression the `|%` rune lacks.)  Following that are a series of `++` runes, each of which defines an arm of the door.  Finally, the expression is terminated with a `--` rune.
+The first subexpression after the `|_` rune defines the door's sample.  (This is the subexpression the `|%` rune lacks.)  Following that are a series of `++` runes, each of which defines an arm of the door.  Finally, the expression is terminated with a `--` rune.
 
 #### Back to the Example
 
@@ -338,9 +329,11 @@ Having confirmed that `b` is `0`, let's mutate the `c` sample and then call its 
 %.n
 ```
 
-Doing the same mutation repeatedly can be tedious, so let's bind `c` to the modified version of the door:
+Doing the same mutation repeatedly can be tedious, so let's bind `c` to the modified version of the door, where `b` is `7`:
 
 ```
+> =c c(b 7)
+
 > (plus:c 10)
 17
 
@@ -371,33 +364,31 @@ Readers with some mathematical background may notice that `~( )` expressions all
 
 ```
 > ~(plus c 7)
-< 1.umt
+< 1.gxk
   { a/@
-    < 3.uvn
+    < 3.iba
       { b/@
         {our/@p now/@da eny/@uvJ}
-        $~
-        <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+        < 19.anu
+          24.tmo
+          6.ipz
+          38.ard
+          119.spd
+          241.plj
+          51.zox
+          93.pqh
+          74.dbd
+          1.qct
+          $141
+        >
       }
     >
   }
 >
+
 
 > b:~(plus c 7)
 7
-
-> ~(plus c 17)
-< 1.umt
-  { a/@
-    < 3.uvn
-      { b/@
-        {our/@p now/@da eny/@uvJ}
-        $~
-        <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-      }
-    >
-  }
->
 
 > b:~(plus c 17)
 17
@@ -429,15 +420,15 @@ It turns out that the `rs` in `add:rs` is a Hoon standard library arm that produ
 
 ```
 > rs
-<21?vij {r/?($n $u $d $z) <54.tyv 119.wim 31.ohr 1.jmk $143>}>
+<21|fan {r/?($n $u $d $z) <51.zox 93.pqh 74.dbd 1.qct $141>}>
 ```
 
-The battery of this core, pretty-printed as `21?vij`, has 21 arms that define functions specifically for `@rs` atoms.  One of these arms is named `add`; it's a different `add` from the standard one we've been using for vanilla atoms.  So when you invoke `add:rs` instead of just `add` in a function call, (1) the `rs` door is produced, and then (2) the name search for `add` resolves to the special `add` arm in `rs`.  This produces the gate for adding `@rs` atoms:
+The battery of this core, pretty-printed as `21|fan`, has 21 arms that define functions specifically for `@rs` atoms.  One of these arms is named `add`; it's a different `add` from the standard one we've been using for vanilla atoms.  So when you invoke `add:rs` instead of just `add` in a function call, (1) the `rs` door is produced, and then (2) the name search for `add` resolves to the special `add` arm in `rs`.  This produces the gate for adding `@rs` atoms:
 
 ```
 > add:rs
-< 1.dfv
-  {{a/@rs b/@rs} <21.vij {r/?($n $u $d $z) <54.tyv 119.wim 31.ohr 1.jmk $143>}>}
+< 1.hsu
+  {{a/@rs b/@rs} <21.fan {r/?($n $u $d $z) <51.zox 93.pqh 74.dbd 1.qct $141>}>}
 >
 ```
 
@@ -456,8 +447,8 @@ Let's evaluate the `add` arm of `rs`, also modifying the door sample to `%u` for
 
 ```
 > ~(add rs %u)
-< 1.dfv
-  {{a/@rs b/@rs} <21.vij {r/?($n $u $d $z) <54.tyv 119.wim 31.ohr 1.jmk $143>}>}
+< 1.hsu
+  {{a/@rs b/@rs} <21.fan {r/?($n $u $d $z) <51.zox 93.pqh 74.dbd 1.qct $141>}>}
 >
 ```
 

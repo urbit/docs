@@ -2,13 +2,21 @@
         navuptwo/'true'
         next/'true'
         sort/'5'
-        title/'1.5 Gates and Hoon Functions'
+        title/'1.5 Gates (Hoon Functions)'
     ==
 ;>
 
-# 1.5 Gates and Hoon Functions
+# 1.5 Gates (Hoon Functions)
 
-In this lesson you're going to learn about Hoon functions.  A mathematical function takes an input value and returns an output value; and the value of the latter depends solely upon the value of the former.  (The latter property of functions is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency).)  To implement a function in Hoon, use a special kind of core called a *gate*.  In this lesson you'll learn what a gate is and how a gate represents a function.  Along the way you'll build some example gates of your own.
+In this lesson you're going to learn about Hoon functions.
+
+## What is a Function?
+
+The word 'function' is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_(mathematics%29).  Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  What the return value is depends solely on the argument(s), and nothing else.  For example, we can understand multiplication as a function: it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
+
+That output value depends solely upon input value(s) is an important property of functions.  This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and we make use of it throughout the Urbit software stack.
+
+Functions are implemented in Hoon with a special kind of core called a *gate*.  In this lesson you'll learn what a gate is and how a gate represents a function.  Along the way you'll build some example gates of your own.
 
 You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with gates, and you call them from the dojo in the following way:
 
@@ -24,13 +32,11 @@ You've already used two functions from the Hoon standard library: `add` and `mul
 
 A core is a cell: `[battery payload]`.
 
-A gate is a core, but it's not just any core.  It has two distinctive properties: (1) the battery of a gate contains exactly one arm, which has the special name `$`.  The `$` arm contains the instructions for the function in question.  And (2), the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` arm of the gate correctly.
+A gate is a core with two distinctive properties: (1) the battery of a gate contains exactly one arm, which has the special name `$`.  The `$` arm contains the instructions for the function in question.  And (2), the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` arm of the gate correctly.
 
 ```
-A gate:  [$ [sample context]]
+Gate:  [$ [Sample Context]]
 ```
-
-To reiterate, the `$` arm is the code for producing the output value, the sample is the input value, and the context is any other data necessary for `$` to run correctly.
 
 As a tree, a gate looks like the following:
 
@@ -45,22 +51,6 @@ As a tree, a gate looks like the following:
 Like all arms, `$` is computed with its parent core as the subject.  When `$` is computed, the resulting value is called the 'product' of the gate.  No other data is used to calculate the product other than the data in the gate itself.
 
 ## Creating Your First Gate
-
-Before making a gate, let's take a look at the dojo subject so we can refer to it later:
-
-```
-> .
-[ [ our=~bitnus-holleb-rocmeg-fotfer--migsum-nidsym-hilput-patmus
-    now=~2018.8.21..22.03.05..a444
-      eny
-    \/0v1hp.ug5b7.i21p4.qd4bt.0cc08.ug5og.j2uru.05a5a.pk3j5.vascn.mudri.pghpu.t\/
-      6vs7.h8pg0.ivnr7.smav1.rhova.ang41.347of.l1ahv.vfdvh
-    \/                                                                         \/
-  ]
-  ~
-  <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-]
-```
 
 Let's make a gate that takes any unsigned integer (i.e., an atom) as its sample and returns that value plus one as the product.  To do this we'll use the `|=` rune.  We'll bind this gate to the face `inc` for 'increment':
 
@@ -81,45 +71,42 @@ The gate works as promised -- it takes any number `n` and returns `n + 1`.  Let'
 
 ### The `|=` Rune
 
-We can use `|=` to create a gate.  There are two subexpressions that go after a `|=` rune.  The first defines the gate's sample, and the second defines the gate's product.
+We typically use the `|=` rune to create a gate.  In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`.  The first defines the gate's sample (input value type), and the second defines the gate's product (value).
 
-In the example gate above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an atom, `@`, and it is given the face `a`.  With the face it's easier to refer to the sample in later code, if desired.
+When we used the `|%` rune in the last lesson we didn't use parentheses because we were writing in "tall form" syntax, whereas here we are writing in "flat form" syntax.  (The latter uses parentheses and is more suitable for shorter snippets of code.)  We'll explain these concepts more thoroughly in lesson 2.2.
+
+In the example gate above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an atom, `@`, meaning that the gate will take as input anything of that type.  The sample is given the face `a`.  With the face it's easier to refer to the sample in later code, if desired.
 
 In `inc`, the product is defined by `(add 1 a)`.  There's not much to it -- it returns the value of `a + 1`!
 
-The second subexpression after the `|=` rune is used to build the gate's `$` arm.  That's where all the computations go.  The sample is defined by the first subexpression.
+The second subexpression after the `|=` rune is used to build the gate's `$` arm.  That's where all the computations go.
 
-The context of the resulting gate is a copy of the subject for the `|=` expression.  To see this, let's print the value of `inc` in the dojo:
+## Anatomy of a Gate
+
+A gate is a one-armed core with a sample: `[$ [Sample Context]]`.  Let's go over these parts a little more carefully, using `inc` as our example.
 
 ```
 > inc
-< 1.viz
+< 1.jgn
   { a/@
     {our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 ```
 
-The `1.viz` represents the `$` arm of the gate.  The `a/@` is for the sample.  And the rest is the dojo subject that was used for the `|=` expression.  (Compare it to the dojo subject we printed before binding `inc` to a gate -- it's pretty printed in a slightly different way, but it's the same noun.)
-
-## Anatomy of a Gate
-
-A gate is a one-armed core with a sample: `[$ [sample context]]`.  Let's go over these parts a little more carefully, using `inc` as our example.
-
 ### The `$` Arm
 
-The arm of a gate specifies (in Nock) the instructions for the Hoon function in question.  The gate's arm is always located at `+2` of the gate.
+The arm of a gate encodes the instructions for the Hoon function in question.
 
-The pretty printer represents the `$` arm of `inc` as `1.viz`.  To see the actual noun of the `$` arm, enter `+2:inc` into the dojo:
+The pretty printer represents the `$` arm of `inc` as `1.jgn`.  To see the actual noun of the `$` arm, enter `+2:inc` into the dojo:
 
 ```
 > +2:inc
 [8 [9 8 0 4.095] 9 2 [0 4] [[7 [0 3] 1 1] 0 14] 0 11]
 ```
 
-Here we see a Nock formula.  For what it's worth, these are the Nock instructions for adding `1` to a number.  (Again, you don't need to understand how to read Nock.)
+This is un-computed Nock.  You don't need to understand any of this.
 
 It's worth pointing out that the arm name, `$`, can be used like any other name.  We can compute `$` directly with `$:add` in the dojo:
 
@@ -138,11 +125,10 @@ Let's look at the gate for `inc` again, paying particular attention to its sampl
 
 ```
 > inc
-< 1.viz
+< 1.jgn
   { a/@
     {our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 ```
@@ -173,19 +159,18 @@ Let's look at the context of `inc`:
 
 ```
 > +7:inc
-[ [ our=~bitnus-holleb-rocmeg-fotfer--migsum-nidsym-hilput-patmus
-    now=~2018.8.21..22.13.52..828a
+[ [ our=~zod
+    now=~2018.12.12..18.55.06..df2b
       eny
-    \/0v3ui.rq2no.g0eor.f0kjq.njfr4.tlb60.fq340.cvfh5.p4168.rj3r2.pr5d2.0532k.h\/
-      ite1.r218h.ukqle.cldnl.0e5h5.9pvkm.rhep5.ole0s.hbann
-    \/                                                                         \/
+    \/0v2g0.cmm6d.1igpo.llg7o.4921d.nov38.vjsgp.mdfln.8pt9f.n23hj.qc6q9.8p7bd\/
+      .2eo59.qko43.1jgd2.rtc44.egooe.esvft.orohc.i9ufn.4rnur
+    \/                                                                       \/
   ]
-  ~
-  <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
+  <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
 ]
 ```
 
-You can see that this is exactly the subject before we put `inc` into the subject.
+This is exactly the default dojo subject, from before we put `inc` into the subject.  The `|=` expression defines the context as whatever the subject is.  This guarantees that the context has all the information it needs to have for the `$` arm to work correctly.
 
 ### Exercise 1.5.1
 
@@ -193,7 +178,7 @@ Write a gate that takes an atom, `a=@`, and which returns double the value of `a
 
 ## Gates Define Functions of the Sample
 
-The value of a function's output depends solely upon the input value.  This is one of the features that make functions desirable in many programming contexts.  It's worth going over how Hoon function calls implement this feature.  Let's talk about how function calls work in Hoon.
+The value of a function's output depends solely upon the input value.  This is one of the features that make functions desirable in many programming contexts.  It's worth going over how Hoon function calls implement this feature.
 
 In Hoon one can use `(gate arg)` syntax to make a function call.  For example,
 
@@ -253,15 +238,6 @@ We can unbind `b` from the dojo subject, and `ten` works just as well because it
 
 > (ten 35)
 45
-
-> ten
-< 1.umt
-  { a/@
-    {b/@ud our/@p now/@da eny/@uvJ}
-    $~
-    <16.igq 19.rrs 41.xjd 112.hmp 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-  }
->
 
 > b.+7.ten
 10
