@@ -1,7 +1,7 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'25'
+        sort/'31'
         title/'2.5 Type Checking and Type Inference'
     ==
 ;>

@@ -1,0 +1,34 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'Hoon'
+    ==
+;>
+
+# Learn Hoon
+
+Hoon is a high-level, statically typed, functional programming language, custom-designed for use with Urbit.  For a functional language it has a surprisingly imperative style, and mastering it doesn't require knowing any advanced mathematics.
+
+Hoon is an unusual language in several respects, both in syntax and semantics.  It uses runes (i.e., ASCII digraphs) in place of keywords, and the spacing rules are a bit strict.  A great deal can be expressed in few lines, though excessively compressed code tends to be hard to read.  Hoon has surprisingly simple semantics, but mastering it requires learning concepts that don't have close analogues in other languages.
+
+This series is designed to teach you Hoon without assuming you have an extensive programming background.  In fact, you should be able to follow much of it even if you have no programming experience at all, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  These lessons are meant for the beginner but they aren't meant to be skimmed.
+
+Chapter 1 introduces and explains the fundamental concepts you need in order to understand Hoon's semantics.
+
+Hoon is a 'subject-oriented' programming language -- every expression of Hoon is evaluated relative to a *subject*.  The subject is a piece of data that represents the environment, or the context, of an expression.  After reading Chapter 1 you should understand what the subject is and how to refer to its various parts.  In this chapter you'll also learn about *cores*, which are an important data structure in Hoon.  Once you get the hang of cores you'll be able to write your own functions in Hoon.
+
+Chapter 2 covers the basics of writing full programs in Hoon.
+
+The first three lessons take you through a simple Hoon program, explain Hoon's syntax, and explains basic flow control.  The next three lessons introduce Hoon's type system.  Lessons 7 and 8 show you how to use cores effectively in your Hoon programs, including how to use them as state machines.  Lessons 9 and 10 cover some of the basic data structures commonly used in Hoon, such as lists, trees, and sets.  Those lessons also introduce many of the standard library functions for use with those data structures.  Lesson 11 includes a walk-through of two Hoon programs that are intended to reinforce everything taught earlier in the chapter: a prime sieve and a tic-tac-toe program.
+
+## Lessons
+
+;list;
+
+## Other Resources
+
+Consult the [Reference](link) to look up any unknown rune or standard library function you don't understand.
+
+As you work your way through these lessons you may want to work on example problems from the [Hoon workbook](link) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](link) documentation.  Or maybe you'd like to learn how to write a [Gall app](link).  Learn about [Udon](link), Urbit's stripped down version of Markdown.  Or learn [Sail](link), a subset of Hoon used for generating XML nodes.
+
+> Last major revision of this section: December 2018
