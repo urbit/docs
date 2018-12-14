@@ -158,7 +158,7 @@ Lines 11-14 do the same thing for the case in which `i.b` is a lowercase letter.
 
 Lists are a commonly used data structure.  Accordingly, there are several functions in the Hoon standard library intended to make lists easier to use.
 
-For a complete list of these functions, check out the standard library reference for lists here (add link later).  Here we'll look at a few of these functions.
+For a complete list of these functions, check out the standard library reference for lists here (link).  Here we'll look at a few of these functions.
 
 ### `flop`
 

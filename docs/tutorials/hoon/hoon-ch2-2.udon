@@ -10,7 +10,7 @@
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
-The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Failing to follow these rules when writing a program and then trying to run it will result in a syntax error.
+The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
 
 The [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
 
@@ -50,7 +50,7 @@ gap  [>1 space, nl]  rac  ]
 hax  #               rit  )
 ```
 
-Learning and using these names of non-alphanumeric symbols is entirely optional; you can become an expert Hoon programmer without them.  Many Hoon programmers find them helpful, however.
+Learning and using these names of non-alphanumeric symbols is entirely optional; you can become an expert Hoon programmer without them.  Many Hoon programmers find them helpful, however, particularly when talking to someone else who knows them.
 
 Note that the list includes two separate whitespace forms: `ace` for a single space; `gap` is either 2+ spaces or a newline.  In Hoon, the only whitespace significance is the distinction between `ace` and `gap` -- i.e., the distinction between one space and more than one.
 
@@ -93,7 +93,7 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 0b1101.1001
 ```
 
-Recall from [lesson 1.2](../../hoon-ch1/hoon-ch1-2) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](../hoon-ch2-4).
+Recall from [lesson 1.2](../hoon-ch1-2) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](../hoon-ch2-4).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -120,7 +120,7 @@ You can also put complex expressions inside square brackets to make a cell.  The
 
 ### Wings
 
-A wing expression is a series of limb expressions separated by `.`.  You learned about these in [sections 1.3](../../hoon-ch1/hoon-ch1-3) and [sections 1.4](../../hoon-ch1/hoon-ch1-4).
+A wing expression is a series of limb expressions separated by `.`.  You learned about these in [sections 1.3](../hoon-ch1-3) and [sections 1.4](../hoon-ch1-4).
 
 Let's start with the base case: a single limb.  A limb expression is a trivial wing expression -- there is only one limb in the series.  Some one-limb wings:
 
@@ -134,13 +134,13 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `mul`
 - `kebab-case-123`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We covered the role of `$` in [lesson 1.5](../../hoon-ch1/hoon-ch1-5).)
+As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We covered the role of `$` in [lesson 1.5](../hoon-ch1-5).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
 - `+2.+3.+4`
 - `-.+.+`
-- `search.path.into.subject`
+- `resolution.path.into.subject`
 - `+>.$`
 - `a.b.c`
 - `-.b.+2`
@@ -160,7 +160,7 @@ Expressions with a rune at the beginning are rune expressions.  Most runes are u
 
 Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create cores, and the runes in the `:` family are all used to create cells.
 
-Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the correct syntax of a particular rune, consult the rune reference (link).  Nevertheless, there are some general principles that hold of all rune expressions.
+Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](../../../reference/rune).  Nevertheless, there are some general principles that hold of all rune expressions.
 
 #### Tall and Flat Forms
 
@@ -264,7 +264,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 
 The `( )` gate-calling syntax can be used for gates of any other [arity](https://en.wikipedia.org/wiki/Arity) as well.
 
-You've already seen two other irregular forms.  In [lesson 1.5](../../hoon-ch1/hoon-ch1-5), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
+You've already seen two other irregular forms.  In [lesson 1.5](../hoon-ch1-5), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
 
 ```
 > =inc |=(a=@ (add 1 a))
@@ -582,7 +582,7 @@ In a sufficiently complicated expression it's tedious to keep track of all the p
 
 In some programming languages there is an indentation convention according to which an expression embedded within a parent expression is indented more to the right.  In a sufficiently long and complicated function with many embedded subexpressions, the tendency is for the code to shift more and more to the right.  This tendency is called *indentation creep*, and it can become an irritating problem when working with long functions.  It's true that short functions are better, but long ones sometimes need to be written.
 
-Ordinary indentation conventions give long functions a _diagonal_ shape, which is a poor fit for most editor windows.  Hoon is designed to be written with 'backstep' indentation (explained later in this lesson) so that the code flows _down_, not down and across.
+Ordinary indentation conventions give long functions a _diagonal_ shape, which is a poor fit for most editor windows.  Because Hoon is designed to be written with 'backstep' indentation, the code flows _down_, not down and across.
 
 ### Feature/label confusion
 

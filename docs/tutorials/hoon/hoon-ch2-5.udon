@@ -16,7 +16,7 @@ Let's enumerate the most common cases where a type check is called for in Hoon.
 
 ### Cast Runes
 
-The most obvious case is when there is a cast rune in your code.  These runes don't directly have any effect on the data produced by your code; they simply indicate that a type check should be performed on a piece of code.
+The most obvious case is when there is a cast rune in your code.  These runes don't directly have any effect on the compiled result of your code; they simply indicate that a type check should be performed on a piece of code at compile-time.
 
 #### `^-` Cast with a Type
 
@@ -65,7 +65,7 @@ nest-fail
 
 The `^+` rune takes two subexpressions.  The first subexpression is evaluated and its type is inferred.  The second subexpression is evaluated and its inferred type is compared against the type of the first.  If the type of the second provably nests under the type of the first, the result of the `^+` expression is just the value of its second subexpression.  Otherwise, the code fails to compile.
 
-This rune is useful for casting when you already have an example noun whose type you may not know or be able to construct easily, but when you want the output of a expression to have that same type.
+This rune is useful for casting when you already have a noun -- or expression producing a noun -- whose type you may not know or be able to construct easily.  If you want your output value to be of the same type, you can use `^+`.
 
 More examples:
 
@@ -99,7 +99,7 @@ You can evade the `.=` type-check by casting one of its subexpressions to a `*`,
 %.n
 ```
 
-It isn't recommended that you evade type safety in this way, however.
+It isn't recommended that you evade the rules in this way, however.
 
 The `.+` increment rune -- including its `+( )` irregular form -- does a type check to ensure that its subexpression must evaluate to an atom.
 
@@ -172,7 +172,7 @@ Cast runes also shape how Hoon understands an expression type.  The inferred typ
 ^+([0x1b 0b11] [0x123 0b101])     [@ux @ub]
 ```
 
-You can also use the irregular `` ` ` `` syntax for casting in the same way as `^-`; e.g., `` `@`123 `` for `^-(@ 123)`.
+You can also use the irregular `\` \`` syntax for casting in the same way as `^-`; e.g., `\`@\`123` for `^-(@ 123)`.
 
 One thing to note about casts is that they can 'throw away' type information.  The second subexpression of `^-` and `^+` casts may be inferred to have a very specific type.  If the cast type is more general, then the more specific type information is lost.  Consider the literal `[12 14]`.  The inferred type of this expression is `[@ @]`, i.e., a cell of two atoms.  If we cast over `[12 14]` with `^-(^ [12 14])` then the inferred type is just `^`, the set of all cells.  The information about what kind of cell it is has been thrown away.  If we cast over `[12 14]` with `^-(* [12 14])` then the inferred type is `*`, the set of all nouns.  All interesting type information is thrown away on the latter cast.
 
@@ -208,13 +208,13 @@ If you try to call this gate with the wrong kind of argument, you get a `nest-fa
 
 ### Using Conditionals for Inference by Branch
 
-You learned about a few conditional runes earlier in the chapter (e.g., `?:`, `?.`), but other runes of the `?` family are used for branch-specialized type inference.  The `?@`, `?^`, and `?~` conditionals take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` -- the first is the test condition, which evaluates to a flag `?`.  If the test condition is true, the second subexpression is evaluated; otherwise the third.  These second and third subexpressions are the 'branches' of the conditional.
+You learned about a few conditional runes earlier in the chapter (e.g., `?:`, `?.`), but other runes of the `?` family are used for branch-specialized type inference.  The `?@`, `?^`, and `?~` conditionals each take three subexpressions, which play the same basic role as the corresponding subexpressions of `?:` -- the first is the test condition, which evaluates to a flag `?`.  If the test condition is true, the second subexpression is evaluated; otherwise the third.  These second and third subexpressions are the 'branches' of the conditional.
 
-There is also a `?=` rune for matching expressions with certain types.
+There is also a `?=` rune for matching expressions with certain types, returning `%.y` for a match and `%.n` otherwise.
 
 #### `?=` Non-recursive Type Match Test
 
-The `?=` rune takes two subexpressions.  The first subexpression should be a type (specifically, it should not be a type that is defined recursively; more on this point later).  The second subexpression is evaluated and the resulting value is compared to the first type.  If the value is an instance of the type, `%.y` is produced.  Otherwise, `%.n`.  Examples:
+The `?=` rune takes two subexpressions.  The first subexpression should be a type.  The second subexpression is evaluated and the resulting value is compared to the first type.  If the value is an instance of the type, `%.y` is produced.  Otherwise, `%.n`.  Examples:
 
 ```
 > ?=(@ 12)
@@ -246,14 +246,14 @@ The `?=` rune takes two subexpressions.  The first subexpression should be a typ
 %.y
 ```
 
-We haven't talked much about recursively defined types yet.  We'll discuss these more soon, but it's worth pointing out that every list type qualifies as such, and hence should not be used with `?=`:
+We haven't talked much about types that are made with a type constructor yet.  We'll discuss these more soon, but it's worth pointing out that every list type qualifies as such, and hence should not be used with `?=`:
 
 ```
 > ?=((list @) ~[1 2 3 4])
 fish-loop
 ```
 
-Using a recursively defined non-basic type with the `?=` rune results in a `fish-loop` error.
+Using these non-basic constructed types with the `?=` rune results in a `fish-loop` error.
 
 ##### Using `?=` for Type Inference
 
@@ -291,7 +291,7 @@ You can't see it here either, but the inferred type of `b` in `[| b]` is `^`.  T
 
 ##### The Type Spear
 
-I think I'm a trustworthy guy, but perhaps you don't want to take my word for it.  What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with a 'type spear'.  But we need to understand the `!>` rune before using this mighty weapon of war.  `!>` takes one subexpression, and constructs a cell from it.  The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached.  The head of the product cell is the inferred type of the subexpression.  Examples:
+We think we're trustworthy, but perhaps you don't want to take our word for it.  What if you want to see the inferred type of `b` for yourself for each conditional branch?  One way to do this is with a 'type spear'.  But you need to understand the `!>` rune before using this mighty weapon of war.  `!>` takes one subexpression and constructs a cell from it.  The subexpression is evaluated and becomes the tail of the product cell, with a `q` face attached.  The head of the product cell is the inferred type of the subexpression.  Examples:
 
 ```
 > !>(15)
@@ -304,7 +304,9 @@ I think I'm a trustworthy guy, but perhaps you don't want to take my word for it
 [#t/@ q=77]
 ```
 
-The `#t/` is just the pretty-printer's way of indicating a type.  To get just the inferred type of a expression, we only want the head, `-`.  So we can use the type spear, `-:!>`, to get just the type.
+The `#t/` is just the pretty-printer's way of indicating a type.
+
+To get just the inferred type of a expression, we only want the head of the `!>` product, `-`.  Thus we should use the type spear, `-:!>`.
 
 ```
 > -:!>(15)
@@ -331,7 +333,7 @@ Now let's try using `?=` with `?:` again.  But this time we'll replace `[& b]` w
 [%.n #t/{* *}]
 ```
 
-In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^`.
+In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `{* *}`).
 
 ##### `mint-vain`
 
@@ -488,7 +490,7 @@ Once that new value for `c` is computed from the head of `a`, we're ready to che
 
 The samefringe program takes two nouns and checks whether they have the same 'fringe', returning 'yes' if they do and 'no' otherwise.  The fringe of a noun is the series of atoms of that noun, in the same order of appearance.  The cell-structure of the noun is disregarded.  For example, `[[3 2] 32]` has the same fringe as `[3 2 32]`, even though they're different nouns; their leaves appear in the same order.
 
-One way to compare noun fringes is to calculate the fringes of both first, then compare.  A better way to do this is to compare both fringes one atom at a time and halt the computation once the two fringes differ.
+One way to compare noun fringes is to calculate the total fringes of each, then compare afterward.  A better way to do this is to compare both fringes one atom at a time and halt the computation once the two fringes differ.
 
 Write a program named `samefringe.hoon` that solves the problem the 'better' way.  A solution is given at the bottom of the lesson.
 
@@ -505,11 +507,11 @@ Write a program named `samefringe.hoon` that solves the problem the 'better' way
 
 #### Lists
 
-We can put lists in two categories: (1) null lists, `~`, and (2) non-null lists.  A null list is a list with no items in it.  Naturally these aren't as interesting as non-null lists.
+You learned about lists earlier in the chapter, but we left out a little bit of information about the way Hoon understands list types.
 
-A non-null list is a cell.  If `b` is a non-null list then the head of `b` is the first item of `b` with an `i` face on it.  The tail of `b` is the rest of the list.  The 'rest of the list' is itself another list with a `t` face on it.  Hoon lists are 'null-terminated', which means that the end of the list is signified with a `~` (a null list).
+A non-null list is a cell.  If `b` is a non-null list then the head of `b` is the first item of `b` _with an `i` face on it_.  The tail of `b` is the rest of the list.  The 'rest of the list' is itself another list _with a `t` face on it_.  We can (and should) use these `i` and `t` faces in list functions.
 
-Let's say that `b` is the list of the atoms `11`, `22`, and `33`.  Let's construct this in stages:
+To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.  Let's construct this in stages:
 
 ```
 [i=11 t=[rest-of-list-b]]
@@ -519,7 +521,7 @@ Let's say that `b` is the list of the atoms `11`, `22`, and `33`.  Let's constru
 [i=11 t=[i=22 t=[i=33 t=~]]]
 ```
 
-There are lists of every type.  Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc.  We can even have lists of lists of `@`, `^`, or `?`, etc.
+(There are lists of every type.  Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc.  We can even have lists of lists of `@`, `^`, or `?`, etc.)
 
 Here's a program that takes atoms `a` and `b` and returns a list of all atoms from `a` to `b`:
 
@@ -546,7 +548,7 @@ Save this code as `gulf.hoon` in your urbit's pier and run it from the dojo:
 ~
 ```
 
-Where are all the `i`s and `t`s???  For the sake of neatness the Hoon pretty-printer doesn't show the `i` and `t` faces of lists, just the items.  You'll also note that there is a `~` at the beginning of the cell.  This is how the pretty-printer indicates that a cell is actually a list.  `~[12 14]` is an irregular form of `[12 14 ~]`.
+Where are all the `i`s and `t`s???  For the sake of neatness the Hoon pretty-printer doesn't show the `i` and `t` faces of lists, just the items.
 
 In fact, we could have left out the `i` and `t` faces in the program itself:
 
@@ -599,7 +601,7 @@ Hoon will infer that `b` either is or isn't null based on which `?~` branch is e
 
 #### Using `?~` With Lists
 
-The `?~` is especially useful for working with lists.  Here's a program using `?~` to calculate the number of items in a list of atoms:
+The `?~` is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question.  Here's a program using `?~` to calculate the number of items in a list of atoms:
 
 ```
 |=  a=(list @)                                          ::  1
@@ -666,9 +668,9 @@ With insertion sort, you start with a full unsorted list, `(list @)`, and a seco
 
 So far you've learned about four kinds of type inference, using: (1) literals, (2) explicit casts, (3) gate sample definitions, and (4) branch specialization using runes in the `?` family.
 
-In fact, there are several other ways that Hoon infers type.  Any rune expressions that evaluates to a flag, `?`, e.g., `.=` will be inferred from accordingly.  The `.+` rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, `:-`, `:+`, `:^`, and `:*` are all known to produce cells.
+In fact, there are several other ways that Hoon infers type.  Any rune expression that evaluates to a flag, `?`, e.g., `.=`, will be inferred from accordingly.  The `.+` rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, `:-`, `:+`, `:^`, and `:*` are all known to produce cells.
 
-More subtly, the `=+`, `=/`, and `=|` modify the subject by pinning values to the head. Hoon infers from this that the subject has a new type: a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
+More subtly, the `=+`, `=/`, and `=|` runes modify the subject by pinning values to the head. Hoon infers from this that the subject has a new type: a cell whose head is the type of the pinned value and whose tail is the type of the (old) subject.
 
 In general, anything that modifies the subject modifies the type of the subject.  Type inference can work in subtle ways for various expressions.  However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 

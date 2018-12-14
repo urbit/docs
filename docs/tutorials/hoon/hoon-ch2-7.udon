@@ -30,7 +30,7 @@ The battery is a series of arms, each of which is intended to be evaluated with 
 
 The context is all the relevant data needed to evaluate the arms in the battery correctly, apart from the sample.  In cores with no sample, there is no distinction between 'payload' and 'context'.
 
-In this lesson you'll learn how to produce various kinds of cores.  You've already been using one kind of core, produced with the `|=` rune: gates.  A gates is a one-armed core with a sample.  But in this lesson you'll learn how to produce many-armed cores, with and without samples.  You'll also learn how to make use of these cores in your own programs.
+In this lesson you'll learn how to produce various kinds of cores.  You've already been using one kind of core, produced with the `|=` rune: gates.  But in this lesson you'll learn how to produce many-armed cores, with and without samples.  You'll also learn how to make use of these cores in your own programs.
 
 ## Project Euler 1
 
@@ -155,7 +155,7 @@ Let's write such a core and bind it to a face in the dojo.  (Feel free to cut an
 > t
 < 3.axs
   { {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.min 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 ```
@@ -220,6 +220,12 @@ Let's try with other input types:
 nest-fail
 ```
 
+Unbind `t` again:
+
+```
+> =t
+```
+
 ## Cores with Samples (Doors)
 
 Cores without samples are often useful, but sometimes more is desired.  Sometimes you'll want to use a core with a sample.  Such cores are called *doors*.
@@ -243,10 +249,14 @@ You can change the rounding rule by passing an argument to the `++  rs` core:
 
 ```
 > ~(add rs %u)
-<1.dfv {{a/@rs b/@rs} <21.vij {r/?($n $u $d $z) <54.tyv 119.wim 31.ohr 1.jmk $143>}>}>
+< 1.hsu
+  {{a/@rs b/@rs} <21.fan {r/?($n $u $d $z) <51.zox 93.pqh 74.dbd 1.qct $141>}>}
+>
 
 > ~(add rs %d)
-<1.dfv {{a/@rs b/@rs} <21.vij {r/?($n $u $d $z) <54.tyv 119.wim 31.ohr 1.jmk $143>}>}>
+< 1.hsu
+  {{a/@rs b/@rs} <21.fan {r/?($n $u $d $z) <51.zox 93.pqh 74.dbd 1.qct $141>}>}
+>
 ```
 
 Each of these expressions produces a version of the `add` gate from `rs`.  By using `~( )` to pass `%u` to `rs` before producing `add`, you're creating an `add` gate for floats that rounds up.  By passing `%d`, you're producing an `add` gate for floats that rounds down:
@@ -313,15 +323,10 @@ To use a door as a state machine, put the door in the subject and modify that do
   --
 
 > num
-< 4.uzk
+< 4.awp
   { a/@
-    { {rng/<4.wmp {a/@ud <54.tyv 119.wim 31.ohr 1.jmk $143>}> b/nlr(@) l/it(@)}
-      our/@p
-      now/@da
-      eny/@uvJ
-    }
-    $~
-    <16.cvy 19.rrs 41.gpy 112.lkm 224.nab 54.nhx 119.wim 31.ohr 1.jmk $143>
+    {our/@p now/@da eny/@uvJ}
+    <19.min 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
@@ -389,6 +394,6 @@ Now run it in the dojo:
 1.002
 ```
 
-Each of the `=.` expressions 'modifies' `num` by replacing the old `num` core with a different version of it.  In this program we're 'modifying' `num` four times.
+Each of the `=.` expressions 'modifies' `num` by replacing the old `num` core with a different version of it.  In this program we 'modify' `num` four times.
 
 For more on how to use cores as state machines see the next lesson.

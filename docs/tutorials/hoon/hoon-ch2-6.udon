@@ -14,7 +14,7 @@ In this lesson we'll talk a little about how type expressions become structures,
 
 Attentive readers may remember that Hoon programs are made of expressions.  By definition, an expression produces a value.  We've talked about expressions for types such as `@`, `^`, `[? *]`, etc.  What values do these subexpressions produce?  The answer is that they produce a *structure*.  But what are structures, and what role do they play in Hoon?
 
-You don't actually need to know much about what a structure is in order to write Hoon programs that use the type system effectively.  Accordingly, we'll save the particular details for a later chapter.  Here we'll give only a sketch of the most important features.
+You don't actually need to know much about what a structure is in order to write Hoon programs that use the type system effectively.  Accordingly, we'll save the particular details for a later lesson.  Here we'll give only a sketch of the most important features.
 
 ### Cast Expressions
 
@@ -31,9 +31,9 @@ Structures play different roles in different code contexts.  First, let's look a
 [%.y [15 17]]
 ```
 
-The `@`, `^`, and `[? *]` subexpressions have no effect at all on the final value produced.
+The `@`, `^`, and `[? *]` subexpressions have no effect on the overall value produced.
 
-It's important to understand that these casts don't affect the [runtime](https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase%29) semantics of a program at all.  They affect only the compiler behavior at compile time.  The compiler does these type-checks when compiling, but the resulting code has no value corresponding to the types above.
+It's important to understand that these casts don't affect the [runtime](https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase%29) semantics of a program at all.  They affect only the compiler behavior at compile-time.  The compiler does these type-checks when compiling, but the resulting code has no value corresponding to the types above.
 
 Accordingly, the structures produced by the type subexpressions above aren't part of the program's runtime semantics.  They are compile-time values only.
 
@@ -41,14 +41,14 @@ Accordingly, the structures produced by the type subexpressions above aren't par
 
 In other cases, structures _can_ have an effect on runtime semantics.  For example, consider the expression `|=(a=@ 15)`.  This produces a gate that takes any atom as its sample and returns `15`.
 
-The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In the compiled program this structure is converted to a default value for the appropriate type, sometimes called an *example* value (or a *bunt* value in older Hoon literature).
+The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In the compiled program this structure is converted to a default value for the appropriate type, sometimes called an *example* value (or a *bunt* value).
 
 ```
 > |=(a=@ 15)
 < 1.xqz
   { a/@
     {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
@@ -81,7 +81,7 @@ Structures can also become gates at runtime.  To produce such a gate, use a type
 < 1.goa
   { *
     {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
@@ -89,7 +89,7 @@ Structures can also become gates at runtime.  To produce such a gate, use a type
 < 1.zgf
   { *
     {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
@@ -97,12 +97,12 @@ Structures can also become gates at runtime.  To produce such a gate, use a type
 < 1.ylu
   { *
     {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 ```
 
-In all three cases, the result of evaluation is a gate.  For each, the head is a single arm, signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are called *molds*.
+In all three cases, the result of evaluation is a gate.  For each, the head is a single arm, signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are sometimes called *molds*.
 
 Molds are gates with two special properties: (1) they are guaranteed to produce a value of the type indicated by the type expression, and (2) they are [idempotent](https://en.wikipedia.org/wiki/Idempotence).  (A gate `i` is idempotent if and only if the result of applying `i` multiple times to a value produces the same result as applying it once.  In other words, `(i val)` must produce the same result as `(i (i val))`.)
 
@@ -148,7 +148,7 @@ Let's review (1) and (2) briefly.
 
 The basic types of Hoon are: `*` for nouns, `@` for atoms (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
 
-Let's illustrate with the irregular `` ` ` `` cast syntax:
+Let's illustrate with the irregular `\` \`` cast syntax:
 
 ```
 > `%blah`%blah
@@ -215,7 +215,7 @@ Here we can see the difference by noting how many molds each produces:
 < 1.igg
   { *
     {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 
@@ -223,13 +223,13 @@ Here we can see the difference by noting how many molds each produces:
 [ < 1.goa
     { *
       {our/@p now/@da eny/@uvJ}
-      <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+      <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
     }
   >
   < 1.zgf
     { *
       {our/@p now/@da eny/@uvJ}
-      <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+      <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
     }
   >
 ]
@@ -242,7 +242,7 @@ You can force `[@ ?]` to be interpreted as a single mold by prepending it with `
 < 1.igg
   { *
     {our/@p now/@da eny/@uvJ}
-    <18.rrd 23.tfo 5.mxb 36.apb 119.xzz 238.eyc 51.txd 93.ape 74.dbd 1.qct $141>
+    <19.arv 24.fmf 7.mpi 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
   }
 >
 ```
@@ -262,22 +262,10 @@ nest-fail
 nest-fail
 
 > `$-([@ @] @)`add
-< 1|xpc
-  { {@ @}
-    {our/@p now/@da eny/@uvJ}
-    $~
-    <16.zwv 19.rrs 41.gam 112.cpm 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-  }
->
+<1|efh {{@ @} {@ @} @}>
 
 > `$-([@ @] ?)`gte
-< 1|uxz
-  { {@ @}
-    {our/@p now/@da eny/@uvJ}
-    $~
-    <16.zwv 19.rrs 41.gam 112.cpm 224.nab 54.tyv 119.wim 31.ohr 1.jmk $143>
-  }
->
+<1|efh {{@ @} {@ @} ?($.n $.y)}>
 ```
 
 ### `$?` Define a Union
@@ -367,4 +355,4 @@ Often `$@` is used to define a type with a null or trivial case for the `@` case
 
 Now the `~` value is included as a possible value for `user`.
 
-That's all we have to say about types in this chapter.  More on types in Chapter 3!
+That's all we have to say about types in this chapter.  More on types in Chapter 3.

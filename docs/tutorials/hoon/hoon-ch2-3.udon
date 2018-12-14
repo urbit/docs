@@ -8,19 +8,19 @@
 
 # Simple One-Gate Programs
 
-In this lesson we'll try to cover enough basic Hoon so that you can write (and understand!) your own simple programs.  Each of the programs given in this lesson defines a gate.  (Gates are one-armed cores of Hoon that can be used as functions -- this is covered in [lesson 1.5](../../hoon-ch1/hoon-ch1-5).)
+In this lesson we'll try to cover enough basic Hoon so that you can write (and understand) your own simple programs.  Each of the programs given in this lesson produces a gate.  (Gates are one-armed cores of Hoon that can be used as functions -- this is covered in [lesson 1.5](../hoon-ch1-5).)
 
 For each program we encourage you to: (1) write out the program yourself, (2) save it to the `/home/gen` directory of your urbit's pier, and (3) run it from the dojo.  The best way to learn to program in Hoon is by getting your hands dirty.
 
 We will also continue to run one-line snippets of code in the dojo.  We encourage you to enter these for yourself as well.
 
-## Intro to Writing Gates
+## Writing Gates: A Review
 
 Let's look at a really simple gate: `|=(a=@ 15)`.  This gate takes any atom as input and returns the value `15`.
 
 The `|=` rune takes two subexpressions.  The first must indicate a type, and the second may evaluate to any value.  The first defines the gate's sample type and possibly binds a face to it, and the second defines the output of the gate.  In the example `|=(a=@ 15)` the `|=` subexpressions are `a=@` and `15`.
 
-The following characters represent basic Hoon types: `@` for atoms, `^` for cells, `?` for flags, and `*` for nouns.  You should already know what atoms, cells, and nouns are.  (See [lesson 1.2](../../hoon-ch1/hoon-ch1-2) if you need a reminder.)  There are two values for the `?` type: `%.y` for yes, and `%.n` for no.  In other words, `?` is for the [Boolean values](https://en.wikipedia.org/wiki/Boolean_data_type) of Hoon.
+The following characters represent basic Hoon types: `@` for atoms, `^` for cells, `?` for flags, and `*` for nouns.  You should already know what atoms, cells, and nouns are.  (See [lesson 1.2](../hoon-ch1-2) if you need a reminder.)  There are two values for the `?` type: `%.y` for yes, and `%.n` for no.  In other words, `?` is for the [Boolean values](https://en.wikipedia.org/wiki/Boolean_data_type) of Hoon.
 
 You could have picked a different type for the first subexpression of `|=(a=@ 15)` and left off the face.  To illustrate this let's call different versions of the gate with the `(gate arg)` function call syntax:
 
@@ -29,9 +29,6 @@ You could have picked a different type for the first subexpression of `|=(a=@ 15
 15
 
 > (|=(@ 15) 22)
-15
-
-> (|=(* 15) 11)
 15
 
 > (|=(* 15) 22)
@@ -43,7 +40,7 @@ nest-fail [crash message]
 
 The argument for each of these function calls is either `11` or `22`.  These are atoms, `@`, and hence also nouns, `*`.  So when you define the sample to be either `@` or `*` the evaluation works as desired.
 
-In the last function call, however, the gate's sample is defined to be a cell, `^`, and `11` isn't a cell.  This is why, when that gate is called with `11`, the result is a `nest-fail` crash message.  The call didn't work!  For all function calls, Hoon's type system checks whether the type of the argument matches the type of the sample.  If not, the the function will not be evaluated and you get the `nest-fail`.
+In the last function call, however, the gate's sample is defined to be a cell, `^`, and `11` isn't a cell.  This is why, when that gate is called with `11`, the result is a `nest-fail` crash message.  For all function calls, Hoon's type system checks whether the type of the argument matches the type of the sample.  If not, the the function will not be evaluated and you get the `nest-fail`.  (What counts as "nesting" will be covered more carefully in the next few lessons.)
 
 Ordinarily a face is included in the first subexpression after the `|=` rune.  This makes it easier to refer to the sample in the second `|=` subexpression.  Usually you'll want the gate product to depend on the arguments passed.
 
@@ -102,7 +99,6 @@ Save this and try to run it from the dojo again:
 
 ```
 > +even 22
-[stack trace]
 nest-fail
 ```
 
@@ -271,7 +267,7 @@ The reasons for Hoon's having both `?:` and `?.` involve code neatness and clari
 
 #### `?&` logical 'AND'
 
-The `?&` rune is for logical 'AND'.  It takes two or more subexpressions, each of which must evaluate to a flag, `?`; and if all subhoons evaluate to `%.y` then the result of the `?&` hoon is `%.y`.  Otherwise it's `%.n`.  In tall form the expression is terminated with `==`.
+The `?&` rune is for logical 'AND'.  It takes two or more subexpressions, each of which must evaluate to a flag, `?`; and if all of them evaluate to `%.y` then the result of the `?&` expression is `%.y`.  Otherwise it's `%.n`.  In tall form the expression is terminated with `==`.
 
 ```
 > ?&  %.y  %.y  %.y  ==
@@ -634,7 +630,7 @@ The `$( )` syntax is an irregular form of the the `%=` rune.  We can rewrite tha
 
 This version is precisely equivalent to the old one.  The first `%=` subexpression is for a wing.  In the program above, this is just `$`.  The other subexpressions of `%=` indicate the changes to be made upon resolution to the wing.  You can make as many of these changes as desired when using `%=`, so the expression is ended with `==`.
 
-Remember from lessons [1.4](../../hoon-ch1/hoon-ch1-4) and [1.5](../../hoon-ch1/hoon-ch1-5) that wing resolution works in two different ways.  If the wing resolves to a leg, that fragment of the subject is returned.  If the wing resolves to an arm, the arm is evaluated with its parent core as the subject.  In [lesson 1.5](../../hoon-ch1/hoon-ch1-5) you learned that `$` is the special name of the arm of a gate.  (Remember, a gate is a one-armed core with a sample.)  Because we wrote `add.hoon` with `|=` it produces a gate.  The `%=` expression above thus evaluates the `$` arm of the gate, but only after having made changes to the parent core: `a` is incremented, and `b` is decremented.
+Remember from lessons [1.4](../hoon-ch1-4) and [1.5](../hoon-ch1-5) that wing resolution works in two different ways.  If the wing resolves to a leg, that fragment of the subject is returned.  If the wing resolves to an arm, the arm is evaluated with its parent core as the subject.  In [lesson 1.5](../hoon-ch1-5) you learned that `$` is the special name of the arm of a gate.  (Remember, a gate is a one-armed core with a sample.)  Because we wrote `add.hoon` with `|=` it produces a gate.  The `%=` expression above thus evaluates the `$` arm of the gate, but only after having made changes to the parent core: `a` is incremented, and `b` is decremented.
 
 ### Decrement
 
@@ -712,7 +708,7 @@ Let's look at the decrement program again, this time using the regular version o
 
 Strictly speaking, when you use `$( )` or `%=  $` you're asking for a resolution to `$` (with changes indicated in parentheses).  And because `$` is an arm, that means evaluating it with its parent core as the subject.
 
-When we use `|-` in our decrement program, we're defining a _new_ core whose arm name is `$`, in addition to the one created by `|=`.  So the subject ends up having two arms named `$` in it: one for the gate defined by `|=`, and one for the core defined by `|-`.
+When you use `|-` in the decrement program, you're defining a _new_ core whose arm name is `$`, in addition to the one created by `|=`.  So the subject ends up having two arms named `$` in it: one for the gate defined by `|=`, and one for the core defined by `|-`.
 
 When `$( )` or `%=  $` is executed, the subject is searched for the `$` arm.  The `|-` `$` arm is found first because it was defined later than the `|=` arm.  You can skip the first name match for `$` by using `^`, if you like.  That is, if you like, you can recurse all the way to the beginning of the function using `^$( )` or `%=  ^$`.
 

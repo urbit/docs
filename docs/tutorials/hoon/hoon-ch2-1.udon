@@ -8,9 +8,9 @@
 
 # Writing Hoon Programs
 
-So far you've only entered short snippets of Hoon code into the dojo.  Let's look at some substantive programs!
+So far you've only entered short snippets of Hoon code into the dojo.  Let's look at some substantive programs.
 
-There many kinds of Hoon programs: generators, Gall apps, Sail documents, and more.  In this chapter we'll work exclusively with a subset of the first kind: generators.  This narrow focus will allow us to set aside complications that aren't necessary for learning the basics of Hoon.  We won't even talk about the full range of generators supported in Urbit just yet.  Other kinds of programs will be covered in later chapters.
+There many kinds of Hoon programs: generators, Gall apps, Sail documents, and more.  In this chapter we'll work exclusively with a subset of the first kind: generators.  This narrow focus will allow us to set aside complications that aren't necessary for learning the basics of Hoon.  We won't even talk about the full range of generators supported in Urbit just yet.  Other kinds of programs will be covered in other lessons.
 
 ## Setup
 
@@ -25,11 +25,11 @@ To use your favorite text editor to write Hoon programs you'll first need to exp
 
 (Note: we are assuming that you have mounted from your 'home' desk in the dojo.  If you don't know what this means, don't worry -- this only matters if you have changed directories since you've booted your urbit, and you probably haven't.)
 
-Mounting may take a moment.  The `>=` response means the command is successful.  From within Unix (or your favorite file explorer) you should be able to see a `/home` directory in your urbit's pier, and in that directory is `/gen`.  This is where you'll put Hoon source files in order to run them from the dojo.
+Mounting may take a moment.  The `>=` response means the command is successful.  From the command line (or your favorite file explorer) you should be able to see a `/home` directory in your urbit's pier, and in that directory is `/gen`.  This is where you'll put Hoon source files in order to run them from the dojo.
 
 ## List of Numbers
 
-Let's look at a Hoon program that implements a simple function: it takes as input some atom `n` and returns a list of all the atoms from `1` to `n`.  (Remember that an atom is just an unsigned integer.)
+Let's look at a Hoon program that implements a simple function: it takes as input some atom `n` and returns a list of all the atoms from `1` up to `n`.  (Remember that an atom is just an unsigned integer.)
 
 Each line is commented with a number for convenient line reference:
 
@@ -51,11 +51,13 @@ Save this as 'listnum.hoon' in `/home/gen` of your urbit's pier.  To run it ente
 ~[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24]
 ```
 
+Note that `~[item-1 item-2 item-3 ...]` is, by convention, the way the dojo pretty-prints lists.
+
 ### Functional Programming, Runes, and Whitespace
 
 Before going over how the above code works we should point out three things.
 
-First, when Listnum is written in a non-functional language it's typically simpler to generate the output as a side effect of the program, e.g., with a `printf()` command inside a loop.  Hoon is a functional language, so the code above instead defines a function.  Functions don't have side effects.  The `listnum` function takes an atom as its input, and then returns an entire list of atoms as a single piece of data.
+First, when Listnum is written in a non-functional language it's typically simpler to generate the output as a side effect of the program, e.g., with a `printf()` command inside a loop.  Hoon is a functional language, so the code above instead defines a function.  Officially, functions don't have side effects.  The `listnum` function takes an atom as its input, and then returns an entire list of atoms as a single piece of data.
 
 Second, one syntactic feature of Hoon that distinguishes it from other programming languages is its use of _runes_ rather than keywords.  A rune is just a pair of non-alphanumeric ASCII characters.  Below we give a brief explanation of each of the runes used so you can have a rough idea of how the program works.
 
@@ -97,7 +99,7 @@ four items:  [item-1 [item-2 [item-3 [item-4 ~]]]]
            item-4   ~
 ```
 
-So, for example, the list of atoms `~[1 2 3 4]` is structured as the following noun:
+So, for example, the list of atoms `1 2 3 4` is structured as the following noun:
 
 ```
    [1 [2 [3 [4 ~]]]]
@@ -112,6 +114,8 @@ So, for example, the list of atoms `~[1 2 3 4]` is structured as the following n
                / \
               4   ~
 ```
+
+(Note that `~[1 2 3 4]` is equivalent to `[1 2 3 4 ~]`.  The former is how the dojo pretty-prints lists.)
 
 The program is to generate the appropriate list of numbers given an input value, `end`: `~[1 2 3 ...]`.  How?
 

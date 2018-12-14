@@ -77,6 +77,8 @@ Now you can see the intermediate values of the sample of `a` for each modified v
 
 The `=^` rune takes four subexpressions: `=^(a b c d)`.  The first three modify the subject, and the `d` is evaluated against that subject.  `a` is a face name, `b` is a wing, and `c` is an expression that evaluates to a cell.  The subject is modified as follows: (1) `c` is evaluated, producing a cell; (2) the head of that cell is pinned to the subject, `a` becoming the face name for it; and (3) the wing at `b` is replaced with the tail of the cell produced by `c`.
 
+This is particularly useful when you want to return data for the form `[result new-state]`.
+
 For example, let's consider `=^  v1  num  inc.num` from the program above.  `inc.num` produces a cell, the head of which is an atom.  This atom is pinned to the head of the subject and given the face name `v1`.  The tail of the cell produced by `inc.num` is a variant of the `num` core, and becomes the new value of `num`.  The fourth subexpression of this `=^` expression is the rest of the program, i.e.:
 
 ```
@@ -99,7 +101,7 @@ You'll notice that the `plus` arm of the `num` core above evaluates to a gate.
   [(add a b) this(a (add a b))]
 ```
 
-But this gate doesn't have a cast in it, and that's bad practice.  Any time you produce a gate you should include a cast for the desired output type.  The desired output of the `plus` gate is a cell whose head is an atom and whose tail is a core of the same type as `num`.  We know how to cast for the head -- it's just an atom, `@`.  But what about the tail?  How do we cast for a core of the same type as `num`?
+But this gate doesn't have a cast in it, and that's bad practice.  Any time you produce a gate you should include a cast.  The desired output type of the `plus` gate is a cell whose head is an atom and whose tail is a core of the same type as `num`.  We know how to cast for the head -- it's just an atom, `@`.  But what about the tail?  How do we cast for a core of the same type as `num`?
 
 There is no straight-forward way of casting for a core in general, and anyway that isn't what is desired in this case.  We don't want `plus` to produce just any core; we want it to produce a core of the same type as `num`.
 
@@ -151,7 +153,7 @@ Another way to cast for the type of the parent core of an arm is to use `_+>.$`.
 
 But what does it mean?  First, the `_` indicates the irregular form of the `$_` rune.  That is, `_+>.$` evaluates `+>.$` and produces a type from the resulting noun.
 
-What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](../../hoon-ch1/hoon-ch1-4), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
+What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](../hoon-ch1-4), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
 
 Thus, `+>.$` evaluates to `+7` of the gate containing `$`.  For our `plus` arm, the gate in question is the one defined by:
 
@@ -194,13 +196,13 @@ To change the seed, we need to make a copy of `og` with a different sample.  How
 
 ```
 > ~(. og 123)
-<4.ihy {a/@ud <54.nhx 119.wim 31.ohr 1.jmk $143>}>
+<4.rvc {a/@ud <51.zox 93.pqh 74.dbd 1.qct $141>}>
 
 > ~(. og 456)
-<4.ihy {a/@ud <54.nhx 119.wim 31.ohr 1.jmk $143>}>
+<4.rvc {a/@ud <51.zox 93.pqh 74.dbd 1.qct $141>}>
 
 > ~(. og 456.789)
-<4.ihy {a/@ud <54.nhx 119.wim 31.ohr 1.jmk $143>}>
+<4.rvc {a/@ud <51.zox 93.pqh 74.dbd 1.qct $141>}>
 ```
 
 The seeds of these three cores are `123`, `456`, and `456.789`, respectively.  We can use these variants of `og` with `rad` to get different values from the ones we got before:
@@ -228,25 +230,25 @@ Part of the solution is to use the `rads` arm of `og` with the `=^` rune.  The g
 
 ```
 > (rads:og 3)
-[0 <4.wmp {a/@ <54.tyv 119.wim 31.ohr 1.jmk $143>}>]
+[0 <4.rvc {a/@ <51.zox 93.pqh 74.dbd 1.qct $141>}>]
 
 > (rads:og 4)
-[2 <4.wmp {a/@ <54.tyv 119.wim 31.ohr 1.jmk $143>}>]
+[2 <4.rvc {a/@ <51.zox 93.pqh 74.dbd 1.qct $141>}>]
 
 > (rads:og 5)
-[4 <4.wmp {a/@ <54.tyv 119.wim 31.ohr 1.jmk $143>}>]
+[4 <4.rvc {a/@ <51.zox 93.pqh 74.dbd 1.qct $141>}>]
 
 > (rads:og 55)
-[50 <4.wmp {a/@ <54.tyv 119.wim 31.ohr 1.jmk $143>}>]
+[50 <4.rvc {a/@ <51.zox 93.pqh 74.dbd 1.qct $141>}>]
 ```
 
-Let's create a copy of the `og` core in the dojo, giving it the face `rng`.  By first putting it in the subject as a door, we're able to mutate it.  (Strictly speaking, the `++  og` arm in the Hoon standard library doesn't create a door until that arm is evaluated.  If you try to mutate it before putting a copy of it in the subject, you'll run into problems.)  Let's make a copy of the `og` door with its initial seed value as `123`:
+Let's create a copy of the `og` core in the dojo, giving it the face `rng`.  By first putting it in the subject as a door, we're able to mutate it.  (Strictly speaking, there is no `og` door until the `++  og` arm in the Hoon standard library is evaluated.  If you try to mutate it before putting a copy of the core in the subject, you'll run into problems.)  Let's make a copy of the `og` door with its initial seed value as `123`:
 
 ```
 > =rng ~(. og 123)
 
 > rng
-<4.ihy {a/@ud <54.nhx 119.wim 31.ohr 1.jmk $143>}>
+<4.rvc {a/@ud <51.zox 93.pqh 74.dbd 1.qct $141>}>
 
 > +6:rng
 a=123
@@ -268,14 +270,14 @@ For each random number generation, the `rng` core has a different seed number.  
 
 ```
 > eny
-\/0v2sq.hfljl.5shb8.5oin7.u7krj.21gmi.dnd6r.j3ufj.rd06o.522dk.1f2tn.2b8oh.65efn.i1kct.l\/
-  frsk.v0gpq.obh7j.48h0n.9caht.ihmgb.mu5b9
-\/                                                                                     \/
+\/0v3en.c4udf.jg3op.njvu9.sdhp3.oq9vm.j5g93.2njmu.6bk6j.agjme.ef451.7icfo.134\/
+  fv.i4dor.dv6ls.9m7ig.vb8m7.ir3mb.gt7vn.q57l6.sant1
+\/                                                                           \/
 
 > eny
-\/0v2q4.ek1s2.b5l01.6tjqs.esmsl.pi239.jn6gl.ghbem.bpo5g.a3i4i.gcn5l.6kts4.hirc8.fkpvf.3\/
-  ombq.n1eql.0scoe.85gva.59m3k.bff1h.3bdak
-\/                                                                                     \/
+\/0v1hu.1i95m.infcn.a6sc2.47fph.idjoc.2jcd4.2hj3p.ma12d.jtphu.5585b.9t0ru.48q\/
+  61.3qmpl.gvn5b.evhl3.us653.kffap.vef21.kaavg.p5sl3
+\/                                                                           \/
 ```
 
 `eny` is an environment value for [entropy](https://en.wikipedia.org/wiki/Entropy_(computing%29).  Its value changes every time it's evaluated.  We can use `eny` to produce a seed value for `rng` and retry the `=^` expression from above:
@@ -388,7 +390,7 @@ Save this as `deck.hoon` in the `/gen` directory of your urbit's pier and run in
 ]
 ```
 
-(This gate doesn't use the sample for anything, but you still have to give one when you run the generator.  That's because of the kind of generator this is.)
+(This gate doesn't use the sample for anything, but you still have to give one when you run the generator.  That's because of the kind of generator this is, 'naked'.)
 
 We can create our own types for use with this generator.  In the following modified version, we create the types `value` for card value, `suit` for card suit, and `card` for a pair of value and suit.  We put these definitions into a core and put that core into the subject so we can use them from elsewhere in the gate.
 
