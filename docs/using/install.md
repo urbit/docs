@@ -163,8 +163,6 @@ sudo ninja -C ./build/ install
 urbit
 ```
 
-
-
 (tested on Google Cloud Platform
    * Ubuntu Trusty Linux (14.04 LTS) 
    * Ubuntu Xenial Linux (16.04 LTS)
@@ -172,7 +170,24 @@ urbit
    * Debian 9 (Stretch)
 on 6 July 2018)
 
-##### Fedora / Redhat
+
+##### Fedora
+
+```
+# Bash
+
+sudo dnf upgrade
+sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python2 python3 ragel re2c wget
+
+git clone https://github.com/urbit/urbit
+cd urbit
+mkdir build
+./scripts/bootstrap
+./scripts/build
+```
+
+
+##### RHEL / CentOS
 
 ```
 # Bash 
