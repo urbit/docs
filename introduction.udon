@@ -1,11 +1,9 @@
 :-  :~  navhome/'/docs/'
         sort/'2'
-        title/'About'
+        title/'Introduction'
     ==
 ;>
 
-# About
+# Introduction
 
 Learn more about the Urbit project here before delving deeper into the developer documentation.
-
-;list;
