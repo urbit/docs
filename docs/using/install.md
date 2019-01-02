@@ -31,24 +31,19 @@ with us at [urbit.org/stream](https://urbit.org/stream).
 Urbit depends on:
 
 ```
-autoconf
-automake
 C compiler (gcc or clang)
-cmake
 curses
 git
 gmp
 libcurl
 libsigsegv
-libtool
 libuv
 meson
 ninja
 openssl
 pkg-config
 python2
-ragel
-re2c
+zlib
 ```
 
 ### Instructions
@@ -72,7 +67,7 @@ For your host OS platform and relevant package installer, run the respective Bas
 # Bash
 
 brew update
-brew install autoconf automake cmake gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl re2c
+brew install gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -87,7 +82,7 @@ urbit
 # Bash
  
 sudo port selfupdate
-sudo port install autoconf automake cmake gmp libsigsegv meson openssl
+sudo port install gmp libsigsegv meson openssl
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -106,7 +101,7 @@ urbit
 # Bash
 
 brew update
-brew install autoconf automake cmake gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl re2c
+brew install gcc git gmp libsigsegv meson ninja pkg-config python2 openssl
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -126,7 +121,7 @@ If the command `meson -v` returns a version starting with 0.46, try these steps:
 brew uninstall meson
 pip install meson=0.47.0
 rm -rf build
-build/scripts
+./scripts/build
 ```
 
 If that is successful, resume the above instructions after the `build` step.
@@ -139,7 +134,7 @@ If that is successful, resume the above instructions after the `build` step.
 # Bash
 
 sudo apt-get update
-sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make openssl pkg-config python python3 python3-pip ragel re2c zlib1g-dev
+sudo apt-get install g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev make openssl pkg-config python python3 python3-pip zlib1g-dev
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install meson==0.29
 
@@ -225,7 +220,7 @@ on 5 July 2018)
 # Bash or Sh
 
 pkg upgrade
-sudo pkg install autoconf automake cmake curl gcc git gmake gmp libsigsegv libtool python python3 ragel re2c ncurses openssl gmp 
+sudo pkg install curl gcc git gmake gmp libsigsegv python python3 ncurses openssl gmp 
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python3 get-pip.py
 sudo -H pip install --upgrade pip
@@ -250,7 +245,7 @@ on 4 July 2018)
 # Bash
 
 sudo pacman -Syu
-sudo pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c
+sudo pacman -S curl gcc git gmp libsigsegv ncurses ninja openssl python
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python3 get-pip.py
 git clone https://github.com/urbit/urbit
@@ -273,7 +268,7 @@ on 6 July 2018)
 # Bash
 
 sudo yum update
-sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel openssl openssl-devel pkgconfig python2 python3 python3-pip ragel re2c wget git 
+sudo yum install gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel ncurses-devel openssl openssl-devel pkgconfig python2 python3 python3-pip wget git 
 sudo env "PATH=$PATH" pip3 install --upgrade pip
 sudo env "PATH=$PATH" pip3 install meson
 
@@ -285,11 +280,6 @@ wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/
 wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-devel-2.10-10.fc24.x86_64.rpm
 sudo yum localinstall libsigsegv-2.10-10.fc24.x86_64.rpm
 sudo yum localinstall libsigsegv-devel-2.10-10.fc24.x86_64.rpm
-
-# we need re2c
-#
-wget https://rpmfind.net/linux/dag/redhat/el6/en/x86_64/dag/RPMS/re2c-0.13.5-1.el6.rf.x86_64.rpm
-sudo yum localinstall re2c-0.13.5-1.el6.rf.x86_64.rpm
 
 git clone git://github.com/ninja-build/ninja.git
 pushd ninja
