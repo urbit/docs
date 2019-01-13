@@ -10,45 +10,45 @@ This guide is broken into five parts:
 + [Acquiring an Urbit Identity](#acquire)
 + [Using Bridge](#bridge)
 + [Installing Arvo](#arvo)
-+ [Booting Your Ship](#setup)
++ [Booting Your Ship](#boot)
 + [Basic Operations](#operation)
 
-_If you just want to install the Urbit OS, Arvo, and don’t need to be on the
+_If you just want to install the Urbit OS, Arvo, and don't need to be on the
 Urbit network, you can skip to [Installing Arvo](#arvo)._
 
-
 ;=
-  ;h3
+  ;h2
     ;div(id "acquire"): Acquiring an Urbit Identity
   ==
 ==
 
-Urbit’s identity layer, called Azimuth, is a suite of contracts on the Ethereum
+Urbit's identity layer, called Azimuth, is a suite of contracts on the Ethereum
 blockchain. An Azimuth address, called a *point*, functions as an identity and
 a network address for Arvo, the Urbit OS. An instance of Arvo is called a
 *ship*. A ship can't use the Arvo network until it's combined with a point.
 
-Throughout this guide, we’ll refer to "Urbit identities" and "points"
+Throughout this guide, we'll refer to \"Urbit identities\" and \"points\"
 interchangeably.
 
 Points are generally not freely available, so you will need to either
 purchase one or get one from a friend. This guide assumes you have found a way
 to acquire a point.
 
-To get Urbit address space, you’ll need two things: an Ethereum address and a
+To get Urbit address space, you'll need two things: an Ethereum address and a
 person willing to send you the Urbit address space.
 
-You’ll probably want to start with a planet. Those are cheap identities for
+You'll probably want to start with a planet. Those are cheap identities for
 everyday use. Find someone who is willing to part with a point: a friend or a
-stranger selling address space via smart contract. Once they’ve sent the address
+stranger selling address space via smart contract. Once they've sent the address
 space, you can access it using our Bridge software, or any other interface for
-the Ethereum blockchain.
+the Ethereum blockchain. Make sure they send you the name of the point, which
+looks something like `~lodleb-ritrul`.
 
 If you bought address space from Tlon, then you should have have received a .zip
 file that contains an Ethereum address and cryptographic secrets in
 the form of a PDF.
 
-Your ownership PDF contains two secrets that must be kept safe.""
+Your ownership PDF contains two secrets that must be kept safe.
 
 - *Master Ticket*: This is a master key that allows you to manage every aspect of
   your address.
@@ -58,36 +58,82 @@ Your ownership PDF contains two secrets that must be kept safe.""
   client.
 
 ;=
-  ;h3
+  ;h2
     ;div(id "bridge"): Using Bridge
   ==
 ==
 
 Bridge is client that we built for accessing and managing your Urbit identities.
 Like Wallet Generator, Bridge comes in the form of an offline HTML application
-that can be run in Firefox on all platforms, and also in Chrome if you’re using
+that can be run in Firefox on all platforms, and also in Chrome if you're using
 a Mac.
 
-Importantly, Bridge also automates the process of generating the key-file that
+Importantly, Bridge also automates the process of generating the keyfile that
 you will need a single time to boot your ship on the Arvo network. Once a ship
-is booted, it isn’t booted again. It stays booted forever.
+is booted, it isn't booted again. It stays booted forever.
 
-Download bridge [here](https://github.com/urbit/bridge/releases). It runs in
-your browser contains instructions to get the key that you need to boot your
-urbit. We recommend using the "BIP39 Mnemonic" method to access your wallet.
+Download bridge [here](https://github.com/urbit/bridge/releases) and follow
+the instructions below.
+
+#### Step 1: Welcome
+
+Click `Open a Wallet`.
+
+#### Step 2: Select a Network
+
+On the dropdown menu, make sure that `Main Network` is selected. Then click
+`Continue ->`.
+
+#### Step 3: Open a Wallet
+
+On this dropdown menu, choose how you'd like to access your Ethereum wallet.
+If you aren't using Hardware wallets (a Ledger or a Trezor), you'll want to use
+your Ethereum wallet's BIP39 Mnemonic.
+
+If you received a point from Tlon and received paper wallets in the form of
+PDFs, choose `Urbit Master Ticket`.
+
+Select the appropriate option and click `Continue ->`.
+
+#### Step 4: Accept Your Transfer
+
+If you were sent a point, then you should see a graphic under
+`Incoming Transfers`. Click the `Details ->` link under that graphic.
+
+Now you'll be on the management page of your point. The transfer isn't completed
+yet, so click `Accept incoming transfer`. Then check both boxes and and click
+their associated `Sign Transaction` and `Send Transaction` buttons.
+
+#### Step 5: Set Your Networking Keys
+
+You'll be returned to your point screen. Notice that that links and buttons
+are now clickable. You know own this point!
+
+Click the link that says `Set Urbit networking keys`. Choose two different,
+64-character long strings of hexademical, check the box, and, like before, check
+both boxes and press both buttons.
+
+#### Step 6: Generate Your Keyfile
+
+Return to your point by clicking its name at the navigation bar on the top of
+the page.
+
+Click the `Generate Urbit Keyfile` button and you'll be taken to a page with a
+field titled `Network key`. That field should be filled in already. Click
+`Generate ->`, which will download a the keyfile onto your machine.
 
 
 ;=
-  ;h3
+  ;h2
     ;div(id "arvo"): Installing Arvo
   ==
 ==
 
-Now you’re ready to install the Arvo software. You’re almost there!
+Now you're ready to install the Arvo software. You're almost there!
 
 Arvo can only run on a Unix-like operating system -- Ubuntu,
-Fedora, macOS, and FreeBSD all work well. If you’re using Windows, you’ll need
-to get one of the aforementioned systems. Don’t worry: most of them are free.
+Fedora, macOS, and FreeBSD all work well. If you're using Windows, you'll need
+to get one of the aforementioned systems. Don't worry: most of them are free.
 
 We have different installation instructions for different platforms. To install
 Arvo, run the Bash commands that are listed for your operating system.
@@ -100,7 +146,7 @@ with the line below:
 Urbit: a personal server operating function
 ```
 
-##### MacOS
+#### MacOS
 
 We recommend using the Homebrew package manager to install Arvo on MacOS.
 
@@ -117,7 +163,7 @@ sudo ninja -C ./build/ meson-install
 urbit
 ```
 
-##### Ubuntu or Debian
+#### Ubuntu or Debian
 
 ```
 # Bash
@@ -147,7 +193,7 @@ sudo ninja -C ./build/ install
 urbit
 ```
 
-##### Fedora
+#### Fedora
 
 ```
 # Bash
@@ -187,7 +233,7 @@ sudo /usr/local/bin/ninja -C ./build/ install
 urbit
 ```
 
-##### Arch Linux
+#### Arch Linux
 
 ```
 # Bash
@@ -213,36 +259,38 @@ urbit -F zod -A /path/to/arvo -s -c zod -S
 
 If you want to get on the Arvo network with your point, then continue to the
 next section.
-
+
+
 ;=
-  ;h3
+  ;h2
     ;div(id "boot"): Booting Your Urbit
   ==
 ==
 
-Now the rubber meets the road. You’ll be booting your ship with the key-file
+
+Now the rubber meets the road. You'll be booting your ship with the keyfile
 that you downloaded from bridge.
 
-##### Step 1: Find Your Point's Name
+#### Step 1: Find Your Point's Name
 
 This will look something like `~lodleb-ritrul`. You can see the name of your
 point(s) when you log into your wallet using the Bridge client.
 
 ;img@"media.urbit.org/site/bridge-0.png"(width "100%");
 
-##### Step 2: Find the path to your key-file
+#### Step 2: Find the path to your keyfile
 
-Find the absolute path to the key-file that you downloaded from Bridge. Copy it.
+Find the absolute path to the keyfile that you downloaded from Bridge. Copy it.
 
-##### Step 3: Run the boot command
+#### Step 3: Run the boot command
 
 Type `cd` in your terminal to return to your home directory. If you want to
-store your ship somewhere besides your home directory, change the terminal’s
+store your ship somewhere besides your home directory, change the terminal's
 working directory to the desired directory.
 
 Run the command below, except with `~sample-planet` replaced by the name of your
 Urbit identity, and `path/to/my-planet.key` replaced with the path to your
-key-file:
+keyfile:
 
 ```
 urbit -w ~sample-planet -k path/to/my-planet.key
@@ -252,20 +300,20 @@ This will create a directory called `sample-planet/` and begin building your
 ship. It may take a few minutes.
 
 When your ship is finished booting, you will see the `~sample-planet:dojo>`
-prompt. At that point, you should permanently erase your key-file from your
+prompt. At that point, you should permanently erase your keyfile from your
 machine.
 
 ;=
-  ;h3
+  ;h2
     ;div(id "operation"): Basic Operations
   ==
 ==
 
 Welcome to your urbit! There's a few things you should do to become oriented.
 
-##### Dojo
+#### Dojo
 
-Let’s try out the Dojo, the Arvo command line and Hoon REPL:
+Let's try out the Dojo, the Arvo command line and Hoon REPL:
 
 ```
 ~sample-planet:dojo> (add 2 2)
@@ -280,7 +328,7 @@ Should produce:
 
 Good.
 
-##### Mounting
+#### Mounting
 
 Clay, the Arvo filesystem, isn't mounted to Unix by default. Switch to the Dojo
 prompt and run:
@@ -301,11 +349,11 @@ which indicates that the command was processed.
 Unix. Changes to these files are automatically synced into your ship.
 
 
-##### Talk
+#### Talk
 
 Use `ctrl-x` to toggle between the Dojo and the Talk prompts.
 
-While on the Talk prompt, let’s join the main Urbit chat channel, `/urbit-meta`:
+While on the Talk prompt, let's join the main Urbit chat channel, `/urbit-meta`:
 
 ```
 ~sample-planet:talk[] ;join /urbit-meta
@@ -315,7 +363,7 @@ Talk is stateful, so your ship will download a backlog. `/urbit-meta` is the
 place to ask questions, get help, talk about anything Urbit-related, and meet
 everyone on here.
 
-##### Shutting Down and Restarting
+#### Shutting Down and Restarting
 
 You can turn your ship off with `ctrl-d` from the Talk or Dojo prompts.
 
@@ -324,13 +372,13 @@ To restart your ship, simply pass the name of your pier:
 ```
 $ urbit some-planet
 ```
-
-##### Landscape
+
+#### Landscape
 
 Your ship is also accessible through its own web interface. Through the web
-interface you’ll have access to our chat and message boards, the two components
-of our "Landscape" feature. This is a user-friendly way to chat with Talk on the
-Arvo network and access and materials you’ve published on your ship. If You're
+interface you'll have access to our chat and message boards, the two components
+of our _Landscape_ feature. This is a user-friendly way to chat with Talk on the
+Arvo network and access and materials you've published on your ship. If You're
 running Arvo locally on your own machine, try opening `http://localhost/` in
 your browser.
 
