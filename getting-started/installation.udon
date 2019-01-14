@@ -62,6 +62,10 @@ Importantly, Bridge also allows you to generate a keyfile that
 you will need to boot your ship on the Arvo network for the first time. Once a ship
 with a keyfile, you can restart it later without the keyfile.
 
+*Note* Bridge allows you to make _writes_ to the blockchain, but we ask you to confirm
+anything that will incur a transaction cost. If you plan to do anything heavy-duty, make
+sure your Ethereum address has some pocket ETH.
+
 Download bridge [here](https://github.com/urbit/bridge/releases) and follow
 the instructions below.
 
@@ -83,7 +87,7 @@ want to use your Ethereum wallet's BIP39 Mnemonic.
 If you used Wallet Generator to generate an HD wallet, you have a few choices:
 you can choose `Urbit Master Ticket,` which is high-value, but allows you unfettered
 permissions to update your point. The mnemonic associated with your management
-seed is also quite useful to perform everyday operations (such as boot your ship!).
+seed is also useful to perform everyday operations (such as boot your ship!).
 
 Select the appropriate option and click `Continue ->`.
 
@@ -276,7 +280,7 @@ that you downloaded from Bridge.
 This will look something like `~lodleb-ritrul`. You can see the name of your
 point(s) when you log into your wallet using the Bridge client.
 
-;img@"media.urbit.org/site/bridge-0.png"(width "100%");
+;img@"http://media.urbit.org/site/bridge-0.png"(width "100%");
 
 #### Step 2: Find the path to your keyfile
 
