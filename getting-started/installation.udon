@@ -14,7 +14,7 @@ This guide is broken into five parts:
 + [Basic Operations](#operation)
 
 _If you just want to install the Urbit OS, Arvo, and don't need to be on the
-Urbit network, you can skip to [Installing Arvo](#arvo)._
+network, you can skip to [Installing Arvo](#arvo)._
 
 ;=
   ;h2
@@ -24,8 +24,9 @@ Urbit network, you can skip to [Installing Arvo](#arvo)._
 
 Urbit's identity layer, called Azimuth, is a suite of contracts on the Ethereum
 blockchain. An Azimuth address, called a *point*, functions as an identity and
-a network address for Arvo, the Urbit OS. An instance of Arvo is called a
-*ship*. A ship can't use the Arvo network until it's combined with a point.
+a network address for Arvo, the Urbit operating system. An instance of Arvo is
+called a *ship*. A ship can't use the Arvo network until it's combined with a
+point.
 
 Throughout this guide, we'll refer to \"Urbit identities\" and \"points\"
 interchangeably.
@@ -34,28 +35,26 @@ Points are generally not freely available, so you will need to either
 purchase one or get one from a friend. This guide assumes you have found a way
 to acquire a point.
 
-To get Urbit address space, you'll need two things: an Ethereum address and a
-person willing to send you the Urbit address space.
+To get an Urbit identity, you'll need two things: an Ethereum address and a
+person willing to send you the identity.
 
 You'll probably want to start with a planet. Those are cheap identities for
-everyday use. Find someone who is willing to part with a point: a friend or a
-stranger selling address space via smart contract. Once they've sent the address
-space, you can access it using our Bridge software, or any other interface for
-the Ethereum blockchain. Make sure they send you the name of the point, which
-looks something like `~lodleb-ritrul`.
+everyday use. Find someone who is willing to part with a point: a friend, or a
+stranger selling a point via smart contract. Once they've sent the point, you
+can access it using our Bridge software.
 
 If you bought address space from Tlon, then you should have have received a .zip
-file that contains an Ethereum address and cryptographic secrets in
-the form of a PDF.
+file that contains an Ethereum address and cryptographic secrets on a PDF. Your
+ownership PDF contains two secrets that must be kept safe:
 
-Your ownership PDF contains two secrets that must be kept safe.
-
-- *Master Ticket*: This is a master key that allows you to manage every aspect of
-  your address.
+- *Master Ticket*: This is a master key that allows you to manage every aspect
+  of your address.
 
 - *Ownership Seed BIP39 Mnemonic*: The master ticket encoded as a BIP39 mnemonic
-  for compatibility with most Ethereum wallet software, including our own *Bridge*
-  client.
+  for compatibility with most Ethereum wallet software, including our own
+  *Bridge* client.
+
+Once you
 
 ;=
   ;h2
@@ -63,14 +62,13 @@ Your ownership PDF contains two secrets that must be kept safe.
   ==
 ==
 
-Bridge is client that we built for accessing and managing your Urbit identities.
-Like Wallet Generator, Bridge comes in the form of an offline HTML application
-that can be run in Firefox on all platforms, and also in Chrome if you're using
-a Mac.
+Bridge is a client that we built for accessing and managing your Urbit
+identities. Bridge comes in the form of an offline HTML application that can be
+run in Firefox, Safari, or Chrome.
 
 Importantly, Bridge also automates the process of generating the keyfile that
 you will need a single time to boot your ship on the Arvo network. Once a ship
-is booted, it isn't booted again. It stays booted forever.
+is booted, it stays booted forever.
 
 Download bridge [here](https://github.com/urbit/bridge/releases) and follow
 the instructions below.
@@ -276,7 +274,7 @@ that you downloaded from bridge.
 This will look something like `~lodleb-ritrul`. You can see the name of your
 point(s) when you log into your wallet using the Bridge client.
 
-;img@"media.urbit.org/site/bridge-0.png"(width "100%");
+;img@"http://media.urbit.org/site/bridge-0.png"(width "100%");
 
 #### Step 2: Find the path to your keyfile
 
@@ -377,27 +375,25 @@ $ urbit some-planet
 
 Your ship is also accessible through its own web interface. Through the web
 interface you'll have access to our chat and message boards, the two components
-of our _Landscape_ feature. This is a user-friendly way to chat with Talk on the
+of our _Landscape_ feature. This is a user-friendly way to use Talk on the
 Arvo network and access and materials you've published on your ship. If You're
 running Arvo locally on your own machine, try opening `http://localhost/` in
 your browser.
 
-Or if you're running your ship on a cloud instance with a static IP address
-(which we recommend!), something like 212.131.240.20, assuming you've opened up
-the HTTP port that Arvo uses -- the default is port 80. So
-`http://212.131.240.20:80/~~/` would go into your browser's URL bar.
-
-This way, if you keep your ship running securely in the cloud (usually in a
-screen or tmux session), you can always access your ships's web interface in any
-browser on any device, so long as you have your password on hand.
+Or, if you're running your ship on a cloud instance with a static IP address
+(which we recommend!), something like 212.131.240.20,
+`http://212.131.240.20:80/~~/` would go into your browser's URL bar. This way,
+if you keep your ship running securely in the cloud (usually in a screen or tmux
+session), you can always access your ships's web interface in any browser on
+any device.
 
 The `/~~/` in the URL will redirect you to a login page, which was generated by
-Tree, the basic Arvo web interface. The page will tell you to run the +code
-generator (an Arvo shell script) in your Dojo to get your password. Copy and
-paste that into your password input box and hit Enter. After loading, you'll
+Tree, the basic Arvo web interface. The page will tell you to run the `+code`
+generator (an Arvo shell-script) in your Dojo to get your password. Copy and
+paste that into the password-input field and hit Enter. After loading, you'll
 find yourself redirected to your home page, authenticated, where you can then
 use the navigation bar at the top of the page to visit your Talk web interface
 and static files.
 
 When you use the web interface, your urbit is automatically subscribed to
-`/urbit-meta` and Fora, our message-board system.
+`/urbit-meta` and our message-board system, Posts.
