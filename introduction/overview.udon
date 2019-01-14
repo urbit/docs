@@ -2,6 +2,7 @@
         navuptwo/'true'
         next/'true'
         sort/'1'
+        preview/'What components of the Urbit system are and how they work.'
         title/'Technical overview'
     ==
 ;>

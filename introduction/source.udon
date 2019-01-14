@@ -2,6 +2,7 @@
         navuptwo/'true'
         next/'true'
         sort/'2'
+        preview/'An explanation of Urbit\'s constituent GitHub repos.'
         title/'Source code'
     ==
 ;>
