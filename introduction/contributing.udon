@@ -7,14 +7,14 @@
 
 # Contributing
 
-It's always a good day for pull requests! We gladly accept submissions
-for improving our [code](https://github.com/urbit/urbit/) and
-[documentation](https://github.com/urbit/docs/) alike.
+We accept submissions for improving our [code](https://github.com/urbit/urbit/) and [documentation](https://github.com/urbit/docs/) alike.
+
+If you're interested in contributing, but don't know where to start, feel free to [send us an email](mailto:support@urbit.org).
 
 ## Code guidelines
 
 Our official guide to contributing can be found
 [here](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md),
-which is most useful for large and low-level changes.  For a good example of
+which is most useful for large and low-level changes. For a good example of
 preferred Hoon coding style, see
 [ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).

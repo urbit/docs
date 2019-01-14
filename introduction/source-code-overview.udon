@@ -2,11 +2,11 @@
         navuptwo/'true'
         next/'true'
         sort/'2'
-        title/'Source code'
+        title/'Source Code Overview'
     ==
 ;>
 
-# Source code overview
+# Source Code Overview
 
 We host all our source code on GitHub at [github.com/urbit](https://github.com/urbit).
 
@@ -56,34 +56,18 @@ important ones here:
   ==
   ;li
     ;h1
-      ;a/"https://github.com/urbit/constitution"
-        ;code: urbit/constitution
+      ;a/"https://github.com/urbit/azimuth"
+        ;code: urbit/azimuth
       ==
     ==
-    We're [bootstrapping Urbit from Ethereum](https://urbit.org/blog/2017.9-eth/). This means formally defining the Urbit governance model and public-key infrastructure formally in a simple smart contract deployed on the Ethereum blockchain. If you're into Solidity, or just want to see how this works, check out this repo. Currently getting audited.
+    Azimuth is a general-purpose PKI that Urbit uses for network identities.
   ==
   ;li
     ;h1
-      ;a/"https://github.com/urbit/etherwallet"
-        ;code: urbit/etherwallet
+      ;a/"https://github.com/urbit/bridge"
+        ;code: urbit/bridge
       ==
     ==
-    Urbit will soon need a secure, robust frontend interface for buying and selling Urbit address space and interacting directly with the Urbit constitution smart contract. We decided to fork MyEtherWallet, which already has strong security and support for things like multisig and hardware wallet, and modify it to support Urbit. Dive in!
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/tree"
-        ;code: urbit/tree
-      ==
-    ==
-    Tree is the main Urbit web interface written as a React/Flux app in CoffeeScript. We're working on porting this to ES6 and simplifying the architecture generally. If you're into frontend frameworks and web apps, reach out to us and we'll help you get started.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/talk"
-        ;code:  urbit/talk
-      ==
-    ==
-    The main web interface for Urbit's distributed chat and notifications protocol. Currently, like Tree, a simple React/Flux app written in CoffeeScript. With lots of changes happening to the Talk Hoon backend app in the coming releases, our frontend Talk interface will need a lot of development and design work. We've also started the process of porting this to ES6. Ask us how you can start helping out!
+    Bridge is an offline web application for interacting with Ecliptic, the interface to Azimuth.
   ==
 ==
