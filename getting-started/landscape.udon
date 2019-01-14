@@ -5,5 +5,19 @@
 
 # Landscape
 
-[PLACEHOLDER]
+Your ship is also accessible through its own web interface. Through the web
+interface you'll have access to our chat and message boards, the two components
+of _Landscape_. This is a user-friendly way to chat with Arvo network and access
+and materials you've published on your ship. If you're running Arvo locally on
+your own machine, try opening `http://localhost/` in your browser.
 
+The `/~~/` in the URL will redirect you to a login page. The page will tell
+you to run the +code generator (an Arvo shell script) in your Dojo to get your
+password. Copy and paste that into your password input box and hit Enter.
+After loading, you'll find yourself redirected to your home page, authenticated,
+where you can then use the navigation bar at the top of the page to use the Landscape
+interface.
+
+We're using Landscape to bootstrap a city dedicated to learning Hoon and
+contributing to Urbit. If you'd like to know more about joining this city, visit
+this [signup page](/landscape).
