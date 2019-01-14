@@ -5,5 +5,5 @@
 
 # Using Azimuth
 
-[PLACEHOLDER]
+The primary way to interact with Azimuth, our identity platform, is through our application [Bridge](https://github.com/urbit/bridge) and the node libraries that it depends on, azimuth-js and keygen-js. Take a look at the source and play around or see our [introduction to Bridge](/getting-started/installation).
 
