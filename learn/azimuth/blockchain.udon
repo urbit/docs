@@ -22,7 +22,7 @@ who to treat as a trusted peer.
 At the user level, having one identity for your digital life means that all the
 services that you trust recognize you. You no longer need to worry about
 managing dozens of different logins. When you're using Arvo, everything you do
-is \"verified" in the sense that it links back to your point.
+is "verified" in the sense that it links back to your point.
 
 But wait! We need some way to secure these identities. To that end, we have
 built a public-key infrastructure (PKI) called _Azimuth_ on the Ethereum
