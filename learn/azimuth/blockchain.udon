@@ -1,5 +1,5 @@
 :-  :~  title/'Why Urbit Uses a Blockchain'
-        sort/'1'/
+        sort/'1'
     ==
 ;>
 
@@ -14,8 +14,7 @@ Each point has associated authentication and encryption keys for networking.
 Think of a point as an IP address, a domain name, and a PGP key-pair.
 
 There are a limited number of points and, as you might expect, scarcity gives
-points value. This means that bad actors -- spammers, scammers, and
-malware-spreaders -- can be made economically unviable. Points being
+points value. This means that bad actors – spammers, scammers, and malware-spreaders – can be made economically unviable. Points being
 immutable allows for reputation systems to be built on top,
 keeping the network friendly and giving users information to help them decide
 who to treat as a trusted peer.
