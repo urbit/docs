@@ -1,11 +1,10 @@
 :-  :~  navhome/'/docs/'
-        next/'true'
-        sort/'1'
+        sort/'2'
         title/'Using'
     ==
 ;>
 
-# Using
+# Getting Started
 
 These short guides will get you installed, setup, and will walk you through the
 basic features of Urbit.
