@@ -36,5 +36,10 @@ If you're interested in contributing to the Urbit project, building applications
 
 If you're a developer looking for Arvo reference documentation, this section is for you.
 
+<<<<<<< Updated upstream
 - Confused about all the new words? Check out the [Glossary](/docs/reference/glossary).
 - Don't miss the helpful Hoon rune [Cheat Sheet](/docs/reference/cheat-sheet).
+=======
+- Confused about all the new words? Check out the [Glossary](docs/reference/glossary).
+- Don't miss the helpful Hoon rune [Cheat Sheet](docs/reference/cheat-sheet).
+>>>>>>> Stashed changes
