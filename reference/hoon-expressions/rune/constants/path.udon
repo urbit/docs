@@ -1,0 +1,35 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'4'
+        title/'Paths'
+    ==
+;>
+
+# Paths
+
+`[%path p=(list (each @ta hoon))]`: path with interpolation.
+
+### Produces
+
+A null-terminated list of the items in `p`, which are either constant
+`@ta` atoms (`knots`), or expressions producing a `knot`.
+
+### Syntax
+
+Irregular: `/this/is/a/path`.
+
+### Examples
+
+```
+> `path`/this/is/a/path
+/this/is/a/path
+
+> `path`/this/is/[`@ta`(cat 3 %a- %test)]/path
+/this/is/a-test/path
+
+> `path`/this/is/(scot %tas 'test')/path
+/this/is/test/path
+
+> /
+~
+```

@@ -1,0 +1,37 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'5'
+        title/'$% "buscen"'
+    ==
+;>
+
+# `$% "buscen"`
+
+`[%bscn p=(list spec)]`: structure which recognizes a union tagged by head atom.
+
+## Defaults to
+
+The default of the last item `i` in `p`. Crashes if `p` is empty.
+
+## Syntax
+
+Regular form: *2-running*.
+
+## Discussion
+
+A `$%` is a tagged union, a common data model.
+
+Make sure the first item in your `$%` terminates, or the default will
+be an infinite loop!
+
+## Examples
+
+```
+~zod:dojo> =foo $%([%foo p=@ud q=@ud] [%baz p=@ud])
+
+~zod:dojo> (foo [%baz 37])
+[%baz p=37]
+
+~zod:dojo> $:foo
+[%foo p=0 q=0]~
+```

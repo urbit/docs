@@ -1,0 +1,37 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'=+ "tislus"'
+    ==
+;>
+
+# `=+ "tislus"`
+
+`[%tsls p=hoon q=hoon]`: combine a new noun with the subject.
+
+## Expands to
+
+```
+=>([p .] q)
+```
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Discussion
+
+The subject of the `=+` expression, call it `a`, becomes the cell `[p a]` for the evaluation of `q`.  That is, `=+` 'pins a value', `p`, to the head of the subject.
+
+Loosely speaking, `=+` is the simplest way of "declaring a variable."
+
+## Examples
+
+```
+~zod:dojo> =foo |=  a=@
+                =+  b=1
+                =+  c=2
+                :(add a b c)
+~zod:dojo> (foo 5)
+8
+```

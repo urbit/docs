@@ -1,0 +1,62 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'|- "barhep"'
+    ==
+;>
+
+# `|- "barhep"`
+
+Produce a trap (a core with one arm `$`) and evaluate it.
+
+## Syntax
+
+Regular:
+
+```
+|-  a=hoon
+```
+
+AST:
+
+```
+[%brhp p=hoon]
+```
+
+## Semantics
+
+A `|-` expression produces a core with one arm named `$` and immediately evaluates `$`.  `a` is a Hoon expression that determines what `$` evaluates to.
+
+## Expands to
+
+```
+=<($ |.(a=hoon))
+```
+
+## Discussion
+
+The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](../dot), a core with one arm named `$`, we can recurse back into it with `$()`.
+
+> `$(...)` expands to `%=($ ...)` (["centis"](../../cen/tis)).
+
+## Examples
+
+A trivial computation doesn't recurse:
+
+```
+~zod:dojo> |-(42)
+42
+```
+
+The classic loop is a decrement:
+
+```
+~zod:dojo> =foo  =/  a  42
+                 =/  b  0
+                 |-
+                 ?:  =(a +(b))
+                   b
+                 $(b +(b))
+~zod:dojo> foo
+41
+```

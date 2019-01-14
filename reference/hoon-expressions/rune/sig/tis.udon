@@ -1,0 +1,38 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'10'
+        title/'~= "sigtis"'
+    ==
+;>
+
+# `~= "sigtis"`
+
+`[%sgts p=hoon q=hoon]`: detect duplicate.
+
+## Expands to
+
+`q`.
+
+## Convention
+
+If `p` equals `q`, produce `p` instead of `q`.
+
+## Discussion
+
+Duplicate nouns are especially bad news in Hoon, because comparing them
+takes O(n) time.  Use `~=` to avoid this inefficiency.
+
+## Examples
+
+This code traverses a tree and replaces all instances of `32` with
+`320`:
+
+```
+~zod:dojo> =foo |=  a=(tree)
+                ?~(a ~ ~=(a [?:(=(n.a 32) 320 n.a) $(a l.a) $(a r.a)]))
+
+~zod:dojo> (foo 32 ~ ~)
+[320 ~ ~]
+```
+
+Without `~=`, it would build a copy of a completely unchanged tree.  Sad!

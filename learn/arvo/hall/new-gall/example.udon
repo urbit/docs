@@ -1,0 +1,97 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'2'
+        title/'A new-Gall example app'
+    ==
+;>
+
+# A new-Gall example app
+
+```
+::  counter app
+::  new gall example, may or may not compile.
+::
+|%
+++  query                                               :>  valid queries
+  $%  {$number $~}                                      :<  current number
+      {$mul-of val/@ud}                                 :<  is num multiple of?
+  ==                                                    ::
+++  prize                                               :>  query results
+  $%  {$number num/@ud}                                 :<  /number
+      {$mul-of mul/?}                                   :<  /mul-of
+  ==                                                    ::
+++  rumor                                               :>  query result changes
+  $%  {$number delta}                                   :<  /number
+      {$mul-of mul/?}  ::TODO  or just flip?            :<  /mul-of
+  ==                                                    ::
+::  the above would ordinarily be placed in sur/,       ::
+::  since other apps might want to use it.              ::
+++  brain  {num/@ud $~}                                 :<  application state
+++  delta                                               :>  state change
+  $%  {$increment $~}                                   :<  +1
+      {$decrement $~}                                   :<  -1
+  ==                                                    ::
+--
+::
+|_  {bol/bowl brain}
+::
+++  leak                                                :>  read permission
+  |=  {who/ship qer/query}
+  ^-  ?
+  &  ::  everyone's allowed
+::
+++  peek                                                :>  synchronous read
+  |=  qer/query
+  ^-  (unit (unit prize))
+  ?-  -.qer
+    $number   ``[%number num]
+    $mul-of   ?:  =(0 mul.qer)  [~ ~]
+              ``[%mul-of =(0 (mod num mul.qer))]
+  ==
+::
+++  poke-loob                                           :>  regular old poke
+  |=  inc/?
+  ^-  (list delta)
+  :_  ~
+  ?:  inc  [%increment ~]
+  [%decrement ~]
+::
+++  bake                                                :>  apply delta to state
+  |=  del/delta
+  ^-  (quip opera +>)
+  :-  ~
+  ?-  -.del
+    $increment  +>(num +(num))
+    $decrement  +>(num (dec num))
+  ==
+::
+++  feel                                                :>  delta to rumor
+  |=  {qer/query del/delta}
+  ^-  (unit rumor)
+  ?-  -.qer
+      $number
+    `[%number del]
+    ::
+      $mul-of
+    ::  since we only want to send a rumor if result
+    ::  changed, we need to deduce the old state from
+    ::  the current state and the delta. depends on the
+    ::  fact that state changes before ++feel. funky!
+    ::  we could, of course, store mul/? in state, and
+    ::  make a delta for it, but should we need to?
+    =/  old
+      .=  0
+      %+  mod
+        ?-  -.del
+          $increment  (dec num)
+          $decrement  +(num)
+        ==
+      mul.qer
+    =/  new  =(0 (mod num mul.qer))
+    ?:  =(old new)  ~
+    `[%mul-of new]
+  ==
+::
+::  not pictured: ++path-to-query
+--
+```

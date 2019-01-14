@@ -1,0 +1,58 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/';* "mictar"'
+    ==
+;>
+
+# `;* "mictar"`
+
+make a list of XML nodes from complex Hoon expression (Sail)
+
+## Produces
+
+A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single XML node.
+
+## Syntax
+
+*1-fixed*
+
+```
+;*  p=hoon
+```
+
+`p` is a Hoon expression that produces a `marl`.
+
+## Discussion
+
+`;*` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](../../../../tutorials/sail).
+
+If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.  Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
+
+(See also [;=](../tis).)
+
+## Examples
+
+```
+> ;*  ?:  (gth 3 2)
+        ;=  ;p: This is node 1 of 'yes'.
+            ;p: This is node 2 of 'yes'.
+        ==
+      ;=  ;p: This is node 1 of 'no'.
+          ;p: This is node 2 of 'no'.
+      ==
+[ [[%p ~] [[%$ [%$ "This is node 1 of 'yes'."] ~] ~] ~]
+  [[[%p ~] [[%$ [%$ "This is node 2 of 'yes'."] ~] ~] ~] ~]
+]
+
+> ;*  ?:  (gth 2 3)
+          ;=  ;p: This is node 1 of 'yes'.
+              ;p: This is node 2 of 'yes'.
+          ==
+        ;=  ;p: This is node 1 of 'no'.
+            ;p: This is node 2 of 'no'.
+        ==
+[ [[%p ~] [[%$ [%$ "This is node 1 of 'no'."] ~] ~] ~]
+  [[[%p ~] [[%$ [%$ "This is node 2 of 'no'."] ~] ~] ~] ~]
+]
+```

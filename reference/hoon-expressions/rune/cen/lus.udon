@@ -1,0 +1,43 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/'%+ "cenlus"'
+    ==
+;>
+
+# `%+ "cenlus"`
+
+Call gate with a cell sample.
+
+## Syntax
+
+Regular:
+
+```
+%+  a=hoon  b=hoon  c=hoon
+```
+
+AST:
+
+```
+[%cnls p=hoon q=hoon r=hoon]
+```
+
+## Semantics
+
+A `%+` expression is for calling a gate with a cell sample.  `a` is the gate to be called, `b` is for the head of the sample, and `c` is for the sample tail.
+
+## Expands to
+
+```
+%-(a=hoon [b=hoon c=hoon])
+```
+
+## Examples
+
+```
+~zod:dojo> =add-triple |=([a=@ b=@ c=@] :(add a b c))
+
+~zod:dojo> %+(add-triple 1 [2 3])
+6
+```

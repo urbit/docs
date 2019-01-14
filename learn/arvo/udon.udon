@@ -1,0 +1,626 @@
+:-  :~  navhome/'/docs/'
+        sort/'5'
+        next/'true'
+        title/'Udon'
+     ==
+;>
+
+# Udon: A Guide
+
+### What is Udon?
+
+Udon is a way to write content for the web. It's a minimalist
+markup language for creating and rendering text documents, with a
+Markdown-inspired syntax. It's integrated with our Hoon programming language,
+allowing it to be used as standalone prose in its own file or embedded inside a
+Hoon source file, in which case it will be parsed into a tree of HTML nodes
+using Hoon's XML-templating syntax, Sail.
+
+This document is itself written in Udon, and its source file is of the
+Udon `.udon` extension. As such, we use some `formatted text` to make
+it clear what is and isn't code, and to display that code to you instead of
+actually using its semantics for formatting.
+
+There are quite a few similarities between Udon and the
+CommonMark standard, but there are enough differences that you shouldn't rely on
+existing knowledge of the latter. Udon generally supports only one
+syntax for each type of HTML node it emits. Udon is also stricter than
+Markdown: some syntax errors will prevent the file from being parsed at all.
+
+We provide a few simple examples [here](#examples) of how to publish
+Udon files using our web interface.
+
+
+### Getting Started
+
+Before starting, make sure that your urbit is
+[mounted to Unix](https://urbit.org/docs/using/setup/)
+
+To host Udon and other kinds of files, your ship also has a
+web-server, called [Eyre](https://urbit.org/docs/using/web/), that can be found
+at `http://localhost:8080/` if it’s your first ship that’s running on the
+machine, `http://localhost:8081/` if it’s the second ship on that same machine,
+and so on. If you can't find your ship on one of these for some reason, try the
+next one. When a ship starts, it will print a message like
+`http: live (insecure, public) on 8081` to let you know what port it's using.
+
+That server has access to source files located in `/<your-urbit>/home/web` and
+any sub-folders thereof (except for `/home/web/pages`, which has special
+rendering rules.) Your ship's `%home` desk is served by default. You can
+[change](https://urbit.org/docs/using/web/) which desk you're serving, however.
+
+Everything in the `/<your-urbit>/home/web/` directory, with the exception of
+`/home/web/pages`, knows how to interpret and files of `.udon` type. So, to
+experiment with UM, create a `.udon` file in that path, and then try to access it
+at `http://localhost:8080/<yourfile>` in your browser -- no `.udon` required in
+the URL. It's a good idea to copy-paste the following examples into your file to
+see how the code works.
+
+Make sure that you have proper syntax throughout, and check often that it
+renders properly as you add more code. If you have parser-breaking syntax, then
+the default renderer won't tell you much.
+
+## Syntax
+
+### Front Matter
+
+The first thing on your file is a chunk of code called the front matter. It
+contains metadata about your page, such as date, title, and position relative
+to sibling pages.
+
+As an example, let's look at the front matter of this very page:
+
+```
+:-  :~  navhome/'/docs/'
+        sort/'11'
+        title/'Udon'
+    ==
+;>
+```
+
+What's going on here?
+
+`:-`, the Hoon rune for creating a cell, creates a cell composed of
+the `:~` Hoon rune for creating a list, and `;>`, which is a Sail rune
+for Udon.
+
+`:~` creates a list out of the three elements: `navhome/'/docs/'`, which
+indicates that navigating "home" will bring you to the urbit.org/docs section
+of the website; `sort/'28',` which assigns it the 28th position of the
+immediate section that contains it, the one you see in the sidebar;
+and `title/'Udon'`, which gives the page its title. The `==` digraph
+terminates the list.
+
+`;>` is a Sail rune that creates a node that contains everything that follows
+it, telling the parser that that text should be interpreted as Udon.
+It's not technically front matter, but you'll always find it following the
+front matter, since all Udon must come after this rune.
+
+The categories listed in the example above -- `navhome`, `sort`, and `title` --
+make sense to Eyre by default, but any arbitrary category can be used. The code
+below is valid front matter.
+
+```
+:-  :~  date/~2018.9.12
+        author/~lodleb-ritrul
+        music/'rad'
+    ==
+```
+
+Note that `~2018.9.12`, `~lodleb-ritrul`, and `'rad'` are all of of atom
+types: `@da`(date), `@p` (ship name), and `@t` (cord), respectively. Only atom
+types work here. Having `music/"rad"` would prevent the source file from
+parsing.
+
+### Headers
+
+Headers in Udon begin the line with one or more `#` characters,
+'followed by a single space. After that space comes the actual text to be
+displayed. The number of leading `#`s corresponds to the resulting HTML
+header-size element: `#` yields an `<h1>`, `##` yields an `<h2>`, and so on,
+through `<h6>`. The header for this section is `### Headers`.
+
+*Example:*
+```
+#### Header (h4)
+
+##### Header (h5)
+```
+###### Produces:
+
+#### Header (h4)
+
+##### Header (h5)
+
+### Italics and Bold
+
+Enclosing text with `_` will cause that text to appear italicized, using an <i>
+element.
+
+Enclosing text with `*` will cause that text to appear bolded, using a <b>
+element.
+
+
+*Example:*
+
+```
+To get their *attention*, you need that _je ne sais quoi_.
+```
+
+###### Produces:
+
+To get their *attention*, you need that _je ne sais quoi_.
+
+### Line Break
+
+After a blank link is interpreted as a line break, creating a distinct
+paragraph. However, a newline on its own is merely interpreted as a space on
+the _same line_.
+
+*Example:*
+
+```
+Here's the first line.
+
+This second line is separated by two newlines, so it's a separate paragraph.
+
+This line looks like a distinct paragraph, but...
+It's only separated by a single newline, so it's included in the same paragraph.
+```
+###### Produces:
+
+
+Here's the first line.
+
+This second line is separated by two newlines, so it's a separate paragraph.
+
+This line looks like a distinct paragraph, but...
+It's only separated by a single newline, so it's included in the same paragraph.
+
+#### Backslash Line Break
+
+A backslash at the end of a line inserts a line break (`<br>`)
+after that line. This contrasts with the normal udon behavior of
+converting newlines to spaces.
+
+*Example:*
+```
+I wonder how long each line
+will be if I put backslashes\
+at the ends of the lines.
+```
+###### Produces:
+
+I wonder how long each line
+will be if I put backslashes\
+at the ends of the lines.
+
+### Escape
+
+A backslash directly _before_ a word (with no spaces) will be interpreted
+as an escape character, causing it to be rendered raw.
+
+*Example:*
+
+```
+Here is some *bold* text.
+Here is some \*not bold* text.
+```
+
+###### Produces:
+
+Here is some *bold* text.
+Here is some \*not bold* text.
+
+
+### List
+
+A line beginning with a `-` followed by a space is interpreted as an
+element of an *unordered list* (`<ul>`). Each line in an unordered list is
+prepended with a bullet point.
+
+A line beginning with a `+` followed by a space is interpreted as an element
+of an *ordered list* (`<ol>`). Each line in an ordered list is prepended with
+a number corresponding to its position in that list.
+
+New list elements are delineated by newlines beginning with list symbols of
+the appropriate type (`-` or `+`).
+
+Just as with non-list text, text on a bare newline will appear on line before,
+separated by a space. A `\\` is used to create a line-break that isn't the list
+itself and isn't a list. Both of these kinds of newlines must be indented by two
+spaces, or else the page will not parse.
+
+Indentation is also used for creating nested sub-lists. Sub-lists of one kind
+can be used with parent lists of the other kind. Sub-lists can't be nested
+directly after either kind of aforementioned newline that isn't a list element;
+only lines that are themselves list elements can nest sub-lists.
+
+A newline after a blank line is interpreted as a new paragraph in normal text.
+Between to list elements, however, a blank line is semantically equivalent to
+a bare newline. To separate two lists with blank space, create a blank line
+followed by a `\\` on its own line.
+
+*Example:*
+
+```
+- Eggs
+  (cage-free)
+- Milk
+- Butter
+- Chicken\
+  Make sure that you get enough for the barbecue
+- Bread
+  + Ask the baker what's fresh
+  + Buy the second-freshest batch
+- Cereal
+
+\
++ First, separate eggs into a bowl.
++ Then, add a splash of cream.
+  - If you don't have cream, you can use milk, but cream is preferred.
+    + If you don't have milk or cream, melt an eighth of a stick of butter on
+      a skillet
+    + Scrambled the eggs in the bowl.
+    + Pour the eggs onto the skillet before the butter browns
++ Heat the skillet
+
++ Scramble eggs and put them into skillet
+
+\
++ Cool
++ Alright
+```
+
+Produces
+
+- Eggs
+  (cage-free)
+- Milk
+- Butter
+- Chicken\
+  Make sure that you get enough for the barbecue
+- Bread
+  + Ask the baker what's fresh
+  + Buy the second-freshest batch
+- Cereal
+
+\
++ First, separate eggs into a bowl.
++ Then, add a splash of cream.
+  - If you don't have cream, you can use milk, but cream is preferred.
+    + If you don't have milk or cream, melt an eighth of a stick of butter on
+      a skillet
+    + Scrambled the eggs in the bowl.
+    + Pour the eggs onto the skillet before the butter browns
++ Heat the skillet
+
++ Scramble eggs and put them into skillet
+
+\
++ Cool
++ Alright
+
+### Link
+
+There are two ways to create links, but both contain the text be hyperlinked
+in `[]` followed by the destination in `()`.
+
+The first type is an inline-style link, which simply uses the full URL as its
+destination.
+
+*Example:*
+
+```
+[I'm an inline-style link](https://www.urbit.org/docs/hoon/library)
+```
+
+###### Produces:
+
+[I'm an inline-style link](https://www.urbit.org/docs/hoon/library)
+
+The second type is a reference-style link, which uses a relative path, based on
+the current page's location. Instead of the full url, we use `..` to fill in
+the all of the URL that the destination has in common with the origin page.
+
+*Example:*
+
+```
+[I'm a reference-style link](../library)
+```
+
+###### Produces:
+
+[I'm a reference-style link](../library)
+
+If this page is located at `https://www.urbit.org/docs/hoon/`, then these two
+examples should have the same destination.
+
+#### Anchor Link
+
+A link to a section of the same page is in the style of
+`[text to be linked](#the-destination)`.
+
+The destination for the anchor link is designated with the HTML element `id`,
+so we need to use some [Sail](#sail). If there are two or more anchors with
+the same `id` on the page, you will arrive at the earliest instance of the the
+anchor.
+
+###### Example:
+
+```
+Check out this [section](#the-destination) that we want to jump to.
+
+Four score and seven years ago....
+
+It was the best of times, it was the worst of times...
+
+;=
+  ;h2
+    ;div(id "the-destination"): Here we are!
+  ==
+==
+```
+
+###### Produces
+
+Check out this [section](#the-destination) that we want to jump to.
+
+Four score and seven years ago....
+
+It was the best of times, it was the worst of times...
+
+;=
+  ;h2
+    ;div(id "the-destination"): Here we are!
+  ==
+==
+
+### Double Quote
+
+Text enclosed in double quotes (`"`) will be rendered with
+opening and closing quotes -- that is, `“` and `”`.
+
+*Example:*
+```
+"Yes," he said. "That is the way with him."
+```
+
+###### Produces:
+
+"Yes," he said. "That is the way with him."
+
+
+### Code Literal
+
+There are two ways to show the literal text of code without running it: inline
+and block. Both highlight the contained text in another color.
+
+Note that the backslash, due to its role as the escape character, can only be
+displayed in a code block literal and not as inline code literal. This is a
+bug.
+
+```
+\
+```
+
+##### Inline Code Literal
+
+Enclosing some text in
+```
+`
+```
+characters will cause it to be displayed as code,
+inside a `<code>` HTML element with monospace font and highlighted with a
+different background color.
+
+Using `` ` \`` is useful when you want to designated only part of a line as code.
+Since this page is written in Udon, we've been using this operation
+throughout this guide to `format text` to distinguish code from prose.
+
+*Example:*
+```
+`*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp's `apply`.
+```
+###### Produces:
+
+`*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp's `apply`.
+
+Also, using the `++` prefix before a word will cause the word to be rendered as
+code with the `++` displayed, since that's the standard notation for an arm in
+Hoon.
+
+*Example:*
+
+```
+The ++add arm is used to sum two numbers.
+```
+
+###### Produces:
+
+The ++add arm is used to sum two numbers.
+
+#### Block Code Literal
+
+By enclosing a block of text in ``` on their own lines
+before and after the contained text, the text will be treated as a code block.
+
+Most of our examples so far have used.
+
+*Example:*
+
+
+```
+  ```
+  (def Y (fn [f]
+         ((fn [x]
+            (x x))
+          (fn [x]
+            (f (fn [y]
+                 ((x x) y)))))))
+  ```
+```
+
+###### Produces:
+
+```
+(def Y (fn [f]
+       ((fn [x]
+          (x x))
+        (fn [x]
+          (f (fn [y]
+               ((x x) y)))))))
+```
+
+### Hoon Constants
+
+Hoon has several syntactic forms for literals (numbers, strings, dates, etc.)
+that can be used in udon as well. Udon detects such code, and so these
+forms will automatically appear inside a `<code>` element like inline code.
+
+Example:
+
+```
+~2017.8.29 \
+0xdead.beef \
+%term
+```
+
+produces:\
+
+~2017.8.29 \
+0xdead.beef \
+%term
+
+
+### Horizontal Rule
+
+Three or more hyphens, such as `---`, on their own line produce an `<hr>`
+element, the 'horizontal rule'. This is rendered as a horizontal line the
+width of its containing paragraph.
+
+###### Example:
+
+```
+Above the line
+---
+Below the line
+-----
+And below this line, too
+```
+
+###### Produces:
+
+
+Above the line
+---
+Below the line
+-----
+And below this line, too
+
+### Block Quote
+
+A section of text with the first line beginning with `>` and a space,
+and each successive newline indented by two spaces yields a
+`<blockquote>` HTML element. This block quote can itself contain more Udon,
+including more block quotes to render nested levels of quotation.
+Inline italicization with `_` does not work, however.
+
+Blank newlines do not end the block quote, but a blank newline followed by an
+unindented line of text _will_ end the quote.
+
+*Example:*
+
+```
+> As Gregor Samsa awoke one morning from uneasy dreams, he
+  found himself transformed in his bed into a *monstrous* vermin.
+
+Quote break.
+
+> _See_ the child.
+
+  He is pale and thin, he wears a thin and ragged linen shirt.
+```
+
+###### Produces:
+
+> As Gregor Samsa awoke one morning from uneasy dreams
+  he found himself transformed in his bed into a *monstrous* vermin.
+
+Quote break.
+
+> _See_ the child.
+
+  He is pale and thin, he wears a thin and ragged linen shirt.
+
+
+### Poem
+
+A poem is a section of text with meaningful newlines.  Recall that,
+normally in Udon, newlines are treated as spaces and do not create a
+new line of text. If you want to embed text where newlines are retained, then
+indent the text in question with *eight spaces*.
+
+###### Example:
+
+```
+        A shape with lion body and the head of a man,
+        A gaze blank and pitiless as the sun,
+        Is moving its slow thighs, while all about it
+        Reel shadows of the indignant desert birds.
+```
+###### Produces:
+
+        A shape with lion body and the head of a man,
+        A gaze blank and pitiless as the sun,
+        Is moving its slow thighs, while all about it
+        Reel shadows of the indignant desert birds.
+
+
+;=
+  ;h2
+    ;div(id "sail"): Sail Expressions
+  ==
+==
+
+It's possible to use Udon as an HTML templating language akin to
+PHP, ERB, JSP, or Handlebars templates. This facility derives
+in part from the support for embedding Hoon code inside the markup.
+
+
+You can Sail is a domain-specific language within Hoon for creating XML nodes,
+including HTML. It can be used directly within Udon to provide
+scripting capability with Hoon and also to provide more precise control over the
+resulting HTML. The [Sail guide](../sail) is a good place to learn the
+specifics.
+
+Example:
+
+```
+;=
+  ;p
+    ;strong: Don't panic!
+    ;br;
+    ;small: [reactive publishing intensifies]
+  ==
+==
+```
+
+Produces:
+
+
+;=
+  ;p
+    ;strong: Don't panic!
+    ;br;
+    ;small: [reactive publishing intensifies]
+  ==
+==
+;h2
+  ;div(id "examples"): Examples
+==
+
+We've created a few simple examples of how to get set up publishing content from
+your Urbit.  Feel free to ask questions in the comments.
+
+;list;

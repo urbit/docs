@@ -1,0 +1,50 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'!. "zapdot"'
+    ==
+;>
+
+# `!. "zapdot"`
+
+turn on stack trace for a subexpression `p`
+
+## Produces
+
+The product of `p`. If `p` crashes, no stack trace entries are given for that code.
+
+## Syntax
+
+Regular: *1-fixed*.
+
+```
+!.  p=hoon
+```
+
+`p` is any Hoon expression.
+
+## Discussion
+
+`!.` is used to turn off a debugging stack trace option for any code you have in `p`.  This rune can be embedded under a `!:` rune for inner loops of your code that you don't want or need to trace.  This is especially useful if a trace overflows the stack.
+
+## Examples
+
+```
+> %.(1 |=(a=@ ^-(@ ?:(=(a 10) !! $(a +(a))))))
+ford: %ride failed to execute:
+
+> !:  %.(1 |=(a=@ ^-(@ ?:(=(a 10) !! $(a +(a))))))
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 5].[1 49]>
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 17].[1 47]>
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 22].[1 46]>
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 36].[1 45]>
+...skipping some lines...
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 17].[1 47]>
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 22].[1 46]>
+/~zod/home/~2018.10.15..20.01.21..6b0c:<[1 33].[1 35]>
+ford: %ride failed to execute:
+
+> !:  %.(1 !.(|=(a=@ ^-(@ ?:(=(a 10) !! $(a +(a)))))))
+/~zod/home/~2018.10.15..20.01.35..0529:<[1 5].[1 53]>
+ford: %ride failed to execute:
+```

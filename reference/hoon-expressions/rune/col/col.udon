@@ -1,0 +1,25 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/':: "colcol"'
+    ==
+;>
+
+# `:: "colcol"`
+
+Code comment
+
+### Syntax
+
+::  any text you like!
+
+### Examples
+
+```
+::
+::  this is commented code
+::
+|=  a=@         ::  a gate
+(add 2 a)       ::  that adds 2
+                ::  to the input
+```

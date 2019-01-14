@@ -1,0 +1,69 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'%_ "cencab"'
+    ==
+;>
+
+# `%_ "cencab"`
+
+Resolve a wing with changes, preserving type.
+
+## Syntax
+
+Regular, tall:
+
+```
+%_  a=wing
+  b=wing  c=hoon
+  d=wing  e=hoon
+      ...
+  f=wing  g=hoon
+==
+```
+
+Regular, flat:
+
+```
+%_(a=wing b=wing c=hoon, d=wing e=hoon, ...)
+```
+
+AST:
+
+```
+[%cncb p=wing q=(list (pair wing hoon))]
+```
+
+## Semantics
+
+A `%_` expression resolves to the value of the subject at wing `a`, but modified according to a series of changes: `b` is replaced with the product of `c`, `d` with the product of `e`, and so on.  At compile time a type check is performed to ensure that the resulting value is of the same type as `a`.
+
+## Expands to
+
+```
+^+(a %=(a b c, d e, ...))
+```
+
+## Discussion
+
+`%_` is different from `%=` because `%=` can change the type of a wing with mutations.  `%_` preserves the wing type.
+
+See [how wings are resolved](../../limb/wing).
+
+## Examples
+
+```
+~zod:dojo> =foo [p=42 q=6]
+
+~zod:dojo> foo(p %baz)
+[p=%baz q=6]
+
+~zod:dojo> foo(p [55 99])
+[p=[55 99] q=6]
+
+~zod:dojo> %_(foo p %baz)
+[p=7.496.034 99]
+
+~zod:dojo> %_(foo p [55 99])
+! nest-fail
+```

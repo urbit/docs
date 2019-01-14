@@ -1,0 +1,35 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'9'
+        title/'=- "tishep"'
+    ==
+;>
+
+# `=- "tishep"`
+
+`[%tshp p=hoon q=hoon]`: combine a new noun with the subject, inverted.
+
+## Expands to
+
+```
+=>([q .] p)
+```
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Discussion
+
+`=-` is just like `=+` but its subexpressions are reversed.  `=-` looks better than `=+` when the expression you're pinning to the subject is much smaller than the expression that uses it.
+
+## Examples
+
+```
+~zod:dojo> =foo  |=  a=@
+                 =+  b=1
+                 =-  (add a b c)
+                 c=2
+~zod:dojo> (foo 5)
+8
+```

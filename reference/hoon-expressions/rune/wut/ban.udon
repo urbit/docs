@@ -1,0 +1,44 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'7'
+        title/'?> "wutban"'
+    ==
+;>
+
+# `?> "wutban"`
+
+`[%wtbn p=hoon q=hoon]`: positive assertion.
+
+## Expands to
+
+```
+?.(p !! q)
+```
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Discussion
+
+`?>` is used to force a crash when some condition `p` doesn't yield 'yes', `%.y`.
+
+It can be used for type inference, with the `?=` rune, to specify the type of a value.
+
+## Examples
+
+```
+> ?>(=(3 3) %foo)
+%foo
+
+> ?>(=(3 4) %foo)
+ford: build failed
+
+> =a `*`123
+
+> `@`a
+nest-fail
+
+> ?>(?=(@ a) `@`a)
+123
+```

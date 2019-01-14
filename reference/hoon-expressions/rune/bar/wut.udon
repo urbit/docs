@@ -1,0 +1,48 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'|? "barwut"'
+    ==
+;>
+
+# `|? "barwut"`
+
+Produce a lead trap.
+
+## Syntax
+
+Regular:
+
+```
+|?  a=hoon
+```
+
+AST:
+
+```
+[%brwt p=hoon]
+```
+
+## Semantics
+
+A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`).  `a` is a Hoon expression that defines what the `$` arm does.
+
+## Expands to
+
+```
+^?  |.  a
+```
+
+## Discussion
+
+See this [discussion of the core variance model](../../../advanced).
+
+## Examples
+
+```
+~zod:dojo> =>  ~  ^+  |?(%a)  |.(%a)
+<1?pqz $~>
+
+~zod:dojo> =>  ~  ^+  |?(%a)  |.(%b)
+nest-fail
+```

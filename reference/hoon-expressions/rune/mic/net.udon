@@ -1,0 +1,23 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'4'
+        title/';/ "micnet"'
+    ==
+;>
+
+# `;/ "micnet"`
+
+`[%mcnt p=hoon]`: tape as XML element.
+
+## Expands to
+
+```
+~[%$ ~[%$ 'p']]
+```
+
+## Examples
+
+```
+~zod/try=> :/"foo"
+[[%~. [%~. "foo] ~] ~]
+```

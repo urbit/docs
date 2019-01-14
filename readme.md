@@ -41,10 +41,43 @@ And now your docs are live! View them at:
     http://localhost:8080/~~/docs
 
 > If you're running multiple ships locally, your port number will be `8081`,
-> `8082`, and so on. Check your Dojo output for the correct local port of
-> your examples urbit, or view these at `https://your-urbit.urbit.org` over DNS
-> instead for live-network ships. You can also replace `localhost` with the IP
-> of your instance, if you're running your urbit in the cloud.
+  `8082`, and so on. Check your Dojo output for the correct local port of
+  your examples urbit, or view these at `https://your-urbit.urbit.org` over DNS
+  instead for live-network ships. You can also replace `localhost` with the IP
+  of your instance, if you're running your urbit in the cloud.
+
+## Building the docs with |static
+
+**note** This instructions are for use with the the [release-candidate branch](https://github.com/urbit/arvo/tree/release-candidate) 
+of Arvo.
+
+Arvo comes with a built-in static site generator, which is very useful for 
+exporting sites and pages built with udon, sail, html, markdown or some 
+combination of these. Combinations like these docs that you're reading!
+
+In order to build the docs into a static site, do the following.
+
+Make sure that you've mounted your ship to your filesystem, but running the following 
+in your Dojo.
+
+> ~ship:dojo>|mount /===
+
+Then, copy these docs into the pier of a booted ship. It is very important that 
+copy the docs into the exact directory indicated in your pier.
+
+> $ cp -r . <ship-name>/home/web/static-site
+
+Now, run the static site generator on your urbit ship.
+
+> ~ship:dojo>|static
+
+You can now navigate to the output director and run a webserver to view your built docs.
+
+> $ cd <ship-name>/.urb/put/web/static-site
+> $ python -m SimpleHTTPServer
+
+Visit `localhost:8000` to see the built docs. Rerun `|static` to build docs and 
+see changes.
 
 ## Learn a lot, and have fun!
 

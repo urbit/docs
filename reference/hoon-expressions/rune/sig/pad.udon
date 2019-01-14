@@ -1,0 +1,41 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'1'
+        title/'~& "sigpad"'
+    ==
+;>
+
+# `~& "sigpad"`
+
+`[%sgpd p=hoon q=hoon]`: debugging printf.
+
+## Expands to
+
+`q`.
+
+## Product
+
+Pretty-prints `p` on the console before computing `q`.
+
+## Discussion
+
+This rune has no semantic effect beyond the Hoon expression `q`.  It's used solely to create a side-effect: printing the value of `p` to the console.
+
+It's most useful for debugging programs.
+
+## Syntax
+
+Regular: *2-fixed*.
+
+## Examples
+
+```
+~zod:dojo> ~&('halp' ~)
+'halp'
+~
+
+~zod:dojo> ~&  'halp'
+           ~
+'halp'
+~
+```

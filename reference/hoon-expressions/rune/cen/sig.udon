@@ -1,0 +1,58 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'6'
+        title/'%~ "censig"'
+    ==
+;>
+
+# `%~ "censig"`
+
+Evaluate an arm in a door.
+
+## Syntax
+
+Regular:
+
+```
+%~  a=wing  b=hoon
+  c=hoon
+  d=hoon
+   ...
+  e=hoon
+==
+```
+
+Irregular:
+
+`~(a b c)` is `%~(a b c)`.
+`~(a b c d e)` is `%~(a b [c d e])`.
+
+AST:
+
+```
+[%cnsg p=wing q=hoon r=(list hoon)]
+```
+
+## Semantics
+
+A `%~` expression evaluates the arm of a door (i.e., a core with a sample).  `a` is a wing that resolves to the arm from within the door in question.  `b` is the door itself.  If there is only one subexpression after `b`, `c`, then the product of `c` becomes the door's sample value.  If there are multiple subexpressions after `b`, their products are made into a cell, `[c d ... e]`, and that becomes the door's sample value.
+
+## Discussion
+
+`%~` is the general case of a function call, `%-`.  In both, we replace the sample (`+6`) of a core.  In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated.  You must identify the arm to be run: `%~(arm door arg)`.
+
+See also [`|_`](../../bar/cab).
+
+## Examples
+
+```
+> =mycore |_  a=@
+          ++  plus-two  (add 2 a)
+          ++  double  (mul 2 a)
+          --
+> ~(plus-two mycore 10)
+12
+
+> ~(double mycore 10)
+20
+```

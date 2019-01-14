@@ -1,0 +1,18 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'8'
+        title/'Arms + ("lus")'
+    ==
+;>
+
+# Arms `+` "lus"
+
+A core is a cell of `[battery payload]`.  The battery is made of one or more arms, each of which is a computation on its parent core.
+
+Arm runes are used to define arms in a core, and thus can only be used from within an expression that produces a multi-arm core.  That means arm runes cannot be used to mark the beginning of a first-class expression -- there is no such thing in Hoon as an arm without a core.
+
+There are various arm runes you can use to produce different kinds of arms.  Normal arms use `++`; arms defining a structure (or 'mold') use `+$`; and constructor arms use `+*`.
+
+## Runes
+
+;list(datapreview "true", classname "runes");

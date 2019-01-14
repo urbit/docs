@@ -1,0 +1,55 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'2'
+        title/'%- "cenhep"'
+    ==
+;>
+
+# `%- "cenhep"`
+
+Call a gate (function).
+
+## Syntax
+
+Regular:
+
+```
+%-  a=hoon  b=hoon
+```
+
+Irregular:
+
+```
+(a=hoon b=hoon)
+```
+
+AST:
+
+```
+[%cnhp p=hoon q=hoon]
+```
+
+## Semantics
+
+This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a function.  `a` is the gate, and `b` is the desired sample value (i.e., input value) for the gate.
+
+## Expands to
+
+```
+%~($ a b)
+```
+
+## Discussion
+
+`%-` is used to call a function; `a` is the function ([`gate`](../../bar/tis),
+`q` the argument. `%-` is a special case of [`%~` ("censig")](../sig), and a gate is a special case of a [door](../../bar/cab).
+
+## Examples
+
+```
+~zod:dojo> =add-triple |=([a=@ b=@ c=@] :(add a b c))
+~zod:dojo> (add-triple 1 2 3)
+6
+~zod:dojo> %-(add-triple [1 2 3])
+6
+```

@@ -1,0 +1,14 @@
+:-  :~  navhome/'/docs/'
+        next/'true'
+        sort/'3'
+        title/'Nock . ("dot")'
+    ==
+;>
+
+# Nock `.` ("dot")
+
+Anything Nock can do, Hoon can do also.  These runes are used for carrying out Nock operations in Hoon.
+
+## Runes
+
+;list(datapreview "true", classname "runes");
