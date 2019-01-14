@@ -7,6 +7,7 @@
 
 # Introduction
 
+<<<<<<< HEAD
 Welcome to the documentation for the Urbit project, including the Azimuth identity layer, the Arvo operating system, and the Hoon programming language. This documentation is maintained by [Tlon](https://tlon.io) in a public [Github repository](https://github.com/urbit/docs). Issues and contributions are welcome.
 
 The documentation is organized into four high-level sections, and further divided between Azimuth and Arvo. Read on to get acquainted.
@@ -38,3 +39,9 @@ If you're a developer looking for Arvo reference documentation, this section is 
 
 - Confused about all the new words? Check out the [Glossary](docs/reference/glossary).
 - Don't miss the helpful Hoon rune [Cheat Sheet](docs/reference/cheat-sheet).
+=======
+Urbit is a new software stock for
+
+Learn more about the Urbit project here before delving deeper into the developer
+documentation.
+>>>>>>> 00f3572eae751223638daa96d6689323ec024b2a
