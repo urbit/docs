@@ -14,7 +14,7 @@ This guide is broken into five parts:
 + [Basic Operations](#operation)
 
 _If you just want to install the Urbit OS, Arvo, and don't need to be on the
-network, you can skip to [Installing Arvo](#arvo)._
+Urbit network, you can skip to [Installing Arvo](#arvo)._
 
 ;=
   ;h2
@@ -24,9 +24,8 @@ network, you can skip to [Installing Arvo](#arvo)._
 
 Urbit's identity layer, called Azimuth, is a suite of contracts on the Ethereum
 blockchain. An Azimuth address, called a *point*, functions as an identity and
-a network address for Arvo, the Urbit operating system. An instance of Arvo is
-called a *ship*. A ship can't use the Arvo network until it's combined with a
-point.
+a network address for Arvo, the Urbit OS. An instance of Arvo is called a
+*ship*. A ship can't use the Arvo network until it's combined with a point.
 
 Throughout this guide, we'll refer to \"Urbit identities\" and \"points\"
 interchangeably.
@@ -35,26 +34,18 @@ Points are generally not freely available, so you will need to either
 purchase one or get one from a friend. This guide assumes you have found a way
 to acquire a point.
 
-To get an Urbit identity, you'll need two things: an Ethereum address and a
-person willing to send you the identity.
+If you went through the address registration process and used [Wallet Generator](https://github.com/urbit/urbit-wallet-generator),
+then you should have have received a .zip file that contains an Ethereum address
+and cryptographic secrets in the form of a PDF.
 
-You'll probably want to start with a planet. Those are cheap identities for
-everyday use. Find someone who is willing to part with a point: a friend, or a
-stranger selling a point via smart contract. Once they've sent the point, you
-can access it using our Bridge software.
+Your ownership PDF contains two secrets that must be kept safe.
 
-If you bought address space from Tlon, then you should have have received a .zip
-file that contains an Ethereum address and cryptographic secrets on a PDF. Your
-ownership PDF contains two secrets that must be kept safe:
-
-- *Master Ticket*: This is a master key that allows you to manage every aspect
-  of your address.
+- *Master Ticket*: This is a master key that allows you to manage every aspect of
+  your address.
 
 - *Ownership Seed BIP39 Mnemonic*: The master ticket encoded as a BIP39 mnemonic
-  for compatibility with most Ethereum wallet software, including our own
-  *Bridge* client.
-
-Once you
+  for compatibility with most Ethereum wallet software, including our own *Bridge*
+  client.
 
 ;=
   ;h2
@@ -62,13 +53,14 @@ Once you
   ==
 ==
 
-Bridge is a client that we built for accessing and managing your Urbit
-identities. Bridge comes in the form of an offline HTML application that can be
-run in Firefox, Safari, or Chrome.
+Bridge is client that we built for accessing and managing your Urbit identities.
+Like Wallet Generator, Bridge is a web application that can also be run in offline mode.
+It can be run in Firefox on all platforms, and also in Chrome if you're using
+a Mac.
 
-Importantly, Bridge also automates the process of generating the keyfile that
-you will need a single time to boot your ship on the Arvo network. Once a ship
-is booted, it stays booted forever.
+Importantly, Bridge also allows you to generate a keyfile that
+you will need to boot your ship on the Arvo network for the first time. Once a ship
+with a keyfile, you can restart it later without the keyfile.
 
 Download bridge [here](https://github.com/urbit/bridge/releases) and follow
 the instructions below.
@@ -85,41 +77,47 @@ On the dropdown menu, make sure that `Main Network` is selected. Then click
 #### Step 3: Open a Wallet
 
 On this dropdown menu, choose how you'd like to access your Ethereum wallet.
-If you aren't using Hardware wallets (a Ledger or a Trezor), you'll want to use
-your Ethereum wallet's BIP39 Mnemonic.
+If you aren't using a hardware wallet (we support Ledger and Trezor), you'll
+want to use your Ethereum wallet's BIP39 Mnemonic.
 
-If you received a point from Tlon and received paper wallets in the form of
-PDFs, choose `Urbit Master Ticket`.
+If you used Wallet Generator to generate an HD wallet, you have a few choices:
+you can choose `Urbit Master Ticket,` which is high-value, but allows you unfettered
+permissions to update your point. The mnemonic associated with your management
+seed is also quite useful to perform everyday operations (such as boot your ship!).
 
 Select the appropriate option and click `Continue ->`.
 
-#### Step 4: Accept Your Transfer
+#### Step 4: (optional) Accept Your Transfer
 
-If you were sent a point, then you should see a graphic under
+If you were sent a point by a friend, then you should see a graphic under
 `Incoming Transfers`. Click the `Details ->` link under that graphic.
 
 Now you'll be on the management page of your point. The transfer isn't completed
 yet, so click `Accept incoming transfer`. Then check both boxes and and click
 their associated `Sign Transaction` and `Send Transaction` buttons.
 
-#### Step 5: Set Your Networking Keys
+If you already own a point, then click on the `Details ->` under your sigil in the
+`Your Points` section.
 
-You'll be returned to your point screen. Notice that that links and buttons
-are now clickable. You know own this point!
+#### Step 5: (optional) Set Your Networking Keys
 
-Click the link that says `Set Urbit networking keys`. Choose two different,
-64-character long strings of hexademical, check the box, and, like before, check
-both boxes and press both buttons.
+If you just accepted a point, you'll be returned to your point screen. Notice that
+that links and buttons are now clickable. You now own this point!
+
+Click the link that says `Generate Urbit networking keys`. Bridge will let you either
+download a keyfile derived from your networking keys are you can paste in your own
+network seed and derive a new keyfile. See our
+[HD Wallet Spec](https://github.com/urbit/proposals/blob/master/proposals/8.md)
+for more information.
 
 #### Step 6: Generate Your Keyfile
 
-Return to your point by clicking its name at the navigation bar on the top of
-the page.
+From the detail page associated with your point, click the `Generate Urbit Keyfile`
+button and you'll be taken to a page with a field titled `Network key`. If you went
+through the address registration process, this should be filled in already.
+Click `Generate ->`, which will download a keyfile onto your machine.
 
-Click the `Generate Urbit Keyfile` button and you'll be taken to a page with a
-field titled `Network key`. That field should be filled in already. Click
-`Generate ->`, which will download a the keyfile onto your machine.
-
+With that keyfile in hand, you can now exit Bridge.
 
 ;=
   ;h2
@@ -127,14 +125,18 @@ field titled `Network key`. That field should be filled in already. Click
   ==
 ==
 
-Now you're ready to install the Arvo software. You're almost there!
+Now you're ready to run Arvo. You're almost there!
 
-Arvo can only run on a Unix-like operating system -- Ubuntu,
-Fedora, macOS, and FreeBSD all work well. If you're using Windows, you'll need
+But first, some terminology:
+- `vere` or `urbit`: the interpreter that runs when you run a command like `urbit` or `/bin/urbit` in your command line
+- `arvo`: the deterministic OS that lives in a directory whose name matches your Azimuth point, ie `~famreb-todmec` lives in `/famreb-todmec`
+
+Arvo runs nicely on a Unix-like operating system -- Ubuntu,
+Fedora, macOS, and FreeBSD. If you're using Windows, you'll need
 to get one of the aforementioned systems. Don't worry: most of them are free.
 
 We have different installation instructions for different platforms. To install
-Arvo, run the Bash commands that are listed for your operating system.
+and run Arvo, run the commands that are listed for your operating system.
 
 On any platform, you can check your Arvo installation by running the `urbit`
 command. Installation was successful if you get a block of output that begins
@@ -146,7 +148,7 @@ Urbit: a personal server operating function
 
 #### MacOS
 
-We recommend using the Homebrew package manager to install Arvo on MacOS.
+We recommend using the Homebrew package manager to run Arvo on MacOS.
 
 ```
 #Bash
@@ -252,7 +254,7 @@ If you just want to use a fake ship for development purposes, you can now use
 the command of the scheme below to boot a fake `~zod`.
 
 ```
-urbit -F zod -A /path/to/arvo -s -c zod -S
+urbit -F zod -A /path/to/arvo -s -c zod
 ```
 
 If you want to get on the Arvo network with your point, then continue to the
@@ -261,20 +263,20 @@ next section.
 
 ;=
   ;h2
-    ;div(id "boot"): Booting Your Urbit
+    ;div(id "boot"): Booting Your Ship
   ==
 ==
 
 
 Now the rubber meets the road. You'll be booting your ship with the keyfile
-that you downloaded from bridge.
+that you downloaded from Bridge.
 
 #### Step 1: Find Your Point's Name
 
 This will look something like `~lodleb-ritrul`. You can see the name of your
 point(s) when you log into your wallet using the Bridge client.
 
-;img@"http://media.urbit.org/site/bridge-0.png"(width "100%");
+;img@"media.urbit.org/site/bridge-0.png"(width "100%");
 
 #### Step 2: Find the path to your keyfile
 
@@ -293,6 +295,13 @@ keyfile:
 ```
 urbit -w ~sample-planet -k path/to/my-planet.key
 ```
+
+if you'd prefer to copy your key in you can run
+
+```
+urbit -w ~sample-planet -G rAnDoMkEy
+```
+
 
 This will create a directory called `sample-planet/` and begin building your
 ship. It may take a few minutes.
@@ -344,22 +353,21 @@ This should produce:
 which indicates that the command was processed.
 
 `|mount %` will cause a `home/` directory to appear inside your _pier_ folder in
-Unix. Changes to these files are automatically synced into your ship.
+Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
 
 
 #### Talk
 
 Use `ctrl-x` to toggle between the Dojo and the Talk prompts.
 
-While on the Talk prompt, let's join the main Urbit chat channel, `/urbit-meta`:
+While on the Talk prompt, let's join the main Urbit support chat channel, `/urbit-help`:
 
 ```
-~sample-planet:talk[] ;join /urbit-meta
+~sample-planet:talk[] ;join /urbit-help
 ```
 
-Talk is stateful, so your ship will download a backlog. `/urbit-meta` is the
-place to ask questions, get help, talk about anything Urbit-related, and meet
-everyone on here.
+Talk is stateful, so your ship will download a backlog. `/urbit-help` is the
+place to ask questions about getting up and running.
 
 #### Shutting Down and Restarting
 
@@ -375,25 +383,27 @@ $ urbit some-planet
 
 Your ship is also accessible through its own web interface. Through the web
 interface you'll have access to our chat and message boards, the two components
-of our _Landscape_ feature. This is a user-friendly way to use Talk on the
+of our _Landscape_ feature. This is a user-friendly way to chat with Talk on the
 Arvo network and access and materials you've published on your ship. If You're
 running Arvo locally on your own machine, try opening `http://localhost/` in
 your browser.
 
-Or, if you're running your ship on a cloud instance with a static IP address
-(which we recommend!), something like 212.131.240.20,
-`http://212.131.240.20:80/~~/` would go into your browser's URL bar. This way,
-if you keep your ship running securely in the cloud (usually in a screen or tmux
-session), you can always access your ships's web interface in any browser on
-any device.
+Or if you're running your ship on a cloud instance with a static IP address
+(which we recommend!), something like 212.131.240.20, assuming you've opened up
+the HTTP port that Arvo uses -- the default is port 80. So
+`http://212.131.240.20:80/~~/` would go into your browser's URL bar.
+
+This way, if you keep your ship running securely in the cloud (usually in a
+screen or tmux session), you can always access your ships's web interface in any
+browser on any device, so long as you have your password on hand.
 
 The `/~~/` in the URL will redirect you to a login page, which was generated by
-Tree, the basic Arvo web interface. The page will tell you to run the `+code`
-generator (an Arvo shell-script) in your Dojo to get your password. Copy and
-paste that into the password-input field and hit Enter. After loading, you'll
+Tree, the basic Arvo web interface. The page will tell you to run the +code
+generator (an Arvo shell script) in your Dojo to get your password. Copy and
+paste that into your password input box and hit Enter. After loading, you'll
 find yourself redirected to your home page, authenticated, where you can then
 use the navigation bar at the top of the page to visit your Talk web interface
 and static files.
 
 When you use the web interface, your urbit is automatically subscribed to
-`/urbit-meta` and our message-board system, Posts.
+`/urbit-meta` and Fora, our message-board system.
