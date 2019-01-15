@@ -10,33 +10,33 @@ Welcome to the documentation for the Urbit project, including the Azimuth identi
 
 The documentation is organized into four high-level sections. Read on to get acquainted.
 
-## [Introduction](docs/introduction)
+## [Introduction](/docs/introduction)
 
 If you're looking for a high-level introduction to the Urbit project and its components, start here.
 
-- [Arvo vs. Azimuth](docs/introduction/arvo-vs-azimuth), a quick explanation of the two parallel systems that compose Urbit.
-- [Technical Overview](docs/introduction/technical-overview), a more in-depth description of the entire Urbit stack.
-- [Contributing](docs/introduction/contributing), a guide to getting involved with the Urbit project.
+- [Arvo vs. Azimuth](/docs/introduction/arvo-vs-azimuth), a quick explanation of the two parallel systems that compose Urbit.
+- [Technical Overview](/docs/introduction/technical-overview), a more in-depth description of the entire Urbit stack.
+- [Contributing](/docs/introduction/contributing), a guide to getting involved with the Urbit project.
 - [Community Tutorials](/docs/introduction/community), a collection of unofficial but useful Urbit learning resources.
 - [Source Code](/docs/introduction/source), an explanation of Urbit's constituent GitHub repos.
 
-## [Getting Started](docs/getting-started)
+## [Getting Started](/docs/getting-started)
 
 If you'd like to install Arvo, get an Azimuth point, and/or get on the Urbit network, you'll find guides here. Dive in, and don't be afraid to [ask for help](support@urbit.org)!
 
-- [The Installation Guide](docs/introduction/installation), a step-by-step walkthrough for getting Urbit running.
-- [The Azimuth section](docs/getting-started/azimuth), which contains information on managing your Azimuth identities.
+- [The Installation Guide](/docs/introduction/installation), a step-by-step walkthrough for getting Urbit running.
+- [The Azimuth section](/docs/getting-started/azimuth), which contains information on managing your Azimuth identities.
 
-## [Learn](docs/learn)
+## [Learn](/docs/learn)
 
 If you're interested in contributing to the project, building applications, or understanding the system technically, take a look at our tutorials and explanations of the Urbit components.
 
-- [The Hoon Tutorial](docs/learn/arvo/hoon), for our programming language. To learn the system, start here.
-- [The Arvo section](docs/learn/arvo), for the internals of Arvo, the Urbit operating system.
+- [The Hoon Tutorial](/docs/learn/arvo/hoon), for our programming language. To learn the system, start here.
+- [The Arvo section](/docs/learn/arvo), for the internals of Arvo, the Urbit operating system.
 
-## [Reference](docs/reference)
+## [Reference](/docs/reference)
 
 If you're a developer looking for Arvo reference documentation, this section is for you.
 
-- [The Glossary](docs/reference/glossary) will help if you're confused by all the new jargon.
-- [The Cheat Sheet](docs/reference/cheat-sheet) is a compact document for looking up Hoon expressions.
+- [The Glossary](/docs/reference/glossary) will help if you're confused by all the new jargon.
+- [The Cheat Sheet](/docs/reference/cheat-sheet) is a compact document for looking up Hoon expressions.
