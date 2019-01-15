@@ -24,8 +24,8 @@ If you're looking for a high-level introduction to the Urbit project and its com
 
 If you'd like to install Arvo, get an Azimuth point, and/or get on the Urbit network, you'll find guides here. Dive in, and don't be afraid to [ask for help](support@urbit.org)!
 
-- [The Installation Guide](docs/introduction/installation), a step-by-step walkthrough you for getting Urbit running.
-- [The Azimuth section](docs/getting-started/azimuth), guides to managing your Azimuth identities.
+- [The Installation Guide](docs/introduction/installation), a step-by-step walkthrough for getting Urbit running.
+- [The Azimuth section](docs/getting-started/azimuth), which contains information on managing your Azimuth identities.
 
 ## [Learn](docs/learn)
 
@@ -39,4 +39,4 @@ If you're interested in contributing to the project, building applications, or u
 If you're a developer looking for Arvo reference documentation, this section is for you.
 
 - [The Glossary](docs/reference/glossary) will help if you're confused by all the new jargon.
-- [The Cheat Sheet](docs/reference/cheat-sheet) is a compact way to look up Hoon expressions.
+- [The Cheat Sheet](docs/reference/cheat-sheet) is a compact document for looking up Hoon expressions.
