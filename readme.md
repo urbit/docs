@@ -8,8 +8,7 @@ experiences high traffic. Follow these steps to get these into your ship:
 ## Installation
 
 First, you'll need a running urbit. Follow our urbit.org [install
-instructions](https://urbit.org/docs/using/install/), then
-[setup](https://urbit.org/docs/using/setup/) an urbit.
+instructions](https://urbit.org/docs/getting-started/).
 
 ### Local install
 
@@ -48,21 +47,21 @@ And now your docs are live! View them at:
 
 ## Building the docs with |static
 
-**note** This instructions are for use with the the [release-candidate branch](https://github.com/urbit/arvo/tree/release-candidate) 
+**note** This instructions are for use with the the [release-candidate branch](https://github.com/urbit/arvo/tree/release-candidate)
 of Arvo.
 
-Arvo comes with a built-in static site generator, which is very useful for 
-exporting sites and pages built with udon, sail, html, markdown or some 
+Arvo comes with a built-in static site generator, which is very useful for
+exporting sites and pages built with udon, sail, html, markdown or some
 combination of these. Combinations like these docs that you're reading!
 
 In order to build the docs into a static site, do the following.
 
-Make sure that you've mounted your ship to your filesystem, but running the following 
+Make sure that you've mounted your ship to your filesystem, but running the following
 in your Dojo.
 
 > ~ship:dojo>|mount /===
 
-Then, copy these docs into the pier of a booted ship. It is very important that 
+Then, copy these docs into the pier of a booted ship. It is very important that
 copy the docs into the exact directory indicated in your pier.
 
 > $ cp -r . <ship-name>/home/web/static-site
@@ -76,13 +75,13 @@ You can now navigate to the output director and run a webserver to view your bui
 > $ cd <ship-name>/.urb/put/web/static-site
 > $ python -m SimpleHTTPServer
 
-Visit `localhost:8000` to see the built docs. Rerun `|static` to build docs and 
+Visit `localhost:8000` to see the built docs. Rerun `|static` to build docs and
 see changes.
 
 ## Learn a lot, and have fun!
 
 People are always around on
-[Talk](https://urbit.org/docs/using/setup#-messaging-talk) and
+[Talk](https://urbit.org/docs/learn/arvo/arvo-internals/messaging/) and
 [Fora](https://fora.urbit.org/) to answer your questions. Help each other
 out, and don't hesitate if you have an idea for a docs improvement. We'd love if
 the docs themselves became an Urbit community project.
