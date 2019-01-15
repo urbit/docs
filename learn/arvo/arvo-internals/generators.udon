@@ -18,7 +18,7 @@ There are four kinds of generators: naked, `%say`, `%get`, and `%ask`.
 ### Naked Generators
 
 A naked generator is simply a `gate`; that is, an is an anonymous function that
-takes a `sample` (argument) and produces a noun. All you need to do is write a
+takes a `sample` (argument) and produces a noun. All you need to do is to write a
 `gate` and put it into file in the `/gen` directory. Let's take a look at a very
 simple one:
 
@@ -36,7 +36,7 @@ we can run it from the [Dojo](/docs/using/shell):
 42
 ```
 
-This command just pass in 42 and get 42 back. But what about when we pass in
+This command just passes in 42 and gets 42 back. But what about when we pass in
 `"asdf"`?
 
 ```
@@ -58,7 +58,7 @@ as part of a `tape`, the `cord` is only a single character. So each atom in the
 `a`, 115 is `s`, 100 is `d`, 102 is `f`, and `0` is the "null" that every list
 is terminated with.
 
-We can tell the Dojo to "cast" -- apply a specific type to -- the output of our
+We can tell the Dojo to cast -- apply a specific type to -- the output of our
 generator see something more familiar:
 
 ```
@@ -66,7 +66,7 @@ generator see something more familiar:
 "asdf"
 ```
 
-Now let's create a generator with two samples instead of one. Save the code
+Now let's create a generator with two arguments instead of one. Save the code
 below as `add.hoon` in the `/gen` directory.
 
 ```
@@ -135,7 +135,7 @@ generator.
 Recall that the rune `:-` produces a cell, with the first following expression
 as its head and the second following expression as its tail.
 
-The expression above, then, creates a cell with `%say` as the head. The tail is
+The expression above creates a cell with `%say` as the head. The tail is
 the `|=  *` expression on the line that follows.
 
 ```
@@ -163,7 +163,7 @@ in the gate's sample, which we only specified as `*` in the previous few
 examples. But we can do more with `%say` generators if we do more with that
 sample. Any valid sample will follow this 3-tuple scheme:
 
-`[[datetime, entropy, and beak] [list of unnamed arguments] [list of named arguments]]`
+`[[datetime, entropy, beak] [list of unnamed arguments] [list of named arguments]]`
 
 This entire structure is a noun, which is why `*` is a valid sample if we
 wish to not use any of the information here in a generator. But let's look at
