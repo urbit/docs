@@ -14,7 +14,7 @@ The documentation is organized into four high-level sections. Read on to get acq
 
 If you're looking for a high-level introduction to the Urbit project and its components, start here.
 
-- [Arvo vs. Azimuth](/docs/introduction/arvo-vs-azimuth), a quick explanation of the two parallel systems that compose Urbit.
+- [Arvo vs. Azimuth](/docs/getting-started), a quick explanation of the two parallel systems that compose Urbit.
 - [Technical Overview](/docs/introduction/technical-overview), a more in-depth description of the entire Urbit stack.
 - [Contributing](/docs/introduction/contributing), a guide to getting involved with the Urbit project.
 - [Community Tutorials](/docs/introduction/community), a collection of unofficial but useful Urbit learning resources.
