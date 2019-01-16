@@ -260,8 +260,10 @@ If you just want to use a fake ship for development purposes, you can now use
 the command of the scheme below to boot a fake `~zod`.
 
 ```
-urbit -F zod -A /path/to/arvo -s -c zod
+urbit -F zod
 ```
+
+You can substitute any valid galaxy-, star-, or planet-name for `zod`.
 
 If you want to get on the Arvo network with your point, then continue to the
 next section.
