@@ -138,7 +138,7 @@ But first, some terminology:
 - `arvo`: the deterministic OS that lives in a directory whose name matches your Azimuth point, ie `~famreb-todmec` lives in `/famreb-todmec`
 
 Arvo runs nicely on a Unix-like operating system -- Ubuntu,
-Fedora, macOS, and FreeBSD. If you're using Windows, you'll need
+Fedora, macOS, and FreeBSD, for example. If you're using Windows, you'll need
 to get one of the aforementioned systems. Don't worry: most of them are free.
 
 We have different installation instructions for different platforms. To install
@@ -152,6 +152,29 @@ with the line below:
 Urbit: a personal server operating function
 ```
 
+### Dependencies
+
+Urbit depends on:
+
+
+```
+C compiler (gcc or clang)
+curses
+git
+gmp
+libcurl
+libsigsegv
+libuv
+meson
+ninja
+openssl
+pkg-config
+python2
+zlib
+```
+
+### Instructions
+
 #### MacOS
 
 We recommend using the Homebrew package manager to run Arvo on MacOS.
@@ -160,7 +183,7 @@ We recommend using the Homebrew package manager to run Arvo on MacOS.
 # Bash
 
 brew update
-brew install autoconf automake cmake gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl re2c
+brew install gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -175,7 +198,7 @@ urbit
 # Bash
 
 sudo apt-get update
-sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make openssl pkg-config python python3 python3-pip ragel re2c zlib1g-dev
+sudo apt-get install g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev make openssl pkg-config python python3 python3-pip zlib1g-dev
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install meson==0.29
 
@@ -185,11 +208,10 @@ sudo -H pip3 install meson==0.29
 #
 git clone git://github.com/ninja-build/ninja.git
 pushd ninja
-    git checkout release
-    ./configure.py --bootstrap
-    sudo cp ./ninja /usr/local/bin
+  git checkout release
+  ./configure.py --bootstrap
+  sudo cp ./ninja /usr/local/bin
 popd
-
 
 git clone https://github.com/urbit/urbit
 cd urbit
@@ -209,15 +231,15 @@ sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl
 
 # meson requires python 3.5; RHEL supplies wrong version
 pushd /usr/src
-    sudo wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tgz
-    sudo tar xzf Python-3.5.5.tgz
-    cd Python-3.5.5
-    sudo ./configure --enable--optimizations
-    sudo make altinstall
-    which python3.5
-    cd /usr/local/bin
-    sudo ln -s python3.5 python3
-    hash python3
+  sudo wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tgz
+  sudo tar xzf Python-3.5.5.tgz
+  cd Python-3.5.5
+  sudo ./configure --enable--optimizations
+  sudo make altinstall
+  which python3.5
+  cd /usr/local/bin
+  sudo ln -s python3.5 python3
+  hash python3
 popd
 
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -245,7 +267,7 @@ urbit
 # Bash
 
 sudo pacman -Syu
-sudo pacman -S autoconf automake cmake curl gcc git gmp libsigsegv libtool ncurses ninja openssl python ragel re2c
+sudo pacman -S curl gcc git gmp libsigsegv ncurses ninja openssl python
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python3 get-pip.py
 git clone https://github.com/urbit/urbit
@@ -256,14 +278,72 @@ sudo ninja -C ./build/ meson-install
 urbit
 ```
 
-If you just want to use a fake ship for development purposes, you can now use
+##### FreeBSD
+
+```
+# Bash or Sh
+
+pkg upgrade
+sudo pkg install curl gcc git gmake gmp libsigsegv python python3 ncurses openssl gmp
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3 get-pip.py
+sudo -H pip install --upgrade pip
+sudo -H pip install meson
+sudo pkg install ninja
+git clone https://github.com/urbit/urbit
+cd urbit
+sh ./scripts/bootstrap
+sh ./scripts/build
+sudo ninja -C ./build/ meson-install
+urbit
+```
+
+##### Amazon Web Services
+
+```
+# Bash
+
+sudo yum update
+sudo yum install gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel ncurses-devel openssl openssl-devel pkgconfig python2 python3 python3-pip wget git
+sudo env "PATH=$PATH" pip3 install --upgrade pip
+sudo env "PATH=$PATH" pip3 install meson
+
+
+# we need libsigsegv
+#
+
+wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-2.10-10.fc24.x86_64.rpm
+wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-devel-2.10-10.fc24.x86_64.rpm
+sudo yum localinstall libsigsegv-2.10-10.fc24.x86_64.rpm
+sudo yum localinstall libsigsegv-devel-2.10-10.fc24.x86_64.rpm
+
+git clone git://github.com/ninja-build/ninja.git
+pushd ninja
+  git checkout release
+  ./configure.py --bootstrap
+  sudo cp ./ninja /usr/local/bin
+popd
+
+
+git clone https://github.com/urbit/urbit
+cd urbit
+./scripts/bootstrap
+./scripts/build
+sudo env "PATH=$PATH" ninja -C ./build/ install
+
+urbit
+```
+
+### Using a Fake Ship
+
+Perhaps you want to boot a ship without an identity. We recommend doing that
+for development purposes, or if you just want to play around with an
+un-networked ship without getting a point. You can now use
 the command of the scheme below to boot a fake `~zod`.
 
 ```
 urbit -F zod
 ```
-
-You can substitute any valid galaxy-, star-, or planet-name for `zod`.
 
 If you want to get on the Arvo network with your point, then continue to the
 next section.
@@ -304,15 +384,14 @@ keyfile:
 urbit -w ~sample-planet -k path/to/my-planet.key
 ```
 
-if you'd prefer to copy your key in you can run
+Or, if you'd prefer to copy your key in, you can run:
 
 ```
 urbit -w ~sample-planet -G rAnDoMkEy
 ```
 
-
-This will create a directory called `sample-planet/` and begin building your
-ship. It may take a few minutes.
+Either command will create a directory called `sample-planet/` and begin
+building your ship. It may take a few minutes.
 
 When your ship is finished booting, you will see the `~sample-planet:dojo>`
 prompt. At that point, you should permanently erase your keyfile from your
