@@ -10,17 +10,17 @@
 Generators are the most straightforward way to write programs for Urbit. They
 are used for doing computations that do not require persistence: they take an
 input and produce an output, then disappear. Generators might make sense for
-for listing directory contents, or running unit tests, or fetching the
-contents of a URL.
+listing directory contents, or running unit tests, or fetching the contents of a
+URL.
 
 There are four kinds of generators: naked, `%say`, `%get`, and `%ask`.
 
 ### Naked Generators
 
-A naked generator is simply a `gate`; that is, an is an anonymous function that
+A naked generator is simply a `gate`; that is, it is an anonymous function that
 takes a `sample` (argument) and produces a noun. All you need to do is write a
-`gate` and put it into file in the `/gen` directory. Let's take a look at a very
-simple one:
+`gate` and put it into a file in the `/gen` directory. Let's take a look at a
+very simple one:
 
 ```
 |=  a=*
@@ -36,7 +36,7 @@ we can run it from the [Dojo](/docs/using/shell):
 42
 ```
 
-This command just pass in 42 and get 42 back. But what about when we pass in
+This command just passes in 42 and gets 42 back. But what about when we pass in
 `"asdf"`?
 
 ```
@@ -58,15 +58,15 @@ as part of a `tape`, the `cord` is only a single character. So each atom in the
 `a`, 115 is `s`, 100 is `d`, 102 is `f`, and `0` is the "null" that every list
 is terminated with.
 
-We can tell the Dojo to "cast" -- apply a specific type to -- the output of our
-generator see something more familiar:
+We can tell the Dojo to cast -- apply a specific type to -- the output of our
+generator to see something more familiar:
 
 ```
 > _tape +echo "asdf"
 "asdf"
 ```
 
-Now let's create a generator with two samples instead of one. Save the code
+Now let's create a generator with two arguments instead of one. Save the code
 below as `add.hoon` in the `/gen` directory.
 
 ```
@@ -95,11 +95,11 @@ useful when a generator is needed to pipe data to another program, a frequent
 occurrence.
 
 To that end, `%say` generators use `mark`s to make it clear, to other Arvo
-computations, what exactly their kind of data their output is. A `mark` is akin
+computations, exactly what kind of data their output is. A `mark` is akin
 to a MIME type on the Arvo level. A `mark` describes the data in
 some way, indicating that it's an `%atom`, or that it's a standard such as
 `%json`, or even that it's an application-specific data structure like
-`%talk-command`. `mark`s are not specific to `%say` generators; any time data
+`%talk-command`. `mark`s are not specific to `%say` generators; whenever data
 moves between programs in Arvo, that data is marked.
 
 So, more formally, a `%say` generator is a `cell`. The head of that cell is the
@@ -135,7 +135,7 @@ generator.
 Recall that the rune `:-` produces a cell, with the first following expression
 as its head and the second following expression as its tail.
 
-The expression above, then, creates a cell with `%say` as the head. The tail is
+The expression above creates a cell with `%say` as the head. The tail is
 the `|=  *` expression on the line that follows.
 
 ```
@@ -146,9 +146,9 @@ the `|=  *` expression on the line that follows.
 
 `|=  *` constructs a gate that takes a noun. This gate will itself produce a
 `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is
-`%noun` and the tail is rest of the program, `(add 40 2)`. The tail of the
-`cask`  will be our actual data produced by body of the program: in this case
-just adding 40 and 2 together.
+`%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the
+`cask`  will be our actual data produced by the body of the program: in this
+case, just adding 40 and 2 together.
 
 #### `%say` generators with arguments
 
@@ -163,7 +163,7 @@ in the gate's sample, which we only specified as `*` in the previous few
 examples. But we can do more with `%say` generators if we do more with that
 sample. Any valid sample will follow this 3-tuple scheme:
 
-`[[datetime, entropy, and beak] [list of unnamed arguments] [list of named arguments]]`
+`[[now, eny, beak] [list of unnamed arguments] [list of named arguments]]`
 
 This entire structure is a noun, which is why `*` is a valid sample if we
 wish to not use any of the information here in a generator. But let's look at
@@ -177,8 +177,8 @@ atoms:
 `beak` contains the current ship, desk, and case.
 
 You can access each of those pieces of data by typing their names into the Dojo.
-But in a generator, we need put faces (variable names) onto that data so we can
-easily use it in the program. We can do that like below:
+But in a generator, we need to put faces (variable names) onto that data so we
+can easily use it in the program. We can do so like this:
 
 ```
 |=  [[now=@da eny=@uvJ bec=beak] ~ ~]
@@ -189,18 +189,18 @@ Any of those pieces of data could be omitted by replacing part of the noun with
 didn't want `eny`, or `[* * bec=beak]` if we only wanted `beak`.
 
 The *second part* of the sample is a `list` of arguments that _must_ be passed
-to the generator as it's run. Because it's a `list`, this element needs to be
+to the generator as it is run. Because it's a `list`, this element needs to be
 terminated with a `~`. In the example above, we used `~`, the empty list, to
 represent this second part. But that would mean we don't want to use any new
 faces for our generator. So a sample where we want to declare a single required
-argument would look like this.
+argument would look like this:
 
 ```
 |=  [* [n=@ud ~] ~]
 ```
 
 In the above code, we use a `*` to ignore any of the information that would go
-first part of the sample, kind of in the same way that we use a `~` to say
+in the first part of the sample, somewhat similar to how we use a `~` to say
 "nothing here" for the second or third parts of the sample.
 
 But to use both parts together, our gate and sample would look like this:
@@ -210,7 +210,7 @@ But to use both parts together, our gate and sample would look like this:
 ```
 
 The *third part* of the sample is a list of _optional_ arguments. These
-arguments may be passed to the program as its being run, but the program doesn't
+arguments may be passed to the program as it's being run, but the program doesn't
 require them. The syntax for the third part is just like the syntax for the
 second part, besides its position:
 
@@ -229,15 +229,15 @@ file called `dice.hoon` in your `/gen` directory.
 ```
 
 This is a very simple dice program with an optional betting functionality.
-In the code, our sample specifies faces on all the all of the Arvo data, meaning
-that we can can easily access them. We also require the argument `[n=@ud ~]`,
-and allow the _optional_ argument `[bet=@ud ~]`.
+In the code, our sample specifies faces on all of the Arvo data, meaning that we
+can easily access them. We also require the argument `[n=@ud ~]`, and allow the
+_optional_ argument `[bet=@ud ~]`.
 
 But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` arm
 out of the `og` core with the subject of `eny`. Recall that `eny` is our entropy
 value, so this is used to seed the generator. The `rad` arm will give us a
-pseudorandom number between 0 and `n`, and the `bet` that it's in a cell with
-will just return the argument that we might choose to give it.
+pseudorandom number between 0 and `n`. Then we form a cell with the result and
+`bet`, the optional named argument specified previously.
 
 We can run this generator like so:
 
@@ -294,7 +294,7 @@ We use the `%ask` generator when we want to create an interactive program
 that prompts for inputs as it runs, rather than expecting arguments to be passed
 in at the time of initiation.
 
-Code-wise, you need two things to create a useful `%ask` generator.
+Code-wise, two things are needed to create a useful `%ask` generator.
 
 The first is *`sole-result`*, which lives in `/sur/sole.hoon`. It's a
 mold-builder that's required by any part of Arvo, such as the Dojo, that wants
@@ -305,7 +305,7 @@ molds and digests them into a type for the operating system. The simplest way to
 use `sole-result` is by calling the `produce` gate from `/lib/generators.hoon`.
 
 The second is *`prompt`*, a gate that lives in `lib/generators.hoon`. `prompt`
-allows you to get get information back from the user, which is essential to the
+allows you to get information back from the user, which is essential to the
 typical desired operation of an `%ask` generator.
 
 Since this isn't easy to digest in the abstract, we'll use an example generator
@@ -346,7 +346,7 @@ What is your favorite color?
 
 Something new happened. Instead of simply returning something, your Dojo's
 prompt changed from `~your-urbit:dojo>` to `~your-urbit:dojo: color:`, and
-expects additional input. Let's give it an input:
+now expects additional input. Let's give it an input:
 
 ```
 : color: red
@@ -397,18 +397,17 @@ We use the `^-` rune to constrain the generator's output to such a
 A `cask` is a pair of a `mark` name and a noun. Recall that a `mark` can be
 thought of as an Arvo-level MIME type for data.
 
-A `tang` is a `list` of `tank` and a `tank` is a structure for printing data
-that there are three types of: `leaf`, `palm`, and `rose`. A `leaf` is for
+A `tang` is a `list` of `tank`, and a `tank` is a structure for printing data.
+There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for
 printing a single noun, a `rose` is for printing rows of data, and a `palm` is
-printing backstep-indented lists.
+for printing backstep-indented lists.
 
 ```
 %+  print    leaf+"What is your favorite color?"
 %+  prompt   [%& %prompt "color: "]
-|=  t=tape                              ::  we will come to this later
+|=  t=tape
 %+  produce  %tang
 ```
-
 
 Because we imported `generators`, we can access its contained gates, three of
 which we use in `axe.hoon`: `print`, `prompt`, and `produce`.
@@ -423,39 +422,38 @@ argument which is a `tank` to print. The `+` here is syntactic sugar for
 It takes a single argument that is a tuple. Most `%ask` generators will want to
 use the `prompt` gate.
 
-The first element of the `prompt` sample is a flag that indicates what the
-user typed should be echoed out to them or hidden. `%&` will produce echoed
+The first element of the `prompt` sample is a flag that indicates whether what
+the user typed should be echoed out to them or hidden. `%&` will produce echoed
 output and `%|` will hide the output (for use in passwords or other secret
 text).
 
-The second element of the `prompt` sample is a `%term` used The second argument
-is intended to be information to use to create autocomplete options for the
-prompt this is not yet implemented.
+The second element of the `prompt` sample is intended to be information for use
+in creating autocomplete options for the prompt. This functionality is not yet
+implemented.
 
 The third element of the `prompt` sample is the `tape` that we would like to
 use to prompt the user. In the case of our example, we use `"color: "`.
 
-*`produce`* is is used to construct the output of the generator. In our
-example, we produce a `tang`.
+*`produce`* is used to construct the output of the generator. In our example,
+we produce a `tang`.
 
 
 ```
 |=  t=tape
 ```
 
-Our gate here takes a `tape` that was produced by `prompt` if we needed another
-type of data we could use `parse` to obtain it.
+Our gate here takes a `tape` that was produced by `prompt`. If we needed
+another type of data we could use `parse` to obtain it.
 
 The rest of this generator should be intelligible to those with Hoon knowledge
 at this point.
 
 One quirk that you should be aware of, though, is that `tang` prints in reverse
 order from how it is created. The reason for this is that `tang` was originally
-created to display stack trace information, which should be produced in
-in reverse order. This leads to an annoyance: we either have to specify our
-messages backwards or construct them in the order we want and then `flop` the
-`list` This is a [known issue](https://github.com/urbit/arvo/issues/840) to be
-resolved.
+created to display stack trace information, which should be produced in reverse
+order. This leads to an annoyance: we either have to specify our messages
+backwards or construct them in the order we want and then `flop` the `list`.
+This is a [known issue](https://github.com/urbit/arvo/issues/840) to be resolved.
 
 ### `%get` generators
 
@@ -484,8 +482,8 @@ u.my-json
 ```
 
 The above generator was written with the
-[Studio Ghibli API](https://ghibliapi.herokuapp.com/). The generator below was
-designed to use the this API to print the title of a Studio Ghibli film.
+[Studio Ghibli API](https://ghibliapi.herokuapp.com/). It uses this API to
+print the title of a Studio Ghibli film.
 
 ```
 /-  sole
@@ -494,7 +492,7 @@ designed to use the this API to print the title of a Studio Ghibli film.
 ```
 
 Here we import types from `/sur/sole.hoon` and gates from
-`/lib/generators.hoon`. We also use `=,` to exposes the namespace of
+`/lib/generators.hoon`. We also use `=,` to expose the namespace of
 `generators` that we just imported.
 
 ```
@@ -502,9 +500,9 @@ Here we import types from `/sur/sole.hoon` and gates from
 |=  [* [url=tape ~] ~]
 ```
 
-Like with `%say` and `%ask` generators, we must have include the  "boilerplate":
-code that produces a generator-specific `cell`. At the head of that cell is
-`%get`, and the tail is a gate that takes a `tape` of the URL that we are trying
+Like with `%say` and `%ask` generators, we must include the  "boilerplate":
+code that produces a generator-specific `cell`. The head of that cell is `%get`,
+and the tail is a gate that takes a `tape` of the URL that we are trying
 to access.
 
 ```
@@ -550,8 +548,9 @@ for us that we can then use to inspect the data.
 ```
 
 After parsing the JSON structure we want to make sure we got back a valid `json`
-type. To do that, we test for null and crash that test passes. If not, we use
-`=,` on the `dejs:format` core so that we can more easily pull arms out of it.
+type. To do that, we test for null and crash if that test passes. If it doesn't
+pass, we use `=,` on the `dejs:format` core so that we can more easily pull arms
+out of it.
 
 ```
 %+  produce  %json
@@ -600,5 +599,5 @@ the arguments of that function come first. It's used here to keep with the
 principle that heaviest, or most complex, expressions should go to the bottom.
 
 The key we are looking up in our new `map` we've created from `my-json` is
-`%title` which is an element in the original source to print out to produce as
-the final result of the generator.
+`%title`, which is an element in the original source, to produce the final
+result of the generator.
