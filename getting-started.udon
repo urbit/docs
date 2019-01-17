@@ -55,20 +55,20 @@ Your ownership PDF contains two secrets that must be kept safe.
   ==
 ==
 
-Bridge is client that we built for accessing and managing your Urbit identities.
+Bridge is a client that we built for accessing and managing your Urbit identities.
 Like Wallet Generator, Bridge is a web application that can also be run in offline mode.
 It can be run in Firefox on all platforms, and also in Chrome if you're using
 a Mac.
 
 Importantly, Bridge also allows you to generate a keyfile that
-you will need to boot your ship on the Arvo network for the first time. Once a ship
+you will need to boot your ship on the Arvo network for the first time. Once you boot a ship
 with a keyfile, you can restart it later without the keyfile.
 
 *Note* Bridge allows you to make _writes_ to the blockchain, but we ask you to confirm
 anything that will incur a transaction cost. If you plan to do anything heavy-duty, make
 sure your Ethereum address has some pocket ETH.
 
-Download bridge [here](https://github.com/urbit/bridge/releases) and follow
+Download Bridge [here](https://github.com/urbit/bridge/releases) and follow
 the instructions below.
 
 #### Step 1: Welcome
