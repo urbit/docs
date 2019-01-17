@@ -118,7 +118,7 @@ for more information.
 
 #### Step 6: Generate Your Keyfile
 
-From the detail page associated with your point, click the `Generate Urbit Keyfile`
+From the detail page associated with your point, click the `Generate Arvo Keyfile`
 button and you'll be taken to a page with a field titled `Network key`. If you went
 through the address registration process, this should be filled in already.
 Click `Generate ->`, which will download a keyfile onto your machine.
