@@ -177,7 +177,7 @@ urbit
 sudo apt-get update
 sudo apt-get install autoconf automake cmake exuberant-ctags g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev libtool make openssl pkg-config python python3 python3-pip ragel re2c zlib1g-dev
 sudo -H pip3 install --upgrade pip
-sudo -H pip3 install meson
+sudo -H pip3 install meson==0.29
 
 # we need ninja 1.5.1
 # 'apt-get install ninja-build' gives us 0.1.3
@@ -222,7 +222,8 @@ popd
 
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo /usr/local/bin/python3 get-pip.py
-sudo -H /usr/local/bin/pip3 install meson
+# downgrade meson to avoid dependencies that redhat can't meet
+sudo -H /usr/local/bin/pip3 install meson==0.29
 
 
 git clone git://github.com/ninja-build/ninja.git && cd ninja
