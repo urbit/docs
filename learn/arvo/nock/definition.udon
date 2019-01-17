@@ -185,5 +185,5 @@ decrement formula, it can use the CPU to decrement directly.
 Detecting any Nock formula whose semantics match some function,
 like decrement, is a hard problem.  But in practice there is only
 one decrement we run -- the decrement in the kernel library.
-Declaring this formula (with a hint, instruction `10` above)
+Declaring this formula (with a hint, instruction `11` above)
 and recognizing it is not hard.
