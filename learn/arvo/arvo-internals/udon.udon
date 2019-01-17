@@ -5,9 +5,21 @@
      ==
 ;>
 
-# Udon: A Guide
+# Udon
 
-### What is Udon?
+## Table of Contents
+
+- #### [Udon: A Guide](#guide)
+
+- #### [A Simple Udon Blog](#blog)
+
+- #### [A Static Site](#static)
+
+;=
+  ;h2
+    ;div(id "guide"): Udon: A Guide
+  ==
+==
 
 Udon is a way to write content for the web. It's a minimalist
 markup language for creating and rendering text documents, with a
@@ -29,7 +41,6 @@ Markdown: some syntax errors will prevent the file from being parsed at all.
 
 We provide a few simple examples [here](#examples) of how to publish
 Udon files using our web interface.
-
 
 ### Getting Started
 
@@ -616,11 +627,290 @@ Produces:
     ;small: [reactive publishing intensifies]
   ==
 ==
-;h2
-  ;div(id "examples"): Examples
+
+
+;=
+  ;h2
+    ;div(id "blog"): A Simple Udon Blog
+  ==
 ==
 
-We've created a few simple examples of how to get set up publishing content from
-your Urbit.  Feel free to ask questions in the comments.
+Publishing using Udon is really easy. It uses the file extension `.udon`. Here we'll create a very simple blog and publish our first posts.
+
+First, let's setup a desk to serve our posts from:
+
+```
+|merge %site ~your-urbit %home
+```
+
+Then let's mount that desk to unix:
+
+```
+|mount /=site=
+```
+
+You should now be able to find a `/site` folder inside of your pier
+directory (either `comet/` or `your-urbit/`).
+
+To begin serving files from this new desk use `|serve`:
+
+```
+|serve %site
+```
+
+First let's create the landing page for our blog.  Create the file
+`site/web/blog.udon`:
+
+```
+:-  :~  anchor/'none'
+    ==
+;>
+
+# Hello
+
+This is a simple blog I built on Urbit.
+
+;list(dataType "post");
+```
+
+Try viewing this file at `http://localhost:8080`. Note that `8080` might be
+`8081`, `8082`, and so on, depending if those ports were being used when you
+started your urbit.
+
+The only special thing about this page is the `anchor/'none'` front-matter
+which simply turns off the Tree navigation.  Normally Tree gives navigation
+controls for walking around the filesystem, but taking them away makes
+the page seem more like a landing page.
+
+The page looks pretty boring now.  Let's add our first post.  From
+unix run `mkdir your-urbit/site/web/blog; touch
+your-urbit/site/web/blog/post-1.udon`. (Currently [there's a
+bug](https://github.com/urbit/urbit/issues/321) that prevents empty
+directories from getting created, so we have to `touch` a file inside
+them first.)  In `blog/post-1.udon` let's add some filler content:
+
+```
+:-  :~  navhome/'/blog'
+        type/'post'
+        date/'~2016.6.20'
+        title/'My first post!'
+    ==
+;>
+
+Is this a decentralized Medium?  Let's find out.
+
+But first, how about a long quote from Paramenides:
+
+> True, he said; and therefore when ideas are what they are in
+  relation to one another, their essence is determined by a relation
+  among themselves, and has nothing to do with the resemblances, or
+  whatever they are to be termed, which are in our sphere, and from
+  which we receive this or that name when we partake of them. And
+  the things which are within our sphere and have the same names
+  with them, are likewise only relative to one another, and not to
+  the ideas which have the same names with them, but belong to
+  themselves and not to them.
+
+Good to get that out of the way.
+```
+
+You should be able to view this file at:
+`http://localhost:8080/blog/post-1.udon`.
+
+You'll also notice that
+now the list of posts here: `http://localhost:8080/blog` has
+updated.
+
+Here we use two pieces of front-matter worth noting: `type` and `navhome`.
+
+- `type` implies that the page has some special handling by Tree. When `type` is
+  `post` we automatically put in the `date`, `title` and `author` when they're
+  specified and add some styles.
+
+- `navhome` sets the path used by the home button (the circle in the top left).
+  Since we want to send people back to the root of our blog, we set this to `/blog`
+
+Adding posts is as easy as dropping Udon files into the `blog/`
+directory.  Pretty easy!
+
+### Blog comments
+
+Now let's enable comments on a blog post.
+
+First, turn comments on by editing the frontmatter in `post-1.udon`.  Your
+frontmatter should look like this:
+
+```
+:-  :~  navhome/'/blog'
+        type/'post'
+        date/'~2018.6.20'
+        title/'Blog comments'
+        comments/'true'
+    ==
+;>
+```
+
+Now try loading your post here: `your-urbit.urbit.org/blog/post-1`.
+You should see a comments box at the bottom of the page.
+
+Try posting a comment!  When you do you should see the following in
+your console:
+
+```
++ /~your-urbit/home/55/web/blog/post-1/comments/~2016.6.20..23.20.54..0b88/md
+------------[0]
+~your-urbit[tree]: receiving comments, ;join %comments for details
+```
+
+Comments are written into the filesystem in the `comments/` folder
+relative to the page they're enabled on.  When a new comment is posted
+a notification is also posted to the `/comments` `:talk` channel.
+
+Use `;join` to keep up with comments as they get posted:
+
+```
+;join ~your-urbit/comments
+```
+
+That's it!  Easy.
+
+;=
+  ;h2
+    ;div(id "static"): A Static Site
+  ==
+==
+
+Hosting a static tree of content is easy.  Let's put together a really
+simple site for an imaginary Urbit meetup group.
+
+We assume you have at least followed the beginning of [our first
+examples](#blog) and created a desk called `site` and mounted it to
+unix.
+
+Note: below we use Urbit's implementation of Markdown, [Udon](#udon).
+This markup language allows you to use snippets of Hoon code but not HTML.
+In particular, we use Sail, a subset of Hoon.  This Sail is rendered as HTML
+when the file is served to a client.  To learn about Sail, head over to
+the [Sail](/docs/learn/arvo/arvo-internals/sail) section of the docs.
+
+In `site/web/meet.udon` put:
+
+```
+:-  :~  navhome/'/meet'
+        navdpad/'false'
+        navpath/'/meet'
+        mavmode/'navbar'
+    ==
+;>
+
+# Neo-Tokyo Urbit meetup
+
+;img@"https://ofheroesandcliches.files.wordpress.com/2014/06/neo-tokyo.png"(width "100%");
+
+Hi there! We meet once a week at The Chat to work on Urbit projects
+together.
+
+You can find out more about the group on the [about](about) page and
+follow our projects in [projects](projects).
+```
+
+This is our landing page.  Here we're using a few new bits of frontmatter:
+`navdpad`, `navmode` and `navpath`.  `navdpad` just turns off the nav
+arrows. `navmode` can be set to 'navbar' to switch to a horizontal top
+nav instead of a left bar. `navpath` sets the path to load the nav
+items from.
+
+Let's create `about.udon` and `projects.udon`.  From Unix use the
+technique from before to create a new directory: `mkdir
+your-urbit/site/web/meet/; touch your-urbit/site/web/meet/about.udon`.
+Then put the following in `site/web/about.udon`:
+
+```
+:-  :~  navhome/'/meet'
+        navdpad/'false'
+        navpath/'/meet'
+        mavmode/'navbar'
+        title/'About'
+    ==
+;>
+
+# About
+
+## Mission statement
+
+The existing framework cannot subdue the new human force that is increasing day
+by day alongside the irresistible development of technology and the
+dissatisfaction of its possible uses in our senseless social life.
+
+## Members
+
+Membership is open to anyone.  Just send a message to `~talsur-todres`.
+
+- Shōtarō Kaneda
+- Motoko Kusanagi
+- Ishikawa
+- Faye Valentine
+- Spike Spiegel
+```
+
+And `site/web/projects.udon`:
+
+```
+:-  :~  navhome/'/meet'
+        navdpad/'false'
+        navpath/'/meet'
+        mavmode/'navbar'
+        title/'Projects'
+    ==
+;>
+
+# Projects
+
+## Active
 
 ;list;
+
+## Discussion
+
+;div(class "mini-module")
+    ;script(src "/~/at/lib/js/urb.js");
+    ;script(src "https://cdn.rawgit.com/seatgeek/react-infinite/0.8.0/dist/react-infinite.js");
+    ;script(src "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.js");
+    ;script(src "https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.1/moment-timezone.js");
+    ;script(src "/talk/main.js");
+    ;link(href "/talk/main.css", rel "stylesheet");
+    ;talk(readonly "", chrono="reverse", station="comments");
+==
+```
+
+This page introduces a new thing: the `:talk` module.  Inside of the
+`mini-module` div we load the scripts needed by the `;talk`
+component.  The `;talk` component is a static component for
+displaying a feed from a talk channel inline.  Here we're going to
+display the discussion from our active projects inline.
+
+We'll need a few active projects though.  From unix: `mkdir
+your-urbit/site/web/meet/projects; touch
+your-urbit/site/web/meet/projects/bike.udon`.
+
+In `site/web/meet/projects/bike.udon`:
+
+```
+:-  :~  navhome/'/meet'
+        navdpad/'false'
+        navpath/'/meet'
+        mavmode/'navbar'
+        title/'Kaneda's Bike'
+        comments/'true'
+    ==
+;>
+
+# Urbit on a Motorcycle
+
+Discussion on getting urbit to power Kaneda's motorcycle.
+```
+
+Here we just use the `comments` frontmatter to enable comments on the page.
+Adding other imaginary projects is left to the reader.
+
+Building a static site takes only a few minutes and a few Udon files.  Have fun!

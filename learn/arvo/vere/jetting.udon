@@ -659,7 +659,7 @@ The only way to run the new code is to follow the following process:
 + start up urbit, tell it to be a fake zod (act as a galaxy and disconnect from the rest of the network) and have it know where your edited Arvo files are (although not execute them, as discussed above):
   + rm -rf ~/zod
     + rm -rf ~/tlon/mypill.pill
-  + ~/tlon/urbit/build/urbit  -FI zod -A ~/bus/tlon/arvo/ -c zod
+  + ~/tlon/urbit/build/urbit -F zod
     + This should take < 90 seconds.
     + If you accidentally exit urbit you can restart it
 + inside your urbit, from the dojo command line, load the Hoon files and compile them into a pill file:
@@ -736,7 +736,7 @@ Hopefully this helps to demystify these startup procedures.
 
 + type `cd ~`
 + type `rm -rf zod`
-+ type `~/tlon/urbit/build/urbit -FI zod -A ~/tlon/arvo/ -B ~/tlon/mypill.pill -c zod`
++ type `~/tlon/urbit/build/urbit -F zod -B ~/tlon/mypill.pill`
 
   N.B. booting should not take more than about 90 seconds.  If it goes longer than that you might have created a 'poison pill', which hangs things.  Try booting without the -B flag, and/or reverting your Hoon changes, generating a new pill based on that, and launching urbit with the known-clean pill.  If these steps and boot in < 90 seconds, but a boot with a pill created from your own Hoon does not, you have a Hoon bug of some sort.
 
@@ -745,12 +745,7 @@ Hopefully this helps to demystify these startup procedures.
 + You now have created a galaxy fakezod, on its own detached network, running your own strange variant of the OS.
 + inside dojo: `` (make-k:secp256k1:secp:crypto `@uvI`12 33) ``  # or whatever command runs the Hoon you're jetting
 + do your development work
-+ If you happen to exit, you can restart with `urbit -FI zod zod`
-
-To expand:
-- F means "fake"
-- I means "run as galaxy zod"
-- the final argument is the unix directory holding the files for the galaxy
++ If you happen to exit, you can restart with `urbit zod`
 
 ## Run the jetted code and compare to the non jetted code
 
@@ -761,11 +756,11 @@ It would be convenient to fire up a second urbit in a terminal next to your fake
 Then you can run identical commands in each, in parallel, and confirm that they do the same thing.
 
 + edit ~/tlon/urbit/jets/e/secp.c (or whatever) to include `fprintf(stderr, "*** u3we_sign 2\n");` (or similar) in your jetted functions.  This will let us verify that the jets exist and are running.
-+ `cd ~/tlon/ubit ; scripts/build `
++ `cd ~/tlon/urbit ; scripts/build `
 + `cp ~/tlon/arvo ~/tlon/arvo_nojet`
 + edit `~/tlon/arvo_nojet/sys/zuse_nojetting.hoon` to remove jetting
 + Because we can not run two instances of the same fake galaxy on the same machine (their ports would conflict), we need to pick a new galaxy name.  Galaxy names are not arbitrary. You may not name your galaxy "mygalaxy", "withjet", "withoutjet", or anything like that. Galaxy names are restricted to the range 0-255, converted into pronounceable syllables.  `zod` is just the pronunciation of '0' ( to see this, in a dojo, cast `~zod` to an untyped atom thusly: `` `@`~zod ``). Let's pick 1 as our new galaxy id.  Use dojo to convert this into a urbit name: `` `@p`1 `` yields `~nec`.
-+ Open a new terminal.  In that terminal:   `cd ~ ; rm -rf nec ; ~/tlon/urbit/build/urbit -FI nec -A ~/tlon/arvo_nojetting/ -c nec`
++ Open a new terminal.  In that terminal:   `cd ~ ; rm -rf nec ; ~/tlon/urbit/build/urbit -F nec -B ~/tlon/arvo_nojetting/`
 + This should take < 90 seconds.
 + inside your urbit, from the dojo command line, load the Hoon files and compile them into a pill file: `.pill +solid`
 + This should take < 90 seconds.
@@ -774,4 +769,4 @@ Then you can run identical commands in each, in parallel, and confirm that they 
 + type `cp ~/nec/.urb/put.pill  ~/tlon/mypill_nojetting.pill `
 + type `cd ~`
 + type `rm -rf nec`
-+ type `~/tlon/urbit/build/urbit -FI nec -A ~/tlon/arvo_nojetting/ -B ~/tlon/mypill_nojetting.pill -c nec`
++ type `~/tlon/urbit/build/urbit -F nec -B ~/tlon/mypill_nojetting.pill`

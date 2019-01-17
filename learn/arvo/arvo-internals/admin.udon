@@ -179,23 +179,3 @@ Urbit network.
 
 When this happens, back up any files you'd like to save, shut down your
 urbit and recreate it (as if you were starting for the first time).
-
-## Creating SSL certificates
-
-It is possible to create SSL certificates so that you serve files through your
-ship's webserver using https. To do that you, would need a machine that has
-OpenSSL installed. In order to create a new private key and a self-signed
-certificate for your localhost, valid for a year, you can issue the following
-commands:
-
-```
-$ openssl req -x509 -sha256 -newkey rsa:4096 -keyout private.pem -out certificate.pem -subj '/CN=localhost' -days 365
-$ mkdir -p your-urbit/.urb/tls
-$ mv private.pem certificate.pem your-urbit/.urb/tls
-```
-
-These certificates would have to be manually trusted by your browser, and it's
-advisable that they are used only for your localhost.
-For public-facing webservers, it would be better to create certificates for your
-fully qualified domain name using a trusted certificate authority like Let's
-Encrypt.
