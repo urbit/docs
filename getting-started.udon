@@ -61,6 +61,7 @@ It can be run in Firefox on all platforms, and also in Chrome if you're using
 a Mac.
 
 Importantly, Bridge also allows you to generate a keyfile that
+
 you will need to boot your ship on the Arvo network for the first time. Once you boot a ship
 with a keyfile, you can restart it later without the keyfile.
 
