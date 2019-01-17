@@ -28,8 +28,7 @@ urbit's home desk path as necessary*):
 
 Your Clay filesystem should acknowledge the newly added files.
 
-Lastly, if make sure you're serving your home desk's `web` directory to the web
-by running the following Dojo command:
+Lastly, make sure you're serving your home desk's `web` directory to the web by running the following Dojo command:
 
     ~your-urbit:dojo> |serve /=home=/web
 
@@ -78,16 +77,7 @@ You can now navigate to the output director and run a webserver to view your bui
 Visit `localhost:8000` to see the built docs. Rerun `|static` to build docs and
 see changes.
 
-## Learn a lot, and have fun!
-
-People are always around on
-[Talk](https://urbit.org/docs/learn/arvo/arvo-internals/messaging/) and
-[Fora](https://fora.urbit.org/) to answer your questions. Help each other
-out, and don't hesitate if you have an idea for a docs improvement. We'd love if
-the docs themselves became an Urbit community project.
-
 ## Contributing / Feedback
 
-Give us feedback [on Fora](https://fora.urbit.org/) on how we can make the
-docs better. Let us know about your ideas, requests, and/or problems and we'll
-try and get back to you quickly. Pull requests are more than welcome.
+Give us feedback on how we can make the docs better. Let us know about your ideas, requests, and/or problems and we'll
+try and get back to you quickly. Issues and pull requests are more than welcome.
