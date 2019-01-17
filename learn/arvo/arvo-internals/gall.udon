@@ -2275,7 +2275,7 @@ You should recognize the sail syntax from an earlier chapter.
 Aside from jquery, we also include `urb.js`, which is a framework
 for interacting with urbit.
 
-To view the frontend, point your browser at `ship-name.urbit.org/~~/pages/click` if you're on the live network. If you're running a fake galaxy, navigate to whatever port it's running on, which is usually: `https://localhost:8443/~~/pages/click`.
+To view the frontend, point your browser at `ship-name.urbit.org/~~/pages/click` if you're on the live network. If you're running a fake galaxy, navigate to whatever port it's running on, which is usually: `https://localhost:80/~~/pages/click`.
 
 We have a button labeled "Poke!" and a div with id `clicks` where
 we'll put the number of clicks.  We also include a small

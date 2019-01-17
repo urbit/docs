@@ -1625,8 +1625,7 @@ current pier.
 
 `fak` is true if we are on a fake network. This disables certain
 security checks so that anyone may run a fake `~zod`. This is used only
-for development. To use, run vere with the `-F` option (and the
-`-I ~zod` option for a fake `~zod`).
+for development. To use, run vere with the `-F` option.
 
 ### `++sufi`, domestic host
 
