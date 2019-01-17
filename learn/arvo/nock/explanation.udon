@@ -431,7 +431,7 @@ Let's try to figure out what these do, simplest first:
 *[a 11 b c]  *[a c]
 ```
 
-If `x` is an atom and `y` is a formula, the formula `[10 x y]`
+If `x` is an atom and `y` is a formula, the formula `[11 x y]`
 appears to be equivalent to... `y`.  For instance:
 
 ```
