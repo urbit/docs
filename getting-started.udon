@@ -444,18 +444,11 @@ which indicates that the command was processed.
 Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
 
 
-#### Talk
+#### Landscape
 
-Use `ctrl-x` to toggle between the Dojo and the Talk prompts.
+Landscape is web app we built for chatting and making posts. We are using Landscape to run a few experimental "cities" -- private discussion communities -- as a closed beta of sorts. If you have an Azimuth point, you’ll need to [email us](mailto:support@urbit.org) a request to gain access to one of these cities and hang out with the Tlon team.
 
-While on the Talk prompt, let's join the main Urbit support chat channel, `/urbit-help`:
-
-```
-~sample-planet:talk[] ;join /urbit-help
-```
-
-Talk is stateful, so your ship will download a backlog. `/urbit-help` is the
-place to ask questions about getting up and running.
+Once you're in a channel, you can also interact with it from the command line, if you so wish. Use `ctrl-x` in your ship's terminal window to toggle between the Dojo and the Talk prompts.
 
 #### Shutting Down and Restarting
 
