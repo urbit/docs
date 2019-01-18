@@ -145,7 +145,7 @@ Hoon compiler, but it is probably a good idea.
 
 In Hoon, all the flow structures from your old life as an Earth
 programmer become cores.  Functions and/or closures are cores,
-objects are cores modules are cores, even loops are cores.
+objects are cores, modules are cores, even loops are cores.
 
 The core is just a cell whose tail is data (possibly containing
 other cores) and whose head is code (containing one or more
