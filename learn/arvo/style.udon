@@ -7,6 +7,8 @@
 
 # Hoon Style Guide
 
+Welcome to the Hoon style guide. It's important to
+
 ## Layout
 
 Hoon's position on layout is: so long as your code is (a) correctly commented,
@@ -42,7 +44,7 @@ or
 ```
 
 These are regular forms -- every rune can be written this way.
-Hoon also has a variety of wide [irregular forms](.  All tall
+Hoon also has a variety of wide [irregular forms](/docs/reference/hoon-expressions/irregular).  All tall
 forms are regular.  All code within a wide form is wide.
 Almost all code has both wide and tall forms, the exception
 being named cores.
