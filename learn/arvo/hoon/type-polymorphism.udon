@@ -5,7 +5,7 @@
     ==
 ;>
 
-# 2.11 Polymorphism
+# 3.1 Polymorphism
 
 There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_(computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
 
