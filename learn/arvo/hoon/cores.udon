@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'33'
+        sort/'27'
         title/'Cores'
     ==
 ;>
 
-# Cores
+2.7 Cores
 
 You learned what a core is in previous lessons.  After a brief review, let's talk about how to use cores effectively in Hoon programming.
 

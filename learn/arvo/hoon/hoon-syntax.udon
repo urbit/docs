@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'28'
+        sort/'22'
         title/'Hoon Syntax'
     ==
 ;>
 
-# Hoon Syntax
+# 2.2 Hoon Syntax
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
@@ -93,7 +93,7 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 0b1101.1001
 ```
 
-Recall from [lesson 1.2](../hoon-ch1-2) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](../hoon-ch2-4).
+Recall from [lesson 1.2](../nouns) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](../atoms-auras-and-simple-cell-types).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -160,7 +160,7 @@ Expressions with a rune at the beginning are rune expressions.  Most runes are u
 
 Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create cores, and the runes in the `:` family are all used to create cells.
 
-Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](../../../reference/rune).  Nevertheless, there are some general principles that hold of all rune expressions.
+Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](/docs/reference/hoon-expressions/rune).  Nevertheless, there are some general principles that hold of all rune expressions.
 
 #### Tall and Flat Forms
 
@@ -264,7 +264,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 
 The `( )` gate-calling syntax can be used for gates of any other [arity](https://en.wikipedia.org/wiki/Arity) as well.
 
-You've already seen two other irregular forms.  In [lesson 1.5](../hoon-ch1-5), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
+You've already seen two other irregular forms.  In [lesson 1.5](../gates), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
 
 ```
 > =inc |=(a=@ (add 1 a))
@@ -308,7 +308,7 @@ The `a=15` expression is the irregular form of `^=(a 15)`:
 35
 ```
 
-You can find other irregular forms in the irregular expression [reference document](../../../reference/irregular).
+You can find other irregular forms in the irregular expression [reference document](/docs/reference/irregular).
 
 ### Expressions That Are Only Irregular
 
@@ -349,7 +349,7 @@ b=[16 18]
 [16 18]
 ```
 
-To see other irregular expressions, check the irregular expression [reference document](../../../reference/irregular).
+To see other irregular expressions, check the irregular expression [reference document](docs/reference/irregular).
 
 ## Hoon Style
 

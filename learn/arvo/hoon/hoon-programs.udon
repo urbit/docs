@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'27'
+        sort/'21'
         title/'Hoon Programs'
     ==
 ;>
 
-# Writing Hoon Programs
+# 2.1 Writing Hoon Programs
 
 So far you've only entered short snippets of Hoon code into the dojo.  Let's look at some substantive programs.
 

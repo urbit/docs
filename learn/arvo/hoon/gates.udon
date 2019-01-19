@@ -1,7 +1,7 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'25'
+        sort/'15'
         title/'Gates (Hoon Functions)'
     ==
 ;>

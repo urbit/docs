@@ -119,6 +119,11 @@ A lead core `a` has an opaque payload.  There is no constraint on
 the payload of a core `b` which nests within it.  Hence,
 *bivariant*.
 
+(_Opaque_ here means that the faces and arms are not exported into
+the namespace, and that the values of faces and arms can't be written to.
+The object in question can be replaced by something else without breaking type
+safety.)
+
 An iron core `a` has a write-only sample (payload head, `+6.a`)
 and an opaque context (payload tail, `+7.a`).  A core `b` which
 nests within it must be a gold or iron core, such that `+6.a`
