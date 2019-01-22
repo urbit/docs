@@ -1,0 +1,23 @@
+:-  :~  navhome/'/docs/'
+        navuptwo/'true'
+        sort/'6'
+        title/'Hoon Workbook'
+    ==
+;>
+
+# Hoon Workbook
+
+The Workbook is the place to sharpen your Hoon skills. Each entry in the
+Workbook is a code walkthrough followed by exercises.
+
+- The [Caesar Cipher](/docs/learn/arvo/workbook/caesar) shows you how to build a simple method of message obfuscation.
+
+- The [Recursion](/docs/learn/arvo/workbook/recursion) walkthrough will explain common patterns of recursion in programming and how to implement them in Hoon.
+
+- The [Digits](/docs/learn/arvo/workbook/digits) example demonstrates how to decompose a number into a list of its digits.
+
+- The [Magic 8-Ball](/docs/learn/arvo/workbook/eightball) example emulates everyone's favorite decision-making machine.
+
+- The [Traffic-light](/docs/learn/arvo/workbook/traffic-light) example demonstrates how to creates a state machine in Hoon.
+
+- The [Bomb-defusing](/docs/learn/arvo/workbook/bomb) exercise shows how to program, well, a bomb-defusing scenario.
