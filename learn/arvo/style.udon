@@ -7,22 +7,18 @@
 
 # Hoon Style Guide
 
+Welcome to the Hoon style guide. It's important to
+
 ## Layout
 
-Layout in Hoon is an art.  Hoon's position on layout is: so long
-as your code is (a) correctly commented, (b) free from blank or
-overlong lines, (c) parses, and (d) looks good, it's good layout.
-
-(Hoon does not accept the "gofmt" thesis that there is one true
-layout.  A heuristic algorithm could probably lay out decent
-Hoon.  Someone will probably write such an algorithm, which
-doesn't mean they should.  Why can't there be art in the world?
-Why does everything have to be solved by robot?)
+Hoon's position on layout is: so long as your code is (a) correctly commented,
+(b) free from blank or overlong lines, (c) parses, and (d) looks good, it's good
+layout.
 
 When a layout standard or other fundamental coding convention is
 not perfectly rigid, code can develop some individual flavor.
-But Hoon's layout rules, though not rigid, are still strict.  So
-the flavor should never overwhelm the content.
+But Hoon's layout rules, though not rigid, are still strict.  The
+flavor should never overwhelm the content.
 
 ### General outline of Hoon syntax
 
@@ -48,27 +44,23 @@ or
 ```
 
 These are regular forms -- every rune can be written this way.
-Hoon also has a variety of wide irregular forms.  All tall
+Hoon also has a variety of wide [irregular forms](/docs/reference/hoon-expressions/irregular).  All tall
 forms are regular.  All code within a wide form is wide.
-Almost all code has both wide and tall forms (the exception:
-named cores).
+Almost all code has both wide and tall forms, the exception
+being named cores.
 
 The goal of wide/tall forms is to resemble the look of
 procedural code, with its statement/expression distinction,
 in a purely functional language.  In particular, complex code in
 functional languages tends to develop a diagonal shape, since
-child nodes in the syntax tree are indented right.  This shape
-creates a constant struggle against the right margin.
+child nodes in the syntax tree are indented right.
 
 ### Tall layout conventions
 
 In wide form, the parser allows no freedom of layout (and no
-comments, either).  In tall form, there is too much freedom.
-We need conventions.
-
-But -- if you really know what you're doing -- you can play with
-these conventions.  But don't do it just out of carelessness,
-ego or boredom.  Have a reason.
+comments, either).  In tall form, there is too much freedom, and so we need
+conventions. These conventions aren't absolute, but
+you shouldn't defy them unless you have a good reason to do so.
 
 Syntactically, there are three kinds of runes: fixed sequences,
 variable sequences, and cores/engines.  Let's talk about each.
@@ -121,7 +113,7 @@ It is sometimes acceptable to not backstep -- especially in tuple
 runes: `:-,` `:_`, `:+` and `+^`.  But you should have a specific reason:
 for example: emphasizing symmetry in a tuple.
 
-####   Variable sequences
+#### Variable sequences
 
 Variable sequences can have an arbitrary number of elements, so
 they can't self-terminate.  They are terminated by a `==` marker.
@@ -179,8 +171,8 @@ Queenside format:
 ```
 
 The queenside format is more useful when the tails are bigger.
-(It is also usually hard to read without linebreak comments,
-as shown above.)
+It is also usually hard to read without linebreak comments,
+as demonstrated above.
 
 We sometimes end up with multiple terminators on separate lines,
 two or more spaces apart.  These lines can be collapsed:
@@ -222,7 +214,7 @@ two empty lines in a row in a Hoon file.
 
 Whitespace is semi-significant.  The difference between a
 space and a gap (more than one space) is significant.  But two or
-more spaces, newlines or comments are one gap.
+more spaces, newlines, or comments are one gap.
 
 #### Comment conventions
 
@@ -251,7 +243,7 @@ legitimate:
     this.is.more.code
 ```
 
-But more air is less often needed than you may think.
+But air on both sides is needed less often than you may think.
 
 Crowded comments are comments on lines which also contain code.
 Older code has a lot of these, especially the "column 56"
@@ -472,10 +464,8 @@ after the definition) has an explanation.  This is obviously a
 judgment call, as a grade of A should always be.  If a definition
 doesn't call for any explanation, it must be dead obvious.
 
-Two: every `%constant` we use must be defined where it is used --
-not just where it's declared.  (Formal comment binding lets us
-write one decoration hint at the base of an expression, even when
-there are many uses of the same constant in the same code.)
+Two: every `%constant` we use must be defined where it is used,
+not just where it's declared.
 
 The advantage of a `%constant` over a classic `typedef`: there is no
 need to search formally for a symbol.  The disadvantage: there is
@@ -483,7 +473,6 @@ no trivial way to find out what the symbol actually means.  So
 when I send some `%foobar` move, I should define what I think
 `%foobar` means.  Just copy and paste the original definition.
 
-The A grade should be hard to earn.  Code shouldn't even try for
-an A until it is quite stable.  The worst thing in the world is
-code that changes without the documentation.  Any *incorrect*
-comment in a file drops it all the way back to a D.
+Code shouldn't even try for an A until it is quite stable.  The worst
+thing in the world is code that changes without updating the documentation.
+Any *incorrect* comment in a file drops it all the way back to a D.
