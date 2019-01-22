@@ -81,7 +81,7 @@ Mold generator.  A `jug` is a `map` of `set`.
 
 #### Discussion
 
-See also: [`ja`](../2j), [`by`](../2i), [`map`](../2i), [`set`](..2h)
+See also: [`ja`](../2j), [`by`](../2i), [`set`](../2h)
 
 ---
 ### `++map`

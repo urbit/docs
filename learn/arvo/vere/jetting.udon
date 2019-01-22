@@ -502,7 +502,7 @@ First, you may need to massage your inputs a bit to get them into types that you
 
 You have received a bunch of `u3_nouns` or `u3_atoms`, but you presumably want to do things in a native C / non-Hoon manner: computing w raw integers, etc.
 
-A `u3_noun` will want to be further diassembled into atoms.
+A `u3_noun` will want to be further disassembled into atoms.
 
 A `u3_atom` represents a simple number, but the implementation may or
 may not be simple.  If the value held in the atom is 31 bits or less,

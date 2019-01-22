@@ -12,7 +12,7 @@
 FNV scrambler
 
 Hashes an atom with the 32-bit FNV non-cryptographic hash algorithm. Multiplies
-`a` by the prime number 16,777,619 and then takes the [block](../2c.md) of size
+`a` by the prime number 16,777,619 and then takes the [block](../2c) of size
 5 off the product's end, producing an atom.
 
 #### Accepts

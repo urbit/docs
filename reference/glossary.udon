@@ -712,8 +712,7 @@ number of bits in their address:
 Any ship can be called an _urbit_. The lowercase "u" distinguishes it from Urbit
 the software stack and Urbit the network.
 
-_You can find a longer-form summary here:
-[`urbit.org/posts/address-space/`](https://urbit.org/posts/address-space/)._
+_You can find a longer-form summary [here.](https://urbit.org/posts/essays/the-urbit-address-space/)._
 
 An Urbit identity is a string like `~firbyr-napbes`. It means nothing,
 but it's easy to remember and say out loud. `~firbyr-napbes` is actually
@@ -880,7 +879,7 @@ of the simpler built-in types.
   error. This is one of the most commons errors in Hoon programming.
 
   _See [advanced types](/docs/reference/hoon-expressions/advanced/)_.
-  _See [troubleshooting](/docs/reference/hoon-expressions/troubleshooting)_.
+  _See [troubleshooting](/docs/reference/troubleshooting)_.
 
 
 ### Unit
