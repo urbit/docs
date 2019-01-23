@@ -55,9 +55,9 @@ and printed using `++so` and `++co` cores.
 
 Aura-atom pair
 
-Used in `++coin`. Convenience methods [`++scot`](../4m.md) and
-[`++scow`](../4m.md) print dimes as `++cord` and `++tape`, respectively.
-[`++slat`](../4m.md), [`++slav`](../4m.md), and [`++slaw`](../4m.md) are used
+Used in `++coin`. Convenience methods [`++scot`](../4m) and
+[`++scow`](../4m) print dimes as `++cord` and `++tape`, respectively.
+[`++slat`](../4m), [`++slav`](../4m), and [`++slaw`](../4m) are used
 to parse atoms of specific auras.
 
 #### Source
@@ -98,7 +98,7 @@ Optional result `p` and parsing continuation `q`.
 
 #### Discussion
 
-See also: [Section 2e](../2e.md), `++rule`
+See also: [Section 2e](../2e), `++rule`
 
 
 ---

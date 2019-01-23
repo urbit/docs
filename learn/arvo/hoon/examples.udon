@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'37'
+        sort/'30'
         title/'Examples'
     ==
 ;>
 
-# Examples
+# 2.10 Examples
 
 Let's look at two more examples of Hoon code: the Sieve of Eratosthenes (a naive prime sieve) and a tic-tac-toe engine.
 

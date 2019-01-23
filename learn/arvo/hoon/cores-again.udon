@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'34'
+        sort/'26'
         title/'Cores Again'
     ==
 ;>
 
-# Cores Again
+# 2.6 Cores Again
 
 In the last lesson you learned a bit about how to use cores as state machines.  In this lesson you'll expand on that knowledge, in particular by learning how to use the `=^` rune.  At the end of the lesson you'll learn how to write a generator that shuffles a 52 card deck and deals hands from it.
 
@@ -153,7 +153,7 @@ Another way to cast for the type of the parent core of an arm is to use `_+>.$`.
 
 But what does it mean?  First, the `_` indicates the irregular form of the `$_` rune.  That is, `_+>.$` evaluates `+>.$` and produces a type from the resulting noun.
 
-What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](../hoon-ch1-4), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
+What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](../arms-and-cores), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
 
 Thus, `+>.$` evaluates to `+7` of the gate containing `$`.  For our `plus` arm, the gate in question is the one defined by:
 

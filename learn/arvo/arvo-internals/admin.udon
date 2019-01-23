@@ -143,7 +143,7 @@ To generate a random moon from your planet, run:
 ```
 
 You can use the resulting output in the same installation flow from
-[install](/../install) and [setup](/../setup), following the same scheme as
+[install](../install) and [setup](../setup), following the same scheme as
 for booting a planet. That scheme is:
 
 ```
@@ -162,7 +162,7 @@ $ urbit -w faswep-navred-sampel-palnet -t habref-mebsem-parsym-batlus -c mymoon
 
 Moons are automatically synced to their parent `%kids` desk, and can control
 applications on their parent planet using `|link`.  You can read more about
-those operations in the [filesystem](/../filesystem) and [console](/../shell)
+those operations in the [filesystem](../filesystem) and [console](../shell)
 walkthroughs, respectively.
 
 

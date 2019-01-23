@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'32'
+        sort/'25'
         title/'Structures and Complex Types'
     ==
 ;>
 
-# Structures and Complex Types
+# 2.5 Structures and Complex Types
 
 In this lesson we'll talk a little about how type expressions become structures, and how these structures manifest in different ways in different parts of your Hoon code.  We'll also talk about how to create your own custom-defined complex types from simpler ones.
 

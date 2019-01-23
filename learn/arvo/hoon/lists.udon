@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'35'
+        sort/'28'
         title/'Standard Library: Lists'
     ==
 ;>
 
-# Standard Library: Lists
+# 2.8 Standard Library: Lists
 
 In this lesson we'll review what a list is and then cover many of the list-related functions in the Hoon standard library.
 

@@ -535,7 +535,7 @@ when you run a command like `+ls` or `|merge`, there are no marks in
 sight.
 
 We've used generators before, back in [Basic
-Operation](/docs/using/admin). At that point, we just used the
+Operation](/docs/learn/arvo/arvo-internals/admin). At that point, we just used the
 generators to produce values -- we didn't pipe their results into apps.
 In the dojo cast, the role of a generator is to take a list of arguments
 and produce a value, which is often, though not always, piped into an
@@ -576,10 +576,8 @@ pattern is so common, this can be abbreviated to
 generators for the `:hood` app, `:hood|generator <args>` can be
 shortened to `|generator <args>`.
 
-Let's write a generator for a modified version of `:pong` from
-the chapter on [Network Messages](/docs/arvo/system/network). Recall
-that `:pong` takes an urbit address, which is of mark `urbit`,
-and sends that urbit the message `'howdy'`. First--without a
+Let's write a generator called `:pong` that takes an urbit address, which is of
+mark `urbit`, and sends that urbit the message `'howdy'`. First--without a
 generator--let's make `:ping` that does the same, except that
 it lets the user optionally specify the message as well.
 
@@ -785,7 +783,7 @@ purl:eyre)`.  Thus, the result is null if and only if the url is malformed.
 When you send this request, you can expect a `%sigh` with the
 response, which we handle later on in `++sigh-httr`.
 
-For `%wait`, you just pass a [`@da`]() (absolute date), and arvo will
+For `%wait`, you just pass a `@da` (absolute date), and arvo will
 produce a `%wake` when the time comes.
 
 > A timer is guaranteed to not be triggered before the given time, but it's currently impossible to guarantee the timer will be triggered at exactly the requested time.

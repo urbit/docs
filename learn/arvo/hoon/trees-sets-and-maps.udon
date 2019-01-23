@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'36'
+        sort/'29'
         title/'Standard Library: Trees, Sets, and Maps'
     ==
 ;>
 
-# Hoon Standard Library: Trees, Sets, and Maps
+# 2.9 Hoon Standard Library: Trees, Sets, and Maps
 
 Along with lists, the Hoon standard library also supports trees, sets, and maps as data structures.  A Hoon `tree` is the data structure for a binary tree.  A Hoon `set` is the data structure for a set of values.  A Hoon `map` is the data structure for a set of `[key value]` pairs.
 

@@ -323,12 +323,12 @@ destination.
 *Example:*
 
 ```
-[I'm an inline-style link](https://www.urbit.org/docs/hoon/library)
+[I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
 ```
 
 ###### Produces:
 
-[I'm an inline-style link](https://www.urbit.org/docs/hoon/library)
+[I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
 
 The second type is a reference-style link, which uses a relative path, based on
 the current page's location. Instead of the full url, we use `..` to fill in
@@ -337,14 +337,14 @@ the all of the URL that the destination has in common with the origin page.
 *Example:*
 
 ```
-[I'm a reference-style link](../library)
+[I'm a reference-style link](../shell)
 ```
 
 ###### Produces:
 
-[I'm a reference-style link](../library)
+[I'm a reference-style link](../shell)
 
-If this page is located at `https://www.urbit.org/docs/hoon/`, then these two
+If this page is located at `https://www.urbit.org/docs/reference/`, then these two
 examples should have the same destination.
 
 #### Anchor Link

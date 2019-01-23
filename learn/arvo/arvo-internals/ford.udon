@@ -127,7 +127,7 @@ library in urbit.
 
 To run this example, put this code in your desk at `gen/faslus.hoon` and run
 `+faslus` in your dojo. This example is a generator. For more information on
-generators, see the [generator docs](https://urbit.org/docs/arvo/generators).
+generators, see the [generator docs](/docs/arvo/arvo-internals/generators).
 
 ```
 /+  time-to-id
@@ -281,7 +281,7 @@ produces the text of the hoon file at "/path/to/hoon-file/hoon".
 passes the contents through unchanged.  In general, rendering a file with a
 mark will potentially run the contents through a series of conversion
 operations. For details on marks, see the
-[marks docs](https://urbit.org/docs/arvo/marks).
+[Gall docs](../gall).
 
 Here's an example that includes a mark conversion:
 ```

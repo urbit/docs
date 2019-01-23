@@ -45,5 +45,5 @@ computation Landscape the latter is not. We need a computational blockchain to
 enforce the specific rules of the Urbit identity registry.
 
 For more background on the decision to use the Ethereum blockchain, check out
-[these](urbit.org/essays/urbit-and-the-blockchain)
-[two](urbit.org/updates/2017.9.20-bootstrapping-urbit-from-ethereum) posts.
+[these](urbit.org/posts/essays/urbit-and-the-blockchain)
+[two](urbit.org/posts/updates/2017.9.20-bootstrapping-urbit-from-ethereum) posts.

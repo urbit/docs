@@ -497,8 +497,8 @@ see what its value is.
 
 The first line, `=+  wid=(met 3 p.bem.gas)`, combines a new noun with the
 subject and gives it the face `wid`. This noun is produced by the the
-standard-library function [`met`](../reference/library/2c), which measures the number of
-[blocks](../reference/library/1c/) of size `a` within `b`. Blocks are units that have a
+standard-library function [`met`](/docs/reference/library/2c), which measures the number of
+[blocks](/docs/reference/library/1c/) of size `a` within `b`. Blocks are units that have a
 bitwidth of `2^a`. So, in this case, it measures how many bytes (blocks of size
 3 are bitwidths of 8; `2^3 = 8`) are fully contained in your ship's address.
 

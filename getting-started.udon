@@ -349,6 +349,19 @@ urbit -F zod
 If you want to get on the Arvo network with your point, then continue to the
 next section.
 
+;=
+  ;h3
+    ;div(id "swap"): Set Up Swap
+  ==
+==
+
+If you're running Urbit in the cloud on a small instance, you may need to additionally configure swap space. If you're not, skip this section.
+
+Urbit wants to map 2GB of memory when it boots up. We won’t necessarily use all this memory, we just want to see it. On a normal modern PC or Mac, or on a large cloud virtual machine, this is not an issue. On some small cloud virtual machines (Amazon or Digital Ocean), the default memory configuration is smaller than this, and you need to manually configure a swapfile.
+
+Digital Ocean has a post on adding swap [here](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04). For Amazon there’s a StackOverflow thread [here](https://stackoverflow.com/questions/17173972/how-do-you-add-swap-to-an-ec2-instance).
+
+Don’t spend a lot of time tweaking these settings; the simplest thing is fine.
 
 ;=
   ;h2
