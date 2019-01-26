@@ -238,7 +238,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 ;=
   ;h3
-    ;div(id "cenket"): %- "cenket"
+    ;div(id "cenket"): %^ "cenket"
   ==
 ==
 
