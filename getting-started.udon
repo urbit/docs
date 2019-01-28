@@ -94,13 +94,13 @@ seed is also useful to perform everyday operations (such as boot your ship!).
 
 Select the appropriate option and click `Continue ->`.
 
-If you already have a point, (for example, if you are trying to boot a ship
-from a pre-etherium era network) you should see a list of points associated with your
+If you already have a point -- for example, if you are trying to boot a ship```
+from a pre-Ethereum-era network -- you should see a list of points associated with your
 keys. If you are trying to boot a planet for the first time, click on the
-details link for that point. At the bottom on the details page there is
-a section called `Urbit Networking` if this section is filled out, proceed to step 6.
+`Details` link for that point. At the bottom on the Details page, there is
+a section called `Urbit Networking`. If the fields in this section are filled out, proceed to step 6.
 
-If you do not have a point and are getting one sent to you, proceed to step 4.
+If you do not yet have a point and are getting one sent to you, proceed to step 4.
 
 #### Step 4: Accept Your Transfer
 
@@ -125,8 +125,8 @@ network seed and derive a new keyfile. See our
 [HD Wallet Spec](https://github.com/urbit/proposals/blob/master/8.udon)
 for more information.
 
-It should be noted that this is an event on the etherium network and will cost
-(generally) a trivial amount of gas to complete.
+It should be noted that this is an event on the Ethereum network and will cost
+ a trivial, but non-zero, amount of [gas](https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees) to complete.
 
 #### Step 6: Generate Your Keyfile
 
