@@ -246,7 +246,7 @@ For example, let `n` be 4.  What is `&4`?  `&3` is equivalent to `+14`.  `(14 x 
 ~
 ```
 
-As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `+3`.  In the generating case, assume that `&(n - 1)` is equivalent to `+k`.  Then `&n` is equivalent to `+((k x 2) + 3)`.
+As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `+3`.  In the generating case, assume that `|(n - 1)` is equivalent to `+k`.  Then `|n` is equivalent to `+((k x 2) + 1)`.
 
 ### Other Limb Expressions: Names
 
