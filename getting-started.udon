@@ -94,7 +94,7 @@ seed is also useful to perform everyday operations (such as boot your ship!).
 
 Select the appropriate option and click `Continue ->`.
 
-If you already have a point -- for example, if you are trying to boot a ship```
+If you already have a point -- for example, if you are trying to boot a ship
 from a pre-Ethereum-era network -- you should see a list of points associated with your
 keys. If you are trying to boot a planet for the first time, click on the
 `Details` link for that point. At the bottom on the Details page, there is
@@ -126,7 +126,7 @@ network seed and derive a new keyfile. See our
 for more information.
 
 It should be noted that this is an event on the Ethereum network and will cost
- a trivial, but non-zero, amount of [gas](https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees) to complete.
+a trivial, but non-zero, amount of [gas](https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees) to complete.
 
 #### Step 6: Generate Your Keyfile
 
