@@ -373,9 +373,9 @@ a union, with a default.
 *Pseudocode*: `a`, `b`, `c`, ... as elements of `r`:
 
 ```
-?:  ?=(p.a)  q.a
-?:  ?=(p.b)  q.b
-?:  ?=(p.c)  q.c
+?:  ?=(p.a p)  q.a
+?:  ?=(p.b p)  q.b
+?:  ?=(p.c p)  q.c
 ...
 q
 ```
