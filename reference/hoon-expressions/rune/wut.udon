@@ -224,9 +224,9 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 *Pseudocode*: `a`, `b`, `c`, ... as elements of `q`:
 
 ```
-?:  ?=(p.a)  q.a
-?:  ?=(p.b)  q.b
-?:  ?=(p.c)  q.c
+?:  ?=(p.a p)  q.a
+?:  ?=(p.b p)  q.b
+?:  ?=(p.c p)  q.c
 ...
 ~|(%mint-lost !!)
 ```
