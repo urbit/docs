@@ -162,3 +162,6 @@ If not, line 7 uses the rune `:-` to produce a cell.  Why is the program produci
 The product of the `$( )` call on line 8 is another list.  It essentially says that the value of `count` is to be replaced by `(add 1 count)`, and that the code starting at `|-` is to be run again.
 
 And that's it!
+
+
+### [Next Lesson: Hoon Syntax](../hoon-syntax)

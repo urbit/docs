@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'25'
+        sort/'26'
         title/'Structures and Complex Types'
     ==
 ;>
 
-# 2.5 Structures and Complex Types
+# 2.6 Structures and Complex Types
 
 In this lesson we'll talk a little about how type expressions become structures, and how these structures manifest in different ways in different parts of your Hoon code.  We'll also talk about how to create your own custom-defined complex types from simpler ones.
 
@@ -355,4 +355,6 @@ Often `$@` is used to define a type with a null or trivial case for the `@` case
 
 Now the `~` value is included as a possible value for `user`.
 
-That's all we have to say about types in this chapter.  More on types in Chapter 3.
+That's all we have to say about types in this chapter.  More on types in [Chapter 3](../type-polymorphism).
+
+### [Next Lesson: Cores](../cores)

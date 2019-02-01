@@ -8,8 +8,8 @@
 
 The Arvo network is composed of virtual machines running our software stack. Using a blockchain for this kind of computing is impossible: there's far too much data involved in an operating system to run on top of a distributed consensus mechanism. And you don't want your private information on a public ledger. The Arvo network is not a blockchain.
 
-However, being a decentralized system, we need some way to cryptographically secure and authenticate your identity on the Arvo network. What keeps track of who owns any given identity? Well, simply matching something to an address is a small piece of computing, and a blockchain are wonderful for such a purpose. That's where the Azimuth comes in. 
+However, being a decentralized system, we need some way to cryptographically secure and authenticate your identity on the Arvo network. What keeps track of who owns any given identity? Well, simply matching something to an address is a small piece of computing, and a blockchain are wonderful for such a purpose. That's where the Azimuth comes in.
 
-We chose to build Azimuth on the Ethereum blockchain because smart contracts are well-suited for the peculiarities of the identities. Urbit identities are owned by Ethereum addresses. 
+We chose to build Azimuth on the Ethereum blockchain because smart contracts are well-suited for the peculiarities of the identities. Urbit identities are owned by Ethereum addresses.
 
-Azimuth and the Arvo network are parallel systems. Azimuth isn't necessarily Arvo-related; it can be used as a generalized identity system for other projects. Azimuth is the equivalent of a bank vault that stores the deed to your house. The Arvo network is the neighborhood that you live in. 
+Azimuth and the Arvo network are parallel systems. Azimuth isn't necessarily Arvo-related; it can be used as a generalized identity system for other projects. Azimuth is the equivalent of a bank vault that stores the deed to your house. The Arvo network is the neighborhood that you live in.
