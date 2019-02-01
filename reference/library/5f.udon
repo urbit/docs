@@ -13,7 +13,7 @@
 XML name
 
 An XML name (tag name or attribute name) with an optional namespace.  Parsed by
-`++name` within `++poxa`, rendered by `++name` within `++poxo`.
+`++name:de-xml:html` in `zuse.hoon`, rendered by `++name:en-xml:html` in `zuse.hoon`.
 
 #### Source
 
@@ -41,7 +41,7 @@ See also: `++sail`
 
 XML node.
 
-Parsed by `++apex` within `++poxa`, rendered by `++poxo`.
+Parsed by `++apex` within `++apex:de-xml:html` in `zuse.hoon`, rendered by `++apex:en-xml:html` in `zuse.hoon`.
 
 #### Source
 
@@ -72,13 +72,12 @@ A list of `++manx`.
 
 
 
-
 ---
 ### `++mars`
 
 XML CDATA
 
-Implicitly produced by `++chrd` within `++poxa`
+Implicitly produced by `++chrd` within `++chrd:de-xml:html`
 
 #### Source
 
@@ -98,7 +97,7 @@ List of XML attributes
 Each `++mart` is a list of pairs of `++mane` and
 `++tape`.
 
-Parsed by `++attr` within `++poxa`, rendered by `++attr` within `++poxo`
+Parsed by `++attr:de-xml:html` in `zuse.hoon`, rendered by `++attr:en-xml:html` in `zuse.hoon`.
 
 #### Source
 
@@ -109,14 +108,13 @@ Parsed by `++attr` within `++poxa`, rendered by `++attr` within `++poxo`
 #### Examples
 
 
-
 ---
 ### `++marx`
 
 XML tag
 
 A `++marx` is a pair of a tag name, `++mane` and a list of attributes,
-`++mart`. Parsed by `++head` `++poxa`, rendered within `++poxo`.
+`++mart`. Parsed by `++head:de-xml:html` in `zuse.hoon`, rendered within `++de-xml:html` in `zuse.hoon`.
 
 #### Source
 
