@@ -1,4 +1,4 @@
-:-  :~  navhome/'/docs/'
+rang:clay`case:clay`:-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
         sort/'3'
@@ -478,7 +478,7 @@ at least skimming, this so that you get a rough idea of how our state is
 organized.
 
 The types that are certainly worth reading are `++raft`, `++room`,
-`++dome`, `++ankh`, `++rung`, `++rang`, `++blob`, `++yaki`, and `++nori`
+`++dome:clay`, `++ankh:clay`, `++rung:clay`, `++rang:clay`, `++blob:clay`, `++yaki:clay`, and `++nori:clay`
 (possibly in that order). All in all, though, this section isn't too
 long, so many readers may wish to quickly read through all of it. If you
 get bored, though, just skip to the next section. You can always come
@@ -562,7 +562,7 @@ ducts from where the subscriptions requests came. The results will be
 produced along these ducts. The values are a description of the
 requested information.
 
-#### `++rave`, general subscription request
+#### `++rave:clay`, general subscription request
 
 ```
     ++  rave                                                ::  general request
@@ -585,7 +585,7 @@ When we store a request, we store subscriptions with a little extra
 information so that we can determine whether new versions actually
 affect the path we're subscribed to.
 
-#### `++mood`, single subscription request
+#### `++mood:clay`, single subscription request
 
 ```
     ++  mood  ,[p=care q=case r=path]                       ::  request in desk
@@ -595,7 +595,7 @@ This represents a request for the state of the desk at a particular
 commit, specfied by `q`. `p` specifies what kind of information is
 desired, and `r` specifies the path we are requesting.
 
-#### `++moat`, range subscription request
+#### `++moat:clay`, range subscription request
 
 ```
     ++  moat  ,[p=case q=case r=path]                       ::  change range
@@ -611,12 +611,12 @@ by the path or to any of its children.
     ++  moot  ,[p=case q=case r=path s=(map path lobe)]     ::
 ```
 
-This is just a `++moat` plus a map of paths to lobes. This map
+This is just a `++moat:clay` plus a map of paths to lobes. This map
 represents the data at the node referenced by the path at case `p`, if
 we've gotten to that case (else null). We only send a notification along
 the subscription if the data at a new revision is different than it was.
 
-### ` `++care`, clay submode
+### `++care:clay`, clay submode
 
 ```
     ++  care  ?(%u %v %w %x %y %z)                          ::  clay submode
@@ -625,11 +625,11 @@ the subscription if the data at a new revision is different than it was.
 This specifies what type of information is requested in a subscription
 or a scry.
 
-`%u` requests the `++rang` at the current moment. Because this
+`%u` requests the `++rang:clay` at the current moment. Because this
 information is not stored for any moment other than the present, we
-crash if the `++case` is not a `%da` for now.
+crash if the `++case:clay` is not a `%da` for now.
 
-`%v` requests the `++dome` at the specified commit.
+`%v` requests the `++dome:clay` at the specified commit.
 
 `%w` requests the revsion number of the desk.
 
@@ -647,7 +647,7 @@ if `q:ankh` is null), then this produces null.
     ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
 ```
 
-This is analogous to `++ankh` except that the we have neither our
+This is analogous to `++ankh:clay` except that the we have neither our
 contents nor the ankhs of our children. The other fields are exactly the
 same, so `p` is a hash of the associated ankh, `u.q`, if it exists, is a
 hash of the contents of this node, and the keys of `r` are the names of
@@ -655,7 +655,7 @@ our children. `r` is a map to null rather than a set so that the
 ordering of the map will be equivalent to that of `r:ankh`, allowing
 efficient conversion.
 
-#### `++case`, specifying a commit
+#### `++case:clay`, specifying a commit
 
 ```
     ++  case                                                ::  ship desk case spur
@@ -669,9 +669,9 @@ A commit can be referred to in three ways: `%da` refers to the commit
 that was at the head on date `p`, `%tas` refers to the commit labeled
 `p`, and `%ud` refers to the commit numbered `p`. Note that since these
 all can be reduced down to a `%ud`, only numbered commits may be
-referenced with a `++case`.
+referenced with a `++case:clay`.
 
-#### `++dome`, desk data
+#### `++dome:clay`, desk data
 
 ```
     ++  dome                                                ::  project state
@@ -695,7 +695,7 @@ commit.
 the total number of numbered commits.
 
 `hit` is a map of numerical ids to hashes of commits. These hashes are
-mapped into their associated commits in `hut:rang`. In general, the keys
+mapped into their associated commits in `hut:rang:clay`. In general, the keys
 of this map are exactly the numbers from 1 to `let`, with no gaps. Of
 course, when there are no numbered commits, `let` is 0, so `hit` is
 null. Additionally, each of the commits is an ancestor of every commit
@@ -805,14 +805,14 @@ satisfied.
 `fod` is the same set as `bom`, but from a different perspective. In
 particular, the values of `fod` are the same as the values of `bom`, and
 the `p` out of the values of `bom` are the same as the keys of `fod`.
-Thus, we can map ducts to their associated request number and `++rave`,
-and we can map numbers to their associated duct and `++rave`.
+Thus, we can map ducts to their associated request number and `++rave:clay`,
+and we can map numbers to their associated duct and `++rave:clay`.
 
 `haw` is a map from simple requests to their values. This acts as a
 cache for requests that have already been made. Thus, the second request
-for a particular `++mood` is nearly instantaneous.
+for a particular `++mood:clay` is nearly instantaneous.
 
-#### `++rang`, data store
+#### `++rang:clay`, data store
 
 ```
     ++  rang  $:  hut=(map tako yaki)                       ::
@@ -825,25 +825,25 @@ is stored, but it is only meaningful if we know the hash of what we're
 looking for.
 
 `hut` is a map from hashes to commits. We often get the hashes from
-`hit:dome`, which keys them by logical id. Not every commit has an id.
+`hit:dome:clay`, which keys them by logical id. Not every commit has an id.
 
 `lat` is a map from hashes to the actual data. We often get the hashes
 from a `++yaki`, a commit, which references this map to get the data.
-There is no `++blob` in any `++yaki`. They are only accessible through
+There is no `++blob:clay` in any `++yaki:clay`. They are only accessible through
 this map.
 
-#### `++tako`, commit reference
+#### `++tako:clay`, commit reference
 
 ```
     ++  tako  ,@                                            ::  yaki ref
 ```
 
-This is a hash of a `++yaki`, a commit. These are most notably used as
-the keys in `hut:rang`, where they are associated with the actual
-`++yaki`, and as the values in `hit:dome`, where sequential ids are
+This is a hash of a `++yaki:clay`, a commit. These are most notably used as
+the keys in `hut:rang:clay`, where they are associated with the actual
+`++yaki:clay`, and as the values in `hit:dome:clay`, where sequential ids are
 associated with these.
 
-#### `++yaki`, commit
+#### `++yaki:clay`, commit
 
 ```
     ++  yaki  ,[p=(list tako) q=(map path lobe) r=tako t=@da] ::  commit
@@ -858,24 +858,24 @@ practice merges have exactly two parents. This may change in the future.
 For commit 1, there is no parent.
 
 `q` is a map of the paths on a desk to the data at that location. If you
-understand what a `++lobe` and a `++blob` is, then the type signature
+understand what a `++lobe:clay` and a `++blob:clay` is, then the type signature
 here tells the whole story.
 
 `r` is the hash associated with this commit.
 
 `t` is the date at which this commit was made.
 
-#### `++lobe`, data reference
+#### `++lobe:clay`, data reference
 
 ```
     ++  lobe  ,@                                            ::  blob ref
 ```
 
-This is a hash of a `++blob`. These are most notably used in `lat:rang`,
-where they are associated with the actual `++blob`, and as the values in
-`q:yaki`, where paths are associated with their data in a commit.
+This is a hash of a `++blob:clay`. These are most notably used in `lat:rang:clay`,
+where they are associated with the actual `++blob:clay`, and as the values in
+`q:yaki:clay`, where paths are associated with their data in a commit.
 
-#### `++blob`, data
+#### `++blob:clay`, data
 
 ```
     ++  blob  $%  [%delta p=lobe q=lobe r=udon]             ::  delta on q
@@ -993,7 +993,7 @@ This space intentionally left undocumented. This stuff is not known to
 work, and will likely change when we get a well-typed clay. Also, this
 is not a complicated type; it is not difficult to work out the meaning.
 
-#### `++nori`, repository action
+#### `++nori:clay`, repository action
 
 ```
     ++  nori                                                ::  repository action
@@ -1009,7 +1009,7 @@ we can apply a label to a commit.
 In the `|` case, we will simply label the current commit with the given
 label. In the `&` case, we will apply the given changes.
 
-#### `++soba`, delta
+#### `++soba:clay`, delta
 
 ```
     ++  soba  ,[p=cart q=(list ,[p=path q=miso])]           ::  delta
@@ -1021,7 +1021,7 @@ of changes keyed by the file they're changing. Thus, the paths are paths
 to files to be changed while `miso` is a description of the change
 itself.
 
-#### `++miso`, ankh delta
+#### `++miso:clay`, ankh delta
 
 ```
     ++  miso                                                ::  ankh delta
@@ -1037,7 +1037,7 @@ We can delete a file, in which case `p` is the contents of the old file.
 Finally, we can mutate that file, in which case the `udon` describes the
 changes we are applying to the file.
 
-#### `++mizu`, merged state
+#### `++mizu:clay`, merged state
 
 ```
     ++  mizu  ,[p=@u q=(map ,@ud tako) r=rang]              ::  new state
@@ -1051,7 +1051,7 @@ are to be inserted. The keys to this should always be the numbers from
 commits and data. Since these are merged into the current state, no old
 commits or data need be here.
 
-#### `++riff`, request/desist
+#### `++riff:clay`, request/desist
 
 ```
     ++  riff  ,[p=desk q=(unit rave)]                       ::  request/desist
@@ -1062,7 +1062,7 @@ contains a `rave`, then this opens a subscription to the desk for that
 data. If `q` is null, then this tells clay to cancel the subscription
 along this duct.
 
-#### `++riot`, response
+#### `++riot:clay`, response
 
 ```
     ++  riot  (unit rant)                                   ::  response/complete
@@ -1072,7 +1072,7 @@ A riot is a response to a subscription. If null, the subscription has
 been completed, and no more responses will be sent. Otherwise, the
 `rant` is the produced data.
 
-#### `++rant`, response data
+#### `++rant:clay`, response data
 
 ```
     ++  rant                                                ::  namespace binding
@@ -1103,7 +1103,7 @@ of a desk. This allows us to easily keep track of a remote repository --
 all the new information we need is contained in the `nako`.
 
 `gar` is a map of the revisions in the range to the hash of the commit
-at that revision. These hashes can be used with `hut:rang` to find the
+at that revision. These hashes can be used with `hut:rang:clay` to find the
 commit itself.
 
 `let` is either the last revision number in the range or the most recent
@@ -1115,7 +1115,7 @@ revision number, whichever is smaller.
 
 As with all vanes, there are exactly two ways to interact with clay.
 `%clay` exports a namespace accessible through `.^`, which is described
-above under `++care`. The primary way of interacting with clay, though,
+above under `++care:clay`. The primary way of interacting with clay, though,
 is by sending kisses and receiving gifts.
 
 ```
@@ -1150,7 +1150,7 @@ changes to the filesystem. Whenever we add, remove, or edit a file, one
 of these cards is sent. The `p` is the ship whose filesystem we're
 trying to change, the `q` is the desk we're changing, and the `r` is the
 request change. For the format of the requested change, see the
-documentation for `++nori` above.
+documentation for `++nori:clay` above.
 
 When a file is changed in the unix filesystem, vere will send a `%into`
 kiss. This tells clay that the duct over which the kiss was sent is the
@@ -1184,7 +1184,7 @@ filesystem for a ship.
 This is called to perform a merge. This is most visibly called by
 :update to update the filesystem of the current ship to that of its
 sein. The `p` and `q` are as in `%info`, and the `r` is the description
-of the merge. See `++mizu` above.
+of the merge. See `++mizu:clay` above.
 
 XX
 `XX                [%wake ~]                                 ::  timer activate XX`
@@ -1209,7 +1209,7 @@ it into a `%warp`.
 
 This is a request for information about a particular desk. This is, in
 its most general form, a subscription, though in many cases it is the
-trivial case of a subscription -- a read. See `++riff` for the format of
+trivial case of a subscription -- a read. See `++riff:clay` for the format of
 the request.
 
 ## Lifecycle of a Local Read
@@ -1433,7 +1433,7 @@ than the present. Since we don't store that information for any other
 time, we can't produce it in a referentially transparent manner for any
 time other than the present.
 
-Then, we try to read the requested `mood` `p.rav`. If we can't access
+Then, we try to read the requested `mood:clay` `p.rav`. If we can't access
 the request data right now, we call `++duce` to put the request in our
 queue to be satisfied when the information becomes available.
 
@@ -1555,7 +1555,7 @@ stored in `arvo/clay.hoon`. We examine `++case-to-aeon:ze`.
         ==
 ```
 
-We handle each type of `case` differently. The latter two types are
+We handle each type of `case:clay` differently. The latter two types are
 easy.
 
 If we're requesting a revision by label, then we simply look up the

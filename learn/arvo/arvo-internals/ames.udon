@@ -102,8 +102,7 @@ that is sent over the wire, so be careful not to send anything too
 massive unless you're willing to wait.
 
 But enough about the interface. Grepping in ames.hoon for `%wont`, we
-find that it appears in exactly two places: at its definition in
-`++kiss`, and in `++knob`, where it is handled. We see that we go
+find that it appears in `++knob`. We see that we go
 directly into `++wise:am`.
 
 ```
@@ -152,11 +151,11 @@ This is slightly more complicated, but it's still not all that bad. Our
 inputs, at least, are fairly obvious.
 
 If you glance at the code for a second, you'll see that
-`++wind:ho:um:am` seems to be able to send a message, or `++meal`, given
+`++wind:ho:um:am` seems to be able to send a message, or `++meal:ames`, given
 a `++soup`. This gate, then, just sets up the things we need to for
 `++wind` to do its job.
 
-We first get `rol`, which is a `++rill`, that is, a particular outbound
+We first get `rol`, which is a `++rill:ames`, that is, a particular outbound
 stream. This stream is specific to the path on which we're sending. If
 the path hasn't been used before, then we create it. We let `sex` be the
 number of messages we've already sent on this path.
@@ -171,7 +170,7 @@ crypto. At the moment, we only need our neighbor's life, which we put
 into the meal.
 
 Finally, we call `++wind:ho:um:am` with the `++soup` of the path and
-message number and the `++meal` of the payload itself. For end-to-end
+message number and the `++meal:ames` of the payload itself. For end-to-end
 acknowledged messages, we use `%bund`.
 
 ```
@@ -199,7 +198,7 @@ and (3) sends any packets that are ready to be sent. Yes, our nice
 little linear run of each gate calling exactly one other interesting
 gate is over. We'll go in order here.
 
-`++zuul:lax:as:go` is the what converts a `++meal` into a list of
+`++zuul:lax:as:go` is the what converts a `++meal:ames` into a list of
 actual, 1KB packets.
 
 ```
@@ -403,7 +402,7 @@ the ship names in a packet.
 
 Next, we construct `bod` by simply concatenating the sending ship, the
 receiving ship, and the body of the message. Then, we get the encryption
-mechanism from `++skin`, which may be a 0, 1, 2, or 3, and put it in
+mechanism from `++skin:ames`, which may be a 0, 1, 2, or 3, and put it in
 `tay`.
 
 Next, we concatenate together, bit by bit, some final metadata. We use
@@ -457,7 +456,7 @@ First, we put into `pyz` the id for this message and the number of its
 packets that have not yet been acknowledged, which is of course the
 total number of packets since we haven't even sent the packets.
 
-For every packet, we change three things in the state (`++shed`) of our
+For every packet, we change three things in the state (`++shed:ames`) of our
 packet pump: (1) we increment `nus`, the number of packets sent; (2) we
 put the packet number into `diq` keyed by a hash of the packet; and (3)
 we put the packet into the packet queue, with the basic metadata of its
@@ -573,11 +572,11 @@ to our neighbor. First, we get `fro` and `too`, the "canons" of ourself
 and our neighbor, respectively.
 
 What is this "canon", you ask? A canon is simply a ship plus its
-"ancestors", as defined by `++sein`. For example, the canon of
+"ancestors", as defined by `++sein:title`. For example, the canon of
 `~hoclur-bicrel` is:
 
 ```
-    ~hoclur-bicrel/try=> (saxo ~hoclur-bicrel)
+    ~hoclur-bicrel/try=> (saxo:title ~hoclur-bicrel)
     ~[~hoclur-bicrel ~tasruc ~tug]
 ```
 
@@ -605,7 +604,7 @@ Now, we can finally get to `++busk:ho:um:am`.
 ```
 
 Thankfully, `++busk` is fairly simple. We go through the list of packets
-and convert them to `++boon`s with `++wist:lax:as:go`. These boons are
+and convert them to `++boon:ames`s with `++wist:lax:as:go`. These boons are
 placed into `bin`, and they end up getting processed by `++clop` (this
 happens in `++knob`).
 
@@ -637,7 +636,7 @@ happens in `++knob`).
                   :-  %fast
                   %^  cat  7
                     p.u.yed.caq.dyr
-                  (en:crua q.u.yed.caq.dyr mal)
+                  (en:crub:crypto q.u.yed.caq.dyr mal)
               ==
 ```
 
@@ -648,9 +647,9 @@ First, if we are sending a message to ourself, then we simply create a
 `%ouzo` boon with a bunted lane. Otherwise, if there are no routing
 candidates, there is nothing we can do, so we return nil.
 
-Next, we get the `dore` of the first routing candidate. If we're looking
+Next, we get the `++dore:ames` of the first routing candidate. If we're looking
 at the neighbor to whom we're trying to send the message, then we simply
-use the `dore` that we already have. Otherwise, we get a default `dore`.
+use the `++dore:ames` that we already have. Otherwise, we get a default `++dore:ames`.
 
 If we're the first routing candidate, or if we have don't have a lane to
 this candidate, then we skip this candidate and move on to the next one.
@@ -660,7 +659,7 @@ we also try to send on later routing candidates as well. Otherwise, we
 only send on this one candidate.
 
 Finally, we create the actual `%ouzo` boon. The lane is the one from our
-`dore`. If we're sending it directly to our intended recipient, and we
+`++dore:ames`. If we're sending it directly to our intended recipient, and we
 haven't been told to use a specific lane, then we just send the packet
 directly. Otherwise, we wrap it in a little `%fore` meal, telling the
 intermediary to whom we wish it to be sent. If we have already set up a
@@ -705,7 +704,7 @@ earlier.
 Here, though, we call `++gnaw:am` to process the packet. The arguments
 to `++gnaw` are the same as those to the `%hear` kiss: the lane on which
 the packet was received and the packet itself. The other argument is
-just `%good`, which is a `++cape` saying that we expect the packet to
+just `%good`, which is a `++cape:ames` saying that we expect the packet to
 succeed. If a formal error occurs, then since we have a transactional
 event system, the `%hear` event will never be considered to have
 actually happened, and unix will send a `%hole` kiss so that we may send
@@ -728,7 +727,7 @@ a negative acknowledgment.
 
 First, we check the protocol number. If it is not correct, then we
 simply ignore the packet entirely. Otherwise, we parse the packet with
-`++bite`, which converts a packet atom into a `cake`, that is, a triple
+`++bite`, which converts a packet atom into a `++cake:ames`, that is, a triple
 of the `sock` (pair of sender and receiver), the `skin` (encryption
 type), and the data.
 
@@ -763,7 +762,7 @@ to these cores.
 
 The new stuff here, then, is the `++la` core and the `++chew` arm. The
 `++la` sets up a core for this particular packet, containing the current
-success/failure `cape`, the lane it was sent on, the encryption type,
+success/failure `++cape:ames`, the lane it was sent on, the encryption type,
 and a hash of the packet, used as an id.
 
 `++chew` is called with the encryption type and the message itself. It
@@ -795,7 +794,7 @@ we'll go into in just a minute.
 
 We now do the same two checks and store the results in `eng` and `bou`.
 If our neighbor has, like the prodigal son, returned after an extended
-absense, then we send a `%wine` boon as the proverbial fatted calf,
+absence, then we send a `%wine` boon as the proverbial fatted calf,
 which is simply printed out to the console. Likewise, if we are meeting
 one with whom we have never had the pleasure of acquainting ourselves,
 we send a message to the console to that effect.
@@ -849,7 +848,7 @@ send the result to `++chow` for interpretation and handling.
                     (chow(aut sin) ((hard meal) (cue (dy:q:sen:gus key bod))))
 ```
 
-For symmetric encryption, we first get the `hand`, which is the hash of
+For symmetric encryption, we first get the `++hand`, which is the hash of
 the symmetric key. We pass it to `++kuch:lax:as:go`, which returns the
 key if we either have used it before or we have proposed it. If we have
 proposed it, then we change its status from proposed to real. If
@@ -1024,7 +1023,7 @@ message, then we resend the ack. Note that `did.rum` is the number of
 packets we acknowledged, positively or negatively while `bum.rum` is a
 map of message numbers to negative acknowledgments. Thus, if a message
 number is less than `did.rum`, then if it's in `bum.rum` then it was
-negatively acknowledged, otherwise it's postively acknowledged. Thus, we
+negatively acknowledged, otherwise it's positively acknowledged. Thus, we
 are constant in space with the number of successful messages and linear
 in the number of failed messages. We'll document `++cook` later on, but
 suffice it to say that it sends an acknowledgment. It is to end-to-end
@@ -1054,7 +1053,7 @@ Otherwise, we're ready for a packet, so we process it.
                 :_  bin
                 :^    %mulk
                     [our her]
-                  `soap`[[p:sen:gus clon:diz] cha did.rum]
+                  `soap:ames`[[p:sen:gus clon:diz] cha did.rum]
                 u.s.u.cun
               ==
 ```
@@ -1563,71 +1562,7 @@ involved.
 
 ## Data Models
 
-### `++fort`, formal state
-
-```
-    ++  fort                                                ::  formal state
-              $:  %0                                        ::  version
-                  gad=duct                                  ::  client interface
-                  hop=@da                                   ::  network boot date
-                  ton=town                                  ::  security
-                  zac=(map ship corn)                       ::  flows by server
-              ==                                            ::
-```
-
-This is the state of our vane. Anything that must be remembered between
-calls to ames must be stored in this state.
-
-`%0` is the version of the ames state model itself. If the data model
-`++fort` changes, then this number needs to be incremented, and an
-adapter must be written to upgrade the old state into the new state.
-Note that this is the version number of the model itself, not the
-contents. When the data changes, there is of course no need to change
-this.
-
-`gad` is a `duct` over which we send `%send` cards to unix. This card is
-initialized when unix sends a `%barn` card as vere starts up. Vere
-treats this duct specially -- don't send anything weird over it.
-
-`hop` is the network boot date. This is set when the `%kick` card is
-sent by vere on start up.
-
-`ton` is a `++town`, where we store all of our security/encryption
-state. Note that this is shared across all ships on a pier.
-
-`zac` is a map of ships to `++corn`. This stores all the per-ship state.
-The keys to this map are the ships on the current pier.
-
-### `++town`, all security state
-
-```
-    ++  town                                                ::  all security state
-              $:  lit=@ud                                   ::  imperial modulus
-                  any=@                                     ::  entropy
-                  urb=(map ship sufi)                       ::  all keys and routes
-                  fak=?                                     ::
-              ==                                            ::
-```
-
-This is the security state of our pier.
-
-`lit` is unused.
-
-`any` is 256 bits of entropy. This entropy is used and updated in
-exactly two places: when we send a `%junk` card, and when we generate a
-new symmetric key in `++griz:lax:as:go`. When it is updated, it is
-updated by a SHA-256 hash of the current time and the old value of the
-entropy.
-
-`urb` is a map of ships to `++sufi`. This is where we store all the
-per-ship state for the pier. The keys to this map are the ships on the
-current pier.
-
-`fak` is true if we are on a fake network. This disables certain
-security checks so that anyone may run a fake `~zod`. This is used only
-for development. To use, run vere with the `-F` option.
-
-### `++sufi`, domestic host
+### `++sufi:ames`, domestic host
 
 ```
     ++  sufi                                                ::  domestic host
@@ -1643,7 +1578,7 @@ This is the security state of a domestic server.
 
 `hoy` is a list of the ships directly above us in the hierarchy of
 ships. For example, for `~hoclur-bicrel`, this would be `~tasruc` and
-`~tug`. See `++sein`.
+`~tug`. See `++sein:title`.
 
 `val` is a list of our private keys.
 
@@ -1651,20 +1586,20 @@ ships. For example, for `~hoclur-bicrel`, this would be `~tasruc` and
 
 `seh`
 
-`hoc` is a map of ships to `++dore`. The stores all the security
-informatoin about foreign ships. The keys to this map are the neighbors
+`hoc` is a map of ships to `++dore:ames`. The stores all the security
+information about foreign ships. The keys to this map are the neighbors
 (ships we have been in contact with) of this domestic server.
 
-### `++wund`, private keys
+### `++wund:ames`, private keys
 
 ```
     ++  wund  (list ,[p=life q=ring r=acru])                ::  mace in action
 ```
 
 This is a list of our own private keys, indexed by life. The key itself
-is the `++ring`, and the `++acru` is the encryption engine. We generate
-the `++acru` from the private key by calling `++weur`. Thus, we can at
-any time regenerate our `++wund` from a `++mace`. The current crypto is
+is the `++ring`, and the `++acru:ames` is the encryption engine. We generate
+the `++acru:ames` from the private key by calling `++weur`. Thus, we can at
+any time regenerate our `++wund:ames` from a `++mace:ames`. The current crypto is
 at the head of the list and can be accessed with `++sen:as:go`.
 
 ### `++ring`, private key
@@ -1675,7 +1610,7 @@ at the head of the list and can be accessed with `++sen:as:go`.
 
 This is a private key. The first byte is reserved to identify the type
 of cryptography. Lower-case means public key, upper-case means public
-key, and the letter identifies which `++acru` to use.
+key, and the letter identifies which `++acru:ames` to use.
 
 ### `++pass`, public key
 
@@ -1685,18 +1620,18 @@ key, and the letter identifies which `++acru` to use.
 
 This is a public key. The first byte is reserved to identify the type of
 cryptography. Lower-case means public key, upper-case means public key,
-and the letter identifies which `++acru` to use.
+and the letter identifies which `++acru:ames` to use.
 
-### `++mace`, private secrets
+### `++mace:ames`, private secrets
 
 ```
     ++  mace  (list ,[p=life q=ring])                       ::  private secrets
 ```
 
 This is a list of the our private keys, indexed by life. From this we
-can generate a `++wund` for actual use.
+can generate a `++wund:ames` for actual use.
 
-### `++skin`, encoding stem
+### `++skin:ames`, encoding stem
 
 ```
     ++  skin  ?(%none %open %fast %full)                    ::  encoding stem
@@ -1705,9 +1640,9 @@ can generate a `++wund` for actual use.
 This defines the type of encryption used for each message. `%none`
 refers to messages sent in the clear, `%open` refers to signed messages,
 `%full` refers to sealed messages, and `%fast` refers to symmetrically
-encrypted messages. See `++acru` for details.
+encrypted messages. See `++acru:ames` for details.
 
-### `++acru`, asymmetric cryptosuite
+### `++acru:ames`, asymmetric cryptosuite
 
 ```
     ++  acru                                                ::  asym cryptosuite
@@ -1738,11 +1673,10 @@ encrypted messages. See `++acru` for details.
 
 This is an opaque interface for a general asymmetric cryptosuite. Any
 form of asymmetric cryptography can be dropped in to be used instead of
-the default. Right now, there are two cryptosuites, `++crua`, which is
-your standard RSA, and `++crub`, which is elliptic curve crypto but is
-mostly stubbed out at the moment.
+the default. Right now, there is one cryptosuite: `++crub:crypto:crypto`,
+which is elliptic-curve cryptography.
 
-#### `++as:acru`, asymmetric operations
+#### `++as:acru:ames`, asymmetric operations
 
 ```
               ++  as  ^?                                    ::  asym ops
@@ -1757,29 +1691,29 @@ mostly stubbed out at the moment.
 This is the core that defines the standard asymmetric cryptography
 operations.
 
-`++seal:as:acru` allows us to send a message encrypted with someone's
+`++seal:as:acru:ames` allows us to send a message encrypted with someone's
 public key so that only they may read it. If Alice seals a message with
 Bob's public key, then she can be sure that Bob is the only one who can
-read it. This is associated with the `++skin` `%full`.
+read it. This is associated with the `++skin:ames` `%full`.
 
-`++sign:as:acru` allows us to sign a message with our private key so
+`++sign:as:acru:ames` allows us to sign a message with our private key so
 that others can verify that we sent the message. If Alice signs a
 message with her private key, then Bob can verify with her public key
 that it was indeed Alice who sent it. This is associated with the
-`++skin` `%open`.
+`++skin:ames` `%open`.
 
-`++sure:as:acru` is the dual to `++sign:as:acru`. It allows us to verify
+`++sure:as:acru:ames` is the dual to `++sign:as:acru:ames`. It allows us to verify
 that a message we have received is indeed from the claimed sender. If
 Alice sends a message with her private key, then Bob can use this arm to
 verify that it was indeed Alice who sent it. This is associated with the
-`++skin` `%open`.
+`++skin:ames` `%open`.
 
-`++tear:as:acru` is the dual to `++seal:as:acru`. It allows us to read a
+`++tear:as:acru:ames` is the dual to `++seal:as:acru:ames`. It allows us to read a
 message that we can be sure is only read by us. If Alice seals a message
 with Bob's public key, then Bob can use this arm to read it. This is
-associated with the `++skin` `%full`.
+associated with the `++skin:ames` `%full`.
 
-#### `++de:acru`, `++dy:acru`, and `++en:acru`, symmetric encryption/decryption
+#### `++de:acru:ames`, `++dy:acru:ames`, and `++en:acru:ames`, symmetric encryption/decryption
 
 ```
               ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
@@ -1787,18 +1721,18 @@ associated with the `++skin` `%full`.
               ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
 ```
 
-Symmetric encryption is associated with the `++skin` `%fast`.
+Symmetric encryption is associated with the `++skin:ames` `%fast`.
 
-`++de:acru` decrypts a message with a symmetric key, returning `~` on
+`++de:acru:ames` decrypts a message with a symmetric key, returning `~` on
 failure and `[~ u=data]` on success.
 
-`++dy:acru` decrypts a message with a symmetric key, crashing on
+`++dy:acru:ames` decrypts a message with a symmetric key, crashing on
 failure. This should almost always be defined as, and should always be
 semantically equivalent to, `(need (de a b))`.
 
-`++en:acru` encrypts a message with a symmetric key.
+`++en:acru:ames` encrypts a message with a symmetric key.
 
-#### `++ex:acru`, exporting data
+#### `++ex:acru:ames`, exporting data
 
 ```
               ++  ex  ^?                                    ::  export
@@ -1809,18 +1743,18 @@ semantically equivalent to, `(need (de a b))`.
                 --
 ```
 
-`++fig:ex:acru` is our fingerprint, usually a hash of our public key.
+`++fig:ex:acru:ames` is our fingerprint, usually a hash of our public key.
 This is used, for example, in `++zeno`, where every carrier owner's
 fingerprint is stored so that we can ensure that carriers are indeed
 owned by their owners
 
-`++pac:ex:acru` is our default passcode, which is unused at present.
+`++pac:ex:acru:ames` is our default passcode, which is unused at present.
 
-`++pub:ex:acru` is the `++pass` form of our public key.
+`++pub:ex:acru:ames` is the `++pass` form of our public key.
 
-`++sec:ex:acru` is the `++ring` form of our private key.
+`++sec:ex:acru:ames` is the `++ring` form of our private key.
 
-#### `++nu:acru`, reconstructors
+#### `++nu:acru:ames`, reconstructors
 
 ```
               ++  nu  ^?                                    ::  reconstructors
@@ -1830,21 +1764,17 @@ owned by their owners
                 --
 ```
 
-These arms allow us to reconstruct a `++acru` from basic data.
+These arms allow us to reconstruct a `++acru:ames` from basic data.
 
-`++pit:nu:acru` constructs a `++acru` from the width of our intended key
+`++pit:nu:acru:ames` constructs a `++acru:ames` from the width of our intended key
 and seed entropy. This is usually used in the initial construction of
-the `++acru`.
+the `++acru:ames`.
 
-`++nol:nu:acru` constructs a `++acru` from a "naked ring", meaning a
-`++ring` without the initial byte identifying the type of crypto. There
-is often a helper arm that that wraps this; see `++weur` for `++crua`
-and `++wear` for `++crub`.
+`++nol:nu:acru:ames` constructs a `++acru:ames` from a "naked ring", meaning a
+`++ring` without the initial byte identifying the type of crypto.
 
-`++com:nu:acru` constructs a `++acru` from a "naked pass", meaning a
-`++ring` without the initial byte identifying the type of crypto. There
-is often a helper arm that that wraps this; see `++haul` for `++crua`
-and `++hail` for `++crub`.
+`++com:nu:acru:ames` constructs a `++acru:ames` from a "naked pass", meaning a
+`++ring` without the initial byte identifying the type of crypto.
 
 ### `++will`, certificate
 
@@ -1874,7 +1804,7 @@ issued \~tasruc's deed).
 that the carrier fingerprints are correct. This allows us to create fake
 networks for development without interfering with the real network.
 
-### `++step`, identity stage
+### `++step:ames`, identity stage
 
 ```
     ++  step  ,[p=bray q=gens r=pass]                       ::  identity stage
@@ -1890,7 +1820,7 @@ lives.
 
 `r` is the public key for this stage in the identity.
 
-### `++bray`
+### `++bray:ames`
 
 ```
     ++  bray  ,[p=life q=(unit life) r=ship s=@da]          ::  our parent us now
@@ -1898,7 +1828,7 @@ lives.
 
 XXX
 
-### `++gens`, general identity
+### `++gens:ames`, general identity
 
 ```
     ++  gens  ,[p=lang q=gcos]                              ::  general identity
@@ -1910,7 +1840,7 @@ localized based on this.
 
 `q` is the description of the ship.
 
-### `++gcos`, identity description
+### `++gcos:ames`, identity description
 
 ```
     ++  gcos                                                ::  id description
@@ -1949,7 +1879,7 @@ negligible, so submarines are not issued by any ship. They must simply
 assert their presence, and they are all considered children of \~zod.
 This is the underworld of Urbit, where anonymity reigns supreme.
 
-### `++what`, logical destroyer identity
+### `++what:ames`, logical destroyer identity
 
 ```
     ++  what                                                ::  logical identity
@@ -1973,7 +1903,7 @@ A `%lord` is a male person. The name used here should be a real name.
 
 A `%punk` is a person who is identified only by a handle.
 
-### `++whom`, real person
+### `++whom:ames`, real person
 
 ```
     ++  whom  ,[p=@ud q=govt r=sect s=name]                 ::  year/govt/id
@@ -1990,7 +1920,7 @@ information that could be observed with the briefest of interactions.
 
 `s` is the real name of the person.
 
-### `++govt`
+### `++govt:ames`
 
 ```
     ++  govt  path                                          ::  country/postcode
@@ -1998,7 +1928,7 @@ information that could be observed with the briefest of interactions.
 
 This is the location of the user, usually of the form "country/zip".
 
-### `++sect`
+### `++sect:ames`
 
 ```
     ++  sect  ?(%black %blue %red %orange %white)           ::  banner
@@ -2006,7 +1936,7 @@ This is the location of the user, usually of the form "country/zip".
 
 XXX
 
-### `++name`
+### `++name:ames`
 
 ```
     ++  name  ,[p=@t q=(unit ,@t) r=(unit ,@t) s=@t]        ::  first mid/nick last

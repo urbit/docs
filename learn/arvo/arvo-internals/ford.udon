@@ -545,11 +545,11 @@ Wide-form `/#` does not need a delimiter:
 At the moment, only HTTP requests forwarded by `%eyre` contain any extra arguments,
 and using this rune outside of that context will cause an error. Requests from `%eyre`
 contain an argument representing the query string, which can be parsed using the
-standard library gate `++fuel`.
+standard library gate `++fuel:html`.
 
 Example:
 ```
-/=  gas  /$  fuel
+/=  gas  /$  fuel:html
 ::
 :*
   %who    {<(~(get ju aut.ced.gas) 0)>}
@@ -560,7 +560,7 @@ Example:
 produces: [%who '~zod' %where /ford/pages/web %case 60]
 
 Wide-form `/$` takes its arguments inside brackets, like `/~`:
-`/=gas=/$[fuel]`
+`/=gas=/$[fuel:html]`
 
 ### `/%` propagate extra arguments into renderers
 

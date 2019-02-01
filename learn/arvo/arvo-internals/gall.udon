@@ -768,7 +768,7 @@ be null here because we aren't doing any authentication; a mark, in this
 case the http request mark `&httr`; and some data in the form of a
 `cage`, which is a `[mark vase]`. This is confusing, so the mold in the
 code quoted above includes a bunch of otherwise unnecessary faces for
-the purpose of illustration. Compare: `[%hiss p=(unit iden) q=mark
+the purpose of illustration. Compare: `[%hiss p=(unit user) q=mark
 r=cage]` from `zuse`.
 
 > You can grep zuse.hoon and arvo.hoon for most of these definitions. However, beware the ambiguity surrounding "hiss": there's ++hiss in section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the move that is sent to %eyre to make our HTTP request happen. Here we're talking about the latter. See `++kiss-eyre` in `zuse`.
@@ -2002,7 +2002,7 @@ Thus, we're producing our state unchanged.
 
 Our list of moves is the result of a call to `++turn`. `++turn` is what many
 languages call "map" -- it runs a function on every item in a list and collects
-the results in a list. The list is `(prey /example-path bow)` and the function
+the results in a list. The list is `(prey:pubsub:userlib /example-path bow)` and the function
 is the `|=` line right after it.
 
 `prey:pubsub:userlib` is a standard library function defined in `zuse.hoon`. It takes a path
