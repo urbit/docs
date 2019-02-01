@@ -647,7 +647,7 @@ if `q:ankh` is null), then this produces null.
     ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
 ```
 
-This is analogous to `++ankh` except that the we have neither our
+This is analogous to `++ankh:clay` except that the we have neither our
 contents nor the ankhs of our children. The other fields are exactly the
 same, so `p` is a hash of the associated ankh, `u.q`, if it exists, is a
 hash of the contents of this node, and the keys of `r` are the names of
