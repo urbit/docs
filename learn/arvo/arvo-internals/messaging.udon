@@ -259,8 +259,8 @@ That's my message!
 
 If information got truncated — like what happens for long URLs or expressions,
 or if there's additional information available — as is the case with
-replies and attachments — activating the message will show you all the
-details.
+replies and attachments (e.g. stack traces) — activating the message will show
+you all the details.
 
 You can also activate the most recent line with `;`, the second-most recent
 with `;;`, and so on.
