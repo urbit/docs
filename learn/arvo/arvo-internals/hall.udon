@@ -184,11 +184,11 @@ As an example, Talk operates like this, serving as an interface for reading from
 
 ### Federation
 
-Some places, like `urbit-meta`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both of these desires can be achieved through federation.
+Some places, like `urbit-help`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both of these desires can be achieved through federation.
 
 With federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).
 
-This way, all planets and comets will be able to subscribe to `/urbit-meta` (that is, the `urbit-meta` circle on their parent ship) and get all updates on the story, regardless of where on the network they originated.
+This way, all planets and comets will be able to subscribe to `/urbit-help` (that is, the `urbit-help` circle on their parent ship) and get all updates on the story, regardless of where on the network they originated.
 
 ### Public membership
 
@@ -642,8 +642,8 @@ Query paths are structured as follows:
 Valid paths include:
 
 ```
-:>  peers for circle %urbit-meta
-/peers/urbit-meta
+:>  peers for circle %urbit-help
+/peers/urbit-help
 ```
 
 #### /peers prize
@@ -717,22 +717,22 @@ Query paths are structured as follows:
 Valid paths include:
 
 ```
-:>  get all messages from circle %urbit-meta
-/circle/urbit-meta/grams
-:>  get all messages, all presences and local configs from %urbit-meta
-/circle/urbit-meta/grams/group/config-l
-:>  get all messages %urbit-meta has heard from its source ~zod/fora
-/circle/urbit-meta/~zod/fora/grams
-:>  get the first 100 messages from %urbit-meta
-/circle/urbit-meta/grams/0/99
-:>  get the first 100 messages %urbit-meta has heard from its source ~zod/fora
-/circle/urbit-meta/~zod/fora/grams/0/99
-:>  get all messages from %urbit-meta, starting now
-/circle/urbit-meta/grams/group/(scow %da now)
-:>  get all messages from %urbit-meta, starting now, ending at the 100th message
-/circle/urbit-meta/grams/(scow %da now)/99
-:>  get local presences from %urbit-meta for a week
-/circle/urbit-meta/group-l/(scow %da now)/(scow %da (add now ~d7))
+:>  get all messages from circle %urbit-help
+/circle/urbit-help/grams
+:>  get all messages, all presences and local configs from %urbit-help
+/circle/urbit-help/grams/group/config-l
+:>  get all messages %urbit-help has heard from its source ~zod/fora
+/circle/urbit-help/~zod/fora/grams
+:>  get the first 100 messages from %urbit-help
+/circle/urbit-help/grams/0/99
+:>  get the first 100 messages %urbit-help has heard from its source ~zod/fora
+/circle/urbit-help/~zod/fora/grams/0/99
+:>  get all messages from %urbit-help, starting now
+/circle/urbit-help/grams/group/(scow %da now)
+:>  get all messages from %urbit-help, starting now, ending at the 100th message
+/circle/urbit-help/grams/(scow %da now)/99
+:>  get local presences from %urbit-help for a week
+/circle/urbit-help/group-l/(scow %da now)/(scow %da (add now ~d7))
 ```
 
 #### /circle prize

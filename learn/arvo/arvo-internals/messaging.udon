@@ -12,7 +12,7 @@ Talk is the built-in frontend for the Urbit messaging and notifications
 protocol, Hall. Today we use Hall to chat and coordinate, but it's really
 a general purpose piece of infrastructure.
 
-For the time being come join us in `/urbit-meta` by using the
+For the time being come join us in `/urbit-help` by using the
 'quickstart' section below.
 
 Today, Hall is sort of like a distributed, encrypted Slack that can be
@@ -32,8 +32,8 @@ take a look at its [documentation](../hall).
 ## Quickstart
 
 The most common use of talk right now is as a single-instance of Slack: one main
-channel (`/urbit-meta`) and direct messages. Everyone is more than welcome
-in `/urbit-meta`. It's the place to get help, ask questions and chat about
+channel (`/urbit-help`) and direct messages. Everyone is more than welcome
+in `/urbit-help`. It's the place to get help, ask questions and chat about
 Urbit in general.
 
 There are two ways of using Talk: from the terminal running the Urbit process,
@@ -47,30 +47,30 @@ circles, but we for now we'll be dealing with the _channel_: a publicly
 accessible chatroom for general use. We'll discuss the other three
 kinds in the [manual](#manual) section.
 
-Let's join the `/urbit-meta` channel. Use `ctrl-x` to switch from Dojo to Talk.
+Let's join the `/urbit-help` channel. Use `ctrl-x` to switch from Dojo to Talk.
 Then, :
 
 ```
-~your-urbit:talk> ;join /urbit-meta
+~your-urbit:talk> ;join /urbit-help
 ```
 
 You'll see something like:
 
 ```
---------------| ;join /urbit-meta
---------------| :: onn /urbit-meta
---------------| bound '=' {[hos=~binzod nom=%urbit-meta]}
---------------| new = /urbit-meta
---------------| /urbit-meta: cap: For Urbit-related discussion. Politically
+--------------| ;join /urbit-help
+--------------| :: onn /urbit-help
+--------------| bound '=' {[hos=~binzod nom=%urbit-help]}
+--------------| new = /urbit-help
+--------------| /urbit-help: cap: For Urbit-related discussion. Politically
               | correct and safe for work. Don't be rude.
---------------| /urbit-meta: fit: caps:n unic:n
+--------------| /urbit-help: fit: caps:n unic:n
 ~your-urbit:talk=
 ```
 
 Scrolling down your terminal window, you'll probably also see the playback of
-previous `/urbit-meta` messages that you missed.
+previous `/urbit-help` messages that you missed.
 
-Post a line to `/urbit-meta`:
+Post a line to `/urbit-help`:
 
 ```
 ~your-urbit:talk= Hello, world!
@@ -102,10 +102,10 @@ Now you and `~talsur-todres` can exchange messages directly.
 ~your-urbit:talk[~talsur-todres] Hey buddy!
 ```
 
-To set your audience back to `/urbit-meta`:
+To set your audience back to `/urbit-help`:
 
 ```
-~your-urbit:talk[~talsur-todres] ;/urbit-meta
+~your-urbit:talk[~talsur-todres] ;/urbit-help
 ```
 
 You'll see your prompt change back:
@@ -114,7 +114,7 @@ You'll see your prompt change back:
 ~your-urbit:talk=
 ```
 
-You can also use the ASCII "glyph" assigned to your `/urbit-meta` circle as a shortcut:
+You can also use the ASCII "glyph" assigned to your `/urbit-help` circle as a shortcut:
 
 ```
 ~your-urbit:talk[~talsur-todres] ;=
@@ -126,7 +126,7 @@ You can also use the ASCII "glyph" assigned to your `/urbit-meta` circle as a sh
 Use `;leave` to unsubscribe from a channel:
 
 ```
-~your-urbit:talk= ;leave /urbit-meta
+~your-urbit:talk= ;leave /urbit-help
 ```
 
 The web UI ships as compiled JavaScript on your urbit, but has its own
@@ -383,7 +383,7 @@ messages sent to `~other/circle` to also appear in `%name`.
 For example:
 
 ```
-~sampel-palnet:talk> ;source %coolbox ~marzod/urbit-meta
+~sampel-palnet:talk> ;source %coolbox ~marzod/urbit-help
 ```
 
 ###### Unsource
@@ -395,7 +395,7 @@ Removes `~other/circle` as a source for circle `%name`.
 For example:
 
 ```
-~sampel-palnet:talk> ;unsource %coolbox ~marzod/urbit-meta
+~sampel-palnet:talk> ;unsource %coolbox ~marzod/urbit-help
 ```
 
 ### Circle Membership
@@ -444,7 +444,7 @@ specific circle to list members of just those: `;who ~some/circle`
 For example:
 
 ```
-~sampel-palnet:talk> ;who ~marzod/urbit-meta
+~sampel-palnet:talk> ;who ~marzod/urbit-help
 ```
 
 ###### Attend
@@ -463,7 +463,7 @@ you.)
 For example:
 
 ```
-~sampel-palnet:talk> ;attend ~marzod/urbit-meta idle
+~sampel-palnet:talk> ;attend ~marzod/urbit-help idle
 ```
 
 ###### Set Display Name
@@ -506,7 +506,7 @@ glyph in question. For example, to see `=`:
 
 ```
 ~sampel-palnet:talk> ;what =
-/urbit-meta
+/urbit-help
 ```
 
 Not every audience has a glyph, however. When the audience doesn't have a glyph,
