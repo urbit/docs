@@ -89,7 +89,7 @@ Our Tree system allows for pages to be designated as children of other pages.
 To do this for any given page, simply make a new folder in the directory that
 contains the page that will be the parent, and give that directory the same
 name. So, the children of a page `/home/web/foo.udon` will live in a directory
-called `/home/web/foo.udon`.
+called `/home/web/foo/`.
 
 Let's continue our with our `test.udon` example. Create `/sandbox/web/test/` and
 add two more Udon files in `/sandbox/web/test/daughter.udon`
