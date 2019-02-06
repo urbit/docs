@@ -6,100 +6,68 @@
 
 # Runes
 
-### Forming Expressions of Hoon
+Runes are a way to form expressions in Hoon.
 
-;div(class "book")
+## Non-Rune Expressions
 
-## Constants
+### [Constants](constants)
 
-Hoon uses runes to form expressions, but not all expressions have runes in them.  First, we have constant expressions (and also expressions that would be constant, but that they allow for interpolations):
+Hoon uses runes to form expressions, but not all expressions have runes in them.  First, we have constant expressions (and also expressions that would be constant, but that they allow for interpolations).
 
-;list(src "./constants");
+### [Limbs and Wings](../limb)
 
-;br;
+Limb and wing expressions also lack runes.
 
-## Limbs and Wings
+## Runes Proper
 
-Limb and wing expressions also lack runes:
+### [`. dot` (Nock)](dot)
 
-;list(src "./limb");
+Runes used for carrying out Nock operations in Hoon.
 
-;br;
+### [`! zap` (wild)](zap)
 
-## `. dot` (Nock)
+Wildcard category. Expressions that don't fit anywhere else go here.
 
-;list(src "./dot");
+### [`= tis` (Subject Modification)](tis)
 
-;br;
+Runes used to modify the subject.
 
-## `! zap` (wild)
+### [`? wut` (Conditionals)](wut)
 
-;list(src "./zap");
+Runes used for branching on conditionals.
 
-;br;
+### [`| bar` (Cores)](bar)
 
-## `= tis` (Subject Modification)
+Runes used to produce cores.
 
-;list(src "./tis");
+### [`+ lus` (Arms)](lus)
 
-;br;
+Runes used to define arms in a core.
 
-## `? wut` (Conditionals)
+### [`: col` (Cells)](col)
 
-;list(src "./wut");
+Runes used to produce cells, which are pairs of nouns.
 
-;br;
+### [`% cen` (Calls)](cen)
 
-## `| bar` (Cores)
+Runes used for making function calls in Hoon.
 
-;list(src "./bar");
+### [`^ ket` (Casts)](ket)
 
-;br;
+Runes that let us adjust types without violating type constraints.
 
-## `+ lus` (Arms)
+### [`$ bus` (Structures)](bus)
 
-;list(src "./lus");
+Runes used for defining custom types.
 
-;br;
+### [`; mic` (Make)](mic)
 
-## `: col` (Cells)
+Miscellaneous useful macros.
 
-;list(src "./col");
+### [`~ sig` (Hints)](sig)
 
-;br;
+Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
-## `% cen` (Calls)
+### [`--`, `==` (Terminators)](terminators)
 
-;list(src "./cen");
-
-;br;
-
-## `^ ket` (Casts)
-
-;list(src "./ket");
-
-;br;
-
-## `$ bus` (Structures)
-
-;list(src "./bus");
-
-;br;
-
-## `; mic` (Make)
-
-;list(src "./mic");
-
-;br;
-
-## `~ sig` (Hints)
-
-;list(src "./sig");
-
-;br;
-
-## `--`, `==` (Terminators)
-
-;list(src "./terminators");
-
-==
+Runes used to terminate expressions.
