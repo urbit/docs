@@ -191,7 +191,7 @@ infinite loop in the compiler).
 
 ;=
   ;h3
-    ;div(id "ketlus"): ^. "ketlus"
+    ;div(id "ketlus"): ^+ "ketlus"
   ==
 ==
 
