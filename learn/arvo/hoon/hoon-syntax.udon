@@ -591,3 +591,5 @@ A language lends itself to *feature/label confusion* (FLC) when it's difficult t
 The worst-case result of FLC is "DSL cancer".  Every source file with this malady is effectively written in its own domain-specific language (DSL).  Learning to read such a file is like learning a language.  One can also describe the result as "write-only code".  User-level macros, operator overloading, and even excessive use of higher-order programming, can all lead quickly to the tragedy of write-only code.
 
 Hoon largely avoids FLC by its use of runes.  Hoon has no user-level macros or operator overloading. It does support higher-order programming; write-only Hoon can certainly be (and has been) written.  However, with a little discipline one can write Hoon without inventing a DSL.
+
+### [Next Lesson: Simple One-Gate Programs](../simple-one-gate-programs)

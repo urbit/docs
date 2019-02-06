@@ -6,7 +6,7 @@
     ==
 ;>
 
-2.7 Cores
+# 2.7 Cores
 
 You learned what a core is in previous lessons.  After a brief review, let's talk about how to use cores effectively in Hoon programming.
 
@@ -397,3 +397,5 @@ Now run it in the dojo:
 Each of the `=.` expressions 'modifies' `num` by replacing the old `num` core with a different version of it.  In this program we 'modify' `num` four times.
 
 For more on how to use cores as state machines see the next lesson.
+
+### [Next Lesson: Cores Again](../cores-again)

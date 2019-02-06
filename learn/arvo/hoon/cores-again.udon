@@ -1,12 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'26'
+        sort/'28'
         title/'Cores Again'
     ==
 ;>
 
-# 2.6 Cores Again
+# 2.8 Cores Again
 
 In the last lesson you learned a bit about how to use cores as state machines.  In this lesson you'll expand on that knowledge, in particular by learning how to use the `=^` rune.  At the end of the lesson you'll learn how to write a generator that shuffles a 52 card deck and deals hands from it.
 
@@ -798,3 +798,5 @@ Save this as `carddeal.hoon` in `/gen` of your urbit's pier and run in the dojo:
 ```
 
 You get a different set of hands each time you run the generator.
+
+### [Next Lesson: Lists](../lists)

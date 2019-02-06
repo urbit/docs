@@ -778,3 +778,6 @@ Hoon pretty-prints them the same way, but can we be sure that they are the same 
 ```
 
 They are indeed the same.
+
+
+### [Next Lesson: Type Checking and Type Inference](../type-checking-and-type-inference)
