@@ -173,8 +173,8 @@ Below are Arvo modules, which are called "vanes".
 
   Gall is located at `/home/sys/vane/gall.hoon` within your urbit.
 
-  More in-depth information on Ford can be found
-  [`here`](/docs/tutorials/internals/gall/).
+  More in-depth information on Gall can be found
+  [`here`](/docs/learn/arvo/arvo-internals/gall/).
 
 ### atom
 
