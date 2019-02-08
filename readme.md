@@ -46,7 +46,7 @@ And now your docs are live! View them at:
 
 ## Building the docs with |static
 
-**note** This instructions are for use with the the [static-site-dev branch](https://github.com/urbit/arvo/tree/static-site-dev)
+**note** These instructions are for use with the the [static-site-dev branch](https://github.com/urbit/arvo/tree/static-site-dev)
 of Arvo.
 
 Arvo comes with a built-in static site generator, which is very useful for
