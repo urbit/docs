@@ -9,11 +9,8 @@
 
 Here are some tutorials written by members of the Urbit community. Some are a little outdated, but they may still prove useful.
 
-If you want to add something to this list, [shoot us an email](mailto:support@urbit.org).
+- [Generators](https://github.com/joemfb/mardev/tree/master/docs/gen) by `~master-morzod`
+- [Urbit by Doing](https://github.com/Fang-/Urbit-By-Doing) by `~palfun-foslup`
+- [Learning Hoon](https://github.com/knubie/learning-hoon) by `@knubie`
 
-- `~master-morzod`
-  - [Fora post](https://github.com/joemfb/mardev/tree/master/docs/gen)
-- `~palfun-foslup`
-  - [Urbit by Doing](https://github.com/Fang-/Urbit-By-Doing)
-- `@knubie`
-  - [Learning Hoon](https://github.com/knubie/learning-hoon)
+If you want to add something to the list, [shoot us an email](mailto:support@urbit.org) or make a pull request in the [docs repository](https://github.com/urbit/docs).
