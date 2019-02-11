@@ -85,7 +85,7 @@ ford: %ride failed to execute:
   ==
 ==
 
-Turn on stack trace for a subexpression `p`
+Turn off stack trace for a subexpression `p`
 
 ##### Produces
 
