@@ -40,3 +40,5 @@ If you're a developer looking for Arvo reference documentation, this section is 
 
 - [The Glossary](/docs/reference/glossary) will help if you're confused by all the new jargon.
 - [The Cheat Sheet](/docs/reference/cheat-sheet) is a compact document for looking up Hoon expressions.
+- [The Hoon Expressions](/docs/reference/hoon-expressions) section contains more comprehensive reference material for Hoon expressions.
+- [The Standard Library](/docs/reference/library) section documents the Hoon standard library.

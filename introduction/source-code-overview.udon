@@ -13,61 +13,22 @@ We host all our source code on GitHub at [github.com/urbit](https://github.com/u
 Since there's quite a number of repos, we'll talk about a few of the most
 important ones here:
 
-;ul(class "list spaced")
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/urbit"
-        ;code: urbit/urbit
-      ==
-    ==
-    This is the main Urbit repo. It contains the Urbit interpreter (all of the C code) and is the main entry point if you're going to build from source.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/arvo"
-        ;code: urbit/arvo
-      ==
-    ==
-    Arvo is the Urbit operating system (written in Hoon). When you boot your Urbit, you get this over the air. The source code is kept here, and you'll need it if you want to do any heavy development work.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/docs"
-        ;code:  urbit/docs
-      ==
-    ==
-    Interesting in working on Urbit documentation? This repository is where all the collaboration happens. The docs themselves are just markdown files hosted on a live ship.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/urbit.org"
-        ;code: urbit/urbit.org
-      ==
-    ==
-    This is where the source code for urbit.org lives. Like the docs, the urbit.org website is just a collection of a few markdown files rendered by Tree, the Urbit web publishing system.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/base-css"
-        ;code: urbit/base-css
-      ==
-    ==
-    We're working on a new Urbit style guide for urbit.org, the docs and Urbit web apps. If you're into visual design or are a CSS fanatic, jump in here.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/azimuth"
-        ;code: urbit/azimuth
-      ==
-    ==
-    Azimuth is a general-purpose PKI that Urbit uses for network identities.
-  ==
-  ;li
-    ;h1
-      ;a/"https://github.com/urbit/bridge"
-        ;code: urbit/bridge
-      ==
-    ==
-    Bridge is an offline web application for interacting with Ecliptic, the interface to Azimuth.
-  ==
-==
+## [`urbit/urbit`](https://github.com/urbit/urbit)
+
+This is the main Urbit repo. It contains the Urbit interpreter (all of the C code) and is the main entry point if you're going to build from source.
+
+## [`urbit/arvo`](https://github.com/urbit/arvo)
+
+Arvo is the Urbit operating system (written in Hoon). When you boot your Urbit, you get this over the air. The source code is kept here, and you'll need it if you want to do any heavy development work.
+
+Interesting in working on Urbit documentation? This repository is where all the collaboration happens. The docs themselves are just markdown files hosted on a live ship.
+
+## [`urbit/urbit.org`](https://github.com/urbit/urbit.org)
+
+This is where the source code for urbit.org lives. Like the docs, the urbit.org website is just a collection of a few markdown files rendered by Tree, the Urbit web publishing system.
+
+We're working on a new Urbit style guide for urbit.org, the docs and Urbit web apps. If you're into visual design or are a CSS fanatic, jump in here.
+
+## [`urbit.org/azimuth`](https://github.com/urbit/azimuth)
+
+Azimuth is a general-purpose PKI that Urbit uses for network identities.
