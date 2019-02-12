@@ -277,7 +277,7 @@ it.
 Additionally, if a file is to be synced out to unix, then it must
 have conversion routines to and from the `%mime` mark.
 
-##Using clay
+## Using clay
 
 ### Reading and Subscribing
 
