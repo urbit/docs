@@ -395,13 +395,13 @@ Urbit identity, and `path/to/my-planet.key` replaced with the path to your
 keyfile:
 
 ```
-urbit -w ~sample-planet -k path/to/my-planet.key
+urbit -w sample-planet -k path/to/my-planet.key
 ```
 
 Or, if you'd prefer to copy your key in, you can run:
 
 ```
-urbit -w ~sample-planet -G rAnDoMkEy
+urbit -w sample-planet -G rAnDoMkEy
 ```
 
 Either command will create a directory called `sample-planet/` and begin
