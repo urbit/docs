@@ -8,7 +8,7 @@ Urbit is a project, not a single computer system. It has three components: Arvo,
 
 *Arvo* is an operating system that provides the software for a personal server. These personal servers together constitute the peer-to-peer Arvo network. To make this network work on the social level, Arvo is built to work with a system of scarce and immutable identities.
 
-*Azimuth* is the public-key infrastructure built to be such a system. A suite of smart-contracts on the Ethereum blockchain, Azimuth determines which Ethereum addresses own which Azimuth identities, called _points_. All point-related operations, such as transfers, are governed at this layer. But Azimuth isn't necessarily Arvo-related -- it could be used as a generalized identity system for other projects.
+*Azimuth* is the public-key infrastructure built to be such a system. A suite of smart-contracts on the Ethereum blockchain, Azimuth determines which Ethereum addresses own which Azimuth identities, called _points_. All point-related operations, such as transfers, are governed at this layer. But Azimuth isn't built strictly for Arvo -- it could be used as a generalized identity system for other projects.
 
 These otherwise-parallel systems meet when you want to connect to the Arvo network. Your Arvo personal server, called your _ship_, needs to be able to prove cryptographically that it is who it says it is. This proof comes in the form of a keyfile, derived from your point, that you use to start your ship.
 
