@@ -353,30 +353,7 @@ To see other irregular expressions, check the irregular expression [reference do
 
 ## Hoon Style
 
-In this section we'll talk about preferred Hoon code style.  Strictly speaking, all the guidelines in this section are optional -- if you follow the minimum syntax rules, your code should parse and run correctly.  On the other hand, code clarity and maintainability are important.  We think the following guidelines will help you to write better, clearer code.  None of these rules is absolute, however -- use your judgment about what looks neat and clear.
-
-### Code Margin, Blank Lines
-
-An 80-column right margin is strongly encouraged.  Really well-groomed Hoon uses a 55-column code margin and puts a standard line comment at column 57.  Use `::` to begin a comment -- Hoon will ignore everything past the `::` until the line break.  Here's an example of code that follows these principles:
-
-```
-|=  a=@                                                 ::  even number checker
-^-  ?                                                   ::  output is a flag
-=(0 (mod a 2))                                          ::  =(...) evals to flag
-```
-
-Blank lines are discouraged.  If you want vertical space in your code, use `::` at the beginning of one or more lines.
-
-```
-|=  a=@                                                 ::  even number checker
-^-  ?                                                   ::  output is a flag
-::
-::  lots
-::  of
-::  space
-::
-=(0 (mod a 2))                                          ::  =(...) evals to flag
-```
+See [Hoon Style Guide](/docs/learn/arvo/style).
 
 ### Rune Expression Body Types
 
