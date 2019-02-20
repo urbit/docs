@@ -4,12 +4,12 @@
 
 # Arvo vs. Azimuth
 
-*Arvo* is the Urbit operating system. *Azimuth* is the decentralized ledger that keeps track of identities that are required to use the Arvo network. *Urbit* is the holistic system composed of both Arvo and Azimuth.
+Urbit is a project, not a single computer system. It has three components: Arvo, the operating system; Azimuth, the identity system; and Aegean, the pattern for creating software experiences for individual Urbit communities. This document compares the first two.
 
-The Arvo network is composed of virtual machines running our software stack. Using a blockchain for this kind of computing is impossible: there's far too much data involved in an operating system to run on top of a distributed consensus mechanism. And you don't want your private information on a public ledger. The Arvo network is not a blockchain.
+*Arvo* is an operating system that provides the software for a personal server. These personal servers together constitute the peer-to-peer Arvo network. To make this network work on the social level, Arvo is built to work with a system of scarce and immutable identities.
 
-However, being a decentralized system, we need some way to cryptographically secure and authenticate your identity on the Arvo network. What keeps track of who owns any given identity? Well, simply matching something to an address is a small piece of computing, and a blockchain are wonderful for such a purpose. That's where the Azimuth comes in.
+*Azimuth* is the public-key infrastructure built to be such a system. A suite of smart-contracts on the Ethereum blockchain, Azimuth determines which Ethereum addresses own which Azimuth identities, called _points_. All point-related operations, such as transfers, are governed at this layer. But Azimuth isn't built strictly for Arvo -- it could be used as a generalized identity system for other projects.
 
-We chose to build Azimuth on the Ethereum blockchain because smart contracts are well-suited for the peculiarities of the identities. Urbit identities are owned by Ethereum addresses.
+These otherwise-parallel systems meet when you want to connect to the Arvo network. Your Arvo personal server, called your _ship_, needs to be able to prove cryptographically that it is who it says it is. This proof comes in the form of a keyfile, derived from your point, that you use to start your ship.
 
-Azimuth and the Arvo network are parallel systems. Azimuth isn't necessarily Arvo-related; it can be used as a generalized identity system for other projects. Azimuth is the equivalent of a bank vault that stores the deed to your house. The Arvo network is the neighborhood that you live in.
+A metaphor might help illustrate the relationship between these two systems: the Arvo network is the neighborhood that you live in; Azimuth is the bank vault that stores the deed to your house.
