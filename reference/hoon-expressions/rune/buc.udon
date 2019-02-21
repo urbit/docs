@@ -1,11 +1,11 @@
 :-  :~  navhome/'/docs/'
         next/'true'
         sort/'12'
-        title/'Structures $ ("bus")'
+        title/'Structures $ ("buc")'
     ==
 ;>
 
-# Structures $ ("bus")
+# Structures $ ("buc")
 
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time
@@ -61,7 +61,7 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ;=
   ;h3
-    ;div(id "buscab"): $_ "buscab"
+    ;div(id "buccab"): $_ "buccab"
   ==
 ==
 
@@ -101,7 +101,7 @@ and produces its *example* instead.
 
 ;=
   ;h3
-    ;div(id "buscen"): $% "buscen"
+    ;div(id "buccen"): $% "buccen"
   ==
 ==
 
@@ -136,7 +136,7 @@ be an infinite loop!
 
 ;=
   ;h3
-    ;div(id "buscol"): $: "buscol"
+    ;div(id "buccol"): $: "buccol"
   ==
 ==
 
@@ -174,7 +174,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 
 ;=
   ;h3
-    ;div(id "bushep"): $- "bushep"
+    ;div(id "buchep"): $- "buchep"
   ==
 ==
 
@@ -193,7 +193,7 @@ Regular: *2-fixed*.
 
 ##### Discussion
 
-Since a `$-` reduces to a [`$_`](#buscab), it is not useful for normalizing, just for typechecking.  In particular, the existence of `$-`s does *not* let us send gates or other cores over the network!
+Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, just for typechecking.  In particular, the existence of `$-`s does *not* let us send gates or other cores over the faswork!
 
 ##### Examples
 
@@ -206,7 +206,7 @@ Since a `$-` reduces to a [`$_`](#buscab), it is not useful for normalizing, jus
 
 ;=
   ;h3
-    ;div(id "busket"): $^ "busket"
+    ;div(id "bucket"): $^ "bucket"
   ==
 ==
 
@@ -244,7 +244,7 @@ Regular: *2-fixed*.
 
 ;=
   ;h3
-    ;div(id "bussig"): $~ "bussig"
+    ;div(id "bucsig"): $~ "bucsig"
   ==
 ==
 
@@ -311,7 +311,7 @@ Using `$~`:
 
 ;=
   ;h3
-    ;div(id "busvat"): $@ "busvat"
+    ;div(id "bucvat"): $@ "bucvat"
   ==
 ==
 
@@ -353,7 +353,7 @@ Example:
 
 ;=
   ;h3
-    ;div(id "bustis"): $= "bustis"
+    ;div(id "buctis"): $= "buctis"
   ==
 ==
 
@@ -392,7 +392,7 @@ p=%foo
 
 ;=
   ;h3
-    ;div(id "buswut"): $? "buswut"
+    ;div(id "bucwut"): $? "bucwut"
   ==
 ==
 
@@ -417,8 +417,8 @@ Irregular: `?(%foo %baz)` is `$?(%foo %baz)`.
 ##### Discussion
 
 For a union of atoms, a `$?` is fine.  For more complex nouns,
-always try to use a [`$%`](#buscen), [`$@`](#busvat) or
-[`$^`](#bushep), at least if you expect your structure to be used as a
+always try to use a [`$%`](#buccen), [`$@`](#bucpat) or
+[`$^`](#buchep), at least if you expect your structure to be used as a
 normalizer.
 
 ##### Examples

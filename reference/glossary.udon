@@ -420,18 +420,18 @@ information in speech. [`Runes`](#rune) are composed of two glyphs.
 Below is a complete list of glyphs with their associated pronunciations.
 
 ```
-ace  [1 space]       hep  -            rob  }
-ban  >               ket  ^            say  '
-bar  |               lac  [            sig  ~
-bat  \               led  <            tar  *
-bus  $               lit  (            tec  `
-cab  _               lob  {            tis  =
-cen  %               lus  +            vat  @
-col  :               mic  ;            wut  ?
-com  ,               net  /            yel  "
-dot  .               pad  &            zap  !
-gap  [>1 space, nl]  rac  ]
-hax  #               rit  )
+ace [1 space]   gal <               pal (
+bar |           gap [>1 space, nl]  par )
+bas \           gar >               sel [
+buc $           hax #               mic ;
+cab _           hep -               ser ]
+cen %           kel {               sig ~
+col :           ker }               soq '
+com ,           ket ^               tar *
+doq "           lus +               tec `
+dot .           pam &               tis =
+fas /           pat @               wut ?
+zap !
 ```
 
 ### Hall
