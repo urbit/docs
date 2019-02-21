@@ -9,7 +9,7 @@
 
 This guide is broken into five parts:
 
-+ [Acquiring an Urbit Identity](#acquire)
++ [Urbit Identities](#acquire)
 + [Using Bridge](#bridge)
 + [Installing Arvo](#arvo)
 + [Booting Your Ship](#boot)
@@ -20,34 +20,30 @@ Urbit network, you can skip to [Installing Arvo](#arvo)._
 
 ;=
   ;h2
-    ;div(id "acquire"): Acquiring an Urbit Identity
+    ;div(id "acquire"): Urbit Identities
   ==
 ==
 
-Urbit's identity layer, called Azimuth, is a suite of contracts on the Ethereum
-blockchain. An Azimuth address, called a *point*, functions as an identity and
+Urbit's identity layer, called Azimuth, is a public-key infrastructure (PKI)
+that uses the Ethereum blockchain. An Azimuth address, called a point,
+functions as an identity and
 a network address for Arvo, the Urbit OS. An instance of Arvo is called a
-*ship*. A ship can't use the Arvo network until it's combined with a point.
+*ship*. A ship can't use the Arvo network unless it's been booted with the keys
+registered to a point.
 
 Throughout this guide, we'll refer to \"Urbit identities\" and \"points\"
 interchangeably.
 
 Points are generally not freely available, so you will need to either
-purchase one or get one from a friend. This guide assumes you have found a way
-to acquire a point.
+purchase one or get one from a friend. To receive one, you will need an Ethereum
+wallet that supports the BIP39 mnemonic seed functionality, which allows you to
+access your wallet with a series of dictionary words.
+Hardware wallets, such as Ledger and TREZOR devices, satisfy this requirement.
+So do various web-based wallets.
 
-If you went through the address registration process and used [Wallet Generator](https://github.com/urbit/urbit-wallet-generator),
-then you should have have received a .zip file that contains an Ethereum address
-and cryptographic secrets in the form of a PDF.
-
-Your ownership PDF contains two secrets that must be kept safe.
-
-- *Master Ticket*: This is a master key that allows you to manage every aspect of
-  your address.
-
-- *Ownership Seed BIP39 Mnemonic*: The master ticket encoded as a BIP39 mnemonic
-  for compatibility with most Ethereum wallet software, including our own *Bridge*
-  client.
+Once you have such a wallet, give your Ethereum address to the person who agreed
+to give you a point. Have them transfer the point to your address, and continue to the
+next section.
 
 ;=
   ;h2
@@ -55,57 +51,27 @@ Your ownership PDF contains two secrets that must be kept safe.
   ==
 ==
 
-Bridge is a client that we built for accessing and managing your Urbit identities.
-Like Wallet Generator, Bridge is a web application that can also be run in offline mode.
-It can be run in Firefox on all platforms, and also in Chrome if you're using
-a Mac.
-
-Importantly, Bridge also allows you to generate a keyfile that
-
-you will need to boot your ship on the Arvo network for the first time. Once you boot a ship
+Bridge is a client for accessing and managing your Urbit identities.
+Importantly, Bridge also allows you to generate a keyfile that you will need to
+boot your ship so that it can use the Arvo network. Once you boot a ship
 with a keyfile, you can restart it later without the keyfile.
 
-*Note* Bridge allows you to make _writes_ to the blockchain, but we ask you to confirm
+*Note:* Bridge allows you to make _writes_ to the blockchain, but we ask you to confirm
 anything that will incur a transaction cost. If you plan to do anything heavy-duty, make
 sure your Ethereum address has some pocket ETH.
 
-Download Bridge [here](https://github.com/urbit/bridge/releases) and follow
-the instructions below.
+Download Bridge [here](https://github.com/urbit/bridge/releases), and follow
+the instructions to run that program. Get a little bit of ETH on your address,
+enough for a couple of transactions.
 
-#### Step 1: Welcome
+Once the program is running in your browser, go through each step according to
+what kind of wallet you have.
 
-Click `Unlock a Wallet`.
+### Accept Your Transfer
 
-#### Step 2: Select a Network
-
-On the dropdown menu, make sure that `Main Network` is selected. Then click
-`Continue ->`.
-
-#### Step 3: Unlock a Wallet
-
-On this dropdown menu, choose how you'd like to access your Ethereum wallet.
-If you aren't using a hardware wallet (we support Ledger and Trezor), you'll
-want to use your Ethereum wallet's BIP39 Mnemonic.
-
-If you used Wallet Generator to generate an HD wallet, you have a few choices:
-you can choose `Urbit Master Ticket,` which is high-value, but allows you unfettered
-permissions to update your point. The mnemonic associated with your management
-seed is also useful to perform everyday operations (such as boot your ship!).
-
-Select the appropriate option and click `Continue ->`.
-
-If you already have a point -- for example, if you are trying to boot a ship
-from a pre-Ethereum-era network -- you should see a list of points associated with your
-keys. If you are trying to boot a planet for the first time, click on the
-`Details` link for that point. At the bottom on the Details page, there is
-a section called `Urbit Networking`. If the fields in this section are filled out, proceed to step 6.
-
-If you do not yet have a point and are getting one sent to you, proceed to step 4.
-
-#### Step 4: Accept Your Transfer
-
-If you were sent a point by a friend, then you should see a graphic under
-`Incoming Transfers`. Click the `Details ->` link under that graphic.
+After you access your Ethereum address, if a point was sent to that address,
+you'll come to a page that has an `Incoming Transfers` header, under which is
+a graphic. Click the `Details ->` link under that graphic.
 
 Now you'll be on the management page of your point. The transfer isn't completed
 yet, so click `Accept incoming transfer`. Then check both boxes and and click
@@ -114,25 +80,33 @@ their associated `Sign Transaction` and `Send Transaction` buttons.
 If you already own a point, then click on the `Details ->` under your sigil in the
 `Your Points` section.
 
-#### Step 5: Set Your Networking Keys
+### Set Your Networking Keys
 
 If you just accepted a point, you'll be returned to your point screen. Notice that
 that links and buttons are now clickable. You now own this point!
 
-Click the link that says `Set Urbit networking keys`. Bridge will let you either
-download a keyfile derived from your networking keys are you can paste in your own
-network seed and derive a new keyfile. See our
-[HD Wallet Spec](https://github.com/urbit/proposals/blob/master/8.udon)
-for more information.
+Click the link that says `Set Urbit networking keys`. The field that is presented
+in the resulting page expects a 32-byte hexademicmal string; you can generate
+this data any way you please, but in the terminal on MacOS or Linux, you can write
 
-It should be noted that this is an event on the Ethereum network and will cost
-a trivial, but non-zero, amount of [gas](https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees) to complete.
+```
+hexdump -n 32 -e '4/4 "%08X"' /dev/random
+```
 
-#### Step 6: Generate Your Keyfile
+and use the result.
+
+It should be noted that setting your network keys is an event on the Ethereum network,
+and will therefore cost a trivial, but non-zero, amount of
+[gas](https://github.com/ethereum/wiki/wiki/Design-Rationale#gas-and-fees) to complete.
+
+### Generate Your Keyfile
 
 From the detail page associated with your point, click the `Generate Arvo Keyfile`
-button and you'll be taken to a page with a field titled `Network seed`. If you went
-through the address registration process, this should be filled in already.
+link and you'll be taken to a page with a field titled `Network seed`. This
+field should already be filled in, and should match the hexadecimal string that you
+entered in the previous step. If its not filled in or does not match, fill it in
+with the correct string.
+
 Click `Generate ->`, which will download a keyfile onto your machine.
 
 With that keyfile in hand, you can now exit Bridge.
@@ -279,7 +253,7 @@ sudo ninja -C ./build/ meson-install
 urbit
 ```
 
-##### FreeBSD
+#### FreeBSD
 
 ```
 # Bash or Sh
@@ -299,7 +273,7 @@ sudo ninja -C ./build/ meson-install
 urbit
 ```
 
-##### Amazon Web Services
+#### Amazon Web Services
 
 ```
 # Bash
@@ -373,18 +347,18 @@ Don’t spend a lot of time tweaking these settings; the simplest thing is fine.
 Now the rubber meets the road. You'll be booting your ship with the keyfile
 that you downloaded from Bridge.
 
-#### Step 1: Find Your Point's Name
+### Step 1: Find Your Point's Name
 
 This will look something like `~lodleb-ritrul`. You can see the name of your
 point(s) when you log into your wallet using the Bridge client.
 
 ;img@"http://media.urbit.org/site/bridge-0.png"(width "100%");
 
-#### Step 2: Find the path to your keyfile
+### Step 2: Find the path to your keyfile
 
 Find the absolute path to the keyfile that you downloaded from Bridge. Copy it.
 
-#### Step 3: Run the boot command
+### Step 3: Run the boot command
 
 Type `cd` in your terminal to return to your home directory. If you want to
 store your ship somewhere besides your home directory, change the terminal's
@@ -395,13 +369,13 @@ Urbit identity, and `path/to/my-planet.key` replaced with the path to your
 keyfile:
 
 ```
-urbit -w sample-planet -k path/to/my-planet.key
+urbit -w ~sample-planet -k path/to/my-planet.key
 ```
 
 Or, if you'd prefer to copy your key in, you can run:
 
 ```
-urbit -w sample-planet -G rAnDoMkEy
+urbit -w ~sample-planet -G rAnDoMkEy
 ```
 
 Either command will create a directory called `sample-planet/` and begin
@@ -419,7 +393,7 @@ machine.
 
 Welcome to your urbit! There's a few things you should do to become oriented.
 
-#### Dojo
+### Dojo
 
 Let's try out the Dojo, the Arvo command line and Hoon REPL:
 
@@ -436,7 +410,7 @@ Should produce:
 
 Good.
 
-#### Mounting
+### Mounting
 
 Clay, the Arvo filesystem, isn't mounted to Unix by default. Switch to the Dojo
 prompt and run:
@@ -457,13 +431,13 @@ which indicates that the command was processed.
 Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
 
 
-#### Landscape
+### Landscape
 
 Landscape is web app we built for chatting and making posts. We are using Landscape to run a few experimental "cities" -- private discussion communities -- as a closed beta of sorts. If you have an Azimuth point, you’ll need to [email us](mailto:support@urbit.org) a request to gain access to one of these cities.
 
 Once you're in a channel, you can also interact with it from the command line, if you so wish. Use `ctrl-x` in your ship's terminal window to toggle between the Dojo and the Talk prompts.
 
-#### Shutting Down and Restarting
+### Shutting Down and Restarting
 
 You can turn your ship off with `ctrl-d` from the Talk or Dojo prompts.
 
