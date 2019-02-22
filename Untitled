@@ -1,0 +1,56 @@
+:-  :~  title/'Using a Star'
+    ==
+;>
+
+# Using a Star
+
+A _ship_ is an instance of the Arvo operating system that is used as a personal server on the Arvo network. Stars are a type of ship that act as infrastructure for the Arvo network. In the Arvo ship-hierarchy, stars are below galaxies and above planets.
+
+Parallel to the Arvo network is Azimuth, the Urbit identity system that uses the Ethereum blockchain. All ships must have a corresponding _point_ -- an Azimuth identity -- to boot a ship and to use the Arvo network.
+
+Important star operations happen on both the Arvo side and the Azimuth side. On the Arvo side, these operations come in the form of Dojo commands. On the Azimuth side, operations are executed by interfacing with the star's point through the [Bridge](https://github.com/urbit/bridge/releases) client.
+
+## Power of a Star
+
+Stars are above planets in the network hierarchy in the sense that stars sponsor planets: A stars discover peers for planets, route packets for planets, provide DNS for planets, and push software updates to planets. A star that fulfills this is the *sponsor* of planets that receive such services; those planets, in turn, are *dependents* of that star.
+
+Stars are also the "parents" of all planets. A new planet comes into existence when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor.
+
+Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message discovered peers until such any such peers change their IP addresses.
+
+## Responsibility of a Stars
+
+Like with real-life infrastructure, the operation of Arvo infrastructure comes with unique responsibilities. For reasons stated above, stars should be always be online on a reliable cloud service, such as AWS or Google Cloud Platform. These platforms have layers of redundancies that make them much more resilient than local machines, so stars hosted on the cloud are unlikely to leave their dependents in the dark.
+
+## Star Operations
+
+Below are some handy operations for the use and maintenance of your star.
+
+### Setting Your IP Address
+
+You star is not aware of your own IP address by default.
+
+0. wait for the initial post-boot sync to succeed
+1. :dns|ip
+2. Prompt you for an IP address and you copy in an IP address
+
+### DNS Proxying
+
+### Escaping The
+
+
+
+### Maintaining Connectivity
+
+Occasionally, your star might lose network connectivity due to a known timer issue. When this happens, run the `|bonk` command in the Dojo to regain connectivity.
+
+### Finding Your Own IP Address
+
+After you boot
+
+We need a page in the document for Star Owners (we can add Galaxy Owners later) that basically outlines to them know their responsibilities as a star operator on the Arvo network. The most important points.
+
+- Explanation about the relationship between Azimuth point and Arvo ship
+- Planets issues from them will route through them by default, this means they should be run on cloud somewhere
+- DNS proxying instructions
+- Any special instructions (like intermittent |bonk)ing
