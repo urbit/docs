@@ -430,12 +430,13 @@ which indicates that the command was processed.
 `|mount %` will cause a `home/` directory to appear inside your _pier_ folder in
 Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
 
-
 ### Landscape
 
-Landscape is web app we built for chatting and making posts. We are using Landscape to run a few experimental "cities" -- private discussion communities -- as a closed beta of sorts. If you have an Azimuth point, you’ll need to [email us](mailto:support@urbit.org) a request to gain access to one of these cities.
+Landscape is web app we built for chatting and making posts on the Urbit network using the Hall messaging protocol. In the future we plan to use Landscape to run a few experimental "cities" -- private discussion communities -- as a closed beta of sorts. If you have an Azimuth point and you'd like to be involved, let us know [by email](mailto:support@urbit.org).
 
-Once you're in a channel, you can also interact with it from the command line, if you so wish. Use `ctrl-x` in your ship's terminal window to toggle between the Dojo and the Talk prompts.
+### urbit-help
+
+If you've successfully booted your Urbit, you can access a support channel we run on the network at `~dopzod/urbit-help`. To join, type `ctrl-x` in your ship's terminal window to toggle between the Dojo and the Talk prompts, then enter the command `;join ~dopzod/urbit-help`.
 
 ### Shutting Down and Restarting
 
