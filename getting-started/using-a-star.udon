@@ -1,9 +1,9 @@
-:-  :~  title/'Using a Star'
+:-  :~  title/'Operating a Star'
     sort/'2'
     ==
 ;>
 
-# Using a Star
+# Operating a Star
 
 A _ship_ is an instance of the Arvo operating system that is used as a personal server on the Arvo network. Stars are a type of ship that act as infrastructure for the Arvo network. In the Arvo ship-hierarchy, stars are below galaxies and above planets.
 
@@ -11,7 +11,7 @@ Parallel to the Arvo network is Azimuth, the Urbit identity system that uses the
 
 Important star operations happen on both the Arvo side and the Azimuth side. On the Arvo side, these operations come in the form of Dojo commands. On the Azimuth side, operations happen by making changes to smart-contracts on the blockchain via a point.
 
-## Power of a Star
+## Powers of a Star
 
 Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars discover peers for planets, route packets for planets, provide DNS routing for planets, and push software updates to planets. A star that fulfills this is called the *sponsor* of planets that receive such services from the star; those planets, in turn, are called *dependents* of that star.
 
@@ -19,11 +19,11 @@ Stars are also the "parents" planets. A new planet comes into existence only whe
 
 Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message discovered peers until such any such peers change their IP addresses.
 
-## Responsibility of a Star
+## Responsibilities
 
 Like with real-life infrastructure, the operation of Arvo infrastructure comes with unique responsibilities. For reasons stated above, stars should be always be online on a reliable cloud service, such as Amazon Web Services or Google Cloud Platform. These systems have layers of redundancies that make them much more resilient than local machines, so stars hosted on the cloud are unlikely to leave their dependents in the dark.
 
-## Star Operations
+## Operations
 
 Below are some handy operations for the use and maintenance of your star.
 
