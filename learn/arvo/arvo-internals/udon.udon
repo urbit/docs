@@ -164,7 +164,7 @@ To get their *attention*, you need that _je ne sais quoi_.
 
 ### Line Break
 
-After a blank link is interpreted as a line break, creating a distinct
+A blank line is interpreted as a line break, creating a distinct
 paragraph. However, a newline on its own is merely interpreted as a space on
 the _same line_.
 
