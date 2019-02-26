@@ -159,7 +159,7 @@ Replace the code in `gen/faslus.hoon` with the following:
 This should print something like `my_id_is_c.3588`.
 
 Another feature of the
-`/+ and`/-`runes is the ability to specify the`ship`and`case\` from which to
+`/+` and `/-` runes is the ability to specify the ship and case from which to
 load the library.
 
 Example:
