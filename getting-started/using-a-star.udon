@@ -17,7 +17,7 @@ Stars are above planets in the network hierarchy in the sense that each star spo
 
 Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
 
-Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message discovered peers until such any such peers change their IP addresses.
+Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message discovered peers until any such peers change their IP addresses.
 
 ## Responsibilities
 
@@ -43,7 +43,7 @@ Occasionally, your star might lose network connectivity due to a known timer iss
 
 ### Escaping a Sponsor
 
-Planets are, of course, able to change sponsors. To do this, they must request that a different star takes them on a dependent and that planet must accept the request. Planets cannot emancipate themselves from a sponsor without having a new sponsor lined up.
+Planets are, of course, able to change sponsors. To do this, they must request that a different star takes them on as a dependent and that star must accept the request. Planets cannot emancipate themselves from a sponsor without having a new sponsor lined up.
 
 All of these actions happen on Azimuth. There will be Bridge functionality to handle these actions in the future, but for now users will need to interact directly with the contracts with MetaMask, through services such as [Etherscan.io](https://etherscan.io/address/ecliptic.eth#writeContract). A sketch of the process is listed below; for now, only the Ethereum-savvy should act on these steps.
 
