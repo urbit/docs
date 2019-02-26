@@ -86,7 +86,7 @@ If you just accepted a point, you'll be returned to your point screen. Notice th
 that links and buttons are now clickable. You now own this point!
 
 Click the link that says `Set Urbit networking keys`. The field that is presented
-in the resulting page expects a 32-byte hexademicmal string; you can generate
+in the resulting page expects a 32-byte hexadecimal string; you can generate
 this data any way you please, but in the terminal on MacOS or Linux, you can write
 
 ```
