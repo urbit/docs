@@ -489,3 +489,5 @@ Specifically, for each iteration, each dead space becomes alive if and only if i
 + One common way to handle the edge of the board is to pretend that it "wraps around", forming a torus.  In other words, say that the spaces on the left edge of the map are adjacent to the ones on the right edge, and the spaces on the top edge are adjacent to the spaces on the bottom edge.  Modify `step` to act this way.  Pay special attention to the corners.
 
 + Modify `create-board` to use `++og` to randomly initialize the board with live or dead spaces.
+
+### [Next Lesson: Type Polymorphism](../type-polymorphism)
