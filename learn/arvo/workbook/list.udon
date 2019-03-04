@@ -9,7 +9,7 @@
 
 This code-example is intended to familiarize you with the basics of Hoon syntax. It's ok if you don't understand everything immediately. Some concepts might be beyond your understanding for now. What's important that you familiarize yourself with the elements of the code and their look once combined into a valid program.
 
-Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from 1 up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
+Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
 
 
 ```
@@ -117,4 +117,20 @@ You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `en
 
 If you aren't intuiting how the program is building the list, that's okay.
 
-Our program works by each iteration of the list creating a cell. In each iteration, the head of the cell -- its first position -- is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ starting at `|-`. This iteration will create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~`, and the list is terminated. So, a built-out list of nested cells can be visualized like this: `[1 [2 [3 [4 ~]]]]`.
+Our program works by having each iteration of the list creating a cell. In each of these cells, the head -- the cell's first position -- is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (null). When that happens, the list is terminated and the program doesn't have anything else to do, so it ends. So, a built-out list of nested cells can be visualized like this:
+
+```
+   [1 [2 [3 [4 ~]]]]
+
+          .
+         / \
+        1   .
+           / \
+          2   .
+             / \
+            3   .
+               / \
+              4   ~
+```
+
+If you don't immediately intuit how this is working, that's ok. We'll take a deeper look into recursion later.
