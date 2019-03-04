@@ -27,7 +27,7 @@ Regular: *1-fixed*.
 
 ##### Discussion
 
-In Hoon, dynamic type is static type compiled at runtime.  This type-noun cell is generally called a `vase`.
+In Hoon, a dynamic type is a static type compiled at runtime.  This type-noun cell is generally called a `vase`.
 
 ##### Examples
 
