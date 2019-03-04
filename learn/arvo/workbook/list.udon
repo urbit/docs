@@ -7,7 +7,7 @@
 
 # List of Numbers
 
-This code-example is intended to familiarize you with the basics of Hoon syntax. It's ok if you don't understand everything immediately. Some concepts might be beyond your understanding for now. What's important that you familiarize yourself with the elements of the code and their look once combined into a valid program.
+This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately. It's not a problem if some concepts are beyond your grasp for now. What's important is that you familiarize yourself with the elements of the code and their look once combined into a valid program.
 
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -45,7 +45,7 @@ In our example program, we use comments with line numbers for convenient referen
 
 There's a few things going on in our first line. The first part of it, `|=` is a kind of *rune*. Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes, and other expressions, are all separated from one another by either two spaces or a line break.
 
-All runes take a fixed number of "children". Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. Keep this scheme in mind when examining Hoon code.
+All runes take a fixed number of "children." Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. Keep this scheme in mind when examining Hoon code.
 
 The specific purpose of the `|=` rune is to create a *gate*. A gate is what would be called a function in other languages: it takes an input, performs a specified computation, and then produces an output.
 
@@ -59,7 +59,7 @@ Our program is simple, so the _entire program_ is the gate that's being created 
 =/  count=@  1
 ```
 
-This line begins with the `=/` rune, which stores a value in a name and specifies its type. It takes three children.
+This line begins with the `=/` rune, which stores a value with a name and specifies its type. It takes three children.
 
 `count=@` (the first child) stores `1` (the second child) as `count` and as specifies that has the `@` type.
 
@@ -111,7 +111,7 @@ $(count (add 1 count))
 
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere else in the program. That's because it's a gate that's predefined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful for programs, and thse gates can be used just like something that you named in your own program.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere else in the program. That's because it's a gate that's predefined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you named in your own program.
 
 ## Explanation
 
