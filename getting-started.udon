@@ -241,15 +241,15 @@ urbit
 ```
 # Bash
 
-sudo pacman -Syu
-sudo pacman -S curl gcc git gmp libsigsegv ncurses ninja openssl python
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python3 get-pip.py
+sudo pacman -Syyu
+sudo pacman -S --needed curl gcc git gmp libsigsegv ncurses ninja openssl python python-pip meson
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
 ./scripts/build
-sudo ninja -C ./build/ meson-install
+cd build
+ninja
+sudo ninja meson-install
 urbit
 ```
 
