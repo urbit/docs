@@ -189,7 +189,7 @@ Regular: *3-fixed*.
 :-(a :-(b :-(c :-(... :-(z ~)))))
 ```
 
-##### Compiler Macro
+##### Desugaring
 
 ```
 |-
@@ -237,7 +237,7 @@ Regular: *running*.
 :-(a :-(b :-(c :-(... z)))))
 ```
 
-##### Compiler Macro
+##### Desugaring
 
 ```
 |-
