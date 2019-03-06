@@ -401,7 +401,7 @@ Regular: *3-fixed*.
 =+(^-(p q) r)
 ```
 
-### Compiler macro
+### Desugaring
 
 ```
 ?@  p

@@ -91,7 +91,7 @@ nest-fail
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
 ```
 
-##### Compiler macro
+##### Desugaring
 
 ```
 |-
@@ -231,7 +231,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 ~|(%mint-lost !!)
 ```
 
-##### Compiler macro
+##### Desugaring
 
 ```
 |-
@@ -380,7 +380,7 @@ a union, with a default.
 q
 ```
 
-##### Compiler macro
+##### Desugaring
 
 ```
 |-
@@ -436,7 +436,7 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
 ```
 
-##### Compiler macro
+##### Desugaring
 
 ```
 |-

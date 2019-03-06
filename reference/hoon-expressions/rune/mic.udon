@@ -35,7 +35,7 @@ Irregular form:
 (p a (p b (p c ...)))
 ```
 
-##### Compiler macro
+##### Desugaring
 
 ```
 |-
@@ -230,7 +230,7 @@ The gates in `q` are composed together using the gate `p` as an intermediate fun
 |.  (a (c arg) d(+6 arg))
 ```
 
-##### Compiler macro
+##### Desugaring
 
 ```
 ?~  q  !!
