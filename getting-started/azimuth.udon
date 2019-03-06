@@ -1,8 +1,28 @@
-:-  :~  title/'Azimuth'
+:-  :~  title/'Bridge'
         sort/'3'
     ==
 ;>
 
-# Using Azimuth
+# Bridge
 
-The primary way to interact with Azimuth, our identity platform, is through our application [Bridge](https://github.com/urbit/bridge) and the node libraries that it depends on, azimuth-js and keygen-js. Take a look at the source and play around or see [Getting Started](/docs/getting-started).
+[Bridge](https://github.com/urbit/bridge) is the client we built for interacting with [Azimuth](/docs/pki) and managing points.
+
+To install Bridge, navigate to the [release page](https://github.com/urbit/bridge/releases/) on GitHub. Download the `.zip` file at of the latest version. After you download it, follow the instructions below.
+
+### Verify Checksums
+
+You may wish to validate your downloaded file's checksum to make sure that you weren't given a different file by a malicious third party. To do this, unzip the file you download. Navigate inside the resulting folder, and compare the lines in checksum.txt to SHA-256 hashes of the `build` directory's contents. You can get such a hash by running one of the following commands.
+
+- On MacOS: `shasum -a 256 -c checksums.txt build` in the terminal.
+- On Linux: `sha256sum -c checksums.txt build`
+- On Windows: Go into the `build` directory and verify files individually with `CertUtil -hashFile [file_name] SHA256`
+
+### Installation
+
+To use Bridge:
+
++ Unzip the `.zip` file that you downloaded (`bridge-$version.zip`).
++ Open up your command line interface (Terminal on OSX, Command Prompt on Windows).
++ Navigate to the `bridge-$version` directory, where `$version` is the appropriate version number.
++ Run this command: `python3 -m http.server 5000 --bind 127.0.0.1 --directory build`
++ You can then use the Bridge app by navigating to `http://localhost:5000` in your internet browser.
