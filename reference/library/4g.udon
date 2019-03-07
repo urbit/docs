@@ -57,7 +57,7 @@ The value of the parse result, or crash.
 
 Parse or null
 
-Parse a given with a given rule and produce null if the cord isn't
+Parse an atom with a given rule and produce null if the cord isn't
 entirely parsed.
 
 #### Accepts

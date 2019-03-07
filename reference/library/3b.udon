@@ -1065,7 +1065,7 @@ The default value of `d` is `%d`.
 ```
 
 ---
-### `++emn:si`
+### `++emn:fl`
 
 Minimum exponent
 
@@ -2079,7 +2079,7 @@ A `unit` of @s.
 ```
 
 ---
-### `+ff`
+### `++ff`
 
 IEEE-754 Formatting
 
@@ -2110,7 +2110,7 @@ Container core for IEEE-754 formatting operations.
 ---
 #### Discussion
 
-`+ff` has no use outside of the functionality provided to other cores: `++rd`,
+`++ff` has no use outside of the functionality provided to other cores: `++rd`,
 `++rs`, `++rq`, and `++rh`. It's not intended to be used directly; it's just
 meant to power those cores.
 
@@ -2187,7 +2187,7 @@ configuration of the `ff` core.
 internal use in other cores.
 
 ---
-### `++sea`
+### `++sea:ff`
 
 `@r` to `fn`
 
@@ -2325,7 +2325,7 @@ A `flag`.
 ```
 
 ---
-### `++exp`
+### `++exp:ff`
 
 Get exponent
 
@@ -2355,7 +2355,7 @@ A signed integer.
 ```
 
 ---
-### `++add`
+### `++add:ff`
 
 Add
 
@@ -2419,7 +2419,7 @@ A `@r`, an IEEE float.
 ```
 
 ---
-### `mul:ff`
+### `++mul:ff`
 
 Multiply
 
@@ -2616,7 +2616,7 @@ A `flag`.
 ```
 
 ---
-### `equ:ff`
+### `++equ:ff`
 
 Equals
 
@@ -2867,7 +2867,7 @@ A `@r`, an IEEE float.
 ```
 
 ---
-### `rlyd`
+### `++rlyd`
 
 Prep `@rd` for print
 
@@ -3143,7 +3143,7 @@ configuration of the `rd` core.
 ```
 
 ---
-### `sea:rd`
+### `++sea:rd`
 
 `@rd` to `fn`
 
@@ -3162,7 +3162,7 @@ Converts `a` from a double-precision binary float to `fn`.
 ```
 
 ---
-### `bit:rd`
+### `++bit:rd`
 
 `fn` to `@rd`
 
@@ -3191,7 +3191,7 @@ A `@rd`, a double-precision float.
 ```
 
 ---
-### `add:rd`
+### `++add:rd`
 
 Add
 
@@ -3224,7 +3224,7 @@ A `@rd`.
 ```
 
 ---
-### `sub:rd`
+### `++sub:rd`
 
 Subtract
 
@@ -3257,7 +3257,7 @@ A `@rd`.
 ```
 
 ---
-### `sub:rd`
+### `++mul:rd`
 
 Multiply
 
@@ -3290,7 +3290,7 @@ A `@rd`.
 ```
 
 ---
-### `div:rd`
+### `++div:rd`
 
 Divide
 
@@ -3362,7 +3362,7 @@ A `@rd`.
 ```
 
 ---
-### `+sqt:fr`
+### `++sqt:rd`
 
 Square root
 
@@ -3392,7 +3392,7 @@ A `@rd`.
 ```
 
 ---
-### `lth:rd`
+### `++lth:rd`
 
 Less than
 
@@ -3470,7 +3470,7 @@ A `@rd`.
 ```
 
 ---
-### `equ:rd`
+### `++equ:rd`
 
 Equals
 
@@ -3576,14 +3576,14 @@ A `@rd`.
 #### Examples
 
 ```
-    > (gte:rd .~7.94099e2 .~1.2246e3)
+    > (gth:rd .~7.94099e2 .~1.2246e3)
     %.n
 
-    > (gte:rd .~7.94099e2 .~1.2246e2)
+    > (gth:rd .~7.94099e2 .~1.2246e2)
     %.y
 
-    > (gte:rd .~1.2246e2 .~1.2246e2)
-    %.y
+    > (gth:rd .~1.2246e2 .~1.2246e2)
+    %.n
 ```
 
 ---
@@ -3671,7 +3671,7 @@ A `flag`.
 ```
 
 ---
-### `exp:rd`
+### `++exp:rd`
 
 Get exponent
 
@@ -3804,7 +3804,7 @@ down (`$d`), and round to zero (`$z`).
 ```
 
 ---
-### `ma:rs`
+### `++ma:rs`
 
 Initialize `ff`
 
@@ -3828,7 +3828,7 @@ configuration of the `rs` core.
 ```
 
 ---
-### `sea:rs`
+### `++sea:rs`
 
 `@rs` to `fn`
 
@@ -3857,7 +3857,7 @@ An `fn`.
 ```
 
 ---
-### `bit:rs`
+### `++bit:rs`
 
 `fn` to `@rs`
 
@@ -4075,7 +4075,7 @@ A `@rs`.
 ```
 
 ---
-### `lth:rs`
+### `++lth:rs`
 
 Less than
 
@@ -4147,7 +4147,7 @@ A `@rs`.
 ```
 
 ---
-### `equ:rs`
+### `++equ:rs`
 
 Equals
 
@@ -4344,7 +4344,7 @@ A `flag`.
 ```
 
 ---
-### `exp:rs`
+### `++exp:rs`
 
 Get exponent
 
@@ -4651,7 +4651,7 @@ A `@rq`.
 ```
 
 ---
-### `div:rq`
+### `++div:rq`
 
 Divide
 
@@ -4684,7 +4684,7 @@ A `@rq`.
 ```
 
 ---
-### `fma:rq`
+### `++fma:rq`
 
 Fused multiply-add
 
@@ -4720,7 +4720,7 @@ A `@rq`.
 ```
 
 ---
-#### Source
+### `++sqt:rq`
 
 Square root
 
@@ -4788,7 +4788,7 @@ A `@rq`.
 ```
 
 ---
-### `lte:rq`
+### `++lte:rq`
 
 Less than or equal
 
@@ -5337,7 +5337,7 @@ A `@rh`.
 ```
 
 ---
-### `div:rh`
+### `++div:rh`
 
 Divide
 
@@ -5370,7 +5370,7 @@ A `@rh`.
 ```
 
 ---
-### `fma:rh`
+### `++fma:rh`
 
 Fused multiply-add
 
@@ -5406,7 +5406,7 @@ A `@rh`.
 ```
 
 ---
-#### Source
+### `++sqt:rh`
 
 Square root
 
@@ -5473,7 +5473,7 @@ A `@rh`.
 ```
 
 ---
-### `lte:rh`
+### `++lte:rh`
 
 Less than or equal
 
@@ -5501,10 +5501,10 @@ A `@rh`.
 #### Examples
 
 ```
-    > (lth:rh .~~1.2e5 (mul:rh .~~9.02e2 .~~7.114e2))
+    > (lte:rh .~~1.2e5 (mul:rh .~~9.02e2 .~~7.114e2))
     %.n
 
-    > (lth:rh .~~1.2e3 (mul:rh .~~9.02e1 .~~7.114e2))
+    > (lte:rh .~~1.2e3 (mul:rh .~~9.02e1 .~~7.114e2))
     %.y
 
     > (lte:rh .~~1.2e3 .~~1.2e3)
@@ -5736,7 +5736,7 @@ A `@s`, a signed integer.
 ```
 
 ---
-### `toi:rh`
+### `++toi:rh`
 
 Round to integer
 

@@ -98,7 +98,7 @@ A gate.
 #### Examples
 
 ```
-    > =tep (cury scan sym)
+    > =tep (curr scan sym)
     > `@t`(tep "asd")
     'asd'
 
