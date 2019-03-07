@@ -26,6 +26,11 @@ semantics and syntax.
 
 This section documents the gates and mold-builders of the Hoon standard library.
 
+##  [Alphabetical Arms](alphabetical-arms)
+
+This section lists the arms of the Hoon standard library in alphabetical order.
+They are linked to the doc pages.
+
 ## [Troubleshooting](troubleshooting)
 
 When your Hoon produces an error, check what it means here.
