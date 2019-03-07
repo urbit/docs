@@ -599,7 +599,7 @@ PHP, ERB, JSP, or Handlebars templates. This facility derives
 in part from the support for embedding Hoon code inside the markup.
 
 
-You can Sail is a domain-specific language within Hoon for creating XML nodes,
+Sail is a domain-specific language within Hoon for creating XML nodes,
 including HTML. It can be used directly within Udon to provide
 scripting capability with Hoon and also to provide more precise control over the
 resulting HTML. The [Sail guide](../sail) is a good place to learn the
@@ -799,7 +799,7 @@ In `site/web/meet.udon` put:
 :-  :~  navhome/'/meet'
         navdpad/'false'
         navpath/'/meet'
-        mavmode/'navbar'
+        navmode/'navbar'
     ==
 ;>
 
@@ -829,7 +829,7 @@ Then put the following in `site/web/about.udon`:
 :-  :~  navhome/'/meet'
         navdpad/'false'
         navpath/'/meet'
-        mavmode/'navbar'
+        navmode/'navbar'
         title/'About'
     ==
 ;>
@@ -859,7 +859,7 @@ And `site/web/projects.udon`:
 :-  :~  navhome/'/meet'
         navdpad/'false'
         navpath/'/meet'
-        mavmode/'navbar'
+        navmode/'navbar'
         title/'Projects'
     ==
 ;>
@@ -899,7 +899,7 @@ In `site/web/meet/projects/bike.udon`:
 :-  :~  navhome/'/meet'
         navdpad/'false'
         navpath/'/meet'
-        mavmode/'navbar'
+        navmode/'navbar'
         title/'Kaneda's Bike'
         comments/'true'
     ==
