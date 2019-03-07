@@ -534,7 +534,7 @@ A signed atom.
 ```
 
 ---
-### `++new`
+### `++new:si`
 
 Atom to @s
 
@@ -608,7 +608,7 @@ A cell composed of a `term` and an atom.
 ```
 
 ---
-### `++pro`
+### `++pro:si`
 
 Multiplication
 
@@ -746,20 +746,20 @@ An atom.
 #### Examples
 
 ```
-    > (mul 2 90)
+    > (sun:si 90)
     180
 
-    > (mul 2 --90)
+    > (sun:si --90)
     360
     > `@u`--90
     180
 
-    > (mul 2 --89)
+    > (sun:si --89)
     356
     > `@u`--89
     178
 
-    > (mul 2 -89)
+    > (sun:si -89)
     354
     > `@u`-89
     177

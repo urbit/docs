@@ -36,7 +36,7 @@ An atom.
       718.295.626.625.655.417.234
 ```
 
-***
+---
 ### `++shaf`
 
 Half SHA-256
@@ -71,7 +71,7 @@ first and last halves of the 256-bit salted hash `shas`.
     \/
 ```
 
-***
+---
 ### `++shal`
 
 SHA-512 with length
@@ -227,7 +227,7 @@ Because byte-strings can have leading zeros, but atoms cannot, we use `len`
 as a way of saying that the atom `ruz` is shorter than its representative
 byte-string.
 
-***
+---
 ### `++sham`
 
 128-bit noun hash
@@ -265,7 +265,7 @@ An atom.
     0v1.hg8mv.t7s3f.u4f8a.q5noe.dvqvh
 ```
 
-***
+---
 ### `++shan`
 
 SHA-1
@@ -361,7 +361,7 @@ An atom.
 
 SHA-1 is a deprecated function; it is not considered secure.
 
-***
+---
 ### `++shas`
 
 Salted hash
@@ -393,7 +393,7 @@ of that logical operation is then itself hashed with SHA-256.
     \/
 ```
 
-***
+---
 ### `++shaw`
 
 Hash to nbits
@@ -431,7 +431,7 @@ An atom.
     0b11
 ```
 
-***
+---
 ### `++shax`
 
 SHA-256
@@ -456,7 +456,7 @@ Produces an atom by hashing an atom `ruz` with SHA-256.
     \/
 ```
 
-***
+---
 ### `++shay`
 
 SHA-256 with length
@@ -580,7 +580,7 @@ Because byte-strings can have leading zeros, but atoms cannot, we use `len`
 as a way of saying that the atom `ruz` is shorter than its representative
 byte-string.
 
-***
+---
 ### `++shaz`
 
 SHA-512
@@ -613,7 +613,7 @@ An atom.
     \/
 ```
 
-***
+---
 ### `++og`
 
 Container arm for SHA-256-powered random-number generation. Its sample `a` is an
@@ -648,7 +648,7 @@ Note that the product is deterministic; the seed will produce the same
 result every time it is run. Use `eny`, 256 bits of entropy, for a
 non-deterministic product.
 
-***
+---
 ### `++rad`
 
 Random in range
@@ -689,7 +689,7 @@ An atom.
     7
 ```
 
-***
+---
 ### `++rads`
 
 Random continuation
@@ -734,7 +734,7 @@ Since everything in Hoon is a pure function, we need to use tricks like this to
 generate separate random values from the same seed. Notice how we jump from
 one `rads` function call to another in the above example.
 
-***
+---
 ### `++raw`
 
 Random bits
@@ -783,7 +783,7 @@ An atom.
     0b100
 ```
 
-***
+---
 ### `++raws`
 
 Random bits continuation
@@ -821,4 +821,4 @@ Since everything in Hoon is a pure function, we need to use tricks like this to
 generate separate random values from the same seed. Notice how we jump from
 one `raws` function call to another in the above example.
 
-***
+---
