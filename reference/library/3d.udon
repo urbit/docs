@@ -649,7 +649,7 @@ result every time it is run. Use `eny`, 256 bits of entropy, for a
 non-deterministic product.
 
 ---
-### `++rad`
+### `++rad:og`
 
 Random in range
 
@@ -690,7 +690,7 @@ An atom.
 ```
 
 ---
-### `++rads`
+### `++rads:og`
 
 Random continuation
 
@@ -735,7 +735,7 @@ generate separate random values from the same seed. Notice how we jump from
 one `rads` function call to another in the above example.
 
 ---
-### `++raw`
+### `++raw:og`
 
 Random bits
 
@@ -784,7 +784,7 @@ An atom.
 ```
 
 ---
-### `++raws`
+### `++raws:og`
 
 Random bits continuation
 

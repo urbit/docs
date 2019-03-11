@@ -7,7 +7,7 @@
 
 # 3f: scrambling
 
-### `++un`*
+### `++un`
 
 Reversible scrambling
 
@@ -22,7 +22,7 @@ Used in the `@p` phonetic base.
 ```
 
 ---
-### `++wren`
+### `++wren:un`
 
 Conceal structure
 
@@ -74,7 +74,7 @@ An atom.
 ```
 
 ---
-### `++wred`
+### `++wred:un`
 
 Restore structure
 
@@ -126,7 +126,7 @@ An atom.
 ```
 
 ---
-### `++xafo`
+### `++xafo:un`
 
 Add modulo 255
 
@@ -163,7 +163,7 @@ An atom.
 ```
 
 ---
-### `++xaro`
+### `++xaro:un`
 
 Subtract modulo 255
 
@@ -200,7 +200,7 @@ An atom.
 ```
 
 ---
-### `++zaft`
+### `++zaft:un`
 
 Look up in 255 sub box
 
@@ -252,7 +252,7 @@ An atom.
 ```
 
 ---
-### `++zart`
+### `++zart:un`
 
 Reverse look up in 255 sub box
 
@@ -302,7 +302,7 @@ An atom.
 ```
 
 ---
-### `++zyft`
+### `++zyft:un`
 
 Lookup byte in 256 sub box
 
@@ -355,7 +355,7 @@ An atom.
 ```
 
 ---
-### `++zyrt`
+### `++zyrt:un`
 
 Reverse lookup byte in 256 sub box
 
@@ -420,7 +420,7 @@ A core for performing reversible scrambling operations for the `@p` phonetic
 base.
 
 ---
-### `++feen`
+### `++feen:ob`
 
 Conceal structure, v2
 
@@ -469,7 +469,7 @@ An atom.
 ```
 
 ---
-### `++fend`
+### `++fend:ob`
 
 Restore structure, v2
 
@@ -522,7 +522,7 @@ An atom.
 ```
 
 ---
-### `++fice`
+### `++fice:ob`
 
 Feistel-like cipher
 
@@ -565,7 +565,7 @@ An atom.
 ```
 
 ---
-### `++teil`
+### `++teil:ob`
 
 Reverse Feistel-like cipher
 
@@ -609,7 +609,7 @@ An atom.
 ```
 
 ---
-### `++rynd`
+### `++rynd:ob`
 
 Reverse Feistel-like cipher
 
@@ -651,7 +651,7 @@ A cell of two atoms.
 ```
 
 ---
-### `++rund`
+### `++rund:ob`
 
 Reverse single Feistel-like
 
@@ -693,7 +693,7 @@ A cell of two atoms.
 ```
 
 ---
-### `++raku`
+### `++raku:ob`
 
 Key list
 

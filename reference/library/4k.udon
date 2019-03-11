@@ -39,7 +39,7 @@ A door that contains arms that operate on the sample coin `lot`.
 
 ------------------------------------------------------------------------
 
-### `++rear`
+### `++rear:co`
 
 Prepend & render as tape
 
@@ -68,7 +68,7 @@ Renders a coin `lot` as a tape prepended to the sample tape `rom`.
 
 ------------------------------------------------------------------------
 
-### `++rent`
+### `++rent:co`
 
 Render as span
 
@@ -97,7 +97,7 @@ Renders a coin `lot` as a span.
 ```
 ------------------------------------------------------------------------
 
-### `++rend`
+### `++rend:co`
 
 Render as tape
 

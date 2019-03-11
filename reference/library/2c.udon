@@ -805,7 +805,7 @@ Core that contains arms for `bloq` and modular integer operations.
 ```
 
 ---
-### `++dif`
+### `++dif:fe`
 
 Produces the difference between two atoms in the modular basis
 representation.
@@ -857,7 +857,7 @@ A `@s`
 ```
 
 ---
-### `++inv`
+### `++inv:fe`
 
 Inverse
 
@@ -900,7 +900,7 @@ An atom.
 ```
 
 ---
-### `++net`
+### `++net:fe`
 
 Flip endianness
 
@@ -989,7 +989,7 @@ An atom.
 ```
 
 ---
-### `++out`
+### `++out:fe`
 
 Max integer value
 
@@ -1038,7 +1038,7 @@ An atom.
 ```
 
 ---
-### `++rol`
+### `++rol:fe`
 
 Roll left
 
@@ -1088,7 +1088,7 @@ An atom.
 ```
 
 ---
-### `++ror`
+### `++ror:fe`
 
 Roll right
 
@@ -1141,7 +1141,7 @@ An atom.
 ```
 
 ---
-### `++sit`
+### `++sit:fe`
 
 Enforce modulo
 
@@ -1202,7 +1202,7 @@ An atom.
 
 ---
 
-### `++sum`
+### `++sum:fe`
 
 Sum
 

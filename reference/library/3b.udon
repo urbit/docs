@@ -119,7 +119,7 @@ Container arm for floating-point arithmetic functions.
   Default is 113.
 - Minimum exponent (`v`): minimum value of e. Default is -16.494.
 - Width (`w`): Max value of `e` minus min value of `e`. 0 is for fixed-point.
-  Default is 32.988.
+  Default is 32.765.
 - Rounding mode (`r`): Possible modes are nearest (`$n`), up (`$u`),
   down (`$d`), to zero (`$z`), and away from zero (`$a`). Default value is `%n`.
 - Behavior (`d`): return denormals (`$d`), flush denormals to zero (`$z`),
@@ -1089,7 +1089,7 @@ Produces `v:fl`, the minimum exponent. The default minimum exponent is -16.494.
 
 Maximum exponent
 
-Returns the maximum exponent of `fl`. The default maximum exponent is --16.494.
+Returns the maximum exponent of `fl`. The default maximum exponent is --16.271.
 
 #### Source
 
@@ -1100,6 +1100,9 @@ Returns the maximum exponent of `fl`. The default maximum exponent is --16.494.
 #### Examples
 
 ```
+    > emx:fl
+    --16.271
+
     > `@u`emx:fl
     32.542
 ```
@@ -5051,7 +5054,7 @@ A `@s`, a signed integer.
 ```
 
 ---
-### `toi:rq`
+### `++toi:rq`
 
 Round to integer
 
@@ -5621,6 +5624,63 @@ A `@rh`.
 
     > (gth:rh .~~1.24e4 .~~2.24e4)
     %.n
+```
+
+---
+
+### `++tos:rh`
+
+`@rh` to `@rs`
+
+Converts `@` from `@rh` to `@rs`.
+
+#### Accepts
+
+`a` is a `@rh`, a half-precision float.
+
+#### Produces
+
+A `@rs`, a single-precision float.
+
+#### Source
+
+```
+      ++  tos  |= {a/@rh} (bit:rs (sea a))
+```
+
+#### Examples
+
+```
+    > (tos:rh .~~2.5e2)
+    .2.5e2
+```
+
+---
+### `++fos:rh`
+
+`@rs` to `@rh`
+
+Converts `@` from `@rs` to `@rh`.
+
+#### Accepts
+
+`a` is a `@rs`, a single-precision float.
+
+#### Produces
+
+A `@rh`, a half-precision float.
+
+#### Source
+
+```
+      ++  fos  |= {a/@rs} (bit (sea:rs a))
+```
+
+#### Examples
+
+```
+    > (fos:rh .2.5e2)
+    .~~2.5e2
 ```
 
 ---

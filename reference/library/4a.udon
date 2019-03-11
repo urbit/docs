@@ -59,7 +59,7 @@ contained arms.
 ```
 
 ---
-### `++ind`
+### `++ind:po`
 
 Parse suffix
 
@@ -97,7 +97,7 @@ A `unit`.
 ```
 
 ---
-### `++ins`
+### `++ins:po`
 
 Parse prefix
 
@@ -138,7 +138,7 @@ A `unit` of an atom.
 ```
 
 ---
-### `++tod`
+### `++tod:po`
 
 Fetch suffix
 
@@ -182,7 +182,7 @@ An atom.
 ```
 
 ---
-### `++tos`
+### `++tos:po`
 
 Fetch prefix
 

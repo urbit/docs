@@ -8,7 +8,7 @@
 
 # 4d: parsing (tracing)
 
-### `last`
+### `++last`
 
 Further trace
 
@@ -51,8 +51,8 @@ A `hair`.
     [p=7 q=7]
 ```
 
-***
-### `lust`
+---
+### `++lust`
 
 Detect newline
 

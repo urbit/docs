@@ -71,7 +71,7 @@ Container core for modular arithmetic functions.
       |_  a=@
 ```
 
-#### `++dif`
+### `++dif:fo`
 
 Subtraction
 
@@ -107,7 +107,7 @@ An atom.
     8
 ```
 
-#### `++exp`
+### `++exp:fo`
 
 Exponent
 
@@ -154,7 +154,7 @@ An atom.
 ```
 
 ---
-### `++fra`
+### `++fra:fo`
 
 Divide
 
@@ -203,7 +203,7 @@ An atom.
 ```
 
 ---
-### `++inv`
+### `++inv:fo`
 
 Inverse
 
@@ -249,7 +249,7 @@ An atom.
 ```
 
 ---
-### `++pro`
+### `++pro:fo`
 
 Multiplication
 
@@ -286,7 +286,7 @@ An atom.
 ```
 
 ---
-### `++sit`
+### `++sit:fo`
 
 Modulus
 
@@ -318,7 +318,7 @@ An atom.
 ```
 
 ---
-### `++sum`
+### `++sum:fo`
 
 Modular sum
 
@@ -497,7 +497,7 @@ An atom.
 ```
 
 ---
-#### `++fra:si`
+### `++fra:si`
 
 Divide
 
@@ -723,7 +723,7 @@ A signed integer.
 ```
 
 ---
-#### `++sun:si`
+### `++sun:si`
 
 @u to @s
 
