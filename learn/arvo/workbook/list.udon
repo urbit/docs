@@ -115,7 +115,7 @@ You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `en
 
 ## Explanation
 
-If you aren't intuiting how the program is building the list, that's okay.
+If you aren't clear on how the program is building the list, that's okay.
 
 Our program works by having each iteration of the list creating a cell. In each of these cells, the head -- the cell's first position -- is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (null). When that happens, the list is terminated and the program doesn't have anything else to do, so it ends. So, a built-out list of nested cells can be visualized like this:
 
@@ -133,4 +133,4 @@ Our program works by having each iteration of the list creating a cell. In each 
               4   ~
 ```
 
-If you don't immediately intuit how this is working, that's ok. We'll take a deeper look into recursion later.
+If you don't immediately intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion example](../recursion).
