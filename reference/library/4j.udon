@@ -30,7 +30,7 @@ A core containing numeric parser primitives.
 
 ------------------------------------------------------------------------
 
-### `++bix`
+### `++bix:ab`
 
 Parse hex pair
 
@@ -63,7 +63,7 @@ A an atom. XX
 
 ------------------------------------------------------------------------
 
-### `++hif`
+### `++hif:ab`
 
 Parse phonetic pair
 
@@ -95,7 +95,7 @@ An atom.
 
 ------------------------------------------------------------------------
 
-### `++huf`
+### `++huf:ab`
 
 Parse two phonetic pairs
 
@@ -131,7 +131,7 @@ An atom. XX
 
 ------------------------------------------------------------------------
 
-### `++hyf`
+### `++hyf:ab`
 
 Parse 8 phonetic bytes
 
@@ -163,7 +163,7 @@ An atom. XX
 
 ------------------------------------------------------------------------
 
-### `++pev`
+### `++pev:ab`
 
 Parse \<= 5 base-32
 
@@ -199,7 +199,7 @@ An atom.
 
 ------------------------------------------------------------------------
 
-### `++pew`
+### `++pew:ab`
 
 Parse \<= 5 base-64
 
@@ -238,7 +238,7 @@ Up to five @uw (base 64) digits.
 
 ------------------------------------------------------------------------
 
-### `++piv`
+### `++piv:ab`
 
 Parse 5 base-32
 
@@ -266,7 +266,7 @@ Parsing `++rule`. Parses exactly five base-32 digits.
 
 ------------------------------------------------------------------------
 
-### `++piw`
+### `++piw:ab`
 
 Parse 5 base-64
 
@@ -295,7 +295,7 @@ Parsing `++rule`. Parses exactly five base-64 digits.
 
 ------------------------------------------------------------------------
 
-### `++qeb`
+### `++qeb:ab`
 
 Parse \<= 4 binary
 
@@ -331,7 +331,7 @@ a leading zero.
 
 ------------------------------------------------------------------------
 
-### `++qex`
+### `++qex:ab`
 
 Parse \<= 4 hex
 
@@ -365,7 +365,7 @@ without a leading zero.
 
 ------------------------------------------------------------------------
 
-### `++qib`
+### `++qib:ab`
 
 Parse 4 binary
 
@@ -395,7 +395,7 @@ Parsing `++rule`. Parses exactly four binary digits.
 
 ------------------------------------------------------------------------
 
-### `++qix`
+### `++qix:ab`
 
 Parse 4 hex
 
@@ -425,7 +425,7 @@ Parsing `++rule`. Parses exactly four hexadecimal digits.
 
 ------------------------------------------------------------------------
 
-### `++seb`
+### `++seb:ab`
 
 Parse 1
 
@@ -456,7 +456,7 @@ Parsing `++rule`. Parses the number 1.
 
 ------------------------------------------------------------------------
 
-### `++sed`
+### `++sed:ab`
 
 Parse decimal
 
@@ -484,7 +484,7 @@ Parsing `++rule`. Parses a nonzero decimal digit.
 
 ------------------------------------------------------------------------
 
-### `++sev`
+### `++sev:ab`
 
 Parse base-32
 
@@ -512,7 +512,7 @@ Parsing `++rule`. Parses a nonzero base-32 digit
 
 ------------------------------------------------------------------------
 
-### `++sew`
+### `++sew:ab`
 
 Parse base-64
 
@@ -540,7 +540,7 @@ Parsing `++rule`. Parses a nonzero base-64 digit
 
 ------------------------------------------------------------------------
 
-### `++sex`
+### `++sex:ab`
 
 Parse hex
 
@@ -568,7 +568,7 @@ Parsing `++rule`. Parses a nonzero hexadecimal digit.
 
 ------------------------------------------------------------------------
 
-### `++sib`
+### `++sib:ab`
 
 Parse binary
 
@@ -595,7 +595,7 @@ Parsing `++rule`. Parses a binary digit.
 
 ------------------------------------------------------------------------
 
-### `++sid`
+### `++sid:ab`
 
 Parse decimal
 
@@ -620,7 +620,7 @@ Parsing `++rule`. Parses a decimal digit.
 
 ------------------------------------------------------------------------
 
-### `++siv`
+### `++siv:ab`
 
 Parse base-32
 
@@ -645,7 +645,7 @@ Parsing `++rule`. Parses a base-32 digit.
 
 ------------------------------------------------------------------------
 
-### `++siw`
+### `++siw:ab`
 
 Parse base-64
 
@@ -670,7 +670,7 @@ Parsing `++rule`. Parses a base-64 digit.
 
 ------------------------------------------------------------------------
 
-### `++six`
+### `++six:ab`
 
 Parse hex
 
@@ -695,7 +695,7 @@ Parsing `++rule`. Parses a hexadecimal digit.
 
 ------------------------------------------------------------------------
 
-### `++sov`
+### `++sov:ab`
 
 Parse base-32
 
@@ -719,7 +719,7 @@ Parsing `++rule`. Parses a base-32 letter.
 ```
 ------------------------------------------------------------------------
 
-### `++sow`
+### `++sow:ab`
 
 Parse base-64
 
@@ -749,7 +749,7 @@ Parsing `++rule`. Parses a base-64 letter/symbol.
 
 ------------------------------------------------------------------------
 
-### `++sox`
+### `++sox:ab`
 
 Parse hex letter
 
@@ -774,7 +774,7 @@ Parsing `++rule`. Parses a hexadecimal letter.
 
 ------------------------------------------------------------------------
 
-### `++ted`
+### `++ted:ab`
 
 Parse \<= 3 decimal
 
@@ -807,7 +807,7 @@ leading zero.
 
 ------------------------------------------------------------------------
 
-### `++tip`
+### `++tip:ab`
 
 Leading phonetic byte
 
@@ -836,7 +836,7 @@ syllable.
 
 ------------------------------------------------------------------------
 
-### `++tiq`
+### `++tiq:ab`
 
 Trailing phonetic syllable
 
@@ -864,7 +864,7 @@ syllable.
 
 ------------------------------------------------------------------------
 
-### `++tid`
+### `++tid:ab`
 
 Parse 3 decimal digits
 
@@ -892,7 +892,7 @@ Parsing `++rule`. Parses exactly three decimal digits.
 
 ------------------------------------------------------------------------
 
-### `++til`
+### `++til:ab`
 
 Parse 3 lowercase
 
@@ -922,7 +922,7 @@ Parsing `++rule`. Parses exactly three lowercase letters.
 
 ------------------------------------------------------------------------
 
-### `++urs`
+### `++urs:ab`
 
 Parse span characters
 
@@ -951,7 +951,7 @@ Parsing rule. Parses characters from an atom of the span odor `@ta`.
 
 ------------------------------------------------------------------------
 
-### `++urt`
+### `++urt:ab`
 
 Parse non-`_` span
 
@@ -979,7 +979,7 @@ for cab, `_`.
 
 ------------------------------------------------------------------------
 
-### `++voy`
+### `++voy:ab`
 
 Parse bas, soq, or bix
 
@@ -1033,7 +1033,7 @@ A core containing top-level atom parsers.
 
 ------------------------------------------------------------------------
 
-### `++ape`
+### `++ape:ag`
 
 Parse 0 or rule
 
@@ -1060,7 +1060,7 @@ Parser modifier. Parses 0 or the sample rule `fel`.
 
 ------------------------------------------------------------------------
 
-### `++bay`
+### `++bay:ag`
 
 Parses binary number
 
@@ -1085,7 +1085,7 @@ Parsing rule. Parses a binary number without a leading zero.
 
 ------------------------------------------------------------------------
 
-### `++bip`
+### `++bip:ag`
 
 Parse IPv6
 
@@ -1113,7 +1113,7 @@ Parsing rule. Parses a `@is`, an IPv6 address.
 
 ------------------------------------------------------------------------
 
-### `++dem`
+### `++dem:ag`
 
 Parse decimal with dots
 
@@ -1140,7 +1140,7 @@ Parsing rule. Parses a decimal number that includes dot separators.
 
 ------------------------------------------------------------------------
 
-### `++dim`
+### `++dim:ag`
 
 Parse decimal number
 
@@ -1168,7 +1168,7 @@ Parsing rule. Parses a decimal number without a leading zero.
 
 ------------------------------------------------------------------------
 
-### `++dum`
+### `++dum:ag`
 
 Parse decimal with leading `0`
 
@@ -1197,7 +1197,7 @@ Parsing rule. Parses a decmial number with leading zeroes.
 
 ------------------------------------------------------------------------
 
-### `++fed`
+### `++fed:ag`
 
 Parse phonetic base
 
@@ -1239,7 +1239,7 @@ Parsing rule. Parses an atom of odor `@p`, the phonetic base.
 
 ------------------------------------------------------------------------
 
-### `++hex`
+### `++hex:ag`
 
 Parse hex
 
@@ -1270,7 +1270,7 @@ Parsing rule. Parses a hexadecimal number
 
 ------------------------------------------------------------------------
 
-### `++lip`
+### `++lip:ag`
 
 Parse IPv4 address
 
@@ -1300,7 +1300,7 @@ Parsing rule. Parses an IPv4 address.
 
 ------------------------------------------------------------------------
 
-### `++viz`
+### `++viz:ag`
 
 Parse Base-32 with dots
 
@@ -1325,7 +1325,7 @@ Parsing rule. Parses a Base-32 number with dot separators.
 
 ------------------------------------------------------------------------
 
-### `++vum`
+### `++vum:ag`
 
 Parse base-32 string
 
@@ -1350,7 +1350,7 @@ Parsing rule. Parses a raw base-32 string.
 
 ------------------------------------------------------------------------
 
-### `++wiz`
+### `++wiz:ag`
 
 Parse base-64
 
@@ -1408,7 +1408,7 @@ relationship between a destroyer and its cruiser.
 
 ------------------------------------------------------------------------
 
-### `++zag`
+### `++zag:mu`
 
 Add bottom into top
 
@@ -1439,7 +1439,7 @@ destroyer.
 
 ------------------------------------------------------------------------
 
-### `++zig`
+### `++zig:mu`
 
 Subtract bottom from top
 
@@ -1471,7 +1471,7 @@ destroyer.
 
 ------------------------------------------------------------------------
 
-### `++zug`
+### `++zug:mu`
 
 Concatenate into atom
 
@@ -1530,7 +1530,7 @@ A door containing arms that render digits at bases 10, 16, 32, and
 
 ------------------------------------------------------------------------
 
-### `++d`
+### `++d:ne`
 
 Render decimal
 
@@ -1558,7 +1558,7 @@ Renders a decimal digit as an atom of an ACII byte value.
 
 ------------------------------------------------------------------------
 
-### `++x`
+### `++x:ne`
 
 Render hex
 
@@ -1588,7 +1588,7 @@ Renders a hexadecimal digit as an atom of an ASCII byte value.
 
 ------------------------------------------------------------------------
 
-### `++v`
+### `++v:ne`
 
 Render base-32
 
@@ -1617,7 +1617,7 @@ Renders a base-32 digit as an atom of an ASCII byte value.
 
 ------------------------------------------------------------------------
 
-### `++w`
+### `++w:ne`
 
 Render base-64
 

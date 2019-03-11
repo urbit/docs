@@ -18,7 +18,7 @@ XX document
 
 
 
-### `++r`
+### `++r:at`
 
 ```
       ++  r
@@ -40,7 +40,7 @@ XX document
 
 XX document
 
-### `++rf`
+### `++rf:at`
 
 ```
       ++  rf    `tape`[?-(a $& '&', $| '|', * !!) ~]
@@ -49,7 +49,7 @@ XX document
 
 XX document
 
-### `++rn`
+### `++rn:at`
 
 ```
         ++  rn    `tape`[?>(=(0 a) '~') ~]
@@ -57,7 +57,7 @@ XX document
 
 XX document
 
-### `++rt`
+### `++rt:at`
 
 ```
         ++  rt    `tape`['\'' (weld (mesc (trip a)) `tape`['\'' ~])]
@@ -65,7 +65,7 @@ XX document
 
 XX document
 
-### `++rta`
+### `++rta:at`
 
 ```
         ++  rta   rt
@@ -73,7 +73,7 @@ XX document
 
 XX document
 
-### `++rtam`
+### `++rtam:at`
 
 ```
       ++  rtam  `tape`['%' (trip a)]
@@ -81,7 +81,7 @@ XX document
 
 XX document
 
-### `++rub`
+### `++rub:at`
 
 ```
       ++  rub   `tape`['0' 'b' (rum 2 ~ |=(b/@ (add '0' b)))]
@@ -89,7 +89,7 @@ XX document
 
 XX document
 
-### `++rud`
+### `++rud:at`
 
 ```
       ++  rud   (rum 10 ~ |=(b/@ (add '0' b)))
@@ -97,7 +97,7 @@ XX document
 
 XX document
 
-### `++rum`
+### `++rum:at`
 
 ```
       ++  rum
@@ -120,7 +120,7 @@ XX document
 
 XX document
 
-### `++rup`
+### `++rup:at`
 
 ```
       ++  rup
@@ -149,7 +149,7 @@ XX document
 
 XX document
 
-### `++ruv`
+### `++ruv:at`
 
 ```
       ++  ruv
@@ -170,7 +170,7 @@ XX document
 
 XX document
 
-### `++rux`
+### `++rux:at`
 
 ```
       ++  rux  `tape`['0' 'x' (rum 16 ~ |=(b/@ (add b ?:((lth b 10) 48 87))))]

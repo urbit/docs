@@ -132,7 +132,7 @@ A flag.
 ```
 
 ---
-###`+-apt:by`
+### `+-apt:by`
 
 Check correctness
 
@@ -181,7 +181,7 @@ A flag.
 
 See section [`2f`](../2f) for more information on noun ordering.
 
-###`+-bif:by`
+### `+-bif:by`
 
 Bifurcate
 
@@ -232,7 +232,7 @@ A cell of two maps.
     [l=[n=[p='c' q=3] l=[n=[p='a' q=1] l={} r={}] r=~] r=~]
 ```
 
-###`+-def:by`
+### `+-def:by`
 
 Difference
 
@@ -258,7 +258,7 @@ A map.
 #### Examples
 
 ---
-###`+-dep:by`
+### `+-dep:by`
 
 Difference as patch
 

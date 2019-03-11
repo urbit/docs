@@ -34,7 +34,7 @@ Core containing arms that parse `++coin`.
 
 ------------------------------------------------------------------------
 
-### `++bisk`
+### `++bisk:so`
 
 Parse odor-atom pair
 
@@ -74,7 +74,7 @@ producing a `++dime`.
 
 ------------------------------------------------------------------------
 
-### `++crub`
+### `++crub:so`
 
 Parse `@da`, `@dr`, `@p`, `@t`
 
@@ -266,7 +266,7 @@ and `@t`, producing a `++dime`.
 
 ------------------------------------------------------------------------
 
-### `++nuck`
+### `++nuck:so`
 
 Top-level coin parser
 
@@ -322,7 +322,7 @@ corresponding `++coin` parser.
 
 ------------------------------------------------------------------------
 
-### `++nusk`
+### `++nusk:so`
 
 Parse coin literal with escapes
 
@@ -355,7 +355,7 @@ formatting).
 
 ------------------------------------------------------------------------
 
-### `++perd`
+### `++perd:so`
 
 Parsing rule.
 
@@ -391,7 +391,7 @@ prefixes.
 
 ------------------------------------------------------------------------
 
-### `++royl`
+### `++royl:so`
 
 Parse dime float
 
@@ -462,7 +462,7 @@ Parsing rule. Parses a number into a `++dime` float.
 
 ------------------------------------------------------------------------
 
-### `++royl-cell`
+### `++royl-cell:so`
 
 XX still not fully functional
 
@@ -481,7 +481,7 @@ Intermediate parsed float convereter
 
 ------------------------------------------------------------------------
 
-### `++tash`
+### `++tash:so`
 
 Parse signed dime
 
@@ -524,7 +524,7 @@ Parsing rule. Parses a signed number into a `++dime`.
 
 ------------------------------------------------------------------------
 
-### `++twid`
+### `++twid:so`
 
 Parse coins without `~` prefix
 
@@ -562,7 +562,7 @@ Parsing rule. Parses coins after a leading sig, `~`.
 
 ------------------------------------------------------------------------
 
-### `++zust`
+### `++zust:so`
 
 Parse prefixed dimes from `@if`, `@f`, `@rd`
 

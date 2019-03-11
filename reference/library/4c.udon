@@ -32,7 +32,7 @@ Pretty-printing engine that accepts a `++tank` sample and contains arms that per
 ```
 
 ---
-### `++ram`
+### `++ram:re`
 
 Flatten to tape
 
@@ -75,7 +75,7 @@ A `++tape`.
     "(bar.baz.bam)"
 ```
 ---
-### `++win`
+### `++win:re`
 
 Render at indent
 
@@ -139,7 +139,7 @@ A `++wall` (`++list` of `++tapes`).
 ```
 
 ---
-### `++din`
+### `++din:re`
 
 XX document
 
@@ -154,7 +154,7 @@ XX document
 
 ---
 
-### `++fit`
+### `++fit:re`
 
 Fit on one line test
 
@@ -176,7 +176,7 @@ Determine whether `tac` fits on one line. Internal to `++win`
 
 ---
 
-### `++rig`
+### `++rig:re`
 
 Wrap in `\/`
 
@@ -219,7 +219,7 @@ A `++wall` (list of `++tape`s).
 #### Examples
 
 ---
-### `++wig`
+### `++wig:re`
 
 `++win` render tape
 
