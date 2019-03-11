@@ -10,6 +10,8 @@
 The Workbook is the place to sharpen your Hoon skills. Each entry in the
 Workbook is a code walkthrough followed by exercises.
 
+- the [List of Numbers](/docs/learn/arvo/workbook/list) example will familiarize you with the basic components and structure of a Hoon program. If you're brand new, start here.
+
 - The [Caesar Cipher](/docs/learn/arvo/workbook/caesar) shows you how to build a simple method of message obfuscation.
 
 - The [Recursion](/docs/learn/arvo/workbook/recursion) walkthrough will explain common patterns of recursion in programming and how to implement them in Hoon.
