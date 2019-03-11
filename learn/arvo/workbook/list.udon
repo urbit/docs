@@ -33,7 +33,7 @@ But what do all these squiggly symbols in the program _do_? It probably isn't im
 
 ## The Code
 
-You probably noticed that there's a column of colons and numbers in the our example. The `::` digraph tells the compiler to ignore the rest of the text on the line. Such text is referred to as a "comment" because, instead of performing a computation, it exists to explain things to readers of the source code.
+You probably noticed that there's a column of colons and numbers in the our example. The `::` digraph tells the compiler to ignore the rest of the text on the line. Such text is referred to as a "comment" because, instead of performing a computation, it exists to explain things to human readers of the source code.
 
 In our example program, we use comments with line numbers for convenient reference, so that we can dig into the code line by line. Important Hoon concepts will be bolded when first mentioned.
 
