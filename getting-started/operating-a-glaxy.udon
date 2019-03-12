@@ -1,0 +1,69 @@
+:- :~ title/'Operating a Galaxy'
+   sort/'6'
+   ==
+;>
+
+# Operating a Galaxy
+
+Many of the details of operating a Galaxy are shared with Stars as
+weell. This document will outline where there are differences. It will
+also include a discussion of best practices
+
+## Powers and Responsibilities of a Galaxy
+
+Galaxies have similar routing powers as a Star with the difference
+that they are higher up the routing hierarchy and thus have an impact
+on a far larger portion of the address space than stars do.
+
+Just as Stars are the parents and sponsors of planets Galaxies are the
+parents and sponsors of Stars. For more about parenting and
+sponsorships look at the documentation about operating a Star.
+
+Galaxies are also a part of what little governing body that urbit
+has. They participate in this governance via Azimuth on the Etherium
+blockchain. This governance primarily take the form of voting on
+updates to the Azimuth contracts.
+
+## Administration
+
+### Voting
+
+TBD
+
+### Routing
+
+TBD
+
+## Ops
+
+### Capacity Planning
+
+TBD
+
+### Availability
+
+TBD
+
+## Best Practices
+
+### PKI and OpSec
+
+* Wallet storage
+
+Your Galaxies wallet contains the keys to your corner of the urbit
+kingdom. With it you or anyone else can impersonate you when voting on
+Azimuth changes, gain access to the running Galaxy, or do pretty much
+anything else they want with it. As such it is best that you keep it
+safe.
+
+At a mimimum it should be stored encrypted on an air gapped
+device. Ideally it should be kept as a paper wallet in a safe or
+safe-deposit box.
+
+* Keyfile and code storage
+
+The keyfile and code give access to the galaxy instance and should be
+kept safe. It is advised that you do not leave the code in the urbit
+pier and instead store it is advised that you store the code and the
+keyfile in a trustworthy password manager and delete the keyfile after
+starting your instance.
