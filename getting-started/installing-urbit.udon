@@ -56,6 +56,13 @@ sudo ninja -C ./build/ install
 urbit
 ```
 
+To access your Urbit via HTTP on port 80, you may need to run the following:
+
+```
+sudo apt-get install libcap2-bin
+sudo setcap 'cap_net_bind_service=+ep' $(which urbit)
+```
+
 ### Fedora
 
 ```
