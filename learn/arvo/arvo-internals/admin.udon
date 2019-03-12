@@ -139,15 +139,52 @@ planet can issue ~4 billion (`2^32`) moons.
 To generate a random moon from your planet, run:
 
 ```
-~your-urbit:dojo> +moon
+~sampel-palnet:dojo> +moon
+moon: ~faswep-navred-sampel-palnet
+\/~.0wd.rZU67.3jSny.z1vda.7sr-s.EL1Jt.-76Nj.ugXxY.g6-Bx.HvKZl.G53oV.hPnXe.7U3E3.J4CEe.MEVuq.~08Nt\/
+  .zNT0K.k-Ab~.Nn90d.OZ2fT.-XlQQ.Cfrkf.y6~K0.2Do09.EaE3W.BSK--.5Q~9N.y3QIP.eokH-.T6lwz.gg8MX.7LU5
+  x.DJROE.IzQsy.OXOLr.IOE3a.-QI40.H5ukK.Cw-u4.uxE-y.V-o1F.Q84g0.effP0.de01g.600g1
+\/                                                                                               \/
 ```
+
+You must manually edit the output of `+moon` to get
+the correct format for the `<key>`:
+
+- strip out the `\/`
+
+- combine into one line, omitting spaces
+
+- trim the leading `~.`
+
+`<key>` would be `0wd.rZU67.3jSny.z1vda ... <snip> ... effP0.de01g.600g1`
+in this example.
+
+Put `<key>` in a file and that file becomes `<keyfile>`.
+
+*`<keyfile>` must not have a trailing newline.*
+
+Another way of generating `<keyfile>` is:
+
+```
+~sampel-palnet:dojo> @moon/key +moon
+moon: ~faswep-navred-sampel-palnet
+```
+
+`<keyfile>` will be at `path/to/sampel-palnet/.urb/put/moon.key`
+and does not need editing to be used with the `-k` option.
 
 You can use the resulting output in the same installation flow from
 [install](../install) and [setup](../setup), following the same scheme as
 for booting a planet. That scheme is:
 
 ```
-$ urbit -w <moonname> -t <ticket> -c <piername>
+$ urbit -w <moonname> -G <key> -c <piername>
+```
+
+or
+
+```
+$ urbit -w <moonname> -k <keyfile> -c <piername>
 ```
 
 The `-c <piername>` argument is not required, but it is recommended; otherwise,
@@ -156,9 +193,14 @@ the resulting directory is a rather unwieldy moon name.
 Here's how an example moon might be booted:
 
 ```
-$ urbit -w faswep-navred-sampel-palnet -t habref-mebsem-parsym-batlus -c mymoon
+$ urbit -w faswep-navred-sampel-palnet -G <key> -c mymoon
 ```
 
+or
+
+```
+$ urbit -w faswep-navred-sampel-palnet -k <keyfile> -c mymoon
+```
 
 Moons are automatically synced to their parent `%kids` desk, and can control
 applications on their parent planet using `|link`.  You can read more about
