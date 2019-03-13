@@ -25,8 +25,6 @@ To use Bridge:
 
 Once the program is running in your browser, go through each step presented according to what kind of wallet you have. There are a few login options you'll be presented with. A notable option is *Urbit Master Ticket*. This is for those who used our Wallet Generator software. If you bought points from an Urbit sale and then used the Wallet Generator, your networking keys will be set for you. All other login options will result in you needing to set your own networking keys.
 
-*Ethereum Prv*:
-
 ## Accept Your Transfer
 
 After you access your Ethereum address, if a point was sent to that address,
