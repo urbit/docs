@@ -1117,25 +1117,18 @@ A rule.
 #### Source
 
 ```
-    ++  stun                                                ::  parse several times
-      |*  {lig/{@ @} fel/rule}
+    ++  stir
+      ~/  %stir
+      |*  {rud/* raq/_=>(~ |*({a/* b/*} [a b])) fel/rule}
+      ~/  %fun
       |=  tub/nail
-      ^-  (like (list _(wonk (fel))))
-      ?:  =(0 +.lig)
-        [p.tub [~ ~ tub]]
+      ^-  (like _rud)
       =+  vex=(fel tub)
       ?~  q.vex
-        ?:  =(0 -.lig)
-          [p.vex [~ ~ tub]]
-        vex
-      =+  ^=  wag  %=  $
-                     -.lig  ?:(=(0 -.lig) 0 (dec -.lig))
-                     +.lig  ?:(=(0 +.lig) 0 (dec +.lig))
-                     tub  q.u.q.vex
-                   ==
-      ?~  q.wag
-        wag
-      [p.wag [~ [p.u.q.vex p.u.q.wag] q.u.q.wag]]
+        [p.vex [~ rud tub]]
+      =+  wag=$(tub q.u.q.vex)
+      ?>  ?=(^ q.wag)
+      [(last p.vex p.wag) [~ (raq p.u.q.vex p.u.q.wag) q.u.q.wag]]
 ```
 
 #### Examples
