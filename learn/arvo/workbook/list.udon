@@ -111,7 +111,7 @@ $(count (add 1 count))
 
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere else in the program. That's because it's a gate that's predefined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you named in your own program.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere else in the program. That's because it's a gate that's defined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you named in your own program.
 
 ## Explanation
 
@@ -134,3 +134,76 @@ Our program works by having each iteration of the list creating a cell. In each 
 ```
 
 If you don't immediately intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion example](../recursion).
+
+
+:-  :~
+  [%comments '.y']
+  [%name 'Syllabus']
+  [%author '~lodleb-ritrul']
+  [%last-modified '~2019.3.11..18.42.10..0e7e']
+  [%host '~dabben-larbet']
+  [%type 'blog']
+  [%date-created '~2019.3.9..01.13.47..0343']
+    ==
+;>
+
+# Hoon 101: Intro to Hoon
+
+*Instructor:* David Kerschner
+*Email:* david@tlon.io
+*Office:* Hoon School chat on `~bollug-worlus` (Urbit-based)
+*Office hours:* 5pm-6pm PT on weekdays (excluding US federal holidays), Saturdays 12 pm-1pm PT (GMT-8)
+*Text*: [The Hoon Tutorial](https://urbit.org/docs/learn/arvo/hoon/)
+
+### Course Description
+Students will learn the basics of programming on Urbit in the Hoon programming language. Three things will be assigned for the first five Mondays: a Tutorial reading lesson, a code-example walkthrough with ungraded optional exercises, and a mandatory coding assignment. The lessons from the Hoon Tutorial explain the fundamentals, while the walk throughs will dive right into practical examples of the code. On week six, students will be be tasked with completing a self-directed coding project instead of being assigned these other materials.
+
+The instructor is guaranteed to be available during office hours to help you with any of the course subject matter, and may be available during other times as well. Don’t be shy about asking questions!
+
+### Objectives
+
+Upon successful completion of this course students will have demonstrated the ability to:
+
+- Read, understand, and comment basic Hoon programs
+- Understand the four types of generators
+- Understand the fundamentals of Hoon: the basics of the type system, the subject, and cores
+- Given a basic set of requirements, write a generator capable of accepting defined input and producing correct output
+
+### Course Outline
+
+_Week 1_
+- Intro to Dojo
+- Nouns
+- Naked Generators
+_Week 2_
+- The Subject
+_Week 3_
+- Arms and Cores
+- Basic Gates
+_Week 4_
+- Advanced Cores and Say Generators
+_Week 5_
+- Ask Generators and Get Generators
+_Week 6_
+- Final Project
+
+### Grading System
+
+Assignments are assigned on Mondays and are due by noon (Pacific Time) on the following Monday. Assignments and the final project are handed in to the instructor via email at david@tlon.io.
+
+Every week for the first five weeks, one coding assignment worth 100 points will be assigned. As an additional weekly task in their submission email to the instructor, *students are expected to tell us the what part of that week’s materials they think needs to be made clearer*. Please be specific!
+
+On week six, one self-directed final project worth 200 points will be assigned.
+
+### Rules of the Road
+
+- Feel free to help your fellow students, but please remember there is a big difference between helping someone and doing it for them.
+- All students are expected to behave in the channels used for this course according to the [decorum guidelines](https://urbit.org/docs/introduction/contributing/).
+
+### Assumptions
+
+- You have the required familiarity with personal computers and software for this class.
+Urbit runs on Linux and Mac. If you’re using Windows, you’ll need to run Linux on a - virtual machine, partition, or a server.
+- You at least somewhat enjoy working with computers.
+  - You realize that learning something new isn’t always easy!
+  - You realize that practice is required to become good at something!
