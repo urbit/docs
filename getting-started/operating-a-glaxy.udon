@@ -6,7 +6,7 @@
 # Operating a Galaxy
 
 Many of the details of operating a Galaxy are shared with Stars as
-weell. This document will outline where there are differences. It will
+well. This document will outline where there are differences. It will
 also include a discussion of best practices
 
 ## Powers and Responsibilities of a Galaxy
@@ -17,7 +17,7 @@ on a far larger portion of the address space than stars do.
 
 Just as Stars are the parents and sponsors of planets Galaxies are the
 parents and sponsors of Stars. For more about parenting and
-sponsorships look at the documentation about operating a Star.
+sponsorship look at the documentation about operating a Star.
 
 Galaxies are also a part of what little governing body that urbit
 has. They participate in this governance via Azimuth on the Etherium
@@ -42,7 +42,7 @@ TBD
 
 ### Availability
 
-TBD
+Your Urbit Galaxy should be kept highly available. This means running on your laptop or home server is probably not the best place for it. You probably want to run it on AWS, Google Cloud, Digital Ocean, or otherwise in a highly available cloud somewhere.
 
 ## Best Practices
 
