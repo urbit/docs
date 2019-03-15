@@ -69,10 +69,10 @@ Now, run the static site generator on your urbit ship.
 
 > ~ship:dojo>|static
 
-You can now navigate to the output director and run a webserver to view your built docs.
+You can now navigate to the output directory and run a webserver to view your built docs.
 
-> $ cd <ship-name>/.urb/put/web/static-site
-> $ python -m SimpleHTTPServer
+    $ cd <ship-name>/.urb/put/web/static-site
+    $ python -m SimpleHTTPServer
 
 Visit `localhost:8000` to see the built docs. Rerun `|static` to build docs and
 see changes.
