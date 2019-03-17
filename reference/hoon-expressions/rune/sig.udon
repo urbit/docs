@@ -179,11 +179,11 @@ wing `q`.  We assume the parent is already registered -- as it
 must be, if (a) we registered it on creation, (b) the child was
 created by an arm defined on the parent.
 
-(Cores are actually managed by their formula/bastery.  Any
+(Cores are actually managed by their formula/battery.  Any
 function call will create a new core with a new sample, but
-basteries are constant.  But it is not sufficient to match the
-bastery -- matching the semantics constrains the payload as well,
-since the semantics of a bastery may depend on any parent core
+batteries are constant.  But it is not sufficient to match the
+battery -- matching the semantics constrains the payload as well,
+since the semantics of a battery may depend on any parent core
 and/or payload constant.)
 
 The purpose of registration is always performance-related.  It
