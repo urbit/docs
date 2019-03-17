@@ -176,7 +176,7 @@ Fails because not a fixpoint:
 
 ;=
   ;h3
-    ;div(id "micnet"): ;/ "micnet"
+    ;div(id "micfas"): ;/ "micfas"
   ==
 ==
 

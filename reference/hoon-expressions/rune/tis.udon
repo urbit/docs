@@ -381,7 +381,7 @@ Regular: *3-fixed*.
 
 ;=
   ;h3
-    ;div(id "tisnet"): =/ "tisnet"
+    ;div(id "tisfas"): =/ "tisfas"
   ==
 ==
 
@@ -418,7 +418,7 @@ Regular: *3-fixed*.
 ##### Discussion
 
 `p` can be either a name or a name=type.  If it's just a name,
-`=/` ("tisnet") "declares a type-inferred variable."  If it has a type, `=/`
+`=/` ("tisfas") "declares a type-inferred variable."  If it has a type, `=/`
 "declares a type-checked variable."
 
 ##### Examples

@@ -86,7 +86,7 @@ ford: build failed
 
 ;=
   ;h3
-    ;div(id "sigbus"): ~$ "sigbus"
+    ;div(id "sigbuc"): ~$ "sigbuc"
   ==
 ==
 
@@ -318,7 +318,7 @@ This should work fine:
 
 ;=
   ;h3
-    ;div(id "signet"): ~/ "signet"
+    ;div(id "sigfas"): ~/ "signet"
   ==
 ==
 
