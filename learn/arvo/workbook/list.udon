@@ -7,7 +7,7 @@
 
 # List of Numbers
 
-This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts concepts may beyond your grasp for now. What's important is that you familiarize yourself with the elements of the code and their look once combined into a valid program.
+This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.
 
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -27,7 +27,7 @@ The easiest way to use such a program is to run it as a _generator_. Saving a fi
 
 `~your-ship:> +list 5`
 
-Try it! You can choose any number, but this kind of program requires a number after the `+list` command to work. the `+` lets the Dojo know that it's looking for a generator with the name that follows.
+Try it! You can choose any natural number to put after `+list`, but it can't be zero or blank. The `+` lets the Dojo know that it's looking for a generator with the name that follows.
 
 But what do all these squiggly symbols in the program _do_? It probably isn't immediately clear. Let's go through each component of this code.
 
@@ -43,7 +43,7 @@ In our example program, we use comments with line numbers for convenient referen
 |=  end=@
 ```
 
-There's a few things going on in our first line. The first part of it, `|=` is a kind of *rune*. Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes, and other expressions, are all separated from one another by either two spaces or a line break.
+There's a few things going on in our first line. The first part of it, `|=`, is a kind of *rune*. Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes and other Hoon expressions are all separated from one another by either two spaces or a line break.
 
 All runes take a fixed number of "children." Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. Keep this scheme in mind when examining Hoon code.
 
@@ -53,7 +53,7 @@ Because we're only on line 1, all we're doing with the gate is creating it, and 
 
 Our program is simple, so the _entire program_ is the gate that's being created here. The rest of our lines of code are part of the second child of our gate, and they determine how our gate produces an output.
 
-## Line 2
+### Line 2
 
 ```
 =/  count=@  1
@@ -65,7 +65,7 @@ This line begins with the `=/` rune, which stores a value with a name and specif
 
 We're using `count` to keep track of what numbers we're adding to the list we're building. We'll use it later in the program.
 
-## Line 3
+### Line 3
 
 ```
 |-
@@ -73,7 +73,7 @@ We're using `count` to keep track of what numbers we're adding to the list we're
 
 The `|-` rune functions as a "restart" point for recursion that will be defined later. It takes one child.
 
-## Line 4
+### Line 4
 
 ```
 ^-  (list @)
@@ -83,7 +83,7 @@ The `^-` rune constrains output to a certain type. It takes two children.
 
 In this case, the rune specifies that our gate's output must be `(list @)` -- that is, a list of atoms.
 
-## Lines 5 and 6
+### Lines 5 and 6
 
 ```
 ?:  =(end count)
@@ -108,10 +108,9 @@ In our case, `:-  count` creates a cell out of whatever value is stored in `coun
 $(count (add 1 count))
 ```
 
-
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere else in the program. That's because it's a gate that's predefined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you named in your own program.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program.
 
 ## Explanation
 
@@ -133,4 +132,4 @@ Our program works by having each iteration of the list creating a cell. In each 
               4   ~
 ```
 
-If you don't immediately intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion example](../recursion).
+If you still don't intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion example](../recursion).

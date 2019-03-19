@@ -7,7 +7,7 @@
 
 # Recursion
 
-Recursion is a common pattern for solving certain problems in many programming
+Recursion is a common pattern for solving certain problems in most programming
 languages, and Hoon is no exception. One of the classically recursive problems
 is that of factorial. The factorial of _n_ is the product of all positive
 integers less than or equal to N. Thus the factorial of 5, denoted as _5!_,
@@ -56,7 +56,7 @@ Let's run the program in the Dojo:
 120
 ```
 
-It may help to visualize the operation our example gate. The pseudo-Hoon below
+It may help to visualize the operation of our example gate. The pseudo-Hoon below
 illustrates what happens when we use it to find the factorial of 5:
 
 ```
@@ -74,7 +74,7 @@ illustrates what happens when we use it to find the factorial of 5:
 
 It's easy to see how we're "floating" gate calls until we reach the final
 iteration of such calls that only produces a value. The `mul n` component of the
-gate leaves something like `mul 5`, waiting for the a final series of terms
+gate leaves something like `mul 5`, waiting for the final series of terms
 to be operated upon. The `$(n (dec n))` component is what expands out the
 expression, as illustrated by `(factorial 4)`. Once the expression cannot be
 expanded out further, the operations work backwards, successively feeding values
@@ -176,7 +176,7 @@ each iteration can be replaced instead of held in memory.
 
 ##### A Note on `$`
 
-`$` is, in its use with recursion, a reference to the gate that we are inside
+`$` (pronounced "buc") is, in its use with recursion, a reference to the gate that we are inside
 of. That's because a gate is just a core with a single arm named `$`. The
 subject is searched depth-first, head before tail, with faces skipped, and
 stopping on the first result. In other words, the first match found in the head
