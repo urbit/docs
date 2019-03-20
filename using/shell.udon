@@ -1,13 +1,12 @@
 :-  :~  navhome/'/docs/'
         navuptwo/'true'
         next/'true'
-        sort/'6'
+        sort/'3'
         title/'Shell (Dojo)'
     ==
 ;>
 
 # Shell (Dojo)
-
 
 The Dojo is our shell; it processes system commands and returns output. It's a
 good place to quickly experiment with Urbit. On the surface the Dojo is just a
