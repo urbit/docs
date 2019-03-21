@@ -5,10 +5,10 @@
 
 # Why Urbit Uses a Blockchain
 
-Arvo is a network of personal servers. These personal servers, called ships, are
-stateful, deterministic virtual machines that run on top of any Unix box.
+The Arvo network is composed of personal servers: instances of the Arvo operating system, called ships,
+that communicate as peers.
 
-Every Arvo ship has an associated secure identity, called a point, that it needs
+Every ship has an associated secure identity, called a point, that it needs
 to connect to the network. Your point is your name and your network address.
 Each point has associated authentication and encryption keys for networking.
 Think of a point as an IP address, a domain name, and a PGP key-pair.
