@@ -12,7 +12,7 @@ In Urbit every piece of data is a noun.  In order to understand Hoon one must fi
 
 ## Noun Definition
 
-A *noun* is either an atom or a cell.  An *atom* is an unsigned integer of any size.  A *cell* is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
+A *noun* is either an atom or a cell.  An *atom* is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A *cell* is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
 
 Here are some atoms:
 
@@ -121,7 +121,9 @@ As for why the dojo deleted your zero: it parses the command line as you type, a
 
 ### Atom Auras
 
-Atoms are nothing more than unsigned integers, but it's often useful to interpret an atom as being a different kind of data.  This is done with an *aura*.  The aura of an atom is type meta-data used by Hoon to determine how interpret that atom.  It answers the question: What type of information is this atom?
+Atoms are nothing more than unsigned integers -- natural numbers -- but it's often useful to represent an atom in a different way.  This is done with an *aura*.  The aura of an atom is type meta-data used by Hoon to determine how to interpret that atom.  It answers the question: What type of information is this atom?
+
+We use auras because data isn't always represented as a positive decimal number. Sometimes we want to represent data as binary, as text, or as a negative number. Auras allow us to to use such types of data _without changing the underlying atom_.
 
 We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) associated with a few atom auras.
 
@@ -185,7 +187,7 @@ The `\`@\`` syntax is used to 'cast' a value to a raw atom, i.e., an atom withou
 
 #### Identities, Cords, and Terms
 
-Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms with their own distinctive syntax:
+Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms, but of the aura `@p`:
 
 ```
 > ~zod
@@ -197,11 +199,17 @@ Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms with their o
 > `@`~zod
 0
 
+> `@p`0
+~zod
+
 > `@`~sorreg-namtyv
 5.702.400
+
+> `@p`5.702.400
+~sorreg-namtyv
 ```
 
-Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are called *cords*.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
+Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are called *cords*. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
 
 ```
 > 'Howdy!'
@@ -217,7 +225,7 @@ Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are
 10.334.410.032.606.748.633.331.426.632
 ```
 
-Hoon also has *terms*.  These are strings preceded with a `%` and made up of lower-case letters, numbers, and hyphens, i.e., 'kebab case'.  The first character after the `%` must be a letter.  For example, `%a`, `%hello`, `%this-is-kebab-case123`.
+Hoon also has *terms*, of the aura `@tas`. Terms are constant values that are used to tag data using the type system. These are strings preceded with a `%` and made up of lower-case letters, numbers, and hyphens, i.e., 'kebab case'.  The first character after the `%` must be a letter.  For example, `%a`, `%hello`, `%this-is-kebab-case123`.
 
 ```
 > %howdy

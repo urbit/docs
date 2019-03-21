@@ -24,7 +24,7 @@ Right-shifted cipher: "ep opu hjwf xbz up bohfs"
 Note that the Caesar cipher is completely unsuitable for actually securing
 information. Implementing it in a program is just a fun exercise.
 
-### A Caesar Cipher In Hoon
+## A Caesar Cipher In Hoon
 
 Below is a generator that performs a Caesar cipher on a tape. This example
 isn't the most compact implementation of such a cipher in Hoon, but it
@@ -111,7 +111,7 @@ nest-fail
 
 ```
 
-##### Examining Our Code
+### Examining Our Code
 
 Let's examine our `caesar.hoon` code piece by piece. We won't necessarily go
 in written order; instead, we'll cover code in the intuitive order of the
