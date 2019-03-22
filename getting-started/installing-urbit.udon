@@ -29,7 +29,7 @@ We recommend using the Homebrew package manager to run Arvo on MacOS.
 # Bash
 
 brew update
-brew install gcc git gmp libsigsegv libtool meson ninja pkg-config python2 openssl
+brew install gcc git gmp libsigsegv libtool meson ninja pkg-config openssl
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
@@ -63,13 +63,13 @@ sudo apt-get install libcap2-bin
 sudo setcap 'cap_net_bind_service=+ep' $(which urbit)
 ```
 
-### Fedora
+### Fedora 23 or earlier
 
 ```
 # Bash
 
 sudo yum upgrade
-sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python2 python3 ragel re2c wget
+sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python3 re2c wget
 
 # meson requires python 3.5; RHEL supplies wrong version
 pushd /usr/src
@@ -92,7 +92,7 @@ sudo -H /usr/local/bin/pip3 install meson
 
 git clone git://github.com/ninja-build/ninja.git && cd ninja
 git checkout release
-./configure.py --boostrap
+./configure.py --bootstrap
 sudo cp ./ninja /usr/local/bin
 
 git clone https://github.com/urbit/urbit
@@ -100,6 +100,22 @@ cd urbit
 ./scripts/bootstrap
 ./scripts/build
 sudo /usr/local/bin/ninja -C ./build/ install
+urbit
+```
+
+### Fedora 24 or later
+
+```
+# Bash
+
+sudo dnf upgrade
+sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel meson ninja-build openssl openssl-devel pkgconfig python3 re2c wget
+
+git clone https://github.com/urbit/urbit
+cd urbit
+./scripts/bootstrap
+./scripts/build
+sudo ninja -C ./build/ install
 urbit
 ```
 
@@ -146,7 +162,7 @@ urbit
 # Bash
 
 sudo yum update
-sudo yum install gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel ncurses-devel openssl openssl-devel pkgconfig python2 python3 python3-pip wget git
+sudo yum install gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel ncurses-devel openssl openssl-devel pkgconfig python3 python3-pip wget git
 sudo env "PATH=$PATH" pip3 install --upgrade pip
 sudo env "PATH=$PATH" pip3 install meson
 
