@@ -29,7 +29,7 @@ Below are some handy operations for the use and maintenance of your star.
 
 ### DNS Proxying
 
-You star is not aware of its own IP address by default. This means its dependent planets won't get DNS routing.
+Your star is not aware of its own IP address by default. This means its dependent planets won't get DNS routing.
 
 To provide DNS routing to your star's dependents, you need to set your star's IP address.
 
