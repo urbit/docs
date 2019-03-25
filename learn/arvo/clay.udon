@@ -63,7 +63,7 @@ access to devices, to random number generators, to the /proc
 tree. It is easy and intuitive to read from and write to a
 filesystem tree.
 
-Second, clay has a distributed revision control system baked into
+Second, clay has a distributed revision-control system baked into
 it.  Traditional filesystems are not revision controlled, so
 userspace software -- such as git -- is written on top of them to
 do so. clay natively provides the same functionality as modern
