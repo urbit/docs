@@ -10,9 +10,26 @@
 
 The documents in this section are high-level introductions to the Urbit project and components thereof.
 
-- [Arvo vs. Azimuth](/docs/concepts/arvo-vs-azimuth), a quick explanation of the two parallel systems that compose Urbit.
-- [Technical Overview](/docs/concepts/technical-overview), a more in-depth description of the entire Urbit stack.
-- [Contributing](/docs/concepts/contributing), a guide to getting involved with the Urbit project.
-- [Community Tutorials](/docs/concepts/community-tutorials), a collection of unofficial but useful Urbit learning resources.
-- [Source Code](/docs/concepts/source-code-overview), an explanation of Urbit's constituent GitHub repos.
-- [Galaxies, Stars, and Planets](/docs/concepts/galaxies-stars-and-planets), an explanation of the Urbit address-space hierarchy.
+## [Arvo vs. Azimuth](/docs/concepts/arvo-vs-azimuth)
+
+A quick explanation of the two parallel systems that compose Urbit.
+
+## [Technical Overview](/docs/concepts/technical-overview)
+
+A more in-depth description of the entire Urbit stack.
+
+## [Contributing](/docs/concepts/contributing)
+
+A guide to getting involved with the Urbit project.
+
+## [Community Tutorials](/docs/concepts/community-tutorials)
+
+A collection of unofficial but useful Urbit learning resources.
+
+## [Source Code](/docs/concepts/source-code-overview)
+
+An explanation of Urbit's constituent GitHub repos.
+
+## [Galaxies, Stars, and Planets](/docs/concepts/galaxies-stars-and-planets)
+
+An explanation of the Urbit address-space hierarchy.
