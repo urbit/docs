@@ -91,7 +91,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 
 ;=
   ;h3
-    ;div(id "tisbar"): =: "tisbar"
+    ;div(id "tiscol"): =: "tiscol"
   ==
 ==
 
