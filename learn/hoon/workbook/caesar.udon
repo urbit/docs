@@ -33,7 +33,7 @@ demonstrates important principles that more laconic code would not. Save it as
 
 ```
 !:
-:-  %say
+|=  [msg=tape key=@ud]
 =+  ^=  caesar
     |%
     ++  alpha  "abcdefghijklmnopqrstuvwxyz"
@@ -76,8 +76,6 @@ demonstrates important principles that more laconic code would not. Save it as
       =+  s=(trim (mod n length) m)
       (weld q.s p.s)
     --
-|=  [* [msg=tape key=@ud ~] ~]
-:-  %noun
 =.  msg  (cass msg)
 :-  (shift.caesar msg key)
 (unshift.caesar msg key)
@@ -91,24 +89,23 @@ that has been shifted left. It also converts any uppercase input into lowercase.
 Try it out in the Dojo:
 
 ```
-> +caesar "test" 2
+> +caesar ["test" 2]
 ["vguv" "rcqr"]
 
-> +caesar "test" 26
+> +caesar ["test" 26]
 ["test" "test"]
 
-> +caesar "test" 28
+> +caesar ["test" 28]
 ["vguv" "rcqr"]
 
-> +caesar "test" 104
+> +caesar ["test" 104]
 ["test" "test"]
 
-> +caesar "tESt" 2
+> +caesar ["tESt" 2]
 ["vguv" "rcqr"]
 
-> +caesar "test!" 2
+> +caesar ["test!" 2]
 nest-fail
-
 ```
 
 ### Examining Our Code
@@ -120,7 +117,7 @@ itself before reading the explanation.
 
 ```
 !:
-:-  %say
+|=  [msg=tape key=@ud]
 =+  ^=  caesar
     |%
 ```
@@ -128,33 +125,22 @@ itself before reading the explanation.
 The `!:` in the first line of the above code enables a full stack trace in the
 event of an error.
 
-`:-  %say` begins to construct a cell with `%say` as the head, and the code that
-follows as the tail. This causes the Arvo to interpret the file as a
-[`%say` generator](/docs/tutorials/generators).
+`|=  [msg=tape key=@ud]` creates a gate that takes a cell. The head of this cell
+is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented
+as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`.
+The tail of our cell is a `@ud` -- an unsigned decimal atom -- that we give the face `key`.
 
-`=+` adds a noun the subject, `=^  caesar` names that noun, and `|%` is used
+`=+` adds a noun to the subject, `=^  caesar` names that noun, and `|%` is used
 to create a core that contains the following arms. This results in having a core
 with the face `caesar` that we can call.
 
 Now let's look at the rest of the program that is outside of our core:
 
 ```
-|=  [* [msg=tape key=@ud ~] ~]
-:-  %noun
 =.  msg  (cass msg)
 :-  (shift.caesar msg key)
 (unshift.caesar msg key)
 ```
-
-The top line creates a gate with `|=`. The sample of that gate follows the
-scheme used by `%say` generators: it's a 3-tuple whose parts allow for different
-kinds of data. We only need non-optional arguments, though, so we only fill in
-the second part. There we take a `msg` argument and a `key` argument. We use a
-`*` and a `~` in the first part (Arvo data) and third part (optional arguments),
-respectively, because we aren't using them here. See the
-[generator documentation](/docs/tutorials/generators) for more information.
-
-`:-  %noun` simply labels the output of this program as the `%noun` mark.
 
 `=.  msg  (cass msg)` changes the input string `msg` to lowercases. `=.` changes
 the leg of the subject to something else. In our case, the leg to be changed is
@@ -238,7 +224,7 @@ If the above test finds that its condition to be false, we trigger a recursion
 that constructs our `map`: $(chart (~(put by chart) i.a i.b), a t.a, b t.b)`.
 This code recursively adds an entry in our `map` where the head of the tape `a`
 maps to the value of the head of tape `b` with  `~(put by chart)`, our calling
-of the `put` arm of the `by` map-engien core. The recursion also "consumes"
+of the `put` arm of the `by` map-engine core. The recursion also "consumes"
 those heads with every iteration by changing `a` and `b` to their tails.
 
 Perhaps now you can understand why this arm is named `zipper`. It's putting two
@@ -333,7 +319,7 @@ If we then give our arm Caesar's famous statement, and get our left- and
 right-ciphers.
 
 ```
-> +caesar "i came i saw i conquered" 4
+> +caesar ["i came i saw i conquered" 4]
 ["m geqi m wea m gsruyivih" "e ywia e ows e ykjmqanaz"]
 ```
 
@@ -341,10 +327,10 @@ Now, to decode, we can put either of our ciphers in with the appropriate key and
 look for the legible result.
 
 ```
-> +caesar "m geqi m wea m gsruyivih" 4
+> +caesar ["m geqi m wea m gsruyivih" 4]
 ["q kium q aie q kwvycmzml" "i came i saw i conquered"]
 
-> +caesar "e ywia e ows e ykjmqanaz" 4
+> +caesar ["e ywia e ows e ykjmqanaz" 4]
 ["i came i saw i conquered" "a usew a kso a ugfimwjwv"]
 ```
 
@@ -353,7 +339,9 @@ look for the legible result.
 
 1. Take the example generator and modify it to add a second layer of shifts.
 
-2. Extend the example generator to allow for using characters other than a-z.
+2. Extend the example generator to allow for use of characters other than a-z.
 
 3. Build a gate that can take a Caesar shifted `tape` and produce
 possible unshifted `tapes`.
+
+4. Modify the example generator into a `%say` generator.
