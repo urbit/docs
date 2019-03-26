@@ -221,7 +221,7 @@ the program is finished and can return `chart`, the the `map` that we have been
 creating.
 
 If the above test finds that its condition to be false, we trigger a recursion
-that constructs our `map`: $(chart (~(put by chart) i.a i.b), a t.a, b t.b)`.
+that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`.
 This code recursively adds an entry in our `map` where the head of the tape `a`
 maps to the value of the head of tape `b` with  `~(put by chart)`, our calling
 of the `put` arm of the `by` map-engine core. The recursion also "consumes"
