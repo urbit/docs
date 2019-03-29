@@ -2,11 +2,11 @@
         navuptwo/'true'
         next/'true'
         sort/'11'
-        title/'Getting Started'
+        title/'Setup'
     ==
 ;>
 
-# 1.1 Getting Started
+# 1.1 Setup
 
 Before we begin working on Hoon you should first (1) have Urbit installed and (2) boot an 'urbit' that you can use for trying out Hoon examples.  Interactive learning is far superior to passive reading.
 

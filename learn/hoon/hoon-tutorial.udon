@@ -21,7 +21,7 @@ The first three lessons take you through a simple Hoon program, explain Hoon's s
 
 ### Chapter 1
 
-- [1.1 Getting Started](getting-started)
+- [1.1 Setup](setup)
 - [1.2 Nouns](nouns)
 - [1.3 The Subject and Its Legs](the-subject-and-its-legs)
 - [1.4 Arms and Cores](arms-and-cores)
