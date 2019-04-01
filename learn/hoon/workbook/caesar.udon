@@ -336,7 +336,6 @@ look for the legible result.
 
 ### Exercises
 
-
 1. Take the example generator and modify it to add a second layer of shifts.
 
 2. Extend the example generator to allow for use of characters other than a-z.
