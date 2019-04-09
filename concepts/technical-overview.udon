@@ -114,7 +114,7 @@ about 3000 lines of Hoon.
 ### Nock
 
 Nock is a low-level [homoiconic](https://en.wikipedia.org/wiki/Homoiconicity)
-combinator language.  It's so simple that its [specification](../../nock/definition)
+combinator language.  It's so simple that its [specification](/docs/learn/nock/definition)
 fits on a t-shirt.  In some ways Nock resembles a nano-Lisp but its ambitions
 are more narrow.  Most Lisps are one-layer: a practical language is to be
 created by extending a theoretically simple interpreter.  The abstraction is
