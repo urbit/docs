@@ -15,10 +15,10 @@ be dealing with Sail as it renders to HTML, a subset of XML.
 ### Getting Started
 
 Before starting, make sure that your urbit is
-[mounted to Unix](https://urbit.org/docs/using/setup/)
+[mounted to Unix](/docs/getting-started/creating-a-development-ship/)
 
 To host that output, your ship also has a web-server, called
-[Eyre](https://urbit.org/docs/using/web/), that can be found at
+Eyre, that can be found at
 `http://localhost:8080/` if it’s your first ship that’s running on the a
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. In the startup messages, a ship will tell you which HTTP port it's
@@ -456,7 +456,7 @@ Hoon. They are part of Ford, our build system.
 
 `/$` is used to get data from the environment, and `/=` adds that data to
 subject in the face `gas`. The
-[Ford user manual](https://urbit.org/docs/arvo/internals/ford/runes/) has
+[Ford user manual](/docs/learn/arvo/ford/) has
 details on these and other Ford runes, but understanding these runes isn’t
 necessary for the purposes of this tutorial.
 
@@ -680,7 +680,7 @@ valid lists for the `;*  ?:  show-list` expression to resolve.
 You should now have foundational knowledge for making web pages with Sail. There
 is, of course, more to learn. If you’re curious, there’s more advanced
 resources out there.
-The [Ford manual](https://urbit.org/docs/arvo/internals/ford/runes/)
+The [Ford manual](/docs/learn/arvo/ford/)
 can show you how to access various ship resources for user in your pages. To
 learn more about how the renderer works, take a look at the
 `/home/ren/urb.hoon` file inside your urbit.

@@ -45,10 +45,10 @@ Udon files using our web interface.
 ### Getting Started
 
 Before starting, make sure that your urbit is
-[mounted to Unix](https://urbit.org/docs/using/setup/)
+[mounted to Unix](/docs/getting-started/creating-a-development-ship/)
 
 To host Udon and other kinds of files, your ship also has a
-web-server, called [Eyre](https://urbit.org/docs/using/web/), that can be found
+web-server, called Eyre, that can be found
 at `http://localhost:8080/` if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. If you can't find your ship on one of these for some reason, try the
@@ -323,12 +323,12 @@ destination.
 *Example:*
 
 ```
-[I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
+[I'm an inline-style link](https://www.urbit.org/docs/using/shell)
 ```
 
 ###### Produces:
 
-[I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
+[I'm an inline-style link](https://www.urbit.org/docs/using/shell)
 
 The second type is a reference-style link, which uses a relative path, based on
 the current page's location. Instead of the full url, we use `..` to fill in
@@ -344,7 +344,7 @@ the all of the URL that the destination has in common with the origin page.
 
 [I'm a reference-style link](../shell)
 
-If this page is located at `https://www.urbit.org/docs/reference/`, then these two
+If this page is located at `https://www.urbit.org/docs/using/`, then these two
 examples should have the same destination.
 
 #### Anchor Link
@@ -791,7 +791,7 @@ Note: below we use Urbit's implementation of Markdown, [Udon](#udon).
 This markup language allows you to use snippets of Hoon code but not HTML.
 In particular, we use Sail, a subset of Hoon.  This Sail is rendered as HTML
 when the file is served to a client.  To learn about Sail, head over to
-the [Sail](/docs/learn/arvo/arvo-internals/sail) section of the docs.
+the [Sail](/docs/using/sail) section of the docs.
 
 In `site/web/meet.udon` put:
 

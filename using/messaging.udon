@@ -27,7 +27,7 @@ be used for that we haven't even thought of.
 
 Here we'll be discussing how to operate the default CLI frontend, Talk,
 to send and receive messages. For a more in-depth look at Hall's internals,
-take a look at its [documentation](../hall).
+take a look at its [documentation](/docs/learn/arvo/hall).
 
 ## Quickstart
 

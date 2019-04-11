@@ -36,7 +36,7 @@ Tall-form Hoon may require multiple lines:
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the subject](/docs/learn/arvo/hoon/the-subject-and-its-legs).
+Hoon uses something called [the subject](/docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs).
 The Dojo has its own subject, and that's where Hoon's equivalent of variables,
 called faces, are stored.
 
