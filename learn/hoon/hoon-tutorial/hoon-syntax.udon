@@ -18,7 +18,7 @@ In this lesson we cover Hoon's syntax.  A strict account of Hoon's syntax would 
 
 ## Hoon Characters
 
-Hoon source files are composed almost entirely of the [printable ASCII characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal.
+Hoon source files are composed almost entirely of the [printable ASCII characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal; use two spaces instead.
 
 ```
 > "You can put ½ in quotes, but not elsewhere!"
