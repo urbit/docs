@@ -483,7 +483,11 @@ u.my-json
 
 The above generator was written with the
 [Studio Ghibli API](https://ghibliapi.herokuapp.com/). It uses this API to
-print the title of a Studio Ghibli film.
+print the title of a Studio Ghibli film. If you save it as `ghib.hoon` you could run this generator by providing an api endpoint like so.
+
+```
++ghib "https://ghibliapi.herokuapp.com/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49"
+```
 
 ```
 /-  sole
