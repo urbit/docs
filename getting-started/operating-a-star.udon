@@ -45,7 +45,7 @@ Occasionally, your star might lose network connectivity due to a known timer iss
 
 Planets are, of course, able to change sponsors. To do this, they must request that a different star takes them on as a dependent and that star must accept the request. Planets cannot emancipate themselves from a sponsor without having a new sponsor lined up.
 
-All of these actions happen on Azimuth. There will be Bridge functionality to handle these actions in the future, but for now users will need to interact directly with the contracts with MetaMask, through services such as [Etherscan.io](https://etherscan.io/address/ecliptic.eth#writeContract). A sketch of the process is listed below; for now, only the Ethereum-savvy should act on these steps.
+All of these actions happen on Azimuth. There will be [Bridge](../using-bridge) functionality to handle these actions in the future, but for now users will need to interact directly with the contracts with MetaMask, through services such as [Etherscan.io](https://etherscan.io/address/ecliptic.eth#writeContract). A sketch of the process is listed below; for now, only the Ethereum-savvy should act on these steps.
 
 + The planet calls the `escape` function in the Ecliptic contract and writes the resulting data to the blockchain.
 + If the chosen star wants to become the planet's sponsor, it calls the `adopt` function in the Ecliptic contract.
