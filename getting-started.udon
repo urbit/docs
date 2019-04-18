@@ -7,7 +7,7 @@
 
 # Getting Started
 
-Welcome to Urbit, a personal server that makes you the owner of your digital life. Urbit isn't ready for serious use yet, but it definitely works. Follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
+Welcome to Urbit, a personal server that makes you the owner of your digital life. Urbit isn't ready for serious use yet, but it's available to try out. Follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
 
 ### [Step 1: Using Bridge](using-bridge)
 
@@ -31,7 +31,7 @@ You've already encountered some new terminology on this page, and you'll encount
 
 - Arvo is the name of the Urbit operating system.
 - An instance of the Arvo operating system is called a _ship_.
-- The network linking ships on this network is called "the Arvo network."
-- Azimuth is the name of the Urbit identity layer.
-- If you want to get on the Arvo network, an Azimuth-based identity called a _point_.
-- Urbit is the project as the whole, which includes all of these elements and more.
+- Ships communicate with one another over "the Arvo network."
+- Azimuth is an Ethereum-based PKI used to give each ship a unique identity on the Arvo network.
+- An Azimuth identity is called a _point_. You'll need a point to use the Arvo network.
+- Urbit refers to the project as a whole, including Arvo, Azimuth, and other system components.
