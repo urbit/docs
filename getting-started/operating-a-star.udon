@@ -13,15 +13,15 @@ Important star operations happen on both the Arvo side and the Azimuth side. On 
 
 ## Powers of a Star
 
-Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars discover peers for planets, route packets for planets, provide DNS routing for planets, and push software updates to planets. A star that fulfills this is called the *sponsor* of planets that receive such services from the star; those planets, in turn, are called *dependents* of that star.
+Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars assist their planets by facilitating peer discovery, routing packets, providing DNS routing, and pushing software updates. A star is the *sponsor* of the planets it provides those services to; those planets, in turn, are the *dependents* of that star.
 
-Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
+Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent star is the sponsor of its child planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
 
-Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message discovered peers until any such peers change their IP addresses.
+Planets must have a sponsor star to use most features of the Arvo network. A planet cannot fully boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message known peers, until they change their IP addresses.
 
 ## Responsibilities
 
-Like with real-life infrastructure, the operation of Arvo infrastructure comes with unique responsibilities. For reasons stated above, stars should be always be online on a reliable cloud service, such as Amazon Web Services or Google Cloud Platform. These systems have layers of redundancies that make them much more resilient than local machines, so stars hosted on the cloud are unlikely to leave their dependents in the dark.
+Like with real-life infrastructure, the operation of Arvo infrastructure comes with unique responsibilities. For reasons stated above, stars that are depended upon as sponsors should always be online on a reliable cloud service. These systems have layers of redundancies that make them much more resilient than local machines, so stars hosted in the cloud are unlikely to leave their dependents in the dark.
 
 ## Operations
 
