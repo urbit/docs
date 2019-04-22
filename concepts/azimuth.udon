@@ -22,3 +22,15 @@ Urbit is a project, not a single computer system. It has three components: Arvo,
 These otherwise-parallel systems meet when you want to connect to the Arvo network. Your Arvo personal server, called your _ship_, needs to be able to prove cryptographically that it is who it says it is. This proof comes in the form of a keyfile, derived from your point, that you use to start your ship.
 
 A metaphor might help illustrate the relationship between these two systems: the Arvo network is the neighborhood that you live in; Azimuth is the bank vault that stores the deed to your house.
+
+## Further Reading
+
+If you want to know more about Azimuth, check out the pages below.
+
+### [Why Urbit Uses a Blockchain](/docs/concepts/azimuth/blockchain)
+
+An explanation for why Ethereum makes sense for Azimuth.
+
+### [The Urbit HD Wallet](/docs/concepts/azimuth/blockchain)
+
+A detailed discussion of the unique wallet system used to own and manage Azimuth identities.

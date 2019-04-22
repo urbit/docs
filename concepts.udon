@@ -10,9 +10,17 @@
 
 The documents in this section are high-level introductions to the Urbit project and components thereof.
 
-## [Arvo vs. Azimuth](/docs/concepts/arvo-vs-azimuth)
+## [Azimuth](/docs/concepts/azimuth)
 
-A quick explanation of the two parallel systems that compose Urbit.
+A quick explanation of Azimuth, the Urbit identity layer. This document also explains how Azimuth and Arvo are different, while being the two parallel systems that compose Urbit.
+
+### [Why Urbit Uses a Blockchain](/docs/concepts/azimuth/blockchain)
+
+Azimuth is built on the Ethereum blockchain. This document explains why.
+
+### [The Urbit HD Wallet](/docs/concepts/azimuth/blockchain)
+
+A detailed discussion of the unique wallet system used to own and manage Azimuth identities.
 
 ## [Technical Overview](/docs/concepts/technical-overview)
 
