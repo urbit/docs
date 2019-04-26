@@ -27,7 +27,7 @@ working directory to the desired directory.
 
 Run the command below, except with `~sample-planet` replaced by the name of your
 Urbit identity, and `path/to/my-planet.key` replaced with the path to your
-keyfile:
+keyfile, *which must not have a trailing newline*:
 
 ```
 urbit -w ~sample-planet -k path/to/my-planet.key
