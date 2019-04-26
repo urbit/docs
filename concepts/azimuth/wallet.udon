@@ -73,5 +73,5 @@ Points, and all of their blockchain operations, are governed by the Ecliptic.
 The Ecliptic is an Ethereum smart-contract that governs point state and the
 ownership, spawn, management, and voting rights affiliated with your points.
 
-For the technical implementation details Azimuth, take a look at the
+For the technical implementation details of Azimuth, take a look at the
 [Github repo](https://github.com/urbit/azimuth).
