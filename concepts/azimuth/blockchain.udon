@@ -41,7 +41,7 @@ their property.
 
 Moving the Urbit land registry to Ethereum is an easy and obvious solution to
 this problem. We chose Ethereum over Bitcoin because the former is built for
-computation Landscape the latter is not. We need a computational blockchain to
+computation while the latter is not. We need a computational blockchain to
 enforce the specific rules of the Urbit identity registry.
 
 For more background on the decision to use the Ethereum blockchain, check out
