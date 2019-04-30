@@ -21,7 +21,7 @@ are also derived from the wallet.
 Urbit HD wallets are composed of the following items, which are each assigned to
 their own individual Ethereum key-pairs.
 
-#### Master Ticket
+## Master Ticket
 
 Think of your master ticket like a very high-value password. The master ticket
 is the secret code from which all of your other keys are derived. Technically,
@@ -29,32 +29,48 @@ your master ticket is seed entropy. You should never share it with anyone, and
 store it very securely. This ticket can derive all of your other keys: your
 ownership key and all of the related proxies.
 
-#### Ownership Address
+## Ownership Address
 
 An ownership address has all rights over the assets deeded to it. These rights
 are on-chain actions described and implemented in the Ecliptic, Azimuth's suite
 of governing smart-contracts.
 
-#### Proxies
+## Proxies
 
 Proxy addresses allow you to execute non-ownership related actions like spawning
 child points, voting, and setting networking keys without jeopardizing the keys
 you've designated with ownership rights. Setting proxy rights is optional, but
 it is recommended for on-chain actions you will execute more frequently.
 
-- *Management Proxy*
+### Management Proxy
 
-  Can configure or set Arvo networking keys and conduct sponsorship related
-  operations.
+Can configure or set Arvo networking keys and conduct sponsorship-related
+operations.
 
-- *Voting Proxy*
+#### Networking Keys
 
-  Galaxies only. Galaxies are the part of the galactic senate, and this means
-  they can cast votes on new proposals including changes to the Ecliptic.
+Networking keys -- encryption and authentication key-pairs -- are used
+for actually interacting on the Arvo network. They are derived from the keyfile
+that you use to boot a ship.
 
-- *Spawn Proxy*
+Unlike proxies, networking keys are not Ethereum wallets. They are just a public
+key that is the point's state on the blockchain, combined with a private key
+that is stored somewhere on your machine.
 
-  For stars and galaxies only. Can create new child points.
+The HD Wallet structure makes networking keys easy to change if the need arises.
+If, say, your keys are compromised, you only need to access your management proxy
+to reset them. Once you do that, download a new keyfile and boot your ship with
+it.
+
+### Voting Proxy
+
+Galaxies only. Galaxies are the part of the galactic senate, and this means
+they can cast votes on new proposals including changes to the Ecliptic.
+
+### Spawn Proxy
+
+For stars and galaxies only. Can create new child points.
+
 
 ;img@"https://media.urbit.org/fora/proposals/UP-8.jpg";
 
