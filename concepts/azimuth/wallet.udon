@@ -44,13 +44,12 @@ it is recommended for on-chain actions you will execute more frequently.
 
 ### Management Proxy
 
-Can configure or set Arvo networking keys and conduct sponsorship-related
-operations.
+Can set Arvo networking keys and conduct sponsorship-related operations.
 
 #### Networking Keys
 
 Networking keys -- encryption and authentication key-pairs -- are used
-for actually interacting on the Arvo network. They are derived from the keyfile
+for communicating on the Arvo network. They are contained in the keyfile
 that you use to boot a ship.
 
 Unlike proxies, networking keys are not Ethereum wallets. They are just a public
@@ -58,9 +57,9 @@ key that is the point's state on the blockchain, combined with a private key
 that is stored somewhere on your machine.
 
 The HD Wallet structure makes networking keys easy to change if the need arises.
-If, say, your keys are compromised, you only need to access your management proxy
-to reset them. Once you do that, download a new keyfile and boot your ship with
-it.
+If you want or need to rotate your keys, you only need to access your management proxy
+to reset them. After you've done that, download a new keyfile and add it to your
+ship.
 
 ### Voting Proxy
 
