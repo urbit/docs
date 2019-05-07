@@ -12,7 +12,7 @@ In Urbit every piece of data is a noun.  In order to understand Hoon one must fi
 
 ## Noun Definition
 
-A *noun* is either an atom or a cell.  An *atom* is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A *cell* is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
+A *noun* is either an atom or a cell.  An *atom* is a natural number (unsigned integer) of any size, including zero.  A *cell* is an ordered pair of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
 
 Here are some atoms:
 
@@ -55,6 +55,7 @@ Each number is an atom; each dot is a cell.  Let's look at another example, this
 ```
 
 An atom is a trivial tree of just one node; e.g., `17`.
+
 
 ## Atoms
 
@@ -171,7 +172,7 @@ All of the above are atoms.  The underlying noun of each is just an unsigned int
 313
 ```
 
-The `\`@\`` syntax is used to 'cast' a value to a raw atom, i.e., an atom without an aura.  Don't worry about exactly what `\`@\`` means just yet.  Casts will be explained in more detail in a later lesson.  For now all you need to know is that a cast doesn't change the underlying value of the noun; it's used here only to change how the value is printed in the dojo output.
+The `\`@\`` syntax is used to 'cast' a value to a raw atom, i.e., an atom without an aura.  Don't worry about exactly what `\`@\`` means just yet.  Casts will be explained in more detail in a later lesson.  For now all you need to know is that a cast doesn't change the underlying value of the noun.
 
 #### Identities, Cords, and Terms
 
@@ -307,7 +308,7 @@ In this cell `32` is the head and `320` is the tail.  Cells can contain cells, a
 [[%in 0xa] 'cell']
 ```
 
-I said there isn't _much_ mystery about cells, but there is a little.  So far whenever we've entered a cell into the dojo, it not only returned the same cell; the cell was printed in the same way it was entered.  This doesn't always happen.  The dojo is obligated to evaluate the input and return the correct answer, but it doesn't have to show the result in exactly the same way:
+There isn't _much_ mystery about cells, but there is a little.  So far whenever we've entered a cell into the dojo, it not only returned the same cell; the cell was printed in the same way it was entered.  This doesn't always happen.  The dojo is obligated to evaluate the input and return the correct answer, but it doesn't have to show the result in exactly the same way:
 
 ```
 > [6 [62 620]]
