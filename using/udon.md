@@ -137,10 +137,10 @@ through `<h6>`. The header for this section is `### Headers`.
 
 ### Italics and Bold
 
-Enclosing text with `_` will cause that text to appear italicized, using an <i>
+Enclosing text with `_` will cause that text to appear italicized, using an `<i>`
 element.
 
-Enclosing text with `*` will cause that text to appear bolded, using a <b>
+Enclosing text with `*` will cause that text to appear bolded, using a `<b>`
 element.
 
 
