@@ -7,11 +7,7 @@ Miscellaneous useful macros.
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "miccol"): ;: "miccol"
-  ==
-==
+### "miccol"
 
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
@@ -61,11 +57,7 @@ Irregular: `:(add a b c)` is `;:(add a b c)`.
 12
 ```
 
-;=
-  ;h3
-    ;div(id "miclus"): ;+ "miclus"
-  ==
-==
+### ;+ "miclus"
 
 make a single XML node (Sail)
 
@@ -124,11 +116,7 @@ One interesting thing about Sail is that it allows you to use complex Hoon expre
 ]
 ```
 
-;=
-  ;h3
-    ;div(id "micmic"): ;; "micmic"
-  ==
-==
+### ;; "micmic"
 
 `[%mcmc p=spec q=hoon]`: normalize with a mold, asserting fixpoint.
 
@@ -170,11 +158,7 @@ Fails because not a fixpoint:
 ! exit
 ```
 
-;=
-  ;h3
-    ;div(id "micfas"): ;/ "micfas"
-  ==
-==
+### ;/ "micfas"
 
 `[%mcnt p=hoon]`: tape as XML element.
 
@@ -191,11 +175,7 @@ Fails because not a fixpoint:
 [[%~. [%~. "foo] ~] ~]
 ```
 
-;=
-  ;h3
-    ;div(id "micsig"): ;~ "micsig"
-  ==
-==
+### ;~ "micsig"
 
 `[%mcsg p=hoon q=(list hoon)]`: glue a pipeline together with a
 product-sample adapter.
@@ -293,11 +273,7 @@ But for multiple gates, we need it to connect the pipeline:
 "96acd"
 ```
 
-;=
-  ;h3
-    ;div(id "mictar"): ;* "mictar"
-  ==
-==
+### ;* "mictar"
 
 make a list of XML nodes from complex Hoon expression (Sail)
 
@@ -349,11 +325,7 @@ If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.  O
 ]
 ```
 
-;=
-  ;h3
-    ;div(id "mictis"): ;= "mictis"
-  ==
-==
+### ;= "mictis"
 
 make a list of XML nodes (Sail)
 

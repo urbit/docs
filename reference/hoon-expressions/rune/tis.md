@@ -23,11 +23,7 @@ different situations.  Hence the whole family of `=` runes.
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "tisban"): => "tisban"
-  ==
-==
+### => "tisban"
 
 `[%tsgr p=hoon q=hoon]`: compose two expressions.
 
@@ -49,11 +45,7 @@ Regular: *2-fixed*.
 [6 6]
 ```
 
-;=
-  ;h3
-    ;div(id "tisbar"): =| "tisbar"
-  ==
-==
+### =| "tisbar"
 
 
 `[%tsbr p=spec q=hoon]`: combine a default type value with the subject.
@@ -85,11 +77,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 7
 ```
 
-;=
-  ;h3
-    ;div(id "tiscol"): =: "tiscol"
-  ==
-==
+### "tiscol"
 
 `[%tscl p=(list (pair wing hoon)) q=hoon]`: change multiple legs in the subject.
 
@@ -118,11 +106,7 @@ This rune is like `=.`, but for modifying the values of multiple legs of the sub
 [b=3 c=4]
 ```
 
-;=
-  ;h3
-    ;div(id "tiscom"): =, "tiscom"
-  ==
-==
+### =, "tiscom"
 
 `[%tscm p=hoon q=hoon]`: expose namespace
 
@@ -157,11 +141,7 @@ With a dojo-defined face:
 [2 4]
 ```
 
-;=
-  ;h3
-    ;div(id "tisdot"): =. "tisdot"
-  ==
-==
+### =. "tisdot"
 
 `[%tsdt p=wing q=hoon r=hoon]`: change one leg in the subject.
 
@@ -197,11 +177,7 @@ a new subject just like the old one except for a changed value at `p`.  Note tha
 nest-fail
 ```
 
-;=
-  ;h3
-    ;div(id "tishep"): =- "tishep"
-  ==
-==
+### =- "tishep"
 
 `[%tshp p=hoon q=hoon]`: combine a new noun with the subject, inverted.
 
@@ -230,11 +206,7 @@ Regular: *2-fixed*.
 8
 ```
 
-;=
-  ;h3
-    ;div(id "tisket"): =^ "tisket"
-  ==
-==
+### =^ "tisket"
 
 `[%tskt p=skin q=wing r=hoon s=hoon]`: pin the head of a pair; change
 a leg with the tail.
@@ -274,11 +246,7 @@ random number, so we use `=^`:
 [99 46]
 ```
 
-;=
-  ;h3
-    ;div(id "tisled"): =< "tisled"
-  ==
-==
+### =< "tisled"
 
 `[%tsgl p=hoon q=hoon]`: compose two expressions, inverted.
 
@@ -315,11 +283,7 @@ Irregular: `foo:baz` is `=<(foo baz)`.
 [6 6]
 ```
 
-;=
-  ;h3
-    ;div(id "tislut"): =+ "tislus"
-  ==
-==
+### =+ "tislus"
 
 
 `[%tsls p=hoon q=hoon]`: combine a new noun with the subject.
@@ -342,11 +306,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ##### Examples
 
-;=
-  ;h3
-    ;div(id "tismic"): =; "tismic"
-  ==
-==
+### =; "tismic"
 
 `[%tssm p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
 
@@ -375,11 +335,7 @@ Regular: *3-fixed*.
 8
 ```
 
-;=
-  ;h3
-    ;div(id "tisfas"): =/ "tisfas"
-  ==
-==
+### =/ "tisfas"
 
 `[%tsfs p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation.
 
@@ -428,11 +384,7 @@ Regular: *3-fixed*.
 8
 ```
 
-;=
-  ;h3
-    ;div(id "tissig"): =~ "tissig"
-  ==
-==
+### =~ "tissig"
 
 
 `[%tssg p=(list hoon)]`: compose many expressions.
@@ -468,11 +420,7 @@ Regular: *running*.
 3
 ```
 
-;=
-  ;h3
-    ;div(id "tistar"): =* "tistar"
-  ==
-==
+### =* "tistar"
 
 `[%tstr p=term q=hoon r=hoon]`: define an alias.
 
@@ -505,11 +453,7 @@ The difference between aliasing and pinning is that pinning changes the subject,
 [2 2]
 ```
 
-;=
-  ;h3
-    ;div(id "tiswut"): =? "tiswut"
-  ==
-==
+### =? "tiswut"
 
 `[$tswt p=wing q=hoon r=hoon s=hoon]`: conditionally change one leg in the subject.
 

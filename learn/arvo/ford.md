@@ -104,11 +104,7 @@ Slaps a hoon against a subject silk. The mark of the result is `%noun`.
 Validates untyped data from a ship against a given mark. This is an
 extremely useful function.
 
-;=
-  ;h2
-    ;div(id "runes"): Ford runes
-  ==
-==
+## Ford runes
 
 One of the most common ways to use ford is through ford's runes, all of which begin with `/` ("net"). A ford rune runs a step of a ford build and places the result in the subject. There are various kinds of build steps, some of which take other build steps as parameters. The most common pattern is to have a sequence of ford runes at the top of a hoon source file that import the results of evaluating other hoon files. This is how we "import a library" in urbit: we add the result of compiling another hoon file into the current subject, possibly renaming it by wrapping a face around it.
 

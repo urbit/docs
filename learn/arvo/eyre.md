@@ -16,11 +16,7 @@ essentially stateless, like functional publishing with `%ford`.
 Additionally, there's a fairly significant component that handles
 `%gall` messaging and subscriptions, which must be stateful.
 
-;=
-  ;h2
-    ;div(id "reference"): Reference
-  ==
-==
+## Reference
 
 ### State
 
@@ -45,11 +41,7 @@ Runtime
 - `++ya`
 - `++ix`
 
-;=
-  ;h2
-    ;div(id "commentary"): Commentary
-  ==
-==
+## Commentary
 
 
 Let us follow the loading of a simple cli app, as it bounces from
@@ -293,11 +285,7 @@ infrastructure crumbles around you, only imported martian networking can be
 trusted: the `%get` and `%got` [gram]()s are used to proxy [`%this` requests]() and
 [`%thou` responses]() respectively.
 
-;=
-  ;h2
-    ;div(id "specification"): Specification
-  ==
-==
+## Specification
 
 The `%eyre` vane serves one purpose: receiving inbound HTTP requests from browsers and clients pretending to be browsers. To facilitate this communication, `%eyre` does two things: 1. provide an API for traditional clients to talk to; and 2. provide a mechanism for saving state that allows the server to keep track of identities/sessions, subscription data, and active connections.
 

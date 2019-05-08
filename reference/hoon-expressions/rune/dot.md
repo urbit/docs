@@ -7,11 +7,7 @@ Anything Nock can do, Hoon can do also.  These runes are used for carrying out N
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "dotket"): .^ "dotket"
-  ==
-==
+### .^ "dotket"
 
 `[%dtkt p=spec q=hoon]`: load from the Arvo namespace with a fake Nock instruction: 'Nock `12`''.
 
@@ -86,11 +82,7 @@ You can modify the time of the file listing quite simply and ask for a listing f
 
 `our` is the value for your ship's name.
 
-;=
-  ;h3
-    ;div(id "dotlus"): .+ "dotlus"
-  ==
-==
+### .+ "dotlus"
 
 `[%dtls p=hoon]`: increment an atom with Nock `4`.
 
@@ -120,11 +112,7 @@ Irregular: `+(6)` is `.+(6)`.
 nest-fail
 ```
 
-;=
-  ;h3
-    ;div(id "dottar"): .* "dottar"
-  ==
-==
+### .* "dottar"
 
 `[%dttr p=hoon q=hoon]`: evaluate with Nock `2`.
 
@@ -167,11 +155,7 @@ therefore possible to use Hoon as a typeless language.
 1
 ```
 
-;=
-  ;h3
-    ;div(id "dottis"): .= "dottis"
-  ==
-==
+### .= "dottis"
 
 `[%dtts p=hoon q=hoon]`: test for equality with Nock `5`.
 
@@ -215,11 +199,7 @@ is a common cause of performance bugs.)
 nest-fail
 ```
 
-;=
-  ;h3
-    ;div(id "dotwut"): .? "dotwut"
-  ==
-==
+### .? "dotwut"
 
 `[%dtwt p=hoon]`: test for cell or atom with Nock `3`.
 

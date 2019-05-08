@@ -29,11 +29,7 @@ side is taken), it fails with an error.
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "wutban"): ?> "wutban"
-  ==
-==
+### ?> "wutban"
 
 `[%wtbn p=hoon q=hoon]`: positive assertion.
 
@@ -71,11 +67,7 @@ nest-fail
 123
 ```
 
-;=
-  ;h3
-    ;div(id "wutbar"): ?| "wutbar"
-  ==
-==
+### ?| "wutbar"
 
 `[%wtbr p=(list hoon)]`: logical OR.
 
@@ -114,11 +106,7 @@ Irregular: `|(foo bar baz)` is `?|(foo bar baz)`.
 %.n
 ```
 
-;=
-  ;h3
-    ;div(id "wutcol"): ?: "wutcol"
-  ==
-==
+### "wutcol"
 
 `[%wtcl p=hoon q=hoon r=hoon]`: branch on a boolean test.
 
@@ -166,11 +154,7 @@ Note also that all other branching expressions reduce to `?:`.
 4
 ```
 
-;=
-  ;h3
-    ;div(id "wutdot"): ?. "wutdot"
-  ==
-==
+### ?. "wutdot"
 
 `[%wtdt p=hoon q=hoon r=hoon]`: branch on a boolean test, inverted.
 
@@ -207,11 +191,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 'but see how \'r is much heavier than \'q?'
 ```
 
-;=
-  ;h3
-    ;div(id "wuthep"): ?- "wuthep"
-  ==
-==
+### ?- "wuthep"
 
 `[%wthp p=wing q=(list (pair spec value))]`: switch against a union, with no default.
 
@@ -273,11 +253,7 @@ will throw `mint-vain`.
 ! nest-fail
 ```
 
-;=
-  ;h3
-    ;div(id "wutket"): ?^ "wutket"
-  ==
-==
+### ?^ "wutket"
 
 `[%wtkt p=wing q=hoon r=hoon]`: branch on whether a wing
 of the subject is a cell.
@@ -310,11 +286,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 3
 ```
 
-;=
-  ;h3
-    ;div(id "wutled"): ?< "wutled"
-  ==
-==
+### ?< "wutled"
 
 
 # `?< "wutled"`
@@ -355,11 +327,7 @@ nest-fail
 [12 14]
 ```
 
-;=
-  ;h3
-    ;div(id "wutlus"): ?+ "wutlus"
-  ==
-==
+### ?+ "wutlus"
 
 `[%wtls p=wing q=hoon r=(list (pair spec hoon))]`: switch against
 a union, with a default.
@@ -416,11 +384,7 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 240
 ```
 
-;=
-  ;h3
-    ;div(id "wutpad"): ?& "wutpad"
-  ==
-==
+### ?& "wutpad"
 
 `[%wtpd p=(list hoon)]`: logical AND.
 
@@ -459,11 +423,7 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 %.n
 ```
 
-;=
-  ;h3
-    ;div(id "wutsig"): ?~ "wutsig"
-  ==
-==
+### ?~ "wutsig"
 
 `[%wtsg p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is null.
 
@@ -490,11 +450,7 @@ It's bad style to use `?~` to test for any zero atom.  Use it only for a true nu
 1
 ```
 
-;=
-  ;h3
-    ;div(id "wuttis"): ?= "wuttis"
-  ==
-==
+### ?= "wuttis"
 
 `[%wtts p=spec q=wing]`: test pattern match.
 
@@ -530,11 +486,7 @@ A common error is `find.$`, meaning `p` is not a type.
 %.y
 ```
 
-;=
-  ;h3
-    ;div(id "wutvat"): ?@ "wutvat"
-  ==
-==
+### ?@ "wutvat"
 
 `[%wtpt p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is an atom.
 
@@ -566,11 +518,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 4
 ```
 
-;=
-  ;h3
-    ;div(id "wutzap"): ?! "wutzaps"
-  ==
-==
+### ?! "wutzaps"
 
 `[%wtzp p=hoon]`: logical NOT.
 

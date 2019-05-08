@@ -9,11 +9,7 @@ se, because they have interpolations.)
 
 ## Expressions
 
-;=
-  ;h3
-    ;div(id "cold"): `:_ "Cold Atom"`
-  ==
-==
+### `:_ "Cold Atom"`
 
 `[%rock p=term q=@]`; a constant, cold atom.
 
@@ -48,11 +44,7 @@ We can see the contrast with warm atoms by using the compiler parser function, `
 [%rock p=%ud q=12]
 ```
 
-;=
-  ;h3
-    ;div(id "paths"): `:_ "Paths"`
-  ==
-==
+### `:_ "Paths"`
 
 `[%path p=(list (each @ta hoon))]`: path with interpolation.
 
@@ -81,11 +73,7 @@ Irregular: `/this/is/a/path`.
 ~
 ```
 
-;=
-  ;h3
-    ;div(id "strings"): `:_ "Strings with Interpolation"`
-  ==
-==
+### `:_ "Strings with Interpolation"`
 
 `[%knit p=(list (each @t hoon))]`: text string with interpolation.
 
@@ -133,11 +121,7 @@ String with interpolated prettyprinting:
 "hello, %world."
 ```
 
-;=
-  ;h3
-    ;div(id "warm"): `:_ "Warm Atoms"`
-  ==
-==
+### `:_ "Warm Atoms"`
 
 `[%sand p=term q=@]`; a constant, warm atom.
 

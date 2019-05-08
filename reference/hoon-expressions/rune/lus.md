@@ -11,11 +11,7 @@ There are various arm runes you can use to produce different kinds of arms.  Nor
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "lusbar"): +| "lusbar"
-  ==
-==
+### +| "lusbar"
 
 Chapter label.
 
@@ -63,11 +59,7 @@ Notice that `p.q` has the label `%numbers`.  Contrast with:
 ]
 ```
 
-;=
-  ;h3
-    ;div(id "lusbuc"): +$ "lusbuc"
-  ==
-==
+### +$ "lusbuc"
 
 Produce a structure arm (type definition).
 
@@ -105,11 +97,7 @@ nest-fail
 [%.y 22]
 ```
 
-;=
-  ;h3
-    ;div(id "luslus"): ++ "luslus"
-  ==
-==
+### ++ "luslus"
 
 Produce a normal arm.
 
@@ -144,11 +132,7 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 12
 ```
 
-;=
-  ;h3
-    ;div(id "lustar"): +* "lustar"
-  ==
-==
+### +* "lustar"
 
 
 Produce a type constructor arm.

@@ -29,11 +29,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 - #### [Swift](#swift)
 
-;=
-  ;h2
-    ;div(id "C"): C Implementation
-  ==
-==
+## C Implementation
 
 The actual production Nock interpreter.  Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
@@ -282,11 +278,7 @@ _n_nock_on(u3_noun bus, u3_noun fol)
 }
 ```
 
-;=
-  ;h2
-    ;div(id "clojure"): Clojure
-  ==
-==
+## Clojure
 
 From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock/core.clj):
 
@@ -405,11 +397,7 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
     (apply* bracket nouns)))
 ```
 
-;=
-  ;h2
-    ;div(id "c-sharp"): C#
-  ==
-==
+## C#
 
 
 From [Julien Beasley](https://github.com/zass30/Nock5KCSharp):
@@ -882,11 +870,7 @@ namespace NockInterpreter
 }
 ```
 
-;=
-  ;h2
-    ;div(id "groovy"): Groovy
-  ==
-==
+## Groovy
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/gnock/blob/master/gnock.groovy):
 
@@ -1086,11 +1070,7 @@ def tar(def a, def r) {
 }
 ```
 
-;=
-  ;h2
-    ;div(id "haskell"): Haskell
-  ==
-==
+## Haskell
 
 From [Steve Dee](https://github.com/mrdomino/hsnock/blob/master/Language/Nock5K/Spec.hs):
 
@@ -1196,11 +1176,7 @@ tar a                                = Left "*a"
 ==
 ```
 
-;=
-  ;h2
-    ;div(id "javascript"): JavaScript
-  ==
-==
+## JavaScript
 
 From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
@@ -1559,11 +1535,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 }))
 ```
 
-;=
-  ;h2
-    ;div(id "python"): Python
-  ==
-==
+## Python
 
 From [James Tauber](https://github.com/jtauber/pynock/blob/master/nock.py):
 
@@ -1652,11 +1624,7 @@ def tar(noun):
         return (nock((noun[0], noun[1][0])), nock((noun[0], noun[1][1])))
 ```
 
-;=
-  ;h2
-    ;div(id "ruby"): Ruby
-  ==
-==
+## Ruby
 
 From [T.J. Corcoran](https://github.com/TJamesCorcoran/nock/blob/master/nock.rb):
 
@@ -1789,11 +1757,7 @@ def nock(arr)
 end
 ```
 
-;=
-  ;h2
-    ;div(id "scala"): Scala
-  ==
-==
+## Scala
 
 From [Steve Randy Waldman](https://github.com/swaldman/nnnock/blob/master/src/main/scala/com/mchange/sc/v1/nnnock/package.scala):
 
@@ -1875,11 +1839,7 @@ package object nnnock {
   }
 ```
 
-;=
-  ;h2
-    ;div(id "scheme"): Scheme
-  ==
-==
+## Scheme
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock.ss):
 
@@ -2001,11 +1961,7 @@ From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock
                       (else (raise 13)))))))))))))
 ```
 
-;=
-  ;h2
-    ;div(id "swift"): Swift
-  ==
-==
+## Swift
 
 ```
 import Foundation

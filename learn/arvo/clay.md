@@ -20,11 +20,7 @@ zuse. Second is the write, query, and subscription logic. Finally, there
 is the logic for communicating requests to, and receiving requests from,
 foreign ships.
 
-;=
-  ;h2
-    ;div(id "architecture"): Architecture
-  ==
-==
+## Architecture
 
 Clay is the primary filesystem for the arvo operating system,
 which is the core of an urbit. The architecture of clay is
@@ -440,11 +436,7 @@ the other desk, or both desks do not exist. The sync will be
 activated when the upstream desk comes into existence and will
 create the downstream desk if needed.
 
-;=
-  ;h2
-    ;div(id "commentary"): Commentary
-  ==
-==
+## Commentary
 
 The first part of this section will be reference documentation for the data
 types used by our filesystem. In fact, as a general guide, we recommend

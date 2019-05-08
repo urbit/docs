@@ -197,11 +197,7 @@ One you've completed your installation, you can continue on to the instructions 
 Or, if you want to try testing and writing code, check out the guide to [getting an unnetworked development ship](../creating-a-development-ship).
 
 
-;=
-  ;h2
-    ;div(id "swap"): Set Up Swap
-  ==
-==
+## Set Up Swap
 
 If you're running Urbit in the cloud on a small instance, you may need to additionally configure swap space. If you're not, you can safely ignore this section.
 

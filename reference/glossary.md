@@ -474,11 +474,7 @@ _More information can be found in the [hoon](/docs/learn/arvo/hoon) section._
   expression source (a [hoon](#a-hoon), for example) and produces the product
   type and nock formula. So [type hoon] is mapped to [type nock].
 
-;=
-  ;h3
-    ;div(id "a-hoon"): hoon
-  ==
-==
+### hoon
 
 A _hoon_ (lowercase) is the result of parsing a Hoon source expression into an
 AST node. These AST nodes are nouns, like all other Hoon data. Because every

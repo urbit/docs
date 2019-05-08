@@ -10,11 +10,7 @@ This is documentation about how to write Gall apps.  Some knowledge of Hoon is a
   always accessible enough to beginners.  We are planning to rewrite these in the
   near future.  There is still useful information to be found in the meantime.
 
-;=
-  ;h2
-    ;div(id "api"): API Connectors
-  ==
-==
+## API Connectors
 
 > Note: This lesson depends on some code that needs to be updated before the examples will work correctly.  This will be addressed in the near future.  We apologize!
 
@@ -517,11 +513,7 @@ this doc:
 --
 ```
 
-;=
-  ;h2
-    ;div(id "generators"): Generators
-  ==
-==
+## Generators
 
 Up until now we've poked apps directly. This requires the user to
 specify the mark, and it requires the app to accept the arguments in a
@@ -685,11 +677,7 @@ Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and
 - Create a generator for `:click` from [Web Apps](#backend) so that you can run `:click|poke` to poke it.
 
 
-;=
-  ;h2
-    ;div(id "http"): Writing an HTTP Request
-  ==
-==
+## Writing an HTTP Request
 
 There's a variety of arvo services we haven't touched on yet.
 Let's figure out how to make HTTP requests and set timers.
@@ -897,11 +885,7 @@ Let's try it out:
 ~fintud-macrep:dojo> :up &atom 'off'
 ```
 
-;=
-  ;h2
-    ;div(id "marks"): Marks
-  ==
-==
+## Marks
 
 We've used predefined marks already, but we haven't yet created
 our own marks.  Let's write a sample mark of our own, then chain
@@ -1022,11 +1006,7 @@ mark.
 
 The minimal correct input, then, is `&mime &hymn &cord &atom 17`.
 
-;=
-  ;h2
-    ;div(id "network"): Network Messages
-  ==
-==
+## Network Messages
 
 In the following we assume that you have some knowledge of Hoon.  If you don't, check out chapters 1 and 2 of the Hoon tutorial and check back when you're ready.
 
@@ -1373,11 +1353,7 @@ urbit as for sending messages between apps on different urbits.
 - Put `even` and `odd` on two separate urbits and pass the messages over the network. Post a link to a working solution in :talk to receive a cookie.
 
 
-;=
-  ;h2
-    ;div(id "security"): Security Drivers
-  ==
-==
+## Security Drivers
 
 A security driver is a file in `/=home=/sec/<tld>/<domain>/hoon`
 that handles the authentication for all HTTP requests to
@@ -1651,11 +1627,7 @@ library.
 Remember, of course, that the best strategy for building security
 drivers is to copy a similar one and tweak it to taste.
 
-;=
-  ;h2
-    ;div(id "state"): State
-  ==
-==
+## State
 
 In the last section we built a few small apps that sent moves. These apps were
 entirely stateless, however. Most useful apps require some amount of state.
@@ -1772,11 +1744,7 @@ Sample output:
 ```
 
 
-;=
-  ;h2
-    ;div(id "subscriptions"): Subscriptions
-  ==
-==
+## Subscriptions
 
 We've dealt fairly extensively with "poke" messages to an app, but these
 are somewhat limited. A poke is a one-way message, but more often we
@@ -2102,11 +2070,7 @@ nullability. If `err` is `~`, then the subscription was successful and we tell
 that to the user. Otherwise, we print out the error message.
 
 
-;=
-  ;h2
-    ;div(id "backend"): Backend
-  ==
-==
+## Backend
 
 We've done purely functional web pages as hook files, and we've
 done command line apps, so now let's interact with an app over

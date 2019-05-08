@@ -17,11 +17,7 @@ Hall is the Urbit messaging and notifications protocol. This document details Ha
 
 - #### [The New Gall Model](#new-gall)
 
-;=
-  ;h1
-    ;div(id "architecture"): Hall Architecture
-  ==
-==
+# Hall Architecture
 
 This document is complemented by Hall's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
 
@@ -512,11 +508,7 @@ To gain a more thorough understanding of Hall's inner workings, take a look at i
 To see an expansive example of a Hall client, take a look at the code of Talk. It, too, comes with inline documentation.
 [On Github.](https://github.com/urbit/arvo/blob/master/app/talk.hoon)
 
-;=
-  ;h1
-    ;div(id "interface"): The Hall Interface
-  ==
-==
+# The Hall Interface
 
 This document describes the different interfaces Hall provides and the data that is accessible and modifiable through them. Knowledge of the Urbit application model (including [new gall](#new-gall)) and [Hall's architecture](#architecture) is assumed.
 
@@ -878,11 +870,7 @@ When the user makes any changes to shared UI elements (elements that should pers
 
 `%public`: Adds or removes a circle to/from the user's public membership list.
 
-;=
-  ;h1
-    ;div(id "new-gall"): The New Gall Model
-  ==
-==
+# The New Gall Model
 
 This document is complemented by the source code of applications that use the new Gall model (like [Hall](https://github.com/urbit/arvo/blob/master/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
 
@@ -1106,11 +1094,7 @@ As we saw earlier, for `/number` queries the `delta`s match one-on-one with the 
 - Gall should probably cache `++feel` results during a single pass, to avoid the cycles of generating what it can be certain of is the same `(unit rumor)`. (But then for eg `/circle/nom/13` and `/circle/nom/14` it would still recalculate. Better than nothing.)
 
 
-;=
-  ;h2
-    ;div(id "spec"): The original new-Gall spec
-  ==
-==
+## The original new-Gall spec
 
 `~sorreg-namtyv`
 
@@ -1266,11 +1250,7 @@ As we saw earlier, for `/number` queries the `delta`s match one-on-one with the 
 --
 ```
 
-;=
-  ;h2
-    ;div(id "example"): A new-Gall example app
-  ==
-==
+## A new-Gall example app
 
 ```
 ::  counter app

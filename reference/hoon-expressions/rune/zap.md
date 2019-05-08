@@ -5,11 +5,7 @@ template = "doc.html"
 +++
 ## Runes
 
-;=
-  ;h3
-    ;div(id "zapban"): !> "zapban"
-  ==
-==
+### !> "zapban"
 
 `[%zpgr p=hoon]`: wrap a noun in its type.
 
@@ -39,11 +35,7 @@ If you want just the type value, use a 'type spear'.  This is `-:!>`, i.e., the 
 #t/@ud
 ```
 
-;=
-  ;h3
-    ;div(id "zapcol"): !: "zapcol"
-  ==
-==
+### "zapcol"
 
 `[%dbug p=hoon]`: turn on stack trace
 
@@ -75,11 +67,7 @@ ford: %ride failed to execute:
 ford: %ride failed to execute:
 ```
 
-;=
-  ;h3
-    ;div(id "zapdot"): !. "zapdot"
-  ==
-==
+### !. "zapdot"
 
 Turn off stack trace for a subexpression `p`
 
@@ -123,11 +111,7 @@ ford: %ride failed to execute:
 ford: %ride failed to execute:
 ```
 
-;=
-  ;h3
-    ;div(id "zaptis"): != "zaptis"
-  ==
-==
+### != "zaptis"
 
 `[%zpts p=hoon]`: make the Nock formula for a Hoon expression.
 
@@ -168,11 +152,7 @@ Don't confuse the `!=` rune with:
 
 The syntax difference is that a test for equality takes two subexpressions, and the `!=` rune only one.
 
-;=
-  ;h3
-    ;div(id "zapwut"): !? "zapwut"
-  ==
-==
+### !? "zapwut"
 
 `[%zpwt p=@ q=hoon]`: restrict Hoon version.
 
@@ -198,11 +178,7 @@ Regular: *2-fixed*.
 ! exit
 ```
 
-;=
-  ;h3
-    ;div(id "zapzap"): !! "zapzap"
-  ==
-==
+### !! "zapzap"
 
 `[%zpzp ~]`: crash.
 

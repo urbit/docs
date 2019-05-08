@@ -7,11 +7,7 @@ The `--` and `==` are used as terminators: `--` for core expressions, and `==` f
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "hephep"): -- "hephep"
-  ==
-==
+### -- "hephep"
 
 ##### Syntax
 
@@ -40,11 +36,7 @@ The `|%`, `|_`, and `|^` runes are used to create cores that can have arbitraril
 24
 ```
 
-;=
-  ;h3
-    ;div(id "tistis"): == "tistis"
-  ==
-==
+### == "tistis"
 
 ##### Syntax
 

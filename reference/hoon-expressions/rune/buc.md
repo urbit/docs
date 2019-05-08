@@ -32,11 +32,7 @@ instance, `(map foo bar)` is a table from mold `foo` to mold
 `bar`.  `map` is not a mold; it's a function that makes a mold.
 Molds and mold builders are generally described together.
 
-;=
-  ;h2
-    ;div(id "base"): Base Structures
-  ==
-==
+## Base Structures
 
 `[%base p=$@(?(%noun %cell %bean %null) [%atom p=aura])]`: trivial structures (types).
 
@@ -55,11 +51,7 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "buccab"): $_ "buccab"
-  ==
-==
+### $_ "buccab"
 
 `[%bscb p=hoon]`: structure that normalizes to an example.
 
@@ -95,11 +87,7 @@ and produces its *example* instead.
 [%foobaz %moobaz]
 ```
 
-;=
-  ;h3
-    ;div(id "buccen"): $% "buccen"
-  ==
-==
+### $% "buccen"
 
 `[%bscn p=(list spec)]`: structure which recognizes a union tagged by head atom.
 
@@ -130,11 +118,7 @@ be an infinite loop!
 [%foo p=0 q=0]~
 ```
 
-;=
-  ;h3
-    ;div(id "buccol"): $: "buccol"
-  ==
-==
+### "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 
@@ -168,11 +152,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 [p=0 q=%$]
 ```
 
-;=
-  ;h3
-    ;div(id "buchep"): $- "buchep"
-  ==
-==
+### $- "buchep"
 
 `[%bshp p=spec q=spec]`: structure that normalizes to an example gate.
 
@@ -200,11 +180,7 @@ Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, jus
 %baz
 ```
 
-;=
-  ;h3
-    ;div(id "bucket"): $^ "bucket"
-  ==
-==
+### $^ "bucket"
 
 `[%bskt p=spec q=spec]`: structure which normalizes a union tagged by head depth (cell).
 
@@ -238,11 +214,7 @@ Regular: *2-fixed*.
 [%baz p=0]
 ```
 
-;=
-  ;h3
-    ;div(id "bucsig"): $~ "bucsig"
-  ==
-==
+### $~ "bucsig"
 
 `[%bssg p=hoon q=spec]`: define a custom type default value
 
@@ -305,11 +277,7 @@ Using `$~`:
 %default-value
 ```
 
-;=
-  ;h3
-    ;div(id "bucvat"): $@ "bucvat"
-  ==
-==
+### $@ "bucvat"
 
 `[%bsvt p=spec q=spec]`: structure which normalizes a union tagged by head depth (atom).
 
@@ -347,11 +315,7 @@ Example:
 ```
 
 
-;=
-  ;h3
-    ;div(id "buctis"): $= "buctis"
-  ==
-==
+### $= "buctis"
 
 `[%bsts p=skin q=spec]`: structure which wraps a face around another structure.
 
@@ -386,11 +350,7 @@ p=%foo
 p=%foo
 ```
 
-;=
-  ;h3
-    ;div(id "bucwut"): $? "bucwut"
-  ==
-==
+### $? "bucwut"
 
 `[%bswt p=(list spec)]`: form a type from a union of other types.
 

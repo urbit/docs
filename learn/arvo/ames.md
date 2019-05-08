@@ -22,11 +22,7 @@ routing is handled entirely in `%ames`. Finally, the actual `%ames`
 protocol itself, including how to route incoming packets to the correct
 vane or app, is defined in `%ames`.
 
-;=
-  ;h2
-    ;div(id "commentary"): Commentary
-  ==
-==
+## Commentary
 
 `%ames` is our networking protocol.
 

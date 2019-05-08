@@ -7,11 +7,7 @@ The `:` ("col") expressions are used to produce cells, which are pairs of values
 
 ## Runes
 
-;=
-  ;h3
-    ;div(id "colcab"): :_ "colcab"
-  ==
-==
+### :_ "colcab"
 
 `[%clcb p=hoon q=hoon]`; construct a cell, inverted.
 
@@ -32,11 +28,7 @@ Regular: *2-fixed*.
 [2 1]
 ```
 
-;=
-  ;h3
-    ;div(id "colcol"): :: "colcol"
-  ==
-==
+### "colcol"
 
 Code comment
 
@@ -55,11 +47,7 @@ Code comment
                 ::  to the input
 ```
 
-;=
-  ;h3
-    ;div(id "colhep"): :- "colhep"
-  ==
-==
+### :- "colhep"
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -107,11 +95,7 @@ compiler does), `[a b]` is the same as `:-(a b)`.
 [~ 1]
 ```
 
-;=
-  ;h3
-    ;div(id "colket"): :^ "colket"
-  ==
-==
+### :^ "colket"
 
 `[%clkt p=hoon q=hoon r=hoon s=hoon]`: construct a quadruple (4-tuple).
 
@@ -138,11 +122,7 @@ Regular: *4-fixed*.
 [5 6 7 8]
 ```
 
-;=
-  ;h3
-    ;div(id "collus"): :+ "collus"
-  ==
-==
+### :+ "collus"
 
 
 `[%clls p=hoon q=hoon r=hoon]`: construct a triple (3-tuple).
@@ -169,11 +149,7 @@ Regular: *3-fixed*.
 [%a ~ 'b']
 ```
 
-;=
-  ;h3
-    ;div(id "cosig"): :~ "colsig"
-  ==
-==
+### :~ "colsig"
 
 `[%clsg p=(list hoon)]`: construct a null-terminated list.
 
@@ -217,11 +193,7 @@ Regular: *running*.
 [5 3 4 2 1 ~]
 ```
 
-;=
-  ;h3
-    ;div(id "coltar"): :* "coltar"
-  ==
-==
+### :* "coltar"
 
 `[%cltr p=(list hoon)]`: construct an n-tuple.
 

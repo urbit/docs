@@ -11,11 +11,7 @@ template = "doc.html"
 
 - #### [A Static Site](#static)
 
-;=
-  ;h2
-    ;div(id "guide"): Udon: A Guide
-  ==
-==
+## A Guide
 
 Udon is a way to write content for the web. It's a minimalist
 markup language for creating and rendering text documents, with a
@@ -362,11 +358,7 @@ Four score and seven years ago....
 
 It was the best of times, it was the worst of times...
 
-;=
-  ;h2
-    ;div(id "the-destination"): Here we are!
-  ==
-==
+## Here we are!
 ```
 
 ###### Produces
@@ -377,11 +369,7 @@ Four score and seven years ago....
 
 It was the best of times, it was the worst of times...
 
-;=
-  ;h2
-    ;div(id "the-destination"): Here we are!
-  ==
-==
+## Here we are!
 
 ### Double Quote
 
@@ -584,11 +572,7 @@ indent the text in question with *eight spaces*.
         Reel shadows of the indignant desert birds.
 
 
-;=
-  ;h2
-    ;div(id "sail"): Sail Expressions
-  ==
-==
+## Sail Expressions
 
 It's possible to use Udon as an HTML templating language akin to
 PHP, ERB, JSP, or Handlebars templates. This facility derives
@@ -625,11 +609,7 @@ Produces:
 ==
 
 
-;=
-  ;h2
-    ;div(id "blog"): A Simple Udon Blog
-  ==
-==
+## A Simple Udon Blog
 
 Publishing using Udon is really easy. It uses the file extension `.udon`. Here we'll create a very simple blog and publish our first posts.
 
@@ -770,11 +750,7 @@ Use `;join` to keep up with comments as they get posted:
 
 That's it!  Easy.
 
-;=
-  ;h2
-    ;div(id "static"): A Static Site
-  ==
-==
+## A Static Site
 
 Hosting a static tree of content is easy.  Let's put together a really
 simple site for an imaginary Urbit meetup group.
