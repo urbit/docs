@@ -324,6 +324,13 @@ There are a couple useful runes associated with debugging:
 
 `~&` (sigpam) is used to print its argument every time that argument executes. So, if you wanted to see how many times your program executed `foo`, you would write `foo bar`. Then, when your program runs, it will print `foo` on a new line of output every time the program comes across it by recursion.
 
+`-:!>` is known as the type spear. Given an expression, it will produce the type information for the expression. This can be useful for verifying assumptions about the types of expressions.
+
+```
+> -:!>(1)
+#t/@ud
+```
+
 But there are more. Check out the aforementioned [troubleshooting](/docs/reference/troubleshooting/) page to see other handy debugging runes and how to use them.
 
 ### [Next Lesson: The Subject and Its Legs](../the-subect-and-its-legs)
