@@ -7,7 +7,7 @@ Before we begin working on Hoon you should first (1) have Urbit installed and (2
 
 ## Installing Urbit
 
-You can [install Urbit](/docs/getting-started) on any Mac or Unix machine; follow the steps for creating a development ship.  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
+You can [install Urbit](docs/getting-started) on any Mac or Unix machine; follow the steps for creating a development ship.  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
 
 Once you're finished you can boot your very own urbit.
 
@@ -21,7 +21,7 @@ For this tutorial you'll boot and run what we call a 'comet'.  *Comets* are urbi
 
 `~hillyn-pitwet-hasdur-paswer--miszod-rabpex-divrup-fogdur`
 
-Comet names aren't quite as memorable as others, but they're disposable identities that anyone can make for free to join the live network. Thus, comets make the ideal urbit for playing around with Hoon, asking for help from other Urbit devs in [Talk](/docs/arvo/arvo-internals/using/messaging/) if you need it, and showing off Urbit to your friends.
+Comet names aren't quite as memorable as others, but they're disposable identities that anyone can make for free to join the live network. Thus, comets make the ideal urbit for playing around with Hoon, asking for help from other Urbit devs in [Talk](docs/using/messaging/) if you need it, and showing off Urbit to your friends.
 
 ## Booting a Comet
 
