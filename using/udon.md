@@ -591,7 +591,7 @@ Example:
 ;=
   ;p
     ;strong: Don't panic!
-    ;br;
+    <br>
     ;small: [reactive publishing intensifies]
   ==
 ==
@@ -603,7 +603,7 @@ Produces:
 ;=
   ;p
     ;strong: Don't panic!
-    ;br;
+    <br>
     ;small: [reactive publishing intensifies]
   ==
 ==
