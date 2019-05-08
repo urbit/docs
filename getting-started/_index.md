@@ -1,0 +1,39 @@
++++
+title = "Getting Started"
+weight = 1
+sort_by = "weight"
+template = "sections/docs/chapters.html"
++++
+Pages in this section are guides to getting you started with Urbit.
+
+But first, the absolute basics. Arvo is the name of the Urbit operating system and the name of network. Azimuth is the name of the Urbit identity layer. Urbit is the project as the whole.
+
+An instance of the Arvo operating system is called a _ship_. If you want to get on the Arvo network, you need an Azimuth identity, called a _point_.
+
+## Urbit Identities
+
+An Azimuth point functions as an identity and a network address for Arvo. A ship can't use the Arvo network unless it's been booted with the keys registered to a point.
+
+Points are generally not freely available, so you will need to either purchase one or get one from a friend. To receive one, you will need an Ethereum wallet that supports the BIP39 mnemonic seed functionality, which allows you to access your wallet with a series of dictionary words. Hardware wallets, such as Ledger and TREZOR devices, satisfy this requirement. So do various web-based wallets.
+
+Once you have such a wallet, give your Ethereum address to the person who agreed to give you a point. Have them transfer the point to your address, and continue to the with our guides below.
+
+## Guides
+
+Follow these guides in the order that they are listed.
+
+### [Using Bridge](using-bridge)
+
+Bridge is our client for managing Azimuth points. This guide will tell you how to use it to get your point's _keyfile_, the item you need to boot your ship booted onto the Arvo network.
+
+### [Installing Urbit](installing-urbit)
+
+This guide will tell you everything you need to know about installing our software.
+
+### [Booting a Ship](booting-a-ship)
+
+This guide will walk you through the process of getting your ship operational and on the Arvo network.
+
+### [Creating a Development Ship](creating-a-development-ship)
+
+If you just want to do development work with Arvo, and don't need to be on the Urbit network, this section is for you.
