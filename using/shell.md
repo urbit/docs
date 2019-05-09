@@ -212,9 +212,7 @@ number of vane names.
 
 ## Manual
 
-;h3(class "first child")
-Sources and sinks
-==
+### Sources and sinks
 
 A Dojo command is either a *source* or a *sink*. A source is just something
 that can be printed to your console or the result of some computation. A
