@@ -196,13 +196,13 @@ number of vane names.
 ~your-urbit:dojo> |reload %clay %eyre
 ```
 
-*`|reset`* - Reloads `hoon.hoon` and all modules. No arguments.
+`|reset` - Reloads `hoon.hoon` and all modules. No arguments.
 
 ```
 ~your-urbit:dojo> |reset
 ```
 
-*`|start`* - Starts an app. Accepts an app name.
+`|start` - Starts an app. Accepts an app name.
 
 ```
 ~your-urbit:dojo> |start %curl
