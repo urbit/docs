@@ -9,15 +9,13 @@ from the strange words within.
 As Dijkstra put it: "The purpose of abstraction is not to be vague, but
 to create a new semantic level in which one can be absolutely precise."
 
-;h3
-  ;div(id "application"): application
-==
+<span id="application"></span>
+### application
 
 Also known as an “app,” an _application_ is a Hoon program that can hold state.
 
-;h3
-  ;div(id "arm"): arm
-==
+<span id="arm"></span>
+### arm
 
 An _arm_ is a named, functionally-computed attribute of a [core](#core).
 
@@ -45,9 +43,8 @@ dry.
 _See [advanced types](/docs/reference/hoon-expressions/advanced/)_.
 
 
-;h3
-  ;div(id "arvo"): Arvo
-==
+<span id="arvo"></span>
+### Arvo
 
 The Urbit operating system and kernel. Arvo's state is a pure function of its
 event log, and it serves as the Urbit event manager. It contains vanes, which are
@@ -192,9 +189,8 @@ An atom type is _warm_ or _cold_ based on whether the constant exists.
 
 _See [basic types](/docs/reference/hoon-expressions/basic)_
 
-;h3
-  ;div(id "aura"): aura
-==
+<span id="aura"></span>
+### aura
 
 An aura is a soft atom type. They appear as strings beginning with `@`. Auras
 represent the structure of an atom, print format, or other semantics. Its
@@ -297,9 +293,8 @@ least-significant bit first. Represented as the aura `@t`.
     'hello'
 ```
 
-;h3
-  ;div(id "core"): core
-==
+<span id="core"></span>
+### core
 
 A _core_ is a [cell](#nock-cell) of `[code data]`, where we call the
 code head the _battery_ and the data tail the _payload_. All code-data
@@ -366,9 +361,8 @@ _no_.
 Why? It's fresh, it's different, it's new. And it's annoying. And it
 keeps you on your toes. And it's also just intuitively right.
 
-;h3
-  ;div(id "gate"): gate
-==
+<span id="gate"></span>
+### gate
 
 A _gate_ is a [core](#core) with one [arm](#arm) -- Hoon's closest
 analog to a function. To call a gate on an argument, replace the sample
@@ -453,9 +447,8 @@ _More information on Hall can be found [here](/docs/learn/arvo/arvo-internals/ha
 _Hood_ orchestrates many of the Urbit initialization systems necessary
 for boot.
 
-;h3
-  ;div(id "hoon"): Hoon
-==
+<span id="hoon"></span>
+### Hoon
 
 Hoon is a strict, higher-order typed functional language that compiles itself
 to Nock.
@@ -464,11 +457,8 @@ The Hoon source file is located in `/home/sys/hoon.hoon` within your urbit.
 
 _More information can be found in the [hoon](/docs/learn/arvo/hoon) section._
 
-- ;div
-    ;h5
-      ;div(id "mint"): Mint
-    ==
-  ==
+<span id="mint"></span>
+- ##### Mint
 
   _Mint_ is the Hoon compiler function. Mint takes the subject type and the
   expression source (a [hoon](#a-hoon), for example) and produces the product
@@ -560,9 +550,8 @@ you desire.
 15
 ```
 
-;h3
-  ;div(id "limb"): limb
-==
+<span id="limb"></span>
+### limb
 
 A _limb_ is an attribute or variable reference. A limb is an [arm](#arm) or a
 [leg](#leg).
@@ -585,82 +574,59 @@ found, the result is the product of the arm.
 _See [Limbs and wings](/docs/hoon-expressions/limb/)_
 
 
-;h3
-  ;div(id "move"): formula
-==
+<span id="move"></span>
+### move
 
 A move is the [Arvo](#arvo) equivalent of a syscall.
 
 
-;h3
-  ;div(id "noun"): noun
-==
+<span id="noun"></span>
+### noun
 
 In [Nock](#nock) and [Hoon](#hoon), a _noun_ is an atom or a cell.
 
 
-;h3
-  ;div(id "nock"): Nock
-==
+<span id="nock"></span>
+### Nock
 
 Nock is a Turing-complete, non-lambda combinator interpreter. It's
 Urbit's low-level programming language. Nock is functional and typeless.
 
-- ;div
-    ;h5
-      ;div(id "nock-noun"): noun
-    ==
-    ;div: an _atom_ or a _cell_.
-  ==
+<span id="nock-noun"></span>
+- ##### noun
 
-- ;div
-    ;h5
-      ;div(id "nock-atom"): atom
-    ==
-    any natural number, including zero.
-  ==
+  an _atom_ or a _cell_.
 
-  - ;div
-      ;h5
-        ;div(id "nock-cell"): cell
-      ==
-      any ordered pair of nouns.
-    ==
+<span id="nock-atom"></span>
+- ##### atom
 
-  - ;div
-      ;h5
-        ;div(id "nock-cell"): cell
-      ==
-      any ordered pair of nouns.
-    ==
+  any natural number, including zero.
 
-  - ;div
-      ;h5
-        ;div(id "nock-subject"): subject
-      ==
-      a noun - the data against which a _formula_ is evaluated.
-    ==
+<span id="nock-cell"></span>
+- ##### cell
 
-  - ;div
-      ;h5
-        ;div(id "nock-formula"): formula
-      ==
-      a noun - a function at the nock level.
-    ==
+  any ordered pair of nouns.
 
-  - ;div
-      ;h5
-        ;div(id "nock-product"): product
-      ==
-      a noun - the result of evaluating a formula against a subject.
-    ==
+<span id="nock-subject"></span>
+- ##### subject
+
+  a noun - the data against which a _formula_ is evaluated.
+
+<span id="nock-formula"></span>
+- ##### formula
+
+  a noun - a function at the nock level.
+
+<span id="nock-product"></span>
+- ##### product
+
+  a noun - the result of evaluating a formula against a subject.
 
 _See the [Nock definition](/docs/learn/arvo/nock/definition)._
 
 
-;h3
-  ;div(id "mark"): mark
-==
+<span id="mark"></span>
+### mark
 
 A _mark_ is Urbit's version of a MIME type, if a MIME type was an
 executable specification. The mark is just a label that's used as a path
@@ -741,9 +707,8 @@ whose number is its bottom half. So the planet `~firbyr-napbes`,
   A ship's _pier_ is its Unix directory.  For planets, the name of the pier is
   usually the planet name.
 
-;h3
-  ;div(id "structure"): structure
-==
+<span id="structure"></span>
+### structure
 
 A _structure_ is an idempotent [gate](#gate) (function) that constructs and
 validates types in Hoon.
@@ -771,9 +736,8 @@ Here's some common structure terminology:
 
 _See [mold hoons](/docs/reference/hoon-expressions/rune/buc/)._
 
-;h3
-    ;div(id "rune"): rune
-==
+<span id="rune"></span>
+### rune
 
 A Hoon _rune_ is a pair of ASCII symbols used to begin a
 [Hoon expression](#a-hoon).
@@ -842,9 +806,8 @@ The head of `+n` is `+2n`, the tail is `+(2n+1)`.
 `+7` is a special address for gates, because the position is defined
 (by convention) as the context of a gate and of all cores.
 
-;h3
-  ;div(id "talk"): talk
-==
+<span id="talk"></span>
+### talk
 
 _Talk_ is Urbit's built-in chat app. It’s one example of an app that can be
 built on top of Hall, the Urbit back-end messaging system.

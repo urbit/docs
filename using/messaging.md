@@ -137,9 +137,8 @@ Now you can tell your friends to `;join ~your-urbit/my-channel`.
 
 ---
 
-;h2
-  ;div(id "manual"): Manual
-==
+<span id="manual"></span>
+## Manual
 
 Hall's design is similar in spirit to
 [NNTP](https://en.wikipedia.org/wiki/Network_News_Transfer_Protocol),
@@ -319,9 +318,8 @@ For example:
 sampel-palnet:talk> ;depict %coolbox 'cool messages only. NO EXCEPTIONS.'
 ```
 
-;h6
-  ;div(id "filter"): Filter
-==
+<span id="filter"></span>
+###### Filter
 
 Syntax: `;filter %name [capitals] [unicode]`
 
