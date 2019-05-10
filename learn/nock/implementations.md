@@ -1199,7 +1199,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
    * An atom is an unsigned integer of any size; a cell is an ordered pair of nouns.
    *
    * @see http://urbit.org/docs/nock/definition/
-   * @see http://media.urbit.org/whitepaper.pdf
+   * @see https://media.urbit.org/whitepaper.pdf
    */
 
   var useMacros = false

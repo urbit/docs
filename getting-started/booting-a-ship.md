@@ -11,7 +11,7 @@ Note that this document is only for booting a ship that uses the live Arvo netwo
 
 This will look something like `~lodleb-ritrul`. You can see the name of your point(s) when you log into your wallet using the Bridge client.
 
-![](http://media.urbit.org/site/bridge-0.png)
+![](https://media.urbit.org/site/bridge-0.png)
 
 ## Step 2: Find the path to your keyfile
 
