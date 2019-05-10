@@ -3,11 +3,11 @@ title = "Atoms, Auras, and Simple Cell Types"
 weight = 24
 template = "doc.html"
 +++
-Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science%29)) won't be addressed until a later chapter.
+Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29)) won't be addressed until a later chapter.
 
 A type is ordinarily understood to be a set of values.  Examples: the set of all atoms is a type, the set of all cells is a type, and so on.
 
-Type systems provide type safety, in part by making sure functions produce values of the correct type.  When you write a function whose product is intended to be an atom, it would be nice to know that the function is guaranteed to produce an atom.  Hoon's type system provides such guarantees with *type checking* and *type inference*.
+Type systems provide type safety, in part by making sure functions produce values of the correct type.  When you write a function whose product is intended to be an atom, it would be nice to know that the function is guaranteed to produce an atom.  Hoon's type system provides such guarantees with **type checking** and **type inference**.
 
 ## Brief Overview of the Next Few Lessons
 
@@ -21,9 +21,9 @@ In [lesson 1.2](../nouns) we defined what an atom is: any unsigned integer.  In 
 
 In the most straightforward sense, atoms simply are unsigned integers.  But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more.  Every atom is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each atom, and this info tells Hoon how to interpret the atom in question.
 
-The piece of type information that determines how Hoon interprets an atom is called an *aura*.  The set of all atoms is indicated with the symbol `@`.  An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal.  Accordingly, the Hoon type system does more than track sets of values.  It also tracks certain other relevant metadata about how those values are to be interpreted.
+The piece of type information that determines how Hoon interprets an atom is called an **aura**.  The set of all atoms is indicated with the symbol `@`.  An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal.  Accordingly, the Hoon type system does more than track sets of values.  It also tracks certain other relevant metadata about how those values are to be interpreted.
 
-How is aura information generated so that it can be tracked?  One way involves *type inference*.  In certain cases Hoon's type system can infer the type of an expression using syntactic clues.  In the most straightforward case of type inference, the expression is simply data as a [literal](https://en.wikipedia.org/wiki/Literal_(computer_programming%29).  Hoon recognizes the aura literal syntax and infers that the data in question is an atom with the aura associated with that syntax.
+How is aura information generated so that it can be tracked?  One way involves **type inference**.  In certain cases Hoon's type system can infer the type of an expression using syntactic clues.  In the most straightforward case of type inference, the expression is simply data as a [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29).  Hoon recognizes the aura literal syntax and infers that the data in question is an atom with the aura associated with that syntax.
 
 To see the inferred type of a literal expression in the dojo, use the `?` operator.  (Note: this operator isn't part of the Hoon programming language; it's a dojo-only tool.  It's a very useful tool for learning about types in Hoon, however.)
 
@@ -171,7 +171,7 @@ The reason these add up correctly is that unsigned auras all map directly to the
 
 It's important to understand that Hoon's type system doesn't enforce auras as strictly as it does other types.  Auras are 'soft' type information.  To see how this works, we'll take you through the process of converting the aura of an atom to another aura.
 
-Hoon makes *some* effort to enforce that the correct aura is produced by an expression:
+Hoon makes **some** effort to enforce that the correct aura is produced by an expression:
 
 ```
 > ^-(@ud 0x10)
@@ -367,7 +367,7 @@ You can get around Hoon's parser restrictions for `@ta` atoms by casting to `@ta
 ~.The quick brown fox jumped over the lazy dog.
 ```
 
-The Hoon *parser* prevents you from typing the literal `~.The quick brown fox jumped over the lazy dog.` into the dojo.  Try it!
+The Hoon **parser** prevents you from typing the literal `~.The quick brown fox jumped over the lazy dog.` into the dojo.  Try it!
 
 The `@tas` aura is intended for 'symbols', i.e., kebab case strings following a `%`:
 
@@ -489,7 +489,7 @@ Programmers can use their own auras if desired, keeping in mind however that Hoo
 
 If your program uses both fortnights and furlongs, Hoon will not parse a user-defined fortnight syntax. It will not print furlongs in the dojo.  But the type system can prevent you from accidentally passing a furlong to a function that expects a fortnight.
 
-Remember also that auras specialize to the right.  For example, `@u` atoms are interpreted as unsigned integers; `@ux` atoms are interpreted as unsigned *hexadecimal* integers.
+Remember also that auras specialize to the right.  For example, `@u` atoms are interpreted as unsigned integers; `@ux` atoms are interpreted as unsigned **hexadecimal** integers.
 
 ```
 > `@madeupaura`123
@@ -510,9 +510,9 @@ nest-fail
 
 ## General and Constant Atoms
 
-There's more to the type information of an atom than its aura.  Another distinction is necessary.  Some atoms are *general* in type, meaning that the type in question includes all atoms.  For example, the type of the literal `17` is `@ud`; every atom can be of that type.  Up to this point of this lesson every atom has been general.
+There's more to the type information of an atom than its aura.  Another distinction is necessary.  Some atoms are **general** in type, meaning that the type in question includes all atoms.  For example, the type of the literal `17` is `@ud`; every atom can be of that type.  Up to this point of this lesson every atom has been general.
 
-There are also atoms that are *constant* in type.  Constant atom types contain just one atom.  But that's not all.  Constant atom types contain just one atom *with just one aura*.
+There are also atoms that are **constant** in type.  Constant atom types contain just one atom.  But that's not all.  Constant atom types contain just one atom **with just one aura**.
 
 For atomic constant literal syntax simply put `%` in front of the atom literal:
 
@@ -693,7 +693,7 @@ nest-fail
 nest-fail
 ```
 
-The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two atoms, and crashes with a `nest-fail` for any expression that evaluates to something different.  The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` *does* evaluate to a cell, the left-hand side isn't an atom, but is instead another cell.
+The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two atoms, and crashes with a `nest-fail` for any expression that evaluates to something different.  The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` **does** evaluate to a cell, the left-hand side isn't an atom, but is instead another cell.
 
 You can get even more specific about the kind of cell you want by using atom auras:
 

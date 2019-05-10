@@ -5,9 +5,9 @@ template = "doc.html"
 +++
 The study of Hoon can be divided into two parts: syntax and semantics.
 
-The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
+The [syntax](https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
 
-The [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
+The [semantics](https://en.wikipedia.org/wiki/Semantics_%28computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
 
 In this lesson we cover Hoon's syntax.  A strict account of Hoon's syntax would refrain from making any reference at all to semantics, but for ease of exposition we won't be quite so fastidious.
 
@@ -51,9 +51,9 @@ Note that the list includes two separate whitespace forms: `ace` for a single sp
 
 ## Expressions of Hoon
 
-An [expression](https://en.wikipedia.org/wiki/Expression_(computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
+An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
 
-Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called *subexpressions*).
+Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
 There are many categories of Hoon expressions: noun literals, wing expressions, type expressions, and rune expressions.  Let's go over each.
 
@@ -61,7 +61,7 @@ There are many categories of Hoon expressions: noun literals, wing expressions, 
 
 A noun is either an atom or a cell.  An atom is an unsigned integer and a cell is a pair of nouns.
 
-There are [literal](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
+There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
 
 We start with atom literals.  Each of these is a basic expression of Hoon that evaluates to itself.  Examples:
 
@@ -149,7 +149,7 @@ They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@u
 
 ### Rune Expressions
 
-A *rune* is just a pair of ASCII characters (a digraph).  You've already seen some runes in Chapter 1: `|=`,`|%`, and `|_`.  We usually pronounce runes by combining their characters' names, e.g.: 'ket-hep' for `^-`, 'bar-tis' for `|=`, and 'bar-cen' for `|%`.  As stated previously, these names are entirely optional.
+A **rune** is just a pair of ASCII characters (a digraph).  You've already seen some runes in Chapter 1: `|=`,`|%`, and `|_`.  We usually pronounce runes by combining their characters' names, e.g.: 'ket-hep' for `^-`, 'bar-tis' for `|=`, and 'bar-cen' for `|%`.  As stated previously, these names are entirely optional.
 
 Expressions with a rune at the beginning are rune expressions.  Most runes are used at the beginning of a complex expression, but there are exceptions.  For example, the runes `--` and `==` are used at the end of certain expressions.
 
@@ -159,7 +159,7 @@ Rune expressions are usually complex, which means they usually have one or more 
 
 #### Tall and Flat Forms
 
-There are two rune syntax forms: *tall* and *flat*.  Tall form is usually used for multi-line expressions, and flat form is used for one-line expressions.  Most runes can be used in either of tall or flat forms.  Tall form expressions may contain flat form subexpressions, but flat form expressions may not contain tall form.
+There are two rune syntax forms: **tall** and **flat**.  Tall form is usually used for multi-line expressions, and flat form is used for one-line expressions.  Most runes can be used in either of tall or flat forms.  Tall form expressions may contain flat form subexpressions, but flat form expressions may not contain tall form.
 
 The spacing rules differ in the two forms.  In tall form, each rune and subexpression must be separated from the others by a `gap` -- that is, by two or more spaces, or a line break.  In flat form the rune is immediately followed by parentheses `( )`, and the various subexpressions inside the parentheses must be separated from the others by an `ace` -- that is, by a single space.
 
@@ -352,11 +352,11 @@ See [Hoon Style Guide](https://urbit.org/docs/learn/hoon/style/).
 
 ### Rune Expression Body Types
 
-Let's call everything in the expression after the initial rune the expression *body*. There are four kinds of body: *fixed*, *running*, *jogging*, and *battery*.  There is a preferred manner of styling for each body.
+Let's call everything in the expression after the initial rune the expression **body**. There are four kinds of body: **fixed**, **running**, **jogging**, and **battery**.  There is a preferred manner of styling for each body.
 
 #### Fixed
 
-Some runes have a *fixed* number of subexpressions.  For example, the `:-` and `.=` runes each have exactly two.
+Some runes have a **fixed** number of subexpressions.  For example, the `:-` and `.=` runes each have exactly two.
 
 Fixed bodies often use "backstep" indentation in tall form.  In backstep indentation the code slopes backward and to the right by two spaces per line.  The last subexpression isn't indented at all, and the first subexpression is on the same line as the rune.  The indentation of the first subexpression therefore depends upon the total number of subexpressions.
 
@@ -393,7 +393,7 @@ Let's look at these in tall form, using backstep indentation:
 ```
 
 
-Some other *1-fixed*, *2-fixed*, *3-fixed* and *4-fixed* examples, using `p`, `q`, `r`, and `s` for the subexpressions:
+Some other **1-fixed**, **2-fixed**, **3-fixed** and **4-fixed** examples, using `p`, `q`, `r`, and `s` for the subexpressions:
 
 ```
 |.
@@ -416,7 +416,7 @@ In optimal usage of backstep indentation the most complicated subexpressions are
 
 #### Running
 
-A *running* body doesn't have a fixed number of subexpressions; expressions with running bodies can be arbitrarily long.
+A **running** body doesn't have a fixed number of subexpressions; expressions with running bodies can be arbitrarily long.
 
 To indicate the end of such expressions in tall form, use the `==` rune.  The first subexpression is two spaces after the initial rune, and all others are indented to line up with the first.  The terminating `==` should align vertically with the initial rune.  In flat form, parentheses are used around the expression body, so the terminating `==` is unnecessary.
 
@@ -458,7 +458,7 @@ More generally:
 
 #### Jogging
 
-A *jogging* body is an arbitrarily long series of subexpression pairs.  Most jogging bodies are preceded by a fixed sequence of subexpressions.  The first jogging pair is one line after the last fixed subexpression, and indented two spaces behind it.  There are two jogging conventions: *flat* (each pair on one line) and *tall* (each pair split across lines).  In either case the expression is terminated with a `==`.
+A **jogging** body is an arbitrarily long series of subexpression pairs.  Most jogging bodies are preceded by a fixed sequence of subexpressions.  The first jogging pair is one line after the last fixed subexpression, and indented two spaces behind it.  There are two jogging conventions: **flat** (each pair on one line) and **tall** (each pair split across lines).  In either case the expression is terminated with a `==`.
 
 The `?-` rune is `1-fixed` followed by a jogging body.  The fixed subexpression is evaluated and then compared against the left subexpression of each of the jogging pairs.  When a match is found, the subexpression to the right of the match is evaluated.
 
@@ -473,7 +473,7 @@ For example:
 %yes
 ```
 
-More generally, the *flat jogging* style (preceded by *1-fixed* `p`):
+More generally, the **flat jogging** style (preceded by **1-fixed** `p`):
 
 ```
 ?-  p
@@ -483,7 +483,7 @@ More generally, the *flat jogging* style (preceded by *1-fixed* `p`):
 ==
 ```
 
-A *tall jogging* example (preceded by *1-fixed* `p`):
+A **tall jogging** example (preceded by **1-fixed** `p`):
 
 ```
 ?-    p
@@ -496,7 +496,7 @@ A *tall jogging* example (preceded by *1-fixed* `p`):
 ==
 ```
 
-In flat form for *jogging* bodies, subexpression pairs are separated by commas:
+In flat form for **jogging** bodies, subexpression pairs are separated by commas:
 
 ```
 $(a +(a), b (dec b), c (add 2 c))
@@ -506,7 +506,7 @@ $(a +(a), b (dec b), c (add 2 c))
 
 Certain runes are used to create a core.  Cores with multiple arms have a special syntax for defining each of the arms in the battery.  A core has no fixed limit on the number of arms contained in its battery, so you must terminate core expressions with the `--` rune.  Each arm in the battery is defined with three things: (1) a rune in the `+` family (e.g., `++`, `+*`, and `+$`), (2) an arm name, and (3) a subexpression defining the content of that arm.  Runes in the `+` family may only go in core subexpressions.  Putting them anywhere else results in a syntax error.
 
-Here's an example of a *battery* body:
+Here's an example of a **battery** body:
 
 ```
 |%
@@ -523,11 +523,11 @@ Here's an example of a *battery* body:
 
 There's no denying that Hoon's syntax is a bit strange, especially for those used to working in other programming languages.  Hoon makes heavy use of ASCII characters, and this can be intimidating to newcomers.  However, we believe that anyone who learns Hoon syntax will find that it has a number of advantages.
 
-Hoon's syntax is designed to address three serious problems in functional syntax design.  These problems are: (1) *terminator piles*, (2) *indentation creep*, and (3) *feature/label confusion*.
+Hoon's syntax is designed to address three serious problems in functional syntax design.  These problems are: (1) **terminator piles**, (2) **indentation creep**, and (3) **feature/label confusion**.
 
 ### Terminator piles
 
-A *terminator pile* is a series of termination characters required to end some expression in a language.  Think of Lisp's stacks of right parentheses.  For a trivial example, let's say you want to add 22 five times in Lisp using `+`:
+A **terminator pile** is a series of termination characters required to end some expression in a language.  Think of Lisp's stacks of right parentheses.  For a trivial example, let's say you want to add 22 five times in Lisp using `+`:
 
 ```
 (+ 22 (+ 22 (+ 22 (+ 22 22))))
@@ -552,13 +552,13 @@ In a sufficiently complicated expression it's tedious to keep track of all the p
 
 ### Indentation creep
 
-In some programming languages there is an indentation convention according to which an expression embedded within a parent expression is indented more to the right.  In a sufficiently long and complicated function with many embedded subexpressions, the tendency is for the code to shift more and more to the right.  This tendency is called *indentation creep*, and it can become an irritating problem when working with long functions.  It's true that short functions are better, but long ones sometimes need to be written.
+In some programming languages there is an indentation convention according to which an expression embedded within a parent expression is indented more to the right.  In a sufficiently long and complicated function with many embedded subexpressions, the tendency is for the code to shift more and more to the right.  This tendency is called **indentation creep**, and it can become an irritating problem when working with long functions.  It's true that short functions are better, but long ones sometimes need to be written.
 
 Ordinary indentation conventions give long functions a _diagonal_ shape, which is a poor fit for most editor windows.  Because Hoon is designed to be written with 'backstep' indentation, the code flows _down_, not down and across.
 
 ### Feature/label confusion
 
-A language lends itself to *feature/label confusion* (FLC) when it's difficult to distinguish general features of the language from labels in a particular program.  This can be a serious problem other functional programming languages.  In Lisp, for example, a user-defined macro has the same syntax as a function call.
+A language lends itself to **feature/label confusion** (FLC) when it's difficult to distinguish general features of the language from labels in a particular program.  This can be a serious problem other functional programming languages.  In Lisp, for example, a user-defined macro has the same syntax as a function call.
 
 The worst-case result of FLC is "DSL cancer".  Every source file with this malady is effectively written in its own domain-specific language (DSL).  Learning to read such a file is like learning a language.  One can also describe the result as "write-only code".  User-level macros, operator overloading, and even excessive use of higher-order programming, can all lead quickly to the tragedy of write-only code.
 

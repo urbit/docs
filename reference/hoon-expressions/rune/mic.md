@@ -13,7 +13,7 @@ Miscellaneous useful macros.
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `q`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
 
 Regular form:
 
@@ -40,7 +40,7 @@ Irregular form:
 
 ##### Syntax
 
-Regular: *1-fixed*, then *running*.
+Regular: **1-fixed**, then **running**.
 
 Irregular: `:(add a b c)` is `;:(add a b c)`.
 
@@ -67,7 +67,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Syntax
 
-*1-fixed*
+**1-fixed**
 
 ```
 ;+  p=hoon
@@ -132,7 +132,7 @@ a
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -186,7 +186,7 @@ The gates in `q` are composed together using the gate `p` as an intermediate fun
 
 ##### Expands to
 
-*Note: these are structurally correct, but elide some type-system complexity.*
+**Note: these are structurally correct, but elide some type-system complexity.**
 
 `;~(a b)` reduces to `b`.
 
@@ -234,7 +234,7 @@ conditional application.
 
 ##### Syntax
 
-Regular: *1-fixed*, then *running*.
+Regular: **1-fixed**, then **running**.
 
 ##### Examples
 
@@ -283,7 +283,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Syntax
 
-*1-fixed*
+**1-fixed**
 
 ```
 ;*  p=hoon
@@ -335,7 +335,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Syntax
 
-*running*
+**running**
 
 ```
 ;=  p=hoon  q=hoon  ...  z=hoon  ==

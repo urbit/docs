@@ -19,9 +19,9 @@ To use Bridge:
 + Run this command: `python3 -m http.server 5000 --bind 127.0.0.1 --directory build`
 + You can then use the Bridge app by navigating to `http://localhost:5000` in your internet browser.
 
-*Note:* Bridge allows you both make reads and writes to the Ethereum blockchain. Writing to the blockchain, such as changing your networking keys, will incur a transaction cost that will require you to have some ETH in your address.
+**Note:** Bridge allows you both make reads and writes to the Ethereum blockchain. Writing to the blockchain, such as changing your networking keys, will incur a transaction cost that will require you to have some ETH in your address.
 
-Once the program is running in your browser, go through each step presented according to what kind of wallet you have. There are a few login options you'll be presented with. A notable option is *Urbit Master Ticket*. This is for those who used our Wallet Generator software. If you bought points from an Urbit sale and then used the Wallet Generator, your networking keys will be set for you. All other login options will result in you needing to set your own networking keys.
+Once the program is running in your browser, go through each step presented according to what kind of wallet you have. There are a few login options you'll be presented with. A notable option is **Urbit Master Ticket**. This is for those who used our Wallet Generator software. If you bought points from an Urbit sale and then used the Wallet Generator, your networking keys will be set for you. All other login options will result in you needing to set your own networking keys.
 
 ## Accept Your Transfer
 

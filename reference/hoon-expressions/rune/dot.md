@@ -92,7 +92,7 @@ You can modify the time of the file listing quite simply and ask for a listing f
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 Irregular: `+(6)` is `.+(6)`.
 
@@ -122,7 +122,7 @@ Nock of formula `q` and subject `p`, with type `%noun`.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -165,7 +165,7 @@ therefore possible to use Hoon as a typeless language.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Irregular: `=(a b)` is `.=(a b)`.
 
@@ -209,7 +209,7 @@ nest-fail
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Examples
 

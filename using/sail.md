@@ -55,7 +55,7 @@ is put through a tree of renderers specified at `/ren/urb/tree.hoon`
 -- _except_ for files inside of `/web/pages`. All of the files in `/web` and
 its non-`/pages` children directories have various operations on files, such as
 wrapping your Sail the `html`, `head`, and `body` nodes. This rendering tool,
-called simply *Tree*, also adds certain formatting polish, such as a sidebar
+called simply **Tree**, also adds certain formatting polish, such as a sidebar
 that lists sibling files in the same directory.
 
 The `/web/pages` sub-directory is a unique case with its own rendering rules.

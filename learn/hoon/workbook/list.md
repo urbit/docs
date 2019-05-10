@@ -39,13 +39,13 @@ In our example program, we use comments with line numbers for convenient referen
 |=  end=@
 ```
 
-There's a few things going on in our first line. The first part of it, `|=`, is a kind of *rune*. Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes and other Hoon expressions are all separated from one another by either two spaces or a line break.
+There's a few things going on in our first line. The first part of it, `|=`, is a kind of **rune**. Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes and other Hoon expressions are all separated from one another by either two spaces or a line break.
 
 All runes take a fixed number of "children." Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. For this reason, we very rarely need to close expressions. Keep this scheme in mind when examining Hoon code.
 
-The specific purpose of the `|=` rune is to create a *gate*. A gate is what would be called a function in other languages: it takes an input, performs a specified computation, and then produces an output.
+The specific purpose of the `|=` rune is to create a **gate**. A gate is what would be called a function in other languages: it takes an input, performs a specified computation, and then produces an output.
 
-Because we're only on line 1, all we're doing with the gate is creating it, and then specifying what kind of input the gate takes with that rune's first child: `end=@`. The `end` part of our code is simply a name that we give to the user's input so that we can use the number later. `=@` means that we restrict the kind of input that our gate accepts to the *atom* type, or `@` for short. An atom is a natural number.
+Because we're only on line 1, all we're doing with the gate is creating it, and then specifying what kind of input the gate takes with that rune's first child: `end=@`. The `end` part of our code is simply a name that we give to the user's input so that we can use the number later. `=@` means that we restrict the kind of input that our gate accepts to the **atom** type, or `@` for short. An atom is a natural number.
 
 Our program is simple, so the _entire program_ is the gate that's being created here. The rest of our lines of code are part of the second child of our gate, and they determine how our gate produces an output.
 
@@ -94,7 +94,7 @@ In this case, the rune specifies that our gate's output must be `(list @)` -- th
 
 ## Line 7
 
-`:-` is a rune that creates a *cell*, an ordered pair of two values, such as `[1 2]`. It takes two children.
+`:-` is a rune that creates a **cell**, an ordered pair of two values, such as `[1 2]`. It takes two children.
 
 In our case, `:-  count` creates a cell out of whatever value is stored in `count`, and then with the product of line 8.
 
@@ -106,7 +106,7 @@ $(count (add 1 count))
 
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon *standard library*. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](/docs/reference/library/1a) of the standard-library documentation.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](/docs/reference/library/1a) of the standard-library documentation.
 
 ## Explanation
 

@@ -182,7 +182,7 @@ Unbind `t` in the dojo subject as follows:
 
 ### Type Constructor Arms
 
-`(list @)` is a type.  So is `(list ^)`, `(list tape)`, `(list ?)`, etc.  These are all lists of one sort or another, but they're all distinct types.  You can think of `list` as a function that takes one type and returns another -- it takes, e.g., `@` and returns an atom list type.  We may call `list` one kind of *type constructor*.
+`(list @)` is a type.  So is `(list ^)`, `(list tape)`, `(list ?)`, etc.  These are all lists of one sort or another, but they're all distinct types.  You can think of `list` as a function that takes one type and returns another -- it takes, e.g., `@` and returns an atom list type.  We may call `list` one kind of **type constructor**.
 
 A type constructor takes one or more types, and constructs another type from them.  You can define your own type constructors using core arms.
 
@@ -223,7 +223,7 @@ Unbind `t` again:
 
 ## Cores with Samples (Doors)
 
-Cores without samples are often useful, but sometimes more is desired.  Sometimes you'll want to use a core with a sample.  Such cores are called *doors*.
+Cores without samples are often useful, but sometimes more is desired.  Sometimes you'll want to use a core with a sample.  Such cores are called **doors**.
 
 One way they can be used is to produce different versions of a function.  There is a door in the Hoon standard library, `++  rs`, for producing single-precision float functions.  The various arms of this door (e.g., `add`, `sub`, `mul`) are designed for use with atoms whose aura is `@rs`:
 

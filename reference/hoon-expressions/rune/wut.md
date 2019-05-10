@@ -13,7 +13,7 @@ expressions.
 
 All `?` runes reduce to `?:` and/or `?=`.
 
-If the condition of an `?:` is a `?=`, *and* the `?=` is
+If the condition of an `?:` is a `?=`, **and** the `?=` is
 testing a leg of the subject, the compiler specializes the subject
 type for the branches of the `?:`.  Branch inference also works
 for expressions which expand to `?:`.
@@ -21,7 +21,7 @@ for expressions which expand to `?:`.
 The test does not have to be a single `?=`; the compiler can
 analyze arbitrary boolean logic ([`?&` ("wutpam")](#wutpam),
 [`?|` ("wutbar")](#wutbar), [`?!` ("wutzap")](#wutzap)) with full
-short-circuiting.  Equality tests ([`.=` ("dottis")](docs/reference/hoon-expressions/rune/dot#tis/)) are *not*
+short-circuiting.  Equality tests ([`.=` ("dottis")](docs/reference/hoon-expressions/rune/dot#tis/)) are **not**
 analyzed.
 
 If the compiler detects that the branch is degenerate (only one
@@ -41,7 +41,7 @@ side is taken), it fails with an error.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -73,7 +73,7 @@ nest-fail
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
 ```
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
@@ -92,7 +92,7 @@ $(p t.p)
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 Irregular: `|(foo bar baz)` is `?|(foo bar baz)`.
 
@@ -123,7 +123,7 @@ If test analysis reveals that either branch is never taken, or if `p` is not a b
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -166,7 +166,7 @@ Note also that all other branching expressions reduce to `?:`.
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -197,7 +197,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `q`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
 
 ```
 ?:  ?=(p.a p)  q.a
@@ -220,7 +220,7 @@ $(q t.q)
 
 ##### Syntax
 
-Regular: *1-fixed*, then *jogging*.
+Regular: **1-fixed**, then **jogging**.
 
 ##### Discussion
 
@@ -266,7 +266,7 @@ of the subject is a cell.
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -301,7 +301,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -334,7 +334,7 @@ a union, with a default.
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `r`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `r`:
 
 ```
 ?:  ?=(p.a p)  q.a
@@ -357,7 +357,7 @@ $(r t.r)
 
 ##### Syntax
 
-Regular: *2-fixed*, then *jogging*.
+Regular: **2-fixed**, then **jogging**.
 
 ##### Discussion
 
@@ -390,7 +390,7 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
 ```
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
@@ -409,7 +409,7 @@ $(p t.p)
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 
@@ -435,7 +435,7 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -460,7 +460,7 @@ It's bad style to use `?~` to test for any zero atom.  Use it only for a true nu
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -498,7 +498,7 @@ A common error is `find.$`, meaning `p` is not a type.
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -532,7 +532,7 @@ Produces the logical NOT of `p`.
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 Irregular: `!foo` is `?!(foo)`.
 

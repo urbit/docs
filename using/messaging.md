@@ -218,7 +218,7 @@ will print as
 
 ### Activating Lines
 
-A line number identifying the *subsequent* line is displayed every 5
+A line number identifying the **subsequent** line is displayed every 5
 lines.
 
 ```
@@ -233,7 +233,7 @@ lines.
 ~your-urbit=^ That's my message!
 ```
 
-You can use a line number to *activate* a line:
+You can use a line number to **activate** a line:
 
 ```
 ~your-urbit:talk= ;5

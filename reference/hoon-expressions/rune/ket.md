@@ -22,7 +22,7 @@ it never allows invalid nests, it sometimes rejects valid nests.
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Discussion
 
@@ -58,7 +58,7 @@ A gate that returns the sample value if it's of the correct type, but crashes ot
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Discussion
 
@@ -96,7 +96,7 @@ ford: %ride failed to execute:
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ```
 ^.  p=hoon  q=hoon
@@ -137,7 +137,7 @@ mint-vain
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Irregular: `` `foo`baz`` is `^-(foo baz)`.
 
@@ -179,7 +179,7 @@ The value of `q` with the type of `p`, if the type of `q` nests within the type 
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -198,7 +198,7 @@ Regular: *2-fixed*.
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Discussion
 
@@ -251,7 +251,7 @@ ford: %ride failed to compute type:
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Examples
 
@@ -273,7 +273,7 @@ A default value (i.e., 'bunt value') of the type `p`.
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ```
 ^*  p=spec
@@ -326,7 +326,7 @@ may also be a tuple of terms, or a term-skin pair; the type of
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Irregular: `foo=baz` is `^=(foo baz)`.
 
@@ -360,7 +360,7 @@ a=1
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Discussion
 

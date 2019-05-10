@@ -24,7 +24,7 @@ Urbit is a decentralized system, both technically and in spirit. This means that
 
 What we can do, and what we propose to do in this document, is define how we plan on moderating our little, but important, corner of Urbit. We define the limits of our jurisdiction as the general-purpose discussion channel `/urbit-help`, our forum, `fora` and, adjacently, the GitHub issues on any of the [official urbit repos](https://github.com/urbit).
 
-Our hope is that the system established here can serve as a model for other corners of Urbit. But it bears repeating: *Tlon is technically incapable of moderating the Urbit network in general*.
+Our hope is that the system established here can serve as a model for other corners of Urbit. But it bears repeating: **Tlon is technically incapable of moderating the Urbit network in general**.
 
 ### Use of these guidelines
 

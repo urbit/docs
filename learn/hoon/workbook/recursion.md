@@ -79,7 +79,7 @@ into the `mul` functions behind them.
 ##### Tail-Call Optimization
 
 Our last example isn't a very efficient use computing resources. The
-pyramid-shaped illustration approximates what's happening on the *call stack*, a
+pyramid-shaped illustration approximates what's happening on the **call stack**, a
 memory structure that tracks the instructions of the program. In our example
 code, every time a parent gate calls another gate, the gate being called is
 "pushed" to the top of the stack in the form of a frame. This process continues
@@ -100,7 +100,7 @@ produced data to the frame below it. This process continues until the stack
 is empty, giving us the gate's output.
 
 When a program's final expression uses the stack in this way, it's considered to
-be *not tail-recursive*. This usually happens when the last line of executable
+be **not tail-recursive**. This usually happens when the last line of executable
 code calls more than one gate, our example code's `(mul n $(n (dec n)))` being
 such a case. That's because such an expression needs to hold each iteration of
 `$(n (dec n)` in memory so that it can know what to run against the `mul`

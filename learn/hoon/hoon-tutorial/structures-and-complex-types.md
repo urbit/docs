@@ -7,7 +7,7 @@ In this lesson we'll talk a little about how type expressions become structures,
 
 ## Structures
 
-Attentive readers may remember that Hoon programs are made of expressions.  By definition, an expression produces a value.  We've talked about expressions for types such as `@`, `^`, `[? *]`, etc.  What values do these subexpressions produce?  The answer is that they produce a *structure*.  But what are structures, and what role do they play in Hoon?
+Attentive readers may remember that Hoon programs are made of expressions.  By definition, an expression produces a value.  We've talked about expressions for types such as `@`, `^`, `[? *]`, etc.  What values do these subexpressions produce?  The answer is that they produce a **structure**.  But what are structures, and what role do they play in Hoon?
 
 You don't actually need to know much about what a structure is in order to write Hoon programs that use the type system effectively.  Accordingly, we'll save the particular details for a later lesson.  Here we'll give only a sketch of the most important features.
 
@@ -28,7 +28,7 @@ Structures play different roles in different code contexts.  First, let's look a
 
 The `@`, `^`, and `[? *]` subexpressions have no effect on the overall value produced.
 
-It's important to understand that these casts don't affect the [runtime](https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase%29) semantics of a program at all.  They affect only the compiler behavior at compile-time.  The compiler does these type-checks when compiling, but the resulting code has no value corresponding to the types above.
+It's important to understand that these casts don't affect the [runtime](https://en.wikipedia.org/wiki/Run_time_%28program_lifecycle_phase%29) semantics of a program at all.  They affect only the compiler behavior at compile-time.  The compiler does these type-checks when compiling, but the resulting code has no value corresponding to the types above.
 
 Accordingly, the structures produced by the type subexpressions above aren't part of the program's runtime semantics.  They are compile-time values only.
 
@@ -36,7 +36,7 @@ Accordingly, the structures produced by the type subexpressions above aren't par
 
 In other cases, structures _can_ have an effect on runtime semantics.  For example, consider the expression `|=(a=@ 15)`.  This produces a gate that takes any atom as its sample and returns `15`.
 
-The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In the compiled program this structure is converted to a default value for the appropriate type, sometimes called an *example* value (or a *bunt* value).
+The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In the compiled program this structure is converted to a default value for the appropriate type, sometimes called an **example** value (or a **bunt** value).
 
 ```
 > |=(a=@ 15)
@@ -97,7 +97,7 @@ Structures can also become gates at runtime.  To produce such a gate, use a type
 >
 ```
 
-In all three cases, the result of evaluation is a gate.  For each, the head is a single arm, signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are sometimes called *molds*.
+In all three cases, the result of evaluation is a gate.  For each, the head is a single arm, signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are sometimes called **molds**.
 
 Molds are gates with two special properties: (1) they are guaranteed to produce a value of the type indicated by the type expression, and (2) they are [idempotent](https://en.wikipedia.org/wiki/Idempotence).  (A gate `i` is idempotent if and only if the result of applying `i` multiple times to a value produces the same result as applying it once.  In other words, `(i val)` must produce the same result as `(i (i val))`.)
 
@@ -195,7 +195,7 @@ nest-fail
 
 #### Two Interpretations for `[@ ?]` (and Other Such Expressions)
 
-Why are `$:(@ ?)` and `[@ ?]` the same only 'most of the time'?  Why not always?  The answer has to do with the way Hoon handles certain rune subexpressions.  Some subexpressions are reserved exclusively for types.  For example, the `^-` rune is always followed by two subexpressions, the first of which must indicate a type.  Subexpressions reserved exclusively for types are interpreted as types.  These subexpressions must *always* produce a single structure, at least as an intermediate piece of data at compile-time.  When `[@ ?]` is interpreted by Hoon as indicating a type, the result is a structure equivalent to that of `$:(@ ?)`.
+Why are `$:(@ ?)` and `[@ ?]` the same only 'most of the time'?  Why not always?  The answer has to do with the way Hoon handles certain rune subexpressions.  Some subexpressions are reserved exclusively for types.  For example, the `^-` rune is always followed by two subexpressions, the first of which must indicate a type.  Subexpressions reserved exclusively for types are interpreted as types.  These subexpressions must **always** produce a single structure, at least as an intermediate piece of data at compile-time.  When `[@ ?]` is interpreted by Hoon as indicating a type, the result is a structure equivalent to that of `$:(@ ?)`.
 
 The first subexpression after the `|=` rune is also interpreted in the same way, i.e., as giving a type definition (in this case for the gate sample).
 
@@ -265,7 +265,7 @@ nest-fail
 
 ### `$?` Define a Union
 
-In set theory, the [union](https://en.wikipedia.org/wiki/Union_(set_theory%29) of sets A and B is a set containing all members of both A and B.  For example, the union of the set of even integers and the set of odd integers is the set of all integers.
+In set theory, the [union](https://en.wikipedia.org/wiki/Union_%28set_theory%29) of sets A and B is a set containing all members of both A and B.  For example, the union of the set of even integers and the set of odd integers is the set of all integers.
 
 It's useful to be able to define a type that is the union of other types.  The `$?` rune lets us do this.  The `$?` takes a series of subexpressions, each of which must be a structure.  The resulting type is the union of all types indicated in the expression.  For example, `$?(%green %yellow %red)` is the union of the types indicated by `%green`, `%yellow`, and `%red`.
 

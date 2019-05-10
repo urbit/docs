@@ -106,7 +106,7 @@ look over your code again.)
 
 ### u3: reference protocols
 
-*THIS IS THE MOST CRITICAL SECTION IN THE `u3` DOCUMENTATION.*
+**THIS IS THE MOST CRITICAL SECTION IN THE `u3` DOCUMENTATION.**
 
 The key question when calling a C function in a refcounted world
 is what the function will do to the noun refcounts - and, if the
@@ -176,8 +176,8 @@ depends on where it is, not what it does.  Follow the convention.
 
 ### u3: reference conventions
 
-The `u3` convention is that, unless otherwise specified, *all
-functions have transfer semantics* - with the exception of the
+The `u3` convention is that, unless otherwise specified, **all
+functions have transfer semantics** - with the exception of the
 prefixes: `u3r`, `u3x`, `u3z`, `u3q` and `u3w`.  Also, within
 jet directories `a` through `f` (but not `g`), internal functions
 retain (for historical reasons).
@@ -228,8 +228,8 @@ stack grows downward and the heap (malloc arena) grows upward:
 ```
 
 A road is a normal heap-stack system, except that the heap
-and stack can point in *either direction*.  Therefore, inside
-a road, we can nest another road in the *opposite direction*.
+and stack can point in **either direction**.  Therefore, inside
+a road, we can nest another road in the **opposite direction**.
 
 When the opposite road completes, its heap is left on top of
 the opposite heap's stack.  It's no more than the normal
@@ -239,13 +239,13 @@ their results on the stack.
 The performance tradeoff of "leaping" - reversing directions in
 the road - is that if the outer computation wants to preserve the
 results of the inner one, not just use them for temporary
-purposes, it has to *copy them*.
+purposes, it has to **copy them**.
 
 This is a trivial cost in some cases, a prohibitive cost in
 others.  The upside, of course, is that all garbage accrued
 in the inner computation is discarded at zero cost.
 
-The goal of the road system is the ability to *layer* memory
+The goal of the road system is the ability to **layer** memory
 models.  If you are allocating on a road, you have no idea
 how deep within a nested road system you are - in other words,
 you have no idea exactly how durable your result may be.
@@ -308,14 +308,14 @@ But... why?
 We're now ready to understand why the road system works so
 logically with the event and persistence model.
 
-The key is that *we don't update refcounts in senior memory.*
+The key is that **we don't update refcounts in senior memory.**
 A pointer from an inner road to an outer road is not counted.
 Also, the outmost, or `surface` road, is the only part of the
 image that gets checkpointed.
 
 So the surface road contains the entire durable state of `u3`.
 When we process an event, or perform any kind of complicated or
-interesting calculation, *we process it in an inner road*.  If
+interesting calculation, **we process it in an inner road**.  If
 its results are saved, they need to be copied.
 
 Since processing in an inner road does not touch surface memory,
@@ -377,7 +377,7 @@ ie: does the pier's home road equal the current road pointer?
 
 Normally in this context you assume you're obeying the rules of
 running on an inner road, ie, "deep memory."  Remember, however,
-that the interpreter *can* run on surface memory - but anything
+that the interpreter **can** run on surface memory - but anything
 you can do deep, you can do on the surface.  The converse is by
 no means the case.
 

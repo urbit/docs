@@ -17,7 +17,7 @@ Chapter label.
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ```
 +|  %label
@@ -25,7 +25,7 @@ Regular: *1-fixed*.
 
 ##### Discussion
 
-The `+|` doesn't produce an arm.  It instead provides a label for the arms that follow it.  The arms of a core can be divided into *chapters* for 'organization'.  Chapter labels aren't part of the underlying noun of the core; they're stored as type system metadata only.
+The `+|` doesn't produce an arm.  It instead provides a label for the arms that follow it.  The arms of a core can be divided into **chapters** for 'organization'.  Chapter labels aren't part of the underlying noun of the core; they're stored as type system metadata only.
 
 See `tome` in the Hoon standard library.
 
@@ -65,7 +65,7 @@ Produce a structure arm (type definition).
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ```
 +$  p=term  q=spec
@@ -103,7 +103,7 @@ Produce a normal arm.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ```
 ++  p=term  q=hoon
@@ -139,7 +139,7 @@ Produce a type constructor arm.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ```
 +*  p=term  [q=term]  r=spec

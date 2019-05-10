@@ -15,7 +15,7 @@ with changes, which useful for recursion among other things:
 
 ### |_ "barcab"
 
-Produce a *door* (a core with a sample).
+Produce a **door** (a core with a sample).
 
 ##### Syntax
 
@@ -40,7 +40,7 @@ AST:
 
 ##### Semantics
 
-The product of a `|_` expression is a *door*, a core with one or more arms whose payload includes a sample.  That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
+The product of a `|_` expression is a **door**, a core with one or more arms whose payload includes a sample.  That is, a door is a cell of `[battery [sample context]]`, where the `battery` contains one or more arms.
 
 `a` defines the door sample type and usually includes a name assignment (e.g., `n=@`).  `a` is followed by a series of arm definitions, each of which begins with a rune in the `+` family (most of `++`).  There must be at least one arm, but there may be arbitrarily many.  Each arm must include a name (`b`, `d`, and `f` above), which is followed by the expression (`c`, `e`, and `g` above) that defines the arm product.
 
@@ -519,7 +519,7 @@ AST:
 
 ##### Definition
 
-The product of a `|=` expression is a dry *gate*, i.e., a Hoon function.
+The product of a `|=` expression is a dry **gate**, i.e., a Hoon function.
 
 `p` defines the gate sample type -- i.e., the input value type -- and usually includes a sample name assignment (e.g., `a=@`).  `q` is an expression that determines the output value of the gate.
 

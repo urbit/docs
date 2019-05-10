@@ -11,11 +11,11 @@ After arms are defined and explained we review wing expressions, this time focus
 
 Arms and legs are limbs of the subject, i.e., noun fragments of the subject.  In the last lesson we said that legs are for data and arms are for computations.  But what _specifically_ is an arm, and how is it used for computation?  Let's begin with a preliminary explanation that will be refined later in the lesson.
 
-An *arm* is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can -- it's just a noun like any other.  You virtually always want to think of an arm simply as a way of running some Hoon code.
+An **arm** is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can -- it's just a noun like any other.  You virtually always want to think of an arm simply as a way of running some Hoon code.
 
 Every expression of Hoon is evaluated relative to a subject.  What subject is the arm to be evaluated against?  Answer: the parent core of that arm.
 
-So in order to understand fully what an arm is, you must understand what a core is.  Briefly, a *core* is a cell of `[battery payload]`.  The *battery* is a collection of one or more arms, and the *payload* is the data needed by the arms to evaluate correctly.  (The battery is code and the payload is data for that code.)  A given core is the *parent core* of all of the arms in its battery.
+So in order to understand fully what an arm is, you must understand what a core is.  Briefly, a **core** is a cell of `[battery payload]`.  The **battery** is a collection of one or more arms, and the **payload** is the data needed by the arms to evaluate correctly.  (The battery is code and the payload is data for that code.)  A given core is the **parent core** of all of the arms in its battery.
 
 ## Your First Core
 
@@ -23,7 +23,7 @@ To clarify the basic idea, let's look at an example core.
 
 We'll make a core using a multi-line Hoon expression that is more complex than the other examples you've seen up to this point.  The dojo can be used to input multi-line Hoon expressions; just type each line, hitting 'enter' or 'return' at the end.  The expression will be evaluated at the appropriate line break, i.e., when the dojo recognizes it as a complete expression of Hoon.
 
-Use the following to bind `c` to a core.  It begins with a *rune*, `|%`, which is used for creating a core.  (A rune is just a pair of ASCII characters, and it usually indicates the beginning of a complex Hoon expression.)  Take note of the expression spacing -- Hoon uses significant whitespace.  Feel free to cut and paste the following expression into the dojo, starting with `=c`:
+Use the following to bind `c` to a core.  It begins with a **rune**, `|%`, which is used for creating a core.  (A rune is just a pair of ASCII characters, and it usually indicates the beginning of a complex Hoon expression.)  Take note of the expression spacing -- Hoon uses significant whitespace.  Feel free to cut and paste the following expression into the dojo, starting with `=c`:
 
 ```
 > =c |%
@@ -60,7 +60,7 @@ The battery of the core to be produced is explicitly defined by the `|%` express
 
 ## Cores
 
-Let's go over what a core is a little more carefully and comprehensively.  As stated before, a *core* is a cell of a *battery* and a *payload*.
+Let's go over what a core is a little more carefully and comprehensively.  As stated before, a **core** is a cell of a **battery** and a **payload**.
 
 ```
 A core:  [battery payload]
@@ -180,7 +180,7 @@ To reinforce your newfound understanding of arms and cores, let's go over the va
 
 ### Address-Based Wings
 
-In the last lesson, you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they *don't* evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
+In the last lesson, you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
 Let's use `-.c` to look at the head of `c`, i.e., the battery of the core:
 

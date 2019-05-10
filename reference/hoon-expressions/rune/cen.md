@@ -446,7 +446,7 @@ at slot `+6` with `baz`, and then resolving to the `$` limb, you might think
 
 But it's actually `=+(foo =>(%=(+2 +6 baz) $))`. Even if `foo` is
 a wing, we would just be mutating `+6` within the core that defines the
-`foo` arm.  Instead we want to modify the *product* of `foo` -- the gate
+`foo` arm.  Instead we want to modify the **product** of `foo` -- the gate
 -- so we have to pin it into the subject.
 
 Here's that again in tall form:

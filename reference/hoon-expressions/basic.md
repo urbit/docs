@@ -90,11 +90,11 @@ digit only, infix hyphen, first character must be a lowercase letter.
 
 `%atom` is for an atom, with two twists.  `q` is a `unit`, Hoon's
 equivalent of a nullable pointer or a Haskell `Maybe`.  If `q`
-is `~`, null, the type is *warm*; any atom is in the type.
-If `q` is `[~ x]`, where `x` is any atom, the type is *cold*;
+is `~`, null, the type is **warm**; any atom is in the type.
+If `q` is `[~ x]`, where `x` is any atom, the type is **cold**;
 its only legal value is the constant `x`.
 
-`p` in the atom is a terminal used as an *aura*, or soft atom
+`p` in the atom is a terminal used as an **aura**, or soft atom
 type.  Auras are a lightweight, advisory representation of the
 units, semantics, and/or syntax of an atom.  An aura is an atomic
 string; two auras are compatible if one is a prefix of the other.
@@ -149,27 +149,27 @@ dependently typed and can't statically enforce data constraints
 
 ### `[%core p=type q=(map term hoon)]`
 
-`%core` is for a code-data cell.  The data (or *payload*) is the
-tail; the code (or *battery*) is the head.  `p`, a type, is the
+`%core` is for a code-data cell.  The data (or **payload**) is the
+tail; the code (or **battery**) is the head.  `p`, a type, is the
 type of the payload.  `q` is a mapping of arm names and Hoon expressions.  It is the source code for the core battery.
 
 (For an introduction to cores and arms, see Chapter 1 of the Hoon tutorial.)
 
 Each expression in the battery source is compiled to a formula, with
 the core itself as the subject.  The battery is a tree of these
-formulas, or *arms*.  An arm is a computed attribute against its
+formulas, or **arms**.  An arm is a computed attribute against its
 core.
 
 All code-data structures in normal languages (functions, objects,
 modules, etc) become cores in Hoon.  A Hoon battery looks a bit
 like a method table, but not every arm is a "method" in the OO
 sense.  An arm is a computed attribute.  A method is an arm whose
-product is a Hoon function (or *gate*).
+product is a Hoon function (or **gate**).
 
 A gate (function, lambda, etc) is a core with one arm, whose name
 is the empty symbol `$`, and a payload whose shape is `[sample
-context]`.  The *context* is the subject in which the gate was
-defined; the *sample* is the argument.
+context]`.  The **context** is the subject in which the gate was
+defined; the **sample** is the argument.
 
 To call this function on an argument `x`, replace the sample (at
 tree address `6` in the core) with `x`, then compute the arm.

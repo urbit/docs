@@ -123,7 +123,7 @@ displayed. The number of leading `#`s corresponds to the resulting HTML
 header-size element: `#` yields an `<h1>`, `##` yields an `<h2>`, and so on,
 through `<h6>`. The header for this section is `### Headers`.
 
-*Example:*
+**Example:**
 ```
 #### Header (h4)
 
@@ -144,7 +144,7 @@ Enclosing text with `*` will cause that text to appear bolded, using a `<b>`
 element.
 
 
-*Example:*
+**Example:**
 
 ```
 To get their *attention*, you need that _je ne sais quoi_.
@@ -152,7 +152,7 @@ To get their *attention*, you need that _je ne sais quoi_.
 
 ###### Produces:
 
-To get their *attention*, you need that _je ne sais quoi_.
+To get their **attention**, you need that _je ne sais quoi_.
 
 ### Line Break
 
@@ -160,7 +160,7 @@ A blank line is interpreted as a line break, creating a distinct
 paragraph. However, a newline on its own is merely interpreted as a space on
 the _same line_.
 
-*Example:*
+**Example:**
 
 ```
 Here's the first line.
@@ -186,7 +186,7 @@ A backslash at the end of a line inserts a line break (`<br>`)
 after that line. This contrasts with the normal udon behavior of
 converting newlines to spaces.
 
-*Example:*
+**Example:**
 ```
 I wonder how long each line
 will be if I put backslashes\
@@ -203,7 +203,7 @@ at the ends of the lines.
 A backslash directly _before_ a word (with no spaces) will be interpreted
 as an escape character, causing it to be rendered raw.
 
-*Example:*
+**Example:**
 
 ```
 Here is some *bold* text.
@@ -212,18 +212,18 @@ Here is some \*not bold* text.
 
 ###### Produces:
 
-Here is some *bold* text.
+Here is some **bold** text.
 Here is some \*not bold* text.
 
 
 ### List
 
 A line beginning with a `-` followed by a space is interpreted as an
-element of an *unordered list* (`<ul>`). Each line in an unordered list is
+element of an **unordered list** (`<ul>`). Each line in an unordered list is
 prepended with a bullet point.
 
 A line beginning with a `+` followed by a space is interpreted as an element
-of an *ordered list* (`<ol>`). Each line in an ordered list is prepended with
+of an **ordered list** (`<ol>`). Each line in an ordered list is prepended with
 a number corresponding to its position in that list.
 
 New list elements are delineated by newlines beginning with list symbols of
@@ -244,7 +244,7 @@ Between to list elements, however, a blank line is semantically equivalent to
 a bare newline. To separate two lists with blank space, create a blank line
 followed by a `\\` on its own line.
 
-*Example:*
+**Example:**
 
 ```
 - Eggs
@@ -312,7 +312,7 @@ in `[]` followed by the destination in `()`.
 The first type is an inline-style link, which simply uses the full URL as its
 destination.
 
-*Example:*
+**Example:**
 
 ```
 [I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
@@ -326,7 +326,7 @@ The second type is a reference-style link, which uses a relative path, based on
 the current page's location. Instead of the full url, we use `..` to fill in
 the all of the URL that the destination has in common with the origin page.
 
-*Example:*
+**Example:**
 
 ```
 [I'm a reference-style link](../shell)
@@ -376,7 +376,7 @@ It was the best of times, it was the worst of times...
 Text enclosed in double quotes (`"`) will be rendered with
 opening and closing quotes -- that is, `“` and `”`.
 
-*Example:*
+**Example:**
 ```
 "Yes," he said. "That is the way with him."
 ```
@@ -413,7 +413,7 @@ Using `` ` \`` is useful when you want to designated only part of a line as code
 Since this page is written in Udon, we've been using this operation
 throughout this guide to `format text` to distinguish code from prose.
 
-*Example:*
+**Example:**
 ```
 `*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp's `apply`.
 ```
@@ -425,7 +425,7 @@ Also, using the `++` prefix before a word will cause the word to be rendered as
 code with the `++` displayed, since that's the standard notation for an arm in
 Hoon.
 
-*Example:*
+**Example:**
 
 ```
 The ++add arm is used to sum two numbers.
@@ -442,7 +442,7 @@ before and after the contained text, the text will be treated as a code block.
 
 Most of our examples so far have used.
 
-*Example:*
+**Example:**
 
 
 ```
@@ -524,7 +524,7 @@ Inline italicization with `_` does not work, however.
 Blank newlines do not end the block quote, but a blank newline followed by an
 unindented line of text _will_ end the quote.
 
-*Example:*
+**Example:**
 
 ```
 > As Gregor Samsa awoke one morning from uneasy dreams, he
@@ -540,7 +540,7 @@ Quote break.
 ###### Produces:
 
 > As Gregor Samsa awoke one morning from uneasy dreams
-  he found himself transformed in his bed into a *monstrous* vermin.
+  he found himself transformed in his bed into a **monstrous** vermin.
 
 Quote break.
 
@@ -554,7 +554,7 @@ Quote break.
 A poem is a section of text with meaningful newlines.  Recall that,
 normally in Udon, newlines are treated as spaces and do not create a
 new line of text. If you want to embed text where newlines are retained, then
-indent the text in question with *eight spaces*.
+indent the text in question with **eight spaces**.
 
 ###### Example:
 
@@ -600,13 +600,11 @@ Example:
 Produces:
 
 
-;=
-  ;p
-    ;strong: Don't panic!
+<p>
+    <strong>Don't panic!</strong>
     <br>
-    ;small: [reactive publishing intensifies]
-  ==
-==
+    <small>[reactive publishing intensifies]</small>
+</p>
 
 
 ## A Simple Udon Blog

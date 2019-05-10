@@ -18,7 +18,7 @@ to computation.
 
 ##### Syntax
 
-Regular: *2-fixed*.  For the dynamic form, write `%term.hoon`.
+Regular: **2-fixed**.  For the dynamic form, write `%term.hoon`.
 
 ##### Discussion
 
@@ -57,7 +57,7 @@ Prettyprints `p` in stack trace if `q` crashes.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -86,7 +86,7 @@ If profiling is on, adds 1 to the hit counter for `p`.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -139,7 +139,7 @@ the named formulas `r`, constructed by `s`.
 
 ##### Syntax
 
-Regular: *4-fixed*.  For `r`, use `~` if empty.  Otherwise, *jogging*
+Regular: **4-fixed**.  For `r`, use `~` if empty.  Otherwise, **jogging**
 between opening and closing `==`.
 
 ##### Discussion
@@ -187,7 +187,7 @@ already registered.
 
 Registers a jet in core `s` so that it can be called when that code is run.
 
-Regular form: *4-fixed*
+Regular form: **4-fixed**
 
 ##### Examples
 
@@ -226,7 +226,7 @@ product.
 
 ##### Syntax
 
-Regular: *2-fixed*.  For the dynamic form, write `%term.hoon`.
+Regular: **2-fixed**.  For the dynamic form, write `%term.hoon`.
 
 ##### Discussion
 
@@ -259,7 +259,7 @@ transient in the current event).
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 ##### Examples
 
@@ -297,7 +297,7 @@ registered context.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -331,7 +331,7 @@ It's most useful for debugging programs.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -392,7 +392,7 @@ If `p` is true, prettyprints `q` on the console before computing `r`.
 
 ##### Syntax
 
-Regular: *4-fixed*.
+Regular: **4-fixed**.
 
 ##### Examples
 
@@ -430,7 +430,7 @@ If compilation of `q` fails, prints the type of `p` in the trace.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 

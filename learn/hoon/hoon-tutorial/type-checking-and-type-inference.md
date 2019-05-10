@@ -3,7 +3,7 @@ title = "Type Checking and Type Inference"
 weight = 25
 template = "doc.html"
 +++
-As the Hoon compiler compiles your Hoon code, it does a *type check* on certain expressions to make sure they are guaranteed to produce a value of the correct type.  If it cannot be proved that the output value is correctly typed, the compile will fail with a `nest-fail` crash.  In order to figure out what type of value is produced by a given expression, the compiler uses *type inference* on that code.  In this lesson we'll cover various cases in which a type check is performed, and also how the compiler does type inference on an expression.
+As the Hoon compiler compiles your Hoon code, it does a **type check** on certain expressions to make sure they are guaranteed to produce a value of the correct type.  If it cannot be proved that the output value is correctly typed, the compile will fail with a `nest-fail` crash.  In order to figure out what type of value is produced by a given expression, the compiler uses **type inference** on that code.  In this lesson we'll cover various cases in which a type check is performed, and also how the compiler does type inference on an expression.
 
 ## Type Checking
 
@@ -108,7 +108,7 @@ nest-fail
 
 ### Arm Evaluation
 
-Whenever an arm is evaluated in Hoon it expects to have some version of its parent core as the subject.  Specifically, a type check is performed to see whether the arm subject is of the appropriate *type*.  We see this in action whenever a gate or a multi-arm door is called.
+Whenever an arm is evaluated in Hoon it expects to have some version of its parent core as the subject.  Specifically, a type check is performed to see whether the arm subject is of the appropriate **type**.  We see this in action whenever a gate or a multi-arm door is called.
 
 A gate is a one-armed core with a sample.  When it is called, its `$` arm is evaluated with (a version of) the gate as the subject.  The only part of the core that might change is the payload, including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` arm of expects two atoms for the sample, i.e., the two numbers to be added.  When the type check occurs, the payload must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
 
@@ -135,11 +135,11 @@ This isn't a comprehensive list of the type checks in Hoon.  It's only some of t
 
 ## Intro to Hoon Type Inference
 
-It's helpful to know *that* Hoon infers the type of any given expression, but it's important to know *how* such inference works.  Hoon uses various tools for inferring the type of any given expression: literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
+It's helpful to know **that** Hoon infers the type of any given expression, but it's important to know **how** such inference works.  Hoon uses various tools for inferring the type of any given expression: literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
 
 ### Literals
 
-[Literals](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) are expressions that represent fixed values.  Some examples (with the inferred type on the right):
+[Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values.  Some examples (with the inferred type on the right):
 
 ```
 123                   @ud

@@ -156,8 +156,6 @@ in this example.
 
 Put `<key>` in a file and that file becomes `<keyfile>`.
 
-*`<keyfile>` must not have a trailing newline.*
-
 Another way of generating `<keyfile>` is:
 
 ```

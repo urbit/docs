@@ -7,7 +7,7 @@ A limb is an attribute of subject.
 
 ### Produces
 
-There are two kinds of limbs: arms and legs.  An *arm* is a computation of some core.  A *leg* is a piece of data in the subject.
+There are two kinds of limbs: arms and legs.  An **arm** is a computation of some core.  A **leg** is a piece of data in the subject.
 
 If a limb expression resolves to a leg, the leg is produced.  If a limb expression resolves to an arm -- in particular, by way of an arm name -- then the arm is computed with its parent core as the subject.  The result of that computation is produced.
 
@@ -29,9 +29,9 @@ Irregular: `+<-` is "take the tail, then take the head of that, then the head of
 
 ### Traverse
 
-Name resolution happens by way of a search through the subject. The search traverse takes a name `q` and a *skip count* `p`.
+Name resolution happens by way of a search through the subject. The search traverse takes a name `q` and a **skip count** `p`.
 
-The search product may be an *arm* or a *leg*.  A *leg* is a subtree of the subject.  An arm is a Nock formula paired with a core to compute the result.  You can think of the limb as an attribute -- computation or subtree, "synthesized" or "natural"
+The search product may be an **arm** or a **leg**.  A **leg** is a subtree of the subject.  An arm is a Nock formula paired with a core to compute the result.  You can think of the limb as an attribute -- computation or subtree, "synthesized" or "natural"
 -- of the subject.
 
 We search the subject type headfirst, depth-first, and pre-order.

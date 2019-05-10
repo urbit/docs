@@ -8,7 +8,7 @@ This series is designed to teach you Hoon without assuming you have an extensive
 
 Chapter 1 introduces and explains the fundamental concepts you need in order to understand Hoon's semantics.
 
-Hoon is a 'subject-oriented' programming language -- every expression of Hoon is evaluated relative to a *subject*.  The subject is a piece of data that represents the environment, or the context, of an expression.  After reading Chapter 1 you should understand what the subject is and how to refer to its various parts.  In this chapter you'll also learn about *cores*, which are an important data structure in Hoon.  Once you get the hang of cores you'll be able to write your own functions in Hoon.
+Hoon is a 'subject-oriented' programming language -- every expression of Hoon is evaluated relative to a **subject**.  The subject is a piece of data that represents the environment, or the context, of an expression.  After reading Chapter 1 you should understand what the subject is and how to refer to its various parts.  In this chapter you'll also learn about **cores**, which are an important data structure in Hoon.  Once you get the hang of cores you'll be able to write your own functions in Hoon.
 
 Chapter 2 covers the basics of writing full programs in Hoon.
 

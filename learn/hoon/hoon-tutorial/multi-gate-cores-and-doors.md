@@ -249,7 +249,7 @@ Here are some of the other gates that can be generated from this core in the Hoo
 
 A brief review: A core is a cell of battery and payload: `[battery payload]`.  The battery is code and the payload is data.  The battery contains a series of arms, and the payload contains all the data necessary to run those arms correctly.
 
-New material: A *door* is a core with a sample.  That is, a door is a core whose payload is a cell of sample and context: `[sample context]`.
+New material: A **door** is a core with a sample.  That is, a door is a core whose payload is a cell of sample and context: `[sample context]`.
 
 ```
         Door

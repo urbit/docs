@@ -27,7 +27,7 @@ Hall's implementation is structured according to the new Gall model. Familiarity
 
 Talk was Urbit's first big user-facing application. It continues to enjoy a prominent role in the Urbit landscape, but now does so as two separate applications.
 
-The messaging parts of Talk have been separated from its user-interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as *clients*. One such application, as you might have guessed, is `:talk`.
+The messaging parts of Talk have been separated from its user-interface parts. What we ended up with is a shiny new generic messaging bus, and the chat interface we all know and love. The messaging bus, which should now prove useful to many different applications, will be named `Hall`. Applications that use it are referred to as **clients**. One such application, as you might have guessed, is `:talk`.
 
 
 ## Structures & functionality
@@ -895,15 +895,15 @@ You'll find that the logic relating to these two often becomes tangled, making t
 
 > The main significant cost of software development is the cost of untangling what the computer is doing, and or is supposed to be doing, over and over again in your head. Any way of lowering this untangling cost is extremely welcome.
 
-*~sorreg-namtyv*
+**~sorreg-namtyv**
 
 ### Solutions
 
-Let's imagine a world in which Gall *does* help, in both of those places.
+Let's imagine a world in which Gall **does** help, in both of those places.
 
 It would be wonderful if Gall could take care of all standard subscription management logic for you, and direct the flow of code as it concludes is appropriate. Applications, then, would have to help Gall by providing the different parts of this flow, and providing the checks that allow Gall to make the right decisions. This takes some work out of the developer's hands and results in more structured application code.
 
-If we expand on that a bit, then we can even have Gall help us in untangling state changes from side effects. We do so by separating state changes into two phases: *analyzing* what changes need to be made, and *applying* those changes.
+If we expand on that a bit, then we can even have Gall help us in untangling state changes from side effects. We do so by separating state changes into two phases: **analyzing** what changes need to be made, and **applying** those changes.
 
 But where do the side-effects go, then? We need to realize there's two kinds: side-effects that are subscription updates, and side-effects that aren't. The latter get produces by applying state changes, while the former get integrated into the Gall flow we described above.
 

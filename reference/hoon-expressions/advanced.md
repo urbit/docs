@@ -3,9 +3,9 @@ title = "Advanced Types"
 weight = 5
 template = "doc.html"
 +++
-The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not *that* simple.
+The definition of `type` in the 'Basic Types' section is only a simplified version.  The Hoon type system is simple, but not **that** simple.
 
-The good news is that you can *skip this section*, at least when
+The good news is that you can **skip this section**, at least when
 you're first learning Hoon.  Polymorphism and aliasing are mainly
 for advanced programmers writing complex infrastructure and/or
 large functions.  Don't worry about them for a little while.
@@ -101,19 +101,19 @@ worry if you don't know it.  These rules should make sense if you
 just think about them intuitively.
 
 Each core has a "metal" `r.p.q` which defines its variance model.
-A core can be *invariant* (`%gold`), *bivariant* (`%lead`),
-*covariant* (`%zinc`), or *contravariant* (`%iron`).  The default
+A core can be **invariant** (`%gold`), **bivariant** (`%lead`),
+**covariant** (`%zinc`), or **contravariant** (`%iron`).  The default
 is gold; a gold core can be cast or converted to any metal, and
 any metal can be cast or converted to lead.
 
 A gold core `a` has a read-write payload; another core `b` that
 nests within it (i.e., can be substituted for it) must be a gold
 core whose payload is mutually compatible (`+3.a` nests in `+3.b`,
-`+3.b` nests in `+3.a`).  Hence, *invariant*.
+`+3.b` nests in `+3.a`).  Hence, **invariant**.
 
 A lead core `a` has an opaque payload.  There is no constraint on
 the payload of a core `b` which nests within it.  Hence,
-*bivariant*.
+**bivariant**.
 
 (_Opaque_ here means that the faces and arms are not exported into
 the namespace, and that the values of faces and arms can't be written to.
@@ -123,12 +123,12 @@ safety.)
 An iron core `a` has a write-only sample (payload head, `+6.a`)
 and an opaque context (payload tail, `+7.a`).  A core `b` which
 nests within it must be a gold or iron core, such that `+6.a`
-nests within `+6.b`.  Hence, *contravariant*.
+nests within `+6.b`.  Hence, **contravariant**.
 
 A zinc core `a` has a read-only sample (payload head, `+6.a`)
 and an opaque context (payload tail, `+7.a`).  A core `b` which
 nests within it must be a gold or zinc core, such that `+6.b`
-nests within `+6.a`.  Hence, *covariant*.
+nests within `+6.a`.  Hence, **covariant**.
 
 ### Wet arms
 
