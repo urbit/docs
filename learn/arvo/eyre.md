@@ -429,13 +429,13 @@ To this object, `/main/lib/urb.js` adds helpers:
 
 When the `vere` process is re/started, a TCP port is bound, HTTP requests on which are the scope of this document. The `%born` gift informs eyre of this occurrence, which in turn updates [its state.](#bolo)
 
-*Gifts given in response:* none.
+**Gifts given in response:** none.
 
 ## `[%hiss p=mark q=cage]`, outbound http
 
 Userspace http request, converted by `%ford` into an actual `hiss`.
 
-*Gifts given in response:* a [`%sigh`]()
+**Gifts given in response:** a [`%sigh`]()
 
 ### 3.1 `[%this httq]`, inbound http
 
@@ -463,7 +463,7 @@ After `r` is parsed to a `purl`, the `pork`(relative path) determines the resour
 - `/~/of` fails if the `ixor` is unknown, and otherwise is stored in the `ixor`, receiving a partial response and all events after its [last-seen header](#). If it has a `poll` parameter, the response is full, and only occurs if the body is non-empty. Otherwise the oryx is saved as a [live](#live) request in case of cancellation.
 - `/~/to` transforms into a [`%g` message](#mess).
 
-*Gifts given in response:* a [`%thou`](), or a [`%that`](#that) followed by multiple [`%thar`]()s.
+**Gifts given in response:** a [`%thou`](), or a [`%that`](#that) followed by multiple [`%thar`]()s.
 
 ### 3.2 `[%thud ~]`, inbound close
 
@@ -477,13 +477,13 @@ Sent when an unresponded-to request is cancelled. The [live](#live) effect of th
 Sent when a partial [response](#that) or [body](#thar) fails to arrive. Its `duct` is the same as that of the original request. This is handled by [waiting](#wait) for the client to reconnect, and if this not occur, unwinding all subscription state.
 
 
-*Gifts given in response:* None.
+**Gifts given in response:** None.
 
 ### 3.4 ``[%wart sock [path *]]``, inbound message
 
 Sometimes, messages are received from other ships. They are expected to take the from of a [`gram`]().
 
-*Gifts given in response:* [`%nice` or `%mean`](#ack).
+**Gifts given in response:** [`%nice` or `%mean`](#ack).
 
 <span id="gram"></span>
 #### 3.4.1 `gram`
@@ -495,7 +495,7 @@ There are three messages of note, all concerning authentication
 - if the session is already authorized, a reply of `[/aut ses]` from (%eyre on) a foreign ship prescribes that the session is henceforth allowed to act on its behalf. All waiting `/~/as` are resolved as successful.
 - otherwise, `[/hat ses hart]` contains the ship's preferred hostname. This can then be used to redirect the client. All waiting `/~/as` are given `307 Redirect`s to `/~/am` on the provided host.
 
-*Gifts given in response:* nice?
+**Gifts given in response:** nice?
 
 <span id="gift"></span>
 ## 4. Responses

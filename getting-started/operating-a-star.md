@@ -11,7 +11,7 @@ Important star operations happen on both the Arvo side and the Azimuth side. On 
 
 ## Powers of a Star
 
-Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars discover peers for planets, route packets for planets, provide DNS routing for planets, and push software updates to planets. A star that fulfills this is called the *sponsor* of planets that receive such services from the star; those planets, in turn, are called *dependents* of that star.
+Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars discover peers for planets, route packets for planets, provide DNS routing for planets, and push software updates to planets. A star that fulfills this is called the **sponsor** of planets that receive such services from the star; those planets, in turn, are called **dependents** of that star.
 
 Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
 

@@ -552,7 +552,7 @@ This rune is often used for modifying the value of a face whose value was set be
 
 ## Recursion
 
-How do we do loops in Hoon?  Like other functional programming languages Hoon uses [recursion](https://en.wikipedia.org/wiki/Recursion_(computer_science%29).  In rough terms, a recursive function solves a problem in part by calling on itself to solve a slightly easier or smaller case of the same problem.  The self-calling loop continues until the simplified problem is so simple that it has a trivial solution.
+How do we do loops in Hoon?  Like other functional programming languages Hoon uses [recursion](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29).  In rough terms, a recursive function solves a problem in part by calling on itself to solve a slightly easier or smaller case of the same problem.  The self-calling loop continues until the simplified problem is so simple that it has a trivial solution.
 
 Seeing an example will make this process easier to understand.
 
@@ -580,7 +580,7 @@ What's `dec`?  It takes some atom, `@`, and returns the decrement -- i.e., it ta
 10
 ```
 
-For adding two atoms together, the algorithm we'll use is very simple.  We start with two numbers, `a` and `b`.  If `b` is `0`, then the answer is `a`.  (This is the trivial case of addition for our algorithm, sometimes also called the 'base' case.)  Otherwise, the answer is the sum of `a + 1` and `b - 1` -- now do *that* addition.  (This is the *recursive* case.)
+For adding two atoms together, the algorithm we'll use is very simple.  We start with two numbers, `a` and `b`.  If `b` is `0`, then the answer is `a`.  (This is the trivial case of addition for our algorithm, sometimes also called the 'base' case.)  Otherwise, the answer is the sum of `a + 1` and `b - 1` -- now do **that** addition.  (This is the **recursive** case.)
 
 Do you see how this process calls for a loop of sorts?  If you want to sum `7` and `2`, check to see whether the second number is `0`.  It isn't, so now figure out the sum of `8` and `1`.  Is the second number `0`?  No, so do the sum of `9` and `0`.  Now the second number is `0` -- the answer is `9`.
 

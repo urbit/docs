@@ -185,15 +185,15 @@ two or more spaces apart.  These lines can be collapsed:
 
 ## General naming style
 
-Modern Hoon naming is *verbose*.
+Modern Hoon naming is **verbose**.
 
-*Never*: abbreviate a label; pack characters (try to reduce the
+**Never**: abbreviate a label; pack characters (try to reduce the
 length of labels, or make lengths match up between parallel
 labels); use intentionally vague and meaningless words; or use
 nonsense text that isn't a word.
 
-It can't be repeated too often: *do not abbreviate words, unless
-you would use the same abbreviations in written English*.  To
+It can't be repeated too often: **do not abbreviate words, unless
+you would use the same abbreviations in written English**.  To
 save a trivial, one-time amount of work in typing, you are adding
 a nontrivial amount of work and ambiguity in reading.
 
@@ -215,7 +215,7 @@ more spaces, newlines, or comments are one gap.
 #### Comment conventions
 
 Hoon suggests "breathing comments."  There should always be an
-empty comment line between a comment and the line *below* it:
+empty comment line between a comment and the line **below** it:
 
 ```
     ::  look, code
@@ -247,7 +247,7 @@ standard.
 
 Crowded comments are considered harmful -- don't use them.  Hoon,
 like any higher-order functional language, can be very dense and
-powerful.  We almost never want it to be *more* dense.
+powerful.  We almost never want it to be **more** dense.
 
 #### Megalithic comments
 
@@ -286,7 +286,7 @@ complex.
 
 A simple formal comment is a one-line headline.  A headline is
 optional whitespace; then `::`; then two spaces; then a parsed
-line of *lowercase* ASCII whose syntax depends on the comment
+line of **lowercase** ASCII whose syntax depends on the comment
 type.  Like this:
 
 ```
@@ -342,7 +342,7 @@ The headline is a string in parentheses:
 
 ### Flow comments and legends
 
-Flow comments use a new commenting concept called *legends*.
+Flow comments use a new commenting concept called **legends**.
 
 #### Legends
 
@@ -373,7 +373,7 @@ could write flow comments as follows:
     visit-holland
 ```
 
-The headline of a flow comment uses a *legend*: the name of
+The headline of a flow comment uses a **legend**: the name of
 this leg in the parent rune, then a message,
 
 For someone who doesn't know Hoon, these pseudo-keywords are
@@ -449,8 +449,8 @@ conventions in this document has earned a C.  Weird indents,
 cryptic or abbreviated names, etc, etc, preclude an A or B
 grade -- regardless of documentation.
 
-A Hoon file gets a B if and only if *every symbol in the file is
-defined, where introduced, by a formal comment*.  You do not get
+A Hoon file gets a B if and only if **every symbol in the file is
+defined, where introduced, by a formal comment**.  You do not get
 to make up a name without writing a one-line definition.
 
 For an A, there are two criteria.
@@ -471,4 +471,4 @@ when I send some `%foobar` move, I should define what I think
 
 Code shouldn't even try for an A until it is quite stable.  The worst
 thing in the world is code that changes without updating the documentation.
-Any *incorrect* comment in a file drops it all the way back to a D.
+Any **incorrect** comment in a file drops it all the way back to a D.

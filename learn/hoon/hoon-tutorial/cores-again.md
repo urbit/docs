@@ -275,7 +275,7 @@ For each random number generation, the `rng` core has a different seed number.  
 \/                                                                           \/
 ```
 
-`eny` is an environment value for [entropy](https://en.wikipedia.org/wiki/Entropy_(computing%29).  Its value changes every time it's evaluated.  We can use `eny` to produce a seed value for `rng` and retry the `=^` expression from above:
+`eny` is an environment value for [entropy](https://en.wikipedia.org/wiki/Entropy_%28computing%29).  Its value changes every time it's evaluated.  We can use `eny` to produce a seed value for `rng` and retry the `=^` expression from above:
 
 ```
 > =rng ~(. og eny)

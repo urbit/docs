@@ -19,7 +19,7 @@ The `:` ("col") expressions are used to produce cells, which are pairs of values
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -57,7 +57,7 @@ The cell of `p` and `q`.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Irregular: `[a b]` is `:-(a b)`.
 
@@ -107,7 +107,7 @@ compiler does), `[a b]` is the same as `:-(a b)`.
 
 ##### Syntax
 
-Regular: *4-fixed*.
+Regular: **4-fixed**.
 
 ##### Examples
 
@@ -135,7 +135,7 @@ Regular: *4-fixed*.
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Examples
 
@@ -155,7 +155,7 @@ Regular: *3-fixed*.
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
 ```
 :-(a :-(b :-(c :-(... :-(z ~)))))
@@ -173,7 +173,7 @@ $(p t.p)
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 ##### Examples
 
@@ -199,7 +199,7 @@ Regular: *running*.
 
 ##### Expands to
 
-*Pseudocode*: `a`, `b`, `c`, ... as elements of `p`:
+**Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
 ```
 :-(a :-(b :-(c :-(... z)))))
@@ -219,7 +219,7 @@ $(p t.p)
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 ##### Examples
 

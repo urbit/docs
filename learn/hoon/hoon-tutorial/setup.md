@@ -13,11 +13,11 @@ Once you're finished you can boot your very own urbit.
 
 ## What is an urbit?
 
-An *urbit* is an Urbit virtual computer with persistent state that can connect to the Urbit network.  (Note the lowercase 'u' here.  'Urbit' is the entire software stack, whereas 'an urbit' is a local instance.)  Each urbit is associated with a unique number that plays three distinct roles: (1) it's an address on the Urbit network, (2) it's a cryptographic identity, and (3) it's (in principle) a human memorable name.  Normally an urbit's name is represented as a string starting with `~`, as in `~zod` or `~taglux-nidsep`.
+An **urbit** is an Urbit virtual computer with persistent state that can connect to the Urbit network.  (Note the lowercase 'u' here.  'Urbit' is the entire software stack, whereas 'an urbit' is a local instance.)  Each urbit is associated with a unique number that plays three distinct roles: (1) it's an address on the Urbit network, (2) it's a cryptographic identity, and (3) it's (in principle) a human memorable name.  Normally an urbit's name is represented as a string starting with `~`, as in `~zod` or `~taglux-nidsep`.
 
 These may not look like numbers, but they are.  Each urbit name is written in a base-256 format, where each 'digit' is a syllable.  Imagine your phone number as a pronounceable string which sounds like a name in a foreign language.  An ordinary user-level urbit is a 'planet', and it's named by a 32-bit number.  The latter is represented as a four-syllable string; e.g., the planet name `~taglux-nidsep` is the number 6,095,360.
 
-For this tutorial you'll boot and run what we call a 'comet'.  *Comets* are urbits whose names are 128-bits or 16 syllables, such as:
+For this tutorial you'll boot and run what we call a 'comet'.  **Comets** are urbits whose names are 128-bits or 16 syllables, such as:
 
 `~hillyn-pitwet-hasdur-paswer--miszod-rabpex-divrup-fogdur`
 
@@ -43,7 +43,7 @@ http: live (insecure, loopback) on 12321
 
 (There will likely be other messages as well.)
 
-Look at the prompt, `~palnul_nocser:dojo>`.  To the left of the `:` you'll see an abbreviation of the comet name you just booted, `~palnul_nocser` in this case.  To the right is the name of a local application, `dojo`.  *Dojo* is the Urbit command line app; it's also a Hoon [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) we'll use to run simple Hoon examples.
+Look at the prompt, `~palnul_nocser:dojo>`.  To the left of the `:` you'll see an abbreviation of the comet name you just booted, `~palnul_nocser` in this case.  To the right is the name of a local application, `dojo`.  **Dojo** is the Urbit command line app; it's also a Hoon [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) we'll use to run simple Hoon examples.
 
 To make sure everything is working, type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
 
@@ -66,7 +66,7 @@ You just used a function from the Hoon standard library, `add`.  Next, quit Urbi
 $
 ```
 
-Your comet isn't running anymore and you're back at your computer's normal terminal prompt. You now have a `mycomet` directory for your Urbit comet; this directory is your comet's *pier* and it contains the entirety of your comet's state.
+Your comet isn't running anymore and you're back at your computer's normal terminal prompt. You now have a `mycomet` directory for your Urbit comet; this directory is your comet's **pier** and it contains the entirety of your comet's state.
 
 Right now the only thing in your pier is your comet's system files:
 

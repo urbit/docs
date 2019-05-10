@@ -69,11 +69,11 @@ The subject is a noun, just like any other piece of Hoon data.  In the last less
                  14 15
 ```
 
-Each fragment of a noun is itself a noun, and hence can be understood as a binary tree as well.  Each fragment or 'subtree' sticks out of the original tree, like a *limb*.  A 'limb' is a subtree of the subject.
+Each fragment of a noun is itself a noun, and hence can be understood as a binary tree as well.  Each fragment or 'subtree' sticks out of the original tree, like a **limb**.  A 'limb' is a subtree of the subject.
 
 Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: arms and legs.
 
-*Arms* are limbs of the subject that are used for carrying out substantive computations.  We'll talk about arms in the next lesson.  *Legs* are limbs that store data.  Any limb that isn't an arm is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
+**Arms** are limbs of the subject that are used for carrying out substantive computations.  We'll talk about arms in the next lesson.  **Legs** are limbs that store data.  Any limb that isn't an arm is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
 
 ### Address-based Limb Expressions
 
@@ -383,7 +383,7 @@ How do you get to that `b=2`?  And how do you get to the `c` in `[[4 a=5] b=[c=1
 
 ## Wings
 
-A *wing* is a limb resolution path into the subject.  A wing expression indicates the path as a series of limb expressions separated by the `.` character.  E.g.,
+A **wing** is a limb resolution path into the subject.  A wing expression indicates the path as a series of limb expressions separated by the `.` character.  E.g.,
 
 ```
 limb1.limb2.limb3
@@ -477,7 +477,7 @@ In fact, you may already know how to find the answer.  The subject is a noun and
 
 This noun (or a modified version of it) is the subject used for Hoon expressions entered into the dojo.
 
-We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_(computing%29).  The value for `eny` is different every time it's checked.
+We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_%28computing%29).  The value for `eny` is different every time it's checked.
 
 ```
 > our

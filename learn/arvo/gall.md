@@ -670,7 +670,7 @@ Which causes `~sampel-sipnym` to print `[%receiving 'howdy']` and
 
 (Note: `:ping|send ~sampel-sipnym` is short for `:ping +ping/send ~sampel-sipnym`.)
 
-*Exercises*:
+**Exercises**:
 
 - Create a generator for `:sum` from [State](#state) so that you can run `:sum|add 5` to add numbers to it.
 
@@ -811,7 +811,7 @@ Here's the move that sends the HTTP request:
 [ost.hid %hiss /request ~ %httr %purl (need (de-purl:html target))]
 ```
 
-> Remember, we are expected to produce a *list* of moves. Note the `~` after the move in the full example. This is a convenient shortcut for creating a list of a single element.  It's part of a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to create various convoluted structures and emojis.
+> Remember, we are expected to produce a **list** of moves. Note the `~` after the move in the full example. This is a convenient shortcut for creating a list of a single element.  It's part of a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to create various convoluted structures and emojis.
 
 The correspondence between this move and `[bone card]` can be hard to
 visualize on one line. Here it is more pedantically:
@@ -1053,7 +1053,7 @@ commands:
 >=
 ```
 
-> There is currently a bug where the `[%echo %noun *]` lines are printed *above* the line you entered, so your output may not look exactly like this. `>=` means that a command was successfully received and executed.
+> There is currently a bug where the `[%echo %noun *]` lines are printed **above** the line you entered, so your output may not look exactly like this. `>=` means that a command was successfully received and executed.
 
 Most of the app code should be simple enough to guess its function. The
 important part of this code is the definition of `++poke-noun`.
@@ -1063,7 +1063,7 @@ it by sending it messages. The most straightforward way to do that is to poke it
 from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
-In this case, `++poke-noun` takes an argument (*sample*) `arg` and
+In this case, `++poke-noun` takes an argument (**sample**) `arg` and
 prints it to dojo with `~&` ([sigpad](/docs/reference/hoon-expressions/rune/sig#sigpad/)).
 This is an unusual rune that formally "does nothing", but the interpreter
 detects it and printfs the first child, before executing the second as if the
@@ -1071,8 +1071,8 @@ first didn't exist. This is a slightly hacky way of printing to the console,
 but we'll get to the correct way later on.
 
 But what does `++poke-noun` produce? Recall that `^-` casts to a type. In this
-case, it's declaring that the end result (*product*) of the function
-(`++poke-noun`'s *gate*) will be of type `[(list) _+>.$]`. But what does this
+case, it's declaring that the end result (**product**) of the function
+(`++poke-noun`'s **gate**) will be of type `[(list) _+>.$]`. But what does this
 mean?
 
 The phrase to remember is "a list of moves and our state". Urbit is a message
@@ -1154,7 +1154,7 @@ gall: %square: no poke arm for noun
 Marks are powerful, and they're the backbone of Urbit's data pipeline,
 so we'll be getting quite used to them.
 
-*Exercise*:
+**Exercise**:
 
 - Write an app that computes fizzbuzz on its input.
 
@@ -1220,7 +1220,7 @@ urbit, this output:
 ```
 
 Most of the code should be straightforward. In `++poke-atom`, the only new thing
-is the expression `` `@t`tom ``, which is *casting* the argument `tom` to type
+is the expression `` `@t`tom ``, which is **casting** the argument `tom` to type
 `@t`. As we already know, `@t` is the type of "cord" (text string).
 
 The more interesting part is in `++poke-urbit`. The `urbit` mark is an urbit
@@ -1317,7 +1317,7 @@ urbit as for sending messages between apps on different urbits.
 
 > We said earlier that we're not expecting a response. This is not entirely true: the `++coup` is called when we receive acknowledgment that the `++poke` was called. We don't do anything with this information right now, but we could.
 
-*Exercises*:
+**Exercises**:
 
 - Extend either of the apps in the first two exercises to accept input over the network in the same way as `pong`.
 
@@ -1722,7 +1722,7 @@ system](https://en.wikipedia.org/wiki/ACID). Thus, you don't have to worry about
 persistence when programming in Urbit, or ever go through the hassle of having
 to set up and write to a database.
 
-*Exercises*:
+**Exercises**:
 
 - Modify `:sum` to reset the counter when you poke it with 0.
 
@@ -2200,7 +2200,7 @@ the app from the command line.
 >=
 ```
 
-*Exercise*:
+**Exercise**:
 
 - Modify `:sink` from the subscriptions chapter to listen to `:click` and print out the subscription updates on the command line.
 
@@ -2313,6 +2313,6 @@ The javascript is fairly pure as well, sending and receiving json
 everywhere.  The marks are the translation layer, and they're the
 only things that need to know how the hoon types map to json.
 
-*Exercise*:
+**Exercise**:
 
 - Open the app in multiple tabs, click the button, and verify that all the tabs stay in sink.  Poke it manually from the command line and verify the tabs are updated as well.

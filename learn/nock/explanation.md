@@ -18,7 +18,7 @@ XML and XML look like ASN.1.  It may also remind you of Lisp's
 S-expressions - you can think of nouns as "S-expressions without
 the S."
 
-To be exact, a noun *is* an S-expression, except that classic
+To be exact, a noun **is** an S-expression, except that classic
 S-expressions have multiple atom types ("S" is for "symbol").
 Since Nock is designed to be used with a higher-level type system
 (such as Hoon's), it does not need low-level types.  An atom is
@@ -89,7 +89,7 @@ Normally `a` in `nock(a)` is a cell `[s f]`, or as we say
 Intuitively, the formula is your function and the subject is
 its argument.  We call them something different because Hoon,
 or any other high-level language built on Nock, will build its
-own function calling convention which *does not* map directly
+own function calling convention which **does not** map directly
 to `*[subject formula]`.
 
 ### Noun syntax
@@ -364,7 +364,7 @@ We could write this line less formally:
 In other words, if you have two Nock formulas `x` and `y`, a
 formula that computes the pair of them is just `[x y]`.  We can
 recognize this because no atom is a valid formula, and
-every formula that *does not* use distribution has an atomic head.
+every formula that **does not** use distribution has an atomic head.
 
 If you know Lisp, you can think of this feature as a sort of
 "implicit cons."  Where in Lisp you would write `(cons x y)`,
@@ -515,7 +515,7 @@ depends both on the original subject and the new variable.
 ```
 
 With `c`, we produce a noun which contains both code and data - a
-*core*.  We use this core as the subject, and evaluate the
+**core**.  We use this core as the subject, and evaluate the
 formula within it at slot `b`.
 
 ### `6`, if-then-else

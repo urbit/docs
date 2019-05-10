@@ -12,7 +12,7 @@ among other things.  A factory/mold is used as a data validator.
 
 ## Overview
 
-A correct mold is a *normalizer*: an idempotent function across
+A correct mold is a **normalizer**: an idempotent function across
 all nouns.  If the sample of a gate has type `%noun`, and its
 body obeys the constraint that for any x, `=((mold x) (mold (mold
 x)))`, it's a normalizer and can be used as a mold.
@@ -63,14 +63,14 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ##### Syntax
 
-Regular: *1-fixed*.
+Regular: **1-fixed**.
 
 Irregular: `_foo` is `$_(foo)`.
 
 ##### Discussion
 
 `$_` discards the sample it's supposedly normalizing
-and produces its *example* instead.
+and produces its **example** instead.
 
 ##### Examples
 
@@ -97,7 +97,7 @@ The default of the last item `i` in `p`. Crashes if `p` is empty.
 
 ##### Syntax
 
-Regular form: *2-running*.
+Regular form: **2-running**.
 
 ##### Discussion
 
@@ -132,7 +132,7 @@ The tuple the length of `p`.
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 Irregular (noun mode): `,[a b c]` is `$:(a b c)`.
 Irregular (structure mode): `[a b c]` is `$:(a b c)`.
@@ -165,11 +165,11 @@ $_  ^|
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
-Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, just for typechecking.  In particular, the existence of `$-`s does *not* let us send gates or other cores over the network!
+Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, just for typechecking.  In particular, the existence of `$-`s does **not** let us send gates or other cores over the network!
 
 ##### Examples
 
@@ -195,7 +195,7 @@ The default of `p`.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -228,7 +228,7 @@ The product of `p`.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ```
 $~  p=hoon  q=spec
@@ -292,12 +292,12 @@ The default of `p`.
 
 #### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Product: a structure which applies `p` if its sample is an atom,
 `q` if its sample is a cell.
 
-Regular form: *2-fixed*.
+Regular form: **2-fixed**.
 
 Example:
 
@@ -328,7 +328,7 @@ Example:
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Irregular (structure mode): `foo=baz` is `$=(foo baz)`.
 
@@ -366,7 +366,7 @@ The first item in `p`.
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 Irregular: `?(%foo %baz)` is `$?(%foo %baz)`.
 

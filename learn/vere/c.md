@@ -54,7 +54,7 @@ and 1 as false (always say "no").
 Nock and/or Hoon cannot tell the difference between a short atom
 and a long one, but at the `u3` level every atom under `2^31` is
 direct.  The `c3_l` type is useful to annotate this.  A `c3_m` is
-a *mote* - a string of up to 4 characters in a `c3_l`, least
+a **mote** - a string of up to 4 characters in a `c3_l`, least
 significant byte first.  A `c3_g` should be a 5-bit atom.  Of
 course, C cannot enforce these constraints, only document them.
 

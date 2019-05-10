@@ -140,7 +140,7 @@ The structure that combines a `beak` with further path information is called a
 ##### Relative paths
 
 The `%` command, which we gestured at in the above section, represents the
-*relative path*, which is the path where you are currently working. If your
+**relative path**, which is the path where you are currently working. If your
 working directory is just your home desk, indicated by the
 prompt `~your-planet:dojo>`, then running the command below will print your
 working directory's `beam` information: your `beak`, and a `~` that represents
@@ -259,7 +259,7 @@ Syntax: `|mount /clay/path [Unix-name]`
 
 Mount the `clay-path` at the Unix mount point `Unix-name`.
 
-*Examples:*
+**Examples:**
 
 ```
 |mount %/web
@@ -281,7 +281,7 @@ Mounts `%/gen` to `/generators` inside your pier directory.
 
 Unmount the path or name from Unix.
 
-*Examples:*
+**Examples:**
 
 ```
 |unmount %/web
@@ -304,7 +304,7 @@ Merges a `beak` into a `desk` using an optional merge `strategy`.
 A `beak` is a ship-desk-case triple, encoded as a
 path(`/~dozbud/home/2`)
 
-*Examples:*
+**Examples:**
 
 ```
 |merge %home-work /=home=, =gem %fine
@@ -329,7 +329,7 @@ defaulted to being the same as `desk`. Non-comet urbits have
 planet that issued a moon, the star that issued a planet, or the galaxy
 that issued a star).
 
-*Examples:*
+**Examples:**
 
 ```
 |sync %home-local ~dozbud %home

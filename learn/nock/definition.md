@@ -134,7 +134,7 @@ A formula `[5 b c]` treats `b` and `c` as formulas that become the input to anot
 Instructions `6` through `11` are not strictly necessary for Turing completeness; deleting them
 from Nock would decrease compactness, but not expressiveness.
 
-`[6 b c d]` is *if* `b`, *then* `c`, *else* `d`.  Each of `b`,
+`[6 b c d]` is **if** `b`, **then** `c`, **else** `d`.  Each of `b`,
 `c`, `d` is a formula against the subject.  Remember that `0` is
 true and `1` is false.
 
@@ -152,9 +152,9 @@ Hoon; `d` is a `core` (object), `e` points to an arm (method).)
 
 In a formula `[10 [b c] d]`, `c` and `d` are computed with the current subject, and then `b` of the product of `d` is replaced with the product of `c`.
 
-`[11 b c]` is a *hint* semantically equivalent to the formula
-`c`.  If `b` is an atom, it's a *static hint*, which is just
-discarded.  If `b` is a cell, it's a *dynamic* hint; the head of
+`[11 b c]` is a **hint** semantically equivalent to the formula
+`c`.  If `b` is an atom, it's a **static hint**, which is just
+discarded.  If `b` is a cell, it's a **dynamic** hint; the head of
 `b` is discarded, and the tail of `b` is executed as a formula
 against the current subject; the product of this is discarded.
 
@@ -170,7 +170,7 @@ The reader might wonder how an interpreter whose only arithmetic
 operation is increment can ever be practical.
 
 The short answer is that a Nock interpreter doesn't have to use
-the algorithm above.  It just has to get the *same result* as the
+the algorithm above.  It just has to get the **same result** as the
 algorithm above.
 
 The algorithm for decrementing an atom is to count up to it, an

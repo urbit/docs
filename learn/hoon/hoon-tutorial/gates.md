@@ -7,11 +7,11 @@ In this lesson you're going to learn about Hoon functions.
 
 ## What is a Function?
 
-The word 'function' is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_(mathematics%29).  Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  What the return value is depends solely on the argument(s), and nothing else.  For example, we can understand multiplication as a function: it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
+The word 'function' is used in various ways, but let's start by talking about them in the [mathematical sense](https://en.wikipedia.org/wiki/Function_%28mathematics%29).  Roughly put, a function takes one or more arguments (i.e., input values) and returns a value.  What the return value is depends solely on the argument(s), and nothing else.  For example, we can understand multiplication as a function: it takes two numbers and returns another number.  It doesn't matter where you ask, when you ask, or what kind of hat you're wearing when you ask.  If you pass the same two numbers (e.g., `3` and `4`), you get the same answer returned every time (`12`).
 
 That output value depends solely upon input value(s) is an important property of functions.  This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and we make use of it throughout the Urbit software stack.
 
-Functions are implemented in Hoon with a special kind of core called a *gate*.  In this lesson you'll learn what a gate is and how a gate represents a function.  Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of core called a **gate**.  In this lesson you'll learn what a gate is and how a gate represents a function.  Along the way you'll build some example gates of your own.
 
 You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with gates, and you call them from the dojo in the following way:
 
@@ -142,7 +142,7 @@ We see now that the sample of `inc` is the value `0`, and has `a` as a face.  Th
 1
 ```
 
-The placeholder value is sometimes called a *bunt* value.  The bunt value is determined by the input type; for atoms, `@`, the bunt value is `0`.
+The placeholder value is sometimes called a **bunt** value.  The bunt value is determined by the input type; for atoms, `@`, the bunt value is `0`.
 
 The face value of `a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`.  It was so we could use `a` to refer to the sample to generate the product with `(add 1 a)`.
 

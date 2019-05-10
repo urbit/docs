@@ -214,9 +214,9 @@ number of vane names.
 
 ### Sources and sinks
 
-A Dojo command is either a *source* or a *sink*. A source is just something
+A Dojo command is either a **source** or a **sink**. A source is just something
 that can be printed to your console or the result of some computation. A
-sink is an *effect*: a change to the filesystem, a network message, a
+sink is an **effect**: a change to the filesystem, a network message, a
 change to your environment, or typed message to an app.
 
 Sources can be chained together, but we can only produce one effect per
@@ -346,7 +346,7 @@ a few reserved names that have special uses.
 
 Current working `%clay` desk and revision. Read / write.
 
-*Examples:*
+**Examples:**
 
 ```
 ~your-urbit:dojo> =dir %/web
@@ -359,7 +359,7 @@ Current working `%clay` desk and revision. Read / write.
 Current set of libraries (`/lib`) in your environment. Can be set
 with `/+`. Read / write.
 
-*Examples:*
+**Examples:**
 
 ```
 ~your-urbit:dojo> /+  react
@@ -372,7 +372,7 @@ with `/+`. Read / write.
 Current set of structures (`/sur`) in your environment. Can be set
 with `/-`. Read / write.
 
-*Examples:*
+**Examples:**
 
 ```
 ~your-urbit:dojo> /-  sole
@@ -384,7 +384,7 @@ with `/-`. Read / write.
 
 The current (128-bit `@da`) time. Read-only.
 
-*Example:*
+**Example:**
 
 ```
 ~your-urbit:dojo> now
@@ -396,7 +396,7 @@ The current (128-bit `@da`) time. Read-only.
 
 The current urbit ship. Read-only.
 
-*Example:*
+**Example:**
 
 ```
 ~your-urbit:dojo> our
@@ -408,7 +408,7 @@ The current urbit ship. Read-only.
 
 512 bits of entropy. Read-only.
 
-*Example:*
+**Example:**
 
 ```
 ~your-urbit:dojo> eny

@@ -5,7 +5,7 @@ template = "doc.html"
 +++
 Owners of Azimuth _points_ need safeguards that allow for the use of Urbit
 without jeopardizing cryptographic ownership of their assets. Toward this end,
-we created the *Urbit Hierarchical Deterministic (HD) Wallet* for the storage of
+we created the **Urbit Hierarchical Deterministic (HD) Wallet** for the storage of
 points. The Urbit HD Wallet is not one key-pair, but a system of related
 key-pairs that each have distinct powers, from setting networking keys for
 communicating in the Arvo network to transferring ownership of points.
@@ -40,17 +40,17 @@ child points, voting, and setting networking keys without jeopardizing the keys
 you've designated with ownership rights. Setting proxy rights is optional, but
 it is recommended for on-chain actions you will execute more frequently.
 
-- *Management Proxy*
+- **Management Proxy**
 
   Can configure or set Arvo networking keys and conduct sponsorship related
   operations.
 
-- *Voting Proxy*
+- **Voting Proxy**
 
   Galaxies only. Galaxies are the part of the galactic senate, and this means
   they can cast votes on new proposals including changes to the Ecliptic.
 
-- *Spawn Proxy*
+- **Spawn Proxy**
 
   For stars and galaxies only. Can create new child points.
 

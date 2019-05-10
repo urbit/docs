@@ -3,7 +3,7 @@ title = "Type Polymorphism"
 weight = 31
 template = "doc.html"
 +++
-There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_(computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
+There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
 
 One relatively trivial form of polymorphism involves sub-typing.  A gate whose sample is a raw `noun` can accept any Hoon data structure as input -- it's just that the sample will only be treated as a raw noun.  For example, consider the `copy` gate below:
 
@@ -28,15 +28,15 @@ In this lesson we'll go over Hoon's support for more interesting polymorphic fun
 
 Hoon supports type polymorphism at the core level.  That is, each core has certain polymorphic properties that are tracked and maintained as metadata by Hoon's type system.  (See `+$  type` of `hoon.hoon`.)  These properties determine the extent to which a core can be used as an interface for values of various types.
 
-This is rather vaguely put so far.  We can clarify by talking more specifically about the kinds of polymorphism supported in Hoon.  There are two kinds of type polymorphism for cores: [genericity](https://en.wikipedia.org/wiki/Generic_programming), to include certain kinds of of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism); and [variance polymorphism](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science%29), which involves making use of special sub-typing rules for cores.
+This is rather vaguely put so far.  We can clarify by talking more specifically about the kinds of polymorphism supported in Hoon.  There are two kinds of type polymorphism for cores: [genericity](https://en.wikipedia.org/wiki/Generic_programming), to include certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism); and [variance polymorphism](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which involves making use of special sub-typing rules for cores.
 
 If you don't understand these very well, that's okay.  We'll explain them.  Let's begin with the former.
 
 ## Dry vs. Wet Cores
 
-To review briefly, a *core* is a pair of `[battery payload]`.  The *battery* contains the various arms of the core (code), and the *payload* contains all the data needed to evaluate those arms correctly (data).  Every arm is evaluated with its parent core as the subject.  A *gate* (i.e., a Hoon function) is a core with exactly one arm named `$` and with a payload of the form: `[sample context]`.  The *sample* is reserved for the function's argument value, and the *context* is any other data needed to evaluate `$` correctly.
+To review briefly, a **core** is a pair of `[battery payload]`.  The **battery** contains the various arms of the core (code), and the **payload** contains all the data needed to evaluate those arms correctly (data).  Every arm is evaluated with its parent core as the subject.  A **gate** (i.e., a Hoon function) is a core with exactly one arm named `$` and with a payload of the form: `[sample context]`.  The **sample** is reserved for the function's argument value, and the **context** is any other data needed to evaluate `$` correctly.
 
-There are two kinds of cores: *dry* and *wet*.  Dry cores, which are more typical, _don't_ make use of *genericity*.  Wet cores do.  In order to understand generic functions in Hoon, you have to understand the difference between dry and wet cores.
+There are two kinds of cores: **dry** and **wet**.  Dry cores, which are more typical, _don't_ make use of **genericity**.  Wet cores do.  In order to understand generic functions in Hoon, you have to understand the difference between dry and wet cores.
 
 The cores produced with the `|=`, `|-`, `|%`, and `|_` runes, among others, are all dry.  The cores produced with the `|*` and `|@` runes are wet.  (`|*` and `|@` are the wet versions of `|=` and `|%`, respectively.)
 
@@ -189,7 +189,7 @@ As is the case with dry arms, there is a type-check associated with each wet arm
 
 ### Parametric Polymorphism and `+*` Arms
 
-In Chapter 2 we saw how to use the `+*` rune to define an arm that produced a more complex type from one or more simpler types.  This rune provides a way of making use of *parametric polymorphism* in Hoon.
+In Chapter 2 we saw how to use the `+*` rune to define an arm that produced a more complex type from one or more simpler types.  This rune provides a way of making use of **parametric polymorphism** in Hoon.
 
 For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each defined in `hoon.hoon` with `+*` arms.  (Take a moment to see for yourself.)  Each `+*` arm is followed by an argument definition, inside brackets `[ ]`.  After that subexpression comes another that defines a type, relative to the input value.  For example, here is the definition of `list` from `hoon.hoon`:
 
@@ -203,7 +203,7 @@ For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each define
   $@(~ [i=item t=(list item)])
 ```
 
-The `+*` rune is especially useful for defining [containers](https://en.wikipedia.org/wiki/Container_(abstract_data_type%29) of various kinds.  Indeed, `list`s, `tree`s, and `set`s are all examples of containers.  You can have a `(list @)`, a `(list ^)`, a `(list *)`, and so on.  Or a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc.  And the same for `set`.
+The `+*` rune is especially useful for defining [containers](https://en.wikipedia.org/wiki/Container_%28abstract_data_type%29) of various kinds.  Indeed, `list`s, `tree`s, and `set`s are all examples of containers.  You can have a `(list @)`, a `(list ^)`, a `(list *)`, and so on.  Or a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc.  And the same for `set`.
 
 One nice thing about containers defined by `+*` is that they nest in the expected way.  Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`.  And so it does:
 
@@ -295,14 +295,14 @@ The payload types of `A` and `B` must also be checked.  Certain payload nesting 
 
 But there are different sets of nesting rules for finishing the payload type check, depending on the variance properties of the core.
 
-There are four kinds of cores: *gold* (invariant payload), *iron* (contravariant sample), *zinc* (covariant sample), and *lead* (bivariant sample).  Information about the kind of core is tracked by the Hoon type system.
+There are four kinds of cores: **gold** (invariant payload), **iron** (contravariant sample), **zinc** (covariant sample), and **lead** (bivariant sample).  Information about the kind of core is tracked by the Hoon type system.
 
 Their nesting rules in brief:
 
-+ If `A` is a gold core, then core `B` nests under it only if `B` is gold and the payload of `B` doesn't vary in type from the payload of `A`.  The payload `B` is *invariant* (i.e., neither co- nor contravariant) relative to the payload of an `A` it nests under.  Gold cores have a read-write payload.
-+ If `A` is an iron core, then core `B` nests under it only if `B` is gold or iron and the sample of `A` nests under the sample of `B`.  Notice that the nesting direction of the samples is the opposite of the nesting direction of the cores.  I.e., the sample types are *contravariant* with respect to the iron core types.  Iron cores have a write-only sample and an opaque context. ("Opaque" means neither read nor write.)
-+ If `A` is a zinc core, then core `B` nests under it only if `B` is gold or zinc and the sample of `B` nests under the sample of `A`.  Notice that the nesting direction of the samples is the same as the nesting direction of the cores.  I.e., the sample types are *covariant* with respect to the zinc core types.  Zinc cores have a read-only sample and an opaque context.
-+ If `A` is a lead core, then core `B` nests under it without any additional payload check beyond those described in the previous section.  It trivially follows that the payload type both co- and contravaries with respect to the lead core types (hence lead cores are *bivariant*).  Lead cores have an opaque payload.
++ If `A` is a gold core, then core `B` nests under it only if `B` is gold and the payload of `B` doesn't vary in type from the payload of `A`.  The payload `B` is **invariant** (i.e., neither co- nor contravariant) relative to the payload of an `A` it nests under.  Gold cores have a read-write payload.
++ If `A` is an iron core, then core `B` nests under it only if `B` is gold or iron and the sample of `A` nests under the sample of `B`.  Notice that the nesting direction of the samples is the opposite of the nesting direction of the cores.  I.e., the sample types are **contravariant** with respect to the iron core types.  Iron cores have a write-only sample and an opaque context. ("Opaque" means neither read nor write.)
++ If `A` is a zinc core, then core `B` nests under it only if `B` is gold or zinc and the sample of `B` nests under the sample of `A`.  Notice that the nesting direction of the samples is the same as the nesting direction of the cores.  I.e., the sample types are **covariant** with respect to the zinc core types.  Zinc cores have a read-only sample and an opaque context.
++ If `A` is a lead core, then core `B` nests under it without any additional payload check beyond those described in the previous section.  It trivially follows that the payload type both co- and contravaries with respect to the lead core types (hence lead cores are **bivariant**).  Lead cores have an opaque payload.
 
 Let's go through each kind more carefully.
 
@@ -402,9 +402,9 @@ The sample type of an iron gate is contravariant.  This means that, when doing a
 
 Why is this a useful nesting rule for passing gates?
 
-Let's say you're writing a function `F` that takes as input some gate `G`. Let's also say you want `G` to be able to take as input any *mammal*.  The code of `F` is going to pass arbitrary *mammals* to `G`, so that `G` needs to know how to handle all *mammals* correctly. You can't pass `F` a gate that only takes *dogs* as input, because `F` might call it with a *cat*. But `F` can accept a gate that takes all *animals* as input, because a gate that can handle any *animal* can handle *any mammal*.
+Let's say you're writing a function `F` that takes as input some gate `G`. Let's also say you want `G` to be able to take as input any **mammal**.  The code of `F` is going to pass arbitrary **mammals** to `G`, so that `G` needs to know how to handle all **mammals** correctly. You can't pass `F` a gate that only takes **dogs** as input, because `F` might call it with a **cat**. But `F` can accept a gate that takes all **animals** as input, because a gate that can handle any **animal** can handle **any mammal**.
 
-Iron cores are designed precisely with this purpose in mind.  The reason that the sample is write-only is that we want to be able to assume, within function `F`, that the sample of `G` is a *mammal*.  But that might not be true when `G` is first passed into `F` -- the default value of `G` could be another *animal*, say, a *lizard*.  So we restrict looking into the sample of `G` by making the sample write-only.  The illusion is maintained and type safety secured.
+Iron cores are designed precisely with this purpose in mind.  The reason that the sample is write-only is that we want to be able to assume, within function `F`, that the sample of `G` is a **mammal**.  But that might not be true when `G` is first passed into `F` -- the default value of `G` could be another **animal**, say, a **lizard**.  So we restrict looking into the sample of `G` by making the sample write-only.  The illusion is maintained and type safety secured.
 
 Let's illustrate iron core nesting properties:
 

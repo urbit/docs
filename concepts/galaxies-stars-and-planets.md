@@ -10,7 +10,7 @@ That's why we built a system for persistent identity called [Azimuth](../arvo-vs
 
 An Azimuth point is a pronounceable string like `~firbyr-napbes`. It means nothing, but it's easy to remember and say out loud. `~firbyr-napbes` is actually just a 32-bit number (`3.237.967.392`, to be exact) that we turn into a human-memorable string.
 
-Points come in three classes: *galaxies*, *stars*, and *planets*. You can tell what class a point is in by how long its name is. The address space grows like a family tree. Galaxies are 8-bit and have names like `~mul`. Galaxies can issue 16-bit stars (`~dacpyl`), which can themselves issue 32-bit planets (`~laptel-holfur`).
+Points come in three classes: **galaxies**, **stars**, and **planets**. You can tell what class a point is in by how long its name is. The address space grows like a family tree. Galaxies are 8-bit and have names like `~mul`. Galaxies can issue 16-bit stars (`~dacpyl`), which can themselves issue 32-bit planets (`~laptel-holfur`).
 
 Planets are intended for everyday use by an adult human, and there is a maximum of about 4.3 billion of them (2 to the 32nd power). Stars and galaxies, on the other hand, are meant to act as network infrastructure: in the Arvo network they provide P2P routing and distribute software updates.
 
@@ -28,6 +28,6 @@ Planets are intended for everyday use by an adult human, and there is a maximum 
 
 In addition to these three classes of Azimuth points, there two other kinds of Urbit identities, but they do _not_ use Azimuth.
 
-*Moons* are 64 bits, are issued by planets, and have names like `~doznec-salfun-naptul-habrys`. Moons are meant for connected devices: phones, smart TVs, digital thermostats. Moons are not independent, but are subordinated to their parent planet.
+**Moons** are 64 bits, are issued by planets, and have names like `~doznec-salfun-naptul-habrys`. Moons are meant for connected devices: phones, smart TVs, digital thermostats. Moons are not independent, but are subordinated to their parent planet.
 
-*Comets* are 128-bit points with no parents that can be launched by anyone. They are meant for bots. Being disposable and essentially unlimited, they will likely not be trusted by the others on the Arvo network. They have enormous names, like `~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex`.
+**Comets** are 128-bit points with no parents that can be launched by anyone. They are meant for bots. Being disposable and essentially unlimited, they will likely not be trusted by the others on the Arvo network. They have enormous names, like `~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex`.

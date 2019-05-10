@@ -33,7 +33,7 @@ the product of `q`, with the product of `p` taken as the subject.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -58,7 +58,7 @@ Regular: *2-fixed*.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -89,7 +89,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 
 ##### Syntax
 
-Regular: *jogging*, then *1-fixed*.
+Regular: **jogging**, then **1-fixed**.
 
 ##### Discussion
 
@@ -114,7 +114,7 @@ This rune is like `=.`, but for modifying the values of multiple legs of the sub
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Examples
 
@@ -153,7 +153,7 @@ With a dojo-defined face:
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -189,7 +189,7 @@ nest-fail
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -219,7 +219,7 @@ a leg with the tail.
 
 ##### Syntax
 
-Regular: *4-fixed*.
+Regular: **4-fixed**.
 
 ##### Discussion
 
@@ -258,7 +258,7 @@ random number, so we use `=^`:
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 Irregular: `foo:baz` is `=<(foo baz)`.
 
@@ -296,7 +296,7 @@ Irregular: `foo:baz` is `=<(foo baz)`.
 
 ##### Syntax
 
-Regular: *2-fixed*.
+Regular: **2-fixed**.
 
 ##### Discussion
 
@@ -318,7 +318,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -341,13 +341,13 @@ Regular: *3-fixed*.
 
 ##### Expands to
 
-*if `p` is a name*, (e.g. `a`):
+**if `p` is a name**, (e.g. `a`):
 
 ```
 =+(^=(p q) r)
 ```
 
-*if `p` is a name with a type* (e.g., `a=@`):
+**if `p` is a name with a type** (e.g., `a=@`):
 
 ```
 =+(^-(p q) r)
@@ -365,7 +365,7 @@ r
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -395,7 +395,7 @@ The product of the chain composition.
 
 ##### Syntax
 
-Regular: *running*.
+Regular: **running**.
 
 ##### Examples
 
@@ -430,7 +430,7 @@ Regular: *running*.
 
 ##### Syntax
 
-Regular: *3-fixed*.
+Regular: **3-fixed**.
 
 ##### Discussion
 
@@ -466,7 +466,7 @@ s
 
 ##### Syntax
 
-Regular: *4-fixed*.
+Regular: **4-fixed**.
 
 ##### Discussion
 

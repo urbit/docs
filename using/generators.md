@@ -165,7 +165,7 @@ This entire structure is a noun, which is why `*` is a valid sample if we
 wish to not use any of the information here in a generator. But let's look at
 each of these three elements, piece by piece.
 
-The *first part* of the above 3-tuple is a noun that is composed of three
+The **first part** of the above 3-tuple is a noun that is composed of three
 atoms:
 
 `now` is the current time.
@@ -184,7 +184,7 @@ Any of those pieces of data could be omitted by replacing part of the noun with
 `*` rather than giving them faces. For example, `[now=@da * bec=beak]` if we
 didn't want `eny`, or `[* * bec=beak]` if we only wanted `beak`.
 
-The *second part* of the sample is a `list` of arguments that _must_ be passed
+The **second part** of the sample is a `list` of arguments that _must_ be passed
 to the generator as it is run. Because it's a `list`, this element needs to be
 terminated with a `~`. In the example above, we used `~`, the empty list, to
 represent this second part. But that would mean we don't want to use any new
@@ -205,7 +205,7 @@ But to use both parts together, our gate and sample would look like this:
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] ~]
 ```
 
-The *third part* of the sample is a list of _optional_ arguments. These
+The **third part** of the sample is a list of _optional_ arguments. These
 arguments may be passed to the program as it's being run, but the program doesn't
 require them. The syntax for the third part is just like the syntax for the
 second part, besides its position:
@@ -292,7 +292,7 @@ in at the time of initiation.
 
 Code-wise, two things are needed to create a useful `%ask` generator.
 
-The first is *`sole-result`*, which lives in `/sur/sole.hoon`. It's a
+The first is **`sole-result`**, which lives in `/sur/sole.hoon`. It's a
 mold-builder that's required by any part of Arvo, such as the Dojo, that wants
 to understand the output of the `%ask` generator. Because it's the only type of
 `%ask` data that is intelligible to the system, the ultimate output of an `%ask`
@@ -300,7 +300,7 @@ generator must be `sole-result`. You can think of it as a function that takes
 molds and digests them into a type for the operating system. The simplest way to
 use `sole-result` is by calling the `produce` gate from `/lib/generators.hoon`.
 
-The second is *`prompt`*, a gate that lives in `lib/generators.hoon`. `prompt`
+The second is **`prompt`**, a gate that lives in `lib/generators.hoon`. `prompt`
 allows you to get information back from the user, which is essential to the
 typical desired operation of an `%ask` generator.
 
@@ -408,13 +408,13 @@ for printing backstep-indented lists.
 Because we imported `generators`, we can access its contained gates, three of
 which we use in `axe.hoon`: `print`, `prompt`, and `produce`.
 
-*`print`* is used for printing a `tank` to the console.
+**`print`** is used for printing a `tank` to the console.
 
 In our example, `%+` is the rune to call a gate, and our gate `print` takes one
 argument which is a `tank` to print. The `+` here is syntactic sugar for
 `[leaf "What is your favorite color?"]` that just makes it easier to write.
 
-*`prompt`* is used to construct a prompt for the user to provide input.
+**`prompt`** is used to construct a prompt for the user to provide input.
 It takes a single argument that is a tuple. Most `%ask` generators will want to
 use the `prompt` gate.
 
@@ -430,7 +430,7 @@ implemented.
 The third element of the `prompt` sample is the `tape` that we would like to
 use to prompt the user. In the case of our example, we use `"color: "`.
 
-*`produce`* is used to construct the output of the generator. In our example,
+**`produce`** is used to construct the output of the generator. In our example,
 we produce a `tang`.
 
 

@@ -33,7 +33,7 @@ Thus:
 
 Of course, increment is built into Nock.  So, ha, that's easy.
 
-The best way to learn Nock is to *stop reading right now*, and
+The best way to learn Nock is to **stop reading right now**, and
 go write your own decrement formula.  There's no substitute for
 doing it yourself.  But the second best way is faster...
 
@@ -133,7 +133,7 @@ Let's continue with our decrement.  So what's `g`?  We seem to
 loop.  Does Nock have a loop instruction?  It most certainly does
 not.  So what do we do?
 
-We build a noun called a *core* - a construct which is behind any
+We build a noun called a **core** - a construct which is behind any
 kind of interesting control flow in Hoon.  Of course, the Nock
 programmer is not constrained to use the same techniques as the
 Hoon compiler, but it is probably a good idea.
@@ -144,17 +144,17 @@ objects are cores, modules are cores, even loops are cores.
 
 The core is just a cell whose tail is data (possibly containing
 other cores) and whose head is code (containing one or more
-formulas).  The tail is the *payload* and the head is the
-*battery*.  Hence your core is
+formulas).  The tail is the **payload** and the head is the
+**battery**.  Hence your core is
 
 ```
 [bat pay]
 ```
 
 To activate a core, pick a formula out of the battery, and use
-the entire core (*not* just the payload) as the subject.
+the entire core (**not** just the payload) as the subject.
 
-(A core formula is called an *arm*.  An arm is almost like an
+(A core formula is called an **arm**.  An arm is almost like an
 object-oriented method, but not quite - a method would be an arm
 that produces a function on an argument.  The arm is just a
 function of the core, ie, a computed attribute.)

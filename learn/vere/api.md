@@ -54,14 +54,14 @@ use `u3m_soft_sure()`, `u3m_soft_slam()`, or `u3m_soft_nock()`
 for C functions, Hoon function calls, and Nock invocations.
 Caution - this returns just the result, and asserts globally.
 
-All the `u3m_soft` functions above work *only on the surface*.
+All the `u3m_soft` functions above work **only on the surface**.
 Within the surface, virtualize with `u3m_soft_run()`.  Note that
 this takes a `fly` (a namespace gate), thus activating the `11`
 super-operator in the nock virtualizer, `++mock`.  When actually
 using the `fly`, call `u3m_soft_esc()`.  Don't do either unless
 you know what you're doing!
 
-For descending into a subroad *without* Nock virtualization,
+For descending into a subroad **without** Nock virtualization,
 use `u3m_hate()` and `u3m_love` respectively.  Hating enters
 a subroad; loving leaves it, copying out a product noun.
 
@@ -87,7 +87,7 @@ dumber than most) - `u3j` is the most interesting code in `u3`.
 
 Let's consider the minor miracle of driver-to-battery binding
 which lets `u3j` work - and decrement not be `O(n)` - without
-violating the precisely defined semantics of pure Nock, *ever*.
+violating the precisely defined semantics of pure Nock, **ever**.
 
 It's easy to assume that jets represent an architectural coupling
 between Hoon language semantics and Nock interpreter internals.
@@ -108,7 +108,7 @@ code]`, any high-level language transforming itself to Nock would
 use this design.
 
 So jets are in fact fully general.  Broadly speaking, the jet
-system works by matching a C *driver* to a battery.  When the
+system works by matching a C **driver** to a battery.  When the
 battery is invoked with Nock operator `9`, it must be found in
 associative memory and linked to its driver.  Then we link the
 formula axis of the operation (`a` in `[9 a b]`) to a specific
@@ -141,7 +141,7 @@ nock(+.a -.a)
 Then, naturally, when we go from Hoon or a high-level language
 containing functions down to Nock, `[function arguments]` turns
 into `[formula subject]`.  This seems like an obvious design, and
-we mention it only because it is *completely wrong*.
+we mention it only because it is **completely wrong**.
 
 Rather, to execute a one-armed core like the above, we run
 
@@ -250,7 +250,7 @@ in `j/tree.c`.  The data structures:
       } u3j_dash;
 ```
 
-Warm and cold state is *per road*.  In other words, as we nest
+Warm and cold state is **per road**.  In other words, as we nest
 roads, we also nest jet state.  The jet state in the road is:
 
 ```
@@ -330,7 +330,7 @@ we don't need (cleaning these things up is tricky), but just gets
 flattened into a term.
 
 The parent axis is a nock formula, but always reduces to a simple
-axis, which is the address of this core's *parent*.  Consider
+axis, which is the address of this core's **parent**.  Consider
 again an ordinary gate
 
 ```
@@ -340,13 +340,13 @@ again an ordinary gate
 Typically the `context` is itself a library core, which itself
 has a jet binding.  If so, the parent axis of this gate is `7`.
 
-If the parent is already bound - and the parent *must* be already
+If the parent is already bound - and the parent **must** be already
 bound, in this road or a road containing it - we can hook this core
 bottom-up into a tree hierarchy.  Normally the child core is
 produced by an arm of the parent core, so this is not a problem -
 we wouldn't have the child if we hadn't already made the parent.
 
-The clue also contains a list of *hooks*, named nock formulas on
+The clue also contains a list of **hooks**, named nock formulas on
 the core.  Usually these are arms, but they need not be.  The
 point is that we often want to call a core from C, in a situation
 where we have no type or other source information.  A common case
@@ -365,14 +365,14 @@ instance, if the core is a Hoon gate - a function - we will call
 ### u3j: the cold jet dashboard
 
 For even more fun, the jet tree is not actually a tree of
-batteries.  It's a tree of battery *labels*, where a label is
+batteries.  It's a tree of battery **labels**, where a label is
 an [axis term] path from the root of the tree.  (At the root,
 if the core pattern is always followed properly, is a core whose
 payload is an atomic constant, conventionally the Hoon version.)
 
 Under each of these labels, it's normal to have an arbitrary
 number of different Nock batteries (not just multiple copies
-of the same noun, a situation we *do* strive to avoid).  For
+of the same noun, a situation we **do** strive to avoid).  For
 instance, one might be compiled with debugging hints, one not.
 
 We might even have changed the semantics of the battery without
@@ -420,7 +420,7 @@ of information: the `++cope`, or per-location noun; and a map of
 batteries to a per-battery `++club`.
 
 The `cope` is a triple of `++bane` (battery name, right now just
-a `term`); `++axis`, the axis, within *this* core, of the parent;
+a `term`); `++axis`, the axis, within **this** core, of the parent;
 and `(each bash noun)`, which is either `[0 bash]` if the parent
 is another core, or `[1 noun]`, for the constant noun (like
 `164`) if there is no parent core.
@@ -453,7 +453,7 @@ validate with a single comparison.  Otherwise, we have to recurse
 upward by checking the parent.
 
 Note that there is at present no way to force a jet to depend on
-static *data*.
+static **data**.
 
 ### u3j: the warm jet dashboard
 
@@ -519,7 +519,7 @@ in the `u3j_harm` which tell us how to call the arm function.
 
 If `ice` is yes (`&`, `0`), the jet is known to be perfect and we
 can just trust the product of `fun_f`.  Otherwise, we need to run
-*both* the Nock arm and `fun_f`, and compare their results.
+**both** the Nock arm and `fun_f`, and compare their results.
 
 (Note that while executing the C side of this test, we have to
 set `ice` to yes; on the Nock side, we have to set `liv` to no.
@@ -531,9 +531,9 @@ test is on the outermost layer of recursion.)
 environment has a slight locking problem with these flags if arm
 testing is multi-threaded.)
 
-If `tot` is yes, (`&`, `0`), the arm function is *total* and has
-to return properly (though it can still return *u3_none*).
-Otherwise, it is *partial* and can `u3_cm_bail()` out with
+If `tot` is yes, (`&`, `0`), the arm function is **total** and has
+to return properly (though it can still return **u3_none**).
+Otherwise, it is **partial** and can `u3_cm_bail()` out with
 c3__punt.  This feature has a cost: the jet runs in a subroad.
 
 Finally, if `liv` is no (`|`, 1), the jet is off and doesn't run.
@@ -570,10 +570,10 @@ caller passes the entire core, which is retained if the function
 returns `u3_none`, transferred otherwise.  Why?   Again, use
 counts of 1 are special and precious for performance hackers.
 
-`u3q` interfaces break the core into C arguments, *retain* noun
-arguments, and *transfer* noun returns.  `u3k` interfaces are the
+`u3q` interfaces break the core into C arguments, **retain** noun
+arguments, and **transfer** noun returns.  `u3k` interfaces are the
 same, except with more use of `u3_none` and other simple C
-variations on the Hoon original, but *transfer* both arguments
+variations on the Hoon original, but **transfer** both arguments
 and returns.  Generally, `u3k` are most convenient for new code.
 
 Following `u3k/q/w` is `[a-f]`, corresponding to the 6 logical
@@ -586,7 +586,7 @@ For instance, `++add` is `u3wa_add(cor)`, `u3qa_add(a, b)`, or
 `u3wdb_get(cor)`, `u3kdb_get(a, b)`, etc, in `j/d/by_get.c`.
 
 For historical reasons, all internal jet code in `j/[a-f]`
-*retains* noun arguments, and *transfers* noun results.  Please
+**retains** noun arguments, and **transfers** noun results.  Please
 do not do this in new `g` jets!  The new standard protocol is to
 transfer both arguments and results.
 
@@ -604,13 +604,13 @@ the macros `u3k()` and `u3z()` respectively.
 Normally we create nouns through `u3i` functions, and don't call
 the `u3a` allocators directly.  But if you do:
 
-One, there are *two* sets of allocators: the word-aligned
+One, there are **two** sets of allocators: the word-aligned
 allocators and the fully-aligned (ie, malloc compatible)
 allocators.  For instance, on a typical OS X setup, malloc
 produces 16-byte aligned results - needed for some SSE
 instructions.
 
-These allocators are *not compatible*.  For 32-bit alignment
+These allocators are **not compatible**.  For 32-bit alignment
 as used in nouns, call
 
 ```
@@ -670,7 +670,7 @@ allocate a block of raw space with `u3a_slab()`, then chop off
 the end with `u3a_malt()` (which does the measuring itself)
 or `u3a_mint()` in case you've measured it yourself.
 
-Once again, *do not call `malloc()`* (or C++ `new`) within any
+Once again, **do not call `malloc()`** (or C++ `new`) within any
 code that may be run within a jet.  This will cause rare sporadic
 corruption when we interrupt execution within a `malloc()`.  We'd
 just override the symbol, but `libuv` uses `malloc()` across
@@ -687,7 +687,7 @@ would expect, quite slow.  (There is no such thing as a fast tree
 interpreter.)
 
 There is only one Nock, but there are lots of ways to call it.
-(Remember that all `u3n` functions *transfer* C arguments and
+(Remember that all `u3n` functions **transfer** C arguments and
 returns.)
 
 The simplest interpreter, `u3n_nock_on(u3_noun bus, u3_noun fol)`
@@ -696,7 +696,7 @@ invokes Nock on `bus` (the subject) and `fol` (the formula).
 reason `0` is true and `1` is false.)
 
 A close relative is `u3n_slam_on(u3_noun gat, u3_noun sam)`,
-which slams a *gate* (`gat`) on a sample (`sam`).  (In a normal
+which slams a **gate** (`gat`) on a sample (`sam`).  (In a normal
 programming language which didn't talk funny and was retarded,
 `u3n_slam_on()` would call a function on an argument.)  We could
 write it most simply as:
@@ -715,7 +715,7 @@ write it most simply as:
 ```
 
 Simpler is `u3n_kick_on(u3_noun gat)`, which slams a gate (or,
-more generally, a *trap* - because sample structure is not even
+more generally, a **trap** - because sample structure is not even
 needed here) without changing its sample:
 
 ```
@@ -850,7 +850,7 @@ of `axis`, `u3_noun *`.  For cells, triples, etc, decompose with
 `u3r_pq()` and friends.
 
 `u3r_sing(u3_noun a, u3_noun b)` (true if `a` and `b` are a
-*single* noun) are interesting because it uses mugs to help it
+**single** noun) are interesting because it uses mugs to help it
 out.  Clearly, different nouns may have the same mug, but the
 same nouns cannot have a different mug.  It's important to
 understand the performance characteristics of `u3r_sing()`:
@@ -907,7 +907,7 @@ the memoization facility is a general-purpose cache.
 (It's also used for partial memoization - a feature that'll
 probably be removed, in which conservative worklist algorithms
 (which would otherwise be exponential) memoize everything in the
-subject *except* the worklist.  This is used heavily in the Hoon
+subject **except** the worklist.  This is used heavily in the Hoon
 compiler jets (j/f/*.c).  Unfortunately, it's probably not
 possible to make this work perfectly in that it can't be abused
 to violate Nock, so we'll probably remove it at a later date,

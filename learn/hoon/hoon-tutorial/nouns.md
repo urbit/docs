@@ -7,7 +7,7 @@ In Urbit every piece of data is a noun.  In order to understand Hoon one must fi
 
 ## Noun Definition
 
-A *noun* is either an atom or a cell.  An *atom* is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A *cell* is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
+A **noun** is either an atom or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
 
 Here are some atoms:
 
@@ -28,11 +28,11 @@ All of the above are nouns.
 
 You may or may not have noticed that the definition of 'noun' is [recursive](https://en.wikipedia.org/wiki/Recursion).  Recursion is an important concept for functional programming, so it's worth taking a moment to understand it better.
 
-A recursive definition has three clauses: a base clause, a generating clause, and a closure clause.  Let's say you want to use recursion to define some X.  The definition should allow one to determine whether any given object is a member of X.  The *base clause* of the recursive definition defines one or more objects as trivial members of X.  The *generating clause* defines other objects as also being X by their relationship to previously established members of X.  The *closure clause* asserts that nothing else is a member of X than what has been given in the first two clauses.  Often the closure clause is not explicitly stated.
+A recursive definition has three clauses: a base clause, a generating clause, and a closure clause.  Let's say you want to use recursion to define some X.  The definition should allow one to determine whether any given object is a member of X.  The **base clause** of the recursive definition defines one or more objects as trivial members of X.  The **generating clause** defines other objects as also being X by their relationship to previously established members of X.  The **closure clause** asserts that nothing else is a member of X than what has been given in the first two clauses.  Often the closure clause is not explicitly stated.
 
 For example, let's say you want to define the phrase 'ancestor of George Washington'.  Which 'objects' are members of that set?  The base clause is simple: the parents of George Washington are trivial ancestors of George Washington.  The generating clause is: given that some x is an ancestor of George Washington, the parents of x are also ancestors of George Washington.  The closure clause is: nothing else is an ancestor of George Washington.  That's it!
 
-Let's restate the definition of *noun* in these terms.  The base clause of the definition of a 'noun' is: all atoms are nouns (where an 'atom' is an unsigned integer).  The generating clause is: if x and y are nouns, then the cell `[x y]` is also a noun.  (A 'cell' is an ordered pair of nouns.).  The closure clause is: nothing else is a noun.
+Let's restate the definition of **noun** in these terms.  The base clause of the definition of a 'noun' is: all atoms are nouns (where an 'atom' is an unsigned integer).  The generating clause is: if x and y are nouns, then the cell `[x y]` is also a noun.  (A 'cell' is an ordered pair of nouns.).  The closure clause is: nothing else is a noun.
 
 We belabor this point about recursion only because it's an important concept for having a firm grasp of functional programming.  We'll talk more about recursion at various points in this series.
 
@@ -116,11 +116,11 @@ As for why the dojo deleted your zero: it parses the command line as you type, a
 
 ### Atom Auras
 
-Atoms are nothing more than unsigned integers -- natural numbers -- but it's often useful to represent an atom in a different way.  This is done with an *aura*.  The aura of an atom is type meta-data used by Hoon to determine how to interpret that atom.  It answers the question: What type of information is this atom?
+Atoms are nothing more than unsigned integers -- natural numbers -- but it's often useful to represent an atom in a different way.  This is done with an **aura**.  The aura of an atom is type meta-data used by Hoon to determine how to interpret that atom.  It answers the question: What type of information is this atom?
 
 We use auras because data isn't always represented as a positive decimal number. Sometimes we want to represent data as binary, as text, or as a negative number. Auras allow us to to use such types of data _without changing the underlying atom_.
 
-We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) associated with a few atom auras.
+We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) associated with a few atom auras.
 
 In computer science, a 'literal' is an expression that represents and evaluates to a fixed value.  The default syntax of an atom literal is the German-style decimal notation, as seen above.  Let's look at some other atom literal syntaxes: unsigned binary, unsigned hexadecimal, signed decimal, signed binary and hexadecimal.
 
@@ -204,7 +204,7 @@ Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms, but of the 
 ~sorreg-namtyv
 ```
 
-Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are called *cords*. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
+Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are called **cords**. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
 
 ```
 > 'Howdy!'
@@ -220,7 +220,7 @@ Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are
 10.334.410.032.606.748.633.331.426.632
 ```
 
-Hoon also has *terms*, of the aura `@tas`. Terms are constant values that are used to tag data using the type system. These are strings preceded with a `%` and made up of lower-case letters, numbers, and hyphens, i.e., 'kebab case'.  The first character after the `%` must be a letter.  For example, `%a`, `%hello`, `%this-is-kebab-case123`.
+Hoon also has **terms**, of the aura `@tas`. Terms are constant values that are used to tag data using the type system. These are strings preceded with a `%` and made up of lower-case letters, numbers, and hyphens, i.e., 'kebab case'.  The first character after the `%` must be a letter.  For example, `%a`, `%hello`, `%this-is-kebab-case123`.
 
 ```
 > %howdy
@@ -297,7 +297,7 @@ You'll learn more about atoms and auras in [lesson 2.4](../atoms-auras-and-simpl
 
 ## Cells
 
-There's not much mystery about cells.  The left of a cell is called the *head*, and the right is called the *tail*.  Cells are typically represented in Hoon with square brackets around a pair of nouns.
+There's not much mystery about cells.  The left of a cell is called the **head**, and the right is called the **tail**.  Cells are typically represented in Hoon with square brackets around a pair of nouns.
 
 ```
 > [32 320]
@@ -365,7 +365,7 @@ Without using the dojo, assess whether each of the following pairs of nouns is e
 
 ## Noun Addresses
 
-Nouns have a regular structure that can be exploited to give a unique *address* to each of its 'sub-nouns'.  A sub-noun is a part of a noun that is itself a noun; e.g., `[6 2]` is a sub-noun of `[[1 3] [6 2]]`.  We can also call these 'noun fragments'.
+Nouns have a regular structure that can be exploited to give a unique **address** to each of its 'sub-nouns'.  A sub-noun is a part of a noun that is itself a noun; e.g., `[6 2]` is a sub-noun of `[[1 3] [6 2]]`.  We can also call these 'noun fragments'.
 
 What if you want to refer to a noun fragment, and not the whole thing? For example, what if you want to refer to the `[6 2]` part of `[[1 3] [6 2]]`?  One way is to use the unique address of that noun fragment.
 
