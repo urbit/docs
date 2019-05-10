@@ -3,7 +3,7 @@ title = "Atoms, Auras, and Simple Cell Types"
 weight = 24
 template = "doc.html"
 +++
-Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science%29)) won't be addressed until a later chapter.
+Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29)) won't be addressed until a later chapter.
 
 A type is ordinarily understood to be a set of values.  Examples: the set of all atoms is a type, the set of all cells is a type, and so on.
 
@@ -23,7 +23,7 @@ In the most straightforward sense, atoms simply are unsigned integers.  But they
 
 The piece of type information that determines how Hoon interprets an atom is called an *aura*.  The set of all atoms is indicated with the symbol `@`.  An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal.  Accordingly, the Hoon type system does more than track sets of values.  It also tracks certain other relevant metadata about how those values are to be interpreted.
 
-How is aura information generated so that it can be tracked?  One way involves *type inference*.  In certain cases Hoon's type system can infer the type of an expression using syntactic clues.  In the most straightforward case of type inference, the expression is simply data as a [literal](https://en.wikipedia.org/wiki/Literal_(computer_programming%29).  Hoon recognizes the aura literal syntax and infers that the data in question is an atom with the aura associated with that syntax.
+How is aura information generated so that it can be tracked?  One way involves *type inference*.  In certain cases Hoon's type system can infer the type of an expression using syntactic clues.  In the most straightforward case of type inference, the expression is simply data as a [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29).  Hoon recognizes the aura literal syntax and infers that the data in question is an atom with the aura associated with that syntax.
 
 To see the inferred type of a literal expression in the dojo, use the `?` operator.  (Note: this operator isn't part of the Hoon programming language; it's a dojo-only tool.  It's a very useful tool for learning about types in Hoon, however.)
 

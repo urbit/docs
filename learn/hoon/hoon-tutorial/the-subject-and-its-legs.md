@@ -477,7 +477,7 @@ In fact, you may already know how to find the answer.  The subject is a noun and
 
 This noun (or a modified version of it) is the subject used for Hoon expressions entered into the dojo.
 
-We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_(computing%29).  The value for `eny` is different every time it's checked.
+We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_%28computing%29).  The value for `eny` is different every time it's checked.
 
 ```
 > our

@@ -120,7 +120,7 @@ Atoms are nothing more than unsigned integers -- natural numbers -- but it's oft
 
 We use auras because data isn't always represented as a positive decimal number. Sometimes we want to represent data as binary, as text, or as a negative number. Auras allow us to to use such types of data _without changing the underlying atom_.
 
-We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) associated with a few atom auras.
+We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) associated with a few atom auras.
 
 In computer science, a 'literal' is an expression that represents and evaluates to a fixed value.  The default syntax of an atom literal is the German-style decimal notation, as seen above.  Let's look at some other atom literal syntaxes: unsigned binary, unsigned hexadecimal, signed decimal, signed binary and hexadecimal.
 

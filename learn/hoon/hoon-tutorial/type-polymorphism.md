@@ -3,7 +3,7 @@ title = "Type Polymorphism"
 weight = 31
 template = "doc.html"
 +++
-There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_(computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
+There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
 
 One relatively trivial form of polymorphism involves sub-typing.  A gate whose sample is a raw `noun` can accept any Hoon data structure as input -- it's just that the sample will only be treated as a raw noun.  For example, consider the `copy` gate below:
 
@@ -28,7 +28,7 @@ In this lesson we'll go over Hoon's support for more interesting polymorphic fun
 
 Hoon supports type polymorphism at the core level.  That is, each core has certain polymorphic properties that are tracked and maintained as metadata by Hoon's type system.  (See `+$  type` of `hoon.hoon`.)  These properties determine the extent to which a core can be used as an interface for values of various types.
 
-This is rather vaguely put so far.  We can clarify by talking more specifically about the kinds of polymorphism supported in Hoon.  There are two kinds of type polymorphism for cores: [genericity](https://en.wikipedia.org/wiki/Generic_programming), to include certain kinds of of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism); and [variance polymorphism](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science%29), which involves making use of special sub-typing rules for cores.
+This is rather vaguely put so far.  We can clarify by talking more specifically about the kinds of polymorphism supported in Hoon.  There are two kinds of type polymorphism for cores: [genericity](https://en.wikipedia.org/wiki/Generic_programming), to include certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism); and [variance polymorphism](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which involves making use of special sub-typing rules for cores.
 
 If you don't understand these very well, that's okay.  We'll explain them.  Let's begin with the former.
 
@@ -203,7 +203,7 @@ For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each define
   $@(~ [i=item t=(list item)])
 ```
 
-The `+*` rune is especially useful for defining [containers](https://en.wikipedia.org/wiki/Container_(abstract_data_type%29) of various kinds.  Indeed, `list`s, `tree`s, and `set`s are all examples of containers.  You can have a `(list @)`, a `(list ^)`, a `(list *)`, and so on.  Or a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc.  And the same for `set`.
+The `+*` rune is especially useful for defining [containers](https://en.wikipedia.org/wiki/Container_%28abstract_data_type%29) of various kinds.  Indeed, `list`s, `tree`s, and `set`s are all examples of containers.  You can have a `(list @)`, a `(list ^)`, a `(list *)`, and so on.  Or a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc.  And the same for `set`.
 
 One nice thing about containers defined by `+*` is that they nest in the expected way.  Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`.  And so it does:
 

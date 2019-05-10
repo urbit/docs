@@ -53,7 +53,7 @@ there is a risk of losing functional purity; your urbit cannot _guarantee_ that
 the side effects in question actually occur.  What's the solution?
 
 Each urbit is
-[sandboxed](https://en.wikipedia.org/wiki/Sandbox_(computer_security%29) in a
+[sandboxed](https://en.wikipedia.org/wiki/Sandbox_%28computer_security%29) in a
 virtual machine, Vere, which runs on Unix.  Code running in your urbit cannot
 make Unix system calls or otherwise directly affect the underlying platform.
 Strictly speaking, internal urbit code can only change internal urbit state; it

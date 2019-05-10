@@ -552,7 +552,7 @@ This rune is often used for modifying the value of a face whose value was set be
 
 ## Recursion
 
-How do we do loops in Hoon?  Like other functional programming languages Hoon uses [recursion](https://en.wikipedia.org/wiki/Recursion_(computer_science%29).  In rough terms, a recursive function solves a problem in part by calling on itself to solve a slightly easier or smaller case of the same problem.  The self-calling loop continues until the simplified problem is so simple that it has a trivial solution.
+How do we do loops in Hoon?  Like other functional programming languages Hoon uses [recursion](https://en.wikipedia.org/wiki/Recursion_%28computer_science%29).  In rough terms, a recursive function solves a problem in part by calling on itself to solve a slightly easier or smaller case of the same problem.  The self-calling loop continues until the simplified problem is so simple that it has a trivial solution.
 
 Seeing an example will make this process easier to understand.
 

@@ -139,7 +139,7 @@ It's helpful to know *that* Hoon infers the type of any given expression, but it
 
 ### Literals
 
-[Literals](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) are expressions that represent fixed values.  Some examples (with the inferred type on the right):
+[Literals](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) are expressions that represent fixed values.  Some examples (with the inferred type on the right):
 
 ```
 123                   @ud
