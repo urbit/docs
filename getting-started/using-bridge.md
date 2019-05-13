@@ -16,7 +16,7 @@ To use Bridge:
 + Unzip the `.zip` file that you downloaded (`bridge-$version.zip`).
 + Open up your command line interface (Terminal on OSX, Command Prompt on Windows).
 + Navigate to the `bridge-$version` directory, where `$version` is the appropriate version number.
-+ Run this command: `python3 -m http.server 5000 --bind 127.0.0.1 --directory build`
++ Run this command: `python3 -m http.server 5000 --bind 127.0.0.1`
 + You can then use the Bridge app by navigating to `http://localhost:5000` in your internet browser.
 
 **Note:** Bridge allows you both make reads and writes to the Ethereum blockchain. Writing to the blockchain, such as changing your networking keys, will incur a transaction cost that will require you to have some ETH in your address.
