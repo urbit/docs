@@ -32,5 +32,3 @@ $*  ::  bunt (irregular form is *)
 ^.  ::  use gate to transform type
 ^&  ::  zinc (covariant) -- see the docs on advanced types
 ```
-
-Hope this helps!
