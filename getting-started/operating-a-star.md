@@ -27,17 +27,16 @@ Below are some handy operations for the use and maintenance of your star.
 
 ### DNS Proxying
 
-Your star is not aware of its own IP address by default. This means its dependent planets won't get DNS routing.
-
-To provide DNS routing to your star's dependents, you need to set your star's IP address.
-
-+ Wait for the initial post-boot sync to succeed.
-+ Enter `:dns|ip` into the Dojo.
-+ The dojo will prompt you to enter something. Enter your IP address here.
+Previously star operators needed to run `:dns|ip` in the Dojo in order to set up DNS routing with their parent galaxy. This is no longer required.
 
 ### Maintaining Connectivity
 
-Occasionally, your star might lose network connectivity due to a known timer issue. When this happens, enter the `|bonk` command in the Dojo to reset the timer and restore connectivity.
+Occasionally, your star might lose network connectivity due to a known timer issue or by falling out of sync with the Ethereum blockchain. When this happens, there are a few things to try:
+
+1. Enter the `|bonk` command in the Dojo to reset the timer and restore connectivity.
+2. Run `|start %eth-manage`, then `:eth-manage %look-ethnode` to ensure that your star is synced up to the latest block.
+
+When in doubt, contact [support@urbit.org](mailto:support@urbit.org).
 
 ### Escaping a Sponsor
 
