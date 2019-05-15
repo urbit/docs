@@ -27,7 +27,7 @@ We recommend using the Homebrew package manager to run Arvo on MacOS.
 # Bash
 
 brew update
-brew install gcc git gmp libsigsegv libtool meson ninja pkg-config openssl
+brew install -v gcc git gmp libsigsegv libtool meson ninja pkg-config openssl
 git clone https://github.com/urbit/urbit
 cd urbit
 ./scripts/bootstrap
