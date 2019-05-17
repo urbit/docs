@@ -4,36 +4,34 @@ weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
-Pages in this section are guides to getting you started with Urbit.
 
-But first, the absolute basics. Arvo is the name of the Urbit operating system and the name of network. Azimuth is the name of the Urbit identity layer. Urbit is the project as the whole.
+# Getting Started
 
-An instance of the Arvo operating system is called a _ship_. If you want to get on the Arvo network, you need an Azimuth identity, called a _point_.
+Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. Follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
 
-## Urbit Identities
+### [Step 1: Using Bridge](using-bridge)
 
-An Azimuth point functions as an identity and a network address for Arvo. A ship can't use the Arvo network unless it's been booted with the keys registered to a point.
+In order to join the Urbit network, you need an Azimuth point, which acts like an identity and a password for your Urbit ship. Bridge is our client for managing Azimuth points. This guide tells you how to use Bridge to get your point's _keyfile_, which you need to boot your ship.
 
-Points are generally not freely available, so you will need to either purchase one or get one from a friend. To receive one, you will need an Ethereum wallet that supports the BIP39 mnemonic seed functionality, which allows you to access your wallet with a series of dictionary words. Hardware wallets, such as Ledger and TREZOR devices, satisfy this requirement. So do various web-based wallets.
+### [Step 2: Installing Urbit](installing-urbit)
 
-Once you have such a wallet, give your Ethereum address to the person who agreed to give you a point. Have them transfer the point to your address, and continue to the with our guides below.
+The Urbit software is a command-line application that runs the Arvo operating system. This guide walks you through the installation process.
 
-## Guides
+### [Step 3: Booting a Ship](booting-a-ship)
 
-Follow these guides in the order that they are listed.
+This guide teaches you how to get your ship operational and onto the Arvo network.
 
-### [Using Bridge](using-bridge)
+### [Optional: Creating a Development Ship](creating-a-development-ship)
 
-Bridge is our client for managing Azimuth points. This guide will tell you how to use it to get your point's _keyfile_, the item you need to boot your ship booted onto the Arvo network.
+If you want to develop software for Arvo, or if you just want to try the operating system without connecting to the network, this section is for you.
 
-### [Installing Urbit](installing-urbit)
+## Terminology
 
-This guide will tell you everything you need to know about installing our software.
+You've already encountered some new terminology on this page, and you'll encounter more as you proceed with this guide. Let's go over the basics:
 
-### [Booting a Ship](booting-a-ship)
-
-This guide will walk you through the process of getting your ship operational and on the Arvo network.
-
-### [Creating a Development Ship](creating-a-development-ship)
-
-If you just want to do development work with Arvo, and don't need to be on the Urbit network, this section is for you.
+- Arvo is the name of the Urbit operating system.
+- An instance of the Arvo operating system is called a _ship_.
+- Ships communicate with one another over "the Arvo network."
+- Azimuth is an Ethereum-based PKI used to give each ship a unique identity on the Arvo network.
+- An Azimuth identity is called a _point_. You'll need a point to use the Arvo network.
+- Urbit refers to the project as a whole, including Arvo, Azimuth, and other system components.
