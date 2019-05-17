@@ -4,13 +4,12 @@ weight = 2
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
-#### [_alphabetical_](#alphabetical) &nbsp; [_by section_](#by-section)
 
 Documentation for the standard library.
 
-XX
+Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
-## alphabetical
+## Alphabetical
 
 ### a
 
@@ -807,7 +806,7 @@ XX
 [`++zyft:un`](../library/3f/#zyft-un)
 [`++zyrt:un`](../library/3f/#zyrt-un)
 
-## by section
+## By Section
 
 ### 1a: basic arithmetic
 
