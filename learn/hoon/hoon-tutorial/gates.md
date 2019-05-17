@@ -50,7 +50,7 @@ Like all arms, `$` is computed with its parent core as the subject.  When `$` is
 Let's make a gate that takes any unsigned integer (i.e., an atom) as its sample and returns that value plus one as the product.  To do this we'll use the `|=` rune.  We'll bind this gate to the face `inc` for 'increment':
 
 ```
-> =inc |=(a=@ (add 1 a))
+> =inc |=(a=@ +(a))
 
 > (inc 1)
 2
@@ -66,13 +66,13 @@ The gate works as promised -- it takes any number `n` and returns `n + 1`.  Let'
 
 ### The `|=` Rune
 
-We typically use the `|=` rune to create a gate.  In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`.  The first defines the gate's sample (input value type), and the second defines the gate's product (value).
+We typically use the `|=` rune to create a gate.  In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `+(a)`.  The first defines the gate's sample (input value type), and the second defines the gate's product (value).
 
 When we used the `|%` rune in the last lesson we didn't use parentheses because we were writing in "tall form" syntax, whereas here we are writing in "flat form" syntax.  (The latter uses parentheses and is more suitable for shorter snippets of code.)  We'll explain these concepts more thoroughly in lesson 2.2.
 
 In the example gate above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an atom, `@`, meaning that the gate will take as input anything of that type.  The sample is given the face `a`.  With the face it's easier to refer to the sample in later code, if desired.
 
-In `inc`, the product is defined by `(add 1 a)`.  There's not much to it -- it returns the value of `a + 1`!
+In `inc`, the product is defined by `+(a)`.  There's not much to it -- it returns the value of `a + 1`!
 
 The second subexpression after the `|=` rune is used to build the gate's `$` arm.  That's where all the computations go.
 
@@ -251,11 +251,44 @@ We can use `ten(b 25)` to produce a variant of `ten`.  Calling this mutant versi
 175
 ```
 
-Before finishing the lesson let's unbind `ten`:
+Let's unbind `ten`:
 
 ```
 > =ten
 ```
+
+## Looping
+
+Let's examine a new gate.
+
+```
+|=  [a=@ud b=@ud]
+=|  c=@ud
+|-
+?:  =(b 0)
+    c
+$(c (add a c), b (dec b))
+```
+
+This gate takes two arguments and multiplies them together using only `add` and `dec` This is an extremely naive way to do multiplication but let's examine it anyway. 
+
+The first thing worth noticing is the new rune `|-` which you can think of as a looping structure. We're denoting some bit of code that we want to run multiple times. This is a lie but go with it for a moment.
+
+The next few lines should be pretty clear, if `b` is `0` we're going to return `c`.
+When it isn't, we are going to use the irregular form of the `%=` rune, the wide form of this line would look like this.
+
+```
+%=($ c (add a c), b (dec b))
+```
+
+What this rune does is resolve a wing with changes. In this case, and in many you will see, the wing we want to resolve is `$` or the `|-` we are inside. The rest are a set of changes to make to the subject of that wing. We are going to add `a` to `c` and decrement `b` and then run the code again starting from `|-`.
+
+In the next lesson, we'll examine `|-` in more detail.
+
+### Jets
+
+Hoon code is compiled to Nock and Nock is extremely simple and naive in the way a number of things are done. For example, the only mathematical operation Nock has is increment. All other mathematical functions are built out of this. While this is conceptually doable, actually running this code could be unnecessarily slow. This is the reason for jets, a set of functionally identical code that could be run instead of the compiled Nock to speed up execution. To learn more about Jets see [jets doc].
+
 
 ## Exercise 1.5.1 Solution
 
@@ -271,4 +304,4 @@ Write a gate that takes an atom, `a=@`, and which returns double the value of `a
 50
 ```
 
-### [Next Lesson: Multi-gate Cores and Doors](../multi-gate-cores-and-doors)
+### [Recursion](../recursion)
