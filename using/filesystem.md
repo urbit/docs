@@ -1,5 +1,5 @@
 +++
-title = "Introduction to the Filesystem"
+title = "Filesystem"
 weight = 4
 template = "doc.html"
 +++
