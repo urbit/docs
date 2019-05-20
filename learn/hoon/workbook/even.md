@@ -25,7 +25,7 @@ The code above builds a gate. The gate's first argument is a cell provided by Do
 :-  %noun
 ```
 
-This code is the third line of the `%say` "boilerplate, and it produces a `cask` with the head of `%noun`. We could use any `mark` here, but `%noun` is the most generic type, able to fit any data.
+This code is the third line of the `%say` "boilerplate," and it produces a `cask` with the head of `%noun`. We could use any `mark` here, but `%noun` is the most generic type, able to fit any data.
 
 Below we'll examine the the series of `?` runes used.
 
@@ -41,7 +41,7 @@ The first expression is:
 =(0 (mod n 2))
 ```
 
-which simply asks if n is even or not.
+which simply asks if `n` is even or not.
 
 The second expression is:
 
@@ -51,4 +51,4 @@ The second expression is:
         ==
 ```
 
-Again we and two expressions with `?&` the first is just checking if n is greater than or equal to 1. The second we have artificially use the `?!` rune to demonstrate its use. `?!` is a logical NOT operation. We use that on the result of asking if n is greater than 100 to effectively ask if it is less than or equal to 100.
+Again we use the "and" operator on two expressions with `?&` the first is just checking if n is greater than or equal to 1. The second we have artificially use the `?!` rune to demonstrate its use. `?!` is a logical NOT operation. We use that on the result of asking if n is greater than 100 to effectively ask if it is less than or equal to 100.
