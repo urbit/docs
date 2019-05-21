@@ -1,3 +1,9 @@
++++
+title = "Even"
+weight = 8
+template = "doc.html"
++++
+
 Write a generator that takes an integer and checks if it even and between 1 and 100.
 
 ```

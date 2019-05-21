@@ -1,3 +1,9 @@
++++
+title = "Fibonacci"
+weight = 9
+template = "doc.html"
++++
+
 In this example, we will write a generator that produces a list of Fibonacci numbers up to `n`.
 
 ```
