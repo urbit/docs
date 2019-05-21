@@ -5,8 +5,6 @@ sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
 
-# Getting Started
-
 Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. Follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
 
 ### [Step 1: Using Bridge](using-bridge)
