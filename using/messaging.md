@@ -7,8 +7,9 @@ Talk is the built-in frontend for the Urbit messaging and notifications
 protocol, Hall. Today we use Hall to chat and coordinate, but it's really
 a general purpose piece of infrastructure.
 
-For the time being come join us in `/urbit-help` by using the
-'quickstart' section below.
+For the time being come join us in `~dopzod/urbit-help` by using the
+'quickstart' section below. `~dopzod` is the host ship, and `/urbit-help` is the
+channel on that ship.
 
 Today, Hall is sort of like a distributed, encrypted Slack that can be
 used from the CLI and the browser. There’s no central Hall server.
@@ -27,45 +28,32 @@ take a look at its [documentation](../hall).
 ## Quickstart
 
 The most common use of talk right now is as a single-instance of Slack: one main
-channel (`/urbit-help`) and direct messages. Everyone is more than welcome
-in `/urbit-help`. It's the place to get help, ask questions and chat about
+channel (`~dopzod/urbit-help`) and direct messages. Everyone is more than welcome
+in `~dopzod/urbit-help`. It's the place to get help, ask questions and chat about
 Urbit in general.
 
 There are two ways of using Talk: from the terminal running the Urbit process,
 or through a web UI available at `http://localhost:8080/~~/talk`. This
 quick-start guide will cover the first method.
 
-##### Joining a Channel
+### Joining a Channel
 
 In Hall, a medium for a message is called a _circle_. There are four types of
 circles, but we for now we'll be dealing with the _channel_: a publicly
 accessible chatroom for general use. We'll discuss the other three
 kinds in the [manual](#manual) section.
 
-Let's join the `/urbit-help` channel. Use `ctrl-x` to switch from Dojo to Talk.
-Then, :
+Let's join the `~dopzod/urbit-help` channel. Use `ctrl-x` to switch from Dojo to Talk.
+Then:
 
 ```
-~your-urbit:talk> ;join /urbit-help
+~your-urbit:talk> ;join ~dopzod/urbit-help
 ```
 
-You'll see something like:
+Scrolling down your terminal window, you'll probably see the playback of
+previous `~dopzod/urbit-help` messages that you missed.
 
-```
---------------| ;join /urbit-help
---------------| :: onn /urbit-help
---------------| bound '=' {[hos=~binzod nom=%urbit-help]}
---------------| new = /urbit-help
---------------| /urbit-help: cap: For Urbit-related discussion. Politically
-              | correct and safe for work. Don't be rude.
---------------| /urbit-help: fit: caps:n unic:n
-~your-urbit:talk=
-```
-
-Scrolling down your terminal window, you'll probably also see the playback of
-previous `/urbit-help` messages that you missed.
-
-Post a line to `/urbit-help`:
+Post a line to `~dopzod/urbit-help:`
 
 ```
 ~your-urbit:talk= Hello, world!
@@ -77,7 +65,7 @@ You'll see your message printed below messages from others that came before it:
 ~your-urbit= Hello, world!
 ```
 
-##### Direct Messaging
+### Direct Messaging
 
 To send a direct message to someone, first set your audience:
 
@@ -97,10 +85,10 @@ Now you and `~talsur-todres` can exchange messages directly.
 ~your-urbit:talk[~talsur-todres] Hey buddy!
 ```
 
-To set your audience back to `/urbit-help`:
+To set your audience back to `~dopzod/urbit-help`:
 
 ```
-~your-urbit:talk[~talsur-todres] ;/urbit-help
+~your-urbit:talk[~talsur-todres] ;~dopzod/urbit-help
 ```
 
 You'll see your prompt change back:
@@ -109,7 +97,7 @@ You'll see your prompt change back:
 ~your-urbit:talk=
 ```
 
-You can also use the ASCII "glyph" assigned to your `/urbit-help` circle as a shortcut:
+You can also use the ASCII "glyph" assigned to your `~dopzod/urbit-help` circle as a shortcut:
 
 ```
 ~your-urbit:talk[~talsur-todres] ;=
@@ -121,7 +109,7 @@ You can also use the ASCII "glyph" assigned to your `/urbit-help` circle as a sh
 Use `;leave` to unsubscribe from a channel:
 
 ```
-~your-urbit:talk= ;leave /urbit-help
+~your-urbit:talk= ;leave ~dopzod/urbit-help
 ```
 
 The web UI ships as compiled JavaScript on your urbit, but has its own
@@ -157,7 +145,7 @@ general use.
 A post can be a variety of different data structures. Let's look at the
 ones you can use from within Talk: lines, URLs, Hoon and replies.
 
-##### Lines
+#### Lines
 
 A line is simply a string of text. Depending on the filtering rules set
 by the circle's host, these may or may not include uppercase and Unicode
@@ -175,7 +163,7 @@ will print as
 ~your-urbit sends a message.
 ```
 
-##### URLs
+#### URLs
 
 A URL is any valid URL.
 
@@ -183,7 +171,7 @@ A URL is any valid URL.
 ~your-urbit:talk= https://example.com/
 ```
 
-##### Hoon
+#### Hoon
 
 You can use Talk to evaluate Hoon code and share the result with everyone in a
 Hall circle. To do so, preface your Hoon with `#`.
@@ -199,7 +187,7 @@ will print as
 4
 ```
 
-##### Replies
+#### Replies
 
 To indicate what you're saying is in direct response to a specific
 message, select the message (see Activating Lines below) and type your
@@ -265,7 +253,7 @@ As mentioned before, any urbit can host any number of circles. Existing circles
 can be deleted or modified with various commands. All commands in this section
 shoild be sent from the `talk>` prompt.
 
-###### Create
+#### Create
 
 Syntax: `;create [type] %name 'description'`
 
@@ -306,7 +294,7 @@ To delete our example above:
 sampel-palnet:talk> ;delete %coolbox 'people sent uncool messages'
 ```
 
-###### Change Description
+#### Change Description
 
 Syntax: `;depict %name 'description'`
 
@@ -319,7 +307,7 @@ sampel-palnet:talk> ;depict %coolbox 'cool messages only. NO EXCEPTIONS.'
 ```
 
 <span id="filter"></span>
-###### Filter
+#### Filter
 
 Syntax: `;filter %name [capitals] [unicode]`
 
@@ -344,7 +332,7 @@ And we get the output:
 --------------| %coolbox: fit: caps:Y unic:n
 ```
 
-###### Invite
+#### Invite
 
 Syntax: `;invite %name ~someone`
 
@@ -358,7 +346,7 @@ For example:
 ~sampel-palnet:talk> ;invite %coolbox ~lodleb-ritrul
 ```
 
-###### Banish
+#### Banish
 
 Syntax: `;banish %name ~someone`
 
@@ -366,7 +354,7 @@ Removes someone from your circle `%name`. If they were previously invited,
 removes them from the whitelist.
 Can also banish multiple ships at once, `~comma, ~separated`.
 
-###### Source
+#### Source
 
 Syntax: `;source %name ~other/circle`
 
@@ -379,7 +367,7 @@ For example:
 ~sampel-palnet:talk> ;source %coolbox ~marzod/urbit-help
 ```
 
-###### Unsource
+#### Unsource
 
 Syntax: `;unsource %name ~other/circle`
 
@@ -396,14 +384,14 @@ For example:
 If you have joined a circle, you can make this information publicly
 available to help others find that circle as well.
 
-###### Show Membership
+#### Show Membership
 
 Syntax: `;show ~some/circle`
 
 Adds a circle to your public membership list on your Hall profile. Hall profiles
 are not used yet.
 
-###### Hide Membership
+#### Hide Membership
 
 Syntax: `;hide ~some/circle`
 
@@ -415,19 +403,19 @@ profiles are not used yet.
 You'll see status notifications when people enter or leave circles you're
 subscribed to.
 
-###### Notifications Off
+#### Notifications Off
 
 Syntax: `;set quiet`
 
 Turn off status (and config) notifications.
 
-###### Notifications On
+#### Notifications On
 
 Syntax: `;unset quiet`
 
 Turn on status (and config) notifications.
 
-###### Who
+#### Who
 
 Syntax: `;who`
 
@@ -440,7 +428,7 @@ For example:
 ~sampel-palnet:talk> ;who ~marzod/urbit-help
 ```
 
-###### Attend
+#### Attend
 
 Syntax: `;attend ~some/circle [presence]`
 
@@ -459,7 +447,7 @@ For example:
 ~sampel-palnet:talk> ;attend ~marzod/urbit-help idle
 ```
 
-###### Set Display Name
+#### Set Display Name
 
 Syntax: `;name ~some/circle 'my handle'`
 
@@ -473,7 +461,7 @@ An audience consists of one or more messaging targets. These can be
 circles or ships. (In the latter case, it's secretly the `~ship/inbox`
 circle.)
 
-#### Circle Glyphs
+### Circle Glyphs
 
 Glyphs are found at the end of your prompt to as a quick indicator of where
 your messages will be sent.
@@ -510,7 +498,7 @@ the prompt instead. Here we're talking directly to `~dannum-mitryl`:
 ~sampel-palnet:talk[~dannum-mitryl]
 ```
 
-###### Bind
+#### Bind
 
 Syntax: `;bind [glyph] /circle-name`
 
@@ -522,7 +510,7 @@ For example:
 ~sampel-palnet:talk> ;bind + /my-circle
 ```
 
-###### Unbind
+#### Unbind
 
 Syntax: `;unbind [glyph] /circle-name`
 
@@ -550,31 +538,31 @@ There are a few special-purpose glyphs:
 
 ### Configuration
 
-###### Set Audience
+#### Set Audience
 
 `;~ship/circle`
 
 Set audience to `~ship/circle`.
 
-###### Set Audience by Glyph
+#### Set Audience by Glyph
 
 Syntax: `;[glyph]`
 
 Set audience to the circle previously bound to the chosen glyph.
 
-###### Set Audience to Ship
+#### Set Audience to Ship
 
 syntax `;~ship`
 
 Set audience to another ship.
 
-###### Set Audience to Own Circle
+#### Set Audience to Own Circle
 
 Syntax: `;%circle`
 
 Set audience to a circle on your own ship
 
-###### Set Audience + Send Message
+#### Set Audience + Send Message
 
 Syntax: `;~dannum-mitryl this is a private message`
 
@@ -589,44 +577,44 @@ Your audience is configured with regard to the following rules (in order):
 
 ### Local nicknames
 
-###### See Nicknames
+#### See Nicknames
 
 Syntax: `;nick`
 
 List all local nicknames.
 
-###### Find Nickname
+#### Find Nickname
 
 Syntax: `;nick ~some-urbit`
 
 Look up a nickname using the known ship-name.
 
-###### Reverse Find Nickname
+#### Reverse Find Nickname
 
 syntax: `;nick plato`
 
 Find a ship's name using its nickname.
 
-###### Set Nickname
+#### Set Nickname
 
 Syntax: `;nick ~some-urbit plato`
 
 Create a new nickname.
 
-###### Clear Nickname
+#### Clear Nickname
 
 Syntax: `;nick ~some-urbit ~`
 
 Clear an assigned nickname.
 
-###### Display Nicks, Not Ship-Names
+#### Display Nicks, Not Ship-Names
 
 Syntax: `;set nicks`
 
 Show nicknames instead of ship-names. If no local nickname is set, uses
 that user's handle. If the user has no handle, just the urbit name.
 
-###### Display Ship-Names, Not Nicks
+#### Display Ship-Names, Not Nicks
 
 Syntax: `;unset nicks`
 
@@ -638,38 +626,38 @@ phonebook.
 
 ### Miscellaneous configuration
 
-###### Show Timestamps
+#### Show Timestamps
 
 Syntax: `;set showtime`
 
 Show the timestamp for each message.
 
-###### Hide Timestamps
+#### Hide Timestamps
 
 Syntax: `;unset showtime`
 
 Stop showing the timestamp for each message.
 
-###### Change Time Zone
+#### Change Time Zone
 
 Syntax: `;set timezone [+/-][hours]`
 
 Adjust the display of the timestamps to a specific timezone. Relative to UTC.
 
-###### Sound Notification On
+#### Sound Notification On
 
 Syntax: `;set notify`
 
 Emit a terminal bell sound if your six-syllable ship name is mentioned in
 a message.
 
-###### Sound Notification Off
+#### Sound Notification Off
 
 Syntax `;unset notify`
 
 Do not notify when your ship name is mentioned.
 
-###### Set Width
+#### Set Width
 
 Syntax: `;set width [number]`
 

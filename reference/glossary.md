@@ -440,7 +440,7 @@ _More information on Hall can be found [here](/docs/learn/arvo/arvo-internals/ha
   specifically, it’s a named collection of messages created by and hosted on a
   ship’s Hall, usually represented as `~ship-name/circle-name`. On Talk,
   Urbit’s built-in chat front-end, the first circle that you will likely
-  encounter is `/urbit-help`.
+  encounter is `~dopzod/urbit-help`.
 
 ### Hood
 

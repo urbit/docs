@@ -173,14 +173,6 @@ Applications that use Hall, especially clients, are encouraged to use the defaul
 
 As an example, Talk operates like this, serving as an interface for reading from and managing the user's mailbox. Local stories are subscribed to through the `inbox`, which ends up containing all messages the user receives.
 
-### Federation
-
-Some places, like `urbit-help`, will want to be easily accessible to everyone on the network, and actually support the load that comes with that. Both of these desires can be achieved through federation.
-
-With federation, stories and any changes to them trickle down from ~zod, to other galaxies, to their stars. Only changes to messages and presence can also move upstream, from stars, to galaxies, to ~zod (and then back down again).
-
-This way, all planets and comets will be able to subscribe to `/urbit-help` (that is, the `urbit-help` circle on their parent ship) and get all updates on the story, regardless of where on the network they originated.
-
 ### Public membership
 
 To aid in discoverability of circles, it is possible for users to make their participation in any given circle public. This data can then be used by things like profile widgets, or read out directly by other users.
