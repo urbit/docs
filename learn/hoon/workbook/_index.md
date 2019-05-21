@@ -7,16 +7,16 @@ template = "sections/docs/chapters.html"
 The Workbook is the place to sharpen your Hoon skills. Each entry in the
 Workbook is a code walkthrough followed by exercises.
 
-- the [List of Numbers](list) example will familiarize you with the basic components and structure of a Hoon program. If you're brand new, start here.
+- the [List of Numbers](./docs/learn/hoon/workbook/list.md) example will familiarize you with the basic components and structure of a Hoon program. If you're brand new, start here.
 
-- The [Caesar Cipher](caesar) shows you how to build a simple method of message obfuscation.
+- The [Caesar Cipher](./docs/learn/hoon/workbook/caesar.md) shows you how to build a simple method of message obfuscation.
 
-- The [Recursion](recursion) walkthrough will explain common patterns of recursion in programming and how to implement them in Hoon.
+- The [Recursion](./docs/learn/hoon/workbook/recursion.md) walkthrough will explain common patterns of recursion in programming and how to implement them in Hoon.
 
-- The [Digits](digits) example demonstrates how to decompose a number into a list of its digits.
+- The [Digits](./docs/learn/hoon/workbook/digits.md) example demonstrates how to decompose a number into a list of its digits.
 
-- The [Magic 8-Ball](eightball) example emulates everyone's favorite decision-making machine.
+- The [Magic 8-Ball](./docs/learn/hoon/workbook/eightball.md) example emulates everyone's favorite decision-making machine.
 
-- The [Traffic-light](traffic-light) example demonstrates how to creates a state machine in Hoon.
+- The [Traffic-light](./docs/learn/hoon/workbook/traffic-light.md) example demonstrates how to creates a state machine in Hoon.
 
-- The [Bomb-defusing](bomb) exercise shows how to program, well, a bomb-defusing scenario.
+- The [Bomb-defusing](./docs/learn/hoon/workbook/bomb.md) exercise shows how to program, well, a bomb-defusing scenario.

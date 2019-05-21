@@ -159,4 +159,4 @@ The product of the `$( )` call on line 8 is another list.  It essentially says t
 And that's it!
 
 
-### [Next Lesson: Hoon Syntax](../hoon-syntax)
+### [Next Lesson: Hoon Syntax](./docs/learn/hoon/hoon-tutorial/hoon-syntax.md)

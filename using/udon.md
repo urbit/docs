@@ -40,7 +40,7 @@ Before starting, make sure that your urbit is
 [mounted to Unix](https://urbit.org/docs/using/setup/)
 
 To host Udon and other kinds of files, your ship also has a
-web-server, called [Eyre](https://urbit.org/docs/using/web/), that can be found
+web-server, called [Eyre](./docs/learn/arvo/eyre.md), that can be found
 at `http://localhost:8080/` if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. If you can't find your ship on one of these for some reason, try the
@@ -50,7 +50,7 @@ next one. When a ship starts, it will print a message like
 That server has access to source files located in `/<your-urbit>/home/web` and
 any sub-folders thereof (except for `/home/web/pages`, which has special
 rendering rules.) Your ship's `%home` desk is served by default. You can
-[change](https://urbit.org/docs/using/web/) which desk you're serving, however.
+[change](./docs/learn/arvo/eyre.md) which desk you're serving, however.
 
 Everything in the `/<your-urbit>/home/web/` directory, with the exception of
 `/home/web/pages`, knows how to interpret and files of `.udon` type. So, to

@@ -3,7 +3,7 @@ title = "Using Bridge"
 weight = 1
 template = "doc.html"
 +++
-[Bridge](https://github.com/urbit/bridge) is the client we built for interacting with [Azimuth](/docs/pki), the Urbit PKI, and managing your Azimuth identities, called _points_. Importantly, Bridge also allows you to generate a keyfile that you will need to boot your ship so that it can use the Arvo network.
+[Bridge](https://github.com/urbit/bridge) is the client we built for interacting with [Azimuth](./docs/concepts/azimuth/_index.md), the Urbit PKI, and managing your Azimuth identities, called _points_. Importantly, Bridge also allows you to generate a keyfile that you will need to boot your ship so that it can use the Arvo network.
 
 This guide assumes that you own an Azimuth point, or that you have found someone to send an Azimuth point to your Ethereum address and are looking to claim it.
 
@@ -56,4 +56,4 @@ From the detail page associated with your point, click the `Generate Arvo Keyfil
 
 Click `Generate ->`, which will download a keyfile onto your machine.
 
-With that keyfile in hand, you can now exit Bridge, and continue to the guide to [installing Arvo](../installing-urbit).
+With that keyfile in hand, you can now exit Bridge, and continue to the guide to [installing Arvo](./docs/getting-started/installing-urbit.md).

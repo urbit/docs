@@ -393,4 +393,4 @@ Each of the `=.` expressions 'modifies' `num` by replacing the old `num` core wi
 
 For more on how to use cores as state machines see the next lesson.
 
-### [Next Lesson: Cores Again](../cores-again)
+### [Next Lesson: Cores Again](./docs/learn/hoon/hoon-tutorial/cores-again.md)

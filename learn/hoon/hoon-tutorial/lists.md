@@ -383,4 +383,4 @@ Run in dojo:
 33
 ```
 
-### [Next Lesson: Trees, Sets, and Maps](../trees-sets-and-maps)
+### [Next Lesson: Trees, Sets, and Maps](./docs/learn/hoon/hoon-tutorial/trees-sets-and-maps.md)

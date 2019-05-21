@@ -493,8 +493,8 @@ see what its value is.
 
 The first line, `=+  wid=(met 3 p.bem.gas)`, combines a new noun with the
 subject and gives it the face `wid`. This noun is produced by the the
-standard-library function [`met`](/docs/reference/library/2c), which measures the number of
-[blocks](/docs/reference/library/1c/) of size `a` within `b`. Blocks are units that have a
+standard-library function [`met`](./docs/reference/library/2c.md), which measures the number of
+[blocks](./docs/reference/library/1c.md) of size `a` within `b`. Blocks are units that have a
 bitwidth of `2^a`. So, in this case, it measures how many bytes (blocks of size
 3 are bitwidths of 8; `2^3 = 8`) are fully contained in your ship's address.
 
@@ -676,7 +676,7 @@ valid lists for the `;*  ?:  show-list` expression to resolve.
 You should now have foundational knowledge for making web pages with Sail. There
 is, of course, more to learn. If you’re curious, there’s more advanced
 resources out there.
-The [Ford manual](https://urbit.org/docs/arvo/internals/ford/runes/)
+The [Ford manual](./docs/learn/arvo/ford.md)
 can show you how to access various ship resources for user in your pages. To
 learn more about how the renderer works, take a look at the
 `/home/ren/urb.hoon` file inside your urbit.

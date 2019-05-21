@@ -148,7 +148,7 @@ Another way to cast for the type of the parent core of an arm is to use `_+>.$`.
 
 But what does it mean?  First, the `_` indicates the irregular form of the `$_` rune.  That is, `_+>.$` evaluates `+>.$` and produces a type from the resulting noun.
 
-What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](../arms-and-cores), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
+What is `+>.$`?  This is a wing of two limbs, `+>` and `$`.  As you saw in [section 1.4](content/docs/learn/hoon/hoon-tutorial/arms-and-cores.md), `+>` is the lark syntax for `+7`, i.e., address space `7`.  And `$` is the name of the lone arm in a gate.  Whenever an arm name is used in a wing expression and isn't the left-most limb in the series, it evaluates to its parent core.  The parent core of `$` is the gate itself.
 
 Thus, `+>.$` evaluates to `+7` of the gate containing `$`.  For our `plus` arm, the gate in question is the one defined by:
 
@@ -794,4 +794,4 @@ Save this as `carddeal.hoon` in `/gen` of your urbit's pier and run in the dojo:
 
 You get a different set of hands each time you run the generator.
 
-### [Next Lesson: Lists](../lists)
+### [Next Lesson: Lists](./docs/learn/hoon/hoon-tutorial/lists.md)
