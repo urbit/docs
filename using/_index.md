@@ -11,6 +11,5 @@ This section contains guides to using your urbit.
 - [Shell](./docs/using/shell.md) is a guide to using Dojo, our command-line interface.
 - [Introduction to the Filesystem](./docs/using/filesystem.md) explains the basics of using use Clay, our revision-control filesystem.
 - [Source Layout](./docs/using/layout.md) walks you through the various directories of the Arvo operating system.
-- [Sail](./docs/using/sail.md) is a guide to Sail: Hoon markup that's used to build web pages with XML.
-- [Udon](./docs/using/udon.md) is a guide to Udon, which is our take on Markdown.
+- [Sail and Udon](./docs/using/sail-and-udon.md) is a guide to Sail: Hoon markup that's used to build web pages with XML and Udon, which is our take on Markdown.
 - [Generators](./docs/using/generators.md) will explain how to use the "generator," a kind of file that's the easiest way to run Hoon programs.

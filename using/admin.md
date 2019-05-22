@@ -164,7 +164,7 @@ moon: ~faswep-navred-sampel-palnet
 and does not need editing to be used with the `-k` option.
 
 You can use the resulting output in the same installation flow from the
-[Booting a Ship](./docs/getting-started/booting-a-ship/) guide, following the same scheme as for booting a planet. That scheme is:
+[Booting a Ship](./docs/getting-started/booting-a-ship.md) guide, following the same scheme as for booting a planet. That scheme is:
 
 ```
 $ urbit -w <moonname> -G <key> -c <piername>

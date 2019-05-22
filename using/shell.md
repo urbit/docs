@@ -256,7 +256,7 @@ Apps usually expect marked data, so `&` is often used here.
 
 ##### `*` - Save in `%clay`
 
-Save a new `.udon` ([Udon](./docs/using/udon.md)) file in `web`:
+Save a new `.udon` ([Udon](./docs/using/sail-and-udon.md)) file in `web`:
 
 ```
 ~your-urbit:dojo> *%/web/foo/udon '# hello'
