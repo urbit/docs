@@ -20,3 +20,7 @@ Workbook is a code walkthrough followed by exercises.
 - The [Traffic-light](./docs/learn/hoon/workbook/traffic-light.md) example demonstrates how to creates a state machine in Hoon.
 
 - The [Bomb-defusing](./docs/learn/hoon/workbook/bomb.md) exercise shows how to program, well, a bomb-defusing scenario.
+
+- The [Even](./docs/learn/hoon/workbook/even.md) example shows how to take an integer and checks if it is even and between 1 and 100.
+
+- The [Fibonacci](./docs/learn/hoon/workbook/fibonacci.md) example shows how to write a generator that produces a list of Fibonacci numbers.

@@ -120,9 +120,6 @@ our HTTPS isn't audited / battle tested, we just call it "secure" HTTPS.
 You can find that on `8443`. Or `8444` (and so on) if you're already
 running something on `8443`.
 
-A complete walkthrough of the Urbit web interface is
-[here](./docs/learn/arvo/eyre.md).
-
 ## Moons
 
 Urbit namespace is distributed by having parent nodes sign the keys for child
@@ -166,9 +163,8 @@ moon: ~faswep-navred-sampel-palnet
 `<keyfile>` will be at `path/to/sampel-palnet/.urb/put/moon.key`
 and does not need editing to be used with the `-k` option.
 
-You can use the resulting output in the same installation flow from
-[install](./docs/getting-started/booting-a-ship.md) and [setup](../setup), following the same scheme as
-for booting a planet. That scheme is:
+You can use the resulting output in the same installation flow from the
+[Booting a Ship](./docs/getting-started/booting-a-ship/) guide, following the same scheme as for booting a planet. That scheme is:
 
 ```
 $ urbit -w <moonname> -G <key> -c <piername>
