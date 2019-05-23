@@ -12,13 +12,13 @@ This document will be divided into two main sections: the Sail guide and the Udo
 
 ## Table of Contents
 
-- #### [Sail: A Guide](#sail)
+- [Sail: A Guide](#sail)
 
-- #### [Udon: A Guide](#udon)
+- [Udon: A Guide](#udon)
 
-- #### [Udon: A Simple  Blog](#blog)
+- [Udon: A Simple  Blog](#blog)
 
-- #### [Udon: A Static Site](#static)
+- [Udon: A Static Site](#static)
 
 ## Getting Started
 

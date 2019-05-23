@@ -11,11 +11,11 @@ Hall is the Urbit messaging and notifications protocol. This document details Ha
 
 ## Table of contents
 
-- #### [Hall Architecture](#architecture)
+- [Hall Architecture](#architecture)
 
-- #### [The Hall Interface](#interface)
+- [The Hall Interface](#interface)
 
-- #### [The New Gall Model](#new-gall)
+- [The New Gall Model](#new-gall)
 
 # Hall Architecture
 

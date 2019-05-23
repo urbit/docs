@@ -125,7 +125,6 @@ Now you can tell your friends to `;join ~your-urbit/my-channel`.
 
 ---
 
-<span id="manual"></span>
 ## Manual
 
 Hall's design is similar in spirit to
@@ -306,7 +305,7 @@ For example:
 sampel-palnet:talk> ;depict %coolbox 'cool messages only. NO EXCEPTIONS.'
 ```
 
-<span id="filter"></span>
+
 #### Filter
 
 Syntax: `;filter %name [capitals] [unicode]`

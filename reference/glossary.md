@@ -9,12 +9,10 @@ from the strange words within.
 As Dijkstra put it: "The purpose of abstraction is not to be vague, but
 to create a new semantic level in which one can be absolutely precise."
 
-<span id="application"></span>
 ### application
 
 Also known as an “app,” an _application_ is a Hoon program that can hold state.
 
-<span id="arm"></span>
 ### arm
 
 An _arm_ is a named, functionally-computed attribute of a [core](#core).
@@ -25,14 +23,14 @@ enclosing [core](#core) itself as the subject.
 There are two kinds of arms: _dry_ and _wet_. Most arms are
 dry.
 
-- ##### dry:
+##### dry
 
   normal, `++`, polymorphic by means of _variance_
 
   For a dry arm, we ask: is the new payload compatible with the old
   payload (against which the core was compiled)?
 
-- ##### wet:
+##### wet
 
   unusual, `+-`, polymorphic by means of _genericity_
 
@@ -43,7 +41,7 @@ dry.
 _See [advanced types](/docs/reference/hoon-expressions/advanced/)_.
 
 
-<span id="arvo"></span>
+
 ### Arvo
 
 The Urbit operating system and kernel. Arvo's state is a pure function of its
@@ -69,7 +67,7 @@ More in-depth information on Arvo can be found
 
 Below are Arvo modules, which are called "vanes".
 
-- ##### Ames
+##### Ames
 
   The networking vane. Ames handles all things UDP. Here live the protocols for
   discovering and interacting with other urbits. It’s also the name for the Urbit
@@ -80,7 +78,7 @@ Below are Arvo modules, which are called "vanes".
   More in-depth information on Ames can be found
   [`here`](.t/docs/learn/arvo/ames.md).
 
-- ##### Behn
+##### Behn
 
   The timing vane. Behn allows for applications to schedule events, which are
   managed in a simple priority queue. For example, Clay, the Urbit filesystem,
@@ -89,7 +87,7 @@ Below are Arvo modules, which are called "vanes".
 
   Behn is located in `/home/sys/vane/behn.hoon` within your urbit.
 
-- ##### Clay
+##### Clay
 
   The filesystem and typed revision-control vane. Think of Clay as a
   continuously synced git. It handles file-change events and maps them from Urbit
@@ -106,7 +104,7 @@ Below are Arvo modules, which are called "vanes".
   of the architecture can be found
   [`here`](./docs/learn/arvo/clay.md).
 
-- ##### Dill
+##### Dill
 
   The terminal-driver vane. You run your urbit in your Unix terminal, and
   Unix sends every event -- such as a keystroke or a change in the dimensions of
@@ -125,7 +123,7 @@ Below are Arvo modules, which are called "vanes".
   More in-depth information on Dill can be found
   [`here`](./docs/learn/arvo/dill.md).
 
-- ##### Eyre
+##### Eyre
 
   The web-server vane. Anything HTTP-related lives here. Unix sends HTTP messages
   though to Eyre, and Eyre produces HTTP messages in response.
@@ -139,7 +137,7 @@ Below are Arvo modules, which are called "vanes".
   More in-depth information on Eyre can be found
   [`here`](./docs/learn/arvo/eyre.md).
 
-- ##### Ford
+##### Ford
 
   The build-system vane. Ford is capable of sequencing generic asynchronous
   computations. Its uses include linking source files into programs, assembling
@@ -154,7 +152,7 @@ Below are Arvo modules, which are called "vanes".
   More in-depth information on Ford can be found
   [`here`](content/docs/learn/arvo/ford.md).
 
-- ##### Gall
+##### Gall
 
   The application-management vane. Userspace apps -- daemons, really -- are
   started, stopped, and sandboxed by Gall. Gall provides developers with a
@@ -179,17 +177,16 @@ optional constant.
 
 An atom type is _warm_ or _cold_ based on whether the constant exists.
 
-- ##### warm:
+##### warm
 
   If the constant is `~` (null), any atom is in the type.
 
-- ##### cold:
+##### cold
 
   If the constant is `[~ atom]`, its only legal value is `atom`.
 
 _See [basic types](./docs/reference/hoon-expressions/basic.md)_
 
-<span id="aura"></span>
 ### aura
 
 An aura is a soft atom type. They appear as strings beginning with `@`. Auras
@@ -293,7 +290,6 @@ least-significant bit first. Represented as the aura `@t`.
     'hello'
 ```
 
-<span id="core"></span>
 ### core
 
 A _core_ is a [cell](#nock-cell) of `[code data]`, where we call the
@@ -301,11 +297,11 @@ code head the _battery_ and the data tail the _payload_. All code-data
 structures in normal languages (functions, objects, modules, etc.)
 translate to cores in Hoon.
 
-- ##### battery
+##### battery
 
   The code-containing head of a core.
 
-- ##### payload
+##### payload
 
   The data-containing tail of a core.
 
@@ -361,7 +357,6 @@ _no_.
 Why? It's fresh, it's different, it's new. And it's annoying. And it
 keeps you on your toes. And it's also just intuitively right.
 
-<span id="gate"></span>
 ### gate
 
 A _gate_ is a [core](#core) with one [arm](#arm) -- Hoon's closest
@@ -371,11 +366,11 @@ in the core) with the argument, and then compute the arm.
 
 The payload of a gate has a shape of `[sample context]`.
 
-- ##### sample
+##### sample
 
   The argument tuple.
 
-- ##### context
+##### context
 
   The subject in which the gate was defined.
 
@@ -433,7 +428,7 @@ such app that uses Hall.
 
 _More information on Hall can be found [here](./docs/learn/arvo/hall.md)._
 
-- ##### circle
+##### circle
 
   A circle is the “audience” of your messages -- who can receive them. It can be
   thought of as a chat channel, but this is a little too narrow. More
@@ -447,7 +442,6 @@ _More information on Hall can be found [here](./docs/learn/arvo/hall.md)._
 _Hood_ orchestrates many of the Urbit initialization systems necessary
 for boot.
 
-<span id="hoon"></span>
 ### Hoon
 
 Hoon is a strict, higher-order typed functional language that compiles itself
@@ -457,8 +451,7 @@ The Hoon source file is located in `/home/sys/hoon.hoon` within your urbit.
 
 _More information can be found in the [hoon](./docs/learn/hoon/_index.md) section._
 
-<span id="mint"></span>
-- ##### Mint
+##### Mint
 
   _Mint_ is the Hoon compiler function. Mint takes the subject type and the
   expression source (a [hoon](#a-hoon), for example) and produces the product
@@ -550,7 +543,6 @@ you desire.
 15
 ```
 
-<span id="limb"></span>
 ### limb
 
 A _limb_ is an attribute or variable reference. A limb is an [arm](#arm) or a
@@ -561,71 +553,58 @@ head-first for either a face named "foo" or a core with an arm of
 "foo". If a face is found, the result is a leg, if a core is
 found, the result is the product of the arm.
 
-- ##### leg
+##### leg
 
   a subexpression, or subtree of the
   [subject](#nock-subject).
 
-- ##### wing
+##### wing
 
   a search path into the subject, composed of
   limbs. Search occurs from right to left (`a.b` means `b` within `a`).
 
 _See [Limbs and wings](./docs/reference/hoon-expressions/limb/_index.md)_
 
-
-<span id="move"></span>
 ### move
 
 A move is the [Arvo](#arvo) equivalent of a syscall.
 
-
-<span id="noun"></span>
 ### noun
 
 In [Nock](#nock) and [Hoon](#hoon), a _noun_ is an atom or a cell.
 
-
-<span id="nock"></span>
 ### Nock
 
 Nock is a Turing-complete, non-lambda combinator interpreter. It's
 Urbit's low-level programming language. Nock is functional and typeless.
 
-<span id="nock-noun"></span>
-- ##### noun
+##### noun
 
   an _atom_ or a _cell_.
 
-<span id="nock-atom"></span>
-- ##### atom
+##### atom
 
   any natural number, including zero.
 
-<span id="nock-cell"></span>
-- ##### cell
+##### cell
 
   any ordered pair of nouns.
 
-<span id="nock-subject"></span>
-- ##### subject
+
+##### subject
 
   a noun - the data against which a _formula_ is evaluated.
 
-<span id="nock-formula"></span>
-- ##### formula
+##### formula
 
   a noun - a function at the nock level.
 
-<span id="nock-product"></span>
-- ##### product
+##### product
 
   a noun - the result of evaluating a formula against a subject.
 
 _See the [Nock definition](./docs/learn/nock/definition.md)._
 
-
-<span id="mark"></span>
 ### mark
 
 A _mark_ is Urbit's version of a MIME type, if a MIME type was an
@@ -701,13 +680,11 @@ whose number is its bottom half. So the planet `~firbyr-napbes`,
 `48.879`, whose parent is `~mun`, `0xef`, `239`. The galaxy at the address of
 `0` is `~zod`.
 
-
-- ##### pier
+##### pier
 
   A ship's _pier_ is its Unix directory.  For planets, the name of the pier is
   usually the planet name.
 
-<span id="structure"></span>
 ### structure
 
 A _structure_ is an idempotent [gate](#gate) (function) that constructs and
@@ -718,7 +695,7 @@ validate untrusted network data.
 
 Here's some common structure terminology:
 
-- ##### bunt:
+##### bunt
 
   A bunt is the default value of a [structure](#structure). It's also a verb;
   to _bunt_ a structure is to produce the bunt of that structure. For example,
@@ -732,11 +709,10 @@ Here's some common structure terminology:
       ''
   ```
 
-- ##### icon: The type of the mold's range.
+##### icon: The type of the mold's range
 
 _See [mold hoons](/docs/reference/hoon-expressions/rune/buc/)._
 
-<span id="rune"></span>
 ### rune
 
 A Hoon _rune_ is a pair of ASCII symbols used to begin a
@@ -753,7 +729,7 @@ a [`hoon`](#a-hoon).
 
 Runes have two syntactic forms, _tall_ and _flat_:
 
-- ##### tall:
+##### tall
 
   multiple lines, no parentheses, two or more spaces between tokens
 
@@ -764,7 +740,7 @@ Runes have two syntactic forms, _tall_ and _flat_:
   4
   ```
 
-- ##### flat:
+##### flat
 
   one line, parentheses, one space between tokens
 
@@ -806,7 +782,6 @@ The head of `+n` is `+2n`, the tail is `+(2n+1)`.
 `+7` is a special address for gates, because the position is defined
 (by convention) as the context of a gate and of all cores.
 
-<span id="talk"></span>
 ### talk
 
 _Talk_ is Urbit's built-in chat app. It’s one example of an app that can be
@@ -826,7 +801,7 @@ All types are assembled out of base types defined in `++type`.
 does type-inference on a program, it assembles complex types out
 of the simpler built-in types.
 
-- ##### nest
+##### nest
 
   `nest` is an internal Hoon function on two types which performs a type
   compatibility test. `nest` produces yes if the
@@ -834,8 +809,7 @@ of the simpler built-in types.
   If `nest` produces no, the Hoon programmer will receive a `nest-fail`
   error. This is one of the most commons errors in Hoon programming.
 
-  _See [advanced types](./docs/reference/hoon-expressions/advanced.md)_.
-  _See [troubleshooting](./docs/reference/troubleshooting.md)_.
+  _See [advanced types](./docs/reference/hoon-expressions/advanced.md)_ and [troubleshooting](./docs/reference/troubleshooting.md).
 
 
 ### Unit
