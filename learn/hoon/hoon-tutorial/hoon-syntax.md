@@ -1,9 +1,8 @@
 +++
-title = "Hoon Syntax"
-weight = 13
+title = "1.3 Hoon Syntax"
+weight = 6
 template = "doc.html"
 +++
-# 1.3 Hoon Syntax
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
@@ -323,4 +322,4 @@ There are a couple useful runes associated with debugging:
 
 But there are more. Check out the aforementioned [troubleshooting](/docs/reference/troubleshooting/) page to see other handy debugging runes and how to use them.
 
-### [Next Lesson: The Subject and Its Legs](../the-subect-and-its-legs)
+### [Next Up: Reading -- Lists](../lists)

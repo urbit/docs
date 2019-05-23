@@ -4,7 +4,8 @@ weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
-This series is designed to teach you Hoon without assuming you have an extensive programming background.  In fact, you should be able to follow much of it even if you have no programming experience at all, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  These lessons are meant for the beginner but they aren't meant to be skimmed.
+
+This series is designed to teach you Hoon without assuming you have an extensive programming background.  In fact, you should be able to follow much of it even if you have no programming experience at all, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  These lessons are meant for the beginner but they aren't meant to be skimmed. Each lesson falls into one of two categories: **readings**, which are prose-heavy explanations of Hoon fundamentals, and **walkthroughs**, which are line-by-line explanations of example programs. Walkthroughs are found between readings, offering a practical implementation of the concepts taught in the reading before.
 
 Chapter 1 introduces and explains the fundamental concepts you need in order to understand Hoon's semantics.
 
@@ -19,11 +20,21 @@ The first three lessons take you through a simple Hoon program, explain Hoon's s
 ### Chapter 1
 
 - [1.1 Setup](setup)
+- [1.1.1 Walkthrough: List of Numbers](list-of-numbers)
 - [1.2 Nouns](nouns)
-- [1.3 The Subject and Its Legs](the-subject-and-its-legs)
-- [1.4 Arms and Cores](arms-and-cores)
+- [1.2.1 Walkthrough: Boolean Branching](boolean-branching)
+- [1.3 Hoon Syntax](hoon-syntax)
+- [1.4 Lists](list)
+- [1.4.1 Walkthrough: Fibonacci Sequence](fibonacci)
 - [1.5 Gates (Hoon Functions)](gates)
-- [1.6 Multi-gate Cores and Doors](multi-gate-cores-and-doors)
+- [1.5.1 Walkthrough: Recursion](recursion)
+- [1.6 The Subject and Its Legs](the-subject-and-its-legs)
+- [1.6.1 Walkthrough: Ackerman Function](ackermann)
+- [1.7 Arms and Cores](arms-and-cores)
+- [1.7.1 Walkthrough: Caesar Cipher](caesar)
+- [1.8 Doors](doors)
+- [1.8.1 Walkthough: Bank Account](bank-account)
+- [1.9 Generators](generators)
 
 ### Chapter 2
 

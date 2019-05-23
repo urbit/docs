@@ -1,4 +1,10 @@
-Write a generator that takes an integer and checks if it even and between 1 and 100.
++++
+title = "1.2.1 Walkthrough: Conditionals"
+weight = 6
+template = "doc.html"
++++
+
+In this lesson, we will write a generator that takes an integer and checks if it is an even number between 1 and 100. This will help demonstrate how boolean (true or false) conditional expressions work in Hoon.
 
 ```
 :-  %say
@@ -13,7 +19,7 @@ Write a generator that takes an integer and checks if it even and between 1 and 
 %.n
 ```
 
-On the very first line, with `:-  %say` we are beginning to create a generator of the `%say` kind. The result of a `%say` generator is a cell with a head of `%say` and tail that is a gate, itself producing a `cask`, a pair of a `mark` and some data. For more information about `%say` generators, see the [Generators](/using/generators) documentation.
+On the very first line, with `:-  %say` we are beginning to create a generator of the `%say` variety. The result of a `%say` generator is a cell with a head of `%say` and tail that is a gate, itself producing a `cask`, a pair of a `mark` and some data. For more information about `%say` generators, see the [Generators](../generators) documentation.
 
 ```
 |=  [* [n=@ud ~] ~]
@@ -52,3 +58,5 @@ The second expression is:
 ```
 
 Again we use the "and" operator on two expressions with `?&` the first is just checking if n is greater than or equal to 1. The second we have artificially use the `?!` rune to demonstrate its use. `?!` is a logical NOT operation. We use that on the result of asking if n is greater than 100 to effectively ask if it is less than or equal to 100.
+
+### [Next Up: Reading -- Hoon Syntax](../hoon-syntax)

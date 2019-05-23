@@ -652,4 +652,4 @@ You can also use more complex wings and modify their values as well:
 
 At this point you should have at least a rough idea of what the subject is, and a fair understanding of how to get legs of the subject using wings.  But legs are only one kind of limb -- we'll talk about arms in the next lesson.
 
-### [Next Lesson: Arms and Cores](../arms-and-cores)
+### [Next Up: Walkthrough -- Ackermann Function](../ackermann)

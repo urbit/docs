@@ -1,6 +1,6 @@
 +++
-title = "Recursion"
-weight = 3
+title = "1.5.1 Walkthrough: Recursion"
+weight = 9
 template = "doc.html"
 +++
 Recursion is a common pattern for solving certain problems in most programming
@@ -76,7 +76,7 @@ expression, as illustrated by `(factorial 4)`. Once the expression cannot be
 expanded out further, the operations work backwards, successively feeding values
 into the `mul` functions behind them.
 
-##### Tail-Call Optimization
+#### Tail-Call Optimization
 
 Our last example isn't a very efficient use computing resources. The
 pyramid-shaped illustration approximates what's happening on the **call stack**, a
@@ -119,7 +119,7 @@ last statement of a parent can reuse the same frame instead of needing to
 add new ones onto the stack. If we write our code properly, we can use a single
 frame that simply has its values replaced with each recursion.
 
-##### A Tail-Recursive Gate
+#### A Tail-Recursive Gate
 
 With a bit of refactoring, we can write a version of our factorial gate that
 _is_ tail-recursive and can take advantage of this feature:
@@ -170,7 +170,7 @@ before the call, this version is properly tail-recursive. We don't need to do
 anything to the result of the recursion except recurse it again. That means that
 each iteration can be replaced instead of held in memory.
 
-##### A Note on `$`
+#### A Note on `$`
 
 `$` (pronounced "buc") is, in its use with recursion, a reference to the gate that we are inside
 of. That's because a gate is just a core with a single arm named `$`. The
@@ -190,3 +190,5 @@ skips the first match of a name.
 Disks are stacked on a pole by decreasing order of size. Move all of the
 disks from one pole to another with a third pole as a spare, moving one
 disc at a time, without putting a larger disk on top of a smaller disk.
+
+### [Next Up: Reading -- The Subject and its Legs](../lists)

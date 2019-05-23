@@ -1,5 +1,5 @@
 +++
-title = "Type Checking and Type Inference"
+title = "2.2 Type Checking and Type Inference"
 weight = 25
 template = "doc.html"
 +++
@@ -481,25 +481,6 @@ What makes this program is little harder to follow is that it has a recursion ca
 
 Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`.  We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
 
-####  'Samefringe' Exercise
-
-The samefringe program takes two nouns and checks whether they have the same 'fringe', returning 'yes' if they do and 'no' otherwise.  The fringe of a noun is the series of atoms of that noun, in the same order of appearance.  The cell-structure of the noun is disregarded.  For example, `[[3 2] 32]` has the same fringe as `[3 2 32]`, even though they're different nouns; their leaves appear in the same order.
-
-One way to compare noun fringes is to calculate the total fringes of each, then compare afterward.  A better way to do this is to compare both fringes one atom at a time and halt the computation once the two fringes differ.
-
-Write a program named `samefringe.hoon` that solves the problem the 'better' way.  A solution is given at the bottom of the lesson.
-
-```
-> +samefringe [[[11 10] 12] [10 [10 12]]]
-%.n
-
-> +samefringe [[[11 10] 12] [11 [10 12]]]
-%.y
-
-> +samefringe [[[123 [456 [789 123]] 456] 789] [123 456 789 123 456 789]]
-%.y
-```
-
 #### Lists
 
 You learned about lists earlier in the chapter, but we left out a little bit of information about the way Hoon understands list types.
@@ -648,17 +629,6 @@ Save the above code as `listleaf.hoon` and run it from the dojo:
 ~[12 13 33 22 12 11 33]
 ```
 
-#### Insertion Sort Exercise
-
-Write a program that takes a list of `@` and sorts them by value using the [insertion sort](https://en.wikipedia.org/wiki/Insertion_sort) algorithm.  A solution is provided at the end of the lesson.
-
-With insertion sort, you start with a full unsorted list, `(list @)`, and a second sorted list (whose initial value is just the null list, `~`).  Incrementally place each element of the unsorted list into sorted position in the second list, until the first list is empty and the second list is the sorted final list.
-
-```
-> +insertionsort ~[53 287 59 3 29 98 12 0]
-~[0 3 12 29 53 59 98 287]
-```
-
 ### Other Kinds of Type Inference
 
 So far you've learned about four kinds of type inference, using: (1) literals, (2) explicit casts, (3) gate sample definitions, and (4) branch specialization using runes in the `?` family.
@@ -669,39 +639,4 @@ More subtly, the `=+`, `=/`, and `=|` runes modify the subject by pinning values
 
 In general, anything that modifies the subject modifies the type of the subject.  Type inference can work in subtle ways for various expressions.  However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 
-## Exercise Solutions
-
-### Samefringe
-
-```
-|=  [a=* b=*]
-^-  ?
-?:  =(a b)  &
-?@  a  |
-?@  b  |
-?^  -.a
-  $(a [-<.a ->.a +.a])
-?^  -.b
-  $(b [-<.b ->.b +.b])
-?.  =(-.a -.b)  |
-$(a +.a, b +.b)
-```
-
-### Insertion Sort
-
-```
-|=  a=(list @)
-=|  b=(list @)
-|-  ^-  (list @)
-?~  a  b
-%=  $
-  b  |-  ^-  (list @)
-     ?~  b  [i.a b]
-     ?:  (gth i.a i.b)
-       [i.b $(b t.b)]
-     [i.a b]
-  a  t.a
-==
-```
-
-### [Next Lesson: Structures and Complex Types](../structures-and-complex-types)
+### [Next Up: Reading -- Insertion Sort](../insertion)
