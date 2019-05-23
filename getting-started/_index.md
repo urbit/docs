@@ -7,15 +7,15 @@ template = "sections/docs/chapters.html"
 
 Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. Follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
 
-### [Step 1: Using Bridge](using-bridge)
+### [Step 1: Using Bridge](./docs/getting-started/using-bridge.md)
 
 In order to join the Urbit network, you need an Azimuth point, which acts like an identity and a password for your Urbit ship. Bridge is our client for managing Azimuth points. This guide tells you how to use Bridge to get your point's _keyfile_, which you need to boot your ship.
 
-### [Step 2: Installing Urbit](installing-urbit)
+### [Step 2: Installing Urbit](./docs/getting-started/installing-urbit.md)
 
 The Urbit software is a command-line application that runs the Arvo operating system. This guide walks you through the installation process.
 
-### [Step 3: Booting a Ship](booting-a-ship)
+### [Step 3: Booting a Ship](./docs/getting-started/booting-a-ship.md)
 
 This guide teaches you how to get your ship operational and onto the Arvo network.
 

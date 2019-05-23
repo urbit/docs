@@ -177,7 +177,7 @@ of. That's because a gate is just a core with a single arm named `$`. The
 subject is searched depth-first, head before tail, with faces skipped, and
 stopping on the first result. In other words, the first match found in the head
 will be returned. If you wished to refer to the outer `$` in this context, the
-idiomatic way would be to use [`^$`](/docs/reference/rune/ket). The `^` operator
+idiomatic way would be to use [`^$`](./docs/reference/hoon-expressions/rune/ket.md). The `^` operator
 skips the first match of a name.
 
 ### Exercises

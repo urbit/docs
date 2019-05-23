@@ -21,7 +21,7 @@ For this tutorial you'll boot and run what we call a 'comet'.  **Comets** are ur
 
 `~hillyn-pitwet-hasdur-paswer--miszod-rabpex-divrup-fogdur`
 
-Comet names aren't quite as memorable as others, but they're disposable identities that anyone can make for free to join the live network. Thus, comets make the ideal urbit for playing around with Hoon, asking for help from other Urbit devs in [Talk](/docs/using/messaging/) if you need it, and showing off Urbit to your friends.
+Comet names aren't quite as memorable as others, but they're disposable identities that anyone can make for free to join the live network. Thus, comets make the ideal urbit for playing around with Hoon, asking for help from other Urbit devs in [Talk](./docs/using/messaging.md) if you need it, and showing off Urbit to your friends.
 
 ## Booting a Comet
 

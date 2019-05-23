@@ -104,7 +104,7 @@ Ctrl-y    Yank from kill buffer
 ```
 
 Full coverage of the Urbit shell, the Dojo is covered in the
-[Shell walkthrough](../shell/).
+[Shell walkthrough](./docs/using/shell.md).
 
 ## Web
 
@@ -119,9 +119,6 @@ Your urbit serves a simple homepage from `http://localhost:8080` or
 our HTTPS isn't audited / battle tested, we just call it "secure" HTTPS.
 You can find that on `8443`. Or `8444` (and so on) if you're already
 running something on `8443`.
-
-A complete walkthrough of the Urbit web interface is
-[here](../web/).
 
 ## Moons
 
@@ -166,9 +163,8 @@ moon: ~faswep-navred-sampel-palnet
 `<keyfile>` will be at `path/to/sampel-palnet/.urb/put/moon.key`
 and does not need editing to be used with the `-k` option.
 
-You can use the resulting output in the same installation flow from
-[install](../install) and [setup](../setup), following the same scheme as
-for booting a planet. That scheme is:
+You can use the resulting output in the same installation flow from the
+[Booting a Ship](./docs/getting-started/booting-a-ship.md) guide, following the same scheme as for booting a planet. That scheme is:
 
 ```
 $ urbit -w <moonname> -G <key> -c <piername>
@@ -197,7 +193,7 @@ $ urbit -w faswep-navred-sampel-palnet -k <keyfile> -c mymoon
 
 Moons are automatically synced to their parent `%kids` desk, and can control
 applications on their parent planet using `|link`.  You can read more about
-those operations in the [filesystem](../filesystem) and [console](../shell)
+those operations in the [filesystem](./docs/using/filesystem.md) and [console](./docs/using/shell.md)
 walkthroughs, respectively.
 
 

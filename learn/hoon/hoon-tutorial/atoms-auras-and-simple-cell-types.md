@@ -17,7 +17,7 @@ In this lesson we'll cover (1)-(4) as they pertain to atoms and simple cell type
 
 ## Atoms and Auras
 
-In [lesson 1.2](../nouns) we defined what an atom is: any unsigned integer.  In this lesson we'll expand on that discussion, going over how Hoon's type system implements auras.
+In [lesson 1.2](./docs/learn/hoon/hoon-tutorial/nouns.md) we defined what an atom is: any unsigned integer.  In this lesson we'll expand on that discussion, going over how Hoon's type system implements auras.
 
 In the most straightforward sense, atoms simply are unsigned integers.  But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more.  Every atom is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each atom, and this info tells Hoon how to interpret the atom in question.
 

@@ -20,7 +20,7 @@ a correct Hoon file.  These values are always correct.
 Usually, the line and column tell you everything you need to
 know.  But the worst-case scenario for a syntax error is that,
 somewhere above, you've confused Hoon's tall form by using the
-wrong fanout for a rune.  For example, `%+` ([**cenlus**](/docs/reference/hoon-expressions/rune/cen#cenlus),
+wrong fanout for a rune.  For example, `%+` ([**cenlus**](./docs/reference/hoon-expressions/rune/cen.md#cenlus),
 a function call whose sample is a cell) has three subhoons:
 
 ```
@@ -100,7 +100,7 @@ means you tried to pound a square peg into a round hole.
 What was the peg and what was the hole?  Hoon doesn't tell you by
 default, because moral fiber, and also because in too many cases
 trivial errors lead to large intimidating dumps.  However, you
-can use the `~!` rune ([**sigzap**](/docs/reference/hoon-expressions/rune/sig#sigzap)) to print the type of
+can use the `~!` rune ([**sigzap**](./docs/reference/hoon-expressions/rune/sig.md#sigzap)) to print the type of
 any hoon in your stack trace.
 
 For instance, you wrote `(foo bar)` and got a `nest-fail`.  Change
@@ -130,7 +130,7 @@ function.
 
 These are errors caused by type inference in pattern matching.
 `mint-vain` means this hoon is never executed.  `mint-lost` means
-there's a case in a `?-` ([**wuthep**](/docs/reference/hoon-expressions/rune/wut#wuthep)) that isn't handled.
+there's a case in a `?-` ([**wuthep**](./docs/reference/hoon-expressions/rune/wut.md#wuthep)) that isn't handled.
 
 ## Runtime crashes
 
@@ -144,7 +144,7 @@ infinite loop will time out either too slowly or too fast).  The
 stack trace will show what your code was doing when interrupted.
 
 The counterpart of `~!` for runtime crashes is `~|`
-([**sigbar**](/docs/reference/hoon-expressions/rune/sig#sigbar)):
+([**sigbar**](./docs/reference/hoon-expressions/rune/sig.md#sigbar)):
 
 ```
 ~|  foo
@@ -160,7 +160,7 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing.  This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ([**sigpad**](/docs/reference/hoon-expressions/rune/sig#sigpad)) is Hoon's debugging printf.
+`~&` ([**sigpad**](./docs/reference/hoon-expressions/rune/sig.md#sigpad)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
 ```
@@ -169,7 +169,7 @@ This pretty-prints its argument:
 ```
 
 will always print `foo` every time it executes.  A variant is
-`~?` ([**sigwut**](/docs/reference/hoon-expressions/rune/sig#sigwut)), which prints only if a condition is
+`~?` ([**sigwut**](./docs/reference/hoon-expressions/rune/sig.md#sigwut)), which prints only if a condition is
 true:
 
 ```

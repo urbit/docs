@@ -12,7 +12,7 @@ If you're interested in contributing, but don't know where to start, feel free t
 
 Our official guide to contributing can be found [here](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md), which is most useful for large and low-level changes.
 
-Before contributing code, you should familiarize yourself with the [Hoon style guide](/docs/learn/arvo/style). For a good example of preferred Hoon coding style, see [ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
+Before contributing code, you should familiarize yourself with the [Hoon style guide](./docs/learn/hoon/style.md). For a good example of preferred Hoon coding style, see [ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
 
 ## Community Guidelines
 
@@ -22,7 +22,7 @@ Urbit is both code and community. We have guidelines for the former, and we also
 
 Urbit is a decentralized system, both technically and in spirit. This means that no one, Tlon Corp. or otherwise, has the technical ability to police the entire network. But we do admit that moderation is necessary; we just think that it’s not strictly a technical problem.
 
-What we can do, and what we propose to do in this document, is define how we plan on moderating our little, but important, corner of Urbit. We define the limits of our jurisdiction as the general-purpose discussion channel `/urbit-help`, our forum, `fora` and, adjacently, the GitHub issues on any of the [official urbit repos](https://github.com/urbit).
+What we can do, and what we propose to do in this document, is define how we plan on moderating our little, but important, corner of Urbit. We define the limits of our jurisdiction as the general-purpose discussion channel `~dopzod/urbit-help`, our forum, `fora` and, adjacently, the GitHub issues on any of the [official urbit repos](https://github.com/urbit).
 
 Our hope is that the system established here can serve as a model for other corners of Urbit. But it bears repeating: **Tlon is technically incapable of moderating the Urbit network in general**.
 

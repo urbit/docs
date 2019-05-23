@@ -8,18 +8,18 @@ template = "sections/docs/chapters.html"
 
 Nock is the low-level functional programming language that is interpreted by Vere. You don't need to know Nock to write Hoon, or even to work on most parts of Vere.  But if you want to understand the foundations of Urbit and are mathematically-inclined, dive right in.
 
-## [Nock Definition](definition)
+## [Nock Definition](./docs/learn/nock/definition.md)
 
 The Nock specification.
 
-## [An explanation of Nock](explanation)
+## [An explanation of Nock](./docs/learn/nock/explanation.md)
 
 A comprehensive walkthrough of the Nock spec.
 
-## [Nock by hand](example)
+## [Nock by hand](./docs/learn/nock/example.md)
 
 Learn Nock by example.
 
-## [Nock Implementations](implementations)
+## [Nock Implementations](./docs/learn/nock/implementations.md)
 
 The many ways that Nock has been implemented.

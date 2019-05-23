@@ -5,7 +5,7 @@ template = "doc.html"
 +++
 To do work with Hoon and with the system, we recommended using a "fake" ship -- one not connected to the network.
 
-Because such a ship has no presence on the network, you don't need an Azimuth identity for its purposes. You just need to have [installed our software](../installing-urbit).
+Because such a ship has no presence on the network, you don't need an Azimuth identity for its purposes. You just need to have [installed our software](./docs/getting-started/installing-urbit.md).
 
 To create a fake ship named `~zod`, run the command below. You can replace `zod` with any valid Urbit ship-name.
 

@@ -31,7 +31,7 @@ including both faces and arm names.  (See Chapter 1 of the Hoon tutorial for an
 introduction to name resolution.)
 
 As noted, this is a simplified version of `type`.  We undo and
-explain the simplifications in the [advanced types](../advanced)
+explain the simplifications in the [advanced types](./docs/reference/hoon-expressions/advanced.md)
 section.
 
 ```

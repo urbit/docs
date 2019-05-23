@@ -10,14 +10,14 @@ Hoon is an unusual language in several respects, both in syntax and semantics.  
 
 In this section, you'll find useful resources on the Hoon programming language.
 
-## [The Hoon Tutorial](hoon-tutorial)
+## [The Hoon Tutorial](./docs/learn/hoon/hoon-tutorial/_index.md)
 
 This section is the place to learn the fundamentals of the language, from the very beginning.
 
-## [The Hoon Workbook](workbook)
+## [The Hoon Workbook](./docs/learn/hoon/workbook/_index.md)
 
 The workbook lets you dive right into code walkthroughs.
 
-## [The Style Guide](style)
+## [The Style Guide](./docs/learn/hoon/style.md)
 
 This guide shows you how to write code in the correct way.

@@ -31,7 +31,7 @@ Tall-form Hoon may require multiple lines:
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the subject](/docs/learn/arvo/hoon/the-subject-and-its-legs).
+Hoon uses something called [the subject](./docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs.md).
 The Dojo has its own subject, and that's where Hoon's equivalent of variables,
 called faces, are stored.
 
@@ -53,7 +53,7 @@ Use `=dir` to set the current working directory:
 ```
 
 (`%` represents your current directory. For a complete explanation on urbit
-paths, see the [filesystem section](../filesystem))
+paths, see the [filesystem section](./docs/using/filesystem.md))
 
 Generators (files in `/gen`) are run with `+`:
 
@@ -256,7 +256,7 @@ Apps usually expect marked data, so `&` is often used here.
 
 ##### `*` - Save in `%clay`
 
-Save a new `.udon` ([Udon](../udon)) file in `web`:
+Save a new `.udon` ([Udon](./docs/using/sail-and-udon.md)) file in `web`:
 
 ```
 ~your-urbit:dojo> *%/web/foo/udon '# hello'
