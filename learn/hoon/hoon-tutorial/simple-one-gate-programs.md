@@ -3,7 +3,7 @@ title = "Simple One-Gate Programs"
 weight = 23
 template = "doc.html"
 +++
-In this lesson we'll try to cover enough basic Hoon so that you can write (and understand) your own simple programs.  Each of the programs given in this lesson produces a gate.  (Gates are one-armed cores of Hoon that can be used as functions -- this is covered in [lesson 1.5](../gates).)
+In this lesson we'll try to cover enough basic Hoon so that you can write (and understand) your own simple programs.  Each of the programs given in this lesson produces a gate.  (Gates are one-armed cores of Hoon that can be used as functions -- this is covered in [lesson 1.5](./docs/learn/hoon/hoon-tutorial/gates.md).)
 
 For each program we encourage you to: (1) write out the program yourself, (2) save it to the `/home/gen` directory of your urbit's pier, and (3) run it from the dojo.  The best way to learn to program in Hoon is by getting your hands dirty.
 
@@ -15,7 +15,7 @@ Let's look at a really simple gate: `|=(a=@ 15)`.  This gate takes any atom as i
 
 The `|=` rune takes two subexpressions.  The first must indicate a type, and the second may evaluate to any value.  The first defines the gate's sample type and possibly binds a face to it, and the second defines the output of the gate.  In the example `|=(a=@ 15)` the `|=` subexpressions are `a=@` and `15`.
 
-The following characters represent basic Hoon types: `@` for atoms, `^` for cells, `?` for flags, and `*` for nouns.  You should already know what atoms, cells, and nouns are.  (See [lesson 1.2](../nouns) if you need a reminder.)  There are two values for the `?` type: `%.y` for yes, and `%.n` for no.  In other words, `?` is for the [Boolean values](https://en.wikipedia.org/wiki/Boolean_data_type) of Hoon.
+The following characters represent basic Hoon types: `@` for atoms, `^` for cells, `?` for flags, and `*` for nouns.  You should already know what atoms, cells, and nouns are.  (See [lesson 1.2](./docs/learn/hoon/hoon-tutorial/nouns.md) if you need a reminder.)  There are two values for the `?` type: `%.y` for yes, and `%.n` for no.  In other words, `?` is for the [Boolean values](https://en.wikipedia.org/wiki/Boolean_data_type) of Hoon.
 
 You could have picked a different type for the first subexpression of `|=(a=@ 15)` and left off the face.  To illustrate this let's call different versions of the gate with the `(gate arg)` function call syntax:
 
@@ -625,7 +625,7 @@ The `$( )` syntax is an irregular form of the the `%=` rune.  We can rewrite tha
 
 This version is precisely equivalent to the old one.  The first `%=` subexpression is for a wing.  In the program above, this is just `$`.  The other subexpressions of `%=` indicate the changes to be made upon resolution to the wing.  You can make as many of these changes as desired when using `%=`, so the expression is ended with `==`.
 
-Remember from lessons [1.4](../arms-and-cores) and [1.5](../gates) that wing resolution works in two different ways.  If the wing resolves to a leg, that fragment of the subject is returned.  If the wing resolves to an arm, the arm is evaluated with its parent core as the subject.  In [lesson 1.5](../gates) you learned that `$` is the special name of the arm of a gate.  (Remember, a gate is a one-armed core with a sample.)  Because we wrote `add.hoon` with `|=` it produces a gate.  The `%=` expression above thus evaluates the `$` arm of the gate, but only after having made changes to the parent core: `a` is incremented, and `b` is decremented.
+Remember from lessons [1.4](./docs/learn/hoon/hoon-tutorial/arms-and-cores.md) and [1.5](./docs/learn/hoon/hoon-tutorial/gates.md) that wing resolution works in two different ways.  If the wing resolves to a leg, that fragment of the subject is returned.  If the wing resolves to an arm, the arm is evaluated with its parent core as the subject.  In [lesson 1.5](./docs/learn/hoon/hoon-tutorial/gates.md) you learned that `$` is the special name of the arm of a gate.  (Remember, a gate is a one-armed core with a sample.)  Because we wrote `add.hoon` with `|=` it produces a gate.  The `%=` expression above thus evaluates the `$` arm of the gate, but only after having made changes to the parent core: `a` is incremented, and `b` is decremented.
 
 ### Decrement
 
@@ -727,7 +727,7 @@ Write a program that takes a number `n` and returns `%.y` if it's prime, and `%.
 
 Let's write a Hoon implementation of [FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz).  Fizzbuzz takes some number `n` and then makes a list of numbers from `1` to `n`, except that numbers evenly divisible by `3` are replaced with 'Fizz', numbers evenly divisible by `5` are replaced with 'Buzz', and numbers evenly divisible by both are replaced with 'FizzBuzz'.
 
-You already saw a program that produces a list of atoms from `1` to `n` in [lesson 2.1](../hoon-programs), `listnum.hoon`:
+You already saw a program that produces a list of atoms from `1` to `n` in [lesson 2.1](./docs/learn/hoon/hoon-tutorial/hoon-programs.md), `listnum.hoon`:
 
 ```
 |=  end=@                                               ::  1
@@ -885,4 +885,4 @@ $(x (dec x), y (dec y))
 $(c +(c))
 ```
 
-### [Next Lesson: Atoms, Auras, and Simple Cell Types](../atoms-auras-and-simple-cell-types)
+### [Next Lesson: Atoms, Auras, and Simple Cell Types](./docs/learn/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types.md)

@@ -42,7 +42,7 @@ This is where the Arvo kernel lives. `sys/` contains:
 
 ##### `sys/hoon.hoon`
 
-[Hoon](/docs/learn/arvo/hoon) is our programming language. Since Hoon
+[Hoon](./docs/learn/hoon/_index.md) is our programming language. Since Hoon
 compiles itself, the language is actually specified in this source file.
 
 ##### `sys/zuse.hoon`
@@ -99,9 +99,9 @@ That's it. That's the whole system.
 
 ## app/
 
-This is where [Gall](../gall) apps live. Gall apps are stateful
+This is where [Gall](./docs/learn/arvo/gall.md) apps live. Gall apps are stateful
 servers, sort of like unix daemons. One familiar one is `app/hall.hoon` which is
-the source code for [Hall](../hall), the Urbit messaging transport
+the source code for [Hall](./docs/learn/arvo/hall.md), the Urbit messaging transport
 layer. And there's also `app/dojo.hoon` — that's your shell.
 
 ---
@@ -162,7 +162,7 @@ lib/test/*
 ## web/
 
 Here are files publicly accessible to the web, as made possible by
-[Eyre](../eyre).
+[Eyre](./docs/learn/arvo/eyre.md).
 
 ---
 

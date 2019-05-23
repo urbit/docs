@@ -490,4 +490,4 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet,
 + +15
 + +31
 
-### [Next Lesson: The Subject and Its Legs](../the-subject-and-its-legs)
+### [Next Lesson: The Subject and Its Legs](./docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs.md)

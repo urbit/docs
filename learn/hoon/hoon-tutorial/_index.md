@@ -18,36 +18,36 @@ The first three lessons take you through a simple Hoon program, explain Hoon's s
 
 ### Chapter 1
 
-- [1.1 Setup](setup)
-- [1.2 Nouns](nouns)
-- [1.3 The Subject and Its Legs](the-subject-and-its-legs)
-- [1.4 Arms and Cores](arms-and-cores)
-- [1.5 Gates (Hoon Functions)](gates)
-- [1.6 Multi-gate Cores and Doors](multi-gate-cores-and-doors)
+- [1.1 Setup](./docs/learn/hoon/hoon-tutorial/setup.md)
+- [1.2 Nouns](./docs/learn/hoon/hoon-tutorial/nouns.md)
+- [1.3 The Subject and Its Legs](./docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs.md)
+- [1.4 Arms and Cores](./docs/learn/hoon/hoon-tutorial/arms-and-cores.md)
+- [1.5 Gates (Hoon Functions)](./docs/learn/hoon/hoon-tutorial/gates.md)
+- [1.6 Multi-gate Cores and Doors](./docs/learn/hoon/hoon-tutorial/multi-gate-cores-and-doors.md)
 
 ### Chapter 2
 
-- [2.1 Hoon Programs](hoon-programs)
-- [2.2 Hoon Syntax](hoon-syntax)
-- [2.3 Simple One-Gate Programs](simple-one-gate-programs)
-- [2.4 Atoms, Auras, and Simple Cell Types](atoms-auras-and-simple-cell-types)
-- [2.5 Type Checking and Type Inference](type-checking-and-type-inference)
-- [2.6 Structures and Complex Types](structures-and-complex-types)
-- [2.7 Cores](cores)
-- [2.8 Cores Again](cores-again)
-- [2.9 Standard Library: Lists](lists)
-- [2.10 Standard Library: Trees, Sets, and Maps](trees-sets-and-maps)
-- [2.11 Examples](examples)
+- [2.1 Hoon Programs](./docs/learn/hoon/hoon-tutorial/hoon-programs.md)
+- [2.2 Hoon Syntax](./docs/learn/hoon/hoon-tutorial/hoon-syntax.md)
+- [2.3 Simple One-Gate Programs](./docs/learn/hoon/hoon-tutorial/simple-one-gate-programs.md)
+- [2.4 Atoms, Auras, and Simple Cell Types](./docs/learn/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types.md)
+- [2.5 Type Checking and Type Inference](./docs/learn/hoon/hoon-tutorial/type-checking-and-type-inference.md)
+- [2.6 Structures and Complex Types](./docs/learn/hoon/hoon-tutorial/structures-and-complex-types.md)
+- [2.7 Cores](./docs/learn/hoon/hoon-tutorial/cores.md)
+- [2.8 Cores Again](./docs/learn/hoon/hoon-tutorial/cores-again.md)
+- [2.9 Standard Library: Lists](./docs/learn/hoon/hoon-tutorial/lists.md)
+- [2.10 Standard Library: Trees, Sets, and Maps](./docs/learn/hoon/hoon-tutorial/trees-sets-and-maps.md)
+- [2.11 Examples](./docs/learn/hoon/hoon-tutorial/examples.md)
 
 ### Chapter 3
 
-- [3.1 Type Polymorphism](type-polymorphism)
+- [3.1 Type Polymorphism](./docs/learn/hoon/hoon-tutorial/type-polymorphism.md)
 
 ## Other Resources
 
-Consult the [Reference section](/docs/reference/) to look up any unknown rune or standard library function you don't understand.
+Consult the [Reference section](./docs/reference/_index.md) to look up any unknown rune or standard library function you don't understand.
 
-As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](../workbook) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](/docs/using/generators) documentation.  Or maybe you'd like to learn how to write a [Gall app](/docs/learn/arvo/gall).  Learn about [Udon](/docs/using/udon), Urbit's stripped-down version of Markdown.  Or learn [Sail](/docs/using/sail), a subset of Hoon used for generating XML nodes.
+As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](./docs/learn/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](./docs/using/generators.md) documentation.  Or maybe you'd like to learn how to write a [Gall app](content/docs/learn/arvo/gall.md).  Learn about [Udon](./docs/using/sail-and-udon.md), Urbit's stripped-down version of Markdown.  Or learn [Sail](./docs/using/sail-and-udon.md), a subset of Hoon used for generating XML nodes.
 
 
 > Last major revision of this section: February 2019

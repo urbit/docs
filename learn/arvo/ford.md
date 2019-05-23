@@ -118,7 +118,7 @@ library in urbit.
 
 To run this example, put this code in your desk at `gen/faslus.hoon` and run
 `+faslus` in your dojo. This example is a generator. For more information on
-generators, see the [generator docs](/docs/arvo/arvo-internals/generators).
+generators, see the [generator docs](./docs/using/generators.md).
 
 ```
 /+  time-to-id

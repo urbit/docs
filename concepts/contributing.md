@@ -12,7 +12,7 @@ If you're interested in contributing, but don't know where to start, feel free t
 
 Our official guide to contributing can be found [here](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md), which is most useful for large and low-level changes.
 
-Before contributing code, you should familiarize yourself with the [Hoon style guide](/docs/learn/arvo/style). For a good example of preferred Hoon coding style, see [ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
+Before contributing code, you should familiarize yourself with the [Hoon style guide](./docs/learn/hoon/style.md). For a good example of preferred Hoon coding style, see [ford.hoon](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
 
 ## Community Guidelines
 

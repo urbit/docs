@@ -417,4 +417,4 @@ You can now unbind `c` in the dojo -- this will help to keep your dojo subject t
 -find.c
 ```
 
-### [Next Lesson: Gates](../gates)
+### [Next Lesson: Gates](./docs/learn/hoon/hoon-tutorial/gates.md)

@@ -4,9 +4,10 @@ weight = 7
 template = "doc.html"
 description = "An explanation of the Urbit address-space hierarchy. "
 +++
+
 The current internet has no consistent system of identity. There are only quasi-identities such as IP addresses, Google accounts and email addresses, each able to be assumed and abandoned without much trouble. The result is a hostile social experience, since bad actors -- spammers, scammers, malware-spreaders, and harassers -- have an inexhaustible supply of places to hide.
 
-That's why we built a system for persistent identity called [Azimuth](../arvo-vs-azimuth). Azimuth identities are called _points_, and you need one to use the Arvo network. Points are secure, since they are owned and controlled with key-pair the Ethereum blockchain, which Azimuth is built on top of.
+That's why we built a system for persistent identity called [Azimuth](./docs/concepts/azimuth.md). Azimuth identities are called _points_, and you need one to use the Arvo network. Points are secure, since they are owned and controlled with key-pair the Ethereum blockchain, which Azimuth is built on top of.
 
 An Azimuth point is a pronounceable string like `~firbyr-napbes`. It means nothing, but it's easy to remember and say out loud. `~firbyr-napbes` is actually just a 32-bit number (`3.237.967.392`, to be exact) that we turn into a human-memorable string.
 

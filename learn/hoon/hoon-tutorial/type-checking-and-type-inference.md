@@ -704,4 +704,4 @@ $(a +.a, b +.b)
 ==
 ```
 
-### [Next Lesson: Structures and Complex Types](../structures-and-complex-types)
+### [Next Lesson: Structures and Complex Types](./docs/learn/hoon/hoon-tutorial/structures-and-complex-types.md)

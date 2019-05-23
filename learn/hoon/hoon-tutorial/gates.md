@@ -271,4 +271,4 @@ Write a gate that takes an atom, `a=@`, and which returns double the value of `a
 50
 ```
 
-### [Next Lesson: Multi-gate Cores and Doors](../multi-gate-cores-and-doors)
+### [Next Lesson: Multi-gate Cores and Doors](./docs/learn/hoon/hoon-tutorial/multi-gate-cores-and-doors.md)

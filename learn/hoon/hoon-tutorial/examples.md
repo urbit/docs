@@ -485,4 +485,4 @@ Specifically, for each iteration, each dead space becomes alive if and only if i
 
 + Modify `create-board` to use `++og` to randomly initialize the board with live or dead spaces.
 
-### [Next Lesson: Type Polymorphism](../type-polymorphism)
+### [Next Lesson: Type Polymorphism](./docs/learn/hoon/hoon-tutorial/type-polymorphism.md)
