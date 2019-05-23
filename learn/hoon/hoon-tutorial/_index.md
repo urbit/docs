@@ -11,9 +11,8 @@ Chapter 1 introduces and explains the fundamental concepts you need in order to 
 
 Hoon is a 'subject-oriented' programming language -- every expression of Hoon is evaluated relative to a **subject**.  The subject is a piece of data that represents the environment, or the context, of an expression.  After reading Chapter 1 you should understand what the subject is and how to refer to its various parts.  In this chapter you'll also learn about **cores**, which are an important data structure in Hoon.  Once you get the hang of cores you'll be able to write your own functions in Hoon.
 
-Chapter 2 covers the basics of writing full programs in Hoon.
+Chapter 2 covers the type system, and writing apps, and the workings of the Arvo kernel.
 
-The first three lessons take you through a simple Hoon program, explain Hoon's syntax, and explains basic flow control.  The next three lessons introduce Hoon's type system.  Lessons 7 and 8 show you how to use cores effectively in your Hoon programs, including how to use them as state machines.  Lessons 9 and 10 cover some of the basic data structures commonly used in Hoon, such as lists, trees, and sets.  Those lessons also introduce many of the standard library functions for use with those data structures.  Lesson 11 includes a walk-through of two Hoon programs that are intended to reinforce everything taught earlier in the chapter: a prime sieve and a tic-tac-toe program.
 
 ## Lessons
 
@@ -38,21 +37,11 @@ The first three lessons take you through a simple Hoon program, explain Hoon's s
 
 ### Chapter 2
 
-- [2.1 Hoon Programs](hoon-programs)
-- [2.2 Hoon Syntax](hoon-syntax)
-- [2.3 Simple One-Gate Programs](simple-one-gate-programs)
-- [2.4 Atoms, Auras, and Simple Cell Types](atoms-auras-and-simple-cell-types)
-- [2.5 Type Checking and Type Inference](type-checking-and-type-inference)
-- [2.6 Structures and Complex Types](structures-and-complex-types)
-- [2.7 Cores](cores)
-- [2.8 Cores Again](cores-again)
-- [2.9 Standard Library: Lists](lists)
-- [2.10 Standard Library: Trees, Sets, and Maps](trees-sets-and-maps)
-- [2.11 Examples](examples)
-
-### Chapter 3
-
-- [3.1 Type Polymorphism](type-polymorphism)
+- [2.1 Atoms, Auras, and Simple Cell Types](atoms-auras-and-simple-cell-types)
+- [2.2 Type Checking and Type Inference](type-checking-and-type-inference)
+- [2.3 Structures and Complex Types](structures-and-complex-types)
+- [2.4 Standard Library: Trees, Sets, and Maps](trees-sets-and-maps)
+- [2.5 Type Polymorphism](type-polymorphism)
 
 ## Other Resources
 
