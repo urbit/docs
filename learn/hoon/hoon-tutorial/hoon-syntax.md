@@ -1,19 +1,21 @@
 +++
 title = "Hoon Syntax"
-weight = 22
+weight = 13
 template = "doc.html"
 +++
+# 1.3 Hoon Syntax
+
 The study of Hoon can be divided into two parts: syntax and semantics.
 
-The [syntax](https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
+The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
 
-The [semantics](https://en.wikipedia.org/wiki/Semantics_%28computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
+The [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
 
-In this lesson we cover Hoon's syntax.  A strict account of Hoon's syntax would refrain from making any reference at all to semantics, but for ease of exposition we won't be quite so fastidious.
+In this lesson we will give a general overview of Hoon's syntax. By the end of it, you should be familiar with all the basic elements of Hoon code.
 
 ## Hoon Characters
 
-Hoon source files are composed almost entirely of the [printable ASCII characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal.
+Hoon source files are composed almost entirely of the [printable ASCII characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal; use two spaces instead.
 
 ```
 > "You can put ½ in quotes, but not elsewhere!"
@@ -51,7 +53,7 @@ Note that the list includes two separate whitespace forms: `ace` for a single sp
 
 ## Expressions of Hoon
 
-An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
+An [expression](https://en.wikipedia.org/wiki/Expression_(computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
 
 Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
@@ -61,7 +63,7 @@ There are many categories of Hoon expressions: noun literals, wing expressions, 
 
 A noun is either an atom or a cell.  An atom is an unsigned integer and a cell is a pair of nouns.
 
-There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
+There are [literal](https://en.wikipedia.org/wiki/Literal_(computer_programming%29) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
 
 We start with atom literals.  Each of these is a basic expression of Hoon that evaluates to itself.  Examples:
 
@@ -80,12 +82,6 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 
 > ~zod
 ~zod
-
-> 0xdead.beef
-0xdead.beef
-
-> 0b1101.1001
-0b1101.1001
 ```
 
 Recall from [lesson 1.2](./docs/learn/hoon/hoon-tutorial/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](./docs/learn/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types.md).
@@ -127,7 +123,6 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `b`
 - `add`
 - `mul`
-- `kebab-case-123`
 
 As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We covered the role of `$` in [lesson 1.5](./docs/learn/hoon/hoon-tutorial/gates.md).)
 
@@ -140,6 +135,7 @@ Wing expressions with multiple limbs are complex expressions.  Examples:
 - `a.b.c`
 - `-.b.+2`
 - `-.add`
+
 
 ### Type Expressions
 
@@ -202,13 +198,6 @@ Let's look at another example.  The `.=` rune takes two subexpressions, evaluate
 > .=  22  11
 %.n
 
-> .=  22  (add 11 11)
-%.y
-
-> .=  22
-  11
-%.n
-
 > .=  22
   (add 11 11)
 %.y
@@ -257,51 +246,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 10
 ```
 
-The `( )` gate-calling syntax can be used for gates of any other [arity](https://en.wikipedia.org/wiki/Arity) as well.
-
-You've already seen two other irregular forms.  In [lesson 1.5](./docs/learn/hoon/hoon-tutorial/gates.md), you made a gate that takes an atom `a` for its sample and returns `a + 1`: `|=(a=@ (add 1 a))`.  This expression uses the `|=` rune in flat form.
-
-```
-> =inc |=(a=@ (add 1 a))
-
-> (inc 10)
-11
-
-> (inc 15)
-16
-```
-
-The `a=@` subexpression -- used to define the face and the type of the gate's sample -- is the irregular form of `$=(a @)`:
-
-```
-> =inc |=($=(a @) (add 1 a))
-
-> (inc 10)
-11
-
-> (inc 15)
-16
-```
-
-In the previous chapter you also defined faces in nouns as in the following examples:
-
-```
-> b:[a=15 b=25 c=35]
-25
-
-> c:[a=15 b=25 c=35]
-35
-```
-
-The `a=15` expression is the irregular form of `^=(a 15)`:
-
-```
-> b:[^=(a 15) ^=(b 25) ^=(c 35)]
-25
-
-> c:[^=(a 15) ^=(b 25) ^=(c 35)]
-35
-```
+The `( )` gate-calling syntax can be used for gates with any number of arguments.
 
 You can find other irregular forms in the irregular expression [reference document](./docs/reference/hoon-expressions/irregular.md).
 
@@ -314,9 +259,6 @@ Below we use the `` ` `` symbol to create a cell whose head is null, `~`.
 ```
 > `12
 [~ 12]
-
-> `[12 14]
-[~ 12 14]
 
 > `[[12 14] 16]
 [~ [12 14] 16]
@@ -339,229 +281,47 @@ b=[16 18]
 
 > ,.+:[a=[12 14] b=[16 18]]
 [16 18]
-
-> ,.+:[a=[12 14] [16 18]]
-[16 18]
 ```
 
 To see other irregular expressions, check the irregular expression [reference document](./docs/reference/hoon-expressions/irregular.md).
 
-## Hoon Style
 
-See [Hoon Style Guide](./docs/learn/hoon/style.md).
+## The Standard Library
 
-### Rune Expression Body Types
+The Hoon standard library is a compilation of generally useful Hoon gates (functions). You've seen these already: in expressions like `(add 11 11)`, `add` is a function from the standard library.
 
-Let's call everything in the expression after the initial rune the expression **body**. There are four kinds of body: **fixed**, **running**, **jogging**, and **battery**.  There is a preferred manner of styling for each body.
-
-#### Fixed
-
-Some runes have a **fixed** number of subexpressions.  For example, the `:-` and `.=` runes each have exactly two.
-
-Fixed bodies often use "backstep" indentation in tall form.  In backstep indentation the code slopes backward and to the right by two spaces per line.  The last subexpression isn't indented at all, and the first subexpression is on the same line as the rune.  The indentation of the first subexpression therefore depends upon the total number of subexpressions.
-
-We'll use the `:` family of runes to illustrate.  The `:-` rune creates a cell from two subexpressions, `:+` creates a cell from three, and `:^` creates a cell from four.  In flat form:
+It's important to know about standard library functions, because they make certain tasks much easier, and spare you from having to write the code itself. If you did not use the `add` library function, for example, you would have to write out code like this every time you wanted to find the sum of two numbers:
 
 ```
-> :-(11 22)
-[11 22]
-
-> :+(11 22 33)
-[11 22 33]
-
-> :^(11 22 33 44)
-[11 22 33 44]
+++  add
+  ~/  %add
+  |=  [a=@ b=@]
+  ^-  @
+  ?:  =(0 a)  b
+  $(a (dec a), b +(b))
 ```
 
-Let's look at these in tall form, using backstep indentation:
+Standard library functions are often built with other standard library functions, but ultimately those functions used are only built with runes. Notice how in the code above `add` is built with the `dec` function, which decrements a value by `1`.
 
-```
-> :-  11
-  22
-[11 22]
+## Reference Materials
 
-> :+  11
-    22
-  33
-[11 22 33]
+The Hoon syntax can be intimidating for the uninitiated, so it's good to remember where you can look up expressions can be found. The [reference section](/docs/reference/) itself is a good place to find the reference materials that you need. These children sections are likely to be useful:
 
-> :^    11
-      22
-    33
-  44
-[11 22 33 44]
-```
+- The [Runes](/docs/reference/hoon-expressions/) page will show you how to use any Hoon rune.
+- The [Cheat sheet](/docs/reference/cheat-sheet/) is a more compact place to look up rune expressions.
+- The [Standard library](/docs/reference/library/) section has its sub-pages arranged by category. So arithmetic functions, for example, are all found on the same page.
+- The [Hoon Style Guide](/docs/learn/hoon/style/) will show you how to write your Hoon code so that it's idiomatic and easily understood by others.
 
+### Debugging
 
-Some other **1-fixed**, **2-fixed**, **3-fixed** and **4-fixed** examples, using `p`, `q`, `r`, and `s` for the subexpressions:
+When you have an error in your Hoon code, one of two things can happen. Either the code does not run at all and you get an error (such as `nest-fail`), or your code _does_ run but produces the wrong results. The [Troubleshooting](/docs/reference/troubleshooting/) page is a good resource for figuring out how to debug your code.
 
-```
-|.
-p
+There are a couple useful runes associated with debugging:
 
-=|  p
-q
+`!:` (zapcol), if written at the top of a Hoon file, turns on a full debugging stack-trace. It's good practice to use whenever you're learning.
 
-?:  p
-  q
-r
+`~&` (sigpam) is used to print its argument every time that argument executes. So, if you wanted to see how many times your program executed `foo`, you would write `foo bar`. Then, when your program runs, it will print `foo` on a new line of output every time the program comes across it by recursion.
 
-%^    p
-    q
-  r
-s
-```
+But there are more. Check out the aforementioned [troubleshooting](/docs/reference/troubleshooting/) page to see other handy debugging runes and how to use them.
 
-In optimal usage of backstep indentation the most complicated subexpressions are at the bottom.  This helps keep code flow vertical rather than diagonal.
-
-#### Running
-
-A **running** body doesn't have a fixed number of subexpressions; expressions with running bodies can be arbitrarily long.
-
-To indicate the end of such expressions in tall form, use the `==` rune.  The first subexpression is two spaces after the initial rune, and all others are indented to line up with the first.  The terminating `==` should align vertically with the initial rune.  In flat form, parentheses are used around the expression body, so the terminating `==` is unnecessary.
-
-The `:*` rune is used to create a cell of arbitrary length:
-
-```
-> :*(11 22 33)
-[11 22 33]
-
-> :*(11 22 33 44)
-[11 22 33 44]
-
-> :*(11 22 33 44 55)
-[11 22 33 44 55]
-```
-
-We'll use `:*` to illustrate proper tall form running body style:
-
-```
-> :*  11
-      22
-      33
-      44
-      55
-  ==
-[11 22 33 44 55]
-```
-
-More generally:
-
-```
-:*  p
-    q
-    r
-    s
-    t
-==
-```
-
-#### Jogging
-
-A **jogging** body is an arbitrarily long series of subexpression pairs.  Most jogging bodies are preceded by a fixed sequence of subexpressions.  The first jogging pair is one line after the last fixed subexpression, and indented two spaces behind it.  There are two jogging conventions: **flat** (each pair on one line) and **tall** (each pair split across lines).  In either case the expression is terminated with a `==`.
-
-The `?-` rune is `1-fixed` followed by a jogging body.  The fixed subexpression is evaluated and then compared against the left subexpression of each of the jogging pairs.  When a match is found, the subexpression to the right of the match is evaluated.
-
-For example:
-
-```
-> ?-  `?(%2 %3 %4)`%2
-    %2  %yes
-    %3  %no
-    %4  %no
-  ==
-%yes
-```
-
-More generally, the **flat jogging** style (preceded by **1-fixed** `p`):
-
-```
-?-  p
-  q  r
-  s  t
-  u  v
-==
-```
-
-A **tall jogging** example (preceded by **1-fixed** `p`):
-
-```
-?-    p
-    q
-  r
-    s
-  t
-    u
-  v
-==
-```
-
-In flat form for **jogging** bodies, subexpression pairs are separated by commas:
-
-```
-$(a +(a), b (dec b), c (add 2 c))
-```
-
-#### Battery
-
-Certain runes are used to create a core.  Cores with multiple arms have a special syntax for defining each of the arms in the battery.  A core has no fixed limit on the number of arms contained in its battery, so you must terminate core expressions with the `--` rune.  Each arm in the battery is defined with three things: (1) a rune in the `+` family (e.g., `++`, `+*`, and `+$`), (2) an arm name, and (3) a subexpression defining the content of that arm.  Runes in the `+` family may only go in core subexpressions.  Putting them anywhere else results in a syntax error.
-
-Here's an example of a **battery** body:
-
-```
-|%
-++  arm-1
-  %p
-++  arm-2
-  %q
-++  arm-3
-  %r
---
-```
-
-## Motivation
-
-There's no denying that Hoon's syntax is a bit strange, especially for those used to working in other programming languages.  Hoon makes heavy use of ASCII characters, and this can be intimidating to newcomers.  However, we believe that anyone who learns Hoon syntax will find that it has a number of advantages.
-
-Hoon's syntax is designed to address three serious problems in functional syntax design.  These problems are: (1) **terminator piles**, (2) **indentation creep**, and (3) **feature/label confusion**.
-
-### Terminator piles
-
-A **terminator pile** is a series of termination characters required to end some expression in a language.  Think of Lisp's stacks of right parentheses.  For a trivial example, let's say you want to add 22 five times in Lisp using `+`:
-
-```
-(+ 22 (+ 22 (+ 22 (+ 22 22))))
-```
-
-In a sufficiently complicated expression it's tedious to keep track of all the parentheses in the terminator pile.  You can write terminator piles in Hoon code if you really want to:
-
-```
-> (add 22 (add 22 (add 22 (add 22 22))))
-110
-```
-
-...but you are never forced to do so.  There is always a semantically equivalent alternative syntax without them:
-
-```
-> %+  add  22
-  %+  add  22
-  %+  add  22
-  %+  add  22  22
-110
-```
-
-### Indentation creep
-
-In some programming languages there is an indentation convention according to which an expression embedded within a parent expression is indented more to the right.  In a sufficiently long and complicated function with many embedded subexpressions, the tendency is for the code to shift more and more to the right.  This tendency is called **indentation creep**, and it can become an irritating problem when working with long functions.  It's true that short functions are better, but long ones sometimes need to be written.
-
-Ordinary indentation conventions give long functions a _diagonal_ shape, which is a poor fit for most editor windows.  Because Hoon is designed to be written with 'backstep' indentation, the code flows _down_, not down and across.
-
-### Feature/label confusion
-
-A language lends itself to **feature/label confusion** (FLC) when it's difficult to distinguish general features of the language from labels in a particular program.  This can be a serious problem other functional programming languages.  In Lisp, for example, a user-defined macro has the same syntax as a function call.
-
-The worst-case result of FLC is "DSL cancer".  Every source file with this malady is effectively written in its own domain-specific language (DSL).  Learning to read such a file is like learning a language.  One can also describe the result as "write-only code".  User-level macros, operator overloading, and even excessive use of higher-order programming, can all lead quickly to the tragedy of write-only code.
-
-Hoon largely avoids FLC by its use of runes.  Hoon has no user-level macros or operator overloading. It does support higher-order programming; write-only Hoon can certainly be (and has been) written.  However, with a little discipline one can write Hoon without inventing a DSL.
-
-### [Next Lesson: Simple One-Gate Programs](./docs/learn/hoon/hoon-tutorial/simple-one-gate-programs.md)
+### [Next Lesson: The Subject and Its Legs](./docs/learn/hoon/hoon-tutorial/simple-one-gate-programs.md)
