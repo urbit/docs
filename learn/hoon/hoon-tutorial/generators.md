@@ -1,6 +1,6 @@
 +++
-title = "Generators"
-weight = 9
+title = "1.9 Generators"
+weight = 19
 template = "doc.html"
 +++
 Generators are the most straightforward way to write programs for Urbit. They
