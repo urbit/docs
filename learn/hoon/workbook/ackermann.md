@@ -1,3 +1,9 @@
++++
+title = "Ackermann"
+weight = 10
+template = "doc.html"
++++
+
 Write a gate to compute [Ackermann's Function](https://en.wikipedia.org/wiki/Ackermann_function)
 
 ```
