@@ -3,15 +3,8 @@ title = "Cheat sheet"
 weight = 4
 template = "doc.html"
 +++
-##### `~rovnys-ricfer`
 
-_Original Fora post_ [here](https://urbit.org/fora/posts/~2017.9.18..22.31.06..24d5~).
-
-<br>
-
-[Download .pdf](https://storage.googleapis.com/media.urbit.org/docs/hoon-cheat-sheet--2017-12-12.pdf)
-
-<br>
+Download the cheat sheet PDF [here](https://storage.googleapis.com/media.urbit.org/docs/hoon-cheat-sheet--2017-12-12.pdf).
 
 We've found it's useful to have a quick reference of Hoon's syntax always at
 hand. So above is a download link to a Hoon cheatsheet .pdf. It's missing a
