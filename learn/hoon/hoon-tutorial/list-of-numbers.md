@@ -1,12 +1,11 @@
 +++
-title = "List of Numbers"
-weight = 1
+title = "1.1.1 Walkthrough: List of Numbers"
+weight = 3
 template = "doc.html"
 +++
 This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.
 
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
-
 
 ```
 |=  end=@                                               ::  1
@@ -19,7 +18,7 @@ Below is a simple Hoon program that takes a single number `n` from the user as i
 $(count (add 1 count))                                  ::  8
 ```
 
-The easiest way to use such a program is to run it as a _generator_. Saving a file in the `/home/gen` directory of your ship allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo as so:
+As we mentioned in the previous lesson, the easiest way to use such a program is to run it as a _generator_. Saving a file in the `/home/gen` directory of your ship allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo as so:
 
 `~your-ship:> +list 5`
 
@@ -128,4 +127,6 @@ Our program works by having each iteration of the list creating a cell. In each 
               4   ~
 ```
 
-If you still don't intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion example](./docs/learn/hoon/workbook/recursion.md).
+If you still don't intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion walkthrough](../recursion).
+
+### [Next Up: Reading -- Nouns](../nouns)

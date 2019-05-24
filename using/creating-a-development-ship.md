@@ -1,6 +1,6 @@
 +++
 title = "Creating a Development Ship"
-weight = 4
+weight = 0
 template = "doc.html"
 +++
 To do work with Hoon and with the system, we recommended using a "fake" ship -- one not connected to the network.

@@ -1,8 +1,9 @@
 +++
-title = "Standard Library: Trees, Sets, and Maps"
+title = "2.4 Standard Library: Trees, Sets, and Maps"
 weight = 30
 template = "doc.html"
 +++
+
 Along with lists, the Hoon standard library also supports trees, sets, and maps as data structures.  A Hoon `tree` is the data structure for a binary tree.  A Hoon `set` is the data structure for a set of values.  A Hoon `map` is the data structure for a set of `[key value]` pairs.
 
 In this lesson we'll cover each.
@@ -318,4 +319,4 @@ You can use `run` of `by` to apply a gate to each value in a map, producing a ma
 
 There are other map functions in the Hoon standard library that didn't cover here.
 
-### [Next Lesson: Examples](./docs/learn/hoon/hoon-tutorial/examples.md)
+### [Next Up: <placeholder>]

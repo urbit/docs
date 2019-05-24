@@ -1,6 +1,6 @@
 +++
 title = "Gates (Hoon Functions)"
-weight = 15
+weight = 8
 template = "doc.html"
 +++
 In this lesson you're going to learn about Hoon functions.
@@ -167,7 +167,7 @@ Let's look at the context of `inc`:
 
 This is exactly the default dojo subject, from before we put `inc` into the subject.  The `|=` expression defines the context as whatever the subject is.  This guarantees that the context has all the information it needs to have for the `$` arm to work correctly.
 
-### Exercise 1.5.1
+### Exercise 1.5.1a
 
 Write a gate that takes an atom, `a=@`, and which returns double the value of `a`.  Bind this gate to `double` and test it in the dojo.  A solution is given at the end of this lesson.
 
@@ -257,7 +257,7 @@ Before finishing the lesson let's unbind `ten`:
 > =ten
 ```
 
-## Exercise 1.5.1 Solution
+## Exercise 1.5a Solution
 
 Write a gate that takes an atom, `a=@`, and which returns double the value of `a`.  Bind this gate to `double` and test it in the dojo.
 
@@ -271,4 +271,4 @@ Write a gate that takes an atom, `a=@`, and which returns double the value of `a
 50
 ```
 
-### [Next Lesson: Multi-gate Cores and Doors](./docs/learn/hoon/hoon-tutorial/multi-gate-cores-and-doors.md)
+### [Next Up: Walkthrough -- Recursion](../recursion)

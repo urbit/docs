@@ -1,6 +1,6 @@
 +++
-title = "Structures and Complex Types"
-weight = 26
+title = "2.3 Structures and Complex Types"
+weight = 27
 template = "doc.html"
 +++
 In this lesson we'll talk a little about how type expressions become structures, and how these structures manifest in different ways in different parts of your Hoon code.  We'll also talk about how to create your own custom-defined complex types from simpler ones.
@@ -352,4 +352,4 @@ Now the `~` value is included as a possible value for `user`.
 
 That's all we have to say about types in this chapter.  More on types in [Chapter 3](./docs/learn/hoon/hoon-tutorial/type-polymorphism.md).
 
-### [Next Lesson: Cores](./docs/learn/hoon/hoon-tutorial/cores.md)
+### [Next Up: Walkthrough -- Taxonomy](../taxonomy)

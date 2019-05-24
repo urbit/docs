@@ -1,15 +1,15 @@
 +++
-title = "Setup"
-weight = 11
+title = "1.1 Setup"
+weight = 1
 template = "doc.html"
 +++
-Before we begin working on Hoon you should first (1) have Urbit installed and (2) boot an 'urbit' that you can use for trying out Hoon examples.  Interactive learning is far superior to passive reading.
+Before we begin working on Hoon, you should first (1) have Urbit installed and (2) boot a ship that you can use for trying out Hoon examples. If you  Interactive learning is far superior to passive reading.
 
 ## Installing Urbit
 
-You can [install Urbit](./docs/getting-started/_index.md) on any Mac or Unix machine; follow the steps for creating a development ship.  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
+You can install Urbit on any Mac or Unix machine; follow the steps for [creating a development ship](/docs/using/creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
 
-Once you're finished you can boot your very own urbit.
+Once you're finished you can boot your very own ship.
 
 ## What is an urbit?
 
@@ -108,4 +108,12 @@ You'll see:
 
 You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  But what is a noun?  Move on to lesson 1.2 for the answer.
 
-### [Next Lesson: Nouns](./docs/learn/hoon/hoon-tutorial/nouns.md)
+## Generators
+
+Generators are the most straightforward way to write Hoon programs. They are a concept in Arvo, and involve saving Hoon code in a `.hoon` text file. While they aren't strictly part of the Hoon language, we'll be dealing with generators throughout this tutorial.
+
+The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. So, to create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen` directory of your ship as a `.hoon` file. To run a generator named `mygen.hoon`, you would type `+myhoon <argument>` in your ship's Dojo.
+
+If this doesn't make sense yet, that's okay. In the next lesson, we will walk you through an example `gate` that is run as a generator.
+
+### [Next Up: Walkthrough -- List of Numbers](../list-of-numbers)

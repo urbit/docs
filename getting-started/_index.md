@@ -19,9 +19,9 @@ The Urbit software is a command-line application that runs the Arvo operating sy
 
 This guide teaches you how to get your ship operational and onto the Arvo network.
 
-### [Optional: Creating a Development Ship](./docs/getting-started/creating-a-development-ship.md)
+### [Optional: Contributing](contributing)
 
-If you want to develop software for Arvo, or if you just want to try the operating system without connecting to the network, this section is for you.
+This document will get your started with contributing code or contributing to the community.
 
 ## Terminology
 

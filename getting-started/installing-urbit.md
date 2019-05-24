@@ -194,7 +194,8 @@ urbit
 
 One you've completed your installation, you can continue on to the instructions for [booting your ship](./docs/getting-started/booting-a-ship.md) to get on the Arvo network.
 
-Or, if you want to try testing and writing code, check out the guide to [getting an unnetworked development ship](./docs/getting-started/creating-a-development-ship.md).
+Or, if you want to try testing and writing code, check out the guide to [getting an unnetworked development ship](/docs/using/creating-a-development-ship).
+
 
 
 ## Set Up Swap

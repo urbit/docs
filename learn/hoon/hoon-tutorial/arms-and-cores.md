@@ -1,6 +1,6 @@
 +++
 title = "Arms and Cores"
-weight = 14
+weight = 15
 template = "doc.html"
 +++
 The Hoon subject is a noun.  Each fragment of this noun is either an arm or a leg.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an arm is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we must also introduce an important Hoon data structure: a 'core'.
@@ -417,4 +417,4 @@ You can now unbind `c` in the dojo -- this will help to keep your dojo subject t
 -find.c
 ```
 
-### [Next Lesson: Gates](./docs/learn/hoon/hoon-tutorial/gates.md)
+### [Next Up: Walkthrough -- Caesar Cipher](../caesar)

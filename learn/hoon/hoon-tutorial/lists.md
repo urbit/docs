@@ -1,8 +1,9 @@
 +++
-title = "Standard Library: Lists"
-weight = 29
+title = "1.4 Lists"
+weight = 6
 template = "doc.html"
 +++
+
 In this lesson we'll review what a list is and then cover many of the list-related functions in the Hoon standard library.
 
 ## List Review
@@ -383,4 +384,4 @@ Run in dojo:
 33
 ```
 
-### [Next Lesson: Trees, Sets, and Maps](./docs/learn/hoon/hoon-tutorial/trees-sets-and-maps.md)
+### [Next Up: Walkthrough -- Fibonacci Sequence](../fibonacci)

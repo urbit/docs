@@ -1,5 +1,5 @@
 +++
-title = "Type Polymorphism"
+title = "2.5 Type Polymorphism"
 weight = 31
 template = "doc.html"
 +++
@@ -572,3 +572,6 @@ Once more let's clear up the dojo subject:
 ```
 =lead-gate
 ```
+
+
+### [Next Up: Walkthrough -- <placeholder>]

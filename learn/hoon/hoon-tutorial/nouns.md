@@ -1,9 +1,9 @@
 +++
-title = "Nouns"
-weight = 12
+title = "1.2 Nouns"
+weight = 4
 template = "doc.html"
 +++
-In Urbit every piece of data is a noun.  In order to understand Hoon one must first understand nouns.
+In Urbit every piece of data is a noun.  In order to understand Hoon, one must first understand nouns.
 
 ## Noun Definition
 
@@ -23,18 +23,6 @@ Here are some cells:
 - `[[83 [1 17]] [[23 [32 64]] 90]]`
 
 All of the above are nouns.
-
-## Recursive Definitions
-
-You may or may not have noticed that the definition of 'noun' is [recursive](https://en.wikipedia.org/wiki/Recursion).  Recursion is an important concept for functional programming, so it's worth taking a moment to understand it better.
-
-A recursive definition has three clauses: a base clause, a generating clause, and a closure clause.  Let's say you want to use recursion to define some X.  The definition should allow one to determine whether any given object is a member of X.  The **base clause** of the recursive definition defines one or more objects as trivial members of X.  The **generating clause** defines other objects as also being X by their relationship to previously established members of X.  The **closure clause** asserts that nothing else is a member of X than what has been given in the first two clauses.  Often the closure clause is not explicitly stated.
-
-For example, let's say you want to define the phrase 'ancestor of George Washington'.  Which 'objects' are members of that set?  The base clause is simple: the parents of George Washington are trivial ancestors of George Washington.  The generating clause is: given that some x is an ancestor of George Washington, the parents of x are also ancestors of George Washington.  The closure clause is: nothing else is an ancestor of George Washington.  That's it!
-
-Let's restate the definition of **noun** in these terms.  The base clause of the definition of a 'noun' is: all atoms are nouns (where an 'atom' is an unsigned integer).  The generating clause is: if x and y are nouns, then the cell `[x y]` is also a noun.  (A 'cell' is an ordered pair of nouns.).  The closure clause is: nothing else is a noun.
-
-We belabor this point about recursion only because it's an important concept for having a firm grasp of functional programming.  We'll talk more about recursion at various points in this series.
 
 ### Nouns as Binary Trees
 
@@ -178,7 +166,7 @@ All of the above are atoms.  The underlying noun of each is just an unsigned int
 313
 ```
 
-The `\`@\`` syntax is used to 'cast' a value to a raw atom, i.e., an atom without an aura.  Don't worry about exactly what `\`@\`` means just yet.  Casts will be explained in more detail in a later lesson.  For now all you need to know is that a cast doesn't change the underlying value of the noun; it's used here only to change how the value is printed in the dojo output.
+The `` `@` `` syntax is used to 'cast' a value to a raw atom, i.e., an atom without an aura.  Don't worry about exactly what `` `@` `` means just yet.  Casts will be explained in more detail in a later lesson.  For now all you need to know is that a cast doesn't change the underlying value of the noun; it's used here only to change how the value is printed in the dojo output.
 
 #### Identities, Cords, and Terms
 
@@ -351,7 +339,7 @@ When the dojo pretty-prints a cell it always removes superfluous cell brackets:
 
 However, you should always remember that though cells can be presented as lists of more than two nouns, they're always just pairs.
 
-### Exercise 1.2.1
+### Exercise 1.2a
 
 Without using the dojo, assess whether each of the following pairs of nouns is equivalent.  (Answers are at the bottom of the page.)
 
@@ -438,7 +426,7 @@ As before, the root of the binary tree (i.e., the whole noun) is at address `1`.
 
 Address `1110` indicates "the head of the tail of the tail of the noun".
 
-### Exercise 1.2.2
+### Exercise 1.2b
 
 Without using the dojo, evaluate the following expressions.  (Answers are at the bottom of the page.)
 
@@ -450,7 +438,7 @@ Without using the dojo, evaluate the following expressions.  (Answers are at the
 5. +10:[[[2 4 5] [3 6]] 11]
 ```
 
-### Exercise 1.2.3
+### Exercise 1.2c
 
 Without using the dojo, for each fragment below provide the address relative to the noun `[51 52 53 54 55]`.  (Answers are at the bottom of the page.)
 
@@ -464,9 +452,9 @@ Without using the dojo, for each fragment below provide the address relative to 
 
 That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet, or else move on to the next lesson.
 
-## 1.1 Exercise Answers
+## Exercise Answers
 
-### 1.1.1
+### 1.2a
 
 + No
 + Yes
@@ -474,7 +462,7 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet,
 + Yes
 + Yes
 
-### 1.1.2
+### 1.2b
 
 + 86
 + [[[65 35] 54] 77]
@@ -482,7 +470,7 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet,
 + 77
 + 3
 
-### 1.1.3
+### 1.2c
 
 + +2
 + +6
@@ -490,4 +478,4 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet,
 + +15
 + +31
 
-### [Next Lesson: The Subject and Its Legs](./docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs.md)
+### [Next Up: Reading -- Conditionals](../conditionals)

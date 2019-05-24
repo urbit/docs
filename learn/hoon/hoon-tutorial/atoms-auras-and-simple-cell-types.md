@@ -1,5 +1,5 @@
 +++
-title = "Atoms, Auras, and Simple Cell Types"
+title = "2.1 Atoms, Auras, and Simple Cell Types"
 weight = 24
 template = "doc.html"
 +++
@@ -321,7 +321,7 @@ If you want to add signed atoms use the function `sum:si` instead of `add`:
 --23
 ```
 
-### Exercise 2.4.1
+### Exercise 2.1a
 
 Does Hoon's `@s` aura make a distinction between positive and negative zero, e.g., `-0` and `--0`?  Use what you've learned in this lesson so far to come up with a principled answer.  (As always, exercise solutions are at the bottom of the lesson.)
 
@@ -750,7 +750,7 @@ That's it for this lesson.  Move on to the next one to learn more about when a t
 
 ## Exercise Answer
 
-### 2.4.1
+### 2.1a
 
 There is no distinction between positive and negative zero for `@s`.  To see this, let's cast each of `--0` and `-0` to `@s`:
 
@@ -775,4 +775,4 @@ Hoon pretty-prints them the same way, but can we be sure that they are the same 
 They are indeed the same.
 
 
-### [Next Lesson: Type Checking and Type Inference](./docs/learn/hoon/hoon-tutorial/type-checking-and-type-inference.md)
+### [Next Up: Reading -- Type Checking and Type Inference](../type-checking-and-type-inference)

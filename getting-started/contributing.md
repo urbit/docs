@@ -1,6 +1,6 @@
 +++
 title = "Contributing"
-weight = 3
+weight = 5
 template = "doc.html"
 description = "A guide to getting involved with the Urbit project."
 +++

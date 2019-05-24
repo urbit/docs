@@ -1,8 +1,9 @@
 +++
-title = "Caesar Cipher"
-weight = 2
+title = "1.7.1 Walkthrough: Caesar Cipher"
+weight = 16
 template = "doc.html"
 +++
+
 A Caesar cipher is a very simple way to obfuscate a message. The technique
 takes a string and swaps out each component letter with another letter that is
 a specified number of positions up or down in the alphabet. For example, with a
@@ -340,3 +341,5 @@ look for the legible result.
 possible unshifted `tapes`.
 
 4. Modify the example generator into a `%say` generator.
+
+### [Next Up: Reading -- Doors](../doors)
