@@ -7,31 +7,31 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 ## Table of Contents
 
-- #### [C](#C)
+- [C](#C)
 
-- #### [Clojure](#clojure)
+- [Clojure](#clojure)
 
-- #### [C#](#c-sharp)
+- [C#](#c-sharp)
 
-- #### [Groovy](#groovy)
+- [Groovy](#groovy)
 
-- #### [Haskell](#haskell)
+- [Haskell](#haskell)
 
-- #### [JavaScript](#javascript)
+- [JavaScript](#javascript)
 
-- #### [Python](#python)
+- [Python](#python)
 
-- #### [Ruby](#ruby)
+- [Ruby](#ruby)
 
-- #### [Scala](#scala)
+- [Scala](#scala)
 
-- #### [Scheme](#scheme)
+- [Scheme](#scheme)
 
-- #### [Swift](#swift)
+- [Swift](#swift)
 
 ## C Implementation
 
-The actual production Nock interpreter.  Note gotos for tail-call elimination,
+The actual production Nock interpreter. Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
 in the [runtime system documentation](./docs/learn/vere/runtime.md).
 ```
@@ -398,7 +398,6 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
 ```
 
 ## C#
-
 
 From [Julien Beasley](https://github.com/zass30/Nock5KCSharp):
 
