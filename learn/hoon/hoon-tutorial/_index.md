@@ -47,7 +47,7 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 
 Consult the [Reference section](./docs/reference/_index.md) to look up any unknown rune or standard library function you don't understand.
 
-As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](./docs/learn/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](./docs/using/generators.md) documentation.  Or maybe you'd like to learn how to write a [Gall app](content/docs/learn/arvo/gall.md).  Learn about [Udon](./docs/using/sail-and-udon.md), Urbit's stripped-down version of Markdown.  Or learn [Sail](./docs/using/sail-and-udon.md), a subset of Hoon used for generating XML nodes.
+As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](./docs/learn/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](./docs/learn/hoon/hoon-tutorial/generators.md) documentation.  Or maybe you'd like to learn how to write a [Gall app](content/docs/learn/arvo/gall.md).  Learn about [Udon](./docs/using/sail-and-udon.md), Urbit's stripped-down version of Markdown.  Or learn [Sail](./docs/using/sail-and-udon.md), a subset of Hoon used for generating XML nodes.
 
 
 > Last major revision of this section: February 2019

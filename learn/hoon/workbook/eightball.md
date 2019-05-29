@@ -59,7 +59,7 @@ is good practice whenever developing something in Hoon.
 
 To make our program produce a random result, we need entropy. To get entropy,
 we need data from Arvo. To get data from Arvo, we use a generator of the
-[`%say`](./docs/using/generators.md) variety. The above code chunk is
+[`%say`](./docs/learn/hoon/hoon-tutorial/generators.md) variety. The above code chunk is
 the template that is followed for all `%say` generators.
 
 `:-  %say` creates a cell with `%say` as that cell's head to define
