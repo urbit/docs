@@ -3,6 +3,7 @@ title = "Messaging"
 weight = 2
 template = "doc.html"
 +++
+
 Talk is the built-in frontend for the Urbit messaging and notifications
 protocol, Hall. Today we use Hall to chat and coordinate, but it's really
 a general purpose piece of infrastructure.
@@ -27,14 +28,14 @@ take a look at its [documentation](./docs/learn/arvo/hall.md).
 
 ## Quickstart
 
-The most common use of talk right now is as a single-instance of Slack: one main
-channel (`~dopzod/urbit-help`) and direct messages. Everyone is more than welcome
+The most common use of talk right now is as a single IRC or Slack channel (`~dopzod/urbit-help`) and direct messages. Everyone is more than welcome
 in `~dopzod/urbit-help`. It's the place to get help, ask questions and chat about
 Urbit in general.
 
 There are two ways of using Talk: from the terminal running the Urbit process,
-or through a web UI available at `http://localhost:8080/~~/talk`. This
-quick-start guide will cover the first method.
+or through the Landscape web UI available at `http://localhost/~~/landscape` (in some cases, Urbit will proxy over port 8080, in which case this link becomes `http://localhost:8080/~~/landscape`).
+
+If you're using Landscape for the first time, you'll need to enter a code to gain access. You can obtain this code by running `+code` from the Dojo.
 
 ### Joining a Channel
 
@@ -44,6 +45,7 @@ accessible chatroom for general use. We'll discuss the other three
 kinds in the [manual](#manual) section.
 
 Let's join the `~dopzod/urbit-help` channel. Use `ctrl-x` to switch from Dojo to Talk.
+
 Then:
 
 ```
@@ -64,6 +66,18 @@ You'll see your message printed below messages from others that came before it:
 ```
 ~your-urbit= Hello, world!
 ```
+
+### Subscribing to a Channel in Landscape
+
+In Landscape, you can always navigate to a channel by opening the menu, or using the shortcut `cmd-k`, then typing `go ~dopzod/urbit-help`. However, if you want to see messages in your inbox, you'll need to subscribe.
+
+Let's try. From the Talk terminal, run:
+
+```
+;source %inbox ~dopzod/urbit-help
+```
+
+Now, navigate to `localhost/~~/landscape`. You should see recent messages under the "Recent" tab, and if you navigate to the "All" tab, you should see your subscription to `~dopzod/urbit-help` under "Chats".
 
 ### Direct Messaging
 
