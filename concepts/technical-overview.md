@@ -158,7 +158,7 @@ blockchain, used as a decentralized ledger for Urbit identities that we call
 important to have a neutral ledger to determine who owns what.
 
 Azimuth is not, however, part of the Urbit stack. Azimuth is a parallel system
-that be used as a generalized identity system for other projects. Azimuth
+that can be used as a generalized identity system for other projects. Azimuth
 "touches" the Urbit ecosystem when a point is used to boot a virtual computer
 on the Urbit network for the first time. When that happens, the point considered
 **linked** to Azimuth and the point’s full powers are available for use. Once a
