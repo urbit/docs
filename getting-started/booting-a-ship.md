@@ -23,18 +23,18 @@ Type `cd` in your terminal to return to your home directory. If you want to
 store your ship somewhere besides your home directory, change the terminal's
 working directory to the desired directory.
 
-Run the command below, except with `~sample-planet` replaced by the name of your
+Run the command below, except with `sample-planet` replaced by the name of your
 Urbit identity, and `path/to/my-planet.key` replaced with the path to your
 keyfile:
 
 ```
-urbit -w ~sample-planet -k path/to/my-planet.key
+urbit -w sample-planet -k path/to/my-planet.key
 ```
 
 Or, if you'd prefer to copy your key in, you can run:
 
 ```
-urbit -w ~sample-planet -G rAnDoMkEy
+urbit -w sample-planet -G rAnDoMkEy
 ```
 
 Either command will create a directory called `sample-planet/` and begin
