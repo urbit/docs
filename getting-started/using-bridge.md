@@ -26,6 +26,8 @@ Once the program is running in your browser, go through each step presented acco
 
 ## Accept Your Transfer
 
+If you were given points by Tlon, you likely already fully own them. But if someone sent you a point, then you will first need to accept that transfer.
+
 After you access your Ethereum address, if a point was sent to that address,
 you'll come to a page that has an `Incoming Transfers` header, under which is
 a graphic. Click the `Details ->` link under that graphic.
