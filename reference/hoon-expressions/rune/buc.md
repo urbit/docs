@@ -283,8 +283,7 @@ Using `$~`:
 
 ###### Normalizes to
 
-Default, if the sample is an atom; `p`, if the head of the sample
-is an atom; `q` otherwise.
+`p`, if the sample is an atom; `q`, if the sample is a cell.
 
 ##### Defaults to
 
