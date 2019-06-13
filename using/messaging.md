@@ -28,21 +28,15 @@ take a look at its [documentation](./docs/learn/arvo/hall.md).
 
 ## Quickstart
 
-The most common use of talk right now is as a single IRC or Slack channel (`~dopzod/urbit-help`) and direct messages. Everyone is more than welcome
-in `~dopzod/urbit-help`. It's the place to get help, ask questions and chat about
-Urbit in general.
+The most common uses of Talk right now are communicating over a public chat channel called `~dopzod/urbit-help` and sending direct messages. Everyone is more than welcome in `~dopzod/urbit-help`. It's the place to get help, ask questions and chat about Urbit in general.
 
-There are two ways of using Talk: from the terminal running the Urbit process,
-or through the Landscape web UI available at `http://localhost/~~/landscape` (in some cases, Urbit will proxy over port 8080, in which case this link becomes `http://localhost:8080/~~/landscape`).
+There are two ways of using Talk: from the terminal running the Urbit process, or through the Landscape web UI available at `http://localhost/~~/landscape`.
 
 If you're using Landscape for the first time, you'll need to enter a code to gain access. You can obtain this code by running `+code` from the Dojo.
 
 ### Joining a Channel
 
-In Hall, a medium for a message is called a _circle_. There are four types of
-circles, but we for now we'll be dealing with the _channel_: a publicly
-accessible chatroom for general use. We'll discuss the other three
-kinds in the [manual](#manual) section.
+In Hall, a medium for a message is called a _circle_. There are four types of circles, but we for now we'll be dealing with the _channel_: a publicly accessible chatroom for general use. We'll discuss the other three kinds in the [manual](#manual) section.
 
 Let's join the `~dopzod/urbit-help` channel. Use `ctrl-x` to switch from Dojo to Talk.
 
@@ -69,12 +63,12 @@ You'll see your message printed below messages from others that came before it:
 
 ### Subscribing to a Channel in Landscape
 
-In Landscape, you can always navigate to a channel by opening the menu, or using the shortcut `cmd-k`, then typing `go ~dopzod/urbit-help`. However, if you want to see messages in your inbox, you'll need to subscribe.
+In Landscape, you can always navigate to a channel by opening the menu, or using the shortcut `cmd-k`, then typing `go ~host-urbit/channel-name`. However, if you want to see messages in your inbox, you'll need to join from the Talk terminal.
 
-Let's try. From the Talk terminal, run:
+Again, that's:
 
 ```
-;source %inbox ~dopzod/urbit-help
+;join ~dopzod/urbit-help
 ```
 
 Now, navigate to `localhost/~~/landscape`. You should see recent messages under the "Recent" tab, and if you navigate to the "All" tab, you should see your subscription to `~dopzod/urbit-help` under "Chats".
@@ -202,9 +196,7 @@ will print as
 
 #### Replies
 
-To indicate what you're saying is in direct response to a specific
-message, select the message (see Activating Lines below) and type your
-response.
+To indicate what you're saying is in direct response to a specific message, select the message (see Activating Lines below) and type your response.
 
 ```
 ~some-urbit= Hello! How are you?
