@@ -168,10 +168,10 @@ sudo env "PATH=$PATH" pip3 install meson
 # we need libsigsegv
 #
 
-wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-2.10-10.fc24.x86_64.rpm
-wget http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/l/libsigsegv-devel-2.10-10.fc24.x86_64.rpm
-sudo yum localinstall libsigsegv-2.10-10.fc24.x86_64.rpm
-sudo yum localinstall libsigsegv-devel-2.10-10.fc24.x86_64.rpm
+wget https://dl.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libsigsegv-2.11-7.fc30.x86_64.rpm
+wget https://dl.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libsigsegv-devel-2.11-7.fc30.x86_64.rpm
+sudo yum localinstall libsigsegv-2.11-7.fc30.x86_64.rpm
+sudo yum localinstall libsigsegv-devel-2.11-7.fc30.x86_64.rpm
 
 git clone git://github.com/ninja-build/ninja.git
 pushd ninja
