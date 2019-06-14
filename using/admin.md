@@ -108,13 +108,13 @@ Full coverage of the Urbit shell, the Dojo is covered in the
 
 ## Web
 
-On startup Urbit tries to bind to `localhost:8080`. If you're already
-running something on `8080` -- such as another urbit -- you'll find the urbit
-that you just started on `8081`, and so on. For planets only, we also proxy web
+On startup Urbit tries to bind to `localhost:80`. If you're already
+running something on port `80` -- such as any other HTTP server, or another urbit -- you'll find the urbit
+that you just started on `8080`, `8081`, and so on. For planets only, we also proxy web
 domains through Urbit's own servers. Any planet `~your-urbit` is also at
 `your-urbit.urbit.org`.
 
-Your urbit serves a simple homepage from `http://localhost:8080` or
+Your urbit serves a simple homepage from `http://localhost` or
 `https://your-urbit.urbit.org` that should be self-explanatory. Since
 our HTTPS isn't audited / battle tested, we just call it "secure" HTTPS.
 You can find that on `8443`. Or `8444` (and so on) if you're already
