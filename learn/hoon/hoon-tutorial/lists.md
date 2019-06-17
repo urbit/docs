@@ -9,7 +9,7 @@ template = "doc.html"
 
 A **list** is a type of noun that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).
 
-So a list can be either null or non-null. When the list contains only `~` and no items, it's the null list.  Most lists are, however, non-null lists, which have has items preceding the `~`. Non-null lists are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sub-list is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
+So a list can be either null or non-null. When the list contains only `~` and no items, it's the null list.  Most lists are, however, non-null lists, which have has items preceding the `~`. Non-null lists, called _lests_, are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sub-list is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
 
 `[1 [2 [3 [4 ~]]]]`
 
@@ -53,6 +53,8 @@ find-fork-d
 > =>(b=`(list @)`[1 2 3 4 5 ~] ?~(b ~ t.b))
 ~[2 3 4 5]
 ```
+
+It's important to note that performing tests like `?~ mylist` will actually transform `mylist` in to a `lest`, a non-null list. Because a `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you later try to use to use some standard library functions. 
 
 You can construct lists of any type.  `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
