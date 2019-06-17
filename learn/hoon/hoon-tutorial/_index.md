@@ -23,7 +23,7 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [1.2 Nouns](nouns)
 - [1.2.1 Walkthrough: Boolean Branching](boolean-branching)
 - [1.3 Hoon Syntax](hoon-syntax)
-- [1.4 Lists](list)
+- [1.4 Lists](lists)
 - [1.4.1 Walkthrough: Fibonacci Sequence](fibonacci)
 - [1.5 Gates (Hoon Functions)](gates)
 - [1.5.1 Walkthrough: Recursion](recursion)
