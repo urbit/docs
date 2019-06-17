@@ -3,7 +3,8 @@ title = "1.2 Nouns"
 weight = 4
 template = "doc.html"
 +++
-In Urbit every piece of data is a noun.  In order to understand Hoon, one must first understand nouns.
+
+In Urbit, every piece of data is a noun.  In order to understand Hoon, one must first understand nouns.
 
 ## Noun Definition
 
