@@ -54,7 +54,7 @@ find-fork-d
 ~[2 3 4 5]
 ```
 
-It's important to note that performing tests like `?~ mylist` will actually transform `mylist` in to a `lest`, a non-null list. Because a `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you later try to use to use some standard library functions. 
+It's important to note that performing tests like `?~ mylist` will actually transform `mylist` in to a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
 You can construct lists of any type.  `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
