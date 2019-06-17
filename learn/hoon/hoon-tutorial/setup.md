@@ -3,7 +3,7 @@ title = "1.1 Setup"
 weight = 1
 template = "doc.html"
 +++
-Before we begin working on Hoon, you should first (1) have Urbit installed and (2) boot a ship that you can use for trying out Hoon examples. If you  Interactive learning is far superior to passive reading.
+Before we begin working on Hoon, you should first (1) have Urbit installed and (2) boot a ship that you can use for trying out Hoon examples. Interactive learning is far superior to passive reading.
 
 ## Installing Urbit
 
