@@ -1,6 +1,6 @@
 +++
 title = "2.3.1 Walkthrough: Libraries"
-weight = 0
+weight = 28
 template = "doc.html"
 +++
 
