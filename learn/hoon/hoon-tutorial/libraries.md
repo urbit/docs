@@ -94,6 +94,27 @@ We can see this is a gate that takes a single `@ud` and produces a `suit`.
 The `?+` rune is the rune to switch against a value with a default.  The default here is to crash with `!!`. Then we have the four options of 1 through 4, based on the value of `val`, which each result in a different suit.
 
 ```
+++  make-deck
+  ^-  deck
+  =|  mydeck=deck
+  =/  i  1
+  |-
+  ?:  (gth i 4)
+    mydeck
+  =/  j  1
+  |-
+  ?.  (lte j 13)
+    ^$(i +(i))
+  %=  $
+    j       +(j)
+    mydeck  [(num-to-suit i) j]^mydeck
+  ==
+```
+
+`num-to-suit` is used in the `make-deck` arm. This arm should be quite readable to you at this point. Here we simply have two loops where we use counters to build up the full set of 52 cards. Once we have reached the point where `j` is greater than 13, we're going to jump back out the outer loop and increment `i`. `?.` may be an unfamiliar rune but it is simply the inverted version of `?:` so the first branch is actually the no branch and the second is the yes branch. Again this is done to keep the heaviest branch at the bottom, though this could also be achieved in this case by reversing the conditional.
+
+
+```
 ++  draw
   |=  [n=@ud d=deck]
   ^-  [hand=deck rest=deck]
