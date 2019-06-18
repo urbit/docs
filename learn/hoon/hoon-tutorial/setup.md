@@ -15,11 +15,11 @@ These may not look like numbers, but they are.  Each urbit name is written in a 
 
 You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](/docs/using/creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
 
-Once you're finished, you can [boot your very own ship](/docs/getting-started/booting-a-ship/#step-3-run-the-boot-command).
+Once you're finished, you can [boot your very own ship](/docs/getting-started/booting-a-ship/#step-3-run-the-boot-command). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
 
 ## Getting started 
 
-Once you've created your development ship (or your own ship on the live network), let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
+Once you've created your development ship, let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
 
 ```
 ames: on localhost, UDP 31337.
