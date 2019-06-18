@@ -5,13 +5,13 @@ sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
 
-Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. If you have an Azimuth point, you can follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
+Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. If you have an Azimuth point, you can follow this step-by-step guide to get your point's _keyfile_, which you need to boot your ship. Then you can install Urbit and join the community.
 
 If you don't have an Azimuth point, you can always [create a comet](./docs/using/creating-a-comet.md) to join the network before committing to a point, or [create a development ship](./docs/using/creating-a-development-ship.md) and start using Urbit offline first.
 
 ### [Step 1: Using Bridge](./docs/getting-started/using-bridge.md)
 
-In order to join the Urbit network, you need an Azimuth point, which acts like an identity and a password for your Urbit ship. Bridge is our client for managing Azimuth points. This guide tells you how to use Bridge to get your point's _keyfile_, which you need to boot your ship.
+In order to join the Urbit network, you need an Azimuth point, which acts like an identity and a password for your Urbit ship. Bridge is our client for managing Azimuth points, and lets you get your keyfile and claim the point.
 
 ### [Step 2: Installing Urbit](./docs/getting-started/installing-urbit.md)
 
