@@ -22,13 +22,13 @@ Once you're finished, you can [boot your very own ship](/docs/getting-started/bo
 Once you've created your development ship, let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
 
 ```
-ames: on localhost, UDP 31337.
-http: live (insecure, public) on 8080
-http: live ("secure", public) on 8443
+fake: ~zod
+ames: czar: ~zod on 31337 (localhost only)
+http: live (insecure, public) on 80
 http: live (insecure, loopback) on 12321
 > (add 2 2)
 4
-~palnul_nocser:dojo>
+~zod:dojo>
 ```
 
 You just used a function from the Hoon standard library, `add`.  Next, quit Urbit with `ctrl-d`:
@@ -36,21 +36,21 @@ You just used a function from the Hoon standard library, `add`.  Next, quit Urbi
 ```
 > (add 2 2)
 4
-~palnul_nocser:dojo>
+~zod:dojo>
 $
 ```
 
-Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is `~palnul_nocser`, then you can restart the ship by typing:
+Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is `~zod`, then you can restart the ship by typing:
 
 ```
-urbit palnul_nocser
+urbit zod
 ```
 
 ## Another Noun
 
 You've already used a standard library function to produce one value, in the dojo.  Now that your ship is running again, let's try another.  Enter the number `17`.
 
-> We won't show the `~palnul_nocser:dojo> ` prompt from here on out.  We'll just show the echoed command along with its result.
+> We won't show the `~zod:dojo> ` prompt from here on out.  We'll just show the echoed command along with its result.
 
 You'll see:
 
