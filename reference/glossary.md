@@ -76,7 +76,7 @@ Below are Arvo modules, which are called "vanes".
   Ames is located in `/home/sys/vane/ames.hoon` within your urbit.
 
   More in-depth information on Ames can be found
-  [`here`](.t/docs/learn/arvo/ames.md).
+  [`here`](./docs/learn/arvo/ames/).
 
 ##### Behn
 
@@ -150,7 +150,7 @@ Below are Arvo modules, which are called "vanes".
   Ford is located at `/home/sys/vane/ford.hoon` within your urbit.
 
   More in-depth information on Ford can be found
-  [`here`](content/docs/learn/arvo/ford.md).
+  [`here`](./docs/learn/arvo/ford/).
 
 ##### Gall
 
@@ -768,7 +768,7 @@ _Sail_ is the Hoon markup language for XML.
 To _scry_ means to request data from the Arvo namespace and bring it
 to userspace.
 
-_See [.^ (dot-ket)](.content/docs/reference/hoon-expressions/rune/dot.md)._
+_See [.^ (dot-ket)](./docs/reference/hoon-expressions/rune/dot/#dotket)._
 
 ### slot
 
