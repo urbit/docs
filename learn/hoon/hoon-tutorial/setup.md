@@ -5,21 +5,21 @@ template = "doc.html"
 +++
 Before we begin working on Hoon, you should first (1) have Urbit installed and (2) boot a ship that you can use for trying out Hoon examples. Interactive learning is far superior to passive reading.
 
-## Installing Urbit
-
-You can install Urbit on any Mac or Unix machine; follow the steps for [creating a development ship](/docs/using/creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
-
-Once you're finished you can boot your very own ship.
-
 ## What is an urbit?
 
 An **urbit** is an Urbit virtual computer with persistent state that can connect to the Urbit network.  (Note the lowercase 'u' here.  'Urbit' is the entire software stack, whereas 'an urbit' is a local instance.)  Each urbit is associated with a unique number that plays three distinct roles: (1) it's an address on the Urbit network, (2) it's a cryptographic identity, and (3) it's (in principle) a human memorable name.  Normally an urbit's name is represented as a string starting with `~`, as in `~zod` or `~taglux-nidsep`.
 
 These may not look like numbers, but they are.  Each urbit name is written in a base-256 format, where each 'digit' is a syllable.  Imagine your phone number as a pronounceable string which sounds like a name in a foreign language.  An ordinary user-level urbit is a 'planet', and it's named by a 32-bit number.  The latter is represented as a four-syllable string; e.g., the planet name `~taglux-nidsep` is the number 6,095,360.
 
+## Installing Urbit
+
+You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](/docs/using/creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
+
+Once you're finished, you can [boot your very own ship](/docs/getting-started/booting-a-ship/#step-3-run-the-boot-command).
+
 ## Getting started 
 
-Once you've installed your development ship (or your own ship on the live network), let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
+Once you've created your development ship (or your own ship on the live network), let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
 
 ```
 ames: on localhost, UDP 31337.
