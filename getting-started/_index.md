@@ -5,7 +5,9 @@ sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
 
-Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. Follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
+Welcome to Urbit, a personal server. Urbit isn't ready for serious use yet, but it's available to try out. If you have an Azimuth point, you can follow this step-by-step guide to get an Azimuth point, install Urbit, and join the community.
+
+If you don't have an Azimuth point, you can always [create a comet](./docs/using/creating-a-comet.md) to join the network before committing to a point, or [create a development ship](./docs/using/creating-a-development-ship.md) and start using Urbit offline first.
 
 ### [Step 1: Using Bridge](./docs/getting-started/using-bridge.md)
 
