@@ -8,14 +8,14 @@ This code-example is intended to familiarize you with the basics of Hoon syntax.
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
 
 ```
-|=  end=@                                               ::  1
-=/  count=@  1                                          ::  2
-|-                                                      ::  3
-^-  (list @)                                            ::  4
-?:  =(end count)                                        ::  5
-  ~                                                     ::  6
-:-  count                                               ::  7
-$(count (add 1 count))                                  ::  8
+|=  end=@
+=/  count=@  1
+|-
+^-  (list @)
+?:  =(end count)
+  ~
+:-  count
+$(count (add 1 count))
 ```
 
 As we mentioned in the previous lesson, the easiest way to use such a program is to run it as a _generator_. Saving a file in the `/home/gen` directory of your ship allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo as so:
