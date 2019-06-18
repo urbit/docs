@@ -17,35 +17,9 @@ An **urbit** is an Urbit virtual computer with persistent state that can connect
 
 These may not look like numbers, but they are.  Each urbit name is written in a base-256 format, where each 'digit' is a syllable.  Imagine your phone number as a pronounceable string which sounds like a name in a foreign language.  An ordinary user-level urbit is a 'planet', and it's named by a 32-bit number.  The latter is represented as a four-syllable string; e.g., the planet name `~taglux-nidsep` is the number 6,095,360.
 
-For this tutorial you'll boot and run what we call a 'comet'.  **Comets** are urbits whose names are 128-bits or 16 syllables, such as:
+## Getting started 
 
-`~hillyn-pitwet-hasdur-paswer--miszod-rabpex-divrup-fogdur`
-
-Comet names aren't quite as memorable as others, but they're disposable identities that anyone can make for free to join the live network. Thus, comets make the ideal urbit for playing around with Hoon, asking for help from other Urbit devs in [Talk](./docs/using/messaging.md) if you need it, and showing off Urbit to your friends.
-
-## Booting a Comet
-
-To boot your comet, go into the command line and run the following command from the directory that was created during Urbit installation:
-
-```
-$ urbit -c mycomet
-```
-
-This will take a few minutes and will spin out a bunch of boot messages. Toward the end, you'll see something like:
-
-```
-ames: on localhost, UDP 31337.
-http: live (insecure, public) on 8080
-http: live ("secure", public) on 8443
-http: live (insecure, loopback) on 12321
-~palnul_nocser:dojo>
-```
-
-(There will likely be other messages as well.)
-
-Look at the prompt, `~palnul_nocser:dojo>`.  To the left of the `:` you'll see an abbreviation of the comet name you just booted, `~palnul_nocser` in this case.  To the right is the name of a local application, `dojo`.  **Dojo** is the Urbit command line app; it's also a Hoon [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) we'll use to run simple Hoon examples.
-
-To make sure everything is working, type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
+Once you've installed your development ship (or your own ship on the live network), let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
 
 ```
 ames: on localhost, UDP 31337.
@@ -66,36 +40,15 @@ You just used a function from the Hoon standard library, `add`.  Next, quit Urbi
 $
 ```
 
-Your comet isn't running anymore and you're back at your computer's normal terminal prompt. You now have a `mycomet` directory for your Urbit comet; this directory is your comet's **pier** and it contains the entirety of your comet's state.
-
-Right now the only thing in your pier is your comet's system files:
+Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is `~palnul_nocser`, then you can restart the ship by typing:
 
 ```
-$ ls -a /path/to/mycomet
-./  ../ .urb/
-```
-
-Restarting your already-created comet from the terminal is like creating a new one, but without the `-c` flag.  (The `-c` is for "create".)
-
-```
-$ urbit mycomet
-```
-
-Because the comet has already been booted it won't take very long to get it running again.  There are also fewer startup messages:
-
-```
-$ urbit mycomet
-[...]
-ames: on localhost, UDP 31337.
-http: live (insecure, public) on 8080
-http: live ("secure", public) on 8443
-http: live (insecure, loopback) on 12321
-~palnul_nocser:dojo>
+urbit palnul_nocser
 ```
 
 ## Another Noun
 
-You've already used a standard library function to produce one value, in the dojo.  Now that your comet is running again, let's try another.  Enter the number `17`.
+You've already used a standard library function to produce one value, in the dojo.  Now that your ship is running again, let's try another.  Enter the number `17`.
 
 > We won't show the `~palnul_nocser:dojo> ` prompt from here on out.  We'll just show the echoed command along with its result.
 
@@ -106,7 +59,7 @@ You'll see:
 17
 ```
 
-You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  But what is a noun?  Move on to lesson 1.2 for the answer.
+You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](docs/learn/hoon/hoon-tutorial/nouns/), but first let's write a very basic program.
 
 ## Generators
 
