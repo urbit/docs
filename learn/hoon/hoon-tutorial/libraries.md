@@ -90,7 +90,7 @@ One way to get a feel for how a library works is to skim the `++` arm-names befo
 
 We can see this is a gate that takes a single `@ud` and produces a `suit`.
 
-The `?+` rune is the rune to switch against a value with a default.  The default here is to crash with `!!`. Then we have the four options of 1 through 4, based on the value of `val`, which each result in a different suit.
+The `?+` rune is the rune to switch against a value with a default.  The default here is to crash with `!!`. Then we have the four options of 1 through 4, based on the value of `val`, which each resulting in a different suit.
 
 ```
 ++  make-deck
@@ -110,7 +110,7 @@ The `?+` rune is the rune to switch against a value with a default.  The default
   ==
 ```
 
-`num-to-suit` is used in the `make-deck` arm. This arm should be quite readable to you at this point. Here we simply have two loops where we use counters to build up the full set of 52 cards. Once we have reached the point where `j` is greater than 13, we're going to jump back out the outer loop and increment `i`. `?.` may be an unfamiliar rune but it is simply the inverted version of `?:` so the first branch is actually the no branch and the second is the yes branch. Again this is done to keep the heaviest branch at the bottom, though this could also be achieved in this case by reversing the conditional.
+`num-to-suit` is used in the `make-deck` arm shown above. This arm should be quite readable to you at this point. Here we simply have two loops where we use counters to build up the full set of 52 cards, by cycling through every possible suit and number and combining them. Once we have reached the point where `j` is greater than 13, we're going to jump back out to the "suit" outer-loop and increment `i`. `?.` may be an unfamiliar rune; it is simply the inverted version of `?:`, so the first branch is actually the "no" branch and the second is the "yes" branch. This is done to keep the "heaviest" branch at the bottom.
 
 
 ```
@@ -163,7 +163,7 @@ This is a very naive shuffling algorithm, and you could imagine a better one. Im
 
 ## Using the Library
 
-So now that we have this library, how do we actually use it? Let's look at a very simple `say` generator that uses it.
+So now that we have this library, how do we actually use it? Let's look at a very simple `say` generator that takes advantage of what we built.
 
 ```
 /+  playing-cards
@@ -173,6 +173,6 @@ So now that we have this library, how do we actually use it? Let's look at a ver
 (shuffle-deck:playing-cards make-deck:playing-cards eny)
 ```
 
-If you save this in the `gen` directory and the library as `playing-cards.hoon` in the `lib` directory, you can import the library with the `/+` rune. This is not a hoon rune, but instead a rune used by Ford, the Urbit build system. When this file gets built, Ford will pull in the requested library and also build it. It will also create a dependency so that if `playing-cards.hoon` changes, this file will also get rebuilt.
+If you save our the library as `playing-cards.hoon` in the `lib` directory, you can import the library with the `/+` rune. Our above `say` -- let's call it `cards.hoon` -- imports our library in this way. It should be noted that `/+` is not a Hoon rune, but instead a rune used by Ford, the Urbit build-system. When `cards.hoon` gets built, Ford will pull in the requested library and also build that. It will also create a dependency so that if `playing-cards.hoon` changes, this file will also get rebuilt.
 
-Here you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed that and a `deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `deck`.
+Below `/+  playing-cards`, you have the standard `say` generator boilerplate that allows us to get a bit of entropy from `arvo` when the generator is run. Then we feed the entropy and a `deck` created by `make-deck` into `shuffle-deck` to get back a shuffled `deck`.
