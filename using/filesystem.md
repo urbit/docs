@@ -1,6 +1,6 @@
 +++
 title = "Filesystem"
-weight = 4
+weight = 5
 template = "doc.html"
 +++
 Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global,

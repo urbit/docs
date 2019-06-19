@@ -3,6 +3,7 @@ title = "Creating a Development Ship"
 weight = 0
 template = "doc.html"
 +++
+
 To do work with Hoon and with the system, we recommended using a "fake" ship -- one not connected to the network.
 
 Because such a ship has no presence on the network, you don't need an Azimuth identity for its purposes. You just need to have [installed our software](./docs/getting-started/installing-urbit.md).

@@ -1,6 +1,6 @@
 +++
 title = "Shell"
-weight = 3
+weight = 4
 template = "doc.html"
 +++
 The Dojo is our shell; it processes system commands and returns output. It's a
