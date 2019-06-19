@@ -1,6 +1,6 @@
 +++
 title = "Admin and Operations"
-weight = 1
+weight = 2
 template = "doc.html"
 +++
 Your urbit (also called your _ship_) is a persistent Unix process that you

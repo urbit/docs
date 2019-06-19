@@ -1,6 +1,6 @@
 +++
 title = "Operating a Star"
-weight = 5
+weight = 6
 template = "doc.html"
 +++
 A _ship_ is an instance of the Arvo operating system that is used as a personal server on the Arvo network. Stars are a type of ship that act as infrastructure for the Arvo network. In the Arvo ship-hierarchy, stars are below galaxies and above planets.
