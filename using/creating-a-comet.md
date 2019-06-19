@@ -6,7 +6,7 @@ template = "doc.html"
 
 **Comets** are urbits whose names are 128-bits or 16 syllables, such as:
 
-`~hillyn-pitwet-hasdur-paswer--miszod-rabpex-divrup-fogdur`
+`~dasres-ragnep-lislyt-ribpyl--mosnyx-bisdem-nidful-marzod`
 
 Comet names aren't quite as memorable as others, but they're disposable identities that anyone can make for free to join the live network.
 
@@ -25,5 +25,5 @@ ames: on localhost, UDP 31337.
 http: live (insecure, public) on 8080
 http: live ("secure", public) on 8443
 http: live (insecure, loopback) on 12321
-~hillyn-pitwet-hasdur-paswer--miszod-rabpex-divrup-fogdur:dojo>
+~dasres_marzod:dojo>
 ```
