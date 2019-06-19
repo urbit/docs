@@ -1,6 +1,6 @@
 +++
 title = "Creating a Comet"
-weight = 0
+weight = 1
 template = "doc.html"
 +++
 
