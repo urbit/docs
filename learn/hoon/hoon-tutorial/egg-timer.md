@@ -4,7 +4,7 @@ weight = 0
 template = "doc.html"
 +++
 
-Arvo is divided up into parts called vanes. Gall is one of those vanes and it is the one responsible for providing an api for building stateful applications in Urbit. Gall is a complex system that takes a lot of getting used to so let's dip our toes in with a very simple app.
+The Arvo operating system is divided up into modules called _vanes_. Gall is the vane responsible for providing an api for building stateful applications in Urbit. Gall is a complex system that takes a lot of getting used to so let's dip our toes in with a very simple app.
 
 
 ```
@@ -37,7 +37,7 @@ The first thing to notice is that we are creating a `core` and a `door`. This is
 
 The `core` here defines two types `effect` and `syscall`. An `effect` is a `pair` of `bone` and `syscall`. A `bone` is an opaque reference to a set of events. A `syscall` is a request to Arvo to do something for us. In this case the only valid `syscall` will be `%wait` which we'll discuss in a bit. It's important to note that the names `effect` and `syscall` are not important and you can call them whatever you would like. Commonly you will see them called `move` and `card` respectively but we've changed the names here to try to help provide some clarity over the older convention.
 
-The sample of the `door` is 
+The sample of the `door` is
 
 ```
 [bowl:gall ~]
@@ -51,7 +51,7 @@ You can find the full definition of `bowl` in `sys/zuse.hoon` but for now it's e
 `eny`  Entropy
 `now`  The current time of the event
 
-The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark 
+The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark
 
 
 ```
@@ -73,7 +73,7 @@ We're going to create a gate that takes a single `@dr` argument. `@dr` is an aur
 
 As a mater of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for gall to handle. `^+` is the rune for cast by example. Our example is a cell of `list` of `effect`, which we `bunt` with `*`, and `+>.$`, the enclosing core which is our `door`.
 
-Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like 
+Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like
 
 ```
 [[[ost %wait /(scot %da now) (add now t)] ~] +>.$]
