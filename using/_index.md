@@ -7,6 +7,7 @@ template = "sections/docs/chapters.html"
 This section contains guides to using your urbit.
 
 - [Creating a Development Ship](creating-a-development-ship) will show you how to set up the environment for coding on Urbit.
+- [Creating a Comet](creating-a-comet) will show you how to create a comet: quick, disposable 128-bit identities on the Urbit network.
 - [Admin and Operation](admin) is a guide to the basic commands used to interact with your ship.
 - [Messaging](messaging) tells you how to use Talk, our chat system.
 - [Shell](shell) is a guide to using Dojo, our command-line interface.
