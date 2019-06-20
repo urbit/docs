@@ -1,5 +1,5 @@
 +++
-title = "2.7.1 Walkthrough: Egg Timer"
+title = "2.7.1 Gall Walkthrough: Egg Timer"
 weight = 36
 template = "doc.html"
 +++
@@ -17,7 +17,7 @@ The Arvo operating system is divided up into modules called vanes. Gall is the v
   |=  t=@dr
   ^+  [*(list effect) +>.$]
   :_  +>.$  :_  ~
-  [ost %wait /(scot %da now) (add now t)]
+  [ost %wait /egg-timer (add now t)]
 ++  wake
   |=  [=wire error=(unit tang)]
   ^+  [*(list effect) +>.$]
@@ -60,7 +60,7 @@ The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of di
   |=  t=@dr
   ^+  [*(list effect) +>.$]
   :_  +>.$  :_  ~
-  [ost %wait /(scot %da now) (add now t)]
+  [ost %wait /egg-timer (add now t)]
 ```
 
 In the above code, we create a gate that takes a single `@dr` argument. `@dr` is an aura for a 128-bit relative date. Here are a few examples.
@@ -74,7 +74,7 @@ As a matter of good type hygiene, we explicitly cast the output of this gate wit
 Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like:
 
 ```
-[[[ost %wait /(scot %da now) (add now t)] ~] +>.$]
+[[[ost %wait /egg-timer (add now t)] ~] +>.$]
 ```
 
 `ost` is the `bone`, the opaque reference to a chain of events, that comes from `bowl`, so we're going to continue to use it here. `%wait` is the name of the `syscall`, in this case a request to the Behn vain to start a timer for us.
@@ -82,10 +82,10 @@ Next we're going to use the `:_` rune which is just the inverted form a `:-` the
 After `%wait`, we have the `path`, a `list` of `cords` that serves as the unique identifier for this `syscall`:
 
 ```
-/(scot %da now)
+/egg-timer
 ```
 
-The `/` here is an irregular syntax to make a `path`, and `scot` is going to transform `now`, the current time as given to us by `bowl`, from a `@da` to a `cord`.
+The `/` here is an irregular syntax to make a `path`.
 
 The final part of this `syscall` is:
 
@@ -95,7 +95,7 @@ The final part of this `syscall` is:
 
 `now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both atoms, we can add `now` and `t` these two to get an atom that is `t` units of time into the future from `now`. That produced atom can be interpreted as a `@da`.
 
-That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `move` similar to how we created one with `effect`, only this time it will end up being dispatched back to us in the `++wake` arm. Behn always looks for an arm named `++wake` when a timer goes off; it is defined this way in the vane's code. So any app that wants to use a timer trigger needs to have an arm called `++wake`.
+That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `gift`, a similar construct to how we created an `effect`, only this time it will end up being dispatched back to us via Gall in the `++wake` arm. Any app that wants to use a timer trigger needs to have an arm called `++wake`.
 
 ```
 ++  wake
