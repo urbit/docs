@@ -47,11 +47,11 @@ The sample of the `door` is:
 
 You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's enough to know that this is the default app state and includes various faces for information. Below are some important such faces:
 
-`our`  The current ship
-`src`  The ship the request originated with
-`ost`  A reference to a chain of events
-`eny`  Entropy
-`now`  The current time of the event
+`our`  The ship this code is running on
+`src`  The ship the current event originated from
+`ost`  A reference to the current chain of events
+`eny`  Guaranteed-fresh entropy
+`now`  The current time
 
 The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
@@ -95,7 +95,7 @@ The final part of this `syscall` is:
 
 `now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both atoms, we can add `now` and `t` these two to get an atom that is `t` units of time into the future from `now`. That produced atom can be interpreted as a `@da`.
 
-That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `move` similar to how we created one with `effect`, only this time it will end up being dispatched back to us in the `++wake` arm. Behn always looks for an arm named `++wake` when a timer goes off; it is defined this way in the vane's code. So any So any app that wants to use a timer trigger needs to have an arm called `++wake`.
+That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `move` similar to how we created one with `effect`, only this time it will end up being dispatched back to us in the `++wake` arm. Behn always looks for an arm named `++wake` when a timer goes off; it is defined this way in the vane's code. So any app that wants to use a timer trigger needs to have an arm called `++wake`.
 
 ```
 ++  wake
