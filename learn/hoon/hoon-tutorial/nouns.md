@@ -282,7 +282,7 @@ You can force Hoon to interpret an atom differently by using the aura symbols in
 
 The atoms in the examples above are all exactly the same value.  Only they're interpreted and printed differently, depending on the aura.
 
-You'll learn more about atoms and auras in [lesson 2.4](../atoms-auras-and-simple-cell-types.udon).
+You'll learn more about atoms and auras in [lesson 2.4](../atoms-auras-and-simple-cell-types.md).
 
 ## Cells
 
