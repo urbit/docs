@@ -21,7 +21,7 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [1.1 Setup](setup)
 - [1.1.1 Walkthrough: List of Numbers](list-of-numbers)
 - [1.2 Nouns](nouns)
-- [1.2.1 Walkthrough: Boolean Branching](boolean-branching)
+- [1.2.1 Walkthrough: Conditionals](conditionals)
 - [1.3 Hoon Syntax](hoon-syntax)
 - [1.4 Lists](lists)
 - [1.4.1 Walkthrough: Fibonacci Sequence](fibonacci)
