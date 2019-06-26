@@ -451,7 +451,7 @@ Without using the dojo, for each fragment below provide the address relative to 
 5. 55
 ```
 
-That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your comet, or else move on to the next lesson.
+That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
 
 ## Exercise Answers
 
