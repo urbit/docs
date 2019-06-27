@@ -3,7 +3,7 @@ title = "1.5.1 Walkthrough: Recursion"
 weight = 9
 template = "doc.html"
 +++
-Recursion is a common pattern for solving certain problems in most programming
+[Recursion](.) is a common pattern for solving certain problems in most programming
 languages, and Hoon is no exception. One of the classically recursive problems
 is that of factorial. The factorial of _n_ is the product of all positive
 integers less than or equal to N. Thus the factorial of 5, denoted as _5!_,
