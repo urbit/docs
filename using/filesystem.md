@@ -15,7 +15,7 @@ pier directory.
 ## Quickstart
 
 This quick-start guide will walk you through some common commands. Follow along
-using your Dojo. When you get a `>=` message after entering a command, the means
+using your Dojo. When you get a `>=` message after entering a command, this means
 that the command was successful.
 
 When developing it's a good idea to use a separate desk. Create a `%sandbox`
@@ -66,7 +66,7 @@ Let's see the contents of `/=sandbox=/web/md`:
 ~your-urbit:dojo> +cat /=sandbox=/web/md
 ```
 
-Now let's navigate to that folder using `=dir`, which is a like `cd` in Unix.
+Now let's navigate to that folder using `=dir`, which is like `cd` in Unix.
 
 ```
 ~your-urbit:dojo> =dir /=sandbox=/web/md

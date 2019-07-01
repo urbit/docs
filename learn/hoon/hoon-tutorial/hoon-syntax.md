@@ -6,15 +6,15 @@ template = "doc.html"
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
-The [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
+The [syntax](https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language.  It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program.  Attempting to run a program that doesn't follow these rules will result in a syntax error.
 
-The [semantics](https://en.wikipedia.org/wiki/Semantics_(computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
+The [semantics](https://en.wikipedia.org/wiki/Semantics_%28computer_science%29) of a programming language concerns the meaning of the various parts of that language's code.
 
 In this lesson we will give a general overview of Hoon's syntax. By the end of it, you should be familiar with all the basic elements of Hoon code.
 
 ## Hoon Characters
 
-Hoon source files are composed almost entirely of the [printable ASCII characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal; use two spaces instead.
+Hoon source files are composed almost entirely of the [printable ASCII characters](https://en.wikipedia.org/wiki/ASCII%23Printable_characters).  Hoon does not accept any other characters in source files except for [UTF-8](https://en.wikipedia.org/wiki/UTF-8) in quoted strings.  Hard tab characters are illegal; use two spaces instead.
 
 ```
 > "You can put ½ in quotes, but not elsewhere!"

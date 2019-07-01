@@ -27,7 +27,7 @@ Before starting with either Sail or Udon, make sure that your ship is
 
 To host that output, your ship also has a web-server, called
 [Eyre](https://urbit.org/docs/using/web/), that can be found at
-`http://localhost:8080/` if it’s your first ship that’s running on the a
+`http://localhost:8080/` if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. In the startup messages, a ship will tell you which HTTP port it's
 using.
