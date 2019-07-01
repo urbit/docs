@@ -287,7 +287,7 @@ Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`
 
 ##### `&` - Mark conversion
 
-Convert between marks using `&`, with the destination mark first. You can stack multiple mark conversions together, and some marks can only be converted to specific other marks. In this example, [Udon](./docs/using/sail-and-udon/#udon) is converted to `&hymn` (a mark which supplies the `html`, `head`, `body` and closing tags) first, before being converted to HTML:
+Convert between marks using `&`, with the destination mark first. You can stack multiple mark conversions together, and some marks can only be converted to specific other marks. In this example, [Udon](./docs/using/sail-and-udon.md##udon) is converted to `&hymn` (a mark which supplies the `html`, `head`, `body` and closing tags) first, before being converted to HTML:
 
 ```
 ~your-urbit:dojo>&html &hymn &udon ';h1#hello: hello'
