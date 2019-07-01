@@ -163,7 +163,7 @@ A trivial core:
 101
 ```
 
-### "barcol"
+### |: "barcol"
 
 Produce a gate with a custom sample.
 
