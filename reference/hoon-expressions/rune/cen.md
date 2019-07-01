@@ -5,7 +5,7 @@ template = "doc.html"
 +++
 The `%` family of runes is used for making 'function calls' in Hoon.  To be more precise, these runes evaluate the `$` arm in cores, usually after modifying the sample.  (The default sample is replaced with the input values given in the call.)
 
-These runes reduce to the `%=` rune
+These runes reduce to the `%=` rune.
 
 ## Runes
 
@@ -72,7 +72,7 @@ See [how wings are resolved](./docs/reference/hoon-expressions/limb/_index.md).
 ! nest-fail
 ```
 
-### "cencol"
+### %: "cencol"
 
 Call a gate with many arguments.
 
