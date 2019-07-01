@@ -1,5 +1,5 @@
 +++
-title = "Gates (Hoon Functions)"
+title = "1.5 Gates (Hoon Functions)"
 weight = 8
 template = "doc.html"
 +++
