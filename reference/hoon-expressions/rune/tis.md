@@ -77,7 +77,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 7
 ```
 
-### "tiscol"
+### =: "tiscol"
 
 `[%tscl p=(list (pair wing hoon)) q=hoon]`: change multiple legs in the subject.
 
