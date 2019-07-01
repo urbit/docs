@@ -17,7 +17,7 @@ Anything Nock can do, Hoon can do also.
 
 ### .+ dotlus
 
-[docs](./docs/reference/hoon-expressions/rune/lus.md) \\+
+[docs](./docs/reference/hoon-expressions/rune/dot.md) \\+
 `[%dtls p=atom]`: increment an atom with Nock 4.
 
 R: `.+(p)`
@@ -25,7 +25,7 @@ I: `+(p)`
 
 ### .= dottis
 
-[docs](./docs/reference/hoon-expressions/rune/tis.md) \\=
+[docs](./docs/reference/hoon-expressions/rune/dot.md) \\=
 `[%dtls p=hoon q=hoon]`: test for equality with Nock 5.
 
 R: `.=(p q)`
@@ -37,7 +37,7 @@ Miscellaneous useful macros.
 
 ### ;: miccol
 
-[docs](./docs/reference/hoon-expressions/rune/col.md) \\:
+[docs](./docs/reference/hoon-expressions/rune/mic.md) \\:
 `[%smcl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 R: `;:(p q)`
@@ -97,7 +97,7 @@ The invocation family of runes.
 
 ### %= centis
 
-[docs](./docs/reference/hoon-expressions/rune/tis.md)  \\(\\)
+[docs](./docs/reference/hoon-expressions/rune/cen.md)  \\(\\)
 `[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
 
 R: `%=(p a 1)`
@@ -105,7 +105,7 @@ I: `p(a 1)`
 
 ### %~ censig
 
-[docs](./docs/reference/hoon-expressions/rune/sig.md) \\~
+[docs](./docs/reference/hoon-expressions/rune/cen.md) \\~
 `[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
 R: `%~(p q r)`
@@ -127,7 +127,7 @@ A mold is a gate (function) that helps us build simple and rigorous data structu
 
 ### $? bucwut
 
-[docs](./docs/reference/hoon-expressions/rune/wut.md) \\?
+[docs](./docs/reference/hoon-expressions/rune/buc.md) \\?
 `[%bcwt p=(list model)]`: mold which normalizes a general union.
 
 R: `$?(p)`
@@ -147,7 +147,7 @@ Hoon has the usual branches and logical tests.
 
 ### ?! wutzap
 
-[docs](./docs/reference/hoon-expressions/rune/zap.md) \\!
+[docs](./docs/reference/hoon-expressions/rune/wut.md) \\!
 `[%wtzp p=hoon]`: logical not.
 
 R: `?!(p)`
@@ -163,7 +163,7 @@ I: `&(p)`
 
 ### ?| wutbar
 
-[docs](./docs/reference/hoon-expressions/rune/bar.md) \\|
+[docs](./docs/reference/hoon-expressions/rune/wut.md) \\|
 `[%wtbr p=(list hoon)]`: logical or.
 
 R: `?|(p)`
