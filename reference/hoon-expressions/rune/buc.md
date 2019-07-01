@@ -118,7 +118,7 @@ be an infinite loop!
 [%foo p=0 q=0]~
 ```
 
-### "buccol"
+### $: "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 

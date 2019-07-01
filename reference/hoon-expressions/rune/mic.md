@@ -8,7 +8,7 @@ Miscellaneous useful macros.
 
 ## Runes
 
-### "miccol"
+### ;: "miccol"
 
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 

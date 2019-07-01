@@ -106,7 +106,7 @@ Irregular: `|(foo bar baz)` is `?|(foo bar baz)`.
 %.n
 ```
 
-### "wutcol"
+### ?: "wutcol"
 
 `[%wtcl p=hoon q=hoon r=hoon]`: branch on a boolean test.
 

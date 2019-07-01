@@ -35,7 +35,7 @@ If you want just the type value, use a 'type spear'.  This is `-:!>`, i.e., the 
 #t/@ud
 ```
 
-### "zapcol"
+### !: "zapcol"
 
 `[%dbug p=hoon]`: turn on stack trace
 

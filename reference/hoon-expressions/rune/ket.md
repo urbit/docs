@@ -48,7 +48,7 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 <1|gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
 ```
 
-### "ketcol"
+### ^: "ketcol"
 
 `[%ktcl p=spec]`: 'factory' gate for type `p`.
 
