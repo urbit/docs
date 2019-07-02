@@ -404,6 +404,75 @@ Assume `this.is.a.wing` is a wing that resolves to an arm.  You can use the `thi
 
 This almost looks like a function call of sorts.
 
+
+### Cores, Gates, and Traps
+
+Let's take a quick look at the battery of one core in the dojo to show that this is true by inputting one into the dojo.
+
+```
+> =dec |%
+  ++  dec
+    |=  a=@
+    ?<  =(0 a)
+    =+  b=0
+    |-  ^-  @
+    ?:  =(a +(b))  b
+    $(b +(b))
+  --
+
+```
+
+This core has one arm `dec` which implements decrement. If we look at the head of the core we'll see the Nock.
+
+```
+> -:dec
+[ 8
+  [1 0]
+  [ 1
+    6
+    [5 [1 0] 0 6]
+    [0 0]
+    8
+    [1 0]
+    8
+    [1 6 [5 [0 30] 4 0 6] [0 6] 9 2 10 [6 4 0 6] 0 1]
+    9
+    2
+    0
+    1
+  ]
+  0
+  1
+]
+```
+ 
+Again, being able to read Nock is not essential to understanding Hoon.
+
+Let's take a quick look at how cores can be combined to build up larger structures.
+
+```
+=>
+|%
+++  dec
+  |=  a=@
+  ?<  =(0 a)
+  =+  b=0
+  |-  ^-  @
+  ?:  =(a +(b))  b
+  $(b +(b))
+-- 
+|%
+++  add
+  |=  [a=@ b=@]
+  ^-  @
+  ?:  =(0 a)  b
+  $(a (dec a), b +(b))
+--
+```
+
+Here you can see the style of wrapping one core in another. This technique is used frequently in Hoon, particularly in the standard library. `dec` is used in the subsequent core. This can be a useful code organization technique. Gates and Traps are both special kinds of cores, as you will see in later lessons.
+
+
 ## Summary
 
 At this point you should have a pretty good understanding of what an arm is, and how wing resolution to an arm works.  But so far the arms you've created have been fairly simple.  In the next lesson you'll learn about Hoon functions, and how to create your own.
