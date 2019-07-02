@@ -152,7 +152,7 @@ Runes are classified by family (with the exceptions of `--` and `==`).  The firs
 
 Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](./docs/reference/hoon-expressions/rune/_index.md).  Nevertheless, there are some general principles that hold of all rune expressions.
 
-Runes generally do not need to be closed. In other languages you'll see an abundance of terminators, such as opening and closing parentheses, and this way of doing this is largely absent from Urbit. That's because all runes take a fixed number of children "children." Children can themselves be runes (with more children), and Hoon programs work by chaining through these series of children until a value -- not another rune -- is arrived at. This makes Hoon code nice and neat to look at.
+Runes generally do not need to be closed. In other languages you'll see an abundance of terminators, such as opening and closing parentheses, and this way of doing this is largely absent from Urbit. That's because all runes take a fixed number of children. Children can themselves be runes (with more children), and Hoon programs work by chaining through these series of children until a value -- not another rune -- is arrived at. This makes Hoon code nice and neat to look at.
 
 #### Tall and Flat Forms
 
