@@ -54,6 +54,7 @@ Lets look at two examples of using `fold`.
 
 Here we have a call to `fold` that we can see will produce a `(list @)` from a list of `@`. The first argument is a cell of `~` and `~[1 2 3 4]`.
 
+
 The gate will simply add two to each element `e` and append that to the front of `s`. Let's run this in the `dojo`:
 
 ```
@@ -64,6 +65,7 @@ The gate will simply add two to each element `e` and append that to the front of
   :_  s
   (add 2 e)
 ~[6 5 4 3]
+
 ~zod:dojo>
 ```
 
@@ -71,12 +73,14 @@ The list is in reverse order simply because it's easier to add to the front of a
 
 But `fold` does not have to produce a `list`. Let's look at another example:
 
+
 ```
 %+  (fold @ @)
   [0 ~[1 2 3 4]]
 |=  [s=@ e=@]
 (add e s)
 ```
+
 
 Here `fold` will produce a gate that takes an `atom` and applies a gate to a `list` of `atoms`. The difference here is that this call will produce a sum of the elements of the list, rather than the list itself.
 

@@ -164,6 +164,7 @@ This is a very naive shuffling algorithm, and you could imagine a better one. Im
 
 ## Using the Library
 
+
 So now that we have this library, how do we actually use it? Let's look at a very simple `say` generator that takes advantage of what we built.
 
 ```
