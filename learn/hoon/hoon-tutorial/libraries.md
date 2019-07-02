@@ -62,6 +62,7 @@ On the very first line, we create a core with `|%`. This core contains all of ou
 
 To create three types we're going to need, we use `+$`, which is an arm used to define a type.
 
+
 ```
 +$  suit  ?(%hearts %spades %clubs %diamonds)
 +$  darc  [sut=suit val=@ud]
@@ -162,6 +163,7 @@ With completed, we use `%^` to call `$` to recurse back up to `|-` with a few ch
 This is a very naive shuffling algorithm, and you could imagine a better one. Implementation of a better algorithm is left as an exercise for the reader.
 
 ## Using the Library
+
 
 So now that we have this library, how do we actually use it? Let's look at a very simple `say` generator that takes advantage of what we built.
 
