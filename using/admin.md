@@ -104,7 +104,7 @@ Ctrl-y    Yank from kill buffer
 ```
 
 Full coverage of the Urbit shell, the Dojo is covered in the
-[Shell walkthrough](./docs/using/shell.md).
+[Shell walkthrough](@/docs/using/shell.md).
 
 ## Web
 
@@ -164,7 +164,7 @@ moon: ~faswep-navred-sampel-palnet
 and does not need editing to be used with the `-k` option.
 
 You can use the resulting output in the same installation flow from the
-[Booting a Ship](./docs/getting-started/booting-a-ship.md) guide, following the same scheme as for booting a planet. That scheme is:
+[Booting a Ship](@/docs/getting-started/booting-a-ship.md) guide, following the same scheme as for booting a planet. That scheme is:
 
 ```
 $ urbit -w <moonname> -G <key> -c <piername>
@@ -193,7 +193,7 @@ $ urbit -w faswep-navred-sampel-palnet -k <keyfile> -c mymoon
 
 Moons are automatically synced to their parent `%kids` desk, and can control
 applications on their parent planet using `|link`.  You can read more about
-those operations in the [filesystem](./docs/using/filesystem.md) and [console](./docs/using/shell.md)
+those operations in the [filesystem](@/docs/using/filesystem.md) and [console](@/docs/using/shell.md)
 walkthroughs, respectively.
 
 

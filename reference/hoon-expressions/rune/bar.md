@@ -424,7 +424,7 @@ A `|~` expression produces an iron gate.  `a` defines the sample, and `b` define
 
 ##### Discussion
 
-See [this discussion of core variance models](./docs/reference/hoon-expressions/advanced.md)
+See [this discussion of core variance models](@/docs/reference/hoon-expressions/advanced.md)
 
 ##### Examples
 
@@ -478,7 +478,7 @@ you know what you're doing.
 Just as with a [gate](#bartis), we can recurse back into a wet gate
 with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](./docs/reference/hoon-expressions/rune/cen.md#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
 
 ##### Examples
 
@@ -537,7 +537,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](./docs/reference/hoon-expressions/rune/cen.md#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
 
 ##### Examples
 
@@ -590,7 +590,7 @@ A `|@` expression produces a 'wet' core whose payload is the expression's subjec
 
 ##### Discussion
 
-The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one.  This allows for type polymorphism of its arms, using 'genericity'.  See [Advanced types](./docs/reference/hoon-expressions/advanced.md).
+The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one.  This allows for type polymorphism of its arms, using 'genericity'.  See [Advanced types](@/docs/reference/hoon-expressions/advanced.md).
 
 ### |? "barwut"
 
@@ -622,7 +622,7 @@ A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`
 
 ##### Discussion
 
-See this [discussion of the core variance model](./docs/reference/hoon-expressions/advanced.md).
+See this [discussion of the core variance model](@/docs/reference/hoon-expressions/advanced.md).
 
 ##### Examples
 

@@ -692,7 +692,7 @@ can show you how to access various ship resources for user in your pages. To
 learn more about how the renderer works, take a look at the
 `/home/ren/urb.hoon` file inside your urbit.
 
-## <a name="udon"></a>Udon: A Guide
+## Udon: A Guide {#udon}
 
 Udon is a way to write content for the web. It's a minimalist
 markup language for creating and rendering text documents, with a

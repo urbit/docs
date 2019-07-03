@@ -40,7 +40,7 @@ or
 ```
 
 These are regular forms -- every rune can be written this way.
-Hoon also has a variety of wide [irregular forms](./docs/reference/hoon-expressions/irregular.md).  All tall
+Hoon also has a variety of wide [irregular forms](@/docs/reference/hoon-expressions/irregular.md).  All tall
 forms are regular.  All code within a wide form is wide.
 Almost all code has both wide and tall forms, the exception
 being named cores.
