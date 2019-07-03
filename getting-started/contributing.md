@@ -14,8 +14,8 @@ We welcome submissions for improving our [code](https://github.com/urbit/urbit/)
 
 Many contributors start by contributing to the [documentation](https://github.com/urbit/docs), [urbit.org](https://github.com/urbit/urbit.org), or [bridge](https://github.com/urbit/bridge) repositories. If you're not yet comfortable with Hoon, we recommend starting there.
 
-If you're just getting set up to work on the Urbit or Arvo code base for the first time, see our [Getting Started](./docs/getting-started/_index.md) guide, then have a look at [CONTRIBUTING.md](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md) in the Urbit repository.
+If you're just getting set up to work on the Urbit or Arvo code base for the first time, see our [Getting Started](@/docs/getting-started/_index.md) guide, then have a look at [CONTRIBUTING.md](https://github.com/urbit/urbit/blob/master/CONTRIBUTING.md) in the Urbit repository.
 
 ## Code style 
 
-Before contributing Hoon code, you should familiarize yourself with the [Hoon style guide](./docs/learn/hoon/style.md). For a good example of idiomatic Hoon, see [Ford](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
+Before contributing Hoon code, you should familiarize yourself with the [Hoon style guide](@/docs/learn/hoon/style.md). For a good example of idiomatic Hoon, see [Ford](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).

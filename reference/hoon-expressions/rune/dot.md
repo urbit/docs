@@ -155,7 +155,7 @@ therefore possible to use Hoon as a typeless language.
 1
 ```
 
-### .= "dottis"
+### .= "dottis" {#dottis}
 
 `[%dtts p=hoon q=hoon]`: test for equality with Nock `5`.
 

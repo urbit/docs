@@ -15,7 +15,7 @@ Stars are above planets in the network hierarchy in the sense that each star spo
 
 Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
 
-Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Sponsorless planets will still be able to message discovered peers until any such peers change their IP addresses.
+Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Planets without a sponsor will still be able to message discovered peers until any such peers change their IP addresses.
 
 ## Responsibilities
 

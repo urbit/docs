@@ -52,7 +52,7 @@ A `%_` expression resolves to the value of the subject at wing `a`, but modified
 
 `%_` is different from `%=` because `%=` can change the type of a wing with mutations.  `%_` preserves the wing type.
 
-See [how wings are resolved](./docs/reference/hoon-expressions/limb/_index.md).
+See [how wings are resolved](@/docs/reference/hoon-expressions/limb/_index.md).
 
 ##### Examples
 
@@ -167,7 +167,7 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 6
 ```
 
-### %- "cenhep"
+### %- "cenhep" {#cenhep}
 
 Call a gate (function).
 
@@ -203,8 +203,8 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 ##### Discussion
 
-`%-` is used to call a function; `a` is the function ([`gate`](./docs/reference/hoon-expressions/rune/bar.md#bartis),
-`q` the argument. `%-` is a special case of [`%~` ("censig")](#censig), and a gate is a special case of a [door](./docs/reference/hoon-expressions/rune/bar.md#barcab).
+`%-` is used to call a function; `a` is the function ([`gate`](@/docs/reference/hoon-expressions/rune/bar.md#bartis),
+`q` the argument. `%-` is a special case of [`%~` ("censig")](#censig), and a gate is a special case of a [door](@/docs/reference/hoon-expressions/rune/bar.md#barcab).
 
 ##### Examples
 
@@ -323,7 +323,7 @@ A `%~` expression evaluates the arm of a door (i.e., a core with a sample).  `a`
 
 `%~` is the general case of a function call, `%-`.  In both, we replace the sample (`+6`) of a core.  In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated.  You must identify the arm to be run: `%~(arm door arg)`.
 
-See also [`|_`](./docs/reference/hoon-expressions/rune/bar.md#barcab).
+See also [`|_`](@/docs/reference/hoon-expressions/rune/bar.md#barcab).
 
 ##### Examples
 
