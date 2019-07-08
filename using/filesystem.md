@@ -143,7 +143,7 @@ path.
 The structure that combines a `beak` with further path information is called a
 `beam`.
 
-##### Relative paths
+#### Relative paths
 
 The `%` command, which we gestured at in the above section, represents the
 **relative path**, which is the path where you are currently working. If your
@@ -170,7 +170,7 @@ up twice the hierarchy.
 There are no local relative paths. `/foo/bar` must be written as
 `%/foo/bar`.
 
-##### Substitution
+#### Substitution
 
 You don't need to write out the explicit path every time you want to reference
 somewhere outside of your working directory. You can substitute `=` for the
@@ -227,7 +227,7 @@ command.
 Most commonly this is used to avoid having to know the current revision
 number in the `dojo`: `/~lodleb-ritrul/home/~2018.10.2..00.35.44..d7e8/gen/example/hoon`
 
-##### Changing directories
+#### Changing directories
 
 Change the working directory with `=dir`. It's our equivalent of the Unix `cd`.
 
@@ -264,7 +264,7 @@ brings you one level up:
 
 ### Revision-control
 
-##### Mount
+#### Mount
 
 Syntax: `|mount /clay/path [Unix-name]`
 
@@ -284,7 +284,7 @@ Mounts `%/web` to `/web` inside your pier directory.
 
 Mounts `%/gen` to `/generators` inside your pier directory.
 
-##### Unmount
+#### Unmount
 
 ```
 |unmount [clay-path || Unix-name]
@@ -306,7 +306,7 @@ Unmounts the path `%/web` from whatever name it was mounted as.
 
 Unmounts the Unix path `/generators`.
 
-##### Merge
+#### Merge
 
 ```
 |merge desk beak[, =gem strategy]
@@ -331,7 +331,7 @@ Merge `/=home=` into `%home-work` using merge strategy `%fine`.
 
 Merge the `%examples` desk from `~waxbex-ribmex`
 
-##### Sync
+#### Sync
 
 ```
 |sync desk plot [plot-desk]
@@ -352,7 +352,7 @@ that issued a star).
 |sync %home ~doznec
 ```
 
-##### Unsync
+#### Unsync
 
 ```
 |unsync desk plot [plot-desk]
@@ -367,7 +367,7 @@ Example:
 |unsync %home-local ~dozbud %home
 ```
 
-##### Label
+#### Label
 
 ```
 |label desk name`
@@ -430,7 +430,7 @@ annotate any conflicts, if we know how.
 
 ### Manipulation
 
-##### +cat
+#### +cat
 
 Syntax: `+cat path [path ...]`
 
@@ -438,7 +438,7 @@ Similar to Unix `cat`. `+cat` takes one or more `path`s, and prints their
 contents. If that `path` is a file, the contents of the file is printed. If the
 `path` terminates in a directory, the list of names at that path is produced.
 
-##### +ls
+#### +ls
 
 Syntax: `+ls path`
 
@@ -450,20 +450,20 @@ Produces a list of names at the `path`.
 ~your-urbit:dojo> +cat %/our/home/gen/curl/hoon
 ```
 
-##### |rm
+#### |rm
 
 Syntax: `|rm path`
 
 Remove the data at `path`. `path` must be a path to actual node, not a
 'directory'
 
-##### |cp
+#### |cp
 
 Syntax: `|cp to from`
 
 Copy the file at `from` into the path `to`.
 
-##### |mv
+#### |mv
 
 Syntax: `|mv to from`
 
