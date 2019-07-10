@@ -354,9 +354,6 @@ _See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_.
 A `flag` is Hoon's version of a boolean. `0` (`%.y`) is _yes_, `1` (`%.n`) is
 _no_.
 
-Why? It's fresh, it's different, it's new. And it's annoying. And it
-keeps you on your toes. And it's also just intuitively right.
-
 ### gate
 
 A _gate_ is a [core](#core) with one [arm](#arm) -- Hoon's closest
