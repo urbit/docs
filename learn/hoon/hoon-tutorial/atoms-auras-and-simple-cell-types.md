@@ -241,7 +241,7 @@ Hoon uses the outermost cast to infer the type:
 0b1.0000
 ```
 
-As you can see, an atom with one aura can be converted to another aura.  For a convenient shorthand, you can do this conversion with irregular cast syntax, e.g. `\`@ud\``, rather than using the `^-` rune twice:
+As you can see, an atom with one aura can be converted to another aura.  For a convenient shorthand, you can do this conversion with irregular cast syntax, e.g. `` `@ud` ``, rather than using the `^-` rune twice:
 
 ```
 > `@ud`0x10
@@ -254,7 +254,7 @@ As you can see, an atom with one aura can be converted to another aura.  For a c
 0xa
 ```
 
-This is what we mean when we call auras 'soft' types.  The above examples show that the programmer can get around the type system for auras by casting up to `@` and then back down to the specific aura, say `@ub`; or by casting with `\`@ub\`` for short.
+This is what we mean when we call auras 'soft' types.  The above examples show that the programmer can get around the type system for auras by casting up to `@` and then back down to the specific aura, say `@ub`; or by casting with `` `@ub` `` for short.
 
 ## Examples
 
