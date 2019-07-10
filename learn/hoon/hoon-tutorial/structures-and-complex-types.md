@@ -352,4 +352,4 @@ Now the `~` value is included as a possible value for `user`.
 
 That's all we have to say about types in this chapter.  More on types in [Chapter 3](@/docs/learn/hoon/hoon-tutorial/type-polymorphism.md).
 
-### [Next Up: Walkthrough -- Taxonomy](../taxonomy)
+### [Next Up: Walkthrough -- Libraries](../libraries)
