@@ -39,7 +39,7 @@ Below we'll examine the the series of `?` runes used.
 ?:  ?&  =(0 (mod n 2))
 ```
 
-`?:` is the simplest "wut" rune. It takes three expressions: a boolean test, a yes-branch, and a no-branch. The yes-branch is executed when the test evaluates to `%.y` and the no-branch is executed when the test evaluates to `%.n`. Here the yes-branch is `%.y` and the no-branch is `%.n`. The boolean test is the more complicated portion. First we're going to use `?&` to combine to expressions with a logical and operation.
+`?:` is the simplest "wut" rune. It takes three expressions: a boolean test, a yes-branch, and a no-branch. The yes-branch is executed when the test evaluates to `%.y` and the no-branch is executed when the test evaluates to `%.n`. Here the yes-branch is `%.y` and the no-branch is `%.n`. The boolean test is the more complicated portion. First we're going to use `?&` to combine two expressions with a logical "and" operation.
 
 The first expression is:
 
