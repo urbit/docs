@@ -46,10 +46,11 @@ In Hoon, like in other languages, it's often useful to create a library for othe
     :_  shuffled
     (snag 0 unshuffled)
   =^  index  random  (rads:random remaining)
-  %^  $
-  shuffled      (snag index unshuffled)^shuffled
-  remaining     (dec remaining)
-  unshuffled    (oust [index 1] unshuffled)
+  %=  $
+    shuffled      (snag index unshuffled)^shuffled
+    remaining     (dec remaining)
+    unshuffled    (oust [index 1] unshuffled)
+  ==
 ++  draw
   |=  [n=@ud d=deck]
   ^-  [hand=deck rest=deck]
@@ -136,10 +137,11 @@ The `?+` rune is the rune to switch against a value with a default.  The default
     :_  shuffled
     (snag 0 unshuffled)
   =^  index  random  (rads:random remaining)
-  %^  $
-  shuffled      (snag index unshuffled)^shuffled
-  remaining     (dec remaining)
-  unshuffled    (oust [index 1] unshuffled)
+  %=  $
+    shuffled      (snag index unshuffled)^shuffled
+    remaining     (dec remaining)
+    unshuffled    (oust [index 1] unshuffled)
+  ==
 ```
 
 Finally, in the code above, we come to `shuffle-deck`. This gate takes two arguments: a `deck`, and a `@` as a bit of `entropy` to seed the `og` core. It's going to produce a `deck`.
