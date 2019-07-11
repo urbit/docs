@@ -376,9 +376,9 @@ with `/+`. Read / write.
 **Examples:**
 
 ```
-~your-urbit:dojo> /+  react
-~your-urbit:dojo> ::  now we can use arms from lib/react.hoon
-~your-urbit:dojo> (react-vale:react %div)
+~your-urbit:dojo> /+  number-to-words
+~your-urbit:dojo> ::  now we can use arms from lib/number-to-words.hoon
+~your-urbit:dojo> (to-words:eng-us:number-to-words 123.456)
 ```
 
 ##### sur
