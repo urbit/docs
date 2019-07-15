@@ -479,4 +479,4 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, 
 + +15
 + +31
 
-### [Next Up: Reading -- Conditionals](../conditionals)
+### [Next Up: Reading -- Hoon Syntax](../hoon-syntax)

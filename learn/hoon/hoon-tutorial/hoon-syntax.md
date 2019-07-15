@@ -325,4 +325,4 @@ There are a couple useful runes associated with debugging:
 
 But there are more. Check out the aforementioned [troubleshooting](/docs/reference/troubleshooting/) page to see other handy debugging runes and how to use them.
 
-### [Next Up: Reading -- Lists](../lists)
+### [Next Up: Walkthrough -- Conditionals](../conditionals)
