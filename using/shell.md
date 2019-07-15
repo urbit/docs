@@ -376,9 +376,11 @@ with `/+`. Read / write.
 **Examples:**
 
 ```
-~your-urbit:dojo> /+  react
-~your-urbit:dojo> ::  now we can use arms from lib/react.hoon
-~your-urbit:dojo> (react-vale:react %div)
+~your-urbit:dojo> /+  number-to-words
+```
+Now we can use arms from lib/number-to-words.hoon
+```
+~your-urbit:dojo> (to-words:eng-us:number-to-words 123.456)
 ```
 
 ##### sur
@@ -390,7 +392,9 @@ with `/-`. Read / write.
 
 ```
 ~your-urbit:dojo> /-  sole
-~your-urbit:dojo> ::  now we can use arms in sur/sole.hoon
+```
+Now we can use arms in sur/sole.hoon.
+```
 ~your-urbit:dojo> `sole-effect:sole`[%bel ~]
 ```
 
@@ -402,7 +406,6 @@ The current (128-bit `@da`) time. Read-only.
 
 ```
 ~your-urbit:dojo> now
-:: produces
 ~2016.3.21..21.10.57..429a
 ```
 
@@ -414,7 +417,6 @@ The current urbit ship. Read-only.
 
 ```
 ~your-urbit:dojo> our
-:: produces
 ~your-urbit
 ```
 
@@ -426,7 +428,6 @@ The current urbit ship. Read-only.
 
 ```
 ~your-urbit:dojo> eny
-:: produces
 \/0vnt.d474o.gpahj.jcf3o.448fh.2lamb.82ljm.8ol8u.b02vi.mrvvp.b7et2.knb7m.l8he\/
   8.8qb9s.drm36.77n9b.a0qst.30g03.l5lb5.nvsbc.v39tn
 \/
