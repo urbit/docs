@@ -495,10 +495,10 @@ And, of course, there's a lot that the Talk client can improve on as well.
 ## Further reading
 
 To gain a more thorough understanding of Hall's inner workings, take a look at its source code. It comes with inline documentation.
-[On Github.](https://github.com/urbit/arvo/blob/master/app/hall.hoon)
+[On Github.](https://github.com/urbit/urbit/blob/master/pkg/arvo/app/hall.hoon)
 
 To see an expansive example of a Hall client, take a look at the code of Talk. It, too, comes with inline documentation.
-[On Github.](https://github.com/urbit/arvo/blob/master/app/talk.hoon)
+[On Github.](https://github.com/urbit/urbit/blob/master/pkg/arvo/app/talk.hoon)
 
 # The Hall Interface
 
@@ -864,7 +864,7 @@ When the user makes any changes to shared UI elements (elements that should pers
 
 # The New Gall Model
 
-This document is complemented by the source code of applications that use the new Gall model (like [Hall](https://github.com/urbit/arvo/blob/master/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
+This document is complemented by the source code of applications that use the new Gall model (like [Hall](https://github.com/urbit/urbit/blob/master/pkg/arvo/app/hall.hoon)), but doesn't require it. Code snippets will be provided where useful. Some knowledge of Hoon and the functioning of Hoon apps is assumed.
 
 New `%gall` has not yet fully solidified. As such, its structure and naming are tentative.
 

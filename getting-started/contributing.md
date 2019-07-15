@@ -18,4 +18,4 @@ If you're just getting set up to work on the Urbit or Arvo code base for the fir
 
 ## Code style
 
-Before contributing Hoon code, you should familiarize yourself with the [Hoon style guide](@/docs/learn/hoon/style.md). For a good example of idiomatic Hoon, see [Ford](https://github.com/urbit/arvo/blob/master/sys/vane/ford.hoon).
+Before contributing Hoon code, you should familiarize yourself with the [Hoon style guide](@/docs/learn/hoon/style.md). For a good example of idiomatic Hoon, see [Ford](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/vane/ford.hoon).
