@@ -52,7 +52,7 @@ Note that the list includes two separate whitespace forms: `ace` for a single sp
 
 ## Expressions of Hoon
 
-An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
+An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29 ) is a combination of characters that the language interprets and evaluates as producing a value.  Hoon programs are made up entirely of expressions.
 
 Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
@@ -62,7 +62,7 @@ There are many categories of Hoon expressions: noun literals, wing expressions, 
 
 A noun is either an atom or a cell.  An atom is an unsigned integer and a cell is a pair of nouns.
 
-There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
+There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29 ) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
 
 We start with atom literals.  Each of these is a basic expression of Hoon that evaluates to itself.  Examples:
 
