@@ -26,7 +26,7 @@ I: `+(p)`
 ### .= dottis
 
 [docs](@/docs/reference/hoon-expressions/rune/dot.md) \\=
-`[%dtls p=hoon q=hoon]`: test for equality with Nock 5.
+`[%dtts p=hoon q=hoon]`: test for equality with Nock 5.
 
 R: `.=(p q)`
 I: `=(p q)`
@@ -38,7 +38,7 @@ Miscellaneous useful macros.
 ### ;: miccol
 
 [docs](@/docs/reference/hoon-expressions/rune/mic.md) \\:
-`[%smcl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
+`[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 R: `;:(p q)`
 I: `:(p q)`
@@ -69,7 +69,7 @@ I:
 
 Flow hoons change the subject. All non-flow hoons (except cores) pass the subject down unchanged.
 
-### =< tisgar
+### =< tisgal
 
 [docs](@/docs/reference/hoon-expressions/rune/tis.md) \\:
 `[%tsgl p=hoon q=hoon]`: compose two hoons, inverted.
