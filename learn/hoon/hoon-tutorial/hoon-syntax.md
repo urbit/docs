@@ -32,18 +32,18 @@ Hoon source files are composed almost entirely of the [printable ASCII character
 Hoon code makes heavy use of non-alphanumeric symbols.  Reading off code aloud using the proper names of ASCII symbols is tedious, so we've mapped syllables to symbols:
 
 ```
-ace [1 space]   gal <               pal (
-bar |           gap [>1 space, nl]  par )
-bas \           gar >               sel [
-buc $           hax #               mic ;
-cab _           hep -               ser ]
-cen %           kel {               sig ~
-col :           ker }               soq '
-com ,           ket ^               tar *
-doq "           lus +               tic `
-dot .           pam &               tis =
-fas /           pat @               wut ?
-zap !
+ace [1 space]       gap [>1 space, nl]  pat @
+bar |               gar >               sel [
+bas \               hax #               ser ]
+buc $               hep -               sig ~
+cab _               kel {               soq '
+cen %               ker }               tar *
+col :               ket ^               tic `
+com ,               lus +               tis =
+doq "               mic ;               wut ?
+dot .               pal (               zap !
+fas /               pam &
+gal <               par )
 ```
 
 Learning and using these names of non-alphanumeric symbols is entirely optional; you can become an expert Hoon programmer without them.  Many Hoon programmers find them helpful, however, particularly when talking to someone else who knows them.
