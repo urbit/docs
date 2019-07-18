@@ -139,7 +139,7 @@ mint-vain
 
 Regular: **2-fixed**.
 
-Irregular: `` `foo`baz`` is `^-(foo baz)`.
+Irregular: `` `foo`baz`` is `^-(foo ^-(@ baz))`.
 
 ##### Discussion
 
