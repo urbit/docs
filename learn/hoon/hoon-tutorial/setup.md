@@ -17,7 +17,7 @@ You can install Urbit on any Mac or Unix machine; if you're just trying out Urbi
 
 Once you're finished, you can [boot your very own ship](/docs/getting-started/booting-a-ship/#step-3-run-the-boot-command). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
 
-## Getting started 
+## Getting started
 
 Once you've created your development ship, let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
 
@@ -67,44 +67,40 @@ Generators are the most straightforward way to write Hoon programs. They are a c
 
 The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. So, to create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen` directory of your ship as a `.hoon` file. To run a generator named `mygen.hoon`, you would type `+myhoon <argument>` in your ship's Dojo.
 
-If this doesn't make sense yet, that's okay. In the next lesson, we will walk you through an example `gate` that is run as a generator.
+If this doesn't make sense yet, that's okay. In the [next lesson](../list-of-numbers), we will walk you through an example `gate` that is run as a generator.
 
 ## Text editors
 
-Writing code is typically done using a text editor, but common editors like Notepad, Microsoft Word, or OpenOffice Writer are not very well suited for programming. You'll want a text editor that is specifically designed for writing code. This will assist with things such as colorizing keywords, finding patterns, matching parentheses and brackets, etc. Text editors can be quite sophisticated, and some are integrated directly with tools for compiling and running programs - these are called IDEs (integrated development environment).
+Writing code in any language is typically done using a text editor, but common programs like Notepad, Microsoft Word, or OpenOffice Writer are not suitable for programming. You'll want instead a text editor that is specifically designed for writing code. This will assist with things such as colorizing keywords, finding patterns, matching parentheses and brackets, etc.
 
-Which text editor you prefer to use is largely a matter of preference, your level of experience, what functionality you desire, and what operating system you run. This frequently means that asking five programmers what their preferred editor is will give you six different answers. If you are brand new to programming then you'll have a more difficult time determining which editor most suits you, and for now it is probably not worth the time to learn about all of the editors in any kind of depth. Any of the newbie-friendly editors listed below will suit you, just avoid the ones that are meant for more experience programmers.
+Below is a complete list of text editors that have support for Hoon [syntax highlighting](https://en.wikipedia.org/wiki/Syntax_highlighting) -- an important tool for any programming language. For each of these editors, you'll need to download the editor and then you'll need to install some additional syntax-highlighter package. The process for adding Hoon support differs for every editor. For most newbie-friendly text editors, this is easily accomplished from within the editor itself, and you'll learn how to do so following a newbie tutorial for that editor.
 
-### List of editors
+If you are brand new to programming, don't think too much about which editor to use; any of the newbie-friendly options will suit you.
 
-Here we aim to maintain a complete list of text editors that have any amount of support for Hoon. The first section are editors known to be friendly to new users, while the second section are editors that are typically only recommended for experienced programmers.
+### Newbie-friendly text editors
 
-For each of these editors, you'll need to download the editor and then you'll need to install some additional package or module that gives it support for Hoon. The process for adding Hoon support differs for every editor. For most newbie-friendly text editors, this is easily accomplished from within the editor itself and you'll learn how to do so following a newbie tutorial for that editor.
+These editors are easy to use for first-time coders.
 
-#### Newbie-friendly text editors
+#### Atom
+Atom is free and open-source and runs on all major operating systems. It is available [here](https://atom.io/). A package for Hoon support is maintained by Tlon and may be obtained using the package manager within the editor by searching for `Hoon`.
 
-These editors are easy to use for first time coders.
+#### Sublime
+Sublime is closed-source, but may be downloaded for free and there is no enforced time limit for evaluation. It runs on all major operating systems. It is available [here](https://www.sublimetext.com/).
 
-##### Atom
-Atom is free and open source and runs on all major operating systems. It is available [here](https://atom.io/). A package for Hoon support is maintained by Tlon and may be obtained using the package manager within the editor by searching for `Hoon`.
+#### Visual Studio Code
+Visual Studio Code is free and open-source and runs on all major operating systems. It is available [here](https://code.visualstudio.com/). Hoon support may be acquired in the Extensions menu within the editor by searching for `Hoon`.
 
-##### Sublime
-Sublime is closed source and not free, but may be downloaded for free and there is no enforced time limit for evaluation. It runs on all major operating systems. It is available [here](https://www.sublimetext.com/).
-
-##### Visual Studio Code
-Visual Studio Code is free and open source and runs on all major operating systems. It is available [here](https://code.visualstudio.com/). Hoon support may be acquired in the Extensions menu within the editor by searching for `Hoon`.
-
-#### Advanced text edtiors
+### Advanced text editors
 
 These text editors have a high learning curve and are only recommended for experienced programmers.
 
-##### Emacs
+#### Emacs
 
-Emacs is free and open source and runs on all major operating systems. It is available [here](https://www.gnu.org/software/emacs/). Hoon support is available with [hoon-mode.el](https://github.com/urbit/hoon-mode.el).
+Emacs is free and open-source and runs on all major operating systems. It is available [here](https://www.gnu.org/software/emacs/). Hoon support is available with [hoon-mode.el](https://github.com/urbit/hoon-mode.el).
 
-##### Vim
+#### Vim
 
-Vim is free and open source and runs on all major operating systems. It is available [here](https://www.vim.org/). Hoon support is available with [hoon.vim](https://github.com/urbit/hoon.vim) and is maintained by Tlon.
+Vim is free and open-source and runs on all major operating systems. It is available [here](https://www.vim.org/). Hoon support is available with [hoon.vim](https://github.com/urbit/hoon.vim) and is maintained by Tlon.
 
 
 ### [Next Up: Walkthrough -- List of Numbers](../list-of-numbers)
