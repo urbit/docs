@@ -1,5 +1,5 @@
 +++
-title = "Walkthrough: Iron Polymorphism and Wet Polymorphism"
+title = "2.5.1 Walkthrough: Iron Polymorphism and Wet Polymorphism"
 weight = 32
 template = "doc.html"
 +++
@@ -11,7 +11,7 @@ Polymorphism is a programming concept that allows a a piece of code to use diffe
 A dry gate (also simply a _gate_) is the kind that you're already familiar with by now: a one-armed core with a sample. A wet gate is also a one-armed core with a sample, but there is a difference. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a nest failure. On the other hand, when you pass arguments to a wet gate, their types are preserved and type analysis is done at the definition site of the gate -- in our case, `fold` in `hoon.hoon` -- rather than the call site.
 
 ```
-++  fold
+++  fold  
    |*  [state=mold elem=mold]
    |=  [[st=state xs=(list elem)] f=$-([state elem] state)]
    ^-  state
@@ -87,4 +87,4 @@ Here `fold` will produce a gate that takes an `atom` and applies a gate to a `li
 The key takeaway from both of these examples is that the gates provided are _iron polymorphic_ with respect to the definition of the type in `fold`. They are iron polymorphic because samples `s` and `e` nest under the types `state` and `elem`. In second case case, that's because when we provided those to `fold`, it was was stated they were `@` and `@`. In the first case, we stated that `state` was `(list @)` and `elem` was `@`. In both cases, the sample of each gate nest inside the types defined when we called the wet gate `fold`.
 
 
-[Next Up: Reading -- Gall](../gall)
+[Next Up: Walkthrough -- Lead Polymorphism](../lead-polymorphism)
