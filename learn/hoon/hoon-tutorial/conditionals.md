@@ -1,6 +1,6 @@
 +++
-title = "1.2.1 Walkthrough: Conditionals"
-weight = 6
+title = "1.3.1 Walkthrough: Conditionals"
+weight = 7
 template = "doc.html"
 +++
 
@@ -39,7 +39,7 @@ Below we'll examine the the series of `?` runes used.
 ?:  ?&  =(0 (mod n 2))
 ```
 
-`?:` is the simplest "wut" rune. It takes three expressions: a boolean test, a yes-branch, and a no-branch. The yes-branch is executed when the test evaluates to `%.y` and the no-branch is executed when the test evaluates to `%.n`. Here the yes-branch is `%.y` and the no-branch is `%.n`. The boolean test is the more complicated portion. First we're going to use `?&` to combine to expressions with a logical and operation.
+`?:` is the simplest "wut" rune. It takes three expressions: a boolean test, a yes-branch, and a no-branch. The yes-branch is executed when the test evaluates to `%.y` and the no-branch is executed when the test evaluates to `%.n`. Here the yes-branch is `%.y` and the no-branch is `%.n`. The boolean test is the more complicated portion. First we're going to use `?&` to combine two expressions with a logical "and" operation.
 
 The first expression is:
 
@@ -59,4 +59,4 @@ The second expression is:
 
 Again we use the "and" operator on two expressions with `?&` the first is just checking if n is greater than or equal to 1. The second we have artificially use the `?!` rune to demonstrate its use. `?!` is a logical NOT operation. We use that on the result of asking if n is greater than 100 to effectively ask if it is less than or equal to 100.
 
-### [Next Up: Reading -- Hoon Syntax](../hoon-syntax)
+### [Next Up: Reading -- Lists](../lists)

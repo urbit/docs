@@ -15,14 +15,14 @@ pier directory.
 ## Quickstart
 
 This quick-start guide will walk you through some common commands. Follow along
-using your Dojo. When you get a `>=` message after entering a command, the means
+using your Dojo. When you get a `>=` message after entering a command, this means
 that the command was successful.
 
 When developing it's a good idea to use a separate desk. Create a `%sandbox`
 desk based on the `%home` desk:
 
 ```
-|merge %sandbox ~your-urbit %home
+~your-urbit:dojo> |merge %sandbox ~your-urbit %home
 ```
 
 Running `our` produces your ship-name, meaning that you can run the following
@@ -30,7 +30,7 @@ command instead of typing out the entire thing. Useful for comets, due to their
 very long names.
 
 ```
-|merge %sandbox our %home
+~your-urbit:dojo> |merge %sandbox our %home
 ```
 
 Most of the time we want to use Clay from Unix.  Mount the entire contents of
@@ -60,30 +60,36 @@ Let's explore the `/web` directory of the `%sandbox` desk.
 ~your-urbit:dojo> +ls /=sandbox=/web
 ```
 
-Let's see the contents of `/=sandbox=/web/md`:
+Let's see the contents of `/=sandbox=/web/404/hoon`:
 
 ```
-~your-urbit:dojo> +cat /=sandbox=/web/md
+~your-urbit:dojo> +cat /=sandbox=/web/404/hoon
 ```
 
-Now let's navigate to that folder using `=dir`, which is a like `cd` in Unix.
+Now let's navigate to `/web` on `%sandbox` using `=dir`, which is like `cd` in Unix.
 
 ```
-~your-urbit:dojo> =dir /=sandbox=/web/md
+~your-urbit:dojo> =dir /=sandbox=/web
 ```
 
-Youl'll notice that your prompt is now `~your-urbit:dojo/sandbox/web/md>`. To
-change back to our home directory, we use `=dir` without any path.
+You'll notice that your prompt is now
+`~your-urbit:dojo/=/sandbox/~2018.10.2..00.35.44..d7e8/web>`.
 
 ```
-~your-urbit:dojo/sandbox/web/md> =dir
+~your-urbit:dojo/=/sandbox/~2018.10.2..00.35.44..d7e8/web> +ls %
+```
+
+To change back to our home directory, we use `=dir` without any path.
+
+```
+~your-urbit:dojo/=/sandbox/~2018.10.2..00.35.44..d7e8/web> =dir
 ```
 
 Sync from your friend `~some-ship`'s `%experiment` desk to your
 `%sandbox` desk:
 
 ```
-|sync %sandbox ~some-ship %experiment
+~your-urbit:dojo> |sync %sandbox ~some-ship %experiment
 ```
 
 If and when your sync is successful, you will receive a message:
@@ -130,14 +136,14 @@ We use `beak`s because, unlike the current internet, the Urbit network uses a
 global namespace. That means that a file named `example.hoon` in the `/gen`
 directory on the `%home` desk of your ship `~lodleb-ritrul` would have a
 universal address to anyone else on the network:
-`~lodleb-ritrul/home/186/gen/example.hoon`. That, of
+`/~lodleb-ritrul/home/186/gen/example/hoon`. That, of
 course, doesn't mean that everyone on the network has privileges to access that
 path.
 
 The structure that combines a `beak` with further path information is called a
 `beam`.
 
-##### Relative paths
+#### Relative paths
 
 The `%` command, which we gestured at in the above section, represents the
 **relative path**, which is the path where you are currently working. If your
@@ -164,7 +170,7 @@ up twice the hierarchy.
 There are no local relative paths. `/foo/bar` must be written as
 `%/foo/bar`.
 
-##### Substitution
+#### Substitution
 
 You don't need to write out the explicit path every time you want to reference
 somewhere outside of your working directory. You can substitute `=` for the
@@ -191,7 +197,8 @@ paths. For example, if you are in the `/gen` directory, you can reference a file
 in the `/app` directory like below. (`+cat` displays the contents of a file).
 
 ```
-~your-urbit:dojo/home/gen> +cat /===/app/curl/hoon
+~your-urbit:dojo> =dir %/gen
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen> +cat /===/app/curl/hoon
 ```
 
 Note what was substituted out, and note that we don't need to separate `=` with
@@ -201,7 +208,8 @@ If we changed our working directory to something called `/gen/gmail`, we could
 access a file called
 
 ```
-~fasdul-balsev-lodleb-ritrul:dojo/home/gen/gmail> +cat /===/app/=/split/hoon
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen> =dir %/gmail
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen/gmail> +cat /===/app/=/split/hoon
 ```
 
 Because both paths share a directory named `/gmail` at the same position in the
@@ -213,34 +221,36 @@ We can do the same thing between desks. If `%sandbox` has been merged with
 command.
 
 ```
-~your-urbit:dojo/home/gen/gmail> +cat /=sandbox=/app/=/split/hoon
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen/gmail> +cat /=sandbox=/app/=/split/hoon
 ```
 
 Most commonly this is used to avoid having to know the current revision
-number in the `dojo`: `~lodleb-ritrul/home/~2018.10.2..00.35.44..d7e8/gen/example.hoon`
+number in the `dojo`: `/~lodleb-ritrul/home/~2018.10.2..00.35.44..d7e8/gen/example/hoon`
 
-##### Changing directories
+#### Changing directories
 
 Change the working directory with `=dir`. It's our equivalent of the Unix `cd`.
 
 For example, the syntax to navigate to `/home/gen/ask` is:
 
 ```
-~your-urbit:dojo> =dir /=gen=/ask
+~your-urbit:dojo> =dir /=home=/gen/ask
 ```
 
 This command will turn your prompt into something like this:
 
 ```
-~your-urbit:dojo/gen/ask>
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen/ask>
 ```
 
 Using `=dir` without anything else uses the null path, which returns you to
 your home desk.
 
 ```
-~your-urbit:dojo> =dir
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen/ask> =dir
 ```
+
+Your dojo prompt will turn back into `~your-urbit:dojo>`.
 
 To go up levels in the path hierarchy, recall the relative path expression
 `%`. Stacking them represents another level higher in the hierarchy than
@@ -248,12 +258,13 @@ the current working directory for each `%` beyond the initial. The command below
 brings you one level up:
 
 ```
-~your-urbit:dojo/gen> =dir %%
+~your-urbit:dojo> =dir %/gen
+~your-urbit:dojo/=/=/~2018.10.2..00.35.44..d7e8/gen> =dir %%
 ```
 
 ### Revision-control
 
-##### Mount
+#### Mount
 
 Syntax: `|mount /clay/path [Unix-name]`
 
@@ -273,7 +284,7 @@ Mounts `%/web` to `/web` inside your pier directory.
 
 Mounts `%/gen` to `/generators` inside your pier directory.
 
-##### Unmount
+#### Unmount
 
 ```
 |unmount [clay-path || Unix-name]
@@ -294,6 +305,8 @@ Unmounts the path `%/web` from whatever name it was mounted as.
 ```
 
 Unmounts the Unix path `/generators`.
+
+#### Merge
 
 ```
 |merge desk beak[, =gem strategy]
@@ -318,6 +331,8 @@ Merge `/=home=` into `%home-work` using merge strategy `%fine`.
 
 Merge the `%examples` desk from `~waxbex-ribmex`
 
+#### Sync
+
 ```
 |sync desk plot [plot-desk]
 ```
@@ -337,6 +352,8 @@ that issued a star).
 |sync %home ~doznec
 ```
 
+#### Unsync
+
 ```
 |unsync desk plot [plot-desk]
 ```
@@ -349,6 +366,8 @@ Example:
 ```
 |unsync %home-local ~dozbud %home
 ```
+
+#### Label
 
 ```
 |label desk name`
@@ -411,7 +430,7 @@ annotate any conflicts, if we know how.
 
 ### Manipulation
 
-##### +cat
+#### +cat
 
 Syntax: `+cat path [path ...]`
 
@@ -419,7 +438,7 @@ Similar to Unix `cat`. `+cat` takes one or more `path`s, and prints their
 contents. If that `path` is a file, the contents of the file is printed. If the
 `path` terminates in a directory, the list of names at that path is produced.
 
-##### +ls
+#### +ls
 
 Syntax: `+ls path`
 
@@ -431,20 +450,20 @@ Produces a list of names at the `path`.
 ~your-urbit:dojo> +cat %/our/home/gen/curl/hoon
 ```
 
-##### |rm
+#### |rm
 
 Syntax: `|rm path`
 
 Remove the data at `path`. `path` must be a path to actual node, not a
 'directory'
 
-##### |cp
+#### |cp
 
 Syntax: `|cp to from`
 
 Copy the file at `from` into the path `to`.
 
-##### |mv
+#### |mv
 
 Syntax: `|mv to from`
 

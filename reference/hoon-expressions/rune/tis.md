@@ -77,7 +77,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 7
 ```
 
-### "tiscol"
+### =: "tiscol"
 
 `[%tscl p=(list (pair wing hoon)) q=hoon]`: change multiple legs in the subject.
 
@@ -158,7 +158,7 @@ Regular: **3-fixed**.
 ##### Discussion
 
 Technically the `=.` rune doesn't change the subject.  It creates
-a new subject just like the old one except for a changed value at `p`.  Note that the mutation uses [`%_` ("cencab")](./docs/reference/hoon-expressions/rune/cen.md#cencab), so the type at `p` doesn't change.  Trying to change the value type results in a `nest-fail`.
+a new subject just like the old one except for a changed value at `p`.  Note that the mutation uses [`%_` ("cencab")](@/docs/reference/hoon-expressions/rune/cen.md#cencab), so the type at `p` doesn't change.  Trying to change the value type results in a `nest-fail`.
 
 ##### Examples
 

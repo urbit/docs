@@ -504,7 +504,7 @@ A `u3_noun` will want to be further disassembled into atoms.
 A `u3_atom` represents a simple number, but the implementation may or
 may not be simple.  If the value held in the atom is 31 bits or less,
 it's stored directly in the atom.  If the value is 32 bits the atom
-holds a pointer into the loom where the actual value is stored. ( see [Nouns](./docs/learn/vere/nouns.md) )
+holds a pointer into the loom where the actual value is stored. ( see [Nouns](@/docs/learn/vere/nouns.md) )
 
 You don't want to get bogged down in the details of this -- you just
 want to get data out of your atoms.
@@ -617,7 +617,7 @@ are just recursive calls to the cell constructor `u3i_cell()` e.g.
      u3i_cell(a, u3i_cell(b, u3i_cell(c, d));
 ```
 
-Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](./docs/learn/vere/nouns.md).
+Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs/learn/vere/nouns.md).
 
 ## Compile the C code
 

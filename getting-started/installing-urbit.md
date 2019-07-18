@@ -19,184 +19,40 @@ Urbit: a personal server operating function
 
 ## Instructions
 
-### MacOS
+### macOS (Darwin)
 
-We recommend using the Homebrew package manager to run Arvo on MacOS.
-
-```
-# Bash
-
-brew update
-brew install -v gcc git gmp libsigsegv libtool meson ninja pkg-config openssl
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-sudo ninja -C ./build/ meson-install
-urbit
-```
-
-### Ubuntu or Debian
+We provide static binaries for macOS.  You can grab the latest stable release as follows:
 
 ```
-# Bash
-
-sudo apt-get update
-sudo apt-get install g++ git libcurl4-gnutls-dev libgmp3-dev libncurses5-dev libsigsegv-dev libssl-dev make openssl pkg-config python python3 python3-pip python3-setuptools zlib1g-dev ninja-build
-sudo -H pip3 install --upgrade pip
-sudo -H pip3 install meson
-
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-sudo ninja -C ./build/ install
-urbit
+curl -O https://bootstrap.urbit.org/urbit-darwin-v0.8.0.tgz
+tar xzf urbit-darwin-v0.8.0.tgz
+./urbit
 ```
 
-To access your Urbit via HTTP on port 80, you may need to run the following:
+### Linux (64-bit)
+
+We also provide static binaries for 64-bit Linux distributions (Ubuntu, Debian, Fedora, Arch, etc.).  You can get the latest stable release similarly:
 
 ```
-sudo apt-get install libcap2-bin
-sudo setcap 'cap_net_bind_service=+ep' $(which urbit)
+curl -O https://bootstrap.urbit.org/urbit-linux64-v0.8.0.tgz
+tar xzf urbit-linux64-v0.8.0.tgz
+./urbit
 ```
 
-### Fedora 23 or earlier
+### Other
+
+We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs).  You can install and launch it like so:
 
 ```
-# Bash
-
-sudo yum upgrade
-sudo yum install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel ninja-build openssl openssl-devel pkgconfig python3 re2c wget
-
-# meson requires python 3.5; RHEL supplies wrong version
-pushd /usr/src
-  sudo wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tgz
-  sudo tar xzf Python-3.5.5.tgz
-  cd Python-3.5.5
-  sudo ./configure --enable--optimizations
-  sudo make altinstall
-  which python3.5
-  cd /usr/local/bin
-  sudo ln -s python3.5 python3
-  hash python3
-popd
-
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo /usr/local/bin/python3 get-pip.py
-# downgrade meson to avoid dependencies that redhat can't meet
-sudo -H /usr/local/bin/pip3 install meson
-
-
-git clone git://github.com/ninja-build/ninja.git && cd ninja
-git checkout release
-./configure.py --bootstrap
-sudo cp ./ninja /usr/local/bin
-
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-sudo /usr/local/bin/ninja -C ./build/ install
-urbit
-```
-
-### Fedora 24 or later
-
-```
-# Bash
-
-sudo dnf upgrade
-sudo dnf install autoconf automake cmake ctags gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel libtool ncurses-devel meson ninja-build openssl openssl-devel pkgconfig python3 re2c wget
-
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-sudo ninja -C ./build/ install
-urbit
-```
-
-### Arch Linux
-
-```
-# Bash
-
-sudo pacman -Syyu
-sudo pacman -S --needed curl gcc git gmp libsigsegv ncurses ninja openssl python python-pip meson
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-cd build
-ninja
-sudo ninja meson-install
-urbit
-```
-
-### FreeBSD
-
-```
-# Bash or Sh
-
-pkg upgrade
-sudo pkg install curl gcc git gmake gmp libsigsegv python python3 ncurses openssl gmp
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python3 get-pip.py
-sudo -H pip install --upgrade pip
-sudo -H pip install meson
-sudo pkg install ninja
-git clone https://github.com/urbit/urbit
-cd urbit
-sh ./scripts/bootstrap
-sh ./scripts/build
-sudo ninja -C ./build/ meson-install
-urbit
-```
-
-### Amazon Web Services
-
-```
-# Bash
-
-sudo yum update
-sudo yum install gcc gcc-c++ git gmp-devel libcurl-devel libsigsegv-devel ncurses-devel openssl openssl-devel pkgconfig python3 python3-pip wget git
-sudo env "PATH=$PATH" pip3 install --upgrade pip
-sudo env "PATH=$PATH" pip3 install meson
-
-
-# we need libsigsegv
-#
-
-wget https://dl.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libsigsegv-2.11-7.fc30.x86_64.rpm
-wget https://dl.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libsigsegv-devel-2.11-7.fc30.x86_64.rpm
-sudo yum localinstall libsigsegv-2.11-7.fc30.x86_64.rpm
-sudo yum localinstall libsigsegv-devel-2.11-7.fc30.x86_64.rpm
-
-git clone git://github.com/ninja-build/ninja.git
-pushd ninja
-  git checkout release
-  ./configure.py --bootstrap
-  sudo cp ./ninja /usr/local/bin
-popd
-
-
-git clone https://github.com/urbit/urbit
-cd urbit
-./scripts/bootstrap
-./scripts/build
-sudo env "PATH=$PATH" ninja -C ./build/ install
-
+nix-env -i urbit
 urbit
 ```
 
 ## Booting a Ship
 
-One you've completed your installation, you can continue on to the instructions for [booting your ship](./docs/getting-started/booting-a-ship.md) to get on the Arvo network.
+One you've completed your installation, you can continue on to the instructions for [booting your ship](@/docs/getting-started/booting-a-ship.md) to get on the Arvo network.
 
 Or, if you want to try testing and writing code, check out the guide to [getting an unnetworked development ship](/docs/using/creating-a-development-ship).
-
-
 
 ## Set Up Swap
 

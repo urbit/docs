@@ -3,7 +3,7 @@ title = "1.1.1 Walkthrough: List of Numbers"
 weight = 3
 template = "doc.html"
 +++
-This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.
+This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may be beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.
 
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
 
@@ -105,7 +105,7 @@ $(count (add 1 count))
 
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](./docs/reference/library/1a.md) of the standard-library documentation.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](@/docs/reference/library/1a.md) of the standard-library documentation.
 
 ## Explanation
 

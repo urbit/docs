@@ -118,7 +118,7 @@ be an infinite loop!
 [%foo p=0 q=0]~
 ```
 
-### "buccol"
+### $: "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 
@@ -238,7 +238,7 @@ $~  p=hoon  q=spec
 
 ##### Discussion
 
-You should make sure that the product type of `p` nests under `q`.  You can check the default value of some structure (custom type) `r` with `*r`.  (See the [`^*` rune](./docs/reference/hoon-expressions/rune/ket.md#kettar).)
+You should make sure that the product type of `p` nests under `q`.  You can check the default value of some structure (custom type) `r` with `*r`.  (See the [`^*` rune](@/docs/reference/hoon-expressions/rune/ket.md#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`.  (The latter uses older Hoon syntax that is still accepted.  Preferably it would be `%~`.)
 

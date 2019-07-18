@@ -1,5 +1,5 @@
 +++
-title = "The Subject and Its Legs"
+title = "1.6 The Subject and Its Legs"
 weight = 13
 template = "doc.html"
 +++

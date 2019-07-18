@@ -27,7 +27,7 @@ Before starting with either Sail or Udon, make sure that your ship is
 
 To host that output, your ship also has a web-server, called
 [Eyre](https://urbit.org/docs/using/web/), that can be found at
-`http://localhost:8080/` if it’s your first ship that’s running on the a
+`http://localhost:8080/` if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. In the startup messages, a ship will tell you which HTTP port it's
 using.
@@ -692,7 +692,7 @@ can show you how to access various ship resources for user in your pages. To
 learn more about how the renderer works, take a look at the
 `/home/ren/urb.hoon` file inside your urbit.
 
-## <a name="udon"></a>Udon: A Guide
+## Udon: A Guide {#udon}
 
 Udon is a way to write content for the web. It's a minimalist
 markup language for creating and rendering text documents, with a

@@ -31,51 +31,51 @@ demonstrates important principles that more laconic code would not. Save it as
 ```
 !:
 |=  [msg=tape key=@ud]
-=+  ^=  caesar
-    |%
-    ++  alpha  "abcdefghijklmnopqrstuvwxyz"
-    ++  shift
-      |=  [message=tape key=@ud]
-      (operate message key (encoder key))
-    ++  unshift
-      |=  [message=tape key=@ud]
-      (operate message key (decoder key))
-    ++  operate
-      |=  [message=tape key=@ud encoder=(map @t @t)]
-      ^-  tape
-      %+  turn  message
-      |=  a=@t
-      (~(got by encoder) a)
-    ++  encoder
-      |=  [key=@ud]
-      =/  keytape=tape  (rott alpha key)
-      (coder alpha keytape)
-    ++  decoder
-      |=  [key=@ud]
-      =/  keytape=tape  (rott alpha key)
-      (coder keytape alpha)
-    ++  coder
-      |=  [a=tape b=tape]
-      (~(put by (zipper a b)) ' ' ' ')
-    ++  zipper
-      |=  [a=tape b=tape]
-      ^-  (map @t @t)
-      =|  chart=(map @t @t)
-      ?.  =((lent a) (lent b))
-        ~|  %uneven-lengths  !!
-      |-
-      ?:  |(?=(~ a) ?=(~ b))
-          chart
-      $(chart (~(put by chart) i.a i.b), a t.a, b t.b)
-    ++  rott
-      |=  [m=tape n=@ud]
-      =/  length=@ud  (lent m)
-      =+  s=(trim (mod n length) m)
-      (weld q.s p.s)
-    --
+=<
 =.  msg  (cass msg)
-:-  (shift.caesar msg key)
-(unshift.caesar msg key)
+:-  (shift msg key)
+(unshift msg key)
+|%
+++  alpha  "abcdefghijklmnopqrstuvwxyz"
+++  shift
+  |=  [message=tape key=@ud]
+  (operate message key (encoder key))
+++  unshift
+  |=  [message=tape key=@ud]
+  (operate message key (decoder key))
+++  operate
+  |=  [message=tape key=@ud encoder=(map @t @t)]
+  ^-  tape
+  %+  turn  message
+  |=  a=@t
+  (~(got by encoder) a)
+++  encoder
+  |=  [key=@ud]
+  =/  keytape=tape  (rott alpha key)
+  (coder alpha keytape)
+++  decoder
+  |=  [key=@ud]
+  =/  keytape=tape  (rott alpha key)
+  (coder keytape alpha)
+++  coder
+  |=  [a=tape b=tape]
+  (~(put by (zipper a b)) ' ' ' ')
+++  zipper
+  |=  [a=tape b=tape]
+  ^-  (map @t @t)
+  =|  chart=(map @t @t)
+  ?.  =((lent a) (lent b))
+  ~|  %uneven-lengths  !!
+  |-
+  ?:  |(?=(~ a) ?=(~ b))
+  chart
+  $(chart (~(put by chart) i.a i.b), a t.a, b t.b)
+++  rott
+  |=  [m=tape n=@ud]
+  =/  length=@ud  (lent m)
+  =+  s=(trim (mod n length) m)
+  (weld q.s p.s)
+--
 ```
 
 This generator takes two arguments: a `tape`, which is your plaintext message,
@@ -124,19 +124,20 @@ event of an error.
 
 `|=  [msg=tape key=@ud]` creates a gate that takes a cell. The head of this cell
 is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented
-as text surrounded by double-quotes, such as this: `"a tape"`. We give this input tape the face `msg`.
-The tail of our cell is a `@ud` -- an unsigned decimal atom -- that we give the face `key`.
+as text surrounded by double-quotes, such as this: `"a tape"`. We give this input
+tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal atom
+-- that we give the face `key`.
 
-`=+` adds a noun to the subject, `=^  caesar` names that noun, and `|%` is used
-to create a core that contains the following arms. This results in having a core
-with the face `caesar` that we can call.
-
-Now let's look at the rest of the program that is outside of our core:
+`=<` is the rune that evaluates its first child expression with respect to its
+second child expression as the subject. In this case, we evaluate the
+expressions in the code chunk below against the core declared later, which
+allows us reference the core's contained arms before they are defined. Without
+`=<`, we would need to put the code chunk below at the bottom of our program.
 
 ```
 =.  msg  (cass msg)
-:-  (shift.caesar msg key)
-(unshift.caesar msg key)
+:-  (shift msg key)
+(unshift msg key)
 ```
 
 `=.  msg  (cass msg)` changes the input string `msg` to lowercases. `=.` changes
@@ -144,7 +145,7 @@ the leg of the subject to something else. In our case, the leg to be changed is
 `msg`, and the thing to replace it is `(cass msg)`. `cass` is a standard-library
 gate that converts uppercase letters to lowercase.
 
-`:-  (shift.caesar msg key)` and `(unshift.caesar msg key)` simply composes a
+`:-  (caesar msg key)` and `(caesar msg key)` simply composes a
 cell of a right-shifted cipher and a left-shifted cell. This is the final output
 of our generator.
 
@@ -295,8 +296,8 @@ by.
 `shift` is for encoding, and `unshift` is for decoding. Thus, `shift` calls the
 `operate` arm with `(operate message key (encoder key))`, and `unshift` makes
 that call with `(operate message key (decoder key))`. These both produce the
-final output of the core, to be called in the form of `(shift.caesar msg key)`
-and `(unshift.caesar msg key)` at the bottom of the program.
+final output of the core, to be called in the form of `(caesar msg key)`
+and `(caesar msg key)` at the bottom of the program.
 
 ```
 ++  operate

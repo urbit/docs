@@ -1,5 +1,5 @@
 +++
-title = "Arms and Cores"
+title = "1.7 Arms and Cores"
 weight = 15
 template = "doc.html"
 +++

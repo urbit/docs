@@ -31,7 +31,7 @@ Tall-form Hoon may require multiple lines:
 ~your-urbit:dojo< 2
 ```
 
-Hoon uses something called [the subject](./docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs.md).
+Hoon uses something called [the subject](@/docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs.md).
 The Dojo has its own subject, and that's where Hoon's equivalent of variables,
 called faces, are stored.
 
@@ -53,7 +53,7 @@ Use `=dir` to set the current working directory:
 ```
 
 (`%` represents your current directory. For a complete explanation on urbit
-paths, see the [filesystem section](./docs/using/filesystem.md))
+paths, see the [filesystem section](@/docs/using/filesystem.md))
 
 Generators (files in `/gen`) are run with `+`:
 
@@ -256,7 +256,7 @@ Apps usually expect marked data, so `&` is often used here.
 
 ##### `*` - Save in `%clay`
 
-Save a new `.udon` ([Udon](./docs/using/sail-and-udon.md)) file in `web`:
+Save a new `.udon` ([Udon](@/docs/using/sail-and-udon.md)) file in `web`:
 
 ```
 ~your-urbit:dojo> *%/web/foo/udon '# hello'
@@ -287,11 +287,25 @@ Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`
 
 ##### `&` - Mark conversion
 
-Convert between marks using `&`:
+Convert between marks using `&`, with the destination mark first. You can stack multiple mark conversions together, and some marks can only be converted to specific other marks. In this example, [Udon](@/docs/using/sail-and-udon.md#udon) is converted to `&hymn` (a mark which supplies the `html`, `head`, `body` and closing tags) first, before being converted to HTML:
 
 ```
-~your-urbit:dojo> &html &md '# hello'
-'<html><head></head><body><div><h1 id="-hello">hello</h1></div></body></html>'
+~your-urbit:dojo>&html &hymn &udon ';h1#hello: hello'
+'<html><head></head><body><h1 id="hello">hello</h1></body></html>'
+```
+
+Performing a conversion straight from Udon to the `&hymn` mark reveals a bit more about its mark conversion:
+
+```
+~your-urbit:dojo>&hymn &udon ';h1#hello: hello'
+[[%html ~] [[%head ~] ~] [[%body ~] [g=[n=%h1 a=~[[n=%id v="hello"]]] c=~[[g=[n=%$ a=~[[n=%$ v="hello"]]] c=~]]] ~] ~]
+```
+
+As does converting straight from Udon to HTML:
+
+```
+~your-urbit:dojo>&html &udon ';h1#hello: hello'
+';h1#hello: hello'
 ```
 
 ##### `_` - Run a function
@@ -362,9 +376,11 @@ with `/+`. Read / write.
 **Examples:**
 
 ```
-~your-urbit:dojo> /+  react
-~your-urbit:dojo> ::  now we can use arms from lib/react.hoon
-~your-urbit:dojo> (react-vale:react %div)
+~your-urbit:dojo> /+  number-to-words
+```
+Now we can use arms from lib/number-to-words.hoon
+```
+~your-urbit:dojo> (to-words:eng-us:number-to-words 123.456)
 ```
 
 ##### sur
@@ -376,7 +392,9 @@ with `/-`. Read / write.
 
 ```
 ~your-urbit:dojo> /-  sole
-~your-urbit:dojo> ::  now we can use arms in sur/sole.hoon
+```
+Now we can use arms in sur/sole.hoon.
+```
 ~your-urbit:dojo> `sole-effect:sole`[%bel ~]
 ```
 
@@ -388,7 +406,6 @@ The current (128-bit `@da`) time. Read-only.
 
 ```
 ~your-urbit:dojo> now
-:: produces
 ~2016.3.21..21.10.57..429a
 ```
 
@@ -400,7 +417,6 @@ The current urbit ship. Read-only.
 
 ```
 ~your-urbit:dojo> our
-:: produces
 ~your-urbit
 ```
 
@@ -412,7 +428,6 @@ The current urbit ship. Read-only.
 
 ```
 ~your-urbit:dojo> eny
-:: produces
 \/0vnt.d474o.gpahj.jcf3o.448fh.2lamb.82ljm.8ol8u.b02vi.mrvvp.b7et2.knb7m.l8he\/
   8.8qb9s.drm36.77n9b.a0qst.30g03.l5lb5.nvsbc.v39tn
 \/

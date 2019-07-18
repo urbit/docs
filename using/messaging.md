@@ -24,7 +24,7 @@ be used for that we haven't even thought of.
 
 Here we'll be discussing how to operate the default CLI frontend, Talk,
 to send and receive messages. For a more in-depth look at Hall's internals,
-take a look at its [documentation](./docs/learn/arvo/hall.md).
+take a look at its [documentation](@/docs/learn/arvo/hall.md).
 
 ## Quickstart
 
@@ -488,11 +488,21 @@ messages sent from this prompt will go to some circle with that glyph:
 ```
 
 To see what circle is bound to a glyph, use the `;what` command followed by the
-glyph in question. For example, to see `=`:
+glyph in question, or use `;what` without specifying a glyph to see all of your 
+subscriptions which are bound to glyphs. For example, to see `=`:
 
 ```
 ~sampel-palnet:talk> ;what =
-/urbit-help
+~dopzod/urbit-help
+```
+
+To see all of your glyph-bound subscriptions:
+
+```
+~sampel-palnet:talk> ;what
+> ~paldev/numismatic-forum
+. ~middev/ny-martians
+= ~dopzod/urbit-help
 ```
 
 Not every audience has a glyph, however. When the audience doesn't have a glyph,

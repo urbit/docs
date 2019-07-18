@@ -3,7 +3,7 @@ title = "1.5.1 Walkthrough: Recursion"
 weight = 9
 template = "doc.html"
 +++
-Recursion is a common pattern for solving certain problems in most programming
+[Recursion](.) is a common pattern for solving certain problems in most programming
 languages, and Hoon is no exception. One of the classically recursive problems
 is that of factorial. The factorial of _n_ is the product of all positive
 integers less than or equal to N. Thus the factorial of 5, denoted as _5!_,
@@ -177,7 +177,7 @@ of. That's because a gate is just a core with a single arm named `$`. The
 subject is searched depth-first, head before tail, with faces skipped, and
 stopping on the first result. In other words, the first match found in the head
 will be returned. If you wished to refer to the outer `$` in this context, the
-idiomatic way would be to use [`^$`](./docs/reference/hoon-expressions/rune/ket.md). The `^` operator
+idiomatic way would be to use [`^$`](@/docs/reference/hoon-expressions/rune/ket.md). The `^` operator
 skips the first match of a name.
 
 ### Exercises
@@ -191,4 +191,4 @@ Disks are stacked on a pole by decreasing order of size. Move all of the
 disks from one pole to another with a third pole as a spare, moving one
 disc at a time, without putting a larger disk on top of a smaller disk.
 
-### [Next Up: Reading -- The Subject and its Legs](../lists)
+### [Next Up: Reading -- The Subject and its Legs](../the-subject-and-its-legs/)

@@ -17,7 +17,7 @@ In this lesson we'll cover (1)-(4) as they pertain to atoms and simple cell type
 
 ## Atoms and Auras
 
-In [lesson 1.2](./docs/learn/hoon/hoon-tutorial/nouns.md) we defined what an atom is: any unsigned integer.  In this lesson we'll expand on that discussion, going over how Hoon's type system implements auras.
+In [lesson 1.2](@/docs/learn/hoon/hoon-tutorial/nouns.md) we defined what an atom is: any unsigned integer.  In this lesson we'll expand on that discussion, going over how Hoon's type system implements auras.
 
 In the most straightforward sense, atoms simply are unsigned integers.  But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more.  Every atom is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each atom, and this info tells Hoon how to interpret the atom in question.
 
@@ -241,7 +241,7 @@ Hoon uses the outermost cast to infer the type:
 0b1.0000
 ```
 
-As you can see, an atom with one aura can be converted to another aura.  For a convenient shorthand, you can do this conversion with irregular cast syntax, e.g. `\`@ud\``, rather than using the `^-` rune twice:
+As you can see, an atom with one aura can be converted to another aura.  For a convenient shorthand, you can do this conversion with irregular cast syntax, e.g. `` `@ud` ``, rather than using the `^-` rune twice:
 
 ```
 > `@ud`0x10
@@ -254,7 +254,7 @@ As you can see, an atom with one aura can be converted to another aura.  For a c
 0xa
 ```
 
-This is what we mean when we call auras 'soft' types.  The above examples show that the programmer can get around the type system for auras by casting up to `@` and then back down to the specific aura, say `@ub`; or by casting with `\`@ub\`` for short.
+This is what we mean when we call auras 'soft' types.  The above examples show that the programmer can get around the type system for auras by casting up to `@` and then back down to the specific aura, say `@ub`; or by casting with `` `@ub` `` for short.
 
 ## Examples
 

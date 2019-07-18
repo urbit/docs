@@ -1,5 +1,5 @@
 +++
-title = "Gates (Hoon Functions)"
+title = "1.5 Gates (Hoon Functions)"
 weight = 8
 template = "doc.html"
 +++
@@ -67,8 +67,6 @@ The gate works as promised -- it takes any number `n` and returns `n + 1`.  Let'
 ### The `|=` Rune
 
 We typically use the `|=` rune to create a gate.  In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`.  The first defines the gate's sample (input value type), and the second defines the gate's product (value).
-
-When we used the `|%` rune in the last lesson we didn't use parentheses because we were writing in "tall form" syntax, whereas here we are writing in "flat form" syntax.  (The latter uses parentheses and is more suitable for shorter snippets of code.)  We'll explain these concepts more thoroughly in lesson 2.2.
 
 In the example gate above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an atom, `@`, meaning that the gate will take as input anything of that type.  The sample is given the face `a`.  With the face it's easier to refer to the sample in later code, if desired.
 
