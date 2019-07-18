@@ -117,7 +117,7 @@ If `p` is not a boolean, compiler yells at you.
 
 ##### Type inference
 
-The subject types of `q` and `r` are constrained to match any pattern-matching algebra in `p`.  The analysis, which is conservative, understands any combination of [`?=`](#wuttis), [`?&`](#wutpad), [`?|`](#wutbar), and  [`?!`](#wutzap), and infers the type of the subject appropriately when compiling.
+The subject types of `q` and `r` are constrained to match any pattern-matching algebra in `p`.  The analysis, which is conservative, understands any combination of [`?=`](#wuttis), [`?&`](#wutpam), [`?|`](#wutbar), and  [`?!`](#wutzap), and infers the type of the subject appropriately when compiling.
 
 If test analysis reveals that either branch is never taken, or if `p` is not a boolean, compilation fails.  An untaken branch is indicated with `mint-lost`.
 
@@ -384,9 +384,9 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 240
 ```
 
-### ?& "wutpad"
+### ?& "wutpam"
 
-`[%wtpd p=(list hoon)]`: logical AND.
+`[%wtpm p=(list hoon)]`: logical AND.
 
 ##### Expands to
 
@@ -518,7 +518,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 4
 ```
 
-### ?! "wutzaps"
+### ?! "wutzap"
 
 `[%wtzp p=hoon]`: logical NOT.
 
