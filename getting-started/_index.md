@@ -25,6 +25,10 @@ This guide teaches you how to get your ship operational and onto the Arvo networ
 
 This document will get your started with contributing code or contributing to the community.
 
+### [Optional: Using a Text Editor](@/docs/getting-started/text-editors.md)
+
+While interacting with your ship requires only a terminal, it is highly recommended that you utilize a modern text editor when writing Hoon. This guide presents a short introduction to text editors for those completely new to programming as well as a list of text editors that have Hoon support.
+
 ## Terminology
 
 You've already encountered some new terminology on this page, and you'll encounter more as you proceed with this guide. Let's go over the basics:
