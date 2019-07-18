@@ -23,7 +23,7 @@ different situations.  Hence the whole family of `=` runes.
 
 ## Runes
 
-### => "tisban"
+### => "tisgar"
 
 `[%tsgr p=hoon q=hoon]`: compose two expressions.
 
@@ -246,7 +246,7 @@ random number, so we use `=^`:
 [99 46]
 ```
 
-### =< "tisled"
+### =< "tisgal"
 
 `[%tsgl p=hoon q=hoon]`: compose two expressions, inverted.
 
@@ -308,7 +308,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ### =; "tismic"
 
-`[%tssm p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
+`[%tsmc p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
 
 ##### Expands to
 
