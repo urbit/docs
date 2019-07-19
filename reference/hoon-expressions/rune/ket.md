@@ -188,9 +188,9 @@ Regular: **2-fixed**.
 'a'
 ```
 
-### ^& "ketpad"
+### ^& "ketpam"
 
-`[%ktpd p=hoon]`: convert a core to a zinc core (covariant).
+`[%ktpm p=hoon]`: convert a core to a zinc core (covariant).
 
 ##### Produces
 

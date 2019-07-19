@@ -284,9 +284,9 @@ This should work fine:
 573.147.844.013.817.084.101
 ```
 
-### ~/ "signet"
+### ~/ "sigfas"
 
-`[%sgnt p=term q=hoon]`: jet registration for gate with
+`[%sgfs p=term q=hoon]`: jet registration for gate with
 registered context.
 
 ##### Expands to
@@ -311,9 +311,9 @@ From the kernel:
   $(a (dec a), b +(b))
 ```
 
-### ~& "sigpad"
+### ~& "sigpam"
 
-`[%sgpd p=hoon q=hoon]`: debugging printf.
+`[%sgpm p=hoon q=hoon]`: debugging printf.
 
 ##### Expands to
 
