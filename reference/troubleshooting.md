@@ -160,7 +160,7 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing.  This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ([**sigpad**](@/docs/reference/hoon-expressions/rune/sig.md#sigpad)) is Hoon's debugging printf.
+`~&` ([**sigpam**](@/docs/reference/hoon-expressions/rune/sig.md#sigpam)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
 ```

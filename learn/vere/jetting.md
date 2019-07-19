@@ -103,9 +103,9 @@ There are multiple runes to do hinting, but we're going to concentrate
 on three.  All hinting runes start with a tilda ("sig").  A mnemonic
 is "we're signaling some information to the interpreter".
 
-+ `~/` "signet": simple jet registration, using defaults for some arguments
++ `~/` "sigfas": simple jet registration, using defaults for some arguments
 + `~%` "sigcen": more complicated jet registration, specifying all arguments
-+ `~&` "sigpad": debugging printf
++ `~&` "sigpam": debugging printf
 
 Feel free to use `~&` liberally! (Just remove them when you're done).
 
