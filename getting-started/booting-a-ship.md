@@ -86,6 +86,8 @@ which indicates that the command was processed.
 
 `|mount %` will cause a `home/` directory to appear inside your _pier_ folder in Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
 
+**Note: Do not, under any circumstances, delete your pier. If your pier is deleted, your ship cannot be recovered until the Arvo network is reset ("breached") -- a rare occasion.**
+
 ### Shutting Down and Restarting
 
 You can toggle between the Dojo and Talk (chat) prompts with `ctrl-x`. You can turn your ship off with `ctrl-d` from the Talk or Dojo prompts.
@@ -95,3 +97,12 @@ To restart your ship, simply pass the name of your pier:
 ```
 urbit some-planet
 ```
+
+### Using Landscape
+
+Landscape is the Urbit web interface, and it's the best way to interact with your ship. Chrome and Brave are the recommended browsers for using Landscape. To get onto Landscape:
+
+1. Start your ship. In the boot messages, look for a line that says something like `http: live (insecure, public) on 80`. The number given is the port that your ship is using.
+2.  If the port given is 80, simply type `localhost` into your browser's address bar. If the given port is a different number, such as `8080`, you would type `localhost:8080`.
+3. Type `+code` into your ship's Dojo. Copy-paste the returned code into the field asking for it.
+4. You're in! Now you can explore apps such as Chat for messages, Publish for blogging, and Weather.
