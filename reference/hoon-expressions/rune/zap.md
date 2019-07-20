@@ -5,7 +5,7 @@ template = "doc.html"
 +++
 ## Runes
 
-### !> "zapban"
+### !> "zapgar"
 
 `[%zpgr p=hoon]`: wrap a noun in its type.
 

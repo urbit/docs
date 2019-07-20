@@ -29,9 +29,9 @@ side is taken), it fails with an error.
 
 ## Runes
 
-### ?> "wutban"
+### ?> "wutgar"
 
-`[%wtbn p=hoon q=hoon]`: positive assertion.
+`[%wtgr p=hoon q=hoon]`: positive assertion.
 
 ##### Expands to
 
@@ -286,10 +286,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 3
 ```
 
-### ?< "wutled"
-
-
-# `?< "wutled"`
+### ?< "wutgal"
 
 `[%wtgl p=hoon q=hoon]`: negative assertion.
 
