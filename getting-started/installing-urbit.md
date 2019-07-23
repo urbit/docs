@@ -41,6 +41,10 @@ tar xzf urbit-linux64-v0.8.0.tgz
 ./urbit
 ```
 
+To access your Urbit via HTTP on port 80, you may need to run the following:
+`sudo apt-get install libcap2-bin`
+`sudo setcap 'cap_net_bind_service=+ep' $(which urbit)`
+
 ### Other
 
 We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs), however we're still in the process of updating it to `v0.8.0`. Once available, you will be able to install and launch it like so:
