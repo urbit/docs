@@ -43,7 +43,7 @@ tar xzf urbit-linux64-v0.8.0.tgz
 
 ### Other
 
-We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs), however we haven't yet added `v0.8.0`. Please give us a day or two. Once availabled, you will be able to install and launch it like so:
+We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs), however we're still in the process of updating it to `v0.8.0`. Once available, you will be able to install and launch it like so:
 
 ```
 nix-env -i urbit
