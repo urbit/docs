@@ -1711,7 +1711,7 @@ identity), and `eny` (512 bits of guaranteed-fresh entropy). For the full list
 of things in `++bowl`, search for `++  bowl` (note: two spaces) in
 `/arvo/zuse.hoon`.
 
-> This is, perhaps, the most common way to learn Hoon. The easiest way to learn about an identifier you see in code is to search in `/arvo/zuse.hoon` and `/arvo/hoon.hoon` for it.\\ Urbit's codebase is less than 30000 lines of code combined, including the hoon parser, the compiler, and the `/arvo` microkernel, so you can usually use the code and its comments as a reference doc. You can also read [zuse.hoon](https://github.com/urbit/arvo/blob/master/arvo/zuse.hoon) and [hoon.hoon](https://github.com/urbit/arvo/blob/master/arvo/hoon.hoon) in your browser.
+> This is, perhaps, the most common way to learn Hoon. The easiest way to learn about an identifier you see in code is to search in `/arvo/sys/zuse.hoon` and `/arvo/sys/hoon.hoon` for it.\\ Urbit's codebase is less than 30000 lines of code combined, including the hoon parser, the compiler, and the `/arvo` microkernel, so you can usually use the code and its comments as a reference doc. You can also read [zuse.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon) and [hoon.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon) in your browser.
 
 The second thing we should clear up is this: Urbit needs no "serialize to disk"
 step. Everything you produce in the app state is persistent across calls to the

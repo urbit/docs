@@ -194,7 +194,7 @@ Let's look once more at the parent core of the `add` arm in the Hoon standard li
 <74.dbd 1.qct $141>
 ```
 
-The battery of this core contains 74 arms, each of which evaluates to a gate in the standard library.  This 'library' is nothing more than a core containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these arms near the beginning of [hoon.hoon](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/arvo/blob/master/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)
+The battery of this core contains 74 arms, each of which evaluates to a gate in the standard library.  This 'library' is nothing more than a core containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these arms near the beginning of [hoon.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)
 
 Here are some of the other gates that can be generated from this core in the Hoon standard library.  It should be fairly obvious what they do:
 

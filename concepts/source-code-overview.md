@@ -13,9 +13,9 @@ important ones here:
 
 This is the main Urbit repo. It contains the Urbit interpreter (all of the C code) and is the main entry point if you're going to build from source.
 
-## [`urbit/arvo`](https://github.com/urbit/arvo)
+It also contains Arvo, the Urbit operating system (written in Hoon), as a subtree. When you boot your Urbit, you get this over the air. The source code is kept here, and you'll need it if you want to do any heavy development work.
 
-Arvo is the Urbit operating system (written in Hoon). When you boot your Urbit, you get this over the air. The source code is kept here, and you'll need it if you want to do any heavy development work.
+## [`urbit/docs`](https://github.com/urbit/docs)
 
 Interesting in working on Urbit documentation? This repository is where all the collaboration happens. The docs themselves are just markdown files hosted on a live ship.
 
