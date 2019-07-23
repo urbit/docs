@@ -110,7 +110,7 @@ You can also put complex expressions inside square brackets to make a cell.  The
 
 ### Wings
 
-A wing expression is a series of limb expressions separated by `.`.  You learned about these in [sections 1.3](@/docs/reference/hoon-expressions/limb/wing.md) and [sections 1.4](@/docs/reference/hoon-expressions/limb/limb.md).
+A wing expression is a series of limb expressions separated by `.`.  A deeper explanation can be found on the [wing](@/docs/reference/hoon-expressions/limb/wing.md) and [limb](@/docs/reference/hoon-expressions/limb/limb.md) reference pages.
 
 Let's start with the base case: a single limb.  A limb expression is a trivial wing expression -- there is only one limb in the series.  Some one-limb wings:
 
@@ -123,7 +123,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `add`
 - `mul`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We covered the role of `$` in [lesson 1.5](@/docs/learn/hoon/hoon-tutorial/gates.md).)
+As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [lesson 1.5](@/docs/learn/hoon/hoon-tutorial/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
