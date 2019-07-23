@@ -4,6 +4,7 @@ weight = 2
 template = "doc.html"
 description = "An explanation of Urbit's constituent GitHub repos."
 +++
+
 We host all our source code on GitHub at [github.com/urbit](https://github.com/urbit).
 
 Since there's quite a number of repos, we'll talk about a few of the most
@@ -25,6 +26,6 @@ This is where the source code for urbit.org lives. Like the docs, the urbit.org 
 
 We're working on a new Urbit style guide for urbit.org, the docs and Urbit web apps. If you're into visual design or are a CSS fanatic, jump in here.
 
-## [`urbit.org/azimuth`](https://github.com/urbit/azimuth)
+## [`urbit/azimuth`](https://github.com/urbit/azimuth)
 
 Azimuth is a general-purpose PKI that Urbit uses for network identities.
