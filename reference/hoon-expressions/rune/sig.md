@@ -7,9 +7,9 @@ Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
 ## Runes
 
-### ~> "sigban"
+### ~> "siggar"
 
-`[%sgbn p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied
+`[%sggr p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied
 to computation.
 
 ##### Expands to
@@ -74,7 +74,7 @@ ford: build failed
 
 ### ~$ "sigbuc"
 
-`[%sgbs p=term q=hoon]`: profiling hit counter.
+`[%sgbc p=term q=hoon]`: profiling hit counter.
 
 ##### Expands to
 
@@ -214,10 +214,10 @@ Here we label the entire `++aesc` core for optimization. You can see the
 jet in `jets/e/aesc.c`.
 
 
-### ~< "sigled"
+### ~< "siggal"
 
 
-`[%sgld p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied to
+`[%sggl p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied to
 product.
 
 ##### Expands to
