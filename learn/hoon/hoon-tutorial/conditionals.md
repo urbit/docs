@@ -41,13 +41,7 @@ But now let's get into the conditionals themselves. Below we'll examine the seri
 
 `?:` (pronounced "wut-col") is the simplest "wut" rune. It takes three children, also called sub-expressions. The first child is a boolean test, which means that it looks for a `%.y` ("yes") or a `%.n` ("no."). The second child is a yes-branch, which is what we arrive at if the aforementioned boolean test evaluates to `%.y`. The third child is a no-branch, so we arrive at it if instead the boolean test evaluates to `%.n`. These branches can contain any sort of Hoon expression, including further conditional expressions, as we will see.
 
-In our case, the first child of `?:` is `?&  =(0 (mod n 2))`. It itself has another conditional rune, `?&` ("wut-pam"), which performs the logical "and" operation on its two children, making sure that both of them are true. The first child of our `?&` rune is:
-
-```
-=(0 (mod n 2))
-```
-
-which simply asks if `n` is even or not.
+In our case, the first child of `?:` is `?&  =(0 (mod n 2))`. It itself has another conditional rune, `?&` ("wut-pam"), which performs the logical "and" operation on its two children, making sure that both of them are true. The first child of our `?&` rune is `=(0 (mod n 2))`, which simply asks if `n` is even or not.
 
 The second child is:
 
