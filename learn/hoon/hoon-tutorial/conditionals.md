@@ -57,11 +57,11 @@ The second expression is:
         ==
 ```
 
-Its first sub-expression is another `?&` rune. This second "and" rune checks for the truth of the following two expressions: `(gte n 1)`, meaning "n is greater than or equal to one"; and `?!  (gth n 100),` which means "n is not greater than 100".
+Its first child is another `?&` rune. This second "and" rune checks for the truth of the following two expressions: `(gte n 1)`, meaning "n is greater than or equal to one"; and `?!  (gth n 100),` which means "n is not greater than 100".
 
-`?!` ("wut-zup") is the logical "not" operator, which inverts the truth value of its single sub-expression. We would normally use simpler code here to do the same thing: `(lth n 100)`, without the `?!` rune. We're just using this rune artificially to demonstrate its use to the reader.
+`?!` ("wut-zup") is the logical "not" operator, which inverts the truth value of its single child. We would normally use simpler code here to do the same thing: `(lth n 100)`, without the `?!` rune. We're just using this rune artificially to demonstrate its use to the reader.
 
-The `==` runes close the `?&` runes, since `?&` runes can take an unlimited number of sub-expressions.
+The `==` runes close the `?&` runes, since `?&` runes can take an unlimited number of children.
 
 ### Other Runes
 
