@@ -10,7 +10,7 @@ The primary way to interact with Azimuth is through our [Bridge](https://github.
 
 ## Arvo vs. Azimuth
 
-Urbit is a project, not a single computer system. It has three components: Arvo, the operating system; Azimuth, the identity system; and Landscape, the pattern for creating software experiences for individual Urbit communities. Let's compare the first two.
+Urbit is a project, not a single computer system. It has multiple components: Arvo, the operating system; and Azimuth, the identity system. Let's compare them.
 
 **Arvo** is an operating system that provides the software for a personal server. These personal servers together constitute the peer-to-peer Arvo network. To make this network work on the social level, Arvo is built to work with a system of scarce and immutable identities.
 
