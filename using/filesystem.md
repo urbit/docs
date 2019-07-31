@@ -5,11 +5,9 @@ template = "doc.html"
 +++
 Urbit has its own revision-controlled filesystem, Clay. Clay is a typed, global,
 referentially transparent namespace. An easy way to think about it is like typed
-`git` with continuous sync.
+`git`.
 
-The most common way to use Clay is to mount a Clay node in a Unix directory. The
-Urbit process will watch this directory and automatically record edits as
-changes, Dropbox style. The mounted directory is always at the root of your
+The most common way to use Clay is to mount a Clay node in a Unix directory. The mounted directory is always at the root of your
 pier directory.
 
 ## Quickstart

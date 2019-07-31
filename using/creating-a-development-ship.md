@@ -56,7 +56,7 @@ This should produce:
 
 which indicates that the command was processed.
 
-`|mount %` will cause a `home/` directory to appear inside your _pier_ folder in Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
+`|mount %` will cause a `home/` directory to appear inside your _pier_ folder in Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files can be committed to your pier by running `|commit %home` once you're done.
 
 ### Shutting Down and Restarting
 

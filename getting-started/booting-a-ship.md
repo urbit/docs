@@ -84,7 +84,7 @@ This should produce:
 
 which indicates that the command was processed.
 
-`|mount %` will cause a `home/` directory to appear inside your _pier_ folder in Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Changes to these files are automatically synced into your ship.
+`|mount %` will cause a `home/` directory to appear inside your _pier_ folder in Unix (the "pier" is our shorthand for the directory whose name corresponds to your Azimuth point). Once you've changed a file, `|commit %home` to synchronize changes to your pier.
 
 **Note: Do not, under any circumstances, delete your pier. If your pier is deleted, your ship cannot be recovered until the Arvo network is reset ("breached") -- a rare occasion.**
 
