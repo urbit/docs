@@ -6,11 +6,11 @@ description = "An explanation of the Urbit identity layer."
 +++
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities that we call _points_. You need a point to use the Arvo network.
 
-The primary way to interact with Azimuth is through our [Bridge](https://github.com/urbit/bridge) application and the node libraries that it depends on, azimuth-js and keygen-js. Take a look at the source and play around or see [Getting Started](/docs/getting-started).
+The primary way to interact with Azimuth is through our [Bridge](https://github.com/urbit/bridge) application and the node libraries that it depends on, [azimuth-js](https://github.com/urbit/azimuth-js) and [urbit-key-generation](https://github.com/urbit/urbit-key-generation). Take a look at the source and play around, or see [Getting Started](/docs/getting-started).
 
 ## Arvo vs. Azimuth
 
-Urbit is a project, not a single computer system. It has three components: Arvo, the operating system; Azimuth, the identity system; and Aegean, the pattern for creating software experiences for individual Urbit communities. Let's compare the first two.
+Urbit is a project, not a single computer system. It has three components: Arvo, the operating system; Azimuth, the identity system; and Landscape, the pattern for creating software experiences for individual Urbit communities. Let's compare the first two.
 
 **Arvo** is an operating system that provides the software for a personal server. These personal servers together constitute the peer-to-peer Arvo network. To make this network work on the social level, Arvo is built to work with a system of scarce and immutable identities.
 
@@ -34,7 +34,7 @@ But wait! We need some way to secure these identities. To that end, we have buil
 
 In theory, our ecosystem doesn't need a blockchain, because Urbit identities are more like real estate than currency: they change hands slowly. A low-friction, zero-trust solution to the double-spend problem isn't an economic necessity for transactions such as ours. So we could have the Arvo network run its own key-signing system. But, since Azimuth identities are valuable, you don't want to put them in an self-hosted PKI that isn't generally recognized as secure. Arvo is still young, we'd prefer to use an existing system for people to secure their property.
 
-Moving the Urbit land registry to Ethereum is an easy and obvious solution to this problem. We chose Ethereum over Bitcoin because the former is built for computation Landscape the latter is not. We need a computational blockchain to enforce the specific rules of the Urbit identity registry.
+Moving the Urbit land registry to Ethereum is an easy and obvious solution to this problem. We chose Ethereum over Bitcoin because the former is built for computation and the latter is not. We need a computational blockchain to enforce the specific rules of the Urbit identity registry.
 
 For more background on the decision to use the Ethereum blockchain, check out [these](https://urbit.org/posts/essays/urbit-and-the-blockchain/) [two](https://urbit.org/posts/essays/bootstrapping-urbit-from-ethereum/) posts.
 
@@ -89,5 +89,5 @@ Points, and all of their blockchain operations, are governed by the Ecliptic.
 The Ecliptic is an Ethereum smart-contract that governs point state and the
 ownership, spawn, management, and voting rights affiliated with your points.
 
-For the technical implementation details Azimuth, take a look at the
-[Github repo](https://github.com/urbit/azimuth).
+For the technical implementation details, take a look at Azimuth's 
+[Github repository](https://github.com/urbit/azimuth).
