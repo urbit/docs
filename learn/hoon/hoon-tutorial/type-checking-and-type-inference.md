@@ -167,7 +167,7 @@ Cast runes also shape how Hoon understands an expression type.  The inferred typ
 ^+([0x1b 0b11] [0x123 0b101])     [@ux @ub]
 ```
 
-You can also use the irregular `\` \`` syntax for casting in the same way as `^-`; e.g., `\`@\`123` for `^-(@ 123)`.
+You can also use the irregular `` ` `` syntax for casting in the same way as `^-`; e.g., `` `@`123 `` for `^-(@ 123)`.
 
 One thing to note about casts is that they can 'throw away' type information.  The second subexpression of `^-` and `^+` casts may be inferred to have a very specific type.  If the cast type is more general, then the more specific type information is lost.  Consider the literal `[12 14]`.  The inferred type of this expression is `[@ @]`, i.e., a cell of two atoms.  If we cast over `[12 14]` with `^-(^ [12 14])` then the inferred type is just `^`, the set of all cells.  The information about what kind of cell it is has been thrown away.  If we cast over `[12 14]` with `^-(* [12 14])` then the inferred type is `*`, the set of all nouns.  All interesting type information is thrown away on the latter cast.
 

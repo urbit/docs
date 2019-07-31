@@ -13,7 +13,7 @@ So a list can be either null or non-null. When the list contains only `~` and no
 
 `[1 [2 [3 [4 ~]]]]`
 
-It's easy to see where the heads are and where the nesting tails are. The head of the above list is the atom `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.
+It's easy to see where the heads are and where the nesting tails are. The head of the above list is the atom `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.
 
 To make a list, let's cast nouns to the `(list @)` ("list of atoms") type.
 
