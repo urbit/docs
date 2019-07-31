@@ -94,8 +94,7 @@ Below are Arvo modules, which are called "vanes".
   to Unix and vice versa.
 
   A common way to use it is to create a pier, a directory that exists in and is
-  visible in Unix. Changes are automatically recorded from Urbit to the Unix
-  directory, and vice versa. Just set it and forget it!
+  visible in Unix.
 
   Clay is located at `/home/sys/vane/clay.hoon` within your urbit.
 

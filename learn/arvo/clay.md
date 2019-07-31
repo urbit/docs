@@ -325,7 +325,7 @@ and this will mount the given clay directory to the mount-point
 directory in Unix. Every file is converted to `%mime` before it's
 written to Unix, and converted back when read from Unix. The
 entire directory is watched (a la Dropbox), and every change is
-auto-committed to clay.
+committed once you run `|commit %mount-point`.
 
 ### Merging
 
