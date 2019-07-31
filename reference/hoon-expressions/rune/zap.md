@@ -25,7 +25,7 @@ In Hoon, a dynamic type is a static type compiled at runtime.  This type-noun ce
 
 ```
 > !>(1)
-[p=#t/@ud q=1]
+[#t/@ud q=1]
 ```
 
 If you want just the type value, use a 'type spear'.  This is `-:!>`, i.e., the head of the cell produced by `!>`:

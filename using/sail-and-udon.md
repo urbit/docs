@@ -1053,15 +1053,11 @@ bug.
 
 #### Inline Code Literal
 
-Enclosing some text in
-```
-`
-```
-characters will cause it to be displayed as code,
+Enclosing some text in `` ` `` characters will cause it to be displayed as code,
 inside a `<code>` HTML element with monospace font and highlighted with a
 different background color.
 
-Using `` ` \`` is useful when you want to designated only part of a line as code.
+Using `` ` `` is useful when you want to designated only part of a line as code.
 Since this page is written in Udon, we've been using this operation
 throughout this guide to `format text` to distinguish code from prose.
 
@@ -1097,16 +1093,14 @@ Most of our examples so far have used.
 **Example:**
 
 
-```
-  ```
-  (def Y (fn [f]
-         ((fn [x]
-            (x x))
-          (fn [x]
-            (f (fn [y]
-                 ((x x) y)))))))
-  ```
-```
+    ```
+    (def Y (fn [f]
+           ((fn [x]
+              (x x))
+            (fn [x]
+              (f (fn [y]
+                   ((x x) y)))))))
+    ```
 
 **Produces:**
 
