@@ -31,6 +31,8 @@ tar xzf urbit-darwin-v0.8.0.tgz
 ./urbit
 ```
 
+After installation, you'll want to make sure that the `urbit` command is added to your PATH, so that you can run the command from anywhere. To learn how to modify your PATH on macOS, follow [this guide](https://coolestguidesontheplanet.com/add-shell-path-osx/).
+
 ### Linux (64-bit)
 
 We also provide static binaries for 64-bit Linux distributions (Ubuntu, Debian, Fedora, Arch, etc.). You can get the latest stable release similarly:
@@ -45,6 +47,8 @@ To access your Urbit via HTTP on port 80, you may need to run the following:
 `sudo apt-get install libcap2-bin`
 `sudo setcap 'cap_net_bind_service=+ep' $(which urbit)`
 
+After installation, you'll want to make sure that the `urbit` command is added to your PATH, so that you can run the command from anywhere. To learn how to modify your PATH on Linux, follow [this guide](https://opensource.com/article/17/6/set-path-linux).
+
 ### Other
 
 We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs), however we're still in the process of updating it to `v0.8.0`. Once available, you will be able to install and launch it like so:
@@ -53,7 +57,6 @@ We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](htt
 nix-env -i urbit
 urbit
 ```
-
 ## Booting a Ship
 
 One you've completed your installation, you can continue on to the instructions for [booting your ship](@/docs/getting-started/booting-a-ship.md) to get on the Arvo network.

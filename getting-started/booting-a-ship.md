@@ -44,6 +44,10 @@ When your ship is finished booting, you will see the `~sample-planet:dojo>`
 prompt. At that point, you should permanently erase your keyfile from your
 machine.
 
+If the `urbit` command is not found, you may need to add your Urbit folder to your
+PATH. To do so, follow this [macOS PATH guide](https://coolestguidesontheplanet.com/add-shell-path-osx/)
+or this [Linux PATH guide](https://opensource.com/article/17/6/set-path-linux).
+
 ## Basic Operations
 
 Welcome to your ship! There's a few things you should do to become oriented.

@@ -3,7 +3,9 @@ title = "Operating a Star"
 weight = 6
 template = "doc.html"
 +++
-A _ship_ is an instance of the Arvo operating system that is used as a personal server on the Arvo network. Stars are a type of ship that act as infrastructure for the Arvo network. In the Arvo ship-hierarchy, stars are below galaxies and above planets.
+
+
+A _ship_ is an instance of the Arvo operating system that is used as a personal server on the Arvo network. Stars are a type of ship that act as infrastructure for the Arvo network. In the [Arvo ship-hierarchy](/docs/concepts/galaxies-stars-and-planets), stars are below galaxies and above planets.
 
 Parallel to the Arvo network is Azimuth, the Urbit identity system that uses the Ethereum blockchain. All ships must boot with a corresponding _point_ -- an Azimuth identity -- to use the Arvo network.
 
@@ -13,7 +15,7 @@ Important star operations happen on both the Arvo side and the Azimuth side. On 
 
 Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars discover peers for planets, route packets for planets, provide DNS routing for planets, and push software updates to planets. A star that fulfills this is called the **sponsor** of planets that receive such services from the star; those planets, in turn, are called **dependents** of that star.
 
-Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
+Stars are also the "parents" of planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
 
 Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Planets without a sponsor will still be able to message discovered peers until any such peers change their IP addresses.
 
@@ -27,7 +29,23 @@ Below are some handy operations for the use and maintenance of your star.
 
 ### DNS Proxying
 
-Previously star operators needed to run `:dns|ip` in the Dojo in order to set up DNS routing with their parent galaxy. This is no longer required.
+Star operators need to run `:dns|request` in their star's Dojo in order to set up DNS routing with their parent galaxy.
+
+Star (and planet) operators can request a domain name for their ship under as `arvo.network` (so `~marzod` would be `marzod.arvo.network`). For such a request to be made and fulfilled, they must be hosting their ship someplace with a public IP address, and it's http server must be listening on port 80.
+
+If you're a star operator who wants to set up DNS routing with your sponsor galaxy, you must run:
+
+```
+> :dns|request
+```
+
+You'll be prompted to enter the public ip address of the ship. You can also pass the ip address as an argument, using the @if syntax. For example:
+
+```
+> :dns|request .1.2.3.4
+```
+
+To request
 
 ### Maintaining Connectivity
 
