@@ -1081,7 +1081,7 @@ The ++add arm is used to sum two numbers.
 
 **Produces:**
 
-The ++add arm is used to sum two numbers.
+The `++add` arm is used to sum two numbers.
 
 #### Block Code Literal
 
@@ -1129,9 +1129,9 @@ Example:
 
 produces:\
 
-~2017.8.29 \
-0xdead.beef \
-%term
+`~2017.8.29` \
+`0xdead.beef` \
+`%term`
 
 
 ### Horizontal Rule
@@ -1154,9 +1154,13 @@ And below this line, too
 
 
 Above the line
+
 ---
+
 Below the line
+
 -----
+
 And below this line, too
 
 ### Block Quote
