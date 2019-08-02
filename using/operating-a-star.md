@@ -27,7 +27,7 @@ Below are some handy operations for the use and maintenance of your star.
 
 ### DNS Proxying
 
-Previously star operators needed to run `:dns|ip` in the Dojo in order to set up DNS routing with their parent galaxy. This is no longer required.
+We have a system that lets users request a domain name for their star under `arvo.network`, in the form of `shipname.arvo.network`, where `shipname` is their ship's name, so that it can be accessed remotely via our Landscape web interface. To find out how to do this, take a look at the [DNS Proxying](../dns-proxying) documentation.
 
 ### Maintaining Connectivity
 
