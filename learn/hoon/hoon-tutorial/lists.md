@@ -54,7 +54,7 @@ find-fork-d
 ~[2 3 4 5]
 ```
 
-It's important to note that performing tests like `?~ mylist` will actually transform `mylist` in to a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for `list`s.
+It's important to note that performing tests like `?~ mylist` will actually transform `mylist` into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for `list`s.
 
 You can construct lists of any type.  `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
@@ -94,9 +94,9 @@ You can also use the words `cord` and `tape` for casting:
 
 ## List Functions in the Hoon Standard Library
 
-Lists are a commonly used data structure.  Accordingly, there are several functions in the [Hoon standard library](/docs/reference/library/2b/) intended to make lists easier to use.
+Lists are a commonly used data structure.  Accordingly, there are several functions in the [Hoon standard library](/docs/reference/library/) intended to make lists easier to use.
 
-For a complete list of these functions, check out the standard library reference for lists here (link).  Here we'll look at a few of these functions.
+For a complete list of these functions, check out the standard library reference for lists [here](/docs/reference/library/2b/).  Here we'll look at a few of these functions.
 
 ### `flop`
 
@@ -195,6 +195,13 @@ nest-fail
 ```
 
 The problem is that `snag` is expecting a raw list, not a list that is known to be non-null.
+
+You can cast `b` to `(list)` to work around this:
+
+```
+> ?~(b ~ (snag 0 `(list)`b))
+11
+```
 
 #### `snag` exercise
 
