@@ -4,7 +4,7 @@ weight = 2
 template = "doc.html"
 +++
 
-We have a system that lets you request a domain name for their ship in the form of `ship.arvo.network`, where `ship` is your ship's name minus the `~`. This allows users to access their ships remotely using Landscape, our graphical web interface.
+We have a system that lets you request a domain name for your ship in the form of `ship.arvo.network`, where `ship` is your ship's name minus the `~`. This allows users to access their ships remotely using Landscape, our graphical web interface.
 
 Stars and planets follow the same process DNS proxying process, and galaxies have their own requirements. Moons and comets are not supported.
 
