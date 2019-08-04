@@ -770,7 +770,7 @@ parsing.
 ### Headers
 
 Headers in Udon begin the line with one or more `#` characters,
-'followed by a single space. After that space comes the actual text to be
+followed by a single space. After that space comes the actual text to be
 displayed. The number of leading `#`s corresponds to the resulting HTML
 header-size element: `#` yields an `<h1>`, `##` yields an `<h2>`, and so on,
 through `<h6>`. The header for this section is `### Headers`.
