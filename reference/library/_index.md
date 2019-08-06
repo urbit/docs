@@ -318,20 +318,20 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### l
 
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4d/#last'><code>++last</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#le-nl'><code>++le:nl</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lent'><code>++lent</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#levy'><code>++levy</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfe-fl'><code>++lfe:fl</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfn-fl'><code>++lfn:fl</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lien'><code>++lien</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#lift'><code>++lift</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#like'><code>++like</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#limb'><code>++limb</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#limo'><code>++limo</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#line'><code>++line</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#lip-ag'><code>++lip:ag</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#list'><code>++list</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4d/#last' data-tippy-content="Further trace"><code>++last</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#le-nl' data-tippy-content="Construct list from null-terminated noun"><code>++le:nl</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lent' data-tippy-content="List length"><code>++lent</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#levy' data-tippy-content="Logical AND on list"><code>++levy</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfe-fl' data-tippy-content="Maximum"><code>++lfe:fl</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfn-fl' data-tippy-content="Largest normal float"><code>++lfn:fl</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lien' data-tippy-content="Logical OR on list"><code>++lien</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#lift' data-tippy-content="Curried bind"><code>++lift</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#like' data-tippy-content="Generic edge"><code>++like</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#limb' data-tippy-content="Reference into subject by name/axis"><code>++limb</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#limo' data-tippy-content="Construct list from null-terminated tuple"><code>++limo</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#line' data-tippy-content="(Undocumented)"><code>++line</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#lip-ag' data-tippy-content="Parse IPv4 address"><code>++lip:ag</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#list' data-tippy-content="Mold constructor (list)"><code>++list</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#lone'><code>++lone</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2f/#lor'><code>++lor</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4i/#low'><code>++low</code></a>
@@ -836,7 +836,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#bloq' data-tippy-content="Blocksize"><code>++bloq</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#each' data-tippy-content="Mold of fork between two types"><code>++each</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#gate' data-tippy-content="Function"><code>++gate</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#list'><code>++list</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#list' data-tippy-content="Mold constructor (list)"><code>++list</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#lone'><code>++lone</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#pair'><code>++pair</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/1c/#pole'><code>++pole</code></a>
@@ -855,7 +855,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#clap' data-tippy-content="Apply function to two units"><code>++clap</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#drop' data-tippy-content="Unit to list"><code>++drop</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#fall' data-tippy-content="Give unit a default value"><code>++fall</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#lift'><code>++lift</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#lift' data-tippy-content="Curried bind"><code>++lift</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#mate'><code>++mate</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#need'><code>++need</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2a/#some'><code>++some</code></a>
@@ -867,10 +867,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#flop' data-tippy-content="Reverse list"><code>++flop</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#gulf' data-tippy-content="List from range"><code>++gulf</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#homo' data-tippy-content="Homogenize list"><code>++homo</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lent'><code>++lent</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#levy'><code>++levy</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lien'><code>++lien</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#limo'><code>++limo</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lent' data-tippy-content="List length"><code>++lent</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#levy' data-tippy-content="Logical AND on list"><code>++levy</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#lien' data-tippy-content="Logical OR on list"><code>++lien</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#limo' data-tippy-content="Construct list from null-terminated tuple"><code>++limo</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#murn'><code>++murn</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#oust'><code>++oust</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2b/#reap'><code>++reap</code></a>
@@ -1028,7 +1028,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 2m: container from noun
 
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#nl'><code>++nl</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#le-nl'><code>++le:nl</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#le-nl' data-tippy-content="Construct list from null-terminated noun"><code>++le:nl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#my-nl'><code>++my:nl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#si-nl'><code>++si:nl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/2m/#snag-nl'><code>++snag:nl</code></a>
@@ -1159,8 +1159,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#gth-fl' data-tippy-content="Greater than (producing flag)"><code>++gth:fl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#ibl-fl' data-tippy-content="Integer binary logarithm"><code>++ibl:fl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#inv-fl' data-tippy-content="Inverse"><code>++inv:fl</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfe-fl'><code>++lfe:fl</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfn-fl'><code>++lfn:fl</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfe-fl' data-tippy-content="Maximum"><code>++lfe:fl</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lfn-fl' data-tippy-content="Largest normal float"><code>++lfn:fl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lte-fl'><code>++lte:fl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lth-fl'><code>++lth:fl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3b/#lug-fl'><code>++lug:fl</code></a>
@@ -1359,7 +1359,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#dime' data-tippy-content="Aura-atom pair"><code>++dime</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#edge' data-tippy-content="Parsing location metadata"><code>++edge</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#hair' data-tippy-content="Parsing line and column"><code>++hair</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#like'><code>++like</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#like' data-tippy-content="Generic edge"><code>++like</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#nail'><code>++nail</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#path'><code>++path</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/3g/#pint'><code>++pint</code></a>
@@ -1428,7 +1428,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 4d: parsing (tracing)
 
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4d/#last'><code>++last</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4d/#last' data-tippy-content="Further trace"><code>++last</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4d/#lust'><code>++lust</code></a>
 
 ### 4e: parsing (combinators)
@@ -1601,7 +1601,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#dum-ag' data-tippy-content="Parse decimal with leading zero"><code>++dum:ag</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#fed-ag' data-tippy-content="Parse @p"><code>++fed:ag</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#hex-ag' data-tippy-content="Parse hexadecimal number"><code>++hex:ag</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#lip-ag'><code>++lip:ag</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#lip-ag' data-tippy-content="Parse IPv4 address"><code>++lip:ag</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#viz-ag'><code>++viz:ag</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#vum-ag'><code>++vum:ag</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4j/#wiz-ag'><code>++wiz:ag</code></a>
@@ -1673,8 +1673,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#chum' data-tippy-content="Jet hint information"><code>++chum</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#coil' data-tippy-content="Tuple of core information"><code>++coil</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#foot' data-tippy-content="Cases of arms by variance model"><code>++foot</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#limb'><code>++limb</code></a>
-<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#line'><code>++line</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#limb' data-tippy-content="Reference into subject by name/axis"><code>++limb</code></a>
+<a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#line' data-tippy-content="(Undocumented)"><code>++line</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#metl'><code>++metl</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#nock'><code>++nock</code></a>
 <a class="tooltip" href='https://urbit.org/docs/reference/library/4o/#noun'><code>++noun</code></a>
