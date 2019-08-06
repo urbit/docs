@@ -62,8 +62,11 @@ So the two `?&` runes that we used in this code together check the that all thre
 We only went into three "wut" runes in our walkthrough, but there are many others. Here are a few more examples:
 
 `?@` takes three children. It branches on whether its first child is an atom.
+
 `?^` takes three children. It branches on whether its first child is a cell.
+
 `?~` takes three children. It branches on whether its first child is null.
+
 `?|` takes an indefinite number of children. It's the logical "or" operator. It checks if at least one of its children is true.
 
 To see an exhaustive list of "wut" runes, check out the [reference documentation on conditionals](/docs/reference/hoon-expressions/rune/wut/).
