@@ -1,5 +1,5 @@
 +++
-title = "Cells"
+title = "Cells : ("col")"
 weight = 9
 template = "doc.html"
 +++

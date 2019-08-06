@@ -1,5 +1,5 @@
 +++
-title = "Arms"
+title = "Arms + ("lus")"
 weight = 8
 template = "doc.html"
 +++
