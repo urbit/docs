@@ -44,80 +44,80 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### b
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#bal-to'><code>+-bal:to</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bar'><code>++bar</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bas'><code>++bas</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#base'><code>++base</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#bass'><code>++bass</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bay-ag'><code>++bay:ag</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#bean'><code>++bean</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beer'><code>++beer</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beet'><code>++beet</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#bend'><code>++bend</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bet'><code>++bet</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#bex'><code>++bex</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bif-ff'><code>++bif:ff</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#bif-by'><code>+-bif:by</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#bif-in'><code>+-bif:in</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#biff'><code>++biff</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bin'><code>++bin</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bind'><code>++bind</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bip-ag'><code>++bip:ag</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-ff'><code>++bit:ff</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rd'><code>++bit:rd</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rh'><code>++bit:rh</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rs'><code>++bit:rs</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rq'><code>++bit:rq</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bix-ab'><code>++bix:ab</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#bisk-so'><code>++bisk:so</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#bloq'><code>++bloq</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bond'><code>++bond</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#boss'><code>++boss</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#both'><code>++both</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#buc'><code>++buc</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#but'><code>++but</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#bal-to' data-tippy-content="Balance queue"><code>+-bal:to</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bar' data-tippy-content="Parse | (bar)"><code>++bar</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bas' data-tippy-content="Parse \ (bas)"><code>++bas</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#base' data-tippy-content="Base type"><code>++base</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#bass' data-tippy-content="Parser modifier (LSB-ordered ++list as atom of ++base)"><code>++bass</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bay-ag' data-tippy-content="Parses binary number"><code>++bay:ag</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#bean' data-tippy-content="Boolean"><code>++bean</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beer' data-tippy-content="Tape builder"><code>++beer</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beet' data-tippy-content="XML interpolation cases"><code>++beet</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#bend' data-tippy-content="Conditional composer"><code>++bend</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bet' data-tippy-content="Parse hep and lus axis syntax"><code>++bet</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#bex' data-tippy-content="Binary exponent"><code>++bex</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bif-ff' data-tippy-content="Converts from fn to @r"><code>++bif:ff</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#bif-by' data-tippy-content="Bifurcate map"><code>+-bif:by</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#bif-in' data-tippy-content="Bifurcate set"><code>+-bif:in</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#biff' data-tippy-content="Unit as argument"><code>++biff</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bin' data-tippy-content="Binary to atom"><code>++bin</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bind' data-tippy-content="Non-unit function to unit, producing unit"><code>++bind</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bip-ag' data-tippy-content="Parse IPv6"><code>++bip:ag</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-ff' data-tippy-content="fn to @r with rounding"><code>++bit:ff</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rd' data-tippy-content="fn to double-precision binary float"><code>++bit:rd</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rh' data-tippy-content="fn to half-precision float"><code>++bit:rh</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rs' data-tippy-content="fn to single-precision float"><code>++bit:rs</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rq' data-tippy-content="fn to quad-precision float"><code>++bit:rq</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bix-ab' data-tippy-content="Parse hex pair"><code>++bix:ab</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#bisk-so' data-tippy-content="Parse odor-atom pair"><code>++bisk:so</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#bloq' data-tippy-content="Blocksize"><code>++bloq</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bond' data-tippy-content="Replace null"><code>++bond</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#boss' data-tippy-content="Parser modifier: LSB"><code>++boss</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#both' data-tippy-content="Group unit values into pair"><code>++both</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#buc' data-tippy-content="Parse $ (buc)"><code>++buc</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#but' data-tippy-content="Parse binary digit"><code>++but</code></a>
 
 ### c
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cab'><code>++cab</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#can'><code>++can</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/1b.md#cap'><code>++cap</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cass'><code>++cass</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cat'><code>++cat</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cen'><code>++cen</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#cet-yo'><code>++cet:yo</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#char'><code>++char</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#chum'><code>++chum</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#cit'><code>++cit</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#clap'><code>++clap</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#cmp-si'><code>++cmp:si</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#co'><code>++co</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#coil'><code>++coil</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#coin'><code>++coin</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#col'><code>++col</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cold'><code>++cold</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#com'><code>++com</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#comp'><code>++comp</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#con'><code>++con</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cook'><code>++cook</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#cord'><code>++cord</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cork'><code>++cork</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#corl'><code>++corl</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#crip'><code>++crip</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#crub-so'><code>++crub:so</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#cue'><code>++cue</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#curr'><code>++curr</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cury'><code>++cury</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cuss'><code>++cuss</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cut'><code>++cut</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cab' data-tippy-content="Parse _ (cab)"><code>++cab</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#can' data-tippy-content="Assemble"><code>++can</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/1b.md#cap' data-tippy-content="Tree head"><code>++cap</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cass' data-tippy-content="To lowercase"><code>++cass</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cat' data-tippy-content="Concatenate"><code>++cat</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cen' data-tippy-content="Parse % (cen)"><code>++cen</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#cet-yo' data-tippy-content="Days in a century"><code>++cet:yo</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#char' data-tippy-content="Character"><code>++char</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#chum' data-tippy-content="Jet hint information"><code>++chum</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#cit' data-tippy-content="Octal digit"><code>++cit</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#clap' data-tippy-content="Apply function to two units"><code>++clap</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#cmp-si' data-tippy-content="Compare (signed integer)"><code>++cmp:si</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#co' data-tippy-content="Literal rendering engine"><code>++co</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#coil' data-tippy-content="Tuple of core information"><code>++coil</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#coin' data-tippy-content="Noun-literal syntax cases"><code>++coin</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#col' data-tippy-content="Parse : (col)"><code>++col</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cold' data-tippy-content="Replace with constant"><code>++cold</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#com' data-tippy-content="Parse , (com)"><code>++com</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#comp' data-tippy-content="Arbitrary compose"><code>++comp</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#con' data-tippy-content="Binary OR"><code>++con</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cook' data-tippy-content="Apply gate"><code>++cook</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#cord' data-tippy-content="UTF-8 text"><code>++cord</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cork' data-tippy-content="Compose forward"><code>++cork</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#corl' data-tippy-content="Compose backward"><code>++corl</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#crip' data-tippy-content="Tape to cord"><code>++crip</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#crub-so' data-tippy-content="Parse @da, @dr, @p, @t"><code>++crub:so</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#cue' data-tippy-content="Unpack atom to noun"><code>++cue</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#curr' data-tippy-content="Right-curry a gate"><code>++curr</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cury' data-tippy-content="Curry left a gate"><code>++cury</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cuss' data-tippy-content="To uppercase"><code>++cuss</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cut' data-tippy-content="Slice"><code>++cut</code></a>
 
 ### d
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#d-ne'><code>++d:ne</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#date'><code>++date</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#day-yo'><code>++day:yo</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#dec'><code>++dec</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#def-by'><code>+-def:by</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#d-ne' data-tippy-content="Render decimal"><code>++d:ne</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#date' data-tippy-content="Point in time"><code>++date</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#day-yo' data-tippy-content="Seconds in day"><code>++day:yo</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#dec' data-tippy-content="Decrement"><code>++dec</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#def-by' data-tippy-content="Difference (map)"><code>+-def:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#del-by'><code>+-del:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#del-in'><code>+-del:in</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2j.md#del-ju'><code>+-del:ju</code></a>
@@ -812,7 +812,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 1a: basic arithmetic
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#add' data-tippy-content="Add"><code>++add</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#dec'><code>++dec</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#dec' data-tippy-content="Decrement"><code>++dec</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#div'><code>++div</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#dvr'><code>++dvr</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1a.md#gte'><code>++gte</code></a>
@@ -827,13 +827,13 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 1b: tree addressing
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/1b.md#cap'><code>++cap</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/1b.md#cap' data-tippy-content="Tree head"><code>++cap</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1b.md#mas'><code>++mas</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1b.md#peg'><code>++peg</code></a>
 
 ### 1c: molds and mold builders
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#bloq'><code>++bloq</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#bloq' data-tippy-content="Blocksize"><code>++bloq</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#each'><code>++each</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#gate'><code>++gate</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/1c.md#list'><code>++list</code></a>
@@ -848,11 +848,11 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 2a: unit logic
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#biff'><code>++biff</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bind'><code>++bind</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bond'><code>++bond</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#both'><code>++both</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#clap'><code>++clap</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#biff' data-tippy-content="Unit as argument"><code>++biff</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bind' data-tippy-content="Non-unit function to unit, producing unit"><code>++bind</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#bond' data-tippy-content="Replace null"><code>++bond</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#both' data-tippy-content="Group unit values into pair"><code>++both</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#clap' data-tippy-content="Apply function to two units"><code>++clap</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#drop'><code>++drop</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#fall'><code>++fall</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2a.md#lift'><code>++lift</code></a>
@@ -904,10 +904,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#sit-fe'><code>++sit:fe</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#sum-fe'><code>++sum:fe</code></a>
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#bex'><code>++bex</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#can'><code>++can</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cat'><code>++cat</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cut'><code>++cut</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#bex' data-tippy-content="Binary exponent"><code>++bex</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#can' data-tippy-content="Assemble"><code>++can</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cat' data-tippy-content="Concatenate"><code>++cat</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#cut' data-tippy-content="Slice"><code>++cut</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#end'><code>++end</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#fil'><code>++fil</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2c.md#lsh'><code>++lsh</code></a>
@@ -921,7 +921,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 2d: bit logic
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#con'><code>++con</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#con' data-tippy-content="Binary OR"><code>++con</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#dis'><code>++dis</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#mix'><code>++mix</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2d.md#not'><code>++not</code></a>
@@ -953,7 +953,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#all-in' data-tippy-content="Logical AND (set and wet gate)"><code>+-all:in</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#any-in' data-tippy-content="Logical OR (set and gate)"><code>+-any:in</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#apt-in' data-tippy-content="Check correctness (set)"><code>+-apt:in</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#bif-in'><code>+-bif:in</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#bif-in' data-tippy-content="Bifurcate set"><code>+-bif:in</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#del-in'><code>+-del:in</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#dif-in'><code>+-dif:in</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2h.md#dig-in'><code>+-dig:in</code></a>
@@ -973,8 +973,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#all-by' data-tippy-content="Logical AND (map and wet gate)"><code>+-all:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#any-by' data-tippy-content="Logical OR (map and wet gate)"><code>+-any:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#apt-by' data-tippy-content="Check correctness (map)"><code>+-apt:by</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#bif-by'><code>+-bif:by</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#def-by'><code>+-def:by</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#bif-by' data-tippy-content="Bifurcate map"><code>+-bif:by</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#def-by' data-tippy-content="Difference (map)"><code>+-def:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#del-by'><code>+-del:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#dep-by'><code>+-dep:by</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2i.md#dig-by'><code>+-dig:by</code></a>
@@ -1009,7 +1009,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 2k: queue logic
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#to'><code>++to</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#bal-to'><code>+-bal:to</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#bal-to' data-tippy-content="Balance queue"><code>+-bal:to</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#dep-to'><code>+-dep:to</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#gas-to'><code>+-gas:to</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2k.md#get-to'><code>+-get:to</code></a>
@@ -1040,10 +1040,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 2n: functional hacks
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cork'><code>++cork</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#corl'><code>++corl</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#curr'><code>++curr</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cury'><code>++cury</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cork' data-tippy-content="Compose forward"><code>++cork</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#corl' data-tippy-content="Compose backward"><code>++corl</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#curr' data-tippy-content="Right-curry a gate"><code>++curr</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#cury' data-tippy-content="Curry left a gate"><code>++cury</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#hard'><code>++hard</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#head'><code>++head</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2n.md#mean'><code>++mean</code></a>
@@ -1063,16 +1063,16 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 2p: serialization
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#cue'><code>++cue</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#cue' data-tippy-content="Unpack atom to noun"><code>++cue</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#jam'><code>++jam</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#mat'><code>++mat</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2p.md#rub'><code>++rub</code></a>
 
 ### 2q: molds and mold builders
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#char'><code>++char</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#cord'><code>++cord</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#date'><code>++date</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#char' data-tippy-content="Character"><code>++char</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#cord' data-tippy-content="UTF-8 text"><code>++cord</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#date' data-tippy-content="Point in time"><code>++date</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#knot'><code>++knot</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#tang'><code>++tang</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/2q.md#tank'><code>++tank</code></a>
@@ -1095,7 +1095,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#si'><code>++si</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#abs-si' data-tippy-content="Absolute value (signed integer)"><code>++abs:si</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#cmp-si'><code>++cmp:si</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#cmp-si' data-tippy-content="Compare (signed integer)"><code>++cmp:si</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#dif-si'><code>++dif:si</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#dul-si'><code>++dul:si</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3a.md#fra-si'><code>++fra:si</code></a>
@@ -1117,8 +1117,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#ff'><code>++ff</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#add-ff' data-tippy-content="Add (floating point)"><code>++add:ff</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bif-ff'><code>++bif:ff</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-ff'><code>++bit:ff</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bif-ff' data-tippy-content="Converts from fn to @r"><code>++bif:ff</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-ff' data-tippy-content="fn to @r with rounding"><code>++bit:ff</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#div-ff'><code>++div:ff</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#drg-ff'><code>++drg:ff</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#equ-ff'><code>++equ:ff</code></a>
@@ -1186,7 +1186,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#rd'><code>++rd</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#add-rd' data-tippy-content="Add (double-precision float)"><code>++add:rd</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rd'><code>++bit:rd</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rd' data-tippy-content="fn to double-precision binary float"><code>++bit:rd</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#div-rd'><code>++div:rd</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#drg-rd'><code>++drg:rd</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#equ-rd'><code>++equ:rd</code></a>
@@ -1209,7 +1209,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#rh'><code>++rh</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#add-rh' data-tippy-content="Add (half-precision float)"><code>++add:rh</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rh'><code>++bit:rh</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rh' data-tippy-content="fn to half-precision float"><code>++bit:rh</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#div-rh'><code>++div:rh</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#drg-rh'><code>++drg:rh</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#equ-rh'><code>++equ:rh</code></a>
@@ -1234,7 +1234,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#rs'><code>++rs</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#add-rs' data-tippy-content="Add (single-precision float)"><code>++add:rs</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rs'><code>++bit:rs</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rs' data-tippy-content="fn to single-precision float"><code>++bit:rs</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#div-rs'><code>++div:rs</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#drg-rs'><code>++drg:rs</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#equ-rs'><code>++equ:rs</code></a>
@@ -1257,7 +1257,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#rq'><code>++rq</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#add-rq' data-tippy-content="Add (quad-precision float)"><code>++add:rq</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rq'><code>++bit:rq</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#bit-rq' data-tippy-content="fn to quad-precision float"><code>++bit:rq</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#div-rq'><code>++div:rq</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#drg-rq'><code>++drg:rq</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3b.md#equ-rq'><code>++equ:rq</code></a>
@@ -1290,8 +1290,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 3c: urbit time
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#yo'><code>++yo</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#cet-yo'><code>++cet:yo</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#day-yo'><code>++day:yo</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#cet-yo' data-tippy-content="Days in a century"><code>++cet:yo</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#day-yo' data-tippy-content="Seconds in day"><code>++day:yo</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#era-yo'><code>++era:yo</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#hor-yo'><code>++hor:yo</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3c.md#jes-yo'><code>++jes:yo</code></a>
@@ -1355,7 +1355,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 3g: molds and mold builders
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#coin'><code>++coin</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#coin' data-tippy-content="Noun-literal syntax cases"><code>++coin</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#dime'><code>++dime</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#edge'><code>++edge</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/3g.md#hair'><code>++hair</code></a>
@@ -1393,9 +1393,9 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#ruv-at'><code>++ruv:at</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#rux-at'><code>++rux:at</code></a>
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cass'><code>++cass</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#crip'><code>++crip</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cuss'><code>++cuss</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cass' data-tippy-content="To lowercase"><code>++cass</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#crip' data-tippy-content="Tape to cord"><code>++crip</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#cuss' data-tippy-content="To uppercase"><code>++cuss</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#mesc'><code>++mesc</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#runt'><code>++runt</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4b.md#sand'><code>++sand</code></a>
@@ -1433,8 +1433,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 4e: parsing (combinators)
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#bend'><code>++bend</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#comp'><code>++comp</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#bend' data-tippy-content="Conditional composer"><code>++bend</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#comp' data-tippy-content="Arbitrary compose"><code>++comp</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#fail'><code>++fail</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#glue'><code>++glue</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4e.md#less'><code>++less</code></a>
@@ -1446,10 +1446,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 4f: parsing (rule builders)
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#bass'><code>++bass</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#boss'><code>++boss</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cold'><code>++cold</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cook'><code>++cook</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#bass' data-tippy-content="Parser modifier (LSB-ordered ++list as atom of ++base)"><code>++bass</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#boss' data-tippy-content="Parser modifier: LSB"><code>++boss</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cold' data-tippy-content="Replace with constant"><code>++cold</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#cook' data-tippy-content="Apply gate"><code>++cook</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#easy'><code>++easy</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#full'><code>++full</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4f.md#funk'><code>++funk</code></a>
@@ -1483,13 +1483,13 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 4h: parsing (ascii glyphs)
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#ace' data-tippy-content="Parse space"><code>++ace</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bar'><code>++bar</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bas'><code>++bas</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#buc'><code>++buc</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cab'><code>++cab</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cen'><code>++cen</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#col'><code>++col</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#com'><code>++com</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bar' data-tippy-content="Parse | (bar)"><code>++bar</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#bas' data-tippy-content="Parse \ (bas)"><code>++bas</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#buc' data-tippy-content="Parse $ (buc)"><code>++buc</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cab' data-tippy-content="Parse _ (cab)"><code>++cab</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#cen' data-tippy-content="Parse % (cen)"><code>++cen</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#col' data-tippy-content="Parse : (col)"><code>++col</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#com' data-tippy-content="Parse , (comma)"><code>++com</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#doq'><code>++doq</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#dot'><code>++dot</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4h.md#fas'><code>++fas</code></a>
@@ -1521,10 +1521,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#alf' data-tippy-content="Parse alphabetic characters"><code>++alf</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#aln' data-tippy-content="Parse alphanumeric characters"><code>++aln</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#alp' data-tippy-content="Parse alphanumeric characters and -"><code>++alp</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bet'><code>++bet</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bin'><code>++bin</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#but'><code>++but</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#cit'><code>++cit</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bet' data-tippy-content="Parse hep and lus axis syntax"><code>++bet</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#bin' data-tippy-content="Binary to atom"><code>++bin</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#but' data-tippy-content="Parse binary digit"><code>++but</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#cit' data-tippy-content="Octal digit"><code>++cit</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#dem'><code>++dem</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#dit'><code>++dit</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4i.md#dog'><code>++dog</code></a>
@@ -1558,7 +1558,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 4j: parsing (bases and base digits)
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#ab' data-tippy-content="Primitive parser engine"><code>++ab</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bix-ab'><code>++bix:ab</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bix-ab' data-tippy-content="Parse hex pair"><code>++bix:ab</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#hif-ab'><code>++hif:ab</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#huf-ab'><code>++huf:ab</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#hyf-ab'><code>++hyf:ab</code></a>
@@ -1594,8 +1594,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#ag' data-tippy-content="Top-level atom parser engine"><code>++ag</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#ape-ag' data-tippy-content="Parse 0 or rule"><code>++ape:ag</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bay-ag'><code>++bay:ag</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bip-ag'><code>++bip:ag</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bay-ag' data-tippy-content="Parses binary number"><code>++bay:ag</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#bip-ag' data-tippy-content="Parse IPv6"><code>++bip:ag</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#dem-ag'><code>++dem:ag</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#dim-ag'><code>++dim:ag</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#dum-ag'><code>++dum:ag</code></a>
@@ -1612,14 +1612,14 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#zug-mu'><code>++zug:mu</code></a>
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#ne'><code>++ne</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#d-ne'><code>++d:ne</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#d-ne' data-tippy-content="Render decimal"><code>++d:ne</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#v-ne'><code>++v:ne</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#w-ne'><code>++w:ne</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4j.md#x-ne'><code>++x:ne</code></a>
 
 ### 4k: parsing (atom printing)
 
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#co'><code>++co</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#co' data-tippy-content="Literal rendering engine"><code>++co</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#rear-co'><code>++rear:co</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#rend-co'><code>++rend:co</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4k.md#rent-co'><code>++rent:co</code></a>
@@ -1627,8 +1627,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 4l: parsing (atom parsing)
 
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#so'><code>++so</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#bisk-so'><code>++bisk:so</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#crub-so'><code>++crub:so</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#bisk-so' data-tippy-content="Parse odor-atom pair"><code>++bisk:so</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#crub-so' data-tippy-content="Parse @da, @dr, @p, @t"><code>++crub:so</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#nuck-so'><code>++nuck:so</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#nusk-so'><code>++nusk:so</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4l.md#perd-so'><code>++perd:so</code></a>
@@ -1666,12 +1666,12 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#abel' data-tippy-content="Compiler alias"><code>++abel</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#aura' data-tippy-content="'Type' of atom"><code>++aura</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#axis' data-tippy-content="Nock axis"><code>++axis</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#base'><code>++base</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#bean'><code>++bean</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beer'><code>++beer</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beet'><code>++beet</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#chum'><code>++chum</code></a>
-<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#coil'><code>++coil</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#base' data-tippy-content="Base type"><code>++base</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#bean' data-tippy-content="Boolean"><code>++bean</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beer' data-tippy-content="Tape builder"><code>++beer</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#beet' data-tippy-content="XML interpolation cases"><code>++beet</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#chum' data-tippy-content="Jet hint information"><code>++chum</code></a>
+<a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#coil' data-tippy-content="Tuple of core information"><code>++coil</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#foot'><code>++foot</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#limb'><code>++limb</code></a>
 <a class="stdlib" href='https://urbit.org/docs/reference/library/4o.md#line'><code>++line</code></a>
