@@ -27,7 +27,7 @@ Like with real-life infrastructure, the operation of Arvo infrastructure comes w
 
 Below are some handy operations for the use and maintenance of your star.
 
-### DNS Proxying
+### arvo.network DNS Records
 
 Star operators need to run `:dns|request` in their star's Dojo in order to set up DNS routing with their parent galaxy.
 
@@ -39,13 +39,11 @@ If you're a star operator who wants to set up DNS routing with your sponsor gala
 > :dns|request
 ```
 
-You'll be prompted to enter the public ip address of the ship. You can also pass the ip address as an argument, using the @if syntax. For example:
+You'll be prompted to enter the public ip address of the ship. You can also pass the ip address as an argument, using the `@if` syntax. For example:
 
 ```
 > :dns|request .1.2.3.4
 ```
-
-To request
 
 ### Maintaining Connectivity
 
