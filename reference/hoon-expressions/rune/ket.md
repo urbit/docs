@@ -1,5 +1,5 @@
 +++
-title = "Casts"
+title = "Casts ^ ("ket")"
 weight = 11
 template = "doc.html"
 +++

@@ -1,5 +1,5 @@
 +++
-title = "Wild"
+title = "Wild ! ("zap")"
 weight = 4
 template = "doc.html"
 +++

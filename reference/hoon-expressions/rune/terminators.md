@@ -1,5 +1,5 @@
 +++
-title = "Terminators"
+title = "Terminators -- and =="
 weight = 15
 template = "doc.html"
 +++

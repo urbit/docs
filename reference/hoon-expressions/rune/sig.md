@@ -1,5 +1,5 @@
 +++
-title = "Hints"
+title = "Hints ~ ("sig")"
 weight = 14
 template = "doc.html"
 +++
