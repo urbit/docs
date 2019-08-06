@@ -13,1718 +13,1718 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### a
 
-[`++ab`](@/docs/reference/library/4j.md#ab)
-[`++abs:fl`](@/docs/reference/library/3b.md#abs-fl)
-[`++abs:si`](@/docs/reference/library/3a.md#abs-si)
-[`++abel`](@/docs/reference/library/4o.md#abel)
-[`++ace`](@/docs/reference/library/4h.md#ace)
-[`++add`](@/docs/reference/library/1a.md#add)
-[`++add:ff`](@/docs/reference/library/3b.md#add-ff)
-[`++add:fl`](@/docs/reference/library/3b.md#add-fl)
-[`+-add:ja`](@/docs/reference/library/2j.md#add-ja)
-[`++add:rd`](@/docs/reference/library/3b.md#add-rd)
-[`++add:rh`](@/docs/reference/library/3b.md#add-rh)
-[`++add:rs`](@/docs/reference/library/3b.md#add-rs)
-[`++add:rq`](@/docs/reference/library/3b.md#add-rq)
-[`++ag`](@/docs/reference/library/4j.md#ag)
-[`++alf`](@/docs/reference/library/4i.md#alf)
-[`+-all:by`](@/docs/reference/library/2i.md#all-by)
-[`+-all:in`](@/docs/reference/library/2h.md#all-in)
-[`++aln`](@/docs/reference/library/4i.md#aln)
-[`++alp`](@/docs/reference/library/4i.md#alp)
-[`+-any:by`](@/docs/reference/library/2i.md#any-by)
-[`+-any:in`](@/docs/reference/library/2h.md#any-in)
-[`++aor`](@/docs/reference/library/2f.md#aor)
-[`++ape:ag`](@/docs/reference/library/4j.md#ape-ag)
-[`+-apt:by`](@/docs/reference/library/2i.md#apt-by)
-[`+-apt:in`](@/docs/reference/library/2h.md#apt-in)
-[`++at`](@/docs/reference/library/4b.md#at)
-[`++aura`](@/docs/reference/library/4o.md#aura)
-[`++axis`](@/docs/reference/library/4o.md#axis)
+<a href='https://urbit.org/docs/reference/library/4j.md#ab' data-tippy-content="Primitive parser engine"><code>++ab</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#abs-fl' data-tippy-content="Absolute value"><code>++abs:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#abs-si' data-tippy-content="Absolute value (signed integer)"><code>++abs:si</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#abel' data-tippy-content="Compiler alias"><code>++abel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ace' data-tippy-content="Parse space"><code>++ace</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#add' data-tippy-content="Add"><code>++add</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-ff' data-tippy-content="Add (floating point)"><code>++add:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-fl' data-tippy-content="Add (with exact/rounded flag)"><code>++add:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#add-ja' data-tippy-content="Prepend to list"><code>+-add:ja</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rd' data-tippy-content="Add (double-precision float)"><code>++add:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rh' data-tippy-content="Add (half-precision float)"><code>++add:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rs' data-tippy-content="Add (single-precision float)"><code>++add:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rq' data-tippy-content="Add (quad-precision float)"><code>++add:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#ag' data-tippy-content="Top-level atom parser engine"><code>++ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#alf' data-tippy-content="Parse alphabetic characters"><code>++alf</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#all-by' data-tippy-content="Logical AND (map and wet gate)"><code>+-all:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#all-in' data-tippy-content="Logical AND (set and wet gate)"><code>+-all:in</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#aln' data-tippy-content="Parse alphanumeric characters"><code>++aln</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#alp' data-tippy-content="Parse alphanumeric characters and -"><code>++alp</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#any-by' data-tippy-content="Logical OR (map and wet gate)"><code>+-any:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#any-in' data-tippy-content="Logical OR (set and gate)"><code>+-any:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#aor' data-tippy-content="Alphabetical order"><code>++aor</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#ape-ag' data-tippy-content="Parse 0 or rule"><code>++ape:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#apt-by' data-tippy-content="Check correctness (map)"><code>+-apt:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#apt-in' data-tippy-content="Check correctness (set)"><code>+-apt:in</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#at' data-tippy-content="(Undocumented)"><code>++at</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#aura' data-tippy-content="'Type' of atom"><code>++aura</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#axis' data-tippy-content="Nock axis"><code>++axis</code></a>
 
 ### b
 
-[`+-bal:to`](@/docs/reference/library/2k.md#bal-to)
-[`++bar`](@/docs/reference/library/4h.md#bar)
-[`++bas`](@/docs/reference/library/4h.md#bas)
-[`++base`](@/docs/reference/library/4o.md#base)
-[`++bass`](@/docs/reference/library/4f.md#bass)
-[`++bay:ag`](@/docs/reference/library/4j.md#bay-ag)
-[`++bean`](@/docs/reference/library/4o.md#bean)
-[`++beer`](@/docs/reference/library/4o.md#beer)
-[`++beet`](@/docs/reference/library/4o.md#beet)
-[`++bend`](@/docs/reference/library/4e.md#bend)
-[`++bet`](@/docs/reference/library/4i.md#bet)
-[`++bex`](@/docs/reference/library/2c.md#bex)
-[`++bif:ff`](@/docs/reference/library/3b.md#bif-ff)
-[`+-bif:by`](@/docs/reference/library/2i.md#bif-by)
-[`+-bif:in`](@/docs/reference/library/2h.md#bif-in)
-[`++biff`](@/docs/reference/library/2a.md#biff)
-[`++bin`](@/docs/reference/library/4i.md#bin)
-[`++bind`](@/docs/reference/library/2a.md#bind)
-[`++bip:ag`](@/docs/reference/library/4j.md#bip-ag)
-[`++bit:ff`](@/docs/reference/library/3b.md#bit-ff)
-[`++bit:rd`](@/docs/reference/library/3b.md#bit-rd)
-[`++bit:rh`](@/docs/reference/library/3b.md#bit-rh)
-[`++bit:rs`](@/docs/reference/library/3b.md#bit-rs)
-[`++bit:rq`](@/docs/reference/library/3b.md#bit-rq)
-[`++bix:ab`](@/docs/reference/library/4j.md#bix-ab)
-[`++bisk:so`](@/docs/reference/library/4l.md#bisk-so)
-[`++bloq`](@/docs/reference/library/1c.md#bloq)
-[`++bond`](@/docs/reference/library/2a.md#bond)
-[`++boss`](@/docs/reference/library/4f.md#boss)
-[`++both`](@/docs/reference/library/2a.md#both)
-[`++buc`](@/docs/reference/library/4h.md#buc)
-[`++but`](@/docs/reference/library/4i.md#but)
+<a href='https://urbit.org/docs/reference/library/2k.md#bal-to'><code>+-bal:to</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#bar'><code>++bar</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#bas'><code>++bas</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#base'><code>++base</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#bass'><code>++bass</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#bay-ag'><code>++bay:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#bean'><code>++bean</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#beer'><code>++beer</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#beet'><code>++beet</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#bend'><code>++bend</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#bet'><code>++bet</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#bex'><code>++bex</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bif-ff'><code>++bif:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#bif-by'><code>+-bif:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#bif-in'><code>+-bif:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#biff'><code>++biff</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#bin'><code>++bin</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#bind'><code>++bind</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#bip-ag'><code>++bip:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-ff'><code>++bit:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rd'><code>++bit:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rh'><code>++bit:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rs'><code>++bit:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rq'><code>++bit:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#bix-ab'><code>++bix:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#bisk-so'><code>++bisk:so</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#bloq'><code>++bloq</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#bond'><code>++bond</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#boss'><code>++boss</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#both'><code>++both</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#buc'><code>++buc</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#but'><code>++but</code></a>
 
 ### c
 
-[`++cab`](@/docs/reference/library/4h.md#cab)
-[`++can`](@/docs/reference/library/2c.md#can)
-[`++cap`](@/docs/reference/library/1b.md#cap)
-[`++cass`](@/docs/reference/library/4b.md#cass)
-[`++cat`](@/docs/reference/library/2c.md#cat)
-[`++cen`](@/docs/reference/library/4h.md#cen)
-[`++cet:yo`](@/docs/reference/library/3c.md#cet-yo)
-[`++char`](@/docs/reference/library/2q.md#char)
-[`++chum`](@/docs/reference/library/4o.md#chum)
-[`++cit`](@/docs/reference/library/4i.md#cit)
-[`++clap`](@/docs/reference/library/2a.md#clap)
-[`++cmp:si`](@/docs/reference/library/3a.md#cmp-si)
-[`++co`](@/docs/reference/library/4k.md#co)
-[`++coil`](@/docs/reference/library/4o.md#coil)
-[`++coin`](@/docs/reference/library/3g.md#coin)
-[`++col`](@/docs/reference/library/4h.md#col)
-[`++cold`](@/docs/reference/library/4f.md#cold)
-[`++com`](@/docs/reference/library/4h.md#com)
-[`++comp`](@/docs/reference/library/4e.md#comp)
-[`++con`](@/docs/reference/library/2d.md#con)
-[`++cook`](@/docs/reference/library/4f.md#cook)
-[`++cord`](@/docs/reference/library/2q.md#cord)
-[`++cork`](@/docs/reference/library/2n.md#cork)
-[`++corl`](@/docs/reference/library/2n.md#corl)
-[`++crip`](@/docs/reference/library/4b.md#crip)
-[`++crub:so`](@/docs/reference/library/4l.md#crub-so)
-[`++cue`](@/docs/reference/library/2p.md#cue)
-[`++curr`](@/docs/reference/library/2n.md#curr)
-[`++cury`](@/docs/reference/library/2n.md#cury)
-[`++cuss`](@/docs/reference/library/4b.md#cuss)
-[`++cut`](@/docs/reference/library/2c.md#cut)
+<a href='https://urbit.org/docs/reference/library/4h.md#cab'><code>++cab</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#can'><code>++can</code></a>
+<a href='https://urbit.org/docs/reference/library/1b.md#cap'><code>++cap</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#cass'><code>++cass</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#cat'><code>++cat</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#cen'><code>++cen</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#cet-yo'><code>++cet:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#char'><code>++char</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#chum'><code>++chum</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#cit'><code>++cit</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#clap'><code>++clap</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#cmp-si'><code>++cmp:si</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#co'><code>++co</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#coil'><code>++coil</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#coin'><code>++coin</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#col'><code>++col</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#cold'><code>++cold</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#com'><code>++com</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#comp'><code>++comp</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#con'><code>++con</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#cook'><code>++cook</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#cord'><code>++cord</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#cork'><code>++cork</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#corl'><code>++corl</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#crip'><code>++crip</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#crub-so'><code>++crub:so</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#cue'><code>++cue</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#curr'><code>++curr</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#cury'><code>++cury</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#cuss'><code>++cuss</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#cut'><code>++cut</code></a>
 
 ### d
 
-[`++d:ne`](@/docs/reference/library/4j.md#d-ne)
-[`++date`](@/docs/reference/library/2q.md#date)
-[`++day:yo`](@/docs/reference/library/3c.md#day-yo)
-[`++dec`](@/docs/reference/library/1a.md#dec)
-[`+-def:by`](@/docs/reference/library/2i.md#def-by)
-[`+-del:by`](@/docs/reference/library/2i.md#del-by)
-[`+-del:in`](@/docs/reference/library/2h.md#del-in)
-[`+-del:ju`](@/docs/reference/library/2j.md#del-ju)
-[`++dem`](@/docs/reference/library/4i.md#dem)
-[`++dem:ag`](@/docs/reference/library/4j.md#dem-ag)
-[`++den:fl`](@/docs/reference/library/3b.md#den-fl)
-[`+-dep:by`](@/docs/reference/library/2i.md#dep-by)
-[`+-dep:to`](@/docs/reference/library/2k.md#dep-to)
-[`++dif:fe`](@/docs/reference/library/2c.md#dif-fe)
-[`++dif:fo`](@/docs/reference/library/3a.md#dif-fo)
-[`+-dif:in`](@/docs/reference/library/2h.md#dif-in)
-[`++dif:si`](@/docs/reference/library/3a.md#dif-si)
-[`+-dig:by`](@/docs/reference/library/2i.md#dig-by)
-[`+-dig:in`](@/docs/reference/library/2h.md#dig-in)
-[`++dim:ag`](@/docs/reference/library/4j.md#dim-ag)
-[`++dime`](@/docs/reference/library/3g.md#dime)
-[`++din:re`](@/docs/reference/library/4c.md#din-re)
-[`++dis`](@/docs/reference/library/2d.md#dis)
-[`++dit`](@/docs/reference/library/4i.md#dit)
-[`++div`](@/docs/reference/library/1a.md#div)
-[`++div:ff`](@/docs/reference/library/3b.md#div-ff)
-[`++div:fl`](@/docs/reference/library/3b.md#div-fl)
-[`++div:rd`](@/docs/reference/library/3b.md#div-rd)
-[`++div:rh`](@/docs/reference/library/3b.md#div-rh)
-[`++div:rs`](@/docs/reference/library/3b.md#div-rs)
-[`++div:rq`](@/docs/reference/library/3b.md#div-rq)
-[`++dog`](@/docs/reference/library/4i.md#dog)
-[`++doh`](@/docs/reference/library/4i.md#doh)
-[`++doq`](@/docs/reference/library/4h.md#doq)
-[`++dor`](@/docs/reference/library/2f.md#dor)
-[`++dot`](@/docs/reference/library/4h.md#dot)
-[`++drg:ff`](@/docs/reference/library/3b.md#drg-ff)
-[`++drg:fl`](@/docs/reference/library/3b.md#drg-fl)
-[`++drg:rd`](@/docs/reference/library/3b.md#drg-rd)
-[`++drg:rh`](@/docs/reference/library/3b.md#drg-rh)
-[`++drg:rs`](@/docs/reference/library/3b.md#drg-rs)
-[`++drg:rq`](@/docs/reference/library/3b.md#drg-rq)
-[`++drop`](@/docs/reference/library/2a.md#drop)
-[`++dul:si`](@/docs/reference/library/3a.md#dul-si)
-[`++dum:ag`](@/docs/reference/library/4j.md#dum-ag)
-[`++dun`](@/docs/reference/library/4i.md#dun)
-[`++duz`](@/docs/reference/library/4i.md#duz)
-[`++dvr`](@/docs/reference/library/1a.md#dvr)
+<a href='https://urbit.org/docs/reference/library/4j.md#d-ne'><code>++d:ne</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#date'><code>++date</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#day-yo'><code>++day:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#dec'><code>++dec</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#def-by'><code>+-def:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#del-by'><code>+-del:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#del-in'><code>+-del:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#del-ju'><code>+-del:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dem'><code>++dem</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#dem-ag'><code>++dem:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#den-fl'><code>++den:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#dep-by'><code>+-dep:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#dep-to'><code>+-dep:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#dif-fe'><code>++dif:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#dif-fo'><code>++dif:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#dif-in'><code>+-dif:in</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#dif-si'><code>++dif:si</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#dig-by'><code>+-dig:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#dig-in'><code>+-dig:in</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#dim-ag'><code>++dim:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#dime'><code>++dime</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#din-re'><code>++din:re</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#dis'><code>++dis</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dit'><code>++dit</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#div'><code>++div</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-ff'><code>++div:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-fl'><code>++div:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rd'><code>++div:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rh'><code>++div:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rs'><code>++div:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rq'><code>++div:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dog'><code>++dog</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#doh'><code>++doh</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#doq'><code>++doq</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#dor'><code>++dor</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#dot'><code>++dot</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-ff'><code>++drg:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-fl'><code>++drg:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rd'><code>++drg:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rh'><code>++drg:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rs'><code>++drg:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rq'><code>++drg:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#drop'><code>++drop</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#dul-si'><code>++dul:si</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#dum-ag'><code>++dum:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dun'><code>++dun</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#duz'><code>++duz</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#dvr'><code>++dvr</code></a>
 
 ### e
 
-[`++ead:fl`](@/docs/reference/library/3b.md#ead-fl)
-[`++each`](@/docs/reference/library/1c.md#each)
-[`++easy`](@/docs/reference/library/4f.md#easy)
-[`++edge`](@/docs/reference/library/3g.md#edge)
-[`++egcd`](@/docs/reference/library/3a.md#egcd)
-[`++emn:fl`](@/docs/reference/library/3b.md#emn-fl)
-[`++emu:fl`](@/docs/reference/library/3b.md#emu-fl)
-[`++emx:fl`](@/docs/reference/library/3b.md#emx-fl)
-[`++end`](@/docs/reference/library/2c.md#end)
-[`++equ:ff`](@/docs/reference/library/3b.md#equ-ff)
-[`++equ:fl`](@/docs/reference/library/3b.md#equ-fl)
-[`++equ:rd`](@/docs/reference/library/3b.md#equ-rd)
-[`++equ:rh`](@/docs/reference/library/3b.md#equ-rh)
-[`++equ:rs`](@/docs/reference/library/3b.md#equ-rs)
-[`++equ:rq`](@/docs/reference/library/3b.md#equ-rq)
-[`++era:yo`](@/docs/reference/library/3c.md#era-yo)
-[`++exp:ff`](@/docs/reference/library/3b.md#exp-ff)
-[`++exp:fo`](@/docs/reference/library/3a.md#exp-fo)
-[`++exp:rd`](@/docs/reference/library/3b.md#exp-rd)
-[`++exp:rh`](@/docs/reference/library/3b.md#exp-rh)
-[`++exp:rs`](@/docs/reference/library/3b.md#exp-rs)
-[`++exp:rq`](@/docs/reference/library/3b.md#exp-rq)
+<a href='https://urbit.org/docs/reference/library/3b.md#ead-fl'><code>++ead:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#each'><code>++each</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#easy'><code>++easy</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#edge'><code>++edge</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#egcd'><code>++egcd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#emn-fl'><code>++emn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#emu-fl'><code>++emu:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#emx-fl'><code>++emx:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#end'><code>++end</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-ff'><code>++equ:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-fl'><code>++equ:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rd'><code>++equ:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rh'><code>++equ:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rs'><code>++equ:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rq'><code>++equ:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#era-yo'><code>++era:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-ff'><code>++exp:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#exp-fo'><code>++exp:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rd'><code>++exp:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rh'><code>++exp:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rs'><code>++exp:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rq'><code>++exp:rq</code></a>
 
 ### f
 
-[`++fail`](@/docs/reference/library/4e.md#fail)
-[`++fall`](@/docs/reference/library/2a.md#fall)
-[`++fand`](@/docs/reference/library/2b.md#fand)
-[`++fas`](@/docs/reference/library/4h.md#fas)
-[`++fe`](@/docs/reference/library/2c.md#fe)
-[`++fed:ag`](@/docs/reference/library/4j.md#fed-ag)
-[`++feen:ob`](@/docs/reference/library/3f.md#feen-ob)
-[`++fend:ob`](@/docs/reference/library/3f.md#fend-ob)
-[`++fice:ob`](@/docs/reference/library/3f.md#fice-ob)
-[`++fil`](@/docs/reference/library/2c.md#fil)
-[`++find`](@/docs/reference/library/2b.md#find)
-[`++fit:re`](@/docs/reference/library/4c.md#fit-re)
-[`++fli:fl`](@/docs/reference/library/3b.md#fli-fl)
-[`++flop`](@/docs/reference/library/2b.md#flop)
-[`++fma:ff`](@/docs/reference/library/3b.md#fma-ff)
-[`++fma:fl`](@/docs/reference/library/3b.md#fma-fl)
-[`++fma:rd`](@/docs/reference/library/3b.md#fma-rd)
-[`++fma:rh`](@/docs/reference/library/3b.md#fma-rh)
-[`++fma:rs`](@/docs/reference/library/3b.md#fma-rs)
-[`++fma:rq`](@/docs/reference/library/3b.md#fma-rq)
-[`++fnv`](@/docs/reference/library/2e.md#fnv)
-[`++fo`](@/docs/reference/library/3a.md#fo)
-[`++foot`](@/docs/reference/library/4o.md#foot)
-[`++fos:rh`](@/docs/reference/library/3b.md#fos-rh)
-[`++fra:fo`](@/docs/reference/library/3a.md#fra-fo)
-[`++fra:si`](@/docs/reference/library/3a.md#fra-si)
-[`++full`](@/docs/reference/library/4f.md#full)
-[`++funk`](@/docs/reference/library/4f.md#funk)
+<a href='https://urbit.org/docs/reference/library/4e.md#fail'><code>++fail</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#fall'><code>++fall</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#fand'><code>++fand</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#fas'><code>++fas</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#fe'><code>++fe</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#fed-ag'><code>++fed:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#feen-ob'><code>++feen:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#fend-ob'><code>++fend:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#fice-ob'><code>++fice:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#fil'><code>++fil</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#find'><code>++find</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#fit-re'><code>++fit:re</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fli-fl'><code>++fli:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#flop'><code>++flop</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-ff'><code>++fma:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-fl'><code>++fma:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rd'><code>++fma:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rh'><code>++fma:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rs'><code>++fma:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rq'><code>++fma:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#fnv'><code>++fnv</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#fo'><code>++fo</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#foot'><code>++foot</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fos-rh'><code>++fos:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#fra-fo'><code>++fra:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#fra-si'><code>++fra:si</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#full'><code>++full</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#funk'><code>++funk</code></a>
 
 ### g
 
-[`++gah`](@/docs/reference/library/4i.md#gah)
-[`++gal`](@/docs/reference/library/4h.md#gal)
-[`++gap`](@/docs/reference/library/4i.md#gap)
-[`++gaq`](@/docs/reference/library/4i.md#gaq)
-[`++gar`](@/docs/reference/library/4h.md#gar)
-[`+-gas:by`](@/docs/reference/library/2i.md#gas-by)
-[`+-gas:in`](@/docs/reference/library/2h.md#gas-in)
-[`+-gas:to`](@/docs/reference/library/2k.md#gas-to)
-[`++gate`](@/docs/reference/library/1c.md#gate)
-[`++gaw`](@/docs/reference/library/4i.md#gaw)
-[`++gay`](@/docs/reference/library/4i.md#gay)
-[`+-get:by`](@/docs/reference/library/2i.md#get-by)
-[`+-get:ja`](@/docs/reference/library/2j.md#get-ja)
-[`+-get:ju`](@/docs/reference/library/2j.md#get-ju)
-[`+-get:to`](@/docs/reference/library/2k.md#get-to)
-[`++glue`](@/docs/reference/library/4e.md#glue)
-[`++gon`](@/docs/reference/library/4i.md#gon)
-[`++gor`](@/docs/reference/library/2f.md#gor)
-[`+-got:by`](@/docs/reference/library/2i.md#got-by)
-[`++grd:ff`](@/docs/reference/library/3b.md#grd-ff)
-[`++grd:fl`](@/docs/reference/library/3b.md#grd-fl)
-[`++grd:rd`](@/docs/reference/library/3b.md#grd-rd)
-[`++grd:rh`](@/docs/reference/library/3b.md#grd-rh)
-[`++grd:rs`](@/docs/reference/library/3b.md#grd-rs)
-[`++grd:rq`](@/docs/reference/library/3b.md#grd-rq)
-[`++gte`](@/docs/reference/library/1a.md#gte)
-[`++gte:ff`](@/docs/reference/library/3b.md#gte-ff)
-[`++gte:fl`](@/docs/reference/library/3b.md#gte-fl)
-[`++gte:rd`](@/docs/reference/library/3b.md#gte-rd)
-[`++gte:rh`](@/docs/reference/library/3b.md#gte-rh)
-[`++gte:rs`](@/docs/reference/library/3b.md#gte-rs)
-[`++gte:rq`](@/docs/reference/library/3b.md#gte-rq)
-[`++gth`](@/docs/reference/library/1a.md#gth)
-[`++gth:ff`](@/docs/reference/library/3b.md#gth-ff)
-[`++gth:fl`](@/docs/reference/library/3b.md#gth-fl)
-[`++gth:rd`](@/docs/reference/library/3b.md#gth-rd)
-[`++gth:rh`](@/docs/reference/library/3b.md#gth-rh)
-[`++gth:rs`](@/docs/reference/library/3b.md#gth-rs)
-[`++gth:rq`](@/docs/reference/library/3b.md#gth-rq)
-[`++gul`](@/docs/reference/library/4i.md#gul)
-[`++gulf`](@/docs/reference/library/2b.md#gulf)
+<a href='https://urbit.org/docs/reference/library/4i.md#gah'><code>++gah</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#gal'><code>++gal</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gap'><code>++gap</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gaq'><code>++gaq</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#gar'><code>++gar</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#gas-by'><code>+-gas:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#gas-in'><code>+-gas:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#gas-to'><code>+-gas:to</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#gate'><code>++gate</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gaw'><code>++gaw</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gay'><code>++gay</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#get-by'><code>+-get:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#get-ja'><code>+-get:ja</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#get-ju'><code>+-get:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#get-to'><code>+-get:to</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#glue'><code>++glue</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gon'><code>++gon</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#gor'><code>++gor</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#got-by'><code>+-got:by</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-ff'><code>++grd:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-fl'><code>++grd:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rd'><code>++grd:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rh'><code>++grd:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rs'><code>++grd:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rq'><code>++grd:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#gte'><code>++gte</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-ff'><code>++gte:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-fl'><code>++gte:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rd'><code>++gte:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rh'><code>++gte:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rs'><code>++gte:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rq'><code>++gte:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#gth'><code>++gth</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-ff'><code>++gth:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-fl'><code>++gth:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rd'><code>++gth:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rh'><code>++gth:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rs'><code>++gth:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rq'><code>++gth:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gul'><code>++gul</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#gulf'><code>++gulf</code></a>
 
 ### h
 
-[`++hair`](@/docs/reference/library/3g.md#hair)
-[`++hard`](@/docs/reference/library/2n.md#hard)
-[`+-has:by`](@/docs/reference/library/2i.md#has-by)
-[`+-has:in`](@/docs/reference/library/2h.md#has-in)
-[`+-has:ju`](@/docs/reference/library/2j.md#has-ju)
-[`++hax`](@/docs/reference/library/4h.md#hax)
-[`++head`](@/docs/reference/library/2n.md#head)
-[`++here`](@/docs/reference/library/4f.md#here)
-[`++hep`](@/docs/reference/library/4h.md#hep)
-[`++hex`](@/docs/reference/library/4i.md#hex)
-[`++hex:ag`](@/docs/reference/library/4j.md#hex-ag)
-[`++hif:ab`](@/docs/reference/library/4j.md#hif-ab)
-[`++hig`](@/docs/reference/library/4i.md#hig)
-[`++hit`](@/docs/reference/library/4i.md#hit)
-[`++homo`](@/docs/reference/library/2b.md#homo)
-[`++hor`](@/docs/reference/library/2f.md#hor)
-[`++hor:yo`](@/docs/reference/library/3c.md#hor-yo)
-[`++huf:ab`](@/docs/reference/library/4j.md#huf-ab)
-[`++hyf:ab`](@/docs/reference/library/4j.md#hyf-ab)
+<a href='https://urbit.org/docs/reference/library/3g.md#hair'><code>++hair</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#hard'><code>++hard</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#has-by'><code>+-has:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#has-in'><code>+-has:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#has-ju'><code>+-has:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#hax'><code>++hax</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#head'><code>++head</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#here'><code>++here</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#hep'><code>++hep</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#hex'><code>++hex</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#hex-ag'><code>++hex:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#hif-ab'><code>++hif:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#hig'><code>++hig</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#hit'><code>++hit</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#homo'><code>++homo</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#hor'><code>++hor</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#hor-yo'><code>++hor:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#huf-ab'><code>++huf:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#hyf-ab'><code>++hyf:ab</code></a>
 
 ### i
 
-[`++ibl:fl`](@/docs/reference/library/3b.md#ibl-fl)
-[`++ifix`](@/docs/reference/library/4f.md#ifix)
-[`++ind:po`](@/docs/reference/library/4a.md#ind-po)
-[`++ins:po`](@/docs/reference/library/4a.md#ins-po)
-[`+-int:by`](@/docs/reference/library/2i.md#int-by)
-[`+-int:in`](@/docs/reference/library/2h.md#int-in)
-[`++inv:fe`](@/docs/reference/library/2c.md#inv-fe)
-[`++inv:fl`](@/docs/reference/library/3b.md#inv-fl)
-[`++inv:fo`](@/docs/reference/library/3a.md#inv-fo)
-[`++iny`](@/docs/reference/library/4i.md#iny)
+<a href='https://urbit.org/docs/reference/library/3b.md#ibl-fl'><code>++ibl:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#ifix'><code>++ifix</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#ind-po'><code>++ind:po</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#ins-po'><code>++ins:po</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#int-by'><code>+-int:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#int-in'><code>+-int:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#inv-fe'><code>++inv:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#inv-fl'><code>++inv:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#inv-fo'><code>++inv:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#iny'><code>++iny</code></a>
 
 ### j
 
-[`++ja`](@/docs/reference/library/2j.md#ja)
-[`++jam`](@/docs/reference/library/2p.md#jam)
-[`++jar`](@/docs/reference/library/2o.md#jar)
-[`++jes:yo`](@/docs/reference/library/3c.md#jes-yo)
-[`++jest`](@/docs/reference/library/4f.md#jest)
-[`++ju`](@/docs/reference/library/2j.md#ju)
-[`++jug`](@/docs/reference/library/2o.md#jug)
-[`++just`](@/docs/reference/library/4f.md#just)
+<a href='https://urbit.org/docs/reference/library/2j.md#ja'><code>++ja</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#jam'><code>++jam</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#jar'><code>++jar</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#jes-yo'><code>++jes:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#jest'><code>++jest</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#ju'><code>++ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#jug'><code>++jug</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#just'><code>++just</code></a>
 
 ### k
 
-[`++kel`](@/docs/reference/library/4h.md#kel)
-[`++ker`](@/docs/reference/library/4h.md#ker)
-[`++ket`](@/docs/reference/library/4h.md#ket)
-[`++knee`](@/docs/reference/library/4f.md#knee)
-[`++knot`](@/docs/reference/library/2q.md#knot)
+<a href='https://urbit.org/docs/reference/library/4h.md#kel'><code>++kel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ker'><code>++ker</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ket'><code>++ket</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#knee'><code>++knee</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#knot'><code>++knot</code></a>
 
 ### l
 
-[`++last`](@/docs/reference/library/4d.md#last)
-[`++le:nl`](@/docs/reference/library/2m.md#le-nl)
-[`++lent`](@/docs/reference/library/2b.md#lent)
-[`++levy`](@/docs/reference/library/2b.md#levy)
-[`++lfe:fl`](@/docs/reference/library/3b.md#lfe-fl)
-[`++lfn:fl`](@/docs/reference/library/3b.md#lfn-fl)
-[`++lien`](@/docs/reference/library/2b.md#lien)
-[`++lift`](@/docs/reference/library/2a.md#lift)
-[`++like`](@/docs/reference/library/3g.md#like)
-[`++limb`](@/docs/reference/library/4o.md#limb)
-[`++limo`](@/docs/reference/library/2b.md#limo)
-[`++line`](@/docs/reference/library/4o.md#line)
-[`++lip:ag`](@/docs/reference/library/4j.md#lip-ag)
-[`++list`](@/docs/reference/library/1c.md#list)
-[`++lone`](@/docs/reference/library/1c.md#lone)
-[`++lor`](@/docs/reference/library/2f.md#lor)
-[`++low`](@/docs/reference/library/4i.md#low)
-[`++lsh`](@/docs/reference/library/2c.md#lsh)
-[`++lte`](@/docs/reference/library/1a.md#lte)
-[`++lte:ff`](@/docs/reference/library/3b.md#lte-ff)
-[`++lte:fl`](@/docs/reference/library/3b.md#lte-fl)
-[`++lte:rd`](@/docs/reference/library/3b.md#lte-rd)
-[`++lte:rh`](@/docs/reference/library/3b.md#lte-rh)
-[`++lte:rs`](@/docs/reference/library/3b.md#lte-rs)
-[`++lte:rq`](@/docs/reference/library/3b.md#lte-rq)
-[`++lth`](@/docs/reference/library/1a.md#lth)
-[`++lth:ff`](@/docs/reference/library/3b.md#lth-ff)
-[`++lth:fl`](@/docs/reference/library/3b.md#lth-fl)
-[`++lth:rd`](@/docs/reference/library/3b.md#lth-rd)
-[`++lth:rh`](@/docs/reference/library/3b.md#lth-rh)
-[`++lth:rs`](@/docs/reference/library/3b.md#lth-rs)
-[`++lth:rq`](@/docs/reference/library/3b.md#lth-rq)
-[`++lug:fl`](@/docs/reference/library/3b.md#lug-fl)
-[`++lus`](@/docs/reference/library/4h.md#lus)
-[`++lust`](@/docs/reference/library/4d.md#lust)
-[`++less`](@/docs/reference/library/4e.md#less)
-[`++ly`](@/docs/reference/library/2m.md#ly)
+<a href='https://urbit.org/docs/reference/library/4d.md#last'><code>++last</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#le-nl'><code>++le:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#lent'><code>++lent</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#levy'><code>++levy</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lfe-fl'><code>++lfe:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lfn-fl'><code>++lfn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#lien'><code>++lien</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#lift'><code>++lift</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#like'><code>++like</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#limb'><code>++limb</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#limo'><code>++limo</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#line'><code>++line</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#lip-ag'><code>++lip:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#list'><code>++list</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#lone'><code>++lone</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#lor'><code>++lor</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#low'><code>++low</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#lsh'><code>++lsh</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#lte'><code>++lte</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-ff'><code>++lte:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-fl'><code>++lte:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rd'><code>++lte:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rh'><code>++lte:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rs'><code>++lte:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rq'><code>++lte:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#lth'><code>++lth</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-ff'><code>++lth:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-fl'><code>++lth:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rd'><code>++lth:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rh'><code>++lth:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rs'><code>++lth:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rq'><code>++lth:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lug-fl'><code>++lug:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#lus'><code>++lus</code></a>
+<a href='https://urbit.org/docs/reference/library/4d.md#lust'><code>++lust</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#less'><code>++less</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#ly'><code>++ly</code></a>
 
 ### m
 
-[`++ma:rd`](@/docs/reference/library/3b.md#ma-rd)
-[`++ma:rh`](@/docs/reference/library/3b.md#ma-rh)
-[`++ma:rs`](@/docs/reference/library/3b.md#ma-rs)
-[`++ma:rq`](@/docs/reference/library/3b.md#ma-rq)
-[`++mack`](@/docs/reference/library/4n.md#mack)
-[`++malt`](@/docs/reference/library/2l.md#malt)
-[`++map`](@/docs/reference/library/2o.md#map)
-[`+-mar:by`](@/docs/reference/library/2i.md#mar-by)
-[`++mas`](@/docs/reference/library/1b.md#mas)
-[`++mask`](@/docs/reference/library/4f.md#mask)
-[`++mat`](@/docs/reference/library/2p.md#mat)
-[`++mate`](@/docs/reference/library/2a.md#mate)
-[`++max`](@/docs/reference/library/1a.md#max)
-[`++me:ff`](@/docs/reference/library/3b.md#me-ff)
-[`++mean`](@/docs/reference/library/2n.md#mean)
-[`++mes`](@/docs/reference/library/4i.md#mes)
-[`++mesc`](@/docs/reference/library/4b.md#mesc)
-[`++met`](@/docs/reference/library/2c.md#met)
-[`++metl`](@/docs/reference/library/4o.md#metl)
-[`++min`](@/docs/reference/library/1a.md#min)
-[`++mink`](@/docs/reference/library/4n.md#mink)
-[`++mit:yo`](@/docs/reference/library/3c.md#mit-yo)
-[`++mix`](@/docs/reference/library/2d.md#mix)
-[`++mock`](@/docs/reference/library/4n.md#mock)
-[`++mod`](@/docs/reference/library/1a.md#mod)
-[`++moh:yo`](@/docs/reference/library/3c.md#moh-yo)
-[`++molt`](@/docs/reference/library/2l.md#molt)
-[`++mong`](@/docs/reference/library/4n.md#mong)
-[`++mook`](@/docs/reference/library/4n.md#mook)
-[`++more`](@/docs/reference/library/4f.md#more)
-[`++most`](@/docs/reference/library/4f.md#most)
-[`++moy:yo`](@/docs/reference/library/3c.md#moy-yo)
-[`++mu`](@/docs/reference/library/4j.md#mu)
-[`++mug`](@/docs/reference/library/2e.md#mug)
-[`++muk`](@/docs/reference/library/2e.md#muk)
-[`++mul`](@/docs/reference/library/1a.md#mul)
-[`++mul:ff`](@/docs/reference/library/3b.md#mul-ff)
-[`++mul:fl`](@/docs/reference/library/3b.md#mul-fl)
-[`++mul:rd`](@/docs/reference/library/3b.md#mul-rd)
-[`++mul:rh`](@/docs/reference/library/3b.md#mul-rh)
-[`++mul:rs`](@/docs/reference/library/3b.md#mul-rs)
-[`++mul:rq`](@/docs/reference/library/3b.md#mul-rq)
-[`++mule`](@/docs/reference/library/4n.md#mule)
-[`++mute`](@/docs/reference/library/4n.md#mute)
-[`++mum`](@/docs/reference/library/2e.md#mum)
-[`++murn`](@/docs/reference/library/2b.md#murn)
-[`++my`](@/docs/reference/library/2m.md#my)
-[`++my:nl`](@/docs/reference/library/2m.md#my-nl)
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rd'><code>++ma:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rh'><code>++ma:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rs'><code>++ma:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rq'><code>++ma:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mack'><code>++mack</code></a>
+<a href='https://urbit.org/docs/reference/library/2l.md#malt'><code>++malt</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#map'><code>++map</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#mar-by'><code>+-mar:by</code></a>
+<a href='https://urbit.org/docs/reference/library/1b.md#mas'><code>++mas</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#mask'><code>++mask</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#mat'><code>++mat</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#mate'><code>++mate</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#max'><code>++max</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#me-ff'><code>++me:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#mean'><code>++mean</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#mes'><code>++mes</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#mesc'><code>++mesc</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#met'><code>++met</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#metl'><code>++metl</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#min'><code>++min</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mink'><code>++mink</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#mit-yo'><code>++mit:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#mix'><code>++mix</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mock'><code>++mock</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#mod'><code>++mod</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#moh-yo'><code>++moh:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/2l.md#molt'><code>++molt</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mong'><code>++mong</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mook'><code>++mook</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#more'><code>++more</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#most'><code>++most</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#moy-yo'><code>++moy:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#mu'><code>++mu</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#mug'><code>++mug</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#muk'><code>++muk</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#mul'><code>++mul</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-ff'><code>++mul:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-fl'><code>++mul:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rd'><code>++mul:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rh'><code>++mul:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rs'><code>++mul:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rq'><code>++mul:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mule'><code>++mule</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mute'><code>++mute</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#mum'><code>++mum</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#murn'><code>++murn</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#my'><code>++my</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#my-nl'><code>++my:nl</code></a>
 
 ### n
 
-[`++nail`](@/docs/reference/library/3g.md#nail)
-[`+-nap:to`](@/docs/reference/library/2k.md#nap-to)
-[`++ne`](@/docs/reference/library/4j.md#ne)
-[`++ned:fl`](@/docs/reference/library/3b.md#ned-fl)
-[`++need`](@/docs/reference/library/2a.md#need)
-[`++net:fe`](@/docs/reference/library/2c.md#net-fe)
-[`++new:si`](@/docs/reference/library/3a.md#new-si)
-[`++next`](@/docs/reference/library/4f.md#next)
-[`+-nip:to`](@/docs/reference/library/2k.md#nip-to)
-[`++nix`](@/docs/reference/library/4i.md#nix)
-[`++nl`](@/docs/reference/library/2m.md#nl)
-[`++nock`](@/docs/reference/library/4o.md#nock)
-[`++not`](@/docs/reference/library/2d.md#not)
-[`++noun`](@/docs/reference/library/4o.md#noun)
-[`++nuck:so`](@/docs/reference/library/4l.md#nuck-so)
-[`++nud`](@/docs/reference/library/4i.md#nud)
-[`++null`](@/docs/reference/library/4o.md#null)
-[`++nusk:so`](@/docs/reference/library/4l.md#nusk-so)
+<a href='https://urbit.org/docs/reference/library/3g.md#nail'><code>++nail</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#nap-to'><code>+-nap:to</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#ne'><code>++ne</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ned-fl'><code>++ned:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#need'><code>++need</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#net-fe'><code>++net:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#new-si'><code>++new:si</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#next'><code>++next</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#nip-to'><code>+-nip:to</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#nix'><code>++nix</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#nl'><code>++nl</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#nock'><code>++nock</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#not'><code>++not</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#noun'><code>++noun</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#nuck-so'><code>++nuck:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#nud'><code>++nud</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#null'><code>++null</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#nusk-so'><code>++nusk:so</code></a>
 
 ### o
 
-[`++ob`](@/docs/reference/library/3f.md#ob)
-[`++og`](@/docs/reference/library/3d.md#og)
-[`++old:si`](@/docs/reference/library/3a.md#old-si)
-[`++oust`](@/docs/reference/library/2b.md#oust)
-[`++out:fe`](@/docs/reference/library/2c.md#out-fe)
+<a href='https://urbit.org/docs/reference/library/3f.md#ob'><code>++ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#og'><code>++og</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#old-si'><code>++old:si</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#oust'><code>++oust</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#out-fe'><code>++out:fe</code></a>
 
 ### p
 
-[`++pa:ff`](@/docs/reference/library/3b.md#pa-ff)
-[`++pair`](@/docs/reference/library/1c.md#pair)
-[`++pam`](@/docs/reference/library/4h.md#pam)
-[`++pat`](@/docs/reference/library/4h.md#pat)
-[`++path`](@/docs/reference/library/3g.md#path)
-[`++peg`](@/docs/reference/library/1b.md#peg)
-[`++pel`](@/docs/reference/library/4h.md#pel)
-[`++per`](@/docs/reference/library/4h.md#per)
-[`++perd:so`](@/docs/reference/library/4l.md#perd-so)
-[`++pev:ab`](@/docs/reference/library/4j.md#pev-ab)
-[`++pew:ab`](@/docs/reference/library/4j.md#pew-ab)
-[`++pfix`](@/docs/reference/library/4e.md#pfix)
-[`++pint`](@/docs/reference/library/3g.md#pint)
-[`++piv:ab`](@/docs/reference/library/4j.md#piv-ab)
-[`++piw:ab`](@/docs/reference/library/4j.md#piw-ab)
-[`++plug`](@/docs/reference/library/4e.md#plug)
-[`++plus`](@/docs/reference/library/4f.md#plus)
-[`++po`](@/docs/reference/library/4a.md#po)
-[`++pole`](@/docs/reference/library/1c.md#pole)
-[`++port`](@/docs/reference/library/4o.md#port)
-[`++pose`](@/docs/reference/library/4e.md#pose)
-[`++pow`](@/docs/reference/library/2g.md#pow)
-[`++prc:fl`](@/docs/reference/library/3b.md#prc-fl)
-[`++prn`](@/docs/reference/library/4i.md#prn)
-[`++pro:fo`](@/docs/reference/library/3a.md#pro-fo)
-[`++pro:si`](@/docs/reference/library/3a.md#pro-si)
-[`+-put:by`](@/docs/reference/library/2i.md#put-by)
-[`+-put:in`](@/docs/reference/library/2h.md#put-in)
-[`+-put:ju`](@/docs/reference/library/2j.md#put-ju)
-[`+-put:to`](@/docs/reference/library/2k.md#put-to)
+<a href='https://urbit.org/docs/reference/library/3b.md#pa-ff'><code>++pa:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#pair'><code>++pair</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#pam'><code>++pam</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#pat'><code>++pat</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#path'><code>++path</code></a>
+<a href='https://urbit.org/docs/reference/library/1b.md#peg'><code>++peg</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#pel'><code>++pel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#per'><code>++per</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#perd-so'><code>++perd:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#pev-ab'><code>++pev:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#pew-ab'><code>++pew:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#pfix'><code>++pfix</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#pint'><code>++pint</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#piv-ab'><code>++piv:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#piw-ab'><code>++piw:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#plug'><code>++plug</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#plus'><code>++plus</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#po'><code>++po</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#pole'><code>++pole</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#port'><code>++port</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#pose'><code>++pose</code></a>
+<a href='https://urbit.org/docs/reference/library/2g.md#pow'><code>++pow</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#prc-fl'><code>++prc:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#prn'><code>++prn</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#pro-fo'><code>++pro:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#pro-si'><code>++pro:si</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#put-by'><code>+-put:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#put-in'><code>+-put:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#put-ju'><code>+-put:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#put-to'><code>+-put:to</code></a>
 
 ### q
 
-[`++qad:yo`](@/docs/reference/library/3c.md#qad-yo)
-[`++qeb:ab`](@/docs/reference/library/4j.md#qeb-ab)
-[`++qeu`](@/docs/reference/library/2o.md#qeu)
-[`++qex:ab`](@/docs/reference/library/4j.md#qex-ab)
-[`++qib:ab`](@/docs/reference/library/4j.md#qib-ab)
-[`++qit`](@/docs/reference/library/4i.md#qit)
-[`++qix:ab`](@/docs/reference/library/4j.md#qix-ab)
-[`++quip`](@/docs/reference/library/1c.md#quip)
-[`++qut`](@/docs/reference/library/4i.md#qut)
+<a href='https://urbit.org/docs/reference/library/3c.md#qad-yo'><code>++qad:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qeb-ab'><code>++qeb:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#qeu'><code>++qeu</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qex-ab'><code>++qex:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qib-ab'><code>++qib:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#qit'><code>++qit</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qix-ab'><code>++qix:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#quip'><code>++quip</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#qut'><code>++qut</code></a>
 
 ### r
 
-[`++r:at`](@/docs/reference/library/4b.md#r-at)
-[`++rad:og`](@/docs/reference/library/3d.md#rad-og)
-[`++rads:og`](@/docs/reference/library/3d.md#rads-og)
-[`++raku:ob`](@/docs/reference/library/3f.md#raku-ob)
-[`++ram:re`](@/docs/reference/library/4c.md#ram-re)
-[`++rap`](@/docs/reference/library/2c.md#rap)
-[`++rash`](@/docs/reference/library/4g.md#rash)
-[`++rau:fl`](@/docs/reference/library/3b.md#rau-fl)
-[`++raw:og`](@/docs/reference/library/3d.md#raw-og)
-[`++raws:og`](@/docs/reference/library/3d.md#raws-og)
-[`++re`](@/docs/reference/library/4c.md#re)
-[`++rear:co`](@/docs/reference/library/4k.md#rear-co)
-[`++reap`](@/docs/reference/library/2b.md#reap)
-[`++reel`](@/docs/reference/library/2b.md#reel)
-[`++rem:si`](@/docs/reference/library/3a.md#rem-si)
-[`++rend:co`](@/docs/reference/library/4k.md#rend-co)
-[`++rent:co`](@/docs/reference/library/4k.md#rent-co)
-[`++rep`](@/docs/reference/library/2c.md#rep)
-[`+-rep:by`](@/docs/reference/library/2i.md#rep-by)
-[`+-rep:in`](@/docs/reference/library/2h.md#rep-in)
-[`++rf:at`](@/docs/reference/library/4b.md#rf-at)
-[`+-rib:by`](@/docs/reference/library/2i.md#rib-by)
-[`++rig:re`](@/docs/reference/library/4c.md#rig-re)
-[`++rip`](@/docs/reference/library/2c.md#rip)
-[`++rn:at`](@/docs/reference/library/4b.md#rn-at)
-[`++rol:fe`](@/docs/reference/library/2c.md#rol-fe)
-[`++roll`](@/docs/reference/library/2b.md#roll)
-`++rood`
-[`++ror:fe`](@/docs/reference/library/2c.md#ror-fe)
-[`++rou:fl`](@/docs/reference/library/3b.md#rou-fl)
-[`++royl:so`](@/docs/reference/library/4l.md#royl-so)
-[`++royl-cell:so`](@/docs/reference/library/4l.md#royl-cell-so)
-[`++rsh`](@/docs/reference/library/2c.md#rsh)
-[`++rt:at`](@/docs/reference/library/4b.md#rt-at)
-[`++rta:at`](@/docs/reference/library/4b.md#rta-at)
-[`++rtam:at`](@/docs/reference/library/4b.md#rtam-at)
-[`++rub`](@/docs/reference/library/2p.md#rub)
-[`++rub:at`](@/docs/reference/library/4b.md#rub-at)
-[`++rud:at`](@/docs/reference/library/4b.md#rud-at)
-[`++rule`](@/docs/reference/library/3g.md#rule)
-[`++rum:at`](@/docs/reference/library/4b.md#rum-at)
-[`+-run:by`](@/docs/reference/library/2i.md#run-by)
-[`+-run:in`](@/docs/reference/library/2h.md#run-in)
-[`++rund:ob`](@/docs/reference/library/3f.md#rund-ob)
-[`++runt`](@/docs/reference/library/4b.md#runt)
-[`++rup:at`](@/docs/reference/library/4b.md#rup-at)
-[`++rush`](@/docs/reference/library/4g.md#rush)
-[`++rust`](@/docs/reference/library/4g.md#rust)
-[`+-rut:by`](@/docs/reference/library/2i.md#rut-by)
-[`++ruv:at`](@/docs/reference/library/4b.md#ruv-at)
-[`++rux:at`](@/docs/reference/library/4b.md#rux-at)
-[`++rynd:ob`](@/docs/reference/library/3f.md#rynd-ob)
+<a href='https://urbit.org/docs/reference/library/4b.md#r-at'><code>++r:at</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#rad-og'><code>++rad:og</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#rads-og'><code>++rads:og</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#raku-ob'><code>++raku:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#ram-re'><code>++ram:re</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rap'><code>++rap</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#rash'><code>++rash</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rau-fl'><code>++rau:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#raw-og'><code>++raw:og</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#raws-og'><code>++raws:og</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#re'><code>++re</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#rear-co'><code>++rear:co</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#reap'><code>++reap</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#reel'><code>++reel</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#rem-si'><code>++rem:si</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#rend-co'><code>++rend:co</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#rent-co'><code>++rent:co</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rep'><code>++rep</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#rep-by'><code>+-rep:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#rep-in'><code>+-rep:in</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rf-at'><code>++rf:at</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#rib-by'><code>+-rib:by</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#rig-re'><code>++rig:re</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rip'><code>++rip</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rn-at'><code>++rn:at</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rol-fe'><code>++rol:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#roll'><code>++roll</code></a>
+<code>++rood</code>
+<a href='https://urbit.org/docs/reference/library/2c.md#ror-fe'><code>++ror:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rou-fl'><code>++rou:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#royl-so'><code>++royl:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#royl-cell-so'><code>++royl-cell:so</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rsh'><code>++rsh</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rt-at'><code>++rt:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rta-at'><code>++rta:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rtam-at'><code>++rtam:at</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#rub'><code>++rub</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rub-at'><code>++rub:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rud-at'><code>++rud:at</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#rule'><code>++rule</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rum-at'><code>++rum:at</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#run-by'><code>+-run:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#run-in'><code>+-run:in</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#rund-ob'><code>++rund:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#runt'><code>++runt</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rup-at'><code>++rup:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#rush'><code>++rush</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#rust'><code>++rust</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#rut-by'><code>+-rut:by</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#ruv-at'><code>++ruv:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rux-at'><code>++rux:at</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#rynd-ob'><code>++rynd:ob</code></a>
 
 ### s
 
-[`++same`](@/docs/reference/library/2n.md#same)
-[`++san:ff`](@/docs/reference/library/3b.md#san-ff)
-[`++san:fl`](@/docs/reference/library/3b.md#san-fl)
-[`++san:rd`](@/docs/reference/library/3b.md#san-rd)
-[`++san:rh`](@/docs/reference/library/3b.md#san-rh)
-[`++san:rs`](@/docs/reference/library/3b.md#san-rs)
-[`++san:rq`](@/docs/reference/library/3b.md#san-rq)
-[`++sand`](@/docs/reference/library/4b.md#sand)
-[`++sane`](@/docs/reference/library/4b.md#sane)
-[`++sb:ff`](@/docs/reference/library/3b.md#sb-ff)
-[`++scag`](@/docs/reference/library/2b.md#scag)
-[`++scan`](@/docs/reference/library/4g.md#scan)
-[`++scot`](@/docs/reference/library/4m.md#scot)
-[`++scow`](@/docs/reference/library/4m.md#scow)
-[`++sea:ff`](@/docs/reference/library/3b.md#sea-ff)
-[`++sea:rd`](@/docs/reference/library/3b.md#sea-rd)
-[`++sea:rh`](@/docs/reference/library/3b.md#sea-rh)
-[`++sea:rs`](@/docs/reference/library/3b.md#sea-rs)
-[`++sea:rq`](@/docs/reference/library/3b.md#sea-rq)
-[`++sear`](@/docs/reference/library/4f.md#sear)
-[`++seb:ab`](@/docs/reference/library/4j.md#seb-ab)
-[`++sed:ab`](@/docs/reference/library/4j.md#sed-ab)
-[`++sel`](@/docs/reference/library/4h.md#sel)
-[`++sem`](@/docs/reference/library/4h.md#sem)
-[`++ser`](@/docs/reference/library/4h.md#ser)
-[`++set`](@/docs/reference/library/2o.md#set)
-[`++sev:ab`](@/docs/reference/library/4j.md#sev-ab)
-[`++sew:ab`](@/docs/reference/library/4j.md#sew-ab)
-[`++sex:ab`](@/docs/reference/library/4j.md#sex-ab)
-[`++sfix`](@/docs/reference/library/4e.md#sfix)
-[`++shad`](@/docs/reference/library/3d.md#shad)
-[`++shaf`](@/docs/reference/library/3d.md#shaf)
-[`++shal`](@/docs/reference/library/3d.md#shal)
-[`++sham`](@/docs/reference/library/3d.md#sham)
-[`++shan`](@/docs/reference/library/3d.md#shan)
-[`++shas`](@/docs/reference/library/3d.md#shas)
-[`++shaw`](@/docs/reference/library/3d.md#shaw)
-[`++shax`](@/docs/reference/library/3d.md#shax)
-[`++shay`](@/docs/reference/library/3d.md#shay)
-[`++shaz`](@/docs/reference/library/3d.md#shaz)
-[`++shep`](@/docs/reference/library/4c.md#shep)
-[`++shf:fl`](@/docs/reference/library/3b.md#shf-fl)
-[`++shim`](@/docs/reference/library/4f.md#shim)
-[`++shop`](@/docs/reference/library/4c.md#shop)
-[`++show`](@/docs/reference/library/4c.md#show)
-[`++si`](@/docs/reference/library/3a.md#si)
-[`++si:nl`](@/docs/reference/library/2m.md#si-nl)
-[`++sib:ab`](@/docs/reference/library/4j.md#sib-ab)
-[`++sid:ab`](@/docs/reference/library/4j.md#sid-ab)
-[`++sig`](@/docs/reference/library/4h.md#sig)
-[`++sig:ff`](@/docs/reference/library/3b.md#sig-ff)
-[`++sig:rd`](@/docs/reference/library/3b.md#sig-rd)
-[`++sig:rh`](@/docs/reference/library/3b.md#sig-rh)
-[`++sig:rs`](@/docs/reference/library/3b.md#sig-rs)
-[`++sig:rq`](@/docs/reference/library/3b.md#sig-rq)
-[`++silt`](@/docs/reference/library/2l.md#silt)
-[`++simu`](@/docs/reference/library/4e.md#simu)
-[`++sit:fe`](@/docs/reference/library/2c.md#sit-fe)
-[`++sit:fo`](@/docs/reference/library/3a.md#sit-fo)
-[`++siv:ab`](@/docs/reference/library/4j.md#siv-ab)
-[`++siw:ab`](@/docs/reference/library/4j.md#siw-ab)
-[`++six:ab`](@/docs/reference/library/4j.md#six-ab)
-[`++skid`](@/docs/reference/library/2b.md#skid)
-[`++skim`](@/docs/reference/library/2b.md#skim)
-[`++skip`](@/docs/reference/library/2b.md#skip)
-[`++slag`](@/docs/reference/library/2b.md#slag)
-[`++slat`](@/docs/reference/library/4m.md#slat)
-[`++slav`](@/docs/reference/library/4m.md#slav)
-[`++slaw`](@/docs/reference/library/4m.md#slaw)
-[`++slay`](@/docs/reference/library/4m.md#slay)
-[`++slog`](@/docs/reference/library/2n.md#slog)
-[`++slug`](@/docs/reference/library/4f.md#slug)
-[`++smyt`](@/docs/reference/library/4m.md#smyt)
-[`++snag`](@/docs/reference/library/2b.md#snag)
-[`++snag:nl`](@/docs/reference/library/2m.md#snag-nl)
-[`++snoc`](@/docs/reference/library/2b.md#snoc)
-[`++so`](@/docs/reference/library/4l.md#so)
-[`++soft`](@/docs/reference/library/2n.md#soft)
-[`++some`](@/docs/reference/library/2a.md#some)
-[`++soq`](@/docs/reference/library/4h.md#soq)
-[`++sort`](@/docs/reference/library/2b.md#sort)
-[`++sov:ab`](@/docs/reference/library/4j.md#sov-ab)
-[`++sow:ab`](@/docs/reference/library/4j.md#sow-ab)
-[`++sox:ab`](@/docs/reference/library/4j.md#sox-ab)
-[`++soz`](@/docs/reference/library/4i.md#soz)
-[`++span`](@/docs/reference/library/4o.md#span)
-[`++spat`](@/docs/reference/library/4m.md#spat)
-[`++spd:fl`](@/docs/reference/library/3b.md#spd-fl)
-[`++spin`](@/docs/reference/library/2b.md#spin)
-[`++spn:fl`](@/docs/reference/library/3b.md#spn-fl)
-[`++spot`](@/docs/reference/library/3g.md#spot)
-[`++spud`](@/docs/reference/library/4m.md#spud)
-[`++spun`](@/docs/reference/library/2b.md#spun)
-[`++sqt`](@/docs/reference/library/2g.md#sqt)
-[`++sqt:ff`](@/docs/reference/library/3b.md#sqt-ff)
-[`++sqt:fl`](@/docs/reference/library/3b.md#sqt-fl)
-[`++sqt:rd`](@/docs/reference/library/3b.md#sqt-rd)
-[`++sqt:rh`](@/docs/reference/library/3b.md#sqt-rh)
-[`++sqt:rs`](@/docs/reference/library/3b.md#sqt-rs)
-[`++sqt:rq`](@/docs/reference/library/3b.md#sqt-rq)
-[`++stab`](@/docs/reference/library/4m.md#stab)
-[`++stag`](@/docs/reference/library/4f.md#stag)
-[`++star`](@/docs/reference/library/4f.md#star)
-[`++stet`](@/docs/reference/library/4f.md#stet)
-[`++stew`](@/docs/reference/library/4f.md#stew)
-[`++stir`](@/docs/reference/library/4f.md#stir)
-[`++stun`](@/docs/reference/library/4f.md#stun)
-[`++sub`](@/docs/reference/library/1a.md#sub)
-[`++sub:ff`](@/docs/reference/library/3b.md#sub-ff)
-[`++sub:fl`](@/docs/reference/library/3b.md#sub-fl)
-[`++sub:rd`](@/docs/reference/library/3b.md#sub-rd)
-[`++sub:rh`](@/docs/reference/library/3b.md#sub-rh)
-[`++sub:rs`](@/docs/reference/library/3b.md#sub-rs)
-[`++sub:rq`](@/docs/reference/library/3b.md#sub-rq)
-[`++sum:fe`](@/docs/reference/library/2c.md#sum-fe)
-[`++sum:fo`](@/docs/reference/library/3a.md#sum-fo)
-[`++sum:si`](@/docs/reference/library/3a.md#sum-si)
-[`++sun:ff`](@/docs/reference/library/3b.md#sun-ff)
-[`++sun:fl`](@/docs/reference/library/3b.md#sun-fl)
-[`++sun:rd`](@/docs/reference/library/3b.md#sun-rd)
-[`++sun:rh`](@/docs/reference/library/3b.md#sun-rh)
-[`++sun:rs`](@/docs/reference/library/3b.md#sun-rs)
-[`++sun:rq`](@/docs/reference/library/3b.md#sun-rq)
-[`++sun:si`](@/docs/reference/library/3a.md#sun-si)
-[`++swag`](@/docs/reference/library/2b.md#swag)
-[`++swp`](@/docs/reference/library/2c.md#swp)
-[`++swr:fl`](@/docs/reference/library/3b.md#swr-fl)
-[`++sy`](@/docs/reference/library/2m.md#sy)
-[`++sym`](@/docs/reference/library/4i.md#sym)
-[`++syn:fl`](@/docs/reference/library/3b.md#syn-fl)
-[`++syn:si`](@/docs/reference/library/3a.md#syn-si)
+<a href='https://urbit.org/docs/reference/library/2n.md#same'><code>++same</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-ff'><code>++san:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-fl'><code>++san:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rd'><code>++san:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rh'><code>++san:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rs'><code>++san:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rq'><code>++san:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#sand'><code>++sand</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#sane'><code>++sane</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sb-ff'><code>++sb:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#scag'><code>++scag</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#scan'><code>++scan</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#scot'><code>++scot</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#scow'><code>++scow</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-ff'><code>++sea:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rd'><code>++sea:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rh'><code>++sea:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rs'><code>++sea:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rq'><code>++sea:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#sear'><code>++sear</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#seb-ab'><code>++seb:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sed-ab'><code>++sed:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#sel'><code>++sel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#sem'><code>++sem</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ser'><code>++ser</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#set'><code>++set</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sev-ab'><code>++sev:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sew-ab'><code>++sew:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sex-ab'><code>++sex:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#sfix'><code>++sfix</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shad'><code>++shad</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shaf'><code>++shaf</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shal'><code>++shal</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#sham'><code>++sham</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shan'><code>++shan</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shas'><code>++shas</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shaw'><code>++shaw</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shax'><code>++shax</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shay'><code>++shay</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shaz'><code>++shaz</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#shep'><code>++shep</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#shf-fl'><code>++shf:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#shim'><code>++shim</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#shop'><code>++shop</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#show'><code>++show</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#si'><code>++si</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#si-nl'><code>++si:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sib-ab'><code>++sib:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sid-ab'><code>++sid:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#sig'><code>++sig</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-ff'><code>++sig:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rd'><code>++sig:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rh'><code>++sig:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rs'><code>++sig:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rq'><code>++sig:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/2l.md#silt'><code>++silt</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#simu'><code>++simu</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#sit-fe'><code>++sit:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sit-fo'><code>++sit:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#siv-ab'><code>++siv:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#siw-ab'><code>++siw:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#six-ab'><code>++six:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#skid'><code>++skid</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#skim'><code>++skim</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#skip'><code>++skip</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#slag'><code>++slag</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slat'><code>++slat</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slav'><code>++slav</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slaw'><code>++slaw</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slay'><code>++slay</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#slog'><code>++slog</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#slug'><code>++slug</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#smyt'><code>++smyt</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#snag'><code>++snag</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#snag-nl'><code>++snag:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#snoc'><code>++snoc</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#so'><code>++so</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#soft'><code>++soft</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#some'><code>++some</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#soq'><code>++soq</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#sort'><code>++sort</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sov-ab'><code>++sov:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sow-ab'><code>++sow:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sox-ab'><code>++sox:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#soz'><code>++soz</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#span'><code>++span</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#spat'><code>++spat</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#spd-fl'><code>++spd:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#spin'><code>++spin</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#spn-fl'><code>++spn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#spot'><code>++spot</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#spud'><code>++spud</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#spun'><code>++spun</code></a>
+<a href='https://urbit.org/docs/reference/library/2g.md#sqt'><code>++sqt</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-ff'><code>++sqt:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-fl'><code>++sqt:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rd'><code>++sqt:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rh'><code>++sqt:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rs'><code>++sqt:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rq'><code>++sqt:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#stab'><code>++stab</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stag'><code>++stag</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#star'><code>++star</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stet'><code>++stet</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stew'><code>++stew</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stir'><code>++stir</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stun'><code>++stun</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#sub'><code>++sub</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-ff'><code>++sub:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-fl'><code>++sub:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rd'><code>++sub:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rh'><code>++sub:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rs'><code>++sub:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rq'><code>++sub:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#sum-fe'><code>++sum:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sum-fo'><code>++sum:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sum-si'><code>++sum:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-ff'><code>++sun:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-fl'><code>++sun:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rd'><code>++sun:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rh'><code>++sun:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rs'><code>++sun:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rq'><code>++sun:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sun-si'><code>++sun:si</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#swag'><code>++swag</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#swp'><code>++swp</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#swr-fl'><code>++swr:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#sy'><code>++sy</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#sym'><code>++sym</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#syn-fl'><code>++syn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#syn-si'><code>++syn:si</code></a>
 
 ### t
 
-[`++tail`](@/docs/reference/library/2n.md#tail)
-[`+-tap:to`](@/docs/reference/library/2k.md#tap-to)
-[`++tar`](@/docs/reference/library/4h.md#tar)
-[`++tang`](@/docs/reference/library/2q.md#tang)
-[`++tank`](@/docs/reference/library/2q.md#tank)
-[`+-tap:by`](@/docs/reference/library/2i.md#tap-by)
-[`+-tap:in`](@/docs/reference/library/2h.md#tap-in)
-[`++tape`](@/docs/reference/library/2q.md#tape)
-[`++tarp`](@/docs/reference/library/2q.md#tarp)
-[`++tash:so`](@/docs/reference/library/4l.md#tash-so)
-[`++tec`](@/docs/reference/library/4h.md#tec)
-[`++ted:ab`](@/docs/reference/library/4j.md#ted-ab)
-[`++teff`](@/docs/reference/library/4b.md#teff)
-[`++teil:ob`](@/docs/reference/library/3f.md#teil-ob)
-[`++term`](@/docs/reference/library/2q.md#term)
-[`++test`](@/docs/reference/library/2n.md#test)
-[`++tid:ab`](@/docs/reference/library/4j.md#tid-ab)
-[`++tiki`](@/docs/reference/library/4o.md#tiki)
-[`++til:ab`](@/docs/reference/library/4j.md#til-ab)
-[`++tip:ab`](@/docs/reference/library/4j.md#tip-ab)
-[`++tiq:ab`](@/docs/reference/library/4j.md#tiq-ab)
-[`++tis`](@/docs/reference/library/4h.md#tis)
-[`++to`](@/docs/reference/library/2k.md#to)
-[`++tod:po`](@/docs/reference/library/4a.md#tod-po)
-[`++toga`](@/docs/reference/library/4o.md#toga)
-[`++toi:ff`](@/docs/reference/library/3b.md#toi-ff)
-[`++toi:fl`](@/docs/reference/library/3b.md#toi-fl)
-[`++toi:rd`](@/docs/reference/library/3b.md#toi-rd)
-[`++toi:rh`](@/docs/reference/library/3b.md#toi-rh)
-[`++toi:rs`](@/docs/reference/library/3b.md#toi-rs)
-[`++toi:rq`](@/docs/reference/library/3b.md#toi-rq)
-[`++toj:fl`](@/docs/reference/library/3b.md#toj-fl)
-[`++tone`](@/docs/reference/library/3g.md#tone)
-[`++toon`](@/docs/reference/library/3g.md#toon)
-[`+-top:to`](@/docs/reference/library/2k.md#top-to)
-[`++tos:po`](@/docs/reference/library/4a.md#tos-po)
-[`++tos:rh`](@/docs/reference/library/3b.md#tos-rh)
-[`++trap`](@/docs/reference/library/1c.md#trap)
-[`++tree`](@/docs/reference/library/1c.md#tree)
-[`++trel`](@/docs/reference/library/1c.md#trel)
-[`++trim`](@/docs/reference/library/4b.md#trim)
-[`++trip`](@/docs/reference/library/4b.md#trip)
-[`++tuba`](@/docs/reference/library/4b.md#tuba)
-[`++tufa`](@/docs/reference/library/4b.md#tufa)
-[`++tuna`](@/docs/reference/library/4o.md#tuna)
-[`++tuft`](@/docs/reference/library/4b.md#tuft)
-[`++turf`](@/docs/reference/library/4b.md#turf)
-[`++turn`](@/docs/reference/library/2b.md#turn)
-[`++tusk`](@/docs/reference/library/4o.md#tusk)
-[`++twid:so`](@/docs/reference/library/4l.md#twid-so)
-[`++tyke`](@/docs/reference/library/4o.md#tyke)
-[`++typo`](@/docs/reference/library/4o.md#typo)
-[`++tyre`](@/docs/reference/library/4o.md#tyre)
+<a href='https://urbit.org/docs/reference/library/2n.md#tail'><code>++tail</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#tap-to'><code>+-tap:to</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#tar'><code>++tar</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tang'><code>++tang</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tank'><code>++tank</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#tap-by'><code>+-tap:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#tap-in'><code>+-tap:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tape'><code>++tape</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tarp'><code>++tarp</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#tash-so'><code>++tash:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#tec'><code>++tec</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#ted-ab'><code>++ted:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#teff'><code>++teff</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#teil-ob'><code>++teil:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#term'><code>++term</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#test'><code>++test</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#tid-ab'><code>++tid:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tiki'><code>++tiki</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#til-ab'><code>++til:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#tip-ab'><code>++tip:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#tiq-ab'><code>++tiq:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#tis'><code>++tis</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#to'><code>++to</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#tod-po'><code>++tod:po</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#toga'><code>++toga</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-ff'><code>++toi:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-fl'><code>++toi:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rd'><code>++toi:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rh'><code>++toi:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rs'><code>++toi:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rq'><code>++toi:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toj-fl'><code>++toj:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#tone'><code>++tone</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#toon'><code>++toon</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#top-to'><code>+-top:to</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#tos-po'><code>++tos:po</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#tos-rh'><code>++tos:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#trap'><code>++trap</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#tree'><code>++tree</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#trel'><code>++trel</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#trim'><code>++trim</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#trip'><code>++trip</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#tuba'><code>++tuba</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#tufa'><code>++tufa</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tuna'><code>++tuna</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#tuft'><code>++tuft</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#turf'><code>++turf</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#turn'><code>++turn</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tusk'><code>++tusk</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#twid-so'><code>++twid:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tyke'><code>++tyke</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#typo'><code>++typo</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tyre'><code>++tyre</code></a>
 
 ### u
 
-[`++un`](@/docs/reference/library/3f.md#un)
-[`+-uni:by`](@/docs/reference/library/2i.md#uni-by)
-[`++uni:fl`](@/docs/reference/library/3b.md#uni-fl)
-[`+-uni:in`](@/docs/reference/library/2h.md#uni-in)
-[`++unit`](@/docs/reference/library/1c.md#unit)
-[`+-urn:by`](@/docs/reference/library/2i.md#urn-by)
-[`++urs:ab`](@/docs/reference/library/4j.md#urs-ab)
-[`++urt:ab`](@/docs/reference/library/4j.md#urt-ab)
+<a href='https://urbit.org/docs/reference/library/3f.md#un'><code>++un</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#uni-by'><code>+-uni:by</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#uni-fl'><code>++uni:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#uni-in'><code>+-uni:in</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#unit'><code>++unit</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#urn-by'><code>+-urn:by</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#urs-ab'><code>++urs:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#urt-ab'><code>++urt:ab</code></a>
 
 ### v
 
-[`++v:ne`](@/docs/reference/library/4j.md#v-ne)
-`++vang`
-[`++vase`](@/docs/reference/library/4o.md#vase)
-`++vast`
-[`++ven`](@/docs/reference/library/4i.md#ven)
-[`++vise`](@/docs/reference/library/4o.md#vise)
-[`++vit`](@/docs/reference/library/4i.md#vit)
-[`++viz:ag`](@/docs/reference/library/4j.md#viz-ag)
-[`++vor`](@/docs/reference/library/2f.md#vor)
-[`++voy:ab`](@/docs/reference/library/4j.md#voy-ab)
-[`++vul`](@/docs/reference/library/4i.md#vul)
-[`++vum:ag`](@/docs/reference/library/4j.md#vum-ag)
+<a href='https://urbit.org/docs/reference/library/4j.md#v-ne'><code>++v:ne</code></a>
+<code>++vang</code>
+<a href='https://urbit.org/docs/reference/library/4o.md#vase'><code>++vase</code></a>
+<code>++vast</code>
+<a href='https://urbit.org/docs/reference/library/4i.md#ven'><code>++ven</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#vise'><code>++vise</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#vit'><code>++vit</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#viz-ag'><code>++viz:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#vor'><code>++vor</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#voy-ab'><code>++voy:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#vul'><code>++vul</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#vum-ag'><code>++vum:ag</code></a>
 
 ### w
 
-[`++w:ne`](@/docs/reference/library/4j.md#w-ne)
-[`++wack`](@/docs/reference/library/4b.md#wack)
-[`++wain`](@/docs/reference/library/2q.md#wain)
-[`++wall`](@/docs/reference/library/2q.md#wall)
-[`++weld`](@/docs/reference/library/2b.md#weld)
-[`++weld:nl`](@/docs/reference/library/2m.md#weld-nl)
-[`++welp`](@/docs/reference/library/2b.md#welp)
-[`++wick`](@/docs/reference/library/4b.md#wick)
-[`++wig:re`](@/docs/reference/library/4c.md#wig-re)
-[`++win:re`](@/docs/reference/library/4c.md#win-re)
-[`++wing`](@/docs/reference/library/4o.md#wing)
-[`++wiz:ag`](@/docs/reference/library/4j.md#wiz-ag)
-[`++woad`](@/docs/reference/library/4b.md#woad)
-[`++wood`](@/docs/reference/library/4b.md#wood)
-[`++wonk`](@/docs/reference/library/3g.md#wonk)
-[`++wred:un`](@/docs/reference/library/3f.md#wred-un)
-[`++wren:un`](@/docs/reference/library/3f.md#wren-un)
-[`++wut`](@/docs/reference/library/4h.md#wut)
-[`+-wyt:by`](@/docs/reference/library/2i.md#wyt-by)
-[`+-wyt:in`](@/docs/reference/library/2h.md#wyt-in)
+<a href='https://urbit.org/docs/reference/library/4j.md#w-ne'><code>++w:ne</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#wack'><code>++wack</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#wain'><code>++wain</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#wall'><code>++wall</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#weld'><code>++weld</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#weld-nl'><code>++weld:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#welp'><code>++welp</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#wick'><code>++wick</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#wig-re'><code>++wig:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#win-re'><code>++win:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#wing'><code>++wing</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#wiz-ag'><code>++wiz:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#woad'><code>++woad</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#wood'><code>++wood</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#wonk'><code>++wonk</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#wred-un'><code>++wred:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#wren-un'><code>++wren:un</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#wut'><code>++wut</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#wyt-by'><code>+-wyt:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#wyt-in'><code>+-wyt:in</code></a>
 
 ### x
 
-[`++x:ne`](@/docs/reference/library/4j.md#x-ne)
-[`++xeb`](@/docs/reference/library/2c.md#xeb)
-[`++xpd:fl`](@/docs/reference/library/3b.md#xpd-fl)
+<a href='https://urbit.org/docs/reference/library/4j.md#x-ne'><code>++x:ne</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#xeb'><code>++xeb</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#xpd-fl'><code>++xpd:fl</code></a>
 
 ### y
 
-[`++yall`](@/docs/reference/library/3c.md#yall)
-[`++yawn`](@/docs/reference/library/3c.md#yawn)
-[`++year`](@/docs/reference/library/3c.md#year)
-[`++yell`](@/docs/reference/library/3c.md#yell)
-[`++yelp`](@/docs/reference/library/3c.md#yelp)
-[`++yer:yo`](@/docs/reference/library/3c.md#yer-yo)
-[`++yo`](@/docs/reference/library/3c.md#yo)
-[`++yore`](@/docs/reference/library/3c.md#yore)
-[`++yule`](@/docs/reference/library/3c.md#yule)
+<a href='https://urbit.org/docs/reference/library/3c.md#yall'><code>++yall</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yawn'><code>++yawn</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#year'><code>++year</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yell'><code>++yell</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yelp'><code>++yelp</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yer-yo'><code>++yer:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yo'><code>++yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yore'><code>++yore</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yule'><code>++yule</code></a>
 
 ### z
 
-[`++zaft:un`](@/docs/reference/library/3f.md#zaft-un)
-[`++zag:mu`](@/docs/reference/library/4j.md#zag-mu)
-[`++zap`](@/docs/reference/library/4h.md#zap)
-[`++zart:un`](@/docs/reference/library/3f.md#zart-un)
-[`++zer:fl`](@/docs/reference/library/3b.md#zer-fl)
-[`++zig:mu`](@/docs/reference/library/4j.md#zig-mu)
-[`++zing`](@/docs/reference/library/2b.md#zing)
-[`++zug:mu`](@/docs/reference/library/4j.md#zug-mu)
-[`++zust:so`](@/docs/reference/library/4l.md#zust-so)
-[`++zyft:un`](@/docs/reference/library/3f.md#zyft-un)
-[`++zyrt:un`](@/docs/reference/library/3f.md#zyrt-un)
+<a href='https://urbit.org/docs/reference/library/3f.md#zaft-un'><code>++zaft:un</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#zag-mu'><code>++zag:mu</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#zap'><code>++zap</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zart-un'><code>++zart:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#zer-fl'><code>++zer:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#zig-mu'><code>++zig:mu</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#zing'><code>++zing</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#zug-mu'><code>++zug:mu</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#zust-so'><code>++zust:so</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zyft-un'><code>++zyft:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zyrt-un'><code>++zyrt:un</code></a>
 
 ## By Section
 
 ### 1a: basic arithmetic
 
-[`++add`](@/docs/reference/library/1a.md#add)
-[`++dec`](@/docs/reference/library/1a.md#dec)
-[`++div`](@/docs/reference/library/1a.md#div)
-[`++dvr`](@/docs/reference/library/1a.md#dvr)
-[`++gte`](@/docs/reference/library/1a.md#gte)
-[`++gth`](@/docs/reference/library/1a.md#gth)
-[`++lte`](@/docs/reference/library/1a.md#lte)
-[`++lth`](@/docs/reference/library/1a.md#lth)
-[`++max`](@/docs/reference/library/1a.md#max)
-[`++min`](@/docs/reference/library/1a.md#min)
-[`++mod`](@/docs/reference/library/1a.md#mod)
-[`++mul`](@/docs/reference/library/1a.md#mul)
-[`++sub`](@/docs/reference/library/1a.md#sub)
+<a href='https://urbit.org/docs/reference/library/1a.md#add' data-tippy-content="Add"><code>++add</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#dec'><code>++dec</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#div'><code>++div</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#dvr'><code>++dvr</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#gte'><code>++gte</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#gth'><code>++gth</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#lte'><code>++lte</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#lth'><code>++lth</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#max'><code>++max</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#min'><code>++min</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#mod'><code>++mod</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#mul'><code>++mul</code></a>
+<a href='https://urbit.org/docs/reference/library/1a.md#sub'><code>++sub</code></a>
 
 ### 1b: tree addressing
 
-[`++cap`](@/docs/reference/library/1b.md#cap)
-[`++mas`](@/docs/reference/library/1b.md#mas)
-[`++peg`](@/docs/reference/library/1b.md#peg)
+<a href='https://urbit.org/docs/reference/library/1b.md#cap'><code>++cap</code></a>
+<a href='https://urbit.org/docs/reference/library/1b.md#mas'><code>++mas</code></a>
+<a href='https://urbit.org/docs/reference/library/1b.md#peg'><code>++peg</code></a>
 
 ### 1c: molds and mold builders
 
-[`++bloq`](@/docs/reference/library/1c.md#bloq)
-[`++each`](@/docs/reference/library/1c.md#each)
-[`++gate`](@/docs/reference/library/1c.md#gate)
-[`++list`](@/docs/reference/library/1c.md#list)
-[`++lone`](@/docs/reference/library/1c.md#lone)
-[`++pair`](@/docs/reference/library/1c.md#pair)
-[`++pole`](@/docs/reference/library/1c.md#pole)
-[`++quip`](@/docs/reference/library/1c.md#quip)
-[`++trap`](@/docs/reference/library/1c.md#trap)
-[`++tree`](@/docs/reference/library/1c.md#tree)
-[`++trel`](@/docs/reference/library/1c.md#trel)
-[`++unit`](@/docs/reference/library/1c.md#unit)
+<a href='https://urbit.org/docs/reference/library/1c.md#bloq'><code>++bloq</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#each'><code>++each</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#gate'><code>++gate</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#list'><code>++list</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#lone'><code>++lone</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#pair'><code>++pair</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#pole'><code>++pole</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#quip'><code>++quip</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#trap'><code>++trap</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#tree'><code>++tree</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#trel'><code>++trel</code></a>
+<a href='https://urbit.org/docs/reference/library/1c.md#unit'><code>++unit</code></a>
 
 ### 2a: unit logic
 
-[`++biff`](@/docs/reference/library/2a.md#biff)
-[`++bind`](@/docs/reference/library/2a.md#bind)
-[`++bond`](@/docs/reference/library/2a.md#bond)
-[`++both`](@/docs/reference/library/2a.md#both)
-[`++clap`](@/docs/reference/library/2a.md#clap)
-[`++drop`](@/docs/reference/library/2a.md#drop)
-[`++fall`](@/docs/reference/library/2a.md#fall)
-[`++lift`](@/docs/reference/library/2a.md#lift)
-[`++mate`](@/docs/reference/library/2a.md#mate)
-[`++need`](@/docs/reference/library/2a.md#need)
-[`++some`](@/docs/reference/library/2a.md#some)
+<a href='https://urbit.org/docs/reference/library/2a.md#biff'><code>++biff</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#bind'><code>++bind</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#bond'><code>++bond</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#both'><code>++both</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#clap'><code>++clap</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#drop'><code>++drop</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#fall'><code>++fall</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#lift'><code>++lift</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#mate'><code>++mate</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#need'><code>++need</code></a>
+<a href='https://urbit.org/docs/reference/library/2a.md#some'><code>++some</code></a>
 
 ### 2b: list logic
 
-[`++fand`](@/docs/reference/library/2b.md#fand)
-[`++find`](@/docs/reference/library/2b.md#find)
-[`++flop`](@/docs/reference/library/2b.md#flop)
-[`++gulf`](@/docs/reference/library/2b.md#gulf)
-[`++homo`](@/docs/reference/library/2b.md#homo)
-[`++lent`](@/docs/reference/library/2b.md#lent)
-[`++levy`](@/docs/reference/library/2b.md#levy)
-[`++lien`](@/docs/reference/library/2b.md#lien)
-[`++limo`](@/docs/reference/library/2b.md#limo)
-[`++murn`](@/docs/reference/library/2b.md#murn)
-[`++oust`](@/docs/reference/library/2b.md#oust)
-[`++reap`](@/docs/reference/library/2b.md#reap)
-[`++reel`](@/docs/reference/library/2b.md#reel)
-[`++roll`](@/docs/reference/library/2b.md#roll)
-[`++scag`](@/docs/reference/library/2b.md#scag)
-[`++skid`](@/docs/reference/library/2b.md#skid)
-[`++skim`](@/docs/reference/library/2b.md#skim)
-[`++skip`](@/docs/reference/library/2b.md#skip)
-[`++slag`](@/docs/reference/library/2b.md#slag)
-[`++snag`](@/docs/reference/library/2b.md#snag)
-[`++snoc`](@/docs/reference/library/2b.md#snoc)
-[`++sort`](@/docs/reference/library/2b.md#sort)
-[`++spin`](@/docs/reference/library/2b.md#spin)
-[`++spun`](@/docs/reference/library/2b.md#spun)
-[`++swag`](@/docs/reference/library/2b.md#swag)
-[`++turn`](@/docs/reference/library/2b.md#turn)
-[`++weld`](@/docs/reference/library/2b.md#weld)
-[`++welp`](@/docs/reference/library/2b.md#welp)
-[`++zing`](@/docs/reference/library/2b.md#zing)
+<a href='https://urbit.org/docs/reference/library/2b.md#fand'><code>++fand</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#find'><code>++find</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#flop'><code>++flop</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#gulf'><code>++gulf</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#homo'><code>++homo</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#lent'><code>++lent</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#levy'><code>++levy</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#lien'><code>++lien</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#limo'><code>++limo</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#murn'><code>++murn</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#oust'><code>++oust</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#reap'><code>++reap</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#reel'><code>++reel</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#roll'><code>++roll</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#scag'><code>++scag</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#skid'><code>++skid</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#skim'><code>++skim</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#skip'><code>++skip</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#slag'><code>++slag</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#snag'><code>++snag</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#snoc'><code>++snoc</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#sort'><code>++sort</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#spin'><code>++spin</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#spun'><code>++spun</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#swag'><code>++swag</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#turn'><code>++turn</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#weld'><code>++weld</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#welp'><code>++welp</code></a>
+<a href='https://urbit.org/docs/reference/library/2b.md#zing'><code>++zing</code></a>
 
 ### 2c: bit arithmetic
 
-[`++fe`](@/docs/reference/library/2c.md#fe)
-[`++dif:fe`](@/docs/reference/library/2c.md#dif-fe)
-[`++inv:fe`](@/docs/reference/library/2c.md#inv-fe)
-[`++net:fe`](@/docs/reference/library/2c.md#net-fe)
-[`++out:fe`](@/docs/reference/library/2c.md#out-fe)
-[`++rol:fe`](@/docs/reference/library/2c.md#rol-fe)
-[`++ror:fe`](@/docs/reference/library/2c.md#ror-fe)
-[`++sit:fe`](@/docs/reference/library/2c.md#sit-fe)
-[`++sum:fe`](@/docs/reference/library/2c.md#sum-fe)
+<a href='https://urbit.org/docs/reference/library/2c.md#fe'><code>++fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#dif-fe'><code>++dif:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#inv-fe'><code>++inv:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#net-fe'><code>++net:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#out-fe'><code>++out:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rol-fe'><code>++rol:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#ror-fe'><code>++ror:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#sit-fe'><code>++sit:fe</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#sum-fe'><code>++sum:fe</code></a>
 
-[`++bex`](@/docs/reference/library/2c.md#bex)
-[`++can`](@/docs/reference/library/2c.md#can)
-[`++cat`](@/docs/reference/library/2c.md#cat)
-[`++cut`](@/docs/reference/library/2c.md#cut)
-[`++end`](@/docs/reference/library/2c.md#end)
-[`++fil`](@/docs/reference/library/2c.md#fil)
-[`++lsh`](@/docs/reference/library/2c.md#lsh)
-[`++met`](@/docs/reference/library/2c.md#met)
-[`++rap`](@/docs/reference/library/2c.md#rap)
-[`++rep`](@/docs/reference/library/2c.md#rep)
-[`++rip`](@/docs/reference/library/2c.md#rip)
-[`++rsh`](@/docs/reference/library/2c.md#rsh)
-[`++swp`](@/docs/reference/library/2c.md#swp)
-[`++xeb`](@/docs/reference/library/2c.md#xeb)
+<a href='https://urbit.org/docs/reference/library/2c.md#bex'><code>++bex</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#can'><code>++can</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#cat'><code>++cat</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#cut'><code>++cut</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#end'><code>++end</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#fil'><code>++fil</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#lsh'><code>++lsh</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#met'><code>++met</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rap'><code>++rap</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rep'><code>++rep</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rip'><code>++rip</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#rsh'><code>++rsh</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#swp'><code>++swp</code></a>
+<a href='https://urbit.org/docs/reference/library/2c.md#xeb'><code>++xeb</code></a>
 
 ### 2d: bit logic
 
-[`++con`](@/docs/reference/library/2d.md#con)
-[`++dis`](@/docs/reference/library/2d.md#dis)
-[`++mix`](@/docs/reference/library/2d.md#mix)
-[`++not`](@/docs/reference/library/2d.md#not)
+<a href='https://urbit.org/docs/reference/library/2d.md#con'><code>++con</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#dis'><code>++dis</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#mix'><code>++mix</code></a>
+<a href='https://urbit.org/docs/reference/library/2d.md#not'><code>++not</code></a>
 
 ### 2e: insecure hashing
 
-[`++fnv`](@/docs/reference/library/2e.md#fnv)
-[`++mug`](@/docs/reference/library/2e.md#mug)
-[`++muk`](@/docs/reference/library/2e.md#muk)
-[`++mum`](@/docs/reference/library/2e.md#mum)
+<a href='https://urbit.org/docs/reference/library/2e.md#fnv'><code>++fnv</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#mug'><code>++mug</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#muk'><code>++muk</code></a>
+<a href='https://urbit.org/docs/reference/library/2e.md#mum'><code>++mum</code></a>
 
 ### 2f: noun ordering
 
-[`++aor`](@/docs/reference/library/2f.md#aor)
-[`++dor`](@/docs/reference/library/2f.md#dor)
-[`++gor`](@/docs/reference/library/2f.md#gor)
-[`++hor`](@/docs/reference/library/2f.md#hor)
-[`++lor`](@/docs/reference/library/2f.md#lor)
-[`++vor`](@/docs/reference/library/2f.md#vor)
+<a href='https://urbit.org/docs/reference/library/2f.md#aor' data-tippy-content="Alphabetical order"><code>++aor</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#dor'><code>++dor</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#gor'><code>++gor</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#hor'><code>++hor</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#lor'><code>++lor</code></a>
+<a href='https://urbit.org/docs/reference/library/2f.md#vor'><code>++vor</code></a>
 
 ### 2g: unsigned powers
 
-[`++pow`](@/docs/reference/library/2g.md#pow)
-[`++sqt`](@/docs/reference/library/2g.md#sqt)
+<a href='https://urbit.org/docs/reference/library/2g.md#pow'><code>++pow</code></a>
+<a href='https://urbit.org/docs/reference/library/2g.md#sqt'><code>++sqt</code></a>
 
 ### 2h: set logic
 
-[`++in`](@/docs/reference/library/2h.md#in)
-[`+-all:in`](@/docs/reference/library/2h.md#all-in)
-[`+-any:in`](@/docs/reference/library/2h.md#any-in)
-[`+-apt:in`](@/docs/reference/library/2h.md#apt-in)
-[`+-bif:in`](@/docs/reference/library/2h.md#bif-in)
-[`+-del:in`](@/docs/reference/library/2h.md#del-in)
-[`+-dif:in`](@/docs/reference/library/2h.md#dif-in)
-[`+-dig:in`](@/docs/reference/library/2h.md#dig-in)
-[`+-gas:in`](@/docs/reference/library/2h.md#gas-in)
-[`+-has:in`](@/docs/reference/library/2h.md#has-in)
-[`+-int:in`](@/docs/reference/library/2h.md#int-in)
-[`+-put:in`](@/docs/reference/library/2h.md#put-in)
-[`+-rep:in`](@/docs/reference/library/2h.md#rep-in)
-[`+-run:in`](@/docs/reference/library/2h.md#run-in)
-[`+-tap:in`](@/docs/reference/library/2h.md#tap-in)
-[`+-uni:in`](@/docs/reference/library/2h.md#uni-in)
-[`+-wyt:in`](@/docs/reference/library/2h.md#wyt-in)
+<a href='https://urbit.org/docs/reference/library/2h.md#in'><code>++in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#all-in' data-tippy-content="Logical AND (set and wet gate)"><code>+-all:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#any-in' data-tippy-content="Logical OR (set and gate)"><code>+-any:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#apt-in' data-tippy-content="Check correctness (set)"><code>+-apt:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#bif-in'><code>+-bif:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#del-in'><code>+-del:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#dif-in'><code>+-dif:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#dig-in'><code>+-dig:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#gas-in'><code>+-gas:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#has-in'><code>+-has:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#int-in'><code>+-int:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#put-in'><code>+-put:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#rep-in'><code>+-rep:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#run-in'><code>+-run:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#tap-in'><code>+-tap:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#uni-in'><code>+-uni:in</code></a>
+<a href='https://urbit.org/docs/reference/library/2h.md#wyt-in'><code>+-wyt:in</code></a>
 
 ### 2i: map logic
 
-[`++by`](@/docs/reference/library/2i.md#by)
-[`+-all:by`](@/docs/reference/library/2i.md#all-by)
-[`+-any:by`](@/docs/reference/library/2i.md#any-by)
-[`+-apt:by`](@/docs/reference/library/2i.md#apt-by)
-[`+-bif:by`](@/docs/reference/library/2i.md#bif-by)
-[`+-def:by`](@/docs/reference/library/2i.md#def-by)
-[`+-del:by`](@/docs/reference/library/2i.md#del-by)
-[`+-dep:by`](@/docs/reference/library/2i.md#dep-by)
-[`+-dig:by`](@/docs/reference/library/2i.md#dig-by)
-[`+-gas:by`](@/docs/reference/library/2i.md#gas-by)
-[`+-get:by`](@/docs/reference/library/2i.md#get-by)
-[`+-got:by`](@/docs/reference/library/2i.md#got-by)
-[`+-has:by`](@/docs/reference/library/2i.md#has-by)
-[`+-int:by`](@/docs/reference/library/2i.md#int-by)
-[`+-mar:by`](@/docs/reference/library/2i.md#mar-by)
-[`+-put:by`](@/docs/reference/library/2i.md#put-by)
-[`+-rep:by`](@/docs/reference/library/2i.md#rep-by)
-[`+-rib:by`](@/docs/reference/library/2i.md#rib-by)
-[`+-run:by`](@/docs/reference/library/2i.md#run-by)
-[`+-rut:by`](@/docs/reference/library/2i.md#rut-by)
-[`+-tap:by`](@/docs/reference/library/2i.md#tap-by)
-[`+-uni:by`](@/docs/reference/library/2i.md#uni-by)
-[`+-urn:by`](@/docs/reference/library/2i.md#urn-by)
-[`+-wyt:by`](@/docs/reference/library/2i.md#wyt-by)
+<a href='https://urbit.org/docs/reference/library/2i.md#by'><code>++by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#all-by' data-tippy-content="Logical AND (map and wet gate)"><code>+-all:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#any-by' data-tippy-content="Logical OR (map and wet gate)"><code>+-any:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#apt-by' data-tippy-content="Check correctness (map)"><code>+-apt:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#bif-by'><code>+-bif:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#def-by'><code>+-def:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#del-by'><code>+-del:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#dep-by'><code>+-dep:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#dig-by'><code>+-dig:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#gas-by'><code>+-gas:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#get-by'><code>+-get:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#got-by'><code>+-got:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#has-by'><code>+-has:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#int-by'><code>+-int:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#mar-by'><code>+-mar:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#put-by'><code>+-put:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#rep-by'><code>+-rep:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#rib-by'><code>+-rib:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#run-by'><code>+-run:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#rut-by'><code>+-rut:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#tap-by'><code>+-tap:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#uni-by'><code>+-uni:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#urn-by'><code>+-urn:by</code></a>
+<a href='https://urbit.org/docs/reference/library/2i.md#wyt-by'><code>+-wyt:by</code></a>
 
 ### 2j: jar and jug logic
 
-[`++ja`](@/docs/reference/library/2j.md#ja)
-[`+-add:ja`](@/docs/reference/library/2j.md#add-ja)
-[`+-get:ja`](@/docs/reference/library/2j.md#get-ja)
+<a href='https://urbit.org/docs/reference/library/2j.md#ja'><code>++ja</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#add-ja' data-tippy-content="Prepend to list"><code>+-add:ja</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#get-ja'><code>+-get:ja</code></a>
 
-[`++ju`](@/docs/reference/library/2j.md#ju)
-[`+-del:ju`](@/docs/reference/library/2j.md#del-ju)
-[`+-get:ju`](@/docs/reference/library/2j.md#get-ju)
-[`+-has:ju`](@/docs/reference/library/2j.md#has-ju)
-[`+-put:ju`](@/docs/reference/library/2j.md#put-ju)
+<a href='https://urbit.org/docs/reference/library/2j.md#ju'><code>++ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#del-ju'><code>+-del:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#get-ju'><code>+-get:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#has-ju'><code>+-has:ju</code></a>
+<a href='https://urbit.org/docs/reference/library/2j.md#put-ju'><code>+-put:ju</code></a>
 
 ### 2k: queue logic
 
-[`++to`](@/docs/reference/library/2k.md#to)
-[`+-bal:to`](@/docs/reference/library/2k.md#bal-to)
-[`+-dep:to`](@/docs/reference/library/2k.md#dep-to)
-[`+-gas:to`](@/docs/reference/library/2k.md#gas-to)
-[`+-get:to`](@/docs/reference/library/2k.md#get-to)
-[`+-nap:to`](@/docs/reference/library/2k.md#nap-to)
-[`+-nip:to`](@/docs/reference/library/2k.md#nip-to)
-[`+-put:to`](@/docs/reference/library/2k.md#put-to)
-[`+-tap:to`](@/docs/reference/library/2k.md#tap-to)
-[`+-top:to`](@/docs/reference/library/2k.md#top-to)
+<a href='https://urbit.org/docs/reference/library/2k.md#to'><code>++to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#bal-to'><code>+-bal:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#dep-to'><code>+-dep:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#gas-to'><code>+-gas:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#get-to'><code>+-get:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#nap-to'><code>+-nap:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#nip-to'><code>+-nip:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#put-to'><code>+-put:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#tap-to'><code>+-tap:to</code></a>
+<a href='https://urbit.org/docs/reference/library/2k.md#top-to'><code>+-top:to</code></a>
 
 ### 2l: container from container
 
-[`++malt`](@/docs/reference/library/2l.md#malt)
-[`++molt`](@/docs/reference/library/2l.md#molt)
-[`++silt`](@/docs/reference/library/2l.md#silt)
+<a href='https://urbit.org/docs/reference/library/2l.md#malt'><code>++malt</code></a>
+<a href='https://urbit.org/docs/reference/library/2l.md#molt'><code>++molt</code></a>
+<a href='https://urbit.org/docs/reference/library/2l.md#silt'><code>++silt</code></a>
 
 ### 2m: container from noun
 
-[`++nl`](@/docs/reference/library/2m.md#nl)
-[`++le:nl`](@/docs/reference/library/2m.md#le-nl)
-[`++my:nl`](@/docs/reference/library/2m.md#my-nl)
-[`++si:nl`](@/docs/reference/library/2m.md#si-nl)
-[`++snag:nl`](@/docs/reference/library/2m.md#snag-nl)
-[`++weld:nl`](@/docs/reference/library/2m.md#weld-nl)
+<a href='https://urbit.org/docs/reference/library/2m.md#nl'><code>++nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#le-nl'><code>++le:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#my-nl'><code>++my:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#si-nl'><code>++si:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#snag-nl'><code>++snag:nl</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#weld-nl'><code>++weld:nl</code></a>
 
-[`++ly`](@/docs/reference/library/2m.md#ly)
-[`++my`](@/docs/reference/library/2m.md#my)
-[`++sy`](@/docs/reference/library/2m.md#sy)
+<a href='https://urbit.org/docs/reference/library/2m.md#ly'><code>++ly</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#my'><code>++my</code></a>
+<a href='https://urbit.org/docs/reference/library/2m.md#sy'><code>++sy</code></a>
 
 ### 2n: functional hacks
 
-[`++cork`](@/docs/reference/library/2n.md#cork)
-[`++corl`](@/docs/reference/library/2n.md#corl)
-[`++curr`](@/docs/reference/library/2n.md#curr)
-[`++cury`](@/docs/reference/library/2n.md#cury)
-[`++hard`](@/docs/reference/library/2n.md#hard)
-[`++head`](@/docs/reference/library/2n.md#head)
-[`++mean`](@/docs/reference/library/2n.md#mean)
-[`++same`](@/docs/reference/library/2n.md#same)
-[`++slog`](@/docs/reference/library/2n.md#slog)
-[`++soft`](@/docs/reference/library/2n.md#soft)
-[`++tail`](@/docs/reference/library/2n.md#tail)
-[`++test`](@/docs/reference/library/2n.md#test)
+<a href='https://urbit.org/docs/reference/library/2n.md#cork'><code>++cork</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#corl'><code>++corl</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#curr'><code>++curr</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#cury'><code>++cury</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#hard'><code>++hard</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#head'><code>++head</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#mean'><code>++mean</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#same'><code>++same</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#slog'><code>++slog</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#soft'><code>++soft</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#tail'><code>++tail</code></a>
+<a href='https://urbit.org/docs/reference/library/2n.md#test'><code>++test</code></a>
 
 ### 2o: normalizing containers
 
-[`++jar`](@/docs/reference/library/2o.md#jar)
-[`++jug`](@/docs/reference/library/2o.md#jug)
-[`++map`](@/docs/reference/library/2o.md#map)
-[`++qeu`](@/docs/reference/library/2o.md#qeu)
-[`++set`](@/docs/reference/library/2o.md#set)
+<a href='https://urbit.org/docs/reference/library/2o.md#jar'><code>++jar</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#jug'><code>++jug</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#map'><code>++map</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#qeu'><code>++qeu</code></a>
+<a href='https://urbit.org/docs/reference/library/2o.md#set'><code>++set</code></a>
 
 ### 2p: serialization
 
-[`++cue`](@/docs/reference/library/2p.md#cue)
-[`++jam`](@/docs/reference/library/2p.md#jam)
-[`++mat`](@/docs/reference/library/2p.md#mat)
-[`++rub`](@/docs/reference/library/2p.md#rub)
+<a href='https://urbit.org/docs/reference/library/2p.md#cue'><code>++cue</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#jam'><code>++jam</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#mat'><code>++mat</code></a>
+<a href='https://urbit.org/docs/reference/library/2p.md#rub'><code>++rub</code></a>
 
 ### 2q: molds and mold builders
 
-[`++char`](@/docs/reference/library/2q.md#char)
-[`++cord`](@/docs/reference/library/2q.md#cord)
-[`++date`](@/docs/reference/library/2q.md#date)
-[`++knot`](@/docs/reference/library/2q.md#knot)
-[`++tang`](@/docs/reference/library/2q.md#tang)
-[`++tank`](@/docs/reference/library/2q.md#tank)
-[`++tape`](@/docs/reference/library/2q.md#tape)
-[`++tarp`](@/docs/reference/library/2q.md#tarp)
-[`++term`](@/docs/reference/library/2q.md#term)
-[`++wain`](@/docs/reference/library/2q.md#wain)
-[`++wall`](@/docs/reference/library/2q.md#wall)
+<a href='https://urbit.org/docs/reference/library/2q.md#char'><code>++char</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#cord'><code>++cord</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#date'><code>++date</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#knot'><code>++knot</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tang'><code>++tang</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tank'><code>++tank</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tape'><code>++tape</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#tarp'><code>++tarp</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#term'><code>++term</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#wain'><code>++wain</code></a>
+<a href='https://urbit.org/docs/reference/library/2q.md#wall'><code>++wall</code></a>
 
 ### 3a: modular and signed ints
 
-[`++fo`](@/docs/reference/library/3a.md#fo)
-[`++dif:fo`](@/docs/reference/library/3a.md#dif-fo)
-[`++exp:fo`](@/docs/reference/library/3a.md#exp-fo)
-[`++fra:fo`](@/docs/reference/library/3a.md#fra-fo)
-[`++inv:fo`](@/docs/reference/library/3a.md#inv-fo)
-[`++pro:fo`](@/docs/reference/library/3a.md#pro-fo)
-[`++sit:fo`](@/docs/reference/library/3a.md#sit-fo)
-[`++sum:fo`](@/docs/reference/library/3a.md#sum-fo)
+<a href='https://urbit.org/docs/reference/library/3a.md#fo'><code>++fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#dif-fo'><code>++dif:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#exp-fo'><code>++exp:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#fra-fo'><code>++fra:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#inv-fo'><code>++inv:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#pro-fo'><code>++pro:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sit-fo'><code>++sit:fo</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sum-fo'><code>++sum:fo</code></a>
 
-[`++si`](@/docs/reference/library/3a.md#si)
-[`++abs:si`](@/docs/reference/library/3a.md#abs-si)
-[`++cmp:si`](@/docs/reference/library/3a.md#cmp-si)
-[`++dif:si`](@/docs/reference/library/3a.md#dif-si)
-[`++dul:si`](@/docs/reference/library/3a.md#dul-si)
-[`++fra:si`](@/docs/reference/library/3a.md#fra-si)
-[`++new:si`](@/docs/reference/library/3a.md#new-si)
-[`++old:si`](@/docs/reference/library/3a.md#old-si)
-[`++pro:si`](@/docs/reference/library/3a.md#pro-si)
-[`++rem:si`](@/docs/reference/library/3a.md#rem-si)
-[`++sum:si`](@/docs/reference/library/3a.md#sum-si)
-[`++sun:si`](@/docs/reference/library/3a.md#sun-si)
-[`++syn:si`](@/docs/reference/library/3a.md#syn-si)
+<a href='https://urbit.org/docs/reference/library/3a.md#si'><code>++si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#abs-si' data-tippy-content="Absolute value (signed integer)"><code>++abs:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#cmp-si'><code>++cmp:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#dif-si'><code>++dif:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#dul-si'><code>++dul:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#fra-si'><code>++fra:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#new-si'><code>++new:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#old-si'><code>++old:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#pro-si'><code>++pro:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#rem-si'><code>++rem:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sum-si'><code>++sum:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#sun-si'><code>++sun:si</code></a>
+<a href='https://urbit.org/docs/reference/library/3a.md#syn-si'><code>++syn:si</code></a>
 
-[`++egcd`](@/docs/reference/library/3a.md#egcd)
+<a href='https://urbit.org/docs/reference/library/3a.md#egcd'><code>++egcd</code></a>
 
 ### 3b: floating point
 
-[`++dn`](@/docs/reference/library/3b.md#dn)
-[`++fn`](@/docs/reference/library/3b.md#fn)
-[`++rn`](@/docs/reference/library/3b.md#rn)
+<a href='https://urbit.org/docs/reference/library/3b.md#dn'><code>++dn</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fn'><code>++fn</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rn'><code>++rn</code></a>
 
-[`++ff`](@/docs/reference/library/3b.md#ff)
-[`++add:ff`](@/docs/reference/library/3b.md#add-ff)
-[`++bif:ff`](@/docs/reference/library/3b.md#bif-ff)
-[`++bit:ff`](@/docs/reference/library/3b.md#bit-ff)
-[`++div:ff`](@/docs/reference/library/3b.md#div-ff)
-[`++drg:ff`](@/docs/reference/library/3b.md#drg-ff)
-[`++equ:ff`](@/docs/reference/library/3b.md#equ-ff)
-[`++exp:ff`](@/docs/reference/library/3b.md#exp-ff)
-[`++fma:ff`](@/docs/reference/library/3b.md#fma-ff)
-[`++grd:ff`](@/docs/reference/library/3b.md#grd-ff)
-[`++gte:ff`](@/docs/reference/library/3b.md#gte-ff)
-[`++gth:ff`](@/docs/reference/library/3b.md#gth-ff)
-[`++lte:ff`](@/docs/reference/library/3b.md#lte-ff)
-[`++lth:ff`](@/docs/reference/library/3b.md#lth-ff)
-[`++me:ff`](@/docs/reference/library/3b.md#me-ff)
-[`++mul:ff`](@/docs/reference/library/3b.md#mul-ff)
-[`++pa:ff`](@/docs/reference/library/3b.md#pa-ff)
-[`++san:ff`](@/docs/reference/library/3b.md#san-ff)
-[`++sb:ff`](@/docs/reference/library/3b.md#sb-ff)
-[`++sea:ff`](@/docs/reference/library/3b.md#sea-ff)
-[`++sig:ff`](@/docs/reference/library/3b.md#sig-ff)
-[`++sqt:ff`](@/docs/reference/library/3b.md#sqt-ff)
-[`++sub:ff`](@/docs/reference/library/3b.md#sub-ff)
-[`++sun:ff`](@/docs/reference/library/3b.md#sun-ff)
-[`++toi:ff`](@/docs/reference/library/3b.md#toi-ff)
+<a href='https://urbit.org/docs/reference/library/3b.md#ff'><code>++ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-ff' data-tippy-content="Add (floating point)"><code>++add:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bif-ff'><code>++bif:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-ff'><code>++bit:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-ff'><code>++div:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-ff'><code>++drg:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-ff'><code>++equ:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-ff'><code>++exp:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-ff'><code>++fma:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-ff'><code>++grd:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-ff'><code>++gte:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-ff'><code>++gth:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-ff'><code>++lte:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-ff'><code>++lth:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#me-ff'><code>++me:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-ff'><code>++mul:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#pa-ff'><code>++pa:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-ff'><code>++san:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sb-ff'><code>++sb:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-ff'><code>++sea:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-ff'><code>++sig:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-ff'><code>++sqt:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-ff'><code>++sub:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-ff'><code>++sun:ff</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-ff'><code>++toi:ff</code></a>
 
-[`++fl`](@/docs/reference/library/3b.md#fl)
-[`++abs:fl`](@/docs/reference/library/3b.md#abs-fl)
-[`++add:fl`](@/docs/reference/library/3b.md#add-fl)
-[`++den:fl`](@/docs/reference/library/3b.md#den-fl)
-[`++div:fl`](@/docs/reference/library/3b.md#div-fl)
-[`++drg:fl`](@/docs/reference/library/3b.md#drg-fl)
-[`++ead:fl`](@/docs/reference/library/3b.md#ead-fl)
-[`++emn:fl`](@/docs/reference/library/3b.md#emn-fl)
-[`++emu:fl`](@/docs/reference/library/3b.md#emu-fl)
-[`++emx:fl`](@/docs/reference/library/3b.md#emx-fl)
-[`++equ:fl`](@/docs/reference/library/3b.md#equ-fl)
-[`++fli:fl`](@/docs/reference/library/3b.md#fli-fl)
-[`++fma:fl`](@/docs/reference/library/3b.md#fma-fl)
-[`++grd:fl`](@/docs/reference/library/3b.md#grd-fl)
-[`++gte:fl`](@/docs/reference/library/3b.md#gte-fl)
-[`++gth:fl`](@/docs/reference/library/3b.md#gth-fl)
-[`++ibl:fl`](@/docs/reference/library/3b.md#ibl-fl)
-[`++inv:fl`](@/docs/reference/library/3b.md#inv-fl)
-[`++lfe:fl`](@/docs/reference/library/3b.md#lfe-fl)
-[`++lfn:fl`](@/docs/reference/library/3b.md#lfn-fl)
-[`++lte:fl`](@/docs/reference/library/3b.md#lte-fl)
-[`++lth:fl`](@/docs/reference/library/3b.md#lth-fl)
-[`++lug:fl`](@/docs/reference/library/3b.md#lug-fl)
-[`++mul:fl`](@/docs/reference/library/3b.md#mul-fl)
-[`++ned:fl`](@/docs/reference/library/3b.md#ned-fl)
-[`++prc:fl`](@/docs/reference/library/3b.md#prc-fl)
-[`++rau:fl`](@/docs/reference/library/3b.md#rau-fl)
-[`++rou:fl`](@/docs/reference/library/3b.md#rou-fl)
-[`++san:fl`](@/docs/reference/library/3b.md#san-fl)
-[`++shf:fl`](@/docs/reference/library/3b.md#shf-fl)
-[`++spd:fl`](@/docs/reference/library/3b.md#spd-fl)
-[`++spn:fl`](@/docs/reference/library/3b.md#spn-fl)
-[`++sqt:fl`](@/docs/reference/library/3b.md#sqt-fl)
-[`++sub:fl`](@/docs/reference/library/3b.md#sub-fl)
-[`++sun:fl`](@/docs/reference/library/3b.md#sun-fl)
-[`++swr:fl`](@/docs/reference/library/3b.md#swr-fl)
-[`++syn:fl`](@/docs/reference/library/3b.md#syn-fl)
-[`++toi:fl`](@/docs/reference/library/3b.md#toi-fl)
-[`++toj:fl`](@/docs/reference/library/3b.md#toj-fl)
-[`++uni:fl`](@/docs/reference/library/3b.md#uni-fl)
-[`++xpd:fl`](@/docs/reference/library/3b.md#xpd-fl)
-[`++zer:fl`](@/docs/reference/library/3b.md#zer-fl)
+<a href='https://urbit.org/docs/reference/library/3b.md#fl'><code>++fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#abs-fl' data-tippy-content="Absolute value"><code>++abs:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-fl' data-tippy-content="Add (with exact/rounded flag)"><code>++add:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#den-fl'><code>++den:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-fl'><code>++div:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-fl'><code>++drg:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ead-fl'><code>++ead:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#emn-fl'><code>++emn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#emu-fl'><code>++emu:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#emx-fl'><code>++emx:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-fl'><code>++equ:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fli-fl'><code>++fli:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-fl'><code>++fma:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-fl'><code>++grd:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-fl'><code>++gte:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-fl'><code>++gth:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ibl-fl'><code>++ibl:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#inv-fl'><code>++inv:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lfe-fl'><code>++lfe:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lfn-fl'><code>++lfn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-fl'><code>++lte:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-fl'><code>++lth:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lug-fl'><code>++lug:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-fl'><code>++mul:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ned-fl'><code>++ned:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#prc-fl'><code>++prc:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rau-fl'><code>++rau:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rou-fl'><code>++rou:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-fl'><code>++san:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#shf-fl'><code>++shf:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#spd-fl'><code>++spd:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#spn-fl'><code>++spn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-fl'><code>++sqt:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-fl'><code>++sub:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-fl'><code>++sun:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#swr-fl'><code>++swr:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#syn-fl'><code>++syn:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-fl'><code>++toi:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toj-fl'><code>++toj:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#uni-fl'><code>++uni:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#xpd-fl'><code>++xpd:fl</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#zer-fl'><code>++zer:fl</code></a>
 
-[`++rd`](@/docs/reference/library/3b.md#rd)
-[`++add:rd`](@/docs/reference/library/3b.md#add-rd)
-[`++bit:rd`](@/docs/reference/library/3b.md#bit-rd)
-[`++div:rd`](@/docs/reference/library/3b.md#div-rd)
-[`++drg:rd`](@/docs/reference/library/3b.md#drg-rd)
-[`++equ:rd`](@/docs/reference/library/3b.md#equ-rd)
-[`++exp:rd`](@/docs/reference/library/3b.md#exp-rd)
-[`++fma:rd`](@/docs/reference/library/3b.md#fma-rd)
-[`++grd:rd`](@/docs/reference/library/3b.md#grd-rd)
-[`++gte:rd`](@/docs/reference/library/3b.md#gte-rd)
-[`++gth:rd`](@/docs/reference/library/3b.md#gth-rd)
-[`++lte:rd`](@/docs/reference/library/3b.md#lte-rd)
-[`++lth:rd`](@/docs/reference/library/3b.md#lth-rd)
-[`++ma:rd`](@/docs/reference/library/3b.md#ma-rd)
-[`++mul:rd`](@/docs/reference/library/3b.md#mul-rd)
-[`++san:rd`](@/docs/reference/library/3b.md#san-rd)
-[`++sea:rd`](@/docs/reference/library/3b.md#sea-rd)
-[`++sig:rd`](@/docs/reference/library/3b.md#sig-rd)
-[`++sqt:rd`](@/docs/reference/library/3b.md#sqt-rd)
-[`++sub:rd`](@/docs/reference/library/3b.md#sub-rd)
-[`++sun:rd`](@/docs/reference/library/3b.md#sun-rd)
-[`++toi:rd`](@/docs/reference/library/3b.md#toi-rd)
+<a href='https://urbit.org/docs/reference/library/3b.md#rd'><code>++rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rd' data-tippy-content="Add (double-precision float)"><code>++add:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rd'><code>++bit:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rd'><code>++div:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rd'><code>++drg:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rd'><code>++equ:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rd'><code>++exp:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rd'><code>++fma:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rd'><code>++grd:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rd'><code>++gte:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rd'><code>++gth:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rd'><code>++lte:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rd'><code>++lth:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rd'><code>++ma:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rd'><code>++mul:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rd'><code>++san:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rd'><code>++sea:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rd'><code>++sig:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rd'><code>++sqt:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rd'><code>++sub:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rd'><code>++sun:rd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rd'><code>++toi:rd</code></a>
 
-[`++rh`](@/docs/reference/library/3b.md#rh)
-[`++add:rh`](@/docs/reference/library/3b.md#add-rh)
-[`++bit:rh`](@/docs/reference/library/3b.md#bit-rh)
-[`++div:rh`](@/docs/reference/library/3b.md#div-rh)
-[`++drg:rh`](@/docs/reference/library/3b.md#drg-rh)
-[`++equ:rh`](@/docs/reference/library/3b.md#equ-rh)
-[`++exp:rh`](@/docs/reference/library/3b.md#exp-rh)
-[`++fma:rh`](@/docs/reference/library/3b.md#fma-rh)
-[`++fos:rh`](@/docs/reference/library/3b.md#fos-rh)
-[`++grd:rh`](@/docs/reference/library/3b.md#grd-rh)
-[`++gte:rh`](@/docs/reference/library/3b.md#gte-rh)
-[`++gth:rh`](@/docs/reference/library/3b.md#gth-rh)
-[`++lte:rh`](@/docs/reference/library/3b.md#lte-rh)
-[`++lth:rh`](@/docs/reference/library/3b.md#lth-rh)
-[`++ma:rh`](@/docs/reference/library/3b.md#ma-rh)
-[`++mul:rh`](@/docs/reference/library/3b.md#mul-rh)
-[`++san:rh`](@/docs/reference/library/3b.md#san-rh)
-[`++sea:rh`](@/docs/reference/library/3b.md#sea-rh)
-[`++sig:rh`](@/docs/reference/library/3b.md#sig-rh)
-[`++sqt:rh`](@/docs/reference/library/3b.md#sqt-rh)
-[`++sub:rh`](@/docs/reference/library/3b.md#sub-rh)
-[`++sun:rh`](@/docs/reference/library/3b.md#sun-rh)
-[`++toi:rh`](@/docs/reference/library/3b.md#toi-rh)
-[`++tos:rh`](@/docs/reference/library/3b.md#tos-rh)
+<a href='https://urbit.org/docs/reference/library/3b.md#rh'><code>++rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rh' data-tippy-content="Add (half-precision float)"><code>++add:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rh'><code>++bit:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rh'><code>++div:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rh'><code>++drg:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rh'><code>++equ:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rh'><code>++exp:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rh'><code>++fma:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fos-rh'><code>++fos:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rh'><code>++grd:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rh'><code>++gte:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rh'><code>++gth:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rh'><code>++lte:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rh'><code>++lth:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rh'><code>++ma:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rh'><code>++mul:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rh'><code>++san:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rh'><code>++sea:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rh'><code>++sig:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rh'><code>++sqt:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rh'><code>++sub:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rh'><code>++sun:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rh'><code>++toi:rh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#tos-rh'><code>++tos:rh</code></a>
 
-[`++rs`](@/docs/reference/library/3b.md#rs)
-[`++add:rs`](@/docs/reference/library/3b.md#add-rs)
-[`++bit:rs`](@/docs/reference/library/3b.md#bit-rs)
-[`++div:rs`](@/docs/reference/library/3b.md#div-rs)
-[`++drg:rs`](@/docs/reference/library/3b.md#drg-rs)
-[`++equ:rs`](@/docs/reference/library/3b.md#equ-rs)
-[`++exp:rs`](@/docs/reference/library/3b.md#exp-rs)
-[`++fma:rs`](@/docs/reference/library/3b.md#fma-rs)
-[`++grd:rs`](@/docs/reference/library/3b.md#grd-rs)
-[`++gte:rs`](@/docs/reference/library/3b.md#gte-rs)
-[`++gth:rs`](@/docs/reference/library/3b.md#gth-rs)
-[`++lte:rs`](@/docs/reference/library/3b.md#lte-rs)
-[`++lth:rs`](@/docs/reference/library/3b.md#lth-rs)
-[`++ma:rs`](@/docs/reference/library/3b.md#ma-rs)
-[`++mul:rs`](@/docs/reference/library/3b.md#mul-rs)
-[`++san:rs`](@/docs/reference/library/3b.md#san-rs)
-[`++sea:rs`](@/docs/reference/library/3b.md#sea-rs)
-[`++sig:rs`](@/docs/reference/library/3b.md#sig-rs)
-[`++sqt:rs`](@/docs/reference/library/3b.md#sqt-rs)
-[`++sub:rs`](@/docs/reference/library/3b.md#sub-rs)
-[`++sun:rs`](@/docs/reference/library/3b.md#sun-rs)
-[`++toi:rs`](@/docs/reference/library/3b.md#toi-rs)
+<a href='https://urbit.org/docs/reference/library/3b.md#rs'><code>++rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rs' data-tippy-content="Add (single-precision float)"><code>++add:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rs'><code>++bit:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rs'><code>++div:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rs'><code>++drg:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rs'><code>++equ:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rs'><code>++exp:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rs'><code>++fma:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rs'><code>++grd:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rs'><code>++gte:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rs'><code>++gth:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rs'><code>++lte:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rs'><code>++lth:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rs'><code>++ma:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rs'><code>++mul:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rs'><code>++san:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rs'><code>++sea:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rs'><code>++sig:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rs'><code>++sqt:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rs'><code>++sub:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rs'><code>++sun:rs</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rs'><code>++toi:rs</code></a>
 
-[`++rq`](@/docs/reference/library/3b.md#rq)
-[`++add:rq`](@/docs/reference/library/3b.md#add-rq)
-[`++bit:rq`](@/docs/reference/library/3b.md#bit-rq)
-[`++div:rq`](@/docs/reference/library/3b.md#div-rq)
-[`++drg:rq`](@/docs/reference/library/3b.md#drg-rq)
-[`++equ:rq`](@/docs/reference/library/3b.md#equ-rq)
-[`++exp:rq`](@/docs/reference/library/3b.md#exp-rq)
-[`++fma:rq`](@/docs/reference/library/3b.md#fma-rq)
-[`++grd:rq`](@/docs/reference/library/3b.md#grd-rq)
-[`++gte:rq`](@/docs/reference/library/3b.md#gte-rq)
-[`++gth:rq`](@/docs/reference/library/3b.md#gth-rq)
-[`++lte:rq`](@/docs/reference/library/3b.md#lte-rq)
-[`++lth:rq`](@/docs/reference/library/3b.md#lth-rq)
-[`++ma:rq`](@/docs/reference/library/3b.md#ma-rq)
-[`++mul:rq`](@/docs/reference/library/3b.md#mul-rq)
-[`++san:rq`](@/docs/reference/library/3b.md#san-rq)
-[`++sea:rq`](@/docs/reference/library/3b.md#sea-rq)
-[`++sig:rq`](@/docs/reference/library/3b.md#sig-rq)
-[`++sqt:rq`](@/docs/reference/library/3b.md#sqt-rq)
-[`++sub:rq`](@/docs/reference/library/3b.md#sub-rq)
-[`++sun:rq`](@/docs/reference/library/3b.md#sun-rq)
-[`++toi:rq`](@/docs/reference/library/3b.md#toi-rq)
+<a href='https://urbit.org/docs/reference/library/3b.md#rq'><code>++rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#add-rq' data-tippy-content="Add (quad-precision float)"><code>++add:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#bit-rq'><code>++bit:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#div-rq'><code>++div:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#drg-rq'><code>++drg:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#equ-rq'><code>++equ:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#exp-rq'><code>++exp:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#fma-rq'><code>++fma:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#grd-rq'><code>++grd:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gte-rq'><code>++gte:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#gth-rq'><code>++gth:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lte-rq'><code>++lte:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#lth-rq'><code>++lth:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ma-rq'><code>++ma:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#mul-rq'><code>++mul:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#san-rq'><code>++san:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sea-rq'><code>++sea:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sig-rq'><code>++sig:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sqt-rq'><code>++sqt:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sub-rq'><code>++sub:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#sun-rq'><code>++sun:rq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#toi-rq'><code>++toi:rq</code></a>
 
-[`++rlyd`](@/docs/reference/library/3b.md#rlyd)
-[`++rlyh`](@/docs/reference/library/3b.md#rlyh)
-[`++rlyq`](@/docs/reference/library/3b.md#rlyq)
-[`++rlys`](@/docs/reference/library/3b.md#rlys)
-[`++ryld`](@/docs/reference/library/3b.md#ryld)
-[`++rylh`](@/docs/reference/library/3b.md#rylh)
-[`++rylq`](@/docs/reference/library/3b.md#rylq)
-[`++ryls`](@/docs/reference/library/3b.md#ryls)
+<a href='https://urbit.org/docs/reference/library/3b.md#rlyd'><code>++rlyd</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rlyh'><code>++rlyh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rlyq'><code>++rlyq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rlys'><code>++rlys</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ryld'><code>++ryld</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rylh'><code>++rylh</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#rylq'><code>++rylq</code></a>
+<a href='https://urbit.org/docs/reference/library/3b.md#ryls'><code>++ryls</code></a>
 
 ### 3c: urbit time
 
-[`++yo`](@/docs/reference/library/3c.md#yo)
-[`++cet:yo`](@/docs/reference/library/3c.md#cet-yo)
-[`++day:yo`](@/docs/reference/library/3c.md#day-yo)
-[`++era:yo`](@/docs/reference/library/3c.md#era-yo)
-[`++hor:yo`](@/docs/reference/library/3c.md#hor-yo)
-[`++jes:yo`](@/docs/reference/library/3c.md#jes-yo)
-[`++mit:yo`](@/docs/reference/library/3c.md#mit-yo)
-[`++moh:yo`](@/docs/reference/library/3c.md#moh-yo)
-[`++moy:yo`](@/docs/reference/library/3c.md#moy-yo)
-[`++qad:yo`](@/docs/reference/library/3c.md#qad-yo)
-[`++yer:yo`](@/docs/reference/library/3c.md#yer-yo)
+<a href='https://urbit.org/docs/reference/library/3c.md#yo'><code>++yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#cet-yo'><code>++cet:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#day-yo'><code>++day:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#era-yo'><code>++era:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#hor-yo'><code>++hor:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#jes-yo'><code>++jes:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#mit-yo'><code>++mit:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#moh-yo'><code>++moh:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#moy-yo'><code>++moy:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#qad-yo'><code>++qad:yo</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yer-yo'><code>++yer:yo</code></a>
 
-[`++yall`](@/docs/reference/library/3c.md#yall)
-[`++yawn`](@/docs/reference/library/3c.md#yawn)
-[`++year`](@/docs/reference/library/3c.md#year)
-[`++yell`](@/docs/reference/library/3c.md#yell)
-[`++yelp`](@/docs/reference/library/3c.md#yelp)
-[`++yore`](@/docs/reference/library/3c.md#yore)
-[`++yule`](@/docs/reference/library/3c.md#yule)
+<a href='https://urbit.org/docs/reference/library/3c.md#yall'><code>++yall</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yawn'><code>++yawn</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#year'><code>++year</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yell'><code>++yell</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yelp'><code>++yelp</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yore'><code>++yore</code></a>
+<a href='https://urbit.org/docs/reference/library/3c.md#yule'><code>++yule</code></a>
 
 ### 3d: SHA hash family
 
-[`++og`](@/docs/reference/library/3d.md#og)
-[`++rad:og`](@/docs/reference/library/3d.md#rad-og)
-[`++rads:og`](@/docs/reference/library/3d.md#rads-og)
-[`++raw:og`](@/docs/reference/library/3d.md#raw-og)
-[`++raws:og`](@/docs/reference/library/3d.md#raws-og)
+<a href='https://urbit.org/docs/reference/library/3d.md#og'><code>++og</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#rad-og'><code>++rad:og</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#rads-og'><code>++rads:og</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#raw-og'><code>++raw:og</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#raws-og'><code>++raws:og</code></a>
 
-[`++shad`](@/docs/reference/library/3d.md#shad)
-[`++shaf`](@/docs/reference/library/3d.md#shaf)
-[`++shal`](@/docs/reference/library/3d.md#shal)
-[`++sham`](@/docs/reference/library/3d.md#sham)
-[`++shan`](@/docs/reference/library/3d.md#shan)
-[`++shas`](@/docs/reference/library/3d.md#shas)
-[`++shaw`](@/docs/reference/library/3d.md#shaw)
-[`++shax`](@/docs/reference/library/3d.md#shax)
-[`++shay`](@/docs/reference/library/3d.md#shay)
-[`++shaz`](@/docs/reference/library/3d.md#shaz)
+<a href='https://urbit.org/docs/reference/library/3d.md#shad'><code>++shad</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shaf'><code>++shaf</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shal'><code>++shal</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#sham'><code>++sham</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shan'><code>++shan</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shas'><code>++shas</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shaw'><code>++shaw</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shax'><code>++shax</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shay'><code>++shay</code></a>
+<a href='https://urbit.org/docs/reference/library/3d.md#shaz'><code>++shaz</code></a>
 
 ### 3e: AES encryption
 
-[_(removed)_](@/docs/reference/library/3e.md)
+<a href='https://urbit.org/docs/reference/library/3e.md'>_(removed)_</a>
 
 ### 3f: scrambling
 
-[`++ob`](@/docs/reference/library/3f.md#ob)
-[`++feen:ob`](@/docs/reference/library/3f.md#feen-ob)
-[`++fend:ob`](@/docs/reference/library/3f.md#fend-ob)
-[`++fice:ob`](@/docs/reference/library/3f.md#fice-ob)
-[`++raku:ob`](@/docs/reference/library/3f.md#raku-ob)
-[`++rund:ob`](@/docs/reference/library/3f.md#rund-ob)
-[`++rynd:ob`](@/docs/reference/library/3f.md#rynd-ob)
-[`++teil:ob`](@/docs/reference/library/3f.md#teil-ob)
+<a href='https://urbit.org/docs/reference/library/3f.md#ob'><code>++ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#feen-ob'><code>++feen:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#fend-ob'><code>++fend:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#fice-ob'><code>++fice:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#raku-ob'><code>++raku:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#rund-ob'><code>++rund:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#rynd-ob'><code>++rynd:ob</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#teil-ob'><code>++teil:ob</code></a>
 
-[`++un`](@/docs/reference/library/3f.md#un)
-[`++wred:un`](@/docs/reference/library/3f.md#wred-un)
-[`++wren:un`](@/docs/reference/library/3f.md#wren-un)
-[`++xafo:un`](@/docs/reference/library/3f.md#xafo-un)
-[`++xaro:un`](@/docs/reference/library/3f.md#xaro-un)
-[`++zaft:un`](@/docs/reference/library/3f.md#zaft-un)
-[`++zart:un`](@/docs/reference/library/3f.md#zart-un)
-[`++zyft:un`](@/docs/reference/library/3f.md#zyft-un)
-[`++zyrt:un`](@/docs/reference/library/3f.md#zyrt-un)
+<a href='https://urbit.org/docs/reference/library/3f.md#un'><code>++un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#wred-un'><code>++wred:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#wren-un'><code>++wren:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#xafo-un'><code>++xafo:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#xaro-un'><code>++xaro:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zaft-un'><code>++zaft:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zart-un'><code>++zart:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zyft-un'><code>++zyft:un</code></a>
+<a href='https://urbit.org/docs/reference/library/3f.md#zyrt-un'><code>++zyrt:un</code></a>
 
 ### 3g: molds and mold builders
 
-[`++coin`](@/docs/reference/library/3g.md#coin)
-[`++dime`](@/docs/reference/library/3g.md#dime)
-[`++edge`](@/docs/reference/library/3g.md#edge)
-[`++hair`](@/docs/reference/library/3g.md#hair)
-[`++like`](@/docs/reference/library/3g.md#like)
-[`++nail`](@/docs/reference/library/3g.md#nail)
-[`++path`](@/docs/reference/library/3g.md#path)
-[`++pint`](@/docs/reference/library/3g.md#pint)
-[`++rule`](@/docs/reference/library/3g.md#rule)
-[`++spot`](@/docs/reference/library/3g.md#spot)
-[`++tone`](@/docs/reference/library/3g.md#tone)
-[`++toon`](@/docs/reference/library/3g.md#toon)
-[`++wonk`](@/docs/reference/library/3g.md#wonk)
+<a href='https://urbit.org/docs/reference/library/3g.md#coin'><code>++coin</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#dime'><code>++dime</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#edge'><code>++edge</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#hair'><code>++hair</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#like'><code>++like</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#nail'><code>++nail</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#path'><code>++path</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#pint'><code>++pint</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#rule'><code>++rule</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#spot'><code>++spot</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#tone'><code>++tone</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#toon'><code>++toon</code></a>
+<a href='https://urbit.org/docs/reference/library/3g.md#wonk'><code>++wonk</code></a>
 
 ### 4a: exotic bases
 
-[`++po`](@/docs/reference/library/4a.md#po)
-[`++ind:po`](@/docs/reference/library/4a.md#ind-po)
-[`++ins:po`](@/docs/reference/library/4a.md#ins-po)
-[`++tod:po`](@/docs/reference/library/4a.md#tod-po)
-[`++tos:po`](@/docs/reference/library/4a.md#tos-po)
+<a href='https://urbit.org/docs/reference/library/4a.md#po'><code>++po</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#ind-po'><code>++ind:po</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#ins-po'><code>++ins:po</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#tod-po'><code>++tod:po</code></a>
+<a href='https://urbit.org/docs/reference/library/4a.md#tos-po'><code>++tos:po</code></a>
 
 ### 4b: text processing
 
-[`++at`](@/docs/reference/library/4b.md#at)
-[`++r:at`](@/docs/reference/library/4b.md#r-at)
-[`++rf:at`](@/docs/reference/library/4b.md#rf-at)
-[`++rn:at`](@/docs/reference/library/4b.md#rn-at)
-[`++rt:at`](@/docs/reference/library/4b.md#rt-at)
-[`++rta:at`](@/docs/reference/library/4b.md#rta-at)
-[`++rtam:at`](@/docs/reference/library/4b.md#rtam-at)
-[`++rub:at`](@/docs/reference/library/4b.md#rub-at)
-[`++rud:at`](@/docs/reference/library/4b.md#rud-at)
-[`++rum:at`](@/docs/reference/library/4b.md#rum-at)
-[`++rup:at`](@/docs/reference/library/4b.md#rup-at)
-[`++ruv:at`](@/docs/reference/library/4b.md#ruv-at)
-[`++rux:at`](@/docs/reference/library/4b.md#rux-at)
+<a href='https://urbit.org/docs/reference/library/4b.md#at' data-tippy-content="(Undocumented)"><code>++at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#r-at'><code>++r:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rf-at'><code>++rf:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rn-at'><code>++rn:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rt-at'><code>++rt:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rta-at'><code>++rta:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rtam-at'><code>++rtam:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rub-at'><code>++rub:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rud-at'><code>++rud:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rum-at'><code>++rum:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rup-at'><code>++rup:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#ruv-at'><code>++ruv:at</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#rux-at'><code>++rux:at</code></a>
 
-[`++cass`](@/docs/reference/library/4b.md#cass)
-[`++crip`](@/docs/reference/library/4b.md#crip)
-[`++cuss`](@/docs/reference/library/4b.md#cuss)
-[`++mesc`](@/docs/reference/library/4b.md#mesc)
-[`++runt`](@/docs/reference/library/4b.md#runt)
-[`++sand`](@/docs/reference/library/4b.md#sand)
-[`++sane`](@/docs/reference/library/4b.md#sane)
-[`++teff`](@/docs/reference/library/4b.md#teff)
-[`++trim`](@/docs/reference/library/4b.md#trim)
-[`++trip`](@/docs/reference/library/4b.md#trip)
-[`++tuba`](@/docs/reference/library/4b.md#tuba)
-[`++tufa`](@/docs/reference/library/4b.md#tufa)
-[`++tuft`](@/docs/reference/library/4b.md#tuft)
-[`++turf`](@/docs/reference/library/4b.md#turf)
-[`++wack`](@/docs/reference/library/4b.md#wack)
-[`++wick`](@/docs/reference/library/4b.md#wick)
-[`++woad`](@/docs/reference/library/4b.md#woad)
-[`++wood`](@/docs/reference/library/4b.md#wood)
+<a href='https://urbit.org/docs/reference/library/4b.md#cass'><code>++cass</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#crip'><code>++crip</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#cuss'><code>++cuss</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#mesc'><code>++mesc</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#runt'><code>++runt</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#sand'><code>++sand</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#sane'><code>++sane</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#teff'><code>++teff</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#trim'><code>++trim</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#trip'><code>++trip</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#tuba'><code>++tuba</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#tufa'><code>++tufa</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#tuft'><code>++tuft</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#turf'><code>++turf</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#wack'><code>++wack</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#wick'><code>++wick</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#woad'><code>++woad</code></a>
+<a href='https://urbit.org/docs/reference/library/4b.md#wood'><code>++wood</code></a>
 
 ### 4c: tank printer
 
-[`++re`](@/docs/reference/library/4c.md#re)
-[`++din:re`](@/docs/reference/library/4c.md#din-re)
-[`++fit:re`](@/docs/reference/library/4c.md#fit-re)
-[`++ram:re`](@/docs/reference/library/4c.md#ram-re)
-[`++rig:re`](@/docs/reference/library/4c.md#rig-re)
-[`++wig:re`](@/docs/reference/library/4c.md#wig-re)
-[`++win:re`](@/docs/reference/library/4c.md#win-re)
+<a href='https://urbit.org/docs/reference/library/4c.md#re'><code>++re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#din-re'><code>++din:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#fit-re'><code>++fit:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#ram-re'><code>++ram:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#rig-re'><code>++rig:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#wig-re'><code>++wig:re</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#win-re'><code>++win:re</code></a>
 
-[`++shep`](@/docs/reference/library/4c.md#shep)
-[`++shop`](@/docs/reference/library/4c.md#shop)
-[`++show`](@/docs/reference/library/4c.md#show)
+<a href='https://urbit.org/docs/reference/library/4c.md#shep'><code>++shep</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#shop'><code>++shop</code></a>
+<a href='https://urbit.org/docs/reference/library/4c.md#show'><code>++show</code></a>
 
 ### 4d: parsing (tracing)
 
-[`++last`](@/docs/reference/library/4d.md#last)
-[`++lust`](@/docs/reference/library/4d.md#lust)
+<a href='https://urbit.org/docs/reference/library/4d.md#last'><code>++last</code></a>
+<a href='https://urbit.org/docs/reference/library/4d.md#lust'><code>++lust</code></a>
 
 ### 4e: parsing (combinators)
 
-[`++bend`](@/docs/reference/library/4e.md#bend)
-[`++comp`](@/docs/reference/library/4e.md#comp)
-[`++fail`](@/docs/reference/library/4e.md#fail)
-[`++glue`](@/docs/reference/library/4e.md#glue)
-[`++less`](@/docs/reference/library/4e.md#less)
-[`++pfix`](@/docs/reference/library/4e.md#pfix)
-[`++plug`](@/docs/reference/library/4e.md#plug)
-[`++pose`](@/docs/reference/library/4e.md#pose)
-[`++sfix`](@/docs/reference/library/4e.md#sfix)
-[`++simu`](@/docs/reference/library/4e.md#simu)
+<a href='https://urbit.org/docs/reference/library/4e.md#bend'><code>++bend</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#comp'><code>++comp</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#fail'><code>++fail</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#glue'><code>++glue</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#less'><code>++less</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#pfix'><code>++pfix</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#plug'><code>++plug</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#pose'><code>++pose</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#sfix'><code>++sfix</code></a>
+<a href='https://urbit.org/docs/reference/library/4e.md#simu'><code>++simu</code></a>
 
 ### 4f: parsing (rule builders)
 
-[`++bass`](@/docs/reference/library/4f.md#bass)
-[`++boss`](@/docs/reference/library/4f.md#boss)
-[`++cold`](@/docs/reference/library/4f.md#cold)
-[`++cook`](@/docs/reference/library/4f.md#cook)
-[`++easy`](@/docs/reference/library/4f.md#easy)
-[`++full`](@/docs/reference/library/4f.md#full)
-[`++funk`](@/docs/reference/library/4f.md#funk)
-[`++here`](@/docs/reference/library/4f.md#here)
-[`++ifix`](@/docs/reference/library/4f.md#ifix)
-[`++jest`](@/docs/reference/library/4f.md#jest)
-[`++just`](@/docs/reference/library/4f.md#just)
-[`++knee`](@/docs/reference/library/4f.md#knee)
-[`++mask`](@/docs/reference/library/4f.md#mask)
-[`++more`](@/docs/reference/library/4f.md#more)
-[`++most`](@/docs/reference/library/4f.md#most)
-[`++next`](@/docs/reference/library/4f.md#next)
-[`++plus`](@/docs/reference/library/4f.md#plus)
-[`++sear`](@/docs/reference/library/4f.md#sear)
-[`++shim`](@/docs/reference/library/4f.md#shim)
-[`++slug`](@/docs/reference/library/4f.md#slug)
-[`++stag`](@/docs/reference/library/4f.md#stag)
-[`++star`](@/docs/reference/library/4f.md#star)
-[`++stet`](@/docs/reference/library/4f.md#stet)
-[`++stew`](@/docs/reference/library/4f.md#stew)
-[`++stir`](@/docs/reference/library/4f.md#stir)
-[`++stun`](@/docs/reference/library/4f.md#stun)
+<a href='https://urbit.org/docs/reference/library/4f.md#bass'><code>++bass</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#boss'><code>++boss</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#cold'><code>++cold</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#cook'><code>++cook</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#easy'><code>++easy</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#full'><code>++full</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#funk'><code>++funk</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#here'><code>++here</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#ifix'><code>++ifix</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#jest'><code>++jest</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#just'><code>++just</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#knee'><code>++knee</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#mask'><code>++mask</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#more'><code>++more</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#most'><code>++most</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#next'><code>++next</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#plus'><code>++plus</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#sear'><code>++sear</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#shim'><code>++shim</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#slug'><code>++slug</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stag'><code>++stag</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#star'><code>++star</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stet'><code>++stet</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stew'><code>++stew</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stir'><code>++stir</code></a>
+<a href='https://urbit.org/docs/reference/library/4f.md#stun'><code>++stun</code></a>
 
 ### 4g: parsing (outside caller)
 
-[`++rash`](@/docs/reference/library/4g.md#rash)
-[`++rush`](@/docs/reference/library/4g.md#rush)
-[`++rust`](@/docs/reference/library/4g.md#rust)
-[`++scan`](@/docs/reference/library/4g.md#scan)
+<a href='https://urbit.org/docs/reference/library/4g.md#rash'><code>++rash</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#rush'><code>++rush</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#rust'><code>++rust</code></a>
+<a href='https://urbit.org/docs/reference/library/4g.md#scan'><code>++scan</code></a>
 
 ### 4h: parsing (ascii glyphs)
 
-[`++ace`](@/docs/reference/library/4h.md#ace)
-[`++bar`](@/docs/reference/library/4h.md#bar)
-[`++bas`](@/docs/reference/library/4h.md#bas)
-[`++buc`](@/docs/reference/library/4h.md#buc)
-[`++cab`](@/docs/reference/library/4h.md#cab)
-[`++cen`](@/docs/reference/library/4h.md#cen)
-[`++col`](@/docs/reference/library/4h.md#col)
-[`++com`](@/docs/reference/library/4h.md#com)
-[`++doq`](@/docs/reference/library/4h.md#doq)
-[`++dot`](@/docs/reference/library/4h.md#dot)
-[`++fas`](@/docs/reference/library/4h.md#fas)
-[`++gal`](@/docs/reference/library/4h.md#gal)
-[`++gar`](@/docs/reference/library/4h.md#gar)
-[`++hax`](@/docs/reference/library/4h.md#hax)
-[`++hep`](@/docs/reference/library/4h.md#hep)
-[`++kel`](@/docs/reference/library/4h.md#kel)
-[`++ker`](@/docs/reference/library/4h.md#ker)
-[`++ket`](@/docs/reference/library/4h.md#ket)
-[`++lus`](@/docs/reference/library/4h.md#lus)
-[`++pam`](@/docs/reference/library/4h.md#pam)
-[`++pat`](@/docs/reference/library/4h.md#pat)
-[`++pel`](@/docs/reference/library/4h.md#pel)
-[`++per`](@/docs/reference/library/4h.md#per)
-[`++sel`](@/docs/reference/library/4h.md#sel)
-[`++sem`](@/docs/reference/library/4h.md#sem)
-[`++ser`](@/docs/reference/library/4h.md#ser)
-[`++sig`](@/docs/reference/library/4h.md#sig)
-[`++soq`](@/docs/reference/library/4h.md#soq)
-[`++tar`](@/docs/reference/library/4h.md#tar)
-[`++tec`](@/docs/reference/library/4h.md#tec)
-[`++tis`](@/docs/reference/library/4h.md#tis)
-[`++wut`](@/docs/reference/library/4h.md#wut)
-[`++zap`](@/docs/reference/library/4h.md#zap)
+<a href='https://urbit.org/docs/reference/library/4h.md#ace' data-tippy-content="Parse space"><code>++ace</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#bar'><code>++bar</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#bas'><code>++bas</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#buc'><code>++buc</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#cab'><code>++cab</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#cen'><code>++cen</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#col'><code>++col</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#com'><code>++com</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#doq'><code>++doq</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#dot'><code>++dot</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#fas'><code>++fas</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#gal'><code>++gal</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#gar'><code>++gar</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#hax'><code>++hax</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#hep'><code>++hep</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#kel'><code>++kel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ker'><code>++ker</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ket'><code>++ket</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#lus'><code>++lus</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#pam'><code>++pam</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#pat'><code>++pat</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#pel'><code>++pel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#per'><code>++per</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#sel'><code>++sel</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#sem'><code>++sem</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#ser'><code>++ser</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#sig'><code>++sig</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#soq'><code>++soq</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#tar'><code>++tar</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#tec'><code>++tec</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#tis'><code>++tis</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#wut'><code>++wut</code></a>
+<a href='https://urbit.org/docs/reference/library/4h.md#zap'><code>++zap</code></a>
 
 ### 4i: parsing (useful idioms)
 
-[`++alf`](@/docs/reference/library/4i.md#alf)
-[`++aln`](@/docs/reference/library/4i.md#aln)
-[`++alp`](@/docs/reference/library/4i.md#alp)
-[`++bet`](@/docs/reference/library/4i.md#bet)
-[`++bin`](@/docs/reference/library/4i.md#bin)
-[`++but`](@/docs/reference/library/4i.md#but)
-[`++cit`](@/docs/reference/library/4i.md#cit)
-[`++dem`](@/docs/reference/library/4i.md#dem)
-[`++dit`](@/docs/reference/library/4i.md#dit)
-[`++dog`](@/docs/reference/library/4i.md#dog)
-[`++doh`](@/docs/reference/library/4i.md#doh)
-[`++dun`](@/docs/reference/library/4i.md#dun)
-[`++duz`](@/docs/reference/library/4i.md#duz)
-[`++gah`](@/docs/reference/library/4i.md#gah)
-[`++gap`](@/docs/reference/library/4i.md#gap)
-[`++gaq`](@/docs/reference/library/4i.md#gaq)
-[`++gaw`](@/docs/reference/library/4i.md#gaw)
-[`++gay`](@/docs/reference/library/4i.md#gay)
-[`++gon`](@/docs/reference/library/4i.md#gon)
-[`++gul`](@/docs/reference/library/4i.md#gul)
-[`++hex`](@/docs/reference/library/4i.md#hex)
-[`++hig`](@/docs/reference/library/4i.md#hig)
-[`++hit`](@/docs/reference/library/4i.md#hit)
-[`++iny`](@/docs/reference/library/4i.md#iny)
-[`++low`](@/docs/reference/library/4i.md#low)
-[`++mes`](@/docs/reference/library/4i.md#mes)
-[`++nix`](@/docs/reference/library/4i.md#nix)
-[`++nud`](@/docs/reference/library/4i.md#nud)
-[`++prn`](@/docs/reference/library/4i.md#prn)
-[`++qit`](@/docs/reference/library/4i.md#qit)
-[`++qut`](@/docs/reference/library/4i.md#qut)
-[`++soz`](@/docs/reference/library/4i.md#soz)
-[`++sym`](@/docs/reference/library/4i.md#sym)
-[`++ven`](@/docs/reference/library/4i.md#ven)
-[`++vit`](@/docs/reference/library/4i.md#vit)
-[`++vul`](@/docs/reference/library/4i.md#vul)
+<a href='https://urbit.org/docs/reference/library/4i.md#alf' data-tippy-content="Parse alphabetic characters"><code>++alf</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#aln' data-tippy-content="Parse alphanumeric characters"><code>++aln</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#alp' data-tippy-content="Parse alphanumeric characters and -"><code>++alp</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#bet'><code>++bet</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#bin'><code>++bin</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#but'><code>++but</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#cit'><code>++cit</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dem'><code>++dem</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dit'><code>++dit</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dog'><code>++dog</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#doh'><code>++doh</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#dun'><code>++dun</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#duz'><code>++duz</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gah'><code>++gah</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gap'><code>++gap</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gaq'><code>++gaq</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gaw'><code>++gaw</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gay'><code>++gay</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gon'><code>++gon</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#gul'><code>++gul</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#hex'><code>++hex</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#hig'><code>++hig</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#hit'><code>++hit</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#iny'><code>++iny</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#low'><code>++low</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#mes'><code>++mes</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#nix'><code>++nix</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#nud'><code>++nud</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#prn'><code>++prn</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#qit'><code>++qit</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#qut'><code>++qut</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#soz'><code>++soz</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#sym'><code>++sym</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#ven'><code>++ven</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#vit'><code>++vit</code></a>
+<a href='https://urbit.org/docs/reference/library/4i.md#vul'><code>++vul</code></a>
 
 ### 4j: parsing (bases and base digits)
 
-[`++ab`](@/docs/reference/library/4j.md#ab)
-[`++bix:ab`](@/docs/reference/library/4j.md#bix-ab)
-[`++hif:ab`](@/docs/reference/library/4j.md#hif-ab)
-[`++huf:ab`](@/docs/reference/library/4j.md#huf-ab)
-[`++hyf:ab`](@/docs/reference/library/4j.md#hyf-ab)
-[`++pev:ab`](@/docs/reference/library/4j.md#pev-ab)
-[`++pew:ab`](@/docs/reference/library/4j.md#pew-ab)
-[`++piv:ab`](@/docs/reference/library/4j.md#piv-ab)
-[`++piw:ab`](@/docs/reference/library/4j.md#piw-ab)
-[`++qeb:ab`](@/docs/reference/library/4j.md#qeb-ab)
-[`++qex:ab`](@/docs/reference/library/4j.md#qex-ab)
-[`++qib:ab`](@/docs/reference/library/4j.md#qib-ab)
-[`++qix:ab`](@/docs/reference/library/4j.md#qix-ab)
-[`++seb:ab`](@/docs/reference/library/4j.md#seb-ab)
-[`++sed:ab`](@/docs/reference/library/4j.md#sed-ab)
-[`++sev:ab`](@/docs/reference/library/4j.md#sev-ab)
-[`++sew:ab`](@/docs/reference/library/4j.md#sew-ab)
-[`++sex:ab`](@/docs/reference/library/4j.md#sex-ab)
-[`++sib:ab`](@/docs/reference/library/4j.md#sib-ab)
-[`++sid:ab`](@/docs/reference/library/4j.md#sid-ab)
-[`++siv:ab`](@/docs/reference/library/4j.md#siv-ab)
-[`++siw:ab`](@/docs/reference/library/4j.md#siw-ab)
-[`++six:ab`](@/docs/reference/library/4j.md#six-ab)
-[`++sov:ab`](@/docs/reference/library/4j.md#sov-ab)
-[`++sow:ab`](@/docs/reference/library/4j.md#sow-ab)
-[`++sox:ab`](@/docs/reference/library/4j.md#sox-ab)
-[`++ted:ab`](@/docs/reference/library/4j.md#ted-ab)
-[`++tid:ab`](@/docs/reference/library/4j.md#tid-ab)
-[`++til:ab`](@/docs/reference/library/4j.md#til-ab)
-[`++tip:ab`](@/docs/reference/library/4j.md#tip-ab)
-[`++tiq:ab`](@/docs/reference/library/4j.md#tiq-ab)
-[`++urs:ab`](@/docs/reference/library/4j.md#urs-ab)
-[`++urt:ab`](@/docs/reference/library/4j.md#urt-ab)
-[`++voy:ab`](@/docs/reference/library/4j.md#voy-ab)
+<a href='https://urbit.org/docs/reference/library/4j.md#ab' data-tippy-content="Primitive parser engine"><code>++ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#bix-ab'><code>++bix:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#hif-ab'><code>++hif:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#huf-ab'><code>++huf:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#hyf-ab'><code>++hyf:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#pev-ab'><code>++pev:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#pew-ab'><code>++pew:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#piv-ab'><code>++piv:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#piw-ab'><code>++piw:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qeb-ab'><code>++qeb:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qex-ab'><code>++qex:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qib-ab'><code>++qib:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#qix-ab'><code>++qix:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#seb-ab'><code>++seb:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sed-ab'><code>++sed:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sev-ab'><code>++sev:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sew-ab'><code>++sew:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sex-ab'><code>++sex:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sib-ab'><code>++sib:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sid-ab'><code>++sid:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#siv-ab'><code>++siv:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#siw-ab'><code>++siw:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#six-ab'><code>++six:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sov-ab'><code>++sov:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sow-ab'><code>++sow:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#sox-ab'><code>++sox:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#ted-ab'><code>++ted:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#tid-ab'><code>++tid:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#til-ab'><code>++til:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#tip-ab'><code>++tip:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#tiq-ab'><code>++tiq:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#urs-ab'><code>++urs:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#urt-ab'><code>++urt:ab</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#voy-ab'><code>++voy:ab</code></a>
 
-[`++ag`](@/docs/reference/library/4j.md#ag)
-[`++ape:ag`](@/docs/reference/library/4j.md#ape-ag)
-[`++bay:ag`](@/docs/reference/library/4j.md#bay-ag)
-[`++bip:ag`](@/docs/reference/library/4j.md#bip-ag)
-[`++dem:ag`](@/docs/reference/library/4j.md#dem-ag)
-[`++dim:ag`](@/docs/reference/library/4j.md#dim-ag)
-[`++dum:ag`](@/docs/reference/library/4j.md#dum-ag)
-[`++fed:ag`](@/docs/reference/library/4j.md#fed-ag)
-[`++hex:ag`](@/docs/reference/library/4j.md#hex-ag)
-[`++lip:ag`](@/docs/reference/library/4j.md#lip-ag)
-[`++viz:ag`](@/docs/reference/library/4j.md#viz-ag)
-[`++vum:ag`](@/docs/reference/library/4j.md#vum-ag)
-[`++wiz:ag`](@/docs/reference/library/4j.md#wiz-ag)
+<a href='https://urbit.org/docs/reference/library/4j.md#ag' data-tippy-content="Top-level atom parser engine"><code>++ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#ape-ag' data-tippy-content="Parse 0 or rule"><code>++ape:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#bay-ag'><code>++bay:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#bip-ag'><code>++bip:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#dem-ag'><code>++dem:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#dim-ag'><code>++dim:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#dum-ag'><code>++dum:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#fed-ag'><code>++fed:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#hex-ag'><code>++hex:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#lip-ag'><code>++lip:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#viz-ag'><code>++viz:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#vum-ag'><code>++vum:ag</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#wiz-ag'><code>++wiz:ag</code></a>
 
-[`++mu`](@/docs/reference/library/4j.md#mu)
-[`++zag:mu`](@/docs/reference/library/4j.md#zag-mu)
-[`++zig:mu`](@/docs/reference/library/4j.md#zig-mu)
-[`++zug:mu`](@/docs/reference/library/4j.md#zug-mu)
+<a href='https://urbit.org/docs/reference/library/4j.md#mu'><code>++mu</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#zag-mu'><code>++zag:mu</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#zig-mu'><code>++zig:mu</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#zug-mu'><code>++zug:mu</code></a>
 
-[`++ne`](@/docs/reference/library/4j.md#ne)
-[`++d:ne`](@/docs/reference/library/4j.md#d-ne)
-[`++v:ne`](@/docs/reference/library/4j.md#v-ne)
-[`++w:ne`](@/docs/reference/library/4j.md#w-ne)
-[`++x:ne`](@/docs/reference/library/4j.md#x-ne)
+<a href='https://urbit.org/docs/reference/library/4j.md#ne'><code>++ne</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#d-ne'><code>++d:ne</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#v-ne'><code>++v:ne</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#w-ne'><code>++w:ne</code></a>
+<a href='https://urbit.org/docs/reference/library/4j.md#x-ne'><code>++x:ne</code></a>
 
 ### 4k: parsing (atom printing)
 
-[`++co`](@/docs/reference/library/4k.md#co)
-[`++rear:co`](@/docs/reference/library/4k.md#rear-co)
-[`++rend:co`](@/docs/reference/library/4k.md#rend-co)
-[`++rent:co`](@/docs/reference/library/4k.md#rent-co)
+<a href='https://urbit.org/docs/reference/library/4k.md#co'><code>++co</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#rear-co'><code>++rear:co</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#rend-co'><code>++rend:co</code></a>
+<a href='https://urbit.org/docs/reference/library/4k.md#rent-co'><code>++rent:co</code></a>
 
 ### 4l: parsing (atom parsing)
 
-[`++so`](@/docs/reference/library/4l.md#so)
-[`++bisk:so`](@/docs/reference/library/4l.md#bisk-so)
-[`++crub:so`](@/docs/reference/library/4l.md#crub-so)
-[`++nuck:so`](@/docs/reference/library/4l.md#nuck-so)
-[`++nusk:so`](@/docs/reference/library/4l.md#nusk-so)
-[`++perd:so`](@/docs/reference/library/4l.md#perd-so)
-[`++royl:so`](@/docs/reference/library/4l.md#royl-so)
-[`++royl-cell:so`](@/docs/reference/library/4l.md#royl-cell-so)
-[`++tash:so`](@/docs/reference/library/4l.md#tash-so)
-[`++twid:so`](@/docs/reference/library/4l.md#twid-so)
-[`++zust:so`](@/docs/reference/library/4l.md#zust-so)
+<a href='https://urbit.org/docs/reference/library/4l.md#so'><code>++so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#bisk-so'><code>++bisk:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#crub-so'><code>++crub:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#nuck-so'><code>++nuck:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#nusk-so'><code>++nusk:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#perd-so'><code>++perd:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#royl-so'><code>++royl:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#royl-cell-so'><code>++royl-cell:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#tash-so'><code>++tash:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#twid-so'><code>++twid:so</code></a>
+<a href='https://urbit.org/docs/reference/library/4l.md#zust-so'><code>++zust:so</code></a>
 
 ### 4m: parsing (formatting functions)
 
-[`++scot`](@/docs/reference/library/4m.md#scot)
-[`++scow`](@/docs/reference/library/4m.md#scow)
-[`++slat`](@/docs/reference/library/4m.md#slat)
-[`++slav`](@/docs/reference/library/4m.md#slav)
-[`++slaw`](@/docs/reference/library/4m.md#slaw)
-[`++slay`](@/docs/reference/library/4m.md#slay)
-[`++smyt`](@/docs/reference/library/4m.md#smyt)
-[`++spat`](@/docs/reference/library/4m.md#spat)
-[`++spud`](@/docs/reference/library/4m.md#spud)
-[`++stab`](@/docs/reference/library/4m.md#stab)
+<a href='https://urbit.org/docs/reference/library/4m.md#scot'><code>++scot</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#scow'><code>++scow</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slat'><code>++slat</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slav'><code>++slav</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slaw'><code>++slaw</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#slay'><code>++slay</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#smyt'><code>++smyt</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#spat'><code>++spat</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#spud'><code>++spud</code></a>
+<a href='https://urbit.org/docs/reference/library/4m.md#stab'><code>++stab</code></a>
 
 ### 4n: parsing (virtualization)
 
-[`++mack`](@/docs/reference/library/4n.md#mack)
-[`++mink`](@/docs/reference/library/4n.md#mink)
-[`++mock`](@/docs/reference/library/4n.md#mock)
-[`++mong`](@/docs/reference/library/4n.md#mong)
-[`++mook`](@/docs/reference/library/4n.md#mook)
-[`++mule`](@/docs/reference/library/4n.md#mule)
-[`++mute`](@/docs/reference/library/4n.md#mute)
+<a href='https://urbit.org/docs/reference/library/4n.md#mack'><code>++mack</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mink'><code>++mink</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mock'><code>++mock</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mong'><code>++mong</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mook'><code>++mook</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mule'><code>++mule</code></a>
+<a href='https://urbit.org/docs/reference/library/4n.md#mute'><code>++mute</code></a>
 
 ### 4o: parsing (molds)
 
-[`++abel`](@/docs/reference/library/4o.md#abel)
-[`++aura`](@/docs/reference/library/4o.md#aura)
-[`++axis`](@/docs/reference/library/4o.md#axis)
-[`++base`](@/docs/reference/library/4o.md#base)
-[`++bean`](@/docs/reference/library/4o.md#bean)
-[`++beer`](@/docs/reference/library/4o.md#beer)
-[`++beet`](@/docs/reference/library/4o.md#beet)
-[`++chum`](@/docs/reference/library/4o.md#chum)
-[`++coil`](@/docs/reference/library/4o.md#coil)
-[`++foot`](@/docs/reference/library/4o.md#foot)
-[`++limb`](@/docs/reference/library/4o.md#limb)
-[`++line`](@/docs/reference/library/4o.md#line)
-[`++metl`](@/docs/reference/library/4o.md#metl)
-[`++nock`](@/docs/reference/library/4o.md#nock)
-[`++noun`](@/docs/reference/library/4o.md#noun)
-[`++null`](@/docs/reference/library/4o.md#null)
-[`++port`](@/docs/reference/library/4o.md#port)
-[`++span`](@/docs/reference/library/4o.md#span)
-[`++tiki`](@/docs/reference/library/4o.md#tiki)
-[`++toga`](@/docs/reference/library/4o.md#toga)
-[`++tone`](@/docs/reference/library/4o.md#tone)
-[`++tuna`](@/docs/reference/library/4o.md#tuna)
-[`++tusk`](@/docs/reference/library/4o.md#tusk)
-[`++tyke`](@/docs/reference/library/4o.md#tyke)
-[`++typo`](@/docs/reference/library/4o.md#typo)
-[`++tyre`](@/docs/reference/library/4o.md#tyre)
-[`++vase`](@/docs/reference/library/4o.md#vase)
-[`++vise`](@/docs/reference/library/4o.md#vise)
-[`++wing`](@/docs/reference/library/4o.md#wing)
+<a href='https://urbit.org/docs/reference/library/4o.md#abel' data-tippy-content="Compiler alias"><code>++abel</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#aura' data-tippy-content="'Type' of atom"><code>++aura</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#axis' data-tippy-content="Nock axis"><code>++axis</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#base'><code>++base</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#bean'><code>++bean</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#beer'><code>++beer</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#beet'><code>++beet</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#chum'><code>++chum</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#coil'><code>++coil</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#foot'><code>++foot</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#limb'><code>++limb</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#line'><code>++line</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#metl'><code>++metl</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#nock'><code>++nock</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#noun'><code>++noun</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#null'><code>++null</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#port'><code>++port</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#span'><code>++span</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tiki'><code>++tiki</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#toga'><code>++toga</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tone'><code>++tone</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tuna'><code>++tuna</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tusk'><code>++tusk</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tyke'><code>++tyke</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#typo'><code>++typo</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#tyre'><code>++tyre</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#vase'><code>++vase</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#vise'><code>++vise</code></a>
+<a href='https://urbit.org/docs/reference/library/4o.md#wing'><code>++wing</code></a>
 
 ### 5a: compiler utilities
 
-[_(To be documented)_](@/docs/reference/library/5a.md)
+<a href='https://urbit.org/docs/reference/library/5a.md'>_(To be documented)_</a>
 
 ### 5b: macro expansion
 
-[_(To be documented)_](@/docs/reference/library/5b.md)
+<a href='https://urbit.org/docs/reference/library/5b.md'>_(To be documented)_</a>
 
 ### 5c: compiler backend and prettyprinter
 
-[_(To be documented)_](@/docs/reference/library/5c.md)
+<a href='https://urbit.org/docs/reference/library/5c.md'>_(To be documented)_</a>
 
 ### 5d: parser
 
-[_(To be documented)_](@/docs/reference/library/5d.md)
+<a href='https://urbit.org/docs/reference/library/5d.md'>_(To be documented)_</a>
 
 ### 5e: caching compiler
 
-[_(To be documented)_](@/docs/reference/library/5e.md)
+<a href='https://urbit.org/docs/reference/library/5e.md'>_(To be documented)_</a>
 
 ### 5f: molds and mold builders
 
-[`++mane`](@/docs/reference/library/5f.md#mane)
-[`++manx`](@/docs/reference/library/5f.md#manx)
-[`++marl`](@/docs/reference/library/5f.md#marl)
-[`++mars`](@/docs/reference/library/5f.md#mars)
-[`++mart`](@/docs/reference/library/5f.md#mart)
-[`++marx`](@/docs/reference/library/5f.md#marx)
-[`++pass`](@/docs/reference/library/5f.md#pass)
-[`++ring`](@/docs/reference/library/5f.md#ring)
-[`++time`](@/docs/reference/library/5f.md#time)
+<a href='https://urbit.org/docs/reference/library/5f.md#mane'><code>++mane</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#manx'><code>++manx</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#marl'><code>++marl</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#mars'><code>++mars</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#mart'><code>++mart</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#marx'><code>++marx</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#pass'><code>++pass</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#ring'><code>++ring</code></a>
+<a href='https://urbit.org/docs/reference/library/5f.md#time'><code>++time</code></a>
 
 ### 5g: profiling support
 
-[_(To be documented)_](@/docs/reference/library/5g.md)
+<a href='https://urbit.org/docs/reference/library/5g.md'>_(To be documented)_</a>
