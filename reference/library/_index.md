@@ -13,1718 +13,1718 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### a
 
-[`++ab`](@/docs/reference/library/4j.md#ab)
-[`++abs:fl`](@/docs/reference/library/3b.md#abs-fl)
-[`++abs:si`](@/docs/reference/library/3a.md#abs-si)
-[`++abel`](@/docs/reference/library/4o.md#abel)
-[`++ace`](@/docs/reference/library/4h.md#ace)
-[`++add`](@/docs/reference/library/1a.md#add)
-[`++add:ff`](@/docs/reference/library/3b.md#add-ff)
-[`++add:fl`](@/docs/reference/library/3b.md#add-fl)
-[`+-add:ja`](@/docs/reference/library/2j.md#add-ja)
-[`++add:rd`](@/docs/reference/library/3b.md#add-rd)
-[`++add:rh`](@/docs/reference/library/3b.md#add-rh)
-[`++add:rs`](@/docs/reference/library/3b.md#add-rs)
-[`++add:rq`](@/docs/reference/library/3b.md#add-rq)
-[`++ag`](@/docs/reference/library/4j.md#ag)
-[`++alf`](@/docs/reference/library/4i.md#alf)
-[`+-all:by`](@/docs/reference/library/2i.md#all-by)
-[`+-all:in`](@/docs/reference/library/2h.md#all-in)
-[`++aln`](@/docs/reference/library/4i.md#aln)
-[`++alp`](@/docs/reference/library/4i.md#alp)
-[`+-any:by`](@/docs/reference/library/2i.md#any-by)
-[`+-any:in`](@/docs/reference/library/2h.md#any-in)
-[`++aor`](@/docs/reference/library/2f.md#aor)
-[`++ape:ag`](@/docs/reference/library/4j.md#ape-ag)
-[`+-apt:by`](@/docs/reference/library/2i.md#apt-by)
-[`+-apt:in`](@/docs/reference/library/2h.md#apt-in)
-[`++at`](@/docs/reference/library/4b.md#at)
-[`++aura`](@/docs/reference/library/4o.md#aura)
-[`++axis`](@/docs/reference/library/4o.md#axis)
+<a class="tooltip" href='/docs/reference/library/4j/#ab' title="Primitive parser engine"><code>++ab</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#abs-fl' title="Absolute value"><code>++abs:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#abs-si' title="Absolute value (signed integer)"><code>++abs:si</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#abel' title="Compiler alias"><code>++abel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ace' title="Parse space"><code>++ace</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#add' title="Add"><code>++add</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-ff' title="Add (floating point)"><code>++add:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-fl' title="Add (with exact/rounded flag)"><code>++add:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#add-ja' title="Prepend to list"><code>+-add:ja</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rd' title="Add (double-precision float)"><code>++add:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rh' title="Add (half-precision float)"><code>++add:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rs' title="Add (single-precision float)"><code>++add:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rq' title="Add (quad-precision float)"><code>++add:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ag' title="Top-level atom parser engine"><code>++ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#alf' title="Parse alphabetic characters"><code>++alf</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#all-by' title="Logical AND (map and wet gate)"><code>+-all:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#all-in' title="Logical AND (set and wet gate)"><code>+-all:in</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#aln' title="Parse alphanumeric characters"><code>++aln</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#alp' title="Parse alphanumeric characters and -"><code>++alp</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#any-by' title="Logical OR (map and wet gate)"><code>+-any:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#any-in' title="Logical OR (set and gate)"><code>+-any:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#aor' title="Alphabetical order"><code>++aor</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ape-ag' title="Parse 0 or rule"><code>++ape:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#apt-by' title="Check correctness (map)"><code>+-apt:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#apt-in' title="Check correctness (set)"><code>+-apt:in</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#at' title="(Undocumented)"><code>++at</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#aura' title="'Type' of atom"><code>++aura</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#axis' title="Nock axis"><code>++axis</code></a>
 
 ### b
 
-[`+-bal:to`](@/docs/reference/library/2k.md#bal-to)
-[`++bar`](@/docs/reference/library/4h.md#bar)
-[`++bas`](@/docs/reference/library/4h.md#bas)
-[`++base`](@/docs/reference/library/4o.md#base)
-[`++bass`](@/docs/reference/library/4f.md#bass)
-[`++bay:ag`](@/docs/reference/library/4j.md#bay-ag)
-[`++bean`](@/docs/reference/library/4o.md#bean)
-[`++beer`](@/docs/reference/library/4o.md#beer)
-[`++beet`](@/docs/reference/library/4o.md#beet)
-[`++bend`](@/docs/reference/library/4e.md#bend)
-[`++bet`](@/docs/reference/library/4i.md#bet)
-[`++bex`](@/docs/reference/library/2c.md#bex)
-[`++bif:ff`](@/docs/reference/library/3b.md#bif-ff)
-[`+-bif:by`](@/docs/reference/library/2i.md#bif-by)
-[`+-bif:in`](@/docs/reference/library/2h.md#bif-in)
-[`++biff`](@/docs/reference/library/2a.md#biff)
-[`++bin`](@/docs/reference/library/4i.md#bin)
-[`++bind`](@/docs/reference/library/2a.md#bind)
-[`++bip:ag`](@/docs/reference/library/4j.md#bip-ag)
-[`++bit:ff`](@/docs/reference/library/3b.md#bit-ff)
-[`++bit:rd`](@/docs/reference/library/3b.md#bit-rd)
-[`++bit:rh`](@/docs/reference/library/3b.md#bit-rh)
-[`++bit:rs`](@/docs/reference/library/3b.md#bit-rs)
-[`++bit:rq`](@/docs/reference/library/3b.md#bit-rq)
-[`++bix:ab`](@/docs/reference/library/4j.md#bix-ab)
-[`++bisk:so`](@/docs/reference/library/4l.md#bisk-so)
-[`++bloq`](@/docs/reference/library/1c.md#bloq)
-[`++bond`](@/docs/reference/library/2a.md#bond)
-[`++boss`](@/docs/reference/library/4f.md#boss)
-[`++both`](@/docs/reference/library/2a.md#both)
-[`++buc`](@/docs/reference/library/4h.md#buc)
-[`++but`](@/docs/reference/library/4i.md#but)
+<a class="tooltip" href='/docs/reference/library/2k/#bal-to' title="Balance queue"><code>+-bal:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#bar' title="Parse | (bar)"><code>++bar</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#bas' title="Parse \ (bas)"><code>++bas</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#base' title="Base type"><code>++base</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#bass' title="Parser modifier (LSB-ordered ++list as atom of ++base)"><code>++bass</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#bay-ag' title="Parses binary number"><code>++bay:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#bean' title="Boolean"><code>++bean</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#beer' title="Tape builder"><code>++beer</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#beet' title="XML interpolation cases"><code>++beet</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#bend' title="Conditional composer"><code>++bend</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#bet' title="Parse hep and lus axis syntax"><code>++bet</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#bex' title="Binary exponent"><code>++bex</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bif-ff' title="Converts from fn to @r"><code>++bif:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#bif-by' title="Bifurcate map"><code>+-bif:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#bif-in' title="Bifurcate set"><code>+-bif:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#biff' title="Unit as argument"><code>++biff</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#bin' title="Binary to atom"><code>++bin</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#bind' title="Non-unit function to unit, producing unit"><code>++bind</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#bip-ag' title="Parse IPv6"><code>++bip:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-ff' title="fn to @r with rounding"><code>++bit:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rd' title="fn to double-precision binary float"><code>++bit:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rh' title="fn to half-precision float"><code>++bit:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rs' title="fn to single-precision float"><code>++bit:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rq' title="fn to quad-precision float"><code>++bit:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#bix-ab' title="Parse hex pair"><code>++bix:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse odor-atom pair"><code>++bisk:so</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#bloq' title="Blocksize"><code>++bloq</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#bond' title="Replace null"><code>++bond</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#boss' title="Parser modifier: LSB"><code>++boss</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#both' title="Group unit values into pair"><code>++both</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#buc' title="Parse $ (buc)"><code>++buc</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#but' title="Parse binary digit"><code>++but</code></a>
 
 ### c
 
-[`++cab`](@/docs/reference/library/4h.md#cab)
-[`++can`](@/docs/reference/library/2c.md#can)
-[`++cap`](@/docs/reference/library/1b.md#cap)
-[`++cass`](@/docs/reference/library/4b.md#cass)
-[`++cat`](@/docs/reference/library/2c.md#cat)
-[`++cen`](@/docs/reference/library/4h.md#cen)
-[`++cet:yo`](@/docs/reference/library/3c.md#cet-yo)
-[`++char`](@/docs/reference/library/2q.md#char)
-[`++chum`](@/docs/reference/library/4o.md#chum)
-[`++cit`](@/docs/reference/library/4i.md#cit)
-[`++clap`](@/docs/reference/library/2a.md#clap)
-[`++cmp:si`](@/docs/reference/library/3a.md#cmp-si)
-[`++co`](@/docs/reference/library/4k.md#co)
-[`++coil`](@/docs/reference/library/4o.md#coil)
-[`++coin`](@/docs/reference/library/3g.md#coin)
-[`++col`](@/docs/reference/library/4h.md#col)
-[`++cold`](@/docs/reference/library/4f.md#cold)
-[`++com`](@/docs/reference/library/4h.md#com)
-[`++comp`](@/docs/reference/library/4e.md#comp)
-[`++con`](@/docs/reference/library/2d.md#con)
-[`++cook`](@/docs/reference/library/4f.md#cook)
-[`++cord`](@/docs/reference/library/2q.md#cord)
-[`++cork`](@/docs/reference/library/2n.md#cork)
-[`++corl`](@/docs/reference/library/2n.md#corl)
-[`++crip`](@/docs/reference/library/4b.md#crip)
-[`++crub:so`](@/docs/reference/library/4l.md#crub-so)
-[`++cue`](@/docs/reference/library/2p.md#cue)
-[`++curr`](@/docs/reference/library/2n.md#curr)
-[`++cury`](@/docs/reference/library/2n.md#cury)
-[`++cuss`](@/docs/reference/library/4b.md#cuss)
-[`++cut`](@/docs/reference/library/2c.md#cut)
+<a class="tooltip" href='/docs/reference/library/4h/#cab' title="Parse _ (cab)"><code>++cab</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#can' title="Assemble"><code>++can</code></a>
+<a class="tooltip" href='/docs/reference/library/1b/#cap' title="Tree head"><code>++cap</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#cass' title="To lowercase"><code>++cass</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#cat' title="Concatenate"><code>++cat</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#cen' title="Parse % (cen)"><code>++cen</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#cet-yo' title="Days in a century"><code>++cet:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#char' title="Character"><code>++char</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#chum' title="Jet hint information"><code>++chum</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#cit' title="Octal digit"><code>++cit</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#clap' title="Apply function to two units"><code>++clap</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#cmp-si' title="Compare (signed integer)"><code>++cmp:si</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#co' title="Literal rendering engine"><code>++co</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#coil' title="Tuple of core information"><code>++coil</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#coin' title="Noun-literal syntax cases"><code>++coin</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#col' title="Parse : (col)"><code>++col</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#cold' title="Replace with constant"><code>++cold</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#com' title="Parse , (com)"><code>++com</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#comp' title="Arbitrary compose"><code>++comp</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#con' title="Binary OR"><code>++con</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#cook' title="Apply gate"><code>++cook</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#cord' title="UTF-8 text"><code>++cord</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#cork' title="Compose forward"><code>++cork</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#corl' title="Compose backward"><code>++corl</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#crip' title="Tape to cord"><code>++crip</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#crub-so' title="Parse @da, @dr, @p, @t"><code>++crub:so</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#cue' title="Unpack atom to noun"><code>++cue</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#curr' title="Right-curry a gate"><code>++curr</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#cury' title="Curry left a gate"><code>++cury</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#cuss' title="To uppercase"><code>++cuss</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#cut' title="Slice"><code>++cut</code></a>
 
 ### d
 
-[`++d:ne`](@/docs/reference/library/4j.md#d-ne)
-[`++date`](@/docs/reference/library/2q.md#date)
-[`++day:yo`](@/docs/reference/library/3c.md#day-yo)
-[`++dec`](@/docs/reference/library/1a.md#dec)
-[`+-def:by`](@/docs/reference/library/2i.md#def-by)
-[`+-del:by`](@/docs/reference/library/2i.md#del-by)
-[`+-del:in`](@/docs/reference/library/2h.md#del-in)
-[`+-del:ju`](@/docs/reference/library/2j.md#del-ju)
-[`++dem`](@/docs/reference/library/4i.md#dem)
-[`++dem:ag`](@/docs/reference/library/4j.md#dem-ag)
-[`++den:fl`](@/docs/reference/library/3b.md#den-fl)
-[`+-dep:by`](@/docs/reference/library/2i.md#dep-by)
-[`+-dep:to`](@/docs/reference/library/2k.md#dep-to)
-[`++dif:fe`](@/docs/reference/library/2c.md#dif-fe)
-[`++dif:fo`](@/docs/reference/library/3a.md#dif-fo)
-[`+-dif:in`](@/docs/reference/library/2h.md#dif-in)
-[`++dif:si`](@/docs/reference/library/3a.md#dif-si)
-[`+-dig:by`](@/docs/reference/library/2i.md#dig-by)
-[`+-dig:in`](@/docs/reference/library/2h.md#dig-in)
-[`++dim:ag`](@/docs/reference/library/4j.md#dim-ag)
-[`++dime`](@/docs/reference/library/3g.md#dime)
-[`++din:re`](@/docs/reference/library/4c.md#din-re)
-[`++dis`](@/docs/reference/library/2d.md#dis)
-[`++dit`](@/docs/reference/library/4i.md#dit)
-[`++div`](@/docs/reference/library/1a.md#div)
-[`++div:ff`](@/docs/reference/library/3b.md#div-ff)
-[`++div:fl`](@/docs/reference/library/3b.md#div-fl)
-[`++div:rd`](@/docs/reference/library/3b.md#div-rd)
-[`++div:rh`](@/docs/reference/library/3b.md#div-rh)
-[`++div:rs`](@/docs/reference/library/3b.md#div-rs)
-[`++div:rq`](@/docs/reference/library/3b.md#div-rq)
-[`++dog`](@/docs/reference/library/4i.md#dog)
-[`++doh`](@/docs/reference/library/4i.md#doh)
-[`++doq`](@/docs/reference/library/4h.md#doq)
-[`++dor`](@/docs/reference/library/2f.md#dor)
-[`++dot`](@/docs/reference/library/4h.md#dot)
-[`++drg:ff`](@/docs/reference/library/3b.md#drg-ff)
-[`++drg:fl`](@/docs/reference/library/3b.md#drg-fl)
-[`++drg:rd`](@/docs/reference/library/3b.md#drg-rd)
-[`++drg:rh`](@/docs/reference/library/3b.md#drg-rh)
-[`++drg:rs`](@/docs/reference/library/3b.md#drg-rs)
-[`++drg:rq`](@/docs/reference/library/3b.md#drg-rq)
-[`++drop`](@/docs/reference/library/2a.md#drop)
-[`++dul:si`](@/docs/reference/library/3a.md#dul-si)
-[`++dum:ag`](@/docs/reference/library/4j.md#dum-ag)
-[`++dun`](@/docs/reference/library/4i.md#dun)
-[`++duz`](@/docs/reference/library/4i.md#duz)
-[`++dvr`](@/docs/reference/library/1a.md#dvr)
+<a class="tooltip" href='/docs/reference/library/4j/#d-ne' title="Render decimal"><code>++d:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#date' title="Point in time"><code>++date</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#day-yo' title="Seconds in day"><code>++day:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#dec' title="Decrement"><code>++dec</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#def-by' title="Difference (map)"><code>+-def:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
+    <a class="tooltip" href='/docs/reference/library/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#dem-ag' title="Parse decmal with dots"><code>++dem:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#den-fl' title="Denormalizes (floating point)"><code>++den:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#dep-to' title="Maximum depth (queue)"><code>+-dep:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#dif-fe' title="Difference between atoms (modular basis)"><code>++dif:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#dif-fo' title='Subtraction (modular base)'><code>++dif:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#dif-in' title='Difference (set)'><code>+-dif:in</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#dif-si' title="Subtraction (signed integer)"><code>++dif:si</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#dig-by' title="Address of key (map)"><code>+-dig:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#dig-in' title="Address of a in set"><code>+-dig:in</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#dim-ag' title="Parse decimal number"><code>++dim:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#dime' title="Aura-atom pair"><code>++dime</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#din-re' title="(Undocumented)"><code>++din:re</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#dis' title="Binary AND (atoms)"><code>++dis</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dit' title="Decimal digit"><code>++dit</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#div' title="Divide"><code>++div</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-ff' title="Divide (IEEE float)"><code>++div:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-fl' title="Divide (signed and unsigned integer cell)"><code>++div:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rd' title="Double precision float"><code>++div:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rh' title="Divide (half-precision float)"><code>++div:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rs' title="Divide (single-precision float)"><code>++div:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rq' title="Divide (quad-precision float)"><code>++div:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dog' title="Optional gap"><code>++dog</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#doh' title="@p separator"><code>++doh</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#doq' title="Parse double quote"><code>++doq</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#dor' title="Numeric order"><code>++dor</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#dot' title="Parse period"><code>++dot</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-ff' title="@r to decimal float"><code>++drg:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-fl' title="Get printable decimal (signed and unsigned integer cell)"><code>++drg:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rd' title="@rd to decimal float"><code>++drg:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rh' title="@rh to decimal float"><code>++drg:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rs' title="@rs to decimal float"><code>++drg:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rq' title="@rq to decimal float"><code>++drg:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#drop' title="Unit to list"><code>++drop</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#dul-si' title="Modulus (signed integer)"><code>++dul:si</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#dum-ag' title="Parse decimal with leading zero"><code>++dum:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dun' title="-- to ~"><code>++dun</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#duz' title="== to ~"><code>++duz</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#dvr' title="Divide (with remainder)"><code>++dvr</code></a>
 
 ### e
 
-[`++ead:fl`](@/docs/reference/library/3b.md#ead-fl)
-[`++each`](@/docs/reference/library/1c.md#each)
-[`++easy`](@/docs/reference/library/4f.md#easy)
-[`++edge`](@/docs/reference/library/3g.md#edge)
-[`++egcd`](@/docs/reference/library/3a.md#egcd)
-[`++emn:fl`](@/docs/reference/library/3b.md#emn-fl)
-[`++emu:fl`](@/docs/reference/library/3b.md#emu-fl)
-[`++emx:fl`](@/docs/reference/library/3b.md#emx-fl)
-[`++end`](@/docs/reference/library/2c.md#end)
-[`++equ:ff`](@/docs/reference/library/3b.md#equ-ff)
-[`++equ:fl`](@/docs/reference/library/3b.md#equ-fl)
-[`++equ:rd`](@/docs/reference/library/3b.md#equ-rd)
-[`++equ:rh`](@/docs/reference/library/3b.md#equ-rh)
-[`++equ:rs`](@/docs/reference/library/3b.md#equ-rs)
-[`++equ:rq`](@/docs/reference/library/3b.md#equ-rq)
-[`++era:yo`](@/docs/reference/library/3c.md#era-yo)
-[`++exp:ff`](@/docs/reference/library/3b.md#exp-ff)
-[`++exp:fo`](@/docs/reference/library/3a.md#exp-fo)
-[`++exp:rd`](@/docs/reference/library/3b.md#exp-rd)
-[`++exp:rh`](@/docs/reference/library/3b.md#exp-rh)
-[`++exp:rs`](@/docs/reference/library/3b.md#exp-rs)
-[`++exp:rq`](@/docs/reference/library/3b.md#exp-rq)
+<a class="tooltip" href='/docs/reference/library/3b/#ead-fl' title="Exact add"><code>++ead:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#each' title="Mold of fork between two types"><code>++each</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#easy' title="Always parse"><code>++easy</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#edge' title="Parsing location metadata"><code>++edge</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#egcd' title="Extended Euclidean algorithm"><code>++egcd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#emn-fl' title="Minimum exponent"><code>++emn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#emu-fl' title="Exact multiply"><code>++emu:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#emx-fl' title="Maximum exponent"><code>++emx:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#end' title="Tail"><code>++end</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-ff' title="Equals (IEEE float)"><code>++equ:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-fl' title="Equals (signed and unsigned integer cell)"><code>++equ:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rd' title="Equals (double-precision float)"><code>++equ:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rh' title="Equals (half-precision float)"><code>++equ:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rs' title="Equals (single-precision float)"><code>++equ:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rq' title="Equals (quad-precision float)"><code>++equ:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#era-yo' title="Leap-year period"><code>++era:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-ff' title="Get exponent (IEEE float)"><code>++exp:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#exp-fo' title="Exponent (modular base)"><code>++exp:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rd' title="Exponent (@rd)"><code>++exp:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rh' title="Exponent (half-precision float)"><code>++exp:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rs' title="Exponent (@rs)"><code>++exp:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rq' title="Exponent (quad-precision float)"><code>++exp:rq</code></a>
 
 ### f
 
-[`++fail`](@/docs/reference/library/4e.md#fail)
-[`++fall`](@/docs/reference/library/2a.md#fall)
-[`++fand`](@/docs/reference/library/2b.md#fand)
-[`++fas`](@/docs/reference/library/4h.md#fas)
-[`++fe`](@/docs/reference/library/2c.md#fe)
-[`++fed:ag`](@/docs/reference/library/4j.md#fed-ag)
-[`++feen:ob`](@/docs/reference/library/3f.md#feen-ob)
-[`++fend:ob`](@/docs/reference/library/3f.md#fend-ob)
-[`++fice:ob`](@/docs/reference/library/3f.md#fice-ob)
-[`++fil`](@/docs/reference/library/2c.md#fil)
-[`++find`](@/docs/reference/library/2b.md#find)
-[`++fit:re`](@/docs/reference/library/4c.md#fit-re)
-[`++fli:fl`](@/docs/reference/library/3b.md#fli-fl)
-[`++flop`](@/docs/reference/library/2b.md#flop)
-[`++fma:ff`](@/docs/reference/library/3b.md#fma-ff)
-[`++fma:fl`](@/docs/reference/library/3b.md#fma-fl)
-[`++fma:rd`](@/docs/reference/library/3b.md#fma-rd)
-[`++fma:rh`](@/docs/reference/library/3b.md#fma-rh)
-[`++fma:rs`](@/docs/reference/library/3b.md#fma-rs)
-[`++fma:rq`](@/docs/reference/library/3b.md#fma-rq)
-[`++fnv`](@/docs/reference/library/2e.md#fnv)
-[`++fo`](@/docs/reference/library/3a.md#fo)
-[`++foot`](@/docs/reference/library/4o.md#foot)
-[`++fos:rh`](@/docs/reference/library/3b.md#fos-rh)
-[`++fra:fo`](@/docs/reference/library/3a.md#fra-fo)
-[`++fra:si`](@/docs/reference/library/3a.md#fra-si)
-[`++full`](@/docs/reference/library/4f.md#full)
-[`++funk`](@/docs/reference/library/4f.md#funk)
+<a class="tooltip" href='/docs/reference/library/4e/#fail' title="Never parse"><code>++fail</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#fall' title="Give unit a default value"><code>++fall</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#fand' title="All indices in list"><code>++fand</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#fas' title="Parse / (fas)"><code>++fas</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#fe' title="Modulo bloq"><code>++fe</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#fed-ag' title="Parse @p"><code>++fed:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#feen-ob' title="Conceal structure v2"><code>++feen:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#fend-ob' title="Restore structure v2"><code>++fend:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#fice-ob' title="Feistel-like cipher"><code>++fice:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#fil' title="Fill bloqstream"><code>++fil</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#find' title="First index in list"><code>++find</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#fit-re' title="Fit on one line test"><code>++fit:re</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fli-fl' title="Flip sign"><code>++fli:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#flop' title="Reverse list"><code>++flop</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-ff' title="Fused multiply-add (IEEE float)"><code>++fma:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-fl' title="Fused multiply-add"><code>++fma:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rd' title="Fused multiply-add (@rd)"><code>++fma:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rh' title="Fused multiply-add (half-precision float)"><code>++fma:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rs' title="Fused multiply-add (single-precision float)"><code>++fma:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rq' title="Fused multiply-add (quad-precision float)"><code>++fma:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#fnv' title="FNV scrambler"><code>++fnv</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#fo' title="Modulo prime"><code>++fo</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#foot' title="Cases of arms by variance model"><code>++foot</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fos-rh' title="@rs to @rh"><code>++fos:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#fra-fo' title="Divide (modular base)"><code>++fra:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#fra-si' title="Divide (signed integer)"><code>++fra:si</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#full' title="Parse to end"><code>++full</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#funk' title="Add to tape"><code>++funk</code></a>
 
 ### g
 
-[`++gah`](@/docs/reference/library/4i.md#gah)
-[`++gal`](@/docs/reference/library/4h.md#gal)
-[`++gap`](@/docs/reference/library/4i.md#gap)
-[`++gaq`](@/docs/reference/library/4i.md#gaq)
-[`++gar`](@/docs/reference/library/4h.md#gar)
-[`+-gas:by`](@/docs/reference/library/2i.md#gas-by)
-[`+-gas:in`](@/docs/reference/library/2h.md#gas-in)
-[`+-gas:to`](@/docs/reference/library/2k.md#gas-to)
-[`++gate`](@/docs/reference/library/1c.md#gate)
-[`++gaw`](@/docs/reference/library/4i.md#gaw)
-[`++gay`](@/docs/reference/library/4i.md#gay)
-[`+-get:by`](@/docs/reference/library/2i.md#get-by)
-[`+-get:ja`](@/docs/reference/library/2j.md#get-ja)
-[`+-get:ju`](@/docs/reference/library/2j.md#get-ju)
-[`+-get:to`](@/docs/reference/library/2k.md#get-to)
-[`++glue`](@/docs/reference/library/4e.md#glue)
-[`++gon`](@/docs/reference/library/4i.md#gon)
-[`++gor`](@/docs/reference/library/2f.md#gor)
-[`+-got:by`](@/docs/reference/library/2i.md#got-by)
-[`++grd:ff`](@/docs/reference/library/3b.md#grd-ff)
-[`++grd:fl`](@/docs/reference/library/3b.md#grd-fl)
-[`++grd:rd`](@/docs/reference/library/3b.md#grd-rd)
-[`++grd:rh`](@/docs/reference/library/3b.md#grd-rh)
-[`++grd:rs`](@/docs/reference/library/3b.md#grd-rs)
-[`++grd:rq`](@/docs/reference/library/3b.md#grd-rq)
-[`++gte`](@/docs/reference/library/1a.md#gte)
-[`++gte:ff`](@/docs/reference/library/3b.md#gte-ff)
-[`++gte:fl`](@/docs/reference/library/3b.md#gte-fl)
-[`++gte:rd`](@/docs/reference/library/3b.md#gte-rd)
-[`++gte:rh`](@/docs/reference/library/3b.md#gte-rh)
-[`++gte:rs`](@/docs/reference/library/3b.md#gte-rs)
-[`++gte:rq`](@/docs/reference/library/3b.md#gte-rq)
-[`++gth`](@/docs/reference/library/1a.md#gth)
-[`++gth:ff`](@/docs/reference/library/3b.md#gth-ff)
-[`++gth:fl`](@/docs/reference/library/3b.md#gth-fl)
-[`++gth:rd`](@/docs/reference/library/3b.md#gth-rd)
-[`++gth:rh`](@/docs/reference/library/3b.md#gth-rh)
-[`++gth:rs`](@/docs/reference/library/3b.md#gth-rs)
-[`++gth:rq`](@/docs/reference/library/3b.md#gth-rq)
-[`++gul`](@/docs/reference/library/4i.md#gul)
-[`++gulf`](@/docs/reference/library/2b.md#gulf)
+<a class="tooltip" href='/docs/reference/library/4i/#gah' title="New line or ''"><code>++gah</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#gal' title="Parse < (gal)"><code>++gal</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gap' title="Plural whitespace"><code>++gap</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gaq' title="End of line"><code>++gaq</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#gar' title="Parse > (gar)"><code>++gar</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#gas-by' title="Concatenate (map)"><code>+-gas:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#gas-in' title="Concatenate (set)"><code>+-gas:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#gas-to' title="Push list into queue"><code>+-gas:to</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#gate' title="Function"><code>++gate</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gaw' title="Classic whitespace"><code>++gaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gay' title="Optional gap"><code>++gay</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#get-by' title="Grab unit value"><code>+-get:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#get-ja' title="Grab value by key"><code>+-get:ja</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#get-ju' title="Retrieve set"><code>+-get:ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#get-to' title="Head-tail pair"><code>+-get:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#glue' title="Skip delimiter"><code>++glue</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gon' title="Parse long numbers"><code>++gon</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#gor' title="Hash order"><code>++gor</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#got-by' title="Assert for value (map)"><code>+-got:by</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-ff' title="Decimal float to @r"><code>++grd:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-fl' title="Decimal to float"><code>++grd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rd' title="Decimal float to @rd"><code>++grd:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rh' title="Decimal float to @rh"><code>++grd:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rs' title="Decimal float to @rs"><code>++grd:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rq' title="Decimal float to @rq"><code>++grd:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#gte' title="Greater than / equal"><code>++gte</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-ff' title="Greater than / equal (IEEE float)"><code>++gte:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-fl' title="Greater than / equal (producing flag)"><code>++gte:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rd' title="Greater than / equal (double-precision float)"><code>++gte:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rh' title="Greater than / equal (half-precision float)"><code>++gte:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rs' title="Greater than / equal (single-precision float)"><code>++gte:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rq' title="Greater than / equal (quad-precision float)"><code>++gte:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#gth' title="Greater than"><code>++gth</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-ff' title="Greater than (IEEE float)"><code>++gth:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-fl' title="Greater than (producing flag)"><code>++gth:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rd' title="Greater than (double-precision float)"><code>++gth:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rh' title="Greater than (half-precision float)"><code>++gth:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rs' title="Greater than (single-precision float)"><code>++gth:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rq' title="Greater than (quad-precision float)"><code>++gth:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gul' title="Axis syntax < or >"><code>++gul</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#gulf' title="List from range"><code>++gulf</code></a>
 
 ### h
 
-[`++hair`](@/docs/reference/library/3g.md#hair)
-[`++hard`](@/docs/reference/library/2n.md#hard)
-[`+-has:by`](@/docs/reference/library/2i.md#has-by)
-[`+-has:in`](@/docs/reference/library/2h.md#has-in)
-[`+-has:ju`](@/docs/reference/library/2j.md#has-ju)
-[`++hax`](@/docs/reference/library/4h.md#hax)
-[`++head`](@/docs/reference/library/2n.md#head)
-[`++here`](@/docs/reference/library/4f.md#here)
-[`++hep`](@/docs/reference/library/4h.md#hep)
-[`++hex`](@/docs/reference/library/4i.md#hex)
-[`++hex:ag`](@/docs/reference/library/4j.md#hex-ag)
-[`++hif:ab`](@/docs/reference/library/4j.md#hif-ab)
-[`++hig`](@/docs/reference/library/4i.md#hig)
-[`++hit`](@/docs/reference/library/4i.md#hit)
-[`++homo`](@/docs/reference/library/2b.md#homo)
-[`++hor`](@/docs/reference/library/2f.md#hor)
-[`++hor:yo`](@/docs/reference/library/3c.md#hor-yo)
-[`++huf:ab`](@/docs/reference/library/4j.md#huf-ab)
-[`++hyf:ab`](@/docs/reference/library/4j.md#hyf-ab)
+<a class="tooltip" href='/docs/reference/library/3g/#hair' title="Parsing line and column"><code>++hair</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#hard' title="Force remold"><code>++hard</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#has-by' title="Key existence check (map)"><code>+-has:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#has-in' title="Key existence check (set)"><code>+-has:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#has-ju' title="Check contents (jug)"><code>+-has:ju</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#hax' title="Parse # (hax)"><code>++hax</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#head' title="Get head of cell"><code>++head</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#here' title="Place-based apply"><code>++here</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#hep' title="Parse - (hep)"><code>++hep</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#hex' title="Hexadecimal to atom"><code>++hex</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#hex-ag' title="Parse hexadecimal number"><code>++hex:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#hif-ab' title="Parse phonetic pair"><code>++hif:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#hig' title="Parse single uppercase letter"><code>++hig</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#hit' title="Parse single hexadecimal digit"><code>++hit</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#homo' title="Homogenize list"><code>++homo</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#hor' title="Horizontal hash order"><code>++hor</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#hor-yo' title="Seconds in hour"><code>++hor:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#huf-ab' title="Parse two phonetic pairs"><code>++huf:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#hyf-ab' title="Parse 8 phonetic bytes"><code>++hyf:ab</code></a>
 
 ### i
 
-[`++ibl:fl`](@/docs/reference/library/3b.md#ibl-fl)
-[`++ifix`](@/docs/reference/library/4f.md#ifix)
-[`++ind:po`](@/docs/reference/library/4a.md#ind-po)
-[`++ins:po`](@/docs/reference/library/4a.md#ins-po)
-[`+-int:by`](@/docs/reference/library/2i.md#int-by)
-[`+-int:in`](@/docs/reference/library/2h.md#int-in)
-[`++inv:fe`](@/docs/reference/library/2c.md#inv-fe)
-[`++inv:fl`](@/docs/reference/library/3b.md#inv-fl)
-[`++inv:fo`](@/docs/reference/library/3a.md#inv-fo)
-[`++iny`](@/docs/reference/library/4i.md#iny)
+<a class="tooltip" href='/docs/reference/library/3b/#ibl-fl' title="Integer binary logarithm"><code>++ibl:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#ifix' title="Infix"><code>++ifix</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#ind-po' title="Parse suffix"><code>++ind:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#ins-po' title="Parse prefix"><code>++ins:po</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#int-by' title="Intersection (map)"><code>+-int:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#int-in' title="Intersection (set)"><code>+-int:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#inv-fe' title="Inverse order of modular field"><code>++inv:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#inv-fl' title="Inverse"><code>++inv:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#inv-fo' title="Inverse (signed modulus)"><code>++inv:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#iny' title="Indentation block"><code>++iny</code></a>
 
 ### j
 
-[`++ja`](@/docs/reference/library/2j.md#ja)
-[`++jam`](@/docs/reference/library/2p.md#jam)
-[`++jar`](@/docs/reference/library/2o.md#jar)
-[`++jes:yo`](@/docs/reference/library/3c.md#jes-yo)
-[`++jest`](@/docs/reference/library/4f.md#jest)
-[`++ju`](@/docs/reference/library/2j.md#ju)
-[`++jug`](@/docs/reference/library/2o.md#jug)
-[`++just`](@/docs/reference/library/4f.md#just)
+<a class="tooltip" href='/docs/reference/library/2j/#ja' title="Jar engine"><code>++ja</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#jam' title="Pack noun to atom"><code>++jam</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#jar' title="Mold generator (jar)"><code>++jar</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#jes-yo' title="Maximum 64-bit timestamp"><code>++jes:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#jest' title="Match a cord"><code>++jest</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#ju' title="Jug operations"><code>++ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#jug' title="Mold generator (jug)"><code>++jug</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#just' title="Match a single character"><code>++just</code></a>
 
 ### k
 
-[`++kel`](@/docs/reference/library/4h.md#kel)
-[`++ker`](@/docs/reference/library/4h.md#ker)
-[`++ket`](@/docs/reference/library/4h.md#ket)
-[`++knee`](@/docs/reference/library/4f.md#knee)
-[`++knot`](@/docs/reference/library/2q.md#knot)
+<a class="tooltip" href='/docs/reference/library/4h/#kel' title="Parse { (kel)"><code>++kel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ker' title="Parse } (ker)"><code>++ker</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ket' title="Parse ^ (ket)"><code>++ket</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#knee' title="Recursive parsers"><code>++knee</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#knot' title="Atom type of ASCII characters"><code>++knot</code></a>
 
 ### l
 
-[`++last`](@/docs/reference/library/4d.md#last)
-[`++le:nl`](@/docs/reference/library/2m.md#le-nl)
-[`++lent`](@/docs/reference/library/2b.md#lent)
-[`++levy`](@/docs/reference/library/2b.md#levy)
-[`++lfe:fl`](@/docs/reference/library/3b.md#lfe-fl)
-[`++lfn:fl`](@/docs/reference/library/3b.md#lfn-fl)
-[`++lien`](@/docs/reference/library/2b.md#lien)
-[`++lift`](@/docs/reference/library/2a.md#lift)
-[`++like`](@/docs/reference/library/3g.md#like)
-[`++limb`](@/docs/reference/library/4o.md#limb)
-[`++limo`](@/docs/reference/library/2b.md#limo)
-[`++line`](@/docs/reference/library/4o.md#line)
-[`++lip:ag`](@/docs/reference/library/4j.md#lip-ag)
-[`++list`](@/docs/reference/library/1c.md#list)
-[`++lone`](@/docs/reference/library/1c.md#lone)
-[`++lor`](@/docs/reference/library/2f.md#lor)
-[`++low`](@/docs/reference/library/4i.md#low)
-[`++lsh`](@/docs/reference/library/2c.md#lsh)
-[`++lte`](@/docs/reference/library/1a.md#lte)
-[`++lte:ff`](@/docs/reference/library/3b.md#lte-ff)
-[`++lte:fl`](@/docs/reference/library/3b.md#lte-fl)
-[`++lte:rd`](@/docs/reference/library/3b.md#lte-rd)
-[`++lte:rh`](@/docs/reference/library/3b.md#lte-rh)
-[`++lte:rs`](@/docs/reference/library/3b.md#lte-rs)
-[`++lte:rq`](@/docs/reference/library/3b.md#lte-rq)
-[`++lth`](@/docs/reference/library/1a.md#lth)
-[`++lth:ff`](@/docs/reference/library/3b.md#lth-ff)
-[`++lth:fl`](@/docs/reference/library/3b.md#lth-fl)
-[`++lth:rd`](@/docs/reference/library/3b.md#lth-rd)
-[`++lth:rh`](@/docs/reference/library/3b.md#lth-rh)
-[`++lth:rs`](@/docs/reference/library/3b.md#lth-rs)
-[`++lth:rq`](@/docs/reference/library/3b.md#lth-rq)
-[`++lug:fl`](@/docs/reference/library/3b.md#lug-fl)
-[`++lus`](@/docs/reference/library/4h.md#lus)
-[`++lust`](@/docs/reference/library/4d.md#lust)
-[`++less`](@/docs/reference/library/4e.md#less)
-[`++ly`](@/docs/reference/library/2m.md#ly)
+<a class="tooltip" href='/docs/reference/library/4d/#last' title="Further trace"><code>++last</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#le-nl' title="Construct list from null-terminated noun"><code>++le:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#lent' title="List length"><code>++lent</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#levy' title="Logical AND on list"><code>++levy</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lfe-fl' title="Maximum"><code>++lfe:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lfn-fl' title="Largest normal float"><code>++lfn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#lien' title="Logical OR on list"><code>++lien</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#lift' title="Curried bind"><code>++lift</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#like' title="Generic edge"><code>++like</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#limb' title="Reference into subject by name/axis"><code>++limb</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#limo' title="Construct list from null-terminated tuple"><code>++limo</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#line' title="(Undocumented)"><code>++line</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#lip-ag' title="Parse IPv4 address"><code>++lip:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#list' title="Mold constructor (list)"><code>++list</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#lone' title="Mold generator (face on mold)"><code>++lone</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#lor' title="Leg order"><code>++lor</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#low' title="Parse lowercase letter"><code>++low</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#lsh' title="Left-shift"><code>++lsh</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#lte' title="Less than / equal (atom)"><code>++lte</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-ff' title="Less than / equal (IEEE float)"><code>++lte:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-fl' title="Less than / equal (producing flag)"><code>++lte:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rd' title="Less than / equal (double-precision float)"><code>++lte:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rh' title="Less than / equal (half-precision float)"><code>++lte:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rs' title="Less than / equal (single-precision float)"><code>++lte:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rq' title="Less than / equal (quad-precision float)"><code>++lte:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#lth' title="Less than (atom)"><code>++lth</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-ff' title="Less than (IEEE float)"><code>++lth:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-fl' title="Less than (signed and unsigned integer cell)"><code>++lth:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rd' title="Less than (double-precision float)"><code>++lth:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rh' title="Less than (half-precision float)"><code>++lth:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rs' title="Less than (single-precision float)"><code>++lth:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rq' title="Less than (quad-precision float)"><code>++lth:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lug-fl' title="Central rounding mechanism"><code>++lug:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#lus' title="Parse + (lus)"><code>++lus</code></a>
+<a class="tooltip" href='/docs/reference/library/4d/#lust' title="Detect new line"><code>++lust</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#less' title="Parse unless"><code>++less</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#ly' title="List from raw noun"><code>++ly</code></a>
 
 ### m
 
-[`++ma:rd`](@/docs/reference/library/3b.md#ma-rd)
-[`++ma:rh`](@/docs/reference/library/3b.md#ma-rh)
-[`++ma:rs`](@/docs/reference/library/3b.md#ma-rs)
-[`++ma:rq`](@/docs/reference/library/3b.md#ma-rq)
-[`++mack`](@/docs/reference/library/4n.md#mack)
-[`++malt`](@/docs/reference/library/2l.md#malt)
-[`++map`](@/docs/reference/library/2o.md#map)
-[`+-mar:by`](@/docs/reference/library/2i.md#mar-by)
-[`++mas`](@/docs/reference/library/1b.md#mas)
-[`++mask`](@/docs/reference/library/4f.md#mask)
-[`++mat`](@/docs/reference/library/2p.md#mat)
-[`++mate`](@/docs/reference/library/2a.md#mate)
-[`++max`](@/docs/reference/library/1a.md#max)
-[`++me:ff`](@/docs/reference/library/3b.md#me-ff)
-[`++mean`](@/docs/reference/library/2n.md#mean)
-[`++mes`](@/docs/reference/library/4i.md#mes)
-[`++mesc`](@/docs/reference/library/4b.md#mesc)
-[`++met`](@/docs/reference/library/2c.md#met)
-[`++metl`](@/docs/reference/library/4o.md#metl)
-[`++min`](@/docs/reference/library/1a.md#min)
-[`++mink`](@/docs/reference/library/4n.md#mink)
-[`++mit:yo`](@/docs/reference/library/3c.md#mit-yo)
-[`++mix`](@/docs/reference/library/2d.md#mix)
-[`++mock`](@/docs/reference/library/4n.md#mock)
-[`++mod`](@/docs/reference/library/1a.md#mod)
-[`++moh:yo`](@/docs/reference/library/3c.md#moh-yo)
-[`++molt`](@/docs/reference/library/2l.md#molt)
-[`++mong`](@/docs/reference/library/4n.md#mong)
-[`++mook`](@/docs/reference/library/4n.md#mook)
-[`++more`](@/docs/reference/library/4f.md#more)
-[`++most`](@/docs/reference/library/4f.md#most)
-[`++moy:yo`](@/docs/reference/library/3c.md#moy-yo)
-[`++mu`](@/docs/reference/library/4j.md#mu)
-[`++mug`](@/docs/reference/library/2e.md#mug)
-[`++muk`](@/docs/reference/library/2e.md#muk)
-[`++mul`](@/docs/reference/library/1a.md#mul)
-[`++mul:ff`](@/docs/reference/library/3b.md#mul-ff)
-[`++mul:fl`](@/docs/reference/library/3b.md#mul-fl)
-[`++mul:rd`](@/docs/reference/library/3b.md#mul-rd)
-[`++mul:rh`](@/docs/reference/library/3b.md#mul-rh)
-[`++mul:rs`](@/docs/reference/library/3b.md#mul-rs)
-[`++mul:rq`](@/docs/reference/library/3b.md#mul-rq)
-[`++mule`](@/docs/reference/library/4n.md#mule)
-[`++mute`](@/docs/reference/library/4n.md#mute)
-[`++mum`](@/docs/reference/library/2e.md#mum)
-[`++murn`](@/docs/reference/library/2b.md#murn)
-[`++my`](@/docs/reference/library/2m.md#my)
-[`++my:nl`](@/docs/reference/library/2m.md#my-nl)
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rd' title="Initialize ff (rd core)"><code>++ma:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rh' title="Initialize ff (rh core)"><code>++ma:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rs' title="Initialize ff (rs core)"><code>++ma:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rq' title="Initialize ff (rq core)"><code>++ma:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mack' title="Nock subject to unit"><code>++mack</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#malt' title="Map from list"><code>++malt</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#map' title="Mold generator (map)"><code>++map</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#mar-by' title="Assert and add (map)"><code>+-mar:by</code></a>
+<a class="tooltip" href='/docs/reference/library/1b/#mas' title="Address within head/tail"><code>++mas</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#mask' title="Match character"><code>++mask</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#mat' title="Length-encode"><code>++mat</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#mate' title="Choose"><code>++mate</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#max' title="Maximum"><code>++max</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#me-ff' title="Minimum exponent of ff"><code>++me:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#mean' title="Crash and printf"><code>++mean</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#mes' title="Parse hexabyte"><code>++mes</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#mesc' title="Escape special characters"><code>++mesc</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#met' title="Measure"><code>++met</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#metl' title="(Undocumented)"><code>++metl</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#min' title="Minimum (atom)"><code>++min</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mink' title="Mock (virtual Nock) interpreter"><code>++mink</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#mit-yo' title="Seconds in minute"><code>++mit:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#mix' title="Binary XOR (atom)"><code>++mix</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mock' title="Compute formula on subject with hint"><code>++mock</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#mod' title="Modulus (atom)"><code>++mod</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#moh-yo' title="Days in month"><code>++moh:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#molt' title="Map from pair list"><code>++molt</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mong' title="Slam gate with sample"><code>++mong</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mook' title="Intelligently render crash annotation"><code>++mook</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#more' title="Parse list with delimiter"><code>++more</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#most' title="Parse list of at least one match"><code>++most</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#moy-yo' title="Days in months of leap-year"><code>++moy:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#mu' title="Core used to scramble 16-bit atoms"><code>++mu</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#mug' title="FNV-1a scrambler"><code>++mug</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#muk' title="Standard MurmurHash3"><code>++muk</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#mul' title="Multiply (atom)"><code>++mul</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-ff' title="Multiply (IEEE float)"><code>++mul:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-fl' title="Multiply (signed and unsigned integer cell)"><code>++mul:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rd' title="Multiply (double-precision float)"><code>++mul:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rh' title="Multiply (quad-precision float)"><code>++mul:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rs' title="Multiply (single-precision float)"><code>++mul:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rq' title="Multiply (quad-precision float)"><code>++mul:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mule' title="Typed virtual"><code>++mule</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mute' title="Untyped virtual"><code>++mute</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#mum' title="31-bit MurmurHash3 scrambler"><code>++mum</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#murn' title="Maybe transform"><code>++murn</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#my' title="Map from raw noun"><code>++my</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#my-nl' title="Construct map from null-terminated noun"><code>++my:nl</code></a>
 
 ### n
 
-[`++nail`](@/docs/reference/library/3g.md#nail)
-[`+-nap:to`](@/docs/reference/library/2k.md#nap-to)
-[`++ne`](@/docs/reference/library/4j.md#ne)
-[`++ned:fl`](@/docs/reference/library/3b.md#ned-fl)
-[`++need`](@/docs/reference/library/2a.md#need)
-[`++net:fe`](@/docs/reference/library/2c.md#net-fe)
-[`++new:si`](@/docs/reference/library/3a.md#new-si)
-[`++next`](@/docs/reference/library/4f.md#next)
-[`+-nip:to`](@/docs/reference/library/2k.md#nip-to)
-[`++nix`](@/docs/reference/library/4i.md#nix)
-[`++nl`](@/docs/reference/library/2m.md#nl)
-[`++nock`](@/docs/reference/library/4o.md#nock)
-[`++not`](@/docs/reference/library/2d.md#not)
-[`++noun`](@/docs/reference/library/4o.md#noun)
-[`++nuck:so`](@/docs/reference/library/4l.md#nuck-so)
-[`++nud`](@/docs/reference/library/4i.md#nud)
-[`++null`](@/docs/reference/library/4o.md#null)
-[`++nusk:so`](@/docs/reference/library/4l.md#nusk-so)
+<a class="tooltip" href='/docs/reference/library/3g/#nail' title="Location, remainder of parsed text"><code>++nail</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#nap-to' title="Remove head of queue"><code>+-nap:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ne' title="Digit rendering engine"><code>++ne</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ned-fl' title="Require float"><code>++ned:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#need' title="Unwrap unit"><code>++need</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#net-fe' title="Flip endianness"><code>++net:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#new-si' title="Atom to @s"><code>++new:si</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#next' title="Consume character"><code>++next</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#nip-to' title="Remove root of queue"><code>+-nip:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#nix' title="Parse letters and -"><code>++nix</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#nl' title="Noun to container operations"><code>++nl</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#nock' title="Virtual machine (see Nock)"><code>++nock</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#not' title="Binary NOT (atom)"><code>++not</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#noun' title="(Undocumented)"><code>++noun</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#nuck-so' title="Top-level coin parser"><code>++nuck:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#nud' title="Parse numeric character"><code>++nud</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#null' title="(Undocumented)"><code>++null</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#nusk-so' title="Parse coin literal with escapes"><code>++nusk:so</code></a>
 
 ### o
 
-[`++ob`](@/docs/reference/library/3f.md#ob)
-[`++og`](@/docs/reference/library/3d.md#og)
-[`++old:si`](@/docs/reference/library/3a.md#old-si)
-[`++oust`](@/docs/reference/library/2b.md#oust)
-[`++out:fe`](@/docs/reference/library/2c.md#out-fe)
+<a class="tooltip" href='/docs/reference/library/3f/#ob' title="Reversible scrambling v2"><code>++ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#og' title="Container arm for SHA-256 powered RNG"><code>++og</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#old-si' title="Sign and absolute value"><code>++old:si</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#oust' title="Remove from list"><code>++oust</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#out-fe' title="Maximum integer value"><code>++out:fe</code></a>
 
 ### p
 
-[`++pa:ff`](@/docs/reference/library/3b.md#pa-ff)
-[`++pair`](@/docs/reference/library/1c.md#pair)
-[`++pam`](@/docs/reference/library/4h.md#pam)
-[`++pat`](@/docs/reference/library/4h.md#pat)
-[`++path`](@/docs/reference/library/3g.md#path)
-[`++peg`](@/docs/reference/library/1b.md#peg)
-[`++pel`](@/docs/reference/library/4h.md#pel)
-[`++per`](@/docs/reference/library/4h.md#per)
-[`++perd:so`](@/docs/reference/library/4l.md#perd-so)
-[`++pev:ab`](@/docs/reference/library/4j.md#pev-ab)
-[`++pew:ab`](@/docs/reference/library/4j.md#pew-ab)
-[`++pfix`](@/docs/reference/library/4e.md#pfix)
-[`++pint`](@/docs/reference/library/3g.md#pint)
-[`++piv:ab`](@/docs/reference/library/4j.md#piv-ab)
-[`++piw:ab`](@/docs/reference/library/4j.md#piw-ab)
-[`++plug`](@/docs/reference/library/4e.md#plug)
-[`++plus`](@/docs/reference/library/4f.md#plus)
-[`++po`](@/docs/reference/library/4a.md#po)
-[`++pole`](@/docs/reference/library/1c.md#pole)
-[`++port`](@/docs/reference/library/4o.md#port)
-[`++pose`](@/docs/reference/library/4e.md#pose)
-[`++pow`](@/docs/reference/library/2g.md#pow)
-[`++prc:fl`](@/docs/reference/library/3b.md#prc-fl)
-[`++prn`](@/docs/reference/library/4i.md#prn)
-[`++pro:fo`](@/docs/reference/library/3a.md#pro-fo)
-[`++pro:si`](@/docs/reference/library/3a.md#pro-si)
-[`+-put:by`](@/docs/reference/library/2i.md#put-by)
-[`+-put:in`](@/docs/reference/library/2h.md#put-in)
-[`+-put:ju`](@/docs/reference/library/2j.md#put-ju)
-[`+-put:to`](@/docs/reference/library/2k.md#put-to)
+<a class="tooltip" href='/docs/reference/library/3b/#pa-ff' title="Initialize fl from ff core"><code>++pa:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#pair' title="Mold of pair of types"><code>++pair</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#pam' title="Parse & (pam)"><code>++pam</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#pat' title="Parse @ (pat)"><code>++pat</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#path' title="Filesystem path"><code>++path</code></a>
+<a class="tooltip" href='/docs/reference/library/1b/#peg' title="Address within address"><code>++peg</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#pel' title="Parse ( (pel)"><code>++pel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#per' title="Parse ) (per)"><code>++per</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#perd-so' title="Parses dime/tiple without standard prefixes"><code>++perd:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#pev-ab' title="Parse <=5 in base 32"><code>++pev:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#pew-ab' title="Parse <= 5 in base 64"><code>++pew:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#pfix' title="Discard first rule"><code>++pfix</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#pint' title="Parsing range"><code>++pint</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#piv-ab' title="Parse 5 digits in base 32"><code>++piv:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#piw-ab' title="Parse 5 digits in base 64"><code>++piw:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#plug' title="Parse to tuple"><code>++plug</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#plus' title="List of at least one match"><code>++plus</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#po' title="Phonetic base"><code>++po</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#pole' title="Mold generator of faceless list"><code>++pole</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#port' title="(Undocumented)"><code>++port</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#pose' title="Parse options"><code>++pose</code></a>
+<a class="tooltip" href='/docs/reference/library/2g/#pow' title="Computes a to the power of b"><code>++pow</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#prc-fl' title="Force precision of 2 or greater (floating point)"><code>++prc:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#prn' title="Parse any printable character"><code>++prn</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#pro-fo' title="Multiplies b and c modulo a"><code>++pro:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#pro-si' title="Multiply to signed integer"><code>++pro:si</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#put-by' title="Add key-value pair (map)"><code>+-put:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#put-in' title="Put b in a (set)"><code>+-put:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#put-ju' title="Add key-set pair (jar)"><code>+-put:ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#put-to' title="Insert into queue"><code>+-put:to</code></a>
 
 ### q
 
-[`++qad:yo`](@/docs/reference/library/3c.md#qad-yo)
-[`++qeb:ab`](@/docs/reference/library/4j.md#qeb-ab)
-[`++qeu`](@/docs/reference/library/2o.md#qeu)
-[`++qex:ab`](@/docs/reference/library/4j.md#qex-ab)
-[`++qib:ab`](@/docs/reference/library/4j.md#qib-ab)
-[`++qit`](@/docs/reference/library/4i.md#qit)
-[`++qix:ab`](@/docs/reference/library/4j.md#qix-ab)
-[`++quip`](@/docs/reference/library/1c.md#quip)
-[`++qut`](@/docs/reference/library/4i.md#qut)
+<a class="tooltip" href='/docs/reference/library/3c/#qad-yo' title="Seconds in 4 years"><code>++qad:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qeb-ab' title="Parse <=4 binary digits"><code>++qeb:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#qeu' title="Mold generator (queue)"><code>++qeu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qex-ab' title="Parse <=4 hexadecimal digits"><code>++qex:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qib-ab' title="Parse 4 binary digits"><code>++qib:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#qit' title="Parse character to cord atom"><code>++qit</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qix-ab' title="Parse 4 hexadecimal digits"><code>++qix:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#quip' title="Mold generator (tuple of list and type)"><code>++quip</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#qut' title="Parse cord"><code>++qut</code></a>
 
 ### r
 
-[`++r:at`](@/docs/reference/library/4b.md#r-at)
-[`++rad:og`](@/docs/reference/library/3d.md#rad-og)
-[`++rads:og`](@/docs/reference/library/3d.md#rads-og)
-[`++raku:ob`](@/docs/reference/library/3f.md#raku-ob)
-[`++ram:re`](@/docs/reference/library/4c.md#ram-re)
-[`++rap`](@/docs/reference/library/2c.md#rap)
-[`++rash`](@/docs/reference/library/4g.md#rash)
-[`++rau:fl`](@/docs/reference/library/3b.md#rau-fl)
-[`++raw:og`](@/docs/reference/library/3d.md#raw-og)
-[`++raws:og`](@/docs/reference/library/3d.md#raws-og)
-[`++re`](@/docs/reference/library/4c.md#re)
-[`++rear:co`](@/docs/reference/library/4k.md#rear-co)
-[`++reap`](@/docs/reference/library/2b.md#reap)
-[`++reel`](@/docs/reference/library/2b.md#reel)
-[`++rem:si`](@/docs/reference/library/3a.md#rem-si)
-[`++rend:co`](@/docs/reference/library/4k.md#rend-co)
-[`++rent:co`](@/docs/reference/library/4k.md#rent-co)
-[`++rep`](@/docs/reference/library/2c.md#rep)
-[`+-rep:by`](@/docs/reference/library/2i.md#rep-by)
-[`+-rep:in`](@/docs/reference/library/2h.md#rep-in)
-[`++rf:at`](@/docs/reference/library/4b.md#rf-at)
-[`+-rib:by`](@/docs/reference/library/2i.md#rib-by)
-[`++rig:re`](@/docs/reference/library/4c.md#rig-re)
-[`++rip`](@/docs/reference/library/2c.md#rip)
-[`++rn:at`](@/docs/reference/library/4b.md#rn-at)
-[`++rol:fe`](@/docs/reference/library/2c.md#rol-fe)
-[`++roll`](@/docs/reference/library/2b.md#roll)
-`++rood`
-[`++ror:fe`](@/docs/reference/library/2c.md#ror-fe)
-[`++rou:fl`](@/docs/reference/library/3b.md#rou-fl)
-[`++royl:so`](@/docs/reference/library/4l.md#royl-so)
-[`++royl-cell:so`](@/docs/reference/library/4l.md#royl-cell-so)
-[`++rsh`](@/docs/reference/library/2c.md#rsh)
-[`++rt:at`](@/docs/reference/library/4b.md#rt-at)
-[`++rta:at`](@/docs/reference/library/4b.md#rta-at)
-[`++rtam:at`](@/docs/reference/library/4b.md#rtam-at)
-[`++rub`](@/docs/reference/library/2p.md#rub)
-[`++rub:at`](@/docs/reference/library/4b.md#rub-at)
-[`++rud:at`](@/docs/reference/library/4b.md#rud-at)
-[`++rule`](@/docs/reference/library/3g.md#rule)
-[`++rum:at`](@/docs/reference/library/4b.md#rum-at)
-[`+-run:by`](@/docs/reference/library/2i.md#run-by)
-[`+-run:in`](@/docs/reference/library/2h.md#run-in)
-[`++rund:ob`](@/docs/reference/library/3f.md#rund-ob)
-[`++runt`](@/docs/reference/library/4b.md#runt)
-[`++rup:at`](@/docs/reference/library/4b.md#rup-at)
-[`++rush`](@/docs/reference/library/4g.md#rush)
-[`++rust`](@/docs/reference/library/4g.md#rust)
-[`+-rut:by`](@/docs/reference/library/2i.md#rut-by)
-[`++ruv:at`](@/docs/reference/library/4b.md#ruv-at)
-[`++rux:at`](@/docs/reference/library/4b.md#rux-at)
-[`++rynd:ob`](@/docs/reference/library/3f.md#rynd-ob)
+<a class="tooltip" href='/docs/reference/library/4b/#r-at' title="(Undocumented)"><code>++r:at</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#rad-og' title="Random in range"><code>++rad:og</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#rads-og' title="Random continuation"><code>++rads:og</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#raku-ob' title="Key list"><code>++raku:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#ram-re' title="Flatten tank to tape"><code>++ram:re</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rap' title="Assemble non-zero"><code>++rap</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#rash' title="Parse or crash"><code>++rash</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rau-fl' title="Various roundings (floating point)"><code>++rau:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#raw-og' title="Random bits"><code>++raw:og</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#raws-og' title="Random bits continuation"><code>++raws:og</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#re' title="Pretty-printing engine (tank)"><code>++re</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#rear-co' title="Prepend and render atom as tape"><code>++rear:co</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#reap' title="Replicate (list)"><code>++reap</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#reel' title="Right fold (list)"><code>++reel</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#rem-si' title="Remainder (signed integer)"><code>++rem:si</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#rend-co' title="Render coin lot as tape"><code>++rend:co</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#rent-co' title="Render coin lot as span"><code>++rent:co</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rep' title="Assemble single"><code>++rep</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#rep-by' title="Replace by product (map)"><code>+-rep:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#rep-in' title="Accumulate elements (set)"><code>+-rep:in</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rf-at' title="(Undocumented)"><code>++rf:at</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#rib-by' title="Replace values with accumulator (map)"><code>+-rib:by</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#rig-re' title="Wrap tape in / (tank)"><code>++rig:re</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rip' title="Disassemble"><code>++rip</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rn-at' title="(Undocumented)"><code>++rn:at</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rol-fe' title="Roll left"><code>++rol:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#roll' title="Left fold (list)"><code>++roll</code></a>
+<code>++rood</code>
+<a class="tooltip" href='/docs/reference/library/2c/#ror-fe' title="Roll right"><code>++ror:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rou-fl' title="Round to nearest float with 113-bit significand"><code>++rou:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#royl-so' title="Parse dime float"><code>++royl:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#royl-cell-so' title="(Undocumented)"><code>++royl-cell:so</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rsh' title="Right-shift"><code>++rsh</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rt-at' title="(Undocumented)"><code>++rt:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rta-at' title="(Undocumented)"><code>++rta:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rtam-at' title="(Undocumented)"><code>++rtam:at</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#rub' title="Length-decode"><code>++rub</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rub-at' title="(Undocumented)"><code>++rub:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rud-at' title="(Undocumented)"><code>++rud:at</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#rule' title="Parsing rule (match this with _)"><code>++rule</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rum-at' title="(Undocumented)"><code>++rum:at</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#run-by' title="Transform values (map)"><code>+-run:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#run-in' title="Apply gate to set"><code>+-run:in</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#rund-ob' title="Reverse single Feistel-like"><code>++rund:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#runt' title="Prepend n times"><code>++runt</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rup-at' title="(Undocumented)"><code>++rup:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#rush' title="Parse or null"><code>++rush</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#rust' title="Parse tape or null"><code>++rust</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#rut-by' title="Transform nodes (map)"><code>+-rut:by</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#ruv-at' title="(Undocumented)"><code>++ruv:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rux-at' title="(Undocumented)"><code>++rux:at</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#rynd-ob' title="Reverse Feistel-like cipher"><code>++rynd:ob</code></a>
 
 ### s
 
-[`++same`](@/docs/reference/library/2n.md#same)
-[`++san:ff`](@/docs/reference/library/3b.md#san-ff)
-[`++san:fl`](@/docs/reference/library/3b.md#san-fl)
-[`++san:rd`](@/docs/reference/library/3b.md#san-rd)
-[`++san:rh`](@/docs/reference/library/3b.md#san-rh)
-[`++san:rs`](@/docs/reference/library/3b.md#san-rs)
-[`++san:rq`](@/docs/reference/library/3b.md#san-rq)
-[`++sand`](@/docs/reference/library/4b.md#sand)
-[`++sane`](@/docs/reference/library/4b.md#sane)
-[`++sb:ff`](@/docs/reference/library/3b.md#sb-ff)
-[`++scag`](@/docs/reference/library/2b.md#scag)
-[`++scan`](@/docs/reference/library/4g.md#scan)
-[`++scot`](@/docs/reference/library/4m.md#scot)
-[`++scow`](@/docs/reference/library/4m.md#scow)
-[`++sea:ff`](@/docs/reference/library/3b.md#sea-ff)
-[`++sea:rd`](@/docs/reference/library/3b.md#sea-rd)
-[`++sea:rh`](@/docs/reference/library/3b.md#sea-rh)
-[`++sea:rs`](@/docs/reference/library/3b.md#sea-rs)
-[`++sea:rq`](@/docs/reference/library/3b.md#sea-rq)
-[`++sear`](@/docs/reference/library/4f.md#sear)
-[`++seb:ab`](@/docs/reference/library/4j.md#seb-ab)
-[`++sed:ab`](@/docs/reference/library/4j.md#sed-ab)
-[`++sel`](@/docs/reference/library/4h.md#sel)
-[`++sem`](@/docs/reference/library/4h.md#sem)
-[`++ser`](@/docs/reference/library/4h.md#ser)
-[`++set`](@/docs/reference/library/2o.md#set)
-[`++sev:ab`](@/docs/reference/library/4j.md#sev-ab)
-[`++sew:ab`](@/docs/reference/library/4j.md#sew-ab)
-[`++sex:ab`](@/docs/reference/library/4j.md#sex-ab)
-[`++sfix`](@/docs/reference/library/4e.md#sfix)
-[`++shad`](@/docs/reference/library/3d.md#shad)
-[`++shaf`](@/docs/reference/library/3d.md#shaf)
-[`++shal`](@/docs/reference/library/3d.md#shal)
-[`++sham`](@/docs/reference/library/3d.md#sham)
-[`++shan`](@/docs/reference/library/3d.md#shan)
-[`++shas`](@/docs/reference/library/3d.md#shas)
-[`++shaw`](@/docs/reference/library/3d.md#shaw)
-[`++shax`](@/docs/reference/library/3d.md#shax)
-[`++shay`](@/docs/reference/library/3d.md#shay)
-[`++shaz`](@/docs/reference/library/3d.md#shaz)
-[`++shep`](@/docs/reference/library/4c.md#shep)
-[`++shf:fl`](@/docs/reference/library/3b.md#shf-fl)
-[`++shim`](@/docs/reference/library/4f.md#shim)
-[`++shop`](@/docs/reference/library/4c.md#shop)
-[`++show`](@/docs/reference/library/4c.md#show)
-[`++si`](@/docs/reference/library/3a.md#si)
-[`++si:nl`](@/docs/reference/library/2m.md#si-nl)
-[`++sib:ab`](@/docs/reference/library/4j.md#sib-ab)
-[`++sid:ab`](@/docs/reference/library/4j.md#sid-ab)
-[`++sig`](@/docs/reference/library/4h.md#sig)
-[`++sig:ff`](@/docs/reference/library/3b.md#sig-ff)
-[`++sig:rd`](@/docs/reference/library/3b.md#sig-rd)
-[`++sig:rh`](@/docs/reference/library/3b.md#sig-rh)
-[`++sig:rs`](@/docs/reference/library/3b.md#sig-rs)
-[`++sig:rq`](@/docs/reference/library/3b.md#sig-rq)
-[`++silt`](@/docs/reference/library/2l.md#silt)
-[`++simu`](@/docs/reference/library/4e.md#simu)
-[`++sit:fe`](@/docs/reference/library/2c.md#sit-fe)
-[`++sit:fo`](@/docs/reference/library/3a.md#sit-fo)
-[`++siv:ab`](@/docs/reference/library/4j.md#siv-ab)
-[`++siw:ab`](@/docs/reference/library/4j.md#siw-ab)
-[`++six:ab`](@/docs/reference/library/4j.md#six-ab)
-[`++skid`](@/docs/reference/library/2b.md#skid)
-[`++skim`](@/docs/reference/library/2b.md#skim)
-[`++skip`](@/docs/reference/library/2b.md#skip)
-[`++slag`](@/docs/reference/library/2b.md#slag)
-[`++slat`](@/docs/reference/library/4m.md#slat)
-[`++slav`](@/docs/reference/library/4m.md#slav)
-[`++slaw`](@/docs/reference/library/4m.md#slaw)
-[`++slay`](@/docs/reference/library/4m.md#slay)
-[`++slog`](@/docs/reference/library/2n.md#slog)
-[`++slug`](@/docs/reference/library/4f.md#slug)
-[`++smyt`](@/docs/reference/library/4m.md#smyt)
-[`++snag`](@/docs/reference/library/2b.md#snag)
-[`++snag:nl`](@/docs/reference/library/2m.md#snag-nl)
-[`++snoc`](@/docs/reference/library/2b.md#snoc)
-[`++so`](@/docs/reference/library/4l.md#so)
-[`++soft`](@/docs/reference/library/2n.md#soft)
-[`++some`](@/docs/reference/library/2a.md#some)
-[`++soq`](@/docs/reference/library/4h.md#soq)
-[`++sort`](@/docs/reference/library/2b.md#sort)
-[`++sov:ab`](@/docs/reference/library/4j.md#sov-ab)
-[`++sow:ab`](@/docs/reference/library/4j.md#sow-ab)
-[`++sox:ab`](@/docs/reference/library/4j.md#sox-ab)
-[`++soz`](@/docs/reference/library/4i.md#soz)
-[`++span`](@/docs/reference/library/4o.md#span)
-[`++spat`](@/docs/reference/library/4m.md#spat)
-[`++spd:fl`](@/docs/reference/library/3b.md#spd-fl)
-[`++spin`](@/docs/reference/library/2b.md#spin)
-[`++spn:fl`](@/docs/reference/library/3b.md#spn-fl)
-[`++spot`](@/docs/reference/library/3g.md#spot)
-[`++spud`](@/docs/reference/library/4m.md#spud)
-[`++spun`](@/docs/reference/library/2b.md#spun)
-[`++sqt`](@/docs/reference/library/2g.md#sqt)
-[`++sqt:ff`](@/docs/reference/library/3b.md#sqt-ff)
-[`++sqt:fl`](@/docs/reference/library/3b.md#sqt-fl)
-[`++sqt:rd`](@/docs/reference/library/3b.md#sqt-rd)
-[`++sqt:rh`](@/docs/reference/library/3b.md#sqt-rh)
-[`++sqt:rs`](@/docs/reference/library/3b.md#sqt-rs)
-[`++sqt:rq`](@/docs/reference/library/3b.md#sqt-rq)
-[`++stab`](@/docs/reference/library/4m.md#stab)
-[`++stag`](@/docs/reference/library/4f.md#stag)
-[`++star`](@/docs/reference/library/4f.md#star)
-[`++stet`](@/docs/reference/library/4f.md#stet)
-[`++stew`](@/docs/reference/library/4f.md#stew)
-[`++stir`](@/docs/reference/library/4f.md#stir)
-[`++stun`](@/docs/reference/library/4f.md#stun)
-[`++sub`](@/docs/reference/library/1a.md#sub)
-[`++sub:ff`](@/docs/reference/library/3b.md#sub-ff)
-[`++sub:fl`](@/docs/reference/library/3b.md#sub-fl)
-[`++sub:rd`](@/docs/reference/library/3b.md#sub-rd)
-[`++sub:rh`](@/docs/reference/library/3b.md#sub-rh)
-[`++sub:rs`](@/docs/reference/library/3b.md#sub-rs)
-[`++sub:rq`](@/docs/reference/library/3b.md#sub-rq)
-[`++sum:fe`](@/docs/reference/library/2c.md#sum-fe)
-[`++sum:fo`](@/docs/reference/library/3a.md#sum-fo)
-[`++sum:si`](@/docs/reference/library/3a.md#sum-si)
-[`++sun:ff`](@/docs/reference/library/3b.md#sun-ff)
-[`++sun:fl`](@/docs/reference/library/3b.md#sun-fl)
-[`++sun:rd`](@/docs/reference/library/3b.md#sun-rd)
-[`++sun:rh`](@/docs/reference/library/3b.md#sun-rh)
-[`++sun:rs`](@/docs/reference/library/3b.md#sun-rs)
-[`++sun:rq`](@/docs/reference/library/3b.md#sun-rq)
-[`++sun:si`](@/docs/reference/library/3a.md#sun-si)
-[`++swag`](@/docs/reference/library/2b.md#swag)
-[`++swp`](@/docs/reference/library/2c.md#swp)
-[`++swr:fl`](@/docs/reference/library/3b.md#swr-fl)
-[`++sy`](@/docs/reference/library/2m.md#sy)
-[`++sym`](@/docs/reference/library/4i.md#sym)
-[`++syn:fl`](@/docs/reference/library/3b.md#syn-fl)
-[`++syn:si`](@/docs/reference/library/3a.md#syn-si)
+<a class="tooltip" href='/docs/reference/library/2n/#same' title="Identity (produces same value)"><code>++same</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-ff' title="Signed integer to @r"><code>++san:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-fl' title="Signed integer to float"><code>++san:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rd' title="Unsigned integer to @rd"><code>++san:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rh' title="Signed integer to @rh"><code>++san:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rs' title="Signed integer to @rs"><code>++san:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rq' title="Signed integer to @rq"><code>++san:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by odor"><code>++sand</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check odor validity"><code>++sane</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sb-ff' title="Sign bit"><code>++sb:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#scag' title="Prefix (produce front of list)"><code>++scag</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#scan' title="Parse tape or crash"><code>++scan</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scot' title="Render dime as cord"><code>++scot</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scow' title="Render dime as tape"><code>++scow</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-ff' title="Convert from IEEE float to fn"><code>++sea:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rd' title="Convert from double-precision binary float to fn"><code>++sea:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rh' title="Convert from half-precision float to fn"><code>++sea:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rs' title="Convert from single-precision float to fn"><code>++sea:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rq' title="Convert from quad-precision float to fn"><code>++sea:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#sear' title="Conditional ++cook"><code>++sear</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#seb-ab' title="Parse 1"><code>++seb:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sed-ab' title="Parse non-zero decimal digit"><code>++sed:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sel' title="Parse [ (sel)"><code>++sel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sem' title="Parse ; (sem)"><code>++sem</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ser' title="Parse ] (ser)"><code>++ser</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#set' title="Mold generator (set)"><code>++set</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sev-ab' title="Parse non-zero base 32 digit"><code>++sev:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sew-ab' title="Parse non-zero base 64 digit"><code>++sew:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sex-ab' title="Parse nonzero hexadecimal digit"><code>++sex:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#sfix' title="Discard second rule"><code>++sfix</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shad' title="Double SHA-256"><code>++shad</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaf' title="Half SHA-256"><code>++shaf</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shal' title="SHA-512 with length"><code>++shal</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#sham' title="128-bit noun hash"><code>++sham</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shan' title="SHA-1"><code>++shan</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shas' title="Salted hash"><code>++shas</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaw' title="Hash to nbits"><code>++shaw</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shax' title="SHA-256"><code>++shax</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shay' title="SHA-256 with length"><code>++shay</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaz' title="SHA-512"><code>++shaz</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shep' title="(Undocumented)"><code>++shep</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#shf-fl' title="Shift power"><code>++shf:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#shim' title="Match character within range"><code>++shim</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shop' title="(Undocumented)"><code>++shop</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#show' title="(Undocumented)"><code>++show</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#si' title="Signed integer"><code>++si</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#si-nl' title="Construct set from null-terminated noun"><code>++si:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sib-ab' title="Parse binary digit"><code>++sib:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sid-ab' title="Parse decimal digit"><code>++sid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sig' title="Parse ~ (sig)"><code>++sig</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-ff' title="Produce sign of IEEE float"><code>++sig:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rd' title="Produce sign of @rd"><code>++sig:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rh' title="Produce sign of half-precision float"><code>++sig:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rs' title="Produce sign of @rs"><code>++sig:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rq' title="Produce sign of quad-precision float"><code>++sig:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#silt' title="Produce set from list"><code>++silt</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#simu' title="First and second"><code>++simu</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sit-fe' title="Enforce modulo"><code>++sit:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sit-fo' title="Produce remainder of b modulo a"><code>++sit:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siv-ab' title="Parse a base 32 digit"><code>++siv:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siw-ab' title="Parse a base 64 digit"><code>++siw:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#six-ab' title="Parse a hexadecimal digit"><code>++six:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skid' title="Separate list into two lists from slammed elments"><code>++skid</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skim' title="Produce list of elements from boolean gate"><code>++skim</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skip' title="Produce list of elements failing boolean gate"><code>++skip</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#slag' title="Produce all elements from index in list"><code>++slag</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slat' title="Curried slaw"><code>++slat</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input odor"><code>++slav</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input odor"><code>++slaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slay' title="Parse cord to coin"><code>++slay</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#slog' title="Deify printf"><code>++slog</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#slug' title="Use gate to parse delimited list"><code>++slug</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#smyt' title="Render path as tank"><code>++smyt</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snag' title="Produce element at specific index (list)"><code>++snag</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#snag-nl' title="Produce element from list at specific null-terminated noun"><code>++snag:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snoc' title="Append noun to list"><code>++snoc</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#so' title="Coin parser engine"><code>++so</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#soft' title="Maybe remold"><code>++soft</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#some' title="Wrap value in unit"><code>++some</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#soq' title="Parse ' (soq)"><code>++soq</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#sort' title="Quicksort (list)"><code>++sort</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sov-ab' title="Parse base 32 letter"><code>++sov:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sow-ab' title="Parse base 64 letter/symbol"><code>++sow:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sox-ab' title="Parse hexadecimal letter"><code>++sox:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#soz' title="Parse triple single-quote"><code>++soz</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#span' title="ASCII atom"><code>++span</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spat' title="Render path as cord"><code>++spat</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spd-fl' title="Produce smallest denormalized float"><code>++spd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spin' title="Gate to list (with state)"><code>++spin</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spn-fl' title="Produce smallest normal float"><code>++spn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#spot' title="Stack trace line"><code>++spot</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spud' title="Render path as tape"><code>++spud</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spun' title="Gate to list (with state)"><code>++spun</code></a>
+<a class="tooltip" href='/docs/reference/library/2g/#sqt' title="Compute square root with remainder"><code>++sqt</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-ff' title="Produce square root of IEEE float"><code>++sqt:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-fl' title="Produce square root from signed and unsigned integer cell"><code>++sqt:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rd' title="Produce square root of double-precision float"><code>++sqt:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rh' title="Produce square root of half-precision float"><code>++sqt:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rs' title="Produce square root of single-precision float"><code>++sqt:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rq' title="Produce square root of quad-precision float"><code>++sqt:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#stab' title="Parse cord to path"><code>++stab</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stag' title="Add label"><code>++stag</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#star' title="Produce list of matches"><code>++star</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stet' title="Add faces to range-parser pairs in list"><code>++stet</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stew' title="Switch by first"><code>++stew</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stir' title="Parse repeatedly"><code>++stir</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stun' title="Parse several times"><code>++stun</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#sub' title="Subtract"><code>++sub</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-ff' title="Subtract from IEEE float"><code>++sub:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-fl' title="Subtract from signed and unsigned integer cells"><code>++sub:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rd' title="Subtract from double-precision float"><code>++sub:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rh' title="Subtract from half-precision float"><code>++sub:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rs' title="Subtract from single-precision float"><code>++sub:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rq' title="Subtract from quad-precision float"><code>++sub:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sum-fe' title="Sum two numbers in modular field"><code>++sum:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-fo' title="Modular sum"><code>++sum:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-si' title="Addition (signed integer)"><code>++sum:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-ff' title="Unsigned integer to IEEE float"><code>++sun:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-fl' title="Unsigned integer to float"><code>++sun:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rd' title="Unsigned integer to double-precision float"><code>++sun:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rh' title="Unsigned integer to half-precision float"><code>++sun:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rs' title="Unsigned integer to single-precision float"><code>++sun:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rq' title="Unsigned integer to quad-precision float"><code>++sun:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sun-si' title="@u to @s"><code>++sun:si</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#swag' title="Infix (list)"><code>++swag</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#swp' title="Reverse block order"><code>++swp</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#swr-fl' title="Switch rounding mode of floating point"><code>++swr:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#sy' title="Produce set from null-terminated noun"><code>++sy</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#sym' title="Term"><code>++sym</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#syn-fl' title="Get sign"><code>++syn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#syn-si' title="Sign test"><code>++syn:si</code></a>
 
 ### t
 
-[`++tail`](@/docs/reference/library/2n.md#tail)
-[`+-tap:to`](@/docs/reference/library/2k.md#tap-to)
-[`++tar`](@/docs/reference/library/4h.md#tar)
-[`++tang`](@/docs/reference/library/2q.md#tang)
-[`++tank`](@/docs/reference/library/2q.md#tank)
-[`+-tap:by`](@/docs/reference/library/2i.md#tap-by)
-[`+-tap:in`](@/docs/reference/library/2h.md#tap-in)
-[`++tape`](@/docs/reference/library/2q.md#tape)
-[`++tarp`](@/docs/reference/library/2q.md#tarp)
-[`++tash:so`](@/docs/reference/library/4l.md#tash-so)
-[`++tec`](@/docs/reference/library/4h.md#tec)
-[`++ted:ab`](@/docs/reference/library/4j.md#ted-ab)
-[`++teff`](@/docs/reference/library/4b.md#teff)
-[`++teil:ob`](@/docs/reference/library/3f.md#teil-ob)
-[`++term`](@/docs/reference/library/2q.md#term)
-[`++test`](@/docs/reference/library/2n.md#test)
-[`++tid:ab`](@/docs/reference/library/4j.md#tid-ab)
-[`++tiki`](@/docs/reference/library/4o.md#tiki)
-[`++til:ab`](@/docs/reference/library/4j.md#til-ab)
-[`++tip:ab`](@/docs/reference/library/4j.md#tip-ab)
-[`++tiq:ab`](@/docs/reference/library/4j.md#tiq-ab)
-[`++tis`](@/docs/reference/library/4h.md#tis)
-[`++to`](@/docs/reference/library/2k.md#to)
-[`++tod:po`](@/docs/reference/library/4a.md#tod-po)
-[`++toga`](@/docs/reference/library/4o.md#toga)
-[`++toi:ff`](@/docs/reference/library/3b.md#toi-ff)
-[`++toi:fl`](@/docs/reference/library/3b.md#toi-fl)
-[`++toi:rd`](@/docs/reference/library/3b.md#toi-rd)
-[`++toi:rh`](@/docs/reference/library/3b.md#toi-rh)
-[`++toi:rs`](@/docs/reference/library/3b.md#toi-rs)
-[`++toi:rq`](@/docs/reference/library/3b.md#toi-rq)
-[`++toj:fl`](@/docs/reference/library/3b.md#toj-fl)
-[`++tone`](@/docs/reference/library/3g.md#tone)
-[`++toon`](@/docs/reference/library/3g.md#toon)
-[`+-top:to`](@/docs/reference/library/2k.md#top-to)
-[`++tos:po`](@/docs/reference/library/4a.md#tos-po)
-[`++tos:rh`](@/docs/reference/library/3b.md#tos-rh)
-[`++trap`](@/docs/reference/library/1c.md#trap)
-[`++tree`](@/docs/reference/library/1c.md#tree)
-[`++trel`](@/docs/reference/library/1c.md#trel)
-[`++trim`](@/docs/reference/library/4b.md#trim)
-[`++trip`](@/docs/reference/library/4b.md#trip)
-[`++tuba`](@/docs/reference/library/4b.md#tuba)
-[`++tufa`](@/docs/reference/library/4b.md#tufa)
-[`++tuna`](@/docs/reference/library/4o.md#tuna)
-[`++tuft`](@/docs/reference/library/4b.md#tuft)
-[`++turf`](@/docs/reference/library/4b.md#turf)
-[`++turn`](@/docs/reference/library/2b.md#turn)
-[`++tusk`](@/docs/reference/library/4o.md#tusk)
-[`++twid:so`](@/docs/reference/library/4l.md#twid-so)
-[`++tyke`](@/docs/reference/library/4o.md#tyke)
-[`++typo`](@/docs/reference/library/4o.md#typo)
-[`++tyre`](@/docs/reference/library/4o.md#tyre)
+<a class="tooltip" href='/docs/reference/library/2n/#tail' title="Get tail of cell"><code>++tail</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#tap-to' title="Queue to list"><code>+-tap:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tar' title="Parse * (tar)"><code>++tar</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tang' title="Generic print structure"><code>++tang</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tank' title="Pretty-printing structure"><code>++tank</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#tap-by' title="Listify pairs"><code>+-tap:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#tap-in' title="Flatten set into list"><code>+-tap:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tape' title="List of characters"><code>++tape</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tarp' title="Parsed time"><code>++tarp</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#tash-so' title="Parse signed dime"><code>++tash:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tec' title="Parse ` (tec)"><code>++tec</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ted-ab' title="Parse decimal number with <= 3 digits"><code>++ted:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#teff' title="UTF-8 length"><code>++teff</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#teil-ob' title="Reverse Feistel-like cipher"><code>++teil:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#term' title="Hoon constant"><code>++term</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#test' title="Test for equality"><code>++test</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tid-ab' title="Parse 3 decimal digits"><code>++tid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tiki' title="(Undocumented)"><code>++tiki</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#til-ab' title="Parse 3 lowercase letters"><code>++til:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tip-ab' title="Leading phonetic byte"><code>++tip:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tiq-ab' title="Trailing phonetic syllable"><code>++tiq:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tis' title="Parse = (tis)"><code>++tis</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#to' title="Queue operations"><code>++to</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tod-po' title="Fetch suffix"><code>++tod:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#toga' title="Tree of faces"><code>++toga</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-ff' title="Round IEEE float to nearest signed integer"><code>++toi:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-fl' title="Round float to nearest signed integer"><code>++toi:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rd' title="Round double-precision float to nearest signed integer"><code>++toi:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rh' title="Round half-precision float to nearest signed integer"><code>++toi:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rs' title="Round single-precision float to nearest signed integer"><code>++toi:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rq' title="Round quad-precision float to nearest signed integer"><code>++toi:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toj-fl' title="Round unsigned and signed integer to float"><code>++toj:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#tone' title="Nock result (error report)"><code>++tone</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#toon' title="Nock result (stack trace)"><code>++toon</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#top-to' title="Produce head of queue"><code>+-top:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tos-po' title="Fetch prefix"><code>++tos:po</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#tos-rh' title="Convert half-precision float to single-precision float"><code>++tos:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trap' title="Core with one arm $"><code>++trap</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#tree' title="Mold generator (tree)"><code>++tree</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trel' title="Mold generator (tuple of three types)"><code>++trel</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trim' title="Tape split"><code>++trim</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trip' title="Cord to tape"><code>++trip</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuba' title="UTF-8 to UTF-32 tape"><code>++tuba</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tufa' title="UTF-32 to UTF-8 tape"><code>++tufa</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tuna' title="XML template tree"><code>++tuna</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuft' title="UTF-32 to UTF-8 text"><code>++tuft</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#turf' title="UTF-8 to UTF-32 cord"><code>++turf</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#turn' title="Gate to list"><code>++turn</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tusk' title="List of expressions"><code>++tusk</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#twid-so' title="Parse coins without ~ prefix"><code>++twid:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyke' title="List of 'maybe' hoons"><code>++tyke</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#typo' title="Pointer for ++type"><code>++typo</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyre' title="List, term hoon"><code>++tyre</code></a>
 
 ### u
 
-[`++un`](@/docs/reference/library/3f.md#un)
-[`+-uni:by`](@/docs/reference/library/2i.md#uni-by)
-[`++uni:fl`](@/docs/reference/library/3b.md#uni-fl)
-[`+-uni:in`](@/docs/reference/library/2h.md#uni-in)
-[`++unit`](@/docs/reference/library/1c.md#unit)
-[`+-urn:by`](@/docs/reference/library/2i.md#urn-by)
-[`++urs:ab`](@/docs/reference/library/4j.md#urs-ab)
-[`++urt:ab`](@/docs/reference/library/4j.md#urt-ab)
+<a class="tooltip" href='/docs/reference/library/3f/#un' title="Reversible scrambling"><code>++un</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#uni-by' title="Union (map between keys of two lists)"><code>+-uni:by</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#uni-fl' title="Change representation to odd"><code>++uni:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#uni-in' title="Union (sets)"><code>+-uni:in</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#unit' title="Mold generator (maybe)"><code>++unit</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#urn-by' title="Turn (with key) (map)"><code>+-urn:by</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urs-ab' title="Parse span characters"><code>++urs:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urt-ab' title="Parse non-_ span"><code>++urt:ab</code></a>
 
 ### v
 
-[`++v:ne`](@/docs/reference/library/4j.md#v-ne)
-`++vang`
-[`++vase`](@/docs/reference/library/4o.md#vase)
-`++vast`
-[`++ven`](@/docs/reference/library/4i.md#ven)
-[`++vise`](@/docs/reference/library/4o.md#vise)
-[`++vit`](@/docs/reference/library/4i.md#vit)
-[`++viz:ag`](@/docs/reference/library/4j.md#viz-ag)
-[`++vor`](@/docs/reference/library/2f.md#vor)
-[`++voy:ab`](@/docs/reference/library/4j.md#voy-ab)
-[`++vul`](@/docs/reference/library/4i.md#vul)
-[`++vum:ag`](@/docs/reference/library/4j.md#vum-ag)
+<a class="tooltip" href='/docs/reference/library/4j/#v-ne' title="Render base 32"><code>++v:ne</code></a>
+<code>++vang</code>
+<a class="tooltip" href='/docs/reference/library/4o/#vase' title="Typed data"><code>++vase</code></a>
+<code>++vast</code>
+<a class="tooltip" href='/docs/reference/library/4i/#ven' title="Axis syntax parser"><code>++ven</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vise' title="Convert during reboot"><code>++vise</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vit' title="Parse base 64 digit"><code>++vit</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#viz-ag' title="Parse base 32 digit with dot separators"><code>++viz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#vor' title="Vertical order"><code>++vor</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#voy-ab' title="Parse bas, soq, or bix"><code>++voy:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vul' title="Comments to null"><code>++vul</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#vum-ag' title="Parse base 32 string"><code>++vum:ag</code></a>
 
 ### w
 
-[`++w:ne`](@/docs/reference/library/4j.md#w-ne)
-[`++wack`](@/docs/reference/library/4b.md#wack)
-[`++wain`](@/docs/reference/library/2q.md#wain)
-[`++wall`](@/docs/reference/library/2q.md#wall)
-[`++weld`](@/docs/reference/library/2b.md#weld)
-[`++weld:nl`](@/docs/reference/library/2m.md#weld-nl)
-[`++welp`](@/docs/reference/library/2b.md#welp)
-[`++wick`](@/docs/reference/library/4b.md#wick)
-[`++wig:re`](@/docs/reference/library/4c.md#wig-re)
-[`++win:re`](@/docs/reference/library/4c.md#win-re)
-[`++wing`](@/docs/reference/library/4o.md#wing)
-[`++wiz:ag`](@/docs/reference/library/4j.md#wiz-ag)
-[`++woad`](@/docs/reference/library/4b.md#woad)
-[`++wood`](@/docs/reference/library/4b.md#wood)
-[`++wonk`](@/docs/reference/library/3g.md#wonk)
-[`++wred:un`](@/docs/reference/library/3f.md#wred-un)
-[`++wren:un`](@/docs/reference/library/3f.md#wren-un)
-[`++wut`](@/docs/reference/library/4h.md#wut)
-[`+-wyt:by`](@/docs/reference/library/2i.md#wyt-by)
-[`+-wyt:in`](@/docs/reference/library/2h.md#wyt-in)
+<a class="tooltip" href='/docs/reference/library/4j/#w-ne' title="Render base 64 digit"><code>++w:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wack' title="Coin format encode"><code>++wack</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wain' title="List of cords"><code>++wain</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wall' title="List of list of characters"><code>++wall</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#weld' title="Concatenate two lists"><code>++weld</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#weld-nl' title="Concatenate null-terminated nouns"><code>++weld:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#welp' title="Perfect concatenate (lists)"><code>++welp</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wick' title="Coin format decode"><code>++wick</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#wig-re' title="++win - render tape"><code>++wig:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#win-re' title="Render at indent"><code>++win:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#wing' title="Address in subject"><code>++wing</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#wiz-ag' title="Parse base 64 number"><code>++wiz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#woad' title="Unescape cord"><code>++woad</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wood' title="Escape cord"><code>++wood</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#wonk' title="Product from edge"><code>++wonk</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wred-un' title="Restore structure"><code>++wred:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wren-un' title="Conceal structure"><code>++wren:un</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#wut' title="Parse ? (wut)"><code>++wut</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#wyt-by' title="Produce depth of tree map"><code>+-wyt:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#wyt-in' title="Produce number of elements in set"><code>+-wyt:in</code></a>
 
 ### x
 
-[`++x:ne`](@/docs/reference/library/4j.md#x-ne)
-[`++xeb`](@/docs/reference/library/2c.md#xeb)
-[`++xpd:fl`](@/docs/reference/library/3b.md#xpd-fl)
+<a class="tooltip" href='/docs/reference/library/4j/#x-ne' title="Render hexadecimal digit as atom of ASCII byte value"><code>++x:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#xeb' title="Binary logarithm"><code>++xeb</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#xpd-fl' title="Expand signed and unsigned integer cell"><code>++xpd:fl</code></a>
 
 ### y
 
-[`++yall`](@/docs/reference/library/3c.md#yall)
-[`++yawn`](@/docs/reference/library/3c.md#yawn)
-[`++year`](@/docs/reference/library/3c.md#year)
-[`++yell`](@/docs/reference/library/3c.md#yell)
-[`++yelp`](@/docs/reference/library/3c.md#yelp)
-[`++yer:yo`](@/docs/reference/library/3c.md#yer-yo)
-[`++yo`](@/docs/reference/library/3c.md#yo)
-[`++yore`](@/docs/reference/library/3c.md#yore)
-[`++yule`](@/docs/reference/library/3c.md#yule)
+<a class="tooltip" href='/docs/reference/library/3c/#yall' title="Time since beginning of time"><code>++yall</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yawn' title="Days since beginning of time"><code>++yawn</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#year' title="Date to @d"><code>++year</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yell' title="Tarp from atomic date"><code>++yell</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yelp' title="Determine if leap-week"><code>++yelp</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yer-yo' title="Seconds in year"><code>++yer:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yo' title="Time constants core"><code>++yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yore' title="Date from atomic date"><code>++yore</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yule' title="Daily time to time atom"><code>++yule</code></a>
 
 ### z
 
-[`++zaft:un`](@/docs/reference/library/3f.md#zaft-un)
-[`++zag:mu`](@/docs/reference/library/4j.md#zag-mu)
-[`++zap`](@/docs/reference/library/4h.md#zap)
-[`++zart:un`](@/docs/reference/library/3f.md#zart-un)
-[`++zer:fl`](@/docs/reference/library/3b.md#zer-fl)
-[`++zig:mu`](@/docs/reference/library/4j.md#zig-mu)
-[`++zing`](@/docs/reference/library/2b.md#zing)
-[`++zug:mu`](@/docs/reference/library/4j.md#zug-mu)
-[`++zust:so`](@/docs/reference/library/4l.md#zust-so)
-[`++zyft:un`](@/docs/reference/library/3f.md#zyft-un)
-[`++zyrt:un`](@/docs/reference/library/3f.md#zyrt-un)
+<a class="tooltip" href='/docs/reference/library/3f/#zaft-un' title="Look up in 255 sub box"><code>++zaft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zag-mu' title="Add bottom into top"><code>++zag:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#zap' title="Parse ! (zap)"><code>++zap</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zart-un' title="Reverse look up in 255 sub box"><code>++zart:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#zer-fl' title="Produce zero as float"><code>++zer:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zig-mu' title="Subtract bottom from top"><code>++zig:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#zing' title="Turn lists into single list by promoting elements from sublists"><code>++zing</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zug-mu' title="Concatenate into atom"><code>++zug:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#zust-so' title="Parse prefixed dimes from IP, loobean, or floating point"><code>++zust:so</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyft-un' title="Lookup byte in 256 sub box"><code>++zyft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyrt-un' title="Reverse lookup byte in 256 sub box"><code>++zyrt:un</code></a>
 
 ## By Section
 
 ### 1a: basic arithmetic
 
-[`++add`](@/docs/reference/library/1a.md#add)
-[`++dec`](@/docs/reference/library/1a.md#dec)
-[`++div`](@/docs/reference/library/1a.md#div)
-[`++dvr`](@/docs/reference/library/1a.md#dvr)
-[`++gte`](@/docs/reference/library/1a.md#gte)
-[`++gth`](@/docs/reference/library/1a.md#gth)
-[`++lte`](@/docs/reference/library/1a.md#lte)
-[`++lth`](@/docs/reference/library/1a.md#lth)
-[`++max`](@/docs/reference/library/1a.md#max)
-[`++min`](@/docs/reference/library/1a.md#min)
-[`++mod`](@/docs/reference/library/1a.md#mod)
-[`++mul`](@/docs/reference/library/1a.md#mul)
-[`++sub`](@/docs/reference/library/1a.md#sub)
+<a class="tooltip" href='/docs/reference/library/1a/#add' title="Add"><code>++add</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#dec' title="Decrement"><code>++dec</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#div' title="Divide"><code>++div</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#dvr' title="Divide (with remainder)"><code>++dvr</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#gte' title="Greater than / equal"><code>++gte</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#gth' title="Greater than"><code>++gth</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#lte' title="Less than / equal (atom)"><code>++lte</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#lth' title="Less than (atom)"><code>++lth</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#max' title="Maximum"><code>++max</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#min' title="Minimum (atom)"><code>++min</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#mod' title="Modulus (atom)"><code>++mod</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#mul' title="Multiply (atom)"><code>++mul</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#sub' title="Subtract"><code>++sub</code></a>
 
 ### 1b: tree addressing
 
-[`++cap`](@/docs/reference/library/1b.md#cap)
-[`++mas`](@/docs/reference/library/1b.md#mas)
-[`++peg`](@/docs/reference/library/1b.md#peg)
+<a class="tooltip" href='/docs/reference/library/1b/#cap' title="Tree head"><code>++cap</code></a>
+<a class="tooltip" href='/docs/reference/library/1b/#mas' title="Address within head/tail"><code>++mas</code></a>
+<a class="tooltip" href='/docs/reference/library/1b/#peg' title="Address within address"><code>++peg</code></a>
 
 ### 1c: molds and mold builders
 
-[`++bloq`](@/docs/reference/library/1c.md#bloq)
-[`++each`](@/docs/reference/library/1c.md#each)
-[`++gate`](@/docs/reference/library/1c.md#gate)
-[`++list`](@/docs/reference/library/1c.md#list)
-[`++lone`](@/docs/reference/library/1c.md#lone)
-[`++pair`](@/docs/reference/library/1c.md#pair)
-[`++pole`](@/docs/reference/library/1c.md#pole)
-[`++quip`](@/docs/reference/library/1c.md#quip)
-[`++trap`](@/docs/reference/library/1c.md#trap)
-[`++tree`](@/docs/reference/library/1c.md#tree)
-[`++trel`](@/docs/reference/library/1c.md#trel)
-[`++unit`](@/docs/reference/library/1c.md#unit)
+<a class="tooltip" href='/docs/reference/library/1c/#bloq' title="Blocksize"><code>++bloq</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#each' title="Mold of fork between two types"><code>++each</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#gate' title="Function"><code>++gate</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#list' title="Mold constructor (list)"><code>++list</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#lone' title="Mold generator (face on mold)"><code>++lone</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#pair' title="Mold of pair of types"><code>++pair</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#pole' title="Mold generator of faceless list"><code>++pole</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#quip' title="Mold generator (tuple of list and type)"><code>++quip</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trap' title="Core with one arm $"><code>++trap</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#tree' title="Mold generator (tree)"><code>++tree</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trel' title="Mold generator (tuple of three types)"><code>++trel</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#unit' title="Mold generator (maybe)"><code>++unit</code></a>
 
 ### 2a: unit logic
 
-[`++biff`](@/docs/reference/library/2a.md#biff)
-[`++bind`](@/docs/reference/library/2a.md#bind)
-[`++bond`](@/docs/reference/library/2a.md#bond)
-[`++both`](@/docs/reference/library/2a.md#both)
-[`++clap`](@/docs/reference/library/2a.md#clap)
-[`++drop`](@/docs/reference/library/2a.md#drop)
-[`++fall`](@/docs/reference/library/2a.md#fall)
-[`++lift`](@/docs/reference/library/2a.md#lift)
-[`++mate`](@/docs/reference/library/2a.md#mate)
-[`++need`](@/docs/reference/library/2a.md#need)
-[`++some`](@/docs/reference/library/2a.md#some)
+<a class="tooltip" href='/docs/reference/library/2a/#biff' title="Unit as argument"><code>++biff</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#bind' title="Non-unit function to unit, producing unit"><code>++bind</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#bond' title="Replace null"><code>++bond</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#both' title="Group unit values into pair"><code>++both</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#clap' title="Apply function to two units"><code>++clap</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#drop' title="Unit to list"><code>++drop</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#fall' title="Give unit a default value"><code>++fall</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#lift' title="Curried bind"><code>++lift</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#mate' title="Choose"><code>++mate</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#need' title="Unwrap unit"><code>++need</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#some' title="Wrap value in unit"><code>++some</code></a>
 
 ### 2b: list logic
 
-[`++fand`](@/docs/reference/library/2b.md#fand)
-[`++find`](@/docs/reference/library/2b.md#find)
-[`++flop`](@/docs/reference/library/2b.md#flop)
-[`++gulf`](@/docs/reference/library/2b.md#gulf)
-[`++homo`](@/docs/reference/library/2b.md#homo)
-[`++lent`](@/docs/reference/library/2b.md#lent)
-[`++levy`](@/docs/reference/library/2b.md#levy)
-[`++lien`](@/docs/reference/library/2b.md#lien)
-[`++limo`](@/docs/reference/library/2b.md#limo)
-[`++murn`](@/docs/reference/library/2b.md#murn)
-[`++oust`](@/docs/reference/library/2b.md#oust)
-[`++reap`](@/docs/reference/library/2b.md#reap)
-[`++reel`](@/docs/reference/library/2b.md#reel)
-[`++roll`](@/docs/reference/library/2b.md#roll)
-[`++scag`](@/docs/reference/library/2b.md#scag)
-[`++skid`](@/docs/reference/library/2b.md#skid)
-[`++skim`](@/docs/reference/library/2b.md#skim)
-[`++skip`](@/docs/reference/library/2b.md#skip)
-[`++slag`](@/docs/reference/library/2b.md#slag)
-[`++snag`](@/docs/reference/library/2b.md#snag)
-[`++snoc`](@/docs/reference/library/2b.md#snoc)
-[`++sort`](@/docs/reference/library/2b.md#sort)
-[`++spin`](@/docs/reference/library/2b.md#spin)
-[`++spun`](@/docs/reference/library/2b.md#spun)
-[`++swag`](@/docs/reference/library/2b.md#swag)
-[`++turn`](@/docs/reference/library/2b.md#turn)
-[`++weld`](@/docs/reference/library/2b.md#weld)
-[`++welp`](@/docs/reference/library/2b.md#welp)
-[`++zing`](@/docs/reference/library/2b.md#zing)
+<a class="tooltip" href='/docs/reference/library/2b/#fand' title="All indices in list"><code>++fand</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#find' title="First index in list"><code>++find</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#flop' title="Reverse list"><code>++flop</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#gulf' title="List from range"><code>++gulf</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#homo' title="Homogenize list"><code>++homo</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#lent' title="List length"><code>++lent</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#levy' title="Logical AND on list"><code>++levy</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#lien' title="Logical OR on list"><code>++lien</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#limo' title="Construct list from null-terminated tuple"><code>++limo</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#murn' title="Maybe transform"><code>++murn</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#oust' title="Remove from list"><code>++oust</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#reap' title="Replicate (list)"><code>++reap</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#reel' title="Right fold (list)"><code>++reel</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#roll' title="Left fold (list)"><code>++roll</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#scag' title="Prefix (produce front of list)"><code>++scag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skid' title="Separate list into two lists from slammed elments"><code>++skid</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skim' title="Produce list of elements from boolean gate"><code>++skim</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skip' title="Produce list of elements failing boolean gate"><code>++skip</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#slag' title="Produce all elements from index in list"><code>++slag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snag' title="Produce element at specific index (list)"><code>++snag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snoc' title="Append noun to list"><code>++snoc</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#sort' title="Quicksort (list)"><code>++sort</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spin' title="Gate to list (with state)"><code>++spin</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spun' title="Gate to list (with state)"><code>++spun</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#swag' title="Infix (list)"><code>++swag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#turn' title="Gate to list"><code>++turn</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#weld' title="Concatenate two lists"><code>++weld</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#welp' title="Perfect concatenate (lists)"><code>++welp</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#zing' title="Turn lists into single list by promoting elements from sublists"><code>++zing</code></a>
 
 ### 2c: bit arithmetic
 
-[`++fe`](@/docs/reference/library/2c.md#fe)
-[`++dif:fe`](@/docs/reference/library/2c.md#dif-fe)
-[`++inv:fe`](@/docs/reference/library/2c.md#inv-fe)
-[`++net:fe`](@/docs/reference/library/2c.md#net-fe)
-[`++out:fe`](@/docs/reference/library/2c.md#out-fe)
-[`++rol:fe`](@/docs/reference/library/2c.md#rol-fe)
-[`++ror:fe`](@/docs/reference/library/2c.md#ror-fe)
-[`++sit:fe`](@/docs/reference/library/2c.md#sit-fe)
-[`++sum:fe`](@/docs/reference/library/2c.md#sum-fe)
+<a class="tooltip" href='/docs/reference/library/2c/#fe' title="Modulo bloq"><code>++fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#dif-fe' title="Difference between atoms (modular basis)"><code>++dif:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#inv-fe' title="Inverse order of modular field"><code>++inv:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#net-fe' title="Flip endianness"><code>++net:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#out-fe' title="Maximum integer value"><code>++out:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rol-fe' title="Roll left"><code>++rol:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#ror-fe' title="Roll right"><code>++ror:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sit-fe' title="Enforce modulo"><code>++sit:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sum-fe' title="Sum two numbers in modular field"><code>++sum:fe</code></a>
 
-[`++bex`](@/docs/reference/library/2c.md#bex)
-[`++can`](@/docs/reference/library/2c.md#can)
-[`++cat`](@/docs/reference/library/2c.md#cat)
-[`++cut`](@/docs/reference/library/2c.md#cut)
-[`++end`](@/docs/reference/library/2c.md#end)
-[`++fil`](@/docs/reference/library/2c.md#fil)
-[`++lsh`](@/docs/reference/library/2c.md#lsh)
-[`++met`](@/docs/reference/library/2c.md#met)
-[`++rap`](@/docs/reference/library/2c.md#rap)
-[`++rep`](@/docs/reference/library/2c.md#rep)
-[`++rip`](@/docs/reference/library/2c.md#rip)
-[`++rsh`](@/docs/reference/library/2c.md#rsh)
-[`++swp`](@/docs/reference/library/2c.md#swp)
-[`++xeb`](@/docs/reference/library/2c.md#xeb)
+<a class="tooltip" href='/docs/reference/library/2c/#bex' title="Binary exponent"><code>++bex</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#can' title="Assemble"><code>++can</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#cat' title="Concatenate"><code>++cat</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#cut' title="Slice"><code>++cut</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#end' title="Tail"><code>++end</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#fil' title="Fill bloqstream"><code>++fil</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#lsh' title="Left-shift"><code>++lsh</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#met' title="Measure"><code>++met</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rap' title="Assemble non-zero"><code>++rap</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rep' title="Assemble single"><code>++rep</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rip' title="Disassemble"><code>++rip</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#rsh' title="Right-shift"><code>++rsh</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#swp' title="Reverse block order"><code>++swp</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#xeb' title="Binary logarithm"><code>++xeb</code></a>
 
 ### 2d: bit logic
 
-[`++con`](@/docs/reference/library/2d.md#con)
-[`++dis`](@/docs/reference/library/2d.md#dis)
-[`++mix`](@/docs/reference/library/2d.md#mix)
-[`++not`](@/docs/reference/library/2d.md#not)
+<a class="tooltip" href='/docs/reference/library/2d/#con' title="Binary OR"><code>++con</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#dis' title="Binary AND (atoms)"><code>++dis</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#mix' title="Binary XOR (atom)"><code>++mix</code></a>
+<a class="tooltip" href='/docs/reference/library/2d/#not' title="Binary NOT (atom)"><code>++not</code></a>
 
 ### 2e: insecure hashing
 
-[`++fnv`](@/docs/reference/library/2e.md#fnv)
-[`++mug`](@/docs/reference/library/2e.md#mug)
-[`++muk`](@/docs/reference/library/2e.md#muk)
-[`++mum`](@/docs/reference/library/2e.md#mum)
+<a class="tooltip" href='/docs/reference/library/2e/#fnv' title="FNV scrambler"><code>++fnv</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#mug' title="FNV-1a scrambler"><code>++mug</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#muk' title="Standard MurmurHash3"><code>++muk</code></a>
+<a class="tooltip" href='/docs/reference/library/2e/#mum' title="31-bit MurmurHash3 scrambler"><code>++mum</code></a>
 
 ### 2f: noun ordering
 
-[`++aor`](@/docs/reference/library/2f.md#aor)
-[`++dor`](@/docs/reference/library/2f.md#dor)
-[`++gor`](@/docs/reference/library/2f.md#gor)
-[`++hor`](@/docs/reference/library/2f.md#hor)
-[`++lor`](@/docs/reference/library/2f.md#lor)
-[`++vor`](@/docs/reference/library/2f.md#vor)
+<a class="tooltip" href='/docs/reference/library/2f/#aor' title="Alphabetical order"><code>++aor</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#dor' title="Numeric order"><code>++dor</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#gor' title="Hash order"><code>++gor</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#hor' title="Horizontal hash order"><code>++hor</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#lor' title="Leg order"><code>++lor</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#vor' title="Vertical order"><code>++vor</code></a>
 
 ### 2g: unsigned powers
 
-[`++pow`](@/docs/reference/library/2g.md#pow)
-[`++sqt`](@/docs/reference/library/2g.md#sqt)
+<a class="tooltip" href='/docs/reference/library/2g/#pow' title="Computes a to the power of b"><code>++pow</code></a>
+<a class="tooltip" href='/docs/reference/library/2g/#sqt' title="Compute square root with remainder"><code>++sqt</code></a>
 
 ### 2h: set logic
 
-[`++in`](@/docs/reference/library/2h.md#in)
-[`+-all:in`](@/docs/reference/library/2h.md#all-in)
-[`+-any:in`](@/docs/reference/library/2h.md#any-in)
-[`+-apt:in`](@/docs/reference/library/2h.md#apt-in)
-[`+-bif:in`](@/docs/reference/library/2h.md#bif-in)
-[`+-del:in`](@/docs/reference/library/2h.md#del-in)
-[`+-dif:in`](@/docs/reference/library/2h.md#dif-in)
-[`+-dig:in`](@/docs/reference/library/2h.md#dig-in)
-[`+-gas:in`](@/docs/reference/library/2h.md#gas-in)
-[`+-has:in`](@/docs/reference/library/2h.md#has-in)
-[`+-int:in`](@/docs/reference/library/2h.md#int-in)
-[`+-put:in`](@/docs/reference/library/2h.md#put-in)
-[`+-rep:in`](@/docs/reference/library/2h.md#rep-in)
-[`+-run:in`](@/docs/reference/library/2h.md#run-in)
-[`+-tap:in`](@/docs/reference/library/2h.md#tap-in)
-[`+-uni:in`](@/docs/reference/library/2h.md#uni-in)
-[`+-wyt:in`](@/docs/reference/library/2h.md#wyt-in)
+<a class="tooltip" href='/docs/reference/library/2h/#in'><code>++in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#all-in' title="Logical AND (set and wet gate)"><code>+-all:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#any-in' title="Logical OR (set and gate)"><code>+-any:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#apt-in' title="Check correctness (set)"><code>+-apt:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#bif-in' title="Bifurcate set"><code>+-bif:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#dif-in' title='Difference (set)'><code>+-dif:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#dig-in' title="Address of a in set"><code>+-dig:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#gas-in' title="Concatenate (set)"><code>+-gas:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#has-in' title="Key existence check (set)"><code>+-has:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#int-in' title="Intersection (set)"><code>+-int:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#put-in' title="Put b in a (set)"><code>+-put:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#rep-in' title="Accumulate elements (set)"><code>+-rep:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#run-in' title="Apply gate to set"><code>+-run:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#tap-in' title="Flatten set into list"><code>+-tap:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#uni-in' title="Union (sets)"><code>+-uni:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#wyt-in' title="Produce number of elements in set"><code>+-wyt:in</code></a>
 
 ### 2i: map logic
 
-[`++by`](@/docs/reference/library/2i.md#by)
-[`+-all:by`](@/docs/reference/library/2i.md#all-by)
-[`+-any:by`](@/docs/reference/library/2i.md#any-by)
-[`+-apt:by`](@/docs/reference/library/2i.md#apt-by)
-[`+-bif:by`](@/docs/reference/library/2i.md#bif-by)
-[`+-def:by`](@/docs/reference/library/2i.md#def-by)
-[`+-del:by`](@/docs/reference/library/2i.md#del-by)
-[`+-dep:by`](@/docs/reference/library/2i.md#dep-by)
-[`+-dig:by`](@/docs/reference/library/2i.md#dig-by)
-[`+-gas:by`](@/docs/reference/library/2i.md#gas-by)
-[`+-get:by`](@/docs/reference/library/2i.md#get-by)
-[`+-got:by`](@/docs/reference/library/2i.md#got-by)
-[`+-has:by`](@/docs/reference/library/2i.md#has-by)
-[`+-int:by`](@/docs/reference/library/2i.md#int-by)
-[`+-mar:by`](@/docs/reference/library/2i.md#mar-by)
-[`+-put:by`](@/docs/reference/library/2i.md#put-by)
-[`+-rep:by`](@/docs/reference/library/2i.md#rep-by)
-[`+-rib:by`](@/docs/reference/library/2i.md#rib-by)
-[`+-run:by`](@/docs/reference/library/2i.md#run-by)
-[`+-rut:by`](@/docs/reference/library/2i.md#rut-by)
-[`+-tap:by`](@/docs/reference/library/2i.md#tap-by)
-[`+-uni:by`](@/docs/reference/library/2i.md#uni-by)
-[`+-urn:by`](@/docs/reference/library/2i.md#urn-by)
-[`+-wyt:by`](@/docs/reference/library/2i.md#wyt-by)
+<a class="tooltip" href='/docs/reference/library/2i/#by' title="Map operations"><code>++by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#all-by' title="Logical AND (map and wet gate)"><code>+-all:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#any-by' title="Logical OR (map and wet gate)"><code>+-any:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#apt-by' title="Check correctness (map)"><code>+-apt:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#bif-by' title="Bifurcate map"><code>+-bif:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#def-by' title="Difference (map)"><code>+-def:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#dig-by' title="Address of key (map)"><code>+-dig:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#gas-by' title="Concatenate (map)"><code>+-gas:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#get-by' title="Grab unit value"><code>+-get:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#got-by' title="Assert for value (map)"><code>+-got:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#has-by' title="Key existence check (map)"><code>+-has:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#int-by' title="Intersection (map)"><code>+-int:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#mar-by' title="Assert and add (map)"><code>+-mar:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#put-by' title="Add key-value pair (map)"><code>+-put:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#rep-by' title="Replace by product (map)"><code>+-rep:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#rib-by' title="Replace values with accumulator (map)"><code>+-rib:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#run-by' title="Transform values (map)"><code>+-run:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#rut-by' title="Transform nodes (map)"><code>+-rut:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#tap-by' title="Listify pairs"><code>+-tap:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#uni-by' title="Union (map between keys of two lists)"><code>+-uni:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#urn-by' title="Turn (with key) (map)"><code>+-urn:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#wyt-by' title="Produce depth of tree map"><code>+-wyt:by</code></a>
 
 ### 2j: jar and jug logic
 
-[`++ja`](@/docs/reference/library/2j.md#ja)
-[`+-add:ja`](@/docs/reference/library/2j.md#add-ja)
-[`+-get:ja`](@/docs/reference/library/2j.md#get-ja)
+<a class="tooltip" href='/docs/reference/library/2j/#ja' title="Jar engine"><code>++ja</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#add-ja' title="Prepend to list"><code>+-add:ja</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#get-ja' title="Grab value by key"><code>+-get:ja</code></a>
 
-[`++ju`](@/docs/reference/library/2j.md#ju)
-[`+-del:ju`](@/docs/reference/library/2j.md#del-ju)
-[`+-get:ju`](@/docs/reference/library/2j.md#get-ju)
-[`+-has:ju`](@/docs/reference/library/2j.md#has-ju)
-[`+-put:ju`](@/docs/reference/library/2j.md#put-ju)
+<a class="tooltip" href='/docs/reference/library/2j/#ju' title="Jug operations"><code>++ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#get-ju' title="Retrieve set"><code>+-get:ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#has-ju' title="Check contents (jug)"><code>+-has:ju</code></a>
+<a class="tooltip" href='/docs/reference/library/2j/#put-ju' title="Add key-set pair (jar)"><code>+-put:ju</code></a>
 
 ### 2k: queue logic
 
-[`++to`](@/docs/reference/library/2k.md#to)
-[`+-bal:to`](@/docs/reference/library/2k.md#bal-to)
-[`+-dep:to`](@/docs/reference/library/2k.md#dep-to)
-[`+-gas:to`](@/docs/reference/library/2k.md#gas-to)
-[`+-get:to`](@/docs/reference/library/2k.md#get-to)
-[`+-nap:to`](@/docs/reference/library/2k.md#nap-to)
-[`+-nip:to`](@/docs/reference/library/2k.md#nip-to)
-[`+-put:to`](@/docs/reference/library/2k.md#put-to)
-[`+-tap:to`](@/docs/reference/library/2k.md#tap-to)
-[`+-top:to`](@/docs/reference/library/2k.md#top-to)
+<a class="tooltip" href='/docs/reference/library/2k/#to' title="Queue operations"><code>++to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#bal-to' title="Balance queue"><code>+-bal:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#dep-to' title="Maximum depth (queue)"><code>+-dep:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#gas-to' title="Push list into queue"><code>+-gas:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#get-to' title="Head-tail pair"><code>+-get:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#nap-to' title="Remove head of queue"><code>+-nap:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#nip-to' title="Remove root of queue"><code>+-nip:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#put-to' title="Insert into queue"><code>+-put:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#tap-to' title="Queue to list"><code>+-tap:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#top-to' title="Produce head of queue"><code>+-top:to</code></a>
 
 ### 2l: container from container
 
-[`++malt`](@/docs/reference/library/2l.md#malt)
-[`++molt`](@/docs/reference/library/2l.md#molt)
-[`++silt`](@/docs/reference/library/2l.md#silt)
+<a class="tooltip" href='/docs/reference/library/2l/#malt' title="Map from list"><code>++malt</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#molt' title="Map from pair list"><code>++molt</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#silt' title="Produce set from list"><code>++silt</code></a>
 
 ### 2m: container from noun
 
-[`++nl`](@/docs/reference/library/2m.md#nl)
-[`++le:nl`](@/docs/reference/library/2m.md#le-nl)
-[`++my:nl`](@/docs/reference/library/2m.md#my-nl)
-[`++si:nl`](@/docs/reference/library/2m.md#si-nl)
-[`++snag:nl`](@/docs/reference/library/2m.md#snag-nl)
-[`++weld:nl`](@/docs/reference/library/2m.md#weld-nl)
+<a class="tooltip" href='/docs/reference/library/2m/#nl' title="Noun to container operations"><code>++nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#le-nl' title="Construct list from null-terminated noun"><code>++le:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#my-nl' title="Construct map from null-terminated noun"><code>++my:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#si-nl' title="Construct set from null-terminated noun"><code>++si:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#snag-nl' title="Produce element from list at specific null-terminated noun"><code>++snag:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#weld-nl' title="Concatenate null-terminated nouns"><code>++weld:nl</code></a>
 
-[`++ly`](@/docs/reference/library/2m.md#ly)
-[`++my`](@/docs/reference/library/2m.md#my)
-[`++sy`](@/docs/reference/library/2m.md#sy)
+<a class="tooltip" href='/docs/reference/library/2m/#ly' title="List from raw noun"><code>++ly</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#my' title="Map from raw noun"><code>++my</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#sy' title="Produce set from null-terminated noun"><code>++sy</code></a>
 
 ### 2n: functional hacks
 
-[`++cork`](@/docs/reference/library/2n.md#cork)
-[`++corl`](@/docs/reference/library/2n.md#corl)
-[`++curr`](@/docs/reference/library/2n.md#curr)
-[`++cury`](@/docs/reference/library/2n.md#cury)
-[`++hard`](@/docs/reference/library/2n.md#hard)
-[`++head`](@/docs/reference/library/2n.md#head)
-[`++mean`](@/docs/reference/library/2n.md#mean)
-[`++same`](@/docs/reference/library/2n.md#same)
-[`++slog`](@/docs/reference/library/2n.md#slog)
-[`++soft`](@/docs/reference/library/2n.md#soft)
-[`++tail`](@/docs/reference/library/2n.md#tail)
-[`++test`](@/docs/reference/library/2n.md#test)
+<a class="tooltip" href='/docs/reference/library/2n/#cork' title="Compose forward"><code>++cork</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#corl' title="Compose backward"><code>++corl</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#curr' title="Right-curry a gate"><code>++curr</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#cury' title="Curry left a gate"><code>++cury</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#hard' title="Force remold"><code>++hard</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#head' title="Get head of cell"><code>++head</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#mean' title="Crash and printf"><code>++mean</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#same' title="Identity (produces same value)"><code>++same</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#slog' title="Deify printf"><code>++slog</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#soft' title="Maybe remold"><code>++soft</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#tail' title="Get tail of cell"><code>++tail</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#test' title="Test for equality"><code>++test</code></a>
 
 ### 2o: normalizing containers
 
-[`++jar`](@/docs/reference/library/2o.md#jar)
-[`++jug`](@/docs/reference/library/2o.md#jug)
-[`++map`](@/docs/reference/library/2o.md#map)
-[`++qeu`](@/docs/reference/library/2o.md#qeu)
-[`++set`](@/docs/reference/library/2o.md#set)
+<a class="tooltip" href='/docs/reference/library/2o/#jar' title="Mold generator (jar)"><code>++jar</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#jug' title="Mold generator (jug)"><code>++jug</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#map' title="Mold generator (map)"><code>++map</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#qeu' title="Mold generator (queue)"><code>++qeu</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#set' title="Mold generator (set)"><code>++set</code></a>
 
 ### 2p: serialization
 
-[`++cue`](@/docs/reference/library/2p.md#cue)
-[`++jam`](@/docs/reference/library/2p.md#jam)
-[`++mat`](@/docs/reference/library/2p.md#mat)
-[`++rub`](@/docs/reference/library/2p.md#rub)
+<a class="tooltip" href='/docs/reference/library/2p/#cue' title="Unpack atom to noun"><code>++cue</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#jam' title="Pack noun to atom"><code>++jam</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#mat' title="Length-encode"><code>++mat</code></a>
+<a class="tooltip" href='/docs/reference/library/2p/#rub' title="Length-decode"><code>++rub</code></a>
 
 ### 2q: molds and mold builders
 
-[`++char`](@/docs/reference/library/2q.md#char)
-[`++cord`](@/docs/reference/library/2q.md#cord)
-[`++date`](@/docs/reference/library/2q.md#date)
-[`++knot`](@/docs/reference/library/2q.md#knot)
-[`++tang`](@/docs/reference/library/2q.md#tang)
-[`++tank`](@/docs/reference/library/2q.md#tank)
-[`++tape`](@/docs/reference/library/2q.md#tape)
-[`++tarp`](@/docs/reference/library/2q.md#tarp)
-[`++term`](@/docs/reference/library/2q.md#term)
-[`++wain`](@/docs/reference/library/2q.md#wain)
-[`++wall`](@/docs/reference/library/2q.md#wall)
+<a class="tooltip" href='/docs/reference/library/2q/#char' title="Character"><code>++char</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#cord' title="UTF-8 text"><code>++cord</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#date' title="Point in time"><code>++date</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#knot' title="Atom type of ASCII characters"><code>++knot</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tang' title="Generic print structure"><code>++tang</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tank' title="Pretty-printing structure"><code>++tank</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tape' title="List of characters"><code>++tape</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tarp' title="Parsed time"><code>++tarp</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#term' title="Hoon constant"><code>++term</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wain' title="List of cords"><code>++wain</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wall' title="List of list of characters"><code>++wall</code></a>
 
 ### 3a: modular and signed ints
 
-[`++fo`](@/docs/reference/library/3a.md#fo)
-[`++dif:fo`](@/docs/reference/library/3a.md#dif-fo)
-[`++exp:fo`](@/docs/reference/library/3a.md#exp-fo)
-[`++fra:fo`](@/docs/reference/library/3a.md#fra-fo)
-[`++inv:fo`](@/docs/reference/library/3a.md#inv-fo)
-[`++pro:fo`](@/docs/reference/library/3a.md#pro-fo)
-[`++sit:fo`](@/docs/reference/library/3a.md#sit-fo)
-[`++sum:fo`](@/docs/reference/library/3a.md#sum-fo)
+<a class="tooltip" href='/docs/reference/library/3a/#fo' title="Modulo prime"><code>++fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#dif-fo' title='Subtraction (modular base)'><code>++dif:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#exp-fo' title="Exponent (modular base)"><code>++exp:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#fra-fo' title="Divide (modular base)"><code>++fra:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#inv-fo' title="Inverse (signed modulus)"><code>++inv:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#pro-fo' title="Multiplies b and c modulo a"><code>++pro:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sit-fo' title="Produce remainder of b modulo a"><code>++sit:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-fo' title="Modular sum"><code>++sum:fo</code></a>
 
-[`++si`](@/docs/reference/library/3a.md#si)
-[`++abs:si`](@/docs/reference/library/3a.md#abs-si)
-[`++cmp:si`](@/docs/reference/library/3a.md#cmp-si)
-[`++dif:si`](@/docs/reference/library/3a.md#dif-si)
-[`++dul:si`](@/docs/reference/library/3a.md#dul-si)
-[`++fra:si`](@/docs/reference/library/3a.md#fra-si)
-[`++new:si`](@/docs/reference/library/3a.md#new-si)
-[`++old:si`](@/docs/reference/library/3a.md#old-si)
-[`++pro:si`](@/docs/reference/library/3a.md#pro-si)
-[`++rem:si`](@/docs/reference/library/3a.md#rem-si)
-[`++sum:si`](@/docs/reference/library/3a.md#sum-si)
-[`++sun:si`](@/docs/reference/library/3a.md#sun-si)
-[`++syn:si`](@/docs/reference/library/3a.md#syn-si)
+<a class="tooltip" href='/docs/reference/library/3a/#si' title="Signed integer"><code>++si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#abs-si' title="Absolute value (signed integer)"><code>++abs:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#cmp-si' title="Compare (signed integer)"><code>++cmp:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#dif-si' title="Subtraction (signed integer)"><code>++dif:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#dul-si' title="Modulus (signed integer)"><code>++dul:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#fra-si' title="Divide (signed integer)"><code>++fra:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#new-si' title="Atom to @s"><code>++new:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#old-si' title="Sign and absolute value"><code>++old:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#pro-si' title="Multiply to signed integer"><code>++pro:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#rem-si' title="Remainder (signed integer)"><code>++rem:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-si' title="Addition (signed integer)"><code>++sum:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sun-si' title="@u to @s"><code>++sun:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#syn-si' title="Sign test"><code>++syn:si</code></a>
 
-[`++egcd`](@/docs/reference/library/3a.md#egcd)
+<a class="tooltip" href='/docs/reference/library/3a/#egcd' title="Extended Euclidean algorithm"><code>++egcd</code></a>
 
 ### 3b: floating point
 
-[`++dn`](@/docs/reference/library/3b.md#dn)
-[`++fn`](@/docs/reference/library/3b.md#fn)
-[`++rn`](@/docs/reference/library/3b.md#rn)
+<a class="tooltip" href='/docs/reference/library/3b/#dn'><code>++dn</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fn'><code>++fn</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rn'><code>++rn</code></a>
 
-[`++ff`](@/docs/reference/library/3b.md#ff)
-[`++add:ff`](@/docs/reference/library/3b.md#add-ff)
-[`++bif:ff`](@/docs/reference/library/3b.md#bif-ff)
-[`++bit:ff`](@/docs/reference/library/3b.md#bit-ff)
-[`++div:ff`](@/docs/reference/library/3b.md#div-ff)
-[`++drg:ff`](@/docs/reference/library/3b.md#drg-ff)
-[`++equ:ff`](@/docs/reference/library/3b.md#equ-ff)
-[`++exp:ff`](@/docs/reference/library/3b.md#exp-ff)
-[`++fma:ff`](@/docs/reference/library/3b.md#fma-ff)
-[`++grd:ff`](@/docs/reference/library/3b.md#grd-ff)
-[`++gte:ff`](@/docs/reference/library/3b.md#gte-ff)
-[`++gth:ff`](@/docs/reference/library/3b.md#gth-ff)
-[`++lte:ff`](@/docs/reference/library/3b.md#lte-ff)
-[`++lth:ff`](@/docs/reference/library/3b.md#lth-ff)
-[`++me:ff`](@/docs/reference/library/3b.md#me-ff)
-[`++mul:ff`](@/docs/reference/library/3b.md#mul-ff)
-[`++pa:ff`](@/docs/reference/library/3b.md#pa-ff)
-[`++san:ff`](@/docs/reference/library/3b.md#san-ff)
-[`++sb:ff`](@/docs/reference/library/3b.md#sb-ff)
-[`++sea:ff`](@/docs/reference/library/3b.md#sea-ff)
-[`++sig:ff`](@/docs/reference/library/3b.md#sig-ff)
-[`++sqt:ff`](@/docs/reference/library/3b.md#sqt-ff)
-[`++sub:ff`](@/docs/reference/library/3b.md#sub-ff)
-[`++sun:ff`](@/docs/reference/library/3b.md#sun-ff)
-[`++toi:ff`](@/docs/reference/library/3b.md#toi-ff)
+<a class="tooltip" href='/docs/reference/library/3b/#ff'><code>++ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-ff' title="Add (floating point)"><code>++add:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bif-ff' title="Converts from fn to @r"><code>++bif:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-ff' title="fn to @r with rounding"><code>++bit:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-ff' title="Divide (IEEE float)"><code>++div:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-ff' title="@r to decimal float"><code>++drg:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-ff' title="Equals (IEEE float)"><code>++equ:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-ff' title="Get exponent (IEEE float)"><code>++exp:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-ff' title="Fused multiply-add (IEEE float)"><code>++fma:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-ff' title="Decimal float to @r"><code>++grd:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-ff' title="Greater than / equal (IEEE float)"><code>++gte:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-ff' title="Greater than (IEEE float)"><code>++gth:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-ff' title="Less than / equal (IEEE float)"><code>++lte:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-ff' title="Less than (IEEE float)"><code>++lth:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#me-ff' title="Minimum exponent of ff"><code>++me:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-ff' title="Multiply (IEEE float)"><code>++mul:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#pa-ff' title="Initialize fl from ff core"><code>++pa:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-ff' title="Signed integer to @r"><code>++san:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sb-ff' title="Sign bit"><code>++sb:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-ff' title="Convert from IEEE float to fn"><code>++sea:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-ff' title="Produce sign of IEEE float"><code>++sig:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-ff' title="Produce square root from IEEE float"><code>++sqt:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-ff' title="Subtract from IEEE float"><code>++sub:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-ff' title="Unsigned integer to IEEE float"><code>++sun:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-ff' title="Round IEEE float to nearest signed integer"><code>++toi:ff</code></a>
 
-[`++fl`](@/docs/reference/library/3b.md#fl)
-[`++abs:fl`](@/docs/reference/library/3b.md#abs-fl)
-[`++add:fl`](@/docs/reference/library/3b.md#add-fl)
-[`++den:fl`](@/docs/reference/library/3b.md#den-fl)
-[`++div:fl`](@/docs/reference/library/3b.md#div-fl)
-[`++drg:fl`](@/docs/reference/library/3b.md#drg-fl)
-[`++ead:fl`](@/docs/reference/library/3b.md#ead-fl)
-[`++emn:fl`](@/docs/reference/library/3b.md#emn-fl)
-[`++emu:fl`](@/docs/reference/library/3b.md#emu-fl)
-[`++emx:fl`](@/docs/reference/library/3b.md#emx-fl)
-[`++equ:fl`](@/docs/reference/library/3b.md#equ-fl)
-[`++fli:fl`](@/docs/reference/library/3b.md#fli-fl)
-[`++fma:fl`](@/docs/reference/library/3b.md#fma-fl)
-[`++grd:fl`](@/docs/reference/library/3b.md#grd-fl)
-[`++gte:fl`](@/docs/reference/library/3b.md#gte-fl)
-[`++gth:fl`](@/docs/reference/library/3b.md#gth-fl)
-[`++ibl:fl`](@/docs/reference/library/3b.md#ibl-fl)
-[`++inv:fl`](@/docs/reference/library/3b.md#inv-fl)
-[`++lfe:fl`](@/docs/reference/library/3b.md#lfe-fl)
-[`++lfn:fl`](@/docs/reference/library/3b.md#lfn-fl)
-[`++lte:fl`](@/docs/reference/library/3b.md#lte-fl)
-[`++lth:fl`](@/docs/reference/library/3b.md#lth-fl)
-[`++lug:fl`](@/docs/reference/library/3b.md#lug-fl)
-[`++mul:fl`](@/docs/reference/library/3b.md#mul-fl)
-[`++ned:fl`](@/docs/reference/library/3b.md#ned-fl)
-[`++prc:fl`](@/docs/reference/library/3b.md#prc-fl)
-[`++rau:fl`](@/docs/reference/library/3b.md#rau-fl)
-[`++rou:fl`](@/docs/reference/library/3b.md#rou-fl)
-[`++san:fl`](@/docs/reference/library/3b.md#san-fl)
-[`++shf:fl`](@/docs/reference/library/3b.md#shf-fl)
-[`++spd:fl`](@/docs/reference/library/3b.md#spd-fl)
-[`++spn:fl`](@/docs/reference/library/3b.md#spn-fl)
-[`++sqt:fl`](@/docs/reference/library/3b.md#sqt-fl)
-[`++sub:fl`](@/docs/reference/library/3b.md#sub-fl)
-[`++sun:fl`](@/docs/reference/library/3b.md#sun-fl)
-[`++swr:fl`](@/docs/reference/library/3b.md#swr-fl)
-[`++syn:fl`](@/docs/reference/library/3b.md#syn-fl)
-[`++toi:fl`](@/docs/reference/library/3b.md#toi-fl)
-[`++toj:fl`](@/docs/reference/library/3b.md#toj-fl)
-[`++uni:fl`](@/docs/reference/library/3b.md#uni-fl)
-[`++xpd:fl`](@/docs/reference/library/3b.md#xpd-fl)
-[`++zer:fl`](@/docs/reference/library/3b.md#zer-fl)
+<a class="tooltip" href='/docs/reference/library/3b/#fl'><code>++fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#abs-fl' title="Absolute value"><code>++abs:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-fl' title="Add (with exact/rounded flag)"><code>++add:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#den-fl' title="Denormalizes (floating point)"><code>++den:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-fl' title="Divide (signed and unsigned integer cell)"><code>++div:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-fl' title="Get printable decimal (signed and unsigned integer cell)"><code>++drg:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ead-fl' title="Exact add"><code>++ead:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#emn-fl' title="Minimum exponent"><code>++emn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#emu-fl' title="Exact multiply"><code>++emu:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#emx-fl' title="Maximum exponent"><code>++emx:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-fl' title="Equals (signed and unsigned integer cell)"><code>++equ:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fli-fl' title="Flip sign"><code>++fli:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-fl' title="Fused multiply-add"><code>++fma:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-fl' title="Decimal to float"><code>++grd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-fl' title="Greater than / equal (producing flag)"><code>++gte:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-fl' title="Greater than (producing flag)"><code>++gth:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ibl-fl' title="Integer binary logarithm"><code>++ibl:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#inv-fl' title="Inverse"><code>++inv:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lfe-fl' title="Maximum"><code>++lfe:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lfn-fl' title="Largest normal float"><code>++lfn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-fl' title="Less than / equal (producing flag)"><code>++lte:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-fl' title="Less than (signed and unsigned integer cell)"><code>++lth:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lug-fl' title="Central rounding mechanism"><code>++lug:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-fl' title="Multiply (signed and unsigned integer cell)"><code>++mul:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ned-fl' title="Require float"><code>++ned:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#prc-fl' title="Force precision of 2 or greater (floating point)"><code>++prc:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rau-fl' title="Various roundings (floating point)"><code>++rau:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rou-fl' title="Round to nearest float with 113-bit significand"><code>++rou:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-fl' title="Signed integer to float"><code>++san:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#shf-fl' title="Shift power"><code>++shf:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spd-fl' title="Produce smallest denormalized float"><code>++spd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spn-fl' title="Produce smallest normal float"><code>++spn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-fl' title="Produce square root from signed and unsigned integer cell"><code>++sqt:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-fl' title="Subtract from signed and unsigned integer cells"><code>++sub:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-fl' title="Unsigned integer to float"><code>++sun:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#swr-fl' title="Switch rounding mode of floating point"><code>++swr:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#syn-fl' title="Get sign"><code>++syn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-fl' title="Round float to nearest signed integer"><code>++toi:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toj-fl' title="Round unsigned and signed integer to float"><code>++toj:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#uni-fl' title="Change representation to odd"><code>++uni:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#xpd-fl' title="Expand signed and unsigned integer cell"><code>++xpd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#zer-fl' title="Produce zero as float"><code>++zer:fl</code></a>
 
-[`++rd`](@/docs/reference/library/3b.md#rd)
-[`++add:rd`](@/docs/reference/library/3b.md#add-rd)
-[`++bit:rd`](@/docs/reference/library/3b.md#bit-rd)
-[`++div:rd`](@/docs/reference/library/3b.md#div-rd)
-[`++drg:rd`](@/docs/reference/library/3b.md#drg-rd)
-[`++equ:rd`](@/docs/reference/library/3b.md#equ-rd)
-[`++exp:rd`](@/docs/reference/library/3b.md#exp-rd)
-[`++fma:rd`](@/docs/reference/library/3b.md#fma-rd)
-[`++grd:rd`](@/docs/reference/library/3b.md#grd-rd)
-[`++gte:rd`](@/docs/reference/library/3b.md#gte-rd)
-[`++gth:rd`](@/docs/reference/library/3b.md#gth-rd)
-[`++lte:rd`](@/docs/reference/library/3b.md#lte-rd)
-[`++lth:rd`](@/docs/reference/library/3b.md#lth-rd)
-[`++ma:rd`](@/docs/reference/library/3b.md#ma-rd)
-[`++mul:rd`](@/docs/reference/library/3b.md#mul-rd)
-[`++san:rd`](@/docs/reference/library/3b.md#san-rd)
-[`++sea:rd`](@/docs/reference/library/3b.md#sea-rd)
-[`++sig:rd`](@/docs/reference/library/3b.md#sig-rd)
-[`++sqt:rd`](@/docs/reference/library/3b.md#sqt-rd)
-[`++sub:rd`](@/docs/reference/library/3b.md#sub-rd)
-[`++sun:rd`](@/docs/reference/library/3b.md#sun-rd)
-[`++toi:rd`](@/docs/reference/library/3b.md#toi-rd)
+<a class="tooltip" href='/docs/reference/library/3b/#rd'><code>++rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rd' title="Add (double-precision float)"><code>++add:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rd' title="fn to double-precision binary float"><code>++bit:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rd' title="Double precision float"><code>++div:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rd' title="@rd to decimal float"><code>++drg:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rd' title="Equals (double-precision float)"><code>++equ:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rd' title="Exponent (@rd)"><code>++exp:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rd' title="Fused multiply-add (@rd)"><code>++fma:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rd' title="Decimal float to @rd"><code>++grd:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rd' title="Greater than / equal (double-precision float)"><code>++gte:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rd' title="Greater than (double-precision float)"><code>++gth:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rd' title="Less than / equal (double-precision float)"><code>++lte:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rd' title="Less than (double-precision float)"><code>++lth:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rd' title="Initialize ff (rd core)"><code>++ma:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rd' title="Multiply (double-precision float)"><code>++mul:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rd' title="Unsigned integer to @rd"><code>++san:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rd' title="Convert from double-precision binary float to fn"><code>++sea:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rd' title="Produce sign of @rd"><code>++sig:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rd' title="Produce square root of double-precision float"><code>++sqt:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rd' title="Subtract from double-precision float"><code>++sub:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rd' title="Unsigned integer to double-precision float"><code>++sun:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rd' title="Round double-precision float to nearest signed integer"><code>++toi:rd</code></a>
 
-[`++rh`](@/docs/reference/library/3b.md#rh)
-[`++add:rh`](@/docs/reference/library/3b.md#add-rh)
-[`++bit:rh`](@/docs/reference/library/3b.md#bit-rh)
-[`++div:rh`](@/docs/reference/library/3b.md#div-rh)
-[`++drg:rh`](@/docs/reference/library/3b.md#drg-rh)
-[`++equ:rh`](@/docs/reference/library/3b.md#equ-rh)
-[`++exp:rh`](@/docs/reference/library/3b.md#exp-rh)
-[`++fma:rh`](@/docs/reference/library/3b.md#fma-rh)
-[`++fos:rh`](@/docs/reference/library/3b.md#fos-rh)
-[`++grd:rh`](@/docs/reference/library/3b.md#grd-rh)
-[`++gte:rh`](@/docs/reference/library/3b.md#gte-rh)
-[`++gth:rh`](@/docs/reference/library/3b.md#gth-rh)
-[`++lte:rh`](@/docs/reference/library/3b.md#lte-rh)
-[`++lth:rh`](@/docs/reference/library/3b.md#lth-rh)
-[`++ma:rh`](@/docs/reference/library/3b.md#ma-rh)
-[`++mul:rh`](@/docs/reference/library/3b.md#mul-rh)
-[`++san:rh`](@/docs/reference/library/3b.md#san-rh)
-[`++sea:rh`](@/docs/reference/library/3b.md#sea-rh)
-[`++sig:rh`](@/docs/reference/library/3b.md#sig-rh)
-[`++sqt:rh`](@/docs/reference/library/3b.md#sqt-rh)
-[`++sub:rh`](@/docs/reference/library/3b.md#sub-rh)
-[`++sun:rh`](@/docs/reference/library/3b.md#sun-rh)
-[`++toi:rh`](@/docs/reference/library/3b.md#toi-rh)
-[`++tos:rh`](@/docs/reference/library/3b.md#tos-rh)
+<a class="tooltip" href='/docs/reference/library/3b/#rh'><code>++rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rh' title="Add (half-precision float)"><code>++add:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rh' title="fn to half-precision float"><code>++bit:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rh' title="Divide (half-precision float)"><code>++div:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rh' title="@rh to decimal float"><code>++drg:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rh' title="Equals (half-precision float)"><code>++equ:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rh' title="Exponent (half-precision float)"><code>++exp:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rh' title="Fused multiply-add (half-precision float)"><code>++fma:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fos-rh' title="@rs to @rh"><code>++fos:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rh' title="Decimal float to @rh"><code>++grd:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rh' title="Greater than / equal (half-precision float)"><code>++gte:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rh' title="Greater than (half-precision float)"><code>++gth:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rh' title="Less than / equal (half-precision float)"><code>++lte:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rh' title="Less than (half-precision float)"><code>++lth:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rh' title="Initialize ff (rh core)"><code>++ma:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rh' title="Multiply (quad-precision float)"><code>++mul:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rh' title="Signed integer to @rh"><code>++san:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rh' title="Convert from half-precision float to fn"><code>++sea:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rh' title="Produce sign of half-precision float"><code>++sig:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rh' title="Produce square root of half-precision float"><code>++sqt:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rh' title="Subtract from half-precision float"><code>++sub:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rh' title="Unsigned integer to half-precision float"><code>++sun:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rh' title="Round half-precision float to nearest signed integer"><code>++toi:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#tos-rh' title="Convert half-precision float to single-precision float"><code>++tos:rh</code></a>
 
-[`++rs`](@/docs/reference/library/3b.md#rs)
-[`++add:rs`](@/docs/reference/library/3b.md#add-rs)
-[`++bit:rs`](@/docs/reference/library/3b.md#bit-rs)
-[`++div:rs`](@/docs/reference/library/3b.md#div-rs)
-[`++drg:rs`](@/docs/reference/library/3b.md#drg-rs)
-[`++equ:rs`](@/docs/reference/library/3b.md#equ-rs)
-[`++exp:rs`](@/docs/reference/library/3b.md#exp-rs)
-[`++fma:rs`](@/docs/reference/library/3b.md#fma-rs)
-[`++grd:rs`](@/docs/reference/library/3b.md#grd-rs)
-[`++gte:rs`](@/docs/reference/library/3b.md#gte-rs)
-[`++gth:rs`](@/docs/reference/library/3b.md#gth-rs)
-[`++lte:rs`](@/docs/reference/library/3b.md#lte-rs)
-[`++lth:rs`](@/docs/reference/library/3b.md#lth-rs)
-[`++ma:rs`](@/docs/reference/library/3b.md#ma-rs)
-[`++mul:rs`](@/docs/reference/library/3b.md#mul-rs)
-[`++san:rs`](@/docs/reference/library/3b.md#san-rs)
-[`++sea:rs`](@/docs/reference/library/3b.md#sea-rs)
-[`++sig:rs`](@/docs/reference/library/3b.md#sig-rs)
-[`++sqt:rs`](@/docs/reference/library/3b.md#sqt-rs)
-[`++sub:rs`](@/docs/reference/library/3b.md#sub-rs)
-[`++sun:rs`](@/docs/reference/library/3b.md#sun-rs)
-[`++toi:rs`](@/docs/reference/library/3b.md#toi-rs)
+<a class="tooltip" href='/docs/reference/library/3b/#rs'><code>++rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rs' title="Add (single-precision float)"><code>++add:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rs' title="fn to single-precision float"><code>++bit:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rs' title="Divide (single-precision float)"><code>++div:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rs' title="@rs to decimal float"><code>++drg:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rs' title="Equals (single-precision float)"><code>++equ:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rs' title="Exponent (@rs)"><code>++exp:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rs' title="Fused multiply-add (single-precision float)"><code>++fma:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rs' title="Decimal float to @rs"><code>++grd:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rs' title="Greater than / equal (single-precision float)"><code>++gte:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rs' title="Greater than (single-precision float)"><code>++gth:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rs' title="Less than / equal (single-precision float)"><code>++lte:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rs' title="Less than (single-precision float)"><code>++lth:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rs' title="Initialize ff (rs core)"><code>++ma:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rs' title="Multiply (single-precision float)"><code>++mul:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rs' title="Signed integer to @rs"><code>++san:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rs' title="Convert from single-precision float to fn"><code>++sea:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rs' title="Produce sign of @rs"><code>++sig:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rs' title="Produce square root of single-precision float"><code>++sqt:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rs' title="Subtract from single-precision float"><code>++sub:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rs' title="Unsigned integer to single-precision float"><code>++sun:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rs' title="Round single-precision float to nearest signed integer"><code>++toi:rs</code></a>
 
-[`++rq`](@/docs/reference/library/3b.md#rq)
-[`++add:rq`](@/docs/reference/library/3b.md#add-rq)
-[`++bit:rq`](@/docs/reference/library/3b.md#bit-rq)
-[`++div:rq`](@/docs/reference/library/3b.md#div-rq)
-[`++drg:rq`](@/docs/reference/library/3b.md#drg-rq)
-[`++equ:rq`](@/docs/reference/library/3b.md#equ-rq)
-[`++exp:rq`](@/docs/reference/library/3b.md#exp-rq)
-[`++fma:rq`](@/docs/reference/library/3b.md#fma-rq)
-[`++grd:rq`](@/docs/reference/library/3b.md#grd-rq)
-[`++gte:rq`](@/docs/reference/library/3b.md#gte-rq)
-[`++gth:rq`](@/docs/reference/library/3b.md#gth-rq)
-[`++lte:rq`](@/docs/reference/library/3b.md#lte-rq)
-[`++lth:rq`](@/docs/reference/library/3b.md#lth-rq)
-[`++ma:rq`](@/docs/reference/library/3b.md#ma-rq)
-[`++mul:rq`](@/docs/reference/library/3b.md#mul-rq)
-[`++san:rq`](@/docs/reference/library/3b.md#san-rq)
-[`++sea:rq`](@/docs/reference/library/3b.md#sea-rq)
-[`++sig:rq`](@/docs/reference/library/3b.md#sig-rq)
-[`++sqt:rq`](@/docs/reference/library/3b.md#sqt-rq)
-[`++sub:rq`](@/docs/reference/library/3b.md#sub-rq)
-[`++sun:rq`](@/docs/reference/library/3b.md#sun-rq)
-[`++toi:rq`](@/docs/reference/library/3b.md#toi-rq)
+<a class="tooltip" href='/docs/reference/library/3b/#rq'><code>++rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#add-rq' title="Add (quad-precision float)"><code>++add:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#bit-rq' title="fn to quad-precision float"><code>++bit:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#div-rq' title="Divide (quad-precision float)"><code>++div:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#drg-rq' title="@rq to decimal float"><code>++drg:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#equ-rq' title="Equals (quad-precision float)"><code>++equ:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#exp-rq' title="Exponent (quad-precision float)"><code>++exp:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#fma-rq' title="Fused multiply-add (quad-precision float)"><code>++fma:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#grd-rq' title="Decimal float to @rq"><code>++grd:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gte-rq' title="Greater than / equal (quad-precision float)"><code>++gte:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#gth-rq' title="Greater than (quad-precision float)"><code>++gth:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lte-rq' title="Less than / equal (quad-precision float)"><code>++lte:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#lth-rq' title="Less than (quad-precision float)"><code>++lth:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ma-rq' title="Initialize ff (rq core)"><code>++ma:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#mul-rq' title="Multiply (quad-precision float)"><code>++mul:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rq' title="Signed integer to @rq"><code>++san:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rq' title="Convert from quad-precision float to fn"><code>++sea:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rq' title="Produce sign of quad-precision float"><code>++sig:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rq' title="Produce square root of quad-precision float"><code>++sqt:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rq' title="Subtract from quad-precision float"><code>++sub:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rq' title="Unsigned integer to quad-precision float"><code>++sun:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rq' title="Round quad-precision float to nearest signed integer"><code>++toi:rq</code></a>
 
-[`++rlyd`](@/docs/reference/library/3b.md#rlyd)
-[`++rlyh`](@/docs/reference/library/3b.md#rlyh)
-[`++rlyq`](@/docs/reference/library/3b.md#rlyq)
-[`++rlys`](@/docs/reference/library/3b.md#rlys)
-[`++ryld`](@/docs/reference/library/3b.md#ryld)
-[`++rylh`](@/docs/reference/library/3b.md#rylh)
-[`++rylq`](@/docs/reference/library/3b.md#rylq)
-[`++ryls`](@/docs/reference/library/3b.md#ryls)
+<a class="tooltip" href='/docs/reference/library/3b/#rlyd'><code>++rlyd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rlyh'><code>++rlyh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rlyq'><code>++rlyq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rlys'><code>++rlys</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ryld'><code>++ryld</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rylh'><code>++rylh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#rylq'><code>++rylq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#ryls'><code>++ryls</code></a>
 
 ### 3c: urbit time
 
-[`++yo`](@/docs/reference/library/3c.md#yo)
-[`++cet:yo`](@/docs/reference/library/3c.md#cet-yo)
-[`++day:yo`](@/docs/reference/library/3c.md#day-yo)
-[`++era:yo`](@/docs/reference/library/3c.md#era-yo)
-[`++hor:yo`](@/docs/reference/library/3c.md#hor-yo)
-[`++jes:yo`](@/docs/reference/library/3c.md#jes-yo)
-[`++mit:yo`](@/docs/reference/library/3c.md#mit-yo)
-[`++moh:yo`](@/docs/reference/library/3c.md#moh-yo)
-[`++moy:yo`](@/docs/reference/library/3c.md#moy-yo)
-[`++qad:yo`](@/docs/reference/library/3c.md#qad-yo)
-[`++yer:yo`](@/docs/reference/library/3c.md#yer-yo)
+<a class="tooltip" href='/docs/reference/library/3c/#yo' title="Time constants core"><code>++yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#cet-yo' title="Days in a century"><code>++cet:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#day-yo' title="Seconds in day"><code>++day:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#era-yo' title="Leap-year period"><code>++era:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#hor-yo' title="Seconds in hour"><code>++hor:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#jes-yo' title="Maximum 64-bit timestamp"><code>++jes:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#mit-yo' title="Seconds in minute"><code>++mit:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#moh-yo' title="Days in month"><code>++moh:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#moy-yo' title="Days in months of leap-year"><code>++moy:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#qad-yo' title="Seconds in 4 years"><code>++qad:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yer-yo' title="Seconds in year"><code>++yer:yo</code></a>
 
-[`++yall`](@/docs/reference/library/3c.md#yall)
-[`++yawn`](@/docs/reference/library/3c.md#yawn)
-[`++year`](@/docs/reference/library/3c.md#year)
-[`++yell`](@/docs/reference/library/3c.md#yell)
-[`++yelp`](@/docs/reference/library/3c.md#yelp)
-[`++yore`](@/docs/reference/library/3c.md#yore)
-[`++yule`](@/docs/reference/library/3c.md#yule)
+<a class="tooltip" href='/docs/reference/library/3c/#yall' title="Time since beginning of time"><code>++yall</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yawn' title="Days since beginning of time"><code>++yawn</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#year' title="Date to @d"><code>++year</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yell' title="Tarp from atomic date"><code>++yell</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yelp' title="Determine if leap-week"><code>++yelp</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yore' title="Date from atomic date"><code>++yore</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yule' title="Daily time to time atom"><code>++yule</code></a>
 
 ### 3d: SHA hash family
 
-[`++og`](@/docs/reference/library/3d.md#og)
-[`++rad:og`](@/docs/reference/library/3d.md#rad-og)
-[`++rads:og`](@/docs/reference/library/3d.md#rads-og)
-[`++raw:og`](@/docs/reference/library/3d.md#raw-og)
-[`++raws:og`](@/docs/reference/library/3d.md#raws-og)
+<a class="tooltip" href='/docs/reference/library/3d/#og' title="Container arm for SHA-256 powered RNG"><code>++og</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#rad-og' title="Random in range"><code>++rad:og</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#rads-og' title="Random continuation"><code>++rads:og</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#raw-og' title="Random bits"><code>++raw:og</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#raws-og' title="Random bits continuation"><code>++raws:og</code></a>
 
-[`++shad`](@/docs/reference/library/3d.md#shad)
-[`++shaf`](@/docs/reference/library/3d.md#shaf)
-[`++shal`](@/docs/reference/library/3d.md#shal)
-[`++sham`](@/docs/reference/library/3d.md#sham)
-[`++shan`](@/docs/reference/library/3d.md#shan)
-[`++shas`](@/docs/reference/library/3d.md#shas)
-[`++shaw`](@/docs/reference/library/3d.md#shaw)
-[`++shax`](@/docs/reference/library/3d.md#shax)
-[`++shay`](@/docs/reference/library/3d.md#shay)
-[`++shaz`](@/docs/reference/library/3d.md#shaz)
+<a class="tooltip" href='/docs/reference/library/3d/#shad' title="Double SHA-256"><code>++shad</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaf' title="Half SHA-256"><code>++shaf</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shal' title="SHA-512 with length"><code>++shal</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#sham' title="128-bit noun hash"><code>++sham</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shan' title="SHA-1"><code>++shan</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shas' title="Salted hash"><code>++shas</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaw' title="Hash to nbits"><code>++shaw</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shax' title="SHA-256"><code>++shax</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shay' title="SHA-256 with length"><code>++shay</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaz' title="SHA-512"><code>++shaz</code></a>
 
 ### 3e: AES encryption
 
-[_(removed)_](@/docs/reference/library/3e.md)
+<a href='/docs/reference/library/3e/'>_(removed)_</a>
 
 ### 3f: scrambling
 
-[`++ob`](@/docs/reference/library/3f.md#ob)
-[`++feen:ob`](@/docs/reference/library/3f.md#feen-ob)
-[`++fend:ob`](@/docs/reference/library/3f.md#fend-ob)
-[`++fice:ob`](@/docs/reference/library/3f.md#fice-ob)
-[`++raku:ob`](@/docs/reference/library/3f.md#raku-ob)
-[`++rund:ob`](@/docs/reference/library/3f.md#rund-ob)
-[`++rynd:ob`](@/docs/reference/library/3f.md#rynd-ob)
-[`++teil:ob`](@/docs/reference/library/3f.md#teil-ob)
+<a class="tooltip" href='/docs/reference/library/3f/#ob' title="Reversible scrambling v2"><code>++ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#feen-ob' title="Conceal structure v2"><code>++feen:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#fend-ob' title="Restore structure v2"><code>++fend:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#fice-ob' title="Feistel-like cipher"><code>++fice:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#raku-ob' title="Key list"><code>++raku:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#rund-ob' title="Reverse single Feistel-like"><code>++rund:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#rynd-ob' title="Reverse Feistel-like cipher"><code>++rynd:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#teil-ob' title="Reverse Feistel-like cipher"><code>++teil:ob</code></a>
 
-[`++un`](@/docs/reference/library/3f.md#un)
-[`++wred:un`](@/docs/reference/library/3f.md#wred-un)
-[`++wren:un`](@/docs/reference/library/3f.md#wren-un)
-[`++xafo:un`](@/docs/reference/library/3f.md#xafo-un)
-[`++xaro:un`](@/docs/reference/library/3f.md#xaro-un)
-[`++zaft:un`](@/docs/reference/library/3f.md#zaft-un)
-[`++zart:un`](@/docs/reference/library/3f.md#zart-un)
-[`++zyft:un`](@/docs/reference/library/3f.md#zyft-un)
-[`++zyrt:un`](@/docs/reference/library/3f.md#zyrt-un)
+<a class="tooltip" href='/docs/reference/library/3f/#un' title="Reversible scrambling"><code>++un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wred-un' title="Restore structure"><code>++wred:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wren-un' title="Conceal structure"><code>++wren:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#xafo-un'><code>++xafo:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#xaro-un'><code>++xaro:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zaft-un' title="Look up in 255 sub box"><code>++zaft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zart-un' title="Reverse look up in 255 sub box"><code>++zart:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyft-un' title="Lookup byte in 256 sub box"><code>++zyft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyrt-un' title="Reverse lookup byte in 256 sub box"><code>++zyrt:un</code></a>
 
 ### 3g: molds and mold builders
 
-[`++coin`](@/docs/reference/library/3g.md#coin)
-[`++dime`](@/docs/reference/library/3g.md#dime)
-[`++edge`](@/docs/reference/library/3g.md#edge)
-[`++hair`](@/docs/reference/library/3g.md#hair)
-[`++like`](@/docs/reference/library/3g.md#like)
-[`++nail`](@/docs/reference/library/3g.md#nail)
-[`++path`](@/docs/reference/library/3g.md#path)
-[`++pint`](@/docs/reference/library/3g.md#pint)
-[`++rule`](@/docs/reference/library/3g.md#rule)
-[`++spot`](@/docs/reference/library/3g.md#spot)
-[`++tone`](@/docs/reference/library/3g.md#tone)
-[`++toon`](@/docs/reference/library/3g.md#toon)
-[`++wonk`](@/docs/reference/library/3g.md#wonk)
+<a class="tooltip" href='/docs/reference/library/3g/#coin' title="Noun-literal syntax cases"><code>++coin</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#dime' title="Aura-atom pair"><code>++dime</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#edge' title="Parsing location metadata"><code>++edge</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#hair' title="Parsing line and column"><code>++hair</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#like' title="Generic edge"><code>++like</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#nail' title="Location, remainder of parsed text"><code>++nail</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#path' title="Filesystem path"><code>++path</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#pint' title="Parsing range"><code>++pint</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#rule' title="Parsing rule (match this with _)"><code>++rule</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#spot' title="Stack trace line"><code>++spot</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#tone' title="Nock result (error report)"><code>++tone</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#toon' title="Nock result (stack trace)"><code>++toon</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#wonk' title="Product from edge"><code>++wonk</code></a>
 
 ### 4a: exotic bases
 
-[`++po`](@/docs/reference/library/4a.md#po)
-[`++ind:po`](@/docs/reference/library/4a.md#ind-po)
-[`++ins:po`](@/docs/reference/library/4a.md#ins-po)
-[`++tod:po`](@/docs/reference/library/4a.md#tod-po)
-[`++tos:po`](@/docs/reference/library/4a.md#tos-po)
+<a class="tooltip" href='/docs/reference/library/4a/#po' title="Phonetic base"><code>++po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#ind-po' title="Parse suffix"><code>++ind:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#ins-po' title="Parse prefix"><code>++ins:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tod-po' title="Fetch suffix"><code>++tod:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tos-po' title="Fetch prefix"><code>++tos:po</code></a>
 
 ### 4b: text processing
 
-[`++at`](@/docs/reference/library/4b.md#at)
-[`++r:at`](@/docs/reference/library/4b.md#r-at)
-[`++rf:at`](@/docs/reference/library/4b.md#rf-at)
-[`++rn:at`](@/docs/reference/library/4b.md#rn-at)
-[`++rt:at`](@/docs/reference/library/4b.md#rt-at)
-[`++rta:at`](@/docs/reference/library/4b.md#rta-at)
-[`++rtam:at`](@/docs/reference/library/4b.md#rtam-at)
-[`++rub:at`](@/docs/reference/library/4b.md#rub-at)
-[`++rud:at`](@/docs/reference/library/4b.md#rud-at)
-[`++rum:at`](@/docs/reference/library/4b.md#rum-at)
-[`++rup:at`](@/docs/reference/library/4b.md#rup-at)
-[`++ruv:at`](@/docs/reference/library/4b.md#ruv-at)
-[`++rux:at`](@/docs/reference/library/4b.md#rux-at)
+<a class="tooltip" href='/docs/reference/library/4b/#at' title="(Undocumented)"><code>++at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#r-at' title="(Undocumented)"><code>++r:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rf-at' title="(Undocumented)"><code>++rf:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rn-at' title="(Undocumented)"><code>++rn:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rt-at' title="(Undocumented)"><code>++rt:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rta-at' title="(Undocumented)"><code>++rta:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rtam-at' title="(Undocumented)"><code>++rtam:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rub-at' title="(Undocumented)"><code>++rub:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rud-at' title="(Undocumented)"><code>++rud:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rum-at' title="(Undocumented)"><code>++rum:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rup-at' title="(Undocumented)"><code>++rup:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#ruv-at' title="(Undocumented)"><code>++ruv:at</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#rux-at' title="(Undocumented)"><code>++rux:at</code></a>
 
-[`++cass`](@/docs/reference/library/4b.md#cass)
-[`++crip`](@/docs/reference/library/4b.md#crip)
-[`++cuss`](@/docs/reference/library/4b.md#cuss)
-[`++mesc`](@/docs/reference/library/4b.md#mesc)
-[`++runt`](@/docs/reference/library/4b.md#runt)
-[`++sand`](@/docs/reference/library/4b.md#sand)
-[`++sane`](@/docs/reference/library/4b.md#sane)
-[`++teff`](@/docs/reference/library/4b.md#teff)
-[`++trim`](@/docs/reference/library/4b.md#trim)
-[`++trip`](@/docs/reference/library/4b.md#trip)
-[`++tuba`](@/docs/reference/library/4b.md#tuba)
-[`++tufa`](@/docs/reference/library/4b.md#tufa)
-[`++tuft`](@/docs/reference/library/4b.md#tuft)
-[`++turf`](@/docs/reference/library/4b.md#turf)
-[`++wack`](@/docs/reference/library/4b.md#wack)
-[`++wick`](@/docs/reference/library/4b.md#wick)
-[`++woad`](@/docs/reference/library/4b.md#woad)
-[`++wood`](@/docs/reference/library/4b.md#wood)
+<a class="tooltip" href='/docs/reference/library/4b/#cass' title="To lowercase"><code>++cass</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#crip' title="Tape to cord"><code>++crip</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#cuss' title="To uppercase"><code>++cuss</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#mesc' title="Escape special characters"><code>++mesc</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#runt' title="Prepend n times"><code>++runt</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by odor"><code>++sand</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check odor validity"><code>++sane</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#teff' title="UTF-8 length"><code>++teff</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trim' title="Tape split"><code>++trim</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trip' title="Cord to tape"><code>++trip</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuba' title="UTF-8 to UTF-32 tape"><code>++tuba</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tufa' title="UTF-32 to UTF-8 tape"><code>++tufa</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuft' title="UTF-32 to UTF-8 text"><code>++tuft</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#turf' title="UTF-8 to UTF-32 cord"><code>++turf</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wack' title="Coin format encode"><code>++wack</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wick' title="Coin format decode"><code>++wick</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#woad' title="Unescape cord"><code>++woad</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wood' title="Escape cord"><code>++wood</code></a>
 
 ### 4c: tank printer
 
-[`++re`](@/docs/reference/library/4c.md#re)
-[`++din:re`](@/docs/reference/library/4c.md#din-re)
-[`++fit:re`](@/docs/reference/library/4c.md#fit-re)
-[`++ram:re`](@/docs/reference/library/4c.md#ram-re)
-[`++rig:re`](@/docs/reference/library/4c.md#rig-re)
-[`++wig:re`](@/docs/reference/library/4c.md#wig-re)
-[`++win:re`](@/docs/reference/library/4c.md#win-re)
+<a class="tooltip" href='/docs/reference/library/4c/#re' title="Pretty-printing engine (tank)"><code>++re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#din-re' title="(Undocumented)"><code>++din:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#fit-re' title="Fit on one line test"><code>++fit:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#ram-re' title="Flatten tank to tape"><code>++ram:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#rig-re' title="Wrap tape in / (tank)"><code>++rig:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#wig-re' title="++win - render tape"><code>++wig:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#win-re' title="Render at indent"><code>++win:re</code></a>
 
-[`++shep`](@/docs/reference/library/4c.md#shep)
-[`++shop`](@/docs/reference/library/4c.md#shop)
-[`++show`](@/docs/reference/library/4c.md#show)
+<a class="tooltip" href='/docs/reference/library/4c/#shep' title="(Undocumented)"><code>++shep</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shop' title="(Undocumented)"><code>++shop</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#show' title="(Undocumented)"><code>++show</code></a>
 
 ### 4d: parsing (tracing)
 
-[`++last`](@/docs/reference/library/4d.md#last)
-[`++lust`](@/docs/reference/library/4d.md#lust)
+<a class="tooltip" href='/docs/reference/library/4d/#last' title="Further trace"><code>++last</code></a>
+<a class="tooltip" href='/docs/reference/library/4d/#lust' title="Detect new line"><code>++lust</code></a>
 
 ### 4e: parsing (combinators)
 
-[`++bend`](@/docs/reference/library/4e.md#bend)
-[`++comp`](@/docs/reference/library/4e.md#comp)
-[`++fail`](@/docs/reference/library/4e.md#fail)
-[`++glue`](@/docs/reference/library/4e.md#glue)
-[`++less`](@/docs/reference/library/4e.md#less)
-[`++pfix`](@/docs/reference/library/4e.md#pfix)
-[`++plug`](@/docs/reference/library/4e.md#plug)
-[`++pose`](@/docs/reference/library/4e.md#pose)
-[`++sfix`](@/docs/reference/library/4e.md#sfix)
-[`++simu`](@/docs/reference/library/4e.md#simu)
+<a class="tooltip" href='/docs/reference/library/4e/#bend' title="Conditional composer"><code>++bend</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#comp' title="Arbitrary compose"><code>++comp</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#fail' title="Never parse"><code>++fail</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#glue' title="Skip delimiter"><code>++glue</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#less' title="Parse unless"><code>++less</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#pfix' title="Discard first rule"><code>++pfix</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#plug' title="Parse to tuple"><code>++plug</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#pose' title="Parse options"><code>++pose</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#sfix' title="Discard second rule"><code>++sfix</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#simu' title="First and second"><code>++simu</code></a>
 
 ### 4f: parsing (rule builders)
 
-[`++bass`](@/docs/reference/library/4f.md#bass)
-[`++boss`](@/docs/reference/library/4f.md#boss)
-[`++cold`](@/docs/reference/library/4f.md#cold)
-[`++cook`](@/docs/reference/library/4f.md#cook)
-[`++easy`](@/docs/reference/library/4f.md#easy)
-[`++full`](@/docs/reference/library/4f.md#full)
-[`++funk`](@/docs/reference/library/4f.md#funk)
-[`++here`](@/docs/reference/library/4f.md#here)
-[`++ifix`](@/docs/reference/library/4f.md#ifix)
-[`++jest`](@/docs/reference/library/4f.md#jest)
-[`++just`](@/docs/reference/library/4f.md#just)
-[`++knee`](@/docs/reference/library/4f.md#knee)
-[`++mask`](@/docs/reference/library/4f.md#mask)
-[`++more`](@/docs/reference/library/4f.md#more)
-[`++most`](@/docs/reference/library/4f.md#most)
-[`++next`](@/docs/reference/library/4f.md#next)
-[`++plus`](@/docs/reference/library/4f.md#plus)
-[`++sear`](@/docs/reference/library/4f.md#sear)
-[`++shim`](@/docs/reference/library/4f.md#shim)
-[`++slug`](@/docs/reference/library/4f.md#slug)
-[`++stag`](@/docs/reference/library/4f.md#stag)
-[`++star`](@/docs/reference/library/4f.md#star)
-[`++stet`](@/docs/reference/library/4f.md#stet)
-[`++stew`](@/docs/reference/library/4f.md#stew)
-[`++stir`](@/docs/reference/library/4f.md#stir)
-[`++stun`](@/docs/reference/library/4f.md#stun)
+<a class="tooltip" href='/docs/reference/library/4f/#bass' title="Parser modifier (LSB-ordered ++list as atom of ++base)"><code>++bass</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#boss' title="Parser modifier: LSB"><code>++boss</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#cold' title="Replace with constant"><code>++cold</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#cook' title="Apply gate"><code>++cook</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#easy' title="Always parse"><code>++easy</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#full' title="Parse to end"><code>++full</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#funk' title="Add to tape"><code>++funk</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#here' title="Place-based apply"><code>++here</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#ifix' title="Infix"><code>++ifix</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#jest' title="Match a cord"><code>++jest</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#just' title="Match a single character"><code>++just</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#knee' title="Recursive parsers"><code>++knee</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#mask' title="Match character"><code>++mask</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#more' title="Parse list with delimiter"><code>++more</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#most' title="Parse list of at least one match"><code>++most</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#next' title="Consume character"><code>++next</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#plus' title="List of at least one match"><code>++plus</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#sear' title="Conditional ++cook"><code>++sear</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#shim' title="Match character within range"><code>++shim</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#slug' title="Use gate to parse delimited list"><code>++slug</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stag' title="Add label"><code>++stag</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#star' title="Produce list of matches"><code>++star</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stet' title="Add faces to range-parser pairs in list"><code>++stet</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stew' title="Switch by first"><code>++stew</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stir' title="Parse repeatedly"><code>++stir</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stun' title="Parse several times"><code>++stun</code></a>
 
 ### 4g: parsing (outside caller)
 
-[`++rash`](@/docs/reference/library/4g.md#rash)
-[`++rush`](@/docs/reference/library/4g.md#rush)
-[`++rust`](@/docs/reference/library/4g.md#rust)
-[`++scan`](@/docs/reference/library/4g.md#scan)
+<a class="tooltip" href='/docs/reference/library/4g/#rash' title="Parse or crash"><code>++rash</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#rush' title="Parse or null"><code>++rush</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#rust' title="Parse tape or null"><code>++rust</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#scan' title="Parse tape or crash"><code>++scan</code></a>
 
 ### 4h: parsing (ascii glyphs)
 
-[`++ace`](@/docs/reference/library/4h.md#ace)
-[`++bar`](@/docs/reference/library/4h.md#bar)
-[`++bas`](@/docs/reference/library/4h.md#bas)
-[`++buc`](@/docs/reference/library/4h.md#buc)
-[`++cab`](@/docs/reference/library/4h.md#cab)
-[`++cen`](@/docs/reference/library/4h.md#cen)
-[`++col`](@/docs/reference/library/4h.md#col)
-[`++com`](@/docs/reference/library/4h.md#com)
-[`++doq`](@/docs/reference/library/4h.md#doq)
-[`++dot`](@/docs/reference/library/4h.md#dot)
-[`++fas`](@/docs/reference/library/4h.md#fas)
-[`++gal`](@/docs/reference/library/4h.md#gal)
-[`++gar`](@/docs/reference/library/4h.md#gar)
-[`++hax`](@/docs/reference/library/4h.md#hax)
-[`++hep`](@/docs/reference/library/4h.md#hep)
-[`++kel`](@/docs/reference/library/4h.md#kel)
-[`++ker`](@/docs/reference/library/4h.md#ker)
-[`++ket`](@/docs/reference/library/4h.md#ket)
-[`++lus`](@/docs/reference/library/4h.md#lus)
-[`++pam`](@/docs/reference/library/4h.md#pam)
-[`++pat`](@/docs/reference/library/4h.md#pat)
-[`++pel`](@/docs/reference/library/4h.md#pel)
-[`++per`](@/docs/reference/library/4h.md#per)
-[`++sel`](@/docs/reference/library/4h.md#sel)
-[`++sem`](@/docs/reference/library/4h.md#sem)
-[`++ser`](@/docs/reference/library/4h.md#ser)
-[`++sig`](@/docs/reference/library/4h.md#sig)
-[`++soq`](@/docs/reference/library/4h.md#soq)
-[`++tar`](@/docs/reference/library/4h.md#tar)
-[`++tec`](@/docs/reference/library/4h.md#tec)
-[`++tis`](@/docs/reference/library/4h.md#tis)
-[`++wut`](@/docs/reference/library/4h.md#wut)
-[`++zap`](@/docs/reference/library/4h.md#zap)
+<a class="tooltip" href='/docs/reference/library/4h/#ace' title="Parse space"><code>++ace</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#bar' title="Parse | (bar)"><code>++bar</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#bas' title="Parse \ (bas)"><code>++bas</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#buc' title="Parse $ (buc)"><code>++buc</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#cab' title="Parse _ (cab)"><code>++cab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#cen' title="Parse % (cen)"><code>++cen</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#col' title="Parse : (col)"><code>++col</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#com' title="Parse , (comma)"><code>++com</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#doq' title="Parse double quote"><code>++doq</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#dot' title="Parse period"><code>++dot</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#fas' title="Parse / (fas)"><code>++fas</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#gal' title="Parse < (gal)"><code>++gal</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#gar' title="Parse > (gar)"><code>++gar</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#hax' title="Parse # (hax)"><code>++hax</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#hep' title="Parse - (hep)"><code>++hep</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#kel' title="Parse { (kel)"><code>++kel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ker' title="Parse } (ker)"><code>++ker</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ket' title="Parse ^ (ket)"><code>++ket</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#lus' title="Parse + (lus)"><code>++lus</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#pam' title="Parse & (pam)"><code>++pam</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#pat' title="Parse @ (pat)"><code>++pat</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#pel' title="Parse ( (pel)"><code>++pel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#per' title="Parse ) (per)"><code>++per</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sel' title="Parse [ (sel)"><code>++sel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sem' title="Parse ; (sem)"><code>++sem</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ser' title="Parse ] (ser)"><code>++ser</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sig' title="Parse ~ (sig)"><code>++sig</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#soq' title="Parse ' (soq)"><code>++soq</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tar' title="Parse * (tar)"><code>++tar</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tec' title="Parse ` (tec)"><code>++tec</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tis' title="Parse = (tis)"><code>++tis</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#wut' title="Parse ? (wut)"><code>++wut</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#zap' title="Parse ! (zap)"><code>++zap</code></a>
 
 ### 4i: parsing (useful idioms)
 
-[`++alf`](@/docs/reference/library/4i.md#alf)
-[`++aln`](@/docs/reference/library/4i.md#aln)
-[`++alp`](@/docs/reference/library/4i.md#alp)
-[`++bet`](@/docs/reference/library/4i.md#bet)
-[`++bin`](@/docs/reference/library/4i.md#bin)
-[`++but`](@/docs/reference/library/4i.md#but)
-[`++cit`](@/docs/reference/library/4i.md#cit)
-[`++dem`](@/docs/reference/library/4i.md#dem)
-[`++dit`](@/docs/reference/library/4i.md#dit)
-[`++dog`](@/docs/reference/library/4i.md#dog)
-[`++doh`](@/docs/reference/library/4i.md#doh)
-[`++dun`](@/docs/reference/library/4i.md#dun)
-[`++duz`](@/docs/reference/library/4i.md#duz)
-[`++gah`](@/docs/reference/library/4i.md#gah)
-[`++gap`](@/docs/reference/library/4i.md#gap)
-[`++gaq`](@/docs/reference/library/4i.md#gaq)
-[`++gaw`](@/docs/reference/library/4i.md#gaw)
-[`++gay`](@/docs/reference/library/4i.md#gay)
-[`++gon`](@/docs/reference/library/4i.md#gon)
-[`++gul`](@/docs/reference/library/4i.md#gul)
-[`++hex`](@/docs/reference/library/4i.md#hex)
-[`++hig`](@/docs/reference/library/4i.md#hig)
-[`++hit`](@/docs/reference/library/4i.md#hit)
-[`++iny`](@/docs/reference/library/4i.md#iny)
-[`++low`](@/docs/reference/library/4i.md#low)
-[`++mes`](@/docs/reference/library/4i.md#mes)
-[`++nix`](@/docs/reference/library/4i.md#nix)
-[`++nud`](@/docs/reference/library/4i.md#nud)
-[`++prn`](@/docs/reference/library/4i.md#prn)
-[`++qit`](@/docs/reference/library/4i.md#qit)
-[`++qut`](@/docs/reference/library/4i.md#qut)
-[`++soz`](@/docs/reference/library/4i.md#soz)
-[`++sym`](@/docs/reference/library/4i.md#sym)
-[`++ven`](@/docs/reference/library/4i.md#ven)
-[`++vit`](@/docs/reference/library/4i.md#vit)
-[`++vul`](@/docs/reference/library/4i.md#vul)
+<a class="tooltip" href='/docs/reference/library/4i/#alf' title="Parse alphabetic characters"><code>++alf</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#aln' title="Parse alphanumeric characters"><code>++aln</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#alp' title="Parse alphanumeric characters and -"><code>++alp</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#bet' title="Parse hep and lus axis syntax"><code>++bet</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#bin' title="Binary to atom"><code>++bin</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#but' title="Parse binary digit"><code>++but</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#cit' title="Octal digit"><code>++cit</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dit' title="Decimal digit"><code>++dit</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dog' title="Optional gap"><code>++dog</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#doh' title="@p separator"><code>++doh</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dun' title="-- to ~"><code>++dun</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#duz' title="== to ~"><code>++duz</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gah' title="New line or ''"><code>++gah</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gap' title="Plural whitespace"><code>++gap</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gaq' title="End of line"><code>++gaq</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gaw' title="Classic whitespace"><code>++gaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gay' title="Optional gap"><code>++gay</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gon' title="Parse long numbers"><code>++gon</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#gul' title="Axis syntax < or >"><code>++gul</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#hex' title="Hexadecimal to atom"><code>++hex</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#hig' title="Parse single uppercase letter"><code>++hig</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#hit' title="Parse single hexadecimal digit"><code>++hit</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#iny' title="Indentation block"><code>++iny</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#low' title="Parse lowercase letter"><code>++low</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#mes' title="Parse hexabyte"><code>++mes</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#nix' title="Parse letters and -"><code>++nix</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#nud' title="Parse numeric character"><code>++nud</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#prn' title="Parse any printable character"><code>++prn</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#qit' title="Parse character to cord atom"><code>++qit</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#qut' title="Parse cord"><code>++qut</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#soz' title="Parse triple single-quote"><code>++soz</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#sym' title="Term"><code>++sym</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#ven' title="Axis syntax parser"><code>++ven</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vit' title="Parse base 64 digit"><code>++vit</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vul' title="Comments to null"><code>++vul</code></a>
 
 ### 4j: parsing (bases and base digits)
 
-[`++ab`](@/docs/reference/library/4j.md#ab)
-[`++bix:ab`](@/docs/reference/library/4j.md#bix-ab)
-[`++hif:ab`](@/docs/reference/library/4j.md#hif-ab)
-[`++huf:ab`](@/docs/reference/library/4j.md#huf-ab)
-[`++hyf:ab`](@/docs/reference/library/4j.md#hyf-ab)
-[`++pev:ab`](@/docs/reference/library/4j.md#pev-ab)
-[`++pew:ab`](@/docs/reference/library/4j.md#pew-ab)
-[`++piv:ab`](@/docs/reference/library/4j.md#piv-ab)
-[`++piw:ab`](@/docs/reference/library/4j.md#piw-ab)
-[`++qeb:ab`](@/docs/reference/library/4j.md#qeb-ab)
-[`++qex:ab`](@/docs/reference/library/4j.md#qex-ab)
-[`++qib:ab`](@/docs/reference/library/4j.md#qib-ab)
-[`++qix:ab`](@/docs/reference/library/4j.md#qix-ab)
-[`++seb:ab`](@/docs/reference/library/4j.md#seb-ab)
-[`++sed:ab`](@/docs/reference/library/4j.md#sed-ab)
-[`++sev:ab`](@/docs/reference/library/4j.md#sev-ab)
-[`++sew:ab`](@/docs/reference/library/4j.md#sew-ab)
-[`++sex:ab`](@/docs/reference/library/4j.md#sex-ab)
-[`++sib:ab`](@/docs/reference/library/4j.md#sib-ab)
-[`++sid:ab`](@/docs/reference/library/4j.md#sid-ab)
-[`++siv:ab`](@/docs/reference/library/4j.md#siv-ab)
-[`++siw:ab`](@/docs/reference/library/4j.md#siw-ab)
-[`++six:ab`](@/docs/reference/library/4j.md#six-ab)
-[`++sov:ab`](@/docs/reference/library/4j.md#sov-ab)
-[`++sow:ab`](@/docs/reference/library/4j.md#sow-ab)
-[`++sox:ab`](@/docs/reference/library/4j.md#sox-ab)
-[`++ted:ab`](@/docs/reference/library/4j.md#ted-ab)
-[`++tid:ab`](@/docs/reference/library/4j.md#tid-ab)
-[`++til:ab`](@/docs/reference/library/4j.md#til-ab)
-[`++tip:ab`](@/docs/reference/library/4j.md#tip-ab)
-[`++tiq:ab`](@/docs/reference/library/4j.md#tiq-ab)
-[`++urs:ab`](@/docs/reference/library/4j.md#urs-ab)
-[`++urt:ab`](@/docs/reference/library/4j.md#urt-ab)
-[`++voy:ab`](@/docs/reference/library/4j.md#voy-ab)
+<a class="tooltip" href='/docs/reference/library/4j/#ab' title="Primitive parser engine"><code>++ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#bix-ab' title="Parse hex pair"><code>++bix:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#hif-ab' title="Parse phonetic pair"><code>++hif:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#huf-ab' title="Parse two phonetic pairs"><code>++huf:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#hyf-ab' title="Parse 8 phonetic bytes"><code>++hyf:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#pev-ab' title="Parse <=5 in base 32"><code>++pev:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#pew-ab' title="Parse <= 5 in base 64"><code>++pew:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#piv-ab' title="Parse 5 digits in base 32"><code>++piv:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#piw-ab' title="Parse 5 digits in base 64"><code>++piw:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qeb-ab' title="Parse <=4 binary digits"><code>++qeb:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qex-ab' title="Parse <=4 hexadecimal digits"><code>++qex:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qib-ab' title="Parse 4 binary digits"><code>++qib:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#qix-ab' title="Parse 4 hexadecimal digits"><code>++qix:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#seb-ab' title="Parse 1"><code>++seb:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sed-ab' title="Parse non-zero decimal digit"><code>++sed:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sev-ab' title="Parse non-zero base 32 digit"><code>++sev:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sew-ab' title="Parse non-zero base 64 digit"><code>++sew:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sex-ab' title="Parse nonzero hexadecimal digit"><code>++sex:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sib-ab' title="Parse binary digit"><code>++sib:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sid-ab' title="Parse decimal digit"><code>++sid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siv-ab' title="Parse a base 32 digit"><code>++siv:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siw-ab' title="Parse a base 64 digit"><code>++siw:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#six-ab' title="Parse a hexadecimal digit"><code>++six:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sov-ab' title="Parse base 32 letter"><code>++sov:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sow-ab' title="Parse base 64 letter/symbol"><code>++sow:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sox-ab' title="Parse hexadecimal letter"><code>++sox:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ted-ab' title="Parse decimal number with <= 3 digits"><code>++ted:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tid-ab' title="Parse 3 decimal digits"><code>++tid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#til-ab' title="Parse 3 lowercase letters"><code>++til:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tip-ab' title="Leading phonetic byte"><code>++tip:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tiq-ab' title="Trailing phonetic syllable"><code>++tiq:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urs-ab' title="Parse span characters"><code>++urs:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urt-ab' title="Parse non-_ span"><code>++urt:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#voy-ab' title="Parse bas, soq, or bix"><code>++voy:ab</code></a>
 
-[`++ag`](@/docs/reference/library/4j.md#ag)
-[`++ape:ag`](@/docs/reference/library/4j.md#ape-ag)
-[`++bay:ag`](@/docs/reference/library/4j.md#bay-ag)
-[`++bip:ag`](@/docs/reference/library/4j.md#bip-ag)
-[`++dem:ag`](@/docs/reference/library/4j.md#dem-ag)
-[`++dim:ag`](@/docs/reference/library/4j.md#dim-ag)
-[`++dum:ag`](@/docs/reference/library/4j.md#dum-ag)
-[`++fed:ag`](@/docs/reference/library/4j.md#fed-ag)
-[`++hex:ag`](@/docs/reference/library/4j.md#hex-ag)
-[`++lip:ag`](@/docs/reference/library/4j.md#lip-ag)
-[`++viz:ag`](@/docs/reference/library/4j.md#viz-ag)
-[`++vum:ag`](@/docs/reference/library/4j.md#vum-ag)
-[`++wiz:ag`](@/docs/reference/library/4j.md#wiz-ag)
+<a class="tooltip" href='/docs/reference/library/4j/#ag' title="Top-level atom parser engine"><code>++ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ape-ag' title="Parse 0 or rule"><code>++ape:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#bay-ag' title="Parses binary number"><code>++bay:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#bip-ag' title="Parse IPv6"><code>++bip:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#dem-ag' title="Parse decmal with dots"><code>++dem:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#dim-ag' title="Parse decimal number"><code>++dim:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#dum-ag' title="Parse decimal with leading zero"><code>++dum:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#fed-ag' title="Parse @p"><code>++fed:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#hex-ag' title="Parse hexadecimal number"><code>++hex:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#lip-ag' title="Parse IPv4 address"><code>++lip:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#viz-ag' title="Parse base 32 digit with dot separators"><code>++viz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#vum-ag' title="Parse base 32 string"><code>++vum:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#wiz-ag' title="Parse base 64 number"><code>++wiz:ag</code></a>
 
-[`++mu`](@/docs/reference/library/4j.md#mu)
-[`++zag:mu`](@/docs/reference/library/4j.md#zag-mu)
-[`++zig:mu`](@/docs/reference/library/4j.md#zig-mu)
-[`++zug:mu`](@/docs/reference/library/4j.md#zug-mu)
+<a class="tooltip" href='/docs/reference/library/4j/#mu' title="Core used to scramble 16-bit atoms"><code>++mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zag-mu' title="Add bottom into top"><code>++zag:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zig-mu' title="Subtract bottom from top"><code>++zig:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zug-mu' title="Concatenate into atom"><code>++zug:mu</code></a>
 
-[`++ne`](@/docs/reference/library/4j.md#ne)
-[`++d:ne`](@/docs/reference/library/4j.md#d-ne)
-[`++v:ne`](@/docs/reference/library/4j.md#v-ne)
-[`++w:ne`](@/docs/reference/library/4j.md#w-ne)
-[`++x:ne`](@/docs/reference/library/4j.md#x-ne)
+<a class="tooltip" href='/docs/reference/library/4j/#ne' title="Digit rendering engine"><code>++ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#d-ne' title="Render decimal"><code>++d:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#v-ne' title="Render base 32"><code>++v:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#w-ne' title="Render base 64 digit"><code>++w:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#x-ne' title="Render hexadecimal digit as atom of ASCII byte value"><code>++x:ne</code></a>
 
 ### 4k: parsing (atom printing)
 
-[`++co`](@/docs/reference/library/4k.md#co)
-[`++rear:co`](@/docs/reference/library/4k.md#rear-co)
-[`++rend:co`](@/docs/reference/library/4k.md#rend-co)
-[`++rent:co`](@/docs/reference/library/4k.md#rent-co)
+<a class="tooltip" href='/docs/reference/library/4k/#co' title="Literal rendering engine"><code>++co</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#rear-co' title="Prepend and render atom as tape"><code>++rear:co</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#rend-co' title="Render coin lot as tape"><code>++rend:co</code></a>
+<a class="tooltip" href='/docs/reference/library/4k/#rent-co' title="Render coin lot as span"><code>++rent:co</code></a>
 
 ### 4l: parsing (atom parsing)
 
-[`++so`](@/docs/reference/library/4l.md#so)
-[`++bisk:so`](@/docs/reference/library/4l.md#bisk-so)
-[`++crub:so`](@/docs/reference/library/4l.md#crub-so)
-[`++nuck:so`](@/docs/reference/library/4l.md#nuck-so)
-[`++nusk:so`](@/docs/reference/library/4l.md#nusk-so)
-[`++perd:so`](@/docs/reference/library/4l.md#perd-so)
-[`++royl:so`](@/docs/reference/library/4l.md#royl-so)
-[`++royl-cell:so`](@/docs/reference/library/4l.md#royl-cell-so)
-[`++tash:so`](@/docs/reference/library/4l.md#tash-so)
-[`++twid:so`](@/docs/reference/library/4l.md#twid-so)
-[`++zust:so`](@/docs/reference/library/4l.md#zust-so)
+<a class="tooltip" href='/docs/reference/library/4l/#so' title="Coin parser engine"><code>++so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse odor-atom pair"><code>++bisk:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#crub-so' title="Parse @da, @dr, @p, @t"><code>++crub:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#nuck-so' title="Top-level coin parser"><code>++nuck:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#nusk-so' title="Parse coin literal with escapes"><code>++nusk:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#perd-so' title="Parses dime/tiple without standard prefixes"><code>++perd:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#royl-so' title="Parse dime float"><code>++royl:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#royl-cell-so' title="(Undocumented)"><code>++royl-cell:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#tash-so' title="Parse signed dime"><code>++tash:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#twid-so' title="Parse coins without ~ prefix"><code>++twid:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#zust-so' title="Parse prefixed dimes from IP, loobean, or floating point"><code>++zust:so</code></a>
 
 ### 4m: parsing (formatting functions)
 
-[`++scot`](@/docs/reference/library/4m.md#scot)
-[`++scow`](@/docs/reference/library/4m.md#scow)
-[`++slat`](@/docs/reference/library/4m.md#slat)
-[`++slav`](@/docs/reference/library/4m.md#slav)
-[`++slaw`](@/docs/reference/library/4m.md#slaw)
-[`++slay`](@/docs/reference/library/4m.md#slay)
-[`++smyt`](@/docs/reference/library/4m.md#smyt)
-[`++spat`](@/docs/reference/library/4m.md#spat)
-[`++spud`](@/docs/reference/library/4m.md#spud)
-[`++stab`](@/docs/reference/library/4m.md#stab)
+<a class="tooltip" href='/docs/reference/library/4m/#scot' title="Render dime as cord"><code>++scot</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scow' title="Render dime as tape"><code>++scow</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slat' title="Curried slaw"><code>++slat</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input odor"><code>++slav</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input odor"><code>++slaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slay' title="Parse cord to coin"><code>++slay</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#smyt' title="Render path as tank"><code>++smyt</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spat' title="Render path as cord"><code>++spat</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spud' title="Render path as tape"><code>++spud</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#stab' title="Parse cord to path"><code>++stab</code></a>
 
 ### 4n: parsing (virtualization)
 
-[`++mack`](@/docs/reference/library/4n.md#mack)
-[`++mink`](@/docs/reference/library/4n.md#mink)
-[`++mock`](@/docs/reference/library/4n.md#mock)
-[`++mong`](@/docs/reference/library/4n.md#mong)
-[`++mook`](@/docs/reference/library/4n.md#mook)
-[`++mule`](@/docs/reference/library/4n.md#mule)
-[`++mute`](@/docs/reference/library/4n.md#mute)
+<a class="tooltip" href='/docs/reference/library/4n/#mack' title="Nock subject to unit"><code>++mack</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mink' title="Mock (virtual Nock) interpreter"><code>++mink</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mock' title="Compute formula on subject with hint"><code>++mock</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mong' title="Slam gate with sample"><code>++mong</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mook' title="Intelligently render crash annotation"><code>++mook</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mule' title="Typed virtual"><code>++mule</code></a>
+<a class="tooltip" href='/docs/reference/library/4n/#mute' title="Untyped virtual"><code>++mute</code></a>
 
 ### 4o: parsing (molds)
 
-[`++abel`](@/docs/reference/library/4o.md#abel)
-[`++aura`](@/docs/reference/library/4o.md#aura)
-[`++axis`](@/docs/reference/library/4o.md#axis)
-[`++base`](@/docs/reference/library/4o.md#base)
-[`++bean`](@/docs/reference/library/4o.md#bean)
-[`++beer`](@/docs/reference/library/4o.md#beer)
-[`++beet`](@/docs/reference/library/4o.md#beet)
-[`++chum`](@/docs/reference/library/4o.md#chum)
-[`++coil`](@/docs/reference/library/4o.md#coil)
-[`++foot`](@/docs/reference/library/4o.md#foot)
-[`++limb`](@/docs/reference/library/4o.md#limb)
-[`++line`](@/docs/reference/library/4o.md#line)
-[`++metl`](@/docs/reference/library/4o.md#metl)
-[`++nock`](@/docs/reference/library/4o.md#nock)
-[`++noun`](@/docs/reference/library/4o.md#noun)
-[`++null`](@/docs/reference/library/4o.md#null)
-[`++port`](@/docs/reference/library/4o.md#port)
-[`++span`](@/docs/reference/library/4o.md#span)
-[`++tiki`](@/docs/reference/library/4o.md#tiki)
-[`++toga`](@/docs/reference/library/4o.md#toga)
-[`++tone`](@/docs/reference/library/4o.md#tone)
-[`++tuna`](@/docs/reference/library/4o.md#tuna)
-[`++tusk`](@/docs/reference/library/4o.md#tusk)
-[`++tyke`](@/docs/reference/library/4o.md#tyke)
-[`++typo`](@/docs/reference/library/4o.md#typo)
-[`++tyre`](@/docs/reference/library/4o.md#tyre)
-[`++vase`](@/docs/reference/library/4o.md#vase)
-[`++vise`](@/docs/reference/library/4o.md#vise)
-[`++wing`](@/docs/reference/library/4o.md#wing)
+<a class="tooltip" href='/docs/reference/library/4o/#abel' title="Compiler alias"><code>++abel</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#aura' title="'Type' of atom"><code>++aura</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#axis' title="Nock axis"><code>++axis</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#base' title="Base type"><code>++base</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#bean' title="Boolean"><code>++bean</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#beer' title="Tape builder"><code>++beer</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#beet' title="XML interpolation cases"><code>++beet</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#chum' title="Jet hint information"><code>++chum</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#coil' title="Tuple of core information"><code>++coil</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#foot' title="Cases of arms by variance model"><code>++foot</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#limb' title="Reference into subject by name/axis"><code>++limb</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#line' title="(Undocumented)"><code>++line</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#metl' title="(Undocumented)"><code>++metl</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#nock' title="Virtual machine (see Nock)"><code>++nock</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#noun' title="(Undocumented)"><code>++noun</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#null' title="(Undocumented)"><code>++null</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#port' title="(Undocumented)"><code>++port</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#span' title="ASCII atom"><code>++span</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tiki' title="(Undocumented)"><code>++tiki</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#toga' title="Tree of faces"><code>++toga</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tone'><code>++tone</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tuna' title="XML template tree"><code>++tuna</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tusk' title="List of expressions"><code>++tusk</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyke' title="List of 'maybe' hoons"><code>++tyke</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#typo' title="Pointer for ++type"><code>++typo</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyre' title="List, term hoon"><code>++tyre</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vase' title="Typed data"><code>++vase</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vise' title="Convert during reboot"><code>++vise</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#wing' title="Address in subject"><code>++wing</code></a>
 
 ### 5a: compiler utilities
 
-[_(To be documented)_](@/docs/reference/library/5a.md)
+<a class="tooltip" href='/docs/reference/library/5a/'>_(To be documented)_</a>
 
 ### 5b: macro expansion
 
-[_(To be documented)_](@/docs/reference/library/5b.md)
+<a class="tooltip" href='/docs/reference/library/5b/'>_(To be documented)_</a>
 
 ### 5c: compiler backend and prettyprinter
 
-[_(To be documented)_](@/docs/reference/library/5c.md)
+<a class="tooltip" href='/docs/reference/library/5c/'>_(To be documented)_</a>
 
 ### 5d: parser
 
-[_(To be documented)_](@/docs/reference/library/5d.md)
+<a class="tooltip" href='/docs/reference/library/5d/'>_(To be documented)_</a>
 
 ### 5e: caching compiler
 
-[_(To be documented)_](@/docs/reference/library/5e.md)
+<a class="tooltip" href='/docs/reference/library/5e/'>_(To be documented)_</a>
 
 ### 5f: molds and mold builders
 
-[`++mane`](@/docs/reference/library/5f.md#mane)
-[`++manx`](@/docs/reference/library/5f.md#manx)
-[`++marl`](@/docs/reference/library/5f.md#marl)
-[`++mars`](@/docs/reference/library/5f.md#mars)
-[`++mart`](@/docs/reference/library/5f.md#mart)
-[`++marx`](@/docs/reference/library/5f.md#marx)
-[`++pass`](@/docs/reference/library/5f.md#pass)
-[`++ring`](@/docs/reference/library/5f.md#ring)
-[`++time`](@/docs/reference/library/5f.md#time)
+<a class="tooltip" href='/docs/reference/library/5f/#mane'><code>++mane</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#manx'><code>++manx</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#marl'><code>++marl</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#mars'><code>++mars</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#mart'><code>++mart</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#marx'><code>++marx</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#pass'><code>++pass</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#ring'><code>++ring</code></a>
+<a class="tooltip" href='/docs/reference/library/5f/#time'><code>++time</code></a>
 
 ### 5g: profiling support
 
-[_(To be documented)_](@/docs/reference/library/5g.md)
+<a class="tooltip" href='/docs/reference/library/5g/'>_(To be documented)_</a>
