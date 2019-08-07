@@ -1,6 +1,6 @@
 +++
 title = "1.3.1 Walkthrough: Conditionals"
-weight = 7
+weight = 6
 template = "doc.html"
 +++
 
