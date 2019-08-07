@@ -10,8 +10,8 @@ In this lesson, we will write a gate that computes the [Ackermann function](http
 
  ```
 |=  [m=@ n=@]
-?~  m  +(n)
-?~  n  $(m (dec m), n 1)
+?:  =(m 0)  +(n)
+?:  =(n 0)  $(m (dec m), n 1)
 $(m (dec m), n $(n (dec n)))
 ```
 
