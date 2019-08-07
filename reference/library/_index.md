@@ -538,274 +538,274 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### s
 
-<a class="tooltip" href='/docs/reference/library/2n/#same'><code>++same</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-ff'><code>++san:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-fl'><code>++san:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rd'><code>++san:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rh'><code>++san:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rs'><code>++san:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rq'><code>++san:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sand'><code>++sand</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sane'><code>++sane</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sb-ff'><code>++sb:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#scag'><code>++scag</code></a>
-<a class="tooltip" href='/docs/reference/library/4g/#scan'><code>++scan</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#scot'><code>++scot</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#scow'><code>++scow</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-ff'><code>++sea:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rd'><code>++sea:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rh'><code>++sea:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rs'><code>++sea:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rq'><code>++sea:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#sear'><code>++sear</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#seb-ab'><code>++seb:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sed-ab'><code>++sed:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#sel'><code>++sel</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#sem'><code>++sem</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#ser'><code>++ser</code></a>
-<a class="tooltip" href='/docs/reference/library/2o/#set'><code>++set</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sev-ab'><code>++sev:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sew-ab'><code>++sew:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sex-ab'><code>++sex:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4e/#sfix'><code>++sfix</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shad'><code>++shad</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shaf'><code>++shaf</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shal'><code>++shal</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#sham'><code>++sham</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shan'><code>++shan</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shas'><code>++shas</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shaw'><code>++shaw</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shax'><code>++shax</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shay'><code>++shay</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shaz'><code>++shaz</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#shep'><code>++shep</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#shf-fl'><code>++shf:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#shim'><code>++shim</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#shop'><code>++shop</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#show'><code>++show</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#si'><code>++si</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#si-nl'><code>++si:nl</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sib-ab'><code>++sib:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sid-ab'><code>++sid:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#sig'><code>++sig</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-ff'><code>++sig:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rd'><code>++sig:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rh'><code>++sig:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rs'><code>++sig:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rq'><code>++sig:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/2l/#silt'><code>++silt</code></a>
-<a class="tooltip" href='/docs/reference/library/4e/#simu'><code>++simu</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#sit-fe'><code>++sit:fe</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sit-fo'><code>++sit:fo</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#siv-ab'><code>++siv:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#siw-ab'><code>++siw:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#six-ab'><code>++six:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#skid'><code>++skid</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#skim'><code>++skim</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#skip'><code>++skip</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#slag'><code>++slag</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slat'><code>++slat</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slav'><code>++slav</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slaw'><code>++slaw</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slay'><code>++slay</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#slog'><code>++slog</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#slug'><code>++slug</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#smyt'><code>++smyt</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#snag'><code>++snag</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#snag-nl'><code>++snag:nl</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#snoc'><code>++snoc</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#so'><code>++so</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#soft'><code>++soft</code></a>
-<a class="tooltip" href='/docs/reference/library/2a/#some'><code>++some</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#soq'><code>++soq</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#sort'><code>++sort</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sov-ab'><code>++sov:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sow-ab'><code>++sow:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sox-ab'><code>++sox:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#soz'><code>++soz</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#span'><code>++span</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#spat'><code>++spat</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#spd-fl'><code>++spd:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#spin'><code>++spin</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#spn-fl'><code>++spn:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#spot'><code>++spot</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#spud'><code>++spud</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#spun'><code>++spun</code></a>
-<a class="tooltip" href='/docs/reference/library/2g/#sqt'><code>++sqt</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-ff'><code>++sqt:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-fl'><code>++sqt:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rd'><code>++sqt:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rh'><code>++sqt:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rs'><code>++sqt:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rq'><code>++sqt:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#stab'><code>++stab</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stag'><code>++stag</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#star'><code>++star</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stet'><code>++stet</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stew'><code>++stew</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stir'><code>++stir</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stun'><code>++stun</code></a>
-<a class="tooltip" href='/docs/reference/library/1a/#sub'><code>++sub</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-ff'><code>++sub:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-fl'><code>++sub:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rd'><code>++sub:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rh'><code>++sub:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rs'><code>++sub:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rq'><code>++sub:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#sum-fe'><code>++sum:fe</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sum-fo'><code>++sum:fo</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sum-si'><code>++sum:si</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-ff'><code>++sun:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-fl'><code>++sun:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rd'><code>++sun:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rh'><code>++sun:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rs'><code>++sun:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rq'><code>++sun:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sun-si'><code>++sun:si</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#swag'><code>++swag</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#swp'><code>++swp</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#swr-fl'><code>++swr:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#sy'><code>++sy</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#sym'><code>++sym</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#syn-fl'><code>++syn:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#syn-si'><code>++syn:si</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#same' title="Identity (produces same value)"><code>++same</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-ff' title="Signed integer to @r"><code>++san:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-fl' title="Signed integer to float"><code>++san:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rd' title="Unsigned integer to @rd"><code>++san:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rh' title="Signed integer to @rh"><code>++san:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rs' title="Signed integer to @rs"><code>++san:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rq' title="Signed integer to @rq"><code>++san:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by odor"><code>++sand</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check odor validity"><code>++sane</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sb-ff' title="Sign bit"><code>++sb:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#scag' title="Prefix (produce front of list)"><code>++scag</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#scan' title="Parse tape or crash"><code>++scan</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scot' title="Render dime as cord"><code>++scot</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scow' title="Render dime as tape"><code>++scow</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-ff' title="Convert from IEEE float to fn"><code>++sea:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rd' title="Convert from double-precision binary float to fn"><code>++sea:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rh' title="Convert from half-precision float to fn"><code>++sea:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rs' title="Convert from single-precision float to fn"><code>++sea:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rq' title="Convert from quad-precision float to fn"><code>++sea:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#sear' title="Conditional ++cook"><code>++sear</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#seb-ab' title="Parse 1"><code>++seb:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sed-ab' title="Parse non-zero decimal digit"><code>++sed:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sel' title="Parse [ (sel)"><code>++sel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sem' title="Parse ; (sem)"><code>++sem</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ser' title="Parse ] (ser)"><code>++ser</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#set' title="Mold generator (set)"><code>++set</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sev-ab' title="Parse non-zero base 32 digit"><code>++sev:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sew-ab' title="Parse non-zero base 64 digit"><code>++sew:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sex-ab' title="Parse nonzero hexadecimal digit"><code>++sex:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#sfix' title="Discard second rule"><code>++sfix</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shad' title="Double SHA-256"><code>++shad</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaf' title="Half SHA-256"><code>++shaf</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shal' title="SHA-512 with length"><code>++shal</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#sham' title="128-bit noun hash"><code>++sham</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shan' title="SHA-1"><code>++shan</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shas' title="Salted hash"><code>++shas</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaw' title="Hash to nbits"><code>++shaw</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shax' title="SHA-256"><code>++shax</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shay' title="SHA-256 with length"><code>++shay</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaz' title="SHA-512"><code>++shaz</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shep' title="(Undocumented)"><code>++shep</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#shf-fl' title="Shift power"><code>++shf:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#shim' title="Match character within range"><code>++shim</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shop' title="(Undocumented)"><code>++shop</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#show' title="(Undocumented)"><code>++show</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#si' title="Signed integer"><code>++si</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#si-nl' title="Construct set from null-terminated noun"><code>++si:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sib-ab' title="Parse binary digit"><code>++sib:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sid-ab' title="Parse decimal digit"><code>++sid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sig' title="Parse ~ (sig)"><code>++sig</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-ff' title="Produce sign of IEEE float"><code>++sig:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rd' title="Produce sign of @rd"><code>++sig:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rh' title="Produce sign of half-precision float"><code>++sig:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rs' title="Produce sign of @rs"><code>++sig:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rq' title="Produce sign of quad-precision float"><code>++sig:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#silt' title="Produce set from list"><code>++silt</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#simu' title="First and second"><code>++simu</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sit-fe' title="Enforce modulo"><code>++sit:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sit-fo' title="Produce remainder of b modulo a"><code>++sit:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siv-ab' title="Parse a base 32 digit"><code>++siv:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siw-ab' title="Parse a base 64 digit"><code>++siw:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#six-ab' title="Parse a hexadecimal digit"><code>++six:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skid' title="Separate list into two lists from slammed elments"><code>++skid</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skim' title="Produce list of elements from boolean gate"><code>++skim</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skip' title="Produce list of elements failing boolean gate"><code>++skip</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#slag' title="Produce all elements from index in list"><code>++slag</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slat' title="Curried slaw"><code>++slat</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input odor"><code>++slav</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input odor"><code>++slaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slay' title="Parse cord to coin"><code>++slay</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#slog' title="Deify printf"><code>++slog</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#slug' title="Use gate to parse delimited list"><code>++slug</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#smyt' title="Render path as tank"><code>++smyt</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snag' title="Produce element at specific index (list)"><code>++snag</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#snag-nl' title="Produce element from list at specific null-terminated noun"><code>++snag:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snoc' title="Append noun to list"><code>++snoc</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#so' title="Coin parser engine"><code>++so</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#soft' title="Maybe remold"><code>++soft</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#some' title="Wrap value in unit"><code>++some</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#soq' title="Parse ' (soq)"><code>++soq</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#sort' title="Quicksort (list)"><code>++sort</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sov-ab' title="Parse base 32 letter"><code>++sov:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sow-ab' title="Parse base 64 letter/symbol"><code>++sow:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sox-ab' title="Parse hexadecimal letter"><code>++sox:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#soz' title="Parse triple single-quote"><code>++soz</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#span' title="ASCII atom"><code>++span</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spat' title="Render path as cord"><code>++spat</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spd-fl' title="Produce smallest denormalized float"><code>++spd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spin' title="Gate to list (with state)"><code>++spin</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spn-fl' title="Produce smallest normal float"><code>++spn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#spot' title="Stack trace line"><code>++spot</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spud' title="Render path as tape"><code>++spud</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spun' title="Gate to list (with state)"><code>++spun</code></a>
+<a class="tooltip" href='/docs/reference/library/2g/#sqt' title="Compute square root with remainder"><code>++sqt</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-ff' title="Produce square root of IEEE float"><code>++sqt:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-fl' title="Produce square root from signed and unsigned integer cell"><code>++sqt:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rd' title="Produce square root of double-precision float"><code>++sqt:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rh' title="Produce square root of half-precision float"><code>++sqt:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rs' title="Produce square root of single-precision float"><code>++sqt:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rq' title="Produce square root of quad-precision float"><code>++sqt:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#stab' title="Parse cord to path"><code>++stab</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stag' title="Add label"><code>++stag</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#star' title="Produce list of matches"><code>++star</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stet' title="Add faces to range-parser pairs in list"><code>++stet</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stew' title="Switch by first"><code>++stew</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stir' title="Parse repeatedly"><code>++stir</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stun' title="Parse several times"><code>++stun</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#sub' title="Subtract"><code>++sub</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-ff' title="Subtract from IEEE float"><code>++sub:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-fl' title="Subtract from signed and unsigned integer cells"><code>++sub:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rd' title="Subtract from double-precision float"><code>++sub:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rh' title="Subtract from half-precision float"><code>++sub:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rs' title="Subtract from single-precision float"><code>++sub:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rq' title="Subtract from quad-precision float"><code>++sub:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sum-fe' title="Sum two numbers in modular field"><code>++sum:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-fo' title="Modular sum"><code>++sum:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-si' title="Addition (signed integer)"><code>++sum:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-ff' title="Unsigned integer to IEEE float"><code>++sun:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-fl' title="Unsigned integer to float"><code>++sun:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rd' title="Unsigned integer to double-precision float"><code>++sun:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rh' title="Unsigned integer to half-precision float"><code>++sun:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rs' title="Unsigned integer to single-precision float"><code>++sun:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rq' title="Unsigned integer to quad-precision float"><code>++sun:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sun-si' title="@u to @s"><code>++sun:si</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#swag' title="Infix (list)"><code>++swag</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#swp' title="Reverse block order"><code>++swp</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#swr-fl' title="Switch rounding mode of floating point"><code>++swr:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#sy' title="Produce set from null-terminated noun"><code>++sy</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#sym' title="Term"><code>++sym</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#syn-fl' title="Get sign"><code>++syn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#syn-si' title="Sign test"><code>++syn:si</code></a>
 
 ### t
 
-<a class="tooltip" href='/docs/reference/library/2n/#tail'><code>++tail</code></a>
-<a class="tooltip" href='/docs/reference/library/2k/#tap-to'><code>+-tap:to</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#tar'><code>++tar</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tang'><code>++tang</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tank'><code>++tank</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#tap-by'><code>+-tap:by</code></a>
-<a class="tooltip" href='/docs/reference/library/2h/#tap-in'><code>+-tap:in</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tape'><code>++tape</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tarp'><code>++tarp</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#tash-so'><code>++tash:so</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#tec'><code>++tec</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#ted-ab'><code>++ted:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#teff'><code>++teff</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#teil-ob'><code>++teil:ob</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#term'><code>++term</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#test'><code>++test</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#tid-ab'><code>++tid:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tiki'><code>++tiki</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#til-ab'><code>++til:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#tip-ab'><code>++tip:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#tiq-ab'><code>++tiq:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#tis'><code>++tis</code></a>
-<a class="tooltip" href='/docs/reference/library/2k/#to'><code>++to</code></a>
-<a class="tooltip" href='/docs/reference/library/4a/#tod-po'><code>++tod:po</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#toga'><code>++toga</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-ff'><code>++toi:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-fl'><code>++toi:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rd'><code>++toi:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rh'><code>++toi:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rs'><code>++toi:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rq'><code>++toi:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toj-fl'><code>++toj:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#tone'><code>++tone</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#toon'><code>++toon</code></a>
-<a class="tooltip" href='/docs/reference/library/2k/#top-to'><code>+-top:to</code></a>
-<a class="tooltip" href='/docs/reference/library/4a/#tos-po'><code>++tos:po</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#tos-rh'><code>++tos:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#trap'><code>++trap</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#tree'><code>++tree</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#trel'><code>++trel</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#trim'><code>++trim</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#trip'><code>++trip</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#tuba'><code>++tuba</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#tufa'><code>++tufa</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tuna'><code>++tuna</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#tuft'><code>++tuft</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#turf'><code>++turf</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#turn'><code>++turn</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tusk'><code>++tusk</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#twid-so'><code>++twid:so</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tyke'><code>++tyke</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#typo'><code>++typo</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tyre'><code>++tyre</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#tail' title="Get tail of cell"><code>++tail</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#tap-to' title="Queue to list"><code>+-tap:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tar' title="Parse * (tar)"><code>++tar</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tang' title="Generic print structure"><code>++tang</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tank' title="Pretty-printing structure"><code>++tank</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#tap-by' title="Listify pairs"><code>+-tap:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#tap-in' title="Flatten set into list"><code>+-tap:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tape' title="List of characters"><code>++tape</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tarp' title="Parsed time"><code>++tarp</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#tash-so' title="Parse signed dime"><code>++tash:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tec' title="Parse ` (tec)"><code>++tec</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ted-ab' title="Parse decimal number with <= 3 digits"><code>++ted:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#teff' title="UTF-8 length"><code>++teff</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#teil-ob' title="Reverse Feistel-like cipher"><code>++teil:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#term' title="Hoon constant"><code>++term</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#test' title="Test for equality"><code>++test</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tid-ab' title="Parse 3 decimal digits"><code>++tid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tiki' title="(Undocumented)"><code>++tiki</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#til-ab' title="Parse 3 lowercase letters"><code>++til:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tip-ab' title="Leading phonetic byte"><code>++tip:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tiq-ab' title="Trailing phonetic syllable"><code>++tiq:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tis' title="Parse = (tis)"><code>++tis</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#to' title="Queue operations"><code>++to</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tod-po' title="Fetch suffix"><code>++tod:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#toga' title="Tree of faces"><code>++toga</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-ff' title="Round IEEE float to nearest signed integer"><code>++toi:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-fl' title="Round float to nearest signed integer"><code>++toi:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rd' title="Round double-precision float to nearest signed integer"><code>++toi:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rh' title="Round half-precision float to nearest signed integer"><code>++toi:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rs' title="Round single-precision float to nearest signed integer"><code>++toi:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rq' title="Round quad-precision float to nearest signed integer"><code>++toi:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toj-fl' title="Round unsigned and signed integer to float"><code>++toj:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#tone' title="Nock result (error report)"><code>++tone</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#toon' title="Nock result (stack trace)"><code>++toon</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#top-to' title="Produce head of queue"><code>+-top:to</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tos-po' title="Fetch prefix"><code>++tos:po</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#tos-rh' title="Convert half-precision float to single-precision float"><code>++tos:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trap' title="Core with one arm $"><code>++trap</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#tree' title="Mold generator (tree)"><code>++tree</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trel' title="Mold generator (tuple of three types)"><code>++trel</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trim' title="Tape split"><code>++trim</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trip' title="Cord to tape"><code>++trip</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuba' title="UTF-8 to UTF-32 tape"><code>++tuba</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tufa' title="UTF-32 to UTF-8 tape"><code>++tufa</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tuna' title="XML template tree"><code>++tuna</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuft' title="UTF-32 to UTF-8 text"><code>++tuft</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#turf' title="UTF-8 to UTF-32 cord"><code>++turf</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#turn' title="Gate to list"><code>++turn</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tusk' title="List of expressions"><code>++tusk</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#twid-so' title="Parse coins without ~ prefix"><code>++twid:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyke' title="List of 'maybe' hoons"><code>++tyke</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#typo' title="Pointer for ++type"><code>++typo</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyre' title="List, term hoon"><code>++tyre</code></a>
 
 ### u
 
-<a class="tooltip" href='/docs/reference/library/3f/#un'><code>++un</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#uni-by'><code>+-uni:by</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#uni-fl'><code>++uni:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/2h/#uni-in'><code>+-uni:in</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#unit'><code>++unit</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#urn-by'><code>+-urn:by</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#urs-ab'><code>++urs:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#urt-ab'><code>++urt:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#un' title="Reversible scrambling"><code>++un</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#uni-by' title="Union (map between keys of two lists)"><code>+-uni:by</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#uni-fl' title="Change representation to odd"><code>++uni:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#uni-in' title="Union (sets)"><code>+-uni:in</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#unit' title="Mold generator (maybe)"><code>++unit</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#urn-by' title="Turn (with key) (map)"><code>+-urn:by</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urs-ab' title="Parse span characters"><code>++urs:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urt-ab' title="Parse non-_ span"><code>++urt:ab</code></a>
 
 ### v
 
-<a class="tooltip" href='/docs/reference/library/4j/#v-ne'><code>++v:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#v-ne' title="Render base 32"><code>++v:ne</code></a>
 <code>++vang</code>
-<a class="tooltip" href='/docs/reference/library/4o/#vase'><code>++vase</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vase' title="Typed data"><code>++vase</code></a>
 <code>++vast</code>
-<a class="tooltip" href='/docs/reference/library/4i/#ven'><code>++ven</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#vise'><code>++vise</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#vit'><code>++vit</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#viz-ag'><code>++viz:ag</code></a>
-<a class="tooltip" href='/docs/reference/library/2f/#vor'><code>++vor</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#voy-ab'><code>++voy:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#vul'><code>++vul</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#vum-ag'><code>++vum:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#ven' title="Axis syntax parser"><code>++ven</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vise' title="Convert during reboot"><code>++vise</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vit' title="Parse base 64 digit"><code>++vit</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#viz-ag' title="Parse base 32 digit with dot separators"><code>++viz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#vor' title="Vertical order"><code>++vor</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#voy-ab' title="Parse bas, soq, or bix"><code>++voy:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vul' title="Comments to null"><code>++vul</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#vum-ag' title="Parse base 32 string"><code>++vum:ag</code></a>
 
 ### w
 
-<a class="tooltip" href='/docs/reference/library/4j/#w-ne'><code>++w:ne</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#wack'><code>++wack</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#wain'><code>++wain</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#wall'><code>++wall</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#weld'><code>++weld</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#weld-nl'><code>++weld:nl</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#welp'><code>++welp</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#wick'><code>++wick</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#wig-re'><code>++wig:re</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#win-re'><code>++win:re</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#wing'><code>++wing</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#wiz-ag'><code>++wiz:ag</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#woad'><code>++woad</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#wood'><code>++wood</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#wonk'><code>++wonk</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#wred-un'><code>++wred:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#wren-un'><code>++wren:un</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#wut'><code>++wut</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#wyt-by'><code>+-wyt:by</code></a>
-<a class="tooltip" href='/docs/reference/library/2h/#wyt-in'><code>+-wyt:in</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#w-ne' title="Render base 64 digit"><code>++w:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wack' title="Coin format encode"><code>++wack</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wain' title="List of cords"><code>++wain</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wall' title="List of list of characters"><code>++wall</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#weld' title="Concatenate two lists"><code>++weld</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#weld-nl' title="Concatenate null-terminated nouns"><code>++weld:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#welp' title="Perfect concatenate (lists)"><code>++welp</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wick' title="Coin format decode"><code>++wick</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#wig-re' title="++win - render tape"><code>++wig:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#win-re' title="Render at indent"><code>++win:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#wing' title="Address in subject"><code>++wing</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#wiz-ag' title="Parse base 64 number"><code>++wiz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#woad' title="Unescape cord"><code>++woad</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wood' title="Escape cord"><code>++wood</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#wonk' title="Product from edge"><code>++wonk</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wred-un' title="Restore structure"><code>++wred:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wren-un' title="Conceal structure"><code>++wren:un</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#wut' title="Parse ? (wut)"><code>++wut</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#wyt-by' title="Produce depth of tree map"><code>+-wyt:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#wyt-in' title="Produce number of elements in set"><code>+-wyt:in</code></a>
 
 ### x
 
-<a class="tooltip" href='/docs/reference/library/4j/#x-ne'><code>++x:ne</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#xeb'><code>++xeb</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#xpd-fl'><code>++xpd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#x-ne' title="Render hexadecimal digit as atom of ASCII byte value"><code>++x:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#xeb' title="Binary logarithm"><code>++xeb</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#xpd-fl' title="Expand signed and unsigned integer cell"><code>++xpd:fl</code></a>
 
 ### y
 
-<a class="tooltip" href='/docs/reference/library/3c/#yall'><code>++yall</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yawn'><code>++yawn</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#year'><code>++year</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yell'><code>++yell</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yelp'><code>++yelp</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yer-yo'><code>++yer:yo</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yo'><code>++yo</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yore'><code>++yore</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yule'><code>++yule</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yall' title="Time since beginning of time"><code>++yall</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yawn' title="Days since beginning of time"><code>++yawn</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#year' title="Date to @d"><code>++year</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yell' title="Tarp from atomic date"><code>++yell</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yelp' title="Determine if leap-week"><code>++yelp</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yer-yo' title="Seconds in year"><code>++yer:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yo' title="Time constants core"><code>++yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yore' title="Date from atomic date"><code>++yore</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yule' title="Daily time to time atom"><code>++yule</code></a>
 
 ### z
 
-<a class="tooltip" href='/docs/reference/library/3f/#zaft-un'><code>++zaft:un</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#zag-mu'><code>++zag:mu</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#zap'><code>++zap</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zart-un'><code>++zart:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#zer-fl'><code>++zer:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#zig-mu'><code>++zig:mu</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#zing'><code>++zing</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#zug-mu'><code>++zug:mu</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#zust-so'><code>++zust:so</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zyft-un'><code>++zyft:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zyrt-un'><code>++zyrt:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zaft-un' title="Look up in 255 sub box"><code>++zaft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zag-mu' title="Add bottom into top"><code>++zag:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#zap' title="Parse ! (zap)"><code>++zap</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zart-un' title="Reverse look up in 255 sub box"><code>++zart:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#zer-fl' title="Produce zero as float"><code>++zer:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zig-mu' title="Subtract bottom from top"><code>++zig:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#zing' title="Turn lists into single list by promoting elements from sublists"><code>++zing</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zug-mu' title="Concatenate into atom"><code>++zug:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#zust-so' title="Parse prefixed dimes from IP, loobean, or floating point"><code>++zust:so</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyft-un' title="Lookup byte in 256 sub box"><code>++zyft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyrt-un' title="Reverse lookup byte in 256 sub box"><code>++zyrt:un</code></a>
 
 ## By Section
 
@@ -823,7 +823,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/1a/#min' title="Minimum (atom)"><code>++min</code></a>
 <a class="tooltip" href='/docs/reference/library/1a/#mod' title="Modulus (atom)"><code>++mod</code></a>
 <a class="tooltip" href='/docs/reference/library/1a/#mul' title="Multiply (atom)"><code>++mul</code></a>
-<a class="tooltip" href='/docs/reference/library/1a/#sub'><code>++sub</code></a>
+<a class="tooltip" href='/docs/reference/library/1a/#sub' title="Subtract"><code>++sub</code></a>
 
 ### 1b: tree addressing
 
@@ -841,10 +841,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/1c/#pair' title="Mold of pair of types"><code>++pair</code></a>
 <a class="tooltip" href='/docs/reference/library/1c/#pole' title="Mold generator of faceless list"><code>++pole</code></a>
 <a class="tooltip" href='/docs/reference/library/1c/#quip' title="Mold generator (tuple of list and type)"><code>++quip</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#trap'><code>++trap</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#tree'><code>++tree</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#trel'><code>++trel</code></a>
-<a class="tooltip" href='/docs/reference/library/1c/#unit'><code>++unit</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trap' title="Core with one arm $"><code>++trap</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#tree' title="Mold generator (tree)"><code>++tree</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#trel' title="Mold generator (tuple of three types)"><code>++trel</code></a>
+<a class="tooltip" href='/docs/reference/library/1c/#unit' title="Mold generator (maybe)"><code>++unit</code></a>
 
 ### 2a: unit logic
 
@@ -858,7 +858,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2a/#lift' title="Curried bind"><code>++lift</code></a>
 <a class="tooltip" href='/docs/reference/library/2a/#mate' title="Choose"><code>++mate</code></a>
 <a class="tooltip" href='/docs/reference/library/2a/#need' title="Unwrap unit"><code>++need</code></a>
-<a class="tooltip" href='/docs/reference/library/2a/#some'><code>++some</code></a>
+<a class="tooltip" href='/docs/reference/library/2a/#some' title="Wrap value in unit"><code>++some</code></a>
 
 ### 2b: list logic
 
@@ -876,21 +876,21 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2b/#reap' title="Replicate (list)"><code>++reap</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#reel' title="Right fold (list)"><code>++reel</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#roll' title="Left fold (list)"><code>++roll</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#scag'><code>++scag</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#skid'><code>++skid</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#skim'><code>++skim</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#skip'><code>++skip</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#slag'><code>++slag</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#snag'><code>++snag</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#snoc'><code>++snoc</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#sort'><code>++sort</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#spin'><code>++spin</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#spun'><code>++spun</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#swag'><code>++swag</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#turn'><code>++turn</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#weld'><code>++weld</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#welp'><code>++welp</code></a>
-<a class="tooltip" href='/docs/reference/library/2b/#zing'><code>++zing</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#scag' title="Prefix (produce front of list)"><code>++scag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skid' title="Separate list into two lists from slammed elments"><code>++skid</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skim' title="Produce list of elements from boolean gate"><code>++skim</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#skip' title="Produce list of elements failing boolean gate"><code>++skip</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#slag' title="Produce all elements from index in list"><code>++slag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snag' title="Produce element at specific index (list)"><code>++snag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snoc' title="Append noun to list"><code>++snoc</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#sort' title="Quicksort (list)"><code>++sort</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spin' title="Gate to list (with state)"><code>++spin</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#spun' title="Gate to list (with state)"><code>++spun</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#swag' title="Infix (list)"><code>++swag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#turn' title="Gate to list"><code>++turn</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#weld' title="Concatenate two lists"><code>++weld</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#welp' title="Perfect concatenate (lists)"><code>++welp</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#zing' title="Turn lists into single list by promoting elements from sublists"><code>++zing</code></a>
 
 ### 2c: bit arithmetic
 
@@ -901,8 +901,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2c/#out-fe' title="Maximum integer value"><code>++out:fe</code></a>
 <a class="tooltip" href='/docs/reference/library/2c/#rol-fe' title="Roll left"><code>++rol:fe</code></a>
 <a class="tooltip" href='/docs/reference/library/2c/#ror-fe' title="Roll right"><code>++ror:fe</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#sit-fe'><code>++sit:fe</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#sum-fe'><code>++sum:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sit-fe' title="Enforce modulo"><code>++sit:fe</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#sum-fe' title="Sum two numbers in modular field"><code>++sum:fe</code></a>
 
 <a class="tooltip" href='/docs/reference/library/2c/#bex' title="Binary exponent"><code>++bex</code></a>
 <a class="tooltip" href='/docs/reference/library/2c/#can' title="Assemble"><code>++can</code></a>
@@ -916,8 +916,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2c/#rep' title="Assemble single"><code>++rep</code></a>
 <a class="tooltip" href='/docs/reference/library/2c/#rip' title="Disassemble"><code>++rip</code></a>
 <a class="tooltip" href='/docs/reference/library/2c/#rsh' title="Right-shift"><code>++rsh</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#swp'><code>++swp</code></a>
-<a class="tooltip" href='/docs/reference/library/2c/#xeb'><code>++xeb</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#swp' title="Reverse block order"><code>++swp</code></a>
+<a class="tooltip" href='/docs/reference/library/2c/#xeb' title="Binary logarithm"><code>++xeb</code></a>
 
 ### 2d: bit logic
 
@@ -940,12 +940,12 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2f/#gor' title="Hash order"><code>++gor</code></a>
 <a class="tooltip" href='/docs/reference/library/2f/#hor' title="Horizontal hash order"><code>++hor</code></a>
 <a class="tooltip" href='/docs/reference/library/2f/#lor' title="Leg order"><code>++lor</code></a>
-<a class="tooltip" href='/docs/reference/library/2f/#vor'><code>++vor</code></a>
+<a class="tooltip" href='/docs/reference/library/2f/#vor' title="Vertical order"><code>++vor</code></a>
 
 ### 2g: unsigned powers
 
 <a class="tooltip" href='/docs/reference/library/2g/#pow' title="Computes a to the power of b"><code>++pow</code></a>
-<a class="tooltip" href='/docs/reference/library/2g/#sqt'><code>++sqt</code></a>
+<a class="tooltip" href='/docs/reference/library/2g/#sqt' title="Compute square root with remainder"><code>++sqt</code></a>
 
 ### 2h: set logic
 
@@ -963,9 +963,9 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2h/#put-in' title="Put b in a (set)"><code>+-put:in</code></a>
 <a class="tooltip" href='/docs/reference/library/2h/#rep-in' title="Accumulate elements (set)"><code>+-rep:in</code></a>
 <a class="tooltip" href='/docs/reference/library/2h/#run-in' title="Apply gate to set"><code>+-run:in</code></a>
-<a class="tooltip" href='/docs/reference/library/2h/#tap-in'><code>+-tap:in</code></a>
-<a class="tooltip" href='/docs/reference/library/2h/#uni-in'><code>+-uni:in</code></a>
-<a class="tooltip" href='/docs/reference/library/2h/#wyt-in'><code>+-wyt:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#tap-in' title="Flatten set into list"><code>+-tap:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#uni-in' title="Union (sets)"><code>+-uni:in</code></a>
+<a class="tooltip" href='/docs/reference/library/2h/#wyt-in' title="Produce number of elements in set"><code>+-wyt:in</code></a>
 
 ### 2i: map logic
 
@@ -989,10 +989,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2i/#rib-by' title="Replace values with accumulator (map)"><code>+-rib:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#run-by' title="Transform values (map)"><code>+-run:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#rut-by' title="Transform nodes (map)"><code>+-rut:by</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#tap-by'><code>+-tap:by</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#uni-by'><code>+-uni:by</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#urn-by'><code>+-urn:by</code></a>
-<a class="tooltip" href='/docs/reference/library/2i/#wyt-by'><code>+-wyt:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#tap-by' title="Listify pairs"><code>+-tap:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#uni-by' title="Union (map between keys of two lists)"><code>+-uni:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#urn-by' title="Turn (with key) (map)"><code>+-urn:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#wyt-by' title="Produce depth of tree map"><code>+-wyt:by</code></a>
 
 ### 2j: jar and jug logic
 
@@ -1008,7 +1008,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 2k: queue logic
 
-<a class="tooltip" href='/docs/reference/library/2k/#to'><code>++to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#to' title="Queue operations"><code>++to</code></a>
 <a class="tooltip" href='/docs/reference/library/2k/#bal-to' title="Balance queue"><code>+-bal:to</code></a>
 <a class="tooltip" href='/docs/reference/library/2k/#dep-to' title="Maximum depth (queue)"><code>+-dep:to</code></a>
 <a class="tooltip" href='/docs/reference/library/2k/#gas-to' title="Push list into queue"><code>+-gas:to</code></a>
@@ -1016,27 +1016,27 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2k/#nap-to' title="Remove head of queue"><code>+-nap:to</code></a>
 <a class="tooltip" href='/docs/reference/library/2k/#nip-to' title="Remove root of queue"><code>+-nip:to</code></a>
 <a class="tooltip" href='/docs/reference/library/2k/#put-to' title="Insert into queue"><code>+-put:to</code></a>
-<a class="tooltip" href='/docs/reference/library/2k/#tap-to'><code>+-tap:to</code></a>
-<a class="tooltip" href='/docs/reference/library/2k/#top-to'><code>+-top:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#tap-to' title="Queue to list"><code>+-tap:to</code></a>
+<a class="tooltip" href='/docs/reference/library/2k/#top-to' title="Produce head of queue"><code>+-top:to</code></a>
 
 ### 2l: container from container
 
 <a class="tooltip" href='/docs/reference/library/2l/#malt' title="Map from list"><code>++malt</code></a>
 <a class="tooltip" href='/docs/reference/library/2l/#molt' title="Map from pair list"><code>++molt</code></a>
-<a class="tooltip" href='/docs/reference/library/2l/#silt'><code>++silt</code></a>
+<a class="tooltip" href='/docs/reference/library/2l/#silt' title="Produce set from list"><code>++silt</code></a>
 
 ### 2m: container from noun
 
 <a class="tooltip" href='/docs/reference/library/2m/#nl' title="Noun to container operations"><code>++nl</code></a>
 <a class="tooltip" href='/docs/reference/library/2m/#le-nl' title="Construct list from null-terminated noun"><code>++le:nl</code></a>
 <a class="tooltip" href='/docs/reference/library/2m/#my-nl' title="Construct map from null-terminated noun"><code>++my:nl</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#si-nl'><code>++si:nl</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#snag-nl'><code>++snag:nl</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#weld-nl'><code>++weld:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#si-nl' title="Construct set from null-terminated noun"><code>++si:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#snag-nl' title="Produce element from list at specific null-terminated noun"><code>++snag:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#weld-nl' title="Concatenate null-terminated nouns"><code>++weld:nl</code></a>
 
 <a class="tooltip" href='/docs/reference/library/2m/#ly' title="List from raw noun"><code>++ly</code></a>
 <a class="tooltip" href='/docs/reference/library/2m/#my' title="Map from raw noun"><code>++my</code></a>
-<a class="tooltip" href='/docs/reference/library/2m/#sy'><code>++sy</code></a>
+<a class="tooltip" href='/docs/reference/library/2m/#sy' title="Produce set from null-terminated noun"><code>++sy</code></a>
 
 ### 2n: functional hacks
 
@@ -1047,11 +1047,11 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2n/#hard' title="Force remold"><code>++hard</code></a>
 <a class="tooltip" href='/docs/reference/library/2n/#head' title="Get head of cell"><code>++head</code></a>
 <a class="tooltip" href='/docs/reference/library/2n/#mean' title="Crash and printf"><code>++mean</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#same'><code>++same</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#slog'><code>++slog</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#soft'><code>++soft</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#tail'><code>++tail</code></a>
-<a class="tooltip" href='/docs/reference/library/2n/#test'><code>++test</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#same' title="Identity (produces same value)"><code>++same</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#slog' title="Deify printf"><code>++slog</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#soft' title="Maybe remold"><code>++soft</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#tail' title="Get tail of cell"><code>++tail</code></a>
+<a class="tooltip" href='/docs/reference/library/2n/#test' title="Test for equality"><code>++test</code></a>
 
 ### 2o: normalizing containers
 
@@ -1059,7 +1059,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2o/#jug' title="Mold generator (jug)"><code>++jug</code></a>
 <a class="tooltip" href='/docs/reference/library/2o/#map' title="Mold generator (map)"><code>++map</code></a>
 <a class="tooltip" href='/docs/reference/library/2o/#qeu' title="Mold generator (queue)"><code>++qeu</code></a>
-<a class="tooltip" href='/docs/reference/library/2o/#set'><code>++set</code></a>
+<a class="tooltip" href='/docs/reference/library/2o/#set' title="Mold generator (set)"><code>++set</code></a>
 
 ### 2p: serialization
 
@@ -1074,13 +1074,13 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2q/#cord' title="UTF-8 text"><code>++cord</code></a>
 <a class="tooltip" href='/docs/reference/library/2q/#date' title="Point in time"><code>++date</code></a>
 <a class="tooltip" href='/docs/reference/library/2q/#knot' title="Atom type of ASCII characters"><code>++knot</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tang'><code>++tang</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tank'><code>++tank</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tape'><code>++tape</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#tarp'><code>++tarp</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#term'><code>++term</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#wain'><code>++wain</code></a>
-<a class="tooltip" href='/docs/reference/library/2q/#wall'><code>++wall</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tang' title="Generic print structure"><code>++tang</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tank' title="Pretty-printing structure"><code>++tank</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tape' title="List of characters"><code>++tape</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#tarp' title="Parsed time"><code>++tarp</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#term' title="Hoon constant"><code>++term</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wain' title="List of cords"><code>++wain</code></a>
+<a class="tooltip" href='/docs/reference/library/2q/#wall' title="List of list of characters"><code>++wall</code></a>
 
 ### 3a: modular and signed ints
 
@@ -1090,10 +1090,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3a/#fra-fo' title="Divide (modular base)"><code>++fra:fo</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#inv-fo' title="Inverse (signed modulus)"><code>++inv:fo</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#pro-fo' title="Multiplies b and c modulo a"><code>++pro:fo</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sit-fo'><code>++sit:fo</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sum-fo'><code>++sum:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sit-fo' title="Produce remainder of b modulo a"><code>++sit:fo</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-fo' title="Modular sum"><code>++sum:fo</code></a>
 
-<a class="tooltip" href='/docs/reference/library/3a/#si'><code>++si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#si' title="Signed integer"><code>++si</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#abs-si' title="Absolute value (signed integer)"><code>++abs:si</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#cmp-si' title="Compare (signed integer)"><code>++cmp:si</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#dif-si' title="Subtraction (signed integer)"><code>++dif:si</code></a>
@@ -1103,9 +1103,9 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3a/#old-si' title="Sign and absolute value"><code>++old:si</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#pro-si' title="Multiply to signed integer"><code>++pro:si</code></a>
 <a class="tooltip" href='/docs/reference/library/3a/#rem-si' title="Remainder (signed integer)"><code>++rem:si</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sum-si'><code>++sum:si</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#sun-si'><code>++sun:si</code></a>
-<a class="tooltip" href='/docs/reference/library/3a/#syn-si'><code>++syn:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sum-si' title="Addition (signed integer)"><code>++sum:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#sun-si' title="@u to @s"><code>++sun:si</code></a>
+<a class="tooltip" href='/docs/reference/library/3a/#syn-si' title="Sign test"><code>++syn:si</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3a/#egcd' title="Extended Euclidean algorithm"><code>++egcd</code></a>
 
@@ -1132,14 +1132,14 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#me-ff' title="Minimum exponent of ff"><code>++me:ff</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#mul-ff' title="Multiply (IEEE float)"><code>++mul:ff</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#pa-ff' title="Initialize fl from ff core"><code>++pa:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-ff'><code>++san:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sb-ff'><code>++sb:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-ff'><code>++sea:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-ff'><code>++sig:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-ff'><code>++sqt:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-ff'><code>++sub:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-ff'><code>++sun:ff</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-ff'><code>++toi:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-ff' title="Signed integer to @r"><code>++san:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sb-ff' title="Sign bit"><code>++sb:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-ff' title="Convert from IEEE float to fn"><code>++sea:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-ff' title="Produce sign of IEEE float"><code>++sig:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-ff' title="Produce square root from IEEE float"><code>++sqt:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-ff' title="Subtract from IEEE float"><code>++sub:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-ff' title="Unsigned integer to IEEE float"><code>++sun:ff</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-ff' title="Round IEEE float to nearest signed integer"><code>++toi:ff</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3b/#fl'><code>++fl</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#abs-fl' title="Absolute value"><code>++abs:fl</code></a>
@@ -1169,20 +1169,20 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#prc-fl' title="Force precision of 2 or greater (floating point)"><code>++prc:fl</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#rau-fl' title="Various roundings (floating point)"><code>++rau:fl</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#rou-fl' title="Round to nearest float with 113-bit significand"><code>++rou:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-fl'><code>++san:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#shf-fl'><code>++shf:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#spd-fl'><code>++spd:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#spn-fl'><code>++spn:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-fl'><code>++sqt:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-fl'><code>++sub:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-fl'><code>++sun:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#swr-fl'><code>++swr:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#syn-fl'><code>++syn:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-fl'><code>++toi:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toj-fl'><code>++toj:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#uni-fl'><code>++uni:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#xpd-fl'><code>++xpd:fl</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#zer-fl'><code>++zer:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-fl' title="Signed integer to float"><code>++san:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#shf-fl' title="Shift power"><code>++shf:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spd-fl' title="Produce smallest denormalized float"><code>++spd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#spn-fl' title="Produce smallest normal float"><code>++spn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-fl' title="Produce square root from signed and unsigned integer cell"><code>++sqt:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-fl' title="Subtract from signed and unsigned integer cells"><code>++sub:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-fl' title="Unsigned integer to float"><code>++sun:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#swr-fl' title="Switch rounding mode of floating point"><code>++swr:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#syn-fl' title="Get sign"><code>++syn:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-fl' title="Round float to nearest signed integer"><code>++toi:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toj-fl' title="Round unsigned and signed integer to float"><code>++toj:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#uni-fl' title="Change representation to odd"><code>++uni:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#xpd-fl' title="Expand signed and unsigned integer cell"><code>++xpd:fl</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#zer-fl' title="Produce zero as float"><code>++zer:fl</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3b/#rd'><code>++rd</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#add-rd' title="Add (double-precision float)"><code>++add:rd</code></a>
@@ -1199,13 +1199,13 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#lth-rd' title="Less than (double-precision float)"><code>++lth:rd</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#ma-rd' title="Initialize ff (rd core)"><code>++ma:rd</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#mul-rd' title="Multiply (double-precision float)"><code>++mul:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rd'><code>++san:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rd'><code>++sea:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rd'><code>++sig:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rd'><code>++sqt:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rd'><code>++sub:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rd'><code>++sun:rd</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rd'><code>++toi:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rd' title="Unsigned integer to @rd"><code>++san:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rd' title="Convert from double-precision binary float to fn"><code>++sea:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rd' title="Produce sign of @rd"><code>++sig:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rd' title="Produce square root of double-precision float"><code>++sqt:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rd' title="Subtract from double-precision float"><code>++sub:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rd' title="Unsigned integer to double-precision float"><code>++sun:rd</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rd' title="Round double-precision float to nearest signed integer"><code>++toi:rd</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3b/#rh'><code>++rh</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#add-rh' title="Add (half-precision float)"><code>++add:rh</code></a>
@@ -1223,14 +1223,14 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#lth-rh' title="Less than (half-precision float)"><code>++lth:rh</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#ma-rh' title="Initialize ff (rh core)"><code>++ma:rh</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#mul-rh' title="Multiply (quad-precision float)"><code>++mul:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rh'><code>++san:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rh'><code>++sea:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rh'><code>++sig:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rh'><code>++sqt:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rh'><code>++sub:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rh'><code>++sun:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rh'><code>++toi:rh</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#tos-rh'><code>++tos:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rh' title="Signed integer to @rh"><code>++san:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rh' title="Convert from half-precision float to fn"><code>++sea:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rh' title="Produce sign of half-precision float"><code>++sig:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rh' title="Produce square root of half-precision float"><code>++sqt:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rh' title="Subtract from half-precision float"><code>++sub:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rh' title="Unsigned integer to half-precision float"><code>++sun:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rh' title="Round half-precision float to nearest signed integer"><code>++toi:rh</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#tos-rh' title="Convert half-precision float to single-precision float"><code>++tos:rh</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3b/#rs'><code>++rs</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#add-rs' title="Add (single-precision float)"><code>++add:rs</code></a>
@@ -1247,13 +1247,13 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#lth-rs' title="Less than (single-precision float)"><code>++lth:rs</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#ma-rs' title="Initialize ff (rs core)"><code>++ma:rs</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#mul-rs' title="Multiply (single-precision float)"><code>++mul:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rs'><code>++san:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rs'><code>++sea:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rs'><code>++sig:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rs'><code>++sqt:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rs'><code>++sub:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rs'><code>++sun:rs</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rs'><code>++toi:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rs' title="Signed integer to @rs"><code>++san:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rs' title="Convert from single-precision float to fn"><code>++sea:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rs' title="Produce sign of @rs"><code>++sig:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rs' title="Produce square root of single-precision float"><code>++sqt:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rs' title="Subtract from single-precision float"><code>++sub:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rs' title="Unsigned integer to single-precision float"><code>++sun:rs</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rs' title="Round single-precision float to nearest signed integer"><code>++toi:rs</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3b/#rq'><code>++rq</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#add-rq' title="Add (quad-precision float)"><code>++add:rq</code></a>
@@ -1270,13 +1270,13 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#lth-rq' title="Less than (quad-precision float)"><code>++lth:rq</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#ma-rq' title="Initialize ff (rq core)"><code>++ma:rq</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#mul-rq' title="Multiply (quad-precision float)"><code>++mul:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#san-rq'><code>++san:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sea-rq'><code>++sea:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sig-rq'><code>++sig:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sqt-rq'><code>++sqt:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sub-rq'><code>++sub:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#sun-rq'><code>++sun:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/3b/#toi-rq'><code>++toi:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#san-rq' title="Signed integer to @rq"><code>++san:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sea-rq' title="Convert from quad-precision float to fn"><code>++sea:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sig-rq' title="Produce sign of quad-precision float"><code>++sig:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sqt-rq' title="Produce square root of quad-precision float"><code>++sqt:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sub-rq' title="Subtract from quad-precision float"><code>++sub:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#sun-rq' title="Unsigned integer to quad-precision float"><code>++sun:rq</code></a>
+<a class="tooltip" href='/docs/reference/library/3b/#toi-rq' title="Round quad-precision float to nearest signed integer"><code>++toi:rq</code></a>
 
 <a class="tooltip" href='/docs/reference/library/3b/#rlyd'><code>++rlyd</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#rlyh'><code>++rlyh</code></a>
@@ -1289,7 +1289,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 3c: urbit time
 
-<a class="tooltip" href='/docs/reference/library/3c/#yo'><code>++yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yo' title="Time constants core"><code>++yo</code></a>
 <a class="tooltip" href='/docs/reference/library/3c/#cet-yo' title="Days in a century"><code>++cet:yo</code></a>
 <a class="tooltip" href='/docs/reference/library/3c/#day-yo' title="Seconds in day"><code>++day:yo</code></a>
 <a class="tooltip" href='/docs/reference/library/3c/#era-yo' title="Leap-year period"><code>++era:yo</code></a>
@@ -1299,15 +1299,15 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3c/#moh-yo' title="Days in month"><code>++moh:yo</code></a>
 <a class="tooltip" href='/docs/reference/library/3c/#moy-yo' title="Days in months of leap-year"><code>++moy:yo</code></a>
 <a class="tooltip" href='/docs/reference/library/3c/#qad-yo' title="Seconds in 4 years"><code>++qad:yo</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yer-yo'><code>++yer:yo</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yer-yo' title="Seconds in year"><code>++yer:yo</code></a>
 
-<a class="tooltip" href='/docs/reference/library/3c/#yall'><code>++yall</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yawn'><code>++yawn</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#year'><code>++year</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yell'><code>++yell</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yelp'><code>++yelp</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yore'><code>++yore</code></a>
-<a class="tooltip" href='/docs/reference/library/3c/#yule'><code>++yule</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yall' title="Time since beginning of time"><code>++yall</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yawn' title="Days since beginning of time"><code>++yawn</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#year' title="Date to @d"><code>++year</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yell' title="Tarp from atomic date"><code>++yell</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yelp' title="Determine if leap-week"><code>++yelp</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yore' title="Date from atomic date"><code>++yore</code></a>
+<a class="tooltip" href='/docs/reference/library/3c/#yule' title="Daily time to time atom"><code>++yule</code></a>
 
 ### 3d: SHA hash family
 
@@ -1317,16 +1317,16 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3d/#raw-og' title="Random bits"><code>++raw:og</code></a>
 <a class="tooltip" href='/docs/reference/library/3d/#raws-og' title="Random bits continuation"><code>++raws:og</code></a>
 
-<a class="tooltip" href='/docs/reference/library/3d/#shad'><code>++shad</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shaf'><code>++shaf</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shal'><code>++shal</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#sham'><code>++sham</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shan'><code>++shan</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shas'><code>++shas</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shaw'><code>++shaw</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shax'><code>++shax</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shay'><code>++shay</code></a>
-<a class="tooltip" href='/docs/reference/library/3d/#shaz'><code>++shaz</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shad' title="Double SHA-256"><code>++shad</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaf' title="Half SHA-256"><code>++shaf</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shal' title="SHA-512 with length"><code>++shal</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#sham' title="128-bit noun hash"><code>++sham</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shan' title="SHA-1"><code>++shan</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shas' title="Salted hash"><code>++shas</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaw' title="Hash to nbits"><code>++shaw</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shax' title="SHA-256"><code>++shax</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shay' title="SHA-256 with length"><code>++shay</code></a>
+<a class="tooltip" href='/docs/reference/library/3d/#shaz' title="SHA-512"><code>++shaz</code></a>
 
 ### 3e: AES encryption
 
@@ -1341,17 +1341,17 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3f/#raku-ob' title="Key list"><code>++raku:ob</code></a>
 <a class="tooltip" href='/docs/reference/library/3f/#rund-ob' title="Reverse single Feistel-like"><code>++rund:ob</code></a>
 <a class="tooltip" href='/docs/reference/library/3f/#rynd-ob' title="Reverse Feistel-like cipher"><code>++rynd:ob</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#teil-ob'><code>++teil:ob</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#teil-ob' title="Reverse Feistel-like cipher"><code>++teil:ob</code></a>
 
-<a class="tooltip" href='/docs/reference/library/3f/#un'><code>++un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#wred-un'><code>++wred:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#wren-un'><code>++wren:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#un' title="Reversible scrambling"><code>++un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wred-un' title="Restore structure"><code>++wred:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#wren-un' title="Conceal structure"><code>++wren:un</code></a>
 <a class="tooltip" href='/docs/reference/library/3f/#xafo-un'><code>++xafo:un</code></a>
 <a class="tooltip" href='/docs/reference/library/3f/#xaro-un'><code>++xaro:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zaft-un'><code>++zaft:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zart-un'><code>++zart:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zyft-un'><code>++zyft:un</code></a>
-<a class="tooltip" href='/docs/reference/library/3f/#zyrt-un'><code>++zyrt:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zaft-un' title="Look up in 255 sub box"><code>++zaft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zart-un' title="Reverse look up in 255 sub box"><code>++zart:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyft-un' title="Lookup byte in 256 sub box"><code>++zyft:un</code></a>
+<a class="tooltip" href='/docs/reference/library/3f/#zyrt-un' title="Reverse lookup byte in 256 sub box"><code>++zyrt:un</code></a>
 
 ### 3g: molds and mold builders
 
@@ -1364,18 +1364,18 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3g/#path' title="Filesystem path"><code>++path</code></a>
 <a class="tooltip" href='/docs/reference/library/3g/#pint' title="Parsing range"><code>++pint</code></a>
 <a class="tooltip" href='/docs/reference/library/3g/#rule' title="Parsing rule (match this with _)"><code>++rule</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#spot'><code>++spot</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#tone'><code>++tone</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#toon'><code>++toon</code></a>
-<a class="tooltip" href='/docs/reference/library/3g/#wonk'><code>++wonk</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#spot' title="Stack trace line"><code>++spot</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#tone' title="Nock result (error report)"><code>++tone</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#toon' title="Nock result (stack trace)"><code>++toon</code></a>
+<a class="tooltip" href='/docs/reference/library/3g/#wonk' title="Product from edge"><code>++wonk</code></a>
 
 ### 4a: exotic bases
 
 <a class="tooltip" href='/docs/reference/library/4a/#po' title="Phonetic base"><code>++po</code></a>
 <a class="tooltip" href='/docs/reference/library/4a/#ind-po' title="Parse suffix"><code>++ind:po</code></a>
 <a class="tooltip" href='/docs/reference/library/4a/#ins-po' title="Parse prefix"><code>++ins:po</code></a>
-<a class="tooltip" href='/docs/reference/library/4a/#tod-po'><code>++tod:po</code></a>
-<a class="tooltip" href='/docs/reference/library/4a/#tos-po'><code>++tos:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tod-po' title="Fetch suffix"><code>++tod:po</code></a>
+<a class="tooltip" href='/docs/reference/library/4a/#tos-po' title="Fetch prefix"><code>++tos:po</code></a>
 
 ### 4b: text processing
 
@@ -1398,19 +1398,19 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4b/#cuss' title="To uppercase"><code>++cuss</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#mesc' title="Escape special characters"><code>++mesc</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#runt' title="Prepend n times"><code>++runt</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sand'><code>++sand</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sane'><code>++sane</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#teff'><code>++teff</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#trim'><code>++trim</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#trip'><code>++trip</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#tuba'><code>++tuba</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#tufa'><code>++tufa</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#tuft'><code>++tuft</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#turf'><code>++turf</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#wack'><code>++wack</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#wick'><code>++wick</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#woad'><code>++woad</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#wood'><code>++wood</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by odor"><code>++sand</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check odor validity"><code>++sane</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#teff' title="UTF-8 length"><code>++teff</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trim' title="Tape split"><code>++trim</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#trip' title="Cord to tape"><code>++trip</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuba' title="UTF-8 to UTF-32 tape"><code>++tuba</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tufa' title="UTF-32 to UTF-8 tape"><code>++tufa</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#tuft' title="UTF-32 to UTF-8 text"><code>++tuft</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#turf' title="UTF-8 to UTF-32 cord"><code>++turf</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wack' title="Coin format encode"><code>++wack</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wick' title="Coin format decode"><code>++wick</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#woad' title="Unescape cord"><code>++woad</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#wood' title="Escape cord"><code>++wood</code></a>
 
 ### 4c: tank printer
 
@@ -1419,12 +1419,12 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4c/#fit-re' title="Fit on one line test"><code>++fit:re</code></a>
 <a class="tooltip" href='/docs/reference/library/4c/#ram-re' title="Flatten tank to tape"><code>++ram:re</code></a>
 <a class="tooltip" href='/docs/reference/library/4c/#rig-re' title="Wrap tape in / (tank)"><code>++rig:re</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#wig-re'><code>++wig:re</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#win-re'><code>++win:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#wig-re' title="++win - render tape"><code>++wig:re</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#win-re' title="Render at indent"><code>++win:re</code></a>
 
-<a class="tooltip" href='/docs/reference/library/4c/#shep'><code>++shep</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#shop'><code>++shop</code></a>
-<a class="tooltip" href='/docs/reference/library/4c/#show'><code>++show</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shep' title="(Undocumented)"><code>++shep</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#shop' title="(Undocumented)"><code>++shop</code></a>
+<a class="tooltip" href='/docs/reference/library/4c/#show' title="(Undocumented)"><code>++show</code></a>
 
 ### 4d: parsing (tracing)
 
@@ -1441,8 +1441,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4e/#pfix' title="Discard first rule"><code>++pfix</code></a>
 <a class="tooltip" href='/docs/reference/library/4e/#plug' title="Parse to tuple"><code>++plug</code></a>
 <a class="tooltip" href='/docs/reference/library/4e/#pose' title="Parse options"><code>++pose</code></a>
-<a class="tooltip" href='/docs/reference/library/4e/#sfix'><code>++sfix</code></a>
-<a class="tooltip" href='/docs/reference/library/4e/#simu'><code>++simu</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#sfix' title="Discard second rule"><code>++sfix</code></a>
+<a class="tooltip" href='/docs/reference/library/4e/#simu' title="First and second"><code>++simu</code></a>
 
 ### 4f: parsing (rule builders)
 
@@ -1463,22 +1463,22 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4f/#most' title="Parse list of at least one match"><code>++most</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#next' title="Consume character"><code>++next</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#plus' title="List of at least one match"><code>++plus</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#sear'><code>++sear</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#shim'><code>++shim</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#slug'><code>++slug</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stag'><code>++stag</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#star'><code>++star</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stet'><code>++stet</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stew'><code>++stew</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stir'><code>++stir</code></a>
-<a class="tooltip" href='/docs/reference/library/4f/#stun'><code>++stun</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#sear' title="Conditional ++cook"><code>++sear</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#shim' title="Match character within range"><code>++shim</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#slug' title="Use gate to parse delimited list"><code>++slug</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stag' title="Add label"><code>++stag</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#star' title="Produce list of matches"><code>++star</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stet' title="Add faces to range-parser pairs in list"><code>++stet</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stew' title="Switch by first"><code>++stew</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stir' title="Parse repeatedly"><code>++stir</code></a>
+<a class="tooltip" href='/docs/reference/library/4f/#stun' title="Parse several times"><code>++stun</code></a>
 
 ### 4g: parsing (outside caller)
 
 <a class="tooltip" href='/docs/reference/library/4g/#rash' title="Parse or crash"><code>++rash</code></a>
 <a class="tooltip" href='/docs/reference/library/4g/#rush' title="Parse or null"><code>++rush</code></a>
 <a class="tooltip" href='/docs/reference/library/4g/#rust' title="Parse tape or null"><code>++rust</code></a>
-<a class="tooltip" href='/docs/reference/library/4g/#scan'><code>++scan</code></a>
+<a class="tooltip" href='/docs/reference/library/4g/#scan' title="Parse tape or crash"><code>++scan</code></a>
 
 ### 4h: parsing (ascii glyphs)
 
@@ -1505,16 +1505,16 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4h/#pat' title="Parse @ (pat)"><code>++pat</code></a>
 <a class="tooltip" href='/docs/reference/library/4h/#pel' title="Parse ( (pel)"><code>++pel</code></a>
 <a class="tooltip" href='/docs/reference/library/4h/#per' title="Parse ) (per)"><code>++per</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#sel'><code>++sel</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#sem'><code>++sem</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#ser'><code>++ser</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#sig'><code>++sig</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#soq'><code>++soq</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#tar'><code>++tar</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#tec'><code>++tec</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#tis'><code>++tis</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#wut'><code>++wut</code></a>
-<a class="tooltip" href='/docs/reference/library/4h/#zap'><code>++zap</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sel' title="Parse [ (sel)"><code>++sel</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sem' title="Parse ; (sem)"><code>++sem</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#ser' title="Parse ] (ser)"><code>++ser</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#sig' title="Parse ~ (sig)"><code>++sig</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#soq' title="Parse ' (soq)"><code>++soq</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tar' title="Parse * (tar)"><code>++tar</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tec' title="Parse ` (tec)"><code>++tec</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#tis' title="Parse = (tis)"><code>++tis</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#wut' title="Parse ? (wut)"><code>++wut</code></a>
+<a class="tooltip" href='/docs/reference/library/4h/#zap' title="Parse ! (zap)"><code>++zap</code></a>
 
 ### 4i: parsing (useful idioms)
 
@@ -1549,11 +1549,11 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4i/#prn' title="Parse any printable character"><code>++prn</code></a>
 <a class="tooltip" href='/docs/reference/library/4i/#qit' title="Parse character to cord atom"><code>++qit</code></a>
 <a class="tooltip" href='/docs/reference/library/4i/#qut' title="Parse cord"><code>++qut</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#soz'><code>++soz</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#sym'><code>++sym</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#ven'><code>++ven</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#vit'><code>++vit</code></a>
-<a class="tooltip" href='/docs/reference/library/4i/#vul'><code>++vul</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#soz' title="Parse triple single-quote"><code>++soz</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#sym' title="Term"><code>++sym</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#ven' title="Axis syntax parser"><code>++ven</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vit' title="Parse base 64 digit"><code>++vit</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#vul' title="Comments to null"><code>++vul</code></a>
 
 ### 4j: parsing (bases and base digits)
 
@@ -1570,27 +1570,27 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4j/#qex-ab' title="Parse <=4 hexadecimal digits"><code>++qex:ab</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#qib-ab' title="Parse 4 binary digits"><code>++qib:ab</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#qix-ab' title="Parse 4 hexadecimal digits"><code>++qix:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#seb-ab'><code>++seb:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sed-ab'><code>++sed:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sev-ab'><code>++sev:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sew-ab'><code>++sew:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sex-ab'><code>++sex:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sib-ab'><code>++sib:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sid-ab'><code>++sid:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#siv-ab'><code>++siv:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#siw-ab'><code>++siw:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#six-ab'><code>++six:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sov-ab'><code>++sov:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sow-ab'><code>++sow:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#sox-ab'><code>++sox:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#ted-ab'><code>++ted:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#tid-ab'><code>++tid:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#til-ab'><code>++til:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#tip-ab'><code>++tip:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#tiq-ab'><code>++tiq:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#urs-ab'><code>++urs:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#urt-ab'><code>++urt:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#voy-ab'><code>++voy:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#seb-ab' title="Parse 1"><code>++seb:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sed-ab' title="Parse non-zero decimal digit"><code>++sed:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sev-ab' title="Parse non-zero base 32 digit"><code>++sev:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sew-ab' title="Parse non-zero base 64 digit"><code>++sew:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sex-ab' title="Parse nonzero hexadecimal digit"><code>++sex:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sib-ab' title="Parse binary digit"><code>++sib:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sid-ab' title="Parse decimal digit"><code>++sid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siv-ab' title="Parse a base 32 digit"><code>++siv:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#siw-ab' title="Parse a base 64 digit"><code>++siw:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#six-ab' title="Parse a hexadecimal digit"><code>++six:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sov-ab' title="Parse base 32 letter"><code>++sov:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sow-ab' title="Parse base 64 letter/symbol"><code>++sow:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#sox-ab' title="Parse hexadecimal letter"><code>++sox:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#ted-ab' title="Parse decimal number with <= 3 digits"><code>++ted:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tid-ab' title="Parse 3 decimal digits"><code>++tid:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#til-ab' title="Parse 3 lowercase letters"><code>++til:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tip-ab' title="Leading phonetic byte"><code>++tip:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#tiq-ab' title="Trailing phonetic syllable"><code>++tiq:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urs-ab' title="Parse span characters"><code>++urs:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#urt-ab' title="Parse non-_ span"><code>++urt:ab</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#voy-ab' title="Parse bas, soq, or bix"><code>++voy:ab</code></a>
 
 <a class="tooltip" href='/docs/reference/library/4j/#ag' title="Top-level atom parser engine"><code>++ag</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#ape-ag' title="Parse 0 or rule"><code>++ape:ag</code></a>
@@ -1602,20 +1602,20 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4j/#fed-ag' title="Parse @p"><code>++fed:ag</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#hex-ag' title="Parse hexadecimal number"><code>++hex:ag</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#lip-ag' title="Parse IPv4 address"><code>++lip:ag</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#viz-ag'><code>++viz:ag</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#vum-ag'><code>++vum:ag</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#wiz-ag'><code>++wiz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#viz-ag' title="Parse base 32 digit with dot separators"><code>++viz:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#vum-ag' title="Parse base 32 string"><code>++vum:ag</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#wiz-ag' title="Parse base 64 number"><code>++wiz:ag</code></a>
 
 <a class="tooltip" href='/docs/reference/library/4j/#mu' title="Core used to scramble 16-bit atoms"><code>++mu</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#zag-mu'><code>++zag:mu</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#zig-mu'><code>++zig:mu</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#zug-mu'><code>++zug:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zag-mu' title="Add bottom into top"><code>++zag:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zig-mu' title="Subtract bottom from top"><code>++zig:mu</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#zug-mu' title="Concatenate into atom"><code>++zug:mu</code></a>
 
 <a class="tooltip" href='/docs/reference/library/4j/#ne' title="Digit rendering engine"><code>++ne</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#d-ne' title="Render decimal"><code>++d:ne</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#v-ne'><code>++v:ne</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#w-ne'><code>++w:ne</code></a>
-<a class="tooltip" href='/docs/reference/library/4j/#x-ne'><code>++x:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#v-ne' title="Render base 32"><code>++v:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#w-ne' title="Render base 64 digit"><code>++w:ne</code></a>
+<a class="tooltip" href='/docs/reference/library/4j/#x-ne' title="Render hexadecimal digit as atom of ASCII byte value"><code>++x:ne</code></a>
 
 ### 4k: parsing (atom printing)
 
@@ -1626,7 +1626,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 4l: parsing (atom parsing)
 
-<a class="tooltip" href='/docs/reference/library/4l/#so'><code>++so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#so' title="Coin parser engine"><code>++so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse odor-atom pair"><code>++bisk:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#crub-so' title="Parse @da, @dr, @p, @t"><code>++crub:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#nuck-so' title="Top-level coin parser"><code>++nuck:so</code></a>
@@ -1634,22 +1634,22 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4l/#perd-so' title="Parses dime/tiple without standard prefixes"><code>++perd:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#royl-so' title="Parse dime float"><code>++royl:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#royl-cell-so' title="(Undocumented)"><code>++royl-cell:so</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#tash-so'><code>++tash:so</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#twid-so'><code>++twid:so</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#zust-so'><code>++zust:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#tash-so' title="Parse signed dime"><code>++tash:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#twid-so' title="Parse coins without ~ prefix"><code>++twid:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#zust-so' title="Parse prefixed dimes from IP, loobean, or floating point"><code>++zust:so</code></a>
 
 ### 4m: parsing (formatting functions)
 
-<a class="tooltip" href='/docs/reference/library/4m/#scot'><code>++scot</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#scow'><code>++scow</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slat'><code>++slat</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slav'><code>++slav</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slaw'><code>++slaw</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slay'><code>++slay</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#smyt'><code>++smyt</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#spat'><code>++spat</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#spud'><code>++spud</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#stab'><code>++stab</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scot' title="Render dime as cord"><code>++scot</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#scow' title="Render dime as tape"><code>++scow</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slat' title="Curried slaw"><code>++slat</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input odor"><code>++slav</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input odor"><code>++slaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slay' title="Parse cord to coin"><code>++slay</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#smyt' title="Render path as tank"><code>++smyt</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spat' title="Render path as cord"><code>++spat</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#spud' title="Render path as tape"><code>++spud</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#stab' title="Parse cord to path"><code>++stab</code></a>
 
 ### 4n: parsing (virtualization)
 
@@ -1680,18 +1680,18 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4o/#noun' title="(Undocumented)"><code>++noun</code></a>
 <a class="tooltip" href='/docs/reference/library/4o/#null' title="(Undocumented)"><code>++null</code></a>
 <a class="tooltip" href='/docs/reference/library/4o/#port' title="(Undocumented)"><code>++port</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#span'><code>++span</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tiki'><code>++tiki</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#toga'><code>++toga</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#span' title="ASCII atom"><code>++span</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tiki' title="(Undocumented)"><code>++tiki</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#toga' title="Tree of faces"><code>++toga</code></a>
 <a class="tooltip" href='/docs/reference/library/4o/#tone'><code>++tone</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tuna'><code>++tuna</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tusk'><code>++tusk</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tyke'><code>++tyke</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#typo'><code>++typo</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#tyre'><code>++tyre</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#vase'><code>++vase</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#vise'><code>++vise</code></a>
-<a class="tooltip" href='/docs/reference/library/4o/#wing'><code>++wing</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tuna' title="XML template tree"><code>++tuna</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tusk' title="List of expressions"><code>++tusk</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyke' title="List of 'maybe' hoons"><code>++tyke</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#typo' title="Pointer for ++type"><code>++typo</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#tyre' title="List, term hoon"><code>++tyre</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vase' title="Typed data"><code>++vase</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#vise' title="Convert during reboot"><code>++vise</code></a>
+<a class="tooltip" href='/docs/reference/library/4o/#wing' title="Address in subject"><code>++wing</code></a>
 
 ### 5a: compiler utilities
 
