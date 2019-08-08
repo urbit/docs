@@ -13,7 +13,7 @@ Important star operations happen on both the Arvo side and the Azimuth side. On 
 
 Stars are above planets in the network hierarchy in the sense that each star sponsors some number of planets: stars discover peers for planets, route packets for planets, provide DNS routing for planets, and push software updates to planets. A star that fulfills this is called the **sponsor** of planets that receive such services from the star; those planets, in turn, are called **dependents** of that star.
 
-Stars are also the "parents" planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
+Stars are also the "parents" of planets. A new planet comes into existence only when spawned by a parent star. A parent planet is the sponsor of its children planets by default. This can change if a planet chooses to find a new sponsor (see the "Escaping a Sponsor" section below).
 
 Planets must have a sponsor star to use most features of the Arvo network. A planet cannot boot without a sponsor, and cannot make new connections to peers as long as it is not connected to a sponsor. Planets without a sponsor will still be able to message discovered peers until any such peers change their IP addresses.
 
@@ -25,7 +25,7 @@ Like with real-life infrastructure, the operation of Arvo infrastructure comes w
 
 Below are some handy operations for the use and maintenance of your star.
 
-### DNS Proxying
+### arvo.network DNS Records
 
 We have a system that lets users request a domain name for their star under `arvo.network`, in the form of `shipname.arvo.network`, where `shipname` is their ship's name, so that it can be accessed remotely via our Landscape web interface. To find out how to do this, take a look at the [DNS Proxying](../dns-proxying) documentation.
 
