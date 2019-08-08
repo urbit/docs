@@ -1,5 +1,5 @@
 +++
-title = "Conditionals ? ("wut")"
+title = "Conditionals ? ('wut')"
 weight = 6
 template = "doc.html"
 +++

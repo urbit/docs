@@ -1,5 +1,5 @@
 +++
-title = "Structures $ ("buc")"
+title = "Structures $ ('buc')"
 weight = 12
 template = "doc.html"
 +++

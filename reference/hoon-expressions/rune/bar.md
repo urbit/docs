@@ -1,5 +1,5 @@
 +++
-title = "Cores | ("bar")"
+title = "Cores | ('bar')"
 weight = 7
 template = "doc.html"
 +++

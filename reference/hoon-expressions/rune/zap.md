@@ -1,5 +1,5 @@
 +++
-title = "Wild ! ("zap")"
+title = "Wild ! ('zap')"
 weight = 4
 template = "doc.html"
 +++
