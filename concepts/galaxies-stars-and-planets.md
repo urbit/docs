@@ -29,6 +29,6 @@ Planets are intended for everyday use by an adult human, and there is a maximum 
 
 In addition to these three classes of Azimuth points, there two other kinds of Urbit identities, but they do _not_ use Azimuth.
 
-**Moons** are 64 bits, are issued by planets, and have names like `~doznec-salfun-naptul-habrys`. Moons are meant for connected devices: phones, smart TVs, digital thermostats. Moons are not independent, but are subordinated to their parent planet.
+**Moons** are 64 bits, are issued by planets, and have names like `~doznec-salfun-naptul-habrys`. Moons are meant for connected devices: phones, smart TVs, digital thermostats. Moons are not independent, but are subordinated to their parent planet. To create new moon under your planet, follow [this guide](/docs/using/admin#moons).
 
 **Comets** are 128-bit points with no parents that can be launched by anyone. They are meant for bots. Being disposable and essentially unlimited, they will likely not be trusted by the others on the Arvo network. They have enormous names, like `~racmus-mollen-fallyt-linpex--watres-sibbur-modlux-rinmex`.

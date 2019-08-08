@@ -120,13 +120,12 @@ our HTTPS isn't audited / battle tested, we just call it "secure" HTTPS.
 You can find that on `8443`. Or `8444` (and so on) if you're already
 running something on `8443`.
 
-## Moons
+## Moons {#moons}
 
-Urbit namespace is distributed by having parent nodes sign the keys for child
-nodes.  If you have a planet, your parent star issued your ticket.  As a planet
-you, in turn, can sign the keys for moons.  The basic idea is: your planet runs
-permanently in a data center somewhere and moons run on all your devices.  Each
-planet can issue ~4 billion (`2^32`) moons.
+Planets can spawn moons, which are meant for connected devices: phones, smart
+TVs, digital thermostats. The basic idea is: your planet runs permanently in a
+data center somewhere and moons run on all your devices.  Each planet can issue
+~4 billion (`2^32`) moons.
 
 To generate a random moon from your planet, run:
 
