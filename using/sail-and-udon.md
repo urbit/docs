@@ -1374,7 +1374,7 @@ frontmatter should look like this:
 ;>
 ```
 
-Now try loading your post here: `your-urbit.urbit.org/blog/post-1`.
+Now try loading your post here: `http://localhost:8080/blog/post-1.udon`.
 You should see a comments box at the bottom of the page.
 
 Try posting a comment!  When you do you should see the following in
