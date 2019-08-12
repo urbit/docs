@@ -121,7 +121,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
 <a class="tooltip" href='/docs/reference/library/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
-    <a class="tooltip" href='/docs/reference/library/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#dem-ag' title="Parse decmal with dots"><code>++dem:ag</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#den-fl' title="Denormalizes (floating point)"><code>++den:fl</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
