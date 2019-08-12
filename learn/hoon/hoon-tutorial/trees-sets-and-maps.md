@@ -236,7 +236,7 @@ Use `map` to create a set of key-value pairs, e.g., `(map @tas *)` for a set of 
 
 One example use case is for storing customer information as a set of pairs: `(map [employee-name employee-data])`.
 
-The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps here [here](/docs/reference/library/2i/).  As was the case with sets, the underlying noun of each map is a tree.
+The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps [here](/docs/reference/library/2i/).  As was the case with sets, the underlying noun of each map is a tree.
 
 Two common methods for populating a map include (1) creating it from a list of key-value cells using the `my` function, and (2) inserting items into a map using the `put` arm of the `by` core.
 
