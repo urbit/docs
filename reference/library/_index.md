@@ -121,7 +121,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
 <a class="tooltip" href='/docs/reference/library/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
-    <a class="tooltip" href='/docs/reference/library/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
+<a class="tooltip" href='/docs/reference/library/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#dem-ag' title="Parse decmal with dots"><code>++dem:ag</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#den-fl' title="Denormalizes (floating point)"><code>++den:fl</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
@@ -304,6 +304,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2o/#jar' title="Mold generator (jar)"><code>++jar</code></a>
 <a class="tooltip" href='/docs/reference/library/3c/#jes-yo' title="Maximum 64-bit timestamp"><code>++jes:yo</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#jest' title="Match a cord"><code>++jest</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#join' title="Add separator between list elements"><code>++join</code></a>
 <a class="tooltip" href='/docs/reference/library/2j/#ju' title="Jug operations"><code>++ju</code></a>
 <a class="tooltip" href='/docs/reference/library/2o/#jug' title="Mold generator (jug)"><code>++jug</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#just' title="Match a single character"><code>++just</code></a>
@@ -867,6 +868,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2b/#flop' title="Reverse list"><code>++flop</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#gulf' title="List from range"><code>++gulf</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#homo' title="Homogenize list"><code>++homo</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#join' title="Add separator between list elements"><code>++join</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#lent' title="List length"><code>++lent</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#levy' title="Logical AND on list"><code>++levy</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#lien' title="Logical OR on list"><code>++lien</code></a>
