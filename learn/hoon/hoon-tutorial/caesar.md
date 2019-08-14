@@ -145,7 +145,7 @@ the leg of the subject to something else. In our case, the leg to be changed is
 `msg`, and the thing to replace it is `(cass msg)`. `cass` is a standard-library
 gate that converts uppercase letters to lowercase.
 
-`:-  (caesar msg key)` and `(caesar msg key)` simply composes a
+`:-  (shift msg key)` and `(unshift msg key)` simply composes a
 cell of a right-shifted cipher and a left-shifted cell. This is the final output
 of our generator.
 
@@ -296,8 +296,8 @@ by.
 `shift` is for encoding, and `unshift` is for decoding. Thus, `shift` calls the
 `operate` arm with `(operate message key (encoder key))`, and `unshift` makes
 that call with `(operate message key (decoder key))`. These both produce the
-final output of the core, to be called in the form of `(caesar msg key)`
-and `(caesar msg key)` at the bottom of the program.
+final output of the core, to be called in the form of `(shift msg key)`
+and `(unshift msg key)` at the bottom of the program.
 
 ```
 ++  operate
