@@ -911,12 +911,12 @@ followed by a `\\` on its own line.
 - Cereal
 
 \
-+ First, separate eggs into a bowl.
-+ Then, add a splash of cream.
-  - If you don't have cream, you can use milk, but cream is preferred.
++ First, separate eggs into a bowl
++ Then, add a splash of cream
+  - If you don't have cream, you can use milk, but cream is preferred
     + If you don't have milk or cream, melt an eighth of a stick of butter on
       a skillet
-    + Scrambled the eggs in the bowl.
+    + Scramble the eggs in the bowl
     + Pour the eggs onto the skillet before the butter browns
 + Heat the skillet
 
@@ -936,25 +936,25 @@ Produces
 - Chicken\
   Make sure that you get enough for the barbecue
 - Bread
-  + Ask the baker what's fresh
-  + Buy the second-freshest batch
+    1. Ask the baker what's fresh
+    1. Buy the second-freshest batch
 - Cereal
 
 \
-+ First, separate eggs into a bowl.
-+ Then, add a splash of cream.
-  - If you don't have cream, you can use milk, but cream is preferred.
-    + If you don't have milk or cream, melt an eighth of a stick of butter on
-      a skillet
-    + Scrambled the eggs in the bowl.
-    + Pour the eggs onto the skillet before the butter browns
-+ Heat the skillet
+1. First, separate eggs into a bowl
+1. Then, add a splash of cream
+    - If you don't have cream, you can use milk, but cream is preferred
+        1. If you don't have milk or cream, melt an eighth of a stick of butter on
+           a skillet
+        1. Scramble the eggs in the bowl
+        1. Pour the eggs onto the skillet before the butter browns
+1. Heat the skillet
 
-+ Scramble eggs and put them into skillet
+1. Scramble eggs and put them into skillet
 
 \
-+ Cool
-+ Alright
+1. Cool
+1. Alright
 
 ### Link
 
