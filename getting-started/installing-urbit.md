@@ -26,8 +26,8 @@ Urbit: a personal server operating function
 We provide static binaries for macOS. You can grab the latest stable release as follows:
 
 ```
-curl -O https://bootstrap.urbit.org/urbit-darwin-v0.8.1.tgz
-tar xzf urbit-darwin-v0.8.1.tgz
+curl -O https://bootstrap.urbit.org/urbit-darwin-v0.8.2.tgz
+tar xzf urbit-darwin-v0.8.2.tgz
 ./urbit
 ```
 
@@ -36,8 +36,8 @@ tar xzf urbit-darwin-v0.8.1.tgz
 We also provide static binaries for 64-bit Linux distributions (Ubuntu, Debian, Fedora, Arch, etc.). You can get the latest stable release similarly:
 
 ```
-curl -O https://bootstrap.urbit.org/urbit-linux64-v0.8.1.tgz
-tar xzf urbit-linux64-v0.8.1.tgz
+curl -O https://bootstrap.urbit.org/urbit-linux64-v0.8.2.tgz
+tar xzf urbit-linux64-v0.8.2.tgz
 ./urbit
 ```
 
@@ -47,7 +47,7 @@ To access your Urbit via HTTP on port 80, you may need to run the following:
 
 ### Other
 
-We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs), however we're still in the process of updating it to `v0.8.1`. Once available, you will be able to install and launch it like so:
+We maintain a [Nix](https://nixos.org/nix) derivation for Urbit in [nixpkgs](https://github.com/NixOS/nixpkgs), however we're still in the process of updating it to `v0.8.2`. Once available, you will be able to install and launch it like so:
 
 ```
 nix-env -i urbit
