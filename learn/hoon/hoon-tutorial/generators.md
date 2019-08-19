@@ -463,7 +463,7 @@ we can jump in with an example:
 =,  generators
 :-  %get
 |=  [* [url=tape ~] ~]
-^-  (sole-request:sole (cask json))
+^-  (sole-request (cask json))
 %+  curl  (scan url auri:de-purl:html)
 |=  hit/httr:eyre
 ?~  r.hit  !!
@@ -478,7 +478,7 @@ u.my-json
 ```
 
 The above generator was written with the
-[Studio Ghibli API](https://ghibliapi.herokuapp.com/). It uses this API to
+[Studio Ghibli API](https://ghibliapi.herokuapp.com/) in mind. It uses this API to
 print the title of a Studio Ghibli film.
 
 ```
@@ -502,11 +502,11 @@ and the tail is a gate that takes a `tape` of the URL that we are trying
 to access.
 
 ```
-^-  (sole-request:sole (cask json))
+^-  (sole-request (cask json))
 ```
 
 Here we make sure our gate is producing a `sole-request` which contains a `cask`
-of the type `json`.
+of the type `json`. Please note that since we exposed the `sole` namespace with `=,`, we do not have to write `sole-request:sole` here.
 
 
 ```
@@ -559,16 +559,13 @@ non-naked generators to output the final result. Here we want to produce a
 `cask` of `json`, so we use the mark `%json` to indicate that.
 
 Next we have what may be an unfamiliar rune: `%.`. This rune is simply `%-` with
-the argument order reversed. `%title` is the argument passed to the next gate
+the argument order reversed. The idiomatic way to write Hoon is to have the "heaviest" code paths lowest in the program, which is why `%.` is preferred in this case over `%-`. Use of this style is recommended, as it results in code that is much easier to read.
+
+`%title` is the argument passed to the next gate
 that is called. `by` is the core that is the `map` engine. A Hoon `map` is a
 key-value pair structure, sometimes referred to as a dictionary in other
 languages. `got` is the arm in `by` that will produce a gate that we can call to
 access members of a given `map`.
-
-> The idiomatic way to write Hoon is to have the
-  "heaviest" code paths lowest in the program, which is why `%.`
-  is preferred in this case over `%-`. Use of this style is recommended, as it
-  results in code that is much easier to read.
 
 At the moment, however, we do not have a `map`, but instead have a `json` type.
 
@@ -588,11 +585,6 @@ Since `my-json` is a `unit` of `json`, the actual data we are looking for is in
 This gate is going to transform our data by taking in the `json` structure and
 producing a `map`. Then we can look up keys in this map using `got` from
 the `by` core.
-
-`%.` performs the same function as `%-`, the rune used to call a function,
-except with the arguments reversed so that the function is last and
-the arguments of that function come first. It's used here to keep with the
-principle that heaviest, or most complex, expressions should go to the bottom.
 
 The key we are looking up in our new `map` we've created from `my-json` is
 `%title`, which is an element in the original source, to produce the final
