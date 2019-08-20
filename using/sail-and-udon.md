@@ -43,15 +43,15 @@ Dojo:
 
 This command has three arguments:
 - The first is the URL we want to bind our site to. We chose `/test`, so the URL
-we will find our site at is `localhost/test`
+we will find our site at is `localhost/test`.
 - The second is the desk we want to serve. We will be serving from `%home` in
 this tutorial.
 - The third is the file that we want to serve. In this tutorial, we will be
 using `/gen/frontpage/hoon`, which refers to `frontpage.hoon`.
 
-
 Run the command `|serve /test %home /gen/frontpage/hoon`. Now navigate to
-`localhost/test`, and you should see the rendered Sail.
+`localhost/test` (or `localhost:8081/test` if your ship is on that port) in your
+browser, and you should see the rendered Sail.
 
 **Note:** Important to remember that every time you edit a file in your ship's
 pier (Unix directory), including `frontpage.hoon`, you need to run `|commit %home`
