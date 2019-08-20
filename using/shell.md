@@ -14,7 +14,7 @@ data in Urbit.
 You can use the Dojo to run arbitrary Hoon code, as well as non-Hoon system
 commands.
 
-##### Math
+### Math
 
 Evaluate a Hoon expression (whitespace matters):
 
@@ -44,7 +44,7 @@ Use `=var` to save faces to the Dojo subject.
 Note, however, that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a
 face in a `.hoon` file in this way.
 
-##### System Commands
+### System Commands
 
 Use `=dir` to set the current working directory:
 
@@ -73,13 +73,13 @@ Run system commands from `:hood`, like `reload`, using `|`:
 ~your-urbit:dojo> |reload %eyre
 ```
 
-### Generators
+## Generators
 
 Generators are short Hoon scripts, saved as `.hoon` files in the `/gen`
 directory. Many Dojo commands exist in the form of generators. The syntax for
 running a generator is `+genname` for a generator saved as `genname.hoon`.
 
-##### +cat
+### +cat
 
 Accepts a path and displays the file. Similar to Unix `cat`.
 
@@ -87,7 +87,7 @@ Accepts a path and displays the file. Similar to Unix `cat`.
 ~your-urbit:dojo> +cat %/gen/curl/hoon
 ```
 
-##### +code
+### +code
 
 Generates a code that is used to remotely log into your ship. No
 arguments.
@@ -96,7 +96,7 @@ arguments.
 ~your-urbit:dojo> +code
 ```
 
-##### +curl
+### +curl
 
 Retrives data from a URL. Accepts a `tape`. Similar to Unix `curl`.
 
@@ -104,7 +104,7 @@ Retrives data from a URL. Accepts a `tape`. Similar to Unix `curl`.
 ~your-urbit:dojo> +curl "http://nyt.com"
 ```
 
-##### +hello
+### +hello
 
 Just prints the argument. Accepts a `@ta`.
 
@@ -112,7 +112,7 @@ Just prints the argument. Accepts a `@ta`.
 ~your-urbit:dojo> +hello 'mars'
 ```
 
-##### +ls
+### +ls
 
 Similar to Unix `ls`. Accepts a path.
 
@@ -121,7 +121,7 @@ Similar to Unix `ls`. Accepts a path.
 ~your-urbit:dojo> +ls /~talsur-todres/home/2/web/notes
 ```
 
-##### +moon
+### +moon
 
 Generates a random moon from a planet. No arguments.
 
@@ -129,7 +129,7 @@ Generates a random moon from a planet. No arguments.
 ~your-urbit:dojo> +moon
 ```
 
-##### +solid
+### +solid
 
 Compile the current state of the kernel and output a
 noun. Usually downloaded to a file in unix. No arguments.
@@ -138,7 +138,7 @@ noun. Usually downloaded to a file in unix. No arguments.
 ~your-urbit:dojo> .urbit/pill +solid
 ```
 
-##### +test
+### +test
 
 Testrunner. Can test multiple generators at once, conventionally ones
 in the `/test` folder. Takes a path.
@@ -147,7 +147,7 @@ in the `/test` folder. Takes a path.
 ~your-urbit:dojo> +test /lib
 ```
 
-##### +ticket
+### +ticket
 
 Generate a ticket for an urbit ship. Takes an urbit name (`@p`).
 
@@ -156,7 +156,7 @@ Generate a ticket for an urbit ship. Takes an urbit name (`@p`).
 ~your-urbit:dojo> +ticket ~talsur-todres-your-urbit
 ```
 
-##### +tree
+### +tree
 
 Generate a recursive directory listing. Takes a path.
 
@@ -164,7 +164,7 @@ Generate a recursive directory listing. Takes a path.
 ~your-urbit:dojo> +tree %/web
 ```
 
-### Hood
+## Hood
 
 The hood is the system daemon. See `gen/hood` and `app/hood`.
 
@@ -212,7 +212,7 @@ number of vane names.
 
 ## Manual
 
-### Sources and sinks
+## Sources and sinks
 
 A Dojo command is either a **source** or a **sink**. A source is just something
 that can be printed to your console or the result of some computation. A
@@ -224,7 +224,7 @@ command.
 
 ### Sinks
 
-##### `=` - Set variable
+#### `=` - Set variable
 
 Set any environment variable:
 
@@ -238,11 +238,11 @@ Set any environment variable:
 Make sure to note that `=var` is Dojo syntax, not Hoon syntax. You cannot bind a
 variable in a `.hoon` file in this way.
 
-##### Special Variables
+#### Special Variables
 
 There are a few special variables that the Dojo maintains.
 
-##### `:` - Send to app
+#### `:` - Send to app
 
 `:app` goes to a local `app`, `:~ship/app` goes to the `app` on `~ship`.
 
@@ -254,7 +254,7 @@ Send a `helm-hi` message to `hood`:
 
 Apps usually expect marked data, so `&` is often used here.
 
-##### `*` - Save in `%clay`
+#### `*` - Save in `%clay`
 
 Save a new `.udon` ([Udon](@/docs/using/sail-and-udon.md)) file in `web`:
 
@@ -265,7 +265,7 @@ Save a new `.udon` ([Udon](@/docs/using/sail-and-udon.md)) file in `web`:
 The last component of the path is expected to be the mark (or mime
 type).
 
-##### `.` - Export to Unix
+#### `.` - Export to Unix
 
 Export a noun to Unix with `.`:
 
@@ -285,7 +285,7 @@ Which outputs a new `urbit.pill` to `pier/.urb/put/urbit.pill`
 
 ### Sources
 
-##### `&` - Mark conversion
+#### `&` - Mark conversion
 
 Convert between marks using `&`, with the destination mark first. You can stack multiple mark conversions together, and some marks can only be converted to specific other marks. In this example, [Udon](@/docs/using/sail-and-udon.md#udon) is converted to `&hymn` (a mark which supplies the `html`, `head`, `body` and closing tags) first, before being converted to HTML:
 
@@ -308,7 +308,7 @@ As does converting straight from Udon to HTML:
 ';h1#hello: hello'
 ```
 
-##### `_` - Run a function
+#### `_` - Run a function
 
 Use `_` to run a gate (or function):
 
@@ -326,7 +326,7 @@ Use a function to get the status code from an http request:
 301
 ```
 
-##### `+` `-` - HTTP requests
+#### `+` `-` - HTTP requests
 
 `+http[s]://example.com` - sends a GET request
 
@@ -338,7 +338,7 @@ JSON `"hi"` in the body.
 
 Note that the first of these is a source while the last two are sinks.
 
-##### `+` - Generators
+#### `+` - Generators
 
 Generators are simple Hoon scripts loaded from the filesystem. They live
 in `gen/`.
@@ -356,7 +356,7 @@ fintyr-haldet-fassev-solhex
 You can use `=` to set an environment variable in Dojo, but there are
 a few reserved names that have special uses.
 
-##### dir
+#### dir
 
 Current working `%clay` desk and revision. Read / write.
 
@@ -368,7 +368,7 @@ Current working `%clay` desk and revision. Read / write.
 404/hoon docs/ dojo/hoon lib/ listen/hoon md static/udon talk/ testing/udon tree/main/ unmark/ womb/
 ```
 
-##### lib
+#### lib
 
 Current set of libraries (`/lib`) in your environment. Can be set
 with `/+`. Read / write.
@@ -383,7 +383,7 @@ Now we can use arms from lib/number-to-words.hoon
 ~your-urbit:dojo> (to-words:eng-us:number-to-words 123.456)
 ```
 
-##### sur
+#### sur
 
 Current set of structures (`/sur`) in your environment. Can be set
 with `/-`. Read / write.
@@ -398,7 +398,7 @@ Now we can use arms in sur/sole.hoon.
 ~your-urbit:dojo> `sole-effect:sole`[%bel ~]
 ```
 
-##### now
+#### now
 
 The current (128-bit `@da`) time. Read-only.
 
@@ -409,7 +409,7 @@ The current (128-bit `@da`) time. Read-only.
 ~2016.3.21..21.10.57..429a
 ```
 
-##### our
+#### our
 
 The current urbit ship. Read-only.
 
@@ -420,7 +420,7 @@ The current urbit ship. Read-only.
 ~your-urbit
 ```
 
-##### eny
+#### eny
 
 512 bits of entropy. Read-only.
 
