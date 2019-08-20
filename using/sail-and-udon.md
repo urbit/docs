@@ -967,12 +967,12 @@ destination.
 **Example:**
 
 ```
-[I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
+[I'm an inline-style link](https://www.urbit.org/docs/using/shell)
 ```
 
 **Produces:**
 
-[I'm an inline-style link](https://www.urbit.org/docs/reference/shell)
+[I'm an inline-style link](https://www.urbit.org/docs/using/shell)
 
 The second type is a reference-style link, which uses a relative path, based on
 the current page's location. Instead of the full url, we use `..` to fill in
@@ -1004,7 +1004,7 @@ anchor.
 **Example:**
 
 ```
-Check out this [section](#the-destination) that we want to jump to.
+Check out this [section](#here-we-are) that we want to jump to.
 
 Four score and seven years ago....
 
@@ -1015,7 +1015,7 @@ It was the best of times, it was the worst of times...
 
 **Produces:**
 
-Check out this [section](#the-destination) that we want to jump to.
+Check out this [section](#here-we-are) that we want to jump to.
 
 Four score and seven years ago....
 
@@ -1035,7 +1035,7 @@ opening and closing quotes -- that is, `“` and `”`.
 
 **Produces:**
 
-"Yes," he said. "That is the way with him."
+“Yes,” he said. “That is the way with him.”
 
 
 ### Code Literal
@@ -1169,7 +1169,6 @@ A section of text with the first line beginning with `>` and a space,
 and each successive newline indented by two spaces yields a
 `<blockquote>` HTML element. This block quote can itself contain more Udon,
 including more block quotes to render nested levels of quotation.
-Inline italicization with `_` does not work, however.
 
 Blank newlines do not end the block quote, but a blank newline followed by an
 unindented line of text _will_ end the quote.
@@ -1196,7 +1195,7 @@ Quote break.
 
 > _See_ the child.
 
-  He is pale and thin, he wears a thin and ragged linen shirt.
+> He is pale and thin, he wears a thin and ragged linen shirt.
 
 
 ### Poem
@@ -1232,7 +1231,7 @@ in part from the support for embedding Hoon code inside the markup.
 Sail is a domain-specific language within Hoon for creating XML nodes,
 including HTML. It can be used directly within Udon to provide
 scripting capability with Hoon and also to provide more precise control over the
-resulting HTML. The [Sail guide](../sail) is a good place to learn the
+resulting HTML. The [Sail guide](#sail) is a good place to learn the
 specifics.
 
 Example:
@@ -1241,7 +1240,7 @@ Example:
 ;=
   ;p
     ;strong: Don't panic!
-    <br>
+    ;br;
     ;small: [reactive publishing intensifies]
   ==
 ==
