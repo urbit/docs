@@ -8,81 +8,54 @@ Sail is Hoon markup that’s used to render a web page with XML. But what makes 
 
 Udon is a way to write content for the web. It's a minimalist markup language for creating and rendering text documents, with a Markdown-inspired syntax. It's integrated with our Hoon programming language, allowing it to be used as standalone prose in its own file or embedded inside a Hoon source file, in which case it will be parsed into a tree of HTML nodes using Sail.
 
-This document will be divided into two main sections: the Sail guide and the Udon guide. The Udon guide has two sub-sections that each walk you through a practical example. Also, you're encouraged to read the Getting Started section below, which applies to both Udon and Sail.
+This document will be divided into two main sections: the Sail guide and the Udon guide. Also, you should read the Getting Started section below, which applies to both Udon and Sail.
 
 ## Table of Contents
+
+- [Getting Started](#getting-started)
 
 - [Sail: A Guide](#sail)
 
 - [Udon: A Guide](#udon)
 
-- [Udon: A Simple  Blog](#blog)
-
-- [Udon: A Static Site](#static)
-
-## Getting Started
+## Getting Started {#getting-started}
 
 Before starting with either Sail or Udon, make sure that your ship is
-[mounted to Unix](https://urbit.org/docs/using/setup/)
+[mounted to Unix](/docs/getting-started/booting-a-ship)
 
-To host that output, your ship also has a web-server, called
-[Eyre](https://urbit.org/docs/using/web/), that can be found at
-`http://localhost:8080/` if it’s your first ship that’s running on the
+To host that output, your ship also has a web-server that can be found at
+`localhost` (default port 80) if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. In the startup messages, a ship will tell you which HTTP port it's
 using.
 
-The `/web` directory of the `%home` desk is served by default. You can change
-which desk you're serving by using the command `|serve` in the Dojo. If you
-have already created and mounted a desk named `%sandbox`, for example, you can
-switch to serving it with this command:
+Udon and Sail files are often run as independent files (`.udon` and `.hoon`
+respectively), but for the purpose of this guide, we will run them out of the
+`frontpage.hoon` file located in the `/gen` directory. The default content of
+`frontpage.hoon` is Sail code.
+
+To use `frontpage.hoon`, we use a `|serve` command like this one in your ship's
+Dojo:
 
 ```
-|serve %sandbox
+|serve /test %home /gen/frontpage/hoon
 ```
 
-The first time you serve a desk, `/web` will be included as default. After that,
-you will need to explicitly append `/web` to the desk you're switching to --
-otherwise, you'll need to write `http://localhost:8080/web` every time you
-navigate to your web-server. Newly served desks not automatically having `/web`
-as their root directory is a bug.
+This command has three arguments:
+- The first is the URL we want to bind our site to. We chose `/test`, so the URL
+we will find our site at is `localhost/test`
+- The second is the desk we want to serve. We will be serving from `%home` in
+this tutorial.
+- The third is the file that we want to serve. In this tutorial, we will be
+using `/gen/frontpage/hoon`, which refers to `frontpage.hoon`.
 
-To switch back to your `%home` desk and set `/web` as your root directory, run:
 
-```
-|serve %/web
-```
+Run the command `|serve /test %home /gen/frontpage/hoon`. Now navigate to
+`localhost/test`, and you should see the rendered Sail.
 
-We'll be serving the `%home` desk for the examples in this tutorial.
-
-### Rendering
-
-That server has access to source files located in `/<your-urbit>/home/web` and
-any sub-folders thereof. For the purposes of this tutorial, we will only be
-using files that are located in the `/<your-urbit>/home/web/pages` path.
-
-There is an important distinction between these two paths. According to
-`/ren/urb.hoon`, any file inside of `/web` or any of its sub-directories
-is put through a tree of renderers specified at `/ren/urb/tree.hoon`
--- _except_ for files inside of `/web/pages`. All of the files in `/web` and
-its non-`/pages` children directories have various operations on files, such as
-wrapping your Sail the `html`, `head`, and `body` nodes. This rendering tool,
-called simply **Tree**, also adds certain formatting polish, such as a sidebar
-that lists sibling files in the same directory.
-
-The `/web/pages` sub-directory is a unique case with its own rendering rules.
-The Tree is not used when rendering files in this path. The existence of no tag
-is inferred, and no special formatting is applied. Such simplicity is ideal for
-introducing the basics of Sail. Any source file located in `/web/pages` must
-produce a complete HTML node with "head" and "body" nodes as children.
-
-Understanding the details of the rendering pipeline is not necessary to complete
-this tutorial. But, if you are curious, you might find it illuminating to
-explore the contents of the `/ren` directory.
-
-So, if a Sail source file named `sailtest.hoon` is saved in your `/web/pages`
-folder on your only running urbit process, you can view that source rendered
-into a web-page at `localhost:8080/pages/sailtest/`.
+**Note:** Important to remember that every time you edit a file in your ship's
+pier (Unix directory), including `frontpage.hoon`, you need to run `|commit %home`
+to copy those changes to Urbit.
 
 ## <a name="sail"></a>Sail: A Guide
 
@@ -122,14 +95,13 @@ It’s easy to see how Sail can directly translate to HTML:
 </html>
 ```
 
-Save the above Sail code in `/home/web/pages/firstsail.hoon`, and the above
-HTML code in `/home/web/pages/firsth.html`. Access the resulting pages by
-navigating to `http://localhost:8080/pages/firstsail` and
-`http://localhost:8080/pages/firsth.html`, respectively, in your browser. The
-resulting pages should be identical!
+You can test above Sail code by placing it
+under `^-  manx` in your `frontpage.hoon` file, and then running `|commit %home`
+in the Dojo. If you've already run the `|serve` command code from the first
+section, the new content should appear at `localhost/test`.
 
-It shouldn't be hard to see the similarities here. So let's go into more
-detail about what the differences are.
+It shouldn't be hard to see the similarities between Sail and HTML. So let's go
+into more detail about what the differences are.
 
 ### Tags and Closing
 
@@ -701,25 +673,30 @@ allowing it to be used as standalone prose in its own file or embedded inside a
 Hoon source file, in which case it will be parsed into a tree of HTML nodes
 using Hoon's XML-templating syntax, Sail.
 
-This document is itself written in Udon, and its source file is of the
-Udon `.udon` extension. As such, we use some `formatted text` to make
-it clear what is and isn't code, and to display that code to you instead of
-actually using its semantics for formatting.
-
 There are quite a few similarities between Udon and the
 CommonMark standard, but there are enough differences that you shouldn't rely on
 existing knowledge of the latter. Udon generally supports only one
 syntax for each type of HTML node it emits. Udon is also stricter than
 Markdown: some syntax errors will prevent the file from being parsed at all.
 
-We provide a few simple examples [here](#examples) of how to publish
-Udon files using our web interface.
+## Testing Udon
+
+Udon files use the `.udon` file extension, but for this entry-level guide, we
+will use the `frontpage.hoon` method that we are already familiar with.
+
+To test out Udon, put a `;>` under the `^-  manx` in your `frontpage.hoon` file,
+and then put all your Udon code under that `;>`. Then run `|commit %home`
+in the Dojo. If you've already run the `|serve` command code from the first
+section, the new content should appear at `localhost/test`.
 
 ## Udon Syntax
 
 ### Front Matter
 
-The first thing on your file is a chunk of code called the front matter. It
+> Note: The Front Matter section only applies to .udon files, and not the
+frontpage.hoon testing method.
+
+The first thing on a `.udon` file is a chunk of code called the front matter. It
 contains metadata about your page, such as date, title, and position relative
 to sibling pages.
 
@@ -1255,282 +1232,3 @@ Produces:
     <br>
     <small>[reactive publishing intensifies]</small>
 </p>
-
-
-## <a name="blog"></a>A Simple Udon Blog
-
-Publishing using Udon is really easy. It uses the file extension `.udon`. Here we'll create a very simple blog and publish our first posts.
-
-First, let's setup a desk to serve our posts from:
-
-```
-|merge %site ~your-urbit %home
-```
-
-Then let's mount that desk to unix:
-
-```
-|mount /=site=
-```
-
-You should now be able to find a `/site` folder inside of your pier
-directory (either `comet/` or `your-urbit/`).
-
-To begin serving files from this new desk use `|serve`:
-
-```
-|serve %site
-```
-
-First let's create the landing page for our blog.  Create the file
-`site/web/blog.udon`:
-
-```
-:-  :~  anchor/'none'
-    ==
-;>
-
-# Hello
-
-This is a simple blog I built on Urbit.
-
-;list(dataType "post");
-```
-
-Try viewing this file at `http://localhost:8080`. Note that `8080` might be
-`8081`, `8082`, and so on, depending if those ports were being used when you
-started your urbit.
-
-The only special thing about this page is the `anchor/'none'` front-matter
-which simply turns off the Tree navigation.  Normally Tree gives navigation
-controls for walking around the filesystem, but taking them away makes
-the page seem more like a landing page.
-
-The page looks pretty boring now.  Let's add our first post.  From
-unix run `mkdir your-urbit/site/web/blog; touch
-your-urbit/site/web/blog/post-1.udon`. (Currently [there's a
-bug](https://github.com/urbit/urbit/issues/321) that prevents empty
-directories from getting created, so we have to `touch` a file inside
-them first.)  In `blog/post-1.udon` let's add some filler content:
-
-```
-:-  :~  navhome/'/blog'
-        type/'post'
-        date/'~2016.6.20'
-        title/'My first post!'
-    ==
-;>
-
-Is this a decentralized Medium?  Let's find out.
-
-But first, how about a long quote from Paramenides:
-
-> True, he said; and therefore when ideas are what they are in
-  relation to one another, their essence is determined by a relation
-  among themselves, and has nothing to do with the resemblances, or
-  whatever they are to be termed, which are in our sphere, and from
-  which we receive this or that name when we partake of them. And
-  the things which are within our sphere and have the same names
-  with them, are likewise only relative to one another, and not to
-  the ideas which have the same names with them, but belong to
-  themselves and not to them.
-
-Good to get that out of the way.
-```
-
-You should be able to view this file at:
-`http://localhost:8080/blog/post-1.udon`.
-
-You'll also notice that
-now the list of posts here: `http://localhost:8080/blog` has
-updated.
-
-Here we use two pieces of front-matter worth noting: `type` and `navhome`.
-
-- `type` implies that the page has some special handling by Tree. When `type` is
-  `post` we automatically put in the `date`, `title` and `author` when they're
-  specified and add some styles.
-
-- `navhome` sets the path used by the home button (the circle in the top left).
-  Since we want to send people back to the root of our blog, we set this to `/blog`
-
-Adding posts is as easy as dropping Udon files into the `blog/`
-directory.  Pretty easy!
-
-### Blog comments
-
-Now let's enable comments on a blog post.
-
-First, turn comments on by editing the frontmatter in `post-1.udon`.  Your
-frontmatter should look like this:
-
-```
-:-  :~  navhome/'/blog'
-        type/'post'
-        date/'~2018.6.20'
-        title/'Blog comments'
-        comments/'true'
-    ==
-;>
-```
-
-Now try loading your post here: `http://localhost:8080/blog/post-1.udon`.
-You should see a comments box at the bottom of the page.
-
-Try posting a comment!  When you do you should see the following in
-your console:
-
-```
-+ /~your-urbit/home/55/web/blog/post-1/comments/~2016.6.20..23.20.54..0b88/md
-------------[0]
-~your-urbit[tree]: receiving comments, ;join %comments for details
-```
-
-Comments are written into the filesystem in the `comments/` folder
-relative to the page they're enabled on.  When a new comment is posted
-a notification is also posted to the `/comments` `:talk` channel.
-
-Use `;join` to keep up with comments as they get posted:
-
-```
-;join ~your-urbit/comments
-```
-
-That's it!  Easy.
-
-## <a name="static"></a>A Static Site
-
-Hosting a static tree of content is easy.  Let's put together a really
-simple site for an imaginary Urbit meetup group.
-
-We assume you have at least followed the beginning of [our first
-examples](#blog) and created a desk called `site` and mounted it to
-unix.
-
-Note: below we use Urbit's implementation of Markdown, [Udon](#udon).
-This markup language allows you to use snippets of Hoon code but not HTML.
-In particular, we use Sail, a subset of Hoon.  This Sail is rendered as HTML
-when the file is served to a client.  To learn about Sail, head over to
-the [Sail](/docs/learn/arvo/arvo-internals/sail) section of the docs.
-
-In `site/web/meet.udon` put:
-
-```
-:-  :~  navhome/'/meet'
-        navdpad/'false'
-        navpath/'/meet'
-        navmode/'navbar'
-    ==
-;>
-
-# Neo-Tokyo Urbit meetup
-
-![](https://ofheroesandcliches.files.wordpress.com/2014/06/neo-tokyo.png)
-
-Hi there! We meet once a week at The Chat to work on Urbit projects
-together.
-
-You can find out more about the group on the [about](about) page and
-follow our projects in [projects](projects).
-```
-
-This is our landing page.  Here we're using a few new bits of frontmatter:
-`navdpad`, `navmode` and `navpath`.  `navdpad` just turns off the nav
-arrows. `navmode` can be set to 'navbar' to switch to a horizontal top
-nav instead of a left bar. `navpath` sets the path to load the nav
-items from.
-
-Let's create `about.udon` and `projects.udon`.  From Unix use the
-technique from before to create a new directory: `mkdir
-your-urbit/site/web/meet/; touch your-urbit/site/web/meet/about.udon`.
-Then put the following in `site/web/about.udon`:
-
-```
-:-  :~  navhome/'/meet'
-        navdpad/'false'
-        navpath/'/meet'
-        navmode/'navbar'
-        title/'About'
-    ==
-;>
-
-# About
-
-## Mission statement
-
-The existing framework cannot subdue the new human force that is increasing day
-by day alongside the irresistible development of technology and the
-dissatisfaction of its possible uses in our senseless social life.
-
-## Members
-
-Membership is open to anyone.  Just send a message to `~talsur-todres`.
-
-- Shōtarō Kaneda
-- Motoko Kusanagi
-- Ishikawa
-- Faye Valentine
-- Spike Spiegel
-```
-
-And `site/web/projects.udon`:
-
-```
-:-  :~  navhome/'/meet'
-        navdpad/'false'
-        navpath/'/meet'
-        navmode/'navbar'
-        title/'Projects'
-    ==
-;>
-
-# Projects
-
-## Active
-
-;list;
-
-## Discussion
-
-;div(class "mini-module")
-    ;script(src "/~/at/lib/js/urb.js");
-    ;script(src "https://cdn.rawgit.com/seatgeek/react-infinite/0.8.0/dist/react-infinite.js");
-    ;script(src "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.js");
-    ;script(src "https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.1/moment-timezone.js");
-    ;script(src "/talk/main.js");
-    ;link(href "/talk/main.css", rel "stylesheet");
-    ;talk(readonly "", chrono="reverse", station="comments");
-==
-```
-
-This page introduces a new thing: the `:talk` module.  Inside of the
-`mini-module` div we load the scripts needed by the `;talk`
-component.  The `;talk` component is a static component for
-displaying a feed from a talk channel inline.  Here we're going to
-display the discussion from our active projects inline.
-
-We'll need a few active projects though.  From unix: `mkdir
-your-urbit/site/web/meet/projects; touch
-your-urbit/site/web/meet/projects/bike.udon`.
-
-In `site/web/meet/projects/bike.udon`:
-
-```
-:-  :~  navhome/'/meet'
-        navdpad/'false'
-        navpath/'/meet'
-        navmode/'navbar'
-        title/'Kaneda's Bike'
-        comments/'true'
-    ==
-;>
-
-# Urbit on a Motorcycle
-
-Discussion on getting urbit to power Kaneda's motorcycle.
-```
-
-Here we just use the `comments` frontmatter to enable comments on the page.
-Adding other imaginary projects is left to the reader.
-
-Building a static site takes only a few minutes and a few Udon files.  Have fun!
