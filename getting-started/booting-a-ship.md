@@ -28,13 +28,13 @@ Urbit identity, and `path/to/my-planet.key` replaced with the path to your
 keyfile:
 
 ```
-urbit -w sample-planet -k path/to/my-planet.key
+./urbit -w sample-planet -k path/to/my-planet.key
 ```
 
 Or, if you'd prefer to copy your key in, you can run:
 
 ```
-urbit -w sample-planet -G rAnDoMkEy
+./urbit -w sample-planet -G rAnDoMkEy
 ```
 
 Either command will create a directory called `sample-planet/` and begin
@@ -95,7 +95,7 @@ You can toggle between the Dojo and Talk (chat) prompts with `ctrl-x`. You can t
 To restart your ship, simply pass the name of your pier:
 
 ```
-urbit some-planet
+./urbit some-planet
 ```
 
 ### Using Landscape
