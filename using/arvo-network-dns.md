@@ -1,5 +1,5 @@
 +++
-title = "DNS Proxying"
+title = "Arvo.network DNS"
 weight = 2
 template = "doc.html"
 +++
