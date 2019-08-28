@@ -11,17 +11,17 @@ Hall is the Urbit messaging and notifications protocol. This document details Ha
 
 ## Table of contents
 
-- [Hall Architecture](#architecture)
+- [Hall Architecture](#hall-architecture)
 
-- [The Hall Interface](#interface)
+- [The Hall Interface](#the-hall-interface)
 
-- [The New Gall Model](#new-gall)
+- [The New Gall Model](#the-new-gall-model)
 
 # Hall Architecture
 
 This document is complemented by Hall's source code, but doesn't require it. Definitions of data structures, code snippets and diagrams will be provided where useful.
 
-Hall's implementation is structured according to the new Gall model. Familiarity with its concepts is assumed. See [the new Gall model](#new-gall).
+Hall's implementation is structured according to the new Gall model. Familiarity with its concepts is assumed. See [the new Gall model](#the-new-gall-model).
 
 ## Talk
 
@@ -502,7 +502,7 @@ To see an expansive example of a Hall client, take a look at the code of Talk. I
 
 # The Hall Interface
 
-This document describes the different interfaces Hall provides and the data that is accessible and modifiable through them. Knowledge of the Urbit application model (including [new gall](#new-gall)) and [Hall's architecture](#architecture) is assumed.
+This document describes the different interfaces Hall provides and the data that is accessible and modifiable through them. Knowledge of the Urbit application model (including [new gall](#the-new-gall-model)) and [Hall's architecture](#hall-architecture) is assumed.
 
 While the structures here are given in Hoon, they match fairly closely to their JSON equivalent. Most important to note is that `$%({$x y/z})` becomes accessible as `json.x.y`.
 
