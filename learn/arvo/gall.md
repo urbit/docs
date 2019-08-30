@@ -755,7 +755,7 @@ code quoted above includes a bunch of otherwise unnecessary faces for
 the purpose of illustration. Compare: `[%hiss p=(unit user) q=mark
 r=cage]` from `zuse`.
 
-> You can grep zuse.hoon and arvo.hoon for most of these definitions. However, beware the ambiguity surrounding "hiss": there's ++hiss in section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the move that is sent to %eyre to make our HTTP request happen. Here we're talking about the latter. See `++kiss-eyre` in `zuse`.
+> You can grep zuse.hoon and arvo.hoon for most of these definitions. However, beware the ambiguity surrounding "hiss": there's ++hiss in section 3bI of `zuse` ("Arvo structures"), and there's `%hiss` the move that is sent to %eyre to make our HTTP request happen. Here we're talking about the latter. See `++task:able:eyre` in `zuse`.
 
 > Recall that `++unit` means "maybe".  Formally, "`(unit a)` is either null or a pair of null and a value in `a`". Also recall that to pull a value out of a unit (`u.unit`), you must first verify that the unit is not null (for example with `?~`). See `++need`.
 
