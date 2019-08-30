@@ -50,10 +50,10 @@ browser to server to browser and back.
 ### Initial request
 
 An http request for `http://sampel-sipnym.urbit.org/cli` will be [redirected](dns)
-to the `%eyre` on ~sampel-sipnym, and come in as a `%this` kiss.
+to the `%eyre` on ~sampel-sipnym, and come in as a `%this` task.
 
 From arvo, requests enter `++call`, which after some type reification are passed
-along to `++apex:ye`. In the case of a `%this` kiss, its components are
+along to `++apex:ye`. In the case of a `%this` task, its components are
 parsed(see `++zest:epur`, `++eat-headers`) and handed off to `++handle`, wrapped
 in `++emule` to produce a `++fail` page in case of error. `++apex:handle` will
 `++process` the request to a `pest` or a `++done` core, and in the former case
@@ -295,7 +295,7 @@ This document outlines the following:
 
 2. [the values stored on the client](#client), both statically in cookies and dynamically as the `window.urb` object, which facilitate this transaction.
 
-3. [`kiss`](#kiss), the requests `%eyre` will accept.
+3. [`task`](#task), the requests `%eyre` will accept.
 
 4. [`gift`](#gift), the responses it will give to those requests.
 

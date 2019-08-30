@@ -681,10 +681,10 @@ The packet, after its creation, embarks on a journey across physical
 time and space into the great unknown. Hurtling through fiber-optic
 cables at hundreds of thousands of kilometers per second, it finally
 arrives at our neighbor's network adapter. The adapter tells unix, unix
-tells libuv, libuv tells vere, and vere sends a `%hear` kiss to ames.
+tells libuv, libuv tells vere, and vere sends a `%hear` task to ames.
 And now we reenter the kernel.
 
-The `%hear` kiss goes straight to `++knob`, just as did the `%wont` kiss
+The `%hear` task goes straight to `++knob`, just as did the `%wont` task
 earlier.
 
 ```
@@ -693,12 +693,12 @@ earlier.
 ```
 
 Here, though, we call `++gnaw:am` to process the packet. The arguments
-to `++gnaw` are the same as those to the `%hear` kiss: the lane on which
+to `++gnaw` are the same as those to the `%hear` task: the lane on which
 the packet was received and the packet itself. The other argument is
 just `%good`, which is a `++cape:ames` saying that we expect the packet to
 succeed. If a formal error occurs, then since we have a transactional
 event system, the `%hear` event will never be considered to have
-actually happened, and unix will send a `%hole` kiss so that we may send
+actually happened, and unix will send a `%hole` task so that we may send
 a negative acknowledgment.
 
 ```
@@ -929,7 +929,7 @@ Forwarding is the simplest case, since we've seen all the arms before,
 except perhaps `++emit` and `++emir`, which simply take a boon or list
 of boons respectively and queue them up to be handled when the core
 resolves. If we're told to forward a packet to ourselves, then we emit a
-`%mead` boon which simply sends another `%hear` kiss to ourselves with
+`%mead` boon which simply sends another `%hear` task to ourselves with
 the data. Otherwise, we try to find a route to the recipient, as before.
 
 ```
@@ -1278,9 +1278,9 @@ The weary traveler is seeking out its familial roots, finding the app
 from whom sprung forth the original message way back in paragraph three.
 When it arrives at the network adapter of its ancestors, the adapter
 tells unix, unix tells libuv, libuv tells vere, and vere sends a `%hear`
-kiss to ames. Once more into the kernel.
+task to ames. Once more into the kernel.
 
-The `%hear` kiss is handled in `++knob` as before, leading to `++gnaw`,
+The `%hear` task is handled in `++knob` as before, leading to `++gnaw`,
 going over to `++chew`, `++apse`, `++chow`, and eventualy to `++dine`.
 We've seen most of the cases in `++dine`, but we haven't yet looked at
 the handling of this `%buck` meal.
