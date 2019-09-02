@@ -1,6 +1,6 @@
 +++
 title = "1.1.1 Walkthrough: List of Numbers"
-weight = 3
+weight = 2
 template = "doc.html"
 +++
 This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may be beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.
