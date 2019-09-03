@@ -102,26 +102,27 @@ Using `sy`:
 [n=11 l={} r={22 33 44 55}]
 
 > `(set @)`c
-{11 22 33 44 55}
+{11 22 55 33 44}
 
 > =c `(set @)`c
 ```
+Note that Dojo does not necessarily print elements of a set in the same order they were given. Mathematically speaking, sets are not ordered, so this is alright. There is no difference between two sets with the same elements written in a different order. Try forming `c` with a different ordering and check this.
 
 And we can add an item to the set using `put` of `in`:
 
 ```
 > (~(put in c) 77)
-[n=11 l=~ r=[n=77 l={22 33 44 55} r={}]]
+[n=11 l={} r={22 77 55 33 44}]
 
 > `(set @)`(~(put in c) 77)
-{11 22 33 44 55 77}
+{11 22 77 55 33 44}
 ```
 
 You can remove items using `del` of `in`:
 
 ```
 > (~(del in c) 55)
-[n=11 l=~ r=[n=33 l={22} r={44}]]
+[n=11 l={} r={22 33 44}]
 
 > `(set @)`(~(del in c) 55)
 {11 22 33 44}
@@ -140,17 +141,16 @@ You can apply a gate to each item of a set using `run` of `in` and produce a new
 
 ```
 > c
-{11 22 33 44 55}
+{11 22 55 33 44}
 
 > (~(run in c) |=(a=@ +(a)))
-{12 23 34 45 56}
+{56 45 23 12 34}
 ```
-
 You can also apply a gate to all items of the set and return an accumulated value using `rep` of `in`:
 
 ```
 > c
-{11 22 33 44 55}
+{11 22 55 33 44}
 
 > (~(rep in c) add)
 b=165
@@ -160,24 +160,24 @@ The standard library also has the union and intersection functions for sets:
 
 ```
 > c
-{11 22 33 44 55}
+{11 22 55 33 44}
 
 > =d `(set @)`(sy ~[33 44 55 66 77])
 
 > d
-{33 44 55 66 77}
+{66 77 55 33 44}
 
 > (~(int in c) d)
-[n=33 l={} r={44 55}]
+[n=33 l=[n=55 l={} r={}] r=[n=44 l={} r={}]]
 
 > `(set @)`(~(int in c) d)
-{33 44 55}
+{55 33 44}
 
 > (~(uni in c) d)
-[n=11 l={} r={22 33 44 55 66 77}]
+[n=11 l=[n=66 l={} r={}] r=[n=33 l={22 77 55} r={44}]]
 
 > `(set @)`(~(uni in c) d)
-{11 22 33 44 55 66 77}
+{66 11 22 77 55 33 44}
 ```
 
 It may be convenient to turn a set into a list for some operation and then operate on the list.  You can convert a set to a list using `tap` of `in`:
@@ -187,14 +187,14 @@ It may be convenient to turn a set into a list for some operation and then opera
 {11 22 33 44 55}
 
 > ~(tap in c)
-~[55 44 33 22 11]
+~[44 33 55 22 11]
 ```
 
 There are other set functions in the Hoon standard library we won't cover here.
 
 ### Cartesian Product
 
-Here's a program that takes two sets of atoms and returns the Cartesian product of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
+Here's a program that takes two sets of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
 ```
 |=  [a=(set @) b=(set @)]
@@ -219,24 +219,24 @@ Save this as `cartesian.hoon` in your urbit's pier and run in the dojo:
 > =c `(set @)`(sy ~[1 2 3])
 
 > c
-{1 3 2}
+{1 2 3}
 
 > =d `(set @)`(sy ~[4 5 6])
 
 > d
-{5 4 6}
+{5 6 4}
 
 > +cartesian [c d]
-{[1 5] [1 4] [1 6] [3 5] [3 4] [3 6] [2 5] [2 4] [2 6]}
+{[2 6] [1 6] [3 6] [1 4] [1 5] [2 4] [3 5] [3 4] [2 5]}
 ```
 
 ## Maps
 
-Use `map` to create a set of key-value pairs, e.g., `(map @tas *)` for a set of `@tas` and `*` pairs.  The `@tas` value serves as the 'key', which is a mechanism for tagging or naming the value, `*`.  They key of each key-value pair is unique; every value in a map gets its own unique name.
+Use `map` to create a set of key-value pairs, e.g., `(map @tas *)` for a set of `@tas` and `*` pairs.  The `@tas` value serves as the 'key', which is a mechanism for tagging or naming the value, `*`.  The key of each key-value pair is unique; every value in a map gets its own unique name.
 
 One example use case is for storing customer information as a set of pairs: `(map [employee-name employee-data])`.
 
-The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps [here](/docs/reference/library/2i/).  As was the case with sets, the underlying noun of each map is a tree.
+The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps here [here](/docs/reference/library/2i/).  As was the case with sets, the underlying noun of each map is a tree.
 
 Two common methods for populating a map include (1) creating it from a list of key-value cells using the `my` function, and (2) inserting items into a map using the `put` arm of the `by` core.
 
@@ -246,36 +246,36 @@ Using `my`:
 > =c (my ~[[%one 1] [%two 2] [%three 3]])
 
 > c
-[n=[p=%two q=2] l={[p=%three q=3] [p=%one q=1]} r={}]
+[n=[p=%one q=1] l={[p=%two q=2]} r={[p=%three q=3]}]
 
 > =c `(map @tas @)`c
 
 > c
-{[p=%three q=3] [p=%one q=1] [p=%two q=2]}
+{[p=%two q=2] [p=%one q=1] [p=%three q=3]}
 ```
 
 We can add a key-value pair with `put` of `by`:
 
 ```
 > (~(put by c) [%four 4])
-[n=[p=%two q=2] l={[p=%three q=3] [p=%four q=4] [p=%one q=1]} r={}]
+[n=[p=%one q=1] l={[p=%four q=4] [p=%two q=2]} r={[p=%three q=3]}]
 
 > `(map @tas @)`(~(put by c) [%four 4])
-{[p=%three q=3] [p=%four q=4] [p=%one q=1] [p=%two q=2]}
+{[p=%four q=4] [p=%two q=2] [p=%one q=1] [p=%three q=3]}
 ```
 
 Delete a key-value pair with `del` of `by`, keeping in mind that you only need to pick the key of the pair to be deleted:
 
 ```
 > `(map @tas @)`(~(del by c) %two)
-{[p=%three q=3] [p=%one q=1]}
+{[p=%one q=1] [p=%three q=3]}
 ```
 
 You can produce the value of a key-value pair using `get` of `by` on the key:
 
 ```
 > (~(get by c) %two)
-[~ u=2]
+[~ 2]
 ```
 
 This result may be unexpected.  Why didn't it just give us `2`?  The answer has to do with the possibility that a requested key may not be in the map.  For example:
@@ -287,7 +287,7 @@ This result may be unexpected.  Why didn't it just give us `2`?  The answer has 
 
 Because there is no `%chicken` key in `c`, `get` simply returns `~` to indicate it's not in the map.  Otherwise it returns a pair like the one you see in the next to last example.
 
-`get` of `by` returns the key's value as a `unit`, not as raw data.  There are two kinds of `unit`s: null `~`, and non-null.  A non-null `unit` is a pair of `[~ u=value]`.  Unit types are constructed the way list, set, and map types are; for example, `(unit @)` is the type for a unit whose value is an atom.
+`get` of `by` returns the key's value as a `unit`, not as raw data.  There are two kinds of `unit`s: null `~`, and non-null.  A non-null `unit` is a pair of `[~ value]`.  Unit types are constructed the way list, set, and map types are; for example, `(unit @)` is the type for a unit whose value is an atom.
 
 If you want to get some key value without producing a unit, use `got` instead:
 
@@ -297,7 +297,7 @@ If you want to get some key value without producing a unit, use `got` instead:
 
 > (~(got by c) %chicken)
 ####
-ford: build failed
+ford: %ride failed to execute:
 ```
 
 Use `has` of `by` to see whether a certain key is in the map:
@@ -314,9 +314,10 @@ You can use `run` of `by` to apply a gate to each value in a map, producing a ma
 
 ```
 > (~(run by c) |=(a=@ (mul 2 a)))
-{[p=%three q=6] [p=%one q=2] [p=%two q=4]}
+{[p=%two q=4] [p=%one q=2] [p=%three q=6]}
 ```
 
 There are other map functions in the Hoon standard library that didn't cover here.
 
 ### [Next Up: <placeholder>]
+
