@@ -1,6 +1,6 @@
 +++
 title = "1.4 Lists"
-weight = 7
+weight = 6
 template = "doc.html"
 +++
 

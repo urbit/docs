@@ -1,6 +1,6 @@
 +++
 title = "1.2 Nouns"
-weight = 4
+weight = 3
 template = "doc.html"
 +++
 

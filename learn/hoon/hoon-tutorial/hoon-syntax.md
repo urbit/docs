@@ -1,6 +1,6 @@
 +++
 title = "1.3 Hoon Syntax"
-weight = 6
+weight = 4
 template = "doc.html"
 +++
 
