@@ -99,14 +99,14 @@ Using `sy`:
 > =c (sy ~[11 22 33 44 55])
 
 > c
-[n=11 l={} r={22 33 44 55}]
+[n=11 l={} r={22 55 33 44}]
 
 > `(set @)`c
 {11 22 55 33 44}
 
 > =c `(set @)`c
 ```
-Note that Dojo does not necessarily print elements of a set in the same order they were given. Mathematically speaking, sets are not ordered, so this is alright. There is no difference between two sets with the same elements written in a different order. Try forming `c` with a different ordering and check this.
+Note that the dojo does not necessarily print elements of a set in the same order they were given. Mathematically speaking, sets are not ordered, so this is alright. There is no difference between two sets with the same elements written in a different order. Try forming `c` with a different ordering and check this.
 
 And we can add an item to the set using `put` of `in`:
 
@@ -320,4 +320,3 @@ You can use `run` of `by` to apply a gate to each value in a map, producing a ma
 There are other map functions in the Hoon standard library that didn't cover here.
 
 ### [Next Up: <placeholder>]
-
