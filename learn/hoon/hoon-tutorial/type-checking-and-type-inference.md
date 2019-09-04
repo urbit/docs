@@ -129,7 +129,7 @@ nest-fail
 nest-fail
 ```
 
-We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation when we discuss type polymorphism in Chapter 3.
+We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation when we discuss type polymorphism later in Chapter 2.
 
 This isn't a comprehensive list of the type checks in Hoon.  It's only some of the most commonly used kinds.  Two other runes that include a type check are `=.` and `%_`.
 
@@ -175,7 +175,7 @@ It's important to remember to include a cast rune with each gate expression.  Th
 
 ### (Dry) Gate Sample Definitions
 
-By now you've used the `|=` rune to define several gates.  This rune is used to produce a 'dry' gate, which has different type-checking and type-inference properties than a 'wet' gate does.  We won't explain the wet/dry distinction until Chapter 3 -- for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
+By now you've used the `|=` rune to define several gates.  This rune is used to produce a 'dry' gate, which has different type-checking and type-inference properties than a 'wet' gate does.  We won't explain the wet/dry distinction until later in Chapter 2 -- for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
 
 The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider again the addition function:
 
