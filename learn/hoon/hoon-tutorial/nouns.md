@@ -139,7 +139,7 @@ In computer science, a 'literal' is an expression that represents and evaluates 
 -0x9d
 ```
 
-All of the above are atoms.  The underlying noun of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the atom is to be represented in a different way.  To see their values in the default atom notation, you can tell Hoon to throw away the aura information.  Do this by preceding each expression above with `\`@\``.
+All of the above are atoms.  The underlying noun of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the atom is to be represented in a different way.  To see their values in the default atom notation, you can tell Hoon to throw away the aura information.  Do this by preceding each expression above with `` `@` ``.
 
 ```
 > `@`0b1001
@@ -264,7 +264,7 @@ Aura         Meaning                        Example of Literal Syntax
 
 #### Casting to Other Auras
 
-You can force Hoon to interpret an atom differently by using the aura symbols in the chart above; e.g., `\`@ux\`` for unsigned hexadecimal, `\`@ub\`` for unsigned binary, etc.:
+You can force Hoon to interpret an atom differently by using the aura symbols in the chart above; e.g., `` `@ux` `` for unsigned hexadecimal, `` `@ub` `` for unsigned binary, etc.:
 
 ```
 > `@ux`157
