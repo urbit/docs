@@ -1,6 +1,6 @@
 +++
 title = "Cheat sheet"
-weight = 4
+weight = 5
 template = "doc.html"
 +++
 
