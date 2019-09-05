@@ -77,7 +77,7 @@ nest-fail
 
 ### The `.=` and `.+` Runes
 
-You saw earlier in the chapter how a type check is performed when `.=` -- or its irregular variant, `=( )` -- is used.  For any expression of the form `=(a b)`, either the type of `a` must be a subset of the type of `b` or the type of `b` must be a subset of the type of `a`.  Otherwise, the type check fails and you'll get a `nest-fail`.
+You saw earlier in Chapter 1 how a type check is performed when `.=` -- or its irregular variant, `=( )` -- is used.  For any expression of the form `=(a b)`, either the type of `a` must be a subset of the type of `b` or the type of `b` must be a subset of the type of `a`.  Otherwise, the type check fails and you'll get a `nest-fail`.
 
 ```
 > =(12 [33 44])
@@ -190,13 +190,11 @@ $(a +(a), b (dec b))                                    ::  add a+1 and b-1
 We run it in the dojo using a cell to pass the two arguments:
 
 ```
-> +add [12 14]
+> (add 12 14)
 26
 
-> +add 22
+> (add 22)
 nest-fail
--want.{a/@ b/@}
--have.@ud
 ```
 
 If you try to call this gate with the wrong kind of argument, you get a `nest-fail`.  If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`.  Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of aura.
