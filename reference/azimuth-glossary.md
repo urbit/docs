@@ -39,27 +39,27 @@ Multipass is a planned feature of an Azimuth point that can be used as a univers
 
 #### Network Explorer
 
-A Bridge-based interface for browsing Azimuth identities. You can do things such as see which ships are on which parties, and much more.
+A Bridge-based interface for browsing Azimuth identities. You can do things such as see which ships are on which invite pools, and much more.
 
 ### Ownership Address
 
 The Ethereum address that owns a point. As the owner, it can perform all possible operations for that point.
 
-### Party
+### Invite Pool
 
-Also called an _invite tree_. A host starts a party and all individuals invited to this tree have the ability to share remaining, unclaimed invites with others; when an invite is sent to someone, they become a full member of the party and themselves have the ability to invite. So parties grow like a tree.
+Also called an _invite tree_. A host starts a pool and all individuals invited to it have the ability to share remaining, unclaimed invites with others; when an invite is sent to someone, they become a full member of the invite pool and themselves have the ability to invite. So membership of the invite pool grows like a tree.
 
-#### Party Host
+#### Pool Host
 
-The ship that generates the party. It's most often a star.
+The ship that generates the invite pool. It's most often a star.
 
 #### Guest List
 
-The names of planets invited to the same party, as viewed by a party host.
+The names of planets invited to the same invite pool, as viewed by the pool host.
 
 #### Invite Cohort
 
-The names of planets invited to the same party, as viewed by a guest/planet in a party.
+The names of planets invited to the same invite pool, as viewed by the pool's member's.
 
 #### Sending Invites
 
