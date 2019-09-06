@@ -372,8 +372,8 @@ Irregular: `?(%foo %baz)` is `$?(%foo %baz)`.
 ##### Discussion
 
 For a union of atoms, a `$?` is fine.  For more complex nouns,
-always try to use a [`$%`](#buccen), [`$@`](#bucpat) or
-[`$^`](#buchep), at least if you expect your structure to be used as a
+always try to use a [`$%`](#buccen), [`$@`](#bucvat) or
+[`$^`](#bucket), at least if you expect your structure to be used as a
 normalizer.
 
 ##### Examples
