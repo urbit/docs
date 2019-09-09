@@ -6,7 +6,7 @@ template = "sections/docs/chapters.html"
 +++
 Various reference documents are stored here, particularly for Hoon, but also for other parts of the system.
 
-## [The Glossary](@/docs/reference/glossary.md)
+## [The Arvo Glossary](@/docs/reference/arvo-glossary.md)
 
 Urbit is known for introducing a great deal of new terminology. The glossary will
 help demystify our jargon.
