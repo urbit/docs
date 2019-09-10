@@ -10,7 +10,7 @@ This guide assumes that you own an Azimuth identity, or that you have found some
 
 ## Online Bridge
 
-To connect to Bridge, type `<identity-name>.azimuth.network` into your browser, where `<identity-name>` is the name of your Azimuth identity, minus the `~`. If you were invited to claim an Azimuth identity, it's very likely that you received an email that would direct you to Bridge, and you can simply follow the hyperlink in that email.
+To connect to Bridge, type `https://bridge.urbit.org` into your browser, and enter the your identity's credentials in the appropriate fields. If you were invited to claim an Azimuth identity, it's very likely that you received an email that would direct you to Bridge, and you can simply follow the hyperlink in that email.
 
 Once you arrive Proceed through the steps presented to you. You'll eventually arrive at a page with a few choices: `Invite`, `Admin`, and `Boot Arvo`. `Admin` is the only option that you're interested in right now; click on it. On the "Admin" page, click the `Download Arvo Keyfile` button. Once you have downloaded the keyfile, you can exit Bridge ands proceed to the guide to [installing Arvo](@/docs/getting-started/installing-urbit.md).
 
