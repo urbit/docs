@@ -190,10 +190,10 @@ $(a +(a), b (dec b))                                    ::  add a+1 and b-1
 We run it in the dojo using a cell to pass the two arguments:
 
 ```
-> (add 12 14)
+> +add 12 14
 26
 
-> (add 22)
+> +add 22
 nest-fail
 ```
 
