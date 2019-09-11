@@ -189,7 +189,7 @@ As is the case with dry arms, there is a type-check associated with each wet arm
 
 ### Parametric Polymorphism and `+*` Arms
 
-In Chapter 2 we saw how to use the `+*` rune to define an arm that produced a more complex type from one or more simpler types.  This rune provides a way of making use of **parametric polymorphism** in Hoon.
+We may use the `+*` rune to define an arm that produced a more complex type from one or more simpler types.  This rune provides a way of making use of **parametric polymorphism** in Hoon.
 
 For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each defined in `hoon.hoon` with `+*` arms.  (Take a moment to see for yourself.)  Each `+*` arm is followed by an argument definition, inside brackets `[ ]`.  After that subexpression comes another that defines a type, relative to the input value.  For example, here is the definition of `list` from `hoon.hoon`:
 
