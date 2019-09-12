@@ -74,16 +74,18 @@ see this in action try entering `)` as the first character at the Dojo
 prompt. Since there is no Dojo command or Hoon expression that starts
 with ')', the Dojo rejects it.
 
-`Ctrl-x` - Switches the prompt between running console apps
+`Ctrl-x` - Switches the prompt between running console apps.
 
-`Ctrl-c` - Crash current event.  Processed at the Unix layer and prints a stack
+`Ctrl-c` - Crash current event.  Processed at the Unix layer and prints a stack.
 trace.
 
 `Ctrl-d` - From Talk or Dojo, stops your Urbit process.
 
 `Ctrl-z` - Stops the Urbit process from _anywhere_.
 
-`↑` / `↓` - History navigation
+`↑` / `↓` - History navigation.
+
+`Backspace` - Interrupts running commands. For example, if you have begun a multiline Hoon expression and then press backspace, it will discard the already-written code, or if you press backspace while a request is still pending it will cancel it and print `! cancel /hand`.
 
 The following emacs-style key bindings are available:
 
