@@ -85,7 +85,7 @@ trace.
 
 `↑` / `↓` - History navigation.
 
-`Backspace` - Interrupts running commands. That is, if you have e.g. began a multiline Hoon expression and then press backspace, it will discard the already-written code, and if you press backspace while a request is still pending it will cancel it and print `! cancel /hand`.
+`Backspace` - Interrupts running commands. For example, if you have begun a multiline Hoon expression and then press backspace, it will discard the already-written code, or if you press backspace while a request is still pending it will cancel it and print `! cancel /hand`.
 
 The following emacs-style key bindings are available:
 
