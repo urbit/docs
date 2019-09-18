@@ -1,10 +1,10 @@
 +++
 title = "Ship Troubleshooting"
-weight = 7
+weight = 8
 template = "doc.html"
 +++
 
-Urbit is still in the development stage, so there's a chance that your ship won't start properly. That's ok! This document is intended to help you in the event of your ship not working correctly.
+Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you. That's ok! This document is intended to help you in such an event.
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ If you accidentally booted with the same keyfile twice, the only remedy is perfo
 
 **Turn your ship off and on again.** Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
 
-**Perform a personal breach.** {#personal-breach} A breach is when ships on the network reset their continuity; all other ships. A personal breach is when a single ship resets its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
+**Perform a personal breach.** {#personal-breach} A breach is when ships on the network reset their continuity. The breaching ship clears its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
 
 Personal breaches often fix connectivity issues, but should only be used as a last resort.
 
