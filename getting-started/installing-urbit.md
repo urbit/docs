@@ -41,11 +41,11 @@ tar xzf urbit-linux64-v0.8.2.tgz
 ./urbit
 ```
 
-To access your Urbit via HTTP on port 80, you may need to run the following:
+To access your Urbit via HTTP on port 80 on Ubuntu, you may need to run the following:
 
 ```
 sudo apt-get install libcap2-bin
-sudo setcap 'cap_net_bind_service=+ep' $(which urbit)
+sudo setcap 'cap_net_bind_service=+ep' /path/to/urbit
 ```
 
 ### Other
