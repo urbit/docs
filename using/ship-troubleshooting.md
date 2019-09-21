@@ -1,10 +1,10 @@
 +++
 title = "Ship Troubleshooting"
-weight = 7
+weight = 8
 template = "doc.html"
 +++
 
-Urbit is still in the development stage, so there's a chance that your ship won't start properly. That's ok! This document is intended to help you in the event of your ship not working correctly.
+Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you. That's ok! This document is intended to help you in such an event.
 
 ## Table of Contents
 
