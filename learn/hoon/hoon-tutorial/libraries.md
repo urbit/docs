@@ -18,9 +18,9 @@ In Hoon, like in other languages, it's often useful to create a library for othe
   |-
   ?:  (gth i 4)
     mydeck
-  =/  j  1
+  =/  j  2
   |-
-  ?.  (lte j 13)
+  ?.  (lte j 14)
     ^$(i +(i))
   %=  $
     j       +(j)
@@ -112,7 +112,7 @@ The `?+` rune is the rune to switch against a value with a default.  The default
   ==
 ```
 
-`num-to-suit` is used in the `make-deck` arm shown above. This arm should be quite readable to you at this point. Here we simply have two loops where we use counters to build up the full set of 52 cards, by cycling through every possible suit and number and combining them. Once we have reached the point where `j` is greater than 13, we're going to jump back out to the "suit" outer-loop and increment `i`. `?.` may be an unfamiliar rune; it is simply the inverted version of `?:`, so the first branch is actually the "no" branch and the second is the "yes" branch. This is done to keep the "heaviest" branch at the bottom.
+`num-to-suit` is used in the `make-deck` arm shown above. This arm should be quite readable to you at this point. Here we simply have two loops where we use counters to build up the full set of 52 cards, by cycling through every possible suit and number and combining them. Once we have reached the point where `j` is greater than 14, we're going to jump back out to the "suit" outer-loop and increment `i`. `?.` may be an unfamiliar rune; it is simply the inverted version of `?:`, so the first branch is actually the "no" branch and the second is the "yes" branch. This is done to keep the "heaviest" branch at the bottom.
 
 
 ```
