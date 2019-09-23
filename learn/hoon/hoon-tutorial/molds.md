@@ -1,11 +1,10 @@
 +++
-title = "Molds"
-weight = 0
+title = "2.3.1 Molds"
+weight = 28
 template = "doc.html"
 +++
 
-A mold is a
-[//]: # (You should finish this thought :P)
+A mold is a function that coerces a noun to a type or crashes.
 
 Let's take some examples from `hoon.hoon`. `|$` is a new rune as of the writing of this document so you may see this spelled in slightly different way if you don't have the latest version of `hoon.hoon`. `|$` is the mold builder rune which takes a list of molds and produces a mold.
 
@@ -14,6 +13,7 @@ Let's take some examples from `hoon.hoon`. `|$` is a new rune as of the writing 
   |$  [head tail]
   [p=head q=tail]
 ```
+
 Here is a very simple mold builder. It takes two molds and produces a mold that is a pair of those with the faces `p` and `q`. An example of using this would be `(pair @ud @ud)` which would produce a mold for a cell of `@ud` and `@ud`.
 
 ```
