@@ -1,6 +1,6 @@
 +++
-title = "Gall"
-weight = 0
+title = "2.7.1 Gall"
+weight = 35
 template = "doc.html"
 +++
 
