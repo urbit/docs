@@ -1,5 +1,5 @@
 +++
-title = "2.7.1 Gall"
+title = "2.7 Gall"
 weight = 35
 template = "doc.html"
 +++
