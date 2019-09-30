@@ -101,7 +101,7 @@ The pretty printer represents the `$` arm of `inc` as `1.jgn`.  To see the actua
 
 This is un-computed Nock.  You don't need to understand any of this.
 
-It's worth pointing out that the arm name, `$`, can be used like any other name.  We can compute `$` directly with `$:add` in the dojo:
+It's worth pointing out that the arm name, `$`, can be used like any other name.  We can compute `$` directly with `$:inc` in the dojo:
 
 ```
 > $:inc

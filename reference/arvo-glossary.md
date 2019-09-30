@@ -121,7 +121,7 @@ Below are Arvo modules, which are called "vanes".
   Keystroke in Unix -> Vere (virtual machine) -> Arvo -> Dill -> the Dojo
   ```
 
-  Dill is located at `/home/sys/vane/clay.hoon` within your urbit.
+  Dill is located at `/home/sys/vane/dill.hoon` within your urbit.
 
   More in-depth information on Dill can be found
   [`here`](@/docs/learn/arvo/dill.md).
