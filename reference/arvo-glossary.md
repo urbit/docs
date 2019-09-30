@@ -325,6 +325,11 @@ that can be. Some syntactically invalid expressions can be completed, but the
 Dojo will  prevent them from being entered as a command. You can play around
 with this functionality learn what syntax is kosher.
 
+### desk
+
+A desk is independently revision-controlled branch of urbit filesystem. 
+
+_See [filesystem](@/docs/using/filesystem.md) and [Clay](@/docs/learn/arvo/clay.md)._
 
 ### duct
 
