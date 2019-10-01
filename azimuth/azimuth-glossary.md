@@ -1,6 +1,6 @@
 +++
 title = "Azimuth Glossary"
-weight = 4
+weight = 3
 template = "doc.html"
 +++
 
