@@ -13,9 +13,9 @@ These may not look like numbers, but they are.  Each urbit name is written in a 
 
 ## Installing Urbit
 
-You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](/docs/using/creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
+You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](@/operations/#creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
 
-Once you're finished, you can [boot your very own ship](/docs/getting-started/booting-a-ship/#step-3-run-the-boot-command). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
+Once you're finished, you can [boot your very own ship](/operations/#booting-a-ship). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
 
 ## Getting started
 
@@ -59,7 +59,7 @@ You'll see:
 17
 ```
 
-You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](docs/learn/hoon/hoon-tutorial/nouns/), but first let's write a very basic program.
+You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](docs/hoon/hoon-tutorial/nouns/), but first let's write a very basic program.
 
 ## Generators
 

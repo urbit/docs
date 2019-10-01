@@ -5,9 +5,9 @@ template = "doc.html"
 +++
 
 
-Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities. You need an Azimuth identity to use the Arvo network. All identity-related operations are governed at this layer For more information, see the [Azimuth documentation](https://urbit.org/docs/concepts/azimuth/).
+Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities. You need an Azimuth identity to use the Arvo network. All identity-related operations are governed at this layer For more information, see the [Azimuth documentation](azimuth).
 
-This glossary is intended to familiarize you with Azimuth-related terminology. To brush up on terminology related to Arvo, check out the [Arvo glossary](../arvo-glossary).
+This glossary is intended to familiarize you with Azimuth-related terminology. To brush up on terminology related to Arvo, check out the [Arvo glossary](../arvo/glossary).
 
 ### Azimuth identity
 

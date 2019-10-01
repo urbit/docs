@@ -522,8 +522,7 @@ interact with apps. Generators are the "porcelain" layer. This is why
 when you run a command like `+ls` or `|merge`, there are no marks in
 sight.
 
-We've used generators before, back in [Basic
-Operation](/docs/learn/arvo/arvo-internals/admin). At that point, we just used the
+At that point, we just used the
 generators to produce values -- we didn't pipe their results into apps.
 In the dojo cast, the role of a generator is to take a list of arguments
 and produce a value, which is often, though not always, piped into an
@@ -1064,7 +1063,7 @@ from the command line, which we we did with `:echo 5`
 (`:[app-name] [argument(s)]`).
 
 In this case, `++poke-noun` takes an argument (**sample**) `arg` and
-prints it to dojo with `~&` ([sigpam](/docs/reference/hoon-expressions/rune/sig#sigpam/)).
+prints it to dojo with `~&` ([sigpam](/docs/hoon/hoon-expressions/rune/sig#sigpam/)).
 This is an unusual rune that formally "does nothing", but the interpreter
 detects it and printfs the first child, before executing the second as if the
 first didn't exist. This is a slightly hacky way of printing to the console,
@@ -1210,7 +1209,7 @@ Run it with these commands:
 
 Replace `~sampel-sipnym` with another urbit. The easiest thing to do is to start
 a comet, a free and disposable Urbit identity. If you don't know how to start a
-comet, see [the user setup section](/docs/getting-started/). Don't forget to start
+comet, see [the user setup section](@/operations.md). Don't forget to start
 the `%pong` app on that urbit, too. You should see, on the foreign
 urbit, this output:
 

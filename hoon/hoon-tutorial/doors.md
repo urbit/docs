@@ -499,6 +499,6 @@ It's better simply to use the `~(arm rs arg)` syntax to replace the value of the
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.  Continue to [Chapter 2](../hoon-programs) to get started.
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.  Continue to [Chapter 2](atoms-auras-and-simple-cell-types) to get started.
 
 ### [Next Up: Walkthrough -- Bank Account](../bank-account)

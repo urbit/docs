@@ -308,10 +308,10 @@ Standard library functions are often built with other standard library functions
 
 The Hoon syntax can be intimidating for the uninitiated, so it's good to remember where you can look up expressions can be found. The [reference section](/docs/reference/) itself is a good place to find the reference materials that you need. These children sections are likely to be useful:
 
-- The [Runes](/docs/reference/hoon-expressions/) page will show you how to use any Hoon rune.
+- The [Runes](/docs/hoon/hoon-expressions/) page will show you how to use any Hoon rune.
 - The [Cheat sheet](/docs/reference/cheat-sheet/) is a more compact place to look up rune expressions.
 - The [Standard library](/docs/reference/library/) section has its sub-pages arranged by category. So arithmetic functions, for example, are all found on the same page.
-- The [Hoon Style Guide](/docs/learn/hoon/style/) will show you how to write your Hoon code so that it's idiomatic and easily understood by others.
+- The [Hoon Style Guide](/docs/hoon/style/) will show you how to write your Hoon code so that it's idiomatic and easily understood by others.
 
 ### Debugging
 

@@ -21,7 +21,7 @@ This document will be divided into two main sections: the Sail guide and the Udo
 ## Getting Started {#getting-started}
 
 Before starting with either Sail or Udon, make sure that your ship is
-[mounted to Unix](/docs/getting-started/booting-a-ship)
+[mounted to Unix](@/operations#booting-a-ship)
 
 To host that output, your ship also has a web-server that can be found at
 `localhost` (default port 80) if it’s your first ship that’s running on the
@@ -944,12 +944,12 @@ destination.
 **Example:**
 
 ```
-[I'm an inline-style link](https://www.urbit.org/docs/using/shell)
+[I'm an inline-style link](https://urbit.org/operations/#using-the-shell)
 ```
 
 **Produces:**
 
-[I'm an inline-style link](https://www.urbit.org/docs/using/shell)
+[I'm an inline-style link](https://urbit.org/operations/#using-the-shell)
 
 The second type is a reference-style link, which uses a relative path, based on
 the current page's location. Instead of the full url, we use `..` to fill in

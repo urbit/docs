@@ -28,7 +28,7 @@ If you accidentally booted with the same keyfile twice, the only remedy is perfo
 
 **Avoid killing the Urbit process directly.** The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
 
-**Keep up-to-date builds.** Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/docs/getting-started)
+**Keep up-to-date builds.** Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/operations/)
 
 **`|hi` your star to see if you're connected.** Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star's name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you're in a Talk channel with.
 

@@ -272,7 +272,7 @@ produces the text of the hoon file at "/path/to/hoon-file/hoon".
 passes the contents through unchanged.  In general, rendering a file with a
 mark will potentially run the contents through a series of conversion
 operations. For details on marks, see the
-[Gall docs](../gall).
+[Gall docs](gall).
 
 Here's an example that includes a mark conversion:
 ```hoon

@@ -81,7 +81,7 @@ the perk it into a `%boil` `++ford-req`, adding an `++fcgi` path-segment
 containing query string and `++fcgi-cred:for-client` auth information.
 
 `%ford`s translation of `/=cli=/hymn/hook` to a self-refreshing `%urb` html page
-[deserves its own commentary](/docs/learn/arvo/arvo-internals/ford#commentary), but
+[deserves its own commentary](/docs/arvo/ford#commentary), but
 we resume in `%eyre` when the `%made` sign arrives in `++take`, and soon after
 `++axon:ye`. There the `wire`, or rather the `whir` it has been verified to be,
 determines that the response should be served immediately. However, as the mark
