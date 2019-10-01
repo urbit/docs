@@ -27,7 +27,7 @@ a tape `bomb defused`. If any of the rules were broken, it should output the
 tape `boom`.
 
 
-```
+```hoon
 !:
 :-  %say
 |=  [* [cuts=(list tape) ~] ~]
@@ -106,7 +106,7 @@ rules above we have specified when you cut a wire, which of the other wires you
 cannot cut. This required some reformulating of the rules given to use at the
 start, but it is much simpler to work with.
 
-```
+```hoon
 ++  defuse
   |=  cuts=(list tape)
     =|  bad=(list tape)

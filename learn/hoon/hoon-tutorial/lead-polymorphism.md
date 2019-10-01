@@ -8,7 +8,7 @@ There are four kinds of cores: gold, iron, zinc, and lead. You are able to use c
 
 Lead cores have opaque payloads. That is, the payload can not be written to or read from. Below is an example of using lead cores. The program produces a list populated by the first 10 elements of `fib`.
 
-```
+```hoon
 =<  (to-list (take fib 10))
 |%
 ++  stream
@@ -59,7 +59,7 @@ Lead cores have opaque payloads. That is, the payload can not be written to or r
 There are five arms in this core: `stream`, `stream-type`, `to-list`, `take`, and `fib`.
 
 
-```
+```hoon
 ++  stream
   |*  of=mold
   $_  ^?  |.
@@ -77,7 +77,7 @@ The final `~` here is used as the type produced when initially calling this wet 
 
 Now you can see that a `stream` is either `~` or a pair of a value of some type and a `stream`. This type represents an infinite series.
 
-```
+```hoon
 ++  stream-type
   |*  s=(stream)
   $_  =>  (s)
@@ -89,7 +89,7 @@ Now you can see that a `stream` is either `~` or a pair of a value of some type 
 
 Calling a `stream`, which is a trap, will either produce `item` and `more` or it will produce `~`. If it does produce `~`, the `stream` is empty and we can't find what type it is, so we simply crash with `!!`.
 
-```
+```hoon
 ++  take
   |*  [s=(stream) n=@]
   =|  i=@
@@ -109,7 +109,7 @@ We're going to skip over `to-list` and examine `take` first. `take` is another w
 
 If `i` and `n` are equal, the trap will produce `~`. Otherwise, `s` is called and has its result put on the front of the subject. If its value is `~`, then the trap again produces `~`. Otherwise the trap produces a cell of `item`, the first part of the value of `s`, and a new trap that increments `i`, and sets `s` to be the `more` trap which produces the next value of the `stream`. The result here is a `stream` that will only ever produce `n` items, even if the stream otherwise would have been infinite.
 
-```
+```hoon
 ++  to-list
   |*  s=(stream)
   %-  flop
@@ -127,7 +127,7 @@ Now with that in hand, let's go back to `to-list`. It's also a wet gate that tak
 
 `r` is added to the subject as an empty `list` of whatever type is produced by `s`. A new trap is formed and called, and it will produce the same type as `r`. Then `s` is called and has its value added to the subject. If the result is `~`, the trap produces `r`. Otherwise, we want to call the trap again, adding `item` to the front of `r` and changing `s` to `more`. Now the utility of `take` should be clear. We don't want to feed `to-list` an infinite stream as it would never terminate.
 
-```
+```hoon
 ++  fib
   ^-  (stream @ud)
   =+  [p=0 q=1]
@@ -141,7 +141,7 @@ Now with that in hand, let's go back to `to-list`. It's also a wet gate that tak
 The final arm in our core is `fib`, which is a `stream` of `@ud` and therefore an iron core. It's subject contains `p` and `q`, which will not be accessible outside of this trap. The product of the trap is a pair of an `@ud` and the trap that will produce the next `@ud` in the Fibonacci series.
 
 
-```
+```hoon
 =<  (to-list (take fib 10))
 ```
 

@@ -66,7 +66,7 @@ the path is the same for both.
 When an app (or a vane) wishes to send a packet to another ship, it must
 send a `%wont` card:
 
-```
+```hoon
                   [%wont p=sock q=path r=*]                 ::  e2e send message
 ```
 
@@ -96,7 +96,7 @@ But enough about the interface. Grepping in ames.hoon for `%wont`, we
 find that it appears in `++knob`. We see that we go
 directly into `++wise:am`.
 
-```
+```hoon
         ++  wise                                            ::    wise:am
           |=  [soq=sock hen=duct cha=path val=* ete=?]      ::  send a statement
           ^-  [p=(list boon) q=fort]
@@ -119,7 +119,7 @@ The code predates the widespread usage of that name.
 The interesting part, then, is in `++wool:ho:um:am`. Let's look at the
 code.
 
-```
+```hoon
             ++  wool                                        ::    wool:ho:um:am
               |=  [hen=duct cha=path val=* ete=?]           ::  send a statement
               ^+  +>
@@ -164,7 +164,7 @@ Finally, we call `++wind:ho:um:am` with the `++soup` of the path and
 message number and the `++meal:ames` of the payload itself. For end-to-end
 acknowledged messages, we use `%bund`.
 
-```
+```hoon
                   [%bund p=life q=path r=@ud s=*]           ::  e2e message
 ```
 
@@ -173,7 +173,7 @@ is for.
 
 Following the trail a little further, we go to `++wind:ho:um:am`.
 
-```
+```hoon
             ++  wind                                        ::    wind:ho:um:am
               |=  [gom=soup ham=meal]
               ::  ~&  [%wind her gom]
@@ -192,7 +192,7 @@ gate is over. We'll go in order here.
 `++zuul:lax:as:go` is the what converts a `++meal:ames` into a list of
 actual, 1KB packets.
 
-```
+```hoon
             ++  zuul                                        ::    zuul:lax:as:go
               |=  [now=@da ham=meal]                        ::  encode message
               ^-  [p=(list rock) q=_+>]
@@ -208,7 +208,7 @@ three arms. `++wasp` encodes the meal into an atom with no encryption.
 `++wasp`). `++weft` takes the result of `++wisp` and splits it into
 actual packets.
 
-```
+```hoon
               ++  wasp                                      ::  null security
                 ^-([p=skin q=@] [%none (jam ham)])
 ```
@@ -218,7 +218,7 @@ meaning no encryption.
 
 Since `++wisp` is a little long, we'll go through it line-by-line.
 
-```
+```hoon
               ++  wisp                                      ::  generate message
                 ^-  [[p=skin q=@] q=_..wisp]
 ```
@@ -226,7 +226,7 @@ Since `++wisp` is a little long, we'll go through it line-by-line.
 `++wisp` produces a pair of a `skin` and an atom, which is the meal
 encoded as a single atom and possibly encrypted.
 
-```
+```hoon
                 ?:  =(%carp -.ham)
                   [wasp ..wisp]
 ```
@@ -236,7 +236,7 @@ A `%carp` meal is a partial meal, used when a message is more than 1KB.
 Since the entire message is already encrypted, we don't need to encrypt
 each packet individually again.
 
-```
+```hoon
                 ?:  !=(~ yed.caq.dur)
                   ?>  ?=(^ yed.caq.dur)
                   :_  ..wisp
@@ -249,7 +249,7 @@ each packet individually again.
 If we have a symmetric key set up with this neighbor, then we simply use
 it. The skin `%fast` is used to indicate a symmetric key.
 
-```
+```hoon
                 ?:  &(=(~ lew.wod.dur) |(=(%back -.ham) =(%buck -.ham)))
                   [wasp ..wisp]
 ```
@@ -259,7 +259,7 @@ can seal the message so that only they may read it. If what we're
 sending is an acknowledgment, then we go ahead and just send it in the
 clear.
 
-```
+```hoon
                 =^  tuy  +>.$
                   ?:(=(~ lew.wod.dur) [*code +>.$] (griz now))
 ```
@@ -268,7 +268,7 @@ If we don't have our neighbor's will, then we "encrypt" with a key of 0.
 If we do have their will, then we generate a new symmetric key that we
 will propose.
 
-```
+```hoon
                 :_  ..wisp
                 =+  yig=sen
                 =+  bil=law.saf                             ::  XX send whole will
@@ -278,7 +278,7 @@ will propose.
 `yig` will be the life and engine for our current crypto. `bil` is our
 will. `hom` is the meal encoded as a single atom.
 
-```
+```hoon
                 ?:  =(~ lew.wod.dur)
                   :-  %open
                   %^    jam
@@ -291,7 +291,7 @@ If we do not have our neighbor's will, then we send our current life
 along with our will and the message. The message itself is "signed" with
 a key of 0.
 
-```
+```hoon
                 :-  %full
                   =+  cay=cluy
                   %^    jam
@@ -307,7 +307,7 @@ is sealed with their public key so that only they can read our message.
 
 Once we have the message encoded as an atom, `++weft` goes to work.
 
-```
+```hoon
               ++  weft                                      ::  fragment message
                 ^-  [p=(list rock) q=_+>.$]
                 =^  gim  ..weft  wisp
@@ -318,7 +318,7 @@ Once we have the message encoded as an atom, `++weft` goes to work.
 We're going to produce a list of the packets to send. First, we use the
 aforementioned `++wisp` to get the message as an atom.
 
-```
+```hoon
                 =+  wit=(met 13 q.gim)
                 ?<  =(0 wit)
 ```
@@ -326,7 +326,7 @@ aforementioned `++wisp` to get the message as an atom.
 `wit` is the number of 1KB (2\^13 bit) blocks in the message. We assert
 that there is at least one block.
 
-```
+```hoon
                 ?:  =(1 wit)
                   =+  yup=(spit [our her] p.gim q.gim)
                   [yup ~]
@@ -335,7 +335,7 @@ that there is at least one block.
 If there is exactly one block, then we just call `++spit` to turn the
 message into a packet. We'll explain what `++spit` does momentarily.
 
-```
+```hoon
                 =+  ruv=(rip 13 q.gim)
                 =+  gom=(shaf %thug q.gim)
                 =+  inx=0
@@ -345,7 +345,7 @@ If there is more than one block, then we rip it into blocks in `ruv`.
 `gom` is a hash of the message, used as an id. `inx` is the number of
 packets we've already made.
 
-```
+```hoon
                 |-  ^-  (list rock)
                 ?~  ruv  ~
                 =+  ^=  vie
@@ -359,7 +359,7 @@ packets we've already made.
 Here we package each block into a packet with `++spit` and produce the
 list of packets.
 
-```
+```hoon
       ++  spit                                              ::  cake to packet
         |=  kec=cake  ^-  @
         =+  wim=(met 3 p.p.kec)
@@ -426,7 +426,7 @@ This concludes our discussion of `++zuul:lax:as:go`. If you recall from
 `++whap:pu` to update the packet pump and get any packets that can be
 sent immediately.
 
-```
+```hoon
         ++  whap                                            ::    whap:pu
           |=  [now=@da gom=soup wyv=(list rock)]            ::  send a message
           ^-  [(list rock) _+>]
@@ -456,7 +456,7 @@ the packet itself.
 
 Finally, we harvest the packet pump.
 
-```
+```hoon
         ++  harv                                            ::    harv:pu
           |=  now=@da                                       ::  harvest queue
           ^-  [(list rock) _+>]
@@ -480,7 +480,7 @@ we initialize `rub` to nil. `rub` will be the list of packets that are
 ready to be sent. We then call `++apse` and pass the result to `++abet`.
 `++apse` decides which packets are ready to be sent.
 
-```
+```hoon
           ++  apse
             ^+  .
             ?~  puq  .
@@ -515,7 +515,7 @@ send; (3) increment `nif`, the number of live packets; (4) set the
 packet to be live; (5) increment the number of transmissions of the
 packet; and (6) set the last sent time of the packet to now.
 
-```
+```hoon
           ++  left
             ?>  ?=(^ puq)
             ^+(. =+(lef=apse(puq l.puq) lef(puq [n.puq puq.lef r.puq])))
@@ -529,7 +529,7 @@ so that `++apse` gets called recursively through it.
 
 Finally, `++abet` gets called, which resolves the changes.
 
-```
+```hoon
           ++  abet
             ?~  rub  [~ +>.$]
             [(flop rub) +>.$(rtn [~ (add rto now)])]
@@ -544,7 +544,7 @@ wait, in the call to `++busk`, the first argument is `xong:diz`. What is
 this? This, my dear reader, is one more detour, this time into
 `++xong:lax:as:go`.
 
-```
+```hoon
             ++  xong                                        ::    xong:lax:as:go
               ^-  (list ship)                               ::  route unto
               =+  [fro=xen too=xeno]
@@ -583,7 +583,7 @@ trying, in order, to find a lane to these.
 
 Now, we can finally get to `++busk:ho:um:am`.
 
-```
+```hoon
             ++  busk                                        ::    busk:ho:um:am
               |=  [waz=(list ship) pax=(list rock)]         ::  send packets
               %_    +>
@@ -599,7 +599,7 @@ and convert them to `++boon:ames`s with `++wist:lax:as:go`. These boons are
 placed into `bin`, and they end up getting processed by `++clop` (this
 happens in `++knob`).
 
-```
+```hoon
             ++  wist                                        ::    wist:lax:as:go
               |=  $:  now=@da                               ::  route via
                       waz=(list ,@p)
@@ -666,7 +666,7 @@ of moves. In `++clop`, we see the handling of each specific boon. The
 one we are interested in is `%ouzo`, since that is the only one we have
 sent thus far.
 
-```
+```hoon
             %ouzo
           ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
           :_  fox
@@ -687,7 +687,7 @@ And now we reenter the kernel.
 The `%hear` task goes straight to `++knob`, just as did the `%wont` task
 earlier.
 
-```
+```hoon
                 %hear
               (~(gnaw am [now fox]) %good p.kyz q.kyz)
 ```
@@ -701,7 +701,7 @@ event system, the `%hear` event will never be considered to have
 actually happened, and unix will send a `%hole` task so that we may send
 a negative acknowledgment.
 
-```
+```hoon
         ++  gnaw                                            ::    gnaw:am
           |=  [kay=cape ryn=lane pac=rock]                  ::  process packet
           ^-  [p=(list boon) q=fort]
@@ -722,7 +722,7 @@ simply ignore the packet entirely. Otherwise, we parse the packet with
 of the `sock` (pair of sender and receiver), the `skin` (encryption
 type), and the data.
 
-```
+```hoon
       ++  bite                                              ::  packet to cake
         |=  pac=rock  ^-  cake
         =+  [mag=(end 5 1 pac) bod=(rsh 5 1 pac)]
@@ -760,7 +760,7 @@ and a hash of the packet, used as an id.
 contains a little helper core inside of it, which starts immediately
 with `++apse`.
 
-```
+```hoon
                 ++  apse
                   ^+  +>.$
                   =+  oub=bust:puz
@@ -795,7 +795,7 @@ first decrypts the message, then calls `++chow:la:ho:um:am` with the
 resultant meal. We'll go through each of the four cases in turn, but
 first since each one calls `++bilk:pu`, we'll take a brief detour.
 
-```
+```hoon
         ++  bilk                                            ::    bilk:pu
           |=  now=@da                                       ::  inbound packet
           ^+  +>
@@ -815,7 +815,7 @@ we've just heard a message.
 
 Back to `++east`.
 
-```
+```hoon
                       %none
                     =.  puz  (bilk:puz now)
                     (chow ((hard meal) (cue msg)))
@@ -827,7 +827,7 @@ a meal. We hard cast it into a meal -- if the cast fails, then we do
 want to crash since someone is sending us malformed data. Finally, we
 send the result to `++chow` for interpretation and handling.
 
-```
+```hoon
                       %fast
                     =+  [mag=`hand`(end 7 1 msg) bod=(rsh 7 1 msg)]
                     =+  dey=(kuch:diz mag)
@@ -849,7 +849,7 @@ message.
 Otherwise, we call `++bilk` as before to update the packet pump and pass
 into `++chow` the decrypted data.
 
-```
+```hoon
                       %full
                     =+  mex=((hard ,[p=[p=life q=life] q=will r=@]) (cue msg))
                     =.  diz  (deng:diz q.mex)
@@ -874,7 +874,7 @@ key from our neighbor's crypto. We register the proposed symmetric key,
 update the packet pump, and call `++west`, which simply casts the
 message to a meal and calls `++chow`, reporting any error.
 
-```
+```hoon
                       %open
                     =+  mex=((hard ,[p=[~ q=life] q=will r=@]) (cue msg))
                     =.  diz  (deng:diz q.mex)
@@ -894,7 +894,7 @@ The rest you have seen. We call `++deng` to extend the will, we verify
 that their crypto life is what we think it ought to be, we "decrypt" the
 data, we update the packet pump, and we call `++west` to call `++chow`.
 
-```
+```hoon
               ++  chow                                      ::    chow:la:ho:um:am
                 |=  fud=meal                                ::  interpret meal
                 ^+  +>
@@ -912,7 +912,7 @@ we want to do with it. The telos is of any meal to be dined on. We will
 choose out the cases here that are important to our current
 investigation.
 
-```
+```hoon
                     %fore
                   =+  ^=  lyn  ^-  lane
                       ?~  q.fud  ryn
@@ -932,7 +932,7 @@ resolves. If we're told to forward a packet to ourselves, then we emit a
 `%mead` boon which simply sends another `%hear` task to ourselves with
 the data. Otherwise, we try to find a route to the recipient, as before.
 
-```
+```hoon
                     %carp
                   =+  zol=(~(get by olz.weg) s.fud)
                   ?^  zol  cock(kay u.zol)
@@ -975,7 +975,7 @@ complete message into `olz.weg`, and call `++golf`, which assembles the
 message and calls `++chew`, to start the dance again with the complete
 message.
 
-```
+```hoon
                     %bund
                   ::  ~&  [%bund q.fud r.fud]
                   ?>  =(p:sen:gus p.fud)
@@ -989,7 +989,7 @@ unix rather than a `%hear` card), then we don't even send the data at
 all. Remember, if a packet fails to process, it's as if it never even
 arrived, except that we send a negative acknowledgment.
 
-```
+```hoon
               ++  deer                                      ::    deer:la:ho:um:am
                 |=  [cha=path num=@ud dut=(unit)]           ::  interpret message
                 ^+  +>
@@ -1029,7 +1029,7 @@ acknowledgment.
 
 Otherwise, we're ready for a packet, so we process it.
 
-```
+```hoon
             ++  coat                                        ::    coat:ho:um:am
               |=  [cha=path rum=race]                       ::  update input race
               ^+  +>
@@ -1064,7 +1064,7 @@ been here before, if you recall, when we handled the `%cake` boon to
 send a message. Now, we're handling the `%mulk` boon, which is
 unfortunately slightly more complicated.
 
-```
+```hoon
             %mulk
           ::  ~&  [%mulk p.bon q.bon]
           ?>  ?=([@ @ *] q.q.bon)
@@ -1140,7 +1140,7 @@ After this brief interlude, our story resumes in `++knap`, where we
 receive responses. In particular, a `%mean` indicates a negative
 acknowledgment while a `%nice` indicates a positive acknowledgment.
 
-```
+```hoon
             ?(%mean %nice)
           ?>  ?=([@ @ @ *] tea)
           =+  soq=[(slav %p i.tea) (slav %p i.t.tea)]
@@ -1164,7 +1164,7 @@ which the message was sent. The rest of this is structured much like
 `++knob`, so we call `++rack:am` and send the resulting boons to
 `++clop`. Business as usual.
 
-```
+```hoon
         ++  rack                                            ::    rack:am
           |=  [soq=sock cha=path cop=coop]                  ::  e2e ack
           =+  oh=(ho:(um p.soq) q.soq)
@@ -1178,7 +1178,7 @@ new, though. Well, `++cook` is not actually new, but we delayed the
 explanation saying only that it sends an acknowledgment. The time has
 come.
 
-```
+```hoon
             ++  cook                                        ::    cook:ho:um:am
               |=  [cop=coop cha=path ram=(unit ,[ryn=lane dam=flap])]
               ^+  +>                                        ::  acknowledgment
@@ -1253,7 +1253,7 @@ The last thing we need to do on this ship is move on to the next packet
 in the queue if there is one. If you recall, in `++rack` after the call
 to `++cook` there was a call to `++cans:ho:um:am`.
 
-```
+```hoon
             ++  cans                                        ::    cans:ho:um:am
               |=  cha=path
               =+  rum=(need (~(get by raz.bah) cha))
@@ -1285,7 +1285,7 @@ going over to `++chew`, `++apse`, `++chow`, and eventualy to `++dine`.
 We've seen most of the cases in `++dine`, but we haven't yet looked at
 the handling of this `%buck` meal.
 
-```
+```hoon
                     %buck
                   =.  +>  ?.(=(%full aut) +> cock)          ::  finish key exch
                   +>(..la (tock p.fud q.fud r.fud))
@@ -1300,7 +1300,7 @@ as a `%woot` card back to the app who sent it. For those brave souls who
 wish to see this thing through to the end, it's once more into the
 breach.
 
-```
+```hoon
             ++  tock                                        ::    tock:ho:um:am
               |=  [cop=coop fap=flap cot=@dr]               ::  e2e ack by hash
               ^+  +>
@@ -1324,7 +1324,7 @@ skip `++bick` for the moment and finish the rest.
 
 If `++bick` succesfully acks the message, then we call `++done`.
 
-```
+```hoon
             ++  done                                        ::    done:ho:um:am
               |=  [cha=path num=@ud]                        ::  complete outgoing
               ^-  [(unit duct) _+>]
@@ -1357,7 +1357,7 @@ ones have been acknowledged.
 We'll look at the processing of the `%cake` boon in `++clop` before we
 get back to talking about `++bick`.
 
-```
+```hoon
             %cake
           :_  fox
           :~  [s.bon %give %woot q.p.bon r.bon]
@@ -1374,7 +1374,7 @@ the application. Our job is done.
 
 Well, except that we skipped `++bick:pu`. Let's go back to that.
 
-```
+```hoon
         ++  bick                                            ::    bick:pu
           |=  [now=@da fap=flap]                            ::  ack by hash
           ^-  [[p=(unit soup) q=(list rock)] _+>]
@@ -1401,7 +1401,7 @@ In `++bock`, there are three arms we haven't seen before: `++bine`,
 `+wept`, and `++beet`. We'll describe each of these before we get to
 `++bock`. `++bine` looks scariest.
 
-```
+```hoon
         ++  bine                                            ::    bine:pu
           |=  [now=@da num=@ud]                             ::  apply ack
           ^-  [(unit soup) _+>]
@@ -1458,7 +1458,7 @@ message. Otherwise, we simply update `pyz` with the new number of
 unacked messages. In either case, we remove the packet from the packet
 queue.
 
-```
+```hoon
         ++  wept                                            ::    wept:pu
           |=  [fip=@ud lap=@ud]                             ::  fip thru lap-1
           =<  abet  =<  apse
@@ -1489,7 +1489,7 @@ mourn too much the passing of these packets, know that they shall soon
 rise again. Recall that in `++bick` after the call to `++bock` we call
 `++harv`. This will resend the packets that have just been labeled dead.
 
-```
+```hoon
         ++  beet                                            ::    beet:pu
           ^+  .                                             ::  advance unacked
           =-  +(nep ?~(foh nus u.foh))
@@ -1508,7 +1508,7 @@ number of packets sent.
 
 We can now dive into `++bock`, our last arm.
 
-```
+```hoon
         ++  bock                                            ::    bock:pu
           |=  [now=@da num=@ud]                             ::  ack by sequence
           ^-  [(unit soup) _+>]
@@ -1555,7 +1555,7 @@ involved.
 
 ### `++sufi:ames`, domestic host
 
-```
+```hoon
     ++  sufi                                                ::  domestic host
               $:  hoy=(list ship)                           ::  hierarchy
                   val=wund                                  ::  private keys
@@ -1583,7 +1583,7 @@ information about foreign ships. The keys to this map are the neighbors
 
 ### `++wund:ames`, private keys
 
-```
+```hoon
     ++  wund  (list ,[p=life q=ring r=acru])                ::  mace in action
 ```
 
@@ -1595,7 +1595,7 @@ at the head of the list and can be accessed with `++sen:as:go`.
 
 ### `++ring`, private key
 
-```
+```hoon
     ++  ring  ,@                                            ::  private key
 ```
 
@@ -1605,7 +1605,7 @@ key, and the letter identifies which `++acru:ames` to use.
 
 ### `++pass`, public key
 
-```
+```hoon
     ++  pass  ,@                                            ::  public key
 ```
 
@@ -1615,7 +1615,7 @@ and the letter identifies which `++acru:ames` to use.
 
 ### `++mace:ames`, private secrets
 
-```
+```hoon
     ++  mace  (list ,[p=life q=ring])                       ::  private secrets
 ```
 
@@ -1624,7 +1624,7 @@ can generate a `++wund:ames` for actual use.
 
 ### `++skin:ames`, encoding stem
 
-```
+```hoon
     ++  skin  ?(%none %open %fast %full)                    ::  encoding stem
 ```
 
@@ -1635,7 +1635,7 @@ encrypted messages. See `++acru:ames` for details.
 
 ### `++acru:ames`, asymmetric cryptosuite
 
-```
+```hoon
     ++  acru                                                ::  asym cryptosuite
               $_  ^?  |%                                    ::  opaque object
               ++  as  ^?                                    ::  asym ops
@@ -1669,7 +1669,7 @@ which is elliptic-curve cryptography.
 
 #### `++as:acru:ames`, asymmetric operations
 
-```
+```hoon
               ++  as  ^?                                    ::  asym ops
                 |%  ++  seal  |=([a=pass b=@ c=@] _@)       ::  encrypt to a
                     ++  sign  |=([a=@ b=@] _@)              ::  certify as us
@@ -1706,7 +1706,7 @@ associated with the `++skin:ames` `%full`.
 
 #### `++de:acru:ames`, `++dy:acru:ames`, and `++en:acru:ames`, symmetric encryption/decryption
 
-```
+```hoon
               ++  de  |+([a=@ b=@] *(unit ,@))              ::  symmetric de, soft
               ++  dy  |+([a=@ b=@] _@)                      ::  symmetric de, hard
               ++  en  |+([a=@ b=@] _@)                      ::  symmetric en
@@ -1725,7 +1725,7 @@ semantically equivalent to, `(need (de a b))`.
 
 #### `++ex:acru:ames`, exporting data
 
-```
+```hoon
               ++  ex  ^?                                    ::  export
                 |%  ++  fig  _@uvH                          ::  fingerprint
                     ++  pac  _@uvG                          ::  default passcode
@@ -1747,7 +1747,7 @@ owned by their owners
 
 #### `++nu:acru:ames`, reconstructors
 
-```
+```hoon
               ++  nu  ^?                                    ::  reconstructors
                  |%  ++  pit  |=([a=@ b=@] ^?(..nu))        ::  from [width seed]
                      ++  nol  |=(a=@ ^?(..nu))              ::  from naked ring
@@ -1769,7 +1769,7 @@ the `++acru:ames`.
 
 ### `++will`, certificate
 
-```
+```hoon
     ++  will  (list deed)                                   ::  certificate
 ```
 
@@ -1782,7 +1782,7 @@ issued \~tasruc's deed).
 
 ### `++deed`, identity
 
-```
+```hoon
     ++  deed  ,[p=@ q=step r=?]                             ::  sig, stage, fake?
 ```
 
@@ -1797,7 +1797,7 @@ networks for development without interfering with the real network.
 
 ### `++step:ames`, identity stage
 
-```
+```hoon
     ++  step  ,[p=bray q=gens r=pass]                       ::  identity stage
 ```
 
@@ -1813,7 +1813,7 @@ lives.
 
 ### `++bray:ames`
 
-```
+```hoon
     ++  bray  ,[p=life q=(unit life) r=ship s=@da]          ::  our parent us now
 ```
 
@@ -1821,7 +1821,7 @@ XXX
 
 ### `++gens:ames`, general identity
 
-```
+```hoon
     ++  gens  ,[p=lang q=gcos]                              ::  general identity
 ```
 
@@ -1833,7 +1833,7 @@ localized based on this.
 
 ### `++gcos:ames`, identity description
 
-```
+```hoon
     ++  gcos                                                ::  id description
               $%  [%czar ~]                                 ::  8-bit ship
                   [%duke p=what]                            ::  32-bit ship
@@ -1872,7 +1872,7 @@ This is the underworld of Urbit, where anonymity reigns supreme.
 
 ### `++what:ames`, logical destroyer identity
 
-```
+```hoon
     ++  what                                                ::  logical identity
               $%  [%anon ~]                                 ::  anonymous
                   [%lady p=whom]                            ::  female person ()
@@ -1896,7 +1896,7 @@ A `%punk` is a person who is identified only by a handle.
 
 ### `++whom:ames`, real person
 
-```
+```hoon
     ++  whom  ,[p=@ud q=govt r=sect s=name]                 ::  year/govt/id
 ```
 
@@ -1913,7 +1913,7 @@ information that could be observed with the briefest of interactions.
 
 ### `++govt:ames`
 
-```
+```hoon
     ++  govt  path                                          ::  country/postcode
 ```
 
@@ -1921,7 +1921,7 @@ This is the location of the user, usually of the form "country/zip".
 
 ### `++sect:ames`
 
-```
+```hoon
     ++  sect  ?(%black %blue %red %orange %white)           ::  banner
 ```
 
@@ -1929,7 +1929,7 @@ XXX
 
 ### `++name:ames`
 
-```
+```hoon
     ++  name  ,[p=@t q=(unit ,@t) r=(unit ,@t) s=@t]        ::  first mid/nick last
 ```
 

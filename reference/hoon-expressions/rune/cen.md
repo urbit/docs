@@ -17,7 +17,7 @@ Resolve a wing with changes, preserving type.
 
 Regular, tall:
 
-```
+```hoon
 %_  a=wing
   b=wing  c=hoon
   d=wing  e=hoon
@@ -28,7 +28,7 @@ Regular, tall:
 
 Regular, flat:
 
-```
+```hoon
 %_(a=wing b=wing c=hoon, d=wing e=hoon, ...)
 ```
 
@@ -44,7 +44,7 @@ A `%_` expression resolves to the value of the subject at wing `a`, but modified
 
 ##### Expands to
 
-```
+```hoon
 ^+(a %=(a b c, d e, ...))
 ```
 
@@ -52,7 +52,7 @@ A `%_` expression resolves to the value of the subject at wing `a`, but modified
 
 `%_` is different from `%=` because `%=` can change the type of a wing with mutations.  `%_` preserves the wing type.
 
-See [how wings are resolved](@/docs/reference/hoon-expressions/limb/_index.md).
+See [how wings are resolved](@/docs/hoon/hoon-expressions/limb/_index.md).
 
 ##### Examples
 
@@ -80,7 +80,7 @@ Call a gate with many arguments.
 
 Regular:
 
-```
+```hoon
 %:  a=hoon
   b=hoon
   c=hoon
@@ -105,7 +105,7 @@ When `%:` is used in tall-form syntax, the series of expressions after `p` must 
 
 ##### Examples
 
-```
+```hoon
 > %:  add  22  33  ==
 55
 
@@ -134,7 +134,7 @@ Call a gate (function), inverted.
 
 Regular:
 
-```
+```hoon
 %.  a=hoon  b=hoon
 ```
 
@@ -150,7 +150,7 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 
 ##### Expands to
 
-```
+```hoon
 %-(b=hoon a=hoon)
 ```
 
@@ -175,13 +175,13 @@ Call a gate (function).
 
 Regular:
 
-```
+```hoon
 %-  a=hoon  b=hoon
 ```
 
 Irregular:
 
-```
+```hoon
 (a=hoon b=hoon)
 ```
 
@@ -197,14 +197,14 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 ##### Expands to
 
-```
+```hoon
 %~($ a b)
 ```
 
 ##### Discussion
 
-`%-` is used to call a function; `a` is the function ([`gate`](@/docs/reference/hoon-expressions/rune/bar.md#bartis),
-`q` the argument. `%-` is a special case of [`%~` ("censig")](#censig), and a gate is a special case of a [door](@/docs/reference/hoon-expressions/rune/bar.md#barcab).
+`%-` is used to call a function; `a` is the function ([`gate`](@/docs/hoon/hoon-expressions/rune/bar.md#bartis),
+`q` the argument. `%-` is a special case of [`%~` ("censig")](#censig), and a gate is a special case of a [door](@/docs/hoon/hoon-expressions/rune/bar.md#barcab).
 
 ##### Examples
 
@@ -224,7 +224,7 @@ Call gate with triple sample.
 
 Regular:
 
-```
+```hoon
 %^  a=hoon  b=hoon  c=hoon  d=hoon
 ```
 
@@ -237,7 +237,7 @@ AST:
 
 ##### Expands to
 
-```
+```hoon
 %-(a=hoon [b=hoon c=hoon d=hoon])
 ```
 
@@ -258,7 +258,7 @@ Call gate with a cell sample.
 
 Regular:
 
-```
+```hoon
 %+  a=hoon  b=hoon  c=hoon
 ```
 
@@ -274,7 +274,7 @@ A `%+` expression is for calling a gate with a cell sample.  `a` is the gate to 
 
 ##### Expands to
 
-```
+```hoon
 %-(a=hoon [b=hoon c=hoon])
 ```
 
@@ -295,7 +295,7 @@ Evaluate an arm in a door.
 
 Regular:
 
-```
+```hoon
 %~  a=wing  b=hoon
   c=hoon
   d=hoon
@@ -323,11 +323,11 @@ A `%~` expression evaluates the arm of a door (i.e., a core with a sample).  `a`
 
 `%~` is the general case of a function call, `%-`.  In both, we replace the sample (`+6`) of a core.  In `%-` the core is a gate and the `$` arm is evaluated. In `%~` the core is a door and any arm may be evaluated.  You must identify the arm to be run: `%~(arm door arg)`.
 
-See also [`|_`](@/docs/reference/hoon-expressions/rune/bar.md#barcab).
+See also [`|_`](@/docs/hoon/hoon-expressions/rune/bar.md#barcab).
 
 ##### Examples
 
-```
+```hoon
 > =mycore |_  a=@
           ++  plus-two  (add 2 a)
           ++  double  (mul 2 a)
@@ -347,7 +347,7 @@ Evaluate an expression, then resolve a wing with changes.
 
 Regular:
 
-```
+```hoon
 %*  a=wing  b=hoon
   c=wing  d=hoon
   e=wing  f=hoon
@@ -368,7 +368,7 @@ A `%*` expression evaluates some arbitrary Hoon expression, `b`, and then resolv
 
 ##### Expands to
 
-```
+```hoon
 =+  b=hoon
 %=  a=wing
   c=wing  d=hoon
@@ -410,7 +410,7 @@ Resolve a wing with changes.
 
 Regular:
 
-```
+```hoon
 %=  a=wing
   b=wing  c=hoon
   d=wing  e=hoon
@@ -451,7 +451,7 @@ a wing, we would just be mutating `+6` within the core that defines the
 
 Here's that again in tall form:
 
-```
+```hoon
 =+  foo
 =>  %=  +2
       +6  baz

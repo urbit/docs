@@ -25,7 +25,7 @@ We'll make a core using a multi-line Hoon expression that is more complex than t
 
 Use the following to bind `c` to a core.  It begins with a **rune**, `|%`, which is used for creating a core.  (A rune is just a pair of ASCII characters, and it usually indicates the beginning of a complex Hoon expression.)  Take note of the expression spacing -- Hoon uses significant whitespace.  Feel free to cut and paste the following expression into the dojo, starting with `=c`:
 
-```
+```hoon
 > =c |%
   ++  twenty  20
   ++  double-twenty  (mul 2 twenty)
@@ -98,7 +98,7 @@ First let's use the dojo to bind the face `a` to the value `12`, and the face `b
 
 Now use the following multi-line expression to bind `c` to a core.  As before, feel free to cut and paste the following expression into the dojo (starting at `=c`):
 
-```
+```hoon
 > =c |%
   ++  two  2
   ++  inc  (add 1 a)
@@ -214,7 +214,7 @@ The result is a tree of uncomputed Nock formulas.  But you virtually never need 
 
 To get the arm of a core to compute you must use its name.  The arm names of `c` are in the expression used to create `c`:
 
-```
+```hoon
 > =c |%
   ++  two  2
   ++  inc  (add 1 a)
@@ -409,7 +409,7 @@ This almost looks like a function call of sorts.
 
 Let's take a quick look at the battery of one core in the dojo to show that this is true by inputting one into the dojo.
 
-```
+```hoon
 > =dec |%
   ++  dec
     |=  a=@
@@ -450,7 +450,7 @@ Again, being able to read Nock is not essential to understanding Hoon.
 
 Let's take a quick look at how cores can be combined to build up larger structures.
 
-```
+```hoon
 =>
 |%
 ++  dec

@@ -7,7 +7,7 @@ This code-example is intended to familiarize you with the basics of Hoon syntax.
 
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.
 
-```
+```hoon
 |=  end=@                                               ::  1
 =/  count=@  1                                          ::  2
 |-                                                      ::  3
@@ -34,7 +34,7 @@ In our example program, we use comments with line numbers for convenient referen
 
 ### Line 1
 
-```
+```hoon
 |=  end=@
 ```
 
@@ -50,7 +50,7 @@ Our program is simple, so the _entire program_ is the gate that's being created 
 
 ### Line 2
 
-```
+```hoon
 =/  count=@  1
 ```
 
@@ -62,7 +62,7 @@ We're using `count` to keep track of what numbers we're including in the list we
 
 ### Line 3
 
-```
+```hoon
 |-
 ```
 
@@ -70,7 +70,7 @@ The `|-` rune functions as a "restart" point for recursion that will be defined 
 
 ### Line 4
 
-```
+```hoon
 ^-  (list @)
 ```
 
@@ -80,7 +80,7 @@ In this case, the rune specifies that our gate's output must be `(list @)` -- th
 
 ### Lines 5 and 6
 
-```
+```hoon
 ?:  =(end count)
   ~
 ```
@@ -99,13 +99,13 @@ In our case, `:-  count` creates a cell out of whatever value is stored in `coun
 
 ## Line 8
 
-```
+```hoon
 $(count (add 1 count))
 ```
 
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](@/docs/reference/library/1a.md) of the standard-library documentation.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](@/docs/hoon/library/1a.md) of the standard-library documentation.
 
 ## Explanation
 

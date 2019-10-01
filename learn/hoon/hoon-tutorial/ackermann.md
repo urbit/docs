@@ -8,7 +8,7 @@ The Ackermann function is one of the earliest examples of a function that is bot
 
 In this lesson, we will write a gate that computes the [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function)
 
- ```
+``` hoon
 |=  [m=@ n=@]
 ?:  =(m 0)  +(n)
 ?:  =(n 0)  $(m (dec m), n 1)

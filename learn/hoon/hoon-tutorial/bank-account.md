@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this lesson, we will write a door that can act as a bank account with the ability to withdraw, deposit, and check the account's balance.
 
-```
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -31,7 +31,7 @@ In this lesson, we will write a door that can act as a bank account with the abi
 
 We start with the three lines we have in every `%say` generator:
 
-```
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -39,7 +39,7 @@ We start with the three lines we have in every `%say` generator:
 
 In the above code chunk, we're creating a cell. The head of this cell is `%say`. The tail is a gate (`|=  *`) that produces another cell (`:-  %noun`) with a head of the mark of a the kind of data we are going to produce, a noun; the tail of the second cell is the rest of the program.
 
-```
+```hoon
 =<  =~  new-account
       (deposit 100)
       (deposit 100)
@@ -52,7 +52,7 @@ In this code above, we're going to compose two runes using `=<`, which has inver
 
 `=~` is a rune that composes multiple expressions. We take `new-account` and use that as the subject for the call to `deposit`. `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `balance`, which is the account balance contained in the core we that that we examine below.
 
-```
+```hoon
 |%
 ++  new-account
   |_  balance=@ud
@@ -70,7 +70,7 @@ We've chosen here to wrap our door in it's own core to emulate the style of prog
 
 Each of these arms produces a gate which takes an `@ud` argument. Each of these gates has a similar bit of code inside:
 
-```
+```hoon
 +>.$(balance (add balance amount))
 ```
 

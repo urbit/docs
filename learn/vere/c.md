@@ -20,7 +20,7 @@ First, it's generally acknowledged that underspecified integer
 types are C's worst disaster.  C99 fixed this, but the `stdint`
 types are wordy and annoying.  We've replaced them with:
 
-```
+```c
     /* Good integers.
     */
       typedef uint64_t c3_d;  // double-word
@@ -87,7 +87,7 @@ hard to relearn.  And of course, when in doubt, comment it.
 Variables take pseudo-Hungarian suffixes, matching in general the
 suffix of the integer type:
 
-```
+```c
 c3_w wor_w;     //  32-bit word
 ```
 
@@ -98,7 +98,7 @@ variables.  C structure variables take a `_u` suffix.
 
 The code (from `defs.h`) tells the story:
 
-```
+```c
     #     define c3y      0
     #     define c3n      1
 

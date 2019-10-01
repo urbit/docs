@@ -6,7 +6,7 @@ template = "doc.html"
 Let's write a generator that takes a `@ud` (unsigned decimal) and returns a list
 of its digits.
 
-```
+```hoon
 !:
 :-  %say
 |=  [* [n=@ud ~] ~]
@@ -21,10 +21,10 @@ of its digits.
 ==
 ```
 
-We're creating a [`%say` generator](@/docs/learn/hoon/hoon-tutorial/generators.md). That means we
+We're creating a [`%say` generator](@/docs/hoon/hoon-tutorial/generators.md). That means we
 need some "boilerplate" code in the format of `[%say [%noun "data"]]`:
 
-```
+```hoon
 :-  %say
 |=  [* [n=@ud ~] ~]
 :-  %noun
@@ -42,7 +42,7 @@ print the value we are creating. In this case, we use the generic `%noun`.
 
 The tail of our second cell is the product of the rest of the program.
 
-```
+```hoon
 =|  lis=(list @ud)
 ```
 
@@ -50,7 +50,7 @@ We use the above code to construct a `list` of `@ud` by cutting up the `@ud` we
 got passed and so we add a face onto that type. This list is empty until we
 manipulate it further.
 
-```
+```hoon
 |-  ^+  lis
 ?:  (lte n 0)
   lis
@@ -63,7 +63,7 @@ to produce. A sibling of the `^-` rune, `^+` is distinct because it is for
 casting _by example_. It takes type information from an _instance_ of that type.
 It's useful when using a complicated type.
 
-```
+```hoon
 ?:  (lte n 0)
   lis
 ```
@@ -72,7 +72,7 @@ It's useful when using a complicated type.
 true that `n` is less than or equal to `0`, we simply return `lis`. Otherwise,
 we branch to the following operations:
 
-```
+```hoon
 %=  $
   n    (div n 10)
   lis  (mod n 10)^lis
@@ -96,7 +96,7 @@ Together, these operations will pull each digit out of `n` and put it into a
 the value, and `mod` will store the actual discarded digit. To visualize this
 complementarity, let's run some operations in the dojo:
 
-```
+```hoon
 > (div 146 10)
 14
 

@@ -118,9 +118,9 @@ library in urbit.
 
 To run this example, put this code in your desk at `gen/faslus.hoon` and run
 `+faslus` in your dojo. This example is a generator. For more information on
-generators, see the [generator docs](@/docs/learn/hoon/hoon-tutorial/generators.md).
+generators, see the [generator docs](@/docs/hoon/hoon-tutorial/generators.md).
 
-```
+```hoon
 /+  time-to-id
 ::
 :-  %say
@@ -136,7 +136,7 @@ with commas.
 
 Replace the code in `gen/faslus.hoon` with the following:
 
-```
+```hoon
 /+  time-to-id, hep-to-cab
 ::
 :-  %say
@@ -170,7 +170,7 @@ similar to including a header file in C.
 
 Example:
 
-```
+```hoon
 /-  talk
 ::
 *serial:talk
@@ -191,7 +191,7 @@ structure representing a `%ford` static resource.
 
 Example:
 
-```
+```hoon
 /~  [a=0 b=1]
 [a b]
 ```
@@ -201,12 +201,12 @@ produces: `[0 1]`
 In wide-form, `/~` always takes a tuple (which may be a degenerate tuple of one element), and produces it.
 
 Example:
-```
+```hoon
 /~[%something]
 ```
 produces: `%something`
 
-```
+```hoon
 /~[%a %b]
 ```
 produces: `[%a %b]`
@@ -219,7 +219,7 @@ just a hoon twig, so its result can't be used as an argument to other runes
 that expect a horn. There is no wide-form for this rune.
 
 Example:
-```
+```hoon
 //  %/file-to-include
 ::
 (frobnicate:file-to-include %.n)
@@ -245,7 +245,7 @@ stored at that path._
 that horn, and wraps a face around it.
 
 Example:
-```
+```hoon
 /=  foo  /~  [a=0 b=1]
 ::
 [a.foo b.foo]
@@ -260,7 +260,7 @@ In wide-form, `/=` uses `=` as a delimiter: `/=foo=/~[a=0 b=1]`
 `/mar/` renders the mark 'mar' at the current path.
 
 Example:
-```
+```hoon
 /=  hoo-source  /:  /path/to/hoon-file  /hoon/
 ::
 `@t`hoo-source
@@ -275,7 +275,7 @@ operations. For details on marks, see the
 [Gall docs](../gall).
 
 Here's an example that includes a mark conversion:
-```
+```hoon
 /=  page  /:  /path/to/html/file  /mime/
 ::
 page
@@ -294,7 +294,7 @@ In wide-form, `/:` uses `:` as a delimiter: `/=page=/:/path/to/html/file:/mime/`
 ### `/!mark/` evaluate as hoon, then pass through mark
 
 Example:
-```
+```hoon
 /=  mime  /:  /%/some-hoon-file  /!mime/
 ::
 mime
@@ -311,7 +311,7 @@ wide-form and a tall-form syntax. In wide-form, it takes a series of mark
 arguments followed by a horn. In tall-form, it takes a single mark followed by
 a horn.
 
-```
+```hoon
 /=  some-text  /:  /%/text-file  /&mime&/txt/
 ::
 some-text
@@ -326,7 +326,7 @@ cord is a single line. Once we've read the file, the `%mime` mark converts the
 `wain` to a triple that includes the MIME type ("text/plain"), the content
 length in bytes, and the content itself as a cord.
 
-```
+```hoon
 /=  page  /&html&elem&/~[;div.foo;]
 ::
 page
@@ -354,7 +354,7 @@ need to be enclosed in `/`'s: `/&  html  /elem/`
 succeeds. If none succeed, it produces stack traces from all of its arguments.
 
 Example:
-```
+```hoon
 /=  res  /:  /%/path/to/file
 /|
   /!elem/
@@ -384,7 +384,7 @@ directory, and each value is the result of running that horn on the contents of
 the file.
 
 Example:
-```
+```hoon
 /=  kids  /_  /hoon/
 ::
 `(map term cord)`kids
@@ -407,7 +407,7 @@ that atom type, and each value is the result of running the horn on the
 contents of that file.
 
 Example:
-```
+```hoon
 /=  timed-posts  /_  @da  /md/
 `(map @da @t)`timed-posts
 ```
@@ -423,7 +423,7 @@ Wide-form filtered `/_` uses `_` as a delimiter: `/=  timed-posts  /_@da_/md/`
 with the result of the horn as its sample.
 
 Example:
-```
+```hoon
 /=  goo
     /;  |=({a/@ b/@} +(b))
     /~  [a=0 b=1]
@@ -434,7 +434,7 @@ goo
 produces: `2`
 
 Here's a slightly more complex example with runes that use the filesystem:
-```
+```hoon
 /=  file-length
     /;  |=(a/@t (lent (crip a)))
     /:  /%/path/to/hoon/file  /hoon/
@@ -450,7 +450,7 @@ whether the current path matches the path in the switch statement.
 Takes a sequence of pairs of (path, horn) terminated by a `==`. No wide-form.
 
 Example:
-```
+```hoon
 /=  just-right
     /:  /===/right-path                                 ::  set path to /%/right-path
     /,
@@ -469,7 +469,7 @@ produces: `'evaluate-me'`
 Produce a null-terminated list from a sequence of horns, terminated by a `==`. No wide-form.
 
 Example:
-```
+```hoon
 /=  vanes
     /.
       /~  %ames
@@ -495,7 +495,7 @@ TODO: remove
 `/^` takes a mold and a horn, and casts the result of the horn to the mold.
 
 Example:
-```
+```hoon
 /=  liz  /^  (list @)                                   ::  cast to real list
          /~  ~[1 2 3]                                   ::  no 'i' or 't' faces
 ::
@@ -515,7 +515,7 @@ Wide-form `/^` uses `^` as a delimiter: `/^(list @)^/~[1 2 3 ~]`
 hash of the result of the horn, and the result itself.
 
 Example:
-```
+```hoon
 /=  inline  /^  {dep/@uvH txt/@t}  /#  /:  /%/my-script  /js/
 ::
 ;=  ;script: (trip txt.inline)                          ::  set script contents
@@ -539,7 +539,7 @@ contain an argument representing the query string, which can be parsed using the
 standard library gate `++fuel:html`.
 
 Example:
-```
+```hoon
 /=  gas  /$  fuel:html
 ::
 :*
@@ -559,7 +559,7 @@ Wide-form `/$` takes its arguments inside brackets, like `/~`:
 renderers that use `/$` to read the extra arguments will crash.
 
 Example:
-```
+```hoon
 /=  dat  /%  /tree-json/
 ::
 dat

@@ -28,19 +28,19 @@ and avoid terminators when the content has a fixed structure.
 For example, the wide form `=+(a b)` could be written in tall form
 as
 
-```
+```hoon
     =+  a
     b
 ```
 
 or
 
-```
+```hoon
     =+  a  b
 ```
 
 These are regular forms -- every rune can be written this way.
-Hoon also has a variety of wide [irregular forms](@/docs/reference/hoon-expressions/irregular.md).  All tall
+Hoon also has a variety of wide [irregular forms](@/docs/hoon/hoon-expressions/irregular.md).  All tall
 forms are regular.  All code within a wide form is wide.
 Almost all code has both wide and tall forms, the exception
 being named cores.
@@ -76,21 +76,21 @@ across the page.
 
 With one child:
 
-```
+```hoon
   !:
   a
 ```
 
 With two:
 
-```
+```hoon
   =+  a
   b
 ```
 
 With three:
 
-```
+```hoon
   ?:  a
     b
   c
@@ -98,7 +98,7 @@ With three:
 
 With four (the maximum rune fanout):
 
-```
+```hoon
   :^    a
       b
     c
@@ -115,7 +115,7 @@ Variable sequences can have an arbitrary number of elements, so
 they can't self-terminate.  They are terminated by a `==` marker.
 The sequence, or its variable part, is indented and vertical:
 
-```
+```hoon
   :*  a
       b
       c
@@ -125,7 +125,7 @@ The sequence, or its variable part, is indented and vertical:
 Another representation wastes a line, but saves an indent.  Use
 this only for very long sequences:
 
-```
+```hoon
   :*
     a
     b
@@ -140,7 +140,7 @@ looks better for this particular code.
 
 Kingside format:
 
-```
+```hoon
   ?+  x      default
     %foo     99
     %foobar  ?:  y
@@ -152,7 +152,7 @@ Kingside format:
 
 Queenside format:
 
-```
+```hoon
   ?+    x
     default
   ::
@@ -173,7 +173,7 @@ as demonstrated above.
 We sometimes end up with multiple terminators on separate lines,
 two or more spaces apart.  These lines can be collapsed:
 
-```
+```hoon
   ?+  x      default
     %foo     99
     37       36
@@ -217,7 +217,7 @@ more spaces, newlines, or comments are one gap.
 Hoon suggests "breathing comments."  There should always be an
 empty comment line between a comment and the line **below** it:
 
-```
+```hoon
     ::  look, code
     ::
     this.is.code
@@ -229,7 +229,7 @@ empty comment line between a comment and the line **below** it:
 Sometimes dense code does need air on both sides.  Also
 legitimate:
 
-```
+```hoon
     ::  look, code
     ::
     this.is.code
@@ -289,7 +289,7 @@ optional whitespace; then `::`; then two spaces; then a parsed
 line of **lowercase** ASCII whose syntax depends on the comment
 type.  Like this:
 
-```
+```hoon
   ::  $foo: the definition of a foo
 ```
 
@@ -297,7 +297,7 @@ A complex formal comment is the headline; then an empty line;
 then an udon body with paragraphs broken by empty lines, indented
 four spaces, in ASCII mixed case:
 
-```
+```hoon
   ::  $foo: the definition of a foo
   ::
   ::    The source of the word "foo" is lost in history.  Some
@@ -318,7 +318,7 @@ but with a line-length summary/headline.
 A feature headline is `::`, then two spaces, then a qualified
 location, then `:`, then a freeform string.  Like:
 
-```
+```hoon
   ::  $foo: a the definition of a foo
   ::
   +$  foo  [head=@ tail=^]
@@ -334,7 +334,7 @@ resolve to any data value) it becomes the chapter description.
 Product comments describe the product of the expression below.
 The headline is a string in parentheses:
 
-```
+```hoon
   ::  (a very strange $foo indeed)
   ::
   make:a:strange:foo
@@ -361,7 +361,7 @@ For example, let's fix `[%wtcl p=hoon q=hoon r=hoon]`.  Let's
 make it... `[%wtcl if=hoon then=hoon else=hoon]`.  Then we
 could write flow comments as follows:
 
-```
+```hoon
     ?:  ::  if, it's it winter
         ::
         is-winter
@@ -389,7 +389,7 @@ probably help us document them, anyway.
 Sometimes, just for cosmetic reasons, we like to raise the
 comment on the first leg of a rune up above the parent:
 
-```
+```hoon
     ::  if, it's it winter
     ::
     ?:  is-winter
@@ -403,7 +403,7 @@ comment on the first leg of a rune up above the parent:
 
 This can make flow comments collide, as in "else, if," below:
 
-```
+```hoon
     ::  if, it's winter
     ::
     ?:  is-winter

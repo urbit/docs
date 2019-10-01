@@ -19,7 +19,7 @@ Chapter label.
 
 Regular: **1-fixed**.
 
-```
+```hoon
 +|  %label
 ```
 
@@ -67,7 +67,7 @@ Produce a structure arm (type definition).
 
 Regular: **2-fixed**.
 
-```
+```hoon
 +$  p=term  q=spec
 ```
 
@@ -105,7 +105,7 @@ Produce a normal arm.
 
 Regular: **2-fixed**.
 
-```
+```hoon
 ++  p=term  q=hoon
 ```
 
@@ -141,7 +141,7 @@ Produce a type constructor arm.
 
 Regular: **2-fixed**.
 
-```
+```hoon
 +*  p=term  [q=term]  r=spec
 ```
 

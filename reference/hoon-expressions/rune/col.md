@@ -13,7 +13,7 @@ The `:` ("col") expressions are used to produce cells, which are pairs of values
 
 ##### Expands to
 
-```
+```hoon
 :-(q p)
 ```
 
@@ -38,7 +38,7 @@ Code comment
 
 ##### Examples
 
-```
+```hoon
 ::
 ::  this is commented code
 ::
@@ -101,7 +101,7 @@ compiler does), `[a b]` is the same as `:-(a b)`.
 
 ##### Expands to
 
-```
+```hoon
 :-(p :-(q :-(r s)))
 ```
 
@@ -129,7 +129,7 @@ Regular: **4-fixed**.
 
 ##### Expands to:
 
-```
+```hoon
 :-(p :-(q r))
 ```
 
@@ -157,13 +157,13 @@ Regular: **3-fixed**.
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
-```
+```hoon
 :-(a :-(b :-(c :-(... :-(z ~)))))
 ```
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?~  p
   ~
@@ -201,13 +201,13 @@ Regular: **running**.
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
-```
+```hoon
 :-(a :-(b :-(c :-(... z)))))
 ```
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?~  p
   !!

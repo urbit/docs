@@ -52,7 +52,7 @@ Regular: **2-fixed**.
 
 ##### Expands to
 
-```
+```hoon
 =+(*p q)
 ```
 
@@ -83,7 +83,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 
 ##### Expands to
 
-```
+```hoon
 =>(%_(. p) q)
 ```
 
@@ -147,7 +147,7 @@ With a dojo-defined face:
 
 ##### Expands to
 
-```
+```hoon
 =>(%_(. p q) r)
 ```
 
@@ -158,7 +158,7 @@ Regular: **3-fixed**.
 ##### Discussion
 
 Technically the `=.` rune doesn't change the subject.  It creates
-a new subject just like the old one except for a changed value at `p`.  Note that the mutation uses [`%_` ("cencab")](@/docs/reference/hoon-expressions/rune/cen.md#cencab), so the type at `p` doesn't change.  Trying to change the value type results in a `nest-fail`.
+a new subject just like the old one except for a changed value at `p`.  Note that the mutation uses [`%_` ("cencab")](@/docs/hoon/hoon-expressions/rune/cen.md#cencab), so the type at `p` doesn't change.  Trying to change the value type results in a `nest-fail`.
 
 ##### Examples
 
@@ -183,7 +183,7 @@ nest-fail
 
 ##### Expands to
 
-```
+```hoon
 =>([q .] p)
 ```
 
@@ -213,7 +213,7 @@ a leg with the tail.
 
 ##### Expands to
 
-```
+```hoon
 =/(p -.r =.(q +.r s))
 ```
 
@@ -252,7 +252,7 @@ random number, so we use `=^`:
 
 ##### Expands to
 
-```
+```hoon
 =>(q p)
 ```
 
@@ -290,7 +290,7 @@ Irregular: `foo:baz` is `=<(foo baz)`.
 
 ##### Expands to
 
-```
+```hoon
 =>([p .] q)
 ```
 
@@ -312,7 +312,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ##### Expands to
 
-```
+```hoon
 =/(p r q)
 ```
 
@@ -343,19 +343,19 @@ Regular: **3-fixed**.
 
 **if `p` is a name**, (e.g. `a`):
 
-```
+```hoon
 =+(^=(p q) r)
 ```
 
 **if `p` is a name with a type** (e.g., `a=@`):
 
-```
+```hoon
 =+(^-(p q) r)
 ```
 
 ### Desugaring
 
-```
+```hoon
 ?@  p
   =+  p=q
   r
@@ -459,7 +459,7 @@ The difference between aliasing and pinning is that pinning changes the subject,
 
 ##### Expands to
 
-```
+```hoon
 =.  p  ?:(q r p)
 s
 ```

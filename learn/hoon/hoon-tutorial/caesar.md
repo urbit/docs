@@ -28,7 +28,7 @@ isn't the most compact implementation of such a cipher in Hoon, but it
 demonstrates important principles that more laconic code would not. Save it as
 `caesar.hoon` in your `/gen` directory.
 
-```
+```hoon
 !:
 |=  [msg=tape key=@ud]
 =<
@@ -112,7 +112,7 @@ in written order; instead, we'll cover code in the intuitive order of the
 program. For each chunk that we cover, try to read and understand the code
 itself before reading the explanation.
 
-```
+```hoon
 !:
 |=  [msg=tape key=@ud]
 =+  ^=  caesar
@@ -134,7 +134,7 @@ expressions in the code chunk below against the core declared later, which
 allows us reference the core's contained arms before they are defined. Without
 `=<`, we would need to put the code chunk below at the bottom of our program.
 
-```
+```hoon
 =.  msg  (cass msg)
 :-  (shift msg key)
 (unshift msg key)
@@ -149,7 +149,7 @@ gate that converts uppercase letters to lowercase.
 cell of a right-shifted cipher and a left-shifted cell. This is the final output
 of our generator.
 
-```
+```hoon
     ++  rott
       |=  [m=tape n=@ud]
       =/  length=@ud  (lent m)
@@ -176,7 +176,7 @@ if `n` is larger than `length`.
 instance, we are switching the two parts: the second part `q.s` is welded to the
 front, and the first part `p.s` is welded to the back.
 
-```
+```hoon
     ++  zipper
       |=  [a=tape b=tape]
       ^-  (map @t @t)
@@ -232,7 +232,7 @@ We have three related arms to look at next, `coder`, `encoder`, and
 `decoder`. `coder` is the foundation of the other two, so we'll look at it
 first.
 
-```
+```hoon
     ++  coder
       |=  [a=tape b=tape]
       (~(put by (zipper a b)) ' ' ' ')
@@ -246,7 +246,7 @@ character (called `ace`) simply maps to itself. This is done to simplify
 the handling of spaces in `tapes` we want to encode, since we don't want to
 shift them.
 
-```
+```hoon
     ++  encoder
       |=  [key=@ud]
       =/  keytape=tape  (rott alpha key)
@@ -280,7 +280,7 @@ translation between the alphabet and our shifted alphabet, or vice versa.
 Still with us? Good. We are finally about to use all the stuff that we've
 walked through.
 
-```
+```hoon
     ++  shift
       |=  [message=tape key=@ud]
       (operate message key (encoder key))
@@ -299,7 +299,7 @@ that call with `(operate message key (decoder key))`. These both produce the
 final output of the core, to be called in the form of `(shift msg key)`
 and `(unshift msg key)` at the bottom of the program.
 
-```
+```hoon
 ++  operate
   |=  [message=tape key=@ud encoder=(map @t @t)]
   ^-  tape

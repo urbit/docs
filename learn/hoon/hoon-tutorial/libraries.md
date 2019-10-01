@@ -6,7 +6,7 @@ template = "doc.html"
 
 In Hoon, like in other languages, it's often useful to create a library for other code to access. In this example, we look at one example of a library that can be used to represent a deck of 52 playing cards. The core below builds such a library, and can be accessed by programs.
 
-```
+```hoon
 |%
 +$  suit  ?(%hearts %spades %clubs %diamonds)
 +$  darc  [sut=suit val=@ud]
@@ -64,7 +64,7 @@ On the very first line, we create a core with `|%`. This core contains all of ou
 To create three types we're going to need, we use `+$`, which is an arm used to define a type.
 
 
-```
+```hoon
 +$  suit  ?(%hearts %spades %clubs %diamonds)
 +$  darc  [sut=suit val=@ud]
 +$  deck  (list darc)
@@ -78,7 +78,7 @@ Our final type is `deck`, which is simply a `list` of `darc`.
 
 One way to get a feel for how a library works is to skim the `++` arm-names before diving into any specific arm. In this library, the arms are `make-deck`, `num-to-suit`, `shuffle-deck`, and `draw`. These names should be very clear, with the exception of `num-to-suit` though you could probably hazard a guess at what it does. Let's take a closer look at that one first.
 
-```
+```hoon
 ++  num-to-suit
   |=  val=@ud
   ^-  suit
@@ -94,7 +94,7 @@ We can see this is a gate that takes a single `@ud` and produces a `suit`.
 
 The `?+` rune is the rune to switch against a value with a default.  The default here is to crash with `!!`. Then we have the four options of 1 through 4, based on the value of `val`, which each resulting in a different suit.
 
-```
+```hoon
 ++  make-deck
   ^-  deck
   =|  mydeck=deck
@@ -115,7 +115,7 @@ The `?+` rune is the rune to switch against a value with a default.  The default
 `num-to-suit` is used in the `make-deck` arm shown above. This arm should be quite readable to you at this point. Here we simply have two loops where we use counters to build up the full set of 52 cards, by cycling through every possible suit and number and combining them. Once we have reached the point where `j` is greater than 14, we're going to jump back out to the "suit" outer-loop and increment `i`. `?.` may be an unfamiliar rune; it is simply the inverted version of `?:`, so the first branch is actually the "no" branch and the second is the "yes" branch. This is done to keep the "heaviest" branch at the bottom.
 
 
-```
+```hoon
 ++  draw
   |=  [n=@ud d=deck]
   ^-  [hand=deck rest=deck]
@@ -125,7 +125,7 @@ The `?+` rune is the rune to switch against a value with a default.  The default
 
 `draw` takes two arguments: `n`, a number; and `d`, a `deck`. It's going to produce a cell of two `decks`. The cell is created using `scag` and `slag`. [`scag`](https://urbit.org/docs/reference/library/2b/#scag) is a standard-library gate produces the first `n` elements from a list, and [`slag`](https://urbit.org/docs/reference/library/2b/#slag) is a standard-library gate that produces the remaining elements of a list starting after the `n`th element. So we use `scag` to produce the drawn hand of `n` cards in the head of the cell as `hand`, and `slag` to produce the remaining deck in the tail of the cell as `rest`.
 
-```
+```hoon
 ++  shuffle-deck
   |=  [unshuffled=deck entropy=@]
   ^-  deck
@@ -169,7 +169,7 @@ This is a very naive shuffling algorithm, and you could imagine a better one. Im
 
 So now that we have this library, how do we actually use it? Let's look at a very simple `say` generator that takes advantage of what we built.
 
-```
+```hoon
 /+  playing-cards
 :-  %say
 |=  [[* eny=@uv *] *]

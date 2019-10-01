@@ -269,7 +269,7 @@ Or to double each item in a list of atoms:
 
 We can rewrite the Caesar cipher program using `turn`:
 
-```
+```hoon
 |=  [a=@ b=tape]
 ^-  tape
 ?:  (gth a 25)
@@ -295,7 +295,7 @@ The Hoon standard library and compiler are written in Hoon.  At this point, you 
 
 #### `flop`
 
-```
+```hoon
 ::  flop.hoon
 ::
 |=  a=(list @)
@@ -314,7 +314,7 @@ Run in dojo:
 
 #### `snag`
 
-```
+```hoon
 ::  snag.hoon
 ::
 |=  [a=@ b=(list @)]

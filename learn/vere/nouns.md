@@ -50,7 +50,7 @@ bit is reserved.  Bit `29` is `1` if the noun is a cell, `0` if
 it's an atom.  Bits `28` through `0` are a word pointer into the
 loom - see below.  The structures are:
 
-```
+```c
     typedef struct {
       c3_w mug_w;
       c3_w len_w;
@@ -116,7 +116,7 @@ There are two semantic patterns, `transfer` and `retain`.  In
 `transfer` semantics, the caller "gives" a use count to the
 callee, which "gives back" any return.  For instance, if I have
 
-```
+```c
     {
       u3_noun foo = u3i_string("foobar");
       u3_noun bar;
@@ -136,7 +136,7 @@ point a `u3z()` is required.
 On the other hand, if `u3f_futz()` has `retain` semantics, we
 need to write
 
-```
+```c
     {
       u3_noun foo = u3i_string("foobar");
       u3_noun bar;
@@ -369,7 +369,7 @@ done it because we haven't needed to.
 Within the interpreter, your code can run either in the surface
 road or in a deep road.  You can test this by testing
 
-```
+```c
     (&u3H->rod_u == u3R)
 ```
 
@@ -404,7 +404,7 @@ event queue.   Let's see how this happens.
 
 You produce an exception with
 
-```
+```c
     /* u3m_bail(): bail out.  Does not return.
     **
     **  Bail motes:
@@ -461,7 +461,7 @@ To point to non-noun C structs on the loom, we use a `u3_post`,
 which is just a loom word offset.  A macro lets us declare this
 as if it was a pointer:
 
-```
+```c
     typedef c3_w       u3_post;
     #define u3p(type)  u3_post
 ```

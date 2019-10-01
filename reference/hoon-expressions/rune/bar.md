@@ -21,7 +21,7 @@ Produce a **door** (a core with a sample).
 
 Regular:
 
-```
+```hoon
 |_  a=spec
 ++  b=term  c=hoon
 ++  d=term  e=hoon
@@ -48,7 +48,7 @@ The context of the door is the subject of the `|_` expression.
 
 ##### Expands to
 
-```
+```hoon
 =|  a=spec
 |%
 ++  b=term  c=hoon
@@ -67,7 +67,7 @@ Calling a door is like calling a gate except the caller also needs
 to specify the arm to be computed.  So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
 Because gates are also doors, you can call them the same way.  To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`.  This
-is an irregular form for `%~($ foo baz)`, [%~](/docs/reference/hoon-expressions/rune/cen#sig).
+is an irregular form for `%~($ foo baz)`, [%~](/docs/hoon/hoon-expressions/rune/cen#sig).
 
 ##### Examples
 
@@ -86,7 +86,7 @@ A trivial door:
 
 A more interesting door, from the kernel library:
 
-```
+```hoon
 ++  ne
   |_  tig=@
   ++  d  (add tig '0')
@@ -111,7 +111,7 @@ Produce a core, `[battery payload]`.
 
 Regular:
 
-```
+```hoon
 |%
 ++  a=term  b=hoon
 ++  c=term  d=hoon
@@ -171,7 +171,7 @@ Produce a gate with a custom sample.
 
 Regular:
 
-```
+```hoon
 |:  a=hoon  b=hoon
 ```
 
@@ -187,7 +187,7 @@ AST:
 
 ##### Expands to
 
-```
+```hoon
 =>  ^~  a
   |.  b
 ```
@@ -219,7 +219,7 @@ Produce a trap (a core with one arm `$`).
 
 Regular:
 
-```
+```hoon
 |.  a=hoon
 ```
 
@@ -237,7 +237,7 @@ The payload of the core is the subject of the `|.` expression.
 
 ##### Expands to
 
-```
+```hoon
 |%  ++  $  a=hoon
 --
 ```
@@ -277,7 +277,7 @@ A more interesting trap:
 Note that we can use `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/docs/reference/hoon-expressions/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/docs/hoon/hoon-expressions/rune/cen#centis)).
 
 ### |- "barhep"
 
@@ -287,7 +287,7 @@ Produce a trap (a core with one arm `$`) and evaluate it.
 
 Regular:
 
-```
+```hoon
 |-  a=hoon
 ```
 
@@ -303,7 +303,7 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 
 ##### Expands to
 
-```
+```hoon
 =<($ |.(a=hoon))
 ```
 
@@ -311,7 +311,7 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 
 The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](#bardot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/docs/reference/hoon-expressions/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](/docs/hoon/hoon-expressions/rune/cen#centis)).
 
 ##### Examples
 
@@ -343,7 +343,7 @@ Produce a core whose battery includes a `$` arm and compute the latter.
 
 Regular:
 
-```
+```hoon
 |^  a=hoon
 ++  b=term  c=hoon
 ++  d=term  e=hoon
@@ -366,7 +366,7 @@ A `|^` expression produces a multi-arm core whose battery includes a `$` arm, wh
 
 ##### Expands to
 
-```
+```hoon
 =>  |%
     ++  $  a=hoon
     ++  b=term  c=hoon
@@ -402,7 +402,7 @@ Produce an iron gate.
 
 Regular:
 
-```
+```hoon
 |~  a=spec  b=hoon
 ```
 
@@ -418,13 +418,13 @@ A `|~` expression produces an iron gate.  `a` defines the sample, and `b` define
 
 ##### Expands to
 
-```
+```hoon
 ^|  |=(a b)
 ```
 
 ##### Discussion
 
-See [this discussion of core variance models](@/docs/reference/hoon-expressions/advanced.md)
+See [this discussion of core variance models](@/docs/hoon/hoon-expressions/advanced.md)
 
 ##### Examples
 
@@ -441,7 +441,7 @@ Produce a wet gate (one-armed core with sample).
 
 Regular:
 
-```
+```hoon
 |*  a=spec  b=hoon
 ```
 
@@ -457,7 +457,7 @@ A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b` i
 
 ##### Expands to
 
-```
+```hoon
 =|  a
 |@
 ++  $
@@ -478,7 +478,7 @@ you know what you're doing.
 Just as with a [gate](#bartis), we can recurse back into a wet gate
 with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/hoon/hoon-expressions/rune/cen.md#centis)).
 
 ##### Examples
 
@@ -507,7 +507,7 @@ Produce a gate (a one-armed core with a sample).
 
 Regular:
 
-```
+```hoon
 |=  a=spec  b=hoon
 ```
 
@@ -525,7 +525,7 @@ The product of a `|=` expression is a dry **gate**, i.e., a Hoon function.
 
 ##### Expands to
 
-```
+```hoon
 =|  a=spec
 |%  ++  $  b=hoon
 --
@@ -537,7 +537,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/hoon/hoon-expressions/rune/cen.md#centis)).
 
 ##### Examples
 
@@ -567,7 +567,7 @@ Produce a 'wet' core `[battery payload]`.
 
 Regular:
 
-```
+```hoon
 |@
 ++  a=term  b=hoon
 ++  c=term  d=hoon
@@ -590,7 +590,7 @@ A `|@` expression produces a 'wet' core whose payload is the expression's subjec
 
 ##### Discussion
 
-The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one.  This allows for type polymorphism of its arms, using 'genericity'.  See [Advanced types](@/docs/reference/hoon-expressions/advanced.md).
+The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one.  This allows for type polymorphism of its arms, using 'genericity'.  See [Advanced types](@/docs/hoon/hoon-expressions/advanced.md).
 
 ### |? "barwut"
 
@@ -600,7 +600,7 @@ Produce a lead trap.
 
 Regular:
 
-```
+```hoon
 |?  a=hoon
 ```
 
@@ -616,13 +616,13 @@ A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`
 
 ##### Expands to
 
-```
+```hoon
 ^?  |.  a
 ```
 
 ##### Discussion
 
-See this [discussion of the core variance model](@/docs/reference/hoon-expressions/advanced.md).
+See this [discussion of the core variance model](@/docs/hoon/hoon-expressions/advanced.md).
 
 ##### Examples
 

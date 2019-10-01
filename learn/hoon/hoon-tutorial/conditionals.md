@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this lesson, we will write a generator that takes an integer and checks if it is an even number between 1 and 100. This will help demonstrate how boolean (true or false) conditional expressions work in Hoon.
 
-```
+```hoon
 :-  %say
 |=  [* [n=@ud ~] ~]
 :-  %noun
@@ -21,13 +21,13 @@ In this lesson, we will write a generator that takes an integer and checks if it
 
 On the very first line, with `:-  %say` we are beginning to create a generator of the `%say` variety. The result of a `%say` generator is a cell with a head of `%say` and tail that is a gate, itself producing a `cask`, a pair of a `mark` and some data. It's not important for understanding conditionals; this is just template code. For more information about `%say` generators, see the [Generators](../generators) documentation.
 
-```
+```hoon
 |=  [* [n=@ud ~] ~]
 ```
 
 The code above builds a gate. The gate's first argument is a cell provided by Dojo that contains some system information we're not going to use, so we use `*` to indicate "any noun." The next cell is our arguments provided to the generator upon invocation at the `dojo`. Here we only want one `@ud` with the face `n`.
 
-```
+```hoon
 :-  %noun
 ```
 
@@ -35,7 +35,7 @@ This code is the third line of the `%say` "boilerplate," and it produces a `cask
 
 But now let's get into the conditionals themselves. Below we'll examine the series of `?` runes used.
 
-```
+```hoon
 ?:  ?&  =(0 (mod n 2))
 ```
 
@@ -45,7 +45,7 @@ In our case, the first child of `?:` is `?&  =(0 (mod n 2))`. It itself has anot
 
 The second child is:
 
-```
+```hoon
         ?&  (gte n 1)
             ?!  (gth n 100)
         ==

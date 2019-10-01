@@ -104,14 +104,14 @@ of `move` and `sub-result` (all the types of data that can be
 returned by a place).  This can just be a line at the top of the
 main core:
 
-```
+```hoon
 =+  connector=(connector move sub-result)  ::  Set up connector library
 ```
 
 Most of the Github-specific logic is in `++places`, which is a
 list of all the places we can request.  A place consists of:
 
-```
+```hoon
 ++  place
   $:  guard/mold
       read-x/$-(path move)
@@ -574,7 +574,7 @@ We'll need a new mark for our arguments. Let's call it
 
 > For app-specific marks, it's good style to prefix the name of the mark with the name of the app. Since many apps have several such marks, subdirectories in `/mar` are rendered as `-`, so that `ping-message` is written in (/mar/ping/message.hoon).
 
-```
+```hoon
 ::
 ::::  /mar/ping/message/hoon
   ::
@@ -589,7 +589,7 @@ We'll need a new mark for our arguments. Let's call it
 
 The app can easily be modified to use this (`/app/ping.hoon`):
 
-```
+```hoon
 ::  Allows one ship to ping another with a string of text
 ::
 ::::  /app/ping/hoon
@@ -640,7 +640,7 @@ mandatory, and optional arguments are hard. Let's make a generator,
 `+send` to make everything nicer. Since it's specific to
 `:ping`, let's put it in `/gen/ping/send.hoon`:
 
-```
+```hoon
 :-  %say
 |=  [^ [to=@p message=?(%~ [text=@t %~])] %~]
 [%ping-message to ?~(message 'howdy' text.message)]
@@ -686,7 +686,7 @@ Let's build an uptime-monitoring system.  It'll ping a web
 service periodically and print out an error when the response
 code isn't 2xx.  Save the following as `app/up.hoon`:
 
-```
+```hoon
 ::  Up-ness monitor. Accepts atom url, 'on', or 'off'
 ::
 ::::  /hoon/up/app
@@ -774,7 +774,7 @@ produce a `%wake` when the time comes.
 
 Let's take a look at our state:
 
-```
+```hoon
 |_  [hid=bowl:gall on=_| in-progress=_| target=@t]
 ```
 
@@ -807,7 +807,7 @@ actual url, so we save it in `target`.
 
 Here's the move that sends the HTTP request:
 
-```
+```hoon
 [ost.hid %hiss /request ~ %httr %purl (need (de-purl:html target))]
 ```
 
@@ -816,7 +816,7 @@ Here's the move that sends the HTTP request:
 The correspondence between this move and `[bone card]` can be hard to
 visualize on one line. Here it is more pedantically:
 
-```
+```hoon
 :*  bone=ost.hid                                        :: the move
     term=%hiss
     wire=/request
@@ -896,7 +896,7 @@ Let's make a small "cord" mark.  "Cord" is a name we use for `@t`
 text, but there's no predefined mark for it.  Let's put the following code in:
 `/mar/cord.hoon`:
 
-```
+```hoon
 /?  314
 |_  cod=@t
 ++  grab
@@ -1012,7 +1012,7 @@ In the following we assume that you have some knowledge of Hoon.  If you don't, 
 
 Let's get our planets to talk to each other.  To listen for and receive messages from other planets, we'll need an app. Let's look at a very simple one, `echo.hoon`:
 
-```
+```hoon
 ::  Accepts any noun from dojo and prints it out
 ::
 ::::  /===/app/echo/hoon
@@ -1090,7 +1090,7 @@ is a magic invocation that means "app state".
 Let's look at another example. Say we want to
 only accept a number, and then print out the square of that number.
 
-```
+```hoon
 ::  Accepts an atom from the dojo and squares it.
 ::
 ::::  /===/app/square/hoon
@@ -1162,7 +1162,7 @@ so we'll be getting quite used to them.
 
 Let's write our first network message! Here's `examples/app/pong.hoon`:
 
-```
+```hoon
 ::  Allows one urbit to send the string 'Pong' to
 ::  another urbit.
 ::
@@ -1214,7 +1214,7 @@ comet, see [the user setup section](/docs/getting-started/). Don't forget to sta
 the `%pong` app on that urbit, too. You should see, on the foreign
 urbit, this output:
 
-```
+```hoon
 [%pong 'Incoming pong!']
 [%pong %received 'Pong']
 ```
@@ -1232,7 +1232,7 @@ now, we've left the list of moves empty, since we haven't wanted to tell Arvo to
 do anything in particular. Now we want to send a message to another urbit. Thus,
 we produce a list with one element:
 
-```
+```hoon
 ~[[ost.bow %poke /sending [to dap.bow] %atom 'Pong]]
 ```
 
@@ -1413,7 +1413,7 @@ to be authenticated.
 
 Here's a simple security driver:
 
-```
+```hoon
 ::  Test url +https://api.github.com/user
 ::
 ::::  /hoon/github/com/sec
@@ -1463,7 +1463,7 @@ can send data of any mark as long as it has a conversion path to
 Let's take a look at the code and see if we can figure out what's
 happening here:
 
-```
+```hoon
 /+    basic-auth
 ```
 
@@ -1539,7 +1539,7 @@ just as with Basic Authentication.
 
 Now we need a security driver.  Use this:
 
-```
+```hoon
 ::  Test url +https://api.github.com/user
 ::
 ::::  /hoon/github/com/sec
@@ -1634,7 +1634,7 @@ entirely stateless, however. Most useful apps require some amount of state.
 Let's build a trivial stateful app. It'll keep a running the sum of all the
 atoms we poke it with. Here's `examples/app/sum.hoon`:
 
-```
+```hoon
 ::  Keeps track of the sum of all the atoms it has been
 ::  poked with and prints the sum out
 ::
@@ -1755,7 +1755,7 @@ that it's built into Arvo.
 Let's take a look at two apps, `:source` and `:sink`. First,
 `:source`:
 
-```
+```hoon
 ::  Sends subscription updates to sink.hoon
 ::
 ::::  /===/app/source/hoon
@@ -1813,7 +1813,7 @@ Save this as `source.hoon` in the `/app` directory of your urbit's pier.
 
 And secondly, `:sink`:
 
-```
+```hoon
 ::  Sets up a simple subscription to source.hoon
 ::
 ::::  /===/app/sink/hoon
@@ -2008,7 +2008,7 @@ In `++poke-noun` we check our input to see both if it's `%on` and we're
 available (`val` is true). If so, we produce the move to subscribe to
 `:source`:
 
-```
+```hoon
 :~  :*  ost.bow
     %peer
     /subscribe
@@ -2029,7 +2029,7 @@ Otherwise, if our input is `%off` and we're already subscribed (i.e. `val`
 is false), then we unsubscribe from `:source` and set `val` back to true (`&`),
 again using our handy inverted cell constructor mold `:_`:
 
-```
+```hoon
 :_  +>.$(val &)
 ~[[ost.bow %pull /subscribe [our.bow %source] ~]]
 ```
@@ -2041,7 +2041,7 @@ If neither of these cases are true, then we print our current subscription
 state, based on whether `val` is true or false, and return a cell containing
 a null list of moves and our unchanged app state:
 
-```
+```hoon
 ~&  ?:  val
       sink+unsubscribed+'You are now unsubscribed!'
     sink+subscribed+'You are now subscribed!'
@@ -2053,7 +2053,7 @@ mark of `noun`. `++diff-noun` is given the wire that we originally passed with
 the `%peer` subscription request along and the data we got back. In our case we
 just print out the data:
 
-```
+```hoon
 ~&  sink+received-data+'You got something!'
 ~&  sink+data+non
 ```
@@ -2086,7 +2086,7 @@ update this by subscribing our page to the relevant path on its app.
 
 Save the following as `click.hoon` in the `/app` directory of your urbit's pier.
 
-```
+```hoon
 /?    314
 !:
 |%
@@ -2115,7 +2115,7 @@ number of clicks.
 
 Let's take a look at the new marks.  Save this as `/mar/click.hoon`:
 
-```
+```hoon
 |_  click=%click
 ++  grab
   |%
@@ -2161,7 +2161,7 @@ ford: cast %click
 
 And save the following as `/mar/clicks.hoon`:
 
-```
+```hoon
 |_  clicks=@
 ++  grab
   |%
@@ -2240,7 +2240,7 @@ we'll put the number of clicks.  We also include a small
 javascript file where the client-side application logic can be
 found.  It's in `/web/pages/click.js`:
 
-```
+```js
 $(function() {
   var clicks, $go, $clicks, $err
 

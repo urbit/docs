@@ -42,7 +42,7 @@ $
 
 Your ship isn't running anymore and you're back at your computer's normal terminal prompt. If your ship is `~zod`, then you can restart the ship by typing:
 
-```
+```sh
 urbit zod
 ```
 

@@ -18,19 +18,19 @@ Miscellaneous useful macros.
 
 Regular form:
 
-```
+```hoon
 %-(p a %-(p b %-(p c ...)))
 ```
 
 Irregular form:
 
-```
+```hoon
 (p a (p b (p c ...)))
 ```
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?~  q  !!
 ?~  t.q  !!
@@ -70,7 +70,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 **1-fixed**
 
-```
+```hoon
 ;+  p=hoon
 ```
 
@@ -80,7 +80,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 tl;dr -- `;+` converts a `manx` to a `marl`.
 
-`;+` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/using/sail-and-udon.md).
+`;+` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/arvo/sail-and-udon.md).
 
 In Sail a single XML node is represented by a `manx`.  A single `<p>` node `manx` can be produced in the following way:
 
@@ -123,7 +123,7 @@ One interesting thing about Sail is that it allows you to use complex Hoon expre
 
 ##### Expands to
 
-```
+```hoon
 =+  a=(p q)
 ?>  =(`*`a `*`q)
 a
@@ -165,7 +165,7 @@ Fails because not a fixpoint:
 
 ##### Expands to
 
-```
+```hoon
 ~[%$ ~[%$ 'p']]
 ```
 
@@ -193,14 +193,14 @@ The gates in `q` are composed together using the gate `p` as an intermediate fun
 
 `;~(a b c)` expands to
 
-```
+```hoon
 |=  arg=*
 (a (b arg) c(+6 arg))
 ```
 
 `;~(a b c d)` expands to
 
-```
+```hoon
 |=  arg=*
 %+  a (b arg)
 =+  arg=arg
@@ -209,7 +209,7 @@ The gates in `q` are composed together using the gate `p` as an intermediate fun
 
 ##### Desugaring
 
-```
+```hoon
 ?~  q  !!
 |-
 ?~  t.q  i.q
@@ -286,7 +286,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 **1-fixed**
 
-```
+```hoon
 ;*  p=hoon
 ```
 
@@ -294,7 +294,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Discussion
 
-`;*` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/using/sail-and-udon.md).
+`;*` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/arvo/sail-and-udon.md).
 
 If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.  Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
 
@@ -338,7 +338,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 **running**
 
-```
+```hoon
 ;=  p=hoon  q=hoon  ...  z=hoon  ==
 ```
 
@@ -346,7 +346,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Discussion
 
-`;=` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/using/sail-and-udon.md).
+`;=` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/arvo/sail-and-udon.md).
 
 In Sail a single XML node is represented by a `manx`.  A single `<p>` node `manx` can be produced in the following way:
 

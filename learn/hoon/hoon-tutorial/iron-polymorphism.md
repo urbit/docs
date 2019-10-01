@@ -10,7 +10,7 @@ Polymorphism is a programming concept that allows a a piece of code to use diffe
 
 A dry gate (also simply a _gate_) is the kind that you're already familiar with by now: a one-armed core with a sample. A wet gate is also a one-armed core with a sample, but there is a difference. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a nest failure. On the other hand, when you pass arguments to a wet gate, their types are preserved and type analysis is done at the definition site of the gate -- in our case, `fold` in `hoon.hoon` -- rather than the call site.
 
-```
+```hoon
 ++  fold  
    |*  [state=mold elem=mold]
    |=  [[st=state xs=(list elem)] f=$-([state elem] state)]
@@ -22,7 +22,7 @@ A dry gate (also simply a _gate_) is the kind that you're already familiar with 
 
 On the first line of the arm, we use `|*` to create a wet gate, with two arguments: `state` and `elem`. These arguments are both `mold`s; that is to say, they are type definitions. We use this to define the types used in the dry gate.
 
-```
+```hoon
 |=  [[st=state xs=(list elem)] f=$-([state elem] state)]
 ```
 
@@ -32,7 +32,7 @@ The second argument is `f=$-([state elem] state)`. `$-` is a rune that takes two
 
 The rest of the dry gate is straightforward:
 
-```
+```hoon
    ^-  state
    |-
    ?~  xs  st
@@ -43,7 +43,7 @@ We ensure the output is of type `state`. Then we check if `xs`, the list, is emp
 
 Lets look at two examples of using `fold`.
 
-```
+```hoon
 %+  (fold (list @) @)
  :-  ~
  ~[1 2 3 4]
@@ -57,7 +57,7 @@ Here we have a call to `fold` that we can see will produce a `(list @)` from a l
 
 The gate will simply add two to each element `e` and append that to the front of `s`. Let's run this in the `dojo`:
 
-```
+```hoon
 > %+  (fold (list @) @)
    :-  ~
    ~[1 2 3 4]
@@ -74,7 +74,7 @@ The list is in reverse order simply because it's easier to add to the front of a
 But `fold` does not have to produce a `list`. Let's look at another example:
 
 
-```
+```hoon
 %+  (fold @ @)
   [0 ~[1 2 3 4]]
 |=  [s=@ e=@]

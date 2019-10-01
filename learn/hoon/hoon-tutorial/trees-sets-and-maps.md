@@ -61,7 +61,7 @@ This didn't work because we haven't first proved to Hoon that `b` is a non-null 
 
 Here's a program that finds and replaces certain atoms in a `(tree @)`.
 
-```
+```hoon
 |=  [nedl=@ hay=(tree @) new=@]
 ^-  (tree @)
 ?~  hay  ~
@@ -196,7 +196,7 @@ There are other set functions in the Hoon standard library we won't cover here.
 
 Here's a program that takes two sets of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
-```
+```hoon
 |=  [a=(set @) b=(set @)]
 =/  c=(list @)  ~(tap in a)
 =/  d=(list @)  ~(tap in b)

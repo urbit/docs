@@ -193,7 +193,7 @@ We may use the `+*` rune to define an arm that produced a more complex type from
 
 For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each defined in `hoon.hoon` with `+*` arms.  (Take a moment to see for yourself.)  Each `+*` arm is followed by an argument definition, inside brackets `[ ]`.  After that subexpression comes another that defines a type, relative to the input value.  For example, here is the definition of `list` from `hoon.hoon`:
 
-```
+```hoon
 +*  list  [item]
   ::    null-terminated list
   ::
@@ -356,7 +356,7 @@ The context type of `B` isn't checked at all; and because of the nesting rules i
 
 Iron gates are particularly useful when you want to pass gates (having various payload types) to other gates.  We can illustrate this use with a very simple example.  Save the following as `gatepass.hoon` in the `gen` directory of your urbit's pier:
 
-```
+```hoon
 |=  a=_^|(|=(@ 15))
 ^-  @
 =/  b=@  (a 10)
@@ -389,7 +389,7 @@ Yup, it still works.  You can't do that with a gold core sample!
 
 There's a simpler way to define an iron sample.  Revise the first line of `gatepass.hoon` to the following:
 
-```
+```hoon
 |=  a=$-(@ @)
 ^-  @
 =/  b=@  (a 10)
@@ -574,4 +574,3 @@ Once more let's clear up the dojo subject:
 ```
 
 
-### [Next Up: Walkthrough -- <placeholder>]

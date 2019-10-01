@@ -33,7 +33,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 The actual production Nock interpreter. Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
-in the [runtime system documentation](@/docs/learn/vere/runtime.md).
+in the [runtime system documentation](@/docs/vere/runtime.md).
 ```
 /* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */
@@ -1128,7 +1128,7 @@ tar a                                = Left "*a"
 
 ## Hoon
 
-```
+```hoon
 |=  {sub/* fol/*}
 ^-  *
 ?<  ?=(@ fol)
@@ -1179,7 +1179,7 @@ tar a                                = Left "*a"
 
 From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
-```
+```js
 (function (self, factory) {
   'use strict'
 
@@ -1538,7 +1538,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
 From [James Tauber](https://github.com/jtauber/pynock/blob/master/nock.py):
 
-```
+```py
 #!/usr/bin/env python3
 
 # []
@@ -1627,7 +1627,7 @@ def tar(noun):
 
 From [T.J. Corcoran](https://github.com/TJamesCorcoran/nock/blob/master/nock.rb):
 
-```
+```ruby
 def str_to_tree(str)
   arr = []
   str.scan(/\+|\=|\?|\/|\*|\[|\]|\d+/).each do |token|
@@ -1760,7 +1760,7 @@ end
 
 From [Steve Randy Waldman](https://github.com/swaldman/nnnock/blob/master/src/main/scala/com/mchange/sc/v1/nnnock/package.scala):
 
-```
+```scala
 package object nnnock {
 
   sealed trait Noun;
@@ -1842,7 +1842,7 @@ package object nnnock {
 
 From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock.ss):
 
-```
+```scheme
 (import (rnrs (6)))
 
 (define (i a) a)
@@ -1962,7 +1962,7 @@ From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock
 
 ## Swift
 
-```
+```swift
 import Foundation
 //  1   ::  A noun is an atom or a cell.
 //  2   ::  An atom is a natural number.

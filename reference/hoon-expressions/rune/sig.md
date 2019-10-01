@@ -193,7 +193,7 @@ Regular form: **4-fixed**
 
 Here's the AES
 
-```
+```hoon
     ++  aesc                                                ::  AES-256
       ~%  %aesc  +  ~
       |%
@@ -291,7 +291,7 @@ registered context.
 
 ##### Expands to
 
-```
+```hoon
 ~%(p +7 ~ q)
 ```
 
@@ -302,7 +302,7 @@ Regular: **2-fixed**.
 ##### Examples
 
 From the kernel:
-```
+```hoon
 ++  add
   ~/  %add
   |=  [a=@ b=@]

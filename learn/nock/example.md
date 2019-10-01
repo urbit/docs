@@ -249,7 +249,7 @@ could also write this subject as
 and we see readily that `a` is at slot `7`, `b` `6`, `l` `2`.
 With this subject, we need to express the Hoon loop body
 
-```
+```hoon
 ?:  =(a +(b))               ::  line 4
   b                         ::  line 5
 $(b +(b))                   ::  line 6

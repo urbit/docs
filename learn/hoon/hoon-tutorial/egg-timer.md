@@ -7,7 +7,7 @@ template = "doc.html"
 The Arvo operating system is divided up into modules called vanes. Gall is the vane responsible for providing an API for building stateful applications in Urbit. Gall is a complex system that takes a lot of getting used to, so let's dip our toes in with a simple egg-timer app.
 
 
-```
+```hoon
 |%
 +$  effect   (pair bone syscall)
 +$  syscall  [%wait path @da]
@@ -28,7 +28,7 @@ The Arvo operating system is divided up into modules called vanes. Gall is the v
 
 The first thing to notice is that we are creating a `core` (`|%`) and a `door` (`|_`). This is a typical style of Gall programming where your types are defined in the first `core` and your application is defined in the following `door`.
 
-```
+```hoon
 |%
 +$  effect   (pair bone syscall)
 +$  syscall  [%wait path @da]
@@ -41,7 +41,7 @@ It's important to note that the names `effect` and `syscall` are arbitrary; you 
 
 The sample of the `door` is:
 
-```
+```hoon
 [bowl:gall ~]
 ```
 
@@ -55,7 +55,7 @@ You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's 
 
 The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
-```
+```hoon
 ++  poke-noun
   |=  t=@dr
   ^+  [*(list effect) +>.$]
@@ -73,7 +73,7 @@ As a matter of good type hygiene, we explicitly cast the output of this gate wit
 
 Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like:
 
-```
+```hoon
 [[[ost %wait /egg-timer (add now t)] ~] +>.$]
 ```
 
@@ -97,7 +97,7 @@ The final part of this `syscall` is:
 
 That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `gift`, a similar construct to how we created an `effect`, only this time it will end up being dispatched back to us via Gall in the `++wake` arm. Any app that wants to use a timer trigger needs to have an arm called `++wake`.
 
-```
+```hoon
 ++  wake
   |=  [=wire error=(unit tang)]
   ^+  [*(list effect) +>.$]

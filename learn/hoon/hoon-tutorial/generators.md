@@ -18,14 +18,14 @@ takes a `sample` (argument) and produces a noun. All you need to do is write a
 `gate` and put it into a file in the `/gen` directory. Let's take a look at a
 very simple one:
 
-```
+```hoon
 |=  a=*
 a
 ```
 
 This generator takes one argument of any noun and produces it without any
 changes. If we put this into a file named `echo.hoon` in the `/gen` directory,
-we can run it from the [Dojo](@/docs/using/shell.md):
+we can run it from the [Dojo](@/operations.md):
 
 ```
 > +echo 42
@@ -65,7 +65,7 @@ generator to see something more familiar:
 Now let's create a generator with two arguments instead of one. Save the code
 below as `add.hoon` in the `/gen` directory.
 
-```
+```hoon
 |=  [a=@ud b=@ud]
 (add a b)
 ```
@@ -105,7 +105,7 @@ output data and the `mark` describing that data.
 Below is an example of a `%say` generator. Save it to `add.hoon` in the `/gen`
 directory.
 
-```
+```hoon
 :-  %say
 |=  *
 :-  %noun
@@ -124,7 +124,7 @@ generators but impossible with naked generators. We'll explain that in a moment.
 For now, let's focus on the code that is necessary to make something a `%say`
 generator.
 
-```
+```hoon
 :-  %say
 ```
 
@@ -134,7 +134,7 @@ as its head and the second following expression as its tail.
 The expression above creates a cell with `%say` as the head. The tail is
 the `|=  *` expression on the line that follows.
 
-```
+```hoon
 |=  *
 :-  %noun
 (add 40 2)
@@ -176,7 +176,7 @@ You can access each of those pieces of data by typing their names into the Dojo.
 But in a generator, we need to put faces (variable names) onto that data so we
 can easily use it in the program. We can do so like this:
 
-```
+```hoon
 |=  [[now=@da eny=@uvJ bec=beak] ~ ~]
 ```
 
@@ -191,7 +191,7 @@ represent this second part. But that would mean we don't want to use any new
 faces for our generator. So a sample where we want to declare a single required
 argument would look like this:
 
-```
+```hoon
 |=  [* [n=@ud ~] ~]
 ```
 
@@ -201,7 +201,7 @@ in the first part of the sample, somewhat similar to how we use a `~` to say
 
 But to use both parts together, our gate and sample would look like this:
 
-```
+```hoon
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] ~]
 ```
 
@@ -210,14 +210,14 @@ arguments may be passed to the program as it's being run, but the program doesn'
 require them. The syntax for the third part is just like the syntax for the
 second part, besides its position:
 
-```
+```hoon
 |=  [* ~ [bet=@ud ~]]
 ```
 
 Let's look at an example that uses all three parts. Save the code below in a
 file called `dice.hoon` in your `/gen` directory.
 
-```
+```hoon
 :-  %say
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] [bet=@ud ~]]
 :-  %noun
@@ -263,7 +263,7 @@ to not use the second argument.
 Also unlike a naked generator, we don't need to put our arguments together into
 a cell. Swap the code below into your `add.hoon` file.
 
-```
+```hoon
 :-  %say
 |=  [* [a=@ud b=@ud ~] ~]
 :-  %noun
@@ -312,7 +312,7 @@ to explain how this kind of generator works.
 The code below is an `%ask` generator that checks if the user inputs "blue" when
 prompted. Save it as `axe.hoon` in `/gen`.
 
-```
+```hoon
 /-  sole
 /+  generators
 =,  [sole generators]
@@ -352,7 +352,7 @@ Aaaaagh!
 
 Let's go over what exactly is happening in this code.
 
-```
+```hoon
 /-  sole
 /+  generators
 =,  [sole generators]
@@ -369,7 +369,7 @@ gates we will use from `/lib/generators`. We use some special runes for this.
 to write `sole-result:sole` instead of `sole-result` or `print:generators`
 instead of `print`.
 
-```
+```hoon
 :-  %ask
 |=  *
 ```
@@ -381,7 +381,7 @@ generator we are running.
 With `|=  *`, we create a gate and ignore the standard arguments we are given,
 because we're not using them.
 
-```
+```hoon
 ^-  (sole-result (cask tang))
 ```
 
@@ -398,7 +398,7 @@ There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for
 printing a single noun, a `rose` is for printing rows of data, and a `palm` is
 for printing backstep-indented lists.
 
-```
+```hoon
 %+  print    leaf+"What is your favorite color?"
 %+  prompt   [%& %prompt "color: "]
 |=  t=tape
@@ -434,7 +434,7 @@ use to prompt the user. In the case of our example, we use `"color: "`.
 we produce a `tang`.
 
 
-```
+```hoon
 |=  t=tape
 ```
 
@@ -457,7 +457,7 @@ This is a [known issue](https://github.com/urbit/arvo/issues/840) to be resolved
 section we'll assume knowledge of generators covered in previous sections, so
 we can jump in with an example:
 
-```
+```hoon
 /-  sole
 /+  generators
 =,  generators
@@ -481,7 +481,7 @@ The above generator was written with the
 [Studio Ghibli API](https://ghibliapi.herokuapp.com/). It uses this API to
 print the title of a Studio Ghibli film.
 
-```
+```hoon
 /-  sole
 /+  generators
 =,  generators
@@ -491,7 +491,7 @@ Here we import types from `/sur/sole.hoon` and gates from
 `/lib/generators.hoon`. We also use `=,` to expose the namespace of
 `generators` that we just imported.
 
-```
+```hoon
 :-  %get
 |=  [* [url=tape ~] ~]
 ```
@@ -501,7 +501,7 @@ code that produces a generator-specific `cell`. The head of that cell is `%get`,
 and the tail is a gate that takes a `tape` of the URL that we are trying
 to access.
 
-```
+```hoon
 ^-  (sole-request:sole (cask json))
 ```
 
@@ -509,7 +509,7 @@ Here we make sure our gate is producing a `sole-request` which contains a `cask`
 of the type `json`.
 
 
-```
+```hoon
 %+  curl  (scan url auri:de-purl:html)
 |=  hit/httr:eyre
 ```
@@ -520,7 +520,7 @@ make sure it's in the proper format.
 The second part of the `curl` call is the `gate` that will get called with the
 result provided by the actual HTTP request.
 
-```
+```hoon
 ?~  r.hit  !!
 ```
 
@@ -528,7 +528,7 @@ Here we verify that the `r` face of our response is not null before
 continuing. If it is null, the generator will crash, as there is nothing left to
 do.
 
-```
+```hoon
 =/  my-json  (de-json:html q.u.r.hit)
 ```
 
@@ -538,7 +538,7 @@ entire response object, including headers, which we don't care about for this
 example. `de-json` out of `html` will parse the `cord` and produce a `json` type
 for us that we can then use to inspect the data.
 
-```
+```hoon
 ?~  my-json  !!
 =,  dejs:format
 ```
@@ -548,7 +548,7 @@ type. To do that, we test for null and crash if that test passes. If it doesn't
 pass, we use `=,` on the `dejs:format` core so that we can more easily pull arms
 out of it.
 
-```
+```hoon
 %+  produce  %json
 %.  %title
 %~  got  by
@@ -572,7 +572,7 @@ access members of a given `map`.
 
 At the moment, however, we do not have a `map`, but instead have a `json` type.
 
-```
+```hoon
 %-  (om same)
 u.my-json
 ```

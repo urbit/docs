@@ -3,6 +3,7 @@ title = "Hoon Tutorial"
 weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["/docs/byte/0/", "/docs/byte"]
 +++
 
 This series is designed to teach you Hoon without assuming you have an extensive programming background.  In fact, you should be able to follow much of it even if you have no programming experience at all, though of course experience helps.  We strongly encourage you to try out all the examples of each lesson.  These lessons are meant for the beginner but they aren't meant to be skimmed. Each lesson falls into one of two categories: **readings**, which are prose-heavy explanations of Hoon fundamentals, and **walkthroughs**, which are line-by-line explanations of example programs. Walkthroughs are found between readings, offering a practical implementation of the concepts taught in the reading before.
@@ -42,12 +43,13 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [2.3 Structures and Complex Types](structures-and-complex-types)
 - [2.4 Standard Library: Trees, Sets, and Maps](trees-sets-and-maps)
 - [2.5 Type Polymorphism](type-polymorphism)
+- [2.7 Gall](gall)
 
 ## Other Resources
 
-Consult the [Reference section](@/docs/reference/_index.md) to look up any unknown rune or standard library function you don't understand.
+Consult the [standard libary documentation](@/docs/hoon/library/_index.md) or [rune reference](@/docs/hoon/hoon-expressions/_index.md) to look up any unknown rune or standard library function you don't understand.
 
-As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](@/docs/learn/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](@/docs/learn/hoon/hoon-tutorial/generators.md) documentation.  Or maybe you'd like to learn how to write a [Gall app](content/docs/learn/arvo/gall.md).  Learn about [Udon](@/docs/using/sail-and-udon.md), Urbit's stripped-down version of Markdown.  Or learn [Sail](@/docs/using/sail-and-udon.md), a subset of Hoon used for generating XML nodes.
+As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](@/docs/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](@/docs/hoon/hoon-tutorial/generators.md) documentation.  Or maybe you'd like to learn how to write a [Gall app](content/docs/learn/arvo/gall.md).  Learn about [Udon](@/docs/arvo/sail-and-udon.md), Urbit's stripped-down version of Markdown.  Or learn [Sail](@/docs/arvo/sail-and-udon.md), a subset of Hoon used for generating XML nodes.
 
 
 > Last major revision of this section: February 2019

@@ -8,7 +8,7 @@ Magic 8-Ball, producing a randomized response with each run.
 
 Save the code below as `eightball.hoon` in your `/gen` directory.
 
-```
+```hoon
 !:
 :-  %say
 |=  [[* eny=@uv *] *]
@@ -43,7 +43,7 @@ Save the code below as `eightball.hoon` in your `/gen` directory.
 
 Let's go through our code in chunks so that we might more easily understand it.
 
-```
+```hoon
 !:
 ```
 
@@ -51,7 +51,7 @@ We start with the `!:` rune to enable a full stack trace for any errors. This
 is good practice whenever developing something in Hoon.
 
 
-```
+```hoon
 :-  %say
 |=  [[* eny=@uv *] *]
 :-  %noun
@@ -59,7 +59,7 @@ is good practice whenever developing something in Hoon.
 
 To make our program produce a random result, we need entropy. To get entropy,
 we need data from Arvo. To get data from Arvo, we use a generator of the
-[`%say`](@/docs/learn/hoon/hoon-tutorial/generators.md) variety. The above code chunk is
+[`%say`](@/docs/hoon/hoon-tutorial/generators.md) variety. The above code chunk is
 the template that is followed for all `%say` generators.
 
 `:-  %say` creates a cell with `%say` as that cell's head to define
@@ -79,14 +79,14 @@ producing. In this case, we are using the `%noun` `mark` to tell the system how
 to print the generator's outputted value. The tail of this cell is that value
 itself, produced by the rest of our program.
 
-```
+```hoon
 ^-  tape
 ```
 
 Above is a cast statement that requires the non-`mark` component of our cell to
 be of the `tape` type. If it's not, the program doesn't compile.
 
-```
+```hoon
 =/  answers=(list tape)
   :~  "It is certain."
       "It is decidedly so."
@@ -127,7 +127,7 @@ elements are the `tape`s that are selected as the 8-Ball's responses.
 
 `==` terminates our list. `:~` expressions are always closed in this way.
 
-```
+```hoon
 =/  rng  ~(. og eny)
 =/  val  (rad:rng (lent answers))
 ```
@@ -144,7 +144,7 @@ Is the upper bound that we give it. In this case, the upper bound is the number
 of elements in `answers`, obtained by using the `lent` standard-library arm. We
 store the random result in `val`.
 
-```
+```hoon
 (snag val answers)
 ```
 

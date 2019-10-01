@@ -52,7 +52,7 @@ It's important to learn the difference, however, because for certain use cases y
 
 Let's make a core with arms that build gates of various kinds.  As we did in a previous lesson, we'll use the `|%` rune.  Feel free to cut and paste the following into the dojo:
 
-```
+```hoon
 > =c |%
   ++  inc  |=(a=@ (add 1 a))
   ++  add-two  |=(a=@ (inc (inc a)))
@@ -267,7 +267,7 @@ Gates are useful for defining functions.  But there are many-armed doors as well
 
 Let's write an example door in order to illustrate its features.  Each of the arms in the door will define a simple gate.  Let's bind the door to `c` as we did with the last core.  To make a door we use the `|_` rune:
 
-```
+```hoon
 > =c |_  b=@
   ++  plus  |=(a=@ (add a b))
   ++  times  |=(a=@ (mul a b))

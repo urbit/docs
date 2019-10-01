@@ -111,7 +111,7 @@ Feel free to use `~&` liberally! (Just remove them when you're done).
 
 Let's use the three to jet some code.  Starting with this example:
 
-```
+```hoon
   ++  aaa
     ...
     ++  bbb
@@ -175,12 +175,12 @@ For each jet you will write one `u3we()` function and one `u3qe()` function.
 
 - edit the header file `include/jets/w.h` to have a declaration for each of your `u3we()` functions.  Every `u3we()` function looks the same, e.g.
 
-  ```
+  ```c
   u3_noun u3we_xxx(u3_noun);
   ```
 - edit the header file `~/tlon/urbit/include/jets/q.h` to have a declaration for your `u3qe()` function.  `u3qe()` functions can differ from each other, taking distinct numbers of `u3_nouns` and/or `u3_atoms`, e.g.
 
-  ```
+  ```c
   u3_noun u3qe_yyy(u3_atom, u3_atom);
   u3_noun u3qe_zzz(u3_noun, u3_noun, u3_atom, u3_atom);
   ```
@@ -194,7 +194,7 @@ In the Hoon code we hinted some leaf node functions (`ccc` in our example) and t
 
 We need to replicate this structure in C.  Here's example C code to jet our above example Hoon:
 
-```
+```c
       // 1: register a C func u3we_ccc()
       static u3j_harm _143_hex_hobo_reco_d[] =
         {
@@ -271,13 +271,13 @@ hinting in Hoon).
 
 The line in section 2
 
-```
+```c
       { "ccc",            _143_hex_hobo_ccc_a },
 ```
 
 looks very similar to the line in section 3
 
-```
+```c
     { "bbb", 0,   _143_hex_hobo_bbb_d },
 ```
 
@@ -331,7 +331,7 @@ To unpack the sample
 
 We use the function `u3r_mean()` to do this, thusly:
 
-```
+```c
       u3_noun arg_a, arg_b, arg_c  ... ;
 
       u3r_mean(cor,
@@ -388,7 +388,7 @@ N.B. in our fprintf()s we're using both \n and \r to achieve line feed
 because Urbit uses ncurses to control the screen and it changes the
 default behavior you may be used to (where \n accomplishes both).
 
-```
+```c
        c3_o ret;
        u3_noun sample;
        ret = u3r_mean(cor, u3x_sam_1,  &sample, 0);
@@ -414,7 +414,7 @@ default behavior you may be used to (where \n accomplishes both).
 
 If the Hoon that you're jetting looks like this
 
-```
+```hoon
       ++  make-k
       ~/  %make-k
       =,  mimes:html
@@ -423,7 +423,7 @@ If the Hoon that you're jetting looks like this
 
 In the C code you'd fetch them out of the payload with
 
-```
+```c
       u3r_mean(cor,
            u3x_sam_2, & arg_aaa,
            u3x_sam_5, & arg_bbb,
@@ -438,7 +438,7 @@ sample.
 
 You could - IN THEORY - inspect / pretty-print the noun by calling
 
-```
+```c
     u3m_p("description", cor);  :: DO NOT DO THIS !!!
 ```
 
@@ -447,7 +447,7 @@ entire context - the whole enchilada.
 
 Do instead, perhaps,
 
-```
+```c
     c3_o ret;
     u3_noun sample;
 
@@ -461,19 +461,19 @@ After our C function pulls out the arguments it needs to type check them.
 
 If `arg_a` is supposed to be a atom, trust but verify:
 
-```
+```c
        u3ud(arg_a);  // checks for atomicity; alias for u3a_is_atom()
 ```
 
 If it's supposed to be a cell:
 
-```
+```c
        u3du(arg_a);  // checks for cell-ness
 ```
 
 There are other tests you might need to use
 
-```
+```c
     u3a_is_cat()
     u3a_is_dog()
 
@@ -485,7 +485,7 @@ All of these rests return Hoon loobeans (yes/no vs true / false), so
 check return values vs `c3n` / `c3y`.  If any of these `u3_mean()`, `u3ud()`
 etc return u3n you have an error and should return
 
-```
+```c
       return u3m_bail(c3__exit);
 ```
 
@@ -504,32 +504,32 @@ A `u3_noun` will want to be further disassembled into atoms.
 A `u3_atom` represents a simple number, but the implementation may or
 may not be simple.  If the value held in the atom is 31 bits or less,
 it's stored directly in the atom.  If the value is 32 bits the atom
-holds a pointer into the loom where the actual value is stored. ( see [Nouns](@/docs/learn/vere/nouns.md) )
+holds a pointer into the loom where the actual value is stored. ( see [Nouns](@/docs/vere/nouns.md) )
 
 You don't want to get bogged down in the details of this -- you just
 want to get data out of your atoms.
 
 If you know that the data fits in 32 bits or less, you can use
 
-```
+```c
    u3r_word(c3_w    a_w, u3_atom b);
 ```
 
 If it is longer than 32 bits, use
 
-```
+```c
   u3r_words(c3_w    a_w, c3_w    b_w, c3_w*   c_w, u3_atom d);
 ```
 
 or
 
-```
+```c
    u3r_bytes(c3_w    a_w, c3_w    b_w, c3_y*   c_y, u3_atom d)
 ```
 
 If you need to get the size
 
-```
+```c
    u3r_met(3, a);
 ```
 
@@ -539,13 +539,13 @@ Now we move on to return semantics.
 
 First, you can transfer raw values into nouns using
 
-```
+```c
     u3_noun u3i_words(c3_w a_w, const c3_w* b_w)
 ```
 
 and you can build cells out of nouns using
 
-```
+```c
    u3nc(); // pair
    u3nt(); // triple
    u3nq(); // quad
@@ -555,7 +555,7 @@ There are two facets here: (i) data format, (ii) memory allocation.
 
 Regarding data format, if the Hoon is expected to return a single atom (e.g. if the Hoon looks like this:)
 
-```
+```hoon
       ++  make-k
         ~/  %make-k
         |=  [has=@uvI prv=@]     ::  <---- input parguments
@@ -565,13 +565,13 @@ Regarding data format, if the Hoon is expected to return a single atom (e.g. if 
 
 then your C code - at least when you're stubbing it out - can do something like
 
-```
+```c
    return(123);
 ```
 
 Or, if you want to create an atom more formally, you can build it like this
 
-```
+```c
      // this variable is on the stack and will disappear
    unsigned char nonce32[32];
 
@@ -585,7 +585,7 @@ Or, if you want to create an atom more formally, you can build it like this
 
 If, on the other hand, your Hoon looks like
 
-```
+```hoon
       ++  ecdsa-raw-sign                                ::  generate signature
         ~/  %ecdsa-raw-sign
         |=  [has=@uvI prv=@]
@@ -595,7 +595,7 @@ If, on the other hand, your Hoon looks like
 
 ending your C code with
 
-```
+```c
    return(123);
 ```
 
@@ -603,7 +603,7 @@ is wrong and will result in a dojo error because you are returning a single atom
 
 Instead do one of these:
 
-```
+```c
      return(u3nc(a, b));    // for two atoms
      return(u3nt(a, b, c));    // for three atoms
      return(u3nq(a, b, c, d));  // for four atoms
@@ -613,11 +613,11 @@ If you need to return a longer list, you can compose your own.  Look
 at the definitions of these three functions and you will see that they
 are just recursive calls to the cell constructor `u3i_cell()` e.g.
 
-```
+```c
      u3i_cell(a, u3i_cell(b, u3i_cell(c, d));
 ```
 
-Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs/learn/vere/nouns.md).
+Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs/vere/nouns.md).
 
 ## Compile the C code
 

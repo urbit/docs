@@ -4,37 +4,37 @@ weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
-Arvo is Urbit's functional operating system, written in [Hoon](@/docs/learn/hoon/_index.md). It's composed of modules called _vanes_:
+Arvo is Urbit's functional operating system, written in [Hoon](@/docs/hoon/_index.md). It's composed of modules called _vanes_:
 
-## [Ames](@/docs/learn/arvo/ames.md)
+## [Ames](@/docs/arvo/ames.md)
 
 Ames is the name of our network and the vane that communicates over it. It's an encrypted P2P network composed of instances of the Arvo operating system.
 
-## [Behn](@/docs/learn/arvo/behn.md)
+## [Behn](@/docs/arvo/behn.md)
 
 Behn is our timer. It allows vanes and applications to set and timer events, which are managed in a simple priority queue.
 
-## [Clay](@/docs/learn/arvo/clay.md)
+## [Clay](@/docs/arvo/clay.md)
 
 Clay is our filesystem and revision-control system.
 
-## [Dill](@/docs/learn/arvo/dill.md)
+## [Dill](@/docs/arvo/dill.md)
 
 Dill is our terminal driver. Unix sends keyboard events to dill from the terminal, and dill produces terminal output.
 
-## [Eyre](@/docs/learn/arvo/eyre.md)
+## [Eyre](@/docs/arvo/eyre.md)
 
 Eyre is our HTTP server. Unix sends HTTP messages to `%eyre`, and `%eyre` produces HTTP messages in response.
 
-## [Ford](@/docs/learn/arvo/ford.md)
+## [Ford](@/docs/arvo/ford.md)
 
 Ford is our build system. It handles resources and publishing.
 
-## [Gall](@/docs/learn/arvo/gall.md)
+## [Gall](@/docs/arvo/gall.md)
 
 Gall is the vane for controlling userspace apps.
 
-### [Hall](@/docs/learn/arvo/hall.md)
+### [Hall](@/docs/arvo/hall.md)
 
 Hall isn't a vane, but an important Gall app that functions as the Urbit messaging protocol.
 

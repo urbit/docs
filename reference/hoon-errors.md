@@ -23,7 +23,7 @@ somewhere above, you've confused Hoon's tall form by using the
 wrong fanout for a rune.  For example, `%+` ([**cenlus**](@/docs/reference/hoon-expressions/rune/cen.md#cenlus),
 a function call whose sample is a cell) has three subhoons:
 
-```
+```hoon
 %+  foo
   bar
 baz
@@ -31,7 +31,7 @@ baz
 
 But if you make a mistake and write
 
-```
+```hoon
 %+  foo
 bar
 ```
@@ -106,7 +106,7 @@ any hoon in your stack trace.
 For instance, you wrote `(foo bar)` and got a `nest-fail`.  Change
 your code to be:
 
-```
+```hoon
 ~!  bar
 ~!  +6.foo
 (foo bar)
@@ -146,7 +146,7 @@ stack trace will show what your code was doing when interrupted.
 The counterpart of `~!` for runtime crashes is `~|`
 ([**sigbar**](@/docs/reference/hoon-expressions/rune/sig.md#sigbar)):
 
-```
+```hoon
 ~|  foo
 (foo bar)
 ```
@@ -163,7 +163,7 @@ functional language, but it still happens.
 `~&` ([**sigpam**](@/docs/reference/hoon-expressions/rune/sig.md#sigpam)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
-```
+```hoon
 ~&  foo
 (foo bar)
 ```
@@ -172,7 +172,7 @@ will always print `foo` every time it executes.  A variant is
 `~?` ([**sigwut**](@/docs/reference/hoon-expressions/rune/sig.md#sigwut)), which prints only if a condition is
 true:
 
-```
+```hoon
 ~?  =(37 (lent foo))  foo
 (foo bar)
 ```

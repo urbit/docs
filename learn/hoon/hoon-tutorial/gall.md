@@ -16,7 +16,7 @@ A `bone` is an opaque cause that initiates a request. When constructing a `move`
 
 A `card` is the effect or event that is being requested. Each application should define the set of `cards` it can produce. Here is an excerpt from `clock.hoon` showing its `cards`
 
-```
+```hoon
 +$  card
   $%  [%poke wire dock poke]
       [%http-response =http-event:http]
@@ -37,7 +37,7 @@ Gall applications can have a number of arms that get called depending on the inf
 
 Often when developing an application you will not initially care about the data. Here is a sample `++prep` arm that will simply throw away the previous application state.
 
-```
+```hoon
 ++  prep
     |=  a=(unit *)
     `(quip move _+>.$)`[~ +>.$]

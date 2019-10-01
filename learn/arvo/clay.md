@@ -473,7 +473,7 @@ back when you need to.
 
 ### `++raft`, formal state
 
-```
+```hoon
     ++  raft                                                ::  filesystem
               $:  fat=(map ship room)                       ::  domestic
                   hoy=(map ship rung)                       ::  foreign
@@ -496,7 +496,7 @@ bookkeeping".
 
 #### `++room`, filesystem per domestic ship
 
-```
+```hoon
     ++  room                                                ::  fs per ship
               $:  hun=duct                                  ::  terminal duct
                   hez=(unit duct)                           ::  sync duch
@@ -519,7 +519,7 @@ set of desks on this ship, mapped to their data.
 
 #### `++desk`, filesystem branch
 
-```
+```hoon
     ++  desk  ,@tas                                         ::  ship desk case spur
 ```
 
@@ -530,7 +530,7 @@ merged into each other.
 
 ### `++dojo`, domestic desk state
 
-```
+```hoon
     ++  dojo  ,[p=cult q=dome]                              ::  domestic desk state
 ```
 
@@ -540,7 +540,7 @@ data in the desk.
 
 #### `++cult`, subscriptions
 
-```
+```hoon
     ++  cult  (map duct rave)                               ::  subscriptions
 ```
 
@@ -551,7 +551,7 @@ requested information.
 
 #### `++rave:clay`, general subscription request
 
-```
+```hoon
     ++  rave                                                ::  general request
               $%  [& p=mood]                                ::  single request
                   [| p=moat]                                ::  change range
@@ -564,7 +564,7 @@ the desk.
 
 ### `++rove`, stored general subscription request
 
-```
+```hoon
     ++  rove  (each mood moot)                              ::  stored request
 ```
 
@@ -574,7 +574,7 @@ affect the path we're subscribed to.
 
 #### `++mood:clay`, single subscription request
 
-```
+```hoon
     ++  mood  ,[p=care q=case r=path]                       ::  request in desk
 ```
 
@@ -584,7 +584,7 @@ desired, and `r` specifies the path we are requesting.
 
 #### `++moat:clay`, range subscription request
 
-```
+```hoon
     ++  moat  ,[p=case q=case r=path]                       ::  change range
 ```
 
@@ -594,7 +594,7 @@ by the path or to any of its children.
 
 ### `++moot`, stored range subscription request
 
-```
+```hoon
     ++  moot  ,[p=case q=case r=path s=(map path lobe)]     ::
 ```
 
@@ -605,7 +605,7 @@ the subscription if the data at a new revision is different than it was.
 
 ### `++care:clay`, clay submode
 
-```
+```hoon
     ++  care  ?(%u %v %w %x %y %z)                          ::  clay submode
 ```
 
@@ -630,7 +630,7 @@ if `q:ankh` is null), then this produces null.
 
 ### `++arch`, shallow filesystem node
 
-```
+```hoon
     ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
 ```
 
@@ -644,7 +644,7 @@ efficient conversion.
 
 #### `++case:clay`, specifying a commit
 
-```
+```hoon
     ++  case                                                ::  ship desk case spur
               $%  [%da p=@da]                               ::  date
                   [%tas p=@tas]                             ::  label
@@ -660,7 +660,7 @@ referenced with a `++case:clay`.
 
 #### `++dome:clay`, desk data
 
-```
+```hoon
     ++  dome                                                ::  project state
               $:  ang=agon                                  ::  pedigree
                   ank=ankh                                  ::  state
@@ -700,7 +700,7 @@ desk.
 
 #### `++ankh`, filesystem node
 
-```
+```hoon
     ++  ankh                                                ::  fs node (new)
               $:  p=cash                                    ::  recursive hash
                   q=(unit ,[p=cash q=*])                    ::  file
@@ -724,7 +724,7 @@ are, recursively, the nodes themselves.
 
 #### `++cash`, ankh hash
 
-```
+```hoon
     ++  cash  ,@uvH                                         ::  ankh hash
 ```
 
@@ -734,7 +734,7 @@ hierarchies.
 
 #### `++rung`, filesystem per neighbor ship
 
-```
+```hoon
     ++  rung  $:  rus=(map desk rede)                       ::  neighbor desks
               ==                                            ::
 ```
@@ -744,7 +744,7 @@ the desks we know about on their ship.
 
 #### `++rede`, desk state
 
-```
+```hoon
     ++  rede                                                ::  universal project
               $:  lim=@da                                   ::  complete to
                   qyx=cult                                  ::  subscribers
@@ -770,7 +770,7 @@ null since we handle requests ourselves.
 
 #### `++rind`, request manager
 
-```
+```hoon
     ++  rind                                                ::  request manager
               $:  nix=@ud                                   ::  request index
                   bom=(map ,@ud ,[p=duct q=rave])           ::  outstanding
@@ -801,7 +801,7 @@ for a particular `++mood:clay` is nearly instantaneous.
 
 #### `++rang:clay`, data store
 
-```
+```hoon
     ++  rang  $:  hut=(map tako yaki)                       ::
                   lat=(map lobe blob)                       ::
               ==                                            ::
@@ -821,7 +821,7 @@ this map.
 
 #### `++tako:clay`, commit reference
 
-```
+```hoon
     ++  tako  ,@                                            ::  yaki ref
 ```
 
@@ -832,7 +832,7 @@ associated with these.
 
 #### `++yaki:clay`, commit
 
-```
+```hoon
     ++  yaki  ,[p=(list tako) q=(map path lobe) r=tako t=@da] ::  commit
 ```
 
@@ -854,7 +854,7 @@ here tells the whole story.
 
 #### `++lobe:clay`, data reference
 
-```
+```hoon
     ++  lobe  ,@                                            ::  blob ref
 ```
 
@@ -864,7 +864,7 @@ where they are associated with the actual `++blob:clay`, and as the values in
 
 #### `++blob:clay`, data
 
-```
+```hoon
     ++  blob  $%  [%delta p=lobe q=lobe r=udon]             ::  delta on q
                   [%direct p=lobe q=* r=umph]               ::
                   [%indirect p=lobe q=* r=udon s=lobe]      ::
@@ -892,7 +892,7 @@ not have to traverse the delta chain back to the creation of the file.
 
 #### `++udon`, abstract delta
 
-```
+```hoon
     ++  udon                                                ::  abstract delta
               $:  p=umph                                    ::  preprocessor
                   $=  q                                     ::  patch
@@ -927,7 +927,7 @@ moment, and may in fact be unimplemented.
 
 #### `++urge`, list change
 
-```
+```hoon
     ++  urge  |*(a=_,* (list (unce a)))                     ::  list change
 ```
 
@@ -936,7 +936,7 @@ is a list change for lines of text.
 
 #### `++unce`, change part of a list.
 
-```
+```hoon
     ++  unce  |*  a=_,*                                     ::  change part
               $%  [%& p=@ud]                                ::  skip[copy]
                   [%| p=(list a) q=(list a)]                ::  p -> q[chunk]
@@ -952,7 +952,7 @@ This is a single change in a list of elements of type `a`. For example,
 
 #### `++umph`, preprocessing information
 
-```
+```hoon
     ++  umph                                                ::  change filter
               $|  $?  %a                                    ::  no filter
                       %b                                    ::  jamfile
@@ -967,7 +967,7 @@ we get a well-typed clay.
 
 #### `++upas`, tree change
 
-```
+```hoon
     ++  upas                                                ::  tree change (%d)
               $&  [p=upas q=upas]                           ::  cell
               $%  [%0 p=axis]                               ::  copy old
@@ -982,7 +982,7 @@ is not a complicated type; it is not difficult to work out the meaning.
 
 #### `++nori:clay`, repository action
 
-```
+```hoon
     ++  nori                                                ::  repository action
               $%  [& q=soba]                                ::  delta
                   [| p=@tas]                                ::  label
@@ -998,7 +998,7 @@ label. In the `&` case, we will apply the given changes.
 
 #### `++soba:clay`, delta
 
-```
+```hoon
     ++  soba  ,[p=cart q=(list ,[p=path q=miso])]           ::  delta
 ```
 
@@ -1010,7 +1010,7 @@ itself.
 
 #### `++miso:clay`, ankh delta
 
-```
+```hoon
     ++  miso                                                ::  ankh delta
               $%  [%del p=*]                                ::  delete
                   [%ins p=*]                                ::  insert
@@ -1026,7 +1026,7 @@ changes we are applying to the file.
 
 #### `++mizu:clay`, merged state
 
-```
+```hoon
     ++  mizu  ,[p=@u q=(map ,@ud tako) r=rang]              ::  new state
 ```
 
@@ -1040,7 +1040,7 @@ commits or data need be here.
 
 #### `++riff:clay`, request/desist
 
-```
+```hoon
     ++  riff  ,[p=desk q=(unit rave)]                       ::  request/desist
 ```
 
@@ -1051,7 +1051,7 @@ along this duct.
 
 #### `++riot:clay`, response
 
-```
+```hoon
     ++  riot  (unit rant)                                   ::  response/complete
 ```
 
@@ -1061,7 +1061,7 @@ been completed, and no more responses will be sent. Otherwise, the
 
 #### `++rant:clay`, response data
 
-```
+```hoon
     ++  rant                                                ::  namespace binding
               $:  p=[p=care q=case r=@tas]                  ::  clade release book
                   q=path                                    ::  spur
@@ -1077,7 +1077,7 @@ node. `r` is the data itself (in the format specified by `p.p`).
 
 ### `++nako`, subscription response data
 
-```
+```hoon
     ++  nako  $:  gar=(map ,@ud tako)                       ::  new ids
                   let=@ud                                   ::  next id
                   lar=(set yaki)                            ::  new commits
@@ -1105,7 +1105,7 @@ As with all vanes, there are exactly two ways to interact with clay.
 above under `++care:clay`. The primary way of interacting with clay, though,
 is by sending kisses and receiving gifts.
 
-```
+```hoon
     ++  gift                                                ::  out result <-$
               $%  [%ergo p=@p q=@tas r=@ud]                 ::  version update
                   [%note p=@tD q=tank]                      ::  debug message
@@ -1126,7 +1126,7 @@ is by sending kisses and receiving gifts.
 There are only a small number of possible kisses, so it behooves us to
 describe each in detail.
 
-```
+```hoon
               $%  [%info p=@p q=@tas r=nori]                ::  internal edit
 
                   [%into p=@p q=@tas r=nori]                ::  external edit
@@ -1145,7 +1145,7 @@ duct that unix is listening on for changes. From within Arvo, though, we
 should never send a `%into` kiss. The `%info` kiss is exactly identical
 except it does not reset the duct.
 
-```
+```hoon
                   [%ingo p=@p q=@tas r=nori]                ::  internal noun edit
 
                   [%invo p=@p q=@tas r=nori]                ::  external noun edit
@@ -1156,7 +1156,7 @@ will not always be the case. The intent is for these kisses to allow
 typed changes to clay so that we may store typed data. This is currently
 unimplemented.
 
-```
+```hoon
                   [%init p=@p]                              ::  report install
 ```
 
@@ -1164,7 +1164,7 @@ Init is called when a ship is started on our pier. This simply creates a
 default `room` to go into our `raft`. Essentially, this initializes the
 filesystem for a ship.
 
-```
+```hoon
                   [%merg p=@p q=@tas r=mizu]                ::  internal change
 ```
 
@@ -1181,7 +1181,7 @@ time is XX usually the closest time specified in a subscription request.
 When `%wake` is XX called, we update our subscribers if there have been
 any changes.
 
-```
+```hoon
                   [%wart p=sock q=@tas r=path s=*]          ::  network request
 ```
 
@@ -1190,7 +1190,7 @@ file. When another ship asks for a file from us, that request comes to
 us in the form of a `%wart` kiss. This is handled by trivially turning
 it into a `%warp`.
 
-```
+```hoon
                   [%warp p=sock q=riff]                     ::  file request
 ```
 
@@ -1220,7 +1220,7 @@ version.
 As in all vanes, a kiss enters clay via a call to `++call`. Scanning
 through the arm, we quickly see where `%warp` is handled.
 
-```
+```hoon
             ?:  =(p.p.q.hic q.p.q.hic)
               =+  une=(un p.p.q.hic now ruf)
               =+  wex=(di:une p.q.q.hic)
@@ -1261,7 +1261,7 @@ Although it's called last, it's usually worth examining `++abet` first,
 since it defines in what ways we can cause side effects. Let's do that,
 and also a few of the lines at the beginning of `++de`.
 
-```
+```hoon
         =|  yel=(list ,[p=duct q=gift])
         =|  byn=(list ,[p=duct q=riot])
         =|  vag=(list ,[p=duct q=gift])
@@ -1317,7 +1317,7 @@ the only notes we pass here are `%wait` and `%rest` to the timer vane.
 Now that we know what kinds of side effects we may have, we can jump
 into the handling of requests.
 
-```
+```hoon
         ++  ease                                          ::  release request
           |=  hen=duct
           ^+  +>
@@ -1347,7 +1347,7 @@ it's easy to see that for foreign desks, we cancel any outstanding
 requests for this duct and send a message over ames to the other ship
 telling them to cancel the subscription.
 
-```
+```hoon
         ++  best
           |=  [hen=duct tym=@da]
           %_(+> tag :_(tag [hen /tyme %t %rest tym]))
@@ -1357,7 +1357,7 @@ This simply pushes a `%rest` note onto `tag`, from where it will be
 passed back to arvo to be handled. This cancels the timer at the given
 duct (with the given time).
 
-```
+```hoon
         ++  mabe                                            ::  maybe fire function
           |*  [rov=rove fun=$+(@da _+>.^$)]
           ^+  +>.$
@@ -1394,7 +1394,7 @@ smallest time.
 The more interesting case is, of course, when we're not cancelling a
 subscription but starting one.
 
-```
+```hoon
         ++  eave                                          ::  subscribe
           |=  [hen=duct rav=rave]
           ^+  +>
@@ -1428,7 +1428,7 @@ This case occurs when we make a request for a case whose (1) date is
 after the current date, (2) number is after the current number, or (3)
 label is not yet used.
 
-```
+```hoon
         ++  duce                                            ::  produce request
           |=  [hen=duct rov=rove]
           ^+  +>
@@ -1456,7 +1456,7 @@ Recall that `ref` is null for domestic desks and that `++mabe` fires the
 given function with the time we need to be woken up at, if we need to be
 woken up at a particular time.
 
-```
+```hoon
         ++  bait
           |=  [hen=duct tym=@da]
           %_(+> tag :_(tag [hen /tyme %t %wait tym]))
@@ -1471,7 +1471,7 @@ that does not exist, (2) a `%w` request with a case that is not a
 number, or (3) a `%w` request with a nonempty path. The `++blub` is
 exactly what you would expect it to be.
 
-```
+```hoon
         ++  blub                                          ::  ship stop
           |=  hen=duct
           %_(+> byn [[hen ~] byn])
@@ -1483,7 +1483,7 @@ isn't satisfiable.
 Otherwise, we have received the desired information, so we send it on to
 the subscriber with `++blab`.
 
-```
+```hoon
         ++  blab                                          ::  ship result
           |=  [hen=duct mun=mood dat=*]
           ^+  +>
@@ -1493,7 +1493,7 @@ the subscriber with `++blab`.
 The most interesting arm called in `++eave` is, of course, `++aver`,
 where we actually try to read the data.
 
-```
+```hoon
         ++  aver                                          ::  read
           |=  mun=mood
           ^-  (unit (unit ,*))
@@ -1520,7 +1520,7 @@ Here, we jump into `arvo/zuse.hoon`, which is where much of the
 algorithmic code is stored, as opposed to the clay interface, which is
 stored in `arvo/clay.hoon`. We examine `++case-to-aeon:ze`.
 
-```
+```hoon
       ++  case-to-aeon                                      ::    case-to-aeon:ze
         |=  lok=case                                        ::  act count through
         ^-  (unit aeon)
@@ -1561,7 +1561,7 @@ revisions were committed, we produce `0`.
 
 The definitions of `++aeon-to-tako` and `++tako-to-yaki` are trivial.
 
-```
+```hoon
       ++  aeon-to-tako  ~(got by hit)
 
       ++  tako-to-yaki  ~(got by hut)                       ::  grab yaki
@@ -1574,7 +1574,7 @@ Assuming we got a valid version number, `++aver` calls
 `++read-at-aeon:ze`, which reads the requested data at the given
 revision.
 
-```
+```hoon
       ++  read-at-aeon                                      ::    read-at-aeon:ze
         |=  [oan=aeon mun=mood]                             ::  seek and read
         ^-  (unit)
@@ -1588,7 +1588,7 @@ number, then we go ahead and just produce the number we were given.
 Otherwise, we call `++rewind` to rewind our state to the given revision,
 and then we call `++read` to get the requested information.
 
-```
+```hoon
       ++  rewind                                            ::    rewind:ze
         |=  oan=aeon                                        ::  rewind to aeon
         ^+  +>
@@ -1606,7 +1606,7 @@ represents a version of the filesystem. We call `++checkout-ankh` to
 checkout the commit, and we replace `ank` in our context with the
 result.
 
-```
+```hoon
       ++  checkout-ankh                                     ::    checkout-ankh:ze
         |=  hat=(map path lobe)                             ::  checkout commit
         ^-  ankh
@@ -1629,7 +1629,7 @@ Twice we call `++cosh`, which hashes a commit, updating `p` in an
 `ankh`. Let's jump into that algorithm before we describe
 `++checkout-ankh`.
 
-```
+```hoon
     ++  cosh                                                ::  locally rehash
       |=  ank=ankh                                          ::  NB v/unix.c
       ank(p rehash:(zu ank))
@@ -1638,7 +1638,7 @@ Twice we call `++cosh`, which hashes a commit, updating `p` in an
 We simply replace `p` in the hash with the `cash` we get from a call to
 `++rehash:zu`.
 
-```
+```hoon
     ++  zu  !:                                              ::  filesystem
       |=  ank=ankh                                          ::  filesystem state
       =|  myz=(list ,[p=path q=miso])                       ::  changes in reverse
@@ -1676,7 +1676,7 @@ We fold over every path in this version of the filesystem and create a
 great ankh out of them. First, we call `++lobe-to-noun` to get the raw
 data referred to be each lobe.
 
-```
+```hoon
       ++  lobe-to-noun                                      ::  grab blob
         |=  p=lobe                                          ::  ^-  *
         %-  blob-to-noun
@@ -1687,13 +1687,13 @@ This converts a lobe into the raw data it refers to by first getting the
 blob with `++lobe-to-blob` and converting that into data with
 `++blob-to-noun`.
 
-```
+```hoon
       ++  lobe-to-blob  ~(got by lat)                       ::  grab blob
 ```
 
 This just grabs the blob that the lobe refers to.
 
-```
+```hoon
       ++  blob-to-noun                                      ::  grab blob
         |=  p=blob
         ?-   -.p
@@ -1708,7 +1708,7 @@ right in the blob. Otherwise, we have to reconstruct it from the diffs.
 We do this by calling `++lump` on the diff in the blob with the data
 obtained by recursively calling the parent of this blob.
 
-```
+```hoon
     ++  lump                                                ::  apply patch
       |=  [don=udon src=*]
       ^-  *
@@ -1738,7 +1738,7 @@ we're performing a trivial replace, so we produce simply `q.q.don`. If
 we have a `%c` udon, then we're performing a list merge (as in, for
 example, lines of text). The merge is performed by `++lurk`.
 
-```
+```hoon
     ++  lurk                                                ::  apply list patch
       |*  [hel=(list) rug=(urge)]
       ^+  hel
@@ -1777,7 +1777,7 @@ crashing on failure. If they're good, then we append the new lines in
 And that's really it. List merges are pretty easy. Anyway, if you
 recall, we were discussing `++checkout-ankh`.
 
-```
+```hoon
       ++  checkout-ankh                                     ::    checkout-ankh:ze
         |=  hat=(map path lobe)                             ::  checkout commit
         ^-  ankh
@@ -1887,7 +1887,7 @@ in which our current state is (very nearly) as it was when the specified
 version of the desk was the head. This allows `++read-at-aeon` to call
 `++read` to read the requested information.
 
-```
+```hoon
       ++  read                                              ::    read:ze
         |=  mun=mood                                        ::  read at point
         ^-  (unit)
@@ -1919,7 +1919,7 @@ doesn't seem to work, so we'll ignore this case.
 Otherwise, we descend into the ankh tree to the given path with
 `++descend-path:zu`, and then we handle specific request in `++query`.
 
-```
+```hoon
       ++  descend-path                                      ::  descend recursively
         |=  way=path
         ^+  +>
@@ -1929,7 +1929,7 @@ Otherwise, we descend into the ankh tree to the given path with
 This is simple recursion down into the ankh tree. `++descend` descends
 one level, so this will eventually get us down to the path we want.
 
-```
+```hoon
       ++  descend                                           ::  descend
         |=  lol=@ta
         ^+  +>
@@ -1944,7 +1944,7 @@ one at that path if it exists; else we create a blank one.
 Once we've decscended to the correct level, we need to actually deal
 with the request.
 
-```
+```hoon
       ++  query                                             ::    query:ze
         |=  ren=?(%u %v %x %y %z)                           ::  endpoint query
         ^-  (unit ,*)
@@ -1962,7 +1962,7 @@ the rang, dome, or ankh, we give it to them. If the contents of a file,
 we give it to them if it is in fact a file. If the `arch`, then we
 calculate it with `++as-arch`.
 
-```
+```hoon
       ++  as-arch                                           ::    as-arch:ze
         ^-  arch                                            ::  arch report
         :+  p.ank
@@ -1983,7 +1983,7 @@ same path that a single read does. In `++aver`, we checked the head of
 the given rave. If the head was `&`, then it was a single request, so we
 handled it above. If `|`, then we handle it with the following code.
 
-```
+```hoon
             =+  nab=(~(case-to-aeon ze lim dom ran) p.p.rav)
             ?~  nab
               ?>  =(~ (~(case-to-aeon ze lim dom ran) q.p.rav))
@@ -2043,7 +2043,7 @@ We glossed over the calls to `++lobes-at-path`, `++make-nako`, and
 `++bleb`, so we'll get back to those right now. `++bleb` is simple, so
 we'll start with that.
 
-```
+```hoon
         ++  bleb                                          ::  ship sequence
           |=  [hen=duct ins=@ud hip=nako]
           ^+  +>
@@ -2057,7 +2057,7 @@ of the beginning of the subscription, and the data is the nako itself.
 
 We call `++lobes-at-path:ze` to get the data at the particular path.
 
-```
+```hoon
       ++  lobes-at-path                                     ::    lobes-at-path:ze
         |=  [oan=aeon pax=path]                             ::  data at path
         ^-  (map path lobe)
@@ -2090,7 +2090,7 @@ tell if a node or its children have changed.
 
 Finally, we will describe `++make-nako:ze`.
 
-```
+```hoon
       ++  make-nako                                         ::  gack a through b
         |=  [a=aeon b=aeon]
         ^-  [(map aeon tako) aeon (set yaki) (set blob)]
@@ -2119,7 +2119,7 @@ commit.
 The third and fourth are slightly more interesting, though not too
 terribly difficult. First, we call `++reachable-between-takos`.
 
-```
+```hoon
       ++  reachable-between-takos
         |=  [a=(unit tako) b=tako]                          ::  pack a through b
         ^-  [(set tako) (set lobe)]
@@ -2150,7 +2150,7 @@ We let `sar` be the set of commits reachable from `a`. If `a` is null,
 then obviously no commits are reachable. Otherwise, we call
 `++reachable-takos` to calculate this.
 
-```
+```hoon
       ++  reachable-takos                                   ::  reachable
         |=  p=tako                                          ::  XX slow
         ^-  (set tako)
@@ -2175,7 +2175,7 @@ tako referenced by `a`. The result is passed into `++new-lobes-takos` to
 do the same, but not recomputing those in already calculated last
 sentence. This produces the sets of takos and lobes we need.
 
-```
+```hoon
       ++  new-lobes                                         ::  object hash set
         |=  [b=(set lobe) a=(set tako)]                     ::  that aren't in b
         ^-  (set lobe)
@@ -2206,7 +2206,7 @@ there, and, if it's not already in `b`, we add it to `b`. In the case of
 a direct blob, we're done. For a delta or an indirect blob, we
 recursively add every blob referenced within the blob.
 
-```
+```hoon
       ++  new-lobes-takos                                   ::  garg & repack
         |=  [b=(set lobe) a=(set tako)]
         ^-  [(set tako) (set lobe)]
@@ -2229,7 +2229,7 @@ Thus, we start in the same place -- in `++call`, handling `%warp`.
 However, since the two side of the `sock` are different, we follow a
 different path.
 
-```
+```hoon
             =+  wex=(do now p.q.hic p.q.q.hic ruf)
             =+  ^=  woo
               ?~  q.q.q.hic
@@ -2249,7 +2249,7 @@ the modified rung into the raft.
 
 We'll first trace through `++do`.
 
-```
+```hoon
       ++  do
         |=  [now=@da [who=ship him=ship] syd=@tas ruf=raft]
         =+  ^=  rug  ^-  rung
@@ -2273,7 +2273,7 @@ With this information, we create a `++de` core as usual.
 Although we've already covered `++ease` and `++eave`, we'll go through
 them quickly again, highlighting the case of foreign request.
 
-```
+```hoon
         ++  ease                                          ::  release request
           |=  hen=duct
           ^+  +>
@@ -2307,7 +2307,7 @@ is exactly identical to the case of the local request except `++duce`.
 We said that `++duce` simply puts the request into our cult. This is
 true for a domestic request, but distinctly untrue for foreign requests.
 
-```
+```hoon
         ++  duce                                          ::  produce request
           |=  [hen=duct rov=rove]
           ^+  +>
@@ -2344,7 +2344,7 @@ ship, that comes to us in the form of a `%wart` from ames.
 We handle a `%wart` in `++call`, right next to where we handle the
 `%warp` case.
 
-```
+```hoon
             %wart
           ?>  ?=(%re q.q.hic)
           =+  ryf=((hard riff) s.q.hic)
@@ -2362,7 +2362,7 @@ ourself. This gets handled like normal, as a local request. When the
 request produces a value, it does so like normal as a `%writ`, which is
 returned to `++take` along the path we just sent it on.
 
-```
+```hoon
             %writ
           ?>  ?=([@ @ *] tea)
           =+  our=(need (slaw %p i.tea))
@@ -2380,7 +2380,7 @@ the new data.
 This comes back to the original ship as a `%waft` from ames, which comes
 into `++take`, right next to where we handled `%writ`.
 
-```
+```hoon
             %waft
           ?>  ?=([@ @ ~] tea)
           =+  syd=(need (slaw %tas i.tea))
@@ -2402,7 +2402,7 @@ We call `++knit:de` to apply the changes to our local desk, and we call
 
 We'll examine `++knit` and `++wake`, in that order.
 
-```
+```hoon
         ++  knit                                          ::  external change
           |=  [inx=@ud rot=riot]
           ^+  +>
@@ -2474,7 +2474,7 @@ of the desk. We do so in `++edis`, and then we remove the stuff we just
 applied from the cache, since it's not really a true "single read", like
 what should really be in the cache.
 
-```
+```hoon
         ++  edis                                          ::  apply subscription
           |=  nak=nako
           ^+  +>
@@ -2509,7 +2509,7 @@ This concludes our discussion of `++knit`. Now the changes have been
 applied to our local copy of the desk, and we just need to update our
 subscribers. We do so in `++wake:de`.
 
-```
+```hoon
         ++  wake                                          ::  update subscribers
           ^+  .
           =+  xiq=(~(tap by qyx) ~)
@@ -2585,7 +2585,7 @@ it.
 `++balk` is very simple, so we'll describe it here before we get to the
 subscription case.
 
-```
+```hoon
         ++  balk                                          ::  read and send
           |=  [hen=duct oan=@ud mun=mood]
           ^+  +>

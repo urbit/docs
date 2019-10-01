@@ -21,7 +21,7 @@ for expressions which expand to `?:`.
 The test does not have to be a single `?=`; the compiler can
 analyze arbitrary boolean logic ([`?&` ("wutpam")](#wutpam),
 [`?|` ("wutbar")](#wutbar), [`?!` ("wutzap")](#wutzap)) with full
-short-circuiting.  Equality tests ([`.=` ("dottis")](@/docs/reference/hoon-expressions/rune/dot.md#dottis)) are **not**
+short-circuiting.  Equality tests ([`.=` ("dottis")](@/docs/hoon/hoon-expressions/rune/dot.md#dottis)) are **not**
 analyzed.
 
 If the compiler detects that the branch is degenerate (only one
@@ -35,7 +35,7 @@ side is taken), it fails with an error.
 
 ##### Expands to
 
-```
+```hoon
 ?.(p !! q)
 ```
 
@@ -75,13 +75,13 @@ nest-fail
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
-```
+```hoon
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
 ```
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?~  p
   |
@@ -160,7 +160,7 @@ Note also that all other branching expressions reduce to `?:`.
 
 ##### Expands to
 
-```
+```hoon
 ?:(p r q)
 ```
 
@@ -199,7 +199,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
 
-```
+```hoon
 ?:  ?=(p.a p)  q.a
 ?:  ?=(p.b p)  q.b
 ?:  ?=(p.c p)  q.c
@@ -209,7 +209,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?.  q
   ~|(%mint-lost !!)
@@ -260,7 +260,7 @@ of the subject is a cell.
 
 ##### Expands to
 
-```
+```hoon
 ?:(?=(^ p) q r)
 ```
 
@@ -292,7 +292,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ##### Expands to
 
-```
+```hoon
 ?:(p !! q)
 ```
 
@@ -333,7 +333,7 @@ a union, with a default.
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `r`:
 
-```
+```hoon
 ?:  ?=(p.a p)  q.a
 ?:  ?=(p.b p)  q.b
 ?:  ?=(p.c p)  q.c
@@ -343,7 +343,7 @@ q
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?.  r
   q
@@ -389,13 +389,13 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
-```
+```hoon
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
 ```
 
 ##### Desugaring
 
-```
+```hoon
 |-
 ?~  p
   &
@@ -426,7 +426,7 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 
 ##### Expands to
 
-```
+```hoon
 ?:(?=($~ p) q r)
 ```
 
@@ -489,7 +489,7 @@ A common error is `find.$`, meaning `p` is not a type.
 
 ##### Expands to
 
-```
+```hoon
 ?:(?=(@ p) q r)
 ```
 
@@ -521,7 +521,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ##### Expands to
 
-```
+```hoon
 .=(| p)
 ```
 

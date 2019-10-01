@@ -34,7 +34,7 @@ The messaging parts of Talk have been separated from its user-interface parts. W
 
 ### Circles
 
-```
+```hoon
 ++  circle     {hos/ship nom/term}                      ::  native target
 ```
 
@@ -44,7 +44,7 @@ A `circle` is essentially a named collection of messages created by and hosted o
 
 When we subscribe to a circle, the primary thing we're interested in is its messages. Message data itself isn't that complicated, but a fair amount of metadata comes into play when actually sending a message. Let's work our way up, starting at the contents.
 
-```
+```hoon
 ++  speech                                              :>  content body
   $%  {$lin pat/? msg/cord}                             :<  no/@ text line
       {$url url/purf:eyre}                              :<  parsed url
@@ -58,7 +58,7 @@ When we subscribe to a circle, the primary thing we're interested in is its mess
 
 At the heart of every message lies a `speech` that describes the message body. There's a large number of different speech types, from simple text messages to parsed URLs, Hoon expressions and more.
 
-```
+```hoon
 ++  audience   (set circle)                             :<  destinations
 ++  serial     @uvH                                     :<  unique identifier
 ++  thought                                             :>  inner message
@@ -71,7 +71,7 @@ At the heart of every message lies a `speech` that describes the message body. T
 
 A `speech` is always accompanied by various bits of metadata. We include a unique identifier, a message timestamp and an `audience`, the set of all intended recipients of the message.
 
-```
+```hoon
 ++  telegram   {aut/ship thought}                       :<  whose message
 ++  envelope   {num/@ud gam/telegram}                   :<  outward message
 ```
@@ -82,7 +82,7 @@ Finally, before sending the message over the wire, we add on the message's origi
 
 Messages aren't the only thing a subscription gets us. We're also kept up to date with relevant metadata.
 
-```
+```hoon
 ++  crowd      {loc/group rem/(map partner group)}      :<  our & srcs presences
 ++  group      (map ship status)                        :<  presence map
 ++  status     {pec/presence man/human}                 :<  participant
@@ -105,7 +105,7 @@ For reasons we'll discover shortly, circles keep track of both their own `group`
 
 ### Configurations
 
-```
+```hoon
 ++  lobby      {loc/config rem/(map circle config)}     :<  our & srcs configs
 ++  config                                              :>  circle config
   $:  src/(set circle)                                  :<  active sources
@@ -128,7 +128,7 @@ Aside from that, `config` contains a description for the circle, which is exactl
 
 Lastly, there's a `control` structure that contains both a security mode and a list of ships, which is either a white- or blacklist depending on the aforementioned mode. There are four such modes available.
 
-```
+```hoon
 ++  security                                            :>  security mode
   $?  $channel                                          :<  blacklist
       $village                                          :<  whitelist
@@ -146,7 +146,7 @@ A `mailbox` is readable by its owner and publicly writable, with a blacklist for
 
 To see how that all ties together, we're going to take a look at Hall's state.
 
-```
+```hoon
 ++  state                                               :>  hall state
   $:  stories/(map term story)                          :<  conversations
       ::  ...                                           ::
@@ -186,7 +186,7 @@ Applications can interact with Hall in two complementary ways: they can tell it 
 
 Hall can be commanded by poking it with `action`s.
 
-```
+```hoon
 ++  action                                              :>  user action
   $%  ::  circle configuration                          ::
       {$create nom/term des/cord sec/security}          :<  create circle
@@ -221,7 +221,7 @@ To send messages, two interfaces are available. `%convey` lets you specify all d
 
 To receive data from Hall, applications will have to query it. There are two paths that are useful for clients to query. Let's look at them and their results.
 
-```
+```hoon
 ++  query                                               :>  query paths
   $%  {$client $~}                                      :<  shared ui state
       $:  $circle                                       :>  story query
@@ -269,7 +269,7 @@ To be clear, the paths for those queries are `/client` and `/circle/[name]/[data
 
 Any changes to the results of these queries are communicated via the following `rumor`s. It's a fairly long list of potential changes,
 
-```
+```hoon
 ++  rumor                                               :<  query result change
   $%  {$client rum/rumor-client}                        :<  /client
       {$circle rum/rumor-story}                         :<  /circle
@@ -325,7 +325,7 @@ Halls can communicate with other Halls by sending commands and subscription upda
 
 To request changes to a story, Halls can send `command`s.
 
-```
+```hoon
 ++  command                                             :>  effect on story
   $%  {$publish tos/(list thought)}                     :<  deliver
       {$present nos/(set term) dif/diff-status}         :<  status update
@@ -341,7 +341,7 @@ The `%present` command is used for sending status updates about our ship.
 
 Halls can query other halls. Here's the peer move we send when we open a query on a foreign circle:
 
-```
+```hoon
 :*  ost.bol                                             :<  bone
     %peer                                               :<  move type
     /[our-circle]/[host]/[query-path]                   :<  rumor path
@@ -358,7 +358,7 @@ The query path is slightly more interesting. Of course it specifies the name of 
 
 Along the way so far, we've skipped some parts of structures. Most of those relate to federation. Let's see what we missed.
 
-```
+```hoon
 ++  query                                               :>  query paths
   $%  {$burden who/ship}                                :<  duties to share
       {$report $~}                                      :<  duty reports
@@ -420,7 +420,7 @@ Upon receiving a valid peer on a `/circle` path, the subscribing ship is added t
 
 ![subscriptions implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-subscriptions.png)
 
-```
+```hoon
 ++  poke-talk-action      :<  we got poked with an action.
   ++  ta-action           :<  applies an action.
   ++  ta-config           :<  (re)configures a story.
@@ -437,7 +437,7 @@ Once a query has opened, Hall will receive updates on it, rumors. The changes de
 
 ![rumor implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-rumors.png)
 
-```
+```hoon
 ++  diff-talk-rumor       :<  we got a query update.
   ++  ta-hear             :<  applies a rumor to the story it's intended for.
   ++  so-hear             :<  applies a %circle rumor to the story.
@@ -452,7 +452,7 @@ To send messages, the user sends a `%convey` or `%phrase` action, resulting in a
 
 ![messaging implementation flow](https://media.urbit.org/docs/hall/diagrams/flow-messaging.png)
 
-```
+```hoon
 ++  poke-talk-action      :<  we got poked with an action.
   ++  ta-action           :<  applies an action.
 ::                        ::
@@ -514,7 +514,7 @@ Queries are the paths you pass into `%peer` moves. Internally, they get translat
 
 To be able to keep certain UI elements like glyphs and local nicknames consistent across different Hall clients, they can query Hall for the current UI state.
 
-```
+```hoon
 ++  query                                               ::
   $%  {$client $~}                                      :<  shared ui state
       ::  ....                                          ::
@@ -532,7 +532,7 @@ Valid paths include:
 
 Contains a map of glyphs and the audiences that they map to, as well as a map of ships and their locally set nicknames.
 
-```
+```hoon
 ++  prize                                               :>  query result
   $%  {$client prize-client}                            :<  /client
       ::  ...                                           ::
@@ -547,7 +547,7 @@ Contains a map of glyphs and the audiences that they map to, as well as a map of
 
 Contains either a bound or unbound glyph and its target, or a ship with its new nickname. A nickname of `''` means the associated ship no longer has a nickname set for it.
 
-```
+```hoon
 ++  rumor                                               :>  query result change
   $%  {$client rum/rumor-client}                        :<  /client
       ::  ...                                           ::
@@ -565,7 +565,7 @@ Contains either a bound or unbound glyph and its target, or a ship with its new 
 
 To aid in circle discoverability, users can add circles to their "public membership" list. This can then be queried for by, for example, a profile page.
 
-```
+```hoon
 ++  query                                               ::
   $%  {$public $~}                                      :<  public memberships
       ::  ....                                          ::
@@ -583,7 +583,7 @@ Valid paths include:
 
 Contains the set of circles the user has on their public list.
 
-```
+```hoon
 ++  prize                                               :>  query result
   $%  {$public cis/(set circle)}                        :<  /public
       ::  ...                                           ::
@@ -594,7 +594,7 @@ Contains the set of circles the user has on their public list.
 
 Contains a circle that was either added or removed from the public list.
 
-```
+```hoon
 ++  rumor                                               :>  query result change
   $%  {$public add/? cir/circle}                        :<  /public
       ::  ...                                           ::
@@ -605,7 +605,7 @@ Contains a circle that was either added or removed from the public list.
 
 To allow a circle owner to inspect who is currently subscribed to their stories, they can issue a query to retrieve subscription data.
 
-```
+```hoon
 ++  query                                               ::
   $%  {$peers nom/naem}                                 :<  readers of story
       ::  ....                                          ::
@@ -629,7 +629,7 @@ Valid paths include:
 
 Contains a map of ships and the different queries they currently have active for the selected story.
 
-```
+```hoon
 ++  prize                                               :>  query result
   $%  {$peers pes/(jar ship query)}                     :<  /peers
       ::  ...                                           ::
@@ -640,7 +640,7 @@ Contains a map of ships and the different queries they currently have active for
 
 Contains a ship and a query, and a flag to indicate whether that subscription has started or ended.
 
-```
+```hoon
 ++  rumor                                               :>  query result change
   $%  {$peers add/? who/ship qer/query}                 :<  /peers
       ::  ...                                           ::
@@ -654,7 +654,7 @@ Circle queries allow for the retrieving of data from stories. Their messages, co
 
 A quick refresher on the difference between "local" and "remote" presence and configuration: "local" means it pertains to the circle itself; "remote" means it pertains to one of its configured sources. The latter is primarily useful to clients when using a circle for aggregation, like the `%inbox`.
 
-```
+```hoon
 ++  query                                               ::
   $%  $:  $circle                                       :>  story query
           nom/naem                                      :<  circle name
@@ -718,7 +718,7 @@ Valid paths include:
 
 Contains (where applicable) messages in envelopes (with message numbers), as well as local and remote configurations and presences.
 
-```
+```hoon
 ++  prize                                               :>  query result
   $%  {$circle package}                                 :<  /circle
       ::  ...                                           ::
@@ -736,7 +736,7 @@ Contains a detailed change description of the data relevant to the query that ch
 
 Messages are wrapped in envelopes to include their sequence number, and note the source they were heard from. Configuration and status changes specify the circle they apply to.
 
-```
+```hoon
 ++  rumor                                               :>  query result change
   $%  {$circle rum/rumor-story}                         :<  /circle
       ::  ...                                           ::
@@ -779,7 +779,7 @@ Actions can be sent by poking Hall with data marked as `%hall-action`. Actions a
 
 Since all of these apply to a specific circle, they all specify a name `nom` of the circle to operate on.
 
-```
+```hoon
 ++  action                                              :>  user action
   $%  {$create nom/naem des/cord sec/security}          :<  create circle
       {$delete nom/naem why/(unit cord)}                :<  delete + announce
@@ -807,7 +807,7 @@ Since all of these apply to a specific circle, they all specify a name `nom` of 
 
 There are two interfaces for telling Hall to send a message. The first takes entire `thought`s, the second only `speech`es and the audience to send them to.
 
-```
+```hoon
 ++  action                                              :>  user action
   $%  {$convey tos/(list thought)}                      :<  post exact
       {$phrase aud/audience ses/(list speech)}          :<  post easy
@@ -823,7 +823,7 @@ There are two interfaces for telling Hall to send a message. The first takes ent
 
 These concern the presence users have in circles they are participating in.
 
-```
+```hoon
 ++  action                                              :>  user action
   $%  {$notify aud/audience pes/(unit presence)}        :<  our presence update
       {$naming aud/audience man/human}                  :<  our name update
@@ -839,7 +839,7 @@ These concern the presence users have in circles they are participating in.
 
 When the user makes any changes to shared UI elements (elements that should persist between clients), this has to be communicated to Hall.
 
-```
+```hoon
 ++  action                                              :>  user action
   $%  {$glyph gyf/char aud/audience bin/?}              :<  un/bind a glyph
       {$nick who/ship nic/nick}                         :<  new identity
@@ -853,7 +853,7 @@ When the user makes any changes to shared UI elements (elements that should pers
 
 ### Miscellaneous changes
 
-```
+```hoon
 ++  action                                              :>  user action
   $%  {$public add/? cir/circle}                        :<  show/hide membership
       ::  ...                                           ::
@@ -925,7 +925,7 @@ These should be fairly straightforward. Like packets are to Urbits, `delta`s are
 
 This also wouldn't be Urbit if we couldn't boil that down to a few simple pseudocode functions. Let's try, shall we?
 
-```
+```hoon
 ++  bake  |=  {brain delta}  ^-  {brain opera}
 ++  peek  |=  {brain query}  ^-  (unit (unit prize))
 ++  feel  |=  {query delta}  ^-  (unit rumor)
@@ -955,7 +955,7 @@ To help solidify this and see what this would looks like in the wild, let's make
 
 Below is the application state, and the deltas we'll be using to modify it.
 
-```
+```hoon
 |%
 ++  brain  {num/@ud $~}                                 :<  application state
 ++  delta                                               :>  state change
@@ -970,7 +970,7 @@ Fairly simple, right? We store a number, and every change either in- or decremen
 
 Let's also define the queries we'll be supporting, their results, and the changes to their results. Instead of only allowing people to query the current number, let's make it a tad more interesting by allowing them to query whether or not the current number is a multiple of something.
 
-```
+```hoon
 ++  query                                               :>  valid queries
   $%  {$number $~}                                      :<  current number
       {$mul-of val/@ud}                                 :<  is num multiple of?
@@ -992,7 +992,7 @@ You'll see the `rumor` for a `/number` query just contains a delta. In this spec
 
 Now, let's implement all the arms that will be called as things start happening. First, we want to implement `++leak`, which checks if a given `ship` is allowed to make a certain `query`. In this case, we're fine with everyone checking out our application's data.
 
-```
+```hoon
 |_  {bol/bowl brain}
 ::
 ++  leak                                                :>  read permission
@@ -1003,7 +1003,7 @@ Now, let's implement all the arms that will be called as things start happening.
 
 Next, let's create the `prize`s for the folks that make it through `++leak`. We'll be producing a `(unit (unit prize))` so we can potentially say `~` for "unavailable" and `[~ ~]` for "invalid query."
 
-```
+```hoon
 ++  peek                                                :>  synchronous read
   |=  qer/query
   ^-  (unit (unit prize))
@@ -1019,7 +1019,7 @@ Next, let's create the `prize`s for the folks that make it through `++leak`. We'
 
 Our app can be queried! If they're interested enough, they'll want to receive updates on that whenever relevant state changes. First, let's see how state changes happen. We still have regular old `++poke` arms, let's use that to prompt our application to change its state.
 
-```
+```hoon
 ++  poke-loob                                           :>  regular old poke
   |=  inc/?
   ^-  (list delta)
@@ -1039,7 +1039,7 @@ Our app can be queried! If they're interested enough, they'll want to receive up
 
 `delta`s get redirected into `++bake` so that our state can get changed as described. After this happens the same `delta`s get, for each active query, routed into `++feel`. That then figures out what the `rumor` relevant to the query is, if applicable.
 
-```
+```hoon
 ++  feel                                                :>  delta to rumor
   |=  {qer/query del/delta}
   ^-  (unit rumor)
@@ -1090,7 +1090,7 @@ As we saw earlier, for `/number` queries the `delta`s match one-on-one with the 
 
 `~sorreg-namtyv`
 
-```
+```hoon
 =>  |%
     --
 |*  $:  :>  vinyl: historical state (including version)
@@ -1244,7 +1244,7 @@ As we saw earlier, for `/number` queries the `delta`s match one-on-one with the 
 
 ## A new-Gall example app
 
-```
+```hoon
 ::  counter app
 ::  new gall example, may or may not compile.
 ::

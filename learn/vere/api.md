@@ -10,7 +10,7 @@ functions are commented, but the comments may be cryptic.
 
 To start `u3`, run
 
-```
+```c
 /* u3m_boot(): start the u3 system.
 */
   void
@@ -30,7 +30,7 @@ complete, should be run (a) virtualized and (b) in an inner road.
 These are slightly different things, but at the highest level we
 bundle them together for your convenience, in `u3m_soft()`:
 
-```
+```c
 /* u3m_soft(): system soft wrapper.  unifies unix and nock errors.
 **
 **  Produces [%$ result] or [%error (list tank)].
@@ -219,7 +219,7 @@ numbering itself on process initialization.  This structure -
 which embeds function pointers to all the jets - is defined
 in `j/tree.c`.  The data structures:
 
-```
+```c
     /* u3j_harm: driver arm.
     */
       typedef struct _u3j_harm {
@@ -253,7 +253,7 @@ in `j/tree.c`.  The data structures:
 Warm and cold state is **per road**.  In other words, as we nest
 roads, we also nest jet state.  The jet state in the road is:
 
-```
+```c
       struct {                                //  jet dashboard
         u3p(u3h_root) har_p;                  //  warm state
         u3_noun       das;                    //  cold state
@@ -263,7 +263,7 @@ roads, we also nest jet state.  The jet state in the road is:
 In case you understand Hoon, `das` (cold state) is a `++dash`,
 and `har_p` (warm state) is a map from battery to `++calx`:
 
-```
+```hoon
     ++  bane  ,@tas                                 ::  battery name
     ++  bash  ,@uvH                                 ::  label hash
     ++  bosh  ,@uvH                                 ::  local battery hash
@@ -321,7 +321,7 @@ above, which we want to annotate it with.
 
 A clue is a triple of name, parent, and hooks:
 
-```
+```hoon
 ++  clue  (trel chum nock (list (pair term nock)))
 ```
 
@@ -442,7 +442,7 @@ There are two cases for a jet-propelled core - either the entire
 core is a static constant, or it isn't.  Hence the definition
 of `corp`:
 
-```
+```hoon
 ++  corp  (each core batt)                ::  parent or static
 ```
 
@@ -613,7 +613,7 @@ instructions.
 These allocators are **not compatible**.  For 32-bit alignment
 as used in nouns, call
 
-```
+```c
     /* u3a_walloc(): allocate storage measured in words.
     */
       void*
@@ -632,7 +632,7 @@ as used in nouns, call
 
 For full alignment, call:
 
-```
+```c
     /* u3a_malloc(): aligned storage measured in bytes.
     */
       void*
@@ -701,7 +701,7 @@ programming language which didn't talk funny and was retarded,
 `u3n_slam_on()` would call a function on an argument.)  We could
 write it most simply as:
 
-```
+```c
     u3_noun
     u3n_slam_on(u3_noun gat, u3_noun sam)
     {
@@ -718,7 +718,7 @@ Simpler is `u3n_kick_on(u3_noun gat)`, which slams a gate (or,
 more generally, a **trap** - because sample structure is not even
 needed here) without changing its sample:
 
-```
+```c
     u3_noun
     u3n_kick_on(u3_noun gat, u3_noun sam)
     {
@@ -758,7 +758,7 @@ to a `fly` is a `++path`, just a list of text `span`.
 
 `mock` functions produce a `++toon`.  Fully elaborated:
 
-```
+```hoon
     ++  noun  ,*                                      ::  any noun
     ++  path  (list ,@ta)                             ::  namespace path
     ++  span  ,@ta                                    ::  text-atom (ASCII)
@@ -796,7 +796,7 @@ In any case, the simplest `mock` functions are `u3n_nock_un()`
 and `u3n_slam_un()`.  These provide exception control without
 any namespace change, as you can see by the code:
 
-```
+```c
     /* u3n_nock_un(): produce .*(bus fol), as ++toon.
     */
     u3_noun
@@ -917,7 +917,7 @@ Each `u3z` function comes with a `c3_m` mote which disambiguates
 the function mapping key to value.  For Nock itself, use 0.  For
 extra speed, small tuples are split out in C; thus, find with
 
-```
+```c
     u3_weak u3z_find(c3_m, u3_noun);
     u3_weak u3z_find_2(c3_m, u3_noun, u3_noun);
     u3_weak u3z_find_3(c3_m, u3_noun, u3_noun, u3_noun);
@@ -926,7 +926,7 @@ extra speed, small tuples are split out in C; thus, find with
 
 and save with
 
-```
+```c
     u3_noun u3z_save(c3_m, u3_noun, u3_noun);
     u3_noun u3z_save_2(c3_m, u3_noun, u3_noun, u3_noun);
     u3_noun u3z_save_3(c3_m, u3_noun, u3_noun, u3_noun, u3_noun);
@@ -936,7 +936,7 @@ and save with
 where the value is the last argument.  To eliminate duplicate
 nouns, there is also
 
-```
+```c
     u3_noun
     u3z_uniq(u3_noun);
 ```
@@ -958,7 +958,7 @@ An Arvo kernel - or at least, a core that compiles with the Arvo
 interface - is part of the global `u3` state.  What is an Arvo
 core?  Slightly pseudocoded:
 
-```
+```hoon
     ++  arvo
       |%
       ++  come  |/  {yen/@ ova/(list ovum) nyf/pone}  ::  11
@@ -1031,7 +1031,7 @@ you're not writing the next event system.  There are only two.
 calling Hoon kernel functions by name.  Even more conveniently,
 we tend to call `u3v_do()` with these convenient aliases:
 
-```
+```c
     #define  u3do(txt_c, arg)         u3v_do(txt_c, arg)
     #define  u3dc(txt_c, a, b)        u3v_do(txt_c, u3nc(a, b))
     #define  u3dt(txt_c, a, b, c)     u3v_do(txt_c, u3nt(a, b, c))

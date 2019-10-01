@@ -57,7 +57,7 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ##### Expands to
 
-```
+```hoon
 |=(* p)
 ```
 
@@ -158,7 +158,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 
 ##### Expands to
 
-```
+```hoon
 $_  ^|
 |=(p $:q)
 ```
@@ -230,7 +230,7 @@ The product of `p`.
 
 Regular: **2-fixed**.
 
-```
+```hoon
 $~  p=hoon  q=spec
 ```
 
@@ -238,7 +238,7 @@ $~  p=hoon  q=spec
 
 ##### Discussion
 
-You should make sure that the product type of `p` nests under `q`.  You can check the default value of some structure (custom type) `r` with `*r`.  (See the [`^*` rune](@/docs/reference/hoon-expressions/rune/ket.md#kettar).)
+You should make sure that the product type of `p` nests under `q`.  You can check the default value of some structure (custom type) `r` with `*r`.  (See the [`^*` rune](@/docs/hoon/hoon-expressions/rune/ket.md#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`.  (The latter uses older Hoon syntax that is still accepted.  Preferably it would be `%~`.)
 
@@ -320,7 +320,7 @@ Example:
 
 ##### Expands to
 
-```
+```hoon
 |=  *
 ^=(p %-(q +6))
 ```

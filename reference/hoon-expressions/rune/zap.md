@@ -47,7 +47,7 @@ The product of `p` unless `p` crashes, in which case a stack trace is given.
 
 Regular: **1-fixed**.
 
-```
+```hoon
 !:  p=hoon
 ```
 
@@ -79,7 +79,7 @@ The product of `p`. If `p` crashes, no stack trace entries are given for that co
 
 Regular: **1-fixed**.
 
-```
+```hoon
 !.  p=hoon
 ```
 
