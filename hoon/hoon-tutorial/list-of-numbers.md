@@ -18,7 +18,7 @@ Below is a simple Hoon program that takes a single number `n` from the user as i
 $(count (add 1 count))                                  ::  8
 ```
 
-As we mentioned in the previous lesson, the easiest way to use such a program is to run it as a _generator_. Saving a file in the `/home/gen` directory of your ship allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo as so:
+As we mentioned in the previous lesson, the easiest way to use such a program is to run it as a _generator_. Mount your desk `|mount %` (if you didn't do it before), saving a file in the `/home/gen` directory of your ship and commiting these changes `|commit %home` allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo as so:
 
 `~your-ship:> +list 5`
 
