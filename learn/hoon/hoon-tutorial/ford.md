@@ -44,19 +44,26 @@ The main features of Ford that distinguish it from most build systems that we wi
 
  - Ford is strongly and dynamically typed
  - Ford is monadic
- - Ford is referentially transparent
+ - Ford is purely functional
  - Ford can do live builds
+ - Ford keeps a cache of previous builds
 
  To some extent these features overlap depending on how you split hairs. If you are already familiar with build systems, know that the capabilities of Ford are similar to those of [Shake](https://shakebuild.com/) and [Nix](https://nixos.org/nix/), but still differs from them in some key aspects.
 
- We will also give an overview of Ford's testing suite, as that is the main thrust of the upcoming Ford walkthrough.
+ We will also give an overview of Ford's testing suite, as that is the main thrust of the Ford walkthrough following this lesson.
 
 
 ### Strongly and Dynamically Typed
 
 ### Monadic
 
-### Referentially Transparent
+### Purely functional
+
+Like every aspect of Urbit, Ford is purely functional. What this means for a build system is that builds produce no side effects, and so the same build ran on the same source files will produce the same output every time. If you've never dealt with build systems before, the idea that things could work any other way may sound absurd! But the reason depends on a subtletly of what one considers to be the "input" (I think?)
+
+For a typical build system, such as `make`, the build instructions contain a list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
+
+
 
 ### Live Builds
 
