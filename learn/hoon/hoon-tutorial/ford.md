@@ -57,7 +57,9 @@ The main features of Ford that distinguish it from most build systems that we wi
 
 Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions that guarantee working software.
 
-Recall that a mark is a unit type such as `%foo` that acts as metadata telling Arvo what kind of file it is looking it. In the context of Ford, they may be thought of as being analogous to file types in other operating systems.
+Recall that a mark is a unit type such as `%foo` that acts as metadata telling Arvo what kind of file it is looking it. In the context of Ford, they may be thought of as being analogous to file types in other operating systems. When Arvo sees marked data, it expects that data to take a certain shape.
+
+Much of what Ford does consists of converting marked data between different marks. (Is this slamming/slapping?)
 
 ### Monadic dependencies
 
@@ -83,7 +85,15 @@ The cache is somewhat analogous to the Nix store in functionality, but is quite 
 
 ### Live Builds
 
+Ford is capable of live builds. We illustrate what this means by example.
+
+You have a program `foo` and it is currently in state `A`. You modify the code to `foo` and ask Ford to rebuild it. Ford will then rebuild `foo` in such a manner that the updated version can import `A` from the previous version and continue running.
+
+This feature is essential to how Urbit is updated over the air, and is one high level reason behind why the state of your ship is not wiped every time Arvo is updated.
+
 ## Using Ford
+
+Now that we have covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used arms.
 
 ### Schematics
 
