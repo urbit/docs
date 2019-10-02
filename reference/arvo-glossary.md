@@ -810,7 +810,7 @@ of the simpler built-in types.
   If `nest` produces no, the Hoon programmer will receive a `nest-fail`
   error. This is one of the most commons errors in Hoon programming.
 
-  _See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_ and [troubleshooting](@/docs/using/troubleshooting.md).
+  _See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_ and [troubleshooting](@/docs/using/ship-troubleshooting.md).
 
 
 ### Unit
