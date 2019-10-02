@@ -121,7 +121,7 @@ Below are Arvo modules, which are called "vanes".
   Keystroke in Unix -> Vere (virtual machine) -> Arvo -> Dill -> the Dojo
   ```
 
-  Dill is located at `/home/sys/vane/clay.hoon` within your urbit.
+  Dill is located at `/home/sys/vane/dill.hoon` within your urbit.
 
   More in-depth information on Dill can be found
   [`here`](@/docs/learn/arvo/dill.md).
@@ -325,6 +325,11 @@ that can be. Some syntactically invalid expressions can be completed, but the
 Dojo will  prevent them from being entered as a command. You can play around
 with this functionality learn what syntax is kosher.
 
+### desk
+
+A desk is independently revision-controlled branch of urbit filesystem. 
+
+_See [filesystem](@/docs/using/filesystem.md) and [Clay](@/docs/learn/arvo/clay.md)._
 
 ### duct
 
