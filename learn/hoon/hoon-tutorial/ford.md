@@ -38,7 +38,7 @@ While the inner workings of a build system may be quite complex, for most smalle
 
 ## Ford Features
 
-In this section we cover the main features that distinguish Ford from other build systems. We do not yet speak of how they are implemented, which will be covered to some extent later in the lesson.
+In this section we cover the main features of the Ford build system that distinguish itfrom other build systems. We do not yet speak of how they are implemented, which will be covered to some extent later in the lesson. We also remind you that Ford has additional capabilities that are not covered in this lesson.
 
 The main features of Ford that distinguish it from most build systems that we wish to emphasize in this section are the following:
 
@@ -55,6 +55,10 @@ The main features of Ford that distinguish it from most build systems that we wi
 
 ### Strongly and Dynamically Typed
 
+Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions that guarantee working software.
+
+Recall that a mark is a unit type such as `%foo` that acts as metadata telling Arvo what kind of file it is looking it. In the context of Ford, they may be thought of as being analogous to file types in other operating systems.
+
 ### Monadic dependencies
 
 I still don't quite understand what is meant by this and how it is interrelated to being purely functional, having live builds, dynamic dependencies, etc. I think these might all be consequences of being monadic? But do any of these properties imply monadicity?
@@ -66,6 +70,8 @@ Like every aspect of Urbit, Ford is purely functional. What this means for a bui
 For a typical build system, such as `make`, the build instructions contain a list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
 
 The chief advantage of being purely functional is that Ford builds are reproducible and dependency hell is averted. Ford accomplishes this as builds do not have a static list of dependencies, that is, they are not known a priori. Instead the dependencies are dynamically generated as the build proceeds, and sub-builds are generated for these dependencies and saved in the cache.
+
+One might instead call Ford [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency) instead of (or in addition to) purely functional. The exact meaning of this terminology differs from source to source and how many hairs you want to split, but the general notion that one may replace Hoon expressions by their value without changing the output of the build is true.
 
 ### Cache
 
@@ -95,13 +101,9 @@ The rune interpreter is most complicated part of `ford.hoon` after the cache. Bu
 
 (this is copied directly from `arvo/ford.md`)
 
-The `/+` rune accepts a filename as an argument. It interprets that filename
-as a hoon source file within the `lib` directory. This is how we import a shared
-library in urbit.
+The `/+` rune accepts a filename as an argument. It interprets that filename as a hoon source file within the `lib` directory. This is how we import a shared library in urbit.
 
-To run this example, put this code in your desk at `gen/faslus.hoon` and run
-`+faslus` in your dojo. This example is a generator. For more information on
-generators, see the [generator docs](@/docs/learn/hoon/hoon-tutorial/generators.md).
+To run this example, put this code in your desk at `gen/faslus.hoon` and run `+faslus` in your dojo.
 
 ```
 /+  time-to-id
@@ -112,10 +114,9 @@ generators, see the [generator docs](@/docs/learn/hoon/hoon-tutorial/generators.
 (time-to-id now)
 ```
 
-produces: `"c.314d"` (or something similar depending on when you run it)
+produces: `"c.314d"` (or something similar depending on when you run it).
 
-You can import multiple libraries with a single `/+` rune by separating them
-with commas.
+You can import multiple libraries with a single `/+` rune by separating them with commas.
 
 Replace the code in `gen/faslus.hoon` with the following:
 
@@ -132,9 +133,7 @@ Replace the code in `gen/faslus.hoon` with the following:
 
 This should print something like `my_id_is_c.3588`.
 
-Another feature of the
-`/+` and `/-` runes is the ability to specify the ship and case from which to
-load the library.
+Another feature of the `/+` and `/-` runes is the ability to specify the ship and case from which to load the library.
 
 Example:
 
@@ -146,10 +145,7 @@ will load the `hep-to-cab` library from `~zod` at `%clay` revision `4`.
 
 #### `/-` import from `sur/`
 
-The `/-` rune accepts a filename as an argument. It interprets that filename as
-a hoon source file within the `sur` directory. The `sur` directory contains
-shared structures that can be used by other parts of urbit. This is somewhat
-similar to including a header file in C.
+The `/-` rune accepts a filename as an argument. It interprets that filename as a hoon source file within the `sur` directory. The `sur` directory contains shared structures that can be used by other parts of urbit. This is somewhat similar to including a header file in C.
 
 Example:
 
@@ -165,6 +161,7 @@ produces: `0v0`
 arguments can be specified. See the `/+` docs for more details about the syntax
 for those features.
 
+### Mark conversion
 
 ### Building
 
