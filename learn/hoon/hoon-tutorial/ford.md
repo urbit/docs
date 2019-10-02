@@ -57,9 +57,11 @@ The main features of Ford that distinguish it from most build systems that we wi
 
 Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions that guarantee working software.
 
-Recall that a mark is a unit type such as `%foo` that acts as metadata telling Arvo what kind of file it is looking it. In the context of Ford, they may be thought of as being analogous to file types in other operating systems. When Arvo sees marked data, it expects that data to take a certain shape.
+Recall that a mark is a type such as `%foo` that acts as metadata telling Arvo what kind of file it is looking it. In the context of Ford, they may be thought of as being analogous to file types in other operating systems. When Arvo sees marked data, it expects that data to take a certain shape.
 
 Much of what Ford does consists of converting marked data between different marks. (Is this slamming/slapping?)
+
+Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in that all sub-builds are also typed.
 
 ### Monadic dependencies
 
@@ -87,7 +89,7 @@ The cache is somewhat analogous to the Nix store in functionality, but is quite 
 
 Ford is capable of live builds. We illustrate what this means by example.
 
-You have a program `foo` and it is currently in state `A`. You modify the code to `foo` and ask Ford to rebuild it. Ford will then rebuild `foo` in such a manner that the updated version can import `A` from the previous version and continue running.
+You have a program `foo` and it is currently in state `A`. You modify the code to `foo` and ask Ford to rebuild it (or does the rebuild happen automatically?). Ford will then rebuild `foo` in such a manner that the updated version can import `A` from the previous version and continue running.
 
 This feature is essential to how Urbit is updated over the air, and is one high level reason behind why the state of your ship is not wiped every time Arvo is updated.
 
@@ -95,9 +97,35 @@ This feature is essential to how Urbit is updated over the air, and is one high 
 
 Now that we have covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used arms.
 
-### Schematics
+### Data types
 
-### Scaffolds
+#### Vase
+
+From `hoon.hoon`:
+```
++$  vase  [p=type q=*]
+```
+A `vase` is simply typed data, and it is used wherever typed data is being explicitly worked with.
+
+#### Cage
+
+A `cage` is a `[mark vase]` - so its just typed data that is also marked for usage by Arvo.
+
+#### Schematics
+
+A `schematic`, found in `zuse.hoon`, is a set of build instruction for Ford. It is a recursive data structure, in that a schematic is a pair `[schematic schematic]`. Schematics have 25 subtypes corresponding to possible basic build instructions. The product of a `schematic` is a `cage`.
+
+Some examples of subtypes include:
+ - `%list` - a list of schematics to build.
+ - `%core` - a Clay path to a Hoon source file to build
+ - `%call` - a schematic whose result is a gate with a schematic as a sample.
+ - `%scry` - look up a value from the Urbit namespace.
+
+ Schematics are only ever sent to Ford by another vane. Userspace apps do not directly create schematics.
+
+#### Scaffolds
+
+Some kind of intermediate files similar to schematics that Ford produces during a build. I probably don't need to talk about these.
 
 ### Ford runes
 
