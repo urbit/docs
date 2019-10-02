@@ -55,7 +55,9 @@ The main features of Ford that distinguish it from most build systems that we wi
 
 ### Strongly and Dynamically Typed
 
-### Monadic
+### Monadic dependencies
+
+I still don't quite understand what is meant by this and how it is interrelated to being purely functional, having live builds, dynamic dependencies, etc. I think these might all be consequences of being monadic? But do any of these properties imply monadicity?
 
 ### Purely functional
 
@@ -63,13 +65,106 @@ Like every aspect of Urbit, Ford is purely functional. What this means for a bui
 
 For a typical build system, such as `make`, the build instructions contain a list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
 
+The chief advantage of being purely functional is that Ford builds are reproducible and dependency hell is averted. Ford accomplishes this as builds do not have a static list of dependencies, that is, they are not known a priori. Instead the dependencies are dynamically generated as the build proceeds, and sub-builds are generated for these dependencies and saved in the cache.
 
+### Cache
+
+Ford saves everything it has ever built in a cache. Whenever Ford generates a dependency for a build, it checks the cache to see if it has already built that dependency before. If so, because Ford is purely functional, the result of that build can be put directly into the current build. No rebuilding necessary.
+
+The primary reason for this feature is that it saves time - building large projects can take hours or more.
+
+The cache is somewhat analogous to the Nix store in functionality, but is quite different in terms of implementation. How the cache works is by far the most complex part of Ford, but this internal complexity ultimately results in simplicity for the software engineer, as it solves the problem of dependency hell.
 
 ### Live Builds
 
 ## Using Ford
 
+### Schematics
+
+### Scaffolds
+
 ### Ford runes
+
+Ford runes, which all begin with `/`, are instructions for Ford typically written at the top of a source file. Ford runes instruct Ford to perform actions such as scraping through directories and grabbing files from Clay.
+
+The most common pattern you are likely to see is a sequence of Ford runes at the top of a Hoon source file that imports the results of evaluating other Hoon files. This is like importing a library in any other build system. The way this works in Hoon is that the result of compiling a named Hoon source file is added to the current subject, possibly with a face.
+
+The rune interpreter is most complicated part of `ford.hoon` after the cache. But again, thankfully for us, most of the commonly used runes are straightforward. We cover a few of them here.
+
+#### `/+` import from `lib/`
+
+(this is copied directly from `arvo/ford.md`)
+
+The `/+` rune accepts a filename as an argument. It interprets that filename
+as a hoon source file within the `lib` directory. This is how we import a shared
+library in urbit.
+
+To run this example, put this code in your desk at `gen/faslus.hoon` and run
+`+faslus` in your dojo. This example is a generator. For more information on
+generators, see the [generator docs](@/docs/learn/hoon/hoon-tutorial/generators.md).
+
+```
+/+  time-to-id
+::
+:-  %say
+|=  {{now/@da * *} $~ $~}
+:-  %noun
+(time-to-id now)
+```
+
+produces: `"c.314d"` (or something similar depending on when you run it)
+
+You can import multiple libraries with a single `/+` rune by separating them
+with commas.
+
+Replace the code in `gen/faslus.hoon` with the following:
+
+```
+/+  time-to-id, hep-to-cab
+::
+:-  %say
+|=  {{now/@da * *} $~ $~}
+:-  %noun
+=/  id  (time-to-id now)
+=/  str  "my-id-is-{id}"
+(hep-to-cab (crip str))
+```
+
+This should print something like `my_id_is_c.3588`.
+
+Another feature of the
+`/+` and `/-` runes is the ability to specify the ship and case from which to
+load the library.
+
+Example:
+
+```
+/+  time-to-id, hep-to-cab/4/~zod
+```
+
+will load the `hep-to-cab` library from `~zod` at `%clay` revision `4`.
+
+#### `/-` import from `sur/`
+
+The `/-` rune accepts a filename as an argument. It interprets that filename as
+a hoon source file within the `sur` directory. The `sur` directory contains
+shared structures that can be used by other parts of urbit. This is somewhat
+similar to including a header file in C.
+
+Example:
+
+```
+/-  talk
+::
+*serial:talk
+```
+
+produces: `0v0`
+
+`/-` can also take multiple files as arguments, and the ship and case of those
+arguments can be specified. See the `/+` docs for more details about the syntax
+for those features.
+
 
 ### Building
 
