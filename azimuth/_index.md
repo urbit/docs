@@ -1,5 +1,5 @@
 +++
 title = "Azimuth"
 weight = 1
-template = "doc.html"
+template = "sections/docs/chapters.html"
 +++

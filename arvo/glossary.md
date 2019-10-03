@@ -329,7 +329,7 @@ with this functionality learn what syntax is kosher.
 
 A desk is independently revision-controlled branch of urbit filesystem. 
 
-_See [filesystem](@/docs/using/filesystem.md) and [Clay](@/docs/learn/arvo/clay.md)._
+_See [filesystem](@/operations.md#filesystem) and [Clay](@/docs/arvo/clay.md)._
 
 ### duct
 
@@ -402,7 +402,7 @@ information pipeline.
 
 Generators are run from the `/gen` directory of your current desk. For example,
 to run a generator named `whatever.hoon`, you would type `> +whatever` in the
-[Dojo](@/operations/#using-the-shell).
+[Dojo](@/operations.md#using-the-shell).
 
 ### glyph
 
@@ -486,7 +486,7 @@ atoms (in this case each with an aura of `%ud`, i.e. unsigned
 decimal).
 
 To parse Hoon source into a hoon AST, use `ream` on a `cord`
-containing Hoon source. Try the following in [Dojo](@/operations/#using-the-shell):
+containing Hoon source. Try the following in [Dojo](@/operations.md#using-the-shell):
 
 ```
 (ream ':+(12 7 %a)')
@@ -793,7 +793,7 @@ The head of `+n` is `+2n`, the tail is `+(2n+1)`.
 _Talk_ is Urbit's built-in chat app. It’s one example of an app that can be
 built on top of Hall, the Urbit back-end messaging system.
 
-_See [Messaging](@/operations/#messaging). for more information._
+_See [Messaging](@/operations.md#messaging). for more information._
 
 ### type
 
@@ -815,7 +815,7 @@ of the simpler built-in types.
   If `nest` produces no, the Hoon programmer will receive a `nest-fail`
   error. This is one of the most commons errors in Hoon programming.
 
-  _See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_ and [troubleshooting](@/docs/using/ship-troubleshooting.md).
+  _See [advanced types](@/docs/hoon/hoon-expressions/advanced.md)_ and [troubleshooting](@/docs/arvo/ship-troubleshooting.md).
 
 
 ### Unit

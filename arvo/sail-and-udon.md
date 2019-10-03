@@ -21,7 +21,7 @@ This document will be divided into two main sections: the Sail guide and the Udo
 ## Getting Started {#getting-started}
 
 Before starting with either Sail or Udon, make sure that your ship is
-[mounted to Unix](@/operations#booting-a-ship)
+[mounted to Unix](@/install.md)
 
 To host that output, your ship also has a web-server that can be found at
 `localhost` (default port 80) if it’s your first ship that’s running on the
