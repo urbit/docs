@@ -2,6 +2,7 @@
 title = "C in Urbit"
 weight = 4
 template = "doc.html"
+aliases = ["/docs/learn/vere/c"]
 +++
 Under `u3` is the simple `c3` layer, which is just how we write C
 in Urbit.

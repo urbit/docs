@@ -2,6 +2,7 @@
 title = "Change Subject = ('tis')"
 weight = 5
 template = "doc.html"
+aliases = ["/docs/reference/hoon-expressions/rune/tis/"]
 +++
 These runes modify the subject.  (Or more precisely, they
 evaluate at least one of their subexpressions with a modified subject.)

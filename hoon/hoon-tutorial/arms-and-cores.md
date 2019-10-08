@@ -2,6 +2,7 @@
 title = "1.7 Arms and Cores"
 weight = 15
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/arms-and-cores/"]
 +++
 The Hoon subject is a noun.  Each fragment of this noun is either an arm or a leg.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an arm is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we must also introduce an important Hoon data structure: a 'core'.
 

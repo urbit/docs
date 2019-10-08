@@ -2,6 +2,7 @@
 title = "1.3.1 Walkthrough: Conditionals"
 weight = 5
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/conditionals/"]
 +++
 
 In this lesson, we will write a generator that takes an integer and checks if it is an even number between 1 and 100. This will help demonstrate how boolean (true or false) conditional expressions work in Hoon.

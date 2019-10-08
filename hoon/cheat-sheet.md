@@ -1,7 +1,8 @@
 +++
-title = "Cheat sheet"
+title = "Cheat Sheet"
 weight = 5
 template = "doc.html"
+aliases = ["docs/reference/cheat-sheet/"]
 +++
 
 Download the cheat sheet PDF [here](https://storage.googleapis.com/media.urbit.org/docs/hoon-cheat-sheet--2017-12-12.pdf).

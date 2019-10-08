@@ -3,6 +3,7 @@ title = "Runes"
 weight = 2
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["docs/reference/hoon-expressions/rune/"]
 +++
 Runes are a way to form expressions in Hoon.
 

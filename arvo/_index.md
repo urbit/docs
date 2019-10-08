@@ -3,6 +3,7 @@ title = "Arvo"
 weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["/docs/learn/arvo/"]
 +++
 Arvo is Urbit's functional operating system, written in [Hoon](@/docs/hoon/_index.md). It's composed of modules called _vanes_:
 

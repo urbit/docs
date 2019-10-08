@@ -2,6 +2,7 @@
 title = "Sail and Udon"
 weight = 7
 template = "doc.html"
+aliases = ["docs/using/sail-and-udon/"]
 +++
 
 Sail is Hoon markup that’s used to render a web page with XML. But what makes it special is that you can run arbitrary Hoon code within such a web page without using a separate markup language.

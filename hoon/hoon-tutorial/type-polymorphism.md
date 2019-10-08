@@ -2,7 +2,9 @@
 title = "2.5 Type Polymorphism"
 weight = 31
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/type-polymorphism/"]
 +++
+
 There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
 
 One relatively trivial form of polymorphism involves sub-typing.  A gate whose sample is a raw `noun` can accept any Hoon data structure as input -- it's just that the sample will only be treated as a raw noun.  For example, consider the `copy` gate below:

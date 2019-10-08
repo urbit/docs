@@ -2,6 +2,7 @@
 title = "Gall Apps"
 weight = 6
 template = "doc.html"
+aliases = ["/docs/learn/arvo/gall/"]
 +++
 This is documentation about how to write Gall apps.  Some knowledge of Hoon is assumed.
 

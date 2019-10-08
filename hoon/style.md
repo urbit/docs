@@ -2,6 +2,7 @@
 title = "Hoon Style Guide"
 weight = 3
 template = "doc.html"
+aliases = ["docs/learn/hoon/style/"]
 +++
 Welcome to the Hoon style guide. It's important to familiarize yourself with our way of writing Hoon code.
 

@@ -2,6 +2,7 @@
 title = "Wild ! ('zap')"
 weight = 4
 template = "doc.html"
+aliases = ["docs/reference/hoon-expressions/rune/zap/"]
 +++
 ## Runes
 

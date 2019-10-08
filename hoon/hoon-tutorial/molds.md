@@ -2,6 +2,7 @@
 title = "2.3.2 Molds"
 weight = 28
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/molds/"]
 +++
 
 A mold is a function that coerces a noun to a type or crashes.

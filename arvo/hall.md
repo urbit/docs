@@ -2,6 +2,7 @@
 title = "Hall"
 weight = 7
 template = "doc.html"
+aliases = ["docs/learn/arvo/hall/"]
 +++
 > Last major revision of this tutorial: 2017. Some of the information and Hoon syntax here may
   be outdated.

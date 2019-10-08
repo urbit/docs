@@ -2,8 +2,8 @@
 title = "1.4 Lists"
 weight = 6
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/lists/"]
 +++
-
 
 # Lists
 

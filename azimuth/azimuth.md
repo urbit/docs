@@ -2,6 +2,7 @@
 title = "Azimuth"
 weight = 2
 template = "doc.html"
+aliases = ["/docs/learn/azimuth"]
 +++
 
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a decentralized ledger for Urbit identities that we call **points**. Having a point is necessary to use the Urbit network, which makes it important to have a neutral ledger to determine who owns what.

@@ -2,6 +2,7 @@
 title = "1.7.1 Walkthrough: Caesar Cipher"
 weight = 16
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/caesar/"]
 +++
 
 A Caesar cipher is a very simple way to obfuscate a message. The technique

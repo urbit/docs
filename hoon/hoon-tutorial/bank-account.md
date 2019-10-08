@@ -2,6 +2,7 @@
 title = "1.8.1 Bank Account"
 weight = 17
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/bank-account/"]
 +++
 
 In this lesson, we will write a door that can act as a bank account with the ability to withdraw, deposit, and check the account's balance.

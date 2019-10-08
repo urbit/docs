@@ -3,6 +3,7 @@ title = "Hoon"
 weight = 2
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["docs/learn/hoon/"]
 +++
 Hoon is a high-level, statically typed, functional programming language, custom-designed for use with Urbit.  For a functional language it has a surprisingly imperative style, and mastering it doesn't require knowing any advanced mathematics.
 

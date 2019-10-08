@@ -2,7 +2,9 @@
 title = "1.8 Doors"
 weight = 16
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/doors/"]
 +++
+
 It's useful to have cores whose arms evaluate to make gates.  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
 
 In this lesson you'll also learn about a new kind of core, called a 'door'.

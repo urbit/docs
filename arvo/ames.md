@@ -2,6 +2,7 @@
 title = "Ames"
 weight = 1
 template = "doc.html"
+aliases = ["/docs/learn/arvo/ames/"]
 +++
 Our networking protocol.
 

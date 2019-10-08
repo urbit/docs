@@ -2,6 +2,7 @@
 title = "Ford"
 weight = 6
 template = "doc.html"
+aliases = ["/docs/learn/arvo/ford/"]
 +++
 Our typed and marked computation engine.
 

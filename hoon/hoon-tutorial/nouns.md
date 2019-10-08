@@ -2,6 +2,7 @@
 title = "1.2 Nouns"
 weight = 3
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/nouns/"]
 +++
 
 In Urbit, every piece of data is a noun.  In order to understand Hoon, one must first understand nouns.

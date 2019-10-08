@@ -2,6 +2,7 @@
 title = "1.5 Gates (Hoon Functions)"
 weight = 8
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/gates/"]
 +++
 In this lesson you're going to learn about Hoon functions.
 

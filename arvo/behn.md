@@ -2,6 +2,7 @@
 title = "Behn"
 weight = 2
 template = "doc.html"
+aliases = ["/docs/learn/arvo/behn/"]
 +++
 Our simple timer.
 

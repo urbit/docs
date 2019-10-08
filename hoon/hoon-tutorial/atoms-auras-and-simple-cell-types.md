@@ -2,6 +2,7 @@
 title = "2.1 Atoms, Auras, and Simple Cell Types"
 weight = 24
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types/"]
 +++
 Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29)) won't be addressed until a later chapter.
 

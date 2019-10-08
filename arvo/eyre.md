@@ -2,6 +2,7 @@
 title = "Eyre"
 weight = 5
 template = "doc.html"
+aliases = ["/docs/learn/arvo/eyre/"]
 +++
 Our HTTP server.
 

@@ -2,6 +2,7 @@
 title = "Bomb Defusing"
 weight = 7
 template = "doc.html"
+aliases = ["docs/learn/hoon/workbook/bomb"]
 +++
 In this exercise, we will build a generator that takes a list of wires to be cut
 in order to defuse a bomb. The bomb is defused according to the following rules.

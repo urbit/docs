@@ -2,6 +2,7 @@
 title = "Make ; ('mic')"
 weight = 13
 template = "doc.html"
+aliases = ["docs/reference/hoon-expressions/rune/mic/"]
 +++
 
 Miscellaneous useful macros.

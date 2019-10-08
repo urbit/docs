@@ -2,7 +2,9 @@
 title = "1.9 Generators"
 weight = 19
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/generators/"]
 +++
+
 Generators are the most straightforward way to write programs for Urbit. They
 are used for doing computations that do not require persistence: they take an
 input and produce an output, then disappear. Generators might make sense for

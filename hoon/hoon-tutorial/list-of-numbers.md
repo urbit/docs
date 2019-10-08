@@ -2,7 +2,9 @@
 title = "1.1.1 Walkthrough: List of Numbers"
 weight = 2
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/list-of-numbers/"]
 +++
+
 This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may be beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.
 
 Below is a simple Hoon program that takes a single number `n` from the user as input and produces a list of numbers from `1` up to (but not including) `n`. So, if the user gives the number `5`, the program will produce: `~[1 2 3 4]`.

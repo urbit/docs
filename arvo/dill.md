@@ -2,6 +2,7 @@
 title = "Dill"
 weight = 4
 template = "doc.html"
+aliases = ["/docs/learn/arvo/dill/"]
 +++
 Our terminal driver.
 

@@ -3,6 +3,7 @@ title = "Hoon Workbook"
 weight = 2
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliase = ["docs/learn/hoon/workbook/"]
 +++
 The Workbook is the place to sharpen your Hoon skills. Each entry in the
 Workbook is a code walkthrough followed by exercises.

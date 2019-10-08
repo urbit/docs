@@ -3,6 +3,7 @@ title = "Vere"
 weight = 4
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["/docs/learn/vere/"]
 +++
 The Nock runtime system, written in C.
 

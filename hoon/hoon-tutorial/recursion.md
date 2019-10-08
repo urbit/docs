@@ -2,7 +2,9 @@
 title = "1.5.1 Walkthrough: Recursion"
 weight = 9
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/recursion/"]
 +++
+
 [Recursion](.) is a common pattern for solving certain problems in most programming
 languages, and Hoon is no exception. One of the classically recursive problems
 is that of factorial. The factorial of _n_ is the product of all positive

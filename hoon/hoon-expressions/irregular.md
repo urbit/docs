@@ -2,8 +2,8 @@
 title = "Irregular forms"
 weight = 7
 template = "doc.html"
+aliases = ["docs/reference/hoon-expressions/irregular/"]
 +++
-##### `~palfun-foslup`
 
 ##### Reading guide
 

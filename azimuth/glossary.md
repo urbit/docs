@@ -2,6 +2,7 @@
 title = "Azimuth Glossary"
 weight = 3
 template = "doc.html"
+aliases = ["/docs/reference/azimuth-glossary/"]
 +++
 
 

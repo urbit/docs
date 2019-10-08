@@ -2,6 +2,7 @@
 title = "Clay"
 weight = 3
 template = "doc.html"
+aliases = ["/docs/learn/arvo/clay/"]
 +++
 Our filesystem.
 

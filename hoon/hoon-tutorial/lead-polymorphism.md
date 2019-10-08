@@ -2,6 +2,7 @@
 title = "2.5.2 Walkthrough: Lead Polymorphism"
 weight = 33
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/lead-polymorphism/"]
 +++
 
 There are four kinds of cores: gold, iron, zinc, and lead. You are able to use core-variance rules to create programs which take other programs as arguments. Which particular rules depends on which kind of core your program needs to complete.

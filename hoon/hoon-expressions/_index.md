@@ -3,6 +3,7 @@ title = "Hoon Expressions"
 weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["/docs/reference/hoon-expressions/"]
 +++
 Documentation for Hoon expressions.
 

@@ -2,6 +2,7 @@
 title = "Writing Jets"
 weight = 5
 template = "doc.html"
+aliases = ["/docs/learn/vere/jetting/"]
 +++
 A guide for new Urbit developers.
 

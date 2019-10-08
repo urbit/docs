@@ -2,6 +2,7 @@
 title = "1.4.1 Walkthrough: Fibonacci Sequence"
 weight = 7
 template = "doc.html"
+aliases = ["/docs/learn/hoon/hoon-tutorial/fibonacci/"]
 +++
 
 In this example, we will write a generator that produces a list of Fibonacci numbers up to `n`.

@@ -1,7 +1,8 @@
 +++
-title = "Arvo Glossary"
+title = "Glossary"
 weight = 3
 template = "doc.html"
+aliases = ["docs/reference/arvo-glossary/"]
 +++
 
 Urbit is renowned for its exotic terminology. Here's a simple overview

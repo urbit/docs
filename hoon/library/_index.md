@@ -3,6 +3,7 @@ title = "Standard library"
 weight = 2
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["/docs/reference/library/"]
 +++
 
 Documentation for the standard library.

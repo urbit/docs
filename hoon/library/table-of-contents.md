@@ -2,6 +2,7 @@
 title = "Table of Contents"
 weight = 0
 template = "doc.html"
+aliases = ["/docs/reference/library/"]
 +++
 
 Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).

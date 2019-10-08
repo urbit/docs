@@ -2,6 +2,7 @@
 title = "Terminators -- and =="
 weight = 15
 template = "doc.html"
+aliases = ["/docs/reference/hoon-expressions/rune/terminators/"]
 +++
 The `--` and `==` are used as terminators: `--` for core expressions, and `==` for terminating a 'running' or 'jogging' series of Hoon expressions.
 

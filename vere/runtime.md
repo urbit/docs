@@ -2,7 +2,7 @@
 title = "C Runtime System"
 weight = 1
 template = "doc.html"
-aliases = ["docs/about/runtime/"]
+aliases = ["docs/about/runtime/", "/docs/learn/vere/runtime"]
 +++
 
 The Urbit interpreter is built on a Nock runtime system written

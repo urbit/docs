@@ -3,6 +3,7 @@ title = "Limbs and wings"
 weight = 3
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+aliases = ["docs/reference/hoon-expressions/limb/"]
 +++
 One feature Hoon lacks: a context that isn't a first-class value. Hoon has no
 concept of scope, environment, etc.  An expression has exactly one data source,

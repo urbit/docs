@@ -2,7 +2,9 @@
 title = "Explanation"
 weight = 2
 template = "doc.html"
+aliases = ["docs/learn/nock/explanation"]
 +++
+
 To make Nock make sense, let's work through the spec line by line.
 First the data model:
 
