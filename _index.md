@@ -26,7 +26,7 @@ The documentation proper is contained on the sidebar of this page. It's meant fo
 
 - [Arvo](../arvo) is the Urbit operating system. If you're interested in finding out about the architecture of the system, check out this section.
 
-- [Azimuth](../arvo) is the Urbit identity layer. To use Urbit, you need an identity that is secured by Azimuth.
+- [Azimuth](../azimuth) is the Urbit identity layer. To use Urbit, you need an identity that is secured by Azimuth.
 
 - [Hoon](../hoon) is the functional programming language used to build Urbit. This section contains tutorials that will help you build proficiency in the language.
 
