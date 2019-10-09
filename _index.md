@@ -6,11 +6,11 @@ Welcome to the documentation for the Urbit project, including the Azimuth identi
 
 ## Getting Started
 
-The following three guides can get you started.
+The following three guides will help get you started on Urbit.
 
 ### [Install Urbit](/install)
 
-Urbit isn't ready for serious use yet, but it's available to try out. If you have an Azimuth point, you can follow this step-by-step guide to get your point's _keyfile_, which you need to boot your ship. Then you can install Urbit and join the community.
+Urbit isn't ready for serious use yet, but it's available to try out. If you have an Urbit identity, you can follow this step-by-step guide to get your point's _keyfile_, which you need to boot your ship. Then you can install Urbit and join the community.
 
 ### [Operator's Manual](/operations)
 
@@ -26,7 +26,7 @@ The documentation proper is contained on the sidebar of this page. It's meant fo
 
 - [Arvo](../arvo) is the Urbit operating system. If you're interested in finding out about the architecture of the system, check out this section.
 
-- [Azimuth](../arvo) is the Urbit identity layer. To use Urbit, you need an Azimuth identity.
+- [Azimuth](../arvo) is the Urbit identity layer. To use Urbit, you need an identity that is secured by Azimuth.
 
 - [Hoon](../hoon) is the functional programming language used to build Urbit. This section contains tutorials that will help you build proficiency in the language.
 
