@@ -1,6 +1,6 @@
 +++
-title = "Troubleshooting Hoon"
-weight = 5
+title = "Hoon Errors"
+weight = 6
 template = "doc.html"
 +++
 Ideally your Hoon works perfectly the first time.  But...
