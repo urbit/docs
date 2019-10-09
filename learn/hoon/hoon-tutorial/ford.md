@@ -109,7 +109,7 @@ A `vase` is simply typed data, and it is used wherever typed data is being expli
 
 #### Cage
 
-A `cage` is a `[mark vase]` - so its just typed data that is also marked for usage by Arvo.
+From `arvo.hoon`, a `cage` is a `[mark vase]` - so its just typed data that is also marked for usage by Arvo.
 
 #### Schematics
 
@@ -195,9 +195,7 @@ Example:
 
 produces: `0v0`
 
-`/-` can also take multiple files as arguments, and the ship and case of those
-arguments can be specified. See the `/+` docs for more details about the syntax
-for those features.
+`/-` can also take multiple files as arguments, and the ship and case of those arguments can be specified. See the `/+` docs for more details about the syntax for those features.
 
 ### Mark conversion
 
