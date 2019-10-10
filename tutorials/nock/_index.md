@@ -9,7 +9,7 @@ aliases = ["docs/learn/nock/"]
 
 Nock is the low-level functional programming language that is interpreted by Vere. You don't need to know Nock to write Hoon, or even to work on most parts of Vere.  But if you want to understand the foundations of Urbit and are mathematically-inclined, dive right in.
 
-## [Nock Definition](@/docs/tutorials//nock/definition.md)
+## [Nock Definition](@/docs/tutorials/nock/definition.md)
 
 The Nock specification.
 
