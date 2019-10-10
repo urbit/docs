@@ -37,7 +37,7 @@ Let's look at the code piece-by-piece.
 ```
 
 Here's the boilerplate code to designate our generator as being a
-[`%say` generator](@/docs/hoon/hoon-tutorial/generators.md). We're using this variant because
+[`%say` generator](@/docs/tutorial/hoon/generators.md). We're using this variant because
 it allows us to run the generator without any arguments. It's otherwise not
 relevant to the functionality of our program.
 
@@ -98,7 +98,7 @@ We first produce a core with one arm named `$`. That `$` arm will produce a new
 core with `current-state` changed to match the `s` provided when it was called.
 How does this work?
 
-Remember that `.` is [wing syntax](@/docs/hoon/hoon-expressions/limb/wing.md) that
+Remember that `.` is [wing syntax](@/docs/reference/hoon-expressions/limb/wing.md) that
 applies the wing expression on the left of it to the noun to the right of it.
 `$` is the arm of the core. Then by using the wing expression `+>`, which means
 "return the head of the tail", we traverse the subject to the core to latch onto

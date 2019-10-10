@@ -22,7 +22,7 @@ of its digits.
 ==
 ```
 
-We're creating a [`%say` generator](@/docs/hoon/hoon-tutorial/generators.md). That means we
+We're creating a [`%say` generator](@/docs/tutorials/hoon/generators.md). That means we
 need some "boilerplate" code in the format of `[%say [%noun "data"]]`:
 
 ```hoon

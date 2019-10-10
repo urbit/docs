@@ -352,6 +352,6 @@ Often `$@` is used to define a type with a null or trivial case for the `@` case
 
 Now the `~` value is included as a possible value for `user`.
 
-That's all we have to say about types in this chapter.  More on types in [Chapter 3](@/docs/hoon/hoon-tutorial/type-polymorphism.md).
+That's all we have to say about types in this chapter.  More on types in [Chapter 2](@/docs/tutorials/hoon/type-polymorphism.md).
 
 ### [Next Up: Walkthrough -- Libraries](../libraries)

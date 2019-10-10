@@ -68,7 +68,7 @@ their effects happen like so:
 Arvo is located in `/home/sys/arvo.hoon` within your urbit.
 
 More in-depth information on Arvo can be found
-[`here`](@/docs/arvo/_index.md).
+[`here`](@/docs/tutorials/arvo/_index.md).
 
 Below are Arvo modules, which are called "vanes".
 
@@ -81,7 +81,7 @@ Below are Arvo modules, which are called "vanes".
   Ames is located in `/home/sys/vane/ames.hoon` within your urbit.
 
   More in-depth information on Ames can be found
-  [`here`](@/docs/arvo/ames.md).
+  [`here`](@/docs/tutorials/arvo/ames.md).
 
 #### Behn
 
@@ -106,7 +106,7 @@ Below are Arvo modules, which are called "vanes".
   Basic information on using Clay can be found
   [`here`](@/operations.md). An in-depth explanation
   of the architecture can be found
-  [`here`](@/docs/arvo/clay.md).
+  [`here`](@/docs/tutorials/arvo/clay.md).
 
 #### Dill
 
@@ -125,7 +125,7 @@ Below are Arvo modules, which are called "vanes".
   Dill is located at `/home/sys/vane/dill.hoon` within your urbit.
 
   More in-depth information on Dill can be found
-  [`here`](@/docs/arvo/dill.md).
+  [`here`](@/docs/tutorials/arvo/dill.md).
 
 #### Eyre
 
@@ -139,7 +139,7 @@ Below are Arvo modules, which are called "vanes".
   Eyre is located at `/home/sys/vane/eyre.hoon` within your urbit.
 
   More in-depth information on Eyre can be found
-  [`here`](@/docs/arvo/eyre.md).
+  [`here`](@/docs/tutorials/arvo/eyre.md).
 
 #### Ford
 
@@ -154,7 +154,7 @@ Below are Arvo modules, which are called "vanes".
   Ford is located at `/home/sys/vane/ford.hoon` within your urbit.
 
   More in-depth information on Ford can be found
-  [`here`](@/docs/arvo/ford.md).
+  [`here`](@/docs/tutorials/arvo/ford.md).
 
 #### Gall
 
@@ -170,7 +170,7 @@ Below are Arvo modules, which are called "vanes".
   Gall is located at `/home/sys/vane/gall.hoon` within your urbit.
 
   More in-depth information on Gall can be found
-  [`here`](@/docs/arvo/gall.md).
+  [`here`](@/docs/tutorials/arvo/gall.md).
 
 ### atom
 
@@ -190,7 +190,7 @@ An atom type is _warm_ or _cold_ based on whether the constant exists.
 
   If the constant is `[~ atom]`, its only legal value is `atom`.
 
-_See [basic types](@/docs/hoon/hoon-expressions/basic.md)_
+_See [basic types](@/docs/reference/hoon-expressions/basic.md)_
 
 ### aura
 
@@ -246,7 +246,7 @@ Aura         Meaning                        Example Literal Syntax
   @ux           unsigned hexadecimal        0x5f5.e138
 ```
 
-You can find the list of all auras [here](@/docs/hoon/hoon-expressions/rune/constants.md).
+You can find the list of all auras [here](@/docs/reference/hoon-expressions/rune/constants.md).
 
 ### blocksize
 
@@ -310,7 +310,7 @@ translate to cores in Hoon.
 
   The data-containing tail of a core.
 
-_See [basic types](@/docs/hoon/hoon-expressions/basic.md)._
+_See [basic types](@/docs/reference/hoon-expressions/basic.md)._
 
 ### Dojo
 
@@ -330,7 +330,7 @@ with this functionality learn what syntax is kosher.
 
 A desk is independently revision-controlled branch of urbit filesystem.
 
-_See [filesystem](@/operations.md#filesystem) and [Clay](@/docs/arvo/clay.md)._
+_See [filesystem](@/operations.md#filesystem) and [Clay](@/docs/tutorials/clay.md)._
 
 ### duct
 
@@ -356,7 +356,7 @@ In the above example, `a` is the face and `2` is the value.
 Hoon has no scope or symbol-table; there is only the subject. To "declare" a
 "variable" is to construct a new subject: `[name=value old-subject]`.
 
-_See [advanced types](@/docs/hoon/hoon-expressions/advanced.md)_.
+_See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_.
 
 
 ### flag
@@ -368,7 +368,7 @@ _no_.
 
 A _gate_ is a [core](#core) with one [arm](#arm) -- Hoon's closest
 analog to a function. To call a gate on an argument, replace the sample
-(at [tree address](@/docs/hoon/hoon-expressions/limb/limb.md) `+6`
+(at [tree address](@/docs/reference/hoon-expressions/limb/limb.md) `+6`
 in the core) with the argument, and then compute the arm.
 
 The payload of a gate has a shape of `[sample context]`.
@@ -381,8 +381,8 @@ The payload of a gate has a shape of `[sample context]`.
 
   The subject in which the gate was defined.
 
-_See [basic types](@/docs/hoon/hoon-expressions/basic.md),
-[`%-` ("cenhep")](@/docs/hoon/hoon-expressions/rune/cen.md#cenhep) (the
+_See [basic types](@/docs/reference/hoon-expressions/basic.md),
+[`%-` ("cenhep")](@/docs/reference/hoon-expressions/rune/cen.md#cenhep) (the
 [rune](#rune) for calling a `gate`)._
 
 ### generator
@@ -433,7 +433,7 @@ _Hall_ is the Urbit communication back-end. It’s a messaging bus that can work
 with clients of all sorts. [`:talk`](#talk), the built-in chat client, is one
 such app that uses Hall.
 
-_More information on Hall can be found [here](@/docs/arvo/hall.md)._
+_More information on Hall can be found [here](@/docs/tutorials/arvo/hall.md)._
 
 #### circle
 
@@ -456,7 +456,7 @@ to Nock.
 
 The Hoon source file is located in `/home/sys/hoon.hoon` within your urbit.
 
-_More information can be found in the [hoon](@/docs/hoon/_index.md) section._
+_More information can be found in the [hoon](@/docs/tutorials/hoon/_index.md) section._
 
 #### Mint
 
@@ -499,7 +499,7 @@ The result should be:
 [%clls p=[%sand p=%ud q=12] q=[%sand p=%ud q=7] r=[%rock p=%tas q=97]]
 ```
 
-See [expression reference](@/docs/hoon/hoon-expressions/rune/_index.md) for the full list of hoons.
+See [expression reference](@/docs/reference/hoon-expressions/rune/_index.md) for the full list of hoons.
 
 ### irregular form
 
@@ -507,7 +507,7 @@ Irregular forms are alternative ways of writing Hoon expressions, alternatives
 to the digraphic runes such as `:~`. Irregular forms are usually more compact
 than regular forms.=
 
-_See [irregular forms](@/docs/hoon/hoon-expressions/irregular.md)._
+_See [irregular forms](@/docs/reference/hoon-expressions/irregular.md)._
 
 ### jet
 
@@ -520,7 +520,7 @@ so inefficiently. Nock, for example, can’t decrement (reduce a number by one)
 except by starting building a loop that starts from zero and increments to a
 number just below.
 
-_See [API overview](@/docs/vere/api.md)._
+_See [API overview](@/docs/reference/vere/api.md)._
 
 ### lark
 
@@ -570,7 +570,7 @@ found, the result is the product of the arm.
   a search path into the subject, composed of
   limbs. Search occurs from right to left (`a.b` means `b` within `a`).
 
-_See [Limbs and wings](@/docs/hoon/hoon-expressions/limb/_index.md)_
+_See [Limbs and wings](@/docs/reference/hoon-expressions/limb/_index.md)_
 
 ### move
 
@@ -610,7 +610,7 @@ Urbit's low-level programming language. Nock is functional and typeless.
 
   a noun - the result of evaluating a formula against a subject.
 
-_See the [Nock definition](@/docs/nock/definition.md)._
+_See the [Nock definition](@/docs/reference/nock/definition.md)._
 
 ### mark
 
@@ -636,7 +636,7 @@ properties of the type of a compatible core). The default is `gold`
 - `zinc`: _covariant_
 - `iron`: _contravariant_
 
-_See [advanced types](@/docs/hoon/hoon-expressions/advanced.md)_.
+_See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_.
 
 ### ship
 
@@ -725,10 +725,10 @@ _See [mold hoons](/docs/hoon/hoon-expressions/rune/buc/)._
 A Hoon _rune_ is a pair of ASCII symbols used to begin a
 [Hoon expression](#a-hoon).
 
-For example, the rune [`?:`](@/docs/hoon/hoon-expressions/rune/wut.md#wutcol) is
+For example, the rune [`?:`](@/docs/reference/hoon-expressions/rune/wut.md#wutcol) is
 Hoon's most common conditional, a branch on a boolean test. The first
 symbol in a rune represents a family of related runes. For example, the
-[`?` family](@/docs/hoon/hoon-expressions/rune/wut.md) are all conditionals.
+[`?` family](@/docs/reference/hoon-expressions/rune/wut.md) are all conditionals.
 
 The result of parsing a Hoon source expression&mdash;the rune, followed
 by its respective children&mdash;into an AST node is simply called
@@ -764,7 +764,7 @@ Tall hoons can contain flat hoons, but not vice versa. All irregular
 forms are flat.
 
 _See [hoon concept](#a-hoon),
-[expressions](@/docs/hoon/hoon-expressions/rune/_index.md).
+[expressions](@/docs/reference/hoon-expressions/rune/_index.md).
 
 ### Sail
 
@@ -775,7 +775,7 @@ _Sail_ is the Hoon markup language for XML.
 To _scry_ means to request data from the Arvo namespace and bring it
 to userspace.
 
-_See [.^ (dot-ket)](@/docs/hoon/hoon-expressions/rune/dot.md#dotket)._
+_See [.^ (dot-ket)](@/docs/reference/hoon-expressions/rune/dot.md#dotket)._
 
 ### slot
 
@@ -816,7 +816,7 @@ of the simpler built-in types.
   If `nest` produces no, the Hoon programmer will receive a `nest-fail`
   error. This is one of the most commons errors in Hoon programming.
 
-  _See [advanced types](@/docs/hoon/hoon-expressions/advanced.md)_ and [troubleshooting](@/docs/arvo/ship-troubleshooting.md).
+  _See [advanced types](@/docs/reference/hoon-expressions/advanced.md)_ and [troubleshooting](@/docs/tutorials/ship-troubleshooting.md).
 
 
 ### Unit
