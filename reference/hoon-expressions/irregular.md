@@ -17,7 +17,7 @@ Anything Nock can do, Hoon can do also.
 
 ### .+ dotlus
 
-[docs](@/docs/hoon/hoon-expressions/rune/dot.md#dotlus) \\+
+[docs](@/docs/reference/hoon-expressions/rune/dot.md#dotlus) \\+
 `[%dtls p=atom]`: increment an atom with Nock 4.
 
 R: `.+(p)`
@@ -25,7 +25,7 @@ I: `+(p)`
 
 ### .= dottis
 
-[docs](@/docs/hoon/hoon-expressions/rune/dot.md#dottis) \\=
+[docs](@/docs/reference/hoon-expressions/rune/dot.md#dottis) \\=
 `[%dtts p=hoon q=hoon]`: test for equality with Nock 5.
 
 R: `.=(p q)`
@@ -37,7 +37,7 @@ Miscellaneous useful macros.
 
 ### ;: miccol
 
-[docs](@/docs/hoon/hoon-expressions/rune/mic.md#miccol) \\:
+[docs](@/docs/reference/hoon-expressions/rune/mic.md#miccol) \\:
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 R: `;:(p q)`
@@ -49,7 +49,7 @@ The cell runes.
 
 ### :- colhep
 
-[docs](@/docs/hoon/hoon-expressions/rune/col.md#colhep)  \\[\\]\\^\\+\\\`\\~
+[docs](@/docs/reference/hoon-expressions/rune/col.md#colhep)  \\[\\]\\^\\+\\\`\\~
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
 R: `:-(p q)`
@@ -71,7 +71,7 @@ Flow hoons change the subject. All non-flow hoons (except cores) pass the subjec
 
 ### =< tisgal
 
-[docs](@/docs/hoon/hoon-expressions/rune/tis.md#tisgal) \\:
+[docs](@/docs/reference/hoon-expressions/rune/tis.md#tisgal) \\:
 `[%tsgl p=hoon q=hoon]`: compose two hoons, inverted.
 
 R: `=<(p q)`
@@ -79,7 +79,7 @@ I: `p:q`
 
 ## | bar (core)
 
-[docs](@/docs/hoon/hoon-expressions/rune/bar.md) \\$
+[docs](@/docs/reference/hoon-expressions/rune/bar.md) \\$
 Core hoons are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.
@@ -97,7 +97,7 @@ The invocation family of runes.
 
 ### %= centis
 
-[docs](@/docs/hoon/hoon-expressions/rune/cen.md#centis)  \\(\\)
+[docs](@/docs/reference/hoon-expressions/rune/cen.md#centis)  \\(\\)
 `[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
 
 R: `%=(p a 1)`
@@ -105,7 +105,7 @@ I: `p(a 1)`
 
 ### %~ censig
 
-[docs](@/docs/hoon/hoon-expressions/rune/cen.md#censig) \\~
+[docs](@/docs/reference/hoon-expressions/rune/cen.md#censig) \\~
 `[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
 R: `%~(p q r)`
@@ -113,7 +113,7 @@ I: `~(p q r)`
 
 ### %- cenhep
 
-[docs](@/docs/hoon/hoon-expressions/rune/cen.md#cenhep) \\(\\)
+[docs](@/docs/reference/hoon-expressions/rune/cen.md#cenhep) \\(\\)
 `[%cnhp p=hoon q=hoon]`: call a gate (function).
 
 R: `%-(p q)`
@@ -127,7 +127,7 @@ A mold is a gate (function) that helps us build simple and rigorous data structu
 
 ### $? bucwut
 
-[docs](@/docs/hoon/hoon-expressions/rune/buc.md#bucwut) \\?
+[docs](@/docs/reference/hoon-expressions/rune/buc.md#bucwut) \\?
 `[%bcwt p=(list model)]`: mold which normalizes a general union.
 
 R: `$?(p)`
@@ -135,7 +135,7 @@ I: `?(p)`
 
 ### $_ buccab
 
-[docs](@/docs/hoon/hoon-expressions/rune/buc.md#buccab) \\_
+[docs](@/docs/reference/hoon-expressions/rune/buc.md#buccab) \\_
 `[%bccb p=value]`: mold which normalizes to an example.
 
 R: `$_(p)`
@@ -147,7 +147,7 @@ Hoon has the usual branches and logical tests.
 
 ### ?! wutzap
 
-[docs](@/docs/hoon/hoon-expressions/rune/wut.md#wutzap) \\!
+[docs](@/docs/reference/hoon-expressions/rune/wut.md#wutzap) \\!
 `[%wtzp p=hoon]`: logical not.
 
 R: `?!(p)`
@@ -155,7 +155,7 @@ I: `!(p)`
 
 ### ?& wutpam
 
-[docs](@/docs/hoon/hoon-expressions/rune/wut.md#wutpam) \\&
+[docs](@/docs/reference/hoon-expressions/rune/wut.md#wutpam) \\&
 `[%wtpm p=(list hoon)]`: logical and.
 
 R: `?&(p)`
@@ -163,7 +163,7 @@ I: `&(p)`
 
 ### ?| wutbar
 
-[docs](@/docs/hoon/hoon-expressions/rune/wut.md#wutbar) \\|
+[docs](@/docs/reference/hoon-expressions/rune/wut.md#wutbar) \\|
 `[%wtbr p=(list hoon)]`: logical or.
 
 R: `?|(p)`
@@ -175,7 +175,7 @@ Lets us adjust types without violating type constraints.
 
 ### ^- kethep
 
-[docs](@/docs/hoon/hoon-expressions/rune/ket.md#kethep) \\\`
+[docs](@/docs/reference/hoon-expressions/rune/ket.md#kethep) \\\`
 `[%kthp p=model q=value]`: typecast by mold.
 
 R: `^-(p q)`
@@ -183,7 +183,7 @@ I: `` `p`q ``
 
 ### ^= kettis
 
-[docs](@/docs/hoon/hoon-expressions/rune/ket.md#kettis) \\=
+[docs](@/docs/reference/hoon-expressions/rune/ket.md#kettis) \\=
 `[%ktts p=toga q=value]`: name a value.
 
 R: `^=(p q)`
@@ -193,13 +193,12 @@ I: `p=q`
 
 ### Trivial molds
 
-\\*\\^\\?
-
 - `*` noun.
 - `@` atom.
 - `^` cell.
 - `?` loobean.
 - `~` null.
+
 
 ### Values
 
@@ -210,7 +209,7 @@ I: `p=q`
 - `|` loobean false.
 - `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
 
-See [%sand](@/docs/hoon/hoon-expressions/rune/constants.md#warm) for other irregular definitions of atoms.
+See [%sand](@/docs/reference/hoon-expressions/rune/constants.md#warm) for other irregular definitions of atoms.
 
 ### List addressing
 
@@ -219,7 +218,7 @@ See [%sand](@/docs/hoon/hoon-expressions/rune/constants.md#warm) for other irreg
 
 ### Limbs
 
-[docs](@/docs/hoon/hoon-expressions/limb/limb.md) \\+\\.\\^
+[docs](@/docs/reference/hoon-expressions/limb/limb.md) \\+\\.\\^
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
 - `+15` is slot 15

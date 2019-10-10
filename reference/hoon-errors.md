@@ -20,10 +20,10 @@ a correct Hoon file.  These values are always correct.
 Usually, the line and column tell you everything you need to
 know.  But the worst-case scenario for a syntax error is that,
 somewhere above, you've confused Hoon's tall form by using the
-wrong fanout for a rune.  For example, `%+` ([**cenlus**](@/docs/hoon/hoon-expressions/rune/cen.md#cenlus),
-a function call whose sample is a cell) has three subhoons:
+wrong fanout for a rune.  For example, `%+` ([**cenlus**](@/docs/reference/hoon-expressions/rune/cen.md#cenlus),
+a function call whose sample is a cell) has three subreferences:
 
-```hoon
+```reference
 %+  foo
   bar
 baz
@@ -31,17 +31,17 @@ baz
 
 But if you make a mistake and write
 
-```hoon
+```reference
 %+  foo
 bar
 ```
 
-the parser will eat the next hoon below and try to treat it as a
+the parser will eat the next reference below and try to treat it as a
 part of the `%+`.  This can cause a cascading error somewhere
 below, usually stopped by a `==` or `--`.
 
 When this happens, don't panic!  Binary search actually works
-quite well.  Any hoon can be stubbed out as `!!`.  Find the
+quite well.  Any reference can be stubbed out as `!!`.  Find the
 prefix of your file that compiles, then work forward until
 the actual error appears.
 
@@ -53,12 +53,12 @@ Now your code parses but doesn't compile.
 
 Your first step should be to put a `!:` ("zapcol") rune at the
 top of the file.  This is like calling the C compiler with `-g`;
-it tells the Hoon compiler to generate tracing hoons.
+it tells the Hoon compiler to generate tracing references.
 
 Bear in mind that `!:` breaks tail-call optimization.  This is a
 bug, but a relatively low-priority bug.  `!.` turns off `!:`.
-Note that `!:` and `!.` are hoon-level, not file-level; you can
-wrap any hoon in either.
+Note that `!:` and `!.` are reference-level, not file-level; you can
+wrap any reference in either.
 
 ### Error trace
 
@@ -74,7 +74,7 @@ If you have `!:` on, you'll see an error trace, like
 nest-fail
 ```
 
-The bottom of this trace is the line and column of the hoon which
+The bottom of this trace is the line and column of the reference which
 failed to compile, then the cause of the error (`nest-fail`).
 
 Hoon does not believe in inundating you with possibly irrelevant
@@ -100,13 +100,13 @@ means you tried to pound a square peg into a round hole.
 What was the peg and what was the hole?  Hoon doesn't tell you by
 default, because moral fiber, and also because in too many cases
 trivial errors lead to large intimidating dumps.  However, you
-can use the `~!` rune ([**sigzap**](@/docs/hoon/hoon-expressions/rune/sig.md#sigzap)) to print the type of
-any hoon in your stack trace.
+can use the `~!` rune ([**sigzap**](@/docs/reference/hoon-expressions/rune/sig.md#sigzap)) to print the type of
+any reference in your stack trace.
 
 For instance, you wrote `(foo bar)` and got a `nest-fail`.  Change
 your code to be:
 
-```hoon
+```reference
 ~!  bar
 ~!  +6.foo
 (foo bar)
@@ -122,15 +122,15 @@ In other words, "undeclared variable."
 
 The most common subspecies of `find` error is `find.$`, meaning
 the empty name `$` was not found.  This often happens when you
-use a hoon that does not produce a gate/mold, as a gate/mold. For
+use a reference that does not produce a gate/mold, as a gate/mold. For
 instance, `(foo bar)` will give `find.$` if `foo` is not actually a
 function.
 
 ### `mint-vain` and `mint-lost`
 
 These are errors caused by type inference in pattern matching.
-`mint-vain` means this hoon is never executed.  `mint-lost` means
-there's a case in a `?-` ([**wuthep**](@/docs/hoon/hoon-expressions/rune/wut.md#wuthep)) that isn't handled.
+`mint-vain` means this reference is never executed.  `mint-lost` means
+there's a case in a `?-` ([**wuthep**](@/docs/reference/hoon-expressions/rune/wut.md#wuthep)) that isn't handled.
 
 ## Runtime crashes
 
@@ -144,9 +144,9 @@ infinite loop will time out either too slowly or too fast).  The
 stack trace will show what your code was doing when interrupted.
 
 The counterpart of `~!` for runtime crashes is `~|`
-([**sigbar**](@/docs/hoon/hoon-expressions/rune/sig.md#sigbar)):
+([**sigbar**](@/docs/reference/hoon-expressions/rune/sig.md#sigbar)):
 
-```hoon
+```reference
 ~|  foo
 (foo bar)
 ```
@@ -160,19 +160,19 @@ The worst possibility, of course, is that your code runs but does
 the wrong thing.  This is relatively unusual in a typed
 functional language, but it still happens.
 
-`~&` ([**sigpam**](@/docs/hoon/hoon-expressions/rune/sig.md#sigpam)) is Hoon's debugging printf.
+`~&` ([**sigpam**](@/docs/reference/hoon-expressions/rune/sig.md#sigpam)) is Hoon's debugging printf.
 This pretty-prints its argument:
 
-```hoon
+```reference
 ~&  foo
 (foo bar)
 ```
 
 will always print `foo` every time it executes.  A variant is
-`~?` ([**sigwut**](@/docs/hoon/hoon-expressions/rune/sig.md#sigwut)), which prints only if a condition is
+`~?` ([**sigwut**](@/docs/reference/hoon-expressions/rune/sig.md#sigwut)), which prints only if a condition is
 true:
 
-```hoon
+```reference
 ~?  =(37 (lent foo))  foo
 (foo bar)
 ```

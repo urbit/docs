@@ -2,7 +2,7 @@
 title = "Casts ^ ('ket')"
 weight = 11
 template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/ket/"]
+aliases = ["docs/reference/reference-expressions/rune/ket/"]
 +++
 [`^-` ("kethep")](#kethep), [`^+` ("ketlus")](#ketlus), and
 [`^=` ("kettis")](#kettis) let us adjust types without violating type
@@ -15,7 +15,7 @@ it never allows invalid nests, it sometimes rejects valid nests.
 
 ### ^| "ketbar"
 
-`[%ktbr p=hoon]`: convert a gold core to an iron core (contravariant).
+`[%ktbr p=reference]`: convert a gold core to an iron core (contravariant).
 
 ##### Produces
 
@@ -87,11 +87,11 @@ ford: %ride failed to execute:
 
 ### ^. "ketdot"
 
-`[%ktdt p=hoon q=hoon]`: typecast on value produced by passing `q` to `p`.
+`[%ktdt p=reference q=hoon]`: typecast on value produced by passing `q` to `p`.
 
 ##### Expands to
 
-```hoon
+```reference
 ^+(%:(p q) q)
 ```
 
@@ -99,8 +99,8 @@ ford: %ride failed to execute:
 
 Regular: **2-fixed**.
 
-```hoon
-^.  p=hoon  q=hoon
+```reference
+^.  p=reference  q=hoon
 ```
 
 ##### Discussion
@@ -128,11 +128,11 @@ mint-vain
 
 ### ^- "kethep"
 
-`[%kthp p=spec q=hoon]`: typecast by explicit type label.
+`[%kthp p=spec q=reference]`: typecast by explicit type label.
 
 ##### Expands to
 
-```hoon
+```reference
 ^+(^*(p) q)
 ```
 
@@ -172,7 +172,7 @@ infinite loop in the compiler).
 
 ### ^+ "ketlus"
 
-`[%ktls p=hoon q=hoon]`: typecast by inferred type.
+`[%ktls p=reference q=hoon]`: typecast by inferred type.
 
 ##### Produces
 
@@ -191,7 +191,7 @@ Regular: **2-fixed**.
 
 ### ^& "ketpam"
 
-`[%ktpm p=hoon]`: convert a core to a zinc core (covariant).
+`[%ktpm p=reference]`: convert a core to a zinc core (covariant).
 
 ##### Produces
 
@@ -203,7 +203,7 @@ Regular: **1-fixed**.
 
 ##### Discussion
 
-A zinc core has a read-only sample and an opaque context.  See [Advanced types](@/docs/hoon/hoon-expressions/advanced.md).
+A zinc core has a read-only sample and an opaque context.  See [Advanced types](@/docs/reference/hoon-expressions/advanced.md).
 
 ##### Examples
 
@@ -244,7 +244,7 @@ ford: %ride failed to compute type:
 
 ### ^~ "ketsig"
 
-`[%ktsg p=hoon]`: fold constant at compile time.
+`[%ktsg p=reference]`: fold constant at compile time.
 
 ##### Produces
 
@@ -276,7 +276,7 @@ A default value (i.e., 'bunt value') of the type `p`.
 
 Regular: **1-fixed**.
 
-```hoon
+```reference
 ^*  p=spec
 ```
 
@@ -288,7 +288,7 @@ Irregular: `*p`.
 
 Regular:
 
-```hoon
+```reference
 > ^*  @
 0
 
@@ -304,7 +304,7 @@ Regular:
 
 Irregular:
 
-```hoon
+```reference
 > *@
 0
 
@@ -317,7 +317,7 @@ Irregular:
 
 ### ^= "kettis"
 
-`[%ktts p=skin q=hoon]`: Bind name to a value.
+`[%ktts p=skin q=reference]`: Bind name to a value.
 
 ##### Produces
 
@@ -353,7 +353,7 @@ a=1
 
 ### ^? "ketwut"
 
-`[%ktwt p=hoon]`: convert any core to a lead core (bivariant).
+`[%ktwt p=reference]`: convert any core to a lead core (bivariant).
 
 ##### Produces
 

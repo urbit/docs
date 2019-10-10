@@ -84,7 +84,7 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 ~zod
 ```
 
-Recall from [lesson 1.2](@/docs/hoon/hoon-tutorial/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](@/docs/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types.md).
+Recall from [lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -111,7 +111,7 @@ You can also put complex expressions inside square brackets to make a cell.  The
 
 ### Wings
 
-A wing expression is a series of limb expressions separated by `.`.  A deeper explanation can be found on the [wing](@/docs/hoon/hoon-expressions/limb/wing.md) and [limb](@/docs/hoon/hoon-expressions/limb/limb.md) reference pages.
+A wing expression is a series of limb expressions separated by `.`.  A deeper explanation can be found on the [wing](@/docs/tutorials/hoon/limb/wing.md) and [limb](@/docs/tutorials/hoon/limb/limb.md) reference pages.
 
 Let's start with the base case: a single limb.  A limb expression is a trivial wing expression -- there is only one limb in the series.  Some one-limb wings:
 
@@ -124,7 +124,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `add`
 - `mul`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [lesson 1.5](@/docs/hoon/hoon-tutorial/gates.md).)
+As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [lesson 1.5](@/docs/tutorials/hoon/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
@@ -141,7 +141,7 @@ Wing expressions with multiple limbs are complex expressions.  Examples:
 
 Hoon is a statically typed language.  You'll learn more about the type system later in the chapter.  For now, just know that Hoon's type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag).  Each of these symbols can be used as a stand-alone expression of Hoon.  In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
 
-They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in [lesson 2.6](@/docs/hoon/hoon-tutorial/structures-and-complex-types.md).)
+They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in [lesson 2.6](@/docs/tutorials/hoon/structures-and-complex-types.md).)
 
 ### Rune Expressions
 
@@ -151,7 +151,7 @@ Expressions with a rune at the beginning are rune expressions.  Most runes are u
 
 Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create cores, and the runes in the `:` family are all used to create cells.
 
-Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](@/docs/hoon/hoon-expressions/rune/_index.md).  Nevertheless, there are some general principles that hold of all rune expressions.
+Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](@/docs/reference/hoon-expressions/rune/_index.md).  Nevertheless, there are some general principles that hold of all rune expressions.
 
 Runes generally do not need to be closed. In other languages you'll see an abundance of terminators, such as opening and closing parentheses, and this way of doing this is largely absent from Urbit. That's because all runes take a fixed number of children. Children can themselves be runes (with more children), and Hoon programs work by chaining through these series of children until a value -- not another rune -- is arrived at. This makes Hoon code nice and neat to look at.
 
@@ -250,7 +250,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 
 The `( )` gate-calling syntax can be used for gates with any number of arguments.
 
-You can find other irregular forms in the irregular expression [reference document](@/docs/hoon/hoon-expressions/irregular.md).
+You can find other irregular forms in the irregular expression [reference document](@/docs/reference/hoon-expressions/irregular.md).
 
 ### Expressions That Are Only Irregular
 
@@ -285,7 +285,7 @@ b=[16 18]
 [16 18]
 ```
 
-To see other irregular expressions, check the irregular expression [reference document](@/docs/hoon/hoon-expressions/irregular.md).
+To see other irregular expressions, check the irregular expression [reference document](@/docs/reference/hoon-expressions/irregular.md).
 
 
 ## The Standard Library
