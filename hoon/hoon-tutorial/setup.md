@@ -15,7 +15,8 @@ These may not look like numbers, but they are.  Each urbit name is written in a 
 
 ## Installing Urbit
 
-You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](@/develop.md#creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
+You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](@/using/develop.md#creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
+
 
 Once you're finished, you can [boot your very own ship](/install.md). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
 

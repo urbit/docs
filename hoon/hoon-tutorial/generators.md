@@ -27,7 +27,7 @@ a
 
 This generator takes one argument of any noun and produces it without any
 changes. If we put this into a file named `echo.hoon` in the `/gen` directory,
-we can run it from the [Dojo](@/operations.md):
+we can run it from the [Dojo](@/using/operations/_index.md):
 
 ```
 > +echo 42
