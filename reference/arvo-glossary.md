@@ -328,7 +328,7 @@ with this functionality learn what syntax is kosher.
 
 ### desk
 
-A desk is independently revision-controlled branch of urbit filesystem. 
+A desk is independently revision-controlled branch of urbit filesystem.
 
 _See [filesystem](@/operations.md#filesystem) and [Clay](@/docs/arvo/clay.md)._
 
