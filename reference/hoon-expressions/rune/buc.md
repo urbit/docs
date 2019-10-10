@@ -2,7 +2,7 @@
 title = "Structures $ ('buc')"
 weight = 12
 template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/buc/"]
+aliases = ["docs/reference/reference-expressions/rune/buc/"]
 +++
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time
@@ -54,11 +54,11 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ### $_ "buccab"
 
-`[%bscb p=hoon]`: structure that normalizes to an example.
+`[%bscb p=reference]`: structure that normalizes to an example.
 
 ##### Expands to
 
-```hoon
+```reference
 |=(* p)
 ```
 
@@ -159,7 +159,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 
 ##### Expands to
 
-```hoon
+```reference
 $_  ^|
 |=(p $:q)
 ```
@@ -217,7 +217,7 @@ Regular: **2-fixed**.
 
 ### $~ "bucsig"
 
-`[%bssg p=hoon q=spec]`: define a custom type default value
+`[%bssg p=reference q=spec]`: define a custom type default value
 
 ## Product
 
@@ -231,15 +231,15 @@ The product of `p`.
 
 Regular: **2-fixed**.
 
-```hoon
-$~  p=hoon  q=spec
+```reference
+$~  p=reference  q=spec
 ```
 
 `p` defines the default value, and `q` defines everything else about the structure.
 
 ##### Discussion
 
-You should make sure that the product type of `p` nests under `q`.  You can check the default value of some structure (custom type) `r` with `*r`.  (See the [`^*` rune](@/docs/hoon/hoon-expressions/rune/ket.md#kettar).)
+You should make sure that the product type of `p` nests under `q`.  You can check the default value of some structure (custom type) `r` with `*r`.  (See the [`^*` rune](@/docs/reference/hoon-expressions/rune/ket.md#kettar).)
 
 Do not confuse the `$~` rune with the constant type for null, `$~`.  (The latter uses older Hoon syntax that is still accepted.  Preferably it would be `%~`.)
 
@@ -321,7 +321,7 @@ Example:
 
 ##### Expands to
 
-```hoon
+```reference
 |=  *
 ^=(p %-(q +6))
 ```

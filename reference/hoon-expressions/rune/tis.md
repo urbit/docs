@@ -2,7 +2,7 @@
 title = "Change Subject = ('tis')"
 weight = 5
 template = "doc.html"
-aliases = ["/docs/reference/hoon-expressions/rune/tis/"]
+aliases = ["/docs/reference/reference-expressions/rune/tis/"]
 +++
 These runes modify the subject.  (Or more precisely, they
 evaluate at least one of their subexpressions with a modified subject.)
@@ -26,7 +26,7 @@ different situations.  Hence the whole family of `=` runes.
 
 ### => "tisgar"
 
-`[%tsgr p=hoon q=hoon]`: compose two expressions.
+`[%tsgr p=reference q=hoon]`: compose two expressions.
 
 ##### Produces
 
@@ -49,11 +49,11 @@ Regular: **2-fixed**.
 ### =| "tisbar"
 
 
-`[%tsbr p=spec q=hoon]`: combine a default type value with the subject.
+`[%tsbr p=spec q=reference]`: combine a default type value with the subject.
 
 ##### Expands to
 
-```hoon
+```reference
 =+(*p q)
 ```
 
@@ -80,11 +80,11 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 
 ### =: "tiscol"
 
-`[%tscl p=(list (pair wing hoon)) q=hoon]`: change multiple legs in the subject.
+`[%tscl p=(list (pair wing reference)) q=hoon]`: change multiple legs in the subject.
 
 ##### Expands to
 
-```hoon
+```reference
 =>(%_(. p) q)
 ```
 
@@ -109,7 +109,7 @@ This rune is like `=.`, but for modifying the values of multiple legs of the sub
 
 ### =, "tiscom"
 
-`[%tscm p=hoon q=hoon]`: expose namespace
+`[%tscm p=reference q=hoon]`: expose namespace
 
 `p` evaluates to a noun with some namespace.  From within `q` you may access `p`'s names without a wing path (i.e., you can use face `b` rather than `b.p`).  This is especially useful for calling arms from an imported library core or for calling arms from a stdlib core repeatedly.
 
@@ -144,11 +144,11 @@ With a dojo-defined face:
 
 ### =. "tisdot"
 
-`[%tsdt p=wing q=hoon r=hoon]`: change one leg in the subject.
+`[%tsdt p=wing q=reference r=hoon]`: change one leg in the subject.
 
 ##### Expands to
 
-```hoon
+```reference
 =>(%_(. p q) r)
 ```
 
@@ -159,7 +159,7 @@ Regular: **3-fixed**.
 ##### Discussion
 
 Technically the `=.` rune doesn't change the subject.  It creates
-a new subject just like the old one except for a changed value at `p`.  Note that the mutation uses [`%_` ("cencab")](@/docs/hoon/hoon-expressions/rune/cen.md#cencab), so the type at `p` doesn't change.  Trying to change the value type results in a `nest-fail`.
+a new subject just like the old one except for a changed value at `p`.  Note that the mutation uses [`%_` ("cencab")](@/docs/reference/hoon-expressions/rune/cen.md#cencab), so the type at `p` doesn't change.  Trying to change the value type results in a `nest-fail`.
 
 ##### Examples
 
@@ -180,11 +180,11 @@ nest-fail
 
 ### =- "tishep"
 
-`[%tshp p=hoon q=hoon]`: combine a new noun with the subject, inverted.
+`[%tshp p=reference q=hoon]`: combine a new noun with the subject, inverted.
 
 ##### Expands to
 
-```hoon
+```reference
 =>([q .] p)
 ```
 
@@ -209,12 +209,12 @@ Regular: **2-fixed**.
 
 ### =^ "tisket"
 
-`[%tskt p=skin q=wing r=hoon s=hoon]`: pin the head of a pair; change
+`[%tskt p=skin q=wing r=reference s=hoon]`: pin the head of a pair; change
 a leg with the tail.
 
 ##### Expands to
 
-```hoon
+```reference
 =/(p -.r =.(q +.r s))
 ```
 
@@ -249,11 +249,11 @@ random number, so we use `=^`:
 
 ### =< "tisgal"
 
-`[%tsgl p=hoon q=hoon]`: compose two expressions, inverted.
+`[%tsgl p=reference q=hoon]`: compose two expressions, inverted.
 
 ##### Expands to
 
-```hoon
+```reference
 =>(q p)
 ```
 
@@ -287,11 +287,11 @@ Irregular: `foo:baz` is `=<(foo baz)`.
 ### =+ "tislus"
 
 
-`[%tsls p=hoon q=hoon]`: combine a new noun with the subject.
+`[%tsls p=reference q=hoon]`: combine a new noun with the subject.
 
 ##### Expands to
 
-```hoon
+```reference
 =>([p .] q)
 ```
 
@@ -309,11 +309,11 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ### =; "tismic"
 
-`[%tsmc p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
+`[%tsmc p=skin q=reference r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
 
 ##### Expands to
 
-```hoon
+```reference
 =/(p r q)
 ```
 
@@ -338,25 +338,25 @@ Regular: **3-fixed**.
 
 ### =/ "tisfas"
 
-`[%tsfs p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation.
+`[%tsfs p=skin q=reference r=hoon]`: combine a named noun with the subject, possibly with type annotation.
 
 ##### Expands to
 
 **if `p` is a name**, (e.g. `a`):
 
-```hoon
+```reference
 =+(^=(p q) r)
 ```
 
 **if `p` is a name with a type** (e.g., `a=@`):
 
-```hoon
+```reference
 =+(^-(p q) r)
 ```
 
 ### Desugaring
 
-```hoon
+```reference
 ?@  p
   =+  p=q
   r
@@ -388,7 +388,7 @@ Regular: **3-fixed**.
 ### =~ "tissig"
 
 
-`[%tssg p=(list hoon)]`: compose many expressions.
+`[%tssg p=(list reference)]`: compose many expressions.
 
 ##### Produces
 
@@ -423,7 +423,7 @@ Regular: **running**.
 
 ### =* "tistar"
 
-`[%tstr p=term q=hoon r=hoon]`: define an alias.
+`[%tstr p=term q=reference r=hoon]`: define an alias.
 
 ##### Produces
 
@@ -456,11 +456,11 @@ The difference between aliasing and pinning is that pinning changes the subject,
 
 ### =? "tiswut"
 
-`[$tswt p=wing q=hoon r=hoon s=hoon]`: conditionally change one leg in the subject.
+`[$tswt p=wing q=reference r=hoon s=hoon]`: conditionally change one leg in the subject.
 
 ##### Expands to
 
-```hoon
+```reference
 =.  p  ?:(q r p)
 s
 ```
