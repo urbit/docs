@@ -62,7 +62,7 @@ You'll see:
 17
 ```
 
-You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](docs/hoon/hoon-tutorial/nouns/), but first let's write a very basic program.
+You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](docs/hoon/nouns/), but first let's write a very basic program.
 
 ## Generators
 
