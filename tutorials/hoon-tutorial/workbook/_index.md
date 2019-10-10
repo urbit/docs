@@ -1,6 +1,6 @@
 +++
 title = "Hoon Workbook"
-weight = 2
+weight = 150
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliase = ["docs/learn/hoon/workbook/"]

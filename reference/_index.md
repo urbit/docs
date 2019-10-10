@@ -1,6 +1,6 @@
 +++
 title = "Reference"
-weight = 5
+weight = 3
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
@@ -10,6 +10,10 @@ Various reference documents are stored here, particularly for Hoon, but also for
 
 Urbit is known for introducing a great deal of new terminology. The glossary will
 help demystify our jargon.
+
+## [The Azimuth Glossary](@/docs/reference/azimuth-glossary.md)
+
+Azimuth, the Urbit identity layer, has its own vocabulary.
 
 ## [The Cheat Sheet](@/docs/reference/cheat-sheet.md)
 

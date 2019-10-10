@@ -1,8 +1,8 @@
 +++
 title = "Azimuth"
 weight = 4
-template = "doc.html"
-description = "An explanation of the Urbit identity layer."
+template = "doc.html"."
+aliases = ["/docs/learn/azimuth"]
 +++
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for Urbit identities that we call _points_. You need a point to use the Arvo network.
 

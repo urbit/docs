@@ -41,9 +41,14 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [2.1 Atoms, Auras, and Simple Cell Types](atoms-auras-and-simple-cell-types)
 - [2.2 Type Checking and Type Inference](type-checking-and-type-inference)
 - [2.3 Structures and Complex Types](structures-and-complex-types)
+- [2.3.1 Walkthrough: Libraries](libraries)
 - [2.4 Standard Library: Trees, Sets, and Maps](trees-sets-and-maps)
 - [2.5 Type Polymorphism](type-polymorphism)
-- [2.7 Gall](gall)
+- [2.5.1 Walkthrough: Iron Polymorphism](iron-polymorphism)
+- [2.5.2 Walkthrough: Lead Polymorphism](lead-polymorphism)
+- [2.6 Gall](gall)
+- [2.7.1 Walkthrough: Egg Timer](egg-timer)
+
 
 ## Other Resources
 

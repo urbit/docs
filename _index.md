@@ -20,16 +20,12 @@ The Operator's Manual will show you how to perform everyday functions on your Ur
 
 This guide will teach you how set up an Urbit development environment.
 
-## Technical Documentation
+## Documentation
 
 The documentation proper is contained on the sidebar of this page. It's meant for those interested in development on Urbit, and it's sorted by section:
 
-- [Arvo](../arvo) is the Urbit operating system. If you're interested in finding out about the architecture of the system, check out this section.
+- [Concepts](concepts) gives an in-depth, high-level explanations of Urbit concepts.
 
-- [Azimuth](../azimuth) is the Urbit identity layer. To use Urbit, you need an identity that is secured by Azimuth.
+- [Tutorials](tutorials) contains tutorials all the details about the system, enough where you can develop on Urbit. There are sections on Arvo, the Urbit OS; Hoon, Urbit's functional programming language; Nock, the the low-level language Hoon compiles to; and Vere, the Nock interpreter that acts as the layer between Urbit and whatever system (MacOS, Linux, BSD) is running it.
 
-- [Hoon](../hoon) is the functional programming language used to build Urbit. This section contains tutorials that will help you build proficiency in the language.
-
-- [Nock](../nock) is the low-level language Hoon compiles to. If you want to understand that absolute fundamentals of Urbit, this section will be of help.
-
-- [Vere](../vere) is the Nock interpreter that acts as the layer between Urbit and whatever system (MacOS, Linux, BSD) is running it.
+- [Reference](reference) contains technical reference documentation for Hoon and other components of the system. Keep reading if you need to look up a Hoon expression or a standard-library function.

@@ -574,5 +574,3 @@ Once more let's clear up the dojo subject:
 ```
 =lead-gate
 ```
-
-

@@ -2,7 +2,6 @@
 title = "Technical overview"
 weight = 1
 template = "doc.html"
-description = "A more in-depth description of the entire Urbit stack."
 +++
 Urbit is a clean-slate software stack designed to implement an encrypted P2P
 network of general-purpose personal servers.  Each server on this network is a
