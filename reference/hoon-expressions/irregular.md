@@ -241,7 +241,7 @@ See [%sand](@/docs/reference/hoon-expressions/rune/constants.md#warm) for other 
 
 ### Wings
 
-[docs](content/docs/hoon/hoon-expressions/limb/wing.md)
+[docs](content/docs/reference/hoon-expressions/limb/wing.md)
 `[%wing p=(list limb)]`; a limb search path.
 `a.b` finds limb `a` within limb `b` ("var" `a` within "var" `b`).
 
