@@ -43,7 +43,7 @@ dry.
   path, which works as if we expanded the callee with the caller's
   context.
 
-_See [advanced types](/docs/hoon/hoon-expressions/advanced/)_.
+_See [advanced types](/docs/reference/hoon-expressions/advanced/)_.
 
 
 
@@ -718,7 +718,7 @@ Here's some common structure terminology:
 
 #### icon: The type of the mold's range
 
-_See [mold hoons](/docs/hoon/hoon-expressions/rune/buc/)._
+_See [mold hoons](/docs/reference/hoon-expressions/rune/buc/)._
 
 ### rune
 
