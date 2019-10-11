@@ -2,7 +2,7 @@
 title = "Conditionals ? ('wut')"
 weight = 6
 template = "doc.html"
-aliases = ["docs/reference/hoon-expressions/rune/wut/"]
+aliases = ["docs/reference/reference-expressions/rune/wut/"]
 +++
 Hoon has the usual program control branches.  It also has the usual logical
 operators: AND `?&`, OR `?|`, and NOT `?!`.  It also has a `?=` rune that tests
@@ -32,11 +32,11 @@ side is taken), it fails with an error.
 
 ### ?> "wutgar"
 
-`[%wtgr p=hoon q=hoon]`: positive assertion.
+`[%wtgr p=reference q=hoon]`: positive assertion.
 
 ##### Expands to
 
-```hoon
+```reference
 ?.(p !! q)
 ```
 
@@ -70,19 +70,19 @@ nest-fail
 
 ### ?| "wutbar"
 
-`[%wtbr p=(list hoon)]`: logical OR.
+`[%wtbr p=(list reference)]`: logical OR.
 
 ##### Expands to
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
-```hoon
+```reference
 ?:(a & ?:(b & ?:(c & ?:(... ?:(z & |)))))
 ```
 
 ##### Desugaring
 
-```hoon
+```reference
 |-
 ?~  p
   |
@@ -109,7 +109,7 @@ Irregular: `|(foo bar baz)` is `?|(foo bar baz)`.
 
 ### ?: "wutcol" {#wutcol}
 
-`[%wtcl p=hoon q=hoon r=hoon]`: branch on a boolean test.
+`[%wtcl p=reference q=hoon r=hoon]`: branch on a boolean test.
 
 ##### Produces
 
@@ -157,11 +157,11 @@ Note also that all other branching expressions reduce to `?:`.
 
 ### ?. "wutdot"
 
-`[%wtdt p=hoon q=hoon r=hoon]`: branch on a boolean test, inverted.
+`[%wtdt p=reference q=hoon r=hoon]`: branch on a boolean test, inverted.
 
 ##### Expands to
 
-```hoon
+```reference
 ?:(p r q)
 ```
 
@@ -200,7 +200,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `q`:
 
-```hoon
+```reference
 ?:  ?=(p.a p)  q.a
 ?:  ?=(p.b p)  q.b
 ?:  ?=(p.c p)  q.c
@@ -210,7 +210,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 
 ##### Desugaring
 
-```hoon
+```reference
 |-
 ?.  q
   ~|(%mint-lost !!)
@@ -256,12 +256,12 @@ will throw `mint-vain`.
 
 ### ?^ "wutket"
 
-`[%wtkt p=wing q=hoon r=hoon]`: branch on whether a wing
+`[%wtkt p=wing q=reference r=hoon]`: branch on whether a wing
 of the subject is a cell.
 
 ##### Expands to
 
-```hoon
+```reference
 ?:(?=(^ p) q r)
 ```
 
@@ -289,11 +289,11 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ### ?< "wutgal"
 
-`[%wtgl p=hoon q=hoon]`: negative assertion.
+`[%wtgl p=reference q=hoon]`: negative assertion.
 
 ##### Expands to
 
-```hoon
+```reference
 ?:(p !! q)
 ```
 
@@ -327,14 +327,14 @@ nest-fail
 
 ### ?+ "wutlus"
 
-`[%wtls p=wing q=hoon r=(list (pair spec hoon))]`: switch against
+`[%wtls p=wing q=reference r=(list (pair spec hoon))]`: switch against
 a union, with a default.
 
 ##### Expands to
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `r`:
 
-```hoon
+```reference
 ?:  ?=(p.a p)  q.a
 ?:  ?=(p.b p)  q.b
 ?:  ?=(p.c p)  q.c
@@ -344,7 +344,7 @@ q
 
 ##### Desugaring
 
-```hoon
+```reference
 |-
 ?.  r
   q
@@ -384,19 +384,19 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 
 ### ?& "wutpam"
 
-`[%wtpm p=(list hoon)]`: logical AND.
+`[%wtpm p=(list reference)]`: logical AND.
 
 ##### Expands to
 
 **Pseudocode**: `a`, `b`, `c`, ... as elements of `p`:
 
-```hoon
+```reference
 ?.(a | ?.(b | ?.(c | ?.(... ?.(z | &)))))
 ```
 
 ##### Desugaring
 
-```hoon
+```reference
 |-
 ?~  p
   &
@@ -423,11 +423,11 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 
 ### ?~ "wutsig"
 
-`[%wtsg p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is null.
+`[%wtsg p=wing q=reference r=hoon]`: branch on whether a wing of the subject is null.
 
 ##### Expands to
 
-```hoon
+```reference
 ?:(?=($~ p) q r)
 ```
 
@@ -486,11 +486,11 @@ A common error is `find.$`, meaning `p` is not a type.
 
 ### ?@ "wutvat"
 
-`[%wtpt p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is an atom.
+`[%wtpt p=wing q=reference r=hoon]`: branch on whether a wing of the subject is an atom.
 
 ##### Expands to
 
-```hoon
+```reference
 ?:(?=(@ p) q r)
 ```
 
@@ -518,11 +518,11 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 
 ### ?! "wutzap"
 
-`[%wtzp p=hoon]`: logical NOT.
+`[%wtzp p=reference]`: logical NOT.
 
 ##### Expands to
 
-```hoon
+```reference
 .=(| p)
 ```
 

@@ -104,7 +104,7 @@ Below are Arvo modules, which are called "vanes".
   Clay is located at `/home/sys/vane/clay.hoon` within your urbit.
 
   Basic information on using Clay can be found
-  [`here`](@/operations.md). An in-depth explanation
+  [`here`](@/using/operations/using-your-ship.md). An in-depth explanation
   of the architecture can be found
   [`here`](@/docs/tutorials/arvo/clay.md).
 
@@ -403,7 +403,7 @@ information pipeline.
 
 Generators are run from the `/gen` directory of your current desk. For example,
 to run a generator named `whatever.hoon`, you would type `> +whatever` in the
-[Dojo](@/operations.md#using-the-shell).
+[Dojo](@/using/operations/using-your-ship.md#using-the-shell).
 
 ### glyph
 
@@ -487,7 +487,7 @@ atoms (in this case each with an aura of `%ud`, i.e. unsigned
 decimal).
 
 To parse Hoon source into a hoon AST, use `ream` on a `cord`
-containing Hoon source. Try the following in [Dojo](@/operations.md#using-the-shell):
+containing Hoon source. Try the following in [Dojo](@/using/operations/using-your-ship.md#using-the-shell):
 
 ```
 (ream ':+(12 7 %a)')
@@ -794,7 +794,7 @@ The head of `+n` is `+2n`, the tail is `+(2n+1)`.
 _Talk_ is Urbit's built-in chat app. It’s one example of an app that can be
 built on top of Hall, the Urbit back-end messaging system.
 
-_See [Messaging](@/operations.md#messaging). for more information._
+_See [Messaging](@/using/operations/using-your-ship.md#messaging). for more information._
 
 ### type
 
