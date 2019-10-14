@@ -56,7 +56,7 @@ Want to know how to style your code? Check out the [style guide](../style).
 
 Consult the [standard library documentation](@/docs/reference/library/_index.md) or [rune reference](@/docs/reference/hoon-expressions/_index.md) to look up any unknown rune or standard library function you don't understand.
 
-As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](@/docs/tutorial/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](@/docs/tutorials/hoon/generators.md) documentation. Learn about [Udon and Sail](@/docs/tutorials/sail-and-udon.md), Urbit's stripped-down version of Markdown, and a subset of Hoon used for generating XML nodes respectively.
+As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](@/docs/tutorials/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](@/docs/tutorials/hoon/generators.md) documentation. Learn about [Udon and Sail](@/docs/tutorials/sail-and-udon.md), Urbit's stripped-down version of Markdown, and a subset of Hoon used for generating XML nodes respectively.
 
 
 > Last major revision of this section: October 2019

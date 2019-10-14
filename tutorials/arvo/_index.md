@@ -5,7 +5,7 @@ sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/learn/arvo/"]
 +++
-Arvo is Urbit's functional operating system, written in [Hoon](@/docs/tutorial/hoon/_index.md). It's composed of modules called _vanes_:
+Arvo is Urbit's functional operating system, written in [Hoon](@/docs/tutorials/hoon/_index.md). It's composed of modules called _vanes_:
 
 ## [Ames](@/docs/tutorials/arvo/ames.md)
 
@@ -34,10 +34,6 @@ Ford is our build system. It handles resources and publishing.
 ## [Gall](@/docs/tutorials/arvo/gall.md)
 
 Gall is the vane for controlling userspace apps.
-
-### [Hall](@/docs/tutorials/arvo/hall.md)
-
-Hall isn't a vane, but an important Gall app that functions as the Urbit messaging protocol.
 
 ## Principles
 

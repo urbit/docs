@@ -2,8 +2,8 @@
 title = "Implementations"
 weight = 4
 template = "doc.html"
-aliases = ["docs/learn/nock/implementations"]
 +++
+
 We use a C implementation for our Nock interpreter. But building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations, shown below our official C implementation.  (Note: the community implementations were written for a slightly older version of Nock, Nock 5K.  The current version is Nock 4K.):
 
 ## Table of Contents
@@ -34,7 +34,7 @@ We use a C implementation for our Nock interpreter. But building a Nock interpre
 
 The actual production Nock interpreter. Note gotos for tail-call elimination,
 and manual reference counting.  More about the C environment can be found
-in the [runtime system documentation](@/docs/learn/vere/runtime.md).
+in the [runtime system documentation](@/docs/tutorials/vere/runtime.md).
 ```
 /* _n_nock_on(): produce .*(bus fol).  Do not virtualize.
 */

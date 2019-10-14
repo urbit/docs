@@ -27,7 +27,3 @@ semantics and syntax.
 ## [Standard Library](@/docs/reference/library/_index.md)
 
 This section documents the gates and mold-builders of the Hoon standard library.
-
-## [Troubleshooting](@/docs/reference/troubleshooting.md)
-
-When your Hoon produces an error, check what it means here.
