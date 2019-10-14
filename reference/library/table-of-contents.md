@@ -2,7 +2,7 @@
 title = "Table of Contents"
 weight = 0
 sort_by = "weight"
-template = "sections/docs/chapters.html"
+template = "doc.html"
 +++
 
 Documentation for the standard library.
