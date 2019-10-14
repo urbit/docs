@@ -2,7 +2,6 @@
 title = "Arms + ('lus')"
 weight = 8
 template = "doc.html"
-aliases = ["/docs/reference/hoon-expressions/rune/lus/"]
 +++
 
 A core is a cell of `[battery payload]`.  The battery is made of one or more arms, each of which is a computation on its parent core.
