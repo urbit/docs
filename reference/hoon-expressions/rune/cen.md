@@ -2,7 +2,7 @@
 title = "Calls % ('cen')"
 weight = 10
 template = "doc.html"
-aliases = ["docs/reference/reference-expressions/rune/cen/"]
+aliases = ["docs/reference/hoon-expressions/rune/cen/"]
 +++
 The `%` family of runes is used for making 'function calls' in Hoon.  To be more precise, these runes evaluate the `$` arm in cores, usually after modifying the sample.  (The default sample is replaced with the input values given in the call.)
 
@@ -18,25 +18,25 @@ Resolve a wing with changes, preserving type.
 
 Regular, tall:
 
-```reference
+```hoon
 %_  a=wing
-  b=wing  c=reference
-  d=wing  e=reference
+  b=wing  c=hoon
+  d=wing  e=hoon
       ...
-  f=wing  g=reference
+  f=wing  g=hoon
 ==
 ```
 
 Regular, flat:
 
-```reference
-%_(a=wing b=wing c=reference, d=wing e=hoon, ...)
+```hoon
+%_(a=wing b=wing c=hoon, d=wing e=hoon, ...)
 ```
 
 AST:
 
 ```
-[%cncb p=wing q=(list (pair wing reference))]
+[%cncb p=wing q=(list (pair wing hoon))]
 ```
 
 ##### Semantics
@@ -45,7 +45,7 @@ A `%_` expression resolves to the value of the subject at wing `a`, but modified
 
 ##### Expands to
 
-```reference
+```hoon
 ^+(a %=(a b c, d e, ...))
 ```
 
@@ -81,19 +81,19 @@ Call a gate with many arguments.
 
 Regular:
 
-```reference
-%:  a=reference
-  b=reference
-  c=reference
+```hoon
+%:  a=hoon
+  b=hoon
+  c=hoon
    ...
-  d=reference
+  d=hoon
 ==
 ```
 
 AST:
 
 ```
-[%cncl p=reference q=(list hoon)]
+[%cncl p=hoon q=(list hoon)]
 ```
 
 ##### Semantics
@@ -106,7 +106,7 @@ When `%:` is used in tall-form syntax, the series of expressions after `p` must 
 
 ##### Examples
 
-```reference
+```hoon
 > %:  add  22  33  ==
 55
 
@@ -135,14 +135,14 @@ Call a gate (function), inverted.
 
 Regular:
 
-```reference
-%.  a=reference  b=hoon
+```hoon
+%.  a=hoon  b=hoon
 ```
 
 AST:
 
 ```
-[%cndt p=reference q=hoon]
+[%cndt p=hoon q=hoon]
 ```
 
 ##### Semantics
@@ -151,8 +151,8 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 
 ##### Expands to
 
-```reference
-%-(b=reference a=hoon)
+```hoon
+%-(b=hoon a=hoon)
 ```
 
 ##### Discussion
@@ -176,20 +176,20 @@ Call a gate (function).
 
 Regular:
 
-```reference
-%-  a=reference  b=hoon
+```hoon
+%-  a=hoon  b=hoon
 ```
 
 Irregular:
 
-```reference
-(a=reference b=hoon)
+```hoon
+(a=hoon b=hoon)
 ```
 
 AST:
 
 ```
-[%cnhp p=reference q=hoon]
+[%cnhp p=hoon q=hoon]
 ```
 
 ##### Semantics
@@ -198,7 +198,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 
 ##### Expands to
 
-```reference
+```hoon
 %~($ a b)
 ```
 
@@ -225,21 +225,21 @@ Call gate with triple sample.
 
 Regular:
 
-```reference
-%^  a=reference  b=hoon  c=hoon  d=hoon
+```hoon
+%^  a=hoon  b=hoon  c=hoon  d=hoon
 ```
 
 AST:
 
 ```
-[%cnkt p=reference q=hoon r=hoon s=hoon]
+[%cnkt p=hoon q=hoon r=hoon s=hoon]
 ```
 
 
 ##### Expands to
 
-```reference
-%-(a=reference [b=hoon c=hoon d=hoon])
+```hoon
+%-(a=hoon [b=hoon c=hoon d=hoon])
 ```
 
 ##### Examples
@@ -259,14 +259,14 @@ Call gate with a cell sample.
 
 Regular:
 
-```reference
-%+  a=reference  b=hoon  c=hoon
+```hoon
+%+  a=hoon  b=hoon  c=hoon
 ```
 
 AST:
 
 ```
-[%cnls p=reference q=hoon r=hoon]
+[%cnls p=hoon q=hoon r=hoon]
 ```
 
 ##### Semantics
@@ -275,8 +275,8 @@ A `%+` expression is for calling a gate with a cell sample.  `a` is the gate to 
 
 ##### Expands to
 
-```reference
-%-(a=reference [b=hoon c=hoon])
+```hoon
+%-(a=hoon [b=hoon c=hoon])
 ```
 
 ##### Examples
@@ -296,12 +296,12 @@ Evaluate an arm in a door.
 
 Regular:
 
-```reference
-%~  a=wing  b=reference
-  c=reference
-  d=reference
+```hoon
+%~  a=wing  b=hoon
+  c=hoon
+  d=hoon
    ...
-  e=reference
+  e=hoon
 ==
 ```
 
@@ -313,7 +313,7 @@ Irregular:
 AST:
 
 ```
-[%cnsg p=wing q=reference r=(list hoon)]
+[%cnsg p=wing q=hoon r=(list hoon)]
 ```
 
 ##### Semantics
@@ -328,7 +328,7 @@ See also [`|_`](@/docs/reference/hoon-expressions/rune/bar.md#barcab).
 
 ##### Examples
 
-```reference
+```hoon
 > =mycore |_  a=@
           ++  plus-two  (add 2 a)
           ++  double  (mul 2 a)
@@ -348,19 +348,19 @@ Evaluate an expression, then resolve a wing with changes.
 
 Regular:
 
-```reference
-%*  a=wing  b=reference
-  c=wing  d=reference
-  e=wing  f=reference
+```hoon
+%*  a=wing  b=hoon
+  c=wing  d=hoon
+  e=wing  f=hoon
        ...
-  g=wing  h=reference
+  g=wing  h=hoon
 ==
 ```
 
 AST:
 
 ```
-[%cntr p=wing q=reference r=(list (pair wing hoon))]
+[%cntr p=wing q=hoon r=(list (pair wing hoon))]
 ```
 
 ##### Semantics
@@ -369,13 +369,13 @@ A `%*` expression evaluates some arbitrary Hoon expression, `b`, and then resolv
 
 ##### Expands to
 
-```reference
-=+  b=reference
+```hoon
+=+  b=hoon
 %=  a=wing
-  c=wing  d=reference
-  e=wing  f=reference
+  c=wing  d=hoon
+  e=wing  f=hoon
        ...
-  g=wing  h=reference
+  g=wing  h=hoon
 ==
 ```
 
@@ -411,12 +411,12 @@ Resolve a wing with changes.
 
 Regular:
 
-```reference
+```hoon
 %=  a=wing
-  b=wing  c=reference
-  d=wing  e=reference
+  b=wing  c=hoon
+  d=wing  e=hoon
        ...
-  f=wing  g=reference
+  f=wing  g=hoon
 ==
 ```
 
@@ -427,7 +427,7 @@ Irregular:
 AST:
 
 ```
-[%cnts p=wing q=(list (pair wing reference))]
+[%cnts p=wing q=(list (pair wing hoon))]
 ```
 
 ##### Semantics
@@ -452,7 +452,7 @@ a wing, we would just be mutating `+6` within the core that defines the
 
 Here's that again in tall form:
 
-```reference
+```hoon
 =+  foo
 =>  %=  +2
       +6  baz

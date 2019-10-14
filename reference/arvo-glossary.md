@@ -330,7 +330,8 @@ with this functionality learn what syntax is kosher.
 
 A desk is independently revision-controlled branch of urbit filesystem.
 
-_See [filesystem](@/operations.md#filesystem) and [Clay](@/docs/tutorials/clay.md)._
+_See [filesystem](@/using/operations/using-your-ship.md) and [Clay](@/docs/tutorials/arvo/clay.md)._
+
 
 ### duct
 
@@ -433,8 +434,6 @@ _Hall_ is the Urbit communication back-end. It’s a messaging bus that can work
 with clients of all sorts. [`:talk`](#talk), the built-in chat client, is one
 such app that uses Hall.
 
-_More information on Hall can be found [here](@/docs/tutorials/arvo/hall.md)._
-
 #### circle
 
   A circle is the “audience” of your messages -- who can receive them. It can be
@@ -520,7 +519,7 @@ so inefficiently. Nock, for example, can’t decrement (reduce a number by one)
 except by starting building a loop that starts from zero and increments to a
 number just below.
 
-_See [API overview](@/docs/reference/vere/api.md)._
+_See [API overview](@/docs/tutorials/vere/api.md)._
 
 ### lark
 
@@ -610,7 +609,7 @@ Urbit's low-level programming language. Nock is functional and typeless.
 
   a noun - the result of evaluating a formula against a subject.
 
-_See the [Nock definition](@/docs/reference/nock/definition.md)._
+_See the [Nock definition](@/docs/tutorials/nock/definition.md)._
 
 ### mark
 

@@ -2,7 +2,7 @@
 title = "Cores | ('bar')"
 weight = 7
 template = "doc.html"
-aliases = ["docs/reference/reference-expressions/rune/bar/"]
+aliases = ["docs/reference/hoon-expressions/rune/bar/"]
 +++
 Core expressions produce cores. A core is a cell of `[battery payload]`.
 The `battery` is code, a battery of Nock formulas.  The `payload` is the data
@@ -22,12 +22,12 @@ Produce a **door** (a core with a sample).
 
 Regular:
 
-```reference
+```hoon
 |_  a=spec
-++  b=term  c=reference
-++  d=term  e=reference
+++  b=term  c=hoon
+++  d=term  e=hoon
        ...
-++  f=term  g=reference
+++  f=term  g=hoon
 --
 ```
 
@@ -49,13 +49,13 @@ The context of the door is the subject of the `|_` expression.
 
 ##### Expands to
 
-```reference
+```hoon
 =|  a=spec
 |%
-++  b=term  c=reference
-++  d=term  e=reference
+++  b=term  c=hoon
+++  d=term  e=hoon
        ...
-++  f=term  g=reference
+++  f=term  g=hoon
 --
 ```
 
@@ -87,7 +87,7 @@ A trivial door:
 
 A more interesting door, from the kernel library:
 
-```reference
+```hoon
 ++  ne
   |_  tig=@
   ++  d  (add tig '0')
@@ -112,12 +112,12 @@ Produce a core, `[battery payload]`.
 
 Regular:
 
-```reference
+```hoon
 |%
-++  a=term  b=reference
-++  c=term  d=reference
+++  a=term  b=hoon
+++  c=term  d=hoon
        ...
-++  e=term  f=reference
+++  e=term  f=hoon
 --
 ```
 
@@ -172,14 +172,14 @@ Produce a gate with a custom sample.
 
 Regular:
 
-```reference
-|:  a=reference  b=hoon
+```hoon
+|:  a=hoon  b=hoon
 ```
 
 AST:
 
 ```
-[%brcl p=reference q=hoon]
+[%brcl p=hoon q=hoon]
 ```
 
 ##### Semantics
@@ -188,7 +188,7 @@ AST:
 
 ##### Expands to
 
-```reference
+```hoon
 =>  ^~  a
   |.  b
 ```
@@ -220,14 +220,14 @@ Produce a trap (a core with one arm `$`).
 
 Regular:
 
-```reference
-|.  a=reference
+```hoon
+|.  a=hoon
 ```
 
 AST:
 
 ```
-[%brdt p=reference]
+[%brdt p=hoon]
 ```
 
 Semantics:
@@ -238,8 +238,8 @@ The payload of the core is the subject of the `|.` expression.
 
 ##### Expands to
 
-```reference
-|%  ++  $  a=reference
+```hoon
+|%  ++  $  a=hoon
 --
 ```
 
@@ -288,14 +288,14 @@ Produce a trap (a core with one arm `$`) and evaluate it.
 
 Regular:
 
-```reference
-|-  a=reference
+```hoon
+|-  a=hoon
 ```
 
 AST:
 
 ```
-[%brhp p=reference]
+[%brhp p=hoon]
 ```
 
 ##### Semantics
@@ -304,8 +304,8 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 
 ##### Expands to
 
-```reference
-=<($ |.(a=reference))
+```hoon
+=<($ |.(a=hoon))
 ```
 
 ##### Discussion
@@ -344,12 +344,12 @@ Produce a core whose battery includes a `$` arm and compute the latter.
 
 Regular:
 
-```reference
-|^  a=reference
-++  b=term  c=reference
-++  d=term  e=reference
+```hoon
+|^  a=hoon
+++  b=term  c=hoon
+++  d=term  e=hoon
        ...
-++  f=term  g=reference
+++  f=term  g=hoon
 --
 ```
 
@@ -358,7 +358,7 @@ Note: The `++` rune may be replaced with any other rune in the `+` family.
 AST:
 
 ```
-[%brkt p=reference q=(map term tome)]
+[%brkt p=hoon q=(map term tome)]
 ```
 
 ##### Semantics
@@ -367,13 +367,13 @@ A `|^` expression produces a multi-arm core whose battery includes a `$` arm, wh
 
 ##### Expands to
 
-```reference
+```hoon
 =>  |%
-    ++  $  a=reference
-    ++  b=term  c=reference
-    ++  d=term  e=reference
+    ++  $  a=hoon
+    ++  b=term  c=hoon
+    ++  d=term  e=hoon
            ...
-    ++  f=term  g=reference
+    ++  f=term  g=hoon
     --
 $
 ```
@@ -403,14 +403,14 @@ Produce an iron gate.
 
 Regular:
 
-```reference
-|~  a=spec  b=reference
+```hoon
+|~  a=spec  b=hoon
 ```
 
 AST:
 
 ```
-[%brsg p=spec q=reference]
+[%brsg p=spec q=hoon]
 ```
 
 ##### Semantics
@@ -419,7 +419,7 @@ A `|~` expression produces an iron gate.  `a` defines the sample, and `b` define
 
 ##### Expands to
 
-```reference
+```hoon
 ^|  |=(a b)
 ```
 
@@ -442,14 +442,14 @@ Produce a wet gate (one-armed core with sample).
 
 Regular:
 
-```reference
-|*  a=spec  b=reference
+```hoon
+|*  a=spec  b=hoon
 ```
 
 AST:
 
 ```
-[%brtr p=spec q=reference]
+[%brtr p=spec q=hoon]
 ```
 
 ##### Semantics
@@ -458,7 +458,7 @@ A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b` i
 
 ##### Expands to
 
-```reference
+```hoon
 =|  a
 |@
 ++  $
@@ -508,14 +508,14 @@ Produce a gate (a one-armed core with a sample).
 
 Regular:
 
-```reference
-|=  a=spec  b=reference
+```hoon
+|=  a=spec  b=hoon
 ```
 
 AST:
 
 ```
-[%brts p=spec q=reference]
+[%brts p=spec q=hoon]
 ```
 
 ##### Definition
@@ -526,9 +526,9 @@ The product of a `|=` expression is a dry **gate**, i.e., a Hoon function.
 
 ##### Expands to
 
-```reference
+```hoon
 =|  a=spec
-|%  ++  $  b=reference
+|%  ++  $  b=hoon
 --
 ```
 
@@ -568,12 +568,12 @@ Produce a 'wet' core `[battery payload]`.
 
 Regular:
 
-```reference
+```hoon
 |@
-++  a=term  b=reference
-++  c=term  d=reference
+++  a=term  b=hoon
+++  c=term  d=hoon
        ...
-++  e=term  f=reference
+++  e=term  f=hoon
 --
 ```
 
@@ -601,14 +601,14 @@ Produce a lead trap.
 
 Regular:
 
-```reference
-|?  a=reference
+```hoon
+|?  a=hoon
 ```
 
 AST:
 
 ```
-[%brwt p=reference]
+[%brwt p=hoon]
 ```
 
 ##### Semantics
@@ -617,7 +617,7 @@ A `|?` expression produces a lead trap (i.e., a lead core with one arm named `$`
 
 ##### Expands to
 
-```reference
+```hoon
 ^?  |.  a
 ```
 

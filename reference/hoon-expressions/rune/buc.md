@@ -2,7 +2,7 @@
 title = "Structures $ ('buc')"
 weight = 12
 template = "doc.html"
-aliases = ["docs/reference/reference-expressions/rune/buc/"]
+aliases = ["docs/reference/hoon-expressions/rune/buc/"]
 +++
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time
@@ -54,11 +54,11 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ### $_ "buccab"
 
-`[%bscb p=reference]`: structure that normalizes to an example.
+`[%bscb p=hoon]`: structure that normalizes to an example.
 
 ##### Expands to
 
-```reference
+```hoon
 |=(* p)
 ```
 
@@ -159,7 +159,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 
 ##### Expands to
 
-```reference
+```hoon
 $_  ^|
 |=(p $:q)
 ```
@@ -217,7 +217,7 @@ Regular: **2-fixed**.
 
 ### $~ "bucsig"
 
-`[%bssg p=reference q=spec]`: define a custom type default value
+`[%bssg p=hoon q=spec]`: define a custom type default value
 
 ## Product
 
@@ -231,8 +231,8 @@ The product of `p`.
 
 Regular: **2-fixed**.
 
-```reference
-$~  p=reference  q=spec
+```hoon
+$~  p=hoon  q=spec
 ```
 
 `p` defines the default value, and `q` defines everything else about the structure.
@@ -321,7 +321,7 @@ Example:
 
 ##### Expands to
 
-```reference
+```hoon
 |=  *
 ^=(p %-(q +6))
 ```

@@ -4,6 +4,7 @@ weight = 8
 template = "doc.html"
 aliases = ["/docs/reference/hoon-expressions/rune/lus/"]
 +++
+
 A core is a cell of `[battery payload]`.  The battery is made of one or more arms, each of which is a computation on its parent core.
 
 Arm runes are used to define arms in a core, and thus can only be used from within an expression that produces a multi-arm core.  That means arm runes cannot be used to mark the beginning of a first-class expression -- there is no such thing in Hoon as an arm without a core.
