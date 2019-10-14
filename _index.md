@@ -8,15 +8,15 @@ Welcome to the documentation for the Urbit project, including the Azimuth identi
 
 The following three guides will help get you started on Urbit.
 
-### [Install Urbit](/install)
+### [Install Urbit](/using/install.md)
 
 Urbit isn't ready for serious use yet, but it's available to try out. If you have an Urbit identity, you can follow this step-by-step guide to get your point's _keyfile_, which you need to boot your ship. Then you can install Urbit and join the community.
 
-### [Operator's Manual](/operations)
+### [Operator's Manual](/using/operations/_index.md)
 
 The Operator's Manual will show you how to perform everyday functions on your Urbit.
 
-### [Developer's Guide](/develop)
+### [Developer's Guide](/using/develop.md)
 
 This guide will teach you how set up an Urbit development environment.
 
