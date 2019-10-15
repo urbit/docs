@@ -8,7 +8,7 @@ Gall apps can be difficult to understand and simple ones often don't need the fu
 
 The following code is from `app/example-tapp-fetch.hoon` Much of this file should already be pretty readable, particularly given the comments in it so we'll focus here on specific parts of the file rather than a full walkthrough. This app is intended to get the top comment of the top ten stories on Hacker News.
 
-```
+```hoon
 ::  Little app to demonstrate the structure of programs written with the
 ::  transaction monad.
 ::
@@ -160,7 +160,7 @@ The following code is from `app/example-tapp-fetch.hoon` Much of this file shoul
 
 As indicated by the comments, `handle-poke` is the main arm of our Gall app. This is equivalent to the `poke` arms in a standard Gall app, but will not differentiate by mark. Let's look at the first part of this gate.
 
-```
+```hoon
 ++  handle-poke
   |=  =in-poke-data
   =/  m  tapp-async
@@ -196,7 +196,7 @@ The most important part to see here is the `;<` rune. If you're familiar with mo
 
 In a number of cases `D` here is going to be another `;<` rune. This is how you can chain these together to perform a lot of asynchronous actions that need to all complete.
 
-```
+```hoon
   ::
   ::  Otherwise, fetch the top HN stories
   ::
