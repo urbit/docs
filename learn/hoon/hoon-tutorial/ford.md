@@ -44,54 +44,54 @@ The main features of Ford that distinguish it from most build systems that we wi
 
  - Ford is strongly and dynamically typed
  - Ford is monadic
- - Ford is purely functional
+ - Ford is referentially transparent
  - Ford can do live builds
  - Ford keeps a cache of previous builds
 
  To some extent these features overlap depending on how you split hairs. If you are already familiar with build systems, know that the capabilities of Ford are similar to those of [Shake](https://shakebuild.com/) and [Nix](https://nixos.org/nix/), but still differs from them in some key aspects.
 
- We will also give an overview of Ford's testing suite, as that is the main thrust of the Ford walkthrough following this lesson.
+ We will also give an overview of how to use Ford for unit testing, as that is what we will be doing in the following lesosn.
 
 
 ### Strongly and Dynamically Typed
 
-Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions that guarantee working software.
+Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions. This guarantees to some level that the built software will work, though of course you can never completely guarantee that software will work as expected due to things like bugs.
 
-Recall that a mark is a type such as `%foo` that acts as metadata telling Arvo what kind of file it is looking it. In the context of Ford, they may be thought of as being analogous to file types in other operating systems. When Arvo sees marked data, it expects that data to take a certain shape.
+Recall that a mark such as `%foo` acts as metadata which tells Arvo vanes what kind of file it is working with. In the context of Ford, they may be thought of as being analogous to file types in other operating systems. When an Arvo vane sees marked data, it expects that data to take a certain shape, and verifying that that data is in the expected shape is a task performed by Ford.
 
-Much of what Ford does consists of converting marked data between different marks. (Is this slamming/slapping?)
+In fact, it is important to emphasize that the Arvo kernel does not actually know what marks are. Ford is the vane that knows what marks are, and whenever the kernel or another vane needs to know what a mark means, it asks Ford.
 
-Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in that all sub-builds are also typed.
+Ford is also responsible for converting marked data to another mark. This is a task that is frequently performed during a build, but also is something that other vanes may request Ford to do.
 
-### Monadic dependencies
+Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in that all sub-builds are also typed (this isn't exactly right, should explain type safety in terms of vases here)
 
-I still don't quite understand what is meant by this and how it is interrelated to being purely functional, having live builds, dynamic dependencies, etc. I think these might all be consequences of being monadic? But do any of these properties imply monadicity?
+### Monadic
 
-### Purely functional
+That Ford is a monadic build system essentially means that dependencies are generated dynamically as the build proceeds, as a opposed to the list of dependencies being a static value that is input manually, such as with `make`. There are no downsides to this over the alternative, which are known as applicative build systems.
 
-Like every aspect of Urbit, Ford is purely functional. What this means for a build system is that builds produce no side effects, and so the same build ran on the same source files will produce the same output every time. If you've never dealt with build systems before, the idea that things could work any other way may sound absurd! But the reason depends on a subtletly of what one considers to be the "input" (I think?)
+### Referentially transparent
 
-For a typical build system, such as `make`, the build instructions contain a list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
+Ford is [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). The exact meaning of this depends on who you ask, but for us it means that one may replace a reference to a build (which in Ford's case is something known as a schematic, see below) with the result of that build without changing the output of the overall build. What this ultimately is that builds are deterministic, and so the same build ran on the same source files will produce the same output every time. Put another way, the output is a pure function of the input and. If you've never dealt with build systems before, the idea that things could work any other way may sound absurd!
 
-The chief advantage of being purely functional is that Ford builds are reproducible and dependency hell is averted. Ford accomplishes this as builds do not have a static list of dependencies, that is, they are not known a priori. Instead the dependencies are dynamically generated as the build proceeds, and sub-builds are generated for these dependencies and saved in the cache.
+For a typical applicative build system, such as `make`, the build instructions contain a static list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
 
 One might instead call Ford [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency) instead of (or in addition to) purely functional. The exact meaning of this terminology differs from source to source and how many hairs you want to split, but the general notion that one may replace Hoon expressions by their value without changing the output of the build is true.
 
 ### Cache
 
-Ford saves everything it has ever built in a cache. Whenever Ford generates a dependency for a build, it checks the cache to see if it has already built that dependency before. If so, because Ford is purely functional, the result of that build can be put directly into the current build. No rebuilding necessary.
+Ford saves much of what it builds in a cache. Whenever Ford generates a dependency for a build, it checks the cache to see if it has already built that dependency before. If so, because Ford is referentially transparent, the result of that build can be put directly into the current build. No rebuilding necessary.
 
 The primary reason for this feature is that it saves time - building large projects can take hours or more.
 
-The cache is somewhat analogous to the Nix store in functionality, but is quite different in terms of implementation. How the cache works is by far the most complex part of Ford, but this internal complexity ultimately results in simplicity for the software engineer, as it solves the problem of dependency hell.
+The cache is somewhat analogous to the Nix store in functionality, but is quite different in terms of implementation. How the cache works is by far the most complex part of Ford, but this internal complexity ultimately results in simplicity for the software engineer.
+
+Ford does not save _everything_ it has ever built forever, but instead applies a heuristic to determine what build results to hold onto. An example of such a heuristic is "LRU caching", and Ford does something similar to this.
 
 ### Live Builds
 
-Ford is capable of live builds. We illustrate what this means by example.
+Ford is capable of live builds. This means that Ford can subscribe to a Clay desk containing some source code for something Ford has built before, and whenever that source code is updated Ford will automatically rebuild the project.
 
-You have a program `foo` and it is currently in state `A`. You modify the code to `foo` and ask Ford to rebuild it (or does the rebuild happen automatically?). Ford will then rebuild `foo` in such a manner that the updated version can import `A` from the previous version and continue running.
-
-This feature is essential to how Urbit is updated over the air, and is one high level reason behind why the state of your ship is not wiped every time Arvo is updated.
+It is important for us to note that Ford is _not_ used to build vanes. Vanes are compiled from the raw source code by the Arvo kernel.
 
 ## Using Ford
 
@@ -113,19 +113,15 @@ From `arvo.hoon`, a `cage` is a `[mark vase]` - so its just typed data that is a
 
 #### Schematics
 
-A `schematic`, found in `zuse.hoon`, is a set of build instruction for Ford. It is a recursive data structure, in that a schematic is a pair `[schematic schematic]`. Schematics have 25 subtypes corresponding to possible basic build instructions. The product of a `schematic` is a `cage`.
+A `schematic`, found in `zuse.hoon`, is a set of build instruction for Ford. It is a recursive data structure, in that a schematic may itself consist of additional schematics. Schematics have 25 subtypes corresponding to possible basic build instructions. The product of a `schematic` is a `cage`.
 
 Some examples of subtypes include:
  - `%list` - a list of schematics to build.
  - `%core` - a Clay path to a Hoon source file to build
- - `%call` - a schematic whose result is a gate with a schematic as a sample.
+ - `%call` - a schematic consisting of two sub-schematics, one of which produces a date and a second that produces a sample. It then runs the gate on the sample, producing a vase of the result, tagged with the mark `%noun`.
  - `%scry` - look up a value from the Urbit namespace.
 
  Schematics are only ever sent to Ford by another vane. Userspace apps do not directly create schematics.
-
-#### Scaffolds
-
-Some kind of intermediate files similar to schematics that Ford produces during a build. I probably don't need to talk about these.
 
 ### Ford runes
 
@@ -199,6 +195,10 @@ produces: `0v0`
 
 ### Mark conversion
 
-### Building
+Write about `make-volt`, `make-bunt`, `make-vale`, `make-cast`.
 
 ### Testing
+
+Ford is the vane utilized for unit testing, which are the the simplest sort of test one may perform on software that is one step removed from manual testing. Ford itself does not have testing capabilities built in, rather Ford has a more general capability known as _rendering_ which is utilized by the `+test` generator to perform the tests. The walkthrough which follows this lesson goes into more detail.
+
+One typically tests software by feeding it inputs and seeing if the outputs matches what is expected (something that is determined manually by the engineer). Unit tests work with only a single "module" at a time. What exactly is meant by this will be covered in the walkthrough, but for now it suffices to say that unit tests are in contrast with larger scale tests variously known as end-to-end tests, system tests, and integration tests.
