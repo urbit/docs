@@ -6,6 +6,8 @@ template = "doc.html"
 
 If you’re a star owner, you have the ability to create **invite pools**. These invite pools let you give your friends a piece of the network in the form of planets. This document will give you an explanation of how to create an invite pool and how to share it with your friends using our tool [Bridge](bridge.urbit.org).
 
+For more general tips on using your star, check out the [Star and Galaxy Operations page](https://urbit.org/using/operations/stars-and-galaxies/).
+
 ## Anatomy of an Invite Pool
 
 An invite pool is a set of planet invites that can be distributed via email; each invite is worth one planet when redeemed. An invite pool can be as big as you’d like, providing that you have enough planets left to spawn. All invite pools must be created by a star, but they must be given to a planet. If you’re interested in how this works technically, take a look at the [DelegatedSending.sol contract](https://github.com/urbit/azimuth/blob/master/contracts/DelegatedSending.sol).
