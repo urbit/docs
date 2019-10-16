@@ -10,7 +10,7 @@ Ideally your Hoon works perfectly the first time.  But...
 When you get a syntax error, you'll see a message like
 
 ```
-syntax error: 10 12
+syntax error at [10 12]
 ```
 
 This is a line and column number; more exactly, the line and
