@@ -86,7 +86,6 @@ This can happen if they have the wrong keys of yours, or if you have the wrong k
 in the Dojo, where `~sampel-palnet` is the other ship's name. Then, compare it to the scry information that you saved. If that information matches up, it means that the other ship is the problem. If it **doesn't** match up, your ship has wrong information about the other ship. If you have such wrong information, you can fix this by running:
 
 ```
-|start %azimuth-tracker
 :azimuth-tracker|listen ~ %app %azimuth-tracker
 ```
 
