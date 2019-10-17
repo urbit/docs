@@ -35,7 +35,7 @@ If you accidentally booted with the same keyfile twice, the only remedy is perfo
 
 **Turn your ship off and on again.** Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
 
-### Perform a personal breach. {#personal-breach} 
+### Perform a personal breach. {#personal-breach}
 
 A breach is when ships on the network reset their continuity. The breaching ship clears its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
 
@@ -86,11 +86,19 @@ This can happen if they have the wrong keys of yours, or if you have the wrong k
 in the Dojo, where `~sampel-palnet` is the other ship's name. Then, compare it to the scry information that you saved. If that information matches up, it means that the other ship is the problem. If it **doesn't** match up, your ship has wrong information about the other ship. If you have such wrong information, you can fix this by running:
 
 ```
-|start %eth-manage
-:eth-manage %look-ethnode
+|start %azimuth-tracker
+:azimuth-tracker|listen ~ %app %azimuth-tracker
 ```
 
-If they have wrong keys of yours, you need to somehow ask them to to run that same command.
+The last line above syncs from an Ethereum node for _all_ ships on the network. If you only wanted to sync with certain ships, run:
+
+```
+:azimuth-tracker|listen ~[~sampel-palnet ~zod ~marzod] %app %azimuth-tracker
+```
+
+`~sampel-palnet ~zod ~marzod` are example ship-names; replace these with any number of desired ships-names.
+
+The above commands work if you have the wrong keys of other ships. If other ships have wrong keys of _yours_, you need to somehow ask them to to run such a command.
 
 ### I can talk to some ships, but I can't talk to my sponsor and some other ships
 
