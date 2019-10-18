@@ -45,7 +45,7 @@ Here, we ran a generator called `+test` with a path argument `/sys/hoon/set`. Th
 ```
 We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](/docs/learn/hoon/hoon-tutorial/ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a core which will contain arms that perform our tests, which we will see an example of shortly.
 
-In `lib/test.hoon`, we find a core with a few arms: `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
+In `lib/test.hoon`, we find a core with a few gates: `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
 ```
 ++  expect-eq
   |=  [expected=vase actual=vase]
@@ -70,7 +70,7 @@ In `lib/test.hoon`, we find a core with a few arms: `expect-eq`, `expect-fail`, 
     ==  ==
   result
 ```
-This is the most frequently used arm in testing, so we may conclude that any testing suite will likely have the line `/+  *test` at the top so that we may utilize this arm. What does this arm do? Recall that a `vase` consists of `[p=type q=*]`. Then what `expect-eq` does is check to see if two `vase`s are equal, and pretty-prints the result of that test.
+This is the most frequently used gate in testing, so we may conclude that any testing suite will likely have the line `/+  *test` at the top so that we may utilize this gate. What does this gate do? Recall that a `vase` consists of `[p=type q=*]`. Then what `expect-eq` does is check to see if two `vase`s are equal, and pretty-prints the result of that test.
 
 ## Testing the functionality of set intersection
 
