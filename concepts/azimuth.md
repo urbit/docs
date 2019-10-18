@@ -22,9 +22,9 @@ A metaphor might help illustrate the relationship between these two systems: the
 
 ## The Urbit HD Wallet
 
-Owners of Azimuth points need safeguards that allow for the use of Urbit without jeopardizing cryptographic ownership of their assets. Toward this end, we created the **Urbit Hierarchical Deterministic (HD) Wallet** for the storage of points. The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Arvo network to transferring ownership of points.
+Owners of Urbit identities need safeguards that allow for the use of Urbit without jeopardizing cryptographic ownership of their assets. Toward this end, we created the **Urbit Hierarchical Deterministic (HD) Wallet** for the storage of identities. The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Arvo network to transferring ownership of identities.
 
-The Urbit HD Wallet's derivation paths have a hierarchical structure, so that keys with different powers can be physically separated. A \"master ticket" can re-derive the entire wallet in case of loss. The encryption and authentication keys that points ships use to sign messages within the network are also derived from the wallet.
+The Urbit HD Wallet's derivation paths have a hierarchical structure, so that keys with different powers can be physically separated. A \"master ticket" can re-derive the entire wallet in case of loss. The encryption and authentication keys that identities ships use to sign messages within the network are also derived from the wallet.
 
 Urbit HD wallets are composed of the following items, which are each assigned to their own individual Ethereum key-pairs.
 
@@ -38,7 +38,7 @@ An ownership address has all rights over the assets deeded to it. These rights a
 
 ### Proxies
 
-Proxy addresses allow you to execute non-ownership related actions like spawning child points, voting, and setting networking keys without jeopardizing the keys you've designated with ownership rights. Setting proxy rights is optional, but it is recommended for on-chain actions you will execute more frequently.
+Proxy addresses allow you to execute non-ownership related actions like spawning child identities, voting, and setting networking keys without jeopardizing the keys you've designated with ownership rights. Setting proxy rights is optional, but it is recommended for on-chain actions you will execute more frequently.
 
 - **Management Proxy**
 
@@ -52,24 +52,24 @@ Proxy addresses allow you to execute non-ownership related actions like spawning
 
 - **Spawn Proxy**
 
-  For stars and galaxies only. Can create new child points.
+  For stars and galaxies only. Can create new child identities.
 
 ![](https://media.urbit.org/fora/proposals/UP-8.jpg)
 
 
-Most Ethereum tokens use the ERC-20 standard for smart contracts. Azimuth points
-are, however, essentially different from most Ethereum tokens, due to points not
+Most Ethereum tokens use the ERC-20 standard for smart contracts. Urbit identities
+are, however, essentially different from most Ethereum tokens, due to identities not
 being fungible. Since any two stars will handle social-networking realities in a
-different way, they will carry a different reputation. Points are to houses as
+different way, they will carry a different reputation. identities are to houses as
 tokens are to gold.
 
 The ERC-721 standard, having been made specifically to provide a smart-contract
 interface for non-fungible assets, serves our needs well. This is the standard
-that we use for deeding Azimuth points.
+that we use for deeding Urbit identities.
 
-Points, and all of their blockchain operations, are governed by the Ecliptic.
-The Ecliptic is an Ethereum smart-contract that governs point state and the
-ownership, spawn, management, and voting rights affiliated with your points.
+identities, and all of their blockchain operations, are governed by the Ecliptic.
+The Ecliptic is an Ethereum smart-contract that governs identity state and the
+ownership, spawn, management, and voting rights affiliated with your identities.
 
 For the technical implementation details, take a look at Azimuth's
 [Github repository](https://github.com/urbit/azimuth).
