@@ -8,7 +8,7 @@ template = "doc.html"
 
 This lesson introduces the basics of the Ford vane, Arvo's build system and computation engine.
 
-In terms of sheer size, Ford is Arvo's largest vane, weighing in at over 6000 lines of code at the time of writing. As a result, we will only be scratching the surface of Ford in this lesson. In particular, we will solely be focused on the build system aspect of Ford, and leave its other capabilities alone.
+In terms of sheer size, Ford is Arvo's largest vane, weighing in at over 6000 lines of code at the time of writing. As a result, we will only be scratching the surface of Ford in this lesson. We will mostly focus on describing how Ford works in a broad sense and not dig too deeply into the details.
 
 ## What are build systems?
 
@@ -19,8 +19,6 @@ At a high level, build systems are software that builds other software from sour
 The primary output of a build system, the final binary known as a _build_, comes from two inputs: (1) source files, and (2) build instructions. Analogous to building a house, you could think of these as corresponding to raw materials and architectural blueprints. The build system calls the compiler (typically a separate piece of software) on each source file, which you may think of as shaping the raw materials something suitable for the final product. The compiled source files are then put together according to the build instructions.
 
 The number of languages a build system is designed to work with varies, from specialized build systems that focus on a single language (like Ford) to general purpose ones that could conceivably work for any language and frequently rely on other build systems to function (such as [make](https://en.wikipedia.org/wiki/Make_(software))).
-
-Source files frequently have _dependencies_, which are other source files or compiled code they depend on to run. Much of the work of a build system goes into determining dependencies.
 
 Source files frequently have _dependencies_, which are other source files, outside libraries, or tools needed to build a software program. These dependencies can have dependencies themselves, and in general one can draw a dependency graph of all of the different libraries and tools that go into building a project.
  
@@ -55,7 +53,7 @@ The main features of Ford that distinguish it from most build systems that we wi
 
 ### Strongly and Dynamically Typed
 
-Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions. This guarantees to some level that the built software will work, though of course you can never completely guarantee that software will work as expected due to things like bugs.
+Ford is a typed build system. The short version of what this means is that Ford cares about Arvo marks and Hoon types, and will fail to build if the marks and types do not satisfy certain restrictions. This guarantees to some level that the built software will work, though of course you can never completely guarantee that software will work as expected due to things such as bugs.
 
 Recall that a mark such as `%foo` acts as metadata which tells Arvo vanes what kind of file it is working with. In the context of Ford, they may be thought of as being analogous to file types in other operating systems. When an Arvo vane sees marked data, it expects that data to take a certain shape, and verifying that that data is in the expected shape is a task performed by Ford.
 
@@ -63,7 +61,7 @@ In fact, it is important to emphasize that the Arvo kernel does not actually kno
 
 Ford is also responsible for converting marked data to another mark. This is a task that is frequently performed during a build, but also is something that other vanes may request Ford to do.
 
-Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in that all sub-builds are also typed (this isn't exactly right, should explain type safety in terms of vases here)
+Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in the sense that all sub-builds are also typed (this is slightly misleading, but clarifying this notion further is an unnecessary detour).
 
 ### Monadic
 
@@ -75,7 +73,7 @@ Ford is [referentially transparent](https://en.wikipedia.org/wiki/Referential_tr
 
 For a typical applicative build system, such as `make`, the build instructions contain a static list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
 
-One might instead call Ford [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency) instead of (or in addition to) purely functional. The exact meaning of this terminology differs from source to source and how many hairs you want to split, but the general notion that one may replace Hoon expressions by their value without changing the output of the build is true.
+One might instead call Ford purely functional instead of (or in addition to) referentially transparent. The exact meaning of this terminology differs from source to source and how many hairs you want to split, but the general notion that one may replace Hoon expressions by their product without changing the output of the build is true.
 
 ### Cache
 
@@ -165,14 +163,13 @@ Replace the code in `gen/faslus.hoon` with the following:
 
 This should print something like `my_id_is_c.3588`.
 
-Another feature of the `/+` and `/-` runes is the ability to specify the ship and case from which to load the library.
+Another feature of the `/+` rune (and `/-` below) is the ability to specify the ship and case from which to load the library.
 
 Example:
 
 ```
 /+  time-to-id, hep-to-cab/4/~zod
 ```
-
 will load the `hep-to-cab` library from `~zod` at `%clay` revision `4`.
 
 #### `/-` import from `sur/`
@@ -191,12 +188,10 @@ produces: `0v0`
 
 `/-` can also take multiple files as arguments, and the ship and case of those arguments can be specified. See the `/+` docs for more details about the syntax for those features.
 
-### Mark conversion
-
-Write about `make-volt`, `make-bunt`, `make-vale`, `make-cast`.
-
 ### Testing
 
 Ford is the vane utilized for unit testing, which are the the simplest sort of test one may perform on software that is one step removed from manual testing. Ford itself does not have testing capabilities built in, rather Ford has a more general capability known as _rendering_ which is utilized by the `+test` generator to perform the tests. The walkthrough which follows this lesson goes into more detail.
 
-One typically tests software by feeding it inputs and seeing if the outputs matches what is expected (something that is determined manually by the engineer). Unit tests work with only a single "module" at a time. What exactly is meant by this will be covered in the walkthrough, but for now it suffices to say that unit tests are in contrast with larger scale tests variously known as end-to-end tests, system tests, and integration tests.
+One typically tests software by feeding it inputs and seeing if the outputs matches what is expected (something that is determined manually by the engineer). Unit tests work with only a single "module" at a time. What exactly is meant by this is shown by example in the following walkthrough, but for now it suffices to say that unit tests are in contrast with larger scale tests variously known as end-to-end tests, system tests, and integration tests.
+
+### [Next up: Unit Testing with Ford](../ford.md)
