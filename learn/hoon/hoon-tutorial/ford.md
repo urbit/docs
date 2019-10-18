@@ -1,5 +1,5 @@
 +++
-title = "Ford"
+title = "2.8.1 Ford"
 weight = 0
 template = "doc.html"
 +++
@@ -132,8 +132,6 @@ The most common pattern you are likely to see is a sequence of Ford runes at the
 The rune interpreter is most complicated part of `ford.hoon` after the cache. But again, thankfully for us, most of the commonly used runes are straightforward. We cover a few of them here.
 
 #### `/+` import from `lib/`
-
-(this is copied directly from `arvo/ford.md`)
 
 The `/+` rune accepts a filename as an argument. It interprets that filename as a hoon source file within the `lib` directory. This is how we import a shared library in urbit.
 
