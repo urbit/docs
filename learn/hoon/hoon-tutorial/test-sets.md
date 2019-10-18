@@ -1,6 +1,6 @@
 +++
 title = "2.8.2 Unit Testing with Ford"
-weight = 0
+weight = 39
 template = "doc.html"
 +++
 
@@ -8,7 +8,7 @@ template = "doc.html"
 
 In this walkthrough we will show how to use Ford as a testing suite.
 
-First we will cover the essential molds, arms, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](/docs/learn/hoon/hoon-tutorial/trees-sets-and-maps.md).
+First we will cover the essential molds, arms, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](../trees-sets-and-maps.md).
 
 ## Running our first test
 
@@ -43,7 +43,7 @@ Here, we ran a generator called `+test` with a path argument `/sys/hoon/set`. Th
 ::
 |%
 ```
-We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](/docs/learn/hoon/hoon-tutorial/ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a core which will contain arms that perform our tests, which we will see an example of shortly.
+We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](../ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a core which will contain arms that perform our tests, which we will see an example of shortly.
 
 In `lib/test.hoon`, we find a core with a few gates: `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
 ```
