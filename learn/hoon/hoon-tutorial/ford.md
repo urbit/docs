@@ -61,7 +61,7 @@ In fact, it is important to emphasize that the Arvo kernel does not actually kno
 
 Ford is also responsible for converting marked data to another mark. This is a task that is frequently performed during a build, but also is something that other vanes may request Ford to do.
 
-Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in the sense that all sub-builds are also typed (this is slightly misleading, but clarifying this notion further is an unnecessary detour).
+Ford is dynamically typed in the sense that types of builds are not known a priori and are computed dynamically in the course of the build. It is strongly typed in the sense that it is typesafe and the result of a build always has a known type, as do all of the sub-builds that went into it.
 
 ### Monadic
 
