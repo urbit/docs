@@ -165,5 +165,29 @@ Now we are checking if intersection works correctly when two non-empty sets shar
 ```
 Our last test in this arm is to check whether partial intersection works. Here, we compute the intersection of `s-dos` and `s-dup`. Our expectation is that this should return the set whose only element is 9, and so our expected vase is `!>  (sy ~[9])`. Then our actual vase is given by actually computing this intersection: `!>  (~(int in s-dos) s-dup)`.
 
-## Ford as a renderer
+We invite you to look further into the source of `/tests/sys/hoon/set.hoon` to see how other tests are written.
 
+## Running many tests
+
+When we ran the command `+test /sys/hoon/set` in the Dojo, what ultimately happened is that Ford looked inside of `/tests/sys/hoon/set.hoon` and found each of the tests in there and performed them in sequence. However, it is not necessary to put all tests you would like to run in a single source file, or even in a single folder. What `+test` actually does is take in a path and then performs all tests located in that folder (if it is a folder) and then looks for additional folders inside of the given path to find additional tests.
+
+In other words, if you want to run all of the tests located in `/tests/sys/hoon/`, you would run `+test /sys/hoon`:
+
+```
+> +test /sys/hoon
+OK      /sys/hoon/auras/test-parse-p
+OK      /sys/hoon/auras/test-parse-q
+OK      /sys/hoon/auras/test-render-p
+OK      /sys/hoon/auras/test-render-q
+OK      /sys/hoon/bits/test-bits
+OK      /sys/hoon/differ/test-berk
+OK      /sys/hoon/differ/test-loss
+OK      /sys/hoon/differ/test-lurk
+OK      /sys/hoon/differ/test-lusk
+OK      /sys/hoon/hashes/test-mug
+OK      /sys/hoon/hashes/test-muk
+OK      /sys/hoon/map/test-map-all
+OK      /sys/hoon/map/test-map-any
+...
+```
+We have truncated the results here, but you can already see that this command is performing tests found in subfolders of `/tests/sys/hoon`. This command runs quicky, but if you ran e.g. `+test /sys` you may be waiting quite awhile.
