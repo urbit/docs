@@ -48,7 +48,9 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [2.5.2 Walkthrough: Lead Polymorphism](lead-polymorphism)
 - [2.6 Gall](gall)
 - [2.7.1 Walkthrough: Egg Timer](egg-timer)
-- [2.7.2 Gall -- Async Monad](async monad)
+- [2.7.2 Gall -- Async Monad](async-monad)
+- [2.8.1 Ford](ford)
+- [2.8.2 Ford Testing Suite Walkthrough](test-sets)
 
 
 ## Other Resources
