@@ -48,11 +48,11 @@ The sample of the `door` is:
 
 You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's enough to know that this is the default app state and includes various faces for information. Below are some important such faces:
 
-`our`  The ship this code is running on
-`src`  The ship the current event originated from
-`ost`  A reference to the current chain of events
-`eny`  Guaranteed-fresh entropy
-`now`  The current time
+- `our`  The ship this code is running on
+- `src`  The ship the current event originated from
+- `ost`  A reference to the current chain of events
+- `eny`  Guaranteed-fresh entropy
+- `now`  The current time
 
 The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
@@ -66,9 +66,9 @@ The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of di
 
 In the above code, we create a gate that takes a single `@dr` argument. `@dr` is an aura for a 128-bit relative date. Here are a few examples.
 
-`~s17`  17 seconds
-`~m20`  20 minutes
-`~d42`  42 days
+- `~s17`  17 seconds
+- `~m20`  20 minutes
+- `~d42`  42 days
 
 As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `effect`, which we `bunt` with `*`, is the head; `+>.$`, the enclosing core which is our `door`, is the tail.
 
