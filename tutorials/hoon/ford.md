@@ -100,7 +100,7 @@ Now that we have covered the distinctive features of Ford, we now dive into some
 #### Vase
 
 From `hoon.hoon`:
-```
+```hoon
 +$  vase  [p=type q=*]
 ```
 A `vase` is simply typed data, and it is used wherever typed data is being explicitly worked with.
@@ -135,7 +135,7 @@ The `/+` rune accepts a filename as an argument. It interprets that filename as 
 
 To run this example, put this code in your desk at `gen/faslus.hoon` and run `+faslus` in your dojo.
 
-```
+```hoon
 /+  time-to-id
 ::
 :-  %say
@@ -150,7 +150,7 @@ You can import multiple libraries with a single `/+` rune by separating them wit
 
 Replace the code in `gen/faslus.hoon` with the following:
 
-```
+```hoon
 /+  time-to-id, hep-to-cab
 ::
 :-  %say
@@ -167,7 +167,7 @@ Another feature of the `/+` rune (and `/-` below) is the ability to specify the 
 
 Example:
 
-```
+```hoon
 /+  time-to-id, hep-to-cab/4/~zod
 ```
 will load the `hep-to-cab` library from `~zod` at `%clay` revision `4`.
@@ -178,7 +178,7 @@ The `/-` rune accepts a filename as an argument. It interprets that filename as 
 
 Example:
 
-```
+```hoon
 /-  talk
 ::
 *serial:talk
@@ -194,4 +194,4 @@ Ford is the vane utilized for unit testing, which are the the simplest sort of t
 
 One typically tests software by feeding it inputs and seeing if the outputs matches what is expected (something that is determined manually by the engineer). Unit tests work with only a single "module" at a time. What exactly is meant by this is shown by example in the following walkthrough, but for now it suffices to say that unit tests are in contrast with larger scale tests variously known as end-to-end tests, system tests, and integration tests.
 
-### [Next up: Unit Testing with Ford](../ford.md)
+### [Next up: Unit Testing with Ford](../test-sets.md)
