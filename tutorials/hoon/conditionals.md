@@ -71,5 +71,3 @@ We only went into three "wut" runes in our walkthrough, but there are many other
 - `?|` takes an indefinite number of children. It's the logical "or" operator. It checks if at least one of its children is true.
 
 To see an exhaustive list of "wut" runes, check out the [reference documentation on conditionals](/docs/reference/hoon-expressions/rune/wut/).
-
-### [Next Up: Reading -- Lists](../lists)

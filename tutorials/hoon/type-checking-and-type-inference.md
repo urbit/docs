@@ -641,4 +641,3 @@ More subtly, the `=+`, `=/`, and `=|` runes modify the subject by pinning values
 
 In general, anything that modifies the subject modifies the type of the subject.  Type inference can work in subtle ways for various expressions.  However, we have covered enough that it should be relatively clear how to anticipate how type inference works for the vast majority of ordinary use cases.
 
-### [Next Up: Reading -- Structures and Complex Types](../structures-and-complex-types)

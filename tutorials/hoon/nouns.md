@@ -479,5 +479,3 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, 
 + +14
 + +15
 + +31
-
-### [Next Up: Reading -- Hoon Syntax](../hoon-syntax)

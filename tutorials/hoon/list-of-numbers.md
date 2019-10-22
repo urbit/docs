@@ -130,5 +130,3 @@ Our program works by having each iteration of the list creating a cell. In each 
 ```
 
 If you still don't intuit how this is working, don't worry. We'll take a deeper look into recursion later with our [Recursion walkthrough](../recursion).
-
-### [Next Up: Reading -- Nouns](../nouns)

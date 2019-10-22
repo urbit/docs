@@ -775,5 +775,3 @@ Hoon pretty-prints them the same way, but can we be sure that they are the same 
 
 They are indeed the same.
 
-
-### [Next Up: Reading -- Type Checking and Type Inference](../type-checking-and-type-inference)

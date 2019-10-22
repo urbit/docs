@@ -486,5 +486,3 @@ You can now unbind `c` in the dojo -- this will help to keep your dojo subject t
 > c
 -find.c
 ```
-
-### [Next Up: Walkthrough -- Caesar Cipher](../caesar)

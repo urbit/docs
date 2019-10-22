@@ -153,5 +153,3 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 ```
 
 This example is a bit overkill for simply calculating the Fibonacci series, but it nicely illustrates how you might use iron cores. Instead of `fib`, you could have any `stream` that produces some stream of values and you'd still be able to use the `take`, `to-list`, and `stream-type` arms.
-
-[Next Up: Reading -- Gall](../gall)

@@ -193,4 +193,3 @@ Disks are stacked on a pole by decreasing order of size. Move all of the
 disks from one pole to another with a third pole as a spare, moving one
 disc at a time, without putting a larger disk on top of a smaller disk.
 
-### [Next Up: Reading -- The Subject and its Legs](../the-subject-and-its-legs/)
