@@ -12,7 +12,7 @@ This glossary is intended to familiarize you with Azimuth-related terminology. T
 
 ### Azimuth identity
 
-An Azimuth identity, previously known as a _point_, is a non-fungible Ethereum token ([ERC-271](https://medium.com/@brenn.a.hill/noobs-guide-to-understanding-erc-20-vs-erc-721-tokens-d7f5657a4ee7)) that represents a digital identity. The ERC-721 standard, having been made specifically to provide a smart-contract interface for non-fungible assets, allows Azimuth identity ownership to be take advantage of existing third-party tools and systems.
+An Azimuth identity, previously known as a _point_, is a non-fungible Ethereum token ([ERC-721](https://medium.com/@brenn.a.hill/noobs-guide-to-understanding-erc-20-vs-erc-721-tokens-d7f5657a4ee7)) that represents a digital identity. The ERC-721 standard, having been made specifically to provide a smart-contract interface for non-fungible assets, allows Azimuth identity ownership to be take advantage of existing third-party tools and systems.
 
 #### Planet
 
