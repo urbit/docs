@@ -13,7 +13,7 @@ First we will cover the essential molds, arms, and generators used for testing, 
 ## Running our first test
 
 To start with, lets try running the unit tests on sets by entering the following into the Dojo, and then we will work backwards to see how we obtained this output:
-```hoon
+```
 > +test /sys/hoon/set
 OK      /sys/hoon/set/test-set-all
 OK      /sys/hoon/set/test-set-any
@@ -173,7 +173,7 @@ When we ran the command `+test /sys/hoon/set` in the Dojo, what ultimately happe
 
 In other words, if you want to run all of the tests located in `/tests/sys/hoon/`, you would run `+test /sys/hoon`:
 
-```hoon
+```
 > +test /sys/hoon
 OK      /sys/hoon/auras/test-parse-p
 OK      /sys/hoon/auras/test-parse-q

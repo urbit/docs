@@ -100,7 +100,7 @@ Now that we have covered the distinctive features of Ford, we now dive into some
 #### Vase
 
 From `hoon.hoon`:
-```
+```hoon
 +$  vase  [p=type q=*]
 ```
 A `vase` is simply typed data, and it is used wherever typed data is being explicitly worked with.
