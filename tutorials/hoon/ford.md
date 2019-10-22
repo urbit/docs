@@ -1,5 +1,5 @@
 +++
-title = "2.8.1 Ford"
+title = "2.8 Ford"
 weight = 38
 template = "doc.html"
 +++
@@ -21,9 +21,9 @@ The primary output of a build system, the final binary known as a _build_, comes
 The number of languages a build system is designed to work with varies, from specialized build systems that focus on a single language (like Ford) to general purpose ones that could conceivably work for any language and frequently rely on other build systems to function (such as [make](https://en.wikipedia.org/wiki/Make_(software))).
 
 Source files frequently have _dependencies_, which are other source files, outside libraries, or tools needed to build a software program. These dependencies can have dependencies themselves, and in general one can draw a dependency graph of all of the different libraries and tools that go into building a project.
- 
+
 It is frequently the case that only specific versions of a given library or tool will work. This can create contradictory version requirements, an issue that falls under the umbrella of "dependency hell". Most build systems suffer from this problem, but functional programming provides workarounds. [Nix](https://nixos.org/nix/) is a popular build system that avoids this issue, and Ford does as well.
- 
+
 Besides the primary task of building software outlined above, build systems also typically handle some or all of the following responsibilities:
  - Resolving dependencies
  - Downloading dependencies
