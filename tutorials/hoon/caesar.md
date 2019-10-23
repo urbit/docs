@@ -343,5 +343,3 @@ look for the legible result.
 possible unshifted `tapes`.
 
 4. Modify the example generator into a `%say` generator.
-
-### [Next Up: Reading -- Doors](../doors)

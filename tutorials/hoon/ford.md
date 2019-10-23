@@ -193,5 +193,3 @@ produces: `0v0`
 Ford is the vane utilized for unit testing, which are the the simplest sort of test one may perform on software that is one step removed from manual testing. Ford itself does not have testing capabilities built in, rather Ford has a more general capability known as _rendering_ which is utilized by the `+test` generator to perform the tests. The walkthrough which follows this lesson goes into more detail.
 
 One typically tests software by feeding it inputs and seeing if the outputs matches what is expected (something that is determined manually by the engineer). Unit tests work with only a single "module" at a time. What exactly is meant by this is shown by example in the following walkthrough, but for now it suffices to say that unit tests are in contrast with larger scale tests variously known as end-to-end tests, system tests, and integration tests.
-
-### [Next up: Unit Testing with Ford](../test-sets.md)

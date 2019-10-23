@@ -269,5 +269,3 @@ Write a gate that takes an atom, `a=@`, and which returns double the value of `a
 > (double 25)
 50
 ```
-
-### [Next Up: Walkthrough -- Recursion](../recursion)

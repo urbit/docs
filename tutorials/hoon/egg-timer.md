@@ -117,5 +117,3 @@ Next we have the same cast we used in `++poke-noun` to make sure we are producin
 `~&` is the debugging printf rune. Here we're using it to output a message. We could, however, modify this line of code to do any other computation we would want to happen when `++wait` gets called.
 
 Finally, we need to produce our `effect`. Here the effect is simply `[~ +>.$]`, since we have no `syscall` to make and we are not changing the state of our app. We just use the `door` without changing its sample.
-
-### [Next Up: Reading -- Ford](../ford)

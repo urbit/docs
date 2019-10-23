@@ -86,6 +86,3 @@ But `fold` does not have to produce a `list`. Let's look at another example:
 Here `fold` will produce a gate that takes an `atom` and applies a gate to a `list` of `atoms`. The difference here is that this call will produce a sum of the elements of the list, rather than the list itself.
 
 The key takeaway from both of these examples is that the gates provided are _iron polymorphic_ with respect to the definition of the type in `fold`. They are iron polymorphic because samples `s` and `e` nest under the types `state` and `elem`. In second case case, that's because when we provided those to `fold`, it was was stated they were `@` and `@`. In the first case, we stated that `state` was `(list @)` and `elem` was `@`. In both cases, the sample of each gate nest inside the types defined when we called the wet gate `fold`.
-
-
-[Next Up: Walkthrough -- Lead Polymorphism](../lead-polymorphism)

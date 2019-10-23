@@ -319,5 +319,3 @@ You can use `run` of `by` to apply a gate to each value in a map, producing a ma
 ```
 
 There are other map functions in the Hoon standard library that didn't cover here.
-
-### [Next Up: <placeholder>]

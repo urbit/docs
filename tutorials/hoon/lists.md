@@ -332,5 +332,3 @@ Run in dojo:
 > +snag [2 ~[11 22 33 44]]
 33
 ```
-
-### [Next Up: Walkthrough -- Fibonacci Sequence](../fibonacci)

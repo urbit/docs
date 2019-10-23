@@ -105,5 +105,3 @@ Emacs is free and open-source and runs on all major operating systems. It is ava
 
 Vim is free and open-source and runs on all major operating systems. It is available [here](https://www.vim.org/). Hoon support is available with [hoon.vim](https://github.com/urbit/hoon.vim) and is maintained by Tlon.
 
-
-### [Next Up: Walkthrough -- List of Numbers](../list-of-numbers)

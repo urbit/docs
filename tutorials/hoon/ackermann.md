@@ -27,6 +27,3 @@ Second, if `n` is zero, decrement `m`, set `n` to 1 and recurse.
 Else, decrement `m` and set `n` to be the value of the Ackermann function with `n` and the decrement of `n` as arguments.
 
 This is not a terribly useful function to compute but it has an interesting history in mathematics. When running this function the value grows rapidly even for very small input. The value of computing this where `m` is `4` and `n` is `2` is an integer with 19,729 digits.
-
-
-### [Next Up: Reading -- Arms and Cores](../arms-and-cores)

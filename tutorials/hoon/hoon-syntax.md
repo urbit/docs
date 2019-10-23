@@ -325,5 +325,3 @@ There are a couple useful runes associated with debugging:
 `~&` (sigpam) is used to print its argument every time that argument executes. So, if you wanted to see how many times your program executed `foo`, you would write `foo bar`. Then, when your program runs, it will print `foo` on a new line of output every time the program comes across it by recursion.
 
 But there are more. Check out the aforementioned [troubleshooting](/docs/reference/troubleshooting/) page to see other handy debugging runes and how to use them.
-
-### [Next Up: Walkthrough -- Conditionals](../conditionals)
