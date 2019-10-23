@@ -50,7 +50,7 @@ Let's examine a sample tile that has different Hoon code from the default, to ex
 
 In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
 
-```
+``` hoon
 /+  *server
 /=  tile-js
   /^  octs
@@ -157,7 +157,7 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
 
 Now, replace the code below is the contents of `/app/testing/js/tile.js` with the code below. Once you've replaced the code in both files, run `|commit %home` in the Dojo.
 
-```
+``` javascript
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import _ from 'lodash';
@@ -215,7 +215,7 @@ The two arms that are the most important for our application are `++poke-json` w
 
 Now that we've glanced at the default components of the program, lets take a close look at the interesting parts of the code.
 
-```
+``` hoon
 ++  poke-json
   |=  jon=json
   ^-  (quip move _+>.$)
@@ -248,7 +248,7 @@ There are several uses of the `~&` rune. These are simply debugging printfs that
 
 Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `+>.$` the existing core.
 
-```
+``` hoon
 ++  send-status-diff
   |=  msg=tape
   %-  send-tile-diff
@@ -263,7 +263,7 @@ We weld the result of this gate with one more `move` we've built here: the list 
 
 When we get a response from `%helm` to our `poke`, we'll receive a `coup`, which is the `move` always sent in response to a `poke`. Specifically, we'll get a `coup` for `helm-hi`, which is why we want an arm named `coup-helm-hi` to handle that.
 
-```
+``` hoon
 ++  coup-helm-hi
   |=  [pax=path cop=(unit tang)]
   ~&  ["Coup recieved" pax]
