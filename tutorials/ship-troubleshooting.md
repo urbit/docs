@@ -56,9 +56,9 @@ The command takes two arguments, and comes in the form of `|knob %error-tag %lev
 
 `%level` determines how much you will see of errors with your chosen `%error-tag`. There are three levels:
 
-- %hush: no output
-- %soft: one line of output, just containing the error tag
-- %loud: full output.
+- `%hush`: no output.
+- `%soft`: one line of output, just containing the error tag.
+- `%loud`: full output.
 
 So for example, to silence all Ames packet-related errors, try `|knob %hole %hush`.
 
