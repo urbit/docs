@@ -19,21 +19,48 @@ Urbit is still in the development stage, so there's a chance that your ship won'
 
 An ounce of prevention is worth a pound of cure, so let's first go over some best practices to keep your ship in working order.
 
-**Only boot with your keyfile once.** Once your ship is booted with your keyfile, you should never use that same keyfile again. If you do boot with the same keyfile twice, any other ship on the network that your ship has communicated with will never be able to talk to it again.
+### Only boot with your keyfile once.** Once your ship is booted with your keyfile, you should never use that same keyfile again. If you do boot with the same keyfile twice, any other ship on the network that your ship has communicated with will never be able to talk to it again.
 
 If you accidentally booted with the same keyfile twice, the only remedy is performing a [personal breach](#personal-breach),  which is explained in the next section.
 
-**Do not delete your pier.** Urbit is stateful, meaning that it needs to hold onto all your data. If you delete your pier and start your ship again, you won't be able to talk to any ship you've talked to before. The only solution to this is performing a [personal breach](#personal-breach)
+### Do not delete your pier
 
-**Keep track of the directory that you put your ship in.** When you first start your ship, you should make sure you put it a place where you can find it again and where it won't get accidentally deleted. Remember that you must perform `|mount %` in your ship's Dojo to make your ship visible as a directory in the Unix file system.
+Urbit is stateful, meaning that it needs to hold onto all your data. If you delete your pier and start your ship again, you won't be able to talk to any ship you've talked to before. The only solution to this is performing a [personal breach](#personal-breach)
 
-**Avoid killing the Urbit process directly.** The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
+### Keep track of the directory that you put your ship in.
 
-**Keep up-to-date builds.** Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/operations/)
+When you first start your ship, you should make sure you put it a place where you can find it again and where it won't get accidentally deleted. Remember that you must perform `|mount %` in your ship's Dojo to make your ship visible as a directory in the Unix file system.
 
-**`|hi` your star to see if you're connected.** Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star's name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you're in a Talk channel with.
+### Avoid killing the Urbit process directly.
+The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
 
-**Turn your ship off and on again.** Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
+### Keep up-to-date builds.
+
+Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/operations/)
+
+### `|hi` your star to see if you're connected.
+
+Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star's name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you're in a Talk channel with.
+
+### Turn your ship off and on again.
+
+Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
+
+### Use the `|knob` command to customize your error messages
+
+Error messages can be by overwhelming, so the `|knob` command is intended to remedy this. It's used to silence errors that aren't important.
+
+The command takes two arguments, and comes in the form of `|knob %error-tag %level`.
+
+`%error-tag` is the name of the error in question. It's usually printed at the top of the stack trace, such as in `crud: %hole event failed` -- `%hole` here is an example of an error tag.
+
+`%level` determines how much you will see of errors with your chosen `%error-tag`. There are three levels:
+
+- `%hush`: no output.
+- `%soft`: one line of output, just containing the error tag.
+- `%loud`: full output.
+
+So for example, to silence all Ames packet-related errors, try `|knob %hole %hush`.
 
 ### Perform a personal breach. {#personal-breach}
 
