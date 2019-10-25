@@ -94,9 +94,10 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
   |=  pax=path
   ^-  (quip move _this)
   =/  jon=json
-  %-  pairs:enjs:format  :~
-    [%status `json`s+'First starting']
-  ==
+    %-  pairs:enjs:format
+    :~
+      [%status `json`s+'First starting']
+    ==
   [[ost.bol %diff %json jon]~ this]
 ++  send-tile-diff
   |=  jon=json
