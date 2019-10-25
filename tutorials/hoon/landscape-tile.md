@@ -74,28 +74,30 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
   ==
 --
 |_  [bol=bowl:gall ~]
++*  this  .
 ++  bound
   |=  [wir=wire success=? binding=binding:eyre]
-  ^-  (quip move _+>.$)
-  [~ +>.$]
+  ^-  (quip move _this)
+  [~ this]
 ++  prep
   |=  old=(unit ~)
   ~&  'it built'
-  ^-  (quip move _+>.$)
+  ^-  (quip move _this)
   =/  launcha
     [%launch-action [%testing /testingtile '/~testing/js/tile.js']]
-  :_  +>.$
+  :_  this
   :~
     [ost.bol %connect / [~ /'~testing'] %testing]
     [ost.bol %poke /testing [our.bol %launch] launcha]
   ==
 ++  peer-testingtile
   |=  pax=path
-  ^-  (quip move _+>.$)
-  =/  jon=json  %-  pairs:enjs:format  :~
+  ^-  (quip move _this)
+  =/  jon=json
+  %-  pairs:enjs:format  :~
     [%status `json`s+'First starting']
   ==
-  [[ost.bol %diff %json jon]~ +>.$]
+  [[ost.bol %diff %json jon]~ this]
 ++  send-tile-diff
   |=  jon=json
   ^-  (list move)
@@ -110,16 +112,16 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
   ==
 ++  poke-json
   |=  jon=json
-  ^-  (quip move _+>.$)
+  ^-  (quip move _this)
   ~&  'poke-json in testing called'
   ~&  jon
-  =/  json-map    ((om:dejs format same) jon)
+  =/  json-map    ((om:dejs:format same) jon)
   =/  ship-to-hi  (so:dejs:format (~(got by json-map) %ship))
   ~&  ship-to-hi
   =/  sthu  (need (slaw %p ship-to-hi))
-  :_  +>.$
+  :_  this
   %+  weld
-  (send-status-diff "looking")
+    (send-status-diff "looking")
   ^-  (list move)
   :~
     :-  ost.bol
@@ -131,14 +133,14 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
 ++  coup-helm-hi
   |=  [pax=path cop=(unit tang)]
   ~&  ["Coup recieved" pax]
-  :_  +>.$
+  :_  this
   ?~  cop
     (send-status-diff "successfully found {<pax>}")
   (send-status-diff "failure")
 ++  poke-handle-http-request
   %-  (require-authorization:app ost.bol move .)
   |=  =inbound-request:eyre
-  ^-  (quip move _+>.$)
+  ^-  (quip move _this)
   =/  request-line  (parse-request-line url.request.inbound-request)
   =/  back-path  (flop site.request-line)
   =/  name=@t
@@ -147,10 +149,10 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
       ''
     i.back-path
   ?~  back-path
-    [[ost.bol %http-response not-found:app]~ +>.$]
+    [[ost.bol %http-response not-found:app]~ this]
   ?:  =(name 'tile')
-    [[ost.bol %http-response (js-response:app tile-js)]~ +>.$]
-  [[ost.bol %http-response not-found:app]~ +>.$]
+    [[ost.bol %http-response (js-response:app tile-js)]~ this]
+  [[ost.bol %http-response not-found:app]~ this]
 ::
 --
 ```
@@ -218,14 +220,14 @@ Now that we've glanced at the default components of the program, lets take a clo
 ``` hoon
 ++  poke-json
   |=  jon=json
-  ^-  (quip move _+>.$)
+  ^-  (quip move _this)
   ~&  'poke-json in testing called'
   ~&  jon
-  =/  json-map    ((om:dejs format same) jon)
+  =/  json-map    ((om:dejs:format same) jon)
   =/  ship-to-hi  (so:dejs:format (~(got by json-map) %ship))
   ~&  ship-to-hi
   =/  sthu  (need (slaw %p ship-to-hi))
-  :_  +>.$
+  :_  this
   %+  weld
   (send-status-diff "looking")
   ^-  (list move)
@@ -246,7 +248,7 @@ There are several uses of the `~&` rune. These are simply debugging printfs that
 
 `++so:dejs:format` formats some piece of data out of the `json` map, in this case the value of `%ship`. `sthu` is transformed by [`slaw`](https://urbit.org/docs/reference/library/4m/#slaw) into an actual `@p` to verify that we didn't get sent nonsense. If we did, `need` will cause the gate to crash.
 
-Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `+>.$` the existing core.
+Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `this` the existing core.
 
 ``` hoon
 ++  send-status-diff
@@ -267,7 +269,7 @@ When we get a response from `%helm` to our `poke`, we'll receive a `coup`, which
 ++  coup-helm-hi
   |=  [pax=path cop=(unit tang)]
   ~&  ["Coup recieved" pax]
-  :_  +>.$
+  :_  this
   ?~  cop
     (send-status-diff "successfully found {<pax>}")
   (send-status-diff "failure")
