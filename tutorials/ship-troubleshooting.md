@@ -66,7 +66,7 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 ### Perform a personal breach. {#personal-breach}
 
-A breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
+A personal breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
 
 Personal breaches often fix connectivity issues, but should only be used as a last resort. To find out how to perform a personal breach, check out our [Guide to Breaches](../guide-to-breaches).
 
