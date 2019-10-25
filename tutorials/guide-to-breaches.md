@@ -28,7 +28,7 @@ A network breach is an event where all ships on the network are required to upda
 If a network breach is happening, follow the steps below.
 
 - Delete your old Urbit binary.
-- Delete or archie your old pier.
+- Delete or archive your old pier.
 - Download the new Urbit binary by following the instructions in the [Install page](https://urbit.org/using/install/).
-- Boot your ship with your key, according to the instructions on the install page. (Note: You do _not_ need to use new a new key to boot into a new continuity era.)
+- Create a new pier by booting your ship with your key, according to the instructions on the install page. (Note: You do _not_ need to use new a new key to boot into a new continuity era.)
 - Rejoin your favorite chat channels and subscriptions.

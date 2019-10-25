@@ -19,7 +19,9 @@ Urbit is still in the development stage, so there's a chance that your ship won'
 
 An ounce of prevention is worth a pound of cure, so let's first go over some best practices to keep your ship in working order.
 
-### Only boot with your keyfile once.** Once your ship is booted with your keyfile, you should never use that same keyfile again. If you do boot with the same keyfile twice, any other ship on the network that your ship has communicated with will never be able to talk to it again.
+### Only boot with your keyfile once
+
+Once your ship is booted with your keyfile, you should never use that same keyfile again. If you do boot with the same keyfile twice, any other ship on the network that your ship has communicated with will never be able to talk to it again.
 
 If you accidentally booted with the same keyfile twice, the only remedy is performing a [personal breach](#personal-breach),  which is explained in the next section.
 
@@ -27,22 +29,22 @@ If you accidentally booted with the same keyfile twice, the only remedy is perfo
 
 Urbit is stateful, meaning that it needs to hold onto all your data. If you delete your pier and start your ship again, you won't be able to talk to any ship you've talked to before. The only solution to this is performing a [personal breach](#personal-breach)
 
-### Keep track of the directory that you put your ship in.
+### Keep track of the directory that you put your ship in
 
 When you first start your ship, you should make sure you put it a place where you can find it again and where it won't get accidentally deleted. Remember that you must perform `|mount %` in your ship's Dojo to make your ship visible as a directory in the Unix file system.
 
-### Avoid killing the Urbit process directly.
+### Avoid killing the Urbit process directly
 The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
 
-### Keep up-to-date builds.
+### Keep up-to-date builds
 
 Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/operations/)
 
-### `|hi` your star to see if you're connected.
+### `|hi` your star to see if you're connected
 
 Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star's name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you're in a Talk channel with.
 
-### Turn your ship off and on again.
+### Turn your ship off and on again
 
 Use `ctrl-d` to gracefully exit your ship, and then start it again. This can solve many issues.
 
@@ -64,9 +66,9 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 ### Perform a personal breach. {#personal-breach}
 
-A breach is when ships on the network reset their continuity. The breaching ship clears its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
+A breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
 
-Personal breaches often fix connectivity issues, but should only be used as a last resort.
+Personal breaches often fix connectivity issues, but should only be used as a last resort. To find out how to perform a personal breach, check out our [Guide to Breaches](../guide-to-breaches).
 
 ## Operation Issues {#operation-issues}
 
