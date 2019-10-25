@@ -246,9 +246,9 @@ There are several uses of the `~&` rune. These are simply debugging printfs that
 
 `(om:dejs:format same)` builds a gate that converts a `json` into a `map`.
 
-`++so:dejs:format` formats some piece of data out of the `json` map, in this case the value of `%ship`. `sthu` is transformed by [`slaw`](https://urbit.org/docs/reference/library/4m/#slaw) into an actual `@p` to verify that we didn't get sent nonsense. If we did, `need` will cause the gate to crash.
+`++so:dejs:format` formats some piece of data out of the `json` map, in this case the value of `%ship`. `sthu` is transformed by [`slaw`](@/docs/reference/library/4m.md#slaw) into an actual `@p` to verify that we didn't get sent nonsense. If we did, `need` will cause the gate to crash.
 
-Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `this` the existing core.
+Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `this` for the existing core.
 
 ``` hoon
 ++  send-status-diff
