@@ -247,11 +247,17 @@ a `tape` (linked string).
 ~zod:dojo> =cmp |=([a=tape b=$-(char tape)] `tape`?~(a ~ (weld (b i.a) t.a)))
 ~zod:dojo> ;~(cmp trip)
 <1.zje {a/@ <409.yxa 110.lxv 1.ztu $151>}>
+
+```
+
+With just one gate in the pipeline `q`, the glue `p` is unused:
+
+```
 ~zod:dojo> (;~(cmp trip) 'a')
 "a"
 ```
 
-With just one gate in the pipeline `q`, the glue `p` is unused:
+But for multiple gates, we need it to connect the pipeline:
 
 ```
 ~zod:dojo> (;~(cmp trip |=(a=@ ~[a a])) 'a')
@@ -260,7 +266,7 @@ With just one gate in the pipeline `q`, the glue `p` is unused:
 ""
 ```
 
-But for multiple gates, we need it to connect the pipeline:
+A more complicated example:
 
 ```
 ~zod:dojo> (;~(cmp trip ;~(cmp |=(a=@ ~[a a]) |=(a=@ <(dec a)>))) 'b')
