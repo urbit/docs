@@ -4,9 +4,9 @@ weight = 37
 template = "doc.html"
 +++
 
-Gall apps can be difficult to understand and simple ones often don't need the full complexity available when writing standard Gall apps. To that end, the `tapp` library implements the "async monad" which is more accurately described as a transitional IO monad. If you're not familiar with monads, don't worry that understand will not be necessary to using the `tapp` library.
+Gall apps can be difficult to understand and simple ones often don't need the full complexity available when writing standard Gall apps. To that end, the `tapp` library implements the "async monad" which is more accurately described as a transitional IO monad. If you're not familiar with monads, don't worry as that understanding will not be necessary to use the `tapp` library.
 
-The following code is from `app/example-tapp-fetch.hoon` Much of this file should already be pretty readable, particularly given the comments in it so we'll focus here on specific parts of the file rather than a full walkthrough. This app is intended to get the top comment of the top ten stories on Hacker News.
+The following code is from `app/example-tapp-fetch.hoon` Much of this file should already be pretty readable, particularly given the comments in it, so we'll focus here on specific parts of the file rather than a full walkthrough. This app is intended to get the top comment of the top ten stories on Hacker News.
 
 ```hoon
 ::  Little app to demonstrate the structure of programs written with the
@@ -210,6 +210,6 @@ In a number of cases `D` here is going to be another `;<` rune. This is how you 
     ((ar ni):dejs:format top-stories-json)
 ```
 
-Continuing on, here is a use of `fetch-json` with the `;<` that is an example worth reading. `fetch-json` takes a `tape` and produces an `form:(async ,json)` which can be processed to obtained the data we want.
+Continuing on, here is a use of `fetch-json` with the `;<` that is an example worth reading. `fetch-json` takes a `tape` and produces a `form:(async ,json)` which can be processed to obtain the data we want.
 
-Armed with an understanding of `;<` the rest of `handle-poke` should be quite readable though you may need to consult the `dejs-soft:format` core to get a firm grasp on how json parsing works. Hopefully, you now have an understanding of the basic use of the `tapp` library. This style of gall app can result in code that, while potentially less flexible, is easier to read and reason about than a traditional gall app.
+Armed with an understanding of `;<`, the rest of `handle-poke` should be quite readable though you may need to consult the `dejs-soft:format` core to get a firm grasp on how JSON parsing works. Hopefully, you now have an understanding of the basic use of the `tapp` library. This style of Gall app can result in code that, while potentially less flexible, is easier to read and reason about than a traditional Gall app.
