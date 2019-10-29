@@ -111,7 +111,7 @@ One of the most common ways to use ford is through ford's runes, all of which be
 
 Another common use case is assembling and rendering markdown templates into a single HTML file, to be sent as an HTTP response in urbit's web server `%eyre`. It's important to keep in mind that %ford is quite flexible and generic, and is used in other parts of urbit -- such as the dojo -- that would not traditionally fall under the purview of a build system.
 
-### `/+` import from lib/
+### `/+` "faslus"
 
 The `/+` rune accepts a filename as an argument. It interprets that filename
 as a hoon source file within the `lib` directory. This is how we import a shared
@@ -162,7 +162,7 @@ Example:
 
 will load the `hep-to-cab` library from `~zod` at `%clay` revision `4`.
 
-### `/-` import from sur/
+### `/-` "fashep"
 
 The `/-` rune accepts a filename as an argument. It interprets that filename as
 a hoon source file within the `sur` directory. The `sur` directory contains
@@ -183,7 +183,7 @@ produces: `0v0`
 arguments can be specified. See the `/+` docs for more details about the syntax
 for those features.
 
-### `/~` twig by hand
+### `/~` "fassig"
 
 `/~  <twig>` produces a "horn" that evaluates a twig and places the product in
 the subject. Arbitrary hoon can be in the twig. A
@@ -212,7 +212,7 @@ produces: `%something`
 ```
 produces: `[%a %b]`
 
-### `//` include a file by relative path
+### `//` "fasfas"
 
 `// <rel-path>` parses `rel-path` as a hoon twig, and then adds the resulting
 twig to the subject. Note that the result type of this rune is not a horn, but
@@ -240,7 +240,7 @@ directories the way unix filesystems do. Whereas in unix, a directory is a
 special kind of file, in %clay it's just a path prefix, and there is no file
 stored at that path._
 
-### `/=` wrap a face around an included horn
+### `/=` "fastis"
 
 `/=` runs a horn (usually produced by another ford rune), takes the result of
 that horn, and wraps a face around it.
@@ -255,7 +255,7 @@ produces: `[0 1]`
 
 In wide-form, `/=` uses `=` as a delimiter: `/=foo=/~[a=0 b=1]`
 
-### `/:` evaluate at path, and `/<mark>/` render mark at current path
+### `/:` "fascol"
 
 `/:` takes a path and a horn, and evaluates the horn with the current path set to the supplied path.
 `/mar/` renders the mark 'mar' at the current path.
@@ -292,7 +292,7 @@ and the HTML itself.
 
 In wide-form, `/:` uses `:` as a delimiter: `/=page=/:/path/to/html/file:/mime/`
 
-### `/!mark/` evaluate as hoon, then pass through mark
+### `/!mark/` "faszap"
 
 Example:
 ```hoon
@@ -305,7 +305,7 @@ mime
 ```
 produces: `[[%text %plain ~] 15 'produces-a-cord']`
 
-### `/&` pass through a series of marks
+### `/&` "faspam"
 
 `/&` passes a horn through multiple marks, right-to-left. It has both a
 wide-form and a tall-form syntax. In wide-form, it takes a series of mark
@@ -349,7 +349,7 @@ just a mark: `/&c&b&/:path:/mark/`
 Tall-form `/&` takes only two arguments: a mark and a horn. The mark does not
 need to be enclosed in `/`'s: `/&  html  /elem/`
 
-### `/|` short-circuiting 'or'
+### `/|` "fasbar"
 
 `/|` takes a series of horns and produces the first one (left-to-right) that
 succeeds. If none succeed, it produces stack traces from all of its arguments.
@@ -374,7 +374,7 @@ file as hoon to be evaluated.
 Wide-form `/|` encloses its arguments in parentheses, with a single space as a delimiter:
 `/|(/!elem/ /elem/)`
 
-### `/_` unfiltered: run a horn on each file in the current directory
+### `/_` "fascab"
 
 `/_` can be used in two ways: filtered and unfiltered.
 
@@ -418,7 +418,7 @@ to a cord of markdown-formatted text.
 
 Wide-form filtered `/_` uses `_` as a delimiter: `/=  timed-posts  /_@da_/md/`
 
-### `/;` operate on
+### `/;` "fasmic"
 
 `/;` takes a twig and a horn. The twig should evaluate to a gate, which is then slammed
 with the result of the horn as its sample.
@@ -444,7 +444,7 @@ file-length
 ```
 produces the number of bytes in the file "/%/path/to/hoon/file."
 
-### `/,` switch by path
+### `/,` "fascom"
 
 `/,` is a switch statement, which picks a branch to evaluate based on
 whether the current path matches the path in the switch statement.
@@ -465,7 +465,7 @@ Example:
 
 produces: `'evaluate-me'`
 
-### `/.` list
+### `/.` "fasdot"
 
 Produce a null-terminated list from a sequence of horns, terminated by a `==`. No wide-form.
 
@@ -486,12 +486,7 @@ vanes
 ```
 produces: `[%ames %behn %clay %dill %eyre %ford %gall ~]`.
 
-### `/*` heterogeneous map
-
-_DEPRECATED_
-TODO: remove
-
-### `/^` cast
+### `/^` "fasket"
 
 `/^` takes a mold and a horn, and casts the result of the horn to the mold.
 
@@ -510,7 +505,7 @@ Without the cast, we wouldn't be able to access the 'i' face of the list.
 
 Wide-form `/^` uses `^` as a delimiter: `/^(list @)^/~[1 2 3 ~]`
 
-### `/#` insert dephash
+### `/#` "fashax"
 
 `/#` takes a horn and produces a cell of the dependency
 hash of the result of the horn, and the result itself.
@@ -531,7 +526,7 @@ This pattern is used in urbit's `tree` web publishing system.
 Wide-form `/#` does not need a delimiter:
 `/=  inline  /^  {dep/@uvH txt/@t}  /#/:/%/my-script:/js/`
 
-### `/$` process extra arguments
+### `/$` "fasbuc"
 
 `/$` will slam a gate on whatever extra arguments have been supplied to this build.
 At the moment, only HTTP requests forwarded by `%eyre` contain any extra arguments,
@@ -554,7 +549,7 @@ produces: [%who '~zod' %where /ford/pages/web %case 60]
 Wide-form `/$` takes its arguments inside brackets, like `/~`:
 `/=gas=/$[fuel:html]`
 
-### `/%` propagate extra arguments into renderers
+### `/%` "fascen"
 
 `/%` will forward extra arguments (usually from `%eyre`) on to any enclosed `/renderer/`'s. Without this,
 renderers that use `/$` to read the extra arguments will crash.
