@@ -18,7 +18,7 @@ These may not look like numbers, but they are.  Each urbit name is written in a 
 You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](@/using/develop.md#creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
 
 
-Once you're finished, you can [boot your very own ship](/install.md). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
+Once you're finished, you can [boot your very own ship](@/install.md). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
 
 ## Getting started
 
@@ -62,7 +62,7 @@ You'll see:
 17
 ```
 
-You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](docs/hoon/nouns/), but first let's write a very basic program.
+You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Chapter 1.2](@/docs/tutorials/hoon/nouns.md), but first let's write a very basic program.
 
 ## Generators
 
@@ -70,7 +70,7 @@ Generators are the most straightforward way to write Hoon programs. They are a c
 
 The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. Before creating generator you need to mount your `desk` to Unix, for So, to create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen` directory of your ship as a `.hoon` file. After this, you need to run `|commit %home` in dojo and the new file will be recognized by your ship. To run a generator named `mygen.hoon`, you would type `+mygen <argument>` in your ship's Dojo.
 
-If this doesn't make sense yet, that's okay. In the [next lesson](../list-of-numbers), we will walk you through an example `gate` that is run as a generator.
+If this doesn't make sense yet, that's okay. In the [next lesson](@/docs/tutorials/hoon/list-of-numbers.md), we will walk you through an example `gate` that is run as a generator.
 
 ## Text editors
 
