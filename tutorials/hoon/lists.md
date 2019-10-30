@@ -333,6 +333,9 @@ Then determine whether the following dojo expressions are valid, and if so, what
 > (add (lent b) (lent c))
 ```
 
+#### Exercise 1.5g
+Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may make use of the `flop` function.
+
 
 ## Exercise Solutions
 
@@ -449,3 +452,20 @@ This also fails for the same reason, but it is important to note that in some la
 7
 ```
 We see here the correct way to find the sum of the length of two lists of unknown type.
+
+#### 1.5g
+```hoon
+::  palindrome.hoon
+::
+|=  a=(list)
+=(a (flop a))
+```
+
+Run in dojo:
+
+```
+> +palindrome "urbit"
+%.n
+> +palindrome "racecar"
+%.y
+```
