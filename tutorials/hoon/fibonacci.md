@@ -1,6 +1,6 @@
 +++
-title = "1.4.1 Walkthrough: Fibonacci Sequence"
-weight = 7
+title = "1.5.1 Walkthrough: Fibonacci Sequence"
+weight = 9
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/fibonacci/"]
 +++

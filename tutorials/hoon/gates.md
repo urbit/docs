@@ -1,6 +1,6 @@
 +++
-title = "1.5 Gates (Hoon Functions)"
-weight = 8
+title = "1.4 Gates (Hoon Functions)"
+weight = 6
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gates/"]
 +++
