@@ -154,6 +154,10 @@ The `weld` function takes two lists and concatenates them:
 "Happy Birthday!"
 ```
 
+#### `weld` Exercise
+
+Without using `weld`, write a gate that takes a `[(list @) (list @)]` who product is the concatenation of these two lists.
+
 ### `snag`
 
 The `snag` function takes an atom `n` and a list, and returns the `n`th item of the list, where `0` is the first item:
@@ -310,6 +314,23 @@ Run in dojo:
 ```
 > +flop ~[11 22 33 44]
 ~[44 33 22 11]
+```
+
+#### `weld`
+```hoon
+::  weld.hoon
+::
+|=  [a=(list @) b=(list @)]
+|-  ^-  (list @)
+?~  a  b
+[i.a $(a t.a)]
+```
+
+Run in dojo:
+
+```
+> +weld [~[1 2 3] ~[3 4 5 6]]
+~[1 2 3 3 4 5 6]
 ```
 
 #### `snag`
