@@ -26,14 +26,14 @@ Giving your friends a piece of Urbit only takes a few minutes: send an invite po
 
 3. Click “Manage Invite Pools” to assign an invite pool to the planet. You may receive a notification that you need to assign your spawn proxy to the address of the Delegated Sending contract. This is so that the contract can send invites on your behalf when the recipient claims them.
 
-![](https://storage.cloud.google.com/media.urbit.org/docs/invite-pool/browser-point.png)
+![](https://media.urbit.org/docs/invite-pool/browser-point.png)
 
 4. Enter the planet name and the number of invites you’d like to assign them.
 
-![](https://storage.cloud.google.com/media.urbit.org/docs/invite-pool/browser-create-pool.png)
+![](https://media.urbit.org/docs/invite-pool/browser-create-pool.png)
 
 5. If you control the planet that you gave the invite pool to, it should be accessible from the Bridge homepage. Click the Planet, then “Invite” to create invites for your friends.
 
-![](https://storage.cloud.google.com/media.urbit.org/docs/invite-pool/browser-invite.png)
+![](https://media.urbit.org/docs/invite-pool/browser-invite.png)
 
 Your friend will get an email shortly with your gift of an identity for life!
