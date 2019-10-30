@@ -1,6 +1,6 @@
 +++
-title = "1.4 Lists"
-weight = 6
+title = "1.5 Lists"
+weight = 8
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/lists/"]
 +++
@@ -113,7 +113,7 @@ The `flop` function takes a list and returns it in reverse order:
 "Hello!"
 ```
 
-#### `flop` Exercise
+#### `flop` Exercise 1.5a
 
 Without using `flop`, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of this lesson.
 
@@ -144,7 +144,7 @@ The function passed to `sort` must produce a `flag`, i.e., `?`.
 
 ### `weld`
 
-The `weld` function takes two lists and concatenates them:
+The `weld` function takes two lists of the same type and concatenates them:
 
 ```
 > (weld ~[1 2 3] ~[4 5 6])
@@ -153,6 +153,10 @@ The `weld` function takes two lists and concatenates them:
 > (weld "Happy " "Birthday!")
 "Happy Birthday!"
 ```
+
+#### `weld` Exercise 1.5b
+
+Without using `weld`, write a gate that takes a `[(list @) (list @)]` who product is the concatenation of these two lists. There is a solution at the bottom of this lesson.
 
 ### `snag`
 
@@ -203,7 +207,7 @@ You can cast `b` to `(list)` to work around this:
 11
 ```
 
-#### `snag` exercise
+#### `snag` Exercise 1.5c
 
 Without using `snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of this lesson.
 
@@ -236,6 +240,10 @@ The `lent` function takes a list and returns the number of items in it:
 > (lent "Hello!")
 6
 ```
+
+#### `lent` Exercise 1.5d
+
+Without using `lent`, write a gate that takes a list and returns the number of item in it. There is a solution at the bottom of this lesson.
 
 ### `roll`
 
@@ -291,9 +299,47 @@ c
 
 The Hoon standard library and compiler are written in Hoon.  At this point, you know enough Hoon to be able to explore the standard library portions of `hoon.hoon` and find more functions relevant to lists.  [Look around in section `2b` (and elsewhere)](/docs/reference/library/2b/)
 
+## Additional Exercises
+
+#### Exercise 1.5e
+Without entering these expressions into the dojo, what are the products of the following expressions?
+```
+> (lent ~[1 2 3 4 5])
+```
+```
+> (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
+```
+```
+> (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
+```
+
+#### Exercise 1.5f
+First, bind these faces.
+```
+> =b ~['moon' 'planet' 'star' 'galaxy']
+> =c ~[1 2 3]
+```
+Then determine whether the following dojo expressions are valid, and if so, what they evaluate to.
+```
+> (weld b b)
+```
+```
+> (weld b c)
+```
+```
+> (lent (weld b c))
+```
+```
+> (add (lent b) (lent c))
+```
+
+#### Exercise 1.5g
+Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may make use of the `flop` function.
+
+
 ## Exercise Solutions
 
-#### `flop`
+#### `flop` 1.5a
 
 ```hoon
 ::  flop.hoon
@@ -312,7 +358,24 @@ Run in dojo:
 ~[44 33 22 11]
 ```
 
-#### `snag`
+#### `weld` 1.5b
+```hoon
+::  weld.hoon
+::
+|=  [a=(list @) b=(list @)]
+|-  ^-  (list @)
+?~  a  b
+[i.a $(a t.a)]
+```
+
+Run in dojo:
+
+```
+> +weld [~[1 2 3] ~[3 4 5 6]]
+~[1 2 3 3 4 5 6]
+```
+
+#### `snag` 1.5c
 
 ```hoon
 ::  snag.hoon
@@ -331,4 +394,78 @@ Run in dojo:
 
 > +snag [2 ~[11 22 33 44]]
 33
+```
+
+#### `lent` 1.5d
+
+```hoon
+::  lent.hoon
+::
+|=  a=(list)
+^-  @
+=/  b=@  0
+|-
+?~  a  b
+$(a t.a, b +(b))
+```
+
+Run in dojo:
+
+```
+> +lent ~[1 2 3 4 5]
+5
+> +lent "asdf"
+4
+```
+
+#### 1.5e
+
+Run in dojo:
+
+```
+> (lent ~[1 2 3 4 5])
+5
+> (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
+3
+> (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
+3
+```
+
+#### 1.5f
+
+Run in dojo:
+
+```
+> (weld b b)
+<|moon planet star galaxy moon planet star galaxy|>
+```
+```
+> (weld b c)
+```
+This will not run because `weld` expects the elements of both lists to be of the same type.
+```
+> (lent (weld b c))
+```
+This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
+```
+> (add (lent b) (lent c))
+7
+```
+We see here the correct way to find the sum of the length of two lists of unknown type.
+
+#### 1.5g
+```hoon
+::  palindrome.hoon
+::
+|=  a=(list)
+=(a (flop a))
+```
+
+Run in dojo:
+
+```
+> +palindrome "urbit"
+%.n
+> +palindrome "racecar"
+%.y
 ```

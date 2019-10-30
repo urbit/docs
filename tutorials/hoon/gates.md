@@ -1,6 +1,6 @@
 +++
-title = "1.5 Gates (Hoon Functions)"
-weight = 8
+title = "1.4 Gates (Hoon Functions)"
+weight = 6
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gates/"]
 +++
@@ -166,7 +166,7 @@ Let's look at the context of `inc`:
 
 This is exactly the default dojo subject, from before we put `inc` into the subject.  The `|=` expression defines the context as whatever the subject is.  This guarantees that the context has all the information it needs to have for the `$` arm to work correctly.
 
-### Exercise 1.5.1a
+### Exercise 1.4.1a
 
 Write a gate that takes an atom, `a=@`, and which returns double the value of `a`.  Bind this gate to `double` and test it in the dojo.  A solution is given at the end of this lesson.
 
@@ -256,7 +256,7 @@ Before finishing the lesson let's unbind `ten`:
 > =ten
 ```
 
-## Exercise 1.5a Solution
+## Exercise 1.4.1a Solution
 
 Write a gate that takes an atom, `a=@`, and which returns double the value of `a`.  Bind this gate to `double` and test it in the dojo.
 

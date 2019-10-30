@@ -1,6 +1,6 @@
 +++
-title = "1.5.1 Walkthrough: Recursion"
-weight = 9
+title = "1.4.1 Walkthrough: Recursion"
+weight = 7
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/recursion/"]
 +++
