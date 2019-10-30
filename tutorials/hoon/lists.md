@@ -207,7 +207,7 @@ You can cast `b` to `(list)` to work around this:
 11
 ```
 
-#### `snag` exercise
+#### `snag` Exercise
 
 Without using `snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of this lesson.
 
@@ -240,6 +240,10 @@ The `lent` function takes a list and returns the number of items in it:
 > (lent "Hello!")
 6
 ```
+
+#### `lent` Exercise
+
+Without using `lent`, write a gate that takes a list and returns the number of item in it. There is a solution at the bottom of this lesson.
 
 ### `roll`
 
@@ -352,4 +356,26 @@ Run in dojo:
 
 > +snag [2 ~[11 22 33 44]]
 33
+```
+
+#### `lent`
+
+```hoon
+::  lent.hoon
+::
+|=  a=(list)
+^-  @
+=/  b=@  0
+|-
+?~  a  b
+$(a t.a, b +(b))
+```
+
+Run in dojo:
+
+```
+> +lent ~[1 2 3 4 5]
+5
+> +lent "asdf"
+4
 ```
