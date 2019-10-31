@@ -84,7 +84,7 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 ~zod
 ```
 
-Recall from [lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.4](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
+Recall from [lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [lesson 2.1](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -124,7 +124,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `add`
 - `mul`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [lesson 1.5](@/docs/tutorials/hoon/gates.md).)
+As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [lesson 1.4](@/docs/tutorials/hoon/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
@@ -141,7 +141,7 @@ Wing expressions with multiple limbs are complex expressions.  Examples:
 
 Hoon is a statically typed language.  You'll learn more about the type system later in the chapter.  For now, just know that Hoon's type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag).  Each of these symbols can be used as a stand-alone expression of Hoon.  In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
 
-They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in [lesson 2.6](@/docs/tutorials/hoon/structures-and-complex-types.md).)
+They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in [lesson 2.3](@/docs/tutorials/hoon/structures-and-complex-types.md).)
 
 ### Rune Expressions
 

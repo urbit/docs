@@ -454,6 +454,32 @@ Without using the dojo, for each fragment below provide the address relative to 
 
 That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
 
+### Exercise 1.2d
+
+Draw out a binary tree diagram for each of the following nouns. Try to do this without using the dojo to simplify the expressions.
+
+```
+1. [[2 3] 4 [5 6 7]]
+2. [[[5 6 7] 8 9] 10 11 [12 13]]
+```
+
+### Exercise 1.2e
+
+Write the following binary tree as a noun.
+
+```
+       .
+      / \
+     /   \
+    .     .
+   / \   / \
+  .   3 4   .
+ / \       / \
+1   2     .   7
+         / \
+        5   6
+```
+
 ## Exercise Answers
 
 ### 1.2a
@@ -479,3 +505,52 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, 
 + +14
 + +15
 + +31
+
+### 1.2d
+
+1. Dojo simplifies the expression
+```
+> [[2 3] 4 [5 6 7]]
+[[2 3] 4 5 6 7]
+```
+which has the following tree:
+```
+      .
+     / \
+    /   \
+   .     .
+  / \   / \  
+ 2   3 4   .
+          / \
+         5   .
+            / \
+           6   7
+```
+
+2. Dojo simplifies the expression
+
+```
+> [[[5 6 7] 8 9] 10 11 [12 13]]
+[[[5 6 7] 8 9] 10 11 12 13]
+```
+which has the following tree:
+```
+         .
+         /\
+        /  \
+       /    \
+      .      .
+     / \    / \
+    /   .  10  .
+   /   / \    / \
+  .   8   9  11  .
+ / \            / \
+5   .          12  13
+   / \
+  6   7
+```
+
+### 1.2e
+```
+[[[1 2] 3] 4 [5 6] 7]
+```
