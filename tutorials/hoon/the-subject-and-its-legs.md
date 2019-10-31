@@ -11,7 +11,7 @@ Hoon isn't an object-oriented programming language; it's a "subject-oriented" pr
 
 For now we can say three things about the subject: (1) every Hoon expression is evaluated relative to some subject; (2) roughly, the subject defines the environment in which a Hoon expression is evaluated; and (3) the subject is a noun.
 
-In fact, you already created some subjects in lesson 1.2 when you used `+` to return a fragment of a noun:
+In fact, you already learned about the noun address system in [Lesson 1.2](../nouns.md) when you used `+` to return a fragment of a noun:
 
 ```
 > +1:[[11 22] 33]
@@ -79,7 +79,7 @@ Sometimes a programmer simply wants to produce a value from the subject.  In oth
 
 ### Address-based Limb Expressions
 
-A limb expression is an expression of Hoon that resolves to a limb of the subject.  An address-based limb expression evaluates to a limb of the subject based on its noun address.  (You learned about the noun address system in the last lesson.)
+A limb expression is an expression of Hoon that resolves to a limb of the subject.  An address-based limb expression evaluates to a limb of the subject based on its noun address.
 
 In the following you'll learn the various limb expressions available in Hoon, as well as how they work when they resolve to legs.  First we'll explain the limb expressions that return a leg according to subject address.
 
@@ -176,6 +176,27 @@ You can think of this sort of lark series -- e.g., `+>-<` -- as indicating a bin
         *Head*   Tail
 ```
 
+#### Exercise 1.6a
+1. Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
+```
+         .
+         /\
+        /  \
+       /    \
+      .      .
+     / \    / \
+    /   .  10  .
+   /   / \    / \
+  .   8   9  11  .
+ / \            / \
+5   .          12  13
+   / \
+  6   7
+```
+2. Use a lark expression to obtain the value 9 in the following noun: `[[5 6] 7 [[8 9 10] 3] 2] 1]`.
+
+Solutions to these exercises may be found at the bottom of this lesson.
+
 #### `&` and `|` operators
 
 `&n` returns the `n`th item of a list that has at least `n + 1` items.  `|n` returns everything after `&n`.
@@ -223,9 +244,9 @@ The list items can themselves be cells:
 ['third' %pair]
 ```
 
-We can give an alternate, recursive definition of `&n` for all positive integers `n`.  In the base case, `&1` is equivalent to `+2`.  For the generating case, assume that `&(n - 1)` is equivalent to `+k`.  Then `&n` is equivalent to `+((k x 2) + 2)`.
+We can give an alternate, recursive definition of `&n` for all positive integers `n`.  In the base case, `&1` is equivalent to `+2`.  For the generating case, assume that `&(n - 1)` is equivalent to `+k`.  Then `&n` is equivalent to `+((k × 2) + 2)`.
 
-For example, let `n` be 4.  What is `&4`?  `&3` is equivalent to `+14`.  `(14 x 2) + 2` is `30`, so `&4` is equivalent to `+30`.
+For example, let `n` be 4.  What is `&4`?  `&3` is equivalent to `+14`.  `(14 × 2) + 2` is `30`, so `&4` is equivalent to `+30`.
 
 `|n` returns the rest of the list after `&n`:
 
@@ -243,7 +264,7 @@ For example, let `n` be 4.  What is `&4`?  `&3` is equivalent to `+14`.  `(14 x 
 ~
 ```
 
-As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `+3`.  In the generating case, assume that `|(n - 1)` is equivalent to `+k`.  Then `|n` is equivalent to `+((k x 2) + 1)`.
+As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `+3`.  In the generating case, assume that `|(n - 1)` is equivalent to `+k`.  Then `|n` is equivalent to `+((k × 2) + 1)`.
 
 ### Other Limb Expressions: Names
 
@@ -654,3 +675,18 @@ You can also use more complex wings and modify their values as well:
 
 At this point you should have at least a rough idea of what the subject is, and a fair understanding of how to get legs of the subject using wings.  But legs are only one kind of limb -- we'll talk about arms in the next lesson.
 
+## Exercise Solutions
+
+### Exercise 1.6a
+1.
+```
+> =b [[[5 6 7] 8 9] 10 11 12 13]
+> ->-:b
+8
+```
+2.
+```
+> =c [[5 6] 7 [[8 9 10] 3] 2]
+> +>-<+<:c
+9
+```
