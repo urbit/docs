@@ -463,6 +463,23 @@ Draw out a binary tree diagram for each of the following nouns. Try to do this w
 2. [[[5 6 7] 8 9] 10 11 [12 13]]
 ```
 
+### Exercise 1.2e
+
+Write the following binary tree as a noun.
+
+```
+       .
+      / \
+     /   \
+    .     .
+   / \   / \
+  .   3 4   .
+ / \       / \
+1   2     .   7
+         / \
+        5   6
+```
+
 ## Exercise Answers
 
 ### 1.2a
@@ -531,4 +548,9 @@ which has the following tree:
 5   .          12  13
    / \
   6   7
+```
+
+### 1.2e
+```
+[[[1 2] 3] 4 [5 6] 7]
 ```
