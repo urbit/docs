@@ -454,6 +454,15 @@ Without using the dojo, for each fragment below provide the address relative to 
 
 That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
 
+### Exercise 1.2d
+
+Draw out a binary tree diagram for each of the following nouns.
+
+```
+1. [[2 3] 4 [5 6 7]]
+2. [[[5 6 7] 8 9] 10 11 [12 13]]
+```
+
 ## Exercise Answers
 
 ### 1.2a
@@ -479,3 +488,35 @@ That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, 
 + +14
 + +15
 + +31
+
+### 1.2d
+
+1.
+```
+      .
+     / \
+    /   \
+   .     .
+  / \   / \  
+ 2   3 4   .
+          / \
+         5   .
+            / \
+           6   7
+```
+
+2.
+```
+         .
+        / \
+       /   \
+      .     .
+     / \   / \
+    .   9 10  .
+   / \       / \
+  .   8    11   .
+ / \           / \
+5   .         12 13
+   / \
+  6   7
+```
