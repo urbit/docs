@@ -58,7 +58,7 @@ Let's create a subject with some computations:
 
 ## Limbs of the Subject
 
-The subject is a noun, just like any other piece of Hoon data.  In the last lesson we discussed how any noun can be understood as a binary tree.  E.g., `[[4 5] [6 [14 15]]]`:
+The subject is a noun, just like any other piece of Hoon data.  In Lesson 1.2 we discussed how any noun can be understood as a binary tree.  E.g., `[[4 5] [6 [14 15]]]`:
 
 ```
      [[4 5] [6 [14 15]]]
