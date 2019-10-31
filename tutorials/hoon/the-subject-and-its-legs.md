@@ -675,6 +675,24 @@ You can also use more complex wings and modify their values as well:
 
 At this point you should have at least a rough idea of what the subject is, and a fair understanding of how to get legs of the subject using wings.  But legs are only one kind of limb -- we'll talk about arms in the next lesson.
 
+#### Exercise 1.6b
+Enter the following into dojo:
+```
+=a [[[b=%bweh a=%.y c=8] b="no" c="false"] 9]
+```
+Test your knowledge from this lesson by evaluating the following expressions and then checking your answer in the dojo or see the solutions below.
+
+1. `> b:a(a [b=%skrt a="four"])`
+2. `> ^b:a(a [b=%skrt a="four"])`
+3. `> ^^b:a(a [b=%skrt a="four"])`
+4. `> b.a:a(a [b=%skrt a="four"])`
+5. `> a.a:a(a [b=%skrt a="four"])`
+6. `+.a:a(a [b=%skrt a="four"])`
+7. `a:+.a:a(a [b=%skrt a="four"])`
+8. `a(a a)`
+9. `b:-<.a(a a)`
+10. How many times does the atom `9` appear in `a(a a(a a))`?
+
 ## Exercise Solutions
 
 ### Exercise 1.6a
@@ -689,4 +707,20 @@ At this point you should have at least a rough idea of what the subject is, and 
 > =c [[5 6] 7 [[8 9 10] 3] 2]
 > +>-<+<:c
 9
+```
+
+### Exercise 1.6b
+1. `%bweh`
+2. `"no"`
+3. Error: `ford: %slim failed:`
+4. `%skrt`
+5. `"four"`
+6. `a="four"` - Note that this is different from the above!
+7. `"four"`
+8. `[[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"]9]`
+9. `%bweh`
+10. `9` appears 3 times:
+```
+> a(a a(a a))
+[[[ b=%bweh a [[[b=%bweh a=[[[b=%bweh a=%.y c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9] c=8] b="no" c="false"] 9]
 ```
