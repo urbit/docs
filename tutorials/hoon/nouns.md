@@ -510,8 +510,7 @@ which has the following tree:
            6   7
 ```
 
-2.
-Dojo simplifies the expression
+2. Dojo simplifies the expression
 
 ```
 > [[[5 6 7] 8 9] 10 11 [12 13]]
