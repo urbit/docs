@@ -181,7 +181,7 @@ To reinforce your newfound understanding of arms and cores, let's go over the va
 
 ### Address-Based Wings
 
-In the last lesson, you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
+In the [previous lesson](@../the-subject-and-its-legs.md), you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
 Let's use `-.c` to look at the head of `c`, i.e., the battery of the core:
 
@@ -299,7 +299,7 @@ Hoon doesn't know whether `double` is a face or an arm name until it conducts a 
 24
 ```
 
-### Modifying a Core
+### Modifying a Core's Payload
 
 We can produce a modified version of the core `c` in which `a` and `b` have different values.  A core is just a noun in the subject, so we can modify it in the way we learned to modify legs in the last lesson.  To change `a` to `99`, use `c(a 99)`:
 
@@ -360,6 +360,15 @@ We can make multiple changes to `c` at once:
 > sum:c
 99
 ```
+
+#### Exercise 1.7a
+Using the technique in this section, lets guess on how to make a new core `d` by modifying `c` so that the arm `double` multiplies `-.b` and `+.b`:
+```
+> =d c(double (mul -.b +.b))
+> d
+528
+```
+Why is `d` simply the product of `(mul -.b +.b)` instead of the core `c` with the `double` arm replaced by `++  double  (mul -.b +.b)`?
 
 ### Arms on the Search Path
 
@@ -486,3 +495,8 @@ You can now unbind `c` in the dojo -- this will help to keep your dojo subject t
 > c
 -find.c
 ```
+
+## Exercise solutions
+
+### Exercise 1.7a
+First, 
