@@ -429,7 +429,6 @@ Let's take a quick look at the battery of one core in the dojo to show that this
     ?:  =(a +(b))  b
     $(b +(b))
   --
-
 ```
 
 This core has one arm `dec` which implements decrement. If we look at the head of the core we'll see the Nock.
@@ -482,6 +481,30 @@ Let's take a quick look at how cores can be combined to build up larger structur
 
 Here you can see the style of wrapping one core in another. This technique is used frequently in Hoon, particularly in the standard library. `dec` is used in the subsequent core. This can be a useful code organization technique. Gates and Traps are both special kinds of cores, as you will see in later lessons.
 
+#### Exercise 1.7b
+
+When you compose two cores, as done above, which of the following describes the resulting subject?
+ + The first core is in the payload of the second core.
+ + The first core is in the battery of the second core.
+ + The resulting core is equivalent to the following core:
+
+```hoon
+|%
+++  dec
+  |=  a=@
+  ?<  =(0 a)
+  =+  b=0
+  |-  ^-  @
+  ?:  =(a +(b))  b
+  $(b +(b))
+++  add
+  |=  [a=@ b=@]
+  ^-  @
+  ?:  =(0 a)  b
+  $(a (dec a), b +(b))
+--
+```
+
 
 ## Summary
 
@@ -499,4 +522,7 @@ You can now unbind `c` in the dojo -- this will help to keep your dojo subject t
 ## Exercise solutions
 
 ### Exercise 1.7a
-First, 
+Asked David
+
+### Exercise 1.7b
+Asked David.
