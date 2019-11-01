@@ -457,7 +457,7 @@ This core has one arm `dec` which implements decrement. If we look at the head o
  
 Again, being able to read Nock is not essential to understanding Hoon.
 
-Let's take a quick look at how cores can be combined to build up larger structures.
+Let's take a quick look at how cores can be combined with `=>` to build up larger structures.
 
 ```hoon
 =>
