@@ -599,3 +599,7 @@ principle that heaviest, or most complex, expressions should go to the bottom.
 The key we are looking up in our new `map` we've created from `my-json` is
 `%title`, which is an element in the original source, to produce the final
 result of the generator.
+
+## Conclusion
+
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
