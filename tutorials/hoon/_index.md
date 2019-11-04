@@ -55,7 +55,7 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 
 ## Other Resources
 
-Want to know how to style your code? Check out the [style guide](../style).
+Want to know how to style your code? Check out the [style guide](style).
 
 Consult the [standard library documentation](@/docs/reference/library/_index.md) or [rune reference](@/docs/reference/hoon-expressions/_index.md) to look up any unknown rune or standard library function you don't understand.
 
