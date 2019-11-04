@@ -404,11 +404,11 @@ In the above example we created a door `c` with sample `b=@` and found that the 
   ++  greater  |=(a=@ (gth a b))
   --
 ```
-Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about types are inferred in [Lesson 2.2](@docs/tutorials/hoon/type-checking-and-type-inference).
+Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in [Lesson 2.2](@docs/tutorials/hoon/type-checking-and-type-inference).
 
 ### Doors in the Hoon Standard Library
 
-Back in lesson 1.2 you were introduced to atom auras.  (Recall that an aura for an atom is metadata used by Hoon that defines how that atom is interpreted and pretty-printed.)  Atoms are unsigned integers, but sometimes programmers want to work with fractions and decimal points.  Accordingly, there are auras for [floating point numbers](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Let's work with the aura for doing [single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) floating point arithmetic: `@rs`.
+Back in lesson 1.2 you were introduced to atom auras, which are metadata used by Hoon that defines how that atom is interpreted and pretty-printed.  Atoms are unsigned integers, but sometimes programmers want to work with fractions and decimal points.  Accordingly, there are auras for [floating point numbers](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Let's work with the aura for doing [single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) floating point arithmetic: `@rs`.
 
 The `@rs` has its own literal syntax.  These atoms are represented as a `.` followed by digits, and possibly another `.` (for the decimal point) and more digits.  For example, the float 3.14159 can be represented as a single-precision (32 bit) float with the literal expression `.3.14159`.
 
@@ -509,8 +509,4 @@ Can we mutate the `rs` door so that its sample is `%u`?  Let's try it:
 
 Oops!  Why didn't this work?  Remember, `rs` isn't itself a door; it's an arm that produces a door.  The `rs` in `rs(r %u)` resolves to the nameless parent core of `rs`, and the search for `r` commences there.  But that face can't be found in that parent core -- it's not where we want to look.
 
-It's better simply to use the `~(arm rs arg)` syntax to replace the value of the `rs` door sample with `arg`./+
-
-## Conclusion
-
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.  Continue to [Chapter 2](atoms-auras-and-simple-cell-types) to get started.
+It's better simply to use the `~(arm rs arg)` syntax to replace the value of the `rs` door sample with `arg`.
