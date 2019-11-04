@@ -31,7 +31,7 @@ The wizard prompts you with three questions.
 With the questions answered, you now have two halves of a default app:
 
 - `urbit/app/testing.hoon`, which contains your Hoon code
-- `tile/tile.js`, which is the source file React uses to build `urbit/app/testing/tile/js/testing.hoon`
+- `tile/tile.js`, which is the source file React uses to build `urbit/app/testing/js/tile.js`
 
 Let's test that the default app is set up correctly, so that we make an app of our own.
 
@@ -163,7 +163,7 @@ In your pier, replace the code in `urbit/app/testing.hoon` with the Hoon code be
 --
 ```
 
-Now, place the code below into `/tile/tile.js`. (`npm` should automatically update `urbit/app/testing/js/tile.js` if you have run `npm run serve`; else, you'll need to `npm run build` again.) Once you've replaced the code in both files, run `|commit %home` in the Dojo.
+Now, place the code below into `tile/tile.js`. (`npm` should automatically update `urbit/app/testing/js/tile.js` if you have run `npm run serve`; else, you'll need to `npm run build` again.) Once you've replaced the code in both files, run `|commit %home` in the Dojo.
 
 ``` javascript
 import React, { Component } from 'react';
