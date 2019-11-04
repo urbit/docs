@@ -36,7 +36,7 @@ While the inner workings of a build system may be quite complex, for most smalle
 
 ## Ford Features
 
-In this section we cover the main features of the Ford build system that distinguish itfrom other build systems. We do not yet speak of how they are implemented, which will be covered to some extent later in the lesson. We also remind you that Ford has additional capabilities that are not covered in this lesson.
+In this section we cover the main features of the Ford build system that distinguish it from other build systems. We do not yet speak of how they are implemented, which will be covered to some extent later in the lesson. We also remind you that Ford has additional capabilities that are not covered in this lesson.
 
 The main features of Ford that distinguish it from most build systems that we wish to emphasize in this section are the following:
 
@@ -48,7 +48,7 @@ The main features of Ford that distinguish it from most build systems that we wi
 
  To some extent these features overlap depending on how you split hairs. If you are already familiar with build systems, know that the capabilities of Ford are similar to those of [Shake](https://shakebuild.com/) and [Nix](https://nixos.org/nix/), but still differs from them in some key aspects.
 
- We will also give an overview of how to use Ford for unit testing, as that is what we will be doing in the following lesosn.
+ We will also give an overview of how to use Ford for unit testing, as that is what we will be doing in the following lesson.
 
 
 ### Strongly and Dynamically Typed
@@ -69,7 +69,7 @@ That Ford is a monadic build system essentially means that dependencies are gene
 
 ### Referentially transparent
 
-Ford is [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). The exact meaning of this depends on who you ask, but for us it means that one may replace a reference to a build (which in Ford's case is something known as a schematic, see below) with the result of that build without changing the output of the overall build. What this ultimately is that builds are deterministic, and so the same build ran on the same source files will produce the same output every time. Put another way, the output is a pure function of the input and. If you've never dealt with build systems before, the idea that things could work any other way may sound absurd!
+Ford is [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). The exact meaning of this depends on who you ask, but for us it means that one may replace a reference to a build (which in Ford's case is something known as a schematic, see below) with the result of that build without changing the output of the overall build. What this ultimately means is that builds are deterministic, and so the same build of the same source files will produce the same output every time. Put another way, the output is a pure function of the input. If you've never dealt with build systems before, the idea that things could work any other way may sound absurd!
 
 For a typical applicative build system, such as `make`, the build instructions contain a static list of dependencies. These dependencies may or may not be written with a restriction on a particular version, and even for a fixed version number there may still be multiple builds for any number of reasons (like poor version control practices). For example, you may run a build with a package with `make` that has `gizmo` named as a dependency, with no version restriction. On one system, you may have `gizmo` v1.0 installed, while on another you may have `gizmo` 1.1 installed. The build system makes no distinction between these versions - all it sees is that it needs `gizmo`, and pays no attention to the version. Thus, building the same source files with the same build instructions on two different system may result in two slightly different outputs.
 
@@ -93,7 +93,7 @@ It is important for us to note that Ford is _not_ used to build vanes. Vanes are
 
 ## Using Ford
 
-Now that we have covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used arms.
+Having covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used arms.
 
 ### Data types
 
@@ -115,8 +115,8 @@ A `schematic`, found in `zuse.hoon`, is a set of build instruction for Ford. It 
 
 Some examples of subtypes include:
  - `%list` - a list of schematics to build.
- - `%core` - a Clay path to a Hoon source file to build
- - `%call` - a schematic consisting of two sub-schematics, one of which produces a date and a second that produces a sample. It then runs the gate on the sample, producing a vase of the result, tagged with the mark `%noun`.
+ - `%core` - a Clay path to a Hoon source file to build.
+ - `%call` - a schematic consisting of two sub-schematics, one of which produces a gate and a second that produces a sample. It then runs the gate on the sample, producing a vase of the result, tagged with the mark `%noun`.
  - `%scry` - look up a value from the Urbit namespace.
 
  Schematics are only ever sent to Ford by another vane. Userspace apps do not directly create schematics.
