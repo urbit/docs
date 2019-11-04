@@ -74,7 +74,7 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
   ==
 --
 |_  [bol=bowl:gall ~]
-+*  this  .
+++  this  .
 ++  bound
   |=  [wir=wire success=? binding=binding:eyre]
   ^-  (quip move _this)
