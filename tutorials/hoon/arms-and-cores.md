@@ -475,7 +475,7 @@ Here you can see the style of wrapping one core in another. This technique is us
 
 ## Casts
 
-Once again we remind you it's a good idea when writing your code to cast your data structures often. The Hoon type inferencer is quiet naive and while it will often correctly understand what you mean, but manually casting can be beneficial both for someone reading the code and for helping you debug problems.
+Once again we remind you it's a good idea when writing your code to cast your data structures often. The Hoon type inferencer is quite naive and while it will often correctly understand what you mean, but manually casting can be beneficial both for someone reading the code and for helping you debug problems.
 
 ## Summary
 
