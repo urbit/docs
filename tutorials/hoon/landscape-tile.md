@@ -28,7 +28,12 @@ The wizard prompts you with three questions.
 
 ### Testing the Default App
 
-With the questions answered, you now have two halves a default app that comes with the repo: `testing.hoon` and `tiles/tile.js`. Let's test of that the default app is set up correctly, so that we make an app of our own.
+With the questions answered, you now have two halves of a default app:
+
+- `urbit/app/testing.hoon`, which contains your Hoon code
+- `tile/tile.js`, which is the source file React uses to build `urbit/app/testing/js/tile.js`
+
+Let's test that the default app is set up correctly, so that we make an app of our own.
 
 Run `npm run build`. This copies files into the pier that you linked into the `/app` directory of your desk. Your Hoon file will be `/app/testing.hoon`, and your js file will be `/app/testing/js/tile.js`.
 
@@ -48,7 +53,7 @@ Let's examine a sample tile that has different Hoon code from the default, to ex
 
 `tile.js` does the actual front-end rendering using React. The details of React are left for the reader to learn on their own, but you can see here how to store data in the state. That tile will be rendered every time the state gets updated. Calling `api.action` will send a JSON poke to our gall app. We have attached the function where we use that to the button on the tile, so it will get run when the button is clicked.
 
-In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
+In your pier, replace the code in `urbit/app/testing.hoon` with the Hoon code below.
 
 ``` hoon
 /+  *server
@@ -158,7 +163,7 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
 --
 ```
 
-Now, replace the code below is the contents of `/app/testing/js/tile.js` with the code below. Once you've replaced the code in both files, run `|commit %home` in the Dojo.
+Now, place the code below into `tile/tile.js`. (`npm` should automatically update `urbit/app/testing/js/tile.js` if you have run `npm run serve`; else, you'll need to `npm run build` again.) Once you've replaced the code in both files, run `|commit %home` in the Dojo.
 
 ``` javascript
 import React, { Component } from 'react';
