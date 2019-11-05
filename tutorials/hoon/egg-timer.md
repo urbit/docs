@@ -1,5 +1,5 @@
 +++
-title = "2.6.1 Gall Walkthrough: Egg Timer"
+title = "2.7.1 Gall Walkthrough: Egg Timer"
 weight = 36
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/egg-timer/"]
