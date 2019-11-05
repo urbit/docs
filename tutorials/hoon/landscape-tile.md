@@ -133,7 +133,7 @@ In your pier, replace the code in `/app/testing.hoon` with the Hoon code below.
   ==
 ++  coup-helm-hi
   |=  [pax=path cop=(unit tang)]
-  ~&  ["Coup recieved" pax]
+  ~&  ["Coup received" pax]
   :_  this
   ?~  cop
     (send-status-diff "successfully found {<pax>}")
