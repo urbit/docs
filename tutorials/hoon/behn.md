@@ -1,6 +1,6 @@
 +++
-title = "Behn"
-weight = 0
+title = "2.6 Behn"
+weight = 33
 template = "doc.html"
 +++
 
