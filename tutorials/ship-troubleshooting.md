@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["docs/using/ship-troubleshooting/"]
 +++
 
-Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you. That's ok! This document is intended to help you in such an event.
+Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.
 
 ## Table of Contents
 
