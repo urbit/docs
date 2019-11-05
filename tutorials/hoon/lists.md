@@ -33,6 +33,10 @@ To make a list, let's cast nouns to the `(list @)` ("list of atoms") type.
 
 Notice how the last Dojo command has a different construction, with the `~` in front of the bracketed items. This is just another way of writing the same thing; `~[1 2]` is semantically identical to `[1 2 ~]`.
 
+## An aside about Casting
+
+The use of casts in this example is helpful to explain to the Hoon compiler exactly what it is we mean with these data structures. In this case, we are telling it they are all lists of atoms. Get in the habit of casting your data structures, as it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
+
 Let's make a list whose items are of the `@t` string type:
 
 ```

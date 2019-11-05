@@ -473,6 +473,9 @@ Let's take a quick look at how cores can be combined to build up larger structur
 
 Here you can see the style of wrapping one core in another. This technique is used frequently in Hoon, particularly in the standard library. `dec` is used in the subsequent core. This can be a useful code organization technique. Gates and Traps are both special kinds of cores, as you will see in later lessons.
 
+## Casts
+
+Once again we remind you it's a good idea when writing your code to cast your data structures often. The Hoon type inferencer is quite naive and while it will often correctly understand what you mean, manually casting can be beneficial both for someone reading the code and for helping you debug problems.
 
 ## Summary
 
