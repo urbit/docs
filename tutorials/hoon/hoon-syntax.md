@@ -151,7 +151,7 @@ Expressions with a rune at the beginning are rune expressions.  Most runes are u
 
 Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create cores, and the runes in the `:` family are all used to create cells.
 
-Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](@/docs/reference/hoon-expressions/rune/).  Nevertheless, there are some general principles that hold of all rune expressions.
+Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](@/docs/reference/hoon-expressions/rune/_index.md).  Nevertheless, there are some general principles that hold of all rune expressions.
 
 Runes generally do not need to be closed. In other languages you'll see an abundance of terminators, such as opening and closing parentheses, and this way of doing this is largely absent from Urbit. That's because all runes take a fixed number of children. Children can themselves be runes (with more children), and Hoon programs work by chaining through these series of children until a value -- not another rune -- is arrived at. This makes Hoon code nice and neat to look at.
 
@@ -309,7 +309,7 @@ Standard library functions are often built with other standard library functions
 
 The Hoon syntax can be intimidating for the uninitiated, so it's good to remember where you can look up expressions can be found. The [reference section](@/docs/reference/) itself is a good place to find the reference materials that you need. These children sections are likely to be useful:
 
-- The [Runes](@/docs/reference/hoon-expressions/rune/) page will show you how to use any Hoon rune.
+- The [Runes](@/docs/reference/hoon-expressions/rune/_index.md) page will show you how to use any Hoon rune.
 - The [Cheat sheet](@/docs/reference/cheat-sheet.md) is a more compact place to look up rune expressions.
 - The [Standard library](@/docs/reference/library.md) section has its sub-pages arranged by category. So arithmetic functions, for example, are all found on the same page.
 - The [Hoon Style Guide](@/docs/tutorials/hoon/style.md) will show you how to write your Hoon code so that it's idiomatic and easily understood by others.
