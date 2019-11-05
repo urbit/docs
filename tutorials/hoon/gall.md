@@ -1,5 +1,5 @@
 +++
-title = "2.6 Gall"
+title = "2.7 Gall"
 weight = 35
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gall/"]
