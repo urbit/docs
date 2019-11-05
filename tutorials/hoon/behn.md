@@ -36,7 +36,7 @@ We review here some of the commonly used types in the Behn vane as found in `beh
 ```
 A `timer` consists of a `@da` (an absolute date at which the timer will go off) and a `duct` (representing the causal stack that began the timer). As part of its state, `Behn` keeps track of a list of `timer`s:
 #### `behn-state`
-```
+```hoon
 +$  behn-state
   $:  timers=(list timer)
       unix-duct=duct
@@ -49,12 +49,12 @@ We see that a `behn-state` is a list of all `timers` that `Behn` is currently ke
 #### `move`
 
 Arvo vanes communicate via `moves`:
-```
+```hoon
 +$  move  [p=duct q=(wind note gift:able)]
 ```
 A `duct` is a call stack, which is a list of `path`s that represent a step in a causal chain of events. A `wind` is a kernel action. See the following arm from `arvo.hoon`:
 
-```
+```hoon
 ++  wind                                                ::  new kernel action
           |*  [a=mold b=mold]                           ::  forward+reverse
           $%  [%pass p=path q=a]                        ::  advance
@@ -76,13 +76,13 @@ This arm is what Behn uses to tell the unix timer when to `%wake` Behn.
 This arm is a dry gate that takes in a `timer` and adds it to the list of `timer`s in the `state`. ``++set-timer`` automatically places the new `timer` in chronological order, so that the timer at the front of the list of `timer`s is the `timer` that will expire the soonest.
 
 #### ++wait
-```
+```hoon
 ++  wait  |=(date=@da set-unix-wake(timers.state (set-timer [date duct])))
 ```
 This arm is called when Behn is `%pass`ed a `note` telling Behn to `%wait`. This adds a `timer` to the list of `timer`s in the `state` and correspondingly tells the unix timer to tell Behn when the specified time has passed.
 
 #### ++rest
-```
+```hoon
 ++  rest  |=(date=@da set-unix-wake(timers.state (unset-timer [date duct])))
 ```
 This undoes a `++wait` operation. That is, `++rest` removes a timer from the list of `timer`s.
@@ -92,7 +92,7 @@ This arm is ultimately called by the unix timer to let Behn know that a previous
 
 #### ++born
 
-```
+```hoon
 ++  born  set-unix-wake(next-wake.state ~, unix-duct.state duct)
 ```
 This arm is called when Behn is first launched. It gives Behn a `duct` to the unix timer and initializes the `behn-state` with the face `state` with a null list of `timer`s.
