@@ -26,8 +26,7 @@ a
 ```
 
 This generator takes one argument of any noun and produces it without any
-changes. If we put this into a file named `echo.hoon` in the `/gen` directory,
-we can run it from the [Dojo](@/using/operations/_index.md):
+changes. Once you put this into a file named `echo.hoon` in the `/gen` directory, you must make your ship recognize the change by inputting `|commit %home` in the dojo. You can then run it from the dojo:
 
 ```
 > +echo 42

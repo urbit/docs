@@ -4,8 +4,6 @@ weight = 39
 template = "doc.html"
 +++
 
-# Unit Testing with Ford
-
 In this walkthrough we will show how to use Ford as a testing suite.
 
 First we will cover the essential molds, arms, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).

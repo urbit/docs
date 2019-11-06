@@ -24,12 +24,12 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [1.2 Nouns](nouns)
 - [1.3 Hoon Syntax](hoon-syntax)
 - [1.3.1 Walkthrough: Conditionals](conditionals)
-- [1.4 Lists](lists)
-- [1.4.1 Walkthrough: Fibonacci Sequence](fibonacci)
-- [1.5 Gates (Hoon Functions)](gates)
-- [1.5.1 Walkthrough: Recursion](recursion)
+- [1.4 Gates (Hoon Functions)](gates)
+- [1.4.1 Walkthrough: Recursion](recursion)
+- [1.5 Lists](lists)
+- [1.5.1 Walkthrough: Fibonacci Sequence](fibonacci)
 - [1.6 The Subject and Its Legs](the-subject-and-its-legs)
-- [1.6.1 Walkthrough: Ackerman Function](ackermann)
+- [1.6.1 Walkthrough: Ackermann Function](ackermann)
 - [1.7 Arms and Cores](arms-and-cores)
 - [1.7.1 Walkthrough: Caesar Cipher](caesar)
 - [1.8 Doors](doors)
@@ -52,6 +52,7 @@ Chapter 2 covers the type system, and writing apps, and the workings of the Arvo
 - [2.7.2 Gall: Async Monad](async-monad)
 - [2.8 Ford](ford)
 - [2.8.1 Walkthrough Ford Testing Suite Walkthrough](test-sets)
+- [2.9.1 Walkthrough: Landscape Tile](landscape-tile)
 
 
 ## Other Resources
@@ -63,4 +64,4 @@ Consult the [standard library documentation](@/docs/reference/library/_index.md)
 As you work your way through these lessons you may want to work on example problems from the [Hoon Workbook](@/docs/tutorials/hoon/workbook/_index.md) for practice.  Once you finish the lessons here you may want to write more versatile Hoon programs which can make use of more of your urbit's environment, in which case you'll want to check out the [Generators](@/docs/tutorials/hoon/generators.md) documentation. Learn about [Udon and Sail](@/docs/tutorials/sail-and-udon.md), Urbit's stripped-down version of Markdown, and a subset of Hoon used for generating XML nodes respectively.
 
 
-> Last major revision of this section: October 2019
+> Last major revision of this section: November 2019

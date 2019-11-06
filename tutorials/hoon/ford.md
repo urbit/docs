@@ -4,8 +4,6 @@ weight = 38
 template = "doc.html"
 +++
 
-# Ford
-
 This lesson introduces the basics of the Ford vane, Arvo's build system and computation engine.
 
 In terms of sheer size, Ford is Arvo's largest vane, weighing in at over 6000 lines of code at the time of writing. As a result, we will only be scratching the surface of Ford in this lesson. We will mostly focus on describing how Ford works in a broad sense and not dig too deeply into the details.
