@@ -12,7 +12,7 @@ In terms of sheer size, Ford is Arvo's largest vane, weighing in at over 6000 li
 
 ## What are build systems?
 
-You may safely skip this section if you are familiar with build ystems, as there is no Ford-specific information.
+You may safely skip this section if you are familiar with build systems, as there is no Ford-specific information.
 
 At a high level, build systems are software that builds other software from source files. How this is accomplished varies from build system to build system, but there are some general properties shared by almost everything in this category.
 
