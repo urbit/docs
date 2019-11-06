@@ -47,13 +47,24 @@ Once this is done, you can start the application by running `|start %testing` in
 
 Any time you make changes to the Hoon file or the js file, you will need to run the `npm run build` command in the repo as well as `|commit %home` in the Dojo. Ford will then automatically rebuild your application with the new changes.
 
+That is, the entire editing process looks like this:
+
+1. Edit `tile/tile.js` and/or `urbit/app/testing.hoon`.
+2. Run `npm run build` (assuming `npm run serve` isn't running).
+    
+    _This will update `urbit/app/testing/js/tile.js` (from `tile/tile.js`)._
+    
+    _This will copy `urbit/app/testing.hoon` to `~your-pier/home/app/testing.hoon` and `urbit/app/testing/js/tile.js` to `~your-pier/home/app/testing/js/tile.js`._
+
+3.  Run `|commit %home` from the dojo and check Landscape in the browser interface to see the changes.
+
 ## Our Own Tile
 
 Let's examine a sample tile that has different Hoon code from the default, to explore how the tile system works. This program, composed of the `testing.hoon` and `tile.js` files, creates a tile which can be used to send `hi` messages to ships, just the way you can with `|hi ~zod` from the dojo. Keep in mind that unless you boot other fakeships you won't get responses from ships other than `~zod`.
 
 `tile.js` does the actual front-end rendering using React. The details of React are left for the reader to learn on their own, but you can see here how to store data in the state. That tile will be rendered every time the state gets updated. Calling `api.action` will send a JSON poke to our gall app. We have attached the function where we use that to the button on the tile, so it will get run when the button is clicked.
 
-In your pier, replace the code in `urbit/app/testing.hoon` with the Hoon code below.
+In your project, replace the code in `urbit/app/testing.hoon` with the Hoon code below.
 
 ``` hoon
 /+  *server
