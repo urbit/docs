@@ -6,15 +6,15 @@ template = "doc.html"
 
 In this lesson we introduce the notion of a vane, which should be thought of as a kernel module for Arvo (if you don't know what that means yet, just keep reading). We first present a primer on what vanes are and how they communicate, followed by an examination of the simplest vane, known as Behn (pronounced like "bane"), which is Arvo's timekeeper.
 
-Following this lesson, we will introduce Gall, a vane used to build user space apps. Then we have a walkthrough where we construct an [egg timer](@docs/learn/hoon/hoon-tutorial/egg-timer/) as a Gall app that interacts with Behn.
+Following this lesson, we will introduce Gall, a vane used to build user space apps. Then we have a walkthrough where we construct an [egg timer](@/docs/tutorials/hoon/egg-timer.md) as a Gall app that interacts with Behn.
 
 ## Vanes
 
 In order to introduce vanes, we must first introduce the concept of a [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)). The kernel is in some sense the "core" of an operating system, in that it has complete control over all events in the system and may perform any operation. It is the first part of the operating system to boot, and is responsible for spawning all other processes and routing their communication to one another. The tasks a kernel performs are very low level - managing memory, prioritizing processes, keeping track of time, managing hardware I/O, etc.
 
-Kernel code is generally kept to be as minimal as possible, and so almost anything non-trivial is put into an extension called a kernel module. **Vanes** are kernel modules for Arvo. Arvo currently has eight vanes known as Ames, Behn, Clay, Dill, Eyre, Ford, Gall, and Hall. You can read a short description of each one in [learn/arvo](@/docs/learn/arvo.md), along with a more thorough explanation of how vanes communicate than the following.
+Kernel code is generally kept to be as minimal as possible, and so almost anything non-trivial is put into an extension called a kernel module. **Vanes** are kernel modules for Arvo. Arvo currently has eight vanes known as Ames, Behn, Clay, Dill, Eyre, Ford, Gall, and Hall. You can read a short description of each one in [Arvo](@/docs/tutorials/arvo/_index.md), along with a more thorough explanation of how vanes communicate than the following.
 
-Vanes communicate with one another by exchanging chunks of data known as `move`s. We will get into more detail above what a `move` is in our example of Behn below, (and also see [learn/arvo](@/docs/learn/arvo.md)) but at a high level one should think of a `move` as either a request from one vane to another or a response to a request. In our egg timer app, Gall and Behn will be exchanging `move`s.
+Vanes communicate with one another by exchanging chunks of data known as `move`s. We will get into more detail above what a `move` is in our example of Behn below, (and also see [Arvo](@/docs/tutorials/arvo/_index.md)) but at a high level one should think of a `move` as either a request from one vane to another or a response to a request. In our egg timer app, Gall and Behn will be exchanging `move`s.
 
 Notably, vanes are _not_ something that a user ever interacts with directly. They live in an area of the memory called "kernel space", while all user processes live in [user space](https://en.wikipedia.org/wiki/User_space). Applications in user space make _system calls_ to the kernel, which the kernel may or may not obey (for security and stability purposes). These requests could be things such as asking for the time, getting the input of a hardware device, making an http request, or moving a file. In our egg timer app, we will be making system calls to ask Behn to handle the timer aspect.
 
