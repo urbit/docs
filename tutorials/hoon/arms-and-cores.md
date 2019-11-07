@@ -361,15 +361,6 @@ We can make multiple changes to `c` at once:
 99
 ```
 
-#### Exercise 1.7a
-Using the technique in this section, lets guess on how to make a new core `d` by modifying `c` so that the arm `double` multiplies `-.b` and `+.b`:
-```
-> =d c(double (mul -.b +.b))
-> d
-528
-```
-Why is `d` simply the product of `(mul -.b +.b)` instead of the core `c` with the `double` arm replaced by `++  double  (mul -.b +.b)`?
-
 ### Arms on the Search Path
 
 A wing is a search path into the subject.  We've looked at some examples of wings that resolve to arms; e.g., `double.c`, which resolves to `double` in `c` in the subject.  In the latter example the arm `double` is the final limb in the resolution path.  What if an arm name in a wing isn't the final limb?  What if it's elsewhere in the wing path?
@@ -419,7 +410,7 @@ This almost looks like a function call of sorts.
 
 Let's take a quick look at the battery of one core in the dojo to show that this is true by inputting one into the dojo.
 
-```hoon
+```
 > =dec |%
   ++  dec
     |=  a=@
@@ -457,53 +448,114 @@ This core has one arm `dec` which implements decrement. If we look at the head o
  
 Again, being able to read Nock is not essential to understanding Hoon.
 
-Let's take a quick look at how cores can be combined with `=>` to build up larger structures.
+### Core Nesting
+
+Let's take a quick look at how cores can be combined with `=>` to build up larger structures.  `=>  p=hoon  q=hoon` allows you to take the product of `q` with the product of `p` taken as the subject.
 
 ```hoon
 =>
 |%
-++  dec
+++  foo
   |=  a=@
-  ?<  =(0 a)
-  =+  b=0
-  |-  ^-  @
-  ?:  =(a +(b))  b
-  $(b +(b))
+  (mul a 2)
 -- 
 |%
-++  add
-  |=  [a=@ b=@]
-  ^-  @
-  ?:  =(0 a)  b
-  $(a (dec a), b +(b))
+++  bar
+  |=  a=@
+  (mul (foo a) 2)
 --
 ```
+In this core, `foo` is in the subject of `bar`, and so `bar` is able to call `foo`. On the other hand, `bar` is not in the subject of `foo`, so `foo` cannot call `bar` - you will get a `-find.bar` error.
 
-Here you can see the style of wrapping one core in another. This technique is used frequently in Hoon, particularly in the standard library. `dec` is used in the subsequent core. This can be a useful code organization technique. Gates and Traps are both special kinds of cores, as you will see in later lessons.
+Let's take a look inside of `hoon.hoon`, where the standard library is located, to see how this is being used.
 
-#### Exercise 1.7b
-
-When you compose two cores, as done above, which of the following describes the resulting subject?
- + The first core is in the payload of the second core.
- + The first core is in the battery of the second core.
- + The resulting core is equivalent to the following core:
-
+The first core listed here has just one arm.
 ```hoon
 |%
-++  dec
-  |=  a=@
-  ?<  =(0 a)
-  =+  b=0
-  |-  ^-  @
-  ?:  =(a +(b))  b
-  $(b +(b))
+++  hoon-version  141
+--
+```
+This is reflected in the subject of `hoon-version`.
+```
+> ..hoon-version
+<1.ane $141>
+```
+
+After several lines that we'll ignore for pedagogical purposes, we see
+```hoon
+|%
+::  #  %math
+::    unsigned arithmetic
++|  %math
 ++  add
+  ~/  %add
+  ::  unsigned addition
+  ::
+  ::  a: augend
+  ::  b: addend
   |=  [a=@ b=@]
+  ::  sum
   ^-  @
   ?:  =(0 a)  b
   $(a (dec a), b +(b))
+::
+++  dec
+```
+and so on, down to
+```hoon
+++  unit
+  |$  [item]
+  ::    maybe
+  ::
+  ::  mold generator: either `~` or `[~ u=a]` where `a` is the
+  ::  type that was passed in.
+  ::
+  $@(~ [~ u=item])
 --
 ```
+This core contains the arms in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `add`.
+```
+> ..add
+<41.mac 1.ane $141>
+```
+Now though, we see that the section 1 core is contained within the core containing `hoon-version`.
+
+Next, [section two](@/docs/reference/library/2a.md) starts:
+```
+=>
+::                                                      ::
+::::  2: layer two                                      ::
+```
+...
+```
+|%
+::                                                      ::
+::::  2a: unit logic                                    ::
+  ::                                                    ::
+  ::    biff, bind, bond, both, clap, drop,             ::
+  ::    fall, flit, lift, mate, need, some              ::
+  ::
+++  biff                                                ::  apply
+  |*  {a/(unit) b/$-(* (unit))}
+  ?~  a  ~
+  (b u.a)
+```
+If you counted the arms in this core by hand, you'll come up with 126 arms. This is also reflected in the dojo:
+```
+> ..biff
+<126.xjf 41.mac 1.ane $141>
+```
+and we also see the section 1 core and the core containing `hoon-version` in the subject.
+
+Lastly, let's check the subject of the last arm in `hoon.hoon` (as of November 2019)
+```
+> ..pi-tell
+<92.nnn 247.tye 51.mvt 126.xjf 41.mac 1.ane $141>
+```
+This confirms for us, then, that `hoon.hoon` consists of six nested cores, with the `hoon-version` core at the top.
+
+#### Exercise 1.7a
+Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in the layer they exist in or a deeper layer. This is easily accomplished with `Ctrl-F`.
 
 
 ## Summary
@@ -518,11 +570,3 @@ You can now unbind `c` in the dojo -- this will help to keep your dojo subject t
 > c
 -find.c
 ```
-
-## Exercise solutions
-
-### Exercise 1.7a
-Asked David
-
-### Exercise 1.7b
-Asked David.
