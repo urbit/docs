@@ -15,10 +15,11 @@ Ships on the Arvo network sometimes need to reset their continuity. A personal b
 Personal breaches often fix connectivity issues, but should only be used as a last resort. To perform a personal breach, follow the steps below.
 
 - Go to [bridge.urbit.org](https://bridge.urbit.org) and log into your identity.
-- Under the "Admin" section, cycle your keys in bridge with the "breach" box checked.
-- Download your new key.
+- Go to the `Admin` section. Then go to `Networking Keys`.
+- Check the `Trigger New Continuity Era` box. Click `Reset Networking Keys`, and then click `Send Transaction`.
+- Click `Download Arvo Keyfile`.
 - Delete or archive your old pier.
-- Create a new pier by booting your ship with your new key.
+- Create a new pier by booting your ship with your new keyfile.
 - Rejoin your favorite chat channels and subscriptions.
 
 ## Network Breaches
