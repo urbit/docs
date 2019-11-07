@@ -269,7 +269,7 @@ Gates are useful for defining functions.  But there are many-armed doors as well
 
 Let's write an example door in order to illustrate its features.  Each of the arms in the door will define a simple gate.  Let's bind the door to `c` as we did with the last core.  To make a door we use the `|_` rune:
 
-```hoon
+```
 > =c |_  b=@
   ++  plus  |=(a=@ (add a b))
   ++  times  |=(a=@ (mul a b))
@@ -304,7 +304,7 @@ Let's try out the arms of `c` with ordinary function calls:
 %.y
 ```
 
-This works, but the results are not exciting.  Passing `10` to the `plus` gate returns `10`, so it must be that the value of `b` is `0`.  The products of the other function calls reinforce that assessment.  Let's look directly at `+6` of `c`:
+This works, but the results are not exciting.  Passing `10` to the `plus` gate returns `10`, so it must be that the value of `b` is `0` (the bunt value of `@`).  The products of the other function calls reinforce that assessment.  Let's look directly at `+6` of `c`:
 
 ```
 > +6:c
@@ -394,9 +394,21 @@ Readers with some mathematical background may notice that `~( )` expressions all
 
 Thus, you may think of the `c` door as a function for making functions.  Use the `~(arm c arg)` syntax -- `arm` defines which kind of gate is produced (i.e., which arm of the door is used to create the gate), and `arg` defines the value of `b` in that gate, which in turn affects the product value of the gate produced.
 
+#### Creating Doors with a Modified Sample
+
+In the above example we created a door `c` with sample `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
+```
+> =c |_  b=_7
+  ++  plus  |=(a=@ (add a b))
+  ++  times  |=(a=@ (mul a b))
+  ++  greater  |=(a=@ (gth a b))
+  --
+```
+Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in [Lesson 2.2](@docs/tutorials/hoon/type-checking-and-type-inference).
+
 ### Doors in the Hoon Standard Library
 
-Back in lesson 1.2 you were introduced to atom auras.  (Recall that an aura for an atom is metadata used by Hoon that defines how that atom is interpreted and pretty-printed.)  Atoms are unsigned integers, but sometimes programmers want to work with fractions and decimal points.  Accordingly, there are auras for [floating point numbers](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Let's work with the aura for doing [single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) floating point arithmetic: `@rs`.
+Back in lesson 1.2 you were introduced to atom auras, which are metadata used by Hoon that defines how that atom is interpreted and pretty-printed.  Atoms are unsigned integers, but sometimes programmers want to work with fractions and decimal points.  Accordingly, there are auras for [floating point numbers](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Let's work with the aura for doing [single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) floating point arithmetic: `@rs`.
 
 The `@rs` has its own literal syntax.  These atoms are represented as a `.` followed by digits, and possibly another `.` (for the decimal point) and more digits.  For example, the float 3.14159 can be represented as a single-precision (32 bit) float with the literal expression `.3.14159`.
 
