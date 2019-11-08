@@ -547,6 +547,17 @@ If you counted the arms in this core by hand, you'll come up with 126 arms. This
 ```
 and we also see the section 1 core and the core containing `hoon-version` in the subject.
 
+We can also confirm that `add` is in the subject of `biff`
+```
+> add:biff
+<1.vwd {{a/@ b/@} <41.mac 1.ane $141>}>
+```
+and that `biff` is not in the subject of `add`.
+```
+> biff:add
+-find.biff
+```
+
 Lastly, let's check the subject of the last arm in `hoon.hoon` (as of November 2019)
 ```
 > ..pi-tell
