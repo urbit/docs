@@ -190,6 +190,31 @@ This is the preferred way to write an expression on a single line.  The rune its
 
 Nearly all rune expressions can be written in either form, but there are exceptions.  `|%` and `|_` expressions, for example, can only be written in tall form.  (Those are a bit too complicated to fit comfortably on one line anyway.)
 
+#### Nesting Runes
+
+Since runes take a fixed number of children, one can visualize how Hoon expressions are built by thinking of each rune being followed by a series of boxes to be filled - one for each of its children. Let us illustrate this with the `:-` rune.
+
+![](https://media.urbit.org/docs/hoon-syntax/cell1.png)
+
+Here we have drawn the `:-` rune followed by a box for each of its two children. We can fill these boxes with either a value or an additional rune. The following figure corresponds to the Hoon expression `:-  2  3`.
+
+![](https://media.urbit.org/docs/hoon-syntax/cell2.png)
+
+This, of course, evaluates to the cell `[2 3]`. This next figure corresponds to the Hoon expression `:-  :-  2  3  4`.
+
+![](https://media.urbit.org/docs/hoon-syntax/cell3.png)
+
+This evaluates to `[[2 3] 4]`, and we can think of the second `:-` as being "nested" inside of the first `:-`.
+
+What Hoon expression does the following figure correspond to, and what does it evaluate to?
+
+![](https://media.urbit.org/docs/hoon-syntax/cell4.png)
+
+Right. This represents the Hoon expression `:-  2  :-  3  4`,
+and evaluates to `[2 [3 4]]`. Remember, though, that if you input this into dojo it will print as `[2 3 4]`.
+
+Thinking in terms of these "LEGO block" diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md), can be a helpful learning and debugging tactic.
+
 #### Irregular Forms
 
 Some runes are used so frequently that they have irregular counterparts that are easier to write and which mean precisely the same thing.  Irregular rune syntax is hence a form of [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar).  All irregular rune syntax is flat.  (It follows from this that all tall form expressions are regular.)
