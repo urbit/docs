@@ -215,6 +215,10 @@ and evaluates to `[2 [3 4]]`. Remember, though, that if you input this into dojo
 
 Thinking in terms of these "LEGO block" diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md), can be a helpful learning and debugging tactic.
 
+##### Exercise 1.3.a.
+
+Draw binary trees corresponding to the above figures. Determine a one-to-one correspondence between linearly ordered nested boxes (i.e. what is depicted in the above figures) and binary trees. You will need to make use of the convention `[a [b c]] = [a b c]`.
+
 #### Irregular Forms
 
 Some runes are used so frequently that they have irregular counterparts that are easier to write and which mean precisely the same thing.  Irregular rune syntax is hence a form of [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar).  All irregular rune syntax is flat.  (It follows from this that all tall form expressions are regular.)
