@@ -11,7 +11,7 @@ from the strange words within.
 As Dijkstra put it: "The purpose of abstraction is not to be vague, but
 to create a new semantic level in which one can be absolutely precise."
 
-This glossary only covers terms the Arvo side of the project. You can find the
+This glossary only covers terms of the Arvo side of the project. You can find the
 Azimuth glossary [here](../azimuth/glossary)
 
 ### application
@@ -328,7 +328,7 @@ with this functionality learn what syntax is kosher.
 
 ### desk
 
-A desk is independently revision-controlled branch of urbit filesystem.
+A desk is an independently revision-controlled branch of urbit filesystem.
 
 _See [filesystem](@/using/operations/using-your-ship.md) and [Clay](@/docs/tutorials/arvo/clay.md)._
 
