@@ -391,6 +391,46 @@ So the meaning of `two.double.c` is, roughly, '`two` in the parent core of `doub
 
 In each of the following examples, the only wings that matter are `c` and whichever arm name is left-most in the expression.  The other arm names in the path simply resolve to their parent core, which is just `c`.
 
+### The `..arm` Syntax
+
+Let's say you have a wing that resolves to a leg of the subject.  In this wing is an arm name, e.g., `a.b.arm`.  As you learned in lesson 1.4, this should be read as '`a` in `b` in the parent core of `arm`'.  Speaking more directly: the wing resolution path goes through the parent core of the arm, not the arm itself.
+
+Recall that using `.` by itself returns the whole subject.  With that in mind, take a moment to answer the following question on your own.  In general, what should the expression `..arm` produce?
+
+Do you have an answer?  If not, consider going back and trying to figure it out before moving on.
+
+You may read `..arm` as '`.` of the parent core of `arm`'.  This amounts to just the parent core of `arm`.  Let's try this out with the arms of `c`:
+
+```
+> ..inc:c
+< 4.han
+  { {our/@p now/@da eny/@uvJ}
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
+  }
+>
+
+> c
+< 4.han
+  { {our/@p now/@da eny/@uvJ}
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
+  }
+>
+```
+
+Yes, they match.  `..inc` of `c` is just the parent core of `inc`, `c` itself.  But why would we ever use `..inc` to refer to `c`?  It's much simpler to use `c`.
+
+Sometimes the `..arm` syntax is quite useful.  Often there is a core in the subject without a face bound to it; i.e., the core might be nameless.  In that case you can use an arm name in that core to refer to the whole core.
+
+For an example of this, consider the `add` arm of the Hoon standard library.  This arm is in a nameless core.  To see the parent core of `add`, try `..add`:
+
+```
+> ..add
+<74.dbd 1.qct $141>
+```
+
+Here you see a core with a battery of 74 arms (!), and whose payload is another core with one arm.
+
+
 ### Evaluating an Arm Against a Modified Core
 
 Assume `this.is.a.wing` is a wing that resolves to an arm.  You can use the `this.is.a.wing(face new-value)` syntax to compute the arm against a modified version of the parent core of `this.is.a.wing`.
