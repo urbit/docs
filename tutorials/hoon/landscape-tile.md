@@ -285,7 +285,7 @@ When we get a response from `%helm` to our `poke`, we'll receive a `coup`, which
 ``` hoon
 ++  coup-helm-hi
   |=  [pax=path cop=(unit tang)]
-  ~&  ["Coup recieved" pax]
+  ~&  ["Coup received" pax]
   :_  this
   ?~  cop
     (send-status-diff "successfully found {<pax>}")
