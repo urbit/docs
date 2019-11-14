@@ -36,9 +36,9 @@ The first thing to notice is that we are creating a `core` (`|%`) and a `door` (
 --
 ```
 
-The `core` here defines two types: `card` and `move`. An `card` is a `pair` of `bone` and `move`. A `bone` is a Gall-only type that identifies app event chains by mapping atoms to them. We define `move` to be a request to Arvo to do something for us. In this case, the only valid `move` will be `%wait` which we'll discuss in a bit.
+The `core` here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping atoms to them. We define `card` to be a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
 
-It's important to note that the names `card` and `move` are arbitrary; you can call them whatever you'd like. Commonly you will see them called `move` and `card`.
+It's important to note that the names `move` and `card` are technically arbitrary; you can call them whatever you'd like. By convention, however, you will see them called `move` and `card` practically everywhere.
 
 The sample of the `door` is:
 
