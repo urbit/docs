@@ -31,8 +31,8 @@ The first thing to notice is that we are creating a `core` (`|%`) and a `door` (
 
 ```hoon
 |%
-+$  card  (pair bone move)
-+$  move  [%wait path @da]
++$  move  (pair bone card)
++$  card  [%wait path @da]
 --
 ```
 
