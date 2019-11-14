@@ -10,7 +10,7 @@ The Arvo operating system is divided up into modules called vanes. Gall is the v
 
 ```hoon
 |%
-+$  move   (pair bone card)
++$  move  (pair bone card)
 +$  card  [%wait path @da]
 --
 |_  [bowl:gall ~]
@@ -31,7 +31,7 @@ The first thing to notice is that we are creating a `core` (`|%`) and a `door` (
 
 ```hoon
 |%
-+$  card   (pair bone move)
++$  card  (pair bone move)
 +$  move  [%wait path @da]
 --
 ```
