@@ -89,7 +89,7 @@ for events) separately.
 #### Reading
 
 A connector exposes a tree of data.  Every read request has a
-`care`, which is generally either `%x` or `%y.  `%x` is a request
+`care`, which is generally either `%x` or `%y`.  `%x` is a request
 for a particular piece of data, while `%y` is a request for a
 directory listing.  Roughly, `%x` means Unix `cat` and `%y` means
 Unix `ls`.
@@ -802,7 +802,7 @@ If not, we check whether the atom is `'on'`.  If so, we set `on` and
 we don't take any other immediate action. If it was both off and not in
 progress, then we send an HTTP request.
 
-If the argument is neither 'off' nor 'on', then we assume it's an
+If the argument is neither `'off'` nor `'on'`, then we assume it's an
 actual url, so we save it in `target`.
 
 Here's the move that sends the HTTP request:
@@ -811,7 +811,7 @@ Here's the move that sends the HTTP request:
 [ost.hid %hiss /request ~ %httr %purl (need (de-purl:html target))]
 ```
 
-> Remember, we are expected to produce a **list** of moves. Note the `~` after the move in the full example. This is a convenient shortcut for creating a list of a single element.  It's part of a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` and `\`[a b c]` is `[~ a b c]`. These may be mixed and matched to create various convoluted structures and emojis.
+> Remember, we are expected to produce a **list** of moves. Note the `~` after the move in the full example. This is a convenient shortcut for creating a list of a single element.  It's part of a small family of such shortcuts.  `~[a b c]` is `[a b c ~]`, `[a b c]~` is `[[a b c] ~]` and `` `[a b c] `` is `[~ a b c]`. These may be mixed and matched to create various convoluted structures and emojis.
 
 The correspondence between this move and `[bone card]` can be hard to
 visualize on one line. Here it is more pedantically:
@@ -949,7 +949,7 @@ marked atom and convert it to our new mark.
  '57'
 ```
 
-ASCII 9 is 57.  There's no requirement, implicit or otherwise,
+ASCII `9` is `57`.  There's no requirement, implicit or otherwise,
 that conversions back and forth between marks be inverses of each
 other.  These are semantic conversions, in that they refer to the
 same concept.  They're not isomorphisms.
@@ -1246,7 +1246,7 @@ Or, in pseudo-code:
 
 Let's walk through each of these elements step by step.
 
-###### Bones ("cause")
+##### Bones ("cause")
 
 If you look up `++bone` in `hoon.hoon`, you'll see that it's a number (`@ud`),
 and that it's an opaque reference to a duct. `++duct` in `hoon.hoon` is a list
@@ -1262,10 +1262,10 @@ packet, file change, or timer event. When Arvo is given this event, it routes
 the event to appropriate kernel module for handling.
 
 Sometimes, the module can immediately handle the event and produce any necessary
-results. For example, when we poked the `++poke-atom` arm above, we poked %gall,
+results. For example, when we poked the `++poke-atom` arm above, we poked `%gall`,
 our application server, which was able to respond to our poke directly. When the
 module cannot service the request itself, it sends instructions to another
-kernel module or application (through the %gall module) to do a specified
+kernel module or application (through the `%gall` module) to do a specified
 action, and produces the result from that.
 
 Furthermore, when one module sends a message to another kernel module or
@@ -1300,7 +1300,7 @@ generally a good idea to make the wire human-readable for bug-handling purposes.
 ##### Term (sys-call)
 
 Each move also has a `term`, composed of lowercase ASCII and/or `-`. This `term`
-has the sign `@tas`. In this case, our `term` is `%poke`, which is the name of
+has the aura `@tas`. In this case, our `term` is `%poke`, which is the name of
 the particular kind of move we're sending. You can always use `%poke` to message
 an app. Other common names include `%warp`, to read from the filesystem;
 `%wait`, to set a timer; and `%them`, to send an http request.
@@ -1323,7 +1323,7 @@ urbit as for sending messages between apps on different urbits.
 
 - Modify `pong.hoon` to print out a message when it receives acknowledgement.
 
-- Write two apps, `even` and `odd`. When you pass an atom to `even`, check whether it's even. If so, divide it by two and recurse; otherwise, poke `odd` with it. When `odd` receives an atom, check whether it's equal to one. If so, terminate, printing "%success". Otherwise, check whether it's odd. If so, multiply it by three, add one, and recurse; otherwise, poke `even` with it. When either app receives a number, print it out along with the name of the app. In the end, you should be able to watch Collatz's conjecture play out between the two apps. Sample output:
+- Write two apps, `even` and `odd`. When you pass an atom to `even`, check whether it's even. If so, divide it by two and recurse; otherwise, poke `odd` with it. When `odd` receives an atom, check whether it's equal to one. If so, terminate, printing `%success`. Otherwise, check whether it's odd. If so, multiply it by three, add one, and recurse; otherwise, poke `even` with it. When either app receives a number, print it out along with the name of the app. In the end, you should be able to watch Collatz's conjecture play out between the two apps. Sample output:
 
 ```
 ~fintud-macrep:dojo> :even &atom 18
@@ -1350,7 +1350,7 @@ urbit as for sending messages between apps on different urbits.
 %success
 ```
 
-- Put `even` and `odd` on two separate urbits and pass the messages over the network. Post a link to a working solution in :talk to receive a cookie.
+- Put `even` and `odd` on two separate urbits and pass the messages over the network. Post a link to a working solution in `:talk` to receive a cookie.
 
 
 ## Security Drivers
@@ -1618,9 +1618,9 @@ Just like with Basic Authentication, you should be able to run
 `+https://api.github.com/user` and get a response indicating who
 you're logged in as.
 
-Some drivers a slightly more complicated.  For example, Github's
+Some drivers are slightly more complicated.  For example, Github's
 access token's don't expire, but that's not the case for all
-service.  The googleapis driver shows the flow when the access
+services.  The googleapis driver shows the flow when the access
 token can expire.  Twitter uses OAuth1, for which we have another
 library.
 
@@ -1711,7 +1711,7 @@ identity), and `eny` (512 bits of guaranteed-fresh entropy). For the full list
 of things in `++bowl`, search for `++  bowl` (note: two spaces) in
 `/arvo/zuse.hoon`.
 
-> This is, perhaps, the most common way to learn Hoon. The easiest way to learn about an identifier you see in code is to search in `/arvo/sys/zuse.hoon` and `/arvo/sys/hoon.hoon` for it.\\ Urbit's codebase is less than 30000 lines of code combined, including the hoon parser, the compiler, and the `/arvo` microkernel, so you can usually use the code and its comments as a reference doc. You can also read [zuse.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon) and [hoon.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon) in your browser.
+> This is, perhaps, the most common way to learn Hoon. The easiest way to learn about an identifier you see in code is to search in `/arvo/sys/zuse.hoon` and `/arvo/sys/hoon.hoon` for it. Urbit's codebase is less than 30000 lines of code combined, including the hoon parser, the compiler, and the `/arvo` microkernel, so you can usually use the code and its comments as a reference doc. You can also read [zuse.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/zuse.hoon) and [hoon.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon) in your browser.
 
 The second thing we should clear up is this: Urbit needs no "serialize to disk"
 step. Everything you produce in the app state is persistent across calls to the
@@ -1724,9 +1724,9 @@ to set up and write to a database.
 
 **Exercises**:
 
-- Modify `:sum` to reset the counter when you poke it with 0.
+- Modify `:sum` to reset the counter when you poke it with `0`.
 
-- Write an app called `last` that prints out the previous value you poked it with.
+- Write an app called `:last` that prints out the previous value you poked it with.
 
 Sample output:
 
@@ -1884,7 +1884,7 @@ Two notes:
 
 - `bowl` is the type of the system state within our app. For example, it includes things like `our`, the name of the host urbit, and `now`, the current time.
 
-- You may have noticed the separate `|%` above the application core `|_`. We usually put our types in another core on top of the application core. We can access these type from our `|_` because in `hoon.hoon` files, all cores are called against each other. (The shorthand for 'called' is `=>`.) Thus, the `|%` with the types is in the context of the `|_`, as it lies above it: `hoon.hoon` `=> |% w types => |_`
+- You may have noticed the separate `|%` above the application core `|_`. We usually put our types in another core on top of the application core. We can access these type from our `|_` because in `.hoon` files, all cores are called against each other. (The shorthand for 'called' is `=>`.) Thus, the `|%` with the types is in the context of the `|_`, as it lies above it: `hoon.hoon` `=> |% w types => |_`
 
 Here's some sample output of the two working together:
 
@@ -1924,7 +1924,7 @@ Here's some sample output of the two working together:
 >=
 ```
 
-###### :source
+##### :source
 
 Hopefully you can get a sense for what's happening here. When we poke
 `:sink` with `%on`, `:sink` subscribes to `:source`,
@@ -1981,7 +1981,7 @@ which is a move that provides bone `o` with this subscription update:
 `[%noun non]`". This is fairly dense code, but what it's doing is
 straightforward!
 
-###### :sink
+##### :sink
 
 `:source` should now make sense. `:sink` is a little longer, but not much more
 complicated.
@@ -2001,11 +2001,11 @@ will happen correctly.
 
 The only state we need for `:sink` is a boolean to indicate whether
 we're already subscribed to `:source`. We use `val=?`, where `?`
-is the sign of type boolean (similar to `*`, `@`), which defaults to true (that
-is, `0`).
+is the type associated with boolean (similar to `*`, `@`), which defaults
+to `%.y` (that is, `0`).
 
-In `++poke-noun` we check our input to see both if it's `%on` and we're
-available (`val` is true). If so, we produce the move to subscribe to
+In `++poke-noun` we check our input to see both if it's `%on` and
+available (`val` is `%.y`). If so, we produce the move to subscribe to
 `:source`:
 
 ```hoon
@@ -2018,15 +2018,15 @@ available (`val` is true). If so, we produce the move to subscribe to
 ==
 ```
 
-Also, in the preceding lines, we set `val` to false (`|`) with `+>.$(val |)`.
+Also, in the preceding lines, we set `val` to `%.n` (`|`) with `+>.$(val |)`.
 Remember that the `:_` constructs an inverted cell, with the first child
-(`+>.$(val |` in our case) as the tail and the second child as the head. Here,
-the cell we produce when our subscription is `%on` and `val` is true has a
-head with our new state where `val` is set to false and a tail of our list of
+(`+>.$(val |)` in our case) as the tail and the second child as the head. Here,
+the cell we produce when our subscription is `%on` and `val` is `%.y` has a
+head with our new state where `val` is set to `%.n` and a tail of our list of
 moves, which is shown in the code block above.
 
 Otherwise, if our input is `%off` and we're already subscribed (i.e. `val`
-is false), then we unsubscribe from `:source` and set `val` back to true (`&`),
+is `%.n`), then we unsubscribe from `:source` and set `val` back to `%.y` (`&`),
 again using our handy inverted cell constructor mold `:_`:
 
 ```hoon
@@ -2038,7 +2038,7 @@ It's important to send over the same bone and wire (`/subscribe`) as the
 one we originally subscribed on.
 
 If neither of these cases are true, then we print our current subscription
-state, based on whether `val` is true or false, and return a cell containing
+state, based on whether `val` is `%.y` or `%.n`, and return a cell containing
 a null list of moves and our unchanged app state:
 
 ```hoon
@@ -2134,7 +2134,7 @@ producing `%click`.
 
 We also convert from json by parsing a json string with `so:dejs-soft:format`,
 asserting the parsing succeeded with `need`, and asserting the
-result was 'click' with `?>`, which asserts that its first child
+result was `'click'` with `?>`, which asserts that its first child
 is true.
 
 > Note the argument to `++json`is `jon=^json`.  Why `^json`? `++json` shadows the type definition, so if we want to refer to the type, we have to prepend a `^`.  This extends to multiple levels:  `^^^foo` means the fourth most innermost instance of `foo`.
@@ -2178,7 +2178,7 @@ And save the following as `/mar/clicks.hoon`:
 `clicks` is just an atom.  We convert to json by creating an
 object with a single field "clicks" with our value.
 
-> Be sure to check out section 3bD, JSON and XML, in zuse.hoon `frond:enjs:format` is just a function that takes a key-value pair and produces a JSON object with one element.
+> Be sure to check out section 3bD, JSON and XML, in `zuse.hoon`. `frond:enjs:format` is just a function that takes a key-value pair and produces a JSON object with one element.
 
 ```
 ~fintud-macrep:dojo> &json &clicks 6
@@ -2275,7 +2275,7 @@ $(function() {
 ```
 
 We set up two event handlers.  When we click the button, we run
-`window.urb.send`, which sends a poke to the app specified as the first argument, in this case our :click app.  The arguments
+`window.urb.send`, which sends a poke to the app specified as the first argument, in this case our `:click` app.  The arguments
 are data, parameters, and the callback.  The data is the specific
 data we want to send.  The parameters are all optional, but here's a list
 of the available ones:
@@ -2296,7 +2296,7 @@ div that we defined above.  Otherwise, we printf to the console a
 message saying the poke succeeded.  As is common, we gray
 out the button when it is clicked. It is only reenabled when positive acknowledgement is received.
 
-Our second event handler is `window.urb.bind`, which is called immediately when the page is loaded, subscribing the page to the specified data stream on the app set with `urb.appl` (which is, in this case, :click).  It also takes three arguments: path, parameters, and callback.  The path is the path on the app to subscribe to.  The parameters are all optional (indeed, we omit them entirely here), but are similar to those for `send`:
+Our second event handler is `window.urb.bind`, which is called immediately when the page is loaded, subscribing the page to the specified data stream on the app set with `urb.appl` (which is, in this case, `:click`).  It also takes three arguments: path, parameters, and callback.  The path is the path on the app to subscribe to.  The parameters are all optional (indeed, we omit them entirely here), but are similar to those for `send`:
 
 - `ship`: target urbit.  Defaults to `window.urb.ship`, which defaults to the urbit which served the page.
 - `appl`: target app.  Defaults to `window.urb.appl`, which defaults to null.
