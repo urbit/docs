@@ -43,7 +43,7 @@ Let's look at the conditional.
 ?&  (gte n 1)
 ```
 
-`?&` (pronounced "wut-pam") takes in a list of Hoon expressions terminated by `==` that evaluate to a `flag` and returns the logical "AND" of these `flag`s. Most runes take a fixed number of children, but the handful that do not (such as `?&`) end their list of children with a terminating rune. In our context, that means that if the product of each of the children of `?&` is `%.y`, then the product of the entire `?&` expression is `%.y` as well. Otherwise, the product of the conditional `?&` is `%.n`.
+`?&` (pronounced "wut-pam") takes in a list of Hoon expressions, terminated by `==`, that evaluate to a `flag` and returns the logical "AND" of these `flag`s. Most runes take a fixed number of children, but the handful that do not (such as `?&`) end their list of children with a terminating rune. In our context, that means that if the product of each of the children of `?&` is `%.y`, then the product of the entire `?&` expression is `%.y` as well. Otherwise, the product of the conditional `?&` is `%.n`.
 
 The first child of `?&` is `(gte n 1)`. It is good practice to put the first boolean test of a conditional on the same line as the conditional as we have done here. This utilizes the standard library function `gte` which stands for "greater than or equal to". `(gte a b)` returns `%.y` if `a` is greater than or equal to `b`, and `%.n` otherwise.
 
