@@ -57,7 +57,7 @@ The last boolean test we have is
 ```hoon
     =(0 (mod n 2))
 ```
-This checks to see if `0` is equal to `(mod n 2)` and produces `%.y` if `n` is even and `%.n` if `n` is odd.
+This checks to see if `0` is equal to `(mod n 2)` - in other words, checking if `n` is even. It produces `%.y` if `n` is even and `%.n` if `n` is odd.
 
 It is good practice in Hoon to put "lighter" lines at the top and "heavier" lines at the bottom, which is why we have put `=(0 (mod n 2))` last in the list of conditionals.
 
