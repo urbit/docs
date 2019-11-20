@@ -560,7 +560,7 @@ A slightly less trivial gate:
 430
 ```
 
-### |@ "barvat"
+### |@ "barpat"
 
 Produce a 'wet' core `[battery payload]`.
 

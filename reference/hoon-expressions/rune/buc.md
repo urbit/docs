@@ -278,7 +278,7 @@ Using `$~`:
 %default-value
 ```
 
-### $@ "bucvat"
+### $@ "bucpat"
 
 `[%bsvt p=spec q=spec]`: structure which normalizes a union tagged by head depth (atom).
 
@@ -373,7 +373,7 @@ Irregular: `?(%foo %baz)` is `$?(%foo %baz)`.
 ##### Discussion
 
 For a union of atoms, a `$?` is fine.  For more complex nouns,
-always try to use a [`$%`](#buccen), [`$@`](#bucvat) or
+always try to use a [`$%`](#buccen), [`$@`](#bucpat) or
 [`$^`](#bucket), at least if you expect your structure to be used as a
 normalizer.
 

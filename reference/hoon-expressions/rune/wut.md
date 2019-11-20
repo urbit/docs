@@ -484,7 +484,7 @@ A common error is `find.$`, meaning `p` is not a type.
 %.y
 ```
 
-### ?@ "wutvat"
+### ?@ "wutpat"
 
 `[%wtpt p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is an atom.
 
