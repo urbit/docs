@@ -8,12 +8,18 @@ Arvo, also called Urbit OS, is our operating system.
 
 # Introduction
 
+In this section we describe prerequisites for understanding the material presented here as well as a summary of the content.
+
+## Prerequisites
+
 In this document we give a high-level overview of the architecture of Arvo. We presume only a minimal amount of background. We write for a reader who:
  - has read the [Technical Overview](@/docs/concepts/technical-overview.md),
  - has no prior understanding of any OS architecture, and
  - has no prior understanding of Nock.
 
 Most of this document may be understood without knowing Hoon as, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). Chapter Two material is also helpful but should not be required at any point.
+
+## Summary
 
 # Principles
 
