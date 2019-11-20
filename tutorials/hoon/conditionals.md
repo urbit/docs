@@ -12,9 +12,10 @@ In this lesson, we will write a generator that takes an integer and checks if it
 |=  [* [n=@ud ~] ~]
 :-  %noun
 ^-  ?
-?&  =(0 (mod n 2))
+?&
+    =(0 (mod n 2))
     (gte n 1)
-    (lte n 1000)
+    (lte n 100)
 ==
 ```
 
@@ -35,13 +36,40 @@ This code is the third line of the `%say` "boilerplate," and it produces a `cask
 ```hoon
 ^-  ?
 ```
-This line casts the output as a `flag`, which is a type whose values are `%.y` and `%.n` representing "yes" and "no".
+This line casts the output as a `flag`, which is a type whose values are `%.y` and `%.n` representing "yes" and "no". These behave as boolean values.
 
-Let's get into the conditionals themselves. Below we'll examine the series of `?` runes used.
+Let's look at the conditional.
 
 ```hoon
-?&  =(0 (mod n 2))
+?&
 ```
+
+`?&` (pronounced "wut-pam") takes in a list of Hoon expressions terminated by `==` that evaluate to a `flag` and returns the logical "AND" of these `flag`s. Most runes take a fixed number of children, but the handful that do not (such as `?&`) end their list of children with a terminating rune. In our context, that means that if the product of each of the children of `?&` is `%.y`, then the product of the entire `?&` expression is `%.y` as well. Otherwise, the product of the conditional `?&` is `%.n`.
+
+The first child of `?&` is the following.
+
+```hoon
+=(0 (mod n 2))
+```
+
+This checks to see if `0` is equal to `(mod n 2)` and returns a `flag`. In other words, it produces `%.y` if `n` is even and `%.n` if `n` is odd.
+
+Next we have:
+```hoon
+(gte n 1)
+```
+This utilizes the standard library function `gte` which stands for "greater than or equal to". `(gte a b)` returns `%.y` if `a` is greater than or equal to `b`, and `%.n` otherwise.
+
+```hoon
+(lte n 100)
+```
+`lte` is the standard library function for "less than or equal to". `(lte a b)` returns `%.y` if `a` is less than `b`, and `%.n` otherwise.
+
+```hoon
+==
+```
+This terminates the list of children of `?&`.
+
 
 `?:` (pronounced "wut-pam") is the simplest "wut" rune. It takes three children, also called sub-expressions. The first child is a boolean test, which means that it looks for a `%.y` ("yes") or a `%.n` ("no."). The second child is a yes-branch, which is what we arrive at if the aforementioned boolean test evaluates to `%.y`. The third child is a no-branch, so we arrive at it if instead the boolean test evaluates to `%.n`. These branches can contain any sort of Hoon expression, including further conditional expressions, as we will see.
 
@@ -63,7 +91,22 @@ So the two `?&` runes that we used in this code together check the that all thre
 
 ### Other Runes
 
-We only went into three "wut" runes in our walkthrough, but there are many others. Here are a few more examples:
+We only utilized one "wut" rune in our walkthrough, but there are many others. Here are a few more examples:
+
+- `?:` (pronounced "wut-pam") is the simplest "wut" rune. It takes three children, also called sub-expressions. The first child is a boolean test, so it looks for a `%.y` or a `%.n`. The second child is a yes-branch, which is what we arrive at if the aforementioned boolean test evaluates to `%.y`. The third child is a no-branch, which we arrive at if the boolean test evaluates to `%.n`. These branches can contain any sort of Hoon expression, including further conditional expressions. Instead of the `?&` expression in our `%say` generator above, we could have written
+
+```hoon
+?:  ?& 
+        =(0 (mod n 2))
+        (gte n 1)
+        (lte n 100)
+    ==
+    %.y
+%.n
+```
+Of course, doing so would be needlessly obfuscating - we mention this only to illustrate that these two Hoon expressions have the same product.
+
+- `?!` ("wut-zup") is the logical "NOT" operator, which inverts the truth value of its single child. Instead of `(lte n 100)` in our `%say` generator above, we could have written `?!  (gth n 100)`. Again, this would be bad practice, we only present this as an example.
 
 - `?@` takes three children. It branches on whether its first child is an atom.
 
