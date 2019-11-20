@@ -1,6 +1,6 @@
 +++
 title = "Gall Apps"
-weight = 6
+weight = 8
 template = "doc.html"
 aliases = ["/docs/learn/arvo/gall/"]
 +++

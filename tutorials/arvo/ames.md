@@ -1,6 +1,6 @@
 +++
 title = "Ames"
-weight = 1
+weight = 2
 template = "doc.html"
 aliases = ["/docs/learn/arvo/ames/"]
 +++

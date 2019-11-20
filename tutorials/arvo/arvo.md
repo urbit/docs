@@ -1,4 +1,11 @@
-## Principles
++++
+title = "Arvo"
+weight = 1
+template = "doc.html"
+aliases = ["/docs/learn/arvo/arvo/"]
++++
+
+# Principles
 
 At a high level `%arvo` takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
 
