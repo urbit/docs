@@ -35,6 +35,10 @@ Ford is our build system. It handles resources and publishing.
 
 Gall is the vane for controlling userspace apps.
 
+## Iris
+
+Iris is our HTTP client.
+
 ## Principles
 
 At a high level `%arvo` takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
