@@ -29,7 +29,7 @@ The data contained in `bowl:gall` is quite generic.
           ==  ==
 ```
 
-Vanes in Arvo communicate by means of `move`s. When a `move` is produced by an arm in a Gall app, it's dispatched by Arvo to the correct handler for the request, be it another application or another vane. A `move` is pair of `bone` and `card`. These are essential components to understand when learning to use Gall.
+Vanes in Arvo communicate by means of `move`s. When a `move` is produced by an arm in a Gall app, it's dispatched by Arvo to the correct handler for the request, be it another application or another vane. A `move` is `pair` of `bone` and `card`. These are essential components to understand when learning to use Gall.
 
 A `bone` is an opaque cause that initiates a request. When constructing a outgoing `move` you will frequently use `ost.bowl` to acquire essential information, such as a `bone` describing the initial cause. When responding to an incoming `move` you can use the `bone` in the received `move` to construct your response.
 
@@ -44,7 +44,7 @@ A `card` describes the effect or event that is being requested. Each application
   ==
 ```
 
-Each `card` is a pair consisting of a tag and a noun. The tag indicates what the event being triggered is and the noun is any data required for that event.
+Each `card` is a `pair` consisting of a tag and a noun. The tag indicates what the event being triggered is and the noun is any data required for that event.
 
 ## Arms
 
