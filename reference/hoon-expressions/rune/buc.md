@@ -104,26 +104,30 @@ Regular form: **2-running**.
 
 A `$%` is a tagged union, a common data model.
 
-Make sure the first item in your `$%` terminates, or the default will
-be an infinite loop!
+Make sure the last item in your `$%` terminates, or the default will
+be an infinite loop!  Alteratively, you can use `$~` to define a custom
+type default value.
 
 ##### Examples
 
 ```
 ~zod:dojo> =foo $%([%foo p=@ud q=@ud] [%baz p=@ud])
 
+~zod:dojo> (foo [%foo 4 2])
+[%foo p=4 q=2]
+
 ~zod:dojo> (foo [%baz 37])
 [%baz p=37]
 
 ~zod:dojo> $:foo
-[%foo p=0 q=0]~
+[%baz p=0]
 ```
 
 ### $: "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 
-##### Normalizes
+##### Normalizes to
 
 The tuple the length of `p`, normalizing each item.
 
@@ -282,7 +286,7 @@ Using `$~`:
 
 `[%bsvt p=spec q=spec]`: structure which normalizes a union tagged by head depth (atom).
 
-###### Normalizes to
+##### Normalizes to
 
 `p`, if the sample is an atom; `q`, if the sample is a cell.
 
@@ -311,7 +315,7 @@ Example:
 [p=%baz q=99]
 
 ~zod:dojo> $:a
-[%foo p=0 q=0]
+%foo
 ```
 
 
@@ -347,14 +351,14 @@ layer (as seen in the expansion above) to apply a `$=`.
 p=%foo
 
 ~zod:dojo> (a %baz)
-p=%foo
+ford: %ride failed to execute:
 ```
 
 ### $? "bucwut"
 
 `[%bswt p=(list spec)]`: form a type from a union of other types.
 
-###### Normalizes to
+##### Normalizes to
 
 The first item in `p` which normalizes the sample to itself.
 
@@ -386,7 +390,7 @@ normalizer.
 %baz
 
 ~zod:dojo> (a [37 45])
-%baz
+ford: %ride failed to execute:
 
 ~zod:dojo> $:a
 %baz
