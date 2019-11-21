@@ -102,7 +102,7 @@ That's all for our `poke-noun` arm. But what about when the timer goes off? Behn
   [~ +>.$]
 ```
 
-`wake` is a gate that has two arguments: a `wire`, and a `(unit tang)` with the face `error`. The syntax of `=wire` is a shortcut for `wire=wire`; it's a common pattern to shadow the name of a type when you only have one instance of the type and are not going to refer to the type itself. A `wire` is just an alias for `path`. Our `wire` will be the `path` that we gave original `move`. If we needed to do something based on which request caused this gate to be called, we could use the wire to do so. In this case, we don't do perform such a dispatch.
+`wake` is a gate that has two arguments: a `wire`, and a `(unit tang)` with the face `error`. The syntax of `=wire` is a shortcut for `wire=wire`; it's a common pattern to shadow the name of a type when you only have one instance of the type and are not going to refer to the type itself. A `wire` is just an alias for `path`. Our `wire` will be the `path` that we gave the original `move`. If we needed to do something based on which request caused this gate to be called, we could use the wire to do so. In this case, we don't perform such a dispatch.
 
 Next we have the same cast we used in `++poke-noun` to make sure we are producing the correct thing for Gall. These casts are not strictly necessary, as the type system can infer what the type will be, but they can be very useful both for debugging our own code and for someone else trying to determine what our code should be producing.
 
@@ -112,4 +112,4 @@ Next we have the same cast we used in `++poke-noun` to make sure we are producin
 
 `~&` is the debugging printf rune. Here we're using it to output a message. We could, however, modify this line of code to do any other computation we would want to happen when `++wait` gets called.
 
-Finally, we need to produce our `move`. Here the effect is simply `[~ +>.$]`, since we have no `move` to make and we are not changing the state of our app. We just use the `door` without changing its sample.
+Finally, we need to produce our `move`. Here the effect is simply `[~ +>.$]`, since we have no `move` to make and we are not changing the state of our app. We just use the door without changing its sample.
