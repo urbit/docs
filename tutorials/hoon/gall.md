@@ -14,18 +14,18 @@ The core of a Gall app is a door whose subject has two parts: a `bowl:gall` whic
 The data contained in `bowl:gall` is quite generic.
 ```hoon
   ++  bowl                                              ::  standard app state
-          $:  $:  our/ship                              ::  host
-                  src/ship                              ::  guest
-                  dap/term                              ::  agent
+          $:  $:  our=ship                              ::  host
+                  src=ship                              ::  guest
+                  dap=term                              ::  agent
               ==                                        ::
-              $:  wex/boat                              ::  outgoing subs
-                  sup/bitt                              ::  incoming subs
+              $:  wex=boat                              ::  outgoing subs
+                  sup=bitt                              ::  incoming subs
               ==                                        ::
-              $:  ost/bone                              ::  opaque cause
-                  act/@ud                               ::  change number
-                  eny/@uvJ                              ::  entropy
-                  now/@da                               ::  current time
-                  byk/beak                              ::  load source
+              $:  ost=bone                              ::  opaque cause
+                  act=@ud                               ::  change number
+                  eny=@uvJ                              ::  entropy
+                  now=@da                               ::  current time
+                  byk=beak                              ::  load source
           ==  ==
 ```
 
