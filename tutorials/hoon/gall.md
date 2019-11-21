@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gall/"]
 +++
 
-Gall is the Arvo vane responsible for handling user space applications. When writing a Gall application there are several things you will need to understand.
+Gall is the Arvo vane responsible for handling stateful user space applications. When writing a Gall application there are several things you will need to understand.
 
 ## bowl and moves
 
