@@ -46,12 +46,9 @@ The sample of the door is:
 [bowl:gall ~]
 ```
 
-You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's enough to know that this is the default app state and includes various faces for information. Below are some important such faces:
+As mentioned in [the previous lesson](@/docs/tutorials/hoon/gall.md), the `bowl` contains generic information used by nearly every Gall app. Relevant to our egg timer are the following faces:
 
-- `our`  The ship this code is running on
-- `src`  The ship the current event originated from
 - `ost`  A reference to the current chain of events
-- `eny`  Guaranteed-fresh entropy
 - `now`  The current time
 
 The door we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `poke`s, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
