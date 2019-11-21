@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/egg-timer/"]
 +++
 
-The Arvo operating system is divided up into modules called vanes. Gall is the vane responsible for providing an API for building stateful applications in Urbit. Gall is a complex system that takes a lot of getting used to, so let's dip our toes in with a simple egg-timer app.
+The bulk of the functionality of Arvo is divided up into kernel modules called vanes. Gall is the vane responsible for providing an API for building stateful applications in Urbit. Gall is a complex system that takes a lot of getting used to, so let's dip our toes in with a simple egg timer app.
 
 
 ```hoon
@@ -27,7 +27,7 @@ The Arvo operating system is divided up into modules called vanes. Gall is the v
 --
 ```
 
-The first thing to notice is that we are creating a `core` (`|%`) and a `door` (`|_`). This is a typical style of Gall programming where your types are defined in the first `core` and your application is defined in the following `door`.
+The first thing to notice is that we are creating a core (`|%`) and a door (`|_`). This is a typical style of Gall programming where your types are defined in the first core and your application is defined in the following `door`.
 
 ```hoon
 |%
@@ -36,11 +36,11 @@ The first thing to notice is that we are creating a `core` (`|%`) and a `door` (
 --
 ```
 
-The `core` here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping atoms to them. We define `card` to be a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
+The core here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping atoms to them. A `card` is a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
 
 It's important to note that the names `move` and `card` are technically arbitrary; you can call them whatever you'd like. By convention, however, you will see them called `move` and `card` practically everywhere.
 
-The sample of the `door` is:
+The sample of the door is:
 
 ```hoon
 [bowl:gall ~]
@@ -54,7 +54,7 @@ You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's 
 - `eny`  Guaranteed-fresh entropy
 - `now`  The current time
 
-The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
+The door we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `poke`s, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
 ```hoon
 ++  poke-noun
@@ -70,7 +70,7 @@ In the above code, we create a gate that takes a single `@dr` argument. `@dr` is
 - `~m20`  20 minutes
 - `~d42`  42 days
 
-As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we `bunt` with `*`, is the head; `+>.$`, the enclosing core which is our `door`, is the tail.
+As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we bunt with `*`, is the head; `+>.$`, the enclosing core which is our door, is the tail.
 
 Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like:
 
