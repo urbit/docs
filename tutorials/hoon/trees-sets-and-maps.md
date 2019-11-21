@@ -288,9 +288,9 @@ This result may be unexpected.  Why didn't it just give us `2`?  The answer has 
 
 Because there is no `%chicken` key in `c`, `get` simply returns `~` to indicate it's not in the map.  Otherwise it returns a pair like the one you see in the next to last example.
 
-`get` of `by` returns the key's value as a `unit`, not as raw data.  There are two kinds of `unit`s: null `~`, and non-null.  A non-null `unit` is a pair of `[~ value]`.  Unit types are constructed the way list, set, and map types are; for example, `(unit @)` is the type for a unit whose value is an atom.
+`get` of `by` returns the key's value as a `unit`, not as raw data.  There are two kinds of `unit`s: null `~`, and non-null.  A non-null `unit` is a pair of `[~ value]`.  Unit types are constructed the way list, set, and map types are; for example, `(unit @)` is the type for a unit whose value is an atom. `unit`s are Hoon's [option type](https://en.wikipedia.org/wiki/Option_type), which are helpful for error handling.
 
-If you want to get some key value without producing a unit, use `got` instead:
+If you want to get some key value without producing a `unit`, use `got` instead:
 
 ```
 > (~(got by c) %two)
