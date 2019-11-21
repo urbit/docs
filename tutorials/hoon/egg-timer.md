@@ -48,7 +48,7 @@ The sample of the door is:
 
 As mentioned in [the previous lesson](@/docs/tutorials/hoon/gall.md), the `bowl` contains generic information used by nearly every Gall app. Relevant to our egg timer are the following faces:
 
-- `ost`  A reference to the current chain of events
+- `ost`  A `bone` that is a reference to the current chain of events
 - `now`  The current time
 
 The door we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `poke`s, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
@@ -67,7 +67,7 @@ In the above code, we create a gate that takes a single `@dr` argument. `@dr` is
 - `~m20`  20 minutes
 - `~d42`  42 days
 
-As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we bunt with `*`, is the head; `+>.$`, the enclosing core which is our door, is the tail.
+As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell whose head is a `list` of `move`s, which we bunt with `*`, and whose tail is `+>.$`, which is the enclosing core, i.e. our door.
 
 Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like:
 
@@ -75,10 +75,9 @@ Next we're going to use the `:_` rune which is just the inverted form a `:-` the
 [[[ost %wait /egg-timer (add now t)] ~] +>.$]
 ```
 
-`ost` is the `bone`, the opaque reference to a chain of events, that comes from `bowl`, so we're going to continue to use it here. `%wait` is the name of the `move`, in this case a request to the Behn vain to start a timer for us.
+`ost` is the `bone`, the opaque reference to a chain of events that comes from `bowl`, so we're going to continue to use it here. `%wait` is the name of the `move`, in this case a request to the Behn vane to start a timer for us.
 
-After `%wait`, we have the `path`, a `list` of `cords` that serves as the unique identifier for this `move`:
-
+After `%wait`, we have the `path`, which is a `list` of `cords` that serves as the unique identifier for this `move`:
 ```
 /egg-timer
 ```
@@ -93,7 +92,7 @@ The final part of this `move` is:
 
 `now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both atoms, we can add `now` and `t` these two to get an atom that is `t` units of time into the future from `now`. That produced atom can be interpreted as a `@da`.
 
-That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `gift`, a similar construct to how we created a `card`, only this time it will end up being dispatched back to us via Gall in the `++wake` arm. Any app that wants to use a timer trigger needs to have an arm called `++wake`.
+That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `gift`, a similar construct to a `card`, only this time it will end up being dispatched back to us via Gall in the `++wake` arm. Any app that wants to use a timer trigger needs to have an arm called `++wake`.
 
 ```hoon
 ++  wake
@@ -103,7 +102,7 @@ That's all for our `poke-noun` arm. But what about when the timer goes off? Behn
   [~ +>.$]
 ```
 
-`wake` is a `gate` that has two arguments: a `wire`, and a `(unit tang)` with the face `error`. The syntax of `=wire` is a shortcut for `wire=wire`; it's a common pattern to shadow the name of a type when you only have one instance of the type and are not going to refer to the type itself. A `wire` is just an alias for `path`. Our `wire` will be the `path` that we gave original `move`. If we needed to do something based on which request caused this gate to be called, we could use the wire to do so. In this case, we don't do perform such a dispatch.
+`wake` is a gate that has two arguments: a `wire`, and a `(unit tang)` with the face `error`. The syntax of `=wire` is a shortcut for `wire=wire`; it's a common pattern to shadow the name of a type when you only have one instance of the type and are not going to refer to the type itself. A `wire` is just an alias for `path`. Our `wire` will be the `path` that we gave original `move`. If we needed to do something based on which request caused this gate to be called, we could use the wire to do so. In this case, we don't do perform such a dispatch.
 
 Next we have the same cast we used in `++poke-noun` to make sure we are producing the correct thing for Gall. These casts are not strictly necessary, as the type system can infer what the type will be, but they can be very useful both for debugging our own code and for someone else trying to determine what our code should be producing.
 
