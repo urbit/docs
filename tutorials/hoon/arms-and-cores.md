@@ -181,7 +181,7 @@ To reinforce your newfound understanding of arms and cores, let's go over the va
 
 ### Address-Based Wings
 
-In the last lesson, you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
+In the [previous lesson](@../the-subject-and-its-legs.md), you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
 Let's use `-.c` to look at the head of `c`, i.e., the battery of the core:
 
@@ -299,7 +299,7 @@ Hoon doesn't know whether `double` is a face or an arm name until it conducts a 
 24
 ```
 
-### Modifying a Core
+### Modifying a Core's Payload
 
 We can produce a modified version of the core `c` in which `a` and `b` have different values.  A core is just a noun in the subject, so we can modify it in the way we learned to modify legs in the last lesson.  To change `a` to `99`, use `c(a 99)`:
 
@@ -391,6 +391,46 @@ So the meaning of `two.double.c` is, roughly, '`two` in the parent core of `doub
 
 In each of the following examples, the only wings that matter are `c` and whichever arm name is left-most in the expression.  The other arm names in the path simply resolve to their parent core, which is just `c`.
 
+### The `..arm` Syntax
+
+Let's say you have a wing that resolves to a leg of the subject.  In this wing is an arm name, e.g., `a.b.arm`.  As you learned in lesson 1.4, this should be read as '`a` in `b` in the parent core of `arm`'.  Speaking more directly: the wing resolution path goes through the parent core of the arm, not the arm itself.
+
+Recall that using `.` by itself returns the whole subject.  With that in mind, take a moment to answer the following question on your own.  In general, what should the expression `..arm` produce?
+
+Do you have an answer?  If not, consider going back and trying to figure it out before moving on.
+
+You may read `..arm` as '`.` of the parent core of `arm`'.  This amounts to just the parent core of `arm`.  Let's try this out with the arms of `c`:
+
+```
+> ..inc:c
+< 4.han
+  { {our/@p now/@da eny/@uvJ}
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
+  }
+>
+
+> c
+< 4.han
+  { {our/@p now/@da eny/@uvJ}
+    <19.anu 24.tmo 6.ipz 38.ard 119.spd 241.plj 51.zox 93.pqh 74.dbd 1.qct $141>
+  }
+>
+```
+
+Yes, they match.  `..inc` of `c` is just the parent core of `inc`, `c` itself.  But why would we ever use `..inc` to refer to `c`?  It's much simpler to use `c`.
+
+Sometimes the `..arm` syntax is quite useful.  Often there is a core in the subject without a face bound to it; i.e., the core might be nameless.  In that case you can use an arm name in that core to refer to the whole core.
+
+For an example of this, consider the `add` arm of the Hoon standard library.  This arm is in a nameless core.  To see the parent core of `add`, try `..add`:
+
+```
+> ..add
+<74.dbd 1.qct $141>
+```
+
+Here you see a core with a battery of 74 arms (!), and whose payload is another core with one arm.
+
+
 ### Evaluating an Arm Against a Modified Core
 
 Assume `this.is.a.wing` is a wing that resolves to an arm.  You can use the `this.is.a.wing(face new-value)` syntax to compute the arm against a modified version of the parent core of `this.is.a.wing`.
@@ -410,7 +450,7 @@ This almost looks like a function call of sorts.
 
 Let's take a quick look at the battery of one core in the dojo to show that this is true by inputting one into the dojo.
 
-```hoon
+```
 > =dec |%
   ++  dec
     |=  a=@
@@ -420,7 +460,6 @@ Let's take a quick look at the battery of one core in the dojo to show that this
     ?:  =(a +(b))  b
     $(b +(b))
   --
-
 ```
 
 This core has one arm `dec` which implements decrement. If we look at the head of the core we'll see the Nock.
@@ -449,29 +488,125 @@ This core has one arm `dec` which implements decrement. If we look at the head o
  
 Again, being able to read Nock is not essential to understanding Hoon.
 
-Let's take a quick look at how cores can be combined to build up larger structures.
+### Core Nesting
+
+Let's take a quick look at how cores can be combined with `=>` to build up larger structures.  `=>  p=hoon  q=hoon` allows you to take the product of `q` with the product of `p` taken as the subject.
 
 ```hoon
 =>
 |%
-++  dec
+++  foo
   |=  a=@
-  ?<  =(0 a)
-  =+  b=0
-  |-  ^-  @
-  ?:  =(a +(b))  b
-  $(b +(b))
+  (mul a 2)
 -- 
 |%
+++  bar
+  |=  a=@
+  (mul (foo a) 2)
+--
+```
+In this core, `foo` is in the subject of `bar`, and so `bar` is able to call `foo`. On the other hand, `bar` is not in the subject of `foo`, so `foo` cannot call `bar` - you will get a `-find.bar` error.
+
+Let's take a look inside of `hoon.hoon`, where the standard library is located, to see how this is being used.
+
+The first core listed here has just one arm.
+```hoon
+|%
+++  hoon-version  141
+--
+```
+This is reflected in the subject of `hoon-version`.
+```
+> ..hoon-version
+<1.ane $141>
+```
+
+After several lines that we'll ignore for pedagogical purposes, we see
+```hoon
+|%
+::  #  %math
+::    unsigned arithmetic
++|  %math
 ++  add
+  ~/  %add
+  ::  unsigned addition
+  ::
+  ::  a: augend
+  ::  b: addend
   |=  [a=@ b=@]
+  ::  sum
   ^-  @
   ?:  =(0 a)  b
   $(a (dec a), b +(b))
+::
+++  dec
+```
+and so on, down to
+```hoon
+++  unit
+  |$  [item]
+  ::    maybe
+  ::
+  ::  mold generator: either `~` or `[~ u=a]` where `a` is the
+  ::  type that was passed in.
+  ::
+  $@(~ [~ u=item])
 --
 ```
+This core contains the arms in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `add`.
+```
+> ..add
+<41.mac 1.ane $141>
+```
+Now though, we see that the section 1 core is contained within the core containing `hoon-version`.
 
-Here you can see the style of wrapping one core in another. This technique is used frequently in Hoon, particularly in the standard library. `dec` is used in the subsequent core. This can be a useful code organization technique. Gates and Traps are both special kinds of cores, as you will see in later lessons.
+Next, [section two](@/docs/reference/library/2a.md) starts:
+```
+=>
+::                                                      ::
+::::  2: layer two                                      ::
+```
+...
+```
+|%
+::                                                      ::
+::::  2a: unit logic                                    ::
+  ::                                                    ::
+  ::    biff, bind, bond, both, clap, drop,             ::
+  ::    fall, flit, lift, mate, need, some              ::
+  ::
+++  biff                                                ::  apply
+  |*  {a/(unit) b/$-(* (unit))}
+  ?~  a  ~
+  (b u.a)
+```
+If you counted the arms in this core by hand, you'll come up with 126 arms. This is also reflected in the dojo:
+```
+> ..biff
+<126.xjf 41.mac 1.ane $141>
+```
+and we also see the section 1 core and the core containing `hoon-version` in the subject.
+
+We can also confirm that `add` is in the subject of `biff`
+```
+> add:biff
+<1.vwd {{a/@ b/@} <41.mac 1.ane $141>}>
+```
+and that `biff` is not in the subject of `add`.
+```
+> biff:add
+-find.biff
+```
+
+Lastly, let's check the subject of the last arm in `hoon.hoon` (as of November 2019)
+```
+> ..pi-tell
+<92.nnn 247.tye 51.mvt 126.xjf 41.mac 1.ane $141>
+```
+This confirms for us, then, that `hoon.hoon` consists of six nested cores, with the `hoon-version` core at the top.
+
+#### Exercise 1.7a
+Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in the layer they exist in or a deeper layer. This is easily accomplished with `Ctrl-F`.
 
 ## Casts
 
