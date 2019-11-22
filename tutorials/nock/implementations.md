@@ -1379,7 +1379,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
   }
 
   /**
-   * invoke (9): construct a core and evaluate one of it's arms against it
+   * invoke (9): construct a core and evaluate one of its arms against it
    *
    *   *[a 9 b c]  *[a 7 c 2 [0 1] 0 b]
    */

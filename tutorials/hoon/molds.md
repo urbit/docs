@@ -32,7 +32,7 @@ Here is a very simple mold builder. It takes two molds and produces a mold that 
   |$  [item]
   $@(~ [i=item t=(list item)])
 ```
-Here is a mold builder you've used previously. `$@` is a rune that will match the first thing if it's sample is an atom and the second if the sample is a cell. You should be familiar at this point that a `list` is either `~`  or a pair of an item and a list of item.
+Here is a mold builder you've used previously. `$@` is a rune that will match the first thing if its sample is an atom and the second if the sample is a cell. You should be familiar at this point that a `list` is either `~`  or a pair of an item and a list of item.
 
 
 ```hoon

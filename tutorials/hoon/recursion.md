@@ -137,7 +137,7 @@ $(n (dec n), t (mul t n))
 
 The above code should look familiar. We are still building a gate that
 takes one argument `n`. This time, however, we are also putting a face on a
-`@ud` and setting it's initial value to 1. The `|-` here is used to create a new
+`@ud` and setting its initial value to 1. The `|-` here is used to create a new
 gate with one arm `$` and immediately call it. Think of `|-` as the recursion
 point.
 
