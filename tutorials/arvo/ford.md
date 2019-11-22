@@ -393,7 +393,7 @@ Example:
 
 produces a value of type `(map term cord)`, where each key is the basename (the
 filename without the prefix), and each value is the result of running the
-contents of the file through the `%hoon` mark, which validates that it's valid
+contents of the file through the `%hoon` mark, which validates the
 hoon code and returns it unmodified. So, the resulting map associates basenames
 with file contents.
 
