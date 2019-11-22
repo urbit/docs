@@ -50,7 +50,7 @@ We see that the sample of the door is `[bowl:gall ~]`. As mentioned in [the prev
 - `ost`  A `bone` that is a reference to the current chain of events
 - `now`  The current time
 
-The door we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `poke`s, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
+The door we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `poke`s, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `%noun` mark:
 
 ```hoon
 ++  poke-noun

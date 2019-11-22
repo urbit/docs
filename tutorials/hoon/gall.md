@@ -44,7 +44,7 @@ A `card` describes the effect or event that is being requested. Each application
   ==
 ```
 
-Each `card` is a `pair` consisting of a tag and a noun. The tag indicates what the event being triggered is and the noun is any data required for that event.
+Each `card` is a `pair` consisting of a tag and a noun. The tag indicates what the event being triggered is (such a tag is referred to as a mark), and the noun is any data required for that event.
 
 ## Arms
 
