@@ -4,7 +4,7 @@ weight = 37
 template = "doc.html"
 +++
 
-Gall apps can be difficult to understand and simple ones often don't need the full complexity available when writing standard Gall apps. To that end, the `tapp` library implements the "async monad" which is more accurately described as a transitional IO monad. If you're not familiar with monads, don't worry as that understanding will not be necessary to use the `tapp` library.
+Gall apps can be difficult to understand and simple ones often don't need the full complexity available when writing standard Gall apps. To that end, the `tapp` library implements the "async monad" which is more accurately described as a transactional IO monad. If you're not familiar with monads, don't worry as that understanding will not be necessary to use the `tapp` library.
 
 The following code is from `app/example-tapp-fetch.hoon` Much of this file should already be pretty readable, particularly given the comments in it, so we'll focus here on specific parts of the file rather than a full walkthrough. This app is intended to get the top comment of the top ten stories on Hacker News.
 
@@ -184,7 +184,7 @@ The first part of this gate inspects the `in-poke-data` structure, specifically 
 
 The most important part to see here is the `;<` rune. If you're familiar with monadic bind, this is what this rune is. If you're not, don't worry! While we wont be discussing the implementation details of this rune, it's quite simple to use. 
 
-`;<` has four children: `A`, `B`, `C` and `D`.
+`;<` has four children we will sequentially label `A`, `B`, `C` and `D`.
 
 `A` is a mold that describes the type produced by `C`. 
 
@@ -192,9 +192,9 @@ The most important part to see here is the `;<` rune. If you're familiar with mo
 
 `C` is some code we want to run and `D` is code to run after the `C` has completed successfully. If `C` fails, then the entire `;<` call will fail. This will allow us to chain a series of calls which may take a long time to complete, such as http requests, together and proceed when they actually complete.
 
-`D` must produce the type defined by `B`, `tapp-async` or `(async ,state)`. In the final leg of the `;<` series in this app you'll see the calls to `pure:m` which is used to wrap `top-comments` in an `async`.
+`D` must produce the type defined by `B`, `tapp-async` or `(async, state)`. In the final leg of the `;<` series in this app you'll see the calls to `pure:m` which is used to wrap `top-comments` in an `async`.
 
-In a number of cases `D` here is going to be another `;<` rune. This is how you can chain these together to perform a lot of asynchronous actions that need to all complete.
+Frequently the final child `D` is going to be another `;<` rune. This is how you can chain these together to perform a lot of asynchronous actions that need to all complete.
 
 ```hoon
   ::
