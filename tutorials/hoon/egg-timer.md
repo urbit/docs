@@ -27,7 +27,7 @@ The bulk of the functionality of Arvo is divided up into kernel modules called v
 --
 ```
 
-The first thing to notice is that we are creating a core (`|%`) and a door (`|_`). This is a typical style of Gall programming where your types are defined in the first core and your application is defined in the following `door`.
+The first thing to notice is that we are creating a core (`|%`) and a door (`|_`). This is a typical style of Gall programming where your types are defined in the first core and your application is defined in the following door.
 
 ```hoon
 |%
@@ -40,13 +40,12 @@ The core here defines two types: `move` and `card`. A `move` is a `pair` of `bon
 
 It's important to note that the names `move` and `card` are technically arbitrary; you can call them whatever you'd like. By convention, however, you will see them called `move` and `card` practically everywhere.
 
-The sample of the door is:
+Next we have the door of the program. The door should be thought of as both the container for the logic of the app and the state of the app itself. The battery encodes the logic of the app, while the sample encodes the state of the program. When the state is updated, a new door is created with an updated sample to reflect the new state.
 
 ```hoon
-[bowl:gall ~]
+|_  [bowl:gall ~]
 ```
-
-As mentioned in [the previous lesson](@/docs/tutorials/hoon/gall.md), the `bowl` contains generic information used by nearly every Gall app. Relevant to our egg timer are the following faces:
+We see that the sample of the door is `[bowl:gall ~]`. As mentioned in [the previous lesson](@/docs/tutorials/hoon/gall.md), the `bowl` contains generic information used by nearly every Gall app. Relevant to our egg timer are the following faces:
 
 - `ost`  A `bone` that is a reference to the current chain of events
 - `now`  The current time
@@ -112,4 +111,4 @@ Next we have the same cast we used in `++poke-noun` to make sure we are producin
 
 `~&` is the debugging printf rune. Here we're using it to output a message. We could, however, modify this line of code to do any other computation we would want to happen when `++wait` gets called.
 
-Finally, we need to produce our `move`. Here the effect is simply `[~ +>.$]`, since we have no `move` to make and we are not changing the state of our app. We just use the door without changing its sample.
+Finally, we need to produce our `move`. Here the effect is simply `[~ +>.$]`, since we have no `move` to make and we are not changing the state of our app. We just pass forward our door with the battery and payload unchanged, which corresponds to no change in state.
