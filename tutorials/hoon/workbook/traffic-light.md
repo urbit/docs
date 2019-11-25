@@ -129,7 +129,7 @@ a new core in the gate, so we have to then assign that back to the face `a`.
 ```
 
 Here we simply are creating a new cell that has the `current-state` from `a` as
-it's head and the `current-state` from `b` as it's tail.
+its head and the `current-state` from `b` as its tail.
 
 Let's run it in the Dojo to get our product:
 
