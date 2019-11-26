@@ -5,6 +5,10 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/egg-timer/"]
 +++
 
+Note: as of 2019.12.02, this material is out of date. While this is being updated, please see the [Gall overview](@/docs/tutorials/arvo/gall.md) in the Arvo section to get oriented with Gall. Some material presented here may still be useful.
+
+## Egg Timer
+
 The bulk of the functionality of Arvo is divided up into kernel modules called vanes. Gall is the vane responsible for providing an API for building stateful applications in Urbit. Gall is a complex system that takes a lot of getting used to, so let's dip our toes in with a simple egg timer app.
 
 

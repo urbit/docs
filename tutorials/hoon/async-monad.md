@@ -4,6 +4,10 @@ weight = 37
 template = "doc.html"
 +++
 
+Note: as of 2019.12.02, this material is out of date. While this is being updated, please see the [Gall overview](@/docs/tutorials/arvo/gall.md) in the Arvo section to get oriented with Gall. Some material presented here may still be useful.
+
+## Async Monad
+
 Gall apps can be difficult to understand and simple ones often don't need the full complexity available when writing standard Gall apps. To that end, the `tapp` library implements the "async monad" which is more accurately described as a transactional IO monad. If you're not familiar with monads, don't worry as that understanding will not be necessary to use the `tapp` library.
 
 The following code is from `app/example-tapp-fetch.hoon` Much of this file should already be pretty readable, particularly given the comments in it, so we'll focus here on specific parts of the file rather than a full walkthrough. This app is intended to get the top comment of the top ten stories on Hacker News.
