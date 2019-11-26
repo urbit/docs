@@ -64,7 +64,7 @@ definable in a regular recursive data type).
 An agent is defined as a core with a set of arms to handle various
 events.  These handlers usually produce a list of effects and the next
 state of the agent.  The interface definition can be found in
-sys/zuse.hoon, which at the time of writing is:
+`sys/zuse.hoon`, which at the time of writing is:
 
 ```hoon
 ++  agent
@@ -250,13 +250,13 @@ Most of the handlers produce a `(quip card agent:gall)`, which is just
 `[(list card) agent:gall]`.  The first allows us to produce effects, and
 the second allows us to maintain state.
 
-A card is one of two things:  a `+note` or a `+gift`.  You `%pass` notes
-and you `%give` gifts.  When you pass a note, you expect zero or more
-responses; when you give a gift, you will not get a response.  Since you
-may get a response to a note, you tag it with a "wire" so that you can
+A card is one of two things:  a `note` or a `gift`.  You `%pass` `note`s
+and you `%give` `gift`s.  When you pass a `note`, you expect zero or more
+responses; when you give a `gift`, you will not get a response.  Since you
+may get a response to a `note`, you tag it with a `wire` so that you can
 identify the response.
 
-Thus, we say you "pass a note along a wire", or you "give a gift".
+Thus, we say you "pass a `note` along a `wire`", or you "give a `gift`".
 These phrases correspond to producing a card that looks like:
 
 ```hoon
@@ -269,15 +269,15 @@ or
 [%give a-gift]
 ```
 
-When you give a gift, that's the end of the story, but when you pass a
-note, you may get a response.  If you do, then the response will come
-tagged with the wire that you used to pass the note.  It's generally
-good practice to make your wires fairly unique within your agent, since
+When you give a `gift`, that's the end of the story, but when you pass a
+`note`, you may get a response.  If you do, then the response will come
+tagged with the `wire` that you used to pass the `note`.  It's generally
+good practice to make your `wire`s fairly unique within your agent, since
 otherwise you may not be able to distinguish the responses.
 
 #### Notes
 
-An agent may pass notes to either Arvo or another agent.  If the note is
+An agent may pass `note`s to either Arvo or another agent.  If the `note` is
 to another agent, then it should usually be one of these:
 
 ```hoon
@@ -286,14 +286,14 @@ to another agent, then it should usually be one of these:
 [%pass /my/wire %agent our.bowl agent-name %poke %foo-mark !>(poke-data)]
 ```
 
-Note that to unsubscribe to a path, you must send the unsubscription on
-the same wire that sent for the original subscription.  Don't subscribe
-to separate paths along the same wire, because then you can't properly
+Note that to unsubscribe to a `path`, you must send the unsubscription on
+the same `wire` that sent for the original subscription.  Don't subscribe
+to separate `path`s along the same `wire`, because then you can't properly
 distinguish them for cancelling (besides not being able to distinguish
 the subscription updates).  In other words, besides letting *you*
-distinguish your cards, the wire also identifies requests for the system.
+distinguish your `card`s, the `wire` also identifies requests for the system.
 
-If the note is not to another agent but to Arvo itself, then it is a
+If the `note` is not to another agent but to Arvo itself, then it is a
 request to one of the vanes, which are kernel modules that provide
 various system services, including IO.  Here are some examples:
 
@@ -303,7 +303,7 @@ various system services, including IO.  Here are some examples:
 
 This is a request to the `%b` vane (Behn, the timer vane) to set a timer
 for 10 seconds in the future.  After 10 seconds, Behn will respond with
-a `%wake` card, which you will recieve in `+on-arvo`.  It will come back
+a `%wake` card, which you will recieve in `++on-arvo`.  It will come back
 on `/my/wire`.
 
 ```hoon
@@ -314,7 +314,7 @@ on `/my/wire`.
 
 This is a request to the `%c` vane (Clay, the filesystem vane) to write
 a file to `/my-file/txt` in the home desk.  You will not receive a
-response to this note.
+response to this `note`.
 
 ```hoon
 =/  =path  /my-file/txt
@@ -322,7 +322,7 @@ response to this note.
 [%pass /my/wire %arvo %c %warp our.hid %home ~ %many & moat]
 ```
 
-This is a request to the `%c` vane to send us a `%writ` card whenever
+This is a request to the `%c` vane to send us a `%writ` `card` whenever
 `/my-file/txt` changes in the next hour.  There may be many responses to
 this note if the file changes many times.
 
@@ -338,8 +338,8 @@ a GET HTTP request to example.com.  The response will come as an
 
 #### Gifts
 
-In contrast to the many possible notes, there are only two types of
-gifts that an agent may give:
+In contrast to the many possible `note`s, there are only two types of
+`gift`s that an agent may give:
 
 ```hoon
 [%give %fact (unit path) =cage]
@@ -347,40 +347,40 @@ gifts that an agent may give:
 ```
 
 A subscription update is a new piece of subscription content for all
-subscribers on a given path.  If no path is given, then the update is
+subscribers on a given `path`.  If no `path` is given, then the update is
 only given to the program that instigated this request.  Typical use of
-this mode is in `+on-watch` to give an initial update to a new
+this mode is in `++on-watch` to give an initial update to a new
 subscriber to get them up to date.
 
 A subscription close closes the subscription for all subscribers on a
-given path.  If no path is given, then the update is only given to the
+given `path`.  If no `path` is given, then the update is only given to the
 program that instigated this request.  Typical use of this mode would be
-in `+on-watch` to produce a single update to a subscription then close
+in `++on-watch` to produce a single update to a subscription then close
 the subscription.
 
 ### Vases and cages
 
-A "vase" is a piece of dynamic data.  Structurally, it's a pair of an
+A `vase` is a piece of dynamic data.  Structurally, it's a pair of an
 explicit reification of a type and an untyped noun.  This lets us
 represent a value which has a type that isn't known at compile time.  A
 vase has three operations:
 
 - `!>` is a unary rune that lifts a statically typed value to a
-  dynamically-typed vase.  For example, `!>('hi')` gives `[[%atom %t ~]
+  dynamically-typed `vase`.  For example, `!>('hi')` gives `[[%atom %t ~]
   26.984']`, which has type `[type *]`.
 
-- `!<` is a binary rune that takes a mold and a dynamically typed vase
-  and reduces it to a statically typed value.  If the vase does not in
+- `!<` is a binary rune that takes a mold and a dynamically typed `vase`
+  and reduces it to a statically typed value.  If the `vase` does not in
   fact have the type of the mold you give it, then it produces `~`, else
   it produces `[~ value]`.  For example, `!<(@t !>('hi'))` produces `[~
   'hi']` while `!<(^ !>('hi'))` produces `~`.
 
-- The compiler takes text and converts it to a vase of the compiled
+- The compiler takes text and converts it to a `vase` of the compiled
   code.  Agents shouldn't need this directly, but Gall uses this to
-  compile agents to vases, on which it calls `!<(agent:gall
+  compile agents to `vase`s, on which it calls `!<(agent:gall
   compiled-agent-vase)`.
 
-A "cage" is simply a pair of a mark and a vase.  A mark is a textual tag
+A `cage` is simply a pair of a mark and a vase.  A mark is a textual tag
 that should correspond to the particular dynamic type in the vase.
 
 In agents, we use vases to represent types which Gall doesn't know about
@@ -388,18 +388,18 @@ when it was compiled, but which nevertheless need to go outside the
 agent.  In practice, there are three common cases:
 
 - The data in a "poke" request is of a type that is defined by each
-  agent, so it must by dynamic.  This is the input to `+on-poke` as well
+  agent, so it must by dynamic.  This is the input to `++on-poke` as well
   as the cage in the `%poke` case of the `%agent` note.
 
 - The data in a subscription update is defined by each agent, so it must
   be dynamic.  This is the cage in `%fact`, both when giving the update
-  and in the input to `+on-agent`.
+  and in the input to `++on-agent`.
 
 - The state of an agent is also unique to each agent.  Most of the time,
   Gall doesn't interact directly with agent's state, but when upgrading
   an agent, it must pass the state of the old version of the agent to
-  the new version of the agent.  This is the output of `+on-save` and
-  the input to `+on-load`.
+  the new version of the agent.  This is the output of `++on-save` and
+  the input to `++on-load`.
 
 ### State
 
@@ -423,10 +423,10 @@ the agent core.
 When you upgrade an agent, you need to extract the state from your
 opaque context and produce it to Gall as a dynamically typed vase.
 Usually, this will be easy:  just call `!>` on whatever state you wish
-to preserve.  This is `+on-save`.
+to preserve.  This is `++on-save`.
 
 When the new agent is about to be started, Gall will call it with
-`+on-load` with the vase just produced above.  This allows you to ingest
+`++on-load` with the vase just produced above.  This allows you to ingest
 your old state and continue right where you left off.
 
 If the type of your state hasn't changed, you can just
@@ -442,7 +442,7 @@ If it has changed, then it should look more like:
 ```
 
 It's useful to tag your state with a version number so that the
-`upgrade-state` function can take a tagged union of all your old state
+`++upgrade-state` function can take a tagged union of all your old state
 types and upgrade from any of them to the current state type.  For
 example, it may have the following structure:
 
@@ -464,7 +464,7 @@ example, it may have the following structure:
 
 ### Bowl
 
-The core takes as input a "bowl", which includes useful info like the
+The core takes as input a `bowl`, which includes useful info like the
 current ship, the current time, and a renewable source of entropy.  This
 information is available to any of the handlers.
 
@@ -472,37 +472,37 @@ information is available to any of the handlers.
 
 A description of each of the handler arms follows.
 
-### +on-init
+### ++on-init
 
 This arm is called once when the agent is started.  It has no input and
 lets you perform any initial IO.
 
-### +on-save
+### ++on-save
 
 This arm is called immediately before the agent is upgraded.  It
-packages the permament state of the agent in a vase for the next version
+packages the permament state of the agent in a `vase` for the next version
 of the agent.  Unlike most handlers, this cannot produce effects.
 
-### +on-load
+### ++on-load
 
 This arm is called immediately after the agent is upgraded.  It receives
-a vase of the state of the previously-running version of the agent,
+a `vase` of the state of the previously-running version of the agent,
 which allows it to cleanly upgrade from the old agent.
 
-### +on-poke
+### ++on-poke
 
-This arm is called when the agent is "poked".  The input is a cage, so
-it's a pair of a mark and a dynamic vase.
+This arm is called when the agent is "poked".  The input is a `cage`, so
+it's a pair of a mark and a dynamic `vase`.
 
-### +on-watch
+### ++on-watch
 
 This arm is called when a program wants to subscribe to the agent on a
-particular path.  The agent may or may not need to perform setup steps
+particular `path`.  The agent may or may not need to perform setup steps
 to intialize the subscription.  It may produce a `%give`
 `%subscription-result` to the subscriber to get it up to date, but after
 this event is complete, it cannot give further updates to a specific
 subscriber.  It must give all further updates to all subscribers on a
-specific path.
+specific `path`.
 
 If this arm crashes, then the subscription is immediately terminated.
 More specifcally, it never started -- the subscriber will receive a
@@ -510,7 +510,7 @@ negative `%watch-ack`.  You may also produce an explicit `%kick` to
 close the subscription without crashing -- for example, you could
 produce a single update followed by a `%kick`.
 
-### +on-leave
+### ++on-leave
 
 This arm is called when a program becomes unsubscribed to you.
 Subscriptions may close because the subscriber intentionally
@@ -521,7 +521,7 @@ updates indefinitely.  If the program crashes while processing an
 update, this may also generate an unsubscription.  You should consider
 subscriptions to be closable at any time.
 
-### +on-peek
+### ++on-peek
 
 This arm is called when a program reads from the agent's "scry"
 namespace, which should be referentially transparent.  Unlike most
@@ -529,18 +529,18 @@ handlers, this cannot perform IO, and it cannot change the state.  All
 it can do is produce a piece of data to the caller, or not.
 
 If this arm produces `[~ ~ data]`, then `data` is the value at the the
-given path.  If it produces `[~ ~]`, then there is no data at the given
-path and never will be.  If it produces `~`, then we don't know yet
-whether there is or will be data at the given path.
+given `path`.  If it produces `[~ ~]`, then there is no data at the given
+`path` and never will be.  If it produces `~`, then we don't know yet
+whether there is or will be data at the given `path`.
 
-### +on-agent
+### ++on-agent
 
 This arm is called to handle responses to `%pass` moves to other agents.
 It will be one of the following types of response:
 
 - `%poke-ack`: acknowledgment (positive or negative) of a poke.  If the
   value is `~`, then the poke succeeded.  If the value is `[~ tang]`,
-  then the poke failed, and a printable explanation (eg a stack trace)
+  then the poke failed, and a printable explanation (e.g. a stack trace)
   is given in the `tang`.
 
 - `%watch-ack`: acknowledgment (positive or negative) of a subscription.
@@ -551,16 +551,16 @@ It will be one of the following types of response:
 
 - `%kick`: notification that the subscription has ended.
 
-### +on-arvo
+### ++on-arvo
 
-This arm is called to handle responses to `%pass` moves to vanes.  The
+This arm is called to handle responses to `%pass` `move`s to vanes.  The
 list of possible responses from the system is statically defined in
 sys/zuse.hoon (grep for `++  sign-arvo`).
 
-### +on-fail
+### ++on-fail
 
-If an error happens in `+on-poke`, the crash report goes into the
+If an error happens in `++on-poke`, the crash report goes into the
 `%poke-ack` response.  Similarly, if an error happens in
-`+on-subscription`, the crash report goes into the `%watch-ack`
+`++on-subscription`, the crash report goes into the `%watch-ack`
 response.  If a crash happens in any of the other handlers, the report
 is passed into this arm.
