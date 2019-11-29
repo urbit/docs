@@ -35,7 +35,7 @@ Why are we using this instead of just producing the list in the order we want it
 =+  [i=0 p=0 q=1 r=*(list @ud)]
 ```
 
-Here we declare several values that we are going to use the execution of our program. The only one of these that is noteworthy is `r`: we're using `*` to bunt, or get the default value for, the mold `(list @ud)`.
+Here we declare several values that we are going to use during the execution of our program. The only one of these that is noteworthy is `r`: we're using `*` to bunt, or get the default value for, the mold `(list @ud)`.
 
 ```hoon
 |-  ^+  r
@@ -58,4 +58,4 @@ In the code above, `?:` checks whether the first child, `=(i n)`, our terminatin
 ==
 ```
 
-The final expression in our program calls the `$` arm of the trap we are but makes some changes: we increment `i`, set `p` to be `q` and `q` becomes the sum of `p` and `q`. `r` becomes a cell of `q` and whatever `r` was previously. The list built from this is the one that will get `flop`ped to produce the result at the end of the computation.
+The final expression in our program calls the `$` arm of the trap we are in but makes some changes: we increment `i`, set `p` to be `q` and `q` becomes the sum of `p` and `q`. `r` becomes a cell of `q` and whatever `r` was previously. The list built from this is the one that will get `flop`ped to produce the result at the end of the computation.
