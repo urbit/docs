@@ -303,7 +303,7 @@ various system services, including IO.  Here are some examples:
 
 This is a request to the `%b` vane (Behn, the timer vane) to set a timer
 for 10 seconds in the future.  After 10 seconds, Behn will respond with
-a `%wake` card, which you will recieve in `++on-arvo`.  It will come back
+a `%wake` card, which you will recieve in `+on-arvo`.  It will come back
 on `/my/wire`.
 
 ```hoon
@@ -349,13 +349,13 @@ In contrast to the many possible `note`s, there are only two types of
 A subscription update is a new piece of subscription content for all
 subscribers on a given `path`.  If no `path` is given, then the update is
 only given to the program that instigated this request.  Typical use of
-this mode is in `++on-watch` to give an initial update to a new
+this mode is in `+on-watch` to give an initial update to a new
 subscriber to get them up to date.
 
 A subscription close closes the subscription for all subscribers on a
 given `path`.  If no `path` is given, then the update is only given to the
 program that instigated this request.  Typical use of this mode would be
-in `++on-watch` to produce a single update to a subscription then close
+in `+on-watch` to produce a single update to a subscription then close
 the subscription.
 
 ### Vases and cages
@@ -393,13 +393,13 @@ agent.  In practice, there are three common cases:
 
 - The data in a subscription update is defined by each agent, so it must
   be dynamic.  This is the cage in `%fact`, both when giving the update
-  and in the input to `++on-agent`.
+  and in the input to `+on-agent`.
 
 - The state of an agent is also unique to each agent.  Most of the time,
   Gall doesn't interact directly with agent's state, but when upgrading
   an agent, it must pass the state of the old version of the agent to
-  the new version of the agent.  This is the output of `++on-save` and
-  the input to `++on-load`.
+  the new version of the agent.  This is the output of `+on-save` and
+  the input to `+on-load`.
 
 ### State
 
@@ -423,10 +423,10 @@ the agent core.
 When you upgrade an agent, you need to extract the state from your
 opaque context and produce it to Gall as a dynamically typed vase.
 Usually, this will be easy:  just call `!>` on whatever state you wish
-to preserve.  This is `++on-save`.
+to preserve.  This is `+on-save`.
 
 When the new agent is about to be started, Gall will call it with
-`++on-load` with the vase just produced above.  This allows you to ingest
+`+on-load` with the vase just produced above.  This allows you to ingest
 your old state and continue right where you left off.
 
 If the type of your state hasn't changed, you can just
@@ -442,7 +442,7 @@ If it has changed, then it should look more like:
 ```
 
 It's useful to tag your state with a version number so that the
-`++upgrade-state` function can take a tagged union of all your old state
+`+upgrade-state` function can take a tagged union of all your old state
 types and upgrade from any of them to the current state type.  For
 example, it may have the following structure:
 
@@ -472,29 +472,29 @@ information is available to any of the handlers.
 
 A description of each of the handler arms follows.
 
-### ++on-init
+### +on-init
 
 This arm is called once when the agent is started.  It has no input and
 lets you perform any initial IO.
 
-### ++on-save
+### +on-save
 
 This arm is called immediately before the agent is upgraded.  It
 packages the permament state of the agent in a `vase` for the next version
 of the agent.  Unlike most handlers, this cannot produce effects.
 
-### ++on-load
+### +on-load
 
 This arm is called immediately after the agent is upgraded.  It receives
 a `vase` of the state of the previously-running version of the agent,
 which allows it to cleanly upgrade from the old agent.
 
-### ++on-poke
+### +on-poke
 
 This arm is called when the agent is "poked".  The input is a `cage`, so
 it's a pair of a mark and a dynamic `vase`.
 
-### ++on-watch
+### +on-watch
 
 This arm is called when a program wants to subscribe to the agent on a
 particular `path`.  The agent may or may not need to perform setup steps
@@ -510,7 +510,7 @@ negative `%watch-ack`.  You may also produce an explicit `%kick` to
 close the subscription without crashing -- for example, you could
 produce a single update followed by a `%kick`.
 
-### ++on-leave
+### +on-leave
 
 This arm is called when a program becomes unsubscribed to you.
 Subscriptions may close because the subscriber intentionally
@@ -521,7 +521,7 @@ updates indefinitely.  If the program crashes while processing an
 update, this may also generate an unsubscription.  You should consider
 subscriptions to be closable at any time.
 
-### ++on-peek
+### +on-peek
 
 This arm is called when a program reads from the agent's "scry"
 namespace, which should be referentially transparent.  Unlike most
@@ -533,7 +533,7 @@ given `path`.  If it produces `[~ ~]`, then there is no data at the given
 `path` and never will be.  If it produces `~`, then we don't know yet
 whether there is or will be data at the given `path`.
 
-### ++on-agent
+### +on-agent
 
 This arm is called to handle responses to `%pass` moves to other agents.
 It will be one of the following types of response:
@@ -551,16 +551,16 @@ It will be one of the following types of response:
 
 - `%kick`: notification that the subscription has ended.
 
-### ++on-arvo
+### +on-arvo
 
 This arm is called to handle responses to `%pass` `move`s to vanes.  The
 list of possible responses from the system is statically defined in
-sys/zuse.hoon (grep for `++  sign-arvo`).
+sys/zuse.hoon (grep for `+  sign-arvo`).
 
-### ++on-fail
+### +on-fail
 
-If an error happens in `++on-poke`, the crash report goes into the
+If an error happens in `+on-poke`, the crash report goes into the
 `%poke-ack` response.  Similarly, if an error happens in
-`++on-subscription`, the crash report goes into the `%watch-ack`
+`+on-subscription`, the crash report goes into the `%watch-ack`
 response.  If a crash happens in any of the other handlers, the report
 is passed into this arm.
