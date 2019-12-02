@@ -24,12 +24,12 @@ Personal breaches often fix connectivity issues, but should only be used as a la
 
 ## Network Breaches
 
-A network breach is an event where all ships on the network are required to update to a new continuity era. The current continuity era is determined by a value in Ames, our networking module, that is incremented when a network; only ships with the same such value are able to communicate with one another. So network breaches happen when an Arvo update is released that is too large to release over the air.
+A network breach is an event where all ships on the network are required to update to a new continuity era. Network breaches happen when an Arvo update is released that is too large to release over the air. The current continuity era is given by a value in Ames, our networking vane, that is incremented when a network breaches; only ships with the same such value are able to communicate with one another.
 
 If a network breach is happening, follow the steps below.
 
 - Delete your old Urbit binary.
 - Delete or archive your old pier.
 - Download the new Urbit binary by following the instructions in the [Install page](https://urbit.org/using/install/).
-- Create a new pier by booting your ship with your key, according to the instructions on the install page. (Note: You do _not_ need to use new a new key to boot into a new continuity era.)
+- Create a new pier by booting your ship with your key, according to the instructions on the install page. (Note: You do _not_ need to use a new key to boot into a new continuity era.)
 - Rejoin your favorite chat channels and subscriptions.
