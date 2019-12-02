@@ -699,8 +699,8 @@ Test your knowledge from this lesson by evaluating the following expressions and
 1.
 ```
 > =b [[[5 6 7] 8 9] 10 11 12 13]
-> ->-:b
-8
+> -<+<:b
+6
 ```
 2.
 ```
