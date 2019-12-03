@@ -8,18 +8,137 @@ Arvo, also called Urbit OS, is our operating system.
 
 # Introduction
 
-In this section we describe prerequisites for understanding the material presented here as well as a summary of the content.
-
-## Prerequisites
-
-In this document we give a high-level overview of the architecture of Arvo. We presume only a minimal amount of background. We write for a reader who:
- - has read the [Technical Overview](@/docs/concepts/technical-overview.md),
- - has no prior understanding of any OS architecture, and
- - has no prior understanding of Nock.
-
-Most of this document may be understood without knowing Hoon as, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). Chapter Two material is also helpful but should not be required at any point.
+In this section we give a summary of the content and cover prerequisites for understanding the material presented here.
 
 ## Summary
+
+This document is intended to provide a comprehensive summary of all of the most important aspects of Arvo. We work on two levels - a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit. 
+
+We include a number of quotes from the Urbit [white paper](https://media.urbit.org/whitepaper.pdf) where appropriate. The white paper is a good companion to this article, though it should be noted that some parts of it are out of date or not yet implemented.
+
+### Prerequisites
+
+The conceptual level may mostly be understood without knowing Hoon, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). The technical level will require Chapter One for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md), though some of the content presented there is presented again here in greater detail. 
+
+### Sections
+Here we present a brief summary of each section.
+
+#### [What is Arvo?](#what-is-arvo)
+The big picture of Arvo.
+
+#### [The stack](#the-stack)
+An overview of each layer of the Arvo stack and how they interact, from Unix to userspace.
+
+#### [The kernel](#the-kernel)
+A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
+
+#### [Vanes](#vanes)
+A short description of each Arvo kernel module, known as a vane.
+
+#### [File system](#file-system)
+Essential information about Clay, our file system vane.
+
+#### [Boot process](#boot-process)
+An annotation of what is printed on the screen when you boot your ship for the first time, as well as subsequent boots.
+
+#### Security
+How Arvo handles cryptography.
+
+#### [Kelvin versioning](#kelvin-versioning)
+Our peculiar software versioning system.
+
+#### [Jets](#jets)
+How Nock is made to run quickly.
+
+#### [Daemons](#daemons)
+How Arvo is split into a worker and ??? daemon.
+
+#### I/O
+How I/O is handled by Arvo.
+
+# What is Arvo?
+
+Arvo is an operating system purposefully built to create a new internet whereby users own and manage their own data. Despite being an operating system, Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the user experience of Arvo as being closer to that of a web browser for a more human internet. As such, Arvo is generally run inside a virtual machine, though in theory it could be run on bare metal.
+
+> Urbit is a “browser for the server side”; it replaces multiple developer-hosted web services on multiple foreign servers, with multiple self-hosted applications on one personal server.
+
+Every architectural decision for Arvo (and indeed, the entire Urbit stack) was made with this singular goal in mind. Throughout this document, we connect the various concepts underlying Arvo with this overarching goal.
+
+## An operating function
+
+Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevence to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
+
+This means two things: one is that the there is a notion of _state_ for the operating system, and that the current state is a pure function of the [event log](#event-log), which is a chronological record of every action the operating system has ever performed. A _pure function_ is a function that always produces the same output given the same input. Another way to put this is to say that Arvo is _deterministic_. Other operating systems are not deterministic for a number of reasons, but one simple reasons is because they allow programs to alter global variables that then affect the operation of other programs.
+
+In mathematical terms, one may think of Arvo as being given by a transition function _T_:
+
+```
+T: (State, Input) -> (State, Output).
+```
+
+In practice, _T_ is implemented by the `+poke` arm of the Arvo kernel, which is described in more detail in the [kernel section](#the-kernel). In theoretical terms, it may be more practical to think of Arvo as being defined by a _lifecycle function_ we denote here by _L_:
+
+```
+L: History -> State.
+```
+In functional programming terms, you could say that _L_ is a left fold of _T_ over the event log. (ASK TO MAKE SURE THIS IS RIGHT)
+
+Arvo was made to be purely functional in order to eliminate the need for the user to have to manage their own server. Being deterministic enables many incredible things that are out of reach of any other operating system. For instance, we are able to do [over the air](#over-the-air-updates) (OTA) updates, which allows bug fixes to be implemented across the network without needing to worry whether it won't work on someone's ship.
+
+### Event log
+
+The Arvo event log is a list of every action ever performed on your ship.
+>The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the selfcompiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
+
+>User-level code is virtualized within a Nock interpreter written in Hoon (with zero virtualization overhead, thanks to a jet). Arvo defines a typed, global, referentially transparent namespace with the Ames network identity (page 34) at the root of the path. User-level code has an extended Nock operator that dereferences this namespace and blocks until results are available. So the Hoon programmer can use any data in the Urbit universe as a typed constant.
+
+> Most Urbit data is in Clay, a distributed revision-control vane. Clay is like a typed Git. If we know the format of an object, we can do a much better job of diffing and patching files. Clay is also good at subscribing to updates and maintaining one-way or two-way automatic synchronization.
+
+
+### Over the air updates
+
+> Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
+### Solid-state interpeter
+
+>We call an execution platform with these three properties (universal persistence, source-independent packet I/O, and high-level determinism) a solid-state interpreter (SSI). A solid-state interpreter is a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an ACID transaction.
+
+### Single-level store
+
+>A kernel which presents the abstraction of a single layer of permanent state is also called a single-level store [12]. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
+
+
+### Event-driven
+
+### Larval stage
+
+>Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
+
+### Interacting with Arvo
+
+#### Dojo
+
+You will first interact with your instance of Arvo with a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) known as the dojo. The dojo allows you to input commands to your ship as well as run Hoon code. You can find a comprehensive guide to using your ship in dojo in our guide on [using your ship](@/using/operations/using-your-ship.md)y.
+
+(picture of dojo)
+
+### Landscape
+
+
+For those who would prefer to interact with Arvo via a GUI, we offer an application called Landscape. This is the most user-friendly way to utilize your ship. By default, Arvo comes installed with a timer, Chat, Weather, and Publish, which will populate your Landscape interface the first time you launch it. Again, see [using your ship](@/using/operations/using-your-ship.md#landscape) for instructions on how to access Landscape.
+
+
+(picture of landscape)
+
+## The stack
+
+Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
+
+
+
+
+
+
+
 
 # Principles
 
