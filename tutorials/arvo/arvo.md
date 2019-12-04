@@ -138,24 +138,30 @@ Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
 
 Ultimately, everything that happens in Arvo is reduced to Unix events.
 
-## Boot sequence
+## The kernel
 
-### Larval stage
+The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
->Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
+This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md).
 
+### Overall structure
 
-# Principles
+`arvo.hoon` contains five top level cores. We refer to them informally as follows, and list them in the order in which they are nested (i.e. cores lower in the list are nested within cores higher on the list via `=>`).
+ + Types
+ + "Section 3bE Arvo Core"
+ + Implementation core
+ + Structural interface core
+ + Larval stage core
+ 
+#### Types
 
-At a high level `%arvo` takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
+This core contains the most basic types utilized in Arvo. We discuss a number of them here.
 
-`%arvo` is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
+##### `+duct`
 
-### Ducts
+The `Arvo` causal stack is called a `+duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
-The `%arvo` causal stack is called a `++duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
-
-Here's a duct that was recently observed in the wild:
+Here's a duct that was recently observed in the wild (I should redo this to make sure its up to date)
 
 ```
 ~[
@@ -167,12 +173,56 @@ Here's a duct that was recently observed in the wild:
 ]
 ```
 
-This is the duct the timer vane receives when "timer" sample app asks the timer vane to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to `%dill` (our terminal), which passed it on to the `%gall` app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked the timer vane to set a timer.
+This is the duct the timer vane, Behn, receives when the "timer" sample app asks the timer vane to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
 
-The timer vane saves this duct, so that when the specified time arrives and Unix sends a wakeup event to the timer vane, it can produce the response on the same duct. This response is routed to the place we popped off the top of the duct, i.e. the time app. This app produces the text "ding", which falls down to the shell, which drops it through to the terminal. Terminal drops this down to dill, which converts it into an effect that Unix will recognize as a request to print "ding" to the screen. When dill produces this, the last path in the duct has an
+Behn saves this duct, so that when the specified time arrives and Unix sends a wakeup event to the timer vane, it can produce the response on the same duct. This response is routed to the place we popped off the top of the duct, i.e. the time app. This app produces the text "ding", which falls down to the shell, which drops it through to the terminal. Terminal drops this down to Dill, which converts it into an effect that Unix will recognize as a request to print "ding" to the screen. When dill produces this, the last path in the duct has an
 initial element of the empty span, so this is routed to Unix, which applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a duct zero, one, or many times. You can save ducts for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
+
+
+##### `wire`
+Synonym for path, used in ducts.
+
+#### Section 3bE Arvo Core
+
+#### Implementation core
+
+#### Structural interface core
+
+#### Larval stage core
+
+### The state
+
+The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is actually structured, to inform our study of `+poke`.
+
+`arvo.hoon`
+
+### +poke
+
+### +peek
+
+### Vanes
+
+## Boot sequence
+
+### Larval stage
+
+>Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
+
+
+
+
+
+
+
+
+
+# Principles
+
+At a high level `%arvo` takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
+
+`%arvo` is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
 ### Making Moves
 
