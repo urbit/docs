@@ -38,7 +38,7 @@ A short description of each Arvo kernel module, known as a vane.
 #### [File system](#file-system)
 Essential information about Clay, our file system vane.
 
-#### [Boot process](#boot-process)
+#### [Boot sequence](#boot-sequence)
 An annotation of what is printed on the screen when you boot your ship for the first time, as well as subsequent boots.
 
 #### Security
@@ -46,6 +46,9 @@ How Arvo handles cryptography.
 
 #### [Kelvin versioning](#kelvin-versioning)
 Our peculiar software versioning system.
+
+#### [Virtual machine](#virtual-machine)
+How the Nock runtime environment and virtual machine which Arvo lives is in implemented.
 
 #### [Jets](#jets)
 How Nock is made to run quickly.
@@ -58,7 +61,7 @@ How I/O is handled by Arvo.
 
 # What is Arvo?
 
-Arvo is an operating system purposefully built to create a new internet whereby users own and manage their own data. Despite being an operating system, Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the user experience of Arvo as being closer to that of a web browser for a more human internet. As such, Arvo is generally run inside a virtual machine, though in theory it could be run on bare metal.
+Arvo is a [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) operating system purposefully built to create a new internet whereby users own and manage their own data. Despite being an operating system, Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the user experience of Arvo as being closer to that of a web browser for a more human internet. As such, Arvo is generally run inside a virtual machine, though in theory it could be run on bare metal.
 
 > Urbit is a “browser for the server side”; it replaces multiple developer-hosted web services on multiple foreign servers, with multiple self-hosted applications on one personal server.
 
@@ -81,14 +84,18 @@ In practice, _T_ is implemented by the `+poke` arm of the Arvo kernel, which is 
 ```
 L: History -> State.
 ```
-In functional programming terms, you could say that _L_ is a left fold of _T_ over the event log. (ASK TO MAKE SURE THIS IS RIGHT)
 
 Arvo was made to be purely functional in order to eliminate the need for the user to have to manage their own server. Being deterministic enables many incredible things that are out of reach of any other operating system. For instance, we are able to do [over the air](#over-the-air-updates) (OTA) updates, which allows bug fixes to be implemented across the network without needing to worry whether it won't work on someone's ship.
 
 ### Event log
 
-The Arvo event log is a list of every action ever performed on your ship.
 >The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the selfcompiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
+
+The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](#virtual-machine), but in practice event logs become too long over time to keep. Thus periodic snapshots of the state of Arvo are taken and the log up to that state is pruned.
+
+The beginning of the event log starting from the very first time a ship is booted up until the kernel is compiled and identity and entropy are created is a special portion of the Arvo lifecycle known as the _larval stage_. We describe the larval stage in more detail in the [boot sequence](#boot-sequence) section.
+
+More information on the structure of the Arvo event log and the Arvo state is given in the section on [the kernel](#the-kernel).
 
 >User-level code is virtualized within a Nock interpreter written in Hoon (with zero virtualization overhead, thanks to a jet). Arvo defines a typed, global, referentially transparent namespace with the Ames network identity (page 34) at the root of the path. User-level code has an extended Nock operator that dereferences this namespace and blocks until results are available. So the Hoon programmer can use any data in the Urbit universe as a typed constant.
 
@@ -109,9 +116,6 @@ The Arvo event log is a list of every action ever performed on your ship.
 
 ### Event-driven
 
-### Larval stage
-
->Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
 
 ### Interacting with Arvo
 
@@ -126,18 +130,19 @@ You will first interact with your instance of Arvo with a [REPL](https://en.wiki
 
 For those who would prefer to interact with Arvo via a GUI, we offer an application called Landscape. This is the most user-friendly way to utilize your ship. By default, Arvo comes installed with a timer, Chat, Weather, and Publish, which will populate your Landscape interface the first time you launch it. Again, see [using your ship](@/using/operations/using-your-ship.md#landscape) for instructions on how to access Landscape.
 
-
-(picture of landscape)
+<img class="mv5 w-100" src="https://media.urbit.org/site/understanding-urbit/project-history/project-status-landscape%402x.png">
 
 ## The stack
 
 Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
 
+Ultimately, everything that happens in Arvo is reduced to Unix events.
 
+## Boot sequence
 
+### Larval stage
 
-
-
+>Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
 
 
 # Principles
