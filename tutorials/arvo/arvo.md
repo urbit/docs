@@ -169,7 +169,7 @@ This section requires an understanding of Hoon of at least the level of Chapter 
  
 #### Formal interface
 
-The formal interface is a single gate that takes in the current time and a noun that encodes the input. This event is then effected by the `+poke` arm, and a new noun denoting the current state of Arvo is returned. In reality, you cannot feed the gate just any noun - what sorts of nouns are permitted is determined in deeper layers.
+The formal interface is a single gate that takes in the current time and a noun that encodes the input. This event is then effected by the `+poke` arm, and a new noun denoting the current state of Arvo is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types in the type core are out of scope.
 
 ```hoon
     ::  Arvo formal interface
@@ -254,11 +254,11 @@ A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. Lat
 
 #### Section 3bE Arvo Core
 
-Need to ask wtf this is.
+Need to ask wtf this is. It has no poke arm?
 
 #### Implementation core
 
-I think this is where Arvo lives most of the time? It talks about "external events". Maybe this is where Unix talks to Arvo, and the "3bE" core is where vanes talk to Arvo?
+I think this is where Arvo lives most of the time? It talks about "external events", which I think means either things from Unix or vanes or both.
 
 #### Structural interface core
 
@@ -281,7 +281,43 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
 
 ### +poke
 
-There are several `+poke` arms in `arvo.hoon`, one in each of the five cores, each of which behave slightly differently.
+There are three `+poke` arms in `arvo.hoon`, one in the larval stage core, one in the structural interface core, and one in the implementation core, and they each perform slightly different roles. We focus here on the `+poke` arm in the implementation core, as that is the core being utilized during standard operation.
+
+```hoon
+++  poke                                                ::  external apply
+  |=  [now=@da ovo=ovum]
+  =.  eny  (shaz (cat 3 eny now))
+  ^-  [(list ovum) _+>.$]
+  ::
+  ::  These external events are actually effects on arvo proper.
+  ::  They can also be produced as the effects of other events.
+  ::  In either case, they fall through here to be handled
+  ::  after the fact in +feck.
+  ::
+  ?:  ?=(?(%veer %verb %wack %warn) -.q.ovo)
+    [[ovo ~] +>.$]
+  ::
+  ::  These external events (currently only %trim) are global
+  ::  notifications, spammed to every vane
+  ::
+  ?:  ?=(%trim -.q.ovo)
+    =>  .(ovo ;;((pair wire [%trim p=@ud]) ovo))
+    =^  zef  vanes
+      (~(spam (is our vil eny bud vanes) now) lac ovo)
+    ::  clear compiler caches if high-priority
+    ::
+    =?  vanes  =(0 p.q.ovo)
+      ~>  %slog.[0 leaf+"arvo: trim: clearing caches"]
+      (turn vanes |=([a=@tas =vane] [a vase.vane *worm]))
+    [zef +>.$]
+  ::
+  ::  Normal events are routed to a single vane
+  ::
+  =^  zef  vanes
+    (~(hurl (is our vil eny bud vanes) now) lac ovo)
+  [zef +>.$]
+
+```
 
 ### +peek
 
