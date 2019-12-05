@@ -258,9 +258,22 @@ Need to ask wtf this is.
 
 #### Implementation core
 
+I think this is where Arvo lives most of the time? It talks about "external events". Maybe this is where Unix talks to Arvo, and the "3bE" core is where vanes talk to Arvo?
+
 #### Structural interface core
 
+The poke arm says something about "upgrade the kernel", maybe this is in use when... upgrading the kernel?
+
 #### Larval stage core
+
+This core is in use only during the larval stage of Arvo, which is after the Arvo kernel has compiled itself but before it has "broken symmetry" by acquiring identity and entropy, the point at which the larval stage has concluded. We call this breaking symmetry because prior to this point, every Urbit is completely identical. The larval stage performs the following steps in order:
+
+ + The standard library, `zuse`, is installed.
+ + Entropy is added
+ + Identity is added
+ + Metamorph into the next stage of Arvo
+ 
+Once the larval stage has passed its functionality will never be used again.
 
 ### The state
 
@@ -268,7 +281,7 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
 
 ### +poke
 
-There are several `+poke` arms in `arvo.hoon`. Here we describe the one 
+There are several `+poke` arms in `arvo.hoon`, one in each of the five cores, each of which behave slightly differently.
 
 ### +peek
 
