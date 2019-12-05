@@ -72,7 +72,7 @@ Every architectural decision for Arvo (and indeed, the entire Urbit stack) was m
 Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevence to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
 
 This means two things: one is that the there is a notion of _state_ for the operating system, and that the current state is a pure function of the [event log](#event-log), which is a chronological record of every action the operating system has ever performed. A _pure function_ is a function that always produces the same output given the same input. Another way to put this is to say that Arvo is _deterministic_. Other operating systems are not deterministic for a number of reasons, but one simple reasons is because they allow programs to alter global variables that then affect the operation of other programs.
-
+ wd
 In mathematical terms, one may think of Arvo as being given by a transition function _T_:
 
 ```
@@ -105,6 +105,7 @@ More information on the structure of the Arvo event log and the Arvo state is gi
 ### Over the air updates
 
 > Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
+
 ### Solid-state interpeter
 
 >We call an execution platform with these three properties (universal persistence, source-independent packet I/O, and high-level determinism) a solid-state interpreter (SSI). A solid-state interpreter is a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an ACID transaction.
@@ -184,6 +185,25 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 ##### `wire`
 Synonym for path, used in ducts.
 
+##### `move`
+
+If ducts are a call stack, then how do we make calls and produce results? Arvo processes `moves` which are a combination of message data and metadata. There are two types of `move`s. A `%pass` move is analogous to a call:
+
+```
+[duct %pass return-path=path vane-name=@tD data=card]
+```
+
+Arvo pushes the return path (preceded by the first letter of the vane name) onto the duct and sends the given data, a card, to the vane we specified. Any response will come along the same duct with the `wire` `return-path`.
+
+A `%give` `move` is analogous to a return:
+
+```
+[duct %give data=card]
+```
+
+Arvo pops the top `wire` off the duct and sends the given card back to the caller.
+
+
 #### Section 3bE Arvo Core
 
 #### Implementation core
@@ -211,36 +231,12 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
 >Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
 
 
-
-
-
-
-
-
-
 # Principles
 
 At a high level `%arvo` takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
 
 `%arvo` is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
-### Making Moves
-
-If ducts are a call stack, then how do we make calls and produce results? Arvo processes "moves" which are a combination of message data and metadata. There are two types of moves. A `%pass` move is analogous to a call:
-
-```
-[duct %pass return-path=path vane-name=@tD data=card]
-```
-
-Arvo pushes the return path (preceded by the first letter of the vane name) onto the duct and sends the given data, a card, to the vane we specified. Any response will come along the same duct with the path `return-path`.
-
-A `%give` move is analogous to a return:
-
-```
-[duct %give data=card]
-```
-
-Arvo pops the top path off the duct and sends the given card back to the caller.
 
 ### Vanes
 
