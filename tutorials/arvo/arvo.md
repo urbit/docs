@@ -147,12 +147,33 @@ This section requires an understanding of Hoon of at least the level of Chapter 
 
 ### Overall structure
 
-`arvo.hoon` contains five top level cores. We refer to them informally as follows, and list them in the order in which they are nested (i.e. cores lower in the list are nested within cores higher on the list via `=>`).
+`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a simple gate. They are nested like so, where items lower on the list are contained within items higher on the list:
  + Types
  + "Section 3bE Arvo Core"
  + Implementation core
  + Structural interface core
  + Larval stage core
+ + Formal interface
+ 
+ We now describe the functionality of each of these components.
+ 
+#### Formal interface
+
+The formal interface is a single gate that takes in the current time and a noun that encodes the input. This event is then effected by the `+poke` arm, and a new noun denoting the current state of Arvo is returned. In reality, you cannot feed the gate just any noun - what sorts of nouns are permitted is determined in deeper layers.
+
+```hoon
+    ::  Arvo formal interface
+    ::
+    ::    this lifecycle wrapper makes the arvo door (multi-armed core)
+    ::    look like a gate (function or single-armed core), to fit
+    ::    urbit's formal lifecycle function. a practical interpreter
+    ::    can ignore it.
+    ::
+    |=  [now=@da ovo=*]
+    ^-  *
+    ~>  %slog.[0 leaf+"arvo-event"]
+    .(+> +:(poke now ovo))
+```
  
 #### Types
 
@@ -217,7 +238,9 @@ When a `++task` card is passed to a vane, Arvo calls its `++call` gate, passing 
 
 This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `++task` or return as a `++gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
+##### ovum
 
+A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. Later in this section we will find that the `+poke` arm usually returns something like a `(list ovum)`. These encode Arvo's responses to events.
 
 #### Section 3bE Arvo Core
 
@@ -233,9 +256,9 @@ Need to ask wtf this is.
 
 The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is actually structured, to inform our study of `+poke`.
 
-`arvo.hoon`
-
 ### +poke
+
+There are several `+poke` arms in `arvo.hoon`. Here we describe the one 
 
 ### +peek
 
