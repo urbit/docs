@@ -67,6 +67,16 @@ Arvo is a [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitaskin
 
 Every architectural decision for Arvo (and indeed, the entire Urbit stack) was made with this singular goal in mind. Throughout this document, we connect the various concepts underlying Arvo with this overarching goal.
 
+
+
+
+---the following 2 paragraphs was copied from the old doc, probably ought to be put somewhere else.
+
+At a high level Arvo takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
+
+Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
+
+
 ## An operating function
 
 Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevence to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
@@ -285,10 +295,5 @@ As of this writing, we have nine vanes, which each provide the following service
 >Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
 
 
-# Principles
-
-At a high level `%arvo` takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
-
-`%arvo` is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
 
