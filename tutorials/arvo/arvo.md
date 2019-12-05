@@ -203,8 +203,25 @@ A `%give` `move` is analogous to a return:
 
 Arvo pops the top `wire` off the duct and sends the given card back to the caller.
 
+##### `card`
+
+Note: this section seems out of date, there is no longer a `+card` in `arvo.hoon`, and `move`s there consist of an `arvo` and a `duct`. An `arvo` is described to be an "Arvo card". hmm.
+
+Cards are the vane-specific portion of a move. Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of cards: tasks, gifts, notes, and signs.
+
+When one vane is `%pass`ed a card in its `++task` (defined in zuse), Arvo activates the `++call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `++gift`. If the vane needs to request something of another vane, it `%pass`es it a `++note` card. When that other vane returns a result, Arvo activates the `++take` gate of the initial vane with one of the cards defined in its `++sign`.
+
+In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a ++note. (2) that same request as seen by the callee, a `++task`. (3) the response to that first request as seen by the callee, a `++gift`. (4) the response to the first request as seen by the caller, a `++sign`.
+
+When a `++task` card is passed to a vane, Arvo calls its `++call` gate, passing it both the card and its duct. This gate must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
+
+This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `++task` or return as a `++gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
+
+
 
 #### Section 3bE Arvo Core
+
+Need to ask wtf this is.
 
 #### Implementation core
 
@@ -222,7 +239,21 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
 
 ### +peek
 
-### Vanes
+## Vanes
+
+As shown above, we use Arvo proper to route and control the flow of moves. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a move. This event data is contained within a `card`, which is simply a `(pair term noun)`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
+
+As of this writing, we have nine vanes, which each provide the following services:
+
+- `Ames`: the name of both our network and the vane that communicates over it.
+- `Behn`: a simple timer.
+- `Clay`: our version-controlled, referentially- transparent, and global filesystem.
+- `Dill`: a terminal driver. Unix sends keyboard events to `%dill` from either the console or telnet, and `%dill` produces terminal output.
+- `Eyre`: an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
+- `Ford`: handles resources and publishing.
+- `Gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
+- `Iris`: an http client.
+- `Jael`: encryption and security (?)
 
 ## Boot sequence
 
@@ -238,28 +269,3 @@ At a high level `%arvo` takes a mess of Unix I/O events and turns them into some
 `%arvo` is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
 
-### Vanes
-
-As shown above, we use Arvo proper to route and control the flow of moves. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a move. This event data is contained within a card, which is simply a `(pair term noun)`. Instead, Arvo proper passes the card off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
-
-As of this writing, we have seven vanes, which each provide the following services:
-
-- `%ames`: the name of both our network and the vane that communicates over it.
-- `%behn`: a simple timer.
-- `%clay`: our version-controlled, referentially- transparent, and global filesystem.
-- `%dill`: a terminal driver. Unix sends keyboard events to `%dill` from either the console or telnet, and `%dill` produces terminal output.
-- `%eyre`: an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
-- `%ford`: handles resources and publishing.
-- `%gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
-
-### Cards
-
-Cards are the vane-specific portion of a move. Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of cards: tasks, gifts, notes, and signs.
-
-When one vane is `%pass`ed a card in its `++task` (defined in zuse), Arvo activates the `++call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `++gift`. If the vane needs to request something of another vane, it `%pass`es it a `++note` card. When that other vane returns a result, Arvo activates the `++take` gate of the initial vane with one of the cards defined in its `++sign`.
-
-In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a ++note. (2) that same request as seen by the callee, a `++task`. (3) the response to that first request as seen by the callee, a `++gift`. (4) the response to the first request as seen by the caller, a `++sign`.
-
-When a `++task` card is passed to a vane, Arvo calls its `++call` gate, passing it both the card and its duct. This gate must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
-
-This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `++task` or return as a `++gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
