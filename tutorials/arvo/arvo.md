@@ -321,9 +321,22 @@ There are three `+poke` arms in `arvo.hoon`, one in the larval stage core, one i
 
 ### +peek
 
+`+peek` is an arm used for inspecting things outside of the kernel.
+
+```hoon
+::
+++  peek                                                ::  external inspect
+  |=  {now/@da hap/path}
+  ^-  (unit (unit))
+  ?~  hap  [~ ~ hoon-version]
+  ((sloy ~(beck (is our vil eny bud vanes) now)) [151 %noun] hap)
+```
+
 ## Vanes
 
-As shown above, we use Arvo proper to route and control the flow of moves. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a move. This event data is contained within a `card`, which is simply a `(pair term noun)`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
+The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
+
+As described above, we use Arvo proper to route and control the flow of `move`s. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a move. This event data is contained within a `card`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
 
 As of this writing, we have nine vanes, which each provide the following services:
 
