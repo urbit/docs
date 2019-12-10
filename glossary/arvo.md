@@ -29,4 +29,4 @@ A ship creates its own copy of Arvo via a bootstrap sequence known as a [Pill](.
 ### Further Reading
 
 - [The Arvo tutorial](@/docs/tutorials/arvo/_index.md): An in-depth technical guide to Arvo and its vanes.
-- [The Technical Overview](@/docs/concepts/arvo/index.md): An overview of all of Urbit that.
+- [The Technical Overview](@/docs/tutorials/concepts/arvo/_index.md): An overview of all of Urbit.
