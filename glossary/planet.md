@@ -6,7 +6,7 @@ template = "doc.html"
 category = "arvo"
 +++
 
-A **planet** is can be to one of two related things:
+A **planet** is can be one of two related things:
 
 - A kind of [Azimuth](../azimuth) Urbit identity that sits at the bottom of the identity hierarchy. Planets act as independent identities for use by individual humans as peers on the [Arvo](../arvo) network. Planets are issued by [stars](../star), and receive services such as peer-to-peer routing and [over-the-air software updates](../ota-updates) from the star that sponsors them.
 
