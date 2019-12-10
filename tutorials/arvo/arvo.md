@@ -41,8 +41,8 @@ Essential information about Clay, our file system vane.
 #### [Boot sequence](#boot-sequence)
 An annotation of what is printed on the screen when you boot your ship for the first time, as well as subsequent boots.
 
-#### Security
-How Arvo handles cryptography.
+#### [Security](#security)
+Arvo's security features, including cryptography and protection against Sybil attacks.
 
 #### [Kelvin versioning](#kelvin-versioning)
 Our peculiar software versioning system.
@@ -372,4 +372,20 @@ As of this writing, we have nine vanes, which each provide the following service
 
 
 
+## Security
 
+### Sybil attacks
+
+[https://en.wikipedia.org/wiki/Sybil_attack](Sybil attacks) are when a malicious actor creates a large number of identites on a network in order to gain a disproportionate influence on the network. This could be used to do things such as rig a voting scheme or perform a denial-of-service attack, which is where a node is spammed with spurious requests rendering it unable to perform its ordinary functions. Any distributed system needs protection against such an attack, and Urbit is no different.
+
+One common question one may have when first encountering Urbit is why there is a limited address space. Even more perplexing is the fact that the number of planets is less than the number of humans there are on Earth. We explain here why this choice is an effective preventative measure against Sybil attacks. 
+
+If a malicious actor is able to create an unlimited number of identities that appear to be legitimate people (i.e., planets), they can easily perform a Sybil attack. We prevent this by making planets scarce - there are fewer planets than there are humans, and acquiring one has some sort of cost associated with it. The expected gain of a Sybil attack would have to be very high to offset this cost.
+
+Once a Sybil attack is recognized the node under attack is now in possession of cryptographic evidence of the attack as all of the messages that the attack is composed of are signed by those planets. They can then proceed to block all traffic from these planets, and could prove to other users of the network that these planets are untrustworthy with the evidence acquired during the attack. Thus the malicious actor's resources are thus exhausted in the attack - they cannot then turn around and perform another one on the same node without acquiring more planets, and anybody who the attackee has shared their blacklist with will also be immune to attack.
+
+Furthermore, a reasonable scenario would be one in which a malicious actor possesses a star and is using that star to generate all of the planets. This would certainly be faster than trying to purchase thousands of planets from star holders individually. Thus when it becomes evident that all planets that are part of the attack originated from a certain star, it would be easy to simply blacklist every planet created by that star. Obviously that would also run the risk of blacklisting legitimate users that the malicious actor sold a planet to - that would have to be handled on a case by case basis, but one can imagine that future Urbit ID marketplaces will have a reputation system that should prevent this from happening in many circumstances.
+
+Thus permanent identity is a crucial component of the ``immune system'' for the network, and gossiping of blacklists is how immunity spreads through the network.
+
+What about smaller ships, such as moons or comets? There are so many possible comets that they may as well be infinite, and this is where the hierarchical nature of the network acts to our benefit. When a human wishes to be recognized as a human, they would be expected to use a planet. To anybody who believes they could potentially be the target of a denial of service attack, they can simply ignore traffic from comets across the board. If someone needs to register additional ships beyond their planet at some web service, they could use their planet to vouch for their moons/comets.
