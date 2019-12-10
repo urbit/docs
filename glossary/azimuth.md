@@ -14,6 +14,6 @@ It should be noted that Azimuth isn't built just for Arvo. It can be used as an 
 
 ### Further Reading
 
-- [The Azimuth concepts page](@/docs/concepts/azimuth.md): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.
+- [The Azimuth concepts page](@/docs/tutorials/concepts/azimuth.md): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.
 - [Install instructions](@/docs/using/install.md): Guide to installing Urbit, which includes instructions on booting with your Urbit identity.
 - [Understanding Urbit ID](@/understanding-urbit/urbit-id.md)
