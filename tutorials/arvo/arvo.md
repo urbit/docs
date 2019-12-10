@@ -119,13 +119,21 @@ More information on the structure of the Arvo event log and the Arvo state is gi
 > Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
 
 ### ACID Database
-In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to be databases.
+In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to act as databases.
 
-In order to dismantle the client-server model and build a peer-to-peer internet, we need the robustness of modern database servers in the hands of the users. Thus the Arvo operating system itself must have that robustness.
+In order to dismantle the client-server model and build a peer-to-peer internet, we need the robustness of modern database servers in the hands of the users. Thus the Arvo operating system itself must have all of the properties of a reliable database.
 
-Database theory studies in precise terms the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases - not unlike a large server farm. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_.
+Database theory studies in precise terms the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_. We review here how Arvo is atomic and durable (I'd like to do the others but I don't understand the concepts well enough yet)
 
- - Atomicity: Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `poke`d, the effect of an event is computed, it is _persisted_ by writing it to the event log, and peronly then is the actual event applied.
+ - Atomicity: Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `poke`d, the effect of an event is computed, it is [persisted](https://en.wikipedia.org/wiki/Persistence_(computer_science)) by writing it to the event log, and only then is the actual event applied.
+
+ - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
+
+ - Isolation: Changes made to the database are only made visible once they have successfully put the...
+ 
+ - Durability: Completed transactions will survive permanently. This is one way in which Arvo greatly differs from other operating systems - there is no way to truly delete a file, rather you can just mark it as being deleted and have the file effectievly be ignored. This is due to the structure of our file system known as [Clay](@/docs/tutorials/arvo/clay.md), which is entirely version controlled. That is to say, every version of every file remains on your system forever.
+ 
+ Durability is a necessary consequence of Arvo's [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), which means that you can always replace an expression by what it evaluates to without changing its behavior. For example, you can always replace a file referred to in a program by the contents of that file, because you know that file is never going to change (or rather, if it does, the old version will still be accessible).
 
 ### Solid-state interpeter
 
@@ -155,7 +163,7 @@ For those who would prefer to interact with Arvo via a GUI, we offer an applicat
 <img class="mv5 w-100" src="https://media.urbit.org/site/understanding-urbit/project-history/project-status-landscape%402x.png">
 
 
-On the back end, Arvo is listening on a port (usually either 80 or 8080). When you perform an action in Landscape, such as join a channel, your action is then communicated via a packet over that port to Arvo (what does this look like? is it TCP/UDP?). Similarly, Arvo sends events to be displayed in your browser over this port as well.
+On the back end, Arvo is listening on a port (usually either 80 or 8080). When you perform an action in Landscape, such as join a channel, your action is then communicated via a packet over that port to Arvo (what does this look like? is it TCP/UDP?) I asked Matilde if this is actually true,she didn't know, will ask Philip.. Similarly, Arvo sends events to be displayed in your browser over this port as well.
 
 ## The stack
 
@@ -373,6 +381,8 @@ As of this writing, we have nine vanes, which each provide the following service
 
 
 ## Security
+
+> A new stack, designed as a unit, learning from all the mistakes of 20th-century software and repeating none of them, should be simpler and more rigorous than what we use now. Otherwise, why bother?
 
 ### Sybil attacks
 
