@@ -160,7 +160,7 @@ exposes a scry namespace to inspect everyone's number.
 ### `mar/example-gall/action.hoon`
 
 ```hoon
-/+  *example-gall
+/-  *example-gall
 |_  act=example-gall-action
 ++  grab
   |%
