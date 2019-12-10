@@ -1,6 +1,6 @@
 +++
 title = "Hoon"
-weight = 5
+
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
 title = "Keyfile"
-weight = 8
+
 template = "doc.html"
 [extra]
 category = "azimuth"

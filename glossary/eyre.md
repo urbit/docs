@@ -1,6 +1,6 @@
 +++
 title = "Eyre"
-weight = 15
+
 template = "doc.html"
 [extra]
 category = "arvo"

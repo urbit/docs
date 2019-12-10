@@ -1,6 +1,5 @@
 +++
 title = "Atom"
-weight = 1
 template = "doc.html"
 [extra]
 category = "hoon-nock"

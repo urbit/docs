@@ -1,6 +1,6 @@
 +++
 title = "Ecliptic"
-weight = 4
+
 template = "doc.html"
 [extra]
 category = "azimuth"

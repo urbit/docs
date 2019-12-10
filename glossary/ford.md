@@ -1,6 +1,6 @@
 +++
 title = "Ford"
-weight = 16
+
 template = "doc.html"
 [extra]
 category = "arvo"

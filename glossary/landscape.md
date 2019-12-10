@@ -1,6 +1,6 @@
 +++
 title = "Landscape"
-weight = 12
+
 template = "doc.html"
 [extra]
 category = "arvo"

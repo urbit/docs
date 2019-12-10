@@ -1,6 +1,6 @@
 +++
 title = "Desk"
-weight = 18
+
 template = "doc.html"
 [extra]
 category = "arvo"

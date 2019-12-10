@@ -1,6 +1,6 @@
 +++
 title = "|sync"
-weight = 19
+
 template = "doc.html"
 [extra]
 category = "arvo"

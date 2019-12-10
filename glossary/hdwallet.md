@@ -1,6 +1,6 @@
 +++
 title = "HD Wallet"
-weight = 5
+
 template = "doc.html"
 [extra]
 category = "azimuth"

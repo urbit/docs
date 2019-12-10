@@ -1,6 +1,6 @@
 +++
 title = "Invite Tree"
-weight = 9
+
 template = "doc.html"
 [extra]
 category = "azimuth"

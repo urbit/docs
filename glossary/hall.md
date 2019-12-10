@@ -1,6 +1,6 @@
 +++
 title = "Hall"
-weight = 10
+
 template = "doc.html"
 [extra]
 category = "arvo"

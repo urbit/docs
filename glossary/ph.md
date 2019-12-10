@@ -1,6 +1,6 @@
 +++
 title = "pH"
-weight = 17
+
 template = "doc.html"
 [extra]
 category = "arvo"

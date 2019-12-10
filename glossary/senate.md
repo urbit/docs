@@ -1,6 +1,6 @@
 +++
 title = "Senate"
-weight = 28
+
 template = "doc.html"
 [extra]
 category = "azimuth"

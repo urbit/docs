@@ -1,6 +1,6 @@
 +++
 title = "Galaxy"
-weight = 21
+
 template = "doc.html"
 [extra]
 category = "arvo"

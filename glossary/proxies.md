@@ -1,6 +1,6 @@
 +++
 title = "Proxies"
-weight = 6
+
 template = "doc.html"
 [extra]
 category = "azimuth"

@@ -1,6 +1,6 @@
 +++
 title = "Talk"
-weight = 11
+
 template = "doc.html"
 [extra]
 category = "arvo"

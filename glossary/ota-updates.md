@@ -1,6 +1,6 @@
 +++
 title = "OTA Updates"
-weight = 20
+
 template = "doc.html"
 [extra]
 category = "arvo"

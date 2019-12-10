@@ -1,6 +1,6 @@
 +++
 title = "Noun"
-weight = 2
+
 template = "doc.html"
 [extra]
 category = "hoon-nock"

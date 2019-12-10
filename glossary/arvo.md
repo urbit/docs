@@ -1,6 +1,5 @@
 +++
 title = "Arvo"
-weight = 6
 template = "doc.html"
 +++
 
@@ -14,7 +13,7 @@ where `History` consists of the set of all possible sequences of events in an Ar
 
 Arvo coordinates and reloads vanes. It can be thought of as a traffic-director. Any vane needs to go through Arvo before reaching another vane. Events and their effects happen like so:
 ```
-Unix event ➜ Vere ➜ Arvo ➜ vane ➜ Arvo
+Unix event -> Vere -> Arvo -> vane -> Arvo
 ```
 Here, [Vere](../vere) is the virtual machine running Urbit.
 

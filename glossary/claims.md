@@ -1,6 +1,6 @@
 +++
 title = "Claims"
-weight = 2
+
 template = "doc.html"
 [extra]
 category = "azimuth"

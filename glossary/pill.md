@@ -1,6 +1,6 @@
 +++
 title = "Pill"
-weight = 14
+
 template = "doc.html"
 [extra]
 category = "arvo"

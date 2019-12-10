@@ -1,6 +1,6 @@
 +++
 title = "Comet"
-weight = 23
+
 template = "doc.html"
 [extra]
 category = "arvo"

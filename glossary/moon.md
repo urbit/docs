@@ -1,6 +1,6 @@
 +++
 title = "Moon"
-weight = 24
+
 template = "doc.html"
 [extra]
 category = "arvo"

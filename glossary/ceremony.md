@@ -1,6 +1,5 @@
 +++
 title = "Ceremony"
-weight = 25
 template = "doc.html"
 [extra]
 category = "azimuth"

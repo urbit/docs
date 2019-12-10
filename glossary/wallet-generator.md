@@ -1,6 +1,6 @@
 +++
 title = "Wallet-Generator"
-weight = 24
+
 template = "doc.html"
 [extra]
 category = "azimuth"

@@ -1,6 +1,5 @@
 +++
 title = "Bridge"
-weight = 7
 template = "doc.html"
 [extra]
 category = "azimuth"

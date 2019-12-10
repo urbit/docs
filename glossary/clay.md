@@ -1,6 +1,6 @@
 +++
 title = "Clay"
-weight = 13
+
 template = "doc.html"
 [extra]
 category = "arvo"

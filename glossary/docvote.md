@@ -1,6 +1,6 @@
 +++
 title = "Document Vote"
-weight = 27
+
 template = "doc.html"
 [extra]
 category = "azimuth"

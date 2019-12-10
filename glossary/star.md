@@ -1,6 +1,6 @@
 +++
 title = "Star"
-weight = 22
+
 template = "doc.html"
 [extra]
 category = "arvo"

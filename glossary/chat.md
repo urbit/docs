@@ -1,6 +1,6 @@
 +++
 title = "chat-cli"
-weight = 9
+
 template = "doc.html"
 [extra]
 category = "arvo"

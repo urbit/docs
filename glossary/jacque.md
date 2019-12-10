@@ -1,6 +1,6 @@
 +++
 title = "Jacque"
-weight = 14
+
 template = "doc.html"
 [extra]
 category = "hoon-nock"

@@ -1,6 +1,6 @@
 +++
 title = "Replay"
-weight = 15
+
 template = "doc.html"
 [extra]
 category = "arvo"

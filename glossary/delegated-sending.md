@@ -1,6 +1,6 @@
 +++
 title = "Delegated Sending"
-weight = 10
+
 template = "doc.html"
 [extra]
 category = "azimuth"
