@@ -1,6 +1,6 @@
 +++
 title = "Glossary"
-sort_by = "weight"
+sort_by = "none"
 template = "sections/docs/glossary.html"
 [extra]
 nav = "link"
