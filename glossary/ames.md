@@ -2,6 +2,8 @@
 title = "Ames"
 weight = 8
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **Ames** is the name of the Urbit network and the [vane](../vane) that communicates over it. It's an encrypted peer-to-peer network composed of instances of the [Arvo](../arvo) operating system. Each [galaxy](../galaxy), [star](../star), [planet](../planet), [moon](../moon), and [comet](../comet) communicates over the network utilizing the Ames protocol.

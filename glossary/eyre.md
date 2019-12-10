@@ -2,6 +2,8 @@
 title = "Eyre"
 weight = 15
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **Eyre** is the web-server [vane](../vane) that handles everything HTTP-related. Unix sends HTTP messages though to Eyre and Eyre produces HTTP messages in response.

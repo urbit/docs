@@ -2,6 +2,8 @@
 title = "Planet"
 weight = 23
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **planet** is can be to one of two related things:

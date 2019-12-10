@@ -2,6 +2,8 @@
 title = "chat-cli"
 weight = 9
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **Chat**, also referred to as `:chat-cli`, is an application that handles communication between ships.

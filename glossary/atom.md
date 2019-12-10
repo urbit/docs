@@ -2,6 +2,8 @@
 title = "Atom"
 weight = 1
 template = "doc.html"
+[extra]
+category = "hoon-nock"
 +++
 
 An **atom** is any non-negative integer of any size. The atom is the most basic data type in [Nock](../nock) and [Hoon](../hoon).

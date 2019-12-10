@@ -2,6 +2,8 @@
 title = "Vane"
 weight = 11
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **vane** is an [Arvo](../arvo) kernel module that performs essential system operations. The vanes are:

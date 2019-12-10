@@ -2,6 +2,8 @@
 title = "|sync"
 weight = 19
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **|sync** sets up a sychronization between two [Clay](../clay) [desks](../desk). It is mostly used to distribute kernel updates.

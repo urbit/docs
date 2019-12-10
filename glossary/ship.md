@@ -2,6 +2,8 @@
 title = "Ship"
 weight = 29
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **ship** is an instance of an Urbit computer that is a peer on the [Arvo](../arvo) network.

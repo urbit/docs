@@ -2,6 +2,8 @@
 title = "Vere"
 weight = 7
 template = "doc.html"
+[extra]
+category = "hoon-nock"
 +++
 
 **Vere**, pronounced "Vair", is the [Nock](../nock) runtime environment and Urbit virtual machine. Vere is written in C, runs on Unix, and is the intermediate layer between your urbit and Unix. Unix system calls are made by Vere, not Arvo; Vere must also encode and deliver relevant external events to [Arvo](../arvo). Vere is also responsible for implementing jets and maintaining the persistent state of each urbit (computed as a pure function of its [event log](../eventlog) with [Replay](../replay)). It also contains the I/O drivers for Urbit’s vanes, which are responsible for generating events from Unix and applying effects to Unix.

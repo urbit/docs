@@ -2,6 +2,8 @@
 title = "Jacque"
 weight = 14
 template = "doc.html"
+[extra]
+category = "hoon-nock"
 +++
 
 **Jacque** is a new [Nock](../nock) interpreter under development that is intended to replace the current worker process for [Vere](../vere).

@@ -2,6 +2,8 @@
 title = "Star"
 weight = 22
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **star** is the kind of Urbit identity that sits between the [galaxy](../galaxy) and [planets](../planet) in the identity hierarchy. Stars act as infrastructure for the [Arvo](../arvo) network, providing planets with [Ames](../ames)-related services, such as peer-to-peer routing and distributing [over-the-air software updates](../ota-updates). Stars rely on galaxies for these services in the way that planets rely on stars.

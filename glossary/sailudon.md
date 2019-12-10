@@ -2,6 +2,8 @@
 title = "Sail/Udon"
 weight = 18
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **Sail** and **Udon** are domain specific languages for Hoon.

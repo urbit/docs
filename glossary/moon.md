@@ -2,6 +2,8 @@
 title = "Moon"
 weight = 24
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **moon** is a kind of [ship](../ship) on the [Arvo](../arvo) network. Moons are issued by planets, and are meant to be used for the issuing planet's connected devices, such as phones, desktops, smart TVs, and digital thermostats. A moon is not independent; it is always subordinated to the planet that issued it.

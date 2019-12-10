@@ -2,6 +2,8 @@
 title = "HD Wallet"
 weight = 5
 template = "doc.html"
+[extra]
+category = "azimuth"
 +++
 
 The **Urbit HD Wallet** (_Hierarchical Deterministic_ Wallet) is a system of related Ethereum addresses that's used to store and manage an Urbit identity. Each of these Ethereum addresses have different powers over the same identity, from setting networking keys for communicating in the [Arvo](../arvo) network to transferring ownership of identities. HD Wallets are created with the [Wallet Generator](../wallet-generator) software.

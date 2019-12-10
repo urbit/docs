@@ -2,6 +2,8 @@
 title = "Mark"
 weight = 19
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **mark** is a file-type in the [Clay](../clay) filesystem. A mark is a file that defines filesystem information such as type, merge routines, diff routines, and patch algorithms.

@@ -2,6 +2,8 @@
 title = "Aqua"
 weight = 16
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **Aqua** is something like Docker but for Urbit; it is a virtualization tool whose primary purpose is testing and development.

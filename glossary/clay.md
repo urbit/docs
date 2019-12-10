@@ -2,6 +2,8 @@
 title = "Clay"
 weight = 13
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 **Clay** is the filesystem and typed revision-control [vane](../filesystem). It can be thought of as a continuously synced git. Clay handles file-change events and maps them from [Arvo](../arvo) to Unix and vice versa.

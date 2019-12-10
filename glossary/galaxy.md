@@ -2,6 +2,8 @@
 title = "Galaxy"
 weight = 21
 template = "doc.html"
+[extra]
+category = "arvo"
 +++
 
 A **galaxy** is can be one of two related things:
