@@ -19,4 +19,4 @@ There are several default types of chats.
 
 ### Further Reading
 
-- [Messaging guide](@/using/operations/using-your-ship.md/#messaging): A guide to using Chat.
+- [Messaging guide](@/using/operations/using-your-ship.md#messaging): A guide to using Chat.
