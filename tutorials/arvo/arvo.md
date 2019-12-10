@@ -47,6 +47,8 @@ How Arvo handles cryptography.
 #### [Kelvin versioning](#kelvin-versioning)
 Our peculiar software versioning system.
 
+# Consider splitting this into a different page. Basically the above is "Arvo as if it were on bare metal", and the rest is "how Arvo gets turned into a mess of Unix events"
+
 #### [Virtual machine](#virtual-machine)
 How the Nock runtime environment and virtual machine which Arvo lives is in implemented.
 
@@ -116,6 +118,15 @@ More information on the structure of the Arvo event log and the Arvo state is gi
 
 > Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
 
+### ACID Database
+In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to be databases.
+
+In order to dismantle the client-server model and build a peer-to-peer internet, we need the robustness of modern database servers in the hands of the users. Thus the Arvo operating system itself must have that robustness.
+
+Database theory studies in precise terms the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases - not unlike a large server farm. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_.
+
+ - Atomicity: Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `poke`d, the effect of an event is computed, it is _persisted_ by writing it to the event log, and peronly then is the actual event applied.
+
 ### Solid-state interpeter
 
 >We call an execution platform with these three properties (universal persistence, source-independent packet I/O, and high-level determinism) a solid-state interpreter (SSI). A solid-state interpreter is a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an ACID transaction.
@@ -142,7 +153,6 @@ You will first interact with your instance of Arvo with a [REPL](https://en.wiki
 For those who would prefer to interact with Arvo via a GUI, we offer an application called Landscape that you access via your web browser. This is the most user-friendly way to utilize your ship. By default, Arvo comes installed with a timer, Chat, Weather, and Publish, which will populate your Landscape interface the first time you launch it. Again, see [using your ship](@/using/operations/using-your-ship.md#landscape) for instructions on how to access Landscape.
 
 <img class="mv5 w-100" src="https://media.urbit.org/site/understanding-urbit/project-history/project-status-landscape%402x.png">
-
 
 
 On the back end, Arvo is listening on a port (usually either 80 or 8080). When you perform an action in Landscape, such as join a channel, your action is then communicated via a packet over that port to Arvo (what does this look like? is it TCP/UDP?). Similarly, Arvo sends events to be displayed in your browser over this port as well.
