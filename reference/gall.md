@@ -9,8 +9,10 @@ exposes a scry namespace to inspect everyone's number.
 ### `app/example-gall.hoon`
 
 ```hoon
+::  Import sur/example-gall
 /-  *example-gall
-/+  default-agent, verb
+::  Import lib/default-agent
+/+  default-agent
 |%
 +$  card  card:agent:gall
 +$  note
@@ -18,57 +20,94 @@ exposes a scry namespace to inspect everyone's number.
     [%arvo =note-arvo]
     [%agent [=ship name=term] =task:agent:gall]
   ==
-+$  state  [local=@ud remote=(map @p @ud)]
++$  state-zero  [%0 local=@ud]
++$  state-one  [%1 local=@ud remote=(map @p @ud)]
++$  versioned-state
+  $%
+    state-zero
+    state-one
+  ==
 --
-=|  state
-=*  sta  -
+=|  state-one
+=*  state  -
 ^-  agent:gall
 |_  =bowl:gall
 +*  this  .
     def   ~(. (default-agent this %|) bowl)
 ::
+:: Set local counter to 1 by default
 ++  on-init
   ^-  (quip card _this)
-  `this(local.sta 1)
-::
+  `this(local 1)
+:: Expose state for saving
 ++  on-save
-  !>(sta)
+  !>(state)
 ::
+:: Load old state and upgrade if neccessary
 ++  on-load
   |=  old=vase
   ^-  (quip card _this)
-  `this(sta !<(state old))
+  =/  loaded=versioned-state
+    !<(versioned-state old)
+  ?-  -.loaded
+      %0
+    `this(local local.loaded) :: Upgrade old state
+      %1
+    `this(state loaded)
+  ==
+::
+:: Respond to poke
+:: App can be poked in the dojo by running the following commands
+:: Increment local counter
+:: :example-gall &example-gall-action [%increment ~]
+:: Increment ~zod's counter
+:: :example-gall &example-gall-action [%increment-remote ~zod]
+:: Subscribe to ~zod's counter
+:: :example-gall &example-gall-action [%view ~zod]
+:: Unsubscribe from ~zod's counter
+:: :example-gall &example-gall-action [%stop-view ~zod]
 ::
 ++  on-poke
   |=  [=mark =vase]
   ^-  (quip card _this)
+  ::  Ensure poke is of mark %example-gall-action
   ?>  =(mark %example-gall-action)
   =/  act=example-gall-action  !<(example-gall-action vase)
   ?-  act
-      ::
-    [%increment ~]
-  :-  [%give %fact `/local %atom !>(+(local.sta))]~
-  this(local.sta +(local.sta))
-      ::
-    [%increment-remote who=@p]
-  :_  this
-  :~  :*
-    %pass
-    /inc/(scot %p who.act)
-    %agent
-    [who.act %example-gall]
-    %poke  %example-gall-action  !>([%increment ~])
-  ==  ==
-      ::
-    [%view who=@p]
-  :_  this
-  [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %watch /local]~
-      ::
-    [%stop-view who=@p]
-  :_  this(remote.sta (~(del by remote.sta) who.act))
-  [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %leave ~]~
-      ::
+        ::
+        :: Increment local counter and send new counter to subscribers
+        ::
+      [%increment ~]
+    :-  [%give %fact `/local %atom !>(+(local))]~
+    this(local +(local))
+        ::
+        :: Send remote %increment poke
+        ::
+      [%increment-remote who=@p]
+    :_  this
+    :~  :*
+      %pass
+      /inc/(scot %p who.act)
+      %agent
+      [who.act %example-gall]
+      %poke  %example-gall-action  !>([%increment ~])
+    ==  ==
+        ::
+        :: Subscribe to a remote counter
+        ::
+      [%view who=@p]
+    :_  this
+    [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %watch /local]~
+        ::
+        :: Unsubscribe from remote counter and remove from state
+        ::
+      [%stop-view who=@p]
+    :_  this(remote (~(del by remote) who.act))
+    [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %leave ~]~
+        ::
   ==
+::
+:: Print on unsubscribe
 ::
 ++  on-leave
   |=  =path
@@ -76,64 +115,106 @@ exposes a scry namespace to inspect everyone's number.
   ~&  "Unsubscribed by: {<src.bowl>} on: {<path>}"
   `this
 ::
+:: Handle new subscription
+::
+:: When another ship subscribes to our counter, give them the current state of
+:: the counter immediately
+::
 ++  on-watch
   |=  =path
   ^-  (quip card _this)
   :_  this
-  ~&  path
-  ?+  path  ~
-       ::
-     [%local ~]
-  [%give %fact ~ %atom !>(local.sta)]~
+  :: Crash if we see a subscription we don't recognise
+  ?+  path  ~|("unexpected subscription" !!)
+         ::
+       [%local ~]
+    [%give %fact ~ %atom !>(local)]~
   ==
 ::
+:: Expose scry namespace
+::
+:: .^(@ %gx /=example-gall=/local/atom) will produce the current local counter
+:: .^(@ %gx /=example-gall=/remote/~zod/atom) will produce the counter for ~zod
+:: .^(arch %gy /=example-gall=/remote) will produce a listing of the current
+:: remote counters
 ++  on-peek
   |=  =path
   ^-  (unit (unit cage))
   ?+  path  [~ ~]
-      ::
-    [%x %local ~]
-  ``[%atom !>(local.sta)]
-      ::
-    [%x %remote who=@ta ~]
-  ~&  remote.sta
-  =/  res  (~(got by remote.sta) (slav %p -.+.+.path))
-  ~&  res
-  ``[%atom !>(res)]
-      ::
-    [%y %remote ~]
-  =/  dir=(map @ta ~)
-    (molt (turn ~(tap by remote.sta) |=([who=@p *] [(scot %p who) ~])))
-  ``[%arch !>(`arch`[~ dir])]
+        ::
+        :: Produce local counter
+        ::
+      [%x %local ~]
+    ``[%atom !>(local)]
+        ::
+        :: Produce remote counter
+        ::
+      [%x %remote who=@ta ~]
+    =*  location  i.t.t.path :: Ship name is third in the list
+    =/  res
+      (~(got by remote) (slav %p location))
+    ``[%atom !>(res)]
+        ::
+        :: Produce listing of remote counters
+        ::
+      [%y %remote ~]
+    =/  dir=(map @ta ~)
+      %-  molt           :: Map from list of k-v pairs
+      %+  turn           :: iterate over list of k-v pairs
+        ~(tap by remote) :: list of k-v pairs from map
+      |=  [who=@p *]
+      [(scot %p who) ~]
+    ``[%arch !>(`arch`[~ dir])]
   ==
+::
+:: Handle sign from agent
 ::
 ++  on-agent
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
   ?-    -.sign
-        ::
-      %poke-ack
-    ?~  p.sign
+          ::
+          :: Print error if poke failed
+          ::
+        %poke-ack
+      ?~  p.sign
+        `this
+      %-  (slog u.p.sign)
       `this
-    %-  (slog u.p.sign)
-    `this
-        ::
-      %watch-ack
-    ?~  p.sign
+          ::
+          :: Print error if subscription failed
+          ::
+        %watch-ack
+      ?~  p.sign
+        `this
+      =/  =tank  leaf+"subscribe failed from {<dap.bowl>} on wire {<wire>}"
+      %-  (slog tank u.p.sign)
       `this
-    =/  =tank  leaf+"subscribe failed from {<dap.bowl>} on wire {<wire>}"
-    %-  (slog tank u.p.sign)
-    `this
-        ::
-      %kick  `this
-      %fact
-    :-  ~
-    ?.  ?=(%atom p.cage.sign)
-      this
-    this(remote.sta (~(put by remote.sta) src.bowl !<(@ q.cage.sign)))
+          ::
+          :: Do nothing if unsubscribed
+          ::
+        %kick  `this
+          ::
+          :: Update remote counter when we get a subscription update
+          ::
+        %fact
+      :-  ~
+      ?.  ?=(%atom p.cage.sign)
+        this
+      this(remote (~(put by remote) src.bowl !<(@ q.cage.sign)))
   ==
-
+::
+:: Handle arvo signs
+::
+:: We never give any cards to arvo. Therefore we never need to handle any signs
+:: from arvo. We use the default-agent library to avoid implementing this arm,
+:: as gall apps must have all the arms.
+::
 ++  on-arvo  on-arvo:def
+::
+:: Handle error
+::
+:: Print errors when they happen
 ::
 ++  on-fail
   |=  [=term =tang]
@@ -141,6 +222,7 @@ exposes a scry namespace to inspect everyone's number.
   %-  (slog leaf+"error in {<dap.bowl>}" >term< tang)
   `this
 --
+
 ```
 
 ### `sur/example-gall.hoon`
@@ -189,11 +271,14 @@ List of cards and new agent
 #### Example
 
 ```hoon
-:: From reference agent. Simply makes local.sta default to 1
+:: From reference agent.
+:: Set local counter to 1 by default
+::
 ++  on-init
   ^-  (quip card _this)
   `this(local.sta 1)
 :: From app/weather.hoon. This setup is typical of a landscape tile.
+::
 ++  on-init
   :_  this
   :~  [%pass /bind/weather %arvo %e %connect [~ /'~weather'] %weather]
@@ -217,12 +302,13 @@ Unlike most handlers, this cannot produce effects. It is not a gate and has no i
 
 #### Example
 
-Package the permanent state `sta` as a vase.
-
 ```hoon
 :: From reference agent
+::
+:: Expose state for saving
+::
 ++  on-save
-  !>(sta)
+  !>(state)
 ```
 
 ### `++on-load`
@@ -252,11 +338,20 @@ List of cards and new agent
 #### Examples
 
 ```hoon
-:: From reference agent.
+:: From reference agent
+::
+:: Load old state and upgrade if neccessary
 ++  on-load
   |=  old=vase
   ^-  (quip card _this)
-  `this(sta !<(state old))
+  =/  loaded=versioned-state
+    !<(versioned-state old)
+  ?-  -.loaded
+      %0
+    `this(local local.loaded) :: Upgrade old state
+      %1
+    `this(state loaded)
+  ==
 ```
 
 ### `++on-poke`
@@ -287,38 +382,58 @@ List of cards and new agent.
 #### Example
 
 ```hoon
-:: From reference agent. Allows agent to respond to actions.
+:: From reference agent.
+::
+:: Respond to poke
+:: App can be poked in the dojo by running the following commands
+:: Increment local counter
+:: :example-gall &example-gall-action [%increment ~]
+:: Increment ~zod's counter
+:: :example-gall &example-gall-action [%increment-remote ~zod]
+:: Subscribe to ~zod's counter
+:: :example-gall &example-gall-action [%view ~zod]
+:: Unsubscribe from ~zod's counter
+:: :example-gall &example-gall-action [%stop-view ~zod]
+::
 ++  on-poke
   |=  [=mark =vase]
   ^-  (quip card _this)
+  ::  Ensure poke is of mark %example-gall-action
   ?>  =(mark %example-gall-action)
   =/  act=example-gall-action  !<(example-gall-action vase)
   ?-  act
-      ::
-    [%increment ~]
-  :-  [%give %fact `/local %atom !>(+(local.sta))]~
-  this(local.sta +(local.sta))
-      ::
-    [%increment-remote who=@p]
-  :_  this
-  :~  :*
-    %pass
-    /inc/(scot %p who.act)
-    %agent
-    [who.act %example-gall]
-    %poke  %example-gall-action  !>([%increment ~])
-  ==  ==
-      ::
-    [%view who=@p]
-  :_  this
-  [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %watch /local]~
-      ::
-    [%stop-view who=@p]
-  :_  this(remote.sta (~(del by remote.sta) who.act))
-  [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %leave ~]~
-      ::
+        ::
+        :: Increment local counter and send new counter to subscribers
+        ::
+      [%increment ~]
+    :-  [%give %fact `/local %atom !>(+(local))]~
+    this(local +(local))
+        ::
+        :: Send remote %increment poke
+        ::
+      [%increment-remote who=@p]
+    :_  this
+    :~  :*
+      %pass
+      /inc/(scot %p who.act)
+      %agent
+      [who.act %example-gall]
+      %poke  %example-gall-action  !>([%increment ~])
+    ==  ==
+        ::
+        :: Subscribe to a remote counter
+        ::
+      [%view who=@p]
+    :_  this
+    [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %watch /local]~
+        ::
+        :: Unsubscribe from remote counter and remove from state
+        ::
+      [%stop-view who=@p]
+    :_  this(remote (~(del by remote) who.act))
+    [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %leave ~]~
+        ::
   ==
-::
 ```
 
 ### `++on-watch`
@@ -358,16 +473,21 @@ List of cards and new agent.
 #### Example
 
 ```hoon
-:: From reference agent. Gives new subscribers to /local the current local counter.
+:: From reference agent
+::
+:: Handle new subscription
+::
+:: When another ship subscribes to our counter, give them the current state of
+:: the counter immediately
+::
 ++  on-watch
   |=  =path
   ^-  (quip card _this)
   :_  this
-  ~&  path
-  ?+  path  ~
-       ::
-     [%local ~]
-  [%give %fact ~ %atom !>(local.sta)]~
+  ?+  path  on-watch:def
+         ::
+       [%local ~]
+    [%give %fact ~ %atom !>(local)]~
   ==
 ```
 
@@ -428,6 +548,15 @@ it can do is produce a piece of data to the caller, or not.
 
 The path being scryed for.
 
+```hoon
+:: Example scry to path mappings
+::
+.^(arch %gy /=example-gall=/remote)
+:: Path will be /y/remote
+.^(@ %gx /=example-gall=/local/atom)
+:: Path will be /x/local
+```
+
 #### Returns
 
 ```hoon
@@ -438,35 +567,51 @@ If this arm produces `[~ ~ data]`, then `data` is the value at the the
 given path.  If it produces `[~ ~]`, then there is no data at the given
 path and never will be.  If it produces `~`, then we don't know yet whether
 there is or will be data at the given path. The head of the path is known as the
-`care`. Requests with a care of `%x` should return a vase that matches the mark
-at the end of the path. Requests with a care of `%y` should return a vase with
-an `arch` inside.
+`care`. Requests with a care of `%x` should return a vase that matches or is
+convertible to the mark at the end of the scry request. This mark is not
+included in the path passed to `++on-peek`. Requests with a care of `%y` should
+return a cage with a mark of `%arch` and a vase of `arch`.
 
 #### Example
 
 ```hoon
-:: From reference agent. Allows for scrying for local and remote counters as well
-:: as a list of remote counters being viewed.
+:: From reference agent
+::
+:: Expose scry namespace
+::
+:: .^(@ %gx /=example-gall=/local/atom) will produce the current local counter
+:: .^(@ %gx /=example-gall=/remote/~zod/atom) will produce the counter for ~zod
+:: .^(arch %gy /=example-gall=/remote) will produce a listing of the current
+:: remote counters
 ++  on-peek
   |=  =path
   ^-  (unit (unit cage))
   ?+  path  [~ ~]
-      ::
-    [%x %local ~]
-  ``[%atom !>(local.sta)]
-      ::
-    [%x %remote who=@ta ~]
-  ~&  remote.sta
-  =/  res  (~(got by remote.sta) (slav %p -.+.+.path))
-  ~&  res
-  ``[%atom !>(res)]
-      ::
-    [%y %remote ~]
-  =/  dir=(map @ta ~)
-    (molt (turn ~(tap by remote.sta) |=([who=@p *] [(scot %p who) ~])))
-  ``[%arch !>(`arch`[~ dir])]
+        ::
+        :: Produce local counter
+        ::
+      [%x %local ~]
+    ``[%atom !>(local)]
+        ::
+        :: Produce remote counter
+        ::
+      [%x %remote who=@ta ~]
+    =*  location  i.t.t.path :: Ship name is third in the list
+    =/  res
+      (~(got by remote) (slav %p location))
+    ``[%atom !>(res)]
+        ::
+        :: Produce listing of remote counters
+        ::
+      [%y %remote ~]
+    =/  dir=(map @ta ~)
+      %-  molt           :: Map from list of k-v pairs
+      %+  turn           :: iterate over list of k-v pairs
+        ~(tap by remote) :: list of k-v pairs from map
+      |=  [who=@p *]
+      [(scot %p who) ~]
+    ``[%arch !>(`arch`[~ dir])]
   ==
-::
 ```
 
 ### `++on-agent`
@@ -487,7 +632,11 @@ It will be one of the following types of response:
 
 - `%fact`: update from the publisher.
 
-- `%kick`: notification that the subscription has ended.
+- `%kick`: notification that the subscription has ended. This happens because
+  either the target app passed a `%leave` note, or ames killed the subscription
+  due to backpressure. Most of the time you will want to resubscribe. If you can
+  no longer access the subscription you will get a negative `%watch-ack` and end
+  your flow there.
 
 #### Accepts
 
@@ -508,32 +657,43 @@ It will be one of the following types of response:
 #### Example
 
 ```hoon
-:: From reference agent. Prints notifications if pokes and subscriptions fail.
-:: Updates the remote counter when it receives an update from another ship.
+:: From reference agent
+::
+:: Handle sign from agent
+::
 ++  on-agent
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
   ?-    -.sign
-        ::
-      %poke-ack
-    ?~  p.sign
+          ::
+          :: Print error if poke failed
+          ::
+        %poke-ack
+      ?~  p.sign
+        `this
+      %-  (slog u.p.sign)
       `this
-    %-  (slog u.p.sign)
-    `this
-        ::
-      %watch-ack
-    ?~  p.sign
+          ::
+          :: Print error if subscription failed
+          ::
+        %watch-ack
+      ?~  p.sign
+        `this
+      =/  =tank  leaf+"subscribe failed from {<dap.bowl>} on wire {<wire>}"
+      %-  (slog tank u.p.sign)
       `this
-    =/  =tank  leaf+"subscribe failed from {<dap.bowl>} on wire {<wire>}"
-    %-  (slog tank u.p.sign)
-    `this
-        ::
-      %kick  `this
-      %fact
-    :-  ~
-    ?.  ?=(%atom p.cage.sign)
-      this
-    this(remote.sta (~(put by remote.sta) src.bowl !<(@ q.cage.sign)))
+          ::
+          :: Do nothing if unsubscribed
+          ::
+        %kick  `this
+          ::
+          :: Update remote counter when we get a subscription update
+          ::
+        %fact
+      :-  ~
+      ?.  ?=(%atom p.cage.sign)
+        this
+      this(remote (~(put by remote) src.bowl !<(@ q.cage.sign)))
   ==
 ```
 
@@ -580,7 +740,15 @@ List of cards and new agent.
       (http-response:wc wire client-response.sign-arvo)
     [cards this]
   (on-arvo:def wire sign-arvo)
-:: From reference agent.
+::
+:: From reference agent
+::
+:: Handle arvo signs
+::
+:: We never give any cards to arvo. Therefore we never need to handle any signs
+:: from arvo. We use the default-agent library to avoid implementing this arm,
+:: as gall apps must have all the arms specified in the agent:gall definition.
+::
 ++  on-arvo  on-arvo:def
 ```
 
@@ -615,7 +783,11 @@ List of cards and new agent
 #### Example
 
 ```hoon
-:: From reference agent. Formats and prints stack trace.
+::
+:: Handle error
+::
+:: Print errors when they happen
+::
 ++  on-fail
   |=  [=term =tang]
   ^-  (quip card _this)
@@ -644,14 +816,19 @@ subscription content for all subscribers on a given path.
 [%fact (unit path) =cage]
 ```
 
-`(unit path)` is the path of the subscription being updated. If no path is given, then the update is only given to the program that instigated the request.  Typical use of this mode is in `+on-watch` to give an initial update to a new subscriber to get them up to date.
+`(unit path)` is the path of the subscription being updated. If no path is
+ given, then the update is only given to the program that instigated the
+ request. Typical use of this mode is in `+on-watch` to give an initial update
+ to a new subscriber to get them up to date.
 
 `cage` is a cage of the subscription update.
 
 #### Example
 
 ```hoon
-:: From ++on-watch in reference agent. Gives current local state to new subscribers.
+:: From ++on-watch in reference agent.
+::
+:: Gives current local state to new subscribers.
 [%give %fact ~ %atom !>(local.sta)]
 ```
 
@@ -659,7 +836,8 @@ subscription content for all subscribers on a given path.
 
 Close subscription.
 
-Closes a subscription. A subscription close closes the subscription for all or one subscribers on a given path.
+Closes a subscription. A subscription close closes the subscription for all or
+one subscribers on a given path.
 
 #### Structure
 
@@ -709,7 +887,9 @@ and vase.
 #### Example
 
 ```hoon
-:: From ++on-poke in reference agent. Sends an increment poke to the example-gall agent
+:: From ++on-poke in reference agent.
+::
+:: Sends an increment poke to the example-gall agent
 :: on who.act.
 :*
   %pass
@@ -737,8 +917,10 @@ This note is given to subscribe to an application at a path
 #### Example
 
 ```hoon
-:: Taken from ++on-poke in reference agent.
+:: From ++on-poke in reference agent.
+::
 :: Subscribes to the example-gall agent on who.act on the path /local
+::
 [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %watch /local]
 ```
 
@@ -759,7 +941,8 @@ passed on.
 #### Example
 
 ```hoon
-:: Taken from ++on-poke in reference agent.
+:: From ++on-poke in reference agent.
+::
 :: Unsubscribes from the example-gall agent on who.act
 [%pass /view/(scot %p who.act) %agent [who.act %example-gall] %leave ~]
 ```
