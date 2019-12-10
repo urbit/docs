@@ -12,6 +12,6 @@ A Hoon atom type consists of a Nock atom with two additional pieces of metadata:
 
 ### Further Reading
 
-- [The Hoon Tutorial](@/docs/tutorials/hoon.md): Our guide to learning the Hoon programming language.
+- [The Hoon Tutorial](@/docs/tutorials/hoon/_index.md): Our guide to learning the Hoon programming language.
   - [Lesson 1.2: Nouns](@/docs/tutorials/hoon/nouns.md): An Hoon Tutoral lesson that explains how atoms work.
 - [The Nock explanation](@/docs/tutorials/nock/explanation.md): Includes an explanation of atoms.

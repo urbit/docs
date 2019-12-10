@@ -10,6 +10,6 @@ The Hoon source file is located in `/home/sys/hoon.hoon` within your Urbit.
 
 ### Further Reading
 
-- [The Hoon Tutorial](@/docs/tutorials/hoon.md): Our guide to learning the Hoon programming language.
+- [The Hoon Tutorial](@/docs/tutorials/hoon/_index.md): Our guide to learning the Hoon programming language.
   - [Lesson 1.1: Setup](@/docs/tutorials/hoon/nouns.md): How to set up an environment for programming in Hoon.
 - [Why Hoon?](@/blog/why-hoon.md): A blog post that explains why Urbit uses its own programming language.
