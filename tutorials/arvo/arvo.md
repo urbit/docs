@@ -161,7 +161,7 @@ On the back end, Arvo is listening on a port (usually either 80 or 8080). When y
 
 Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
 
-Ultimately, everything that happens in Arvo is reduced to Unix events.
+Ultimately, everything that happens in Arvo is reduced to Unix events. This page focuses on Arvo as if it were run on bare metal, while (some other page) goes into detail on how the Nock virtual machine works and talks with Unix.
 
 ## The kernel
 
