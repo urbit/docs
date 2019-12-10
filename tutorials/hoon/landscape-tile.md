@@ -14,7 +14,7 @@ Tiles are one way to build apps in Landscape, the Urbit web interface. This docu
 
 It's recommended to always use this process in this section when creating a tile, even when your knowledge becomes more advanced. It makes development much easier.
 
-First and foremost, you'll need to have a [mounted fakezod](/docs/using/creating-development-ship) of Urbit version 0.8.0 or higher.
+First and foremost, you'll need to have a [mounted fakezod](@/using/develop.md#creating-a-development-ship) of Urbit version 0.8.0 or higher.
 
 Then you'll need to get the pre-built tools that were mentioned. Navigate to  [urbit/create-landscape-app](https://github.com/urbit/create-landscape-app) and click the green `Use this template` button on to copy the repo to your own account. After that, you will need to clone that new repository locally, using either the `git clone <repo-url>` terminal command, or by clicking the `Clone or download` button on the GitHub.
 Once you've cloned the repo, `cd` into the newly downloaded folder and run `npm install` to install dependencies. After that, run `npm start` to start the setup wizard.
