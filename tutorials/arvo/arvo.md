@@ -59,8 +59,8 @@ How the Nock runtime environment and virtual machine which Arvo lives is in impl
 #### [Jets](#jets)
 How Nock is made to run quickly.
 
-#### [Daemons](#daemons)
-How Arvo is split into a worker and ??? daemon.
+#### [The worker and the daemons](#the-worker-and-the-daemon)
+How Arvo is split into a worker and daemon.
 
 #### I/O
 How I/O is handled by Arvo.
@@ -88,7 +88,7 @@ Arvo is designed to avoid the usual state of complex event networks: event spagh
 Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevence to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
 
 This means two things: one is that the there is a notion of _state_ for the operating system, and that the current state is a pure function of the [event log](#event-log), which is a chronological record of every action the operating system has ever performed. A _pure function_ is a function that always produces the same output given the same input. Another way to put this is to say that Arvo is _deterministic_. Other operating systems are not deterministic for a number of reasons, but one simple reasons is because they allow programs to alter global variables that then affect the operation of other programs.
- wd
+ 
 In mathematical terms, one may think of Arvo as being given by a transition function _T_:
 
 ```
@@ -173,8 +173,6 @@ On the back end, Arvo is listening on a port (usually either 80 or 8080). When y
 
 <img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
 
-Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
-
 Ultimately, everything that happens in Arvo is reduced to Unix events. This page focuses on Arvo as if it were run on bare metal, while (some other page) goes into detail on how the Nock virtual machine works and talks with Unix.
 
 ## The kernel
@@ -185,7 +183,7 @@ This section requires an understanding of Hoon of at least the level of Chapter 
 
 ### Overall structure
 
-`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a simple gate. They are nested like so, where items lower on the list are contained within items higher on the list:
+`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a simple gate that implements the transition function. They are nested like so, where items lower on the list are contained within items higher on the list:
  + Types
  + "Section 3bE Arvo Core"
  + Implementation core
@@ -221,7 +219,7 @@ This core contains the most basic types utilized in Arvo. We discuss a number of
 
 The `Arvo` causal stack is called a `+duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
-Here's a duct that was recently observed in the wild (I should redo this to make sure its up to date)
+Here's a `duct` that was recently observed in the wild (I should redo this to make sure its up to date)
 
 ```
 ~[
@@ -270,7 +268,7 @@ Cards are the vane-specific portion of a move. Each vane defines a protocol for 
 
 When one vane is `%pass`ed a card in its `++task` (defined in zuse), Arvo activates the `++call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `++gift`. If the vane needs to request something of another vane, it `%pass`es it a `++note` card. When that other vane returns a result, Arvo activates the `++take` gate of the initial vane with one of the cards defined in its `++sign`.
 
-In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a ++note. (2) that same request as seen by the callee, a `++task`. (3) the response to that first request as seen by the callee, a `++gift`. (4) the response to the first request as seen by the caller, a `++sign`.
+In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a `++note`. (2) that same request as seen by the callee, a `++task`. (3) the response to that first request as seen by the callee, a `++gift`. (4) the response to the first request as seen by the caller, a `++sign`.
 
 When a `++task` card is passed to a vane, Arvo calls its `++call` gate, passing it both the card and its duct. This gate must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
 
@@ -278,7 +276,7 @@ This overview has detailed how to pass a card to a particular vane. To see the c
 
 ##### ovum
 
-A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. Later in this section we will find that the `+poke` arm usually returns something like a `(list ovum)`. These encode Arvo's responses to events.
+A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is (always?) the default Unix `wire`, namely `//`.
 
 #### Section 3bE Arvo Core
 
