@@ -24,8 +24,8 @@ The conceptual level may mostly be understood without knowing Hoon, but some of 
 
 We also suggest to the reader to peruse the GLOSSARY (link) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
-### Sections
-Here we present a brief summary of each section.
+### Table of Contents
+We present here a brief summary of each section.
 
 #### [What is Arvo?](#what-is-arvo)
 The big picture of Arvo.
