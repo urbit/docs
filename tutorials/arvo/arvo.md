@@ -191,11 +191,11 @@ This section requires an understanding of Hoon of at least the level of Chapter 
  + Larval stage core
  + Formal interface
  
- We now describe the functionality of each of these components.
+See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores/#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
  
 #### Formal interface
 
-The formal interface is a single gate that takes in the current time and a noun that encodes the input. This event is then effected by the `+poke` arm, and a new noun denoting the current state of Arvo is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types in the type core are out of scope.
+The formal interface is a single gate that takes in the current time and a noun that encodes the input. This input, referred to as an _event_ (ASK PHILIP IF THIS IS RIGHT), is then put into action by the `+poke` arm, and a new noun denoting the current state of Arvo is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types defined in the type core are not visible to the formal interface.
 
 ```hoon
     ::  Arvo formal interface
