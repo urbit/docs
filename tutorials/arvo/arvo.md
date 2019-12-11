@@ -171,6 +171,8 @@ On the back end, Arvo is listening on a port (usually either 80 or 8080). When y
 
 ## The stack
 
+<img class="mv5 w-100" src="https://media.urbit.org/site/docs/arvo/stack.png">
+
 Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
 
 Ultimately, everything that happens in Arvo is reduced to Unix events. This page focuses on Arvo as if it were run on bare metal, while (some other page) goes into detail on how the Nock virtual machine works and talks with Unix.
@@ -403,3 +405,5 @@ Furthermore, a reasonable scenario would be one in which a malicious actor posse
 Thus permanent identity is a crucial component of the ``immune system'' for the network, and gossiping of blacklists is how immunity spreads through the network.
 
 What about smaller ships, such as moons or comets? There are so many possible comets that they may as well be infinite, and this is where the hierarchical nature of the network acts to our benefit. When a human wishes to be recognized as a human, they would be expected to use a planet. To anybody who believes they could potentially be the target of a denial of service attack, they can simply ignore traffic from comets across the board. If someone needs to register additional ships beyond their planet at some web service, they could use their planet to vouch for their moons/comets.
+
+### Crytography
