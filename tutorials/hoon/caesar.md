@@ -116,8 +116,7 @@ itself before reading the explanation.
 ```hoon
 !:
 |=  [msg=tape key=@ud]
-=+  ^=  caesar
-    |%
+=<
 ```
 
 The `!:` in the first line of the above code enables a full stack trace in the
