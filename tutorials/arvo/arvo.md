@@ -171,7 +171,7 @@ On the back end, Arvo is listening on a port (usually either 80 or 8080). When y
 
 ## The stack
 
-<img class="mv5 w-100" src="media.urbit.org/docs/arvo/stack.png">
+<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
 
 Diagram with Unix -> Nock VM (Jacque) -> Arvo kernel -> Gall userspace -> Dojo
 
