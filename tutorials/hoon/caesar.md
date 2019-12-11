@@ -190,7 +190,7 @@ front, and the first part `p.s` is welded to the back.
 ```
 
 The `zipper` arm takes two tapes and creates a `map` out of them -- an
-an association between their elements.
+association between their elements.
 
 So then if `tapes` are easier to manipulate, why then are we producing `cords`?
 In this case what we are going to to be doing is mapping a single element of a `
