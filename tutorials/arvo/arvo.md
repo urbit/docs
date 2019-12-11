@@ -173,7 +173,7 @@ On the back end, Arvo is listening on a port (usually either 80 or 8080). When y
 
 <img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
 
-Ultimately, everything that happens in Arvo is reduced to Unix events. This page focuses on Arvo as if it were run on bare metal, while (some other page) goes into detail on how the Nock virtual machine works and talks with Unix.
+Ultimately, everything that happens in Arvo is reduced to Unix events. Here we depict the stack from userspace apps Dojo and Landscape down to Unix. (I need to change this, Landscape is not actuall a Gall app)
 
 ## The kernel
 
@@ -231,7 +231,7 @@ Here's a `duct` that was recently observed in the wild (I should redo this to ma
 ]
 ```
 
-<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/timer.png">"">
+<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/timer.png">
 
 This is the duct the timer vane, Behn, receives when the "timer" sample app asks the timer vane to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
 
@@ -305,7 +305,20 @@ Once the larval stage has passed its functionality will never be used again.
 
 ### The state
 
-The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is actually structured, to inform our study of `+poke`.
+The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is actually structured, to inform our study of `+poke`. First, let's review the structure of the state:
+
+```hoon
+::  persistent arvo state
+::
+=/  pit=vase  !>(..is)                                  ::
+=/  vil=vile  (viol p.pit)                              ::  cached reflexives
+=|  $:  lac=_&                                          ::  laconic bit
+        eny=@                                           ::  entropy
+        our=ship                                        ::  identity
+        bud=vase                                        ::  %zuse
+        vanes=(list [label=@tas =vane])                 ::  modules
+    ==                                                  ::
+```
 
 ### +poke
 
