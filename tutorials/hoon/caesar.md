@@ -116,8 +116,7 @@ itself before reading the explanation.
 ```hoon
 !:
 |=  [msg=tape key=@ud]
-=+  ^=  caesar
-    |%
+=<
 ```
 
 The `!:` in the first line of the above code enables a full stack trace in the
@@ -139,6 +138,7 @@ allows us reference the core's contained arms before they are defined. Without
 =.  msg  (cass msg)
 :-  (shift msg key)
 (unshift msg key)
+|%
 ```
 
 `=.  msg  (cass msg)` changes the input string `msg` to lowercases. `=.` changes
@@ -149,6 +149,8 @@ gate that converts uppercase letters to lowercase.
 `:-  (shift msg key)` and `(unshift msg key)` simply composes a
 cell of a right-shifted cipher and a left-shifted cell. This is the final output
 of our generator.
+
+`|%` creates a core.
 
 ```hoon
     ++  rott
