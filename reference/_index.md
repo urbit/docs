@@ -6,15 +6,6 @@ template = "sections/docs/chapters.html"
 +++
 Various reference documents are stored here, particularly for Hoon, but also for other parts of the system.
 
-## [The Arvo Glossary](@/docs/reference/arvo-glossary.md)
-
-Urbit is known for introducing a great deal of new terminology. The glossary will
-help demystify our jargon.
-
-## [The Azimuth Glossary](@/docs/reference/azimuth-glossary.md)
-
-Azimuth, the Urbit identity layer, has its own vocabulary.
-
 ## [The Cheat Sheet](@/docs/reference/cheat-sheet.md)
 
 The cheat sheet is a compact document for looking up Hoon runes.
