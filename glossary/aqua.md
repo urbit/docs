@@ -13,4 +13,4 @@ Aqua is jetted with the usual [Nock](../nock) interpreter and thus virtual ships
 
 ### Further Reading
 
-- [The Gall tutorial](@/docs/tutorials/arvo/gall.md): An technical guide to the Gall vane.
+- [The Gall tutorial](@/docs/tutorials/arvo/gall.md): A technical guide to the Gall vane.
