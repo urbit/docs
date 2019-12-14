@@ -8,7 +8,7 @@ category = "arvo"
 
 **Chat**, also referred to as `:chat-cli`, is an application that handles communication between ships.
 
-There are four types of chats (lowercase). Each is a [[named]] collection of messages created by and hosted on a ship's [Hall](../hall), usually represented as `~ship-name/circle-name`. Most of Chat revolves around doing things with these chats.
+There are four types of chats (lowercase). Each is a named collection of messages created by and hosted on a ship's [Hall](../hall), usually represented as `~ship-name/circle-name`. Most of Chat revolves around doing things with these chats.
 
 Circles are subscribed to by some number of ships which are permitted to post and retrieve messages from the circle.
 
