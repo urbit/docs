@@ -19,4 +19,4 @@ Dill is located at `/home/sys/vane/dill.hoon` within [Arvo](../arvo).
 
 ### Further Reading
 
-- [The Dill tutorial](@/docs/tutorials/arvo/dill.md): An technical guide to the Dill vane.
+- [The Dill tutorial](@/docs/tutorials/arvo/dill.md): A technical guide to the Dill vane.
