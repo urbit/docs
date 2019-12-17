@@ -156,16 +156,6 @@ You will first interact with your instance of Arvo with a [REPL](https://en.wiki
 
 (picture of dojo)
 
-### Landscape
-
-
-For those who would prefer to interact with Arvo via a GUI, we offer an application called Landscape that you access via your web browser. This is the most user-friendly way to utilize your ship. By default, Arvo comes installed with a timer, Chat, Weather, and Publish, which will populate your Landscape interface the first time you launch it. Again, see [using your ship](@/using/operations/using-your-ship.md#landscape) for instructions on how to access Landscape.
-
-<img class="mv5 w-100" src="https://media.urbit.org/site/understanding-urbit/project-history/project-status-landscape%402x.png">
-
-
-On the back end, Arvo is listening on a port (usually either 80 or 8080). When you perform an action in Landscape, such as join a channel, your action is then communicated via a packet over that port to Arvo (what does this look like? is it TCP/UDP?) I asked Matilde if this is actually true,she didn't know, will ask Philip.. Similarly, Arvo sends events to be displayed in your browser over this port as well.
-
 ## The stack
 
 <img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
