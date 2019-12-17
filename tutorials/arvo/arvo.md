@@ -48,9 +48,6 @@ An annotation of what is printed on the screen when you boot your ship for the f
 #### [Security](#security)
 Arvo's security features, including cryptography and protection against Sybil attacks.
 
-#### [Kelvin versioning](#kelvin-versioning)
-Our peculiar software versioning system.
-
 # Consider splitting this into a different page. Basically the above is "Arvo as if it were on bare metal", and the rest is "how Arvo gets turned into a mess of Unix events"
 
 #### [Virtual machine](#virtual-machine)
@@ -59,8 +56,8 @@ How the Nock runtime environment and virtual machine which Arvo lives is in impl
 #### [Jets](#jets)
 How Nock is made to run quickly.
 
-#### [The worker and the daemons](#the-worker-and-the-daemon)
-How Arvo is split into a worker and daemon.
+#### [The worker and the daemon](#the-worker-and-the-daemon)
+How Arvo is split into a worker and a daemon.
 
 #### I/O
 How I/O is handled by Arvo.
@@ -127,13 +124,13 @@ In the client-server model, data is stored on the server and thus reliable and e
 
 In order to dismantle the client-server model and build a peer-to-peer internet, we need the robustness of modern database servers in the hands of the users. Thus the Arvo operating system itself must have all of the properties of a reliable database.
 
-Database theory studies in precise terms the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_. We review here how Arvo is atomic and durable (I'd like to do the others but I don't understand the concepts well enough yet)
+Database theory studies in precise terms the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_. We review here how Arvo satisfies these properties.
 
  - Atomicity: Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `poke`d, the effect of an event is computed, it is [persisted](https://en.wikipedia.org/wiki/Persistence_(computer_science)) by writing it to the event log, and only then is the actual event applied.
 
  - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
 
- - Isolation: Changes made to the database are only made visible once they have successfully put the...
+ - Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. Arvo transactions cannot be considered _entirely_ sequential though, as the [worker and daemon](#the-worker-and-the-daemon) operate in parallel.
  
  - Durability: Completed transactions will survive permanently. This is one way in which Arvo greatly differs from other operating systems - there is no way to truly delete a file, rather you can just mark it as being deleted and have the file effectievly be ignored. This is due to the structure of our file system known as [Clay](@/docs/tutorials/arvo/clay.md), which is entirely version controlled. That is to say, every version of every file remains on your system forever.
  
