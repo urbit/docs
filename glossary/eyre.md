@@ -14,4 +14,4 @@ Eyre is located at `/home/sys/vane/eyre.hoon` within [Arvo](../arvo).
 
 ### Further Reading
 
-- [The Eyre tutorial](@/docs/tutorials/arvo/eyre.md): An technical guide to the Eyre vane.
+- [The Eyre tutorial](@/docs/tutorials/arvo/eyre.md): A technical guide to the Eyre vane.

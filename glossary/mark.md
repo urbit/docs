@@ -13,5 +13,5 @@ The [Ford](../ford) [vane](../vane) converts data between marks and validates da
 
 ### Further Reading
 
-- [The Clay tutorial](@/docs/tutorials/arvo/clay.md): An technical guide to the Clay vane.
-- [The Ford tutorial](@/docs/tutorials/arvo/ford.md): An technical guide to the Ford vane.
+- [The Clay tutorial](@/docs/tutorials/arvo/clay.md): A technical guide to the Clay vane.
+- [The Ford tutorial](@/docs/tutorials/arvo/ford.md): A technical guide to the Ford vane.

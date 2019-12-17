@@ -11,4 +11,4 @@ Behn is located in `/home/sys/vane/behn.hoon` within [Arvo](../arvo).
 
 ### Further Reading
 
-- [The Behn tutorial](@/docs/tutorials/arvo/behn.md): An technical guide to the Behn vane.
+- [The Behn tutorial](@/docs/tutorials/arvo/behn.md): A technical guide to the Behn vane.
