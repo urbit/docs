@@ -12,9 +12,9 @@ In this section we give a summary of the content and cover prerequisites for und
 
 ## Overview
 
-This article is intended to provide a thorough summary of all of the most important aspects of Arvo. We work on two levels - a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit.
+This article is intended to provide a thorough summary of all of the most important aspects of the Arvo kernel. We work on two levels - a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit.
 
-Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30k lines of code, while the Arvo kernel is just 1k lines of code. Think of this page as 
+Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30k lines of code, while the Arvo kernel is just 1k lines of code.
 
 We include a number of quotes from the Urbit [white paper](https://media.urbit.org/whitepaper.pdf) where appropriate. The white paper is a good companion to this article, though it should be noted that some parts of it are now either out of date or not yet implemented.
 
@@ -22,7 +22,7 @@ We include a number of quotes from the Urbit [white paper](https://media.urbit.o
 
 The conceptual level may mostly be understood without knowing Hoon, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). The technical level will require Chapter One for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md), though some of the content presented there is presented again here in greater detail.
 
-We also suggest to the reader to peruse the GLOSSARY (link) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
+We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
 ### Table of Contents
 We present here a brief summary of each section.
