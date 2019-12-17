@@ -119,7 +119,21 @@ More information on the structure of the Arvo event log and the Arvo state is gi
 
 > Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
 
-### ACID Database
+### Solid state interpreter
+
+>We call an execution platform with these three properties (universal persistence, source-independent packet I/O, and high-level determinism) a solid-state interpreter (SSI). A solid-state interpreter is a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an ACID transaction.
+
+We call Arvo a _solid state interpreter_. In this section we describe what is meant by this, and how this behavior derives from the fact that Arvo is an [ACID database](#acid-database) and a [single-level store](#single-level-store).
+
+In computer science, an _interpreter_ is a program that directly executes instructions written in some human-understandable programming or scripting language, rather than requiring the code to first be compiled into a machine language. Arvo is an interpreter, as you may utilize the dojo to issue commands written in Hoon directly to Arvo.
+
+To understand what we mean by _solid state_ interpreter, consider the operation of a solid state hard drive when a computer shuts down or loses power. Data written to an SSD is permanent unless otherwise deleted - loss of power may leave some partially written data, but nothing is ever lost. Thus, the state of an SDD can be considered to be equivalent to the data that it contains. That is to say, you do not need to know anything about the system which is utilizing the SSD to know everything there is to know about the SSD. There is no notion of "rebooting" a SSD - it simply stores data, and when power is restored to it, it is in exactly the same state as it was when power was lost.
+
+Contrast this with other popular operating systems, such as Windows, Mac, or Linux. The state of the operating system is something that crucially depends on having a constant power supply because much of the state of the operating system is stored in RAM, which is volatile. When you reboot your computer or suddenly lose power, any information stored in RAM is lost. Modern operating systems do mitigate this loss of information to some extent. For instance, it may remember what applications you were running at the time power was lost and try to restore them. Particularly durable programs may go as far as writing their state to disk every few seconds so that only very minimal information can be lost in a power outage. However, this is not the default behavior, and indeed if it were then they would be so slow as to be unusable, as you would effectively be using your hard disk as the RAM.
+
+How Arvo handles loss of power is closer to that of an SSD. Since it is an [ACID database](#acid-database) and a [single-level store](#single-level-store), a sudden loss of power have no effect on the state of the operating system. When you boot your ship back up it will be exactly as it was before the failure. Your information can never be lost, and because it was designed from the ground up to behave in this fashion, it does not suffer significant slowdown by persisting all data in this manner as would be the case if your typical operating system utilized its hard disk as RAM.
+
+#### ACID Database
 In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to act as databases.
 
 In order to dismantle the client-server model and build a peer-to-peer internet, we need the robustness of modern database servers in the hands of the users. Thus the Arvo operating system itself must have all of the properties of a reliable database.
@@ -136,14 +150,11 @@ Database theory studies in precise terms the possible properties of anything tha
  
  Durability is a necessary consequence of Arvo's [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), which means that you can always replace an expression by what it evaluates to without changing its behavior. For example, you can always replace a file referred to in a program by the contents of that file, because you know that file is never going to change (or rather, if it does, the old version will still be accessible).
 
-### Solid-state interpeter
+#### Single-level store
 
->We call an execution platform with these three properties (universal persistence, source-independent packet I/O, and high-level determinism) a solid-state interpreter (SSI). A solid-state interpreter is a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an ACID transaction.
+>A kernel which presents the abstraction of a single layer of permanent state is also called a single-level store. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
 
-### Single-level store
-
->A kernel which presents the abstraction of a single layer of permanent state is also called a single-level store [12]. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
-
+Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
 ### Event-driven
 
