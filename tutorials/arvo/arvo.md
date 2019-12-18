@@ -183,9 +183,9 @@ This section requires an understanding of Hoon of at least the level of Chapter 
 
 `arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a simple gate that implements the transition function. They are nested like so, where items lower on the list are contained within items higher on the list:
  + Types
- + "Section 3bE Arvo Core"
+ + Section 3bE Arvo Core
  + Implementation core
- + Structural interface core
+ + Structural interface core, or adult core
  + Larval stage core
  + Formal interface
  
@@ -193,7 +193,7 @@ See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores/#core-nesting) of the Hoo
  
 #### Formal interface
 
-The formal interface is a single gate that takes in the current time and a noun that encodes the input. This input, referred to as an _event_ (ASK PHILIP IF THIS IS RIGHT), is then put into action by the `+poke` arm, and a new noun denoting the current state of Arvo is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types defined in the type core are not visible to the formal interface.
+The formal interface is a single gate that takes in the current time and a noun that encodes the input. This input, referred to as an _event_, is then put into action by the `+poke` arm, and a new noun denoting the current [state of Arvo](#the-state) is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types defined in the type core are not visible to the formal interface.
 
 ```hoon
     ::  Arvo formal interface
@@ -215,7 +215,7 @@ This core contains the most basic types utilized in Arvo. We discuss a number of
 
 ##### `+duct`
 
-The `Arvo` causal stack is called a `+duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
+The `Arvo` causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
 Here's a `duct` that was recently observed in the wild (I should redo this to make sure its up to date)
 
@@ -266,31 +266,43 @@ Note: this section seems out of date, there is no longer a `+card` in `arvo.hoon
 
 Cards are the vane-specific portion of a move. Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of cards: tasks, gifts, notes, and signs.
 
-When one vane is `%pass`ed a card in its `++task` (defined in zuse), Arvo activates the `++call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `++gift`. If the vane needs to request something of another vane, it `%pass`es it a `++note` card. When that other vane returns a result, Arvo activates the `++take` gate of the initial vane with one of the cards defined in its `++sign`.
+When one vane is `%pass`ed a card in its `task` (defined in zuse), Arvo activates the `+call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `gift`. If the vane needs to request something of another vane, it `%pass`es it a `note` card. When that other vane returns a result, Arvo activates the `+take` gate of the initial vane with one of the cards defined in its `sign`.
 
-In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a `++note`. (2) that same request as seen by the callee, a `++task`. (3) the response to that first request as seen by the callee, a `++gift`. (4) the response to the first request as seen by the caller, a `++sign`.
+In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a `note`. (2) that same request as seen by the callee, a `task`. (3) the response to that first request as seen by the callee, a `gift`. (4) the response to the first request as seen by the caller, a `sign`.
 
-When a `++task` card is passed to a vane, Arvo calls its `++call` gate, passing it both the card and its duct. This gate must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
+When a `task` `card` is `%pass`ed to a vane, Arvo calls its `+call` gate, passing it both the card and its duct. This gate must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
 
-This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `++task` or return as a `++gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
+This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
 ##### ovum
 
 A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is (always?) the default Unix `wire`, namely `//`.
 
-#### Section 3bE Arvo Core
+#### Arvo cores
 
-Need to ask wtf this is. It has no poke arm?
+`arvo.hoon` has four additional cores that encode the functionality of Arvo. The [larval core](#larval-stage-core), [structural interface core](#structural-interface-core), and [implementation core](#implementation-core) each have five arms, called `+come`, `+load`, `+peek`, `+poke`, and `+wish`. Of these five arms, only `+poke` affects the [Arvo state](#the-state), while the rest leave the state invariant. Thus `+poke` is the aforementioned transition function that sends Arvo from one state to the next.
 
-#### Implementation core
+A short summary of the purpose of each these arms are as follows:
 
-I think this is where Arvo lives most of the time? It talks about "external events", which I think means either things from Unix or vanes or both.
+ - `+poke` is the transition function that moves Arvo from one state to the next.
+ - `+come` is...
+ - `+peek` is...
+ - `+load` is...
+ - `+wish` is...
 
-#### Structural interface core
+##### Section 3bE Arvo Core
 
-The poke arm says something about "upgrade the kernel", maybe this is in use when... upgrading the kernel?
+This core defines helper functions that are called in the larval and adult cores. These helper functions are placed here for safety so that they do not have access to the entire state of Arvo, which is contained in the structural interface core. One reason this core is required is that the Arvo interface has only five arms and additional arms are required to perform everything the kernel needs to do in a clean manner, so they must be segregated from the other three cores that stick to the five-arm paradigm.
 
-#### Larval stage core
+##### Implementation core
+
+This core is where the real legwork of the Arvo kernel is performed during the adult stage. It does not communicate with Unix directly, rather it is called by the structural interface core.
+
+##### Structural interface core
+
+This core could be thought of as the primary "adult core" - the one that is in operation for the majority of its lifecycle and the one that contains the [Arvo state](#the-state). This core should be thought of as an interface - that is, the amount of work the code does here is minimal as its main purpose is to be the core that communicates with Unix, and Unix should not be able to access deeper functions stored in the implementation core and 3bE core on its own. Thus, arms in this core are there primarily to call arms in the implementation core and 3bE core.
+
+##### Larval stage core
 
 This core is in use only during the larval stage of Arvo, which is after the Arvo kernel has compiled itself but before it has "broken symmetry" by acquiring identity and entropy, the point at which the larval stage has concluded. We call this breaking symmetry because prior to this point, every Urbit is completely identical. The larval stage performs the following steps in order:
 
