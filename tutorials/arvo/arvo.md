@@ -240,6 +240,7 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 
 
 ##### `wire`
+
 Synonym for path, used in ducts.
 
 ##### `move`
@@ -331,6 +332,8 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
         vanes=(list [label=@tas =vane])                 ::  modules
     ==                                                  ::
 ```
+
+
 ## Vanes
 
 The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
@@ -376,4 +379,4 @@ Thus permanent identity is a crucial component of the ``immune system'' for the 
 
 What about smaller ships, such as moons or comets? There are so many possible comets that they may as well be infinite, and this is where the hierarchical nature of the network acts to our benefit. When a human wishes to be recognized as a human, they would be expected to use a planet. To anybody who believes they could potentially be the target of a denial of service attack, they can simply ignore traffic from comets across the board. If someone needs to register additional ships beyond their planet at some web service, they could use their planet to vouch for their moons/comets.
 
-### Crytography
+### Cryptography
