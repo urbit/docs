@@ -181,7 +181,7 @@ This section requires an understanding of Hoon of at least the level of Chapter 
 
 ### Overall structure
 
-`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a simple gate that implements the transition function. They are nested like so, where items lower on the list are contained within items higher on the list:
+`arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single gate that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
  + Types
  + Section 3bE Arvo Core
  + Implementation core
@@ -276,7 +276,7 @@ This overview has detailed how to pass a card to a particular vane. To see the c
 
 ##### ovum
 
-A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is (always?) the default Unix `wire`, namely `//`.
+A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is (always?) the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
 
 #### Arvo cores
 
@@ -286,13 +286,15 @@ A short summary of the purpose of each these arms are as follows:
 
  - `+poke` is the transition function that moves Arvo from one state to the next.
  - `+come` is...
- - `+peek` is...
+ - `+peek` is an arm used for inspecting things outside of the kernel.
  - `+load` is...
  - `+wish` is...
 
-##### Section 3bE Arvo Core
+ The [Section 3bE core](#section-3be-core) does not follow this pattern.
 
-This core defines helper functions that are called in the larval and adult cores. These helper functions are placed here for safety so that they do not have access to the entire state of Arvo, which is contained in the structural interface core. One reason this core is required is that the Arvo interface has only five arms and additional arms are required to perform everything the kernel needs to do in a clean manner, so they must be segregated from the other three cores that stick to the five-arm paradigm.
+##### Section 3bE core
+
+This core defines helper functions that are called in the larval and adult cores. These helper functions are placed here for safety so that they do not have access to the entire [state of Arvo](#the-state), which is contained in the structural interface core. One reason this core is required is that the Arvo interface has only five arms and additional arms are required to perform everything the kernel needs to do in a clean manner, so they must be segregated from the other three cores that stick to the five-arm paradigm.
 
 ##### Implementation core
 
@@ -329,60 +331,6 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
         vanes=(list [label=@tas =vane])                 ::  modules
     ==                                                  ::
 ```
-
-### +poke
-
-There are three `+poke` arms in `arvo.hoon`, one in the larval stage core, one in the structural interface core, and one in the implementation core, and they each perform slightly different roles. We focus here on the `+poke` arm in the implementation core, as that is the core being utilized during standard operation.
-
-```hoon
-++  poke                                                ::  external apply
-  |=  [now=@da ovo=ovum]
-  =.  eny  (shaz (cat 3 eny now))
-  ^-  [(list ovum) _+>.$]
-  ::
-  ::  These external events are actually effects on arvo proper.
-  ::  They can also be produced as the effects of other events.
-  ::  In either case, they fall through here to be handled
-  ::  after the fact in +feck.
-  ::
-  ?:  ?=(?(%veer %verb %wack %warn) -.q.ovo)
-    [[ovo ~] +>.$]
-  ::
-  ::  These external events (currently only %trim) are global
-  ::  notifications, spammed to every vane
-  ::
-  ?:  ?=(%trim -.q.ovo)
-    =>  .(ovo ;;((pair wire [%trim p=@ud]) ovo))
-    =^  zef  vanes
-      (~(spam (is our vil eny bud vanes) now) lac ovo)
-    ::  clear compiler caches if high-priority
-    ::
-    =?  vanes  =(0 p.q.ovo)
-      ~>  %slog.[0 leaf+"arvo: trim: clearing caches"]
-      (turn vanes |=([a=@tas =vane] [a vase.vane *worm]))
-    [zef +>.$]
-  ::
-  ::  Normal events are routed to a single vane
-  ::
-  =^  zef  vanes
-    (~(hurl (is our vil eny bud vanes) now) lac ovo)
-  [zef +>.$]
-
-```
-
-### +peek
-
-`+peek` is an arm used for inspecting things outside of the kernel.
-
-```hoon
-::
-++  peek                                                ::  external inspect
-  |=  {now/@da hap/path}
-  ^-  (unit (unit))
-  ?~  hap  [~ ~ hoon-version]
-  ((sloy ~(beck (is our vil eny bud vanes) now)) [151 %noun] hap)
-```
-
 ## Vanes
 
 The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
@@ -406,7 +354,6 @@ As of this writing, we have nine vanes, which each provide the following service
 ### Larval stage
 
 >Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
-
 
 
 ## Security
