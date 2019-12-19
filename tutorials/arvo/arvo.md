@@ -44,18 +44,6 @@ A description of how the Arvo kernel functions, including the basic arms and the
 ### [Vanes](#vanes)
 A short description of each Arvo kernel module, known as a vane.
 
-### [Boot sequence](#boot-sequence)
-An annotation of what is printed on the screen when you boot your ship for the first time, as well as subsequent boots.
-
-### [Security](#security)
-Arvo's security features, including cryptography and protection against Sybil attacks.
-
-### [Virtual machine](#virtual-machine)
-How the Nock runtime environment and virtual machine which Arvo lives is in implemented.
-
-### [The worker and the daemon](#the-worker-and-the-daemon)
-How Arvo is split into a worker and a daemon.
-
 # What is Arvo?
 
 Arvo is a [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) operating system purposefully built to create a new internet whereby users own and manage their own data. Despite being an operating system, Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the user experience of Arvo as being closer to that of a web browser for a more human internet. As such, Arvo is generally run inside a virtual machine, though in theory it could be run on bare metal.
@@ -125,7 +113,7 @@ complexity to use of a web browser.
 
 >The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the selfcompiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
 
-The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](#virtual-machine), but in practice event logs become too long over time to keep. Thus periodic snapshots of the state of Arvo are taken and the log up to that state is pruned.
+The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](@/docs/tutorials/vere/_index.md), but in practice event logs become too long over time to keep. Thus periodic snapshots of the state of Arvo are taken and the log up to that state is pruned.
 
 The beginning of the event log starting from the very first time a ship is
 booted up until the kernel is compiled and identity and entropy are created is a
@@ -181,7 +169,7 @@ Database theory studies in precise terms the possible properties of anything tha
 
  - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
 
- - Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. Arvo transactions cannot be considered _entirely_ sequential though, as the [worker and daemon](#the-worker-and-the-daemon) operate in parallel.
+ - Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. Arvo transactions cannot be considered _entirely_ sequential though, as the [worker and daemon](@/docs/tutorials/vere/_index.md) operate in parallel.
  
  - Durability: Completed transactions will survive permanently. This is one way in which Arvo greatly differs from other operating systems - there is no way to truly delete a file, rather you can just mark it as being deleted and have the file effectievly be ignored. This is due to the structure of our file system known as [Clay](@/docs/tutorials/arvo/clay.md), which is entirely version controlled. That is to say, every version of every file remains on your system forever.
  
@@ -464,27 +452,4 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information. 
-
-## Boot sequence
-Annotate boot sequence.
-
-## Security
-
-> A new stack, designed as a unit, learning from all the mistakes of 20th-century software and repeating none of them, should be simpler and more rigorous than what we use now. Otherwise, why bother?
-
-### Sybil attacks
-
-[https://en.wikipedia.org/wiki/Sybil_attack](Sybil attacks) are when a malicious actor creates a large number of identites on a network in order to gain a disproportionate influence on the network. This could be used to do things such as rig a voting scheme or perform a denial-of-service attack, which is where a node is spammed with spurious requests rendering it unable to perform its ordinary functions. Any distributed system needs protection against such an attack, and Urbit is no different.
-
-One common question one may have when first encountering Urbit is why there is a limited address space. Even more perplexing is the fact that the number of planets is less than the number of humans there are on Earth. We explain here why this choice is an effective preventative measure against Sybil attacks. 
-
-If a malicious actor is able to create an unlimited number of identities that appear to be legitimate people (i.e., planets), they can easily perform a Sybil attack. We prevent this by making planets scarce - there are fewer planets than there are humans, and acquiring one has some sort of cost associated with it. The expected gain of a Sybil attack would have to be very high to offset this cost.
-
-Once a Sybil attack is recognized the node under attack is now in possession of cryptographic evidence of the attack as all of the messages that the attack is composed of are signed by those planets. They can then proceed to block all traffic from these planets, and could prove to other users of the network that these planets are untrustworthy with the evidence acquired during the attack. Thus the malicious actor's resources are thus exhausted in the attack - they cannot then turn around and perform another one on the same node without acquiring more planets, and anybody who the attackee has shared their blacklist with will also be immune to attack.
-
-Furthermore, a reasonable scenario would be one in which a malicious actor possesses a star and is using that star to generate all of the planets. This would certainly be faster than trying to purchase thousands of planets from star holders individually. Thus when it becomes evident that all planets that are part of the attack originated from a certain star, it would be easy to simply blacklist every planet created by that star. Obviously that would also run the risk of blacklisting legitimate users that the malicious actor sold a planet to - that would have to be handled on a case by case basis, but one can imagine that future Urbit ID marketplaces will have a reputation system that should prevent this from happening in many circumstances.
-
-Thus permanent identity is a crucial component of the ``immune system'' for the network, and gossiping of blacklists is how immunity spreads through the network.
-
-What about smaller ships, such as moons or comets? There are so many possible comets that they may as well be infinite, and this is where the hierarchical nature of the network acts to our benefit. When a human wishes to be recognized as a human, they would be expected to use a planet. To anybody who believes they could potentially be the target of a denial of service attack, they can simply ignore traffic from comets across the board. If someone needs to register additional ships beyond their planet at some web service, they could use their planet to vouch for their moons/comets.
 
