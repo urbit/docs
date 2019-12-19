@@ -324,7 +324,10 @@ A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The
 A short summary of the purpose of each these arms are as follows:
 
  - `+poke` is the transition function that moves Arvo from one state to the
-   next. It is the most fundamental arm in the entire system.
+   next. It is the most fundamental arm in the entire system. It is a typed
+   transactional message that is delivered exactly once. This is sometimes said
+   to be impossible, but that is not the case for single-level stores engaged in
+   a permanent session, as is the case among Arvo ships.
  - `+peek` is an arm used for inspecting things outside of the kernel. It grants
    read-only access to `scry` Arvo's global referentially transparent namespace.
  - `+wish` is a function that takes in a core and then parses and compiles it
@@ -433,7 +436,7 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Ford`: handles resources and publishing.
 - `Gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
-- `Jael`: encryption and security (?)
+- `Jael`: storage for Azimuth information. 
 
 ## Boot sequence
 
