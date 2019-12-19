@@ -193,27 +193,14 @@ Database theory studies in precise terms the possible properties of anything tha
 
 Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
-### Event-driven
-
-Arvo 
-
-At a high level Arvo takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
-
-Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
-
 
 ### Non-preemptive
 
-
-### Interacting with Arvo
-
-Not sure we need this section
-
-#### Dojo
-
-You will first interact with your instance of Arvo with a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) known as the dojo. The dojo allows you to input commands to your ship as well as run Hoon code. You can find a comprehensive guide to using your ship in dojo in our guide on [using your ship](@/using/operations/using-your-ship.md)y.
-
-(picture of dojo)
+Most operating systems are preemptive, meaning that they regularly interrupt
+tasks being performed with the intention of resuming that task at a later time,
+whether or not there was any explicit need at that moment to interrupt.
+Arvo does not do this - tasks run until they are complete or are cancelled due
+to some heuristic, such as taking too long or because the user pressed Ctrl-C.
 
 ## The stack
 
@@ -267,6 +254,7 @@ This core contains the most basic types utilized in Arvo. We discuss a number of
 ++  duct  (list wire)                                   ::  causal history
 ```
 
+Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 The `Arvo` causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
 Here's a `duct` that was recently observed in the wild (I should redo this to make sure its up to date)
@@ -339,7 +327,7 @@ When a `task` `card` is `%pass`ed to a vane, Arvo calls its `+call` gate, passin
 
 This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
-##### ovum
+##### `ovum`
 
 This mold is used to represent both steps and actions.
 
@@ -478,11 +466,7 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Jael`: storage for Azimuth information. 
 
 ## Boot sequence
-
-### Larval stage
-
->Before we plug the newborn node into the network, we feed it a series of bootstrap or “larval” packets that prepare it for adult life as a packet transceiver on the public network. The larval sequence is private, solving the secret delivery problem, and can contain as much code as we like.
-
+Annotate boot sequence.
 
 ## Security
 
