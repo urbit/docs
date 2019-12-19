@@ -294,7 +294,7 @@ representing a cause.
 
 ##### `move`
 
-If ducts are a call stack, then how do we make calls and produce results? Arvo processes `moves` which are a combination of message data and metadata. There are two types of `move`s. A `%pass` move is analogous to a call:
+If ducts are a call stack, then how do we make calls and produce results? Arvo processes `move`s which are a combination of message data and metadata. There are two types of `move`s. A `%pass` move is analogous to a call:
 
 ```
 [duct %pass return-path=path vane-name=@tD data=card]
@@ -310,11 +310,14 @@ A `%give` `move` is analogous to a return:
 
 Arvo pops the top `wire` off the duct and sends the given card back to the caller.
 
-##### `card`
+##### `card`s and `curd`s
 
-Note: this section seems out of date, there is no longer a `+card` in `arvo.hoon`, and `move`s there consist of an `arvo` and a `duct`. An `arvo` is described to be an "Arvo card". hmm.
+`card`s are the vane-specific portion of a `move`, while `curd`s are typeless
+`card`s utilized at the level of the kernel. `card`s are not actually defined in
+`arvo.hoon`, rather they are defined in each vane, but they are closely
+connected to `curd`s so we speak of them in the same breath.
 
-Cards are the vane-specific portion of a move. Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of cards: tasks, gifts, notes, and signs.
+Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of `card`s: `task`s, `gift`s, `note`s, and `sign`s.
 
 When one vane is `%pass`ed a card in its `task` (defined in zuse), Arvo activates the `+call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `gift`. If the vane needs to request something of another vane, it `%pass`es it a `note` card. When that other vane returns a result, Arvo activates the `+take` gate of the initial vane with one of the cards defined in its `sign`.
 
