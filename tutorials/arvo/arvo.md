@@ -365,7 +365,7 @@ Once the larval stage has passed its functionality will never be used again.
 
 ### The state
 
-The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is actually structured, to inform our study of `+poke`. First, let's review the structure of the state:
+The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is structured.
 
 ```hoon
 ::  persistent arvo state
@@ -379,6 +379,42 @@ The Arvo transition function, called `+poke`,  takes the current state of Arvo a
         vanes=(list [label=@tas =vane])                 ::  modules
     ==                                                  ::
 ```
+
+```hoon
+=/  pit=vase  !>(..is)                                  ::
+```
+This `vase` is part of the state but does not get directly migrated when `+poke`
+is called. `!>(..is)` consists of the code in `arvo.hoon` written above this core contained in
+a `vase`. Thus this part of the state changes only when that code changes in an
+update.
+
+```hoon
+=/  vil=vile  (viol p.pit)                              ::  cached reflexives
+
+```
+This is a cache of specific types that are of fundamental importance to Arvo -
+namely `type`s, `duct`s, `path`s, and `vase`s. This is kept because it is
+unnecessarily wasteful to recompile these fundamental types on a regular basis.
+Again, this part of the state is never updated directly by `+poke`.
+
+```hoon
+=|  $:  lac=_&                                          ::  laconic bit
+        eny=@                                           ::  entropy
+        our=ship                                        ::  identity
+        bud=vase                                        ::  %zuse
+        vanes=(list [label=@tas =vane])                 ::  modules
+    ==
+```
+This is where the real state of the Arvo kernel is kept. `lac` detemines whether
+Arvo's output is verbose, which can be set using the `|verb` command in the
+dojo. `eny` is the current entropy. `our` is the ship, which is permanently
+frozen during the larval stage. `bud` is the standard library. Lastly, `vanes`
+is of course the list of vanes, which have their own internal states. As Hoon is
+homoiconic, code is data, so this is does secrely have everything the vanes are
+doing encoded within, including all user apps. 
+
+As you can see, the state of Arvo is quite simple. It's primary role is that of
+a traffic cop.
 
 
 ## Vanes
@@ -426,4 +462,3 @@ Thus permanent identity is a crucial component of the ``immune system'' for the 
 
 What about smaller ships, such as moons or comets? There are so many possible comets that they may as well be infinite, and this is where the hierarchical nature of the network acts to our benefit. When a human wishes to be recognized as a human, they would be expected to use a planet. To anybody who believes they could potentially be the target of a denial of service attack, they can simply ignore traffic from comets across the board. If someone needs to register additional ships beyond their planet at some web service, they could use their planet to vouch for their moons/comets.
 
-### Cryptography
