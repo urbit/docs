@@ -22,50 +22,39 @@ roughly proportional to the size of its code base.
 
 We include a number of quotes from the Urbit [white paper](https://media.urbit.org/whitepaper.pdf) where appropriate. The white paper is a good companion to this article, though it should be noted that some parts of it are now either out of date or not yet implemented.
 
-### Prerequisites
+## Prerequisites
 
 The conceptual level may mostly be understood without knowing Hoon, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). The technical level will require Chapter One for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md), though some of the content presented there is presented again here in greater detail.
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
-### Table of Contents
+## Table of Contents
 We present here a brief summary of each section.
 
-#### [What is Arvo?](#what-is-arvo)
+### [What is Arvo?](#what-is-arvo)
 The big picture of Arvo.
 
-#### [The stack](#the-stack)
+### [The stack](#the-stack)
 An overview of each layer of the Arvo stack and how they interact, from Unix to userspace.
 
-#### [The kernel](#the-kernel)
+### [The kernel](#the-kernel)
 
 A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
 
-#### [Vanes](#vanes)
+### [Vanes](#vanes)
 A short description of each Arvo kernel module, known as a vane.
 
-#### [File system](#file-system)
-Essential information about Clay, our file system vane.
-
-#### [Boot sequence](#boot-sequence)
+### [Boot sequence](#boot-sequence)
 An annotation of what is printed on the screen when you boot your ship for the first time, as well as subsequent boots.
 
-#### [Security](#security)
+### [Security](#security)
 Arvo's security features, including cryptography and protection against Sybil attacks.
 
-# Consider splitting this into a different page. Basically the above is "Arvo as if it were on bare metal", and the rest is "how Arvo gets turned into a mess of Unix events"
-
-#### [Virtual machine](#virtual-machine)
+### [Virtual machine](#virtual-machine)
 How the Nock runtime environment and virtual machine which Arvo lives is in implemented.
 
-#### [Jets](#jets)
-How Nock is made to run quickly.
-
-#### [The worker and the daemon](#the-worker-and-the-daemon)
+### [The worker and the daemon](#the-worker-and-the-daemon)
 How Arvo is split into a worker and a daemon.
-
-#### I/O
-How I/O is handled by Arvo.
 
 # What is Arvo?
 
@@ -74,11 +63,6 @@ Arvo is a [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitaskin
 > Urbit is a “browser for the server side”; it replaces multiple developer-hosted web services on multiple foreign servers, with multiple self-hosted applications on one personal server.
 
 Every architectural decision for Arvo (and indeed, the entire Urbit stack) was made with this singular goal in mind. Throughout this document, we connect the various concepts underlying Arvo with this overarching goal.
-
-
-
-
----the following 2 paragraphs was copied from the old doc, probably ought to be put somewhere else.
 
 At a high level Arvo takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
 
@@ -211,6 +195,13 @@ Today's operating systems utilize at least two types of memory: the hard disk an
 
 ### Event-driven
 
+Arvo 
+
+At a high level Arvo takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
+
+Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
+
+
 ### Non-preemptive
 
 
@@ -298,7 +289,8 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 
 ##### `wire`
 
-Synonym for path, used in ducts.
+Synonym for `path`, used in ducts. These should be thought of as a list of symbols
+representing a cause.
 
 ##### `move`
 
@@ -334,7 +326,9 @@ This overview has detailed how to pass a card to a particular vane. To see the c
 
 ##### ovum
 
-A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is (always?) the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
+This mold is used to represent both steps and actions.
+
+A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
 
 #### Arvo cores
 
@@ -349,6 +343,10 @@ A short summary of the purpose of each these arms are as follows:
    a permanent session, as is the case among Arvo ships.
  - `+peek` is an arm used for inspecting things outside of the kernel. It grants
    read-only access to `scry` Arvo's global referentially transparent namespace.
+   It takes in a `path` and returns a `unit (unit)`. If the product is `~`, the
+   path is unknown and its value cannot be produced synchronously. If its
+   product is `[~ ~]` its path is known to be unbound and can never become
+   bound. Otherwise the product is a `mark` and a noun.
  - `+wish` is a function that takes in a core and then parses and compiles it
    with the standard library, `zuse`. It is useful from the outside if you ever
    want to run code within. One particular way in which it is used is by the
