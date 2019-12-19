@@ -33,7 +33,7 @@ your development elsewhere, if you like, and make a symbolic link.
 + cd urbit
 + git fetch
 + git checkout <branch> # optional
-+ scripts/bootstrap
++ sh/bootstrap
 + cd ..
 + git clone https://github.com/urbit/arvo
 + cd arvo
@@ -66,9 +66,9 @@ If this describes your task, read this section.  If not, skip to the next sectio
   + rm -rf urbit
   + git clone https://github.com/<yourname>/urbit
   + cd urbit
-  + scripts/bootstrap
+  + sh/bootstrap
   + verify that the new submodule is present
-  + scripts/build
+  + sh/build
   + verify that the urbit executable is built and linked to the new library
 + submit a pull request from your copy of <libsquareroots> to the urbit copy
 + submit a pull request from your copy of urbit to the urbit copy
@@ -632,7 +632,7 @@ You've edited C code; now you need to compile it to build a new urbit executable
   + meson configure -Dbuildtype=debug build
 
     Note that debugoptimized builds run slower than release builds, and debug builds run slower yet.  Booting a debug builkd of urbit may take several minutes. [ N.B. compiler flags -O2 vs -O3 ]
-+ scripts/build
++ sh/build
 
 ## Compile the Hoon code into a pill
 
@@ -754,7 +754,7 @@ It would be convenient to fire up a second urbit in a terminal next to your fake
 Then you can run identical commands in each, in parallel, and confirm that they do the same thing.
 
 + edit ~/tlon/urbit/jets/e/secp.c (or whatever) to include `fprintf(stderr, "*** u3we_sign 2\n");` (or similar) in your jetted functions.  This will let us verify that the jets exist and are running.
-+ `cd ~/tlon/urbit ; scripts/build `
++ `cd ~/tlon/urbit ; sh/build `
 + `cp ~/tlon/arvo ~/tlon/arvo_nojet`
 + edit `~/tlon/arvo_nojet/sys/zuse_nojetting.hoon` to remove jetting
 + Because we can not run two instances of the same fake galaxy on the same machine (their ports would conflict), we need to pick a new galaxy name.  Galaxy names are not arbitrary. You may not name your galaxy "mygalaxy", "withjet", "withoutjet", or anything like that. Galaxy names are restricted to the range 0-255, converted into pronounceable syllables.  `zod` is just the pronunciation of '0' ( to see this, in a dojo, cast `~zod` to an untyped atom thusly: `` `@`~zod ``). Let's pick 1 as our new galaxy id.  Use dojo to convert this into a urbit name: `` `@p`1 `` yields `~nec`.
