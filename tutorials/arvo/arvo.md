@@ -123,7 +123,7 @@ The Arvo event log is a list of every action ever performed on your ship that le
 The beginning of the event log starting from the very first time a ship is
 booted up until the kernel is compiled and identity and entropy are created is a
 special portion of the Arvo lifecycle known as the _larval stage_. We describe
-the larval stage in more detail in the [larval stage](#larval-stage) section.
+the larval stage in more detail in the [larval stage](#larval-stage-core) section.
 
 More information on the structure of the Arvo event log and the Arvo state is given in the section on [the kernel](#the-kernel).
 
@@ -134,7 +134,15 @@ More information on the structure of the Arvo event log and the Arvo state is gi
 
 ### Over the air updates
 
-> Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
+> Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the
+> system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
+
+Typically updates to an operating system are given via a pre-compiled binary,
+which is why some updates will work on some systems but not on others where the
+environment may differ. This is not so on Arvo - because it is an
+[interpreter](#solid-state-interpreter), Arvo may update itself by receiving
+source code from your sponsor over [Ames](@/docs/tutorials/arvo/ames.md), our
+network.
 
 ### Solid state interpreter
 
@@ -142,7 +150,12 @@ More information on the structure of the Arvo event log and the Arvo state is gi
 
 We call Arvo a _solid state interpreter_. In this section we describe what is meant by this, and how this behavior derives from the fact that Arvo is an [ACID database](#acid-database) and a [single-level store](#single-level-store).
 
-In computer science, an _interpreter_ is a program that directly executes instructions written in some human-understandable programming or scripting language, rather than requiring the code to first be compiled into a machine language. Arvo is an interpreter, as you may utilize the dojo to issue commands written in Hoon directly to Arvo.
+In computer science, an _interpreter_ is a program that directly executes
+instructions written in some human-understandable programming or scripting
+language, rather than requiring the code to first be compiled into a machine
+language. Arvo is an interpreter, which is important for us since it allows us
+to perform derministic [over-the-air updates](#over-the-air-updates) by the
+direct transfer of raw source code.
 
 To understand what we mean by _solid state_ interpreter, consider the operation of a solid state hard drive when a computer shuts down or loses power. Data written to an SSD is permanent unless otherwise deleted - loss of power may leave some partially written data, but nothing is ever lost. Thus, the state of an SDD can be considered to be equivalent to the data that it contains. That is to say, you do not need to know anything about the system which is utilizing the SSD to know everything there is to know about the SSD. There is no notion of "rebooting" a SSD - it simply stores data, and when power is restored to it, it is in exactly the same state as it was when power was lost.
 
@@ -174,6 +187,8 @@ Database theory studies in precise terms the possible properties of anything tha
 Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
 ### Event-driven
+
+### Non-preemptive
 
 
 ### Interacting with Arvo
