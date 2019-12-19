@@ -263,6 +263,10 @@ This core contains the most basic types utilized in Arvo. We discuss a number of
 
 ##### `+duct`
 
+```hoon
+++  duct  (list wire)                                   ::  causal history
+```
+
 The `Arvo` causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
 Here's a `duct` that was recently observed in the wild (I should redo this to make sure its up to date)
@@ -289,10 +293,18 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 
 ##### `wire`
 
+```hoon
+++  wire  path                                          ::  event pretext
+```
+
 Synonym for `path`, used in ducts. These should be thought of as a list of symbols
 representing a cause.
 
 ##### `move`
+
+```hoon
+++  move  [p=duct q=arvo]                               ::  arvo move
+```
 
 If ducts are a call stack, then how do we make calls and produce results? Arvo processes `move`s which are a combination of message data and metadata. There are two types of `move`s. A `%pass` move is analogous to a call:
 
