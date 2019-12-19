@@ -339,13 +339,13 @@ A short summary of the purpose of each these arms are as follows:
  - `+poke` is the transition function that moves Arvo from one state to the
    next. It is the most fundamental arm in the entire system. It is a typed
    transactional message that is delivered exactly once. This is sometimes said
-   to be impossible, but that is not the case for single-level stores engaged in
+   to be impossible, and it is for standard operating systems, but that is not the case for single-level stores engaged in
    a permanent session, as is the case among Arvo ships.
  - `+peek` is an arm used for inspecting things outside of the kernel. It grants
    read-only access to `scry` Arvo's global referentially transparent namespace.
    It takes in a `path` and returns a `unit (unit)`. If the product is `~`, the
    path is unknown and its value cannot be produced synchronously. If its
-   product is `[~ ~]` its path is known to be unbound and can never become
+   product is `[~ ~]` the `path` is known to be unbound and can never become
    bound. Otherwise the product is a `mark` and a noun.
  - `+wish` is a function that takes in a core and then parses and compiles it
    with the standard library, `zuse`. It is useful from the outside if you ever
@@ -385,7 +385,14 @@ Once the larval stage has passed its functionality will never be used again.
 
 ### The state
 
-The Arvo transition function, called `+poke`,  takes the current state of Arvo and an event and outputs the new state of Arvo and the response to the event, if any. Here we explain how the state of Arvo is structured.
+As we follow functional programming paradigms, the state of Arvo is considered
+to be the entire Arvo kernel core currently in operation (whether it be the larval
+stage or adult stage). Thus when `+poke` is performed, a new core with the
+updated state it produced, rather than modifying the existing core as would be
+expected to happen in an imperative setting. 
+
+Thus besides the battery of the Arvo core, we have the payload which is as
+follows.
 
 ```hoon
 ::  persistent arvo state
