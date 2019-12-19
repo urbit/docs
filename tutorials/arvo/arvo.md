@@ -14,8 +14,12 @@ In this section we give a summary of the content and cover prerequisites for und
 
 This article is intended to provide a thorough summary of all of the most important aspects of the Arvo kernel. We work on two levels - a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit.
 
-Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30k lines of code, while the Arvo kernel is just 1k lines of code.
-)
+Unlike any other popular operating system, it is possible for a single human to
+understand every aspect of Arvo due to its compact size. The entire Urbit stack
+is around 30k lines of code, while the Arvo kernel is just 1k lines of code. We
+strive for a small code base because the difficulty in administering a system is
+roughly proportional to the size of its code base.
+
 A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
 
 #### [Vanes](#vanes)
@@ -193,6 +197,8 @@ Today's operating systems utilize at least two types of memory: the hard disk an
 
 ### Interacting with Arvo
 
+Not sure we need this section
+
 #### Dojo
 
 You will first interact with your instance of Arvo with a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) known as the dojo. The dojo allows you to input commands to your ship as well as run Hoon code. You can find a comprehensive guide to using your ship in dojo in our guide on [using your ship](@/using/operations/using-your-ship.md)y.
@@ -317,12 +323,21 @@ A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The
 
 A short summary of the purpose of each these arms are as follows:
 
- - `+poke` is the transition function that moves Arvo from one state to the next.
- - `+come` is...
- - `+peek` is an arm used for inspecting things outside of the kernel.
- - `+load` is...
- - `+wish` is...
-
+ - `+poke` is the transition function that moves Arvo from one state to the
+   next. It is the most fundamental arm in the entire system.
+ - `+peek` is an arm used for inspecting things outside of the kernel. It grants
+   read-only access to `scry` Arvo's global referentially transparent namespace.
+ - `+wish` is a function that takes in a core and then parses and compiles it
+   with the standard library, `zuse`. It is useful from the outside if you ever
+   want to run code within. One particular way in which it is used is by the
+   runtime to read out the version of `zuse` so that it knows if it is
+   compatible with this particular version of the kernel.
+ - `+load` is used when upgrading the kernel. It is only ever called by Arvo
+   itself, never by the runtime. If upgrading to a kernel where types are
+   compatible, `+load` is used, otherwise `+come` is used.
+ - `+come` is used when the new kernel has incompatible types, but ultimately
+ reduces to a series of `+load` calls.
+ 
  The [Section 3bE core](#section-3be-core) does not follow this pattern.
 
 ##### Section 3bE core
