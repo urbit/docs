@@ -20,6 +20,25 @@ is around 30k lines of code, while the Arvo kernel is just 1k lines of code. We
 strive for a small code base because the difficulty in administering a system is
 roughly proportional to the size of its code base.
 
+We include a number of quotes from the Urbit [white paper](https://media.urbit.org/whitepaper.pdf) where appropriate. The white paper is a good companion to this article, though it should be noted that some parts of it are now either out of date or not yet implemented.
+
+### Prerequisites
+
+The conceptual level may mostly be understood without knowing Hoon, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). The technical level will require Chapter One for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md), though some of the content presented there is presented again here in greater detail.
+
+We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
+
+### Table of Contents
+We present here a brief summary of each section.
+
+#### [What is Arvo?](#what-is-arvo)
+The big picture of Arvo.
+
+#### [The stack](#the-stack)
+An overview of each layer of the Arvo stack and how they interact, from Unix to userspace.
+
+#### [The kernel](#the-kernel)
+
 A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
 
 #### [Vanes](#vanes)
