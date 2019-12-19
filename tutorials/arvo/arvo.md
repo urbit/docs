@@ -15,25 +15,7 @@ In this section we give a summary of the content and cover prerequisites for und
 This article is intended to provide a thorough summary of all of the most important aspects of the Arvo kernel. We work on two levels - a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit.
 
 Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30k lines of code, while the Arvo kernel is just 1k lines of code.
-
-We include a number of quotes from the Urbit [white paper](https://media.urbit.org/whitepaper.pdf) where appropriate. The white paper is a good companion to this article, though it should be noted that some parts of it are now either out of date or not yet implemented.
-
-### Prerequisites
-
-The conceptual level may mostly be understood without knowing Hoon, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). The technical level will require Chapter One for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md), though some of the content presented there is presented again here in greater detail.
-
-We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
-
-### Table of Contents
-We present here a brief summary of each section.
-
-#### [What is Arvo?](#what-is-arvo)
-The big picture of Arvo.
-
-#### [The stack](#the-stack)
-An overview of each layer of the Arvo stack and how they interact, from Unix to userspace.
-
-#### [The kernel](#the-kernel)
+)
 A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
 
 #### [Vanes](#vanes)
@@ -98,7 +80,39 @@ In practice, _T_ is implemented by the `+poke` arm of the Arvo kernel, which is 
 L: History -> State.
 ```
 
-Arvo was made to be purely functional in order to eliminate the need for the user to have to manage their own server. Being deterministic enables many incredible things that are out of reach of any other operating system. For instance, we are able to do [over the air](#over-the-air-updates) (OTA) updates, which allows bug fixes to be implemented across the network without needing to worry whether it won't work on someone's ship.
+Which perspective is more fruitful depends on the problem being considered.
+
+### Deterministic
+
+We consider Arvo to be deterministic at a high level. By that we mean that it is
+stacked on top of a frozen instruction set known as Nock. Frozen instruction
+sets are a new idea for an operating system, but not for computing in general.
+For instance, the CPU instruction sets such as
+[x86-64](https://en.wikipedia.org/wiki/X86-64v) are frozen at the level of the
+chip. A given operating system may be adapted to run on more than one CPU
+instruction set, we merely freeze the instruction set at a higher level in order
+to enable deterministic computation.
+
+Arvo handles nondeterminism in an interesting way. Deciding whether or not to
+halt a computation that could potentially last forever becomes a heuristic
+decision that is akin to dropping a packet. Thus it behooves one to think of
+Arvo as being a packet transceiver rather than a full fledged computer - events
+are never guaranteed to complete.
+
+Because Arvo is run on a VM, nondeterministic information such as the stack
+trace of an infinite loop that was entered into may be obtained. This is
+possible because while Arvo may be unable to obtain that information, the
+interpreter beneath does and can inject that information back into the event log.
+
+Being deterministic at a high level enables many
+things that are out of reach of any other operating system. For
+instance, we are able to do [over the air](#over-the-air-updates) (OTA) updates,
+which allows bug fixes to be implemented across the network without needing to
+worry whether it won't work on someone's ship, since Arvo is an
+[interpreter](#solid-state-intrepeter) that can accept source code to
+update itself instead of requiring a pre-compiled binary. This essential
+property is why Urbit is able to act as a personal server while only having the
+complexity to use of a web browser.
 
 ### Event log
 
@@ -106,7 +120,10 @@ Arvo was made to be purely functional in order to eliminate the need for the use
 
 The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](#virtual-machine), but in practice event logs become too long over time to keep. Thus periodic snapshots of the state of Arvo are taken and the log up to that state is pruned.
 
-The beginning of the event log starting from the very first time a ship is booted up until the kernel is compiled and identity and entropy are created is a special portion of the Arvo lifecycle known as the _larval stage_. We describe the larval stage in more detail in the [boot sequence](#boot-sequence) section.
+The beginning of the event log starting from the very first time a ship is
+booted up until the kernel is compiled and identity and entropy are created is a
+special portion of the Arvo lifecycle known as the _larval stage_. We describe
+the larval stage in more detail in the [larval stage](#larval-stage) section.
 
 More information on the structure of the Arvo event log and the Arvo state is given in the section on [the kernel](#the-kernel).
 
