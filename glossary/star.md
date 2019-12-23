@@ -14,4 +14,4 @@ A **star** is can be to one of two related things:
 
 - A [ship](../ship) on the Arvo network whose identity is a star in the former definition. In this sense, stars act as infrastructure for the [Arvo](../arvo) network, providing planets with [Ames](../ames)-related services, such as peer-to-peer routing and distributing [over-the-air software updates](../ota-updates). Stars rely on galaxies for these services in the way that planets rely on stars.
 
-Stars have addresses that are representable by 16 bits. This means that there are 65,535 possible stars, and each of these stars is able to issue 65,535 planets. Stars have two-syllable names like `~taglux` or `~hallet`.
+Stars have addresses that are representable by 16 bits. This means that there are 65,280 possible stars, and each of these stars is able to issue 65,535 planets. Stars have two-syllable names like `~taglux` or `~hallet`.
