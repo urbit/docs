@@ -2,6 +2,7 @@
 title = "Technical overview"
 weight = 1
 template = "doc.html"
+aliases = ["/understanding-urbit/technical-overview"]
 +++
 
 Urbit is a clean-slate software stack designed to implement an encrypted P2P
