@@ -6,7 +6,7 @@ template = "doc.html"
 category = "arvo"
 +++
 
-A **galaxy** is can be one of two related things:
+A **galaxy** can be one of two related things:
 
 - A kind of [Azimuth](../azimuth) Urbit identity that sits at the top of the identity hierarchy. Galaxies, in this sense, have the power to issue [stars](../star), meaning that all other kinds of identities ultimate derive from galaxies. Galaxies also form a [Senate](../senate), the governing body of Azimuth. The Senate has the power to update the logic of Azimuth by [majority vote](../voting).
 
