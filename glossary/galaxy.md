@@ -12,4 +12,4 @@ A **galaxy** can be one of two related things:
 
 - A [ship](../ship) on the Arvo network whose identity is a planet in the former definition. In this sense, galaxies act as infrastructure for the [Arvo](../arvo) network, providing [Ames](../ames)-related services, such as peer-to-peer routing and distributing [over-the-air software updates](../ota-updates). Stars rely on galaxies for these services in the way that planets rely on stars.
 
-Galaxies are 8-bit, representable by numbers 0 to 255. This means that there are 256 possible galaxies; each of these galaxies is able to issue 256 [stars](../star). Galaxies have one-syllable names like `~mul` or `~lux`.
+Galaxies are 8-bit, representable by numbers 0 to 255. This means that there are 256 possible galaxies; each of these galaxies is able to issue 255 [stars](../star). Galaxies have one-syllable names like `~mul` or `~lux`.
