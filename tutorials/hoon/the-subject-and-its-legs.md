@@ -193,7 +193,7 @@ You can think of this sort of lark series -- e.g., `+>-<` -- as indicating a bin
    / \
   6   7
 ```
-2. Use a lark expression to obtain the value 9 in the following noun: `[[5 6] 7 [[8 9 10] 3] 2] 1]`.
+2. Use a lark expression to obtain the value 8 in the following noun: `[[5 6] 7 [[8 9 10] 3] 2] 1]`.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 
