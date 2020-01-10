@@ -8,37 +8,27 @@ Arvo, also called Urbit OS, is our operating system.
 
 # Introduction
 
-In this section we give a summary of the content and cover prerequisites for understanding the material presented here.
-
 ## Overview
 
-This article is intended to provide a thorough summary of all of the most important aspects of the Arvo kernel. We work on two levels - a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit.
+This article is intended to provide a thorough summary of all of the most important aspects of the Arvo kernel. We work on two levels: a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit. The document begins with conceptual material, and technical material begins with ["The stack"](#the-stack) section.
 
-Unlike any other popular operating system, it is possible for a single human to
-understand every aspect of Arvo due to its compact size. The entire Urbit stack
-is around 30k lines of code, while the Arvo kernel is just 1k lines of code. We
-strive for a small code base because the difficulty in administering a system is
-roughly proportional to the size of its code base.
-
-We include a number of quotes from the Urbit [white paper](https://media.urbit.org/whitepaper.pdf) where appropriate. The white paper is a good companion to this article, though it should be noted that some parts of it are now either out of date or not yet implemented.
+The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good companion to this document, but it should be noted that some parts of it are now either out of date or not yet implemented.
 
 ## Prerequisites
 
-The conceptual level may mostly be understood without knowing Hoon, but some of it will require understanding at the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md). The technical level will require Chapter One for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md), though some of the content presented there is presented again here in greater detail.
+The conceptual level can be understood without knowing Hoon, the Urbit programming language. The technical level will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md).
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
 ## Table of Contents
-We present here a brief summary of each section.
 
 ### [What is Arvo?](#what-is-arvo)
 The big picture of Arvo.
 
 ### [The stack](#the-stack)
-An overview of each layer of the Arvo stack and how they interact, from Unix to userspace.
+An overview of each layer of the Arvo stack and how they interact, from Unix to userspace. The technical part of the document begins here.
 
 ### [The kernel](#the-kernel)
-
 A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
 
 ### [Vanes](#vanes)
@@ -46,23 +36,26 @@ A short description of each Arvo kernel module, known as a vane.
 
 # What is Arvo?
 
-Arvo is a [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) operating system purposefully built to create a new internet whereby users own and manage their own data. Despite being an operating system, Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the user experience of Arvo as being closer to that of a web browser for a more human internet. As such, Arvo is generally run inside a virtual machine, though in theory it could be run on bare metal.
+Arvo is a
+[non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking)
+operating system purposefully built to create a new, peer-to-peer internet
+whereby users own and manage their own data. Despite being an operating system,
+Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the
+user experience of Arvo as being closer to that of a web browser despite being a
+fully fledged OS. As such, Arvo is generally run inside a virtual machine, though in theory it could be run on bare metal.
 
-> Urbit is a “browser for the server side”; it replaces multiple developer-hosted web services on multiple foreign servers, with multiple self-hosted applications on one personal server.
-
-Every architectural decision for Arvo (and indeed, the entire Urbit stack) was made with this singular goal in mind. Throughout this document, we connect the various concepts underlying Arvo with this overarching goal.
-
-At a high level Arvo takes a mess of Unix I/O events and turns them into something clean and structured for the programmer.
+Urbit is a “browser for the server side”; it replaces multiple developer-hosted web services on multiple foreign servers, with multiple self-hosted applications on one personal server. Every architectural decision for Arvo (and indeed, the entire Urbit stack) was made with this singular goal in mind. Throughout this document, we connect the various concepts underlying Arvo with this overarching goal.
 
 Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
+Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30,000 lines of code, while the Arvo kernel is only about 1,000 lines of code. We strive for a small codebase because the difficulty in administering a system is roughly proportional to the size of its code base.
 
 ## An operating function
 
-Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevence to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
+Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevance to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
 
 This means two things: one is that the there is a notion of _state_ for the operating system, and that the current state is a pure function of the [event log](#event-log), which is a chronological record of every action the operating system has ever performed. A _pure function_ is a function that always produces the same output given the same input. Another way to put this is to say that Arvo is _deterministic_. Other operating systems are not deterministic for a number of reasons, but one simple reasons is because they allow programs to alter global variables that then affect the operation of other programs.
- 
+
 In mathematical terms, one may think of Arvo as being given by a transition function _T_:
 
 ```
@@ -77,7 +70,7 @@ L: History -> State.
 
 Which perspective is more fruitful depends on the problem being considered.
 
-### Deterministic
+### Determinism
 
 We consider Arvo to be deterministic at a high level. By that we mean that it is
 stacked on top of a frozen instruction set known as Nock. Frozen instruction
@@ -101,17 +94,18 @@ interpreter beneath does and can inject that information back into the event log
 
 Being deterministic at a high level enables many
 things that are out of reach of any other operating system. For
-instance, we are able to do [over the air](#over-the-air-updates) (OTA) updates,
-which allows bug fixes to be implemented across the network without needing to
-worry whether it won't work on someone's ship, since Arvo is an
+instance, we are able to do [over-the-air](#over-the-air-updates) (OTA) updates,
+which allows software updates to be implemented across the network without
+needing to worry whether it won't work on someone's ship, since Arvo is an
 [interpreter](#solid-state-intrepeter) that can accept source code to
 update itself instead of requiring a pre-compiled binary. This essential
 property is why Urbit is able to act as a personal server while only having the
-complexity to use of a web browser.
+the user
+experience is akin to that of a web browser.
 
 ### Event log
 
->The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the selfcompiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
+The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the self-compiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
 
 The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](@/docs/tutorials/vere/_index.md), but in practice event logs become too long over time to keep. Thus periodic snapshots of the state of Arvo are taken and the log up to that state is pruned.
 
@@ -122,17 +116,12 @@ the larval stage in more detail in the [larval stage](#larval-stage-core) sectio
 
 More information on the structure of the Arvo event log and the Arvo state is given in the section on [the kernel](#the-kernel).
 
->User-level code is virtualized within a Nock interpreter written in Hoon (with zero virtualization overhead, thanks to a jet). Arvo defines a typed, global, referentially transparent namespace with the Ames network identity (page 34) at the root of the path. User-level code has an extended Nock operator that dereferences this namespace and blocks until results are available. So the Hoon programmer can use any data in the Urbit universe as a typed constant.
 
-> Most Urbit data is in Clay, a distributed revision-control vane. Clay is like a typed Git. If we know the format of an object, we can do a much better job of diffing and patching files. Clay is also good at subscribing to updates and maintaining one-way or two-way automatic synchronization.
+### Over-the-air updates
 
+Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
 
-### Over the air updates
-
-> Nock is frozen, but Arvo can hotpatch any other semantics at any layer in the
-> system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
-
-Typically updates to an operating system are given via a pre-compiled binary,
+Typically, updates to an operating system are given via a pre-compiled binary,
 which is why some updates will work on some systems but not on others where the
 environment may differ. This is not so on Arvo - because it is an
 [interpreter](#solid-state-interpreter), Arvo may update itself by receiving
@@ -141,9 +130,8 @@ network.
 
 ### Solid state interpreter
 
->We call an execution platform with these three properties (universal persistence, source-independent packet I/O, and high-level determinism) a solid-state interpreter (SSI). A solid-state interpreter is a stateful packet transceiver. Imagine it as a chip. Plug this chip into power and network; packets go in and out, sometimes changing its state. The chip never loses data and has no concept of a reboot; every packet is an ACID transaction.
-
-We call Arvo a _solid state interpreter_. In this section we describe what is meant by this, and how this behavior derives from the fact that Arvo is an [ACID database](#acid-database) and a [single-level store](#single-level-store).
+Arvo is a _solid state interpreter_. In this section we describe what is meant
+by this new term, and how this behavior derives from the fact that Arvo is an [ACID database](#acid-database) and a [single-level store](#single-level-store).
 
 In computer science, an _interpreter_ is a program that directly executes
 instructions written in some human-understandable programming or scripting
@@ -159,6 +147,7 @@ Contrast this with other popular operating systems, such as Windows, Mac, or Lin
 How Arvo handles loss of power is closer to that of an SSD. Since it is an [ACID database](#acid-database) and a [single-level store](#single-level-store), a sudden loss of power have no effect on the state of the operating system. When you boot your ship back up it will be exactly as it was before the failure. Your information can never be lost, and because it was designed from the ground up to behave in this fashion, it does not suffer significant slowdown by persisting all data in this manner as would be the case if your typical operating system utilized its hard disk as RAM.
 
 #### ACID Database
+
 In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to act as databases.
 
 In order to dismantle the client-server model and build a peer-to-peer internet, we need the robustness of modern database servers in the hands of the users. Thus the Arvo operating system itself must have all of the properties of a reliable database.
@@ -170,17 +159,17 @@ Database theory studies in precise terms the possible properties of anything tha
  - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
 
  - Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. Arvo transactions cannot be considered _entirely_ sequential though, as the [worker and daemon](@/docs/tutorials/vere/_index.md) operate in parallel.
- 
+
  - Durability: Completed transactions will survive permanently. This is one way in which Arvo greatly differs from other operating systems - there is no way to truly delete a file, rather you can just mark it as being deleted and have the file effectievly be ignored. This is due to the structure of our file system known as [Clay](@/docs/tutorials/arvo/clay.md), which is entirely version controlled. That is to say, every version of every file remains on your system forever.
- 
+
  Durability is a necessary consequence of Arvo's [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), which means that you can always replace an expression by what it evaluates to without changing its behavior. For example, you can always replace a file referred to in a program by the contents of that file, because you know that file is never going to change (or rather, if it does, the old version will still be accessible).
 
 #### Single-level store
 
 >A kernel which presents the abstraction of a single layer of permanent state is also called a single-level store. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
 
-Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
+Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
 ### Non-preemptive
 
@@ -194,7 +183,9 @@ to some heuristic, such as taking too long or because the user pressed Ctrl-C.
 
 <img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
 
-Ultimately, everything that happens in Arvo is reduced to Unix events. Here we depict the stack from userspace apps Dojo and Landscape down to Unix. (I need to change this, Landscape is not actuall a Gall app)
+Ultimately, everything that happens in Arvo is reduced to Unix events. Here we depict the stack from userspace apps Dojo and Landscape down to Unix.
+
+<!-- I need to change this, Landscape is not actually a Gall app) -->
 
 ## The kernel
 
@@ -211,9 +202,9 @@ This section requires an understanding of Hoon of at least the level of Chapter 
  + Structural interface core, or adult core
  + Larval stage core
  + Formal interface
- 
+
 See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores/#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
- 
+
 #### Formal interface
 
 The formal interface is a single gate that takes in the current time and a noun that encodes the input. This input, referred to as an _event_, is then put into action by the `+poke` arm, and a new noun denoting the current [state of Arvo](#the-state) is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types defined in the type core are not visible to the formal interface.
@@ -231,7 +222,7 @@ The formal interface is a single gate that takes in the current time and a noun 
     ~>  %slog.[0 leaf+"arvo-event"]
     .(+> +:(poke now ovo))
 ```
- 
+
 #### Types
 
 This core contains the most basic types utilized in Arvo. We discuss a number of them here.
@@ -348,7 +339,7 @@ A short summary of the purpose of each these arms are as follows:
    compatible, `+load` is used, otherwise `+come` is used.
  - `+come` is used when the new kernel has incompatible types, but ultimately
  reduces to a series of `+load` calls.
- 
+
  The [Section 3bE core](#section-3be-core) does not follow this pattern.
 
 ##### Section 3bE core
@@ -371,7 +362,7 @@ This core is in use only during the larval stage of Arvo, which is after the Arv
  + Entropy is added
  + Identity is added
  + Metamorph into the next stage of Arvo
- 
+
 Once the larval stage has passed its functionality will never be used again.
 
 ### The state
@@ -380,7 +371,7 @@ As we follow functional programming paradigms, the state of Arvo is considered
 to be the entire Arvo kernel core currently in operation (whether it be the larval
 stage or adult stage). Thus when `+poke` is performed, a new core with the
 updated state it produced, rather than modifying the existing core as would be
-expected to happen in an imperative setting. 
+expected to happen in an imperative setting.
 
 Thus besides the battery of the Arvo core, we have the payload which is as
 follows.
@@ -429,7 +420,7 @@ dojo. `eny` is the current entropy. `our` is the ship, which is permanently
 frozen during the larval stage. `bud` is the standard library. Lastly, `vanes`
 is of course the list of vanes, which have their own internal states. As Hoon is
 homoiconic, code is data, so this is does secrely have everything the vanes are
-doing encoded within, including all user apps. 
+doing encoded within, including all user apps.
 
 As you can see, the state of Arvo is quite simple. It's primary role is that of
 a traffic cop.
@@ -451,5 +442,4 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Ford`: handles resources and publishing.
 - `Gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
-- `Jael`: storage for Azimuth information. 
-
+- `Jael`: storage for Azimuth information.
