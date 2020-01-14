@@ -234,7 +234,7 @@ every step in the path the request takes onto the chain until we get to the
 terminal cause of the computation. Then we use this causal stack to route
 results back to the caller.
 
-The `Arvo` causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
+The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
 Here's a `duct` that was recently observed in the wild: 
 
@@ -252,7 +252,13 @@ Here's a `duct` that was recently observed in the wild:
 
 This is the duct the timer vane, Behn, receives when the "timer" sample app asks the timer vane to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
 
-Behn saves this duct, so that when the specified time arrives and Unix sends a wakeup event to the timer vane, it can produce the response on the same duct. This response is routed to the place we popped off the top of the duct, i.e. the time app. This app produces the text "ding", which falls down to the shell, which drops it through to the terminal. Terminal drops this down to Dill, which converts it into an effect that Unix will recognize as a request to print "ding" to the screen. When dill produces this, the last path in the duct has an
+Behn saves this duct, so that when the specified time arrives and Unix sends a
+wakeup event to the timer vane, it can produce the response on the same duct.
+This response is routed to the place we popped off the top of the duct, i.e. the
+time app. This app returns a `@d` which denotes the current time, which falls down to the shell,
+which drops it through to the terminal. Terminal drops this down to Dill, which
+converts it into an effect that Unix will recognize as a request to print the
+current time to the screen. When Dill produces this, the last path in the duct has an
 initial element of the empty span, so this is routed to Unix, which applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a duct zero, one, or many times. You can save ducts for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
@@ -516,7 +522,7 @@ with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
 this case, Unix events are an "original cause" and thus represented by an empty
 string.
 
-
+Next is the `%unix` mark, informing us that the type of the `move` is `%unix`.
 
 ```
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
