@@ -20,16 +20,34 @@ The conceptual level can be understood without knowing Hoon, the Urbit programmi
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
+
 # Table of Contents
+- [What is Arvo?](#what-is-arvo-)
+  * [An operating function](#an-operating-function)
+    + [Determinism](#determinism)
+    + [Event log](#event-log)
+  * [Solid state interpreter](#solid-state-interpreter)
+    + [Over-the-air updates](#over-the-air-updates)
+    + [ACID Database](#acid-database)
+    + [Single-level store](#single-level-store)
+    + [Non-preemptive](#non-preemptive)
+- [The kernel](#the-kernel)
+  * [Overall structure](#overall-structure)
+    + [Formal interface](#formal-interface)
+    + [Types](#types)
+      - [`+duct`](#--duct-)
+      - [`wire`](#-wire-)
+      - [`move`](#-move-)
+      - [`card`s and `curd`s](#-card-s-and--curd-s)
+      - [`ovum`](#-ovum-)
+    + [Arvo cores](#arvo-cores)
+      - [Section 3bE core](#section-3be-core)
+      - [Implementation core](#implementation-core)
+      - [Structural interface core](#structural-interface-core)
+      - [Larval stage core](#larval-stage-core)
+  * [The state](#the-state)
+  * [Vanes](#vanes)
 
-### [What is Arvo?](#what-is-arvo)
-The big picture of Arvo described at a conceptual level.
-
-#### [An operating function](#an-operating-function)
-
-
-### [The kernel](#the-kernel)
-The nuts and bolts of the Arvo kernel.
 
 # What is Arvo?
 
@@ -186,13 +204,13 @@ Arvo does not do this - tasks run until they are complete or are cancelled due
 to some heuristic, such as taking too long or because the user pressed Ctrl-C.
 
 
-## The kernel
+# The kernel
 
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
 This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md).
 
-### Overall structure
+## Overall structure
 
 `arvo.hoon` contains five top level cores as well as a "formal interface" consisting of a single gate that implements the transition function. They are nested with the `=<` and `=>` runes like so, where items lower on the list are contained within items higher on the list:
  + Types
@@ -204,7 +222,7 @@ This section requires an understanding of Hoon of at least the level of Chapter 
 
 See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores/#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
 
-#### Formal interface
+### Formal interface
 
 The formal interface is a single gate that takes in the current time and a noun that encodes the input. This input, referred to as an _event_, is then put into action by the `+poke` arm, and a new noun denoting the current [state of Arvo](#the-state) is returned. In reality, you cannot feed the gate just any noun - it will end up being an `ovum` described below - but as this is the outermost interface of the kernel the types defined in the type core are not visible to the formal interface.
 
@@ -222,11 +240,11 @@ The formal interface is a single gate that takes in the current time and a noun 
     .(+> +:(poke now ovo))
 ```
 
-#### Types
+### Types
 
 This core contains the most basic types utilized in Arvo. We discuss a number of them here.
 
-##### `+duct`
+#### `+duct`
 
 ```hoon
 ++  duct  (list wire)                                   ::  causal history
@@ -270,7 +288,7 @@ initial element of the empty span, so this is routed to Unix, which applies the 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a duct zero, one, or many times. You can save ducts for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
 
 
-##### `wire`
+#### `wire`
 
 ```hoon
 ++  wire  path                                          ::  event pretext
@@ -279,7 +297,7 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 Synonym for `path`, used in ducts. These should be thought of as a list of symbols
 representing a cause.
 
-##### `move`
+#### `move`
 
 ```hoon
 ++  move  [p=duct q=arvo]                               ::  arvo move
@@ -308,7 +326,7 @@ Arvo pops the top `wire` off the duct and sends the given card back to the calle
 Lastly, a `%unix` move is how Arvo represents communication from Unix, such as a
 network request or terminal input.
 
-##### `card`s and `curd`s
+#### `card`s and `curd`s
 
 `card`s are the vane-specific portion of a `move`, while `curd`s are typeless
 `card`s utilized at the level of the kernel. `card`s are not actually defined in
@@ -335,13 +353,13 @@ to `%give`ing a `%sign` is summarized in the following diagram:
 
 This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
-##### `ovum`
+#### `ovum`
 
 This mold is used to represent both steps and actions.
 
 A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
 
-#### Arvo cores
+### Arvo cores
 
 `arvo.hoon` has four additional cores that encode the functionality of Arvo. The [larval core](#larval-stage-core), [structural interface core](#structural-interface-core), and [implementation core](#implementation-core) each have five arms, called `+come`, `+load`, `+peek`, `+poke`, and `+wish`. Of these five arms, only `+poke` affects the [Arvo state](#the-state), while the rest leave the state invariant. Thus `+poke` is the aforementioned transition function that sends Arvo from one state to the next.
 
@@ -371,19 +389,19 @@ A short summary of the purpose of each these arms are as follows:
 
  The [Section 3bE core](#section-3be-core) does not follow this pattern.
 
-##### Section 3bE core
+#### Section 3bE core
 
 This core defines helper functions that are called in the larval and adult cores. These helper functions are placed here for safety so that they do not have access to the entire [state of Arvo](#the-state), which is contained in the structural interface core. One reason this core is required is that the Arvo interface has only five arms and additional arms are required to perform everything the kernel needs to do in a clean manner, so they must be segregated from the other three cores that stick to the five-arm paradigm.
 
-##### Implementation core
+#### Implementation core
 
 This core is where the real legwork of the Arvo kernel is performed during the adult stage. It does not communicate with Unix directly, rather it is called by the structural interface core.
 
-##### Structural interface core
+#### Structural interface core
 
 This core could be thought of as the primary "adult core" - the one that is in operation for the majority of its lifecycle and the one that contains the [Arvo state](#the-state). This core should be thought of as an interface - that is, the amount of work the code does here is minimal as its main purpose is to be the core that communicates with Unix, and Unix should not be able to access deeper functions stored in the implementation core and 3bE core on its own. Thus, arms in this core are there primarily to call arms in the implementation core and 3bE core.
 
-##### Larval stage core
+#### Larval stage core
 
 This core is in use only during the larval stage of Arvo, which is after the Arvo kernel has compiled itself but before it has "broken symmetry" by acquiring identity and entropy, the point at which the larval stage has concluded. We call this breaking symmetry because prior to this point, every Urbit is completely identical. The larval stage performs the following steps in order:
 
@@ -394,7 +412,7 @@ This core is in use only during the larval stage of Arvo, which is after the Arv
 
 Once the larval stage has passed its functionality will never be used again.
 
-### The state
+## The state
 
 As we follow functional programming paradigms, the state of Arvo is considered
 to be the entire Arvo kernel core currently in operation (whether it be the larval
@@ -455,7 +473,7 @@ As you can see, the state of Arvo is quite simple. It's primary role is that of
 a traffic cop.
 
 
-### Vanes
+## Vanes
 
 The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
 
