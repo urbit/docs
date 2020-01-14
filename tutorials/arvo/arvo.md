@@ -23,16 +23,10 @@ We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md
 ## Table of Contents
 
 ### [What is Arvo?](#what-is-arvo)
-The big picture of Arvo.
-
-### [The stack](#the-stack)
-An overview of each layer of the Arvo stack and how they interact, from Unix to userspace. The technical part of the document begins here.
+The big picture of Arvo described at a conceptual level.
 
 ### [The kernel](#the-kernel)
-A description of how the Arvo kernel functions, including the basic arms and the structure of the event log.
-
-### [Vanes](#vanes)
-A short description of each Arvo kernel module, known as a vane.
+The nuts and bolts of the Arvo kernel.
 
 # What is Arvo?
 
@@ -449,7 +443,7 @@ As you can see, the state of Arvo is quite simple. It's primary role is that of
 a traffic cop.
 
 
-## Vanes
+### Vanes
 
 The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
 
