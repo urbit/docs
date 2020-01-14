@@ -506,7 +506,18 @@ followed by a pause of one second, then
 This gives us a stack trace that is roughly a list of `move`s and some
 associated metadata. Some of the `move`s are a bit of a distraction from what's
 going on overall, such as acknowledgements that an event was received, so we've omitted several lines
-for clarity. What is happening here can be summarized in the following diagram,
+for clarity.
+
+It is important to note that this stack trace should be thought of
+as being from the "point of view" of the kernel - each line represents the
+kernel taking in a message from one source and passing it along to its
+destination. It is then processed at that destination (which could be a vane or
+an app), and the return of that process is sent back to Arvo in the form of
+another `move` to perform and the loop begins again. Thus this stack trace does
+not display information about what is going on inside of the vane or app, only
+what kinds of messages that the kernel is passing along.
+
+What is happening here can be summarized in the following diagram,
 which we will proceed to explain in detail:
 
 (insert diagram)
@@ -514,14 +525,21 @@ which we will proceed to explain in detail:
 This diagram should be read starting from the left and following the arrows.
 Each arrow represents a move where the table connected to the arrow by a dotted
 line contains some of the information about the `move` such as the `duct` and
-tag of the `move`.
+tag of the `move`. It is crucial to note here that for every arrow to the right
+of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one another,
+actually represents two arrows: one from the caller to the Arvo kernel, and then
+from the Arvo kernel to the callee. The kernel is the intermediary between all
+communications - vanes and apps do not speak directly to one another. We illustrate this
+with the following diagram:
+
+(insert diagram)
 
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
 ```
 The first thing that happens is that Unix informs the Arvo kernel that a command
-has been entered. Here is the line of code in `arvo.hoon` that generated the
-output:
+has been entered. Here is the line of code in `arvo.hoon`, found in the [section
+3bE core](#section-3be-core), that generated the output:
 
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]
@@ -530,16 +548,81 @@ Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`,
 we can then say that this is a `%unix` `move` tagged with `%belt` whose cause is a `wire` given by `//term/1`,
 where the empty span `//` represents Unix and `term/1` represents the terminal
 in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s)
-since Unix I/O events are always the beginning and end of the Arvo event loop.
-`%belt` is a type of Dill `move` that corresponds to input and output.
+since Unix I/O events are always the beginning and end of the Arvo event loop,
+thus only a single `wire` is ever required at this initial stage.
+`%belt` is a type of Dill `move` that corresponds to input and output, and here
+it means that this
+`move` was sent to Dill which then handles the next step.
 
-The `""` here is metadata that keeps track of how deep a
+The `""` here is a metadatum that keeps track of how deep a
 duct is, represented by a number of `|`'s (which in this case is zero). An event
 with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
 this case, Unix events are an "original cause" and thus represented by an empty
 string.
 
+At this point in time, Dill has received the `move` and then processes it. The
+`%belt` `task` in `dill.hoon` is `+call`ed, which is processed using the `+send`
+arm:
+
+```hoon
+      ++  send                                          ::  send action
+        |=  bet/dill-belt
+        ^+  +>
+        ?^  tem
+          +>(tem `[bet u.tem])
+        (deal / [%poke [%dill-belt -:!>(bet) bet]])
+
+```
+
+Dill has taken in the command and decides to `%poke` hood, which is a Gall app
+primarily used for interfacing with Dill. Here, `+deal` is an arm for
+``pass``ing a `note` to Gall to ask it to create a `%deal` `task`:
+
+```hoon
+      ++  deal                                          ::  pass to %gall
+        |=  [=wire =deal:gall]
+        (pass wire [%g %deal [our our] ram deal])
+```
+
 Next in our stack trace we have this:
 ```
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
+
+Let's glance at part of the `+jack` arm in `arvo.hoon`, also located in the [section 3bE
+core](#section-3be-core). This arm is what the Arvo kernel uses to send cards.
+
+```hoon
+  ++  jack                                              ::  dispatch card
+    |=  [lac=? gum=muse]
+    ^-  [[p=(list ovum) q=(list muse)] _vanes]
+    ~|  %failed-jack
+    ::  =.  lac  |(lac ?=(?(%g %f) p.gum))
+    ::  =.  lac  &(lac !?=($b p.gum))
+    %^    fire
+        p.gum
+      s.gum
+    ?-    -.r.gum
+        $pass
+      ~?  &(!lac !=(%$ p.gum))
+        :-  (runt [s.gum '|'] "")
+        :^  %pass  [p.gum p.q.r.gum]
+          ?:  ?=(?(%deal %deal-gall) +>-.q.q.r.gum)
+            :-  :-  +>-.q.q.r.gum
+                (,[[ship ship] term term] [+>+< +>+>- +>+>+<]:q.q.r.gum)
+            p.r.gum
+          [(symp +>-.q.q.r.gum) p.r.gum]
+        q.gum
+      [p.q.r.gum ~ [[p.gum p.r.gum] q.gum] q.q.r.gum]
+```
+
+Code for writing stack traces can be a bit tricky, but let's try not to get too
+distracted by the lark expressions and such. By paying attention to the lines
+concerning the laconic bit (following `!lac`) we can mostly determine what is being told to us.
+
+From the initial input event, Arvo has generated a `card` that it is now
+`%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The
+`card` is a `%deal` card, asking Gall to `%poke` hood using data that has
+originated from the terminal `//term/1`. The line `:-  (runt [s.gum '|'] "")`
+displays the duct depth datum mentioned above. Lastly, `[~zod ~zod]` tells us that
+`~zod` is both the sending and receiving ship.
