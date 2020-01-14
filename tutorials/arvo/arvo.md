@@ -226,7 +226,14 @@ This core contains the most basic types utilized in Arvo. We discuss a number of
 ++  duct  (list wire)                                   ::  causal history
 ```
 
-Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
+Arvo is designed to avoid the usual state of complex event networks: event
+spaghetti. We keep track of every event's cause so that we have a clear causal
+chain for every computation. At the bottom of every chain is a Unix I/O event,
+such as a network request, terminal input, file sync, or timer event. We push
+every step in the path the request takes onto the chain until we get to the
+terminal cause of the computation. Then we use this causal stack to route
+results back to the caller.
+
 The `Arvo` causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
 Here's a `duct` that was recently observed in the wild: 
@@ -266,7 +273,11 @@ representing a cause.
 ++  move  [p=duct q=arvo]                               ::  arvo move
 ```
 
-If ducts are a call stack, then how do we make calls and produce results? Arvo processes `move`s which are a combination of message data and metadata. There are two types of `move`s. A `%pass` move is analogous to a call:
+If ducts are a call stack, then how do we make calls and produce results? Arvo
+processes `move`s which are a combination of message data and metadata. There
+are three types of `move`s: `%pass`, `%give`, and `%unix`.
+
+A `%pass` move is analogous to a call:
 
 ```
 [duct %pass return-path=path vane-name=@tD data=card]
@@ -281,6 +292,9 @@ A `%give` `move` is analogous to a return:
 ```
 
 Arvo pops the top `wire` off the duct and sends the given card back to the caller.
+
+Lastly, a `%unix` move is how Arvo represents communication from Unix, such as a
+network request or terminal input.
 
 ##### `card`s and `curd`s
 
