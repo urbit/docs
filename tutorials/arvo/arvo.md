@@ -179,13 +179,6 @@ whether or not there was any explicit need at that moment to interrupt.
 Arvo does not do this - tasks run until they are complete or are cancelled due
 to some heuristic, such as taking too long or because the user pressed Ctrl-C.
 
-## The stack
-
-<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
-
-Ultimately, everything that happens in Arvo is reduced to Unix events. Here we depict the stack from userspace apps Dojo and Landscape down to Unix.
-
-<!-- I need to change this, Landscape is not actually a Gall app) -->
 
 ## The kernel
 
@@ -236,7 +229,7 @@ This core contains the most basic types utilized in Arvo. We discuss a number of
 Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 The `Arvo` causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
-Here's a `duct` that was recently observed in the wild (I should redo this to make sure its up to date)
+Here's a `duct` that was recently observed in the wild: 
 
 ```
 ~[
@@ -443,3 +436,74 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
+
+## The stack
+
+<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
+
+Ultimately, everything that happens in Arvo is reduced to Unix events, and the
+Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one
+another. Here we look at how a simple command, `-time ~s1`, goes from pressing
+Enter on your keyboard in Dojo towards returning a notification that one second
+has elapsed.
+
+To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
+and press Enter to enable verbose mode, followed by `-time ~s1` followed by Enter. Your prompt should
+look something like this:
+
+```
+["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
+["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
+["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
+t=~[/d //term/1]]]
+["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
+["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+["|||" %pass [%g %f] [%build /use/dojo/~zod/drum/hand] [i=/d t=~[//term/1]]]
+["||||" %give %f %made [i=/g/use/dojo/~zod/drum/hand t=~[/d //term/1]]]
+["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
+["||||||" %give %g [%unto %watch-ack] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
+//term/1]]]
+["||||||" %pass [%g %f] [%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
+["|||||||" %give %f %made [i=/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
+["||||||||" %pass [%g %f] [%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
+["|||||||||" %give %f %made [i=/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
+["||||||||||" %pass [%g %b] [%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556] [i=/d t=~[//term/1]]]
+["|||||||||||" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
+> -time ~s1
+```
+followed by a pause of one second, then
+```
+["" %unix p=%wake //behn ~2020.1.14..19.01.26..755d]
+["|" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
+["|" %give %b %wake [i=/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 t=~[/d //term/1]]]
+["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
+["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+~s1..0007
+```
+Some of the `move`s are a bit of a distraction from what's going on overall,
+such as acknowledgements that an event was received, so we've omitted several lines
+for clarity. What is happening here can be summarized in the following diagram,
+which we will proceed to explain in detail:
+
+(insert diagram)
+
+```
+["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
+```
+The first thing that happens is that Unix informs the Arvo kernel that a command
+has been entered.
+
+The `""` here is metadata that keeps track of how deep a
+duct is, represented by a number of `|`'s (which in this case is zero). An event
+with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
+this case, Unix events are an "original cause" and thus represented by an empty
+string.
+
+
+
+```
+["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
+```
