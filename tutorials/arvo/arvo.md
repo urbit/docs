@@ -467,6 +467,8 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
 
+
+
 ## The stack
 
 <img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
