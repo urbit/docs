@@ -20,10 +20,13 @@ The conceptual level can be understood without knowing Hoon, the Urbit programmi
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
-## Table of Contents
+# Table of Contents
 
 ### [What is Arvo?](#what-is-arvo)
 The big picture of Arvo described at a conceptual level.
+
+#### [An operating function](#an-operating-function)
+
 
 ### [The kernel](#the-kernel)
 The nuts and bolts of the Arvo kernel.
@@ -94,8 +97,7 @@ needing to worry whether it won't work on someone's ship, since Arvo is an
 [interpreter](#solid-state-intrepeter) that can accept source code to
 update itself instead of requiring a pre-compiled binary. This essential
 property is why Urbit is able to act as a personal server while only having the
-the user
-experience is akin to that of a web browser.
+the user experience is akin to that of a web browser.
 
 ### Event log
 
@@ -111,18 +113,8 @@ the larval stage in more detail in the [larval stage](#larval-stage-core) sectio
 More information on the structure of the Arvo event log and the Arvo state is given in the section on [the kernel](#the-kernel).
 
 
-### Over-the-air updates
 
-Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
-
-Typically, updates to an operating system are given via a pre-compiled binary,
-which is why some updates will work on some systems but not on others where the
-environment may differ. This is not so on Arvo - because it is an
-[interpreter](#solid-state-interpreter), Arvo may update itself by receiving
-source code from your sponsor over [Ames](@/docs/tutorials/arvo/ames.md), our
-network.
-
-### Solid state interpreter
+##  Solid state interpreter
 
 Arvo is a _solid state interpreter_. In this section we describe what is meant
 by this new term, and how this behavior derives from the fact that Arvo is an [ACID database](#acid-database) and a [single-level store](#single-level-store).
@@ -140,7 +132,27 @@ Contrast this with other popular operating systems, such as Windows, Mac, or Lin
 
 How Arvo handles loss of power is closer to that of an SSD. Since it is an [ACID database](#acid-database) and a [single-level store](#single-level-store), a sudden loss of power have no effect on the state of the operating system. When you boot your ship back up it will be exactly as it was before the failure. Your information can never be lost, and because it was designed from the ground up to behave in this fashion, it does not suffer significant slowdown by persisting all data in this manner as would be the case if your typical operating system utilized its hard disk as RAM.
 
-#### ACID Database
+
+### Over-the-air updates
+
+Arvo can hotpatch any other semantics at any layer in the system (apps, vanes, Arvo or Hoon itself) with automatic over-the-air updates.
+
+Typically, updates to an operating system are given via a pre-compiled binary,
+which is why some updates will work on some systems but not on others where the
+hardware and environment may differ. This is not so on Arvo - because it is an
+[interpreter](#solid-state-interpreter), Arvo may update itself by receiving
+source code from your sponsor over [Ames](@/docs/tutorials/arvo/ames.md), our
+network. As Hoon compiles down to Nock, which is an axiomatic representation of
+a deterministic computer, this code is guaranteed to run identically on your machine as it
+would on anybody else's.
+
+Since OTA updates can potentially alter the type system they must be performed
+outside of the type system. An OTA update contains a raw untyped Nock formula that
+encodes the new kernel as well as instructions on how to turn the final state of
+kernel into the initial state of the new kernel, which potentially includes things such as
+transforming the old type system into the new type system.
+
+### ACID Database
 
 In the client-server model, data is stored on the server and thus reliable and efficient databases are an integral part of server architecture. This is not quite so true for the client - a user may be expected to reboot their machine in the middle of a computation, alter or destroy their data, never make backups or perform version control, etc. In other words, client systems like your personal computer or smart phone are not well suited to act as databases.
 
@@ -158,7 +170,7 @@ Database theory studies in precise terms the possible properties of anything tha
 
  Durability is a necessary consequence of Arvo's [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), which means that you can always replace an expression by what it evaluates to without changing its behavior. For example, you can always replace a file referred to in a program by the contents of that file, because you know that file is never going to change (or rather, if it does, the old version will still be accessible).
 
-#### Single-level store
+### Single-level store
 
 >A kernel which presents the abstraction of a single layer of permanent state is also called a single-level store. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
 
