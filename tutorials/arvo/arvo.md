@@ -503,18 +503,35 @@ followed by a pause of one second, then
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ~s1..0007
 ```
-Some of the `move`s are a bit of a distraction from what's going on overall,
-such as acknowledgements that an event was received, so we've omitted several lines
+This gives us a stack trace that is roughly a list of `move`s and some
+associated metadata. Some of the `move`s are a bit of a distraction from what's
+going on overall, such as acknowledgements that an event was received, so we've omitted several lines
 for clarity. What is happening here can be summarized in the following diagram,
 which we will proceed to explain in detail:
 
 (insert diagram)
 
+This diagram should be read starting from the left and following the arrows.
+Each arrow represents a move where the table connected to the arrow by a dotted
+line contains some of the information about the `move` such as the `duct` and
+tag of the `move`.
+
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
 ```
 The first thing that happens is that Unix informs the Arvo kernel that a command
-has been entered.
+has been entered. Here is the line of code in `arvo.hoon` that generated the
+output:
+
+```hoon
+    ~?  !lac  ["" %unix -.q.ovo p.ovo now]
+```
+Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`,
+we can then say that this is a `%unix` `move` tagged with `%belt` whose cause is a `wire` given by `//term/1`,
+where the empty span `//` represents Unix and `term/1` represents the terminal
+in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s)
+since Unix I/O events are always the beginning and end of the Arvo event loop.
+`%belt` is a type of Dill `move` that corresponds to input and output.
 
 The `""` here is metadata that keeps track of how deep a
 duct is, represented by a number of `|`'s (which in this case is zero). An event
@@ -522,8 +539,7 @@ with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
 this case, Unix events are an "original cause" and thus represented by an empty
 string.
 
-Next is the `%unix` mark, informing us that the type of the `move` is `%unix`.
-
+Next in our stack trace we have this:
 ```
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
