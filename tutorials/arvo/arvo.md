@@ -315,7 +315,17 @@ When one vane is `%pass`ed a card in its `task` (defined in zuse), Arvo activate
 
 In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a `note`. (2) that same request as seen by the callee, a `task`. (3) the response to that first request as seen by the callee, a `gift`. (4) the response to the first request as seen by the caller, a `sign`.
 
-When a `task` `card` is `%pass`ed to a vane, Arvo calls its `+call` gate, passing it both the card and its duct. This gate must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
+When a `task` `card` is `%pass`ed to a vane, Arvo calls its `+call` gate,
+passing it both the card and its duct. This gate must be defined in every vane.
+It produces two things in the following order: a list of moves and a possibly
+modified copy of its context. The moves are used to interact with other vanes,
+while the new context allows the vane to save its state. The next time Arvo
+activates the vane it will have this context as its subject.
+
+This cycle of `%pass`ing a `note` to `%pass`ing a `task` to `%give`ing a `gift`
+to `%give`ing a `%sign` is summarized in the following diagram:
+
+(insert diagram)
 
 This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
@@ -626,3 +636,5 @@ From the initial input event, Arvo has generated a `card` that it is now
 originated from the terminal `//term/1`. The line `:-  (runt [s.gum '|'] "")`
 displays the duct depth datum mentioned above. Lastly, `[~zod ~zod]` tells us that
 `~zod` is both the sending and receiving ship.
+
+Now
