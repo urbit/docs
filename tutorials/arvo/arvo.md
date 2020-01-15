@@ -369,7 +369,6 @@ This overview has detailed how to pass a `card` to a particular vane. To see the
 the semantics tied to them), each vane's public interface is explained in detail
 in its respective overview.
 
-
 #### `ovum`
 
 This mold is used to represent both steps and actions.
