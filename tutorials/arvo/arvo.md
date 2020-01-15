@@ -10,18 +10,25 @@ Arvo, also called Urbit OS, is our operating system.
 
 ## Overview
 
-This article is intended to provide a thorough summary of all of the most important aspects of the Arvo kernel. We work on two levels: a conceptual level that should be useful to anybody interested in how Arvo works, and a more technical level intended for those that intend to write software for Urbit. The document begins with conceptual material, and technical material begins with ["The stack"](#the-stack) section.
+This article is intended to provide a thorough summary of all of the most
+important aspects of the Arvo kernel and how this functionality gives life to
+the ambitions of the Urbit platform. We work on two levels: a conceptual level
+that should be useful to anybody interested in how Arvo works, and a more
+technical level intended for those that intend to write software for Urbit. 
 
 The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good companion to this document, but it should be noted that some parts of it are now either out of date or not yet implemented.
 
 ## Prerequisites
 
-The conceptual level can be understood without knowing Hoon, the Urbit programming language. The technical level will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md).
+The conceptual section titled [What is Arvo?](#what-is-arvo-) can be understood
+without knowing Hoon, the Urbit programming language. The technical section
+titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md).
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
 
 # Table of Contents
+
 - [What is Arvo?](#what-is-arvo-)
   * [An operating function](#an-operating-function)
     + [Determinism](#determinism)
@@ -43,7 +50,7 @@ We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md
 # What is Arvo?
 
 Arvo is a
-[non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking)
+[non-preemptive](#non-preemptive)
 operating system purposefully built to create a new, peer-to-peer internet
 whereby users own and manage their own data. Despite being an operating system,
 Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the
@@ -181,8 +188,7 @@ Database theory studies in precise terms the possible properties of anything tha
 
 ### Single-level store
 
->A kernel which presents the abstraction of a single layer of permanent state is also called a single-level store. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
-
+A kernel which presents the abstraction of a single layer of permanent state is also called a _single-level store_. One way to describe a single-level store is that it never reboots; a formal model of the system does not contain an operation which unpredictably erases half its brain.
 
 Today's operating systems utilize at least two types of memory: the hard disk and the RAM, and this split is responsible for the fact that data is lost whenever power is lost. Not every operating system in history was designed this way - in particular, [Multics](https://en.wikipedia.org/wiki/Multics) utilized only one store of memory. Arvo takes after Multics - all data is stored in one permanent location, and as a result no data is ever lost when power is lost.
 
@@ -193,6 +199,9 @@ tasks being performed with the intention of resuming that task at a later time,
 whether or not there was any explicit need at that moment to interrupt.
 Arvo does not do this - tasks run until they are complete or are cancelled due
 to some heuristic, such as taking too long or because the user pressed Ctrl-C.
+This is known as
+[non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) or
+cooperative multitasking.
 
 
 # The kernel
@@ -251,7 +260,8 @@ results back to the caller.
 
 The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
-Here's a `duct` that was recently observed in the wild: 
+Here's a `duct` that was recently observed in the wild upon entering `-time ~s1`
+into the dojo and pressing Enter: 
 
 ```
 ~[
@@ -263,9 +273,7 @@ Here's a `duct` that was recently observed in the wild:
 ]
 ```
 
-<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/timer.png">
-
-This is the duct the timer vane, Behn, receives when the "timer" sample app asks the timer vane to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
+This is the duct that the timer vane, Behn, receives when the "time" sample app asks the Behn to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
 
 Behn saves this duct, so that when the specified time arrives and Unix sends a
 wakeup event to the timer vane, it can produce the response on the same duct.
