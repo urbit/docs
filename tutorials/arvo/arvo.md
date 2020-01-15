@@ -277,13 +277,13 @@ then produce a `@d` with the current time after the timer has elapsed:
 
 This is the `duct` that the timer vane, Behn, receives when the `time` sample app asks the Behn to set a timer. This is also the `duct` over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
 
-Behn saves this duct, so that when the specified time arrives and Unix sends a
-wakeup event to the timer vane, it can produce the response on the same duct.
-This response is routed to the place we popped off the top of the duct, i.e. the
+Behn saves this `duct`, so that when the specified time arrives and Unix sends a
+wakeup event to the timer vane, it can produce the response on the same `duct`.
+This response is routed to the place we popped off the top of the `duct`, i.e. the
 time app. This app returns a `@d` which denotes the current time, which falls down to the shell,
 which drops it through to the terminal. Terminal drops this down to Dill, which
 converts it into an effect that Unix will recognize as a request to print the
-current time to the screen. When Dill produces this, the last path in the duct has an
+current time to the screen. When Dill produces this, the last path in the `duct` has an
 initial element of the empty span, so this is routed to Unix, which applies the effects.
 
 This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a `duct` zero, one, or many times. You can save `duct`s for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
@@ -295,7 +295,7 @@ This is a call stack, with a crucial feature: the stack is a first-class citizen
 ++  wire  path                                          ::  event pretext
 ```
 
-Synonym for `path`, used in ducts. These should be thought of as a list of symbols
+Synonym for `path`, used in `duct`s. These should be thought of as a list of symbols
 representing a cause.
 
 #### `move`
@@ -304,17 +304,18 @@ representing a cause.
 ++  move  [p=duct q=arvo]                               ::  arvo move
 ```
 
-If ducts are a call stack, then how do we make calls and produce results? Arvo
+If `duct`s are a call stack, then how do we make calls and produce results? Arvo
 processes `move`s which are a combination of message data and metadata. There
 are three types of `move`s: `%pass`, `%give`, and `%unix`.
 
-A `%pass` move is analogous to a call:
+A `%pass` `move` is analogous to a call:
 
 ```
 [duct %pass return-path=path vane-name=@tD data=card]
 ```
 
-Arvo pushes the return path (preceded by the first letter of the vane name) onto the duct and sends the given data, a card, to the vane we specified. Any response will come along the same duct with the `wire` `return-path`.
+Arvo pushes the return path (preceded by the first letter of the vane name) onto
+the `duct` and sends the given data, a `card`, to the vane we specified. Any response will come along the same `duct` with the `wire` `return-path`.
 
 A `%give` `move` is analogous to a return:
 
@@ -322,9 +323,9 @@ A `%give` `move` is analogous to a return:
 [duct %give data=card]
 ```
 
-Arvo pops the top `wire` off the duct and sends the given card back to the caller.
+Arvo pops the top `wire` off the `duct` and sends the given `card` back to the caller.
 
-Lastly, a `%unix` move is how Arvo represents communication from Unix, such as a
+Lastly, a `%unix` `move` is how Arvo represents communication from Unix, such as a
 network request or terminal input.
 
 #### `card`s and `curd`s
@@ -336,14 +337,14 @@ connected to `curd`s so we speak of them in the same breath.
 
 Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of `card`s: `task`s, `gift`s, `note`s, and `sign`s.
 
-When one vane is `%pass`ed a card in its `task` (defined in zuse), Arvo activates the `+call` gate with the card as its argument. To produce a result, the vane `%give`s one of the cards defined in its `gift`. If the vane needs to request something of another vane, it `%pass`es it a `note` card. When that other vane returns a result, Arvo activates the `+take` gate of the initial vane with one of the cards defined in its `sign`.
+When one vane is `%pass`ed a `card` in its `task` (defined in `zuse`), Arvo activates the `+call` gate with the `card` as its argument. To produce a result, the vane `%give`s one of the `card`s defined in its `gift`. If the vane needs to request something of another vane, it `%pass`es it a `note` `card`. When that other vane returns a result, Arvo activates the `+take` gate of the initial vane with one of the `card`s defined in its `sign`.
 
-In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a `note`. (2) that same request as seen by the callee, a `task`. (3) the response to that first request as seen by the callee, a `gift`. (4) the response to the first request as seen by the caller, a `sign`.
+In other words, there are only four ways of seeing a `move`: (1) as a request seen by the caller, which is a `note`. (2) that same request as seen by the callee, a `task`. (3) the response to that first request as seen by the callee, a `gift`. (4) the response to the first request as seen by the caller, a `sign`.
 
 When a `task` `card` is `%pass`ed to a vane, Arvo calls its `+call` gate,
-passing it both the card and its duct. This gate must be defined in every vane.
-It produces two things in the following order: a list of moves and a possibly
-modified copy of its context. The moves are used to interact with other vanes,
+passing it both the `card` and its `duct`. This gate must be defined in every vane.
+It produces two things in the following order: a list of `move`s and a possibly
+modified copy of its context. The `move`s are used to interact with other vanes,
 while the new context allows the vane to save its state. The next time Arvo
 activates the vane it will have this context as its subject.
 
@@ -358,18 +359,22 @@ Note that `%pass`ing a `note` doesn't _always_ result in a return - this diagram
 just
 shows the complete cycle. However, `%give`ing a `gift` is always in response to being
 `%pass`ed some `task`. Since the Arvo kernel acts as a middleman between all `move`s in Arvo, in diagrams we will
-generally represent the intermediate steps of a vane `%pass`ing a `note` addressed to
-another vane to the kernel followed by the kernel `%pass`ing a `task` to the
+generally represent the intermediate steps of a vane `%pass`ing a `note` to the kernel addressed to
+another vane followed by the kernel `%pass`ing a `task` to the
 addressed vane as a single arrow from one vane to the other to make the diagrams
 less cluttered.
 
-This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
+This overview has detailed how to pass a `card` to a particular vane. To see the `card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
 #### `ovum`
 
 This mold is used to represent both steps and actions.
 
-A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The reason for a typeless `card` is that this is the data structure which Arvo uses to communicate with the runtime, and Unix events have no type. Then the `wire` here is the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
+A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The
+reason for a typeless `card` is that this is the data structure which Arvo uses
+to communicate with the runtime, and Unix events have no type. Additionally,
+upgrading the kernel may alter the type system and thus may not be able to be
+described within the current type system. Then the `wire` here is the default Unix `wire`, namely `//`. In particular, it is not a `duct` because `ovum`s come from the runtime rather than from within Arvo.
 
 ### Arvo cores
 
@@ -377,7 +382,7 @@ A pair of a `wire` and a `curd`, with a `curd` being like a typeless `card`. The
 
 A short summary of the purpose of each these arms are as follows:
 
- - `+poke` is the transition function that moves Arvo from one state to the
+ - `+poke` is the transition function that `move`s Arvo from one state to the
    next. It is the most fundamental arm in the entire system. It is a typed
    transactional message that is delivered exactly once. This is sometimes said
    to be impossible, and it is for standard operating systems, but that is not the case for single-level stores engaged in
@@ -481,15 +486,17 @@ is of course the list of vanes, which have their own internal states. As Hoon is
 homoiconic, code is data, so this is does secrely have everything the vanes are
 doing encoded within, including all user apps.
 
-As you can see, the state of Arvo is quite simple. It's primary role is that of
-a traffic cop.
+As you can see, the state of Arvo itself is quite simple. Its primary role is that of
+a traffic cop, and most of interesting part of the state lies in `vanes`.
 
 
 ## Vanes
 
 The Arvo kernel can do very little on its own. Its functionality is extended in a careful and controlled way with vanes, also known as kernel modules.
 
-As described above, we use Arvo proper to route and control the flow of `move`s. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a move. This event data is contained within a `card`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
+As described above, we use Arvo proper to route and control the flow of `move`s.
+However, Arvo proper is rarely directly responsible for processing the event
+data that directly causes the desired outcome of a `move`. This event data is contained within a `card`. Instead, Arvo proper passes the `card` off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
 
 As of this writing, we have nine vanes, which each provide the following services:
 
