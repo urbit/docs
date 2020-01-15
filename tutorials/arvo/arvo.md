@@ -340,7 +340,9 @@ activates the vane it will have this context as its subject.
 This cycle of `%pass`ing a `note` to `%pass`ing a `task` to `%give`ing a `gift`
 to `%give`ing a `%sign` is summarized in the following diagram:
 
-(insert diagram)
+<div style="text-align:center">
+<img class="mv5 w-150" src="https://media.urbit.org/docs/arvo/cycle.png">
+</div>
 
 This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
