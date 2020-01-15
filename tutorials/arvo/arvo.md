@@ -352,6 +352,15 @@ to `%give`ing a `%sign` is summarized in the following diagram:
 <img class="mv5 w-150" src="https://media.urbit.org/docs/arvo/cycle.png">
 </div>
 
+Note that `%pass`ing a `note` doesn't _always_ result in a return - this diagram
+just
+shows the complete cycle. However, `%give`ing a `gift` is always in response to being
+`%pass`ed some `task`. Since the Arvo kernel acts as a middleman between all `move`s in Arvo, in diagrams we will
+generally represent the intermediate steps of a vane `%pass`ing a `note` addressed to
+another vane to the kernel followed by the kernel `%pass`ing a `task` to the
+addressed vane as a single arrow from one vane to the other to make the diagrams
+less cluttered.
+
 This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
 #### `ovum`
