@@ -364,7 +364,11 @@ another vane followed by the kernel `%pass`ing a `task` to the
 addressed vane as a single arrow from one vane to the other to make the diagrams
 less cluttered.
 
-This overview has detailed how to pass a `card` to a particular vane. To see the `card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
+This overview has detailed how to pass a `card` to a particular vane. To see the
+`card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as
+the semantics tied to them), each vane's public interface is explained in detail
+in its respective overview.
+
 
 #### `ovum`
 
