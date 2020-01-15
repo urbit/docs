@@ -16,7 +16,8 @@ the ambitions of the Urbit platform. We work on two levels: a conceptual level
 that should be useful to anybody interested in how Arvo works, and a more
 technical level intended for those that intend to write software for Urbit. 
 
-The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good companion to this document, but it should be noted that some parts of it are now either out of date or not yet implemented.
+The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good
+companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of it are now either out of date or not yet implemented.
 
 ## Prerequisites
 
@@ -261,7 +262,8 @@ results back to the caller.
 The Arvo causal stack is called a `duct`. This is represented simply as a list of paths, where each path represents a step in the causal chain. The first element in the path is the first letter of whichever vane handled that step in the computation, or the empty span for Unix.
 
 Here's a `duct` that was recently observed in the wild upon entering `-time ~s1`
-into the dojo and pressing Enter: 
+into the dojo and pressing Enter, which sets a timer for one second that will
+then produce a `@d` with the current time after the timer has elapsed: 
 
 ```
 ~[
@@ -273,7 +275,7 @@ into the dojo and pressing Enter:
 ]
 ```
 
-This is the duct that the timer vane, Behn, receives when the "time" sample app asks the Behn to set a timer. This is also the duct over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
+This is the `duct` that the timer vane, Behn, receives when the `time` sample app asks the Behn to set a timer. This is also the `duct` over which the response is produced at the specified time. Unix sent a terminal keystroke event (enter), and Arvo routed it to Dill (our terminal), which passed it on to the Gall app terminal, which sent it to shell, its child, which created a new child (with process id 4), which on startup asked Behn to set a timer.
 
 Behn saves this duct, so that when the specified time arrives and Unix sends a
 wakeup event to the timer vane, it can produce the response on the same duct.
@@ -284,7 +286,7 @@ converts it into an effect that Unix will recognize as a request to print the
 current time to the screen. When Dill produces this, the last path in the duct has an
 initial element of the empty span, so this is routed to Unix, which applies the effects.
 
-This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a duct zero, one, or many times. You can save ducts for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
+This is a call stack, with a crucial feature: the stack is a first-class citizen. You can respond over a `duct` zero, one, or many times. You can save `duct`s for later use. There are definitely parallels to Scheme-style continuations, but simpler and with more structure.
 
 
 #### `wire`
