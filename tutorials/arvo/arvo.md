@@ -491,13 +491,14 @@ As described above, we use Arvo proper to route and control the flow of `move`s.
 
 As of this writing, we have nine vanes, which each provide the following services:
 
-- `Ames`: the name of both our network and the vane that communicates over it.
-- `Behn`: a simple timer.
-- `Clay`: our version-controlled, referentially- transparent, and global filesystem.
-- `Dill`: a terminal driver. Unix sends keyboard events to `%dill` from either the console or telnet, and `%dill` produces terminal output.
-- `Eyre`: an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
-- `Ford`: handles resources and publishing.
-- `Gall`: manages our userspace applications. `%gall` keeps state and manages subscribers.
+- [Ames](@/docs/tutorials/arvo/ames.md): the name of both our network and the vane that communicates over it.
+- [Behn](@/docs/tutorials/arvo/behn.md): a simple timer.
+- [Clay](@/docs/tutorials/arvo/clay.md): our version-controlled, referentially- transparent, and global filesystem.
+- [Dill](@/docs/tutorials/arvo/dill.md): a terminal driver. Unix sends keyboard events to `%dill` from either the console or telnet, and `%dill` produces terminal output.
+- [Eyre](@/docs/tutorials/arvo/eyre.md): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
+- [Ford](@/docs/tutorials/arvo/ford.md): a build system also utilized for marks
+  (file types) and debugging.
+- [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
 
