@@ -62,7 +62,9 @@ Urbit is a “browser for the server side”; it replaces multiple developer-hos
 
 Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
-Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30,000 lines of code, while the Arvo kernel is only about 1,000 lines of code. We strive for a small codebase because the difficulty in administering a system is roughly proportional to the size of its code base.
+Unlike any other popular operating system, it is possible for a single human to
+understand every aspect of Arvo due to its compact size. The entire Urbit stack
+is around 30,000 lines of code, while the Arvo kernel proper is only about 1,000 lines of code. We strive for a small codebase because the difficulty in administering a system is roughly proportional to the size of its code base.
 
 ## An operating function
 
