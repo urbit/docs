@@ -177,7 +177,7 @@ In order to dismantle the client-server model and build a peer-to-peer internet,
 
 Database theory studies in precise terms the possible properties of anything that could be considered to be a database. In this context, Arvo has the properties of an [ACID database](https://en.wikipedia.org/wiki/ACID), and the Ames network could be thought of as network of such databases. ACID stands for _atomicity_, _consistency_, _isolation_, and _durability_. We review here how Arvo satisfies these properties.
 
- - Atomicity: Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `poke`d, the effect of an event is computed, it is [persisted](https://en.wikipedia.org/wiki/Persistence_(computer_science)) by writing it to the event log, and only then is the actual event applied.
+ - Atomicity: Events in Arvo are _atomic_, meaning that they either succeed completely or fail completely. In other words, there are no transient periods in which something like a power failure will leave the operating system in an invalid state. When an event occurs in Arvo, e.g. [the kernel](#the-kernel) is `poke`d, the effects of an event are computed, the event is [persisted](https://en.wikipedia.org/wiki/Persistence_(computer_science)) by writing it to the event log, and only then are the actual effects applied.
 
  - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
 
@@ -514,5 +514,4 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
-
 
