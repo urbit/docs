@@ -68,7 +68,10 @@ is around 30,000 lines of code, while the Arvo kernel proper is only about 1,000
 
 ## An operating function
 
-Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevance to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
+Arvo is the world's first _purely functional_ operating system, and as such it
+may reasonably be called an _operating function_. The importance of
+understanding this design choice and its relevance to the overarching goal
+cannot be understated. If you learn only a single thing about Arvo, let it be this.
 
 This means two things: one is that the there is a notion of _state_ for the operating system, and that the current state is a pure function of the [event log](#event-log), which is a chronological record of every action the operating system has ever performed. A _pure function_ is a function that always produces the same output given the same input. Another way to put this is to say that Arvo is _deterministic_. Other operating systems are not deterministic for a number of reasons, but one simple reasons is because they allow programs to alter global variables that then affect the operation of other programs.
 
