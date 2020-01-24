@@ -17,7 +17,7 @@ that should be useful to anybody interested in how Arvo works, and a more
 technical level intended for those that intend to write software for Urbit. 
 
 The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good
-companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of it are now either out of date or not yet implemented.
+companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of the white paper are now either out of date or not yet implemented.
 
 ## Prerequisites
 
@@ -514,6 +514,5 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
-
 
 
