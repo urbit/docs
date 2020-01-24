@@ -357,7 +357,9 @@ network request or terminal input.
 
 `card`s are the vane-specific portion of a `move`, while `curd`s are typeless
 `card`s utilized at the level of the kernel. `card`s are not actually defined in
-`arvo.hoon`, rather they are defined in each vane, but they are closely
+`arvo.hoon`, rather they are given by `+note-arvo` and `+sign-arvo` in the
+standard library `zuse`
+(which then refer to `+task` and `+gift` in each of the vane cores), but they are closely
 connected to `curd`s so we speak of them in the same breath.
 
 Each vane defines a protocol for interacting with other vanes (via Arvo) by defining four types of `card`s: `task`s, `gift`s, `note`s, and `sign`s.
