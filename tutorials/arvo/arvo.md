@@ -197,9 +197,20 @@ Database theory studies in precise terms the possible properties of anything tha
    in parallel by the worker; see [worker and
    daemon](@/docs/tutorials/vere/_index.md) for more detail. 
 
- - Durability: Completed transactions will survive permanently. This is one way in which Arvo greatly differs from other operating systems - there is no way to truly delete a file, rather you can just mark it as being deleted and have the file effectievly be ignored. This is due to the structure of our file system known as [Clay](@/docs/tutorials/arvo/clay.md), which is entirely version controlled. That is to say, every version of every file remains on your system forever.
+ - Durability: Completed transactions will survive permanently. In other words,
+   since the event log is stored on disk, if power is lost you are guaranteed
+   that no transactions will be reversed.
 
- Durability is a necessary consequence of Arvo's [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), which means that you can always replace an expression by what it evaluates to without changing its behavior. For example, you can always replace a file referred to in a program by the contents of that file, because you know that file is never going to change (or rather, if it does, the old version will still be accessible).
+It is easy to think that "completed transaction will survive permanently"
+along with "the state of Arvo is pure function of its event log" implies that
+nothing can ever be deleted. This is not quite true.
+[Clay](@/docs/tutorials/arvo/clay.md) is our [referentially
+transparency](https://en.wikipedia.org/wiki/Referential_transparency) 
+file system, which could naively be thought to mean that since data must be
+immutable, files cannot be deleted. However, Clay can replace a file with a
+"tombstone" that causes Clay to crash whenever it is accessed. Referential
+transparency only guarantees that there won't be new data at a previously
+accessed location - not that it will still be available.
 
 ### Single-level store
 
