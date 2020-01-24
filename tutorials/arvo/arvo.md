@@ -514,7 +514,7 @@ frozen during the larval stage. `bud` is the standard library. Lastly, `vanes`
 is of course the list of vanes, which have their own internal states. 
 
 As you can see, the state of Arvo itself is quite simple. Its primary role is that of
-a traffic cop, and most of interesting part of the state lies in `vanes`.
+a traffic cop, and most of the interesting part of the state lies in `vanes`.
 
 
 ## Vanes
