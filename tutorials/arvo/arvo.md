@@ -222,7 +222,7 @@ Today's operating systems utilize at least two types of memory: the hard disk an
 
 Most operating systems are preemptive, meaning that they regularly interrupt
 tasks being performed with the intention of resuming that task at a later time,
-whether or not there was any explicit need at that moment to interrupt.
+without the task explicitly yielding control.
 Arvo does not do this - tasks run until they are complete or are cancelled due
 to some heuristic, such as taking too long or because the user pressed Ctrl-C.
 This is known as
@@ -535,4 +535,3 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
-
