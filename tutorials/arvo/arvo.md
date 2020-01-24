@@ -411,7 +411,9 @@ A short summary of the purpose of each these arms are as follows:
 
  - `+poke` is the transition function that `move`s Arvo from one state to the
    next. It is the most fundamental arm in the entire system. It is a typed
-   transactional message that is delivered exactly once. This is sometimes said
+   transactional message that is processed at most once. If the `+poke` causes
+   Arvo to send an message over [Ames](@/docs/tutorials/arvo/ames.md) Ames
+   guarantees that the message will be delivered exactly once. This is sometimes said
    to be impossible, and it is for standard operating systems, but that is not the case for single-level stores engaged in
    a permanent session, as is the case among Arvo ships.
  - `+peek` is an arm used for inspecting things outside of the kernel. It grants
