@@ -511,9 +511,7 @@ This is where the real state of the Arvo kernel is kept. `lac` detemines whether
 Arvo's output is verbose, which can be set using the `|verb` command in the
 dojo. `eny` is the current entropy. `our` is the ship, which is permanently
 frozen during the larval stage. `bud` is the standard library. Lastly, `vanes`
-is of course the list of vanes, which have their own internal states. As Hoon is
-homoiconic, code is data, so this is does secrely have everything the vanes are
-doing encoded within, including all user apps.
+is of course the list of vanes, which have their own internal states. 
 
 As you can see, the state of Arvo itself is quite simple. Its primary role is that of
 a traffic cop, and most of interesting part of the state lies in `vanes`.
