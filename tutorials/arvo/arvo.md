@@ -17,7 +17,7 @@ that should be useful to anybody interested in how Arvo works, and a more
 technical level intended for those that intend to write software for Urbit. 
 
 The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good
-companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of the white paper are now either out of date or not yet implemented.
+companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of it are now either out of date or not yet implemented.
 
 ## Prerequisites
 
@@ -62,16 +62,11 @@ Urbit is a “browser for the server side”; it replaces multiple developer-hos
 
 Arvo is designed to avoid the usual state of complex event networks: event spaghetti. We keep track of every event's cause so that we have a clear causal chain for every computation. At the bottom of every chain is a Unix I/O event, such as a network request, terminal input, file sync, or timer event. We push every step in the path the request takes onto the chain until we get to the terminal cause of the computation. Then we use this causal stack to route results back to the caller.
 
-Unlike any other popular operating system, it is possible for a single human to
-understand every aspect of Arvo due to its compact size. The entire Urbit stack
-is around 30,000 lines of code, while the Arvo kernel proper is only about 1,000 lines of code. We strive for a small codebase because the difficulty in administering a system is roughly proportional to the size of its code base.
+Unlike any other popular operating system, it is possible for a single human to understand every aspect of Arvo due to its compact size. The entire Urbit stack is around 30,000 lines of code, while the Arvo kernel is only about 1,000 lines of code. We strive for a small codebase because the difficulty in administering a system is roughly proportional to the size of its code base.
 
 ## An operating function
 
-Arvo is the world's first _purely functional_ operating system, and as such it
-may reasonably be called an _operating function_. The importance of
-understanding this design choice and its relevance to the overarching goal
-cannot be understated. If you learn only a single thing about Arvo, let it be this.
+Arvo is the world's first _purely functional_ operating system, and as such it may reasonably be called an _operating function_. The importance of understanding this design choice and its relevance to the overarching goal cannot be understated. If you knew only a single thing about Arvo, let it be this.
 
 This means two things: one is that the there is a notion of _state_ for the operating system, and that the current state is a pure function of the [event log](#event-log), which is a chronological record of every action the operating system has ever performed. A _pure function_ is a function that always produces the same output given the same input. Another way to put this is to say that Arvo is _deterministic_. Other operating systems are not deterministic for a number of reasons, but one simple reasons is because they allow programs to alter global variables that then affect the operation of other programs.
 
@@ -125,7 +120,14 @@ the user experience is akin to that of a web browser.
 
 The formal state of an Arvo instance is an event history, as a linked list of nouns from first to last. The history starts with a bootstrap sequence that delivers Arvo itself, first as an inscrutable kernel, then as the self-compiling source for that kernel. After booting, we break symmetry by delivering identity and entropy. The rest of the log is actual input.
 
-The Arvo event log is a list of every action ever performed on your ship that lead up to the current state. In principle, this event log is maintained by the [Nock runtime environment](@/docs/tutorials/vere/_index.md), but in practice event logs become too long over time to keep. Thus periodic snapshots of the state of Arvo are taken and the log up to that state is pruned.
+The Arvo event log is a list of every action ever performed on your ship that
+lead up to the current state. In principle, this event log is maintained by the
+[Nock runtime environment](@/docs/tutorials/vere/_index.md), but in practice
+event logs become too long over time to keep, as the event log has a size of
+O(n) where n is the number of events. Thus it is our intention to
+implement a feature whereby periodic snapshots of the state of Arvo are taken
+and the log up to that state is pruned. This is currently unnecessary and thus
+this feature has not been prioritized.
 
 The beginning of the event log starting from the very first time a ship is
 booted up until the kernel is compiled and identity and entropy are created is a
@@ -369,11 +371,7 @@ another vane followed by the kernel `%pass`ing a `task` to the
 addressed vane as a single arrow from one vane to the other to make the diagrams
 less cluttered.
 
-This overview has detailed how to pass a `card` to a particular vane. To see the
-`card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as
-the semantics tied to them), each vane's public interface is explained in detail
-in its respective overview.
-
+This overview has detailed how to pass a `card` to a particular vane. To see the `card`s each vane can be `%pass`ed as a `task` or return as a `gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
 
 #### `ovum`
 
@@ -519,5 +517,6 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
+
 
 
