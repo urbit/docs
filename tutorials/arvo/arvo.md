@@ -188,7 +188,14 @@ Database theory studies in precise terms the possible properties of anything tha
 
  - Consistency: Every possible update to the database puts it into another valid state. Given that Arvo is purely functional, this is easier to accomplish than it would be in an imperative setting.
 
- - Isolation: Transactions in databases often happen concurrently, and isolation ensures that the transactions occur as if they were performed sequentially, making it so that their effects are isolated from one another. Arvo ensures this simply by the fact that it only ever performs events sequentially. Arvo transactions cannot be considered _entirely_ sequential though, as the [worker and daemon](@/docs/tutorials/vere/_index.md) operate in parallel.
+ - Isolation: Transactions in databases often happen concurrently, and isolation
+   ensures that the transactions occur as if they were performed sequentially,
+   making it so that their effects are isolated from one another. Arvo ensures
+   this simply by the fact that it only ever performs events sequentially. While
+   Arvo
+   transactions are sequential and performed by the daemon, persistence and effect application are performed
+   in parallel by the worker; see [worker and
+   daemon](@/docs/tutorials/vere/_index.md) for more detail. 
 
  - Durability: Completed transactions will survive permanently. This is one way in which Arvo greatly differs from other operating systems - there is no way to truly delete a file, rather you can just mark it as being deleted and have the file effectievly be ignored. This is due to the structure of our file system known as [Clay](@/docs/tutorials/arvo/clay.md), which is entirely version controlled. That is to say, every version of every file remains on your system forever.
 
