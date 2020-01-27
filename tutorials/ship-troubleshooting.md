@@ -38,7 +38,7 @@ The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix meth
 
 ### Keep up-to-date builds
 
-Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](/operations/)
+Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](@using/install.md).
 
 ### `|hi` your star to see if you're connected
 
