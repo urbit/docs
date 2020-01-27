@@ -98,9 +98,11 @@ to enable deterministic computation.
 Arvo handles nondeterminism in an interesting way. Deciding whether or not to
 halt a computation that could potentially last forever becomes a heuristic
 decision that is akin to dropping a packet. Thus it behooves one to think of
-Arvo as being a packet transceiver rather than a full fledged computer - events
-are never guaranteed to complete.
-
+Arvo as being a stateful packet transceiver rather than an ordinary computer - events
+are never guaranteed to complete, even if one can prove that the computation
+would eventually terminate. We elaborate on this in the [solid state
+interpreter](#solid-state-intrepeter) section.
+ 
 Because Arvo is run on a VM, nondeterministic information such as the stack
 trace of an infinite loop that was entered into may be obtained. This is
 possible because while Arvo may be unable to obtain that information, the
@@ -155,6 +157,12 @@ To understand what we mean by _solid state_ interpreter, consider the operation 
 Contrast this with other popular operating systems, such as Windows, Mac, or Linux. The state of the operating system is something that crucially depends on having a constant power supply because much of the state of the operating system is stored in RAM, which is volatile. When you reboot your computer or suddenly lose power, any information stored in RAM is lost. Modern operating systems do mitigate this loss of information to some extent. For instance, it may remember what applications you were running at the time power was lost and try to restore them. Particularly durable programs may go as far as writing their state to disk every few seconds so that only very minimal information can be lost in a power outage. However, this is not the default behavior, and indeed if it were then they would be so slow as to be unusable, as you would effectively be using your hard disk as the RAM.
 
 How Arvo handles loss of power is closer to that of an SSD. Since it is an [ACID database](#acid-database) and a [single-level store](#single-level-store), a sudden loss of power have no effect on the state of the operating system. When you boot your ship back up it will be exactly as it was before the failure. Your information can never be lost, and because it was designed from the ground up to behave in this fashion, it does not suffer significant slowdown by persisting all data in this manner as would be the case if your typical operating system utilized its hard disk as RAM.
+
+Another way to describe a solid state interpreter is to think of it as a
+stateful packet transceiver. Imagine
+it as a chip. Plug this chip into power and network; packets go in and
+out, sometimes changing its state. The chip never loses data and has
+no concept of a reboot; every packet is an [ACID transaction](#acid-database).
 
 
 ### Over-the-air updates
