@@ -12,9 +12,9 @@ The word 'function' is used in various ways, but let's start by talking about th
 
 That output value depends solely upon input value(s) is an important property of functions.  This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and we make use of it throughout the Urbit software stack.
 
-Functions are implemented in Hoon with a special kind of core called a **gate**.  In this lesson you'll learn what a gate is and how a gate represents a function.  Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of [core](/docs/glossary/core/) called a **gate**.  In this lesson you'll learn what a [gate](/docs/glossary/gate/) is and how a [gate](/docs/glossary/gate/) represents a function.  Along the way you'll build some example [gate](/docs/glossary/gate/)s of your own.
 
-You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with gates, and you call them from the dojo in the following way:
+You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with [gate](/docs/glossary/gate/)s, and you call them from the dojo in the following way:
 
 ```
 > (add 2 3)
@@ -26,15 +26,15 @@ You've already used two functions from the Hoon standard library: `add` and `mul
 
 ## What is a Gate?
 
-A core is a cell: `[battery payload]`.
+A [core](/docs/glossary/core/) is a cell: `[battery [payload](/docs/glossary/payload/)]`.
 
-A gate is a core with two distinctive properties: (1) the battery of a gate contains exactly one arm, which has the special name `$`.  The `$` arm contains the instructions for the function in question.  And (2), the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` arm of the gate correctly.
+A [gate](/docs/glossary/gate/) is a [core](/docs/glossary/core/) with two distinctive properties: (1) the [battery](/docs/glossary/battery/) of a [gate](/docs/glossary/gate/) contains exactly one [arm](/docs/glossary/arm/), which has the special name `$`.  The `$` [arm](/docs/glossary/arm/) contains the instructions for the function in question.  And (2), the [payload](/docs/glossary/payload/) of a [gate](/docs/glossary/gate/) consists of a cell of `[sample context]`.  The sample is the part of the [payload](/docs/glossary/payload/) that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` [arm](/docs/glossary/arm/) of the [gate](/docs/glossary/gate/) correctly.
 
 ```
 Gate:  [$ [Sample Context]]
 ```
 
-As a tree, a gate looks like the following:
+As a tree, a [gate](/docs/glossary/gate/) looks like the following:
 
 ```
        Gate
@@ -44,11 +44,11 @@ As a tree, a gate looks like the following:
      Sample   Context
 ```
 
-Like all arms, `$` is computed with its parent core as the subject.  When `$` is computed, the resulting value is called the 'product' of the gate.  No other data is used to calculate the product other than the data in the gate itself.
+Like all [arm](/docs/glossary/arm/)s, `$` is computed with its parent [core](/docs/glossary/core/) as the subject.  When `$` is computed, the resulting value is called the 'product' of the [gate](/docs/glossary/gate/).  No other data is used to calculate the product other than the data in the [gate](/docs/glossary/gate/) itself.
 
 ## Creating Your First Gate
 
-Let's make a gate that takes any unsigned integer (i.e., an atom) as its sample and returns that value plus one as the product.  To do this we'll use the `|=` rune.  We'll bind this gate to the face `inc` for 'increment':
+Let's make a [gate](/docs/glossary/gate/) that takes any unsigned integer (i.e., an [atom](/docs/glossary/atom/)) as its sample and returns that value plus one as the product.  To do this we'll use the `|=` rune.  We'll bind this [gate](/docs/glossary/gate/) to the face `inc` for 'increment':
 
 ```
 > =inc |=(a=@ (add 1 a))
@@ -63,21 +63,21 @@ Let's make a gate that takes any unsigned integer (i.e., an atom) as its sample 
 124
 ```
 
-The gate works as promised -- it takes any number `n` and returns `n + 1`.  Let's take a closer look at what the `|=` is doing.
+The [gate](/docs/glossary/gate/) works as promised -- it takes any number `n` and returns `n + 1`.  Let's take a closer look at what the `|=` is doing.
 
 ### The `|=` Rune
 
-We typically use the `|=` rune to create a gate.  In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`.  The first defines the gate's sample (input value type), and the second defines the gate's product (value).
+We typically use the `|=` rune to create a [gate](/docs/glossary/gate/).  In the expression above the `|=` is immediately followed by a set of parentheses containing two subexpressions: `a=@` and `(add 1 a)`.  The first defines the [gate](/docs/glossary/gate/)'s sample (input value type), and the second defines the [gate](/docs/glossary/gate/)'s product (value).
 
-In the example gate above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an atom, `@`, meaning that the gate will take as input anything of that type.  The sample is given the face `a`.  With the face it's easier to refer to the sample in later code, if desired.
+In the example [gate](/docs/glossary/gate/) above, `inc`, the sample is defined by `a=@`.  This means that the sample is defined as an [atom](/docs/glossary/atom/), `@`, meaning that the [gate](/docs/glossary/gate/) will take as input anything of that type.  The sample is given the face `a`.  With the face it's easier to refer to the sample in later code, if desired.
 
 In `inc`, the product is defined by `(add 1 a)`.  There's not much to it -- it returns the value of `a + 1`!
 
-The second subexpression after the `|=` rune is used to build the gate's `$` arm.  That's where all the computations go.
+The second subexpression after the `|=` rune is used to build the [gate](/docs/glossary/gate/)'s `$` [arm](/docs/glossary/arm/).  That's where all the computations go.
 
 ## Anatomy of a Gate
 
-A gate is a one-armed core with a sample: `[$ [Sample Context]]`.  Let's go over these parts a little more carefully, using `inc` as our example.
+A [gate](/docs/glossary/gate/) is a one-armed [core](/docs/glossary/core/) with a sample: `[$ [Sample Context]]`.  Let's go over these parts a little more carefully, using `inc` as our example.
 
 ```
 > inc
@@ -91,9 +91,9 @@ A gate is a one-armed core with a sample: `[$ [Sample Context]]`.  Let's go over
 
 ### The `$` Arm
 
-The arm of a gate encodes the instructions for the Hoon function in question.
+The [arm](/docs/glossary/arm/) of a [gate](/docs/glossary/gate/) encodes the instructions for the Hoon function in question.
 
-The pretty printer represents the `$` arm of `inc` as `1.jgn`.  To see the actual noun of the `$` arm, enter `+2:inc` into the dojo:
+The pretty printer represents the `$` [arm](/docs/glossary/arm/) of `inc` as `1.jgn`.  To see the actual [noun](/docs/glossary/noun/) of the `$` [arm](/docs/glossary/arm/), enter `+2:inc` into the dojo:
 
 ```
 > +2:inc
@@ -102,20 +102,20 @@ The pretty printer represents the `$` arm of `inc` as `1.jgn`.  To see the actua
 
 This is un-computed Nock.  You don't need to understand any of this.
 
-It's worth pointing out that the arm name, `$`, can be used like any other name.  We can compute `$` directly with `$:inc` in the dojo:
+It's worth pointing out that the [arm](/docs/glossary/arm/) name, `$`, can be used like any other name.  We can compute `$` directly with `$:inc` in the dojo:
 
 ```
 > $:inc
 1
 ```
 
-This result may seem a bit strange.  We didn't call `inc` or in any other way pass it a number.  Yet using `$` to evaluate `inc`'s arm seems to work -- sort of, anyway.  Why is it giving us `1` as the return value?  We can answer this question after we understand gate samples a little better.
+This result may seem a bit strange.  We didn't call `inc` or in any other way pass it a number.  Yet using `$` to evaluate `inc`'s [arm](/docs/glossary/arm/) seems to work -- sort of, anyway.  Why is it giving us `1` as the return value?  We can answer this question after we understand [gate](/docs/glossary/gate/) samples a little better.
 
 ### The Sample
 
-The sample of a gate is the address reserved for storing the argument(s) to the Hoon function.  The sample is always at the head of the gate's tail, i.e., `+6`.
+The sample of a [gate](/docs/glossary/gate/) is the address reserved for storing the argument(s) to the Hoon function.  The sample is always at the head of the [gate](/docs/glossary/gate/)'s tail, i.e., `+6`.
 
-Let's look at the gate for `inc` again, paying particular attention to its sample:
+Let's look at the [gate](/docs/glossary/gate/) for `inc` again, paying particular attention to its sample:
 
 ```
 > inc
@@ -127,27 +127,27 @@ Let's look at the gate for `inc` again, paying particular attention to its sampl
 >
 ```
 
-We see `a/@`.  This may not be totally clear, but it should make _some_ sense.  This is the pretty-printer's way of indicating an atom with the face `a`.  Let's take a closer look:
+We see `a/@`.  This may not be totally clear, but it should make _some_ sense.  This is the pretty-printer's way of indicating an [atom](/docs/glossary/atom/) with the face `a`.  Let's take a closer look:
 
 ```
 > +6:inc
 a=0
 ```
 
-We see now that the sample of `inc` is the value `0`, and has `a` as a face.  This is a placeholder value for the function argument.  If you evaluate the `$` arm of `inc` without passing it an argument the placeholder value is used for the computation, and the return value will thus be `0 + 1`:
+We see now that the sample of `inc` is the value `0`, and has `a` as a face.  This is a placeholder value for the function argument.  If you evaluate the `$` [arm](/docs/glossary/arm/) of `inc` without passing it an argument the placeholder value is used for the computation, and the return value will thus be `0 + 1`:
 
 ```
 > $:inc
 1
 ```
 
-The placeholder value is sometimes called a **bunt** value.  The bunt value is determined by the input type; for atoms, `@`, the bunt value is `0`.
+The placeholder value is sometimes called a **bunt** value.  The bunt value is determined by the input type; for [atom](/docs/glossary/atom/)s, `@`, the bunt value is `0`.
 
-The face value of `a` comes from the way we defined the gate above: `|=(a=@ (add 1 a))`.  It was so we could use `a` to refer to the sample to generate the product with `(add 1 a)`.
+The face value of `a` comes from the way we defined the [gate](/docs/glossary/gate/) above: `|=(a=@ (add 1 a))`.  It was so we could use `a` to refer to the sample to generate the product with `(add 1 a)`.
 
 ### The Context
 
-The context of a gate contains other data that may be necessary for the `$` arm to evaluate correctly.  The context always located at the tail of the tail of the gate, i.e., `+7` of the gate.  There is no requirement that the context have any particular arrangement, though often it does.
+The context of a [gate](/docs/glossary/gate/) contains other data that may be necessary for the `$` [arm](/docs/glossary/arm/) to evaluate correctly.  The context always located at the tail of the tail of the [gate](/docs/glossary/gate/), i.e., `+7` of the [gate](/docs/glossary/gate/).  There is no requirement that the context have any particular arrangement, though often it does.
 
 Let's look at the context of `inc`:
 
@@ -164,11 +164,11 @@ Let's look at the context of `inc`:
 ]
 ```
 
-This is exactly the default dojo subject, from before we put `inc` into the subject.  The `|=` expression defines the context as whatever the subject is.  This guarantees that the context has all the information it needs to have for the `$` arm to work correctly.
+This is exactly the default dojo subject, from before we put `inc` into the subject.  The `|=` expression defines the context as whatever the subject is.  This guarantees that the context has all the information it needs to have for the `$` [arm](/docs/glossary/arm/) to work correctly.
 
 ### Exercise 1.4.1a
 
-Write a gate that takes an atom, `a=@`, and which returns double the value of `a`.  Bind this gate to `double` and test it in the dojo.  A solution is given at the end of this lesson.
+Write a [gate](/docs/glossary/gate/) that takes an [atom](/docs/glossary/atom/), `a=@`, and which returns double the value of `a`.  Bind this [gate](/docs/glossary/gate/) to `double` and test it in the dojo.  A solution is given at the end of this lesson.
 
 ## Gates Define Functions of the Sample
 
@@ -181,11 +181,11 @@ In Hoon one can use `(gate arg)` syntax to make a function call.  For example,
 235
 ```
 
-The name of the gate is `inc`.  How is the `$` arm of `inc` evaluated?  When a function call occurs, a copy of the `inc` gate is created, but with one modification; the sample is replaced with the function argument.  Then the `$` arm is computed against this modified version of the `inc` gate.
+The name of the [gate](/docs/glossary/gate/) is `inc`.  How is the `$` [arm](/docs/glossary/arm/) of `inc` evaluated?  When a function call occurs, a copy of the `inc` [gate](/docs/glossary/gate/) is created, but with one modification; the sample is replaced with the function argument.  Then the `$` [arm](/docs/glossary/arm/) is computed against this modified version of the `inc` [gate](/docs/glossary/gate/).
 
-Remember that the default or 'bunt' value of the sample of `inc` is `0`.  In the function call above, a copy of the `inc` gate is made but with a sample value of `234`.  When `$` is computed against this modified core, the product is `235`.
+Remember that the default or 'bunt' value of the sample of `inc` is `0`.  In the function call above, a copy of the `inc` [gate](/docs/glossary/gate/) is made but with a sample value of `234`.  When `$` is computed against this modified [core](/docs/glossary/core/), the product is `235`.
 
-Notice that neither the arm nor the context is modified before the arm is evaluated.  That means that the only part of the gate that changes before the arm evaluation is the sample.  Hence, we may understand each gate as defining a function whose argument is the sample.  If you call a gate with the same sample, you'll get the same value returned to you every time.
+Notice that neither the [arm](/docs/glossary/arm/) nor the context is modified before the [arm](/docs/glossary/arm/) is evaluated.  That means that the only part of the [gate](/docs/glossary/gate/) that changes before the [arm](/docs/glossary/arm/) evaluation is the sample.  Hence, we may understand each [gate](/docs/glossary/gate/) as defining a function whose argument is the sample.  If you call a [gate](/docs/glossary/gate/) with the same sample, you'll get the same value returned to you every time.
 
 Let's unbind `inc` to keep the subject tidy:
 
@@ -198,7 +198,7 @@ Let's unbind `inc` to keep the subject tidy:
 
 ### Modifying the Context of a Gate
 
-It _is_ possible to modify the context of a gate when you make a function call; or, to be more precise, it's possible to call a mutant copy of the gate in which the context is modified.  To illustrate this let's use another example gate.  Let's write a gate which uses a value from the context to generate the product.  Bind `b` to the value `10`:
+It _is_ possible to modify the context of a [gate](/docs/glossary/gate/) when you make a function call; or, to be more precise, it's possible to call a mutant copy of the [gate](/docs/glossary/gate/) in which the context is modified.  To illustrate this let's use another example [gate](/docs/glossary/gate/).  Let's write a [gate](/docs/glossary/gate/) which uses a value from the context to generate the product.  Bind `b` to the value `10`:
 
 ```
 > =b 10
@@ -207,7 +207,7 @@ It _is_ possible to modify the context of a gate when you make a function call; 
 10
 ```
 
-Now let's write a gate called `ten` that adds `b` to the input value:
+Now let's write a [gate](/docs/glossary/gate/) called `ten` that adds `b` to the input value:
 
 ```
 > =ten |=(a=@ (add a b))
@@ -258,7 +258,7 @@ Before finishing the lesson let's unbind `ten`:
 
 ## Exercise 1.4.1a Solution
 
-Write a gate that takes an atom, `a=@`, and which returns double the value of `a`.  Bind this gate to `double` and test it in the dojo.
+Write a [gate](/docs/glossary/gate/) that takes an [atom](/docs/glossary/atom/), `a=@`, and which returns double the value of `a`.  Bind this [gate](/docs/glossary/gate/) to `double` and test it in the dojo.
 
 ```
 > =double |=(a=@ (mul 2 a))

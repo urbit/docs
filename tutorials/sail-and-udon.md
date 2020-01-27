@@ -310,9 +310,9 @@ following command in your Dojo:
 33
 ```
 
-This should work, producing `33`, an atom. That’s our problem. The
+This should work, producing `33`, an [atom](/docs/glossary/atom/). That’s our problem. The
 interpolation expression expects a tape, but our first command tried to
-interpolate with something that results in an atom. Try this now:
+interpolate with something that results in an [atom](/docs/glossary/atom/). Try this now:
 
 ```
 > <(mul 3 11)>
@@ -476,8 +476,8 @@ the source code.
 This code chunk is a series of conditionals that checks the host ship’s name to
 see what its value is.
 
-The first line, `=+  wid=(met 3 p.bem.gas)`, combines a new noun with the
-subject and gives it the face `wid`. This noun is produced by the the
+The first line, `=+  wid=(met 3 p.bem.gas)`, combines a new [noun](/docs/glossary/noun/) with the
+subject and gives it the face `wid`. This [noun](/docs/glossary/noun/) is produced by the the
 standard-library function [`met`](/docs/reference/library/2c), which measures the number of
 [blocks](/docs/reference/library/1c/) of size `a` within `b`. Blocks are units that have a
 bitwidth of `2^a`. So, in this case, it measures how many bytes (blocks of size
@@ -490,8 +490,8 @@ less-than-or-equal-to function, to determine if `wid` is of a given size. The
 result of this series of tests is added to the subject and given the face
 `what-kind`.
 
-Ship names are simply another representation of atoms, and ship
-categories are different ranges of possible atomic values. Because of this, we
+Ship names are simply another representation of [atom](/docs/glossary/atom/)s, and ship
+categories are different ranges of possible [atom](/docs/glossary/atom/)ic values. Because of this, we
 perform less-than tests to see what kind of ship is running the web-server.
 
 ```
@@ -583,7 +583,7 @@ should be displayed in the form of an unsigned decimal.
 ```
 
 `trip` is a function that takes a `cord` and produces a `tape`. A piece of
-data of the cord type is one big atom formed from adjacent unicode bytes and
+data of the cord type is one big [atom](/docs/glossary/atom/) formed from adjacent unicode bytes and
 delineated by `''`. Remember that all text rendered in Sail  is treated as a
 tape. So, by converting `~lodleb-ritrul` to a tape, it can be included in the
 tape that we are trying to insert it into without getting a type error.
@@ -740,8 +740,8 @@ below is valid front matter.
     ==
 ```
 
-Note that `~2018.9.12`, `~lodleb-ritrul`, and `'rad'` are all of of atom
-types: `@da`(date), `@p` (ship name), and `@t` (cord), respectively. Only atom
+Note that `~2018.9.12`, `~lodleb-ritrul`, and `'rad'` are all of of [atom](/docs/glossary/atom/)
+types: `@da`(date), `@p` (ship name), and `@t` (cord), respectively. Only [atom](/docs/glossary/atom/)
 types work here. Having `music/"rad"` would prevent the source file from
 parsing.
 
@@ -1048,18 +1048,18 @@ throughout this guide to `format text` to distinguish code from prose.
 `*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp's `apply`.
 
 Also, using the `++` prefix before a word will cause the word to be rendered as
-code with the `++` displayed, since that's the standard notation for an arm in
+code with the `++` displayed, since that's the standard notation for an [arm](/docs/glossary/arm/) in
 Hoon.
 
 **Example:**
 
 ```
-The ++add arm is used to sum two numbers.
+The ++add [arm](/docs/glossary/arm/) is used to sum two numbers.
 ```
 
 **Produces:**
 
-The `++add` arm is used to sum two numbers.
+The `++add` [arm](/docs/glossary/arm/) is used to sum two numbers.
 
 #### Block Code Literal
 

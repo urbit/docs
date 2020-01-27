@@ -287,59 +287,59 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
 (ns anock.core
   (:import anock.NockException))
 
-(declare atom? cell? cell)
+(declare [atom](/docs/glossary/atom/)? cell? cell)
 
-(defn noun?
-  "A noun is an atom or a cell."
+(defn [noun](/docs/glossary/noun/)?
+  "A [noun](/docs/glossary/noun/) is an [atom](/docs/glossary/atom/) or a cell."
   [noun & ns]
   (if ns false
-      (or (atom? noun) (cell? noun))))
+      (or (atom? [noun](/docs/glossary/noun/)) (cell? [noun](/docs/glossary/noun/)))))
 
-(defn atom?
-  "An atom is a natural number."
+(defn [atom](/docs/glossary/atom/)?
+  "An [atom](/docs/glossary/atom/) is a natural number."
   [noun & ns]
   (if ns false
-   (and (integer? noun) (>= noun 0))))
+   (and (integer? [noun](/docs/glossary/noun/)) (>= [noun](/docs/glossary/noun/) 0))))
 
 (defn cell?
-  "A cell is an ordered pair of nouns."
+  "A cell is an ordered pair of [noun](/docs/glossary/noun/)s."
   [noun]
   (cond
-   (atom? noun) false
-   (nil? noun) false
-   (not= 2 (count noun)) false
-   :else (and (noun? (first noun))
-              (noun? (second noun)))))
+   (atom? [noun](/docs/glossary/noun/)) false
+   (nil? [noun](/docs/glossary/noun/)) false
+   (not= 2 (count [noun](/docs/glossary/noun/))) false
+   :else (and (noun? (first [noun](/docs/glossary/noun/)))
+              (noun? (second [noun](/docs/glossary/noun/))))))
 
 (defn tis
   "= (pronounced 'tis') tests a cell for equality."
   [noun]
-  (if (atom? noun) (throw (anock.NockException. "Cannot tis an atom."))
-      (let [[a b] noun]
+  (if (atom? [noun](/docs/glossary/noun/)) (throw (anock.NockException. "Cannot tis an [atom](/docs/glossary/atom/)."))
+      (let [[a b] [noun](/docs/glossary/noun/)]
         (if (= a b) 0 1))))
 
 (defn wut
-  "? (pronounced 'wut') tests whether a noun is a cell."
+  "? (pronounced 'wut') tests whether a [noun](/docs/glossary/noun/) is a cell."
   [noun]
   (cond
-   (atom? noun) 1
-   (cell? noun) 0
-   :else (throw (anock.NockException. "Invalid noun."))))
+   (atom? [noun](/docs/glossary/noun/)) 1
+   (cell? [noun](/docs/glossary/noun/)) 0
+   :else (throw (anock.NockException. "Invalid [noun](/docs/glossary/noun/)."))))
 
 (defn lus
-  "+ (pronounced 'lus') adds 1 to an atom."
+  "+ (pronounced 'lus') adds 1 to an [atom](/docs/glossary/atom/)."
   [noun]
-  (if (atom? noun) (inc noun)
-      (throw (anock.NockException. "Can only lus atoms."))))
+  (if (atom? [noun](/docs/glossary/noun/)) (inc [noun](/docs/glossary/noun/))
+      (throw (anock.NockException. "Can only lus [atom](/docs/glossary/atom/)s."))))
 
 (defn fas
   "/ (pronounced 'fas') is a tree address function."
   [noun]
-  (if (atom? noun) (throw (anock.NockException. "Cannot fas an atom."))
-      (let [[a b] (cell noun)]
-        (assert (and (pos? a) (atom? a)) "Subject of fas must be a positive atom.")
+  (if (atom? [noun](/docs/glossary/noun/)) (throw (anock.NockException. "Cannot fas an [atom](/docs/glossary/atom/)."))
+      (let [[a b] (cell [noun](/docs/glossary/noun/))]
+        (assert (and (pos? a) (atom? a)) "Subject of fas must be a positive [atom](/docs/glossary/atom/).")
         (if (and (not (coll? b)) (or (= 2 a) (= 3 a)))
-          (throw (anock.NockException. (str "Cannot fas noun: " noun))))
+          (throw (anock.NockException. (str "Cannot fas [noun](/docs/glossary/noun/): " [noun](/docs/glossary/noun/)))))
         (cond
           (= 1 a) b
           (= 2 a) (first b)
@@ -350,9 +350,9 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
 (defn tar
   "* (pronounced 'tar') means Nock"
   [noun]
-  (if (atom? noun) (throw (anock.NockException. "Cannot tar an atom."))
+  (if (atom? [noun](/docs/glossary/noun/)) (throw (anock.NockException. "Cannot tar an [atom](/docs/glossary/atom/)."))
       (try
-        (let [noun (cell noun) [x [y z]] noun]
+        (let [noun (cell [noun](/docs/glossary/noun/)) [x [y z]] [noun](/docs/glossary/noun/)]
           (cond
             (cell? y) (cell (tar [x y]) (tar [x z]))
             (zero? y) (fas [z x])
@@ -372,7 +372,7 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
                                  (tar [x 8 (second p) 7 [0 3] q])
                                  (tar [x q]))))))
         (catch RuntimeException e
-          (throw (anock.NockException. (str "Cannot tar the noun " noun)))))))
+          (throw (anock.NockException. (str "Cannot tar the [noun](/docs/glossary/noun/) " [noun](/docs/glossary/noun/))))))))
 
 (def nock tar)
 
@@ -387,15 +387,15 @@ From [Matt Earnshaw](https://github.com/mattearnshaw/anock/blob/master/src/anock
   [[a & b :as c]]
   (let [b (vec b)]
     (cond
-      (and (noun? a) (apply noun? b)) (vec c)
-      (apply noun? b) (apply vector (bracket a) b)
+      (and (noun? a) (apply [noun](/docs/glossary/noun/)? b)) (vec c)
+      (apply [noun](/docs/glossary/noun/)? b) (apply vector (bracket a) b)
       (noun? a) [a (apply* bracket b)]
       :else [(bracket a) (apply* bracket b)])))
 
-(defn cell [& nouns]
-  (if (apply atom? nouns)
-    (throw (anock.NockException. "Cannot convert atom to cell."))
-    (apply* bracket nouns)))
+(defn cell [& [noun](/docs/glossary/noun/)s]
+  (if (apply [atom](/docs/glossary/atom/)? [noun](/docs/glossary/noun/)s)
+    (throw (anock.NockException. "Cannot convert [atom](/docs/glossary/atom/) to cell."))
+    (apply* bracket [noun](/docs/glossary/noun/)s)))
 ```
 
 ## C#
@@ -415,7 +415,7 @@ namespace NockInterpreter
     {
         static Dictionary<string, Noun> memocache = new Dictionary<string, Noun>();
 
-        public static Noun Nock(Noun noun)
+        public static Noun Nock(Noun [noun](/docs/glossary/noun/))
         {
         Start:
             Noun cache_noun;
@@ -425,10 +425,10 @@ namespace NockInterpreter
             }
 
             if (Atom.IsAtom(noun))
-                throw new Exception("Infinite loop nocking an atom: " + noun.ToString());
+                throw new Exception("Infinite loop nocking an [atom](/docs/glossary/atom/): " + [noun](/docs/glossary/noun/).ToString());
             else
             {
-                Noun subject = noun.n1;
+                Noun subject = [noun](/docs/glossary/noun/).n1;
                 if (Noun.IsCell(noun.n2))
                 {
                     Cell formula = (Cell)noun.n2;
@@ -450,7 +450,7 @@ namespace NockInterpreter
                                 {
                                     Noun a = Nock(subject, operands.n1);
                                     Noun b = Nock(subject, operands.n2);
-                                    noun = Noun.CreateNoun(a, b);
+                                    [noun](/docs/glossary/noun/) = Noun.CreateNoun(a, b);
                                     goto Start;
                                     //                                    return Nock(Nock(subject, operands.n1), Nock(subject, operands.n2));
                                 }
@@ -470,7 +470,7 @@ namespace NockInterpreter
                                     Noun b = operands.n1;
                                     Noun c = operands.n2.n1;
                                     Noun d = operands.n2.n2;
-                                    noun = Noun.CreateNoun("[" + subject + " 2 [0 1] 2 [1 " + c + " " + d + "] [1 0] 2 [1 2 3] [1 0] 4 4 " + b + "]");
+                                    [noun](/docs/glossary/noun/) = Noun.CreateNoun("[" + subject + " 2 [0 1] 2 [1 " + c + " " + d + "] [1 0] 2 [1 2 3] [1 0] 4 4 " + b + "]");
                                     goto Start;
                                     //                                    return Nock(Noun.CreateNoun("[" + subject + " 2 [0 1] 2 [1 " + c + " " + d + "] [1 0] 2 [1 2 3] [1 0] 4 4 " + b + "]"));
                                 }
@@ -480,7 +480,7 @@ namespace NockInterpreter
                                 {
                                     Noun b = operands.n1;
                                     Noun c = operands.n2;
-                                    noun = Noun.CreateNoun("[" + subject + " 2 " + b + " 1 " + c + "]");
+                                    [noun](/docs/glossary/noun/) = Noun.CreateNoun("[" + subject + " 2 " + b + " 1 " + c + "]");
                                     goto Start;
                                     //                                    return Nock(Noun.CreateNoun("[" + subject + " 2 " + b + " 1 " + c + "]"));
                                 }
@@ -490,7 +490,7 @@ namespace NockInterpreter
                                 {
                                     Noun b = operands.n1;
                                     Noun c = operands.n2;
-                                    noun = Noun.CreateNoun("[" + subject + " 7 [[7 [0 1] " + b + "] 0 1] " + c + "]");
+                                    [noun](/docs/glossary/noun/) = Noun.CreateNoun("[" + subject + " 7 [[7 [0 1] " + b + "] 0 1] " + c + "]");
                                     goto Start;
                                     //                                    return Nock(Noun.CreateNoun("[" + subject + " 7 [[7 [0 1] " + b + "] 0 1] " + c + "]"));
                                 }
@@ -500,7 +500,7 @@ namespace NockInterpreter
                                 {
                                     Noun b = operands.n1;
                                     Noun c = operands.n2;
-                                    noun = Noun.CreateNoun("[" + subject + " 7 " + c + " 2 [0 1] 0 " + b + "]");
+                                    [noun](/docs/glossary/noun/) = Noun.CreateNoun("[" + subject + " 7 " + c + " 2 [0 1] 0 " + b + "]");
                                     goto Start;
                                     //                                    return Nock(Noun.CreateNoun("[" + subject + " 7 " + c + " 2 [0 1] 0 " + b + "]"));
                                 }
@@ -513,14 +513,14 @@ namespace NockInterpreter
                                         Noun b = operands.n1.n1;
                                         Noun c = operands.n1.n2;
                                         Noun d = operands.n2;
-                                        noun = Noun.CreateNoun("[" + subject + " 8 " + c + " 7 [0 3] " + d + "]");
+                                        [noun](/docs/glossary/noun/) = Noun.CreateNoun("[" + subject + " 8 " + c + " 7 [0 3] " + d + "]");
                                         goto Start;
                                         //                                        return Nock(Noun.CreateNoun("[" + subject + " 8 " + c + " 7 [0 3] " + d + "]"));
                                     }
                                     else // 37 ::    *[a 10 b c]      *[a c]
                                     {
                                         Noun c = operands.n2;
-                                        noun = Noun.CreateNoun(subject, c);
+                                        [noun](/docs/glossary/noun/) = Noun.CreateNoun(subject, c);
                                         goto Start;
                                         //                                        return Nock(subject, c);
                                     }
@@ -542,20 +542,20 @@ namespace NockInterpreter
 
         public static Noun Nock(string program)
         {
-            Noun noun = Noun.CreateNoun(program);
+            Noun [noun](/docs/glossary/noun/) = Noun.CreateNoun(program);
             return Nock(noun);
         }
 
         public static Noun Nock(Noun n1, Noun n2)
         {
-            Noun noun = Noun.CreateNoun(n1, n2);
+            Noun [noun](/docs/glossary/noun/) = Noun.CreateNoun(n1, n2);
             return Nock(noun);
         }
 
-        private static Noun tis(Noun noun)
+        private static Noun tis(Noun [noun](/docs/glossary/noun/))
         {
             if (Noun.IsAtom(noun.ToString()))
-                throw new Exception("Infinite loop tising an atom: " + noun.ToString());
+                throw new Exception("Infinite loop tising an [atom](/docs/glossary/atom/): " + [noun](/docs/glossary/noun/).ToString());
             else
             {
                 Cell cell = (Cell)noun;
@@ -567,7 +567,7 @@ namespace NockInterpreter
             }
         }
 
-        private static Noun lus(Noun noun)
+        private static Noun lus(Noun [noun](/docs/glossary/noun/))
         {
             if (Noun.IsAtom(noun.ToString()))
             {
@@ -576,10 +576,10 @@ namespace NockInterpreter
                 return Noun.CreateNoun(v.ToString());
             }
             else
-                throw new Exception("Infinite loop lusing a cell: " + noun.ToString());
+                throw new Exception("Infinite loop lusing a cell: " + [noun](/docs/glossary/noun/).ToString());
         }
 
-        private static Noun wut(Noun noun)
+        private static Noun wut(Noun [noun](/docs/glossary/noun/))
         {
             if (Noun.IsAtom(noun.ToString()))
                 return Noun.CreateNoun("1");
@@ -589,20 +589,20 @@ namespace NockInterpreter
 
         private static Noun fas(Noun n1, Noun n2)
         {
-            Noun noun = Noun.CreateNoun(n1, n2);
+            Noun [noun](/docs/glossary/noun/) = Noun.CreateNoun(n1, n2);
             return fas(noun);
         }
 
-        private static Noun fas(Noun noun)
+        private static Noun fas(Noun [noun](/docs/glossary/noun/))
         {
             if (Noun.IsAtom(noun.ToString()))
-                throw new Exception("Infinite loop fasing an atom: " + noun.ToString());
+                throw new Exception("Infinite loop fasing an [atom](/docs/glossary/atom/): " + [noun](/docs/glossary/noun/).ToString());
             else
             {
                 Cell c = (Cell)noun;
-                // If n1 isn't an atom, I assume we throw? This isn't defined in the spec. Confirmed by John B by email. This spins forever.
+                // If n1 isn't an [atom](/docs/glossary/atom/), I assume we throw? This isn't defined in the spec. Confirmed by John B by email. This spins forever.
                 if (Noun.IsCell(c.n1.ToString()))
-                    throw new Exception("Axis must be an atom: " + c.ToString());
+                    throw new Exception("Axis must be an [atom](/docs/glossary/atom/): " + c.ToString());
                 else
                 {
                     Atom a = (Atom)c.n1;
@@ -648,7 +648,7 @@ namespace NockInterpreter
         public Noun n1;
         public Noun n2;
 
-        // takes a program, returns a pair of nouns, stringified.
+        // takes a program, returns a pair of [noun](/docs/glossary/noun/)s, stringified.
         public static Tuple<string, string> SplitCell(string program)
         {
 
@@ -671,7 +671,7 @@ namespace NockInterpreter
                             string a = program.Substring(1, i - 1);
                             string b = program.Substring(i + 1, program.Length - (i + 2));
 
-                            // to implement proper bracket closing, surround b with brackets if it isn't a cell and isn't an atom
+                            // to implement proper bracket closing, surround b with brackets if it isn't a cell and isn't an [atom](/docs/glossary/atom/)
                             if (!IsCell(b) && !IsAtom(b))
                                 b = "[" + b + "]";
                             Tuple<string, string> tuple = new Tuple<string, string>(a, b);
@@ -785,12 +785,12 @@ namespace NockInterpreter
             return false;
         }
 
-        public static bool IsAtom(Noun noun)
+        public static bool IsAtom(Noun [noun](/docs/glossary/noun/))
         {
             return IsAtom(noun.ToString());
         }
 
-        public static bool IsCell(Noun noun)
+        public static bool IsCell(Noun [noun](/docs/glossary/noun/))
         {
             return IsCell(noun.ToString());
         }
@@ -1195,8 +1195,8 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
   'use strict'
 
   /**
-   * Nock is a combinator interpreter on nouns. A noun is an atom or a cell.
-   * An atom is an unsigned integer of any size; a cell is an ordered pair of nouns.
+   * Nock is a combinator interpreter on [noun](/docs/glossary/noun/)s. A [noun](/docs/glossary/noun/) is an [atom](/docs/glossary/atom/) or a cell.
+   * An [atom](/docs/glossary/atom/) is an unsigned integer of any size; a cell is an ordered pair of [noun](/docs/glossary/noun/)s.
    *
    * @see http://urbit.org/docs/nock/definition/
    * @see https://media.urbit.org/whitepaper.pdf
@@ -1207,15 +1207,15 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
   /*
    *  code conventions:
    *
-   *    `n` is a noun,
-   *    `s` is a subject noun,
+   *    `n` is a [noun](/docs/glossary/noun/),
+   *    `s` is a subject [noun](/docs/glossary/noun/),
    *    `f` is a formula (or cell of formulas)
    */
 
   /*  operators  */
 
   /**
-   * wut (?): test for atom (1) or cell (0)
+   * wut (?): test for [atom](/docs/glossary/atom/) (1) or cell (0)
    *
    *   ?[a b]           0
    *   ?a               1
@@ -1225,7 +1225,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
   }
 
   /**
-   * lus (+): increment an atom
+   * lus (+): increment an [atom](/docs/glossary/atom/)
    *
    *   +[a b]           +[a b]
    *   +a               1 + a
@@ -1243,7 +1243,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
    *   =a               =a
    */
   function tis (n) {
-    if (wut(n) === 1) throw new Error('tis atom')
+    if (wut(n) === 1) throw new Error('tis [atom](/docs/glossary/atom/)')
     return deepEqual(n[0], n[1]) ? 0 : 1
   }
 
@@ -1258,7 +1258,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
    *   /a               /a
    */
   function fas (addr, n) {
-    if (n === undefined) throw new Error('invalid fas noun')
+    if (n === undefined) throw new Error('invalid fas [noun](/docs/glossary/noun/)')
     if (addr === 0) throw new Error('invalid fas addr: 0')
 
     if (addr === 1) return n
@@ -1320,7 +1320,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
   }
 
   /**
-   * eq (5): test for equality between nouns in the product
+   * eq (5): test for equality between [noun](/docs/glossary/noun/)s in the product
    *
    *   *[a 5 b]         =*[a b]
    */
@@ -1379,7 +1379,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
   }
 
   /**
-   * invoke (9): construct a core and evaluate one of its arms against it
+   * invoke (9): construct a [core](/docs/glossary/core/) and evaluate one of its [arm](/docs/glossary/arm/)s against it
    *
    *   *[a 9 b c]  *[a 7 c 2 [0 1] 0 b]
    */
@@ -1435,7 +1435,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
     return formulas[idx](s, f[1])
   }
 
-  /* construct a JS noun (group an array into pairs, associating right) */
+  /* construct a JS [noun](/docs/glossary/noun/) (group an array into pairs, associating right) */
   function assoc (x) {
     if (!x.length) return x
 
@@ -1458,7 +1458,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
     return true
   }
 
-  /* parse a hoon-serialized nock formula and construct a JS noun */
+  /* parse a hoon-serialized nock formula and construct a JS [noun](/docs/glossary/noun/) */
   function parseNoun (x) {
     if (Array.isArray(x)) return assoc(x)
 
@@ -1472,7 +1472,7 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
 
   function nockInterface () {
     var args = [].slice.call(arguments)
-    var subject, formula, noun
+    var subject, formula, [noun](/docs/glossary/noun/)
 
     if (args.length === 1) {
       formula = parseNoun(args[0])
@@ -1480,9 +1480,9 @@ From [Joe Bryan](https://github.com/joemfb/nock.js/blob/master/nock.js):
       subject = parseNoun(args[0])
       formula = parseNoun(args[1])
     } else {
-      noun = assoc(args)
-      subject = noun[0]
-      formula = noun[1]
+      [noun](/docs/glossary/noun/) = assoc(args)
+      subject = [noun](/docs/glossary/noun/)[0]
+      formula = [noun](/docs/glossary/noun/)[1]
     }
 
     if (!formula) throw new Error('formula required')
@@ -1566,14 +1566,14 @@ def wut(noun):
 # +
 def lus(noun):
     if isinstance(noun, int):
-        return 1 + noun
+        return 1 + [noun](/docs/glossary/noun/)
     else:
-        return noun
+        return [noun](/docs/glossary/noun/)
 
 
 # =
 def tis(noun):
-    if noun[0] == noun[1]:
+    if [noun](/docs/glossary/noun/)[0] == [noun](/docs/glossary/noun/)[1]:
         return 0
     else:
         return 1
@@ -1581,47 +1581,47 @@ def tis(noun):
 
 # /
 def slot(noun):
-    if noun[0] == 1:
-        return noun[1]
-    elif noun[0] == 2:
-        return noun[1][0]
-    elif noun[0] == 3:
-        return noun[1][1]
-    elif noun[0] % 2 == 0:
-        return slot((2, slot((noun[0] // 2, noun[1]))))
-    elif noun[0] % 2 == 1:
-        return slot((3, slot(((noun[0] - 1) // 2, noun[1]))))
+    if [noun](/docs/glossary/noun/)[0] == 1:
+        return [noun](/docs/glossary/noun/)[1]
+    elif [noun](/docs/glossary/noun/)[0] == 2:
+        return [noun](/docs/glossary/noun/)[1][0]
+    elif [noun](/docs/glossary/noun/)[0] == 3:
+        return [noun](/docs/glossary/noun/)[1][1]
+    elif [noun](/docs/glossary/noun/)[0] % 2 == 0:
+        return slot((2, slot((noun[0] // 2, [noun](/docs/glossary/noun/)[1]))))
+    elif [noun](/docs/glossary/noun/)[0] % 2 == 1:
+        return slot((3, slot(((noun[0] - 1) // 2, [noun](/docs/glossary/noun/)[1]))))
 
 
 def tar(noun):
     if isinstance(noun[1][0], int):
-        if noun[1][0] == 0:
-            return slot((noun[1][1], noun[0]))
-        elif noun[1][0] == 1:
-            return noun[1][1]
-        elif noun[1][0] == 2:
-            return nock((nock((noun[0], noun[1][1][0])), nock((noun[0], noun[1][1][1]))))
-        elif noun[1][0] == 3:
-            return wut(nock((noun[0], noun[1][1])))
-        elif noun[1][0] == 4:
-            return lus(nock((noun[0], noun[1][1])))
-        elif noun[1][0] == 5:
-            return tis(nock((noun[0], noun[1][1])))
-        elif noun[1][0] == 6:
-            return nock(l(noun[0], 2, (0, 1), 2, l(1, noun[1][1][1][0], noun[1][1][1][1]), (1, 0), 2, l(1, 2, 3), (1, 0), 4, 4, noun[1][1][0]))
-        elif noun[1][0] == 7:
-            return nock(l(noun[0], 2, noun[1][1][0], 1, noun[1][1][1]))
-        elif noun[1][0] == 8:
-            return nock(l(noun[0], 7, l(l(7, (0, 1), noun[1][1][0]), 0, 1), noun[1][1][1]))
-        elif noun[1][0] == 9:
-            return nock(l(noun[0], 7, noun[1][1][1], l(2, (0, 1), (0, noun[1][1][0]))))
-        elif noun[1][0] == 10:
+        if [noun](/docs/glossary/noun/)[1][0] == 0:
+            return slot((noun[1][1], [noun](/docs/glossary/noun/)[0]))
+        elif [noun](/docs/glossary/noun/)[1][0] == 1:
+            return [noun](/docs/glossary/noun/)[1][1]
+        elif [noun](/docs/glossary/noun/)[1][0] == 2:
+            return nock((nock((noun[0], [noun](/docs/glossary/noun/)[1][1][0])), nock((noun[0], [noun](/docs/glossary/noun/)[1][1][1]))))
+        elif [noun](/docs/glossary/noun/)[1][0] == 3:
+            return wut(nock((noun[0], [noun](/docs/glossary/noun/)[1][1])))
+        elif [noun](/docs/glossary/noun/)[1][0] == 4:
+            return lus(nock((noun[0], [noun](/docs/glossary/noun/)[1][1])))
+        elif [noun](/docs/glossary/noun/)[1][0] == 5:
+            return tis(nock((noun[0], [noun](/docs/glossary/noun/)[1][1])))
+        elif [noun](/docs/glossary/noun/)[1][0] == 6:
+            return nock(l(noun[0], 2, (0, 1), 2, l(1, [noun](/docs/glossary/noun/)[1][1][1][0], [noun](/docs/glossary/noun/)[1][1][1][1]), (1, 0), 2, l(1, 2, 3), (1, 0), 4, 4, [noun](/docs/glossary/noun/)[1][1][0]))
+        elif [noun](/docs/glossary/noun/)[1][0] == 7:
+            return nock(l(noun[0], 2, [noun](/docs/glossary/noun/)[1][1][0], 1, [noun](/docs/glossary/noun/)[1][1][1]))
+        elif [noun](/docs/glossary/noun/)[1][0] == 8:
+            return nock(l(noun[0], 7, l(l(7, (0, 1), [noun](/docs/glossary/noun/)[1][1][0]), 0, 1), [noun](/docs/glossary/noun/)[1][1][1]))
+        elif [noun](/docs/glossary/noun/)[1][0] == 9:
+            return nock(l(noun[0], 7, [noun](/docs/glossary/noun/)[1][1][1], l(2, (0, 1), (0, [noun](/docs/glossary/noun/)[1][1][0]))))
+        elif [noun](/docs/glossary/noun/)[1][0] == 10:
             if isinstance(noun[1][1][0], int):
-                return nock((noun[0], noun[1][1][1]))
+                return nock((noun[0], [noun](/docs/glossary/noun/)[1][1][1]))
             else:
-                return nock(l(noun[0], 8, noun[1][1][0][1], 7, (0, 3), noun[1][1][1][0]))
+                return nock(l(noun[0], 8, [noun](/docs/glossary/noun/)[1][1][0][1], 7, (0, 3), [noun](/docs/glossary/noun/)[1][1][1][0]))
     else:
-        return (nock((noun[0], noun[1][0])), nock((noun[0], noun[1][1])))
+        return (nock((noun[0], [noun](/docs/glossary/noun/)[1][0])), nock((noun[0], [noun](/docs/glossary/noun/)[1][1])))
 ```
 
 ## Ruby
@@ -1666,8 +1666,8 @@ def wut(arr)
 end
 
 def lus(atom)
-  raise "not an atom" unless atom.is_a?(Fixnum)
-  atom + 1
+  raise "not an [atom](/docs/glossary/atom/)" unless [atom](/docs/glossary/atom/).is_a?(Fixnum)
+  [atom](/docs/glossary/atom/) + 1
 end
 
 def tis(arr)
@@ -1676,7 +1676,7 @@ def tis(arr)
 end
 
 def slot(axis, arr, allow_error = true)
-  raise "axis on atom" unless arr.is_a?(Array)
+  raise "axis on [atom](/docs/glossary/atom/)" unless arr.is_a?(Array)
   return arr if axis == 1
   return arr[0] if axis == 2
   return arr[1] if axis == 3
@@ -1686,7 +1686,7 @@ end
 
 
 def nock(arr)
-  raise "error: nocking an atom" unless arr.is_a?(Array)
+  raise "error: nocking an [atom](/docs/glossary/atom/)" unless arr.is_a?(Array)
 
   oper = slot(4, arr)
   a    = slot(2, arr)
@@ -1768,7 +1768,7 @@ package object nnnock {
   case class Atom( value : Int ) extends Noun;
   case class Cell( head : Noun, tail : Noun ) extends Noun;
   implicit def toAtom( value : Int ) : Atom = Atom( value );
-  implicit def toInt( atom : Atom ) : Int = atom.value;
+  implicit def toInt( [atom](/docs/glossary/atom/) : Atom ) : Int = [atom](/docs/glossary/atom/).value;
 
   def nock( a : Noun ) : Noun = *(a)
 
@@ -1784,17 +1784,17 @@ package object nnnock {
     def apply(a : Noun, b : Noun, tail : Noun*) : Cell = apply( a :: b :: tail.toList );
   }
 
-  def ?( noun : Noun ) : Noun = noun match {
+  def ?( [noun](/docs/glossary/noun/) : Noun ) : Noun = [noun](/docs/glossary/noun/) match {
     case _ : Cell => 0;
     case _ : Atom => 1;
   }
 
-  @tailrec def plus( noun : Noun ) : Noun = noun match {
+  @tailrec def plus( [noun](/docs/glossary/noun/) : Noun ) : Noun = [noun](/docs/glossary/noun/) match {
     case a : Atom => 1 + a;
     case c : Cell => plus( c ); //intentional endless spin
   }
 
-  def heq( noun : Noun ) : Atom = noun match {
+  def heq( [noun](/docs/glossary/noun/) : Noun ) : Atom = [noun](/docs/glossary/noun/) match {
     case Cell( a : Atom, b : Atom ) => if ( a == b ) 0 else 1;
     case Cell( a : Cell, b : Atom ) => 1;
     case Cell( a : Atom, b : Cell ) => 1;
@@ -1802,7 +1802,7 @@ package object nnnock {
     case a : Atom => heq( a ); //intentional endless spin
   }
 
-  def /( noun : Noun ) : Noun = noun match {
+  def /( [noun](/docs/glossary/noun/) : Noun ) : Noun = [noun](/docs/glossary/noun/) match {
     case Cell(Atom(1), a) => a;
     case Cell(Atom(2), Cell(a, b)) => a;
     case Cell(Atom(3), Cell(a, b)) => b;
@@ -1815,7 +1815,7 @@ package object nnnock {
   }
 
 
-    def *( noun : Noun ) : Noun = noun match {
+    def *( [noun](/docs/glossary/noun/) : Noun ) : Noun = [noun](/docs/glossary/noun/) match {
       case Cell( a, Cell(Cell(b, c), d) ) => Cell( *(Cell(a,b,c)), *(Cell(a,d)) );
       case Cell( a, Cell(Atom(value), tail) ) => {
         (value, tail) match {
@@ -1831,7 +1831,7 @@ package object nnnock {
     case (9, Cell(b, c)) => *( Cell(a,7,c,2,Cell(0,1),0,b) );
     case (10, Cell(Cell(b,c),d)) => *( Cell(a,8,c,7,Cell(0,3),d) );
     case (10, Cell(b, c)) => *( Cell(a,c) );
-    case _ => *( noun ); //intentional endless spin
+    case _ => *( [noun](/docs/glossary/noun/) ); //intentional endless spin
         }
       }
       case a => *( a ); //intentional endless spin
@@ -1965,9 +1965,9 @@ From [Kohányi Róbert](https://github.com/kohanyirobert/snock/blob/master/snock
 
 ```swift
 import Foundation
-//  1   ::  A noun is an atom or a cell.
-//  2   ::  An atom is a natural number.
-//  3   ::  A cell is an ordered pair of nouns.
+//  1   ::  A [noun](/docs/glossary/noun/) is an [atom](/docs/glossary/atom/) or a cell.
+//  2   ::  An [atom](/docs/glossary/atom/) is a natural number.
+//  3   ::  A cell is an ordered pair of [noun](/docs/glossary/noun/)s.
 //  4
 //  5   ::  nock(a)             *a
 //  6   ::  [a b c]             [a [b c]]
@@ -2005,27 +2005,27 @@ import Foundation
 // 38
 // 39   ::  *a                  *a
 
-//  1   ::  A noun is an atom or a cell.
+//  1   ::  A [noun](/docs/glossary/noun/) is an [atom](/docs/glossary/atom/) or a cell.
 public indirect enum Noun: IntegerLiteralConvertible, ArrayLiteralConvertible, Equatable, Hashable, CustomStringConvertible
 {
-    //  2   ::  An atom is a natural number.
+    //  2   ::  An [atom](/docs/glossary/atom/) is a natural number.
     public typealias ATOM = UIntMax
 
     case Atom(ATOM)
-    //  3   ::  A cell is an ordered pair of nouns.
+    //  3   ::  A cell is an ordered pair of [noun](/docs/glossary/noun/)s.
     case Cell(Noun, Noun)
     case Invalid
 
     public static var YES: Noun { return .Atom(0) }
     public static var NO: Noun  { return .Atom(1) }
 
-    public init(_ noun: Noun) { self = noun }
+    public init(_ [noun](/docs/glossary/noun/): Noun) { self = [noun](/docs/glossary/noun/) }
 
     //  6   ::  [a b c]          [a [b c]]
-    public init(_ nouns: [Noun]) {
+    public init(_ [noun](/docs/glossary/noun/)s: [Noun]) {
         self = .Invalid
-        if nouns.count > 0 {
-            var reverse = nouns.reverse().generate()
+        if [noun](/docs/glossary/noun/)s.count > 0 {
+            var reverse = [noun](/docs/glossary/noun/)s.reverse().generate()
             self = reverse.next()!
             while let n = reverse.next() {
                 self = .Cell(n, self)
@@ -2098,7 +2098,7 @@ public func == (left: Noun, right: Noun) -> Bool
 
 public func wut(noun: Noun) -> Noun
 {
-    switch noun {
+    switch [noun](/docs/glossary/noun/) {
         //  8   ::  ?[a b]           0
     case .Cell:
         return Noun.YES
@@ -2113,7 +2113,7 @@ public func wut(noun: Noun) -> Noun
 
 public func lus(noun: Noun) -> Noun
 {
-    if case let .Atom(a) = noun {
+    if case let .Atom(a) = [noun](/docs/glossary/noun/) {
         // 11   ::  +a               1 + a
         return .Atom(1+a)
     }
@@ -2124,7 +2124,7 @@ public func lus(noun: Noun) -> Noun
 
 public func tis(noun: Noun) -> Noun
 {
-    if case let .Cell(a, b) = noun {
+    if case let .Cell(a, b) = [noun](/docs/glossary/noun/) {
         // 12   ::  =[a a]           0
         // 13   ::  =[a b]           1
         return (a == b) ? Noun.YES : Noun.NO
@@ -2136,7 +2136,7 @@ public func tis(noun: Noun) -> Noun
 
 public func fas(noun: Noun) -> Noun
 {
-    switch noun {
+    switch [noun](/docs/glossary/noun/) {
         // 16   ::  /[1 a]           a
     case let .Cell(1, a):
         return a
@@ -2161,7 +2161,7 @@ public func fas(noun: Noun) -> Noun
 
 public func tar(noun: Noun) -> Noun
 {
-    switch noun {
+    switch [noun](/docs/glossary/noun/) {
     case let .Cell(a, formula):
         switch formula {
             // 23   ::  *[a [b c] d]     [*[a b c] *[a d]]
@@ -2287,9 +2287,9 @@ public func dao(formula: Noun) -> Noun->Noun
         case let .Cell(9, .Cell(b, c)):     // Call
             let f = dao(c)
             return { a in
-                let core = f(a)
-                let arm = dao(fas(.Cell(b, core)))
-                return arm(core)
+                let [core](/docs/glossary/core/) = f(a)
+                let [arm](/docs/glossary/arm/) = dao(fas(.Cell(b, [core](/docs/glossary/core/))))
+                return [arm](/docs/glossary/arm/)(core)
             }
 
         case let .Cell(10, .Cell(.Cell(_, c), d)): // Hint

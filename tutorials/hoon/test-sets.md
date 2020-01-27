@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this walkthrough we will show how to use Ford as a testing suite.
 
-First we will cover the essential molds, arms, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).
+First we will cover the essential molds, [arm](/docs/glossary/arm/)s, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).
 
 ## Running our first test
 
@@ -37,13 +37,13 @@ Here, we ran a generator called `+test` with a path argument `/sys/hoon/set`. Th
 ::
 /+  *test
 ::
-::  Testing arms
+::  Testing [arm](/docs/glossary/arm/)s
 ::
 |%
 ```
-We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](@/docs/tutorials/hoon/ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a core which will contain arms that perform our tests, which we will see an example of shortly.
+We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](@/docs/tutorials/hoon/ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a [core](/docs/glossary/core/) which will contain [arm](/docs/glossary/arm/)s that perform our tests, which we will see an example of shortly.
 
-In `lib/test.hoon`, we find a core with a few gates: `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
+In `lib/test.hoon`, we find a [core](/docs/glossary/core/) with a few [gate](/docs/glossary/gate/)s: `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
 ```hoon
 ++  expect-eq
   |=  [expected=vase actual=vase]
@@ -68,11 +68,11 @@ In `lib/test.hoon`, we find a core with a few gates: `expect-eq`, `expect-fail`,
     ==  ==
   result
 ```
-This is the most frequently used gate in testing, so we may conclude that any testing suite will likely have the line `/+  *test` at the top so that we may utilize this gate. What does this gate do? Recall that a `vase` consists of `[p=type q=*]`. Then what `expect-eq` does is check to see if two `vase`s are equal, and pretty-prints the result of that test.
+This is the most frequently used [gate](/docs/glossary/gate/) in testing, so we may conclude that any testing suite will likely have the line `/+  *test` at the top so that we may utilize this [gate](/docs/glossary/gate/). What does this [gate](/docs/glossary/gate/) do? Recall that a `vase` consists of `[p=type q=*]`. Then what `expect-eq` does is check to see if two `vase`s are equal, and pretty-prints the result of that test.
 
 ## Testing the functionality of set intersection
 
-Here's one of the testing arms in the set testing core:
+Here's one of the testing [arm](/docs/glossary/arm/)s in the set testing [core](/docs/glossary/core/):
 ```hoon
 ++  test-set-int  ^-  tang
   =/  s-nul=(set @)  *(set @)
@@ -106,7 +106,7 @@ Here's one of the testing arms in the set testing core:
       !>  (~(int in s-dos) s-dup)
   ==
 ```
-This arm is used to test whether the set intersection functionality works as expected. Let's walk through it line by line.
+This [arm](/docs/glossary/arm/) is used to test whether the set intersection functionality works as expected. Let's walk through it line by line.
 ```hoon
 ++  test-set-int  ^-  tang
   =/  s-nul=(set @)  *(set @)
@@ -115,7 +115,7 @@ This arm is used to test whether the set intersection functionality works as exp
   =/  s-dos=(set @)  (sy (gulf 8 9))
   =/  s-dup  (sy ~[1 1 4 1 3 5 9 4])
 ```
-We see that this arm returns a `tang`, i.e. a pretty-printed message, and adds several sets to the subject which will be utilized in our tests.
+We see that this [arm](/docs/glossary/arm/) returns a `tang`, i.e. a pretty-printed message, and adds several sets to the subject which will be utilized in our tests.
 ```hoon
 ;:  weld
 ```
@@ -127,7 +127,7 @@ We see that this arm returns a `tang`, i.e. a pretty-printed message, and adds s
       !>  ~
       !>  (~(int in s-nul) s-asc)
 ```
-`%+` is used to call a gate with a cell sample.  `expect-eq` is the gate, `!>  ~` is the head of the sample, and `!>  (~(int in s-nul) s-asc)` is the tail of the sample.  `!>` is a rune used to wrap a noun in its type - in other words, it produces a `vase`. We've seen this rune before when we learned about the type spear `-:!>`. Thus, what this block of code is doing is checking whether the expected `vase` that is the product of `!>  ~` is equal to the `vase` that is the product of `!>  (~(int in s-nul) s-asc)`. `s-nul` is simply the empty set, and here we are taking the intersection of the empty set with `s-asc`, a non-empty set. This ought to produce the empty set of course, and so when this block of code runs, we compare the expected result `!>  ~` (which is something we determined by hand) with the actual result `!>  (~(int in s-nul) s-asc)`.
+`%+` is used to call a [gate](/docs/glossary/gate/) with a cell sample.  `expect-eq` is the [gate](/docs/glossary/gate/), `!>  ~` is the head of the sample, and `!>  (~(int in s-nul) s-asc)` is the tail of the sample.  `!>` is a rune used to wrap a [noun](/docs/glossary/noun/) in its type - in other words, it produces a `vase`. We've seen this rune before when we learned about the type spear `-:!>`. Thus, what this block of code is doing is checking whether the expected `vase` that is the product of `!>  ~` is equal to the `vase` that is the product of `!>  (~(int in s-nul) s-asc)`. `s-nul` is simply the empty set, and here we are taking the intersection of the empty set with `s-asc`, a non-empty set. This ought to produce the empty set of course, and so when this block of code runs, we compare the expected result `!>  ~` (which is something we determined by hand) with the actual result `!>  (~(int in s-nul) s-asc)`.
 ```hoon
     %+  expect-eq
       !>  ~
@@ -161,7 +161,7 @@ Now we are checking if intersection works correctly when two non-empty sets shar
       !>  (sy ~[9])
       !>  (~(int in s-dos) s-dup)
 ```
-Our last test in this arm is to check whether partial intersection works. Here, we compute the intersection of `s-dos` and `s-dup`. Our expectation is that this should return the set whose only element is 9, and so our expected vase is `!>  (sy ~[9])`. Then our actual vase is given by actually computing this intersection: `!>  (~(int in s-dos) s-dup)`.
+Our last test in this [arm](/docs/glossary/arm/) is to check whether partial intersection works. Here, we compute the intersection of `s-dos` and `s-dup`. Our expectation is that this should return the set whose only element is 9, and so our expected vase is `!>  (sy ~[9])`. Then our actual vase is given by actually computing this intersection: `!>  (~(int in s-dos) s-dup)`.
 
 We invite you to look further into the source of `/tests/sys/hoon/set.hoon` to see how other tests are written.
 

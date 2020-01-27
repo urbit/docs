@@ -57,15 +57,15 @@ An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29 
 
 Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
-There are many categories of Hoon expressions: noun literals, wing expressions, type expressions, and rune expressions.  Let's go over each.
+There are many categories of Hoon expressions: [noun](/docs/glossary/noun/) literals, wing expressions, type expressions, and rune expressions.  Let's go over each.
 
 ### Noun Literals
 
-A noun is either an atom or a cell.  An atom is an unsigned integer and a cell is a pair of nouns.
+A [noun](/docs/glossary/noun/) is either an [atom](/docs/glossary/atom/) or a cell.  An [atom](/docs/glossary/atom/) is an unsigned integer and a cell is a pair of [noun](/docs/glossary/noun/)s.
 
-There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29 ) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
+There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29 ) expressions for each kind of [noun](/docs/glossary/noun/).  A [noun](/docs/glossary/noun/) literal is just a notation for representing a fixed [noun](/docs/glossary/noun/) value.
 
-We start with atom literals.  Each of these is a basic expression of Hoon that evaluates to itself.  Examples:
+We start with [atom](/docs/glossary/atom/) literals.  Each of these is a basic expression of Hoon that evaluates to itself.  Examples:
 
 ```
 > 1
@@ -84,7 +84,7 @@ We start with atom literals.  Each of these is a basic expression of Hoon that e
 ~zod
 ```
 
-Recall from [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways.  The way an atom is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
+Recall from [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though [atom](/docs/glossary/atom/)s are unsigned integers, they can be pretty-printed in different ways.  The way an [atom](/docs/glossary/atom/) is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -124,7 +124,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `add`
 - `mul`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
+As a special limb we also have `$`.  This is the name of the [arm](/docs/glossary/arm/) in special one-armed [core](/docs/glossary/core/)s called "gates".  (We'll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
@@ -139,7 +139,7 @@ Wing expressions with multiple limbs are complex expressions.  Examples:
 
 ### Type Expressions
 
-Hoon is a statically typed language.  You'll learn more about the type system later in the chapter.  For now, just know that Hoon's type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag).  Each of these symbols can be used as a stand-alone expression of Hoon.  In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
+Hoon is a statically typed language.  You'll learn more about the type system later in the chapter.  For now, just know that Hoon's type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag).  Each of these symbols can be used as a stand-alone expression of Hoon.  In the case of `@` there may be a series of letters following it, to indicate an [atom](/docs/glossary/atom/) aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
 
 They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`.  (Technically these expressions don't _always_ indicate compound types.  In certain contexts they're interpreted in a different way.  We'll address this variation of meaning in [Lesson 2.3](@/docs/tutorials/hoon/structures-and-complex-types.md).)
 
@@ -149,7 +149,7 @@ A **rune** is just a pair of ASCII characters (a digraph).  You've already seen 
 
 Expressions with a rune at the beginning are rune expressions.  Most runes are used at the beginning of a complex expression, but there are exceptions.  For example, the runes `--` and `==` are used at the end of certain expressions.
 
-Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create cores, and the runes in the `:` family are all used to create cells.
+Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create [core](/docs/glossary/core/)s, and the runes in the `:` family are all used to create cells.
 
 Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](@/docs/reference/hoon-expressions/rune/_index.md).  Nevertheless, there are some general principles that hold of all rune expressions.
 
@@ -254,7 +254,7 @@ The irregular form of the `.=` rune is just `=( )`:
 %.y
 ```
 
-The examples above have another irregular form: `(add 11 11)`.  This is the irregular form of `%+`, which calls a gate (i.e., a Hoon function) with two arguments for the sample.
+The examples above have another irregular form: `(add 11 11)`.  This is the irregular form of `%+`, which calls a [gate](/docs/glossary/gate/) (i.e., a Hoon function) with two arguments for the sample.
 
 ```
 > %+  add  11  11
@@ -264,7 +264,7 @@ The examples above have another irregular form: `(add 11 11)`.  This is the irre
 22
 ```
 
-The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut for calling a gate with one argument, which is what the `%-` rune is for:
+The irregular `( )` [gate](/docs/glossary/gate/)-calling syntax is versatile -- it is also a shortcut for calling a [gate](/docs/glossary/gate/) with one argument, which is what the `%-` rune is for:
 
 ```
 > (dec 11)
@@ -277,7 +277,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 10
 ```
 
-The `( )` gate-calling syntax can be used for gates with any number of arguments.
+The `( )` [gate](/docs/glossary/gate/)-calling syntax can be used for [gate](/docs/glossary/gate/)s with any number of arguments.
 
 You can find other irregular forms in the irregular expression [reference document](@/docs/reference/hoon-expressions/irregular.md).
 
@@ -319,7 +319,7 @@ To see other irregular expressions, check the irregular expression [reference do
 
 ## The Standard Library
 
-The Hoon standard library is a compilation of generally useful Hoon gates (functions). You've seen these already: in expressions like `(add 11 11)`, `add` is a function from the standard library.
+The Hoon standard library is a compilation of generally useful Hoon [gate](/docs/glossary/gate/)s (functions). You've seen these already: in expressions like `(add 11 11)`, `add` is a function from the standard library.
 
 It's important to know about standard library functions, because they make certain tasks much easier, and spare you from having to write the code itself. If you did not use the `add` library function, for example, you would have to write out code like this every time you wanted to find the sum of two numbers:
 

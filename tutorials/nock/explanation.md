@@ -11,36 +11,36 @@ First the data model:
 ## Nouns
 
 ```
-A noun is an atom or a cell.  An atom is any natural number.
-A cell is any ordered pair of nouns.
+A [noun](/docs/glossary/noun/) is an [atom](/docs/glossary/atom/) or a cell.  An [atom](/docs/glossary/atom/) is any natural number.
+A cell is any ordered pair of [noun](/docs/glossary/noun/)s.
 ```
 
 Nouns are the dumbest data model ever.  Nouns make JSON look like
 XML and XML look like ASN.1.  It may also remind you of Lisp's
-S-expressions - you can think of nouns as "S-expressions without
+S-expressions - you can think of [noun](/docs/glossary/noun/)s as "S-expressions without
 the S."
 
-To be exact, a noun **is** an S-expression, except that classic
-S-expressions have multiple atom types ("S" is for "symbol").
+To be exact, a [noun](/docs/glossary/noun/) **is** an S-expression, except that classic
+S-expressions have multiple [atom](/docs/glossary/atom/) types ("S" is for "symbol").
 Since Nock is designed to be used with a higher-level type system
-(such as Hoon's), it does not need low-level types.  An atom is
+(such as Hoon's), it does not need low-level types.  An [atom](/docs/glossary/atom/) is
 just an unsigned integer of any size.
 
 For instance, it's common to represent strings (or even whole
-text files) as atoms, arranging them LSB first - so "foo" becomes
+text files) as [atom](/docs/glossary/atom/)s, arranging them LSB first - so "foo" becomes
 `0x6f6f66`.  How do we know to print this as "foo", not `0x6f6f66`?
 We need external information - such as a Hoon type.  Similarly,
-other common atomic types - signed integers, floating point, etc
-- are all straightforward to map into atoms.
+other common [atom](/docs/glossary/atom/)ic types - signed integers, floating point, etc
+- are all straightforward to map into [atom](/docs/glossary/atom/)s.
 
 It's also important to note that, unlike Lisp, Nock cannot create
-cyclical data structures.  It is normal and common for nouns in a
+cyclical data structures.  It is normal and common for [noun](/docs/glossary/noun/)s in a
 Nock runtime system to have acyclic structure - shared subtrees.
 But there is no Nock computation that can make a child point to
 its parent.  One consequence: Nock has no garbage collector.
 (Nor can dag structure be detected, as with Lisp `eq`.)
 
-There is also no single syntax for nouns.  If you have nouns you
+There is also no single syntax for [noun](/docs/glossary/noun/)s.  If you have [noun](/docs/glossary/noun/)s you
 have Nock; if you have Nock you have Hoon; if you have Hoon, you
 can write whatever parser you like.
 
@@ -64,12 +64,12 @@ with the first line that matches.   Let's jump right in!
 nock(a)  *a
 ```
 
-Nock is a pure (stateless) function from noun to noun.  In our
+Nock is a pure (stateless) function from [noun](/docs/glossary/noun/) to [noun](/docs/glossary/noun/).  In our
 pseudocode (and only in our pseudocode) we express this with the
 prefix operator `*`.
 
-This function is defined for every noun, but on many nouns it
-does nothing useful.  For instance, if `a` is an atom, `*a`
+This function is defined for every [noun](/docs/glossary/noun/), but on many [noun](/docs/glossary/noun/)s it
+does nothing useful.  For instance, if `a` is an [atom](/docs/glossary/atom/), `*a`
 reduces to... `*a`.  In theory, this means that Nock spins
 forever in an infinite loop.  In other words, Nock produces no
 result - and in practice, your interpreter will stop.
@@ -110,7 +110,7 @@ automatic.  So the Lisp list
 (a b c)
 ```
 
-becomes the Nock noun
+becomes the Nock [noun](/docs/glossary/noun/)
 
 ```
 [a b c 0]
@@ -138,8 +138,8 @@ emphasis.  Let's move on to the axiomatic functions:
 
 Here we define more pseudocode operators, which we'll use in
 reductions further down.  So far we have four built-in functions:
-`*` meaning Nock itself, `?` testing whether a noun is a cell or
-an atom, `+` incrementing an atom, and `=` testing for equality.
+`*` meaning Nock itself, `?` testing whether a [noun](/docs/glossary/noun/) is a cell or
+an [atom](/docs/glossary/atom/), `+` incrementing an [atom](/docs/glossary/atom/), and `=` testing for equality.
 Again, no rocket science here.
 
 We should note that in Nock and Hoon, `0` (pronounced "yes") is
@@ -158,9 +158,9 @@ our official excuse.
 /[(a + a + 1) b]  /[3 /[a b]]
 ```
 
-Slightly more interesting is our tree numbering.  Every noun is
+Slightly more interesting is our tree numbering.  Every [noun](/docs/glossary/noun/) is
 of course a tree.  The `/` operator - pronounced "slot" - imposes
-an address space on that tree, mapping every nonzero atom to a
+an address space on that tree, mapping every nonzero [atom](/docs/glossary/atom/) to a
 tree position.
 
 1 is the root.  The head of every node `n` is `2n`; the tail is
@@ -215,9 +215,9 @@ Hopefully this isn't terribly hard to follow.
 #[(a + a + 1) b c]  #[a [/[(a + a) c] b] c]
 ```
 
-The `#` operator replaces part of a noun with another noun.  `#[x y z]` replaces address `x` of `z` with the noun `y`.
+The `#` operator replaces part of a [noun](/docs/glossary/noun/) with another [noun](/docs/glossary/noun/).  `#[x y z]` replaces address `x` of `z` with the [noun](/docs/glossary/noun/) `y`.
 
-Take some noun, say, `[22 33 44 55]`.  Let's replace part of it with another noun, `[123 456]`.  We can replace the entire original noun as follows:
+Take some [noun](/docs/glossary/noun/), say, `[22 33 44 55]`.  Let's replace part of it with another [noun](/docs/glossary/noun/), `[123 456]`.  We can replace the entire original [noun](/docs/glossary/noun/) as follows:
 
 ```
 #[1 [123 456] [22 33 44 55]]
@@ -350,7 +350,7 @@ For instance, if `x` is a formula that calculates some product,
 *[a [b c] d]  [*[a b c] *[a d]]
 ```
 
-Since Nock of an atom just crashes, the practical domain of the
+Since Nock of an [atom](/docs/glossary/atom/) just crashes, the practical domain of the
 Nock function is always a cell.  Conventionally, the head of this
 cell is the "subject," the tail is the "formula," and the result
 of Nocking it is the "product."  Basically, the subject is your
@@ -365,8 +365,8 @@ We could write this line less formally:
 
 In other words, if you have two Nock formulas `x` and `y`, a
 formula that computes the pair of them is just `[x y]`.  We can
-recognize this because no atom is a valid formula, and
-every formula that **does not** use distribution has an atomic head.
+recognize this because no [atom](/docs/glossary/atom/) is a valid formula, and
+every formula that **does not** use distribution has an [atom](/docs/glossary/atom/)ic head.
 
 If you know Lisp, you can think of this feature as a sort of
 "implicit cons."  Where in Lisp you would write `(cons x y)`,
@@ -428,7 +428,7 @@ Let's try to figure out what these do, simplest first:
 *[a 11 b c]  *[a c]
 ```
 
-If `x` is an atom and `y` is a formula, the formula `[11 x y]`
+If `x` is an [atom](/docs/glossary/atom/) and `y` is a formula, the formula `[11 x y]`
 appears to be equivalent to... `y`.  For instance:
 
 ```
@@ -516,8 +516,8 @@ depends both on the original subject and the new variable.
 *[a 9 b c]          *[*[a c] 2 [0 1] 0 b]
 ```
 
-With `c`, we produce a noun which contains both code and data - a
-**core**.  We use this core as the subject, and evaluate the
+With `c`, we produce a [noun](/docs/glossary/noun/) which contains both code and data - a
+**core**.  We use this [core](/docs/glossary/core/) as the subject, and evaluate the
 formula within it at slot `b`.
 
 ### `6`, if-then-else

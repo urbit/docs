@@ -37,14 +37,14 @@ Next we check to see if `n` is `1`. If so, the result is just `1`, since
 
 If, however, `n` is _not_ `1`, then we branch to the final line of the code,
 `(mul n $(n (dec n)))`, where the recursion logic lives. Here, we multiply `n`
-by the recursion of `n` minus `1`. `$` initiates recursion: it calls the gate
+by the recursion of `n` minus `1`. `$` initiates recursion: it calls the [gate](/docs/glossary/gate/)
 that we're already in, but replaces its sample.
 
-In our example, we multiply `n` with the product of this _entire gate
-all over again_ with `$(n (dec n))`,  except when that new gate has its sample
-decremented by one. This works recursively because each new gate will, of
-course, itself contain the code to call a further-decremented gate. Gates will
-continue to call new, further-decremented gates until `n` is `1`, and that `1`
+In our example, we multiply `n` with the product of this _entire [gate](/docs/glossary/gate/)
+all over again_ with `$(n (dec n))`,  except when that new [gate](/docs/glossary/gate/) has its sample
+decremented by one. This works recursively because each new [gate](/docs/glossary/gate/) will, of
+course, itself contain the code to call a further-decremented [gate](/docs/glossary/gate/). Gates will
+continue to call new, further-decremented [gate](/docs/glossary/gate/)s until `n` is `1`, and that `1`
 will be the final number to be multiplied by.
 
 Let's run the program in the Dojo:
@@ -54,7 +54,7 @@ Let's run the program in the Dojo:
 120
 ```
 
-It may help to visualize the operation of our example gate. The pseudo-Hoon below
+It may help to visualize the operation of our example [gate](/docs/glossary/gate/). The pseudo-Hoon below
 illustrates what happens when we use it to find the factorial of 5:
 
 ```
@@ -70,7 +70,7 @@ illustrates what happens when we use it to find the factorial of 5:
 120
 ```
 
-It's easy to see how we're "floating" gate calls until we reach the final
+It's easy to see how we're "floating" [gate](/docs/glossary/gate/) calls until we reach the final
 iteration of such calls that only produces a value. The `mul n` component of the
 gate leaves something like `mul 5`, waiting for the final series of terms
 to be operated upon. The `$(n (dec n))` component is what expands out the
@@ -83,7 +83,7 @@ into the `mul` functions behind them.
 Our last example isn't a very efficient use computing resources. The
 pyramid-shaped illustration approximates what's happening on the **call stack**, a
 memory structure that tracks the instructions of the program. In our example
-code, every time a parent gate calls another gate, the gate being called is
+code, every time a parent [gate](/docs/glossary/gate/) calls another [gate](/docs/glossary/gate/), the [gate](/docs/glossary/gate/) being called is
 "pushed" to the top of the stack in the form of a frame. This process continues
 until a value is produced instead of a function, completing the stack.
 
@@ -97,19 +97,19 @@ until a value is produced instead of a function, completing the stack.
 ```
 
 Once this stack of frames is completed, frames "pop" off the stack starting at
-the top. When a frame is popped, it executes the contained gate and passes
+the top. When a frame is popped, it executes the contained [gate](/docs/glossary/gate/) and passes
 produced data to the frame below it. This process continues until the stack
-is empty, giving us the gate's output.
+is empty, giving us the [gate](/docs/glossary/gate/)'s output.
 
 When a program's final expression uses the stack in this way, it's considered to
 be **not tail-recursive**. This usually happens when the last line of executable
-code calls more than one gate, our example code's `(mul n $(n (dec n)))` being
+code calls more than one [gate](/docs/glossary/gate/), our example code's `(mul n $(n (dec n)))` being
 such a case. That's because such an expression needs to hold each iteration of
 `$(n (dec n)` in memory so that it can know what to run against the `mul`
 function every time.
 
 To reiterate: if you have to manipulate the result of a recursion as the last
-expression of your gate, as we did in our example, the function is not
+expression of your [gate](/docs/glossary/gate/), as we did in our example, the function is not
 tail-recursive, and therefore not very efficient with memory. A problem arises
 when we try to recurse more times that we have space on the stack. This will
 result in our computation failing and producing a stack overflow. If we tried
@@ -123,7 +123,7 @@ frame that simply has its values replaced with each recursion.
 
 #### A Tail-Recursive Gate
 
-With a bit of refactoring, we can write a version of our factorial gate that
+With a bit of refactoring, we can write a version of our factorial [gate](/docs/glossary/gate/) that
 _is_ tail-recursive and can take advantage of this feature:
 
 ```hoon
@@ -135,10 +135,10 @@ _is_ tail-recursive and can take advantage of this feature:
 $(n (dec n), t (mul t n))
 ```
 
-The above code should look familiar. We are still building a gate that
+The above code should look familiar. We are still building a [gate](/docs/glossary/gate/) that
 takes one argument `n`. This time, however, we are also putting a face on a
 `@ud` and setting its initial value to 1. The `|-` here is used to create a new
-gate with one arm `$` and immediately call it. Think of `|-` as the recursion
+gate with one [arm](/docs/glossary/arm/) `$` and immediately call it. Think of `|-` as the recursion
 point.
 
 We then evaluate `n` to see if it is 1. If it is we return the value of `t`. In
@@ -148,7 +148,7 @@ the case that `n` is anything other than 1, we perform our recursion:
 $(n (dec n), t (mul t n))
 ```
 
-All we are doing here is recursing our new gate and modifying the values of `n`
+All we are doing here is recursing our new [gate](/docs/glossary/gate/) and modifying the values of `n`
 and `t`. `t` is used as an accumulator variable that we use to keep a running
 total for the factorial computation.
 
@@ -174,8 +174,8 @@ each iteration can be replaced instead of held in memory.
 
 #### A Note on `$`
 
-`$` (pronounced "buc") is, in its use with recursion, a reference to the gate that we are inside
-of. That's because a gate is just a core with a single arm named `$`. The
+`$` (pronounced "buc") is, in its use with recursion, a reference to the [gate](/docs/glossary/gate/) that we are inside
+of. That's because a [gate](/docs/glossary/gate/) is just a [core](/docs/glossary/core/) with a single [arm](/docs/glossary/arm/) named `$`. The
 subject is searched depth-first, head before tail, with faces skipped, and
 stopping on the first result. In other words, the first match found in the head
 will be returned. If you wished to refer to the outer `$` in this context, the
@@ -184,10 +184,10 @@ skips the first match of a name.
 
 ### Exercises
 
-1. Write a recursive gate that produces the first _n_
+1. Write a recursive [gate](/docs/glossary/gate/) that produces the first _n_
 [Fibonacci numbers](https://en.wikipedia.org/wiki/Fibonacci_number)
 
-2. Write a recursive gate that produces a list of moves to solve the
+2. Write a recursive [gate](/docs/glossary/gate/) that produces a list of moves to solve the
 [Tower of Hanoi problem](https://en.wikipedia.org/wiki/Tower_of_Hanoi).
 Disks are stacked on a pole by decreasing order of size. Move all of the
 disks from one pole to another with a third pole as a spare, moving one

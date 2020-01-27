@@ -11,7 +11,7 @@ In this lesson we'll cover each.
 
 ## Trees
 
-We use `tree` to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of atoms.
+We use `tree` to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of [atom](/docs/glossary/atom/)s.
 
 There are two kinds of `tree` in Hoon: (1) the null tree, `~`, and (2) a non-null tree which is a cell with three parts.  Part (i) is the node value, part (ii) is the left child of the node, and part (iii) is the right child of the node.  Each child is itself a tree.  The node value has the face `n`, the left child has the face `l`, and the right child has the face `r`.  The following diagram provides an illustration of a `(tree @)` (without the faces):
 
@@ -32,7 +32,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.: `(tree @)
 {4 8 12 14 16}
 ```
 
-Notice that we don't have to insert the faces manually; by casting the noun above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
+Notice that we don't have to insert the faces manually; by casting the [noun](/docs/glossary/noun/) above to a `(tree @)` Hoon inserts the faces for us.  Let's put this [noun](/docs/glossary/noun/) in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
 
 ```
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
@@ -60,7 +60,7 @@ This didn't work because we haven't first proved to Hoon that `b` is a non-null 
 
 ### Find and Replace
 
-Here's a program that finds and replaces certain atoms in a `(tree @)`.
+Here's a program that finds and replaces certain [atom](/docs/glossary/atom/)s in a `(tree @)`.
 
 ```hoon
 |=  [nedl=@ hay=(tree @) new=@]
@@ -73,7 +73,7 @@ Here's a program that finds and replaces certain atoms in a `(tree @)`.
 $(hay r.hay)
 ```
 
-`nedl` is the atom to be replaced, `hay` is the tree, and `new` is the new atom with which to replace `nedl`.  Save this as `findreplacetree.hoon` and run in the dojo:
+`nedl` is the [atom](/docs/glossary/atom/) to be replaced, `hay` is the tree, and `new` is the new [atom](/docs/glossary/atom/) with which to replace `nedl`.  Save this as `findreplacetree.hoon` and run in the dojo:
 
 ```
 > b
@@ -88,11 +88,11 @@ $(hay r.hay)
 
 ## Sets
 
-Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of atoms.  The `in` core in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
+Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of [atom](/docs/glossary/atom/)s.  The `in` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
 
-As with `list`s and `tree`s, there are two categories of sets: null `~`, and non-null.  Hoon implements sets using trees for the underlying noun.
+As with `list`s and `tree`s, there are two categories of sets: null `~`, and non-null.  Hoon implements sets using trees for the underlying [noun](/docs/glossary/noun/).
 
-Two common methods for populating a set include (1) creating it from a list of values using the `sy` function, and (2) inserting items into a set using the `put` arm of the `in` core.
+Two common methods for populating a set include (1) creating it from a list of values using the `sy` function, and (2) inserting items into a set using the `put` [arm](/docs/glossary/arm/) of the `in` [core](/docs/glossary/core/).
 
 Using `sy`:
 
@@ -138,7 +138,7 @@ Check whether an item is in the set using `has` of `in`:
 %.n
 ```
 
-You can apply a gate to each item of a set using `run` of `in` and produce a new set from the products:
+You can apply a [gate](/docs/glossary/gate/) to each item of a set using `run` of `in` and produce a new set from the products:
 
 ```
 > c
@@ -147,7 +147,7 @@ You can apply a gate to each item of a set using `run` of `in` and produce a new
 > (~(run in c) |=(a=@ +(a)))
 {56 45 23 12 34}
 ```
-You can also apply a gate to all items of the set and return an accumulated value using `rep` of `in`:
+You can also apply a [gate](/docs/glossary/gate/) to all items of the set and return an accumulated value using `rep` of `in`:
 
 ```
 > c
@@ -195,7 +195,7 @@ There are other set functions in the Hoon standard library we won't cover here.
 
 ### Cartesian Product
 
-Here's a program that takes two sets of atoms and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
+Here's a program that takes two sets of [atom](/docs/glossary/atom/)s and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
 ```hoon
 |=  [a=(set @) b=(set @)]
@@ -237,9 +237,9 @@ Use `map` to create a set of key-value pairs, e.g., `(map @tas *)` for a set of 
 
 One example use case is for storing customer information as a set of pairs: `(map [employee-name employee-data])`.
 
-The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps [here](@/docs/reference/library/2i.md).  As was the case with sets, the underlying noun of each map is a tree.
+The `by` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` [core](/docs/glossary/core/).  See the standard library reference documentation for maps [here](@/docs/reference/library/2i.md).  As was the case with sets, the underlying [noun](/docs/glossary/noun/) of each map is a tree.
 
-Two common methods for populating a map include (1) creating it from a list of key-value cells using the `my` function, and (2) inserting items into a map using the `put` arm of the `by` core.
+Two common methods for populating a map include (1) creating it from a list of key-value cells using the `my` function, and (2) inserting items into a map using the `put` [arm](/docs/glossary/arm/) of the `by` [core](/docs/glossary/core/).
 
 Using `my`:
 
@@ -288,7 +288,7 @@ This result may be unexpected.  Why didn't it just give us `2`?  The answer has 
 
 Because there is no `%chicken` key in `c`, `get` simply returns `~` to indicate it's not in the map.  Otherwise it returns a pair like the one you see in the next to last example.
 
-`get` of `by` returns the key's value as a `unit`, not as raw data.  There are two kinds of `unit`s: null `~`, and non-null.  A non-null `unit` is a pair of `[~ value]`.  Unit types are constructed the way list, set, and map types are; for example, `(unit @)` is the type for a unit whose value is an atom.
+`get` of `by` returns the key's value as a `unit`, not as raw data.  There are two kinds of `unit`s: null `~`, and non-null.  A non-null `unit` is a pair of `[~ value]`.  Unit types are constructed the way list, set, and map types are; for example, `(unit @)` is the type for a unit whose value is an [atom](/docs/glossary/atom/).
 
 If you want to get some key value without producing a unit, use `got` instead:
 
@@ -311,7 +311,7 @@ Use `has` of `by` to see whether a certain key is in the map:
 %.n
 ```
 
-You can use `run` of `by` to apply a gate to each value in a map, producing a map with the modified values:
+You can use `run` of `by` to apply a [gate](/docs/glossary/gate/) to each value in a map, producing a map with the modified values:
 
 ```
 > (~(run by c) |=(a=@ (mul 2 a)))

@@ -24,7 +24,7 @@ foreign ships.
 ## Architecture
 
 Clay is the primary filesystem for the arvo operating system,
-which is the core of an urbit. The architecture of clay is
+which is the [core](/docs/glossary/core/) of an urbit. The architecture of clay is
 intrinsically connected with arvo, but we assume no knowledge of
 either arvo or urbit. We will point out only those features of
 arvo that are necessary for an understanding of clay, and we will
@@ -207,7 +207,7 @@ convert back to `%txt`. The diff, patch, and merge algorithms are
 fairly straightforward for json, though they're very different
 from the text ones.
 
-More formally, a mark is a core with three arms, `++grab`,
+More formally, a mark is a [core](/docs/glossary/core/) with three [arm](/docs/glossary/arm/)s, `++grab`,
 `++grow`, and `++grad`. In `++grab` is a series of functions to
 convert from other marks to the given mark.  In `++grow` is a
 series of functions to convert from the given mark to other
@@ -915,14 +915,14 @@ arbitrary data structures.
 `%a` refers to the trival delta of a complete replace of old data with
 new data.
 
-`%b` refers to changes in an opaque atom on the block level. This has
+`%b` refers to changes in an opaque [atom](/docs/glossary/atom/) on the block level. This has
 very limited usefulness, and is not used at the moment.
 
 `%c` refers to changes in a list of data. This is often lines of text,
 which is your classic diff. We, however, will work on any list of data.
 
 `%d` refers to changes in a tree of data. This is general enough to
-describe changes to any hoon noun, but often more special-purpose delta
+describe changes to any hoon [noun](/docs/glossary/noun/), but often more special-purpose delta
 should be created for different content types. This is not used at the
 moment, and may in fact be unimplemented.
 
@@ -1219,7 +1219,7 @@ of versions of a desk. Here, we'll deal only with a request for a single
 version.
 
 As in all vanes, a kiss enters clay via a call to `++call`. Scanning
-through the arm, we quickly see where `%warp` is handled.
+through the [arm](/docs/glossary/arm/), we quickly see where `%warp` is handled.
 
 ```hoon
             ?:  =(p.p.q.hic q.p.q.hic)
@@ -1242,15 +1242,15 @@ If they're not, then this is a request for data on another ship. We
 describe that process later. Here, we discuss only the case of a local
 read.
 
-At a high level, the call to `++un` sets up the core for the domestic
+At a high level, the call to `++un` sets up the [core](/docs/glossary/core/) for the domestic
 ship that contains the files we're looking for. The call to `++di` sets
-up the core for the particular desk we're referring to.
+up the [core](/docs/glossary/core/) for the particular desk we're referring to.
 
 After this, we perform the actual request. If there is no rave in the
 riff, then that means we are cancelling a request, so we call
 `++ease:de`. Otherwise, we start a subscription with `++eave:de`. We
 call `++abet:de` to resolve our various types of output into actual
-moves. We produce the moves we found above and the `++un` core resolved
+moves. We produce the moves we found above and the `++un` [core](/docs/glossary/core/) resolved
 with `++pish:un` (putting the modified desk in the room) and `++abet:un`
 (putting the modified room in the raft).
 
@@ -1491,7 +1491,7 @@ the subscriber with `++blab`.
           +>(byn [[hen ~ [p.mun q.mun syd] r.mun dat] byn])
 ```
 
-The most interesting arm called in `++eave` is, of course, `++aver`,
+The most interesting [arm](/docs/glossary/arm/) called in `++eave` is, of course, `++aver`,
 where we actually try to read the data.
 
 ```hoon
@@ -1658,7 +1658,7 @@ We simply replace `p` in the hash with the `cash` we get from a call to
         ==
 ```
 
-`++zu` is a core we set up with a particular filesystem node to traverse
+`++zu` is a [core](/docs/glossary/core/) we set up with a particular filesystem node to traverse
 a checkout of the filesystem and access the actual data inside it. One
 of the things we can do with it is to create a recursive hash of the
 node.
@@ -2241,7 +2241,7 @@ different path.
 
 If we compare this to how the local case was handled, we see that it's
 not all that different. We use `++do` rather than `++un` and `++de` to
-set up the core for the foreign ship. This gives us a `++de` core, so we
+set up the [core](/docs/glossary/core/) for the foreign ship. This gives us a `++de` [core](/docs/glossary/core/), so we
 either cancel or begin the request by calling `++ease` or `++eave`,
 exactly as in the local case. In either case, we call `++abet:de` to
 resolve our various types of output into actual moves, as described in
@@ -2269,7 +2269,7 @@ point to note here is that we let `ref` in the rede be `[~ *rind]`.
 Recall, for domestic desks `ref` is null. We use this to distinguish
 between foreign and domestic desks in `++de`.
 
-With this information, we create a `++de` core as usual.
+With this information, we create a `++de` [core](/docs/glossary/core/) as usual.
 
 Although we've already covered `++ease` and `++eave`, we'll go through
 them quickly again, highlighting the case of foreign request.
@@ -2442,7 +2442,7 @@ We'll examine `++knit` and `++wake`, in that order.
           ==
 ```
 
-This is kind of a long gate, but don't worry, it's not bad at all.
+This is kind of a long [gate](/docs/glossary/gate/), but don't worry, it's not bad at all.
 
 First, we assert that we're not a domestic desk. That wouldn't make any
 sense at all.
@@ -2567,7 +2567,7 @@ When we're done, we just put the remaining subscribers back in our
 subscriber list.
 
 If the subscriber is a single read, then, if this is a foreign desk
-(note that `++wake` is called from other arms, and not only on foreign
+(note that `++wake` is called from other [arm](/docs/glossary/arm/)s, and not only on foreign
 desks). Obviously, if we find an identical request there, then we can
 produce the result immediately. Referential transparency for the win. We
 produce the result with a call to `++blab`. If this is a foreign desk

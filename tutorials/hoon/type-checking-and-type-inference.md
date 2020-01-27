@@ -62,7 +62,7 @@ nest-fail
 
 The `^+` rune takes two subexpressions.  The first subexpression is evaluated and its type is inferred.  The second subexpression is evaluated and its inferred type is compared against the type of the first.  If the type of the second provably nests under the type of the first, the result of the `^+` expression is just the value of its second subexpression.  Otherwise, the code fails to compile.
 
-This rune is useful for casting when you already have a noun -- or expression producing a noun -- whose type you may not know or be able to construct easily.  If you want your output value to be of the same type, you can use `^+`.
+This rune is useful for casting when you already have a [noun](/docs/glossary/noun/) -- or expression producing a [noun](/docs/glossary/noun/) -- whose type you may not know or be able to construct easily.  If you want your output value to be of the same type, you can use `^+`.
 
 More examples:
 
@@ -98,7 +98,7 @@ You can evade the `.=` type-check by casting one of its subexpressions to a `*`,
 
 It isn't recommended that you evade the rules in this way, however.
 
-The `.+` increment rune -- including its `+( )` irregular form -- does a type check to ensure that its subexpression must evaluate to an atom.
+The `.+` increment rune -- including its `+( )` irregular form -- does a type check to ensure that its subexpression must evaluate to an [atom](/docs/glossary/atom/).
 
 ```
 > +(12)
@@ -110,9 +110,9 @@ nest-fail
 
 ### Arm Evaluation
 
-Whenever an arm is evaluated in Hoon it expects to have some version of its parent core as the subject.  Specifically, a type check is performed to see whether the arm subject is of the appropriate **type**.  We see this in action whenever a gate or a multi-arm door is called.
+Whenever an [arm](/docs/glossary/arm/) is evaluated in Hoon it expects to have some version of its parent [core](/docs/glossary/core/) as the subject.  Specifically, a type check is performed to see whether the [arm](/docs/glossary/arm/) subject is of the appropriate **type**.  We see this in action whenever a [gate](/docs/glossary/gate/) or a multi-arm [door](/docs/glossary/door/) is called.
 
-A gate is a one-armed core with a sample.  When it is called, its `$` arm is evaluated with (a version of) the gate as the subject.  The only part of the core that might change is the payload, including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` arm of expects two atoms for the sample, i.e., the two numbers to be added.  When the type check occurs, the payload must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
+A [gate](/docs/glossary/gate/) is a one-armed [core](/docs/glossary/core/) with a sample.  When it is called, its `$` [arm](/docs/glossary/arm/) is evaluated with (a version of) the [gate](/docs/glossary/gate/) as the subject.  The only part of the [core](/docs/glossary/core/) that might change is the [payload](/docs/glossary/payload/), including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` [arm](/docs/glossary/arm/) of expects two [atom](/docs/glossary/atom/)s for the sample, i.e., the two numbers to be added.  When the type check occurs, the [payload](/docs/glossary/payload/) must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
 
 ```
 > (add 22 33)
@@ -131,13 +131,13 @@ nest-fail
 nest-fail
 ```
 
-We'll talk in more detail about the various kinds of type-checking that can occur at arm evaluation when we discuss type polymorphism later in Chapter 2.
+We'll talk in more detail about the various kinds of type-checking that can occur at [arm](/docs/glossary/arm/) evaluation when we discuss type polymorphism later in Chapter 2.
 
 This isn't a comprehensive list of the type checks in Hoon.  It's only some of the most commonly used kinds.  Two other runes that include a type check are `=.` and `%_`.
 
 ## Intro to Hoon Type Inference
 
-It's helpful to know **that** Hoon infers the type of any given expression, but it's important to know **how** such inference works.  Hoon uses various tools for inferring the type of any given expression: literal syntax, cast expressions, gate sample definitions, conditional expressions, and more.
+It's helpful to know **that** Hoon infers the type of any given expression, but it's important to know **how** such inference works.  Hoon uses various tools for inferring the type of any given expression: literal syntax, cast expressions, [gate](/docs/glossary/gate/) sample definitions, conditional expressions, and more.
 
 ### Literals
 
@@ -151,7 +151,7 @@ It's helpful to know **that** Hoon infers the type of any given expression, but 
 [0x1f 'hello' %.y]    [@ux @t ?]
 ```
 
-As you can see there are both atom and cell literals in Hoon.  Hoon infers the type of literals -- including atom auras -- directly from such expressions.
+As you can see there are both [atom](/docs/glossary/atom/) and cell literals in Hoon.  Hoon infers the type of literals -- including [atom](/docs/glossary/atom/) auras -- directly from such expressions.
 
 ### Casts
 
@@ -171,13 +171,13 @@ Cast runes also shape how Hoon understands an expression type.  The inferred typ
 
 You can also use the irregular `` ` `` syntax for casting in the same way as `^-`; e.g., `` `@`123 `` for `^-(@ 123)`.
 
-One thing to note about casts is that they can 'throw away' type information.  The second subexpression of `^-` and `^+` casts may be inferred to have a very specific type.  If the cast type is more general, then the more specific type information is lost.  Consider the literal `[12 14]`.  The inferred type of this expression is `[@ @]`, i.e., a cell of two atoms.  If we cast over `[12 14]` with `^-(^ [12 14])` then the inferred type is just `^`, the set of all cells.  The information about what kind of cell it is has been thrown away.  If we cast over `[12 14]` with `^-(* [12 14])` then the inferred type is `*`, the set of all nouns.  All interesting type information is thrown away on the latter cast.
+One thing to note about casts is that they can 'throw away' type information.  The second subexpression of `^-` and `^+` casts may be inferred to have a very specific type.  If the cast type is more general, then the more specific type information is lost.  Consider the literal `[12 14]`.  The inferred type of this expression is `[@ @]`, i.e., a cell of two [atom](/docs/glossary/atom/)s.  If we cast over `[12 14]` with `^-(^ [12 14])` then the inferred type is just `^`, the set of all cells.  The information about what kind of cell it is has been thrown away.  If we cast over `[12 14]` with `^-(* [12 14])` then the inferred type is `*`, the set of all [noun](/docs/glossary/noun/)s.  All interesting type information is thrown away on the latter cast.
 
-It's important to remember to include a cast rune with each gate expression.  That way it's clear what the inferred product type will be for calls to that gate.
+It's important to remember to include a cast rune with each [gate](/docs/glossary/gate/) expression.  That way it's clear what the inferred product type will be for calls to that [gate](/docs/glossary/gate/).
 
 ### (Dry) Gate Sample Definitions
 
-By now you've used the `|=` rune to define several gates.  This rune is used to produce a 'dry' gate, which has different type-checking and type-inference properties than a 'wet' gate does.  We won't explain the wet/dry distinction until later in Chapter 2 -- for now, just keep in mind that we're only dealing with one kind of gate (albeit the more common kind).
+By now you've used the `|=` rune to define several [gate](/docs/glossary/gate/)s.  This rune is used to produce a 'dry' [gate](/docs/glossary/gate/), which has different type-checking and type-inference properties than a 'wet' [gate](/docs/glossary/gate/) does.  We won't explain the wet/dry distinction until later in Chapter 2 -- for now, just keep in mind that we're only dealing with one kind of [gate](/docs/glossary/gate/) (albeit the more common kind).
 
 The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider again the addition function:
 
@@ -201,7 +201,7 @@ nest-fail
 -have.@ud
 ```
 
-If you try to call this gate with the wrong kind of argument, you get a `nest-fail`.  If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`.  Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all atoms, regardless of aura.
+If you try to call this [gate](/docs/glossary/gate/) with the wrong kind of argument, you get a `nest-fail`.  If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`.  Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all [atom](/docs/glossary/atom/)s, regardless of aura.
 
 ### Using Conditionals for Inference by Branch
 
@@ -254,7 +254,7 @@ Using these non-basic constructed types with the `?=` rune results in a `fish-lo
 
 ##### Using `?=` for Type Inference
 
-The `?=` rune is particularly useful when used with the `?:` rune, because in these cases Hoon uses the result of the `?=` evaluation to infer type information.  To see how this works lets use `=/` to define a face, `b`, as a generic noun:
+The `?=` rune is particularly useful when used with the `?:` rune, because in these cases Hoon uses the result of the `?=` evaluation to infer type information.  To see how this works lets use `=/` to define a face, `b`, as a generic [noun](/docs/glossary/noun/):
 
 ```
 > =/(b=* 12 b)
@@ -277,14 +277,14 @@ Let's replace that last `b` with a `?:` expression whose condition subexpression
 [%.y 12]
 ```
 
-You can't see it here, but the inferred type of `b` in `[& b]` is `@`.  That subexpression is only evaluated if `?=(@ b)` evaluates as true; hence, Hoon can safely infer that `b` must be an atom in that subexpression.  Let's set `b` to a different initial value but leave everything else the same:
+You can't see it here, but the inferred type of `b` in `[& b]` is `@`.  That subexpression is only evaluated if `?=(@ b)` evaluates as true; hence, Hoon can safely infer that `b` must be an [atom](/docs/glossary/atom/) in that subexpression.  Let's set `b` to a different initial value but leave everything else the same:
 
 ```
 > =/(b=* [12 14] ?:(?=(@ b) [& b] [| b]))
 [%.n 12 14]
 ```
 
-You can't see it here either, but the inferred type of `b` in `[| b]` is `^`.  That subexpression is only evaluated if `?=(@ b)` evaluates as false, so `b` can't be an atom there.  It follows that it must be a cell.
+You can't see it here either, but the inferred type of `b` in `[| b]` is `^`.  That subexpression is only evaluated if `?=(@ b)` evaluates as false, so `b` can't be an [atom](/docs/glossary/atom/) there.  It follows that it must be a cell.
 
 ##### The Type Spear
 
@@ -330,13 +330,13 @@ Now let's try using `?=` with `?:` again.  But this time we'll replace `[& b]` w
 [%.n #t/{* *}]
 ```
 
-In both cases, `b` is defined initially as a generic noun, `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an atom, `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `{* *}`).
+In both cases, `b` is defined initially as a generic [noun](/docs/glossary/noun/), `*`.  But when using `?:` with `?=(@ b)` as the test condition, `b` is inferred to be an [atom](/docs/glossary/atom/), `@`, when the condition is true; otherwise `b` is inferred to be a cell, `^` (identical to `{* *}`).
 
 ##### `mint-vain`
 
 Expressions of the form `?:(?=(a b) c d)` should only be used when the previously inferred type of `b` isn't specific enough to determine whether it nests under `a`.  This kind of expression is only to be used when `?=` can reveal new type information about `b`, not to confirm information Hoon already has.
 
-For example, if you have a wing expression (e.g., `b`) that is already known to be an atom, `@`, and you use `?=(@ b)` to test whether `b` is an atom, you'll get a `mint-vain` crash.  The same thing happens if `b` is initially defined to be a cell `^`:
+For example, if you have a wing expression (e.g., `b`) that is already known to be an [atom](/docs/glossary/atom/), `@`, and you use `?=(@ b)` to test whether `b` is an [atom](/docs/glossary/atom/), you'll get a `mint-vain` crash.  The same thing happens if `b` is initially defined to be a cell `^`:
 
 ```
 > =/(b=@ 12 ?:(?=(@ b) [& b] [| b]))
@@ -346,7 +346,7 @@ mint-vain
 mint-vain
 ```
 
-In the first case it's already known that `b` is an atom.  In the second case it's already known that `b` isn't an atom.  Either way, the check is superfluous and thus one of the `?:` branches will never be taken.  The `mint-vain` crash indicates that it's provably the case one of the branches will never be taken.
+In the first case it's already known that `b` is an [atom](/docs/glossary/atom/).  In the second case it's already known that `b` isn't an [atom](/docs/glossary/atom/).  Either way, the check is superfluous and thus one of the `?:` branches will never be taken.  The `mint-vain` crash indicates that it's provably the case one of the branches will never be taken.
 
 #### `?@` Atom Match Tests
 
@@ -360,7 +360,7 @@ The `?@` rune takes three subexpressions.  The first is evaluated, and if its va
 %cell
 ```
 
-If the second `?@` subexpression is evaluated, Hoon correctly infers that `b` is an atom.  if the third subexpression is evaluated, Hoon correctly infers that `b` is a cell.
+If the second `?@` subexpression is evaluated, Hoon correctly infers that `b` is an [atom](/docs/glossary/atom/).  if the third subexpression is evaluated, Hoon correctly infers that `b` is a cell.
 
 ```
 > =/(b=* 12 ?@(b [%atom -:!>(b)] [%cell -:!>(b)]))
@@ -390,7 +390,7 @@ mint-vain
 
 #### `?^` Cell Match Tests
 
-The `?^` rune is just like `?@` except it's a test for a cell match instead of an atom match.  The first subexpression is evaluated, and if the resulting value is an instance of `^` the second subexpression is evaluated.  Otherwise, the third is.
+The `?^` rune is just like `?@` except it's a test for a cell match instead of an [atom](/docs/glossary/atom/) match.  The first subexpression is evaluated, and if the resulting value is an instance of `^` the second subexpression is evaluated.  Otherwise, the third is.
 
 ```
 > =/(b=* 12 ?^(b %cell %atom))
@@ -400,7 +400,7 @@ The `?^` rune is just like `?@` except it's a test for a cell match instead of a
 %cell
 ```
 
-Again, if the second subexpression is evaluated Hoon infers that `b` is a cell; if the third, Hoon infers that `b` is an atom.  If one of the conditional branches is provably never evaluated, the expression crashes with a `mint-vain`:
+Again, if the second subexpression is evaluated Hoon infers that `b` is a cell; if the third, Hoon infers that `b` is an [atom](/docs/glossary/atom/).  If one of the conditional branches is provably never evaluated, the expression crashes with a `mint-vain`:
 
 ```
 > =/(b=@ 12 ?^(b %cell %atom))
@@ -412,7 +412,7 @@ nest-fail
 
 #### Leaf Counting
 
-Nouns can be understood as binary trees in which each 'leaf' of the tree is an atom.  Let's look at a program that takes a noun and returns the number of leaves in it, i.e., the number of atoms.
+Nouns can be understood as binary trees in which each 'leaf' of the tree is an [atom](/docs/glossary/atom/).  Let's look at a program that takes a [noun](/docs/glossary/noun/) and returns the number of leaves in it, i.e., the number of [atom](/docs/glossary/atom/)s.
 
 ```hoon
 |=  a=*                                                 ::  1
@@ -435,13 +435,13 @@ Save this as `leafcount.hoon` in your urbit's pier and run it from the dojo:
 6
 ```
 
-This program is pretty simple.  If the noun `a` is an atom, then it's a tree of one leaf; return `1`.  Otherwise, the number of leaves in `a` is the sum of the leaves in the head, `-.a`, and the tail, `+.a`.
+This program is pretty simple.  If the [noun](/docs/glossary/noun/) `a` is an [atom](/docs/glossary/atom/), then it's a tree of one leaf; return `1`.  Otherwise, the number of leaves in `a` is the sum of the leaves in the head, `-.a`, and the tail, `+.a`.
 
 We have been careful to use `-.a` and `+.a` only on a branch for which `a` is proved to be a cell -- then it's safe to treat `a` as having a head and a tail.
 
 #### Cell Counting
 
-Here's a program that counts the number of cells in a noun:
+Here's a program that counts the number of cells in a [noun](/docs/glossary/noun/):
 
 ```hoon
 |=  a=*                                                 ::  1
@@ -477,9 +477,9 @@ Save this as `cellcount.hoon` and run it from the dojo:
 5
 ```
 
-This code is a little more tricky.  The basic idea, however, is simple.  We have a counter value, `c`, whose initial value is `0`.  We trace through the noun `a`, adding `1` to `c` every time we come across a cell.  For any part of the noun that is just an atom, `c` is returned unchanged.
+This code is a little more tricky.  The basic idea, however, is simple.  We have a counter value, `c`, whose initial value is `0`.  We trace through the [noun](/docs/glossary/noun/) `a`, adding `1` to `c` every time we come across a cell.  For any part of the [noun](/docs/glossary/noun/) that is just an [atom](/docs/glossary/atom/), `c` is returned unchanged.
 
-What makes this program is little harder to follow is that it has a recursion call within a recursion call.  The first recursion expression on line 6 makes changes to two face values: `c`, the counter, and `a`, the input noun.  The new value for `c` defined in line 7 is another recursion call (this time in irregular syntax).  The new value for `c` is to be: the result of running the same function on the the head of `a`, `-.a`, and with `1` added to `c`.  We add `1` because we know that `a` must be a cell.  Otherwise, we're asking for the number of cells in the rest of `-.a`.
+What makes this program is little harder to follow is that it has a recursion call within a recursion call.  The first recursion expression on line 6 makes changes to two face values: `c`, the counter, and `a`, the input [noun](/docs/glossary/noun/).  The new value for `c` defined in line 7 is another recursion call (this time in irregular syntax).  The new value for `c` is to be: the result of running the same function on the the head of `a`, `-.a`, and with `1` added to `c`.  We add `1` because we know that `a` must be a cell.  Otherwise, we're asking for the number of cells in the rest of `-.a`.
 
 Once that new value for `c` is computed from the head of `a`, we're ready to check the tail of `a`, `+.a`.  We've already got everything we want from `-.a`, so we throw that away and replace `a` with `+.a`.
 
@@ -489,7 +489,7 @@ You learned about lists earlier in the chapter, but we left out a little bit of 
 
 A non-null list is a cell.  If `b` is a non-null list then the head of `b` is the first item of `b` _with an `i` face on it_.  The tail of `b` is the rest of the list.  The 'rest of the list' is itself another list _with a `t` face on it_.  We can (and should) use these `i` and `t` faces in list functions.
 
-To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.  Let's construct this in stages:
+To illustrate: let's say that `b` is the list of the [atom](/docs/glossary/atom/)s `11`, `22`, and `33`.  Let's construct this in stages:
 
 ```
 [i=11 t=[rest-of-list-b]]
@@ -501,7 +501,7 @@ To illustrate: let's say that `b` is the list of the atoms `11`, `22`, and `33`.
 
 (There are lists of every type.  Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc.  We can even have lists of lists of `@`, `^`, or `?`, etc.)
 
-Here's a program that takes atoms `a` and `b` and returns a list of all atoms from `a` to `b`:
+Here's a program that takes [atom](/docs/glossary/atom/)s `a` and `b` and returns a list of all [atom](/docs/glossary/atom/)s from `a` to `b`:
 
 ```hoon
 |=  [a=@ b=@]                                           ::  1
@@ -538,7 +538,7 @@ In fact, we could have left out the `i` and `t` faces in the program itself:
 [a $(a +(a))]                                           ::  5
 ```
 
-Because there is a cast to a `(list @)` on line 2, Hoon will silently include `i` and `t` faces for the appropriate places of the noun.  Remember that faces are recorded in the type information of the noun in question, not as part of the noun itself.
+Because there is a cast to a `(list @)` on line 2, Hoon will silently include `i` and `t` faces for the appropriate places of the [noun](/docs/glossary/noun/).  Remember that faces are recorded in the type information of the [noun](/docs/glossary/noun/) in question, not as part of the [noun](/docs/glossary/noun/) itself.
 
 We called this program `gulf.hoon` because it replicates the `gulf` function in the Hoon standard library:
 
@@ -579,7 +579,7 @@ Hoon will infer that `b` either is or isn't null based on which `?~` branch is e
 
 #### Using `?~` With Lists
 
-The `?~` is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question.  Here's a program using `?~` to calculate the number of items in a list of atoms:
+The `?~` is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question.  Here's a program using `?~` to calculate the number of items in a list of [atom](/docs/glossary/atom/)s:
 
 ```hoon
 |=  a=(list @)                                          ::  1
@@ -609,7 +609,7 @@ Save the above code as `lent.hoon` in your urbit's pier and run it from the dojo
 
 #### Converting a Noun to a List of its Leaves
 
-Here's a program that takes a noun and returns a list of its 'leaves' (atoms) in order of their appearance:
+Here's a program that takes a [noun](/docs/glossary/noun/) and returns a list of its 'leaves' (atoms) in order of their appearance:
 
 ```hoon
 |=  a=*                                                           ::  1
@@ -620,9 +620,9 @@ Here's a program that takes a noun and returns a list of its 'leaves' (atoms) in
 $(lis $(a +.a), a -.a)                                            ::  6
 ```
 
-The input noun is `a`.  The list of atoms to be output is `lis`, which is given an initial value of `~`.  If `a` is just an atom, return a non-null list whose head is `a` and whose tail is `lis`.  Otherwise, the somewhat complicated recursion in line 6 is evaluated, in effect looping back to the `|-` with modifications made to `lis` and `a`.
+The input [noun](/docs/glossary/noun/) is `a`.  The list of [atom](/docs/glossary/atom/)s to be output is `lis`, which is given an initial value of `~`.  If `a` is just an [atom](/docs/glossary/atom/), return a non-null list whose head is `a` and whose tail is `lis`.  Otherwise, the somewhat complicated recursion in line 6 is evaluated, in effect looping back to the `|-` with modifications made to `lis` and `a`.
 
-The modification to `lis` in line 6 is to `$(a +.a)`.  The latter is a recursion to `|-` but with `a` replaced by its tail.  This evaluates to the list of `@` in the tail of `a`.  So `lis` becomes the list of atoms in the tail of `a`, and `a` becomes the head of `a`, `-.a`.
+The modification to `lis` in line 6 is to `$(a +.a)`.  The latter is a recursion to `|-` but with `a` replaced by its tail.  This evaluates to the list of `@` in the tail of `a`.  So `lis` becomes the list of [atom](/docs/glossary/atom/)s in the tail of `a`, and `a` becomes the head of `a`, `-.a`.
 
 Save the above code as `listleaf.hoon` and run it from the dojo:
 
@@ -633,7 +633,7 @@ Save the above code as `listleaf.hoon` and run it from the dojo:
 
 ### Other Kinds of Type Inference
 
-So far you've learned about four kinds of type inference, using: (1) literals, (2) explicit casts, (3) gate sample definitions, and (4) branch specialization using runes in the `?` family.
+So far you've learned about four kinds of type inference, using: (1) literals, (2) explicit casts, (3) [gate](/docs/glossary/gate/) sample definitions, and (4) branch specialization using runes in the `?` family.
 
 In fact, there are several other ways that Hoon infers type.  Any rune expression that evaluates to a flag, `?`, e.g., `.=`, will be inferred from accordingly.  The `.+` rune always evaluates to an `@`, and Hoon knows that too.  The cell constructor runes, `:-`, `:+`, `:^`, and `:*` are all known to produce cells.
 

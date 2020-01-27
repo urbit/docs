@@ -88,7 +88,7 @@ number. Messages on the same path are guaranteed to arrive in the same
 order as they were sent. No such guarantees are made across paths.
 
 The `r` is the actual data that you are sending. As the type implies,
-this can be an arbitrary noun, and it will be transferred to the
+this can be an arbitrary [noun](/docs/glossary/noun/), and it will be transferred to the
 receiver exactly as-is, in a well-typed way. Of course, this is data
 that is sent over the wire, so be careful not to send anything too
 massive unless you're willing to wait.
@@ -104,8 +104,8 @@ directly into `++wise:am`.
           zork:zank:(wool:(ho:(um p.soq) q.soq) hen cha val ete)
 ```
 
-The inputs to this gate are exactly the sort of thing you'd expect. In
-particular, everything in the `%wont` gate is here plus the calling duct
+The inputs to this [gate](/docs/glossary/gate/) are exactly the sort of thing you'd expect. In
+particular, everything in the `%wont` [gate](/docs/glossary/gate/) is here plus the calling duct
 so that we know where to send the acknowledgment and `ete` to determine
 if we're going to do the modern end-to-end acknowledgments.
 
@@ -113,7 +113,7 @@ The actual line of code looks intimidating, but it's really not all that
 bad. Working from the inside out, the call to `++um` sets up our
 domestic server, and the call to `++ho` sets up our knowledge about the
 neighbor we're sending to. From the outside, `++zork` and `++zank` just
-apply the changes made to our `++um` and `++am` cores, respectively. If
+apply the changes made to our `++um` and `++am` [core](/docs/glossary/core/)s, respectively. If
 you're familiar with the common idiom of `++abet`, that's all this is.
 The code predates the widespread usage of that name.
 
@@ -144,7 +144,7 @@ inputs, at least, are fairly obvious.
 
 If you glance at the code for a second, you'll see that
 `++wind:ho:um:am` seems to be able to send a message, or `++meal:ames`, given
-a `++soup`. This gate, then, just sets up the things we need to for
+a `++soup`. This [gate](/docs/glossary/gate/), then, just sets up the things we need to for
 `++wind` to do its job.
 
 We first get `rol`, which is a `++rill:ames`, that is, a particular outbound
@@ -162,7 +162,7 @@ crypto. At the moment, we only need our neighbor's life, which we put
 into the meal.
 
 Finally, we call `++wind:ho:um:am` with the `++soup` of the path and
-message number and the `++meal:ames` of the payload itself. For end-to-end
+message number and the `++meal:ames` of the [payload](/docs/glossary/payload/) itself. For end-to-end
 acknowledged messages, we use `%bund`.
 
 ```hoon
@@ -187,7 +187,7 @@ Following the trail a little further, we go to `++wind:ho:um:am`.
 `++wind` does three things: it (1) encodes the message into a list of
 possibly-encrypted packets, (2) puts the message into the packet pump,
 and (3) sends any packets that are ready to be sent. Yes, our nice
-little linear run of each gate calling exactly one other interesting
+little linear run of each [gate](/docs/glossary/gate/) calling exactly one other interesting
 gate is over. We'll go in order here.
 
 `++zuul:lax:as:go` is the what converts a `++meal:ames` into a list of
@@ -203,8 +203,8 @@ actual, 1KB packets.
               ++  wisp                                      ::  generate message
 ```
 
-For organizational purposes, `++zuul` constructs an internal core with
-three arms. `++wasp` encodes the meal into an atom with no encryption.
+For organizational purposes, `++zuul` constructs an internal [core](/docs/glossary/core/) with
+three [arm](/docs/glossary/arm/)s. `++wasp` encodes the meal into an [atom](/docs/glossary/atom/) with no encryption.
 `++wisp` encodes a meal with possible encryption (else it simply calls
 `++wasp`). `++weft` takes the result of `++wisp` and splits it into
 actual packets.
@@ -224,8 +224,8 @@ Since `++wisp` is a little long, we'll go through it line-by-line.
                 ^-  [[p=skin q=@] q=_..wisp]
 ```
 
-`++wisp` produces a pair of a `skin` and an atom, which is the meal
-encoded as a single atom and possibly encrypted.
+`++wisp` produces a pair of a `skin` and an [atom](/docs/glossary/atom/), which is the meal
+encoded as a single [atom](/docs/glossary/atom/) and possibly encrypted.
 
 ```hoon
                 ?:  =(%carp -.ham)
@@ -277,7 +277,7 @@ will propose.
 ```
 
 `yig` will be the life and engine for our current crypto. `bil` is our
-will. `hom` is the meal encoded as a single atom.
+will. `hom` is the meal encoded as a single [atom](/docs/glossary/atom/).
 
 ```hoon
                 ?:  =(~ lew.wod.dur)
@@ -306,7 +306,7 @@ If we do have our neighbor's will, then we send our perception of their
 current life, our current life, our will, and the message. The message
 is sealed with their public key so that only they can read our message.
 
-Once we have the message encoded as an atom, `++weft` goes to work.
+Once we have the message encoded as an [atom](/docs/glossary/atom/), `++weft` goes to work.
 
 ```hoon
               ++  weft                                      ::  fragment message
@@ -317,7 +317,7 @@ Once we have the message encoded as an atom, `++weft` goes to work.
 ```
 
 We're going to produce a list of the packets to send. First, we use the
-aforementioned `++wisp` to get the message as an atom.
+aforementioned `++wisp` to get the message as an [atom](/docs/glossary/atom/).
 
 ```hoon
                 =+  wit=(met 13 q.gim)
@@ -469,7 +469,7 @@ Finally, we harvest the packet pump.
           |%
 ```
 
-`++harv` contains a core for most of its work. The meat is in `++apse`.
+`++harv` contains a [core](/docs/glossary/core/) for most of its work. The meat is in `++apse`.
 First, though, it sets itself up. If there aren't any packets in the
 queue, then we simply do nothing except set `rtn`, our next timeout, to
 nil because we don't have any packets that may need to be retransmitted.
@@ -719,7 +719,7 @@ a negative acknowledgment.
 
 First, we check the protocol number. If it is not correct, then we
 simply ignore the packet entirely. Otherwise, we parse the packet with
-`++bite`, which converts a packet atom into a `++cake:ames`, that is, a triple
+`++bite`, which converts a packet [atom](/docs/glossary/atom/) into a `++cake:ames`, that is, a triple
 of the `sock` (pair of sender and receiver), the `skin` (encryption
 type), and the data.
 
@@ -750,15 +750,15 @@ our pier, then we drop the packet.
 If we've gotten this far, then we wish to process the packet. Recall
 that `++ho` and `++um` set up the domestic server and foreign client
 cores, respectively, and that `++zork` and `++zank` resolve any changes
-to these cores.
+to these [core](/docs/glossary/core/)s.
 
-The new stuff here, then, is the `++la` core and the `++chew` arm. The
-`++la` sets up a core for this particular packet, containing the current
+The new stuff here, then, is the `++la` [core](/docs/glossary/core/) and the `++chew` [arm](/docs/glossary/arm/). The
+`++la` sets up a [core](/docs/glossary/core/) for this particular packet, containing the current
 success/failure `++cape:ames`, the lane it was sent on, the encryption type,
 and a hash of the packet, used as an id.
 
 `++chew` is called with the encryption type and the message itself. It
-contains a little helper core inside of it, which starts immediately
+contains a little helper [core](/docs/glossary/core/) inside of it, which starts immediately
 with `++apse`.
 
 ```hoon
@@ -926,9 +926,9 @@ investigation.
                   (emir (wist:zid now xong:zid [~ lyn] r.fud))
 ```
 
-Forwarding is the simplest case, since we've seen all the arms before,
+Forwarding is the simplest case, since we've seen all the [arm](/docs/glossary/arm/)s before,
 except perhaps `++emit` and `++emir`, which simply take a boon or list
-of boons respectively and queue them up to be handled when the core
+of boons respectively and queue them up to be handled when the [core](/docs/glossary/core/)
 resolves. If we're told to forward a packet to ourselves, then we emit a
 `%mead` boon which simply sends another `%hear` task to ourselves with
 the data. Otherwise, we try to find a route to the recipient, as before.
@@ -1398,7 +1398,7 @@ it. We call `++bock` to perform the ack by sequence number. We call
 `++harv` to harvest the packet queue, sending any messages that are now
 able to be sent.
 
-In `++bock`, there are three arms we haven't seen before: `++bine`,
+In `++bock`, there are three [arm](/docs/glossary/arm/)s we haven't seen before: `++bine`,
 `+wept`, and `++beet`. We'll describe each of these before we get to
 `++bock`. `++bine` looks scariest.
 
@@ -1507,7 +1507,7 @@ the queue for the leftmost packet whose number is greater than the
 current `nep`. If we don't find any such packet, we just use the total
 number of packets sent.
 
-We can now dive into `++bock`, our last arm.
+We can now dive into `++bock`, our last [arm](/docs/glossary/arm/).
 
 ```hoon
         ++  bock                                            ::    bock:pu
@@ -1680,7 +1680,7 @@ which is elliptic-curve cryptography.
                 --                                          ::
 ```
 
-This is the core that defines the standard asymmetric cryptography
+This is the [core](/docs/glossary/core/) that defines the standard asymmetric cryptography
 operations.
 
 `++seal:as:acru:ames` allows us to send a message encrypted with someone's
@@ -1696,13 +1696,13 @@ that it was indeed Alice who sent it. This is associated with the
 
 `++sure:as:acru:ames` is the dual to `++sign:as:acru:ames`. It allows us to verify
 that a message we have received is indeed from the claimed sender. If
-Alice sends a message with her private key, then Bob can use this arm to
+Alice sends a message with her private key, then Bob can use this [arm](/docs/glossary/arm/) to
 verify that it was indeed Alice who sent it. This is associated with the
 `++skin:ames` `%open`.
 
 `++tear:as:acru:ames` is the dual to `++seal:as:acru:ames`. It allows us to read a
 message that we can be sure is only read by us. If Alice seals a message
-with Bob's public key, then Bob can use this arm to read it. This is
+with Bob's public key, then Bob can use this [arm](/docs/glossary/arm/) to read it. This is
 associated with the `++skin:ames` `%full`.
 
 #### `++de:acru:ames`, `++dy:acru:ames`, and `++en:acru:ames`, symmetric encryption/decryption
@@ -1756,7 +1756,7 @@ owned by their owners
                 --
 ```
 
-These arms allow us to reconstruct a `++acru:ames` from basic data.
+These [arm](/docs/glossary/arm/)s allow us to reconstruct a `++acru:ames` from basic data.
 
 `++pit:nu:acru:ames` constructs a `++acru:ames` from the width of our intended key
 and seed entropy. This is usually used in the initial construction of

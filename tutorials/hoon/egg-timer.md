@@ -36,7 +36,7 @@ The first thing to notice is that we are creating a `core` (`|%`) and a `door` (
 --
 ```
 
-The `core` here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping atoms to them. We define `card` to be a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
+The `core` here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping [atom](/docs/glossary/atom/)s to them. We define `card` to be a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
 
 It's important to note that the names `move` and `card` are technically arbitrary; you can call them whatever you'd like. By convention, however, you will see them called `move` and `card` practically everywhere.
 
@@ -54,7 +54,7 @@ You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's 
 - `eny`  Guaranteed-fresh entropy
 - `now`  The current time
 
-The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
+The `door` we've made has two [arm](/docs/glossary/arm/)s `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the [arm](/docs/glossary/arm/) with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
 ```hoon
 ++  poke-noun
@@ -64,13 +64,13 @@ The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of di
   [ost %wait /egg-timer (add now t)]
 ```
 
-In the above code, we create a gate that takes a single `@dr` argument. `@dr` is an aura for a 128-bit relative date. Here are a few examples.
+In the above code, we create a [gate](/docs/glossary/gate/) that takes a single `@dr` argument. `@dr` is an aura for a 128-bit relative date. Here are a few examples.
 
 - `~s17`  17 seconds
 - `~m20`  20 minutes
 - `~d42`  42 days
 
-As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we `bunt` with `*`, is the head; `+>.$`, the enclosing core which is our `door`, is the tail.
+As a matter of good type hygiene, we explicitly cast the output of this [gate](/docs/glossary/gate/) with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we `bunt` with `*`, is the head; `+>.$`, the enclosing [core](/docs/glossary/core/) which is our `door`, is the tail.
 
 Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like:
 
@@ -94,9 +94,9 @@ The final part of this `move` is:
 (add now t)
 ```
 
-`now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both atoms, we can add `now` and `t` these two to get an atom that is `t` units of time into the future from `now`. That produced atom can be interpreted as a `@da`.
+`now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both [atom](/docs/glossary/atom/)s, we can add `now` and `t` these two to get an [atom](/docs/glossary/atom/) that is `t` units of time into the future from `now`. That produced [atom](/docs/glossary/atom/) can be interpreted as a `@da`.
 
-That's all for our `poke-noun` arm. But what about when the timer goes off? Behn will create a `gift`, a similar construct to how we created a `card`, only this time it will end up being dispatched back to us via Gall in the `++wake` arm. Any app that wants to use a timer trigger needs to have an arm called `++wake`.
+That's all for our `poke-noun` [arm](/docs/glossary/arm/). But what about when the timer goes off? Behn will create a `gift`, a similar construct to how we created a `card`, only this time it will end up being dispatched back to us via Gall in the `++wake` [arm](/docs/glossary/arm/). Any app that wants to use a timer trigger needs to have an [arm](/docs/glossary/arm/) called `++wake`.
 
 ```hoon
 ++  wake
@@ -106,7 +106,7 @@ That's all for our `poke-noun` arm. But what about when the timer goes off? Behn
   [~ +>.$]
 ```
 
-`wake` is a `gate` that has two arguments: a `wire`, and a `(unit tang)` with the face `error`. The syntax of `=wire` is a shortcut for `wire=wire`; it's a common pattern to shadow the name of a type when you only have one instance of the type and are not going to refer to the type itself. A `wire` is just an alias for `path`. Our `wire` will be the `path` that we gave original `move`. If we needed to do something based on which request caused this gate to be called, we could use the wire to do so. In this case, we don't do perform such a dispatch.
+`wake` is a `gate` that has two arguments: a `wire`, and a `(unit tang)` with the face `error`. The syntax of `=wire` is a shortcut for `wire=wire`; it's a common pattern to shadow the name of a type when you only have one instance of the type and are not going to refer to the type itself. A `wire` is just an alias for `path`. Our `wire` will be the `path` that we gave original `move`. If we needed to do something based on which request caused this [gate](/docs/glossary/gate/) to be called, we could use the wire to do so. In this case, we don't do perform such a dispatch.
 
 Next we have the same cast we used in `++poke-noun` to make sure we are producing the correct thing for Gall. These casts are not strictly necessary, as the type system can infer what the type will be, but they can be very useful both for debugging our own code and for someone else trying to determine what our code should be producing.
 

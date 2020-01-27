@@ -66,15 +66,15 @@ the template that is followed for all `%say` generators.
 `:-  %say` creates a cell with `%say` as that cell's head to define
 the generator's format.
 
-`|=  [[* eny=@uv *] *]` is the tail of the cell, a gate, and that gate's first
+`|=  [[* eny=@uv *] *]` is the tail of the cell, a [gate](/docs/glossary/gate/), and that [gate](/docs/glossary/gate/)'s first
 child, a sample. Because the only external data our program is interested in
 using is entropy to seed our random-number generator, that's the only one we
-will assign a face (`eny`). The `*` elements that you see represent any noun. We
+will assign a face (`eny`). The `*` elements that you see represent any [noun](/docs/glossary/noun/). We
 use these as fillers: because we don't wish to use the data that's passed to
 those parts of the sample, we don't assign them faces.
 
 `:-  %noun` creates another cell, itself residing in the tail of our first cell
-via our gate expression. In all `%say` generators, the head of this second cell
+via our [gate](/docs/glossary/gate/) expression. In all `%say` generators, the head of this second cell
 is a `mark` that's used to tell Arvo what kind of data the generator is
 producing. In this case, we are using the `%noun` `mark` to tell the system how
 to print the generator's outputted value. The tail of this cell is that value
@@ -135,23 +135,23 @@ elements are the `tape`s that are selected as the 8-Ball's responses.
 
 The code above is our random-number engine.
 
-`og` is the core in the standard library that contains arms that perform
+`og` is the [core](/docs/glossary/core/) in the standard library that contains [arm](/docs/glossary/arm/)s that perform
 randomness-related operations. `=/  rng  ~(. og eny)` passes `eny` to the
-subject of `og`, and then stores the resulting core in a face called `rng`.
+subject of `og`, and then stores the resulting [core](/docs/glossary/core/) in a face called `rng`.
 
-`=/  val  (rad:rng (lent answers))` uses `rad` arm. `rad` produces a random
-number from `0` to `n-1`, where `n` the entropy-seeded `rng` core and pulls.
+`=/  val  (rad:rng (lent answers))` uses `rad` [arm](/docs/glossary/arm/). `rad` produces a random
+number from `0` to `n-1`, where `n` the entropy-seeded `rng` [core](/docs/glossary/core/) and pulls.
 Is the upper bound that we give it. In this case, the upper bound is the number
-of elements in `answers`, obtained by using the `lent` standard-library arm. We
+of elements in `answers`, obtained by using the `lent` standard-library [arm](/docs/glossary/arm/). We
 store the random result in `val`.
 
 ```hoon
 (snag val answers)
 ```
 
-`snag` is a standard-library arm that that takes two arguments: an atom and
+`snag` is a standard-library [arm](/docs/glossary/arm/) that that takes two arguments: an [atom](/docs/glossary/atom/) and
 a `list`. It fetches the element in position `n` of the list, where `n` is the
-value of the atom it was passed. By using the randomized `val` as that position
+value of the [atom](/docs/glossary/atom/) it was passed. By using the randomized `val` as that position
 argument, we can pull a different response from `answers` every time the
 generator is run.
 

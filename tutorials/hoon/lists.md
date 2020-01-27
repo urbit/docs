@@ -7,15 +7,15 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/lists/"]
 
 # Lists
 
-A **list** is a type of noun that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).
+A **list** is a type of [noun](/docs/glossary/noun/) that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).
 
 So a list can be either null or non-null. When the list contains only `~` and no items, it's the null list.  Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called _lests_, are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sub-list is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
 
 `[1 [2 [3 [4 ~]]]]`
 
-It's easy to see where the heads are and where the nesting tails are. The head of the above list is the atom `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.
+It's easy to see where the heads are and where the nesting tails are. The head of the above list is the [atom](/docs/glossary/atom/) `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child [noun](/docs/glossary/noun/)s, it is implicitly understood that the right-most [noun](/docs/glossary/noun/)s constitute a cell.
 
-To make a list, let's cast nouns to the `(list @)` ("list of atoms") type.
+To make a list, let's cast [noun](/docs/glossary/noun/)s to the `(list @)` ("list of [atom](/docs/glossary/atom/)s") type.
 
 ```
 > `(list @)`~
@@ -35,7 +35,7 @@ Notice how the last Dojo command has a different construction, with the `~` in f
 
 ## An aside about Casting
 
-The use of casts in this example is helpful to explain to the Hoon compiler exactly what it is we mean with these data structures. In this case, we are telling it they are all lists of atoms. Get in the habit of casting your data structures, as it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
+The use of casts in this example is helpful to explain to the Hoon compiler exactly what it is we mean with these data structures. In this case, we are telling it they are all lists of [atom](/docs/glossary/atom/)s. Get in the habit of casting your data structures, as it will not only help anyone reading your code, but it will help you in hunting down bugs in your code.
 
 Let's make a list whose items are of the `@t` string type:
 
@@ -60,13 +60,13 @@ find-fork-d
 
 It's important to note that performing tests like `?~ mylist` will actually transform `mylist` into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for `list`s.
 
-You can construct lists of any type.  `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
+You can construct lists of any type.  `(list @)` indicates a list of [atom](/docs/glossary/atom/)s, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an [atom](/docs/glossary/atom/) and whose tail is a flag, etc.
 
 ## Tapes
 
 While a list can be of any type, there are some special types of lists that are built into Hoon. The tape is the most common example.
 
-Hoon has two kinds of strings: cords and tapes.  Cords are atoms with aura `@t`, and they're pretty-printed between `''` marks.
+Hoon has two kinds of strings: cords and tapes.  Cords are [atom](/docs/glossary/atom/)s with aura `@t`, and they're pretty-printed between `''` marks.
 
 ```
 > 'this is a cord'
@@ -76,7 +76,7 @@ Hoon has two kinds of strings: cords and tapes.  Cords are atoms with aura `@t`,
 2.037.307.443.564.446.887.986.503.990.470.772
 ```
 
-A tape is a list of `@tD` atoms (i.e., ASCII characters).
+A tape is a list of `@tD` [atom](/docs/glossary/atom/)s (i.e., ASCII characters).
 
 ```
 > "this is a tape"
@@ -119,18 +119,18 @@ The `flop` function takes a list and returns it in reverse order:
 
 #### `flop` Exercise 1.5a
 
-Without using `flop`, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of this lesson.
+Without using `flop`, write a [gate](/docs/glossary/gate/) that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of this lesson.
 
 ### `sort`
 
-The `sort` function uses the 'quicksort' algorithm to sort a list.  It takes a list to sort and a gate that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `lth` gate (for 'less than'):
+The `sort` function uses the 'quicksort' algorithm to sort a list.  It takes a list to sort and a [gate](/docs/glossary/gate/) that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `lth` [gate](/docs/glossary/gate/) (for 'less than'):
 
 ```
 > (sort ~[37 62 49 921 123] lth)
 ~[37 49 62 123 921]
 ```
 
-To sort the list from greatest to least, use the `gth` gate ('greater than') as the basis of comparison instead:
+To sort the list from greatest to least, use the `gth` [gate](/docs/glossary/gate/) ('greater than') as the basis of comparison instead:
 
 ```
 > (sort ~[37 62 49 921 123] gth)
@@ -160,11 +160,11 @@ The `weld` function takes two lists of the same type and concatenates them:
 
 #### `weld` Exercise 1.5b
 
-Without using `weld`, write a gate that takes a `[(list @) (list @)]` who product is the concatenation of these two lists. There is a solution at the bottom of this lesson.
+Without using `weld`, write a [gate](/docs/glossary/gate/) that takes a `[(list @) (list @)]` who product is the concatenation of these two lists. There is a solution at the bottom of this lesson.
 
 ### `snag`
 
-The `snag` function takes an atom `n` and a list, and returns the `n`th item of the list, where `0` is the first item:
+The `snag` function takes an [atom](/docs/glossary/atom/) `n` and a list, and returns the `n`th item of the list, where `0` is the first item:
 
 ```
 > (snag 0 `(list @)`~[11 22 33 44])
@@ -213,11 +213,11 @@ You can cast `b` to `(list)` to work around this:
 
 #### `snag` Exercise 1.5c
 
-Without using `snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of this lesson.
+Without using `snag`, write a [gate](/docs/glossary/gate/) that returns the `n`th item of a list.  There is a solution at the bottom of this lesson.
 
 ### `oust`
 
-The `oust` function takes a pair of atoms `[a=@ b=@]` and a list, and returns the list with `b` items removed, starting at item `a`:
+The `oust` function takes a pair of [atom](/docs/glossary/atom/)s `[a=@ b=@]` and a list, and returns the list with `b` items removed, starting at item `a`:
 
 ```
 > (oust [0 1] `(list @)`~[11 22 33 44])
@@ -247,11 +247,11 @@ The `lent` function takes a list and returns the number of items in it:
 
 #### `lent` Exercise 1.5d
 
-Without using `lent`, write a gate that takes a list and returns the number of item in it. There is a solution at the bottom of this lesson.
+Without using `lent`, write a [gate](/docs/glossary/gate/) that takes a list and returns the number of item in it. There is a solution at the bottom of this lesson.
 
 ### `roll`
 
-The `roll` function takes a list and a gate, and accumulates a value of the list items using that gate.  For example, if you want to add or multiply all the items in a list of atoms, you would use `roll`:
+The `roll` function takes a list and a [gate](/docs/glossary/gate/), and accumulates a value of the list items using that [gate](/docs/glossary/gate/).  For example, if you want to add or multiply all the items in a list of [atom](/docs/glossary/atom/)s, you would use `roll`:
 
 ```
 > (roll `(list @)`~[11 22 33 44 55] add)
@@ -263,14 +263,14 @@ The `roll` function takes a list and a gate, and accumulates a value of the list
 
 ### `turn`
 
-The `turn` function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate.  For example, to add `1` to each item in a list of atoms:
+The `turn` function takes a list and a [gate](/docs/glossary/gate/), and returns a list of the products of applying each item of the input list to the [gate](/docs/glossary/gate/).  For example, to add `1` to each item in a list of [atom](/docs/glossary/atom/)s:
 
 ```
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
 ~[12 23 34 45]
 ```
 
-Or to double each item in a list of atoms:
+Or to double each item in a list of [atom](/docs/glossary/atom/)s:
 
 ```
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))
@@ -338,7 +338,7 @@ Then determine whether the following dojo expressions are valid, and if so, what
 ```
 
 #### Exercise 1.5g
-Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may make use of the `flop` function.
+Write a [gate](/docs/glossary/gate/) that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may make use of the `flop` function.
 
 
 ## Exercise Solutions

@@ -36,7 +36,7 @@ Accordingly, the structures produced by the type subexpressions above aren't par
 
 ### Type Example Values ('Bunt' Values)
 
-In other cases, structures _can_ have an effect on runtime semantics.  For example, consider the expression `|=(a=@ 15)`.  This produces a gate that takes any atom as its sample and returns `15`.
+In other cases, structures _can_ have an effect on runtime semantics.  For example, consider the expression `|=(a=@ 15)`.  This produces a [gate](/docs/glossary/gate/) that takes any [atom](/docs/glossary/atom/) as its sample and returns `15`.
 
 The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In the compiled program this structure is converted to a default value for the appropriate type, sometimes called an **example** value (or a **bunt** value).
 
@@ -53,7 +53,7 @@ The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In 
 0
 ```
 
-As you can see, the example value for `@` is `0`.  Example values are used as placeholder data for the gate's sample.  You can prepend `*` to a type expression to see the default value of that type:
+As you can see, the example value for `@` is `0`.  Example values are used as placeholder data for the [gate](/docs/glossary/gate/)'s sample.  You can prepend `*` to a type expression to see the default value of that type:
 
 ```
 > *^
@@ -71,7 +71,7 @@ As you can see, the example value for `@` is `0`.  Example values are used as pl
 
 ### Molds
 
-Structures can also become gates at runtime.  To produce such a gate, use a type expression as a stand-alone expression in the dojo:
+Structures can also become [gate](/docs/glossary/gate/)s at runtime.  To produce such a [gate](/docs/glossary/gate/), use a type expression as a stand-alone expression in the dojo:
 
 ```
 > @
@@ -99,9 +99,9 @@ Structures can also become gates at runtime.  To produce such a gate, use a type
 >
 ```
 
-In all three cases, the result of evaluation is a gate.  For each, the head is a single arm, signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are sometimes called **molds**.
+In all three cases, the result of evaluation is a [gate](/docs/glossary/gate/).  For each, the head is a single [arm](/docs/glossary/arm/), signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These [gate](/docs/glossary/gate/)s are sometimes called **molds**.
 
-Molds are gates with two special properties: (1) they are guaranteed to produce a value of the type indicated by the type expression, and (2) they are [idempotent](https://en.wikipedia.org/wiki/Idempotence).  (A gate `i` is idempotent if and only if the result of applying `i` multiple times to a value produces the same result as applying it once.  In other words, `(i val)` must produce the same result as `(i (i val))`.)
+Molds are [gate](/docs/glossary/gate/)s with two special properties: (1) they are guaranteed to produce a value of the type indicated by the type expression, and (2) they are [idempotent](https://en.wikipedia.org/wiki/Idempotence).  (A [gate](/docs/glossary/gate/) `i` is idempotent if and only if the result of applying `i` multiple times to a value produces the same result as applying it once.  In other words, `(i val)` must produce the same result as `(i (i val))`.)
 
 ```
 > (@ 123)
@@ -143,7 +143,7 @@ Let's review (1) and (2) briefly.
 
 ### Basic Types
 
-The basic types of Hoon are: `*` for nouns, `@` for atoms (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
+The basic types of Hoon are: `*` for [noun](/docs/glossary/noun/)s, `@` for [atom](/docs/glossary/atom/)s (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
 
 Let's illustrate with the irregular `\` \`` cast syntax:
 
@@ -179,7 +179,7 @@ The purpose of the `$` family of runes is to construct user-defined complex stru
 
 ### `$:` Build a Cell Structure
 
-The `$:` takes two subexpressions, each of which must be a structure.  The result is a cell structure whose head and tail are the two structures indicated.  For example, the type defined by `$:(@ ?)` is the set of cells whose head is an atom, `@` and whose tail is a flag, `?`.  Most of the time you can achieve the same result using square brackets: `[@ ?]`.  (Most of the time, but not always!)
+The `$:` takes two subexpressions, each of which must be a structure.  The result is a cell structure whose head and tail are the two structures indicated.  For example, the type defined by `$:(@ ?)` is the set of cells whose head is an [atom](/docs/glossary/atom/), `@` and whose tail is a flag, `?`.  Most of the time you can achieve the same result using square brackets: `[@ ?]`.  (Most of the time, but not always!)
 
 ```
 > `$:(@ ?)`[123 %.y]
@@ -199,7 +199,7 @@ nest-fail
 
 Why are `$:(@ ?)` and `[@ ?]` the same only 'most of the time'?  Why not always?  The answer has to do with the way Hoon handles certain rune subexpressions.  Some subexpressions are reserved exclusively for types.  For example, the `^-` rune is always followed by two subexpressions, the first of which must indicate a type.  Subexpressions reserved exclusively for types are interpreted as types.  These subexpressions must **always** produce a single structure, at least as an intermediate piece of data at compile-time.  When `[@ ?]` is interpreted by Hoon as indicating a type, the result is a structure equivalent to that of `$:(@ ?)`.
 
-The first subexpression after the `|=` rune is also interpreted in the same way, i.e., as giving a type definition (in this case for the gate sample).
+The first subexpression after the `|=` rune is also interpreted in the same way, i.e., as giving a type definition (in this case for the [gate](/docs/glossary/gate/) sample).
 
 But expressions of Hoon that aren't exclusively for types interpret expressions such as `[@ ?]` differently, i.e., as a cell of structures. Interpreted in this way, `[@ ?]` isn't equivalent to `$:(@ ?)`.
 
@@ -246,7 +246,7 @@ You can force `[@ ?]` to be interpreted as a single mold by prepending it with `
 
 ### `$-` Define a Gate Type
 
-You can use `$-` to define a gate type.  The `$-` rune takes two subexpressions, which correspond to the gate input type and output type, respectively.  For example, if you want to cast for a gate that takes `@` and returns `@` when called, use `$-(@ @)`:
+You can use `$-` to define a [gate](/docs/glossary/gate/) type.  The `$-` rune takes two subexpressions, which correspond to the [gate](/docs/glossary/gate/) input type and output type, respectively.  For example, if you want to cast for a [gate](/docs/glossary/gate/) that takes `@` and returns `@` when called, use `$-(@ @)`:
 
 ```
 > (`$-(@ @)`|=(@ `@`15) 12)
@@ -295,7 +295,7 @@ The irregular form of `$?` is just `?( )`:
 %yellow
 ```
 
-`$?` should only be used on types that are disjoint, i.e., which have no values in common.  For example, it shouldn't be used on atom types differing only in aura.
+`$?` should only be used on types that are disjoint, i.e., which have no values in common.  For example, it shouldn't be used on [atom](/docs/glossary/atom/) types differing only in aura.
 
 ```
 > `?(@ud @ux)`10
@@ -333,7 +333,7 @@ nest-fail
 
 ### `$@` Define a Union of Atom and Cell Types
 
-The `$@` rune takes two subexpressions.  The first must be an atomic type, and the second must be a cell type.  The result is a union.
+The `$@` rune takes two subexpressions.  The first must be an [atom](/docs/glossary/atom/)ic type, and the second must be a cell type.  The result is a union.
 
 Often `$@` is used to define a type with a null or trivial case for the `@` case.  For example, we can expand the `user` structure using `$@` to give it a null case:
 

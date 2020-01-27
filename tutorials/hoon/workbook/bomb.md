@@ -99,7 +99,7 @@ doing here.
 We call `defuse` and pass it `cuts`, the list of tapes we were provided with
 when the generator started.
 
-Next is the core that has two arms, `defuse` and `rules`. Let's look at `rules`
+Next is the [core](/docs/glossary/core/) that has two [arm](/docs/glossary/arm/)s, `defuse` and `rules`. Let's look at `rules`
 quickly.
 
 We can see that it is a `map` of `tape` to `list` of `tape`. For each of the
@@ -122,7 +122,7 @@ start, but it is much simpler to work with.
     "boom"
 ```
 
-The `defuse` arm is the meat of our program. It is a `gate` that takes a `list`
+The `defuse` [arm](/docs/glossary/arm/) is the meat of our program. It is a `gate` that takes a `list`
 of `tape`. We combine a defaulted `list` of `tape` with the face `bad` with the
 subject.
 

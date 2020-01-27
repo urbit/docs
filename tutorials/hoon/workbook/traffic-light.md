@@ -47,17 +47,17 @@ relevant to the functionality of our program.
     --
 ```
 
-`=+` adds a noun to the subject. In our case, the noun in question is the core
-that is opened with `|%` and closed with `--`. This core is used to store types,
-and does that with the arm that it contains.
+`=+` adds a [noun](/docs/glossary/noun/) to the subject. In our case, the [noun](/docs/glossary/noun/) in question is the [core](/docs/glossary/core/)
+that is opened with `|%` and closed with `--`. This [core](/docs/glossary/core/) is used to store types,
+and does that with the [arm](/docs/glossary/arm/) that it contains.
 
-`++  state` creates an arm called `state`, which will be used as the name of the
+`++  state` creates an [arm](/docs/glossary/arm/) called `state`, which will be used as the name of the
 new type that is created in the code that follows, `?(%red %yellow %green)`.
 That following code creates a new type from the union of its elements. In this
 case, the state can be one of three values: `%red`, `%yellow`, or `%green`
 corresponding to the three colors of a standard traffic light.
 
-Having new types in a separate core is a common idiom in Hoon programs that allows
+Having new types in a separate [core](/docs/glossary/core/) is a common idiom in Hoon programs that allows
 the compiler to do [constant folding](https://en.wikipedia.org/wiki/Constant_folding),
 which improves performance.
 
@@ -65,10 +65,10 @@ which improves performance.
 =/  current-state=state  %red
 ```
 
-The line above creates a noun of type `state` - the type that we created with
-the arm in previous code chunk - and gives it a default value. Because we are
-putting this noun into the subject, it will be available for use in the
-`traffic-light` core we are about to create.
+The line above creates a [noun](/docs/glossary/noun/) of type `state` - the type that we created with
+the [arm](/docs/glossary/arm/) in previous code chunk - and gives it a default value. Because we are
+putting this [noun](/docs/glossary/noun/) into the subject, it will be available for use in the
+`traffic-light` [core](/docs/glossary/core/) we are about to create.
 
 ```hoon
 =+  ^=  traffic-light
@@ -81,29 +81,29 @@ putting this noun into the subject, it will be available for use in the
 ```
 
 `=+  ^=  traffic-light` does two things. The `^=` rune assigns a face to that
-noun so it's easier to reference. The `=+` rune adds a noun to the subject, in
-this case the core that we just assigned a name and start to build on the next
+noun so it's easier to reference. The `=+` rune adds a [noun](/docs/glossary/noun/) to the subject, in
+this case the [core](/docs/glossary/core/) that we just assigned a name and start to build on the next
 line and assigned the name.
 
-With `|%`, we are finally at the meat of the program. This core that we just
-named has two arms: `look`, which gives us the current state, defined later; and
+With `|%`, we are finally at the meat of the program. This [core](/docs/glossary/core/) that we just
+named has two [arm](/docs/glossary/arm/)s: `look`, which gives us the current state, defined later; and
 `set`, which gives us a simple way to modify the value of `current-state`.
 
-The gate we are producing with `|=` may look a bit strange, so let's break it
+The [gate](/docs/glossary/gate/) we are producing with `|=` may look a bit strange, so let's break it
 down.
 
 `s=state` allows for an argument of type `state` and gives it a face `s`.
 
-We first produce a core with one arm named `$`. That `$` arm will produce a new
+We first produce a [core](/docs/glossary/core/) with one [arm](/docs/glossary/arm/) named `$`. That `$` [arm](/docs/glossary/arm/) will produce a new
 core with `current-state` changed to match the `s` provided when it was called.
 How does this work?
 
 Remember that `.` is [wing syntax](@/docs/reference/hoon-expressions/limb/wing.md) that
-applies the wing expression on the left of it to the noun to the right of it.
-`$` is the arm of the core. Then by using the wing expression `+>`, which means
-"return the head of the tail", we traverse the subject to the core to latch onto
-its parent core. where we defined the arms `look` and `set`. The `( )` then
-lists changes to the core we would like to make as we produce a new one. You
+applies the wing expression on the left of it to the [noun](/docs/glossary/noun/) to the right of it.
+`$` is the [arm](/docs/glossary/arm/) of the [core](/docs/glossary/core/). Then by using the wing expression `+>`, which means
+"return the head of the tail", we traverse the subject to the [core](/docs/glossary/core/) to latch onto
+its parent [core](/docs/glossary/core/). where we defined the [arm](/docs/glossary/arm/)s `look` and `set`. The `( )` then
+lists changes to the [core](/docs/glossary/core/) we would like to make as we produce a new one. You
 will often see `+>.$` used in this way.
 
 ```hoon
@@ -112,17 +112,17 @@ will often see `+>.$` used in this way.
 ```
 
 Now we have the last parts of our program. Remember that `=+` allows us to add a
-noun to the head of the subject. In this case, we are adding two nouns, one with
-the face `a` and a second with the face `b`. These two nouns will be copies of
-the `traffic-light` core, with all the bits we previously created.
+noun to the head of the subject. In this case, we are adding two [noun](/docs/glossary/noun/)s, one with
+the face `a` and a second with the face `b`. These two [noun](/docs/glossary/noun/)s will be copies of
+the `traffic-light` [core](/docs/glossary/core/), with all the bits we previously created.
 
 ```hoon
 =.  a  (set.a %yellow)
 ```
 
-`=.` changes a leg in the subject. We use the `set` arm on `a` to produce a gate
+`=.` changes a leg in the subject. We use the `set` [arm](/docs/glossary/arm/) on `a` to produce a [gate](/docs/glossary/gate/)
 and give that the argument of `%yellow`. Remember that we are actually producing
-a new core in the gate, so we have to then assign that back to the face `a`.
+a new [core](/docs/glossary/core/) in the [gate](/docs/glossary/gate/), so we have to then assign that back to the face `a`.
 
 ```hoon
 [current-state.a current-state.b]

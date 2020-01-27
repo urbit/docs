@@ -91,7 +91,7 @@ It is important for us to note that Ford is _not_ used to build vanes. Vanes are
 
 ## Using Ford
 
-Having covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used arms.
+Having covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used [arm](/docs/glossary/arm/)s.
 
 ### Data types
 
@@ -114,7 +114,7 @@ A `schematic`, found in `zuse.hoon`, is a set of build instruction for Ford. It 
 Some examples of subtypes include:
  - `%list` - a list of schematics to build.
  - `%core` - a Clay path to a Hoon source file to build.
- - `%call` - a schematic consisting of two sub-schematics, one of which produces a gate and a second that produces a sample. It then runs the gate on the sample, producing a vase of the result, tagged with the mark `%noun`.
+ - `%call` - a schematic consisting of two sub-schematics, one of which produces a [gate](/docs/glossary/gate/) and a second that produces a sample. It then runs the [gate](/docs/glossary/gate/) on the sample, producing a vase of the result, tagged with the mark `%noun`.
  - `%scry` - look up a value from the Urbit namespace.
 
  Schematics are only ever sent to Ford by another vane. Userspace apps do not directly create schematics.

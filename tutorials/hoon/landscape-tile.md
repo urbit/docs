@@ -220,15 +220,15 @@ window.testingTile = testingTile;
 
 ### Default Code Components
 
-Parts of the `testing.hoon` code shown above is the "scaffolding" that was automatically built for us by the default Hoon file from the `create-landscape-app` repo. We'll give a general overview of those arms here.
+Parts of the `testing.hoon` code shown above is the "scaffolding" that was automatically built for us by the default Hoon file from the `create-landscape-app` repo. We'll give a general overview of those [arm](/docs/glossary/arm/)s here.
 
 As with other gall apps, `card` and `move` define the types that can be produced by the app, `card` specifically defines which type of requests can be made to other parts of the system.
 
 `++prep` is called when the application first starts, and when its code gets updated. It will get a `unit` of the old state and `++prep` needs to update the state. You might notice the use of `~&`. This is useful to give us feedback to make sure our changes have been loaded.
 
-The `++peer-testingtile` arm is called when the tile first subscribes to the app. The subscription logic is mostly handled for us by the `launch` app here it simply produces some data to send back to the tile, indicating its initial state.
+The `++peer-testingtile` [arm](/docs/glossary/arm/) is called when the tile first subscribes to the app. The subscription logic is mostly handled for us by the `launch` app here it simply produces some data to send back to the tile, indicating its initial state.
 
-The two arms that are the most important for our application are `++poke-json` which receives any JSON sent by the tile and `++coup-helm-hi`, which we'll cover in a bit.
+The two [arm](/docs/glossary/arm/)s that are the most important for our application are `++poke-json` which receives any JSON sent by the tile and `++coup-helm-hi`, which we'll cover in a bit.
 
 ### Interesting Code
 
@@ -257,15 +257,15 @@ Now that we've glanced at the default components of the program, lets take a clo
   ==
 ```
 
-`++poke-json` is going to accept a `json` and produce a `quip`. A `quip` is a pair of: a list of `moves` (in this case), and some state which is the same type as the core we are building. To be clear, a `json` in Hoon is not the same thing as something in the more general JSON format. It is rather a parsed data structure.
+`++poke-json` is going to accept a `json` and produce a `quip`. A `quip` is a pair of: a list of `moves` (in this case), and some state which is the same type as the [core](/docs/glossary/core/) we are building. To be clear, a `json` in Hoon is not the same thing as something in the more general JSON format. It is rather a parsed data structure.
 
 There are several uses of the `~&` rune. These are simply debugging printfs that we can skip over.
 
-`(om:dejs:format same)` builds a gate that converts a `json` into a `map`.
+`(om:dejs:format same)` builds a [gate](/docs/glossary/gate/) that converts a `json` into a `map`.
 
-`++so:dejs:format` formats some piece of data out of the `json` map, in this case the value of `%ship`. `sthu` is transformed by [`slaw`](@/docs/reference/library/4m.md#slaw) into an actual `@p` to verify that we didn't get sent nonsense. If we did, `need` will cause the gate to crash.
+`++so:dejs:format` formats some piece of data out of the `json` map, in this case the value of `%ship`. `sthu` is transformed by [`slaw`](@/docs/reference/library/4m.md#slaw) into an actual `@p` to verify that we didn't get sent nonsense. If we did, `need` will cause the [gate](/docs/glossary/gate/) to crash.
 
-Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `this` for the existing core.
+Finally, we produce the list of `move`s and the new state that is the data. This starts with the `:_` rune, which is the inverted form of `:-`, the [cons](https://en.wikipedia.org/wiki/Cons) rune. The state of our application will not actually change, so we can just use `this` for the existing [core](/docs/glossary/core/).
 
 ``` hoon
 ++  send-status-diff
@@ -278,9 +278,9 @@ Finally, we produce the list of `move`s and the new state that is the data. This
 
 `++send-status-diff` takes a `tape` and produces a `list` of `moves`, one to each subscriber to our application, to update them with a JSON structure made from the `tape`.
 
-We weld the result of this gate with one more `move` we've built here: the list starting with `:-  ost.bol`. This `move` is a `%poke` to `%hood`. Specifically, it's a `%helm-hi` poke, the poke used by the `hi.hoon` generator to send `|hi` messages to other ships. In this case, we're sending it to the ship whose name was given to us in the JSON.
+We weld the result of this [gate](/docs/glossary/gate/) with one more `move` we've built here: the list starting with `:-  ost.bol`. This `move` is a `%poke` to `%hood`. Specifically, it's a `%helm-hi` poke, the poke used by the `hi.hoon` generator to send `|hi` messages to other ships. In this case, we're sending it to the ship whose name was given to us in the JSON.
 
-When we get a response from `%helm` to our `poke`, we'll receive a `coup`, which is the `move` always sent in response to a `poke`. Specifically, we'll get a `coup` for `helm-hi`, which is why we want an arm named `coup-helm-hi` to handle that.
+When we get a response from `%helm` to our `poke`, we'll receive a `coup`, which is the `move` always sent in response to a `poke`. Specifically, we'll get a `coup` for `helm-hi`, which is why we want an [arm](/docs/glossary/arm/) named `coup-helm-hi` to handle that.
 
 ``` hoon
 ++  coup-helm-hi

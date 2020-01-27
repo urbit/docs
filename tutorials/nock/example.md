@@ -16,7 +16,7 @@ feeling of understanding the system at two levels is pleasant.
 
 A good practice exercise for Nock is a decrement formula.  Ie, a
 formula `f` which implements the partial function that produces
-`(s - 1)` if `s` is a nonzero atom, and otherwise does not
+`(s - 1)` if `s` is a nonzero [atom](/docs/glossary/atom/), and otherwise does not
 terminate.
 
 As we know, the equivalent formula for increment is
@@ -68,7 +68,7 @@ Does Hoon actually work?
 
 Let's translate this into English.  How do we decrement the
 subject?  First (line 1), we rename the subject `a`.  Second
-(line 2), we add a variable, `b`, an atom with value `0`.
+(line 2), we add a variable, `b`, an [atom](/docs/glossary/atom/) with value `0`.
 Third (line 3), we loop.  Fourth, we test if `a` equals `b` plus
 1 (line 4), produce `b` if it does (line 5), repeat the loop with
 `b` set to `b` plus 1 (line 6) if it doesn't.  Obviously, while
@@ -134,58 +134,58 @@ Let's continue with our decrement.  So what's `g`?  We seem to
 loop.  Does Nock have a loop instruction?  It most certainly does
 not.  So what do we do?
 
-We build a noun called a **core** - a construct which is behind any
+We build a [noun](/docs/glossary/noun/) called a **core** - a construct which is behind any
 kind of interesting control flow in Hoon.  Of course, the Nock
 programmer is not constrained to use the same techniques as the
 Hoon compiler, but it is probably a good idea.
 
 In Hoon, all the flow structures from your old life as an Earth
-programmer become cores.  Functions and/or closures are cores,
-objects are cores, modules are cores, even loops are cores.
+programmer become [core](/docs/glossary/core/)s.  Functions and/or closures are [core](/docs/glossary/core/)s,
+objects are [core](/docs/glossary/core/)s, modules are [core](/docs/glossary/core/)s, even loops are [core](/docs/glossary/core/)s.
 
-The core is just a cell whose tail is data (possibly containing
-other cores) and whose head is code (containing one or more
+The [core](/docs/glossary/core/) is just a cell whose tail is data (possibly containing
+other [core](/docs/glossary/core/)s) and whose head is code (containing one or more
 formulas).  The tail is the **payload** and the head is the
-**battery**.  Hence your core is
+**battery**.  Hence your [core](/docs/glossary/core/) is
 
 ```
 [bat pay]
 ```
 
-To activate a core, pick a formula out of the battery, and use
-the entire core (**not** just the payload) as the subject.
+To activate a [core](/docs/glossary/core/), pick a formula out of the [battery](/docs/glossary/battery/), and use
+the entire [core](/docs/glossary/core/) (**not** just the [payload](/docs/glossary/payload/)) as the subject.
 
-(A core formula is called an **arm**.  An arm is almost like an
-object-oriented method, but not quite - a method would be an arm
-that produces a function on an argument.  The arm is just a
-function of the core, ie, a computed attribute.)
+(A [core](/docs/glossary/core/) formula is called an **arm**.  An [arm](/docs/glossary/arm/) is almost like an
+object-oriented method, but not quite - a method would be an [arm](/docs/glossary/arm/)
+that produces a function on an argument.  The [arm](/docs/glossary/arm/) is just a
+function of the [core](/docs/glossary/core/), ie, a computed attribute.)
 
-Of course, because we feed it the entire core, our arm can
-invoke itself (or any other formula in the battery).  Hence, it
-can loop.  And this is what a loop is - the simplest of cores.
+Of course, because we feed it the entire [core](/docs/glossary/core/), our [arm](/docs/glossary/arm/) can
+invoke itself (or any other formula in the [battery](/docs/glossary/battery/)).  Hence, it
+can loop.  And this is what a loop is - the simplest of [core](/docs/glossary/core/)s.
 
-We need to do two things with this core: create it, and activate
+We need to do two things with this [core](/docs/glossary/core/): create it, and activate
 it.  To be precise, we need two formulas: a formula which
-produces the core, and one which activates its subject.  We can
+produces the [core](/docs/glossary/core/), and one which activates its subject.  We can
 compose these functions with the handy `7` instruction:
 
 ```
 [8 [1 0] [7 p a]]
 ```
 
-`p` produces our core, `a` activates it.  Let's take these in
-reverse order.  How do we activate a core?
+`p` produces our [core](/docs/glossary/core/), `a` activates it.  Let's take these in
+reverse order.  How do we activate a [core](/docs/glossary/core/)?
 
-Since we have only one formula, it's the battery itself.
-Thus we want to execute Nock with the whole core (already the
-subject, and the entire battery (slot `2`)).  Hence, `a` is
+Since we have only one formula, it's the [battery](/docs/glossary/battery/) itself.
+Thus we want to execute Nock with the whole [core](/docs/glossary/core/) (already the
+subject, and the entire [battery](/docs/glossary/battery/) (slot `2`)).  Hence, `a` is
 
 ```
 [2 [0 1] [0 2]]
 ```
 
 We could also use the handy `9` macro - which almost seems
-designed for firing arms on cores:
+designed for firing [arm](/docs/glossary/arm/)s on [core](/docs/glossary/core/)s:
 
 ```
 [9 2 [0 1]]
@@ -197,10 +197,10 @@ Which leaves us seeking
 [8 [1 0] [7 p [9 2 0 1]]]
 ```
 
-And all we have to do is build the core, `p`.  How do we build a
+And all we have to do is build the [core](/docs/glossary/core/), `p`.  How do we build a
 core?  We add code to the subject, just as we added a variable
 above.  The initial value of our counter was a constant, `0`.
-The initial (and permanent) value of our battery is a constant,
+The initial (and permanent) value of our [battery](/docs/glossary/battery/) is a constant,
 the loop formula `l`.  So `p` is
 
 ```
@@ -233,7 +233,7 @@ so the full value of `f` is
 ```
 
 Thus our only formula to compose is the loop body, `l`.
-Its subject is the loop core:
+Its subject is the loop [core](/docs/glossary/core/):
 
 ```
 [bat pay]
@@ -283,13 +283,13 @@ If so, our product `y` is just the counter `b`:
 
 And if not?  We have to re-execute the loop with the counter
 incremented.  If we were executing it with the same counter,
-obviously an infinite loop, we could use the same core:
+obviously an infinite loop, we could use the same [core](/docs/glossary/core/):
 
 ```
 [9 2 0 1]
 ```
 
-But instead we need to construct a new core with the counter
+But instead we need to construct a new [core](/docs/glossary/core/) with the counter
 incremented:
 
 ```

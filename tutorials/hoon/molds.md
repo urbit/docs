@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/molds/"]
 +++
 
-A mold is a function that coerces a noun to a type or crashes.
+A mold is a function that coerces a [noun](/docs/glossary/noun/) to a type or crashes.
 
 Let's take some examples from `hoon.hoon`. `|$` is a new rune as of the writing of this document so you may see this spelled in slightly different way if you don't have the latest version of `hoon.hoon`. `|$` is the mold builder rune which takes a list of molds and produces a mold.
 
@@ -32,7 +32,7 @@ Here is a very simple mold builder. It takes two molds and produces a mold that 
   |$  [item]
   $@(~ [i=item t=(list item)])
 ```
-Here is a mold builder you've used previously. `$@` is a rune that will match the first thing if its sample is an atom and the second if the sample is a cell. You should be familiar at this point that a `list` is either `~`  or a pair of an item and a list of item.
+Here is a mold builder you've used previously. `$@` is a rune that will match the first thing if its sample is an [atom](/docs/glossary/atom/) and the second if the sample is a cell. You should be familiar at this point that a `list` is either `~`  or a pair of an item and a list of item.
 
 
 ```hoon

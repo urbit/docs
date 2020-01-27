@@ -16,7 +16,7 @@ There are four kinds of generators: naked, `%say`, `%get`, and `%ask`.
 ### Naked Generators
 
 A naked generator is simply a `gate`; that is, it is an anonymous function that
-takes a `sample` (argument) and produces a noun. All you need to do is write a
+takes a `sample` (argument) and produces a [noun](/docs/glossary/noun/). All you need to do is write a
 `gate` and put it into a file in the `/gen` directory. Let's take a look at a
 very simple one:
 
@@ -25,7 +25,7 @@ very simple one:
 a
 ```
 
-This generator takes one argument of any noun and produces it without any
+This generator takes one argument of any [noun](/docs/glossary/noun/) and produces it without any
 changes. Once you put this into a file named `echo.hoon` in the `/gen` directory, you must make your ship recognize the change by inputting `|commit %home` in the dojo. You can then run it from the dojo:
 
 ```
@@ -42,15 +42,15 @@ This command just passes in 42 and gets 42 back. But what about when we pass in
 ```
 
 We just get a pile of numbers back in the form of a raw `noun`. The numbers that
-compose that noun are called `atoms`, and how they are interpreted is a matter
+compose that [noun](/docs/glossary/noun/) are called `atoms`, and how they are interpreted is a matter
 of what `aura` is being applied to them. For the purposes of this lesson, an
 `aura` tells the pretty-printer how to display an `atom`, but keep in mind that
 an `aura` is type metadata and does other things, too.
 
 In the example above, we didn't specify an `aura`, leaving the printer to fend
 for itself. `"asdf"` is a `tape`, a type that is simply a `list` of `cords`. A
-`cord` is itself an atom represented as a string of UTF-8 characters. When used
-as part of a `tape`, the `cord` is only a single character. So each atom in the
+`cord` is itself an [atom](/docs/glossary/atom/) represented as a string of UTF-8 characters. When used
+as part of a `tape`, the `cord` is only a single character. So each [atom](/docs/glossary/atom/) in the
 `[97 115 100 102 0]` output corresponds to a component of the `tape`: 97 is
 `a`, 115 is `s`, 100 is `d`, 102 is `f`, and `0` is the "null" that every list
 is terminated with.
@@ -141,7 +141,7 @@ the `|=  *` expression on the line that follows.
 (add 40 2)
 ```
 
-`|=  *` constructs a gate that takes a noun. This gate will itself produce a
+`|=  *` constructs a [gate](/docs/glossary/gate/) that takes a [noun](/docs/glossary/noun/). This [gate](/docs/glossary/gate/) will itself produce a
 `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is
 `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the
 `cask`  will be our actual data produced by the body of the program: in this
@@ -156,17 +156,17 @@ used a naked generator.
 Naked generators are limited because they have no way of accessing data that
 exists in Arvo, such as the date and time or pieces of fresh entropy. In `%say`
 generators, however, we can access that kind of subject by identifying them
-in the gate's sample, which we only specified as `*` in the previous few
+in the [gate](/docs/glossary/gate/)'s sample, which we only specified as `*` in the previous few
 examples. But we can do more with `%say` generators if we do more with that
 sample. Any valid sample will follow this 3-tuple scheme:
 
 `[[now, eny, beak] [list of unnamed arguments] [list of named arguments]]`
 
-This entire structure is a noun, which is why `*` is a valid sample if we
+This entire structure is a [noun](/docs/glossary/noun/), which is why `*` is a valid sample if we
 wish to not use any of the information here in a generator. But let's look at
 each of these three elements, piece by piece.
 
-The **first part** of the above 3-tuple is a noun that is composed of three
+The **first part** of the above 3-tuple is a [noun](/docs/glossary/noun/) that is composed of three
 atoms:
 
 `now` is the current time.
@@ -181,7 +181,7 @@ can easily use it in the program. We can do so like this:
 |=  [[now=@da eny=@uvJ bec=beak] ~ ~]
 ```
 
-Any of those pieces of data could be omitted by replacing part of the noun with
+Any of those pieces of data could be omitted by replacing part of the [noun](/docs/glossary/noun/) with
 `*` rather than giving them faces. For example, `[now=@da * bec=beak]` if we
 didn't want `eny`, or `[* * bec=beak]` if we only wanted `beak`.
 
@@ -200,7 +200,7 @@ In the above code, we use a `*` to ignore any of the information that would go
 in the first part of the sample, somewhat similar to how we use a `~` to say
 "nothing here" for the second or third parts of the sample.
 
-But to use both parts together, our gate and sample would look like this:
+But to use both parts together, our [gate](/docs/glossary/gate/) and sample would look like this:
 
 ```hoon
 |=  [[now=@da eny=@uvJ bec=beak] [n=@ud ~] ~]
@@ -230,9 +230,9 @@ In the code, our sample specifies faces on all of the Arvo data, meaning that we
 can easily access them. We also require the argument `[n=@ud ~]`, and allow the
 _optional_ argument `[bet=@ud ~]`.
 
-But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` arm
-out of the `og` core with the subject of `eny`. Recall that `eny` is our entropy
-value, so this is used to seed the generator. The `rad` arm will give us a
+But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` [arm](/docs/glossary/arm/)
+out of the `og` [core](/docs/glossary/core/) with the subject of `eny`. Recall that `eny` is our entropy
+value, so this is used to seed the generator. The `rad` [arm](/docs/glossary/arm/) will give us a
 pseudorandom number between 0 and `n`. Then we form a cell with the result and
 `bet`, the optional named argument specified previously.
 
@@ -299,9 +299,9 @@ to understand the output of the `%ask` generator. Because it's the only type of
 `%ask` data that is intelligible to the system, the ultimate output of an `%ask`
 generator must be `sole-result`. You can think of it as a function that takes
 molds and digests them into a type for the operating system. The simplest way to
-use `sole-result` is by calling the `produce` gate from `/lib/generators.hoon`.
+use `sole-result` is by calling the `produce` [gate](/docs/glossary/gate/) from `/lib/generators.hoon`.
 
-The second is **`prompt`**, a gate that lives in `lib/generators.hoon`. `prompt`
+The second is **`prompt`**, a [gate](/docs/glossary/gate/) that lives in `lib/generators.hoon`. `prompt`
 allows you to get information back from the user, which is essential to the
 typical desired operation of an `%ask` generator.
 
@@ -379,24 +379,24 @@ This code might be familiar. Just as with their `%say` cousins, `%ask`
 generators need to produce a `cell`, the head of which specifies what kind of
 generator we are running.
 
-With `|=  *`, we create a gate and ignore the standard arguments we are given,
+With `|=  *`, we create a [gate](/docs/glossary/gate/) and ignore the standard arguments we are given,
 because we're not using them.
 
 ```hoon
 ^-  (sole-result (cask tang))
 ```
 
-`%ask` generators need to have the second half of the cell be a gate that
+`%ask` generators need to have the second half of the cell be a [gate](/docs/glossary/gate/) that
 produces a `sole-result`, one that in this case contains a `cask` of `tang`.
 We use the `^-` rune to constrain the generator's output to such a
 `sole-result`.
 
-A `cask` is a pair of a `mark` name and a noun. Recall that a `mark` can be
+A `cask` is a pair of a `mark` name and a [noun](/docs/glossary/noun/). Recall that a `mark` can be
 thought of as an Arvo-level MIME type for data.
 
 A `tang` is a `list` of `tank`, and a `tank` is a structure for printing data.
 There are three types of `tank`: `leaf`, `palm`, and `rose`. A `leaf` is for
-printing a single noun, a `rose` is for printing rows of data, and a `palm` is
+printing a single [noun](/docs/glossary/noun/), a `rose` is for printing rows of data, and a `palm` is
 for printing backstep-indented lists.
 
 ```hoon
@@ -406,18 +406,18 @@ for printing backstep-indented lists.
 %+  produce  %tang
 ```
 
-Because we imported `generators`, we can access its contained gates, three of
+Because we imported `generators`, we can access its contained [gate](/docs/glossary/gate/)s, three of
 which we use in `axe.hoon`: `print`, `prompt`, and `produce`.
 
 **`print`** is used for printing a `tank` to the console.
 
-In our example, `%+` is the rune to call a gate, and our gate `print` takes one
+In our example, `%+` is the rune to call a [gate](/docs/glossary/gate/), and our [gate](/docs/glossary/gate/) `print` takes one
 argument which is a `tank` to print. The `+` here is syntactic sugar for
 `[leaf "What is your favorite color?"]` that just makes it easier to write.
 
 **`prompt`** is used to construct a prompt for the user to provide input.
 It takes a single argument that is a tuple. Most `%ask` generators will want to
-use the `prompt` gate.
+use the `prompt` [gate](/docs/glossary/gate/).
 
 The first element of the `prompt` sample is a flag that indicates whether what
 the user typed should be echoed out to them or hidden. `%&` will produce echoed
@@ -439,7 +439,7 @@ we produce a `tang`.
 |=  t=tape
 ```
 
-Our gate here takes a `tape` that was produced by `prompt`. If we needed
+Our [gate](/docs/glossary/gate/) here takes a `tape` that was produced by `prompt`. If we needed
 another type of data we could use `parse` to obtain it.
 
 The rest of this generator should be intelligible to those with Hoon knowledge
@@ -488,7 +488,7 @@ print the title of a Studio Ghibli film.
 =,  generators
 ```
 
-Here we import types from `/sur/sole.hoon` and gates from
+Here we import types from `/sur/sole.hoon` and [gate](/docs/glossary/gate/)s from
 `/lib/generators.hoon`. We also use `=,` to expose the namespace of
 `generators` that we just imported.
 
@@ -499,14 +499,14 @@ Here we import types from `/sur/sole.hoon` and gates from
 
 Like with `%say` and `%ask` generators, we must include the  "boilerplate":
 code that produces a generator-specific `cell`. The head of that cell is `%get`,
-and the tail is a gate that takes a `tape` of the URL that we are trying
+and the tail is a [gate](/docs/glossary/gate/) that takes a `tape` of the URL that we are trying
 to access.
 
 ```hoon
 ^-  (sole-request:sole (cask json))
 ```
 
-Here we make sure our gate is producing a `sole-request` which contains a `cask`
+Here we make sure our [gate](/docs/glossary/gate/) is producing a `sole-request` which contains a `cask`
 of the type `json`.
 
 
@@ -546,7 +546,7 @@ for us that we can then use to inspect the data.
 
 After parsing the JSON structure we want to make sure we got back a valid `json`
 type. To do that, we test for null and crash if that test passes. If it doesn't
-pass, we use `=,` on the `dejs:format` core so that we can more easily pull arms
+pass, we use `=,` on the `dejs:format` [core](/docs/glossary/core/) so that we can more easily pull [arm](/docs/glossary/arm/)s
 out of it.
 
 ```hoon
@@ -560,10 +560,10 @@ non-naked generators to output the final result. Here we want to produce a
 `cask` of `json`, so we use the mark `%json` to indicate that.
 
 Next we have what may be an unfamiliar rune: `%.`. This rune is simply `%-` with
-the argument order reversed. `%title` is the argument passed to the next gate
-that is called. `by` is the core that is the `map` engine. A Hoon `map` is a
+the argument order reversed. `%title` is the argument passed to the next [gate](/docs/glossary/gate/)
+that is called. `by` is the [core](/docs/glossary/core/) that is the `map` engine. A Hoon `map` is a
 key-value pair structure, sometimes referred to as a dictionary in other
-languages. `got` is the arm in `by` that will produce a gate that we can call to
+languages. `got` is the [arm](/docs/glossary/arm/) in `by` that will produce a [gate](/docs/glossary/gate/) that we can call to
 access members of a given `map`.
 
 > The idiomatic way to write Hoon is to have the
@@ -578,17 +578,17 @@ At the moment, however, we do not have a `map`, but instead have a `json` type.
 u.my-json
 ```
 
-Here we use `om`, which is an arm in `dejs:format` that will take a `json` and
+Here we use `om`, which is an [arm](/docs/glossary/arm/) in `dejs:format` that will take a `json` and
 return a `map`. `same` is a wet gate from the standard library that takes an
-argument of any type and returns it as that type. We could use any other gate to
+argument of any type and returns it as that type. We could use any other [gate](/docs/glossary/gate/) to
 modify the data if that were useful for the particular data we are going to be
 processing, but here we want the data exactly as it is.
 
 Since `my-json` is a `unit` of `json`, the actual data we are looking for is in
-`u.my-json`. We take this and give it to the gate produced by the call to `om`.
-This gate is going to transform our data by taking in the `json` structure and
+`u.my-json`. We take this and give it to the [gate](/docs/glossary/gate/) produced by the call to `om`.
+This [gate](/docs/glossary/gate/) is going to transform our data by taking in the `json` structure and
 producing a `map`. Then we can look up keys in this map using `got` from
-the `by` core.
+the `by` [core](/docs/glossary/core/).
 
 `%.` performs the same function as `%-`, the rune used to call a function,
 except with the arguments reversed so that the function is last and
@@ -601,4 +601,4 @@ result of the generator.
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, [arm](/docs/glossary/arm/)s, [core](/docs/glossary/core/)s, [gate](/docs/glossary/gate/)s, and [door](/docs/glossary/door/)s.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.

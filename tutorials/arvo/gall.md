@@ -61,7 +61,7 @@ definable in a regular recursive data type).
 
 ## Specification
 
-An agent is defined as a core with a set of arms to handle various
+An agent is defined as a [core](/docs/glossary/core/) with a set of [arm](/docs/glossary/arm/)s to handle various
 events.  These handlers usually produce a list of effects and the next
 state of the agent.  The interface definition can be found in
 `sys/zuse.hoon`, which at the time of writing is:
@@ -194,7 +194,7 @@ Here's a skeleton example of an implementation:
 ```
 
 We also supply a `default-agent` library, which is useful if you don't
-want to handle some of the arms.  Most of the above could also be
+want to handle some of the [arm](/docs/glossary/arm/)s.  Most of the above could also be
 implemented as:
 
 ```hoon
@@ -224,7 +224,7 @@ implemented as:
 --
 ```
 
-So, an agent is a core with 10 arms.  The handlers correspond to
+So, an agent is a [core](/docs/glossary/core/) with 10 [arm](/docs/glossary/arm/)s.  The handlers correspond to
 different sorts of input.  We'll discuss each of these in detail, but
 first a few general concepts.
 
@@ -361,7 +361,7 @@ the subscription.
 ### Vases and cages
 
 A `vase` is a piece of dynamic data.  Structurally, it's a pair of an
-explicit reification of a type and an untyped noun.  This lets us
+explicit reification of a type and an untyped [noun](/docs/glossary/noun/).  This lets us
 represent a value which has a type that isn't known at compile time.  A
 vase has three operations:
 
@@ -403,22 +403,22 @@ agent.  In practice, there are three common cases:
 
 ### State
 
-In the definition of an agent, the entire core is wrapped with the `^|`
+In the definition of an agent, the entire [core](/docs/glossary/core/) is wrapped with the `^|`
 rune, which corresponds to the "iron" variance mode.  This means it's
 "contravariant" in the input, which allows Gall to write to the new bowl
-on every event.  It also means that the context of the core is opaque to
+on every event.  It also means that the context of the [core](/docs/glossary/core/) is opaque to
 Gall, which means you can store state in your context in whatever
 structure you want.
 
-This is why most of the handler arms produce not just a list of cards
+This is why most of the handler [arm](/docs/glossary/arm/)s produce not just a list of cards
 but also a new `agent:gall`.  Usually, this will be the "same" agent in
 the sense that the code will be the same, but you may have changed the
 state that's stored in its (opaque to Gall) context.
 
-The skeleton example above gives an example of keeping an atom as your
-state.  Define the state in the context of your agent core, then you can
+The skeleton example above gives an example of keeping an [atom](/docs/glossary/atom/) as your
+state.  Define the state in the context of your agent [core](/docs/glossary/core/), then you can
 change it with `=.` or `%=`, as long as you produce the new version of
-the agent core.
+the agent [core](/docs/glossary/core/).
 
 When you upgrade an agent, you need to extract the state from your
 opaque context and produce it to Gall as a dynamically typed vase.
@@ -464,39 +464,39 @@ example, it may have the following structure:
 
 ### Bowl
 
-The core takes as input a `bowl`, which includes useful info like the
+The [core](/docs/glossary/core/) takes as input a `bowl`, which includes useful info like the
 current ship, the current time, and a renewable source of entropy.  This
 information is available to any of the handlers.
 
 ## Arms
 
-A description of each of the handler arms follows.
+A description of each of the handler [arm](/docs/glossary/arm/)s follows.
 
 ### +on-init
 
-This arm is called once when the agent is started.  It has no input and
+This [arm](/docs/glossary/arm/) is called once when the agent is started.  It has no input and
 lets you perform any initial IO.
 
 ### +on-save
 
-This arm is called immediately before the agent is upgraded.  It
+This [arm](/docs/glossary/arm/) is called immediately before the agent is upgraded.  It
 packages the permament state of the agent in a `vase` for the next version
 of the agent.  Unlike most handlers, this cannot produce effects.
 
 ### +on-load
 
-This arm is called immediately after the agent is upgraded.  It receives
+This [arm](/docs/glossary/arm/) is called immediately after the agent is upgraded.  It receives
 a `vase` of the state of the previously-running version of the agent,
 which allows it to cleanly upgrade from the old agent.
 
 ### +on-poke
 
-This arm is called when the agent is "poked".  The input is a `cage`, so
+This [arm](/docs/glossary/arm/) is called when the agent is "poked".  The input is a `cage`, so
 it's a pair of a mark and a dynamic `vase`.
 
 ### +on-watch
 
-This arm is called when a program wants to subscribe to the agent on a
+This [arm](/docs/glossary/arm/) is called when a program wants to subscribe to the agent on a
 particular `path`.  The agent may or may not need to perform setup steps
 to intialize the subscription.  It may produce a `%give`
 `%subscription-result` to the subscriber to get it up to date, but after
@@ -504,7 +504,7 @@ this event is complete, it cannot give further updates to a specific
 subscriber.  It must give all further updates to all subscribers on a
 specific `path`.
 
-If this arm crashes, then the subscription is immediately terminated.
+If this [arm](/docs/glossary/arm/) crashes, then the subscription is immediately terminated.
 More specifcally, it never started -- the subscriber will receive a
 negative `%watch-ack`.  You may also produce an explicit `%kick` to
 close the subscription without crashing -- for example, you could
@@ -512,7 +512,7 @@ produce a single update followed by a `%kick`.
 
 ### +on-leave
 
-This arm is called when a program becomes unsubscribed to you.
+This [arm](/docs/glossary/arm/) is called when a program becomes unsubscribed to you.
 Subscriptions may close because the subscriber intentionally
 unsubscribed, but they also could be closed by an intermediary.  For
 example, if a subscription is from another ship which is currently
@@ -523,19 +523,19 @@ subscriptions to be closable at any time.
 
 ### +on-peek
 
-This arm is called when a program reads from the agent's "scry"
+This [arm](/docs/glossary/arm/) is called when a program reads from the agent's "scry"
 namespace, which should be referentially transparent.  Unlike most
 handlers, this cannot perform IO, and it cannot change the state.  All
 it can do is produce a piece of data to the caller, or not.
 
-If this arm produces `[~ ~ data]`, then `data` is the value at the the
+If this [arm](/docs/glossary/arm/) produces `[~ ~ data]`, then `data` is the value at the the
 given `path`.  If it produces `[~ ~]`, then there is no data at the given
 `path` and never will be.  If it produces `~`, then we don't know yet
 whether there is or will be data at the given `path`.
 
 ### +on-agent
 
-This arm is called to handle responses to `%pass` moves to other agents.
+This [arm](/docs/glossary/arm/) is called to handle responses to `%pass` moves to other agents.
 It will be one of the following types of response:
 
 - `%poke-ack`: acknowledgment (positive or negative) of a poke.  If the
@@ -553,7 +553,7 @@ It will be one of the following types of response:
 
 ### +on-arvo
 
-This arm is called to handle responses to `%pass` `move`s to vanes.  The
+This [arm](/docs/glossary/arm/) is called to handle responses to `%pass` `move`s to vanes.  The
 list of possible responses from the system is statically defined in
 sys/zuse.hoon (grep for `+  sign-arvo`).
 
@@ -563,4 +563,4 @@ If an error happens in `+on-poke`, the crash report goes into the
 `%poke-ack` response.  Similarly, if an error happens in
 `+on-subscription`, the crash report goes into the `%watch-ack`
 response.  If a crash happens in any of the other handlers, the report
-is passed into this arm.
+is passed into this [arm](/docs/glossary/arm/).

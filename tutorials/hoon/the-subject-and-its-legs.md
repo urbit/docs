@@ -9,9 +9,9 @@ Hoon isn't an object-oriented programming language; it's a "subject-oriented" pr
 
 ## A Start
 
-For now we can say three things about the subject: (1) every Hoon expression is evaluated relative to some subject; (2) roughly, the subject defines the environment in which a Hoon expression is evaluated; and (3) the subject is a noun.
+For now we can say three things about the subject: (1) every Hoon expression is evaluated relative to some subject; (2) roughly, the subject defines the environment in which a Hoon expression is evaluated; and (3) the subject is a [noun](/docs/glossary/noun/).
 
-In fact, you already learned about the noun address system in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) when you used `+` to return a fragment of a noun:
+In fact, you already learned about the [noun](/docs/glossary/noun/) address system in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) when you used `+` to return a fragment of a [noun](/docs/glossary/noun/):
 
 ```
 > +1:[[11 22] 33]
@@ -54,11 +54,11 @@ Let's create a subject with some computations:
 55
 ```
 
-`add` and `mul` are functions of the Hoon standard library.  `add` is used to add two atoms, and `mul` is used to multiply them.
+`add` and `mul` are functions of the Hoon standard library.  `add` is used to add two [atom](/docs/glossary/atom/)s, and `mul` is used to multiply them.
 
 ## Limbs of the Subject
 
-The subject is a noun, just like any other piece of Hoon data.  In Lesson 1.2 we discussed how any noun can be understood as a binary tree.  E.g., `[[4 5] [6 [14 15]]]`:
+The subject is a [noun](/docs/glossary/noun/), just like any other piece of Hoon data.  In Lesson 1.2 we discussed how any [noun](/docs/glossary/noun/) can be understood as a binary tree.  E.g., `[[4 5] [6 [14 15]]]`:
 
 ```
      [[4 5] [6 [14 15]]]
@@ -71,15 +71,15 @@ The subject is a noun, just like any other piece of Hoon data.  In Lesson 1.2 we
                  14 15
 ```
 
-Each fragment of a noun is itself a noun, and hence can be understood as a binary tree as well.  Each fragment or 'subtree' sticks out of the original tree, like a **limb**.  A 'limb' is a subtree of the subject.
+Each fragment of a [noun](/docs/glossary/noun/) is itself a [noun](/docs/glossary/noun/), and hence can be understood as a binary tree as well.  Each fragment or 'subtree' sticks out of the original tree, like a **limb**.  A 'limb' is a subtree of the subject.
 
-Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: arms and legs.
+Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: [arm](/docs/glossary/arm/)s and legs.
 
-**Arms** are limbs of the subject that are used for carrying out substantive computations.  We'll talk about arms in the next lesson.  **Legs** are limbs that store data.  Any limb that isn't an arm is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
+**Arms** are limbs of the subject that are used for carrying out substantive computations.  We'll talk about [arm](/docs/glossary/arm/)s in the next lesson.  **Legs** are limbs that store data.  Any limb that isn't an [arm](/docs/glossary/arm/) is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
 
 ### Address-based Limb Expressions
 
-A limb expression is an expression of Hoon that resolves to a limb of the subject.  An address-based limb expression evaluates to a limb of the subject based on its noun address.
+A limb expression is an expression of Hoon that resolves to a limb of the subject.  An address-based limb expression evaluates to a limb of the subject based on its [noun](/docs/glossary/noun/) address.
 
 In the following you'll learn the various limb expressions available in Hoon, as well as how they work when they resolve to legs.  First we'll explain the limb expressions that return a leg according to subject address.
 
@@ -127,7 +127,7 @@ Using `-` by itself returns the head of the subject, and using `+` by itself ret
 
 To think of it another way, `-` is for the left and `+` is for the right.  You can remember this by thinking of a number line -- the negative numbers are to the left, the positive numbers to the right.
 
-`-` and `+` only work if the subject is a cell, naturally.  An atom doesn't have a head or a tail.
+`-` and `+` only work if the subject is a cell, naturally.  An [atom](/docs/glossary/atom/) doesn't have a head or a tail.
 
 ```
 > +:12
@@ -177,7 +177,7 @@ You can think of this sort of lark series -- e.g., `+>-<` -- as indicating a bin
 ```
 
 #### Exercise 1.6a
-1. Use a lark expression to obtain the value 6 in the following noun represented by a binary tree:
+1. Use a lark expression to obtain the value 6 in the following [noun](/docs/glossary/noun/) represented by a binary tree:
 ```
          .
          /\
@@ -193,7 +193,7 @@ You can think of this sort of lark series -- e.g., `+>-<` -- as indicating a bin
    / \
   6   7
 ```
-2. Use a lark expression to obtain the value 8 in the following noun: `[[5 6] 7 [[8 9 10] 3] 2] 1]`.
+2. Use a lark expression to obtain the value 8 in the following [noun](/docs/glossary/noun/): `[[5 6] 7 [[8 9 10] 3] 2] 1]`.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 
@@ -201,14 +201,14 @@ Solutions to these exercises may be found at the bottom of this lesson.
 
 `&n` returns the `n`th item of a list that has at least `n + 1` items.  `|n` returns everything after `&n`.
 
-But what's a list?  There are two kinds of lists: empty and non-empty.  The empty list is null, `~`.  A non-empty list is a cell whose head is the first item and whose tail is the rest of the list.  'The rest of the list' is itself a list.  Hoon lists are null-terminated; that is, the null symbol `~` indicates the end of the list.  Consider the following cell of nouns:
+But what's a list?  There are two kinds of lists: empty and non-empty.  The empty list is null, `~`.  A non-empty list is a cell whose head is the first item and whose tail is the rest of the list.  'The rest of the list' is itself a list.  Hoon lists are null-terminated; that is, the null symbol `~` indicates the end of the list.  Consider the following cell of [noun](/docs/glossary/noun/)s:
 
 ```
 > ['first' 'second' 'third' 'fourth' ~]
 ['first' 'second' 'third' 'fourth' ~]
 ```
 
-The `'first'` noun is at `+2`, `'second'` is at `+6`, `'third'` is at `+14`, and so on.  (Try it!)  That's because the above noun is really the following:
+The `'first'` [noun](/docs/glossary/noun/) is at `+2`, `'second'` is at `+6`, `'third'` is at `+14`, and so on.  (Try it!)  That's because the above [noun](/docs/glossary/noun/) is really the following:
 
 ```
 > ['first' ['second' ['third' ['fourth' ~]]]]
@@ -268,9 +268,9 @@ As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `
 
 ### Other Limb Expressions: Names
 
-Working with specific addresses of the subject can be cumbersome even when the subject is small.  When the subject is a really large noun -- as is often the case -- it's downright impractical.  Thankfully there's a more convenient method for resolving to a limb of the subject: using names.
+Working with specific addresses of the subject can be cumbersome even when the subject is small.  When the subject is a really large [noun](/docs/glossary/noun/) -- as is often the case -- it's downright impractical.  Thankfully there's a more convenient method for resolving to a limb of the subject: using names.
 
-A name can resolve either an arm or a leg of the subject.  Recall that arms are for computations and legs are for data.  When a name resolves to an arm, the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.  We aren't yet ready to talk about arm resolution; for now let's focus on leg names.
+A name can resolve either an [arm](/docs/glossary/arm/) or a leg of the subject.  Recall that [arm](/docs/glossary/arm/)s are for computations and legs are for data.  When a name resolves to an [arm](/docs/glossary/arm/), the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.  We aren't yet ready to talk about [arm](/docs/glossary/arm/) resolution; for now let's focus on leg names.
 
 #### Faces
 
@@ -300,7 +300,7 @@ b=5
 [14 15]
 ```
 
-To be clear, `b=5` is equivalent in value to `5`, and `[[4 b2=5] [cat=6 d=[14 15]]]` is equivalent in value to `[[4 5] 6 14 15]`.  The faces are not part of the underlying noun; they're stored as metadata about address values in the subject.
+To be clear, `b=5` is equivalent in value to `5`, and `[[4 b2=5] [cat=6 d=[14 15]]]` is equivalent in value to `[[4 5] 6 14 15]`.  The faces are not part of the underlying [noun](/docs/glossary/noun/); they're stored as metadata about address values in the subject.
 
 If you use a face that isn't in the subject you'll get a `find.[face]` crash:
 
@@ -364,7 +364,7 @@ There are cases when you don't want the limb of the first matching face.  You ca
 6
 ```
 
-Recall that the search path for this noun is:
+Recall that the search path for this [noun](/docs/glossary/noun/) is:
 
 + `[[4 b=5] [b=6 b=[14 15]]]`
 + `[4 b=5]`
@@ -483,7 +483,7 @@ Consider the expression `(add 2 2)`:
 
 What's the subject of this expression?
 
-In fact, you may already know how to find the answer.  The subject is a noun and as such its limbs have addresses.  To see that noun, use `+1`.  You'll see something like the following:
+In fact, you may already know how to find the answer.  The subject is a [noun](/docs/glossary/noun/) and as such its limbs have addresses.  To see that [noun](/docs/glossary/noun/), use `+1`.  You'll see something like the following:
 
 ```
 > +1
@@ -498,9 +498,9 @@ In fact, you may already know how to find the answer.  The subject is a noun and
 ]
 ```
 
-This noun (or a modified version of it) is the subject used for Hoon expressions entered into the dojo.
+This [noun](/docs/glossary/noun/) (or a modified version of it) is the subject used for Hoon expressions entered into the dojo.
 
-We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an atom serving as [entropy](https://en.wikipedia.org/wiki/Entropy_%28computing%29).  The value for `eny` is different every time it's checked.
+We can't explain every part of the subject just yet, but you should be able to recognize some of it.  There is a face, `our`, serving as a label for the urbit's name.  Another face, `now`, is a label for an absolute date.  `eny` is a face for an [atom](/docs/glossary/atom/) serving as [entropy](https://en.wikipedia.org/wiki/Entropy_%28computing%29).  The value for `eny` is different every time it's checked.
 
 ```
 > our
@@ -554,7 +554,7 @@ We're playing in the Urbit `dojo`.  The dojo is like a cross between a Lisp REPL
 
 It's worth taking a moment to learn about certain features of the dojo that aren't part of Hoon, but which can be handy to experiment with when learning Hoon.
 
-You can use the dojo to add a noun with a face to the subject.  Type:
+You can use the dojo to add a [noun](/docs/glossary/noun/) with a face to the subject.  Type:
 
 ```
 > =a 37
@@ -644,7 +644,7 @@ wing-of-subject(wing-1 new-value-1, wing-2 new-value 2, ...)
 
 The `wing-of-subject` resolves to some limb in the subject.  This is followed by a set of parentheses.  `wing-1` and `wing-2` pick out which parts of that limb we want to change.  Their values are replaced with `new-value-1` and `new-value-2`, respectively.  Commas separate each of the `wing` `new-value` pairs.
 
-Let's create a mutant version of the noun we have stored in `a`.  To do this, type in the face `a` followed by the desired modifications in parentheses:
+Let's create a mutant version of the [noun](/docs/glossary/noun/) we have stored in `a`.  To do this, type in the face `a` followed by the desired modifications in parentheses:
 
 ```
 > a
@@ -673,7 +673,7 @@ You can also use more complex wings and modify their values as well:
 [%hi c=.3.14]
 ```
 
-At this point you should have at least a rough idea of what the subject is, and a fair understanding of how to get legs of the subject using wings.  But legs are only one kind of limb -- we'll talk about arms in the next lesson.
+At this point you should have at least a rough idea of what the subject is, and a fair understanding of how to get legs of the subject using wings.  But legs are only one kind of limb -- we'll talk about [arm](/docs/glossary/arm/)s in the next lesson.
 
 #### Exercise 1.6b
 Enter the following into dojo:
@@ -691,7 +691,7 @@ Test your knowledge from this lesson by evaluating the following expressions and
 7. `a:+.a:a(a [b=%skrt a="four"])`
 8. `a(a a)`
 9. `b:-<.a(a a)`
-10. How many times does the atom `9` appear in `a(a a(a a))`?
+10. How many times does the [atom](/docs/glossary/atom/) `9` appear in `a(a a(a a))`?
 
 ## Exercise Solutions
 

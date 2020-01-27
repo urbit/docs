@@ -5,13 +5,13 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/nouns/"]
 +++
 
-In Urbit, every piece of data is a noun.  In order to understand Hoon, one must first understand nouns.
+In Urbit, every piece of data is a [noun](/docs/glossary/noun/).  In order to understand Hoon, one must first understand [noun](/docs/glossary/noun/)s.
 
 ## Noun Definition
 
-A **noun** is either an atom or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
+A **noun** is either an [atom](/docs/glossary/atom/) or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of [noun](/docs/glossary/noun/)s, usually indicated with square brackets around the [noun](/docs/glossary/noun/)s in question; i.e., `[a b]`, where `a` and `b` are [noun](/docs/glossary/noun/)s.
 
-Here are some atoms:
+Here are some [atom](/docs/glossary/atom/)s:
 
 - `0`
 - `87`
@@ -24,11 +24,11 @@ Here are some cells:
 - `[[12 13] [87 65]]`
 - `[[83 [1 17]] [[23 [32 64]] 90]]`
 
-All of the above are nouns.
+All of the above are [noun](/docs/glossary/noun/)s.
 
 ### Nouns as Binary Trees
 
-A [binary tree](https://en.wikipedia.org/wiki/Binary_tree) has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a 'leaf'.  You can think of a noun as a binary tree whose leaves are atoms, i.e., unsigned integers.  All non-leaf nodes are cells.  To visualize this, consider the following representation of the noun: `[12 [17 45]]`:
+A [binary tree](https://en.wikipedia.org/wiki/Binary_tree) has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a 'leaf'.  You can think of a [noun](/docs/glossary/noun/) as a binary tree whose leaves are [atom](/docs/glossary/atom/)s, i.e., unsigned integers.  All non-leaf nodes are cells.  To visualize this, consider the following representation of the [noun](/docs/glossary/noun/): `[12 [17 45]]`:
 
 ```
 [12 [17 45]]
@@ -39,7 +39,7 @@ A [binary tree](https://en.wikipedia.org/wiki/Binary_tree) has a single base nod
    17   45
 ```
 
-Each number is an atom; each dot is a cell.  Let's look at another example, this time of `[[7 13] [87 65]]`, with the cell nodes shown explicitly:
+Each number is an [atom](/docs/glossary/atom/); each dot is a cell.  Let's look at another example, this time of `[[7 13] [87 65]]`, with the cell nodes shown explicitly:
 
 ```
   [[7 13] [87 65]]
@@ -51,13 +51,13 @@ Each number is an atom; each dot is a cell.  Let's look at another example, this
   7   13   87   65
 ```
 
-An atom is a trivial tree of just one node; e.g., `17`.
+An [atom](/docs/glossary/atom/) is a trivial tree of just one node; e.g., `17`.
 
 ## Atoms
 
 Atoms are unsigned integers.  These are often represented by the dojo as unsigned integers in decimal notation, e.g., `17`.
 
-To be sure we understand Hoon's atom notation, let's enter some atoms into the dojo:
+To be sure we understand Hoon's [atom](/docs/glossary/atom/) notation, let's enter some [atom](/docs/glossary/atom/)s into the dojo:
 
 ```
 > 3
@@ -86,7 +86,7 @@ Can we add another zero?
 
 It didn't work!  When you tried to type that next zero and turn `320` into `3200`, the dojo actually _deleted the `0` and beeped at you_.
 
-Isn't an atom an unsigned integer of any size?  It is.  But the way to represent the four-digit number `3200` is actually `3.200`:
+Isn't an [atom](/docs/glossary/atom/) an unsigned integer of any size?  It is.  But the way to represent the four-digit number `3200` is actually `3.200`:
 
 ```
 > 3.200
@@ -100,19 +100,19 @@ Just think of it as "3,200", written the German way with a dot.
 
 Why?  Long numbers are difficult to read.  We know this, so we group digits in threes.  For some reason most programming languages don't use this marvelous innovation.  Hoon does.
 
-English notation for decimals is more common than German notation.  Unfortunately, dots are URL-safe and commas aren't.  For reasons to be discussed in a later lesson, it's nice to have a regular syntax for atoms that's URL-safe.
+English notation for decimals is more common than German notation.  Unfortunately, dots are URL-safe and commas aren't.  For reasons to be discussed in a later lesson, it's nice to have a regular syntax for [atom](/docs/glossary/atom/)s that's URL-safe.
 
 As for why the dojo deleted your zero: it parses the command line as you type, and rejects any characters after the parser stops.  This prevents you from entering commands or expressions that aren't well-formed.
 
 ### Atom Auras
 
-Atoms are nothing more than unsigned integers -- natural numbers -- but it's often useful to represent an atom in a different way.  This is done with an **aura**.  The aura of an atom is type meta-data used by Hoon to determine how to interpret that atom.  It answers the question: What type of information is this atom?
+Atoms are nothing more than unsigned integers -- natural numbers -- but it's often useful to represent an [atom](/docs/glossary/atom/) in a different way.  This is done with an **aura**.  The aura of an [atom](/docs/glossary/atom/) is type meta-data used by Hoon to determine how to interpret that [atom](/docs/glossary/atom/).  It answers the question: What type of information is this [atom](/docs/glossary/atom/)?
 
-We use auras because data isn't always represented as a positive decimal number. Sometimes we want to represent data as binary, as text, or as a negative number. Auras allow us to to use such types of data _without changing the underlying atom_.
+We use auras because data isn't always represented as a positive decimal number. Sometimes we want to represent data as binary, as text, or as a negative number. Auras allow us to to use such types of data _without changing the underlying [atom](/docs/glossary/atom/)_.
 
-We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) associated with a few atom auras.
+We won't fully explain auras and their various uses yet.  Auras will be covered more comprehensively in a later lesson.  For now let's just look at the various kinds of [literal syntax](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) associated with a few [atom](/docs/glossary/atom/) auras.
 
-In computer science, a 'literal' is an expression that represents and evaluates to a fixed value.  The default syntax of an atom literal is the German-style decimal notation, as seen above.  Let's look at some other atom literal syntaxes: unsigned binary, unsigned hexadecimal, signed decimal, signed binary and hexadecimal.
+In computer science, a 'literal' is an expression that represents and evaluates to a fixed value.  The default syntax of an [atom](/docs/glossary/atom/) literal is the German-style decimal notation, as seen above.  Let's look at some other [atom](/docs/glossary/atom/) literal syntaxes: unsigned binary, unsigned hexadecimal, signed decimal, signed binary and hexadecimal.
 
 ```
 > 0b1001
@@ -140,7 +140,7 @@ In computer science, a 'literal' is an expression that represents and evaluates 
 -0x9d
 ```
 
-All of the above are atoms.  The underlying noun of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the atom is to be represented in a different way.  To see their values in the default atom notation, you can tell Hoon to throw away the aura information.  Do this by preceding each expression above with `` `@` ``.
+All of the above are [atom](/docs/glossary/atom/)s.  The underlying [noun](/docs/glossary/noun/) of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the [atom](/docs/glossary/atom/) is to be represented in a different way.  To see their values in the default [atom](/docs/glossary/atom/) notation, you can tell Hoon to throw away the aura information.  Do this by preceding each expression above with `` `@` ``.
 
 ```
 > `@`0b1001
@@ -168,11 +168,11 @@ All of the above are atoms.  The underlying noun of each is just an unsigned int
 313
 ```
 
-The `` `@` `` syntax is used to 'cast' a value to a raw atom, i.e., an atom without an aura.  Don't worry about exactly what `` `@` `` means just yet.  Casts will be explained in more detail in a later lesson.  For now all you need to know is that a cast doesn't change the underlying value of the noun; it's used here only to change how the value is printed in the dojo output.
+The `` `@` `` syntax is used to 'cast' a value to a raw [atom](/docs/glossary/atom/), i.e., an [atom](/docs/glossary/atom/) without an aura.  Don't worry about exactly what `` `@` `` means just yet.  Casts will be explained in more detail in a later lesson.  For now all you need to know is that a cast doesn't change the underlying value of the [noun](/docs/glossary/noun/); it's used here only to change how the value is printed in the dojo output.
 
 #### Identities, Cords, and Terms
 
-Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms, but of the aura `@p`:
+Urbit identities such as `~zod` and `~sorreg-namtyv` are also [atom](/docs/glossary/atom/)s, but of the aura `@p`:
 
 ```
 > ~zod
@@ -194,7 +194,7 @@ Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms, but of the 
 ~sorreg-namtyv
 ```
 
-Hoon permits the use of atoms as strings.  Strings that are encoded as atoms are called **cords**. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
+Hoon permits the use of [atom](/docs/glossary/atom/)s as strings.  Strings that are encoded as [atom](/docs/glossary/atom/)s are called **cords**. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
 
 ```
 > 'Howdy!'
@@ -265,7 +265,7 @@ Aura         Meaning                        Example of Literal Syntax
 
 #### Casting to Other Auras
 
-You can force Hoon to interpret an atom differently by using the aura symbols in the chart above; e.g., `` `@ux` `` for unsigned hexadecimal, `` `@ub` `` for unsigned binary, etc.:
+You can force Hoon to interpret an [atom](/docs/glossary/atom/) differently by using the aura symbols in the chart above; e.g., `` `@ux` `` for unsigned hexadecimal, `` `@ub` `` for unsigned binary, etc.:
 
 ```
 > `@ux`157
@@ -281,20 +281,20 @@ You can force Hoon to interpret an atom differently by using the aura symbols in
 0x9d
 ```
 
-The atoms in the examples above are all exactly the same value.  Only they're interpreted and printed differently, depending on the aura.
+The [atom](/docs/glossary/atom/)s in the examples above are all exactly the same value.  Only they're interpreted and printed differently, depending on the aura.
 
-You'll learn more about atoms and auras in [Lesson 2.1](@docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
+You'll learn more about [atom](/docs/glossary/atom/)s and auras in [Lesson 2.1](@docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
 
 ## Cells
 
-There's not much mystery about cells.  The left of a cell is called the **head**, and the right is called the **tail**.  Cells are typically represented in Hoon with square brackets around a pair of nouns.
+There's not much mystery about cells.  The left of a cell is called the **head**, and the right is called the **tail**.  Cells are typically represented in Hoon with square brackets around a pair of [noun](/docs/glossary/noun/)s.
 
 ```
 > [32 320]
 [32 320]
 ```
 
-In this cell `32` is the head and `320` is the tail.  Cells can contain cells, and atoms of other auras as well:
+In this cell `32` is the head and `320` is the tail.  Cells can contain cells, and [atom](/docs/glossary/atom/)s of other auras as well:
 
 ```
 > [%hello 'world!']
@@ -317,9 +317,9 @@ I said there isn't _much_ mystery about cells, but there is a little.  So far wh
 [[6 62] 620]
 ```
 
-In the first example, the inner pair of square brackets is dropped.  Why did this happen?  Why is `[6 62 620]` accepted as a cell despite apparently having more than two atoms in it?
+In the first example, the inner pair of square brackets is dropped.  Why did this happen?  Why is `[6 62 620]` accepted as a cell despite apparently having more than two [atom](/docs/glossary/atom/)s in it?
 
-In fact, `[6 [62 620]]` and `[6 62 620]` are considered equivalent in Hoon.  A cell _must_ be a pair, which means there are always exactly two nouns in it.  Whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.  That is, the tail of the whole cell is assumed to be a cell of the right-most nouns.
+In fact, `[6 [62 620]]` and `[6 62 620]` are considered equivalent in Hoon.  A cell _must_ be a pair, which means there are always exactly two [noun](/docs/glossary/noun/)s in it.  Whenever cell brackets are omitted so that visually there appears to be more than two child [noun](/docs/glossary/noun/)s, it is implicitly understood that the right-most [noun](/docs/glossary/noun/)s constitute a cell.  That is, the tail of the whole cell is assumed to be a cell of the right-most [noun](/docs/glossary/noun/)s.
 
 This is why `[6 [62 620]]` and `[6 62 620]` are equivalent.  `[6 [62 620]]` and `[[6 62] 620]`, on the other hand, are not equivalent.  If you look at them as binary trees you can see the difference:
 
@@ -339,11 +339,11 @@ When the dojo pretty-prints a cell it always removes superfluous cell brackets:
 [[12 13] [14 15] 16 17]
 ```
 
-However, you should always remember that though cells can be presented as lists of more than two nouns, they're always just pairs.
+However, you should always remember that though cells can be presented as lists of more than two [noun](/docs/glossary/noun/)s, they're always just pairs.
 
 ### Exercise 1.2a
 
-Without using the dojo, assess whether each of the following pairs of nouns is equivalent.  (Answers are at the bottom of the page.)
+Without using the dojo, assess whether each of the following pairs of [noun](/docs/glossary/noun/)s is equivalent.  (Answers are at the bottom of the page.)
 
 ```
 1.  [[1 3] [6 2]]                 [1 3 [6 2]]
@@ -355,15 +355,15 @@ Without using the dojo, assess whether each of the following pairs of nouns is e
 
 ## Noun Addresses
 
-Nouns have a regular structure that can be exploited to give a unique **address** to each of its 'sub-nouns'.  A sub-noun is a part of a noun that is itself a noun; e.g., `[6 2]` is a sub-noun of `[[1 3] [6 2]]`.  We can also call these 'noun fragments'.
+Nouns have a regular structure that can be exploited to give a unique **address** to each of its 'sub-nouns'.  A sub-noun is a part of a [noun](/docs/glossary/noun/) that is itself a [noun](/docs/glossary/noun/); e.g., `[6 2]` is a sub-noun of `[[1 3] [6 2]]`.  We can also call these 'noun fragments'.
 
-What if you want to refer to a noun fragment, and not the whole thing? For example, what if you want to refer to the `[6 2]` part of `[[1 3] [6 2]]`?  One way is to use the unique address of that noun fragment.
+What if you want to refer to a [noun](/docs/glossary/noun/) fragment, and not the whole thing? For example, what if you want to refer to the `[6 2]` part of `[[1 3] [6 2]]`?  One way is to use the unique address of that [noun](/docs/glossary/noun/) fragment.
 
-To define noun addresses we'll use recursion.  The base case is trivial: address `1` of a noun is the entire noun.  The generating case: if the noun at address `n` is a cell, then its head is at address `2n` and its tail is at address `2n + 1`.  For example, if address `5` of some noun is a cell, then its head is at address `10` and its tail address `11`.
+To define [noun](/docs/glossary/noun/) addresses we'll use recursion.  The base case is trivial: address `1` of a [noun](/docs/glossary/noun/) is the entire [noun](/docs/glossary/noun/).  The generating case: if the [noun](/docs/glossary/noun/) at address `n` is a cell, then its head is at address `2n` and its tail is at address `2n + 1`.  For example, if address `5` of some [noun](/docs/glossary/noun/) is a cell, then its head is at address `10` and its tail address `11`.
 
-Address 1 of the noun `[[1 3] [6 2]]` is the whole noun: `[[1 3] [6 2]]`.  The head of the noun at address `1`, `[1 3]`, is at address `2 x 1`, i.e., `2`.  The tail of the noun at address `1`, `[6 2]`, is at address `(2 x 1) + 1`, i.e., `3`.
+Address 1 of the [noun](/docs/glossary/noun/) `[[1 3] [6 2]]` is the whole [noun](/docs/glossary/noun/): `[[1 3] [6 2]]`.  The head of the [noun](/docs/glossary/noun/) at address `1`, `[1 3]`, is at address `2 x 1`, i.e., `2`.  The tail of the [noun](/docs/glossary/noun/) at address `1`, `[6 2]`, is at address `(2 x 1) + 1`, i.e., `3`.
 
-If the way this works isn't immediately clear, remember that each noun can be understood as a binary tree.  The following diagram shows the address of several nodes of the tree:
+If the way this works isn't immediately clear, remember that each [noun](/docs/glossary/noun/) can be understood as a binary tree.  The following diagram shows the address of several nodes of the tree:
 
 ```
            1
@@ -375,7 +375,7 @@ If the way this works isn't immediately clear, remember that each noun can be un
               14 15
 ```
 
-Let's do some examples in the dojo.  We're going to use the `slot` operator, `+`, to return fragments of a noun.  For any unsigned integer `n`, `+n` evaluates to the fragment at address `n`.
+Let's do some examples in the dojo.  We're going to use the `slot` operator, `+`, to return fragments of a [noun](/docs/glossary/noun/).  For any unsigned integer `n`, `+n` evaluates to the fragment at address `n`.
 
 ```
 > +1:[22 [33 44]]
@@ -394,7 +394,7 @@ Let's do some examples in the dojo.  We're going to use the `slot` operator, `+`
 44
 ```
 
-You'll notice that we use the `:` symbol between the slot syntax and the noun.  Don't worry about what this means yet; we'll explain it in another lesson.  For now you can read it as the word "of": `+7:[22 [33 44]]` is "slot `7` of `[22 [33 44]]`".
+You'll notice that we use the `:` symbol between the slot syntax and the [noun](/docs/glossary/noun/).  Don't worry about what this means yet; we'll explain it in another lesson.  For now you can read it as the word "of": `+7:[22 [33 44]]` is "slot `7` of `[22 [33 44]]`".
 
 What happens if you ask for a fragment that doesn't exist?
 
@@ -422,11 +422,11 @@ Let's do a few more examples:
 %six
 ```
 
-For those who prefer to think in terms of binary numbers and binary trees, there is another (equivalent) way to understand noun addressing.  When the noun address is expressed as a binary number, you can think of the the number as indicating a tree path from the top node.
+For those who prefer to think in terms of binary numbers and binary trees, there is another (equivalent) way to understand [noun](/docs/glossary/noun/) addressing.  When the [noun](/docs/glossary/noun/) address is expressed as a binary number, you can think of the the number as indicating a tree path from the top node.
 
-As before, the root of the binary tree (i.e., the whole noun) is at address `1`. For the node of a tree at any address `b`, where `b` is a binary number, you get the address of its head by concatenating a `0` to the end of `b`; and to get its tail, concatenate a `1` to the end. For example, the head of the node at binary address `111` is at `1110`, and the tail is at `1111`.
+As before, the root of the binary tree (i.e., the whole [noun](/docs/glossary/noun/)) is at address `1`. For the node of a tree at any address `b`, where `b` is a binary number, you get the address of its head by concatenating a `0` to the end of `b`; and to get its tail, concatenate a `1` to the end. For example, the head of the node at binary address `111` is at `1110`, and the tail is at `1111`.
 
-Address `1110` indicates "the head of the tail of the tail of the noun".
+Address `1110` indicates "the head of the tail of the tail of the [noun](/docs/glossary/noun/)".
 
 ### Exercise 1.2b
 
@@ -442,7 +442,7 @@ Without using the dojo, evaluate the following expressions.  (Answers are at the
 
 ### Exercise 1.2c
 
-Without using the dojo, for each fragment below provide the address relative to the noun `[51 52 53 54 55]`.  (Answers are at the bottom of the page.)
+Without using the dojo, for each fragment below provide the address relative to the [noun](/docs/glossary/noun/) `[51 52 53 54 55]`.  (Answers are at the bottom of the page.)
 
 ```
 1. 51
@@ -452,11 +452,11 @@ Without using the dojo, for each fragment below provide the address relative to 
 5. 55
 ```
 
-That's it for our basic introduction to nouns.  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
+That's it for our basic introduction to [noun](/docs/glossary/noun/)s.  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
 
 ### Exercise 1.2d
 
-Draw out a binary tree diagram for each of the following nouns. Try to do this without using the dojo to simplify the expressions.
+Draw out a binary tree diagram for each of the following [noun](/docs/glossary/noun/)s. Try to do this without using the dojo to simplify the expressions.
 
 ```
 1. [[2 3] 4 [5 6 7]]
@@ -465,7 +465,7 @@ Draw out a binary tree diagram for each of the following nouns. Try to do this w
 
 ### Exercise 1.2e
 
-Write the following binary tree as a noun.
+Write the following binary tree as a [noun](/docs/glossary/noun/).
 
 ```
        .

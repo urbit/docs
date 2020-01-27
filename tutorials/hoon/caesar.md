@@ -122,16 +122,16 @@ itself before reading the explanation.
 The `!:` in the first line of the above code enables a full stack trace in the
 event of an error.
 
-`|=  [msg=tape key=@ud]` creates a gate that takes a cell. The head of this cell
+`|=  [msg=tape key=@ud]` creates a [gate](/docs/glossary/gate/) that takes a cell. The head of this cell
 is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented
 as text surrounded by double-quotes, such as this: `"a tape"`. We give this input
-tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal atom
+tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](/docs/glossary/atom/)
 -- that we give the face `key`.
 
 `=<` is the rune that evaluates its first child expression with respect to its
 second child expression as the subject. In this case, we evaluate the
-expressions in the code chunk below against the core declared later, which
-allows us reference the core's contained arms before they are defined. Without
+expressions in the code chunk below against the [core](/docs/glossary/core/) declared later, which
+allows us reference the [core](/docs/glossary/core/)'s contained [arm](/docs/glossary/arm/)s before they are defined. Without
 `=<`, we would need to put the code chunk below at the bottom of our program.
 
 ```hoon
@@ -150,7 +150,7 @@ gate that converts uppercase letters to lowercase.
 cell of a right-shifted cipher and a left-shifted cell. This is the final output
 of our generator.
 
-`|%` creates a core.
+`|%` creates a [core](/docs/glossary/core/).
 
 ```hoon
     ++  rott
@@ -160,16 +160,16 @@ of our generator.
       (weld q.s p.s)
 ```
 
-The `rott` arm takes takes a specified number of characters off of a tape and
+The `rott` [arm](/docs/glossary/arm/) takes takes a specified number of characters off of a tape and
 puts them on the end of the tape.
 
-`|=  [m=tape n=@ud]` creates a gate that takes two arguments: `m`, a `tape`,
+`|=  [m=tape n=@ud]` creates a [gate](/docs/glossary/gate/) that takes two arguments: `m`, a `tape`,
 and `n`, a `@ud`.
 
 `=/  length=@ud  (lent m)` stores the length of `m` to make the following
 code a little clearer.
 
-`trim` is a a gate from the standard library that splits a tape at into two
+`trim` is a a [gate](/docs/glossary/gate/) from the standard library that splits a tape at into two
 parts at a specified position. So `=+  s=(trim (mod n length) m)` splits the
 tape `m` into two parts, `p` and `q`, and stores it in `s`. We call the modulus
 operation `mod` to make sure that we split our `tape` at the correct place, even
@@ -192,7 +192,7 @@ front, and the first part `p.s` is welded to the back.
       $(chart (~(put by chart) i.a i.b), a t.a, b t.b)
 ```
 
-The `zipper` arm takes two tapes and creates a `map` out of them -- an
+The `zipper` [arm](/docs/glossary/arm/) takes two tapes and creates a `map` out of them -- an
 association between their elements.
 
 So then if `tapes` are easier to manipulate, why then are we producing `cords`?
@@ -201,21 +201,21 @@ tape` to another element of a `tape`, which as we have established as being a
 `cord`. This will simplify our use of this method and we don't need to
 manipulate the keys or values, simply look them up.
 
-`|=  [a=tape b=tape]` builds a gate that takes two tapes, `a` and `b`, as its
+`|=  [a=tape b=tape]` builds a [gate](/docs/glossary/gate/) that takes two tapes, `a` and `b`, as its
 sample.
 
-`^-  (map @t @t)` casts the gate to a `map` with a `cord` key and a `cord`
+`^-  (map @t @t)` casts the [gate](/docs/glossary/gate/) to a `map` with a `cord` key and a `cord`
 value. A `map` is a type equivalent to a dictionary in other languages: it's a
 data structure that associates a key with a value. If, for example, we wanted
 to have an association between `a` and 1 and `b` and 2, we could use a `map`.
 
-`=|  chart=(map @t @t)` adds a noun to the subject with the default value of
-the `(map @t @t)` type, and gives that noun the face `chart`.
+`=|  chart=(map @t @t)` adds a [noun](/docs/glossary/noun/) to the subject with the default value of
+the `(map @t @t)` type, and gives that [noun](/docs/glossary/noun/) the face `chart`.
 
 `?.  =((lent a) (lent b))` checks if the two tapes are the same length. If not,
 the program crashes.
 
-`|-` creates a trap, a gate that is called immediately.
+`|-` creates a [trap](/docs/glossary/trap/), a [gate](/docs/glossary/gate/) that is called immediately.
 
 `?:  |(?=(~ a) ?=(~ b))` checks if either tape is empty. If this is true, we
 the program is finished and can return `chart`, the the `map` that we have been
@@ -225,13 +225,13 @@ If the above test finds that its condition to be false, we trigger a recursion
 that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`.
 This code recursively adds an entry in our `map` where the head of the tape `a`
 maps to the value of the head of tape `b` with  `~(put by chart)`, our calling
-of the `put` arm of the `by` map-engine core. The recursion also "consumes"
+of the `put` [arm](/docs/glossary/arm/) of the `by` map-engine [core](/docs/glossary/core/). The recursion also "consumes"
 those heads with every iteration by changing `a` and `b` to their tails.
 
-Perhaps now you can understand why this arm is named `zipper`. It's putting two
+Perhaps now you can understand why this [arm](/docs/glossary/arm/) is named `zipper`. It's putting two
 tapes together by matching pieces from each side, something akin to a jacket zipper.
 
-We have three related arms to look at next, `coder`, `encoder`, and
+We have three related [arm](/docs/glossary/arm/)s to look at next, `coder`, `encoder`, and
 `decoder`. `coder` is the foundation of the other two, so we'll look at it
 first.
 
@@ -241,7 +241,7 @@ first.
       (~(put by (zipper a b)) ' ' ' ')
 ```
 
-`|=  [a=tape b=tape]` creates a gate that takes two `tapes`.
+`|=  [a=tape b=tape]` creates a [gate](/docs/glossary/gate/) that takes two `tapes`.
 
 We use `put by` on the next line, giving it a `map` produced by the `zipper`
 arm that we created before. This adds an entry to the map where the space
@@ -260,15 +260,15 @@ shift them.
       (coder keytape alpha)
 ```
 
-`encoder` and `decoder` are implemented in terms of the `coder` arm. These gates
+`encoder` and `decoder` are implemented in terms of the `coder` [arm](/docs/glossary/arm/). These [gate](/docs/glossary/gate/)s
 are essentially identical, with the arguments reversed. They simplify the two
 common transactions you want to do in this program: producing `maps` that we can
 use to encode and decode messages.
 
-In both cases, we create a gate that accepts a `@ud` named `key`.
+In both cases, we create a [gate](/docs/glossary/gate/) that accepts a `@ud` named `key`.
 
-`=/  keytape=tape  (rott alpha key)` creates a `keytape` noun by calling `rott`
-on `alpha` our `key` input. `alpha` is our arm which contains a `tape` of the
+`=/  keytape=tape  (rott alpha key)` creates a `keytape` [noun](/docs/glossary/noun/) by calling `rott`
+on `alpha` our `key` input. `alpha` is our [arm](/docs/glossary/arm/) which contains a `tape` of the
 entire alphabet.
 
 `(coder alpha keytape)`, for `encoder`, and `(coder keytape alpha)`, for
@@ -297,9 +297,9 @@ want to manipulate; and our `key`, the value that we want to shift our message
 by.
 
 `shift` is for encoding, and `unshift` is for decoding. Thus, `shift` calls the
-`operate` arm with `(operate message key (encoder key))`, and `unshift` makes
+`operate` [arm](/docs/glossary/arm/) with `(operate message key (encoder key))`, and `unshift` makes
 that call with `(operate message key (decoder key))`. These both produce the
-final output of the core, to be called in the form of `(shift msg key)`
+final output of the [core](/docs/glossary/core/), to be called in the form of `(shift msg key)`
 and `(unshift msg key)` at the bottom of the program.
 
 ```hoon
@@ -311,12 +311,12 @@ and `(unshift msg key)` at the bottom of the program.
   (~(got by encoder) a)
 ```
 
-`operate` produces a `tape`. The `%+` rune allows us to pull an arm
-with a pair sample. The arm we are going to pull is `turn`. This arm
+`operate` produces a `tape`. The `%+` rune allows us to pull an [arm](/docs/glossary/arm/)
+with a pair sample. The [arm](/docs/glossary/arm/) we are going to pull is `turn`. This [arm](/docs/glossary/arm/)
 takes two arguments, a `list` and a `gate` to apply to each element of the
 `list`.
 
-If we then give our arm Caesar's famous statement, and get our left- and
+If we then give our [arm](/docs/glossary/arm/) Caesar's famous statement, and get our left- and
 right-ciphers.
 
 ```
@@ -341,7 +341,7 @@ look for the legible result.
 
 2. Extend the example generator to allow for use of characters other than a-z.
 
-3. Build a gate that can take a Caesar shifted `tape` and produce
+3. Build a [gate](/docs/glossary/gate/) that can take a Caesar shifted `tape` and produce
 possible unshifted `tapes`.
 
 4. Modify the example generator into a `%say` generator.

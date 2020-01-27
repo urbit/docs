@@ -57,7 +57,7 @@ From arvo, requests enter `++call`, which after some type reification are passed
 along to `++apex:ye`. In the case of a `%this` task, its components are
 parsed(see `++zest:epur`, `++eat-headers`) and handed off to `++handle`, wrapped
 in `++emule` to produce a `++fail` page in case of error. `++apex:handle` will
-`++process` the request to a `pest` or a `++done` core, and in the former case
+`++process` the request to a `pest` or a `++done` [core](/docs/glossary/core/), and in the former case
 `++resolve` the pest into an outgoing card.
 
 XX it also seems to affect the current ship, test that serving ship name is consistently correct
@@ -95,7 +95,7 @@ XX `%cast %mime` used to be in ford-get-beam, is there a reason it was removed?
 ## Back into the breach, or: auxilary requests
 
 Now, it was mentioned that this result is self-refreshing: the `%urb`
-translation door injects a `;script@"/~/on/{deps}.js"` into every page, `deps`
+translation [door](/docs/glossary/door/) injects a `;script@"/~/on/{deps}.js"` into every page, `deps`
 is a ford-readable hash of the set of resources that page construction depended
 on.
 
@@ -133,7 +133,7 @@ second script is `@"/~~/~/at/main/lib/urb.js"`, semantically equivalent to
 
 In `++as-aux-request`, `%as %own` becomes `%auth %get our` perk, which
 `++process` passes to `++process-parsed` passes to `++process-auth`. There, a
-`yac` "ya" core is built `++for-client`: a `++cookie-prefix`, which is just the
+`yac` "ya" [core](/docs/glossary/core/) is built `++for-client`: a `++cookie-prefix`, which is just the
 serving ship name, is used to get a `++session-from-cookies`, here nil as the
 client has no cookie set. In lieu of a cookie, a `++new-ya` is constructed, with
 a random token `hole` and a `++new-cyst` which fills out `cyst` session state
@@ -203,7 +203,7 @@ data. Userspace javascript sets `urb.appl` to `/tic`, and binds `lines` to a
 This triggers a `PUT` to `/~/is/{ixor}/cli/lines.json`, where `ixor` is a hash
 of `oryx` that identifies the connection. `++as-aux-request`, an `%is` is a
 `%subs` subscription update update, which for `%put` forwards to
-`++add-subs:ix`, the ix core fetched `++for-view` by hashing the request
+`++add-subs:ix`, the ix [core](/docs/glossary/core/) fetched `++for-view` by hashing the request
 `++oryx-to-ixor`.
 
 A view has all the state associated with a client that must be

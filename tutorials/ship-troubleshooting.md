@@ -176,9 +176,9 @@ However, if you get a `bail` error again, you should perform a personal breach.
 
 You can get help with you problem by creating an issue at github.com/urbit/urbit. But to make a good issue, you need to include some information.
 
-When your urbit crashes with a `bail`, you'll probably get a core dump, which is a file that contains the program state of your urbit when it crashed. On Mac, core dumps can be found in `/cores`. On Linux, cores can often be found in `/var/crash`, or the home directory.
+When your urbit crashes with a `bail`, you'll probably get a [core](/docs/glossary/core/) dump, which is a file that contains the program state of your urbit when it crashed. On Mac, [core](/docs/glossary/core/) dumps can be found in `/cores`. On Linux, [core](/docs/glossary/core/)s can often be found in `/var/crash`, or the home directory.
 
-Navigate to the folder containing your core dumps. Find the most recent core dump by looking at the dates after you run `ls -l`. Then `lldb -c <corename>`. Once that loads, you'll be at an `(lldb)` prompt; type `bt` at this prompt. This will create a stack trace that looks like this:
+Navigate to the folder containing your [core](/docs/glossary/core/) dumps. Find the most recent [core](/docs/glossary/core/) dump by looking at the dates after you run `ls -l`. Then `lldb -c <corename>`. Once that loads, you'll be at an `(lldb)` prompt; type `bt` at this prompt. This will create a stack trace that looks like this:
 
 ```
 (lldb) bt

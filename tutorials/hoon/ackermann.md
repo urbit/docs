@@ -7,7 +7,7 @@ aliases = ["docs/learn/hoon/hoon-tutorial/ackermann/"]
 
 The Ackermann function is one of the earliest examples of a function that is both totally computable -- meaning that it can be solved -- and not primitively recursive -- meaning it can not be rewritten in an iterative fashion.
 
-In this lesson, we will write a gate that computes the [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function)
+In this lesson, we will write a [gate](/docs/glossary/gate/) that computes the [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function)
 
 ``` hoon
 |=  [m=@ n=@]
@@ -16,7 +16,7 @@ In this lesson, we will write a gate that computes the [Ackermann function](http
 $(m (dec m), n $(n (dec n)))
 ```
 
-With the first line, `|=  [m=@ n=@]`, we create a gate that takes two arguments, `m` and `n`, both of the `@` type.
+With the first line, `|=  [m=@ n=@]`, we create a [gate](/docs/glossary/gate/) that takes two arguments, `m` and `n`, both of the `@` type.
 
 
 
