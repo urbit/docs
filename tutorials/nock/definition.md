@@ -6,7 +6,7 @@ aliases = ["docs/learn/nock/definition/"]
 +++
 
 Nock is a Turing-complete function that maps a cell
-`[subject formula]` to a [noun](/docs/glossary/noun/) `product`, where `subject` is the
+`[subject formula]` to a noun `product`, where `subject` is the
 data, `formula` is the code, and `product` is the result.
 
 To program in Hoon, this is all you need to know about Nock.
@@ -21,7 +21,7 @@ Hoon always become tail calls in Nock.)
 Nock is a combinator interpreter defined by the specification below.
 
 This pseudocode describes a system of reduction rules.  Variables
-match any [noun](/docs/glossary/noun/); the first rule from the top matches.
+match any noun; the first rule from the top matches.
 
 A formula that reduces to itself is an infinite loop, which we define as a
 crash ("bottom" in formal logic).  A real interpreter
@@ -30,9 +30,9 @@ can detect this crash and produce an out-of-band value instead.
 ```
 Nock 4K
 
-A [noun](/docs/glossary/noun/) is an [atom](/docs/glossary/atom/) or a cell.  An [atom](/docs/glossary/atom/) is a natural number.  A cell is an ordered pair of [noun](/docs/glossary/noun/)s.
+A noun is an atom or a cell.  An atom is a natural number.  A cell is an ordered pair of nouns.
 
-Reduce by the first matching pattern; variables match any [noun](/docs/glossary/noun/).
+Reduce by the first matching pattern; variables match any noun.
 
 nock(a)             *a
 [a b c]             [a [b c]]
@@ -82,11 +82,11 @@ nock(a)             *a
 The pseudocode notation defines six prefix operators: `?`, `+`,
 `=`, `/`, `#`, and `*`.
 
-`?[x]` reduces to `0` if `x` is a cell, `1` if an [atom](/docs/glossary/atom/).
+`?[x]` reduces to `0` if `x` is a cell, `1` if an atom.
 
-`+[x]` reduces to the [atom](/docs/glossary/atom/) `x` plus `1`.
+`+[x]` reduces to the atom `x` plus `1`.
 
-`=[x y]` reduces to `0` if `x` and `y` are the same [noun](/docs/glossary/noun/), `1`
+`=[x y]` reduces to `0` if `x` and `y` are the same noun, `1`
 otherwise.
 
 `/` (`slot`) is a tree addressing operator.  The root of the tree
@@ -97,7 +97,7 @@ For instance, `/[1 [531 25 99]]` is `[531 25 99]`; `/[2 [531 25
 99]]` is `531`; `/[3 [531 25 99]]` is `[25 99]`; `/[6 [531 25
 99]]` is `25`; `/[12 [531 25 99]]` crashes.
 
-`#` (`edit`) is for replacing part of a [noun](/docs/glossary/noun/) with another [noun](/docs/glossary/noun/). `#[x y z]` replaces the value at slot `x` of `z` (i.e., `/[x z]`) with `y`.
+`#` (`edit`) is for replacing part of a noun with another noun. `#[x y z]` replaces the value at slot `x` of `z` (i.e., `/[x z]`) with `y`.
 
 For instance, `#[2 11 [22 33]]` is `[11 33]`; `#[3 11 [22 33]]` is `[22 11]`; `#[4 11 [[22 33] 44]]` is `[[11 33] 44]`; and `#[5 11 [[22 33] 44]]` is `[[22 11] 44]`.
 
@@ -115,13 +115,13 @@ against the subject, and produces the cell of their products.  In
 other words, the Lisp program `(cons x y)` becomes the Nock
 formula `[x y]`.
 
-If the head of the formula is an [atom](/docs/glossary/atom/), it's an instruction from
+If the head of the formula is an atom, it's an instruction from
 `0` to `11`.
 
-A formula `[0 b]` reduces to the [noun](/docs/glossary/noun/) at tree address `b`
+A formula `[0 b]` reduces to the noun at tree address `b`
 in the subject.
 
-A formula `[1 b]` reduces to the constant [noun](/docs/glossary/noun/) `b`.
+A formula `[1 b]` reduces to the constant noun `b`.
 
 A formula `[2 b c]` treats `b` and `c` as formulas, resolves each
 against the subject, then computes Nock again with the product of
@@ -150,12 +150,12 @@ of `8` as a "variable declaration" or "stack push.")
 `[9 b c]` computes the product of formula `c` with the current
 subject; from that product `d` it extracts a formula `e` at tree
 address `b`, then computes `*[d e]`.  (`9` is designed to fit
-Hoon; `d` is a `core` (object), `e` points to an [arm](/docs/glossary/arm/) (method).)
+Hoon; `d` is a `core` (object), `e` points to an arm (method).)
 
 In a formula `[10 [b c] d]`, `c` and `d` are computed with the current subject, and then `b` of the product of `d` is replaced with the product of `c`.
 
 `[11 b c]` is a **hint** semantically equivalent to the formula
-`c`.  If `b` is an [atom](/docs/glossary/atom/), it's a **static hint**, which is just
+`c`.  If `b` is an atom, it's a **static hint**, which is just
 discarded.  If `b` is a cell, it's a **dynamic** hint; the head of
 `b` is discarded, and the tail of `b` is executed as a formula
 against the current subject; the product of this is discarded.
@@ -175,7 +175,7 @@ The short answer is that a Nock interpreter doesn't have to use
 the algorithm above.  It just has to get the **same result** as the
 algorithm above.
 
-The algorithm for decrementing an [atom](/docs/glossary/atom/) is to count up to it, an
+The algorithm for decrementing an atom is to count up to it, an
 O(n) operation.  But if the interpreter knows it's running a
 decrement formula, it can use the CPU to decrement directly.
 
