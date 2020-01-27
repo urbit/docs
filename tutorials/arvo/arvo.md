@@ -178,11 +178,12 @@ network. As Hoon compiles down to Nock, which is an axiomatic representation of
 a deterministic computer, this code is guaranteed to run identically on your machine as it
 would on anybody else's.
 
-Since OTA updates can potentially alter the type system they must be performed
-outside of the type system. An OTA update contains a raw untyped Nock formula that
-encodes the new kernel as well as instructions on how to turn the final state of
-kernel into the initial state of the new kernel, which potentially includes things such as
-transforming the old type system into the new type system.
+Some subtleties regarding types arise when handling OTA updates, since they can
+potentially alter the type system. Put more concretely, the type of `type` may
+be updated. In that case, the update is an untyped Nock formula from the
+perspective of the old kernel, but ordinary typed Hoon code from the perspective of
+the new kernel. Besides this one detail, the only functionality of the Arvo
+kernel proper that is untyped are its interactions with the Unix runtime.
 
 ### ACID Database
 
