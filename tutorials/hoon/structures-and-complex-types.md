@@ -71,7 +71,7 @@ As you can see, the example value for `@` is `0`.  Example values are used as pl
 
 ### Molds
 
-Structures can also become [gate](/docs/glossary/gate/)s at runtime.  To produce such a [gate](/docs/glossary/gate/), use a type expression as a stand-alone expression in the dojo:
+Structures can also become [gates](/docs/glossary/gate/) at runtime.  To produce such a [gate](/docs/glossary/gate/), use a type expression as a stand-alone expression in the dojo:
 
 ```
 > @
@@ -99,7 +99,7 @@ Structures can also become [gate](/docs/glossary/gate/)s at runtime.  To produce
 >
 ```
 
-In all three cases, the result of evaluation is a [gate](/docs/glossary/gate/).  For each, the head is a single [arm](/docs/glossary/arm/), signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These [gate](/docs/glossary/gate/)s are sometimes called **molds**.
+In all three cases, the result of evaluation is a [gate](/docs/glossary/gate/).  For each, the head is a single [arm](/docs/glossary/arm/), signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These [gates](/docs/glossary/gate/) are sometimes called **molds**.
 
 Molds are [gate](/docs/glossary/gate/)s with two special properties: (1) they are guaranteed to produce a value of the type indicated by the type expression, and (2) they are [idempotent](https://en.wikipedia.org/wiki/Idempotence).  (A [gate](/docs/glossary/gate/) `i` is idempotent if and only if the result of applying `i` multiple times to a value produces the same result as applying it once.  In other words, `(i val)` must produce the same result as `(i (i val))`.)
 
@@ -143,7 +143,7 @@ Let's review (1) and (2) briefly.
 
 ### Basic Types
 
-The basic types of Hoon are: `*` for [noun](/docs/glossary/noun/)s, `@` for [atom](/docs/glossary/atom/)s (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
+The basic types of Hoon are: `*` for [nouns](/docs/glossary/noun/), `@` for [atoms](/docs/glossary/atom/) (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
 
 Let's illustrate with the irregular `\` \`` cast syntax:
 

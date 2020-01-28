@@ -54,7 +54,7 @@ Let's create a subject with some computations:
 55
 ```
 
-`add` and `mul` are functions of the Hoon standard library.  `add` is used to add two [atom](/docs/glossary/atom/)s, and `mul` is used to multiply them.
+`add` and `mul` are functions of the Hoon standard library.  `add` is used to add two [atoms](/docs/glossary/atom/), and `mul` is used to multiply them.
 
 ## Limbs of the Subject
 
@@ -73,9 +73,9 @@ The subject is a [noun](/docs/glossary/noun/), just like any other piece of Hoon
 
 Each fragment of a [noun](/docs/glossary/noun/) is itself a [noun](/docs/glossary/noun/), and hence can be understood as a binary tree as well.  Each fragment or 'subtree' sticks out of the original tree, like a **limb**.  A 'limb' is a subtree of the subject.
 
-Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: [arm](/docs/glossary/arm/)s and legs.
+Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: [arms](/docs/glossary/arm/) and legs.
 
-**Arms** are limbs of the subject that are used for carrying out substantive computations.  We'll talk about [arm](/docs/glossary/arm/)s in the next lesson.  **Legs** are limbs that store data.  Any limb that isn't an [arm](/docs/glossary/arm/) is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
+**Arms** are limbs of the subject that are used for carrying out substantive computations.  We'll talk about [arms](/docs/glossary/arm/) in the next lesson.  **Legs** are limbs that store data.  Any limb that isn't an [arm](/docs/glossary/arm/) is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
 
 ### Address-based Limb Expressions
 
@@ -270,7 +270,7 @@ As with `&n`, we can characterize `|n` recursively.  In the base case, `|1` is `
 
 Working with specific addresses of the subject can be cumbersome even when the subject is small.  When the subject is a really large [noun](/docs/glossary/noun/) -- as is often the case -- it's downright impractical.  Thankfully there's a more convenient method for resolving to a limb of the subject: using names.
 
-A name can resolve either an [arm](/docs/glossary/arm/) or a leg of the subject.  Recall that [arm](/docs/glossary/arm/)s are for computations and legs are for data.  When a name resolves to an [arm](/docs/glossary/arm/), the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.  We aren't yet ready to talk about [arm](/docs/glossary/arm/) resolution; for now let's focus on leg names.
+A name can resolve either an [arm](/docs/glossary/arm/) or a leg of the subject.  Recall that [arms](/docs/glossary/arm/) are for computations and legs are for data.  When a name resolves to an [arm](/docs/glossary/arm/), the relevant computation is run and the product of the computation is produced.  When a limb name resolves to a leg, the value of that leg is produced.  We aren't yet ready to talk about [arm](/docs/glossary/arm/) resolution; for now let's focus on leg names.
 
 #### Faces
 

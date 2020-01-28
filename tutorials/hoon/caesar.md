@@ -231,7 +231,7 @@ those heads with every iteration by changing `a` and `b` to their tails.
 Perhaps now you can understand why this [arm](/docs/glossary/arm/) is named `zipper`. It's putting two
 tapes together by matching pieces from each side, something akin to a jacket zipper.
 
-We have three related [arm](/docs/glossary/arm/)s to look at next, `coder`, `encoder`, and
+We have three related [arms](/docs/glossary/arm/) to look at next, `coder`, `encoder`, and
 `decoder`. `coder` is the foundation of the other two, so we'll look at it
 first.
 

@@ -207,7 +207,7 @@ convert back to `%txt`. The diff, patch, and merge algorithms are
 fairly straightforward for json, though they're very different
 from the text ones.
 
-More formally, a mark is a [core](/docs/glossary/core/) with three [arm](/docs/glossary/arm/)s, `++grab`,
+More formally, a mark is a [core](/docs/glossary/core/) with three [arms](/docs/glossary/arm/), `++grab`,
 `++grow`, and `++grad`. In `++grab` is a series of functions to
 convert from other marks to the given mark.  In `++grow` is a
 series of functions to convert from the given mark to other
@@ -2567,7 +2567,7 @@ When we're done, we just put the remaining subscribers back in our
 subscriber list.
 
 If the subscriber is a single read, then, if this is a foreign desk
-(note that `++wake` is called from other [arm](/docs/glossary/arm/)s, and not only on foreign
+(note that `++wake` is called from other [arms](/docs/glossary/arm/), and not only on foreign
 desks). Obviously, if we find an identical request there, then we can
 produce the result immediately. Referential transparency for the win. We
 produce the result with a call to `++blab`. If this is a foreign desk

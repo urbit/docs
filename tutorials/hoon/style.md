@@ -44,7 +44,7 @@ These are regular forms -- every rune can be written this way.
 Hoon also has a variety of wide [irregular forms](@/docs/reference/hoon-expressions/irregular.md).  All tall
 forms are regular.  All code within a wide form is wide.
 Almost all code has both wide and tall forms, the exception
-being named [core](/docs/glossary/core/)s.
+being named [cores](/docs/glossary/core/).
 
 The goal of wide/tall forms is to resemble the look of
 procedural code, with its statement/expression distinction,
@@ -60,7 +60,7 @@ conventions. These conventions aren't absolute, but
 you shouldn't defy them unless you have a good reason to do so.
 
 Syntactically, there are three kinds of runes: fixed sequences,
-variable sequences, and [core](/docs/glossary/core/)s/engines.  Let's talk about each.
+variable sequences, and [cores](/docs/glossary/core/)/engines.  Let's talk about each.
 
 #### Fixed sequences and backstep indentation
 

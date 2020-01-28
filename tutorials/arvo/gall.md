@@ -61,7 +61,7 @@ definable in a regular recursive data type).
 
 ## Specification
 
-An agent is defined as a [core](/docs/glossary/core/) with a set of [arm](/docs/glossary/arm/)s to handle various
+An agent is defined as a [core](/docs/glossary/core/) with a set of [arms](/docs/glossary/arm/) to handle various
 events.  These handlers usually produce a list of effects and the next
 state of the agent.  The interface definition can be found in
 `sys/zuse.hoon`, which at the time of writing is:
@@ -194,7 +194,7 @@ Here's a skeleton example of an implementation:
 ```
 
 We also supply a `default-agent` library, which is useful if you don't
-want to handle some of the [arm](/docs/glossary/arm/)s.  Most of the above could also be
+want to handle some of the [arms](/docs/glossary/arm/).  Most of the above could also be
 implemented as:
 
 ```hoon
@@ -224,7 +224,7 @@ implemented as:
 --
 ```
 
-So, an agent is a [core](/docs/glossary/core/) with 10 [arm](/docs/glossary/arm/)s.  The handlers correspond to
+So, an agent is a [core](/docs/glossary/core/) with 10 [arms](/docs/glossary/arm/).  The handlers correspond to
 different sorts of input.  We'll discuss each of these in detail, but
 first a few general concepts.
 
@@ -410,7 +410,7 @@ on every event.  It also means that the context of the [core](/docs/glossary/cor
 Gall, which means you can store state in your context in whatever
 structure you want.
 
-This is why most of the handler [arm](/docs/glossary/arm/)s produce not just a list of cards
+This is why most of the handler [arms](/docs/glossary/arm/) produce not just a list of cards
 but also a new `agent:gall`.  Usually, this will be the "same" agent in
 the sense that the code will be the same, but you may have changed the
 state that's stored in its (opaque to Gall) context.
@@ -470,7 +470,7 @@ information is available to any of the handlers.
 
 ## Arms
 
-A description of each of the handler [arm](/docs/glossary/arm/)s follows.
+A description of each of the handler [arms](/docs/glossary/arm/) follows.
 
 ### +on-init
 

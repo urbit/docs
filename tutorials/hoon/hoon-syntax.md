@@ -61,7 +61,7 @@ There are many categories of Hoon expressions: [noun](/docs/glossary/noun/) lite
 
 ### Noun Literals
 
-A [noun](/docs/glossary/noun/) is either an [atom](/docs/glossary/atom/) or a cell.  An [atom](/docs/glossary/atom/) is an unsigned integer and a cell is a pair of [noun](/docs/glossary/noun/)s.
+A [noun](/docs/glossary/noun/) is either an [atom](/docs/glossary/atom/) or a cell.  An [atom](/docs/glossary/atom/) is an unsigned integer and a cell is a pair of [nouns](/docs/glossary/noun/).
 
 There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29 ) expressions for each kind of [noun](/docs/glossary/noun/).  A [noun](/docs/glossary/noun/) literal is just a notation for representing a fixed [noun](/docs/glossary/noun/) value.
 
@@ -84,7 +84,7 @@ We start with [atom](/docs/glossary/atom/) literals.  Each of these is a basic e
 ~zod
 ```
 
-Recall from [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though [atom](/docs/glossary/atom/)s are unsigned integers, they can be pretty-printed in different ways.  The way an [atom](/docs/glossary/atom/) is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
+Recall from [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though [atoms](/docs/glossary/atom/) are unsigned integers, they can be pretty-printed in different ways.  The way an [atom](/docs/glossary/atom/) is to be represented depends on its aura.  The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
 
 Cell literals can be written in Hoon using `[ ]`.  Cell literals are complex, because other expressions are put inside the square brackets.  Examples:
 
@@ -124,7 +124,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `add`
 - `mul`
 
-As a special limb we also have `$`.  This is the name of the [arm](/docs/glossary/arm/) in special one-armed [core](/docs/glossary/core/)s called "gates".  (We'll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
+As a special limb we also have `$`.  This is the name of the [arm](/docs/glossary/arm/) in special one-armed [cores](/docs/glossary/core/) called "gates".  (We'll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
@@ -149,7 +149,7 @@ A **rune** is just a pair of ASCII characters (a digraph).  You've already seen 
 
 Expressions with a rune at the beginning are rune expressions.  Most runes are used at the beginning of a complex expression, but there are exceptions.  For example, the runes `--` and `==` are used at the end of certain expressions.
 
-Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create [core](/docs/glossary/core/)s, and the runes in the `:` family are all used to create cells.
+Runes are classified by family (with the exceptions of `--` and `==`).  The first of the two symbols indicates the family -- e.g., the `^-` rune is in the `^` family of runes, and the `|=` and `|%` runes are in the `|` family.  The runes of particular family usually have related meanings.  Two simple examples: the runes in the `|` family are all used to create [cores](/docs/glossary/core/), and the runes in the `:` family are all used to create cells.
 
 Rune expressions are usually complex, which means they usually have one or more subexpressions.  The appropriate syntax varies from rune to rune; after all, they're used for different purposes.  To see the syntax rules for a particular rune, consult the [rune reference](@/docs/reference/hoon-expressions/rune/_index.md).  Nevertheless, there are some general principles that hold of all rune expressions.
 
@@ -277,7 +277,7 @@ The irregular `( )` [gate](/docs/glossary/gate/)-calling syntax is versatile -- 
 10
 ```
 
-The `( )` [gate](/docs/glossary/gate/)-calling syntax can be used for [gate](/docs/glossary/gate/)s with any number of arguments.
+The `( )` gate-calling syntax can be used for [gates](/docs/glossary/gate/) with any number of arguments.
 
 You can find other irregular forms in the irregular expression [reference document](@/docs/reference/hoon-expressions/irregular.md).
 
@@ -319,7 +319,7 @@ To see other irregular expressions, check the irregular expression [reference do
 
 ## The Standard Library
 
-The Hoon standard library is a compilation of generally useful Hoon [gate](/docs/glossary/gate/)s (functions). You've seen these already: in expressions like `(add 11 11)`, `add` is a function from the standard library.
+The Hoon standard library is a compilation of generally useful Hoon [gates](/docs/glossary/gate/) (functions). You've seen these already: in expressions like `(add 11 11)`, `add` is a function from the standard library.
 
 It's important to know about standard library functions, because they make certain tasks much easier, and spare you from having to write the code itself. If you did not use the `add` library function, for example, you would have to write out code like this every time you wanted to find the sum of two numbers:
 

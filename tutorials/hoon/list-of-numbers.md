@@ -107,7 +107,7 @@ $(count (add 1 count))
 
 The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a [gate](/docs/glossary/gate/) that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined [gate](/docs/glossary/gate/)s that are generally useful, and these [gate](/docs/glossary/gate/)s can be used just like something that you defined in your own program. You can see this [gate](/docs/glossary/gate/), and other mathematical operators, in [section 1a](@/docs/reference/library/1a.md) of the standard-library documentation.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a [gate](/docs/glossary/gate/) that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined [gates](/docs/glossary/gate/) that are generally useful, and these [gates](/docs/glossary/gate/) can be used just like something that you defined in your own program. You can see this [gate](/docs/glossary/gate/), and other mathematical operators, in [section 1a](@/docs/reference/library/1a.md) of the standard-library documentation.
 
 ## Explanation
 

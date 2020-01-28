@@ -13,9 +13,9 @@ So a list can be either null or non-null. When the list contains only `~` and no
 
 `[1 [2 [3 [4 ~]]]]`
 
-It's easy to see where the heads are and where the nesting tails are. The head of the above list is the [atom](/docs/glossary/atom/) `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child [noun](/docs/glossary/noun/)s, it is implicitly understood that the right-most [noun](/docs/glossary/noun/)s constitute a cell.
+It's easy to see where the heads are and where the nesting tails are. The head of the above list is the [atom](/docs/glossary/atom/) `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child [nouns](/docs/glossary/noun/), it is implicitly understood that the right-most [nouns](/docs/glossary/noun/) constitute a cell.
 
-To make a list, let's cast [noun](/docs/glossary/noun/)s to the `(list @)` ("list of [atom](/docs/glossary/atom/)s") type.
+To make a list, let's cast [nouns](/docs/glossary/noun/) to the `(list @)` ("list of [atoms](/docs/glossary/atom/)") type.
 
 ```
 > `(list @)`~
@@ -60,13 +60,13 @@ find-fork-d
 
 It's important to note that performing tests like `?~ mylist` will actually transform `mylist` into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for `list`s.
 
-You can construct lists of any type.  `(list @)` indicates a list of [atom](/docs/glossary/atom/)s, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an [atom](/docs/glossary/atom/) and whose tail is a flag, etc.
+You can construct lists of any type.  `(list @)` indicates a list of [atoms](/docs/glossary/atom/), `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an [atom](/docs/glossary/atom/) and whose tail is a flag, etc.
 
 ## Tapes
 
 While a list can be of any type, there are some special types of lists that are built into Hoon. The tape is the most common example.
 
-Hoon has two kinds of strings: cords and tapes.  Cords are [atom](/docs/glossary/atom/)s with aura `@t`, and they're pretty-printed between `''` marks.
+Hoon has two kinds of strings: cords and tapes.  Cords are [atoms](/docs/glossary/atom/) with aura `@t`, and they're pretty-printed between `''` marks.
 
 ```
 > 'this is a cord'
@@ -76,7 +76,7 @@ Hoon has two kinds of strings: cords and tapes.  Cords are [atom](/docs/glossary
 2.037.307.443.564.446.887.986.503.990.470.772
 ```
 
-A tape is a list of `@tD` [atom](/docs/glossary/atom/)s (i.e., ASCII characters).
+A tape is a list of `@tD` [atoms](/docs/glossary/atom/) (i.e., ASCII characters).
 
 ```
 > "this is a tape"
@@ -217,7 +217,7 @@ Without using `snag`, write a [gate](/docs/glossary/gate/) that returns the `n`t
 
 ### `oust`
 
-The `oust` function takes a pair of [atom](/docs/glossary/atom/)s `[a=@ b=@]` and a list, and returns the list with `b` items removed, starting at item `a`:
+The `oust` function takes a pair of [atoms](/docs/glossary/atom/) `[a=@ b=@]` and a list, and returns the list with `b` items removed, starting at item `a`:
 
 ```
 > (oust [0 1] `(list @)`~[11 22 33 44])
@@ -251,7 +251,7 @@ Without using `lent`, write a [gate](/docs/glossary/gate/) that takes a list and
 
 ### `roll`
 
-The `roll` function takes a list and a [gate](/docs/glossary/gate/), and accumulates a value of the list items using that [gate](/docs/glossary/gate/).  For example, if you want to add or multiply all the items in a list of [atom](/docs/glossary/atom/)s, you would use `roll`:
+The `roll` function takes a list and a [gate](/docs/glossary/gate/), and accumulates a value of the list items using that [gate](/docs/glossary/gate/).  For example, if you want to add or multiply all the items in a list of [atoms](/docs/glossary/atom/), you would use `roll`:
 
 ```
 > (roll `(list @)`~[11 22 33 44 55] add)
@@ -263,14 +263,14 @@ The `roll` function takes a list and a [gate](/docs/glossary/gate/), and accumul
 
 ### `turn`
 
-The `turn` function takes a list and a [gate](/docs/glossary/gate/), and returns a list of the products of applying each item of the input list to the [gate](/docs/glossary/gate/).  For example, to add `1` to each item in a list of [atom](/docs/glossary/atom/)s:
+The `turn` function takes a list and a [gate](/docs/glossary/gate/), and returns a list of the products of applying each item of the input list to the [gate](/docs/glossary/gate/).  For example, to add `1` to each item in a list of [atoms](/docs/glossary/atom/):
 
 ```
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
 ~[12 23 34 45]
 ```
 
-Or to double each item in a list of [atom](/docs/glossary/atom/)s:
+Or to double each item in a list of [atoms](/docs/glossary/atom/):
 
 ```
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))

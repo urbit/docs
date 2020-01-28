@@ -20,7 +20,7 @@ Notably, vanes are _not_ something that a user ever interacts with directly. The
 
 ## Behn
 
-In this section we introduce the simplest Arvo vane, Behn. This is not exhaustive, but just enough to know what is going on inside of Behn when we make a system call to it in the egg timer app. We discuss relevant types, some [arm](/docs/glossary/arm/)s that are only called internally, and [arm](/docs/glossary/arm/)s that may be called by another vane via a `move`.
+In this section we introduce the simplest Arvo vane, Behn. This is not exhaustive, but just enough to know what is going on inside of Behn when we make a system call to it in the egg timer app. We discuss relevant types, some [arms](/docs/glossary/arm/) that are only called internally, and [arms](/docs/glossary/arm/) that may be called by another vane via a `move`.
 
 Behn is an Arvo vane that acts as a simple timer. It allows vanes and applications to set timer events, which are managed in a simple priority queue.
 
@@ -65,9 +65,9 @@ A `duct` is a call stack, which is a list of `path`s that represent a step in a 
 Here we see that `wind` produces a wet gate that takes in two molds, which for the `move` type for Behn are `note`s and `gift`s. When a vane needs to request something of another vane, it `%pass`es a `note`.  When a vane produces a result that was requested, it `%gives` a `gift` to the callee.
 
 
-### Internal [arm](/docs/glossary/arm/)s
+### Internal arms
 
-The following [arm](/docs/glossary/arm/)s are part of the `event-core` of Behn, which are essentially the internal functions of the Behn vane that are not directly accessible to other vanes and applications. We will not review all of them here, we only list some of most important ones.
+The following [arms](/docs/glossary/arm/) are part of the `event-core` of Behn, which are essentially the internal functions of the Behn vane that are not directly accessible to other vanes and applications. We will not review all of them here, we only list some of most important ones.
 
 #### ++set-unix-wake
 This [arm](/docs/glossary/arm/) is what Behn uses to tell the unix timer when to `%wake` Behn.
@@ -99,10 +99,10 @@ This [arm](/docs/glossary/arm/) is called when Behn is first launched. It gives 
 
 ### External interface
 
-Arvo talks to Behn via four [arm](/docs/glossary/arm/)s, `++call`, `++load`, `++scry`, `++stay`, and ``++take``, which ultimately call [arm](/docs/glossary/arm/)s in the `event-core` of which we have listed a subset above. Here we will only look at `++call` and `++take`.
+Arvo talks to Behn via four [arms](/docs/glossary/arm/), `++call`, `++load`, `++scry`, `++stay`, and ``++take``, which ultimately call [arms](/docs/glossary/arm/) in the `event-core` of which we have listed a subset above. Here we will only look at `++call` and `++take`.
 
 #### ++call
-When Behn is `%pass`ed a `note` from another vane, that is enacted upon by Arvo via the `++call` [gate](/docs/glossary/gate/). The `note` specifies what action to take, which are references to the internal [arm](/docs/glossary/arm/)s. This is done by including in the `note` a symbol such as `%born`, `%rest`, `%wait`, or `%wake`, which ultimately call the [arm](/docs/glossary/arm/)s with those names in the `event-core`.
+When Behn is `%pass`ed a `note` from another vane, that is enacted upon by Arvo via the `++call` [gate](/docs/glossary/gate/). The `note` specifies what action to take, which are references to the internal [arms](/docs/glossary/arm/). This is done by including in the `note` a symbol such as `%born`, `%rest`, `%wait`, or `%wake`, which ultimately call the [arms](/docs/glossary/arm/) with those names in the `event-core`.
 
 #### ++take
 When Behn is ready to inform another vane or application that a timer has elapsed, Arvo activates the `++take` [gate](/docs/glossary/gate/). That is, Arvo `take`s a `gift` from Behn that includes the symbol `%wake`, and `%pass`es it to the the requestee. `%wake` is the only kind of `gift` that Behn can make, but other vanes may possess multiple responses.

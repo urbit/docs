@@ -153,7 +153,7 @@ Next, with `=/  random  ~(. og entropy)`, we feed the `og` [core](/docs/glossary
 
 `?:  =(remaining 1)` checks if have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the `:_` rune here, so that the "heavier" hoon is at the bottom of the expression.
 
-If the above conditional evaluates to false, we are going to do a little work.  `=^` is a rune that pins the head of a pair and changes the leg with a tail. It's useful for interacting with the `og` [core](/docs/glossary/core/) [arm](/docs/glossary/arm/)s, as many of them produce a pair of a random numbers and the next state of the [core](/docs/glossary/core/). We're going to put the random number in the subject with the face `index` and change `random` to be the next [core](/docs/glossary/core/).
+If the above conditional evaluates to false, we are going to do a little work.  `=^` is a rune that pins the head of a pair and changes the leg with a tail. It's useful for interacting with the `og` [core](/docs/glossary/core/) [arms](/docs/glossary/arm/), as many of them produce a pair of a random numbers and the next state of the [core](/docs/glossary/core/). We're going to put the random number in the subject with the face `index` and change `random` to be the next [core](/docs/glossary/core/).
 
 With completed, we use `%^` to call `$` to recurse back up to `|-` with a few changes.
 

@@ -9,9 +9,9 @@ In Urbit, every piece of data is a [noun](/docs/glossary/noun/).  In order to un
 
 ## Noun Definition
 
-A **noun** is either an [atom](/docs/glossary/atom/) or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of [noun](/docs/glossary/noun/)s, usually indicated with square brackets around the [noun](/docs/glossary/noun/)s in question; i.e., `[a b]`, where `a` and `b` are [noun](/docs/glossary/noun/)s.
+A **noun** is either an [atom](/docs/glossary/atom/) or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of [nouns](/docs/glossary/noun/), usually indicated with square brackets around the [nouns](/docs/glossary/noun/) in question; i.e., `[a b]`, where `a` and `b` are [nouns](/docs/glossary/noun/).
 
-Here are some [atom](/docs/glossary/atom/)s:
+Here are some [atoms](/docs/glossary/atom/):
 
 - `0`
 - `87`
@@ -24,11 +24,11 @@ Here are some cells:
 - `[[12 13] [87 65]]`
 - `[[83 [1 17]] [[23 [32 64]] 90]]`
 
-All of the above are [noun](/docs/glossary/noun/)s.
+All of the above are [nouns](/docs/glossary/noun/).
 
 ### Nouns as Binary Trees
 
-A [binary tree](https://en.wikipedia.org/wiki/Binary_tree) has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a 'leaf'.  You can think of a [noun](/docs/glossary/noun/) as a binary tree whose leaves are [atom](/docs/glossary/atom/)s, i.e., unsigned integers.  All non-leaf nodes are cells.  To visualize this, consider the following representation of the [noun](/docs/glossary/noun/): `[12 [17 45]]`:
+A [binary tree](https://en.wikipedia.org/wiki/Binary_tree) has a single base node, and each node of the tree may have up to two child nodes (but it need not have any).  A node without children is a 'leaf'.  You can think of a [noun](/docs/glossary/noun/) as a binary tree whose leaves are [atoms](/docs/glossary/atom/), i.e., unsigned integers.  All non-leaf nodes are cells.  To visualize this, consider the following representation of the [noun](/docs/glossary/noun/): `[12 [17 45]]`:
 
 ```
 [12 [17 45]]
@@ -57,7 +57,7 @@ An [atom](/docs/glossary/atom/) is a trivial tree of just one node; e.g., `17`.
 
 Atoms are unsigned integers.  These are often represented by the dojo as unsigned integers in decimal notation, e.g., `17`.
 
-To be sure we understand Hoon's [atom](/docs/glossary/atom/) notation, let's enter some [atom](/docs/glossary/atom/)s into the dojo:
+To be sure we understand Hoon's [atom](/docs/glossary/atom/) notation, let's enter some [atoms](/docs/glossary/atom/) into the dojo:
 
 ```
 > 3
@@ -100,7 +100,7 @@ Just think of it as "3,200", written the German way with a dot.
 
 Why?  Long numbers are difficult to read.  We know this, so we group digits in threes.  For some reason most programming languages don't use this marvelous innovation.  Hoon does.
 
-English notation for decimals is more common than German notation.  Unfortunately, dots are URL-safe and commas aren't.  For reasons to be discussed in a later lesson, it's nice to have a regular syntax for [atom](/docs/glossary/atom/)s that's URL-safe.
+English notation for decimals is more common than German notation.  Unfortunately, dots are URL-safe and commas aren't.  For reasons to be discussed in a later lesson, it's nice to have a regular syntax for [atoms](/docs/glossary/atom/) that's URL-safe.
 
 As for why the dojo deleted your zero: it parses the command line as you type, and rejects any characters after the parser stops.  This prevents you from entering commands or expressions that aren't well-formed.
 
@@ -140,7 +140,7 @@ In computer science, a 'literal' is an expression that represents and evaluates 
 -0x9d
 ```
 
-All of the above are [atom](/docs/glossary/atom/)s.  The underlying [noun](/docs/glossary/noun/) of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the [atom](/docs/glossary/atom/) is to be represented in a different way.  To see their values in the default [atom](/docs/glossary/atom/) notation, you can tell Hoon to throw away the aura information.  Do this by preceding each expression above with `` `@` ``.
+All of the above are [atoms](/docs/glossary/atom/).  The underlying [noun](/docs/glossary/noun/) of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the [atom](/docs/glossary/atom/) is to be represented in a different way.  To see their values in the default [atom](/docs/glossary/atom/) notation, you can tell Hoon to throw away the aura information.  Do this by preceding each expression above with `` `@` ``.
 
 ```
 > `@`0b1001
@@ -172,7 +172,7 @@ The `` `@` `` syntax is used to 'cast' a value to a raw [atom](/docs/glossary/at
 
 #### Identities, Cords, and Terms
 
-Urbit identities such as `~zod` and `~sorreg-namtyv` are also [atom](/docs/glossary/atom/)s, but of the aura `@p`:
+Urbit identities such as `~zod` and `~sorreg-namtyv` are also [atoms](/docs/glossary/atom/), but of the aura `@p`:
 
 ```
 > ~zod
@@ -194,7 +194,7 @@ Urbit identities such as `~zod` and `~sorreg-namtyv` are also [atom](/docs/gloss
 ~sorreg-namtyv
 ```
 
-Hoon permits the use of [atom](/docs/glossary/atom/)s as strings.  Strings that are encoded as [atom](/docs/glossary/atom/)s are called **cords**. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
+Hoon permits the use of [atoms](/docs/glossary/atom/) as strings.  Strings that are encoded as [atoms](/docs/glossary/atom/) are called **cords**. Cords are of the aura `@t`.  The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
 
 ```
 > 'Howdy!'
@@ -281,20 +281,20 @@ You can force Hoon to interpret an [atom](/docs/glossary/atom/) differently by u
 0x9d
 ```
 
-The [atom](/docs/glossary/atom/)s in the examples above are all exactly the same value.  Only they're interpreted and printed differently, depending on the aura.
+The [atoms](/docs/glossary/atom/) in the examples above are all exactly the same value.  Only they're interpreted and printed differently, depending on the aura.
 
-You'll learn more about [atom](/docs/glossary/atom/)s and auras in [Lesson 2.1](@docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
+You'll learn more about [atoms](/docs/glossary/atom/) and auras in [Lesson 2.1](@docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
 
 ## Cells
 
-There's not much mystery about cells.  The left of a cell is called the **head**, and the right is called the **tail**.  Cells are typically represented in Hoon with square brackets around a pair of [noun](/docs/glossary/noun/)s.
+There's not much mystery about cells.  The left of a cell is called the **head**, and the right is called the **tail**.  Cells are typically represented in Hoon with square brackets around a pair of [nouns](/docs/glossary/noun/).
 
 ```
 > [32 320]
 [32 320]
 ```
 
-In this cell `32` is the head and `320` is the tail.  Cells can contain cells, and [atom](/docs/glossary/atom/)s of other auras as well:
+In this cell `32` is the head and `320` is the tail.  Cells can contain cells, and [atoms](/docs/glossary/atom/) of other auras as well:
 
 ```
 > [%hello 'world!']
@@ -317,9 +317,9 @@ I said there isn't _much_ mystery about cells, but there is a little.  So far wh
 [[6 62] 620]
 ```
 
-In the first example, the inner pair of square brackets is dropped.  Why did this happen?  Why is `[6 62 620]` accepted as a cell despite apparently having more than two [atom](/docs/glossary/atom/)s in it?
+In the first example, the inner pair of square brackets is dropped.  Why did this happen?  Why is `[6 62 620]` accepted as a cell despite apparently having more than two [atoms](/docs/glossary/atom/) in it?
 
-In fact, `[6 [62 620]]` and `[6 62 620]` are considered equivalent in Hoon.  A cell _must_ be a pair, which means there are always exactly two [noun](/docs/glossary/noun/)s in it.  Whenever cell brackets are omitted so that visually there appears to be more than two child [noun](/docs/glossary/noun/)s, it is implicitly understood that the right-most [noun](/docs/glossary/noun/)s constitute a cell.  That is, the tail of the whole cell is assumed to be a cell of the right-most [noun](/docs/glossary/noun/)s.
+In fact, `[6 [62 620]]` and `[6 62 620]` are considered equivalent in Hoon.  A cell _must_ be a pair, which means there are always exactly two [nouns](/docs/glossary/noun/) in it.  Whenever cell brackets are omitted so that visually there appears to be more than two child [nouns](/docs/glossary/noun/), it is implicitly understood that the right-most [nouns](/docs/glossary/noun/) constitute a cell.  That is, the tail of the whole cell is assumed to be a cell of the right-most [nouns](/docs/glossary/noun/).
 
 This is why `[6 [62 620]]` and `[6 62 620]` are equivalent.  `[6 [62 620]]` and `[[6 62] 620]`, on the other hand, are not equivalent.  If you look at them as binary trees you can see the difference:
 
@@ -339,11 +339,11 @@ When the dojo pretty-prints a cell it always removes superfluous cell brackets:
 [[12 13] [14 15] 16 17]
 ```
 
-However, you should always remember that though cells can be presented as lists of more than two [noun](/docs/glossary/noun/)s, they're always just pairs.
+However, you should always remember that though cells can be presented as lists of more than two [nouns](/docs/glossary/noun/), they're always just pairs.
 
 ### Exercise 1.2a
 
-Without using the dojo, assess whether each of the following pairs of [noun](/docs/glossary/noun/)s is equivalent.  (Answers are at the bottom of the page.)
+Without using the dojo, assess whether each of the following pairs of [nouns](/docs/glossary/noun/) is equivalent.  (Answers are at the bottom of the page.)
 
 ```
 1.  [[1 3] [6 2]]                 [1 3 [6 2]]
@@ -452,11 +452,11 @@ Without using the dojo, for each fragment below provide the address relative to 
 5. 55
 ```
 
-That's it for our basic introduction to [noun](/docs/glossary/noun/)s.  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
+That's it for our basic introduction to [nouns](/docs/glossary/noun/).  Hit `ctrl-d` to exit your ship, or else move on to the next lesson.
 
 ### Exercise 1.2d
 
-Draw out a binary tree diagram for each of the following [noun](/docs/glossary/noun/)s. Try to do this without using the dojo to simplify the expressions.
+Draw out a binary tree diagram for each of the following [nouns](/docs/glossary/noun/). Try to do this without using the dojo to simplify the expressions.
 
 ```
 1. [[2 3] 4 [5 6 7]]

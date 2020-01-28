@@ -91,7 +91,7 @@ It is important for us to note that Ford is _not_ used to build vanes. Vanes are
 
 ## Using Ford
 
-Having covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used [arm](/docs/glossary/arm/)s.
+Having covered the distinctive features of Ford, we now dive into some of the specifics on how these features are implemented. Let us first cover some of most important types of data we will run into, and then discuss the most frequently used [arms](/docs/glossary/arm/).
 
 ### Data types
 

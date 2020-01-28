@@ -490,8 +490,8 @@ less-than-or-equal-to function, to determine if `wid` is of a given size. The
 result of this series of tests is added to the subject and given the face
 `what-kind`.
 
-Ship names are simply another representation of [atom](/docs/glossary/atom/)s, and ship
-categories are different ranges of possible [atom](/docs/glossary/atom/)ic values. Because of this, we
+Ship names are simply another representation of [atoms](/docs/glossary/atom/), and ship
+categories are different ranges of possible atomic values. Because of this, we
 perform less-than tests to see what kind of ship is running the web-server.
 
 ```

@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/doors/"]
 +++
 
-It's useful to have [core](/docs/glossary/core/)s whose [arm](/docs/glossary/arm/)s evaluate to make [gate](/docs/glossary/gate/)s.  The use of such [core](/docs/glossary/core/)s is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such [core](/docs/glossary/core/)s will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
+It's useful to have [cores](/docs/glossary/core/) whose [arms](/docs/glossary/arm/) evaluate to make [gates](/docs/glossary/gate/).  The use of such [cores](/docs/glossary/core/) is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such [cores](/docs/glossary/core/) will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
 
 In this lesson you'll also learn about a new kind of [core](/docs/glossary/core/), called a 'door'.
 
@@ -44,7 +44,7 @@ Are calls to `add` and `mul` of the Hoon standard library of the first kind, or 
 276
 ```
 
-They're of the second kind.  Neither `add` nor `mul` resolves to a [gate](/docs/glossary/gate/) directly; they're each [arm](/docs/glossary/arm/)s that _produce_ [gate](/docs/glossary/gate/)s.
+They're of the second kind.  Neither `add` nor `mul` resolves to a [gate](/docs/glossary/gate/) directly; they're each [arms](/docs/glossary/arm/) that _produce_ [gates](/docs/glossary/gate/).
 
 Often the difference doesn't matter much.  Either way you can do a function call using the `(gate arg)` syntax.
 
@@ -52,7 +52,7 @@ It's important to learn the difference, however, because for certain use cases y
 
 ## A Gate-Building Core
 
-Let's make a [core](/docs/glossary/core/) with [arm](/docs/glossary/arm/)s that build [gate](/docs/glossary/gate/)s of various kinds.  As we did in a previous lesson, we'll use the `|%` rune.  Feel free to cut and paste the following into the dojo:
+Let's make a [core](/docs/glossary/core/) with [arms](/docs/glossary/arm/) that build [gates](/docs/glossary/gate/) of various kinds.  As we did in a previous lesson, we'll use the `|%` rune.  Feel free to cut and paste the following into the dojo:
 
 ```hoon
 > =c |%
@@ -63,7 +63,7 @@ Let's make a [core](/docs/glossary/core/) with [arm](/docs/glossary/arm/)s that 
   --
 ```
 
-Let's try out these [arm](/docs/glossary/arm/)s, using them for function calls:
+Let's try out these [arms](/docs/glossary/arm/), using them for function calls:
 
 ```
 > (inc:c 10)
@@ -79,7 +79,7 @@ Let's try out these [arm](/docs/glossary/arm/)s, using them for function calls:
 30
 ```
 
-Notice that each [arm](/docs/glossary/arm/) in [core](/docs/glossary/core/) `c` is able to call the other [arm](/docs/glossary/arm/)s of `c` -- `add-two` uses the `inc` [arm](/docs/glossary/arm/) to increment a number twice.  As a reminder, each [arm](/docs/glossary/arm/) is evaluated with is parent [core](/docs/glossary/core/) as the subject.  In the case of `add-two` the parent [core](/docs/glossary/core/) is `c`, which has `inc` in it.
+Notice that each [arm](/docs/glossary/arm/) in [core](/docs/glossary/core/) `c` is able to call the other [arms](/docs/glossary/arm/) of `c` -- `add-two` uses the `inc` [arm](/docs/glossary/arm/) to increment a number twice.  As a reminder, each [arm](/docs/glossary/arm/) is evaluated with is parent [core](/docs/glossary/core/) as the subject.  In the case of `add-two` the parent [core](/docs/glossary/core/) is `c`, which has `inc` in it.
 
 ### Mutating a Gate
 
@@ -157,9 +157,9 @@ Let's look once more at the parent [core](/docs/glossary/core/) of the `add` [ar
 <74.dbd 1.qct $141>
 ```
 
-The [battery](/docs/glossary/battery/) of this [core](/docs/glossary/core/) contains 74 [arm](/docs/glossary/arm/)s, each of which evaluates to a [gate](/docs/glossary/gate/) in the standard library.  This 'library' is nothing more than a [core](/docs/glossary/core/) containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these [arm](/docs/glossary/arm/)s near the beginning of [hoon.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)
+The [battery](/docs/glossary/battery/) of this [core](/docs/glossary/core/) contains 74 [arms](/docs/glossary/arm/), each of which evaluates to a [gate](/docs/glossary/gate/) in the standard library.  This 'library' is nothing more than a [core](/docs/glossary/core/) containing useful basic functions that Hoon often makes available as part of the subject.  You can see the Hoon code defining these [arms](/docs/glossary/arm/) near the beginning of [hoon.hoon](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon), starting with [`++  add`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sys/hoon.hoon#L21).  (Yes, the Hoon standard library is written in Hoon.)
 
-Here are some of the other [gate](/docs/glossary/gate/)s that can be generated from this [core](/docs/glossary/core/) in the Hoon standard library.  It should be fairly obvious what they do:
+Here are some of the other [gates](/docs/glossary/gate/) that can be generated from this [core](/docs/glossary/core/) in the Hoon standard library.  It should be fairly obvious what they do:
 
 ```
 > (dec 18)
@@ -210,7 +210,7 @@ Here are some of the other [gate](/docs/glossary/gate/)s that can be generated f
 
 ## Doors
 
-A brief review: A [core](/docs/glossary/core/) is a cell of [battery](/docs/glossary/battery/) and [payload](/docs/glossary/payload/): `[battery [payload](/docs/glossary/payload/)]`.  The [battery](/docs/glossary/battery/) is code and the [payload](/docs/glossary/payload/) is data.  The [battery](/docs/glossary/battery/) contains a series of [arm](/docs/glossary/arm/)s, and the [payload](/docs/glossary/payload/) contains all the data necessary to run those [arm](/docs/glossary/arm/)s correctly.
+A brief review: A [core](/docs/glossary/core/) is a cell of [battery](/docs/glossary/battery/) and [payload](/docs/glossary/payload/): `[battery [payload](/docs/glossary/payload/)]`.  The [battery](/docs/glossary/battery/) is code and the [payload](/docs/glossary/payload/) is data.  The [battery](/docs/glossary/battery/) contains a series of [arms](/docs/glossary/arm/), and the [payload](/docs/glossary/payload/) contains all the data necessary to run those [arms](/docs/glossary/arm/) correctly.
 
 New material: A **door** is a [core](/docs/glossary/core/) with a sample.  That is, a [door](/docs/glossary/door/) is a [core](/docs/glossary/core/) whose [payload](/docs/glossary/payload/) is a cell of sample and context: `[sample context]`.
 
@@ -224,11 +224,11 @@ Battery      .
 
 It follows from this definition that a [gate](/docs/glossary/gate/) is a special case of a [door](/docs/glossary/door/).  A [gate](/docs/glossary/gate/) is a [door](/docs/glossary/door/) with exactly one [arm](/docs/glossary/arm/), named `$`.
 
-Gates are useful for defining functions.  But there are many-armed [door](/docs/glossary/door/)s as well.  How are they used?  Doors are quite useful data structures.  In Chapter 2 of the Hoon tutorial series you'll learn how to use [door](/docs/glossary/door/)s to implement state machines, where the sample stores the relevant state data.  For now let's talk about how to use [door](/docs/glossary/door/)s for simpler purposes.
+Gates are useful for defining functions.  But there are many-armed [doors](/docs/glossary/door/) as well.  How are they used?  Doors are quite useful data structures.  In Chapter 2 of the Hoon tutorial series you'll learn how to use [doors](/docs/glossary/door/) to implement state machines, where the sample stores the relevant state data.  For now let's talk about how to use [doors](/docs/glossary/door/) for simpler purposes.
 
 ### An Example Door
 
-Let's write an example [door](/docs/glossary/door/) in order to illustrate its features.  Each of the [arm](/docs/glossary/arm/)s in the [door](/docs/glossary/door/) will define a simple [gate](/docs/glossary/gate/).  Let's bind the [door](/docs/glossary/door/) to `c` as we did with the last [core](/docs/glossary/core/).  To make a [door](/docs/glossary/door/) we use the `|_` rune:
+Let's write an example [door](/docs/glossary/door/) in order to illustrate its features.  Each of the [arms](/docs/glossary/arm/) in the [door](/docs/glossary/door/) will define a simple [gate](/docs/glossary/gate/).  Let's bind the [door](/docs/glossary/door/) to `c` as we did with the last [core](/docs/glossary/core/).  To make a [door](/docs/glossary/door/) we use the `|_` rune:
 
 ```
 > =c |_  b=@
@@ -240,19 +240,19 @@ Let's write an example [door](/docs/glossary/door/) in order to illustrate its f
 
 If you type this into the dojo manually, make sure you attend carefully to the spacing.  Feel free to cut and paste the code, if desired.
 
-Before getting into what these [arm](/docs/glossary/arm/)s do, let's cover how the `|_` rune works in general.
+Before getting into what these [arms](/docs/glossary/arm/) do, let's cover how the `|_` rune works in general.
 
 #### The `|_` Rune
 
 The `|_` rune for making a [door](/docs/glossary/door/) works exactly like the `|%` rune for making a [core](/docs/glossary/core/), except it takes one additional subexpression.
 
-The first subexpression after the `|_` rune defines the [door](/docs/glossary/door/)'s sample.  (This is the subexpression the `|%` rune lacks.)  Following that are a series of `++` runes, each of which defines an [arm](/docs/glossary/arm/) of the [door](/docs/glossary/door/).  Finally, the expression is terminated with a `--` rune.
+The first subexpression after the `|_` rune defines the [door's](/docs/glossary/door/) sample.  (This is the subexpression the `|%` rune lacks.)  Following that are a series of `++` runes, each of which defines an [arm](/docs/glossary/arm/) of the [door](/docs/glossary/door/).  Finally, the expression is terminated with a `--` rune.
 
 #### Back to the Example
 
 For the [door](/docs/glossary/door/) defined above, `c`, the sample is defined as an [atom](/docs/glossary/atom/), `@`, and given the face `b`.  The `plus` [arm](/docs/glossary/arm/) defines a [gate](/docs/glossary/gate/) that takes a single [atom](/docs/glossary/atom/) as its argument, `a`, and which returns the sum of `a` and `b`.  The `times` [arm](/docs/glossary/arm/) defines a [gate](/docs/glossary/gate/) that takes a single [atom](/docs/glossary/atom/), `a`, and returns `a` times `b`.  The `greater` [arm](/docs/glossary/arm/) defines a [gate](/docs/glossary/gate/) that takes a single [atom](/docs/glossary/atom/), `a`, and if `a` is greater than `b` returns `%.y`; otherwise `%.n`.
 
-Let's try out the [arm](/docs/glossary/arm/)s of `c` with ordinary function calls:
+Let's try out the [arms](/docs/glossary/arm/) of `c` with ordinary function calls:
 
 ```
 > (plus:c 10)
@@ -272,7 +272,7 @@ This works, but the results are not exciting.  Passing `10` to the `plus` [gate]
 b=0
 ```
 
-Having confirmed that `b` is `0`, let's mutate the `c` sample and then call its [arm](/docs/glossary/arm/)s:
+Having confirmed that `b` is `0`, let's mutate the `c` sample and then call its [arms](/docs/glossary/arm/):
 
 ```
 > (plus:c(b 7) 10)
@@ -319,7 +319,7 @@ There's a more direct way of passing arguments for both the [door](/docs/glossar
 %.n
 ```
 
-Readers with some mathematical background may notice that `~( )` expressions allow us to [curry](https://en.wikipedia.org/wiki/Currying).  For each of the [arm](/docs/glossary/arm/)s above, the `~( )` expression is used to create different versions of the same [gate](/docs/glossary/gate/):
+Readers with some mathematical background may notice that `~( )` expressions allow us to [curry](https://en.wikipedia.org/wiki/Currying).  For each of the [arms](/docs/glossary/arm/) above, the `~( )` expression is used to create different versions of the same [gate](/docs/glossary/gate/):
 
 ```
 > ~(plus c 7)
@@ -371,16 +371,16 @@ Here the type of `b` is inferred to be `@` based on the example value `7`, simil
 
 Back in lesson 1.2 you were introduced to [atom](/docs/glossary/atom/) auras, which are metadata used by Hoon that defines how that [atom](/docs/glossary/atom/) is interpreted and pretty-printed.  Atoms are unsigned integers, but sometimes programmers want to work with fractions and decimal points.  Accordingly, there are auras for [floating point numbers](https://en.wikipedia.org/wiki/Floating-point_arithmetic).  Let's work with the aura for doing [single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) floating point arithmetic: `@rs`.
 
-The `@rs` has its own literal syntax.  These [atom](/docs/glossary/atom/)s are represented as a `.` followed by digits, and possibly another `.` (for the decimal point) and more digits.  For example, the float 3.14159 can be represented as a single-precision (32 bit) float with the literal expression `.3.14159`.
+The `@rs` has its own literal syntax.  These [atoms](/docs/glossary/atom/) are represented as a `.` followed by digits, and possibly another `.` (for the decimal point) and more digits.  For example, the float 3.14159 can be represented as a single-precision (32 bit) float with the literal expression `.3.14159`.
 
-You can't use the ordinary `add` function to get the correct sum of two `@rs` [atom](/docs/glossary/atom/)s:
+You can't use the ordinary `add` function to get the correct sum of two `@rs` [atoms](/docs/glossary/atom/):
 
 ```
 > (add .3.14159 .2.22222)
 2.153.203.882
 ```
 
-That's because the `add` [gate](/docs/glossary/gate/) is designed for use with raw [atom](/docs/glossary/atom/)s, not floating point values.  You can add two `@rs` [atom](/docs/glossary/atom/)s as follows:
+That's because the `add` [gate](/docs/glossary/gate/) is designed for use with raw [atoms](/docs/glossary/atom/), not floating point values.  You can add two `@rs` [atoms](/docs/glossary/atom/) as follows:
 
 ```
 > (add:rs .3.14159 .2.22222)
@@ -394,7 +394,7 @@ It turns out that the `rs` in `add:rs` is a Hoon standard library [arm](/docs/gl
 <21|fan {r/?($n $u $d $z) <51.zox 93.pqh 74.dbd 1.qct $141>}>
 ```
 
-The [battery](/docs/glossary/battery/) of this [core](/docs/glossary/core/), pretty-printed as `21|fan`, has 21 [arm](/docs/glossary/arm/)s that define functions specifically for `@rs` [atom](/docs/glossary/atom/)s.  One of these [arm](/docs/glossary/arm/)s is named `add`; it's a different `add` from the standard one we've been using for vanilla [atom](/docs/glossary/atom/)s.  So when you invoke `add:rs` instead of just `add` in a function call, (1) the `rs` [door](/docs/glossary/door/) is produced, and then (2) the name search for `add` resolves to the special `add` [arm](/docs/glossary/arm/) in `rs`.  This produces the [gate](/docs/glossary/gate/) for adding `@rs` [atom](/docs/glossary/atom/)s:
+The [battery](/docs/glossary/battery/) of this [core](/docs/glossary/core/), pretty-printed as `21|fan`, has 21 [arms](/docs/glossary/arm/) that define functions specifically for `@rs` [atoms](/docs/glossary/atom/).  One of these [arms](/docs/glossary/arm/) is named `add`; it's a different `add` from the standard one we've been using for vanilla [atoms](/docs/glossary/atom/).  So when you invoke `add:rs` instead of just `add` in a function call, (1) the `rs` [door](/docs/glossary/door/) is produced, and then (2) the name search for `add` resolves to the special `add` [arm](/docs/glossary/arm/) in `rs`.  This produces the [gate](/docs/glossary/gate/) for adding `@rs` [atoms](/docs/glossary/atom/):
 
 ```
 > add:rs
@@ -423,7 +423,7 @@ Let's evaluate the `add` [arm](/docs/glossary/arm/) of `rs`, also modifying the 
 >
 ```
 
-This is the [gate](/docs/glossary/gate/) produced by `add`, and you can see that its sample is a pair of `@rs` [atom](/docs/glossary/atom/)s.  But if you look in the context you'll see the `rs` [door](/docs/glossary/door/).  Let's look in the sample of that [core](/docs/glossary/core/) to make sure that it changed to `%u`.  We'll use the wing `+6.+7` to look at the sample of the [gate](/docs/glossary/gate/)'s context:
+This is the [gate](/docs/glossary/gate/) produced by `add`, and you can see that its sample is a pair of `@rs` [atoms](/docs/glossary/atom/).  But if you look in the context you'll see the `rs` [door](/docs/glossary/door/).  Let's look in the sample of that [core](/docs/glossary/core/) to make sure that it changed to `%u`.  We'll use the wing `+6.+7` to look at the sample of the [gate's](/docs/glossary/gate/) context:
 
 ```
 > +6.+7:~(add rs %u)

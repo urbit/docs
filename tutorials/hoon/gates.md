@@ -12,9 +12,9 @@ The word 'function' is used in various ways, but let's start by talking about th
 
 That output value depends solely upon input value(s) is an important property of functions.  This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and we make use of it throughout the Urbit software stack.
 
-Functions are implemented in Hoon with a special kind of [core](/docs/glossary/core/) called a **gate**.  In this lesson you'll learn what a [gate](/docs/glossary/gate/) is and how a [gate](/docs/glossary/gate/) represents a function.  Along the way you'll build some example [gate](/docs/glossary/gate/)s of your own.
+Functions are implemented in Hoon with a special kind of [core](/docs/glossary/core/) called a **gate**.  In this lesson you'll learn what a [gate](/docs/glossary/gate/) is and how a [gate](/docs/glossary/gate/) represents a function.  Along the way you'll build some example [gates](/docs/glossary/gate/) of your own.
 
-You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with [gate](/docs/glossary/gate/)s, and you call them from the dojo in the following way:
+You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with [gates](/docs/glossary/gate/), and you call them from the dojo in the following way:
 
 ```
 > (add 2 3)
@@ -44,7 +44,7 @@ As a tree, a [gate](/docs/glossary/gate/) looks like the following:
      Sample   Context
 ```
 
-Like all [arm](/docs/glossary/arm/)s, `$` is computed with its parent [core](/docs/glossary/core/) as the subject.  When `$` is computed, the resulting value is called the 'product' of the [gate](/docs/glossary/gate/).  No other data is used to calculate the product other than the data in the [gate](/docs/glossary/gate/) itself.
+Like all [arms](/docs/glossary/arm/), `$` is computed with its parent [core](/docs/glossary/core/) as the subject.  When `$` is computed, the resulting value is called the 'product' of the [gate](/docs/glossary/gate/).  No other data is used to calculate the product other than the data in the [gate](/docs/glossary/gate/) itself.
 
 ## Creating Your First Gate
 
@@ -141,7 +141,7 @@ We see now that the sample of `inc` is the value `0`, and has `a` as a face.  Th
 1
 ```
 
-The placeholder value is sometimes called a **bunt** value.  The bunt value is determined by the input type; for [atom](/docs/glossary/atom/)s, `@`, the bunt value is `0`.
+The placeholder value is sometimes called a **bunt** value.  The bunt value is determined by the input type; for [atoms](/docs/glossary/atom/), `@`, the bunt value is `0`.
 
 The face value of `a` comes from the way we defined the [gate](/docs/glossary/gate/) above: `|=(a=@ (add 1 a))`.  It was so we could use `a` to refer to the sample to generate the product with `(add 1 a)`.
 

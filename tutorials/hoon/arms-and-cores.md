@@ -6,17 +6,17 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/arms-and-cores/"]
 +++
 The Hoon subject is a [noun](/docs/glossary/noun/).  Each fragment of this [noun](/docs/glossary/noun/) is either an [arm](/docs/glossary/arm/) or a leg.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an [arm](/docs/glossary/arm/) is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we must also introduce an important Hoon data structure: a 'core'.
 
-After [arm](/docs/glossary/arm/)s are defined and explained we review wing expressions, this time focusing on wing resolution to [arm](/docs/glossary/arm/)s.
+After [arms](/docs/glossary/arm/) are defined and explained we review wing expressions, this time focusing on wing resolution to [arms](/docs/glossary/arm/).
 
 ## A Preliminary Explanation
 
-Arms and legs are limbs of the subject, i.e., [noun](/docs/glossary/noun/) fragments of the subject.  In the last lesson we said that legs are for data and [arm](/docs/glossary/arm/)s are for computations.  But what _specifically_ is an [arm](/docs/glossary/arm/), and how is it used for computation?  Let's begin with a preliminary explanation that will be refined later in the lesson.
+Arms and legs are limbs of the subject, i.e., [noun](/docs/glossary/noun/) fragments of the subject.  In the last lesson we said that legs are for data and [arms](/docs/glossary/arm/) are for computations.  But what _specifically_ is an [arm](/docs/glossary/arm/), and how is it used for computation?  Let's begin with a preliminary explanation that will be refined later in the lesson.
 
 An **arm** is some expression of Hoon encoded as a [noun](/docs/glossary/noun/).  (By 'encoded as a [noun](/docs/glossary/noun/)' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an [arm](/docs/glossary/arm/) as raw data, even though technically you can -- it's just a [noun](/docs/glossary/noun/) like any other.  You virtually always want to think of an [arm](/docs/glossary/arm/) simply as a way of running some Hoon code.
 
 Every expression of Hoon is evaluated relative to a subject.  What subject is the [arm](/docs/glossary/arm/) to be evaluated against?  Answer: the parent [core](/docs/glossary/core/) of that [arm](/docs/glossary/arm/).
 
-So in order to understand fully what an [arm](/docs/glossary/arm/) is, you must understand what a [core](/docs/glossary/core/) is.  Briefly, a **core** is a cell of `[battery [payload](/docs/glossary/payload/)]`.  The **battery** is a collection of one or more [arm](/docs/glossary/arm/)s, and the **payload** is the data needed by the [arm](/docs/glossary/arm/)s to evaluate correctly.  (The [battery](/docs/glossary/battery/) is code and the [payload](/docs/glossary/payload/) is data for that code.)  A given [core](/docs/glossary/core/) is the **parent [core](/docs/glossary/core/)** of all of the [arm](/docs/glossary/arm/)s in its [battery](/docs/glossary/battery/).
+So in order to understand fully what an [arm](/docs/glossary/arm/) is, you must understand what a [core](/docs/glossary/core/) is.  Briefly, a **core** is a cell of `[battery payload]`.  The **battery** is a collection of one or more [arms](/docs/glossary/arm/), and the **payload** is the data needed by the [arms](/docs/glossary/arm/) to evaluate correctly.  (The [battery](/docs/glossary/battery/) is code and the [payload](/docs/glossary/payload/) is data for that code.)  A given [core](/docs/glossary/core/) is the **parent [core](/docs/glossary/core/)** of all of the [arms](/docs/glossary/arm/) in its [battery](/docs/glossary/battery/).
 
 ## Your First Core
 
@@ -33,9 +33,9 @@ Use the following to bind `c` to a [core](/docs/glossary/core/).  It begins with
   --
 ```
 
-This [core](/docs/glossary/core/) has two [arm](/docs/glossary/arm/)s, `twenty` and `double-twenty`.  Each [arm](/docs/glossary/arm/) definition begins with `++` followed by the name of that [arm](/docs/glossary/arm/).  After that is the Hoon expression associated with that [arm](/docs/glossary/arm/).  The first expression is the trivial `20` (guess what that does?), and the second is the slightly more interesting `(mul 2 twenty)`.
+This [core](/docs/glossary/core/) has two [arms](/docs/glossary/arm/), `twenty` and `double-twenty`.  Each [arm](/docs/glossary/arm/) definition begins with `++` followed by the name of that [arm](/docs/glossary/arm/).  After that is the Hoon expression associated with that [arm](/docs/glossary/arm/).  The first expression is the trivial `20` (guess what that does?), and the second is the slightly more interesting `(mul 2 twenty)`.
 
-You can run these [arm](/docs/glossary/arm/)s using `twenty.c` and `double-twenty.c`:
+You can run these [arms](/docs/glossary/arm/) using `twenty.c` and `double-twenty.c`:
 
 ```
 > twenty.c
@@ -45,13 +45,13 @@ You can run these [arm](/docs/glossary/arm/)s using `twenty.c` and `double-twent
 40
 ```
 
-Notice that the second [arm](/docs/glossary/arm/), `double-twenty`, makes use of the first [arm](/docs/glossary/arm/), `twenty`.  It's able to do so because each [arm](/docs/glossary/arm/) is evaluated with its parent [core](/docs/glossary/core/) as the subject.  Hence, each [arm](/docs/glossary/arm/) is able to use any other [arm](/docs/glossary/arm/) inside the parent [core](/docs/glossary/core/)'s [battery](/docs/glossary/battery/).
+Notice that the second [arm](/docs/glossary/arm/), `double-twenty`, makes use of the first [arm](/docs/glossary/arm/), `twenty`.  It's able to do so because each [arm](/docs/glossary/arm/) is evaluated with its parent [core](/docs/glossary/core/) as the subject.  Hence, each [arm](/docs/glossary/arm/) is able to use any other [arm](/docs/glossary/arm/) inside the parent [core's](/docs/glossary/core/) [battery](/docs/glossary/battery/).
 
 ### `|%` Expressions
 
 Before moving on let's talk about what each part of the `|%` expression is for.
 
-The `|%` indicates the beginning of an expression that produces a [core](/docs/glossary/core/).  The `++` rune is used to define each of the [arm](/docs/glossary/arm/)s of the [core](/docs/glossary/core/)'s [battery](/docs/glossary/battery/), and is followed by both an [arm](/docs/glossary/arm/) name and a Hoon expression.  The `--` rune is used to indicate that there are no more [arm](/docs/glossary/arm/)s to be defined, and indicates the end of the expression.
+The `|%` indicates the beginning of an expression that produces a [core](/docs/glossary/core/).  The `++` rune is used to define each of the [arms](/docs/glossary/arm/) of the [core's](/docs/glossary/core/) [battery](/docs/glossary/battery/), and is followed by both an [arm](/docs/glossary/arm/) name and a Hoon expression.  The `--` rune is used to indicate that there are no more [arms](/docs/glossary/arm/) to be defined, and indicates the end of the expression.
 
 The [battery](/docs/glossary/battery/) of the [core](/docs/glossary/core/) to be produced is explicitly defined by the `|%` expression.  The [payload](/docs/glossary/payload/) of the [core](/docs/glossary/core/) to be produced is implicitly defined as the subject of the `|%` expression.  Let's unbind `c` to keep the subject clean:
 
@@ -69,7 +69,7 @@ A [core](/docs/glossary/core/):  [battery [payload](/docs/glossary/payload/)]
 
 ### Battery
 
-A [battery](/docs/glossary/battery/) is a collection of [arm](/docs/glossary/arm/)s.  An [arm](/docs/glossary/arm/) is an encoded Hoon expression, to be used for running computations.  Each [arm](/docs/glossary/arm/) has a name.  Arm naming rules are the same kebab-case rules that faces have.  When an [arm](/docs/glossary/arm/) is evaluated, it uses its parent [core](/docs/glossary/core/) as the subject.
+A [battery](/docs/glossary/battery/) is a collection of [arms](/docs/glossary/arm/).  An [arm](/docs/glossary/arm/) is an encoded Hoon expression, to be used for running computations.  Each [arm](/docs/glossary/arm/) has a name.  Arm naming rules are the same kebab-case rules that faces have.  When an [arm](/docs/glossary/arm/) is evaluated, it uses its parent [core](/docs/glossary/core/) as the subject.
 
 That's all you really need to know about the [battery](/docs/glossary/battery/).  You can become a master Hoon programmer if you know what is stated above but otherwise think of the [battery](/docs/glossary/battery/) as a black box.
 
@@ -77,19 +77,19 @@ If you'd really like to know, technically a [battery](/docs/glossary/battery/) i
 
 ### Payload
 
-The [payload](/docs/glossary/payload/) contains all the data needed for running the [arm](/docs/glossary/arm/)s in the [battery](/docs/glossary/battery/) correctly.  In principle, the [payload](/docs/glossary/payload/) of a [core](/docs/glossary/core/) can have data arranged in any arbitrary configuration.  In practice, the [payload](/docs/glossary/payload/) often has a predictable structure of its own.
+The [payload](/docs/glossary/payload/) contains all the data needed for running the [arms](/docs/glossary/arm/) in the [battery](/docs/glossary/battery/) correctly.  In principle, the [payload](/docs/glossary/payload/) of a [core](/docs/glossary/core/) can have data arranged in any arbitrary configuration.  In practice, the [payload](/docs/glossary/payload/) often has a predictable structure of its own.
 
-The [payload](/docs/glossary/payload/) may include other [core](/docs/glossary/core/)s.  Consequently, a [core](/docs/glossary/core/)'s [payload](/docs/glossary/payload/) can include other 'code' -- [core](/docs/glossary/core/)s in the [payload](/docs/glossary/payload/) have their own [battery](/docs/glossary/battery/) [arm](/docs/glossary/arm/)s.
+The [payload](/docs/glossary/payload/) may include other [cores](/docs/glossary/core/).  Consequently, a [core](/docs/glossary/core/)'s [payload](/docs/glossary/payload/) can include other 'code' -- [cores](/docs/glossary/core/) in the [payload](/docs/glossary/payload/) have their own [battery](/docs/glossary/battery/) [arms](/docs/glossary/arm/).
 
 ### Subject Organization for Arm Computation
 
-Why must an [arm](/docs/glossary/arm/) have its parent [core](/docs/glossary/core/) as the subject, when it's computed?  As stated previously, the [payload](/docs/glossary/payload/) of a [core](/docs/glossary/core/) contains all the data needed for computing the [arm](/docs/glossary/arm/)s of that [core](/docs/glossary/core/).  Arms can only access data in the subject.  By requiring that the parent [core](/docs/glossary/core/) be the subject we guarantee that each [arm](/docs/glossary/arm/) has the appropriate data available to it.  The tail of its subject contains the [payload](/docs/glossary/payload/) and thus all the values therein.  The head of the subject is the [battery](/docs/glossary/battery/), which allows for making reference to sibling [arm](/docs/glossary/arm/)s of that same [core](/docs/glossary/core/).
+Why must an [arm](/docs/glossary/arm/) have its parent [core](/docs/glossary/core/) as the subject, when it's computed?  As stated previously, the [payload](/docs/glossary/payload/) of a [core](/docs/glossary/core/) contains all the data needed for computing the [arms](/docs/glossary/arm/) of that [core](/docs/glossary/core/).  Arms can only access data in the subject.  By requiring that the parent [core](/docs/glossary/core/) be the subject we guarantee that each [arm](/docs/glossary/arm/) has the appropriate data available to it.  The tail of its subject contains the [payload](/docs/glossary/payload/) and thus all the values therein.  The head of the subject is the [battery](/docs/glossary/battery/), which allows for making reference to sibling [arms](/docs/glossary/arm/) of that same [core](/docs/glossary/core/).
 
 Let's look at an example in which the [payload](/docs/glossary/payload/) information is needed for correct [arm](/docs/glossary/arm/) evaluation.
 
 ## Another Example Core
 
-First let's use the dojo to bind the face `a` to the value `12`, and the face `b` to the value `[22 24]`.  These values will be used in the [arm](/docs/glossary/arm/)s of the [core](/docs/glossary/core/) we're going to make.
+First let's use the dojo to bind the face `a` to the value `12`, and the face `b` to the value `[22 24]`.  These values will be used in the [arms](/docs/glossary/arm/) of the [core](/docs/glossary/core/) we're going to make.
 
 ```
 > =a 12
@@ -110,7 +110,7 @@ Now use the following multi-line expression to bind `c` to a [core](/docs/glossa
 
 Note: binding `c` to the [core](/docs/glossary/core/) created by the `|%` expression will fail unless you have already bound `a` and `b` to the relevant values, as we did above.  Our having already bound them is what lets us use them in the `|%` expression.
 
-The `|%` expression above creates a [core](/docs/glossary/core/) with four [arm](/docs/glossary/arm/)s.  The first, named `two`, evaluates to the constant `2`.  The second [arm](/docs/glossary/arm/), `inc`, adds `1` to `a`.  `double` returns double the value of `a`, and `sum` returns the sum of the two [atom](/docs/glossary/atom/)s in `b`.  The computations defined by these [arm](/docs/glossary/arm/)s are pretty simple (and in the case of `two`, trivial), but a good starting point for learning about [core](/docs/glossary/core/)s.
+The `|%` expression above creates a [core](/docs/glossary/core/) with four [arms](/docs/glossary/arm/).  The first, named `two`, evaluates to the constant `2`.  The second [arm](/docs/glossary/arm/), `inc`, adds `1` to `a`.  `double` returns double the value of `a`, and `sum` returns the sum of the two [atoms](/docs/glossary/atom/) in `b`.  The computations defined by these [arms](/docs/glossary/arm/) are pretty simple (and in the case of `two`, trivial), but a good starting point for learning about [cores](/docs/glossary/core/).
 
 Let's run the [arm](/docs/glossary/arm/) names in the dojo:
 
@@ -171,13 +171,13 @@ This means, among other things, that we should be able to unbind `a` and `b` in 
 46
 ```
 
-This works because `a` and `b` were copied into the [core](/docs/glossary/core/) [payload](/docs/glossary/payload/) when the [core](/docs/glossary/core/) was initially created.  Unbinding them in the dojo subject doesn't matter to the [arm](/docs/glossary/arm/)s in `c`, which only look in `c`'s [payload](/docs/glossary/payload/) anyway.
+This works because `a` and `b` were copied into the [core](/docs/glossary/core/) [payload](/docs/glossary/payload/) when the [core](/docs/glossary/core/) was initially created.  Unbinding them in the dojo subject doesn't matter to the [arms](/docs/glossary/arm/) in `c`, which only look in `c`'s [payload](/docs/glossary/payload/) anyway.
 
-The [payload](/docs/glossary/payload/) stores all the data needed to compute the [arm](/docs/glossary/arm/)s correctly.  That also includes `add` and `mul`, which themselves are [arm](/docs/glossary/arm/)s in a [core](/docs/glossary/core/) of the Hoon standard library.  This library [core](/docs/glossary/core/) is available as part of the default dojo subject.
+The [payload](/docs/glossary/payload/) stores all the data needed to compute the [arms](/docs/glossary/arm/) correctly.  That also includes `add` and `mul`, which themselves are [arms](/docs/glossary/arm/) in a [core](/docs/glossary/core/) of the Hoon standard library.  This library [core](/docs/glossary/core/) is available as part of the default dojo subject.
 
 ## Wings that Resolve to Arms
 
-To reinforce your newfound understanding of [arm](/docs/glossary/arm/)s and [core](/docs/glossary/core/)s, let's go over the various ways that wings resolve to [arm](/docs/glossary/arm/)s in [core](/docs/glossary/core/)s.  Remember that face resolution to a leg of the subject produces the leg value unchanged, but resolution to an [arm](/docs/glossary/arm/) produces the _computed_ value of that [arm](/docs/glossary/arm/).
+To reinforce your newfound understanding of [arms](/docs/glossary/arm/) and [cores](/docs/glossary/core/), let's go over the various ways that wings resolve to [arms](/docs/glossary/arm/) in [cores](/docs/glossary/core/).  Remember that face resolution to a leg of the subject produces the leg value unchanged, but resolution to an [arm](/docs/glossary/arm/) produces the _computed_ value of that [arm](/docs/glossary/arm/).
 
 ### Address-Based Wings
 
@@ -209,7 +209,7 @@ Let's use `-.c` to look at the head of `c`, i.e., the [battery](/docs/glossary/b
 ]
 ```
 
-The result is a tree of uncomputed Nock formulas.  But you virtually never need to see or use this raw data.  Generally speaking, don't use address-based expressions to look at [arm](/docs/glossary/arm/)s for any reason other than to satisfy your curiosity (and even then only if you've learned or plan to learn Nock).  Use name-based expressions instead.
+The result is a tree of uncomputed Nock formulas.  But you virtually never need to see or use this raw data.  Generally speaking, don't use address-based expressions to look at [arms](/docs/glossary/arm/) for any reason other than to satisfy your curiosity (and even then only if you've learned or plan to learn Nock).  Use name-based expressions instead.
 
 ### Name-based Wings
 
@@ -224,7 +224,7 @@ To get the [arm](/docs/glossary/arm/) of a [core](/docs/glossary/core/) to compu
   --
 ```
 
-We evaluated the [arm](/docs/glossary/arm/)s of `c` previously:
+We evaluated the [arms](/docs/glossary/arm/) of `c` previously:
 
 ```
 > two.c
@@ -240,7 +240,7 @@ We evaluated the [arm](/docs/glossary/arm/)s of `c` previously:
 46
 ```
 
-You can also evaluate the [arm](/docs/glossary/arm/)s of `c` using `:` instead:
+You can also evaluate the [arms](/docs/glossary/arm/) of `c` using `:` instead:
 
 ```
 > two:c
@@ -363,7 +363,7 @@ We can make multiple changes to `c` at once:
 
 ### Arms on the Search Path
 
-A wing is a search path into the subject.  We've looked at some examples of wings that resolve to [arm](/docs/glossary/arm/)s; e.g., `double.c`, which resolves to `double` in `c` in the subject.  In the latter example the [arm](/docs/glossary/arm/) `double` is the final limb in the resolution path.  What if an [arm](/docs/glossary/arm/) name in a wing isn't the final limb?  What if it's elsewhere in the wing path?
+A wing is a search path into the subject.  We've looked at some examples of wings that resolve to [arms](/docs/glossary/arm/); e.g., `double.c`, which resolves to `double` in `c` in the subject.  In the latter example the [arm](/docs/glossary/arm/) `double` is the final limb in the resolution path.  What if an [arm](/docs/glossary/arm/) name in a wing isn't the final limb?  What if it's elsewhere in the wing path?
 
 Normally we might read a wing expression like `two.double.c` as '`two` in `double` in `c`'.  Does that make sense when `double` is itself an [arm](/docs/glossary/arm/)?  Try it:
 
@@ -399,7 +399,7 @@ Recall that using `.` by itself returns the whole subject.  With that in mind, t
 
 Do you have an answer?  If not, consider going back and trying to figure it out before moving on.
 
-You may read `..arm` as '`.` of the parent [core](/docs/glossary/core/) of `arm`'.  This amounts to just the parent [core](/docs/glossary/core/) of `arm`.  Let's try this out with the [arm](/docs/glossary/arm/)s of `c`:
+You may read `..arm` as '`.` of the parent [core](/docs/glossary/core/) of `arm`'.  This amounts to just the parent [core](/docs/glossary/core/) of `arm`.  Let's try this out with the [arms](/docs/glossary/arm/) of `c`:
 
 ```
 > ..inc:c
@@ -428,7 +428,7 @@ For an example of this, consider the `add` [arm](/docs/glossary/arm/) of the Hoo
 <74.dbd 1.qct $141>
 ```
 
-Here you see a [core](/docs/glossary/core/) with a [battery](/docs/glossary/battery/) of 74 [arm](/docs/glossary/arm/)s (!), and whose [payload](/docs/glossary/payload/) is another [core](/docs/glossary/core/) with one [arm](/docs/glossary/arm/).
+Here you see a [core](/docs/glossary/core/) with a [battery](/docs/glossary/battery/) of 74 [arms](/docs/glossary/arm/) (!), and whose [payload](/docs/glossary/payload/) is another [core](/docs/glossary/core/) with one [arm](/docs/glossary/arm/).
 
 
 ### Evaluating an Arm Against a Modified Core
@@ -490,7 +490,7 @@ Again, being able to read Nock is not essential to understanding Hoon.
 
 ### Core Nesting
 
-Let's take a quick look at how [core](/docs/glossary/core/)s can be combined with `=>` to build up larger structures.  `=>  p=hoon  q=hoon` allows you to take the product of `q` with the product of `p` taken as the subject.
+Let's take a quick look at how [cores](/docs/glossary/core/) can be combined with `=>` to build up larger structures.  `=>  p=hoon  q=hoon` allows you to take the product of `q` with the product of `p` taken as the subject.
 
 ```hoon
 =>
@@ -553,7 +553,7 @@ and so on, down to
   $@(~ [~ u=item])
 --
 ```
-This [core](/docs/glossary/core/) contains the [arm](/docs/glossary/arm/)s in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 [arm](/docs/glossary/arm/)s in the [core](/docs/glossary/core/) from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `add`.
+This [core](/docs/glossary/core/) contains the [arms](/docs/glossary/arm/) in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 [arms](/docs/glossary/arm/) in the [core](/docs/glossary/core/) from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `add`.
 ```
 > ..add
 <41.mac 1.ane $141>
@@ -580,7 +580,7 @@ Next, [section two](@/docs/reference/library/2a.md) starts:
   ?~  a  ~
   (b u.a)
 ```
-If you counted the [arm](/docs/glossary/arm/)s in this [core](/docs/glossary/core/) by hand, you'll come up with 126 [arm](/docs/glossary/arm/)s. This is also reflected in the dojo:
+If you counted the [arms](/docs/glossary/arm/) in this [core](/docs/glossary/core/) by hand, you'll come up with 126 [arms](/docs/glossary/arm/). This is also reflected in the dojo:
 ```
 > ..biff
 <126.xjf 41.mac 1.ane $141>
@@ -603,10 +603,10 @@ Lastly, let's check the subject of the last [arm](/docs/glossary/arm/) in `hoon.
 > ..pi-tell
 <92.nnn 247.tye 51.mvt 126.xjf 41.mac 1.ane $141>
 ```
-This confirms for us, then, that `hoon.hoon` consists of six nested [core](/docs/glossary/core/)s, with the `hoon-version` [core](/docs/glossary/core/) at the top.
+This confirms for us, then, that `hoon.hoon` consists of six nested [cores](/docs/glossary/core/), with the `hoon-version` [core](/docs/glossary/core/) at the top.
 
 #### Exercise 1.7a
-Pick a couple of [arm](/docs/glossary/arm/)s in `hoon.hoon` and check to make sure that they are only referenced in the layer they exist in or a deeper layer. This is easily accomplished with `Ctrl-F`.
+Pick a couple of [arms](/docs/glossary/arm/) in `hoon.hoon` and check to make sure that they are only referenced in the layer they exist in or a deeper layer. This is easily accomplished with `Ctrl-F`.
 
 ## Casts
 
@@ -614,7 +614,7 @@ Once again we remind you it's a good idea when writing your code to cast your da
 
 ## Summary
 
-At this point you should have a pretty good understanding of what an [arm](/docs/glossary/arm/) is, and how wing resolution to an [arm](/docs/glossary/arm/) works.  But so far the [arm](/docs/glossary/arm/)s you've created have been fairly simple.  In the next lesson you'll learn about Hoon functions, and how to create your own.
+At this point you should have a pretty good understanding of what an [arm](/docs/glossary/arm/) is, and how wing resolution to an [arm](/docs/glossary/arm/) works.  But so far the [arms](/docs/glossary/arm/) you've created have been fairly simple.  In the next lesson you'll learn about Hoon functions, and how to create your own.
 
 You can now unbind `c` in the dojo -- this will help to keep your dojo subject tidy:
 

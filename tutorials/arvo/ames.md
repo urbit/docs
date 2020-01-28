@@ -113,7 +113,7 @@ The actual line of code looks intimidating, but it's really not all that
 bad. Working from the inside out, the call to `++um` sets up our
 domestic server, and the call to `++ho` sets up our knowledge about the
 neighbor we're sending to. From the outside, `++zork` and `++zank` just
-apply the changes made to our `++um` and `++am` [core](/docs/glossary/core/)s, respectively. If
+apply the changes made to our `++um` and `++am` [cores](/docs/glossary/core/), respectively. If
 you're familiar with the common idiom of `++abet`, that's all this is.
 The code predates the widespread usage of that name.
 
@@ -204,7 +204,7 @@ actual, 1KB packets.
 ```
 
 For organizational purposes, `++zuul` constructs an internal [core](/docs/glossary/core/) with
-three [arm](/docs/glossary/arm/)s. `++wasp` encodes the meal into an [atom](/docs/glossary/atom/) with no encryption.
+three [arms](/docs/glossary/arm/). `++wasp` encodes the meal into an [atom](/docs/glossary/atom/) with no encryption.
 `++wisp` encodes a meal with possible encryption (else it simply calls
 `++wasp`). `++weft` takes the result of `++wisp` and splits it into
 actual packets.
@@ -750,7 +750,7 @@ our pier, then we drop the packet.
 If we've gotten this far, then we wish to process the packet. Recall
 that `++ho` and `++um` set up the domestic server and foreign client
 cores, respectively, and that `++zork` and `++zank` resolve any changes
-to these [core](/docs/glossary/core/)s.
+to these [cores](/docs/glossary/core/).
 
 The new stuff here, then, is the `++la` [core](/docs/glossary/core/) and the `++chew` [arm](/docs/glossary/arm/). The
 `++la` sets up a [core](/docs/glossary/core/) for this particular packet, containing the current
@@ -926,7 +926,7 @@ investigation.
                   (emir (wist:zid now xong:zid [~ lyn] r.fud))
 ```
 
-Forwarding is the simplest case, since we've seen all the [arm](/docs/glossary/arm/)s before,
+Forwarding is the simplest case, since we've seen all the [arms](/docs/glossary/arm/) before,
 except perhaps `++emit` and `++emir`, which simply take a boon or list
 of boons respectively and queue them up to be handled when the [core](/docs/glossary/core/)
 resolves. If we're told to forward a packet to ourselves, then we emit a
@@ -1398,7 +1398,7 @@ it. We call `++bock` to perform the ack by sequence number. We call
 `++harv` to harvest the packet queue, sending any messages that are now
 able to be sent.
 
-In `++bock`, there are three [arm](/docs/glossary/arm/)s we haven't seen before: `++bine`,
+In `++bock`, there are three [arms](/docs/glossary/arm/) we haven't seen before: `++bine`,
 `+wept`, and `++beet`. We'll describe each of these before we get to
 `++bock`. `++bine` looks scariest.
 
@@ -1756,7 +1756,7 @@ owned by their owners
                 --
 ```
 
-These [arm](/docs/glossary/arm/)s allow us to reconstruct a `++acru:ames` from basic data.
+These [arms](/docs/glossary/arm/) allow us to reconstruct a `++acru:ames` from basic data.
 
 `++pit:nu:acru:ames` constructs a `++acru:ames` from the width of our intended key
 and seed entropy. This is usually used in the initial construction of

@@ -67,9 +67,9 @@ In this code above, we're going to compose two runes using `=<`, which has inver
 --
 ```
 
-We've chosen here to wrap our [door](/docs/glossary/door/) in its own [core](/docs/glossary/core/) to emulate the style of programming that is used when creating libraries. `new-account` is the name of our [door](/docs/glossary/door/). Recall that a [door](/docs/glossary/door/) is a [core](/docs/glossary/core/) with one or more [arm](/docs/glossary/arm/)s that has a sample. Here, our [door](/docs/glossary/door/) has a sample of one `@ud` with the face `balance` and two [arm](/docs/glossary/arm/)s, `deposit` and `withdraw`.
+We've chosen here to wrap our [door](/docs/glossary/door/) in its own [core](/docs/glossary/core/) to emulate the style of programming that is used when creating libraries. `new-account` is the name of our [door](/docs/glossary/door/). Recall that a [door](/docs/glossary/door/) is a [core](/docs/glossary/core/) with one or more [arms](/docs/glossary/arm/) that has a sample. Here, our [door](/docs/glossary/door/) has a sample of one `@ud` with the face `balance` and two [arms](/docs/glossary/arm/), `deposit` and `withdraw`.
 
-Each of these [arm](/docs/glossary/arm/)s produces a [gate](/docs/glossary/gate/) which takes an `@ud` argument. Each of these [gate](/docs/glossary/gate/)s has a similar bit of code inside:
+Each of these [arms](/docs/glossary/arm/) produces a [gate](/docs/glossary/gate/) which takes an `@ud` argument. Each of these [gates](/docs/glossary/gate/) has a similar bit of code inside:
 
 ```hoon
 +>.$(balance (add balance amount))

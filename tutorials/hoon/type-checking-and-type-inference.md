@@ -112,7 +112,7 @@ nest-fail
 
 Whenever an [arm](/docs/glossary/arm/) is evaluated in Hoon it expects to have some version of its parent [core](/docs/glossary/core/) as the subject.  Specifically, a type check is performed to see whether the [arm](/docs/glossary/arm/) subject is of the appropriate **type**.  We see this in action whenever a [gate](/docs/glossary/gate/) or a multi-arm [door](/docs/glossary/door/) is called.
 
-A [gate](/docs/glossary/gate/) is a one-armed [core](/docs/glossary/core/) with a sample.  When it is called, its `$` [arm](/docs/glossary/arm/) is evaluated with (a version of) the [gate](/docs/glossary/gate/) as the subject.  The only part of the [core](/docs/glossary/core/) that might change is the [payload](/docs/glossary/payload/), including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` [arm](/docs/glossary/arm/) of expects two [atom](/docs/glossary/atom/)s for the sample, i.e., the two numbers to be added.  When the type check occurs, the [payload](/docs/glossary/payload/) must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
+A [gate](/docs/glossary/gate/) is a one-armed [core](/docs/glossary/core/) with a sample.  When it is called, its `$` [arm](/docs/glossary/arm/) is evaluated with (a version of) the [gate](/docs/glossary/gate/) as the subject.  The only part of the [core](/docs/glossary/core/) that might change is the [payload](/docs/glossary/payload/), including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` [arm](/docs/glossary/arm/) of expects two [atoms](/docs/glossary/atom/) for the sample, i.e., the two numbers to be added.  When the type check occurs, the [payload](/docs/glossary/payload/) must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
 
 ```
 > (add 22 33)
@@ -171,13 +171,13 @@ Cast runes also shape how Hoon understands an expression type.  The inferred typ
 
 You can also use the irregular `` ` `` syntax for casting in the same way as `^-`; e.g., `` `@`123 `` for `^-(@ 123)`.
 
-One thing to note about casts is that they can 'throw away' type information.  The second subexpression of `^-` and `^+` casts may be inferred to have a very specific type.  If the cast type is more general, then the more specific type information is lost.  Consider the literal `[12 14]`.  The inferred type of this expression is `[@ @]`, i.e., a cell of two [atom](/docs/glossary/atom/)s.  If we cast over `[12 14]` with `^-(^ [12 14])` then the inferred type is just `^`, the set of all cells.  The information about what kind of cell it is has been thrown away.  If we cast over `[12 14]` with `^-(* [12 14])` then the inferred type is `*`, the set of all [noun](/docs/glossary/noun/)s.  All interesting type information is thrown away on the latter cast.
+One thing to note about casts is that they can 'throw away' type information.  The second subexpression of `^-` and `^+` casts may be inferred to have a very specific type.  If the cast type is more general, then the more specific type information is lost.  Consider the literal `[12 14]`.  The inferred type of this expression is `[@ @]`, i.e., a cell of two [atoms](/docs/glossary/atom/).  If we cast over `[12 14]` with `^-(^ [12 14])` then the inferred type is just `^`, the set of all cells.  The information about what kind of cell it is has been thrown away.  If we cast over `[12 14]` with `^-(* [12 14])` then the inferred type is `*`, the set of all [nouns](/docs/glossary/noun/).  All interesting type information is thrown away on the latter cast.
 
 It's important to remember to include a cast rune with each [gate](/docs/glossary/gate/) expression.  That way it's clear what the inferred product type will be for calls to that [gate](/docs/glossary/gate/).
 
 ### (Dry) Gate Sample Definitions
 
-By now you've used the `|=` rune to define several [gate](/docs/glossary/gate/)s.  This rune is used to produce a 'dry' [gate](/docs/glossary/gate/), which has different type-checking and type-inference properties than a 'wet' [gate](/docs/glossary/gate/) does.  We won't explain the wet/dry distinction until later in Chapter 2 -- for now, just keep in mind that we're only dealing with one kind of [gate](/docs/glossary/gate/) (albeit the more common kind).
+By now you've used the `|=` rune to define several [gates](/docs/glossary/gate/).  This rune is used to produce a 'dry' [gate](/docs/glossary/gate/), which has different type-checking and type-inference properties than a 'wet' [gate](/docs/glossary/gate/) does.  We won't explain the wet/dry distinction until later in Chapter 2 -- for now, just keep in mind that we're only dealing with one kind of [gate](/docs/glossary/gate/) (albeit the more common kind).
 
 The first subexpression after the `|=` defines the sample type.  Any faces used in this definition have the type declared for it in this definition.  Consider again the addition function:
 
@@ -201,7 +201,7 @@ nest-fail
 -have.@ud
 ```
 
-If you try to call this [gate](/docs/glossary/gate/) with the wrong kind of argument, you get a `nest-fail`.  If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`.  Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all [atom](/docs/glossary/atom/)s, regardless of aura.
+If you try to call this [gate](/docs/glossary/gate/) with the wrong kind of argument, you get a `nest-fail`.  If the call succeeds, then the argument takes on the type of the sample definition: `[a=@ b=@]`.  Accordingly, the inferred type of `a` is `@`, and the inferred type of `b` is `@`.  In this case some type information has been thrown away; the inferred type of `[12 14]` is `[@ud @ud]`, but the addition program takes all [atoms](/docs/glossary/atom/), regardless of aura.
 
 ### Using Conditionals for Inference by Branch
 
@@ -501,7 +501,7 @@ To illustrate: let's say that `b` is the list of the [atom](/docs/glossary/atom/
 
 (There are lists of every type.  Lists of `@ud`, `@ux`, `@` in general, `^`, `[^ [@ @]]`, etc.  We can even have lists of lists of `@`, `^`, or `?`, etc.)
 
-Here's a program that takes [atom](/docs/glossary/atom/)s `a` and `b` and returns a list of all [atom](/docs/glossary/atom/)s from `a` to `b`:
+Here's a program that takes [atoms](/docs/glossary/atom/) `a` and `b` and returns a list of all [atoms](/docs/glossary/atom/) from `a` to `b`:
 
 ```hoon
 |=  [a=@ b=@]                                           ::  1
@@ -579,7 +579,7 @@ Hoon will infer that `b` either is or isn't null based on which `?~` branch is e
 
 #### Using `?~` With Lists
 
-The `?~` is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question.  Here's a program using `?~` to calculate the number of items in a list of [atom](/docs/glossary/atom/)s:
+The `?~` is especially useful for working with lists.  Is a list null, or not?  You probably want to do different things based on the answer to that question.  Here's a program using `?~` to calculate the number of items in a list of [atoms](/docs/glossary/atom/):
 
 ```hoon
 |=  a=(list @)                                          ::  1
@@ -620,9 +620,9 @@ Here's a program that takes a [noun](/docs/glossary/noun/) and returns a list of
 $(lis $(a +.a), a -.a)                                            ::  6
 ```
 
-The input [noun](/docs/glossary/noun/) is `a`.  The list of [atom](/docs/glossary/atom/)s to be output is `lis`, which is given an initial value of `~`.  If `a` is just an [atom](/docs/glossary/atom/), return a non-null list whose head is `a` and whose tail is `lis`.  Otherwise, the somewhat complicated recursion in line 6 is evaluated, in effect looping back to the `|-` with modifications made to `lis` and `a`.
+The input [noun](/docs/glossary/noun/) is `a`.  The list of [atoms](/docs/glossary/atom/) to be output is `lis`, which is given an initial value of `~`.  If `a` is just an [atom](/docs/glossary/atom/), return a non-null list whose head is `a` and whose tail is `lis`.  Otherwise, the somewhat complicated recursion in line 6 is evaluated, in effect looping back to the `|-` with modifications made to `lis` and `a`.
 
-The modification to `lis` in line 6 is to `$(a +.a)`.  The latter is a recursion to `|-` but with `a` replaced by its tail.  This evaluates to the list of `@` in the tail of `a`.  So `lis` becomes the list of [atom](/docs/glossary/atom/)s in the tail of `a`, and `a` becomes the head of `a`, `-.a`.
+The modification to `lis` in line 6 is to `$(a +.a)`.  The latter is a recursion to `|-` but with `a` replaced by its tail.  This evaluates to the list of `@` in the tail of `a`.  So `lis` becomes the list of [atoms](/docs/glossary/atom/) in the tail of `a`, and `a` becomes the head of `a`, `-.a`.
 
 Save the above code as `listleaf.hoon` and run it from the dojo:
 

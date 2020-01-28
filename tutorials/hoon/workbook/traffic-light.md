@@ -86,7 +86,7 @@ this case the [core](/docs/glossary/core/) that we just assigned a name and star
 line and assigned the name.
 
 With `|%`, we are finally at the meat of the program. This [core](/docs/glossary/core/) that we just
-named has two [arm](/docs/glossary/arm/)s: `look`, which gives us the current state, defined later; and
+named has two [arms](/docs/glossary/arm/): `look`, which gives us the current state, defined later; and
 `set`, which gives us a simple way to modify the value of `current-state`.
 
 The [gate](/docs/glossary/gate/) we are producing with `|=` may look a bit strange, so let's break it
@@ -113,7 +113,7 @@ will often see `+>.$` used in this way.
 
 Now we have the last parts of our program. Remember that `=+` allows us to add a
 noun to the head of the subject. In this case, we are adding two [noun](/docs/glossary/noun/)s, one with
-the face `a` and a second with the face `b`. These two [noun](/docs/glossary/noun/)s will be copies of
+the face `a` and a second with the face `b`. These two [nouns](/docs/glossary/noun/) will be copies of
 the `traffic-light` [core](/docs/glossary/core/), with all the bits we previously created.
 
 ```hoon

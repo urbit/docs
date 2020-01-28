@@ -30,7 +30,7 @@ Each `card` is a pair of a tag and a [noun](/docs/glossary/noun/). The tag indic
 
 ## Arms
 
-Gall applications can have a number of [arm](/docs/glossary/arm/)s that get called depending on the information they are sent.
+Gall applications can have a number of [arms](/docs/glossary/arm/) that get called depending on the information they are sent.
 
 ### ++prep
 
@@ -46,9 +46,9 @@ Often when developing an application you will not initially care about the data.
 
 ### ++poke
 
-`++poke` is one of the primary [arm](/docs/glossary/arm/)s used when building a Gall application. A `poke` is often a request to perform some operation that the application was designed for. These are requests from outside the application. `++poke` will get called with the raw [noun](/docs/glossary/noun/) data which can then be inspected to perform the requested actions with.
+`++poke` is one of the primary [arms](/docs/glossary/arm/) used when building a Gall application. A `poke` is often a request to perform some operation that the application was designed for. These are requests from outside the application. `++poke` will get called with the raw [noun](/docs/glossary/noun/) data which can then be inspected to perform the requested actions with.
 
-Many [arm](/docs/glossary/arm/)s, `++poke` included, have variants that end in the name of a mark e.g. `++poke-noun`. Which one gets called will be based on which mark was used to create the poke. Gall will attempt to use the most specific [arm](/docs/glossary/arm/) it can find, eventually falling back to `++poke` if no matching mark [arm](/docs/glossary/arm/) is found. Use of these mark [arm](/docs/glossary/arm/)s, however, is now discouraged.
+Many [arms](/docs/glossary/arm/), `++poke` included, have variants that end in the name of a mark e.g. `++poke-noun`. Which one gets called will be based on which mark was used to create the poke. Gall will attempt to use the most specific [arm](/docs/glossary/arm/) it can find, eventually falling back to `++poke` if no matching mark [arm](/docs/glossary/arm/) is found. Use of these mark [arms](/docs/glossary/arm/), however, is now discouraged.
 
 ### ++coup
 

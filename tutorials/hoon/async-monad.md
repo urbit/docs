@@ -158,7 +158,7 @@ The following code is from `app/example-tapp-fetch.hoon` Much of this file shoul
 --
 ```
 
-As indicated by the comments, `handle-poke` is the main [arm](/docs/glossary/arm/) of our Gall app. This is equivalent to the `poke` [arm](/docs/glossary/arm/)s in a standard Gall app, but will not differentiate by mark. Let's look at the first part of this [gate](/docs/glossary/gate/).
+As indicated by the comments, `handle-poke` is the main [arm](/docs/glossary/arm/) of our Gall app. This is equivalent to the `poke` [arms](/docs/glossary/arm/) in a standard Gall app, but will not differentiate by mark. Let's look at the first part of this [gate](/docs/glossary/gate/).
 
 ```hoon
 ++  handle-poke

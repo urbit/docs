@@ -11,7 +11,7 @@ In this lesson we'll cover each.
 
 ## Trees
 
-We use `tree` to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of [atom](/docs/glossary/atom/)s.
+We use `tree` to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of [atoms](/docs/glossary/atom/).
 
 There are two kinds of `tree` in Hoon: (1) the null tree, `~`, and (2) a non-null tree which is a cell with three parts.  Part (i) is the node value, part (ii) is the left child of the node, and part (iii) is the right child of the node.  Each child is itself a tree.  The node value has the face `n`, the left child has the face `l`, and the right child has the face `r`.  The following diagram provides an illustration of a `(tree @)` (without the faces):
 
@@ -60,7 +60,7 @@ This didn't work because we haven't first proved to Hoon that `b` is a non-null 
 
 ### Find and Replace
 
-Here's a program that finds and replaces certain [atom](/docs/glossary/atom/)s in a `(tree @)`.
+Here's a program that finds and replaces certain [atoms](/docs/glossary/atom/) in a `(tree @)`.
 
 ```hoon
 |=  [nedl=@ hay=(tree @) new=@]
@@ -88,7 +88,7 @@ $(hay r.hay)
 
 ## Sets
 
-Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of [atom](/docs/glossary/atom/)s.  The `in` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
+Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of [atoms](/docs/glossary/atom/).  The `in` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
 
 As with `list`s and `tree`s, there are two categories of sets: null `~`, and non-null.  Hoon implements sets using trees for the underlying [noun](/docs/glossary/noun/).
 
@@ -195,7 +195,7 @@ There are other set functions in the Hoon standard library we won't cover here.
 
 ### Cartesian Product
 
-Here's a program that takes two sets of [atom](/docs/glossary/atom/)s and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
+Here's a program that takes two sets of [atoms](/docs/glossary/atom/) and returns the [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) of those sets.  A Cartesian product of two sets `a` and `b` is a set of all the cells whose head is a member of `a` and whose tail is a member of `b`.
 
 ```hoon
 |=  [a=(set @) b=(set @)]

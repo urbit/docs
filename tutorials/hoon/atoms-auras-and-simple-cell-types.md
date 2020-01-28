@@ -6,7 +6,7 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types/"]
 +++
 Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29)) won't be addressed until a later chapter.
 
-A type is ordinarily understood to be a set of values.  Examples: the set of all [atom](/docs/glossary/atom/)s is a type, the set of all cells is a type, and so on.
+A type is ordinarily understood to be a set of values.  Examples: the set of all [atoms](/docs/glossary/atom/) is a type, the set of all cells is a type, and so on.
 
 Type systems provide type safety, in part by making sure functions produce values of the correct type.  When you write a function whose product is intended to be an [atom](/docs/glossary/atom/), it would be nice to know that the function is guaranteed to produce an [atom](/docs/glossary/atom/).  Hoon's type system provides such guarantees with **type checking** and **type inference**.
 
@@ -14,15 +14,15 @@ Type systems provide type safety, in part by making sure functions produce value
 
 In order to have a solid foundational knowledge of Hoon's type system, you must understand: (1) precisely what kind of information is tracked by Hoon's type system, (2) what a type check is and where they occur, (3) what type inference is and how it works, and (4) how to build your own custom types.
 
-In this lesson we'll cover (1)-(4) as they pertain to [atom](/docs/glossary/atom/)s and simple cell types.  In the next lesson (2) and (3) will be addressed as they pertain to complex expressions of Hoon.  In the lesson after that you'll learn more about (4), for building more complex types.
+In this lesson we'll cover (1)-(4) as they pertain to [atoms](/docs/glossary/atom/) and simple cell types.  In the next lesson (2) and (3) will be addressed as they pertain to complex expressions of Hoon.  In the lesson after that you'll learn more about (4), for building more complex types.
 
 ## Atoms and Auras
 
 In [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) we defined what an [atom](/docs/glossary/atom/) is: any unsigned integer.  In this lesson we'll expand on that discussion, going over how Hoon's type system implements auras.
 
-In the most straightforward sense, [atom](/docs/glossary/atom/)s simply are unsigned integers.  But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more.  Every [atom](/docs/glossary/atom/) is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each [atom](/docs/glossary/atom/), and this info tells Hoon how to interpret the [atom](/docs/glossary/atom/) in question.
+In the most straightforward sense, [atoms](/docs/glossary/atom/) simply are unsigned integers.  But they can also be interpreted as representing signed integers, ASCII symbols, floating-point values, dates, binary numbers, hexadecimal numbers, and more.  Every [atom](/docs/glossary/atom/) is, in and of itself, just an unsigned integer; but Hoon keeps track of type information about each [atom](/docs/glossary/atom/), and this info tells Hoon how to interpret the [atom](/docs/glossary/atom/) in question.
 
-The piece of type information that determines how Hoon interprets an [atom](/docs/glossary/atom/) is called an **aura**.  The set of all [atom](/docs/glossary/atom/)s is indicated with the symbol `@`.  An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal.  Accordingly, the Hoon type system does more than track sets of values.  It also tracks certain other relevant metadata about how those values are to be interpreted.
+The piece of type information that determines how Hoon interprets an [atom](/docs/glossary/atom/) is called an **aura**.  The set of all [atoms](/docs/glossary/atom/) is indicated with the symbol `@`.  An aura is indicated with `@` followed by some letters, e.g., `@ud` for unsigned decimal.  Accordingly, the Hoon type system does more than track sets of values.  It also tracks certain other relevant metadata about how those values are to be interpreted.
 
 How is aura information generated so that it can be tracked?  One way involves **type inference**.  In certain cases Hoon's type system can infer the type of an expression using syntactic clues.  In the most straightforward case of type inference, the expression is simply data as a [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29).  Hoon recognizes the aura literal syntax and infers that the data in question is an [atom](/docs/glossary/atom/) with the aura associated with that syntax.
 
@@ -62,18 +62,18 @@ nest-fail
 [crash message]
 ```
 
-Why 'nest-fail'?  The inferred type of `[13 14]` doesn't 'nest' under the cast type `@ud`.  It's a cell, not an [atom](/docs/glossary/atom/).  But if we use the symbol for [noun](/docs/glossary/noun/)s, `*`, then the cast succeeds:
+Why 'nest-fail'?  The inferred type of `[13 14]` doesn't 'nest' under the cast type `@ud`.  It's a cell, not an [atom](/docs/glossary/atom/).  But if we use the symbol for [nouns](/docs/glossary/noun/), `*`, then the cast succeeds:
 
 ```
 > ^-(* [13 14])
 [13 14]
 ```
 
-A cell of [atom](/docs/glossary/atom/)s is a [noun](/docs/glossary/noun/), so the inferred type of `[13 14]` nests under `*`.  Every product of a Hoon expression nests under `*` because every product is a [noun](/docs/glossary/noun/).
+A cell of [atoms](/docs/glossary/atom/) is a [noun](/docs/glossary/noun/), so the inferred type of `[13 14]` nests under `*`.  Every product of a Hoon expression nests under `*` because every product is a [noun](/docs/glossary/noun/).
 
 ## What Auras are There?
 
-Hoon has a wide (but not extensible) variety of [atom](/docs/glossary/atom/) literal syntaxes.  Each literal syntax indicates to the Hoon type checker which predefined aura is intended.  Hoon can also pretty-print any aura literal it can parse.  Because [atom](/docs/glossary/atom/)s make great path nodes and paths make great URLs, all regular [atom](/docs/glossary/atom/) literal syntaxes use only URL-safe characters.
+Hoon has a wide (but not extensible) variety of [atom](/docs/glossary/atom/) literal syntaxes.  Each literal syntax indicates to the Hoon type checker which predefined aura is intended.  Hoon can also pretty-print any aura literal it can parse.  Because [atoms](/docs/glossary/atom/) make great path nodes and paths make great URLs, all regular [atom](/docs/glossary/atom/) literal syntaxes use only URL-safe characters.
 
 Here's a non-exhaustive list of auras, along with examples of corresponding literal syntax:
 
@@ -153,7 +153,7 @@ Here's another example of type inference at work:
 36
 ```
 
-The `add` function in the Hoon standard library operates on all [atom](/docs/glossary/atom/)s, regardless of aura, and returns [atom](/docs/glossary/atom/)s with no aura specified.  Hoon isn't able to infer anything more specific than `@` for the product of `add`.  This is by design, however.  Notice that when you `add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal).  This works for all of the unsigned auras:
+The `add` function in the Hoon standard library operates on all [atoms](/docs/glossary/atom/), regardless of aura, and returns [atoms](/docs/glossary/atom/) with no aura specified.  Hoon isn't able to infer anything more specific than `@` for the product of `add`.  This is by design, however.  Notice that when you `add` a decimal and a hexadecimal above, the correct answer is returned (pretty-printed as a decimal).  This works for all of the unsigned auras:
 
 ```
 > (add 100 0b101)
@@ -289,7 +289,7 @@ Whereas we could use the `add` function on different unsigned auras and still ge
 27
 ```
 
-Why not?  `add` is happy to operate on any [atom](/docs/glossary/atom/), regardless of aura, but it's intended for auras whose literals map directly to numerically equivalent general [atom](/docs/glossary/atom/)s `@`.  For example, the `@ud` `7`, the `@ub` `0b111`, and the `@ux` `0x7` all map to the same `@` `7`.  Signed literals such as `--7` are different, because some underlying [atom](/docs/glossary/atom/)s are used for representing negative numbers.  We can see how this works by forcibly converting `@sd` [atom](/docs/glossary/atom/)s to `@ud`:
+Why not?  `add` is happy to operate on any [atom](/docs/glossary/atom/), regardless of aura, but it's intended for auras whose literals map directly to numerically equivalent general [atoms](/docs/glossary/atom/) `@`.  For example, the `@ud` `7`, the `@ub` `0b111`, and the `@ux` `0x7` all map to the same `@` `7`.  Signed literals such as `--7` are different, because some underlying [atoms](/docs/glossary/atom/) are used for representing negative numbers.  We can see how this works by forcibly converting `@sd` [atoms](/docs/glossary/atom/) to `@ud`:
 
 ```
 > `@ud`-1
@@ -305,7 +305,7 @@ Why not?  `add` is happy to operate on any [atom](/docs/glossary/atom/), regardl
 14
 ```
 
-If you want to add signed [atom](/docs/glossary/atom/)s use the function `sum:si` instead of `add`:
+If you want to add signed [atoms](/docs/glossary/atom/) use the function `sum:si` instead of `add`:
 
 ```
 > (sum:si -7 --7)
@@ -361,7 +361,7 @@ Hoon also has `@ta`, which is intended for ASCII text.  In practice, the Hoon pa
 0x3332.312d.6573.6163.2d62.6162.656b.2d73.692d.7369.6874
 ```
 
-You can get around Hoon's parser restrictions for `@ta` [atom](/docs/glossary/atom/)s by casting to `@ta` from a cord:
+You can get around Hoon's parser restrictions for `@ta` [atoms](/docs/glossary/atom/) by casting to `@ta` from a cord:
 
 ```
 > `@ta`'The quick brown fox jumped over the lazy dog.'
@@ -399,7 +399,7 @@ You can think of `now` as being a dojo environment variable that tells you what 
 ~2018.5.16..23.42.08..3455
 ```
 
-The `@da` aura is for 'absolute dates' represented with 128-bit [atom](/docs/glossary/atom/)s; 64 bits for the year, month, day, hour, minute, and second, 64 bits for fractions of a second.  There is also `@dr` for relative date:
+The `@da` aura is for 'absolute dates' represented with 128-bit [atoms](/docs/glossary/atom/); 64 bits for the year, month, day, hour, minute, and second, 64 bits for fractions of a second.  There is also `@dr` for relative date:
 
 ```
 > ~h6
@@ -417,7 +417,7 @@ The `@da` aura is for 'absolute dates' represented with 128-bit [atom](/docs/glo
 0x5460.0000.0000.0000.0000
 ```
 
-The literal `~h6.m32.s11` is for 6 hours, 32 minutes, and 11 seconds.  You can add `@dr` [atom](/docs/glossary/atom/)s together, or add a `@dr` [atom](/docs/glossary/atom/) to a `@da` [atom](/docs/glossary/atom/).  Remember that the `add` function produces [atom](/docs/glossary/atom/)s with no aura, so you'll have to cast the the aura you want the dojo to pretty-print to:
+The literal `~h6.m32.s11` is for 6 hours, 32 minutes, and 11 seconds.  You can add `@dr` [atoms](/docs/glossary/atom/) together, or add a `@dr` [atom](/docs/glossary/atom/) to a `@da` [atom](/docs/glossary/atom/).  Remember that the `add` function produces [atoms](/docs/glossary/atom/) with no aura, so you'll have to cast the the aura you want the dojo to pretty-print to:
 
 ```
 > (add ~h2 ~h3)
@@ -450,7 +450,7 @@ Aura         Meaning                        Example Literal
   @rs        single precision (32 bits)     .6.022141e23
 ```
 
-One thing needs to be pointed out for float auras.  Atoms are fundamentally integers, and only when interpreted differently can they be understood as floats.  Floats obviously can't all map to numerically equivalent [atom](/docs/glossary/atom/)s:
+One thing needs to be pointed out for float auras.  Atoms are fundamentally integers, and only when interpreted differently can they be understood as floats.  Floats obviously can't all map to numerically equivalent [atoms](/docs/glossary/atom/):
 
 ```
 > .6.022
@@ -464,7 +464,7 @@ One thing needs to be pointed out for float auras.  Atoms are fundamentally inte
 1.086.370.873
 ```
 
-As a result, the standard mathematical functions for [atom](/docs/glossary/atom/)s won't work correctly for floats:
+As a result, the standard mathematical functions for [atoms](/docs/glossary/atom/) won't work correctly for floats:
 
 ```
 > (add .6.022 .1.000)
@@ -490,7 +490,7 @@ Programmers can use their own auras if desired, keeping in mind however that Hoo
 
 If your program uses both fortnights and furlongs, Hoon will not parse a user-defined fortnight syntax. It will not print furlongs in the dojo.  But the type system can prevent you from accidentally passing a furlong to a function that expects a fortnight.
 
-Remember also that auras specialize to the right.  For example, `@u` [atom](/docs/glossary/atom/)s are interpreted as unsigned integers; `@ux` [atom](/docs/glossary/atom/)s are interpreted as unsigned **hexadecimal** integers.
+Remember also that auras specialize to the right.  For example, `@u` [atoms](/docs/glossary/atom/) are interpreted as unsigned integers; `@ux` [atoms](/docs/glossary/atom/) are interpreted as unsigned **hexadecimal** integers.
 
 ```
 > `@madeupaura`123
@@ -511,11 +511,11 @@ nest-fail
 
 ## General and Constant Atoms
 
-There's more to the type information of an [atom](/docs/glossary/atom/) than its aura.  Another distinction is necessary.  Some [atom](/docs/glossary/atom/)s are **general** in type, meaning that the type in question includes all [atom](/docs/glossary/atom/)s.  For example, the type of the literal `17` is `@ud`; every [atom](/docs/glossary/atom/) can be of that type.  Up to this point of this lesson every [atom](/docs/glossary/atom/) has been general.
+There's more to the type information of an [atom](/docs/glossary/atom/) than its aura.  Another distinction is necessary.  Some [atoms](/docs/glossary/atom/) are **general** in type, meaning that the type in question includes all [atoms](/docs/glossary/atom/).  For example, the type of the literal `17` is `@ud`; every [atom](/docs/glossary/atom/) can be of that type.  Up to this point of this lesson every [atom](/docs/glossary/atom/) has been general.
 
-There are also [atom](/docs/glossary/atom/)s that are **constant** in type.  Constant [atom](/docs/glossary/atom/) types contain just one [atom](/docs/glossary/atom/).  But that's not all.  Constant [atom](/docs/glossary/atom/) types contain just one [atom](/docs/glossary/atom/) **with just one aura**.
+There are also [atoms](/docs/glossary/atom/) that are **constant** in type.  Constant [atom](/docs/glossary/atom/) types contain just one [atom](/docs/glossary/atom/).  But that's not all.  Constant [atom](/docs/glossary/atom/) types contain just one [atom](/docs/glossary/atom/) **with just one aura**.
 
-For [atom](/docs/glossary/atom/)ic constant literal syntax simply put `%` in front of the [atom](/docs/glossary/atom/) literal:
+For atomic constant literal syntax simply put `%` in front of the [atom](/docs/glossary/atom/) literal:
 
 ```
 > ? 15
@@ -671,7 +671,7 @@ The downside of using `^` for casts is that Hoon will infer only that the produc
 [[12 13] [14 15 16]]
 ```
 
-When we use the `?` operator to see the type inferred by Hoon for the expression, in all three of the above cases the same thing is returned: `{* *}`.  The `*` symbol indicates the type for any [noun](/docs/glossary/noun/), and the curly braces `{ }` indicate a cell.  Every cell in Hoon is a cell of [noun](/docs/glossary/noun/)s; remember that cells are defined as pairs of [noun](/docs/glossary/noun/)s.
+When we use the `?` operator to see the type inferred by Hoon for the expression, in all three of the above cases the same thing is returned: `{* *}`.  The `*` symbol indicates the type for any [noun](/docs/glossary/noun/), and the curly braces `{ }` indicate a cell.  Every cell in Hoon is a cell of [nouns](/docs/glossary/noun/); remember that cells are defined as pairs of [nouns](/docs/glossary/noun/).
 
 Yet the cell `[[12 13] [14 15 16]]` is a bit more complex than the cell `[12 13]`.  Can we use the type system to distinguish them?  Yes.
 
@@ -694,7 +694,7 @@ nest-fail
 nest-fail
 ```
 
-The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two [atom](/docs/glossary/atom/)s, and crashes with a `nest-fail` for any expression that evaluates to something different.  The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` **does** evaluate to a cell, the left-hand side isn't an [atom](/docs/glossary/atom/), but is instead another cell.
+The `[@ @]` cast accepts any expression that evaluates to a cell with exactly two [atoms](/docs/glossary/atom/), and crashes with a `nest-fail` for any expression that evaluates to something different.  The expression `12` doesn't evaluate to a cell; and while the expression `[[12 13] 14]` **does** evaluate to a cell, the left-hand side isn't an [atom](/docs/glossary/atom/), but is instead another cell.
 
 You can get even more specific about the kind of cell you want by using [atom](/docs/glossary/atom/) auras:
 
@@ -745,7 +745,7 @@ You can also be highly specific with certain parts of the type structure, leavin
 [[12 26] 3.735.928.559]
 ```
 
-Because every piece of Hoon data is a [noun](/docs/glossary/noun/), everything nests under `*`.  When you cast to `*` you can see the raw [noun](/docs/glossary/noun/) with cells as brackets and [atom](/docs/glossary/atom/)s as unsigned integers.
+Because every piece of Hoon data is a [noun](/docs/glossary/noun/), everything nests under `*`.  When you cast to `*` you can see the raw [noun](/docs/glossary/noun/) with cells as brackets and [atoms](/docs/glossary/atom/) as unsigned integers.
 
 That's it for this lesson.  Move on to the next one to learn more about when a type check occurs, and how type inference works for non-literal Hoon expressions.
 

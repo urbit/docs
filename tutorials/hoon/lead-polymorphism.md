@@ -5,9 +5,9 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/lead-polymorphism/"]
 +++
 
-There are four kinds of [core](/docs/glossary/core/)s: gold, iron, zinc, and lead. You are able to use [core](/docs/glossary/core/)-variance rules to create programs which take other programs as arguments. Which particular rules depends on which kind of [core](/docs/glossary/core/) your program needs to complete.
+There are four kinds of [cores](/docs/glossary/core/): gold, iron, zinc, and lead. You are able to use core-variance rules to create programs which take other programs as arguments. Which particular rules depends on which kind of [core](/docs/glossary/core/) your program needs to complete.
 
-Lead [core](/docs/glossary/core/)s have opaque [payload](/docs/glossary/payload/)s. That is, the [payload](/docs/glossary/payload/) can not be written to or read from. Below is an example of using lead [core](/docs/glossary/core/)s. The program produces a list populated by the first 10 elements of `fib`.
+Lead [cores](/docs/glossary/core/) have opaque [payloads](/docs/glossary/payload/). That is, the [payload](/docs/glossary/payload/) can not be written to or read from. Below is an example of using lead [cores](/docs/glossary/core/). The program produces a list populated by the first 10 elements of `fib`.
 
 ```hoon
 =<  (to-list (take fib 10))
@@ -57,7 +57,7 @@ Lead [core](/docs/glossary/core/)s have opaque [payload](/docs/glossary/payload/
 --
 ```
 
-There are five [arm](/docs/glossary/arm/)s in this [core](/docs/glossary/core/): `stream`, `stream-type`, `to-list`, `take`, and `fib`.
+There are five [arms](/docs/glossary/arm/) in this [core](/docs/glossary/core/): `stream`, `stream-type`, `to-list`, `take`, and `fib`.
 
 
 ```hoon
@@ -152,4 +152,4 @@ Finally, the first line of our program will take the first 10 elements of `fib` 
 ~[1 1 2 3 5 8 13 21 34 55]
 ```
 
-This example is a bit overkill for simply calculating the Fibonacci series, but it nicely illustrates how you might use iron [core](/docs/glossary/core/)s. Instead of `fib`, you could have any `stream` that produces some stream of values and you'd still be able to use the `take`, `to-list`, and `stream-type` [arm](/docs/glossary/arm/)s.
+This example is a bit overkill for simply calculating the Fibonacci series, but it nicely illustrates how you might use iron [cores](/docs/glossary/core/). Instead of `fib`, you could have any `stream` that produces some stream of values and you'd still be able to use the `take`, `to-list`, and `stream-type` [arms](/docs/glossary/arm/).

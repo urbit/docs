@@ -36,7 +36,7 @@ The first thing to notice is that we are creating a `core` (`|%`) and a `door` (
 --
 ```
 
-The `core` here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping [atom](/docs/glossary/atom/)s to them. We define `card` to be a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
+The `core` here defines two types: `move` and `card`. A `move` is a `pair` of `bone` and `card`. A `bone` is a Gall-only type that identifies app event chains by mapping [atoms](/docs/glossary/atom/) to them. We define `card` to be a request to Arvo to do something for us. In this case, the only valid `card` will be `%wait` which we'll discuss in a bit.
 
 It's important to note that the names `move` and `card` are technically arbitrary; you can call them whatever you'd like. By convention, however, you will see them called `move` and `card` practically everywhere.
 
@@ -54,7 +54,7 @@ You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's 
 - `eny`  Guaranteed-fresh entropy
 - `now`  The current time
 
-The `door` we've made has two [arm](/docs/glossary/arm/)s `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the [arm](/docs/glossary/arm/) with the name that matches the mark of the data. Here we use the generic `noun` mark:
+The `door` we've made has two [arms](/docs/glossary/arm/) `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the [arm](/docs/glossary/arm/) with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
 ```hoon
 ++  poke-noun
@@ -94,7 +94,7 @@ The final part of this `move` is:
 (add now t)
 ```
 
-`now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both [atom](/docs/glossary/atom/)s, we can add `now` and `t` these two to get an [atom](/docs/glossary/atom/) that is `t` units of time into the future from `now`. That produced [atom](/docs/glossary/atom/) can be interpreted as a `@da`.
+`now` is the current time of type `@da`, and `t` was declared as `@dr`. Because they are both [atoms](/docs/glossary/atom/), we can add `now` and `t` these two to get an [atom](/docs/glossary/atom/) that is `t` units of time into the future from `now`. That produced [atom](/docs/glossary/atom/) can be interpreted as a `@da`.
 
 That's all for our `poke-noun` [arm](/docs/glossary/arm/). But what about when the timer goes off? Behn will create a `gift`, a similar construct to how we created a `card`, only this time it will end up being dispatched back to us via Gall in the `++wake` [arm](/docs/glossary/arm/). Any app that wants to use a timer trigger needs to have an [arm](/docs/glossary/arm/) called `++wake`.
 

@@ -37,7 +37,7 @@ Here, we ran a generator called `+test` with a path argument `/sys/hoon/set`. Th
 ::
 /+  *test
 ::
-::  Testing [arm](/docs/glossary/arm/)s
+::  Testing arms
 ::
 |%
 ```

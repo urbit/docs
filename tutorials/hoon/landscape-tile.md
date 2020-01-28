@@ -220,7 +220,7 @@ window.testingTile = testingTile;
 
 ### Default Code Components
 
-Parts of the `testing.hoon` code shown above is the "scaffolding" that was automatically built for us by the default Hoon file from the `create-landscape-app` repo. We'll give a general overview of those [arm](/docs/glossary/arm/)s here.
+Parts of the `testing.hoon` code shown above is the "scaffolding" that was automatically built for us by the default Hoon file from the `create-landscape-app` repo. We'll give a general overview of those [arms](/docs/glossary/arm/) here.
 
 As with other gall apps, `card` and `move` define the types that can be produced by the app, `card` specifically defines which type of requests can be made to other parts of the system.
 
@@ -228,7 +228,7 @@ As with other gall apps, `card` and `move` define the types that can be produced
 
 The `++peer-testingtile` [arm](/docs/glossary/arm/) is called when the tile first subscribes to the app. The subscription logic is mostly handled for us by the `launch` app here it simply produces some data to send back to the tile, indicating its initial state.
 
-The two [arm](/docs/glossary/arm/)s that are the most important for our application are `++poke-json` which receives any JSON sent by the tile and `++coup-helm-hi`, which we'll cover in a bit.
+The two [arms](/docs/glossary/arm/) that are the most important for our application are `++poke-json` which receives any JSON sent by the tile and `++coup-helm-hi`, which we'll cover in a bit.
 
 ### Interesting Code
 

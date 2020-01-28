@@ -406,7 +406,7 @@ for printing backstep-indented lists.
 %+  produce  %tang
 ```
 
-Because we imported `generators`, we can access its contained [gate](/docs/glossary/gate/)s, three of
+Because we imported `generators`, we can access its contained [gates](/docs/glossary/gate/), three of
 which we use in `axe.hoon`: `print`, `prompt`, and `produce`.
 
 **`print`** is used for printing a `tank` to the console.
@@ -488,7 +488,7 @@ print the title of a Studio Ghibli film.
 =,  generators
 ```
 
-Here we import types from `/sur/sole.hoon` and [gate](/docs/glossary/gate/)s from
+Here we import types from `/sur/sole.hoon` and [gates](/docs/glossary/gate/) from
 `/lib/generators.hoon`. We also use `=,` to expose the namespace of
 `generators` that we just imported.
 
@@ -546,7 +546,7 @@ for us that we can then use to inspect the data.
 
 After parsing the JSON structure we want to make sure we got back a valid `json`
 type. To do that, we test for null and crash if that test passes. If it doesn't
-pass, we use `=,` on the `dejs:format` [core](/docs/glossary/core/) so that we can more easily pull [arm](/docs/glossary/arm/)s
+pass, we use `=,` on the `dejs:format` [core](/docs/glossary/core/) so that we can more easily pull [arms](/docs/glossary/arm/)
 out of it.
 
 ```hoon
@@ -601,4 +601,4 @@ result of the generator.
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, [arm](/docs/glossary/arm/)s, [core](/docs/glossary/core/)s, [gate](/docs/glossary/gate/)s, and [door](/docs/glossary/door/)s.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, [arms](/docs/glossary/arm/), [cores](/docs/glossary/core/), [gates](/docs/glossary/gate/), and [doors](/docs/glossary/door/).  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
