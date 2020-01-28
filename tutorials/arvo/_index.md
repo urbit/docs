@@ -5,6 +5,9 @@ sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/learn/arvo/"]
 +++
+
+## [Arvo](@/docs/tutorials/arvo/arvo.md)
+
 Arvo is Urbit's functional operating system, written in [Hoon](@/docs/tutorials/hoon/_index.md). It's composed of modules called _vanes_:
 
 ## [Ames](@/docs/tutorials/arvo/ames.md)
@@ -87,7 +90,7 @@ Arvo pops the top path off the duct and sends the given card back to the caller.
 As shown above, we use Arvo proper to route and control the flow of moves. However, Arvo proper is rarely directly responsible for processing the event data that directly causes the desired outcome of a move. This event data is contained within a card, which is simply a `(pair term [noun](/docs/glossary/noun/))`. Instead, Arvo proper passes the card off to one of its vanes, which each present an interface to clients for a particular well-defined, stable, and general-purpose piece of functionality.
 
 As of this writing, we have seven vanes, which each provide the following services:
-
+_index
 - `%ames`: the name of both our network and the vane that communicates over it.
 - `%behn`: a simple timer.
 - `%clay`: our version-controlled, referentially- transparent, and global filesystem.
@@ -105,5 +108,7 @@ When one vane is `%pass`ed a card in its `++task` (defined in zuse), Arvo activa
 In other words, there are only four ways of seeing a move: (1) as a request seen by the caller, which is a ++note. (2) that same request as seen by the callee, a `++task`. (3) the response to that first request as seen by the callee, a `++gift`. (4) the response to the first request as seen by the caller, a `++sign`.
 
 When a `++task` card is passed to a vane, Arvo calls its `++call` [gate](/docs/glossary/gate/), passing it both the card and its duct. This [gate](/docs/glossary/gate/) must be defined in every vane. It produces two things in the following order: a list of moves and a possibly modified copy of its context. The moves are used to interact with other vanes, while the new context allows the vane to save its state. The next time Arvo activates the vane it will have this context as its subject.
+=======
+## Iris
 
-This overview has detailed how to pass a card to a particular vane. To see the cards each vane can be `%pass`ed as a `++task` or return as a `++gift` (as well as the semantics tied to them), each vane's public interface is explained in detail in its respective overview.
+Iris is our HTTP client.
