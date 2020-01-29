@@ -7,13 +7,13 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/lists/"]
 
 # Lists
 
-A **list** is a type of noun that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).
+A **list** is a type of [noun](/docs/glossary/noun/) that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).
 
 So a list can be either null or non-null. When the list contains only `~` and no items, it's the null list.  Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called _lests_, are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sub-list is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
 
 `[1 [2 [3 [4 ~]]]]`
 
-It's easy to see where the heads are and where the nesting tails are. The head of the above list is the atom `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.
+It's easy to see where the heads are and where the nesting tails are. The head of the above list is the [atom](/docs/glossary/atom/) `1` and the tail is the list `[2 [3 [4 ~]]]`, (or `[2 3 4 ~]`). Recall that whenever cell brackets are omitted so that visually there appears to be more than two child nouns, it is implicitly understood that the right-most nouns constitute a cell.
 
 To make a list, let's cast nouns to the `(list @)` ("list of atoms") type.
 
@@ -119,7 +119,7 @@ The `flop` function takes a list and returns it in reverse order:
 
 #### `flop` Exercise 1.5a
 
-Without using `flop`, write a gate that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of this lesson.
+Without using `flop`, write a [gate](/docs/glossary/gate/) that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of this lesson.
 
 ### `sort`
 

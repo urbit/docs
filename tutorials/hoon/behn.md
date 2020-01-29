@@ -20,7 +20,7 @@ Notably, vanes are _not_ something that a user ever interacts with directly. The
 
 ## Behn
 
-In this section we introduce the simplest Arvo vane, Behn. This is not exhaustive, but just enough to know what is going on inside of Behn when we make a system call to it in the egg timer app. We discuss relevant types, some arms that are only called internally, and arms that may be called by another vane via a `move`.
+In this section we introduce the simplest Arvo vane, Behn. This is not exhaustive, but just enough to know what is going on inside of Behn when we make a system call to it in the egg timer app. We discuss relevant types, some [arms](/docs/glossary/arm/) that are only called internally, and arms that may be called by another vane via a `move`.
 
 Behn is an Arvo vane that acts as a simple timer. It allows vanes and applications to set timer events, which are managed in a simple priority queue.
 

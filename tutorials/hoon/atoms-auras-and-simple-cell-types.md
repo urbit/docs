@@ -6,7 +6,7 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/atoms-auras-and-simple-cell-types/"]
 +++
 Like most modern high-level programming languages, Hoon has a type system.  Because Hoon is a functional programming language, its type system differs somewhat from those of non-functional languages.  In the next few lessons we'll go over Hoon's type system and point out some of its distinctive features.  Certain advanced topics (e.g. type [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29)) won't be addressed until a later chapter.
 
-A type is ordinarily understood to be a set of values.  Examples: the set of all atoms is a type, the set of all cells is a type, and so on.
+A type is ordinarily understood to be a set of values.  Examples: the set of all [atoms](/docs/glossary/atom/) is a type, the set of all cells is a type, and so on.
 
 Type systems provide type safety, in part by making sure functions produce values of the correct type.  When you write a function whose product is intended to be an atom, it would be nice to know that the function is guaranteed to produce an atom.  Hoon's type system provides such guarantees with **type checking** and **type inference**.
 
@@ -52,7 +52,7 @@ Let's try one in the dojo.  For the expression to be assessed we'll use `15` aga
 15
 ```
 
-Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice that the `^-` expression never does anything to modify the underlying noun of the second subexpression.  It's used simply to mandate a type-check on that expression.  This check occurs at compile-time (i.e., when the expression is compiled to Nock).
+Because `@ud` is the inferred type of `15`, the cast succeeds.  Notice that the `^-` expression never does anything to modify the underlying [noun](/docs/glossary/noun/) of the second subexpression.  It's used simply to mandate a type-check on that expression.  This check occurs at compile-time (i.e., when the expression is compiled to Nock).
 
 What about when the inferred type doesn't fit under the cast type?  You get a `nest-fail` crash at compile-time:
 

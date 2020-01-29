@@ -99,7 +99,7 @@ doing here.
 We call `defuse` and pass it `cuts`, the list of tapes we were provided with
 when the generator started.
 
-Next is the core that has two arms, `defuse` and `rules`. Let's look at `rules`
+Next is the [core](/docs/glossary/core/) that has two [arms](/docs/glossary/arm/), `defuse` and `rules`. Let's look at `rules`
 quickly.
 
 We can see that it is a `map` of `tape` to `list` of `tape`. For each of the

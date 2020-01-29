@@ -158,7 +158,7 @@ The following code is from `app/example-tapp-fetch.hoon` Much of this file shoul
 --
 ```
 
-As indicated by the comments, `handle-poke` is the main arm of our Gall app. This is equivalent to the `poke` arms in a standard Gall app, but will not differentiate by mark. Let's look at the first part of this gate.
+As indicated by the comments, `handle-poke` is the main [arm](/docs/glossary/arm/) of our Gall app. This is equivalent to the `poke` arms in a standard Gall app, but will not differentiate by mark. Let's look at the first part of this [gate](/docs/glossary/gate/).
 
 ```hoon
 ++  handle-poke
@@ -212,4 +212,4 @@ In a number of cases `D` here is going to be another `;<` rune. This is how you 
 
 Continuing on, here is a use of `fetch-json` with the `;<` that is an example worth reading. `fetch-json` takes a `tape` and produces a `form:(async ,json)` which can be processed to obtain the data we want.
 
-Armed with an understanding of `;<`, the rest of `handle-poke` should be quite readable though you may need to consult the `dejs-soft:format` core to get a firm grasp on how JSON parsing works. Hopefully, you now have an understanding of the basic use of the `tapp` library. This style of Gall app can result in code that, while potentially less flexible, is easier to read and reason about than a traditional Gall app.
+Armed with an understanding of `;<`, the rest of `handle-poke` should be quite readable though you may need to consult the `dejs-soft:format` [core](/docs/glossary/core/) to get a firm grasp on how JSON parsing works. Hopefully, you now have an understanding of the basic use of the `tapp` library. This style of Gall app can result in code that, while potentially less flexible, is easier to read and reason about than a traditional Gall app.

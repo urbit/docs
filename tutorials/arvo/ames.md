@@ -88,7 +88,7 @@ number. Messages on the same path are guaranteed to arrive in the same
 order as they were sent. No such guarantees are made across paths.
 
 The `r` is the actual data that you are sending. As the type implies,
-this can be an arbitrary noun, and it will be transferred to the
+this can be an arbitrary [noun](/docs/glossary/noun/), and it will be transferred to the
 receiver exactly as-is, in a well-typed way. Of course, this is data
 that is sent over the wire, so be careful not to send anything too
 massive unless you're willing to wait.
@@ -104,7 +104,7 @@ directly into `++wise:am`.
           zork:zank:(wool:(ho:(um p.soq) q.soq) hen cha val ete)
 ```
 
-The inputs to this gate are exactly the sort of thing you'd expect. In
+The inputs to this [gate](/docs/glossary/gate/) are exactly the sort of thing you'd expect. In
 particular, everything in the `%wont` gate is here plus the calling duct
 so that we know where to send the acknowledgment and `ete` to determine
 if we're going to do the modern end-to-end acknowledgments.
@@ -113,7 +113,7 @@ The actual line of code looks intimidating, but it's really not all that
 bad. Working from the inside out, the call to `++um` sets up our
 domestic server, and the call to `++ho` sets up our knowledge about the
 neighbor we're sending to. From the outside, `++zork` and `++zank` just
-apply the changes made to our `++um` and `++am` cores, respectively. If
+apply the changes made to our `++um` and `++am` [cores](/docs/glossary/core/), respectively. If
 you're familiar with the common idiom of `++abet`, that's all this is.
 The code predates the widespread usage of that name.
 
@@ -162,7 +162,7 @@ crypto. At the moment, we only need our neighbor's life, which we put
 into the meal.
 
 Finally, we call `++wind:ho:um:am` with the `++soup` of the path and
-message number and the `++meal:ames` of the payload itself. For end-to-end
+message number and the `++meal:ames` of the [payload](/docs/glossary/payload/) itself. For end-to-end
 acknowledged messages, we use `%bund`.
 
 ```hoon
@@ -204,7 +204,7 @@ actual, 1KB packets.
 ```
 
 For organizational purposes, `++zuul` constructs an internal core with
-three arms. `++wasp` encodes the meal into an atom with no encryption.
+three [arms](/docs/glossary/arm/). `++wasp` encodes the meal into an [atom](/docs/glossary/atom/) with no encryption.
 `++wisp` encodes a meal with possible encryption (else it simply calls
 `++wasp`). `++weft` takes the result of `++wisp` and splits it into
 actual packets.

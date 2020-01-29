@@ -37,7 +37,7 @@ Next we check to see if `n` is `1`. If so, the result is just `1`, since
 
 If, however, `n` is _not_ `1`, then we branch to the final line of the code,
 `(mul n $(n (dec n)))`, where the recursion logic lives. Here, we multiply `n`
-by the recursion of `n` minus `1`. `$` initiates recursion: it calls the gate
+by the recursion of `n` minus `1`. `$` initiates recursion: it calls the [gate](/docs/glossary/gate/)
 that we're already in, but replaces its sample.
 
 In our example, we multiply `n` with the product of this _entire gate
@@ -138,7 +138,7 @@ $(n (dec n), t (mul t n))
 The above code should look familiar. We are still building a gate that
 takes one argument `n`. This time, however, we are also putting a face on a
 `@ud` and setting its initial value to 1. The `|-` here is used to create a new
-gate with one arm `$` and immediately call it. Think of `|-` as the recursion
+gate with one [arm](/docs/glossary/arm/) `$` and immediately call it. Think of `|-` as the recursion
 point.
 
 We then evaluate `n` to see if it is 1. If it is we return the value of `t`. In
@@ -175,7 +175,7 @@ each iteration can be replaced instead of held in memory.
 #### A Note on `$`
 
 `$` (pronounced "buc") is, in its use with recursion, a reference to the gate that we are inside
-of. That's because a gate is just a core with a single arm named `$`. The
+of. That's because a gate is just a [core](/docs/glossary/core/) with a single arm named `$`. The
 subject is searched depth-first, head before tail, with faces skipped, and
 stopping on the first result. In other words, the first match found in the head
 will be returned. If you wished to refer to the outer `$` in this context, the

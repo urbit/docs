@@ -220,7 +220,7 @@ window.testingTile = testingTile;
 
 ### Default Code Components
 
-Parts of the `testing.hoon` code shown above is the "scaffolding" that was automatically built for us by the default Hoon file from the `create-landscape-app` repo. We'll give a general overview of those arms here.
+Parts of the `testing.hoon` code shown above is the "scaffolding" that was automatically built for us by the default Hoon file from the `create-landscape-app` repo. We'll give a general overview of those [arms](/docs/glossary/arm/) here.
 
 As with other gall apps, `card` and `move` define the types that can be produced by the app, `card` specifically defines which type of requests can be made to other parts of the system.
 
@@ -257,11 +257,11 @@ Now that we've glanced at the default components of the program, lets take a clo
   ==
 ```
 
-`++poke-json` is going to accept a `json` and produce a `quip`. A `quip` is a pair of: a list of `moves` (in this case), and some state which is the same type as the core we are building. To be clear, a `json` in Hoon is not the same thing as something in the more general JSON format. It is rather a parsed data structure.
+`++poke-json` is going to accept a `json` and produce a `quip`. A `quip` is a pair of: a list of `moves` (in this case), and some state which is the same type as the [core](/docs/glossary/core/) we are building. To be clear, a `json` in Hoon is not the same thing as something in the more general JSON format. It is rather a parsed data structure.
 
 There are several uses of the `~&` rune. These are simply debugging printfs that we can skip over.
 
-`(om:dejs:format same)` builds a gate that converts a `json` into a `map`.
+`(om:dejs:format same)` builds a [gate](/docs/glossary/gate/) that converts a `json` into a `map`.
 
 `++so:dejs:format` formats some piece of data out of the `json` map, in this case the value of `%ship`. `sthu` is transformed by [`slaw`](@/docs/reference/library/4m.md#slaw) into an actual `@p` to verify that we didn't get sent nonsense. If we did, `need` will cause the gate to crash.
 

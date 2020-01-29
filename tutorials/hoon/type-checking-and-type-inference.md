@@ -62,7 +62,7 @@ nest-fail
 
 The `^+` rune takes two subexpressions.  The first subexpression is evaluated and its type is inferred.  The second subexpression is evaluated and its inferred type is compared against the type of the first.  If the type of the second provably nests under the type of the first, the result of the `^+` expression is just the value of its second subexpression.  Otherwise, the code fails to compile.
 
-This rune is useful for casting when you already have a noun -- or expression producing a noun -- whose type you may not know or be able to construct easily.  If you want your output value to be of the same type, you can use `^+`.
+This rune is useful for casting when you already have a [noun](/docs/glossary/noun/) -- or expression producing a [noun](/docs/glossary/noun/) -- whose type you may not know or be able to construct easily.  If you want your output value to be of the same type, you can use `^+`.
 
 More examples:
 
@@ -98,7 +98,7 @@ You can evade the `.=` type-check by casting one of its subexpressions to a `*`,
 
 It isn't recommended that you evade the rules in this way, however.
 
-The `.+` increment rune -- including its `+( )` irregular form -- does a type check to ensure that its subexpression must evaluate to an atom.
+The `.+` increment rune -- including its `+( )` irregular form -- does a type check to ensure that its subexpression must evaluate to an [atom](/docs/glossary/atom/).
 
 ```
 > +(12)
@@ -110,9 +110,9 @@ nest-fail
 
 ### Arm Evaluation
 
-Whenever an arm is evaluated in Hoon it expects to have some version of its parent core as the subject.  Specifically, a type check is performed to see whether the arm subject is of the appropriate **type**.  We see this in action whenever a gate or a multi-arm door is called.
+Whenever an [arm](/docs/glossary/arm/) is evaluated in Hoon it expects to have some version of its parent [core](/docs/glossary/core/) as the subject.  Specifically, a type check is performed to see whether the [arm](/docs/glossary/arm/) subject is of the appropriate **type**.  We see this in action whenever a [gate](/docs/glossary/gate/) or a multi-arm [door](/docs/glossary/door/) is called.
 
-A gate is a one-armed core with a sample.  When it is called, its `$` arm is evaluated with (a version of) the gate as the subject.  The only part of the core that might change is the payload, including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` arm of expects two atoms for the sample, i.e., the two numbers to be added.  When the type check occurs, the payload must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
+A gate is a one-armed core with a sample.  When it is called, its `$` arm is evaluated with (a version of) the gate as the subject.  The only part of the core that might change is the [payload](/docs/glossary/payload/), including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` arm of expects two atoms for the sample, i.e., the two numbers to be added.  When the type check occurs, the [payload](/docs/glossary/payload/) must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
 
 ```
 > (add 22 33)

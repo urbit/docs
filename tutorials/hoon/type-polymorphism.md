@@ -7,7 +7,7 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/type-polymorphism/"]
 
 There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)
 
-One relatively trivial form of polymorphism involves sub-typing.  A gate whose sample is a raw `noun` can accept any Hoon data structure as input -- it's just that the sample will only be treated as a raw noun.  For example, consider the `copy` gate below:
+One relatively trivial form of polymorphism involves sub-typing.  A [gate](/docs/glossary/gate/) whose sample is a raw `noun` can accept any Hoon data structure as input -- it's just that the sample will only be treated as a raw [noun](/docs/glossary/noun/).  For example, consider the `copy` gate below:
 
 ```
 > =copy |=(a=* [a a])
@@ -28,7 +28,7 @@ In this lesson we'll go over Hoon's support for more interesting polymorphic fun
 
 ## Polymorphic Properties of Cores
 
-Hoon supports type polymorphism at the core level.  That is, each core has certain polymorphic properties that are tracked and maintained as metadata by Hoon's type system.  (See `+$  type` of `hoon.hoon`.)  These properties determine the extent to which a core can be used as an interface for values of various types.
+Hoon supports type polymorphism at the [core](/docs/glossary/core/) level.  That is, each core  has certain polymorphic properties that are tracked and maintained as metadata by Hoon's type system.  (See `+$  type` of `hoon.hoon`.)  These properties determine the extent to which a core can be used as an interface for values of various types.
 
 This is rather vaguely put so far.  We can clarify by talking more specifically about the kinds of polymorphism supported in Hoon.  There are two kinds of type polymorphism for cores: [genericity](https://en.wikipedia.org/wiki/Generic_programming), to include certain kinds of [parametric polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism); and [variance polymorphism](https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29), which involves making use of special sub-typing rules for cores.
 
@@ -36,7 +36,7 @@ If you don't understand these very well, that's okay.  We'll explain them.  Let'
 
 ## Dry vs. Wet Cores
 
-To review briefly, a **core** is a pair of `[battery payload]`.  The **battery** contains the various arms of the core (code), and the **payload** contains all the data needed to evaluate those arms correctly (data).  Every arm is evaluated with its parent core as the subject.  A **gate** (i.e., a Hoon function) is a core with exactly one arm named `$` and with a payload of the form: `[sample context]`.  The **sample** is reserved for the function's argument value, and the **context** is any other data needed to evaluate `$` correctly.
+To review briefly, a **core** is a pair of `[battery payload]`.  The **battery** contains the various [arms](/docs/glossary/arm/) of the core (code), and the **payload** contains all the data needed to evaluate those arms correctly (data).  Every arm is evaluated with its parent core as the subject.  A **gate** (i.e., a Hoon function) is a core with exactly one arm named `$` and with a [payload](/docs/glossary/payload/) of the form: `[sample context]`.  The **sample** is reserved for the function's argument value, and the **context** is any other data needed to evaluate `$` correctly.
 
 There are two kinds of cores: **dry** and **wet**.  Dry cores, which are more typical, _don't_ make use of **genericity**.  Wet cores do.  In order to understand generic functions in Hoon, you have to understand the difference between dry and wet cores.
 
@@ -64,7 +64,7 @@ For illustration, consider the gate created by `add`, a function in the Hoon sta
     sample   context
 ```
 
-The `add` code depends on the fact that there are two atoms in the sample: the numbers to be added together.  Hence, it is appropriate that only a cell of atoms is permitted for the sample.  We can look at the default sample of `add` at address `+6`:
+The `add` code depends on the fact that there are two [atoms](/docs/glossary/atom/) in the sample: the numbers to be added together.  Hence, it is appropriate that only a cell of atoms is permitted for the sample.  We can look at the default sample of `add` at address `+6`:
 
 ```
 > +6:add
