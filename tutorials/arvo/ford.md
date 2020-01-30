@@ -93,7 +93,7 @@ functionality. We don't usually have naked hoods outside ford.
 
 ### `%reef`
 
-Produces a core containing the entirety of Zuse and Hoon, suitable for
+Produces a [core](/docs/glossary/core/) containing the entirety of Zuse and Hoon, suitable for
 running arbitrary code against. The mark is `%noun`.
 
 ### `%ride`
@@ -402,7 +402,7 @@ Wide-form unfiltered `/_` doesn't need a delimiter: `/=  kids  /_/hoon/`
 ### `/_` filtered: run a horn on each file in the directory matching an aura
 
 Filtered `/_` takes an aura and a horn, and filters the list of files in the
-current directory by whether their filenames can be parsed to an atom of that
+current directory by whether their filenames can be parsed to an [atom](/docs/glossary/atom/) of that
 aura. It then produces a map where each key is the filename after parsing into
 that atom type, and each value is the result of running the horn on the
 contents of that file.
@@ -420,7 +420,7 @@ Wide-form filtered `/_` uses `_` as a delimiter: `/=  timed-posts  /_@da_/md/`
 
 ### `/;` "fasmic"
 
-`/;` takes a twig and a horn. The twig should evaluate to a gate, which is then slammed
+`/;` takes a twig and a horn. The twig should evaluate to a [gate](/docs/glossary/gate/), which is then slammed
 with the result of the horn as its sample.
 
 Example:

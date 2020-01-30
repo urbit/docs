@@ -47,9 +47,9 @@ relevant to the functionality of our program.
     --
 ```
 
-`=+` adds a noun to the subject. In our case, the noun in question is the core
+`=+` adds a [noun](/docs/glossary/noun/) to the subject. In our case, the [noun](/docs/glossary/noun/) in question is the [core](/docs/glossary/core/)
 that is opened with `|%` and closed with `--`. This core is used to store types,
-and does that with the arm that it contains.
+and does that with the [arm](/docs/glossary/arm/) that it contains.
 
 `++  state` creates an arm called `state`, which will be used as the name of the
 new type that is created in the code that follows, `?(%red %yellow %green)`.
@@ -89,7 +89,7 @@ With `|%`, we are finally at the meat of the program. This core that we just
 named has two arms: `look`, which gives us the current state, defined later; and
 `set`, which gives us a simple way to modify the value of `current-state`.
 
-The gate we are producing with `|=` may look a bit strange, so let's break it
+The [gate](/docs/glossary/gate/) we are producing with `|=` may look a bit strange, so let's break it
 down.
 
 `s=state` allows for an argument of type `state` and gives it a face `s`.

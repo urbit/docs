@@ -66,10 +66,10 @@ the template that is followed for all `%say` generators.
 `:-  %say` creates a cell with `%say` as that cell's head to define
 the generator's format.
 
-`|=  [[* eny=@uv *] *]` is the tail of the cell, a gate, and that gate's first
+`|=  [[* eny=@uv *] *]` is the tail of the cell, a [gate](/docs/glossary/gate/), and that gate's first
 child, a sample. Because the only external data our program is interested in
 using is entropy to seed our random-number generator, that's the only one we
-will assign a face (`eny`). The `*` elements that you see represent any noun. We
+will assign a face (`eny`). The `*` elements that you see represent any [noun](/docs/glossary/noun/). We
 use these as fillers: because we don't wish to use the data that's passed to
 those parts of the sample, we don't assign them faces.
 
@@ -135,7 +135,7 @@ elements are the `tape`s that are selected as the 8-Ball's responses.
 
 The code above is our random-number engine.
 
-`og` is the core in the standard library that contains arms that perform
+`og` is the [core](/docs/glossary/core/) in the standard library that contains [arms](/docs/glossary/arm/) that perform
 randomness-related operations. `=/  rng  ~(. og eny)` passes `eny` to the
 subject of `og`, and then stores the resulting core in a face called `rng`.
 
@@ -149,7 +149,7 @@ store the random result in `val`.
 (snag val answers)
 ```
 
-`snag` is a standard-library arm that that takes two arguments: an atom and
+`snag` is a standard-library arm that that takes two arguments: an [atom](/docs/glossary/atom/) and
 a `list`. It fetches the element in position `n` of the list, where `n` is the
 value of the atom it was passed. By using the randomized `val` as that position
 argument, we can pull a different response from `answers` every time the

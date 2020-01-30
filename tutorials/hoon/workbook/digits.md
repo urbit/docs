@@ -33,7 +33,7 @@ need some "boilerplate" code in the format of `[%say [%noun "data"]]`:
 
 The head of this cell is the literal `%say`.
 
-In the tail is the gate and its sample: `|=  [* [n=@ud ~] ~]`. This is
+In the tail is the [gate](/docs/glossary/gate/) and its sample: `|=  [* [n=@ud ~] ~]`. This is
 where we describe any arguments we are expecting to be passed in when the
 generator is called. We are expecting data of type `@ud`. We give the data the
 face `n` so that we can easily reference it later.

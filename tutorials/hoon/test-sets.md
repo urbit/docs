@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this walkthrough we will show how to use Ford as a testing suite.
 
-First we will cover the essential molds, arms, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).
+First we will cover the essential molds, [arms](/docs/glossary/arm/), and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).
 
 ## Running our first test
 
@@ -41,9 +41,9 @@ Here, we ran a generator called `+test` with a path argument `/sys/hoon/set`. Th
 ::
 |%
 ```
-We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](@/docs/tutorials/hoon/ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a core which will contain arms that perform our tests, which we will see an example of shortly.
+We note that the first line that isn't a comment is `/+  *test`, which from [the previous lesson](@/docs/tutorials/hoon/ford.md) you know means that we are importing the shared library `lib/test.hoon`. This is followed by a [core](/docs/glossary/core/) which will contain arms that perform our tests, which we will see an example of shortly.
 
-In `lib/test.hoon`, we find a core with a few gates: `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
+In `lib/test.hoon`, we find a core with a few [gates](/docs/glossary/gate/): `expect-eq`, `expect-fail`, and `category`. The source for `expect-eq` is:
 ```hoon
 ++  expect-eq
   |=  [expected=vase actual=vase]
@@ -127,7 +127,7 @@ We see that this arm returns a `tang`, i.e. a pretty-printed message, and adds s
       !>  ~
       !>  (~(int in s-nul) s-asc)
 ```
-`%+` is used to call a gate with a cell sample.  `expect-eq` is the gate, `!>  ~` is the head of the sample, and `!>  (~(int in s-nul) s-asc)` is the tail of the sample.  `!>` is a rune used to wrap a noun in its type - in other words, it produces a `vase`. We've seen this rune before when we learned about the type spear `-:!>`. Thus, what this block of code is doing is checking whether the expected `vase` that is the product of `!>  ~` is equal to the `vase` that is the product of `!>  (~(int in s-nul) s-asc)`. `s-nul` is simply the empty set, and here we are taking the intersection of the empty set with `s-asc`, a non-empty set. This ought to produce the empty set of course, and so when this block of code runs, we compare the expected result `!>  ~` (which is something we determined by hand) with the actual result `!>  (~(int in s-nul) s-asc)`.
+`%+` is used to call a gate with a cell sample.  `expect-eq` is the gate, `!>  ~` is the head of the sample, and `!>  (~(int in s-nul) s-asc)` is the tail of the sample.  `!>` is a rune used to wrap a [noun](/docs/glossary/noun/) in its type - in other words, it produces a `vase`. We've seen this rune before when we learned about the type spear `-:!>`. Thus, what this block of code is doing is checking whether the expected `vase` that is the product of `!>  ~` is equal to the `vase` that is the product of `!>  (~(int in s-nul) s-asc)`. `s-nul` is simply the empty set, and here we are taking the intersection of the empty set with `s-asc`, a non-empty set. This ought to produce the empty set of course, and so when this block of code runs, we compare the expected result `!>  ~` (which is something we determined by hand) with the actual result `!>  (~(int in s-nul) s-asc)`.
 ```hoon
     %+  expect-eq
       !>  ~

@@ -5,11 +5,11 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/nouns/"]
 +++
 
-In Urbit, every piece of data is a noun.  In order to understand Hoon, one must first understand nouns.
+In Urbit, every piece of data is a [noun](/docs/glossary/noun/).  In order to understand Hoon, one must first understand nouns.
 
 ## Noun Definition
 
-A **noun** is either an atom or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
+A **noun** is either an [atom](/docs/glossary/atom/) or a cell.  An **atom** is a natural number ("unsigned integer" in computer lingo) of any size, including zero.  A **cell** is an [ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) of nouns, usually indicated with square brackets around the nouns in question; i.e., `[a b]`, where `a` and `b` are nouns.
 
 Here are some atoms:
 

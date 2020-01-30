@@ -16,7 +16,7 @@ There are four kinds of generators: naked, `%say`, `%get`, and `%ask`.
 ### Naked Generators
 
 A naked generator is simply a `gate`; that is, it is an anonymous function that
-takes a `sample` (argument) and produces a noun. All you need to do is write a
+takes a `sample` (argument) and produces a [noun](/docs/glossary/noun/). All you need to do is write a
 `gate` and put it into a file in the `/gen` directory. Let's take a look at a
 very simple one:
 
@@ -49,7 +49,7 @@ an `aura` is type metadata and does other things, too.
 
 In the example above, we didn't specify an `aura`, leaving the printer to fend
 for itself. `"asdf"` is a `tape`, a type that is simply a `list` of `cords`. A
-`cord` is itself an atom represented as a string of UTF-8 characters. When used
+`cord` is itself an [atom](/docs/glossary/atom/) represented as a string of UTF-8 characters. When used
 as part of a `tape`, the `cord` is only a single character. So each atom in the
 `[97 115 100 102 0]` output corresponds to a component of the `tape`: 97 is
 `a`, 115 is `s`, 100 is `d`, 102 is `f`, and `0` is the "null" that every list
@@ -141,7 +141,7 @@ the `|=  *` expression on the line that follows.
 (add 40 2)
 ```
 
-`|=  *` constructs a gate that takes a noun. This gate will itself produce a
+`|=  *` constructs a [gate](/docs/glossary/gate/) that takes a noun. This [gate](/docs/glossary/gate/) will itself produce a
 `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is
 `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the
 `cask`  will be our actual data produced by the body of the program: in this
@@ -230,8 +230,8 @@ In the code, our sample specifies faces on all of the Arvo data, meaning that we
 can easily access them. We also require the argument `[n=@ud ~]`, and allow the
 _optional_ argument `[bet=@ud ~]`.
 
-But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` arm
-out of the `og` core with the subject of `eny`. Recall that `eny` is our entropy
+But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` [arm](/docs/glossary/arm/)
+out of the `og` [core](/docs/glossary/core/) with the subject of `eny`. Recall that `eny` is our entropy
 value, so this is used to seed the generator. The `rad` arm will give us a
 pseudorandom number between 0 and `n`. Then we form a cell with the result and
 `bet`, the optional named argument specified previously.
@@ -601,4 +601,4 @@ result of the generator.
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and [doors](/docs/glossary/door/).  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.

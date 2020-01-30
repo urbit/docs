@@ -122,8 +122,8 @@ and Nock are two layers: Hoon, the practical layer, compiles itself to Nock, the
 simple layer.  Your urbit runs in Vere, which includes a Nock interpreter, so it
 can upgrade Hoon over the network without downtime.
 
-The Nock data model is quite simple.  Every piece of data is a 'noun'.  A noun
-is an atom or a cell.  An atom is any unsigned integer.  A cell is an ordered
+The Nock data model is quite simple.  Every piece of data is a 'noun'.  A [noun](/docs/glossary/noun/)
+is an [atom](/docs/glossary/atom/) or a cell.  An atom is any unsigned integer.  A cell is an ordered
 pair of nouns.  Nouns are acyclic and expose no pointer equality test.
 
 ### Vere

@@ -61,7 +61,7 @@ definable in a regular recursive data type).
 
 ## Specification
 
-An agent is defined as a core with a set of arms to handle various
+An agent is defined as a [core](/docs/glossary/core/) with a set of [arms](/docs/glossary/arm/) to handle various
 events.  These handlers usually produce a list of effects and the next
 state of the agent.  The interface definition can be found in
 `sys/zuse.hoon`, which at the time of writing is:
@@ -361,7 +361,7 @@ the subscription.
 ### Vases and cages
 
 A `vase` is a piece of dynamic data.  Structurally, it's a pair of an
-explicit reification of a type and an untyped noun.  This lets us
+explicit reification of a type and an untyped [noun](/docs/glossary/noun/).  This lets us
 represent a value which has a type that isn't known at compile time.  A
 vase has three operations:
 

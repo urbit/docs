@@ -54,7 +54,7 @@ You can find the full definition of `bowl` in `sys/zuse.hoon`, but for now it's 
 - `eny`  Guaranteed-fresh entropy
 - `now`  The current time
 
-The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the arm with the name that matches the mark of the data. Here we use the generic `noun` mark:
+The `door` we've made has two [arms](/docs/glossary/arm/) `poke-noun` and `wake`. Gall is capable of dispatching `pokes`, or requests, to an app based on the mark of the data given along with that poke. These are sent to the [arm](/docs/glossary/arm/) with the name that matches the mark of the data. Here we use the generic `noun` mark:
 
 ```hoon
 ++  poke-noun
@@ -64,13 +64,13 @@ The `door` we've made has two arms `poke-noun` and `wake`. Gall is capable of di
   [ost %wait /egg-timer (add now t)]
 ```
 
-In the above code, we create a gate that takes a single `@dr` argument. `@dr` is an aura for a 128-bit relative date. Here are a few examples.
+In the above code, we create a [gate](/docs/glossary/gate/) that takes a single `@dr` argument. `@dr` is an aura for a 128-bit relative date. Here are a few examples.
 
 - `~s17`  17 seconds
 - `~m20`  20 minutes
 - `~d42`  42 days
 
-As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we `bunt` with `*`, is the head; `+>.$`, the enclosing core which is our `door`, is the tail.
+As a matter of good type hygiene, we explicitly cast the output of this gate with `^+` to ensure we are producing the correct thing for Gall to handle. `^+` is the rune for casting by example. Our example is a cell: `list` of `move`, which we `bunt` with `*`, is the head; `+>.$`, the enclosing [core](/docs/glossary/core/) which is our `door`, is the tail.
 
 Next we're going to use the `:_` rune which is just the inverted form a `:-` the cell construction rune. We use it twice so the actual data will end up looking something like:
 

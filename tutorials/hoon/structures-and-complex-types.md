@@ -36,7 +36,7 @@ Accordingly, the structures produced by the type subexpressions above aren't par
 
 ### Type Example Values ('Bunt' Values)
 
-In other cases, structures _can_ have an effect on runtime semantics.  For example, consider the expression `|=(a=@ 15)`.  This produces a gate that takes any atom as its sample and returns `15`.
+In other cases, structures _can_ have an effect on runtime semantics.  For example, consider the expression `|=(a=@ 15)`.  This produces a [gate](/docs/glossary/gate/) that takes any [atom](/docs/glossary/atom/) as its sample and returns `15`.
 
 The `@` subexpression of `|=(a=@ 15)` produces a structure at compile time.  In the compiled program this structure is converted to a default value for the appropriate type, sometimes called an **example** value (or a **bunt** value).
 
@@ -99,7 +99,7 @@ Structures can also become gates at runtime.  To produce such a gate, use a type
 >
 ```
 
-In all three cases, the result of evaluation is a gate.  For each, the head is a single arm, signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are sometimes called **molds**.
+In all three cases, the result of evaluation is a gate.  For each, the head is a single [arm](/docs/glossary/arm/), signified by `1.xxx`.  The sample -- i.e., the head of the tail -- in each case is of the type `*`.  These gates are sometimes called **molds**.
 
 Molds are gates with two special properties: (1) they are guaranteed to produce a value of the type indicated by the type expression, and (2) they are [idempotent](https://en.wikipedia.org/wiki/Idempotence).  (A gate `i` is idempotent if and only if the result of applying `i` multiple times to a value produces the same result as applying it once.  In other words, `(i val)` must produce the same result as `(i (i val))`.)
 
@@ -143,7 +143,7 @@ Let's review (1) and (2) briefly.
 
 ### Basic Types
 
-The basic types of Hoon are: `*` for nouns, `@` for atoms (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
+The basic types of Hoon are: `*` for [nouns](/docs/glossary/noun/), `@` for atoms (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
 
 Let's illustrate with the irregular `\` \`` cast syntax:
 

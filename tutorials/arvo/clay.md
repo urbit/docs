@@ -24,7 +24,7 @@ foreign ships.
 ## Architecture
 
 Clay is the primary filesystem for the arvo operating system,
-which is the core of an urbit. The architecture of clay is
+which is the [core](/docs/glossary/core/) of an urbit. The architecture of clay is
 intrinsically connected with arvo, but we assume no knowledge of
 either arvo or urbit. We will point out only those features of
 arvo that are necessary for an understanding of clay, and we will
@@ -207,7 +207,7 @@ convert back to `%txt`. The diff, patch, and merge algorithms are
 fairly straightforward for json, though they're very different
 from the text ones.
 
-More formally, a mark is a core with three arms, `++grab`,
+More formally, a mark is a core with three [arms](/docs/glossary/arm/), `++grab`,
 `++grow`, and `++grad`. In `++grab` is a series of functions to
 convert from other marks to the given mark.  In `++grow` is a
 series of functions to convert from the given mark to other
@@ -922,7 +922,7 @@ very limited usefulness, and is not used at the moment.
 which is your classic diff. We, however, will work on any list of data.
 
 `%d` refers to changes in a tree of data. This is general enough to
-describe changes to any hoon noun, but often more special-purpose delta
+describe changes to any hoon [noun](/docs/glossary/noun/), but often more special-purpose delta
 should be created for different content types. This is not used at the
 moment, and may in fact be unimplemented.
 
@@ -2442,7 +2442,7 @@ We'll examine `++knit` and `++wake`, in that order.
           ==
 ```
 
-This is kind of a long gate, but don't worry, it's not bad at all.
+This is kind of a long [gate](/docs/glossary/gate/), but don't worry, it's not bad at all.
 
 First, we assert that we're not a domestic desk. That wouldn't make any
 sense at all.

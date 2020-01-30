@@ -44,7 +44,7 @@ These are regular forms -- every rune can be written this way.
 Hoon also has a variety of wide [irregular forms](@/docs/reference/hoon-expressions/irregular.md).  All tall
 forms are regular.  All code within a wide form is wide.
 Almost all code has both wide and tall forms, the exception
-being named cores.
+being named [cores](/docs/glossary/core/).
 
 The goal of wide/tall forms is to resemble the look of
 procedural code, with its statement/expression distinction,

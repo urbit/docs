@@ -4,7 +4,7 @@ weight = 15
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/arms-and-cores/"]
 +++
-The Hoon subject is a noun.  Each fragment of this noun is either an arm or a leg.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an arm is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we must also introduce an important Hoon data structure: a 'core'.
+The Hoon subject is a [noun](/docs/glossary/noun/).  Each fragment of this [noun](/docs/glossary/noun/) is either an [arm](/docs/glossary/arm/) or a leg.  In the previous lesson you learned what a leg is, and how to return legs of the subject by various means.  In this lesson you'll learn what an [arm](/docs/glossary/arm/) is.  Arms are a bit more complex than legs -- a full understanding of them requires a bit more background knowledge.  Accordingly, in this lesson we must also introduce an important Hoon data structure: a '[core](/docs/glossary/core/)'.
 
 After arms are defined and explained we review wing expressions, this time focusing on wing resolution to arms.
 
@@ -14,9 +14,9 @@ Arms and legs are limbs of the subject, i.e., noun fragments of the subject.  In
 
 An **arm** is some expression of Hoon encoded as a noun.  (By 'encoded as a noun' we literally mean: 'compiled to a Nock formula'.  But you don't need to know anything about Nock to understand Hoon.)  You virtually never need to treat an arm as raw data, even though technically you can -- it's just a noun like any other.  You virtually always want to think of an arm simply as a way of running some Hoon code.
 
-Every expression of Hoon is evaluated relative to a subject.  What subject is the arm to be evaluated against?  Answer: the parent core of that arm.
+Every expression of Hoon is evaluated relative to a subject.  What subject is the arm to be evaluated against?  Answer: the parent [core](/docs/glossary/core/) of that arm.
 
-So in order to understand fully what an arm is, you must understand what a core is.  Briefly, a **core** is a cell of `[battery payload]`.  The **battery** is a collection of one or more arms, and the **payload** is the data needed by the arms to evaluate correctly.  (The battery is code and the payload is data for that code.)  A given core is the **parent core** of all of the arms in its battery.
+So in order to understand fully what an arm is, you must understand what a core is.  Briefly, a **core** is a cell of `[battery payload]`.  The **battery** is a collection of one or more arms, and the **payload** is the data needed by the arms to evaluate correctly.  (The battery is code and the [payload](/docs/glossary/payload/) is data for that code.)  A given core is the **parent core** of all of the arms in its battery.
 
 ## Your First Core
 
@@ -110,7 +110,7 @@ Now use the following multi-line expression to bind `c` to a core.  As before, f
 
 Note: binding `c` to the core created by the `|%` expression will fail unless you have already bound `a` and `b` to the relevant values, as we did above.  Our having already bound them is what lets us use them in the `|%` expression.
 
-The `|%` expression above creates a core with four arms.  The first, named `two`, evaluates to the constant `2`.  The second arm, `inc`, adds `1` to `a`.  `double` returns double the value of `a`, and `sum` returns the sum of the two atoms in `b`.  The computations defined by these arms are pretty simple (and in the case of `two`, trivial), but a good starting point for learning about cores.
+The `|%` expression above creates a core with four arms.  The first, named `two`, evaluates to the constant `2`.  The second arm, `inc`, adds `1` to `a`.  `double` returns double the value of `a`, and `sum` returns the sum of the two [atoms](/docs/glossary/atom/) in `b`.  The computations defined by these arms are pretty simple (and in the case of `two`, trivial), but a good starting point for learning about cores.
 
 Let's run the arm names in the dojo:
 

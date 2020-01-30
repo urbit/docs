@@ -12,7 +12,7 @@ The word 'function' is used in various ways, but let's start by talking about th
 
 That output value depends solely upon input value(s) is an important property of functions.  This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and we make use of it throughout the Urbit software stack.
 
-Functions are implemented in Hoon with a special kind of core called a **gate**.  In this lesson you'll learn what a gate is and how a gate represents a function.  Along the way you'll build some example gates of your own.
+Functions are implemented in Hoon with a special kind of [core](/docs/glossary/core/) called a **gate**.  In this lesson you'll learn what a [gate](/docs/glossary/gate/) is and how a gate represents a function.  Along the way you'll build some example gates of your own.
 
 You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with gates, and you call them from the dojo in the following way:
 
@@ -28,7 +28,7 @@ You've already used two functions from the Hoon standard library: `add` and `mul
 
 A core is a cell: `[battery payload]`.
 
-A gate is a core with two distinctive properties: (1) the battery of a gate contains exactly one arm, which has the special name `$`.  The `$` arm contains the instructions for the function in question.  And (2), the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` arm of the gate correctly.
+A gate is a core with two distinctive properties: (1) the battery of a gate contains exactly one [arm](/docs/glossary/arm/), which has the special name `$`.  The `$` [arm](/docs/glossary/arm/) contains the instructions for the function in question.  And (2), the payload of a gate consists of a cell of `[sample context]`.  The sample is the part of the payload that stores the 'argument' (i.e., input value) of the function call.  The context contains all other data that is needed for computing the `$` [arm](/docs/glossary/arm/) of the gate correctly.
 
 ```
 Gate:  [$ [Sample Context]]
@@ -48,7 +48,7 @@ Like all arms, `$` is computed with its parent core as the subject.  When `$` is
 
 ## Creating Your First Gate
 
-Let's make a gate that takes any unsigned integer (i.e., an atom) as its sample and returns that value plus one as the product.  To do this we'll use the `|=` rune.  We'll bind this gate to the face `inc` for 'increment':
+Let's make a gate that takes any unsigned integer (i.e., an [atom](/docs/glossary/atom/)) as its sample and returns that value plus one as the product.  To do this we'll use the `|=` rune.  We'll bind this gate to the face `inc` for 'increment':
 
 ```
 > =inc |=(a=@ (add 1 a))
@@ -93,7 +93,7 @@ A gate is a one-armed core with a sample: `[$ [Sample Context]]`.  Let's go over
 
 The arm of a gate encodes the instructions for the Hoon function in question.
 
-The pretty printer represents the `$` arm of `inc` as `1.jgn`.  To see the actual noun of the `$` arm, enter `+2:inc` into the dojo:
+The pretty printer represents the `$` arm of `inc` as `1.jgn`.  To see the actual [noun](/docs/glossary/noun/) of the `$` arm, enter `+2:inc` into the dojo:
 
 ```
 > +2:inc

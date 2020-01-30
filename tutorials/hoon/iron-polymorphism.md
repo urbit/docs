@@ -5,11 +5,11 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/iron-polymorphism/"]
 +++
 
-Polymorphism is a programming concept that allows a a piece of code to use different types at different times. It's a common technique in most languages to make code that can be reused for many different situations, and Hoon is no exception. Let's take a look at a gate from the Hoon standard library as an example; we'll be passing a few different types in. The code below is an excerpt from `hoon.hoon` and, as such, will not run as-is by itself.
+Polymorphism is a programming concept that allows a a piece of code to use different types at different times. It's a common technique in most languages to make code that can be reused for many different situations, and Hoon is no exception. Let's take a look at a [gate](/docs/glossary/gate/) from the Hoon standard library as an example; we'll be passing a few different types in. The code below is an excerpt from `hoon.hoon` and, as such, will not run as-is by itself.
 
 `fold` is a _wet_ gate that takes two arguments and produces a _dry_ gate. But what are wet and dry gates?
 
-A dry gate (also simply a _gate_) is the kind that you're already familiar with by now: a one-armed core with a sample. A wet gate is also a one-armed core with a sample, but there is a difference. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a nest failure. On the other hand, when you pass arguments to a wet gate, their types are preserved and type analysis is done at the definition site of the gate -- in our case, `fold` in `hoon.hoon` -- rather than the call site.
+A dry gate (also simply a _gate_) is the kind that you're already familiar with by now: a one-armed [core](/docs/glossary/core/) with a sample. A wet gate is also a one-armed [core](/docs/glossary/core/) with a sample, but there is a difference. With a dry gate, when you pass in an argument and the code gets compiled, the type system will try to cast to the type specified by the gate; if you pass something that does not fit in the specified type, for example a `cord` instead of a `cell` you will get a nest failure. On the other hand, when you pass arguments to a wet gate, their types are preserved and type analysis is done at the definition site of the gate -- in our case, `fold` in `hoon.hoon` -- rather than the call site.
 
 ```hoon
 ++  fold  
@@ -21,7 +21,7 @@ A dry gate (also simply a _gate_) is the kind that you're already familiar with 
    $(xs t.xs, st (f st i.xs))
 ```
 
-On the first line of the arm, we use `|*` to create a wet gate, with two arguments: `state` and `elem`. These arguments are both `mold`s; that is to say, they are type definitions. We use this to define the types used in the dry gate.
+On the first line of the [arm](/docs/glossary/arm/), we use `|*` to create a wet gate, with two arguments: `state` and `elem`. These arguments are both `mold`s; that is to say, they are type definitions. We use this to define the types used in the dry gate.
 
 ```hoon
 |=  [[st=state xs=(list elem)] f=$-([state elem] state)]

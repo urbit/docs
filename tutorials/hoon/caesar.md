@@ -122,16 +122,16 @@ itself before reading the explanation.
 The `!:` in the first line of the above code enables a full stack trace in the
 event of an error.
 
-`|=  [msg=tape key=@ud]` creates a gate that takes a cell. The head of this cell
+`|=  [msg=tape key=@ud]` creates a [gate](/docs/glossary/gate/) that takes a cell. The head of this cell
 is a `tape`, which is a string type that's a list of `cord`s. Tapes are represented
 as text surrounded by double-quotes, such as this: `"a tape"`. We give this input
-tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal atom
+tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [atom](/docs/glossary/atom/)
 -- that we give the face `key`.
 
 `=<` is the rune that evaluates its first child expression with respect to its
 second child expression as the subject. In this case, we evaluate the
-expressions in the code chunk below against the core declared later, which
-allows us reference the core's contained arms before they are defined. Without
+expressions in the code chunk below against the [core](/docs/glossary/core/) declared later, which
+allows us reference the core's contained [arms](/docs/glossary/arm/) before they are defined. Without
 `=<`, we would need to put the code chunk below at the bottom of our program.
 
 ```hoon
@@ -209,13 +209,13 @@ value. A `map` is a type equivalent to a dictionary in other languages: it's a
 data structure that associates a key with a value. If, for example, we wanted
 to have an association between `a` and 1 and `b` and 2, we could use a `map`.
 
-`=|  chart=(map @t @t)` adds a noun to the subject with the default value of
+`=|  chart=(map @t @t)` adds a [noun](/docs/glossary/noun/) to the subject with the default value of
 the `(map @t @t)` type, and gives that noun the face `chart`.
 
 `?.  =((lent a) (lent b))` checks if the two tapes are the same length. If not,
 the program crashes.
 
-`|-` creates a trap, a gate that is called immediately.
+`|-` creates a [trap](/docs/glossary/trap/), a gate that is called immediately.
 
 `?:  |(?=(~ a) ?=(~ b))` checks if either tape is empty. If this is true, we
 the program is finished and can return `chart`, the the `map` that we have been

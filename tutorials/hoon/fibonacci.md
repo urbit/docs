@@ -21,7 +21,7 @@ In this example, we will write a generator that produces a list of Fibonacci num
 ==
 ```
 
-On the first line, we use `|=` to produce a gate which takes an `@ud` that's stored in the face `n`. This `n` sample that we give our gate determines how long our Fibonacci sequence is. When the list that our program builds has `n` members, the program ends.
+On the first line, we use `|=` to produce a [gate](/docs/glossary/gate/) which takes an `@ud` that's stored in the face `n`. This `n` sample that we give our [gate](/docs/glossary/gate/) determines how long our Fibonacci sequence is. When the list that our program builds has `n` members, the program ends.
 
 ```hoon
 %-  flop
@@ -58,4 +58,4 @@ In the code above, `?:` checks whether the first child, `=(i n)`, our terminatin
 ==
 ```
 
-The final expression in our program calls the `$` arm of the trap we are in but makes some changes: we increment `i`, set `p` to be `q` and `q` becomes the sum of `p` and `q`. `r` becomes a cell of `q` and whatever `r` was previously. The list built from this is the one that will get `flop`ped to produce the result at the end of the computation.
+The final expression in our program calls the `$` [arm](/docs/glossary/arm/) of the [trap](/docs/glossary/trap/) we are in but makes some changes: we increment `i`, set `p` to be `q` and `q` becomes the sum of `p` and `q`. `r` becomes a cell of `q` and whatever `r` was previously. The list built from this is the one that will get `flop`ped to produce the result at the end of the computation.

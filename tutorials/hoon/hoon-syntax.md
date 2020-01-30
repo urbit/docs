@@ -57,11 +57,11 @@ An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29 
 
 Hoon expressions can be either basic or complex.  Basic expressions of Hoon are fundamental, meaning that they can't be broken down into smaller expressions.  Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
-There are many categories of Hoon expressions: noun literals, wing expressions, type expressions, and rune expressions.  Let's go over each.
+There are many categories of Hoon expressions: [noun](/docs/glossary/noun/) literals, wing expressions, type expressions, and rune expressions.  Let's go over each.
 
 ### Noun Literals
 
-A noun is either an atom or a cell.  An atom is an unsigned integer and a cell is a pair of nouns.
+A noun is either an [atom](/docs/glossary/atom/) or a cell.  An [atom](/docs/glossary/atom/) is an unsigned integer and a cell is a pair of nouns.
 
 There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29 ) expressions for each kind of noun.  A noun literal is just a notation for representing a fixed noun value.
 
@@ -124,7 +124,7 @@ Let's start with the base case: a single limb.  A limb expression is a trivial w
 - `add`
 - `mul`
 
-As a special limb we also have `$`.  This is the name of the arm in special one-armed cores called "gates".  (We'll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
+As a special limb we also have `$`.  This is the name of the [arm](/docs/glossary/arm/) in special one-armed [cores](/docs/glossary/core/) called "gates".  (We'll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions.  Examples:
 
@@ -254,7 +254,7 @@ The irregular form of the `.=` rune is just `=( )`:
 %.y
 ```
 
-The examples above have another irregular form: `(add 11 11)`.  This is the irregular form of `%+`, which calls a gate (i.e., a Hoon function) with two arguments for the sample.
+The examples above have another irregular form: `(add 11 11)`.  This is the irregular form of `%+`, which calls a [gate](/docs/glossary/gate/) (i.e., a Hoon function) with two arguments for the sample.
 
 ```
 > %+  add  11  11

@@ -44,9 +44,9 @@ There's a few things going on in our first line. The first part of it, `|=`, is 
 
 All runes take a fixed number of "children." Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. For this reason, we very rarely need to close expressions. Keep this scheme in mind when examining Hoon code.
 
-The specific purpose of the `|=` rune is to create a **gate**. A gate is what would be called a function in other languages: it takes an input, performs a specified computation, and then produces an output.
+The specific purpose of the `|=` rune is to create a **gate**. A [gate](/docs/glossary/gate/) is what would be called a function in other languages: it takes an input, performs a specified computation, and then produces an output.
 
-Because we're only on line 1, all we're doing with the gate is creating it, and then specifying what kind of input the gate takes with that rune's first child: `end=@`. The `end` part of our code is simply a name that we give to the user's input so that we can use the number later. `=@` means that we restrict the kind of input that our gate accepts to the **atom** type, or `@` for short. An atom is a natural number.
+Because we're only on line 1, all we're doing with the gate is creating it, and then specifying what kind of input the gate takes with that rune's first child: `end=@`. The `end` part of our code is simply a name that we give to the user's input so that we can use the number later. `=@` means that we restrict the kind of input that our gate accepts to the **atom** type, or `@` for short. An [atom](/docs/glossary/atom/) is a natural number.
 
 Our program is simple, so the _entire program_ is the gate that's being created here. The rest of our lines of code are part of the second child of our gate, and they determine how our gate produces an output.
 
