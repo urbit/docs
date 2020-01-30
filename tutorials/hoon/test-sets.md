@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this walkthrough we will show how to use Ford as a testing suite.
 
-First we will cover the essential molds, [arm](/docs/glossary/arm/)s, and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).
+First we will cover the essential molds, [arms](/docs/glossary/arm/), and generators used for testing, followed by walking through the code that implements a series of tests for standard library sets, as described [here](@/docs/tutorials/hoon/trees-sets-and-maps.md).
 
 ## Running our first test
 

@@ -12,7 +12,7 @@ The word 'function' is used in various ways, but let's start by talking about th
 
 That output value depends solely upon input value(s) is an important property of functions.  This property is called [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency), and we make use of it throughout the Urbit software stack.
 
-Functions are implemented in Hoon with a special kind of [core](/docs/glossary/core/) called a **gate**.  In this lesson you'll learn what a [gate](/docs/glossary/gate/) is and how a [gate](/docs/glossary/gate/) represents a function.  Along the way you'll build some example [gate](/docs/glossary/gate/)s of your own.
+Functions are implemented in Hoon with a special kind of [core](/docs/glossary/core/) called a **gate**.  In this lesson you'll learn what a [gate](/docs/glossary/gate/) is and how a gate represents a function.  Along the way you'll build some example gates of your own.
 
 You've already used two functions from the Hoon standard library: `add` and `mul`.  These are implemented with gates, and you call them from the dojo in the following way:
 

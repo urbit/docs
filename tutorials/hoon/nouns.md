@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/nouns/"]
 +++
 
-In Urbit, every piece of data is a [noun](/docs/glossary/noun/).  In order to understand Hoon, one must first understand [noun](/docs/glossary/noun/)s.
+In Urbit, every piece of data is a [noun](/docs/glossary/noun/).  In order to understand Hoon, one must first understand nouns.
 
 ## Noun Definition
 

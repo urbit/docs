@@ -131,7 +131,7 @@ tape the face `msg`. The tail of our cell is a `@ud` -- an unsigned decimal [ato
 `=<` is the rune that evaluates its first child expression with respect to its
 second child expression as the subject. In this case, we evaluate the
 expressions in the code chunk below against the [core](/docs/glossary/core/) declared later, which
-allows us reference the core's contained [arm](/docs/glossary/arm/)s before they are defined. Without
+allows us reference the core's contained [arms](/docs/glossary/arm/) before they are defined. Without
 `=<`, we would need to put the code chunk below at the bottom of our program.
 
 ```hoon

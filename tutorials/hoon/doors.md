@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/doors/"]
 +++
 
-It's useful to have [core](/docs/glossary/core/)s whose [arms](/docs/glossary/arm/) evaluate to make [gates](/docs/glossary/gate/).  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
+It's useful to have [cores](/docs/glossary/core/) whose [arms](/docs/glossary/arm/) evaluate to make [gates](/docs/glossary/gate/).  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
 
 In this lesson you'll also learn about a new kind of core, called a 'door'.
 
