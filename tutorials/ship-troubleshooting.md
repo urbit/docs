@@ -92,10 +92,6 @@ Since version `0.8.0`, changes no longer automatically sync between the Unix sid
 
 ## Connectivity Issues {#connectivity-issues}
 
-### I can `|hi` my sponsor star, but I cannot get syncs from it or discover peers
-
-This means you have one-way connectivity with your star, with your star being unable to send your messages; many connectivity problems are derived from this. Run `|nuke ~star`, where `~star` is your sponsor star in the Dojo. Then run `|nuke ~star` again. This can solve various communication problems. You can find your sponsor by running `(sein:title our now our)`.
-
 ### I can't communicate with anyone
 
 You may have booted a ship with your keyfile twice in the same era. To fix this, you must perform a [personal breach](#personal-breach).
@@ -131,24 +127,6 @@ The above commands work if you have the wrong keys of other ships. If other ship
 ### I can talk to some ships, but I can't talk to my sponsor and some other ships
 
 This is the result of deleting your pier and starting your ship again. To fix this, you must perform a [personal breach](#personal-breach).
-
-### I have two ships, and only one can connect with the other
-
-One-way connectivity (OWC) means that ship `~A` can't `|hi` ship `~B`, but ship `~B` can `|hi` ship `~A`. If you have two ships that are suffering from this problem, it can be solved by a series of steps.
-
-1. Turn both ships off and on again. This sometimes solves this problem.
-
-2. On ship `~B` -- the ship that can connect to the other -- `|nuke ~A`, where `~A` is the ship that cannot `|hi` the other. Wait several minutes. Do you see any messages in your console? If not, try sending a `|hi ~A` from `~B`. If “blocked” or similar messages start appearing, `|nuke ~A` again to unblock, and check if connectivity has been restored.
-
-3. If you can’t get any packets to be sent to `~B`, you’re going to have to temporarily modify your ship’s Ames to trick it into sending packets. Make sure to do this on its home desk so as to not impact any syncs. Open `~A/home/sys/vanes/ames.hoon` and find `++  harv`. Just above `(gth caw nif) check`, insert the a line of this code: `=?  caw  =(caw nif)  +(caw)`. Save the file and run `|commit %home`.
-
-4. Try running `|hi ~B`. Wait a bit. Are you seeing `%blocked` or `%bad-ack` messages yet? If not, send another `|hi ~B`.
-
-5. Once the messages start rolling in, revert the Ames change that you made on `~A` in step 3. Then `|nuke ~A` again from `~B`. Wait a little bit, then check if this resolved the OWC.
-
-6. If the OWC is still not resolved, try step 6.
-
-7. Be patient. After following these steps, your |hi may still not go through instantly even though OWC has silently been fixed: there could be something like a very large sync queued up.
 
 ## Booting Issues {#booting-issues}
 
