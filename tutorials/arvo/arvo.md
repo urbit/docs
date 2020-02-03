@@ -14,7 +14,7 @@ This article is intended to provide a thorough summary of all of the most
 important aspects of the Arvo kernel and how this functionality gives life to
 the ambitions of the Urbit platform. We work on two levels: a conceptual level
 that should be useful to anybody interested in how Arvo works, and a more
-technical level intended for those that intend to write software for Urbit. 
+technical level intended for those that intend to write software for Urbit.
 
 The [Urbit white paper](https://media.urbit.org/whitepaper.pdf) is a good
 companion to this document, and some segments are direct quotes or paraphrases, but it should be noted that some parts of it are now either out of date or not yet implemented.
@@ -23,7 +23,7 @@ companion to this document, and some segments are direct quotes or paraphrases, 
 
 The conceptual section titled [What is Arvo?](#what-is-arvo-) can be understood
 without knowing Hoon, the Urbit programming language. The technical section
-titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/concepts/technical-overview.md).
+titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/tutorials/concepts/technical-overview.md).
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
@@ -102,7 +102,7 @@ Arvo as being a stateful packet transceiver rather than an ordinary computer - e
 are never guaranteed to complete, even if one can prove that the computation
 would eventually terminate. We elaborate on this in the [solid state
 interpreter](#solid-state-intrepeter) section.
- 
+
 Because Arvo is run on a VM, nondeterministic information such as the stack
 trace of an infinite loop that was entered into may be obtained. This is
 possible because while Arvo may be unable to obtain that information, the
@@ -204,7 +204,7 @@ Database theory studies in precise terms the possible properties of anything tha
    Arvo
    transactions are sequential and performed by the daemon, persistence and effect application are performed
    in parallel by the worker; see [worker and
-   daemon](@/docs/tutorials/vere/_index.md) for more detail. 
+   daemon](@/docs/tutorials/vere/_index.md) for more detail.
 
  - Durability: Completed transactions will survive permanently. In other words,
    since the event log is stored on disk, if power is lost you are guaranteed
@@ -214,7 +214,7 @@ It is easy to think that "completed transaction will survive permanently"
 along with "the state of Arvo is pure function of its event log" implies that
 nothing can ever be deleted. This is not quite true.
 [Clay](@/docs/tutorials/arvo/clay.md) is our [referentially
-transparency](https://en.wikipedia.org/wiki/Referential_transparency) 
+transparency](https://en.wikipedia.org/wiki/Referential_transparency)
 file system, which could naively be thought to mean that since data must be
 immutable, files cannot be deleted. However, Clay can replace a file with a
 "tombstone" that causes Clay to crash whenever it is accessed. Referential
@@ -255,7 +255,7 @@ This section requires an understanding of Hoon of at least the level of Chapter 
  + Larval stage core
  + Formal interface
 
-See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores/#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
+See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores.md#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
 
 ### Formal interface
 
@@ -297,7 +297,7 @@ The Arvo causal stack is called a `duct`. This is represented simply as a list o
 
 Here's a `duct` that was recently observed in the wild upon entering `-time ~s1`
 into the dojo and pressing Enter, which sets a timer for one second that will
-then produce a `@d` with the current time after the timer has elapsed: 
+then produce a `@d` with the current time after the timer has elapsed:
 
 ```
 ~[
@@ -520,7 +520,7 @@ This is where the real state of the Arvo kernel is kept. `lac` detemines whether
 Arvo's output is verbose, which can be set using the `|verb` command in the
 dojo. `eny` is the current entropy. `our` is the ship, which is permanently
 frozen during the larval stage. `bud` is the standard library. Lastly, `vanes`
-is of course the list of vanes, which have their own internal states. 
+is of course the list of vanes, which have their own internal states.
 
 As you can see, the state of Arvo itself is quite simple. Its primary role is that of
 a traffic cop, and most of the interesting part of the state lies in `vanes`.
