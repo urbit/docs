@@ -572,14 +572,14 @@ Enter on your keyboard in Dojo towards returning a notification that one second
 has elapsed.
 
 To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
-and press Enter to enable verbose mode, followed by `-time ~s1` followed by Enter. Your prompt should
-look something like this:
+and press Enter to enable verbose mode (this is tracked by the laconic bit
+introduced in the section on [the state](#the-state)), followed by `-time ~s1`
+followed by Enter. Your terminal should display something like this:
 
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
-t=~[/d //term/1]]]
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ["|||" %pass [%g %f] [%build /use/dojo/~zod/drum/hand] [i=/d t=~[//term/1]]]
@@ -633,10 +633,8 @@ tag of the `move`. It is crucial to note here that for every arrow to the right
 of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one another,
 actually represents two arrows: one from the caller to the Arvo kernel, and then
 from the Arvo kernel to the callee. The kernel is the intermediary between all
-communications - vanes and apps do not speak directly to one another. We illustrate this
-with the following diagram:
+communications - vanes and apps do not speak directly to one another.
 
-(insert diagram)
 
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
@@ -648,7 +646,8 @@ has been entered. Here is the line of code in `arvo.hoon`, found in the [section
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]
 ```
-Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`,
+First we note that this line is executed only if the laconic bit is set to true,
+as we did when we input `|verb`. Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`,
 we can then say that this is a `%unix` `move` tagged with `%belt` whose cause is a `wire` given by `//term/1`,
 where the empty span `//` represents Unix and `term/1` represents the terminal
 in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s)
@@ -658,8 +657,9 @@ thus only a single `wire` is ever required at this initial stage.
 it means that this
 `move` was sent to Dill which then handles the next step.
 
-The `""` here is a metadatum that keeps track of how deep a
-duct is, represented by a number of `|`'s (which in this case is zero). An event
+The `""` here is a metadatum that keeps track of how many `wire`s a
+duct contains minus one, represented by a number of `|`'s (which in this case is
+zero as there is only a single wire). An event
 with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
 this case, Unix events are an "original cause" and thus represented by an empty
 string.
@@ -675,10 +675,9 @@ arm:
         ?^  tem
           +>(tem `[bet u.tem])
         (deal / [%poke [%dill-belt -:!>(bet) bet]])
-
 ```
 
-Dill has taken in the command and decides to `%poke` hood, which is a Gall app
+Dill has taken in the command and in response it sends a `%poke` `move` to hood, which is a Gall app
 primarily used for interfacing with Dill. Here, `+deal` is an arm for
 ``pass``ing a `note` to Gall to ask it to create a `%deal` `task`:
 
@@ -693,8 +692,8 @@ Next in our stack trace we have this:
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
 
-Let's glance at part of the `+jack` arm in `arvo.hoon`, also located in the [section 3bE
-core](#section-3be-core). This arm is what the Arvo kernel uses to send cards.
+Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE
+core](#section-3be-core). This arm is what the Arvo kernel uses to send `card`s.
 
 ```hoon
   ++  jack                                              ::  dispatch card
