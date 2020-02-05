@@ -60,14 +60,16 @@ a typed value from a `vase`.
 ##### Examples
 
 ```
-> !<  @p  !>  ~zod
-~zod
-
 > !<  @  !>  ~zod
 0
 
 > !<  @p  !>  0
 nest-fail
+
+> =m !>  0
+> =n !>  1
+> !<  [@ @]  (slop m n)
+[0 1]
 ```
 
 ### !: "zapcol"
