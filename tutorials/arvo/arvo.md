@@ -472,7 +472,7 @@ Once the larval stage has passed its functionality will never be used again.
 As we follow functional programming paradigms, the state of Arvo is considered
 to be the entire Arvo kernel core currently in operation (whether it be the larval
 stage or adult stage). Thus when `+poke` is performed, a new core with the
-updated state it produced, rather than modifying the existing core as would be
+updated state is produced, rather than modifying the existing core as would be
 expected to happen in an imperative setting.
 
 Thus besides the battery of the Arvo core, we have the [payload](/docs/glossary/payload/) which is as
@@ -490,6 +490,8 @@ follows.
         vanes=(list [label=@tas =vane])                 ::  modules
     ==                                                  ::
 ```
+
+Let's investigate the state piece by piece.
 
 ```hoon
 =/  pit=vase  !>(..is)                                  ::
