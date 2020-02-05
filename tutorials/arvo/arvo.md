@@ -725,9 +725,16 @@ concerning the laconic bit (following `!lac`) we can mostly determine what is be
 
 From the initial input event, Arvo has generated a `card` that it is now
 `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The
-`card` is a `%deal` card, asking Gall to `%poke` hood using data that has
+`card` is a `%deal` `card`, asking Gall to `%poke` hood using data that has
 originated from the terminal `//term/1`. The line `:-  (runt [s.gum '|'] "")`
 displays the duct depth datum mentioned above. Lastly, `[~zod ~zod]` tells us that
 `~zod` is both the sending and receiving ship.
 
-Now
+Onto the next line:
+```
+["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
+```
+
+Here is another `%pass` `move`, this time from Gall to iself as denoted by `[%g
+%g]`. Hood has received the `%deal` `card` from Dill, and in response it is
+`%poke`ing dojo.
