@@ -23,14 +23,20 @@ companion to this document, and some segments are direct quotes or paraphrases, 
 
 The conceptual section titled [What is Arvo?](#what-is-arvo-) can be understood
 without knowing Hoon, the Urbit programming language. The technical section
-titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/tutorials/concepts/technical-overview.md).
+titled [The kernel](#the-kernel) will require Chapter One of the [Hoon
+tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some
+material from Chapter Two will be helpful as well. At the bare minimum, we
+presume that the reader has read through the [Technical
+Overview](@/docs/tutorials/concepts/technical-overview.md). Lastly, we apply the
+knowledge learned in this document with a hands-on tutorial to investigate a [stack
+trace](#stack-trace-tutorial) of what happens when a timer is set in Arvo.
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
 
 # Table of Contents
 
-- [What is Arvo?](#what-is-arvo-)
+- [What is Arvo?](#what-is-arvo)
   * [An operating function](#an-operating-function)
     + [Determinism](#determinism)
     + [Event log](#event-log)
@@ -46,7 +52,7 @@ We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md
     + [Arvo cores](#arvo-cores)
   * [The state](#the-state)
   * [Vanes](#vanes)
-
+- [Stack trace tutorial](#stack-trace-tutorial)
 
 # What is Arvo?
 
@@ -548,3 +554,181 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
+
+
+## Stack trace tutorial
+
+In this section we will see some of what we learned in [the kernel](#the-kernel)
+in action - namely, we will investigate how setting a timer from the terminal
+makes its way through Arvo as a series of `move`s passed between various vanes
+and processes.
+
+<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
+
+Ultimately, everything that happens in Arvo is reduced to Unix events, and the
+Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one
+another. Here we look at how a simple command, `-time ~s1`, goes from pressing
+Enter on your keyboard in Dojo towards returning a notification that one second
+has elapsed.
+
+To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
+and press Enter to enable verbose mode, followed by `-time ~s1` followed by Enter. Your prompt should
+look something like this:
+
+```
+["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
+["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
+["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
+t=~[/d //term/1]]]
+["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
+["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+["|||" %pass [%g %f] [%build /use/dojo/~zod/drum/hand] [i=/d t=~[//term/1]]]
+["||||" %give %f %made [i=/g/use/dojo/~zod/drum/hand t=~[/d //term/1]]]
+["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
+["||||||" %give %g [%unto %watch-ack] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
+//term/1]]]
+["||||||" %pass [%g %f] [%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
+["|||||||" %give %f %made [i=/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
+["||||||||" %pass [%g %f] [%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
+["|||||||||" %give %f %made [i=/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
+["||||||||||" %pass [%g %b] [%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556] [i=/d t=~[//term/1]]]
+["|||||||||||" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
+> -time ~s1
+```
+followed by a pause of one second, then
+```
+["" %unix p=%wake //behn ~2020.1.14..19.01.26..755d]
+["|" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
+["|" %give %b %wake [i=/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 t=~[/d //term/1]]]
+["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
+["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+~s1..0007
+```
+This gives us a stack trace that is roughly a list of `move`s and some
+associated metadata. Some of the `move`s are a bit of a distraction from what's
+going on overall, such as acknowledgements that an event was received, so we've omitted several lines
+for clarity.
+
+It is important to note that this stack trace should be thought of
+as being from the "point of view" of the kernel - each line represents the
+kernel taking in a message from one source and passing it along to its
+destination. It is then processed at that destination (which could be a vane or
+an app), and the return of that process is sent back to Arvo in the form of
+another `move` to perform and the loop begins again. Thus this stack trace does
+not display information about what is going on inside of the vane or app, only
+what kinds of messages that the kernel is passing along.
+
+What is happening here can be summarized in the following diagram,
+which we will proceed to explain in detail:
+
+(insert diagram)
+
+This diagram should be read starting from the left and following the arrows.
+Each arrow represents a move where the table connected to the arrow by a dotted
+line contains some of the information about the `move` such as the `duct` and
+tag of the `move`. It is crucial to note here that for every arrow to the right
+of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one another,
+actually represents two arrows: one from the caller to the Arvo kernel, and then
+from the Arvo kernel to the callee. The kernel is the intermediary between all
+communications - vanes and apps do not speak directly to one another. We illustrate this
+with the following diagram:
+
+(insert diagram)
+
+```
+["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
+```
+The first thing that happens is that Unix informs the Arvo kernel that a command
+has been entered. Here is the line of code in `arvo.hoon`, found in the [section
+3bE core](#section-3be-core), that generated the output:
+
+```hoon
+    ~?  !lac  ["" %unix -.q.ovo p.ovo now]
+```
+Here, `ovo` is the input `ovum`. Knowing that an `ovum` is a `[p=wire q=curd]`,
+we can then say that this is a `%unix` `move` tagged with `%belt` whose cause is a `wire` given by `//term/1`,
+where the empty span `//` represents Unix and `term/1` represents the terminal
+in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s)
+since Unix I/O events are always the beginning and end of the Arvo event loop,
+thus only a single `wire` is ever required at this initial stage.
+`%belt` is a type of Dill `move` that corresponds to input and output, and here
+it means that this
+`move` was sent to Dill which then handles the next step.
+
+The `""` here is a metadatum that keeps track of how deep a
+duct is, represented by a number of `|`'s (which in this case is zero). An event
+with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
+this case, Unix events are an "original cause" and thus represented by an empty
+string.
+
+At this point in time, Dill has received the `move` and then processes it. The
+`%belt` `task` in `dill.hoon` is `+call`ed, which is processed using the `+send`
+arm:
+
+```hoon
+      ++  send                                          ::  send action
+        |=  bet/dill-belt
+        ^+  +>
+        ?^  tem
+          +>(tem `[bet u.tem])
+        (deal / [%poke [%dill-belt -:!>(bet) bet]])
+
+```
+
+Dill has taken in the command and decides to `%poke` hood, which is a Gall app
+primarily used for interfacing with Dill. Here, `+deal` is an arm for
+``pass``ing a `note` to Gall to ask it to create a `%deal` `task`:
+
+```hoon
+      ++  deal                                          ::  pass to %gall
+        |=  [=wire =deal:gall]
+        (pass wire [%g %deal [our our] ram deal])
+```
+
+Next in our stack trace we have this:
+```
+["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
+```
+
+Let's glance at part of the `+jack` arm in `arvo.hoon`, also located in the [section 3bE
+core](#section-3be-core). This arm is what the Arvo kernel uses to send cards.
+
+```hoon
+  ++  jack                                              ::  dispatch card
+    |=  [lac=? gum=muse]
+    ^-  [[p=(list ovum) q=(list muse)] _vanes]
+    ~|  %failed-jack
+    ::  =.  lac  |(lac ?=(?(%g %f) p.gum))
+    ::  =.  lac  &(lac !?=($b p.gum))
+    %^    fire
+        p.gum
+      s.gum
+    ?-    -.r.gum
+        $pass
+      ~?  &(!lac !=(%$ p.gum))
+        :-  (runt [s.gum '|'] "")
+        :^  %pass  [p.gum p.q.r.gum]
+          ?:  ?=(?(%deal %deal-gall) +>-.q.q.r.gum)
+            :-  :-  +>-.q.q.r.gum
+                (,[[ship ship] term term] [+>+< +>+>- +>+>+<]:q.q.r.gum)
+            p.r.gum
+          [(symp +>-.q.q.r.gum) p.r.gum]
+        q.gum
+      [p.q.r.gum ~ [[p.gum p.r.gum] q.gum] q.q.r.gum]
+```
+
+Code for writing stack traces can be a bit tricky, but let's try not to get too
+distracted by the lark expressions and such. By paying attention to the lines
+concerning the laconic bit (following `!lac`) we can mostly determine what is being told to us.
+
+From the initial input event, Arvo has generated a `card` that it is now
+`%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The
+`card` is a `%deal` card, asking Gall to `%poke` hood using data that has
+originated from the terminal `//term/1`. The line `:-  (runt [s.gum '|'] "")`
+displays the duct depth datum mentioned above. Lastly, `[~zod ~zod]` tells us that
+`~zod` is both the sending and receiving ship.
+
+Now
