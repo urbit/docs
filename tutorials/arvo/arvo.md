@@ -29,7 +29,8 @@ material from Chapter Two will be helpful as well. At the bare minimum, we
 presume that the reader has read through the [Technical
 Overview](@/docs/tutorials/concepts/technical-overview.md). Lastly, we apply the
 knowledge learned in this document with a hands-on tutorial to investigate a [stack
-trace](#stack-trace-tutorial) of what happens when a timer is set in Arvo.
+trace](#stack-trace-tutorial) of what happens when a timer is set in Arvo. This
+tutorial requires an understanding of the kernel to fully comprehend.
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
@@ -53,11 +54,14 @@ We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md
   * [The state](#the-state)
   * [Vanes](#vanes)
 - [Stack trace tutorial](#stack-trace-tutorial)
+  * [Running a stack trace](#running-a-stack-trace)
+  * [Interpreting the stack trace](#interpreting-the-stack-trace)
+    + [The call](#the-call)
+    + [The return](#the-return)
 
 # What is Arvo?
 
-Arvo is a
-[non-preemptive](#non-preemptive)
+Arvo is a [non-preemptive](#non-preemptive)
 operating system purposefully built to create a new, peer-to-peer internet
 whereby users own and manage their own data. Despite being an operating system,
 Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the
@@ -556,14 +560,12 @@ As of this writing, we have nine vanes, which each provide the following service
 - `Jael`: storage for Azimuth information.
 
 
-## Stack trace tutorial
+# Stack trace tutorial
 
 In this section we will see some of what we learned in [the kernel](#the-kernel)
 in action - namely, we will investigate how setting a timer from the terminal
 makes its way through Arvo as a series of `move`s passed between various vanes
 and processes.
-
-<img class="mv5 w-100" src="https://media.urbit.org/docs/arvo/stack.png">
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the
 Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one
@@ -571,7 +573,7 @@ another. Here we look at how a simple command, `-time ~s1`, goes from pressing
 Enter on your keyboard in Dojo towards returning a notification that one second
 has elapsed.
 
-### Running a stack trace
+## Running a stack trace
 
 To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
 and press Enter to enable verbose mode (this is tracked by the laconic bit
@@ -636,23 +638,16 @@ another `move` to perform and the loop begins again. Thus this stack trace does
 not display information about what is going on inside of the vane or app such as
 private function calls, only what the kernel itself sees.
 
-### Interpreting the stack trace
+## Interpreting the stack trace
 
-What is happening here can be summarized in the following diagram,
-which we will proceed to explain in detail:
+In this section we will go over the stack trace line-by-line, explaining how the
+stack trace is printed, what each line means (including some things not found in
+the stack trace), and a particular focus on what code is being activated in the
+first few lines that should equip you well enough to unravel the rest of the
+stack trace in as much detail as you desire.
 
-(insert diagram)
 
-This diagram should be read starting from the left and following the arrows.
-Each arrow represents a move where the table connected to the arrow by a dotted
-line contains some of the information about the `move` such as the `duct` and
-tag of the `move`. It is crucial to note here that for every arrow to the right
-of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one another,
-actually represents two arrows: one from the caller to the Arvo kernel, and then
-from the Arvo kernel to the callee. The kernel is the intermediary between all
-communications - vanes and apps do not speak directly to one another.
-
-#### The call
+### The call
 
 Let's put the first part of the stack trace into a table to make reading a little easier.
 
@@ -873,7 +868,7 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 Behn gives a "doze" event to Unix, asking it to set a timer [for one second from
 now]. At this point Arvo may rest.
 
-#### The return
+### The return
 
 At this point, Unix waits for one second and then informs Behn that a second has
 passed, leading to a chain of `%give` `move`s that ultimately prints
