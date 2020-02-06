@@ -618,7 +618,7 @@ associated metadata. Some of the `move`s are a bit of a distraction from what's
 going on overall such as acknowledgements that a `poke` was received
 (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the
 `%blit` events) is not printed even in verbose mode because it occurs so
-frequently, but there is only one of them here and so we have added it in.
+frequently, but there are only two of them here and so we have added it in.
 
 The main process that is occurring here is a sequence of `%pass` `move`s initiated
 by pressing Enter in the terminal that goes on to be handled by Dill, then Gall,
