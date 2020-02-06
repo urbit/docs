@@ -571,6 +571,8 @@ another. Here we look at how a simple command, `-time ~s1`, goes from pressing
 Enter on your keyboard in Dojo towards returning a notification that one second
 has elapsed.
 
+### Running a stack trace
+
 To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
 and press Enter to enable verbose mode (this is tracked by the laconic bit
 introduced in the section on [the state](#the-state)), followed by `-time ~s1`
@@ -615,7 +617,41 @@ going on overall such as acknowledgements that a `poke` was received
 `%blit` event) is not printed even in verbose mode because it occurs so
 frequently, but there is only one of them here and so we have added it in.
 
-Let's put this into a table to make reading a little easier.
+The main process that is occurring here is a sequence of `%pass` `move`s initiated
+by pressing Enter in the terminal that goes on to be handled by Dill, then Gall,
+and finally Behn. After the timer has elapsed, a sequence of `%give` `move`s is
+begun by Behn, which then passes through Gall and ultimately ends up back at the
+terminal. Any `move`s besides `%pass` in the first segment of the stack trace is a
+secondary process utilized for book-keeping, spawning processes, interpreting
+commands, etc. All of this will be explained in detail below.
+
+
+It is important to note that this stack trace should be thought of
+as being from the "point of view" of the kernel - each line represents the
+kernel taking in a message from one source and passing it along to its
+destination. It is then processed at that destination (which could be a vane or
+an app), and the return of that process is sent back to Arvo in the form of
+another `move` to perform and the loop begins again. Thus this stack trace does
+not display information about what is going on inside of the vane or app such as
+private function calls, only what the kernel itself sees.
+
+### Interpreting the stack trace
+
+What is happening here can be summarized in the following diagram,
+which we will proceed to explain in detail:
+
+(insert diagram)
+
+This diagram should be read starting from the left and following the arrows.
+Each arrow represents a move where the table connected to the arrow by a dotted
+line contains some of the information about the `move` such as the `duct` and
+tag of the `move`. It is crucial to note here that for every arrow to the right
+of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one another,
+actually represents two arrows: one from the caller to the Arvo kernel, and then
+from the Arvo kernel to the callee. The kernel is the intermediary between all
+communications - vanes and apps do not speak directly to one another.
+
+Let's put the first part of the stack trace into a table to make reading a little easier.
 
 | Length | move    | vane(s)   |                                                                                                     action | duct                                                                              |
 |--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------|
@@ -637,35 +673,14 @@ Let's put this into a table to make reading a little easier.
 | 10     | `%pass` | `[%g %b]` | `[%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556]` | `/d //term/1 ~`                                                                   |
 | 11     | `%give` | `%b`      | `%doze`                                                                                                    | `//behn/0v1p.sn2s7 ~`                                                             |
 
-It is important to note that this stack trace should be thought of
-as being from the "point of view" of the kernel - each line represents the
-kernel taking in a message from one source and passing it along to its
-destination. It is then processed at that destination (which could be a vane or
-an app), and the return of that process is sent back to Arvo in the form of
-another `move` to perform and the loop begins again. Thus this stack trace does
-not display information about what is going on inside of the vane or app such as
-private function calls, only what the kernel itself sees.
-
-What is happening here can be summarized in the following diagram,
-which we will proceed to explain in detail:
-
-(insert diagram)
-
-This diagram should be read starting from the left and following the arrows.
-Each arrow represents a move where the table connected to the arrow by a dotted
-line contains some of the information about the `move` such as the `duct` and
-tag of the `move`. It is crucial to note here that for every arrow to the right
-of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one another,
-actually represents two arrows: one from the caller to the Arvo kernel, and then
-from the Arvo kernel to the callee. The kernel is the intermediary between all
-communications - vanes and apps do not speak directly to one another.
-
-
+Now let's go through each line one by one.
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
 ```
-The first thing that happens is that Unix informs the Arvo kernel that a command
-has been entered. Here is the line of code in `arvo.hoon`, found in the [section
+This tells us that Unix has sent a `%belt` command, which corresponds to
+terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
+
+Here is the line of code in `arvo.hoon`, found in the [section
 3bE core](#section-3be-core), that generated the output:
 
 ```hoon
@@ -678,13 +693,9 @@ where the empty span `//` represents Unix and `term/1` represents the terminal
 in Unix. Here we have a `wire` instead of a `duct` (i.e. a list of `wire`s)
 since Unix I/O events are always the beginning and end of the Arvo event loop,
 thus only a single `wire` is ever required at this initial stage.
-`%belt` is a type of Dill `move` that corresponds to input and output, and here
-it means that this
-`move` was sent to Dill which then handles the next step.
 
-The `""` here is a metadatum that keeps track of how many `wire`s a
-duct contains minus one, represented by a number of `|`'s (which in this case is
-zero as there is only a single wire). An event
+The `""` here is a metadatum that keeps track of how many steps deep in the
+causal chain the event is. An event
 with `n` `|`'s was caused by the most recent previous event with `n-1` `|`'s. In
 this case, Unix events are an "original cause" and thus represented by an empty
 string.
