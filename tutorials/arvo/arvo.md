@@ -835,19 +835,19 @@ Gall's dojo also sends a `poke` to Gall's spider [asking it start the thread "-t
 ["||||||" %pass [%g %f] [%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider sends a "build" request to Ford [asking it to find the path in /ted where the "time" thread is].
+Gall's spider sends a "build" request to Ford [asking it to find the path in `/ted` where the "time" thread is].
 
 ```
 ["|||||||" %give %f %made [i=/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
 ```
 
-Ford gives a result back to Gall's spider [saying it's in /ted/time.hoon].
+Ford gives a result back to Gall's spider [saying it's in `/ted/time.hoon`].
 
 ```
 ["||||||||" %pass [%g %f] [%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider sends a "build" request to Ford [asking it to compile the file /ted/time.hoon].
+Gall's spider sends a "build" request to Ford [asking it to compile the file `/ted/time.hoon`].
 
 ```
 ["|||||||||" %give %f %made [i=/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
