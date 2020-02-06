@@ -582,6 +582,7 @@ followed by Enter. Your terminal should display something like this:
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+["|||||" %give %d %blit [=//term/1 t=~]]
 ["|||" %pass [%g %f] [%build /use/dojo/~zod/drum/hand] [i=/d t=~[//term/1]]]
 ["||||" %give %f %made [i=/g/use/dojo/~zod/drum/hand t=~[/d //term/1]]]
 ["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
@@ -607,10 +608,34 @@ followed by a pause of one second, then
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ~s1..0007
 ```
-This gives us a stack trace that is roughly a list of `move`s and some
+This gives us a stack trace that is a list of `move`s and some
 associated metadata. Some of the `move`s are a bit of a distraction from what's
-going on overall, such as acknowledgements that an event was received, so we've omitted several lines
-for clarity.
+going on overall such as acknowledgements that a `poke` was received
+(`%poke-ack`s), so we've omitted them for clarity. Furthermore, one `move` (the
+`%blit` event) is not printed even in verbose mode because it occurs so
+frequently, but there is only one of them here and so we have added it in.
+
+Let's put this into a table to make reading a little easier.
+
+| Length | move    | vane(s)   |                                                                                                     action | duct                                                                              |
+|--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------|
+| 0      | `%unix` |           | `%belt`                                                                                                    |  ~                                                                                |
+| 1      | `%pass` | `[%d %g]` | `[[%deal [~zod ~zod] %hood %poke] /]`                                                                      | `//term/1 ~`                                                                      |
+| 2      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo]`                       | `/d //term/1 ~`                                                                   |
+| 3      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo /d //term/1 ~`                |
+| 4      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/d //term/1 ~`                                                                   |
+| 5      | `%give` | `%d`      | `%blit`                                                                                                    | `//term/1 ~`                                                                      |
+| 3      | `%pass` | `[%g %f]` | `[%build /use/dojo/~zod/drum/hand]`                                                                        | `/d //term/1 ~`                                                                   |
+| 4      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/dojo/~zod/drum/hand /d //term/1 ~`                                        |
+| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool]`                            | `/d //term/1 ~`                                                                   |
+| 6      | `%give` | `%g`      | `[%unto %watch-ack]`                                                                                       | `/g/use/dojo/~zod/out/~zod/spider/drum/wool /d //term/1 ~`                        |
+| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool]`                             | `/d //term/1 ~`                                                                   |
+| 6      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                  | `/d //term/1 ~`                                                                   |
+| 7      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1 ~`  |
+| 8      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                 | `/d //term/1 ~`                                                                   |
+| 9      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1 ~` |
+| 10     | `%pass` | `[%g %b]` | `[%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556]` | `/d //term/1 ~`                                                                   |
+| 11     | `%give` | `%b`      | `%doze`                                                                                                    | `//behn/0v1p.sn2s7 ~`                                                             |
 
 It is important to note that this stack trace should be thought of
 as being from the "point of view" of the kernel - each line represents the
@@ -618,8 +643,8 @@ kernel taking in a message from one source and passing it along to its
 destination. It is then processed at that destination (which could be a vane or
 an app), and the return of that process is sent back to Arvo in the form of
 another `move` to perform and the loop begins again. Thus this stack trace does
-not display information about what is going on inside of the vane or app, only
-what kinds of messages that the kernel is passing along.
+not display information about what is going on inside of the vane or app such as
+private function calls, only what the kernel itself sees.
 
 What is happening here can be summarized in the following diagram,
 which we will proceed to explain in detail:
