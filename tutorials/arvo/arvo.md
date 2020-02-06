@@ -607,14 +607,15 @@ followed by a pause of one second, then
 ["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+["|||||" %give %d %blit [=//term/1 t=~]]
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ~s1..0007
 ```
 This gives us a stack trace that is a list of `move`s and some
 associated metadata. Some of the `move`s are a bit of a distraction from what's
 going on overall such as acknowledgements that a `poke` was received
-(`%poke-ack`s), so we've omitted them for clarity. Furthermore, one `move` (the
-`%blit` event) is not printed even in verbose mode because it occurs so
+(`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the
+`%blit` events) is not printed even in verbose mode because it occurs so
 frequently, but there is only one of them here and so we have added it in.
 
 The main process that is occurring here is a sequence of `%pass` `move`s initiated
@@ -650,6 +651,8 @@ of the Arvo kernel on the diagram, i.e. where vanes or apps are speaking to one 
 actually represents two arrows: one from the caller to the Arvo kernel, and then
 from the Arvo kernel to the callee. The kernel is the intermediary between all
 communications - vanes and apps do not speak directly to one another.
+
+#### The call
 
 Let's put the first part of the stack trace into a table to make reading a little easier.
 
@@ -867,4 +870,99 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 ["|||||||||||" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn gives a "doze" event to unix, asking it to set a timer [for one second from now].
+Behn gives a "doze" event to Unix, asking it to set a timer [for one second from
+now]. At this point Arvo may rest.
+
+#### The return
+
+At this point, Unix waits for one second and then informs Behn that a second has
+passed, leading to a chain of `%give` `move`s that ultimately prints
+`~s1..0007`.
+
+Let's throw the stack trace into a table:
+
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+| length | move    | vane(s) | card            | duct                                                                                                |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+| 0      | `%unix` |         | `%wake`         | `//behn`                                                                                            |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+|        |         |         |                 | `//behn/0v1p.sn2s7                                                                                  |
+| 1      | `%give` | `%b`    | `%doze`         | ~                                                                                                   |
+|        |         |         |                 | `                                                                                                   |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+|        |         |         |                 | `/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 |
+| 1      | `%give` | `%b`    | `%wake`         | /d                                                                                                  |
+|        |         |         |                 | //term/1                                                                                            |
+|        |         |         |                 | ~`                                                                                                  |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+|        |         |         |                 | `/g/use/dojo/~zod/out/~zod/spider/drum/wool                                                         |
+| 2      | `%give` | `%g`    | `[%unto %fact]` | /d                                                                                                  |
+|        |         |         |                 | //term/1                                                                                            |
+|        |         |         |                 | ~`                                                                                                  |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+| 3      | `%give` | `%g`    | `[%unto %fact]` | `/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo                                                 |
+|        |         |         |                 | /d                                                                                                  |
+|        |         |         |                 | //term/1                                                                                            |
+|        |         |         |                 | ~`                                                                                                  |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+| 4      | `%give` | `%g`    | `[%unto %fact]` | `/d                                                                                                 |
+|        |         |         |                 | //term/1                                                                                            |
+|        |         |         |                 | ~`                                                                                                  |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+| 5      | `%give` | `%d`    | `%blit`         | `//term/1                                                                                           |
+|        |         |         |                 | ~`                                                                                                  |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+| 2      | `%give` | `%g`    | `[%unto %kick]` | `/g/use/dojo/~zod/out/~zod/spider/drum/wool                                                         |
+|        |         |         |                 | /d                                                                                                  |
+|        |         |         |                 | //term/1`                                                                                           |
++--------+---------+---------+-----------------+-----------------------------------------------------------------------------------------------------+
+
+Now we follow it line-by-line:
+
+```
+["" %unix p=%wake //behn ~2020.1.14..19.01.26..755d]
+```
+
+Unix sends a `%wake` (timer fire) event at time `~2020.1.14..19.01.26..755d`.
+
+```
+["|" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
+```
+
+Behn `give`s a `%doze` event to Unix, asking it to set a timer [for whatever next timer it has in its queue].
+
+```
+["|" %give %b %wake [i=/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 t=~[/d //term/1]]]
+```
+
+Behn `give`s a `%wake` to Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`.
+
+```
+["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+```
+
+Gall's spider `give`s a `%fact` (subscription update) to dojo [saying that the thread completed successfully and produced value `~s1.0007`].
+
+```
+["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
+```
+
+Gall's dojo `give`s a `%fact` to hood [saying to output `~s1..0007`].
+
+```
+["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
+```
+
+Gall's hood `give`s a `%fact` to Dill [saying to output `~s1..0007`].
+
+```
+["|||||" %give %d %blit [=//term/1 t=~]]
+```
+
+Dill gives a `%blit` (terminal output) event to Unix [saying to print a new line with output `~s1..0007`].
+
+```
+["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
+```
+
+Gall's spider also closes the subscription from dojo [since the thread has completed].
