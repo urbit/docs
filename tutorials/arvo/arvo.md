@@ -653,7 +653,7 @@ communications - vanes and apps do not speak directly to one another.
 
 Let's put the first part of the stack trace into a table to make reading a little easier.
 
-| Length | move    | vane(s)   |                                                                                                     action | duct                                                                              |
+| Length | move    | vane(s)   |                                                                                                     card   | duct                                                                              |
 |--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------|
 | 0      | `%unix` |           | `%belt`                                                                                                    |  ~                                                                                |
 | 1      | `%pass` | `[%d %g]` | `[[%deal [~zod ~zod] %hood %poke] /]`                                                                      | `//term/1 ~`                                                                      |
@@ -672,6 +672,9 @@ Let's put the first part of the stack trace into a table to make reading a littl
 | 9      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1 ~` |
 | 10     | `%pass` | `[%g %b]` | `[%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556]` | `/d //term/1 ~`                                                                   |
 | 11     | `%give` | `%b`      | `%doze`                                                                                                    | `//behn/0v1p.sn2s7 ~`                                                             |
+
+This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -
+as well as four applications - hood, spider, dojo, and time.
 
 Now let's go through each line one by one.
 ```
@@ -715,7 +718,7 @@ arm:
 
 Dill has taken in the command and in response it sends a `%poke` `move` to hood, which is a Gall app
 primarily used for interfacing with Dill. Here, `+deal` is an arm for
-``pass``ing a `note` to Gall to ask it to create a `%deal` `task`:
+`%pass`ing a `note` to Gall to ask it to create a `%deal` `task`:
 
 ```hoon
       ++  deal                                          ::  pass to %gall
@@ -727,9 +730,11 @@ Next in our stack trace we have this:
 ```
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
+Here, Dill sends a `%poke` (of the Enter keystroke) to Gall's hood app.
 
 Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE
-core](#section-3be-core). This arm is what the Arvo kernel uses to send `card`s.
+core](#section-3be-core). This arm is what the Arvo kernel uses to send `card`s,
+and here we look at the segment that includes `%pass` `card`s.
 
 ```hoon
   ++  jack                                              ::  dispatch card
@@ -762,15 +767,23 @@ concerning the laconic bit (following `!lac`) we can mostly determine what is be
 From the initial input event, Arvo has generated a `card` that it is now
 `%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The
 `card` is a `%deal` `card`, asking Gall to `%poke` hood using data that has
-originated from the terminal `//term/1`. The line `:-  (runt [s.gum '|'] "")`
+originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:-  (runt [s.gum '|'] "")`
 displays the duct depth datum mentioned above. Lastly, `[~zod ~zod]` tells us that
 `~zod` is both the sending and receiving ship.
 
-Onto the next line:
+From here on our explanations will be more brief. We include some information
+that cannot be directly read from the stack trace in [brackets]. Onto the next line:
+
 ```
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
 ```
 
 Here is another `%pass` `move`, this time from Gall to iself as denoted by `[%g
 %g]`. Hood has received the `%deal` `card` from Dill, and in response it is
-`%poke`ing dojo.
+`%poke`ing dojo with the information that Enter was pressed.
+
+```
+["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
+```
+Gall's dojo app gives a "fact" (subscription update) to hood, [saying to clear
+the terminal prompt].
