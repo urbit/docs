@@ -3,7 +3,12 @@ title = "Hoon Errors"
 weight = 6
 template = "doc.html"
 +++
-Ideally your Hoon works perfectly the first time.  But...
+
+In this section we explore strategies for debugging and understanding what your
+Hoon code is doing. We cover common errors that dojo may spit out, how to turn
+on debugging mode, and how to use debugging printfs. We conclude with a tutorial
+on how to understand the stack trace obtained when setting a simple timer app to
+count one second.
 
 ## Syntax errors
 
