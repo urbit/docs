@@ -284,25 +284,25 @@ stack trace in as much detail as you desire.
 
 Let's put the first part of the stack trace into a table to make reading a little easier.
 
-| Length | move    | vane(s)   |                                                                                                     action | duct                                                                                  |
-|--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------|
-| 0      | `%unix` |           | `%belt`                                                                                                    |                                                                                       |
-| 1      | `%pass` | `[%d %g]` | `[[%deal [~zod ~zod] %hood %poke] /]`                                                                      | `//term/1`                                                                            |
-| 2      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo]`                       | `/d<br>//term/1`                                                                      |
-| 3      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo<br>/d<br>//term/1`                |
-| 4      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/d<br>//term/1`                                                                      |
-| 5      | `%give` | `%d`      | `%blit`                                                                                                    | `//term/1`                                                                            |
-| 3      | `%pass` | `[%g %f]` | `[%build /use/dojo/~zod/drum/hand]`                                                                        | `/d<br>//term/1`                                                                      |
-| 4      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/dojo/~zod/drum/hand<br>/d<br>//term/1`                                        |
-| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool]`                            | `/d<br>//term/1`                                                                      |
-| 6      | `%give` | `%g`      | `[%unto %watch-ack]`                                                                                       | `/g/use/dojo/~zod/out/~zod/spider/drum/wool<br>/d<br>//term/1`                        |
-| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool]`                             | `/d<br>//term/1`                                                                      |
-| 6      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                  | `/d<br>//term/1`                                                                      |
-| 7      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1`  |
-| 8      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                 | `/d<br>//term/1`                                                                      |
-| 9      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1` |
-| 10     | `%pass` | `[%g %b]` | `[%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556]` | `/d<br>//term/1`                                                                      |
-| 11     | `%give` | `%b`      | `%doze`                                                                                                    | `//behn/0v1p.sn2s7`                                                                   |
+| Length | move    | vane(s)   |                                                                                                     action | duct                                                                            |
+|--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------|
+| 0      | `%unix` |           | `%belt`                                                                                                    |                                                                                 |
+| 1      | `%pass` | `[%d %g]` | `[[%deal [~zod ~zod] %hood %poke] /]`                                                                      | `//term/1`                                                                      |
+| 2      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo]`                       | `/d //term/1`                                                                   |
+| 3      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo /d //term/1`                |
+| 4      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/d //term/1`                                                                   |
+| 5      | `%give` | `%d`      | `%blit`                                                                                                    | `//term/1`                                                                      |
+| 3      | `%pass` | `[%g %f]` | `[%build /use/dojo/~zod/drum/hand]`                                                                        | `/d //term/1`                                                                   |
+| 4      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/dojo/~zod/drum/hand /d //term/1`                                        |
+| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool]`                            | `/d //term/1`                                                                   |
+| 6      | `%give` | `%g`      | `[%unto %watch-ack]`                                                                                       | `/g/use/dojo/~zod/out/~zod/spider/drum/wool /d //term/1`                        |
+| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool]`                             | `/d //term/1`                                                                   |
+| 6      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                  | `/d //term/1`                                                                   |
+| 7      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1`  |
+| 8      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                 | `/d //term/1`                                                                   |
+| 9      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1` |
+| 10     | `%pass` | `[%g %b]` | `[%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556]` | `/d //term/1`                                                                   |
+| 11     | `%give` | `%b`      | `%doze`                                                                                                    | `//behn/0v1p.sn2s7`                                                             |
 
 This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -
 as well as four applications - hood, spider, dojo, and time.
