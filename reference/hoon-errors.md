@@ -284,7 +284,7 @@ stack trace in as much detail as you desire.
 
 Let's put the first part of the stack trace into a table to make reading a little easier.
 
-| Length | move    | vane(s)   |                                                                                                     card   | duct                                                                              |
+| length | move    | vane(s)   |                                                                                                     action | duct                                                                              |
 |--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------|
 | 0      | `%unix` |           | `%belt`                                                                                                    |  ~                                                                                |
 | 1      | `%pass` | `[%d %g]` | `[[%deal [~zod ~zod] %hood %poke] /]`                                                                      | `//term/1 ~`                                                                      |
