@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this section we explore strategies for debugging and understanding what your
 Hoon code is doing. We cover common errors that dojo may spit out, how to turn
-on debugging mode, and how to use debugging printfs. We conclude with a tutorial
+on debugging and verbose mode, and how to use debugging printfs. We conclude with a tutorial
 on how to understand the stack trace obtained when setting a simple timer app to
 count one second.
 
@@ -54,7 +54,7 @@ the actual error appears.
 
 Now your code parses but doesn't compile.
 
-### Turn on debugging
+### Turn on debugging or verbose mode
 
 Your first step should be to put a `!:` ("zapcol") rune at the
 top of the file.  This is like calling the C compiler with `-g`;
@@ -64,6 +64,10 @@ Bear in mind that `!:` breaks tail-call optimization.  This is a
 bug, but a relatively low-priority bug.  `!.` turns off `!:`.
 Note that `!:` and `!.` are reference-level, not file-level; you can
 wrap any reference in either.
+
+You may also find it helpful to turn on verbose mode by entering `|verb` into dojo, which prints (almost)
+everything happening in the kernel to the console. This is useful for performing
+stack trace. An extensive stack trace tutorial is [below](#stack-trace-tutorial).
 
 ### Error trace
 
@@ -188,7 +192,7 @@ bug and, like all bugs, will be fixed at some point.
 
 
 
-# Stack trace tutorial
+## Stack trace tutorial
 
 In this section we will see some of what we learned in [the kernel](#the-kernel)
 in action - namely, we will investigate how setting a timer from the terminal
@@ -201,7 +205,7 @@ another. Here we look at how a simple command, `-time ~s1`, goes from pressing
 Enter on your keyboard in Dojo towards returning a notification that one second
 has elapsed.
 
-## Running a stack trace
+### Running a stack trace
 
 To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
 and press Enter to enable verbose mode (this is tracked by the laconic bit
@@ -266,7 +270,7 @@ another `move` to perform and the loop begins again. Thus this stack trace does
 not display information about what is going on inside of the vane or app such as
 private function calls, only what the kernel itself sees.
 
-## Interpreting the stack trace
+### Interpreting the stack trace
 
 In this section we will go over the stack trace line-by-line, explaining how the
 stack trace is printed, what each line means (including some things not found in
@@ -275,7 +279,7 @@ first few lines that should equip you well enough to unravel the rest of the
 stack trace in as much detail as you desire.
 
 
-### The call
+#### The call
 
 Let's put the first part of the stack trace into a table to make reading a little easier.
 
@@ -496,7 +500,7 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 Behn `give`s a `%doze` event to Unix, asking it to set a timer [for one second from
 now]. At this point Arvo may rest.
 
-### The return
+#### The return
 
 At this point, Unix waits for one second and then informs Behn that a second has
 passed, leading to a chain of `give` `move`s that ultimately prints
