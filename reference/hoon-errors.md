@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this section we explore strategies for debugging and understanding what your
 Hoon code is doing. We cover common errors that dojo may spit out, how to turn
-on debugging and verbose mode, and how to use debugging printfs. We conclude with a tutorial
+on debugging and verbose mode, and how to use debugging printfs. We conclude with a [tutorial](#stack-trace-tutorial)
 on how to understand the stack trace obtained when setting a simple timer app to
 count one second.
 
@@ -194,10 +194,12 @@ bug and, like all bugs, will be fixed at some point.
 
 ## Stack trace tutorial
 
-In this section we will see some of what we learned in [the kernel](#the-kernel)
-in action - namely, we will investigate how setting a timer from the terminal
-makes its way through Arvo as a series of `move`s passed between various vanes
-and processes.
+In this tutorial we will run a simple stack trace and use the output to get a
+picture of what the Arvo kernel proper does during the routine task of setting a
+timer. Some level of familiarity with the kernel is required for this section,
+which can be obtained in our [Arvo documentation](@/docs/tutorials/arvo/arvo.md#the-kernel).
+
+### Running a stack trace
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the
 Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one
@@ -205,11 +207,10 @@ another. Here we look at how a simple command, `-time ~s1`, goes from pressing
 Enter on your keyboard in Dojo towards returning a notification that one second
 has elapsed.
 
-### Running a stack trace
-
 To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
 and press Enter to enable verbose mode (this is tracked by the laconic bit
-introduced in the section on [the state](#the-state)), followed by `-time ~s1`
+introduced in the section on [the
+state](@/docs/tutorials/arvo/arvo.md#the-state)) in the kernel documentation, followed by `-time ~s1`
 followed by Enter. Your terminal should display something like this:
 
 ```
@@ -314,7 +315,7 @@ This tells us that Unix has sent a `%belt` command, which corresponds to
 terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
 
 Here is the line of code in `arvo.hoon`, found in the [section
-3bE core](#section-3be-core), that generated the output:
+3bE core](@/docs/tutorials/arvo/arvo.md#section-3be-core), that generated the output:
 
 ```hoon
     ~?  !lac  ["" %unix -.q.ovo p.ovo now]
@@ -363,7 +364,7 @@ Next in our stack trace we have this:
 Here, Dill sends a `%poke` (of the Enter keystroke) to Gall's hood app.
 
 Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE
-core](#section-3be-core). This arm is what the Arvo kernel uses to send `card`s,
+core](@/docs/tutorials/arvo/arvo.md#section-3be-core). This arm is what the Arvo kernel uses to send `card`s,
 and here we look at the segment that includes `%pass` `card`s.
 
 ```hoon
