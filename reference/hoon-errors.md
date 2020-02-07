@@ -250,7 +250,7 @@ This gives us a stack trace that is a list of `move`s and some
 associated metadata. Some of the `move`s are a bit of a distraction from what's
 going on overall such as acknowledgements that a `poke` was received
 (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the
-`%blit` events) is not printed even in verbose mode because it occurs so
+`%blit` `card`s) is not printed even in verbose mode because it occurs so
 frequently, but there are only two of them here and so we have added it in.
 
 The main process that is occurring here is a sequence of `%pass` `move`s initiated
@@ -311,7 +311,7 @@ Now let's go through each line one by one.
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
 ```
-This tells us that Unix has sent a `%belt` command, which corresponds to
+This tells us that Unix has sent a `%belt` `card`, which corresponds to
 terminal input (the Enter keystroke) at time `~2020.1.14..19.01.25..7556`
 
 Here is the line of code in `arvo.hoon`, found in the [section
@@ -347,9 +347,11 @@ arm:
         (deal / [%poke [%dill-belt -:!>(bet) bet]])
 ```
 
-Dill has taken in the command and in response it sends a `%poke` `move` to hood, which is a Gall app
+Dill has taken in the command and in response it `%pass`es a `task` `card` with
+instructions to `%poke` hood, which is a Gall app
 primarily used for interfacing with Dill. Here, `+deal` is an arm for
-`%pass`ing a `note` to Gall to ask it to create a `%deal` `task`:
+`%pass`ing a `card` to Gall to ask it to create a `%deal` `task`:
+
 
 ```hoon
       ++  deal                                          ::  pass to %gall
@@ -361,11 +363,12 @@ Next in our stack trace we have this:
 ```
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
-Here, Dill sends a `%poke` (of the Enter keystroke) to Gall's hood app.
+Here, Dill `%pass`es a `task` `card` saying to `%poke` Gall's hood app (with the
+Enter keystroke).
 
 Let's glance at part of the `+jack` arm in `arvo.hoon`, located in the [section 3bE
 core](@/docs/tutorials/arvo/arvo.md#section-3be-core). This arm is what the Arvo kernel uses to send `card`s,
-and here we look at the segment that includes `%pass` `card`s.
+and here we look at the segment that includes `%pass` `move`s.
 
 ```hoon
   ++  jack                                              ::  dispatch card
@@ -396,10 +399,10 @@ distracted by the lark expressions and such. By paying attention to the lines
 concerning the laconic bit (following `!lac`) we can mostly determine what is being told to us.
 
 From the initial input event, Arvo has generated a `card` that it is now
-`pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The
-`card` is a `%deal` `card`, asking Gall to `%poke` hood using data that has
+`%pass`ing from Dill (represented by `%d`) to Gall (represented by `%g`). The
+`card` is a `%deal` `task`, asking Gall to `%poke` hood using data that has
 originated from the terminal `//term/1`, namely that the Enter key was pressed. The line `:-  (runt [s.gum '|'] "")`
-displays the duct depth datum mentioned above. Lastly, `[~zod ~zod]` tells us that
+displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]` tells us that
 `~zod` is both the sending and receiving ship.
 
 From here on our explanations will be more brief. We include some information
@@ -409,21 +412,21 @@ that cannot be directly read from the stack trace in [brackets]. Onto the next l
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
 ```
 
-Here is another `pass` `move`, this time from Gall to iself as denoted by `[%g
-%g]`. Hood has received the `%deal` `card` from Dill, and in response it is
+Here is another `%pass` `move`, this time from Gall to iself as denoted by `[%g
+%g]`. Gall's hood has received the `%deal` `card` from Dill, and in response it is
 `%poke`ing dojo with the information [that Enter was pressed].
 
 ```
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ```
 
-Gall's dojo app `give`s a `%fact` (subscription update) to hood, [saying to clear
+Gall's dojo `%give`s a `gift` with a `%fact` (subscription update) to Gall's hood, [saying to clear
 the terminal prompt].
 
 ```
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ```
-Gall's hood `give`s a `%fact` to Dill [saying to replace the current terminal line with `~zod:dojo>`]
+Gall's hood `%give`s a `gift` with a `%fact` to Dill [saying to replace the current terminal line with `~zod:dojo>`]
 
 Next is the `move` that is not actually printed in the stack trace mentioned
 above:
@@ -432,25 +435,25 @@ above:
 ["|||||" %give %d %blit [=//term/1 t=~]]
 ```
 
-Dill `give`s a `%blit` (terminal output) event to Unix [saying to replace the current terminal line with `~zod:dojo>`].
+Dill `%give`s a `%blit` (terminal output) event to Unix [saying to replace the current terminal line with `~zod:dojo>`].
 
 ```
 ["|||" %pass [%g %f] [%build /use/dojo/~zod/drum/hand] [i=/d t=~[//term/1]]]
 ```
 
-Gall's dojo also `pass`es a `%build` request to Ford [asking to run "~s1" against the subject we use in the dojo].
+Gall's dojo also `%pass`es a `%build` request to Ford [asking to run "~s1" against the subject we use in the dojo].
 
 ```
 ["||||" %give %f %made [i=/g/use/dojo/~zod/drum/hand t=~[/d //term/1]]]
 ```
 
-Ford `give`s a result back to dojo [with the value `~s1`]
+Ford `%give`s a result back to dojo [with the value `~s1`]
 
 ```
 ["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
 ```
 
-Gall's dojo `pass`es a `%watch` to Gall's spider app [to start listening for the result of the thread it's about to start].
+Gall's dojo `%pass`es a `%watch` to Gall's spider app [to start listening for the result of the thread it's about to start].
 
 ```
 ["||||||" %give %g [%unto %watch-ack] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
@@ -462,31 +465,31 @@ Gall's spider acknowledges the subscription from dojo.
 ["|||||" %pass [%g %g] [[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool] [i=/d t=~[//term/1]]]
 ```
 
-Gall's dojo also `pass`es a `poke` to Gall's spider [asking it start the thread "-time" with argument `~s1`].
+Gall's dojo also `%pass`es a `%poke` to Gall's spider [asking it start the thread "-time" with argument `~s1`].
 
 ```
 ["||||||" %pass [%g %f] [%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider `pass`es a `%build` request to Ford [asking it to find the path in `/ted` where the "time" thread is].
+Gall's spider `%pass`es a `%build` request to Ford [asking it to find the path in `/ted` where the "time" thread is].
 
 ```
 ["|||||||" %give %f %made [i=/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
 ```
 
-Ford `give`s a result back to Gall's spider [saying it's in `/ted/time.hoon`].
+Ford `%give`s a result back to Gall's spider [saying it's in `/ted/time.hoon`].
 
 ```
 ["||||||||" %pass [%g %f] [%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u] [i=/d t=~[//term/1]]]
 ```
 
-Gall's spider `pass`es a `%build` request to Ford [asking it to compile the file `/ted/time.hoon`].
+Gall's spider `%pass`es a `%build` request to Ford [asking it to compile the file `/ted/time.hoon`].
 
 ```
 ["|||||||||" %give %f %made [i=/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u t=~[/d //term/1]]]
 ```
 
-Ford `give`s a result back to Gall's spider [with the compiled thread].
+Ford `%give`s a result back to Gall's spider [with the compiled thread].
 
 ```
 ["||||||||||" %pass [%g %b] [%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556] [i=/d t=~[//term/1]]]
@@ -498,13 +501,13 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 ["|||||||||||" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn `give`s a `%doze` event to Unix, asking it to set a timer [for one second from
+Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer [for one second from
 now]. At this point Arvo may rest.
 
 #### The return
 
-At this point, Unix waits for one second and then informs Behn that a second has
-passed, leading to a chain of `give` `move`s that ultimately prints
+Now Unix sets a timer for one second, waits one second, and then informs Behn that a second has
+passed, leading to a chain of `%give` `move`s that ultimately prints
 `~s1..0007`.
 
 Let's throw the stack trace into a table:
@@ -526,43 +529,43 @@ Now we follow it line-by-line:
 ["" %unix p=%wake //behn ~2020.1.14..19.01.26..755d]
 ```
 
-Unix sends a `%wake` (timer fire) event at time `~2020.1.14..19.01.26..755d`.
+Unix sends a `%wake` (timer fire) `card` at time `~2020.1.14..19.01.26..755d`.
 
 ```
 ["|" %give %b %doze [i=//behn/0v1p.sn2s7 t=~]]
 ```
 
-Behn `give`s a `%doze` event to Unix, asking it to set a timer [for whatever next timer it has in its queue].
+Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer [for whatever next timer it has in its queue].
 
 ```
 ["|" %give %b %wake [i=/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 t=~[/d //term/1]]]
 ```
 
-Behn `give`s a `%wake` to Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`.
+Behn `%give`s a `%wake` to Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`.
 
 ```
 ["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ```
 
-Gall's spider `give`s a `%fact` (subscription update) to dojo [saying that the thread completed successfully and produced value `~s1.0007`].
+Gall's spider `%give`s a `%fact` (subscription update) to dojo [saying that the thread completed successfully and produced value `~s1.0007`].
 
 ```
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ```
 
-Gall's dojo `give`s a `%fact` to hood [saying to output `~s1..0007`].
+Gall's dojo `%give`s a `%fact` to hood [saying to output `~s1..0007`].
 
 ```
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
 ```
 
-Gall's hood `give`s a `%fact` to Dill [saying to output `~s1..0007`].
+Gall's hood `%give`s a `%fact` to Dill [saying to output `~s1..0007`].
 
 ```
 ["|||||" %give %d %blit [=//term/1 t=~]]
 ```
 
-Dill `give`s a `%blit` (terminal output) event to Unix [saying to print a new line with output `~s1..0007`].
+Dill `%give`s a `%blit` (terminal output) event to Unix [saying to print a new line with output `~s1..0007`].
 
 ```
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
