@@ -36,6 +36,42 @@ If you want just the type value, use a 'type spear'.  This is `-:!>`, i.e., the 
 #t/@ud
 ```
 
+### !< "zapgal"
+
+`[%zpld p=spec q=hoon]`
+
+Takes a mold and a `vase` and dynamically checks that the type in the `vase`
+matches the mold.
+
+##### Produces
+
+The value of `vase` typed with the type of the mold if possible, else a
+`nest-fail`.
+
+##### Syntax
+
+Regular:  **2-fixed**
+
+##### Discussion
+
+This is something like a partial inverse to the `!>` rune and can be used to extract
+a typed value from a `vase`.
+
+##### Examples
+
+```
+> !<  @  !>  ~zod
+0
+
+> !<  @p  !>  0
+nest-fail
+
+> =m !>  0
+> =n !>  1
+> !<  [@ @]  (slop m n)
+[0 1]
+```
+
 ### !: "zapcol"
 
 `[%dbug p=hoon]`: turn on stack trace
