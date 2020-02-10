@@ -562,7 +562,7 @@ Gall's dojo `%give`s a `%fact` to hood [saying to output `~s1..0007`].
 Gall's hood `%give`s a `%fact` to Dill [saying to output `~s1..0007`].
 
 ```
-["|||||" %give %d %blit [=//term/1 t=~]]
+["|||||" %give %d %blit [i=//term/1 t=~]]
 ```
 
 Dill `%give`s a `%blit` (terminal output) event to Unix [saying to print a new line with output `~s1..0007`].
