@@ -5,14 +5,14 @@ template = "doc.html"
 +++
 
 
-## Stack trace tutorial
+## Move trace tutorial
 
-In this tutorial we will run a simple stack trace and use the output to get a
+In this tutorial we will run a simple "move trace" and use the output to get a
 picture of what the Arvo kernel proper does during the routine task of setting a
 timer. Some level of familiarity with the kernel is required for this section,
 which can be obtained in our [Arvo documentation](@/docs/tutorials/arvo/arvo.md#the-kernel).
 
-### Running a stack trace
+### Running a move trace
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the
 Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one
@@ -24,7 +24,7 @@ To follow along yourself, boot up a fake `~zod` and enter `|verb` into the dojo
 and press Enter to enable verbose mode (this is tracked by the laconic bit
 introduced in the section on [the
 state](@/docs/tutorials/arvo/arvo.md#the-state)) in the kernel documentation, followed by `-time ~s1`
-followed by Enter. Your terminal should display something like this:
+followed by Enter. Your terminal should pretty print a series of `move`s that looks something like this:
 
 ```
 ["" %unix p=%belt //term/1 ~2020.1.14..19.01.25..7556]
@@ -59,7 +59,7 @@ followed by a pause of one second, then
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ~s1..0007
 ```
-This gives us a stack trace that is a list of `move`s and some
+This gives us a move trace that is a list of `move`s and some
 associated metadata. Some of the `move`s are a bit of a distraction from what's
 going on overall such as acknowledgements that a `poke` was received
 (`%poke-ack`s), so we've omitted them for clarity. Furthermore, two `move`s (the
@@ -70,32 +70,32 @@ The main process that is occurring here is a sequence of `%pass` `move`s initiat
 by pressing Enter in the terminal that goes on to be handled by Dill, then Gall,
 and finally Behn. After the timer has elapsed, a sequence of `%give` `move`s is
 begun by Behn, which then passes through Gall and ultimately ends up back at the
-terminal. Any `move`s besides `%pass` in the first segment of the stack trace is a
+terminal. Any `move`s besides `%pass` in the first segment of the move trace is a
 secondary process utilized for book-keeping, spawning processes, interpreting
 commands, etc. All of this will be explained in detail below.
 
 
-It is important to note that this stack trace should be thought of
+It is important to note that this move trace should be thought of
 as being from the "point of view" of the kernel - each line represents the
 kernel taking in a message from one source and passing it along to its
 destination. It is then processed at that destination (which could be a vane or
 an app), and the return of that process is sent back to Arvo in the form of
-another `move` to perform and the loop begins again. Thus this stack trace does
+another `move` to perform and the loop begins again. Thus this move trace does
 not display information about what is going on inside of the vane or app such as
 private function calls, only what the kernel itself sees.
 
-### Interpreting the stack trace
+### Interpreting the move trace
 
-In this section we will go over the stack trace line-by-line, explaining how the
-stack trace is printed, what each line means (including some things not found in
-the stack trace), and a particular focus on what code is being activated in the
+In this section we will go over the move trace line-by-line, explaining how the
+move trace is printed, what each line means (including some things not found in
+the move trace), and a particular focus on what code is being activated in the
 first few lines that should equip you well enough to unravel the rest of the
-stack trace in as much detail as you desire.
+move trace in as much detail as you desire.
 
 
 #### The call
 
-Let's put the first part of the stack trace into a table to make reading a little easier.
+Let's put the first part of the move trace into a table to make reading a little easier.
 
 | Length | move    | vane(s)   |                                                                                                     action | duct                                                                            |
 |--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------|
@@ -172,7 +172,7 @@ primarily used for interfacing with Dill. Here, `+deal` is an arm for
         (pass wire [%g %deal [our our] ram deal])
 ```
 
-Next in our stack trace we have this:
+Next in our move trace we have this:
 ```
 ["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] [i=//term/1 t=~]]
 ```
@@ -207,7 +207,7 @@ and here we look at the segment that includes `%pass` `move`s.
       [p.q.r.gum ~ [[p.gum p.r.gum] q.gum] q.q.r.gum]
 ```
 
-Code for writing stack traces can be a bit tricky, but let's try not to get too
+Code for writing traces can be a bit tricky, but let's try not to get too
 distracted by the lark expressions and such. By paying attention to the lines
 concerning the laconic bit (following `!lac`) we can mostly determine what is being told to us.
 
@@ -219,7 +219,7 @@ displays the causal chain length metadatum mentioned above. Lastly, `[~zod ~zod]
 `~zod` is both the sending and receiving ship.
 
 From here on our explanations will be more brief. We include some information
-that cannot be directly read from the stack trace in [brackets]. Onto the next line:
+that cannot be directly read from the move trace in [brackets]. Onto the next line:
 
 ```
 ["||" %pass [%g %g] [[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo] [i=/d t=~[//term/1]]]
@@ -241,7 +241,7 @@ the terminal prompt].
 ```
 Gall's hood `%give`s a `gift` with a `%fact` to Dill [saying to replace the current terminal line with `~zod:dojo>`]
 
-Next is the `move` that is not actually printed in the stack trace mentioned
+Next is the `move` that is not actually printed in the move trace mentioned
 above:
 
 ```
@@ -323,7 +323,7 @@ Now Unix sets a timer for one second, waits one second, and then informs Behn th
 passed, leading to a chain of `%give` `move`s that ultimately prints
 `~s1..0007`.
 
-Let's throw the stack trace into a table:
+Let's throw the move trace into a table:
 
 | length | move    | vane(s) | card            | duct                                                                                                             |
 |--------|---------|---------|-----------------|------------------------------------------------------------------------------------------------------------------|
