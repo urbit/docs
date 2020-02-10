@@ -242,7 +242,7 @@ followed by a pause of one second, then
 ["||" %give %g [%unto %fact] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ["|||" %give %g [%unto %fact] [i=/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo t=~[/d //term/1]]]
 ["||||" %give %g [%unto %fact] [i=/d t=~[//term/1]]]
-["|||||" %give %d %blit [=//term/1 t=~]]
+["|||||" %give %d %blit [i=//term/1 t=~]]
 ["||" %give %g [%unto %kick] [i=/g/use/dojo/~zod/out/~zod/spider/drum/wool t=~[/d //term/1]]]
 ~s1..0007
 ```
