@@ -432,7 +432,7 @@ Next is the `move` that is not actually printed in the stack trace mentioned
 above:
 
 ```
-["|||||" %give %d %blit [=//term/1 t=~]]
+["|||||" %give %d %blit [i=//term/1 t=~]]
 ```
 
 Dill `%give`s a `%blit` (terminal output) event to Unix [saying to replace the current terminal line with `~zod:dojo>`].
