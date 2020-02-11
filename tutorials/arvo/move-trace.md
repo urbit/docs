@@ -97,25 +97,140 @@ move trace in as much detail as you desire.
 
 Let's put the first part of the move trace into a table to make reading a little easier.
 
-| Length | move    | vane(s)   |                                                                                                     action | duct                                                                            |
-|--------|---------|-----------|-----------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------|
-| 0      | `%unix` |           | `%belt`                                                                                                    |                                                                                 |
-| 1      | `%pass` | `[%d %g]` | `[[%deal [~zod ~zod] %hood %poke] /]`                                                                      | `//term/1`                                                                      |
-| 2      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %dojo %poke] /use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo]`                       | `/d //term/1`                                                                   |
-| 3      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo /d //term/1`                |
-| 4      | `%give` | `%g`      | `[%unto %fact]`                                                                                            | `/d //term/1`                                                                   |
-| 5      | `%give` | `%d`      | `%blit`                                                                                                    | `//term/1`                                                                      |
-| 3      | `%pass` | `[%g %f]` | `[%build /use/dojo/~zod/drum/hand]`                                                                        | `/d //term/1`                                                                   |
-| 4      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/dojo/~zod/drum/hand /d //term/1`                                        |
-| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %watch] /use/dojo/~zod/out/~zod/spider/drum/wool]`                            | `/d //term/1`                                                                   |
-| 6      | `%give` | `%g`      | `[%unto %watch-ack]`                                                                                       | `/g/use/dojo/~zod/out/~zod/spider/drum/wool /d //term/1`                        |
-| 5      | `%pass` | `[%g %g]` | `[[%deal [~zod ~zod] %spider %poke] /use/dojo/~zod/out/~zod/spider/drum/wool]`                             | `/d //term/1`                                                                   |
-| 6      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                  | `/d //term/1`                                                                   |
-| 7      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1`  |
-| 8      | `%pass` | `[%g %f]` | `[%build /use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u]`                                 | `/d //term/1`                                                                   |
-| 9      | `%give` | `%f`      | `%made`                                                                                                    | `/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u /d //term/1` |
-| 10     | `%pass` | `[%g %b]` | `[%wait /use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556]` | `/d //term/1`                                                                   |
-| 11     | `%give` | `%b`      | `%doze`                                                                                                    | `//behn/0v1p.sn2s7`                                                             |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Length</th>
+    <th class="tg-0pky">move</th>
+    <th class="tg-0pky">vane(s)</th>
+    <th class="tg-0pky">action</th>
+    <th class="tg-0pky">duct</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">0</td>
+    <td class="tg-0pky">`%unix`</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">`%belt`</td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">1</td>
+    <td class="tg-0pky">`%pass`<br>`/`</td>
+    <td class="tg-0pky">`[%d %g]`</td>
+    <td class="tg-0pky">`[%deal [~zod ~zod] %hood %poke]`</td>
+    <td class="tg-0pky">`//term/1`<br></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">2</td>
+    <td class="tg-0pky">`%pass`<br>'/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo'</td>
+    <td class="tg-0pky">`[%g %g]`</td>
+    <td class="tg-0pky">`[%deal [~zod ~zod] %dojo %poke]`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">3</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%g`</td>
+    <td class="tg-0pky">`[%unto %fact]`</td>
+    <td class="tg-0pky">`/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo<br>/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">4</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%g`</td>
+    <td class="tg-0pky">`[%unto %fact]`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">5</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%d`</td>
+    <td class="tg-0pky">`%blit`</td>
+    <td class="tg-0pky">`//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">3</td>
+    <td class="tg-0pky">`%pass`<br>`/use/dojo/~zod/drum/hand`<br></td>
+    <td class="tg-0pky">`[%g %f]`</td>
+    <td class="tg-0pky">`%build`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">4</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%f`</td>
+    <td class="tg-0pky">`%made`</td>
+    <td class="tg-0pky">`/g/use/dojo/~zod/drum/hand<br>/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">5</td>
+    <td class="tg-0pky">`%pass`<br>`/use/dojo/~zod/out/~zod/spider/drum/wool`</td>
+    <td class="tg-0pky">`[%g %g]`</td>
+    <td class="tg-0pky">`[%deal [~zod ~zod] %spider %watch]`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">6</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%g`</td>
+    <td class="tg-0pky">`[%unto %watch-ack]`</td>
+    <td class="tg-0pky">`/g/use/dojo/~zod/out/~zod/spider/drum/wool<br>/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">5</td>
+    <td class="tg-0pky">`%pass`<br>`/use/dojo/~zod/out/~zod/spider/drum/wool`</td>
+    <td class="tg-0pky">`[%g %g]`</td>
+    <td class="tg-0pky">`[%deal [~zod ~zod] %spider %poke]`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">6</td>
+    <td class="tg-0pky">`%pass`<br>`/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`</td>
+    <td class="tg-0pky">`[%g %f]`</td>
+    <td class="tg-0pky">`%build`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">7</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%f`</td>
+    <td class="tg-0pky">`%made`</td>
+    <td class="tg-0pky">`/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">8</td>
+    <td class="tg-0pky">`%pass`<br>`/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`</td>
+    <td class="tg-0pky">`[%g %f]`</td>
+    <td class="tg-0pky">`%build`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">9</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%f`</td>
+    <td class="tg-0pky">`%made`</td>
+    <td class="tg-0pky">`/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">10</td>
+    <td class="tg-0pky">`%pass`<br>`/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556`</td>
+    <td class="tg-0pky">`[%g %b]`</td>
+    <td class="tg-0pky">`%wait`</td>
+    <td class="tg-0pky">`/d<br>//term/1`</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">11</td>
+    <td class="tg-0pky">`%give`</td>
+    <td class="tg-0pky">`%b`</td>
+    <td class="tg-0pky">`%doze`</td>
+    <td class="tg-0pky">`//behn/0v1p.sn2s7`</td>
+  </tr>
+</table>
 
 This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -
 as well as four applications - hood, spider, dojo, and time.
