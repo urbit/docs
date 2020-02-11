@@ -559,4 +559,4 @@ As of this writing, we have nine vanes, which each provide the following service
 
 Now that you've learned about the nuts and bolts of the Arvo kernel, why not
 check it out in action? An in-depth "move trace" tutorial for running a timer app
-is available [here](@/docs/tutorial/arvo/move-trace.md).
+is available [here](@/docs/tutorials/arvo/move-trace.md).
