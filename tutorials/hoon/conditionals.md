@@ -71,7 +71,7 @@ This marks the end of the list of children of `?&`.
 
 We only utilized one "wut" rune in our walkthrough, but there are many others. Here are a few more examples:
 
-- `?:` (pronounced "wut-pam") is the simplest "wut" rune. It takes three children, also called sub-expressions. The first child is a boolean test, so it looks for a `%.y` or a `%.n`. The second child is a yes-branch, which is what we arrive at if the aforementioned boolean test evaluates to `%.y`. The third child is a no-branch, which we arrive at if the boolean test evaluates to `%.n`. These branches can contain any sort of Hoon expression, including further conditional expressions. Instead of the `?&` expression in our `%say` generator above, we could have written
+- `?:` (pronounced "wut-col") is the simplest "wut" rune. It takes three children, also called sub-expressions. The first child is a boolean test, so it looks for a `%.y` or a `%.n`. The second child is a yes-branch, which is what we arrive at if the aforementioned boolean test evaluates to `%.y`. The third child is a no-branch, which we arrive at if the boolean test evaluates to `%.n`. These branches can contain any sort of Hoon expression, including further conditional expressions. Instead of the `?&` expression in our `%say` generator above, we could have written
 
 ```hoon
 ?:  ?&  (gte n 1)
@@ -83,7 +83,7 @@ We only utilized one "wut" rune in our walkthrough, but there are many others. H
 ```
 Of course, doing so would be needlessly obfuscating - we mention this only to illustrate that these two Hoon expressions have the same product.
 
-- `?!` ("wut-zup") is the logical "NOT" operator, which inverts the truth value of its single child. Instead of `(lte n 100)` in our `%say` generator above, we could have written `?!  (gth n 100)`. Again, this would be bad practice, we only present this as an example.
+- `?!` ("wut-zap") is the logical "NOT" operator, which inverts the truth value of its single child. Instead of `(lte n 100)` in our `%say` generator above, we could have written `?!  (gth n 100)`. Again, this would be bad practice, we only present this as an example.
 
 - `?@` takes three children. It branches on whether its first child is an [atom](/docs/glossary/atom/).
 
