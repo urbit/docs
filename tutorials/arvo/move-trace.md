@@ -97,138 +97,132 @@ move trace in as much detail as you desire.
 
 Let's put the first part of the move trace into a table to make reading a little easier.
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table class="measure-wide flex flex-column overflow-x-scroll">
   <tr>
-    <th class="tg-0pky">Length</th>
-    <th class="tg-0pky">move</th>
-    <th class="tg-0pky">vane(s)</th>
-    <th class="tg-0pky">action</th>
-    <th class="tg-0pky">duct</th>
+    <th class="pr2">Length</th>
+    <th class="pr2 tl">Move</th>
+    <th class="pr6">Vane(s)</th>
+    <th class="pr7">Action</th>
+    <th class="tl">Duct</th>
   </tr>
   <tr>
-    <td class="tg-0pky">0</td>
-    <td class="tg-0pky">`%unix`</td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky">`%belt`</td>
-    <td class="tg-0pky"></td>
+    <td class="pv2">0</td>
+    <td class="pv2"><code>%unix</code></td>
+    <td class="pv2"></td>
+    <td class="pv2"><code>%belt</code></td>
+    <td class="pv2"></td>
   </tr>
   <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">`%pass`<br>`/`</td>
-    <td class="tg-0pky">`[%d %g]`</td>
-    <td class="tg-0pky">`[%deal [~zod ~zod] %hood %poke]`</td>
-    <td class="tg-0pky">`//term/1`<br></td>
+    <td class="pv2">1</td>
+    <td class="pv2"><code>%pass</code><br><code>/</code></td>
+    <td class="pv2"><code>[%d %g]</code></td>
+    <td class="pv2"><code>[%deal [~zod ~zod] %hood %poke]</code></td>
+    <td class="pv2"><code>//term/1</code><br></td>
   </tr>
   <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">`%pass`<br>'/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo'</td>
-    <td class="tg-0pky">`[%g %g]`</td>
-    <td class="tg-0pky">`[%deal [~zod ~zod] %dojo %poke]`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">2</td>
+    <td class="pv2"><code>%pass</code><br/><code>'/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo'</code></td>
+    <td class="pv2"><code>[%g %g]</code></td>
+    <td class="pv2"><code>[%deal [~zod ~zod] %dojo %poke]</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%g`</td>
-    <td class="tg-0pky">`[%unto %fact]`</td>
-    <td class="tg-0pky">`/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo<br>/d<br>//term/1`</td>
+    <td class="pv2">3</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%g</code></td>
+    <td class="pv2"><code>[%unto %fact]</code></td>
+    <td class="pv2"><code>/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo<br>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">4</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%g`</td>
-    <td class="tg-0pky">`[%unto %fact]`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">4</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%g</code></td>
+    <td class="pv2"><code>[%unto %fact]</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">5</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%d`</td>
-    <td class="tg-0pky">`%blit`</td>
-    <td class="tg-0pky">`//term/1`</td>
+    <td class="pv2">5</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%d</code></td>
+    <td class="pv2"><code>%blit</code></td>
+    <td class="pv2"><code>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">`%pass`<br>`/use/dojo/~zod/drum/hand`<br></td>
-    <td class="tg-0pky">`[%g %f]`</td>
-    <td class="tg-0pky">`%build`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">3</td>
+    <td class="pv2"><code>%pass</code><br><code>/use/dojo/~zod/drum/hand</code><br></td>
+    <td class="pv2"><code>[%g %f]</code></td>
+    <td class="pv2"><code>%build</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">4</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%f`</td>
-    <td class="tg-0pky">`%made`</td>
-    <td class="tg-0pky">`/g/use/dojo/~zod/drum/hand<br>/d<br>//term/1`</td>
+    <td class="pv2">4</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%f</code></td>
+    <td class="pv2"><code>%made</code></td>
+    <td class="pv2"><code>/g/use/dojo/~zod/drum/hand<br>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">5</td>
-    <td class="tg-0pky">`%pass`<br>`/use/dojo/~zod/out/~zod/spider/drum/wool`</td>
-    <td class="tg-0pky">`[%g %g]`</td>
-    <td class="tg-0pky">`[%deal [~zod ~zod] %spider %watch]`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">5</td>
+    <td class="pv2"><code>%pass</code><br><code>/use/dojo/~zod/out/~zod/spider/drum/wool</code></td>
+    <td class="pv2"><code>[%g %g]</code></td>
+    <td class="pv2"><code>[%deal [~zod ~zod] %spider %watch]</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">6</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%g`</td>
-    <td class="tg-0pky">`[%unto %watch-ack]`</td>
-    <td class="tg-0pky">`/g/use/dojo/~zod/out/~zod/spider/drum/wool<br>/d<br>//term/1`</td>
+    <td class="pv2">6</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%g</code></td>
+    <td class="pv2"><code>[%unto %watch-ack]</code></td>
+    <td class="pv2"><code>/g/use/dojo/~zod/out/~zod/spider/drum/wool<br>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">5</td>
-    <td class="tg-0pky">`%pass`<br>`/use/dojo/~zod/out/~zod/spider/drum/wool`</td>
-    <td class="tg-0pky">`[%g %g]`</td>
-    <td class="tg-0pky">`[%deal [~zod ~zod] %spider %poke]`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">5</td>
+    <td class="pv2"><code>%pass</code><br><code>/use/dojo/~zod/out/~zod/spider/drum/wool</code></td>
+    <td class="pv2"><code>[%g %g]</code></td>
+    <td class="pv2"><code>[%deal [~zod ~zod] %spider %poke]</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">6</td>
-    <td class="tg-0pky">`%pass`<br>`/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`</td>
-    <td class="tg-0pky">`[%g %f]`</td>
-    <td class="tg-0pky">`%build`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">6</td>
+    <td class="pv2"><code>%pass</code><br><code>/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u</code></td>
+    <td class="pv2"><code>[%g %f]</code></td>
+    <td class="pv2"><code>%build</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">7</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%f`</td>
-    <td class="tg-0pky">`%made`</td>
-    <td class="tg-0pky">`/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1`</td>
+    <td class="pv2">7</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%f</code></td>
+    <td class="pv2"><code>%made</code></td>
+    <td class="pv2"><code>/g/use/spider/~zod/find/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">8</td>
-    <td class="tg-0pky">`%pass`<br>`/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u`</td>
-    <td class="tg-0pky">`[%g %f]`</td>
-    <td class="tg-0pky">`%build`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">8</td>
+    <td class="pv2"><code>%pass</code><br><code>/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u</code></td>
+    <td class="pv2"><code>[%g %f]</code></td>
+    <td class="pv2"><code>%build</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">9</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%f`</td>
-    <td class="tg-0pky">`%made`</td>
-    <td class="tg-0pky">`/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1`</td>
+    <td class="pv2">9</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%f</code></td>
+    <td class="pv2"><code>%made</code></td>
+    <td class="pv2"><code>/g/use/spider/~zod/build/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u<br>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">10</td>
-    <td class="tg-0pky">`%pass`<br>`/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556`</td>
-    <td class="tg-0pky">`[%g %b]`</td>
-    <td class="tg-0pky">`%wait`</td>
-    <td class="tg-0pky">`/d<br>//term/1`</td>
+    <td class="pv2">10</td>
+    <td class="pv2"><code>%pass</code><br><code>/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556</code></td>
+    <td class="pv2"><code>[%g %b]</code></td>
+    <td class="pv2"><code>%wait</code></td>
+    <td class="pv2"><code>/d<br>//term/1</code></td>
   </tr>
   <tr>
-    <td class="tg-0pky">11</td>
-    <td class="tg-0pky">`%give`</td>
-    <td class="tg-0pky">`%b`</td>
-    <td class="tg-0pky">`%doze`</td>
-    <td class="tg-0pky">`//behn/0v1p.sn2s7`</td>
+    <td class="pv2">11</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%b</code></td>
+    <td class="pv2"><code>%doze</code></td>
+    <td class="pv2"><code>//behn/0v1p.sn2s7</code></td>
   </tr>
 </table>
 
@@ -440,16 +434,73 @@ passed, leading to a chain of `%give` `move`s that ultimately prints
 
 Let's throw the move trace into a table:
 
-| length | move    | vane(s) | card            | duct                                                                                                             |
-|--------|---------|---------|-----------------|------------------------------------------------------------------------------------------------------------------|
-| 0      | `%unix` |         | `%wake`         | `//behn`                                                                                                         |
-| 1      | `%give` | `%b`    | `%doze`         | `//behn/0v1p.sn2s7`                                                                                              |
-| 1      | `%give` | `%b`    | `%wake`         | `/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556 /d //term/1` |
-| 2      | `%give` | `%g`    | `[%unto %fact]` | `/g/use/dojo/~zod/out/~zod/spider/drum/wool /d //term/1`                                                         |
-| 3      | `%give` | `%g`    | `[%unto %fact]` | `/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo /d //term/1`                                                 |
-| 4      | `%give` | `%g`    | `[%unto %fact]` | `/d //term/1`                                                                                                    |
-| 5      | `%give` | `%d`    | `%blit`         | `//term/1`                                                                                                       |
-| 2      | `%give` | `%g`    | `[%unto %kick]` | `/g/use/dojo/~zod/out/~zod/spider/drum/wool /d //term/1`                                                         |
+<table class="measure-wide flex flex-column overflow-x-scroll">
+  <tr>
+    <th class="pr4">Length</th>
+    <th class="pr4">Move</th>
+    <th class="pr6">Vane(s)</th>
+    <th class="tl">Card</th>
+    <th class="tl">Duct</th>
+  </tr>
+  <tr>
+    <td class="pv2">0</td>
+    <td class="pv2"><code>%unix</code></td>
+    <td class="pv2"></td>
+    <td class="pv2"><code>%wake</code></td>
+    <td class="pv2"><code>//behn</code></td>
+  </tr>
+  <tr>
+    <td class="pv2">1</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%b</code></td>
+    <td class="pv2"><code>%doze</code></td>
+    <td class="pv2"><code>//behn/0v1p.sn2s7</code></td>
+  </tr>
+  <tr>
+    <td class="pv2">1</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%b</code></td>
+    <td class="pv2"><code>%wake</code></td>
+    <td class="pv2">
+      <code>/g/use/spider/~zod/thread/~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u/wait/~2020.1.14..19.01.26..7556</code><br /><code>/d</code><code>//term/1</code>
+    </td>
+  </tr>
+  <tr>
+    <td class="pv2">2</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%g</code></td>
+    <td class="pv2"><code>[%unto %fact]</code></td>
+    <td class="pv2"><code>/g/use/dojo/~zod/out/~zod/spider/drum/wool</code><br /><code>/d</code><code>//term/1</code></td>
+  </tr>
+  <tr>
+    <td class="pv2">3</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%g</code></td>
+    <td class="pv2"><code>[%unto %fact]</code></td>
+    <td class="pv2"><code>/g/use/hood/~zod/out/~zod/dojo/drum/phat/~zod/dojo</code><br /><code>/d</code><br /><code>//term/1</code>
+    </td>
+  </tr>
+  <tr>
+    <td class="pv2">4</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%g</code></td>
+    <td class="pv2"><code>[%unto %fact]</code></td>
+    <td class="pv2"><code>/d</code><br /><code>//term/1</code></td>
+  </tr>
+  <tr>
+    <td class="pv2">5</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>%d</code></td>
+    <td class="pv2"><code>%blit</code></td>
+    <td class="pv2"><code>//term/1</code></td>
+  </tr>
+  <tr>
+    <td class="pv2">2</td>
+    <td class="pv2"><code>%give</code></td>
+    <td class="pv2"><code>[%undo %kick]</code></td>
+    <td class="pv2"><code>/g/use/dojo/~zod/out/~zod/spider/drum/wool</code><br /><code>/d</code><br /><code>//term/1</code></td>
+  </tr>
+</table>
 
 Now we follow it line-by-line:
 
