@@ -43,18 +43,26 @@ run /ted/ph/add.hoon.  Here are the contents of that file:
 ```
 
 There's a few lines of boilerplate, with three important lines defining
-the test.  We boot a ship with `+raw-ship`, we enter some commands with
-`+dojo`, and then we wait until we get a line that includes some
-expected output.
+the test.
+
+```
+;<  ~  bind:m  (raw-ship ~bud ~)
+;<  ~  bind:m  (dojo ~bud "[%test-result (add 2 3)]")
+;<  ~  bind:m  (wait-for-output ~bud "[%test-result 5]")
+```
+
+We boot a ship with `+raw-ship`. In this case the ship we are booting will be `~bud`. These ships exist in a virtual environment so you could use any valid `@p`.
+
+Next we enter some commands with `+dojo`, and then we wait until we get a line that includes some expected output. Each of these commands we need to specify the ship we want to run on.
 
 Many tests can be created with nothing more than these simple tools.
-Try startig two ships and having one send a `|hi` to the other, and
+Try starting two ships and having one send a `|hi` to the other, and
 check that it arrives.
 
 Many more complex tests can be created, including file changes, personal
 breaches, mock http clients or servers, or anything you can imagine.
-Check out lib/ph/io.hoon for other available functions, and look at
-other tests in /ted/ph/ for inspiration.
+Check out `/lib/ph/io.hoon` for other available functions, and look at
+other tests in `/ted/ph/` for inspiration.
 
 # Reference
 
