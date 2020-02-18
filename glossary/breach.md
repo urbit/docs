@@ -16,7 +16,7 @@ an integer that represents how many personal breaches have been performed on
 that ship.
 
 Network breaches happen when a major Arvo revision that cannot be implemented 
-via an [OTA update](../ota-updates.md) occurs. When this happens, a new binary
+via an [OTA update](../ota-updates) occurs. When this happens, a new binary
 will need to be downloaded.
 
 You can check your life number and the current rift number by typing `+keys`
@@ -26,3 +26,4 @@ into dojo and pressing Enter.
 
 - [Guide to breaches](@/docs/tutorials/guide-to-breaches.md): A more in-depth
   explanation of breaches, including how to perform a personal breach.
+- [Ship Troubleshooting](@/docs/tutorials/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.
