@@ -1,6 +1,7 @@
 +++
 title = "Breach"
 template = "doc.html"
+category = "arvo"
 +++
 
 Continuity on the [Ames](../ames) network occasionally needs to be broken at
