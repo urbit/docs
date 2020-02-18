@@ -11,13 +11,15 @@ history, called a **personal breach**, or cause the entire network to forget its
 history, called a **network breach**.
 
 Personal breaches are always initiated by the user, frequently in response to a
-connectivity error. Each one increments the _life_ of the ship by one, which is
+connectivity error. Each one increments the _life_ number of the ship by one, which is
 an integer that represents how many personal breaches have been performed on
 that ship.
 
 Network breaches happen when a major Arvo revision that cannot be implemented 
 via an [OTA update](../ota-updates) occurs. When this happens, a new binary
-will need to be downloaded.
+will need to be downloaded. Each network breach increments the _rift_ number of
+the network by one, which is an integer that represents how many network
+breaches have been performed.
 
 You can check your life number and the current rift number by typing `+keys`
 into dojo and pressing Enter.
