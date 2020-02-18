@@ -29,7 +29,9 @@ your ship's _life_ by one, which refers to your ship's [Azimuth](@/docs/tutorial
 revision number_. This value is utilized by
 Ames and Jael to ensure that you are
 communicating with a ship created using its most recent set of keys. Your
-ship's life is written at the end of the name of its keyfile, e.g. `sampel-palnet4.key.`
+ship's life is written at the end of the name of its keyfile, e.g.
+`sampel-palnet4.key`. You can also check your current life number by running the
+`+keys` generator in dojo.
 
 
 ## Network Breaches
@@ -47,4 +49,5 @@ If a network breach is happening, follow the steps below.
 Each network breach increments an integer value called the _rift_ of the network
 by one, which is recorded by each ship and refers to the current Azimuth
 _continuity number_. Only ships with the same rift number can
-communicate over Ames.
+communicate over Ames. You can check the current rift number by running the
+`+keys` generator in dojo.
