@@ -157,6 +157,59 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 [p=0 q=%$]
 ```
 
+
+### $< "bucgal"
+
+`[%bsld p=spec q=spec]`: Filters a pre-existing mold to obtain a mold 
+that excludes a particular structure.
+
+##### Syntax
+
+Regular:  **2-fixed**.
+
+##### Discussion
+
+This can be used to obtain type(s) from a list of types `p` that do not satisfy a
+requirement given by `q`.
+
+##### Examples
+
+```
+> =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
+> =m $<(%bar foo)
+> (m [%bar 2 4])
+ford: %ride failed to execute:
+> (m [%baz 2])
+[%baz p=2]
+ ```
+
+
+### $> "bucgar"
+
+`[%bsbn p=spec q=spec]`: Filters a pre-existing mold to obtain a mold 
+matching a particular structure.
+
+##### Syntax
+
+Regular:  **2-fixed**.
+
+##### Discussion
+
+This can be used to obtain type(s) from a list of types `p` that satisfy a
+requirement given by `q`.
+
+##### Examples
+
+```
+> =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
+> =m $>(%bar foo)
+> (m [%bar 2 4])
+[%bar p=2 q=4]
+> (m [%baz 2])
+ford: %ride failed to execute:
+ ```
+
+
 ### $- "buchep"
 
 `[%bshp p=spec q=spec]`: structure that normalizes to an example gate.
