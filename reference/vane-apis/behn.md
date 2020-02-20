@@ -15,6 +15,10 @@ In this document we describe the public interface for Behn.
 ### %born
 
 ```hoon
+$>(%born vane-task) 
+```
+
+```hoon
 ::  +born: urbit restarted; refresh :next-wake and store wakeup timer duct
   ::
   ++  born  set-unix-wake(next-wake.state ~, unix-duct.state duct)
