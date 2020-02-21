@@ -57,14 +57,15 @@ What the vane does with the error report at that point is left up to the vane.
 
 ### `%init`
 
-The `%init` `task` is called once as a part of the initial boot process during the [larval
-stage](@/docs/tutorials/arvo/arvo.md#larval-stage-core) of the Arvo kernel and
-is never used again. It
-occurs after the entropy and identity is added but before the metamorphosis into
-the [adult stage](@/docs/tutorials/arvo/arvo.md#structural-interface-core). 
+The `%init` `task` performs the initial setup for the vane. It is called a
+single time as a part of the initial boot process during
+the [adult stage](@/docs/tutorials/arvo/arvo.md#structural-interface-core) of
+the Arvo life cycle immediately after the [larval
+stage](@/docs/tutorials/arvo/arvo.md#larval-stage-core) concludes, and
+is never used again.
 
-Jael is the first vane to be initialized, finalizing the ship's registration
-with Azimuth, which then goes on to trigger an `%init` `task` for each of
+Jael is the first vane to be initialized, which registers the ship with
+with Azimuth. Jael then goes on to trigger an `%init` `task` for each of
 the other vanes.
 
 ### `%trim`
