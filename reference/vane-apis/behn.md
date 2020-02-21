@@ -6,13 +6,15 @@ template = "doc.html"
 
 # Behn
 
-In this document we describe the public interface for Behn.
-
+In this document we describe the public interface for Behn. Namely, we describe
+each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.
 
 
 ## Tasks
 
 ### %born
+
+Each time you start your Urbit, the Arvo kernel calls the `%born` task for Behn.
 
 ```hoon
 $>(%born vane-task) 
