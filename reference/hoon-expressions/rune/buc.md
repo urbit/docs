@@ -169,8 +169,8 @@ Regular:  **2-fixed**.
 
 ##### Discussion
 
-This can be used to obtain type(s) from a list of types `p` that do not satisfy a
-requirement given by `q`.
+This can be used to obtain type(s) from a list of types `q` that do not satisfy a
+requirement given by `p`.
 
 ##### Examples
 
@@ -204,8 +204,8 @@ Regular:  **2-fixed**.
 
 ##### Discussion
 
-This can be used to obtain type(s) from a list of types `p` that satisfy a
-requirement given by `q`.
+This can be used to obtain type(s) from a list of types `q` that satisfy a
+requirement given by `p`.
 
 ##### Examples
 
