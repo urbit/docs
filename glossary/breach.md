@@ -12,18 +12,21 @@ history, called a **personal breach**, or cause the entire network to forget its
 history, called a **network breach**.
 
 Personal breaches are always initiated by the user, frequently in response to a
-connectivity error. Each one increments the _life_ number of the ship by one, which is
+connectivity error. The easiest way to do this is with [Bridge](../bridge).
+There are two types of personal breaches: changing private keys, and changing
+the Urbit ID ownership address. Each one increments the _life_ number of the ship by one, which is
 an integer that represents how many personal breaches have been performed on
-that ship.
+that ship. Transferring the ID to a new address will also increase the _rift_
+number of the ship in addition to the life number.
+
+You can check your life and rift number by typing `+keys`
+into dojo and pressing Enter.
 
 Network breaches happen when a major Arvo revision that cannot be implemented 
 via an [OTA update](../ota-updates) occurs. When this happens, a new binary
-will need to be downloaded. Each network breach increments the _rift_ number of
-the network by one, which is an integer that represents how many network
-breaches have been performed.
+will need to be downloaded, and your ship's pier needs to be moved to the
+directory containing the new binary.
 
-You can check your life number and the current rift number by typing `+keys`
-into dojo and pressing Enter.
 
 ### Further Reading
 
