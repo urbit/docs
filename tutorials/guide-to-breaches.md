@@ -24,14 +24,23 @@ To perform a personal breach, follow the steps below.
 - Create a new pier by booting your ship with your new keyfile.
 - Rejoin your favorite chat channels and subscriptions.
 
-Performing a personal breach on your ship increments an integer value called
+There are two types of personal breaches: changing private keys, and changing
+the Ethereum address that holds the Urbit ID.
+
+Each type of personal breach increments an integer value called
 your ship's _life_ by one, which refers to your ship's [Azimuth](@/docs/tutorials/concepts/azimuth.md) _key
 revision number_. This value is utilized by
 Ames and Jael to ensure that you are
 communicating with a ship created using its most recent set of keys. Your
 ship's life is written at the end of the name of its keyfile, e.g.
-`sampel-palnet4.key`. You can also check your current life number by running the
-`+keys` generator in dojo.
+`sampel-palnet4.key`. Changing the Etherum address that holds the Urbit ID,
+called _reticketing_, also increments a number called the ship's _rift_ by one.
+Rift refers to your ship's Azimuth _continuity number_.
+
+You can check your current life and rift number by running the
+`+keys` generator in dojo. To inspect a ship's life number, type `.^(* %j
+/=life=/(scot %p <ship>))` into dojo. To inspect a ship's rift number, type `.^(* %j /=rift=/(scot %p <ship>))`
+ into dojo.
 
 
 ## Network Breaches
@@ -46,8 +55,3 @@ If a network breach is happening, follow the steps below.
 - Create a new pier by booting your ship with your key, according to the instructions on the install page. (Note: You do _not_ need to use a new key to boot into a new continuity era.)
 - Rejoin your favorite chat channels and subscriptions.
 
-Each network breach increments an integer value called the _rift_ of the network
-by one, which is recorded by each ship and refers to the current Azimuth
-_continuity number_. Only ships with the same rift number can
-communicate over Ames. You can check the current rift number by running the
-`+keys` generator in dojo.
