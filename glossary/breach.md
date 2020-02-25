@@ -19,7 +19,7 @@ an integer that represents how many personal breaches have been performed on
 that ship. Transferring the ID to a new address will also increase the _rift_
 number of the ship in addition to the life number.
 
-You can check your life and rift number by typing `+keys`
+You can check your life and rift number by typing `+keys our`
 into dojo and pressing Enter.
 
 Network breaches happen when a major Arvo revision that cannot be implemented 
