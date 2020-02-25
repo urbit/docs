@@ -38,9 +38,8 @@ called _reticketing_, also increments a number called the ship's _rift_ by one.
 Rift refers to your ship's Azimuth _continuity number_.
 
 You can check your current life and rift number by running the
-`+keys` generator in dojo. To inspect a ship's life number, type `.^(* %j
-/=life=/(scot %p <ship>))` into dojo. To inspect a ship's rift number, type `.^(* %j /=rift=/(scot %p <ship>))`
- into dojo.
+`+keys our` generator in dojo. You can inspect another ship's life and rift can be checked by
+running `+keys ~sampel-palnet`.
 
 
 ## Network Breaches
