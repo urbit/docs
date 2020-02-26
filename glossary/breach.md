@@ -27,7 +27,6 @@ via an [OTA update](../ota-updates) occurs. When this happens, a new binary
 will need to be downloaded, and your ship's pier needs to be moved to the
 directory containing the new binary.
 
-
 ### Further Reading
 
 - [Guide to breaches](@/docs/tutorials/guide-to-breaches.md): A more in-depth

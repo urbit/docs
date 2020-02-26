@@ -157,6 +157,87 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 [p=0 q=%$]
 ```
 
+
+### $< "bucgal"
+
+`[%bsld p=spec q=spec]`: Filters a pre-existing mold to obtain a mold 
+that excludes a particular structure.
+
+##### Syntax
+
+Regular:  **2-fixed**.
+
+##### Discussion
+
+This can be used to obtain type(s) from a list of types `q` that do not satisfy a
+requirement given by `p`.
+
+##### Examples
+
+```
+~zod:dojo> =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
+
+~zod:dojo> =m $<(%bar foo)
+
+~zod:dojo> (m [%bar 2 4])
+ford: %ride failed to execute:
+
+~zod:dojo> (m [%baz 2])
+[%baz p=2]
+
+~zod:dojo> ;;($<(%foo [@tas *]) [%foo 1])
+ford: %ride failed to execute:
+
+~zod:dojo> ;;($<(%foo [@tas *]) [%bar 1])
+[%bar 1]
+ ```
+
+
+### $> "bucgar"
+
+`[%bsbn p=spec q=spec]`: Filters a mold to obtain a new mold 
+matching a particular structure.
+
+##### Syntax
+
+Regular:  **2-fixed**.
+
+##### Discussion
+
+This can be used to obtain type(s) from a list of types `q` that satisfy a
+requirement given by `p`.
+
+##### Examples
+
+Examples with `$%`:
+```
+~zod:dojo> =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
+
+~zod:dojo> =m $>(%bar foo)
+
+~zod:dojo> (m [%bar 2 4])
+[%bar p=2 q=4]
+
+>~zod:dojo> (m [%baz 2])
+ford: %ride failed to execute:
+```
+
+Examples with `;;`:
+```
+~zod:dojo> ;;([@tas *] [%foo 1])
+[%foo 1]
+
+~zod:dojo> ;;([@tas *] [%bar 1])
+[%bar 1]
+
+~zod:dojo> ;;($>(%foo [@tas *]) [%foo 1])
+[%foo 1]
+
+~zod:dojo> ;;($>(%foo [@tas *]) [%bar 1])
+ford: %ride failed to execute:
+ ```
+
+
 ### $- "buchep"
 
 `[%bshp p=spec q=spec]`: structure that normalizes to an example gate.

@@ -27,7 +27,7 @@ To perform a personal breach, follow the steps below.
 There are two types of personal breaches: changing private keys, and changing
 the Ethereum address that holds the Urbit ID.
 
-Each type of personal breach increments an integer value called
+Performing a personal breach on your ship increments an integer value called
 your ship's _life_ by one, which refers to your ship's [Azimuth](@/docs/tutorials/concepts/azimuth.md) _key
 revision number_. This value is utilized by
 Ames and Jael to ensure that you are
