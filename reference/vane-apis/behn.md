@@ -18,27 +18,45 @@ Each time you start your Urbit, the Arvo kernel calls the `%born` task for Behn.
 
 #### Task
 
-```hoon
-$>(%born vane-task) 
-```
-
-`%born` is a [vane-task](@/docs/references/vane-apis/common-tasks.md). When
+`%born` is a [vane-task](@/docs/references/vane-apis/common-tasks.md) that takes
+in an empty card `[~]`. When
 called, Behn gets the current time from Unix and updates its list of timers
 accordingly.
 
+#### Gift
 
+`%born` does not return a `gift`.
+
+##### Source
 ```hoon
 ::  +born: urbit restarted; refresh :next-wake and store wakeup timer duct
   ::
   ++  born  set-unix-wake(next-wake.state ~, unix-duct.state duct)
 ```
 
-#### Gift
-
-`%born` does not return a `gift`.
 
 ### %crud
 
+`%crud` is called whenever an error involving Behn occurs, which for now means
+that it appears that Behn has no timers in its state. It returns an error report.
+
+#### Task
+
+`%crud` is a [vane-task](@/docs/references/vane-apis/common-tasks.md) that takes
+in a card `[tag=@tas error=tang]`. Here, `tag` is a `@tas` denoting the
+type of error, and `error` is an error message. When
+called, it checks to see if the set of timers is empty. If so, it returns an
+error report containing `error`, otherwise it passes the error to `+wake`.
+
+Behn should be the first vane to be activated in a `%wake`. Occasionally this does not
+happen, but we do not yet handle this error.
+
+#### Gift
+ 
+If the set of timers is empty, Behn `%give`s a `gift` whose `card` is given by
+`[%behn-crud-no-timer tag error]`.
+
+##### Source
 ```hoon
 ++  crud
     |=  [tag=@tas error=tang]
@@ -57,10 +75,8 @@ accordingly.
     ?:  =(~ timers.state)  ~|  %behn-crud-no-timer^tag^error  !!
     ::
     (wake `error)
-  ::  +rest: cancel the timer at :date, then adjust unix wakeup
-  ::  +wait: set a new timer at :date, then adjust unix wakeup
-  ::
  ```
+ 
 
 ### %drip
 ```hoon
