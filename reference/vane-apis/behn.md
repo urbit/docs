@@ -16,9 +16,16 @@ each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in re
 
 Each time you start your Urbit, the Arvo kernel calls the `%born` task for Behn.
 
+#### Task
+
 ```hoon
 $>(%born vane-task) 
 ```
+
+`%born` is a [vane-task](@/docs/references/vane-apis/common-tasks.md). When
+called, Behn gets the current time from Unix and updates its list of timers
+accordingly.
+
 
 ```hoon
 ::  +born: urbit restarted; refresh :next-wake and store wakeup timer duct
@@ -26,6 +33,9 @@ $>(%born vane-task)
   ++  born  set-unix-wake(next-wake.state ~, unix-duct.state duct)
 ```
 
+#### Gift
+
+`%born` does not return a `gift`.
 
 ### %crud
 
