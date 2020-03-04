@@ -55,7 +55,7 @@ happen, but we do not yet handle this error.
 
 #### Gift
  
-If the set of timers is empty, Behn `%give`s a `gift` whose `card` is given by
+If the set of timers is empty when Behn is `%pass`ed a `%crud` `task`, Behn `%give`s a `%wake` `card` given by
 `[%behn-crud-no-timer tag error]`.
 
 #### Source
@@ -134,28 +134,60 @@ possible after the prescribed condition is met.
 ++  rest  |=(date=@da set-unix-wake(timers.state (unset-timer [date duct])))
 ```
 
+
+
 ### %trim
+
+This `task` is sent by the interpreter in order to free up memory.
+
+#### Task
+
+This `task` is empty, since it is not a good idea to forget your timers.
+
+#### Gift
+
+This `task` returns no `gift`s.
+
+#### Source
 
 ```hoon
   ::  +trim: in response to memory pressue
   ::
   ++  trim  [moves state]
-
 ```
+
+
+
 ### %vega
+
+This `task` informs the vane that the kernel has been upgraded.
+
+#### Task
+
+Behn does not do anything in response to a kernel upgrade.
+
+#### Gift
+
+This `task` returns no `gift`s.
+
+#### Source
 
 ```hoon
   ::  +vega: learn of a kernel upgrade
   ::
   ++  vega  [moves state]
-
 ```
 
+
+
 ### %wait
+
+
 ```hoon
 ::  +wait: set a new timer at :date, then adjust unix wakeup
 ++  wait  |=(date=@da set-unix-wake(timers.state (set-timer [date duct])))
 ```
+
 
 
 ### %wake
@@ -186,6 +218,8 @@ possible after the prescribed condition is met.
     (emit-vane-wake(timers.state t.timers.state) duct.i.timers.state ~)
 
 ```
+
+
 
 ### %wegh
 
