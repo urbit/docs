@@ -95,7 +95,15 @@ been restored.
 `%drip` only handles `gift`s, and can only schedule `gift`s for as soon as
 possible after the prescribed condition is met.
 
+`%drip` takes in a `%give` `move` in a `vase`.
+
 #### Gift
+
+In response to a `%drip` `task`, Behn will `%give` a `%meta` `gift` containing
+the `gift` originally `%give`n to Behn when `%drip` was first called.
+
+Is that really right? It looks like the gift returned is actually a response to
+a pass it passed itself, not the original event?
 
 #### Source
 
@@ -114,6 +122,8 @@ possible after the prescribed condition is met.
     event-core
 ```
 
+
+
 ### %huck
 
 ```hoon
@@ -126,6 +136,8 @@ possible after the prescribed condition is met.
     =<  [moves state]
     event-core(moves [duct %give %meta mov]~)
 ```
+
+
 
 ### %rest
 
@@ -164,7 +176,7 @@ This `task` informs the vane that the kernel has been upgraded.
 
 #### Task
 
-Behn does not do anything in response to a kernel upgrade.
+This `task` has no arguments, and Behn does not do anything in response to a kernel upgrade.
 
 #### Gift
 
@@ -182,6 +194,16 @@ This `task` returns no `gift`s.
 
 ### %wait
 
+This `task` instructs Behn to start a new timer.
+
+#### Task
+
+This `task` takes in a `@da` which Behn then adds to `timers.state`.
+ 
+#### Gift
+
+This `task` produces no `gift`s.
+
 
 ```hoon
 ::  +wait: set a new timer at :date, then adjust unix wakeup
@@ -191,6 +213,21 @@ This `task` returns no `gift`s.
 
 
 ### %wake
+
+This `task` is sent by the kernel when the Unix timer tells the kernel that it
+is time for Behn to wake up. It is also called by Behn to emit an error message.
+
+#### Task
+
+Upon receiving this `task`, Behn processes the elapsed timer and then sets
+`:next-wake`.
+
+#### Gift
+
+In response to receiving this `task`, Behn may `%give` a `%doze` `gift`
+containing the `@da` of the next timer to elapse. Behn may also `%give` a
+`%wake` `gift` to itself.
+
 
 ```hoon
   ::  +wake: unix says wake up; process the elapsed timer and set :next-wake
@@ -223,6 +260,18 @@ This `task` returns no `gift`s.
 
 ### %wegh
 
+This `task` asks Behn to product a memory usage report.
+
+#### Task
+
+This `task` has no input arguments.
+
+#### Gift
+
+When Behn is `%pass`ed this `task`, it will `%give` a `%mass` `gift` in response
+containing Behn's current memory usage.
+
+
 ```hoon
   ::  +wegh: produce memory usage report for |mass
   ::
@@ -236,13 +285,3 @@ This `task` returns no `gift`s.
     ==
 ```
 
-
-## Gifts
-
-### %doze
-
-### %mass
-
-### %meta
-
-### %wake
