@@ -27,7 +27,7 @@ accordingly.
 
 `%born` does not return a `gift`.
 
-##### Source
+#### Source
 ```hoon
 ::  +born: urbit restarted; refresh :next-wake and store wakeup timer duct
   ::
@@ -38,7 +38,9 @@ accordingly.
 ### %crud
 
 `%crud` is called whenever an error involving Behn occurs, which for now means
-that it appears that Behn has no timers in its state. It returns an error report.
+that it appears that Behn has no timers in its state. It takes in an error
+report and either returns that error report with additional information, or
+calls the `+wake` `task` with the error report as an argument.
 
 #### Task
 
@@ -56,7 +58,7 @@ happen, but we do not yet handle this error.
 If the set of timers is empty, Behn `%give`s a `gift` whose `card` is given by
 `[%behn-crud-no-timer tag error]`.
 
-##### Source
+#### Source
 ```hoon
 ++  crud
     |=  [tag=@tas error=tang]
@@ -79,6 +81,24 @@ If the set of timers is empty, Behn `%give`s a `gift` whose `card` is given by
  
 
 ### %drip
+
+`%drip` is utilized for event scheduling to ensure that they occur in the proper
+order.
+
+#### Task
+
+`%drip` allows one to delay `gift`s until a given condition is met. For example,
+if Clay crashes and you do not wish for an app to then crash when it tries to
+access Clay before it is restarted, `%drip` can delay that access until Clay has
+been restored. 
+
+`%drip` only handles `gift`s, and can only schedule `gift`s for as soon as
+possible after the prescribed condition is met.
+
+#### Gift
+
+#### Source
+
 ```hoon
   ::  +drip:  XX
   ::
@@ -92,7 +112,6 @@ If the set of timers is empty, Behn `%give`s a `gift` whose `card` is given by
       (~(put by movs.drips.state) count.drips.state mov)
     =.  count.drips.state  +(count.drips.state)
     event-core
-
 ```
 
 ### %huck
