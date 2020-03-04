@@ -10,7 +10,7 @@ template = "doc.html"
 In this tutorial we will run a simple "move trace" and use the output to get a
 picture of what the Arvo kernel proper does during the routine task of setting a
 timer. Some level of familiarity with the kernel is required for this section,
-which can be obtained in our [Arvo documentation](@/docs/tutorials/arvo/arvo.md#the-kernel).
+which can be obtained in our [Arvo kernel tutorial](@/docs/tutorials/arvo/arvo.md#the-kernel).
 
 ### Running a move trace
 
@@ -99,8 +99,16 @@ Let's put the first part of the move trace into a diagram to make following
 along a little easier.
 
 <div style="text-align:center">
-<img src="https://media.urbit.org/docs/arvo/move-trace.png">
+<img src="https://media.urbit.org/docs/arvo/move-trace-with-key.png">
 </div>
+
+Here, each arrow represents the passing of some information, with most of it
+being from vane to vane. Here, when Vane A has an arrow to a card and then an
+arrow to Vane B, this represents either a `%pass` `note/task` sequence or a
+`%give` `gift/sign` sequence that actually has the Arvo kernel in the middle.
+That is to say, Vane A `%pass`es a `note` to the Arvo kernel addressed to Vane
+B, and the Arvo kernel then `%pass`es a `task` to Vane B. For more information,
+see the [Arvo kernel tutorial](@/docs/tutorials/arvo/arvo.md#the-kernel).
 
 This simple action ends up involving four vanes - Dill, Gall, Behn, and Ford -
 as well as four applications - hood, spider, dojo, and time.
