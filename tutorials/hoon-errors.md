@@ -1,9 +1,12 @@
 +++
 title = "Hoon Errors"
-weight = 6
+weight = 12
 template = "doc.html"
 +++
-Ideally your Hoon works perfectly the first time.  But...
+
+In this section we explore strategies for debugging and understanding what your
+Hoon code is doing. We cover common errors that dojo may spit out, how to turn
+on debugging and verbose mode, and how to use debugging printfs.
 
 ## Syntax errors
 
@@ -49,7 +52,7 @@ the actual error appears.
 
 Now your code parses but doesn't compile.
 
-### Turn on debugging
+### Turn on debugging or verbose mode
 
 Your first step should be to put a `!:` ("zapcol") rune at the
 top of the file.  This is like calling the C compiler with `-g`;
@@ -59,6 +62,10 @@ Bear in mind that `!:` breaks tail-call optimization.  This is a
 bug, but a relatively low-priority bug.  `!.` turns off `!:`.
 Note that `!:` and `!.` are reference-level, not file-level; you can
 wrap any reference in either.
+
+You may also find it helpful to turn on verbose mode by entering `|verb` into dojo, which prints (almost)
+everything happening in the kernel to the console. This is useful for performing
+stack trace. An extensive stack trace tutorial is [below](#stack-trace-tutorial).
 
 ### Error trace
 
@@ -178,3 +185,5 @@ true:
 For now, you need to be on the local console to see these debug
 printfs (which are implemented by interpreter hints).  This is a
 bug and, like all bugs, will be fixed at some point.
+
+

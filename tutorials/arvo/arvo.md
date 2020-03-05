@@ -23,14 +23,18 @@ companion to this document, and some segments are direct quotes or paraphrases, 
 
 The conceptual section titled [What is Arvo?](#what-is-arvo-) can be understood
 without knowing Hoon, the Urbit programming language. The technical section
-titled [The kernel](#the-kernel) will require Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some material from Chapter Two will be helpful as well. At the bare minimum, we presume that the reader has read through the [Technical Overview](@/docs/tutorials/concepts/technical-overview.md).
+titled [The kernel](#the-kernel) will require Chapter One of the [Hoon
+tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some
+material from Chapter Two will be helpful as well. At the bare minimum, we
+presume that the reader has read through the [Technical
+Overview](@/docs/tutorials/concepts/technical-overview.md).
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
 
 # Table of Contents
 
-- [What is Arvo?](#what-is-arvo-)
+- [What is Arvo?](#what-is-arvo)
   * [An operating function](#an-operating-function)
     + [Determinism](#determinism)
     + [Event log](#event-log)
@@ -47,11 +51,9 @@ We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md
   * [The state](#the-state)
   * [Vanes](#vanes)
 
-
 # What is Arvo?
 
-Arvo is a
-[non-preemptive](#non-preemptive)
+Arvo is a [non-preemptive](#non-preemptive)
 operating system purposefully built to create a new, peer-to-peer internet
 whereby users own and manage their own data. Despite being an operating system,
 Arvo does not replace Windows, Mac OS, or Linux. It is better to think of the
@@ -244,6 +246,10 @@ cooperative multitasking.
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
 This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md).
+
+After concluding this section, the reader is encouraged to follow along with the
+[move trace tutorial](@/docs/tutorials/arvo/move-trace.md),
+which applies many of the concepts covered below.
 
 ## Overall structure
 
@@ -548,3 +554,9 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
+
+#### Applying your knowledge
+
+Now that you've learned about the nuts and bolts of the Arvo kernel, why not
+check it out in action? An in-depth "move trace" tutorial for running a timer app
+is available [here](@/docs/tutorials/arvo/move-trace.md).
