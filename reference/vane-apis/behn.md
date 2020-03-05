@@ -102,7 +102,7 @@ possible after the prescribed condition is met.
 In response to a `%drip` `task`, Behn will `%give` a `%meta` `gift` containing
 the `gift` originally `%give`n to Behn when `%drip` was first called.
 
-Is that really right? It looks like the gift returned is actually a response to
+Is that really correct? It looks like the gift returned is actually a response to
 a pass it passed itself, not the original event?
 
 #### Source
@@ -126,6 +126,16 @@ a pass it passed itself, not the original event?
 
 ### %huck
 
+Gives back an input move.
+
+#### Task
+
+Behn takes in a `move` contained in a `vase`.
+
+#### Gift
+
+Behn returns the input `move` as a `%meta` `gift`.
+
 ```hoon
   ::  +huck: give back immediately
   ::
@@ -140,6 +150,17 @@ a pass it passed itself, not the original event?
 
 
 ### %rest
+
+Cancels a timer.
+
+#### Task
+
+Behn takes in a `@da` and cancels the timer at that time if it exists, then
+adjusts the next wakeup call from Unix if necessary.
+
+#### Gift
+
+This `task` returns no `gift`s.
 
 ```hoon
 ::  +rest: cancel the timer at :date, then adjust unix wakeup
