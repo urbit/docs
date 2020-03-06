@@ -314,6 +314,7 @@ From the kernel:
 ### ~& "sigpam"
 
 `[%sgpm p=hoon q=hoon]`: debugging printf.
+`[%sgpm p=(stun [1 3] gar) q=hoon r=hoon]`: debugging printf with priority.
 
 ##### Expands to
 
@@ -321,17 +322,20 @@ From the kernel:
 
 ##### Product
 
-Pretty-prints `p` on the console before computing `q`.
+Pretty-prints `p` on the console before computing `q`. If a priority is given, then prettyprint `p` with priority equal to the number of gar characters.
 
 ##### Discussion
 
 This rune has no semantic effect beyond the Hoon expression `q`.  It's used solely to create a side-effect: printing the value of `p` to the console.
+
+If the priority is nonzero then the text will be colored green, yellow or red in increasing order.
 
 It's most useful for debugging programs.
 
 ##### Syntax
 
 Regular: **2-fixed**.
+Priority: **3-fixed**.
 
 ##### Examples
 
@@ -344,6 +348,19 @@ Regular: **2-fixed**.
            ~
 'halp'
 ~
+
+~zod:dojo> ~&(> 'priority-1' ~)  :: will be colored green
+'priority-1'
+~
+
+~zod:dojo> ~&(>> 'priority-2' ~)  :: will be colored yellow
+'priority-2'
+~
+
+~zod:dojo> ~&(>>> 'priority-3' ~)  :: will be colored red
+'priority-3'
+~
+
 ```
 
 ### ~= "sigtis"
@@ -381,6 +398,7 @@ Without `~=`, it would build a copy of a completely unchanged tree.  Sad!
 ### ~? "sigwut"
 
 `[%sgwt p=hoon q=hoon r=hoon]`: conditional debug printf.
+`[%sgwt p=(stun [0 3] gar) q=hoon r=hoon s=hoon]`: conditional debug printf with priority.
 
 ##### Expands to
 
@@ -388,11 +406,12 @@ Without `~=`, it would build a copy of a completely unchanged tree.  Sad!
 
 ##### Convention
 
-If `p` is true, prettyprints `q` on the console before computing `r`.
+If `p` is true, prettyprints `q` on the console before computing `r`. If a priority is given, then prettyprint `p` with priority equal to the number of gar characters.
 
 ##### Syntax
 
-Regular: **4-fixed**.
+Regular: **3-fixed**.
+Priority: **4-fixed**.
 
 ##### Examples
 
