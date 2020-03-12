@@ -43,17 +43,6 @@ message (typically an IP address).
 
 `%hear` can trigger any number of possible returns...?
 
-#### Source
-
-```hoon
-  ::  +on-hear: handle raw packet receipt
-  ::
-  ++  on-hear
-    |=  [=lane =blob]
-    ^+  event-core
-    (on-hear-packet lane (decode-packet blob) ok=%.y)
-```
-
 
 ### %heed
 
@@ -84,25 +73,6 @@ If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s,
 Ames will `give` a `%clog` `gift` to the requesting vane containing the
 unresponsive peer's urbit address.
 
-#### Source
-
-```hoon
-  ::  +on-heed: handle request to track .ship's responsiveness
-  ::
-  ++  on-heed
-    |=  =ship
-    ^+  event-core
-    =/  ship-state  (~(get by peers.ames-state) ship)
-    ?.  ?=([~ %known *] ship-state)
-      %+  enqueue-alien-todo  ship
-      |=  todos=alien-agenda
-      todos(heeds (~(put in heeds.todos) duct))
-    ::
-    =/  =peer-state  +.u.ship-state
-    =/  =channel     [[our ship] now channel-state -.peer-state]
-    abet:on-heed:(make-peer-core peer-state channel)
-```
-
 
 ### %hole
 
@@ -124,17 +94,6 @@ message (typically an IP address).
 #### Returns
 
 Same confusion as with `%hear`.
-
-#### Source
-
-```hoon
-  ::  +on-hole: handle packet crash notification
-  ::
-  ++  on-hole
-    |=  [=lane =blob]
-    ^+  event-core
-    (on-hear-packet lane (decode-packet blob) ok=%.n)
-```
 
 
 ### %jilt
@@ -158,25 +117,6 @@ The `ship` we no longer wish to track.
 there. Otherwise it returns `event-core` unchanged.
 
 Does `%jilt` return any gifts?
-
-#### Source
-
-```hoon
-  ::  +on-jilt: handle request to stop tracking .ship's responsiveness
-  ::
-  ++  on-jilt
-    |=  =ship
-    ^+  event-core
-    =/  ship-state  (~(get by peers.ames-state) ship)
-    ?.  ?=([~ %known *] ship-state)
-      %+  enqueue-alien-todo  ship
-      |=  todos=alien-agenda
-      todos(heeds (~(del in heeds.todos) duct))
-    ::
-    =/  =peer-state  +.u.ship-state
-    =/  =channel     [[our ship] now channel-state -.peer-state]
-    abet:on-jilt:(make-peer-core peer-state channel)
-```
 
 
 ### %plea
@@ -215,36 +155,6 @@ a `gift`).
 Not sure a `gift` is returned? But if there would be an ack `gift` anywhere, I
 feel like it would be here.
 
-#### Source
-
-```hoon
-  ::  +on-plea: handle request to send message
-  ::
-  ++  on-plea
-    |=  [=ship =plea]
-    ^+  event-core
-    ::  .plea is from local vane to foreign ship
-    ::
-    =/  ship-state  (~(get by peers.ames-state) ship)
-    ::
-    ?.  ?=([~ %known *] ship-state)
-      %+  enqueue-alien-todo  ship
-      |=  todos=alien-agenda
-      todos(messages [[duct plea] messages.todos])
-    ::
-    =/  =peer-state  +.u.ship-state
-    =/  =channel     [[our ship] now channel-state -.peer-state]
-    ::
-    =^  =bone  ossuary.peer-state  (bind-duct ossuary.peer-state duct)
-    %-  %^  trace  msg.veb  ship
-        |.  ^-  tape
-        =/  sndr  [our our-life.channel]
-        =/  rcvr  [ship her-life.channel]
-        "plea {<sndr^rcvr^bone^vane.plea^path.plea>}"
-    ::
-    abet:(on-memo:(make-peer-core peer-state channel) bone plea %plea)
-```
-
 ## System and Lifecycle Tasks
 
 ### %born
@@ -258,22 +168,6 @@ Each time you start your Urbit, the Arvo kernel calls the `%born` task for Ames.
 #### Returns
 
 In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
-
-#### Source
-
-```hoon
-  ++  on-born
-    ^+  event-core
-    ::
-    =.  unix-duct.ames-state  duct
-    ::
-    =/  turfs
-      ;;  (list turf)
-      =<  q.q  %-  need  %-  need
-      (scry-gate [%141 %noun] ~ %j `beam`[[our %turf %da now] /])
-    ::
-    (emit unix-duct.ames-state %give %turf turfs)
-```
     
 
 ### %crud
@@ -293,15 +187,6 @@ A `$error` is a `[tag=@tas =tang]`.
 
 Ames does not `give` a `gift` in response to a `%crud` `task`, but it does
 `%pass` Dill a `%flog` `task` instructing it to print `error`. 
-
-#### Source
-
-```hoon
-  ++  on-crud
-    |=  =error
-    ^+  event-core
-    (emit duct %pass /crud %d %flog %crud error)
-```
 
 
 ## %init
@@ -332,20 +217,6 @@ our=ship
 `%init` returns `event-core` with two new `move`s to be performed that subscribe
 to `%turf` and `%private-keys` in Jael.
 
-#### Source
-
-```hoon
-  ::  +on-init: first boot; subscribe to our info from jael
-  ::
-  ++  on-init
-    |=  our=ship
-    ^+  event-core
-    ::
-    =~  (emit duct %pass /turf %j %turf ~)
-        (emit duct %pass /private-keys %j %private-keys ~)
-    ==
-```
-
 
 ### %sift
 
@@ -368,18 +239,6 @@ The list of ships for which debug output is desired.
 
 This `task` returns the `event-core` modified so that debug output is shown only
 for `ships`.
-
-#### Source
-
-```hoon
-  ::  +on-sift: handle request to filter debug output by ship
-  ::
-  ++  on-sift
-    |=  ships=(list ship)
-    ^+  event-core
-    =.  ships.bug.ames-state  (sy ships)
-    event-core
-```
 
 
 ### %spew
@@ -414,31 +273,6 @@ verbs=(list verb)
 
 `+on-spew` returns `event-core` with the changed toggles.
 
-#### Source
-
-```hoon
-  ::  +on-spew: handle request to set verbosity toggles on debug output
-  ::
-  ++  on-spew
-    |=  verbs=(list verb)
-    ^+  event-core
-    ::  start from all %.n's, then flip requested toggles
-    ::
-    =.  veb.bug.ames-state
-      %+  roll  verbs
-      |=  [=verb acc=_veb-all-off]
-      ^+  veb.bug.ames-state
-      ?-  verb
-        %snd  acc(snd %.y)
-        %rcv  acc(rcv %.y)
-        %odd  acc(odd %.y)
-        %msg  acc(msg %.y)
-        %ges  acc(ges %.y)
-        %for  acc(for %.y)
-        %rot  acc(rot %.y)
-      ==
-    event-core
-```
 
 ### %vega
 
@@ -453,14 +287,6 @@ anything in response to this.
 
 `%vega` returns `event-core`.
 
-#### Source
-
-```hoon
-  ::  +on-vega: handle kernel reload
-  ::
-  ++  on-vega  event-core
-```
-
 
 ### %wegh
 
@@ -474,21 +300,4 @@ This `task` has no arguments.
 
 In response to this `task,` Ames `%give`s a `%mass` `gift` containing Ames'
 current memory usage.
-
-#### Source
-
-```hoon
-  ++  on-wegh
-    ^+  event-core
-    ::
-    =+  [known alien]=(skid ~(tap by peers.ames-state) |=(^ =(%known +<-)))
-    ::
-    %-  emit
-    :^  duct  %give  %mass
-    :+  %ames  %|
-    :~  peers-known+&+known
-        peers-alien+&+alien
-        dot+&+ames-state
-    ==
-```
 
