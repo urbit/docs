@@ -9,6 +9,10 @@ template = "doc.html"
 In this document we describe the public interface for Ames.  Namely, we describe
 each `task` that Ames can be `%pass`ed, and which `gift`(s) Ames can `%give` in return.
 
+Some `task`s appear to have more than one arm associated to them, e.g. there are
+four `+on-hear` arms. We denote this where it occurs, but always refer to the
+`on-hear:event-core` arm.
+
 Ames `task`s can be naturally divided into two categories: messaging tasks and
 system/lifecycle tasks.
 
@@ -16,30 +20,28 @@ system/lifecycle tasks.
 
 ### %hear
 
-`%hear` handles raw packet receipt. 
+`%hear` handles raw packet receipt. This `task` only ever originates from Unix.
+It does the initial processing of a packet, namely by passing the raw packet
+information to `+decode-packet` which deserializes the packet and giving that data and the origin of the
+packet to `+on-hear-packet`.
+
+There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to
+`on-hear:event-core`, as that is the one called by a `%hear` `task`. The other ones are used
+primarily for ack and nack processing, or receiving message fragments.
 
 #### Accepts
-
-This looks a bit heavy, gonna just ask about this instead of trying to tease it
-out myself.
-
+ 
 ```hoon
-  ::  $lane: ship transport address; either opaque $address or galaxy
-  ::
-  ::    The runtime knows how to look up galaxies, so we don't need to
-  ::    know their transport addresses.
-  ::
-  +$  lane  (each @pC address)
+[=lane =blob]
 ```
 
-```hoon
-  ++  blob                                              ::  fs blob
-    $%  {$delta p/lobe q/{p/mark q/lobe} r/page}        ::  delta on q
-        {$direct p/lobe q/page}                         ::  immediate
-    ==                                                  ::
-```
+`%hear` takes in a `blob`, which is essentially a large atom (around 1kB or less)
+that is the raw data of the message, and a `lane`, which is the origin of the
+message (typically an IP address).
 
 #### Returns
+
+`%hear` can trigger any number of possible returns...?
 
 #### Source
 
@@ -52,13 +54,15 @@ out myself.
     (on-hear-packet lane (decode-packet blob) ok=%.y)
 ```
 
+
 ### %heed
 
 A vane can pass Ames a `%heed` `task` to request Ames track a peer's
 responsiveness.  If our `%boon`s to it start backing up locally,
-Ames will give a `%clog` back to the requesting vane containing the
-unresponsive peer's Urbit address.  This interaction does not use
-ducts as unique keys.  Stop tracking a peer by sending Ames a
+Ames will `give` a `%clog` back to the requesting vane containing the
+unresponsive peer's Urbit address.
+
+Stop tracking a peer by sending Ames a
 `%jilt` `task`.
 
 
@@ -72,8 +76,13 @@ The ship to be tracked.
 
 #### Returns
 
-The `+on-heed` arm returns `event-core` with `heeds` modified to include `ship`.
-(why does it look like heeds is a list of ducts then?)
+The `+on-heed` arm returns `event-core` with `heeds` modified to include a
+`duct` that points to the input `ship`. (this isn't a `gift` so maybe I should
+not include this?)
+
+If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s,
+Ames will `give` a `%clog` `gift` to the requesting vane containing the
+unresponsive peer's urbit address.
 
 #### Source
 
@@ -97,13 +106,24 @@ The `+on-heed` arm returns `event-core` with `heeds` modified to include `ship`.
 
 ### %hole
 
-`%hole` handles packet crash notification.
-
-Another one with lane and blob, ask about it.
+`%hole` handles packet crash notification. `%hole` works much like `%hear`, in
+that it passes an incoming raw packet to `+decode-packet` to be deserialized,
+and then passes that data along with the source of the packet to
+`+on-hear-packet` along with a `?` set to `%.n` denoting that there is something wrong with
+the packet. 
 
 #### Accepts
 
+```hoon
+[=lane =blob]
+```
+`%hole` takes in a `blob`, which is essentially a large atom (around 1kB or less)
+that is the raw data of the message, and a `lane`, which is the origin of the
+message (typically an IP address).
+
 #### Returns
+
+Same confusion as with `%hear`.
 
 #### Source
 
@@ -116,10 +136,13 @@ Another one with lane and blob, ask about it.
     (on-hear-packet lane (decode-packet blob) ok=%.n)
 ```
 
+
 ### %jilt
 
 `%jilt` stops tracking a potentially unresponsive peer that was previously being
 tracked as a result of the `%heed` `task`.
+
+There are two `+on-jilt` arms, this `task` utilizes `on-hear:event-core`.
 
 #### Accepts
 
@@ -131,8 +154,10 @@ The `ship` we no longer wish to track.
 
 #### Returns
 
-`+on-jilt` returns `event-core` with `ship` removed from `heeds`, assuming it is
+`+on-jilt` returns `event-core` with the `duct` associated to `ship` removed from `heeds`, assuming it is
 there. Otherwise it returns `event-core` unchanged.
+
+Does `%jilt` return any gifts?
 
 #### Source
 
@@ -152,6 +177,7 @@ there. Otherwise it returns `event-core` unchanged.
     =/  =channel     [[our ship] now channel-state -.peer-state]
     abet:on-jilt:(make-peer-core peer-state channel)
 ```
+
 
 ### %plea
 
@@ -183,7 +209,11 @@ route on the receiving ship, and `payload` is the semantic message content.
 
 #### Returns
 
-`event-core` is returned, modified to...
+`event-core` is returned, modified to include the received `%plea` (this is not
+a `gift`).
+
+Not sure a `gift` is returned? But if there would be an ack `gift` anywhere, I
+feel like it would be here.
 
 #### Source
 
@@ -245,6 +275,7 @@ In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
     (emit unix-duct.ames-state %give %turf turfs)
 ```
     
+
 ### %crud
 
 `%crud` is called whenever an error involving Ames occurs. It produces a crash
@@ -260,8 +291,8 @@ A `$error` is a `[tag=@tas =tang]`.
 
 #### Returns
 
-In response to a `%crud` `task`, Ames returns `event-core` with a new `%pass`
-move to Dill to be performed instructing it to print the error.
+Ames does not `give` a `gift` in response to a `%crud` `task`, but it does
+`%pass` Dill a `%flog` `task` instructing it to print `error`. 
 
 #### Source
 
