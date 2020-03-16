@@ -25,7 +25,7 @@ Before starting with either Sail or Udon, make sure that your ship is
 [mounted to Unix](@/using/install.md).
 
 To host that output, your ship also has a web-server that can be found at
-`localhost` (default port 80) if it’s your first ship that’s running on the
+`http://localhost/` (default port 80) if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
 and so on. In the startup messages, a ship will tell you which HTTP port it’s
 using.
@@ -44,14 +44,14 @@ Dojo:
 
 This command has three arguments:
 - The first is the URL we want to bind our site to. We chose `/test`, so the URL
-we will find our site at is `localhost/test`.
+we will find our site at is `http://localhost/test`.
 - The second is the desk we want to serve. We will be serving from `%home` in
 this tutorial.
 - The third is the file that we want to serve. In this tutorial, we will be
 using `/gen/frontpage/hoon`, which refers to `frontpage.hoon`.
 
 Run the command `|serve /test %home /gen/frontpage/hoon`. Now navigate to
-`localhost/test` (or `localhost:8081/test` if your ship is on that port) in your
+`http://localhost/test` (or `http://localhost:8081/test` if your ship is on that port) in your
 browser, and you should see the rendered Sail.
 
 **Note:** Important to remember that every time you edit a file in your ship’s
@@ -99,7 +99,7 @@ It’s easy to see how Sail can directly translate to HTML:
 You can test above Sail code by placing it
 under `^-  manx` in your `frontpage.hoon` file, and then running `|commit %home`
 in the Dojo. If you’ve already run the `|serve` command code from the first
-section, the new content should appear at `localhost/test`.
+section, the new content should appear at `http://localhost/test`.
 
 It shouldn’t be hard to see the similarities between Sail and HTML. So let’s go
 into more detail about what the differences are.
@@ -688,7 +688,7 @@ will use the `frontpage.hoon` method that we are already familiar with.
 To test out Udon, put a `;>` under the `^-  manx` in your `frontpage.hoon` file,
 and then put all your Udon code under that `;>`. Then run `|commit %home`
 in the Dojo. If you’ve already run the `|serve` command code from the first
-section, the new content should appear at `localhost/test`.
+section, the new content should appear at `http://localhost/test`.
 
 ## Udon Syntax
 
