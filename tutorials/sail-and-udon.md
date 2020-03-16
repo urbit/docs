@@ -191,7 +191,7 @@ Equals:
 Attributes are key-value pairs that go into an HTML node.
 
 Adding attributes is simple: just add the desired attribute between parentheses,
-right after the tag name without a space.  We separate different attributes of
+right after the tag name without a space. We separate different attributes of
 the same node by using `,`.
 
 Attributes can be used in two forms: flat, which uses one line; and tall, which
@@ -332,7 +332,7 @@ interpolate with something that results in an atom. Try this now:
 ```
 
 We get a similar result, but we know that it’s a tape because it’s wrapped in
-`""`. Bingo!  With this knowledge, let’s perform a successful interpolation:
+`""`. Bingo! With this knowledge, let’s perform a successful interpolation:
 
 ```
 > "I am a l{<(mul 3 11)>}t Urbit user."
@@ -517,7 +517,7 @@ perform less-than tests to see what kind of ship is running the web-server.
 Sail proper begins here. These four lines are four nodes. The `;html` node
 indicates that the contained code should be rendered as HTML; this tag is closed
 on the final line. The `;head` node contains metadata, and is closed three lines
-later.  The `;meta` node sets the character set to UTF-8, and the `;title` node
+later. The `;meta` node sets the character set to UTF-8, and the `;title` node
 sets the title of the page that shows up in the browser tab.
 
 ```
@@ -1188,7 +1188,7 @@ Quote break.
 
 ### Poem
 
-A poem is a section of text with meaningful newlines.  Recall that,
+A poem is a section of text with meaningful newlines. Recall that,
 normally in Udon, newlines are treated as spaces and do not create a
 new line of text. If you want to embed text where newlines are retained, then
 indent the text in question with **eight spaces**.
