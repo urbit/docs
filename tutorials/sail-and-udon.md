@@ -194,15 +194,15 @@ Adding attributes is simple: just add the desired attribute between parentheses,
 right after the tag name without a space. We separate different attributes of
 the same node by using `,`.
 
-Attributes can be used in two forms: flat, which uses one line; and tall, which
-uses multiple lines, when a single line would not be practical. Flat forms and
+Attributes can be used in two forms: wide, which uses one line; and tall, which
+uses multiple lines, when a single line would not be practical. Wide forms and
 tall forms are two syntaxes of semantically equivalent expressions.
 
 #### Generic
 
 The code below produces a “Submit” button on the page.
 
-Flat-form Sail:
+Wide-form Sail:
 
 ```
 ;input(type "submit", value "Submit");
