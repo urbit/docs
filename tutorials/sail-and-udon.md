@@ -7,7 +7,7 @@ aliases = ["docs/using/sail-and-udon/"]
 
 Sail is Hoon markup that’s used to render a web page with XML. But what makes it special is that you can run arbitrary Hoon code within such a web page without using a separate markup language.
 
-Udon is a way to write content for the web. It's a minimalist markup language for creating and rendering text documents, with a Markdown-inspired syntax. It's integrated with our Hoon programming language, allowing it to be used as standalone prose in its own file or embedded inside a Hoon source file, in which case it will be parsed into a tree of HTML nodes using Sail.
+Udon is a way to write content for the web. It’s a minimalist markup language for creating and rendering text documents, with a Markdown-inspired syntax. It’s integrated with our Hoon programming language, allowing it to be used as standalone prose in its own file or embedded inside a Hoon source file, in which case it will be parsed into a tree of HTML nodes using Sail.
 
 This document will be divided into two main sections: the Sail guide and the Udon guide. Also, you should read the Getting Started section below, which applies to both Udon and Sail.
 
@@ -25,9 +25,9 @@ Before starting with either Sail or Udon, make sure that your ship is
 [mounted to Unix](@/using/install.md).
 
 To host that output, your ship also has a web-server that can be found at
-`localhost` (default port 80) if it’s your first ship that’s running on the
+`http://localhost/` (default port 80) if it’s your first ship that’s running on the
 machine, `http://localhost:8081/` if it’s the second ship on that same machine,
-and so on. In the startup messages, a ship will tell you which HTTP port it's
+and so on. In the startup messages, a ship will tell you which HTTP port it’s
 using.
 
 Udon and Sail files are often run as independent files (`.udon` and `.hoon`
@@ -35,7 +35,7 @@ respectively), but for the purpose of this guide, we will run them out of the
 `frontpage.hoon` file located in the `/gen` directory. The default content of
 `frontpage.hoon` is Sail code.
 
-To use `frontpage.hoon`, we use a `|serve` command like this one in your ship's
+To use `frontpage.hoon`, we use a `|serve` command like this one in your ship’s
 Dojo:
 
 ```
@@ -44,17 +44,17 @@ Dojo:
 
 This command has three arguments:
 - The first is the URL we want to bind our site to. We chose `/test`, so the URL
-we will find our site at is `localhost/test`.
+we will find our site at is `http://localhost/test`.
 - The second is the desk we want to serve. We will be serving from `%home` in
 this tutorial.
 - The third is the file that we want to serve. In this tutorial, we will be
-using `/gen/frontpage/hoon`, which refers to `frontpage.hoon`.
+using `/gen/frontpage/hoon`, which refers to `/gen/frontpage.hoon`.
 
 Run the command `|serve /test %home /gen/frontpage/hoon`. Now navigate to
-`localhost/test` (or `localhost:8081/test` if your ship is on that port) in your
+`http://localhost/test` (or `http://localhost:8081/test` if your ship is on that port) in your
 browser, and you should see the rendered Sail.
 
-**Note:** Important to remember that every time you edit a file in your ship's
+**Note:** Important to remember that every time you edit a file in your ship’s
 pier (Unix directory), including `frontpage.hoon`, you need to run `|commit %home`
 to copy those changes to Urbit.
 
@@ -72,7 +72,7 @@ It’s easy to see how Sail can directly translate to HTML:
   ;body
     ;h1: Welcome!
     ; Hello, world!
-    ; We're on the web.
+    ; We’re on the web.
     ;div;
     ;script@"http://unsafely.tracking.you/cookiemonster.js";
   ==
@@ -98,10 +98,10 @@ It’s easy to see how Sail can directly translate to HTML:
 
 You can test above Sail code by placing it
 under `^-  manx` in your `frontpage.hoon` file, and then running `|commit %home`
-in the Dojo. If you've already run the `|serve` command code from the first
-section, the new content should appear at `localhost/test`.
+in the Dojo. If you’ve already run the `|serve` command code from the first
+section, the new content should appear at `http://localhost/test`.
 
-It shouldn't be hard to see the similarities between Sail and HTML. So let's go
+It shouldn’t be hard to see the similarities between Sail and HTML. So let’s go
 into more detail about what the differences are.
 
 ### Tags and Closing
@@ -147,7 +147,7 @@ with `==`, because they expect a list of sub-tags. If we nest a line of plain
 text with no tag, a `<p>` is prepended.
 
 Sail, like Hoon, is white-space sensitive. Unlike in Hoon, however, two spaces
-(called a "gap") is not necessarily equivalent to a line-break in Sail.
+(called a `gap`) is not necessarily equivalent to a line-break in Sail.
 
 ```
 ;body
@@ -160,11 +160,10 @@ Equals:
 
 ```
 <body>
-    <h1>Blog title</h1>
-    <p>This is some good content.</p>
+  <h1>Blog title</h1>
+  <p>This is some good content.</p>
 </body>
 ```
-
 
 Conversely, if we want to write a string with no tag at all, then we can prepend
 those untagged lines with `;`.
@@ -187,25 +186,23 @@ Equals:
 </body>
 ```
 
-
 #### Attributes
 
 Attributes are key-value pairs that go into an HTML node.
 
 Adding attributes is simple: just add the desired attribute between parentheses,
-right after the tag name without a space.  We separate different attributes of
+right after the tag name without a space. We separate different attributes of
 the same node by using `,`.
 
 Attributes can be used in two forms: flat, which uses one line; and tall, which
 uses multiple lines, when a single line would not be practical. Flat forms and
-flat forms are two syntaxes of semantically equivalent expressions.
-
+tall forms are two syntaxes of semantically equivalent expressions.
 
 #### Generic
 
 The code below produces a “Submit” button on the page.
 
-Wide-form Sail:
+Flat-form Sail:
 
 ```
 ;input(type "submit", value "Submit");
@@ -223,7 +220,7 @@ Tall-form Sail:
 Equals:
 
 ```
-<input type="submit" value="Submit">`
+<input type="submit" value="Submit">
 ```
 
 #### IDs
@@ -242,27 +239,34 @@ Add `#` after tag name to add an ID.
 
 #### Classes
 
-`;h1.text-blue: Title` equals `<h1 class="text-blue">Title</h1>`
+`;h1.text-blue: Title`
 
-Add `.` after tag name to add a class. However, if you want a class name that
+Equals:
+
+`<h1 class="text-blue">Title</h1>`
+
+Add `.` after tag name to add a class. However, if you want a class list that
 contains a space, you will need to use use the syntax of a generic attribute:
 
-`;div(class "logo inverse");` equals `<div class="logo inverse"></div>`
+`;div(class "logo inverse");`
 
+Equals:
+
+`<div class="logo inverse"></div>`
 
 #### Image
 
 `;img@"example.png";`
 
-Equals
+Equals:
 
-`<img src="example.png"/>`
+`<img src="example.png" />`
 
 Add `@` after the tag name to link your source.
 
 To add attributes to the image, like size specifications, add the
-desired attribute after the `"` of the image name and before the final `;` of
-the `img` tag.
+desired attribute after the closing `"` of the image name and before the final
+`;` of the `img` tag.
 
 For example:
 
@@ -272,11 +276,19 @@ For example:
 
 `;a/"urbit.org": A link to Urbit.org`
 
-Equals
+Equals:
 
 `<a href="urbit.org">A link to Urbit.org</a>`
 
 Add `/` after tag name to start an href.
+
+To add attributes to the link, like target specifications, add the
+desired attribute after the closing `"` of the link url and before the `:` of
+the `a` tag.
+
+For example:
+
+`;a/"urbit.org"(target "_blank"): A link to Urbit.org`
 
 ### Hoon in Sail
 
@@ -320,7 +332,7 @@ interpolate with something that results in an atom. Try this now:
 ```
 
 We get a similar result, but we know that it’s a tape because it’s wrapped in
-`""`. Bingo!  With this knowledge, let’s perform a successful interpolation:
+`""`. Bingo! With this knowledge, let’s perform a successful interpolation:
 
 ```
 > "I am a l{<(mul 3 11)>}t Urbit user."
@@ -353,7 +365,7 @@ Then enter the following command in the Dojo:
 > .
 ```
 
-You'll notice that the Sail subject is like a stripped-down version of the Dojo
+You’ll notice that the Sail subject is like a stripped-down version of the Dojo
 subject. Its final line should match the Dojo subject.
 
 Now swap the code below into your Sail file.
@@ -368,9 +380,9 @@ Now swap the code below into your Sail file.
 ==
 ```
 
-You'll find that the resulting Sail subject is much larger. If you look closely,
-you'll see that there's some new similarities with the Dojo subject, such as
-containing the name of your ship. There's also some new differences, since
+You’ll find that the resulting Sail subject is much larger. If you look closely,
+you’ll see that there’s some new similarities with the Dojo subject, such as
+containing the name of your ship. There’s also some new differences, since
 `fuel:html` contains things that are specifically useful for performing
 web-related operations.
 
@@ -402,13 +414,13 @@ example we saw before.
     ;span:  Check it out!
     ;+  ?:  show-list
         ;ol
-          ;li(style "color: green"): We're doing interesting stuff now.
-          ;li: We're pretty-printing this sum with Hoon: {<(add 50 50)>}.
+          ;li(style "color: green"): We’re doing interesting stuff now.
+          ;li: We’re pretty-printing this sum with Hoon: {<(add 50 50)>}.
           ;li: The code above is shorthand for {(scow %ud (add 50 50))}.
           ;li: I am {(trip '~lodleb-ritrul')}.
-          ;li: Actually, my name is {<p.bem.gas>}. I'm a {what-kind}.
+          ;li: Actually, my name is {<p.bem.gas>}. I’m a {what-kind}.
         ==
-        ;div: My name is {<p.bem.gas>}. I'm a {what-kind}.
+        ;div: My name is {<p.bem.gas>}. I’m a {what-kind}.
   ==
 ==
 ```
@@ -424,15 +436,15 @@ piece.
 /=  gas  /$  fuel:html
 ```
 
-Later in this code we want produce the name of the ship is hosting it, something
-that looks like ~lodleb-ritrul. In a generator, we could produce our ship name
-by writing `our` -- try it in the Dojo. But remember that Sail is rendered
+Later in this code we want to produce the name of the ship which is hosting it,
+something that looks like ~lodleb-ritrul. In a generator, we could produce our ship
+name by writing `our` -- try it in the Dojo. But remember that Sail is rendered
 against its own subject, `our` is not part of the default subject. To augment
 our subject with the information that we need, we use  `/=  gas  /$  fuel:html`.
 
 The above expression uses two Ford runes, `/=` and `/$`, to add the relevant
 information to the current subject. We can pull the ship’s name out of this
-augmented subject later. It's important to note that these runes are not part of
+augmented subject later. It’s important to note that these runes are not part of
 Hoon. They are part of Ford, our build system.
 
 `/$` is used to get data from the environment, and `/=` adds that data to
@@ -481,7 +493,7 @@ subject and gives it the face `wid`. This noun is produced by the the
 standard-library function [`met`](/docs/reference/library/2c), which measures the number of
 [blocks](/docs/reference/library/1c/) of size `a` within `b`. Blocks are units that have a
 bitwidth of `2^a`. So, in this case, it measures how many bytes (blocks of size
-3 are bitwidths of 8; `2^3 = 8`) are fully contained in your ship's address.
+3 are bitwidths of 8; `2^3 = 8`) are fully contained in your ship’s address.
 
 Galaxies contain zero to one 3-blocks; stars contain two 3-blocks; planets
 contain three to four 3-blocks; moons contain five to eight 3-blocks; comets
@@ -505,7 +517,7 @@ perform less-than tests to see what kind of ship is running the web-server.
 Sail proper begins here. These four lines are four nodes. The `;html` node
 indicates that the contained code should be rendered as HTML; this tag is closed
 on the final line. The `;head` node contains metadata, and is closed three lines
-later.  The `;meta` node sets the character set to UTF-8, and the `;title` node
+later. The `;meta` node sets the character set to UTF-8, and the `;title` node
 sets the title of the page that shows up in the browser tab.
 
 ```
@@ -532,7 +544,7 @@ attributes, it continues the line without formatting. Following `;span:` with
 **two** spaces causes there to be single space following the produced `<span>`
 element, because one of those spaces is syntactically necessary.
 
-In the following lines, we beginning to use some Hoon expressions again.
+In the following lines, we begin to use some Hoon expressions again.
 
 ```
   ;+  ?:  show-list
@@ -542,14 +554,14 @@ In the following lines, we beginning to use some Hoon expressions again.
 In the top line in the chunk above, we use the `;+` Sail rune, which
 resolves an expression to a single node. That expression, in this case, is
 `?:`, which tests the truth value of `show-list`, which we assigned the value
-`&` (meaning “true”) at the beginning of the program. It’s closed by the `==` on
+`&` (meaning `true`) at the beginning of the program. It’s closed by the `==` on
 the last line.
 
 Thus, this program resolves to the first child of `show-list`, the node `;ol`.
 That node creates an ordered list, and the items contained within that node.
 
 ```
-            ;li(style "color: green"): We're doing more interesting stuff now.
+            ;li(style "color: green"): We’re doing more interesting stuff now.
 ```
 
 The line above  is the only element of this list that does not use
@@ -560,13 +572,12 @@ The next items in the list use `{}`. Recall that these braces, pronounced “lob
 and “rob” in Hoon-speak, allow for the interpolation of code within a string.
 
 ```
-            ;li: We're pretty-printing this sum with Hoon: {<(add 50 50)>}.
+            ;li: We’re pretty-printing this sum with Hoon: {<(add 50 50)>}.
 ```
 
 The line above is interpolated with Hoon code that produces the sum of 50 plus
 50, which is wrapped in `<>` to put the product in double quotes to make it a
 tape, like the rest of the line.
-
 
 ```
             ;li: The code above is shorthand for {(scow %ud (add 50 50))}.
@@ -576,7 +587,6 @@ The `{(scow %ud (add 50 50)}` on this line is just a different way
 writing the `{<(add 50 50)>}` expression. `scow` is a Hoon function that turns a
 noun into a `tape`, Hoon’s string type. `%ud` tells `scow` that its argument
 should be displayed in the form of an unsigned decimal.
-
 
 ```
             ;li: I am {(trip '~lodleb-ritrul')}.
@@ -589,28 +599,28 @@ tape. So, by converting `~lodleb-ritrul` to a tape, it can be included in the
 tape that we are trying to insert it into without getting a type error.
 
 ```
-            ;li: Actually, my name is {<p.bem.gas>}. I'm a {what-kind}.
+            ;li: Actually, my name is {<p.bem.gas>}. I’m a {what-kind}.
           ==
 ```
 
 The line above has interpolated code that uses a wing expression to access the
-name of the host ship, and then accesses the face `what-kind` contains a string
-describing what type of ship it is. We declared `gas` on the very first line so
-that we could add that sort of information to the subject that our Sail is
-rendered against. The wing expression `p.bem.gas` looks for `p` within `bem`
+name of the host ship, and then accesses the face `what-kind` that contains a
+string describing what type of ship it is. We declared `gas` on the very first
+line so that we could add that sort of information to the subject that our Sail
+is rendered against. The wing expression `p.bem.gas` looks for `p` within `bem`
 within `gas`, which happens to be where the name of the ship is located.
 
 Note that `{what-kind}` does not have a `<>` wrapper. Why do you think this is?
 
 ```
-        ;div; My name is {<p.bem.gas>}. I'm a {ship}.
+        ;div; My name is {<p.bem.gas>}. I’m a {ship}.
   ==
 ==
 ```
 
 The `;div;` node above is only rendered, as an alternative to the above list,
-if `show-list` is evaluated as true. This means it won’t be shown with your
-default code. To show this line, change the `&` on line 2 to `|` (“false”).
+if `show-list` is evaluated as `true`. This means it won’t be shown with your
+default code. To show this line, change the `&` on line 2 to `|` (`false`).
 
 ### Sail Runes
 
@@ -627,7 +637,6 @@ is the expression that we use.
 
 `;=` turns a tuple of nodes into a list of nodes.
 
-
 To see how these runes work, let’s take a chunk of our previous code starting at
 line 20 and modify it a bit:
 
@@ -638,7 +647,7 @@ line 20 and modify it a bit:
         ;li: Actually, my name is {<p.bem.gas>}.
         ==
       ;=
-    ;div: My name is {<p.bem.gas>}. I'm a {what-kind}.
+    ;div: My name is {<p.bem.gas>}. I’m a {what-kind}.
     ;div: No list here!
       ==
   ==
@@ -661,21 +670,21 @@ You should now have foundational knowledge for making web pages with Sail. There
 is, of course, more to learn.
 
 The [Ford manual](https://urbit.org/docs/arvo/internals/ford/runes/)
-can show you how to access various ship resources for user in your pages. To
+can show you how to access various ship resources for use in your pages. To
 learn more about how the renderer works, take a look at the
-`/home/ren/urb.hoon` file inside your urbit.
+`/home/ren/urb.hoon` file inside your pier.
 
 ## Udon: A Guide {#udon}
 
-Udon is a way to write content for the web. It's a minimalist
+Udon is a way to write content for the web. It’s a minimalist
 markup language for creating and rendering text documents, with a
-Markdown-inspired syntax. It's integrated with our Hoon programming language,
+Markdown-inspired syntax. It’s integrated with our Hoon programming language,
 allowing it to be used as standalone prose in its own file or embedded inside a
 Hoon source file, in which case it will be parsed into a tree of HTML nodes
-using Hoon's XML-templating syntax, Sail.
+using Hoon’s XML-templating syntax, Sail.
 
 There are quite a few similarities between Udon and the
-CommonMark standard, but there are enough differences that you shouldn't rely on
+CommonMark standard, but there are enough differences that you shouldn’t rely on
 existing knowledge of the latter. Udon generally supports only one
 syntax for each type of HTML node it emits. Udon is also stricter than
 Markdown: some syntax errors will prevent the file from being parsed at all.
@@ -687,8 +696,8 @@ will use the `frontpage.hoon` method that we are already familiar with.
 
 To test out Udon, put a `;>` under the `^-  manx` in your `frontpage.hoon` file,
 and then put all your Udon code under that `;>`. Then run `|commit %home`
-in the Dojo. If you've already run the `|serve` command code from the first
-section, the new content should appear at `localhost/test`.
+in the Dojo. If you’ve already run the `|serve` command code from the first
+section, the new content should appear at `http://localhost/test`.
 
 ## Udon Syntax
 
@@ -701,32 +710,32 @@ The first thing on a `.udon` file is a chunk of code called the front matter. It
 contains metadata about your page, such as date, title, and position relative
 to sibling pages.
 
-As an example, let's look at the front matter of this very page:
+As an example, let’s look at the front matter of this very page:
 
 ```
 :-  :~  navhome/'/docs/'
-        sort/'11'
+        sort/'28'
         title/'Udon'
     ==
 ;>
 ```
 
-What's going on here?
+What’s going on here?
 
 `:-`, the Hoon rune for creating a cell, creates a cell composed of
 the `:~` Hoon rune for creating a list, and `;>`, which is a Sail rune
 for Udon.
 
 `:~` creates a list out of the three elements: `navhome/'/docs/'`, which
-indicates that navigating "home" will bring you to the urbit.org/docs section
-of the website; `sort/'28',` which assigns it the 28th position of the
+indicates that navigating “home” will bring you to the urbit.org/docs section
+of the website; `sort/'28'`, which assigns it the 28th position of the
 immediate section that contains it, the one you see in the sidebar;
 and `title/'Udon'`, which gives the page its title. The `==` digraph
 terminates the list.
 
 `;>` is a Sail rune that creates a node that contains everything that follows
-it, telling the parser that that text should be interpreted as Udon.
-It's not technically front matter, but you'll always find it following the
+it, telling the parser that this text should be interpreted as Udon.
+It’s not technically front matter, but you’ll always find it following the
 front matter, since all Udon must come after this rune.
 
 The categories listed in the example above -- `navhome`, `sort`, and `title` --
@@ -749,16 +758,18 @@ parsing.
 
 Headers in Udon begin the line with one or more `#` characters,
 followed by a single space. After that space comes the actual text to be
-displayed. The number of leading `#`s corresponds to the resulting HTML
+displayed. The number of leading `#` characters corresponds to the resulting HTML
 header-size element: `#` yields an `<h1>`, `##` yields an `<h2>`, and so on,
 through `<h6>`. The header for this section is `### Headers`.
 
 **Example:**
+
 ```
 #### Header (h4)
 
 ##### Header (h5)
 ```
+
 **Produces:**
 
 #### Header (h4)
@@ -772,7 +783,6 @@ element.
 
 Enclosing text with `*` will cause that text to appear bolded, using a `<b>`
 element.
-
 
 **Example:**
 
@@ -793,35 +803,37 @@ the _same line_.
 **Example:**
 
 ```
-Here's the first line.
+Here’s the first line.
 
-This second line is separated by two newlines, so it's a separate paragraph.
+This second line is separated by two newlines, so it’s a separate paragraph.
 
-This line looks like a distinct paragraph, but...
-It's only separated by a single newline, so it's included in the same paragraph.
+This line looks like a distinct paragraph, but …
+It’s only separated by a single newline, so it’s included in the same paragraph.
 ```
+
 **Produces:**
 
+Here’s the first line.
 
-Here's the first line.
+This second line is separated by two newlines, so it’s a separate paragraph.
 
-This second line is separated by two newlines, so it's a separate paragraph.
-
-This line looks like a distinct paragraph, but...
-It's only separated by a single newline, so it's included in the same paragraph.
+This line looks like a distinct paragraph, but …
+It’s only separated by a single newline, so it’s included in the same paragraph.
 
 #### Backslash Line Break
 
 A backslash at the end of a line inserts a line break (`<br>`)
-after that line. This contrasts with the normal udon behavior of
+after that line. This contrasts with the normal Udon behavior of
 converting newlines to spaces.
 
 **Example:**
+
 ```
 I wonder how long each line
 will be if I put backslashes\
 at the ends of the lines.
 ```
+
 **Produces:**
 
 I wonder how long each line
@@ -837,14 +849,13 @@ as an escape character, causing it to be rendered raw.
 
 ```
 Here is some *bold* text.
-Here is some \*not bold* text.
+Here is some \*not bold\* text.
 ```
 
 **Produces:**
 
 Here is some **bold** text.
-Here is some \*not bold* text.
-
+Here is some \*not bold\* text.
 
 ### List
 
@@ -859,18 +870,18 @@ a number corresponding to its position in that list.
 New list elements are delineated by newlines beginning with list symbols of
 the appropriate type (`-` or `+`).
 
-Just as with non-list text, text on a bare newline will appear on line before,
-separated by a space. A `\\` is used to create a line-break that isn't the list
-itself and isn't a list. Both of these kinds of newlines must be indented by two
+Just as with non-list text, text on a bare newline will appear on the line before,
+separated by a space. A `\\` is used to create a line-break that isn’t the list
+itself and isn’t a list. Both of these kinds of newlines must be indented by two
 spaces, or else the page will not parse.
 
 Indentation is also used for creating nested sub-lists. Sub-lists of one kind
-can be used with parent lists of the other kind. Sub-lists can't be nested
-directly after either kind of aforementioned newline that isn't a list element;
+can be used with parent lists of the other kind. Sub-lists can’t be nested
+directly after either kind of aforementioned newline that isn’t a list element;
 only lines that are themselves list elements can nest sub-lists.
 
 A newline after a blank line is interpreted as a new paragraph in normal text.
-Between to list elements, however, a blank line is semantically equivalent to
+Between two list elements, however, a blank line is semantically equivalent to
 a bare newline. To separate two lists with blank space, create a blank line
 followed by a `\\` on its own line.
 
@@ -884,15 +895,15 @@ followed by a `\\` on its own line.
 - Chicken\
   Make sure that you get enough for the barbecue
 - Bread
-  + Ask the baker what's fresh
+  + Ask the baker what’s fresh
   + Buy the second-freshest batch
 - Cereal
 
 \
 + First, separate eggs into a bowl
 + Then, add a splash of cream
-  - If you don't have cream, you can use milk, but cream is preferred
-    + If you don't have milk or cream, melt an eighth of a stick of butter on
+  - If you don’t have cream, you can use milk, but cream is preferred
+    + If you don’t have milk or cream, melt an eighth of a stick of butter on
       a skillet
     + Scramble the eggs in the bowl
     + Pour the eggs onto the skillet before the butter browns
@@ -914,15 +925,15 @@ Produces
 - Chicken\
   Make sure that you get enough for the barbecue
 - Bread
-    1. Ask the baker what's fresh
+    1. Ask the baker what’s fresh
     1. Buy the second-freshest batch
 - Cereal
 
 \
 1. First, separate eggs into a bowl
 1. Then, add a splash of cream
-    - If you don't have cream, you can use milk, but cream is preferred
-        1. If you don't have milk or cream, melt an eighth of a stick of butter on
+    - If you don’t have cream, you can use milk, but cream is preferred
+        1. If you don’t have milk or cream, melt an eighth of a stick of butter on
            a skillet
         1. Scramble the eggs in the bowl
         1. Pour the eggs onto the skillet before the butter browns
@@ -945,26 +956,26 @@ destination.
 **Example:**
 
 ```
-[I'm an inline-style link](https://urbit.org/operations/#using-the-shell)
+[I’m an inline-style link](https://urbit.org/operations/#using-the-shell)
 ```
 
 **Produces:**
 
-[I'm an inline-style link](https://urbit.org/operations/#using-the-shell)
+[I’m an inline-style link](https://urbit.org/operations/#using-the-shell)
 
 The second type is a reference-style link, which uses a relative path, based on
-the current page's location. Instead of the full url, we use `..` to fill in
-the all of the URL that the destination has in common with the origin page.
+the current page’s location. Instead of the full url, we use `..` to fill in
+all of the URL that the destination has in common with the origin page.
 
 **Example:**
 
 ```
-[I'm a reference-style link](../shell)
+[I’m a reference-style link](../shell)
 ```
 
 **Produces:**
 
-[I'm a reference-style link](../shell)
+[I’m a reference-style link](../shell)
 
 If this page is located at `https://www.urbit.org/docs/reference/`, then these two
 examples should have the same destination.
@@ -979,14 +990,16 @@ so we need to use some [Sail](#sail). If there are two or more anchors with
 the same `id` on the page, you will arrive at the earliest instance of the the
 anchor.
 
+Note that each HTML element `id` should be unique and not be used more than once.
+
 **Example:**
 
 ```
 Check out this [section](#here-we-are) that we want to jump to.
 
-Four score and seven years ago....
+Four score and seven years ago …
 
-It was the best of times, it was the worst of times...
+It was the best of times, it was the worst of times …
 
 ## Here we are!
 ```
@@ -995,9 +1008,9 @@ It was the best of times, it was the worst of times...
 
 Check out this [section](#here-we-are) that we want to jump to.
 
-Four score and seven years ago....
+Four score and seven years ago …
 
-It was the best of times, it was the worst of times...
+It was the best of times, it was the worst of times …
 
 ## Here we are!
 
@@ -1014,7 +1027,6 @@ opening and closing quotes -- that is, `“` and `”`.
 **Produces:**
 
 “Yes,” he said. “That is the way with him.”
-
 
 ### Code Literal
 
@@ -1035,20 +1047,22 @@ Enclosing some text in `` ` `` characters will cause it to be displayed as code,
 inside a `<code>` HTML element with monospace font and highlighted with a
 different background color.
 
-Using `` ` `` is useful when you want to designated only part of a line as code.
-Since this page is written in Udon, we've been using this operation
-throughout this guide to `format text` to distinguish code from prose.
+Using `` ` `` is useful when you want to designate only part of a line as code.
+Since this page is written in Udon, we’ve been using this operation
+throughout this guide to _format text_ to distinguish `code` from prose.
 
 **Example:**
+
 ```
-`*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp's `apply`.
+`*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp’s `apply`.
 ```
+
 **Produces:**
 
-`*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp's `apply`.
+`*[a 2 b c] -> *[*[a b] *[a c]]` is like lisp’s `apply`.
 
 Also, using the `++` prefix before a word will cause the word to be rendered as
-code with the `++` displayed, since that's the standard notation for an arm in
+code with the `++` displayed, since that’s the standard notation for an arm in
 Hoon.
 
 **Example:**
@@ -1069,7 +1083,6 @@ before and after the contained text, the text will be treated as a code block.
 Most of our examples so far have used.
 
 **Example:**
-
 
     ```
     (def Y (fn [f]
@@ -1094,7 +1107,7 @@ Most of our examples so far have used.
 ### Hoon Constants
 
 Hoon has several syntactic forms for literals (numbers, strings, dates, etc.)
-that can be used in udon as well. Udon detects such code, and so these
+that can be used in Udon as well. Udon detects such code, and so these
 forms will automatically appear inside a `<code>` element like inline code.
 
 Example:
@@ -1105,17 +1118,16 @@ Example:
 %term
 ```
 
-produces:\
+Produces:\
 
 `~2017.8.29` \
 `0xdead.beef` \
 `%term`
 
-
 ### Horizontal Rule
 
 Three or more hyphens, such as `---`, on their own line produce an `<hr>`
-element, the 'horizontal rule'. This is rendered as a horizontal line the
+element, the “horizontal rule”. This is rendered as a horizontal line the
 width of its containing paragraph.
 
 **Example:**
@@ -1130,7 +1142,6 @@ And below this line, too
 
 **Produces:**
 
-
 Above the line
 
 ---
@@ -1144,7 +1155,7 @@ And below this line, too
 ### Block Quote
 
 A section of text with the first line beginning with `>` and a space,
-and each successive newline indented by two spaces yields a
+and each successive newline indented by two spaces, yields a
 `<blockquote>` HTML element. This block quote can itself contain more Udon,
 including more block quotes to render nested levels of quotation.
 
@@ -1175,10 +1186,9 @@ Quote break.
 
 > He is pale and thin, he wears a thin and ragged linen shirt.
 
-
 ### Poem
 
-A poem is a section of text with meaningful newlines.  Recall that,
+A poem is a section of text with meaningful newlines. Recall that,
 normally in Udon, newlines are treated as spaces and do not create a
 new line of text. If you want to embed text where newlines are retained, then
 indent the text in question with **eight spaces**.
@@ -1191,6 +1201,7 @@ indent the text in question with **eight spaces**.
         Is moving its slow thighs, while all about it
         Reel shadows of the indignant desert birds.
 ```
+
 **Produces:**
 
         A shape with lion body and the head of a man,
@@ -1198,13 +1209,11 @@ indent the text in question with **eight spaces**.
         Is moving its slow thighs, while all about it
         Reel shadows of the indignant desert birds.
 
-
 ## Sail Expressions
 
-It's possible to use Udon as an HTML templating language akin to
+It’s possible to use Udon as an HTML templating language akin to
 PHP, ERB, JSP, or Handlebars templates. This facility derives
 in part from the support for embedding Hoon code inside the markup.
-
 
 Sail is a domain-specific language within Hoon for creating XML nodes,
 including HTML. It can be used directly within Udon to provide
@@ -1217,7 +1226,7 @@ Example:
 ```
 ;=
   ;p
-    ;strong: Don't panic!
+    ;strong: Don’t panic!
     ;br;
     ;small: [reactive publishing intensifies]
   ==
@@ -1226,9 +1235,8 @@ Example:
 
 Produces:
 
-
 <p>
-    <strong>Don't panic!</strong>
-    <br>
-    <small>[reactive publishing intensifies]</small>
+  <strong>Don’t panic!</strong>
+  <br />
+  <small>[reactive publishing intensifies]</small>
 </p>

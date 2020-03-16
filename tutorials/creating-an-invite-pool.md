@@ -22,7 +22,7 @@ Giving your friends a piece of Urbit only takes a few minutes: send an invite po
 
 1. Log into Bridge using your ownership address for your star.
 
-2. Get the name (like `~poldec-tonteg`) of the planet to whom you'd like to give invites, it can be one you control or a friend's.
+2. Get the name (like `~poldec-tonteg`) of the planet to whom you’d like to give invites, it can be one you control or a friend’s.
 
 3. Click “Manage Invite Pools” to assign an invite pool to the planet. You may receive a notification that you need to assign your spawn proxy to the address of the Delegated Sending contract. This is so that the contract can send invites on your behalf when the recipient claims them.
 
