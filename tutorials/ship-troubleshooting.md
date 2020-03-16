@@ -23,7 +23,7 @@ An ounce of prevention is worth a pound of cure, so let’s first go over some b
 
 Once your ship is booted with your keyfile, you should never use that same keyfile again. If you do boot with the same keyfile twice, any other ship on the network that your ship has communicated with will not be able to talk to your ship.
 
-If you accidentally booted with the same keyfile twice, the only remedy is performing a [personal breach](#personal-breach),  which is explained in the next section.
+If you accidentally booted with the same keyfile twice, the only remedy is performing a [personal breach](#personal-breach), which is explained in the next section.
 
 ### Do not delete your pier
 
