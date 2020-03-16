@@ -284,7 +284,7 @@ Add `/` after tag name to start an href.
 
 To add attributes to the link, like target specifications, add the
 desired attribute after the closing `"` of the link url and before the `:` of
-the `img` tag.
+the `a` tag.
 
 For example:
 
