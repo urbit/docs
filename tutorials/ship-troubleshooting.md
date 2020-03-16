@@ -33,7 +33,8 @@ Urbit is stateful, meaning that it needs to hold onto all your data. If you dele
 
 When you first start your ship, you should make sure you put it a place where you can find it again and where it won’t get accidentally deleted. Remember that you must perform `|mount %` in your ship’s Dojo to make your ship visible as a directory in the Unix file system.
 
-### Avoid killing the Urbit process directly
+### Avoid killing the urbit process directly
+
 The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
 
 ### Keep up-to-date builds
@@ -42,7 +43,7 @@ Check for latest Urbit version at https://github.com/urbit/urbit/releases. If yo
 
 ### `|hi` your star to see if you’re connected
 
-Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star’s name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you’re in a Talk channel with.
+Find out who your star is by running `(sein:title our now our)` in the Dojo. Then, run `|hi ~star`, where `~star` is the star’s name, and if things are working properly, you should get the message `hi ~star successful`. It could also be helpful to use `|hi` to check connectivity with `~zod` or another planet that you’re in a Chat channel with.
 
 ### Turn your ship off and on again
 
@@ -66,9 +67,9 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 ### Perform a personal breach. {#personal-breach}
 
-A personal breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone has network has forgotten about it.
+A personal breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone on the network has forgotten about it.
 
-Personal breaches often fix connectivity issues, but should only be used as a last resort. To find out how to perform a personal breach, check out our [Guide to Breaches](../guide-to-breaches). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on `~dopzod/urbit-help`, or, failing that, in the #ship-starting-support channel in our [Discord server](https://discord.gg/n9xhMdz).
+Personal breaches often fix connectivity issues, but should only be used as a last resort. To find out how to perform a personal breach, check out our [Guide to Breaches](../guide-to-breaches). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on `~dopzod/urbit-help`, or, failing that, in the `#ship-starting-support` channel in our [Discord server](https://discord.gg/n9xhMdz).
 
 ## Operation Issues {#operation-issues}
 
@@ -80,7 +81,7 @@ Run `|wash-gall`. This clears caches in Gall, and may result in steep performanc
 
 Sometimes this happens if you’re processing a very large event, or if you’re in an infinite loop, or for a variety of other reasons.
 
-Before doing anything, try waiting for a minute: an event might finish processing. If it doesn’t clear up, then use Unix kill-command, `ctrl-z`, to end your ship’s process. Then restart your ship.
+Before doing anything, try waiting for a minute: an event might finish processing. If it doesn’t clear up, then use the Unix kill-command, `ctrl-z`, to end your ship’s process. Then restart your ship.
 
 ### When I try to type into the Dojo, it prints `dy-noprompt`
 
@@ -102,13 +103,13 @@ You may see a message like this one: `/~zod/home/~2019.7.22..18.55.46..83a3/sys/
 
 This means that another ship is sending invalid packets to you. This could be because one of the ships has not updated the other ship’s “life number,” which is the number that starts at one and increments every time that ship performs a personal breach.
 
-This can happen if they have the wrong keys of yours, or if you have the wrong keys of theirs. You can figure out who has the wrong keys by running this scry command in your dojo: `.^(* %j /=life=/shipname)`, where shipname is the other ship’s name. Save that information. Then, go to the [Azimuth contract on Etherscan](https://etherscan.io/address/0x223c067f8cf28ae173ee5cafea60ca44c335fecb#readContract), scroll down to `32. points`, and put in the hexadecimal representation of the other ship’s `@p`. You can find the hexadecimal representation by running...
+This can happen if they have the wrong keys of yours, or if you have the wrong keys of theirs. You can figure out who has the wrong keys by running this scry command in your dojo: `.^(* %j /=life=/shipname)`, where shipname is the other ship’s name. Save that information. Then, go to the [Azimuth contract on Etherscan](https://etherscan.io/address/0x223c067f8cf28ae173ee5cafea60ca44c335fecb#readContract), scroll down to `32. points`, and put in the hexadecimal representation of the other ship’s `@p`. You can find the hexadecimal representation by running …
 
 ```
 `@ux`~sampel-palnet
 ```
 
-in the Dojo, where `~sampel-palnet` is the other ship’s name. Then, compare it to the scry information that you saved. If that information matches up, it means that the other ship is the problem. If it **doesn’t** match up, your ship has wrong information about the other ship. If you have such wrong information, you can fix this by running:
+… in the Dojo, where `~sampel-palnet` is the other ship’s name. Then, compare it to the scry information that you saved. If that information matches up, it means that the other ship is the problem. If it **doesn’t** match up, your ship has wrong information about the other ship. If you have such wrong information, you can fix this by running:
 
 ```
 :azimuth-tracker|listen ~ %app %azimuth-tracker
@@ -146,13 +147,13 @@ This means that you gave your development ship an invalid `@p`. So, you will get
 
 ### I got a `bail` error and my ship crashed
 
-Try just bringing it back up; it will often start working just fine again.
+Try bringing it back up; it will often start working just fine again.
 
-However, if you get a `bail` error again, you should perform a personal breach.
+However, if you get a `bail` error again, you should perform a [personal breach](#personal-breach).
 
 #### Making a GitHub issue out of your `bail`
 
-You can get help with you problem by creating an issue at github.com/urbit/urbit. But to make a good issue, you need to include some information.
+You can get help with you problem by creating an issue at [github.com/urbit/urbit](https://github.com/urbit/urbit/issues). But to make a good issue, you need to include some information.
 
 When your urbit crashes with a `bail`, you’ll probably get a core dump, which is a file that contains the program state of your urbit when it crashed. On Mac, core dumps can be found in `/cores`. On Linux, cores can often be found in `/var/crash`, or the home directory.
 
@@ -179,7 +180,7 @@ Copy this stack trace and include it in your GitHub issue.
 
 ### My ship crashed with a `bail: oops` error
 
-Restart your ship. These issues often just go away on their own. If this error repeats after restart two or more times, post the messages in an issue at github.com/urbit/urbit/issues.
+Restart your ship. These issues often just go away on their own. If this error repeats after restart two or more times, post the messages in an issue at [github.com/urbit/urbit](https://github.com/urbit/urbit/issues).
 
 This same error might also appear with a message like `Assertion '0'`.
 
