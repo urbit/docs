@@ -203,7 +203,7 @@ implemented as:
 =|  state=@
 |_  =bowl:gall
 +*  this      .
-    default   ~(. (default-agent %|) bowl)
+    default   ~(. (default-agent this %|) bowl)
 ::
 ++  on-init   on-init:default
 ++  on-save   on-save:default
