@@ -423,11 +423,11 @@ Regular: **running**.
 
 ### =* "tistar"
 
-`[%tstr p=term q=hoon r=hoon]`: define an alias.
+`[%tstr p=term q=hoon r=hoon]`: define a macro.
 
 ##### Produces
 
-`r`, compiled with a subject in which `p` is aliased to `q`.
+`r`, compiled with a subject in which `p` is a macro for `q`.
 
 ##### Syntax
 
@@ -435,7 +435,7 @@ Regular: **3-fixed**.
 
 ##### Discussion
 
-The difference between aliasing and pinning is that pinning changes the subject, but for aliasing the subject noun stays the same.  The aliased expression, `q`, is recorded in the type information of `p`. `q` is calculated every time you use the `p` alias.
+The difference between macroing and pinning is that pinning changes the subject, but for macroing the subject noun stays the same.  The macro'd expression, `q`, is recorded in the type information of `p`. `q` is calculated every time you use the `p` macro.
 
 ##### Examples
 
