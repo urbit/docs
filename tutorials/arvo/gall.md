@@ -203,7 +203,7 @@ implemented as:
 =|  state=@
 |_  =bowl:gall
 +*  this      .
-    default   ~(. (default-agent %|) bowl)
+    default   ~(. (default-agent this %|) bowl)
 ::
 ++  on-init   on-init:default
 ++  on-save   on-save:default
@@ -535,7 +535,7 @@ whether there is or will be data at the given `path`.
 
 ### +on-agent
 
-This arm is called to handle responses to `%pass` moves to other agents.
+This arm is called to handle responses to `%give` moves to other agents.
 It will be one of the following types of response:
 
 - `%poke-ack`: acknowledgment (positive or negative) of a poke.  If the
