@@ -79,7 +79,7 @@ Let's try out these arms, using them for function calls:
 30
 ```
 
-Notice that each arm in core `c` is able to call the other arms of `c` -- `add-two` uses the `inc` arm to increment a number twice.  As a reminder, each arm is evaluated with is parent core as the subject.  In the case of `add-two` the parent core is `c`, which has `inc` in it.
+Notice that each arm in core `c` is able to call the other arms of `c` -- `add-two` uses the `inc` arm to increment a number twice.  As a reminder, each arm is evaluated with its parent core as the subject.  In the case of `add-two` the parent core is `c`, which has `inc` in it.
 
 ### Mutating a Gate
 
