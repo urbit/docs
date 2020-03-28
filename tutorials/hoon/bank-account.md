@@ -67,7 +67,7 @@ In this code above, we're going to compose two runes using `=<`, which has inver
 --
 ```
 
-We've chosen here to wrap our door in its own core to emulate the style of programming that is used when creating libraries. `new-account` is the name of our door. Recall that a door is a core with one or more [arms](/docs/glossary/arm/) that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two arm `deposit` and `withdraw`.
+We've chosen here to wrap our door in its own core to emulate the style of programming that is used when creating libraries. `new-account` is the name of our door. Recall that a door is a core with one or more [arms](/docs/glossary/arm/) that has a sample. Here, our door has a sample of one `@ud` with the face `balance` and two arms `deposit` and `withdraw`.
 
 Each of these arms produces a gate which takes an `@ud` argument. Each of these gates has a similar bit of code inside:
 
