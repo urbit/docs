@@ -60,16 +60,9 @@ If the set of timers is nonempty when Behn is `%pass`ed a `%crud` `task`, Behn
 
 `%drip` allows one to delay `gift`s until a timer set for `now` fires.
 
-For example, say an app is subscribed to updates from Clay. If Clay `%give`s
-updates to the app directly and the app crashes, this may cause Clay to crash as
-well. If instead Clay `%pass`es Behn a `%drip` `task` wrapping the update
-`gift`, Behn will set a timer for `now` that, when fired, will cause the update
-`gift` to be given. If it causes a crash then it will have been in response to
-the `%drip` move, thereby isolating Clay from the crash. Thus `%drip` acts as a sort of buffer against cascading
-sequences of crashes.
-
 `%drip` only handles `gift`s, and can only schedule `gift`s for as soon as
 possible after the prescribed timer fires.
+
 
 #### Accepts
 
@@ -82,10 +75,22 @@ mov=vase
 #### Returns
 
 In response to a `%drip` `task`, Behn will `%give` a `%meta` `gift` containing
-the `gift` originally `%give`n to Behn when `%drip` was first called.
+the `gift` originally `%give`n to Behn when `%drip` was first called. That makes
+Behn its own client for `%drip`.
 
-Is that really correct? It looks like the gift returned is actually a response to
-a pass it passed itself, not the original event?
+#### Example
+
+
+Client -- %drip --> Behn -- %wait --> Behn -- %wake --> Behn -- %give --> Target
+
+
+Say an app is subscribed to updates from Clay. If Clay `%give`s
+updates to the app directly and the app crashes, this may cause Clay to crash as
+well. If instead Clay `%pass`es Behn a `%drip` `task` wrapping the update
+`gift`, Behn will set a timer for `now` that, when fired, will cause the update
+`gift` to be given. If it causes a crash then it will have been in response to
+the `%drip` move, thereby isolating Clay from the crash. Thus `%drip` acts as a sort of buffer against cascading
+sequences of crashes.
 
 
 
@@ -142,8 +147,7 @@ This `task` has no arguments.
 
 #### Returns
 
-This `task` returns `[moves state]`.
-
+This task returns nothing.
 
 ### `%vega`
 
@@ -156,7 +160,7 @@ This `task` has no arguments.
 
 #### Returns
 
-This `task` returns `[moves state]`.
+This `task` returns nothing.
 
 
 
