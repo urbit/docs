@@ -58,15 +58,18 @@ If the set of timers is nonempty when Behn is `%pass`ed a `%crud` `task`, Behn
  
 ### `%drip`
 
-`%drip` is utilized to delay `%give`ing a `gift`.
+`%drip` allows one to delay `gift`s until a timer set for `now` fires.
 
-`%drip` allows one to delay `gift`s until a given condition is met. For example,
-if Clay crashes and you do not wish for an app to then crash when it tries to
-access Clay before it is restarted, `%drip` can delay that access until Clay has
-been restored. 
+For example, say an app is subscribed to updates from Clay. If Clay `%give`s
+updates to the app directly and the app crashes, this may cause Clay to crash as
+well. If instead Clay `%pass`es Behn a `%drip` `task` wrapping the update
+`gift`, Behn will set a timer for `now` that, when fired, will cause the update
+`gift` to be given. If it causes a crash then it will have been in response to
+the `%drip` move, thereby isolating Clay from the crash. Thus `%drip` acts as a sort of buffer against cascading
+sequences of crashes.
 
 `%drip` only handles `gift`s, and can only schedule `gift`s for as soon as
-possible after the prescribed condition is met.
+possible after the prescribed timer fires.
 
 #### Accepts
 
