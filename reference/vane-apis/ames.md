@@ -109,11 +109,7 @@ The `ship` we no longer wish to track.
 
 #### Returns
 
-`+on-jilt` returns `event-core` with the `duct` associated to `ship` removed from `heeds`, assuming it is
-there. Otherwise it returns `event-core` unchanged.
-
-Does `%jilt` return any gifts?
-
+This `task` returns no `gift`s.
 
 ### %plea
 
