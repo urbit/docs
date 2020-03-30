@@ -118,7 +118,7 @@ This `task` returns no `gift`s.
 fundamental `task` in Ames and the primary reason for its existence.
 
 Ames also `pass`es a `%plea` `note` to another vane when it receives a message on a
-"forward flow" from a peer, originally passed from one of the peer's vanes to
+"forward flow" from a peer, originally passed from one of the peer's vanes to the
 peer's Ames.
 
 #### Accepts
