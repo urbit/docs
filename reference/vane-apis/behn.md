@@ -35,7 +35,7 @@ accordingly.
 `%wake` a program that has crashed.
 
 When called, it checks to see if the set of timers is empty. If so, it prints
-and error report containing `error`, otherwise it passes the error to `+wake`.
+an error report containing `error`, otherwise it passes the error to `+wake`.
 
 #### Accepts
 
@@ -46,12 +46,13 @@ Here, `tag` is a `@tas` denoting the type of error, and `error` is an error mess
 
 #### Returns
 
-If the set of timers is nonempty when Behn is `%pass`ed a `%crud` `task`, Behn
-`%give`s a `%wake` `card` to itself.
-
 ```hoon
 [%wake %behn-crud-no-timer tag error]
 ```
+
+If the set of timers is nonempty when Behn is `%pass`ed a `%crud` `task`, Behn
+`%give`s a `%wake` `card` containing the error to the next client in the set of timers.
+
 
 #### Example
 
