@@ -31,14 +31,11 @@ accordingly.
 
 ### `%crud`
 
-`%crud` is called whenever an error involving Behn occurs, which for now means
-that Behn has no timers in its state.
+`%crud` is called whenever an error involving Behn occurs, such as trying to
+`%wake` a program that has crashed.
 
 When called, it checks to see if the set of timers is empty. If so, it prints
 and error report containing `error`, otherwise it passes the error to `+wake`.
-
-Behn should be the first vane to be activated in a `%wake`. Occasionally this does not
-happen, but we do not yet handle this error.
 
 #### Accepts
 
@@ -55,7 +52,15 @@ If the set of timers is nonempty when Behn is `%pass`ed a `%crud` `task`, Behn
 ```hoon
 [%wake %behn-crud-no-timer tag error]
 ```
+
+#### Example
+
+The most common error that occurs is when Behn tries to `%wake` up a program that has crashed. When this happens
+the entire event (i.e. sequence of `move`s) that led up to the `%wake` is thrown
+away, and Vere then causes the kernel to `pass` Behn a `%crud` `task` containing
+the stack trace.
  
+
 ### `%drip`
 
 `%drip` allows one to delay `gift`s until a timer set for `now` fires.
