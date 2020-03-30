@@ -172,8 +172,7 @@ This `task` takes in a `@da` which Behn then adds to `timers.state`, the list of
  
 #### Returns
 
-This `task` returns nothing.
-
+This `task` returns a `%wake` `gift` once the timer has fired.
 
 
 ### `%wake`
