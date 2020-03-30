@@ -117,7 +117,7 @@ This `task` returns no `gift`s.
 `%pass`/`%give` semantics across the network. As such, it is the most
 fundamental `task` in Ames and the primary reason for its existence.
 
-Ames `pass`es a `%plea` `note` to another vane when it receives a message on a
+Ames also `pass`es a `%plea` `note` to another vane when it receives a message on a
 "forward flow" from a peer, originally passed from one of the peer's vanes to
 peer's Ames.
 
@@ -292,4 +292,3 @@ This `task` has no arguments.
 
 In response to this `task,` Ames `%give`s a `%mass` `gift` containing Ames'
 current memory usage.
-
