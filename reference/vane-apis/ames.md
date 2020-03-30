@@ -65,10 +65,6 @@ The ship to be tracked.
 
 #### Returns
 
-The `+on-heed` arm returns `event-core` with `heeds` modified to include a
-`duct` that points to the input `ship`. (this isn't a `gift` so maybe I should
-not include this?)
-
 If the `ship` is indeed being unresponsive, as measured by backed up `%boon`s,
 Ames will `give` a `%clog` `gift` to the requesting vane containing the
 unresponsive peer's urbit address.
