@@ -203,8 +203,7 @@ our=ship
         (emit duct %pass /private-keys %j %private-keys ~)
 ```
 
-`%init` returns `event-core` with two new `move`s to be performed that subscribe
-to `%turf` and `%private-keys` in Jael.
+`%init` sends two moves that subscribe to `%turf` and `%private-keys` in Jael.
 
 
 ### %sift
