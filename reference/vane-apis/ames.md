@@ -217,13 +217,7 @@ The list of ships for which debug output is desired.
 
 #### Returns
 
-```hoon
-    =.  ships.bug.ames-state  (sy ships)
-    event-core
-```
-
-This `task` returns the `event-core` modified so that debug output is shown only
-for `ships`.
+This `task` returns no `gift`s.
 
 
 ### %spew
@@ -256,7 +250,7 @@ verbs=(list verb)
 
 #### Returns
 
-`+on-spew` returns `event-core` with the changed toggles.
+This `task` returns no `gift`s.
 
 
 ### %vega
@@ -270,7 +264,7 @@ anything in response to this.
 
 #### Returns
 
-`%vega` returns `event-core`.
+This `task` returns no `gift`s.
 
 
 ### %wegh
