@@ -64,7 +64,15 @@ the stack trace.
 
 ### `%drip`
 
-`%drip` allows one to delay `gift`s until a timer set for `now` fires.
+`%drip` allows one to delay a `gift` until a timer set for `now` fires.
+
+A Client gives Behn a `%drip` task wrapping a `gift` to be `give`n to a Target.
+This launches a sequence of `move`s as written here:
+
+```
+Client -- %drip --> Behn -- %wait --> Behn -- %wake --> Behn -- %meta --> Target
+```
+Here the `%meta` move is a wrapper for the `%gift` inside of the initial `%drip` wrapper.
 
 `%drip` only handles `gift`s, and can only schedule `gift`s for as soon as
 possible after the prescribed timer fires.
@@ -87,10 +95,7 @@ Behn its own client for `%drip`.
 #### Example
 
 
-Client -- %drip --> Behn -- %wait --> Behn -- %wake --> Behn -- %give --> Target
-
-
-Say an app is subscribed to updates from Clay. If Clay `%give`s
+Say an app (the Target) is subscribed to updates from Clay (the Client). If Clay `%give`s
 updates to the app directly and the app crashes, this may cause Clay to crash as
 well. If instead Clay `%pass`es Behn a `%drip` `task` wrapping the update
 `gift`, Behn will set a timer for `now` that, when fired, will cause the update
