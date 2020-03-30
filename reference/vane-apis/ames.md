@@ -121,9 +121,6 @@ Ames `pass`es a `%plea` `note` to another vane when it receives a message on a
 "forward flow" from a peer, originally passed from one of the peer's vanes to
 peer's Ames.
 
-Ames `pass`es a `%plea` to itself to trigger a heartbeat message to be sent to
-our ship's sponsor
-
 #### Accepts
 
 ```hoon
