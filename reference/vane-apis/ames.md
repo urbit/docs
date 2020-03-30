@@ -138,11 +138,8 @@ route on the receiving ship, and `payload` is the semantic message content.
 
 #### Returns
 
-`event-core` is returned, modified to include the received `%plea` (this is not
-a `gift`).
+This `task` returns no `gift`s.
 
-Not sure a `gift` is returned? But if there would be an ack `gift` anywhere, I
-feel like it would be here.
 
 ## System and Lifecycle Tasks
 
