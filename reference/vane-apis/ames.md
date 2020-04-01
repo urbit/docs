@@ -23,7 +23,8 @@ system/lifecycle tasks.
 `%hear` handles raw packet receipt. This `task` only ever originates from Unix.
 It does the initial processing of a packet, namely by passing the raw packet
 information to `+decode-packet` which deserializes the packet and giving that data and the origin of the
-packet to `+on-hear-packet`.
+packet to `+on-hear-packet`, which begins the transformation of the packet into
+a new event in the form of a `+event-core`.
 
 There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to
 `on-hear:event-core`, as that is the one called by a `%hear` `task`. The other ones are used
@@ -41,7 +42,9 @@ message (typically an IP address).
 
 #### Returns
 
-`%hear` can trigger any number of possible returns...?
+`%hear` can trigger a number of possible returns. It can trigger the release of
+zero or more additional packets via `%send` `gift`s. It may also trigger a `%boon`
+or `%memo` `gift` to a local vane in the case of a completed message. 
 
 
 ### %heed
@@ -89,8 +92,8 @@ message (typically an IP address).
 
 #### Returns
 
-Same confusion as with `%hear`.
-
+Like `%hear`, `%hole` can trigger additional packets in the form of `%send`
+`gift`s, and may also yield a `%boon` or `%memo` `gift` to a local vane.
 
 ### %jilt
 
