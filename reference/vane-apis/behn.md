@@ -66,13 +66,13 @@ the stack trace.
 
 `%drip` allows one to delay a `gift` until a timer set for `now` fires.
 
-A Client gives Behn a `%drip` task wrapping a `gift` to be `give`n to a Target.
+A Client `%slip`s Behn a `%drip` task wrapping a `gift` to be `give`n to a Target.
 This launches a sequence of `move`s as written here:
 
 ```
-Client -- %drip --> Behn -- %wait --> Behn -- %wake --> Behn -- %meta --> Target
+Client -- %slip %drip --> Behn -- %pass %wait --> Behn -- %give %wake --> Behn -- %give %meta --> Target
 ```
-Here the `%meta` move is a wrapper for the `%gift` inside of the initial `%drip` wrapper.
+Here the `%meta` `move` is a wrapper for the `%gift` inside of the initial `%drip` wrapper.
 
 `%drip` only handles `gift`s, and can only schedule `gift`s for as soon as
 possible after the prescribed timer fires.
@@ -88,7 +88,8 @@ mov=vase
 
 #### Returns
 
-In response to a `%drip` `task`, Behn will `%give` a `%meta` `gift` containing
+In response to a `%drip` `task`, Behn will `%pass` a `%wait` to itself, which
+then triggers a `%wake` `gift` to itself, which then causes Behn to `%give` a `%meta` `gift` containing
 the `gift` originally `%give`n to Behn when `%drip` was first called. That makes
 Behn its own client for `%drip`.
 
