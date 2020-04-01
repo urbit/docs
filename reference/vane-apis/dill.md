@@ -123,17 +123,7 @@ and sends the bare `task` to itself over the default `duct`.
 
 ### `%flow`
 
-`%flow` is used to configure the terminal.
- 
-#### Accepts
-
-```hoon
-[p=@tas q=(list gill:gall)]
-```
-
-#### Returns
-
-`%flow` does not return any `gift`s.
+This `task` is not used.
 
 
 ### `%hail`
@@ -172,21 +162,12 @@ return a `%mass` `gift`.
 
 ### `%hook`
 
-This appears in `zuse.hoon` but not in `dill.hoon` -  is it deprecated?
-
-#### Accepts
-
-#### Returns
-
+This task is not used.
 
 
 ### `%harm`
 
-Not sure what this does - see PR.
-
-#### Accepts
-
-#### Returns
+This `task` is not used. 
 
 
 ### `%init`
@@ -275,16 +256,7 @@ This `task` returns no `gift`s.
 
 ### `%talk`
 
-This appears in `zuse.hoon` but not in `dill.hoon`. Is it deprecated?
-
-#### Accepts
-
-```hoon
-[p=tank]
-```
-
-#### Returns
-
+This `task` is not used.
 
 ### `%text`
 
