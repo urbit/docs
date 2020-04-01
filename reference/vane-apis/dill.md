@@ -114,7 +114,7 @@ and sends the bare `task` to itself over the default `duct`.
 
 `%flog` never returns a `gift` on its own, but the wrapped `task` might.
 
-#### Examples
+#### Example
 
 `%crud` `task`s from other vanes are typically passed to Dill wrapped in a
 `%flog` `task` to print errors to the terminal.
@@ -122,48 +122,71 @@ and sends the bare `task` to itself over the default `duct`.
 
 
 ### `%flow`
+
+`%flow` is used to configure the terminal.
  
 #### Accepts
 
+```hoon
+[p=@tas q=(list gill:gall)]
+```
+
 #### Returns
 
-#### Source
+`%flow` does not return any `gift`s.
 
 
 ### `%hail`
 
+`%hail` refreshes the terminal by sending an empty message to the default duct
+for Dill,
+causing the terminal to redraw itself (?)
+
 #### Accepts
+
+```hoon
+[ ~ ]
+```
 
 #### Returns
 
-#### Source
+`%hail` returns no `gift`s.
 
 
 ### `%heft`
 
+`%heft` causes Dill to `pass` a `%wegh` `task` to all other vanes (but not to
+itself), thus obtaining a complete digest of Arvo's memory usage. 
+
 #### Accepts
+
+```hoon
+[ ~ ]
+```
 
 #### Returns
 
-#### Source
+`%heft` does not directly return any `gift`s, but each `%wegh` `task` sent will
+return a `%mass` `gift`.
 
 
 ### `%hook`
 
+This appears in `zuse.hoon` but not in `dill.hoon` -  is it deprecated?
+
 #### Accepts
 
 #### Returns
 
-#### Source
 
 
 ### `%harm`
 
+Not sure what this does - see PR.
+
 #### Accepts
 
 #### Returns
-
-#### Source
 
 
 ### `%init`
@@ -204,62 +227,140 @@ Note that this is not actually the first `task` passed to Dill - see [%boot](#%b
 
 ### `%lyra`
 
+Comment in `zuse` says it upgrades the kernel.
+
 #### Accepts
+
+```hoon
+[p=@t q=@t]
+```
 
 #### Returns
 
 
 ### `%noop`
 
+`%noop` does nothing - it stands for "no operation".
+
 #### Accepts
 
+```hoon
+[ ~ ]
+```
+
 #### Returns
+
+This `task`, predictably, returns nothing.
+
+#### Example
+
+This can be useful if a shell command requires a Dill `task` but you don't want
+Dill to do anything.
 
 
 ### `%pack`
 
+Comment says "compact memory". Like `%lyra`, this just runs `dump kyz`.
+
 #### Accepts
 
+```hoon
+[ ~ ]
+```
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%talk`
 
+This appears in `zuse.hoon` but not in `dill.hoon`. Is it deprecated?
+
 #### Accepts
+
+```hoon
+[p=tank]
+```
 
 #### Returns
 
 
 ### `%text`
 
+This `task` prints a `tape` to the dojo by first converting it from a UTF8
+`tape` to a `list` of UTF32 codepoints (`@c`'s) and then recursively popping off a character from the
+`tape` and sending it to to Unix to be printed into the terminal via a `%blit` event.
+
 #### Accepts
 
+```hoon
+[p=tape]
+```
+
 #### Returns
+
+This `task` returns zero or more `%blit` `gift`s, each containing a .
 
 
 ### `%trim`
 
+`%trim` is a common vane `task` used to reduce memory usage. However, it does
+nothing for Dill.
+
 #### Accepts
 
+```hoon
+[p=@ud]
+```
+
+This is a common parameter for `%trim` `task`s across all vanes but does nothing
+for Dill.
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%veer`
 
+See comment in PR.
+
 #### Accepts
+
+```hoon
+[p=@ta q=path r=@t]
+```
 
 #### Returns
 
 
 ### `%vega`
 
+This is a common vane `task` used to inform the vane that the kernel has been
+upgraded. Dill does not do anything in response to this. 
+
 #### Accepts
 
+```hoon
+[ ~ ]
+```
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%verb`
 
+This `task` toggles verbose mode for Dill.
+
 #### Accepts
 
+```hoon
+[ ~ ]
+```
+
 #### Returns
+
+This `task` returns no `gift`s.
