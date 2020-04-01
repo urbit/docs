@@ -44,7 +44,7 @@ message (typically an IP address).
 
 `%hear` can trigger a number of possible returns. It can trigger the release of
 zero or more additional packets via `%send` `gift`s. It may also trigger a `%boon`
-or `%memo` `gift` to a local vane in the case of a completed message. 
+or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message. 
 
 
 ### %heed
@@ -93,7 +93,7 @@ message (typically an IP address).
 #### Returns
 
 Like `%hear`, `%hole` can trigger additional packets in the form of `%send`
-`gift`s, and may also yield a `%boon` or `%memo` `gift` to a local vane.
+`gift`s, and may also yield a `%boon` or `%plea` `gift` to a local vane.
 
 ### %jilt
 
