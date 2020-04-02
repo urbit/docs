@@ -298,7 +298,7 @@ kernel for processing.
 
 ### `%lyra`
 
-Comment in `zuse` says it upgrades the kernel.
+This `task` updates the kernel.
 
 #### Accepts
 
@@ -306,12 +306,18 @@ Comment in `zuse` says it upgrades the kernel.
 [p=@t q=@t]
 ```
 
+`p` is related to hoon and `q` is related to Arvo but I don't know how.
+
 #### Returns
+
+This `task` returns no `gift`s. 
 
 
 ### `%pack`
 
-Comment says "compact memory". Like `%lyra`, this just runs `dump kyz`.
+This `task` defragments and deduplicates Arvo's memory. This is ultimately
+performed by the interpreter so you won't find the code in `arvo.hoon` but
+rather under `c3__pack` in `urbit/worker/main.c`.
 
 #### Accepts
 
@@ -326,7 +332,8 @@ This `task` returns no `gift`s.
 
 ### `%veer`
 
-See comment in PR.
+This `task` is used to install `zuse` and vanes. It is handled by `+veer` in
+`arvo.hoon`. 
 
 #### Accepts
 
@@ -336,10 +343,14 @@ See comment in PR.
 
 #### Returns
 
+This `task` returns no `gift`s.
+
 
 ### `%verb`
 
-This `task` toggles verbose mode for Dill.
+This `task` toggles verbose mode for all of Arvo, which is located here since
+Dill is the vane that prints errors. To be precise, `%verb` toggles the laconic
+bit `lac` in the [Arvo state](@/docs/tutorials/arvo/arvo.md#the-state).
 
 #### Accepts
 
