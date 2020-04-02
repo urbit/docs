@@ -9,8 +9,13 @@ template = "doc.html"
 In this document we describe the public interface for Dill. Namely, we describe
 each `task` that Dill can be `pass`ed, and which `gift`(s) Dill can `give` in return.
 
+Dill is unique among vanes since it is technically the first vane to be booted (though we
+regard Jael as the "true" first vane). As a result, there are four `task`s in
+`task:able:dill` for which Dill acts only as a middleman that passes the `task`s
+directly to the Arvo kernel. Thus we have split this document into a [Dill
+tasks](#dill-tasks) section and an [Arvo tasks](#arvo-tasks) section.
 
-## Tasks
+## Dill Tasks
 
 
 ### `%belt`
@@ -206,18 +211,6 @@ Note that this is not actually the first `task` passed to Dill - see [%boot](#%b
 
 
 
-### `%lyra`
-
-Comment in `zuse` says it upgrades the kernel.
-
-#### Accepts
-
-```hoon
-[p=@t q=@t]
-```
-
-#### Returns
-
 
 ### `%noop`
 
@@ -238,20 +231,6 @@ This `task`, predictably, returns nothing.
 This can be useful if a shell command requires a Dill `task` but you don't want
 Dill to do anything.
 
-
-### `%pack`
-
-Comment says "compact memory". Like `%lyra`, this just runs `dump kyz`.
-
-#### Accepts
-
-```hoon
-[ ~ ]
-```
-
-#### Returns
-
-This `task` returns no `gift`s.
 
 
 ### `%talk`
@@ -294,18 +273,6 @@ for Dill.
 This `task` returns no `gift`s.
 
 
-### `%veer`
-
-See comment in PR.
-
-#### Accepts
-
-```hoon
-[p=@ta q=path r=@t]
-```
-
-#### Returns
-
 
 ### `%vega`
 
@@ -321,6 +288,53 @@ upgraded. Dill does not do anything in response to this.
 #### Returns
 
 This `task` returns no `gift`s.
+
+
+
+## Arvo tasks
+
+These `task`s live in `task:able:dill` but are passed directly to the Arvo
+kernel for processing.
+
+### `%lyra`
+
+Comment in `zuse` says it upgrades the kernel.
+
+#### Accepts
+
+```hoon
+[p=@t q=@t]
+```
+
+#### Returns
+
+
+### `%pack`
+
+Comment says "compact memory". Like `%lyra`, this just runs `dump kyz`.
+
+#### Accepts
+
+```hoon
+[ ~ ]
+```
+
+#### Returns
+
+This `task` returns no `gift`s.
+
+
+### `%veer`
+
+See comment in PR.
+
+#### Accepts
+
+```hoon
+[p=@ta q=path r=@t]
+```
+
+#### Returns
 
 
 ### `%verb`
