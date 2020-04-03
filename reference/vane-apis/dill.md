@@ -306,7 +306,7 @@ This `task` updates the kernel.
 [p=@t q=@t]
 ```
 
-`p` is related to hoon and `q` is related to Arvo but I don't know how.
+`p` is the contents of the new `hoon.hoon` and `q` is the contents of the new `arvo.hoon`.
 
 #### Returns
 
@@ -340,6 +340,11 @@ This `task` is used to install `zuse` and vanes. It is handled by `+veer` in
 ```hoon
 [p=@ta q=path r=@t]
 ```
+
+`p` is the vane letter, `q` is the formal `path` to the
+vane, and `r` is the source code for the vane. The vane letter is `%` followed
+by the first letter of the vane in lowercase, such as `%d` for Dill. `p=%$` in
+the case of `zuse`.
 
 #### Returns
 
