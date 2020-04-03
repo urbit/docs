@@ -7,7 +7,7 @@ template = "doc.html"
 # Iris
 
 In this document we describe the public interface for Iris. Namely, we describe
-each `task` that Iris can be `%pass`ed, and which `gift`(s) Ames can `%give` in return.
+each `task` that Iris can be `%pass`ed, and which `gift`(s) Iris can `%give` in return.
 
 ## Tasks
 
