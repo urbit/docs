@@ -6,8 +6,8 @@ template = "doc.html"
 
 # Jael
 
-In this document we describe the public interface for Ames.  Namely, we describe
-each `task` that Jael can be `%pass`ed, and which `gift`(s) Ames can `%give` in return.
+In this document we describe the public interface for Jael.  Namely, we describe
+each `task` that Jael can be `%pass`ed, and which `gift`(s) Jael can `%give` in return.
 
 ## Tasks
 
