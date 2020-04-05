@@ -281,9 +281,9 @@ An agent may pass `note`s to either Arvo or another agent.  If the `note` is
 to another agent, then it should usually be one of these:
 
 ```hoon
-[%pass /my/wire %agent our.bowl agent-name %watch /a/path]
-[%pass /my/wire %agent our.bowl agent-name %leave ~]
-[%pass /my/wire %agent our.bowl agent-name %poke %foo-mark !>(poke-data)]
+[%pass /my/wire %agent [our.bowl agent-name] %watch /a/path]
+[%pass /my/wire %agent [our.bowl agent-name] %leave ~]
+[%pass /my/wire %agent [our.bowl agent-name] %poke %foo-mark !>(poke-data)]
 ```
 
 Note that to unsubscribe to a `path`, you must send the unsubscription on
