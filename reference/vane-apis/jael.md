@@ -51,12 +51,20 @@ know to their rift, life, and public key?
 
 #### Accepts
 
+```hoon
+[=ship]
+```
+
 #### Returns
 
 
 ### `%listen`
 
 #### Accepts
+
+```hoon
+[whos=(set ship) =source]
+```
 
 #### Returns
 
@@ -80,12 +88,20 @@ This `task` returns no `gift`s.
 
 #### Accepts
 
+```hoon
+[=ship =udiff:point]
+```
+
 #### Returns
 
 
 ### `%nuke`
 
 #### Accepts
+
+```hoon
+[whos=(set ship)]
+```
 
 #### Returns
 
@@ -94,12 +110,20 @@ This `task` returns no `gift`s.
 
 #### Accepts
 
+```hoon
+[=ship =plea:ames]
+```
+
 #### Returns
 
 
 ### `%private-keys`
 
 #### Accepts
+
+```hoon
+[~]
+```
 
 #### Returns
 
@@ -108,12 +132,20 @@ This `task` returns no `gift`s.
 
 #### Accepts
 
+```hoon
+[ships=(set ship)]
+```
+
 #### Returns
 
 
 ### `%rekey`
 
 #### Accepts
+
+```hoon
+[=life =ring]
+```
 
 #### Returns
 
@@ -140,6 +172,10 @@ This task returns nothing.
 ### `%turf`
 
 #### Accepts
+
+```hoon
+[~]
+```
 
 #### Returns
 
