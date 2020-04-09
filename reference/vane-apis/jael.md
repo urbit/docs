@@ -63,9 +63,17 @@ know to their rift, life, and public key?
 
 ### `%meet`
 
+This `task` is a placeholder that currently does nothing.
+
 #### Accepts
 
+```hoon
+[=ship =life =pass]
+```
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%moon`
@@ -112,9 +120,21 @@ know to their rift, life, and public key?
 
 ### `%trim`
 
+This `task` is sent by the interpreter in order to free up memory.
+ This `task` is empty for Jael, since it is not a good idea to forget your
+ private keys and other cryptographic data.
+
 #### Accepts
 
+```hoon
+[p=@ud]
+```
+This argument is unused by Jael.
+
 #### Returns
+
+This task returns nothing.
+
 
 
 ### `%turf`
@@ -126,13 +146,28 @@ know to their rift, life, and public key?
 
 ### `%vega`
 
+`%vega` is called whenever the kernel is updated. Jael currently does not do
+anything in response to this.
+
 #### Accepts
 
+`%vega` takes no arguments.
+
 #### Returns
+
+This `task` returns no `gift`s.
+
 
 
 ### `%wegh`
 
+This `task` is a request to Jael to produce a memory usage report.
+
 #### Accepts
 
+This `task` has no arguments.
+
 #### Returns
+
+In response to this `task,` Jael `%give`s a `%mass` `gift` containing Ames'
+current memory usage.
