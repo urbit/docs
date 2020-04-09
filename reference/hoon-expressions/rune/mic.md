@@ -142,8 +142,10 @@ Fails because of auras:
 
 ```
 ~zod:dojo> ^-(tape ~[97 98 99])
-! nest-fail
-! exit
+mint-nice
+nest-fail
+ford: %slim failed: 
+ford: %ride failed to compute type:
 ```
 
 Succeeds because molds don't care about auras:
@@ -157,7 +159,7 @@ Fails because not a fixpoint:
 
 ```
 ~zod:dojo> ;;(tape [50 51 52])
-! exit
+ford: %ride failed to execute:
 ```
 
 ### ;/ "micfas"
