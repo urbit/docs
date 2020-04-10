@@ -127,7 +127,11 @@ This `task` cancels all trackers from a given set of ships.
 
 #### Returns
 
-This `task` returns no `gift`s.
+```hoon
+[%done ~]
+```
+
+After a `%nuke` `task`, Jael `%give`s a `%done` `gift` in response. This is an acknowledgement that the task was completed successfully. 
 
 
 ### `%plea`
@@ -169,13 +173,20 @@ history of the ship.
 
 ### `%public-keys`
 
+This `task` creates a subscription for the callee to a selection of the public keys kept by Jael.
+
 #### Accepts
 
 ```hoon
 [ships=(set ship)]
 ```
+`ships` is the `set` of `ship`s whos' public keys are being subscribed to.
 
 #### Returns
+
+```hoon
+[%public-keys =public-keys-result]
+```
 
 
 ### `%rekey`
