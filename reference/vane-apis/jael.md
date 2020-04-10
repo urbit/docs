@@ -60,11 +60,30 @@ know to their rift, life, and public key?
 
 ### `%listen`
 
+set ethereum source?
+
 #### Accepts
 
 ```hoon
 [whos=(set ship) =source]
 ```
+
+A `$source` is `(each ship term)`.
+
+```
+++  each
+  |$  [this that]
+  ::    either {a} or {b}, defaulting to {a}.
+  ::
+  ::  mold generator: produces a discriminated fork between two types,
+  ::  defaulting to {a}.
+  ::
+  $%  [%| p=that]
+      [%& p=this]
+  ==
+```
+`term=@tas`
+
 
 #### Returns
 
@@ -141,13 +160,26 @@ This `task` returns no `gift`s.
 
 ### `%rekey`
 
+This `task` updates the ship's private keys.
+
 #### Accepts
 
 ```hoon
 [=life =ring]
 ```
 
+`life` is a `@ud` that is the new ship key revision number. `ring` is an `@` that is the new private key.
+
 #### Returns
+
+```hoon
+[%private-keys =life vein=(map life ring)]
+```
+
+In response to a `%rekey` `task`, Jael `%give`s a `%private-keys` `gift`. `life`
+is the new `life` given in the original `task`, and `vein` is a `map` from
+`life`s to `ring`s that keeps track of all `life`-`ring` pairs throughout the
+history of the ship.
 
 
 ### `%trim`
