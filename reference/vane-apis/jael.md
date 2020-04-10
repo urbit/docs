@@ -138,6 +138,12 @@ This `task` returns no `gift`s.
 
 ### `%private-keys`
 
+This `task` creates a subscription to the private keys kept by Jael.
+
+We note that there are two `+private-keys` arms in Jael - one located in the
+`+feed` core and the other located in the `+feel` core. This `task` calls the
+arm in the `+feed` core.
+
 #### Accepts
 
 ```hoon
@@ -145,6 +151,15 @@ This `task` returns no `gift`s.
 ```
 
 #### Returns
+
+```hoon
+[%private-keys =life vein=(map life ring)]
+```
+
+In response to a `%private-keys` `task`, Jael `%give`s a `%private-keys` `gift`.
+`life=@ud` is the current `life` of the ship, and `vein` is a `map` from
+`life`s to `ring`s that keeps track of all `life`-`ring` pairs throughout the
+history of the ship.
 
 
 ### `%public-keys`
