@@ -116,13 +116,18 @@ This `task` returns no `gift`s.
 
 ### `%nuke`
 
+This `task` cancels all trackers from a given set of ships.
+
 #### Accepts
 
 ```hoon
 [whos=(set ship)]
 ```
+`whos` is the `set` of `ship`s for which trackers are to be canceled.
 
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%plea`
