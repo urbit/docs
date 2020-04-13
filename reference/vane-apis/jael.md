@@ -14,11 +14,25 @@ each `task` that Jael can be `%pass`ed, and which `gift`(s) Jael can `%give` in 
 
 ### `%dawn`
 
-This `task` is called only a single time per ship during the vane initialization
+This `task` is called once per ship during the vane initialization
 phase immediately following the beginning of the [adult
-stage](@/docs/tutorials/arvo/arvo.md#structural-interface-core) to load Azimuth information such as private keys and the sponsor into
-Jael. This `task` is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for
-technical reasons, though we consider Jael to be the true "first" vane.
+stage](@/docs/tutorials/arvo/arvo.md#structural-interface-core). This `task` is `%pass`ed to Jael by Dill, as Dill is the first vane to be loaded for
+technical reasons, though we consider Jael to be the true "first" vane. This
+`task` is only used for ships that will join the Ames network - fake ships (i.e.
+made with `./urbit -F zod`) use the `%fake` `task` instead.
+
+`%dawn` is used to perform a sequence of initialization tasks related to saving
+information about Azimuth and the Ames network and booting other vanes for the first time. Upon
+receipt of a `%dawn` `task`, Jael will:
+ - record the Ethereum block the public key is registered to,
+ - record the URL of the Ethereum node used,
+ - save the signature of the parent planet (if the ship is a moon)
+ - load the initial public and private keys for the ship
+ - set the DNS suffix(es) used by the network (currently just `arvo.network`)
+ - save the public keys of all galaxies
+ - set Jael to subscribe to `%azimuth-tracker`
+ - `%slip` a `%init` `task` to Ames, Clay, Gall, Dill, and Eyre, and `%give` an `%init`
+`gift` to Unix??. 
 
 #### Accepts
 
@@ -36,15 +50,28 @@ technical reasons, though we consider Jael to be the true "first" vane.
 ```
 
 The `seed` is `[who=ship lyf=life key=ring sig=(unit oath:pki)]`. `who` is the
-`@p` of the ship running the `task`, `lyf` is the current ship key revision, `key`
+`@p` of the ship running the `task`, `lyf` is the current ship key revision,
+`key` is the ship's private key, and `sig` is the signature of the ship's parent
+planet if the ship is moon and `[~]` otherwise.
 
+`spon` is a `list` of ships and their `point`s in the ship's sponsorship chain,
+all the way to the galaxy level. `point:azimuth-types` contains all Azimuth
+related data and can be found in `zuse.hoon`.
 
-`spon` is a list (why?) of sponsors for the ship, `czar` is a map of ships you
-know to their rift, life, and public key? 
+`czar` is a map from each galaxy's `@p` to its `rift`, `life`, and public key (`pass`).
 
-`turf` is a `(list @t)` "::  domain, tld first" ?? something to do with DNS?
+`turf` is a `list` of DNS suffixes used by the Ames network, which for now is
+just `arvo.network`. 
+
+`bloq` is the number of the Ethereum block in which the ship registered its keys
+with the Azimuth smart contract.
+
+`node` is the URL of the Ethereum node used to register the ship's keys with Azimuth.
 
 #### Returns
+
+As mentioned above, this `task` `%slip`s `%init` `task`s to most other vanes and
+`%give`s an `%init` `gift` to Unix.
 
 
 ### `%fake`
