@@ -194,7 +194,8 @@ a `%public-keys` `task`.
 
 #### Returns
 
-Jael `%give`s a `%done` `gift` in response to a `%plea` `task`.
+Jael `%give`s a `%done` `gift` in response to a `%plea` `task`. It also
+`%pass`es itself the wrapped `task`.
 
 
 ### `%private-keys`
