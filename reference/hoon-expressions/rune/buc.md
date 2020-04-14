@@ -52,6 +52,12 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ## Runes
 
+
+### $| "bucbar"
+
+`[%bsbr p=spec q=hoon]` Something about validating...
+
+
 ### $_ "buccab"
 
 `[%bscb p=hoon]`: structure that normalizes to an example.
