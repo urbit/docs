@@ -226,7 +226,8 @@ history of the ship.
 
 ### `%public-keys`
 
-This `task` creates a subscription for the callee to a selection of the public keys kept by Jael.
+This `task` creates a subscription for the callee to a selection of the public
+keys kept by Jael. This `task` can originate locally or remotely.
 
 #### Accepts
 
@@ -240,6 +241,18 @@ This `task` creates a subscription for the callee to a selection of the public k
 ```hoon
 [%public-keys =public-keys-result]
 ```
+If the `task` originated locally, Jael `%give`s a `%public-keys` `gift` in
+    response. If it originated remotely, Jael `%give`s a `%boon` `gift` to back
+    to Ames wrapping a `%public-keys` `gift`.
+    
+A `$public-keys-result` is the following.
+```hoon
+    +$  public-keys-result
+      $%  [%full points=(map ship point)]
+          [%diff who=ship =diff:point]
+          [%breach who=ship]
+```
+
 
 
 ### `%rekey`
@@ -252,7 +265,7 @@ This `task` updates the ship's private keys.
 [=life =ring]
 ```
 
-`life` is a `@ud` that is the new ship key revision number. `ring` is an `@` that is the new private key.
+`life` is a `@ud` that is the new ship key revision number. `ring` is a `@` that is the new private key.
 
 #### Returns
 
