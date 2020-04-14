@@ -146,6 +146,21 @@ This `task` returns no `gift`s.
 
 ### `%moon`
 
+Not sure what this one does.
+
+```hoon
+      %moon
+      ?.  =(%earl (clan:title ship.tac))
+        ~&  [%not-moon ship.tac]
+        +>.$
+      ?.  =(our (^sein:title ship.tac))
+        ~&  [%not-our-moon ship.tac]
+        +>.$
+      %-  curd  =<  abet
+      (~(new-event su hen our now pki etn) [ship udiff]:tac)
+   
+```
+
 #### Accepts
 
 ```hoon
@@ -300,6 +315,9 @@ This task returns nothing.
 
 ### `%turf`
 
+This `task` is a request for Jael to provide its list of `turf`s, e.g. DNS
+suffixes for the Ames network. Currently `arvo.network` is the only `turf` in use.
+
 #### Accepts
 
 ```hoon
@@ -307,6 +325,13 @@ This task returns nothing.
 ```
 
 #### Returns
+
+```hoon
+[%turn tuf.own.pki]
+```
+
+Jael `%give`s a `%turf` `gift` in response to a `%turf` `task`. `tuf.own.pki` is
+a `(list turf)`, which is Jael's list of `turf`s.
 
 
 ### `%vega`
