@@ -131,7 +131,7 @@ A `$source` is `(each ship term)`.
 
 ### `%meet`
 
-This `task` is a placeholder that currently does nothing.
+This `task` is deprecated and does not perform any actions.
 
 #### Accepts
 
@@ -157,33 +157,44 @@ This `task` returns no `gift`s.
 
 ### `%nuke`
 
-This `task` cancels all trackers from a given set of ships.
+This `task` cancels subscriptions to Jael's state from a given set of `ship`s.
+This `task` works differently depending on whether the `task` originated locally
+or remotely.
 
 #### Accepts
 
 ```hoon
 [whos=(set ship)]
 ```
-`whos` is the `set` of `ship`s for which trackers are to be canceled.
+`whos` is the `set` of `ship`s from which subscriptions are to be canceled.
 
 #### Returns
 
-```hoon
-[%done ~]
-```
-
-After a `%nuke` `task`, Jael `%give`s a `%done` `gift` in response. This is an acknowledgement that the task was completed successfully. 
+This `task` returns no `gift`s.
 
 
 ### `%plea`
+
+This `task` is `%pass`ed to Jael from Ames. `%plea`s are wrappers for `task`s
+that (typically? always?) originate from a remote source, as the `%plea` pattern
+is used to extend the `%pass`/`%give` semantics over the Ames network.
+
+Jael accepts two kinds of `%plea`s: [`%nuke`](#nuke) and
+[`%public-keys`](#public-keys) and will crash if passed anything else. See the relevant entries to learn how Jael
+responds to these. 
 
 #### Accepts
 
 ```hoon
 [=ship =plea:ames]
 ```
+`ship` is the origin of the plea, and `plea:ames` is `[vane=@tas =path
+payload=*]`. Here, `vane=%j`, `path` is the internal route on the receiving ship, and `payload` is either a `%nuke` or
+a `%public-keys` `task`.
 
 #### Returns
+
+Jael `%give`s a `%done` `gift` in response to a `%plea` `task`.
 
 
 ### `%private-keys`
