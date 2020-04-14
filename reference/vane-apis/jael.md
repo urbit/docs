@@ -76,13 +76,27 @@ As mentioned above, this `task` `%slip`s `%init` `task`s to most other vanes and
 
 ### `%fake`
 
+This `task` is used instead of `%dawn` when creating a fake ship via the `-F`
+flag when calling the Urbit binary. It performs a subset of the actions that
+`%dawn` performs, modified to accommodate the fake ship.
+
+`%fake` endows the ship with a private key and a public key deterministically derived from the
+ship's `@p`. It sets `fak.own.pki` to `%.y`, which is the bit that determines
+whether or not a ship is fake. Other parts of the Jael state, such as the
+sponsorship chain and galaxy public keys are left at their bunted values.
+
 #### Accepts
 
 ```hoon
 [=ship]
 ```
+`ship` is the `@p` of the fake ship being created.
 
 #### Returns
+
+Like `%dawn`, `%fake` is used to initialize the other vanes. In response to a
+`%fake` `task`, Jael `%slip`s a `%init` `task` to each of Eyre, Dill, Gall,
+Clay, and Ames, and `%give`s a `%init` `gift` to Unix (?)
 
 
 ### `%listen`
