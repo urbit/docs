@@ -26,11 +26,11 @@ information about Azimuth and the Ames network and booting other vanes for the f
 receipt of a `%dawn` `task`, Jael will:
  - record the Ethereum block the public key is registered to,
  - record the URL of the Ethereum node used,
- - save the signature of the parent planet (if the ship is a moon)
- - load the initial public and private keys for the ship
- - set the DNS suffix(es) used by the network (currently just `arvo.network`)
- - save the public keys of all galaxies
- - set Jael to subscribe to `%azimuth-tracker`
+ - save the signature of the parent planet (if the ship is a moon),
+ - load the initial public and private keys for the ship,
+ - set the DNS suffix(es) used by the network (currently just `arvo.network`),
+ - save the public keys of all galaxies,
+ - set Jael to subscribe to `%azimuth-tracker`,
  - `%slip` a `%init` `task` to Ames, Clay, Gall, Dill, and Eyre, and `%give` an `%init`
 `gift` to Arvo, which then informs Unix that the initialization process has concluded.
 
