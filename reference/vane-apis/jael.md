@@ -32,7 +32,7 @@ receipt of a `%dawn` `task`, Jael will:
  - save the public keys of all galaxies
  - set Jael to subscribe to `%azimuth-tracker`
  - `%slip` a `%init` `task` to Ames, Clay, Gall, Dill, and Eyre, and `%give` an `%init`
-`gift` to Unix??. 
+`gift` to Arvo, which then informs Unix that the initialization process has concluded.
 
 #### Accepts
 
@@ -96,7 +96,7 @@ sponsorship chain and galaxy public keys are left at their bunted values.
 
 Like `%dawn`, `%fake` is used to initialize the other vanes. In response to a
 `%fake` `task`, Jael `%slip`s a `%init` `task` to each of Eyre, Dill, Gall,
-Clay, and Ames, and `%give`s a `%init` `gift` to Unix (?)
+Clay, and Ames, and `%give`s a `%init` `gift` to Arvo.
 
 
 ### `%listen`
@@ -191,7 +191,7 @@ This `task` returns no `gift`s.
 ### `%plea`
 
 This `task` is `%pass`ed to Jael from Ames. `%plea`s are wrappers for `task`s
-that (typically? always?) originate from a remote source, as the `%plea` pattern
+that originate from a remote source, as the `%plea` pattern
 is used to extend the `%pass`/`%give` semantics over the Ames network.
 
 Jael accepts two kinds of `%plea`s: [`%nuke`](#nuke) and
@@ -257,8 +257,8 @@ keys kept by Jael. This `task` can originate locally or remotely.
 [%public-keys =public-keys-result]
 ```
 If the `task` originated locally, Jael `%give`s a `%public-keys` `gift` in
-    response. If it originated remotely, Jael `%give`s a `%boon` `gift` to back
-    to Ames wrapping a `%public-keys` `gift`.
+response. If it originated remotely, Jael `%give`s a `%boon` `gift` to back
+to Ames wrapping a `%public-keys` `gift`.
     
 A `$public-keys-result` is the following.
 ```hoon
@@ -267,7 +267,12 @@ A `$public-keys-result` is the following.
           [%diff who=ship =diff:point]
           [%breach who=ship]
 ```
-
+The first time Jael receives a `%public-keys` `task` from a ship it will return
+a `[%public-keys-result %full]` `gift`, which contains all information about ships and
+their associated points that Jael knows. Subsequent updates will typically be
+`[%public-keys-result %diff]`, which tells the caller what has changed
+since last time they sent a `%public-keys` `task`, and `[%public-keys-result
+%breach]`, which informs the caller of ship breaches.
 
 
 ### `%rekey`
