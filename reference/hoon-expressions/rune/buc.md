@@ -300,6 +300,12 @@ Regular: **2-fixed**.
 [%baz p=0]
 ```
 
+
+### $& "bucpam"
+
+`[%bspd p=spec q=hoon]`
+
+
 ### $~ "bucsig"
 
 `[%bssg p=hoon q=spec]`: define a custom type default value
