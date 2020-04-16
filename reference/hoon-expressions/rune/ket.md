@@ -63,7 +63,7 @@ Regular: **1-fixed**.
 
 ##### Discussion
 
-In older versions of Hoon, a 'mold' was an idempotent gate that was guaranteed to produce a noun of that type.  If an input value wasn't of the correct type, the bunt value of that type was returned.  (See `^*`.)
+A mold is an idempotent gate that is guaranteed to produce a noun of that type.  If an input value isn't of the correct type, the bunt value of that type is returned.  (See `^*`.)
 
 `^:` is used to produce a gate that is much like a mold, except that instead of producing a bunt value when the input value is of the wrong type, it crashes.
 
