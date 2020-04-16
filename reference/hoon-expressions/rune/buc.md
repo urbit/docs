@@ -311,7 +311,7 @@ Regular: **2-fixed**.
 
 `[%bssg p=hoon q=spec]`: define a custom type default value
 
-## Product
+##### Product
 
 Creates a structure (custom type) just like `q`, except its default value is `p`.
 
