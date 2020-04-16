@@ -346,7 +346,7 @@ representing a cause.
 
 If `duct`s are a call stack, then how do we make calls and produce results? Arvo
 processes `move`s which are a combination of message data and metadata. There
-are three types of `move`s: `%pass`, `%give`, and `%unix`.
+are four types of `move`s: `%pass`, `%give`, `%slip`, and `%unix`.
 
 A `%pass` `move` is analogous to a call:
 
@@ -364,6 +364,16 @@ A `%give` `move` is analogous to a return:
 ```
 
 Arvo pops the top `wire` off the `duct` and sends the given `card` back to the caller.
+
+A `%slip` `move` is a cousin of `%pass`. Any `card` that can be `%pass`ed can also be
+`%slip`ed, but while a `%pass` says to "push this `wire` onto the `duct` and
+transfer control to the receiving vane", a `%slip` transfers control to the
+receiving vane without altering the `duct`. Therefore, a `%give` in response to
+a `%slip` will go to the caller of the vane that sent the `%slip` rather than
+the vane that actually sent the `%slip`. `%slip`s are much more rare than
+`%pass`es and `%give`s. In general, `%slip` and `%pass` `move`s are
+both referred to as "passes" and it should be clear from the context if one
+means to refer only to `%pass`es and not `%slip`s or vice versa.
 
 Lastly, a `%unix` `move` is how Arvo represents communication from Unix, such as a
 network request or terminal input.
