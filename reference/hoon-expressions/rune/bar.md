@@ -18,6 +18,8 @@ with changes, which useful for recursion among other things:
 
 `{$brbs sample=(lest term) body=spec} `
 
+Produces a wet gate with a single arm named `$` (I think).
+
 ### |_ "barcab"
 
 Produce a **door** (a core with a sample).
