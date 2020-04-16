@@ -306,6 +306,10 @@ Regular: **2-fixed**.
 `[%bspd p=spec q=hoon]`: repair a value of a tagged union type
 
 
+##### Syntax
+
+Regular: **2-fixed**.
+
 
 ### $~ "bucsig"
 
