@@ -303,7 +303,8 @@ Regular: **2-fixed**.
 
 ### $& "bucpam"
 
-`[%bspd p=spec q=hoon]`
+`[%bspd p=spec q=hoon]`: repair a value of a tagged union type
+
 
 
 ### $~ "bucsig"
