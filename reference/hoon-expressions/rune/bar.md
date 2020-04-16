@@ -14,6 +14,10 @@ with changes, which useful for recursion among other things:
 
 ## Runes
 
+### |$ "barbuc"
+
+`{$brbs sample=(lest term) body=spec} `
+
 ### |_ "barcab"
 
 Produce a **door** (a core with a sample).
