@@ -51,7 +51,7 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 
 ### ^: "ketcol"
 
-`[%ktcl p=spec]`: 'factory' gate for type `p`.
+`[%ktcl p=spec]`: mold gate for type `p`.
 
 ##### Produces
 
