@@ -158,7 +158,7 @@ Here's a skeleton example of an implementation:
     ~&  %prep-lost
     `this
   ~&  %prep-found
-  `this(state u.old-state)
+  `this(state old-state)
 ::
 ++  on-poke
   |=  [=mark =vase]
