@@ -62,7 +62,7 @@ It's important to note that performing tests like `?~ mylist` will actually tran
 
 You can construct lists of any type.  `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
-## Tapes
+## Tapes and Cords
 
 While a list can be of any type, there are some special types of lists that are built into Hoon. The tape is the most common example.
 
