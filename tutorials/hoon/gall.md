@@ -5,6 +5,8 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gall/"]
 +++
 
+> Note: This guide is outdated. For an updated explanation of Gall, take a look at [tutorial/arvo/gall](/docs/tutorials/arvo/gall)
+
 Gall is the Arvo vane responsible for handling user space applications. When writing a Gall application there are several things you will need to understand.
 
 ## bowl and moves
