@@ -373,7 +373,9 @@ a `%slip` will go to the caller of the vane that sent the `%slip` rather than
 the vane that actually sent the `%slip`. `%slip`s are much more rare than
 `%pass`es and `%give`s. In general, `%slip` and `%pass` `move`s are
 both referred to as "passes" and it should be clear from the context if one
-means to refer only to `%pass`es and not `%slip`s or vice versa.
+means to refer only to `%pass`es and not `%slip`s or vice versa. Lastly, we note
+that `%slip` is a code smell and should nearly always be avoided. It can result
+in unexpected behavior like receiving a gift from a vane you never passed a note to.
 
 Lastly, a `%unix` `move` is how Arvo represents communication from Unix, such as a
 network request or terminal input.
