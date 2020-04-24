@@ -196,7 +196,7 @@ To assign an alias to a door, we often write the following.
 ```
 This is the idomatic way to assign the alias `this` to the door.
 
-Gall apps have a fixed number of arms, but sometimes you'd like to have more.
+Gall app cores have a fixed number of arms, but sometimes you'd like to have more.
 This is where virtual arms come in. We note that it is often better style to
 compose cores with `=>` or `=<` to add more arms to a Gall app, though.
 
