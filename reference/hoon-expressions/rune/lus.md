@@ -135,41 +135,71 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ### +* "lustar"
 
-Used to assign an alias to doors `|_`.
+Used to assign an alias to doors and define virtual arms.
 
 ##### Syntax
 
-Regular: **2-fixed**.
+Regular: **variadic**.
 
 ```hoon
-+*  p=term  [q=term]  r=spec
++*  a=term  b=hoon
+    c=term  d=hoon
+    ...
+    e=term  f=hoon
 ```
 
-`p` is the arm name, `q` is the name of the argument for the constructor function enclosed in square brackets, and `r` is a structure expression that defines the constructor function.
+`a`, `c`, `e` are arm names and `b`, `d`, `f` are any Hoon expression. Note that unlike all other
+runes with a variable number of arguments, the list of arguments of `+*` does
+not end with a terminating rune.
 
 ##### Discussion
 
-Arms produced by `+*` are essentially type constructors.  They are used to construct new types from ones you already have.  Consider `list`, which takes some type -- e.g., `@`, `tape`, etc. -- and returns a new type, e.g., `(list @)`, `(list tape)`, etc.
+The primary use of `+*` is to assign aliases to doors (see Examples below).
+However, they may also be used to define "virtual arms" which behave just like
+ordinary arms except they allow nesting within cores that requires a specific
+number of arms, such as Gall apps. Put another way, no matter how many virtual
+arms are defined in a `+*` statement, the interpreter will see it as only being
+a single arm for the purposes of nesting.
 
-The Hoon subexpression, `r`, must be a structure expression.  That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants).
+Under the hood, `+*` gets compiled to `=*`.
 
 ##### Examples
 
+To assign an alias to a door, we often write the following.
+```hoon
+|_  foo
++*  this  .
 ```
-> =c |%
-       +*  triple  [a]  [a a a]
-       +*  wrap-flag  [a]  [? a]
-     --
+This is the idomatic way to assign the alias `this` to the door.
 
-> `(triple.c @)`[12 14 16]
-[12 14 16]
+Gall apps have a fixed number of arms, but sometimes you'd like to have more.
+This is where virtual arms come in.
 
-> `(triple.c ?)`[12 14 16]
-nest-fail
+```hoon
+|_  =bowl:gall
++*  this  .
+    samp  +<
+    cont  +>
+```
+This assigns the door the alias `this`, the sample of the door `samp`, and the
+context of the door `cont`.
 
-> `(triple.c ?)`[& | |]
-[%.y %.n %.n]
+Using more than two arguments for `+*` is unnecessary if you do not care about
+how many arms your core has. The above snippet has the same behavior as the
+following one does, except it has more arms:
 
-> `(wrap-flag.c @)`[& 22]
-[%.y 22]
+```hoon
+|_  foo
++*  this  .
++*  samp  +<
++*  cont  +>
+```
+
+You are not restricted to lark expressions. Functions may be defined as well.
+Another common snipper seen in Gall apps is the following.
+
+```hoon
+|_  =bowl:gall
++*  this       .
+    def        ~(. (default-agent this %|) bowl)
 ```
