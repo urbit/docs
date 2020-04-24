@@ -135,8 +135,7 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ### +* "lustar"
 
-
-Produce a type constructor arm.
+Used to assign an alias to doors `|_`.
 
 ##### Syntax
 
