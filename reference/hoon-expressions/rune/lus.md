@@ -152,6 +152,9 @@ Regular: **variadic**.
 runes with a variable number of arguments, the list of arguments of `+*` does
 not end with a terminating rune.
 
+`+*` arms must always come at the beginning of the battery, before any other
+type of lus arm.
+
 ##### Discussion
 
 The primary use of `+*` is to assign aliases to doors (see Examples below).
