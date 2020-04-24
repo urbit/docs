@@ -159,12 +159,33 @@ type of lus arm.
 
 The primary use of `+*` is to assign aliases to doors (see Examples below).
 However, they may also be used to define "virtual arms" which behave just like
-ordinary arms except they allow nesting within cores that requires a specific
+ordinary arms (?) except they allow nesting within cores that requires a specific
 number of arms, such as Gall apps. Put another way, no matter how many virtual
 arms are defined in a `+*` statement, the interpreter will see it as only being
 a single arm for the purposes of nesting.
 
-Under the hood, `+*` gets compiled to `=*`.
+Under the hood, `+*` gets compiled `=*`'s. `+*  foo  bar` rewrites each `++` arm to include
+`=*  foo  bar`. For example, the interpreter sees this Hoon expression
+
+```hoon
+|_  z=@ud
++*  n  1
+++  x  (add z n)
+++  y  (sub z n)
+--
+```
+as being identical to this one:
+```hoon
+=|  z=@ud
+|%
+++  x
+  =*  n  1
+  (add z n)
+++  y
+  =*  n  1
+  (sub z n)
+--
+```
 
 ##### Examples
 
@@ -176,7 +197,8 @@ To assign an alias to a door, we often write the following.
 This is the idomatic way to assign the alias `this` to the door.
 
 Gall apps have a fixed number of arms, but sometimes you'd like to have more.
-This is where virtual arms come in.
+This is where virtual arms come in. We note that it is often better style to
+compose cores with `=>` or `=<` to add more arms to a Gall app, though.
 
 ```hoon
 |_  =bowl:gall
@@ -187,22 +209,8 @@ This is where virtual arms come in.
 This assigns the door the alias `this`, the sample of the door `samp`, and the
 context of the door `cont`.
 
-Using more than two arguments for `+*` is unnecessary if you do not care about
-how many arms your core has. The above snippet has the same behavior as the
-following one does, except it has more arms:
 
-```hoon
-|_  foo
-+*  this  .
-+*  samp  +<
-+*  cont  +>
-```
 
-You are not restricted to lark expressions. Functions may be defined as well.
-Another common snipper seen in Gall apps is the following.
+You are not restricted to lark expressions. Functions may be defined as well...
+(insert example)
 
-```hoon
-|_  =bowl:gall
-+*  this       .
-    def        ~(. (default-agent this %|) bowl)
-```
