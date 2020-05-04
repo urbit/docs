@@ -8,7 +8,7 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/egg-timer/"]
 The Arvo operating system is divided up into modules called vanes.  Gall is the vane responsible for providing an API for building stateful applications in Urbit.  Gall is a complex system that takes a lot of getting used to, so let's dip our toes in with a simple egg-timer app.
 
 The following code sample should be saved as `/home/app/egg-timer.hoon`
-After committing: `|start egg-timer` and poke with `:egg-timer ~s10`
+After committing: `|start %egg-timer` and poke with `:egg-timer ~s10`
 
 ```hoon
 /+  default-agent
