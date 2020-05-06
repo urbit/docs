@@ -94,9 +94,25 @@ page to be asynchronous.
 
 ### `%init`
 
+`%init` is called a single time during the very first boot process, immediately
+after the [larval stage](@/docs/tutorials/arvo/arvo.md#larval-stage-core)
+is completed. This initializes the vane. Jael is initialized first, followed by
+other vanes such as Eyre.
+
+In response to receiving the `%init` `task`, Ames sets the initial values for
+the login handler.
+
 #### Accepts
 
+```hoon
+[p=ship]
+```
+The argument with `%init` is always the `@p` of the ship, but Eyre does not make
+use of it.
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%live`
@@ -143,13 +159,27 @@ page to be asynchronous.
 
 ### `%vega`
 
+`%vega` is called whenever the kernel is updated. Ames currently does not do
+anything in response to this.
+
 #### Accepts
 
+`%vega` takes no arguments.
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%wegh`
 
+This `task` is a request to Eyre to produce a memory usage report.
+
 #### Accepts
 
+This `task` has no arguments.
+
 #### Returns
+
+In response to this `task,` Eyre `%give`s a `%mass` `gift` containing Eyre's
+current memory usage.
