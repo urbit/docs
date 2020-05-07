@@ -150,7 +150,7 @@ Regular: **variadic**.
 
 `a`, `c`, `e` are arm names and `b`, `d`, `f` are any Hoon expression. Note that unlike all other
 runes with a variable number of arguments, the list of arguments of `+*` does
-not end with a terminating rune.
+not end with a terminator.
 
 `+*` arms must always come at the beginning of the battery, before any other
 type of lus arm.
@@ -158,13 +158,14 @@ type of lus arm.
 ##### Discussion
 
 The primary use of `+*` is to assign aliases to doors (see Examples below).
-However, they may also be used to define "virtual arms" which behave just like
-ordinary arms (?) except they allow nesting within cores that requires a specific
-number of arms, such as Gall apps. Put another way, no matter how many virtual
+However, they may also be used to define "virtual arms" which behave like
+ordinary arms except that they allow nesting within cores that requires a specific
+number of arms, such as Gall app cores. Put another way, no matter how many virtual
 arms are defined in a `+*` statement, the interpreter will see it as only being
 a single arm for the purposes of nesting.
 
-Under the hood, `+*` gets compiled `=*`'s. `+*  foo  bar` rewrites each `++` arm to include
+Under the hood, `+*` gets compiled as `=*`'s. `+*  foo  bar` rewrites each `++`
+arm beneath it in the core to include
 `=*  foo  bar`. For example, the interpreter sees this Hoon expression
 
 ```hoon
@@ -196,9 +197,10 @@ To assign an alias to a door, we often write the following.
 ```
 This is the idomatic way to assign the alias `this` to the door.
 
-Gall app cores have a fixed number of arms, but sometimes you'd like to have more.
-This is where virtual arms come in. We note that it is often better style to
-compose cores with `=>` or `=<` to add more arms to a Gall app, though.
+Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd
+like to include more. This is where virtual arms may be of use. We note that it
+is often better style to compose cores with `=>` or `=<` to add more arms to a
+Gall app, though. This usage of `+*` is controversial and should be minimized.
 
 ```hoon
 |_  =bowl:gall
@@ -209,8 +211,17 @@ compose cores with `=>` or `=<` to add more arms to a Gall app, though.
 This assigns the door the alias `this`, the sample of the door `samp`, and the
 context of the door `cont`.
 
+You may also call functions with `+*` by making use of e.g. the `%~` rune.
 
-
-You are not restricted to lark expressions. Functions may be defined as well...
-(insert example)
-
+```hoon
+=<
+  |_  a=@ 
+  +*  do   ~(. +> a)
+  ++  stuff  foo:do
+::etc
+--
+|_  b=@
+++  foo  %bar
+::etc
+--
+```
