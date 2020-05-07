@@ -75,7 +75,8 @@ page to be asynchronous.
 
 A `%connect` `task` binds an app to a site. It takes in the name of an app, the
 `path` to that app, and a URL and adds it to `server-state.ax`, allowing the
-site at the URL to interface with the app.
+site at the URL to interface with the app. This binding may be deleted with the
+`%disconnect` `task`.
 
 #### Accepts
 
@@ -91,11 +92,11 @@ A `+binding` is a system unique mapping that associates `path=(list @t)` to a
 ```hoon
 [%bound accepted=? =binding]
 ```
-The `+binding` returned is always the `+binding` that was given in the
+The `+binding` returned is always the `binding` that was given in the
 `%connect` `task`.
 
 Since `+binding`s are system unique, this `task` may fail if the `path` in the
-`+binding` is already in use. In this case, `accepted=%.n`, else `accepted=%.y`.
+`binding` is already in use. In this case, `accepted=%.n`, else `accepted=%.y`.
 
 #### Example
 
@@ -141,7 +142,7 @@ after the [larval stage](@/docs/tutorials/arvo/arvo.md#larval-stage-core)
 is completed. This initializes the vane. Jael is initialized first, followed by
 other vanes such as Eyre.
 
-In response to receiving the `%init` `task`, Ames sets the initial values for
+In response to receiving the `%init` `task`, Eyre sets the initial values for
 the login handler.
 
 #### Accepts
@@ -159,16 +160,67 @@ This `task` returns no `gift`s.
 
 ### `%live`
 
+This `task` is used to tell Eyre the ports of the currently live http servers on
+the ship. Each server must have an insecure port `@ud`, and may have a secure
+one as well.
+
 #### Accepts
 
+```hoon
+[insecure=@ud secure=(unit @ud)]
+```
+As expected, `insecure` is the port number of the insecure port to be set, while
+`secure` is the port number of the optional secure port to be set.
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%request`
 
+This `task` is used to start handling an inbound http request.
+
 #### Accepts
 
+```hoon
+[secure=? =address =request:http]
+```
+The value of `secure` states whether the request is secure or not. `address` is
+the client IP address.
+
+`request:http` is a single http request. It consists of standard data for http
+requests, formatted as follows.
+
+```hoon
++$  request
+    $:  ::  method: http method
+        ::
+        method=method
+        ::  url: the url requested
+        ::
+        ::    The url is not escaped. There is no escape.
+        ::
+        url=@t
+        ::  header-list: headers to pass with this request
+        ::
+        =header-list
+        ::  body: optionally, data to send with this request
+        ::
+        body=(unit octs)
+    ==
+```
+
+The `method` is an http verb from the following list: `%'CONNECT'`, `%'DELETE'`, `%'GET'`,
+`%'HEAD'`, `%'OPTIONS'`, `%'POST'`, `%'PUT'`, `%'TRACE'`.
+
 #### Returns
+
+This `task` may return a `%response` `gift` whose form depends on the `method` in the `request`.
+
+```hoon
+[=http-event:http]
+```
 
 
 ### `%request-local`
@@ -187,9 +239,29 @@ This `task` returns no `gift`s.
 
 ### `%serve`
 
+`%serve` is a cousin of `%connect`, and is used to connect a `+binding` to a
+`+generator`. A `+generator` is a generator in the usual Hoon sense, along with
+information on the `desk` and `path` where it is located and `args=*` to be
+passed to the generator. This binding may be deleted with the `%disconnect` `task`.
+
 #### Accepts
 
+```hoon
+[=binding =generator]
+```
+`binding` is the `+binding` that associates a `path=(list @t)` to a
+`site=(unit @t)`, and `generator` is the `+generator` to be coupled to the `binding`.
+
 #### Returns
+
+```hoon
+[%bound accepted=? =binding]
+```
+The `binding` returned is always the `+binding` that was given in the
+`%connect` `task`.
+
+Since `binding`s are system unique, this `task` may fail if the `path` in the
+`binding` is already in use. In this case, `accepted=%.n`, else `accepted=%.y`.
 
 
 ### `%trim`
