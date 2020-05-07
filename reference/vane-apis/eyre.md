@@ -47,35 +47,67 @@ inferred from the duct.
 
 What this `task` returns depends on the type of `%request` being canceled.
 
-Associated to the `duct` is an `$outstanding-connection`, which contains an
-`$action` that is in queue to be performed. The return depends on the value of the `$action`.
+Associated to the `duct` is an `+outstanding-connection`, which contains an
+`+action` that is in queue to be performed. The return depends on the value of the `+action`.
 
 If the connection is empty, nothing has yet handled it and so Eyre does nothing.
 
-A `%gen` action triggers the following `move`:
+A `%gen` `+action` triggers the following `move`:
 ```hoon
 [%pass /run-build %f %kill ~]
 ```
 
-For a `%app` action,
+For a `%app` `+action`,
 ```hoon
 [%pass /watch-response/[eyre-id] %g %deal [our our] app.action.u.connection %leave ~]
 ```
 
-For a `%authentication` action, Eyre returns nothing.
+For a `%authentication` `+action`, Eyre returns nothing.
 
-For a `%channel` action, Eyre cancels the subscription associated to the duct
+For a `%channel` `+action`, Eyre cancels the subscription associated to the duct
 but does not return any gift (I think?)
 
-For a `%four-oh-four` action, Eyre crashes as it should be impossible for a 404
+For a `%four-oh-four` `+action`, Eyre crashes as it should be impossible for a 404
 page to be asynchronous.
 
 
 ### `%connect`
 
+A `%connect` `task` binds an app to a site. It takes in the name of an app, the
+`path` to that app, and a URL and adds it to `server-state.ax`, allowing the
+site at the URL to interface with the app.
+
 #### Accepts
 
+```hoon
+[=binding app=term]
+```
+
+A `+binding` is a system unique mapping that associates `path=(list @t)` to a
+`site=(unit @t)` (typically a URL), and `app` is the name of the app.
+
 #### Returns
+
+```hoon
+[%bound accepted=? =binding]
+```
+The `+binding` returned is always the `+binding` that was given in the
+`%connect` `task`.
+
+Since `+binding`s are system unique, this `task` may fail if the `path` in the
+`+binding` is already in use. In this case, `accepted=%.n`, else `accepted=%.y`.
+
+#### Example
+
+`%chat-view` is an app that sets up the `chat` Javascript client, paginates data,
+and combines commands into semantic actions for the UI. When initialized, it
+`%pass`es a `%connect` `task` to Eyre asking it to associate the default URL
+(represented by `~` and corresponding to `your.urbit.org`) and the `path`
+`/'~chat'` to the `%chat-view` app like so.
+
+```hoon
+[%pass / %arvo %e %connect [~ /'~chat'] %chat-view]
+```
 
 
 ### `%crud`
@@ -87,9 +119,19 @@ page to be asynchronous.
 
 ### `%disconnect`
 
+This `task` removes a `+binding` that was previously created with a `%connect`
+or `%serve` `task`. This must be called via the same duct that the `+binding`
+was originally created with.
+
 #### Accepts
 
+```hoon
+[=binding]
+```
+
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%init`
@@ -159,7 +201,7 @@ This `task` returns no `gift`s.
 
 ### `%vega`
 
-`%vega` is called whenever the kernel is updated. Ames currently does not do
+`%vega` is called whenever the kernel is updated. Eyre currently does not do
 anything in response to this.
 
 #### Accepts
