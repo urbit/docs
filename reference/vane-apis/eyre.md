@@ -113,9 +113,21 @@ and combines commands into semantic actions for the UI. When initialized, it
 
 ### `%crud`
 
+`%crud` is called whenever an event involving Eyre fails. It produces a crash
+report in response.
+
 #### Accepts
 
+```hoon
+[=error]
+```
+
+An `$error` is a `[tag=@tas =tang]`.
+
 #### Returns
+
+Eyre does not `%give` a `gift` in response to a `%crud` `task`, but it does
+`%slip` Dill a `%flog` `task` instructing it to print `error`.
 
 
 ### `%disconnect`
@@ -232,9 +244,42 @@ This `task` may return a `%response` `gift` whose form depends on the `method` i
 
 ### `%rule`
 
+This `task` is used to update Eyre's http configuration. More specifically, it
+is used to set or clear a TLS certificate and key pair, or add/remove a DNS binding.
+
+
 #### Accepts
 
+```hoon
+[=http-rule]
+```
+
+For setting or clearing a certificate, `http-rule` is `[%cert cert=(unit
+[key=wain cert=wain])]`. If `cert` is equal to the one already stored
+by Eyre, this `task` is a no-op. If `cert` is different, the old one is replaced by
+`cert`. If the card is `[%cert ~]` then the certificate and key pair stored by
+Eyre are cleared.
+
+For adding/removing a DNS binding, `http-rule` is  `[%turf action=?(%put %del)
+=turf]`. As expected, `action=%put` adds a new DNS binding, and `action=%del`
+deletes a DNS binding. A `$turf` is a `(list @t)` with the first entry being the
+top level domain. `turf` is the DNS binding that is either being added or
+deleted. In the case of trying to add a DNS binding that already exists or
+deleting one that does not already exist, this `task` is a no-op.
+
 #### Returns
+
+If `http-rule` is a `%cert`, Eyre `%give`s Unix the following card,
+```hoon
+[%set-config config]
+```
+where `config` is the new http configuration stored by Eyre.
+
+If `http-rule` is a `%turf`, Eyre will `%pass` `acme` (a Gall app for...) a
+`%poke` of sort `%acme-order` with a `vase` containing the new `set` of `turf`s.
+```hoon
+[%pass /acme/order %g %deal [our our] %acme %poke `cage`[%acme-order !>(set turf)]]
+```
 
 
 ### `%serve`
