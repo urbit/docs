@@ -12,7 +12,7 @@ There are various arm runes you can use to produce different kinds of arms.  Nor
 
 ## Runes
 
-### +| "lusbar"
+### `+|` "lusbar"
 
 Chapter label.
 
@@ -60,7 +60,7 @@ Notice that `p.q` has the label `%numbers`.  Contrast with:
 ]
 ```
 
-### +$ "lusbuc"
+### `+$` "lusbuc"
 
 Produce a structure arm (type definition).
 
@@ -98,7 +98,7 @@ nest-fail
 [%.y 22]
 ```
 
-### ++ "luslus"
+### `++` "luslus"
 
 Produce a normal arm.
 
@@ -133,7 +133,7 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 12
 ```
 
-### +* "lustar"
+### `+*` "lustar"
 
 
 Produce a type constructor arm.
