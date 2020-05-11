@@ -233,7 +233,7 @@ We can unbind `b` from the dojo subject, and `ten` works just as well because it
 > (ten 35)
 45
 
-> b.+6.ten
+> b.+14.ten
 10
 ```
 
