@@ -158,11 +158,12 @@ type of lus arm.
 ##### Discussion
 
 The primary use of `+*` is to assign aliases to doors (see Examples below).
-However, they may also be used to define "virtual arms" which behave like
-ordinary arms except that they allow nesting within cores that requires a specific
+However, they may also be used to define "virtual arms"  that do not count
+towards the number of arms in cores that requires a specific
 number of arms, such as Gall app cores. Put another way, no matter how many virtual
-arms are defined in a `+*` statement, the interpreter will see it as only being
-a single arm for the purposes of nesting.
+arms are defined in a `+*` statement, the interpreter does not count it towards
+the number of arms in the core. How these virtual arms really work can be understood more
+precisely by the following.
 
 Under the hood, `+*` gets compiled as `=*`'s. `+*  foo  bar` rewrites each `++`
 arm beneath it in the core to include
