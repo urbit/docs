@@ -8,7 +8,7 @@ Core expressions produce cores. A core is a cell of `[battery payload]`.
 The `battery` is code, a battery of Nock formulas.  The `payload` is the data
 needed to run those formulas correctly.
 
-Four core runes (`|=`, `|.`, `|-`, and `|*`) produce a
+Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a
 core with a single arm, named `$`. We can recompute this arm
 with changes, which is useful for recursion among other things.
 
@@ -60,7 +60,9 @@ gates that produce structures, while `|*` should be used for any other sort of
 wet gate. Thus, the second argument of `|$` is frequently a buc
 rune. For further discussion of wet gates, see the entry for [`|*`](#bartar).
 
-Unlike other single-armed cores, `|$` does not have an arm named `$` that can be recursed upon.
+Like other single-arm cores, the arm for `|$` is named `$` and this can be used to
+define recursive structures. Note however that Hoon is evaluated eagerly, and so
+infinite structures are not permitted.
 
 Proper style for `|$` is to enclose the first argument with brackets, even if it
 is only a single term. The interpeter will accept a single term without brackets
