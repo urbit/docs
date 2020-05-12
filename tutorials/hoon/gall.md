@@ -5,9 +5,9 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gall/"]
 +++
 
-> Note: This guide is outdated. For an updated explanation of Gall, take a look at [/tutorial/arvo/gall](/docs/tutorials/arvo/gall)
-
 Gall is the Arvo vane responsible for handling user space applications. When writing a Gall application there are several things you will need to understand.
+
+For another explanation of Gall, take a look at [/tutorial/arvo/gall](/docs/tutorials/arvo/gall)
 
 ## bowl and moves
 
@@ -34,50 +34,94 @@ Each `card` is a pair of a tag and a [noun](/docs/glossary/noun/). The tag indic
 
 Gall applications can have a number of arms that get called depending on the information they are sent.
 
-### ++prep
+This arm is called once when the agent is started.  It has no input and
+lets you perform any initial IO.
 
-`++prep` is the arm that is called when an application is first started or when it's updated. This arm should be a [gate](/docs/glossary/gate/) that takes a `unit` of a noun and provides a way, if necessary, to make any changes to the application's data required by an upgrade. As a reminder, a `unit` is a type that may contain another type or it might contain `~`. They are used when there may or may not be some data available.
+### +on-save
 
-Often when developing an application you will not initially care about the data. Here is a sample `++prep` arm that will simply throw away the previous application state.
+This arm is called immediately before the agent is upgraded.  It
+packages the permament state of the agent in a `vase` for the next version
+of the agent.  Unlike most handlers, this cannot produce effects.
 
-```hoon
-++  prep
-    |=  a=(unit *)
-    `(quip move _+>.$)`[~ +>.$]
-```
+### +on-load
 
-### ++poke
+This arm is called immediately after the agent is upgraded.  It receives
+a `vase` of the state of the previously-running version of the agent,
+which allows it to cleanly upgrade from the old agent.
 
-`++poke` is one of the primary arms used when building a Gall application. A `poke` is often a request to perform some operation that the application was designed for. These are requests from outside the application. `++poke` will get called with the raw noun data which can then be inspected to perform the requested actions with.
+### +on-poke
 
-Many arms, `++poke` included, have variants that end in the name of a mark e.g. `++poke-noun`. Which one gets called will be based on which mark was used to create the poke. Gall will attempt to use the most specific arm it can find, eventually falling back to `++poke` if no matching mark arm is found. Use of these mark arms, however, is now discouraged.
+This arm is called when the agent is "poked".  The input is a `cage`, so
+it's a pair of a mark and a dynamic `vase`.
 
-### ++coup
+### +on-watch
 
-`++coup` is a response handler for any pokes our application sent out.
+This arm is called when a program wants to subscribe to the agent on a
+particular `path`.  The agent may or may not need to perform setup steps
+to intialize the subscription.  It may produce a `%give`
+`%subscription-result` to the subscriber to get it up to date, but after
+this event is complete, it cannot give further updates to a specific
+subscriber.  It must give all further updates to all subscribers on a
+specific `path`.
 
-### ++peer
+If this arm crashes, then the subscription is immediately terminated.
+More specifcally, it never started -- the subscriber will receive a
+negative `%watch-ack`.  You may also produce an explicit `%kick` to
+close the subscription without crashing -- for example, you could
+produce a single update followed by a `%kick`.
 
-`++peer` is used to handle subscriptions. When something subscribes to your application this arm will run. The something could be another Gall application on your ship or another ship or a tile from landscape or anything else that is able to communicate with Gall. Your outgoing subscriptions will not be tracked automatically but incoming ones will live in `sup.bowl` so that you can send information to them when required.
+### +on-leave
 
-### ++pull
+This arm is called when a program becomes unsubscribed to you.
+Subscriptions may close because the subscriber intentionally
+unsubscribed, but they also could be closed by an intermediary.  For
+example, if a subscription is from another ship which is currently
+unreachable, Ames may choose to close the subscription to avoid queueing
+updates indefinitely.  If the program crashes while processing an
+update, this may also generate an unsubscription.  You should consider
+subscriptions to be closable at any time.
 
-`++pull` is run when someone unsubscribes from your application, this is used to run any changes needed for your application when they unsubscribed. Their removal from `sup.bowl` is handled for you.
+### +on-peek
 
-### ++quit
+This arm is called when a program reads from the agent's "scry"
+namespace, which should be referentially transparent.  Unlike most
+handlers, this cannot perform IO, and it cannot change the state.  All
+it can do is produce a piece of data to the caller, or not.
 
-`++quit` gets called when a subscription is dropped. Often you will just want to resubscribe when this happens.
+If this arm produces `[~ ~ data]`, then `data` is the value at the the
+given `path`.  If it produces `[~ ~]`, then there is no data at the given
+`path` and never will be.  If it produces `~`, then we don't know yet
+whether there is or will be data at the given `path`.
 
-### ++reap
+### +on-agent
 
-`++reap` is to `++peer` as `++coup` is to `++poke`, that is to say it's the arm that gets run in acknowledgment of outgoing subscription requests.
+This arm is called to handle responses to `%give` moves to other agents.
+It will be one of the following types of response:
 
-### ++diff
+- `%poke-ack`: acknowledgment (positive or negative) of a poke.  If the
+  value is `~`, then the poke succeeded.  If the value is `[~ tang]`,
+  then the poke failed, and a printable explanation (e.g. a stack trace)
+  is given in the `tang`.
 
-`++diff` gets called when an application you are subscribed to has an update. It could either be an entirely new set of data for that application or an update to existing data.
+- `%watch-ack`: acknowledgment (positive or negative) of a subscription.
+  If negative, the subscription is already ended (technically, it never
+  started).
 
-### ++sigh
+- `%fact`: update from the publisher.
 
-`++sigh` gets called when Eyre has a response to an http request made by our application.
+- `%kick`: notification that the subscription has ended.
 
-Let's take a look in the next section at an example Gall app.
+### +on-arvo
+
+This arm is called to handle responses to `%pass` `move`s to vanes.  The
+list of possible responses from the system is statically defined in
+sys/zuse.hoon (grep for `+  sign-arvo`).
+
+### +on-fail
+
+If an error happens in `+on-poke`, the crash report goes into the
+`%poke-ack` response.  Similarly, if an error happens in
+`+on-subscription`, the crash report goes into the `%watch-ack`
+response.  If a crash happens in any of the other handlers, the report
+is passed into this arm.
+
