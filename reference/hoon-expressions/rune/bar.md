@@ -33,7 +33,7 @@ AST:
 
 ##### Semantics
 
-`|$` is used to produce a wet gate that makes a mold builder. The mold builder
+`|$` is used to produce a wet gate that is a mold builder. The mold builder
 produced is polymorphic in its input types.  `a` is a `lest` of `term` used as
 identifiers for the input types. `b` is a structure built from elements of `a`.
 The output of `|$` is a mold builder that produces a `spec` obtained by
