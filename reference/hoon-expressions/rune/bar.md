@@ -10,15 +10,72 @@ needed to run those formulas correctly.
 
 Four core runes (`|=`, `|.`, `|-`, and `|*`) produce a
 core with a single arm, named `$`. We can recompute this arm
-with changes, which useful for recursion among other things:
+with changes, which is useful for recursion among other things.
 
 ## Runes
 
 ### |$ "barbuc"
 
-`{$brbs sample=(lest term) body=spec} `
+Produces a wet gate that creates a structure parameterized by molds.
 
-Produces a wet gate with a single arm named `$` (I think).
+##### Syntax
+
+Regular:
+```hoon
+|$  a=(lest term)  b=spec
+```
+
+AST:
+```hoon
+[%brbs sample=(lest term) body=spec]
+```
+
+##### Semantics
+
+`|$` is used to create a wet gate that is polymorphic in its input types and
+produces a structure. `a` is a `lest` of `term` used as identifiers for the
+input types. `b` is a structure built from elements of `a`. The output of `|$`
+is a `spec` obtained by substituting the input types parameterized by `a` into
+the `b`.
+
+##### Expands to
+
+I'm having some trouble deciphering this, would appreciate help. From `hoon.hoon`:
+```hoon
+ {$brbs *}  =-  ?~  -  !!
+                       [%brtr [%bscl -] [%ktcl body.gen]]
+                   %+  turn  `(list term)`sample.gen
+                   |=  =term
+                   ^-  spec
+                   =/  tar  [%base %noun]
+                   [%bsts term [%bssg tar [%bshp tar tar]]]
+```
+
+##### Discussion
+
+`|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as either could
+be used to make wet gates that produce structures. The buc in `|$` is a hint that
+`|$` is closely related to buc runes, and thus `|$` should be used to make wet
+gates that produce structures, while `|*` should be used for any other sort of
+wet gate. Thus, the second argument of `|$` is frequently a buc
+rune. For further discussion of wet gates, see the entry for [`|*`](#bartar).
+
+Unlike other single-armed cores, `|$` does not have an arm named `$` that can be recursed upon.
+
+Proper style for `|$` is to enclose the first argument with brackets, even if it
+is only a single term. The interpeter will accept a single term without brackets
+just fine, but this style is for consistency with the fact that the first argument is a `lest`.
+
+##### Examples
+
+```
+~zod:dojo> =foo |$([a b] [b a])
+
+~zod:dojo> =bar (foo [@ @tas])
+
+~zod:dojo> (bar %cat 3)
+[%cat 3]
+```
 
 ### |_ "barcab"
 
@@ -236,7 +293,7 @@ AST:
 [%brdt p=hoon]
 ```
 
-Semantics:
+##### Semantics
 
 A `|.` expression produces a core with a single arm, `$`.  The core isn't explicitly given a sample.  `a` is a Hoon expression that defines the computation of the `$` arm.
 
@@ -460,7 +517,8 @@ AST:
 
 ##### Semantics
 
-A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b` is a Hoon expression that determines the output value of the gate.
+A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b`
+is a Hoon expression that determines the output value of the gate.
 
 ##### Expands to
 
@@ -486,6 +544,9 @@ Just as with a [gate](#bartis), we can recurse back into a wet gate
 with `$()`.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
+
+`|*` can be used to make wet gates that produce structures, but this usage is
+discouraged in favor of `|$`.
 
 ##### Examples
 
