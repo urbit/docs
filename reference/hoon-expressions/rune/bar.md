@@ -41,15 +41,15 @@ substituting the input types parameterized by `a` into `b`.
 
 ##### Expands to
 
-I'm having some trouble deciphering this, would appreciate help. From `hoon.hoon`:
 ```hoon
- {$brbs *}  =-  ?~  -  !!
-                       [%brtr [%bscl -] [%ktcl body.gen]]
-                   %+  turn  `(list term)`sample.gen
-                   |=  =term
-                   ^-  spec
-                   =/  tar  [%base %noun]
-                   [%bsts term [%bssg tar [%bshp tar tar]]]
+|$  [a b]
+body
+```
+becomes
+```hoon
+|*  [a=$~(* $-(* *)) b=$~(* $-(* *))]
+^:
+body
 ```
 
 ##### Discussion
