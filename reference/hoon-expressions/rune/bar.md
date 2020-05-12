@@ -55,7 +55,7 @@ body
 ##### Discussion
 
 `|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as either could
-be used to make wet gates that produce mold builders. The buc in `|$` is a hint that
+be used to make wet gates that are mold builders. The buc in `|$` is a hint that
 `|$` is closely related to buc runes, and thus `|$` should be used to make wet
 gates that produce mold builders, while `|*` should be used for any other sort of
 wet gate. Thus, the second argument of `|$` is frequently a buc
