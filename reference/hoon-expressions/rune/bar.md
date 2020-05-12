@@ -16,7 +16,8 @@ with changes, which is useful for recursion among other things.
 
 ### |$ "barbuc"
 
-Produces a wet gate that creates a structure parameterized by molds.
+Produces a mold builder which is a wet gate with one or more molds as its
+sample.
 
 ##### Syntax
 
@@ -32,11 +33,11 @@ AST:
 
 ##### Semantics
 
-`|$` is used to create a wet gate that is polymorphic in its input types and
-produces a structure. `a` is a `lest` of `term` used as identifiers for the
-input types. `b` is a structure built from elements of `a`. The output of `|$`
-is a `spec` obtained by substituting the input types parameterized by `a` into
-the `b`.
+`|$` is used to produce a wet gate that makes a mold builder. The mold builder
+produced is polymorphic in its input types.  `a` is a `lest` of `term` used as
+identifiers for the input types. `b` is a structure built from elements of `a`.
+The output of `|$` is a mold builder that produces a `spec` obtained by
+substituting the input types parameterized by `a` into `b`.
 
 ##### Expands to
 
@@ -54,9 +55,9 @@ I'm having some trouble deciphering this, would appreciate help. From `hoon.hoon
 ##### Discussion
 
 `|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as either could
-be used to make wet gates that produce structures. The buc in `|$` is a hint that
+be used to make wet gates that produce mold builders. The buc in `|$` is a hint that
 `|$` is closely related to buc runes, and thus `|$` should be used to make wet
-gates that produce structures, while `|*` should be used for any other sort of
+gates that produce mold builders, while `|*` should be used for any other sort of
 wet gate. Thus, the second argument of `|$` is frequently a buc
 rune. For further discussion of wet gates, see the entry for [`|*`](#bartar).
 
