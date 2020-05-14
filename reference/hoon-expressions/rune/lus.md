@@ -157,9 +157,10 @@ type of lus arm.
 
 ##### Discussion
 
-The primary use of `+*` is to assign aliases to doors (see Examples below).
-Aliases given by `+*` do not count towards the number of arms in the door, which
-can be important for things like Gall app cores.`
+The primary use of `+*` is to create aliases within doors (see Examples below).
+Aliases given by `+*` do not count towards the number of arms in the door and
+thus are also called "virtual arms", which
+can be important for things like Gall app cores that require a fixed number of arms.
 
 Under the hood, `+*` gets compiled as `=*`'s. `+*  foo  bar` rewrites each `++`
 arm beneath it in the core to include
