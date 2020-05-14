@@ -135,7 +135,7 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ### +* "lustar"
 
-Used to assign an alias to doors and define virtual arms.
+Defines aliases within doors.
 
 ##### Syntax
 
@@ -158,12 +158,8 @@ type of lus arm.
 ##### Discussion
 
 The primary use of `+*` is to assign aliases to doors (see Examples below).
-However, they may also be used to define "virtual arms"  that do not count
-towards the number of arms in cores that requires a specific
-number of arms, such as Gall app cores. Put another way, no matter how many virtual
-arms are defined in a `+*` statement, the interpreter does not count it towards
-the number of arms in the core. How these virtual arms really work can be understood more
-precisely by the following.
+Aliases given by `+*` do not count towards the number of arms in the door, which
+can be important for things like Gall app cores.`
 
 Under the hood, `+*` gets compiled as `=*`'s. `+*  foo  bar` rewrites each `++`
 arm beneath it in the core to include
@@ -199,9 +195,9 @@ To assign an alias to a door, we often write the following.
 This is the idomatic way to assign the alias `this` to the door.
 
 Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd
-like to include more. This is where virtual arms may be of use. We note that it
-is often better style to compose cores with `=>` or `=<` to add more arms to a
-Gall app, though. This usage of `+*` is controversial and should be minimized.
+like to include more. This is where aliases employed as "virtual arms" may be of
+use. We note that it is often better style to compose cores with `=>` or `=<` to add more arms to a
+Gall app core. This usage of `+*` is controversial and should be minimized.
 
 ```hoon
 |_  =bowl:gall
