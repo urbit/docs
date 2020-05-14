@@ -164,7 +164,7 @@ can be important for things like Gall app cores that require a fixed number of a
 
 Under the hood, `+*` gets compiled as `=*`'s. `+*  foo  bar` rewrites each `++`
 arm beneath it in the core to include
-`=*  foo  bar`. For example, the interpreter sees this Hoon expression
+`=*  foo  bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
 
 ```hoon
 |_  z=@ud
@@ -173,7 +173,7 @@ arm beneath it in the core to include
 ++  y  (sub z n)
 --
 ```
-as being identical to this one:
+as being identical the Nock compiled from this one:
 ```hoon
 =|  z=@ud
 |%
