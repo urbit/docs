@@ -9,7 +9,7 @@ The `battery` is code, a battery of Nock formulas.  The `payload` is the data
 needed to run those formulas correctly.
 
 Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a
-core with a single arm, named `$`. We can recompute this arm
+core with a single arm, named `$`. As with all arms, we can recompute `$``
 with changes, which is useful for recursion among other things.
 
 ## Runes
