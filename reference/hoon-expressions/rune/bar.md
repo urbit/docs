@@ -33,11 +33,10 @@ AST:
 
 ##### Semantics
 
-`|$` is used to declare a wet gate that is a mold builder. The mold builder
-is polymorphic in its input types.  `a` is a `lest` of `term` used as
-identifiers for the input types. `b` is a structure built from elements of `a`.
-The output of `|$` is a mold builder that produces a `spec` obtained by
-substituting the input types parameterized by `a` into `b`.
+`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds.  `a` is a `lest` of `term` used as
+identifiers for the input molds. `b` is a structure built from elements of `a`.
+The output of `|$` is a mold builder obtained by
+substituting the input molds parameterized by `a` into `b`.
 
 ##### Expands to
 
@@ -54,10 +53,13 @@ body
 
 ##### Discussion
 
+A mold builder is a wet gate from one or more molds to a mold. A mold is a
+function from nouns to nouns with types that may be partial, is always
+idempotent, and usually the identity function on the noun itself.
+
 `|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as either could
 be used to make wet gates that are mold builders. The buc in `|$` is a hint that
-`|$` is closely related to buc runes, and thus `|$` should be used to make wet
-gates that produce mold builders, while `|*` should be used for any other sort of
+`|$` is closely related to buc runes, and thus `|$` should be used to make mold builders, while `|*` should be used for any other sort of
 wet gate. Thus, the second argument of `|$` is frequently a buc
 rune. For further discussion of wet gates, see the entry for [`|*`](#bartar).
 
