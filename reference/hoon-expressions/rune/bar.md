@@ -16,7 +16,7 @@ with changes, which is useful for recursion among other things.
 
 ### |$ "barbuc"
 
-Produces a mold builder which is a wet gate with one or more molds as its
+Declares a mold builder wet gate with one or more molds as its
 sample.
 
 ##### Syntax
@@ -33,8 +33,8 @@ AST:
 
 ##### Semantics
 
-`|$` is used to produce a wet gate that is a mold builder. The mold builder
-produced is polymorphic in its input types.  `a` is a `lest` of `term` used as
+`|$` is used to declare a wet gate that is a mold builder. The mold builder
+is polymorphic in its input types.  `a` is a `lest` of `term` used as
 identifiers for the input types. `b` is a structure built from elements of `a`.
 The output of `|$` is a mold builder that produces a `spec` obtained by
 substituting the input types parameterized by `a` into `b`.
