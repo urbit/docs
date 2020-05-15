@@ -14,7 +14,7 @@ each `task` that Eyre can be `%pass`ed, and which `gift`(s) Eyre can `%give` in 
 
 ### `%born`
 
-Each time you start your Urbit, the Arvo kernel calls the `%born` task for Eyre.
+Each time you resume your Urbit, the Arvo kernel calls the `%born` task for Eyre.
 This `task` closes all previously open connections.
 
 #### Accepts
@@ -47,27 +47,27 @@ inferred from the duct.
 
 What this `task` returns depends on the type of `%request` being canceled.
 
-Associated to the `duct` is an `+outstanding-connection`, which contains an
-`+action` that is in queue to be performed. The return depends on the value of the `+action`.
+Associated to the `duct` is an `$outstanding-connection`, which contains an
+`action` that is in queue to be performed. The return depends on the value of the `action`.
 
 If the connection is empty, nothing has yet handled it and so Eyre does nothing.
 
-A `%gen` `+action` triggers the following `move`:
+A `%gen` `action` triggers the following `move`:
 ```hoon
 [%pass /run-build %f %kill ~]
 ```
 
-For a `%app` `+action`,
+For a `%app` `action`,
 ```hoon
 [%pass /watch-response/[eyre-id] %g %deal [our our] app.action.u.connection %leave ~]
 ```
 
-For a `%authentication` `+action`, Eyre returns nothing.
+For a `%authentication` `action`, Eyre returns nothing.
 
-For a `%channel` `+action`, Eyre cancels the subscription associated to the duct
+For a `%channel` `action`, Eyre cancels the subscription associated to the duct
 but does not return any gift (I think?)
 
-For a `%four-oh-four` `+action`, Eyre crashes as it should be impossible for a 404
+For a `%four-oh-four` `action`, Eyre crashes as it should be impossible for a 404
 page to be asynchronous.
 
 
@@ -84,7 +84,7 @@ site at the URL to interface with the app. This binding may be deleted with the
 [=binding app=term]
 ```
 
-A `+binding` is a system unique mapping that associates `path=(list @t)` to a
+A `binding` is a system unique mapping that associates `path=(list @t)` to a
 `site=(unit @t)` (typically a URL), and `app` is the name of the app.
 
 #### Returns
@@ -92,10 +92,10 @@ A `+binding` is a system unique mapping that associates `path=(list @t)` to a
 ```hoon
 [%bound accepted=? =binding]
 ```
-The `+binding` returned is always the `binding` that was given in the
+The `binding` returned is always the `binding` that was given in the
 `%connect` `task`.
 
-Since `+binding`s are system unique, this `task` may fail if the `path` in the
+Since `binding`s are system unique, this `task` may fail if the `path` in the
 `binding` is already in use. In this case, `accepted=%.n`, else `accepted=%.y`.
 
 #### Example
@@ -132,8 +132,8 @@ Eyre does not `%give` a `gift` in response to a `%crud` `task`, but it does
 
 ### `%disconnect`
 
-This `task` removes a `+binding` that was previously created with a `%connect`
-or `%serve` `task`. This must be called via the same duct that the `+binding`
+This `task` removes a `binding` that was previously created with a `%connect`
+or `%serve` `task`. This must be called via the same duct that the `binding`
 was originally created with.
 
 #### Accepts
@@ -228,16 +228,26 @@ The `method` is an http verb from the following list: `%'CONNECT'`, `%'DELETE'`,
 
 #### Returns
 
-This `task` may return a `%response` `gift` whose form depends on the `method` in the `request`.
+This `task` may return a `%response` `gift` whose contents depends on the `method` in the `request`.
 
 ```hoon
 [=http-event:http]
 ```
 
+3 arms that I think are involved here: on-put-request, on-get-request, on-cancel-request.
+They are called by +handle-request, of which there are two: in +by-channel and +authentication
+
 
 ### `%request-local`
 
+This `task` is used to start handling a backdoor http request, meaning that it
+skips the authentication step.
+
 #### Accepts
+
+```hoon
+[%request-local secure=? =address =request:http]
+```
 
 #### Returns
 
@@ -275,7 +285,7 @@ If `http-rule` is a `%cert`, Eyre `%give`s Unix the following card,
 ```
 where `config` is the new http configuration stored by Eyre.
 
-If `http-rule` is a `%turf`, Eyre will `%pass` `acme` (a Gall app for...) a
+If `http-rule` is a `%turf`, Eyre will `%pass` `acme` a
 `%poke` of sort `%acme-order` with a `vase` containing the new `set` of `turf`s.
 ```hoon
 [%pass /acme/order %g %deal [our our] %acme %poke `cage`[%acme-order !>(set turf)]]
@@ -284,8 +294,8 @@ If `http-rule` is a `%turf`, Eyre will `%pass` `acme` (a Gall app for...) a
 
 ### `%serve`
 
-`%serve` is a cousin of `%connect`, and is used to connect a `+binding` to a
-`+generator`. A `+generator` is a generator in the usual Hoon sense, along with
+`%serve` is a cousin of `%connect`, and is used to connect a `$binding` to a
+`$generator`. A `$generator` is a generator in the usual Hoon sense, along with
 information on the `desk` and `path` where it is located and `args=*` to be
 passed to the generator. This binding may be deleted with the `%disconnect` `task`.
 
@@ -294,15 +304,15 @@ passed to the generator. This binding may be deleted with the `%disconnect` `tas
 ```hoon
 [=binding =generator]
 ```
-`binding` is the `+binding` that associates a `path=(list @t)` to a
-`site=(unit @t)`, and `generator` is the `+generator` to be coupled to the `binding`.
+`binding` is the `$binding` that associates a `path=(list @t)` to a
+`site=(unit @t)`, and `generator` is the `$generator` to be coupled to the `binding`.
 
 #### Returns
 
 ```hoon
 [%bound accepted=? =binding]
 ```
-The `binding` returned is always the `+binding` that was given in the
+The `binding` returned is always the `$binding` that was given in the
 `%connect` `task`.
 
 Since `binding`s are system unique, this `task` may fail if the `path` in the
