@@ -454,7 +454,7 @@ This is a [known issue](https://github.com/urbit/arvo/issues/840) to be resolved
 
 ### `%get` generators
 
-`%get` no longer exist. They were once used for making HTTP requests through `eyre`. This functionality is no longer supported with generators.
+`%get` generators no longer exist. They were once used for making HTTP requests through `eyre`. Such functionality is no longer supported with generators.
 
 ## Conclusion
 
