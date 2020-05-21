@@ -8,7 +8,7 @@ The `:` ("col") expressions are used to produce cells, which are pairs of values
 
 ## Runes
 
-### :_ "colcab"
+### `:_` "colcab"
 
 `[%clcb p=hoon q=hoon]`; construct a cell, inverted.
 
@@ -29,7 +29,7 @@ Regular: **2-fixed**.
 [2 1]
 ```
 
-### :: "colcol"
+### `::` "colcol"
 
 Code comment
 
@@ -48,7 +48,7 @@ Code comment
                 ::  to the input
 ```
 
-### :- "colhep"
+### `:-` "colhep"
 
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
@@ -96,7 +96,7 @@ compiler does), `[a b]` is the same as `:-(a b)`.
 [~ 1]
 ```
 
-### :^ "colket"
+### `:^` "colket"
 
 `[%clkt p=hoon q=hoon r=hoon s=hoon]`: construct a quadruple (4-tuple).
 
@@ -123,7 +123,7 @@ Regular: **4-fixed**.
 [5 6 7 8]
 ```
 
-### :+ "collus"
+### `:+` "collus"
 
 
 `[%clls p=hoon q=hoon r=hoon]`: construct a triple (3-tuple).
@@ -150,7 +150,7 @@ Regular: **3-fixed**.
 [%a ~ 'b']
 ```
 
-### :~ "colsig"
+### `:~` "colsig"
 
 `[%clsg p=(list hoon)]`: construct a null-terminated list.
 
@@ -194,7 +194,7 @@ Regular: **running**.
 [5 3 4 2 1 ~]
 ```
 
-### :* "coltar"
+### `:*` "coltar"
 
 `[%cltr p=(list hoon)]`: construct an n-tuple.
 

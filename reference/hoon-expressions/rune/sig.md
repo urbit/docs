@@ -7,7 +7,7 @@ Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
 ## Runes
 
-### ~> "siggar"
+### `~>` "siggar"
 
 `[%sggr p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied
 to computation.
@@ -42,7 +42,7 @@ Running the compiler:
 [%10 p=[p=97 q=[%4 p=[%1 p=2]]] q=[%1 p=42]]
 ```
 
-### ~| "sigbar"
+### `~|` "sigbar"
 
 
 `[%sgbr p=hoon q=hoon]`: tracing printf.
@@ -72,7 +72,7 @@ ford: build failed
 ford: build failed
 ```
 
-### ~$ "sigbuc"
+### `~$` "sigbuc"
 
 `[%sgbc p=term q=hoon]`: profiling hit counter.
 
@@ -95,7 +95,7 @@ Regular: **2-fixed**.
 3
 ```
 
-### ~_ "sigcab"
+### `~_` "sigcab"
 
 `[%sgcb p=hoon q=hoon]`: user-formatted tracing printf.
 
@@ -124,7 +124,7 @@ ford: build failed
 ford: build failed
 ```
 
-### ~% "sigcen"
+### `~%` "sigcen"
 
 `[%sgcn p=term q=wing r=(list [term hoon]) s=hoon]`: jet registration.
 
@@ -214,7 +214,7 @@ Here we label the entire `++aesc` core for optimization. You can see the
 jet in `jets/e/aesc.c`.
 
 
-### ~< "siggal"
+### `~<` "siggal"
 
 
 `[%sggl p=$@(term [p=term q=hoon]) q=hoon]`: raw hint, applied to
@@ -244,7 +244,7 @@ rather about its product.
 [%7 p=[%1 p=42] q=[%10 p=[p=97 q=[%4 p=[%0 p=1]]] q=[%0 p=1]]]
 ```
 
-### ~+ "siglus"
+### `~+` "siglus"
 
 `[%sgls p=hoon]`: cache a computation.
 
@@ -284,7 +284,7 @@ This should work fine:
 573.147.844.013.817.084.101
 ```
 
-### ~/ "sigfas"
+### `~/` "sigfas"
 
 `[%sgfs p=term q=hoon]`: jet registration for gate with
 registered context.
@@ -311,7 +311,7 @@ From the kernel:
   $(a (dec a), b +(b))
 ```
 
-### ~& "sigpam"
+### `~&` "sigpam"
 
 `[%sgpm p=hoon q=hoon]`: debugging printf.
 
@@ -346,7 +346,7 @@ Regular: **2-fixed**.
 ~
 ```
 
-### ~= "sigtis"
+### `~=` "sigtis"
 
 `[%sgts p=hoon q=hoon]`: detect duplicate.
 
@@ -378,7 +378,7 @@ This code traverses a tree and replaces all instances of `32` with
 
 Without `~=`, it would build a copy of a completely unchanged tree.  Sad!
 
-### ~? "sigwut"
+### `~?` "sigwut"
 
 `[%sgwt p=hoon q=hoon r=hoon]`: conditional debug printf.
 
@@ -416,7 +416,7 @@ Regular: **4-fixed**.
 ~
 ```
 
-### ~! "sigzap"
+### `~!` "sigzap"
 
 `[%sgzp p=hoon q=hoon]`: print type on compilation fail.
 

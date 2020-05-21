@@ -52,7 +52,7 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ## Runes
 
-### $_ "buccab"
+### `$_` "buccab"
 
 `[%bscb p=hoon]`: structure that normalizes to an example.
 
@@ -88,7 +88,7 @@ and produces its **example** instead.
 [%foobaz %moobaz]
 ```
 
-### $% "buccen"
+### `$%` "buccen"
 
 `[%bscn p=(list spec)]`: structure which recognizes a union tagged by head atom.
 
@@ -123,7 +123,7 @@ type default value.
 [%baz p=0]
 ```
 
-### $: "buccol"
+### `$:` "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 
@@ -158,7 +158,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 ```
 
 
-### $< "bucgal"
+### `$<` "bucgal"
 
 `[%bsld p=spec q=spec]`: Filters a pre-existing mold to obtain a mold 
 that excludes a particular structure.
@@ -193,7 +193,7 @@ ford: %ride failed to execute:
  ```
 
 
-### $> "bucgar"
+### `$>` "bucgar"
 
 `[%bsbn p=spec q=spec]`: Filters a mold to obtain a new mold 
 matching a particular structure.
@@ -238,7 +238,7 @@ ford: %ride failed to execute:
  ```
 
 
-### $- "buchep"
+### `$-` "buchep"
 
 `[%bshp p=spec q=spec]`: structure that normalizes to an example gate.
 
@@ -266,7 +266,8 @@ Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, jus
 %baz
 ```
 
-### $^ "bucket"
+
+### `$^` "bucket"
 
 `[%bskt p=spec q=spec]`: structure which normalizes a union tagged by head depth (cell).
 
@@ -300,7 +301,7 @@ Regular: **2-fixed**.
 [%baz p=0]
 ```
 
-### $~ "bucsig"
+### `$~` "bucsig"
 
 `[%bssg p=hoon q=spec]`: define a custom type default value
 
@@ -363,7 +364,7 @@ Using `$~`:
 %default-value
 ```
 
-### $@ "bucpat"
+### `$@` "bucpat"
 
 `[%bsvt p=spec q=spec]`: structure which normalizes a union tagged by head depth (atom).
 
@@ -400,7 +401,7 @@ Example:
 ```
 
 
-### $= "buctis"
+### `$=` "buctis"
 
 `[%bsts p=skin q=spec]`: structure which wraps a face around another structure.
 
@@ -435,7 +436,7 @@ p=%foo
 ford: %ride failed to execute:
 ```
 
-### $? "bucwut"
+### `$?` "bucwut"
 
 `[%bswt p=(list spec)]`: form a type from a union of other types.
 
