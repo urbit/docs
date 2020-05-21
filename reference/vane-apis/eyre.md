@@ -35,7 +35,7 @@ Eyre `%give`s a `%set-config` `gift` containing the default http configuration.
 ### `%cancel-request`
 
 This `task` cancels a previous `%request`. Which `%request` to cancel is
-inferred from the duct. 
+inferred from the `duct`. 
 
 #### Accepts
 
@@ -45,38 +45,40 @@ inferred from the duct.
 
 #### Returns
 
-What this `task` returns depends on the type of `%request` being canceled.
+What this `task` returns depends on the type of `%request` being canceled. This
+`task` does not return any `gift`s.
 
 Associated to the `duct` is an `$outstanding-connection`, which contains an
-`action` that is in queue to be performed. The return depends on the value of the `action`.
+`$action` that is in queue to be performed. The return depends on the value of the `$action`.
 
 If the connection is empty, nothing has yet handled it and so Eyre does nothing.
 
-A `%gen` `action` triggers the following `move`:
+A `%gen` `$action` adds the following `move` to the queue:
 ```hoon
 [%pass /run-build %f %kill ~]
 ```
 
-For a `%app` `action`,
+For a `%app` `$action`,
 ```hoon
 [%pass /watch-response/[eyre-id] %g %deal [our our] app.action.u.connection %leave ~]
 ```
 
-For a `%authentication` `action`, Eyre returns nothing.
+For a `%authentication` `$action`, Eyre returns nothing.
 
-For a `%channel` `action`, Eyre cancels the subscription associated to the duct
+For a `%channel` `$action`, Eyre cancels the subscription associated to the duct
 but does not return any gift (I think?)
 
-For a `%four-oh-four` `action`, Eyre crashes as it should be impossible for a 404
+For a `%four-oh-four` `$action`, Eyre crashes as it should be impossible for a 404
 page to be asynchronous.
 
 
 ### `%connect`
 
-A `%connect` `task` binds an app to a site. It takes in the name of an app, the
-`path` to that app, and a URL and adds it to `server-state.ax`, allowing the
-site at the URL to interface with the app. This binding may be deleted with the
-`%disconnect` `task`.
+A `%connect` `task` associates an `%app` `$action` to a `$binding`. This means
+that when an http request is made to Eyre via a `%request` `task` that matches `binding`, Eyre will
+subscribe to the Gall app previously identified by this `task` and poke it with the request data.
+
+The `binding` created by this `task` may later be deleted with a `%disconnect` `task`.
 
 #### Accepts
 
@@ -84,18 +86,21 @@ site at the URL to interface with the app. This binding may be deleted with the
 [=binding app=term]
 ```
 
-A `binding` is a system unique mapping that associates `path=(list @t)` to a
-`site=(unit @t)` (typically a URL), and `app` is the name of the app.
+A `$binding` is a `[site=(unit @t) path=(list @t)]`. The `site `is a domain literal being hosted by Eyre, while `path` is an identifier for the app. Each
+value of `binding` may only be used once on the ship - it is system unique.
+
+`app` is the name of the Gall app to be associated to the `binding`.
 
 #### Returns
 
+Eyre `%give`s the following `card`:
 ```hoon
 [%bound accepted=? =binding]
 ```
 The `binding` returned is always the `binding` that was given in the
 `%connect` `task`.
 
-Since `binding`s are system unique, this `task` may fail if the `path` in the
+Since `binding`s are system unique, this `task` will fail if the
 `binding` is already in use. In this case, `accepted=%.n`, else `accepted=%.y`.
 
 #### Example
@@ -181,8 +186,8 @@ one as well.
 ```hoon
 [insecure=@ud secure=(unit @ud)]
 ```
-As expected, `insecure` is the port number of the insecure port to be set, while
-`secure` is the port number of the optional secure port to be set.
+As expected, `insecure` is a `@ud` to which the insecure port number is to be set, while
+`secure` is an optional `@ud` to which the secure port number is to be set.
 
 #### Returns
 
@@ -191,14 +196,15 @@ This `task` returns no `gift`s.
 
 ### `%request`
 
-This `task` is used to start handling an inbound http request.
+This `task` is used to start handling an inbound http request. As such, it is
+the `task` that does most of the heavy lifting for Eyre.
 
 #### Accepts
 
 ```hoon
 [secure=? =address =request:http]
 ```
-The value of `secure` states whether the request is secure or not. `address` is
+The value `secure` states whether the request is secure or not. `address` is
 the client IP address.
 
 `request:http` is a single http request. It consists of standard data for http
@@ -223,16 +229,45 @@ requests, formatted as follows.
     ==
 ```
 
-The `method` is an http verb from the following list: `%'CONNECT'`, `%'DELETE'`, `%'GET'`,
-`%'HEAD'`, `%'OPTIONS'`, `%'POST'`, `%'PUT'`, `%'TRACE'`.
+This `task` is triggers an `$action` to be performed given by determining whether
+`url.request:http` is a prefix for any of the `path`s listed in `binding`s kept
+by Eyre that have `site` equal to the value of the `'host'` key in the
+`header-list`. The matched `binding` will have previously been paired with some
+`action` by a `%connect` `task.`. This `action` declares what sort of target the `http-request` is
+intended for - an app, generator, channel, authentication page, or 404 error.
+
+`method` is an http verb from the following list: `%'CONNECT'`, `%'DELETE'`, `%'GET'`,
+`%'HEAD'`, `%'OPTIONS'`, `%'POST'`, `%'PUT'`, `%'TRACE'`. This is the type of
+request being made to the target given by the `action` triggered
+by the `task`.
 
 #### Returns
 
-This `task` may return a `%response` `gift` whose contents depends on the `method` in the `request`.
+This `task` may return a `%response` `gift` whose contents depends on the form
+of the `%request` `task`.
 
+We split into cases based on the `action` that was triggered.
+
+A `%gen` `action` returns no `gift`s, but will trigger a `%pass` to Ford to `%build`. 
+
+A `%app` `action` causes two `%pass`es to Gall instructing it to (i) `%deal` a
+`%watch` `card` to the `app`, and (ii) `%deal` a `%poke %handle-http-request`
+`card` to the `app`.
+
+A `%authentication` `action` may return a `%response` `gift`:
 ```hoon
 [=http-event:http]
 ```
+The form of `http-event` depends on the `method`. A `'GET'` will return the
+requested `site`. A `'POST'` will process the `body` of the `http-request` as
+form data and submit it. Any other `method` will return a `[%response %cancel]`
+`gift`, indicating an error. This will also happen if a `'GET'` or `'POST'`
+request is improperly formatted.
+
+A `%channel` `action` is for a request to a specific `$channel` specified in the
+`http-request`. The response depends on the `method`.
+
+A `'PUT'` will start/modify a channel, and returns a `%response` `gift` `[=http-event:http]`.
 
 3 arms that I think are involved here: on-put-request, on-get-request, on-cancel-request.
 They are called by +handle-request, of which there are two: in +by-channel and +authentication
@@ -267,7 +302,7 @@ is used to set or clear a TLS certificate and key pair, or add/remove a DNS bind
 For setting or clearing a certificate, `http-rule` is `[%cert cert=(unit
 [key=wain cert=wain])]`. If `cert` is equal to the one already stored
 by Eyre, this `task` is a no-op. If `cert` is different, the old one is replaced by
-`cert`. If the card is `[%cert ~]` then the certificate and key pair stored by
+`cert`. If the `card` is `[%cert ~]` then the certificate and key pair stored by
 Eyre are cleared.
 
 For adding/removing a DNS binding, `http-rule` is  `[%turf action=?(%put %del)
@@ -279,14 +314,14 @@ deleting one that does not already exist, this `task` is a no-op.
 
 #### Returns
 
-If `http-rule` is a `%cert`, Eyre `%give`s Unix the following card,
+If `http-rule` is a `%cert`, Eyre `%give`s Unix the following `card`,
 ```hoon
 [%set-config config]
 ```
 where `config` is the new http configuration stored by Eyre.
 
-If `http-rule` is a `%turf`, Eyre will `%pass` `acme` a
-`%poke` of sort `%acme-order` with a `vase` containing the new `set` of `turf`s.
+If `http-rule` is a `%turf`, Eyre will `%pass` `acme` via Gall a
+`%acme-order` `%poke`  with a `vase` containing the new `set` of `turf`s.
 ```hoon
 [%pass /acme/order %g %deal [our our] %acme %poke `cage`[%acme-order !>(set turf)]]
 ```
@@ -295,9 +330,7 @@ If `http-rule` is a `%turf`, Eyre will `%pass` `acme` a
 ### `%serve`
 
 `%serve` is a cousin of `%connect`, and is used to connect a `$binding` to a
-`$generator`. A `$generator` is a generator in the usual Hoon sense, along with
-information on the `desk` and `path` where it is located and `args=*` to be
-passed to the generator. This binding may be deleted with the `%disconnect` `task`.
+`$generator`.  This binding may be deleted with the `%disconnect` `task`.
 
 #### Accepts
 
@@ -305,7 +338,12 @@ passed to the generator. This binding may be deleted with the `%disconnect` `tas
 [=binding =generator]
 ```
 `binding` is the `$binding` that associates a `path=(list @t)` to a
-`site=(unit @t)`, and `generator` is the `$generator` to be coupled to the `binding`.
+`site=(unit @t)`, and `generator` is the `$generator` to be coupled to the
+`binding`.
+
+A `$generator` is used to represent a generator on the local ship run with a set
+of arguments. It contains the `desk` and `path`
+where the generator is located and `args=*` to be passed to the gate.
 
 #### Returns
 
