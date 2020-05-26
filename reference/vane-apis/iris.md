@@ -7,7 +7,18 @@ template = "doc.html"
 # Iris
 
 In this document we describe the public interface for Iris. Namely, we describe
-each `task` that Iris can be `%pass`ed, and which `gift`(s) Iris can `%give` in return.
+each `task` that Iris can be `%pass`ed, and which `gift`(s) Iris can `%give` in
+return.
+
+## Returns to Unix
+
+Much of what Iris does is translating `task`s from other vanes into `card`s
+meant for Unix via the `%request` and `%cancel-request` `task`s. What this means in practice is that Iris may be `%pass`ed a
+`task` via some `duct`, which in response Iris then `%give`s a `gift` to Unix
+via another `duct`. This `gift` will actually be a response to the `%born`
+`task` that Iris was `%pass`ed when the Urbit was resumed, which came along the
+duct to Unix. This is not an ideal situation but also one not easily remedied.
+
 
 ## Tasks
 
@@ -47,8 +58,10 @@ This `task` cancels a previous fetch. Iris knows which request is meant based on
 ```hoon
 [%cancel-request id=@ud]
 ```
-Iris `%give`s a `%cancel-request` `gift` in response to this `task`. `id` is
-obtained via a `(map duct @ud)`, with the `duct` corresponding to one along
+Receiving this `task` causes Iris to `%give`s a `%cancel-request` `gift` to Unix,
+which then cancels the request in the runtime. See [Returns to Unix](#returns-to-unix).
+
+`id` is obtained via a `(map duct @ud)`, with the `duct` corresponding to one along
 which the `%cancel-request` `task` came with. 
 
 
@@ -73,7 +86,7 @@ Iris does not `%give` a `gift` in response to a `%crud` `task`, but it does
 
 ### `%receive`
 
-The `%receive` `task` is used to receive a response to an `http-request` that
+The `%receive` `task` is used to receive a response from Unix to an `http-request` that
 was made.
 
 #### Accepts
@@ -127,7 +140,8 @@ A `$request` consists of the following:
 ```hoon
 [id=@ud request=request:http]
 ```
-Iris will `%give` a `%request` `gift` in response to a `%request` `task`. This
+Iris will `%give` a `%request` `gift` to Unix in response to a `%request`
+`task`. See [Returns from Unix](#returns-from-unix). This `gift`
 contains the `request` in the original `task` as well as the ID number assigned
 by Iris for that particular http connection, which is extracted from the input `task`. 
 
