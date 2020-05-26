@@ -141,7 +141,7 @@ A `$request` consists of the following:
 [id=@ud request=request:http]
 ```
 Iris will `%give` a `%request` `gift` to Unix in response to a `%request`
-`task`. See [Returns from Unix](#returns-from-unix). This `gift`
+`task`. See [Returns to Unix](#returns-to-unix). This `gift`
 contains the `request` in the original `task` as well as the ID number assigned
 by Iris for that particular http connection, which is extracted from the input `task`. 
 
