@@ -17,7 +17,7 @@ meant for Unix via the `%request` and `%cancel-request` `task`s. What this means
 `task` via some `duct`, which in response Iris then `%give`s a `gift` to Unix
 via another `duct`. This `gift` will actually be a response to the `%born`
 `task` that Iris was `%pass`ed when the Urbit was resumed, which came along the
-duct to Unix. This is not an ideal situation but also one not easily remedied.
+duct to Unix.
 
 
 ## Tasks
