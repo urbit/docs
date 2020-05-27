@@ -23,7 +23,7 @@ Once you've cloned the repo, `cd` into the newly downloaded folder and run `npm 
 
 The wizard prompts you with three questions.
 - For the purposes of this walkthrough, choose `testing` as the name of your file; your answer determines the name of a Hoon file and the name of directory containing the `tile.js` file that the Hoon file references.
-- When prompted to choose between a title and a full application, answer `tile`.
+- When prompted to choose between a tile and a full application, answer `tile`.
 - For the final question, simply give the full path to your ship's pier and the desired desk (such as `/home`). This links your ship to this repo.
 
 ### Testing the Default App

@@ -424,6 +424,7 @@ Let's do a few more examples:
 
 For those who prefer to think in terms of binary numbers and binary trees, there is another (equivalent) way to understand noun addressing. When the noun address is expressed as a binary number, you can think of the number as indicating a tree path from the top node.
 
+
 As before, the root of the binary tree (i.e., the whole noun) is at address `1`. For the node of a tree at any address `b`, where `b` is a binary number, you get the address of its head by concatenating a `0` to the end of `b`; and to get its tail, concatenate a `1` to the end. For example, the head of the node at binary address `111` is at `1110`, and the tail is at `1111`.
 
 Address `1110` indicates "the head of the tail of the tail of the noun".

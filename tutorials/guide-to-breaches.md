@@ -17,7 +17,7 @@ Personal breaches often fix connectivity issues, but should only be used as a la
 To perform a personal breach, follow the steps below.
 
 - Go to [bridge.urbit.org](https://bridge.urbit.org) and log into your identity.
-- Go to the `Admin` section. Then go to `Edit Permisions`, then `Networking Keys`.
+- Go to the `Admin` section. Then go to `Edit Permissions`, then `Networking Keys`.
 - Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction`.
 - Click `Download Arvo Keyfile`.
 - Delete or archive your old pier.
