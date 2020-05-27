@@ -7,9 +7,8 @@ aliases = ["docs/reference/hoon-expressions/rune/buc/"]
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time
 value that at runtime can be converted to either an example value (sometimes
-called a 'bunt' value) for its corresponding type, or to a 'factory' (sometimes
-called a 'mold').  An example value is used as a placeholder for sample values,
-among other things.  A factory/mold is used as a data validator.
+called a 'bunt' value) for its corresponding type, or to a 'mold'.  An example value is used as a placeholder for sample values,
+among other things.  A mold is used as a data validator.
 
 ## Overview
 
@@ -22,10 +21,10 @@ x)))`, it's a normalizer and can be used as a mold.
 statically, so we can't actually tell if a mold matches this
 definition perfectly.  This is not actually a problem.)
 
-Validation, though very
-important, is a rare use case.  Except for direct raw input,
-it's generally a faux pas to rectify nouns at runtime -- or even
-in userspace.
+Validation (done with [`$|`](#bucbar), though very important, is a rare use
+case. Except for direct raw input, it's generally a faux pas to rectify nouns at runtime -- or even
+in userspace. Nonetheless they are sometimes utilized for structures that will
+be faster to use if they satisfy some validating gate.
 
 In any case, since molds are just functions, we can use
 functional programming to assemble interesting molds.  For
@@ -55,7 +54,79 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ### $| "bucbar"
 
-`[%bsbr p=spec q=hoon]` Something about validating...
+`[%bsbr p=spec q=hoon]`: structure that satisfies a validator.
+
+##### Expands to
+
+Still need help with this. From hoon.hoon:
+```hoon
+      ::  verify, $|
+      ::
+          {$bsbr *}
+        ^-  hoon
+        ::  push the raw product
+        ::
+        :+  %tsls  relative(mod p.mod)
+        ^-  hoon
+        ::  assert
+        ::
+        :+  %wtbn
+          ::  run the verifier
+          ::
+          [%cnhp [%tsbn $/3 q.mod] $/2]
+        ::  produce verified product
+        ::
+        $/2
+```
+
+
+##### Syntax
+
+Regular: **2-fixed**
+
+##### Discussion
+
+`$|` takes two arguments, a mold and a Hoon expression that is typically a gate
+that is used to validate the structure produced by the mold to ensure that the noun
+has a certain shape. It crashes if the input fails the validation test.
+
+For example, the elements of a `set` are treated as being
+unordered, but the values will necessarily possess an order by where they are in
+the memory. Thus if every `set` is stored using the same order scheme then faster algorithms involving `set`s may be
+written. This is not the same thing as casting - it is forcing a
+type to have a more specific set of values than its mold would suggest. This
+rune should rarely be used, but it is extremely important when it is.
+
+##### Examples
+
+```
+~zod:dojo> =foo $|  (list @)
+           |=(a=(list) (lth (lent a) 4))
+```
+This creates a structure `foo` whose values are `list`s with length less than 4. 
+```
+> (foo ~[1 2 3])
+~[1 2 3]
+> (foo ~[1 2 3 4])
+ford: %ride failed to execute:
+```
+
+
+The definition of `+set` in `hoon.hoon` is the following:
+```hoon
+++  set
+  |$  [item]                                            ::  set
+  $|  (tree item)
+  |=(a=(tree) ~(apt in a))
+```
+Here [`|$`](@/docs/reference/hoon-expressions/rune/bar.md#barbuc) is used to
+define a mold builder that takes in a mold (given the face `item`) and creates a
+structure consisting of a `tree` of `item`s with `$|` that is validated with the
+gate `|=(a=(tree) ~(apt in a))`. `in` is a door in `hoon.hoon` with functions
+for handling `set`s, and `apt` is an arm in that door that checks that the
+values in the `tree` are arranged in the particular way that `set`s are arranged
+in Hoon, namely 'ascending `+mug` hash order'.
+
 
 
 ### $_ "buccab"
