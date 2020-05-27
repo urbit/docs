@@ -58,27 +58,16 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ##### Expands to
 
-Still need help with this. From hoon.hoon:
 ```hoon
-      ::  verify, $|
-      ::
-          {$bsbr *}
-        ^-  hoon
-        ::  push the raw product
-        ::
-        :+  %tsls  relative(mod p.mod)
-        ^-  hoon
-        ::  assert
-        ::
-        :+  %wtbn
-          ::  run the verifier
-          ::
-          [%cnhp [%tsbn $/3 q.mod] $/2]
-        ::  produce verified product
-        ::
-        $/2
+$|(a b) 
 ```
-
+expands to
+```hoon
+|=  x=*
+=/  foo  ;;(a x)
+?>  (b foo)
+b
+```
 
 ##### Syntax
 
@@ -86,8 +75,7 @@ Regular: **2-fixed**
 
 ##### Discussion
 
-`$|` takes two arguments, a mold and a Hoon expression that is typically a gate
-that is used to validate the structure produced by the mold to ensure that the noun
+`$|` takes two arguments, a mold and a gate that produces a `flag` or loobean that is used to validate the structure produced by the mold to ensure that the noun
 has a certain shape. It crashes if the input fails the validation test.
 
 For example, the elements of a `set` are treated as being
