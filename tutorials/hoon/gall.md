@@ -37,6 +37,10 @@ Gall applications can have a number of arms that get called depending on the inf
 This arm is called once when the agent is started.  It has no input and
 lets you perform any initial IO.
 
+### +on-init
+
+This arm is called when the app is initially started.
+
 ### +on-save
 
 This arm is called immediately before the agent is upgraded.  It
@@ -46,7 +50,7 @@ of the agent.  Unlike most handlers, this cannot produce effects.
 ### +on-load
 
 This arm is called immediately after the agent is upgraded.  It receives
-a `vase` of the state of the previously-running version of the agent,
+a `vase` of the state of the previously running version of the agent,
 which allows it to cleanly upgrade from the old agent.
 
 ### +on-poke
