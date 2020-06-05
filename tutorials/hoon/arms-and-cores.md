@@ -492,6 +492,16 @@ Again, being able to read Nock is not essential to understanding Hoon.
 
 Let's take a quick look at how cores can be combined with `=>` to build up larger structures.  `=>  p=hoon  q=hoon` allows you to take the product of `q` with the product of `p` taken as the subject.
 
+We can use this to set the context of cores. For example:
+```
+~zod:dojo> =>([1 2] |=(@ 15))
+<1.fed {@ @ud @ud}>
+```
+Here we have created a gate that takes in an `@` and returns `15` with `[1 2]`
+as its context.
+
+`=>` (and its reversed version `=<`) are used extensively to put cores into the
+context of other cores.
 ```hoon
 =>
 |%
@@ -505,7 +515,14 @@ Let's take a quick look at how cores can be combined with `=>` to build up large
   (mul (foo a) 2)
 --
 ```
-In this core, `foo` is in the subject of `bar`, and so `bar` is able to call `foo`. On the other hand, `bar` is not in the subject of `foo`, so `foo` cannot call `bar` - you will get a `-find.bar` error.
+At the level of arms, `+foo` is in the subject of `+bar`, and so `+bar` is able to call `+foo`. On the other hand, `+bar` is not in the subject of `+foo`, so `+foo` cannot call `+bar` - you will get a `-find.bar` error.
+
+It is also helpful to think about what is happening on the level of cores here.
+The `=>` here sets the context of the core containing `+bar` to be the core
+containing `+foo`. Recall that arms are evaluated with the parent core as the
+subject. Thus `+bar` is evaluated with the core containing it as the subject,
+which has the core containing `+foo` in its context. So this is why `+foo` is in
+the scope of `+bar` but not vice versa.
 
 Let's take a look inside of `hoon.hoon`, where the standard library is located, to see how this is being used.
 
@@ -606,7 +623,9 @@ Lastly, let's check the subject of the last arm in `hoon.hoon` (as of November 2
 This confirms for us, then, that `hoon.hoon` consists of six nested cores, with the `hoon-version` core at the top.
 
 #### Exercise 1.7a
-Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in the layer they exist in or a deeper layer. This is easily accomplished with `Ctrl-F`.
+Pick a couple of arms in `hoon.hoon` and check to make sure that they are only
+referenced in its parent core or core(s) that have the parent core put in its
+context via the `=>` or `=<` runes.
 
 ## Casts
 
