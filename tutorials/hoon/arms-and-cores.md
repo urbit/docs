@@ -497,8 +497,7 @@ We can use this to set the context of cores. For example:
 ~zod:dojo> =>([1 2] |=(@ 15))
 <1.fed {@ @ud @ud}>
 ```
-Here we have created a gate that takes in an `@` and returns `15` with `[1 2]`
-as its context.
+Here we have created a gate with `[1 2]` as its context that takes in an `@` and returns `15`.
 
 `=>` (and its reversed version `=<`) are used extensively to put cores into the
 context of other cores.
@@ -524,7 +523,7 @@ subject. Thus `+bar` is evaluated with the core containing it as the subject,
 which has the core containing `+foo` in its context. So this is why `+foo` is in
 the scope of `+bar` but not vice versa.
 
-Let's take a look inside of `hoon.hoon`, where the standard library is located, to see how this is being used.
+Let's look inside `hoon.hoon`, where the standard library is located, to see how this is being used.
 
 The first core listed here has just one arm.
 ```hoon
