@@ -8,11 +8,79 @@ Core expressions produce cores. A core is a cell of `[battery payload]`.
 The `battery` is code, a battery of Nock formulas.  The `payload` is the data
 needed to run those formulas correctly.
 
-Four core runes (`|=`, `|.`, `|-`, and `|*`) produce a
-core with a single arm, named `$`. We can recompute this arm
-with changes, which useful for recursion among other things:
+Five core runes (`|=`, `|.`, `|-`, `|*`, and `|$`) produce a
+core with a single arm, named `$`. As with all arms, we can recompute `$``
+with changes, which is useful for recursion among other things.
 
 ## Runes
+
+### |$ "barbuc"
+
+Declares a mold builder wet gate with one or more molds as its
+sample.
+
+##### Syntax
+
+Regular:
+```hoon
+|$  a=(lest term)  b=spec
+```
+
+AST:
+```hoon
+[%brbs sample=(lest term) body=spec]
+```
+
+##### Semantics
+
+`|$` is used to declare a wet gate mold builder that is polymorphic in its input molds.  `a` is a `lest` of `term` used as
+identifiers for the input molds. `b` is a structure built from elements of `a`.
+The output of `|$` is a mold builder obtained by
+substituting the input molds parameterized by `a` into `b`.
+
+##### Expands to
+
+```hoon
+|$  [a b]
+body
+```
+becomes
+```hoon
+|*  [a=$~(* $-(* *)) b=$~(* $-(* *))]
+^:
+body
+```
+
+##### Discussion
+
+A mold builder is a wet gate from one or more molds to a mold. A mold is a
+function from nouns to nouns with types that may be partial, is always
+idempotent, and usually the identity function on the noun itself.
+
+`|$` is a restricted form of `|*`. The use of `|$` over `|*` is one of style, as either could
+be used to make wet gates that are mold builders. The buc in `|$` is a hint that
+`|$` is closely related to buc runes, and thus `|$` should be used to make mold builders, while `|*` should be used for any other sort of
+wet gate. Thus, the second argument of `|$` is frequently a buc
+rune. For further discussion of wet gates, see the entry for [`|*`](#bartar).
+
+Like other single-arm cores, the arm for `|$` is named `$` and this can be used to
+define recursive structures. Note however that Hoon is evaluated eagerly, and so
+infinite structures are not permitted.
+
+Proper style for `|$` is to enclose the first argument with brackets, even if it
+is only a single term. The interpeter will accept a single term without brackets
+just fine, but this style is for consistency with the fact that the first argument is a `lest`.
+
+##### Examples
+
+```
+~zod:dojo> =foo |$([a b] [b a])
+
+~zod:dojo> =bar (foo [@ @tas])
+
+~zod:dojo> (bar %cat 3)
+[%cat 3]
+```
 
 ### `|_` "barcab"
 
@@ -230,7 +298,7 @@ AST:
 [%brdt p=hoon]
 ```
 
-Semantics:
+##### Semantics
 
 A `|.` expression produces a core with a single arm, `$`.  The core isn't explicitly given a sample.  `a` is a Hoon expression that defines the computation of the `$` arm.
 
@@ -454,7 +522,8 @@ AST:
 
 ##### Semantics
 
-A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b` is a Hoon expression that determines the output value of the gate.
+A `|*` expression produces a wet gate.  `a` defines the gate's sample, and `b`
+is a Hoon expression that determines the output value of the gate.
 
 ##### Expands to
 
@@ -480,6 +549,9 @@ Just as with a [gate](#bartis), we can recurse back into a wet gate
 with `$()`.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
+
+`|*` can be used to make wet gates that produce structures, but this usage is
+discouraged in favor of `|$`.
 
 ##### Examples
 
