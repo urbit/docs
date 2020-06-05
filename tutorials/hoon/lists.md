@@ -5,11 +5,9 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/lists/"]
 +++
 
-# Lists
-
 A **list** is a type of [noun](/docs/glossary/noun/) that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).
 
-So a list can be either null or non-null. When the list contains only `~` and no items, it's the null list.  Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called _lests_, are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sub-list is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
+So a list can be either null or non-null. When the list contains only `~` and no items, it's the null list. Most lists are, however, non-null lists, which have items preceding the `~`. Non-null lists, called _lests_, are cells in which the head is the first list item, and the tail is the rest of the list. The tail is itself a list, and if such a list is also non-null, the head of this sublist is the second item in the greater list, and so on. To illustrate, let's look at a list `[1 2 3 4 ~]` with the cell-delineating brackets left in:
 
 `[1 [2 [3 [4 ~]]]]`
 
@@ -44,7 +42,7 @@ Let's make a list whose items are of the `@t` string type:
 <|Urbit will rescue the internet|>
 ```
 
-The head of a list has the face `i` and the tail has the face `t`.  (For the sake of neatness, these faces aren't shown by the Hoon pretty printer.) To use the `i` and `t` faces of a list, you must first prove that the list is non-null by using the conditional family of runes, `?`:
+The head of a list has the face `i` and the tail has the face `t`. (For the sake of neatness, these faces aren't shown by the Hoon pretty printer.) To use the `i` and `t` faces of a list, you must first prove that the list is non-null by using the conditional family of runes, `?`:
 
 ```
 > =>(b=`(list @)`[1 2 3 4 5 ~] i.b)
@@ -58,15 +56,15 @@ find-fork-d
 ~[2 3 4 5]
 ```
 
-It's important to note that performing tests like `?~ mylist` will actually transform `mylist` into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for `list`s.
+It's important to note that performing tests like `?~ mylist` will actually transform `mylist` into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
-You can construct lists of any type.  `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
+You can construct lists of any type. `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.
 
-## Tapes
+## Tapes and Cords
 
-While a list can be of any type, there are some special types of lists that are built into Hoon. The tape is the most common example.
+While a list can be of any type, there are some special types of lists that are built into Hoon. The `tape` is the most common example.
 
-Hoon has two kinds of strings: cords and tapes.  Cords are atoms with aura `@t`, and they're pretty-printed between `''` marks.
+Hoon has two kinds of strings: cords and tapes. Cords are atoms with aura `@t`, and they're pretty-printed between `''` marks.
 
 ```
 > 'this is a cord'
@@ -98,9 +96,9 @@ You can also use the words `cord` and `tape` for casting:
 
 ## List Functions in the Hoon Standard Library
 
-Lists are a commonly used data structure.  Accordingly, there are several functions in the [Hoon standard library](/docs/reference/library/) intended to make lists easier to use.
+Lists are a commonly used data structure. Accordingly, there are several functions in the [Hoon standard library](/docs/reference/library/) intended to make lists easier to use.
 
-For a complete list of these functions, check out the standard library reference for lists [here](/docs/reference/library/2b/).  Here we'll look at a few of these functions.
+For a complete list of these functions, check out the standard library reference for lists [here](/docs/reference/library/2b/). Here we'll look at a few of these functions.
 
 ### `flop`
 
@@ -119,18 +117,18 @@ The `flop` function takes a list and returns it in reverse order:
 
 #### `flop` Exercise 1.5a
 
-Without using `flop`, write a [gate](/docs/glossary/gate/) that takes a `(list @)` and returns it in reverse order.  There is a solution at the bottom of this lesson.
+Without using `flop`, write a [gate](/docs/glossary/gate/) that takes a `(list @)` and returns it in reverse order. There is a solution at the bottom of this lesson.
 
 ### `sort`
 
-The `sort` function uses the 'quicksort' algorithm to sort a list.  It takes a list to sort and a gate that serves as a comparator.  For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `lth` gate (for 'less than'):
+The `sort` function uses the "quicksort" algorithm to sort a list. It takes a list to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `lth` gate (for "less than"):
 
 ```
 > (sort ~[37 62 49 921 123] lth)
 ~[37 49 62 123 921]
 ```
 
-To sort the list from greatest to least, use the `gth` gate ('greater than') as the basis of comparison instead:
+To sort the list from greatest to least, use the `gth` gate ("greater than") as the basis of comparison instead:
 
 ```
 > (sort ~[37 62 49 921 123] gth)
@@ -160,7 +158,7 @@ The `weld` function takes two lists of the same type and concatenates them:
 
 #### `weld` Exercise 1.5b
 
-Without using `weld`, write a gate that takes a `[(list @) (list @)]` who product is the concatenation of these two lists. There is a solution at the bottom of this lesson.
+Without using `weld`, write a gate that takes a `[(list @) (list @)]` of which the product is the concatenation of these two lists. There is a solution at the bottom of this lesson.
 
 ### `snag`
 
@@ -186,7 +184,7 @@ The `snag` function takes an atom `n` and a list, and returns the `n`th item of 
 '!'
 ```
 
-Note: there is currently a type system issue that causes some of these functions to fail when passed a list `b` after some type inference has been performed on `b`.  For an illustration of the bug, let's set `b` to be a `(list @)` of `~[11 22 33 44]` in the dojo:
+Note: there is currently a type system issue that causes some of these functions to fail when passed a list `b` after some type inference has been performed on `b`. For an illustration of the bug, let's set `b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
 
 ```
 > =b `(list @)`~[11 22 33 44]
@@ -213,7 +211,7 @@ You can cast `b` to `(list)` to work around this:
 
 #### `snag` Exercise 1.5c
 
-Without using `snag`, write a gate that returns the `n`th item of a list.  There is a solution at the bottom of this lesson.
+Without using `snag`, write a gate that returns the `n`th item of a list. There is a solution at the bottom of this lesson.
 
 ### `oust`
 
@@ -251,7 +249,7 @@ Without using `lent`, write a gate that takes a list and returns the number of i
 
 ### `roll`
 
-The `roll` function takes a list and a gate, and accumulates a value of the list items using that gate.  For example, if you want to add or multiply all the items in a list of atoms, you would use `roll`:
+The `roll` function takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use `roll`:
 
 ```
 > (roll `(list @)`~[11 22 33 44 55] add)
@@ -263,7 +261,7 @@ The `roll` function takes a list and a gate, and accumulates a value of the list
 
 ### `turn`
 
-The `turn` function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate.  For example, to add `1` to each item in a list of atoms:
+The `turn` function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add `1` to each item in a list of atoms:
 
 ```
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
@@ -279,7 +277,7 @@ Or to double each item in a list of atoms:
 
 `turn` is Hoon's version of Haskell's `map`.
 
-We can rewrite the Caesar cipher program using `turn`:
+We can rewrite the [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher) program using `turn`:
 
 ```hoon
 |=  [a=@ b=tape]
@@ -301,49 +299,60 @@ c
 
 ## Using `hoon.hoon` to Learn Hoon
 
-The Hoon standard library and compiler are written in Hoon.  At this point, you know enough Hoon to be able to explore the standard library portions of `hoon.hoon` and find more functions relevant to lists.  [Look around in section `2b` (and elsewhere)](/docs/reference/library/2b/)
+The Hoon standard library and compiler are written in Hoon. At this point, you know enough Hoon to be able to explore the standard library portions of `hoon.hoon` and find more functions relevant to lists. Look around in [section 2b](/docs/reference/library/2b/) (and elsewhere).
 
 ## Additional Exercises
 
 #### Exercise 1.5e
-Without entering these expressions into the dojo, what are the products of the following expressions?
+
+Without entering these expressions into the Dojo, what are the products of the following expressions?
+
 ```
 > (lent ~[1 2 3 4 5])
 ```
+
 ```
 > (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
 ```
+
 ```
 > (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
 ```
 
 #### Exercise 1.5f
+
 First, bind these faces.
+
 ```
 > =b ~['moon' 'planet' 'star' 'galaxy']
 > =c ~[1 2 3]
 ```
-Then determine whether the following dojo expressions are valid, and if so, what they evaluate to.
+
+Then determine whether the following Dojo expressions are valid, and if so, what they evaluate to.
+
 ```
 > (weld b b)
 ```
+
 ```
 > (weld b c)
 ```
+
 ```
 > (lent (weld b c))
 ```
+
 ```
 > (add (lent b) (lent c))
 ```
 
 #### Exercise 1.5g
-Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may make use of the `flop` function.
 
+Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome and `%.n` otherwise. You may make use of the `flop` function.
 
 ## Exercise Solutions
 
-#### `flop` 1.5a
+#### 1.5a `flop`
 
 ```hoon
 ::  flop.hoon
@@ -355,14 +364,15 @@ Write a gate that takes in a list `a` and returns `%.y` if `a` is a palindrome a
 $(b [i.a b], a t.a)
 ```
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > +flop ~[11 22 33 44]
 ~[44 33 22 11]
 ```
 
-#### `weld` 1.5b
+#### 1.5b `weld`
+
 ```hoon
 ::  weld.hoon
 ::
@@ -372,14 +382,14 @@ Run in dojo:
 [i.a $(a t.a)]
 ```
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > +weld [~[1 2 3] ~[3 4 5 6]]
 ~[1 2 3 3 4 5 6]
 ```
 
-#### `snag` 1.5c
+#### 1.5c `snag`
 
 ```hoon
 ::  snag.hoon
@@ -390,7 +400,7 @@ Run in dojo:
 $(a (dec a), b t.b)
 ```
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > +snag [0 ~[11 22 33 44]]
@@ -400,7 +410,7 @@ Run in dojo:
 33
 ```
 
-#### `lent` 1.5d
+#### 1.5d `lent`
 
 ```hoon
 ::  lent.hoon
@@ -413,7 +423,7 @@ Run in dojo:
 $(a t.a, b +(b))
 ```
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > +lent ~[1 2 3 4 5]
@@ -424,7 +434,7 @@ Run in dojo:
 
 #### 1.5e
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > (lent ~[1 2 3 4 5])
@@ -437,27 +447,34 @@ Run in dojo:
 
 #### 1.5f
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > (weld b b)
 <|moon planet star galaxy moon planet star galaxy|>
 ```
+
 ```
 > (weld b c)
 ```
+
 This will not run because `weld` expects the elements of both lists to be of the same type.
+
 ```
 > (lent (weld b c))
 ```
+
 This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
+
 ```
 > (add (lent b) (lent c))
 7
 ```
+
 We see here the correct way to find the sum of the length of two lists of unknown type.
 
 #### 1.5g
+
 ```hoon
 ::  palindrome.hoon
 ::
@@ -465,7 +482,7 @@ We see here the correct way to find the sum of the length of two lists of unknow
 =(a (flop a))
 ```
 
-Run in dojo:
+Run in Dojo:
 
 ```
 > +palindrome "urbit"

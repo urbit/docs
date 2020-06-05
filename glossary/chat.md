@@ -12,12 +12,10 @@ A chat is a named collection of messages created by and hosted in a ship's chat-
 
 Chats are subscribed to by some number of ships which are permitted to post and retrieve messages from the chat.
 
-There are four "kinds" of chats, that use different permission modes:
+There are two "kinds" of chats, that use different permission modes:
 
  * A `channel` is a chat that is publicly readable and writable, with a blacklist for blocking.
  * A `village` is an invite-only chat.
- * A `journal` is publicly readable and privately writable, with a whitelist for authors.
- * A `mailbox` is readable by its owner and publicly writable, with a blacklist for blocking.
 
 ### Further Reading
 

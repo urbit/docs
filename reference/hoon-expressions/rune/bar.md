@@ -82,7 +82,7 @@ just fine, but this style is for consistency with the fact that the first argume
 [%cat 3]
 ```
 
-### |_ "barcab"
+### `|_` "barcab"
 
 Produce a **door** (a core with a sample).
 
@@ -172,7 +172,7 @@ The `ne` door prints a digit in base 10, 16, 32 or 64:
 'c'
 ```
 
-### |% "barcen"
+### `|%` "barcen"
 
 Produce a core, `[battery payload]`.
 
@@ -232,7 +232,7 @@ A trivial core:
 101
 ```
 
-### |: "barcol"
+### `|:` "barcol"
 
 Produce a gate with a custom sample.
 
@@ -280,7 +280,7 @@ This is useful if you want a gate to have a sample of a particular type, but you
 12
 ```
 
-### |. "bardot"
+### `|.` "bardot"
 
 Produce a trap (a core with one arm `$`).
 
@@ -348,7 +348,7 @@ trap, since it's a core with an `$` arm.
 
 > `$(...)` expands to `%=($ ...)` (["centis"](/docs/reference/hoon-expressions/rune/cen#centis)).
 
-### |- "barhep"
+### `|-` "barhep"
 
 Produce a trap (a core with one arm `$`) and evaluate it.
 
@@ -404,7 +404,7 @@ The classic loop is a decrement:
 41
 ```
 
-### |^ "barket"
+### `|^` "barket"
 
 Produce a core whose battery includes a `$` arm and compute the latter.
 
@@ -463,7 +463,7 @@ A trivial example:
 100
 ```
 
-### |~ "barsig"
+### `|~` "barsig"
 
 Produce an iron gate.
 
@@ -502,7 +502,7 @@ See [this discussion of core variance models](@/docs/reference/hoon-expressions/
 <1|usl {a/@ $~}>
 ```
 
-### |* "bartar"
+### `|*` "bartar"
 
 Produce a wet gate (one-armed core with sample).
 
@@ -572,7 +572,7 @@ Wet and dry gates in a nutshell:
 The dry gate does not preserve the type of `a` and `b`; the wet
 gate does.
 
-### |= "bartis"
+### `|=` "bartis"
 
 Produce a gate (a one-armed core with a sample).
 
@@ -632,7 +632,7 @@ A slightly less trivial gate:
 430
 ```
 
-### |@ "barpat"
+### `|@` "barpat"
 
 Produce a 'wet' core `[battery payload]`.
 
@@ -665,7 +665,7 @@ A `|@` expression produces a 'wet' core whose payload is the expression's subjec
 
 The `|@` rune is just like the `|%` rune except that instead of producing a 'dry' core, it produces a 'wet' one.  This allows for type polymorphism of its arms, using 'genericity'.  See [Advanced types](@/docs/reference/hoon-expressions/advanced.md).
 
-### |? "barwut"
+### `|?` "barwut"
 
 Produce a lead trap.
 

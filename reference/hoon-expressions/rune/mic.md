@@ -9,7 +9,7 @@ Miscellaneous useful macros.
 
 ## Runes
 
-### ;: "miccol"
+### `;:` "miccol"
 
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
@@ -59,7 +59,7 @@ Irregular: `:(add a b c)` is `;:(add a b c)`.
 12
 ```
 
-### ;+ "miclus"
+### `;+` "miclus"
 
 make a single XML node (Sail)
 
@@ -118,7 +118,7 @@ One interesting thing about Sail is that it allows you to use complex Hoon expre
 ]
 ```
 
-### ;; "micmic"
+### `;;` "micmic"
 
 `[%mcmc p=spec q=hoon]`: normalize with a mold, asserting fixpoint.
 
@@ -162,7 +162,7 @@ Fails because not a fixpoint:
 ford: %ride failed to execute:
 ```
 
-### ;/ "micfas"
+### `;/` "micfas"
 
 `[%mcnt p=hoon]`: tape as XML element.
 
@@ -179,7 +179,7 @@ ford: %ride failed to execute:
 [[%~. [%~. "foo] ~] ~]
 ```
 
-### ;~ "micsig"
+### `;~` "micsig"
 
 `[%mcsg p=hoon q=(list hoon)]`: glue a pipeline together with a
 product-sample adapter.
@@ -283,7 +283,7 @@ A more complicated example:
 "96acd"
 ```
 
-### ;* "mictar"
+### `;*` "mictar"
 
 make a list of XML nodes from complex Hoon expression (Sail)
 
@@ -335,7 +335,7 @@ If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.  O
 ]
 ```
 
-### ;= "mictis"
+### `;=` "mictis"
 
 make a list of XML nodes (Sail)
 

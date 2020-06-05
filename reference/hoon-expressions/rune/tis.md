@@ -24,7 +24,7 @@ different situations.  Hence the whole family of `=` runes.
 
 ## Runes
 
-### => "tisgar"
+### `=>` "tisgar"
 
 `[%tsgr p=hoon q=hoon]`: compose two expressions.
 
@@ -46,7 +46,7 @@ Regular: **2-fixed**.
 [6 6]
 ```
 
-### =| "tisbar"
+### `=|` "tisbar"
 
 
 `[%tsbr p=spec q=hoon]`: combine a default type value with the subject.
@@ -78,7 +78,7 @@ Speaking more loosely, `=|` usually "declares a variable" which is "uninitialize
 7
 ```
 
-### =: "tiscol"
+### `=:` "tiscol"
 
 `[%tscl p=(list (pair wing hoon)) q=hoon]`: change multiple legs in the subject.
 
@@ -107,7 +107,7 @@ This rune is like `=.`, but for modifying the values of multiple legs of the sub
 [b=3 c=4]
 ```
 
-### =, "tiscom"
+### `=,` "tiscom"
 
 `[%tscm p=hoon q=hoon]`: expose namespace
 
@@ -142,7 +142,7 @@ With a dojo-defined face:
 [2 4]
 ```
 
-### =. "tisdot"
+### `=.` "tisdot"
 
 `[%tsdt p=wing q=hoon r=hoon]`: change one leg in the subject.
 
@@ -178,7 +178,7 @@ a new subject just like the old one except for a changed value at `p`.  Note tha
 nest-fail
 ```
 
-### =- "tishep"
+### `=-` "tishep"
 
 `[%tshp p=hoon q=hoon]`: combine a new noun with the subject, inverted.
 
@@ -207,7 +207,7 @@ Regular: **2-fixed**.
 8
 ```
 
-### =^ "tisket"
+### `=^` "tisket"
 
 `[%tskt p=skin q=wing r=hoon s=hoon]`: pin the head of a pair; change
 a leg with the tail.
@@ -247,7 +247,7 @@ random number, so we use `=^`:
 [99 46]
 ```
 
-### =< "tisgal"
+### `=<` "tisgal"
 
 `[%tsgl p=hoon q=hoon]`: compose two expressions, inverted.
 
@@ -284,7 +284,7 @@ Irregular: `foo:baz` is `=<(foo baz)`.
 [6 6]
 ```
 
-### =+ "tislus"
+### `=+` "tislus"
 
 
 `[%tsls p=hoon q=hoon]`: combine a new noun with the subject.
@@ -307,7 +307,7 @@ Loosely speaking, `=+` is the simplest way of "declaring a variable."
 
 ##### Examples
 
-### =; "tismic"
+### `=;` "tismic"
 
 `[%tsmc p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation; inverted order.
 
@@ -336,7 +336,7 @@ Regular: **3-fixed**.
 8
 ```
 
-### =/ "tisfas"
+### `=/` "tisfas"
 
 `[%tsfs p=skin q=hoon r=hoon]`: combine a named noun with the subject, possibly with type annotation.
 
@@ -385,7 +385,7 @@ Regular: **3-fixed**.
 8
 ```
 
-### =~ "tissig"
+### `=~` "tissig"
 
 
 `[%tssg p=(list hoon)]`: compose many expressions.
@@ -421,13 +421,13 @@ Regular: **running**.
 3
 ```
 
-### =* "tistar"
+### `=*` "tistar"
 
-`[%tstr p=term q=hoon r=hoon]`: define an alias.
+`[%tstr p=term q=hoon r=hoon]`: define a macro.
 
 ##### Produces
 
-`r`, compiled with a subject in which `p` is aliased to `q`.
+`r`, compiled with a subject in which `p` is a macro for `q`.
 
 ##### Syntax
 
@@ -435,7 +435,7 @@ Regular: **3-fixed**.
 
 ##### Discussion
 
-The difference between aliasing and pinning is that pinning changes the subject, but for aliasing the subject noun stays the same.  The aliased expression, `q`, is recorded in the type information of `p`. `q` is calculated every time you use the `p` alias.
+The difference between macroing and pinning is that pinning changes the subject, but for macroing the subject noun stays the same.  The macro'd expression, `q`, is recorded in the type information of `p`. `q` is calculated every time you use the `p` macro.
 
 ##### Examples
 
@@ -454,7 +454,7 @@ The difference between aliasing and pinning is that pinning changes the subject,
 [2 2]
 ```
 
-### =? "tiswut"
+### `=?` "tiswut"
 
 `[$tswt p=wing q=hoon r=hoon s=hoon]`: conditionally change one leg in the subject.
 
