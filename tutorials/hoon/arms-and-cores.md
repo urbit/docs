@@ -488,7 +488,7 @@ This core has one arm `dec` which implements decrement. If we look at the head o
  
 Again, being able to read Nock is not essential to understanding Hoon.
 
-### Core Nesting
+### Cores and Contexts
 
 Let's take a quick look at how cores can be combined with `=>` to build up
 larger structures.  `=>  p=hoon  q=hoon` yields the product of `q` with the product of `p` taken as the subject.
