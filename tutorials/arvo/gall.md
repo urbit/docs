@@ -1,6 +1,6 @@
 +++
 title = "Gall Apps"
-weight = 6
+weight = 8
 template = "doc.html"
 aliases = ["/docs/learn/arvo/gall/"]
 +++
@@ -61,7 +61,7 @@ definable in a regular recursive data type).
 
 ## Specification
 
-An agent is defined as a core with a set of arms to handle various
+An agent is defined as a [core](/docs/glossary/core/) with a set of [arms](/docs/glossary/arm/) to handle various
 events.  These handlers usually produce a list of effects and the next
 state of the agent.  The interface definition can be found in
 `sys/zuse.hoon`, which at the time of writing is:
@@ -153,17 +153,12 @@ Here's a skeleton example of an implementation:
 ::
 ++  on-load
   |=  =old-state=vase
-  =/  old-state  !<(@ old-state-vase)
-  ?~  old-state
-    ~&  %prep-lost
-    `this
-  ~&  %prep-found
-  `this(state u.old-state)
+  `this(state !<(@ old-state-vase))
 ::
 ++  on-poke
   |=  [=mark =vase]
-  ~&  state=state
-  ~&  got-poked-with-data=mark]
+  ~&  >  state=state
+  ~&  got-poked-with-data=mark
   =.  state  +(state)
   `this
 ::
@@ -203,7 +198,7 @@ implemented as:
 =|  state=@
 |_  =bowl:gall
 +*  this      .
-    default   ~(. (default-agent %|) bowl)
+    default   ~(. (default-agent this %|) bowl)
 ::
 ++  on-init   on-init:default
 ++  on-save   on-save:default
@@ -281,9 +276,9 @@ An agent may pass `note`s to either Arvo or another agent.  If the `note` is
 to another agent, then it should usually be one of these:
 
 ```hoon
-[%pass /my/wire %agent our.bowl agent-name %watch /a/path]
-[%pass /my/wire %agent our.bowl agent-name %leave ~]
-[%pass /my/wire %agent our.bowl agent-name %poke %foo-mark !>(poke-data)]
+[%pass /my/wire %agent [our.bowl agent-name] %watch /a/path]
+[%pass /my/wire %agent [our.bowl agent-name] %leave ~]
+[%pass /my/wire %agent [our.bowl agent-name] %poke %foo-mark !>(poke-data)]
 ```
 
 Note that to unsubscribe to a `path`, you must send the unsubscription on
@@ -361,19 +356,17 @@ the subscription.
 ### Vases and cages
 
 A `vase` is a piece of dynamic data.  Structurally, it's a pair of an
-explicit reification of a type and an untyped noun.  This lets us
+explicit reification of a type and an untyped [noun](/docs/glossary/noun/).  This lets us
 represent a value which has a type that isn't known at compile time.  A
 vase has three operations:
 
 - `!>` is a unary rune that lifts a statically typed value to a
-  dynamically-typed `vase`.  For example, `!>('hi')` gives `[[%atom %t ~]
-  26.984']`, which has type `[type *]`.
+  dynamically-typed `vase`.  For example, `!>('hi')` gives `[#t/@t q=26.984]`.
 
 - `!<` is a binary rune that takes a mold and a dynamically typed `vase`
   and reduces it to a statically typed value.  If the `vase` does not in
-  fact have the type of the mold you give it, then it produces `~`, else
-  it produces `[~ value]`.  For example, `!<(@t !>('hi'))` produces `[~
-  'hi']` while `!<(^ !>('hi'))` produces `~`.
+  fact have the type of the mold you give it, then it nest-fails, else
+  it produces `value`.  For example, `!<(@t !>('hi'))` produces `'hi'` while `!<(^ !>('hi'))` causes a nest fail..
 
 - The compiler takes text and converts it to a `vase` of the compiled
   code.  Agents shouldn't need this directly, but Gall uses this to
@@ -535,7 +528,7 @@ whether there is or will be data at the given `path`.
 
 ### +on-agent
 
-This arm is called to handle responses to `%pass` moves to other agents.
+This arm is called to handle responses to `%give` moves to other agents.
 It will be one of the following types of response:
 
 - `%poke-ack`: acknowledgment (positive or negative) of a poke.  If the

@@ -11,12 +11,12 @@ input and produce an output, then disappear. Generators might make sense for
 listing directory contents, or running unit tests, or fetching the contents of a
 URL.
 
-There are four kinds of generators: naked, `%say`, `%get`, and `%ask`.
+There are three kinds of generators: naked, `%say`, and `%ask`. There also used to be a fourth type of generator, `%get`, but this kind is no longer in use. 
 
 ### Naked Generators
 
 A naked generator is simply a `gate`; that is, it is an anonymous function that
-takes a `sample` (argument) and produces a noun. All you need to do is write a
+takes a `sample` (argument) and produces a [noun](/docs/glossary/noun/). All you need to do is write a
 `gate` and put it into a file in the `/gen` directory. Let's take a look at a
 very simple one:
 
@@ -49,7 +49,7 @@ an `aura` is type metadata and does other things, too.
 
 In the example above, we didn't specify an `aura`, leaving the printer to fend
 for itself. `"asdf"` is a `tape`, a type that is simply a `list` of `cords`. A
-`cord` is itself an atom represented as a string of UTF-8 characters. When used
+`cord` is itself an [atom](/docs/glossary/atom/) represented as a string of UTF-8 characters. When used
 as part of a `tape`, the `cord` is only a single character. So each atom in the
 `[97 115 100 102 0]` output corresponds to a component of the `tape`: 97 is
 `a`, 115 is `s`, 100 is `d`, 102 is `f`, and `0` is the "null" that every list
@@ -141,7 +141,7 @@ the `|=  *` expression on the line that follows.
 (add 40 2)
 ```
 
-`|=  *` constructs a gate that takes a noun. This gate will itself produce a
+`|=  *` constructs a [gate](/docs/glossary/gate/) that takes a noun. This [gate](/docs/glossary/gate/) will itself produce a
 `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is
 `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the
 `cask`  will be our actual data produced by the body of the program: in this
@@ -230,8 +230,8 @@ In the code, our sample specifies faces on all of the Arvo data, meaning that we
 can easily access them. We also require the argument `[n=@ud ~]`, and allow the
 _optional_ argument `[bet=@ud ~]`.
 
-But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` arm
-out of the `og` core with the subject of `eny`. Recall that `eny` is our entropy
+But there's something new: `(~(rad og eny) n)`. This code pulls the `rad` [arm](/docs/glossary/arm/)
+out of the `og` [core](/docs/glossary/core/) with the subject of `eny`. Recall that `eny` is our entropy
 value, so this is used to seed the generator. The `rad` arm will give us a
 pseudorandom number between 0 and `n`. Then we form a cell with the result and
 `bet`, the optional named argument specified previously.
@@ -454,151 +454,8 @@ This is a [known issue](https://github.com/urbit/arvo/issues/840) to be resolved
 
 ### `%get` generators
 
-`%get` generators are used for making HTTP requests through `eyre`. For this
-section we'll assume knowledge of generators covered in previous sections, so
-we can jump in with an example:
-
-```hoon
-/-  sole
-/+  generators
-=,  generators
-:-  %get
-|=  [* [url=tape ~] ~]
-^-  (sole-request:sole (cask json))
-%+  curl  (scan url auri:de-purl:html)
-|=  hit/httr:eyre
-?~  r.hit  !!
-=/  my-json  (de-json:html q.u.r.hit)
-?~  my-json  !!
-=,  dejs:format
-%+  produce  %json
-%.  %title
-%~  got  by
-%-  (om same)
-u.my-json
-```
-
-The above generator was written with the
-[Studio Ghibli API](https://ghibliapi.herokuapp.com/). It uses this API to
-print the title of a Studio Ghibli film.
-
-```hoon
-/-  sole
-/+  generators
-=,  generators
-```
-
-Here we import types from `/sur/sole.hoon` and gates from
-`/lib/generators.hoon`. We also use `=,` to expose the namespace of
-`generators` that we just imported.
-
-```hoon
-:-  %get
-|=  [* [url=tape ~] ~]
-```
-
-Like with `%say` and `%ask` generators, we must include the  "boilerplate":
-code that produces a generator-specific `cell`. The head of that cell is `%get`,
-and the tail is a gate that takes a `tape` of the URL that we are trying
-to access.
-
-```hoon
-^-  (sole-request:sole (cask json))
-```
-
-Here we make sure our gate is producing a `sole-request` which contains a `cask`
-of the type `json`.
-
-
-```hoon
-%+  curl  (scan url auri:de-purl:html)
-|=  hit/httr:eyre
-```
-
-Here we can see the call to `curl`, the sample of which will parse our url and
-make sure it's in the proper format.
-
-The second part of the `curl` call is the `gate` that will get called with the
-result provided by the actual HTTP request.
-
-```hoon
-?~  r.hit  !!
-```
-
-Here we verify that the `r` face of our response is not null before
-continuing. If it is null, the generator will crash, as there is nothing left to
-do.
-
-```hoon
-=/  my-json  (de-json:html q.u.r.hit)
-```
-
-Here we verify that data was returned to us in the `json` Hoon type.
-`q.u.r.hit` is the actual data we care about as a `cord`. `hit` is actually an
-entire response object, including headers, which we don't care about for this
-example. `de-json` out of `html` will parse the `cord` and produce a `json` type
-for us that we can then use to inspect the data.
-
-```hoon
-?~  my-json  !!
-=,  dejs:format
-```
-
-After parsing the JSON structure we want to make sure we got back a valid `json`
-type. To do that, we test for null and crash if that test passes. If it doesn't
-pass, we use `=,` on the `dejs:format` core so that we can more easily pull arms
-out of it.
-
-```hoon
-%+  produce  %json
-%.  %title
-%~  got  by
-```
-
-Now we come to our `produce` call. Recall that `produce` is used in all the
-non-naked generators to output the final result. Here we want to produce a
-`cask` of `json`, so we use the mark `%json` to indicate that.
-
-Next we have what may be an unfamiliar rune: `%.`. This rune is simply `%-` with
-the argument order reversed. `%title` is the argument passed to the next gate
-that is called. `by` is the core that is the `map` engine. A Hoon `map` is a
-key-value pair structure, sometimes referred to as a dictionary in other
-languages. `got` is the arm in `by` that will produce a gate that we can call to
-access members of a given `map`.
-
-> The idiomatic way to write Hoon is to have the
-  "heaviest" code paths lowest in the program, which is why `%.`
-  is preferred in this case over `%-`. Use of this style is recommended, as it
-  results in code that is much easier to read.
-
-At the moment, however, we do not have a `map`, but instead have a `json` type.
-
-```hoon
-%-  (om same)
-u.my-json
-```
-
-Here we use `om`, which is an arm in `dejs:format` that will take a `json` and
-return a `map`. `same` is a wet gate from the standard library that takes an
-argument of any type and returns it as that type. We could use any other gate to
-modify the data if that were useful for the particular data we are going to be
-processing, but here we want the data exactly as it is.
-
-Since `my-json` is a `unit` of `json`, the actual data we are looking for is in
-`u.my-json`. We take this and give it to the gate produced by the call to `om`.
-This gate is going to transform our data by taking in the `json` structure and
-producing a `map`. Then we can look up keys in this map using `got` from
-the `by` core.
-
-`%.` performs the same function as `%-`, the rune used to call a function,
-except with the arguments reversed so that the function is last and
-the arguments of that function come first. It's used here to keep with the
-principle that heaviest, or most complex, expressions should go to the bottom.
-
-The key we are looking up in our new `map` we've created from `my-json` is
-`%title`, which is an element in the original source, to produce the final
-result of the generator.
+`%get` generators no longer exist. They were once used for making HTTP requests through `eyre`. Such functionality is no longer supported with generators.
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and doors.  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
+You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and [doors](/docs/glossary/door/).  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.

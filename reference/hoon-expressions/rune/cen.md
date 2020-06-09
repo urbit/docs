@@ -10,7 +10,7 @@ These runes reduce to the `%=` rune.
 
 ## Runes
 
-### %_ "cencab"
+### `%_` "cencab"
 
 Resolve a wing with changes, preserving type.
 
@@ -73,7 +73,7 @@ See [how wings are resolved](@/docs/reference/hoon-expressions/limb/_index.md).
 ! nest-fail
 ```
 
-### %: "cencol"
+### `%:` "cencol"
 
 Call a gate with many arguments.
 
@@ -127,7 +127,7 @@ When `%:` is used in tall-form syntax, the series of expressions after `p` must 
 99
 ```
 
-### %. "cendot"
+### `%.` "cendot"
 
 Call a gate (function), inverted.
 
@@ -168,7 +168,7 @@ The `%.` rune is for evaluating the `$` arm of a gate, i.e., calling a function.
 6
 ```
 
-### %- "cenhep" {#cenhep}
+### `%-` "cenhep" {#cenhep}
 
 Call a gate (function).
 
@@ -217,7 +217,7 @@ This rune is for evaluating the `$` arm of a gate, i.e., calling a gate as a fun
 6
 ```
 
-### %^ "cenket"
+### `%^` "cenket"
 
 Call gate with triple sample.
 
@@ -251,7 +251,7 @@ AST:
 6
 ```
 
-### %+ "cenlus"
+### `%+` "cenlus"
 
 Call gate with a cell sample.
 
@@ -288,7 +288,7 @@ A `%+` expression is for calling a gate with a cell sample.  `a` is the gate to 
 6
 ```
 
-### %~ "censig"
+### `%~` "censig"
 
 Evaluate an arm in a door.
 
@@ -340,7 +340,7 @@ See also [`|_`](@/docs/reference/hoon-expressions/rune/bar.md#barcab).
 20
 ```
 
-### %* "centar"
+### `%*` "centar"
 
 Evaluate an expression, then resolve a wing with changes.
 
@@ -403,7 +403,7 @@ A `%*` expression evaluates some arbitrary Hoon expression, `b`, and then resolv
 [a=1 b=7 c=10]
 ```
 
-### %= "centis"
+### `%=` "centis"
 
 Resolve a wing with changes.
 

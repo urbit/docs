@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/doors/"]
 +++
 
-It's useful to have cores whose arms evaluate to make gates.  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
+It's useful to have [cores](/docs/glossary/core/) whose [arms](/docs/glossary/arm/) evaluate to make [gates](/docs/glossary/gate/).  The use of such cores is common in Hoon; that's how the functions of the Hoon standard library are stored in the subject.  Learning about such cores will also deepen the reader's understanding of Hoon semantics, and for that reason alone is worthwhile.
 
 In this lesson you'll also learn about a new kind of core, called a 'door'.
 
@@ -79,7 +79,7 @@ Let's try out these arms, using them for function calls:
 30
 ```
 
-Notice that each arm in core `c` is able to call the other arms of `c` -- `add-two` uses the `inc` arm to increment a number twice.  As a reminder, each arm is evaluated with is parent core as the subject.  In the case of `add-two` the parent core is `c`, which has `inc` in it.
+Notice that each arm in core `c` is able to call the other arms of `c` -- `add-two` uses the `inc` arm to increment a number twice.  As a reminder, each arm is evaluated with its parent core as the subject.  In the case of `add-two` the parent core is `c`, which has `inc` in it.
 
 ### Mutating a Gate
 
@@ -210,9 +210,9 @@ Here are some of the other gates that can be generated from this core in the Hoo
 
 ## Doors
 
-A brief review: A core is a cell of battery and payload: `[battery payload]`.  The battery is code and the payload is data.  The battery contains a series of arms, and the payload contains all the data necessary to run those arms correctly.
+A brief review: A core is a cell of battery and [payload](/docs/glossary/payload/): `[battery payload]`.  The battery is code and the payload is data.  The battery contains a series of arms, and the payload contains all the data necessary to run those arms correctly.
 
-New material: A **door** is a core with a sample.  That is, a door is a core whose payload is a cell of sample and context: `[sample context]`.
+New material: A **door** is a core with a sample.  That is, a [door](/docs/glossary/door/) is a core whose payload is a cell of sample and context: `[sample context]`.
 
 ```
         Door
@@ -250,7 +250,7 @@ The first subexpression after the `|_` rune defines the door's sample.  (This is
 
 #### Back to the Example
 
-For the door defined above, `c`, the sample is defined as an atom, `@`, and given the face `b`.  The `plus` arm defines a gate that takes a single atom as its argument, `a`, and which returns the sum of `a` and `b`.  The `times` arm defines a gate that takes a single atom, `a`, and returns `a` times `b`.  The `greater` arm defines a gate that takes a single atom, `a`, and if `a` is greater than `b` returns `%.y`; otherwise `%.n`.
+For the door defined above, `c`, the sample is defined as an [atom](/docs/glossary/atom/), `@`, and given the face `b`.  The `plus` arm defines a gate that takes a single [atom](/docs/glossary/atom/) as its argument, `a`, and which returns the sum of `a` and `b`.  The `times` arm defines a gate that takes a single [atom](/docs/glossary/atom/), `a`, and returns `a` times `b`.  The `greater` arm defines a gate that takes a single [atom](/docs/glossary/atom/), `a`, and if `a` is greater than `b` returns `%.y`; otherwise `%.n`.
 
 Let's try out the arms of `c` with ordinary function calls:
 

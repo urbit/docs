@@ -1,6 +1,6 @@
 +++
 title = "Eyre"
-weight = 5
+weight = 6
 template = "doc.html"
 aliases = ["/docs/learn/arvo/eyre/"]
 +++
@@ -57,7 +57,7 @@ From arvo, requests enter `++call`, which after some type reification are passed
 along to `++apex:ye`. In the case of a `%this` task, its components are
 parsed(see `++zest:epur`, `++eat-headers`) and handed off to `++handle`, wrapped
 in `++emule` to produce a `++fail` page in case of error. `++apex:handle` will
-`++process` the request to a `pest` or a `++done` core, and in the former case
+`++process` the request to a `pest` or a `++done` [core](/docs/glossary/core/), and in the former case
 `++resolve` the pest into an outgoing card.
 
 XX it also seems to affect the current ship, test that serving ship name is consistently correct
@@ -95,7 +95,7 @@ XX `%cast %mime` used to be in ford-get-beam, is there a reason it was removed?
 ## Back into the breach, or: auxilary requests
 
 Now, it was mentioned that this result is self-refreshing: the `%urb`
-translation door injects a `;script@"/~/on/{deps}.js"` into every page, `deps`
+translation [door](/docs/glossary/door/) injects a `;script@"/~/on/{deps}.js"` into every page, `deps`
 is a ford-readable hash of the set of resources that page construction depended
 on.
 
@@ -409,7 +409,7 @@ To this object, `/main/lib/urb.js` adds helpers:
 - `send({data,mark?='json',app?=urb.app,ship?}, cb?)` delivers messages
 - `bind({path,app?=urb.app}, cb)` subscribes by path
 - `drop({path,app?=urb.app}, cb?)` pulls the subscription
-- `util` is an object containing methods for converting between JavaScript types and Hoon atom odors.
+- `util` is an object containing methods for converting between JavaScript types and Hoon [atom](/docs/glossary/atom/) odors.
 
 ## 3. Requests
 
@@ -538,7 +538,7 @@ Signs a `%writ` upon change.
 
 ### 5.4 `[%f %exec (unit silk)]`, functional transformations
 
-The `%f` interface converts nouns from one form to another. An empty unit represents cancellation.
+The `%f` interface converts [nouns](/docs/glossary/noun/) from one form to another. An empty unit represents cancellation.
 
 Signs a `%made` containing the computation result.
 

@@ -13,7 +13,7 @@ A **vane** is an [Arvo](../arvo) kernel module that performs essential system op
 - [Behn](../behn), the timer vane.
 - [Clay](../clay), the filesystem and revision-control vane.
 - [Dill](../dill), the terminal-driver vane.
-- [Eyre](../dill), the HTTP vane.
+- [Eyre](../eyre), the HTTP vane.
 - [Ford](../ford), the build-system vane.
 - [Gall](../gall), the application vane.
 - [Iris](../iris), the server HTTP vane.

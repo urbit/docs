@@ -8,7 +8,7 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/recursion/"]
 [Recursion](.) is a common pattern for solving certain problems in most programming
 languages, and Hoon is no exception. One of the classically recursive problems
 is that of factorial. The factorial of _n_ is the product of all positive
-integers less than or equal to N. Thus the factorial of 5, denoted as _5!_,
+integers less than or equal to _n_. Thus the factorial of 5, denoted as _5!_,
 would be:
 
 ```
@@ -37,11 +37,11 @@ Next we check to see if `n` is `1`. If so, the result is just `1`, since
 
 If, however, `n` is _not_ `1`, then we branch to the final line of the code,
 `(mul n $(n (dec n)))`, where the recursion logic lives. Here, we multiply `n`
-by the recursion of `n` minus `1`. `$` initiates recursion: it calls the gate
+by the recursion of `n` minus `1`. `$` initiates recursion: it calls the [gate](/docs/glossary/gate/)
 that we're already in, but replaces its sample.
 
 In our example, we multiply `n` with the product of this _entire gate
-all over again_ with `$(n (dec n))`,  except when that new gate has its sample
+all over again_ with `$(n (dec n))`, except when that new gate has its sample
 decremented by one. This works recursively because each new gate will, of
 course, itself contain the code to call a further-decremented gate. Gates will
 continue to call new, further-decremented gates until `n` is `1`, and that `1`
@@ -80,7 +80,7 @@ into the `mul` functions behind them.
 
 #### Tail-Call Optimization
 
-Our last example isn't a very efficient use computing resources. The
+Our last example isn't a very efficient use of computing resources. The
 pyramid-shaped illustration approximates what's happening on the **call stack**, a
 memory structure that tracks the instructions of the program. In our example
 code, every time a parent gate calls another gate, the gate being called is
@@ -111,7 +111,7 @@ function every time.
 To reiterate: if you have to manipulate the result of a recursion as the last
 expression of your gate, as we did in our example, the function is not
 tail-recursive, and therefore not very efficient with memory. A problem arises
-when we try to recurse more times that we have space on the stack. This will
+when we try to recurse more times than we have space on the stack. This will
 result in our computation failing and producing a stack overflow. If we tried
 to find the factorial of `5.000.000`, for example, we would almost certainly
 run out of stack space.
@@ -138,11 +138,11 @@ $(n (dec n), t (mul t n))
 The above code should look familiar. We are still building a gate that
 takes one argument `n`. This time, however, we are also putting a face on a
 `@ud` and setting its initial value to 1. The `|-` here is used to create a new
-gate with one arm `$` and immediately call it. Think of `|-` as the recursion
+gate with one [arm](/docs/glossary/arm/) `$` and immediately call it. Think of `|-` as the recursion
 point.
 
-We then evaluate `n` to see if it is 1. If it is we return the value of `t`. In
-the case that `n` is anything other than 1, we perform our recursion:
+We then evaluate `n` to see if it is 1. If it is, we return the value of `t`.
+In case that `n` is anything other than 1, we perform our recursion:
 
 ```hoon
 $(n (dec n), t (mul t n))
@@ -153,7 +153,7 @@ and `t`. `t` is used as an accumulator variable that we use to keep a running
 total for the factorial computation.
 
 Let's use pseudo-Hoon to illustrate how the stack is working in this example for
-factorial 5.
+the factorial of 5.
 
 ```
 (factorial 5)
@@ -175,7 +175,7 @@ each iteration can be replaced instead of held in memory.
 #### A Note on `$`
 
 `$` (pronounced "buc") is, in its use with recursion, a reference to the gate that we are inside
-of. That's because a gate is just a core with a single arm named `$`. The
+of. That's because a gate is just a [core](/docs/glossary/core/) with a single arm named `$`. The
 subject is searched depth-first, head before tail, with faces skipped, and
 stopping on the first result. In other words, the first match found in the head
 will be returned. If you wished to refer to the outer `$` in this context, the

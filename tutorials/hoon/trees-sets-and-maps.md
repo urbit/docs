@@ -11,7 +11,7 @@ In this lesson we'll cover each.
 
 ## Trees
 
-We use `tree` to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of atoms.
+We use `tree` to make a binary tree data structure in Hoon, e.g., `(tree @)` for a binary tree of [atoms](/docs/glossary/atom/).
 
 There are two kinds of `tree` in Hoon: (1) the null tree, `~`, and (2) a non-null tree which is a cell with three parts.  Part (i) is the node value, part (ii) is the left child of the node, and part (iii) is the right child of the node.  Each child is itself a tree.  The node value has the face `n`, the left child has the face `l`, and the right child has the face `r`.  The following diagram provides an illustration of a `(tree @)` (without the faces):
 
@@ -32,7 +32,7 @@ Hoon supports trees of any type that can be constructed in Hoon, e.g.: `(tree @)
 {4 8 12 14 16}
 ```
 
-Notice that we don't have to insert the faces manually; by casting the noun above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
+Notice that we don't have to insert the faces manually; by casting the [noun](/docs/glossary/noun/) above to a `(tree @)` Hoon inserts the faces for us.  Let's put this noun in the dojo subject with the face `b` and pull out the tree at the left child of the `12` node:
 
 ```
 > =b `(tree @)`[12 [8 [4 ~ ~] ~] [14 ~ [16 ~ ~]]]
@@ -88,11 +88,11 @@ $(hay r.hay)
 
 ## Sets
 
-Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of atoms.  The `in` core in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
+Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of atoms.  The `in` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
 
 As with `list`s and `tree`s, there are two categories of sets: null `~`, and non-null.  Hoon implements sets using trees for the underlying noun.
 
-Two common methods for populating a set include (1) creating it from a list of values using the `sy` function, and (2) inserting items into a set using the `put` arm of the `in` core.
+Two common methods for populating a set include (1) creating it from a list of values using the `sy` function, and (2) inserting items into a set using the `put` [arm](/docs/glossary/arm/) of the `in` core.
 
 Using `sy`:
 
@@ -138,7 +138,7 @@ Check whether an item is in the set using `has` of `in`:
 %.n
 ```
 
-You can apply a gate to each item of a set using `run` of `in` and produce a new set from the products:
+You can apply a [gate](/docs/glossary/gate/) to each item of a set using `run` of `in` and produce a new set from the products:
 
 ```
 > c

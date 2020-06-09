@@ -9,20 +9,19 @@ Before we begin working on Hoon, you should first (1) have Urbit installed and (
 
 ## What is an urbit?
 
-An **urbit** is an Urbit virtual computer with persistent state that can connect to the Urbit network.  (Note the lowercase 'u' here.  'Urbit' is the entire software stack, whereas 'an urbit' is a local instance.)  Each urbit is associated with a unique number that plays three distinct roles: (1) it's an address on the Urbit network, (2) it's a cryptographic identity, and (3) it's (in principle) a human memorable name.  Normally an urbit's name is represented as a string starting with `~`, as in `~zod` or `~taglux-nidsep`.
+An **urbit** is an Urbit virtual computer with persistent state that can connect to the Urbit network. (Note the lowercase `u` here. "Urbit" is the entire software stack, whereas "an urbit" is a local instance.) Each urbit is associated with a unique number that plays three distinct roles: (1) it's an address on the Urbit network, (2) it's a cryptographic identity, and (3) it's (in principle) a human memorable name. Normally an urbit's name is represented as a string starting with `~`, as in `~zod` or `~taglux-nidsep`.
 
-These may not look like numbers, but they are.  Each urbit name is written in a base-256 format, where each 'digit' is a syllable.  Imagine your phone number as a pronounceable string which sounds like a name in a foreign language.  An ordinary user-level urbit is a 'planet', and it's named by a 32-bit number.  The latter is represented as a four-syllable string; e.g., the planet name `~taglux-nidsep` is the number 6,095,360.
+These may not look like numbers, but they are. Each urbit name is written in a base-256 format, where each "digit" is a syllable. Imagine your phone number as a pronounceable string which sounds like a name in a foreign language. An ordinary user-level urbit is a "planet", and it's named by a 32-bit number. The latter is represented as a four-syllable string; e.g., the planet name `~taglux-nidsep` is the number 6,095,360.
 
 ## Installing Urbit
 
-You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](@/using/develop.md#creating-a-development-ship).  On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
-
+You can install Urbit on any Mac or Unix machine; if you're just trying out Urbit or creating a development ship, you can follow the steps for creating a development ship [here](@/using/develop.md#creating-a-development-ship). On Windows, make a virtual Linux machine using VirtualBox or a similar tool.
 
 Once you're finished, you can [boot your very own ship](@/using/install.md#booting-your-ship). While you can develop in Hoon on your own ship on the live network, we strongly suggest developing on a development ship first.
 
 ## Getting started
 
-Once you've created your development ship, let's try a basic command. Type `(add 2 2)` at the prompt and hit return.  Your screen now shows:
+Once you've created your development ship, let's try a basic command. Type `(add 2 2)` at the prompt and hit return. Your screen now shows:
 
 ```
 fake: ~zod
@@ -34,7 +33,7 @@ http: live (insecure, loopback) on 12321
 ~zod:dojo>
 ```
 
-You just used a function from the Hoon standard library, `add`.  Next, quit Urbit with `ctrl-d`:
+You just used a function from the Hoon standard library, `add`. Next, quit Urbit with `ctrl-d`:
 
 ```
 > (add 2 2)
@@ -51,9 +50,9 @@ urbit zod
 
 ## Another Noun
 
-You've already used a standard library function to produce one value, in the dojo.  Now that your ship is running again, let's try another.  Enter the number `17`.
+You've already used a standard library function to produce one value, in the Dojo. Now that your ship is running again, let's try another. Enter the number `17`.
 
-> We won't show the `~zod:dojo> ` prompt from here on out.  We'll just show the echoed command along with its result.
+> We won't show the `~zod:dojo> ` prompt from here on out. We'll just show the echoed command along with its result.
 
 You'll see:
 
@@ -62,13 +61,13 @@ You'll see:
 17
 ```
 
-You asked dojo to evaluate `17` and it echoed the number back at you.  This value is a 'noun'.  We'll talk more about nouns in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md), but first let's write a very basic program.
+You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a "noun". We'll talk more about [nouns](/docs/glossary/noun/) in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md), but first let's write a very basic program.
 
 ## Generators
 
 Generators are the most straightforward way to write Hoon programs. They are a concept in Arvo, and involve saving Hoon code in a `.hoon` text file. While they aren't strictly part of the Hoon language, we'll be dealing with generators throughout this tutorial.
 
-The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. Before creating generator you need to mount your `desk` to Unix, for So, to create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen` directory of your ship as a `.hoon` file. (Assuming you've already mounted with `|mount /=home=`.) After this, you need to run `|commit %home` in dojo and the new file will be recognized by your ship. To run a generator named `mygen.hoon`, you would type `+mygen <argument>` in your ship's Dojo.
+The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. Before creating a generator you need to [mount](https://urbit.org/using/install/#the-dojo) your `desk` to Unix. To create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen/` directory of your ship as a `.hoon` file. (Assuming you've already mounted with `|mount /=home=`.) After this, you need to run `|commit %home` in Dojo and the new file will be recognized by your ship. To run a generator named `mygen.hoon`, you would type `+mygen <argument>` in your ship's Dojo.
 
 If this doesn't make sense yet, that's okay. In the [next lesson](@/docs/tutorials/hoon/list-of-numbers.md), we will walk you through an example `gate` that is run as a generator.
 
@@ -104,4 +103,3 @@ Emacs is free and open-source and runs on all major operating systems. It is ava
 #### Vim
 
 Vim is free and open-source and runs on all major operating systems. It is available [here](https://www.vim.org/). Hoon support is available with [hoon.vim](https://github.com/urbit/hoon.vim) and is maintained by Tlon.
-

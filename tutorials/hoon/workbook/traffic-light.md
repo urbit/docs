@@ -47,9 +47,9 @@ relevant to the functionality of our program.
     --
 ```
 
-`=+` adds a noun to the subject. In our case, the noun in question is the core
+`=+` adds a [noun](/docs/glossary/noun/) to the subject. In our case, the [noun](/docs/glossary/noun/) in question is the [core](/docs/glossary/core/)
 that is opened with `|%` and closed with `--`. This core is used to store types,
-and does that with the arm that it contains.
+and does that with the [arm](/docs/glossary/arm/) that it contains.
 
 `++  state` creates an arm called `state`, which will be used as the name of the
 new type that is created in the code that follows, `?(%red %yellow %green)`.
@@ -89,7 +89,7 @@ With `|%`, we are finally at the meat of the program. This core that we just
 named has two arms: `look`, which gives us the current state, defined later; and
 `set`, which gives us a simple way to modify the value of `current-state`.
 
-The gate we are producing with `|=` may look a bit strange, so let's break it
+The [gate](/docs/glossary/gate/) we are producing with `|=` may look a bit strange, so let's break it
 down.
 
 `s=state` allows for an argument of type `state` and gives it a face `s`.
@@ -101,7 +101,7 @@ How does this work?
 Remember that `.` is [wing syntax](@/docs/reference/hoon-expressions/limb/wing.md) that
 applies the wing expression on the left of it to the noun to the right of it.
 `$` is the arm of the core. Then by using the wing expression `+>`, which means
-"return the head of the tail", we traverse the subject to the core to latch onto
+"return the tail of the tail", we traverse the subject to the core to latch onto
 its parent core. where we defined the arms `look` and `set`. The `( )` then
 lists changes to the core we would like to make as we produce a new one. You
 will often see `+>.$` used in this way.

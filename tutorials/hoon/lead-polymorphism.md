@@ -5,9 +5,9 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/lead-polymorphism/"]
 +++
 
-There are four kinds of cores: gold, iron, zinc, and lead. You are able to use core-variance rules to create programs which take other programs as arguments. Which particular rules depends on which kind of core your program needs to complete.
+There are four kinds of [cores](/docs/glossary/core/): gold, iron, zinc, and lead. You are able to use core-variance rules to create programs which take other programs as arguments. Which particular rules depends on which kind of core your program needs to complete.
 
-Lead cores have opaque payloads. That is, the payload can not be written to or read from. Below is an example of using lead cores. The program produces a list populated by the first 10 elements of `fib`.
+Lead cores have opaque [payloads](/docs/glossary/payload/). That is, the payload can not be written to or read from. Below is an example of using lead cores. The program produces a list populated by the first 10 elements of `fib`.
 
 ```hoon
 =<  (to-list (take fib 10))
@@ -57,7 +57,7 @@ Lead cores have opaque payloads. That is, the payload can not be written to or r
 --
 ```
 
-There are five arms in this core: `stream`, `stream-type`, `to-list`, `take`, and `fib`.
+There are five [arms](/docs/glossary/arm/) in this core: `stream`, `stream-type`, `to-list`, `take`, and `fib`.
 
 
 ```hoon
@@ -68,11 +68,11 @@ There are five arms in this core: `stream`, `stream-type`, `to-list`, `take`, an
   ~
 ```
 
-`stream` is a mold-builder. It's a wet gate that takes one argument, `of`, which is a `mold`, and produces a trap -- a function with no argument.
+`stream` is a mold-builder. It's a wet gate that takes one argument, `of`, which is a `mold`, and produces a [trap](/docs/glossary/trap/) -- a function with no argument.
 
 `$_` is a rune that produces a type from an example; `^?` converts (casts) a core to lead; `|.` forms the trap. So to follow this sequence we read it backwards: we create a trap, convert it to a lead trap (making its payload inaccessible), and then use that lead trap as an example to produce a type from.
 
-With the line `^-  $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` is the rune to describe a data structure that can either be an atom or a cell. The first part describes the atom, which here is going to be `~`. The second part describes a cell, which we define to have the head of type `of` with the face `item`, and a tail with a face of `more`. The expression `^$` is not a rune, but rather a reference to the enclosing wet gate, so the tail of this cell will be of the same type produced by this wet gate.
+With the line `^-  $@(~ [item=of more=^$])`, the output of the trap will be cast into a new type. `$@` is the rune to describe a data structure that can either be an [atom](/docs/glossary/atom/) or a cell. The first part describes the [atom](/docs/glossary/atom/), which here is going to be `~`. The second part describes a cell, which we define to have the head of type `of` with the face `item`, and a tail with a face of `more`. The expression `^$` is not a rune, but rather a reference to the enclosing wet [gate](/docs/glossary/gate/), so the tail of this cell will be of the same type produced by this wet [gate](/docs/glossary/gate/).
 
 The final `~` here is used as the type produced when initially calling this wet gate. This is valid because it nests within the type we defined on the previous line.
 

@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/libraries/"]
 +++
 
-In Hoon, like in other languages, it's often useful to create a library for other code to access. In this example, we look at one example of a library that can be used to represent a deck of 52 playing cards. The core below builds such a library, and can be accessed by programs.
+In Hoon, like in other languages, it's often useful to create a library for other code to access. In this example, we look at one example of a library that can be used to represent a deck of 52 playing cards. The [core](/docs/glossary/core/) below builds such a library, and can be accessed by programs.
 
 ```hoon
 |%
@@ -62,7 +62,7 @@ In Hoon, like in other languages, it's often useful to create a library for othe
 
 On the very first line, we create a core with `|%`. This core contains all of our library code, and is closed by the `--` on the final line.
 
-To create three types we're going to need, we use `+$`, which is an arm used to define a type.
+To create three types we're going to need, we use `+$`, which is an [arm](/docs/glossary/arm/) used to define a type.
 
 
 ```hoon
@@ -91,7 +91,7 @@ One way to get a feel for how a library works is to skim the `++` arm-names befo
   ==
 ```
 
-We can see this is a gate that takes a single `@ud` and produces a `suit`.
+We can see this is a [gate](/docs/glossary/gate/) that takes a single `@ud` and produces a `suit`.
 
 The `?+` rune is the rune to switch against a value with a default.  The default here is to crash with `!!`. Then we have the four options of 1 through 4, based on the value of `val`, which each resulting in a different suit.
 
@@ -103,9 +103,9 @@ The `?+` rune is the rune to switch against a value with a default.  The default
   |-
   ?:  (gth i 4)
     mydeck
-  =/  j  1
+  =/  j  2
   |-
-  ?.  (lte j 13)
+  ?.  (lte j 14)
     ^$(i +(i))
   %=  $
     j       +(j)
@@ -153,9 +153,9 @@ Next, with `=/  random  ~(. og entropy)`, we feed the `og` core the entropy it n
 
 `?:  =(remaining 1)` checks if have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the `:_` rune here, so that the "heavier" hoon is at the bottom of the expression.
 
-If the above conditional evaluates to false, we are going to do a little work.  `=^` is a rune that pins the head of a pair and changes the leg with a tail. It's useful for interacting with the `og` core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the subject with the face `index` and change `random` to be the next core.
+If the above conditional evaluates to false, we are going to do a little work.  `=^` is a rune that pins the head of a pair and changes a leg in the subject with the tail. It's useful for interacting with the `og` core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the subject with the face `index` and change `random` to be the next core.
 
-With completed, we use `%^` to call `$` to recurse back up to `|-` with a few changes.
+With completed, we use `%=` to call `$` to recurse back up to `|-` with a few changes.
 
 `shuffled` gets the `darc` from `unshuffled` at `index` added to the front of it.
 

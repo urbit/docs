@@ -6,4 +6,4 @@ template = "doc.html"
 category = "arvo"
 +++
 
-**ship.arvo.network** is a way to connect to ships, primarily [galaxies](../galaxy), via HTTP utilizing DNS lookup. For example, the address for `~zod` would be `zod.arvo.network`. 
+**ship.arvo.network** is a way to connect to [ships](../ship) via HTTP utilizing DNS lookup. For example, the address for `~zod` would be `zod.arvo.network`. 

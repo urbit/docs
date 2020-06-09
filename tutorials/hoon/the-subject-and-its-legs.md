@@ -9,7 +9,7 @@ Hoon isn't an object-oriented programming language; it's a "subject-oriented" pr
 
 ## A Start
 
-For now we can say three things about the subject: (1) every Hoon expression is evaluated relative to some subject; (2) roughly, the subject defines the environment in which a Hoon expression is evaluated; and (3) the subject is a noun.
+For now we can say three things about the subject: (1) every Hoon expression is evaluated relative to some subject; (2) roughly, the subject defines the environment in which a Hoon expression is evaluated; and (3) the subject is a [noun](/docs/glossary/noun/).
 
 In fact, you already learned about the noun address system in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) when you used `+` to return a fragment of a noun:
 
@@ -54,7 +54,7 @@ Let's create a subject with some computations:
 55
 ```
 
-`add` and `mul` are functions of the Hoon standard library.  `add` is used to add two atoms, and `mul` is used to multiply them.
+`add` and `mul` are functions of the Hoon standard library.  `add` is used to add two [atoms](/docs/glossary/atom/), and `mul` is used to multiply them.
 
 ## Limbs of the Subject
 
@@ -73,7 +73,7 @@ The subject is a noun, just like any other piece of Hoon data.  In Lesson 1.2 we
 
 Each fragment of a noun is itself a noun, and hence can be understood as a binary tree as well.  Each fragment or 'subtree' sticks out of the original tree, like a **limb**.  A 'limb' is a subtree of the subject.
 
-Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: arms and legs.
+Sometimes a programmer simply wants to produce a value from the subject.  In other cases more is desired -- programmers often want to carry out substantive computations on data in the subject.  There are two kinds of limbs to accommodate these two cases: [arms](/docs/glossary/arm/) and legs.
 
 **Arms** are limbs of the subject that are used for carrying out substantive computations.  We'll talk about arms in the next lesson.  **Legs** are limbs that store data.  Any limb that isn't an arm is a leg.  In this lesson we'll talk about various ways to access legs of the subject.
 
@@ -193,7 +193,7 @@ You can think of this sort of lark series -- e.g., `+>-<` -- as indicating a bin
    / \
   6   7
 ```
-2. Use a lark expression to obtain the value 9 in the following noun: `[[5 6] 7 [[8 9 10] 3] 2] 1]`.
+2. Use a lark expression to obtain the value 9 in the following noun: `[[5 6] 7 [[8 9 10] 3] 2]`.
 
 Solutions to these exercises may be found at the bottom of this lesson.
 

@@ -7,9 +7,9 @@ aliases = ["docs/reference/hoon-expressions/rune/buc/"]
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time
 value that at runtime can be converted to either an example value (sometimes
-called a 'bunt' value) for its corresponding type, or to a 'factory' (sometimes
-called a 'mold').  An example value is used as a placeholder for sample values,
-among other things.  A factory/mold is used as a data validator.
+called a 'bunt' value) for its corresponding type, or to a 'mold'.  An example
+value is used as a placeholder for sample values, among other things.  A
+mold is an idempotent function used as a data validator.
 
 ## Overview
 
@@ -52,7 +52,7 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 
 ## Runes
 
-### $_ "buccab"
+### `$_` "buccab"
 
 `[%bscb p=hoon]`: structure that normalizes to an example.
 
@@ -88,7 +88,7 @@ and produces its **example** instead.
 [%foobaz %moobaz]
 ```
 
-### $% "buccen"
+### `$%` "buccen"
 
 `[%bscn p=(list spec)]`: structure which recognizes a union tagged by head atom.
 
@@ -123,7 +123,7 @@ type default value.
 [%baz p=0]
 ```
 
-### $: "buccol"
+### `$:` "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 
@@ -157,7 +157,88 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 [p=0 q=%$]
 ```
 
-### $- "buchep"
+
+### `$<` "bucgal"
+
+`[%bsld p=spec q=spec]`: Filters a pre-existing mold to obtain a mold 
+that excludes a particular structure.
+
+##### Syntax
+
+Regular:  **2-fixed**.
+
+##### Discussion
+
+This can be used to obtain type(s) from a list of types `q` that do not satisfy a
+requirement given by `p`.
+
+##### Examples
+
+```
+~zod:dojo> =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
+
+~zod:dojo> =m $<(%bar foo)
+
+~zod:dojo> (m [%bar 2 4])
+ford: %ride failed to execute:
+
+~zod:dojo> (m [%baz 2])
+[%baz p=2]
+
+~zod:dojo> ;;($<(%foo [@tas *]) [%foo 1])
+ford: %ride failed to execute:
+
+~zod:dojo> ;;($<(%foo [@tas *]) [%bar 1])
+[%bar 1]
+ ```
+
+
+### `$>` "bucgar"
+
+`[%bsbn p=spec q=spec]`: Filters a mold to obtain a new mold 
+matching a particular structure.
+
+##### Syntax
+
+Regular:  **2-fixed**.
+
+##### Discussion
+
+This can be used to obtain type(s) from a list of types `q` that satisfy a
+requirement given by `p`.
+
+##### Examples
+
+Examples with `$%`:
+```
+~zod:dojo> =foo $%([%bar p=@ud q=@ud] [%baz p=@ud])
+
+~zod:dojo> =m $>(%bar foo)
+
+~zod:dojo> (m [%bar 2 4])
+[%bar p=2 q=4]
+
+>~zod:dojo> (m [%baz 2])
+ford: %ride failed to execute:
+```
+
+Examples with `;;`:
+```
+~zod:dojo> ;;([@tas *] [%foo 1])
+[%foo 1]
+
+~zod:dojo> ;;([@tas *] [%bar 1])
+[%bar 1]
+
+~zod:dojo> ;;($>(%foo [@tas *]) [%foo 1])
+[%foo 1]
+
+~zod:dojo> ;;($>(%foo [@tas *]) [%bar 1])
+ford: %ride failed to execute:
+ ```
+
+
+### `$-` "buchep"
 
 `[%bshp p=spec q=spec]`: structure that normalizes to an example gate.
 
@@ -185,7 +266,8 @@ Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, jus
 %baz
 ```
 
-### $^ "bucket"
+
+### `$^` "bucket"
 
 `[%bskt p=spec q=spec]`: structure which normalizes a union tagged by head depth (cell).
 
@@ -219,7 +301,7 @@ Regular: **2-fixed**.
 [%baz p=0]
 ```
 
-### $~ "bucsig"
+### `$~` "bucsig"
 
 `[%bssg p=hoon q=spec]`: define a custom type default value
 
@@ -282,7 +364,7 @@ Using `$~`:
 %default-value
 ```
 
-### $@ "bucpat"
+### `$@` "bucpat"
 
 `[%bsvt p=spec q=spec]`: structure which normalizes a union tagged by head depth (atom).
 
@@ -319,7 +401,7 @@ Example:
 ```
 
 
-### $= "buctis"
+### `$=` "buctis"
 
 `[%bsts p=skin q=spec]`: structure which wraps a face around another structure.
 
@@ -354,7 +436,7 @@ p=%foo
 ford: %ride failed to execute:
 ```
 
-### $? "bucwut"
+### `$?` "bucwut"
 
 `[%bswt p=(list spec)]`: form a type from a union of other types.
 

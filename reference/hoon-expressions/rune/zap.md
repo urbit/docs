@@ -6,7 +6,7 @@ aliases = ["docs/reference/hoon-expressions/rune/zap/"]
 +++
 ## Runes
 
-### !> "zapgar"
+### `!>` "zapgar"
 
 `[%zpgr p=hoon]`: wrap a noun in its type.
 
@@ -36,7 +36,43 @@ If you want just the type value, use a 'type spear'.  This is `-:!>`, i.e., the 
 #t/@ud
 ```
 
-### !: "zapcol"
+### `!<` "zapgal"
+
+`[%zpld p=spec q=hoon]`
+
+Takes a mold and a `vase` and dynamically checks that the type in the `vase`
+matches the mold.
+
+##### Produces
+
+The value of `vase` typed with the type of the mold if possible, else a
+`nest-fail`.
+
+##### Syntax
+
+Regular:  **2-fixed**
+
+##### Discussion
+
+This is something like a partial inverse to the `!>` rune and can be used to extract
+a typed value from a `vase`.
+
+##### Examples
+
+```
+> !<  @  !>  ~zod
+0
+
+> !<  @p  !>  0
+nest-fail
+
+> =m !>  0
+> =n !>  1
+> !<  [@ @]  (slop m n)
+[0 1]
+```
+
+### `!:` "zapcol"
 
 `[%dbug p=hoon]`: turn on stack trace
 
@@ -68,7 +104,7 @@ ford: %ride failed to execute:
 ford: %ride failed to execute:
 ```
 
-### !. "zapdot"
+### `!.` "zapdot"
 
 Turn off stack trace for a subexpression `p`
 
@@ -112,7 +148,7 @@ ford: %ride failed to execute:
 ford: %ride failed to execute:
 ```
 
-### != "zaptis"
+### `!=` "zaptis"
 
 `[%zpts p=hoon]`: make the Nock formula for a Hoon expression.
 
@@ -153,7 +189,7 @@ Don't confuse the `!=` rune with:
 
 The syntax difference is that a test for equality takes two subexpressions, and the `!=` rune only one.
 
-### !? "zapwut"
+### `!?` "zapwut"
 
 `[%zpwt p=@ q=hoon]`: restrict Hoon version.
 
@@ -179,7 +215,7 @@ Regular: **2-fixed**.
 ! exit
 ```
 
-### !! "zapzap"
+### `!!` "zapzap"
 
 `[%zpzp ~]`: crash.
 
