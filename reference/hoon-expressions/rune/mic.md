@@ -173,6 +173,11 @@ Fails because not a fixpoint:
 ##### Examples
 
 ```
+~zod/try=> ;/  "foo"
+[[%~. [%~. "foo] ~] ~]
+```
+
+```
 ~zod/try=> :/"foo"
 [[%~. [%~. "foo] ~] ~]
 ```
