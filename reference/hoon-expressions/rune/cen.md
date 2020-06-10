@@ -294,18 +294,13 @@ Evaluate an arm in a door.
 
 ##### Syntax
 
-Regular:
+Regular: **3-fixed**
 
 ```hoon
-%~  a=wing  b=hoon
-  c=hoon
-  d=hoon
-   ...
-  e=hoon
-==
+%~  a=wing  b=hoon  c=hoon
 ```
 
-Irregular:
+Irregular: **variadic**
 
 `~(a b c)` is `%~(a b c)`.
 `~(a b c d e)` is `%~(a b [c d e])`.
