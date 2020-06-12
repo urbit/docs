@@ -1,6 +1,6 @@
 # Airlock
 
-Airlock is the term to describe the set of apis for interacting with a running Urbit ship from outside of the Urbit network.
+Airlock is the term to describe the set of APIs for interacting with a running Urbit ship from outside of the Urbit network.
 
 ## Urlock-py
 
@@ -54,7 +54,7 @@ It consists of a single class `Urlock`. Methods are below.
     `path` - path to subscribe on
 
 
-Follows is a simple script to send a message and subscribe to a chat channel. The specifics require an understanding of the `chat-store` and `chat-hook` interfaces.
+Below is a simple script to send a message and subscribe to a chat channel. The specifics require an understanding of the `chat-store` and `chat-hook` interfaces.
 
 Even without experience with python this should be pretty readable. 
 
