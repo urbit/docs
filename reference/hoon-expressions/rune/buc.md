@@ -81,7 +81,9 @@ has a certain shape. It crashes if the input fails the validation test.
 For example, the elements of a `set` are treated as being
 unordered, but the values will necessarily possess an order by where they are in
 the memory. Thus if every `set` is stored using the same order scheme then faster algorithms involving `set`s may be
-written. This is not the same thing as casting - it is forcing a
+written. Furthermore, if you just place elements in the `set` randomly, it may
+be mistreated by algorithms already in place that are expecting a certain order.
+This is not the same thing as casting - it is forcing a
 type to have a more specific set of values than its mold would suggest. This
 rune should rarely be used, but it is extremely important when it is.
 
