@@ -84,7 +84,7 @@ exposes a scry namespace to inspect everyone's number.
         :: Increment local counter and send new counter to subscribers
         ::
       [%increment ~]
-    :-  [%give %fact `/local %atom !>(+(local))]~
+    :-  [%give %fact ~[/local] %atom !>(+(local))]~
     this(local +(local))
         ::
         :: Send remote %increment poke
@@ -412,7 +412,7 @@ List of cards and new agent.
         :: Increment local counter and send new counter to subscribers
         ::
       [%increment ~]
-    :-  [%give %fact `/local %atom !>(+(local))]~
+    :-  [%give %fact ~[/local] %atom !>(+(local))]~
     this(local +(local))
         ::
         :: Send remote %increment poke
@@ -819,10 +819,10 @@ subscription content for all subscribers on a given path.
 #### Structure
 
 ```hoon
-[%fact (unit path) =cage]
+[%fact (list path) =cage]
 ```
 
-`(unit path)` is the path of the subscription being updated. If no path is
+`(list path)` is a list of the paths to send the update on. If no path is
  given, then the update is only given to the program that instigated the
  request. Typical use of this mode is in `+on-watch` to give an initial update
  to a new subscriber to get them up to date.
@@ -836,6 +836,12 @@ subscription content for all subscribers on a given path.
 ::
 :: Gives current local state to new subscribers.
 [%give %fact ~ %atom !>(local.sta)]
+
+
+:: From ++on-poke in reference agent
+::
+:: Gives incremented local state to any subscribers on /local
+[%give %fact ~[/local] %atom !>(+(local))]
 ```
 
 ### `%kick`

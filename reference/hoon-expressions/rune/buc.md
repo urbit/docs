@@ -7,8 +7,9 @@ aliases = ["docs/reference/hoon-expressions/rune/buc/"]
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time
 value that at runtime can be converted to either an example value (sometimes
-called a 'bunt' value) for its corresponding type, or to a 'mold'.  An example value is used as a placeholder for sample values,
-among other things.  A mold is used as a data validator.
+called a 'bunt' value) for its corresponding type, or to a 'mold'.  An example
+value is used as a placeholder for sample values, among other things.  A
+mold is an idempotent function used as a data validator.
 
 ## Overview
 
@@ -50,7 +51,6 @@ Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 `%bean`, `~` makes `%null`, `@aura` makes atom `aura`.
 
 ## Runes
-
 
 ### $| "bucbar"
 
@@ -124,8 +124,7 @@ values in the `tree` are arranged in the particular way that `set`s are arranged
 in Hoon, namely 'ascending `+mug` hash order'.
 
 
-
-### $_ "buccab"
+### `$_` "buccab"
 
 `[%bscb p=hoon]`: structure that normalizes to an example.
 
@@ -161,7 +160,7 @@ and produces its **example** instead.
 [%foobaz %moobaz]
 ```
 
-### $% "buccen"
+### `$%` "buccen"
 
 `[%bscn p=(list spec)]`: structure which recognizes a union tagged by head atom.
 
@@ -196,7 +195,7 @@ type default value.
 [%baz p=0]
 ```
 
-### $: "buccol"
+### `$:` "buccol"
 
 `[%bscl p=(list spec)]`: form a cell type.
 
@@ -231,7 +230,7 @@ Irregular (structure mode): `[a b c]` is `$:(a b c)`.
 ```
 
 
-### $< "bucgal"
+### `$<` "bucgal"
 
 `[%bsld p=spec q=spec]`: Filters a pre-existing mold to obtain a mold 
 that excludes a particular structure.
@@ -266,7 +265,7 @@ ford: %ride failed to execute:
  ```
 
 
-### $> "bucgar"
+### `$>` "bucgar"
 
 `[%bsbn p=spec q=spec]`: Filters a mold to obtain a new mold 
 matching a particular structure.
@@ -311,7 +310,7 @@ ford: %ride failed to execute:
  ```
 
 
-### $- "buchep"
+### `$-` "buchep"
 
 `[%bshp p=spec q=spec]`: structure that normalizes to an example gate.
 
@@ -339,7 +338,8 @@ Since a `$-` reduces to a [`$_`](#buccab), it is not useful for normalizing, jus
 %baz
 ```
 
-### $^ "bucket"
+
+### `$^` "bucket"
 
 `[%bskt p=spec q=spec]`: structure which normalizes a union tagged by head depth (cell).
 
@@ -373,11 +373,52 @@ Regular: **2-fixed**.
 [%baz p=0]
 ```
 
-### $~ "bucsig"
+### $& "bucpam"
+
+`[%bspd p=spec q=hoon]`: repair a value of a tagged union type
+
+##### Syntax
+
+Regular: **2-fixed**.
+
+```hoon
+$&(combined-mold=spec normalizing-gate=hoon)
+```
+Here `combined-mold` is a tagged union type (typically made with `$%`) and `normalizing-gate` is a
+gate which accepts values of `combined-mold` and normalizes them to be of one particular type
+in `combined-mold`.
+
+##### Normalizes to
+
+The product of the normalizing gate and sample.
+
+##### Defaults to
+
+The default of the last type listed in `p`, normalized with the normalizing gate.
+
+##### Discussion
+
+This rune is used to "upgrade" or "repair" values of a structure, typically from
+an old version to a new version. For example, this may happen when migrating state after
+updating an app.
+
+##### Examples
+
+```hoon
++$  old  [%0 @]
++$  new  [%1 ^]
++$  combined  $%(old new)
++$  adapting  $&(combined |=(?-(-.a %0 [%1 1 +.a], %1 a)))
+```
+Here `adapting` is a structure that bunts to `[%1 ^]` but also normalizes from
+`[%0 @]` if called on such a noun.
+
+
+### `$~` "bucsig"
 
 `[%bssg p=hoon q=spec]`: define a custom type default value
 
-## Product
+##### Product
 
 Creates a structure (custom type) just like `q`, except its default value is `p`.
 
@@ -415,6 +456,7 @@ First, let's define a type without using `$~`:
 [%two 478.560.413.032]
 
 > *b
+
 %$
 
 > *@tas
@@ -436,7 +478,7 @@ Using `$~`:
 %default-value
 ```
 
-### $@ "bucpat"
+### `$@` "bucpat"
 
 `[%bsvt p=spec q=spec]`: structure which normalizes a union tagged by head depth (atom).
 
@@ -473,7 +515,7 @@ Example:
 ```
 
 
-### $= "buctis"
+### `$=` "buctis"
 
 `[%bsts p=skin q=spec]`: structure which wraps a face around another structure.
 
@@ -508,7 +550,7 @@ p=%foo
 ford: %ride failed to execute:
 ```
 
-### $? "bucwut"
+### `$?` "bucwut"
 
 `[%bswt p=(list spec)]`: form a type from a union of other types.
 

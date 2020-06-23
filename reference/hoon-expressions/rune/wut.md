@@ -30,7 +30,7 @@ side is taken), it fails with an error.
 
 ## Runes
 
-### ?> "wutgar"
+### `?>` "wutgar"
 
 `[%wtgr p=hoon q=hoon]`: positive assertion.
 
@@ -68,7 +68,7 @@ nest-fail
 123
 ```
 
-### ?| "wutbar"
+### `?|` "wutbar"
 
 `[%wtbr p=(list hoon)]`: logical OR.
 
@@ -107,7 +107,7 @@ Irregular: `|(foo bar baz)` is `?|(foo bar baz)`.
 %.n
 ```
 
-### ?: "wutcol" {#wutcol}
+### `?:` "wutcol" {#wutcol}
 
 `[%wtcl p=hoon q=hoon r=hoon]`: branch on a boolean test.
 
@@ -155,7 +155,7 @@ Note also that all other branching expressions reduce to `?:`.
 4
 ```
 
-### ?. "wutdot"
+### `?.` "wutdot"
 
 `[%wtdt p=hoon q=hoon r=hoon]`: branch on a boolean test, inverted.
 
@@ -192,7 +192,7 @@ As is usual with inverted forms, use `?.` when the yes-case expression is much t
 'but see how \'r is much heavier than \'q?'
 ```
 
-### ?- "wuthep"
+### `?-` "wuthep"
 
 `[%wthp p=wing q=(list (pair spec value))]`: switch against a union, with no default.
 
@@ -254,7 +254,7 @@ will throw `mint-vain`.
 ! nest-fail
 ```
 
-### ?^ "wutket"
+### `?^` "wutket"
 
 `[%wtkt p=wing q=hoon r=hoon]`: branch on whether a wing
 of the subject is a cell.
@@ -287,7 +287,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 3
 ```
 
-### ?< "wutgal"
+### `?<` "wutgal"
 
 `[%wtgl p=hoon q=hoon]`: negative assertion.
 
@@ -325,7 +325,7 @@ nest-fail
 [12 14]
 ```
 
-### ?+ "wutlus"
+### `?+` "wutlus"
 
 `[%wtls p=wing q=hoon r=(list (pair spec hoon))]`: switch against
 a union, with a default.
@@ -382,7 +382,7 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 240
 ```
 
-### ?& "wutpam"
+### `?&` "wutpam"
 
 `[%wtpm p=(list hoon)]`: logical AND.
 
@@ -421,7 +421,7 @@ Irregular: `&(foo bar baz)` is `?&(foo bar baz)`.
 %.n
 ```
 
-### ?~ "wutsig"
+### `?~` "wutsig"
 
 `[%wtsg p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is null.
 
@@ -448,7 +448,7 @@ It's bad style to use `?~` to test for any zero atom.  Use it only for a true nu
 1
 ```
 
-### ?= "wuttis"
+### `?=` "wuttis"
 
 `[%wtts p=spec q=wing]`: test pattern match.
 
@@ -484,7 +484,7 @@ A common error is `find.$`, meaning `p` is not a type.
 %.y
 ```
 
-### ?@ "wutpat"
+### `?@` "wutpat"
 
 `[%wtpt p=wing q=hoon r=hoon]`: branch on whether a wing of the subject is an atom.
 
@@ -516,7 +516,7 @@ The type of the wing, `p`, must not be known to be either an atom or a cell, or 
 4
 ```
 
-### ?! "wutzap"
+### `?!` "wutzap"
 
 `[%wtzp p=hoon]`: logical NOT.
 

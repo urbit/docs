@@ -254,4 +254,3 @@ See [%sand](@/docs/reference/hoon-expressions/rune/constants.md#warm) for other 
 
 In our in-house examples throughout our documentation, we use irregular forms instead of regular for the sake of verbosity. But remember with irregular forms: everything is just runes! Like magic. In general, irregular forms (usually) read better, but of course regular forms provide more information about what you're doing by showing you the full rune. Of course, it's up to you, the Hoon programmer, as to whether or not you want to use these.
 
-##### If we missed any, or if you saw something weird that's not in here, feel free to comment below!
