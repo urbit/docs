@@ -99,7 +99,7 @@ First let's use the dojo to bind the face `a` to the value `12`, and the face `b
 
 Now use the following multi-line expression to bind `c` to a core.  As before, feel free to cut and paste the following expression into the dojo (starting at `=c`):
 
-```hoon
+```
 > =c |%
   ++  two  2
   ++  inc  (add 1 a)
@@ -215,7 +215,7 @@ The result is a tree of uncomputed Nock formulas.  But you virtually never need 
 
 To get the arm of a core to compute you must use its name.  The arm names of `c` are in the expression used to create `c`:
 
-```hoon
+```
 > =c |%
   ++  two  2
   ++  inc  (add 1 a)
@@ -488,10 +488,25 @@ This core has one arm `dec` which implements decrement. If we look at the head o
  
 Again, being able to read Nock is not essential to understanding Hoon.
 
-### Core Nesting
+### Cores and Contexts
 
-Let's take a quick look at how cores can be combined with `=>` to build up larger structures.  `=>  p=hoon  q=hoon` allows you to take the product of `q` with the product of `p` taken as the subject.
+Let's take a quick look at how cores can be combined with `=>` to build up
+larger structures.  `=>  p=hoon  q=hoon` yields the product of `q` with the product of `p` taken as the subject.
 
+We can use this to set the context of cores. Recall that the payload of a gate
+is a cell of `[sample context]`. For example:
+```
+~zod:dojo> =foo =>([1 2] |=(@ 15))
+> +3:foo
+[0 1 2]
+```
+Here we have created a gate with `[1 2]` as its context that takes in an `@` and
+returns `15`. `+3:foo` shows the payload of the core to be `[0 [1 2]]`. Here `0`
+is the default value of `@` and is the sample, while `[1 2]` is the context that
+was given to `foo`.
+
+`=>` (and its reversed version `=<`) are used extensively to put cores into the
+context of other cores.
 ```hoon
 =>
 |%
@@ -505,9 +520,15 @@ Let's take a quick look at how cores can be combined with `=>` to build up large
   (mul (foo a) 2)
 --
 ```
-In this core, `foo` is in the subject of `bar`, and so `bar` is able to call `foo`. On the other hand, `bar` is not in the subject of `foo`, so `foo` cannot call `bar` - you will get a `-find.bar` error.
+At the level of arms, `+foo` is in the subject of `+bar`, and so `+bar` is able to call `+foo`. On the other hand, `+bar` is not in the subject of `+foo`, so `+foo` cannot call `+bar` - you will get a `-find.bar` error.
 
-Let's take a look inside of `hoon.hoon`, where the standard library is located, to see how this is being used.
+At the level of cores, the `=>` sets the context of the core containing `+bar` to be the core
+containing `+foo`. Recall that arms are evaluated with the parent core as the
+subject. Thus `+bar` is evaluated with the core containing it as the subject,
+which has the core containing `+foo` in its context. So this is why `+foo` is in
+the scope of `+bar` but not vice versa.
+
+Let's look inside `hoon.hoon`, where the standard library is located, to see how this is being used.
 
 The first core listed here has just one arm.
 ```hoon
@@ -553,12 +574,13 @@ and so on, down to
   $@(~ [~ u=item])
 --
 ```
-This core contains the arms in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the Dojo by looking at the subject of `add`.
+This core contains the arms in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the dojo by looking at the subject of `add`.
 ```
 > ..add
 <41.mac 1.ane $141>
 ```
-Now though, we see that the section 1 core is contained within the core containing `hoon-version`.
+Here we see that core containing `hoon-version` is in the subject of the
+section one core.
 
 Next, [section two](@/docs/reference/library/2a.md) starts:
 ```
@@ -603,10 +625,14 @@ Lastly, let's check the subject of the last arm in `hoon.hoon` (as of November 2
 > ..pi-tell
 <92.nnn 247.tye 51.mvt 126.xjf 41.mac 1.ane $141>
 ```
-This confirms for us, then, that `hoon.hoon` consists of six nested cores, with the `hoon-version` core at the top.
+This confirms for us, then, that `hoon.hoon` consists of six nested cores, with one
+inside the payload of the next, with
+the `hoon-version` core most deeply nested.
 
 #### Exercise 1.7a
-Pick a couple of arms in `hoon.hoon` and check to make sure that they are only referenced in the layer they exist in or a deeper layer. This is easily accomplished with `Ctrl-F`.
+Pick a couple of arms in `hoon.hoon` and check to make sure that they are only
+referenced in its parent core or core(s) that have the parent core put in its
+context via the `=>` or `=<` runes.
 
 ## Casts
 
