@@ -614,6 +614,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4m/#smyt' title="Render path as tank"><code>++smyt</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#snag' title="Produce element at specific index (list)"><code>++snag</code></a>
 <a class="tooltip" href='/docs/reference/library/2m/#snag-nl' title="Produce element from list at specific null-terminated noun"><code>++snag:nl</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snap' title="Replace item at index"><code>++snap</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#snoc' title="Append noun to list"><code>++snoc</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#so' title="Coin parser engine"><code>++so</code></a>
 <a class="tooltip" href='/docs/reference/library/2n/#soft' title="Maybe remold"><code>++soft</code></a>
@@ -884,6 +885,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2b/#skip' title="Produce list of elements failing boolean gate"><code>++skip</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#slag' title="Produce all elements from index in list"><code>++slag</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#snag' title="Produce element at specific index (list)"><code>++snag</code></a>
+<a class="tooltip" href='/docs/reference/library/2b/#snap' title="Replace item at index"><code>++snap</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#snoc' title="Append noun to list"><code>++snoc</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#sort' title="Quicksort (list)"><code>++sort</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#spin' title="Gate to list (with state)"><code>++spin</code></a>

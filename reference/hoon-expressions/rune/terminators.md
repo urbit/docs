@@ -7,7 +7,7 @@ The `--` and `==` are used as terminators: `--` for core expressions, and `==` f
 
 ## Runes
 
-### -- "hephep"
+### `--` "hephep"
 
 ##### Syntax
 
@@ -36,7 +36,7 @@ The `|%`, `|_`, and `|^` runes are used to create cores that can have arbitraril
 24
 ```
 
-### == "tistis"
+### `==` "tistis"
 
 ##### Syntax
 

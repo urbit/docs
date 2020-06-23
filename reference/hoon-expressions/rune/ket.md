@@ -13,7 +13,7 @@ it never allows invalid nests, it sometimes rejects valid nests.
 
 ## Runes
 
-### ^| "ketbar"
+### `^|` "ketbar"
 
 `[%ktbr p=hoon]`: convert a gold core to an iron core (contravariant).
 
@@ -49,9 +49,9 @@ The prettyprinter shows the core metal (`.` gold, `|` iron):
 <1|gcq [@  @n <250.yur 41.wda 374.hzt 100.kzl 1.ypj %151>]>
 ```
 
-### ^: "ketcol"
+### `^:` "ketcol"
 
-`[%ktcl p=spec]`: 'factory' gate for type `p`.
+`[%ktcl p=spec]`: mold gate for type `p`.
 
 ##### Produces
 
@@ -63,7 +63,7 @@ Regular: **1-fixed**.
 
 ##### Discussion
 
-In older versions of Hoon, a 'mold' was an idempotent gate that was guaranteed to produce a noun of that type.  If an input value wasn't of the correct type, the bunt value of that type was returned.  (See `^*`.)
+A mold is an idempotent gate that is guaranteed to produce a noun of that type.  If an input value isn't of the correct type, the bunt value of that type is returned.  (See `^*`.)
 
 `^:` is used to produce a gate that is much like a mold, except that instead of producing a bunt value when the input value is of the wrong type, it crashes.
 
@@ -85,7 +85,7 @@ In older versions of Hoon, a 'mold' was an idempotent gate that was guaranteed t
 ford: %ride failed to execute:
 ```
 
-### ^. "ketdot"
+### `^.` "ketdot"
 
 `[%ktdt p=hoon q=hoon]`: typecast on value produced by passing `q` to `p`.
 
@@ -126,7 +126,7 @@ mint-vain
 ~[22 33]
 ```
 
-### ^- "kethep"
+### `^-` "kethep"
 
 `[%kthp p=spec q=hoon]`: typecast by explicit type label.
 
@@ -170,7 +170,7 @@ infinite loop in the compiler).
 [~ ~.a]
 ```
 
-### ^+ "ketlus"
+### `^+` "ketlus"
 
 `[%ktls p=hoon q=hoon]`: typecast by inferred type.
 
@@ -189,7 +189,7 @@ Regular: **2-fixed**.
 'a'
 ```
 
-### ^& "ketpam"
+### `^&` "ketpam"
 
 `[%ktpm p=hoon]`: convert a core to a zinc core (covariant).
 
@@ -242,7 +242,7 @@ ford: %slim failed:
 ford: %ride failed to compute type:
 ```
 
-### ^~ "ketsig"
+### `^~` "ketsig"
 
 `[%ktsg p=hoon]`: fold constant at compile time.
 
@@ -264,7 +264,7 @@ Regular: **1-fixed**.
 [%1 p=42]
 ```
 
-### ^* "kettar"
+### `^*` "kettar"
 
 `[%kttr p=spec]`: Produce example type value.
 
@@ -315,7 +315,7 @@ Irregular:
 ""
 ```
 
-### ^= "kettis"
+### `^=` "kettis"
 
 `[%ktts p=skin q=hoon]`: Bind name to a value.
 
@@ -351,7 +351,7 @@ a=1
 [b=1 c=2 d=[x=3 y4]]
 ```
 
-### ^? "ketwut"
+### `^?` "ketwut"
 
 `[%ktwt p=hoon]`: convert any core to a lead core (bivariant).
 

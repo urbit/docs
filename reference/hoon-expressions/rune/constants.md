@@ -45,7 +45,7 @@ We can see the contrast with warm atoms by using the compiler parser function, `
 [%rock p=%ud q=12]
 ```
 
-### `:_ "Paths"`
+### `:_` "Paths"
 
 `[%path p=(list (each @ta hoon))]`: path with interpolation.
 
@@ -74,7 +74,7 @@ Irregular: `/this/is/a/path`.
 ~
 ```
 
-### `:_ "Strings with Interpolation"`
+### `:_` "Strings with Interpolation"
 
 `[%knit p=(list (each @t hoon))]`: text string with interpolation.
 
@@ -122,7 +122,7 @@ String with interpolated prettyprinting:
 "hello, %world."
 ```
 
-### `:_ "Warm Atoms"` {#warm}
+### `:_` "Warm Atoms" {#warm}
 
 `[%sand p=term q=@]`; a constant, warm atom.
 
