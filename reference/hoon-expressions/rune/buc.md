@@ -66,7 +66,7 @@ expands to
 |=  x=*
 =/  foo  ;;(a x)
 ?>  (b foo)
-b
+foo
 ```
 
 ##### Syntax
