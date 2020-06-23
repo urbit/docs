@@ -101,7 +101,7 @@ How does this work?
 Remember that `.` is [wing syntax](@/docs/reference/hoon-expressions/limb/wing.md) that
 applies the wing expression on the left of it to the noun to the right of it.
 `$` is the arm of the core. Then by using the wing expression `+>`, which means
-"return the head of the tail", we traverse the subject to the core to latch onto
+"return the tail of the tail", we traverse the subject to the core to latch onto
 its parent core. where we defined the arms `look` and `set`. The `( )` then
 lists changes to the core we would like to make as we produce a new one. You
 will often see `+>.$` used in this way.

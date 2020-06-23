@@ -20,11 +20,11 @@ Below is a simple Hoon program that takes a single number `n` from the user as i
 $(count (add 1 count))                                  ::  8
 ```
 
-As we mentioned in the previous lesson, the easiest way to use such a program is to run it as a _generator_. Mount your desk `|mount %` (if you didn't do it before), saving a file in the `/home/gen` directory of your ship and commiting these changes `|commit %home` allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo as so:
+As we mentioned in the previous lesson, the easiest way to use such a program is to run it as a _generator_. Mount your desk `|mount %` (if you didn't do it before), saving a file in the `/home/gen` directory of your ship and commiting these changes `|commit %home` allows you to run it from your ship's Dojo (command line) as a generator. Save the above code there as `list.hoon`. Now you can run it in the Dojo with the command below (remember, without the `>`):
 
-`~your-ship:> +list 5`
+`> +list 5`
 
-Try it! You can choose any natural number to put after `+list`, but it can't be zero or blank. The `+` lets the Dojo know that it's looking for a generator with the name that follows. You don't write out the `.hoon` part of the file name when running it in the Dojo.
+Try it! You can choose any natural number to put after `+list`, but it can't be `0` or blank. The `+` lets the Dojo know that it's looking for a generator with the name that follows. You don't write out the `.hoon` part of the file name when running it in the Dojo.
 
 But what do all these squiggly symbols in the program _do_? It probably isn't immediately clear. Let's go through each component of this code.
 
@@ -42,7 +42,7 @@ In our example program, we use comments with line numbers for convenient referen
 
 There's a few things going on in our first line. The first part of it, `|=`, is a kind of **rune**. Runes are the building blocks of all Hoon code, represented as a pair of non-alphanumeric ASCII characters. Runes form expressions; runes are used how keywords are used in other languages. In other words, all computations in Hoon ultimately require runes. Runes and other Hoon expressions are all separated from one another by either two spaces or a line break.
 
-All runes take a fixed number of "children." Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. For this reason, we very rarely need to close expressions. Keep this scheme in mind when examining Hoon code.
+All runes take a fixed number of "children". Children can themselves be runes with children, and Hoon programs work by chaining through these until a value -- not another rune -- is arrived at. For this reason, we very rarely need to close expressions. Keep this scheme in mind when examining Hoon code.
 
 The specific purpose of the `|=` rune is to create a **gate**. A [gate](/docs/glossary/gate/) is what would be called a function in other languages: it takes an input, performs a specified computation, and then produces an output.
 
@@ -58,7 +58,7 @@ Our program is simple, so the _entire program_ is the gate that's being created 
 
 This line begins with the `=/` rune, which stores a value with a name and specifies its type. It takes three children.
 
-`count=@` (the first child) stores `1` (the second child) as `count` and as specifies that has the `@` type.
+`count=@` (the first child) stores `1` (the second child) as `count` and specifies that it has the `@` type.
 
 We're using `count` to keep track of what numbers we're including in the list we're building. We'll use it later in the program.
 
@@ -87,11 +87,11 @@ In this case, the rune specifies that our gate's output must be `(list @)` -- th
   ~
 ```
 
-`?:` is a rune that evaluates whether its first child is true or false. If that child is true, the program branches to the second child. If it's false, it branches to the third child. `?:` takes three children.
+`?:` is a rune that evaluates whether its first child is `true` or `false`. If that child is `true`, the program branches to the second child. If it's `false`, it branches to the third child. `?:` takes three children.
 
-`=(end count)` checks if the user's input equals to the `count` value that we're incrementing to build the list. If these values are equal, we want to end the program, because our list has been built out to where it needs to be. Note that this expression is, in fact, a rune expression, just written a different way than you've seen so far. `=(end count)` is an _irregular form_ of `.=  end  count`, different in looks but identical in operation. `.=` is a rune that checks for the equality of its two children, and produces a "true" or "false" based on what it finds.
+`=(end count)` checks if the user's input equals to the `count` value that we're incrementing to build the list. If these values are equal, we want to end the program, because our list has been built out to where it needs to be. Note that this expression is, in fact, a rune expression, just written a different way than you've seen so far. `=(end count)` is an _irregular form_ of `.=  end  count`, different in looks but identical in operation. `.=` is a rune that checks for the equality of its two children, and produces a `true` or `false` based on what it finds.
 
-`~` simply represents the "null" value. The program branches here if on line 5 it finds that `end` equals `count`. Lists in Hoon always end with `~`, so we need this to be the last thing we put in our list.
+`~` simply represents the `null` value. The program branches here if on line 5 it finds that `end` equals `count`. Lists in Hoon always end with `~`, so we need this to be the last thing we put in our list.
 
 ## Line 7
 
@@ -105,15 +105,15 @@ In our case, `:-  count` creates a cell out of whatever value is stored in `coun
 $(count (add 1 count))
 ```
 
-The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by 1. The construction of `(count (add 1 count))` tells the computer, "replace the value of count with count+1".
+The above code is, once again, a compact way of writing a rune expression. All you need to know is that this line of code restarts the program at `|-`, except with the value stored in `count` incremented by `1`. The construction of `(count (add 1 count))` tells the computer, "replace the value of `count` with `count+1`".
 
-You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](@/docs/reference/library/1a.md) of the standard-library documentation.
+You'll notice that we use an unfamiliar word here: `add`. Unlike `count` and `end`, `add` is not defined anywhere in our program. That's because it's a gate that's predefined in the Hoon **standard library**. The standard library is filled with pre-defined gates that are generally useful, and these gates can be used just like something that you defined in your own program. You can see this gate, and other mathematical operators, in [section 1a](@/docs/reference/library/1a.md) of the standard library documentation.
 
 ## Explanation
 
 If you aren't clear on how the program is building the list, that's okay.
 
-Our program works by having each iteration of the list creating a cell. In each of these cells, the head -- the cell's first position -- is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (null). When that happens, the list is terminated and the program doesn't have anything else to do, so it ends. So, a built-out list of nested cells can be visualized like this:
+Our program works by having each iteration of the list creating a cell. In each of these cells, the head -- the cell's first position -- is filled with the current-iteration value of `count`. The tail of the cell, its second position, is filled with _the product of a new iteration of our code_ that starts at `|-`. This iteration will itself create another cell, the head of which will be filled by the incremented value of `count`, and the tail of which will start another iteration. This process continues until `?:` branches to `~` (`null`). When that happens, the list is terminated and the program doesn't have anything else to do, so it ends. So, a built-out list of nested cells can be visualized like this:
 
 ```
    [1 [2 [3 [4 ~]]]]

@@ -153,17 +153,12 @@ Here's a skeleton example of an implementation:
 ::
 ++  on-load
   |=  =old-state=vase
-  =/  old-state  !<(@ old-state-vase)
-  ?~  old-state
-    ~&  %prep-lost
-    `this
-  ~&  %prep-found
-  `this(state old-state)
+  `this(state !<(@ old-state-vase))
 ::
 ++  on-poke
   |=  [=mark =vase]
-  ~&  state=state
-  ~&  got-poked-with-data=mark]
+  ~&  >  state=state
+  ~&  got-poked-with-data=mark
   =.  state  +(state)
   `this
 ::
@@ -366,14 +361,12 @@ represent a value which has a type that isn't known at compile time.  A
 vase has three operations:
 
 - `!>` is a unary rune that lifts a statically typed value to a
-  dynamically-typed `vase`.  For example, `!>('hi')` gives `[[%atom %t ~]
-  26.984']`, which has type `[type *]`.
+  dynamically-typed `vase`.  For example, `!>('hi')` gives `[#t/@t q=26.984]`.
 
 - `!<` is a binary rune that takes a mold and a dynamically typed `vase`
   and reduces it to a statically typed value.  If the `vase` does not in
-  fact have the type of the mold you give it, then it produces `~`, else
-  it produces `[~ value]`.  For example, `!<(@t !>('hi'))` produces `[~
-  'hi']` while `!<(^ !>('hi'))` produces `~`.
+  fact have the type of the mold you give it, then it nest-fails, else
+  it produces `value`.  For example, `!<(@t !>('hi'))` produces `'hi'` while `!<(^ !>('hi'))` causes a nest fail..
 
 - The compiler takes text and converts it to a `vase` of the compiled
   code.  Agents shouldn't need this directly, but Gall uses this to
