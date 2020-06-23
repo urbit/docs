@@ -76,7 +76,13 @@ Regular: **2-fixed**
 ##### Discussion
 
 `$|` takes two arguments, a mold and a gate that produces a `flag` or loobean that is used to validate the structure produced by the mold to ensure that the noun
-has a certain shape. It crashes if the input fails the validation test.
+has a certain shape. It crashes if the input fails the validation test. Else it
+produces a mold-gate that does the following.
+
+`$|(a b)` is a gate that takes in a noun `x` and first pins the product of
+clamming `a` with `x`, call this `foo`. Then it calls `b` on `foo`. It asserts
+that the product of `(b foo)` is `&`, and then produces `foo`. This sequence of
+events can be seen from the Expands To section above.
 
 For example, the elements of a `set` are treated as being
 unordered, but the values will necessarily possess an order by where they are in
