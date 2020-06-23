@@ -175,6 +175,11 @@ ford: %ride failed to execute:
 ##### Examples
 
 ```
+~zod/try=> ;/  "foo"
+[[%~. [%~. "foo] ~] ~]
+```
+
+```
 ~zod/try=> :/"foo"
 [[%~. [%~. "foo] ~] ~]
 ```
