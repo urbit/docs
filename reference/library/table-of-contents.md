@@ -314,6 +314,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4h/#kel' title="Parse { (kel)"><code>++kel</code></a>
 <a class="tooltip" href='/docs/reference/library/4h/#ker' title="Parse } (ker)"><code>++ker</code></a>
 <a class="tooltip" href='/docs/reference/library/4h/#ket' title="Parse ^ (ket)"><code>++ket</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#key-by' title="Set of keys"><code>++key:by</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#knee' title="Recursive parsers"><code>++knee</code></a>
 <a class="tooltip" href='/docs/reference/library/2q/#knot' title="Atom type of ASCII characters"><code>++knot</code></a>
 
