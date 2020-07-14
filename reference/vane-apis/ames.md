@@ -1,6 +1,6 @@
 +++
 title = "Ames Public API"
-weight = 1
+weight = 2
 template = "doc.html"
 +++
 
@@ -31,7 +31,7 @@ There are multiple `+on-hear` arms in `ames.hoon`. Here we refer to
 primarily for ack and nack processing, or receiving message fragments.
 
 #### Accepts
- 
+
 ```hoon
 [=lane =blob]
 ```
@@ -44,7 +44,7 @@ message (typically an IP address).
 
 `%hear` can trigger a number of possible returns. It can trigger the release of
 zero or more additional packets via `%send` `gift`s. It may also trigger a `%boon`
-or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message. 
+or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message.
 
 
 ### %heed
@@ -79,7 +79,7 @@ unresponsive peer's urbit address.
 that it passes an incoming raw packet to `+decode-packet` to be deserialized,
 and then passes that data along with the source of the packet to
 `+on-hear-packet` along with a `?` set to `%.n` denoting that there is something wrong with
-the packet. 
+the packet.
 
 #### Accepts
 
@@ -157,7 +157,7 @@ Each time you start your Urbit, the Arvo kernel calls the `%born` task for Ames.
 #### Returns
 
 In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
-    
+
 
 ### %crud
 
@@ -175,7 +175,7 @@ A `$error` is a `[tag=@tas =tang]`.
 #### Returns
 
 Ames does not `give` a `gift` in response to a `%crud` `task`, but it does
-`%pass` Dill a `%flog` `task` instructing it to print `error`. 
+`%pass` Dill a `%flog` `task` instructing it to print `error`.
 
 
 ## %init
@@ -194,7 +194,7 @@ contained by Jael.
 our=ship
 ```
 
-`%init` takes in the name of our ship, which is a `@p`. 
+`%init` takes in the name of our ship, which is a `@p`.
 
 #### Returns
 

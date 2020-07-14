@@ -1,3 +1,9 @@
++++
+title = "Airlock"
+weight = 1
+template = "doc.html"
++++
+
 # Airlock
 
 Airlock is the term to describe the set of APIs for interacting with a running Urbit ship from outside of the Urbit network.
@@ -35,7 +41,7 @@ It consists of a single class `Urlock`. Methods are below.
 
 `ack(eventId)`
 
-    Send an acknowledgment of receipt of a message so it's cleared from the ship's queue 
+    Send an acknowledgment of receipt of a message so it's cleared from the ship's queue
 
     `eventId` - id of the event to acknowledge
 
@@ -56,7 +62,7 @@ It consists of a single class `Urlock`. Methods are below.
 
 Below is a simple script to send a message and subscribe to a chat channel. The specifics require an understanding of the `chat-store` and `chat-hook` interfaces.
 
-Even without experience with python this should be pretty readable. 
+Even without experience with python this should be pretty readable.
 
 ```
 #!/usr/bin/python3

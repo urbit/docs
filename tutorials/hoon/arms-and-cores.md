@@ -181,7 +181,7 @@ To reinforce your newfound understanding of arms and cores, let's go over the va
 
 ### Address-Based Wings
 
-In the [previous lesson](@/docs/tutorials/hoon/the-subject-and-its-legs), you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
+In the [previous lesson](@/docs/tutorials/hoon/the-subject-and-its-legs.md), you saw how the following expressions return legs based on an address in the subject: `+n`, `.`, `-`, `+`, `+>`, `+<`, `->`, `-<`, `&`, `|` etc.  When these resolve to the part of the subject containing an arm, they **don't** evaluate the arm.  They simply return the indicated noun fragment of the subject, as if it were a leg.
 
 Let's use `-.c` to look at the head of `c`, i.e., the battery of the core:
 
@@ -485,7 +485,7 @@ This core has one arm `dec` which implements decrement. If we look at the head o
   1
 ]
 ```
- 
+
 Again, being able to read Nock is not essential to understanding Hoon.
 
 ### Cores and Contexts
@@ -513,7 +513,7 @@ context of other cores.
 ++  foo
   |=  a=@
   (mul a 2)
--- 
+--
 |%
 ++  bar
   |=  a=@

@@ -261,7 +261,7 @@ which applies many of the concepts covered below.
  + Larval stage core
  + Formal interface
 
-See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores.md#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
+See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores.md) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
 
 ### Formal interface
 
