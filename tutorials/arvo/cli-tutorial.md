@@ -351,7 +351,19 @@ commands.
   :~  ['demo' leaf+"run example command"]
   ==
 ```
+`+tab-list` is pretty much plug-n-play. For each command you want to be tab
+completed, add an entry to the `list` begun by `:~` of the form `[%command
+leaf+"description"]`. Now whenever the user types a partial command and presses
+tab, the console will display the list of commmands that match the partial
+command as well as the descriptions given here.
 
+Thus here we have that starting to type `demo` and pressing tab will result in
+the following output in the console:
+```
+demo  run example command
+~zod:shoe> demo
+```
+with the remainder of `demo` now displayed in the input line.
 
 ```hoon
 ++  on-command
@@ -362,14 +374,17 @@ commands.
   ?.  =(src our):bowl
     [%txt tape]
   [%klr [[`%br ~ `%g] [(crip tape)]~]~]
-::
+```
+Ask Mark.
+
+The remainder of the code should be easy to digest for a Hoon initiate.
+```hoon
 ++  can-connect
   |=  sole-id=@ta
   ^-  ?
   ?|  =(~zod src.bowl)
       (team:title [our src]:bowl)
   ==
-::
 ++  on-connect      on-connect:des
 ++  on-disconnect   on-disconnect:des
 --
