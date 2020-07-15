@@ -5,15 +5,23 @@ template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/molds/"]
 +++
 
-A mold is a function that coerces a [noun](/docs/glossary/noun/) to a type or crashes.
+A mold is an idempotent function that coerces a [noun](/docs/glossary/noun/) to
+be of a specific type or crashes.
 
-Let's take some examples from `hoon.hoon`. `|$` is a new rune as of the writing of this document so you may see this spelled in slightly different way if you don't have the latest version of `hoon.hoon`. `|$` is the mold builder rune which takes a list of molds and produces a mold.
+`|$` is a new rune as of the writing of this document so you may see this spelled in slightly different way if you don't have the latest version of `hoon.hoon`. `|$` is the mold builder rune which takes a list of molds and produces a mold.
 
+`|$` implements [parametric
+polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism) in Hoon,
+and as such we call gates produced with `|$` a **wet gate**. We discuss what this
+means in further detail in the upcoming lesson on [polymorphism](@/docs/tutorials/hoon/type-polymorphism.md).
+
+Let's look at some examples from `hoon.hoon`. 
 ```hoon
 ++  pair
   |$  [head tail]
   [p=head q=tail]
 ```
+
 
 Here is a very simple mold builder. It takes two molds and produces a mold that is a pair of those with the faces `p` and `q`. An example of using this would be `(pair @ud @ud)` which would produce a mold for a cell of `@ud` and `@ud`.
 
