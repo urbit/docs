@@ -297,7 +297,6 @@ Next we begin implementing all of the arms
 ++  on-agent  on-agent:def
 ++  on-arvo   on-arvo:def
 ++  on-fail   on-fail:def
-::
 ```
 Boilerplate Gall app arms using the minimum implementation found in `def`.
 
@@ -308,7 +307,6 @@ Here begins the implementations of the additional arms required by the
   |=  sole-id=@ta
   ^+  |~(nail *(like [? command]))
   (cold [& ~] (jest 'demo'))
-::
 ```
 `+command-parser` is of central importance - it is what is used to parse user
 input and transform it into `$command`s for the app to execute. Writing a proper
@@ -316,15 +314,18 @@ command parser requires understanding of the Hoon parsing functions found in the
 standard library, but we will cover some of the basics here.
 
 `+command-parser` is a gate which takes in a `sole-id=@ta` identifying a sole
-session and produces a gate which takes in a `nail` (parse input) and returns an `edge` (parse output). A `nail` is
-the remainder of a parse given by `[p=hair q=tape]` where the
+session and produces a particular sort of gate which takes in a `nail` (parse
+input) and returns an `edge` (parse output) that we call a parser.
+
+ `nail` is the remainder of a parse given by `[p=hair q=tape]` where the
 `hair=[p=@ud q=@ud]` represent line and column of the current position of the parse and the
 `tape` is the parsing input. An `edge` is a given by `[p=hair q=(unit
 [p=* q=nail])]` which continues tracking the current parsing position and may
 return a `~` signifying that nothing has been matched, or a
 noun (like a parsed command) and a `nail` representing the parse input. Here the
-`edge` is given by the product of `*(like [? command])`, which is the bunt value
-of the type of `edge`s which may return `?` and `command`.
+`edge` is given by the product of `*(like [? command])`. `like [? command]` produces a
+generic `edge` which returns a result that is a cell of values of the `?` and
+`command` types.
 
 So by the time we get to `+command-parser` we already have a nail. Where do the
 nails come from?
@@ -334,9 +335,14 @@ Anyways, the gate is
 ```hoon
 (cold [& ~] (jest 'demo'))
 ```
-`cold` is a parser modifier, and `(cold [& ~] (jest 'demo'))` is a parser that
-produces `[& ~]` whenever the `rule` `(jest 'demo')` triggers, which triggers
-whenever the sample matches against the cord 'demo'.
+`cold` is a parser modifier that accepts a constant noun (here `[& ~]`) and a
+`rule` (`(jest 'demo')`), yielding a parser that
+produces `[& ~]` whenever the `rule` `(jest 'demo')` triggers. `(jest 'demo')`
+is a `rule` which matches whenever the `tape` in the input `nail` exactly
+matches `demo`.
+
+In the (section on modifying `%shoe`) we will go into more depth on parsing
+commands.
 
 ```hoon
 ++  tab-list
@@ -344,7 +350,10 @@ whenever the sample matches against the cord 'demo'.
   ^-  (list [@t tank])
   :~  ['demo' leaf+"run example command"]
   ==
-::
+```
+
+
+```hoon
 ++  on-command
   |=  [sole-id=@ta =command]
   ^-  (quip card _this)
