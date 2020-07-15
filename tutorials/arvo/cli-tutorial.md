@@ -4,9 +4,11 @@ weight = 13
 template = "doc.html"
 +++
 
-## Command line interface apps
+# Command line interface apps
 
-In this tutorial we will go in-depth into how to build command line interface (CLI)
+## Introduction
+
+In this tutorial we will go in-depth on how to build command line interface (CLI)
 applications in Urbit, in the course of which we will encounter a number of
 libraries and applications used to facilitate this. Even if you have no interest
 in writing CLI applications, this tutorial should be useful exposure to
@@ -16,19 +18,22 @@ the guts of a number of internal systems, including:
 * Gall (the userspace vane)
 * dojo (the shell)
 * `%hood` (for Gall apps interacting with Dill)
-* `drum` (Hood library that tracks console display and input state for apps)
-* `shoe` (library for CLI apps that handles boilerplate code)
-* `sole` (a more bare-bones library for CLI apps...?)
+* `drum` (`%hood` library that tracks console display and input state for apps)
+* `shoe` (library for CLI Gall apps that handles boilerplate code)
+* `sole` (library for working with user input and console output)
 
 There are three CLI apps that currently ship with urbit - `%dojo`, `%chat-cli`,
 and `%shoe`. You should be familiar with the former two, the latter is an example
 app that shows off how the `shoe` library works. These are all Gall apps, and as
 such their source can be found in the `app/` folder of your `%home` desk.
 
-We will investigate how to write CLI apps by investigating how the 
-example app `shoe`
-functions and then building a simple CLI app of our own. This tutorial can be
-considered to be an extension of the [Hoon school
+In [Seven components](#seven-components) we summarize what role each of the
+above bulleted items plays in a CLI app. We then show how this is reflected
+with a [move trace](#move-trace-for-shoe-app)
+
+We will investigate how to write CLI apps by walking through the code of the 
+example app `%shoe` and then extending it. This tutorial can be
+considered to be a continuation of the [Hoon school
 lesson](@/docs/tutorials/hoon/generators.md#ask) on `sole` and `%ask`
 generators, which only covers the bare minimum necessary to write generators
 that take user input.
@@ -42,53 +47,119 @@ In this section we briefly summarize each of the seven components mentioned
 above and what purpose they perform in a CLI app. Then we look at a move trace
 showing how a command send to a CLI app navigates through these components.
 
-### Dill
+#### Dill
 
 Dill is the Arvo vane that handles keyboard input from the user as well as
 drawing the text in the console. You can learn more about what `task`s Dill is
 responsible for in its [API documentation](@/docs/reference/vane-apis/dill.md).
 
-### Gall
+#### Gall
 
 Gall is the vane that handles userspace apps.
 
-### dojo
+#### dojo
 
 dojo is the first CLI app you encounter when you boot your ship and one you
 should already be quite familiar with if you are reading this tutorial.
 
-### `%hood`
+#### `%hood`
 
 `%hood` is a Gall app that mediates interactions between other Gall apps and
 Dill. This is an important functionality since we don't want multiple CLI apps
 attempting to draw to the console at the same time. Thus all traffic between
 Gall apps and Dill ultimately routes through `%hood` at some point.
 
-### `drum`
+#### `drum`
 
 `drum` is Hood library that is used for handling `|command`s that you may have
 used before, such as `|sync`, `|verb`, or `|hi`. (i think? this is based on a
 comment in hood.hoon but I haven't looked into it further)
 
-### `shoe`
+#### `shoe`
 
-`shoe` is a library utilized by CLI apps. This is where most of our focus will
-be for this tutorial.
+`shoe` is a library used to build CLI Gall apps. This is the focus of the
+tutorial. We review the structure of the library [here](#the-shoe-library) and
+an example app built using the `shoe` library [here](#shoe-example-app-walkthrough).
 
 ### `sole`
 
-`sole` is an old library that is also for CLI apps, but with much less
-functionality than `shoe`. It is still appropriate to use for writing generators
+`sole` is a library for handling user input and console output, but less abstracted from
+Dill than `shoe` and not specifically focused on Gall apps. It is still appropriate to use for writing generators
 that handle user input, but anything more complex should use `shoe`, which does
 the messier low-level work with `sole` on your behalf.
 
-## How they work together
+### Move trace 
 
-Here we give an overview of how the above components work together as a whole to
-implement CLI functionality.
+In this section we will track how our input commands propagate through Arvo,
+hitting each of the above components along the way.
+
+We will generate a move trace of when a single character is
+pressed on the keyboard when running the `%shoe` app. For a more in-depth
+explanation of how to interpret move traces, check out
+the [move trace tutorial](@/docs/tutorials/arvo/move-trace.md).
+
+Starting from dojo, we enable verbose mode by entering `|verb` and then
+switch to `%shoe` with `Ctrl-X` (you may need to press `Ctrl-X` multiple times). Then we press a
+single character, say `d`, as if we are beginning to input the only command
+`%shoe` accepts, `demo`. The following move trace shows how that `d` ends up
+being displayed on the screen and passed to `%shoe` for further handling.
+
+```
+["" %unix %belt //term/1 ~2020.7.9..20.24.51..81e5]
+["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] ~[//term/1]]
+["||" %give %g [%unto %fact] i=/d t=~[//term/1]]
+["||" %pass [%g %g] [[%deal [~zod ~zod] %shoe %poke] /use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe] ~[/d //term/1]]
+```
+
+We've omitted two `%poke-ack`s for clarity here, as they are a distraction from our discussion.
+
+In English, this represents the following sequence of `move`s:
+
+1. Unix sends `%belt` `card` to Arvo, which then triggers the `%belt` `task` in
+   Dill. This is the `task` that Dill uses to receive input from the keyboard.
+2. Dill `%pass`es the input to Gall, which `%poke`s the `%hood` app, telling
+   `%hood` that the `d` key was pressed.
+3. Gall `%give`s back to Dill a `%fact`, telling it to display the key that was
+   pressed, `d`, in the terminal.
+4. Gall `%pass`es a `%deal` `card`  to itself, which says to `%poke` `%shoe` to inform it that `d` has been
+   pressed. This `%poke` to `%shoe` is along the `wire`
+   `/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe` which tells us that
+   `%hood`, `drum`, and `phat` (another part of `%hood`) are all involved in some way. However this `wire`
+   is generally thought of as being a unique identifier for an opaque cause and
+   so exactly what it says doesn't actually tell us very much.
+   
+This exercise has shown us how keyboard input goes from Unix to Dill to
+Gall to `%hood` to `%shoe`. Let's input the rest of the characters so that
+`demo` is displayed in the command line, then press Enter.
+
+```
+["" %unix %belt //term/1 ~2020.7.9..20.24.31..7117]
+["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] ~[//term/1]]
+["||" %pass [%g %g] [[%deal [~zod ~zod] %shoe %poke] /use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe] ~[/d //term/1]]
+["|||" %give %g [%unto %fact] i=/g/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe t=~[/d //term/1]]
+["||||" %give %g [%unto %fact] i=/d t=~[//term/1]]
+["|||" %give %g [%unto %fact] i=/g/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe t=~[/d //term/1]]
+["||||" %give %g [%unto %fact] i=/d t=~[//term/1]]
+~zod ran the command
+```
+Again, we omit the `%poke-ack`s. The first two `move`s are doing the same as
+before. Things start to diverge at the third `move`. Here, we no longer return
+to Dill to instruct it to display a character since Enter is not a visible
+character. Instead we go straight to `%poke`ing `%shoe`, telling it that Enter
+has been pressed.
+
+My guess for remaining moves:
+
+4. `%shoe` parses the poke and recognizes it as a valid command. It then
+   tells Gall to tell Dill the start a new line.
+5. Gall tells Dill to display a new line.
+6. `%shoe` processes the validated command and tells Gall to tell Dill to
+   display `~zod ran the command`.
+7. Gall tells Dill to display `~zod ran the command`.
 
 
-### The `shoe` library
+
+## The `shoe` library
 
 Here we describe the different cores of `/lib/shoe.hoon` and their purpose.
 
@@ -99,7 +170,7 @@ library may be connected to by a local or remote ship in order to send commands,
 and each of these connections is assigned a unique `@ta` that identifies the
 ship and which session on that ship if there are multiple.
 
-#### `shoe` core
+### `shoe` core
 
 An iron (contravariant) door that defines an interface for Gall agents utilized
 the `shoe` library. Use this
@@ -114,39 +185,39 @@ convenient to wrap the `shoe` core with the `agent` core to obain a standard
 10-arm Gall agent core. See the [shoe example app
 walkthrough](#shoe-example-app-walkthrough) for how to do this.
 
-##### `+command-parser`
+#### `+command-parser`
 
 Input parser for a specific session. If the head of the result is true,
 instantly run the command. We give a brief tutorial on parsing in SECTION??
 
-##### `+tab-list`
+#### `+tab-list`
 
 Autocomplete options for the sessions (to match `+command-parser`).
 
-##### `+on-command`
+#### `+on-command`
 
 Called when a valid command is run.
 
-##### `+can-connect`
+#### `+can-connect`
 
 Called to determine whether the session can be connected to. For example, you
 may only want the local ship to be able to connect to the session.
 
-##### `+on-connect`
+#### `+on-connect`
 
 Called when a connection to the session is made.
 
-##### `+on-disconnect`
+#### `+on-disconnect`
 
 Called when a session is disconnected.
 
-#### `default` core
+### `default` core
 
 This core contains the bare minimum implementation of the additional `shoe` arms
 beyond the 10 standard Gall app ams. It is used
 analogously to how the `default-agent` core is used for Gall apps.
 
-#### `agent` core
+### `agent` core
 
 This is a wrapper core designed to take in the `shoe` core that has too many
 arms to be a Gall agent core, and turns it into a standard Gall agent core by
@@ -154,9 +225,9 @@ moving the additional arms into the context. It endows the agent with additonal
 arms in its context used for managing `sole` events and for calling `shoe`-specific arms.
 
 
-### The `sole` library
+## The `sole` library
 
-In order to display text, `shoe` creates `$shoe-effect`s which for now are just ` [%sole effect=sole-effect]`s which are eventually broken down (by `drum?`) into Dill
+In order to display text, `shoe` creates `$shoe-effect`s which for now are just ` [%sole effect=sole-effect]`s which are eventually broken down into Dill
 calls.
 
 From `sur/sole.hoon`:
@@ -179,7 +250,6 @@ From `sur/sole.hoon`:
       {$txt p/tape}                                     ::  text line
       {$url p/@t}                                       ::  activate url
   ==
-```
 
 ### `shoe` app walkthrough
 
