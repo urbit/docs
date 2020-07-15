@@ -304,7 +304,7 @@ on `/my/wire`.
 ```hoon
 =/  =path  /(scot %p our.hid)/home/(scot %da now.hid)/my-file/txt
 =/  contents=cage  [%txt !>(~['text file line 1' 'line 2'])]
-[%pass /my/wire %arvo %c %info (foal path contents)]
+[%pass /my/wire %arvo %c %info (foal:space:userlib path contents)]
 ```
 
 This is a request to the `%c` vane (Clay, the filesystem vane) to write
