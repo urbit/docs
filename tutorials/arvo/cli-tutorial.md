@@ -250,6 +250,7 @@ From `sur/sole.hoon`:
       {$txt p/tape}                                     ::  text line
       {$url p/@t}                                       ::  activate url
   ==
+```
 
 ### `shoe` app walkthrough
 
@@ -435,19 +436,40 @@ demo  run example command
 ```
 with the remainder of `demo` now displayed in the input line.
 
+Next we have `+on-command`, which is called whenever `+command-parser`
+recognizes that `demo` has be entered by a user on a connected session.
 ```hoon
 ++  on-command
   |=  [sole-id=@ta =command]
   ^-  (quip card _this)
+```
+This is a gate that takes in the `sole-id` corresponding to the session and the
+`command` noun parsed by `+command-parser` and returns a `list` of `card`s and
+`_this`, which is Gall agent core including its state.
+```hoon
   =-  [[%shoe ~ %sole -]~ this]
+```
+This creates a cell of a `%shoe` card that triggers a `sole-effect` given by the head of
+the subject `-`, then the Gall agent core `this` - i.e. the return result of
+this gate. The use of the `=-` rune means that what follows this
+expression is actually run first, which puts the desired `sole-effect` into the
+head of the subject.
+```hoon
   =/  =tape  "{(scow %p src.bowl)} ran the command"
+```
+We pin the `tape` that we want to be printed to the head of the subject.
+```hoon
   ?.  =(src our):bowl
     [%txt tape]
   [%klr [[`%br ~ `%g] [(crip tape)]~]~]
 ```
-Ask Mark.
+We cannot just put a bare `tape` at the head of the subject to be added to the
+card - it needs to be wrapped as a `sole-effect`. This tells us that if the
+origin of the command is not our ship to just print it normally with the `%txt`
+`sole-effect`. Otherwise we use `%klr`, which prints it stylistically (here it
+makes the text green and bold).
 
-The remainder of the code should be easy to digest for a Hoon initiate.
+The following allows either `~zod` or the current ship or moons to connect to `%shoe`.
 ```hoon
 ++  can-connect
   |=  sole-id=@ta
@@ -455,6 +477,10 @@ The remainder of the code should be easy to digest for a Hoon initiate.
   ?|  =(~zod src.bowl)
       (team:title [our src]:bowl)
   ==
+```
+
+We use the minimal implementations for the final two `shoe` arms.
+```hoon
 ++  on-connect      on-connect:des
 ++  on-disconnect   on-disconnect:des
 --
