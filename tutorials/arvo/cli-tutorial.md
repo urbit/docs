@@ -81,82 +81,12 @@ comment in hood.hoon but I haven't looked into it further)
 tutorial. We review the structure of the library [here](#the-shoe-library) and
 an example app built using the `shoe` library [here](#shoe-example-app-walkthrough).
 
-### `sole`
+#### `sole`
 
 `sole` is a library for handling user input and console output, but less abstracted from
 Dill than `shoe` and not specifically focused on Gall apps. It is still appropriate to use for writing generators
 that handle user input, but anything more complex should use `shoe`, which does
 the messier low-level work with `sole` on your behalf.
-
-### Move trace 
-
-In this section we will track how our input commands propagate through Arvo,
-hitting each of the above components along the way.
-
-We will generate a move trace of when a single character is
-pressed on the keyboard when running the `%shoe` app. For a more in-depth
-explanation of how to interpret move traces, check out
-the [move trace tutorial](@/docs/tutorials/arvo/move-trace.md).
-
-Starting from dojo, we enable verbose mode by entering `|verb` and then
-switch to `%shoe` with `Ctrl-X` (you may need to press `Ctrl-X` multiple times). Then we press a
-single character, say `d`, as if we are beginning to input the only command
-`%shoe` accepts, `demo`. The following move trace shows how that `d` ends up
-being displayed on the screen and passed to `%shoe` for further handling.
-
-```
-["" %unix %belt //term/1 ~2020.7.9..20.24.51..81e5]
-["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] ~[//term/1]]
-["||" %give %g [%unto %fact] i=/d t=~[//term/1]]
-["||" %pass [%g %g] [[%deal [~zod ~zod] %shoe %poke] /use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe] ~[/d //term/1]]
-```
-
-We've omitted two `%poke-ack`s for clarity here, as they are a distraction from our discussion.
-
-In English, this represents the following sequence of `move`s:
-
-1. Unix sends `%belt` `card` to Arvo, which then triggers the `%belt` `task` in
-   Dill. This is the `task` that Dill uses to receive input from the keyboard.
-2. Dill `%pass`es the input to Gall, which `%poke`s the `%hood` app, telling
-   `%hood` that the `d` key was pressed.
-3. Gall `%give`s back to Dill a `%fact`, telling it to display the key that was
-   pressed, `d`, in the terminal.
-4. Gall `%pass`es a `%deal` `card`  to itself, which says to `%poke` `%shoe` to inform it that `d` has been
-   pressed. This `%poke` to `%shoe` is along the `wire`
-   `/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe` which tells us that
-   `%hood`, `drum`, and `phat` (another part of `%hood`) are all involved in some way. However this `wire`
-   is generally thought of as being a unique identifier for an opaque cause and
-   so exactly what it says doesn't actually tell us very much.
-   
-This exercise has shown us how keyboard input goes from Unix to Dill to
-Gall to `%hood` to `%shoe`. Let's input the rest of the characters so that
-`demo` is displayed in the command line, then press Enter.
-
-```
-["" %unix %belt //term/1 ~2020.7.9..20.24.31..7117]
-["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] ~[//term/1]]
-["||" %pass [%g %g] [[%deal [~zod ~zod] %shoe %poke] /use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe] ~[/d //term/1]]
-["|||" %give %g [%unto %fact] i=/g/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe t=~[/d //term/1]]
-["||||" %give %g [%unto %fact] i=/d t=~[//term/1]]
-["|||" %give %g [%unto %fact] i=/g/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe t=~[/d //term/1]]
-["||||" %give %g [%unto %fact] i=/d t=~[//term/1]]
-~zod ran the command
-```
-Again, we omit the `%poke-ack`s. The first two `move`s are doing the same as
-before. Things start to diverge at the third `move`. Here, we no longer return
-to Dill to instruct it to display a character since Enter is not a visible
-character. Instead we go straight to `%poke`ing `%shoe`, telling it that Enter
-has been pressed.
-
-My guess for remaining moves:
-
-4. `%shoe` parses the poke and recognizes it as a valid command. It then
-   tells Gall to tell Dill the start a new line.
-5. Gall tells Dill to display a new line.
-6. `%shoe` processes the validated command and tells Gall to tell Dill to
-   display `~zod ran the command`.
-7. Gall tells Dill to display `~zod ran the command`.
-
 
 
 ## The `shoe` library
