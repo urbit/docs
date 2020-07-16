@@ -252,11 +252,60 @@ From `sur/sole.hoon`:
   ==
 ```
 
-### `shoe` app walkthrough
+### `%shoe` app walkthrough
 
-Here we go through the code in the `shoe` example app, explaining what each line
+Here we go through the code in the `%shoe` example app, explaining what each line
 does. This is in preparation for the next chapter of the tutorial in which we
 modify the app.
+
+#### Playing with `%shoe`
+
+First let's test the functionality of `%shoe` so we know what we're getting into.
+
+Start two fake ships, one named `~zod` and the other can have any name - we will
+go with `~nus`. Fake ships run locally are able to see each other, and our
+intention is to connect their `%shoe` apps.
+
+On each fake ship start `%shoe` by entering `|start %shoe` into dojo. You may
+then switch to `%shoe` by pressing `Ctrl-X`, possibly multiple times, which will
+change the prompt to `~zod:shoe>` and `~nus:shoe>`. Enter `demo` from `~zod` and press Enter:
+```
+~zod ran the command
+~zod:shoe> 
+```
+`~zod ran the command` should be displayed in bold green text, signifying that
+the command originated locally.
+
+Now we will connect the sessions. Switch `~zod` back to dojo and enter `|link
+~nus %shoe`. If this succeeds you will see the following.
+```
+>=
+; ~nus is your neighbor
+[linked to [p=~nus q=%shoe]]
+```
+Now `~zod` will have two `%shoe` sessions running - one local one on `~zod` and
+one remote one on `~nus`, which you can access by pressing `Ctrl-X` until you see
+`~nus:shoe>` from `~zod`'s console. On the other hand, you should not see
+`~zod:shoe>` on `~nus`'s side, since you have not connected `~nus` to `~zod`'s
+`%shoe` app. When you enter `demo` from `~nus:shoe>` on
+`~zod`'s console you will again see `~zod ran the command`, but this time it
+should be in the ordinary font used by the console, signifying that the command
+is originating from a remote session. Contrast this with entering `demo` from
+`~nus:shoe>` in `~nus`'s console, which will display `~nus ran the command` in
+bold green text.
+
+Now try to link to `~zod`'s `%shoe` session from `~nus` by switching to the dojo
+on `~nus` and entering `|link ~zod %shoe`. You should see
+```
+>=
+[unlinked from [p=~zod q=%shoe]]
+```
+and if you press `Ctrl-X` you will not get a `~zod:shoe>` prompt. This is
+because the example app is set up to always allow `~zod` to connect (as well as
+subject moons if the ship happens to be a planet) but not `~nus`, so this
+message means that `~nus` failed to connect to `~zod`'s `%shoe` session.
+
+#### `%shoe`'s code
 
 ```hoon
 ::  shoe: example usage of /lib/shoe
