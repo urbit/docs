@@ -21,3 +21,7 @@ Tutorials contains learning materials about the system, enough where you can dev
 ### [Reference](@/docs/reference/_index.md)
 
 Reference contains technical reference documentation for Hoon and other components of the system. Keep reading if you need to look up a Hoon expression or a standard-library function.
+
+### [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki)
+
+While not a part of the docs proper, our troubleshooting wiki is the best place to go if you're trying to find a solution to an Urbit technical problem.
