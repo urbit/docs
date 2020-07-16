@@ -382,35 +382,40 @@ Here begins the implementations of the additional arms required by the
 `+command-parser` is of central importance - it is what is used to parse user
 input and transform it into `$command`s for the app to execute. Writing a proper
 command parser requires understanding of the Hoon parsing functions found in the
-standard library, but we will cover some of the basics here.
+standard library, but we will cover the bare essentials of parsing here.
 
 `+command-parser` is a gate which takes in a `sole-id=@ta` identifying a sole
 session and produces a particular sort of gate which takes in a `nail` (parse
-input) and returns an `edge` (parse output) that we call a parser.
+input) and returns an `edge` (parse output) that we call a parser or `$rule`.
+`+command-parser` produces a specific type of `$rule` whose result is of the
+type `[? command]`. Let us elaborate.
 
  `nail` is the remainder of a parse given by `[p=hair q=tape]` where the
 `hair=[p=@ud q=@ud]` represent line and column of the current position of the parse and the
 `tape` is the parsing input. An `edge` is a given by `[p=hair q=(unit
-[p=* q=nail])]` which continues tracking the current parsing position and may
-return a `~` signifying that nothing has been matched, or a
-noun (like a parsed command) and a `nail` representing the parse input. Here the
-`edge` is given by the product of `*(like [? command])`. `like [? command]` produces a
-generic `edge` which returns a result that is a cell of values of the `?` and
-`command` types.
-
-So by the time we get to `+command-parser` we already have a nail. Where do the
-nails come from?
+[p=* q=nail])]`. `p` says what we have parsed up to this point. `q` is the
+result of the parse, which is `~` if nothing valid has yet been parsed or a noun
+`p.q` that here will be a value of the `$command` type and `q.q` a `nail` that
+contains results that may still be unparsed. Here the
+`edge` is cast with `*(like [? command])`. `like [? command]`
+produces a generic `edge` which returns a result that is a cell of values of the
+`?` and `command` types - this is what forces `+command-parser` to produce a
+`$rule` that returns a value of type `[? command]`.
 
 Anyways, the gate is
-
 ```hoon
 (cold [& ~] (jest 'demo'))
 ```
 `cold` is a parser modifier that accepts a constant noun (here `[& ~]`) and a
-`rule` (`(jest 'demo')`), yielding a parser that
+`rule` (`(jest 'demo')`) to produce another `rule`. This `rule` is then a parser that
 produces `[& ~]` whenever the `rule` `(jest 'demo')` triggers. `(jest 'demo')`
-is a `rule` which matches whenever the `tape` in the input `nail` exactly
+triggers whenever the `tape` in the input `nail` exactly
 matches `demo`.
+
+The reason we use a `cord` `demo` as the argument for `jest` rather than a
+`tape` is not too important for this discussion, but the short version is that
+`cord`s are used to represent data that is passed around while `tape`s are for
+when you're ready to start doing string manipulation.
 
 In the (section on modifying `%shoe`) we will go into more depth on parsing
 commands.
