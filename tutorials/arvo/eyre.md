@@ -409,7 +409,7 @@ To this object, `/main/lib/urb.js` adds helpers:
 - `send({data,mark?='json',app?=urb.app,ship?}, cb?)` delivers messages
 - `bind({path,app?=urb.app}, cb)` subscribes by path
 - `drop({path,app?=urb.app}, cb?)` pulls the subscription
-- `util` is an object containing methods for converting between JavaScript types and Hoon [atom](/docs/glossary/atom/) odors.
+- `util` is an object containing methods for converting between JavaScript types and Hoon [atom](/docs/glossary/atom/) auras.
 
 ## 3. Requests
 
