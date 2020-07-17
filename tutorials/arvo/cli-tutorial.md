@@ -16,7 +16,6 @@ the guts of a number of internal systems, including:
 
 * Dill (the console vane)
 * Gall (the userspace vane)
-* dojo (the shell)
 * `%hood` (for Gall apps interacting with Dill)
 * `drum` (`%hood` library that tracks console display and input state for apps)
 * `shoe` (library for CLI Gall apps that handles boilerplate code)
@@ -24,24 +23,25 @@ the guts of a number of internal systems, including:
 
 There are three CLI apps that currently ship with urbit - `%dojo`, `%chat-cli`,
 and `%shoe`. You should be familiar with the former two, the latter is an example
-app that shows off how the `shoe` library works. These are all Gall apps, and as
+app that shows off how the `shoe` library works that we will be looking at closely. These are all Gall apps, and as
 such their source can be found in the `app/` folder of your `%home` desk.
 
-In [Seven components](#seven-components) we summarize what role each of the
-above bulleted items plays in a CLI app. We then show how this is reflected
-with a [move trace](#move-trace-for-shoe-app)
+In [six components](#six-components) we summarize what role each of the
+above bulleted items plays in a CLI app. Then we go into further depth on two of
+them: `shoe` and `sole`. In [the `shoe`
+library](#the-shoe-library) we take a closer look at the `shoe` library and its
+cores and how they are utilized in CLI apps. Then in [the `sole`
+library](#the-sole-library) we look at what `shoe` effects ultimately break down
+into. Finally in [`%shoe` app walkthrough](#shoe-app-walkthrough) we explore
+the functionality of the `%shoe` app and then go through the code line-by-line.
 
-We will investigate how to write CLI apps by walking through the code of the 
-example app `%shoe` and then extending it. This tutorial can be
+This tutorial can be
 considered to be a continuation of the [Hoon school
 lesson](@/docs/tutorials/hoon/generators.md#ask) on `sole` and `%ask`
 generators, which only covers the bare minimum necessary to write generators
 that take user input.
 
-CLI apps will someday include text user interfaces (TUIs) and so if you are
-interested in creating those, this tutorial is also for you.
-
-## Seven components
+## Six components
 
 In this section we briefly summarize each of the seven components mentioned
 above and what purpose they perform in a CLI app. Then we look at a move trace
@@ -57,11 +57,6 @@ responsible for in its [API documentation](@/docs/reference/vane-apis/dill.md).
 
 Gall is the vane that handles userspace apps.
 
-#### dojo
-
-dojo is the first CLI app you encounter when you boot your ship and one you
-should already be quite familiar with if you are reading this tutorial.
-
 #### `%hood`
 
 `%hood` is a Gall app that mediates interactions between other Gall apps and
@@ -71,9 +66,7 @@ Gall apps and Dill ultimately routes through `%hood` at some point.
 
 #### `drum`
 
-`drum` is Hood library that is used for handling `|command`s that you may have
-used before, such as `|sync`, `|verb`, or `|hi`. (i think? this is based on a
-comment in hood.hoon but I haven't looked into it further)
+`drum` is a Hood library that is used for handling `|command`s, e.g. `|ota`, `|start`, or `|hi`.
 
 #### `shoe`
 
@@ -89,7 +82,7 @@ that handle user input, but anything more complex should use `shoe`, which does
 the messier low-level work with `sole` on your behalf.
 
 
-## The `shoe` library
+## The `shoe` library {#the-shoe-library}
 
 Here we describe the different cores of `/lib/shoe.hoon` and their purpose.
 
@@ -155,7 +148,7 @@ moving the additional arms into the context. It endows the agent with additonal
 arms in its context used for managing `sole` events and for calling `shoe`-specific arms.
 
 
-## The `sole` library
+## The `sole` library {#the-sole-library}
 
 In order to display text, `shoe` creates `$shoe-effect`s which for now are just ` [%sole effect=sole-effect]`s which are eventually broken down into Dill
 calls.
@@ -182,13 +175,12 @@ From `sur/sole.hoon`:
   ==
 ```
 
-### `%shoe` app walkthrough
+## `%shoe` app walkthrough {#shoe-app-walkthrough}
 
-Here we go through the code in the `%shoe` example app, explaining what each line
-does. This is in preparation for the next chapter of the tutorial in which we
-modify the app.
+Here we explore the capabilities of the `%shoe` example app and then go through
+the code, explaining what each line does. 
 
-#### Playing with `%shoe`
+### Playing with `%shoe`
 
 First let's test the functionality of `%shoe` so we know what we're getting into.
 
@@ -235,7 +227,7 @@ because the example app is set up to always allow `~zod` to connect (as well as
 subject moons if the ship happens to be a planet) but not `~nus`, so this
 message means that `~nus` failed to connect to `~zod`'s `%shoe` session.
 
-#### `%shoe`'s code
+### `%shoe`'s code
 
 ```hoon
 ::  shoe: example usage of /lib/shoe
@@ -363,7 +355,7 @@ input and transform it into `$command`s for the app to execute. Writing a proper
 command parser requires understanding of the Hoon parsing functions found in the
 standard library, but we will cover the bare essentials of parsing here.
 
-`+command-parser` is a gate which takes in a `sole-id=@ta` identifying a sole
+`+command-parser` is a gate which takes in a `sole-id=@ta` identifying a `sole`
 session and produces a particular sort of gate which takes in a `nail` (parse
 input) and returns an `edge` (parse output) that we call a parser or `$rule`.
 `+command-parser` produces a specific type of `$rule` whose result is of the
@@ -395,9 +387,6 @@ The reason we use a `cord` `demo` as the argument for `jest` rather than a
 `tape` is not too important for this discussion, but the short version is that
 `cord`s are used to represent data that is passed around while `tape`s are for
 when you're ready to start doing string manipulation.
-
-In the (section on modifying `%shoe`) we will go into more depth on parsing
-commands.
 
 ```hoon
 ++  tab-list
@@ -453,7 +442,7 @@ origin of the command is not our ship to just print it normally with the `%txt`
 `sole-effect`. Otherwise we use `%klr`, which prints it stylistically (here it
 makes the text green and bold).
 
-The following allows either `~zod` or the current ship or moons to connect to `%shoe`.
+The following allows either `~zod` or the current ship or its moons to connect to `%shoe`.
 ```hoon
 ++  can-connect
   |=  sole-id=@ta
@@ -470,78 +459,5 @@ We use the minimal implementations for the final two `shoe` arms.
 --
 ```
 
-#### Move trace on example app
-
-In this section we will track how our input commands propagate through Arvo.
-
-Let's first look at a move trace of what happens when a single character is
-pressed on the keyboard when running the `%shoe` app. For a more in-depth
-explanation of how to interpret move traces, check out
-the [move trace tutorial](@/docs/tutorials/arvo/move-trace.md).
-
-Starting from dojo, we enable verbose mode by entering `|verb` and then
-switch to `%shoe` with `Ctrl-X` (you may need to press `Ctrl-X` multiple times). Then we press a
-single character, say `d`, as if we are beginning to input the only command
-`%shoe` accepts, `demo`. The following move trace shows how that `d` ends up
-being displayed on the screen and passed to `%shoe` for further handling.
-
-```
-["" %unix %belt //term/1 ~2020.7.9..20.24.51..81e5]
-["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] ~[//term/1]]
-["||" %give %g [%unto %fact] i=/d t=~[//term/1]]
-["||" %pass [%g %g] [[%deal [~zod ~zod] %shoe %poke] /use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe] ~[/d //term/1]]
-```
-
-We've omitted two `%poke-ack`s for clarity here, as they are a distraction from our discussion.
-
-In English, this represents the following sequence of `move`s:
-
-1. Unix sends `%belt` `card` to Arvo, which then triggers the `%belt` `task` in
-   Dill. This is the `task` that Dill uses to receive input from the keyboard.
-2. Dill `%pass`es the input to Gall, which `%poke`s the `%hood` app, telling
-   `%hood` that the `d` key was pressed.
-3. Gall `%give`s back to Dill a `%fact`, telling it to display the key that was
-   pressed, `d`, in the terminal.
-4. Gall `%pass`es a `%deal` `card`  to itself, which says to `%poke` `%shoe` to inform it that `d` has been
-   pressed. This `%poke` to `%shoe` is along the `wire`
-   `/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe` which tells us that
-   `%hood`, `drum`, and `phat` (another part of `%hood`) are all involved in some way. However this `wire`
-   is generally thought of as being a unique identifier for an opaque cause and
-   so exactly what it says doesn't actually tell us very much.
-   
-This exercise has shown us how keyboard input goes from Unix to Dill to
-Gall to `%hood` to `%shoe`. Let's input the rest of the characters so that
-`demo` is displayed in the command line, then press Enter.
-
-```
-["" %unix %belt //term/1 ~2020.7.9..20.24.31..7117]
-["|" %pass [%d %g] [[%deal [~zod ~zod] %hood %poke] /] ~[//term/1]]
-["||" %pass [%g %g] [[%deal [~zod ~zod] %shoe %poke] /use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe] ~[/d //term/1]]
-["|||" %give %g [%unto %fact] i=/g/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe t=~[/d //term/1]]
-["||||" %give %g [%unto %fact] i=/d t=~[//term/1]]
-["|||" %give %g [%unto %fact] i=/g/use/hood/~zod/out/~zod/shoe/drum/phat/~zod/shoe t=~[/d //term/1]]
-["||||" %give %g [%unto %fact] i=/d t=~[//term/1]]
-~zod ran the command
-```
-Again, we omit the `%poke-ack`s. The first two `move`s are doing the same as
-before. Things start to diverge at the third `move`. Here, we no longer return
-to Dill to instruct it to display a character since Enter is not a visible
-character. Instead we go straight to `%poke`ing `%shoe`, telling it that Enter
-has been pressed.
-
-My guess for remaining moves:
-
-4. `%shoe` parses the poke and recognizes it as a valid command. It then
-   tells Gall to tell Dill the start a new line.
-5. Gall tells Dill to display a new line.
-6. `%shoe` processes the validated command and tells Gall to tell Dill to
-   display `~zod ran the command`.
-7. Gall tells Dill to display `~zod ran the command`.
-
-### Example app idea
-
-Able to be connected to from multiple ships and sessions. Each can run one
-command, which displays the name of the ship and its session id to all ships. So
-basically it should just be a modification of the demo app to allow for multiple
-sessions... Maybe this is what it already does though? How do I connect to the
-app from a remote ship?
+This concludes our review of the code of the `%shoe` app. To continue learning
+how to build your own CLI app, we recommend checking out `/app/chat-cli.hoon`.
