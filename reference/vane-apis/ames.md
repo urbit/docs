@@ -1,5 +1,5 @@
 +++
-title = "Ames Public API"
+title = "Ames"
 weight = 2
 template = "doc.html"
 +++
@@ -18,7 +18,7 @@ system/lifecycle tasks.
 
 ## Messaging Tasks
 
-### %hear
+### `%hear`
 
 `%hear` handles raw packet receipt. This `task` only ever originates from Unix.
 It does the initial processing of a packet, namely by passing the raw packet
@@ -47,7 +47,7 @@ zero or more additional packets via `%send` `gift`s. It may also trigger a `%boo
 or `%plea` `gift` (collectively referred to as a `%memo` within Ames) to a local vane in the case of a completed message.
 
 
-### %heed
+### `%heed`
 
 A vane can pass Ames a `%heed` `task` to request Ames track a peer's
 responsiveness.  If our `%boon`s to it start backing up locally,
@@ -73,7 +73,7 @@ Ames will `give` a `%clog` `gift` to the requesting vane containing the
 unresponsive peer's urbit address.
 
 
-### %hole
+### `%hole`
 
 `%hole` handles packet crash notification. `%hole` works much like `%hear`, in
 that it passes an incoming raw packet to `+decode-packet` to be deserialized,
@@ -95,7 +95,8 @@ message (typically an IP address).
 Like `%hear`, `%hole` can trigger additional packets in the form of `%send`
 `gift`s, and may also yield a `%boon` or `%plea` `gift` to a local vane.
 
-### %jilt
+
+### `%jilt`
 
 `%jilt` stops tracking a potentially unresponsive peer that was previously being
 tracked as a result of the `%heed` `task`.
@@ -114,7 +115,8 @@ The `ship` we no longer wish to track.
 
 This `task` returns no `gift`s.
 
-### %plea
+
+### `%plea`
 
 `%plea` is the `task` used to send messages over Ames. It extends the
 `%pass`/`%give` semantics across the network. As such, it is the most
@@ -146,7 +148,7 @@ This `task` returns no `gift`s.
 
 ## System and Lifecycle Tasks
 
-### %born
+### `%born`
 
 Each time you start your Urbit, the Arvo kernel calls the `%born` task for Ames.
 
@@ -159,7 +161,7 @@ Each time you start your Urbit, the Arvo kernel calls the `%born` task for Ames.
 In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
 
 
-### %crud
+### `%crud`
 
 `%crud` is called whenever an error involving Ames occurs. It produces a crash
 report in response.
@@ -178,7 +180,7 @@ Ames does not `give` a `gift` in response to a `%crud` `task`, but it does
 `%pass` Dill a `%flog` `task` instructing it to print `error`.
 
 
-## %init
+## `%init`
 
 `%init` is called a single time during the very first boot process, immediately
 after the [larval stage](@/docs/tutorials/arvo/arvo.md#larval-stage-core)
@@ -206,7 +208,7 @@ our=ship
 `%init` sends two moves that subscribe to `%turf` and `%private-keys` in Jael.
 
 
-### %sift
+### `%sift`
 
 This `task` filters debug output by ship.
 
@@ -223,7 +225,7 @@ The list of ships for which debug output is desired.
 This `task` returns no `gift`s.
 
 
-### %spew
+### `%spew`
 
 Sets verbosity toggles on debug output. These toggles are as follows.
 
@@ -256,7 +258,7 @@ verbs=(list verb)
 This `task` returns no `gift`s.
 
 
-### %vega
+### `%vega`
 
 `%vega` is called whenever the kernel is updated. Ames currently does not do
 anything in response to this.
@@ -270,7 +272,7 @@ anything in response to this.
 This `task` returns no `gift`s.
 
 
-### %wegh
+### `%wegh`
 
 This `task` is a request to Ames to produce a memory usage report.
 
