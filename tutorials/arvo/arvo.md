@@ -4,6 +4,10 @@ weight = 1
 template = "doc.html"
 aliases = ["/docs/learn/arvo/arvo/"]
 +++
+
+Parts of this document are out of date, please use information here with
+caution. It is being updated as of 2020.07.20.
+
 Arvo, also called Urbit OS, is our operating system.
 
 # Introduction
