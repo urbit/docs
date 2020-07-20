@@ -4,6 +4,10 @@ weight = 6
 template = "doc.html"
 aliases = ["/docs/learn/arvo/eyre/"]
 +++
+
+*Current docs on Eyre are out of date. Until they are updated this remains for primarily historical purposes*
+
+
 Our HTTP server.
 
 Unix sends http messages to `%eyre`, and `%eyre` produces http messages
