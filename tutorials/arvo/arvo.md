@@ -5,8 +5,8 @@ template = "doc.html"
 aliases = ["/docs/learn/arvo/arvo/"]
 +++
 
-Parts of this document are out of date, please use information here with
-caution. It is being updated as of 2020.07.20.
+> Parts of this document are out of date as of 2020.07.20, please use information here with
+> caution. This message will be removed once it is up to date.
 
 Arvo, also called Urbit OS, is our operating system.
 
