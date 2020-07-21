@@ -4,6 +4,9 @@ weight = 4
 template = "doc.html"
 aliases = ["/docs/learn/arvo/clay/"]
 +++
+
+*Current docs on clay are out of date. Until they are updated, this doc remains for historical purposes.*
+
 Our filesystem.
 
 `%clay` is version-controlled, referentially-transparent, and global.
