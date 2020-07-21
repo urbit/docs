@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["/docs/learn/arvo/clay/"]
 +++
 
-*Current docs on clay are out of date. Until they are updated this remains for primarily historical purposes.*
+*Current docs on clay are out of date. Until they are updated, this doc remains for historical purposes.*
 
 Our filesystem.
 

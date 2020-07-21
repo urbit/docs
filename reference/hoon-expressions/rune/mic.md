@@ -81,7 +81,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 tl;dr -- `;+` converts a `manx` to a `marl`.
 
-`;+` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/tutorials/sail-and-udon.md).
+`;+` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
 In Sail a single XML node is represented by a `manx`.  A single `<p>` node `manx` can be produced in the following way:
 
@@ -308,7 +308,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Discussion
 
-`;*` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/tutorials/sail-and-udon.md).
+`;*` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
 If you need a complex Hoon expression to produce a `marl`, use the `;*` rune.  Often this rune is used with an expression, `p`, that includes one or more `;=` subexpressions.
 
@@ -360,7 +360,7 @@ A `marl`, i.e., a list of `manx`.  A `manx` is a noun that represents a single X
 
 ##### Discussion
 
-`;=` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.  See the [Sail tutorial](@/docs/tutorials/sail-and-udon.md).
+`;=` is a Sail rune.  Sail is a part of Hoon used for creating and operating on nouns that represent XML nodes.  With the appropriate rendering pipeline, a Sail document can be used to generate a static website.
 
 In Sail a single XML node is represented by a `manx`.  A single `<p>` node `manx` can be produced in the following way:
 
