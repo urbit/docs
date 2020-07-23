@@ -31,7 +31,10 @@ that take user input.
 
 ## The `shoe` library {#the-shoe-library}
 
-Here we describe the different cores of `/lib/shoe.hoon` and their purpose.
+Here we describe how sessions are identified, the `%shoe` `card`s that Gall agents
+with the `shoe` library are able to utilize, and the different cores of `/lib/shoe.hoon` and their purpose.
+
+### Session identifiers
 
 An app using the `shoe` library will track sessions with an opaque
 `sole-ids=(list @ta)`. These are typically called session ids, are are
@@ -40,11 +43,26 @@ library may be connected to by a local or remote ship in order to send commands,
 and each of these connections is assigned a unique `@ta` that identifies the
 ship and which session on that ship if there are multiple.
 
+### `%shoe` cards
+
+Gall agents with the `shoe` library are able to utilize `%shoe` `card`s. These
+have the following shape.
+```hoon
+[%shoe sole-ids=(list @ta) effect=shoe-effect]`
+```
+The `sole-ids` is the `list` of session ids that the following `effect` is
+emitted to. An empty `sole-ids` sends the effect to all connected sessions.
+`shoe-effect`s, for now, are always of the shape `[%sole effect=sole-effect]`, where
+`sole-effect`s are basic console events such as displaying text, changing the
+prompt, beeping, etc. These are described in the section on the [`sole` library](#the-sole-library).
+
+For example, a `%shoe` `card` that causes all connected sessions to beep would
+be `[%shoe ~ %sole %bel ~]`. 
+
 ### `shoe` core
 
-An iron (contravariant) door that defines an interface for Gall agents utilized
-the `shoe` library. Use this
-core whenever you want to receive input from the user and run a command. The input will get
+An iron (contravariant) door that defines an interface for Gall agents utilizing
+the `shoe` library. Use this core whenever you want to receive input from the user and run a command. The input will get
 put through the parser (`+command-parser`) and results in a noun of
 `command-type` that the underlying application specifies, which shoe then feeds back into the underlying app as an `+on-command` callback.
 
@@ -53,7 +71,7 @@ more specific to making use of the `shoe` library. Thus you will need to wrap th
 10-arm Gall agent core. See the [shoe example app
 walkthrough](#shoe-example-app-walkthrough) for how to do this.
 
-Under each header we give the type signature for the arm found in `/lib/shoe.hoon`.
+Under each header we give the type signature for the arm.
 
 #### `+command-parser`
 
@@ -64,8 +82,7 @@ Under each header we give the type signature for the arm found in `/lib/shoe.hoo
 ```
 
 Input parser for a specific command-line session. If the head of the result is true,
-instantly run the command. If it's false, require the user to press return. We
-give a brief tutorial on parsing in the [`%shoe` app walkthrough][#shoe-app-walkthrough].
+instantly run the command. If it's false, require the user to press return.
 
 #### `+tab-list`
 
@@ -126,8 +143,8 @@ analogously to how the `default-agent` core is used for Gall apps.
 
 ### `agent` core
 
-This is a wrapper core designed to take in the `shoe` core that has too many
-arms to be a Gall agent core, and turns it into a standard Gall agent core by
+This is a wrapper core designed to wrap the `shoe` core, which has too many
+arms to be a Gall agent core. This turns it into a standard Gall agent core by
 integrating the additional arms into the standard ones.
 
 
@@ -136,26 +153,15 @@ integrating the additional arms into the standard ones.
 `shoe` apps create `shoe-effect` cards of the `[%shoe
 ...]` shape, which currently just wrap `sole-effect`s, i.e. instructions for displaying text and producing other effects in the console.
 
-From `sur/sole.hoon`:
+The list of possible `sole-effects` can be found in `/sur/sole.hoon`. A few
+commonly used ones are as follows. `[%txt p=tape]` is used to display a line of text. `[%bel ~]`
+is used to emit a beep. `[%pro sole-prompt]` is used to set the prompt. `[%mor
+p=(list sole-effect)]` is used to emit multiple effects.
+
+For example, a `sole-effect` that beeps and displays `This is some text.` would
+be structured as
 ```hoon
-++  sole-effect                                         ::  app to sole
-  $%  {$bel ~}                                          ::  beep
-      {$blk p/@ud q/@c}                                 ::  blink+match char at
-      {$clr ~}                                          ::  clear screen
-      {$det sole-change}                                ::  edit command
-      {$err p/@ud}                                      ::  error point
-      {$klr p/styx}                                     ::  styled text line
-      {$mor p/(list sole-effect)}                       ::  multiple effects
-      {$nex ~}                                          ::  save clear command
-      {$pro sole-prompt}                                ::  set prompt
-      {$sag p/path q/*}                                 ::  save to jamfile
-      {$sav p/path q/@}                                 ::  save to file
-      {$tab p/(list {=cord =tank})}                     ::  tab-complete list
-      {$tan p/(list tank)}                              ::  classic tank
-  ::  {$taq p/tanq}                                     ::  modern tank
-      {$txt p/tape}                                     ::  text line
-      {$url p/@t}                                       ::  activate url
-  ==
+[%mor [%txt "This is some text."] [%bel ~] ~]
 ```
 
 ## `%shoe` app walkthrough {#shoe-app-walkthrough}
@@ -165,7 +171,8 @@ the code, explaining what each line does.
 
 ### Playing with `%shoe`
 
-First let's test the functionality of `%shoe` so we know what we're getting into.
+First let's test the functionality of `%shoe` so we know what we're getting
+into.
 
 Start two fake ships, one named `~zod` and the other can have any name - we will
 go with `~nus`. Fake ships run locally are able to see each other, and our
