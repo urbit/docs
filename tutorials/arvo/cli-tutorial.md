@@ -31,7 +31,7 @@ that take user input.
 
 ## The `shoe` library {#the-shoe-library}
 
-Here we describe how sessions are identified, the `%shoe` `card`s that Gall agents
+Here we describe how sessions are identified, the specialized `card`s that Gall agents
 with the `shoe` library are able to utilize, and the different cores of `/lib/shoe.hoon` and their purpose.
 
 ### Session identifiers
