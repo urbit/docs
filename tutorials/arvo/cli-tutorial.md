@@ -9,7 +9,7 @@ template = "doc.html"
 ## Introduction
 
 In this walkthrough we will go in-depth on how to build command line interface (CLI)
-applications in Urbit using the `shoe` library
+applications in Urbit using the `shoe` library.
 
 There are three CLI apps that currently ship with urbit - `%dojo`, `%chat-cli`,
 and `%shoe`. You should be familiar with the former two, the latter is an example
