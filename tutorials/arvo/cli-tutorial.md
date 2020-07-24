@@ -42,10 +42,10 @@ library may be connected to by a local or remote ship in order to send commands,
 and each of these connections is assigned a unique `@ta` that identifies the
 ship and which session on that ship if there are multiple.
 
-### `%shoe` cards
+### `%shoe` `card`s
 
 Gall agents with the `shoe` library are able to utilize `%shoe` `card`s. These
-additions to the standard set of cards have the following shape.
+additions to the standard set of `cards` have the following shape.
 ```hoon
 [%shoe sole-ids=(list @ta) effect=shoe-effect]`
 ```
@@ -149,7 +149,7 @@ integrating the additional arms into the standard ones.
 
 ## The `sole` library {#the-sole-library}
 
-`shoe` apps may create specialized cards of the `[%shoe
+`shoe` apps may create specialized `card`s of the `[%shoe
 (list @ta) shoe-effect]` shape, where `shoe-effect` currently just wrap `sole-effect`s, i.e. instructions for displaying text and producing other effects in the console.
 
 The list of possible `sole-effects` can be found in `/sur/sole.hoon`. A few
