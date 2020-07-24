@@ -45,11 +45,11 @@ ship and which session on that ship if there are multiple.
 ### `%shoe` cards
 
 Gall agents with the `shoe` library are able to utilize `%shoe` `card`s. These
-have the following shape.
+additions to the standard set of cards have the following shape.
 ```hoon
 [%shoe sole-ids=(list @ta) effect=shoe-effect]`
 ```
-The `sole-ids` is the `list` of session ids that the following `effect` is
+`sole-ids` is the `list` of session ids that the following `effect` is
 emitted to. An empty `sole-ids` sends the effect to all connected sessions.
 `shoe-effect`s, for now, are always of the shape `[%sole effect=sole-effect]`, where
 `sole-effect`s are basic console events such as displaying text, changing the
@@ -65,12 +65,12 @@ the `shoe` library. Use this core whenever you want to receive input from the us
 put through the parser (`+command-parser`) and results in a noun of
 `command-type` that the underlying application specifies, which shoe then feeds back into the underlying app as an `+on-command` callback.
 
-In addition to the ten arms that all Gall core apps possess, `+shoe` has a few
-more specific to making use of the `shoe` library. Thus you will need to wrap the `shoe:shoe` core with the `agent:shoe` core to obain a standard
+In addition to the ten arms that all Gall core apps possess, `+shoe` defines and expects a few
+more, tailored to common CLI logic. Thus you will need to wrap the `shoe:shoe` core using the `agent:shoe` fuction to obtain a standard
 10-arm Gall agent core. See the [shoe example app
 walkthrough](#shoe-example-app-walkthrough) for how to do this.
 
-Under each header we give the type signature for the arm.
+The additional arms are described below. The hoon code shows their expected type signature. As we'll see [later](#shoe-app-walkthrough), the `command-type` can differ per application. Note also that most of these take a session identifier as an argument. This lets applications provide different users (at potentially different "places" within the application" with different affordances.
 
 #### `+command-parser`
 
@@ -80,7 +80,7 @@ Under each header we give the type signature for the arm.
     |~(nail *(like [? command-type]))
 ```
 
-Input parser for a specific command-line session. If the head of the result is true,
+Input parser for a specific command-line session. Will be run on whatever the user tries to input into the command prompt, and won't let them type anything that doesn't parse. If the head of the result is true,
 instantly run the command. If it's false, require the user to press return.
 
 #### `+tab-list`
@@ -111,7 +111,7 @@ Called when a valid command is run.
     *?
 ```
 
-Called to determine whether the app may be connected to. For example, you
+Called to determine whether a session may be opened or connected to. For example, you
 may only want the local ship to be able to connect.
 
 #### `+on-connect`
@@ -122,7 +122,7 @@ may only want the local ship to be able to connect.
     *(quip card _^|(..on-init))
 ```
 
-Called when a connection is to be made.
+Called when a session is opened or connected to.
 
 #### `+on-disconnect`
 
@@ -132,30 +132,32 @@ Called when a connection is to be made.
     *(quip card _^|(..on-init))
 ```
 
-Called when a previously made connection is to be disconnected.
+Called when a previously made session gets disconnected from.
 
 ### `default` core
 
 This core contains the bare minimum implementation of the additional `shoe` arms
 beyond the 10 standard Gall app ams. It is used
-analogously to how the `default-agent` core is used for Gall apps.
+analogously to how the `default-agent` core is used for regular Gall apps.
 
 ### `agent` core
 
-This is a wrapper core designed to wrap the `shoe` core, which has too many
-arms to be a Gall agent core. This turns it into a standard Gall agent core by
+This is a function for wrapping a `shoe` core, which has too many
+arms to be a valid Gall agent core. This turns it into a standard Gall agent core by
 integrating the additional arms into the standard ones.
 
 
 ## The `sole` library {#the-sole-library}
 
-`shoe` apps create `shoe-effect` cards of the `[%shoe
-...]` shape, which currently just wrap `sole-effect`s, i.e. instructions for displaying text and producing other effects in the console.
+`shoe` apps may create specialized cards of the `[%shoe
+(list @ta) shoe-effect]` shape, where `shoe-effect` currently just wrap `sole-effect`s, i.e. instructions for displaying text and producing other effects in the console.
 
 The list of possible `sole-effects` can be found in `/sur/sole.hoon`. A few
-commonly used ones are as follows. `[%txt p=tape]` is used to display a line of text. `[%bel ~]`
-is used to emit a beep. `[%pro sole-prompt]` is used to set the prompt. `[%mor
-p=(list sole-effect)]` is used to emit multiple effects.
+commonly used ones are as follows.
+- `[%txt tape]` is used to display a line of text.
+- `[%bel ~]` is used to emit a beep.
+- `[%pro sole-prompt]` is used to set the prompt.
+- `[%mor (list sole-effect)]` is used to emit multiple effects.
 
 For example, a `sole-effect` that beeps and displays `This is some text.` would
 be structured as
@@ -305,14 +307,12 @@ wrap again with `verb`.
 +*  this  .
     def   ~(. (default-agent this %|) bowl)
     des   ~(. (default:shoe this command) bowl)
-::
 ```
 This is boilerplate Gall agent core code. We set `this` to be a macro for the
-subject, which is the Gall agent core itself. We set `def` to be a macro for
-`default-agent` door, which also initializes it. Then we set `des`  to be a
-macro for the `default:shoe` door, which also initializes it.
+subject, which is the Gall agent core itself. We set `def` and `des` to be
+macros for initialized `default-agent` and `default:shoe` doors respectively.
 
-Next we implements all of the arms requires for a `shoe` agent. Starting with
+Next we implement all of the arms required for a `shoe` agent. Starting with
 the standard Gall arms:
 
 ```hoon
@@ -331,9 +331,9 @@ the standard Gall arms:
 ++  on-arvo   on-arvo:def
 ++  on-fail   on-fail:def
 ```
-These are boilerplate Gall app arms using the minimum implementation found in `def`.
+These are minimalist Gall app arm implementations using the default behavior found in `def`.
 
-Here begins the implementations of the additional arms required by the
+Here begins the implementation of the additional arms required by the
 `(shoe:shoe command)` interface.
 ```hoon
 ++  command-parser
@@ -345,7 +345,7 @@ Here begins the implementations of the additional arms required by the
 input and transform it into `command`s for the app to execute. Writing a proper
 command parser requires understanding of the Hoon parsing functions found in the
 standard library. How to do so may be found in the parsing documentation (coming
-soon). For now, it is sufficient to know that this arm matches `demo` and
+soon). For now, it is sufficient to know that this arm matches the text "demo" and
 produces a `[? command]`-shaped noun in response.
 
 
@@ -379,7 +379,7 @@ recognizes that `demo` has been entered by a user.
 ```
 This is a gate that takes in the `sole-id` corresponding to the session and the
 `command` noun parsed by `+command-parser` and returns a `list` of `card`s and
-`_this`, which is Gall agent core including its state.
+`_this`, which is our shoe agent core including its state.
 ```hoon
   =-  [[%shoe ~ %sole -]~ this]
 ```
@@ -403,7 +403,7 @@ origin of the command is not our ship to just print it normally with the `%txt`
 `sole-effect`. Otherwise we use `%klr`, which prints it stylistically (here it
 makes the text green and bold).
 
-The following allows either `~zod`, the host ship, and its moons to connect to
+The following allows either `~zod`, or the host ship and its moons, to connect to
 this app's command line interface using `|link`.
 ```hoon
 ++  can-connect
