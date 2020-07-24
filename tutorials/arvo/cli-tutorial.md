@@ -66,7 +66,7 @@ put through the parser (`+command-parser`) and results in a noun of
 `command-type` that the underlying application specifies, which shoe then feeds back into the underlying app as an `+on-command` callback.
 
 In addition to the ten arms that all Gall core apps possess, `+shoe` defines and expects a few
-more, tailored to common CLI logic. Thus you will need to wrap the `shoe:shoe` core using the `agent:shoe` fuction to obtain a standard
+more, tailored to common CLI logic. Thus you will need to wrap the `shoe:shoe` core using the `agent:shoe` function to obtain a standard
 10-arm Gall agent core. See the [shoe example app
 walkthrough](#shoe-example-app-walkthrough) for how to do this.
 
@@ -98,7 +98,7 @@ Autocomplete options for the command-line session (to match `+command-parser`).
 ```hoon
   ++  on-command
     |~  [sole-id=@ta command=command-type]
-    *(quip card _^|(..on-init))
+    *(quip card _this)
 ```
 
 Called when a valid command is run.
@@ -179,8 +179,8 @@ Start two fake ships, one named `~zod` and the other can have any name - we will
 go with `~nus`. Fake ships run locally are able to see each other, and our
 intention is to connect their `%shoe` apps.
 
-On each fake ship start `%shoe` by entering `|start %shoe` into dojo. You may
-then switch to `%shoe` by pressing `Ctrl-X`, possibly multiple times, which will
+On each fake ship start `%shoe` by entering `|start %shoe` into dojo. This will
+automatically
 change the prompt to `~zod:shoe>` and `~nus:shoe>`. Enter `demo` from `~zod` and press Enter:
 ```
 ~zod ran the command
@@ -189,7 +189,7 @@ change the prompt to `~zod:shoe>` and `~nus:shoe>`. Enter `demo` from `~zod` and
 `~zod ran the command` should be displayed in bold green text, signifying that
 the command originated locally.
 
-Now we will connect the sessions. Switch `~zod` back to dojo and enter `|link
+Now we will connect the sessions. Switch `~zod` back to dojo with `Ctrl-X` and enter `|link
 ~nus %shoe`. If this succeeds you will see the following.
 ```
 >=
@@ -288,14 +288,8 @@ contents of `state` (if it had any).
 ^-  (shoe:shoe command)
 ```
 
-This sequence of commands tells the compiler that the following core is a Gall
-agent core that may possess arms of the sort defined in `verb`, `agent:dbug`,
-and `agent:shoe`. These cores tell the compiler what type signature these arms
-must have, and ensure that the arms that are not standard Gall arms are put into
-the context so that the resulting core nests within `agent:gall`.
-
-As always, the casts here are just reminders of what is being produced. So let's
-follow what is being called with the `%` runes. We call `(agent:shoe command)`
+The casts here are just reminders of what is being produced. So let's focus on
+what the `%` runes are doing, from bottom to top. We call `(agent:shoe command)`
 on what follows (i.e. the rest of the app),
 producing a standard Gall agent core. Then we call wrap the Gall agent core with
 `agent:dbug`, endowing it with additional arms useful for debugging, and then
