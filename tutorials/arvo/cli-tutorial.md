@@ -70,7 +70,7 @@ more, tailored to common CLI logic. Thus you will need to wrap the `shoe:shoe` c
 10-arm Gall agent core. See the [shoe example app
 walkthrough](#shoe-example-app-walkthrough) for how to do this.
 
-The additional arms are described below. The hoon code shows their expected type signature. As we'll see [later](#shoe-app-walkthrough), the `command-type` can differ per application. Note also that most of these take a session identifier as an argument. This lets applications provide different users (at potentially different "places" within the application" with different affordances.
+The additional arms are described below. The Hoon code shows their expected type signature. As we'll see [later](#shoe-app-walkthrough), the `command-type` can differ per application. Note also that most of these take a session identifier as an argument. This lets applications provide different users (at potentially different "places" within the application) with different affordances.
 
 #### `+command-parser`
 
