@@ -45,7 +45,7 @@ ship and which session on that ship if there are multiple.
 ### `%shoe` `card`s
 
 Gall agents with the `shoe` library are able to utilize `%shoe` `card`s. These
-additions to the standard set of `cards` have the following shape.
+additions to the standard set of `cards` have the following shape:
 ```hoon
 [%shoe sole-ids=(list @ta) effect=shoe-effect]`
 ```
@@ -181,7 +181,7 @@ intention is to connect their `%shoe` apps.
 
 On each fake ship start `%shoe` by entering `|start %shoe` into dojo. This will
 automatically
-change the prompt to `~zod:shoe>` and `~nus:shoe>`. Enter `demo` from `~zod` and press Enter:
+change the prompt to `~zod:shoe>` and `~nus:shoe>`. Type `demo` and watch the following appear:
 ```
 ~zod ran the command
 ~zod:shoe> 
@@ -340,7 +340,7 @@ input and transform it into `command`s for the app to execute. Writing a proper
 command parser requires understanding of the Hoon parsing functions found in the
 standard library. How to do so may be found in the parsing documentation (coming
 soon). For now, it is sufficient to know that this arm matches the text "demo" and
-produces a `[? command]`-shaped noun in response.
+produces a `[? command]`-shaped noun in response. Note how the `&` signifies that the command will be run as soon as it has been entered, without waiting for the user to press return.
 
 
 ```hoon
