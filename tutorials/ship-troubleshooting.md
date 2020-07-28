@@ -97,6 +97,22 @@ Since version `0.8.0`, changes no longer automatically sync between the Unix sid
 
 You may have booted a ship with your keyfile twice in the same era. To fix this, you must perform a [personal breach](#personal-breach).
 
+### I can't communicate with a specific ship
+
+First, find a ship to check the keys of.  If you have a particular ship you care about, use that one.  Find its keyRevisionNumber is on Etherscan, as described [here](https://urbit.org/docs/tutorials/ship-troubleshooting/#i-keep-getting-an-ames-error-stack-trace).
+
+If you just want to know if it's up to date in general, look [here](https://etherscan.io/address/azimuth.eth#events) for a "ChangedKeys" event to find a recent key update.  If none of those events are visible, search the events for `0xaa10e7a0117d4323f1d99d630ec169bebb3a988e895770e351987e01ff5423d5`.  You're looking for the ship name, labeled "topic1" and the "keyRevisionNumber", which is the last one.
+
+Now that you have a ship and an expected keyRevisionNumber (also called "life"), run 
+
+```
+.^(* %j /=life=/~sampel-sipnym)
+``` 
+
+where ~sampel-sipnym is the ship you're looking for.  If that gives the number you saw on etherscan, you're up to date.  If it gives an earlier number, you're behind (in which case, follow the instructions in the doc page linked above).
+
+If it gives an error and you're sure you typed it right, you probably never got any information about that ship.  This usually means the original sync failed, so you may only have information about your sponsorship tree and all galaxies (those are retrieved in the preboot validation).  If you just booted, this is expected; it takes a few minutes to receive the first update.  If you're looking up a ship that has no keys on chain, this error is expected (maybe you mistyped the ship name?).  Otherwise, the initial sync failed, and you should run the :azimuth-tracker command mentioned in that doc page.
+
 ### I keep getting an `ames` error stack-trace
 
 You may see a message like this one: `/~zod/home/~2019.7.22..18.55.46..83a3/sys/vane/ames:<[line column].[line column]>`. This is a clay path to a Hoon file, pointing to the line and column where an expression crashed. This kind of error might be accompanied by a `crud` message.
