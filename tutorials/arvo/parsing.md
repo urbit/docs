@@ -11,7 +11,7 @@ knowledge of parsing is required, and we will explain the basic structure of how
 parsing works in a purely functional language such as Hoon before moving on to
 how it is implemented in Hoon.
 
-## What is parsing?
+## What is parsing? {#what-is-parsing}
 
 A program which takes a raw sequence of characters as an input and produces a data
 structure as an output is known as a _parser_. The data structure produced
@@ -60,7 +60,7 @@ What if we wish to parse the rest of the string? We would need to apply the
 So we see that we can parse strings larger than one character by stringing
 together parsing functions for single characters. Thus in addition to parsing
 functions for single input characters, we want _parser combinators_ that
-allow you to combine two or more simple parsers to form more complex ones.
+allow you to combine two or more parsers to form a more complex one.
 Combinators come in a few shapes and sizes, and typical operations they may
 perform would be to repeat the same parsing operation until the string is
 consumed, try a few different parsing operations until one of them works,
@@ -69,11 +69,224 @@ with Hoon in the [Parsing in Hoon](#parsing-in-hoon) section.
 
 # Parsing in Hoon
 
-In this section we will cover the basic types and functions that are utilized for parsing in
-Hoon, and then build some simple parsers.
+In this section we will cover the basic types, parser functions, and parser
+combinators that are utilized for parsing in Hoon. This is not a complete guide
+to every parsing-related functionality in the standard library, but ought to be
+sufficient to get started with parsing in Hoon and be equipped to discover the
+remainder yourself.
+
+We encourage you to follow along with this section by inputting the commands in dojo.
 
 ## Basic types
 
-hair, edge, etc
+In this section we discuss the types most commonly used for Hoon parsers. In short:
+
+ - A `hair` is the position in the text the parser is at,
+ - A `nail` is parser input,
+ - An `edge` is parser output,
+ - A `rule` is a parser.
+
+### `hair`
+
+```hoon
+++  hair  [p=@ud q=@ud]
+```
+
+A `hair` is a pair of `@ud` used to keep track of what has already been parsed.
+`p` represents the column and `q` represents the line.
+
+### `nail`
+
+```hoon
+++  nail  [p=hair q=tape]
+```
+We recall from our [discussion above](#what-is-parsing) that parsing functions must keep
+track of both what has been parsed and what has yet to be parsed. Thus a `nail`
+consists of both a `hair`, giving the line and column up to which the input
+sequence has already been parsed, and a `tape`, consisting of what remains of
+the original input string (i.e. everything after the location indicated by the
+`nail`, including the character at that `nail`).
+
+For example, if you wish to feed the entire `tape` `"abc"` into a parser, you
+would pass it as the `nail` `[[1 1] "abc"]`. If the parser successfully parses the first
+character, the `nail` it returns will be `[[2 1] "bc"]` (though we note that
+parser outputs are actually `edge`s which contain a `nail`, see the following).
+
+### `edge`
+
+```hoon
+++  edge  [p=hair q=(unit [p=* q=nail])]
+```
+An `edge` is the output of a parser. If the parse succeeded, `p` is the location
+of the original input `tape `up to which the text has been parsed. If the parse
+failed, `p` will be the first `hair` at which the parse failed.
+
+`q` may be `~`, indicating that the parse has failed .
+If the parse did not fail, `p.q` is the data structure that is the result of the
+parse up to this point, while `q.q` is the `nail` which contains the remainder
+of what is to be parsed. If `q` is not null, `p` and `p.q.q` are identical.
+
+### `rule`
+
+```hoon
+++  rule  _|:($:nail $:edge)
+```
+A `rule` is a gate which takes in a `nail` and returns an `edge` - in other
+words, a parser. Not totally sure why its written like this, though.
+
+Maybe mention this from `/app/shoe.hoon` as well?
+```hoon
+|~(nail *(like [? command]))
+```
+
+```hoon
+++  edge  {p/hair q/(unit {p/* q/nail})}                ::  parsing output
+++  hair  {p/@ud q/@ud}                                 ::  parsing trace
+++  like  |*  a/$-(* *)                                 ::  generic edge
+          |:  b=`*`[(hair) ~]                           ::
+          :-  p=(hair -.b)                              ::
+          ^=  q                                         ::
+          ?@  +.b  ~                                    ::
+          :-  ~                                         ::
+          u=[p=(a +>-.b) q=[p=(hair -.b) q=(tape +.b)]] ::
+++  nail  {p/hair q/tape}                               ::  parsing input
+++  pint  {p/{p/@ q/@} q/{p/@ q/@}}                     ::  line+column range
+++  rule  _|:($:nail $:edge)                            ::  parsing rule
+++  spot  {p/path q/pint}                               ::  range in file
+```
+
+## Parser builders
+
+These functions are used to build `rule`s (i.e. parsers), and thus are often
+called rule-builders. For a complete list of parser builders, see [4f: Parsing
+(Rule-Builders)](@/docs/reference/library/4f.md), but also the more specific
+functions in [4h: Parsing (ASCII
+Glyphs)](@/docs/reference/library/4h.md), [4i: Parsing (Useful
+Idioms)](@/docs/reference/library/4i.md), [4j: Parsing (Bases and Base
+Digits)](@/docs/reference/library/4j.md), [4l: Atom Parsing](@/docs/reference/library/4l.md).
+
+### `just`
+
+The most basic rule builder, `just` takes in a single `char` and produces a
+`rule` that attempts to match that `char` to the first character in the `tape`
+of the input `nail`.
+
+```
+> =edg ((just 'a') [[1 1] "abc"])
+> edg
+[p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
+```
+We note that `p.edg` is `[p=1 q=2]`, indicating that the next character to be
+parsed is in line 1, column 2. `q.edg` is not null, indicating that the parse
+succeeded. `p.q.edg` is `'a'`, which is the result of the parse. `p.q.q.edg` is the same as `p.edg`, which is always the case for
+`rule`s built using standard library functions when the parse succeeds. Lastly,
+`q.q.edg` is `"bc"`, which is the part of the input `tape` that has yet to be parsed.
+
+Now let's see what happens when the parse fails.
+```
+> =edg ((just 'b') [[1 1] "abc"])
+> edg
+[p=[p=1 q=1] q=~]
+```
+Now we have that `p.edg` is the same as the input `hair`, `[1 1]`, meaning the
+parser has not advanced since the parse failed. `q.edg` is null, indicating that
+the parse has failed.
+
+In [parsing arithmetic expressions](#parsing-arithmetic-expressions) we will see
+how to string together a sequence of `just`s in order to parse an entire string.
+(maybe in the next section instead? seems like a good example for `;~`)
+
+### `jest`
+
+`jest` is a `rule` builder used to match a `cord`. It takes an input `cord` and
+produces a `rule` that attempts to match that `cord` against the beginning of
+the `tape` in an input `nail`.
+
+Let's see what happens when we successfully parse the entire input `tape`.
+```
+> =edg ((jest 'abc') [[1 1] "abc"])
+> edg
+[p=[p=1 q=4] q=[~ [p='abc' q=[p=[p=1 q=4] q=""]]]]
+```
+`p.edg` is `[p=1 q=4]`, indicating that the next character to be parsed is at
+line 1, column 4. Of course, this does not exist since the input `tape` was only
+3 characters long, so this actually indicates that the entire `tape` has been
+successfully parsed (since the `hair` does not advance in the case of failure).
+`p.q.edg` is `'abc'`, as expected. `q.q.edg` is `""`, indicating that nothing
+remains to be parsed.
+
+What happens if we only match some of the input `tape`?
+```
+> =edg ((jest 'ab') [[1 1] "abc"])
+> edg
+[p=[p=1 q=3] q=[~ [p='ab' q=[p=[p=1 q=3] q="c"]]]]
+```
+Now we have that the result, `p.q.edg`, is `'ab'`, while the remainder `q.q.q.edg`
+is `"c"`. So `jest` has successfully parsed the first two characters, while the
+last character remains. Furthermore, we still have the information that the
+remaining character was in line 1 column 3 from `p.edg` and `p.q.q.edg`.
+
+What happens when `jest` fails?
+```
+> ((jest 'bc') [[1 1] "abc"])
+[p=[p=1 q=1] q=~]
+```
+Despite the fact that `'bc'` appears in `"abc"`, because it was not at the
+beginning the parse failed. We will see in [basic parser
+combinators](#basic-parser-combinators) how to modify this `rule` so that it
+finds `bc` successfully.
+
+## Basic parser combinators
+
+Something about `;~`
+
+## Outside callers
+
+Since `hair`s, `nail`s, etc. are only utilized within the context of writing
+parsers, we'd like to hide them from the rest of the code of a program that
+utilizes parsers. That is to say, you'd like the programmer to only worry about
+passing `tape`s to the parser, and not have to dress up the `tape` as a `nail`
+themselves. Thus we have several functions for exactly this purpose.
+
+These functions take in either a `tape` or an `@` (typically representing a
+`cord`) with a `rule` and attempts to parse the input with the `rule`. If the
+parse succeeds, it returns the result, otherwise it crashes with a stack trace or returns null.
+
+Here we cover the basics, for complete information including additional examples see [4g: Parsing (Outside Caller)](@/docs/reference/library/4g.md).
+
+### Parsing `tape`s
+
+`scan` takes in a `tape` and a `rule` and attempts to parse the `tape` with the rule.
+
+```
+> (scan "hello" (jest 'hello'))
+'hello'
+> (scan "hello zod" (jest 'hello'))
+{1 6}
+'syntax-error'
+```
+
+`rust` works the same way as `scan`, except it returns a `unit` of the result,
+which is null if the parse failed.
+
+```
+> (rust "a" (just 'a'))
+[~ 'a']
+> (rust "a" (just 'b'))
+~
+```
+
+### Parsing atoms
+
+[Recall](@/docs/tutorials/hoon/lists.md) that `cord`s are atoms with the aura
+`@t` and are typically used to represent strings internally as data, as atoms
+are faster for the computer to work with than `tape`s, which are `list`s of
+`@tD` atoms. `rash` and `rush` are for parsing atoms, with `rash` being
+analogous to `scan` and `rush` being analogous to `rust`. Under the hood, `rash`
+calls `scan` after converting the input atom to a `tape`, and `rush` does
+similary for `rust`.
+
 
 ## Parsing arithmetic expressions
+
+
