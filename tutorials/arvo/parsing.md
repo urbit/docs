@@ -165,9 +165,9 @@ Glyphs)](@/docs/reference/library/4h.md), [4i: Parsing (Useful
 Idioms)](@/docs/reference/library/4i.md), [4j: Parsing (Bases and Base
 Digits)](@/docs/reference/library/4j.md), [4l: Atom Parsing](@/docs/reference/library/4l.md).
 
-### `just`
+### `+just`
 
-The most basic rule builder, `just` takes in a single `char` and produces a
+The most basic rule builder, `+just` takes in a single `char` and produces a
 `rule` that attempts to match that `char` to the first character in the `tape`
 of the input `nail`.
 
@@ -192,13 +192,11 @@ Now we have that `p.edg` is the same as the input `hair`, `[1 1]`, meaning the
 parser has not advanced since the parse failed. `q.edg` is null, indicating that
 the parse has failed.
 
-In [parsing arithmetic expressions](#parsing-arithmetic-expressions) we will see
-how to string together a sequence of `just`s in order to parse an entire string.
-(maybe in the next section instead? seems like a good example for `;~`)
+Later we will use [+star](#star) to string together a sequence of `+just`s in order to parse an entire string.
 
-### `jest`
+### `+jest`
 
-`jest` is a `rule` builder used to match a `cord`. It takes an input `cord` and
+`+jest` is a `rule` builder used to match a `cord`. It takes an input `cord` and
 produces a `rule` that attempts to match that `cord` against the beginning of
 the `tape` in an input `nail`.
 
@@ -222,23 +220,30 @@ What happens if we only match some of the input `tape`?
 [p=[p=1 q=3] q=[~ [p='ab' q=[p=[p=1 q=3] q="c"]]]]
 ```
 Now we have that the result, `p.q.edg`, is `'ab'`, while the remainder `q.q.q.edg`
-is `"c"`. So `jest` has successfully parsed the first two characters, while the
+is `"c"`. So `+jest` has successfully parsed the first two characters, while the
 last character remains. Furthermore, we still have the information that the
 remaining character was in line 1 column 3 from `p.edg` and `p.q.q.edg`.
 
-What happens when `jest` fails?
+What happens when `+jest` fails?
 ```
 > ((jest 'bc') [[1 1] "abc"])
 [p=[p=1 q=1] q=~]
 ```
 Despite the fact that `'bc'` appears in `"abc"`, because it was not at the
-beginning the parse failed. We will see in [basic parser
-combinators](#basic-parser-combinators) how to modify this `rule` so that it
+beginning the parse failed. We will see in [parser
+combinators](#parser-combinators) how to modify this `rule` so that it
 finds `bc` successfully.
 
-## Basic parser combinators
+### `+shim`
 
-Something about `;~`
+`+shim` is used to parse characters within a given range. It takes in two atoms
+and returns a `rule`.
+
+```
+> ((shim 'a' 'z') [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
+```
+
 
 ## Outside callers
 
@@ -256,7 +261,7 @@ Here we cover the basics, for complete information including additional examples
 
 ### Parsing `tape`s
 
-`scan` takes in a `tape` and a `rule` and attempts to parse the `tape` with the rule.
+`+scan` takes in a `tape` and a `rule` and attempts to parse the `tape` with the rule.
 
 ```
 > (scan "hello" (jest 'hello'))
@@ -266,7 +271,7 @@ Here we cover the basics, for complete information including additional examples
 'syntax-error'
 ```
 
-`rust` works the same way as `scan`, except it returns a `unit` of the result,
+`+rust` works the same way as `+scan`, except it returns a `unit` of the result,
 which is null if the parse failed.
 
 ```
@@ -276,17 +281,81 @@ which is null if the parse failed.
 ~
 ```
 
+For the remainder of this tutorial we will make use of `+scan` so that we do not
+need to deal directly with `nail`s unles it would be ilustrative to do so.
+
+## Parser modifiers
+
+The standard library provides a number of gates that take a `rule` and
+produce a new modified `rule` according to some process. We call these _parser modifiers_. These are
+documented among the [parser builders](@/docs/reference/library/4f.md).
+
+### `+star` {#star}
+
+`+star` is used to apply a `rule` repeatedly. Recall that `+just` only parses
+the first character in the input `tape.`
+
+```
+> ((just 'a') [[1 1] "aaaa"])
+[p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="aaa"]]]]
+```
+
+We can use `+star` to get the rest of the `tape`:
+
+```
+> ((star (just 'a')) [[1 1] "aaa"])
+[p=[p=1 q=4] q=[~ [p=[i='a' t=<|a a|>] q=[p=[p=1 q=4] q=""]]]]
+```
+and we note that the parsing ceases when it fails.
+```
+> ((star (just 'a')) [[1 1] "aaab"])
+[p=[p=1 q=4] q=[~ [p=[i='a' t=<|a a|>] q=[p=[p=1 q=4] q="b"]]]]
+```
+
+### `+ifix`
+
+`+ifix` modifies a `rule` so that it matches that `rule` only when it is
+surrounded on both sides by text that matches a pair of `rule`s, which is discarded.
+
+```
+> (scan "(42)" (ifix [lit rit] (jest '42')))
+'42'
+```
+`+lit` and `+rit` are shorthand for `(just '(')` and `(just ')')`, respectively. All
+ASCII glyphs have counterparts of this sort, documented
+[here](@/docs/reference/library/4h.md).
+
+
+## Parser combinators
+
+Building complex parsers from simpler parsers is accomplished in Hoon with the
+use of two tools: the monadic applicator rune
+[`;~`](@/docs/reference/hoon-expressions/rune/mic.md#micsig) and [parsing
+combinators](@/docs/reference/library/4e.md).
+
+The syntax to combine parsers (chain them together) is
+```hoon
+;~(combinator rule-1 rule-2 ... rule-n)
+```
+The `rule`s are composed together using the combinator as an
+intermediate function, which takes product of a `rule` (an `edge`) and a `rule` and turns
+it into a sample (a `nail`) for the next `rule`.
+
+
 ### Parsing atoms
 
 [Recall](@/docs/tutorials/hoon/lists.md) that `cord`s are atoms with the aura
 `@t` and are typically used to represent strings internally as data, as atoms
 are faster for the computer to work with than `tape`s, which are `list`s of
-`@tD` atoms. `rash` and `rush` are for parsing atoms, with `rash` being
-analogous to `scan` and `rush` being analogous to `rust`. Under the hood, `rash`
-calls `scan` after converting the input atom to a `tape`, and `rush` does
-similary for `rust`.
+`@tD` atoms. `+rash` and `+rush` are for parsing atoms, with `+rash` being
+analogous to `+scan` and `+rush` being analogous to `rust`. Under the hood, `+rash`
+calls `+scan` after converting the input atom to a `tape`, and `+rush` does
+similary for `+rust`.
 
 
 ## Parsing arithmetic expressions
 
+Functions for parsing numbers are documented in [4j: Parsing (Bases and Base
+Digits)](@/docs/reference/library/4j.md). `dim:ag` is for parsing decimal
+numbers.
 
