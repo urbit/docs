@@ -339,9 +339,45 @@ The syntax to combine parsers (chain them together) is
 ```
 The `rule`s are composed together using the combinator as an
 intermediate function, which takes product of a `rule` (an `edge`) and a `rule` and turns
-it into a sample (a `nail`) for the next `rule`.
+it into a sample (a `nail`) for the next `rule` to handle.
+
+### `+plug`
+
+`+plug` simply takes the `nail` in the `edge` produced by one rule and passes it
+to the next `rule`, forming a cell of the results as it proceeds.
+
+```
+> (scan "starship" ;~(plug (jest 'star') (jest 'ship')))
+['star' 'ship']
+```
+
+### `+pose`
+
+`+pose` tries each `rule` you hand it successively until it finds one that
+works.
+
+```
+> (scan "a" ;~(pose (just 'a') (just 'b')))
+'a'
+> (scan "b" ;~(pose (just 'a') (just 'b')))
+'b'
+```
+
+### `+glue`
+
+`+glue` parses a delimiter in between each `rule` and forms a cell of the
+results of each `rule`.
+
+```
+> (scan "a,b" ;~((glue com) (just 'a') (just 'b')))
+['a' 'b']
+> (scan "a,b,a" ;~((glue com) (just 'a') (just 'b')))
+{1 4}
+syntax error
+```
 
 
+    
 ### Parsing atoms
 
 [Recall](@/docs/tutorials/hoon/lists.md) that `cord`s are atoms with the aura
