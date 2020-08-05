@@ -378,7 +378,7 @@ syntax error
 
 
     
-### Parsing atoms
+## Parsing atoms
 
 [Recall](@/docs/tutorials/hoon/lists.md) that `cord`s are atoms with the aura
 `@t` and are typically used to represent strings internally as data, as atoms
@@ -388,10 +388,50 @@ analogous to `+scan` and `+rush` being analogous to `rust`. Under the hood, `+ra
 calls `+scan` after converting the input atom to a `tape`, and `+rush` does
 similary for `+rust`.
 
+## Parsing numbers
+
+Functions for parsing numbers are documented in [4j: Parsing (Bases and Base
+Digits)](@/docs/reference/library/4j.md). In particualr, `dem` is a `rule`
+for parsing decimal numbers.
+
+```
+> (scan "42" dem)
+42
+> (add 1 (scan "42" dem))
+43
+```
+
+## Other parsing tidbits
+
+Need to mention `cold`
 
 ## Parsing arithmetic expressions
 
-Functions for parsing numbers are documented in [4j: Parsing (Bases and Base
-Digits)](@/docs/reference/library/4j.md). `dim:ag` is for parsing decimal
-numbers.
+In this section we will be applying what we have learned to write a parser for
+arithmetic expressions in Hoon. That is, we will make a `rule` that takes in
+`tape`s of the form `"(2+3)*4*"` and returns `20` as a `@ud`.
 
+We call a `tape` consisting of some consistent arithmetic string of numbers,
+`+,*`, `(`, and `)` an _expression_.
+
+I probably need to figure out how to break this into a tree and do all the
+adding and multiplying at the end
+
+### Parsing expressions
+
+An expression is either a term plus an expression or a term.
+
+### Parsing terms
+
+A term is either a factor times a term or a factor.
+
+### Parsing factors
+
+A factor is either an expression surrounded by parentheses or an integer. To parse
+a factor, we first check if it is a number and apply `dem` if so, otherwise
+we strip the parentheses and apply the `rule` for parsing expressions.
+
+```
+> (scan "(5)" ;~(pose dem (ifix [lit rit] dem)))
+5
+```
