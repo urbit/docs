@@ -1,10 +1,8 @@
 +++
-title = "Command line interface apps"
+title = "CLI apps"
 weight = 13
 template = "doc.html"
 +++
-
-# Command line interface apps
 
 ## Introduction
 
