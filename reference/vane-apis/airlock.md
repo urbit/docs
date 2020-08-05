@@ -4,8 +4,6 @@ weight = 1
 template = "doc.html"
 +++
 
-# Airlock
-
 Airlock is the term to describe the set of APIs for interacting with a running Urbit ship from outside of the Urbit network.
 
 ## Urlock-py

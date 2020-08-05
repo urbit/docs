@@ -4,8 +4,6 @@ weight = 5
 template = "doc.html"
 +++
 
-# Gall
-
 ## Reference Agent
 
 This app stores a number for each user. You can increment your number, increment
