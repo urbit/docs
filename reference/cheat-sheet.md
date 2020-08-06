@@ -5,7 +5,7 @@ template = "doc.html"
 aliases = ["docs/reference/cheat-sheet/"]
 +++
 
-Download the cheat sheet PDF [here](https://storage.googleapis.com/media.urbit.org/docs/hoon-cheat-sheet--2017-12-12.pdf).
+Download the cheat sheet PDF [here](https://storage.googleapis.com/media.urbit.org/docs/hoon-cheat-sheet-2020-07-24.pdf).
 
 We've found it's useful to have a quick reference of Hoon's syntax always at
 hand. So above is a download link to a Hoon cheatsheet .pdf. It's missing a
