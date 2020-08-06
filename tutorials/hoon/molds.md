@@ -26,7 +26,7 @@ A mold is compiled to a gate that takes in any noun and produces a typed value, 
 ::  crashes
 ```
 
-To coerce using a gate, it's good practice to use the `;;` rune, which can parse inline molds without requiring a comma:
+To coerce using a gate, it's good practice to use the `;;` rune, which can parse inline molds.
 
 
 ```
@@ -36,19 +36,6 @@ To coerce using a gate, it's good practice to use the `;;` rune, which can parse
 ```hoon
 ;;([feet=@ud inches=@ud] [5 11])
 ::  produces [feet=5 inches=11]
-```
-
-
-Without using `;;`, you would have to start the mold definition with a comma in order for it to be parsed as a mold, not just as a pair of gates with faces on them:
-
-
-```hoon
-(,[feet=@ud inches=@ud] [5 11])
-::  produces [feet=5 inches=11]
-
-
-([feet=@ud inches=@ud] [5 11])
-::  compiler error, can't find $ at axis 2 because this is a pair, not a mold
 ```
 
 
