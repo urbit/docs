@@ -139,21 +139,6 @@ Maybe mention this from `/app/shoe.hoon` as well?
 |~(nail *(like [? command]))
 ```
 
-```hoon
-++  edge  {p/hair q/(unit {p/* q/nail})}                ::  parsing output
-++  hair  {p/@ud q/@ud}                                 ::  parsing trace
-++  like  |*  a/$-(* *)                                 ::  generic edge
-          |:  b=`*`[(hair) ~]                           ::
-          :-  p=(hair -.b)                              ::
-          ^=  q                                         ::
-          ?@  +.b  ~                                    ::
-          :-  ~                                         ::
-          u=[p=(a +>-.b) q=[p=(hair -.b) q=(tape +.b)]] ::
-++  nail  {p/hair q/tape}                               ::  parsing input
-++  pint  {p/{p/@ q/@} q/{p/@ q/@}}                     ::  line+column range
-++  rule  _|:($:nail $:edge)                            ::  parsing rule
-++  spot  {p/path q/pint}                               ::  range in file
-```
 
 ## Parser builders
 
@@ -244,6 +229,12 @@ and returns a `rule`.
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
+### `+knee`
+
+Another important function in the parser builder library is `+knee`, used for building
+recursive parsers. We delay discussion of `+knee` to the
+[section below](#recursive-parsers) as more context is needed to explain it properly.
+
 
 ## Outside callers
 
@@ -331,11 +322,12 @@ ASCII glyphs have counterparts of this sort, documented
 Building complex parsers from simpler parsers is accomplished in Hoon with the
 use of two tools: the monadic applicator rune
 [`;~`](@/docs/reference/hoon-expressions/rune/mic.md#micsig) and [parsing
-combinators](@/docs/reference/library/4e.md).
+combinators](@/docs/reference/library/4e.md). First we introduce a few
+combinators, then we examine more closely how `;~` is used to chain them together.
 
-The syntax to combine parsers (chain them together) is
+The syntax to combine `rule`s is
 ```hoon
-;~(combinator rule-1 rule-2 ... rule-n)
+;~(combinator [list rule])
 ```
 The `rule`s are composed together using the combinator as an
 intermediate function, which takes product of a `rule` (an `edge`) and a `rule` and turns
@@ -376,6 +368,16 @@ results of each `rule`.
 syntax error
 ```
 
+### `;~`
+
+Understanding the rune `;~` is essential to building parsers with Hoon. Let's
+take this opportunity to think about it carefully.
+
+The `rule` created by `;~(combinator [list rule])` 
+```
+> (scan "star" ;~(plug (jest 'star')))
+'star'
+```
 
     
 ## Parsing atoms
@@ -403,7 +405,36 @@ for parsing decimal numbers.
 
 ## Other parsing tidbits
 
-Need to mention `cold`
+Need to mention `cold`, `like`
+
+### Recursive parsers
+
+Naively attempting to write a recursive `rule`, i.e. like
+```
+> |-(;~(pose den ;~(pose $ (easy ~))))
+```
+results in an error, as the compiler will attempt to build an infinite function.
+```
+-find.,.+6
+-find.,.+6
+rest-loop
+```
+Thus some special sauce is required, the `+knee` function.
+
+`+knee` takes in a noun that is the default value of the parser, typically given
+as the bunt value of the type that the `rule` produces, as well as a gate that
+accepts a `rule`. `+knee` produces a `rule` that implements any recursive calls
+in the `rule` in a manner acceptable to the compiler. Thus the preferred manner
+to write the above `rule` is as follows:
+```hoon
+|-(;~(plug prn ;~(pose (knee *tape |.(^$)) (easy ~))))
+```
+
+You may want to utilize the `~+` rune when writing recursive parsers to cache
+the results as you go to improve performance. In [parsing arithmetic
+expressions](#parsing-arithmetic-expressions) we will be writing a recursive
+parser making use of `+knee` and `~+` throughout.
+
 
 ## Parsing arithmetic expressions
 
