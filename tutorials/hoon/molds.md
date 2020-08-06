@@ -8,7 +8,51 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/molds/"]
 A mold is an idempotent function that coerces a [noun](/docs/glossary/noun/) to
 be of a specific type or crashes.
 
-`|$` is a new rune as of the writing of this document so you may see this spelled in slightly different way if you don't have the latest version of `hoon.hoon`. `|$` is the mold builder rune which takes a list of molds and produces a mold.
+
+The simplest molds to understand are arms of cores created with `+$`
+
+```
++$  height  [feet=@ud inches=@ud]
+```
+
+A mold is compiled to a gate that takes in any noun and produces a typed value, or crashes:
+
+```
+(height [5 11])
+::  produces [feet=5 inches=11]
+```
+```
+(height %wrong)
+::  crashes
+```
+
+To coerce using a gate, it's good practice to use the `;;` rune, which can parse inline molds without requiring a comma:
+
+
+```
+;;(height [5 11])
+::  produces [feet=5 inches=11]
+```
+```hoon
+;;([feet=@ud inches=@ud] [5 11])
+::  produces [feet=5 inches=11]
+```
+
+
+Without using `;;`, you would have to start the mold definition with a comma in order for it to be parsed as a mold, not just as a pair of gates with faces on them:
+
+
+```hoon
+(,[feet=@ud inches=@ud] [5 11])
+::  produces [feet=5 inches=11]
+
+
+([feet=@ud inches=@ud] [5 11])
+::  compiler error, can't find $ at axis 2 because this is a pair, not a mold
+```
+
+
+`|$` is the mold builder rune which takes a list of molds and produces a mold.
 
 `|$` implements [parametric
 polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism) in Hoon,
