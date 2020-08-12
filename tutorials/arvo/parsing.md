@@ -440,29 +440,150 @@ parser making use of `+knee` and `~+` throughout.
 
 In this section we will be applying what we have learned to write a parser for
 arithmetic expressions in Hoon. That is, we will make a `rule` that takes in
-`tape`s of the form `"(2+3)*4*"` and returns `20` as a `@ud`.
+`tape`s of the form `"(2+3)*4"` and returns `20` as a `@ud`.
 
 We call a `tape` consisting of some consistent arithmetic string of numbers,
-`+,*`, `(`, and `)` an _expression_.
+`+,*`, `(`, and `)` an _expression_. We wish to build a `rule` that takes in an
+expression and returns the result of the arithmetic computation described by the
+expression as a `@ud`.
 
-I probably need to figure out how to break this into a tree and do all the
-adding and multiplying at the end
+To build a parser it is a helpful exercise to first describe its
+[grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar). This has a
+formal mathematical definition, but we will manage to get by here describing the grammar
+for arithmetic expressions informally.
 
-### Parsing expressions
+First lets look at the code we're going to use, and then dive into explaining
+it. If you'd like to follow along, save the following as `expr-parse.hoon` in
+your `gen/` folder.
+```hoon
+:: This generator parses arithmetic expressions
+::
+|=  [xprs=tape]
+=<
+(print xprs)
+|%
+++  int  @ud
+++  factor
+  %+  knee  *int
+  |.  ~+  ;~  pose
+    dem
+    (ifix [lit rit] expr)
+  ==
+++  turm
+  %+  knee  *int
+  |.  ~+  ;~  pose
+    ((slug mul) tar ;~(pose factor turm))
+    factor
+  ==
+++  expr
+  %+  knee  *int
+  |.  ~+  ;~  pose
+    ((slug add) lus ;~(pose turm expr))
+    turm
+  ==
+++  print
+  |=  [message=tape]
+  (scan message expr)
+--
+```
 
-An expression is either a term plus an expression or a term.
+### Factors, terms, and expressions
 
-### Parsing terms
+Our grammar consists of three `rule`s: one for factors, one for terms, and one
+for expressions.
 
-A term is either a factor times a term or a factor.
+#### Factors
 
-### Parsing factors
+```hoon
+++  factor
+  %+  knee  *int
+  |.  ~+  ;~  pose
+    dem
+    (ifix [lit rit] expr)
+  ==
+```
 
-A factor is either an expression surrounded by parentheses or an integer. To parse
-a factor, we first check if it is a number and apply `dem` if so, otherwise
-we strip the parentheses and apply the `rule` for parsing expressions.
+A _factor_ is either a decimal number or an expression surrounded by parentheses. Put
+into Hoon terms, a decimal number is parsed by the `rule` `+dem` and an
+expression is parsed by removing the surrounding parentheses and then passing
+the result to the expression parser arm `+expr`, given by the `rule` `(ifix [lit
+rit] expr)`. Since we want to parse our expression with one or the other, we
+chain these two `rule`s together using the monadic composition rune `;~` along
+with `+pose`, which says to try each rule in succession until one of them works.
+
+Since expressions ultimately reduce to factors, we are actually building a
+recursive rule. Thus we need to make use of `+knee`. The first argument for
+`+knee` is `*int`, since our final answer should be a `@ud`, to which we have
+assigned the macro `int`.
+
+Then follows the definition of the gate utilized by `+knee`:
+```hoon
+  |.  ~+  ;~  pose
+    dem
+    (ifix [lit rit] expr)
+  ==
+```
+`|.` is used instead of `|-` since... `~+` is used to cache results as we go -
+there is no point in computing `2+2` more than once. Then follows the `rule` we
+described above.
+
+#### Parsing expressions
+
+An _expression_ is either a term plus an expression or a term.
+
+In the case of a
+term plus an expression, we actually must compute what that equals. Thus we will
+make use of [`+slug`](@/docs/reference/library/4f.md#slug), which parses a
+delimited list into `tape`s separated by a given delimiter and then composes
+them by folding with a binary gate. In this case, our delimiter is `+` and our
+binary gate is `+add`. That is to say, we will split the input string into terms
+and expressions separated by luses, parse each term and expression until they
+reduce to a `@ud`, and then add them together. This is accomplished with the
+rule `((slug add) lus ;~(pose turm expr))`.
+
+If the above `rule` does not parse the expression, it must be a `turm`, so we
+pass the `tape` to `+turm` to be evaluated. Again we use `;~` and `pose` to
+accomplish this:
+
+```hoon
+;~  pose
+    ((slug add) lus ;~(pose turm expr))
+    turm
+  ==
+```
+
+The rest of the `+expr` arm is structured just like how `+factor` is, and for
+the same reasons.
+
+
+#### Parsing terms
+
+A _term_ is either a factor times a term or a factor. This is handled similarly
+for expressions, we just need to swap `lus` for `tar`, `add` for `mul`, and
+`;~(pose factor turm)` instead of `;(pose turm expr)`.
+
+```hoon
+++  expr
+  %+  knee  *int
+  |.  ~+  ;~  pose
+    ((slug add) lus ;~(pose turm expr))
+    turm
+  ==
+```
+
+### Try it out
+
+Let's feed some expressions to `+expr-parse` and see how it does.
 
 ```
-> (scan "(5)" ;~(pose dem (ifix [lit rit] dem)))
-5
+> +expr-parse "3"
+3
+> +expr-parse "3+3"
+6
+> +expr-parse "3+3+(2*3)+(4+2)*(4+1)"
+42
+> +expr-parse "3+3+2*3"
+12
 ```
+
+As an exercise, add exponentiation (e.g. `2^3 = 8`) to `+expr-parse`.
