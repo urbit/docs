@@ -15,26 +15,26 @@ how it is implemented in Hoon.
 
 A program which takes a raw sequence of characters as an input and produces a data
 structure as an output is known as a _parser_. The data structure produced
-depends on the use case, but often it may be represented as a tree, and the
+depends on the use case, but often it may be represented as a tree and the
 output is thought of as a structural representation of the input. Parsers are ubiquitous in
-computing, commonly used in applications such as reading files, compiling
+computing, commonly used for to perform tasks such as reading files, compiling
 source code, or understanding commands input in a command line interface.
 
 Parsing a string is rarely done all at once. Instead, it is usually done
 character-by-character, and the return contains the data structure representing
 what has been parsed thus far as well as the remainder of the string to be
-parsed. They also need to be able to fail in case the input is improperly formed.
+parsed. They also need to be able to fail in case the input is improperly
+formed. We will see each of these standard practices implemented in Hoon below.
 
 ## Functional parsers
 
-How parsers are built varies greatly depending on what sort of programming
+How parsers are built varies substantially depending on what sort of programming
 language it is written in. As Hoon is a functional programming language, we will
 be focused on understanding _functional parsers_, also known as _combinator
 parsers_.
 
-Functional parsers are built piece by piece from simple irreducible components
-that are plugged into one another in various ways to form more complex
-parsers.
+Complex functional parsers are built piece by piece from simpler parsers
+that are plugged into one another in various ways to perform the desired task.
 
 The basic building blocks, or primitives, are parsers that read only a
 single character. There are frequently a few types of possible input characters,
@@ -71,11 +71,13 @@ with Hoon in the [Parsing in Hoon](#parsing-in-hoon) section.
 
 In this section we will cover the basic types, parser functions, and parser
 combinators that are utilized for parsing in Hoon. This is not a complete guide
-to every parsing-related functionality in the standard library, but ought to be
+to every parsing-related functionality in the standard library (of which there
+are quite a few), but ought to be
 sufficient to get started with parsing in Hoon and be equipped to discover the
 remainder yourself.
 
-We encourage you to follow along with this section by inputting the commands in dojo.
+We encourage you to follow along with this section by inputting the relevant
+commands in dojo as they are presented.
 
 ## Basic types
 
@@ -177,7 +179,8 @@ Now we have that `p.edg` is the same as the input `hair`, `[1 1]`, meaning the
 parser has not advanced since the parse failed. `q.edg` is null, indicating that
 the parse has failed.
 
-Later we will use [+star](#star) to string together a sequence of `+just`s in order to parse an entire string.
+Later we will use [+star](#star) to string together a sequence of `+just`s in
+order to parse multiple characters at once.
 
 ### `+jest`
 
@@ -229,11 +232,30 @@ and returns a `rule`.
 [p=[p=1 q=2] q=[~ [p='a' q=[p=[p=1 q=2] q="bc"]]]]
 ```
 
+### `+cold`
+
+`+cold` is a `rule` builder that takes in a constant noun we'll call `cus` and a
+`rule` we'll call `sef` and returns a `rule` identical to the `sef` except it
+returns `cus` when it parses successfully.
+
+Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
+is `%foo`.
+```
+> ((cold %foo (just 'a')) [[1 1] "abc"])
+[p=[p=1 q=2] q=[~ u=[p=%foo q=[p=[p=1 q=2] q="bc"]]]]
+```
+
+One common scenario where `+cold` sees play is when writing [command line
+interface (CLI) apps](@/docs/tutorials/arvo/cli-tutorial.md). We usher the
+reader there to find an example where `+cold` is used.
+
+
 ### `+knee`
 
 Another important function in the parser builder library is `+knee`, used for building
 recursive parsers. We delay discussion of `+knee` to the
-[section below](#recursive-parsers) as more context is needed to explain it properly.
+[section below](#recursive-parsers) as more context is needed to explain it
+properly.
 
 
 ## Outside callers
@@ -252,7 +274,7 @@ Here we cover the basics, for complete information including additional examples
 
 ### Parsing `tape`s
 
-`+scan` takes in a `tape` and a `rule` and attempts to parse the `tape` with the rule.
+`+scan` takes in a `tape` and a `rule` and attempts to parse the `tape` with the `rule`.
 
 ```
 > (scan "hello" (jest 'hello'))
@@ -273,7 +295,7 @@ which is null if the parse failed.
 ```
 
 For the remainder of this tutorial we will make use of `+scan` so that we do not
-need to deal directly with `nail`s unles it would be ilustrative to do so.
+need to deal directly with `nail`s except where it is ilustrative to do so.
 
 ## Parser modifiers
 
@@ -331,7 +353,8 @@ The syntax to combine `rule`s is
 ```
 The `rule`s are composed together using the combinator as an
 intermediate function, which takes product of a `rule` (an `edge`) and a `rule` and turns
-it into a sample (a `nail`) for the next `rule` to handle.
+it into a sample (a `nail`) for the next `rule` to handle. We elaborate on this
+behavior [below](#micsig).
 
 ### `+plug`
 
@@ -368,17 +391,47 @@ results of each `rule`.
 syntax error
 ```
 
-### `;~`
+### `;~` {#micsig}
 
 Understanding the rune `;~` is essential to building parsers with Hoon. Let's
 take this opportunity to think about it carefully.
 
-The `rule` created by `;~(combinator [list rule])` 
+The `rule` created by `;~(combinator [list rule])` may be understood
+inductively. To this, let's consider the base case where our `[list rule]` has only a
+single entry.
 ```
 > (scan "star" ;~(plug (jest 'star')))
 'star'
 ```
-
+Our output is identical to that given by `scan "star" (jest 'star')`. This is to
+be expected. The combinator `+plug` is specifically used for chaining together
+`rule`s in the `[list rule]`, but if there is only one `rule`, there is nothing
+to chain. Thus, swapping out `+plug` for another combinator makes no difference here:
+```
+> (scan "star" ;~(pose (jest 'star')))
+'star'
+> (scan "star" ;~((glue com) (jest 'star')))
+'star'
+```
+`;~` and the combinator only begin to play a role once the `[list rule]` has at
+least two elements. So let's look at an example done with `+plug`, the simplest
+combinator.
+```
+> (scan "star" ;~(plug (jest 'st') (jest 'ar')))
+['st' 'ar']
+```
+Our return suggests that we first parsed `"star"` with the `rule` `(jest 'st')` and passed
+the resulting `edge` to `(jest 'ar')` - in other words, we called `+plug` on `(jest
+'st')` and the `edge` returned once it had been used to parse `"star"`. Thus
+`+plug` was the glue that allowed us to join the two `rule`s, and `;~` performed
+the gluing operation. And so, swapping `+plug` for `+pose` results in a crash,
+which clues us into the fact that the combinator now has an effect since there
+is more than one `rule`.
+```
+`> (scan "star" ;~(pose (jest 'st') (jest 'ar')))
+{1 3}
+syntax error
+```
     
 ## Parsing atoms
 
@@ -403,11 +456,7 @@ for parsing decimal numbers.
 43
 ```
 
-## Other parsing tidbits
-
-Need to mention `cold`, `like`
-
-### Recursive parsers
+## Recursive parsers
 
 Naively attempting to write a recursive `rule`, i.e. like
 ```
@@ -436,7 +485,7 @@ expressions](#parsing-arithmetic-expressions) we will be writing a recursive
 parser making use of `+knee` and `~+` throughout.
 
 
-## Parsing arithmetic expressions
+# Parsing arithmetic expressions
 
 In this section we will be applying what we have learned to write a parser for
 arithmetic expressions in Hoon. That is, we will make a `rule` that takes in
@@ -463,6 +512,9 @@ your `gen/` folder.
 (print xprs)
 |%
 ++  int  @ud
+++  print
+  |=  [message=tape]
+  (scan message expr)
 ++  factor
   %+  knee  *int
   |.  ~+  ;~  pose
@@ -481,9 +533,6 @@ your `gen/` folder.
     ((slug add) lus ;~(pose turm expr))
     turm
   ==
-++  print
-  |=  [message=tape]
-  (scan message expr)
 --
 ```
 
@@ -508,7 +557,7 @@ into Hoon terms, a decimal number is parsed by the `rule` `+dem` and an
 expression is parsed by removing the surrounding parentheses and then passing
 the result to the expression parser arm `+expr`, given by the `rule` `(ifix [lit
 rit] expr)`. Since we want to parse our expression with one or the other, we
-chain these two `rule`s together using the monadic composition rune `;~` along
+chain these two `rule`s together using the monadic applicator rune `;~` along
 with `+pose`, which says to try each rule in succession until one of them works.
 
 Since expressions ultimately reduce to factors, we are actually building a
