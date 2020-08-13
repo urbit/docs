@@ -618,6 +618,13 @@ are just recursive calls to the cell constructor `u3i_cell()` e.g.
      u3i_cell(a, u3i_cell(b, u3i_cell(c, d));
 ```
 
+This implies that, to create a list instead of a cell, you will need to append
+`u3_nul` to the appropriately-sized tuple constructor:
+
+```c
+     return(u3nt(a, b, u3_nul));    // for two atoms as a list
+```
+
 Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs/tutorials/vere/nouns.md).
 
 ## Compile the C code
