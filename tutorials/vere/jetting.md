@@ -600,7 +600,7 @@ ending your C code with
    return(123);
 ```
 
-is wrong and will result in a dojo error because you are returning a single atom, instead of a list of three atoms.
+is wrong and will result in a dojo error because you are returning a single atom, instead of a cell containing three atoms.
 
 Instead do one of these:
 
@@ -610,7 +610,7 @@ Instead do one of these:
      return(u3nq(a, b, c, d));  // for four atoms
 ```
 
-If you need to return a longer list, you can compose your own.  Look
+If you need to return a longer collection, you can compose your own.  Look
 at the definitions of these three functions and you will see that they
 are just recursive calls to the cell constructor `u3i_cell()` e.g.
 
