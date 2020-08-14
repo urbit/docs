@@ -534,6 +534,8 @@ If you need to get the size
    u3r_met(3, a);
 ```
 
+Cells have their own set of characteristic functions for accessing interior nouns:  `u3r_cell`, `u3r_trel`, `u3r_qual`, `u3h`, `u3t`, and the like.
+
 The actual meat of the function is up to you.  What is it supposed to do?
 
 Now we move on to return semantics.
