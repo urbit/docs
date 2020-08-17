@@ -397,7 +397,7 @@ Understanding the rune `;~` is essential to building parsers with Hoon. Let's
 take this opportunity to think about it carefully.
 
 The `rule` created by `;~(combinator [list rule])` may be understood
-inductively. To this, let's consider the base case where our `[list rule]` has only a
+inductively. To do this, let's consider the base case where our `[list rule]` has only a
 single entry.
 ```
 > (scan "star" ;~(plug (jest 'star')))
@@ -428,7 +428,7 @@ the gluing operation. And so, swapping `+plug` for `+pose` results in a crash,
 which clues us into the fact that the combinator now has an effect since there
 is more than one `rule`.
 ```
-`> (scan "star" ;~(pose (jest 'st') (jest 'ar')))
+> (scan "star" ;~(pose (jest 'st') (jest 'ar')))
 {1 3}
 syntax error
 ```
@@ -535,6 +535,11 @@ your `gen/` folder.
   ==
 --
 ```
+
+Informally, the grammar here is:
+ - A factor is either an integer or an expression surrounded by parentheses.
+ - A term is either a factor or a factor times a term.
+ - An expression is either a term or a term plus an expression.
 
 ### Factors, terms, and expressions
 
