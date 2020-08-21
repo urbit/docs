@@ -125,6 +125,54 @@ A `$source` is `(each ship term)`.
 ```
 `term=@tas`
 
+```hoon
+        %listen
+      ~&  [%jael-listen whos source]:tac
+      %-  curd  =<  abet
+      (sources:~(feel su hen our now pki etn) [whos source]:tac)
+```
+
+```hoon
+++  su
+      ::  the ++su core handles all derived state,
+      ::  subscriptions, and actions.
+      ::
+      ::  ++feed:su registers subscriptions.
+      ::
+      ::  ++feel:su checks if a ++change should notify
+      ::  any subscribers.
+      ::
+```
+
+```hoon
+    ::  Change sources for ships
+    ::
+    ++  sources
+      |=  [whos=(set ship) =source]
+      ^+  ..feel
+      =^  =source-id  this-su  (get-source-id source)
+      =.  ..feed
+        ?~  whos
+          ..feed(default-source.etn source-id)
+        =/  whol=(list ship)  ~(tap in `(set ship)`whos)
+        =.  ship-sources.etn
+          |-  ^-  (map ship ^source-id)
+          ?~  whol
+            ship-sources.etn
+          (~(put by $(whol t.whol)) i.whol source-id)
+        =.  ship-sources-reverse.etn
+          %-  ~(gas ju ship-sources-reverse.etn)
+          (turn whol |=(=ship [source-id ship]))
+        ..feed
+      ::
+      ?:  ?=(%& -.source)
+        =/  send-message
+          |=  =message
+          [hen %pass /public-keys %a %plea p.source %j /public-keys message]
+        (emit (send-message %public-keys whos))
+      (peer p.source whos)
+    --
+```
 
 #### Returns
 
