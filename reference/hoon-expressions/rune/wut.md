@@ -366,7 +366,7 @@ If there is a case that is never taken you'll get a `mint-vain` error.
 ##### Examples
 
 ```
-~zod:dojo> =cor  |=  vat=?(%a %b)
+~zod:dojo> =cor  |=  vat=@tas
                  ?+  vat  240
                    %a  20
                    %b  42
