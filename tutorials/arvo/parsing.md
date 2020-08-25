@@ -39,16 +39,16 @@ that are plugged into one another in various ways to perform the desired task.
 
 The basic building blocks, or primitives, are parsers that read only a
 single character. There are frequently a few types of possible input characters,
-such as letters, numbers, and symbols. For example, `parse("1", integer)` calls
+such as letters, numbers, and symbols. For example, `(parse "1" integer)` calls
 the parsing routine on the string `"1"` and looks for an integer, and so it
 returns the integer `1`. However, taking into account what was said above about
 parsers returning the unparsed portion of the string as well, we should
 represent this return as a tuple. So we should expect something like this:
 ```
-> parse("1", integer)
-(1, "")
-> parse("123", integer)
-(1, "23")
+> (parse "1" integer)
+[1 ""]
+> (parse "123" integer)
+[1 "23"]
 ```
 What if we wish to parse the rest of the string? We would need to apply the
 `parse` function again:
@@ -57,6 +57,10 @@ What if we wish to parse the rest of the string? We would need to apply the
 (12, "3")
 > parse(parse(parse("123", integer), integer), integer)
 (123, "")
+> (parse (parse "123" integer) integer)
+[12 "3"]
+> (parse (parse (parse "123" integer) integer) integer)
+[123 ""]
 ```
 So we see that we can parse strings larger than one character by stringing
 together parsing functions for single characters. Thus in addition to parsing
@@ -179,9 +183,7 @@ parser has not advanced since parsing failed. `q.edg` is null, indicating that
 parsing has failed.
 
 Later we will use [+star](#star) to string together a sequence of `+just`s in
-order to parse multiple characters at once. However, it should be noted that
-`+jest`, which is covered next, ought to be used in favor of `+just`, which is
-mostly included here for pedagogical reasons.
+order to parse multiple characters at once.
 
 ### `+jest`
 
@@ -531,14 +533,14 @@ your `gen/` folder.
     (ifix [lit rit] expr)
   ==
 ++  turm
-  %+  knee  @ud
+  %+  knee  *@ud
   |.  ~+
   ;~  pose
     ((slug mul) tar ;~(pose factor turm))
     factor
   ==
 ++  expr
-  %+  knee  @ud
+  %+  knee  *@ud
   |.  ~+
   ;~  pose
     ((slug add) lus ;~(pose turm expr))
@@ -556,7 +558,7 @@ for expressions.
 
 ```hoon
 ++  factor
-  %+  knee  @ud
+  %+  knee  *@ud
   |.  ~+
   ;~  pose
     dem
@@ -623,8 +625,9 @@ for expressions, we just need to swap `lus` for `tar`, `add` for `mul`, and
 
 ```hoon
 ++  expr
-  %+  knee  *int
-  |.  ~+  ;~  pose
+  %+  knee  *@ud
+  |.  ~+
+  ;~  pose
     ((slug add) lus ;~(pose turm expr))
     turm
   ==
