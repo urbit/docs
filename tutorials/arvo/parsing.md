@@ -236,7 +236,7 @@ and returns a `rule`.
 ### `+cold`
 
 `+cold` is a `rule` builder that takes in a constant noun we'll call `cus` and a
-`rule` we'll call `sef` and returns a `rule` identical to the `sef` except it
+`rule` we'll call `sef`. It returns a `rule` identical to the `sef` except it
 replaces the parsing result with `cus`.
 
 Here we see that `p.q` of the `edge` returned by the `rule` created with `+cold`
@@ -267,8 +267,8 @@ utilizes parsers. That is to say, you'd like the programmer to only worry about
 passing `tape`s to the parser, and not have to dress up the `tape` as a `nail`
 themselves. Thus we have several functions for exactly this purpose.
 
-These functions take in either a `tape` or an `@` (typically representing a
-`cord`) with a `rule` and attempts to parse the input with the `rule`. If the
+These functions take in either a `tape` or a `cord`,
+alongside a `rule`, and attempt to parse the input with the `rule`. If the
 parse succeeds, it returns the result. There are crashing and unitized versions
 of each caller, corresponding to what happens when a parse fails.
 
@@ -486,8 +486,11 @@ to write the above `rule` is as follows:
 ++  pars
   |-
   ;~  plug  prn
-    ;~  pose  knee  *tape
-      |.  ^$  (easy ~)
+    ;~  pose
+      (knee *tape |.(^$))
+      (easy ~)
+    ==
+  ==
 ```
 
 You may want to utilize the `~+` rune when writing recursive parsers to cache
@@ -516,12 +519,12 @@ First lets look at the code we're going to use, and then dive into explaining
 it. If you'd like to follow along, save the following as `expr-parse.hoon` in
 your `gen/` folder.
 ```hoon
-:: expr-parse: parse arithmetic expressions
+::  expr-parse: parse arithmetic expressions
 ::
 |=  xprs=tape
 |^  (scan xprs tape)
 ++  factor
-  %+  knee  @ud
+  %+  knee  *@ud
   |.  ~+
   ;~  pose
     dem
@@ -554,7 +557,8 @@ for expressions.
 ```hoon
 ++  factor
   %+  knee  @ud
-  |.  ~+  ;~  pose
+  |.  ~+
+  ;~  pose
     dem
     (ifix [lit rit] expr)
   ==
@@ -570,7 +574,7 @@ with `+pose`, which says to try each rule in succession until one of them works.
 
 Since expressions ultimately reduce to factors, we are actually building a
 recursive rule. Thus we need to make use of `+knee`. The first argument for
-`+knee` is `@ud`, since our final answer should be a `@ud`.
+`+knee` is `*@ud`, since our final answer should be a `@ud`.
 
 Then follows the definition of the gate utilized by `+knee`:
 ```hoon
