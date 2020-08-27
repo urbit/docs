@@ -246,7 +246,7 @@ is `%foo`.
 ```
 
 One common scenario where `+cold` sees play is when writing [command line
-interface (CLI) apps](@/docs/tutorials/arvo/cli-tutorial.md). We usher the
+interface (CLI) apps](@/docs/tutorials/hoon/cli-tutorial.md). We usher the
 reader there to find an example where `+cold` is used.
 
 

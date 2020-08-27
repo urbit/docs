@@ -336,7 +336,7 @@ Here begins the implementation of the additional arms required by the
 `+command-parser` is of central importance - it is what is used to parse user
 input and transform it into `command`s for the app to execute. Writing a proper
 command parser requires understanding of the Hoon parsing functions found in the
-standard library. How to do so may be found in the [parsing tutorial](@/docs/tutorials/arvo/parsing.md). For now, it is sufficient to know that this arm matches the text "demo" and
+standard library. How to do so may be found in the [parsing tutorial](@/docs/tutorials/hoon/parsing.md). For now, it is sufficient to know that this arm matches the text "demo" and
 produces a `[? command]`-shaped noun in response. Note how the `&` signifies that the command will be run as soon as it has been entered, without waiting for the user to press return.
 
 
