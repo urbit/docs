@@ -1,6 +1,6 @@
 +++
 title = "CLI apps"
-weight = 13
+weight = 2
 template = "doc.html"
 +++
 

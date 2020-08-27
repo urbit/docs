@@ -1,6 +1,6 @@
 +++
-title = "Parsing tutorial"
-weight = 12
+title = "Parsing"
+weight = 3
 template = "doc.html"
 +++
 
