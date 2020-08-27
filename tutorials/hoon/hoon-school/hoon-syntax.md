@@ -345,7 +345,7 @@ The Hoon syntax can be intimidating for the uninitiated, so it’s good to remem
 
 ### Debugging
 
-When you have an error in your Hoon code, one of two things can happen. Either the code does not run at all and you get an error (such as `nest-fail`), or your code _does_ run but produces the wrong results. The [Troubleshooting](@/docs/tutorials/hoon/hoon-school/hoon-errors.md) page is a good resource for figuring out how to debug your code.
+When you have an error in your Hoon code, one of two things can happen. Either the code does not run at all and you get an error (such as `nest-fail`), or your code _does_ run but produces the wrong results. The [Troubleshooting](@/docs/tutorials/hoon/hoon-errors.md) page is a good resource for figuring out how to debug your code.
 
 There are a couple useful runes associated with debugging:
 
@@ -353,4 +353,4 @@ There are a couple useful runes associated with debugging:
 
 `~&` (sigpam) is used to print its argument every time that argument executes. So, if you wanted to see how many times your program executed `foo`, you would write `foo bar`. Then, when your program runs, it will print `foo` on a new line of output every time the program comes across it by recursion.
 
-But there are more. Check out the aforementioned [Troubleshooting](@/docs/tutorials/hoon/hoon-school/hoon-errors.md) page to see other handy debugging runes and how to use them.
+But there are more. Check out the aforementioned [Troubleshooting](@/docs/tutorials/hoon/hoon-errors.md) page to see other handy debugging runes and how to use them.
