@@ -18,7 +18,7 @@ In this lesson, we will write a generator that takes an integer and checks if it
 ==
 ```
 
-On the very first line, with `:-  %say` we are beginning to create a generator of the `%say` variety. The result of a `%say` generator is a cell with a head of `%say` and tail that is a [gate](/docs/glossary/gate/), itself producing a `cask`, a pair of a `mark` and some data. It's not important for understanding conditionals; this is just template code. For more information about `%say` generators, see the [Generators](@/docs/tutorials/hoon/generators.md) documentation.
+On the very first line, with `:-  %say` we are beginning to create a generator of the `%say` variety. The result of a `%say` generator is a cell with a head of `%say` and tail that is a [gate](/docs/glossary/gate/), itself producing a `cask`, a pair of a `mark` and some data. It's not important for understanding conditionals; this is just template code. For more information about `%say` generators, see the [Generators](@/docs/tutorials/hoon/hoon-school/generators.md) documentation.
 
 ```hoon
 |=  [* [n=@ud ~] ~]

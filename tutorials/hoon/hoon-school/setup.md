@@ -61,7 +61,7 @@ You'll see:
 17
 ```
 
-You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a "noun". We'll talk more about [nouns](/docs/glossary/noun/) in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md), but first let's write a very basic program.
+You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a "noun". We'll talk more about [nouns](/docs/glossary/noun/) in [Lesson 1.2](@/docs/tutorials/hoon/hoon-school/nouns.md), but first let's write a very basic program.
 
 ## Generators
 
@@ -69,7 +69,7 @@ Generators are the most straightforward way to write Hoon programs. They are a c
 
 The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. Before creating a generator you need to [mount](https://urbit.org/using/install/#the-dojo) your `desk` to Unix. To create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen/` directory of your ship as a `.hoon` file. (Assuming you've already mounted with `|mount /=home=`.) After this, you need to run `|commit %home` in Dojo and the new file will be recognized by your ship. To run a generator named `mygen.hoon`, you would type `+mygen <argument>` in your ship's Dojo.
 
-If this doesn't make sense yet, that's okay. In the [next lesson](@/docs/tutorials/hoon/list-of-numbers.md), we will walk you through an example `gate` that is run as a generator.
+If this doesn't make sense yet, that's okay. In the [next lesson](@/docs/tutorials/hoon/hoon-school/list-of-numbers.md), we will walk you through an example `gate` that is run as a generator.
 
 ## Text editors
 

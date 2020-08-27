@@ -22,7 +22,7 @@ the functionality of the `%shoe` app and then go through the code line-by-line.
 
 This tutorial can be
 considered to be an application equivalent of the [Hoon school
-lesson](@/docs/tutorials/hoon/generators.md#ask) on `sole` and `%ask`
+lesson](@/docs/tutorials/hoon/hoon-school/generators.md#ask) on `sole` and `%ask`
 generators, which only covers the bare minimum necessary to write generators
 that take user input.
 

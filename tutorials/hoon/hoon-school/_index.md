@@ -1,5 +1,5 @@
 +++
-title = "Hoon"
+title = "Hoon School"
 weight = 1
 sort_by = "weight"
 template = "sections/docs/hoon.html"

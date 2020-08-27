@@ -6,7 +6,7 @@ template = "doc.html"
 
 In this lesson we introduce the notion of a vane, which should be thought of as a kernel module for Arvo (if you don't know what that means yet, just keep reading). We first present a primer on what vanes are and how they communicate, followed by an examination of the simplest vane, known as Behn (pronounced like "bane"), which is Arvo's timekeeper.
 
-Following this lesson, we will introduce Gall, a vane used to build user space apps. Then we have a walkthrough where we construct an [egg timer](@/docs/tutorials/hoon/egg-timer.md) as a Gall app that interacts with Behn.
+Following this lesson, we will introduce Gall, a vane used to build user space apps. Then we have a walkthrough where we construct an [egg timer](@/docs/tutorials/hoon/hoon-school/egg-timer.md) as a Gall app that interacts with Behn.
 
 ## Vanes
 
