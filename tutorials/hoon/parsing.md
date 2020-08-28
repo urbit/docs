@@ -1,6 +1,6 @@
 +++
-title = "Parsing tutorial"
-weight = 12
+title = "Parsing"
+weight = 3
 template = "doc.html"
 +++
 
@@ -246,7 +246,7 @@ is `%foo`.
 ```
 
 One common scenario where `+cold` sees play is when writing [command line
-interface (CLI) apps](@/docs/tutorials/arvo/cli-tutorial.md). We usher the
+interface (CLI) apps](@/docs/tutorials/hoon/cli-tutorial.md). We usher the
 reader there to find an example where `+cold` is used.
 
 
@@ -435,7 +435,7 @@ syntax error
     
 ## Parsing atoms
 
-[Recall](@/docs/tutorials/hoon/lists.md) that `cord`s are atoms with the aura
+[Recall](@/docs/tutorials/hoon/hoon-school/lists.md) that `cord`s are atoms with the aura
 `@t` and are typically used to represent strings internally as data, as atoms
 are faster for the computer to work with than `tape`s, which are `list`s of
 `@tD` atoms. `+rash` and `+rush` are for parsing atoms, with `+rash` being

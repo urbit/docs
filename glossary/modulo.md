@@ -10,5 +10,5 @@ category = "arvo"
 
 ### Further Reading
 
-- [Lesson 2.7: Gall](@/docs/tutorials/hoon/gall.md): A Hoon Tutorial lesson that explains how to write simple tile.
+- [Lesson 2.7: Gall](@/docs/tutorials/hoon/hoon-school/gall.md): A Hoon Tutorial lesson that explains how to write simple tile.
 - [The Gall tutorial](@/docs/tutorials/arvo/gall.md): A technical guide to the Gall van.

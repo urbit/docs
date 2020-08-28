@@ -10,5 +10,5 @@ A **core** is a cell of a [battery](../battery) and a [payload](../payload). It 
 
 ### Further Reading
 
-- [The Hoon Tutorial](@/docs/tutorials/hoon/_index.md): Our guide to learning the Hoon programming language.
-  - [Lesson 1.7: Arms and Cores](@/docs/tutorials/hoon/arms-and-cores.md): A Hoon Tutorial lesson that discusses cores.
+- [The Hoon Tutorial](@/docs/tutorials/hoon/hoon-school/_index.md): Our guide to learning the Hoon programming language.
+  - [Lesson 1.7: Arms and Cores](@/docs/tutorials/hoon/hoon-school/arms-and-cores.md): A Hoon Tutorial lesson that discusses cores.
