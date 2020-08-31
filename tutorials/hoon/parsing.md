@@ -11,9 +11,9 @@ knowledge of parsing is required, and we will explain the basic structure of how
 parsing works in a purely functional language such as Hoon before moving on to
 how it is implemented in Hoon.
 
-## What is parsing? {#what-is-parsingk
+## What is parsing? {#what-is-parsing}
 
-A program which takes a raw sequence of characters as an input knd produces a data
+A program which takes a raw sequence of characters as an input and produces a data
 structure as an output is known as a _parser_. The data structure produced
 depends on the use case, but often it may be represented as a tree and the
 output is thought of as a structural representation of the input. Parsers are ubiquitous in
