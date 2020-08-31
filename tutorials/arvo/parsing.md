@@ -53,10 +53,6 @@ represent this return as a tuple. So we should expect something like this:
 What if we wish to parse the rest of the string? We would need to apply the
 `parse` function again:
 ```
-> parse(parse("123", integer), integer)
-(12, "3")
-> parse(parse(parse("123", integer), integer), integer)
-(123, "")
 > (parse (parse "123" integer) integer)
 [12 "3"]
 > (parse (parse (parse "123" integer) integer) integer)
