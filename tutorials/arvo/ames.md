@@ -111,3 +111,42 @@ ducts as unique keys.  Stop tracking a peer by sending Ames a
 `%jilt` `$task`.
 
 Debug output can be adjusted using `%sift` and `%spew` `$task`'s.
+
+## Packet structure
+
+Ames datagram packets are handled as nouns internally by Arvo but as serial data
+by Unix. Here we document their serial structure.
+For further information, see `+encode-packet` and `+decode-packet` in `ames.hoon`.
+
+There is a 32-bit header followed by a variable width body.
+
+### Header
+
+The 32-bit header is given by the following data:
+
+ - 3 bits: Ames `protocol-version`,
+ - 20 bits: a checksum as a truncated insecure hash of the body, done with
+   `+mug`,
+ - 2 bits: the bit width of the sender address encoded as a 2-bit enum,
+ - 2 bits: the bit width of the receiver address encoded as a 2-bit enum,
+ - 1 bit: whether the packet is encrypted or not,
+ - 4 bits: unused.
+ 
+ Every packet between Azimuth addresses are encrypted. The only unencrypted
+ packets are self-signed attestation packets from 128-bit comets.
+ 
+### Body
+
+The body is of variable length and consists of three parts:
+
+ - The `@p` of the sender,
+ - The `@p` of the receiver,
+ - The payload, which is the `+jam` (i.e. serialization) of the noun `[origin content]`.
+ 
+ `origin` is the IP and port of the original sender if the packet was proxied
+ through a relay and null otherwise. `content` is a noun that is either an encrypted ack or an
+ encrypted message fragment, unless it is a comet attestation packet in which
+ case it is unencrypted.
+ 
+ The sender and receiver live outside of the jammed data section to simplify
+ packet filtering for the interpreter.
