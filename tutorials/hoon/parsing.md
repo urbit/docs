@@ -95,7 +95,7 @@ In this section we discuss the types most commonly used for Hoon parsers. In sho
 
 A `hair` is a pair of `@ud` used to keep track of what has already been parsed
 for stack tracing purposes. This allows the parser to reveal where the problem
-is in case it hits something unexpected during parsing. 
+is in case it hits something unexpected during parsing.
 
 `p` represents the column and `q` represents the line.
 
@@ -139,7 +139,7 @@ of what is to be parsed. If `q` is not null, `p` and `p.q.q` are identical.
 ++  rule  _|:($:nail $:edge)
 ```
 A `rule` is a gate which takes in a `nail` and returns an `edge` - in other
-words, a parser. 
+words, a parser.
 
 ## Parser builders
 
@@ -300,7 +300,7 @@ need to deal directly with `nail`s except where it is ilustrative to do so.
 
 ### Parsing atoms
 
-[Recall](@/docs/tutorials/hoon/lists.md) that `cord`s are atoms with the aura
+[Recall](@/docs/tutorials/hoon/hoon-school/lists.md) that `cord`s are atoms with the aura
 `@t` and are typically used to represent strings internally as data, as atoms
 are faster for the computer to work with than `tape`s, which are `list`s of
 `@tD` atoms. `+rash` and `+rush` are for parsing atoms, with `+rash` being
@@ -444,7 +444,7 @@ is more than one `rule`.
 {1 3}
 syntax error
 ```
-    
+
 
 
 ## Parsing numbers
