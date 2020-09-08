@@ -122,7 +122,7 @@ There is a 32-bit header followed by a variable width body.
 
 ### Header
 
-The 32-bit header is given by the following data:
+The 32-bit header is given by the following data, presented in order:
 
  - 3 bits: Ames `protocol-version`,
  - 20 bits: a checksum as a truncated insecure hash of the body, done with
@@ -132,14 +132,14 @@ The 32-bit header is given by the following data:
  - 1 bit: whether the packet is encrypted or not,
  - 4 bits: unused.
  
- Every packet sent between `@p`'s is encrypted except for self-signed attestation packets from 128-bit comets.
+ Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
  
 ### Body
 
-The body is of variable length and consists of three parts:
+The body is of variable length and consists of three parts in this order:
 
- - The `@p` of the sender,
- - The `@p` of the receiver,
+ - The `@p` of the sending ship,
+ - The `@p` of the receiving ship,
  - The payload, which is the `+jam` (i.e. serialization) of the noun `[origin content]`.
  
  `origin` is the IP and port of the original sender if the packet was proxied
