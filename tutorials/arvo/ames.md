@@ -132,8 +132,7 @@ The 32-bit header is given by the following data:
  - 1 bit: whether the packet is encrypted or not,
  - 4 bits: unused.
  
- Every packet between Azimuth addresses are encrypted. The only unencrypted
- packets are self-signed attestation packets from 128-bit comets.
+ Every packet sent between `@p`'s is encrypted except for self-signed attestation packets from 128-bit comets.
  
 ### Body
 
