@@ -149,3 +149,26 @@ The body is of variable length and consists of three parts in this order:
  
  The sender and receiver live outside of the jammed data section to simplify
  packet filtering for the interpreter.
+ 
+
+## Journey of a Packet
+
+In this section we follow a packet through its entire journey, originating from
+the Ames vane of ship A and ending in the Ames vane of ship B.
+
+This journey is broken into several stages:
+
+1. Ames receives a `%plea` note.
+1.5 Does encryption happen here?
+2. Serf A gives the note to King A (in what form? does it jam the payload?)k
+3. King A checks that it is a valid Ames packet and wraps the Ames packet in a UDP packet (what does this look like?) and
+   give it to its Ames I/O submodule to send
+4. UDP packet is sent to the receiving IP address (how is this determined? along
+   some port?)
+5. King B receives a UDP packet on socket ? via the Ames submodule. It checks
+   that it is a valid Ames packet
+
+
+A `%plea` `note` is given by `[vane=@tas =path payload=*]`, where
+`vane` is the destination vane on the remote ship, `path` is the internal
+route on the receiving ship `payload` is the semantic message content.
