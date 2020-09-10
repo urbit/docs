@@ -172,3 +172,51 @@ This journey is broken into several stages:
 A `%plea` `note` is given by `[vane=@tas =path payload=*]`, where
 `vane` is the destination vane on the remote ship, `path` is the internal
 route on the receiving ship `payload` is the semantic message content.
+
+
+### Notes
+
+%plea must trigger some kind of gift, most likely %send, but i can't seem to
+fucking find where!
+
+%plea comes in.
+
++call is called, which triggers +on-plea:event-core
+
++on-plea calls +on-memo:make-peer-core
+
++on-memo returns a peer-core and makes a peer-core via (run-message-pump bone
+%memo message-blob)
+
+run-message-pump (also an arm of make-peer-core)
+
+
+SOMEWERE GIFTS ARE DEFINED. WHAT GIFT IS
+
+gift is an alias for i.pump-gifts
+pump-gifts is assigned to be the head of (work:message-pump task)
+message-pump is a face for (make-message-pump message-pump-state channel)
+message-pump-state is the face for something create by gut
+
+
+gifts are defined somewhere in here i think
+```hoon
+  ++  work
+    |=  task=message-pump-task
+    ^+  [gifts state]
+    ::
+    =~  (dispatch-task task)
+        feed-packets
+        (run-packet-pump %halt ~)
+        assert
+        [(flop gifts) state]
+    ==
+```
+
+dispatch-task fork on %memo and calls on-memo:message-pump, which adds the
+message to unsent-messages.state
+
+feed-packets calls process-packet-pump-gifts, which takes in a list of
+packet-pump-gifts. this seems to come from res? =/  res  (feed:packet-pump unsent-fragments.state)
+ 
+ and feed:packet-pump seems to call %send! finally
