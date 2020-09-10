@@ -116,7 +116,7 @@ This `task` returns no `gift`s.
 
 ### `%plea`
 
-`%plea` is the `task` used to send messages over Ames. It extends the
+`%plea` is the `task` used to instruct Ames to send a message. It extends the
 `%pass`/`%give` semantics across the network. As such, it is the most
 fundamental `task` in Ames and the primary reason for its existence.
 
@@ -141,7 +141,7 @@ route on the receiving ship, and `payload` is the semantic message content.
 
 #### Returns
 
-This `task` returns no `gift`s.
+This `task` causes Ames to `give` `%send` `gift`(s) to Unix.
 
 
 ## System and Lifecycle Tasks
