@@ -151,24 +151,69 @@ The body is of variable length and consists of three parts in this order:
  packet filtering for the interpreter.
  
 
-## Journey of a Packet
+## A typical successful Ames interaction
 
-In this section we follow a packet through its entire journey, originating from
-the Ames vane of ship A and ending in the Ames vane of ship B.
+In this section we follow along a typical Ames interaction at a fairly detailed
+level. This interaction can be summarized as Ship A making a request (called a
+`%plea`) to Ship B to perform some task, and Ship B performing the requested
+task and returning a few responses (called `%boon`s). For pedagogical reasons we
+will assume that everything in this journey happens as it ought to - no crashes,
+dropped packets, adversaries, etc.
 
-This journey is broken into several stages:
+### The scenario
 
-1. Ames receives a `%plea` note.
-1.5 Does encryption happen here?
-2. Serf A gives the note to King A (in what form? does it jam the payload?)k
-3. King A checks that it is a valid Ames packet and wraps the Ames packet in a UDP packet (what does this look like?) and
-   give it to its Ames I/O submodule to send
-4. UDP packet is sent to the receiving IP address (how is this determined? along
-   some port?)
-5. King B receives a UDP packet on socket ? via the Ames submodule. It checks
-   that it is a valid Ames packet
+While our story is generic and is roughly how every Ames interaction works, we
+will be using `publish` as an example. Our story is summarized as follows.
+
+`~bacbel-tagfeb` is running the Gall app Publish and would like to subscribe to a public notebook
+called `recipes` held on `~worwel-sipnum`'s ship. `~worwel` accepts the
+request to subscribe from `~bacbel` and sends `~bacbel` each of the already
+existing posts on her `recipes` notebook.
+
+### Stages
+
+We break our story into several stages, each of which will be detailed in its
+own section.
+
+1. `~bacbel`'s Publish app initiates a request to subscribe to `~worwel`'s `recipes`
+   notebook.
+2. `~bacbel`'s Gall receives the subscription request and packages it up as a `%plea` which
+   is forwarded to `~bacbel`'s Ames.
+3. `~bacbel`'s Ames opens a new flow with `~worwel-sipnum` and sends the `%plea`
+   along it.
+4. The `%plea` is turned into a message. `~bacbel`'s King now checks that the message is
+   a valid Ames message. It is then added to the queue of messages to be sent.
+5. The message arrives at the front of the queue and is broken into packets,
+   each of which is encrypted (or are they encrypted right before they are sent?)
+6. `~bacbel`'s King encapsulates the packets in UDP wrappers, which it then
+   passes to its Ames I/O submodule.
+7. Each UDP packet is sent to the IP address and port number for `~worwel`
+   previously known to `~bacbel`.
+8. `~worwel`'s King receives each packet and hands it to `~worwel`'s serf to be
+   unencrypted.
+9. After each packet is received and successfully unencrypted (?), `~worwel`'s
+   Ames returns a packet-level ack to `~bacbel` along the same flow that the
+   packets came on.
+10. Once all packets for the message have been received and acked by `~worwel`'s
+   Ames, it reconstructs the packets into the Ames message containing `~bacbel`'s `%plea`.
+11. `~worwel`'s Ames passes the `%plea` to `~worwel`'s Gall.
+12. `~worwel`'s Gall unwraps the `%plea` and finds that it is a `%poke` to
+    Publish, and hands it to Publish.
+13. `~worwel`'s Publish sees that the `%poke` is a `%watch` `task` from
+    `~bacbel` to subscribe to the `recipes` notebook. It adds the subscription
+    to its state.
+14. A message level ack is sent from ??? along the same flow that the `%plea`
+    was sent, informing `~bacbel` that the subscription was successful.
+15. `~worwel`'s Publish sends %??? to `~worwel`'s Ames, which are then converted
+    into `%boon`s and returned to `~bacbel`, etc.
+
+Refer to timluc's Gall guide's `poke.md` for more info on subscription dataflows
+   
+#### Initial Request
+
+`[%pass /subscription/path %agent [~worwel-sipnum publish] [%watch /path/to/recipes]]`
 
 
-A `%plea` `note` is given by `[vane=@tas =path payload=*]`, where
-`vane` is the destination vane on the remote ship, `path` is the internal
-route on the receiving ship `payload` is the semantic message content.
+
+
+
