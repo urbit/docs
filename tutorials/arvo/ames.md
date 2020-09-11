@@ -172,4 +172,3 @@ This journey is broken into several stages:
 A `%plea` `note` is given by `[vane=@tas =path payload=*]`, where
 `vane` is the destination vane on the remote ship, `path` is the internal
 route on the receiving ship `payload` is the semantic message content.
-
