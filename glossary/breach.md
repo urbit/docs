@@ -24,7 +24,7 @@ into dojo and pressing Enter.
 
 Network breaches happen when a major Arvo revision that cannot be implemented 
 via an [OTA update](../ota-updates) occurs. When this happens, a new binary
-will need to be downloaded, and your ship's pier needs to be moved to the
+will need to be downloaded, and your ship's [pier](../pier) needs to be moved to the
 directory containing the new binary.
 
 ### Further Reading
