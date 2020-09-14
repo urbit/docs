@@ -17,3 +17,7 @@ In practice, event logs become large and unwieldy over time. Periodically a snap
 Persistence, in the context of storing data in a computer system, means that data is stored in a non-volatile manner and that input must be recorded before the output result is performed. Thus, every event must be written to disk - or must be _persisted_ - before the event effects actually take place.
 
 The initial entries of the event log are created during the bootstrap sequence contained in a [Pill](../pill).
+
+### Further Reading
+
+- [Pier](../pier): The directory on disk which contains the ship's state.

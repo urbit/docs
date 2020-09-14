@@ -5,7 +5,7 @@ template = "doc.html"
 category = "arvo"
 +++
 
-A **pier** is the directory which contains the state of an urbit [ship](../ship). It is automatically created in the current directory when booting a ship for the first time.
+A **pier** is the directory which contains the state of an Urbit [ship](../ship). It is automatically created in the current directory when booting a ship for the first time.
 
 Your pier should be kept safe - if it's deleted, you will need to perform a [breach](../breach) in order to advise the rest of the network that your ship's state has been lost.
 
