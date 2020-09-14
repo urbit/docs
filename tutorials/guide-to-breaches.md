@@ -50,6 +50,6 @@ If a network breach is happening, follow the steps below.
 
 - Delete your old Urbit binary.
 - Delete or archive your old pier.
-- Download the new Urbit binary by following the instructions in the [Install page](https://urbit.org/using/install/).
+- Download the new Urbit binary by following the instructions in the [Install page](@/using/install/).
 - Create a new pier by booting your ship with your key, according to the instructions on the install page. (Note: You do _not_ need to use a new key to boot into a new continuity era.)
 - Rejoin your favorite chat channels and subscriptions.
