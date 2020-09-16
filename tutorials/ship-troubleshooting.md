@@ -100,6 +100,15 @@ Since version `0.8.0`, changes no longer automatically sync between the Unix sid
 
 You may have booted a ship with your keyfile twice in the same era. To fix this, you must perform a [personal breach](#personal-breach).
 
+### I don't have the latest OTA
+
+You can check what build your ship is on by entering `+trouble` into dojo and
+reading the `%base` hash. If this does not match the latest hash published in
+the `urbit-dev` mailing list, you are behind.
+
+Your sponsor may just be lagging behind, so sometimes this will resolve on its
+own with patience. Otherwise, try the procedure outlined [here](https://github.com/urbit/support/wiki/Missing-OTA).
+
 ### I keep getting an `ames` error stack-trace
 
 You may see a message like this one: `/~zod/home/~2019.7.22..18.55.46..83a3/sys/vane/ames:<[line column].[line column]>`. This is a clay path to a Hoon file, pointing to the line and column where an expression crashed. This kind of error might be accompanied by a `crud` message.
