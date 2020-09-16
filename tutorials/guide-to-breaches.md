@@ -46,7 +46,10 @@ address without also breaching. The process here is slightly different.
 - From here, following the directions on how to [Accept your
   transfer](@/using/operations/using-bridge.md#accept-your-transfer), [Set your
   networking keys](@/using/operations/using-bridge.md#set-your-networking-keys),
-  and [Generate your keyfile](@/using/operations/using-bridge.md#generate-your-keyfile).
+  and [Generate your
+  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The main
+  difference with the above method is that you do not check the `Breach
+  continuity` box.
 - Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
