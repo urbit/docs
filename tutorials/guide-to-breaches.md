@@ -27,6 +27,7 @@ personal breach, follow the steps below.
 - Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction` and wait for the progress bar to appear.
 - Download your new keyfile following these instructions: [Generate your
   keyfile](@/using/operations/using-bridge.md#generate-your-keyfile).
+- Delete or archive your old [pier](@/glossary/pier).
 - Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
@@ -50,6 +51,7 @@ address without also breaching. The process here is slightly different.
   keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The main
   difference with the above method is that you do not check the `Breach
   continuity` box.
+- Delete or archive your old [pier](@/glossary/pier).
 - Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
