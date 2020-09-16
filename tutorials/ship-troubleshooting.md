@@ -7,6 +7,9 @@ aliases = ["docs/using/ship-troubleshooting/"]
 
 Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.
 
+This page contains resolutions to many of the most commonly encountered issues.
+If your issue is not covered here, please check out our [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki).
+
 ## Table of Contents
 
 - [Best practices](#best-practices)
@@ -174,9 +177,15 @@ Copy this stack trace and include it in your GitHub issue.
 
 ### My ship crashed with a `bail: meme` error.
 
-1. Make sure you are running version to `0.8.2` if you are not already on it.
+This means that your ship ran out of memory.
 
-2. Restart your ship. If you don't crash again, everything may be fine. If you **do** crash again, then you should perform a [personal breach](#personal-breach).
+1. Make sure you are running the latest binary if you are not already on it.
+
+2. Restart your ship. If you don't crash again, everything may be fine.
+
+3. Try the procedure outlined [here](https://github.com/urbit/support/wiki/ship-exits-with-a-bail:-meme-error).
+
+4. If you **do** crash again, then you should perform a [personal breach](#personal-breach).
 
 ### My ship crashed with a `bail: oops` error
 
