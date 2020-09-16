@@ -134,10 +134,6 @@ This is the result of deleting your pier and starting your ship again. To fix th
 
 ## Booting Issues {#booting-issues}
 
-### My ship won't boot and gets a `terminals database is inaccessible` message
-
-This happens when you try to run the Urbit binary through your `$PATH`. When running the command, you need to be explicit and specify the actual path to it in the filesystem. This is a side-effect of the way we build the release binaries, which will be fixed.
-
 ### My ship booted for the first time, but it turned into a comet instead of my planet or star
 
 You may have used the wrong arguments when booting your ship for the first time. Delete this comet and try again.
