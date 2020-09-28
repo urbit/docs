@@ -450,7 +450,7 @@ syntax error
 ## Parsing numbers
 
 Functions for parsing numbers are documented in [4j: Parsing (Bases and Base
-Digits)](@/docs/reference/library/4j.md). In particualr, `dem` is a `rule`
+Digits)](@/docs/reference/library/4j.md). In particular, `dem` is a `rule`
 for parsing decimal numbers.
 
 ```
