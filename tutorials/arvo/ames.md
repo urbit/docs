@@ -150,8 +150,47 @@ The body is of variable length and consists of three parts in this order:
  The sender and receiver live outside of the jammed data section to simplify
  packet filtering for the interpreter.
  
+### Packeting
 
-## A typical successful Ames interaction
+When Ames has a message to be sent it must first determine how many packets are
+required to send the message. To do this, it first `+jam`s (serializes) the
+message, producing an atom. Ames checks how large the atom is, and if it is
+bigger than a kilobyte it will split it into packets whose payloads are 1 kB or
+less. It then numbers each one - this is message 17, packet 12, this is message
+17, packet 13, etc, so that when the receiver receives these packets it knows
+which number they are. Finally it encrypts each individual packet and enqueues
+them to be sent along their stated flow. Encryption is the last step to happen
+before a packet is sent, since the receivers keys could potentially change in
+the time between when
+
+Network packets aren't always received in order, so this numbering is important
+for reconstruction, and also pakcets may get lost. So Ames does transmission
+control (the TC in TCP) to solve this problem. It makes sure that all packets
+eventually get through, and when the other side gets them is can put them in the
+correct order. If Ames doesn't get an ack on a packet then it will resend it
+until it does. The timing on resending packets is called congestion control and
+works in the same fashion as TCP, namely exponential backoff.
+
+Once all packets are received, the receiving Ames decrypts them, deserializes
+them, and puts them back together.
+ 
+## Acks and nacks
+
+There are two types of acks: packet-level acks and message-level acks. They are
+not considered messages, and thus are not `%plea`s or `%boon`s, and so are not
+required to appear in a particular order.
+
+There is only one kind of nack, which may only be sent in response to a `%plea`,
+and requires a naxplanation.
+
+Each packet forming part of a `%plea` or `%boon` must be acked, and can never be nacked.
+
+Each `%plea` must be acked or nacked. A nack requires a naxplanation message (a `%boon`)?
+
+Each `%boon` must be acked.
+ 
+
+## A typical successful Ames exchange
 
 In this section we follow along a typical Ames interaction at a fairly detailed
 level. This interaction can be summarized as Ship A making a request (called a
@@ -166,7 +205,7 @@ While our story is generic and is roughly how every Ames interaction works, we
 will be using `publish` as an example. Our story is summarized as follows.
 
 `~bacbel-tagfeb` is running the Gall app Publish and would like to subscribe to a public notebook
-called `recipes` held on `~worwel-sipnum`'s ship. `~worwel` accepts the
+called `recipes` held on `~worwel-sipnum`. `~worwel` accepts the
 request to subscribe from `~bacbel` and sends `~bacbel` each of the already
 existing posts on her `recipes` notebook.
 
@@ -181,39 +220,61 @@ own section.
    is forwarded to `~bacbel`'s Ames.
 3. `~bacbel`'s Ames opens a new flow with `~worwel-sipnum` and sends the `%plea`
    along it.
-4. The `%plea` is turned into a message. `~bacbel`'s King now checks that the message is
+4. The `%plea` is turned into a message. `~bacbel`'s King now confirms that the message is
    a valid Ames message. It is then added to the queue of messages to be sent.
 5. The message arrives at the front of the queue and is broken into packets,
    each of which is encrypted (or are they encrypted right before they are sent?)
 6. `~bacbel`'s King encapsulates the packets in UDP wrappers, which it then
    passes to its Ames I/O submodule.
 7. Each UDP packet is sent to the IP address and port number for `~worwel`
-   previously known to `~bacbel`.
-8. `~worwel`'s King receives each packet and hands it to `~worwel`'s serf to be
+   previously known to `~bacbel` (how does it know this?)
+8. `~worwel`'s King receives each packet, confirms that they are Ames packets, and hands them to `~worwel`'s Serf to be
    unencrypted.
-9. After each packet is received and successfully unencrypted (?), `~worwel`'s
+9. After each packet is received and successfully unencrypted, `~worwel`'s
    Ames returns a packet-level ack to `~bacbel` along the same flow that the
    packets came on.
 10. Once all packets for the message have been received and acked by `~worwel`'s
    Ames, it reconstructs the packets into the Ames message containing `~bacbel`'s `%plea`.
-11. `~worwel`'s Ames passes the `%plea` to `~worwel`'s Gall.
-12. `~worwel`'s Gall unwraps the `%plea` and finds that it is a `%poke` to
+11. `~worwel`'s Ames returns a message-level ack as a `%boon` to `~bacbel`.
+12. `~worwel`'s Ames passes the `%plea` to `~worwel`'s Gall.
+13. `~worwel`'s Gall unwraps the `%plea` and finds that it is a `%poke` to
     Publish, and hands it to Publish.
-13. `~worwel`'s Publish sees that the `%poke` is a `%watch` `task` from
+14. `~worwel`'s Publish sees that the `%poke` is a `%watch` `task` from
     `~bacbel` to subscribe to the `recipes` notebook. It adds the subscription
     to its state.
-14. A message level ack is sent from ??? along the same flow that the `%plea`
-    was sent, informing `~bacbel` that the subscription was successful.
-15. `~worwel`'s Publish sends %??? to `~worwel`'s Ames, which are then converted
-    into `%boon`s and returned to `~bacbel`, etc.
+15. A `%watch-ack` is returned as a `%boon`?
+16. `~worwel`'s Publish sends a `%watch-ack` to `~worwel`'s Ames, which is then converted
+    into a `%boon`s and returned to `~bacbel`.
+17. `~bacbel` acks the `%boon`.
 
 Refer to timluc's Gall guide's `poke.md` for more info on subscription dataflows
    
 #### Initial Request
 
+
+
 `[%pass /subscription/path %agent [~worwel-sipnum publish] [%watch /path/to/recipes]]`
 
 
+#### Flows
 
+Recall that a flow contains a bidirectional totally ordered sequence of messages
+between the Ames vane of two ships. It is polarized in the sense that one ship
+only sends `%plea`s and (n)acks, called the forward flow, and the other ship
+only returns `%boon`s (which includes message-level (n)acks) and packet-level
+acks, called the backwards flow. Note that while messages are totally ordered,
+packets are not, and furthermore acks/nacks are not considered to be messages.
 
+So packets within a message, and acks acknowledging those packets, may be
+received in any order. However, the next message will not be released from the queue until
+each packet has been acked and the entire message has been (n)acked as well.
+
+Flow 1:
+`%plea`s to `~worwel-sipnum` (forward flow)
+1. 3 packets encoding a `%watch /path/to/recipes` at `publish`
+
+`%boon`s to `~bacbel-tagfeb` (backward flow)
+1. 3 packet level acks
+2. 1 `%done` message level ack
+3. 1 `%watch-ack` as a `%boon`
 
