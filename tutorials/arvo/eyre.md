@@ -287,8 +287,8 @@ The `*.urbit.org` domain can be used to access destroyers and cruisers. In the
 common case oh hosted ships, this is done by dynamic DNS directly to the hosting
 instance. We do not speak of the uncommon case. When ports are blocked and
 infrastructure crumbles around you, only imported martian networking can be
-trusted: the `%get` and `%got` [gram]()s are used to proxy [`%this` requests]() and
-[`%thou` responses]() respectively.
+trusted: the `%get` and `%got` grams are used to proxy `%this` requests and
+`%thou` responses respectively.
 
 ## Specification
 
@@ -427,7 +427,7 @@ When the `vere` process is re/started, a TCP port is bound, HTTP requests on whi
 
 Userspace http request, converted by `%ford` into an actual `hiss`.
 
-**Gifts given in response:** a [`%sigh`]()
+**Gifts given in response:** a `%sigh`
 
 ### 3.1 `[%this httq]`, inbound http
 
@@ -455,7 +455,7 @@ After `r` is parsed to a `purl`, the `pork`(relative path) determines the resour
 - `/~/of` fails if the `ixor` is unknown, and otherwise is stored in the `ixor`, receiving a partial response and all events after its [last-seen header](#). If it has a `poll` parameter, the response is full, and only occurs if the body is non-empty. Otherwise the oryx is saved as a [live](#live) request in case of cancellation.
 - `/~/to` transforms into a [`%g` message](#mess).
 
-**Gifts given in response:** a [`%thou`](), or a [`%that`](#that) followed by multiple [`%thar`]()s.
+**Gifts given in response:** a `%thou`, or a [`%that`](#that) followed by multiple `%thar`s.
 
 ### 3.2 `[%thud ~]`, inbound close
 
@@ -473,7 +473,7 @@ Sent when a partial [response](#that) or [body](#thar) fails to arrive. Its `duc
 
 ### 3.4 ``[%wart sock [path *]]``, inbound message
 
-Sometimes, messages are received from other ships. They are expected to take the from of a [`gram`]().
+Sometimes, messages are received from other ships. They are expected to take the from of a `gram`.
 
 **Gifts given in response:** [`%nice` or `%mean`](#ack).
 
@@ -536,7 +536,7 @@ Signs a `%wake` upon timer activation.
 
 ### 5.3 `[%f %wasp @uvI]`, dependency listen
 
-Knowledge of filesystem changes, requested by `/~/on` and `/~/in`, is requested the `%wasp` note. It contains the hash token which identifies a set of dependencies to query. Saved as a (live[live](#live)#live] request in case of cancellation when caused by `/~/on`.
+Knowledge of filesystem changes, requested by `/~/on` and `/~/in`, is requested the `%wasp` note. It contains the hash token which identifies a set of dependencies to query. Saved as a (live[live](#live)] request in case of cancellation when caused by `/~/on`.
 
 Signs a `%writ` upon change.
 
