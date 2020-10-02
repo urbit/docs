@@ -32,7 +32,7 @@ run /ted/ph/add.hoon.  Here are the contents of that file:
 /+  *ph-io
 =,  strand=strand:spider
 ^-  thread:spider
-|=  [=bowl:spider args=vase]
+|=  args=vase
 =/  m  (strand ,vase)
 ;<  ~  bind:m  start-simple
 ;<  ~  bind:m  (raw-ship ~bud ~)
