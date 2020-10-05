@@ -413,7 +413,7 @@ which we use in `axe.hoon`: `print`, `prompt`, and `produce`.
 
 In our example, `%+` is the rune to call a gate, and our gate `print` takes one
 argument which is a `tank` to print. The `+` here is syntactic sugar for
-`[leaf "What is your favorite color?"]` that just makes it easier to write.
+`[%leaf "What is your favorite color?"]` that just makes it easier to write.
 
 **`prompt`** is used to construct a prompt for the user to provide input.
 It takes a single argument that is a tuple. Most `%ask` generators will want to
