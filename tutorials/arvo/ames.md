@@ -293,91 +293,45 @@ will send an ack packet directly to `~bacbel-tagfeb`. Communication between the
 two ships will now be direct until one of them changes their IP address, port, or networking keys.
 
 
-## A typical successful Ames exchange
+## The Serf and the King
 
-In this section we follow along a typical Ames interaction at a fairly detailed
-level. This interaction can be summarized as Ship A making a request (called a
-`%plea`) to Ship B to perform some task, and Ship B performing the requested
-task and returning a few responses (called `%boon`s). For pedagogical reasons we
-will assume that everything in this journey happens as it ought to - no crashes,
-dropped packets, adversaries, etc.
+Urbit's functionality is split between the two binaries `urbit-worker` (sometimes
+called the Serf) and `urbit-king` (sometimes called the King). This division of
+labor is currently not well-documented outside of the [Vere documents](@/docs/tutorials/vere/_index.md), but we summarize it here.
 
-### The scenario
+In short, the Serf is the Nock runtime and so keeps track of the current state
+of Arvo as a Nock noun and updates the state by `%poke`ing it with nouns, and
+then informs the King of the new state. The King manages snapshots of the Arvo
+state and handles I/O with Unix, among other things. The Serf only ever talks to
+the King, while the King talks with both the Serf and Unix.
 
-While our story is generic and is roughly how every Ames interaction works, we
-will be using `publish` as an example. Our story is summarized as follows.
+### Ames
 
-`~bacbel-tagfeb` is running the Gall app Publish and would like to subscribe to a public notebook
-called `recipes` held on `~worwel-sipnum`. `~worwel` accepts the
-request to subscribe from `~bacbel` and sends `~bacbel` each of the already
-existing posts on her `recipes` notebook.
+The King has several submodules, one of them being an Ames I/O submodule. This
+submodule is responsible for wrapping outgoing Ames packets as UDP packets, and
+looking at incoming UDP packets handed to it by Unix to ensure that they are
+valid Ames packets. It also maintains an incoming and outgoing packet queue.
 
-### Stages
+This division is summarized in the following diagram, describing how
+`~bacbel-tagfeb` requests a subscription to the `recipes` notebook of
+`~worwel-sipnum` in the Publish app.
 
-We break our story into several stages, each of which will be detailed in its
-own section.
+<div style="text-align:center">
+<img src="https://media.urbit.org/docs/arvo/packet.png">
+</div>
 
-1. `~bacbel`'s Publish app initiates a request to subscribe to `~worwel`'s `recipes`
-   notebook.
-2. `~bacbel`'s Gall receives the subscription request and packages it up as a `%plea` which
-   is forwarded to `~bacbel`'s Ames.
-3. `~bacbel`'s Ames opens a new flow with `~worwel-sipnum` and sends the `%plea`
-   along it.
-4. The `%plea` is turned into a message. `~bacbel`'s King now confirms that the message is
-   a valid Ames message. It is then added to the queue of messages to be sent.
-5. The message arrives at the front of the queue and is broken into packets,
-   each of which is encrypted (or are they encrypted right before they are sent?)
-6. `~bacbel`'s King encapsulates the packets in UDP wrappers, which it then
-   passes to its Ames I/O submodule.
-7. Each UDP packet is sent to the IP address and port number for `~worwel`
-   previously known to `~bacbel` (how does it know this?)
-8. `~worwel`'s King receives each packet, confirms that they are Ames packets, and hands them to `~worwel`'s Serf to be
-   unencrypted.
-9. After each packet is received and successfully unencrypted, `~worwel`'s
-   Ames returns a packet-level ack to `~bacbel` along the same flow that the
-   packets came on.
-10. Once all packets for the message have been received and acked by `~worwel`'s
-   Ames, it reconstructs the packets into the Ames message containing `~bacbel`'s `%plea`.
-11. `~worwel`'s Ames returns a message-level ack as a `%boon` to `~bacbel`.
-12. `~worwel`'s Ames passes the `%plea` to `~worwel`'s Gall.
-13. `~worwel`'s Gall unwraps the `%plea` and finds that it is a `%poke` to
-    Publish, and hands it to Publish.
-14. `~worwel`'s Publish sees that the `%poke` is a `%watch` `task` from
-    `~bacbel` to subscribe to the `recipes` notebook. It adds the subscription
-    to its state.
-15. A `%watch-ack` is returned as a `%boon`?
-16. `~worwel`'s Publish sends a `%watch-ack` to `~worwel`'s Ames, which is then converted
-    into a `%boon`s and returned to `~bacbel`.
-17. `~bacbel` acks the `%boon`.
+Ames, as a part of Arvo, handles `+jam`ming, packetizing, encryption, and
+forming Ames packets. Once it is ready to send an Ames packet, it `%give`s to
+Unix a `%send` `gift` containing that packet. This will be a Nock noun
+containing the `@tas` `%send` as well as the serialized packet.
 
-Refer to timluc's Gall guide's `poke.md` for more info on subscription dataflows
-   
-#### Initial Request
+"Unix", in this case, is actually the King. The King receives the `%send`
+instruction, wraps the packet contained within as a UDP packet, and queues the
+UDP packet contained. Once it is time to send it (which will be determined by
+congestion control), it will go ahead and forward the packet to Unix's
+networking interface, at which point it is no longer controlled by any part of Urbit.
 
-
-
-`[%pass /subscription/path %agent [~worwel-sipnum publish] [%watch /path/to/recipes]]`
-
-
-#### Flows
-
-Recall that a flow contains a bidirectional totally ordered sequence of messages
-between the Ames vane of two ships. It is polarized in the sense that one ship
-only sends `%plea`s and (n)acks, called the forward flow, and the other ship
-only returns `%boon`s (which includes message-level (n)acks) and packet-level
-acks, called the backwards flow. Note that while messages are totally ordered,
-packets are not, and furthermore acks/nacks are not considered to be messages.
-
-So packets within a message, and acks acknowledging those packets, may be
-received in any order. However, the next message will not be released from the queue until
-each packet has been acked and the entire message has been (n)acked as well.
-
-Flow 1:
-`%plea`s to `~worwel-sipnum` (forward flow)
-1. 3 packets encoding a `%watch /path/to/recipes` at `publish`
-
-`%boon`s to `~bacbel-tagfeb` (backward flow)
-1. 3 packet level acks
-2. 1 `%done` message level ack
-3. 1 `%watch-ack` as a `%boon`
+Now the receiving King is handed a UDP packet by Unix. The King removes the UDP
+wrapped and checks to see that it has received a valid Ames packet. If so, it
+`+cue`s the payload and wraps it as a `%hear` `note` and passes it to the Serf.
 
