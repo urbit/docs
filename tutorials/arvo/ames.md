@@ -115,21 +115,22 @@ ducts as unique keys.  Stop tracking a peer by sending Ames a
 
 Debug output can be adjusted using `%sift` and `%spew` `$task`'s.
 
-## Packet structure
+## Packets
 
 Ames datagram packets are handled as nouns internally by Arvo but as serial data
-by Unix. Here we document their serial structure.
-For further information, see `+encode-packet` and `+decode-packet` in `ames.hoon`.
+by Unix. In this section we describe how packets are formed, serialized, and relayed.
+
+### Serial format
 
 There is a 32-bit header followed by a variable width body.
 
-### Header
+#### Header
 
 The 32-bit header is given by the following data, presented in order:
 
  - 3 bits: Ames `protocol-version`,
  - 20 bits: a checksum as a truncated insecure hash of the body, done with
-   `+mug`,
+   [`+mug`](@/docs/reference/library/2e.md#mug),
  - 2 bits: the bit width of the sender address encoded as a 2-bit enum,
  - 2 bits: the bit width of the receiver address encoded as a 2-bit enum,
  - 1 bit: whether the packet is encrypted or not,
@@ -137,7 +138,7 @@ The 32-bit header is given by the following data, presented in order:
  
  Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
  
-### Body
+#### Body
 
 The body is of variable length and consists of three parts in this order:
 
@@ -148,7 +149,7 @@ The body is of variable length and consists of three parts in this order:
  `origin` is the IP and port of the original sender if the packet was proxied
  through a relay and null otherwise. `content` is a noun that is either an encrypted ack or an
  encrypted message fragment, unless it is a comet attestation packet in which
- case it is unencrypted.
+ case it is unencrypted. `content` is always 1kB in size or less.
  
  The sender and receiver live outside of the jammed data section to simplify
  packet filtering for the interpreter.
@@ -165,15 +166,15 @@ which number they are. Finally it encrypts each individual packet and enqueues
 them to be sent along their stated flow. 
 
 Network packets aren't always received in order, so this numbering is important
-for reconstruction, and also pakcets may get lost. So Ames does transmission
+for reconstruction, and also packets may get lost. So Ames does transmission
 control (the TC in TCP) to solve this problem. It makes sure that all packets
-eventually get through, and when the other side gets them is can put them in the
+eventually get through, and when the other side gets them it can put them in the
 correct order. If Ames doesn't get an ack on a packet then it will resend it
 until it does. The timing on resending packets is called congestion control and
 works in the same fashion as TCP, namely exponential backoff.
 
 Once all packets are received, the receiving Ames decrypts them, deserializes
-them, and puts them back together.
+them, and puts them back together to form a message.
  
 ### Acks
 
@@ -204,10 +205,6 @@ receipt of those packets are considered to be what makes up a given message.
 Thus a message-level ack must be received before the next message on the flow
 can begin.
 
-```hoon
-+$  ack-meat  (each fragment-num [ok=? lag=@dr])
-```
-
 #### Ack packets
 
 The contents of a given ack packet are deterministic. The `content` (i.e. the
@@ -233,6 +230,68 @@ A message ack is an extended fragment ack that is obtained by encrypting the
 ```hoon
 [our-life her-life bone message-num fragment-num ok=? lag=@dr]
 ```
+`ok` is a flag that is set to `%.y` for a message ack and `%.n` for a message
+nack. We defer discussion of nacks. In the future, `lag` will be used to
+describe the time it took to process a message, but for now it is always zero.
+
+### Packet relaying
+
+Here we describes how the Ames network relays packets. We ignore all details
+about UDP, which occurs at a lower layer than Ames.
+
+When a ship first contacts another ship, it may only know its `@p`, but an IP
+address and port are necessary for peer-to-peer communication to occur.
+Thus the initial correspondence between two ships, or additional correspondence
+following a change in IP or port of one of the parties, will need to be relayed
+by an intermediary that knows the IP and port of the receiving ship.
+
+For now packet relaying is handled entirely by galaxies. Every galaxy is
+responsible for knowing the IP and port of every planet underneath it. In the
+future, galaxies will only need to know the star sponsoring a planet, and stars
+will be responsible for the final step of the relay.
+
+The following diagram summarizes the packet creation and forwarding process.
+
+<div style="text-align:center">
+<img src="https://media.urbit.org/docs/arvo/datagram-long.png">
+</div>
+
+We elaborate on the above diagram.
+
+A typical relay will look something like this: `~bacbel-tagfeb` wishes to
+contact `~worwel-sipnum` but does not know the IP address and port at which
+`~worwel-sipnum` resides. Both planets live under `~zod`, which knows both of
+their IP and port numbers by virtue of being the galaxy that both live under.
+
+So `~bacbel-tagfeb` sends a packet addressed to `~worwel-sipnum` to `~zod`.
+
+The packet has the following format:
+ - The standard Ames header described in [header](#header), where the checksum
+   is the `+mug` of the body, and the sender and receiver ship types are `01`,
+   denoting that the sender and receiver are planets. The remainder of the
+   packet is the body.
+ - The body of this packet will be the `@p` of the
+sender `~bacbel-tagfeb`, followed by the `@p` of the receiver `~worwel-sipnum`,
+followed by the payload.
+ - The payload of this packet will be the `+jam` of `[origin content]`. `origin`
+for this initial packet will be `~`, which implies that the packet is
+originating from the sender. `content` is the `+jam` of the message, encrypted
+using a Diffie-Hellman symmetric key obtained with the private key of
+`~bacbel-tagfeb` and the public key of `~worwel-sipnum`.
+
+`~zod` receives the packet and reads the body. It sees that it is not the
+intended recipient of the packet, and so gets ready to forward it to
+`~worwel-sipnum`. First, it [`+cue`s](@/docs/reference/library/2p.md#cue)
+(deserializes) the payload and changes the `origin` to the IP and port of
+`~bacbel-tagfeb`. Then it `+jam`s `[origin content]` to form a new payload, and
+`+mug`s that payload to get a new checksum. It replaces the old payload and
+checksum with the new, and then sends the packet along to `~worwel-sipnum`.
+
+Once `~worwel-sipnum` processes the packet, it will know the IP and port of
+`~bacbel-tagfeb` since `~zod` included it when it forwarded the packet and so
+will send an ack packet directly to `~bacbel-tagfeb`. Communication between the
+two ships will now be direct until one of them changes their IP address, port, or networking keys.
+
 
 ## A typical successful Ames exchange
 
