@@ -25,6 +25,9 @@ protocol itself, including how to route incoming packets to the correct
 vane or app, is defined in Ames.
 
 ## Technical Overview
+This section summarizes the design of Ames. Beyond this section are deeper
+elaborations on the concepts presented here.
+
 Ames extends [Arvo's](@/docs/tutorials/arvo/arvo.md) `%pass`/`%give` `move` semantics across the network.
 
 Ames receives packets as Arvo events and emits packets as Arvo
@@ -78,7 +81,7 @@ large.  A naxplanation can only give rise to a positive ack --
 never ack an ack, and never nack a naxplanation.
 
 Ames guarantees a total ordering of messages within a "flow",
-identified in other vanes by a duct and over the wire by a "bone":
+identified in other vanes by a duct and over the wire by a `bone`:
 an opaque number.  Each flow has a FIFO (first-in-first-out) queue of `%plea` requests
 from the requesting ship to the responding ship and a FIFO queue
 of `%boon`'s in the other direction.
@@ -140,7 +143,7 @@ The body is of variable length and consists of three parts in this order:
 
  - The `@p` of the sending ship,
  - The `@p` of the receiving ship,
- - The payload, which is the `+jam` (i.e. serialization) of the noun `[origin content]`.
+ - The payload, which is the [`+jam`](@/docs/reference/libary/2p.md#jam) (i.e. serialization) of the noun `[origin content]`.
  
  `origin` is the IP and port of the original sender if the packet was proxied
  through a relay and null otherwise. `content` is a noun that is either an encrypted ack or an
@@ -153,15 +156,13 @@ The body is of variable length and consists of three parts in this order:
 ### Packeting
 
 When Ames has a message to be sent it must first determine how many packets are
-required to send the message. To do this, it first `+jam`s (serializes) the
+required to send the message. To do this, it first `+jam`s the
 message, producing an atom. Ames checks how large the atom is, and if it is
 bigger than a kilobyte it will split it into packets whose payloads are 1 kB or
 less. It then numbers each one - this is message 17, packet 12, this is message
 17, packet 13, etc, so that when the receiver receives these packets it knows
 which number they are. Finally it encrypts each individual packet and enqueues
-them to be sent along their stated flow. Encryption is the last step to happen
-before a packet is sent, since the receivers keys could potentially change in
-the time between when
+them to be sent along their stated flow. 
 
 Network packets aren't always received in order, so this numbering is important
 for reconstruction, and also pakcets may get lost. So Ames does transmission
@@ -174,21 +175,64 @@ works in the same fashion as TCP, namely exponential backoff.
 Once all packets are received, the receiving Ames decrypts them, deserializes
 them, and puts them back together.
  
-## Acks and nacks
+### Acks
 
-There are two types of acks: packet-level acks and message-level acks. They are
+In this section we discuss acks, short for acknowledgements, which are small
+packets attesting that packets were successfully received. Ames makes use of
+acks maintain synchrony between two communicating parties. Nacks are 'negative
+acknowledgments' and are used when something goes wrong. This topic is more
+complicated and so discussion of them is deferred.
+
+Every message (i.e. a `%plea` or a `%boon`) is split up by Ames into some number
+of _fragments_ that are 1kB in size or less. The fragments are then encrypted
+and encapsulated into
+packets and sent along a flow. The message will be considered successfully
+received once the sender has received the appropriate set of acks in response,
+defined as follows.
+
+There are two types of acks: fragment acks and message acks. Acks are
 not considered messages, and thus are not `%plea`s or `%boon`s, and so are not
-required to appear in a particular order.
+required to appear in a particular order. Given a message split into N
+fragments, the sender of the message will expect N-1 fragment acks followed
+by exactly one message ack. This is because the receiver
+will send a fragment ack for the first N-1 packets it received, and what
+would have been the final fragment ack will instead be a message ack.
 
-There is only one kind of nack, which may only be sent in response to a `%plea`,
-and requires a naxplanation.
+Acks are considered to be part of the flow in which that `%plea` or
+`%boon` lives, as the packets containing their fragments and packets acking the
+receipt of those packets are considered to be what makes up a given message.
+Thus a message-level ack must be received before the next message on the flow
+can begin.
 
-Each packet forming part of a `%plea` or `%boon` must be acked, and can never be nacked.
+```hoon
++$  ack-meat  (each fragment-num [ok=? lag=@dr])
+```
 
-Each `%plea` must be acked or nacked. A nack requires a naxplanation message (a `%boon`)?
+#### Ack packets
 
-Each `%boon` must be acked.
- 
+The contents of a given ack packet are deterministic. The `content` (i.e. the
+encrypted portion of the packet) of a fragment ack is obtained by encrypting the `+jam` of the
+following noun:
+
+```hoon
+[our-life her-life bone message-num fragment-num]
+```
+Each datum in this noun is an atom with the aura `@ud` or an aura that nests
+under `@ud`.
+
+Here, `our-life` refers to the [`life`](@/docs/glossary/breach), or revision
+number, of the acking ship's networking keys, and `her-life` is the `life` of
+the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow, `message-num` denotes the number of the
+message in the flow identified by `bone`, and
+`fragment-num` denotes the number of the fragment of the message identified by
+`message-num` being acked. 
+
+A message ack is an extended fragment ack that is obtained by encrypting the
+`+jam` of the following noun:
+
+```hoon
+[our-life her-life bone message-num fragment-num ok=? lag=@dr]
+```
 
 ## A typical successful Ames exchange
 
