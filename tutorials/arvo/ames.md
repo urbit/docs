@@ -175,16 +175,19 @@ works in the same fashion as TCP, namely exponential backoff.
 
 Once all packets are received, the receiving Ames decrypts them, deserializes
 them, and puts them back together to form a message.
+
+
  
-### Acks
+### Acks and Nacks
 
-In this section we discuss acks, short for acknowledgements, which are small
+In this section we discuss acks and nacks. Ack is short for acknowledgement, which are small
 packets attesting that packets were successfully received. Ames makes use of
-acks maintain synchrony between two communicating parties. Nacks are 'negative
-acknowledgments' and are used when something goes wrong. This topic is more
-complicated and so discussion of them is deferred.
+acks to maintain synchrony between two communicating parties. Nacks are 'negative
+acknowledgments' and are used when something goes wrong.
 
-Every message (i.e. a `%plea` or a `%boon`) is split up by Ames into some number
+#### Acks
+
+Every message (i.e. a `%plea`, `%boon`, or naxplanation) is split up by Ames into some number
 of _fragments_ that are 1kB in size or less. The fragments are then encrypted
 and encapsulated into
 packets and sent along a flow. The message will be considered successfully
@@ -203,11 +206,31 @@ Acks are considered to be part of the flow in which that `%plea` or
 `%boon` lives, as the packets containing their fragments and packets acking the
 receipt of those packets are considered to be what makes up a given message.
 Thus a message-level ack must be received before the next message on the flow
-can begin.
+can begin. The full story is more complicated than this, see the section on
+[flows](#flows).
 
-#### Ack packets
 
-The contents of a given ack packet are deterministic. The `content` (i.e. the
+#### Nacks
+
+A nack indicates a negative acknowledgement to a `%plea`, meaning that the
+requested action was not performed.
+
+`%boon`s and naxplanations are never nacked.
+Individual packets are never nacked, only complete `%plea` messages. This works
+because only complete packets ever make it to Ames, as malformed
+packets will be discarded by the Ames I/O module in the
+[King](#the-serf-and-the-king). Therefore there is no need for Ames to do
+something like nack a packet whose checksum does not match the `+mug` of the
+body.
+
+A nack will be accompanied by a naxplanation, which is a third type of message
+separate from `%plea`s and `%boon`s. Ames won't give the vane that requested the
+initial `%plea` a nack until it also receives the naxplanation, which it will send to
+the vane as a `%done` gift. Naxplanations may only be acked, never nacked.
+
+#### (N)ack packets
+
+The contents of a given (n)ack packet are deterministic. The `content` (i.e. the
 encrypted portion of the packet) of a fragment ack is obtained by encrypting the `+jam` of the
 following noun:
 
@@ -224,15 +247,68 @@ message in the flow identified by `bone`, and
 `fragment-num` denotes the number of the fragment of the message identified by
 `message-num` being acked. 
 
-A message ack is an extended fragment ack that is obtained by encrypting the
+A message (n)ack is an extended fragment ack that is obtained by encrypting the
 `+jam` of the following noun:
 
 ```hoon
 [our-life her-life bone message-num fragment-num ok=? lag=@dr]
 ```
 `ok` is a flag that is set to `%.y` for a message ack and `%.n` for a message
-nack. We defer discussion of nacks. In the future, `lag` will be used to
+nack. In the future, `lag` will be used to
 describe the time it took to process a message, but for now it is always zero.
+
+
+### Flows
+
+Flows are asymmetric communication channels along which two ships send and
+receive packets, and all Ames packets are part of some flow.
+
+Flows are asymmetric in that one ship is always the sender of
+`%plea`s and the other is always the sender of `%boon`s on a given flow. Thus ships will
+typically have multiple flows between them.
+
+The sequence of `%plea`s in a flow is totally ordered, though
+the packets which make them up need not be. `%boon`s are totally ordered in the
+same fashion, but there is not a coordinated ordering between `%plea`s and
+`%boon`s in a given flow beyond the implicit one arising from the fact that a
+`%boon` is always a response to a `%plea`.
+
+Inside of Ames, each flow has four sequential opaque `@ud`s
+called bones that are unique to that flow. Thus the flow itself is often
+referred to by its first bone. The set of types of packets is partitioned into
+four subsets, each of which is assigned a bone. Each bone is a one-way street
+for packets to travel along, so e.g. acks to packets making up a `%plea` are
+sent along different bones.
+
+We give an example of such a partition. Let flow 12 be a flow between `~bacbel-tagfeg` and `~worwel-sipnum` with
+`~bacbel-tagfeg` as the `%plea` sender. Then bones 12-15 are associated with the
+flow, and the types of packets for each bone are:
+
+ - bone 12, `%plea`s and acks to `~worwel-sipnum`,
+ - bone 13, `%boon`s and (n)acks to `~bacbel-tagfeg`,
+ - bone 14, acks of naxplanations to `~worwel-sipnum`,
+ - bone 15, naxplanations to `~bacbel-tagfeg`.
+
+Each bone is handled separately by congestion control, and this is the reason
+for their segregation. For example, say a two packet `%plea` is sent on bone 12,
+with `~bacbel-tagfeg` requesting to join a group on `~worwel-sipnum`.
+Then `~worwel-sipnum` can ack the first packet on bone 13, and then send a nack
+on bone 13 as well. A nack by itself contains no information as to why the nack
+happened. Then `~worwel-sipnum` can also send a naxplanation on bone 15 saying
+to `~bacbel-tagfeg` that they cannot join the group, to which an ack is received
+on bone 14.
+
+`%plea`s and `%boon`s are handled on separate bones so that e.g. sending a large
+`%boon` doesn't stop an additional `%plea` from being received. It is also
+simply cleaner to make each bone one-way. Acks and nacks are very small packets
+as well as integral to controlling the total orderings on `%plea`s and `%boon`s
+and so they are included on these bones as well.
+
+Naxplanations can potentially be very large, as they often contain things like stack
+traces or other crash reports. Thus it is undesirable to have them share a bone
+with `%boon`s and create congestion there. So naxplanations have their own bone,
+and so do acks to packets that make up a naxplanation, as well as the
+message-level naxplanation ack.
 
 ### Packet relaying
 
