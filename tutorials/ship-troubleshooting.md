@@ -7,6 +7,9 @@ aliases = ["docs/using/ship-troubleshooting/"]
 
 Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.
 
+This page contains resolutions to many of the most commonly encountered issues.
+If your issue is not covered here, please check out our [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki).
+
 ## Table of Contents
 
 - [Best practices](#best-practices)
@@ -97,6 +100,15 @@ Since version `0.8.0`, changes no longer automatically sync between the Unix sid
 
 You may have booted a ship with your keyfile twice in the same era. To fix this, you must perform a [personal breach](#personal-breach).
 
+### I don't have the latest OTA
+
+You can check what build your ship is on by entering `+trouble` into dojo and
+reading the `%base` hash. If this does not match the latest hash published in
+the `urbit-dev` mailing list, you are behind.
+
+Your sponsor may just be lagging behind, so sometimes this will resolve on its
+own with patience. Otherwise, try the procedure outlined [here](https://github.com/urbit/support/wiki/Missing-OTA).
+
 ### I keep getting an `ames` error stack-trace
 
 You may see a message like this one: `/~zod/home/~2019.7.22..18.55.46..83a3/sys/vane/ames:<[line column].[line column]>`. This is a clay path to a Hoon file, pointing to the line and column where an expression crashed. This kind of error might be accompanied by a `crud` message.
@@ -130,10 +142,6 @@ The above commands work if you have the wrong keys of other ships. If other ship
 This is the result of deleting your pier and starting your ship again. To fix this, you must perform a [personal breach](#personal-breach).
 
 ## Booting Issues {#booting-issues}
-
-### My ship won't boot and gets a `terminals database is inaccessible` message
-
-This happens when you try to run the Urbit binary through your `$PATH`. When running the command, you need to be explicit and specify the actual path to it in the filesystem. This is a side-effect of the way we build the release binaries, which will be fixed.
 
 ### My ship booted for the first time, but it turned into a comet instead of my planet or star
 
@@ -174,9 +182,15 @@ Copy this stack trace and include it in your GitHub issue.
 
 ### My ship crashed with a `bail: meme` error.
 
-1. Make sure you are running version to `0.8.2` if you are not already on it.
+This means that your ship ran out of memory.
 
-2. Restart your ship. If you don't crash again, everything may be fine. If you **do** crash again, then you should perform a [personal breach](#personal-breach).
+1. Make sure you are running the latest binary if you are not already on it.
+
+2. Restart your ship. If you don't crash again, everything may be fine.
+
+3. Try the procedure outlined [here](https://github.com/urbit/support/wiki/ship-exits-with-a-bail:-meme-error).
+
+4. If you **do** crash again, then you should perform a [personal breach](#personal-breach).
 
 ### My ship crashed with a `bail: oops` error
 
