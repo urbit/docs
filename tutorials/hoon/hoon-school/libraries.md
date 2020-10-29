@@ -21,7 +21,7 @@ In Hoon, like in other languages, it's often useful to create a library for othe
     mydeck
   =/  j  2
   |-
-  ?.  (lte j 14)
+  ?.  (lte j 13)
     ^$(i +(i))
   %=  $
     j       +(j)
