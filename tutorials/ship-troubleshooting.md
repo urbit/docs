@@ -36,10 +36,6 @@ Urbit is stateful, meaning that it needs to hold onto all your data. If you dele
 
 When you first start your ship, you should make sure you put it a place where you can find it again and where it won't get accidentally deleted. Remember that you must perform `|mount %` in your ship's Dojo to make your ship visible as a directory in the Unix file system.
 
-### Avoid killing the urbit process directly
-
-The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
-
 ### Keep up-to-date builds
 
 Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](@/using/install.md#updating).
