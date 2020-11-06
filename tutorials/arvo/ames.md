@@ -120,7 +120,7 @@ Debug output can be adjusted using `%sift` and `%spew` `$task`'s.
 Ames datagram packets are handled as nouns internally by Arvo but as serial data
 by Unix. In this section we describe how packets are formed, serialized, and relayed.
 
-### Serial format
+### Packet format
 
 There is a 32-bit header followed by a variable width body.
 
@@ -161,7 +161,7 @@ required to send the message. To do this, it first `+jam`s the
 message, producing an atom. Ames checks how large the atom is, and if it is
 bigger than a kilobyte it will split it into packets whose payloads are 1 kB or
 less. It then numbers each one - this is message 17, packet 12, this is message
-17, packet 13, etc, so that when the receiver receives these packets it knows
+17, packet 13, etc., so that when the receiver receives these packets it knows
 which number they are. Finally it encrypts each individual packet and enqueues
 them to be sent along their stated flow. 
 
@@ -170,24 +170,21 @@ for reconstruction, and also packets may get lost. So Ames does transmission
 control (the TC in TCP) to solve this problem. It makes sure that all packets
 eventually get through, and when the other side gets them it can put them in the
 correct order. If Ames doesn't get an ack on a packet then it will resend it
-until it does. The timing on resending packets is called congestion control and
-works in the same fashion as TCP, namely exponential backoff.
+until it does. The logic for determining how many packets to send or re-send at what time is performed by an Ames-specific variant of TCP's "NewReno" congestion control algorithm.
 
-Once all packets are received, the receiving Ames decrypts them, deserializes
-them, and puts them back together to form a message.
+As each packet in a message is received, Ames decrypts it and stores the message fragment.  Once it's received every packet for a message, Ames concatenates the fragments back into a single large atom and uses `+cue` to deserialize that back into the original message noun.
 
 
  
 ### Acks and Nacks
 
-In this section we discuss acks and nacks. Ack is short for acknowledgement, which are small
-packets attesting that packets were successfully received. Ames makes use of
-acks to maintain synchrony between two communicating parties. Nacks are 'negative
+In this section we discuss acks and nacks. In Ames, an "ack", short for "acknowledgment", is a small packet attesting that a piece of information (either a packet or a whole message) was received. Ames makes use of
+acks to maintain synchronization between two communicating parties. Nacks are 'negative
 acknowledgments' and are used when something goes wrong.
 
 #### Acks
 
-Every message (i.e. a `%plea`, `%boon`, or naxplanation) is split up by Ames into some number
+Every message (i.e. a `%plea` or `%boon`) is split up by Ames into some number
 of _fragments_ that are 1kB in size or less. The fragments are then encrypted
 and encapsulated into
 packets and sent along a flow. The message will be considered successfully
@@ -195,10 +192,10 @@ received once the sender has received the appropriate set of acks in response,
 defined as follows.
 
 There are two types of acks: fragment acks and message acks. Acks are
-not considered messages, and thus are not `%plea`s or `%boon`s, and so are not
-required to appear in a particular order. Given a message split into N
+not considered messages, and thus are not `%plea`s or `%boon`s. Given a message split into N
 fragments, the sender of the message will expect N-1 fragment acks followed
-by exactly one message ack. This is because the receiver
+by exactly one message ack (ignoring any duplicate packets, which are idempotent
+from the perspective of the application). This is because the receiver
 will send a fragment ack for the first N-1 packets it received, and what
 would have been the final fragment ack will instead be a message ack.
 
@@ -206,7 +203,7 @@ Acks are considered to be part of the flow in which that `%plea` or
 `%boon` lives, as the packets containing their fragments and packets acking the
 receipt of those packets are considered to be what makes up a given message.
 Thus a message-level ack must be received before the next message on the flow
-can begin. The full story is more complicated than this, see the section on
+can begin. The full story is more complicated than this; see the section on
 [flows](#flows).
 
 
@@ -216,42 +213,46 @@ A nack indicates a negative acknowledgement to a `%plea`, meaning that the
 requested action was not performed.
 
 `%boon`s and naxplanations are never nacked.
-Individual packets are never nacked, only complete `%plea` messages. This works
-because only complete packets ever make it to Ames, as malformed
-packets will be discarded by the Ames I/O module in the
-[King](#the-serf-and-the-king). Therefore there is no need for Ames to do
-something like nack a packet whose checksum does not match the `+mug` of the
-body.
+Individual packets are also never nacked, only complete `%plea` messages are.
+Whether a malformed packet causes a `%plea` to be nacked depends on its content.
+In the case of an incorrect checksum or a failure to decrypt then Ames drops the
+packet and it is as though it never happened. However, if the packet does
+decrypt and has invalid ciphertext (i.e. something other than a jammed
+`$shutpacket` data structure), then Ames will nack the whole `%plea` since that
+indicates that the peer is misbehaving. Eventually Ames should also present a
+warning to the user that the peer is untrustworthy.
 
-A nack will be accompanied by a naxplanation, which is a third type of message
-separate from `%plea`s and `%boon`s. Ames won't give the vane that requested the
+A nack will be accompanied by a naxplanation, which is a special type of`%boon`
+that uses its own `bone` (see [flows](#flows)). Ames won't give the vane that requested the
 initial `%plea` a nack until it also receives the naxplanation, which it will send to
 the vane as a `%done` gift. Naxplanations may only be acked, never nacked.
+Furthermore, naxplanations can only ever be sent as a rejection of a `%plea` -
+the receiver will never both perform a `%plea` and return a naxplanation.
 
 #### (N)ack packets
 
-The contents of a given (n)ack packet are deterministic. The `content` (i.e. the
-encrypted portion of the packet) of a fragment ack is obtained by encrypting the `+jam` of the
+A fragment ack's contents (before encryption) are a pure function of the
 following noun:
-
 ```hoon
 [our-life her-life bone message-num fragment-num]
 ```
+This means all re-sends of an ack packet will be bitwise identical to each other, unless one of the peers changes its encryption keys.
+
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests
 under `@ud`.
 
 Here, `our-life` refers to the [`life`](@/docs/glossary/breach), or revision
 number, of the acking ship's networking keys, and `her-life` is the `life` of
-the ack-receiving ship's networking keys. `bone` is an opaque number identifying the flow, `message-num` denotes the number of the
-message in the flow identified by `bone`, and
-`fragment-num` denotes the number of the fragment of the message identified by
-`message-num` being acked. 
+the ack-receiving ship's networking keys. `bone` is an opaque number identifying
+the flow. `message-num` denotes the number of the
+message in the flow identified by `bone`. `fragment-num` denotes the number of
+the fragment of the message identified by `message-num` that is being acked. 
 
-A message (n)ack is an extended fragment ack that is obtained by encrypting the
+A message (n)ack is a different kind of ack that is obtained by encrypting the
 `+jam` of the following noun:
 
 ```hoon
-[our-life her-life bone message-num fragment-num ok=? lag=@dr]
+[our-life her-life bone message-num ok=? lag=@dr]
 ```
 `ok` is a flag that is set to `%.y` for a message ack and `%.n` for a message
 nack. In the future, `lag` will be used to
@@ -263,22 +264,22 @@ describe the time it took to process a message, but for now it is always zero.
 Flows are asymmetric communication channels along which two ships send and
 receive packets, and all Ames packets are part of some flow.
 
-Flows are asymmetric in that one ship is always the sender of
-`%plea`s and the other is always the sender of `%boon`s on a given flow. Thus ships will
-typically have multiple flows between them.
+To create a new flow, a ship sends a
+`%plea` to another ship. Only the creator of the flow may send `%plea`s, and the
+other party may only send `%boon`s. In this sense flows are asymmetric.
 
 The sequence of `%plea`s in a flow is totally ordered, though
 the packets which make them up need not be. `%boon`s are totally ordered in the
 same fashion, but there is not a coordinated ordering between `%plea`s and
 `%boon`s in a given flow beyond the implicit one arising from the fact that a
-`%boon` is always a response to a `%plea`.
+`%boon` is always a response to a `%plea`. A `%plea` can give rise to zero, one,
+or many `%boon`s.
 
 Inside of Ames, each flow has four sequential opaque `@ud`s
 called bones that are unique to that flow. Thus the flow itself is often
-referred to by its first bone. The set of types of packets is partitioned into
-four subsets, each of which is assigned a bone. Each bone is a one-way street
+referred to by its first bone. Each bone is a one-way street
 for packets to travel along, so e.g. acks to packets making up a `%plea` are
-sent along different bones.
+sent along a different bone than the `%plea`.
 
 We give an example of such a partition. Let flow 12 be a flow between `~bacbel-tagfeg` and `~worwel-sipnum` with
 `~bacbel-tagfeg` as the `%plea` sender. Then bones 12-15 are associated with the
@@ -290,7 +291,7 @@ flow, and the types of packets for each bone are:
  - bone 15, naxplanations to `~bacbel-tagfeg`.
 
 Each bone is handled separately by congestion control, and this is the reason
-for their segregation. For example, say a two packet `%plea` is sent on bone 12,
+for their segregation. For example, say a two-packet `%plea` is sent on bone 12,
 with `~bacbel-tagfeg` requesting to join a group on `~worwel-sipnum`.
 Then `~worwel-sipnum` can ack the first packet on bone 13, and then send a nack
 on bone 13 as well. A nack by itself contains no information as to why the nack
