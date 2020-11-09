@@ -43,6 +43,14 @@ Miscellaneous useful macros.
 R: `;:(p q)`
 I: `:(p q)`
 
+### ;/ micfas
+
+[docs](@/docs/reference/hoon-expressions/rune/mic.md#micfas) \\/
+`[%mcnt p=hoon]`: tape as XML element.
+
+R: `;/  p`
+I: `:/p`
+
 ## : col (cells)
 
 The cell runes.

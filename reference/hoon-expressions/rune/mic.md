@@ -172,6 +172,12 @@ ford: %ride failed to execute:
 ~[%$ ~[%$ 'p']]
 ```
 
+##### Syntax
+
+Regular: **1-fixed**
+
+Irregular: `;/  a` is `:/a`
+
 ##### Examples
 
 ```
