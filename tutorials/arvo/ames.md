@@ -377,7 +377,7 @@ Once `~worwel-sipnum` processes the packet, it will know the IP and port of
 `~bacbel-tagfeb` since `~zod` included it when it forwarded the packet. Thus
 `~worwel-sipnum` will send an ack packet directly to `~bacbel-tagfeb`, unless a
 NAT and/or firewall prevents a direct peer-to-peer connection, in which case
-`~zod` will contineu to relay packets. Absent these factors preventing a
+`~zod` will continue to relay packets. Absent these factors preventing a
 peer-to-peer connection, communication between the two ships will now be direct
 until one of them changes their IP address, port, or networking keys.
 
