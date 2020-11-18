@@ -382,12 +382,12 @@ then informs the King of the new state. The King manages snapshots of the Arvo
 state and handles I/O with Unix, among other things. The Serf only ever talks to
 the King, while the King talks with both the Serf and Unix.
 
-### Ames
+### Ames I/O submodule
 
 The King has several submodules, one of them being an Ames I/O submodule. This
 submodule is responsible for wrapping outgoing Ames packets as UDP packets, and
-looking at incoming UDP packets handed to it by Unix to ensure that they are
-valid Ames packets. It also maintains an incoming and outgoing packet queue.
+unwrapping incoming UDP packets into Ames packets and forwarding them to the
+worker. It also maintains an incoming packet queue.
 
 This division is summarized in the following diagram, describing how
 `~bacbel-tagfeb` requests a subscription to the `recipes` notebook of
@@ -403,12 +403,9 @@ Unix a `%send` `gift` containing that packet. This will be a Nock noun
 containing the `@tas` `%send` as well as the serialized packet.
 
 "Unix", in this case, is actually the King. The King receives the `%send`
-instruction, wraps the packet contained within as a UDP packet, and queues the
-UDP packet contained. Once it is time to send it (which will be determined by
-congestion control), it will go ahead and forward the packet to Unix's
-networking interface, at which point it is no longer controlled by any part of Urbit.
+instruction, wraps the packet contained within as a UDP packet, and immediately
+hands it off the the Unix network interface to be sent.
 
 Now the receiving King is handed a UDP packet by Unix. The King removes the UDP
-wrapped and checks to see that it has received a valid Ames packet. If so, it
-`+cue`s the payload and wraps it as a `%hear` `note` and passes it to the Serf.
-
+wrapper, `+jam`s the `lane` on which it heard the packet, and delivers the packet
+to the Ames vane as an atom by copying the bytes it heard on the UDP port.
