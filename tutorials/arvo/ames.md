@@ -290,7 +290,7 @@ flow, and the types of packets for each bone are:
  - bone 14, acks of naxplanations to `~worwel-sipnum`,
  - bone 15, naxplanations to `~bacbel-tagfeg`.
 
-Each bone is handled separately by congestion control, and this is the reason
+Each bone is handled separately by congestion control, and this is one reason
 for their segregation. For example, say a two-packet `%plea` is sent on bone 12,
 with `~bacbel-tagfeg` requesting to join a group on `~worwel-sipnum`.
 Then `~worwel-sipnum` can ack the first packet on bone 13, and then send a nack
@@ -298,6 +298,14 @@ on bone 13 as well. A nack by itself contains no information as to why the nack
 happened. Then `~worwel-sipnum` can also send a naxplanation on bone 15 saying
 to `~bacbel-tagfeg` that they cannot join the group, to which an ack is received
 on bone 14.
+
+Another reason to separate bones is to avoid race conditions. If
+`~worwel-sipnum` and `~bacbel-tagfeg` attempt to start a flow with each other at
+the same time we do not wish there to be a conflict when they receive each
+others' packets. Flipping the last bit of the bone based on whether a packet is
+an ack or a message fragment allows for `~worwel-sipnum` to create flow 8 with
+`~bacbel-tagfeg` without coming into conflict with the flow 8 `~bacbel-tagfeg`
+created for `~worwel-sipnum`.
 
 `%plea`s and `%boon`s are handled on separate bones so that e.g. sending a large
 `%boon` doesn't stop an additional `%plea` from being received. It is also
