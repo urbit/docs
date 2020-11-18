@@ -348,7 +348,9 @@ contact `~worwel-sipnum` but does not know the IP address and port at which
 `~worwel-sipnum` resides. Both planets live under `~zod`, which knows both of
 their IP and port numbers by virtue of being the galaxy that both live under.
 
-So `~bacbel-tagfeb` sends a packet addressed to `~worwel-sipnum` to `~zod`.
+To prepare, `~bacbel-tagfeb` forms a Diffie-Hellman symmetric key with their own
+private key and the public key of `~worwel-sipnum`, obtained via Jael. Then
+`~bacbel-tagfeb` sends a packet addressed to `~worwel-sipnum` to `~zod`.
 
 The packet has the following format:
  - The standard Ames header described in [header](#header), where the checksum
@@ -361,8 +363,7 @@ followed by the payload.
  - The payload of this packet will be the `+jam` of `[origin content]`. `origin`
 for this initial packet will be `~`, which implies that the packet is
 originating from the sender. `content` is the `+jam` of the message, encrypted
-using a Diffie-Hellman symmetric key obtained with the private key of
-`~bacbel-tagfeb` and the public key of `~worwel-sipnum`.
+using the Diffie-Hellman symmetric key that was previously computed.
 
 `~zod` receives the packet and reads the body. It sees that it is not the
 intended recipient of the packet, and so gets ready to forward it to
