@@ -155,7 +155,7 @@ In computer science, an _interpreter_ is a program that directly executes
 instructions written in some human-understandable programming or scripting
 language, rather than requiring the code to first be compiled into a machine
 language. Arvo is an interpreter, which is important for us since it allows us
-to perform derministic [over-the-air updates](#over-the-air-updates) by the
+to perform deterministic [over-the-air updates](#over-the-air-updates) by the
 direct transfer of raw source code.
 
 To understand what we mean by _solid state_ interpreter, consider the operation of a solid state hard drive when a computer shuts down or loses power. Data written to an SSD is permanent unless otherwise deleted - loss of power may leave some partially written data, but nothing is ever lost. Thus, the state of an SDD can be considered to be equivalent to the data that it contains. That is to say, you do not need to know anything about the system which is utilizing the SSD to know everything there is to know about the SSD. There is no notion of "rebooting" a SSD - it simply stores data, and when power is restored to it, it is in exactly the same state as it was when power was lost.
