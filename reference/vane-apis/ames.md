@@ -116,13 +116,18 @@ This `task` returns no `gift`s.
 
 ### `%plea`
 
-`%plea` is the `task` used to send messages over Ames. It extends the
+`%plea` is the `task` used to instruct Ames to send a message. It extends the
 `%pass`/`%give` semantics across the network. As such, it is the most
 fundamental `task` in Ames and the primary reason for its existence.
 
 Ames also `pass`es a `%plea` `note` to another vane when it receives a message on a
 "forward flow" from a peer, originally passed from one of the peer's vanes to the
 peer's Ames.
+
+Ultimately `%plea` causes `%send` `gift`(s) to be sent to Unix, which tells
+Unix to send packets. In terms of `%pass`/`%give` semantics, this is in
+response to the `%born` `task`, which came along the Unix `duct`, rather than a
+response to the `%plea`.
 
 #### Accepts
 
@@ -143,7 +148,6 @@ route on the receiving ship, and `payload` is the semantic message content.
 
 This `task` returns no `gift`s.
 
-
 ## System and Lifecycle Tasks
 
 ### `%born`
@@ -157,6 +161,10 @@ Each time you start your Urbit, the Arvo kernel calls the `%born` task for Ames.
 #### Returns
 
 In response to a `%born` `task`, Ames `%give`s Jael a `%turf` `gift`.
+
+The `duct` along which `%born` comes is Ames' only duct to Unix, so `%send`
+`gift`s (which are instructions for Unix to send a packet) are also returned in
+response to `%born`.
 
 
 ### `%crud`
