@@ -12,12 +12,18 @@ There are two kinds of breaches: **personal breaches** and **network breaches**.
 
 Ships on the Ames network sometimes need to reset their continuity. A personal breach is when an individual ship announces to the network: "I forgot who I am, let's start over from scratch." That is, it clears its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone on the network has forgotten about it.
 
-Personal breaches often fix connectivity issues, but should only be used as a last resort. Before performing a personal breach, look at alternative fixes in the [Ship Troubleshooting](../ship-troubleshooting) guide. Also reach out for help in `~/~dopzod/urbit-help`, or, failing that, in the `#ship-starting-support` channel in our [Discord server](https://discord.gg/n9xhMdz) to see if there is another option.
+Personal breaches often fix connectivity issues, but should only be used as a
+last resort. Before performing a personal breach, look at alternative fixes in
+the [Ship Troubleshooting](../ship-troubleshooting) guide. Also reach out for
+help in the Help channel in the Urbit Community group
+`~bitbet-bolbel/urbit-community`, or, failing that, in the
+`#ship-starting-support` channel in our [Discord
+server](https://discord.gg/n9xhMdz) to see if there is another option.
 
 There are two types of personal breaches - one where your Ethereum ownership address
 remains the same, and one where you are switching to a new Ethereum ownership
 address. We make the emphasis about the Ethereum _ownership_ address as
-changing your [proxies](@/glossary/proxies.md) does not require a breach.
+changing your [proxies](@/docs/glossary/proxies.md) does not require a breach.
 
 If you will be keeping the same Ethereum ownership address and would like to perform a
 personal breach, follow the steps below.
