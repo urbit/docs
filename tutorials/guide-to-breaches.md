@@ -32,26 +32,24 @@ personal breach, follow the steps below.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 
-If you are switching to a new Ethereum ownerhsip address, you will have the
+If you are switching to a new Ethereum ownership address you will have the
 choice as to whether or not you want to breach. This is to cover the case when
 you are transferring to another address you own. The process here is slightly different.
 
 - Go to [bridge.urbit.org](https://bridge.urbit.org) and log into your identity.
 - Click on `ID: Identity and security settings` at the bottom, then click
   `Transfer this point`.
-- Enter the new Ethereum address you would like to transfer ownership to.
-  Click `Generate & Sign Transaction`, then click `Send Transaction` and wait
-  for the progress bar to complete.
+- Enter the new Ethereum address you would like to transfer ownership to. Click
+  `Generate & Sign Transaction`, then click `Send Transaction` and wait for the
+  progress bar to complete.
 - Logout of your current session in Bridge by clicking `Logout` at the top, and
   then login to your new ownership address.
 - From here, following the directions on how to [Accept your
   transfer](@/using/operations/using-bridge.md#accept-your-transfer), [Set your
   networking keys](@/using/operations/using-bridge.md#set-your-networking-keys),
   and [Generate your
-  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The main
-  difference with the above method is that you do not check the `Breach
-  continuity` box. The option whether or not to breach is in the Accept your
-  Transfer step.
+  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The option
+  whether or not to breach is in the Accept your Transfer step.
 - Delete or archive your old [pier](@/docs/glossary/pier.md).
 - Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
