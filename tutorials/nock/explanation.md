@@ -336,10 +336,13 @@ For instance, if `x` is a formula that calculates some product,
 ```
 ~zod:dojo> .*(57 [0 1])
 57
-~zod:dojo> .*([132 19] [0 3])
-19
 ~zod:dojo> .*(57 [4 0 1])
 58
+```
+Similarly,
+```
+~zod:dojo> .*([132 19] [0 3])
+19
 ~zod:dojo> .*([132 19] [4 0 3])
 20
 ```
