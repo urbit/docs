@@ -14,18 +14,47 @@ Ships on the Ames network sometimes need to reset their continuity. A personal b
 
 Personal breaches often fix connectivity issues, but should only be used as a last resort. Before performing a personal breach, look at alternative fixes in the [Ship Troubleshooting](../ship-troubleshooting) guide. Also reach out for help in `~/~dopzod/urbit-help`, or, failing that, in the `#ship-starting-support` channel in our [Discord server](https://discord.gg/n9xhMdz) to see if there is another option.
 
-To perform a personal breach, follow the steps below.
+There are two types of personal breaches - one where your Ethereum ownership address
+remains the same, and one where you are switching to a new Ethereum ownership
+address. We make the emphasis about the Ethereum _ownership_ address as
+changing your [proxies](@/glossary/proxies.md) does not require a breach.
+
+If you will be keeping the same Ethereum ownership address and would like to perform a
+personal breach, follow the steps below.
 
 - Go to [bridge.urbit.org](https://bridge.urbit.org) and log into your identity.
 - Click on `OS: Urbit OS Settings` at the bottom, then click `Reset Networking Keys`.
 - Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction` and wait for the progress bar to appear.
-- Click `Download Arvo Keyfile`.
-- Delete or archive your old pier.
-- Create a new pier by booting your ship with your new keyfile.
+- Download your new keyfile following these instructions: [Generate your
+  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile).
+- Delete or archive your old [pier](@/glossary/pier).
+- Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
+- Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 
-There are two types of personal breaches: changing private keys, and changing
-the Ethereum address that holds the Urbit ID.
+If you are switching to a new Ethereum ownerhsip address, you will necessarily be
+performing a personal breach as well - there is no way to change the ownership
+address without also breaching. The process here is slightly different.
+
+- Go to [bridge.urbit.org](https://bridge.urbit.org) and log into your identity.
+- Click on `ID: Identity and security settings` at the bottom, then click
+  `Transfer this point`.
+- Enter the new Ethereum address you would like to transfer ownership to.
+  Click `Generate & Sign Transaction`, then click `Send Transaction` and wait
+  for the progress bar to complete.
+- Logout of your current session in Bridge by clicking `Logout` at the top, and
+  then login to your new ownership address.
+- From here, following the directions on how to [Accept your
+  transfer](@/using/operations/using-bridge.md#accept-your-transfer), [Set your
+  networking keys](@/using/operations/using-bridge.md#set-your-networking-keys),
+  and [Generate your
+  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The main
+  difference with the above method is that you do not check the `Breach
+  continuity` box.
+- Delete or archive your old [pier](@/glossary/pier).
+- Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
+- Delete your keyfile after successfully booting.
+- Rejoin your favorite chat channels and subscriptions.
 
 Performing a personal breach on your ship increments an integer value called
 your ship's _life_ by one, which refers to your ship's [Azimuth](@/docs/tutorials/concepts/azimuth.md) _key
@@ -34,7 +63,8 @@ Ames and Jael to ensure that you are
 communicating with a ship created using its most recent set of keys. Your
 ship's life is written at the end of the name of its keyfile, e.g.
 `sampel-palnet-4.key`. Changing the Etherum address that holds the Urbit ID,
-called _reticketing_, also increments a number called the ship's _rift_ by one.
+called _reticketing_, increments a number called the ship's _rift_ by one in
+addition to incrementing your ship's life.
 Rift refers to your ship's Azimuth _continuity number_.
 
 You can check your current life and rift number by running the
