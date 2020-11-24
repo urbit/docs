@@ -12,12 +12,18 @@ There are two kinds of breaches: **personal breaches** and **network breaches**.
 
 Ships on the Ames network sometimes need to reset their continuity. A personal breach is when an individual ship announces to the network: "I forgot who I am, let's start over from scratch." That is, it clears its own event log and sends an announcement to the network, asking all ships that have communicated with it to reset its networking information in their state. This makes it as though the ship was just started for the first time again, since everyone on the network has forgotten about it.
 
-Personal breaches often fix connectivity issues, but should only be used as a last resort. Before performing a personal breach, look at alternative fixes in the [Ship Troubleshooting](../ship-troubleshooting) guide. Also reach out for help in `~/~dopzod/urbit-help`, or, failing that, in the `#ship-starting-support` channel in our [Discord server](https://discord.gg/n9xhMdz) to see if there is another option.
+Personal breaches often fix connectivity issues, but should only be used as a
+last resort. Before performing a personal breach, look at alternative fixes in
+the [Ship Troubleshooting](../ship-troubleshooting) guide. Also reach out for
+help in the Help channel in the Urbit Community group
+`~bitbet-bolbel/urbit-community`, or, failing that, in the
+`#ship-starting-support` channel in our [Discord
+server](https://discord.gg/n9xhMdz) to see if there is another option.
 
 There are two types of personal breaches - one where your Ethereum ownership address
 remains the same, and one where you are switching to a new Ethereum ownership
 address. We make the emphasis about the Ethereum _ownership_ address as
-changing your [proxies](@/glossary/proxies.md) does not require a breach.
+changing your [proxies](@/docs/glossary/proxies.md) does not require a breach.
 
 If you will be keeping the same Ethereum ownership address and would like to perform a
 personal breach, follow the steps below.
@@ -27,31 +33,30 @@ personal breach, follow the steps below.
 - Check the `Breach Continuity` box. Click `Reset Networking Keys`, and then click `Send Transaction` and wait for the progress bar to appear.
 - Download your new keyfile following these instructions: [Generate your
   keyfile](@/using/operations/using-bridge.md#generate-your-keyfile).
-- Delete or archive your old [pier](@/glossary/pier.md).
+- Delete or archive your old [pier](@/docs/glossary/pier.md).
 - Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
 
-If you are switching to a new Ethereum ownerhsip address, you will necessarily be
-performing a personal breach as well - there is no way to change the ownership
-address without also breaching. The process here is slightly different.
+If you are switching to a new Ethereum ownership address you will have the
+choice as to whether or not you want to breach. This is to cover the case when
+you are transferring to another address you own. The process here is slightly different.
 
 - Go to [bridge.urbit.org](https://bridge.urbit.org) and log into your identity.
 - Click on `ID: Identity and security settings` at the bottom, then click
   `Transfer this point`.
-- Enter the new Ethereum address you would like to transfer ownership to.
-  Click `Generate & Sign Transaction`, then click `Send Transaction` and wait
-  for the progress bar to complete.
+- Enter the new Ethereum address you would like to transfer ownership to. Click
+  `Generate & Sign Transaction`, then click `Send Transaction` and wait for the
+  progress bar to complete.
 - Logout of your current session in Bridge by clicking `Logout` at the top, and
   then login to your new ownership address.
 - From here, following the directions on how to [Accept your
   transfer](@/using/operations/using-bridge.md#accept-your-transfer), [Set your
   networking keys](@/using/operations/using-bridge.md#set-your-networking-keys),
   and [Generate your
-  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The main
-  difference with the above method is that you do not check the `Breach
-  continuity` box.
-- Delete or archive your old [pier](@/glossary/pier.md).
+  keyfile](@/using/operations/using-bridge.md#generate-your-keyfile). The option
+  whether or not to breach is in the Accept your Transfer step.
+- Delete or archive your old [pier](@/docs/glossary/pier.md).
 - Proceed to [boot your ship](@/using/install.md#boot-your-planet) with the new keyfile.
 - Delete your keyfile after successfully booting.
 - Rejoin your favorite chat channels and subscriptions.
