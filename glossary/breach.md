@@ -1,6 +1,7 @@
 +++
 title = "Breach"
 template = "doc.html"
+[extra]
 category = "arvo"
 +++
 
@@ -22,7 +23,7 @@ number of the ship in addition to the life number.
 You can check your life and rift number by typing `+keys our`
 into dojo and pressing Enter.
 
-Network breaches happen when a major Arvo revision that cannot be implemented 
+Network breaches happen when a major Arvo revision that cannot be implemented
 via an [OTA update](../ota-updates) occurs. When this happens, a new binary
 will need to be downloaded, and your ship's [pier](../pier) needs to be moved to the
 directory containing the new binary.
