@@ -68,7 +68,18 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 A personal breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone on the network has forgotten about it.
 
-Personal breaches often fix connectivity issues, but should only be used as a last resort. To find out how to perform a personal breach, check out our [Guide to Breaches](../guide-to-breaches). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on `~/~dopzod/urbit-help`, or, failing that, in the `#ship-starting-support` channel in our [Discord server](https://discord.gg/n9xhMdz).
+Personal breaches often fix connectivity issues, but should only be used as a
+last resort. To find out how to perform a personal breach, check out our [Guide
+to Breaches](../guide-to-breaches). Before taking such a drastic measure, try
+other methods in this guide. You can also ask for help on
+in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community` or, failing that, in the `#ship-starting-support`
+channel in our [Discord server](https://discord.gg/n9xhMdz).
+
+### Reset `+code`
+
+You login to Landscape using the camel-case phrase obtained from dojo by
+entering `+code`. For security reasons you may wish to change this code
+regularly. You may do so by entering `|code %reset` into dojo.
 
 ## Operation Issues {#operation-issues}
 
