@@ -79,7 +79,9 @@ channel in our [Discord server](https://discord.gg/n9xhMdz).
 
 You login to Landscape using the camel-case phrase obtained from dojo by
 entering `+code`. For security reasons you may wish to change this code
-regularly. You may do so by entering `|code %reset` into dojo.
+regularly. You may do so by entering `|code %reset` into dojo. Doing this
+will prevent [Bridge](@/docs/glossary/bridge.md) from being to derive your code,
+meaning you will only be able to check it from dojo in the future.
 
 ## Operation Issues {#operation-issues}
 
