@@ -135,25 +135,25 @@ The 32-bit header is given by the following data, presented in order:
  - 2 bits: the bit width of the receiver address encoded as a 2-bit enum,
  - 1 bit: whether the packet is encrypted or not,
  - 4 bits: unused.
- 
+
  Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
- 
+
 #### Body
 
 The body is of variable length and consists of three parts in this order:
 
  - The `@p` of the sending ship,
  - The `@p` of the receiving ship,
- - The payload, which is the [`+jam`](@/docs/reference/libary/2p.md#jam) (i.e. serialization) of the noun `[origin content]`.
- 
+ - The payload, which is the [`+jam`](@/docs/reference/library/2p.md#jam) (i.e. serialization) of the noun `[origin content]`.
+
  `origin` is the IP and port of the original sender if the packet was proxied
  through a relay and null otherwise. `content` is a noun that is either an encrypted ack or an
  encrypted message fragment, unless it is a comet attestation packet in which
  case it is unencrypted. `content` is always 1kB in size or less.
- 
+
  The sender and receiver live outside of the jammed data section to simplify
  packet filtering for the interpreter.
- 
+
 ### Packeting
 
 When Ames has a message to be sent it must first determine how many packets are
@@ -163,7 +163,7 @@ bigger than a kilobyte it will split it into packets whose payloads are 1 kB or
 less. It then numbers each one - this is message 17, packet 12, this is message
 17, packet 13, etc., so that when the receiver receives these packets it knows
 which number they are. Finally it encrypts each individual packet and enqueues
-them to be sent along their stated flow. 
+them to be sent along their stated flow.
 
 Network packets aren't always received in order, so this numbering is important
 for reconstruction, and also packets may get lost. So Ames does transmission
@@ -175,7 +175,7 @@ until it does. The logic for determining how many packets to send or re-send at 
 As each packet in a message is received, Ames decrypts it and stores the message fragment.  Once it's received every packet for a message, Ames concatenates the fragments back into a single large atom and uses `+cue` to deserialize that back into the original message noun.
 
 
- 
+
 ### Acks and Nacks
 
 In this section we discuss acks and nacks. In Ames, an "ack", short for "acknowledgment", is a small packet attesting that a piece of information (either a packet or a whole message) was received. Ames makes use of
@@ -241,12 +241,12 @@ This means all re-sends of an ack packet will be bitwise identical to each other
 Each datum in this noun is an atom with the aura `@ud` or an aura that nests
 under `@ud`.
 
-Here, `our-life` refers to the [`life`](@/docs/glossary/breach), or revision
+Here, `our-life` refers to the [`life`](@/docs/glossary/breach.md), or revision
 number, of the acking ship's networking keys, and `her-life` is the `life` of
 the ack-receiving ship's networking keys. `bone` is an opaque number identifying
 the flow. `message-num` denotes the number of the
 message in the flow identified by `bone`. `fragment-num` denotes the number of
-the fragment of the message identified by `message-num` that is being acked. 
+the fragment of the message identified by `message-num` that is being acked.
 
 A message (n)ack is a different kind of ack that is obtained by encrypting the
 `+jam` of the following noun:
