@@ -6,7 +6,7 @@ template = "doc.html"
 
 # What is Graph Store?
 
-Graph store is a gall implementation of a tree-based database that has an affordance for cyclic structures by allowing nodes to reference other nodes. It is most comparable to modern NoSQL databases in structure, though it allows for schemas to be written in the form of marks. It is used as the backend for an increasing number of Landscape applications, and is considered to be best used for social data.
+Graph Store is a gall implementation of a tree with additional virtual edges by allowing nodes to reference other nodes. It is most comparable to modern NoSQL databases in structure, though it allows for schemas to be written in the form of marks. It is used as the backend for an increasing number of Landscape applications, and is considered to be best used for social data.
 
 ## Data types
 
@@ -22,12 +22,17 @@ Graph store is a gall implementation of a tree-based database that has an afford
 
 `post` is defined in `sur/post`. It contains:
 
-`author=ship`
-`index`
-`time-sent=time`
-`contents=(list content)`
-`hash=(unit hash)`
-`signatures`
+```hoon
++$  post
+  $:  author=ship
+      =index
+      time-sent=time
+      contents=(list content)
+      hash=(unit hash)
+      =signatures
+  ==
+```
+
 
 Most of these elements are self explanatory.
 
@@ -45,11 +50,11 @@ When interacting with `graph-store` you will need to create an `update`
 
 The reason this is a union is to serve as future proofing for version changes.
 
-An `update-0` can either be logged in the case of adding and removing nodes or signatures or non logged as in the case of adding or removing a graph. This logging refers to if this action adds an entry to the update log that is used to synchronize state between ships.
+An `update-0` can either be logged in the case of adding/removing nodes or signatures, or non-logged as in the case of adding/removing a graph. This logging refers to if this action adds an entry to the update log that is used to synchronize state between ships.
 
-Below is an excerpt or `sur/graph-store.hoon` at the time of writing showing the definition of `logged-update-0` and `update-0` which should now be readable.
+Below is an excerpt of `sur/graph-store.hoon` at the time of writing, showing the definition of `logged-update-0` and `update-0` which should now be readable.
 
-```
+```hoon
 +$  logged-update-0
   $%  [%add-nodes =resource nodes=(map index node)]
       [%remove-nodes =resource indices=(set index)]
@@ -80,7 +85,7 @@ Below is an excerpt or `sur/graph-store.hoon` at the time of writing showing the
 
 ## Pokes
 
-Graph store can be poked with a `graph-update` which can:
+Graph Store can be poked with a `graph-update`, which can:
  - add and remove a graph
  
  `[%add-graph =resource =graph mark=(unit mark)]`
@@ -111,7 +116,7 @@ Graph store can be poked with a `graph-update` which can:
  
  `[%unarchive-graph =resource]`
 
-## Scrys
+## Scries
 
 What follows is a summary of the scrys available in graph-store
 
@@ -150,4 +155,4 @@ What follows is a summary of the scrys available in graph-store
 
 ## Marks
 
-There are marks in `mar/graph/validator` that are worth review. They are each short enough to read quickly. They are used to validate the shapes of various nouns to be stored in the graph-store.
+There are marks in `mar/graph/validator` that are worth reviewing. They are each short enough to read quickly. They are used to validate the shapes of various nouns to be stored in the graph-store.
