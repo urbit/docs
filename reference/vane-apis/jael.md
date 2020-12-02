@@ -96,12 +96,19 @@ sponsorship chain and galaxy public keys are left at their bunted values.
 
 Like `%dawn`, `%fake` is used to initialize the other vanes. In response to a
 `%fake` `task`, Jael `%slip`s a `%init` `task` to each of Eyre, Dill, Gall,
-Clay, and Ames, and `%give`s a `%init` `gift` to Arvo.
+Clay, and Ames, and `%give`s a `%init` `gift` to Unix.
 
 
 ### `%listen`
 
-set ethereum source?
+Sets the source that the public keys for a set of `ship`s should be obtained
+from. This can either be a Gall app that communicates with an Ethereum node such
+as `%azimuth-tracker`, as in the case for galaxies, stars,
+and planets, or a ship, as in the case of a moon or comet.
+
+After setting the source, Jael will then subscribe to the source for updates on
+public keys for the given ships.
+
 
 #### Accepts
 
@@ -109,73 +116,29 @@ set ethereum source?
 [whos=(set ship) =source]
 ```
 
-A `$source` is `(each ship term)`.
+`whos` is the set of ships whose key data source is to be altered. `source` is
+`(each ship term)`, where `term` will ultimately be treated as a handle for a
+Gall app.
 
-```
-++  each
-  |$  [this that]
-  ::    either {a} or {b}, defaulting to {a}.
-  ::
-  ::  mold generator: produces a discriminated fork between two types,
-  ::  defaulting to {a}.
-  ::
-  $%  [%| p=that]
-      [%& p=this]
-  ==
-```
-`term=@tas`
+A `%listen` `task` with empty `whos` will set the default source to `source`.
+This is the source used for all ships unless otherwise specified.
 
-```hoon
-        %listen
-      ~&  [%jael-listen whos source]:tac
-      %-  curd  =<  abet
-      (sources:~(feel su hen our now pki etn) [whos source]:tac)
-```
+When the `source` is a `term`, Jael looks into its state to find what source has
+been previously assigned to that `term` and will henceforth obtain public keys for
+ships in `(set ship)` from there. In practice, this is always
+`%azimuth-tracker`, but the ability to use other sources is present.
 
-```hoon
-++  su
-      ::  the ++su core handles all derived state,
-      ::  subscriptions, and actions.
-      ::
-      ::  ++feed:su registers subscriptions.
-      ::
-      ::  ++feel:su checks if a ++change should notify
-      ::  any subscribers.
-      ::
-```
-
-```hoon
-    ::  Change sources for ships
-    ::
-    ++  sources
-      |=  [whos=(set ship) =source]
-      ^+  ..feel
-      =^  =source-id  this-su  (get-source-id source)
-      =.  ..feed
-        ?~  whos
-          ..feed(default-source.etn source-id)
-        =/  whol=(list ship)  ~(tap in `(set ship)`whos)
-        =.  ship-sources.etn
-          |-  ^-  (map ship ^source-id)
-          ?~  whol
-            ship-sources.etn
-          (~(put by $(whol t.whol)) i.whol source-id)
-        =.  ship-sources-reverse.etn
-          %-  ~(gas ju ship-sources-reverse.etn)
-          (turn whol |=(=ship [source-id ship]))
-        ..feed
-      ::
-      ?:  ?=(%& -.source)
-        =/  send-message
-          |=  =message
-          [hen %pass /public-keys %a %plea p.source %j /public-keys message]
-        (emit (send-message %public-keys whos))
-      (peer p.source whos)
-    --
-```
+When the `source` is a ship, Jael will obtain public keys for ships in `(set ship)` from
+the given ship. By default, the `source` for a moon will be the planet that
+spawned that moon, and the `source` for a comet will be the comet itself.
 
 #### Returns
 
+If the `source` is a `term`, Jael will `%pass` a `%deal` `task` to Gall asking to
+`%watch` the app given by `source` at path `/`.
+
+If the `source` is a `ship`, Jael will `%pass` a `%plea` `task` to Ames wrapping
+a `%public-keys` `task` intended for Jael on the `ship` specified by `source`.
 
 ### `%meet`
 
