@@ -261,6 +261,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#gth-rq' title="Greater than (quad-precision float)"><code>++gth:rq</code></a>
 <a class="tooltip" href='/docs/reference/library/4i/#gul' title="Axis syntax < or >"><code>++gul</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#gulf' title="List from range"><code>++gulf</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#gut-by' title="Grab value with defualt"><code>+-gut:by</code></a>
 
 ### h
 
@@ -985,6 +986,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2i/#gas-by' title="Concatenate (map)"><code>+-gas:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#get-by' title="Grab unit value"><code>+-get:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#got-by' title="Assert for value (map)"><code>+-got:by</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#gut-by' title="Grab value with default"><code>+-gut:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#has-by' title="Key existence check (map)"><code>+-has:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#int-by' title="Intersection (map)"><code>+-int:by</code></a>
 <a class="tooltip" href='/docs/reference/library/2i/#mar-by' title="Assert and add (map)"><code>+-mar:by</code></a>
