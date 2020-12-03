@@ -140,6 +140,8 @@ If the `source` is a `term`, Jael will `%pass` a `%deal` `task` to Gall asking t
 If the `source` is a `ship`, Jael will `%pass` a `%plea` `task` to Ames wrapping
 a `%public-keys` `task` intended for Jael on the `ship` specified by `source`.
 
+This `task` returns no `gift`s.
+
 ### `%meet`
 
 This `task` is deprecated and does not perform any actions.
@@ -157,26 +159,18 @@ This `task` returns no `gift`s.
 
 ### `%moon`
 
-Not sure what this one does.
-
-```hoon
-      %moon
-      ?.  =(%earl (clan:title ship.tac))
-        ~&  [%not-moon ship.tac]
-        +>.$
-      ?.  =(our (^sein:title ship.tac))
-        ~&  [%not-our-moon ship.tac]
-        +>.$
-      %-  curd  =<  abet
-      (~(new-event su hen our now pki etn) [ship udiff]:tac)
-   
-```
+This `task` sets the public keys of a moon. 
 
 #### Accepts
 
 ```hoon
 [=ship =udiff:point]
 ```
+
+The `ship` is the `@p` of the moon. The `task` will no-op if the `@p` is not that
+of a moon, or the moon does not belong to the ship.
+
+`udiff:point` is the 
 
 #### Returns
 
