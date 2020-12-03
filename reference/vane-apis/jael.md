@@ -70,8 +70,13 @@ with the Azimuth smart contract.
 
 #### Returns
 
-As mentioned above, this `task` `%slip`s `%init` `task`s to most other vanes and
-`%give`s an `%init` `gift` to Unix.
+Jael `%give`s an `%init` `gift` to Unix. This occurs after the Dill `%slip`
+init.
+
+#### Slips
+
+Jael `%slip`s `%init` `task`s to each of Eyre, Dill, Gall, Clay, and Ames, in
+that order.
 
 
 ### `%fake`
@@ -94,9 +99,12 @@ sponsorship chain and galaxy public keys are left at their bunted values.
 
 #### Returns
 
-Like `%dawn`, `%fake` is used to initialize the other vanes. In response to a
-`%fake` `task`, Jael `%slip`s a `%init` `task` to each of Eyre, Dill, Gall,
-Clay, and Ames, and `%give`s a `%init` `gift` to Unix.
+Jael `%give`s a `%init` `gift` to Unix.
+
+#### Slips
+
+In response to a `%fake` `task`, Jael `%slip`s a `%init` `task` to each of Eyre, Dill, Gall,
+Clay, and Ames, in that order.
 
 
 ### `%listen`
@@ -134,13 +142,16 @@ spawned that moon, and the `source` for a comet will be the comet itself.
 
 #### Returns
 
+This `task` returns no `gift`s.
+
+#### Passes
+
 If the `source` is a `term`, Jael will `%pass` a `%deal` `task` to Gall asking to
 `%watch` the app given by `source` at path `/`.
 
 If the `source` is a `ship`, Jael will `%pass` a `%plea` `task` to Ames wrapping
 a `%public-keys` `task` intended for Jael on the `ship` specified by `source`.
 
-This `task` returns no `gift`s.
 
 ### `%meet`
 
@@ -199,11 +210,12 @@ This `task` returns no `gift`s.
 
 This `task` is `%pass`ed to Jael from Ames. `%plea`s are wrappers for `task`s
 that originate from a remote source, as the `%plea` pattern
-is used to extend the `%pass`/`%give` semantics over the Ames network.
+is used to extend the `%pass`/`%give` semantics over the Ames network. Jael
+attempts to perform the `task` wrapped in the `%plea`.
 
 Jael accepts two kinds of `%plea`s: [`%nuke`](#nuke) and
-[`%public-keys`](#public-keys) and will crash if passed anything else. See the relevant entries to learn how Jael
-responds to these. 
+[`%public-keys`](#public-keys) and will crash if passed anything else. See the
+relevant entries to learn how Jael responds to these.
 
 #### Accepts
 
@@ -216,8 +228,11 @@ a `%public-keys` `task`.
 
 #### Returns
 
-Jael `%give`s a `%done` `gift` in response to a `%plea` `task`. It also
-`%pass`es itself the wrapped `task`.
+Jael `%give`s a `%done` `gift` in response to a `%plea` `task`. 
+
+#### Passes
+
+Jael `%pass`es itself the wrapped `task`.
 
 
 ### `%private-keys`
@@ -373,3 +388,8 @@ This `task` has no arguments.
 
 In response to this `task,` Jael `%give`s a `%mass` `gift` containing Ames'
 current memory usage.
+
+
+
+
+
