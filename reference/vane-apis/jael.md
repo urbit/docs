@@ -159,7 +159,7 @@ This `task` returns no `gift`s.
 
 ### `%moon`
 
-This `task` sets the public keys of a moon. 
+This `task` sets the public keys of a moon.
 
 #### Accepts
 
@@ -167,12 +167,14 @@ This `task` sets the public keys of a moon.
 [=ship =udiff:point]
 ```
 
-The `ship` is the `@p` of the moon. The `task` will no-op if the `@p` is not that
-of a moon, or the moon does not belong to the ship.
+The `ship` is the `@p` of the moon. The `task` will be a no-op if the `@p` is not that
+of a moon, or if the moon does not belong to the ship.
 
-`udiff:point` is the 
+`udiff:point` contains the new public keys to be stored for the moon.
 
 #### Returns
+
+This `task` returns no `gift`s.
 
 
 ### `%nuke`
