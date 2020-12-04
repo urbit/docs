@@ -248,7 +248,7 @@ If the two `tape`s are of the same length, we continue on to create a trap.
 `|-` creates a [trap](/docs/glossary/trap/), a gate that is called immediately.
 
 `?:  |(?=(~ key-position) ?=(~ value-result))` checks if either `tape` is empty. If this is true, the
-`map-maker` arm is finished and can return `chart`, the the `map` that we have been
+`map-maker` arm is finished and can return `chart`, the `map` that we have been
 creating.
 
 If the above test finds that the `tape`s are not empty, we trigger a recursion
