@@ -293,7 +293,7 @@ shift them.
 ```
 
 `encoder` and `decoder` utilize the `rotation` and `space-adder` arms. These gates
-are essentially identical, with the arguments passed to `rotation` reversed. They
+are essentially identical, with the arguments passed to `space-adder` reversed. They
 simplify the two common transactions you want to do in this program: producing `maps`
 that we can use to encode and decode messages.
 
