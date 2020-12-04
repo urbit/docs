@@ -94,6 +94,9 @@ You can also use the words `cord` and `tape` for casting:
 'this is a cord'
 ```
 
+`tape`s use 24 times as much memory as `cord`s, and so in scenarios where
+performance is important it is preferable to use `cord`s.
+
 ## List Functions in the Hoon Standard Library
 
 Lists are a commonly used data structure. Accordingly, there are several functions in the [Hoon standard library](/docs/reference/library/) intended to make lists easier to use.
