@@ -191,13 +191,13 @@ of secret superpowers for hacking the namespace.  Remember that
 Hoon doesn't have anything like a symbol table; to resolve a
 limb, we just search the type depth-first.
 
-If a name is in the `p.p` `map`, it's an alias.  (An alias is defined using the
+If a name is in the `p.q.p` `map`, it's an alias.  (An alias is defined using the
 `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name
 resolves to that hoon (compiled against the `q` type).  If the unit is empty,
 the name is blocked / skipped (see [limb](@/docs/reference/hoon-expressions/limb/limb.md) for what
 this means).
 
-If a name is in the `q.p` `map`, it's a bridge.  (A bridge is defined using the
+If a name is the `p.p` `term`, it's a bridge.  (A bridge is defined using the
 `=,` rune.)  When we search for a name, we also compile the bridge, and check
 if the name resolves against the bridge product.  If so, we use it.
 
