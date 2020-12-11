@@ -18,27 +18,29 @@ large functions.  Don't worry about them for a little while.
           $@  $?  %noun
                   %void
               ==
-          $%  [$atom p=term q=(unit @)]
-              [$cell p=type q=type]
-              [$core p=type q=coil]
-              [$face p=$@(term tune) q=type]
-              [$fork p=(set type)]
-              [$hint p=(pair type note) q=type]
-              [$hold p=type q=hoon]
+          $%  [%atom p=term q=(unit @)]
+              [%cell p=type q=type]
+              [%core p=type q=coil]
+              [%face p=$@(term tune) q=type]
+              [%fork p=(set type)]
+              [%hint p=(pair type note) q=type]
+              [%hold p=type q=hoon]
           ==
 ::
-+$  coil  $:  p=[p=(unit term) q=poly r=vair]
-              q=type
-              r=[p=seminoun q=(map term tome)]
++$  coil  $:  p=garb                                    ::  name, wet=dry, vary
+              q=type                                    ::  context
+              r=(pair seminoun (map term tome))         ::  chapters
+          ==                                            ::
 ::
++$  garb  (trel (unit term) poly vair)                  ::  core
 +$  poly  ?(%wet %dry)
-+$  vair  ?($gold $iron $lead $zinc)
++$  vair  ?(%gold %iron %lead %zinc)
 +$  tome  (pair what (map term hoon))
-+$  tune
-          $~  [~ ~]
-          $:  p=(map term (unit hoon))
-              q=(list hoon)
-          ==
++$  tune                                                ::  complex
+          $~  [~ ~]                                     ::
+          $:  p=(map term (unit hoon))                  ::  aliases
+              q=(list hoon)                             ::  bridges
+          ==                                            ::
 ```
 
 If you compare this to the basic `type`, you'll see that we've
@@ -66,8 +68,9 @@ the payload the core was compiled with is `q.q`.
 
 In the Bertrand Meyer tradition of type theory, there are two
 forms of polymorphism: variance and genericity.  In Hoon this
-choice is per core, hence the `poly` label in `coil`: it can be either `%wet` or `%dry`.  Dry polymorphism relies on variance; wet
-polymorphism relies on genericity.
+choice is per core, hence the `poly` label in `p.q`: it can be either `%wet`
+or `%dry`. Dry polymorphism relies on variance; wet polymorphism relies on
+genericity.
 
 ### Dry arms
 
@@ -188,13 +191,13 @@ of secret superpowers for hacking the namespace.  Remember that
 Hoon doesn't have anything like a symbol table; to resolve a
 limb, we just search the type depth-first.
 
-If a name is in the `p.p` map, it's an alias.  (An alias is defined using the
+If a name is in the `p.p` `map`, it's an alias.  (An alias is defined using the
 `=*` rune.) The map contains a `(unit hoon)`; if the unit is full, the name
 resolves to that hoon (compiled against the `q` type).  If the unit is empty,
 the name is blocked / skipped (see [limb](@/docs/reference/hoon-expressions/limb/limb.md) for what
 this means).
 
-If a name is in the `q.p` map, it's a bridge.  (A bridge is defined using the
+If a name is in the `q.p` `map`, it's a bridge.  (A bridge is defined using the
 `=,` rune.)  When we search for a name, we also compile the bridge, and check
 if the name resolves against the bridge product.  If so, we use it.
 
