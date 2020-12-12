@@ -34,7 +34,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 
 `%mainnet` specifies which network this is going to sent out on.
 
-`author` here is an etherium address that is issuing the transaction. Remember that it will need to be written all in lower case, dotted notation, e.g.  0x3b17.d097.d9dd.711e.4ef8.517a.bbf1.8b2b.a643.81fe
+`author` here is an etherium address that is issuing the transaction. It will need to be written in `@ux` notation, e.g. `0x3b17.d097.d9dd.711e.4ef8.517a.bbf1.8b2b.a643.81fe`.
 
 `%single` specifies what kind of batch that will be created. If you are going to do multiple transactions you will need to either set this to `%more` and create a list of batches or upload them before generating the next one. The reason this ship needs to have internet access is because it needs to look up the nonce for the specified address.
 
