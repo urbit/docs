@@ -22,10 +22,10 @@ x)))`, it's a normalizer and can be used as a mold.
 statically, so we can't actually tell if a mold matches this
 definition perfectly.  This is not actually a problem.)
 
-Validation (done with [`$|`](#bucbar), though very important, is a rare use
-case. Except for direct raw input, it's generally a faux pas to rectify nouns at runtime -- or even
-in userspace. Nonetheless they are sometimes utilized for structures that will
-be faster to use if they satisfy some validating gate.
+Validation, though very
+important, is a rare use case.  Except for direct raw input,
+it's generally a faux pas to rectify nouns at runtime -- or even
+in userspace.
 
 In any case, since molds are just functions, we can use
 functional programming to assemble interesting molds.  For
