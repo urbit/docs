@@ -101,3 +101,36 @@ ownership, spawn, management, and voting rights affiliated with your identities.
 
 For the technical implementation details, take a look at Azimuth's
 [Github repository](https://github.com/urbit/azimuth).
+
+## Hardware HD wallet
+
+You may also store your Urbit using a hardware HD wallet such as a Trezor or
+Ledger. This option is used instead of a master ticket - it is a totally
+separate process from that outlined above. How hardware wallets work are
+outside of the scope of this document, but here we explain how you may utilize
+your hardware wallet in a similar fashion to the Urbit HD wallet.
+
+A hardware HD wallet is generated from a seed phrase that should be thought of
+as analogous to the `@q` `T` used to generate the Urbit HD wallet in the above
+diagram. This seed phrase is a human readable sequence of words that may be used
+to generate private keys to a near-limitless number of wallets created by adding
+salt. Some hardware
+wallets also allow an additional passphrase to go into the generation of these
+wallets. The seed phrase and passphrase should be considered equal in
+value to the master ticket `T`- never share these with anyone!
+
+In order to use your hardware wallet as your Urbit wallet, you first need to
+generate a set of addresses on which you would like to store your Azimuth point
+and proxies. Consult your wallet vendor on how to do this. Then login to Bridge
+using your current method (likely a master ticket) and transfer ownership to the
+wallet address you generated on your hardware wallet for ownership.
+
+Next, login to Bridge using your hardware wallet. While Bridge supports Trezor
+and Ledger natively, this may require using Metamask as an intermediary anyways,
+depending on which firmware you are running. Then [accept the
+transfer](@/using/operations/using-bridge.md#accept-your-transfer). Your Azimuth
+point is now stored on your hardware wallet.
+
+To finish the process, use Bridge to set your management, voting, and spawn
+proxies to the other addresses you generated as applicable. You are now using
+your hardware HD wallet in an analogous fashion to the Urbit HD wallet.
