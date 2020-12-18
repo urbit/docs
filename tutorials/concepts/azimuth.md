@@ -24,7 +24,15 @@ A metaphor might help illustrate the relationship between these two systems: the
 
 Owners of Urbit identities need safeguards that allow for the use of Urbit without jeopardizing cryptographic ownership of their assets. Toward this end, we created the **Urbit Hierarchical Deterministic (HD) Wallet** for the storage of identities. The Urbit HD Wallet is not one key-pair, but a system of related key-pairs that each have distinct powers, from setting networking keys for communicating in the Arvo network to transferring ownership of identities.
 
-The Urbit HD Wallet's derivation paths have a hierarchical structure, so that keys with different powers can be physically separated. A \"master ticket" can re-derive the entire wallet in case of loss. The encryption and authentication keys that identities ships use to sign messages within the network are also derived from the wallet.
+The Urbit HD Wallet's derivation paths have a hierarchical structure, so that
+keys with different powers can be physically separated. A "master ticket" can
+[re-derive the entire wallet](#hd-wallet-generation) in case of loss. The
+encryption and authentication keys that identities ships use to sign messages
+within the network are also derived from the wallet.
+
+Another HD wallet option you may wish to utilize to store your Urbit are hardware
+wallets such as Trezor or Ledger. We compare this method to the Urbit HD wallet
+[below](#hardware-hd-wallet).
 
 Urbit HD wallets are composed of the following items, which are each assigned to their own individual Ethereum key-pairs.
 
@@ -54,8 +62,28 @@ Proxy addresses allow you to execute non-ownership related actions like spawning
 
   For stars and galaxies only. Can create new child identities.
 
+### HD wallet generation
+
+Your Urbit HD wallet is generated from a `@q` seed called `T`, which looks
+something like `~sampel-ticket-bucbel-sipnem`. This is the string known as your
+"Master Ticket" that you input into Bridge to sign in. This is put through a
+series of algorithms that ultimately generate your keys and the Ethereum addresses at which they are stored.
+
 ![](https://media.urbit.org/fora/proposals/UP-8.jpg)
 
+First, your `@q` is converted into a numeric value `E` as an intermediary step
+by adding [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)). Then by
+adding additional salts, `E` is converted into a set of BIP39 seed phrases -
+these are 24 word mnemonic sequences used to generate Ethereum wallets. You end up
+with one seed phrase for each proxy associated with your ship, and these seed
+phrases are then used to generate Ethereum wallets.
+
+One of the wallets will store your Azimuth point, an [ERC-721](#erc-721) token,
+which will be known as your ownership address. Bridge then automatically uses
+your ownership address to assign the other proxies to the other wallets
+generated.
+
+### ERC-721
 
 Most Ethereum tokens use the ERC-20 standard for smart contracts. Urbit identities
 are, however, essentially different from most Ethereum tokens, due to identities not
@@ -67,7 +95,7 @@ The ERC-721 standard, having been made specifically to provide a smart-contract
 interface for non-fungible assets, serves our needs well. This is the standard
 that we use for deeding Urbit identities.
 
-identities, and all of their blockchain operations, are governed by the Ecliptic.
+Identities, and all of their blockchain operations, are governed by the Ecliptic.
 The Ecliptic is an Ethereum smart-contract that governs identity state and the
 ownership, spawn, management, and voting rights affiliated with your identities.
 
