@@ -134,3 +134,17 @@ point is now stored on your hardware wallet.
 To finish the process, use Bridge to set your management, voting, and spawn
 proxies to the other addresses you generated as applicable. You are now using
 your hardware HD wallet in an analogous fashion to the Urbit HD wallet.
+
+## Heightened security practices
+
+A common security pattern is to have "hot" and "cold" wallets. For higher value
+points such as stars and galaxies, you may consider having your ownership
+address live on a "cold" wallet that never touches an
+internet-connected computer, and the various proxies on a "hot" wallet that is
+permitted to connect to internet-connected devices. This could be accomplished
+with multiple hardware wallets, a combination of paper and hardware wallet, a
+hardware cold wallet and Metamask hot wallet, etc.
+
+One tool useful for this setup is `claz`, located at `app/claz.hoon`. `claz` is
+used for making and signing Bridge transactions from an offline computer. A
+guide to using `claz` is forthcoming.
