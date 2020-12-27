@@ -11,7 +11,8 @@ First the data model:
 ## Nouns
 
 ```
-A noun is an atom or a cell.  An atom is any natural number.
+An atom is any natural number.
+A noun is an atom or a cell.
 A cell is any ordered pair of nouns.
 ```
 
