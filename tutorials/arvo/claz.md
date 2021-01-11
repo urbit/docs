@@ -32,7 +32,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 
 `author` here is an Ethereum address that is issuing the transaction. It will need to be written in `@ux` notation, e.g. `0x3b17.d097.d9dd.711e.4ef8.517a.bbf1.8b2b.a643.81fe`.
 
-`%single` specifies what kind of batch that will be created. If you are going to do multiple transactions you will need to either set this to `%more` and create a list of batches or upload them before generating the next one. The reason this ship needs to have internet access is because it needs to look up the nonce for the specified address.
+`%single` specifies what kind of batch that will be created. If you are going to do multiple transactions you will need to either set this to `%more` followed by a _list_ of batches, or generate the next transaction after having submitted the previous one to the blockchain.
 
 `%spawn` is the command we want to issue. After this what the arguments are will vary based on the command.
 
