@@ -9,7 +9,7 @@ This document outlines some advanced techniques for generating, signing, and sen
 First you will want to [boot a fakezod](https://urbit.org/using/develop/#creating-a-development-ship). You can do this with your live running ship but at this time this will need you to modify the code so it's best to do this on a ship you can make mistakes on.
 
 Be sure to have mounted your home desk so you can easily edit files on it.
-The first edit that will probably need to be made is in [`app/claz.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/app/claz.hoon#L14). The listed url will need to be changed to a valid Ethereum endpoint. infura.io provides an Ethereum API that you can use.
+The first edit that will probably need to be made is in [`app/claz.hoon`](https://github.com/urbit/urbit/blob/85435e9a81e105809d5d381b5d34fae1d4daa3b8/pkg/arvo/app/claz.hoon#L14). The listed url will need to be changed to a valid Ethereum endpoint. infura.io provides an Ethereum API that you can use.
 
 The second change that may potentially be needed is to modify the [gas limit](https://github.com/urbit/urbit/blob/master/pkg/arvo/app/claz.hoon#L179). This number here is the maximum number of gas units that will be used. In future this will be configurable but for now you may need to change this manually. For a guide to what to set it to you can use the [constants in bridge](https://github.com/urbit/bridge/blob/master/src/lib/constants.js#L23) as a guide based on what action you are going to be performing. The maximum cost of your transaction will be the maximum gas units multiplied by the gwei you're going to set later. You'll need at least this much in your account.
 
