@@ -65,7 +65,7 @@ Let's break this down again.
 
 `%/mykey/txt` is the path to your private key file. It should contain your private key beginning with 0x and followed by a hex string with no dots, and where capital letters are fine. This file is most likely the reason you will want to use an airgapped machine so that your private key never touches a networked computer. Opsec is left to the reader.
 
-`~[40 80]` is a list of possible gwei costs; a signed transaction file will be created for each one listed. Here we just specify 40 and 80 gwei. You may need to use the higher value based on current Ethereum network traffic and average gas costs.
+`~[40 80]` is a list of gas prices, in gwei; a signed transaction file will be created for each one listed. Here we just specify 40 and 80 gwei. You may want to adjust this list based on current Ethereum network traffic and your time preference for the transactions.
 
 Now you should have a directory in your pier that contains one file for each of the specified gwei costs.
 
