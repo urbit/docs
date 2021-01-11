@@ -6,7 +6,7 @@ template = "doc.html"
 
 This document outlines some advanced techniques for generating, signing, and sending Azimuth-related transactions from within Urbit itself. It's strongly discouraged to do this unless you're very confident as Azimuth transactions are permanent and will cost ETH to complete. However, until you upload a signed transaction to the blockchain no transaction will take place so it's safe to explore these tools. It will also be very helpful to have at least a rudimentary understanding of Hoon in order to read and modify parts of the code.
 
-First you will want to boot a fakezod. You can do this with your live running ship but at this time this will need you to modify the code so it's best to do this on a ship you can make mistakes on. If you don't know how to boot a fakezod see [this guide](https://urbit.org/using/develop/#creating-a-development-ship) for instructions.
+First you will want to [boot a fakezod](https://urbit.org/using/develop/#creating-a-development-ship). You can do this with your live running ship but at this time this will need you to modify the code so it's best to do this on a ship you can make mistakes on.
 
 Be sure to have mounted your home desk so you can easily edit files on it.
 The first edit that will probably need to be made is in [`app/claz.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/app/claz.hoon#L14). The listed url will need to be changed to a valid Ethereum endpoint. infura.io provides an Ethereum API that you can use.
