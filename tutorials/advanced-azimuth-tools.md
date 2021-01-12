@@ -34,7 +34,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 
 `%single` specifies what kind of batch that will be created. If you are going to do multiple transactions you will need to either set this to `%more` followed by a _list_ of batches, or generate the next transaction after having submitted the previous one to the blockchain.
 
-`%spawn` is the command we want to issue. After this what the arguments are will vary based on the command.
+`%spawn` is the transaction we want to issue. After this what the arguments are will vary based on the transaction.
 
 `~ship` will be the ship to be spawned.
 
