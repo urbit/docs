@@ -1,5 +1,5 @@
 +++
-title = "claz"
+title = "Advanced Azimuth Tools"
 weight = 4
 template = "doc.html"
 +++
@@ -67,6 +67,6 @@ Let's break this down again.
 
 `~[40 80]` is a list of gas prices, in gwei; a signed transaction file will be created for each one listed. Here we just specify 40 and 80 gwei. You may want to adjust this list based on current Ethereum network traffic and your time preference for the transactions.
 
-Now you should have a directory in your pier that contains one file for each of the specified gwei costs.
+Now you should have one file in your pier for each gwei costs.
 
 To actually transmit the transaction, paste the contents of one of these files into https://etherscan.io/pushTx or whatever other transmission system you would like to use. **This is the action that will actually cost you ETH and perform the transaction on the network. Only do this step if you want to actually perform the action.**
