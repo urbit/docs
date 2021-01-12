@@ -39,7 +39,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 You will want to read [`/sur/claz.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sur/claz.hoon).
 This will contain more details about the various kinds of transactions you can perform particularly `++call`
 
-After running this command you should find a csv file at the specified path. You can examine this file to learn how they are constructed. You are able to modify the nonces, gas limit and price without changing the function of the transaction but it's not important for this guide. 
+After running this command you should find a csv file at the output path you specified. You can examine this file to learn how they are constructed. You are able to modify the nonces, gas limit and price without changing the functionality of the transaction but it's not important for this guide. 
 
 This file can now be signed and uploaded. At this point, you can transfer this file to an airgapped machine which has your keys, if you want. If you choose to do that you will need to download the `urbit` binary as well as the most recent pill file or a copy of the fakezod pier you have already booted.
 
