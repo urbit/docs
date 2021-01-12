@@ -34,11 +34,7 @@ Here we have an example of generating a transaction to spawn a ship. Something t
 
 `%single` specifies what kind of batch that will be created. If you are going to do multiple transactions you will need to either set this to `%more` followed by a _list_ of batches, or generate the next transaction after having submitted the previous one to the blockchain.
 
-`%spawn` is the transaction we want to issue. After this what the arguments are will vary based on the transaction.
-
-`~ship` will be the ship to be spawned.
-
-`to` is the Ethereum address to spawn the ship to.
+`[%spawn ~ship to]` is the transaction we want to issue. The arguments are will vary based on the transaction. `~ship` will be the ship to be spawned. `to` is the Ethereum address to spawn the ship to.
 
 You will want to read [`/sur/claz.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sur/claz.hoon).
 This will contain more details about the various kinds of transactions you can perform particularly `++call`
