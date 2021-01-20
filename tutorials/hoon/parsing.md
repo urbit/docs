@@ -321,10 +321,10 @@ documented among the [parser builders](@/docs/reference/library/4f.md).
 surrounded on both sides by text that matches a pair of `rule`s, which is discarded.
 
 ```
-> (scan "(42)" (ifix [lit rit] (jest '42')))
+> (scan "(42)" (ifix [pal par] (jest '42')))
 '42'
 ```
-`+lit` and `+rit` are shorthand for `(just '(')` and `(just ')')`, respectively. All
+`+pal` and `+par` are shorthand for `(just '(')` and `(just ')')`, respectively. All
 ASCII glyphs have counterparts of this sort, documented
 [here](@/docs/reference/library/4h.md).
 
@@ -520,13 +520,13 @@ your `gen/` folder.
 ::  expr-parse: parse arithmetic expressions
 ::
 |=  xprs=tape
-|^  (scan xprs tape)
+|^  (scan xprs expr)
 ++  factor
   %+  knee  *@ud
   |.  ~+
   ;~  pose
     dem
-    (ifix [lit rit] expr)
+    (ifix [pal par] expr)
   ==
 ++  turm
   %+  knee  *@ud
@@ -563,15 +563,15 @@ for expressions.
   |.  ~+
   ;~  pose
     dem
-    (ifix [lit rit] expr)
+    (ifix [pal par] expr)
   ==
 ```
 
 A _factor_ is either a decimal number or an expression surrounded by parentheses. Put
 into Hoon terms, a decimal number is parsed by the `rule` `+dem` and an
 expression is parsed by removing the surrounding parentheses and then passing
-the result to the expression parser arm `+expr`, given by the `rule` `(ifix [lit
-rit] expr)`. Since we want to parse our expression with one or the other, we
+the result to the expression parser arm `+expr`, given by the `rule` `(ifix [pal
+par] expr)`. Since we want to parse our expression with one or the other, we
 chain these two `rule`s together using the monadic applicator rune `;~` along
 with `+pose`, which says to try each rule in succession until one of them works.
 
@@ -584,7 +584,7 @@ Then follows the definition of the gate utilized by `+knee`:
   |.  ~+
   ;~  pose
     dem
-    (ifix [lit rit] expr)
+    (ifix [pal par] expr)
   ==
 ```
 `~+` is used to cache the parser, so that it does not need to be computed over
