@@ -2,6 +2,7 @@
 title = "Dill"
 weight = 4
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 In this document we describe the public interface for Dill. Namely, we describe

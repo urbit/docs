@@ -2,6 +2,7 @@
 title = "Iris"
 weight = 6
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 In this document we describe the public interface for Iris. Namely, we describe

@@ -1,6 +1,7 @@
 +++
 title = "Docs"
 template = "sections/docs.html"
+insert_anchor_links = "none"
 +++
 
 Welcome to the documentation for the Urbit project. This documentation is maintained by [Tlon](https://tlon.io) in a public [Github repository](https://github.com/urbit/docs). Issues and contributions are welcome.

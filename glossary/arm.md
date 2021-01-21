@@ -4,6 +4,7 @@ title = "Arm"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
+insert_anchor_links = "none"
 +++
 
 An **arm** is a Hoon expression encoded as a noun. You can find them as part of a [core](../core)

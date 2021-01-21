@@ -4,6 +4,7 @@ title = "Gate"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
+insert_anchor_links = "none"
 +++
 
 A **gate** is [core](../core) with one [arm](../arm) named $. They are often called Hoon Functions because they have many of the same properties of functions from other programming languages.

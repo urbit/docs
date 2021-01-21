@@ -2,6 +2,7 @@
 title = "Hoon"
 
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 Hoon is a strict, higher-order typed functional programming language that compiles itself to [Nock](../nock). As a result Hoon code is effectively implemented by the interpreter [Vere](../vere). Programs for the Urbit operating system and kernel, [Arvo](../arvo), are written in Hoon.

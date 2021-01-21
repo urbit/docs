@@ -2,6 +2,7 @@
 title = "Hoon Errors"
 weight = 12
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 In this section we explore strategies for debugging and understanding what your

@@ -4,6 +4,7 @@ title = "chat"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 **Chat** is a suite of applications that handle "instant messaging"-style communication between ships.

@@ -3,6 +3,7 @@ title = "Calls % ('cen')"
 weight = 10
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/cen/"]
+insert_anchor_links = "none"
 +++
 The `%` family of runes is used for making 'function calls' in Hoon.  To be more precise, these runes evaluate the `$` arm in cores, usually after modifying the sample.  (The default sample is replaced with the input values given in the call.)
 

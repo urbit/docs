@@ -3,6 +3,7 @@ title = "Bridge"
 template = "doc.html"
 [extra]
 category = "azimuth"
+insert_anchor_links = "none"
 +++
 
 **Bridge** is a client made for interacting with [Azimuth](../azimuth). It's the recommended way to receive, send, and manage your Urbit identity, and it's by far the easiest way to generate the [keyfile](../keyfile) required to get your [ship](../ship) onto the [Arvo](../arvo) network. Most Bridge functions are accessed by "logging in" to an identity's ownership address or one of its [proxy addresses](../proxies). It's accessed at [bridge.urbit.org](https://bridge.urbit.org/).

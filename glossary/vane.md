@@ -4,6 +4,7 @@ title = "Vane"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 A **vane** is an [Arvo](../arvo) kernel module that performs essential system operations. The vanes are:

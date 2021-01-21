@@ -2,6 +2,7 @@
 title = "Implementations"
 weight = 4
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 We use a C implementation for our Nock interpreter. But building a Nock interpreter in another language is a fun exercise. Check out our community Nock implementations, shown below our official C implementation.  (Note: the community implementations were written for a slightly older version of Nock, Nock 5K.  The current version is Nock 4K.):

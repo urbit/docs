@@ -4,6 +4,7 @@ title = "Ford"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 **Ford** is the build-system [vane](../vane). Ford is capable of sequencing generic asynchronous computations. Its uses include linking source files into programs, assembling live-updating websites, and performing file-type conversions.

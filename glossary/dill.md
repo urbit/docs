@@ -4,6 +4,7 @@ title = "Dill"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 **Dill** is the terminal-driver [vane](../filesystem). You run your urbit in your Unix terminal, and Unix sends every event –⁠

@@ -2,6 +2,7 @@
 title = "Airlock"
 weight = 1
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 Airlock is the term to describe the set of APIs for interacting with a running Urbit ship from outside of the Urbit network.

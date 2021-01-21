@@ -4,6 +4,7 @@ title = "Battery"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
+insert_anchor_links = "none"
 +++
 
 A **battery** is a collection of Hoon expressions and the head of a [core](../core).

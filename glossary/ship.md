@@ -4,6 +4,7 @@ title = "Ship"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 A **ship** is an instance of an Urbit computer that is a peer on the [Arvo](../arvo) network.

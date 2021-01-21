@@ -3,6 +3,7 @@ title = "Cores | ('bar')"
 weight = 7
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/bar/"]
+insert_anchor_links = "none"
 +++
 Core expressions produce cores. A core is a cell of `[battery payload]`.
 The `battery` is code, a battery of Nock formulas.  The `payload` is the data

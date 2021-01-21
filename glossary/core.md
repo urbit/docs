@@ -4,6 +4,7 @@ title = "Core"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
+insert_anchor_links = "none"
 +++
 
 A **core** is a cell of a [battery](../battery) and a [payload](../payload). It is a Hoon construct similar in use to Objects in Object Oriented programming languages.

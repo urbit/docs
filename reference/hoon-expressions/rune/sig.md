@@ -2,6 +2,7 @@
 title = "Hints ~ ('sig')"
 weight = 14
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 Runes that use Nock `11` to pass non-semantic info to the interpreter.
 

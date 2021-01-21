@@ -3,6 +3,7 @@ title = "Concepts"
 weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+insert_anchor_links = "none"
 +++
 
 The documents in this section are high-level introductions to the Urbit project and components thereof.

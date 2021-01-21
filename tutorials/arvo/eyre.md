@@ -3,6 +3,7 @@ title = "Eyre"
 weight = 6
 template = "doc.html"
 aliases = ["/docs/learn/arvo/eyre/"]
+insert_anchor_links = "none"
 +++
 
 *Current docs on Eyre are out of date. Until they are updated this doc remains for historical purposes*

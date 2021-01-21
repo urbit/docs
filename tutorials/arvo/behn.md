@@ -2,6 +2,7 @@
 title = "Behn"
 weight = 3
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 Our simple timer.
 

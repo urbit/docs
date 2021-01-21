@@ -2,6 +2,7 @@
 title = "Arms + ('lus')"
 weight = 8
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 A core is a cell of `[battery payload]`.  The battery is made of one or more arms, each of which is a computation on its parent core.

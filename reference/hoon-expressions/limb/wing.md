@@ -3,6 +3,7 @@ title = "Wings"
 weight = 2
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/limb/wing/"]
+insert_anchor_links = "none"
 +++
 `[%wing p=(list limb)]`
 

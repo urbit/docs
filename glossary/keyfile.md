@@ -4,6 +4,7 @@ title = "Keyfile"
 template = "doc.html"
 [extra]
 category = "azimuth"
+insert_anchor_links = "none"
 +++
 
 A **keyfile** is a piece of information used to associate a [ship](../ship) with an Urbit identity so that the ship can use the [Arvo](../arvo) network. A keyfile is dependent upon the [networking keys](../bridge) that have been set for the identity; we recommend using [Bridge](../bridge) to set the networking keys and to generate the corresponding keyfile.

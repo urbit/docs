@@ -4,6 +4,7 @@ title = "Event Log"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 The **event log** of a [ship](../ship) is a totally ordered list of every single [Arvo](../arvo) event that ship has undergone. The state of a ship is a pure function of the event log.

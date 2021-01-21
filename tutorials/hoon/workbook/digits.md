@@ -3,6 +3,7 @@ title = "Digits"
 weight = 4
 template = "doc.html"
 aliases = ["docs/learn/hoon/workbook/digits/"]
+insert_anchor_links = "none"
 +++
 Let's write a generator that takes a `@ud` (unsigned decimal) and returns a list
 of its digits.

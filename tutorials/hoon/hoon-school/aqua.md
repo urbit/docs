@@ -2,6 +2,7 @@
 title = "Writing Aqua Tests"
 weight = 37
 template = "doc.html"
+insert_anchor_links = "none"
 +++
 
 # Concepts

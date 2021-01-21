@@ -3,6 +3,7 @@ title = "2.5.1 Walkthrough: Iron Polymorphism and Wet Polymorphism"
 weight = 32
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/iron-polymorphism/"]
+insert_anchor_links = "none"
 +++
 
 Polymorphism is a programming concept that allows a a piece of code to use different types at different times. It's a common technique in most languages to make code that can be reused for many different situations, and Hoon is no exception. Let's take a look at a [gate](/docs/glossary/gate/) from the Hoon standard library as an example; we'll be passing a few different types in. The code below is an excerpt from `hoon.hoon` and, as such, will not run as-is by itself.

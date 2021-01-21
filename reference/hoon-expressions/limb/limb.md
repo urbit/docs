@@ -3,6 +3,7 @@ title = "Limbs"
 weight = 1
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/limb/limb/"]
+insert_anchor_links = "none"
 +++
 A limb is an attribute of subject.
 

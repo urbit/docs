@@ -3,6 +3,7 @@ title = "Reference"
 weight = 3
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+insert_anchor_links = "none"
 +++
 Various reference documents are stored here, particularly for Hoon, but also for other parts of the system.
 

@@ -3,6 +3,7 @@ title = "Casts ^ ('ket')"
 weight = 11
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/ket/"]
+insert_anchor_links = "none"
 +++
 [`^-` ("kethep")](#kethep), [`^+` ("ketlus")](#ketlus), and
 [`^=` ("kettis")](#kettis) let us adjust types without violating type

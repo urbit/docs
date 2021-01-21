@@ -3,6 +3,7 @@ title = "Pier"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 A **pier** is the directory which contains the state of an Urbit [ship](../ship). It is automatically created in the current directory when booting a ship for the first time.

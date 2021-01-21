@@ -4,6 +4,7 @@ title = "Noun"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
+insert_anchor_links = "none"
 +++
 
 A **noun** is an [atom](../atom) or a cell, which is an ordered pair of nouns. This definition is recursive and ultimately means that a noun is a finite size binary tree whose leaves are atoms. A noun is the basic data structure in [Nock](../nock).

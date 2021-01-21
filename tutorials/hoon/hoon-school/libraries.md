@@ -3,6 +3,7 @@ title = "2.3.1 Walkthrough: Libraries"
 weight = 28
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/libraries/"]
+insert_anchor_links = "none"
 +++
 
 In Hoon, like in other languages, it's often useful to create a library for other code to access. In this example, we look at one example of a library that can be used to represent a deck of 52 playing cards. The [core](/docs/glossary/core/) below builds such a library, and can be accessed by programs.

@@ -4,6 +4,7 @@ title = "Eyre"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 **Eyre** is the web-server [vane](../vane) that handles client-facing HTTP operations. Unix sends HTTP messages though to Eyre and Eyre produces HTTP messages in response. It is the counterpart to [Iris](../iris), which is the server-facing HTTP vane.

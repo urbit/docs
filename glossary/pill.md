@@ -4,6 +4,7 @@ title = "Pill"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 A **Pill** is a bootstrap sequence to launch an Urbit ship for the first time. The [event log](../eventlog) begins with the bootstrap sequence of a Pill.

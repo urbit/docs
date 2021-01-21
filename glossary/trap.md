@@ -4,6 +4,7 @@ title = "Trap"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
+insert_anchor_links = "none"
 +++
 
 A **trap** is a [core](../core) with one arm named $ and no sample. They are often used in similar ways to looping structures in other programming languages.

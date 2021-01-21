@@ -4,6 +4,7 @@ title = "Comet"
 template = "doc.html"
 [extra]
 category = "arvo"
+insert_anchor_links = "none"
 +++
 
 A **comet** is a kind of [ship](../ship) on the [Arvo](../arvo) network. They are disposable identities that will not be initially trusted by others on the network. One use might be to run bots as comets.

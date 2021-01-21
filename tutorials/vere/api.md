@@ -3,6 +3,7 @@ title = "API overview by prefix"
 weight = 4
 template = "doc.html"
 aliases = ["/docs/learn/vere/api"]
+insert_anchor_links = "none"
 +++
 Let's run through the `u3` modules one by one.  All public
 functions are commented, but the comments may be cryptic.

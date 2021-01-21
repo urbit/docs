@@ -3,6 +3,7 @@ title = "Explanation"
 weight = 2
 template = "doc.html"
 aliases = ["docs/learn/nock/explanation"]
+insert_anchor_links = "none"
 +++
 
 To make Nock make sense, let's work through the spec line by line.

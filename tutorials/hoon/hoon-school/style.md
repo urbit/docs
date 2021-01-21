@@ -3,6 +3,7 @@ title = "Appendix: Hoon Style Guide"
 weight = 100
 template = "doc.html"
 aliases = ["docs/learn/hoon/style/"]
+insert_anchor_links = "none"
 +++
 
 Welcome to the Hoon style guide. It’s important to familiarize yourself with our way of writing Hoon code.

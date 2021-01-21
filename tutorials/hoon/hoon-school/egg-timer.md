@@ -3,6 +3,7 @@ title = "2.7.1 Gall Walkthrough: Egg Timer"
 weight = 36
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/egg-timer/"]
+insert_anchor_links = "none"
 +++
 
 The Arvo operating system is divided up into modules called vanes.  Gall is the vane responsible for providing an API for building stateful applications in Urbit.  Gall is a complex system that takes a lot of getting used to, so let's dip our toes in with a simple egg-timer app.
