@@ -2,7 +2,7 @@
 title = "Guide to Breaches"
 weight = 10
 template = "doc.html"
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 An important concept on the [Ames](@/docs/tutorials/arvo/ames.md) network is that of continuity. Continuity refers to how ships remember the order of their own network messages and the network messages of others -- these messages are numbered, starting from zero. A _breach_ is when ships on the network agree to forget about this sequence and treat one or more ships like they are brand new.

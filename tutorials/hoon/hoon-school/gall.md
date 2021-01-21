@@ -3,7 +3,7 @@ title = "2.7 Gall"
 weight = 35
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/gall/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 Gall is the Arvo vane responsible for handling user space applications. When writing a Gall application there are several things you will need to understand.

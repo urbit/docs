@@ -3,7 +3,7 @@ title = "Ames"
 weight = 2
 template = "doc.html"
 aliases = ["/docs/learn/arvo/ames/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 Our networking protocol.
 

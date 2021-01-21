@@ -3,7 +3,7 @@ title = "1.4.1 Walkthrough: Recursion"
 weight = 7
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/recursion/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 [Recursion](.) is a common pattern for solving certain problems in most programming

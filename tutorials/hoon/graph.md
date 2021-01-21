@@ -2,7 +2,7 @@
 title = "Graph Store"
 weight = 3
 template = "doc.html"
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 # What is Graph Store?

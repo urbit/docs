@@ -3,7 +3,7 @@ title = "1.3 Hoon Syntax"
 weight = 4
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/hoon-syntax/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 The study of Hoon can be divided into two parts: syntax and semantics.

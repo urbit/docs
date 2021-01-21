@@ -3,7 +3,7 @@ title = "Ford Fusion"
 weight = 7
 template = "doc.html"
 aliases = ["/docs/learn/arvo/ford/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 > This document is out of date as of 2020.07.20. In the meantime, see the [blog

@@ -3,7 +3,7 @@ title = "2.5 Type Polymorphism"
 weight = 31
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/type-polymorphism/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 There are many cases in which one may want to write a function that accepts as input various different types of data.  Such a function is said to be [polymorphic](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29).  ("Polymorphism" = "many forms"; so polymorphic functions accept many forms of data as input.)

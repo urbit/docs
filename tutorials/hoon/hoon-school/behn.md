@@ -2,7 +2,7 @@
 title = "2.6 Behn"
 weight = 34
 template = "doc.html"
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 In this lesson we introduce the notion of a vane, which should be thought of as a kernel module for Arvo (if you don't know what that means yet, just keep reading). We first present a primer on what vanes are and how they communicate, followed by an examination of the simplest vane, known as Behn (pronounced like "bane"), which is Arvo's timekeeper.

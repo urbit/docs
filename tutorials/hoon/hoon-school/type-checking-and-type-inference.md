@@ -3,7 +3,7 @@ title = "2.2 Type Checking and Type Inference"
 weight = 25
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/type-checking-and-type-inference/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 As the Hoon compiler compiles your Hoon code, it does a **type check** on certain expressions to make sure they are guaranteed to produce a value of the correct type.  If it cannot be proved that the output value is correctly typed, the compile will fail with a `nest-fail` crash.  In order to figure out what type of value is produced by a given expression, the compiler uses **type inference** on that code.  In this lesson we'll cover various cases in which a type check is performed, and also how the compiler does type inference on an expression.

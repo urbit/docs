@@ -3,7 +3,7 @@ title = "1.6.1 Walkthrough: Ackermann Function"
 weight = 14
 template = "doc.html"
 aliases = ["docs/learn/hoon/hoon-tutorial/ackermann/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 The Ackermann function is one of the earliest examples of a function that is both totally computable -- meaning that it can be solved -- and not primitively recursive -- meaning it can not be rewritten in an iterative fashion.

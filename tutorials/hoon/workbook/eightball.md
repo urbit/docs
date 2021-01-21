@@ -3,7 +3,7 @@ title = "Magic 8-Ball"
 weight = 5
 template = "doc.html"
 aliases = ["docs/learn/hoon/workbook/eightball"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 In this lesson we'll write a generator that mimics the functionality of a
 Magic 8-Ball, producing a randomized response with each run.

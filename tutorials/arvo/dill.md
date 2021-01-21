@@ -3,7 +3,7 @@ title = "Dill"
 weight = 5
 template = "doc.html"
 aliases = ["/docs/learn/arvo/dill/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 Our terminal driver.
 

@@ -2,7 +2,7 @@
 title = "Move trace"
 weight = 12
 template = "doc.html"
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 In this tutorial we will run a simple "move trace" and use the output to get a

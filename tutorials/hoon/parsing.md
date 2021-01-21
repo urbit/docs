@@ -2,7 +2,7 @@
 title = "Parsing"
 weight = 3
 template = "doc.html"
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 # Parsing Tutorial

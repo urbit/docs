@@ -3,7 +3,7 @@ title = "1.9 Generators"
 weight = 19
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/generators/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 
 Generators are the most straightforward way to write programs for Urbit. They
