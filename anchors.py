@@ -105,7 +105,7 @@ def write_entry(setting: str, file: str):
 		lines.insert(fm_end, ANCHOR_KEY + f'"{setting}"' + '\n') # insert the setting right before the end of front matter
 		f.seek(0)           # go to beginning of file
 		f.writelines(lines) # overwrite with new contents
-		f.truncate()  # idk why but necessary for bug-free behviour
+		f.truncate()  # idk why but necessary for bug-free behviour (otherwise it adds excess newlines and stuff)
 
 
 
