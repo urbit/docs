@@ -34,7 +34,8 @@ def validate_entry(setting: str, file: str):
 
 
 def find_all_mds() -> List[str]:
-	return [str(p) for p in Path('./').rglob('*.md')]
+	# **/_index.md for all index files
+	return [str(p) for p in Path('./').rglob('*.md')]  # only applicable on `_index.md` files (i.e. sections)
 
 def setting_from_frontmatter(lines: List[str]) -> str:
 	# 'insert_anchor_links = "none"' -> 'none'
