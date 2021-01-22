@@ -4,7 +4,7 @@ weight = 3
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["docs/learn/nock/"]
-insert_anchor_links = "none"
+insert_anchor_links = "right"
 +++
 > Last major revision of this tutorial: 2016.  Minor revisions were made in October 2018 to bring it in line with the new Nock 4K spec.
 
