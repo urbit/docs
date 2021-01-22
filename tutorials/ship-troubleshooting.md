@@ -3,7 +3,6 @@ title = "Ship Troubleshooting"
 weight = 8
 template = "doc.html"
 aliases = ["docs/using/ship-troubleshooting/"]
-insert_anchor_links = "right"
 +++
 
 Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.

@@ -5,7 +5,6 @@ weight = 1
 sort_by = "weight"
 template = "sections/docs/hoon.html"
 aliases = ["/docs/byte/0/", "/docs/byte", "/docs/learn/hoon/hoon-tutorial/"]
-insert_anchor_links = "right"
 +++
 
 This section contains material for learning Hoon. For newbies, we recommend

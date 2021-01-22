@@ -3,7 +3,6 @@ title = "Irregular forms"
 weight = 7
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/irregular/"]
-insert_anchor_links = "none"
 +++
 
 ##### Reading guide

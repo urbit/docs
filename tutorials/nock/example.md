@@ -3,7 +3,6 @@ title = "Example"
 weight = 3
 template = "doc.html"
 aliases = ["docs/learn/nock/example"]
-insert_anchor_links = "right"
 +++
 Some people write assembly language by hand.  Some of them have a
 good reason to do so.  But there's no good reason to write Nock by

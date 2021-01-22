@@ -4,7 +4,6 @@ title = "Sail/Udon"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 **Sail** and **Udon** are domain specific languages for Hoon.

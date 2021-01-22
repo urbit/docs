@@ -3,7 +3,6 @@ title = "1.6 The Subject and Its Legs"
 weight = 13
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/the-subject-and-its-legs/"]
-insert_anchor_links = "right"
 +++
 
 Hoon isn't an object-oriented programming language; it's a "subject-oriented" programming language.  But what's this "subject"?

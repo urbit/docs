@@ -4,7 +4,6 @@ title = "Proxies"
 template = "doc.html"
 [extra]
 category = "azimuth"
-insert_anchor_links = "none"
 +++
 
 **Proxies** are Ethereum addresses in the [Urbit HD Wallet](../hdwallet) system that have limited powers. They are lower-powered "siblings" of the ownership key, which has the sole power to transfer the assigned Urbit identity. Using [Bridge](../bridge), you can change the Ethereum addresses used for your proxies.

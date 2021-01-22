@@ -3,7 +3,6 @@ title = "1.1 Setup"
 weight = 1
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/setup/"]
-insert_anchor_links = "right"
 +++
 
 Before we begin working on Hoon, you should first (1) have Urbit installed and (2) boot a ship that you can use for trying out Hoon examples. Interactive learning is far superior to passive reading.

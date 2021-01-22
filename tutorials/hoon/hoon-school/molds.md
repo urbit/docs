@@ -3,7 +3,6 @@ title = "2.3.2 Molds"
 weight = 28
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/molds/"]
-insert_anchor_links = "right"
 +++
 
 A mold is an idempotent function that coerces a [noun](/docs/glossary/noun/) to

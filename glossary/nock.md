@@ -2,7 +2,6 @@
 title = "Nock"
 
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 
 **Nock** is a purely functional typeless programming language and acts as Urbit's lowest-level language. To be more precise, it is a Turing complete combinator interpreter not based on the lambda calculus. It could be thought of as the assembly-level language of Urbit, and is implemented by the runtime system [Vere](../vere).

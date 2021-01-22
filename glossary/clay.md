@@ -4,7 +4,6 @@ title = "Clay"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 **Clay** is the filesystem and typed revision-control [vane](../vane). It can be thought of as a continuously synced git. Clay handles file-change events and maps them from [Arvo](../arvo) to Unix and vice versa.

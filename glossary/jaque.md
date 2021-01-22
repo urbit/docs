@@ -4,7 +4,6 @@ title = "Jaque"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
-insert_anchor_links = "none"
 +++
 
 **Jaque** is a new [Nock](../nock) interpreter under development that is intended to replace the current worker process for [Vere](../vere).

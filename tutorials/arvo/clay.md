@@ -3,7 +3,6 @@ title = "Clay"
 weight = 4
 template = "doc.html"
 aliases = ["/docs/learn/arvo/clay/"]
-insert_anchor_links = "right"
 +++
 
 

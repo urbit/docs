@@ -2,7 +2,6 @@
 title = "Ames"
 weight = 2
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 
 In this document we describe the public interface for Ames.  Namely, we describe

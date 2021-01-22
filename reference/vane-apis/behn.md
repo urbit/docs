@@ -2,7 +2,6 @@
 title = "Behn"
 weight = 3
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 
 In this document we describe the public interface for Behn. Namely, we describe

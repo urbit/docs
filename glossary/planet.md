@@ -4,7 +4,6 @@ title = "Planet"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 A **planet** is can be one of two related things:

@@ -1,7 +1,6 @@
 +++
 title = "Arvo"
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 
 **Arvo** is the Urbit operating system and kernel. Arvo's state is a pure

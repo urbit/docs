@@ -4,7 +4,6 @@ title = "Desk"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 A **desk** is an independently revision-controlled branch of a [ship](../ship) that uses the [Clay](../clay) filesystem. Each desk contains its own apps, [mark](../mark) definitions, files, and so forth.

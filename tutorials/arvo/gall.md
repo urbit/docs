@@ -3,7 +3,6 @@ title = "Gall Apps"
 weight = 8
 template = "doc.html"
 aliases = ["/docs/learn/arvo/gall/"]
-insert_anchor_links = "right"
 +++
 
 This document describes Gall, the Arvo userspace vane. It is split into two main

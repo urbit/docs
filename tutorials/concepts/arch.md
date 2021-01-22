@@ -2,7 +2,6 @@
 title = "Landscape Architecture"
 weight = 4
 template = "doc.html"
-insert_anchor_links = "right"
 +++
 
 # Landscape Architecture

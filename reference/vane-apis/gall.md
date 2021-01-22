@@ -2,7 +2,6 @@
 title = "Gall"
 weight = 5
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 
 ## Reference Agent

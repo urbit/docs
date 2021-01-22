@@ -4,7 +4,6 @@ title = "Payload"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
-insert_anchor_links = "none"
 +++
 
 A **payload** is the set of data needed to run computations in a [core](../core)

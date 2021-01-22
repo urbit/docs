@@ -2,7 +2,6 @@
 title = "Terminators -- and =="
 weight = 15
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 The `--` and `==` are used as terminators: `--` for core expressions, and `==` for terminating a 'running' or 'jogging' series of Hoon expressions.
 

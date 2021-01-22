@@ -3,7 +3,6 @@ title = "Land of Nouns"
 weight = 3
 template = "doc.html"
 aliases = ["/docs/learn/vere/nouns"]
-insert_anchor_links = "right"
 +++
 The division between `c3` and `u3` is that you could theoretically
 imagine using `c3` as just a generic C environment.  Anything to do

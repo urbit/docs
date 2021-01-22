@@ -4,7 +4,6 @@ title = "Galaxy"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 A **galaxy** can be one of two related things:

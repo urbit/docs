@@ -3,7 +3,6 @@ title = "Aqua"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 **Aqua** is something like Docker but for Urbit; it is a virtualization tool whose primary purpose is testing and development.

@@ -4,7 +4,6 @@ weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/reference/hoon-expressions/"]
-insert_anchor_links = "none"
 +++
 Documentation for Hoon expressions.
 

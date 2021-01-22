@@ -3,7 +3,6 @@ title = "1.5 Lists"
 weight = 8
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/lists/"]
-insert_anchor_links = "right"
 +++
 
 A **list** is a type of [noun](/docs/glossary/noun/) that you'll frequently encounter when reading and writing Hoon. A list can be thought of as an ordered arrangement of zero or more elements terminated by a `~` (null).

@@ -4,7 +4,6 @@ title = "Claims"
 template = "doc.html"
 [extra]
 category = "azimuth"
-insert_anchor_links = "none"
 +++
 
 The **Claims** [Azimuth](../azimuth) contract allows Urbit identities to make publicly visible assertions about their owner. Such assertions are most commonly about the owner's identity, real-world or otherwise. A claim has three fields: the claim itself, the _protocol_, and the _dossier_.

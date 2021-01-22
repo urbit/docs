@@ -3,7 +3,6 @@ title = "1.1.1 Walkthrough: List of Numbers"
 weight = 2
 template = "doc.html"
 aliases = ["/docs/learn/hoon/hoon-tutorial/list-of-numbers/"]
-insert_anchor_links = "right"
 +++
 
 This code-example is intended to familiarize you with the basics of Hoon syntax. It's okay if you don't understand everything immediately; some concepts may be beyond your grasp for now. What's important is that you become accustomed to the elements of the code and their look once combined into a valid program.

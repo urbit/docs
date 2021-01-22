@@ -4,7 +4,6 @@ title = "Wallet-Generator"
 template = "doc.html"
 [extra]
 category = "azimuth"
-insert_anchor_links = "none"
 +++
 
 The **Wallet Generator** is a planned open-source app developed for generating an [Urbit HD Wallet](../hdwallet) to secure your [Azimuth](../Azimuth) identities.  Wallet Generator will be part of the [Bridge](../bridge) software, and it's a graphical user interface that handles the entire process of creating a new [Urbit HD Wallet](../hdwallet), starting with the entropy-creation step.

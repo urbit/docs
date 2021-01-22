@@ -3,7 +3,6 @@ title = "Vane APIs"
 weight = 3
 sort_by = "weight"
 template = "sections/docs/chapters.html"
-insert_anchor_links = "none"
 +++
 
 Reference documentation for the API connectors of vanes.

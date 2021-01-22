@@ -3,7 +3,6 @@ title = "Nock . ('dot')"
 weight = 3
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/dot/"]
-insert_anchor_links = "none"
 +++
 Anything Nock can do, Hoon can do also.  These runes are used for carrying out Nock operations in Hoon.
 

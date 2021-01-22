@@ -3,7 +3,6 @@ title = "Nock Definition"
 weight = 1
 template = "doc.html"
 aliases = ["docs/learn/nock/definition/"]
-insert_anchor_links = "right"
 +++
 
 Nock is a Turing-complete function that maps a cell

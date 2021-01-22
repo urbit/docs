@@ -3,7 +3,6 @@ title = "Basic Types"
 weight = 4
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/basic/"]
-insert_anchor_links = "none"
 +++
 A type is usually understood to be a set of values.  Hoon values are all nouns,
 so a Hoon type is a set of nouns.

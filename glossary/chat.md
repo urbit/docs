@@ -4,7 +4,6 @@ title = "chat"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 **Chat** is a suite of [Gall](../gall) applications that handle "instant

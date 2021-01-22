@@ -3,7 +3,6 @@ title = "Traffic Light"
 weight = 6
 template = "doc.html"
 aliases = ["docs/learn/hoon/workbook/traffic-light/"]
-insert_anchor_links = "right"
 +++
 Let's create a state machine in Hoon that models the functionality of a traffic
 light. Save the code below as `traffic.hoon` in your `/gen` directory.

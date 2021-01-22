@@ -3,7 +3,6 @@ title = "Atom"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
-insert_anchor_links = "none"
 +++
 
 An **atom** is any non-negative integer of any size. The atom is the most basic data type in [Nock](../nock) and [Hoon](../hoon).

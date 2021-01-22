@@ -4,7 +4,6 @@ title = "Landscape"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 **Landscape** is a graphical web interface for your [ship](../ship). Right now, Landscape allows for social networking functions, such as to participating in IRC-like chats such as `~/~dopzod/urbit-help`, subscribing to forum-like pages of other ships called Notebooks, and message other ships directly. It also has weather and clock apps. Landscape is an alternative messaging interface to the command-line app [Chat](../chat).

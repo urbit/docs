@@ -3,7 +3,6 @@ title = "Structures $ ('buc')"
 weight = 12
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/buc/"]
-insert_anchor_links = "none"
 +++
 The `$` family of runes is used for defining custom types.  Strictly speaking,
 these runes are used to produce 'structures'.  A structure is a compile-time

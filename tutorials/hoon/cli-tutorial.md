@@ -2,7 +2,6 @@
 title = "CLI apps"
 weight = 2
 template = "doc.html"
-insert_anchor_links = "right"
 +++
 
 ## Introduction

@@ -4,7 +4,6 @@ weight = 1
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/learn/arvo/"]
-insert_anchor_links = "right"
 +++
 
 ## [Arvo](@/docs/tutorials/arvo/arvo.md)

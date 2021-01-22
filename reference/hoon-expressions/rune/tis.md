@@ -2,7 +2,6 @@
 title = "Change Subject = ('tis')"
 weight = 5
 template = "doc.html"
-insert_anchor_links = "none"
 +++
 
 These runes modify the subject.  (Or more precisely, they

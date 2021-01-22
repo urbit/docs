@@ -4,7 +4,6 @@ title = "Door"
 template = "doc.html"
 [extra]
 category = "hoon-nock"
-insert_anchor_links = "none"
 +++
 
 A **door** is a [core](../core) the payload of which is a cell of sample and context.

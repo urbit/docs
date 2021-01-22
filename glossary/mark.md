@@ -4,7 +4,6 @@ title = "Mark"
 template = "doc.html"
 [extra]
 category = "arvo"
-insert_anchor_links = "none"
 +++
 
 A **mark** is a file-type in the [Clay](../clay) filesystem. A mark is a file that defines filesystem information such as type, merge routines, diff routines, and patch algorithms.

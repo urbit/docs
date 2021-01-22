@@ -3,7 +3,6 @@ title = "Cells : ('col')"
 weight = 9
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/col/"]
-insert_anchor_links = "none"
 +++
 The `:` ("col") expressions are used to produce cells, which are pairs of values.  E.g., `:-(p q)` produces the cell `[p q]`.  All `:` runes reduce to `:-`.
 

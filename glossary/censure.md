@@ -3,7 +3,6 @@ title = "Censures"
 template = "doc.html"
 [extra]
 category = "azimuth"
-insert_anchor_links = "none"
 +++
 
 The **Censures** [Azimuth](../azimuth) contract allows [stars](../star) and [galaxies](../galaxy) to assign negative reputation information to other points of equal or lower rank. This information is publicly visible and is intended to create an economic deterrent to bad behavior.

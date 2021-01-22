@@ -3,7 +3,6 @@ title = "Conditionals ? ('wut')"
 weight = 6
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/wut/"]
-insert_anchor_links = "none"
 +++
 Hoon has the usual program control branches.  It also has the usual logical
 operators: AND `?&`, OR `?|`, and NOT `?!`.  It also has a `?=` rune that tests
