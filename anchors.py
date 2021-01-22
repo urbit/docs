@@ -34,8 +34,8 @@ def validate_entry(setting: str, file: str):
 
 
 def find_all_mds() -> List[str]:
-	# **/_index.md for all index files
-	return [str(p) for p in Path('./').rglob('*.md')]  # only applicable on `_index.md` files (i.e. sections)
+	# the `insert_anchor_links` is only applicable on `_index.md` files (i.e. sections)
+	return [str(p) for p in Path('./').rglob('**/_index.md')]
 
 def setting_from_frontmatter(lines: List[str]) -> str:
 	# 'insert_anchor_links = "none"' -> 'none'
@@ -57,7 +57,7 @@ def anchors_from_frontmatter(md_files: List[str]) -> List[Tuple[str, str]]:
 	anchor_settings = []
 
 	for md_file in md_files:
-		with open(md_file, "r") as f: 
+		with open(md_file, "r") as f:
 			lines = f.readlines()
 			setting = setting_from_frontmatter(lines)
 			anchor_settings.append((setting, md_file))
@@ -81,7 +81,7 @@ def read_anchor_file() -> List[Tuple[str, str]]:
 	with open(ANCHOR_FILE, "r") as f:
 		for line in f:
 			line = line.replace('\n', '')
-			setting, file = line.split(' ')			
+			setting, file = line.split(' ')
 			anchor_settings.append((setting, file))
 
 	return anchor_settings
@@ -90,19 +90,22 @@ def read_anchor_file() -> List[Tuple[str, str]]:
 def write_entry(setting: str, file: str):
 	validate_entry(setting, file)
 
+
 	# not optimized
 	with open(file, "r+") as f:
 		lines = f.readlines()
-		# lines = list(filter(bool, text.split('\n')))  # split text by lines, 
-		fm_end = nth_occurrence(lines, "+++\n", 2)  # get index of end of front matter (signaled by second '+++')		
-		
+		# lines = list(filter(bool, text.split('\n')))  # split text by lines,
+		fm_end = nth_occurrence(lines, "+++\n", 2)  # get index of end of front matter (signaled by second '+++')
+
 		# remove existing setting if it exists
 		for line in lines[:fm_end]:
 			if line.startswith(ANCHOR_KEY):
 				lines.remove(line)
 				fm_end -= 1  # correct the index for the removal
 
-		lines.insert(fm_end, ANCHOR_KEY + f'"{setting}"' + '\n') # insert the setting right before the end of front matter
+		if setting != "none":
+			# by default, there is no need to specify "none"
+			lines.insert(fm_end, ANCHOR_KEY + f'"{setting}"' + '\n') # insert the setting right before the end of front matter
 		f.seek(0)           # go to beginning of file
 		f.writelines(lines) # overwrite with new contents
 		f.truncate()  # idk why but necessary for bug-free behviour (otherwise it adds excess newlines and stuff)
