@@ -4,6 +4,7 @@ weight = 4
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/learn/vere/"]
+insert_anchor_links = "right"
 +++
 The Nock runtime system, written in C.
 

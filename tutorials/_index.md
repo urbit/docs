@@ -4,6 +4,7 @@ weight = 2
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["docs/learn/"]
+insert_anchor_links = "right"
 +++
 
 Tutorials and explanations for all the components of Urbit.
