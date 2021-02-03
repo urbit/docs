@@ -1,10 +1,8 @@
 +++
-title = "Jael Public API"
+title = "Jael"
 weight = 5
 template = "doc.html"
 +++
-
-# Jael
 
 In this document we describe the public interface for Jael.  Namely, we describe
 each `task` that Jael can be `%pass`ed, and which `gift`(s) Jael can `%give` in return.
