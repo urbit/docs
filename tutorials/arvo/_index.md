@@ -8,7 +8,7 @@ aliases = ["/docs/learn/arvo/"]
 
 ## [Arvo](@/docs/tutorials/arvo/arvo.md)
 
-Arvo is Urbit's functional operating system, written in [Hoon](@/docs/tutorials/hoon/_index.md). It's composed of modules called _vanes_:
+Arvo is Urbit's functional operating system, written in [Hoon](@/docs/tutorials/hoon/hoon-school/_index.md). It's composed of modules called _vanes_:
 
 ## Vanes
 

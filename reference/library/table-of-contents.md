@@ -69,7 +69,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#bit-rs' title="fn to single-precision float"><code>++bit:rs</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#bit-rq' title="fn to quad-precision float"><code>++bit:rq</code></a>
 <a class="tooltip" href='/docs/reference/library/4j/#bix-ab' title="Parse hex pair"><code>++bix:ab</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse odor-atom pair"><code>++bisk:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse aura-atom pair"><code>++bisk:so</code></a>
 <a class="tooltip" href='/docs/reference/library/1c/#bloq' title="Blocksize"><code>++bloq</code></a>
 <a class="tooltip" href='/docs/reference/library/2a/#bond' title="Replace null"><code>++bond</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#boss' title="Parser modifier: LSB"><code>++boss</code></a>
@@ -314,6 +314,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4h/#kel' title="Parse { (kel)"><code>++kel</code></a>
 <a class="tooltip" href='/docs/reference/library/4h/#ker' title="Parse } (ker)"><code>++ker</code></a>
 <a class="tooltip" href='/docs/reference/library/4h/#ket' title="Parse ^ (ket)"><code>++ket</code></a>
+<a class="tooltip" href='/docs/reference/library/2i/#key-by' title="Set of keys"><code>++key:by</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#knee' title="Recursive parsers"><code>++knee</code></a>
 <a class="tooltip" href='/docs/reference/library/2q/#knot' title="Atom type of ASCII characters"><code>++knot</code></a>
 
@@ -546,8 +547,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/3b/#san-rh' title="Signed integer to @rh"><code>++san:rh</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#san-rs' title="Signed integer to @rs"><code>++san:rs</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#san-rq' title="Signed integer to @rq"><code>++san:rq</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by odor"><code>++sand</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check odor validity"><code>++sane</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by aura"><code>++sand</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check aura validity"><code>++sane</code></a>
 <a class="tooltip" href='/docs/reference/library/3b/#sb-ff' title="Sign bit"><code>++sb:ff</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#scag' title="Prefix (produce front of list)"><code>++scag</code></a>
 <a class="tooltip" href='/docs/reference/library/4g/#scan' title="Parse tape or crash"><code>++scan</code></a>
@@ -606,8 +607,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/2b/#skip' title="Produce list of elements failing boolean gate"><code>++skip</code></a>
 <a class="tooltip" href='/docs/reference/library/2b/#slag' title="Produce all elements from index in list"><code>++slag</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#slat' title="Curried slaw"><code>++slat</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input odor"><code>++slav</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input odor"><code>++slaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input aura"><code>++slav</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input aura"><code>++slaw</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#slay' title="Parse cord to coin"><code>++slay</code></a>
 <a class="tooltip" href='/docs/reference/library/2n/#slog' title="Deify printf"><code>++slog</code></a>
 <a class="tooltip" href='/docs/reference/library/4f/#slug' title="Use gate to parse delimited list"><code>++slug</code></a>
@@ -1400,8 +1401,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4b/#cuss' title="To uppercase"><code>++cuss</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#mesc' title="Escape special characters"><code>++mesc</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#runt' title="Prepend n times"><code>++runt</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by odor"><code>++sand</code></a>
-<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check odor validity"><code>++sane</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sand' title="Soft-cast by aura"><code>++sand</code></a>
+<a class="tooltip" href='/docs/reference/library/4b/#sane' title="Check aura validity"><code>++sane</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#teff' title="UTF-8 length"><code>++teff</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#trim' title="Tape split"><code>++trim</code></a>
 <a class="tooltip" href='/docs/reference/library/4b/#trip' title="Cord to tape"><code>++trip</code></a>
@@ -1629,7 +1630,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 4l: parsing (atom parsing)
 
 <a class="tooltip" href='/docs/reference/library/4l/#so' title="Coin parser engine"><code>++so</code></a>
-<a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse odor-atom pair"><code>++bisk:so</code></a>
+<a class="tooltip" href='/docs/reference/library/4l/#bisk-so' title="Parse aura-atom pair"><code>++bisk:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#crub-so' title="Parse @da, @dr, @p, @t"><code>++crub:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#nuck-so' title="Top-level coin parser"><code>++nuck:so</code></a>
 <a class="tooltip" href='/docs/reference/library/4l/#nusk-so' title="Parse coin literal with escapes"><code>++nusk:so</code></a>
@@ -1645,8 +1646,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/reference/library/4m/#scot' title="Render dime as cord"><code>++scot</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#scow' title="Render dime as tape"><code>++scow</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#slat' title="Curried slaw"><code>++slat</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input odor"><code>++slav</code></a>
-<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input odor"><code>++slaw</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slav' title="Demand: parse cord with input aura"><code>++slav</code></a>
+<a class="tooltip" href='/docs/reference/library/4m/#slaw' title="Parse cord to input aura"><code>++slaw</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#slay' title="Parse cord to coin"><code>++slay</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#smyt' title="Render path as tank"><code>++smyt</code></a>
 <a class="tooltip" href='/docs/reference/library/4m/#spat' title="Render path as cord"><code>++spat</code></a>

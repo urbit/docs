@@ -11,7 +11,7 @@ input and produce an output, then disappear. Generators might make sense for
 listing directory contents, or running unit tests, or fetching the contents of a
 URL.
 
-There are three kinds of generators: naked, `%say`, and `%ask`. There also used to be a fourth type of generator, `%get`, but this kind is no longer in use. 
+There are three kinds of generators: naked, `%say`, and `%ask`. There also used to be a fourth type of generator, `%get`, but this kind is no longer in use.
 
 ### Naked Generators
 
@@ -285,7 +285,7 @@ arguments that aren't in the cells.
 42
 ```
 
-### `%ask` generators
+### `%ask` generators {#ask}
 
 We use the `%ask` generator when we want to create an interactive program
 that prompts for inputs as it runs, rather than expecting arguments to be passed
@@ -413,7 +413,7 @@ which we use in `axe.hoon`: `print`, `prompt`, and `produce`.
 
 In our example, `%+` is the rune to call a gate, and our gate `print` takes one
 argument which is a `tank` to print. The `+` here is syntactic sugar for
-`[leaf "What is your favorite color?"]` that just makes it easier to write.
+`[%leaf "What is your favorite color?"]` that just makes it easier to write.
 
 **`prompt`** is used to construct a prompt for the user to provide input.
 It takes a single argument that is a tuple. Most `%ask` generators will want to

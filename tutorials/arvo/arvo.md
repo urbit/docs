@@ -4,6 +4,7 @@ weight = 1
 template = "doc.html"
 aliases = ["/docs/learn/arvo/arvo/"]
 +++
+
 Arvo, also called Urbit OS, is our operating system.
 
 # Introduction
@@ -24,7 +25,7 @@ companion to this document, and some segments are direct quotes or paraphrases, 
 The conceptual section titled [What is Arvo?](#what-is-arvo-) can be understood
 without knowing Hoon, the Urbit programming language. The technical section
 titled [The kernel](#the-kernel) will require Chapter One of the [Hoon
-tutorial](@/docs/tutorials/hoon/_index.md) for full understanding, and some
+tutorial](@/docs/tutorials/hoon/hoon-school/_index.md) for full understanding, and some
 material from Chapter Two will be helpful as well. At the bare minimum, we
 presume that the reader has read through the [Technical
 Overview](@/docs/tutorials/concepts/technical-overview.md).
@@ -151,7 +152,7 @@ In computer science, an _interpreter_ is a program that directly executes
 instructions written in some human-understandable programming or scripting
 language, rather than requiring the code to first be compiled into a machine
 language. Arvo is an interpreter, which is important for us since it allows us
-to perform derministic [over-the-air updates](#over-the-air-updates) by the
+to perform deterministic [over-the-air updates](#over-the-air-updates) by the
 direct transfer of raw source code.
 
 To understand what we mean by _solid state_ interpreter, consider the operation of a solid state hard drive when a computer shuts down or loses power. Data written to an SSD is permanent unless otherwise deleted - loss of power may leave some partially written data, but nothing is ever lost. Thus, the state of an SDD can be considered to be equivalent to the data that it contains. That is to say, you do not need to know anything about the system which is utilizing the SSD to know everything there is to know about the SSD. There is no notion of "rebooting" a SSD - it simply stores data, and when power is restored to it, it is in exactly the same state as it was when power was lost.
@@ -241,11 +242,15 @@ This is known as
 cooperative multitasking.
 
 
+> Parts of the remainder of this document are out of date as of 2020.07.20, please use information here with
+> caution. This message will be removed once it is up to date.
+
+
 # The kernel
 
 The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose primary purpose is to implement the transition function, `+poke`. In this section we point out the most important parts of `arvo.hoon` and describe their role in the greater system. We also give brief descriptions of Arvo's kernel modules, known as vanes, and how Arvo interfaces with them.
 
-This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/_index.md).
+This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/hoon-school/_index.md).
 
 After concluding this section, the reader is encouraged to follow along with the
 [move trace tutorial](@/docs/tutorials/arvo/move-trace.md),
@@ -261,7 +266,7 @@ which applies many of the concepts covered below.
  + Larval stage core
  + Formal interface
 
-See [Section 1.7](@/docs/tutorials/hoon/arms-and-cores.md#core-nesting) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
+See [Section 1.7](@/docs/tutorials/hoon/hoon-school/arms-and-cores.md) of the Hoon tutorial for further explanation of what is meant here by "nesting". We now describe the functionality of each of these components.
 
 ### Formal interface
 

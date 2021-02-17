@@ -534,6 +534,8 @@ If you need to get the size
    u3r_met(3, a);
 ```
 
+Cells have their own set of characteristic functions for accessing interior nouns:  `u3r_cell`, `u3r_trel`, `u3r_qual`, `u3h`, `u3t`, and the like.
+
 The actual meat of the function is up to you.  What is it supposed to do?
 
 Now we move on to return semantics.
@@ -600,7 +602,7 @@ ending your C code with
    return(123);
 ```
 
-is wrong and will result in a dojo error because you are returning a single atom, instead of a list of three atoms.
+is wrong and will result in a dojo error because you are returning a single atom, instead of a tuple containing three atoms.
 
 Instead do one of these:
 
@@ -610,12 +612,19 @@ Instead do one of these:
      return(u3nq(a, b, c, d));  // for four atoms
 ```
 
-If you need to return a longer list, you can compose your own.  Look
+If you need to return a longer tuple, you can compose your own.  Look
 at the definitions of these three functions and you will see that they
 are just recursive calls to the cell constructor `u3i_cell()` e.g.
 
 ```c
      u3i_cell(a, u3i_cell(b, u3i_cell(c, d));
+```
+
+This implies that, to create a list instead of a cell, you will need to append
+`u3_nul` to the appropriately-sized tuple constructor:
+
+```c
+     return(u3nt(a, b, u3_nul));    // for two atoms as a list
 ```
 
 Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs/tutorials/vere/nouns.md).

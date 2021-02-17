@@ -355,6 +355,10 @@ Readers with some mathematical background may notice that `~( )` expressions all
 
 Thus, you may think of the `c` door as a function for making functions.  Use the `~(arm c arg)` syntax -- `arm` defines which kind of gate is produced (i.e., which arm of the door is used to create the gate), and `arg` defines the value of `b` in that gate, which in turn affects the product value of the gate produced.
 
+The standard library provides [currying
+functionality](@/docs/reference/library/2n.md#curry) outside of the context of
+doors - see `+curr` and `+cury`.
+
 #### Creating Doors with a Modified Sample
 
 In the above example we created a door `c` with sample `b=@` and found that the initial value of `b` was `0`, the bunt value of `@`. We then created new door from `c` by modifying the value of `b`. But what if we wish to define a door with a chosen sample value directly? We make use of the `$_` rune, whose irregular form is simply `_`. To create the door `c` with the sample `b=@` set to have the value `7` in the dojo, we would write
@@ -365,7 +369,7 @@ In the above example we created a door `c` with sample `b=@` and found that the 
   ++  greater  |=(a=@ (gth a b))
   --
 ```
-Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in [Lesson 2.2](@docs/tutorials/hoon/type-checking-and-type-inference).
+Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in [Lesson 2.2](@docs/tutorials/hoon/hoon-school/type-checking-and-type-inference).
 
 ### Doors in the Hoon Standard Library
 

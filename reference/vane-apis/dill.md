@@ -1,10 +1,8 @@
 +++
 title = "Dill"
-weight = 3
+weight = 4
 template = "doc.html"
 +++
-
-# Dill
 
 In this document we describe the public interface for Dill. Namely, we describe
 each `task` that Dill can be `pass`ed, and which `gift`(s) Dill can `give` in return.
@@ -21,7 +19,7 @@ tasks](#dill-tasks) section and an [Arvo tasks](#arvo-tasks) section.
 ### `%belt`
 
 Every keystroke entered into the console triggers a `%belt` `task` for Dill which contains information about the keystroke, such as which key was pressed
-and from which terminal. 
+and from which terminal.
 
 #### Accepts
 
@@ -73,7 +71,7 @@ This `task` is used only once, when Arvo first enters the [adult
 stage](@/docs/tutorials/arvo/arvo.md#structural-interface-core). Dill is
 technically the first vane to be activated, via the `%boot` `task`, which then
 send Jael (considered the the "true" first vane) an `%init` `task`, which then goes on to
-call `%init` `task`s for other vanes (including Dill). 
+call `%init` `task`s for other vanes (including Dill).
 
 #### Accepts
 
@@ -103,7 +101,7 @@ error message is set by `$log-level`, which is either `%hush`, `%soft`, or `%lou
 
 #### Returns
 
-`%crud` does not return a `gift`. 
+`%crud` does not return a `gift`.
 
 
 ### `%flog`
@@ -151,7 +149,7 @@ causing the terminal to redraw itself (?)
 ### `%heft`
 
 `%heft` causes Dill to `pass` a `%wegh` `task` to all other vanes (but not to
-itself), thus obtaining a complete digest of Arvo's memory usage. 
+itself), thus obtaining a complete digest of Arvo's memory usage.
 
 #### Accepts
 
@@ -172,7 +170,7 @@ This task is not used.
 
 ### `%harm`
 
-This `task` is not used. 
+This `task` is not used.
 
 
 ### `%init`
@@ -277,7 +275,7 @@ This `task` returns no `gift`s.
 ### `%vega`
 
 This is a common vane `task` used to inform the vane that the kernel has been
-upgraded. Dill does not do anything in response to this. 
+upgraded. Dill does not do anything in response to this.
 
 #### Accepts
 
@@ -310,7 +308,7 @@ This `task` updates the kernel.
 
 #### Returns
 
-This `task` returns no `gift`s. 
+This `task` returns no `gift`s.
 
 
 ### `%pack`
@@ -333,7 +331,7 @@ This `task` returns no `gift`s.
 ### `%veer`
 
 This `task` is used to install `zuse` and vanes. It is handled by `+veer` in
-`arvo.hoon`. 
+`arvo.hoon`.
 
 #### Accepts
 

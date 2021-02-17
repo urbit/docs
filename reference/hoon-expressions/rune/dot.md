@@ -24,7 +24,7 @@ typed immutable namespace defined by its virtual context.
 
 Ordinarily a Hoon expression has access to no information but whatever can be found in the subject.  The one exception is with the `.^` rune.  It essentially allows you to request information from one of the Arvo vanes (modules).
 
-`.^` checks that the type of the value retrieved from Arvo nests under `p`.  `p` is a `path` which includes information about which vane is being queried, and what sort of information is requested.
+`.^` checks that the type of the value retrieved from Arvo nests under `p`.  `q` is a `path` which includes information about which vane is being queried, and what sort of information is requested.
 
 In principle `.^` takes two subexpressions, but in practice `q` is often given in two parts: the first part includes the vane to be queried (e.g., `%a` for Ames, `%b` for Behn, `%c` for Clay, etc.) and the kind of request.  The second part is a path that corresponds to the kind of request.
 

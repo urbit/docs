@@ -1,10 +1,8 @@
 +++
-title = "Iris Public API"
-weight = 5
+title = "Iris"
+weight = 6
 template = "doc.html"
 +++
-
-# Iris
 
 In this document we describe the public interface for Iris. Namely, we describe
 each `task` that Iris can be `%pass`ed, and which `gift`(s) Iris can `%give` in
@@ -45,7 +43,7 @@ to each outstanding connection.
 This `task` cancels a previous fetch. Iris knows which request is meant based on the
 `duct` that the `task` comes on.
 
- We note that `%cancel-request` is also a `gift` that Iris can `%give`. 
+ We note that `%cancel-request` is also a `gift` that Iris can `%give`.
 
 #### Accepts
 
@@ -62,7 +60,7 @@ Receiving this `task` causes Iris to `%give`s a `%cancel-request` `gift` to Unix
 which then cancels the request in the runtime. See [Returns to Unix](#returns-to-unix).
 
 `id` is obtained via a `(map duct @ud)`, with the `duct` corresponding to one along
-which the `%cancel-request` `task` came with. 
+which the `%cancel-request` `task` came with.
 
 
 ### `%crud`
@@ -128,9 +126,9 @@ A `$request` consists of the following:
  - `=method`, the http method, which is one of `CONNECT`, `DELETE`, `GET`,
  `HEAD`, `OPTIONS`, `POST`, `PUT`, and `TRACE`.
  - `url=@t`, the URL being requested
- - `=header-list`, a list of headers to pass with the request, 
+ - `=header-list`, a list of headers to pass with the request,
  - `body=(unit octs)`, optional data to include in the request.
- 
+
  A `$outbound-config` contains the number of redirects and retries that Iris
  will attempt. By default this is 5 redirects (the recommended limit for the
  http standard) and 3 retries.
@@ -143,7 +141,7 @@ A `$request` consists of the following:
 Iris will `%give` a `%request` `gift` to Unix in response to a `%request`
 `task`. See [Returns to Unix](#returns-to-unix). This `gift`
 contains the `request` in the original `task` as well as the ID number assigned
-by Iris for that particular http connection, which is extracted from the input `task`. 
+by Iris for that particular http connection, which is extracted from the input `task`.
 
 
 ### `%trim`

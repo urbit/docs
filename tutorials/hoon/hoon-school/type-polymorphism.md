@@ -189,14 +189,22 @@ It is good practice to include a cast in all gates, even wet gates.  But in many
 
 As is the case with dry arms, there is a type-check associated with each wet arm.  Or, rather, there are potentially many checks for each wet arm, one for each wing in the code that resolves to a wet arm.  The product type of that arm is inferred at each call site, using the argument value type given at that site.  If the type inference doesn't go through -- e.g., if there is a cast that doesn't succeed relative to the call site argument value -- then the compile will crash with a `nest-fail`.  Otherwise the type check goes through with the inferred type of the wet arm at that call site.  So the product type of a wet gate can differ from one call site to another, as we saw with `switch` above.
 
-### Parametric Polymorphism and `+*` Arms
+### Parametric Polymorphism and `|$`
 
-We may use the `+*` rune to define an arm that produced a more complex type from one or more simpler types.  This rune provides a way of making use of **parametric polymorphism** in Hoon.
+We first encountered `|$` in the lesson on
+[molds](@/docs/tutorials/hoon/hoon-school/molds.md) as a wet gate that is a mold builder rune which takes in a
+list of molds and produces a new mold. Here we take another look at this rune as
+an implementation of **parametric polymorphism** in Hoon.
 
-For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each defined in `hoon.hoon` with `+*` arms.  (Take a moment to see for yourself.)  Each `+*` arm is followed by an argument definition, inside brackets `[ ]`.  After that subexpression comes another that defines a type, relative to the input value.  For example, here is the definition of `list` from `hoon.hoon`:
+For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each
+defined in `hoon.hoon` as wet gate mold builders.  Take a moment to see for
+yourself.  Each `++` arm is followed by `|$` and a list of labels for input
+types inside brackets `[ ]`.  After that subexpression comes another that
+defines a type that is parametrically polymorphic with respect to the input values.  For example, here is the definition of `list` from `hoon.hoon`:
 
 ```hoon
-+*  list  [item]
+++  list
+  |$  [item]
   ::    null-terminated list
   ::
   ::  mold generator: produces a mold of a null-terminated list of the
@@ -205,9 +213,9 @@ For example, we have `list`s, `tree`s, and `set`s in Hoon, which are each define
   $@(~ [i=item t=(list item)])
 ```
 
-The `+*` rune is especially useful for defining [containers](https://en.wikipedia.org/wiki/Container_%28abstract_data_type%29) of various kinds.  Indeed, `list`s, `tree`s, and `set`s are all examples of containers.  You can have a `(list @)`, a `(list ^)`, a `(list *)`, and so on.  Or a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc.  And the same for `set`.
+The `|$` rune is especially useful for defining [containers](https://en.wikipedia.org/wiki/Container_%28abstract_data_type%29) of various kinds.  Indeed, `list`s, `tree`s, and `set`s are all examples of containers.  You can have a `(list @)`, a `(list ^)`, a `(list *)`, and so on.  Or a `(tree @)`, a `(tree ^)`, a `(tree *)`, etc.  And the same for `set`.
 
-One nice thing about containers defined by `+*` is that they nest in the expected way.  Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`.  And so it does:
+One nice thing about containers defined by `|$` is that they nest in the expected way.  Intuitively a `(list @)` should nest under `(list *)`, because `@` nests under `*`.  And so it does:
 
 ```
 > =a `(list @)`~[11 22 33]

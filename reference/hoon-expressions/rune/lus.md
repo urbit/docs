@@ -135,42 +135,91 @@ Any Hoon expression, `q`, may be used to define the arm computation.
 
 ### `+*` "lustar"
 
-
-Produce a type constructor arm.
+Defines aliases within doors.
 
 ##### Syntax
 
-Regular: **2-fixed**.
+Regular: **variadic**.
 
 ```hoon
-+*  p=term  [q=term]  r=spec
++*  a=term  b=hoon
+    c=term  d=hoon
+    ...
+    e=term  f=hoon
 ```
 
-`p` is the arm name, `q` is the name of the argument for the constructor function enclosed in square brackets, and `r` is a structure expression that defines the constructor function.
+`a`, `c`, `e` are arm names and `b`, `d`, `f` are any Hoon expression. Note that unlike all other
+runes with a variable number of arguments, the list of arguments of `+*` does
+not end with a terminator.
+
+`+*` arms must always come at the beginning of the battery, before any other
+type of lus arm.
 
 ##### Discussion
 
-Arms produced by `+*` are essentially type constructors.  They are used to construct new types from ones you already have.  Consider `list`, which takes some type -- e.g., `@`, `tape`, etc. -- and returns a new type, e.g., `(list @)`, `(list tape)`, etc.
+The primary use of `+*` is to create aliases within doors (see Examples below).
+Aliases given by `+*` do not count towards the number of arms in the door and
+thus are also called "virtual arms", which
+can be important for things like Gall app cores that require a fixed number of arms.
 
-The Hoon subexpression, `r`, must be a structure expression.  That is, it must be either a basic structure expression (`*`, `~`, `^`, `?`, and `@`), or a complex expression made with the `$` family of runes (including irregular variants).
+Under the hood, `+*` gets compiled as `=*`'s. `+*  foo  bar` rewrites each `++`
+arm beneath it in the core to include
+`=*  foo  bar`. For example, the interpreter sees the Nock compiled from this Hoon expression
+
+```hoon
+|_  z=@ud
++*  n  1
+++  x  (add z n)
+++  y  (sub z n)
+--
+```
+as being identical the Nock compiled from this one:
+```hoon
+=|  z=@ud
+|%
+++  x
+  =*  n  1
+  (add z n)
+++  y
+  =*  n  1
+  (sub z n)
+--
+```
 
 ##### Examples
 
+To assign an alias to a door, we often write the following.
+```hoon
+|_  foo
++*  this  .
 ```
-> =c |%
-       +*  triple  [a]  [a a a]
-       +*  wrap-flag  [a]  [? a]
-     --
+This is the idomatic way to assign the alias `this` to the door.
 
-> `(triple.c @)`[12 14 16]
-[12 14 16]
+Sometimes cores, such as Gall app cores, have a fixed number of arms, but you'd
+like to include more. This is where aliases employed as "virtual arms" may be of
+use. We note that it is often better style to compose cores with `=>` or `=<` to add more arms to a
+Gall app core. This usage of `+*` is controversial and should be minimized.
 
-> `(triple.c ?)`[12 14 16]
-nest-fail
+```hoon
+|_  =bowl:gall
++*  this  .
+    samp  +<
+    cont  +>
+```
+This assigns the door the alias `this`, the sample of the door `samp`, and the
+context of the door `cont`.
 
-> `(triple.c ?)`[& | |]
-[%.y %.n %.n]
+You may also call functions with `+*` by making use of e.g. the `%~` rune.
 
-> `(wrap-flag.c @)`[& 22]
-[%.y 22]
+```hoon
+=<
+  |_  a=@ 
+  +*  do   ~(. +> a)
+  ++  stuff  foo:do
+::etc
+--
+|_  b=@
+++  foo  %bar
+::etc
+--
 ```

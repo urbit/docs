@@ -84,7 +84,7 @@ We start with atom literals. Each of these is a basic expression of Hoon that ev
 ~zod
 ```
 
-Recall from [Lesson 1.2](@/docs/tutorials/hoon/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways. The way an atom is to be represented depends on its aura. The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/atoms-auras-and-simple-cell-types.md).
+Recall from [Lesson 1.2](@/docs/tutorials/hoon/hoon-school/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways. The way an atom is to be represented depends on its aura. The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/hoon-school/atoms-auras-and-simple-cell-types.md).
 
 Cell literals can be written in Hoon using `[ ]`. Cell literals are complex, because other expressions are put inside the square brackets. Examples:
 
@@ -124,7 +124,7 @@ Let’s start with the base case: a single limb. A limb expression is a trivial 
 - `add`
 - `mul`
 
-As a special limb we also have `$`. This is the name of the [arm](/docs/glossary/arm/) in special one-armed [cores](/docs/glossary/core/) called “gates”. (We’ll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/gates.md).)
+As a special limb we also have `$`. This is the name of the [arm](/docs/glossary/arm/) in special one-armed [cores](/docs/glossary/core/) called “gates”. (We’ll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/hoon-school/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions. Examples:
 
@@ -141,7 +141,7 @@ Wing expressions with multiple limbs are complex expressions. Examples:
 
 Hoon is a statically typed language. You’ll learn more about the type system later in the chapter. For now, just know that Hoon’s type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag). Each of these symbols can be used as a stand-alone expression of Hoon. In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
 
-They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`. (Technically these expressions don’t _always_ indicate compound types. In certain contexts they’re interpreted in a different way. We’ll address this variation of meaning in [Lesson 2.3](@/docs/tutorials/hoon/structures-and-complex-types.md).)
+They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`. (Technically these expressions don’t _always_ indicate compound types. In certain contexts they’re interpreted in a different way. We’ll address this variation of meaning in [Lesson 2.3](@/docs/tutorials/hoon/hoon-school/structures-and-complex-types.md).)
 
 ### Rune Expressions
 
@@ -213,7 +213,7 @@ What Hoon expression does the following figure correspond to, and what does it e
 Right. This represents the Hoon expression `:-  2  :-  3  4`,
 and evaluates to `[2 [3 4]]`. Remember, though, that if you input this into dojo it will print as `[2 3 4]`.
 
-Thinking in terms of these “LEGO block” diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs/tutorials/hoon/nouns.md), can be a helpful learning and debugging tactic.
+Thinking in terms of these “LEGO block” diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs/tutorials/hoon/hoon-school/nouns.md), can be a helpful learning and debugging tactic.
 
 ##### Exercise 1.3a
 
@@ -341,11 +341,11 @@ The Hoon syntax can be intimidating for the uninitiated, so it’s good to remem
 - The [Runes](@/docs/reference/hoon-expressions/rune/_index.md) page will show you how to use any Hoon rune.
 - The [Cheat Sheet](@/docs/reference/cheat-sheet.md) is a more compact place to look up rune expressions.
 - The [Standard Library](@/docs/reference/library/table-of-contents.md)  section has its sub-pages arranged by category. So arithmetic functions, for example, are all found on the same page.
-- The [Hoon Style Guide](@/docs/tutorials/hoon/style.md) will show you how to write your Hoon code so that it’s idiomatic and easily understood by others.
+- The [Hoon Style Guide](@/docs/tutorials/hoon/hoon-school/style.md) will show you how to write your Hoon code so that it’s idiomatic and easily understood by others.
 
 ### Debugging
 
-When you have an error in your Hoon code, one of two things can happen. Either the code does not run at all and you get an error (such as `nest-fail`), or your code _does_ run but produces the wrong results. The [Troubleshooting](@/docs/tutorials/hoon-errors.md) page is a good resource for figuring out how to debug your code.
+When you have an error in your Hoon code, one of two things can happen. Either the code does not run at all and you get an error (such as `nest-fail`), or your code _does_ run but produces the wrong results. The [Troubleshooting](@/docs/tutorials/hoon/hoon-errors.md) page is a good resource for figuring out how to debug your code.
 
 There are a couple useful runes associated with debugging:
 
@@ -353,4 +353,4 @@ There are a couple useful runes associated with debugging:
 
 `~&` (sigpam) is used to print its argument every time that argument executes. So, if you wanted to see how many times your program executed `foo`, you would write `foo bar`. Then, when your program runs, it will print `foo` on a new line of output every time the program comes across it by recursion.
 
-But there are more. Check out the aforementioned [Troubleshooting](@/docs/tutorials/hoon-errors.md) page to see other handy debugging runes and how to use them.
+But there are more. Check out the aforementioned [Troubleshooting](@/docs/tutorials/hoon/hoon-errors.md) page to see other handy debugging runes and how to use them.

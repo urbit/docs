@@ -7,6 +7,9 @@ aliases = ["docs/using/ship-troubleshooting/"]
 
 Urbit is still in the development stage, so there's a chance that your ship won't start properly, or will stop working properly when you're running it. That's ok! This document is intended to help you in such an event.
 
+This page contains resolutions to many of the most commonly encountered issues.
+If your issue is not covered here, please check out our [Troubleshooting Knowledgebase](https://github.com/urbit/support/wiki).
+
 ## Table of Contents
 
 - [Best practices](#best-practices)
@@ -33,13 +36,9 @@ Urbit is stateful, meaning that it needs to hold onto all your data. If you dele
 
 When you first start your ship, you should make sure you put it a place where you can find it again and where it won't get accidentally deleted. Remember that you must perform `|mount %` in your ship's Dojo to make your ship visible as a directory in the Unix file system.
 
-### Avoid killing the urbit process directly
-
-The best way to end an urbit process is to use `ctrl-d` from the Dojo. Unix methods to kill the process, such as with `ctrl-z` or with the `kill` Bash command, or simply closing the window, should only be used if `ctrl-d` does not work.
-
 ### Keep up-to-date builds
 
-Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](@using/install.md).
+Check for latest Urbit version at https://github.com/urbit/urbit/releases. If you're behind, update using [this guide](@/using/install.md#updating).
 
 ### `|hi` your star to see if you're connected
 
@@ -69,7 +68,20 @@ So for example, to silence all Ames packet-related errors, try `|knob %hole %hus
 
 A personal breach is when a ship tells all the other ships that have communicated with it to treat it as though the ship was just started for the first time again, since everyone on the network has forgotten about it.
 
-Personal breaches often fix connectivity issues, but should only be used as a last resort. To find out how to perform a personal breach, check out our [Guide to Breaches](../guide-to-breaches). Before taking such a drastic measure, try other methods in this guide. You can also ask for help on `~/~dopzod/urbit-help`, or, failing that, in the `#ship-starting-support` channel in our [Discord server](https://discord.gg/n9xhMdz).
+Personal breaches often fix connectivity issues, but should only be used as a
+last resort. To find out how to perform a personal breach, check out our [Guide
+to Breaches](../guide-to-breaches). Before taking such a drastic measure, try
+other methods in this guide. You can also ask for help on
+in the Help channel in the Urbit Community group at `~bitbet-bolbel/urbit-community` or, failing that, in the `#ship-starting-support`
+channel in our [Discord server](https://discord.gg/n9xhMdz).
+
+### Reset `+code`
+
+You login to Landscape using the camel-case phrase obtained from dojo by
+entering `+code`. For security reasons you may wish to change this code
+regularly. You may do so by entering `|code %reset` into dojo. Doing this
+will prevent [Bridge](@/docs/glossary/bridge.md) from being to derive your code,
+meaning you will only be able to check it from dojo in the future.
 
 ## Operation Issues {#operation-issues}
 
@@ -96,6 +108,15 @@ Since version `0.8.0`, changes no longer automatically sync between the Unix sid
 ### I can't communicate with anyone
 
 You may have booted a ship with your keyfile twice in the same era. To fix this, you must perform a [personal breach](#personal-breach).
+
+### I don't have the latest OTA
+
+You can check what build your ship is on by entering `+trouble` into dojo and
+reading the `%base` hash. If this does not match the latest hash published in
+the `urbit-dev` mailing list, you are behind.
+
+Your sponsor may just be lagging behind, so sometimes this will resolve on its
+own with patience. Otherwise, try the procedure outlined [here](https://github.com/urbit/support/wiki/Missing-OTA).
 
 ### I keep getting an `ames` error stack-trace
 
@@ -130,10 +151,6 @@ The above commands work if you have the wrong keys of other ships. If other ship
 This is the result of deleting your pier and starting your ship again. To fix this, you must perform a [personal breach](#personal-breach).
 
 ## Booting Issues {#booting-issues}
-
-### My ship won't boot and gets a `terminals database is inaccessible` message
-
-This happens when you try to run the Urbit binary through your `$PATH`. When running the command, you need to be explicit and specify the actual path to it in the filesystem. This is a side-effect of the way we build the release binaries, which will be fixed.
 
 ### My ship booted for the first time, but it turned into a comet instead of my planet or star
 
@@ -174,9 +191,15 @@ Copy this stack trace and include it in your GitHub issue.
 
 ### My ship crashed with a `bail: meme` error.
 
-1. Make sure you are running version to `0.8.2` if you are not already on it.
+This means that your ship ran out of memory.
 
-2. Restart your ship. If you don't crash again, everything may be fine. If you **do** crash again, then you should perform a [personal breach](#personal-breach).
+1. Make sure you are running the latest binary if you are not already on it.
+
+2. Restart your ship. If you don't crash again, everything may be fine.
+
+3. Try the procedure outlined [here](https://github.com/urbit/support/wiki/ship-exits-with-a-bail:-meme-error).
+
+4. If you **do** crash again, then you should perform a [personal breach](#personal-breach).
 
 ### My ship crashed with a `bail: oops` error
 

@@ -4,15 +4,12 @@ weight = 12
 template = "doc.html"
 +++
 
-
-## Move trace tutorial
-
 In this tutorial we will run a simple "move trace" and use the output to get a
 picture of what the Arvo kernel proper does during the routine task of setting a
 timer. Some level of familiarity with the kernel is required for this section,
 which can be obtained in our [Arvo kernel tutorial](@/docs/tutorials/arvo/arvo.md#the-kernel).
 
-### Running a move trace
+## Running a move trace
 
 Ultimately, everything that happens in Arvo is reduced to Unix events, and the
 Arvo kernel acts as a sort of traffic cop for vanes and apps to talk to one
@@ -84,7 +81,7 @@ another `move` to perform and the loop begins again. Thus this move trace does
 not display information about what is going on inside of the vane or app such as
 private function calls, only what the kernel itself sees.
 
-### Interpreting the move trace
+## Interpreting the move trace
 
 In this section we will go over the move trace line-by-line, explaining how the
 move trace is printed, what each line means (including some things not found in
@@ -93,7 +90,7 @@ first few lines that should equip you well enough to unravel the rest of the
 move trace in as much detail as you desire.
 
 
-#### The call
+### The call
 
 Let's put the first part of the move trace into a diagram to make following
 along a little easier.
@@ -310,7 +307,7 @@ Gall's spider's thread with id `~.dojo_0v6.210tt.1sme1.ev3qm.qgv2e.a754u` asks B
 Behn `%give`s a `%doze` `card` to Unix, asking it to set a timer [for one second from
 now]. At this point Arvo may rest.
 
-#### The return
+### The return
 
 Now Unix sets a timer for one second, waits one second, and then informs Behn that a second has
 passed, leading to a chain of `%give` `move`s that ultimately prints

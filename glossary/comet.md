@@ -12,4 +12,4 @@ Comets have no presence on [Azimuth](../azimuth) and thus have no associated Urb
 
 ### Further reading
 
-- [Creating a Comet](@/using/operations/creating-a-comet.md): A guide to spinning up a comet of your own.
+- [Creating a Comet](@/using/install.md#comet): A guide to spinning up a comet of your own.

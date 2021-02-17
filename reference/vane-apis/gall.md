@@ -1,10 +1,8 @@
 +++
 title = "Gall"
-weight = 4
+weight = 5
 template = "doc.html"
 +++
-
-# Gall
 
 ## Reference Agent
 

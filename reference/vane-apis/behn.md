@@ -1,10 +1,8 @@
 +++
 title = "Behn"
-weight = 2
+weight = 3
 template = "doc.html"
 +++
-
-# Behn
 
 In this document we describe the public interface for Behn. Namely, we describe
 each `task` that Behn can be `pass`ed, and which `gift`(s) Behn can `give` in return.
@@ -60,7 +58,7 @@ The most common error that occurs is when Behn tries to `%wake` up a program tha
 the entire event (i.e. sequence of `move`s) that led up to the `%wake` is thrown
 away, and Vere then causes the kernel to `pass` Behn a `%crud` `task` containing
 the stack trace.
- 
+
 
 ### `%drip`
 
@@ -155,7 +153,7 @@ This `task` is sent by the interpreter in order to free up memory.
 
 #### Accepts
 
-This `task` has no arguments. 
+This `task` has no arguments.
 
 #### Returns
 
@@ -185,7 +183,7 @@ This `task` takes in a `@da` which Behn then adds to `timers.state`, the list of
 ```hoon
 @da
 ```
- 
+
 #### Returns
 
 This `task` returns a `%wake` `gift` once the timer has fired.
@@ -196,7 +194,7 @@ This `task` returns a `%wake` `gift` once the timer has fired.
 This `task` is sent by the kernel when the Unix timer tells the kernel that it
 is time for Behn to wake up. This is often caused by a `%doze` `gift` that
 Behn originally sent to the kernel that is then forwarded to Unix, which is
-where the real timekeeping occurs. 
+where the real timekeeping occurs.
 
 Upon receiving this `task`, Behn processes the elapsed timer and then sets
 `:next-wake`.
