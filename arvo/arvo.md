@@ -568,7 +568,7 @@ As of this writing, we have nine vanes, which each provide the following service
 - [Eyre](@/docs/arvo/eyre/eyre.md): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
 - [Ford](@/docs/tutorials/arvo/ford.md): a build system also utilized for marks
   (file types) and debugging.
-- [Gall](@/docs/tutorials/arvo/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
+- [Gall](@/docs/arvo/gall/gall.md): manages our userspace applications. `%gall` keeps state and manages subscribers.
 - `Iris`: an http client.
 - `Jael`: storage for Azimuth information.
 
