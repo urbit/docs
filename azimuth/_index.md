@@ -1,6 +1,6 @@
 +++
 title = "Azimuth"
-weight = 1
+weight = 700
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++

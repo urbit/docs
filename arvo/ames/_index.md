@@ -1,6 +1,6 @@
 +++
 title = "Ames"
-weight = 1
+weight = 10
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++

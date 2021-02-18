@@ -1,6 +1,6 @@
 +++
 title = "Standard library"
-weight = 2
+weight = 40
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++

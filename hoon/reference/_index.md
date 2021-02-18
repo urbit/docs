@@ -1,6 +1,6 @@
 +++
 title = "Reference"
-weight = 1
+weight = 40
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++

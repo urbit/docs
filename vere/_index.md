@@ -1,6 +1,6 @@
 +++
 title = "Vere"
-weight = 4
+weight = 600
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/learn/vere/"]
