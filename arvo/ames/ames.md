@@ -28,7 +28,7 @@ vane or app, is defined in Ames.
 This section summarizes the design of Ames. Beyond this section are deeper
 elaborations on the concepts presented here.
 
-Ames extends [Arvo's](@/docs/tutorials/arvo/arvo.md) `%pass`/`%give` `move` semantics across the network.
+Ames extends [Arvo's](@/docs/arvo/arvo.md) `%pass`/`%give` `move` semantics across the network.
 
 Ames receives packets as Arvo events and emits packets as Arvo
 effects.  The runtime is responsible for transferring the bytes in
