@@ -253,7 +253,7 @@ The Arvo kernel, stored in `sys/arvo.hoon`, is about 1k lines of Hoon whose prim
 This section requires an understanding of Hoon of at least the level of Chapter One of the [Hoon tutorial](@/docs/tutorials/hoon/hoon-school/_index.md).
 
 After concluding this section, the reader is encouraged to follow along with the
-[move trace tutorial](@/docs/tutorials/arvo/move-trace.md),
+[move trace tutorial](@/docs/arvo/move-trace.md),
 which applies many of the concepts covered below.
 
 ## Overall structure
@@ -576,4 +576,4 @@ As of this writing, we have nine vanes, which each provide the following service
 
 Now that you've learned about the nuts and bolts of the Arvo kernel, why not
 check it out in action? An in-depth "move trace" tutorial for running a timer app
-is available [here](@/docs/tutorials/arvo/move-trace.md).
+is available [here](@/docs/arvo/move-trace.md).
