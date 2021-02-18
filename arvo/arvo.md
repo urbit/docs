@@ -216,7 +216,7 @@ Database theory studies in precise terms the possible properties of anything tha
 It is easy to think that "completed transaction will survive permanently"
 along with "the state of Arvo is pure function of its event log" implies that
 nothing can ever be deleted. This is not quite true.
-[Clay](@/docs/tutorials/arvo/clay.md) is our [referentially
+[Clay](@/docs/arvo/clay/clay.md) is our [referentially
 transparency](https://en.wikipedia.org/wiki/Referential_transparency)
 file system, which could naively be thought to mean that since data must be
 immutable, files cannot be deleted. However, Clay can replace a file with a
@@ -563,7 +563,7 @@ As of this writing, we have nine vanes, which each provide the following service
 
 - [Ames](@/docs/arvo/ames/ames.md): the name of both our network and the vane that communicates over it.
 - [Behn](@/docs/arvo/behn/behn.md): a simple timer.
-- [Clay](@/docs/tutorials/arvo/clay.md): our version-controlled, referentially- transparent, and global filesystem.
+- [Clay](@/docs/arvo/clay/clay.md): our version-controlled, referentially- transparent, and global filesystem.
 - [Dill](@/docs/tutorials/arvo/dill.md): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
 - [Eyre](@/docs/tutorials/arvo/eyre.md): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
 - [Ford](@/docs/tutorials/arvo/ford.md): a build system also utilized for marks
