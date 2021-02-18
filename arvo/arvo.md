@@ -176,7 +176,7 @@ Typically, updates to an operating system are given via a pre-compiled binary,
 which is why some updates will work on some systems but not on others where the
 hardware and environment may differ. This is not so on Arvo - because it is an
 [interpreter](#solid-state-interpreter), Arvo may update itself by receiving
-source code from your sponsor over [Ames](@/docs/tutorials/arvo/ames.md), our
+source code from your sponsor over [Ames](@/docs/arvo/ames/ames.md), our
 network. As Hoon compiles down to Nock, which is an axiomatic representation of
 a deterministic computer, this code is guaranteed to run identically on your machine as it
 would on anybody else's.
@@ -444,7 +444,7 @@ A short summary of the purpose of each these arms are as follows:
  - `+poke` is the transition function that `move`s Arvo from one state to the
    next. It is the most fundamental arm in the entire system. It is a typed
    transactional message that is processed at most once. If the `+poke` causes
-   Arvo to send an message over [Ames](@/docs/tutorials/arvo/ames.md) Ames
+   Arvo to send an message over [Ames](@/docs/arvo/ames/ames.md) Ames
    guarantees that the message will be delivered exactly once. This is sometimes said
    to be impossible, and it is for standard operating systems, but that is not the case for single-level stores engaged in
    a permanent session, as is the case among Arvo ships.
@@ -561,7 +561,7 @@ data that directly causes the desired outcome of a `move`. This event data is co
 
 As of this writing, we have nine vanes, which each provide the following services:
 
-- [Ames](@/docs/tutorials/arvo/ames.md): the name of both our network and the vane that communicates over it.
+- [Ames](@/docs/arvo/ames/ames.md): the name of both our network and the vane that communicates over it.
 - [Behn](@/docs/tutorials/arvo/behn.md): a simple timer.
 - [Clay](@/docs/tutorials/arvo/clay.md): our version-controlled, referentially- transparent, and global filesystem.
 - [Dill](@/docs/tutorials/arvo/dill.md): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
