@@ -562,7 +562,7 @@ data that directly causes the desired outcome of a `move`. This event data is co
 As of this writing, we have nine vanes, which each provide the following services:
 
 - [Ames](@/docs/arvo/ames/ames.md): the name of both our network and the vane that communicates over it.
-- [Behn](@/docs/tutorials/arvo/behn.md): a simple timer.
+- [Behn](@/docs/arvo/behn/behn.md): a simple timer.
 - [Clay](@/docs/tutorials/arvo/clay.md): our version-controlled, referentially- transparent, and global filesystem.
 - [Dill](@/docs/tutorials/arvo/dill.md): a terminal driver. Unix sends keyboard events to `%dill` from the console, and `%dill` produces terminal output.
 - [Eyre](@/docs/tutorials/arvo/eyre.md): an http server. Unix sends http messages to `%eyre`, and `%eyre` produces http messages in response.
