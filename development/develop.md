@@ -34,7 +34,7 @@ To get started quickly with the language of your choice, see the following libra
  - [JavaScript](https://www.npmjs.com/package/urbit) (Under active development)
  - Go (Pending release)
 
-[View details about using the API or creating your own implementation here.](/using/integrating-api/)
+[View details about using the API or creating your own implementation here.](@/docs/development/integrating-api.md)
 
 ## Urbit Applications {#application}
 
