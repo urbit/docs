@@ -31,7 +31,7 @@ Wildcard category. Expressions that don't fit anywhere else go here.
 
 Runes used to modify the subject.
 
-### [`? wut` (Conditionals)](@/docs/reference/hoon-expressions/rune/wut.md)
+### [`? wut` (Conditionals)](@/docs/hoon/reference/rune/wut.md)
 
 Runes used for branching on conditionals.
 

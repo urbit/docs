@@ -147,7 +147,7 @@ Hoon has the usual branches and logical tests.
 
 ### ?! wutzap
 
-[docs](@/docs/reference/hoon-expressions/rune/wut.md#wutzap) \\!
+[docs](@/docs/hoon/reference/rune/wut.md#wutzap) \\!
 `[%wtzp p=hoon]`: logical not.
 
 R: `?!(p)`
@@ -155,7 +155,7 @@ I: `!(p)`
 
 ### ?& wutpam
 
-[docs](@/docs/reference/hoon-expressions/rune/wut.md#wutpam) \\&
+[docs](@/docs/hoon/reference/rune/wut.md#wutpam) \\&
 `[%wtpm p=(list hoon)]`: logical and.
 
 R: `?&(p)`
@@ -163,7 +163,7 @@ I: `&(p)`
 
 ### ?| wutbar
 
-[docs](@/docs/reference/hoon-expressions/rune/wut.md#wutbar) \\|
+[docs](@/docs/hoon/reference/rune/wut.md#wutbar) \\|
 `[%wtbr p=(list hoon)]`: logical or.
 
 R: `?|(p)`

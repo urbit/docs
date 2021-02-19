@@ -101,4 +101,4 @@ Of course, doing so would be needlessly obfuscating -- we mention this only to i
 
 - `?|` takes an indefinite number of children. It's the logical "or" operator. It checks if at least one of its children is true.
 
-To see an exhaustive list of "wut" runes, check out the [reference documentation on conditionals](@/docs/reference/hoon-expressions/rune/wut.md).
+To see an exhaustive list of "wut" runes, check out the [reference documentation on conditionals](@/docs/hoon/reference/rune/wut.md).
