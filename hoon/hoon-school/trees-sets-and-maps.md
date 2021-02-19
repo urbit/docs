@@ -88,7 +88,7 @@ $(hay r.hay)
 
 ## Sets
 
-Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of atoms.  The `in` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/reference/library/2h.md).
+Use `set` to create a data structure for a set of values, e.g., `(set @)` for a set of atoms.  The `in` [core](/docs/glossary/core/) in the Hoon standard library contains the various functions for operating on sets.  See the standard library reference documentation for sets [here](@/docs/hoon/reference/stdlib/2h.md).
 
 As with `list`s and `tree`s, there are two categories of sets: null `~`, and non-null.  Hoon implements sets using trees for the underlying noun.
 
@@ -237,7 +237,7 @@ Use `map` to create a set of key-value pairs, e.g., `(map @tas *)` for a set of 
 
 One example use case is for storing customer information as a set of pairs: `(map [employee-name employee-data])`.
 
-The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps [here](@/docs/reference/library/2i.md).  As was the case with sets, the underlying noun of each map is a tree.
+The `by` core in the Hoon standard library contains the various functions for operating on maps.  Many of these functions are similar to the set functions of the `in` core.  See the standard library reference documentation for maps [here](@/docs/hoon/reference/stdlib/2i.md).  As was the case with sets, the underlying noun of each map is a tree.
 
 Two common methods for populating a map include (1) creating it from a list of key-value cells using the `my` function, and (2) inserting items into a map using the `put` arm of the `by` core.
 

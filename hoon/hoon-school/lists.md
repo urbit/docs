@@ -299,7 +299,7 @@ c
 
 ## Using `hoon.hoon` to Learn Hoon
 
-The Hoon standard library and compiler are written in Hoon. At this point, you know enough Hoon to be able to explore the standard library portions of `hoon.hoon` and find more functions relevant to lists. Look around in [section 2b](/docs/reference/library/2b/) (and elsewhere).
+The Hoon standard library and compiler are written in Hoon. At this point, you know enough Hoon to be able to explore the standard library portions of `hoon.hoon` and find more functions relevant to lists. Look around in [section 2b](@/docs/hoon/reference/stdlib/2b.md) (and elsewhere).
 
 ## Additional Exercises
 

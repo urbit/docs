@@ -574,7 +574,7 @@ and so on, down to
   $@(~ [~ u=item])
 --
 ```
-This core contains the arms in parts [1a-1c of the standard library documentation](@/docs/reference/library/1a.md). If you count them, there are 41 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the dojo by looking at the subject of `add`.
+This core contains the arms in parts [1a-1c of the standard library documentation](@/docs/hoon/reference/stdlib/1a.md). If you count them, there are 41 arms in the core from `++  add` down to `++  unit`. We again can see this fact reflected in the dojo by looking at the subject of `add`.
 ```
 > ..add
 <41.mac 1.ane $141>
