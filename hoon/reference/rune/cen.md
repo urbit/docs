@@ -53,7 +53,7 @@ A `%_` expression resolves to the value of the subject at wing `a`, but modified
 
 `%_` is different from `%=` because `%=` can change the type of a wing with mutations.  `%_` preserves the wing type.
 
-See [how wings are resolved](@/docs/reference/hoon-expressions/limb/_index.md).
+See [how wings are resolved](@/docs/hoon/reference/limb/_index.md).
 
 ##### Examples
 

@@ -136,7 +136,7 @@ Calling a door is like calling a gate except the caller also needs
 to specify the arm to be computed.  So, for example, if you have some door `door` which contains some arm `arm`, and you want to pass some argument (i.e., input value `arg`), you would call it with `~(arm door arg)`.
 
 Because gates are also doors, you can call them the same way.  To call the gate `foo` as a door, instead of `(foo baz)` we would write `~($ foo baz)`.  This
-is an irregular form for `%~($ foo baz)`, [%~](/docs/reference/hoon-expressions/rune/cen#sig).
+is an irregular form for `%~($ foo baz)`, [%~](@/docs/hoon/reference/rune/cen.md#censig).
 
 ##### Examples
 
@@ -346,7 +346,7 @@ A more interesting trap:
 Note that we can use `$()` to recurse back into the
 trap, since it's a core with an `$` arm.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/docs/reference/hoon-expressions/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/hoon/reference/rune/cen.md#centis)).
 
 ### `|-` "barhep"
 
@@ -380,7 +380,7 @@ A `|-` expression produces a core with one arm named `$` and immediately evaluat
 
 The `|-` rune can be thought of as a 'recursion point' or a 'loop starting point'. Since `|-` makes a `|.` (["bardot"](#bardot), a core with one arm named `$`, we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](/docs/reference/hoon-expressions/rune/cen#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/hoon/reference/rune/cen.md#centis)).
 
 ##### Examples
 

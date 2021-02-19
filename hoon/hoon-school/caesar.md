@@ -256,7 +256,7 @@ that constructs our `map`: `$(chart (~(put by chart) i.a i.b), a t.a, b t.b)`.
 This code recursively adds an entry in our `map` where the head of the `tape` `a`
 maps to the value of the head of `tape` `b` with  `~(put by chart)`, our calling
 of the `put` arm of the `by` map-engine core (note that `~(<wing> <door> <sample>`) is
-a shorthand for `%~  <wing>  <door>  <sample>` (see the [Calls % ('cen')](/docs/reference/hoon-expressions/rune/cen/#censig)
+a shorthand for `%~  <wing>  <door>  <sample>` (see the [Calls % ('cen')](@/docs/hoon/reference/rune/cen.md#censig)
 documentation for more information). The recursion also "consumes"
 those heads with every iteration by changing `a` and `b` to their tails using `a t.a, b t.b`.
 
