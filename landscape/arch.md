@@ -4,8 +4,6 @@ weight = 4
 template = "doc.html"
 +++
 
-# Landscape Architecture
-
 Landscape is designed using a particular userspace architecture mode consisting of stores, hooks, and threads.
 
 ## Stores
