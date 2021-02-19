@@ -780,7 +780,7 @@ computation time.  You can run this at the dojo with `-time ~s1`.
 ```
 
 This is uses `lib/ph/io` to run a pH test.  Aqua and pH are described
-[elsewhere](@/docs/tutorials/hoon/hoon-school/aqua.md), but if you've initialized Aqua by running `|start %aqua` and
+[elsewhere](@/docs/hoon/guides/aqua.md), but if you've initialized Aqua by running `|start %aqua` and
 `:aqua +solid`, then you can run `-ph-add` to execute this thread.
 
 It starts by running some virtualization initialization with
