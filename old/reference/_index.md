@@ -6,7 +6,7 @@ template = "sections/docs/chapters.html"
 +++
 Various reference documents are stored here, particularly for Hoon, but also for other parts of the system.
 
-## [The Cheat Sheet](@/docs/reference/cheat-sheet.md)
+## [The Cheat Sheet](@/docs/hoon/reference/cheat-sheet.md)
 
 The cheat sheet is a compact document for looking up Hoon runes.
 
