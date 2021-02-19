@@ -84,7 +84,7 @@ We start with atom literals. Each of these is a basic expression of Hoon that ev
 ~zod
 ```
 
-Recall from [Lesson 1.2](@/docs/tutorials/hoon/hoon-school/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways. The way an atom is to be represented depends on its aura. The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/tutorials/hoon/hoon-school/atoms-auras-and-simple-cell-types.md).
+Recall from [Lesson 1.2](@/docs/tutorials/hoon/hoon-school/nouns.md) that even though atoms are unsigned integers, they can be pretty-printed in different ways. The way an atom is to be represented depends on its aura. The literal syntax for each of the hard-coded auras will be explained further in [Lesson 2.1](@/docs/hoon/hoon-school/atoms-auras-and-simple-cell-types.md).
 
 Cell literals can be written in Hoon using `[ ]`. Cell literals are complex, because other expressions are put inside the square brackets. Examples:
 
