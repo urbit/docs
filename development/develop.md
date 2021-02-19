@@ -42,7 +42,7 @@ Urbit applications are still young, but can be fun to experiment with.
 
 When creating user applications on Urbit, you aren’t tied to any particular user interface. They can work without providing a response to the user, or by printing to the Dojo, or with an interface in Landscape, which uses [Eyre](@/docs/arvo/eyre/eyre.md) (the Arvo vane that serves HTTP to serve a React-based interface to the application through a web browser).
 
-When writing applications, you will often make use of [Gall](@/docs/tutorials/hoon/hoon-school/gall.md), the Arvo vane that manages user applications.
+When writing applications, you will often make use of [Gall](@/docs/hoon/hoon-school/gall.md), the Arvo vane that manages user applications.
 
 If you want to see examples of Urbit applications with common functionality requirements, you can see our [examples](https://github.com/urbit/examples) repository. If you want to get started building applications with a Landscape interface, check out our [create-landscape-app](https://github.com/urbit/create-landscape-app) repository.
 
