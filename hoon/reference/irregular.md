@@ -79,7 +79,7 @@ I: `p:q`
 
 ## | bar (core)
 
-[docs](@/docs/reference/hoon-expressions/rune/bar.md) \\$
+[docs](@/docs/hoon/reference/rune/bar.md) \\$
 Core hoons are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.

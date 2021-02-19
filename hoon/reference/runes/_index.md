@@ -35,7 +35,7 @@ Runes used to modify the subject.
 
 Runes used for branching on conditionals.
 
-### [`| bar` (Cores)](@/docs/reference/hoon-expressions/rune/bar.md)
+### [`| bar` (Cores)](@/docs/hoon/reference/rune/bar.md)
 
 Runes used to produce cores.
 
