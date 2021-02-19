@@ -15,6 +15,6 @@ number, etc, and an optional constant. A Hoon atom type is _warm_ or _cold_ base
 
 ### Further Reading
 
-- [The Hoon Tutorial](@/docs/tutorials/hoon/hoon-school/_index.md): Our guide to learning the Hoon programming language.
+- [The Hoon Tutorial](@/docs/hoon/hoon-school/_index.md): Our guide to learning the Hoon programming language.
   - [Lesson 1.2: Nouns](@/docs//hoon/hoon-school/nouns.md): A Hoon Tutoral lesson that explains how atoms work.
 - [The Nock explanation](@/docs/nock/explanation.md): Includes an explanation of atoms.
