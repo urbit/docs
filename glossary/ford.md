@@ -14,4 +14,4 @@ Ford is located at `/home/sys/vane/ford.hoon` within [Arvo](../arvo).
 
 ### Further Reading
 
-- [The Ford tutorial](@/docs/tutorials/arvo/ford.md): A technical guide to the Ford vane.
+- [The Ford tutorial](@/docs/arvo/ford/ford.md): A technical guide to the Ford vane.
