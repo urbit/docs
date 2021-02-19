@@ -44,7 +44,7 @@ To coerce using a gate, it's good practice to use the `;;` rune, which can parse
 `|$` implements [parametric
 polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism) in Hoon,
 and as such we call gates produced with `|$` a **wet gate**. We discuss what this
-means in further detail in the upcoming lesson on [polymorphism](@/docs/tutorials/hoon/hoon-school/type-polymorphism.md).
+means in further detail in the upcoming lesson on [polymorphism](@/docs/hoon/hoon-school/type-polymorphism.md).
 
 Let's look at some examples from `hoon.hoon`. 
 ```hoon
