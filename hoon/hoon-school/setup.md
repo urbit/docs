@@ -69,7 +69,7 @@ Generators are the most straightforward way to write Hoon programs. They are a c
 
 The simplest type of generator is the **naked generator**. All naked generators are `gates`: functions that take an argument and produce an output. Before creating a generator you need to [mount](@/using/install.md#the-dojo) your `desk` to Unix. To create a generator, all you need to do is write a `gate` and put it into a file in the `/home/gen/` directory of your ship as a `.hoon` file. (Assuming you've already mounted with `|mount /=home=`.) After this, you need to run `|commit %home` in Dojo and the new file will be recognized by your ship. To run a generator named `mygen.hoon`, you would type `+mygen <argument>` in your ship's Dojo.
 
-If this doesn't make sense yet, that's okay. In the [next lesson](@/docs/tutorials/hoon/hoon-school/list-of-numbers.md), we will walk you through an example `gate` that is run as a generator.
+If this doesn't make sense yet, that's okay. In the [next lesson](@/docs/hoon/hoon-school/list-of-numbers.md), we will walk you through an example `gate` that is run as a generator.
 
 ## Text editors
 
