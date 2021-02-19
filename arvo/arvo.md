@@ -127,7 +127,7 @@ The formal state of an Arvo instance is an event history, as a linked list of [n
 
 The Arvo event log is a list of every action ever performed on your ship that
 lead up to the current state. In principle, this event log is maintained by the
-[Nock runtime environment](@/docs/tutorials/vere/_index.md), but in practice
+[Nock runtime environment](@/docs/vere/_index.md), but in practice
 event logs become too long over time to keep, as the event log has a size of
 O(n) where n is the number of events. Thus it is our intention to
 implement a feature whereby periodic snapshots of the state of Arvo are taken
@@ -207,7 +207,7 @@ Database theory studies in precise terms the possible properties of anything tha
    Arvo
    transactions are sequential and performed by the daemon, persistence and effect application are performed
    in parallel by the worker; see [worker and
-   daemon](@/docs/tutorials/vere/_index.md) for more detail.
+   daemon](@/docs/vere/_index.md) for more detail.
 
  - Durability: Completed transactions will survive permanently. In other words,
    since the event log is stored on disk, if power is lost you are guaranteed
