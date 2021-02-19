@@ -124,7 +124,7 @@ Let’s start with the base case: a single limb. A limb expression is a trivial 
 - `add`
 - `mul`
 
-As a special limb we also have `$`. This is the name of the [arm](/docs/glossary/arm/) in special one-armed [cores](/docs/glossary/core/) called “gates”. (We’ll cover the role of `$` in [Lesson 1.4](@/docs/tutorials/hoon/hoon-school/gates.md).)
+As a special limb we also have `$`. This is the name of the [arm](/docs/glossary/arm/) in special one-armed [cores](/docs/glossary/core/) called “gates”. (We’ll cover the role of `$` in [Lesson 1.4](@/docs/hoon/hoon-school/gates.md).)
 
 Wing expressions with multiple limbs are complex expressions. Examples:
 

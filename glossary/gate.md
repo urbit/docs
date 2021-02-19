@@ -11,4 +11,4 @@ A **gate** is [core](../core) with one [arm](../arm) named $. They are often cal
 ### Further Reading
 
 - [The Hoon Tutorial](@/docs/tutorials/hoon/hoon-school/_index.md): Our guide to learning the Hoon programming language.
-- [Lesson 1.4 Gates](@/docs/tutorials/hoon/hoon-school/gates.md): A Hoon tutorial lesson about gates.
+- [Lesson 1.4 Gates](@/docs/hoon/hoon-school/gates.md): A Hoon tutorial lesson about gates.
