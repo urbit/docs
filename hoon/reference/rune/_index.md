@@ -23,7 +23,7 @@ Limb and wing expressions also lack runes.
 
 Runes used for carrying out Nock operations in Hoon.
 
-### [`! zap` (wild)](@/docs/reference/hoon-expressions/rune/zap.md)
+### [`! zap` (wild)](@/docs/hoon/reference/rune/zap.md)
 
 Wildcard category. Expressions that don't fit anywhere else go here.
 
