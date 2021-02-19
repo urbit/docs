@@ -98,7 +98,7 @@ We first produce a core with one arm named `$`. That `$` arm will produce a new
 core with `current-state` changed to match the `s` provided when it was called.
 How does this work?
 
-Remember that `.` is [wing syntax](@/docs/reference/hoon-expressions/limb/wing.md) that
+Remember that `.` is [wing syntax](@/docs/hoon/reference/limbs/wing.md) that
 applies the wing expression on the left of it to the noun to the right of it.
 `$` is the arm of the core. Then by using the wing expression `+>`, which means
 "return the tail of the tail", we traverse the subject to the core to latch onto

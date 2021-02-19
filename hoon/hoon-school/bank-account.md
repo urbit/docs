@@ -75,6 +75,6 @@ Each of these arms produces a gate which takes an `@ud` argument. Each of these 
 +>.$(balance (add balance amount))
 ```
 
-`+>` is [wing syntax](@/docs/reference/hoon-expressions/limb/wing.md). This particular wing construction looks for the tail of the tail (the third element) in `$`, the subject of the gate we are in. The `withdraw` and `deposit` arms create gates with the entire `new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `balance` to be the result of adding `balance` and `amount` and produce the door as the result. `withdraw` functions the same way only doing subtraction instead of addition.
+`+>` is [wing syntax](@/docs/hoon/reference/limbs/wing.md). This particular wing construction looks for the tail of the tail (the third element) in `$`, the subject of the gate we are in. The `withdraw` and `deposit` arms create gates with the entire `new-account` door as the context in their cores' `[battery sample context]`, in the "tail of the tail" slot. We change `balance` to be the result of adding `balance` and `amount` and produce the door as the result. `withdraw` functions the same way only doing subtraction instead of addition.
 
 It's important to notice that the sample, `balance`, is stored as part of the door rather than existing outside of it.

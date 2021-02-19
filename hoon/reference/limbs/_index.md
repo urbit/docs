@@ -13,6 +13,6 @@ the **subject**, a noun like any other.
 
 A limb is used to resolve to a piece of data in the subject.  A wing is thus a resolution path into the subject.
 
-## [Wings](@/docs/reference/hoon-expressions/limb/wing.md)
+## [Wings](@/docs/hoon/reference/limbs/wing.md)
 
 In Hoon we use 'wings' to extract information from the subject.  A wing is a list of limbs (including a trivial list of one limb).
