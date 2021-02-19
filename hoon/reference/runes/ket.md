@@ -203,7 +203,7 @@ Regular: **1-fixed**.
 
 ##### Discussion
 
-A zinc core has a read-only sample and an opaque context.  See [Advanced types](@/docs/reference/hoon-expressions/advanced.md).
+A zinc core has a read-only sample and an opaque context.  See [Advanced types](@/docs/hoon/reference/advanced.md).
 
 ##### Examples
 

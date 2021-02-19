@@ -19,7 +19,7 @@ Limbs and wings are ways to extract data from the subject.
 
 A simplified explanation of of the Hoon type system.
 
-## [Advanced Types](@/docs/reference/hoon-expressions/advanced.md)
+## [Advanced Types](@/docs/hoon/reference/advanced.md)
 
 A more comprehensive explanation of the Hoon type system, covering aliasing and polymorphism.
 
