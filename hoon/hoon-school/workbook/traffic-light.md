@@ -37,7 +37,7 @@ Let's look at the code piece-by-piece.
 ```
 
 Here's the boilerplate code to designate our generator as being a
-[`%say` generator](@/docs/tutorials/hoon/hoon-school/generators.md). We're using this variant because
+[`%say` generator](@/docs/hoon/hoon-school/generators.md). We're using this variant because
 it allows us to run the generator without any arguments. It's otherwise not
 relevant to the functionality of our program.
 
