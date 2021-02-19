@@ -192,7 +192,7 @@ As is the case with dry arms, there is a type-check associated with each wet arm
 ### Parametric Polymorphism and `|$`
 
 We first encountered `|$` in the lesson on
-[molds](@/docs/tutorials/hoon/hoon-school/molds.md) as a wet gate that is a mold builder rune which takes in a
+[molds](@/docs/hoon/hoon-school/molds.md) as a wet gate that is a mold builder rune which takes in a
 list of molds and produces a new mold. Here we take another look at this rune as
 an implementation of **parametric polymorphism** in Hoon.
 
