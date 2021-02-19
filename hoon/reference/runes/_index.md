@@ -9,7 +9,7 @@ Runes are a way to form expressions in Hoon.
 
 ## Non-Rune Expressions
 
-### [Constants](@/docs/reference/hoon-expressions/rune/constants.md)
+### [Constants](@/docs/hoon/reference/rune/constants.md)
 
 Hoon uses runes to form expressions, but not all expressions have runes in them.  First, we have constant expressions (and also expressions that would be constant, but that they allow for interpolations).
 

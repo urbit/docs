@@ -209,7 +209,7 @@ I: `p=q`
 - `|` loobean false.
 - `%a` constant `a`, where `a` can be an ((ir)regularly defined) atom or a symbol.
 
-See [%sand](@/docs/reference/hoon-expressions/rune/constants.md#warm) for other irregular definitions of atoms.
+See [%sand](@/docs/hoon/reference/rune/constants.md#warm) for other irregular definitions of atoms.
 
 ### List addressing
 
