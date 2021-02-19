@@ -369,7 +369,7 @@ In the above example we created a door `c` with sample `b=@` and found that the 
   ++  greater  |=(a=@ (gth a b))
   --
 ```
-Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in [Lesson 2.2](@docs/tutorials/hoon/hoon-school/type-checking-and-type-inference).
+Here the type of `b` is inferred to be `@` based on the example value `7`, similar to how we've seen casting done by example. You will learn more about how types are inferred in [Lesson 2.2](@docs/hoon/hoon-school/type-checking-and-type-inference.md).
 
 ### Doors in the Hoon Standard Library
 
