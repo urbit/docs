@@ -21,7 +21,7 @@ in C, `u3`.  This section is a relatively complete description.
 Under `u3` is the simple `c3` layer, which is just how we write C
 in Urbit.
 
-## [u3: Land of nouns](@/docs/tutorials/vere/nouns.md)
+## [u3: Land of nouns](@/docs//vere/nouns.md)
 
 The division between `c3` and `u3` is that you could theoretically
 imagine using `c3` as just a generic C environment.  Anything to do

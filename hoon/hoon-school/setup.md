@@ -61,7 +61,7 @@ You'll see:
 17
 ```
 
-You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a "noun". We'll talk more about [nouns](/docs/glossary/noun/) in [Lesson 1.2](@/docs/tutorials/hoon/hoon-school/nouns.md), but first let's write a very basic program.
+You asked Dojo to evaluate `17` and it echoed the number back at you. This value is a "noun". We'll talk more about [nouns](/docs/glossary/noun/) in [Lesson 1.2](@/docs/hoon/hoon-school/nouns.md), but first let's write a very basic program.
 
 ## Generators
 
