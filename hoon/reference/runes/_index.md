@@ -39,7 +39,7 @@ Runes used for branching on conditionals.
 
 Runes used to produce cores.
 
-### [`+ lus` (Arms)](@/docs/reference/hoon-expressions/rune/lus.md)
+### [`+ lus` (Arms)](@/docs/hoon/reference/rune/lus.md)
 
 Runes used to define arms in a core.
 
