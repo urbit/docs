@@ -28,7 +28,7 @@ titled [The kernel](#the-kernel) will require Chapter One of the [Hoon
 tutorial](@/docs/hoon/hoon-school/_index.md) for full understanding, and some
 material from Chapter Two will be helpful as well. At the bare minimum, we
 presume that the reader has read through the [Technical
-Overview](@/docs/tutorials/concepts/technical-overview.md).
+Overview](@/docs/systemoverview/technical-overview.md).
 
 We also suggest to the reader to peruse the [glossary](@/docs/glossary/_index.md) before diving into this article. It will provide the initial scaffolding that you will be able to gradually fill in as you read this article and go deeper into the alternate universe of computing that is Urbit.
 
