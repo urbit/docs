@@ -15,7 +15,7 @@ Runes are a way to form expressions in Hoon. Their exact semantics and
 
 Limbs and wings are ways to extract data from the subject.
 
-## [Basic Types](@/docs/reference/hoon-expressions/basic.md)
+## [Basic Types](@/docs/hoon/reference/basic.md)
 
 A simplified explanation of of the Hoon type system.
 
