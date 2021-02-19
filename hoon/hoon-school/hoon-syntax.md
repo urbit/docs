@@ -279,7 +279,7 @@ The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut fo
 
 The `( )` gate-calling syntax can be used for gates with any number of arguments.
 
-You can find other irregular forms in the irregular expression [reference document](@/docs/reference/hoon-expressions/irregular.md).
+You can find other irregular forms in the irregular expression [reference document](@/docs/hoon/reference/irregular.md).
 
 ### Expressions That Are Only Irregular
 
@@ -314,7 +314,7 @@ b=[16 18]
 [16 18]
 ```
 
-To see other irregular expressions, check the irregular expression [reference document](@/docs/reference/hoon-expressions/irregular.md).
+To see other irregular expressions, check the irregular expression [reference document](@/docs/hoon/reference/irregular.md).
 
 
 ## The Standard Library

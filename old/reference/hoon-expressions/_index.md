@@ -23,6 +23,6 @@ A simplified explanation of of the Hoon type system.
 
 A more comprehensive explanation of the Hoon type system, covering aliasing and polymorphism.
 
-## [Irregular Forms](@/docs/reference/hoon-expressions/irregular.md)
+## [Irregular Forms](@/docs/hoon/reference/irregular.md)
 
 Alternative syntaxes for Hoon runes.
