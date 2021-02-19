@@ -7,7 +7,7 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/gall/"]
 
 Gall is the Arvo vane responsible for handling user space applications. When writing a Gall application there are several things you will need to understand.
 
-For another explanation of Gall, take a look at [/tutorial/arvo/gall](/docs/tutorials/arvo/gall)
+For additional information on Gall, see the [Gall docs](@/docs/arvo/gall/_index.md).
 
 ## bowl and moves
 
