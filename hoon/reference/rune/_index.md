@@ -67,6 +67,6 @@ Miscellaneous useful macros.
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
-### [`--`, `==` (Terminators)](@/docs/reference/hoon-expressions/rune/terminators.md)
+### [`--`, `==` (Terminators)](@/docs/hoon/reference/rune/terminators.md)
 
 Runes used to terminate expressions.
