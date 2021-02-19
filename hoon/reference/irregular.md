@@ -175,7 +175,7 @@ Lets us adjust types without violating type constraints.
 
 ### ^- kethep
 
-[docs](@/docs/reference/hoon-expressions/rune/ket.md#kethep) \\\`
+[docs](@/docs/hoon/reference/rune/ket.md#kethep) \\\`
 `[%kthp p=model q=value]`: typecast by mold.
 
 R: `^-(p q)`
@@ -183,7 +183,7 @@ I: `` `p`q ``
 
 ### ^= kettis
 
-[docs](@/docs/reference/hoon-expressions/rune/ket.md#kettis) \\=
+[docs](@/docs/hoon/reference/rune/ket.md#kettis) \\=
 `[%ktts p=toga q=value]`: name a value.
 
 R: `^=(p q)`

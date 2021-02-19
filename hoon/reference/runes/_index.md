@@ -51,7 +51,7 @@ Runes used to produce cells, which are pairs of nouns.
 
 Runes used for making function calls in Hoon.
 
-### [`^ ket` (Casts)](@/docs/reference/hoon-expressions/rune/ket.md)
+### [`^ ket` (Casts)](@/docs/hoon/reference/rune/ket.md)
 
 Runes that let us adjust types without violating type constraints.
 
