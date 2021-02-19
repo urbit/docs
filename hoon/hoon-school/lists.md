@@ -96,9 +96,9 @@ You can also use the words `cord` and `tape` for casting:
 
 ## List Functions in the Hoon Standard Library
 
-Lists are a commonly used data structure. Accordingly, there are several functions in the [Hoon standard library](/docs/reference/library/) intended to make lists easier to use.
+Lists are a commonly used data structure. Accordingly, there are several functions in the [Hoon standard library](/docs/hoon/reference/stdlib/) intended to make lists easier to use.
 
-For a complete list of these functions, check out the standard library reference for lists [here](/docs/reference/library/2b/). Here we'll look at a few of these functions.
+For a complete list of these functions, check out the standard library reference for lists [here](/docs/hoon/reference/stdlib/2b/). Here we'll look at a few of these functions.
 
 ### `flop`
 

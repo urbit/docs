@@ -582,7 +582,7 @@ This core contains the arms in parts [1a-1c of the standard library documentatio
 Here we see that core containing `hoon-version` is in the subject of the
 section one core.
 
-Next, [section two](@/docs/reference/library/2a.md) starts:
+Next, [section two](@/docs/hoon/reference/stdlib/2a.md) starts:
 ```
 =>
 ::                                                      ::

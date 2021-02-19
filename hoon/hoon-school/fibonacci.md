@@ -27,7 +27,7 @@ On the first line, we use `|=` to produce a [gate](/docs/glossary/gate/) which t
 %-  flop
 ```
 
-In the line above, we use `flop` on the output of the rest of the program. `flop` is a [standard library](https://urbit.org/docs/reference/library/) function to reverse a list.
+In the line above, we use `flop` on the output of the rest of the program. `flop` is a [standard library](https://urbit.org/docs/hoon/reference/stdlib/) function to reverse a list.
 
 Why are we using this instead of just producing the list in the order we want it in the first place? Because with lists, adding an element to the end is a computationally expensive operation that gets more expensive the longer the list is, due to the fact that you need to traverse to the end of the tree. Adding an element to the front, however, is cheap. [In Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation), adding to the end of a list is O(n) and the front is O(1).
 

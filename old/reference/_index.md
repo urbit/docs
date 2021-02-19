@@ -15,6 +15,6 @@ The cheat sheet is a compact document for looking up Hoon runes.
 This section contains more comprehensive reference materials for Hoon runes and other expressions, describing their exact
 semantics and syntax.
 
-## [Standard Library](@/docs/reference/library/_index.md)
+## [Standard Library](@/docs/hoon/reference/stdlib/_index.md)
 
 This section documents the gates and mold-builders of the Hoon standard library.

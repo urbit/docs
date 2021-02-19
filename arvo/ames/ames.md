@@ -130,7 +130,7 @@ The 32-bit header is given by the following data, presented in order:
 
  - 3 bits: Ames `protocol-version`,
  - 20 bits: a checksum as a truncated insecure hash of the body, done with
-   [`+mug`](@/docs/reference/library/2e.md#mug),
+   [`+mug`](@/docs/hoon/reference/stdlib/2e.md#mug),
  - 2 bits: the bit width of the sender address encoded as a 2-bit enum,
  - 2 bits: the bit width of the receiver address encoded as a 2-bit enum,
  - 1 bit: whether the packet is encrypted or not,
@@ -144,7 +144,7 @@ The body is of variable length and consists of three parts in this order:
 
  - The `@p` of the sending ship,
  - The `@p` of the receiving ship,
- - The payload, which is the [`+jam`](@/docs/reference/library/2p.md#jam) (i.e. serialization) of the noun `[origin content]`.
+ - The payload, which is the [`+jam`](@/docs/hoon/reference/stdlib/2p.md#jam) (i.e. serialization) of the noun `[origin content]`.
 
  `origin` is the IP and port of the original sender if the packet was proxied
  through a relay and null otherwise. `content` is a noun that is either an encrypted ack or an
@@ -367,7 +367,7 @@ using the Diffie-Hellman symmetric key that was previously computed.
 
 `~zod` receives the packet and reads the body. It sees that it is not the
 intended recipient of the packet, and so gets ready to forward it to
-`~worwel-sipnum`. First, it [`+cue`s](@/docs/reference/library/2p.md#cue)
+`~worwel-sipnum`. First, it [`+cue`s](@/docs/hoon/reference/stdlib/2p.md#cue)
 (deserializes) the payload and changes the `origin` to the IP and port of
 `~bacbel-tagfeb`. Then it `+jam`s `[origin content]` to form a new payload, and
 `+mug`s that payload to get a new checksum. It replaces the old payload and

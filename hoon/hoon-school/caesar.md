@@ -216,7 +216,7 @@ the second part `q` is welded to the front, and the first part `p` is welded to 
       $(chart (~(put by chart) i.key-position i.value-result), key-position t.key-position, value-result t.value-result)
 ```
 
-The `map-maker` arm, as the name implies, takes two tapes and creates a [`map`](/docs/reference/library/2o/#map) out of them.
+The `map-maker` arm, as the name implies, takes two tapes and creates a [`map`](/docs/hoon/reference/stdlib/2o/#map) out of them.
 A `map` is a type equivalent to a dictionary in other languages: it's a data structure that 
 associates a key with a value. If, for example, we wanted to have an association 
 between `a` and 1 and `b` and 2, we could use a `map`.

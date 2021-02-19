@@ -356,7 +356,7 @@ Readers with some mathematical background may notice that `~( )` expressions all
 Thus, you may think of the `c` door as a function for making functions.  Use the `~(arm c arg)` syntax -- `arm` defines which kind of gate is produced (i.e., which arm of the door is used to create the gate), and `arg` defines the value of `b` in that gate, which in turn affects the product value of the gate produced.
 
 The standard library provides [currying
-functionality](@/docs/reference/library/2n.md#curry) outside of the context of
+functionality](@/docs/hoon/reference/stdlib/2n.md#curry) outside of the context of
 doors - see `+curr` and `+cury`.
 
 #### Creating Doors with a Modified Sample
