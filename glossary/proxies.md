@@ -26,4 +26,4 @@ Creates new child points given Ethereum address. For [stars](../stars) and [gala
 ### Further Reading
 
 - [Azimuth glossary page](../azimuth): The glossary entry for Azimuth.
-- [The Azimuth concepts page](@/docs/tutorials/concepts/azimuth.md): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.
+- [The Azimuth concepts page](@/docs/azimuth/advanced-azimuth-tools.md): A more in-depth explanation of Azimuth, including information the storage of Urbit identities.

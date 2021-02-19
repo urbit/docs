@@ -29,4 +29,4 @@ This function allows you to view the public information of any Urbit identity, s
 
 - [bridge.urbit.org](https://bridge.urbit.org/): The Bridge website.
 - [Using Bridge](@/using/operations/using-bridge.md): A guide to starting out with Bridge.
-- [The Azimuth concepts page](@/docs/tutorials/concepts/azimuth.md): A more in-depth explanation of our identity layer.
+- [The Azimuth concepts page](@/docs/azimuth/advanced-azimuth-tools.md): A more in-depth explanation of our identity layer.
