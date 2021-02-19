@@ -141,7 +141,7 @@ Wing expressions with multiple limbs are complex expressions. Examples:
 
 Hoon is a statically typed language. You’ll learn more about the type system later in the chapter. For now, just know that Hoon’s type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag). Each of these symbols can be used as a stand-alone expression of Hoon. In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
 
-They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`. (Technically these expressions don’t _always_ indicate compound types. In certain contexts they’re interpreted in a different way. We’ll address this variation of meaning in [Lesson 2.3](@/docs/tutorials/hoon/hoon-school/structures-and-complex-types.md).)
+They may also be put in brackets to indicate compound types, e.g., `[@ ^]`, `[@ud @sb]`, `[[? *] ^]`. (Technically these expressions don’t _always_ indicate compound types. In certain contexts they’re interpreted in a different way. We’ll address this variation of meaning in [Lesson 2.3](@/docs/hoon/hoon-school/structures-and-complex-types.md).)
 
 ### Rune Expressions
 
