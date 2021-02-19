@@ -218,7 +218,7 @@ See [%sand](@/docs/reference/hoon-expressions/rune/constants.md#warm) for other 
 
 ### Limbs
 
-[docs](@/docs/reference/hoon-expressions/limb/limb.md) \\+\\.\\^
+[docs](@/docs/hoon/reference/limbs/limb.md) \\+\\.\\^
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
 - `+15` is slot 15

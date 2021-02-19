@@ -111,7 +111,7 @@ You can also put complex expressions inside square brackets to make a cell. Thes
 
 ### Wings
 
-A wing expression is a series of limb expressions separated by `.`. A deeper explanation can be found on the [wing](@/docs/reference/hoon-expressions/limb/wing.md) and [limb](@/docs/reference/hoon-expressions/limb/limb.md) reference pages.
+A wing expression is a series of limb expressions separated by `.`. A deeper explanation can be found on the [wing](@/docs/reference/hoon-expressions/limb/wing.md) and [limb](@/docs/hoon/reference/limbs/limb.md) reference pages.
 
 Let’s start with the base case: a single limb. A limb expression is a trivial wing expression -- there is only one limb in the series. Some one-limb wings:
 
