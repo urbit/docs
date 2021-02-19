@@ -355,7 +355,7 @@ and we note that the parsing ceases when it fails.
 
 Building complex parsers from simpler parsers is accomplished in Hoon with the
 use of two tools: the monadic applicator rune
-[`;~`](@/docs/reference/hoon-expressions/rune/mic.md#micsig) and [parsing
+[`;~`](@/docs/hoon/reference/rune/mic.md#micsig) and [parsing
 combinators](@/docs/reference/library/4e.md). First we introduce a few
 combinators, then we examine more closely how `;~` is used to chain them together.
 

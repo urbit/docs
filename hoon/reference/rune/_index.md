@@ -59,7 +59,7 @@ Runes that let us adjust types without violating type constraints.
 
 Runes used for defining custom types.
 
-### [`; mic` (Make)](@/docs/reference/hoon-expressions/rune/mic.md)
+### [`; mic` (Make)](@/docs/hoon/reference/rune/mic.md)
 
 Miscellaneous useful macros.
 

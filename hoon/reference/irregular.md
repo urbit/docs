@@ -37,7 +37,7 @@ Miscellaneous useful macros.
 
 ### ;: miccol
 
-[docs](@/docs/reference/hoon-expressions/rune/mic.md#miccol) \\:
+[docs](@/docs/hoon/reference/rune/mic.md#miccol) \\:
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 R: `;:(p q)`
