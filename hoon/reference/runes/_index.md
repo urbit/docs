@@ -19,7 +19,7 @@ Limb and wing expressions also lack runes.
 
 ## Runes Proper
 
-### [`. dot` (Nock)](@/docs/reference/hoon-expressions/rune/dot.md)
+### [`. dot` (Nock)](@/docs/hoon/reference/rune/dot.md)
 
 Runes used for carrying out Nock operations in Hoon.
 

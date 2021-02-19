@@ -17,7 +17,7 @@ Anything Nock can do, Hoon can do also.
 
 ### .+ dotlus
 
-[docs](@/docs/reference/hoon-expressions/rune/dot.md#dotlus) \\+
+[docs](@/docs/hoon/reference/rune/dot.md#dotlus) \\+
 `[%dtls p=atom]`: increment an atom with Nock 4.
 
 R: `.+(p)`
@@ -25,7 +25,7 @@ I: `+(p)`
 
 ### .= dottis
 
-[docs](@/docs/reference/hoon-expressions/rune/dot.md#dottis) \\=
+[docs](@/docs/hoon/reference/rune/dot.md#dottis) \\=
 `[%dtts p=hoon q=hoon]`: test for equality with Nock 5.
 
 R: `.=(p q)`
