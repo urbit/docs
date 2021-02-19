@@ -127,7 +127,7 @@ A mold is a gate (function) that helps us build simple and rigorous data structu
 
 ### $? bucwut
 
-[docs](@/docs/reference/hoon-expressions/rune/buc.md#bucwut) \\?
+[docs](@/docs/hoon/reference/rune/buc.md#bucwut) \\?
 `[%bcwt p=(list model)]`: mold which normalizes a general union.
 
 R: `$?(p)`
@@ -135,7 +135,7 @@ I: `?(p)`
 
 ### $_ buccab
 
-[docs](@/docs/reference/hoon-expressions/rune/buc.md#buccab) \\_
+[docs](@/docs/hoon/reference/rune/buc.md#buccab) \\_
 `[%bccb p=value]`: mold which normalizes to an example.
 
 R: `$_(p)`

@@ -55,7 +55,7 @@ Runes used for making function calls in Hoon.
 
 Runes that let us adjust types without violating type constraints.
 
-### [`$ buc` (Structures)](@/docs/reference/hoon-expressions/rune/buc.md)
+### [`$ buc` (Structures)](@/docs/hoon/reference/rune/buc.md)
 
 Runes used for defining custom types.
 
