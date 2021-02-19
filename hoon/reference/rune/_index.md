@@ -27,7 +27,7 @@ Runes used for carrying out Nock operations in Hoon.
 
 Wildcard category. Expressions that don't fit anywhere else go here.
 
-### [`= tis` (Subject Modification)](@/docs/reference/hoon-expressions/rune/tis.md)
+### [`= tis` (Subject Modification)](@/docs/hoon/reference/rune/tis.md)
 
 Runes used to modify the subject.
 

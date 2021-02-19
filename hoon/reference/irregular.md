@@ -71,7 +71,7 @@ Flow hoons change the subject. All non-flow hoons (except cores) pass the subjec
 
 ### =< tisgal
 
-[docs](@/docs/reference/hoon-expressions/rune/tis.md#tisgal) \\:
+[docs](@/docs/hoon/reference/rune/tis.md#tisgal) \\:
 `[%tsgl p=hoon q=hoon]`: compose two hoons, inverted.
 
 R: `=<(p q)`
