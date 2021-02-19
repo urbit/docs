@@ -14,4 +14,4 @@ Workbook is a code walkthrough followed by exercises.
 
 - The [Traffic-light](@/docs/tutorials/hoon/workbook/traffic-light.md) example demonstrates how to creates a state machine in Hoon.
 
-- The [Bomb-defusing](@/docs/hoon/workbook/bomb.md) exercise shows how to program, well, a bomb-defusing scenario.
+- The [Bomb-defusing](@/docs/hoon/hoon-school/workbook/bomb.md) exercise shows how to program, well, a bomb-defusing scenario.
