@@ -97,7 +97,7 @@ The invocation family of runes.
 
 ### %= centis
 
-[docs](@/docs/reference/hoon-expressions/rune/cen.md#centis)  \\(\\)
+[docs](@/docs/hoon/reference/rune/cen.md#centis)  \\(\\)
 `[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
 
 R: `%=(p a 1)`
@@ -105,7 +105,7 @@ I: `p(a 1)`
 
 ### %~ censig
 
-[docs](@/docs/reference/hoon-expressions/rune/cen.md#censig) \\~
+[docs](@/docs/hoon/reference/rune/cen.md#censig) \\~
 `[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
 R: `%~(p q r)`
@@ -113,7 +113,7 @@ I: `~(p q r)`
 
 ### %- cenhep
 
-[docs](@/docs/reference/hoon-expressions/rune/cen.md#cenhep) \\(\\)
+[docs](@/docs/hoon/reference/rune/cen.md#cenhep) \\(\\)
 `[%cnhp p=hoon q=hoon]`: call a gate (function).
 
 R: `%-(p q)`

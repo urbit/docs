@@ -23,7 +23,7 @@ a correct Hoon file. These values are always correct.
 Usually, the line and column tell you everything you need to
 know. But the worst-case scenario for a syntax error is that,
 somewhere above, you've confused Hoon's tall form by using the
-wrong fanout for a rune. For example, `%+` ([**cenlus**](@/docs/reference/hoon-expressions/rune/cen.md#cenlus),
+wrong fanout for a rune. For example, `%+` ([**cenlus**](@/docs/hoon/reference/rune/cen.md#cenlus),
 a function call whose sample is a cell) has three subhoons:
 
 ```hoon

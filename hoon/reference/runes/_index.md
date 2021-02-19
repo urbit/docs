@@ -47,7 +47,7 @@ Runes used to define arms in a core.
 
 Runes used to produce cells, which are pairs of nouns.
 
-### [`% cen` (Calls)](@/docs/reference/hoon-expressions/rune/cen.md)
+### [`% cen` (Calls)](@/docs/hoon/reference/rune/cen.md)
 
 Runes used for making function calls in Hoon.
 

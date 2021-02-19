@@ -548,7 +548,7 @@ you know what you're doing.
 Just as with a [gate](#bartis), we can recurse back into a wet gate
 with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/hoon/reference/rune/cen.md#centis)).
 
 `|*` can be used to make wet gates that produce structures, but this usage is
 discouraged in favor of `|$`.
@@ -610,7 +610,7 @@ Dry gates are used for the vast majority of ordinary functions in Hoon.
 
 A gate is a core with one arm named `$`, so we can recurse back into it with `$()`.
 
-> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/reference/hoon-expressions/rune/cen.md#centis)).
+> `$(...)` expands to `%=($ ...)` (["centis"](@/docs/hoon/reference/rune/cen.md#centis)).
 
 ##### Examples
 
