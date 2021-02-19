@@ -63,7 +63,7 @@ Runes used for defining custom types.
 
 Miscellaneous useful macros.
 
-### [`~ sig` (Hints)](@/docs/reference/hoon-expressions/rune/sig.md)
+### [`~ sig` (Hints)](@/docs/hoon/reference/rune/sig.md)
 
 Runes that use Nock `11` to pass non-semantic info to the interpreter.
 
