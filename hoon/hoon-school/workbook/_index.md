@@ -10,7 +10,7 @@ Workbook is a code walkthrough followed by exercises.
 
 - The [Digits](@/docs/hoon/hoon-school/workbook/digits.md) example demonstrates how to decompose a number into a list of its digits.
 
-- The [Magic 8-Ball](@/docs/tutorials/hoon/workbook/eightball.md) example emulates everyone's favorite decision-making machine.
+- The [Magic 8-Ball](@/docs/hoon/hoon-school/workbook/eightball.md) example emulates everyone's favorite decision-making machine.
 
 - The [Traffic-light](@/docs/tutorials/hoon/workbook/traffic-light.md) example demonstrates how to creates a state machine in Hoon.
 
