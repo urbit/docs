@@ -43,7 +43,7 @@ Runes used to produce cores.
 
 Runes used to define arms in a core.
 
-### [`: col` (Cells)](@/docs/reference/hoon-expressions/rune/col.md)
+### [`: col` (Cells)](@/docs/hoon/reference/rune/col.md)
 
 Runes used to produce cells, which are pairs of nouns.
 

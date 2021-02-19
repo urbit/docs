@@ -49,7 +49,7 @@ The cell runes.
 
 ### :- colhep
 
-[docs](@/docs/reference/hoon-expressions/rune/col.md#colhep)  \\[\\]\\^\\+\\\`\\~
+[docs](@/docs/hoon/reference/rune/col.md#colhep)  \\[\\]\\^\\+\\\`\\~
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
 R: `:-(p q)`
