@@ -316,7 +316,7 @@ To get just the inferred type of a expression, we only want the head of the `!>`
 #t/@
 ```
 
-Now let's try using `?=` with `?:` again.  But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[& b]` with `[| -:!>(b)]`.  With `b` as `12`:
+Now let's try using `?=` with `?:` again.  But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[| b]` with `[| -:!>(b)]`.  With `b` as `12`:
 
 ```
 > =/(b=* 12 ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
