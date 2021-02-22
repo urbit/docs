@@ -213,7 +213,7 @@ What Hoon expression does the following figure correspond to, and what does it e
 Right. This represents the Hoon expression `:-  2  :-  3  4`,
 and evaluates to `[2 [3 4]]`. Remember, though, that if you input this into dojo it will print as `[2 3 4]`.
 
-Thinking in terms of these “LEGO block” diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs//hoon/hoon-school/nouns.md), can be a helpful learning and debugging tactic.
+Thinking in terms of these “LEGO block” diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs/hoon/hoon-school/nouns.md), can be a helpful learning and debugging tactic.
 
 ##### Exercise 1.3a
 

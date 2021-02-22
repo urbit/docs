@@ -13,7 +13,7 @@ Runes are a way to form expressions in Hoon.
 
 Hoon uses runes to form expressions, but not all expressions have runes in them.  First, we have constant expressions (and also expressions that would be constant, but that they allow for interpolations).
 
-### [Limbs and Wings](@/docs/hoon/reference/limb/_index.md)
+### [Limbs and Wings](@/docs/hoon/reference/limbs/_index.md)
 
 Limb and wing expressions also lack runes.
 

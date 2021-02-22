@@ -505,7 +505,7 @@ A `u3_noun` will want to be further disassembled into atoms.
 A `u3_atom` represents a simple number, but the implementation may or
 may not be simple.  If the value held in the atom is 31 bits or less,
 it's stored directly in the atom.  If the value is 32 bits the atom
-holds a pointer into the loom where the actual value is stored. ( see [Nouns](@/docs//vere/nouns.md) )
+holds a pointer into the loom where the actual value is stored. ( see [Nouns](@/docs/vere/nouns.md) )
 
 You don't want to get bogged down in the details of this -- you just
 want to get data out of your atoms.
@@ -627,7 +627,7 @@ This implies that, to create a list instead of a cell, you will need to append
      return(u3nt(a, b, u3_nul));    // for two atoms as a list
 ```
 
-Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs//vere/nouns.md).
+Understanding the memory model, allocation, freeing, and ownership ('transfer' vs 'retain' semantics) is important. Some info is available at [Nouns](@/docs/vere/nouns.md).
 
 ## Compile the C code
 

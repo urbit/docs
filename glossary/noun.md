@@ -11,5 +11,5 @@ A **noun** is an [atom](../atom) or a cell, which is an ordered pair of nouns. T
 ### Further Reading
 
 - [The Hoon Tutorial](@/docs/hoon/hoon-school/_index.md): Our guide to learning the Hoon programming language.
-  - [Lesson 1.2: Nouns](@/docs//hoon/hoon-school/nouns.md): A Hoon Tutoral lesson that explains how nouns work.
+  - [Lesson 1.2: Nouns](@/docs/hoon/hoon-school/nouns.md): A Hoon Tutoral lesson that explains how nouns work.
 - [The Nock explanation](@/docs/nock/_index.md): Includes a low-level explanation of nouns.

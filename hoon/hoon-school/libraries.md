@@ -126,9 +126,9 @@ The `?+` rune is the rune to switch against a value with a default.  The default
 
 `draw` takes two arguments: `n`, a number; and `d`, a `deck`. It's going to
 produce a cell of two `decks`. The cell is created using `scag` and `slag`.
-[`scag`](@/docs/hoon/reference/stdlib/2b/#scag) is a
+[`scag`](@/docs/hoon/reference/stdlib/2b.md#scag) is a
 standard-library gate produces the first `n` elements from a list, and
-[`slag`](@/docs/hoon/reference/stdlib/2b/#slag) is a
+[`slag`](@/docs/hoon/reference/stdlib/2b.md#slag) is a
 standard-library gate that produces the remaining elements of a list starting
 after the `n`th element. So we use `scag` to produce the drawn hand of `n` cards
 in the head of the cell as `hand`, and `slag` to produce the remaining deck in
