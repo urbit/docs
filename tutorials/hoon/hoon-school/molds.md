@@ -64,7 +64,7 @@ Here is a very simple mold builder. It takes two molds and produces a mold that 
   ==
 ```
 
-`++each` is very slightly more complicated than `pair`. `$%` is a rune that is a tagged union. The mold produced by this will match either `this` or `that`. An example of this would be `(each @ud @tas)` which will match either an `@ud` or a `@tas`.
+`each` is very slightly more complicated than `pair`. `$%` is a rune that is a tagged union. The mold produced by this will match either `this` or `that`. An example of this would be `(each @ud @tas)` which will match either an `@ud` or a `@tas`.
 
 ```hoon
 ++  list
