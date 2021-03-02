@@ -112,7 +112,7 @@ nest-fail
 
 Whenever an [arm](/docs/glossary/arm/) is evaluated in Hoon it expects to have some version of its parent [core](/docs/glossary/core/) as the subject.  Specifically, a type check is performed to see whether the [arm](/docs/glossary/arm/) subject is of the appropriate **type**.  We see this in action whenever a [gate](/docs/glossary/gate/) or a multi-arm [door](/docs/glossary/door/) is called.
 
-A gate is a one-armed core with a sample.  When it is called, its `$` arm is evaluated with (a version of) the gate as the subject.  The only part of the core that might change is the [payload](/docs/glossary/payload/), including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` arm of expects two atoms for the sample, i.e., the two numbers to be added.  When the type check occurs, the [payload](/docs/glossary/payload/) must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
+A gate is a one-armed core with a sample.  When it is called, its `$` arm is evaluated with (a version of) the gate as the subject.  The only part of the core that might change is the [payload](/docs/glossary/payload/), including the sample.  Of course, we want the sample to be able to change.  The sample is where the argument(s) of the function call are placed.  For example, when we call `add` the `$` arm expects two atoms for the sample, i.e., the two numbers to be added.  When the type check occurs, the [payload](/docs/glossary/payload/) must be of the appropriate type.  If it isn't, the result is a `nest-fail` crash.
 
 ```
 > (add 22 33)
@@ -316,7 +316,7 @@ To get just the inferred type of a expression, we only want the head of the `!>`
 #t/@
 ```
 
-Now let's try using `?=` with `?:` again.  But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[& b]` with `[| -:!>(b)]`.  With `b` as `12`:
+Now let's try using `?=` with `?:` again.  But this time we'll replace `[& b]` with `[& -:!>(b)]` and `[| b]` with `[| -:!>(b)]`.  With `b` as `12`:
 
 ```
 > =/(b=* 12 ?:(?=(@ b) [& -:!>(b)] [| -:!>(b)]))
