@@ -145,7 +145,7 @@ Let's review (1) and (2) briefly.
 
 The basic types of Hoon are: `*` for [nouns](/docs/glossary/noun/), `@` for atoms (possibly with aura information, e.g., `@ud` and `@sx`), `^` for cells, `?` for flags, and `~` for null.  You can also make constant, one-value types by using `%` followed by a series of lowercase letters, the hyphen symbol `-`, and numbers.  E.g., `%red`, `%2`, `%kebab-case123`.  The lone values of these one-value types are sometimes called 'tags'.
 
-Let's illustrate with the irregular `\` \`` cast syntax:
+Let's illustrate with the irregular ``` ` ` ``` cast syntax:
 
 ```
 > `%blah`%blah
