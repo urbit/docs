@@ -51,7 +51,7 @@ In the above code chunk, we're creating a cell. The head of this cell is `%say`.
 
 In this code above, we're going to compose two runes using `=<`, which has inverted arguments. We use this rune to keep the heaviest twig to the bottom of the code.
 
-`=~` is a rune that composes multiple expressions. We take `new-account` and use that as the subject for the call to `deposit`. `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `balance`, which is the account balance contained in the [core](/docs/glossary/core/) we that that we examine below.
+`=~` is a rune that composes multiple expressions. We take `new-account` and use that as the subject for the call to `deposit`. `deposit` and `withdraw` both produce a new version of the door that's used in subsequent calls, which is why we are able to chain them in this fashion. The final reference is to `balance`, which is the account balance contained in the [core](/docs/glossary/core/) that we examine below.
 
 ```hoon
 |%
