@@ -151,11 +151,11 @@ Finally, in the code above, we come to `shuffle-deck`. This gate takes two argum
 
 Next, with `=/  random  ~(. og entropy)`, we feed the `og` core the entropy it needs in preparation for using it. Then, with `=/  remaining  (lent unshuffled)`, we get the length of the unshuffled deck with `lent`.
 
-`?:  =(remaining 1)` checks if have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the `:_` rune here, so that the "heavier" hoon is at the bottom of the expression.
+`?:  =(remaining 1)` checks if we have only one card remaining. If that's true, we produce a cell of `shuffled` and the one card left in `unshuffled`. We use the `:_` rune here, so that the "heavier" hoon is at the bottom of the expression.
 
 If the above conditional evaluates to false, we are going to do a little work.  `=^` is a rune that pins the head of a pair and changes a leg in the subject with the tail. It's useful for interacting with the `og` core arms, as many of them produce a pair of a random numbers and the next state of the core. We're going to put the random number in the subject with the face `index` and change `random` to be the next core.
 
-With completed, we use `%=` to call `$` to recurse back up to `|-` with a few changes.
+With that completed, we use `%=` to call `$` to recurse back up to `|-` with a few changes.
 
 `shuffled` gets the `darc` from `unshuffled` at `index` added to the front of it.
 
