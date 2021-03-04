@@ -31,7 +31,7 @@ A simplified explanation of Hoon's type system.
 
 The full story on Hoon's type system.
 
-### [Runes](@/docs/hoon/reference/runes/_index.md)
+### [Runes](@/docs/hoon/reference/rune/_index.md)
 
 Syntax and semantics for Hoon's rune system.
 
