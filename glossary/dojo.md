@@ -11,5 +11,5 @@ The other default command-line app is [Chat](../chat). To switch between Dojo
 and [Chat](../chat) press Ctrl-X. The Dojo is the first thing you encounter after successfully booting your [ship](../ship).
 
 ### Further Reading
-- [Using Your Ship](@/using/operations/using-your-ship.md): The "Shell" section contains instructions on using the Dojo.
+- [Using Your Ship](@/using/os/using-your-ship.md): The "Shell" section contains instructions on using the Dojo.
 - [Hoon Tutorial Lesson 1.1: Setup](@/docs/hoon/hoon-school/setup.md): A great way to get started with using Hoon in the Dojo.

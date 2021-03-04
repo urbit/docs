@@ -13,4 +13,4 @@ By default, in the [galaxy](../galaxy)/[star](../star)/[planet](../planet)/[moon
 
 ### Further Reading
 
-- [Using Your Ship](@/using/operations/using-your-ship.md#filesystem): A user guide that includes instructions on using Clay commands, including `|sync`.
+- [Using Your Ship](@/using/os/filesystem.md): A user guide that includes instructions on using Clay commands, including `|sync`.
