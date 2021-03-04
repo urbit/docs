@@ -4,38 +4,51 @@ weight = 12
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/rune/buc/"]
 +++
+
 The `$` family of runes is used for defining custom types.  Strictly speaking,
-these runes are used to produce 'structures'.  A structure is a compile-time
-value that at runtime can be converted to either an example value (sometimes
-called a 'bunt' value) for its corresponding type, or to a 'mold'.  An example
-value is used as a placeholder for sample values, among other things.  A
-mold is an idempotent function used as a data validator.
+these runes are used to produce `spec`s, which we call 'structures'.
 
 ## Overview
 
-A correct mold is a **normalizer**: an idempotent function across
-all nouns.  If the sample of a gate has type `%noun`, and its
-body obeys the constraint that for any x, `=((mold x) (mold (mold
-x)))`, it's a normalizer and can be used as a mold.
+Structures are abstract syntax trees for `type`s (see the documentation on
+[basic](@/docs/reference/hoon-expressions/basic.md) and
+[advanced](@/docs/reference/hoon-expressions/advanced.md) types for the
+precise definition of `type`). Structures are compile-time values of `type` which
+at runtime may be used to produce a 'mold'.
 
-(Hoon is not dependently typed and so can't check idempotence
-statically, so we can't actually tell if a mold matches this
-definition perfectly.  This is not actually a problem.)
+A mold is a function from nouns to nouns used to validate values of the type to
+which the structure defines. A mold can do two things at runtime. First, it may
+'clam' a noun, which validates the shape of the noun to be one that fits the
+abstract syntax tree given by the `spec` that produced the mold. Failing this
+validation results in a crash. Secondly, a mold may also be used to produce an
+example value of the type to which is corresponds, called the 'bunt value'. The
+bunt value is used as a placeholder for sample values that may be passed to a
+gate that accepts the corresponding type.
 
-Validation, though very
-important, is a rare use case.  Except for direct raw input,
-it's generally a faux pas to rectify nouns at runtime -- or even
-in userspace.
+A correct mold is a **normalizer**: an idempotent function across all nouns. If
+the sample of a gate has type `%noun`, and its body obeys the constraint that
+for any x, `=((mold x) (mold (mold x)))`, it's a normalizer and can be used as a
+mold. Hoon is not dependently typed and so can't check idempotence statically,
+so we can't actually tell if a mold matches this definition perfectly. This is
+not actually a problem.
 
-In any case, since molds are just functions, we can use
-functional programming to assemble interesting molds.  For
-instance, `(map foo bar)` is a table from mold `foo` to mold
-`bar`.  `map` is not a mold; it's a function that makes a mold.
-Molds and mold builders are generally described together.
+In any case, since molds are just functions, we can use functional programming
+to assemble interesting molds. For instance, `(map foo bar)` is a table from
+mold `foo` to mold `bar`. `map` is not a mold; it's a function that makes a
+mold. Molds and mold builders are generally described together.
+
+`spec`s contain more information and draw finer distinctions than `type`s,
+which is to say that a given type may have more than one valid `spec` defining
+it, and thus downconversion from `spec` to `type` is lossy. Thus structure
+validation (done with [`$|`](#bucbar), which is a more restrictive validation
+than that performed by molds, is a rare use case. Except for direct raw input,
+it's generally a faux pas to validate structure at runtime -- or even in userspace.
+Nonetheless they are sometimes utilized for types that will be more performant
+if they satisfy some validating gate.
 
 ## Base Structures
 
-`[%base p=$@(?(%noun %cell %bean %null) [%atom p=aura])]`: trivial structures (types).
+`[%base p=$@(?(%noun %cell %flag %null %void) [%atom p=aura])]`: trivial structures (types).
 
 ##### Produces
 
@@ -43,14 +56,86 @@ A structure is a noun produced, usually at compile-time, for use in tracking typ
 
 A structure for the base in `p`. `%noun` is any noun; `%atom` is any
 atom; `%cell` is a cell of nouns; `%flag` is a loobean, ``?(`@f`0
-`@f`1)``. `%null` is zero with aura `@n`.
+`@f`1)``. `%null` is zero with aura `@n`, `%void` is the empty set.
 
 ##### Syntax
 
 Irregular: `*` makes `%noun`, `^` makes `%cell`, `?` makes
 `%bean`, `~` makes `%null`, `@aura` makes atom `aura`.
 
+
 ## Runes
+
+### $| "bucbar"
+
+`[%bsbr p=spec q=hoon]`: structure that satisfies a validator.
+
+##### Syntax
+
+Regular: **2-fixed**
+
+##### Discussion
+
+`$|` is used for validation of values at a finer level than that of types.
+Recall that a given value of `type` can be equivalently defined by more than one
+`spec`. For performance reasons, it may be beneficial to restrict oneself to
+values of a given type that adhere to an abstract syntax tree specified by some
+subset of those `spec`s that may be used to define a given type.
+
+`$|` takes two arguments: a structure `a` and a gate `b` that produces a `flag`
+that is used to validate values produced by the mold generated by `a` at
+runtime. `$|(a b)` is a gate that takes in a noun `x` and first pins the product
+of clamming `a` with `x`, call this `foo`. Then it calls `b` on `foo`. It
+asserts that the product of `(b foo)` is `&`, and then produces `foo`. This is
+equivalent to the following (which is not how `$|` is actually defined but has
+the same behavior):
+
+```hoon
+|=  x=*
+=/  foo  ;;(a x)
+?>  (b foo)
+foo
+```
+
+For example, the elements of a `set` are treated as being unordered, but the
+values will necessarily possess an order by where they are in the memory. Thus
+if every `set` is stored using the same order scheme then faster algorithms
+involving `set`s may be written. Furthermore, if you just place elements in the
+`set` randomly, it may be mistreated by algorithms already in place that are
+expecting a certain order. This is not the same thing as casting - it is forcing
+a type to have a more specific set of values than its mold would suggest. This
+rune should rarely be used, but it is extremely important when it is.
+
+##### Examples
+
+```
+~zod:dojo> =foo $|  (list @)
+           |=(a=(list) (lth (lent a) 4))
+```
+This creates a structure `foo` whose values are `list`s with length less than 4. 
+```
+> (foo ~[1 2 3])
+~[1 2 3]
+> (foo ~[1 2 3 4])
+ford: %ride failed to execute:
+```
+
+
+The definition of `+set` in `hoon.hoon` is the following:
+```hoon
+++  set
+  |$  [item]                                            ::  set
+  $|  (tree item)
+  |=(a=(tree) ~(apt in a))
+```
+Here [`|$`](@/docs/reference/hoon-expressions/rune/bar.md#barbuc) is used to
+define a mold builder that takes in a mold (given the face `item`) and creates a
+structure consisting of a `tree` of `item`s with `$|` that is validated with the
+gate `|=(a=(tree) ~(apt in a))`. `in` is a door in `hoon.hoon` with functions
+for handling `set`s, and `apt` is an arm in that door that checks that the
+values in the `tree` are arranged in the particular way that `set`s are arranged
+in Hoon, namely 'ascending `+mug` hash order'.
+
 
 ### `$_` "buccab"
 
