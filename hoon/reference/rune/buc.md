@@ -11,8 +11,8 @@ these runes are used to produce `spec`s, which we call 'structures'.
 ## Overview
 
 Structures are abstract syntax trees for `type`s (see the documentation on
-[basic](@/docs/reference/hoon-expressions/basic.md) and
-[advanced](@/docs/reference/hoon-expressions/advanced.md) types for the
+[basic](@/docs/hoon/reference/basic.md) and
+[advanced](@/docs/hoon/reference/advanced.md) types for the
 precise definition of `type`). Structures are compile-time values of `type` which
 at runtime may be used to produce a 'mold'.
 
