@@ -45,7 +45,9 @@ Gall is the vane for controlling userspace apps.
 
 Iris is our HTTP client.
 
-## [Move trace tutorial](@/docs/arvo/move-trace.md)
+## Tutorials
+
+### [Move trace tutorial](@/docs/arvo/move-trace.md)
 
 A walkthrough of what the Arvo kernel does to respond to a simple command.
 
