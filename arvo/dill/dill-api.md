@@ -1,5 +1,5 @@
 +++
-title = "Dill"
+title = "Dill API"
 weight = 4
 template = "doc.html"
 +++

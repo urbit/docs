@@ -1,5 +1,5 @@
 +++
-title = "Ames"
+title = "Ames API"
 weight = 2
 template = "doc.html"
 +++
