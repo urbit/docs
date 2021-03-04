@@ -128,7 +128,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   $|  (tree item)
   |=(a=(tree) ~(apt in a))
 ```
-Here [`|$`](@/docs/hoon/reference/rune/buc.md#barbuc) is used to
+Here [`|$`](@/docs/hoon/reference/rune/bar.md#barbuc) is used to
 define a mold builder that takes in a mold (given the face `item`) and creates a
 structure consisting of a `tree` of `item`s with `$|` that is validated with the
 gate `|=(a=(tree) ~(apt in a))`. `in` is a door in `hoon.hoon` with functions
