@@ -1,5 +1,5 @@
 +++
-title = "Appendix: Hoon Style Guide"
+title = "Hoon Style Guide"
 weight = 100
 template = "doc.html"
 aliases = ["docs/learn/hoon/style/"]
