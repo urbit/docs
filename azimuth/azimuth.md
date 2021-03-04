@@ -128,7 +128,7 @@ wallet address you generated on your hardware wallet for ownership.
 Next, login to Bridge using your hardware wallet. While Bridge supports Trezor
 and Ledger natively, this may require using Metamask as an intermediary anyways,
 depending on which firmware you are running. Then [accept the
-transfer](@/using/operations/using-bridge.md#accept-your-transfer). Your Azimuth
+transfer](@/using/id/using-bridge.md#accept-your-transfer). Your Azimuth
 point is now stored on your hardware wallet.
 
 To finish the process, use Bridge to set your management, voting, and spawn
