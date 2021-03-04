@@ -1,5 +1,5 @@
 +++
-title = "Technical overview"
+title = "Technical Overview"
 weight = 1
 template = "doc.html"
 aliases = ["/understanding-urbit/technical-overview"]

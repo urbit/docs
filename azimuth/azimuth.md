@@ -1,6 +1,6 @@
 +++
 title = "Azimuth"
-weight = 4
+weight = 2
 template = "doc.html"
 aliases = ["/docs/learn/azimuth"]
 +++
