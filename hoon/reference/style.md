@@ -1,6 +1,6 @@
 +++
 title = "Hoon Style Guide"
-weight = 100
+weight = 40
 template = "doc.html"
 aliases = ["docs/learn/hoon/style/"]
 +++

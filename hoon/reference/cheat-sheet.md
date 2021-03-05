@@ -1,6 +1,6 @@
 +++
 title = "Cheat Sheet"
-weight = 5
+weight = 10
 template = "doc.html"
 aliases = ["docs/reference/cheat-sheet/"]
 +++

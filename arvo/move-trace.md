@@ -1,5 +1,5 @@
 +++
-title = "Move trace"
+title = "Tutorial: Move Trace"
 weight = 12
 template = "doc.html"
 +++

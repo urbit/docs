@@ -1,6 +1,6 @@
 +++
 title = "Advanced Types"
-weight = 5
+weight = 60
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/advanced/"]
 +++

@@ -1,6 +1,6 @@
 +++
 title = "Hoon Errors"
-weight = 12
+weight = 30
 template = "doc.html"
 +++
 

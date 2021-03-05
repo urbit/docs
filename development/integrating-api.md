@@ -1,7 +1,7 @@
 +++
-title = "Integrating with Urbit for Developers"
+title = "Using the HTTP API"
 description = "How to use Urbit's API."
-weight = 4
+weight = 20
 template = "page_indiced.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
 title = "Arvo (Urbit OS)"
-weight = 1
+weight = 300
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 aliases = ["/docs/learn/arvo/"]
@@ -10,6 +10,14 @@ aliases = ["/docs/learn/arvo/"]
 ## [Arvo](@/docs/arvo/arvo.md)
 
 Arvo is Urbit's functional operating system, written in [Hoon](@/docs/hoon/hoon-school/_index.md). It's composed of modules called _vanes_:
+
+
+## Tutorials
+
+### [Move Trace](@/docs/arvo/move-trace.md)
+
+A walkthrough of what the Arvo kernel does to respond to a simple command.
+
 
 ## Vanes
 
@@ -44,10 +52,4 @@ Gall is the vane for controlling userspace apps.
 ### Iris
 
 Iris is our HTTP client.
-
-## Tutorials
-
-### [Move trace tutorial](@/docs/arvo/move-trace.md)
-
-A walkthrough of what the Arvo kernel does to respond to a simple command.
 
