@@ -2,7 +2,6 @@
 title = "Nock"
 weight = 30
 template = "doc.html"
-aliases = ["/understanding-urbit/technical-overview"]
 +++
 
 

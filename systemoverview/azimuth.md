@@ -2,7 +2,6 @@
 title = "Azimuth"
 weight = 50
 template = "doc.html"
-aliases = ["/understanding-urbit/technical-overview"]
 +++
 
 

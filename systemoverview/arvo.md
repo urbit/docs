@@ -2,7 +2,6 @@
 title = "Arvo"
 weight = 10
 template = "doc.html"
-aliases = ["/understanding-urbit/technical-overview"]
 +++
 
 Arvo is a purely functional, [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking)

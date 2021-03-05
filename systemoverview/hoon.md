@@ -2,7 +2,6 @@
 title = "Hoon"
 weight = 20
 template = "doc.html"
-aliases = ["/understanding-urbit/technical-overview"]
 +++
 
 Hoon is a strictly typed functional programming language that compiles itself
