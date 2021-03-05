@@ -1,6 +1,6 @@
 +++
 title = "Iris"
-weight = 6
+weight = 10
 template = "doc.html"
 +++
 

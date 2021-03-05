@@ -1,6 +1,6 @@
 +++
 title = "Ford Fusion"
-weight = 7
+weight = 1
 template = "doc.html"
 aliases = ["/docs/learn/arvo/ford/"]
 +++

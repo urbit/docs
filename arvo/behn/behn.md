@@ -1,6 +1,6 @@
 +++
 title = "Behn"
-weight = 3
+weight = 1
 template = "doc.html"
 +++
 Our simple timer.
