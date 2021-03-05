@@ -2,7 +2,7 @@
 title = "Development"
 weight = 100
 sort_by = "weight"
-template = "doc.html"
+template = "sections/docs/chapters.html"
 +++
 
 

@@ -1,7 +1,7 @@
 +++
 title = "Community Projects"
 weight = 50
-template = "sections/docs/chapters.html"
+template = "doc.html"
 +++
 
 ## Tutorials
