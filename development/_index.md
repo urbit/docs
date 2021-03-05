@@ -19,3 +19,7 @@ How to use Urbit's HTTP API.
 
 The set of APIs for interacting with a running Urbit ship from outside the Urbit network.
 
+## [Community Projects](@/docs/development/communityprojects.md)
+
+Projects created by the community.
+
