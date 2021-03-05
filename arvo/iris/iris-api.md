@@ -1,5 +1,5 @@
 +++
-title = "Iris"
+title = "Iris API"
 weight = 10
 template = "doc.html"
 +++
