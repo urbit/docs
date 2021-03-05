@@ -23,7 +23,7 @@ The set of APIs for interacting with a running Urbit ship from outside the Urbit
 
 Projects created by the community.
 
-## [Precepts](@/docs/developments/precepts.md)
+## [Precepts](@/docs/development/precepts.md)
 
 The principles behind Urbit's architecture and continued development.
 
