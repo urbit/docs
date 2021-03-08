@@ -18,14 +18,14 @@ call-stack structure indicating the event's source module in Arvo.
 
 Arvo modules are also called 'vanes'.  Arvo's vanes are:
 
-- Ames: defines and implements Urbit's encrypted P2P network protocol, as well
+- [Ames](@/docs/arvo/ames/ames.md): defines and implements Urbit's encrypted P2P network protocol, as well
   as Urbit's identity protocol.
-- Behn: manages timer events for other vanes.
-- Clay: global, version-controlled, and referentially-transparent file system.
+- [Behn](@/docs/arvo/behn/behn.md): manages timer events for other vanes.
+- [Clay](@/docs/arvo/clay/clay.md): global, version-controlled, and referentially-transparent file system.
   Also includes our typed functional build system.
-- Dill: terminal driver.
-- Eyre: HTTP server.
-- Gall: application sandbox and manager.
-- Iris: HTTP client.
-- Jael: Public and private key storage.
+- [Dill](@/docs/arvo/dill/dill.md): terminal driver.
+- [Eyre](@/docs/arvo/eyre/eyre.md): HTTP server.
+- [Gall](@/docs/arvo/gall/gall.md): application sandbox and manager.
+- [Iris](@/docs/glossary/iris.md): HTTP client.
+- [Jael](@/docs/glossary/jael.md): Public and private key storage.
 
