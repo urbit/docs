@@ -16,7 +16,7 @@ high-level orientation to how to set up a development environment, how to
 interact with Urbit from outside protocols, community projects, and precepts
 that drive the development of Urbit.
 
-### [System Overview](@/docs/systemoverview/_index.md)
+### [System Overview](@/docs/system-overview/_index.md)
 
 This section gives a high-level overview to all the major components of the
 Urbit tech stack - namely, the operating system Arvo, the programming languages
