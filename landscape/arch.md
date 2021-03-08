@@ -14,6 +14,6 @@ Stores are the first of the two gall models to form this architecture. A store i
 
 Hooks are the second gall application used in this architecture and are not always present. Hooks are used for inter-app communication. This allows a separation of access control concerns and a division between those things which are able to be done by a store itself and those done by another gall application. `graph-store` in particular has two hooks `graph-pull-hook` for outgoing requests, and `graph-push-hook` for incoming requests.
 
-## Thread
+## Threads
 
 Threads are used when you want to have a series of transactions on a store where the order of those transactions matters. No guarantees are made about the order in which individual requests to a gall applications are processed; threads were introduced to address this. Threads do not maintain their own state while inactive and are instead run only upon request. A good example is `ted/graph/create`
