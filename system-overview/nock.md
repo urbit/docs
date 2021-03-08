@@ -20,4 +20,26 @@ The Nock data model is quite simple.  Every piece of data is a 'noun'.  A [noun]
 is an [atom](/docs/glossary/atom/) or a cell.  An atom is any unsigned integer.  A cell is an ordered
 pair of nouns.  Nouns are acyclic and expose no pointer equality test.
 
+## Further Reading
+
+### [Nock Definition](@/docs/nock/definition.md)
+
+The Nock specification.
+
+### [An explanation of Nock](@/docs/nock/explanation.md)
+
+A comprehensive walkthrough of the Nock spec.
+
+### [Nock by hand](@/docs/nock/example.md)
+
+Learn Nock by example.
+
+### [Nock Implementations](@/docs/nock/implementations.md)
+
+The many ways that Nock has been implemented.
+
+### [Nock for Everyday Coders](https://blog.timlucmiptev.space/part1.html)
+
+A comprehensive guide to Nock by community member `~timluc-miptev`.
+
 
