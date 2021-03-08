@@ -16,6 +16,8 @@ appropriate OS module.  The result of each Vere 'poke' is a pair of
 `<output events, new state>`.  Events are typed, and each has an explicit
 call-stack structure indicating the event's source module in Arvo.
 
+For a more in-depth technical introduction, see [Arvo Overview](@/docs/arvo/arvo.md).
+
 Arvo modules are also called 'vanes'.  Arvo's vanes are:
 
 - [Ames](@/docs/arvo/ames/ames.md): defines and implements Urbit's encrypted P2P network protocol, as well
