@@ -15,3 +15,22 @@ of keywords.  The type system infers only forward and does not use unification,
 but is not much weaker than Haskell's.  The compiler and inference engine is
 about 3000 lines of Hoon.
 
+## Further Reading
+
+### [Hoon Overview](@/docs/hoon/whyhoon.md)
+
+Learn why we created a new language to build Urbit in.
+
+### [Hoon School](@/docs/hoon/hoon-school/_index.md)
+
+A collection of tutorials designed to teach you the Hoon language.
+
+### [Guides](@/docs/hoon/guides/_index.md)
+
+Guides to specific Hoon tasks, including testing, command-line interface apps,
+and parsing.
+
+### [Reference](@/docs/hoon/reference/_index.md)
+
+Reference material primarily intended for Hoon developers with some experience.
+
