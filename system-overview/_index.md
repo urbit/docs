@@ -1,6 +1,6 @@
 +++
 title = "System Overview"
-weight = 200
+weight = 100
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
