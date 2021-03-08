@@ -9,7 +9,7 @@ aliases = ["/docs/using/creating-a-development-ship/", "/docs/getting-started/co
 You can develop on Urbit in three ways:
 
 - [Applications using Urbit](#api), which use Urbit as the back-end to store data and communicate with others
-- [Urbit Applications](#application), which are written in [Hoon](/docs/glossary/hoon/), and run as part of Urbit
+- [Urbit Applications](#application), which are written in [Hoon](/docs/hoon/), and run as part of Urbit
 - [Urbit Core](#core), which involves contributing to Urbit's operating system ([Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo)) or runtime ([Vere](https://github.com/urbit/urbit/tree/master/pkg/urbit))
 
 This guide will start by getting you set up to run an Urbit ship, and then tell you everything you need to know to do either.
