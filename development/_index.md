@@ -13,7 +13,8 @@ How to get started developing on Urbit.
 
 ## [Using the HTTP API](@/docs/development/integrating-api.md)
 
-How to use Urbit's HTTP API.
+How to use Urbit's HTTP API. See also [Eyre](@/docs/arvo/eyre/eyre.md),
+[Arvo's](@/docs/arvo/arvo.md)'s HTTP server vane.
 
 ## [Airlock](@/docs/development/airlock.md)
 
