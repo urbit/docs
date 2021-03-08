@@ -19,6 +19,13 @@ Arvo is Urbit's functional operating system, written in [Hoon](@/docs/hoon/hoon-
 A walkthrough of what the Arvo kernel does to respond to a simple command.
 
 
+## Concepts
+
+### [Input/Output](@/docs/arvo/io.md)
+
+Conceptual overview of how Arvo handles input and output.
+
+
 ## Vanes
 
 ### [Ames](@/docs/arvo/ames/ames.md)

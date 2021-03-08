@@ -14,10 +14,6 @@ An overview of why [Arvo](@/docs/arvo/arvo.md) was written using Hoon.
 A series of lessons designed to get the beginner started with Hoon. This is our
 recommended starting point for anyone who wishes to learn Hoon.
 
-### [Concepts](@/docs/hoon/concepts/_index.md)
-
-Higher level conceptual explanations of aspects of Hoon.
-
 ### [Guides](@/docs/hoon/guides/_index.md)
 
 Tutorials on how to do specific tasks with Hoon.
