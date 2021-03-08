@@ -1,5 +1,5 @@
 +++
-title = "Jael API"
+title = "API Reference"
 weight = 10
 template = "doc.html"
 +++

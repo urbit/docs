@@ -1,5 +1,5 @@
 +++
-title = "Arvo"
+title = "Overview"
 weight = 1
 aliases = ["/docs/learn/arvo/arvo/"]
 template = "page_indiced.html"
