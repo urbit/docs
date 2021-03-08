@@ -2,7 +2,7 @@
 title = "Using the HTTP API"
 description = "How to use Urbit's API."
 weight = 20
-template = "page_indiced.html"
+template = "doc.html"
 +++
 
 This guide is aimed at developers who have a working knowledge of HTTP grammar (`PUT`, `GET`), and should not require any special knowledge of Urbit's internals. To learn more about a specific application within Urbit, please search for that with the docs once you have finished this guide.

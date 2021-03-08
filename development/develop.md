@@ -2,7 +2,7 @@
 title = "Getting Started"
 description = "How to get started developing on Urbit."
 weight = 10
-template = "page_indiced.html"
+template = "doc.html"
 aliases = ["/docs/using/creating-a-development-ship/", "/docs/getting-started/contributing"]
 +++
 
