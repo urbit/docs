@@ -109,6 +109,8 @@ Aura         Meaning                        Example Literal Syntax
 
 Some of these auras nest under others.  For example, `@u` is for all unsigned auras.  But there are other, more specific auras; `@ub` for unsigned binary numbers, `@ux` for unsigned hexadecimal numbers, etc.
 
+For a more complete list of auras, see [Auras](@/docs/hoon/reference/auras.md).
+
 ## Aura Inference in Hoon
 
 Let's do more examples in the Dojo using the `?` operator.  We'll focus on just the unsigned auras for now:

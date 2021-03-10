@@ -31,6 +31,10 @@ A simplified explanation of Hoon's type system.
 
 The full story on Hoon's type system.
 
+## [Auras](@/docs/hoon/reference/auras.md)
+
+A list of aura types for atoms.
+
 ### [Runes](@/docs/hoon/reference/rune/_index.md)
 
 Syntax and semantics for Hoon's rune system.
