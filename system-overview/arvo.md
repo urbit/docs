@@ -4,17 +4,17 @@ weight = 10
 template = "doc.html"
 +++
 
-Arvo is a purely functional, [non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking)
-OS, written in Hoon, that serves as the event manager of your urbit.
-It can upgrade itself from over the network without downtime.  The Arvo kernel
-proper is quite simple -- it's only about 600 lines of code, excluding its
-various modules.
+Arvo is a purely functional,
+[non-preemptive](https://en.wikipedia.org/wiki/Cooperative_multitasking) OS,
+written in Hoon, that serves as the event manager of your urbit. It can upgrade
+itself from over the network without downtime. The Arvo kernel proper is quite
+simple -- it's only about 600 lines of code, excluding its various modules.
 
-The Urbit transition function is implemented in Arvo.  Upon being 'poked' by
-Vere with the pair of `<input event, state>`, Arvo directs the event to the
-appropriate OS module.  The result of each Vere 'poke' is a pair of
-`<output events, new state>`.  Events are typed, and each has an explicit
-call-stack structure indicating the event's source module in Arvo.
+The Urbit transition function is implemented in Arvo. Upon being 'poked' by Vere
+with the pair of `<input event, state>`, Arvo directs the event to the
+appropriate OS module. The result of each Vere 'poke' is a pair of `<output
+events, new state>`. Events are typed, and each has an explicit call-stack
+structure indicating the event's source module in Arvo.
 
 For a more in-depth technical introduction, see [Arvo Overview](@/docs/arvo/overview.md).
 

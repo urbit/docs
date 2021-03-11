@@ -10,15 +10,18 @@ network of general-purpose personal servers.  Each server on this network is a
 deterministic computer called an 'urbit' that runs on a Unix-based virtual
 machine.
 
-The current Urbit stack includes (among other things):
+The Urbit stack is primarily comprised of:
 
-- Arvo: the functional operating system of each urbit, written in Hoon.
-- Azimuth: the Urbit identity layer, built on the Ethereum blockchain.
-- Hoon: a strictly typed functional programming language whose standard library
-  includes a Hoon-to-Nock compiler.
-- Nock: a low-level combinator language whose formal specification fits readably on a t-shirt.
-- Vere: a Nock interpreter and Unix-based virtual machine that mediates between
-  each urbit and the Unix software layer.
+- [Arvo](@/docs/system-overview/arvo.md): the functional operating system of
+  each urbit, written in Hoon.
+- [Hoon](@/docs/system-overview/hoon.md): a strictly typed functional
+  programming language whose standard library includes a Hoon-to-Nock compiler.
+- [Nock](@/docs/system-overview/nock.md): a low-level combinator language whose
+  formal specification fits readably on a t-shirt.
+- [Vere](@/docs/system-overview/vere.md): a Nock interpreter and Unix-based
+  virtual machine that mediates between each urbit and the Unix software layer.
+- [Azimuth](@/docs/system-overview/azimuth.md): the Urbit identity layer, built
+  on the Ethereum blockchain.
 
 ## Anatomy of a personal server
 
