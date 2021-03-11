@@ -9,20 +9,19 @@ Welcome to the documentation for the Urbit project. This documentation is mainta
 If you already know what you're looking for, the easiest way to find it is with the search box located on the left.
 
 
-### [System Overview](@/docs/system-overview/_index.md)
-
-This section gives a high-level overview to all the major components of the
-Urbit tech stack - namely, the operating system Arvo, the programming languages
-Nock and Hoon, the runtime Vere, the decentralized ID system Azimuth, and Tlon's
-flagship client Landscape.
-
 ### [Development](@/docs/development/_index.md)
 
 The Development section is recommended reading for developers interested in
 contributing to Urbit itself, or building apps on top of Urbit. It serves as a
-high-level orientation to how to set up a development environment, how to
-interact with Urbit from outside protocols, community projects, and precepts
-that drive the development of Urbit.
+high-level orientation to how to set up a development environment, the various
+codebases that comprise the project, our grants program, and the precepts that
+drive the development of Urbit.
+
+### [System Overview](@/docs/system-overview/_index.md)
+
+This section gives a high-level overview to all the major components of the
+Urbit tech stack - namely, the operating system Arvo, the programming languages
+Nock and Hoon, the runtime Vere, and the decentralized ID system Azimuth.
 
 ### [Arvo (Urbit OS)](@/docs/arvo/_index.md)
 
