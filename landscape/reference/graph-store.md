@@ -4,9 +4,11 @@ weight = 3
 template = "doc.html"
 +++
 
-# What is Graph Store?
-
-Graph Store is a gall implementation of a tree with additional virtual edges by allowing nodes to reference other nodes. It is most comparable to modern NoSQL databases in structure, though it allows for schemas to be written in the form of marks. It is used as the backend for an increasing number of Landscape applications, and is considered to be best used for social data.
+`graph-store` is a gall agent that implements of a tree with additional virtual
+edges by allowing nodes to reference other nodes. It is most comparable to
+modern NoSQL databases in structure, though it allows for schemas to be written
+in the form of marks. It is used as the backend for an increasing number of
+Landscape applications, and is considered to be best used for social data.
 
 ## Data types
 
