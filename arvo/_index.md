@@ -7,21 +7,21 @@ aliases = ["/docs/learn/arvo/"]
 +++
 
 
-## [Arvo](@/docs/arvo/arvo.md)
+## [Arvo](@/docs/arvo/overview.md)
 
 Arvo is Urbit's functional operating system, written in [Hoon](@/docs/hoon/hoon-school/_index.md). It's composed of modules called _vanes_:
 
 
 ## Tutorials
 
-### [Move Trace](@/docs/arvo/move-trace.md)
+### [Move Trace](@/docs/arvo/tutorials/move-trace.md)
 
 A walkthrough of what the Arvo kernel does to respond to a simple command.
 
 
 ## Concepts
 
-### [Input/Output](@/docs/arvo/io.md)
+### [Input/Output](@/docs/arvo/concepts/io.md)
 
 Conceptual overview of how Arvo handles input and output.
 

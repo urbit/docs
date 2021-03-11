@@ -17,7 +17,7 @@ about 3000 lines of Hoon.
 
 ## Further Reading
 
-### [Hoon Overview](@/docs/hoon/whyhoon.md)
+### [Hoon Overview](@/docs/hoon/overview.md)
 
 Learn why we created a new language to build Urbit in.
 

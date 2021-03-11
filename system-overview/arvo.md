@@ -16,7 +16,7 @@ appropriate OS module.  The result of each Vere 'poke' is a pair of
 `<output events, new state>`.  Events are typed, and each has an explicit
 call-stack structure indicating the event's source module in Arvo.
 
-For a more in-depth technical introduction, see [Arvo Overview](@/docs/arvo/arvo.md).
+For a more in-depth technical introduction, see [Arvo Overview](@/docs/arvo/overview.md).
 
 Arvo modules are also called 'vanes'.  Arvo's vanes are:
 
@@ -28,6 +28,6 @@ Arvo modules are also called 'vanes'.  Arvo's vanes are:
 - [Dill](@/docs/arvo/dill/dill.md): terminal driver.
 - [Eyre](@/docs/arvo/eyre/eyre.md): HTTP server.
 - [Gall](@/docs/arvo/gall/gall.md): application sandbox and manager.
-- [Iris](@/docs/glossary/iris.md): HTTP client.
-- [Jael](@/docs/glossary/jael.md): Public and private key storage.
+- [Iris](@/docs/arvo/iris/iris-api.md): HTTP client.
+- [Jael](@/docs/arvo/jael/jael-api.md): Public and private key storage.
 

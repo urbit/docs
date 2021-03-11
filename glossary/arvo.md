@@ -34,7 +34,7 @@ A ship creates its own copy of Arvo via a bootstrap sequence known as a
 
 ### Further Reading
 
-- [The Arvo tutorial](@/docs/arvo/arvo.md): An in-depth technical
+- [The Arvo tutorial](@/docs/arvo/overview.md): An in-depth technical
   guide to Arvo and its vanes.
 - [The Technical Overview](@/docs/system-overview/_index.md): An
   overview of all of Urbit.
