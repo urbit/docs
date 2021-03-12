@@ -1,13 +1,18 @@
 +++
-title = "Docs"
+title = "Development Docs"
 weight = 1
 template = "sections/docs.html"
 +++
 
-Welcome to the documentation for the Urbit project. This documentation is maintained by [Tlon](https://tlon.io) in a public [Github repository](https://github.com/urbit/docs). Issues and contributions are welcome.
+Welcome to the developer documentation for the Urbit project. This documentation
+is maintained by [Tlon](https://tlon.io) and the Urbit community in a public
+[Github repository](https://github.com/urbit/docs). Issues and contributions are
+welcome.
 
-If you already know what you're looking for, the easiest way to find it is with the search box located on the left.
-
+This documentation provides a series of explainers, guides, tutorials and
+reference material for assisting you in developing on the Urbit platform, or
+contributing to the Urbit project. If you're looking for documentation on how to
+*use* your Urbit ship, see our [usage docs](@/using/_index.md).
 
 ### [Development](@/docs/development/_index.md)
 

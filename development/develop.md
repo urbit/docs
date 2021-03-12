@@ -29,7 +29,7 @@ throughout the docs.
 
 Urbit ships with [Landscape](@/docs/landscape/overview.md), which can be thought
 of as its flagship client. Landscape can be broken into two different technical
-components: there's the collection of [services](#services) that utilize the
+components: there's the collection of [agents](#agents) that utilize the
 Urbit for networking and data persistence, and the JavaScript client, which is
 an [interface](https://github.com/urbit/urbit/tree/master/pkg/interface) built
 with [React](https://reactjs.org).
