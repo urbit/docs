@@ -112,8 +112,6 @@ from revision 5 of the home desk on ~sampel-sipnym, we refer to
 /~sampel-sipnym/home/5/try/readme/md.  Clay's namespace is thus
 global and referentially transparent.
 
-XXX reactivity here?
-
 ### A Typed Filesystem
 
 Since clay is a general filesystem for storing data of arbitrary
