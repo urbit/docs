@@ -5,8 +5,6 @@ template = "doc.html"
 aliases = ["/docs/using/creating-a-development-ship/", "/docs/getting-started/contributing"]
 +++
 
-## Grants Program {#grants}
-
 The [Urbit Foundation](https://urbit.org/blog/first-steps-towards-urbit-org/)
 runs a [Grants program](https://grants.urbit.org), where you can earn address
 space ([stars](@/docs/glossary/star.md)) in exchange for contributing to the
