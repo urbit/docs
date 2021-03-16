@@ -4,6 +4,17 @@ weight = 70
 template = "doc.html"
 +++
 
+Auras are system of nested "soft types" on [atoms](@/docs/glossary/atom.md) that
+are used to track metadata about how a particular atom is to be interpreted.
+This is used for type checking as well as pretty printing.
+
+A given aura nests under any aura whose name is a substring of the given aura,
+i.e. `@ux` nests under `@u`, and all auras nest under the empty aura `@`. We
+call auras "soft types" since this nesting behavior can be ignored - see
+[below](#non-coercive).
+
+You can learn more about auras in [Hoon school](@/docs/hoon/hoon-school/atoms-auras-and-simple-types.md).
+
 ```
 Aura         Meaning                                 Example Literal Syntax
 -------------------------------------------------------------------------
@@ -51,6 +62,9 @@ two, starting from A.
         @uxG    unsigned 64-bit hexadecimal
         @uvJ    unsigned, 512-bit integer (frequently used for entropy)
 ```
+
+### Non-coercive
+
 Auras are non-coercive, but conversions may have to go via the empty aura, e.g.
 ```
 > ^-(@ud ^-(@ 'foo'))
