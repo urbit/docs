@@ -137,6 +137,22 @@ See also the section on Ed25519 for [Vere](#vere-ed).
 
 See also the section on AES SIV for [Vere](#vere-aes).
 
+### `++crub:crypto` {#crub}
+
+This core implements [Suite B
+Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
+
+It makes use of `+ed:crypto` and `+aes:crypto` to implement AES symmetric key
+encryption and decryption (`+seal` and `+tear`), elliptic curve digital
+signature algorithm (ECDSA) signing and verification (`+sign` and `+sure`), and
+elliptic curve Diffie-Hellman key generation (`+pit:nu`).
+
+It is used ...
+
+### `++secp:crypto` {#secp}
+
+Utilized for secp256k1 (Ethereum public and private keys).
+
 
 ## Vere
 
@@ -174,6 +190,7 @@ similar interface style.
 
 While the jets are found in `pkg/urbit/jets/e`, the statically-linked package is
 found at `pkg/libas_siv/`.
+
 
 
 
