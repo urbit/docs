@@ -24,7 +24,10 @@ is the logic for communicating requests to, and receiving requests from,
 foreign ships.
 
 Clay documentation is extensive, but the reader much tread carefully as portions
-of it are out of date as of March 2021.
+of it are out of date as of March 2021. We are actively working on updating
+them. If you'd like to help, please reach out to us in the Docs channel on Urbit
+Community or submit a PR at
+[https://github.com/urbit/docs](https://github.com/urbit/docs).
 
 [Architecture](@/docs/arvo/clay/architecture.md)
 
