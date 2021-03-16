@@ -13,7 +13,7 @@ i.e. `@ux` nests under `@u`, and all auras nest under the empty aura `@`. We
 call auras "soft types" since this nesting behavior can be ignored - see
 [below](#non-coercive).
 
-You can learn more about auras in [Hoon school](@/docs/hoon/hoon-school/atoms-auras-and-simple-types.md).
+You can learn more about auras in [Hoon school](@/docs/hoon/hoon-school/atoms-auras-and-simple-cell-types.md).
 
 ```
 Aura         Meaning                                 Example Literal Syntax
