@@ -16,7 +16,7 @@ Kernel code is generally kept to be as minimal as possible, and so almost anythi
 
 Vanes communicate with one another by exchanging chunks of data known as
 `move`s. We will get into more detail above what a `move` is in our example of
-Behn below, (and also see [move traces](@/docs/arvo/move-trace.md)) but at a high level one should think of a `move` as either a request from one vane to another or a response to a request. In our egg timer app, Gall and Behn will be exchanging `move`s.
+Behn below, (and also see [move traces](@/docs/arvo/tutorials/move-trace.md)) but at a high level one should think of a `move` as either a request from one vane to another or a response to a request. In our egg timer app, Gall and Behn will be exchanging `move`s.
 
 Notably, vanes are _not_ something that a user ever interacts with directly. They live in an area of the memory called "kernel space", while all user processes live in [user space](https://en.wikipedia.org/wiki/User_space). Applications in user space make _system calls_ to the kernel, which the kernel may or may not obey (for security and stability purposes). These requests could be things such as asking for the time, getting the input of a hardware device, making an http request, or moving a file. In our egg timer app, we will be making system calls to ask Behn to handle the timer aspect.
 

@@ -1,6 +1,6 @@
 +++
-title = "Iris"
-weight = 6
+title = "API Reference"
+weight = 10
 template = "doc.html"
 +++
 

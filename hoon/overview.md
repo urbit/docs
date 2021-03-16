@@ -1,8 +1,15 @@
 +++
-title = "Why Hoon?"
+title = "Overview"
 weight = 2
 template = "doc.html"
 +++
+
+We are often asked why Urbit was written in a new language, rather than some
+existing language like Haskell or C. This document provides the high-level
+rationale for that decision, and also covers some of the features of the
+language that set it apart from others. If you're looking to learn Hoon, check
+out our tutorial series called [Hoon School](@/docs/hoon/hoon-school/_index.md)
+below.
 
 ### What can Hoon do that other languages can't?
 

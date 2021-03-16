@@ -1,6 +1,6 @@
 +++
 title = "Advanced Azimuth Tools"
-weight = 4
+weight = 3
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
-title = "Gall"
-weight = 5
+title = "API Reference"
+weight = 10
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
 title = "Basic Types"
-weight = 4
+weight = 50
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/basic/"]
 +++

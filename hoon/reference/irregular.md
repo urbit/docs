@@ -1,6 +1,6 @@
 +++
 title = "Irregular forms"
-weight = 7
+weight = 20
 template = "doc.html"
 aliases = ["docs/reference/hoon-expressions/irregular/"]
 +++

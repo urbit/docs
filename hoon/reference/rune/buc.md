@@ -11,8 +11,8 @@ these runes are used to produce `spec`s, which we call 'structures'.
 ## Overview
 
 Structures are abstract syntax trees for `type`s (see the documentation on
-[basic](@/docs/reference/hoon-expressions/basic.md) and
-[advanced](@/docs/reference/hoon-expressions/advanced.md) types for the
+[basic](@/docs/hoon/reference/basic.md) and
+[advanced](@/docs/hoon/reference/advanced.md) types for the
 precise definition of `type`). Structures are compile-time values of `type` which
 at runtime may be used to produce a 'mold'.
 
@@ -128,7 +128,7 @@ The definition of `+set` in `hoon.hoon` is the following:
   $|  (tree item)
   |=(a=(tree) ~(apt in a))
 ```
-Here [`|$`](@/docs/reference/hoon-expressions/rune/bar.md#barbuc) is used to
+Here [`|$`](@/docs/hoon/reference/rune/bar.md#barbuc) is used to
 define a mold builder that takes in a mold (given the face `item`) and creates a
 structure consisting of a `tree` of `item`s with `$|` that is validated with the
 gate `|=(a=(tree) ~(apt in a))`. `in` is a door in `hoon.hoon` with functions
