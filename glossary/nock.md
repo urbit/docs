@@ -14,4 +14,4 @@ Code written in [Hoon](../hoon) is compiled to Nock, though it is unnecessary to
 
 ### Further Reading
 
-- [The Nock Tutorial](@/docs/tutorials/nock/_index.md): An-in depth technical guide.
+- [The Nock Tutorial](@/docs/nock/_index.md): An-in depth technical guide.

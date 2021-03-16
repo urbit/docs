@@ -28,5 +28,5 @@ There are two "kinds" of chats:
 ### Further Reading
 
 - [Landscape](../landscape) includes a web interface for using Chat.
-- [Messaging guide](@/using/operations/using-your-ship.md#messaging): A guide to
+- [Messaging guide](@/using/os/messaging.md): A guide to
   using Chat from the command line.

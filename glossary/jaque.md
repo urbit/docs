@@ -12,4 +12,4 @@ The current worker utilized by Vere is written in C, while Jaque is written usin
 
 ### Further Reading
 
-- [The Vere tutorial](@/docs/tutorials/vere/_index.md): Learning information for Vere.
+- [The Vere tutorial](@/docs/vere/_index.md): Learning information for Vere.
