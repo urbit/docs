@@ -52,5 +52,12 @@ two, starting from A.
         @uvJ    unsigned, 512-bit integer (frequently used for entropy)
 ```
 Auras are non-coercive, but conversions may have to go via the empty aura, e.g.
-`^-(@ud ^-(@ 'foo'))`.
-
+```
+> ^-(@ud ^-(@ 'foo'))
+7.303.014
+```
+This is implicitly done by the irregular form of `^-`.
+```
+> `@ud`'foo'
+7.303.014
+```
