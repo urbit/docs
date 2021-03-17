@@ -92,46 +92,48 @@ with the source and destination commits as parents.
 Several strategies need a "merge-base".  They find it by identifying
 the most recent common ancestor of the two desks.  If none, fail
 with `%merge-no-merge-base`; if there are two or more, pick one.
+
+#### Strategies
                                                                       
-`%init`: the only way to create a desk.  Not a true merge, since it
+**`%init`**: the only way to create a desk.  Not a true merge, since it
 simply assigns the source commit to the destination.
                                                                       
-`%fine`: if source or destination are in the ancestry of each other,
+**`%fine`**: if source or destination are in the ancestry of each other,
 use the newer one; else abort.  If the destination is ahead of the
 source, succeed but do nothing.  If the source is ahead of the
 destination, assign the next revision number to the source commit.
 Some call this "fast-forward".
                                                                       
-`%meet`: combine changes, failing if both sides changed the same file.
+**`%meet`**: combine changes, failing if both sides changed the same file.
 Specifically, take diff(merge-base,source) and
 diff(merge-base,destination) and combine them as long as those diffs
 touch different files.
                                                                       
-`%mate`: combine changes, failing if both sides changed the same part
+**`%mate`**: combine changes, failing if both sides changed the same part
 of a file.  Identical to `%meet`, except that some marks, like `%hoon`,
 allow intelligent merge of changes to different parts of a file.
                                                                       
-`%meld`: combine changes; if both sides changed the same part of a
+**`%meld`**: combine changes; if both sides changed the same part of a
 file, use the version of the file in the merge-base.
                                                                       
-`%only-this`: create a merge commit with exactly the contents of the
+**`%only-this`**: create a merge commit with exactly the contents of the
 destination desk.
                                                                       
-`%only-that`: create a merge commit with exactly the contents of the
+**`%only-that`**: create a merge commit with exactly the contents of the
 source commit.
                                                                       
-`%take-this`: create a merge commit with exactly the contents of the
+**`%take-this`**: create a merge commit with exactly the contents of the
 destination desk except take any files from the source commit which
 are not in the destination desk.
                                                                       
-`%take-that`: create a merge commit with exactly the contents of the
+**`%take-that`**: create a merge commit with exactly the contents of the
 source commit except preserve any files from the destination desk
 which are not in the source commit.
                                                                       
-`%meet-this`: merge as in `%meet`, except if both sides changed the same
+**`%meet-this`**: merge as in `%meet`, except if both sides changed the same
 file, use the version in the destination desk.
                                                                       
-`%meet-that`: merge as in `%meet`, except if both sides changed the same
+**`%meet-that`**: merge as in `%meet`, except if both sides changed the same
 file, use the version in the source commit.
                                                                       
 #### Examples and notes:
