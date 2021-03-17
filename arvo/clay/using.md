@@ -92,6 +92,8 @@ with the source and destination commits as parents.
 Several strategies need a "merge-base".  They find it by identifying
 the most recent common ancestor of the two desks.  If none, fail
 with `%merge-no-merge-base`; if there are two or more, pick one.
+
+#### Strategies
                                                                       
 **`%init`**: the only way to create a desk.  Not a true merge, since it
 simply assigns the source commit to the destination.
