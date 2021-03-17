@@ -193,7 +193,8 @@ More formally, a `mark` is a core with three [arms](/docs/glossary/arm/): `+grab
 `+grow`, and `+grad`. In `+grab` is a series of functions to
 convert from other `mark`s to the given `mark`.  In `+grow` is a
 series of functions to convert from the given `mark` to other
-`mark`s. In `+grad` is `+diff`, `+pact`, `+join`, and `+mash`.
+`mark`s. In `+grad` is `+diff`, `+pact`, `+join`, and `+mash`, and
+`+form`.
 
 The types are as follows, in an informal pseudocode:
 
@@ -207,6 +208,7 @@ The types are as follows, in an informal pseudocode:
       ++  txt: <mark-type> -> <txt>
       ...
     ++  grad
+      ++  form: <mark-type>
       ++  diff: (<mark-type>, <mark-type>) -> <diff-type>
       ++  pact: (<mark-type>, <diff-type>) -> <mark-type>
       ++  join: (<diff-type>, <diff-type>) -> <diff-type> or NULL
@@ -220,12 +222,11 @@ in the general case.
 In general, for a particular `mark`, the `+grab` and `+grow` entries
 (if they exist) should be inverses of each other.
 
-In `+grad`, `+diff` takes two instances of a `mark` and produces
-a diff of them. `+pact` takes an instance of a `mark` and patches
-it with the given diff. `+join` takes two diffs and attempts to
-merge them into a single diff. If there are conflicts, it
-produces null. `+mash` takes two diffs and forces a merge,
-annotating any conflicts.
+In `+grad`, `+diff` takes two instances of a `mark` and produces a diff of them
+whose `mark` is given by `+form`. `+pact` takes an instance of a `mark` and
+patches it with the given diff. `+join` takes two diffs and attempts to merge
+them into a single diff. If there are conflicts, it produces null. `+mash` takes
+two diffs and forces a merge, annotating any conflicts.
 
 In general, if `+diff` called with A and B produces diff D, then
 `+pact` called with A and D should produce B. Also, if `+join`
