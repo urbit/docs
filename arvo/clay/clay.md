@@ -29,6 +29,15 @@ them. If you'd like to help, please reach out to us in the Docs channel on Urbit
 Community or submit a PR at
 [https://github.com/urbit/docs](https://github.com/urbit/docs).
 
+### User documentation
+
+[Filesystem](@/using/os/filesystem.md)
+
+How to interact with the Clay filesystem via Dojo. This includes basics such as
+mounting to Unix, changing directory, merging, and listing files.
+
+### Developer Documentation
+
 [Architecture](@/docs/arvo/clay/architecture.md)
 
 A conceptual overview of how Clay was designed.
