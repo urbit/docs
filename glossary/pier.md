@@ -14,5 +14,5 @@ Note that a backup should usually _not_ be taken of your pier as a means of keep
 ### Further Reading
 
 - [Event Log](../eventlog): The main important content of the pier directory.
-- [A Guide to Breaches](@/docs/tutorials/guide-to-breaches.md): Instructions on handling continuity breaches (resets) on the Ames network.
-- [Ship Troubleshooting](@/docs/tutorials/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.
+- [A Guide to Breaches](@/using/id/guide-to-breaches.md): Instructions on handling continuity breaches (resets) on the Ames network.
+- [Ship Troubleshooting](@/using/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.

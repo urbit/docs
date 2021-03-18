@@ -14,5 +14,5 @@ Clay is located at `/home/sys/vane/clay.hoon` within Arvo.
 
 ### Further Reading
 
-- [Using Your Ship](@/using/operations/using-your-ship.md#filesystem): A user guide that includes instructions on using Clay.  
-- [The Clay tutorial](@/docs/tutorials/arvo/clay.md): A technical guide to the Clay vane.
+- [Using Your Ship](@/using/os/filesystem.md): A user guide that includes instructions on using Clay.
+- [The Clay tutorial](@/docs/arvo/clay/clay.md): A technical guide to the Clay vane.

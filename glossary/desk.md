@@ -12,4 +12,4 @@ Traditionally a ship has at least a base desk and a home desk. The base desk has
 
 ### Further Reading
 
-- [Using Your Ship](@/using/operations/using-your-ship.md#filesystem): A user guide that includes instructions for using desks.
+- [Using Your Ship](@/using/os/filesystem.md): A user guide that includes instructions for using desks.

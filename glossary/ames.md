@@ -14,6 +14,6 @@ level to fix networking issues or at a network-wide level to update Arvo beyond
 what OTA updates are capable of doing. These events are called [breaches](../breach).
 ### Further Reading
 
-- [The Ames tutorial](@/docs/tutorials/arvo/ames.md): An in-depth technical guide to the Ames protocol.
-- [A Guide to Breaches](@/docs/tutorials/guide-to-breaches.md): Instructions on handling continuity breaches (resets) on the Ames network.
-- [Ship Troubleshooting](@/docs/tutorials/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.
+- [The Ames tutorial](@/docs/arvo/ames/ames.md): An in-depth technical guide to the Ames protocol.
+- [A Guide to Breaches](@/using/id/guide-to-breaches.md): Instructions on handling continuity breaches (resets) on the Ames network.
+- [Ship Troubleshooting](@/using/os/ship-troubleshooting.md): General instructions on getting your ship to work, which includes network connectivity issues.
