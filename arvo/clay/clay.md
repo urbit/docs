@@ -40,7 +40,7 @@ mounting to Unix, changing directory, merging, and listing files.
 
 [Architecture](@/docs/arvo/clay/architecture.md)
 
-A conceptual overview of how Clay was designed.
+A conceptual overview of how Clay was designed. (Up to date as of March 2021)
 
 [Using Clay](@/docs/arvo/clay/using.md)
 
