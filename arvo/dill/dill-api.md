@@ -68,7 +68,7 @@ Dill returns no `gift` in response to a `%blew` `task`.
 ### `%boot`
 
 This `task` is used only once, when Arvo first enters the [adult
-stage](@/docs/arvo/arvo.md#structural-interface-core). Dill is
+stage](@/docs/arvo/overview.md#structural-interface-core). Dill is
 technically the first vane to be activated, via the `%boot` `task`, which then
 send Jael (considered the the "true" first vane) an `%init` `task`, which then goes on to
 call `%init` `task`s for other vanes (including Dill).
@@ -176,7 +176,7 @@ This `task` is not used.
 ### `%init`
 
 This `task` is called only once, when Arvo first enters the [adult
-stage](@/docs/arvo/arvo.md#structural-interface-core). It performs
+stage](@/docs/arvo/overview.md#structural-interface-core). It performs
 initial setup for Dill, such as setting the width of the console.
 
 Note that this is not actually the first `task` passed to Dill - see [%boot](#%boot).
@@ -353,7 +353,7 @@ This `task` returns no `gift`s.
 
 This `task` toggles verbose mode for all of Arvo, which is located here since
 Dill is the vane that prints errors. To be precise, `%verb` toggles the laconic
-bit `lac` in the [Arvo state](@/docs/arvo/arvo.md#the-state).
+bit `lac` in the [Arvo state](@/docs/arvo/overview.md#the-state).
 
 #### Accepts
 

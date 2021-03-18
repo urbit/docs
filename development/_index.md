@@ -1,28 +1,29 @@
 +++
 title = "Development"
-weight = 200
+weight = 100
 sort_by = "weight"
 template = "sections/docs/chapters.html"
 +++
 
+This section covers the development process in general.
 
+## [Getting Started](@/docs/development/develop.md)
 
-## [Developer's Guide](@/docs/development/develop.md)
+An orientation to the various development paths within the Urbit ecosystem
 
-How to get started developing on Urbit.
+## [Environment Setup](@/docs/development/environment.md)
 
-## [Using the HTTP API](@/docs/development/integrating-api.md)
+How to get your development environment ready for Urbit development.
 
-How to use Urbit's HTTP API. See also [Eyre](@/docs/arvo/eyre/eyre.md),
-[Arvo's](@/docs/arvo/arvo.md)'s HTTP server vane.
+## [Grants Program](@/docs/development/grants.md)
 
-## [Airlock](@/docs/development/airlock.md)
+An introduction to our grants program, where you can earn address space for
+contributing to the project.
 
-The set of APIs for interacting with a running Urbit ship from outside the Urbit network.
+## [Project Repositories](@/docs/development/project-repositories.md)
 
-## [Community Projects](@/docs/development/community-projects.md)
-
-Projects created by the community.
+A directory of official code repositories, and unofficial community-maintained
+ones.
 
 ## [Precepts](@/docs/development/precepts.md)
 

@@ -189,7 +189,7 @@ Ames does not `give` a `gift` in response to a `%crud` `task`, but it does
 ## `%init`
 
 `%init` is called a single time during the very first boot process, immediately
-after the [larval stage](@/docs/arvo/arvo.md#larval-stage-core)
+after the [larval stage](@/docs/arvo/overview.md#larval-stage-core)
 is completed. This initializes the vane. Jael is initialized first, followed by
 other vanes such as Ames.
 

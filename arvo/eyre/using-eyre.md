@@ -1,23 +1,29 @@
 +++
-title = "Using the HTTP API"
-description = "How to use Urbit's API."
+title = "Using Eyre"
+description = "How to work with eyre from outside Urbit."
 weight = 20
 template = "doc.html"
 +++
 
 This guide is aimed at developers who have a working knowledge of HTTP grammar (`PUT`, `GET`), and should not require any special knowledge of Urbit's internals. To learn more about a specific application within Urbit, please search for that with the docs once you have finished this guide.
 
-## Authentication
+## Prerequisites
 
-The first step in creating an application *on* Urbit (to be distinguished from an Urbit application) is to authenticate with the desired ship. This can be a planet, comet, or any other Urbit ship. For the purposes of this example, we will be running a "fakezod" on port 8080. Run this code, substituting the appropriate path to your Urbit binary:
+You'll need a working development ship to follow along with this guide. It's
+recommended that you set up a new "fakezod" on port 8080: Run this code,
+substituting the appropriate path to your Urbit binary:
 
 ```bash
 /path/to/urbit -p 8080 -F zod
 ```
 
-(for the unfamiliar, this will create a folder named "zod" in your working directory, from which the ship will run. Use `/path/to/urbit -p 8080 zod` in the future)
+For the unfamiliar, this will create a folder named "zod" in your working directory, from which the ship will run. Use `/path/to/urbit -p 8080 zod` in the future. For more information on this process, see our guide on [Environment Setup](@/docs/development/environment.md).
 
-You can run `+code` in the dojo to get the key, but a fakezod's key is always `lidlut-tabwed-pillex-ridrup`. This is our password, our API token that we will use.
+## Authentication
+
+We'll authenticate with a code that can be retrieved from the dojo. You can run
+`+code` in the dojo to obtain it, but a fakezod's code is always
+`lidlut-tabwed-pillex-ridrup`. 
 
 Run this code in your bash terminal (requires cURL):
 
@@ -29,7 +35,7 @@ Let's explain what this does:
  - `-i` displays the headers, so that you can see the cookie that gets sent
  - `localhost:8080/~/login` is the URL to which you are POSTing. You will note this is also the URL you visit when you log into Landscape.
  - `-X POST` specifies that you are POSTing data, not GETting.
- - `-d "password=lidlut-tabwed-pillex-ridrup"` specifies the key for your Urbit that we retrieved above. It is sent as form data, as if it were sent from an HTML form input field (which it is in Landscape)
+ - `-d "password=lidlut-tabwed-pillex-ridrup"` specifies the code for your Urbit that we retrieved above. It is sent as form data, as if it were sent from an HTML form input field (which it is in Landscape)
 
 You should see the following:
 
@@ -52,7 +58,7 @@ Take a look at the `set-cookie` line. This is now your session authentication, a
 
 At present there is no way to separate these parts — you must pass a cookie *as* a cookie. This string must be in the `Cookie` header. The `set-cookie` header is only used for this request upon response. It is what browsers expect when receiving a cookie.
 
-## Interacting with Urbit
+## Interacting with Eyre
 
 Once authenticated, you will perform all your operations on a channel. You may open as many channels as needed using the same authentication token, but this will increase complexity and memory usage on your Urbit ship.
 

@@ -6,99 +6,110 @@ template = "doc.html"
 aliases = ["/docs/using/creating-a-development-ship/", "/docs/getting-started/contributing"]
 +++
 
-You can develop on Urbit in three ways:
+There are many ways to get involved as a developer. This guide serves to give
+you a "lay of the land" for developing on Urbit. Let's start with what you can
+contribute to. At a high level, you can:
 
-- [Applications using Urbit](#api), which use Urbit as the back-end to store data and communicate with others
-- [Urbit Applications](#application), which are written in [Hoon](/docs/hoon/), and run as part of Urbit
-- [Urbit Core](#core), which involves contributing to Urbit's operating system ([Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo)) or runtime ([Vere](https://github.com/urbit/urbit/tree/master/pkg/urbit))
+- [Build clients](#clients), which use Urbit as their back-end to store data and
+  interact with the network
+- [Develop agents](#agents), or more precisely [*gall*
+  agents](@/docs/arvo/gall/gall.md), which are written in [Hoon](/docs/hoon/)
+  and can best be thought of as microservices
+- [Contribute to Urbit's core](#core), which involves contributing to Urbit
+  itself &mdash; either the operating system
+  ([Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo)), runtime
+  ([Vere](https://github.com/urbit/urbit/tree/master/pkg/urbit)), or public key
+  infrastructure ([Azimuth](https://github.com/urbit/azimuth))
+  
+Below we'll go into more detail about each of these options and do our best to
+point you towards a number of additional helpful resources that can be found
+throughout the docs.
 
-This guide will start by getting you set up to run an Urbit ship, and then tell you everything you need to know to do either.
+### Build Clients {#clients}
 
-### Setting up your environment
+Urbit ships with [Landscape](@/docs/landscape/overview.md), which can be thought
+of as its flagship client. Landscape can be broken into two different technical
+components: there's the collection of [agents](#agents) that utilize the
+Urbit for networking and data persistence, and the JavaScript client, which is
+an [interface](https://github.com/urbit/urbit/tree/master/pkg/interface) built
+with [React](https://reactjs.org).
 
-We assume you’ve gotten a basic introduction to Urbit. If you haven’t, read the [Understanding Urbit](@/understanding-urbit/_index.md) series.
+Additionally, you can [contribute to
+Landscape](https://github.com/urbit/urbit/blob/master/pkg/interface/CONTRIBUTING.md)
+by tackling issues in its [issue
+tracker](https://github.com/urbit/landscape/issues) and/or running the the
+[development stream](https://groups.google.com/a/urbit.org/g/dev/c/r2hv4ajCLwk).
 
-Once you’re ready, you can get started on the network right away and take some first steps, without acquiring an identity, by [creating a comet](@/using/install.md#comet).
+You can create your own clients that uses Urbit to store data and interact with
+other Urbit ships without writing any Hoon code thanks to Urbit's HTTP APIs.
+This could be a chat client, a writing app, a game, or anything else that can
+communicate over HTTP.
 
-When developing, however, we recommend [booting a development ship](#creating-a-development-ship) and working locally -- you may need to make changes that could, in the wrong hands, destroy the ship’s environment, and it’s best to do so in a safe, separate place.
+To get started quickly with the language of your choice, see the list 
+libraries that provide HTTP interfaces to Urbit [here](https://github.com/urbit/awesome-urbit#http-apis-airlock).
 
-## Applications using Urbit {#api}
+To learn more about how to work with Urbit's HTTP interface, follow [this
+guide](@/docs/arvo/eyre/using-eyre.md).
 
-Urbit ships with its own set of apps written in its own language, Hoon. However it is also meant to integrate with applications written in other languages via an API. The clearest example of an application using Urbit is Landscape, the default client. Although it does currently ship with Urbit, its front-end is a separate piece of software that uses Urbit's HTTP APIs to interact with an Urbit ship. You can create your own application that uses Urbit to store data and interact with other Urbit ships without writing any Hoon code thanks to Urbit's HTTP APIs. This could be a chat client, a writing app, a game, or anything else that can communicate over HTTP.
+Alternatively, command-line interface (CLI) applications can be built using a
+library called `shoe`, which you can learn more about
+[here](@/docs/hoon/guides/cli-tutorial.md). This does require Hoon knowledge.
 
-To get started quickly with the language of your choice, see the following libraries that provide HTTP interfaces to Urbit:
+### Develop Agents {#agents}
 
- - [Python](https://github.com/baudtack/urlock-py) (Stable)
- - [Swift](https://github.com/dclelland/UrsusAirlock) (Under development)
- - [Haskell](https://github.com/bsima/urbit-airlock) (Under active development)
- - [JavaScript](https://www.npmjs.com/package/urbit) (Under active development)
- - Go (Pending release)
+Gall agents can be best thought of as individual services with a
+statically-typed interface and built-in database. They're written in
+[Hoon](@/docs/hoon/overview.md) and all conform to a specific
+[interface](@/docs/arvo/gall/gall-api.md) that's defined by the kernel vane
+called [Gall](@/docs/arvo/gall/gall.md).
 
-[View details about using the API or creating your own implementation here.](@/docs/development/integrating-api.md)
+Applications built on Urbit utilize a collection of different agents, each of
+which handle specific functionality. The [Landscape
+architecture](@/docs/landscape/overview.md) is a good reference implementation
+to see how this pattern works in practice.
 
-## Urbit Applications {#application}
+If you want to learn how to build gall agents, your best bet is to first [learn
+the Hoon programming language](@/docs/hoon/hoon-school/_index.md), and then follow that
+up with the [Gall guide](@/docs/arvo/gall/tutorial.md).
 
-Urbit applications are still young, but can be fun to experiment with.
+### Contribute to Urbit Core {#core}
 
-When creating user applications on Urbit, you aren’t tied to any particular user interface. They can work without providing a response to the user, or by printing to the Dojo, or with an interface in Landscape, which uses [Eyre](@/docs/arvo/eyre/eyre.md) (the Arvo vane that serves HTTP to serve a React-based interface to the application through a web browser).
+Working on the core means improving the Urbit project itself, working with the
+existing community of Urbit developers. The kernel is much more stable, but
+generally more challenging from an engineering standpoint.
 
-When writing applications, you will often make use of [Gall](@/docs/hoon/hoon-school/gall.md), the Arvo vane that manages user applications.
+Just arrived and unsure what to work on? An ideal way to get started is by
+experimenting with the system, talking to other developers, and reading (or
+[contributing to](https://github.com/urbit/docs)) the [documentation](/docs/).
 
-If you want to see examples of Urbit applications with common functionality requirements, you can see our [examples](https://github.com/urbit/examples) repository. If you want to get started building applications with a Landscape interface, check out our [create-landscape-app](https://github.com/urbit/create-landscape-app) repository.
+Prefer learning with an instructor? Our community runs an online course that
+covers the basics of Urbit development called
+[Hooniversity](https://hooniversity.org/). If course-based learning works well
+for you, we recommend you sign up.
 
-## Urbit Core {#core}
+The Urbit developer community congregates around [the urbit-dev mailing
+list](https://groups.google.com/a/urbit.org/forum/#!forum/dev), the
+`~bitbet-bolbel/urbit-community` group on Landscape, and [Urbit’s GitHub
+repository](https://github.com/urbit/urbit). It’s a good idea to sign up, see
+what people are talking about, and introduce yourself.
 
-Working on the core means improving the Urbit project itself, working with the existing community of Urbit developers. The kernel is much more stable, but generally more challenging from an engineering standpoint.
+Once you’re comfortable working with Urbit, check out the [project’s issues on
+GitHub](https://github.com/urbit/urbit/issues) or some of our [contribution
+bounties](https://grants.urbit.org/).
 
-Just arrived and unsure what to work on? An ideal way to get started is by experimenting with the system, talking to other developers, and reading (or [contributing to](https://github.com/urbit/docs)) the [documentation](/docs/).
+If you’re looking for some guidance, need help, or would prefer direct
+communication for your ideas, you can also always reach out to us directly at
+[support@urbit.org](mailto:support@urbit.org).
 
-Prefer learning with an instructor? Our community runs an online course that covers the basics of Urbit development called [Hooniversity](https://hooniversity.org/). If course-based learning works well for you, we recommend you sign up.
+## Next Steps
 
-The Urbit developer community congregates around [the urbit-dev mailing list](https://groups.google.com/a/urbit.org/forum/#!forum/dev), the `~bitbet-bolbel/urbit-community` group on Landscape, and [Urbit’s GitHub repository](https://github.com/urbit/urbit). It’s a good idea to sign up, see what people are talking about, and introduce yourself.
+From here, you'll probably want to learn more about:
 
-Once you’re comfortable working with Urbit, check out the [project’s issues on GitHub](https://github.com/urbit/urbit/issues) or some of our [contribution bounties](https://grants.urbit.org/).
-
-If you’re looking for some guidance, need help, or would prefer direct communication for your ideas, you can also always reach out to us directly at [support@urbit.org](mailto:support@urbit.org).
-
-## Creating a development ship {#creating-a-development-ship}
-
-To do work with Hoon and with the system, we recommended using a "fake" ship -- one not connected to the network.
-
-Because such a ship has no presence on the network, you don't need an Azimuth identity for its purposes. You just need to have [installed our software](/using/install).
-
-To create a fake ship named `~zod`, run the command below. You can replace `zod` with any valid Urbit ship-name.
-
-```
-./urbit -F zod
-```
-
-Now you should see a block of boot messages, starting with the Urbit version number. Welcome!
-
-
-## How else can I contribute? {#how}
-
-The Urbit project is a global community of developers, users, and fans. If you’re interested in getting involved, there’s space for you; you don’t have to be a developer to be a part of the project.
-
-### Running stars and galaxies
-
-There are two ways to participate in the Arvo network: as a user running a planet and as an infrastructure provider running a galaxy or a star.
-
-For planets, Urbit is a peer-to-peer network where users can interact with each other via Landscape, or using custom applications that anyone can write.
-
-Running a planet helps build Urbit’s community, surfaces bugs, and helps core developers improve Urbit under realistic conditions.
-
-Stars and galaxies, however, have additional responsibilities and play a role in peer discovery as well as star and planet distribution. You can think of stars and galaxies as similar to the DNS system in the modern Internet. Most users don’t know it exists, but without it, the web wouldn’t work at all.
-
-Running a reliable galaxy or star, and spawning stars and planets from them, are excellent ways to help bootstrap the Urbit network.
-
-If you’re interested in running a galaxy or star, you’ll be reliably providing peer discovery for your children just by running your node – and we’re doing our best to make this both easy and profitable. If you’re interested in this, see [Star and Galaxy Operations](@/using/os/stars-and-galaxies.md).
-
-If you’re interested in distributing planets, read on.
-
-### Distribute points
-
-Want to get your friends and family into Urbit? Distribute planets using Bridge with a feature called **delegated sending**.
-
-Here’s how it works: any star can grant a number of invites to any of its child planets. Those planets can then send one-time-use invite codes via email to anyone of their choosing.
-
-For instructions on how to grant and send invites, check out [Using Bridge](@/using/id/using-bridge.md).
+- How to set up a [development environment](@/docs/development/environment.md)
+- Our [grants program](@/docs/development/grants.md), where you can earn address
+  space for helping the project grow
+- The different [project
+  repositories](@/docs/development/project-repositories.md), both official and
+  community-maintained
+- Our development [Precepts](@/docs/development/precepts.md), which outline the
+  philosophies that drive Urbit development
