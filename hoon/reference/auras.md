@@ -95,3 +95,4 @@ The bunt value for all auras is 0 except for `@da`.
 > *@da
 ~2000.1.1
 ```
+A bunt value of 0 is helpful when working with loobeans.
