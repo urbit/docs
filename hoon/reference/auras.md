@@ -8,12 +8,9 @@ Auras are system of nested "soft types" on [atoms](@/docs/glossary/atom.md) that
 are used to track metadata about how a particular atom is to be interpreted.
 This is used for type checking as well as pretty printing.
 
-A given aura nests under any aura whose name is a substring of the given aura,
-i.e. `@ux` nests under `@u`, and all auras nest under the empty aura `@`. We
-call auras "soft types" since this nesting behavior can be ignored - see
-[below](#non-coercive).
-
 You can learn more about auras in [Hoon school](@/docs/hoon/hoon-school/atoms-auras-and-simple-cell-types.md).
+
+### Table of Auras
 
 ```
 Aura         Meaning                                 Example Literal Syntax
@@ -52,6 +49,8 @@ Aura         Meaning                                 Example Literal Syntax
   @ux           unsigned hexadecimal                 0x5f5.e138
 ```
 
+### Bitwidth
+
 Capital letters at the end of auras indicate the bitwidth in binary powers of
 two, starting from A.
 
@@ -63,9 +62,22 @@ two, starting from A.
         @uvJ    unsigned, 512-bit integer (frequently used for entropy)
 ```
 
-### Non-coercive
+### Nesting
 
-Auras are non-coercive, but conversions may have to go via the empty aura, e.g.
+A given aura nests under any aura whose name is a substring or extension of the
+given aura:
+```
+> :-  (~(nest ut [%atom %ud ~]) | [%atom %u ~])
+      (~(nest ut [%atom %ud ~]) | [%atom %udx ~])
+[%.y %.y]
+```
+but does not nest "sideways":
+```
+>  (~(nest ut [%atom %ud ~]) | [%atom %ux ~])
+%.n
+```
+We call auras "soft types" since this nesting behavior can be ignored. Auras are
+non-coercive, but conversions may have to go via the empty aura, e.g.
 ```
 > ^-(@ud ^-(@ 'foo'))
 7.303.014
@@ -75,3 +87,12 @@ This is implicitly done by the irregular form of `^-`.
 > `@ud`'foo'
 7.303.014
 ```
+
+### Bunting
+
+The bunt value for all auras is 0 except for `@da`.
+```
+> *@da
+~2000.1.1
+```
+A bunt value of 0 is helpful when working with loobeans.
