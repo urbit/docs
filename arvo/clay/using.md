@@ -81,9 +81,9 @@ be automatically committed with `|autocommit %mount-point`.
 
 Usage:
 ```
-|merge %destination-`desk` ~source-ship %source-`desk`
-|merge %destination-`desk` ~source-ship %source-`desk`, =gem %strategy
-|merge %destination-`desk` ~source-ship %source-`desk`, =cas ud+5
+|merge %target-desk ~source-ship %source-desk
+|merge %target-desk ~source-ship %source-desk, =gem %strategy
+|merge %target-desk ~source-ship %source-desk, =cas ud+5
 ```
 
 Clay supports various merge strategies.  A "commit" is a snapshot of
@@ -198,7 +198,7 @@ the `desk`s to not conflict with.
 
 Usage:
 ```
-|sync destination-desk ~source-ship source-desk
+|sync %target-desk ~source-ship %source-desk
 ```
 
 Tracking and staying in sync with another `desk` is another
