@@ -3,7 +3,6 @@ title = "Clay"
 weight = 30
 sort_by = "weight"
 template = "sections/docs/chapters.html"
-insert_anchor_links = "right"
 +++
 
 [Overview](@/docs/arvo/clay/clay.md)

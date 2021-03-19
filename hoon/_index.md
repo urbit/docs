@@ -3,7 +3,6 @@ title = "Hoon"
 weight = 400
 sort_by = "weight"
 template = "sections/docs/chapters.html"
-insert_anchor_links = "right"
 +++
 
 Hoon is Urbit's high-level general-purpose programming language.
