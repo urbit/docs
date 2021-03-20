@@ -1,10 +1,10 @@
-++
++++
 title = "Architecture"
 weight = 2
 template = "doc.html"
-++
++++
 
-Clay is the primary filesystem for the [Arvo](@/docs/Arvo/overview.md) operating system,
+Clay is the primary filesystem for the [Arvo](@/docs/arvo/overview.md) operating system,
 which is the [core](/docs/glossary/core/) of an urbit. The architecture of Clay is
 intrinsically connected with Arvo, but for this section we assume no knowledge of
 either Arvo or Urbit. We will point out only those features of
