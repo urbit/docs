@@ -85,18 +85,18 @@ display notifications of filesystem changes. Only `%note` `%gift`s should be
 produced along this `duct`. This is set by the `%init` `move`.
 
 `dos` is a well-known operating system released in 1981. It is also the
-set of desks on this ship, mapped to their desk state.
+set of `desk`s on this ship, mapped to their `desk` state.
 
-#### `++desk`, filesystem branch
+#### `$desk`, filesystem branch
 
 ```hoon
-    ++  desk  ,@tas                                         ::  ship desk case spur
++$  desk  @tas
 ```
 
-This is the name of a branch of the filesystem. The default desks are
-"arvo", "main", and "try". More may be created by simply referencing
-them. Desks have independent histories and states, and they may be
-merged into each other.
+This is the name of a branch of the filesystem. The default `desk`s are `%home`
+and `%kids`. More may be created by simply referencing them. `desk`s have
+independent histories and states, and they may be
+[merged](@/docs/arvo/clay/using.md#merging) into each other.
 
 ### `++dojo`, domestic desk state
 
