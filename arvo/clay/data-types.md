@@ -124,7 +124,7 @@ permissions by `path` and `pew` is a `map` of write permissions by `path`.
 `wove` is mapped to a set of `duct`s associated to subscribers who should be
 notified when the request is filled/updated.
 
-#### `++rave:clay`, general subscription request
+#### `$rave:clay`, general subscription request
 
 ```hoon
     ++  rave                                                ::  general request
@@ -133,9 +133,26 @@ notified when the request is filled/updated.
               ==                                            ::
 ```
 
-This represents a subscription request for a desk. The request can be
-for either a single item in the desk or else for a range of changes on
-the desk.
+```hoon
+  +$  rave                                              ::  general request
+    $%  [%sing =mood]                                   ::  single request
+        [%next =mood]                                   ::  await next version
+        [%mult =mool]                                   ::  next version of any
+        [%many track=? =moat]                           ::  track range
+    ==                                                  ::
+```
+
+This represents a subscription request for a `desk`.
+
+A `%sing` request asks for data at single revision.
+
+A `%next` request asks to be notified the next time there’s a change to the
+specified file.
+
+A `%mult` request asks to be notified the next time there's a change to a
+specified set of files.
+
+A `%many` request asks to be notified on every change in a `desk` for a range of changes (including into the future).
 
 ### `++rove`, stored general subscription request
 
