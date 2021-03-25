@@ -154,15 +154,26 @@ specified set of files.
 
 A `%many` request asks to be notified on every change in a `desk` for a range of changes (including into the future).
 
-### `++rove`, stored general subscription request
+### `$rove`, stored general subscription request
 
 ```hoon
-    ++  rove  (each mood moot)                              ::  stored request
+    +$  rove                                                ::  stored request
+          $%  [%sing =mood]                             ::  single request
+              [%next =mood aeon=(unit aeon) =cach]      ::  next version of one
+              $:  %mult                                 ::  next version of any
+                  =mool                                 ::  original request
+                  aeon=(unit aeon)                      ::  checking for change
+                  old-cach=(map [=care =path] cach)     ::  old version
+                  new-cach=(map [=care =path] cach)     ::  new version
+              ==                                        ::
+              [%many track=? =moat lobes=(map path lobe)] ::  change range
+          ==                                            ::
 ```
 
-When we store a request, we store subscriptions with a little extra
-information so that we can determine whether new versions actually
-affect the path we're subscribed to.
+Like a `rave` but with caches of current versions for `%next` and `%many`.
+Generally used when we store a request in our state somewhere. This is so that
+we can determine whether new versions actually affect the path we're subscribed to.
+
 
 #### `++mood:clay`, single subscription request
 
