@@ -112,18 +112,17 @@ independent histories and states, and they may be
 This is the all the data that is specific to a particular `desk` on a domestic
 ship. `qyx` is the set of subscribers to this `desk`, and `dom` is the data in
 the `desk`. `regs` are `(map path rule)`, and so `per` is a `map` of read
-permissions by `path` and `pew` is a map of write permissions by `path`.
+permissions by `path` and `pew` is a `map` of write permissions by `path`.
 
-#### `++cult`, subscriptions
+#### `$cult`, subscriptions
 
 ```hoon
-    ++  cult  (map duct rave)                               ::  subscriptions
++$  cult  (jug wove duct)
 ```
 
-This is the set of subscriptions to a particular desk. The keys are the
-ducts from where the subscriptions requests came. The results will be
-produced along these ducts. The values are a description of the
-requested information.
+`cult`s keep track of subscribers. `wove`s are associated to requests, and each
+`wove` is mapped to a set of `duct`s associated to subscribers who should be
+notified when the request is filled/updated.
 
 #### `++rave:clay`, general subscription request
 
