@@ -185,15 +185,16 @@ This represents a request for the state of the `desk` at a particular
 commit, specfied by `case`. `care` specifies what kind of information is
 desired, and `path` specifies the path we are requesting.
 
-#### `++moat:clay`, range subscription request
+#### `$moat:clay`, range subscription request
 
 ```hoon
     ++  moat  ,[p=case q=case r=path]                       ::  change range
+  +$  moat  [from=case to=case =path]                   ::  change range
 ```
 
-This represents a request for all changes between `p` and `q` on path
-`r`. You will be notified when a change is made to the node referenced
-by the path or to any of its children.
+This represents a request for all changes between `from` and `to` on `path`. You
+will be notified when a change is made to the node referenced by the `path` or to
+any of its children.
 
 ### `++moot`, stored range subscription request
 
