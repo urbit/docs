@@ -98,15 +98,21 @@ and `%kids`. More may be created by simply referencing them. `desk`s have
 independent histories and states, and they may be
 [merged](@/docs/arvo/clay/using.md#merging) into each other.
 
-### `++dojo`, domestic desk state
+### `$dojo`, domestic desk state
 
 ```hoon
-    ++  dojo  ,[p=cult q=dome]                              ::  domestic desk state
++$  dojo
+  $:  qyx=cult                                          ::  subscribers
+      dom=dome                                          ::  desk state
+      per=regs                                          ::  read perms per path
+      pew=regs                                          ::  write perms per path
+  ==
 ```
 
-This is the all the data that is specific to a particular desk on a
-domestic ship. `p` is the set of subscribers to this desk and `q` is the
-data in the desk.
+This is the all the data that is specific to a particular `desk` on a domestic
+ship. `qyx` is the set of subscribers to this `desk`, and `dom` is the data in
+the `desk`. `regs` are `(map path rule)`, and so `per` is a `map` of read
+permissions by `path` and `pew` is a map of write permissions by `path`.
 
 #### `++cult`, subscriptions
 
