@@ -30,7 +30,7 @@ this section isn't too long, so many readers may wish to quickly read through
 all of it. If you get bored, though, just skip to the next section. You can
 always come back when you need to.
 
-### `++raft`, formal state
+### `$raft`, formal state
 
 ```hoon
 +$  raft                                                ::  filesystem
@@ -51,47 +51,41 @@ calls to Clay is stored in this state.
 where all the "real" data we know is stored; the rest is "just
 bookkeeping".
 
-`rom` is our domestic state. It consists of a `duct` to
+`rom` is the state for all local desks. It consists of a `duct` to
 [Dill](@/docs/arvo/dill/dill.md) and a collection of `desk`s.
 
-`hoy` is a collection of foreign ships for which we know something about their
-Clay.
+`hoy` is the state for all foreign desks.
 
-`ran` is the object store. It has maps of commit hashes to commits and content
-hashes to content.
+`ran` is the global, hash-addressed object store. It has maps of commit hashes
+to commits and content hashes to content.
 
 `mon` is a collection of Unix mount points. `term` is the mount point (relative
 to th pier) and `beam` is a domestic Clay directory.
 
-`hez` is the Unix duct that `%ergo` `%gift`s should be sent to.
+`hez` is the duct used to sync with Unix.
 
 `cez` is a collection of named permission groups.
 
 `pud` is an update that's waiting on a kernel upgrade.
 
 
-#### `++room`, filesystem per domestic ship
+#### `$room`, filesystem per domestic ship
 
 ```hoon
-    ++  room                                                ::  fs per ship
-              $:  hun=duct                                  ::  terminal duct
-                  hez=(unit duct)                           ::  sync duch
-                  dos=(map desk dojo)                       ::  native desk
-              ==                                            ::
++$  room                                                ::  fs per ship
+          $:  hun=duct                                  ::  terminal duct
+              dos=(map desk dojo)                       ::  native desk
+          ==                                            ::
 ```
 
 This is the representation of the filesystem of a ship on our pier.
 
-`hun` is the duct we use to send messages to dill to display
-notifications of filesystem changes. Only `%note` gifts should be
-produced along this duct. This is set by the `%init` kiss.
-
-`hez`, if present, is the duct we use to send sync messages to unix so
-that they end up in the pier unix directory. Only `%ergo` gifts should
-be producd along this duct. This is set by `%into` and `%invo` kisses.
+`hun` is the duct we use to send messages to [Dill](@/docs/arvo/dill/dill.md) to
+display notifications of filesystem changes. Only `%note` `%gift`s should be
+produced along this `duct`. This is set by the `%init` `move`.
 
 `dos` is a well-known operating system released in 1981. It is also the
-set of desks on this ship, mapped to their data.
+set of desks on this ship, mapped to their desk state.
 
 #### `++desk`, filesystem branch
 
