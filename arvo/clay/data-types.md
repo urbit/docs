@@ -33,13 +33,6 @@ always come back when you need to.
 ### `++raft`, formal state
 
 ```hoon
-    ++  raft                                                ::  filesystem
-              $:  fat=(map ship room)                       ::  domestic
-                  hoy=(map ship rung)                       ::  foreign
-                  ran=rang                                  ::  hashes
-              ==                                            ::
-```
-```hoon
 +$  raft                                                ::  filesystem
   $:  rom=room                                          ::  domestic
       hoy=(map ship rung)                               ::  foreign
@@ -75,6 +68,7 @@ to th pier) and `beam` is a domestic Clay directory.
 `cez` is a collection of named permission groups.
 
 `pud` is an update that's waiting on a kernel upgrade.
+
 
 #### `++room`, filesystem per domestic ship
 
