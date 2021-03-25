@@ -5,14 +5,15 @@ template = "doc.html"
 +++
 
 This section will be reference documentation for the data types used by our
-filesystem. Parts of it may be inaccurate as of March 2021. As a general guide,
-we recommend reading and attempting to understand the data structures used in
-any Hoon code before you try to read the code itself. Although complete
-understanding of the data structures is impossible without seeing them used in
-the code, an 80% understanding greatly clarifies the code. As another general
-guide, when reading Hoon, it rarely pays off to understand every line of code
-when it appears. Try to get the gist of it, and then move on. The next time you
-come back to it, it'll likely make a lot more sense.
+filesystem. It is up to date as of March 2021.
+
+As a general guide, we recommend reading and attempting to understand the data
+structures used in any Hoon code before you try to read the code itself.
+Although complete understanding of the data structures is impossible without
+seeing them used in the code, an 80% understanding greatly clarifies the code.
+As another general guide, when reading Hoon, it rarely pays off to understand
+every line of code when it appears. Try to get the gist of it, and then move on.
+The next time you come back to it, it'll likely make a lot more sense.
 
 ### Data Models
 
@@ -23,11 +24,11 @@ at least skimming, this so that you get a rough idea of how our state is
 organized.
 
 The types that are certainly worth reading are `++raft`, `++room`,
-`++dome:clay`, `++ankh:clay`, `++rung:clay`, `++rang:clay`, `++blob:clay`, `++yaki:clay`, and `++nori:clay`
-(possibly in that order). All in all, though, this section isn't too
-long, so many readers may wish to quickly read through all of it. If you
-get bored, though, just skip to the next section. You can always come
-back when you need to.
+`++dome:clay`, `++ankh:clay`, `++rung:clay`, `++rang:clay`, `++blob:clay`,
+`++yaki:clay`, and `++nori:clay` (possibly in that order). All in all, though,
+this section isn't too long, so many readers may wish to quickly read through
+all of it. If you get bored, though, just skip to the next section. You can
+always come back when you need to.
 
 ### `++raft`, formal state
 
@@ -38,19 +39,42 @@ back when you need to.
                   ran=rang                                  ::  hashes
               ==                                            ::
 ```
+```hoon
++$  raft                                                ::  filesystem
+  $:  rom=room                                          ::  domestic
+      hoy=(map ship rung)                               ::  foreign
+      ran=rang                                          ::  hashes
+      mon=(map term beam)                               ::  mount points
+      hez=(unit duct)                                   ::  sync duct
+      cez=(map @ta crew)                                ::  permission groups
+      pud=(unit [=desk =yoki])                          ::  pending update
+  ==                                                    ::
+```
 
-This is the state of our vane. Anything that must be remembered between
-calls to clay is stored in this state.
-
-`fat` is the set of domestic servers. This stores all the information
-that is specfic to a particular ship on this pier. The keys to this map
-are the ships on the current pier. all the information that is specific
-to a particular foreign ship. The keys to this map are all the ships
-whose filesystems we have attempted to access through clay.
+This is the state of the vane. Anything that must be remembered between
+calls to Clay is stored in this state.
 
 `ran` is the store of all commits and deltas, keyed by hash. The is
 where all the "real" data we know is stored; the rest is "just
 bookkeeping".
+
+`rom` is our domestic state. It consists of a `duct` to
+[Dill](@/docs/arvo/dill/dill.md) and a collection of `desk`s.
+
+`hoy` is a collection of foreign ships for which we know something about their
+Clay.
+
+`ran` is the object store. It has maps of commit hashes to commits and content
+hashes to content.
+
+`mon` is a collection of Unix mount points. `term` is the mount point (relative
+to th pier) and `beam` is a domestic Clay directory.
+
+`hez` is the Unix duct that `%ergo` `%gift`s should be sent to.
+
+`cez` is a collection of named permission groups.
+
+`pud` is an update that's waiting on a kernel upgrade.
 
 #### `++room`, filesystem per domestic ship
 
@@ -161,10 +185,10 @@ represents the data at the node referenced by the path at case `p`, if
 we've gotten to that case (else null). We only send a notification along
 the subscription if the data at a new revision is different than it was.
 
-### `++care:clay`, clay submode
+### `++care:clay`, Clay submode
 
 ```hoon
-    ++  care  ?(%u %v %w %x %y %z)                          ::  clay submode
+    ++  care  ?(%u %v %w %x %y %z)                          ::  Clay submode
 ```
 
 This specifies what type of information is requested in a subscription
@@ -547,7 +571,7 @@ is not a complicated type; it is not difficult to work out the meaning.
               ==                                            ::
 ```
 
-This describes a change that we are asking clay to make to the desk.
+This describes a change that we are asking Clay to make to the desk.
 There are two kinds of changes that may be made: we can modify files or
 we can apply a label to a commit.
 
@@ -604,7 +628,7 @@ commits or data need be here.
 
 This represents a request for data about a particular desk. If `q`
 contains a `rave`, then this opens a subscription to the desk for that
-data. If `q` is null, then this tells clay to cancel the subscription
+data. If `q` is null, then this tells Clay to cancel the subscription
 along this duct.
 
 #### `++riot:clay`, response
@@ -698,7 +722,7 @@ request change. For the format of the requested change, see the
 documentation for `++nori:clay` above.
 
 When a file is changed in the unix filesystem, vere will send a `%into`
-kiss. This tells clay that the duct over which the kiss was sent is the
+kiss. This tells Clay that the duct over which the kiss was sent is the
 duct that unix is listening on for changes. From within Arvo, though, we
 should never send a `%into` kiss. The `%info` kiss is exactly identical
 except it does not reset the duct.
@@ -711,7 +735,7 @@ except it does not reset the duct.
 
 These kisses are currently identical to `%info` and `%into`, though this
 will not always be the case. The intent is for these kisses to allow
-typed changes to clay so that we may store typed data. This is currently
+typed changes to Clay so that we may store typed data. This is currently
 unimplemented.
 
 ```hoon
