@@ -195,11 +195,15 @@ This represents a request for all changes between `from` and `to` on `path`. You
 will be notified when a change is made to the node referenced by the `path` or to
 any of its children.
 
-### `++care:clay`, Clay submode
+### `$care:clay`, Clay submode
 
 ```hoon
-    ++  care  ?(%u %v %w %x %y %z)                          ::  Clay submode
+  +$  care  ?(%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z)  ::  clay submode
 ```
+
+TODO: The rest of these. Ask Ted if there is any docs on them because a lot of
+these (implemented with +read-X) are uncommented. Also need to check the ones
+that are already here.
 
 This specifies what type of information is requested in a subscription
 or a scry.
@@ -220,10 +224,39 @@ if `q:ankh` is null), then this produces null.
 
 `%z` requests the `++ankh` of the specified commit at the specfied path.
 
-### `++arch`, shallow filesystem node
+#### `$ankh`, filesystem node
+
+```hoon
+    ++  ankh                                                ::  fs node (new)
+              $:  p=cash                                    ::  recursive hash
+                  q=(unit ,[p=cash q=*])                    ::  file
+                  r=(map ,@ta ankh)                         ::  folders
+              ==                                            ::
+              
++$  ankh                                                ::  expanded node
+  $~  [~ ~]
+  $:  fil=(unit [p=lobe q=cage])                        ::  file
+      dir=(map @ta ankh)                                ::  folders
+  ==                                                    ::
+```
+
+This is a single node in the filesystem. This may be file or a directory
+or both. In Earth filesystems, a node is a file xor a directory. On
+Mars, we're inclusive, so a node is a file ior a directory.
+
+`fil` is the contents of this file, if any. `p.fil` is a hash of the
+contents while `q.fil` is the data itself.
+
+`dir` is the set of children of this node. In the case of a pure file,
+this is empty. The keys are the names of the children and the values
+are, recursively, the nodes themselves.
+
+
+### `$arch`, shallow filesystem node
 
 ```hoon
     ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
++$  arch  (axil @uvI)
 ```
 
 This is analogous to `++ankh:clay` except that the we have neither our
@@ -290,29 +323,6 @@ behaves exactly as you would expect.
 can only be applied to numbered commits. Labels must be unique across a
 desk.
 
-#### `++ankh`, filesystem node
-
-```hoon
-    ++  ankh                                                ::  fs node (new)
-              $:  p=cash                                    ::  recursive hash
-                  q=(unit ,[p=cash q=*])                    ::  file
-                  r=(map ,@ta ankh)                         ::  folders
-              ==                                            ::
-```
-
-This is a single node in the filesystem. This may be file or a directory
-or both. In earth filesystems, a node is a file xor a directory. On
-mars, we're inclusive, so a node is a file ior a directory.
-
-`p` is a recursive hash that depends on the contents of the this file or
-directory and on any children.
-
-`q` is the contents of this file, if any. `p.q` is a hash of the
-contents while `q.q` is the data itself.
-
-`r` is the set of children of this node. In the case of a pure file,
-this is empty. The keys are the names of the children and the values
-are, recursively, the nodes themselves.
 
 #### `++cash`, ankh hash
 
