@@ -175,15 +175,15 @@ Generally used when we store a request in our state somewhere. This is so that
 we can determine whether new versions actually affect the path we're subscribed to.
 
 
-#### `++mood:clay`, single subscription request
+#### `$mood:clay`, single subscription request
 
 ```hoon
-    ++  mood  ,[p=care q=case r=path]                       ::  request in desk
+  +$  mood  [=care =case =path]                         ::  request in desk
 ```
 
-This represents a request for the state of the desk at a particular
-commit, specfied by `q`. `p` specifies what kind of information is
-desired, and `r` specifies the path we are requesting.
+This represents a request for the state of the `desk` at a particular
+commit, specfied by `case`. `care` specifies what kind of information is
+desired, and `path` specifies the path we are requesting.
 
 #### `++moat:clay`, range subscription request
 
