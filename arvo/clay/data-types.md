@@ -188,7 +188,6 @@ desired, and `path` specifies the path we are requesting.
 #### `$moat:clay`, range subscription request
 
 ```hoon
-    ++  moat  ,[p=case q=case r=path]                       ::  change range
   +$  moat  [from=case to=case =path]                   ::  change range
 ```
 
@@ -196,7 +195,7 @@ This represents a request for all changes between `from` and `to` on `path`. You
 will be notified when a change is made to the node referenced by the `path` or to
 any of its children.
 
-### `++moot`, stored range subscription request
+### `$moot`, stored range subscription request
 
 ```hoon
     ++  moot  ,[p=case q=case r=path s=(map path lobe)]     ::
