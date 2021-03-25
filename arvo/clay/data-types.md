@@ -195,17 +195,6 @@ This represents a request for all changes between `from` and `to` on `path`. You
 will be notified when a change is made to the node referenced by the `path` or to
 any of its children.
 
-### `$moot`, stored range subscription request
-
-```hoon
-    ++  moot  ,[p=case q=case r=path s=(map path lobe)]     ::
-```
-
-This is just a `++moat:clay` plus a map of paths to lobes. This map
-represents the data at the node referenced by the path at case `p`, if
-we've gotten to that case (else null). We only send a notification along
-the subscription if the data at a new revision is different than it was.
-
 ### `++care:clay`, Clay submode
 
 ```hoon
