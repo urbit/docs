@@ -81,10 +81,10 @@ implementation of monadic bind. This rune takes a gate `bind` which takes a mold
 
 ```hoon
 %+
-  (q ^:p)
-r
-|=  p
-  s
+  (bind ^:mold)
+expr1
+|=  mold
+  expr2
 ```
 
 ##### Discussion
