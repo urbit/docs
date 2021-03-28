@@ -10,4 +10,4 @@ category = "arvo"
 
 ### Further Reading
 
-- [The Vere tutorial](@/docs/tutorials/vere/_index.md): An in-depth technical guide to Vere.
+- [The Vere tutorial](@/docs/vere/_index.md): An in-depth technical guide to Vere.
