@@ -36,7 +36,7 @@ Eyre is our HTTP server. Unix sends HTTP messages to `%eyre`, and `%eyre` produc
 
 Ford is our build system. It handles resources and publishing.
 
-## [Gall](@/docs/arvo/gall/gall.md)
+## [Gall](@/docs/arvo/gall/overview.md)
 
 Gall is the vane for controlling userspace apps.
 
