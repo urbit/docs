@@ -7,9 +7,9 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/hoon-syntax/"]
 
 The study of Hoon can be divided into two parts: syntax and semantics.
 
-The [syntax](https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29 ) of a programming language is the set of rules that determine what counts as admissible code in that language. It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program. Attempting to run a program that doesn’t follow these rules will result in a syntax error.
+The [syntax](https://en.wikipedia.org/wiki/Syntax_%28programming_languages%29) of a programming language is the set of rules that determine what counts as admissible code in that language. It determines which characters may be used in the source, and also how these characters may be assembled to constitute a program. Attempting to run a program that doesn’t follow these rules will result in a syntax error.
 
-The [semantics](https://en.wikipedia.org/wiki/Semantics_%28computer_science%29 ) of a programming language concerns the meaning of the various parts of that language’s code.
+The [semantics](https://en.wikipedia.org/wiki/Semantics_%28computer_science%29) of a programming language concerns the meaning of the various parts of that language’s code.
 
 In this lesson we will give a general overview of Hoon’s syntax. By the end of it, you should be familiar with all the basic elements of Hoon code.
 
@@ -53,7 +53,7 @@ Note that the list includes two separate whitespace forms: `ace` for a single sp
 
 ## Expressions of Hoon
 
-An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29 ) is a combination of characters that the language interprets and evaluates as producing a value. Hoon programs are made up entirely of expressions.
+An [expression](https://en.wikipedia.org/wiki/Expression_%28computer_science%29) is a combination of characters that the language interprets and evaluates as producing a value. Hoon programs are made up entirely of expressions.
 
 Hoon expressions can be either basic or complex. Basic expressions of Hoon are fundamental, meaning that they can’t be broken down into smaller expressions. Complex expressions are made up of smaller expressions (which are called **subexpressions**).
 
@@ -63,11 +63,11 @@ There are many categories of Hoon expressions: [noun](/docs/glossary/noun/) lite
 
 A noun is either an [atom](/docs/glossary/atom/) or a cell. An [atom](/docs/glossary/atom/) is an unsigned integer and a cell is a pair of nouns.
 
-There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29 ) expressions for each kind of noun. A noun literal is just a notation for representing a fixed noun value.
+There are [literal](https://en.wikipedia.org/wiki/Literal_%28computer_programming%29) expressions for each kind of noun. A noun literal is just a notation for representing a fixed noun value.
 
 We start with atom literals. Each of these is a basic expression of Hoon that evaluates to itself. Examples:
 
-```
+```hoon
 > 1
 1
 
@@ -88,7 +88,7 @@ Recall from [Lesson 1.2](@/docs/hoon/hoon-school/nouns.md) that even though atom
 
 Cell literals can be written in Hoon using `[ ]`. Cell literals are complex, because other expressions are put inside the square brackets. Examples:
 
-```
+```hoon
 > [6 7]
 [6 7]
 
@@ -104,7 +104,7 @@ Cell literals can be written in Hoon using `[ ]`. Cell literals are complex, bec
 
 You can also put complex expressions inside square brackets to make a cell. These are valid expressions but they aren’t cell literals, naturally:
 
-```
+```hoon
 > [(add 22 33) (mul 22 33)]
 [55 726]
 ```
@@ -136,7 +136,6 @@ Wing expressions with multiple limbs are complex expressions. Examples:
 - `-.b.+2`
 - `-.add`
 
-
 ### Type Expressions
 
 Hoon is a statically typed language. You’ll learn more about the type system later in the chapter. For now, just know that Hoon’s type system uses special symbols to indicate certain fundamental types: `~` (null), `*` (noun), `@` (atom), `^` (cell), and `?` (flag). Each of these symbols can be used as a stand-alone expression of Hoon. In the case of `@` there may be a series of letters following it, to indicate an atom aura; e.g., `@s`, `@rs`, `@tas`, and `@tD`.
@@ -163,7 +162,7 @@ The spacing rules differ in the two forms. In tall form, each rune and subexpres
 
 Seeing an example will help you understand the difference. The `:-` rune is used to produce a cell. Accordingly, it is followed by two subexpressions: the first defines the head of the cell, and the second defines the tail. Here are three different ways to write a `:-` expression in tall form:
 
-```
+```hoon
 > :-  11  22
 [11 22]
 
@@ -181,7 +180,7 @@ These all do the same thing. The first example shows that, if you want to, you c
 
 Usually one or more line breaks are used to break up a tall form expression. This is especially useful when the subexpressions are themselves long stretches of code. The same `:-` expression in wide form is:
 
-```
+```hoon
 > :-(11 22)
 [11 22]
 ```
@@ -196,11 +195,11 @@ Since runes take a fixed number of children, one can visualize how Hoon expressi
 
 ![](https://media.urbit.org/docs/hoon-syntax/cell1.png)
 
-Here we have drawn the `:-` rune followed by a box for each of its two children. We can fill these boxes with either a value or an additional rune. The following figure corresponds to the Hoon expression `:-  2  3`.
+Here we have drawn the `:-` rune followed by a box for each of its two children. We can fill these boxes with either a value or an additional rune. The following figure corresponds to the Hoon expression `:- 2 3`.
 
 ![](https://media.urbit.org/docs/hoon-syntax/cell2.png)
 
-This, of course, evaluates to the cell `[2 3]`. This next figure corresponds to the Hoon expression `:-  :-  2  3  4`.
+This, of course, evaluates to the cell `[2 3]`. This next figure corresponds to the Hoon expression `:- :- 2 3 4`.
 
 ![](https://media.urbit.org/docs/hoon-syntax/cell3.png)
 
@@ -210,7 +209,7 @@ What Hoon expression does the following figure correspond to, and what does it e
 
 ![](https://media.urbit.org/docs/hoon-syntax/cell4.png)
 
-Right. This represents the Hoon expression `:-  2  :-  3  4`,
+Right. This represents the Hoon expression `:- 2 :- 3 4`,
 and evaluates to `[2 [3 4]]`. Remember, though, that if you input this into dojo it will print as `[2 3 4]`.
 
 Thinking in terms of these “LEGO block” diagrams, as well as the more literal binary tree diagrams utilized in [Lesson 1.2](@/docs/hoon/hoon-school/nouns.md), can be a helpful learning and debugging tactic.
@@ -225,7 +224,7 @@ Some runes are used so frequently that they have irregular counterparts that are
 
 Let’s look at another example. The `.=` rune takes two subexpressions, evaluates them, and tests the results for equality. If they’re equal it produces `%.y` for “yes”; otherwise `%.n` for “no”. In tall form:
 
-```
+```hoon
 > .=  22  11
 %.n
 
@@ -236,7 +235,7 @@ Let’s look at another example. The `.=` rune takes two subexpressions, evaluat
 
 And in wide form:
 
-```
+```hoon
 > .=(22 11)
 %.n
 
@@ -246,7 +245,7 @@ And in wide form:
 
 The irregular form of the `.=` rune is just `=( )`:
 
-```
+```hoon
 > =(22 11)
 %.n
 
@@ -256,7 +255,7 @@ The irregular form of the `.=` rune is just `=( )`:
 
 The examples above have another irregular form: `(add 11 11)`. This is the irregular form of `%+`, which calls a [gate](/docs/glossary/gate/) (i.e., a Hoon function) with two arguments for the sample.
 
-```
+```hoon
 > %+  add  11  11
 22
 
@@ -266,7 +265,7 @@ The examples above have another irregular form: `(add 11 11)`. This is the irreg
 
 The irregular `( )` gate-calling syntax is versatile -- it is also a shortcut for calling a gate with one argument, which is what the `%-` rune is for:
 
-```
+```hoon
 > (dec 11)
 10
 
@@ -287,7 +286,7 @@ There are certain irregular expressions that aren’t syntactic sugar for regula
 
 Below we use the `` ` `` symbol to create a cell whose head is null, `~`.
 
-```
+```hoon
 > `12
 [~ 12]
 
@@ -297,7 +296,7 @@ Below we use the `` ` `` symbol to create a cell whose head is null, `~`.
 
 Putting `,.` in front of a wing expression removes a face, if there is one.
 
-```
+```hoon
 > -:[a=[12 14] b=[16 18]]
 a=[12 14]
 
@@ -315,7 +314,6 @@ b=[16 18]
 ```
 
 To see other irregular expressions, check the irregular expression [reference document](@/docs/hoon/reference/irregular.md).
-
 
 ## The Standard Library
 
@@ -340,7 +338,7 @@ The Hoon syntax can be intimidating for the uninitiated, so it’s good to remem
 
 - The [Runes](@/docs/hoon/reference/rune/_index.md) page will show you how to use any Hoon rune.
 - The [Cheat Sheet](@/docs/hoon/reference/cheat-sheet.md) is a more compact place to look up rune expressions.
-- The [Standard Library](@/docs/hoon/reference/stdlib/table-of-contents.md)  section has its sub-pages arranged by category. So arithmetic functions, for example, are all found on the same page.
+- The [Standard Library](@/docs/hoon/reference/stdlib/table-of-contents.md) section has its sub-pages arranged by category. So arithmetic functions, for example, are all found on the same page.
 - The [Hoon Style Guide](@/docs/hoon/reference/style.md) will show you how to write your Hoon code so that it’s idiomatic and easily understood by others.
 
 ### Debugging

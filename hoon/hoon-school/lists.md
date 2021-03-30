@@ -15,7 +15,7 @@ It's easy to see where the heads are and where the nesting tails are. The head o
 
 To make a list, let's cast nouns to the `(list @)` ("list of atoms") type.
 
-```
+```hoon
 > `(list @)`~
 ~
 
@@ -37,14 +37,14 @@ The use of casts in this example is helpful to explain to the Hoon compiler exac
 
 Let's make a list whose items are of the `@t` string type:
 
-```
+```hoon
 > `(list @t)`['Urbit' 'will' 'rescue' 'the' 'internet' ~]
 <|Urbit will rescue the internet|>
 ```
 
 The head of a list has the face `i` and the tail has the face `t`. (For the sake of neatness, these faces aren't shown by the Hoon pretty printer.) To use the `i` and `t` faces of a list, you must first prove that the list is non-null by using the conditional family of runes, `?`:
 
-```
+```hoon
 > =>(b=`(list @)`[1 2 3 4 5 ~] i.b)
 -find.i.b
 find-fork-d
@@ -66,7 +66,7 @@ While a list can be of any type, there are some special types of lists that are 
 
 Hoon has two kinds of strings: cords and tapes. Cords are atoms with aura `@t`, and they're pretty-printed between `''` marks.
 
-```
+```hoon
 > 'this is a cord'
 'this is a cord'
 
@@ -76,7 +76,7 @@ Hoon has two kinds of strings: cords and tapes. Cords are atoms with aura `@t`, 
 
 A tape is a list of `@tD` atoms (i.e., ASCII characters).
 
-```
+```hoon
 > "this is a tape"
 "this is a tape"
 
@@ -86,7 +86,7 @@ A tape is a list of `@tD` atoms (i.e., ASCII characters).
 
 You can also use the words `cord` and `tape` for casting:
 
-```
+```hoon
 > `tape`"this is a tape"
 "this is a tape"
 
@@ -104,7 +104,7 @@ For a complete list of these functions, check out the standard library reference
 
 The `flop` function takes a list and returns it in reverse order:
 
-```
+```hoon
 > (flop ~[11 22 33])
 ~[33 22 11]
 
@@ -123,21 +123,21 @@ Without using `flop`, write a [gate](/docs/glossary/gate/) that takes a `(list @
 
 The `sort` function uses the "quicksort" algorithm to sort a list. It takes a list to sort and a gate that serves as a comparator. For example, if you want to sort the list `~[37 62 49 921 123]` from least to greatest, you would pass that list along with the `lth` gate (for "less than"):
 
-```
+```hoon
 > (sort ~[37 62 49 921 123] lth)
 ~[37 49 62 123 921]
 ```
 
 To sort the list from greatest to least, use the `gth` gate ("greater than") as the basis of comparison instead:
 
-```
+```hoon
 > (sort ~[37 62 49 921 123] gth)
 ~[921 123 62 49 37]
 ```
 
 You can sort letters this way as well:
 
-```
+```hoon
 > (sort ~['a' 'f' 'e' 'k' 'j'] lth)
 <|a e f j k|>
 ```
@@ -148,7 +148,7 @@ The function passed to `sort` must produce a `flag`, i.e., `?`.
 
 The `weld` function takes two lists of the same type and concatenates them:
 
-```
+```hoon
 > (weld ~[1 2 3] ~[4 5 6])
 ~[1 2 3 4 5 6]
 
@@ -164,7 +164,7 @@ Without using `weld`, write a gate that takes a `[(list @) (list @)]` of which t
 
 The `snag` function takes an atom `n` and a list, and returns the `n`th item of the list, where `0` is the first item:
 
-```
+```hoon
 > (snag 0 `(list @)`~[11 22 33 44])
 11
 
@@ -186,7 +186,7 @@ The `snag` function takes an atom `n` and a list, and returns the `n`th item of 
 
 Note: there is currently a type system issue that causes some of these functions to fail when passed a list `b` after some type inference has been performed on `b`. For an illustration of the bug, let's set `b` to be a `(list @)` of `~[11 22 33 44]` in the Dojo:
 
-```
+```hoon
 > =b `(list @)`~[11 22 33 44]
 
 > b
@@ -195,7 +195,7 @@ Note: there is currently a type system issue that causes some of these functions
 
 Now let's use `?~` to prove that `b` isn't null, and then try to `snag` it:
 
-```
+```hoon
 > ?~(b ~ (snag 0 b))
 nest-fail
 ```
@@ -204,7 +204,7 @@ The problem is that `snag` is expecting a raw list, not a list that is known to 
 
 You can cast `b` to `(list)` to work around this:
 
-```
+```hoon
 > ?~(b ~ (snag 0 `(list)`b))
 11
 ```
@@ -217,7 +217,7 @@ Without using `snag`, write a gate that returns the `n`th item of a list. There 
 
 The `oust` function takes a pair of atoms `[a=@ b=@]` and a list, and returns the list with `b` items removed, starting at item `a`:
 
-```
+```hoon
 > (oust [0 1] `(list @)`~[11 22 33 44])
 ~[22 33 44]
 
@@ -235,7 +235,7 @@ The `oust` function takes a pair of atoms `[a=@ b=@]` and a list, and returns th
 
 The `lent` function takes a list and returns the number of items in it:
 
-```
+```hoon
 > (lent ~[11 22 33 44])
 4
 
@@ -251,7 +251,7 @@ Without using `lent`, write a gate that takes a list and returns the number of i
 
 The `roll` function takes a list and a gate, and accumulates a value of the list items using that gate. For example, if you want to add or multiply all the items in a list of atoms, you would use `roll`:
 
-```
+```hoon
 > (roll `(list @)`~[11 22 33 44 55] add)
 165
 
@@ -263,14 +263,14 @@ The `roll` function takes a list and a gate, and accumulates a value of the list
 
 The `turn` function takes a list and a gate, and returns a list of the products of applying each item of the input list to the gate. For example, to add `1` to each item in a list of atoms:
 
-```
+```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ +(a)))
 ~[12 23 34 45]
 ```
 
 Or to double each item in a list of atoms:
 
-```
+```hoon
 > (turn `(list @)`~[11 22 33 44] |=(a=@ (mul 2 a)))
 ~[22 44 66 88]
 ```
@@ -307,15 +307,15 @@ The Hoon standard library and compiler are written in Hoon. At this point, you k
 
 Without entering these expressions into the Dojo, what are the products of the following expressions?
 
-```
+```hoon
 > (lent ~[1 2 3 4 5])
 ```
 
-```
+```hoon
 > (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
 ```
 
-```
+```hoon
 > (lent ~[1 2 (weld ~[1 2 3] ~[4 5 6])])
 ```
 
@@ -323,26 +323,26 @@ Without entering these expressions into the Dojo, what are the products of the f
 
 First, bind these faces.
 
-```
+```hoon
 > =b ~['moon' 'planet' 'star' 'galaxy']
 > =c ~[1 2 3]
 ```
 
 Then determine whether the following Dojo expressions are valid, and if so, what they evaluate to.
 
-```
+```hoon
 > (weld b b)
 ```
 
-```
+```hoon
 > (weld b c)
 ```
 
-```
+```hoon
 > (lent (weld b c))
 ```
 
-```
+```hoon
 > (add (lent b) (lent c))
 ```
 
@@ -366,7 +366,7 @@ $(b [i.a b], a t.a)
 
 Run in Dojo:
 
-```
+```hoon
 > +flop ~[11 22 33 44]
 ~[44 33 22 11]
 ```
@@ -384,7 +384,7 @@ Run in Dojo:
 
 Run in Dojo:
 
-```
+```hoon
 > +weld [~[1 2 3] ~[3 4 5 6]]
 ~[1 2 3 3 4 5 6]
 ```
@@ -402,7 +402,7 @@ $(a (dec a), b t.b)
 
 Run in Dojo:
 
-```
+```hoon
 > +snag [0 ~[11 22 33 44]]
 11
 
@@ -425,7 +425,7 @@ $(a t.a, b +(b))
 
 Run in Dojo:
 
-```
+```hoon
 > +lent ~[1 2 3 4 5]
 5
 > +lent "asdf"
@@ -436,7 +436,7 @@ Run in Dojo:
 
 Run in Dojo:
 
-```
+```hoon
 > (lent ~[1 2 3 4 5])
 5
 > (lent ~[~[1 2] ~[1 2 3] ~[2 3 4]])
@@ -449,24 +449,24 @@ Run in Dojo:
 
 Run in Dojo:
 
-```
+```hoon
 > (weld b b)
 <|moon planet star galaxy moon planet star galaxy|>
 ```
 
-```
+```hoon
 > (weld b c)
 ```
 
 This will not run because `weld` expects the elements of both lists to be of the same type.
 
-```
+```hoon
 > (lent (weld b c))
 ```
 
 This also fails for the same reason, but it is important to note that in some languages that are more lazily evaluated, such an expression would still work since it would only look at the length of `b` and `c` and not worry about what the elements were. In that case, it would return `7`.
 
-```
+```hoon
 > (add (lent b) (lent c))
 7
 ```
@@ -484,7 +484,7 @@ We see here the correct way to find the sum of the length of two lists of unknow
 
 Run in Dojo:
 
-```
+```hoon
 > +palindrome "urbit"
 %.n
 > +palindrome "racecar"

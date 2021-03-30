@@ -8,19 +8,19 @@ aliases = ["/docs/learn/hoon/hoon-tutorial/molds/"]
 A mold is an idempotent function that coerces a [noun](/docs/glossary/noun/) to
 be of a specific type or crashes.
 
-
 The simplest molds to understand are arms of cores created with `+$`
 
-```
+```hoon
 +$  height  [feet=@ud inches=@ud]
 ```
 
 A mold is compiled to a gate that takes in any noun and produces a typed value, or crashes:
 
-```
+```hoon
 (height [5 11])
 ::  produces [feet=5 inches=11]
 ```
+
 ```
 (height %wrong)
 ::  crashes
@@ -28,16 +28,15 @@ A mold is compiled to a gate that takes in any noun and produces a typed value, 
 
 To coerce using a gate, it's good practice to use the `;;` rune, which can parse inline molds.
 
-
-```
+```hoon
 ;;(height [5 11])
 ::  produces [feet=5 inches=11]
 ```
+
 ```hoon
 ;;([feet=@ud inches=@ud] [5 11])
 ::  produces [feet=5 inches=11]
 ```
-
 
 `|$` is the mold builder rune which takes a list of molds and produces a mold.
 
@@ -46,13 +45,13 @@ polymorphism](https://en.wikipedia.org/wiki/Parametric_polymorphism) in Hoon,
 and as such we call gates produced with `|$` a **wet gate**. We discuss what this
 means in further detail in the upcoming lesson on [polymorphism](@/docs/hoon/hoon-school/type-polymorphism.md).
 
-Let's look at some examples from `hoon.hoon`. 
+Let's look at some examples from `hoon.hoon`.
+
 ```hoon
 ++  pair
   |$  [head tail]
   [p=head q=tail]
 ```
-
 
 Here is a very simple mold builder. It takes two molds and produces a mold that is a pair of those with the faces `p` and `q`. An example of using this would be `(pair @ud @ud)` which would produce a mold for a cell of `@ud` and `@ud`.
 
@@ -71,14 +70,15 @@ Here is a very simple mold builder. It takes two molds and produces a mold that 
   |$  [item]
   $@(~ [i=item t=(list item)])
 ```
-Here is a mold builder you've used previously. `$@` is a rune that will match the first thing if its sample is an [atom](/docs/glossary/atom/) and the second if the sample is a cell. You should be familiar at this point that a `list` is either `~`  or a pair of an item and a list of item.
 
+Here is a mold builder you've used previously. `$@` is a rune that will match the first thing if its sample is an [atom](/docs/glossary/atom/) and the second if the sample is a cell. You should be familiar at this point that a `list` is either `~` or a pair of an item and a list of item.
 
 ```hoon
 ++  lest
   |$  [item]
   [i/item t/(list item)]
 ```
+
 `lest` you may have heard of as a "non empty list." You can see that it lacks the `~` case that `list` has but it matches the second part of the `list` definition. Remember that Hoon types are defined by shape. `list` could also have been defined in terms of `lest` like this:
 
 ```hoon

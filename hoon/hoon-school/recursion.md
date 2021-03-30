@@ -155,7 +155,7 @@ total for the factorial computation.
 Let's use pseudo-Hoon to illustrate how the stack is working in this example for
 the factorial of 5.
 
-```
+```hoon
 (factorial 5)
 (|- 5 1)
 (|- 4 5)
@@ -185,11 +185,10 @@ skips the first match of a name.
 ### Exercises
 
 1. Write a recursive gate that produces the first _n_
-[Fibonacci numbers](https://en.wikipedia.org/wiki/Fibonacci_number)
+   [Fibonacci numbers](https://en.wikipedia.org/wiki/Fibonacci_number)
 
 2. Write a recursive gate that produces a list of moves to solve the
-[Tower of Hanoi problem](https://en.wikipedia.org/wiki/Tower_of_Hanoi).
-Disks are stacked on a pole by decreasing order of size. Move all of the
-disks from one pole to another with a third pole as a spare, moving one
-disc at a time, without putting a larger disk on top of a smaller disk.
-
+   [Tower of Hanoi problem](https://en.wikipedia.org/wiki/Tower_of_Hanoi).
+   Disks are stacked on a pole by decreasing order of size. Move all of the
+   disks from one pole to another with a third pole as a spare, moving one
+   disc at a time, without putting a larger disk on top of a smaller disk.

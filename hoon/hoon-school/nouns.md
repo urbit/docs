@@ -142,7 +142,7 @@ In computer science, a "literal" is an expression that represents and evaluates 
 
 All of the above are atoms. The underlying noun of each is just an unsigned integer, but each is written in a special syntax indicating to Hoon that the atom is to be represented in a different way. To see their values in the default atom notation, you can tell Hoon to throw away the aura information. Do this by preceding each expression above with `` `@` ``.
 
-```
+```hoon
 > `@`0b1001
 9
 
@@ -174,7 +174,7 @@ The `` `@` `` syntax is used to "cast" a value to a raw atom, i.e., an atom with
 
 Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms, but of the aura `@p`:
 
-```
+```hoon
 > ~zod
 ~zod
 
@@ -196,7 +196,7 @@ Urbit identities such as `~zod` and `~sorreg-namtyv` are also atoms, but of the 
 
 Hoon permits the use of atoms as strings. Strings that are encoded as atoms are called **cords**. Cords are of the aura `@t`. The literal syntax of a cord is text inside a pair of single-quotes, e.g., `'Hello world!'`.
 
-```
+```hoon
 > 'Howdy!'
 'Howdy!'
 
@@ -212,7 +212,7 @@ Hoon permits the use of atoms as strings. Strings that are encoded as atoms are 
 
 Hoon also has **terms**, of the aura `@tas`. Terms are constant values that are used to tag data using the type system. These are strings preceded with a `%` and made up of lowercase letters, numbers, and hyphens, i.e., "kebab case". The first character after the `%` must be a letter. For example, `%a`, `%hello`, `%this-is-kebab-case123`.
 
-```
+```hoon
 > %howdy
 %howdy
 
@@ -267,7 +267,7 @@ Aura         Meaning                        Example of Literal Syntax
 
 You can force Hoon to interpret an atom differently by using the aura symbols in the chart above; e.g., `` `@ux` `` for unsigned hexadecimal, `` `@ub` `` for unsigned binary, etc.:
 
-```
+```hoon
 > `@ux`157
 0x9d
 
@@ -289,14 +289,14 @@ You'll learn more about atoms and auras in [Lesson 2.1](@/docs/hoon/hoon-school/
 
 There's not much mystery about cells. The left of a cell is called the **head**, and the right is called the **tail**. Cells are typically represented in Hoon with square brackets around a pair of nouns.
 
-```
+```hoon
 > [32 320]
 [32 320]
 ```
 
 In this cell `32` is the head and `320` is the tail. Cells can contain cells, and atoms of other auras as well:
 
-```
+```hoon
 > [%hello 'world!']
 [%hello 'world!']
 
@@ -377,7 +377,7 @@ If the way this works isn't immediately clear, remember that each noun can be un
 
 Let's do some examples in the Dojo. We're going to use the `slot` operator, `+`, to return fragments of a noun. For any unsigned integer `n`, `+n` evaluates to the fragment at address `n`.
 
-```
+```hoon
 > +1:[22 [33 44]]
 [22 33 44]
 
@@ -398,14 +398,14 @@ You'll notice that we use the `:` symbol between the slot syntax and the noun. D
 
 What happens if you ask for a fragment that doesn't exist?
 
-```
+```hoon
 > +4:[22 [33 44]]
 ford: %ride failed to execute:
 ```
 
 Let's do a few more examples:
 
-```
+```hoon
 > +2:[['apple' %pie] [0b1101 0xdad]]
 ['apple' %pie]
 
@@ -423,7 +423,6 @@ Let's do a few more examples:
 ```
 
 For those who prefer to think in terms of binary numbers and binary trees, there is another (equivalent) way to understand noun addressing. When the noun address is expressed as a binary number, you can think of the number as indicating a tree path from the top node.
-
 
 As before, the root of the binary tree (i.e., the whole noun) is at address `1`. For the node of a tree at any address `b`, where `b` is a binary number, you get the address of its head by concatenating a `0` to the end of `b`; and to get its tail, concatenate a `1` to the end. For example, the head of the node at binary address `111` is at `1110`, and the tail is at `1111`.
 
@@ -485,27 +484,27 @@ Write the following binary tree as a noun.
 
 ### 1.2a
 
-+ No
-+ Yes
-+ No
-+ Yes
-+ Yes
+- No
+- Yes
+- No
+- Yes
+- Yes
 
 ### 1.2b
 
-+ 86
-+ [[[65 35] 54] 77]
-+ [65 35]
-+ 77
-+ 3
+- 86
+- [[[65 35] 54] 77]
+- [65 35]
+- 77
+- 3
 
 ### 1.2c
 
-+ +2
-+ +6
-+ +14
-+ +15
-+ +31
+- +2
+- +6
+- +14
+- +15
+- +31
 
 ### 1.2d
 
@@ -523,7 +522,7 @@ Write the following binary tree as a noun.
      / \
     /   \
    .     .
-  / \   / \  
+  / \   / \
  2   3 4   .
           / \
          5   .

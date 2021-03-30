@@ -51,7 +51,7 @@ Like all arms, `$` is computed with its parent core as the subject. When `$` is 
 
 Let's make a gate that takes any unsigned integer (i.e., an [atom](/docs/glossary/atom/)) as its sample and returns that value plus one as the product. To do this we'll use the `|=` rune. We'll bind this gate to the face `inc` for "increment":
 
-```
+```hoon
 > =inc |=(a=@ (add 1 a))
 
 > (inc 1)
@@ -210,7 +210,7 @@ It _is_ possible to modify the context of a gate when you make a function call; 
 
 Now let's write a gate called `ten` that adds `b` to the input value:
 
-```
+```hoon
 > =ten |=(a=@ (add a b))
 
 > (ten 10)
@@ -261,7 +261,7 @@ Before finishing the lesson let's unbind `ten`:
 
 Write a gate that takes an atom, `a=@`, and which returns double the value of `a`. Bind this gate to `double` and test it in the Dojo.
 
-```
+```hoon
 > =double |=(a=@ (mul 2 a))
 
 > (double 10)

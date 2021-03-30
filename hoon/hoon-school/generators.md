@@ -28,7 +28,7 @@ a
 This generator takes one argument of any noun and produces it without any
 changes. Once you put this into a file named `echo.hoon` in the `/gen` directory, you must make your ship recognize the change by inputting `|commit %home` in the dojo. You can then run it from the dojo:
 
-```
+```hoon
 > +echo 42
 42
 ```
@@ -36,7 +36,7 @@ changes. Once you put this into a file named `echo.hoon` in the `/gen` directory
 This command just passes in 42 and gets 42 back. But what about when we pass in
 `"asdf"`?
 
-```
+```hoon
 > +echo "asdf"
 [97 115 100 102 0]
 ```
@@ -58,7 +58,7 @@ is terminated with.
 We can tell the Dojo to cast -- apply a specific type to -- the output of our
 generator to see something more familiar:
 
-```
+```hoon
 > _tape +echo "asdf"
 "asdf"
 ```
@@ -73,7 +73,7 @@ below as `add.hoon` in the `/gen` directory.
 
 Now, run the generator:
 
-```
+```hoon
 > +add [3 4]
 7
 ```
@@ -115,7 +115,7 @@ directory.
 
 Now run the generator as below:
 
-```
+```hoon
 > +add
 42
 ```
@@ -133,7 +133,7 @@ Recall that the rune `:-` produces a cell, with the first following expression
 as its head and the second following expression as its tail.
 
 The expression above creates a cell with `%say` as the head. The tail is
-the `|=  *` expression on the line that follows.
+the `|= *` expression on the line that follows.
 
 ```hoon
 |=  *
@@ -141,10 +141,10 @@ the `|=  *` expression on the line that follows.
 (add 40 2)
 ```
 
-`|=  *` constructs a [gate](/docs/glossary/gate/) that takes a noun. This [gate](/docs/glossary/gate/) will itself produce a
+`|= *` constructs a [gate](/docs/glossary/gate/) that takes a noun. This [gate](/docs/glossary/gate/) will itself produce a
 `cask`, which is cell formed by the prepending `:-`. The head of that `cask` is
 `%noun` and the tail is the rest of the program, `(add 40 2)`. The tail of the
-`cask`  will be our actual data produced by the body of the program: in this
+`cask` will be our actual data produced by the body of the program: in this
 case, just adding 40 and 2 together.
 
 #### `%say` generators with arguments
@@ -238,7 +238,7 @@ pseudorandom number between 0 and `n`. Then we form a cell with the result and
 
 We can run this generator like so:
 
-```
+```hoon
 > +dice 6, =bet 2
 [4 2]
 
@@ -280,7 +280,7 @@ list of optional arguments is _empty_.
 Run a command like the one below in the Dojo. Notice that you can use two
 arguments that aren't in the cells.
 
-```
+```hoon
 > +add 40 2
 42
 ```
@@ -379,7 +379,7 @@ This code might be familiar. Just as with their `%say` cousins, `%ask`
 generators need to produce a `cell`, the head of which specifies what kind of
 generator we are running.
 
-With `|=  *`, we create a gate and ignore the standard arguments we are given,
+With `|= *`, we create a gate and ignore the standard arguments we are given,
 because we're not using them.
 
 ```hoon
@@ -434,7 +434,6 @@ use to prompt the user. In the case of our example, we use `"color: "`.
 **`produce`** is used to construct the output of the generator. In our example,
 we produce a `tang`.
 
-
 ```hoon
 |=  t=tape
 ```
@@ -458,4 +457,4 @@ This is a [known issue](https://github.com/urbit/arvo/issues/840) to be resolved
 
 ## Conclusion
 
-You've now reached the end of Chapter 1 of the Hoon tutorial.  Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and [doors](/docs/glossary/door/).  If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
+You've now reached the end of Chapter 1 of the Hoon tutorial. Ideally you should have a fair understanding of the fundamental concepts of subject-oriented programming: limbs, legs, faces, wings, arms, cores, gates, and [doors](/docs/glossary/door/). If you can master these concepts you should have little or no trouble learning to write substantial Hoon programs.
