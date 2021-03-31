@@ -162,27 +162,6 @@ Fails because not a fixpoint:
 ford: %ride failed to execute:
 ```
 
-### `;/` "micfas"
-
-`[%mcnt p=hoon]`: tape as XML element.
-
-##### Expands to
-
-```hoon
-~[%$ ~[%$ 'p']]
-```
-
-##### Examples
-
-```
-~zod/try=> ;/  "foo"
-[[%~. [%~. "foo] ~] ~]
-```
-
-```
-~zod/try=> :/"foo"
-[[%~. [%~. "foo] ~] ~]
-```
 
 ### `;~` "micsig"
 
