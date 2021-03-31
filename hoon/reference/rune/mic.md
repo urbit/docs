@@ -80,11 +80,10 @@ implementation of monadic bind. This rune takes a gate `bind` which takes a mold
 ##### Desugaring
 
 ```hoon
-%+
-  (bind ^:mold)
-expr1
+%+  (bind mold)
+  expr1
 |=  mold
-  expr2
+expr2
 ```
 
 ##### Discussion
@@ -92,13 +91,15 @@ expr1
 `;<` is much like Haskell `do` notation. You have a sequence of events you'd
 like to run such that each past the first depends on the output of the previous
 one. The output of the previous one may not be of the correct type to use as an
-input to the next one, and so an adapter such as `+bind` or `+biff` is needed.
+input to the next one, and so an adapter such as `+biff` is needed.
 
 `;<` differs from [`;~`](#micsig) in that it takes a gate which takes a mold
 that produces an implementation of monadic bind, rather than taking an
 implementation of monadic bind directly.
 
-`;<` can be used to glue a pipeline together to run an asynchronous function or event. This can be helpful when deferring parts of a computation based on external data.
+`;<` can be used to glue a pipeline together to run an asynchronous function or
+event. This can be helpful when deferring parts of a computation based on
+external data.
 
 We remark that you can switch binds in the middle of a sequence of `;<`.
 
@@ -107,12 +108,9 @@ We remark that you can switch binds in the middle of a sequence of `;<`.
 [`+biff`](@/docs/hoon/reference/stdlib/2a/#biff) is the unit monad's
 implementation of monadic bind. That is to say, it takes a unit `a` and a gate
 `b` that accepts a noun that produces a unit, and extracts the value from `a` to
-pass as a sample to `b`. [`+bind`](@/docs/hoon/reference/stdlib/2a/#bind) takes
-a unit `a` and a gate `b` that neither accepts nor produces a unit, and applies
-`b` to the value of `a` and produces a unit. Note that if you do pass `+bind` a
-gate that produces a unit, `+bind` will treat it as though it does not.
+pass as a sample to `b`. 
 
-We illustrate the usage of `;<`, `+biff`, and `+bind` with a `map` of atoms.
+We illustrate the usage of `;<` with `+biff` with a `map` of atoms:
 ```
 ~zod:dojo> =m (my ~[[1 3] [2 2] [3 1]])
          > (~(get by m) 1)
@@ -121,31 +119,16 @@ We illustrate the usage of `;<`, `+biff`, and `+bind` with a `map` of atoms.
 A single usage of `;<` only serves to apply the binding function to the output
 of `expr1`:
 ```
-~zod:dojo> ;<  a=@  _bind  (~(get by m) 1)
-           a
-         [~ 3]
 ~zod:dojo> ;<  a=@  _biff  (~(get by m) 1)
            a
          3
 ```
-Here we see the results of chaining them together:
+Here we see the result of chaining them together:
 ```
 ~zod:dojo> ;<  a=@  _biff  (~(get by m) 1)
            ;<  b=@  _biff  (~(get by m) a)
            b
          1
-~zod:dojo> ;<  a=@  _bind  (~(get by m) 1)
-           ;<  b=@  _biff  (~(get by m) a)
-           b
-         [~ 1]
-~zod:dojo> ;<  a=@  _biff  (~(get by m) 1)
-           ;<  b=@  _bind  (~(get by m) a)
-           b
-         [~ 1]
-~zod:dojo> ;<  a=@  _bind  (~(get by m) 1)
-           ;<  b=@  _bind  (~(get by m) a)
-           b
-         [~ [~ 1]]
 ```
 
 
