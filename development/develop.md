@@ -13,7 +13,7 @@ contribute to. At a high level, you can:
 - [Build clients](#clients), which use Urbit as their back-end to store data and
   interact with the network
 - [Develop agents](#agents), or more precisely [*gall*
-  agents](@/docs/arvo/gall/gall.md), which are written in [Hoon](/docs/hoon/)
+  agents](@/docs/userspace/gall/gall.md), which are written in [Hoon](/docs/hoon/)
   and can best be thought of as microservices
 - [Contribute to Urbit's core](#core), which involves contributing to Urbit
   itself &mdash; either the operating system
@@ -27,7 +27,7 @@ throughout the docs.
 
 ### Build Clients {#clients}
 
-Urbit ships with [Landscape](@/docs/landscape/overview.md), which can be thought
+Urbit ships with [Landscape](@/docs/userspace/landscape/overview.md), which can be thought
 of as its flagship client. Landscape can be broken into two different technical
 components: there's the collection of [agents](#agents) that utilize the
 Urbit for networking and data persistence, and the JavaScript client, which is
@@ -60,17 +60,17 @@ library called `shoe`, which you can learn more about
 Gall agents can be best thought of as individual services with a
 statically-typed interface and built-in database. They're written in
 [Hoon](@/docs/hoon/overview.md) and all conform to a specific
-[interface](@/docs/arvo/gall/gall-api.md) that's defined by the kernel vane
-called [Gall](@/docs/arvo/gall/gall.md).
+[interface](@/docs/userspace/gall/gall-api.md) that's defined by the kernel vane
+called [Gall](@/docs/userspace/gall/gall.md).
 
 Applications built on Urbit utilize a collection of different agents, each of
 which handle specific functionality. The [Landscape
-architecture](@/docs/landscape/overview.md) is a good reference implementation
+architecture](@/docs/userspace/landscape/overview.md) is a good reference implementation
 to see how this pattern works in practice.
 
 If you want to learn how to build gall agents, your best bet is to first [learn
 the Hoon programming language](@/docs/hoon/hoon-school/_index.md), and then follow that
-up with the [Gall guide](@/docs/arvo/gall/tutorial.md).
+up with the [Gall guide](@/docs/userspace/gall/tutorial.md).
 
 ### Contribute to Urbit Core {#core}
 

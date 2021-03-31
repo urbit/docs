@@ -11,7 +11,7 @@ over it. When Unix receives a packet over the correct UDP port, it pipes
 it straight into Ames for handling. Also, all packets sent over the
 Ames network are sent by the Ames vane. Apps and vanes may use
 Ames to directly send messages to other ships. In general, apps use
-[Gall](@/docs/arvo/gall/gall.md) and [Clay](@/docs/arvo/clay/clay.md)
+[Gall](@/docs/userspace/gall/gall.md) and [Clay](@/docs/arvo/clay/clay.md)
 to communicate with other ships rather than using Ames
 directly, but this isn't a requirement. Of course, Gall and Clay use
 Ames behind the scenes to communicate across the network. Jael is the only other
