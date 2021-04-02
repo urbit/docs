@@ -55,7 +55,7 @@ There are three files that matter:
 
 That is, a gate which takes a `vase` and returns the `form` of a `strand` that produces a `vase`. This is a little confusing and we'll look at each part in detail later. For now, note that the thread doesn't just produce a result, it actually produces a strand that takes input and produces output from which a result can be extracted. It works something like this:
 
-![thread diagram](https://pub.m.tinnus-napbus.xyz/thread-diagram.png "diagram of a thread")
+![thread diagram](https://storage.googleapis.com/media.urbit.org/site/thread-diagram.png "diagram of a thread")
 
 This is because threads typically do a bunch of I/O so it can't just immediately produce a result and end. Instead the strand will get some input, produce output, get some new input, produce new output, and so forth, until they eventually produce a `%done` with the actual final result. 
 
