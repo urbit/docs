@@ -332,7 +332,6 @@ Walkthrough
 
 
 <ol>
-  <!-- WHYYYYY GITHUB WHY -->
   <li>Get the post as a noun</li>
   <li>Force cast to indexed post</li>
   <li>Switch on index of post, crashing (reject) if no matches found</li>
