@@ -38,15 +38,19 @@ Here's `sur/post.hoon`
       contents=(list content)
   ==
 ::
++$  reference
+  $%  [%graph group=resource =uid]
+      [%group group=resource]
+  ==
+::
 +$  content
   $%  [%text text=cord]
       [%mention =ship]
       [%url url=cord]
       [%code expression=cord output=(list tank)]
-      [%reference =uid]
-      ::  TODO: maybe use a cask?
-      ::[%cage =cage]
+      [%reference =reference]
   ==
+--
 ```
 
 
@@ -75,17 +79,22 @@ These types are used to cryptographically sign a given post, so that the host of
 
 ### Content Types
 ```
++$  reference
+  $%  [%graph group=resource =uid]
+      [%group group=resource]
+  ==
+::
 +$  content
   $%  [%text text=cord]
       [%mention =ship]
       [%url url=cord]
       [%code expression=cord output=(list tank)]
-      [%reference =uid]
-      ::  TODO: maybe use a cask?
-      ::[%cage =cage]
+      [%reference =reference]
   ==
---
+::
 ```
+
+`reference` is a type that models a reference to a graph object. Currently, the valid types of references are either a reference to a specific node in a graph, or a specific group.
 
 `content` enumerates all the possible content types that a post can have. The possible content types can be:
 
@@ -93,9 +102,9 @@ These types are used to cryptographically sign a given post, so that the host of
 - **Url** - specific data type for urls
 - **Mention** - mentioning another ship
 - **Code** - a pair of a piece of code that was executed and its result (static data, no execution takes place inside of Graph Store)
-- **Reference** - a reference to another post. Uses the `uid` type under the hood
+- **Reference** - a reference to another post, using the `reference` type
 
-Currently, these are the only content types supported by Graph Store, although there is potential for dynamic content support in the form of a `cage`.
+Currently, these are the only content types supported by Graph Store.
 
 ### Post
 ```
