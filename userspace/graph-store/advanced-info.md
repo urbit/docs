@@ -32,7 +32,7 @@ To see how Graph Store handles add-nodes, take a look at [`app/graph-store.hoon#
 
 
 ### Permissions internals
-Internally, the permissions part of a mark (the grow arm) are built and then watches for changes by Graph Store. See [`app/graph-push-hook.hoon#L154`](https://github.com/urbit/urbit/blob/ac096d85ae847fcfe8786b51039c92c69abc006e/pkg/arvo/app/graph-push-hook.hoon#L154) for more info.
+Internally, the permissions part of a mark (the grow arm) are built and then watched for changes by Graph Store. See [`app/graph-push-hook.hoon#L154`](https://github.com/urbit/urbit/blob/ac096d85ae847fcfe8786b51039c92c69abc006e/pkg/arvo/app/graph-push-hook.hoon#L154) for more info.
 
 
 It is important to note that the push hook and permissions system is bespoke, and doesn't necessarily fit all permissions schemes out there. In addition, the permissions structure is likely to change, so it can make sense to implement your own permissioning structure (if you are not using `graph-push-hook`), especially in the case where you are making your own resource control system. The `graph-push-hook` permissions system is not the definite way to implement permissions, and is simply one pre-existing way to do it. The validator mark doesn't need any permissions to compile; it just needs a grow arm with at least `noun`. The way to implement your own permissioning structure is in the form of your own grow arm definitions in the validator. There's nothing special about the `graph-permission-add` arms; they are just constants, arms which are known to push-hook. As stated before, Graph Store proper (`app/graph-store.hoon`) doesn't know anything about the permissions.
