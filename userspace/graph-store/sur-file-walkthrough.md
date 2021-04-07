@@ -149,14 +149,17 @@ Here's `sur/graph-store.hoon`
 +$  node          [=post children=internal-graph]
 +$  graphs        (map resource marked-graph)
 ::
++$  tag-queries   (jug term resource)
+::
++$  update-log    ((mop time logged-update) gth)
++$  update-logs   (map resource update-log)
+::
+::
 +$  internal-graph
   $~  [%empty ~]
   $%  [%graph p=graph]
       [%empty ~]
   ==
-::
-+$  tag-queries   (jug term resource)
-::
 ::
 +$  network
   $:  =graphs
@@ -166,18 +169,12 @@ Here's `sur/graph-store.hoon`
       validators=(set mark)
   ==
 ::
-+$  update
-  $%  [%0 p=time q=update-0]
-  ==
++$  update  [p=time q=action]
 ::
-+$  update-log    ((mop time logged-update) gth)
-+$  update-logs   (map resource update-log)
++$  logged-update  [p=time q=logged-action]
+  
 ::
-+$  logged-update
-  $%  [%0 p=time q=logged-update-0]
-  ==
-::
-+$  logged-update-0
++$  logged-action
   $%  [%add-graph =resource =graph mark=(unit mark) overwrite=?]
       [%add-nodes =resource nodes=(map index node)]
       [%remove-nodes =resource indices=(set index)]
@@ -185,10 +182,8 @@ Here's `sur/graph-store.hoon`
       [%remove-signatures =uid =signatures]
   ==
 ::
-
-
-+$  update-0
-  $%  logged-update-0
++$  action
+  $%  logged-action
       [%remove-graph =resource]
     ::
       [%add-tag =term =resource]
@@ -216,6 +211,7 @@ Here's `sur/graph-store.hoon`
 ::    %yes: May add a node or remove node
 +$  permission-level
   ?(%no %self %yes)
+::
 ```
 
 ### Graph, Node, and Related Objects
@@ -273,11 +269,9 @@ Here are some helpful Wikipedia pages for more info on what this data type repre
 
 ### Update (Part 1)
 ```
-+$  update
-  $%  [%0 p=time q=update-0]
-  ==
++$  update  [p=time q=action]
 ::
-+$  logged-update-0
++$  logged-action
   $%  [%add-graph =resource =graph mark=(unit mark) overwrite=?]
       [%add-nodes =resource nodes=(map index node)]
       [%remove-nodes =resource indices=(set index)]
@@ -285,8 +279,8 @@ Here are some helpful Wikipedia pages for more info on what this data type repre
       [%remove-signatures =uid =signatures]
   ==
 ::
-+$  update-0
-  $%  logged-update-0
++$  action
+  $%  logged-action
       [%remove-graph =resource]
     ::
       [%add-tag =term =resource]
@@ -302,21 +296,20 @@ Here are some helpful Wikipedia pages for more info on what this data type repre
       [%tags tags=(set term)]
       [%tag-queries =tag-queries]
   ==
---
+::
 ```
 
-The `update` type is what is used to interact with Graph Store. It is used both to update subscribers with data (outgoing data) and to write to Graph Store itself (incoming data). The first six actions are sent as pokes to graph-store in the form of a `graph-update`, which is an alias for `update` above. All actions defined here allow you to create/read/update/delete various objects in a running Graph Store gall agent. An `update-0` encapsulates all `logged-update-0` (i.e. any `logged-update-0` is an `update-0` but not necessarily the other way around). The last three actions are scries which allow you to ask a Graph Store agent for its current state regarding the three entries.
+The `update` type is what is used to interact with Graph Store. It is used both to update subscribers with data (outgoing data) and to write to Graph Store itself (incoming data). All actions are meant to be sent as pokes to Graph Store in the form of a `action` (encapsulated by a `graph-update`), except for the last three actions ,`%keys`, `%tags`, and `%tag-queries`, which must be sent scry requests. All actions defined here allow you to create/read/update/delete various objects in a running Graph Store gall agent. An `action` encapsulates all `logged-action`; any `logged-action` is an `action`, but not necessarily the other way around.
 
-If you want to check out a relevant code listing to see how graph store handles these pokes, see [`app/graph-store.hoon#L221-L227`](https://github.com/urbit/urbit/blob/e2ad6e3e9219c8bfad62f27f05c7cac94c9effa8/pkg/arvo/app/graph-store.hoon#L221-L227)
+If you want to check out a relevant code listing to see how graph store handles these pokes, check out the `graph-update` arm in the poke handler at [`app/graph-store.hoon`](https://github.com/urbit/urbit/blob/e2ad6e3e9219c8bfad62f27f05c7cac94c9effa8/pkg/arvo/app/graph-store.hoon#L221-L227)
 
 ### Update (Part 2)
 ```
 +$  update-log    ((mop time logged-update) gth)
 +$  update-logs   (map resource update-log)
 ::
-+$  logged-update
-  $%  [%0 p=time q=logged-update-0]
-  ==
+::
++$  logged-update  [p=time q=logged-action]
 ::
 ```
 
