@@ -18,6 +18,11 @@ This section is not required, but does shed light on some implicit assumptions t
 - Nodes are also validated against the graph's mark when inserted individually (see [`app/graph-store.hoon#L380`](https://github.com/urbit/urbit/blob/e2ad6e3e9219c8bfad62f27f05c7cac94c9effa8/pkg/arvo/app/graph-store.hoon#L380))
 - Only the root level graphs get validated with marks. There is only one mark / validator per graph. All child graphs get validated with the same mark as the root/top-level one.
 - The way in which Graph Store works is by mirroring all data from a given social media channel. Thus, anything you see is your copy of it, and anything you do is sent as a request to the hosting ship.
+- Unmanaged graphs (a graph that isn't associated to a group) actually still have a unmanaged / hidden group. If you want to construct a `reference` to content in an unmanaged graph, it is still possible; the group in that case is then the same resource id as the graph itself
+
+
+
+
 
 
 ### What happens when you add or remove a node?
