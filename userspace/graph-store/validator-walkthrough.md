@@ -32,7 +32,7 @@ The graph represents a chat channel and contains all chat messages in order. A c
 
 
 Here's the definition of the schema in the chat validator mark:
-File: `mar/graph/validator/chat.hoon`
+File: [`mar/graph/validator/chat.hoon`](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/chat.hoon#L33-L40)
 ```
 ++  grab
   |%
@@ -76,7 +76,7 @@ For example, it wouldn't make sense to give readers `%self`, because they do not
 
 Let's see how this permissioning system is implemented in the validator code.
 
-Here is the `grow` arm of `mar/validator/chat.hoon`
+Here is the `grow` arm of [`mar/validator/chat.hoon`](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/chat.hoon#L7-L20)
 ```
 |_  i=indexed-post              :: A
 ++  grow
@@ -131,7 +131,7 @@ The root graph represents the whole Links collection. Every Links entry is a chi
 The comments section holds all individual comment nodes, but comments are not simple leaf nodes. An individual comment is actually a structural node that acts as a revision container, storing the comment's full edit history by storing each edit as a child node. The front-end is responsible for properly displaying the latest revision of the comment.
 
 
-Here's the validator, located at `mar/graph/validator/link.hoon`:
+Here's the validator, located at [`mar/graph/validator/link.hoon`](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/link.hoon#L49-L73):
 ```
 ++  grab
   |%
@@ -198,7 +198,7 @@ Let's analyze the permissions structure.
 
 **TODO** *stubbed out awaiting potential changes in source*
 
-Here's how it is implemented:
+Here's how it is implemented [(source)](https://github.com/urbit/urbit/blob/master/pkg/arvo/mar/graph/validator/link.hoon#L2-L27):
 
 ```
 |_  i=indexed-post
@@ -286,7 +286,7 @@ Here's how it is implemented:
 
 Here, a notebook, which is a collection of blog posts (called notes), is represented by the root graph. All data associated with the blog post is represented by the top level node, which is the note itself along with the associated comments. One level deeper, we see two container structures. The first one is the post revision container; it holds the edit history of your blog post. Every child node of this corresponds to the actual title and text of your blog post. The second one is the comments container. This represents the comment section of your blog post. Every child node of this is not a comment, but a comment revision container, which, as before, contains the edit history of your comment.
 
-Here's its validator
+Here's its validator, located at [`mar/graph/validator.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/mar/graph/validator/publish.hoon#L56-L97)
 ```
   ++  noun
     |=  p=*                            :: 1
@@ -374,9 +374,11 @@ Notably, the revision container for the blog post itself allows the post to be e
   <img src="images/image14.png"/>
 </p>
 
-Let's take a look at the permissioning structure for Publish. 
+Let's take a look at the permissioning structure for Publish.
 
 **TODO** *stubbed out awaiting potential changes in source*
+
+[(source)](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/publish.hoon#L6-L24)
 
 ```
 |_  i=indexed-post
