@@ -393,12 +393,6 @@ is all the subscribers from our ship to the foreign `desk`.
 #### `$rind`, foreign request manager
 
 ```hoon
-    ++  rind                                                ::  request manager
-              $:  nix=@ud                                   ::  request index
-                  bom=(map ,@ud ,[p=duct q=rave])           ::  outstanding
-                  fod=(map duct ,@ud)                       ::  current requests
-                  haw=(map mood (unit))                     ::  simple cache
-              ==                                            ::
 +$  rind                                                ::  request manager
   $:  nix=@ud                                           ::  request index
       bom=(map @ud update-state)                        ::  outstanding
