@@ -441,25 +441,27 @@ associated with those hashes.
 
 `busy` tracks whether or not the request is currently being fulfilled.
 
-#### `++rang:clay`, data store
+#### `$rang:clay`, data repository
 
 ```hoon
-    ++  rang  $:  hut=(map tako yaki)                       ::
-                  lat=(map lobe blob)                       ::
-              ==                                            ::
+  +$  rang                                              ::  repository
+    $:  hut=(map tako yaki)                             ::  changes
+        lat=(map lobe blob)                             ::  data
+    ==                                                  ::
 ```
 
-This is a set of data keyed by hash. Thus, this is where the "real" data
+This is a data repository keyed by hash. Thus, this is where the "real" data
 is stored, but it is only meaningful if we know the hash of what we're
 looking for.
 
-`hut` is a map from hashes to commits. We often get the hashes from
-`hit:dome:clay`, which keys them by logical id. Not every commit has an id.
+`hut` is a `map` from commit hashes (`tako`s) to commits (`yaki`s). We often get
+the hashes from `hit:dome`, which keys them by numerical id. Not every commit
+has an numerical id.
 
-`lat` is a map from hashes to the actual data. We often get the hashes
-from a `++yaki`, a commit, which references this map to get the data.
-There is no `++blob:clay` in any `++yaki:clay`. They are only accessible through
-this map.
+`lat` is a `map` from content hashes (`lobe`s) to the actual content (`blob`s).
+We often get the hashes from a `yaki`, which references this `map` to get the
+data. There is no `blob` in `yaki:clay`. They are only accessible through
+`lat`.
 
 #### `++tako:clay`, commit reference
 
