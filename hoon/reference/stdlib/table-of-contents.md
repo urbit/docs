@@ -68,9 +68,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#bit-rh' title="fn to half-precision float"><code>++bit:rh</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#bit-rs' title="fn to single-precision float"><code>++bit:rs</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#bit-rq' title="fn to quad-precision float"><code>++bit:rq</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#bite' title="Atom slice specificier"><code>$bite</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#bix-ab' title="Parse hex pair"><code>++bix:ab</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4l/#bisk-so' title="Parse aura-atom pair"><code>++bisk:so</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#bloq' title="Blocksize"><code>++bloq</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#bloq' title="Blocksize"><code>$bloq</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2a/#bond' title="Replace null"><code>++bond</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4f/#boss' title="Parser modifier: LSB"><code>++boss</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2a/#both' title="Group unit values into pair"><code>++both</code></a>
@@ -835,7 +836,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 
 ### 1c: molds and mold builders
 
-<a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#bloq' title="Blocksize"><code>++bloq</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#bite' title="Atom slice specificier"><code>$bite</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#bloq' title="Blocksize"><code>$bloq</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#each' title="Mold of fork between two types"><code>++each</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#gate' title="Function"><code>++gate</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#list' title="Mold constructor (list)"><code>++list</code></a>
