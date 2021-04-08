@@ -291,16 +291,6 @@ referenced with a `++case:clay`.
 #### `$dome`, desk data
 
 ```hoon
-    ++  dome                                                ::  project state
-              $:  ang=agon                                  ::  pedigree
-                  ank=ankh                                  ::  state
-                  let=@ud                                   ::  top id
-                  hit=(map ,@ud tako)                       ::  changes by id
-                  lab=(map ,@tas ,@ud)                      ::  labels
-              ==                                            ::
-```
-
-```hoon
 +$  dome
   $:  ank=ankh                                          ::  state
       let=aeon                                          ::  top id
