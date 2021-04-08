@@ -640,18 +640,19 @@ specific version reported (since a range of versions may be requested in
 a subscription). `r.p` is the `desk`. `q` is the path to the filesystem
 node. `r` is the data itself (in the format specified by `p.p`).
 
-### `++nako`, subscription response data
+### `$nako`, subscription response data
 
 ```hoon
-    ++  nako  $:  gar=(map ,@ud tako)                       ::  new ids
-                  let=@ud                                   ::  next id
-                  lar=(set yaki)                            ::  new commits
-                  bar=(set blob)                            ::  new content
-              ==                                            ::
++$  nako                                                ::  subscription state
+  $:  gar=(map aeon tako)                               ::  new ids
+      let=aeon                                          ::  next id
+      lar=(set yaki)                                    ::  new commits
+      bar=(set plop)                                    ::  new content
+  ==                                                    ::
 ```
 
 This is the data that is produced by a request for a range of revisions
-of a desk. This allows us to easily keep track of a remote repository --
+of a `desk`. This allows us to easily keep track of a remote repository --
 all the new information we need is contained in the `nako`.
 
 `gar` is a map of the revisions in the range to the hash of the commit
