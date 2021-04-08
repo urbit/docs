@@ -127,13 +127,6 @@ notified when the request is filled/updated.
 #### `$rave:clay`, general subscription request
 
 ```hoon
-    ++  rave                                                ::  general request
-              $%  [& p=mood]                                ::  single request
-                  [| p=moat]                                ::  change range
-              ==                                            ::
-```
-
-```hoon
   +$  rave                                              ::  general request
     $%  [%sing =mood]                                   ::  single request
         [%next =mood]                                   ::  await next version
@@ -419,6 +412,34 @@ numbers to their associated `duct`.
 
 `haw` is a map from `%sing` requests to their values. This acts as a cache for
 requests that have already been filled.
+
+#### `$update-state`, status of outstanding request
+
+```hoon
++$  update-state
+  $:  =duct
+      =rave
+      have=(map lobe blob)
+      need=(list lobe)
+      nako=(qeu (unit nako))
+      busy=_|
+  ==
+```
+
+An `update-state` is used to represent the status of an outstanding request to a
+foreign `desk`.
+
+`duct` and `rave` are the `duct` along which the request was made and the
+request itself.
+
+`have` is a map of hashes thus far acquired in the request to the data
+associated with those hashes.
+
+`need` is a list of hashes yet to be acquired.
+
+`nako` is a queue of data yet to be validated.
+
+`busy` tracks whether or not the request is currently being fulfilled.
 
 #### `++rang:clay`, data store
 
