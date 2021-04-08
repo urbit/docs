@@ -346,11 +346,10 @@ currently being used by Ford handy.
           ==
 ```
 
-
-This is the filesystem of a neighbor ship. The keys to this map are all
+This is the filesystem of a neighbor ship. The keys to this `map` are all
 the `desk`s we know about on their ship.
 
-#### `++rede`, desk state
+#### `++rede`, generic desk state
 
 ```hoon
     ++  rede                                                ::  universal project
@@ -359,22 +358,36 @@ the `desk`s we know about on their ship.
                   ref=(unit rind)                           ::  outgoing requests
                   dom=dome                                  ::  revision state
               ==                                            ::
++$  rede                                                ::  universal project
+          $:  lim=@da                                   ::  complete to
+              ref=(unit rind)                           ::  outgoing requests
+              qyx=cult                                  ::  subscribers
+              dom=dome                                  ::  revision state
+              per=regs                                  ::  read perms per path
+              pew=regs                                  ::  write perms per path
+          ==                                            ::
 ```
 
 This is our knowledge of the state of a desk, either foreign or
 domestic.
 
-`lim` is the date of the last full update. We only respond to requests
-for stuff before this time.
+`lim` is the most recent `@da` for which we're confident we have all the
+information for. For local `desk`s, this is always `now`. For foriegn `desk`s,
+this is the last time we got a full update from the foreign ship.
 
-`qyx` is the list of subscribers to this desk. For domestic desks, this
-is simply `p:dojo`, all subscribers to the desk, while in foreign desks
-this is all the subscribers from our ship to the foreign desk.
+`ref` is the request manager for the desk. For domestic `desk`s, this is
+null since we handle requests ourselves. For foreign `desk`s, this keeps track
+of all pending foriegn requests plus a cache of the responses to previous requests.
 
-`ref` is the request manager for the desk. For domestic desks, this is
-null since we handle requests ourselves.
+`qyx` is the `set` of subscriptions to this desk, with listening `duct`s. These
+subscriptions exist only until they've been filled. For domestic `desk`s, this
+is simply `qyx:dojo` - all subscribers to the `desk`. For foreign `desk`s this
+is all the subscribers from our ship to the foreign `desk`.
 
-`dom` is the actual data in the desk.
+`dom` is the data in the `desk`.
+
+`regs` are `(map path rule)`, and so `per` is a `map` of read permissions by
+`path` and `pew` is a `map` of write permissions by `path`.
 
 #### `++rind`, request manager
 
