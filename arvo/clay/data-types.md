@@ -603,14 +603,14 @@ There are four kinds of changes that may be made to a node in a `desk`.
 
 `%mut` mutates the file using raw data given by `p`.
 
-#### `++riff:clay`, request/desist
+#### `$riff:clay`, request/desist
 
 ```hoon
-    ++  riff  ,[p=desk q=(unit rave)]                       ::  request/desist
+  +$  riff  [p=desk q=(unit rave)]                      ::  request+desist
 ```
 
-This represents a request for data about a particular desk. If `q`
-contains a `rave`, then this opens a subscription to the desk for that
+This represents a request for data about a particular `desk`. If `q`
+contains a `rave`, then this opens a subscription to the `desk` for that
 data. If `q` is null, then this tells Clay to cancel the subscription
 along this duct.
 
