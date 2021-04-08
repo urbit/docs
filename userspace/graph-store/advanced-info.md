@@ -22,9 +22,6 @@ This section is not required, but does shed light on some implicit assumptions t
 
 
 
-
-
-
 ### What happens when you add or remove a node?
 
 When adding nodes, Graph Store takes in a `(map index node)`. That is, a map of `node`s to add keyed by an `index` representing where in the graph the node should be inserted. However, there are some limitations. For instance, Graph Store does not allow for a `node` which has non-existent ancestors to be added, meaning that missing ancestor nodes are not automatically created. Graph Store requires that every node up until the 2nd to last level of nesting is created, meaning that every ancestor except the parent must be created before being added. The ancestors must either already exist in Graph Store or must be included in the `graph-update`. To ensure consistent behavior, all nodes are added shallowest-index first, which ensures that no child is added before it's parent (if it exists). This is why any non-leaf node must have its parent exist, either already within the graph or in the update. 
@@ -39,5 +36,11 @@ To see how Graph Store handles add-nodes, take a look at [`app/graph-store.hoon#
 ### Permissions internals
 Internally, the permissions part of a mark (the grow arm) are built and then watched for changes by Graph Store. See [`app/graph-push-hook.hoon#L154`](https://github.com/urbit/urbit/blob/ac096d85ae847fcfe8786b51039c92c69abc006e/pkg/arvo/app/graph-push-hook.hoon#L154) for more info.
 
+It is important to note that the push hook and permissions system is bespoke, and doesn't necessarily fit all permissions schemes out there. In addition, the permissions structure is likely to change, so it can make sense to implement your own permissioning structure (if you are not using `graph-push-hook`), especially in the case where you are making your own resource control system.
+The `graph-push-hook` permissions system is not the definite way to implement permissions, and is simply one pre-existing way to do it.
+The validator mark doesn't need any permissions to compile; it just needs a grow arm with at least `noun`.
+The way to implement your own permissioning structure is in the form of your own grow arm definitions in the validator.
+There's nothing special about the `graph-permission-add` arms; they are just constants, arms which are known to push-hook.
+As stated before, Graph Store proper (`app/graph-store.hoon`) doesn't know anything about the permissions.
 
-It is important to note that the push hook and permissions system is bespoke, and doesn't necessarily fit all permissions schemes out there. In addition, the permissions structure is likely to change, so it can make sense to implement your own permissioning structure (if you are not using `graph-push-hook`), especially in the case where you are making your own resource control system. The `graph-push-hook` permissions system is not the definite way to implement permissions, and is simply one pre-existing way to do it. The validator mark doesn't need any permissions to compile; it just needs a grow arm with at least `noun`. The way to implement your own permissioning structure is in the form of your own grow arm definitions in the validator. There's nothing special about the `graph-permission-add` arms; they are just constants, arms which are known to push-hook. As stated before, Graph Store proper (`app/graph-store.hoon`) doesn't know anything about the permissions.
+
