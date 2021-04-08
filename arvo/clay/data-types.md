@@ -556,16 +556,16 @@ This is a single change in a list of elements of type `a`. For example,
 
 `%|` means the lines `p` have changed to `q`.
 
-#### `++nori:clay`, repository action
+#### `$nori:clay`, repository action
 
 ```hoon
-    ++  nori                                                ::  repository action
-              $%  [& q=soba]                                ::  delta
-                  [| p=@tas]                                ::  label
-              ==                                            ::
+  +$  nori                                              ::  repository action
+    $%  [%& p=soba]                                     ::  delta
+        [%| p=@tas]                                     ::  label
+    ==                                                  ::
 ```
 
-This describes a change that we are asking Clay to make to the desk.
+This describes a change that we are asking Clay to make to the `desk`.
 There are two kinds of changes that may be made: we can modify files or
 we can apply a label to a commit.
 
