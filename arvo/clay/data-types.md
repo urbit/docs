@@ -614,13 +614,13 @@ contains a `rave`, then this opens a subscription to the `desk` for that
 data. If `q` is null, then this tells Clay to cancel the subscription
 along this duct.
 
-#### `++riot:clay`, response
+#### `$riot:clay`, response
 
 ```hoon
-    ++  riot  (unit rant)                                   ::  response/complete
+  +$  riot  (unit rant)                                 ::  response+complete
 ```
 
-A riot is a response to a subscription. If null, the subscription has
+A `riot` is a response to a subscription. If null, the subscription has
 been completed, and no more responses will be sent. Otherwise, the
 `rant` is the produced data.
 
