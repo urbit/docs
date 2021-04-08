@@ -288,7 +288,7 @@ that was at the head on date `p`, `%tas` refers to the commit labeled
 all can be reduced down to a `%ud`, only numbered commits may be
 referenced with a `++case:clay`.
 
-#### `++dome:clay`, desk data
+#### `$dome`, desk data
 
 ```hoon
     ++  dome                                                ::  project state
@@ -300,34 +300,53 @@ referenced with a `++case:clay`.
               ==                                            ::
 ```
 
-This is the data that is actually stored in a desk.
+```hoon
++$  dome
+  $:  ank=ankh                                          ::  state
+      let=aeon                                          ::  top id
+      hit=(map aeon tako)                               ::  versions by id
+      lab=(map @tas aeon)                               ::  labels
+      mim=(map path mime)                               ::  mime cache
+      fod=ford-cache                                    ::  ford cache
+      fer=(unit reef-cache)                             ::  reef cache
+  ==                                                    ::
+```
 
-`ang` is unused and should be removed.
+A `dome` is the state of a `desk` and associated data.
 
 `ank` is the current state of the desk. Thus, it is the state of the
-filesystem at revison `let`. The head of a desk is always a numbered
+filesystem at revison `let`. The head of a `desk` is always a numbered
 commit.
 
 `let` is the number of the most recently numbered commit. This is also
 the total number of numbered commits.
 
-`hit` is a map of numerical ids to hashes of commits. These hashes are
-mapped into their associated commits in `hut:rang:clay`. In general, the keys
-of this map are exactly the numbers from 1 to `let`, with no gaps. Of
-course, when there are no numbered commits, `let` is 0, so `hit` is
-null. Additionally, each of the commits is an ancestor of every commit
-numbered greater than this one. Thus, each is a descendant of every
-commit numbered less than this one. Since it is true that the date in
-each commit (`t:yaki`) is no earlier than that of each of its parents,
-the numbered commits are totally ordered in the same way by both
-pedigree and date. Of course, not every commit is numbered. If that
-sounds too complicated to you, don't worry about it. It basically
-behaves exactly as you would expect.
+`hit` is a map of numerical ids to commit hashes. These hashes are mapped into
+their associated commits in `hut.rang` in the `raft` of Clay. In general, the
+keys of this map are exactly the numbers from 1 to `let`, with no gaps. Of
+course, when there are no numbered commits, `let` is 0, so `hit` is null.
+Additionally, each of the commits is an ancestor of every commit numbered
+greater than this one. Thus, each is a descendant of every commit numbered less
+than this one. Since it is true that the date in each commit (`t:yaki`) is no
+earlier than that of each of its parents, the numbered commits are totally
+ordered in the same way by both pedigree and date. Of course, not every commit
+is numbered. If that sounds too complicated to you, don't worry about it. It
+basically behaves exactly as you would expect.
 
 `lab` is a map of textual labels to numbered commits. Note that labels
 can only be applied to numbered commits. Labels must be unique across a
 desk.
 
+`mim` is a cache of the content in the directories that are mounted to Unix.
+Often, we convert to/from mime without anything really having changed; this lets
+us short-circuit that in some cases. Whenever you `%give` an `%ergo` `gift`, you
+must update this.
+
+`fod` is the Ford cache, which keeps files, `mark`s, `cast`s, and `tube`s
+currently being used by Ford handy. 
+
+`fer` is the system file cache, which consists of `vase`s for `hoon.hoon`,
+`arvo.hoon`, `lull.hoon`, and `zuse.hoon`.
 
 #### `++cash`, ankh hash
 
