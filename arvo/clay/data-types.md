@@ -539,17 +539,18 @@ These almost always come from the creation of a file.
 This is a parametrized type for list changes. For example, `(urge @t)`
 is a list change for lines of text.
 
-#### `++unce`, change part of a list.
+#### `+unce`, change part of a list.
 
 ```hoon
-    ++  unce  |*  a=_,*                                     ::  change part
-              $%  [%& p=@ud]                                ::  skip[copy]
-                  [%| p=(list a) q=(list a)]                ::  p -> q[chunk]
-              ==                                            ::
+  ++  unce                                              ::  change part
+    |*  a=mold                                          ::
+    $%  [%& p=@ud]                                      ::  skip[copy]
+        [%| p=(list a) q=(list a)]                      ::  p -> q[chunk]
+    ==                                                  ::
 ```
 
 This is a single change in a list of elements of type `a`. For example,
-`(unce ,@t)` is a single change in a lines of text.
+`(unce @t)` is a single change in lines of text.
 
 `%&` means the next `p` lines are unchanged.
 
