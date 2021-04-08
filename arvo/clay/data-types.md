@@ -463,15 +463,15 @@ We often get the hashes from a `yaki`, which references this `map` to get the
 data. There is no `blob` in `yaki:clay`. They are only accessible through
 `lat`.
 
-#### `++tako:clay`, commit reference
+#### `$tako:clay`, commit reference
 
 ```hoon
-    ++  tako  ,@                                            ::  yaki ref
+  +$  tako  @                                           ::  yaki ref
 ```
 
-This is a hash of a `++yaki:clay`, a commit. These are most notably used as
-the keys in `hut:rang:clay`, where they are associated with the actual
-`++yaki:clay`, and as the values in `hit:dome:clay`, where sequential ids are
+This is a hash of a `yaki:clay`, a commit. These are most notably used as the
+keys in `hut:rang:clay`, where they are associated with the actual `yaki:clay`,
+and as the values in `hit:dome:clay`, where sequential numerical ids are
 associated with these.
 
 #### `++yaki:clay`, commit
