@@ -582,21 +582,26 @@ This describes a `list` of changes to make to a `desk`. The `path`s are `path`s
 to files to be changed, and the corresponding `miso` value is a description of
 the change itself.
 
-#### `++miso:clay`, ankh delta
+#### `$miso:clay`, ankh delta
 
 ```hoon
-    ++  miso                                                ::  ankh delta
-              $%  [%del p=*]                                ::  delete
-                  [%ins p=*]                                ::  insert
-                  [%mut p=udon]                             ::  mutate
-              ==                                            ::
+  +$  miso                                              ::  ankh delta
+    $%  [%del ~]                                        ::  delete
+        [%ins p=cage]                                   ::  insert
+        [%dif p=cage]                                   ::  mutate from diff
+        [%mut p=cage]                                   ::  mutate from raw
+    ==                                                  ::
 ```
 
-There are three kinds of changes that may be made to a node in a desk.
-We can insert a file, in which case `p` is the contents of the new file.
-We can delete a file, in which case `p` is the contents of the old file.
-Finally, we can mutate that file, in which case the `udon` describes the
-changes we are applying to the file.
+There are four kinds of changes that may be made to a node in a `desk`.
+
+`%del` deletes the node.
+
+`%ins` inserts a file given by `p`.
+
+`%dif` is currently unimplemented.
+
+`%mut` mutates the file using raw data given by `p`.
 
 #### `++mizu:clay`, merged state
 
