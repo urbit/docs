@@ -519,17 +519,15 @@ where they are associated with the actual `blob:clay`, and as the values in
         [%direct p=lobe q=page]                         ::  immediate
 ```
 
-This is a node of data. In every case, `p` is the hash of the blob.
+This is a node of data. In both cases, `p` is the hash of the blob.
 
-`%delta` is the case where we define the data by a delta on other data.
-In practice, the other data is always the previous commit, but nothing
-depends on this. `p` is the hash of the new blob, `q.q` is the hash of the
-parent blob, `p.q` is the `mark` of the parent blob, and `r` is the
-delta.
+`%delta` is the case where we define the data by a delta on other data. In
+practice, the other data is always the previous commit, but nothing depends on
+this. `p.q` is the `mark` of the parent blob, `q.q` is the hash of the parent
+blob, and `r` is the delta.
 
-`%direct` is the case where we simply have the data directly. `p` is the hash of
-the data, and `q` is the data itself. These almost always come from the creation
-of a file.
+`%direct` is the case where we simply have the data directly. `q` is the data.
+These almost always come from the creation of a file.
 
 #### `++udon`, abstract delta
 
