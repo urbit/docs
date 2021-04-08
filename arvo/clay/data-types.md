@@ -268,14 +268,18 @@ efficient conversion for when the heavier node is needed.
   [fil=(unit item) dir=(map @ta $)]
 ```
 
-#### `++case:clay`, specifying a commit
+#### `$case`, specifying a commit
 
 ```hoon
-    ++  case                                                ::  ship desk case spur
-              $%  [%da p=@da]                               ::  date
-                  [%tas p=@tas]                             ::  label
-                  [%ud p=@ud]                               ::  number
-              ==                                            ::
++$  case
+  $%  ::  %da:  date
+      ::  %tas: label
+      ::  %ud:  sequence
+      ::
+      [%da p=@da]
+      [%tas p=@tas]
+      [%ud p=@ud]
+  ==
 ```
 
 A commit can be referred to in three ways: `%da` refers to the commit
