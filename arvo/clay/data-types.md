@@ -389,7 +389,8 @@ is all the subscribers from our ship to the foreign `desk`.
 `regs` are `(map path rule)`, and so `per` is a `map` of read permissions by
 `path` and `pew` is a `map` of write permissions by `path`.
 
-#### `++rind`, request manager
+
+#### `$rind`, foreign request manager
 
 ```hoon
     ++  rind                                                ::  request manager
@@ -398,27 +399,32 @@ is all the subscribers from our ship to the foreign `desk`.
                   fod=(map duct ,@ud)                       ::  current requests
                   haw=(map mood (unit))                     ::  simple cache
               ==                                            ::
++$  rind                                                ::  request manager
+  $:  nix=@ud                                           ::  request index
+      bom=(map @ud update-state)                        ::  outstanding
+      fod=(map duct @ud)                                ::  current requests
+      haw=(map mood (unit cage))                        ::  simple cache
+  ==                                                    ::
 ```
 
-This is the request manager for a foreign desk.
+This is the request manager for a foreign `desk`. When we send a request to a
+foreign ship, we keep track of it in here.
 
-`nix` is one more than the index of the most recent request. Thus, it is
-the next available request number.
+`nix` is one more than the index of the most recent request. Thus, it is the
+next available request number.
 
-`bom` is the set of outstanding requests. The keys of this map are some
-subset of the numbers between 0 and one less than `nix`. The members of
-the map are exactly those requests that have not yet been fully
-satisfied.
+`bom` is the set of outstanding requests. The keys of this `map` are some subset
+of the numbers between 0 and one less than `nix`. The members of the `map` are
+exactly those requests that have not yet been fully satisfied.
 
-`fod` is the same set as `bom`, but from a different perspective. In
-particular, the values of `fod` are the same as the values of `bom`, and
-the `p` out of the values of `bom` are the same as the keys of `fod`.
-Thus, we can map ducts to their associated request number and `++rave:clay`,
-and we can map numbers to their associated duct and `++rave:clay`.
+`fod` is the same set as `bom`, but from a different perspective. In particular,
+the values of `fod` are the same as the keys of `bom`, and the `duct` of the
+values of `bom` are the same as the keys of `fod`. Thus, we can map `duct`s to
+their associated request number and `update-state`, and we can map request
+numbers to their associated `duct`.
 
-`haw` is a map from simple requests to their values. This acts as a
-cache for requests that have already been made. Thus, the second request
-for a particular `++mood:clay` is nearly instantaneous.
+`haw` is a map from `%sing` requests to their values. This acts as a cache for
+requests that have already been filled.
 
 #### `++rang:clay`, data store
 
