@@ -501,15 +501,15 @@ signature here tells the whole story.
 
 `t` is the date at which this commit was made.
 
-#### `++lobe:clay`, data reference
+#### `$lobe:clay`, data reference
 
 ```hoon
-    ++  lobe  ,@                                            ::  blob ref
+  +$  lobe  @uvI                                        ::  blob ref
 ```
 
-This is a hash of a `++blob:clay`. These are most notably used in `lat:rang:clay`,
-where they are associated with the actual `++blob:clay`, and as the values in
-`q:yaki:clay`, where paths are associated with their data in a commit.
+This is a hash of a `blob:clay`. These are most notably used in `lat:rang:clay`,
+where they are associated with the actual `blob:clay`, and as the values in
+`q:yaki:clay`, where `path`s are associated with their content hashes in a commit.
 
 #### `++blob:clay`, data
 
