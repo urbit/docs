@@ -511,33 +511,25 @@ This is a hash of a `blob:clay`. These are most notably used in `lat:rang:clay`,
 where they are associated with the actual `blob:clay`, and as the values in
 `q:yaki:clay`, where `path`s are associated with their content hashes in a commit.
 
-#### `++blob:clay`, data
+#### `$blob:clay`, data
 
 ```hoon
-    ++  blob  $%  [%delta p=lobe q=lobe r=udon]             ::  delta on q
-                  [%direct p=lobe q=* r=umph]               ::
-                  [%indirect p=lobe q=* r=udon s=lobe]      ::
-              ==                                            ::
+  +$  blob                                              ::  fs blob
+    $%  [%delta p=lobe q=[p=mark q=lobe] r=page]        ::  delta on q
+        [%direct p=lobe q=page]                         ::  immediate
 ```
 
 This is a node of data. In every case, `p` is the hash of the blob.
 
 `%delta` is the case where we define the data by a delta on other data.
 In practice, the other data is always the previous commit, but nothing
-depends on this. `q` is the hash of the parent blob, and `r` is the
+depends on this. `p` is the hash of the new blob, `q.q` is the hash of the
+parent blob, `p.q` is the `mark` of the parent blob, and `r` is the
 delta.
 
-`%direct` is the case where we simply have the data directly. `q` is the
-data itself, and `r` is any preprocessing instructions. These almost
-always come from the creation of a file.
-
-`%indirect` is both of the preceding cases at once. `q` is the direct
-data, `r` is the delta, and `s` is the parent blob. It should always be
-the case that applying `r` to `s` gives the same data as `q` directly
-(with the prepreprocessor instructions in `p.r`). This exists purely for
-performance reasons. This is unused, at the moment, but in general these
-should be created when there are a long line of changes so that we do
-not have to traverse the delta chain back to the creation of the file.
+`%direct` is the case where we simply have the data directly. `p` is the hash of
+the data, and `q` is the data itself. These almost always come from the creation
+of a file.
 
 #### `++udon`, abstract delta
 
