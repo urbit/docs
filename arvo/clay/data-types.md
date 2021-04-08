@@ -529,48 +529,14 @@ blob, and `r` is the delta.
 `%direct` is the case where we simply have the data directly. `q` is the data.
 These almost always come from the creation of a file.
 
-#### `++udon`, abstract delta
+
+#### `+urge`, list change
 
 ```hoon
-    ++  udon                                                ::  abstract delta
-              $:  p=umph                                    ::  preprocessor
-                  $=  q                                     ::  patch
-                  $%  [%a p=* q=*]                          ::  trivial replace
-                      [%b p=udal]                           ::  atomic indel
-                      [%c p=(urge)]                         ::  list indel
-                      [%d p=upas q=upas]                    ::  tree edit
-                  ==                                        ::
-              ==                                            ::
+  ++  urge  |*(a=mold (list (unce a)))                  ::  list change
 ```
 
-This is an abstract change to a file. This is a superset of what would
-normally be called diffs. Diffs usually refer to changes in lines of
-text while we have the ability to do more interesting deltas on
-arbitrary data structures.
-
-`p` is any preprocessor instructions.
-
-`%a` refers to the trival delta of a complete replace of old data with
-new data.
-
-`%b` refers to changes in an opaque atom on the block level. This has
-very limited usefulness, and is not used at the moment.
-
-`%c` refers to changes in a list of data. This is often lines of text,
-which is your classic diff. We, however, will work on any list of data.
-
-`%d` refers to changes in a tree of data. This is general enough to
-describe changes to any hoon [noun](/docs/glossary/noun/), but often more special-purpose delta
-should be created for different content types. This is not used at the
-moment, and may in fact be unimplemented.
-
-#### `++urge`, list change
-
-```hoon
-    ++  urge  |*(a=_,* (list (unce a)))                     ::  list change
-```
-
-This is a parametrized type for list changes. For example, `(urge ,@t)`
+This is a parametrized type for list changes. For example, `(urge @t)`
 is a list change for lines of text.
 
 #### `++unce`, change part of a list.
