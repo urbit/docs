@@ -603,20 +603,6 @@ There are four kinds of changes that may be made to a node in a `desk`.
 
 `%mut` mutates the file using raw data given by `p`.
 
-#### `++mizu:clay`, merged state
-
-```hoon
-    ++  mizu  ,[p=@u q=(map ,@ud tako) r=rang]              ::  new state
-```
-
-This is the input to the `%merg` kiss, which allows us to perform a
-merge. The `p` is the number of the new head commit. The `q` is a map
-from numbers to commit hashes. This is all the new numbered commits that
-are to be inserted. The keys to this should always be the numbers from
-`let.dom` plus one to `p`, inclusive. The `r` is the maps of all the new
-commits and data. Since these are merged into the current state, no old
-commits or data need be here.
-
 #### `++riff:clay`, request/desist
 
 ```hoon
