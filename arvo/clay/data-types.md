@@ -338,16 +338,6 @@ currently being used by Ford handy.
 `fer` is the system file cache, which consists of `vase`s for `hoon.hoon`,
 `arvo.hoon`, `lull.hoon`, and `zuse.hoon`.
 
-#### `++cash`, ankh hash
-
-```hoon
-    ++  cash  ,@uvH                                         ::  ankh hash
-```
-
-This is a 128-bit hash of an ankh. These are mostly stored within ankhs
-themselves, and they are used to check for changes in possibly-deep
-hierarchies.
-
 #### `++rung`, filesystem per neighbor ship
 
 ```hoon
