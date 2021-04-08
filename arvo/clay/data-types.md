@@ -624,20 +624,20 @@ A `riot` is a response to a subscription. If null, the subscription has
 been completed, and no more responses will be sent. Otherwise, the
 `rant` is the produced data.
 
-#### `++rant:clay`, response data
+#### `$rant:clay`, response data
 
 ```hoon
-    ++  rant                                                ::  namespace binding
-              $:  p=[p=care q=case r=@tas]                  ::  clade release book
-                  q=path                                    ::  spur
-                  r=*                                       ::  data
-              ==                                            ::
+  +$  rant                                              ::  response to request
+    $:  p=[p=care q=case r=desk]                        ::  clade release book
+        q=path                                          ::  spur
+        r=cage                                          ::  data
+    ==                                                  ::
 ```
 
-This is the data at a particular node in the filesystem. `p.p` specifies
+This is the data associated to the response to a request. `p.p` specifies
 the type of data that was requested (and is produced). `q.p` gives the
 specific version reported (since a range of versions may be requested in
-a subscription). `r.p` is the desk. `q` is the path to the filesystem
+a subscription). `r.p` is the `desk`. `q` is the path to the filesystem
 node. `r` is the data itself (in the format specified by `p.p`).
 
 ### `++nako`, subscription response data
