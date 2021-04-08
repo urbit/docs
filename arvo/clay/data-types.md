@@ -556,36 +556,6 @@ This is a single change in a list of elements of type `a`. For example,
 
 `%|` means the lines `p` have changed to `q`.
 
-#### `++umph`, preprocessing information
-
-```hoon
-    ++  umph                                                ::  change filter
-              $|  $?  %a                                    ::  no filter
-                      %b                                    ::  jamfile
-                      %c                                    ::  LF text
-                  ==                                        ::
-              $%  [%d p=@ud]                                ::  blocklist
-              ==                                            ::
-```
-
-This space intentionally left undocumented. This stuff will change once
-we get a well-typed clay.
-
-#### `++upas`, tree change
-
-```hoon
-    ++  upas                                                ::  tree change (%d)
-              $&  [p=upas q=upas]                           ::  cell
-              $%  [%0 p=axis]                               ::  copy old
-                  [%1 p=*]                                  ::  insert new
-                  [%2 p=axis q=udon]                        ::  mutate!
-              ==                                            ::
-```
-
-This space intentionally left undocumented. This stuff is not known to
-work, and will likely change when we get a well-typed clay. Also, this
-is not a complicated type; it is not difficult to work out the meaning.
-
 #### `++nori:clay`, repository action
 
 ```hoon
