@@ -474,23 +474,28 @@ keys in `hut:rang:clay`, where they are associated with the actual `yaki:clay`,
 and as the values in `hit:dome:clay`, where sequential numerical ids are
 associated with these.
 
-#### `++yaki:clay`, commit
+#### `$yaki:clay`, commit
 
 ```hoon
-    ++  yaki  ,[p=(list tako) q=(map path lobe) r=tako t=@da] ::  commit
+  +$  yaki                                              ::  commit
+    $:  p=(list tako)                                   ::  parents
+        q=(map path lobe)                               ::  namespace
+        r=tako                                          ::  self-reference
+        t=@da                                           ::  date
+    ==                                                  ::
 ```
 
 This is a single commit.
 
-`p` is a list of the hashes of the parents of this commit. In most
+`p` is a `list` of the hashes of the parents of this commit. In most
 cases, this will be a single commit, but in a merge there may be more
 parents. In theory, there may be an arbitrary number of parents, but in
 practice merges have exactly two parents. This may change in the future.
 For commit 1, there is no parent.
 
-`q` is a map of the paths on a desk to the data at that location. If you
-understand what a `++lobe:clay` and a `++blob:clay` is, then the type signature
-here tells the whole story.
+`q` is a `map` of the `path`s on a desk to the content hashes at that location.
+If you understand what a `lobe:clay` and a `blob:clay` is, then the type
+signature here tells the whole story.
 
 `r` is the hash associated with this commit.
 
