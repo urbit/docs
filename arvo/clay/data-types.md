@@ -227,12 +227,6 @@ if `q:ankh` is null), then this produces null.
 #### `$ankh`, filesystem node
 
 ```hoon
-    ++  ankh                                                ::  fs node (new)
-              $:  p=cash                                    ::  recursive hash
-                  q=(unit ,[p=cash q=*])                    ::  file
-                  r=(map ,@ta ankh)                         ::  folders
-              ==                                            ::
-              
 +$  ankh                                                ::  expanded node
   $~  [~ ~]
   $:  fil=(unit [p=lobe q=cage])                        ::  file
@@ -255,17 +249,24 @@ are, recursively, the nodes themselves.
 ### `$arch`, shallow filesystem node
 
 ```hoon
-    ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
 +$  arch  (axil @uvI)
+++  axil
+  |$  [item]
+  [fil=(unit item) dir=(map @ta ~)]
 ```
 
-This is analogous to `++ankh:clay` except that the we have neither our
-contents nor the ankhs of our children. The other fields are exactly the
-same, so `p` is a hash of the associated ankh, `u.q`, if it exists, is a
-hash of the contents of this node, and the keys of `r` are the names of
-our children. `r` is a map to null rather than a set so that the
-ordering of the map will be equivalent to that of `r:ankh`, allowing
-efficient conversion.
+An `arch` is a lightweight version of an `ankh` that only contains the hash
+of the associated file and a `map` of child directories, but not the children of
+those directories.
+
+The child directories are given by a `map` to null rather than a `set` so that the
+ordering of the `map` will be the same as it is for an `axal`, allowing
+efficient conversion for when the heavier node is needed.
+```hoon
+++  axal
+  |$  [item]
+  [fil=(unit item) dir=(map @ta $)]
+```
 
 #### `++case:clay`, specifying a commit
 
