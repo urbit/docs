@@ -413,7 +413,7 @@ numbers to their associated `duct`.
 `haw` is a map from `%sing` requests to their values. This acts as a cache for
 requests that have already been filled.
 
-#### `$update-state`, status of outstanding request
+#### `$update-state`, status of outstanding foreign request
 
 ```hoon
 +$  update-state
