@@ -572,17 +572,15 @@ we can apply a label to a commit.
 In the `|` case, we will simply label the current commit with the given
 label. In the `&` case, we will apply the given changes.
 
-#### `++soba:clay`, delta
+#### `$soba:clay`, delta
 
 ```hoon
-    ++  soba  ,[p=cart q=(list ,[p=path q=miso])]           ::  delta
+  +$  soba  (list [p=path q=miso])                      ::  delta
 ```
 
-This describes a set of changes to make to a desk. The `cart` is simply
-a pair of the old hash and the new hash of the desk. The list is a list
-of changes keyed by the file they're changing. Thus, the paths are paths
-to files to be changed while `miso` is a description of the change
-itself.
+This describes a `list` of changes to make to a `desk`. The `path`s are `path`s
+to files to be changed, and the corresponding `miso` value is a description of
+the change itself.
 
 #### `++miso:clay`, ankh delta
 
