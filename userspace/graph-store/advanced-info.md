@@ -44,3 +44,21 @@ There's nothing special about the `graph-permission-add` arms; they are just con
 As stated before, Graph Store proper (`app/graph-store.hoon`) doesn't know anything about the permissions.
 
 
+
+
+### Push Hook Details
+
+As a result of the hook architecture, all hooks have the ability to transform incoming data before it is accepted and trusted as a local input.
+Graph Push Hook is no exception. This is why the `transform-add-nodes` is required for every validator; Graph Store calls this function before adding any nodes to itself.
+Right now, the only thing that `transform-add-nodes` is used for is to replace untrusted foreign timestamps with trusted local timestamps.
+
+Here is a stubbed out example of a `transform-add-nodes` to show its inputs and outputs:
+
+```
+|=  [=index =post =atom was-parent-modified=?]
+^-  [^index ^post]
+!!
+```
+
+The simplest transformer can simply return the exact same indexed post, which would mean that it would trust all foreign `index`es and `post`s by default.
+The atom is always `now.bowl`, i.e. what the datetime on us, the receiving side is.
