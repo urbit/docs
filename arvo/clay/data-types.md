@@ -341,12 +341,14 @@ currently being used by Ford handy.
 #### `++rung`, filesystem per neighbor ship
 
 ```hoon
-    ++  rung  $:  rus=(map desk rede)                       ::  neighbor desks
-              ==                                            ::
++$  rung
+          $:  rus=(map desk rede)                       ::  neighbor desks
+          ==
 ```
 
+
 This is the filesystem of a neighbor ship. The keys to this map are all
-the desks we know about on their ship.
+the `desk`s we know about on their ship.
 
 #### `++rede`, desk state
 
