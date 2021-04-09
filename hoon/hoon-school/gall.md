@@ -34,6 +34,8 @@ Each `card` is a pair of a tag and a [noun](/docs/glossary/noun/). The tag indic
 
 Gall applications can have a number of arms that get called depending on the information they are sent.
 
+### +on-agent
+
 This arm is called once when the agent is started.  It has no input and
 lets you perform any initial IO.
 
