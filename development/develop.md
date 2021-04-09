@@ -37,7 +37,7 @@ with [React](https://reactjs.org).
 Additionally, you can [contribute to
 Landscape](https://github.com/urbit/urbit/blob/master/pkg/interface/CONTRIBUTING.md)
 by tackling issues in its [issue
-tracker](https://github.com/urbit/landscape/issues) and/or running the the
+tracker](https://github.com/urbit/landscape/issues) and/or running the
 [development stream](https://groups.google.com/a/urbit.org/g/dev/c/r2hv4ajCLwk).
 
 You can create your own clients that uses Urbit to store data and interact with
