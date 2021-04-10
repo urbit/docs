@@ -1,5 +1,5 @@
 +++
-title = "`sur` File Walkthrough"
+title = "Data Structure Overview"
 weight = 2
 sort_by = "weight"
 template = "doc.html"

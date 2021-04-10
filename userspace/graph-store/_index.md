@@ -10,7 +10,7 @@ insert_anchor_links = "right"
 
 Basic concepts and architectural overview of Graph Store
 
-## [`sur` File Walkthrough](@/docs/userspace/graph-store/sur-file-walkthrough.md)
+## [Data Structure Overview](@/docs/userspace/graph-store/data-structure-overview.md)
 
 A walkthrough of the various data structures and types used in Graph Store.
 
