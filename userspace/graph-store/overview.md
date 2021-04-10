@@ -11,7 +11,7 @@ insert_anchor_links = "right"
 Graph store is a non-relational database suitable for use in building social media applications. It is primarily designed for storing text-based content and data that is generally threaded and nested. It is not suitable as a general purpose database for highly structured or pure binary data.
 
 <p align="center">
-  <img src="images/image1.png"/>
+  <img src="images/1_graph_store_overview.png"/>
 </p>
 
 Graph Store is mainly in charge of two things: data storage and retrieval, and schema validation. There are two related tools: Graph Push Hook, which provides permissioning support to Graph Store and acts as a proxy layer to Graph Store for outside ships to access, and Graph Pull Hook, which can be used to request Graph Store data from other ships. Importantly, Graph Store itself does not have a built-in permissions system (or rather, is permissions-agnostic), and acts in a purely trusted manner, and assumes that all inputs are trusted. However, it only allows local, authenticated connections to communicate with it, meaning that by default, no one else on the network may modify the state of your Graph Store agent. This is why Graph Push Hook exists: to mediate untrusted requests from outside ships to your instance of Graph Store, rejecting invalid ones where a ship should not be able to modify the data.
@@ -20,7 +20,7 @@ Graph Store is mainly in charge of two things: data storage and retrieval, and s
 ### Posts
 
 <p align="center">
-  <img src="images/image2.png"/>
+  <img src="images/2_post_explanation_diagram.png"/>
 </p>
 
 Above, we can see a representation of a post on the left, along with its table form on the right.
@@ -42,11 +42,11 @@ Currently, Graph Store supports 5 data types for content that is to be stored wi
 ### Graphs and Nodes
 
 <p align="center">
-  <img src="images/image3.png"/>
+  <img src="images/3_graph_node_diagram_a.png"/>
 </p>
 
 <p align="center">
-  <img src="images/image4.png"/>
+  <img src="images/4_graph_node_diagram_b.png"/>
 </p>
 
 A graph is a flat, ordered map of nodes, where each node can have a child graph, which is itself a flat ordered map of nodes. Nodes contain a post and a child graph. In the above diagram, we can see an example of a basic graph on the top, along with the underlying structure of the data in table form underneath.
@@ -63,7 +63,7 @@ A few vocab terms:
 ### Index
 
 <p align="center">
-  <img src="images/image5.png"/>
+  <img src="images/5_index_diagram.png"/>
 </p>
 
 Indexes are a way of uniquely identifying a node within a graph. You can think of `index`es as similar to file paths, although they aren't exactly the same. Roughly, a file path is a unique reference to a file or folder located in the filesystem. Similarly, an index is a unique reference to a node nested within a graph. The written syntax for a full index is very similar to file paths. It consists of every index fragment in order separated by a slash. A node's **level of nesting** refers to how deeply it is nested within the context of the root graph. The level of nesting directly corresponds to the number of items in the index. An index fragment is the atom by which a node is uniquely identified within it's graph, and roughly corresponds to a specific name of a directory along a path. In the diagrams that follow, we'll use the index fragment instead of the index to avoid repeating redundant information, but please note that internally graph-store still store the full index in every node's post.
@@ -81,7 +81,7 @@ However, there is no strict requirement for them to be numbers; they can be cord
 ### Structural Nodes vs. Content-Centric Nodes
 
 <p align="center">
-  <img src="images/image6.png"/>
+  <img src="images/6_structural_vs_content_centric_diagram.png"/>
 </p>
 
 When using Graph Store, there is a notion of **structural nodes** vs. **content-centric nodes**. In the example diagram, we've color coded the different nodes based on what type of node they are. **Content-centric nodes** represent data created or consumed directly by the user. **Structural nodes**, on the other hand do not directly represent user data, and instead represent a higher level relationship between different user data. Structural nodes are used to implement the structure of the schema that is being implemented. In other words, they exist away from the eyes of the user, solely for organizational purposes.
