@@ -24,7 +24,7 @@ Here's the source if you want to explore: [`sur/metadata-store.hoon#L20-L30`](ht
 Here's what the schema of chat looks like:
 
 <p align="center">
-  <img src="images/7_chat_schema_diagram.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/7_chat_schema_diagram.png"/>
 </p>
 
 A chat is a flat graph, where all chat messages are nodes appended to the root of the graph.
@@ -58,7 +58,7 @@ Since the schema of the chat application is simple enough, it has no need for st
 #### Permissioning
 
 <p align="center">
-  <img src="images/8_chat_permissions_diagram.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/8_chat_permissions_diagram.png"/>
 </p>
 
 Let's take a look at the permissions table in the diagram.
@@ -120,7 +120,7 @@ In this example, a switch statement is used to determine the `permissions` value
 #### Schema
 
 <p align="center">
-  <img src="images/9_link_schema_diagram.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/9_link_schema_diagram.png"/>
 </p>
 
 The root graph represents the whole Links collection. Every Links entry is a child node of this graph. Every Links entry is made up of:
@@ -187,11 +187,11 @@ It is important to note that you cannot directly edit the url or link afterwards
 #### Permissioning
 
 <p align="center">
-  <img src="images/10_links_permissions_diagram_a.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/10_links_permissions_diagram_a.png"/>
 </p>
 
 <p align="center">
-  <img src="images/11_links_permissions_diagram_b.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/11_links_permissions_diagram_b.png"/>
 </p>
 
 Let's analyze the permissions structure.
@@ -281,7 +281,7 @@ Here's how it is implemented [(source)](https://github.com/urbit/urbit/blob/mast
 #### Schema
 
 <p align="center">
-  <img src="images/12_publish_schema_diagram.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/12_publish_schema_diagram.png"/>
 </p>
 
 Here, a notebook, which is a collection of blog posts (called notes), is represented by the root graph. All data associated with the blog post is represented by the top level node, which is the note itself along with the associated comments. One level deeper, we see two container structures. The first one is the post revision container; it holds the edit history of your blog post. Every child node of this corresponds to the actual title and text of your blog post. The second one is the comments container. This represents the comment section of your blog post. Every child node of this is not a comment, but a comment revision container, which, as before, contains the edit history of your comment.
@@ -367,11 +367,11 @@ Notably, the revision container for the blog post itself allows the post to be e
 #### Permissioning
 
 <p align="center">
-  <img src="images/13_publish_permissions_diagram_a.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/13_publish_permissions_diagram_a.png"/>
 </p>
 
 <p align="center">
-  <img src="images/14_publish_permissions_diagram_b.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/14_publish_permissions_diagram_b.png"/>
 </p>
 
 Let's take a look at the permissioning structure for Publish.
