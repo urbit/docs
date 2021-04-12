@@ -20,7 +20,7 @@ Graph Store is mainly in charge of two things: data storage and retrieval, and s
 ### Posts
 
 <p align="center">
-  <img src="https://media.urbit.org/docs/userspace/graph-store/2_post_explanation_diagram.png"/>
+  <img src="https://media.urbit.org/docs/userspace/graph-store/2_post_diagram.png"/>
 </p>
 
 Above, we can see a representation of a post on the left, along with its table form on the right.
@@ -107,4 +107,3 @@ There are also three different levels of access a given permission level can hav
 - **%no** - user does not have add or remove privileges for this node
 - **%yes** - user has add or remove privileges for this node, whether or not they authored the parent node
 - **%self** - user has add or remove privileges for child nodes only if they authored the parent node (determined by `author` of post, i.e., they are the author of the post)
-
