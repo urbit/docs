@@ -6,7 +6,7 @@ aliases = ["/docs/learn/azimuth"]
 +++
 Azimuth is a general-purpose public-key infrastructure (PKI) on the Ethereum blockchain, used as a platform for _Urbit identities_. You need such an identity to use the Arvo network.
 
-The primary way to interact with Azimuth is through our [Bridge](https://github.com/urbit/bridge) application and the node libraries that it depends on, [azimuth-js](https://github.com/urbit/azimuth-js) and [urbit-key-generation](https://github.com/urbit/urbit-key-generation). Take a look at the source and play around, or see [Getting Started](@/getting-started.md).
+The primary way to interact with Azimuth is through our [Bridge](https://github.com/urbit/bridge) application and the node libraries that it depends on, [azimuth-js](https://github.com/urbit/azimuth-js) and [urbit-key-generation](https://github.com/urbit/urbit-key-generation). Take a look at the source and play around, or see [Getting Started](@/getting-started/_index.md).
 
 ## Arvo vs. Azimuth
 
