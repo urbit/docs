@@ -54,7 +54,7 @@ Right now, the only thing that `transform-add-nodes` is used for is to replace u
 
 Here is a stubbed out example of a `transform-add-nodes` to show its inputs and outputs:
 
-```
+```hoon
 |=  [=index =post =atom was-parent-modified=?]
 ^-  [^index ^post]
 !!
