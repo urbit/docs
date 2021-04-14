@@ -12,4 +12,4 @@ The keyfile is used as an argument in the command line when booting a ship. Duri
 
 ### Further Reading
 
-- [Installation Guide](@/getting-started/_index.md): Instructions on using a keyfile to boot a ship.
+- [Installation Guide](@/getting-started.md): Instructions on using a keyfile to boot a ship.

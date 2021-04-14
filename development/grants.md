@@ -2,6 +2,7 @@
 title = "Grants Program"
 weight = 20
 template = "doc.html"
+aliases = ["/docs/using/creating-a-development-ship/", "/docs/getting-started/contributing"]
 +++
 
 The [Urbit Foundation](https://urbit.org/blog/first-steps-towards-urbit-org/)
