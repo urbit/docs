@@ -33,7 +33,7 @@ The graph represents a chat channel and contains all chat messages in order. A c
 
 Here's the definition of the schema in the chat validator mark:
 File: [`mar/graph/validator/chat.hoon`](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/chat.hoon#L33-L40)
-```
+```hoon
 ++  grab
   |%
   ++  noun
@@ -77,7 +77,7 @@ For example, it wouldn't make sense to give readers `%self`, because they do not
 Let's see how this permissioning system is implemented in the validator code.
 
 Here is the `grow` arm of [`mar/validator/chat.hoon`](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/chat.hoon#L7-L20)
-```
+```hoon
 |_  i=indexed-post              :: A
 ++  grow
   |%
@@ -132,7 +132,7 @@ The comments section holds all individual comment nodes, but comments are not si
 
 
 Here's the validator, located at [`mar/graph/validator/link.hoon`](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/link.hoon#L49-L73):
-```
+```hoon
 ++  grab
   |%
   ++  noun
@@ -200,7 +200,7 @@ Let's analyze the permissions structure.
 
 Here's how it is implemented [(source)](https://github.com/urbit/urbit/blob/master/pkg/arvo/mar/graph/validator/link.hoon#L2-L27):
 
-```
+```hoon
 |_  i=indexed-post
 ++  grow
   |%
@@ -287,7 +287,7 @@ Here's how it is implemented [(source)](https://github.com/urbit/urbit/blob/mast
 Here, a notebook, which is a collection of blog posts (called notes), is represented by the root graph. All data associated with the blog post is represented by the top level node, which is the note itself along with the associated comments. One level deeper, we see two container structures. The first one is the post revision container; it holds the edit history of your blog post. Every child node of this corresponds to the actual title and text of your blog post. The second one is the comments container. This represents the comment section of your blog post. Every child node of this is not a comment, but a comment revision container, which, as before, contains the edit history of your comment.
 
 Here's its validator, located at [`mar/graph/validator.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/mar/graph/validator/publish.hoon#L56-L97)
-```
+```hoon
   ++  noun
     |=  p=*                            :: 1
     =/  ip  ;;(indexed-post p)         :: 2
@@ -380,7 +380,7 @@ Let's take a look at the permissioning structure for Publish.
 
 [(source)](https://github.com/urbit/urbit/blob/fbd85abf4e41d580654606a6defb764f6a97256d/pkg/arvo/mar/graph/validator/publish.hoon#L6-L24)
 
-```
+```hoon
 |_  i=indexed-post
 ++  grow
   |%

@@ -11,7 +11,7 @@ Let's go through the type definitions of some of the most used types when workin
 
 ## Post
 Here's `sur/post.hoon`
-```
+```hoon
 +$  index       (list atom)
 +$  uid         [=resource =index]
 ::
@@ -55,7 +55,7 @@ Here's `sur/post.hoon`
 
 
 ### Index
-```
+```hoon
 +$  index       (list atom)
 +$  uid         [=resource =index]
 ```
@@ -67,7 +67,7 @@ Here's `sur/post.hoon`
 An index fragment is not an explicitly defined type, but since an index is `(list atom)`, it follows that the type of an index fragment is `atom`. This is what gives the developer the flexibility to use more than just numbers in an index: any type that is representable as an atom can be used in the index.
 
 ### Hashing (Part 1)
-```
+```hoon
 ::  +sham (half sha-256) hash of +validated-portion
 +$  hash  @ux
 ::
@@ -78,7 +78,7 @@ An index fragment is not an explicitly defined type, but since an index is `(lis
 These types are used to cryptographically sign a given post, so that the host of some content cannot act as an imposter, and post content impersonating as someone else. `signature` represents a triple of signed message of hash, author, and author's life at time of posting. These can be used to cryptographically attest to a message. The implementation is a form of asymmetric/public-key encryption, where `q` and `r` are data necessary to look up a ship's public key on azimuth, which can be used to verify the validity of the message.
 
 ### Content Types
-```
+```hoon
 +$  reference
   $%  [%graph group=resource =uid]
       [%group group=resource]
@@ -107,7 +107,7 @@ These types are used to cryptographically sign a given post, so that the host of
 Currently, these are the only content types supported by Graph Store.
 
 ### Post
-```
+```hoon
 +$  post
   $:  author=ship
       =index
@@ -125,7 +125,7 @@ Post is a fundamental type that represents what we normally think of as a post o
 An `indexed-post` is a post with an associated index fragment that can be used to validate a post's index with an index fragment that is expected at the end of the index list.
 
 ### Hashing (Part 2)
-```
+```hoon
 +$  validated-portion
   $:  parent-hash=(unit hash)
       author=ship
@@ -142,7 +142,7 @@ The parts of a `post` that are actually hashed to obtain a value of type the ear
 
 Here's `sur/graph-store.hoon`
 
-```
+```hoon
 +$  graph         ((mop atom node) gth)
 +$  marked-graph  [p=graph q=(unit mark)]
 ::
@@ -215,7 +215,7 @@ Here's `sur/graph-store.hoon`
 ```
 
 ### Graph, Node, and Related Objects
-```
+```hoon
 +$  graph         ((mop atom node) gth)
 +$  marked-graph  [p=graph q=(unit mark)]
 ::
@@ -261,14 +261,14 @@ Here are some helpful Wikipedia pages for more info on what this data type repre
 
 ### Tag Queries
 
-```
+```hoon
 +$  tag-queries   (jug term resource)
 ```
 
 `tag-queries` is a mapping where the keys are `term`s and the values are a `set` of `resource`s (this pattern is called a `jug`). It is a simple tagging system that allows for various ad-hoc collections, similar to filesystem tags being used to sort different files/folders. While the type's name is `tag-queries`, there is no complex querying system as of now. Currently, you can add term/resources pairs into the tag queries, get a list of all terms in tag-queries, and get the whole `jug` out of Graph Store.
 
 ### Update (Part 1)
-```
+```hoon
 +$  update  [p=time q=action]
 ::
 +$  logged-action
@@ -304,7 +304,7 @@ The `update` type is what is used to interact with Graph Store. It is used both 
 If you want to check out a relevant code listing to see how graph store handles these pokes, check out the `graph-update` arm in the poke handler at [`app/graph-store.hoon`](https://github.com/urbit/urbit/blob/e2ad6e3e9219c8bfad62f27f05c7cac94c9effa8/pkg/arvo/app/graph-store.hoon#L221-L227)
 
 ### Update (Part 2)
-```
+```hoon
 +$  update-log    ((mop time logged-update) gth)
 +$  update-logs   (map resource update-log)
 ::
@@ -320,7 +320,7 @@ It is important to note that the source of truth is actually the `update-logs`, 
 The reason for having the main CRUD actions being `logged-update`s is so that Graph Store knows which order to process the log entries in when it is rebuilding its current state. The time associated with the `logged-update` is a way of specifying the canonical order to process operations. All other actions that aren't part of logged-update stand on their own and don't need a timestamp in order to properly apply them.
 
 ### Permissions
-```
+```hoon
 +$  permissions
   [admin=permission-level writer=permission-level reader=permission-level]
 ::

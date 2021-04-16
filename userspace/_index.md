@@ -23,3 +23,8 @@ Resources on the flagship web client Landcape, through which most users interact
 ## [Threads](@/docs/userspace/threads/_index.md)
 
 Resources on threads - monadic functions useful for complex IO.
+
+## [Graph Store](@/docs/userspace/graph-store/_index.md)
+
+Resources on Graph Store, a non-relational database specialized for social media applications.
+
