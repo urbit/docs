@@ -9,7 +9,7 @@ overview of where cryptographic methods are utilized in Arvo, what they are, and
 how they are implemented.
 
 This document does not describe any algorithmic details of cryptographic
-functions, only how they are utilized. This document also does not cover
+functions, only how they are utilized. This document also does not yet cover
 hashing - see [Insecure Hashing](@/docs/hoon/reference/stdlib/2e.md) and [SHA
 Hash Family](@/docs/reference/stdlib/3d.md) for reference material on hash
 functions in the standard library.
@@ -55,12 +55,16 @@ default, all packets are encrypted with AES symmetric key encryption, whose key
 is got by Diffie-Hellman key exchange, with public/private keys generated using
 elliptic curve ed25519.
 
-### +crypto-core
+### +crypto-core {#crypto-core}
 
-The `+crypto-core` is an `+acru:ames`, a
+The `+crypto-core` is an `+acru:ames` core, a
 [lead](@/docs/hoon/reference/advanced.md#dry-polymorphism-and-core-nesting-rules)
-interface core for asymmetric cryptosuites found in `sys/lull.hoon` which
-handles encryption and signing.
+interface core for asymmetric cryptosuites found in `sys/zuse.hoon` which
+handles encryption, decryption, signing, and verifying. In practice, the only
+cryptosuite in use is [`+crub:crypto`](#crub), which implements [Suite B
+Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography). Under
+most circumstances, all asymmetric encryption- and signing-related tasks done
+within Urbit should be mediated via an `+acru` interface.
 
 ```hoon
   ++  acru  $_  ^?                                      ::  asym cryptosuite
@@ -87,6 +91,40 @@ handles encryption and signing.
       --  ::nu                                          ::
     --  ::acru                                          ::
 ```
+
+As the `+acru` core is merely an interface, the details on how it is utilized
+may vary according to the cryptosuite implemented in it. We summarize what each
+core is utilized for here, but see [`crub:crypto`](#crub) for more details on
+how the specific cryptosuite utilized by Ames is implemented.
+
+#### `+as:acru`
+
+This core is used for the standard asymmetric cryptographic operations: encrypting
+(`+seal`), signing (`+sign`), authenticating (`+sure`), and decrypting (`+tear`).
+
+#### `+ex:acru`
+
+This core stores keys and their fingerprints. `+sec` is the secret key (which
+may be empty), `+pub` is the public key associated to the secret key, `+pac` is
+the fingerprint associated to the secret key, and `+fig` is the fingerprint
+associated to the public key. We note that when the core contains both
+encryption and authentication keys, they are typically concatenated to be
+returned as a single atom.
+
+#### `+nu:acru`
+
+This core contains constructors for the `+acru` core. `+pit:nu` is used to
+construct an `+acru` core with both a private and public key (i.e. both
+`+sec:ex` and `pub:ex` are set) from a bitlength and seed. `+nol:nu` can then be
+called from an `+acru` core created with `+pit:nu` to get an `+acru` core with
+only the secret key, while `+com:nu` can be called to get an `+acru` core with
+only the public key.
+
+#### `+de`, `+dy`, `+en`
+
+These arms are for symmetric encryption and decryption. In case of failure,
+`+de` returns null and `+dy` crashes.
+
 
 ### Diffie-Hellman key exchange {#key-exchange}
 
@@ -129,27 +167,184 @@ with a non-comet.
 
 ## `zuse`
 
-### `++ed:crypto` {#ed}
+`zuse` contains several cryptosuites. The only ones currently in use are
+`+ed:crypto`, `+aes:crypto`, and `+crub:crypto`, with the latter being the
+only one which is implementable as an `+acru` core.
+
+### `+ed:crypto` {#ed}
 
 See also the section on Ed25519 for [Vere](#vere-ed).
 
-### `++aes:crypto` {#aes}
+### `+aes:crypto` {#aes}
 
 See also the section on AES SIV for [Vere](#vere-aes).
 
-### `++crub:crypto` {#crub}
+### `+crub:crypto` {#crub}
 
-This core implements [Suite B
+`+crub:crypto` is a gate which creates an `+acru` core that implements [Suite B
 Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
-It makes use of `+ed:crypto` and `+aes:crypto` to implement AES symmetric key
-encryption and decryption (`+seal` and `+tear`), elliptic curve digital
-signature algorithm (ECDSA) signing and verification (`+sign` and `+sure`), and
-elliptic curve Diffie-Hellman key generation (`+pit:nu`).
+It utilizes AES symmetric key encryption and decryption from `+aes:crypto`
+implemented using the Diffie-Hellman key exchange protocol, elliptic curve
+digital signature algorithm (ECDSA) signing and verification with `+ed:crypto`,
+and generates public/private key pairs using elliptic curve cryptography with
+`+ed:crypto`.
 
-It is used ...
+`+crub:crypto` is called with public encryption and authentication keys and
+optional secret encryption and authentication keys.
+```hoon
+  ++  crub  !:
+    ^-  acru
+    =|  [pub=[cry=@ sgn=@] sek=(unit [cry=@ sgn=@])]
+    |%
+    ...
+```
+`+crub` cores are typically not created by directly calling the gate, but
+instead using one of the constructors in `+nu:crub`.
 
-### `++secp:crypto` {#secp}
+#### `+seal:as`
+
+```hoon
+      ++  seal                                          ::
+        |=  [bpk=pass msg=@]
+        ...
+```
+
+Forms a symmetric key using Diffie-Hellman key exchange with the secret key
+stored at `sgn.u.sek` and a public key `bpk`. Then `+sign`s `msg`, encrypts the
+signed message using `+en:siva:aes` with the symmetric key, and then `+jam`s it.
+
+Crashes if `sek` is null.
+
+#### `+sign:as`
+
+```hoon
+      ++  sign                                          ::
+        |=  msg=@
+        ...
+```
+
+Signs message `msg=@` using the secret authentication key `sgn.u.sek`, then forms a
+cell `[signed-message msg]` and `+jam`s it.
+
+Crashes if `sek` is null.
+
+#### `+sure:as`
+
+```hoon
+      ++  sure                                          ::
+        |=  txt=@
+        ...
+```
+
+`+cue`s `txt` to get a signature `sig=@` and message `msg=@`. Verifies that
+`sig` was `msg` signed using the secret key associated to the public key stored
+at `sgn.pub`. Returns `(unit msg)` if so, null otherwise.
+
+#### `+tear:as`
+
+```hoon
+      ++  tear                                          ::
+        |=  [bpk=pass txt=@]
+        ...
+```
+
+Forms a secret symmetric key using Diffie-Hellman key exchange using the secret
+key `cry.u.sek` and encryption key part of the public key `bpk` (which here is a
+concatenation of both the encryption and authentication public keys). `+cue`s
+`txt` and decrypts it using `+de:siva:aes` with the symmetric key. If decryption
+is successful, verifies the decrypted message using authentication key part of
+`bpk`, and returns it if so. Returns null otherwise.
+
+Crashes if `sek` is null.
+
+#### `+de`
+
+```hoon
+    ++  de                                              ::  decrypt
+      |=  [key=@J txt=@]
+      ...
+```
+
+`+cue`s `txt` then decrypts with the symmetric key `key` using `de:sivc:aes`.
+Returns null in case of failure.
+
+#### `+dy`
+
+```hoon
+    ++  dy                                              ::  need decrypt
+      |=  [key=@J cph=@]
+      ...
+```
+
+Same as `+dy`, but crashes in case of failure.
+
+#### `+en`
+
+```hoon
+    ++  en                                              ::  encrypt
+      |=  [key=@J msg=@]
+```
+
+Encrypts `msg` with the symmetric key `key` using `en:sivc:aes`, then `+jam`s
+it.
+
+#### `+fig:ex`
+
+Returns the fingerprint (SHA-256) of `+pub:ex`.
+
+#### `+pac:ex`
+
+Returns the fingerprint (SHA-256) of `+sec:ex`. Crashes if `sek` is null.
+
+#### `+pub:ex`
+
+Returns the concatenation of `sgn.pub` and `cry.pub`.
+
+#### `+sec:ex`
+
+Returns the concatenation of `sgn.u.sek` and `cry.u.sek`.
+
+#### `+pit:nu`
+
+```hoon
+      ++  pit                                           ::  create keypair
+        |=  [w=@ seed=@]
+        ...
+```
+
+Creates a `+crub` core with encryption and authentication public/private keypairs
+generated from a bitwidth `w` and `seed`. The private keys are generated with
+SHA-512, while `+puck:ed:crypto` is used to derive the public keys from the
+private keys.
+
+This is how one typically generates a brand new `+crub` core for signing and
+encrypting your own messages.
+
+#### `+nol:nu`
+
+```hoon
+      ++  nol                                           ::  activate secret
+        |=  a=ring
+        ...
+```
+
+Takes in a `ring` from a `+sec:ex:crub` and generates a new `+crub` core with
+`sek` taken from `+sec:ex` and `pub` generated with `+puck:ed:crypto`. Crashes
+if `+sec:ex` is not a `+crub` secret key.
+
+#### `+com:nu`
+
+```hoon
+      ++  com                                           ::  activate public
+        |=  a=pass
+        ...
+```
+
+Takes in a `pass` from a `+pub:ex:crub` and generates a new `+crub` core with
+`pub` taken from `+pub:ex` and null `sek`.
+
+### `+secp:crypto` {#secp}
 
 Utilized for secp256k1 (Ethereum public and private keys).
 
