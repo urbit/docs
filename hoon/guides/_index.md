@@ -11,3 +11,5 @@ insert_anchor_links = "right"
 ## [CLI Apps](@/docs/hoon/guides/cli-tutorial.md)
 
 ## [Parsing](@/docs/hoon/guides/parsing.md)
+
+## [TuduMVC](@/docs/hoon/guides/tudumvc.md)

@@ -113,14 +113,14 @@ arches are `(axil @uvI)`s - an [axil](https://github.com/urbit/urbit/blob/b1eed3
 #### `%x`
 A care of `%x` will return the noun of the file at the end of the path (and if you type it right, it will return in the right format), like this:
 
-```
+```hoon
 > .^(wain %cx %/test/txt)
 <|This is a test Test line 2|>
 ```
 
 The `%x` care is returning `[%noun <vase>]` (or a noun-mark and a noun wrapped in its type) of a `(list cord)`. Try this in dojo:
 
-```
+```hoon
 > !>(.^(wain %cx %/test/txt))
 [ #t/*''
     q
@@ -131,7 +131,7 @@ The `%x` care is returning `[%noun <vase>]` (or a noun-mark and a noun wrapped i
 ]
 ```
 
-Again, a wain is a `(list cord)`. By casting the noun at the end of the path as a wain, we get back `[%noun [wain <the-noun>]]`. The return of `#t/*''` shows us that, where `*` is noun and `''` is a cord.
+Again, a wain is a `(list cord)`. By casting the noun at the end of the path as a wain, you get back `[%noun [wain <the-noun>]]`. The return of `#t/*''` shows us that, where `*` is noun and `''` is a cord.
 
 ### path
 
@@ -154,7 +154,7 @@ Let's save this [file](/supplemental/readmytang.hoon) into the /gen folder. Taki
 `tang`wain-file
 ```
 And now, let's try using it (don't forget to `|commit %home`)
-```
+```hoon
 > +readmytang %/test/txt
 ~['This is a test' 'Test line 2']
 ```

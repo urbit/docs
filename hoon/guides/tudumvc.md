@@ -16,8 +16,8 @@ The back-end development required to host an app like `%tudumvc` is minimal and 
 
 This guide will take you through the following development phases:
 * [Preparing a Development Environment](./tudumvc/preparing-development.md)
-* [Hosting a web app on Urbit](./lesson2-todomvc-on-urbit-sortof.md)
-* [Configuring a %gall agent to interact with TodoMVC](./lesson3-the-gall-of-that-agent.md)
+* [Hosting a web app on Urbit](./tudumvc/hosting-on-urbit.md)
+* [Configuring a %gall agent to interact with TodoMVC](./tudumvc/agent-supported-hosting.md)
 * [Managing upgrades to %gall agents](./lesson4-updating-our-agent.md)
 * [Connecting a %gall agent as a back-end to a web app](./lesson5-establishing-uplink.md)
 * [Networking %gall agents](./lesson6-things-tudu.md)
