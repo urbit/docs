@@ -357,7 +357,7 @@ in other parts of the system, but for cryptography this is also extremely
 important because it allows us to utilize standard reference implementations for
 the primitives written in C.
 
-All jets related to encryption may be found in `pkg/urbit/jets/e/` (I think?).
+All jets related to encryption may be found in `pkg/urbit/jets/e/`.
 
 In this section we review what specific implementations are utilized.
 
