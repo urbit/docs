@@ -194,9 +194,6 @@ any of its children.
   +$  care  ?(%a %b %c %d %e %f %p %r %s %t %u %v %w %x %y %z)  ::  clay submode
 ```
 
-TODO: The rest of these. Ask Ted if there is any docs on them because a lot of
-these (implemented with +read-X) are uncommented. Also need to check the ones
-that are already here.
 
 This specifies what type of information is requested in a subscription
 or a scry.
