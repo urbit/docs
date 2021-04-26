@@ -198,42 +198,43 @@ any of its children.
 This specifies what type of information is requested in a subscription
 or a scry.
 
-`%a` build a Hoon file at a path.
+`%a` build a Hoon file at a `path`.
 
-`%b` build a dynamically typed mark by name (a `$dais` mark-interface core).
+`%b` build a dynamically typed `mark` by name (a `$dais` mark-interface core).
 
-`%c` build a dynamically typed mark conversion gate (a `$tube`) by "from" and
-"to" mark names
+`%c` build a dynamically typed `mark` conversion gate (a `$tube`) by "from" and
+"to" `mark` names.
 
-`%d` retrieves a `set desk`. `.^((set desk) %cd %)`.
+`%d` returns a `(set desk)` of the `desk`s that exist on your ship.
 
-`%e` builds a statically typed mark by name (a `$nave` mark-interface core).
+`%e` builds a statically typed `mark` by name (a `$nave` mark-interface core).
 
 `%f` builds a statically typed mark converstion gate.
 
-`%p` produces the permissions for a directory.
+`%p` produces the permissions for a directory, returned as a `[dict:clay dict:clay]`.
 
-`%r` requests the file in the same fashion as `%x`, but wraps the result in a vase. 
+`%r` requests the file in the same fashion as `%x`, but wraps the result in a `vase`. 
 
 `%s` has miscellaneous debug endpoints.
 
-`%t` produces a list of descendent paths for a directory within a `yaki`.
+`%t` produces a `(list path)` of descendent `path`s for a directory within a `yaki`.
 
-`%u` checks whether or not the specified file exists. It does not check any of
-its children.
+`%u` produces a `?` depending on whether or not the specified file exists. It
+does not check any of its children.
 
 `%v` requests the entire `dome` for a specified `desk` at a particular `aeon`.
 When used on a foreign `desk`, this get us up-to-date to the requested version.
 
-`%w` requests the version number and date of the specified path.
+`%w` requests the revision number and date of the specified path, returned as a `cass:clay`.
 
-`%x` requests the file at a specified path at the specified commit. If
-there is no node at that path or if the node has no contents (that is,
-if `q:ankh` is null), then this produces null.
+`%x` requests the file at a specified path at the specified commit, returned as
+an `@`. If there is no node at that path or if the node has no contents (that
+is, if `fil:ankh` is null), then this crashes.
 
-`%y` requests an `arch` of the specfied commit at the specified path.
+`%y` requests an `arch` of the specfied commit at the specified path. It will
+return the bunt of an `arch` if the file or directory is not found.
 
-`%z` requests a recursive hash of a node and all its children.
+`%z` requests a recursive hash of a node and all its children, returned as a `@uxI`.
 
 #### `$ankh`, filesystem node
 
