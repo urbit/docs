@@ -343,11 +343,12 @@ desk.
 
 `mim` is a cache of the content in the directories that are mounted to Unix.
 Often, we convert to/from mime without anything really having changed; this lets
-us short-circuit that in some cases. Whenever you `%give` an `%ergo` `gift`, you
-must update this.
+us short-circuit that in some cases. Whenever you `%give` an `%ergo` `gift`
+(updating the unix sync), `mim` is updated to reflect this.
 
-`fod` is the Ford cache, which keeps files, `mark`s, `cast`s, and `tube`s
-currently being used by Ford handy. 
+`fod` is the Ford cache, which keeps a cache of the results of builds performed
+at this `desk`'s current revision, including a full transitive closure of
+dependencies for each completed build.
 
 `fer` is the system file cache, which consists of `vase`s for `hoon.hoon`,
 `arvo.hoon`, `lull.hoon`, and `zuse.hoon`.
