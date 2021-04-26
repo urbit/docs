@@ -163,7 +163,7 @@ A `%many` request asks to be notified on every change in a `desk` for a range of
           ==                                            ::
 ```
 
-Like a `rave` but with caches of current versions for `%next` and `%many`.
+Like a `rave` but with provisions to store current versions for `%next` and `%many`.
 Generally used when we store a request in our state somewhere. This is so that
 we can determine whether new versions actually affect the path we're subscribed to.
 
@@ -174,9 +174,9 @@ we can determine whether new versions actually affect the path we're subscribed 
   +$  mood  [=care =case =path]                         ::  request in desk
 ```
 
-This represents a request for the state of the `desk` at a particular
-commit, specfied by `case`. `care` specifies what kind of information is
-desired, and `path` specifies the path we are requesting.
+This represents a request for data related to the state of the `desk` at a
+particular commit, specfied by `case`. `care` specifies what kind of information
+is desired, and `path` specifies the path we are requesting.
 
 #### `$moat:clay`, range subscription request
 
@@ -248,9 +248,10 @@ if `q:ankh` is null), then this produces null.
   ==                                                    ::
 ```
 
-This is a single node in the filesystem. This may be file or a directory
-or both. In Earth filesystems, a node is a file xor a directory. On
-Mars, we're inclusive, so a node is a file ior a directory.
+This is a recursive filesystem node type that can describe a whole tree of
+folders and files, with subtrees organized by path prefix. In Earth filesystems,
+a node is a file xor a directory. On Mars, we're inclusive, so a node is a file
+ior a directory.
 
 `fil` is the contents of this file, if any. `p.fil` is a hash of the
 contents while `q.fil` is the data itself.
