@@ -201,21 +201,42 @@ that are already here.
 This specifies what type of information is requested in a subscription
 or a scry.
 
-`%u` requests the `++rang:clay` at the current moment. Because this
-information is not stored for any moment other than the present, we
-crash if the `++case:clay` is not a `%da` for now.
+`%a` build a Hoon file at a path.
 
-`%v` requests the `++dome:clay` at the specified commit.
+`%b` build a dynamically typed mark by name (a `$dais` mark-interface core).
 
-`%w` requests the revsion number of the desk.
+`%c` build a dynamically typed mark conversion gate (a `$tube`) by "from" and
+"to" mark names
+
+`%d` retrieves a `set desk`. `.^((set desk) %cd %)`.
+
+`%e` builds a statically typed mark by name (a `$nave` mark-interface core).
+
+`%f` builds a statically typed mark converstion gate.
+
+`%p` produces the permissions for a directory.
+
+`%r` requests the file in the same fashion as `%x`, but wraps the result in a vase. 
+
+`%s` has miscellaneous debug endpoints.
+
+`%t` produces a list of descendent paths for a directory within a `yaki`.
+
+`%u` checks whether or not the specified file exists. It does not check any of
+its children.
+
+`%v` requests the entire `dome` for a specified `desk` at a particular `aeon`.
+When used on a foreign `desk`, this get us up-to-date to the requested version.
+
+`%w` requests the version number and date of the specified path.
 
 `%x` requests the file at a specified path at the specified commit. If
 there is no node at that path or if the node has no contents (that is,
 if `q:ankh` is null), then this produces null.
 
-`%y` requests a `++arch` of the specfied commit at the specified path.
+`%y` requests an `arch` of the specfied commit at the specified path.
 
-`%z` requests the `++ankh` of the specified commit at the specfied path.
+`%z` requests a recursive hash of a node and all its children.
 
 #### `$ankh`, filesystem node
 
