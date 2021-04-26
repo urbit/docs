@@ -341,9 +341,6 @@ can only be applied to numbered commits. Labels must be unique across a
 desk.
 
 `mim` is a cache of the content in the directories that are mounted to Unix.
-Often, we convert to/from mime without anything really having changed; this lets
-us short-circuit that in some cases. Whenever you `%give` an `%ergo` `gift`
-(updating the unix sync), `mim` is updated to reflect this.
 
 `fod` is the Ford cache, which keeps a cache of the results of builds performed
 at this `desk`'s current revision, including a full transitive closure of
