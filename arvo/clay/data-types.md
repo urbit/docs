@@ -621,7 +621,11 @@ There are four kinds of changes that may be made to a node in a `desk`.
 
 `%ins` inserts a file given by `p`.
 
-`%dif` is currently unimplemented.
+`%dif` is currently unimplemented. This may seem strange, so we remark that
+diffs for individual files are implemented using `+diff` and `+pact` in `mark`s.
+So for an `ankh`, which may include both files and directories, `%dif` being
+unimplemented really just means that we do not yet have a formal concept of
+changes in directory structure.
 
 `%mut` mutates the file using raw data given by `p`.
 
