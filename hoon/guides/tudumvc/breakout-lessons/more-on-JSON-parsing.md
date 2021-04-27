@@ -1,6 +1,6 @@
 +++
-title = "More on JSON Parsing"
-weight = 2
+title = "8. More on JSON Parsing"
+weight = 9
 template = "doc.html"
 +++
 

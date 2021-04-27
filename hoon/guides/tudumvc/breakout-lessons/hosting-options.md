@@ -1,5 +1,5 @@
 +++
-title = "Hosting your Urbit in the Cloud"
+title = "1. Hosting your Urbit in the Cloud"
 weight = 2
 template = "doc.html"
 +++

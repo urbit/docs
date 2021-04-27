@@ -4,7 +4,7 @@ weight = 2
 template = "doc.html"
 +++
 
-# Introduction
+# Introduction {#introduction}
 This guide will walk you through implementing `%tudumvc`, an Urbit-centric port of TodoMVC, on a test urbit.
 
 Each lesson of this guide, including this one, will follow a standard format. In each lesson, you'll have the following sections which should help you check for understanding as you progress through them:
@@ -27,24 +27,24 @@ Each lesson of this guide, including this one, will follow a standard format. In
 
 While it's possible to develop on a live Ship, it's highly discouraged for a variety of reasons. Instead we'll want to do our development on a test instance of an urbit, also known as a Fake Ship. In this lesson, you'll learn how to set up a Fake Ship for development purposes, and how to set up an efficient workflow using this Fake Ship. If you're already familiar with Urbit, you might be able to skim this lesson, but you should at least give it a once over before proceeding.
 
-## Learning Checklist
+## Learning Checklist {#learning-checklist}
 * How to boot an Urbit ship.
 * How to create an efficient workflow for developing on Urbit.
 * What additional materials are needed for completing this guide?
 * What does the end product we're intending to design look like?
 
-## Goals
+## Goals {#goals}
 * Create an Urbit development environment.
 * Restart your development environment using a fresh Fake Ship at any time.
 * Access the guide's materials quickly and efficiently from your local development environment.
 * Use your Fake Ship for simple things like logging into Landscape.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 * We expect you to start at 0 and have absolutely nothing Urbit related or prepared, in advance.
 * You will need some things _from_ this lesson to continue forward, but we're going to tell you how to get those things.
 * We will assume you have minimal knowledge of using Linux or can use a search engine to self-help where some Linux terminology may be confusing or not fully explained.
 
-## The Lesson
+## The Lesson {#the-lesson}
 [Urbit](https://urbit.org/understanding-urbit/) is a virtual personal server that runs on *nix (Unix based platforms, like MacOS, Linux or the Windows Linux Subsystem). The binary, or program, that makes Urbit work has to have an appropriate *nix environment on which to run, so you'll start with getting you such a platform. If you already have a *nix system you plan on using, you should be able to skip this first part.
 
 There are many options for hosting your Urbit including doing so on your local MacOS or Linux computer, using a  adding the Linux subsystem to your Windows box or even running your Urbit on a [Raspberry Pi](http://dasfeb.industries/). If you want to run on a cloud server, check out this brief [breakout lesson](./breakout-lessons/hosting-options.md) describing your options.
@@ -56,7 +56,7 @@ The best way of getting always-up-to-date instructions is by referencing urbit.o
 
 Now you have the Urbit binary installed and ready to use. Let's look at how you can start a ship with them:
 
-### Booting a Fake Ship
+### Booting a Fake Ship {#lesson-booting-a-fake-ship}
 You can boot literally any ship as a fake ship. In this guide, I'll be using the ship `~nus` but you could use `~zod` or `~rabsef-bicrym` or (quite literally) any of the thousands of other valid Urbit ID. Assuming you're going with ~nus, enter the following command in the folder where you unpacked the Urbit binary:
 ```
 ./urbit -F nus
@@ -97,7 +97,7 @@ With your fake ship running, you should be able to access it at the web interfac
 
 The following steps make this setup more convenient for development:
 
-### Prepare for Development
+### Prepare for Development {#lesson-developing-on-urbit}
 On a live ship, any time you make a breaking mistake, you risk having to breach your ship and boot from the ground up. However, with a fake ship, you can make a backup of the freshly booted state that you can quickly restore and re-use.
 
 Making a backup of a fake ship is easy - but you'll want to get it into an ideal state before you back it up:
@@ -148,15 +148,15 @@ You're now ready to start developing. You should now get the development files l
 ### Downloading this Repository
 In some folder of your development environment (not your pier), run `git clone https://github.com/rabsef-bicrym/tudumvc.git` in your computer's shell to make a copy of the repository. This will make it very easy to copy files into our /devops folder as you move forward with the lessons.
 
-## Homework
+## Homework {#homework}
 * Read about [how cores work](https://urbit.org/docs/hoon/hoon-school/arms-and-cores/).
 * Read about [generators and how to install files to your Urbit](https://urbit.org/docs/hoon/hoon-school/setup/#generators).
 * Make sure your syncing functionality is working by adding a file or [generator](./breakout-lessons/towers-of-hanoi.md) to the /devops sub-folders and syncing it over to your ship. Make sure you can see the file copied over into your home directory.
 
-## Exercises
+## Exercises {#exercises}
 * Write the generator as described in the Homework reading and sync it to your ship using our sync method.
 
-## Summary and Addenda
+## Summary and Addenda {#summary}
 You are now ready to begin development work on Urbit. There are several things you might want to know or do from here (in addition to continuing to the next lesson), such as:
 * [Booting a ship that has data from the live network, also known as an `-L` ship](./breakout-lessons/L-ships.md).
 * [Test your /devops sync functionality](./breakout-lessons/towers-of-hanoi.md).

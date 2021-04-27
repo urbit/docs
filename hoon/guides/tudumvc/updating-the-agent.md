@@ -1,9 +1,10 @@
 +++
 title = "4. Updating the Agent"
-weight = 2
+weight = 5
 template = "doc.html"
 +++
 
+## Current Project Status {#introduction}
 At this point, you should have a `%gall` agent that can:
 * Host a default Earth web page
 * Contain a limited data structure
@@ -14,20 +15,20 @@ You also have a version of TodoMVC that can:
 
 In this part of the guide, you're going to work on integrating all of the existing functionality of TodoMVC into our %gall agent and hooking up the TodoMVC Earth web app to your agent. You'll also learn to return an updated state (of the task list) to our Earth web app for display. Lastly, you'll move a minified version of our new `%tudumvc` to the folder you're hosting through our app.
 
-## Learning Checklist
+## Learning Checklist {#learning-checklist}
 * How to upgrade the state database of our %gall agent.
 * How to add new poke `action`s.
 
-## Goals
+## Goals {#goals}
 * Investigate the expected state of "todos" in the Earth app.
 * Upgrade the %gall agent's state to accommodate the Earth app state.
 * Upgrade the %gall agent's `action`s to accommodate all possible Earth app actions.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 * A Fake Ship as prepared in [Lesson 3 - The `%gall` of that `agent`](./agent-supported-hosting.md).
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [src-lesson4](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson4), but you should try doing this on your own instead of just copying our files in.
 
-## The Lesson
+## The Lesson {#the-lesson}
 Let's take a look at how the data in TodoMVC is being stored. First, launch your Urbit (recall that you previously made the Earth app dependent on our ship being online due to the asynchronous call to authenticate with our ship), then open the app (`yarn run dev` in the /react-hooks folder).
 
 Add some todos and mark at least one of them as complete, then open the browser's console (`F12` in most browsers).
@@ -50,7 +51,7 @@ Using the `parse` method of JSON to turn the "todos" item from `localStorage` in
 
 On the Urbit side, you'll further structure the original design of the Earth app's data, turning this array into a `map`. A `map` will enable to indexing a given task quickly by it's "id" to make changes to it (mark it as complete, edit the "label", etc.).
 
-### Upgrading the state
+### Upgrading the state {#lesson-state-upgrades}
 First, you'll need to open the `/sur/tudumvc.hoon` file and define our state as a type so that we can reference it easily in our /app file (not necessary, but idiomatic - one could define the state structures in /app, as well). Recall that we import `/sur/tudumvc.hoon` using `/-` in our /app file.
 
 #### `/sur/tudumvc.hoon`
@@ -284,7 +285,7 @@ Reviewing the changes made above:
     * For state `%1`, just return the `incoming-state` as is.
     * For state `%0`, take the current `task` value, which is just a `@tU` and turn it into a value in our map using [`++  put:by`](https://urbit.org/docs/reference/library/2i/#put-by).
 
-### Upgrading the `action`s
+### Upgrading the `action`s {#lesson-upgrading-pokes}
 Now, you need to upgrade the /sur and /app files again to accommodate additional poke actions that satisfy for all of our possible TodoMVC events. You can take some time to explore TodoMVC and try and determine what those behaviors are, but we'll tell you they should include (at minimum):
 * Adding a Task
 * Removing a Task
@@ -456,7 +457,7 @@ Hopefully, you can see how you've updated the existing state's `task` value by t
 * First, it creates a face called `new-id` who's value is determined by a conditional statement.
 * If the `tasks` face of the user's state is empty, it will start at task `id` 1 when adding a task.
 * Otherwise it will look to find the greatest current `id` value and increment it by one (in other words the agent always creates new tasks at the next positive integer `id` position).
-    * This ordering function is a little complex, so we've made a [breakout lesson](./lesson4-1-ordering-our-tasks.md) to explain it; if you don't want to read that, just trust me that that's what it does.
+    * This ordering function is a little complex, so we've made a [breakout lesson](./breakout-lessons/ordering-tasks.md) to explain it; if you don't want to read that, just trust me that that's what it does.
 * In either event, what it does next is again use [`put:by`](https://urbit.org/docs/reference/library/2i/#put-by) to store the incoming task (`task:action`) at the `key`-position of `new-id`, with an incomplete state (`%.n`).
 Try it in dojo by entering `:tudumvc &tudumvc-action [%add-task 'test']`. You should see something like this:
 ```hoon
@@ -522,17 +523,17 @@ We're not going to tell you how `%edit-task` works - in fact, that's one of your
 * An `id`.
 * An updated `label`.
 
-## Homework
+## Homework {#homework}
 * Examine the available structures of [JSON in Hoon](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/lull.hoon#L40), found in `lull.hoon`.
 * Read through [`++  enjs`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3263) in `zuse.hoon`.
 * Read through [`++  dejs`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3317) in `zuse.hoon`.
 
-## Exercises
+## Exercises {#exercises}
 * Write a description of how `%edit-task` works, referencing the code in the [src-lesson4](https://github.com/rabsef-bicrym/tudumvc/blob/95dd6aef0551db7123c085fe7efa7cdf8c889ee2/src-lesson4/app/tudumvc.hoon#L86) folder.
     * Include a successful `dojo` `poke` command and show your output.
 * Attempt to create a few JSON objects (or other structures/types of JSON) in dojo and then use [`dejs:format`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3317) to parse them into regular Hoon types.
 
-## Summary and Addenda
+## Summary and Addenda {#summary}
 You're just about complete with a single-player `%tudumvc` implementaiton - the next lesson will focus on updating the Earth web app to connect directly to Urbit (and ditch localStorage entirely) and parsing JSON in Urbit.
 
 For now, we hope you are able to:

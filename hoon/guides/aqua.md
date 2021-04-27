@@ -1,6 +1,6 @@
 +++
 title = "Writing Aqua Tests"
-weight = 37
+weight = 4
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
-title = "-L Ships, or The Live Fake Ship"
-weight = 2
+title = "2. -L Ships, or The Live Fake Ship"
+weight = 3
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
 title = "TuduMVC - a React.js + Hooks Implementation of TodoMVC with Urbit Backend"
-weight = 2
+weight = 5
 template = "doc.html"
 +++
 

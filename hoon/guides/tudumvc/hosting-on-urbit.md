@@ -1,13 +1,13 @@
 +++
 title = "2. Hosting Files on Urbit"
-weight = 2
+weight = 3
 template = "doc.html"
 +++
 
-# TodoMVC on Urbit (sort of)
+# TodoMVC on Urbit (sort of) {#introduction}
 In this lesson, you'll get the default React.js + Hooks implementation of TodoMVC running on your ship. While this will allow us to directly host the application from Urbit, however it won't have full Urbit integration until a later lesson. For now, you'll just be making the default app available on the Earth web, served from our Urbit.
 
-## Learning Checklist
+## Learning Checklist {#learning-checklist}
 * Interacting with TodoMVC using `yarn`, including
     * How to use yarn to run JavaScript apps in a _dev_ environment.
     * How to use yarn to package JavaScript apps for hosting.
@@ -17,21 +17,21 @@ In this lesson, you'll get the default React.js + Hooks implementation of TodoMV
 * What does the file-server app do?
 * What file types is Urbit capable of serving?
 * How would one go about expanding the set of file types that Urbit can serve?
-* What is a `poke` and how do I do me one?
+* What is a poke and how are they used?
 
-## Goals
+## Goals {#goals}
 * Prepare a minified version of TodoMVC from the source code.
 * Host the minified version of TodoMVC (or some other Earth web file) from our Urbit.
 * Briefly describe the use of /mar files in Urbit.
 * poke an app from the `dojo`.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 * A development environment as created in Lesson 1.
 * The [Lesson 2 files](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson2) from the git repository that you cloned in the last lesson.
   * If you haven't done this yet, in a folder that isn't your home directory of your ship, run `git clone https://github.com/rabsef-bicrym/tudumvc.git`.
   * **NOTE:** You could alternatively complete this lesson by cloning the TodoMVC repository and working in the react-hooks example therein, but we've packaged just that example in the files prepared for this lesson.
 
-## The Lesson
+## The Lesson {#the-lesson}
 [TodoMVC](https://github.com/tastejs/todomvc) is a basic todo list that has been replicated in a variety of JavaScript frameworks to help teach how those JavaScript frameworks differ. We're going to look at the [React.js + Hooks](https://github.com/tastejs/todomvc/tree/master/examples/react-hooks) implementation of TodoMVC for two main reasons:
 
 The first is the ubiquity of React.js for web app development. TodoMVC's React.js + Hooks implementation also incorporates the most modern usage of React.js (Hooks) which is, in our opinion, the best way of building modern front ends, regardless of its dominance in the market.
@@ -48,7 +48,7 @@ Urbit and React.js are both similarly stateful and, by the end of this guide, yo
 
 Let's start by preparing our TodoMVC app for hosting:
 
-### Preparing TodoMVC
+### Preparing TodoMVC {#lesson-preparing-earth-app}
 Navigate to the [/tudumvc/src-lesson2/react-hooks](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson2/react-hooks) folder in this repository that you have cloned locally. The files in this folder are all still basic JavaScript (and other non-urbit native) files. There are two basic ways you can interact with these files:
 * As a dev environment run directly from the files.
   * This method allows us to run the app directly from the files and have changes made to the JavaScript automatically cause the page to rerender.
@@ -161,7 +161,7 @@ Rather than dealing with that here, however, just do the following:
 
 Everything should complete this time. Now to to host these files to the Earth web using our Urbit.
 
-### Hosting Earth Web Files from Urbit
+### Hosting Earth Web Files from Urbit {#lesson-hosting-files-from-urbit}
 To host Earth web files this, you'll want to use the `%file-server` %gall agent, though you could theoretically work with %eyre directly.
 
 #### %gall agent Communications
@@ -176,7 +176,7 @@ We'll spend more time later talking about pokes and cards, but for now we can su
 
 We're going to use a poke from the dojo to tell `%file-server` to start serving our TodoMVC Earth web app, so let's take a look at how that agent expects us to communicate with it.
 
-#### /sur/file-server.hoon
+#### `/sur/file-server.hoon` {#lesson-sur-file-server}
 %gall agents are frequently accompanied by a /sur file that specifies a few types that the agent can recognize. Chief amongst these types, for our understanding, is the action type. It's completely unnecessary for an agent to even have an action type, but by convention most agents with complex poke structures have a type called action (at least), and perhaps some others as well. These will commonly be accompanied by a /mar file that can help mold nouns of various types (JSON for instance) into the correct structure for the action (or other) poke type.
 
 The action type specification in a /sur file effectively tells us what kind of (action) pokes, or what kind of input we can provide that specific agent. Open the file /sur/file-server.hoon and take a look at the definition of action:
@@ -207,7 +207,7 @@ In this case, you want to serve our files from /app/todomvc (`clay-base` - recal
 [%serve-dir /'~todomvc' /app/todomvc %.y %.n]
 ```
 
-#### poke-ing `%file-server`
+#### poke-ing `%file-server` {#lesson-poke-file-server}
 To send that poke to `%file-server` from the dojo you're going to enter a command using the following format:
 ```hoon
 :<gall agent> &<gall agent>-action <poke action>
@@ -259,16 +259,16 @@ And then `|commit %home`.  Then refresh the page.
 
 Is it working? Nice!
 
-## Homework
+## Homework {#homework}
 * Read through the rest of the commented version of [`/sur/file-server.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sur/file-server.hoon).
 * Read the [`+on-poke` arm](https://github.com/urbit/urbit/blob/50d45b0703eb08a5b46a8ff31818b3a6f170b9f8/pkg/arvo/app/file-server.hoon#L105) of `/app/file-server.hoon` and try and figure out what's going on there - how is the poke from above being handled?
 * Read _just_ the introduction/overview of [`~timluc-miptev`'s Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/overview.md#what-is-gall)
 
-## Exercises
+## Exercises {#exercises}
 * Identify how you might switch our current TodoMVC hosting to private, requiring a login.
 * Host a static HTML file from your test ship that says "Hello World!" or something else, if you're feeling daring.
 
-## Summary and Addenda
+## Summary and Addenda {#summary}
 You now know how to host Earth web files from Mars - and there's way less latency than you might imagine (eat your heart out, NASA)! While we'll discuss it later in more detail, you might want to have a better understanding of:
 * [cards and pokes](./lesson2-1-quip-card-and-poke.md)
 

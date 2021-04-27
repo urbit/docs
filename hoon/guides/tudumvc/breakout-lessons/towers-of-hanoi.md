@@ -1,6 +1,6 @@
 +++
-title = "Towers of Hanoi generator"
-weight = 2
+title = "3. Towers of Hanoi generator"
+weight = 4
 template = "doc.html"
 +++
 

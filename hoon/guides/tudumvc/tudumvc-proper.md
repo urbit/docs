@@ -1,6 +1,6 @@
 +++
 title = "6. Things Tudu and People TuSee"
-weight = 2
+weight = 7
 template = "doc.html"
 +++
 
@@ -10,11 +10,11 @@ This lesson includes a lot of changes but few of them are structural and most of
 
 Let's get after it then.
 
-## Learning Checklist
+## Learning Checklist {#learning-checklist}
 * How to use wires and paths to send and receive data.
 * How to add new mark files to your program for various purposes.
 
-## Goals
+## Goals {#goals}
 * Upgrade your %gall agent's state to handle multiple todo lists from various ships.
 * Upgrade your Earth app to handle multiple todo lists, including selecting between various lists and subscribing to additional lists.
 * Add new pokes to your agent that allow for specification of the ship to which those pokes should apply.
@@ -22,20 +22,20 @@ Let's get after it then.
     * We'll also see how you can use the same pokes you've already written to poke remote ships through the dojo.
 * Add new pokes to handle receipt of new tasks data from ships you subscribe to when they make changes.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 * The Earth web app as modified in [the last part of this guide](./earth-to-mars-comms.md).
     * A copy of our current Earth web app can be found in [/src-lesson6/todomvc-start](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6/todomvc-start).
 * A new Fake Ship (probably ~zod) with whom you can share task!
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [/src-lesson6](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6), but you should try doing this on your own instead of just copying our files in. No cheating!
 
-## The Lesson (Part I)
+## The Lesson (Part I) {#the-lesson-pt-I}
 We're going to start by updating our available pokes to accommodate actions required to share our todo lists, updating our state to hold several todo lists owned by various ships and adding to the state a tuple of sets of editors; requested-editors, approved-editors and denied-editors.
 
 Begin by launching your Fake Ship and a new Fake Ship (of your choice, we'll assume ~zod) with the Lesson 5 version of tudumvc installed and started. These two ships should be running on the same machine so they can discover eachother (fake ships are not networked _outside_ a given machine, but on the same machine they are inter-discoverable!)
 
 You'll also want to have two terminals running to copy files from a central editing folder to _both_ of your fake ships simultaneously, to allow you to update both of them quickly.
 
-### Updating the Types
+### Updating the Types {#lesson-pt-I-types}
 First, update the agent's /sur file to have two new types - `shared-tasks` and `editors`:
 
 #### Adding Types
@@ -210,7 +210,7 @@ Again, all this is really doing (of import) is the `+grab` arm is saying "if I r
 
 Now to work on the agent, itself:
 
-### Updating `/app/tudumvc.hoon`
+### Updating `/app/tudumvc.hoon` {#lesson-pt-I-state}
 To start, you'll update the state of `%tudumvc` to accommodate multiple ships. After that, you'll need to update `+on-init`, `+on-load`, `+on-poke`, and `+on-watch`, as well as adding new features to `+on-agent` and your helper core:
 
 #### The State
@@ -406,7 +406,7 @@ In the case where the saved state's head-tag is `%1`, take the existing task lis
 
 In the case where the saved state's head-tag is `%0`, first make the single-item task into a `(map id [label done])` using `(my :~([1 [task.state-ver %n]]))`, then perform the `%1` manipulations to that map.
 
-#### `++  on-poke`
+#### `++  on-poke` {#lesson-pt-I-pokes}
 You need to make a few of changes to `+on-poke` to accommodate the changes made above:
 * `action:tudumvc` poke additions:
   * `[%sub partner=ship]`
@@ -782,7 +782,7 @@ In addition to `%kick`ing the partner from their subscription, `%force-remove` a
 #### `++  on-peek`
 We should probably update on-peek at some time, right? Maybe later.
 
-#### `++  on-watch`
+#### `++  on-watch` {#lesson-pt-I-on-watch}
 `+on-watch` is great, because it uses %galls built-in distributed-app functionality to handle data delivery. It listens for a path (as a gate that takes a path) in a `%watch` card. From the path, it knows what data to start delivering. In the last part of this guide, you implemented a path on which apps can listen, `/mytasks`, and receive `%json` data. In this version, you'll add `/sub-tasks` that returns task list data in a hoon format.
 
 <table>
@@ -832,7 +832,7 @@ The agent will send a card the first time a ship starts to `%watch` `/sub-tasks`
 
 The agent also, when hearing a `%watch` on `/sub-tasks`, adds the subscriber to the `requested.editors` state (letting you know they've asked for access to edit your tasks).
 
-#### `++  on-agent`
+#### `++  on-agent` {#lesson-pt-I-on-agent}
 In `+on-agent`, the agent handles cards coming from other ships on various wires. That is, subscriptions we've made will be sent data, and that data (sent in the form of `%fact`s or `%kick`s, in this case) will be processed using the code in this arm. `+on-agent` will need to handle:
 
 * Our `updates:tudumvc` poke structure entirely:
@@ -935,7 +935,7 @@ All of the other incremental data types (`%task-add`, `%task-remove`, `%task-com
 
 If the agent receives a `%kick`, it cleans up the local state with [`del:by`](https://urbit.org/docs/hoon/reference/stdlib/2i/#del-by) and deletes the task list it was maintaining for that subscription.
 
-#### ++  `on-leave`
+#### ++  `on-leave` {#lesson-pt-I-on-leave}
 `+on-leave` needs to handle requests being made to the agent to unsubscribe. On receiving unsubscribe actions, the agent will [`~&`](https://urbit.org/docs/hoon/reference/rune/sig/#sigpam) a message to the dojo indicating that some subscriber has left (utterly unnecessary but neat), and then remove the requesting ship from the `editors` data object entirely (so they aren't left with approved/denied edit rights, or left in the requested set).
 
 **NOTE:** `+on-leave` takes a path. If your app had multiple subscription paths, you could use this to switch behavior on unsubscribe based on what data set the user is unsubscribing from.
@@ -1045,7 +1045,7 @@ The changes to `+tasks-json` are as follows:
 
 The big change here is to handle a `shared-tasks` input, or a `(map ship tasks)`, rather than just a `tasks` input, using `+partner-handler` (which just calls `+object-maker` recursively for each partner). `+object maker` works just like it did before, but it's called for each ship key in `shared`. This pattern creates an array of JSON objects structured like this: `{'~sampel-palnet': [{'id': 1, 'label': 'the label', 'done': FALSE} {'id': 2, 'label': 'the label 2', 'done': FALSE}]}`. On the Earth web side, you'll be able to switch between the elements of this array to show all of the task lists for the host ship and any ship to which it subscribes.
 
-### Testing General Networking
+### Testing General Networking {#lesson-pt-I-urbit-networked-applications}
 You now have all you need to establish basic `%gall`-side networking of the agent. While the frontend wont work just yet, you can test the `%gall` side - try a few of the following actions between your two test ships after syncing and `|commit`ing:
 
 * Check your state:
@@ -1167,7 +1167,7 @@ And, if you check `~nus`'s state thereafter:
 
 Fiddle around with this a little more and get comfortable with the way the ships are now interacting, and then continue on to Part II of the Lesson.
 
-## The Lesson (Part II)
+## The Lesson (Part II) {#lesson-pt-II}
 In this, the last section of this guide, you're going to implement Earth web support for the changes we made in the last section. Let's start with the hoon changes:
 
 ### Adding Support for `frontend` Actions
@@ -1401,17 +1401,17 @@ And, just like that, you've created a networked version of TodoMVC using Urbit a
 
 ![finished product image](./final-product.png)
 
-## Homework
+## Homework {#homework}
 No homework this time - maybe in our next course!
 
-## Exercises
+## Exercises {#exercises}
 * Beautify the display of tuduMVC in browser by cleaning up my pitiable implementation of the drop-down menu and the input box.
     * See if you can add ship name validation to the subscription box
 * Add to the data being sent to the site a list of people requesting edit access to your task list, and a method whereby you can provide them edit access or deny their request
 * Add an approval list for people requesting access to your todo list so not just anyone can subscribe.
     * This will require several other changes, in addition to just having the list.
 
-## Summary and Addenda
+## Summary and Addenda {#summary}
 Well - you did it. You've just built your first Earth web app supported entirely by Urbit, with networking. 
 
 Should you have any questions, please reach out to `~rabsef-bicrym` via Urbit DM and he'll try to get back to you quickly.

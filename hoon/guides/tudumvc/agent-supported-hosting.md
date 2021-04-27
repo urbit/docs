@@ -1,12 +1,12 @@
 +++
 title = "3. %gall Agent Supported Hosting"
-weight = 2
+weight = 4
 template = "doc.html"
 +++
 
 You now know how to host Earth web content from your Urbit and you've explored some of the limitations of that ability. In this lesson, you'll learn how to develop a %gall agent to support the back-end of an Earth web app. We call this agent `%tudumvc` because it' TodoMVC but on Urbit so it needs to have a funny name.
 
-## Learning Checklist
+## Learning Checklist {#learning-checklist}
 * What is the basic structure of a %gall agent?
 * How to add state to an agent.
 * What is `+dbug`?
@@ -15,7 +15,7 @@ You now know how to host Earth web content from your Urbit and you've explored s
 * What is airlock and how does it work, generally?
 * How does incoming JSON look to our Urbit?
 
-## Goals
+## Goals {#goals}
 * Install a %gall app.
 * Examine the structure of %gall apps.
 * Scry our state.
@@ -23,12 +23,12 @@ You now know how to host Earth web content from your Urbit and you've explored s
 * Link our Earth web app with our urbit.
 * Print out, but do not yet interpret, JSON coming from our Earth web app.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 * An empty Fake Ship (wipe out the one you made last lesson and start anew)
 * The [Lesson 3 files](./src-lesson3) cloned to your development environment.
   *  **NOTE:** The `/src-lesson3/react-hooks` folder packaged for this lesson has been pre-modified for this lesson. While we will go over these modifications and off-screen changes, you have been pre-warned that the default files will not work for this lesson.
 
-## The Lesson
+## The Lesson {#the-lesson}
 Start by syncing the files from in the /src-lesson3/app, /src-lesson3/mar and /src-lesson4/sur to your ship. We'll examine these files in detail below, but we need them there to start. Additionally, once they've sync'd and you've `|commit %home`-ed, use `|start %tudumvc` to start the app we've just added. You should see:
 ```
 gall: loading %tudumvc
@@ -45,7 +45,7 @@ You've just installed your first %gall app and it's working! Let's check out som
 
 Over the course of this lesson, you'll see how this %gall app works, update the state to handle the type of data TodoMVC uses, add poke actions to mirror those events that TodoMVC can cause and, lastly, examine the JSON data TodoMVC can send us and begin learning about how to parse that data on the Urbit side.  Let's start with what you already know:
 
-### /sur/tudumvc.hoon
+### `/sur/tudumvc.hoon` {#lesson-sur-file}
 In the last lesson, you learned that a %gall agent often has pokes that are defined in the `/sur` file associated with that app. Taking a look at `/sur/tudumvc.hoon`, you should see one poke type, `action`, with a sub-type consisting of one tagged-union cell, `%add-task`, that takes a cord and gives that argument a face (variable name) of `task`:
 ```
 +$  action
@@ -64,10 +64,10 @@ To poke this app, again, you need to:
 
 Let's take a look at the /mar file next to see how that works in conjunction with this poke:
 
-### /mar/tudumvc/action.hoon
+### `/mar/tudumvc/action.hoon` {#lesson-mar-file}
 Our /mar file does a few things of import:
 
-It imports the /sur/tudumvc.hoon file to make available the mold called action from that file:
+It imports the `/sur/tudumvc.hoon` file to make available the mold called action from that file:
 ```hoon
 /-  tudumvc
 ```
@@ -102,7 +102,7 @@ This guide will cover how JSON parsing works later. For now, you only need to kn
 
 Now, some new material:
 
-### /app/tudumvc.hoon
+### /app/tudumvc.hoon {#lesson-app-file}
 While %gall agents can use files from across the filesystem of your urbit (some use /lib and /gen files, etc), and while some %gall agents require nothing more than the /app file to function, the most common pattern you'll see is an /app, a /mar and a /sur file working in conjunction to provide the basic service, data type interpretation, and interaction models (respectively).
 
 Again, the /sur file defines structures or types for our application and the /mar file defines methods for converting various types of input our application might receive into types it expects (like those defined in /sur).
@@ -154,11 +154,11 @@ They will often proceed with a series of aliases using [`+*`](https://urbit.org/
  ```
 _this_ refers to the whole, primary door of our agent. If you need to refer to our agent's main door, you can use _this_.
 
-In the [breakout lesson on the `(quip card _this)`](./lesson2-1-quip-card-and-poke.md) we discussed using '\_this' to mean "something in the form of _this_." Now you should see that _this_ is just the agent itself. When the arms of our agent cast their output using `^-  (quip card _this)`, the expectation is that they will return a list of cards, or actions, and the structure of the app again (potentially with state changes).
+In the [breakout lesson on the `(quip card _this)`](./breakout-lessons/quip-card-and-poke.md) we discussed using '\_this' to mean "something in the form of _this_." Now you should see that _this_ is just the agent itself. When the arms of our agent cast their output using `^-  (quip card _this)`, the expectation is that they will return a list of cards, or actions, and the structure of the app again (potentially with state changes).
 
 The `def` shorthand works similarly to `this`, letting us refer to our agent wrapped in the `default-agent` /lib which basically just gives us the ability to create default behaviors for some of the arms of our door that are not currently in use (see `+on-arvo` in our code, for instance).
 
-#### 10 Functional Arms
+#### 10 Functional Arms {#lesson-app-file-gall-arms}
 Internal to an agent's main door, there will _always_ be **10 arms** (unless it's a `%shoe` agent (a CLI supporting agent), but this case should be considered separately - also some of the 10 expected arms may be defined as cores with sub-arms to do additional work, and some may reach out to our helper core's arms to do additional work). The 10 arms of %gall are exquisitely covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/arms.md), but we'll review a few of them below:
 ```hoon
 ++  on-init
@@ -264,7 +264,7 @@ Both of these functions allow us to see in to the state of our app.
 
 That's about it then for the /app, /mar, and /sur files, and the `%tudumvc` app generally.  Let's finish with a discussion of the changes made to the TodoMVC Earth web app.
 
-### TodoMVC Earth App
+### TodoMVC Earth App {#lesson-todomvc}
 I've set up a modified copy of TodoMVC for you in the [/src-lesson3 folder](./src-lesson3/react-hooks). The current TodoMVC app is not ready to be minified, as there's still more work to do, which is why our /app/tudumvc folder has a placeholder index.html file that the agent is serving with the `%file-server` poke sent in `+on-init`. Nonetheless, remember that you can run the non-minified version using `yarn run dev`.
 
 This version of the TodoMVC app has been updated to communicate with your Urbit. You may need to do some additional customization, but we'll point this out to you when we get there.
@@ -366,7 +366,7 @@ Next, start the modified Earth web app using `yarn run dev`. Open the console on
 Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8080/~/channel/1614149322-3066e9. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing).
 ```
 
-#### `+cors-registry` and `|cors-approve`
+#### `+cors-registry` and `|cors-approve` {#lesson-cors-registry}
 In your dojo, punch in `+cors-registry`. You'll see something like this:
 ```hoon
 > +cors-registry
@@ -397,17 +397,17 @@ We should note that it is sorta weird that our JSON doesn't equal our state valu
 
 The next few parts of this guide finish the conversion of TodoMVC into `%tudumvc` and demonstrate how to interpret JSON into pokes an urbit can actually understand. It will also cover also updating an app's state and available poke `action`s.
 
-## Homework
+## Homework {#homework}
 * Read this [airlock reference doc](https://urbit.org/docs/reference/vane-apis/airlock/).
 * Check out the state of `%picky` defined [here](https://github.com/timlucmiptev/gall-guide/blob/c95140b2c3c62e45c346a25efe027d55dfdd5bd6/example-code/app/picky-backend.hoon#L7), as well as the [`+on-load`](https://github.com/timlucmiptev/gall-guide/blob/master/example-code/app/picky-backend.hoon#L40) arm.
 
-## Exercises
+## Exercises {#exercises}
 * Attempt to upgrade our `%gall` agent's state to a `(map id=@ud [label=@tU done=?])`.
     * You'll need to change (1) the state definition, (2) `+on-init`, (3) `+on-load`. 
 * Attempt to add a different poke action to our `%gall` app that modifies the state (either the existing state or the one you produced in the above exercise, if you were successful).
 **NOTE:** Do not worry about failing at either of these exercises - you will go through guided versions of these activities in upcoming parts of this guide, but it would be good for you to try, first. You can even cheat at look at [/src-lesson4](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson4)'s code - so long as you can comment it and explain what it does as you do the upgrade.
 
-## Summary and Addenda
+## Summary and Addenda {#summary}
 You're almost done with basic integration and, hopefully, you've found the experience so far relatively painless. You might want to take the time now to review `=^` and how it works, in our breakout lesson:
 * [`=^`](./breakout-lessons/tisket.md)
 

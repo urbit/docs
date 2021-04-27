@@ -1,6 +1,6 @@
 +++
 title = "5. Mars to Earth Uplink"
-weight = 2
+weight = 6
 template = "doc.html"
 +++
 
@@ -8,24 +8,24 @@ This part of the guide will cover connecting TodoMVC with `%tudumvc` and will en
 
 This is _definitely_ the hardest lesson so far and we don't explain every single change, especially on the JavaScript side - if you're not familiar with React.js at all, this lesson may be difficult. Just remember, there are a lot of resources available online that describe how React.js works.
 
-## Learning Checklist
+## Learning Checklist {#learning-checklist}
 * How to use airlock to `subscribe` an Earth web app on a path to Urbit data.
 * How to parse JSON data effectively in hoon.
 
-## Goals
+## Goals {#goals}
 * Upgrade your Earth app to send poke data for all actions.
 * Parse incoming poke data into a structure your %gall agent can understand.
 * Subscribe your Earth app to Urbit data for all data changes.
 * Make your %gall agent send updated state information to the Earth web.
 * Minify your Earth app and host it from your Urbit.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 * Your Earth web app as modified in [the Updating the Agent part of this guide](./updating-the-agent.md).
     * A copy of the modified Earth web app can be found in [src-lesson5](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5/todomvc-start).
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [src-lesson5](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5), but you should try doing this on your own instead of just copying our files in.
 
-## The Lesson
-We'll start by adding airlock `poke` actions for some of the functional feature in our TodoMVC app. Then, we'll take a look at the JSON that we receive and figure out how to parse that. We'll need to add Urbit subscriptions and data passing on paths, using cards to give the Earth web app a state again after our initial breaking changes and then, finally, we can implement the rest of the functional features.
+## The Lesson {#the-lesson}
+We'll start by adding airlock `poke` functions for some of the functional feature in our TodoMVC app. Then, we'll take a look at the JSON that we receive and figure out how to parse that. We'll need to add Urbit subscriptions and data passing on paths, using cards to give the Earth web app a state again after our initial breaking changes and then, finally, we can implement the rest of the functional features.
 
 Begin by launching your Fake Ship and starting the TodoMVC app using `yarn run dev`.
 
@@ -111,7 +111,7 @@ Now, refresh the page and attempt to add a task. Still broken - nothing shows up
 ```
 This is not good - you are not a Redditor. You'll need to parse these incoming pokes and make the task that is added reflect the input from the user in TodoMVC, and not just some default value. Recall that you set the Reddit default behavior in /mar way back in [our lesson on agent supported hosting](./agent-supported-hosting.md). Let's return to /mar and correct that:
 
-#### `/mar/tudumvc/action.hoon` and JSON Parsing Introduction
+#### `/mar/tudumvc/action.hoon` and JSON Parsing Introduction {#lesson-JSON-parsing}
 In the prior lesson's homework, we asked that you take a look at the available structures of [JSON in Hoon](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/lull.hoon#L40), found in `lull.hoon`, as well as the JSON parser [`++  dejs`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3317) in `zuse.hoon`. We're going to need that information now, so make sure review if you're feeling foggy on it.
 
 ##### Available JSON Structures
@@ -233,7 +233,7 @@ Now, clear your Urbit app's state (`:tudumvc &tudumvc-action [%remove-task 0]`),
 ```
 Alright - in order to do any additional testing or confirm your modifications are working on the Earth web side, we're going to need to get your Earth web app to receive our Urbit's `state` as the `state` of our "todos"
 
-### `subscribe` Method of airlock and Sending cards
+### `subscribe` Method of airlock and Sending cards {#lesson-airlock-subscriptions}
 You'll need to make several changes to `containers/TodoList.js` and `/app/tudumvc.hoon` to implement state sharing between Mars and Earth. In very simple terms, what you need to do is tell TodoMVC to listen on a path for information and tell Urbit to send state data on that same path each time the state changes. Start with the (arguably) less involved TodoMVC changes:
 
 #### `subscribe`-ing on a `path`
@@ -356,7 +356,7 @@ Add a setDone `poke` action.
 
 Now, that Earth is listening for data from Mars - you should send some back.
 
-#### `/app/tudumvc.hoon`
+#### `/app/tudumvc.hoon` {#lesson-using-a-helper-core}
 You're going to add a "helper core" ([as described earlier](./agent-supported-hosting.md)) to make this more legible. Basically, all this does is offboard some code to beneath the main, 10 arms of your %gall agent. This helper core will serve two purposes:
   1. If you'll recall, the default state of the TodoMVC app is an array of objects, but you're storing everything as a map on the Urbit side. You'll going to need to convert back to an array.
   2. You'll need to send your data as JSON to TodoMVC, so you'll need to use [`++  enjs`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3263) from `zuse.hoon` to encode from hoon to JSON things.
@@ -627,7 +627,7 @@ Here, all you're doing is sending the current `tasks` map, as converted to JSON,
 
 All that's left to do now is `|commit %home` the changes in Urbit and save the changes to TodoList.js. If you add a task thereafter, you should see it automatically appear in the Earth web version!
 
-### poke Everything Like it's Facebook in 2007
+### poke Everything Like it's Facebook in 2007 {#lesson-more-on-JSON-parsing}
 Unfortunately, none of the other actions you can take in TodoMVC (when sent by JSON, at least) will work yet because you haven't added parsing functions for their data types yet.
 
 #### `/mar/tudumvc/action.hoon` Again
@@ -683,7 +683,7 @@ You can review our [breakout lesson on JSON parsing](./breakout-lessons/more-on-
 </tr>
 </table>
 
-#### Final changes to TodoMVC
+#### Final changes to TodoMVC {#lesson-updating-earth-app}
 Lastly, you need to make changes to TodoList.js and TodoItem.js. Incidentally, we've avoided doing this but you could also remove reference to useTodos.js anywhere you find it in either file.
 <table>
 <tr>
@@ -970,11 +970,11 @@ You should be able to save all these changes, reload the app and start using it 
 
 And there you have it. `%tudumvc` works. It's going to live at http://localhost:8080/~tudumvc (or your relative version). Try it out!
 
-## Homework
+## Homework {#homework}
 * Try moving all of your poke handling work in `+on-poke`'s sub-arm `poke-action` to the helper core.
 * Read about subscriptions and inter-%gall communications [here](https://github.com/timlucmiptev/gall-guide/blob/master/poke.md).
 
-## Exercises
+## Exercises {#exercises}
 * Describe what's going on in our Helper Core - you'll need the following information:
     * [=<](https://urbit.org/docs/reference/hoon-expressions/rune/tis/#tisgal)
     * [pairs:enjs:format](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3271)
@@ -986,7 +986,7 @@ And there you have it. `%tudumvc` works. It's going to live at http://localhost:
     * Change `/containers/TodoList.js` to send just the secret function identifier rather than cycling through all available `id`s
     * Change our "Test Button" to be the "Mark All as Complete" button.
 
-## Summary and Addenda
+## Summary and Addenda {#summary}
 That was a lot of work. Congratulations on making it this far. We hope you picked up on the big beats and we encourage you to pore through the changes we made in the JavaScript to better understand what we did. It's a shame we couldn't cover every line change here, but we expect that's better covered in other forums, anyway.
 
 By now, you should:

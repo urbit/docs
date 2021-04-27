@@ -1,6 +1,6 @@
 +++
-title = "A %clay primer"
-weight = 2
+title = "4. A %clay primer"
+weight = 5
 template = "doc.html"
 +++
 
