@@ -21,3 +21,8 @@ This guide will take you through the following development phases:
 * [Managing upgrades to %gall agents](./tudumvc/updating-the-agent.md)
 * [Connecting a %gall agent as a back-end to a web app](./tudumvc/earth-to-mars-comms.md)
 * [Networking %gall agents](./tudumvc/tudumvc-proper.md)
+
+# Prerequisites
+* A *nix computer (assumed - could be completed on other platforms w/ some slight modifications)
+* Node v14.16.0
+* A copy of the source files (we'll walk you through getting these)
