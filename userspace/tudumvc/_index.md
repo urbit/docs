@@ -1,5 +1,5 @@
 +++
-title = "Building an Earth App"
+title = "Web Development Tutorial"
 weight = 45
 sort_by = "weight"
 template = "sections/docs/chapters.html"
