@@ -1,12 +1,12 @@
 +++
-title = "4. A %clay primer"
-weight = 5
+title = "%clay Primer"
+weight = 13
 template = "doc.html"
 +++
 
 # The Urbit Filesystem %clay
 
-In this breakout lesson, you're going to take a deep dive into Urbit's filesystem, [%clay](https://urbit.org/docs/glossary/clay/), and write a simple hoon generator to work with it. This lesson will also lead us to a discussion of the mark system (found in the [/mar](https://github.com/urbit/urbit/tree/master/pkg/arvo/mar) folder). The mark system allows our urbit to change nouns from one type to another type.
+In this breakout lesson, you're going to take a deep dive into Urbit's filesystem, [%clay](@/docs/glossary/clay.md), and write a simple hoon generator to work with it. This lesson will also lead us to a discussion of the mark system (found in the [/mar](https://github.com/urbit/urbit/tree/master/pkg/arvo/mar) folder). The mark system allows our urbit to change nouns from one type to another type.
 
 ## `+ls`
 As with Unix, you can list the files of any directory in an urbit from within our dojo shell. [`+ls` is a generator stored in your /gen](https://github.com/urbit/urbit/blob/master/pkg/arvo/gen/ls.hoon) folder. A generator is a simple function-like program that:
@@ -21,7 +21,7 @@ app/ gen/ lib/ mar/ sur/ sys/ ted/ tests/
 
 Note that:
 * The `+ls` generator [takes what's called a path](https://github.com/urbit/urbit/blob/9a777e84de6652a8482967bcb48e1cf312063962/pkg/arvo/gen/ls.hoon#L12) as a sample and returns the folders in that path.
-  * In this case, the path you're giving is a reference to our "home" [desk](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/arvo.hoon#L47) (a desk is like an instance of the filesystem - your urbit can have many desks) - more information [here](https://urbit.org/docs/glossary/desk/).
+  * In this case, the path you're giving is a reference to our "home" [desk](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/arvo.hoon#L47) (a desk is like an instance of the filesystem - your urbit can have many desks) - more information [here](@/docs/glossary/desk.md).
 * `%/` is a reference to the root folder of the home desk
 * Each folder is denoted as just its name followed by `/` (pronounced "fas").
 
@@ -56,7 +56,7 @@ As with Unix, everything in Urbit is a file. `+cat`, as with its Unix counterpar
  
 ## scrying
  
-scrying is just a way of examining the 'namespace' or filesystem of [%arvo](https://urbit.org/docs/glossary/arvo/). It uses [`.^` ("dotket")](https://urbit.org/docs/reference/hoon-expressions/rune/dot/#dotket), the 'fake' Nock instruction (`12`) to load a noun from %arvo - a valid scry has the form of `.^(<type> <vane><care> <path>)`.
+scrying is just a way of examining the 'namespace' or filesystem of [%arvo](@/docs/glossary/arvo.md). It uses [`.^` ("dotket")](https://urbit.org/docs/reference/hoon-expressions/rune/dot/#dotket), the 'fake' Nock instruction (`12`) to load a noun from %arvo - a valid scry has the form of `.^(<type> <vane><care> <path>)`.
 
 In other words, `.^` takes a type to mold the returned noun into, a vane care combo that tells the scry what vane to ask, and what [`care`](https://github.com/urbit/urbit/blob/c888af3a30b5da38a93094c0e9f5a4b0e35b9a6d/pkg/arvo/sys/lull.hoon#L799) (or %clay 'submode') to use and the path where the noun lives.
  
@@ -74,7 +74,7 @@ The noun form of a .txt file will be a [wain](https://github.com/urbit/urbit/blo
 ### vane
 Urbit's vanes include, and will be signified by their first letter in our scrys, the following:
 `%a`mes `%b`ehn `%c`lay `%d`ill `%e`yre `%f`ord `%g`all `%i`ris `%j`ael
-While you're using `%c`lay today, the [%tudumvc](../../tudumvc.md) guide will introduce you to `%g`all scrys later.
+While you're using `%c`lay today, the [%tudumvc](@/docs/userspace/tudumvc/introduction.md) guide will introduce you to `%g`all scrys later.
  
 ### care
  
@@ -139,7 +139,7 @@ A path is a list of [knots](https://urbit.org/docs/hoon/reference/stdlib/2q/#kno
 
 ## Writing a Generator to Perform a Scry
 
-Let's save this [file](/supplemental/readmytang.hoon) into the /gen folder. Taking a look at it line by line:
+Let's save this [file](https://github.com/rabsef-bicrym/tudumvc/blob/main/supplemental/readmytang.hoon) into the /gen folder. Taking a look at it line by line:
 ```hoon
 :: Bartis forms a gate that takes a sample and performs some action
 :: The sample is called pax, and it's a path

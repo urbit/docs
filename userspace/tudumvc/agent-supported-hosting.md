@@ -1,6 +1,6 @@
 +++
-title = "3. %gall Agent Supported Hosting"
-weight = 4
+title = "%gall and %file-server"
+weight = 5
 template = "doc.html"
 +++
 
@@ -8,7 +8,7 @@ You now know how to host Earth web content from your Urbit and you've explored s
 
 ## Learning Checklist {#learning-checklist}
 * What is the basic structure of a %gall agent?
-* How to add state to an agent.
+* How is state added to an agent?
 * What is `+dbug`?
 * What is a scry?
 * What does `=^` (tisket) do?
@@ -25,7 +25,7 @@ You now know how to host Earth web content from your Urbit and you've explored s
 
 ## Prerequisites {#prerequisites}
 * An empty Fake Ship (wipe out the one you made last lesson and start anew)
-* The [Lesson 3 files](./src-lesson3) cloned to your development environment.
+* The [Lesson 3 files](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson3) cloned to your development environment.
   *  **NOTE:** The `/src-lesson3/react-hooks` folder packaged for this lesson has been pre-modified for this lesson. While we will go over these modifications and off-screen changes, you have been pre-warned that the default files will not work for this lesson.
 
 ## The Lesson {#the-lesson}
@@ -154,12 +154,12 @@ They will often proceed with a series of aliases using [`+*`](https://urbit.org/
  ```
 _this_ refers to the whole, primary door of our agent. If you need to refer to our agent's main door, you can use _this_.
 
-In the [breakout lesson on the `(quip card _this)`](./breakout-lessons/quip-card-and-poke.md) we discussed using '\_this' to mean "something in the form of _this_." Now you should see that _this_ is just the agent itself. When the arms of our agent cast their output using `^-  (quip card _this)`, the expectation is that they will return a list of cards, or actions, and the structure of the app again (potentially with state changes).
+In the [breakout lesson on the `(quip card _this)`](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md) we discussed using '\_this' to mean "something in the form of _this_." Now you should see that _this_ is just the agent itself. When the arms of our agent cast their output using `^-  (quip card _this)`, the expectation is that they will return a list of cards, or actions, and the structure of the app again (potentially with state changes).
 
 The `def` shorthand works similarly to `this`, letting us refer to our agent wrapped in the `default-agent` /lib which basically just gives us the ability to create default behaviors for some of the arms of our door that are not currently in use (see `+on-arvo` in our code, for instance).
 
 #### 10 Functional Arms {#lesson-app-file-gall-arms}
-Internal to an agent's main door, there will _always_ be **10 arms** (unless it's a `%shoe` agent (a CLI supporting agent), but this case should be considered separately - also some of the 10 expected arms may be defined as cores with sub-arms to do additional work, and some may reach out to our helper core's arms to do additional work). The 10 arms of %gall are exquisitely covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/arms.md), but we'll review a few of them below:
+Internal to an agent's main door, there will _always_ be **10 arms** (unless it's a `%shoe` agent (a CLI supporting agent), but this case should be considered separately - also some of the 10 expected arms may be defined as cores with sub-arms to do additional work, and some may reach out to our helper core's arms to do additional work). The 10 arms of %gall are exquisitely covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/arms), but we'll review a few of them below:
 ```hoon
 ++  on-init
 ++  on-save
@@ -244,7 +244,7 @@ In our express example, `+on-save` produces the current state of the application
 
 Note the use of [`|^` barket](https://urbit.org/docs/hoon/reference/rune/bar/#barket) in conjunction with [`=^` tisket](https://urbit.org/docs/hoon/reference/rune/tis/#tisket) to create a sub-arm, `+poke-actions` within the `+on-poke` arm to handle all of our expected incoming pokes.
 
-The role of `=^` is critical but also complicated. All you really need to know is that it is a terse way of producting card and state changes from non-in-line hoons (it uses other arms so the code doesn't get wide). If you want to know more about how `=^` works, you can check out this [breakout lesson](./breakout-lessons/tisket.md).
+The role of `=^` is critical but also complicated. All you really need to know is that it is a terse way of producting card and state changes from non-in-line hoons (it uses other arms so the code doesn't get wide). If you want to know more about how `=^` works, you can check out this [breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/tisket.md).
 
 ##### `++  on-peek`
 ```hoon
@@ -255,7 +255,7 @@ The role of `=^` is critical but also complicated. All you really need to know i
 ==
 ```
 `+on-peek` is where scrying is managed. All programs in Urbit can be treated as data, as can (naturally) all data. The effect of this is that everything, including the internal state of a program or app, can be seen as part of the file system. scrying is just the method of using the filesystem to tell us about the state of a program. And here, you must make a choice:
-* Take the red pill and [learn how scrying works](./breakout-lessons/a-brief-primer-on-clay.md).
+* Take the red pill and [learn how scrying works](@/docs/userspace/tudumvc/breakout-lessons/a-brief-primer-on-clay.md).
 * Take the blue pill and only learn `+dbug` (continue reading).
 
 Both of these functions allow us to see in to the state of our app. 
@@ -265,7 +265,7 @@ Both of these functions allow us to see in to the state of our app.
 That's about it then for the /app, /mar, and /sur files, and the `%tudumvc` app generally.  Let's finish with a discussion of the changes made to the TodoMVC Earth web app.
 
 ### TodoMVC Earth App {#lesson-todomvc}
-I've set up a modified copy of TodoMVC for you in the [/src-lesson3 folder](./src-lesson3/react-hooks). The current TodoMVC app is not ready to be minified, as there's still more work to do, which is why our /app/tudumvc folder has a placeholder index.html file that the agent is serving with the `%file-server` poke sent in `+on-init`. Nonetheless, remember that you can run the non-minified version using `yarn run dev`.
+I've set up a modified copy of TodoMVC for you in the [/src-lesson3 folder](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson3/react-hooks). The current TodoMVC app is not ready to be minified, as there's still more work to do, which is why our /app/tudumvc folder has a placeholder index.html file that the agent is serving with the `%file-server` poke sent in `+on-init`. Nonetheless, remember that you can run the non-minified version using `yarn run dev`.
 
 This version of the TodoMVC app has been updated to communicate with your Urbit. You may need to do some additional customization, but we'll point this out to you when we get there.
 
@@ -304,7 +304,7 @@ The useApi.js hook is grabbing an API token using `authenticate` and exporting t
 #### Change `index.js`
 ```
 // We're adding airlock's useApi functionality here:
-import useApi from "./hooks/useApi";
+import useApi from "@/docs/userspace/tudumvc/hooks/useApi";
 
 const root = document.getElementById("root");
 
@@ -409,7 +409,7 @@ The next few parts of this guide finish the conversion of TodoMVC into `%tudumvc
 
 ## Summary and Addenda {#summary}
 You're almost done with basic integration and, hopefully, you've found the experience so far relatively painless. You might want to take the time now to review `=^` and how it works, in our breakout lesson:
-* [`=^`](./breakout-lessons/tisket.md)
+* [`=^`](@/docs/userspace/tudumvc/breakout-lessons/tisket.md)
 
 That's generally optional, though if you go on to develop your own apps, you'll probably want a firmer understanding. Nonetheless, at this point you should:
 * Know the basic, 10 arm structure of a `%gall` agent.

@@ -1,6 +1,6 @@
 +++
-title = "6. Things Tudu and People TuSee"
-weight = 7
+title = "Networking Gall Agents"
+weight = 8
 template = "doc.html"
 +++
 
@@ -23,7 +23,7 @@ Let's get after it then.
 * Add new pokes to handle receipt of new tasks data from ships you subscribe to when they make changes.
 
 ## Prerequisites {#prerequisites}
-* The Earth web app as modified in [the last part of this guide](./earth-to-mars-comms.md).
+* The Earth web app as modified in [the last part of this guide](@/docs/userspace/tudumvc/earth-to-mars-comms.md).
     * A copy of our current Earth web app can be found in [/src-lesson6/todomvc-start](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6/todomvc-start).
 * A new Fake Ship (probably ~zod) with whom you can share task!
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [/src-lesson6](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6), but you should try doing this on your own instead of just copying our files in. No cheating!
@@ -81,7 +81,7 @@ Thinking through what you'll need here, you should prepare for the following act
     * Will need to specify a ship to which we will subscribe.
 * `%kick`ing a subscriber (or, forcefully removing someone who subscribes to you).
     * Will need to specify a ship to `%kick`.
-    * Will also need to specify a path to `%kick` them from - we'll talk about paths more later, but these are basically the data feed on which they're receiving your todo list. Theoretically, since `%tudumvc` only has one data feed, [we could simply remove them from all possible paths](https://github.com/timlucmiptev/gall-guide/blob/master/poke.md#example-4-kicking-a-subscriber-from-the-host), but we'll still allow our poke to specify one or more paths, as a best practice.
+    * Will also need to specify a path to `%kick` them from - we'll talk about paths more later, but these are basically the data feed on which they're receiving your todo list. Theoretically, since `%tudumvc` only has one data feed, [we could simply remove them from all possible paths](https://github.com/timlucmiptev/gall-guide/blob/master/poke#example-4-kicking-a-subscriber-from-the-host), but we'll still allow our poke to specify one or more paths, as a best practice.
 * Allowing or denying a request from a subscriber to edit your todo list.
     * Will need to specify a `(list ship)`s that you want to edit (so you can mass approve or deny).
     * Will need to specify a status for those ships (`%approve` or `%deny`)
@@ -760,7 +760,7 @@ To finish the `hc` first, however, let's look at three further actions; `%unsub`
   ~[[%give %kick paths `partner]]
 ```
 
-`%force-remove` `%give`s a `%kick` to any subscriber - removing them from listening to the host on the path `/sub-tasks` and is the same as a non-optional `%unsub` poke to the subscriber-ship. The pattern for `%kick`s is `[%give %kick (list path) (unit ship)]`. A note here, better covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/poke.md#fact-or-kick-nuances), is that an empty (`~`) list of paths will, in this context, unsubscribe the user from _all_ paths to which they subscribe. In our context, there's only one real subscription action the user can take, so it doesn't make a lot of difference for us, but it's good to know.
+`%force-remove` `%give`s a `%kick` to any subscriber - removing them from listening to the host on the path `/sub-tasks` and is the same as a non-optional `%unsub` poke to the subscriber-ship. The pattern for `%kick`s is `[%give %kick (list path) (unit ship)]`. A note here, better covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/poke#fact-or-kick-nuances), is that an empty (`~`) list of paths will, in this context, unsubscribe the user from _all_ paths to which they subscribe. In our context, there's only one real subscription action the user can take, so it doesn't make a lot of difference for us, but it's good to know.
 
 In addition to `%kick`ing the partner from their subscription, `%force-remove` also removes the target from any/all allowances or denials they may have in the `editors` list, using the [`(~(dif in set) set1)`](https://urbit.org/docs/hoon/reference/stdlib/2h/#dif-in) set-logic function which computes the difference between two sets (providing the diverse elements of the first set). In other words, it checks to see whether the partner we're kicking is in each of the subsets of the tuple in our data element called `editors` and produces the result of the existing sub-set with that ship removed. 
 
@@ -1399,7 +1399,7 @@ The data flow will be:
 
 And, just like that, you've created a networked version of TodoMVC using Urbit as our data hosting platform. TodoMVC is dead, long live `%tudumvc`.
 
-![finished product image](./final-product.png)
+![finished product image](@/docs/userspace/tudumvc/final-product.png)
 
 ## Homework {#homework}
 No homework this time - maybe in our next course!

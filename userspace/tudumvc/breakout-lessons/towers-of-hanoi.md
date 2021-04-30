@@ -1,11 +1,11 @@
 +++
-title = "3. Towers of Hanoi generator"
-weight = 4
+title = "Syncing Files"
+weight = 12
 template = "doc.html"
 +++
 
 You're going to add a simple generator to our /gen folder, let your shell script copy it into your pier, and then run it. In the process you'll learn about `|commit`-ing our files back into our %clay filesystem when we make changes to them in the *nix filesystem. Assuming you're running your copy shell script as described in the previous subsection, take the following steps:
-   * Copy the [hanoi generator](supplemental/hanoi.hoon) to your /gen subdirectory of your development folder (`~/urbit/devops/gen` if you're following the guide exactingly)
+   * Copy the [hanoi generator](https://github.com/rabsef-bicrym/tudumvc/blob/main/supplemental/hanoi.hoon) to your /gen subdirectory of your development folder (`~/urbit/devops/gen` if you're following the guide exactingly)
      * Make sure your sync function is running, e.g.: `bash dev.sh ~/urbit/nus`
    * This generator solves a Towers of Hanoi game with any number of starting discs on any one of the three pegs. It takes two arguments:
       * See: `|=  [num-of-discs=@ud which-rod=?(%one %two %three)]`

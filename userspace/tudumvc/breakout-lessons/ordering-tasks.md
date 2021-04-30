@@ -1,6 +1,6 @@
 +++
-title = "7. Ordering the Tasks"
-weight = 8
+title = "Ordering Tasks"
+weight = 16
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
-title = "6. `=^` tisket"
-weight = 7
+title = "`=^` in action"
+weight = 15
 template = "doc.html"
 +++
 

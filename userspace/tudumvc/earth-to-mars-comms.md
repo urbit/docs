@@ -1,6 +1,6 @@
 +++
-title = "5. Mars to Earth Uplink"
-weight = 6
+title = "Mars to Earth Uplink"
+weight = 7
 template = "doc.html"
 +++
 
@@ -20,7 +20,7 @@ This is _definitely_ the hardest lesson so far and we don't explain every single
 * Minify your Earth app and host it from your Urbit.
 
 ## Prerequisites {#prerequisites}
-* Your Earth web app as modified in [the Updating the Agent part of this guide](./updating-the-agent.md).
+* Your Earth web app as modified in [the Updating the Agent part of this guide](@/docs/userspace/tudumvc/updating-the-agent.md).
     * A copy of the modified Earth web app can be found in [src-lesson5](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5/todomvc-start).
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [src-lesson5](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5), but you should try doing this on your own instead of just copying our files in.
 
@@ -109,13 +109,13 @@ Now, refresh the page and attempt to add a task. Still broken - nothing shows up
 >   "Added task 'We did it, reddit!' at 4"
 ~nus:dojo> 
 ```
-This is not good - you are not a Redditor. You'll need to parse these incoming pokes and make the task that is added reflect the input from the user in TodoMVC, and not just some default value. Recall that you set the Reddit default behavior in /mar way back in [our lesson on agent supported hosting](./agent-supported-hosting.md). Let's return to /mar and correct that:
+This is not good - you are not a Redditor. You'll need to parse these incoming pokes and make the task that is added reflect the input from the user in TodoMVC, and not just some default value. Recall that you set the Reddit default behavior in /mar way back in [our lesson on agent supported hosting](@/docs/userspace/tudumvc/agent-supported-hosting.md). Let's return to /mar and correct that:
 
 #### `/mar/tudumvc/action.hoon` and JSON Parsing Introduction {#lesson-JSON-parsing}
 In the prior lesson's homework, we asked that you take a look at the available structures of [JSON in Hoon](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/lull.hoon#L40), found in `lull.hoon`, as well as the JSON parser [`++  dejs`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3317) in `zuse.hoon`. We're going to need that information now, so make sure review if you're feeling foggy on it.
 
 ##### Available JSON Structures
-You might want to have a more in-depth lesson on JSON parsing, which you can find [here](./breakout-lessons/more-on-JSON-parsing.md). The main guide will give you just what you need for this purpose.
+You might want to have a more in-depth lesson on JSON parsing, which you can find [here](@/docs/userspace/tudumvc/breakout-lessons/more-on-JSON-parsing.md). The main guide will give you just what you need for this purpose.
 ```hoon
 +$  json                                                ::  normal json value
   $@  ~                                                 ::  null
@@ -357,7 +357,7 @@ Add a setDone `poke` action.
 Now, that Earth is listening for data from Mars - you should send some back.
 
 #### `/app/tudumvc.hoon` {#lesson-using-a-helper-core}
-You're going to add a "helper core" ([as described earlier](./agent-supported-hosting.md)) to make this more legible. Basically, all this does is offboard some code to beneath the main, 10 arms of your %gall agent. This helper core will serve two purposes:
+You're going to add a "helper core" ([as described earlier](@/docs/userspace/tudumvc/agent-supported-hosting.md)) to make this more legible. Basically, all this does is offboard some code to beneath the main, 10 arms of your %gall agent. This helper core will serve two purposes:
   1. If you'll recall, the default state of the TodoMVC app is an array of objects, but you're storing everything as a map on the Urbit side. You'll going to need to convert back to an array.
   2. You'll need to send your data as JSON to TodoMVC, so you'll need to use [`++  enjs`](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3263) from `zuse.hoon` to encode from hoon to JSON things.
 
@@ -439,7 +439,7 @@ Add this door at the very bottom of the file:
 <td colspan="2">
 
 Passing cards on poke:
-**NOTE:** The use of cards is better defined in [a previous breakout lesson](./breakout-lessons/quip-card-and-poke.md).
+**NOTE:** The use of cards is better defined in [a previous breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md).
 </td>
 </tr>
 <td>
@@ -631,7 +631,7 @@ All that's left to do now is `|commit %home` the changes in Urbit and save the c
 Unfortunately, none of the other actions you can take in TodoMVC (when sent by JSON, at least) will work yet because you haven't added parsing functions for their data types yet.
 
 #### `/mar/tudumvc/action.hoon` Again
-You can review our [breakout lesson on JSON parsing](./breakout-lessons/more-on-JSON-parsing.md) if you want to better understand what's going on here. If not, just make the following changes:
+You can review our [breakout lesson on JSON parsing](@/docs/userspace/tudumvc/breakout-lessons/more-on-JSON-parsing.md) if you want to better understand what's going on here. If not, just make the following changes:
 <table>
 <tr>
 <td>
@@ -972,7 +972,7 @@ And there you have it. `%tudumvc` works. It's going to live at http://localhost:
 
 ## Homework {#homework}
 * Try moving all of your poke handling work in `+on-poke`'s sub-arm `poke-action` to the helper core.
-* Read about subscriptions and inter-%gall communications [here](https://github.com/timlucmiptev/gall-guide/blob/master/poke.md).
+* Read about subscriptions and inter-%gall communications [here](https://github.com/timlucmiptev/gall-guide/blob/master/poke).
 
 ## Exercises {#exercises}
 * Describe what's going on in our Helper Core - you'll need the following information:
@@ -991,7 +991,7 @@ That was a lot of work. Congratulations on making it this far. We hope you picke
 
 By now, you should:
 * Generally understand JSON parsing.
-    * Additional information [here](./breakout-lessons/more-on-JSON-parsing.md).
+    * Additional information [here](@/docs/userspace/tudumvc/breakout-lessons/more-on-JSON-parsing.md).
 * Generally understand `airlock` subscriptions and how data is passed using a card along a `path`.
 
 In the next and final part of this guide, you'll learn how to add features to `%tudumvc` to allow networked task-management between urbits, now that our data is stored in Urbit.

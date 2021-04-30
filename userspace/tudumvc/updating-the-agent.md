@@ -1,6 +1,6 @@
 +++
-title = "4. Updating the Agent"
-weight = 5
+title = "Updating the Agent"
+weight = 6
 template = "doc.html"
 +++
 
@@ -25,7 +25,7 @@ In this part of the guide, you're going to work on integrating all of the existi
 * Upgrade the %gall agent's `action`s to accommodate all possible Earth app actions.
 
 ## Prerequisites {#prerequisites}
-* A Fake Ship as prepared in [Lesson 3 - The `%gall` of that `agent`](./agent-supported-hosting.md).
+* A Fake Ship as prepared in [Lesson 3 - The `%gall` of that `agent`](@/docs/userspace/tudumvc/agent-supported-hosting.md).
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [src-lesson4](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson4), but you should try doing this on your own instead of just copying our files in.
 
 ## The Lesson {#the-lesson}
@@ -158,7 +158,7 @@ Recall that `versioned-state` is a type defined as a [tagged union](https://en.w
 The above adds a new available state definition, but until we update the door's sample, the `+on-init` and `+on-load` arms, nobody will actually be using this new state.
 
 ##### The door's sample
-Next, you'll need to change what the door's sample is. This is sort of hard to explain, but basically (if you've read our breakout lesson on [(quip card _this)](./breakout-lessons/quip-card-and-poke.md) you may see what's happening here) you need to tell our agent that the data it should expect (its state) will be the new state definition. All of `%tudumvc`'s users (existing users by `+on-load` and new ones by `+on-init`) will have their state updated to the new state type after upgrading their app. With the new state being produced (either by, again, `+on-load` or `+on-init`), the door of the agent needs to expect that resultant state as the sample. To do this, we need to make sure that the expected sample of our agent is the new state version:
+Next, you'll need to change what the door's sample is. This is sort of hard to explain, but basically (if you've read our breakout lesson on [(quip card _this)](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md) you may see what's happening here) you need to tell our agent that the data it should expect (its state) will be the new state definition. All of `%tudumvc`'s users (existing users by `+on-load` and new ones by `+on-init`) will have their state updated to the new state type after upgrading their app. With the new state being produced (either by, again, `+on-load` or `+on-init`), the door of the agent needs to expect that resultant state as the sample. To do this, we need to make sure that the expected sample of our agent is the new state version:
 <table>
 <tr>
 <td>
@@ -350,7 +350,7 @@ The previously constructed map data structure (the state's element `tasks`) allo
 Since tasks are indexed by their unique `id`, you only need to pass the `id` key to mark something as complete or remove it. To edit a task, you have to pass both the `id` and the new `label` (to make sure you're editing the right task, even if many tasks exist with the exact same starting `label`). And, as with `+on-load` you'll only need the `label` of a task to add it as a key-value pair to the `tasks` map.
 
 #### `/app/tudumvc.hoon` - `++  on-poke` Changes
-Next, you should update `+on-poke` to accommodate the new `action`s that just added to our /sur file. If you're not sure why this is our next step, you might want to look back at [the Hosting on Urbit](./hosting-on-urbit.md) part of this guide, or the breakout lesson on [pokes](./breakout-lesson/quip-card-and-poke.md). We'll show the changes and then go through each poke to discuss how it works.
+Next, you should update `+on-poke` to accommodate the new `action`s that just added to our /sur file. If you're not sure why this is our next step, you might want to look back at [the Hosting on Urbit](@/docs/userspace/tudumvc/hosting-on-urbit.md) part of this guide, or the breakout lesson on [pokes](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md). We'll show the changes and then go through each poke to discuss how it works.
 <table>
 <tr>
 <td>
@@ -457,7 +457,7 @@ Hopefully, you can see how you've updated the existing state's `task` value by t
 * First, it creates a face called `new-id` who's value is determined by a conditional statement.
 * If the `tasks` face of the user's state is empty, it will start at task `id` 1 when adding a task.
 * Otherwise it will look to find the greatest current `id` value and increment it by one (in other words the agent always creates new tasks at the next positive integer `id` position).
-    * This ordering function is a little complex, so we've made a [breakout lesson](./breakout-lessons/ordering-tasks.md) to explain it; if you don't want to read that, just trust me that that's what it does.
+    * This ordering function is a little complex, so we've made a [breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/ordering-tasks.md) to explain it; if you don't want to read that, just trust me that that's what it does.
 * In either event, what it does next is again use [`put:by`](https://urbit.org/docs/reference/library/2i/#put-by) to store the incoming task (`task:action`) at the `key`-position of `new-id`, with an incomplete state (`%.n`).
 Try it in dojo by entering `:tudumvc &tudumvc-action [%add-task 'test']`. You should see something like this:
 ```hoon
@@ -541,4 +541,4 @@ For now, we hope you are able to:
 * Add your own poke `action`s by defining them in your agent's /sur file and adding handling to `+on-poke`.
 
 Also, check out the breakout lesson for this lesson on:
-* [Ordering Tasks Using `sort`](./breakout-lessons/ordering-tasks.md)
+* [Ordering Tasks Using `sort`](@/docs/userspace/tudumvc/breakout-lessons/ordering-tasks.md)

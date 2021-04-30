@@ -1,6 +1,6 @@
 +++
-title = "5. quips of cards and pokes"
-weight = 6
+title = "quips of cards and pokes"
+weight = 14
 template = "doc.html"
 +++
 

@@ -1,6 +1,6 @@
 +++
-title = "2. -L Ships, or The Live Fake Ship"
-weight = 3
+title = "-L Ships"
+weight = 11
 template = "doc.html"
 +++
 
@@ -11,4 +11,4 @@ Be careful with `-L` ships!. If you don't follow the steps below (particulary co
 To run an `-L` ship, do the following steps:
 
 * Copy your existing ship's folder to a new folder, e.g.: `cp -r rabsef-bicrym fake-rabsef`
-* Run like so: `./urbit -L fake-rabsef`
+* Run like so: `@/docs/userspace/tudumvc/urbit -L fake-rabsef`

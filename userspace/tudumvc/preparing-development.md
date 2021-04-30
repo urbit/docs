@@ -1,6 +1,6 @@
 +++
-title = "1. Preparing a Development Environment"
-weight = 2
+title = "Preparing to Develop"
+weight = 3
 template = "doc.html"
 +++
 
@@ -47,10 +47,10 @@ While it's possible to develop on a live Ship, it's highly discouraged for a var
 ## The Lesson {#the-lesson}
 [Urbit](https://urbit.org/understanding-urbit/) is a virtual personal server that runs on *nix (Unix based platforms, like MacOS, Linux or the Windows Linux Subsystem). The binary, or program, that makes Urbit work has to have an appropriate *nix environment on which to run, so you'll start with getting you such a platform. If you already have a *nix system you plan on using, you should be able to skip this first part.
 
-There are many options for hosting your Urbit including doing so on your local MacOS or Linux computer, using a  adding the Linux subsystem to your Windows box or even running your Urbit on a [Raspberry Pi](http://dasfeb.industries/). If you want to run on a cloud server, check out this brief [breakout lesson](./breakout-lessons/hosting-options.md) describing your options.
+There are many options for hosting your Urbit including doing so on your local MacOS or Linux computer, using a  adding the Linux subsystem to your Windows box or even running your Urbit on a [Raspberry Pi](http://dasfeb.industries/). If you want to run on a cloud server, check out this brief [breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/hosting-options.md) describing your options.
 
 ### Installing the Urbit Binary
-The best way of getting always-up-to-date instructions is by referencing urbit.org's guide [here](https://urbit.org/using/install/). This guide will assume you've installed your urbit binary at `~/urbit` on your chosen system.
+The best way of getting always-up-to-date instructions is by referencing urbit.org's guide [here](@/getting-started/_index.md). This guide will assume you've installed your urbit binary at `~/urbit` on your chosen system.
 
 **NOTE:** The urbit directory creation is optional, but the current tarball unpaks all of its files directly to its parent directory, so this is helpful for containing your files.
 
@@ -59,7 +59,7 @@ Now you have the Urbit binary installed and ready to use. Let's look at how you 
 ### Booting a Fake Ship {#lesson-booting-a-fake-ship}
 You can boot literally any ship as a fake ship. In this guide, I'll be using the ship `~nus` but you could use `~zod` or `~rabsef-bicrym` or (quite literally) any of the thousands of other valid Urbit ID. Assuming you're going with ~nus, enter the following command in the folder where you unpacked the Urbit binary:
 ```
-./urbit -F nus
+@/docs/userspace/tudumvc/urbit -F nus
 ```
 
 Your ship will start to boot, and you'll need to wait a few minutes while the ship downloads additional data (pill(s)) and bootstraps itself.  You'll see something like this:
@@ -85,7 +85,7 @@ pier (48): live
 
 From here, you should be able to:
 * Shutdown this ship using `CTRL+D` (normal shutdown) or `CTRL+Z` (crashing shutdown).
-* Restart the ship thereafter using just `./urbit nus` (note you no longer need to use the `-F` switch).
+* Restart the ship thereafter using just `@/docs/userspace/tudumvc/urbit nus` (note you no longer need to use the `-F` switch).
 * Switch between the dojo (which is like the command prompt for Urbit) and  the `chat-cli` (or the terminal chat client for Urbit) using `CTRL+X`.
 * Access landcape using the IP address of your ship's server and the port number to which it has bound:
   * Your ship's currently bound port number is noted in the boot sequence.
@@ -107,7 +107,7 @@ The filesystem of Urbit is not immediately visible from our *nix platform. They 
 
 First, shut down your ship using `CTRL+D` and then navigate into the pier (or the directory that running an urbit creates) using `cd nus` from your shell, assuming you booted a fake `~nus`. 
 
-You should see that that folder is empty. Now, `cd ..` and `./urbit nus` to boot our ship back up and then enter `|mount %` in the dojo. You should see the following:
+You should see that that folder is empty. Now, `cd ..` and `@/docs/userspace/tudumvc/urbit nus` to boot our ship back up and then enter `|mount %` in the dojo. You should see the following:
 ```hoon
 > |mount %
 >=
@@ -121,7 +121,7 @@ app/ gen/ lib/ mar/ sur/ sys/ ted/ tests/
 ~nus:dojo> 
 ```
 
-If you'd like to know more about what's going on with the filesystem from the Urbit side, take a look at this [breakout lesson on Urbit's filesystem, `%clay`](./breakout-lessons/a-brief-primer-on-clay.md). This breakout is relatively deep for a beginner, and you don't need to know all of this to proceed.
+If you'd like to know more about what's going on with the filesystem from the Urbit side, take a look at this [breakout lesson on Urbit's filesystem, `%clay`](@/docs/userspace/tudumvc/breakout-lessons/a-brief-primer-on-clay.md). This breakout is relatively deep for a beginner, and you don't need to know all of this to proceed.
 
 **NOTE:** Changes to the filesystem made on the *nix side will not immediately be reflected in our urbit. You will have to use `|commit %home` to "re-uptake" those changed *nix side files into the %clay filesystem.
 
@@ -139,9 +139,9 @@ You're going to use one specific folder for all of our new files, and write a ba
    * Create a shell script file and use [this script](https://github.com/rabsef-bicrym/tudumvc/blob/main/supplemental/dev.sh) that takestake a directory as an argument and `rsync`s the contents of our /devops folder to our home directory
    * Open two terminal sessions simultaneously, boot your urbit in one and start up your shell script in the other. Assuming the above configuration, you would start our shell script with something like `bash dev.sh ~/urbit/nus/home`.  You should have something like this going on:
    
-      ![Image of Dev Environment](./devops.png)
+      ![Image of Dev Environment](@/docs/userspace/tudumvc/devops.png)
 
-You can test your functionality by trying to install a simple Towers of Hanoi generator - check out this [breakout lesson](./breakout-lessons/towers-of-hanoi.md). 
+You can test your functionality by trying to install a simple Towers of Hanoi generator - check out this [breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/towers-of-hanoi.md). 
 
 You're now ready to start developing. You should now get the development files local to your environment, just for convenience (not technically necessary):
 
@@ -151,16 +151,16 @@ In some folder of your development environment (not your pier), run `git clone h
 ## Homework {#homework}
 * Read about [how cores work](https://urbit.org/docs/hoon/hoon-school/arms-and-cores/).
 * Read about [generators and how to install files to your Urbit](https://urbit.org/docs/hoon/hoon-school/setup/#generators).
-* Make sure your syncing functionality is working by adding a file or [generator](./breakout-lessons/towers-of-hanoi.md) to the /devops sub-folders and syncing it over to your ship. Make sure you can see the file copied over into your home directory.
+* Make sure your syncing functionality is working by adding a file or [generator](@/docs/userspace/tudumvc/breakout-lessons/towers-of-hanoi.md) to the /devops sub-folders and syncing it over to your ship. Make sure you can see the file copied over into your home directory.
 
 ## Exercises {#exercises}
 * Write the generator as described in the Homework reading and sync it to your ship using our sync method.
 
 ## Summary and Addenda {#summary}
 You are now ready to begin development work on Urbit. There are several things you might want to know or do from here (in addition to continuing to the next lesson), such as:
-* [Booting a ship that has data from the live network, also known as an `-L` ship](./breakout-lessons/L-ships.md).
-* [Test your /devops sync functionality](./breakout-lessons/towers-of-hanoi.md).
-* [How %clay works generally](./breakout-lessons/a-brief-primer-on-clay.md).
+* [Booting a ship that has data from the live network, also known as an `-L` ship](@/docs/userspace/tudumvc/breakout-lessons/L-ships.md).
+* [Test your /devops sync functionality](@/docs/userspace/tudumvc/breakout-lessons/towers-of-hanoi.md).
+* [How %clay works generally](@/docs/userspace/tudumvc/breakout-lessons/a-brief-primer-on-clay.md).
 
 These optional addenda aren't necessary to continue. The only thing that is necessary to continue is that you:
 * Know how to boot an Urbit ship.

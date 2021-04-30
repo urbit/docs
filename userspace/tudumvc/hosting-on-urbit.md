@@ -1,6 +1,6 @@
 +++
-title = "2. Hosting Files on Urbit"
-weight = 3
+title = "Hosting Files on Urbit"
+weight = 4
 template = "doc.html"
 +++
 
@@ -82,7 +82,7 @@ To create a production build, use yarn build.
 ```
 Next, try make a change to a file and see how that displays. 
 
-Open the `./react-hooks/containers/TodoList.js` file and edit line 66:
+Open the `@/docs/userspace/tudumvc/react-hooks/containers/TodoList.js` file and edit line 66:
 <table>
 <tr>
 <td>
@@ -113,7 +113,7 @@ Save your changes and watch as your app in your browser recompiles with the new 
 For now, however, you only need to host this default version on Urbit. Go ahead and shut down this dev build by doing `CTRL+C` in the terminal window that's currently running the yarn dev server.
 
 #### Compiling a Minified Version of an App
-Within the `./react-hooks` folder again, enter the command `yarn build`. You'll get some output like this:
+Within the `@/docs/userspace/tudumvc/react-hooks` folder again, enter the command `yarn build`. You'll get some output like this:
 ```
 yarn run v1.22.10
 $ react-scripts build
@@ -150,12 +150,12 @@ Your Urbit was unable to interpret the file type .ico (or the favicon icon for T
 
 Rather than dealing with that here, however, just do the following:
 1. Stop your sync process, if it's still running (`CTRL-C` in the terminal running the sync process).
-2. Delete favicon.ico from the `./devops/app/todomvc` folder.
+2. Delete favicon.ico from the `@/docs/userspace/tudumvc/devops/app/todomvc` folder.
 3. Replace your Fake Ship
     * `CTRL+D` to shut down the ship
     * `rm -r nus` to delete the current version
     * `cp -r nus-bak nus` to replace our Fake Ship
-    * `./urbit nus` to run it again
+    * `@/docs/userspace/tudumvc/urbit nus` to run it again
 4. Restart the sync process (`bash dev.sh ~/your/path/home`).
 5. `|commit %home` again.
 
@@ -214,7 +214,7 @@ To send that poke to `%file-server` from the dojo you're going to enter a comman
 ```
 Three things are going on here:
 * Specify the agent to poke (`:file-server`, for instance),
-* Specify the mark of the poke (`&file-server-action`), so Urbit knows how to interpret it (see the [Breakout Lesson](./breakout-lessons/quip-card-and-poke.md) for more information on this),
+* Specify the mark of the poke (`&file-server-action`), so Urbit knows how to interpret it (see the [Breakout Lesson](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md) for more information on this),
 * Specify the poke type and the arguments you're sending as part of that poke.
 
 In dojo, enter:
@@ -262,7 +262,7 @@ Is it working? Nice!
 ## Homework {#homework}
 * Read through the rest of the commented version of [`/sur/file-server.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sur/file-server.hoon).
 * Read the [`+on-poke` arm](https://github.com/urbit/urbit/blob/50d45b0703eb08a5b46a8ff31818b3a6f170b9f8/pkg/arvo/app/file-server.hoon#L105) of `/app/file-server.hoon` and try and figure out what's going on there - how is the poke from above being handled?
-* Read _just_ the introduction/overview of [`~timluc-miptev`'s Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/overview.md#what-is-gall)
+* Read _just_ the introduction/overview of [`~timluc-miptev`'s Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/overview#what-is-gall)
 
 ## Exercises {#exercises}
 * Identify how you might switch our current TodoMVC hosting to private, requiring a login.
@@ -270,7 +270,7 @@ Is it working? Nice!
 
 ## Summary and Addenda {#summary}
 You now know how to host Earth web files from Mars - and there's way less latency than you might imagine (eat your heart out, NASA)! While we'll discuss it later in more detail, you might want to have a better understanding of:
-* [cards and pokes](./lesson2-1-quip-card-and-poke.md)
+* [cards and pokes](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md)
 
 That breakout is optional, and not necessary to continue. However, by now you should generally:
 * Know how to use `yarn` to run a _dev_ version of TodoMVC straight from the non-minified files
