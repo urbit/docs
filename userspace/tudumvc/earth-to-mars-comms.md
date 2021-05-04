@@ -21,8 +21,10 @@ This is _definitely_ the hardest lesson so far and we don't explain every single
 
 ## Prerequisites {#prerequisites}
 * Your Earth web app as modified in [the Updating the Agent part of this guide](@/docs/userspace/tudumvc/updating-the-agent.md).
-    * A copy of the modified Earth web app can be found in [src-lesson5](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5/todomvc-start).
+    * A copy of the modified Earth web app can be found in [/src-lesson5/todomvc-start](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5/todomvc-start).
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [src-lesson5](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5), but you should try doing this on your own instead of just copying our files in.
+    * In /src-lesson5/todomvc-start, we've included the files for the Earth web app as modified in the prior section of this tutorial, so you'll start with those.
+    * In /src-lesson5/todomvc-end, you'll find the files for the Earth web app as they should appear after this section of the tutorial; if you're having any trouble with your modifications you can try using these instead, at the end.
 
 ## The Lesson {#the-lesson}
 We'll start by adding airlock `poke` functions for some of the functional feature in our TodoMVC app. Then, we'll take a look at the JSON that we receive and figure out how to parse that. We'll need to add Urbit subscriptions and data passing on paths, using cards to give the Earth web app a state again after our initial breaking changes and then, finally, we can implement the rest of the functional features.
@@ -969,6 +971,8 @@ You should be able to save all these changes, reload the app and start using it 
 6. `|commit %home`
 
 And there you have it. `%tudumvc` works. It's going to live at http://localhost:8080/~tudumvc (or your relative version). Try it out!
+
+Remember, if you're having any trouble with the Earth web app side of things, you can use [src-lesson5/todomvc-end](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson5/todomvc-end) to get the files you need, as modified in this lesson.
 
 ## Homework {#homework}
 * Try moving all of your poke handling work in `+on-poke`'s sub-arm `poke-action` to the helper core.

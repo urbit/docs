@@ -4,7 +4,7 @@ weight = 5
 template = "doc.html"
 +++
 
-You now know how to host Earth web content from your Urbit and you've explored some of the limitations of that ability. In this lesson, you'll learn how to develop a %gall agent to support the back-end of an Earth web app. We call this agent `%tudumvc` because it' TodoMVC but on Urbit so it needs to have a funny name.
+You now know how to host Earth web content from your Urbit and you've explored some of the limitations of that ability. In this lesson, you'll learn how to develop a %gall agent to support the back-end of an Earth web app. We call this agent `%tudumvc` because it's TodoMVC but on Urbit so it needs to have a funny name.
 
 ## Learning Checklist {#learning-checklist}
 * What is the basic structure of a %gall agent?
@@ -82,7 +82,7 @@ It creates a [door](https://urbit.org/docs/glossary/door/) that has an implicit 
 |_  act=action:firststep
 ```
 
-Then, the /mar file's door has a `+grab` arm which helps us shove incoming data into an acceptable type. Any general noun coming in (like, what you might send through the dojo) will be cast as an action as defined in our /sur/tudumvc.hoon file (`+noun`). An incoming JSON, however, will be parsed using the gate in the `+json` arm. 
+Then, the /mar file's door has a `+grab` arm which helps us shove incoming data into an acceptable type. Any general noun coming in (like, what you might send through the dojo) will be cast as an action as defined in our /sur/tudumvc.hoon file (`+noun`). Incoming JSON, however, will be parsed using the gate in the `+json` arm. 
 ```hoon
 ++  grab
   |%
@@ -271,10 +271,10 @@ This version of the TodoMVC app has been updated to communicate with your Urbit.
 
 #### Preliminary Setup
 The setup process mirrors the setup you went through earlier to `run dev` the app, but with a few changes:
-* Upgrade Node.js
+* Confirm you're on a recent version of Node.js (v14.16.1 at the time of writing):
     * `yarn add n`
     * `n stable`
-* Add the Urbit API package
+* Add the Urbit API package:
     * `yarn add @urbit/http-api`
 * `yarn install`
 
