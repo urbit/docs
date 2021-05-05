@@ -4,20 +4,23 @@ weight = 4
 template = "doc.html"
 +++
 
-# TodoMVC on Urbit (sort of) {#introduction}
-In this lesson, you'll get the default React.js + Hooks implementation of TodoMVC running on your ship. While this will allow us to directly host the application from Urbit, however it won't have full Urbit integration until a later lesson. For now, you'll just be making the default app available on the Earth web, served from our Urbit.
+# Introduction - TodoMVC on Urbit (sort of) {#introduction}
+The goal here is to get a fully integrated version of TodoMVC, back-ended by Urbit, to run entirely from an Urbit. To start off, we'll host the default React.js + Hooks implementation of TodoMVC on a ship. From there, we can work on building a backend for the app, using a %gall agent.
+
+## Required Files {#required-files}
+* The /src-lesson2/react-hooks folder copied to your local environment
 
 ## Learning Checklist {#learning-checklist}
 * Interacting with TodoMVC using `yarn`, including
     * How to use yarn to run JavaScript apps in a _dev_ environment.
     * How to use yarn to package JavaScript apps for hosting.
-    * **NOTE:** We're not really teaching yarn here, but you'll know how to use it for this very basic application by the end of this lesson.
-    * **NOTE:** You could also use npm if you'd like.
+    * **NOTE:** We're not really tutorializing yarn here, but we will cover its use for this very basic application.
+    * **NOTE:** npm can be used in the alternative, but one shouldn't switch between the two - stick with one.
 * How to host Earth web files from Urbit.
-* What does the file-server app do?
-* What file types is Urbit capable of serving?
-* How would one go about expanding the set of file types that Urbit can serve?
-* What is a poke and how are they used?
+* What `%file-server` does.
+* What file types Urbit can recognize.
+* How, generally, new file type recognition could be added to Urbit. 
+* What pokes are and what purpose they serve.
 
 ## Goals {#goals}
 * Prepare a minified version of TodoMVC from the source code.
@@ -26,50 +29,48 @@ In this lesson, you'll get the default React.js + Hooks implementation of TodoMV
 * poke an app from the `dojo`.
 
 ## Prerequisites {#prerequisites}
-* A development environment as created in Lesson 1.
-* The [Lesson 2 files](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson2) from the git repository that you cloned in the last lesson.
+* A development environment as created in the previous chapter.
+* The [Chapter 2 files](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson2) from the git repository that you cloned in the last chapter.
   * If you haven't done this yet, in a folder that isn't your home directory of your ship, run `git clone https://github.com/rabsef-bicrym/tudumvc.git`.
-  * **NOTE:** You could alternatively complete this lesson by cloning the TodoMVC repository and working in the react-hooks example therein, but we've packaged just that example in the files prepared for this lesson.
+  * **NOTE:** You could alternatively follow along with this chapter by cloning the TodoMVC repository and working in the react-hooks example therein, but we've packaged just that example in the files prepared for this chapter.
 
-## The Lesson {#the-lesson}
-[TodoMVC](https://github.com/tastejs/todomvc) is a basic todo list that has been replicated in a variety of JavaScript frameworks to help teach how those JavaScript frameworks differ. We're going to look at the [React.js + Hooks](https://github.com/tastejs/todomvc/tree/master/examples/react-hooks) implementation of TodoMVC for two main reasons:
+## Chapter Text {#chapter-text}
+[TodoMVC](https://github.com/tastejs/todomvc) is a basic todo list that has been replicated in a variety of JavaScript frameworks to help teach how those JavaScript frameworks differ. This tutorial works with the [React.js + Hooks](https://github.com/tastejs/todomvc/tree/master/examples/react-hooks) implementation of TodoMVC for two main reasons:
 
-The first is the ubiquity of React.js for web app development. TodoMVC's React.js + Hooks implementation also incorporates the most modern usage of React.js (Hooks) which is, in our opinion, the best way of building modern front ends, regardless of its dominance in the market.
+The first is the ubiquity of React.js for web app development. TodoMVC's React.js + Hooks implementation also incorporates the most modern usage of React.js (Hooks). The React + Hooks framework is a great choice for building modern front ends and is fairly easy to learn and well documented online (in addition to its ubiquity), allowing this tutorial to focus on the Urbit side of things, mostly.
 
-The second is the way in which Urbit and React compliment each other. Urbit is sometimes described as an Operating Function rather than an operating system because it is a fully deterministic, stateful and "subject-oriented" computing environment that is fully [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). This means two things:
+The second is the way in which Urbit and React compliment each other. Urbit is sometimes described as an _operating function_ rather than an operating system because it is a fully deterministic, stateful and "subject-oriented" computing environment that is fully [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). This means two things:
 * Every input that Urbit receives is processed as an event which changes (or at least can change) the state, or currently available data of the Urbit.
-* The resulting state of an Urbit post event-processing is indistinguishable from an Urbit that just had that state to start with (generally speaking).
+* The resulting state of an Urbit post event-processing is indistinguishable from an Urbit that had that (resulting) state to start with (generally speaking).
 
-Therefore, given some starting state and some expected input, an Urbit will predictably arrive at some resulting state, and that resulting state is effectively indistinguishable from some other Urbit that simply started with that resulting state. The events themselves aren't particularly relevant (generally), only the state matters in determining what our Urbit is doing or displaying at any given time.
+In other words, given some starting state and some expected input, an Urbit will predictably arrive at some resulting state, and that resulting state is effectively indistinguishable from some other Urbit that simply started with that resulting state. The events themselves aren't particularly relevant (generally), only the state matters in determining what our Urbit is doing or displaying at any given time.
 
-Similarly, React.js is a Javascript framework that renders a DOM (or, effectively, a webpage) based on the current state. Changes are managed by changing the state which React automatically interprets into a re-rendered DOM. It doesn't matter to React.js why or how the state has changed, only that it has. When the state changes, the DOM re-renders.
+Similarly, React.js is a Javascript framework that renders a DOM (or, effectively, a webpage) based on the current state. Changes are managed by changing the state which React automatically interprets into a re-rendered DOM. It doesn't matter to React.js how or why the state has changed, only that it has. When the state changes, the DOM re-renders.
 
-Urbit and React.js are both similarly stateful and, by the end of this guide, you'll see that Urbit is a great candidate for managing a React.js app's state and returning a changed state for React.js to re-render into a DOM.
+Urbit and React.js are similarly stateful and Urbit is a great candidate for managing a React.js app's state and returning a changed state for React.js to re-render into a DOM.
 
-Let's start by preparing our TodoMVC app for hosting:
+We'll start by preparing our TodoMVC app for hosting:
 
-### Preparing TodoMVC {#lesson-preparing-earth-app}
-Navigate to the [/tudumvc/src-lesson2/react-hooks](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson2/react-hooks) folder in this repository that you have cloned locally. The files in this folder are all still basic JavaScript (and other non-urbit native) files. There are two basic ways you can interact with these files:
+### Preparing TodoMVC {#preparing-earth-app}
+The /react-hooks example of TodoMVC can be found here [/tudumvc/src-lesson2/react-hooks](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson2/react-hooks). The files in this folder are all still basic JavaScript (and other non-urbit native) files. There are two basic ways we could interact with these files:
 * As a dev environment run directly from the files.
-  * This method allows us to run the app directly from the files and have changes made to the JavaScript automatically cause the page to rerender.
+  * This method allows us to run the app directly from the files and have changes made to the JavaScript automatically cause the page to re-render.
 * As a minified "build" of the files.
-  * Minifying should be done once you're satisfied with your app and ready to deploy it.
-
-You'll use both methods as part of this guide, going forward.
+  * Minifying is generally done once the app is finished, to prepare it for deployment.
 
 #### `yarn install`
-Start by running `yarn install` in the /tudumvc/src-lesson2/react-hooks folder. `yarn install` looks at all the dependencies required to run TodoMVC and downloads the relevant packages. `yarn` is outside the scope of this guide, but if you want to know more about how this works, take a look [here](https://classic.yarnpkg.com/en/docs/cli/install/). In any event, it should complete with some output that looks like this:
+First, we've installed the relevant node_modules by running `yarn install` in the /react-hooks folder. `yarn install` looks at all the dependencies required to run TodoMVC and downloads the relevant packages. `yarn` is outside the scope of this tutorial, but if you want to know more about how this works, take a look [here](https://classic.yarnpkg.com/en/docs/cli/install/). In any event, it completes with some output that looks like this:
 ```
 [4/4] Building fresh packages...
 success Saved lockfile.
 Done in 40.09s.
 ```
-Now you can either:
+That prepares us to either:
 
 #### Run a Dev Version of the App
-Using yarn to run our app without minifying it allows you to make changes to the underlying JavaScript files while the app is running. The app will automatically recompile and display your changes on screen.
+Using yarn to run TodoMVC without minifying it allows us to make changes to the underlying JavaScript files while the app is running. The app will automatically recompile and display any changes on screen.
 
-From your /react-hooks folder where you just ran `yarn install`, go ahead and run `yarn run dev`. Your app will load in browser (if you're using VS Code and it's port forwarding) or will otherwise be available at the location stated in the completion text:
+Running `yarn run dev` in the same /react-hooks folder will start the development server. The app will then load at some local address and port:
 ```
 Compiled successfully!
 
@@ -80,40 +81,17 @@ You can now view hooks-todo in the browser.
 Note that the development build is not optimized.
 To create a production build, use yarn build.
 ```
-Next, try make a change to a file and see how that displays. 
 
-Open the `@/docs/userspace/tudumvc/react-hooks/containers/TodoList.js` file and edit line 66:
-<table>
-<tr>
-<td>
-Base File
-</td>
-<td>
-Modified File
-</td>
-</tr>
-<tr>
-<td>
-
-```
-<h1>todos</h1>
-```
-</td>
-<td>
-
+Any changes we might want to make will cause the site to rerender as the development server rebuilds the project. For instance, if we changed line 66 of `/react-hooks/containers/TodoList.js` to:
 ```
 <h1>tudus on Urbit</h1>
 ```
-</td>
-</tr>
-</table>
+And save the changes, the app will recompile with the new header text.
 
-Save your changes and watch as your app in your browser recompiles with the new header text. You're going to use this method later to make changes to this file and test them as you integrate TodoMVC with Urbit.
-
-For now, however, you only need to host this default version on Urbit. Go ahead and shut down this dev build by doing `CTRL+C` in the terminal window that's currently running the yarn dev server.
+The dev build can be shut down using `CTRL+C` in the terminal window in which it's running.
 
 #### Compiling a Minified Version of an App
-Within the `@/docs/userspace/tudumvc/react-hooks` folder again, enter the command `yarn build`. You'll get some output like this:
+Today, we just want to host the existing app from our Urbit with no other changes. To do that, we'll create a minified 'build' using `yarn build` in the `/react-hooks` folder. This generates some output like this:
 ```
 yarn run v1.22.10
 $ react-scripts build
@@ -133,53 +111,51 @@ You can control this with the homepage field in your package.json.
 
 The build folder is ready to be deployed.
 ```
-You may also notice that you have a new, /build sub-folder in your /react-hooks folder. This is where the minified files live. You'll need to copy the **_contents_** of this /build sub-folder into a folder that we'll make in our /devops/app folder to then sync it to your Urbit.
+`yarn build` creates a /build sub-folder in the /react-hooks folder, to house the minified version of the app. If we copy the contents of the /build sub-folder somewhere on our Urbit, we can host it using the existing `%file-server` functionality. Conventionally, web content hosted by a %gall agent (which is where we're going with this tutorial) should be stored in the /app folder of an Urbit, in a sub-directory with the same name as the %gall agent. Since we're not using a gall agent yet, we'll create an /app/hooks-todo folder to mirror the name of the app as set in the [`package.json` file](https://github.com/rabsef-bicrym/tudumvc/blob/ea4f7ab12a4e33de15da7e2c1083fddbc9d44bdd/src-lesson2/react-hooks/package.json#L2).
 
-Make a folder called /devops/app/todomvc, then use your sync routine (from /devops, `bash dev.sh ~/your/path/home`) to sync the new folder to your Fake Ship. Lastly, run `|commit %home` in your Fake Ship's dojo.
+Using our sync routine (from /devops, `bash dev.sh ~/your/path/home`) to sync the new folder and contents to the Fake Ship we can then uptake the files into the urbit using `|commit %home` in the Fake Ship's dojo.
 
-**NOTE:** You could alternatively make your folder /devops/app/hooks-todo and save yourself some trouble for the next section of this lesson, or rename your build folder but we're going to assume you didn't.
-
-Ok - something bad just happened. You received an error message terminating in something like:
+If you're following along on your own ship, you probably (`.ico` file type support coming soon) received an error message terminating in something like:
 ```hoon
 [%error-validating /app/todomvc/favicon/ico]
 [%validate-page-fail /app/todomvc/favicon/ico %from %mime]
 [%error-building-cast %mime %ico]
 [%no-file %mar %ico]
 ```
-Your Urbit was unable to interpret the file type .ico (or the favicon icon for TodoMVC) and it made your ship mad. Note that the error message ends by saying that there is `%no-file %mar %ico`. The /mar folder in our Urbit consists of files that help interpret non-hoon file types into hoon-legible files. To date, no one has written an `%ico` interpreting file, but maybe you could be the first! Take a look at /mar/png.hoon if you'd like and consider how you might build an `ico.hoon` file.
+Urbit is currently unable to interpret the file type .ico (or the favicon icon for TodoMVC). The error message ends by saying that there is `%no-file %mar %ico`. The /mar folder on Urbit consists of files that help interpret non-hoon file types into hoon-legible files. To date, no one has written an `%ico` interpreting file ([not true, but not merged yet](https://github.com/urbit/urbit/pull/4833)). Take a look at `/mar/png.hoon` if you'd like and consider how you might build an `ico.hoon` file (or take a look at the linked pull request in the prior sentence).
 
-Rather than dealing with that here, however, just do the following:
-1. Stop your sync process, if it's still running (`CTRL-C` in the terminal running the sync process).
-2. Delete favicon.ico from the `@/docs/userspace/tudumvc/devops/app/todomvc` folder.
-3. Replace your Fake Ship
+This tutorial isn't intended to cover /mar files, though, so we'll just avoid the issue by:
+1. Stopping the sync process, if it's still running (`CTRL-C` in the terminal running the sync process).
+2. Deleting favicon.ico from the `/devops/app/hooks-todo` folder.
+3. Replacing the Fake Ship with the backup - 
     * `CTRL+D` to shut down the ship
     * `rm -r nus` to delete the current version
     * `cp -r nus-bak nus` to replace our Fake Ship
-    * `@/docs/userspace/tudumvc/urbit nus` to run it again
-4. Restart the sync process (`bash dev.sh ~/your/path/home`).
+    * `./urbit nus` to run it again
+4. Restarting the sync process (`bash dev.sh ~/urbit/nus/home` from /devops).
 5. `|commit %home` again.
 
 Everything should complete this time. Now to to host these files to the Earth web using our Urbit.
 
-### Hosting Earth Web Files from Urbit {#lesson-hosting-files-from-urbit}
-To host Earth web files this, you'll want to use the `%file-server` %gall agent, though you could theoretically work with %eyre directly.
+### Hosting Earth Web Files from Urbit {#hosting-files-from-urbit}
+Urbit has a %gall agent prebuilt for hosting Earth web data, called `%file-server`, though we could theoretically work with %eyre directly.
 
 #### %gall agent Communications
-Urbit's %gall services (also known as agents or, less precisely, apps) are programs with a rigorously defined structure of a core with 10 arms. %gall agents are basically [microservices](https://en.wikipedia.org/wiki/Microservices) with a built-in database structure for managing their own data. 
+Urbit's %gall services (also known as agents) are programs with a rigorously defined structure of a core with 10 arms. %gall agents are basically [microservices](https://en.wikipedia.org/wiki/Microservices) with a built-in database structure for managing their own data. 
 
 %gall agents' standardization of style is complimented by a standardization of handling by the agent management vane (or kernel module) of Urbit, called %gall. The benefit of these standards is that it effectively makes all agents and vanes interoperable through a rigorously defined protocol. These methods take two forms:
 * pokes
 * quips of cards
-  * **NOTE:** A poke is, itself, a sub-type of card that can be passed to an agent.
+  * **NOTE:** A poke is, itself, a sub-type of card that can be passed to an agent. Nonetheless, common parlance distinguishes them, at least nominally.
 
-We'll spend more time later talking about pokes and cards, but for now we can suffice to say that a poke is input to a specific %gall agent and a card is a method for communicating data and instructions to be provided to a %gall agent or %arvo vane from another %gall agent or %arvo vane. pokes are handled in the `++  on-poke` arm of a given %gall agent; it just makes sense.
+This tutorial spends more time later talking about pokes and cards, but for now we can suffice to say that a poke is an input of data and instructions to a specific %gall agent and a card is a communication of data and instructions to a %gall agent or %arvo vane from another %gall agent or %arvo vane. pokes are handled in the `++  on-poke` arm of a given %gall agent; it just makes sense.
 
-We're going to use a poke from the dojo to tell `%file-server` to start serving our TodoMVC Earth web app, so let's take a look at how that agent expects us to communicate with it.
+To get the default version of TodoMVC running off of our Urbit, we're going to use a poke from the dojo to tell `%file-server` to start serving the files from /app/hooks-todo.
 
-#### `/sur/file-server.hoon` {#lesson-sur-file-server}
+#### `/sur/file-server.hoon` {#sur-file-server}
 %gall agents are frequently accompanied by a /sur file that specifies a few types that the agent can recognize. Chief amongst these types, for our understanding, is the action type. It's completely unnecessary for an agent to even have an action type, but by convention most agents with complex poke structures have a type called action (at least), and perhaps some others as well. These will commonly be accompanied by a /mar file that can help mold nouns of various types (JSON for instance) into the correct structure for the action (or other) poke type.
 
-The action type specification in a /sur file effectively tells us what kind of (action) pokes, or what kind of input we can provide that specific agent. Open the file /sur/file-server.hoon and take a look at the definition of action:
+The action type specification in a /sur file effectively specifies what kind of (action) pokes, or what kind of input can be provided to that specific agent. The file `/sur/file-server.hoon` contains the following type:
 ```hoon
 +$  action
   $%  [%serve-dir url-base=path clay-base=path public=? spa=?]
@@ -191,75 +167,40 @@ The action type specification in a /sur file effectively tells us what kind of (
 ```
 The rune [`+$`](https://urbit.org/docs/reference/hoon-expressions/rune/lus/#lusbuc) (pronounced "lusbuc"; find more rune use information [here](https://storage.googleapis.com/media.urbit.org/docs/hoon-cheat-sheet-2020-07-24.pdf)) defines a type. The first argument following `+$` is the name of the type and the second argument is the specification of the type. Here, the specification of the type is actually, itself, defined by a rune, [`$%` ("buccen")](https://urbit.org/docs/reference/hoon-expressions/rune/buc/#buccen).
 
-`$%` is a [tagged union](https://en.wikipedia.org/wiki/Tagged_union), or list of types with different expected structure that our Urbit recognizes by the head atom (if you need more instruction on atoms and cells before proceeding, we recommend that you [read this](https://urbit.org/docs/tutorials/hoon/hoon-school/nouns/)). Note that, above, `%serve-dir` (the head atom of that sub-structure) creates an expectation of four other nouns in that cell: (1) An `url-base` that is a path, (2) A `clay-base` that is also a path, (3) A `public` switch that is a boolean and (4) A `spa` switch that is also a boolean.
+`$%` is a [tagged union](https://en.wikipedia.org/wiki/Tagged_union), or list of types with different expected structure that our Urbit recognizes by the head atom (if you need more instruction on atoms and cells before proceeding, we recommend that you [read this](https://urbit.org/docs/tutorials/hoon/hoon-school/nouns/)). Above, `%serve-dir` (the head atom of that sub-structure) creates an expectation of four other nouns in that cell: (1) An `url-base` that is a path, (2) A `clay-base` that is also a path, (3) A `public` switch that is a boolean and (4) A `spa` switch that is also a boolean.
 
-If your Fake Ship is like ours (at the time of this writing), your /sur/file-server.hoon file isn't commented, but the [version on the Urbit GitHub](https://github.com/urbit/urbit/blob/50d45b0703eb08a5b46a8ff31818b3a6f170b9f8/pkg/arvo/sur/file-server.hoon#L6) is - let's take a look:
+Thankfully, `/sur/file-server.hoon` file is well commented, (as is the [version on the Urbit GitHub](https://github.com/urbit/urbit/blob/50d45b0703eb08a5b46a8ff31818b3a6f170b9f8/pkg/arvo/sur/file-server.hoon#L6)):
 ```hoon
 ::    url-base   site path to route from
 ::    clay-base  clay path to route to
 ::    public     if false, require login
 ::    spa        if true, `404` becomes `clay-base/index.html`
 ```
-The comments make clear what each noun does - `url-base` will set the url you're going to serve the to, `clay-base` will tell `%file-server` what files to serve at that URL, `public` will switch whether user login is required to access the page (this will use the same login `+code` that you used in the first lesson to log in to Landscape), and lastly `spa` sets the 404 Error page.
+The comments make clear what each noun does - `url-base` will set the url `%file-server` will serve the to, `clay-base` will tell `%file-server` what files to serve at that URL, `public` will switch whether user login is required to access the page (this will use the same login `+code` as Landscape), and lastly `spa` sets the 404 Error page.
 
-In this case, you want to serve our files from /app/todomvc (`clay-base` - recall that %clay is the filesystem of Urbit) to `http://localhost:8080/~todomvc` (`url-base`) and make them `public` (`%.y`). Keep the 404 Error page as the default 404 Error page (`%.n`). So, your `%file-server` poke will look like this:
+Here, we want to serve our files from /app/hooks-todo (`clay-base` - recall that %clay is the filesystem of Urbit) to `http://localhost:8080/hooks-todo` (`url-base`) and make them `public` (`%.y`), while keeping the 404 Error page as the default 404 Error page (`%.n`). So, our `%file-server` poke will look like this:
 ```hoon
 [%serve-dir /'~todomvc' /app/todomvc %.y %.n]
 ```
 
-#### poke-ing `%file-server` {#lesson-poke-file-server}
-To send that poke to `%file-server` from the dojo you're going to enter a command using the following format:
+#### poke-ing `%file-server` {#poke-file-server}
+Sending a poke to a %gall agent from the dojo follows this format:
 ```hoon
 :<gall agent> &<gall agent>-action <poke action>
 ```
 Three things are going on here:
 * Specify the agent to poke (`:file-server`, for instance),
 * Specify the mark of the poke (`&file-server-action`), so Urbit knows how to interpret it (see the [Breakout Lesson](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md) for more information on this),
-* Specify the poke type and the arguments you're sending as part of that poke.
+* Specify the poke type (`%serve-dir`) and supply the expected arguments for that poke.
 
-In dojo, enter:
+In dojo, we'd enter:
 ```hoon
-:file-server &file-server-action [%serve-dir /'~todomvc' /app/todomvc %.y %.n]
+:file-server &file-server-action [%serve-dir /'hooks-todo' /app/hooks-todo %.y %.n]
 ```
 
-**NOTE:** If you used /hooks-todo as your directory, just replace that above in lieu of /todomvc (and do so for the remainder of this lesson, also skipping the find & replace activity below).
+If we navigate to our ship's URL + `/hooks-todo`, like `https://localhost:8080/hooks-todo`, we'll be presented with our Earth web app, as hosted from our Urbit!
 
-Now, navigate to your ship's URL + `/~todomvc`, like `https://localhost:8080/~todomvc`.
-
-...Something is still wrong. I'm seeing a blank page there.
-
-#### Examining Internal References in our Minified File
-Minified files are hard to edit, but so is tracking down every file reference in an existing application that you're trying to port to Urbit in its non-minified form.  If you look in the console (`F12` key) of your browser that's currently showing a blank page, you'll probably see some errors like the following:
-```
-The script from “http://138.197.192.56:8080/~/login?redirect=/hooks-todo/static/js/2.1ff61cb7.chunk.js” was loaded even though its MIME type (“text/html”) is not a valid JavaScript MIME type.
-```
-
-Note the referent /hooks-todo. With the Urbit-side base directory as /todomvc and not /hooks-todo, this file reference isn't going to work.
-
-In the folder /devops/app/todomvc run a find and replace for:
-<table>
-<tr>
-<td>
-Find
-</td>
-<td>
-Replace With
-</td>
-</tr>
-<tr>
-<td>
-hooks-todo
-</td>
-<td>
-~todomvc
-</td>
-</tr>
-</table>
-And then `|commit %home`.  Then refresh the page.
-
-Is it working? Nice!
-
-## Homework {#homework}
+## Additional Materials {#homework}
 * Read through the rest of the commented version of [`/sur/file-server.hoon`](https://github.com/urbit/urbit/blob/master/pkg/arvo/sur/file-server.hoon).
 * Read the [`+on-poke` arm](https://github.com/urbit/urbit/blob/50d45b0703eb08a5b46a8ff31818b3a6f170b9f8/pkg/arvo/app/file-server.hoon#L105) of `/app/file-server.hoon` and try and figure out what's going on there - how is the poke from above being handled?
 * Read _just_ the introduction/overview of [`~timluc-miptev`'s Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/overview#what-is-gall)

@@ -23,19 +23,19 @@ Each chapter of this tutorial, including this one, will include the following se
   * _When the difficulty is really high, the tutorial will include a breakout lesson that will walk you through the exercise, but you should try it on your own first!_
 * _Optional_ Breakout Lessons
   * _Some of the chapters will include optional breakouts of complex subjects into sub-chapters._
-  * _It is not necessary to complete these optional chapters to progress through the guide, but if you want to learn more, these will be there for you. Enter if you dare._
+  * _It is not necessary to complete these optional chapters to progress through the tutorial, but if you want to learn more, these will be there for you. Enter if you dare._
 
 While it's possible to develop on a live Ship, it's highly discouraged for a variety of reasons. Instead development should be done on a test instance of an urbit, also known as a Fake Ship. This chapter will discuss setting up a Fake Ship for development purposes, and establishing up an efficient workflow using this Fake Ship. If you're already familiar with Urbit, you might be able to skim this lesson, but you should at least give it a once over before proceeding.
 
 ## Required Files {#required-files}
-* Download the full [repo of this guide to your Urbit host](https://github.com/rabsef-bicrym/tudumvc).
+* Download the full [repo of this tutorial to your Urbit host](https://github.com/rabsef-bicrym/tudumvc).
   * Use `git clone https://github.com/rabsef-bicrym/tudumvc` to pull a copy of the required files for this tutorial.
   * These files will be used in subsequent chapters of this tutorial.
 
 ## Learning Checklist {#learning-checklist}
 * How is an Urbit ship launched?
 * What is an efficient workflow for developing on Urbit?
-* What additional materials are needed for completing this guide?
+* What additional materials are needed for completing this tutorial?
 * What will the `%tudumvc` end product design look like?
 
 ## Goals {#goals}
@@ -55,7 +55,7 @@ While it's possible to develop on a live Ship, it's highly discouraged for a var
 There are many options for Urbit hosting including a local MacOS or Linux computer, [the Linux subsystem for Windows box](https://subject.network/posts/urbit-wsl2/), or even a [Raspberry Pi](https://botter-nidnul.github.io/Steps_to_Urbit_on_Raspberry_Pi.html). Running Urbit in the cloud is also viable; check out this brief [breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/hosting-options.md) for more details.
 
 ### Installing the Urbit Binary
-The best way of getting always-up-to-date instructions is by referencing urbit.org's guide [here](@/getting-started/_index.md). This tutorial will assume the Urbit binary is installed at `~/urbit` on the chosen host system.
+The best way of getting always-up-to-date instructions is by referencing urbit.org's tutorial [here](@/getting-started/_index.md). This tutorial will assume the Urbit binary is installed at `~/urbit` on the chosen host system.
 
 **NOTE:** Creating an `~/urbit` directory is optional, but the current tarball unpacks all of its files directly to its parent directory, so it's helpful for containing the files.
 
@@ -101,7 +101,7 @@ With a fake ship running, it can be accessed through [Landscape](https://urbit.o
 The following steps make this setup more convenient for development:
 
 ### Prepare for Development {#developing-on-urbit}
-On a live ship, a breaking mistake risks having to [breach the ship](https://urbit.org/using/id/guide-to-breaches/) and boot from the ground up. In contrast, a Fake Ship can be backed up in the freshly booted state and infinitely restored and rebooted.
+On a live ship, a breaking mistake risks having to [breach the ship](https://urbit.org/using/id/tutorial-to-breaches/) and boot from the ground up. In contrast, a Fake Ship can be backed up in the freshly booted state and infinitely restored and rebooted.
 
 Making a backup of a fake ship is easy - but we want to get it into an ideal state before backing it up:
 
