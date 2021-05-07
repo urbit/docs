@@ -46,3 +46,7 @@ How to merge desks programmatically.
 [Permissions](@/docs/arvo/clay/permissions.md)
 
 How to manage file permissions in clay.
+
+[Foreign Ships](@/docs/arvo/clay/foreign-requests.md)
+
+How to make requests to foreign ships.
