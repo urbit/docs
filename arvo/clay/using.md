@@ -49,10 +49,6 @@ from the start to the end triggers a response.  Since a `%many`
 request doesn't ask for any particular data, there aren't `%u`,
 `%x`, and `%y` versions for it.
 
-For further information, see [Local Reads](@/docs/arvo/clay/local-reads.md),
-[Local Subscriptions](@/docs/arvo/clay/local-sub.md), and [Foreign
-Requests](@/docs/arvo/clay/foreign.md)
-
 ### Unix sync
 
 Usage:

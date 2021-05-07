@@ -51,15 +51,3 @@ reading and subscribing, syncing to Unix, and merging. (Up to date as of April 2
 [Data Types](@/docs/arvo/clay/data-types.md)
 
 Explanations of the many data types found throughout Clay. (Up to date as of April 2021)
-
-[Local Reads and Writes](@/docs/arvo/clay/local-reads.md)
-
-How local reads and writes work.
-
-[Local Subscriptions](@/docs/arvo/clay/local-sub.md)
-
-How local subscriptions work.
-
-[Foreign Requests](@/docs/arvo/clay/foreign.md)
-
-How foreign reads and subscriptions work.
