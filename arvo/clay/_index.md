@@ -38,3 +38,7 @@ How to add, delete and modify files.
 [Manage Mounts](@/docs/arvo/clay/mounts.md)
 
 How to manage clay unix mounts programmatically.
+
+[Merge Desks](@/docs/arvo/clay/merge.md)
+
+How to merge desks programmatically.
