@@ -51,3 +51,7 @@ reading and subscribing, syncing to Unix, and merging. (Up to date as of April 2
 [Data Types](@/docs/arvo/clay/data-types.md)
 
 Explanations of the many data types found throughout Clay. (Up to date as of April 2021)
+
+[Scry Reference](@/docs/arvo/clay/scry.md)
+
+Reference for Clay's various scry endpoints.

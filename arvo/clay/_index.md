@@ -22,3 +22,7 @@ reading and subscribing, syncing to Unix, and merging.
 [Data Types](@/docs/arvo/clay/data-types.md)
 
 Explanations of the many data types found throughout Clay.
+
+[Scry Reference](@/docs/arvo/clay/scry.md)
+
+Reference for Clay's various scry endpoints.
