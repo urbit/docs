@@ -26,3 +26,7 @@ Explanations of the many data types found throughout Clay.
 [Scry Reference](@/docs/arvo/clay/scry.md)
 
 Reference for Clay's various scry endpoints.
+
+[Read and Subscribe](@/docs/arvo/clay/read.md)
+
+How to read files and subscribe for changes.
