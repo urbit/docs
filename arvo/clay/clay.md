@@ -59,3 +59,7 @@ Reference for Clay's various scry endpoints.
 [Read and Subscribe](@/docs/arvo/clay/read.md)
 
 How to read files and subscribe for changes.
+
+[Write and Modify](@/docs/arvo/clay/write.md)
+
+How to add, delete and modify files.
