@@ -94,7 +94,7 @@ Example:
 
 Here's a generic thread that just sends the given `task:clay` to clay so we can try a few different things:
 
-**`send-clay-task.hoon`**
+`send-clay-task.hoon`
 
 ```hoon
 /-  spider 
@@ -233,7 +233,7 @@ Example:
 
 Here's a generic thread that sends the given `task:clay` and receives a gift which it just prints to the dojo.
 
-**`send-task-take-gift.hoon`**
+`send-task-take-gift.hoon`
 
 ```hoon
 /-  spider

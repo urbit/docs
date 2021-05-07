@@ -38,7 +38,7 @@ We'll use a fake ~nes as the the foreign ship and a fake ~zod as the local ship.
 
 First we'll set permissions on the foreign ship. Here's a simple thread that just sends a task to clay:
 
-**`send-clay-task.hoon`**
+`send-clay-task.hoon`
 
 ```hoon
 /-  spider 
@@ -72,7 +72,7 @@ If we scry the file for its permissions with a `%p` care, we'll see ~zod is now 
 
 Next, save the following thread to `ted/send-task-take-gift.hoon` on ~zod:
 
-**`send-task-take-gift.hoon`**
+`send-task-take-gift.hoon`
 
 ```hoon
 /-  spider

@@ -61,7 +61,7 @@ Example:
 
 Here's a thread that sends the given `task:clay` to clay and prints the `gift:clay` response:
 
-**`send-task.hoon`**
+`send-task.hoon`
 
 ```hoon
 /-  spider 

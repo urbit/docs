@@ -35,7 +35,7 @@ Example:
 
 Here's a thread that sends a `task:clay` and takes a `gift:clay` in response:
 
-**`send-task-take-gift.hoon`**
+`send-task-take-gift.hoon`
 
 ```hoon
 /-  spider
@@ -83,7 +83,7 @@ Example:
 
 Here's a thread which will send the given `task:clay` to clay.
 
-**`send-task.hoon`**
+`send-task.hoon`
 
 ```hoon
 /-  spider 

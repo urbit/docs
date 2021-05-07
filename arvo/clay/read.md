@@ -109,7 +109,7 @@ You can use whichever you prefer. The `path` will usually be a path to a file or
 
 Example:
 
-**`read-file.hoon`**
+`read-file.hoon`
 
 ```hoon
 /-  spider 
@@ -181,7 +181,7 @@ This subscribes to the next version of the specified file. The `mood` structure 
 
 If you subscribe to the current case of the desk, clay will not respond until the file changes. If you subscribe to a previous case of the desk and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at case `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at case `60`.
 
-**`sub-next.hoon`**
+`sub-next.hoon`
 
 ```hoon
 /-  spider 
@@ -271,7 +271,7 @@ Example:
 
 This thread will subscribe to `/foo/txt` with an `%x` care and `/bar/txt` with a `%u` care. It will print out the `%wris` it gets back from clay.
 
-**`sub-mult.hoon`**
+`sub-mult.hoon`
 
 ```hoon
 /-  spider 
@@ -379,7 +379,7 @@ Example:
 
 This thread will subscribe to changes to your `%home` desk for the next three minutes. The `track` is `%.y` so it will only inform you of changes, not send the full `nako`. It will only get updates if the specified file exists. It contains a `main-loop` that will take an arbitrary number of signs and print them out in the dojo. Since it never ends, you'll need to stop it with the `:spider|kill` command in the dojo.
 
-**`sub-many.hoon`**
+`sub-many.hoon`
 
 ```hoon
 /-  spider 
@@ -475,7 +475,7 @@ Example:
 
 This thread will subscribe to the `%next` version of `/foo/txt`, then immediately cancel the subscription and wait for a response to print (which it will never receive).
 
-**`stop-sub.hoon`**
+`stop-sub.hoon`
 
 ```hoon
 /-  spider 

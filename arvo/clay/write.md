@@ -57,7 +57,7 @@ Now we'll look at some example threads:
 
 ## Add File
 
-**`add-file.hoon`**
+`add-file.hoon`
 
 ```hoon
 /-  spider 
@@ -95,7 +95,7 @@ Here's a breakdown of the `task:clay` we sent:
 
 ## Delete File
 
-**`delete-file.hoon`**
+`delete-file.hoon`
 
 ```hoon
 /-  spider 
@@ -136,7 +136,7 @@ Identical to the [Add File](#add-file) example, just replace `%ins` with `%mut`.
 
 Since `soba:clay` is just a `list` of `miso:clay`, you can add a bunch of `miso:clay` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `miso` in each request but you could mix different types together too.
 
-**`multi-change.hoon`**
+`multi-change.hoon`
 
 ```hoon
 /-  spider 
