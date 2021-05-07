@@ -71,3 +71,7 @@ How to manage clay unix mounts programmatically.
 [Merge Desks](@/docs/arvo/clay/merge.md)
 
 How to merge desks programmatically.
+
+[Permissions](@/docs/arvo/clay/permissions.md)
+
+How to manage file permissions in clay.
