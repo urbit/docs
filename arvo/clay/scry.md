@@ -13,29 +13,29 @@ The various clay scries are specified by a `care`, which is a single character t
 
 ## Contents
 
-- [`a`](#a) - Build a hoon file.
-- [`b`](#b) - Dynamic mark.
-- [`c`](#c) - Dynamic mark conversion.
-- [`d`](#d) - List desks.
-- [`e`](#e) - Static mark.
-- [`f`](#f) - Static mark conversion.
-- [`p`](#p) - File permissions.
-- [`r`](#r) - Vase-wrapped file data. 
-- [`s`](#s) - Miscellaneous scries:
-    - [`yaki`](#yaki) - `yaki:clay` of the specified commit.
-    - [`blob`](#blob) - `blob:clay` of file.
-    - [`hash`](#hash) - Content hash of the specified commit.
-    - [`cage`](#cage) - `cage` of the data of a file.
-    - [`open`](#open) - Compile prelude of file.
-    - [`late`](#late) - Most recent case of desk.
-    - [`base`](#base) - Mergebase of two desks.
-- [`t`](#t) - List files in directory.
-- [`u`](#u) - Check for existence of file.
-- [`v`](#v) - Desk state.
-- [`w`](#w) - Revision number of the given desk case.
-- [`x`](#x) - Raw data of file.
-- [`y`](#y) - `arch` of a file or directory.
-- [`z`](#z) - Content hash of a file or directory.
+- [a](#a) - Build a hoon file.
+- [b](#b) - Dynamic mark.
+- [c](#c) - Dynamic mark conversion.
+- [d](#d) - List desks.
+- [e](#e) - Static mark.
+- [f](#f) - Static mark conversion.
+- [p](#p) - File permissions.
+- [r](#r) - Vase-wrapped file data. 
+- [s](#s) - Miscellaneous scries:
+    - [yaki](#yaki) - `yaki:clay` of the specified commit.
+    - [blob](#blob) - `blob:clay` of file.
+    - [hash](#hash) - Content hash of the specified commit.
+    - [cage](#cage) - `cage` of the data of a file.
+    - [open](#open) - Compile prelude of file.
+    - [late](#late) - Most recent case of desk.
+    - [base](#base) - Mergebase of two desks.
+- [t](#t) - List files in directory.
+- [u](#u) - Check for existence of file.
+- [v](#v) - Desk state.
+- [w](#w) - Revision number of the given desk case.
+- [x](#x) - Raw data of file.
+- [y](#y) - `arch` of a file or directory.
+- [z](#z) - Content hash of a file or directory.
 
 ## a
 
