@@ -72,11 +72,12 @@ injected into the `%dawn` sequence for the moon, and its public key is stored by
 the parent in its Jael vane. Moon networking keys may be changed by the parent
 ship, but not by the moon itself.
 
-For comets, their 128-bit name is actually their public key, and the "mining"
-process to generate a comet consists of guessing a private key for which the
-associated public key has a galaxy that has already been pre-assigned to assist
-its peer discovery process. Thus, comets cannot change their networking keys -
-to get a new private networking key, a new comet must be generated.
+For comets, their 128-bit `@p` name is actually their public key, and the
+"mining" process to generate a comet consists of guessing a private key for
+which the associated public key has a galaxy that has already been pre-assigned
+to assist its peer discovery process. Thus, comets cannot change their
+networking keys - to get a new private networking key, a new comet must be
+generated.
 
 ### System components
 
