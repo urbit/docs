@@ -22,6 +22,10 @@ The Urbit stack is primarily comprised of:
   virtual machine that mediates between each urbit and the Unix software layer.
 - [Azimuth](@/docs/system-overview/azimuth.md): the Urbit identity layer, built
   on the Ethereum blockchain.
+  
+Central to the operation of Urbit are cryptographic methods. We give a
+high-level overview on the usage of cryptography in Urbit and how it is
+implemented [here](@/docs/system-overview/cryptography.md).
 
 ## Anatomy of a personal server
 
