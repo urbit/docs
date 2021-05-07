@@ -23,15 +23,30 @@ reading and subscribing, syncing to Unix, and merging.
 
 Explanations of the many data types found throughout Clay.
 
-[Local Reads and Writes](@/docs/arvo/clay/local-reads.md)
+[Scry Reference](@/docs/arvo/clay/scry.md)
 
-How local reads and writes work.
+Reference for Clay's various scry endpoints.
 
-[Local Subscriptions](@/docs/arvo/clay/local-sub.md)
+[Read and Subscribe](@/docs/arvo/clay/read.md)
 
-How local subscriptions work.
+How to read files and subscribe for changes.
 
-[Foreign Requests](@/docs/arvo/clay/foreign.md)
+[Write and Modify](@/docs/arvo/clay/write.md)
 
-How foreign reads and subscriptions work.
+How to add, delete and modify files.
 
+[Manage Mounts](@/docs/arvo/clay/mounts.md)
+
+How to manage clay unix mounts programmatically.
+
+[Merge Desks](@/docs/arvo/clay/merge.md)
+
+How to merge desks programmatically.
+
+[Permissions](@/docs/arvo/clay/permissions.md)
+
+How to manage file permissions in clay.
+
+[Foreign Ships](@/docs/arvo/clay/foreign-requests.md)
+
+How to make requests to foreign ships.
