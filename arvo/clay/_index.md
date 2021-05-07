@@ -34,3 +34,7 @@ How to read files and subscribe for changes.
 [Write and Modify](@/docs/arvo/clay/write.md)
 
 How to add, delete and modify files.
+
+[Manage Mounts](@/docs/arvo/clay/mounts.md)
+
+How to manage clay unix mounts programmatically.
