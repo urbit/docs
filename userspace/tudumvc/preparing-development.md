@@ -13,7 +13,7 @@ Each chapter of this tutorial, including this one, will include the following se
 * Goals
   * _A list of things you will be able to do on your own by the end of the chapter._
 * Prerequisites
-  * _What you'll need to complete the chapter._
+  * _What you'll need to complete the chapter, if you're following along on your own._
 * Chapter Text
   * _The actual contents of the specific chapter._
 * Additional Materials

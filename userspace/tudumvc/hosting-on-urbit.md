@@ -8,7 +8,7 @@ template = "doc.html"
 The goal here is to get a fully integrated version of TodoMVC, back-ended by Urbit, to run entirely from an Urbit. To start off, we'll host the default React.js + Hooks implementation of TodoMVC on a ship. From there, we can work on building a backend for the app, using a %gall agent.
 
 ## Required Files {#required-files}
-* The /src-lesson2/react-hooks folder copied to your local environment
+* The /src-lesson2/react-hooks folder copied to your local environment.
 
 ## Learning Checklist {#learning-checklist}
 * Interacting with TodoMVC using `yarn`, including
