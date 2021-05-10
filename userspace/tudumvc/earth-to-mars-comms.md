@@ -58,6 +58,30 @@ In addition to the Test Button functionality that was previously added, there ar
   #java label[for=current2] {
     border-right-width: 1px;
   }
+  #java label[for=current3] {
+    border-right-width: 1px;
+  }
+  #java label[for=current4] {
+    border-right-width: 1px;
+  }
+  #java label[for=current5] {
+    border-right-width: 1px;
+  }
+  #java label[for=current6] {
+    border-right-width: 1px;
+  }
+  #java label[for=current7] {
+    border-right-width: 1px;
+  }
+  #java label[for=current8] {
+    border-right-width: 1px;
+  }
+  #java label[for=current9] {
+    border-right-width: 1px;
+  }
+  #java label[for=current10] {
+    border-right-width: 1px;
+  }
   #java input[type="radio"] {
     display: none;
   }
