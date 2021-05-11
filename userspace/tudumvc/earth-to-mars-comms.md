@@ -1003,11 +1003,11 @@ If you're following along, you should be able to save all these changes, reload 
 
 And, with that, `%tudumvc` is live on the Earth web at http://localhost:8080/~tudumvc (or your relative version).
 
-## Homework {#homework}
-* Try moving all of your poke handling work in `+on-poke`'s sub-arm `poke-action` to the helper core.
+## Additional Materials {#additional-materials}
 * Read about subscriptions and inter-%gall communications [here](https://github.com/timlucmiptev/gall-guide/blob/master/poke).
 
 ## Exercises {#exercises}
+* Try moving all of your poke handling work in `+on-poke`'s sub-arm `poke-action` to the helper core.
 * Describe what's going on in our Helper Core - you'll need the following information:
     * [=<](https://urbit.org/docs/reference/hoon-expressions/rune/tis/#tisgal)
     * [pairs:enjs:format](https://github.com/urbit/urbit/blob/6bcbbf8f1a4756c195a324efcf9515b6f288f700/pkg/arvo/sys/zuse.hoon#L3271)

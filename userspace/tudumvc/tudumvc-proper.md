@@ -277,6 +277,180 @@ The changes to /sur should be familiar at this point, at least in terms of how t
   #app-6 input[type='radio']:checked + label + .tab {
     display: block;
   }
+  #app-7 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-7 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-7 label[for=current9] {
+    border-right-width: 1px;
+  }
+  #app-7 input[type="radio"] {
+    display: none;
+  }
+  #app-7 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-7 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-7 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-8 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-8 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-8 label[for=current10] {
+    border-right-width: 1px;
+  }
+  #app-8 input[type="radio"] {
+    display: none;
+  }
+  #app-8 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-8 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-8 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-9 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-9 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-9 label[for=current11] {
+    border-right-width: 1px;
+  }
+  #app-9 input[type="radio"] {
+    display: none;
+  }
+  #app-9 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-9 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-9 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #sur-frontend {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #sur-frontend label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #sur-frontend label[for=current12] {
+    border-right-width: 1px;
+  }
+  #sur-frontend input[type="radio"] {
+    display: none;
+  }
+  #sur-frontend .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #sur-frontend input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #sur-frontend input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-10 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-10 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-10 label[for=current13] {
+    border-right-width: 1px;
+  }
+  #app-10 input[type="radio"] {
+    display: none;
+  }
+  #app-10 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-10 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-10 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #addTodos-new {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #addTodos-new label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #addTodos-new label[for=current14] {
+    border-right-width: 1px;
+  }
+  #addTodos-new input[type="radio"] {
+    display: none;
+  }
+  #addTodos-new .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #addTodos-new input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #addTodos-new input[type='radio']:checked + label + .tab {
+    display: block;
+  }
 </style>
 <div id="sur-types">
   <input type="radio" id="prior" name="sur-types">
@@ -1002,34 +1176,29 @@ The agent will send a card the first time a ship starts to `%watch` `/sub-tasks`
 The agent also, when hearing a `%watch` on `/sub-tasks`, adds the subscriber to the `requested.editors` state (letting the host know they've asked for access to edit their tasks).
 
 #### `++  on-agent` {#pt-I-on-agent}
-In `+on-agent`, the agent handles cards coming from other ships on various wires. That is, subscriptions we've made will be sent data, and that data (sent in the form of `%fact`s or `%kick`s, in this case) will be processed using the code in this arm. `+on-agent` will need to handle:
+In `+on-agent`, the agent handles cards coming from other ships on various wires. That is, subscribers made will be sent data, and that data (sent in the form of `%fact`s or `%kick`s, in this case) will be processed using the code in this arm. `+on-agent` will need to handle:
 
-* Our `updates:tudumvc` poke structure entirely:
+* The `updates:tudumvc` poke structure entirely:
   * `[%task-add id=@ud label=@tu]`
   * `[%task-remove id=@ud]`
   * `[%task-complete id=@ud done=?]`
   * `[%task-edit id=@ud label=@tU]`
   * `[%full-send =tasks]`
-* Any `%kick`s we receive from ships we're subscribed to.
+* Any `%kick`s received from hosts a ship is subscribed to.
 
-<table>
-<tr>
-<td>
-:: initial version (line 118)
-</td>
-<td>
-:: new version (lines 127-185)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-7">
+  <input type="radio" id="prior9" name="app-7">
+  <label for="prior9">Prior Version (line 118)</label>
+  <div class="tab">
 
 ```hoon
-on-arvo:def
+++  on-agent  on-arvo:def
 ```
-</td>
+  </div>
 
-<td>
+  <input type="radio" id="current9" name="app-7" checked>
+  <label for="current9">Current /app (lines 127-185)</label>
+  <div class="tab"> 
 
 ```hoon
   |=  [=wire =sign:agent:gall]
@@ -1092,15 +1261,14 @@ on-arvo:def
     ~[[%give %fact ~[/mytasks] [%json !>((json (tasks-json:hc shared)))]]]
   --
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 If the agent is receiving a `%fact` on the `/sub-tasks/...` wire that it created for a subscription, it should be one of the `updates:tudumvc` types. Most of these are handled in their own arm of the `+on-agent` `|^` core, but `%full-send` is handled in-line. 
 
 `%full-send` takes in a full task list from some ship (`src.bowl`) and adds it to the `shared` data object in state by adding a key (of the ship) value (of the full task list) pair to that map.
 
-All of the other incremental data types (`%task-add`, `%task-remove`, `%task-complete` and `%task-edit`) functional generally similar to how they do when poking your own ship for state changes. They even send the data to the Earth app on `/mytasks`.
+All of the other incremental data types (`%task-add`, `%task-remove`, `%task-complete` and `%task-edit`) function generally similar to how they do when poking your own ship for state changes. They even send the data to the Earth app on `/mytasks`.
 
 If the agent receives a `%kick`, it cleans up the local state with [`del:by`](https://urbit.org/docs/hoon/reference/stdlib/2i/#del-by) and deletes the task list it was maintaining for that subscription.
 
@@ -1109,24 +1277,19 @@ If the agent receives a `%kick`, it cleans up the local state with [`del:by`](ht
 
 **NOTE:** `+on-leave` takes a path. If your app had multiple subscription paths, you could use this to switch behavior on unsubscribe based on what data set the user is unsubscribing from.
 
-<table>
-<tr>
-<td>
-:: initial version (line 117)
-</td>
-<td>
-:: new version (lines 187-191)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-8">
+  <input type="radio" id="prior10" name="app-8">
+  <label for="prior10">Prior Version (line 117)</label>
+  <div class="tab">
 
 ```hoon
-on-leave:def
+++  on-leave  on-leave:def
 ```
-</td>
+  </div>
 
-<td>
+  <input type="radio" id="current10" name="app-8" checked>
+  <label for="current10">Current /app (lines 127-185)</label>
+  <div class="tab"> 
 
 ```hoon
   |=  =path
@@ -1135,26 +1298,18 @@ on-leave:def
   =.  editors  [(~(dif in requested.editors) (sy ~[src.bowl])) (~(dif in approved.editors) (sy ~[src.bowl])) (~(dif in denied.editors) (sy ~[src.bowl]))]
   `this
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 #### `++  tasks-json`
-You also need to update `+tasks-json` to work with the new state data. Then you can update the Earth app to accommodate this data and to allow it to send task actions to remote ships (sort of - the pattern will actually be telling the host agent to tell the other ships to change the task).
+Lastsly, we need to update `+tasks-json` to work with the new state data. In the next part of this chapter, we'll update the Earth app to accommodate this data and to allow it to send task actions to remote ships (sort of - the pattern will actually be telling the host agent to tell the other ships to change the task).
 
 The changes to `+tasks-json` are as follows:
 
-<table>
-<tr>
-<td>
-:: initial version (lines 123-139)
-</td>
-<td>
-:: new version (lines 198-223)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-9">
+  <input type="radio" id="prior11" name="app-9">
+  <label for="prior11">Prior Version (lines 123-139)</label>
+  <div class="tab">
 
 ```hoon
   |=  stat=tasks:tudumvc
@@ -1175,9 +1330,11 @@ The changes to `+tasks-json` are as follows:
   out
   --
 ```
-</td>
+  </div>
 
-<td>
+  <input type="radio" id="current11" name="app-9" checked>
+  <label for="current11">Current /app (lines 198-223)</label>
+  <div class="tab"> 
 
 ```hoon
 ++  tasks-json
@@ -1208,14 +1365,13 @@ The changes to `+tasks-json` are as follows:
     out
   --
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
-The big change here is to handle a `shared-tasks` input, or a `(map ship tasks)`, rather than just a `tasks` input, using `+partner-handler` (which just calls `+object-maker` recursively for each partner). `+object maker` works just like it did before, but it's called for each ship key in `shared`. This pattern creates an array of JSON objects structured like this: `{'~sampel-palnet': [{'id': 1, 'label': 'the label', 'done': FALSE} {'id': 2, 'label': 'the label 2', 'done': FALSE}]}`. On the Earth web side, you'll be able to switch between the elements of this array to show all of the task lists for the host ship and any ship to which it subscribes.
+The big change here is to handle a `shared-tasks` input, or a `(map ship tasks)`, rather than just a `tasks` input, using `+partner-handler` (which just calls `+object-maker` recursively for each partner). `+object maker` works just like it did before, but it's called for each ship key in `shared`. This pattern creates an array of JSON objects structured like this: `{'~sampel-palnet': [{'id': 1, 'label': 'the label', 'done': FALSE} {'id': 2, 'label': 'the label 2', 'done': FALSE}]}`. On the Earth web side, we'll be able to switch between the elements of this array to show all of the task lists for the host ship and any ship to which it subscribes.
 
 ### Testing General Networking {#lesson-pt-I-urbit-networked-applications}
-You now have all you need to establish basic `%gall`-side networking of the agent. While the frontend wont work just yet, you can test the `%gall` side - try a few of the following actions between your two test ships after syncing and `|commit`ing:
+If you're following along on your own, you now have all you need to establish basic `%gall`-side networking of the agent. While the frontend wont work just yet, you can test the `%gall` side - try a few of the following actions between your two test ships after syncing and `|commit`ing:
 
 * Check your state:
 `:tudumvc +dbug %state` should yield something like:
@@ -1231,7 +1387,7 @@ You now have all you need to establish basic `%gall`-side networking of the agen
   editors=[requested={} approved={} denied={}]
 ]
 ```
-We can see the new state here - great!
+We can see the new state here.
 
 * Subscribe to a friend:
 `:tudumvc &tudumvc-action [%sub ~zod]` will show, on the subscribing ship:
@@ -1334,24 +1490,16 @@ And, if you check `~nus`'s state thereafter:
 ]
 ```
 
-Fiddle around with this a little more and get comfortable with the way the ships are now interacting, and then continue on to Part II of the Lesson.
+Fiddle around with this a little more and get comfortable with the way the ships are now interacting, and then continue on to Part II of this chapter.
 
-## The Lesson (Part II) {#lesson-pt-II}
-In this, the last section of this guide, you're going to implement Earth web support for the changes we made in the last section. Let's start with the hoon changes:
+## Chapter Text (Part II) {#chapter-text-pt-II}
+In this, the last section of this tutorial, we'll implement Earth web support for the changes we made in the last section, starting with the hoon changes:
 
 ### Adding Support for `frontend` Actions
-We're going to use new pokes from the Earth web app to handle actions for our task lists and those to which we subscribe. We're doing it this way because airlock doesn't handle 'remote' pokes the way we did from dojo in the last section (e.g. `:~zod/tudumvc &tudumvc-action [%add-task 'test task from ~nus']`). Instead, we'll poke our hosting ship from the frontend w/ data about to whom the change in task data is directed and the host ship will then send a card (a poke) to that remote ship, or apply it to its own task list, as appropriate.
+The Earth web app will use fully new pokes to handle actions for the host's task lists and those to which they subscribe. We're doing it this way because airlock doesn't handle 'remote' pokes the way we did from dojo in the last section (e.g. `:~zod/tudumvc &tudumvc-action [%add-task 'test task from ~nus']`). Instead, the Earth web app will poke the hosting ship from the frontend w/ data about to whom the change in task data is directed and the host ship will then send a card (a poke) to that remote ship, or apply it to its own task list, as appropriate.
 
 #### Creating A `frontend` Type
-Add a `frontend` type to your /sur file. `frontend` is like the original `action` type, but each tagged union element will _also_ include a ship name. This will be used to direct these pokes to the appropriate task-holder. Note that you'll still have to have permission to edit a remote ship's tasks for these to actually process.
-
-<table>
-<tr>
-<td>
-:: adding frontend type to our sur file (wherever)
-</td>
-</tr>
-<td>
+First, we need to add a `frontend` type to the /sur file. `frontend` is like the original `action` type, but each tagged union element will _also_ include a ship name. This will be used to direct these pokes to the appropriate task-holder. Note that any ship sending such a poke will still have to have permission to edit a remote ship's tasks for these to actually process.
 
 ```hoon
 :: Creates a structure for front end usage that will specify the ship to poke on 
@@ -1365,20 +1513,9 @@ Add a `frontend` type to your /sur file. `frontend` is like the original `action
     [%edit-task =ship id=@ud label=@tU]
   ==
 ```
-</td>
-</tr>
-</table>
 
 #### Adding `/mar/tudumvc/frontend.hoon`
-Also, you'll need a /mar mark that will handle these new `frontend` type. This mark will need to handle incoming JSON data from our Earth web app, so you'll need conversions to hoon types in the `+grab` arm:
-
-<table>
-<tr>
-<td>
-:: create a file called `frontend.hoon` in your /mar/tudumvc folder
-</td>
-</tr>
-<td>
+To handle the JSON/hoon conversion of Earth web pokes, we'll add a /mar mark. Since this /mar file handles incoming JSON data from our Earth web app, it will need conversions to hoon types in the `+grab` arm:
 
 ```hoon
 :: Creates a structure for front end usage that will specify the ship to poke on 
@@ -1415,9 +1552,6 @@ Also, you'll need a /mar mark that will handle these new `frontend` type. This m
   --
 --
 ```
-</td>
-</tr>
-</table>
 
 By now, you should be able to fairly easily read the JSON parsing we're doing here. Even if you're struggling with it, you should be able to see that these produce data in noun format that is of the `frontend` type you just created.
 
@@ -1425,28 +1559,23 @@ By now, you should be able to fairly easily read the JSON parsing we're doing he
 Updating the app will consist of updating `+on-poke` for `frontend` pokes.
 
 #### ++  on-poke
-First, change the expected marks the agent might see coming in to `+on-poke`:
+First, we change the expected marks the agent might see coming in to `+on-poke`:
 
-<table>
-<tr>
-<td>
-:: initial version (lines 52-54)
-</td>
-<td>
-:: new version (lines 52-55)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-10">
+  <input type="radio" id="prior13" name="app-10">
+  <label for="prior13">Prior Version (lines 52-54)</label>
+  <div class="tab">
 
 ```hoon
   ?+  mark  (on-poke:def mark vase)
       %tudumvc-action    (poke-actions !<(action:tudumvc vase))
   ==
 ```
-</td>
+  </div>
 
-<td>
+  <input type="radio" id="current13" name="app-10" checked>
+  <label for="current13">Current /sur (lines 52-55)</label>
+  <div class="tab"> 
 
 ```hoon
   ?+  mark  (on-poke:def mark vase)
@@ -1454,19 +1583,10 @@ First, change the expected marks the agent might see coming in to `+on-poke`:
       %tudumvc-frontend  (frontend-actions !<(frontend:tudumvc vase))
   ==
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
-Then, add an arm that will handle those `frontend` type pokes:
-
-<table>
-<tr>
-<td>
-:: add an arm under poke-actions called frontend-actions
-</td>
-</tr>
-<td>
+Then, we add an arm that will handle those `frontend` type pokes, under `+poke-actions`:
 
 ```hoon
   ++  frontend-actions
@@ -1489,11 +1609,8 @@ Then, add an arm that will handle those `frontend` type pokes:
     ==
     [cards state]
 ```
-</td>
-</tr>
-</table>
 
-Now the decision to add a ship argument to the helper-core arms that handle changes makes sense. Before, when only using dojo, you can simply poke a remote ship and it will know to apply the changes to itself. From the Earth web, however, you're poking _your own_ ship with data about the ship to which the change should apply. If you take a look at `+add-task:hc`, again:
+Now, hopefully, the decision to add a ship argument to the helper-core arms that handle changes makes sense. Before, when only using dojo, users could simply poke a remote ship and the receiver will know to apply the changes to itself. From the Earth web, however, the user pokes _their own_ ship with data about the ship to which the change should apply. If you take a look at `+add-task:hc`, again:
 ```hoon
 ++  add-task
   |=  [=ship label=@tu]
@@ -1515,48 +1632,42 @@ Now the decision to add a ship argument to the helper-core arms that handle chan
 
 _If_ the ship being passed in the poke is not the host, rather than updating the state directly, it creates a card to `%pass` a `%poke` to the destination ship using the original `action` type (e.g. `[%add task label]`).
 
-Lastly, you should update the Earth web app.
+Lastly, we should update the Earth web app.
 
 ### Updating TodoMVC JavaScript
-This isn't a React.s tutorial, and I'm not entirely positive my implementation is the best methodology so we're going to focus in on the changes that work with airlock, rather than going through all of the changes made to React to support the incoming data. Grab the files from [here](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6/todomvc-end).
+This isn't a React.js tutorial, and I'm not entirely positive my implementation is the best methodology so we're going to focus in on the changes that work with airlock, rather than going through all of the changes made to React to support the incoming data. Grab the files from [here](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6/todomvc-end).
 
 #### Changes to Pokes
 
-<table>
-<tr>
-<td>
-:: initial version of addTodo
-</td>
-<td>
-:: new version of addTodo
-</td>
-</tr>
-<tr>
-<td>
+<div id="addTodos-new">
+  <input type="radio" id="prior14" name="addTodos-new">
+  <label for="prior14">Prior Version (lines 52-54)</label>
+  <div class="tab">
 
 ```
   const addTodo = (task) => {
     urb.poke({app: 'tudumvc', mark: 'tudumvc-action', json: {'add-task': task}})
   };
 ```
-</td>
+  </div>
 
-<td>
+  <input type="radio" id="current14" name="addTodos-new" checked>
+  <label for="current14">Current /sur (lines 52-55))</label>
+  <div class="tab"> 
 
 ```
   const addTodo = (label) => {
     urb.poke({app: 'tudumvc', mark: 'tudumvc-frontend', json: {'add-task': {'ship': subList[selected][1], 'label': label}}})
   };
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 The big change here is adding in a specified ship to the poke and changing the mark to `tudumvc-frontend`. The other poke functions need change in exactly the same way.
 
 The data flow will be:
 1. Earth web app allows you to select a ship.
-  * You can also subscribe to a new ship from the Earth web app (see addSub function).
+  * Users can also subscribe to a new ship from the Earth web app (see addSub function).
 2. Earth web app displays the selected ship's task list.
 3. User makes changes to the Earth web displayed tasks for some ship.
 4. Earth web pokes host ship with:
@@ -1566,11 +1677,11 @@ The data flow will be:
 6. Granting that the host ship is an approved editor for the recipient, the change is applied.
 7. Recipient ship sends back updates on the `/sub-tasks` path
 
-And, just like that, you've created a networked version of TodoMVC using Urbit as our data hosting platform. TodoMVC is dead, long live `%tudumvc`.
+And, just like that, we've created a networked version of TodoMVC using Urbit as our data hosting platform. TodoMVC is dead, long live `%tudumvc`.
 
 ![finished product image](@/docs/userspace/tudumvc/final-product.png)
 
-## Homework {#homework}
+## Additional Materials {#additional-materials}
 No homework this time - maybe in our next course!
 
 ## Exercises {#exercises}
