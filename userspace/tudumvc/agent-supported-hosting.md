@@ -130,7 +130,7 @@ While %gall agents can use files from across the filesystem of your urbit (some 
 
 The /sur file defines structures or types for the agent and the /mar file defines methods for converting various types of input the agent might receive into types it expects (like those defined in /sur).
 
-The /app file is the meat of the %gall agent, and it has a strict structure, seen in ([almost, and even this almost requires a caveat of "there are stil 10 arms but it won't look like it"](@/docs/hoon/guides/cli-tutorial/)) all %gall apps:
+The /app file is the meat of the %gall agent, and it has a strict structure, seen in ([almost, and even this almost requires a caveat of "there are stil 10 arms but it won't look like it"](@/docs/hoon/guides/cli-tutorial.md)) all %gall apps:
 
 #### Importing Files
 They almost always start with importing some /sur (`/-`) and /lib (`/+`) files:

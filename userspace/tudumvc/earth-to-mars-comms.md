@@ -10,6 +10,7 @@ This part of the tutorial will cover connecting TodoMVC with `%tudumvc` and will
 This chapter involves a significant number of JavaScript changes and we don't explain every single change. If you're not familiar with React.js at all, this chapter may be difficult to follow. Just remember, there are a lot of resources available online that describe how React.js works.
 
 ## Required Files {#required-files}
+* The /src-lesson5/todomvc-end folder copied to your local environment.
 * The /src-lesson5/app /mar/tudumvc and /sur files copied into the respectively similar versions on an Urbit running on your local environment (using the sync functionality).
 
 ## Learning Checklist {#learning-checklist}
@@ -41,65 +42,299 @@ This could be done in a more efficient order if you knew what you were doing, bu
 ### `poke`s Replete with Parsing
 In addition to the Test Button functionality that was previously added, there are now several poke actions available in `TodoList.js`:
 <style>
-  #java {
+  #java-poke {
     display: flex;
     flex-wrap: wrap;
   }
-  #java label {
+  #java-poke label {
     order: -1;
     padding: .5rem;
     border-width: 1px 0px 0px 1px;
     border-style: solid;
     cursor: pointer;
   }
-  #java label[for=current] {
+  #java-poke label[for=current] {
     border-right-width: 1px;
   }
-  #java label[for=current2] {
-    border-right-width: 1px;
-  }
-  #java label[for=current3] {
-    border-right-width: 1px;
-  }
-  #java label[for=current4] {
-    border-right-width: 1px;
-  }
-  #java label[for=current5] {
-    border-right-width: 1px;
-  }
-  #java label[for=current6] {
-    border-right-width: 1px;
-  }
-  #java label[for=current7] {
-    border-right-width: 1px;
-  }
-  #java label[for=current8] {
-    border-right-width: 1px;
-  }
-  #java label[for=current9] {
-    border-right-width: 1px;
-  }
-  #java label[for=current10] {
-    border-right-width: 1px;
-  }
-  #java input[type="radio"] {
+  #java-poke input[type="radio"] {
     display: none;
   }
-  #java .tab {
+  #java-poke .tab {
     display: none;
     border: 1px solid;
     padding: 1rem;
     max-width: 100%;
   }
-  #java input[type='radio']:checked + label {
+  #java-poke input[type='radio']:checked + label {
     font-weight: bold;
   }
-  #java input[type='radio']:checked + label + .tab {
+  #java-poke input[type='radio']:checked + label + .tab {
     display: block;
-}
+  }
+  #mar-action {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #mar-action label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #mar-action label[for=current2] {
+    border-right-width: 1px;
+  }
+  #mar-action input[type="radio"] {
+    display: none;
+  }
+  #mar-action .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #mar-action input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #mar-action input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #import-changes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #import-changes label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #import-changes label[for=current3] {
+    border-right-width: 1px;
+  }
+  #import-changes input[type="radio"] {
+    display: none;
+  }
+  #import-changes .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #import-changes input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #import-changes input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #state-mgmt {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #state-mgmt label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #state-mgmt label[for=current4] {
+    border-right-width: 1px;
+  }
+  #state-mgmt input[type="radio"] {
+    display: none;
+  }
+  #state-mgmt .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #state-mgmt input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #state-mgmt input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #adding-helper-core {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #adding-helper-core label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #adding-helper-core label[for=current5] {
+    border-right-width: 1px;
+  }
+  #adding-helper-core input[type="radio"] {
+    display: none;
+  }
+  #adding-helper-core .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #adding-helper-core input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #adding-helper-core input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #poke-changes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #poke-changes label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #poke-changes label[for=current6] {
+    border-right-width: 1px;
+  }
+  #poke-changes input[type="radio"] {
+    display: none;
+  }
+  #poke-changes .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #poke-changes input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #poke-changes input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #on-watch {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #on-watch label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #on-watch label[for=current7] {
+    border-right-width: 1px;
+  }
+  #on-watch input[type="radio"] {
+    display: none;
+  }
+  #on-watch .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #on-watch input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #on-watch input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #todoItem-API {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #todoItem-API label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #todoItem-API label[for=current8] {
+    border-right-width: 1px;
+  }
+  #todoItem-API input[type="radio"] {
+    display: none;
+  }
+  #todoItem-API .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #todoItem-API input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #todoItem-API input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #api-passing {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #api-passing label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #api-passing label[for=current9] {
+    border-right-width: 1px;
+  }
+  #api-passing input[type="radio"] {
+    display: none;
+  }
+  #api-passing .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #api-passing input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #api-passing input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #todoItem-Urbit {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #todoItem-Urbit label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #todoItem-Urbit label[for=current10] {
+    border-right-width: 1px;
+  }
+  #todoItem-Urbit input[type="radio"] {
+    display: none;
+  }
+  #todoItem-Urbit .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #todoItem-Urbit input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #todoItem-Urbit input[type='radio']:checked + label + .tab {
+    display: block;
+  }
 </style>
-<div id="on-poke">
-  <input type="radio" id="prior" name="java">
+<div id="java-poke">
+  <input type="radio" id="prior" name="java-poke">
   <label for="prior">Prior Version</label>
   <div class="tab">
 
@@ -117,7 +352,7 @@ In addition to the Test Button functionality that was previously added, there ar
 ```
   </div>
 
-  <input type="radio" id="current" name="java" checked>
+  <input type="radio" id="current" name="java-poke" checked>
   <label for="current">Current TodoList.js</label>
   <div class="tab"> 
 
@@ -221,18 +456,12 @@ The parsed result is just like the expected vase in the dojo pokes we've used pr
 
 ##### `/mar/tudumvc/action.hoon`
 /mar can be modified to incorporate the parser. This will allow the pokes from TodoMVC to be correctly interpreted back into the `action` poke types that can be used on the Urbit side, and sent to `%tudumvc` in a native format:
-<div id="on-poke">
-  <input type="radio" id="prior2" name="java">
+<div id="mar-action">
+  <input type="radio" id="prior2" name="mar-action">
   <label for="prior2">Prior Version</label>
   <div class="tab">
 
 ```hoon
-/-  tudumvc
-=,  dejs:format
-|_  act=action:tudumvc
-++  grab
-  |%
-  ++  noun  action:tudumvc
   ++  json
   |=  jon=^json
   ~&  "Your JSON object looks like {<jon>}"
@@ -243,12 +472,10 @@ The parsed result is just like the expected vase in the dojo pokes we've used pr
   ++  action
     [%add-task 'We did it, reddit!']
   --
-  --
---
 ```
   </div>
 
-  <input type="radio" id="current2" name="java" checked>
+  <input type="radio" id="current2" name="mar-action" checked>
   <label for="current2">Current `/mar/tudumvc/action.hoon`</label>
   <div class="tab"> 
 
@@ -267,7 +494,6 @@ The parsed result is just like the expected vase in the dojo pokes we've used pr
           [%edit-task (ot :~(['id' ni] ['label' so]))]
       ==
     --
-  --
 ```
   </div>
 </div>
@@ -298,7 +524,7 @@ TodoMVC needs to `subscribe` to an Urbit path to receive data from the Urbit. It
 
 The imports are updated:
 <div id="import-changes">
-  <input type="radio" id="prior3" name="java">
+  <input type="radio" id="prior3" name="import-changes">
   <label for="prior3">Prior Version</label>
   <div class="tab">
 
@@ -308,7 +534,7 @@ import { NavLink } from "react-router-dom";
 ```
   </div>
 
-  <input type="radio" id="current3" name="java" checked>
+  <input type="radio" id="current3" name="import-changes" checked>
   <label for="current3">Current Imports</label>
   <div class="tab"> 
 
@@ -320,8 +546,8 @@ import { NavLink, Route } from "react-router-dom";
 </div>
 
 As is state management:
-<div id="import-changes">
-  <input type="radio" id="prior4" name="java">
+<div id="state-mgmt">
+  <input type="radio" id="prior4" name="state-mgmt">
   <label for="prior4">Prior Version</label>
   <div class="tab">
 
@@ -334,7 +560,7 @@ As is state management:
 ```
   </div>
 
-  <input type="radio" id="current4" name="java" checked>
+  <input type="radio" id="current4" name="state-mgmt" checked>
   <label for="current4">Current State Management</label>
   <div class="tab"> 
 
@@ -355,11 +581,7 @@ As is state management:
   </div>
 </div>
 
-<table>
-<tr>
-<td colspan="2">
-
-And, with that, Earth is listening for data from Mars - we should send some back.
+And, with that, Earth is listening for data from Mars - now to send some back.
 
 #### `/app/tudumvc.hoon` {#using-a-helper-core}
 We're going to add a "helper core" ([as described earlier](@/docs/userspace/tudumvc/agent-supported-hosting.md)) to make this more legible. Basically, all this does is offboard some code to beneath the main, 10 arms of the %gall agent. This helper core will serve two purposes:
@@ -370,7 +592,7 @@ There are a few changes required to `/app/tudumvc.hoon`, here, including:
 
 Instructing the %gall agent to parse a helper core before the main core
 <div id="adding-helper-core">
-  <input type="radio" id="prior5" name="java">
+  <input type="radio" id="prior5" name="adding-helper-core">
   <label for="prior5">Prior Version</label>
   <div class="tab">
 
@@ -382,7 +604,7 @@ Instructing the %gall agent to parse a helper core before the main core
 ```
   </div>
 
-  <input type="radio" id="current5" name="java" checked>
+  <input type="radio" id="current5" name="adding-helper-core" checked>
   <label for="current5">Current door Code</label>
   <div class="tab"> 
 
@@ -426,7 +648,7 @@ Adding the helper core to the bottom of the `/app/tudumvc.hoon` file
 Passing a card on each possible poke action:
 **NOTE:** The use of cards is better defined in [a previous breakout lesson](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md).
 <div id="poke-changes">
-  <input type="radio" id="prior6" name="java">
+  <input type="radio" id="prior6" name="poke-changes">
   <label for="prior6">Prior Version</label>
   <div class="tab">
 
@@ -471,7 +693,7 @@ Passing a card on each possible poke action:
 ```
   </div>
 
-  <input type="radio" id="current6" name="java" checked>
+  <input type="radio" id="current6" name="poke-changes" checked>
   <label for="current6">Current pokes</label>
   <div class="tab"> 
 
@@ -530,7 +752,7 @@ Lastly, updating `+on-watch` to send data on a path when a subscription occurs. 
 
 **NOTE:** This implementation of `+on-watch` is very simple; deceptively so. As stated, more will be done with `+on-watch` in a later chapter of this tutorial, but this is good for a start.
 <div id="on-watch">
-  <input type="radio" id="prior7" name="java">
+  <input type="radio" id="prior7" name="on-watch">
   <label for="prior7">Prior Version</label>
   <div class="tab">
 
@@ -539,7 +761,7 @@ Lastly, updating `+on-watch` to send data on a path when a subscription occurs. 
 ```
   </div>
 
-  <input type="radio" id="current7" name="java" checked>
+  <input type="radio" id="current7" name="on-watch" checked>
   <label for="current7">Current pokes</label>
   <div class="tab"> 
 
@@ -563,8 +785,8 @@ TodoMVC performs edits and other activities using TodoItem.js, so to finish this
 
 Incorporating the Urbit API in TodoItem.js:
 
-<div id="TodoItem-API">
-  <input type="radio" id="prior8" name="java">
+<div id="todoItem-API">
+  <input type="radio" id="prior8" name="todoItem-API">
   <label for="prior8">Prior Version</label>
   <div class="tab">
 
@@ -574,8 +796,8 @@ Incorporating the Urbit API in TodoItem.js:
 ```
   </div>
 
-  <input type="radio" id="current8" name="java" checked>
-  <label for="current8">Current Fragment Return</label>
+  <input type="radio" id="current8" name="todoItem-API" checked>
+  <label for="current8">Current Version</label>
   <div class="tab"> 
 
 ```
@@ -587,8 +809,8 @@ Incorporating the Urbit API in TodoItem.js:
 </div>
 
 Passing the API to TodoItem.js:
-<div id="API-passing">
-  <input type="radio" id="prior9" name="java">
+<div id="api-passing">
+  <input type="radio" id="prior9" name="api-passing">
   <label for="prior9">Prior Version</label>
   <div class="tab">
 
@@ -599,7 +821,7 @@ Passing the API to TodoItem.js:
 ```
   </div>
 
-  <input type="radio" id="current9" name="java" checked>
+  <input type="radio" id="current9" name="api-passing" checked>
   <label for="current9">Current Route Instantiation</label>
   <div class="tab"> 
 
@@ -617,8 +839,8 @@ Passing the API to TodoItem.js:
 </div>
 
 And, updating TodoItem.js to use Urbit for its work:
-<div id="TodoItem-Urbit">
-  <input type="radio" id="prior10" name="java">
+<div id="todoItem-Urbit">
+  <input type="radio" id="prior10" name="todoItem-Urbit">
   <label for="prior10">Prior Version</label>
   <div class="tab">
 
@@ -683,7 +905,7 @@ export default function TodoItem({ todo }) {
 ```
   </div>
 
-  <input type="radio" id="current10" name="java" checked>
+  <input type="radio" id="current10" name="todoItem-Urbit" checked>
   <label for="current10">Current TodoItem.js</label>
   <div class="tab"> 
 

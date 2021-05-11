@@ -70,57 +70,8 @@ Currently, /sur defines _only_ the `action` type. For `%tudumvc` to communicate 
 
 As with `action`, this type will be defined using [`+$`](https://urbit.org/docs/reference/hoon-expressions/rune/lus/#lusbuc). The resulting /sur file looks like this:
 
-<style>
-  #hoon {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #hoon label {
-    order: -1;
-    padding: .5rem;
-    border-width: 1px 0px 0px 1px;
-    border-style: solid;
-    cursor: pointer;
-  }
-  #hoon label[for=current] {
-    border-right-width: 1px;
-  }
-  #hoon label[for=current2] {
-    border-right-width: 1px;
-  }
-  #hoon label[for=current3] {
-    border-right-width: 1px;
-  }
-  #hoon label[for=current4] {
-    border-right-width: 1px;
-  }
-  #hoon label[for=current5] {
-    border-right-width: 1px;
-  }
-  #hoon label[for=current6] {
-    border-right-width: 1px;
-  }
-  #hoon label[for=current7] {
-    border-right-width: 1px;
-  }
-  #hoon input[type="radio"] {
-    display: none;
-  }
-  #hoon .tab {
-    display: none;
-    border: 1px solid;
-    padding: 1rem;
-    max-width: 100%;
-  }
-  #hoon input[type='radio']:checked + label {
-    font-weight: bold;
-  }
-  #hoon input[type='radio']:checked + label + .tab {
-    display: block;
-}
-</style>
 <div id="state-type">
-  <input type="radio" id="prior" name="hoon">
+  <input type="radio" id="prior" name="state-type">
   <label for="prior">Prior Version</label>
   <div class="tab">
 
@@ -135,7 +86,7 @@ As with `action`, this type will be defined using [`+$`](https://urbit.org/docs/
 ```
   </div>
 
-  <input type="radio" id="current" name="hoon" checked>
+  <input type="radio" id="current" name="state-type" checked>
   <label for="current">Current Hoon</label>
   <div class="tab"> 
 
@@ -153,6 +104,211 @@ As with `action`, this type will be defined using [`+$`](https://urbit.org/docs/
 ```
   </div>
 </div>
+<style>
+  #state-type {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #state-type label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #state-type label[for=current] {
+    border-right-width: 1px;
+  }
+  #state-type .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #state-type input[type="radio"] {
+    display: none;
+  }
+  #state-type input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #state-type input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+    #state-definition {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #state-definition label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #state-definition label[for=current2] {
+    border-right-width: 1px;
+  }
+  #state-definition .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #state-definition input[type="radio"] {
+    display: none;
+  }
+  #state-definition input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #state-definition input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #door-sample {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #door-sample label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #door-sample label[for=current3] {
+    border-right-width: 1px;
+  }
+  #door-sample .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #door-sample input[type="radio"] {
+    display: none;
+  }
+  #door-sample input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #door-sample input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #on-init {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #on-init label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #on-init label[for=current4] {
+    border-right-width: 1px;
+  }
+  #on-init .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #on-init input[type="radio"] {
+    display: none;
+  }
+  #on-init input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #on-init input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #on-load {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #on-load label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #on-load label[for=current5] {
+    border-right-width: 1px;
+  }
+  #on-load .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #on-load input[type="radio"] {
+    display: none;
+  }
+  #on-load input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #on-load input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #action-update {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #action-update label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #action-update label[for=current6] {
+    border-right-width: 1px;
+  }
+  #action-update .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #action-update input[type="radio"] {
+    display: none;
+  }
+  #action-update input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #action-update input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #on-poke {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #on-poke label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #on-poke label[for=current7] {
+    border-right-width: 1px;
+  }
+  #on-poke .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #on-poke input[type="radio"] {
+    display: none;
+  }
+  #on-poke input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #on-poke input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+</style>
 
 Next, the /app file needs to be updated to utilize this new type.
 
@@ -176,7 +332,7 @@ Incidentally, if you're following along on your own, don't `|commit %home` any o
 To add the new version, then, we'll do something like this:
 
 <div id="state-definition">
-  <input type="radio" id="prior2" name="hoon">
+  <input type="radio" id="prior2" name="state-definition">
   <label for="prior2">Prior Version</label>
   <div class="tab">
 
@@ -190,7 +346,7 @@ To add the new version, then, we'll do something like this:
 ```
   </div>
 
-  <input type="radio" id="current2" name="hoon" checked>
+  <input type="radio" id="current2" name="state-definition" checked>
   <label for="current2">Current Hoon</label>
   <div class="tab"> 
 
@@ -215,7 +371,7 @@ The above adds a new available state definition, but without updating the door's
 While `versioned-state` has been updated with the new state definition, the door of `%tudumvc` needs to be updated to tell the agent to expect (its state) as the newly defined version (if you've read our breakout lesson on [(quip card _this)](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md) you may see what's happening here). All of `%tudumvc`'s users (existing users by `+on-load` and new ones by `+on-init`) will have their state updated to the new state type after upgrading their app to this new version. With the new state being produced (either by, again, `+on-load` or `+on-init`), the door of the agent needs to expect that resultant state as the sample. To do this, we need to make sure that the expected sample of our agent is the new state version:
 
 <div id="door-sample">
-  <input type="radio" id="prior3" name="hoon">
+  <input type="radio" id="prior3" name="door-sample">
   <label for="prior3">Prior Version</label>
   <div class="tab">
 
@@ -224,7 +380,7 @@ While `versioned-state` has been updated with the new state definition, the door
 ```
   </div>
 
-  <input type="radio" id="current3" name="hoon" checked>
+  <input type="radio" id="current3" name="door-sample" checked>
   <label for="current3">Current Hoon</label>
   <div class="tab"> 
 
@@ -243,7 +399,7 @@ With that change in place, any references to state in the existing code will be 
 ##### `+on-init`
 New users don't have to worry about upgrading their state, but they will need to be immediately set up with the new state on first load. To do this, we change `+on-init`:
 <div id="on-init">
-  <input type="radio" id="prior4" name="hoon">
+  <input type="radio" id="prior4" name="on-init">
   <label for="prior4">Prior Version</label>
   <div class="tab">
 
@@ -259,7 +415,7 @@ New users don't have to worry about upgrading their state, but they will need to
 ```
   </div>
 
-  <input type="radio" id="current4" name="hoon" checked>
+  <input type="radio" id="current4" name="on-init" checked>
   <label for="current4">Current Hoon</label>
   <div class="tab"> 
 
@@ -285,7 +441,7 @@ Existing users will have a state of `[%0 task=@tU]`. For those users to successf
 
 However, we don't want to apply the upgrade path to users _already_ on the new state. As such, we want the agent to parse what state a user is in when they load so that we don't attempt to apply the upgrades to someone already in the `state-one` configuration:
 <div id="on-load">
-  <input type="radio" id="prior5" name="hoon">
+  <input type="radio" id="prior5" name="on-load">
   <label for="prior5">Prior Version</label>
   <div class="tab">
 
@@ -298,7 +454,7 @@ However, we don't want to apply the upgrade path to users _already_ on the new s
 ```
   </div>
 
-  <input type="radio" id="current5" name="hoon" checked>
+  <input type="radio" id="current5" name="on-load" checked>
   <label for="current5">Current Hoon</label>
   <div class="tab"> 
 
@@ -339,7 +495,7 @@ Starting in the `/sur/tudumvc.hoon` file, the `action` type can be upgraded to i
 #### `/sur/tudumvc.hoon`
 The previously constructed map data structure (the state's element `tasks`) allows `%tudumvc` to communicate a minimal amount of data between our Earth web app and Urbit to accomplish these tasks:
 <div id="action-update">
-  <input type="radio" id="prior6" name="hoon">
+  <input type="radio" id="prior6" name="action-update">
   <label for="prior6">Prior Version</label>
   <div class="tab">
 
@@ -359,7 +515,7 @@ The previously constructed map data structure (the state's element `tasks`) allo
 ```
   </div>
 
-  <input type="radio" id="current6" name="hoon" checked>
+  <input type="radio" id="current6" name="action-update" checked>
   <label for="current6">Current Hoon</label>
   <div class="tab"> 
 
@@ -389,7 +545,7 @@ Since tasks are indexed by their unique `id`, `action` only needs to pass the `i
 #### `/app/tudumvc.hoon` - `+on-poke` Changes
 Next, you should update `+on-poke` to accommodate the new `action`s that just added to our /sur file. If you're not sure why this is our next step, you might want to look back at [the Hosting on Urbit](@/docs/userspace/tudumvc/hosting-on-urbit.md) part of this tutorial, or the breakout lesson on [pokes](@/docs/userspace/tudumvc/breakout-lessons/quip-card-and-poke.md). We'll show the changes and then go through each poke to discuss how it works.
 <div id="on-poke">
-  <input type="radio" id="prior7" name="hoon">
+  <input type="radio" id="prior7" name="on-poke">
   <label for="prior7">Prior Version</label>
   <div class="tab">
 
@@ -415,7 +571,7 @@ Next, you should update `+on-poke` to accommodate the new `action`s that just ad
 ```
   </div>
 
-  <input type="radio" id="current7" name="hoon" checked>
+  <input type="radio" id="current7" name="on-poke" checked>
   <label for="current7">Current Hoon</label>
   <div class="tab"> 
 

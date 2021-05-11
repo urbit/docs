@@ -4,11 +4,17 @@ weight = 8
 template = "doc.html"
 +++
 
-In this last part of our guide, you'll learn how to add networking to our app. You'll be able to subscribe to your friends or coworkers task lists and even, if they permit you, edit those lists (with the same level of control you have over your own lists). As a proprietor of a task list, you'll also be able to select, of those people who subscribe to your task list, who can edit and who is precluded from editing but may still look. You can even kick them from their subscription, if you're really annoyed.
+## Introduction {#introduction}
+This final chapter of the Web Development Tutorial covers adding networking to `%tudumvc`. Users will be able to subscribe to friends' or coworkers' task lists and even, if so permitted, edit those lists.
+
+As a proprietor of a task list, a user will also be able to select, of those people who subscribe to their task list, who can edit and who is precluded from editing but may still look. The user can even kick subscribers from their subscription, if the user is particularly annoyed.
 
 This lesson includes a lot of changes but few of them are structural and most of them are just iterations on themes of prior lessons - we hope you find it fairly easy to follow.
 
-Let's get after it then.
+## Required Files {#required-files}
+* The /src-lesson6/todomvc-end folder copied to your local environment.
+* The /src-lesson6/home (part I) and ./home (part II)/app /mar/tudumvc and /sur files copied into the respective folders of an Urbit running on your local environment (using the sync functionality).
+  * We'll go through Part I and Part II below - so do this as we get to those parts.
 
 ## Learning Checklist {#learning-checklist}
 * How to use wires and paths to send and receive data.
@@ -28,75 +34,298 @@ Let's get after it then.
 * A new Fake Ship (probably ~zod) with whom you can share task!
 * **NOTE:** We've included a copy of all the files you need for this lesson _in their completed form_ in the folder [/src-lesson6](https://github.com/rabsef-bicrym/tudumvc/tree/main/src-lesson6), but you should try doing this on your own instead of just copying our files in. No cheating!
 
-## The Lesson (Part I) {#the-lesson-pt-I}
-We're going to start by updating our available pokes to accommodate actions required to share our todo lists, updating our state to hold several todo lists owned by various ships and adding to the state a tuple of sets of editors; requested-editors, approved-editors and denied-editors.
+## Chapter Text (Part I) {#chapter-text-pt-I}
+The first part of this chapter focuses on implementing networking for the `%tudumvc` %gall agent. This will include updating the available pokes to accommodate actions required to share our todo lists, updating the state to hold several todo lists owned by various ships and adding to the state a tuple of sets of editors; requested-editors, approved-editors and denied-editors.
 
-Begin by launching your Fake Ship and a new Fake Ship (of your choice, we'll assume ~zod) with the Lesson 5 version of tudumvc installed and started. These two ships should be running on the same machine so they can discover eachother (fake ships are not networked _outside_ a given machine, but on the same machine they are inter-discoverable!)
+If you're following along, you'll begin by launching your Fake Ship and a new Fake Ship (of your choice, we'll assume ~zod) with the Lesson 5 version of `%tudumvc` installed and started. These two ships should be running on the same machine so they can discover eachother (Fake Ships are not networked _outside_ a given machine, but on the same machine they are inter-discoverable).
 
-You'll also want to have two terminals running to copy files from a central editing folder to _both_ of your fake ships simultaneously, to allow you to update both of them quickly.
-
-### Updating the Types {#lesson-pt-I-types}
-First, update the agent's /sur file to have two new types - `shared-tasks` and `editors`:
+### Updating the Types {#pt-I-types}
+As with our first chapter on modifying the state of a %gall agent, we'll start with updating the agent's /sur file to have two new types - `shared-tasks` and `editors`:
 
 #### Adding Types
-The changes to /sur should be familiar at this point, at least in terms of how we implement them:
-<table>
-<tr>
-<td>
-:: initial sur file version
-</td>
-<td>
-:: new sur file version
-</td>
-</tr>
-<tr>
-<td>
+The changes to /sur should be familiar at this point, at least in terms of how they're implemented:
+<style>
+  #sur-types {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #sur-types label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #sur-types label[for=current] {
+    border-right-width: 1px;
+  }
+  #sur-types input[type="radio"] {
+    display: none;
+  }
+  #sur-types .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  #sur-types input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #sur-types input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #sur-action {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #sur-action label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #sur-action label[for=current2] {
+    border-right-width: 1px;
+  }
+  #sur-action input[type="radio"] {
+    display: none;
+  }
+  #sur-action .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #sur-action input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #sur-action input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+    #app-1 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-1 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-1 label[for=current3] {
+    border-right-width: 1px;
+  }
+  #app-1 input[type="radio"] {
+    display: none;
+  }
+  #app-1 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-1 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-1 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-2 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-2 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-2 label[for=current4] {
+    border-right-width: 1px;
+  }
+  #app-2 input[type="radio"] {
+    display: none;
+  }
+  #app-2 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-2 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-2 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-3 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-3 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-3 label[for=current5] {
+    border-right-width: 1px;
+  }
+  #app-3 input[type="radio"] {
+    display: none;
+  }
+  #app-3 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-3 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-3 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-4 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-4 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-4 label[for=current6] {
+    border-right-width: 1px;
+  }
+  #app-4 input[type="radio"] {
+    display: none;
+  }
+  #app-4 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-4 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-4 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-5 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-5 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-5 label[for=current7] {
+    border-right-width: 1px;
+  }
+  #app-5 input[type="radio"] {
+    display: none;
+  }
+  #app-5 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-5 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-5 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+  #app-6 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #app-6 label {
+    order: -1;
+    padding: .5rem;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    cursor: pointer;
+  }
+  #app-6 label[for=current8] {
+    border-right-width: 1px;
+  }
+  #app-6 input[type="radio"] {
+    display: none;
+  }
+  #app-6 .tab {
+    display: none;
+    border: 1px solid;
+    padding: 1rem;
+    width: 100%;
+  }
+  #app-6 input[type='radio']:checked + label {
+    font-weight: bold;
+  }
+  #app-6 input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+</style>
+<div id="sur-types">
+  <input type="radio" id="prior" name="sur-types">
+  <label for="prior">Prior Version</label>
+  <div class="tab">
 
 ```hoon
 +$  tasks  (map id=@ud [label=@tU done=?])
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current" name="sur-types" checked>
+  <label for="current">Current /sur File</label>
+  <div class="tab"> 
 
 ```hoon
 +$  tasks  (map id=@ud [label=@tU done=?])
 +$  shared-tasks  (map owner=ship task-list=tasks)
 +$  editors  [requested=(set ship) approved=(set ship) denied=(set ship)]
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
-As you can see, `shared-tasks` is simply a map of ships to the pre-existing type (`tasks`).
+`shared-tasks` is simply a map of ships to the pre-existing type (`tasks`).
 
-Editors is slightly more complex, but it works exactly like `+cors-registry` works. We're making a tuple of `requested` `approved` and `denied` editors (the names are descriptive of their capacities - only `approved` editors can edit your task lists), each of which are `(set ship)`s. A [set](https://urbit.org/docs/hoon/reference/stdlib/2o/#set) is just a mold that creates a list-like structure that _only_ allows for unique items to be added. By using `(set ship)` instead of `(list ship)` or some other structure, we can: (1) more easily work on our `(set ship)`s using [set logic](https://urbit.org/docs/hoon/reference/stdlib/2h/) and (2) ensure that nobody gets listed twice in any one category. Additionally, you'll abuild logic to make sure that any action taken on an editor removes them from their current category and places them in another category. That way, if you `%kick` someone from their subscription, they can't just re-subscribe and start editing your tasks. The uniqueness checks required for the above are further improved by using set logic.
+`editors` is slightly more complex, but it works exactly like `+cors-registry` works. `editors` tuple of `requested` `approved` and `denied` editors (the names are descriptive of their capacities - only `approved` editors can edit your task lists), each of which are `(set ship)`s. A [set](https://urbit.org/docs/hoon/reference/stdlib/2o/#set) is just a mold that creates a list-like structure that _only_ allows for unique items to be added.
 
-Now to add some pokes to your `action` type in the same /sur file to accommodate subscription actions:
+By using `(set ship)` instead of `(list ship)` or some other structure, we can: (1) more easily work on our `(set ship)`s using [set logic](https://urbit.org/docs/hoon/reference/stdlib/2h/) and (2) ensure that subscribers cannot be listed twice in any one category. Later in this chapter, we'll add logic to make sure that any action taken on an editor removes them from their current category and places them in another category. That way, if a user `%kick`s a subscriber, the subscriber is prevented from re-subscribing and immediately continuing their role as an approved editor. The uniqueness checks are further improved by using set logic.
+
+In addition to the types just created to support subscriptions, `%tudumvc` will also need new poke `action`s to accommodate subscription activities:
 
 #### Adding to the `action` Type
-Thinking through what you'll need here, you should prepare for the following actions:
+User requirements for subscription activities will include:
 * Subscribing to a ship's todo list.
-    * Will need to specify a ship to which we will subscribe.
+    * Will need to specify a ship to which one will subscribe.
 * Unsubscribing to a ship's todo list.
-    * Will need to specify a ship to which we will subscribe.
-* `%kick`ing a subscriber (or, forcefully removing someone who subscribes to you).
+    * Will need to specify a ship to which one will unsubscribe.
+* `%kick`ing a subscriber (or, forcefully removing a subscriber as the host).
     * Will need to specify a ship to `%kick`.
-    * Will also need to specify a path to `%kick` them from - we'll talk about paths more later, but these are basically the data feed on which they're receiving your todo list. Theoretically, since `%tudumvc` only has one data feed, [we could simply remove them from all possible paths](https://github.com/timlucmiptev/gall-guide/blob/master/poke#example-4-kicking-a-subscriber-from-the-host), but we'll still allow our poke to specify one or more paths, as a best practice.
-* Allowing or denying a request from a subscriber to edit your todo list.
-    * Will need to specify a `(list ship)`s that you want to edit (so you can mass approve or deny).
+    * Will also need to specify a path to `%kick` them from - we'll talk about paths more later, but these are basically the data feed on which they're receiving a  todo list.
+    * Theoretically, since `%tudumvc` only has one data feed (the todos), [one could simply remove them from all possible paths](https://github.com/timlucmiptev/gall-guide/blob/master/poke#example-4-kicking-a-subscriber-from-the-host), but we'll still allow our poke to specify one or more paths, as a best practice.
+* Allowing or denying a request from a subscriber to edit the host's todo list.
+    * Will need to specify a `(list ship)`s that will be mass approved or denied.
     * Will need to specify a status for those ships (`%approve` or `%deny`)
 
-<table>
-<tr>
-<td>
-:: initial sur file version
-</td>
-<td>
-:: new sur file version
-</td>
-</tr>
-<tr>
-<td>
+<div id="sur-action">
+  <input type="radio" id="prior2" name="sur-action">
+  <label for="prior2">Prior Version</label>
+  <div class="tab">
 
 ```hoon
 +$  action
@@ -107,8 +336,11 @@ Thinking through what you'll need here, you should prepare for the following act
   [%edit-task id=@ud label=@tU]
   ==
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current2" name="sur-action" checked>
+  <label for="current2">Current /sur File</label>
+  <div class="tab"> 
 
 ```hoon
 +$  action
@@ -125,24 +357,15 @@ Thinking through what you'll need here, you should prepare for the following act
     [%edit partners=(list ship) status=?(%approve %deny)]
   ==
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
-These should all make relative sense at this point. If, for instance, you want to subscribe to a partner, you could just key into dojo `:tudumvc &tudumvc-action [%sub ~zod]`. Similarly, you might `:tudumvc &tudumvc-action [%unsub ~zod]` to cancel that subscription later. We'll later write handlers in the main agent file to handle all this, so don't try it just yet. Nonetheless, the intended use should be fairly clear.
+These changes should all make relative sense. If, for instance, a user wants to subscribe to a partner, the user could just key into dojo `:tudumvc &tudumvc-action [%sub ~zod]`. Similarly, that user might `:tudumvc &tudumvc-action [%unsub ~zod]` to cancel that subscription later. These actions will all need handlers in `+on-poke`, which will be added later.
 
-Having subscribed to someone, we are going to need some way of: (1) receiving their full list of tasks when we first subscribe and (2) receiving incremental updates as their todo list changes over time. It would be fairly inconvenient and expensive to receive the whole list each time, so we'll take each one of those updates almost exactly like we take updates to our own list:
+Having subscribed to someone, a user will need some way of: (1) receiving the full list of tasks from the host when first subscribing and (2) receiving incremental updates as the host's todo list changes over time. It would be fairly inconvenient and expensive to receive the whole list each time. Instead, each individual update will be sent on a shared path for all subscribers, from the host:
 
 #### Creating an `updates` Type
-Add a type called `updates` to `%tudumvc`'s /sur file. It's going to fairly closely mirror the existing `action` type with the addition of one tagged union called `%full-send` which will send _all_ tasks to a subscriber when they first subscribe. The primary difference between `action` and `updates` is that all incremental updates from other ships will come with an `id=@ud` identifier, to to avoid `id` dis-union between proprietor and subscribers on individual todos:
-
-<table>
-<tr>
-<td>
-:: adding update type to our sur file (wherever)
-</td>
-</tr>
-<td>
+To accommodate the incremental network updates from hosts to subscribers, we'll add a type called `updates` to `%tudumvc`'s /sur file. This will closely mirror the existing `action` type with the addition of one tagged union called `%full-send` which will send _all_ tasks to a subscriber when they first subscribe. The primary difference between `action` and `updates` is that all incremental updates from other ships will come with an `id=@ud` identifier, to to avoid `id` dis-union between proprietor and subscribers on individual todos:
 
 ```hoon
 :: Here we're creating a structure arm called updates and we're re-creating the
@@ -157,32 +380,21 @@ Add a type called `updates` to `%tudumvc`'s /sur file. It's going to fairly clos
     [%full-send =tasks]
   ==
 ```
-</td>
-</tr>
-</table>
 
-You might note, at this point, that these types don't include the source of the update (the ship name). You won't have to specify the ship sending any data, %gall handles that for you. Each incoming poke to your ship will be identified by `src.bowl` (available associated with any incoming poke or `+on-agent` action) which will be the `@p` of the ship sending you the data.
+You might note, at this point, that these types don't include the source of the update (the ship name). These pokes won't have to specify the ship sending any data, %gall handles. Each incoming poke to a ship will be identified by `src.bowl` (available associated with any incoming poke or `+on-agent` action) which will be the `@p` of the ship sending the data.
 
-Only the owner of a given list will ever send you `updates` regarding their state - this further ensures parity amongst all subscribers/editors/the original host in terms of the status of the tasks and their individual `id`s. You'll never receive conflicting or out-of-order instructions from various parties (editors and the host).
+Only the owner of a given list will ever send `updates` to subscribers regarding their state - this further ensures parity amongst all subscribers/editors/the original host in terms of the status of the tasks and their individual `id`s. Subscribers never receive conflicting or out-of-order instructions from various parties (editors and the host) - only, instead, the order of events as dictated by the host.
 
-**NOTE:** These poke structures could probably be added to `action` just as easily as separated out into their own type, but we're going to use separate types for clarity. When we add Earth web pokes to specify the receiving ship of a given update to the task list, we're going to do the same thing, again, for clarity and separation.
+**NOTE:** These poke structures could probably be added to `action` just as easily as separated out into their own type, but we're going to use separate types for clarity. When we add Earth web pokes to specify the receiving ship of a given update to the task list in Part II of this chapter, we're going to do the same thing, again, for clarity and separation.
 
-Now to create a new /mar file to handle the `updates` type you've just created and then you'll be ready to work on the main app:
+Next, the /mar file needs updating to handle the `updates` type:
 
 #### Adding `/mar/tudumvc/update.hoon`
-The /mar file for your `updates` type is very basic - it effectively just expects incoming data to be a noun and does no real work to convert it from other potential input types - this is ok and expected, as `updates` pokes will only _ever_ be generated on the Urbit side of things, between ships with active subscriptions. Again, since `updates` pokes will only _ever_ come from the owner of the list, the updates will always come in the same order that they occur to the main ship; your state will never get out-of-order messages, causing your state to diverge from the host's.
+The /mar file for `updates` type is very basic - it effectively just expects incoming data to be a noun and does no real work to convert it from other potential input types - this is ok and expected, as `updates` pokes will only _ever_ be generated on the Urbit side of things, between ships with active subscriptions. Again, since `updates` pokes will only _ever_ come from the owner of the list, the updates will always come in the same order that they occur to the main ship; subscriber states will never get out-of-order messages, causing their state to diverge from the host's.
 
-This guide doesn't go into depth on the various arms available in a standard /mar file, outside of the `+grab` arm which is used to convert from a non-given mark type to the given mark type, as in from a JSON data mark to an `action` data mark type to allow TodoMVC (Earth web app) to communicate with `%tudumvc` (%gall agent) in the previous part of this guide.
+This tutorial doesn't go into depth on the various arms available in a standard /mar file, outside of the `+grab` arm which is used to convert from a non-given mark type to the given mark type, as in from a JSON data mark to an `action` data mark type to allow TodoMVC (Earth web app) to communicate with `%tudumvc` (%gall agent).
 
-The /mar file for `updates` only needs to accept incominging like-mark data from other ships, so our `+grab` arm will simply expect a noun and will coerce it into the `updates:tudumvc` type that we just created.
-
-<table>
-<tr>
-<td>
-:: create a file called update.hoon in your /mar/tudumvc folder
-</td>
-</tr>
-<td>
+The /mar file for `updates` only needs to accept incominging like-mark data from other ships, so the `+grab` arm will simply expect a noun and will coerce it into the `updates:tudumvc` type created in /sur.
 
 ```hoon
 ::
@@ -202,31 +414,21 @@ The /mar file for `updates` only needs to accept incominging like-mark data from
   --
 --
 ```
-</td>
-</tr>
-</table>
 
 Again, all this is really doing (of import) is the `+grab` arm is saying "if I receive a piece of data as a `noun`, coerce it into an `updates:tudumvc` type, generally by reading the head of the tagged union vase received.
 
-Now to work on the agent, itself:
+Now to update the /app file, itself:
 
-### Updating `/app/tudumvc.hoon` {#lesson-pt-I-state}
-To start, you'll update the state of `%tudumvc` to accommodate multiple ships. After that, you'll need to update `+on-init`, `+on-load`, `+on-poke`, and `+on-watch`, as well as adding new features to `+on-agent` and your helper core:
+### Updating `/app/tudumvc.hoon` {#pt-I-state}
+Updating the /app file will include updating the state of `%tudumvc` to accommodate multiple ships (i.e. updating it to accommodate `shared-tasks`), updating `+on-init`, `+on-load`, `+on-poke`, and `+on-watch`, as well as adding new features to `+on-agent` and the helper core:
 
 #### The State
 Update the state to include the new types that you've created (`shared-tasks` and `editors`):
 
-<table>
-<tr>
-<td>
-:: initial version (lines 3-18)
-</td>
-<td>
-:: new version (lines 3-16)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-1">
+  <input type="radio" id="prior3" name="app-1">
+  <label for="prior3">Prior Version (lines 3-18)</label>
+  <div class="tab">
 
 ```hoon
 |%
@@ -246,8 +448,11 @@ Update the state to include the new types that you've created (`shared-tasks` an
 =|  state-one
 =*  state  -
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current3" name="app-1" checked>
+  <label for="current3">Current /app (lines 3-16)</label>
+  <div class="tab"> 
 
 ```hoon
 |%
@@ -265,11 +470,10 @@ Update the state to include the new types that you've created (`shared-tasks` an
 =|  state-two
 =*  state  -
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
-You're only really changing three things here:
+Three main changes are reflected above:
 1. Add state-two to the versioned state definition
 2. Change the bunted state of the door to state-two (from state-one)
 3. Make the state definitions a little more terse than they were previously - but these operate exactly the same:
@@ -303,22 +507,15 @@ You're only really changing three things here:
 
 This more terse definition lines things up nicely and presents the data with less white space - it doesn't impact the meaning of the lines at all.
 
-Now for the changes to the arms of your %gall agent:
+Now for the changes to the arms of the %gall agent:
 
 #### `++  on-init`
-You only need to chage one line in `+ on-init` section - the one that populates the bunted `state-two` sample of the door:
+Only one line in `+ on-init` is changed - the one that populates the bunted `state-two` sample of the door:
 
-<table>
-<tr>
-<td>
-:: initial version (lines 26-32)
-</td>
-<td>
-:: new version (lines 24-30)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-2">
+  <input type="radio" id="prior4" name="app-2">
+  <label for="prior4">Prior Version (lines 26-32)</label>
+  <div class="tab">
 
 ```hoon
   ^-  (quip card _this)
@@ -329,8 +526,11 @@ You only need to chage one line in `+ on-init` section - the one that populates 
   :~  [%pass /srv %agent [our.bowl %file-server] %poke todo-react]
   ==
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current4" name="app-2" checked>
+  <label for="current4">Current /app (lines 24-30)</label>
+  <div class="tab"> 
 
 ```hoon
   ^-  (quip card _this)
@@ -341,31 +541,23 @@ You only need to chage one line in `+ on-init` section - the one that populates 
   :~  [%pass /srv %agent [our.bowl %file-server] %poke todo-react]
   ==
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 Remember that `+on-init` is only run once, when the application is first started (as in not _upgraded_, but installed anew). The changed line does two things:
 
-1. Adds to `shared-tasks` (a `(map ship tasks:tudumvc)`) a key of `our.bowl` (our ship name) and a value of that same initial task map your last `+on-init` arm  had. Basically you're nesting the prior state map construction (`tasks`) into a map of ships-to-`tasks` where each ship has its own version. We'll use this later to store the maps of `tasks` coming from those ships to which we subscribe.
+1. Adds to `shared-tasks` (a `(map ship tasks:tudumvc)`) a key of `our.bowl` (the ship's name) and a value of the same initial task map the last `+on-init` arm set (for `tasks` as the state). Basically, we're nesting the prior state map construction (`tasks`) into a map of ships-to-`tasks` where each ship has its own map of todos.
 2. Adds a new element to state; a tuple of `(set ship)`s that will store requested-, approved-, and denied-editors, starting off as empty sets (`[~ ~ ~]`).
 
 With `+on-init` handled, let's make sure prior users of the app can upgrade to the latest version in `+on-load`:
 
 #### `++  on-load`
-Create an upgrade path for all prior versions of the agent's state to the new state. You'll need to take into consideration that your users could be on version `%0`, `%1` or have just started with the new version. `+on-load` will take the incoming state as a vase, switch on the head of the tagged union of the state (vase), and then update state to a `%2`-compliant version of the prior state's data, stored in the new state's data structure.
+To create an upgrade path for all prior versions of the agent's state to the new state, we'll need to take into consideration that users could be on version `%0`, `%1` or have just started with the new version. `+on-load` will take the incoming state as a vase, switch on the head of the tagged union of the state (vase), and then update state to a `%2`-compliant version of the prior state's data, stored in the new state's data structure.
 
-<table>
-<tr>
-<td>
-:: initial version (lines 37-46)
-</td>
-<td>
-:: new version (lines 35-46)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-3">
+  <input type="radio" id="prior5" name="app-3">
+  <label for="prior5">Prior Version (lines 37-46)</label>
+  <div class="tab">
 
 ```hoon
   |=  incoming-state=vase
@@ -379,8 +571,11 @@ Create an upgrade path for all prior versions of the agent's state to the new st
   `this(state [%1 `tasks:tudumvc`(~(put by tasks) 1 [task.state-ver %.n])])
   ==
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current5" name="app-3" checked>
+  <label for="current5">Current /app (lines 35-46)</label>
+  <div class="tab"> 
 
 ```hoon
   |=  incoming-state=vase
@@ -396,9 +591,8 @@ Create an upgrade path for all prior versions of the agent's state to the new st
   `this(state [%2 `shared-tasks:tudumvc`(~(put by shared) our.bowl (my :~([1 [task.state-ver %.n]]))) [~ ~ ~]])
   ==
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 In the case where the saved state's head-tag is `%2`, keep the existing state.
 
@@ -406,29 +600,22 @@ In the case where the saved state's head-tag is `%1`, take the existing task lis
 
 In the case where the saved state's head-tag is `%0`, first make the single-item task into a `(map id [label done])` using `(my :~([1 [task.state-ver %n]]))`, then perform the `%1` manipulations to that map.
 
-#### `++  on-poke` {#lesson-pt-I-pokes}
-You need to make a few of changes to `+on-poke` to accommodate the changes made above:
+#### `++  on-poke` {#pt-I-pokes}
+`+on-poke` needs several changes to accommodate the new state and new pokes made above:
 * `action:tudumvc` poke additions:
   * `[%sub partner=ship]`
   * `[%unsub partner=ship]`
   * `[%force-remove paths=(list path) partner=ship]`
   * `[edit partners=(list ship) status=?(%approve %deny)]`
 
-Also, as this section is getting a little long while still being fairly high up in the program, you'll want to offboard the working elements to `hc`, the helper core. This helps with legibility and doesn't impact the functionality. You can do this by making an arm in the helper core to handle each poke action and then call it using the `(arm data data1 data2)` form of [`%-`](https://urbit.org/docs/hoon/reference/rune/cen/#cenhep).
+Also, as this section is getting a little long while still being fairly high up in the program, as a matter of good style, we'll want to offboard the working elements to `hc`, the helper core. This helps with legibility and doesn't impact the functionality. One way to do this is by making an arm in the helper core to handle each poke action and then call it using the `(arm data data1 data2)` form of [`%-`](https://urbit.org/docs/hoon/reference/rune/cen/#cenhep).
 
-Your `+on-poke` arm changes will look like this:
+The `+on-poke` arm changes will look like this:
 
-<table>
-<tr>
-<td>
-:: initial version (lines 48-101)
-</td>
-<td>
-:: new version (lines 48-85)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-4">
+  <input type="radio" id="prior6" name="app-4">
+  <label for="prior6">Prior Version (lines 48-101)</label>
+  <div class="tab">
 
 ```hoon
   |=  [=mark =vase]
@@ -486,8 +673,11 @@ Your `+on-poke` arm changes will look like this:
     ==
   --
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current6" name="app-4" checked>
+  <label for="current6">Current /app (lines 48-85)</label>
+  <div class="tab"> 
 
 ```hoon
   |=  [=mark =vase]
@@ -530,30 +720,21 @@ Your `+on-poke` arm changes will look like this:
     [cards state]
   --
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 Making this section terse by offboarding to the helper core the changes made to state on each poke helps with legibility of the code.
 
 The first change here is with the addition of the _assertions_ ([`?>`](https://urbit.org/docs/hoon/reference/rune/wut/#wutgar)) before some of the pokes. The assertion has a few parts that we should break down:
-* [`?|`](https://urbit.org/docs/hoon/reference/rune/wut/#wutbar) (shorthand `|(condition condition1)`) allows us to check if any conditions provided to it are true and return true, if so. An OR statement, in other parlance.
-* [`(team:title team-ship test-ship)`](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/zuse.hoon#L4829) takes a "team" ship and a "test" ship (my terms, not documented in the code). It then checks to see if the "test" ship is in the "team" ship's "team". Basically, this just means "is this 'test' ship either the 'team' ship or one of it's subordinates (moon)?"
+* [`?|`](https://urbit.org/docs/hoon/reference/rune/wut/#wutbar) (shorthand `|(condition condition1)`) checks if any conditions provided to it are true and returns true, if so. An OR statement, in other parlance.
+* [`(team:title team-ship test-ship)`](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/zuse.hoon#L4829) takes a "team" ship and a "test" ship. It then checks to see if the "test" ship is in the "team" ship's "team". Basically, this just means "is this 'test' ship either the 'team' ship or one of it's subordinates (moon)?"
 * `(~(has in approved.editors) src.bowl)` tests whether the source of the poke (src.bowl will always be the ship that sent the poke) is in the approved list of editors. If they are, this will return `%.y`, and if they are not, `%.n`.
 
-The command `?> |((team:title our.bowl src.bowl) (~(has in approved.editors) src.bowl)` checks to make sure any pokes coming in for task actions (`%add` `%remove-task` `%mark-complete` `%edit-task`) come from either the host ship (or one of our subordinate moons), or an approved editor from the host's `editors` state data structure.
+The command `?> |((team:title our.bowl src.bowl) (~(has in approved.editors) src.bowl)` checks to make sure any pokes coming in for task actions (`%add` `%remove-task` `%mark-complete` `%edit-task`) come from either the host ship (or one of its subordinate moons), or an approved editor from the host's `editors` state data structure.
 **NOTE:** The commands to enable editing or `%kick` (`%force-remove`) someone and to `%edit` someone's permissions in `editors` are reserved only for the "team" (the host ship or one of its subordinates).
-**NOTE:** `%sub` and `%unsub` are wide open to any user utilizing them allow anyone to subscribe or unsubscribe to your task list (at least for now, imagine how you might modify the app to make subscriptions pendant on permissions as well).
+**NOTE:** `%sub` and `%unsub` are wide open to any user utilizing them allow anyone to subscribe or unsubscribe to a host's task list (at least for now, imagine how you might modify the app to make subscriptions pendant on permissions as well).
 
 The helper core should be updated to do all the work, as follows:
-
-<table>
-<tr>
-<td>
-:: add these arms to your helper core (starting on line 122 in the prior lesson's code)
-</td>
-</tr>
-<td>
 
 ```hoon
 ++  add-task
@@ -656,23 +837,13 @@ The helper core should be updated to do all the work, as follows:
     `state
   ==
 ```
-</td>
-</tr>
-</table>
 
-That may seem like a lot of code, but most of it you're already familiar with. If you compare the `+add-task` arm to our prior code, as below:
+That may seem like a lot of code, but most of it should be familiar. If you compare the `+add-task` arm to our prior code, as below:
 
-<table>
-<tr>
-<td>
-:: initial version (lines 48-101)
-</td>
-<td>
-:: new version (lines 48-85)
-</td>
-</tr>
-<tr>
-<td>
+<div id="app-5">
+  <input type="radio" id="prior7" name="app-5">
+  <label for="prior7">Prior +add-task arm</label>
+  <div class="tab">
 
 ```hoon
       %add-task
@@ -686,8 +857,11 @@ That may seem like a lot of code, but most of it you're already familiar with. I
     ~[[%give %fact ~[/mytasks] [%json !>((json (tasks-json:hc tasks)))]]]
     ::
 ```
-</td>
-<td>
+  </div>
+
+  <input type="radio" id="current7" name="app-5" checked>
+  <label for="current7">Current +add-task arm</label>
+  <div class="tab"> 
 
 ```hoon
 ++  add-task
@@ -707,21 +881,20 @@ That may seem like a lot of code, but most of it you're already familiar with. I
       [%give %fact ~[/mytasks] [%json !>((json (tasks-json shared)))]]
   ==
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
-You should see that this isn't really that different. There are only two major changes:
+There are only two major changes:
 1. Adding a test at the top to determine if the poke came from the host ship - but we're only passing `our.bowl` ever in `+on-poke`.
-  * Later on, you'll add some Earth web functionality to use this test to `%give` a poke to some other ship's task list from the frontend - don't worry about this just yet.
-2. %give`ing a `%fact` on a new path, `/sub-tasks` using the new mark (`updates`).
-  * `%facts` passed on paths work exactly like what you were doing preivously to send your `tasks` list to your Earth web app, except you don't have to convert them to `%json`. 
-  * Instead of `%json`, send a [cage](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/arvo.hoon#L45) (or a pair of a mark and a vase) `%tudumvc-update` (which will use the update mark we just made) `!>((updates:tudumvc %task-add new-id label))` (which is a vase of `updates` tagged union type, specifically `%task-add`).
-  * This `%fact` announces to subscribers when a task is added to the host's task list. This is mirrored in other changes to sends incremental updates as the host adds, removes, edits or marks complete its various tasks.
+  * Later on, we'll add some Earth web functionality to use this test to `%give` a poke to some other ship's task list from the frontend - don't worry about this just yet.
+2. `%give`ing a `%fact` on a new path, `/sub-tasks` using the new mark (`updates`).
+  * `%facts` passed on paths work exactly like when the `tasks` list is to  Earth web app, except they aren't converted to `%json`. 
+  * Instead of `%json`, it sends a [cage](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/arvo.hoon#L45) (or a pair of a mark and a vase) `%tudumvc-update` (which will use the `update` mark) `!>((updates:tudumvc %task-add new-id label))` (which is a vase of `updates` tagged union type, specifically `%task-add`).
+  * This `%fact` announces to subscribers when a task is added to the host's task list. This pattern is repeated in the other changes to sends incremental updates as the host adds, removes, edits or marks complete its various tasks.
 
 Incremental updates are great and save some computational power over sending all of the tasks as a package every time the host's state is updated. The incremental update will also send a task `id` for each incremental update just to make sure all ships stay in perfect pairity.
 
-Nonetheless, the host should give its subscribers tge full task list at least once, when they first subscribe. The `hc` arm that handles `%sub` pokes will accommodate that:
+Nonetheless, the host should give its subscribers the full task list at least once, when they first subscribe. The `hc` arm that handles `%sub` pokes will accommodate that:
 
 ```hoon
 ++  sub
@@ -731,13 +904,13 @@ Nonetheless, the host should give its subscribers tge full task list at least on
   ~[[%pass /sub-tasks/(scot %p our.bol) %agent [partner %tudumvc] %watch /sub-tasks]]
 ```
 
-This part is a little confusing - you're poke-in your _own_ ship with `:tudumvc &tudumvc-action [%sub ~sampel-palnet]` to subscribe to (e.g.) `~sampel-palnet`'s task list. The arm handling that poke then tells your partner-ship that you want to subscribe using a card with the format `[%pass <wire> %agent [<partner-ship> <%app>] %watch <path>]`. This card will go to your partner-ship and tell them that you're going to start watching some path for data (note that `/sub-tasks` is the agent will send incremental updates on).
+This part is a little confusing - the subscriber is poke-ing their _own_ ship with `:tudumvc &tudumvc-action [%sub ~sampel-palnet]` to subscribe to (e.g.) `~sampel-palnet`'s task list. The arm handling that poke then tells the host-ship that the subscriber wants to subscribe using a card with the format `[%pass <wire> %agent [<partner-ship> <%app>] %watch <path>]`. This card will go to the host ship ship and tell them that the subscriber is going to start watching some path for data (note that `/sub-tasks` is the path the agent will send incremental updates on).
 
-**NOTE:** The [`wire`](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/arvo.hoon#L135) is also path, but that path must be unique to this individual subscription (at least until the subscription is terminated - some apps may terminate subscriptions or `%watch`es immediately, and so they can re-use the same wire repeatedly). You might think of it like this - the _path_ dictates _what data_ we'll receive, the _wire_ indicates _individual subscriptions_ on that path, on which the data will be received. Further, note that the wire could be completely different from the path (e.g., instead of `/sub-tasks/(scot %p our.bol)`,  something like `/arbitrary-wire/random-number`) - again, it's just a unique identifier for recipients of data sent along the path.
+**NOTE:** The [`wire`](https://github.com/urbit/urbit/blob/624e5c26929de6c666fa1585e2517f766bb8788b/pkg/arvo/sys/arvo.hoon#L135) is also path, but that path must be unique to this individual subscription (at least until the subscription is terminated - some apps may terminate subscriptions or `%watch`es immediately, and so they can re-use the same wire repeatedly). You might think of it like this - the _path_ dictates _what data_ the subscriber will receive, the _wire_ indicates _individual subscriptions_ on that path, on which the data will be received. Further, note that the wire could be completely different from the path (e.g., instead of `/sub-tasks/(scot %p our.bol)`,  something like `/arbitrary-wire/random-number`) - again, it's just a unique identifier for recipients of data sent along the path.
 
 In the changes to `+on-watch`, a host receiving a request to `%watch` from some ship results in getting the full task list from the state of that ship, but it starts here with generating the `%watch`.
 
-To finish the `hc` first, however, let's look at three further actions; `%unsub`, `%force-remove` and `%edit`.
+To finish the `hc` first, however, there are three _new_ pokes to cover: `%unsub`, `%force-remove` and `%edit`.
 
 ```hoon
 ++  unsub
@@ -750,7 +923,7 @@ To finish the `hc` first, however, let's look at three further actions; `%unsub`
   ==
 ```
 
-`%unsub` has three important fuctions. When you unsubscribe from one of your partners, you'll first delete their task list from the `shared` data structure (`(~(del by shared) partner)`). Then you'll `[%pass <wire> %agent [<partner> <%app>] %leave ~]` to communicate to that partner that you're no longer listening on that path (freeing the wire for use by someone/something else, theoretically). Lastly, you'll update your Earth web app with the change to your state (removing those tasks from the Earth web app).
+`%unsub` has three important fuctions. When a subscriber unsubscribe from one of their partners, they'll first delete their task list from the `shared` data structure (`(~(del by shared) partner)`). Then they'll `[%pass <wire> %agent [<partner> <%app>] %leave ~]` to communicate to that partner that they're no longer listening on that path (freeing the wire for use by someone/something else, theoretically). Lastly, they'll update their Earth web app with the change to your state (removing those tasks from the Earth web app).
 
 ```hoon
 ++  force-remove
@@ -760,9 +933,9 @@ To finish the `hc` first, however, let's look at three further actions; `%unsub`
   ~[[%give %kick paths `partner]]
 ```
 
-`%force-remove` `%give`s a `%kick` to any subscriber - removing them from listening to the host on the path `/sub-tasks` and is the same as a non-optional `%unsub` poke to the subscriber-ship. The pattern for `%kick`s is `[%give %kick (list path) (unit ship)]`. A note here, better covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/poke#fact-or-kick-nuances), is that an empty (`~`) list of paths will, in this context, unsubscribe the user from _all_ paths to which they subscribe. In our context, there's only one real subscription action the user can take, so it doesn't make a lot of difference for us, but it's good to know.
+`%force-remove` `%give`s a `%kick` to any subscriber - removing them from listening to the host on the path `/sub-tasks` and is the same as a non-optional `%unsub` poke to the subscriber-ship. The pattern for `%kick`s is `[%give %kick (list path) (unit ship)]`. A note here, better covered in [~timluc-miptev's Gall Guide](https://github.com/timlucmiptev/gall-guide/blob/master/poke#fact-or-kick-nuances), is that an empty (`~`) list of paths will, in this context, unsubscribe the user from _all_ paths to which they subscribe. In the `%tudumvc` context, there's only one real subscription action the user can take, so it doesn't make a lot of difference here, but it's good to know.
 
-In addition to `%kick`ing the partner from their subscription, `%force-remove` also removes the target from any/all allowances or denials they may have in the `editors` list, using the [`(~(dif in set) set1)`](https://urbit.org/docs/hoon/reference/stdlib/2h/#dif-in) set-logic function which computes the difference between two sets (providing the diverse elements of the first set). In other words, it checks to see whether the partner we're kicking is in each of the subsets of the tuple in our data element called `editors` and produces the result of the existing sub-set with that ship removed. 
+In addition to `%kick`ing the partner from their subscription, `%force-remove` also removes the target from any/all allowances or denials they may have in the `editors` list, using the [`(~(dif in set) set1)`](https://urbit.org/docs/hoon/reference/stdlib/2h/#dif-in) set-logic function which computes the difference between two sets (providing the diverse elements of the first set). In other words, it checks to see whether the partner being kicked is in any of the subsets of the tuple in the data element called `editors` and produces the result of the existing sub-set with that ship removed. 
 
 ```hoon
 ++  edit
@@ -783,19 +956,14 @@ In addition to `%kick`ing the partner from their subscription, `%force-remove` a
 We should probably update on-peek at some time, right? Maybe later.
 
 #### `++  on-watch` {#lesson-pt-I-on-watch}
-`+on-watch` is great, because it uses %galls built-in distributed-app functionality to handle data delivery. It listens for a path (as a gate that takes a path) in a `%watch` card. From the path, it knows what data to start delivering. In the last part of this guide, you implemented a path on which apps can listen, `/mytasks`, and receive `%json` data. In this version, you'll add `/sub-tasks` that returns task list data in a hoon format.
+`+on-watch` is great, because it uses %gall's built-in distributed-app functionality to handle data delivery. It listens for a path (as a gate that takes a path) in a `%watch` card. From the path, it knows what data to start delivering.
 
-<table>
-<tr>
-<td>
-:: initial version (lines 109-115)
-</td>
-<td>
-:: new version (lines 114-125)
-</td>
-</tr>
-<tr>
-<td>
+In the last part of this guide, we implemented a path on which apps can listen, `/mytasks`, and receive `%json` data. In this version, we'll add `/sub-tasks` that returns task list data in a hoon format.
+
+<div id="app-6">
+  <input type="radio" id="prior8" name="app-6">
+  <label for="prior8">Prior Version (lines 109-115)</label>
+  <div class="tab">
 
 ```hoon
   |=  =path
@@ -806,9 +974,11 @@ We should probably update on-peek at some time, right? Maybe later.
   ~[[%give %fact ~[path] [%json !>((json (tasks-json:hc tasks)))]]]
   ==
 ```
-</td>
+  </div>
 
-<td>
+  <input type="radio" id="current8" name="app-6" checked>
+  <label for="current8">Current /app (lines 114-125)</label>
+  <div class="tab"> 
 
 ```hoon
   |=  =path
@@ -824,15 +994,14 @@ We should probably update on-peek at some time, right? Maybe later.
     ~[[%give %fact ~ [%tudumvc-update !>((updates:tudumvc %full-send my-tasks))]]]
   ==
 ```
-</td>
-</tr>
-</table>
+  </div>
+</div>
 
 The agent will send a card the first time a ship starts to `%watch` `/sub-tasks` using `[%give %fact ~ [%tudumvc-update !>((updates:tudumvc %full-send my-tasks))]]` - you'll see how that's handled by the subscriber in `+on-agent`, below.
 
-The agent also, when hearing a `%watch` on `/sub-tasks`, adds the subscriber to the `requested.editors` state (letting you know they've asked for access to edit your tasks).
+The agent also, when hearing a `%watch` on `/sub-tasks`, adds the subscriber to the `requested.editors` state (letting the host know they've asked for access to edit their tasks).
 
-#### `++  on-agent` {#lesson-pt-I-on-agent}
+#### `++  on-agent` {#pt-I-on-agent}
 In `+on-agent`, the agent handles cards coming from other ships on various wires. That is, subscriptions we've made will be sent data, and that data (sent in the form of `%fact`s or `%kick`s, in this case) will be processed using the code in this arm. `+on-agent` will need to handle:
 
 * Our `updates:tudumvc` poke structure entirely:
