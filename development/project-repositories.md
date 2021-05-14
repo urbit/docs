@@ -14,7 +14,7 @@ Urbit OS, the Landscape interface and Vere are all contained in one monolithic
 repository that can be found [here](https://github.com/urbit/urbit). The repo is
 large, so here's some links to its various high-level components
 
-- [Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo): the part of the urbit pepo that comprises Arvo, the Urbit OS.
+- [Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo): the part of the urbit repo that comprises Arvo, the Urbit OS.
 - [Vere](https://github.com/urbit/urbit/tree/master/pkg/urbit): the part of the
   urbit repo that comprises the C and Haskell interpreters.
 - [Landscape
