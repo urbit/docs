@@ -4,7 +4,7 @@ weight = 6
 template = "doc.html"
 +++
 
-Here we'll look at reading files and subscribing to changes. We'll do this by sending clay a `card:agent:gall` containing a `%warp` tagged `task:clay`.
+Here we'll look at reading files and subscribing to changes. We'll do this by sending Clay a `card` containing a `%warp` `task`.
 
 ## Contents
 
@@ -12,12 +12,12 @@ Here we'll look at reading files and subscribing to changes. We'll do this by se
 - [%sing](#sing) - Read a single file or directory.
 - [%next](#next) - Subscribe for the next change to a file or directory.
 - [%mult](#mult) - Subscribe for the next change to a set of files and/or directories.
-- [%many](#many) - Track changes to a desk for the specified range of revisions.
+- [%many](#many) - Track changes to a `desk` for the specified range of revisions.
 - [Cancel Subsciption](#cancel-subscription)
 
 ## Introduction
 
-A `%warp` task looks like:
+A `%warp` `task` looks like:
 
 ```hoon
 [%warp wer=ship rif=riff]  ::  internal file req
@@ -29,7 +29,7 @@ The `riff` part is the following structure:
 +$  riff  [p=desk q=(unit rave)]  ::  request+desist
 ```
 
-The `desk` is the desk in question. The `(unit rave)` is null to cancel a subscription, otherwise the `rave` is:
+ The `(unit rave)` is null to cancel a subscription, otherwise the `rave` is:
 
 ```hoon
 +$  rave                     ::  general request
@@ -47,15 +47,15 @@ The `desk` is the desk in question. The `(unit rave)` is null to cancel a subscr
 
 We'll look at each of these in more detail later.
 
-Clay responds to a `%mult` request with a sign containing a `%wris` tagged `gift:clay`, and the rest with a `%writ`.
+Clay responds to a `%mult` request with a `sign` containing a `%wris` `gift`, and the rest with a `%writ` `gift`.
 
-A `%wris` gift looks like:
+A `%wris` `gift` looks like:
 
 ```hoon
 [%wris p=[%da p=@da] q=(set (pair care path))]  ::  many changes
 ```
 
-A `%writ` gift looks like:
+A `%writ` `gift` looks like:
 
 ```hoon
 [%writ p=riot]  ::  response
@@ -93,9 +93,9 @@ This is for reading a single file or directory immediately. The `mood` structure
 +$  mood  [=care =case =path]  ::  request in desk
 ```
 
-The `care` is `%x`, `%y` or whatever else. This will determine what you can read and what type of data will be returned. See the type documentation and scry documentation for details on the various cares.
+The `care` is `%x`, `%y` or whatever else. This will determine what you can read and what type of data will be returned. See the type documentation and scry documentation for details on the various `care`s.
 
-The `case` specifies the desk revision and looks like:
+The `case` specifies the `desk` revision and looks like:
 
 ```hoon
 +$  case             ::  ship desk case spur
@@ -155,7 +155,7 @@ You should see something like this as the output:
 ]
 ```
 
-The `cage` in the `riot` contains the file's data due to our use of an `%x` care. It needn't be an `%x` though. If we change it to `%u`, for example, we'll get a `?` cage instead:
+The `cage` in the `riot` contains the file's data due to our use of an `%x` `care`. It needn't be an `%x` though. If we change it to `%u`, for example, we'll get a `?` `cage` instead:
 
 ```hoon
 > -read-file /gen/hood/hi/hoon
@@ -167,7 +167,7 @@ The `cage` in the `riot` contains the file's data due to our use of an `%x` care
 ]
 ```
 
-Here's a breakdown of the task we sent:
+Here's a breakdown of the `task` we sent:
 
 ![read file diagram](https://pub.m.tinnus-napbus.xyz/read-file.png "read file diagram")
 
@@ -179,7 +179,7 @@ Here's a breakdown of the task we sent:
 
 This subscribes to the next version of the specified file. The `mood` structure is the same as described in the `%sing` example.
 
-If you subscribe to the current case of the desk, clay will not respond until the file changes. If you subscribe to a previous case of the desk and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at case `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at case `60`.
+If you subscribe to the current `case` of the `desk`, Clay will not respond until the file changes. If you subscribe to a previous `case` of the `desk` and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at `case` `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at `case` `60`.
 
 `sub-next.hoon`
 
@@ -208,7 +208,7 @@ If you subscribe to the current case of the desk, clay will not respond until th
 (pure:m !>(~))
 ```
 
-This thread will subscribe to the next version of the file given as an argument. It will print the `riot` it gets back from clay and will also print a message saying whether the file's been deleted or changed.
+This thread will subscribe to the next version of the file given as an argument. It will print the `riot` it gets back from Clay and will also print a message saying whether the file's been deleted or changed.
 
 Save this in `ted/sub-next.hoon`, `|commit %home` and run like:
 
@@ -255,9 +255,9 @@ Here's a breakdown of the task we sent:
 [%mult =mool]  ::  next version of any
 ```
 
-This subscribes to the next version of a set of files or directories. Clay will only send a single response, and it will send it when *any* of the specified files change. For example, if you subscribe to both `/foo/txt` and `/bar/txt`, and only `/foo/txt` changes, clay will send a response indicating a change to `/foo/txt`. If `/bar/txt` changes subsequently, it will not tell you. If more than one file changes at once, it will tell you about each of the changes in the one response.
+This subscribes to the next version of a `set` of files or directories. Clay will only send a single response, and it will send it when *any* of the specified files change. For example, if you subscribe to both `/foo/txt` and `/bar/txt`, and only `/foo/txt` changes, Clay will send a response indicating a change to `/foo/txt`. If `/bar/txt` changes subsequently, it will not tell you. If more than one file changes at once, it will tell you about each of the changes in the one response.
 
-The behaviour with respect to requesting old cases is the same as explained in the [`%next`](#next) section above.
+The behaviour with respect to requesting old `case`s is the same as explained in the [`%next`](#next) section above.
 
 The `mool` specified in the request is this structure:
 
@@ -265,11 +265,11 @@ The `mool` specified in the request is this structure:
 +$  mool  [=case paths=(set (pair care path))]  ::  requests in desk
 ```
 
-You can use a different `care` for each of the files specified by the `path` if you like. Significantly, the `care` will determine whether clay sends a response for a given change. For example, if you subscribe to an existing `/foo/txt` with a `%u` care and `/foo/txt` is modified but isn't deleted, clay will *not* tell you. However, if you subscribe with an `%x` care, it *will* tell you.
+You can use a different `care` for each of the files specified by the `path` if you like. Significantly, the `care` will determine whether Clay sends a response for a given change. For example, if you subscribe to an existing `/foo/txt` with a `%u` `care` and `/foo/txt` is modified but isn't deleted, Clay will *not* tell you. However, if you subscribe with an `%x` `care`, it *will* tell you.
 
 Example:
 
-This thread will subscribe to `/foo/txt` with an `%x` care and `/bar/txt` with a `%u` care. It will print out the `%wris` it gets back from clay.
+This thread will subscribe to `/foo/txt` with an `%x` `care` and `/bar/txt` with a `%u` `care`. It will print out the `%wris` it gets back from Clay.
 
 `sub-mult.hoon`
 
@@ -305,7 +305,7 @@ Save the above to `ted/sub-mult.hoon`, `|commit %home` and run with `-sub-mult`.
 + /~zod/home/151/bar/txt
 ```
 
-You'll notice that, unlike a `%writ`, the `%wris` doesn't give you the data. It merely tells gives you the cares and paths of the files that changed. If you need to actually get the data, you can just scry or send a request for the files in question.
+You'll notice that, unlike a `%writ`, the `%wris` doesn't give you the data. It merely tells you the `care`s and `path`s of the files that changed. If you need to actually get the data, you can just scry or send a request for the files in question.
 
 Now, run the thread again, open `bar.txt` in an editor, modify its contents, save it and `|commit %home`. You'll notice you didn't receive a `%wris`. This is because we subscribed to `/bar/txt` with `%u` care and its existence didn't change.
 
@@ -320,7 +320,7 @@ Lastly, delete `foo.txt` and `|commit %home`. You should see something like:
 
 As you can see, a relevant change to any of the subscribed files will trigger a response, not just when all of them change.
 
-Here's a breakdown of the task we sent:
+Here's a breakdown of the `task` we sent:
 
 ![subscribe mult diagram](https://pub.m.tinnus-napbus.xyz/sub-mult.png "subscribe mult diagram")
 
@@ -330,7 +330,7 @@ Here's a breakdown of the task we sent:
 [%many track=? =moat]  ::  track range
 ```
 
-This subscribes to all changes to a desk for the specified range of cases. Note that you're unlikely to use this directly, it's mostly used implicitly if you make a `%sing` or `%next` request with a `%v` care to a foreign desk. It's basically what the system uses to keep in sync with a foreign desk. Regardless, we'll have a look at it for completeness.
+This subscribes to all changes to a `desk` for the specified range of `case`s. Note that you're unlikely to use this directly, it's mostly used implicitly if you make a `%sing` or `%next` request with a `%v` `care` to a foreign `desk`. Regardless, we'll have a look at it for completeness.
 
 If the `track` is `%.y` it will just return a `%writ` like:
 
@@ -357,7 +357,7 @@ If the `track` is `%.n`, the `cage` of the `%writ` will contain a `nako`, which 
   ==                       ::
 ```
 
-As the comment explains, it contains all relevant data for a changes to a desk between what you have and the case requested. It is very large and fairly complicated. The `nako` structure is defined in the `clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since you're unlikely to work with it yourself.
+As the comment explains, it contains all relevant data for a changes to a desk between what you have and the `case` requested. It is very large and fairly complicated. The `nako` structure is defined in the `clay.hoon` source file itself rather than in `lull.hoon` or elsewhere since you're unlikely to work with it yourself.
 
 The `moat` in the `%many` is the following structure:
 
@@ -365,11 +365,11 @@ The `moat` in the `%many` is the following structure:
   +$  moat  [from=case to=case =path]  ::  change range
 ```
 
-The `from` and `to` fields specify the range of cases for which to subscribe. The range is *inclusive*. It can be specified by date or by revision number, whichever you prefer.
+The `from` and `to` fields specify the range of `case`s for which to subscribe. The range is *inclusive*. It can be specified by date or by revision number, whichever you prefer.
 
-The `path` is a path to a file or directory. If it's `~` it refers to the root of the desk in question. This lets you say "only inform me of changes to the desk if the specified file or directory exists". If it doesn't exist, clay will send you nothing.
+The `path` is a path to a file or directory. If it's `~` it refers to the root of the `desk` in question. This lets you say "only inform me of changes to the `desk` if the specified file or directory exists". If it doesn't exist, Clay will not send you anything.
 
-When you reach the end of the subscribed range of cases, clay will send you a `%writ` with a null `riot` to inform you the subscription has ended like:
+When you reach the end of the subscribed range of `case`s, Clay will send you a `%writ` with a null `riot` to inform you the subscription has ended like:
 
 ```hoon
 [%writ p=~]
@@ -377,7 +377,7 @@ When you reach the end of the subscribed range of cases, clay will send you a `%
 
 Example:
 
-This thread will subscribe to changes to your `%home` desk for the next three minutes. The `track` is `%.y` so it will only inform you of changes, not send the full `nako`. It will only get updates if the specified file exists. It contains a `main-loop` that will take an arbitrary number of signs and print them out in the dojo. Since it never ends, you'll need to stop it with the `:spider|kill` command in the dojo.
+This thread will subscribe to changes to your `%home` `desk` for the next three minutes. The `track` is `%.y` so it will only inform you of changes, not send the full `nako`. It will only get updates if the specified file exists. It contains a `main-loop` that will take an arbitrary number of `sign`s and print them out in the dojo. Since it never ends, you'll need to stop it with the `:spider|kill` command in the dojo.
 
 `sub-many.hoon`
 
@@ -415,7 +415,7 @@ This thread will subscribe to changes to your `%home` desk for the next three mi
 (pure:m !>(~))
 ```
 
-Make sure `foo.txt` doesn't exist in the root of your `%home` desk. Save this to `ted/sub-many.hoon`, `|commit %home`, run it like `-sub-many /foo/txt`, and hit backspace in the dojo to free up the dojo prompt. Now, add a file called `bar.txt` to your desk and `|commit %home`. You should see something like:
+Make sure `foo.txt` doesn't exist in the root of your `%home` `desk`. Save this to `ted/sub-many.hoon`, `|commit %home`, run it like `-sub-many /foo/txt`, and hit backspace in the dojo to free up the dojo prompt. Now, add a file called `bar.txt` to your `desk` and `|commit %home`. You should see something like:
 
 ```hoon
 > |commit %home
@@ -423,7 +423,7 @@ Make sure `foo.txt` doesn't exist in the root of your `%home` desk. Save this to
 + /~zod/home/260/bar/txt
 ```
 
-Notice you've received no `%writ` from clay. This is because `/foo/txt` doesn't exist. Now, create `foo.txt` and `|commit %home` again. You should see:
+Notice you've received no `%writ` from Clay. This is because `/foo/txt` doesn't exist. Now, create `foo.txt` and `|commit %home` again. You should see:
 
 ```hoon
 > |commit %home
@@ -459,7 +459,7 @@ Now wait until the three minutes is up and try making a change, for example dele
 - /~zod/home/263/baz/txt
 ```
 
-You can see that along with the normal `%writ` it's also sent a second `%writ` with a null `riot` to indicate the subscription has ended. This is because it has now passed the end of the range of cases to which you subscribed. 
+You can see that along with the normal `%writ` it's also sent a second `%writ` with a null `riot` to indicate the subscription has ended. This is because it has now passed the end of the range of `case`s to which you subscribed. 
 
 Run `:spider|kill` to stop the thread.
 
@@ -497,7 +497,7 @@ This thread will subscribe to the `%next` version of `/foo/txt`, then immediatel
 (pure:m !>(~))
 ```
 
-Save the above to `ted/stop-sub.hoon`, `|commit %home`, run it with `-stop-sub` and hit backspace to detach it from the dojo prompt. Now, add `foo.txt` to the root of your `%home` desk and `|commit %home`. You should see:
+Save the above to `ted/stop-sub.hoon`, `|commit %home`, run it with `-stop-sub` and hit backspace to detach it from the dojo prompt. Now, add `foo.txt` to the root of your `%home` `desk` and `|commit %home`. You should see:
 
 ```hoon
 > |commit %home
@@ -509,6 +509,6 @@ As you can see we've received no `%writ`. We can thus conclude the subscription 
 
 Run `:spider|kill` to stop the thread.
 
-Here's a breakdown of the task we sent:
+Here's a breakdown of the `task` we sent:
 
 ![cancel subscription diagram](https://pub.m.tinnus-napbus.xyz/stop-sub.png "cancel subscription diagram")

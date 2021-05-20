@@ -4,7 +4,7 @@ weight = 7
 template = "doc.html"
 +++
 
-Here we'll look at creating, changing and deleting files by passing clay an `%info` tagged `task:clay`.
+Here we'll look at creating, changing and deleting files by passing Clay an `%info` `task`.
 
 ## Contents
 
@@ -16,7 +16,7 @@ Here we'll look at creating, changing and deleting files by passing clay an `%in
 
 ## Introduction
 
-An `%info` task looks like:
+An `%info` `task` looks like:
 
 ```hoon
 [%info des=desk dit=nori]  ::  internal edit
@@ -48,10 +48,10 @@ This is just a list of changes so you can make more than one change in one reque
 
 - `%del` - Delete a file.
 - `%ins` - Insert file. This will also replace an existing file.
-- `%dif` - this has not yet been implemented so will crash with a `%dif-not-implemented` error.
+- `%dif` - This has not yet been implemented so will crash with a `%dif-not-implemented` error.
 - `%mut` - Change a file. At the time of writing this behaves identically to `%ins` so its use merely informs the reader.
 
-Clay does not give any response to an `%info` task so don't expect a sign back.
+Clay does not give any response to an `%info` `task` so don't expect a `sign` back.
 
 Now we'll look at some example threads:
 
@@ -87,9 +87,9 @@ Save it in `/ted/add-file.hoon`, `|commit %home` and run it like:
 
 If you have a look in the home of your pier you'll see there's now a file called `foo.txt` with the text `foo` in it.
 
-We've created the cage of the content like `[%txt !>(wain)]`, if you want to write something besides a text file you'd just give it the appropriate mark and vase.
+We've created the `cage` of the content like `[%txt !>(wain)]`, if you want to write something besides a text file you'd just give it the appropriate `mark` and `vase`.
 
-Here's a breakdown of the `task:clay` we sent:
+Here's a breakdown of the `task` we sent:
 
 ![write file diagram](https://pub.m.tinnus-napbus.xyz/write-file-diagram.png) 
 
@@ -124,7 +124,7 @@ Save the above code in `ted/delete-file.hoon`, `|commit %home` and run it like:
 
 If you have a look in the home of your pier you'll see the `foo.txt` file you created is now gone.
 
-Here's a breakdown of the `task:clay` we sent:
+Here's a breakdown of the `task` we sent:
 
 ![delete file diagram](https://pub.m.tinnus-napbus.xyz/delete-file-diagram.png) 
 
@@ -134,7 +134,7 @@ Identical to the [Add File](#add-file) example, just replace `%ins` with `%mut`.
 
 ## Multiple Changes
 
-Since `soba:clay` is just a `list` of `miso:clay`, you can add a bunch of `miso:clay` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `miso` in each request but you could mix different types together too.
+Since `soba` is just a `list` of `miso`, you can add a bunch of `miso` and they'll all be applied. This thread adds three files and then deletes them. Here there's only one type of `miso` in each request but you could mix different types together too.
 
 `multi-change.hoon`
 

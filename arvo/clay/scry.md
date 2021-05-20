@@ -4,7 +4,7 @@ weight = 5
 template = "doc.html"
 +++
 
-The various clay scries are specified by a `care`, which is a single character that corresponds with a clay submodule. Apart from `%s` they just take a path to a desk, file or directory. All examples are dojo commands, the ='s in the path are automatically populated by the dojo like:
+The various Clay scries are specified by a `care`, which is a single character corresponding with a Clay submodule. Apart from `%s` they just take a `path` to a `desk`, file or directory. All examples are dojo commands, the ='s in the path are automatically populated by the dojo like:
 
 ```hoon
 > /===
@@ -39,7 +39,7 @@ The various clay scries are specified by a `care`, which is a single character t
 
 ## a
 
-A scry with a care of `%a` will build a hoon file and return it as a `vase`.
+A scry with a `care` of `%a` will build a `hoon` file and return it as a `vase`.
 
 Example:
 
@@ -49,7 +49,7 @@ Example:
 
 ## b
 
-A scry with a care of `%b` will produce a `dais:clay` processed mark core for the specified mark. The `path` in the scry is a `mark`.
+A scry with a `care` of `%b` will produce a `dais:clay` processed `mark` core for the specified `mark`. The `path` in the scry is a `mark`.
 
 Example:
 
@@ -59,7 +59,7 @@ Example:
 
 ## c
 
-A scry with a care of `%c` will produce a `tube:clay` dynamically typed mark conversion gate. The `path` specifies two marks - *from* and *to*, like `/txt/noun`.
+A scry with a `care` of `%c` will produce a `tube:clay` dynamically typed `mark` conversion gate. The `path` specifies two `mark`s - *from* and *to*, like `/txt/noun`.
 
 Example:
 
@@ -71,7 +71,7 @@ Example:
 
 ## d
 
-A scry with a care of `%d` will return a `(set desk)` of the desks that exist on your ship.
+A scry with a `care` of `%d` will return a `(set desk)` of the `desk`s that exist on your ship.
 
 Example:
 
@@ -82,7 +82,7 @@ Example:
 
 ## e
 
-A scry with a care of `%e` will return a statically typed `nave:clay` mark core in a `vase`. The `path` in the scry specifies the `mark`.
+A scry with a `care` of `%e` will return a statically typed `nave:clay` `mark` core in a `vase`. The `path` in the scry specifies the `mark`.
 
 Example:
 
@@ -92,7 +92,7 @@ Example:
 
 ## f
 
-A scry with a care of `%f` will return a static mark conversion gate. The `path` specifies two marks - *from* and *to*, like `/txt/mime`.
+A scry with a `care` of `%f` will return a static `mark` conversion gate. The `path` specifies two `mark`s - *from* and *to*, like `/txt/mime`.
 
 ```hoon
 > =a .^($-(text mime) %cf /===/txt/mime)
@@ -102,7 +102,7 @@ A scry with a care of `%f` will return a static mark conversion gate. The `path`
 
 ## p
 
-A scry with a care of `%p` will return the permissions of the file or directory in question. The type returned is a `[dict:clay dict:clay]` where the head is read permissions and the tail is write permissions.
+A scry with a `care` of `%p` will return the permissions of the file or directory in question. The type returned is a `[dict:clay dict:clay]` where the head is read permissions and the tail is write permissions.
 
 A `dict` is:
 
@@ -124,7 +124,7 @@ A `dict` is:
 - `mod` specifies either a **black**list or a **white**list.
 - `who` specifies:
    - the set of allowed/disallowed ships.
-   - allowed/disallowed named crews (a crew is just a set of ships) - basically groups.
+   - allowed/disallowed named `crew`s (a `crew` is just a `set` of ships) - basically groups.
 
 If the specified file or directory has no permissions set, it will default to the permissions of its parent. If nothing above it has permissions set, it will default to empty whitelists. If the specified file or directory doesn't exist, it will also return the default empty whitelist.
 
@@ -137,7 +137,7 @@ Example:
 
 ## r
 
-A scry with a care of `%r` will return the data of the given file wrapped in a vase or crash if it's a directory. It's basically just a vase-wrapped `x`.
+A scry with a `care` of `%r` will return the data of the given file wrapped in a `vase` or crash if it's a directory. It's basically just a vase-wrapped `%x` scry.
 
 Examples:
 
@@ -161,7 +161,9 @@ Crash!
 
 ## s
 
-A scry with a care of `%s` is more complex than the rest. Rather than just a path to a file, the path has a head of one of `%yaki %blob %hash %cage %open %late %base`. The rest of the path will depend on which of these tags you use. We'll look at each in turn. Note that `%s` is miscellaneous internal and debug functions and is liable to change in the future.
+A scry with a `care` of `%s` is for miscellaneous internal and debug functions and is liable to change in the future.
+
+Rather than just a `path` to a file, the head of the `path` is tagged with one of `%yaki %blob %hash %cage %open %late %base` and the tail depends on which tag you use. We'll look at each in turn. 
 
 ### yaki
 
@@ -250,11 +252,11 @@ Here we grab the `lobe:clay` of `/gen/hood/hi/hoon` with a `%y` scry, then use i
 
 ### open
 
-This is like an `%a` scry but it only compiles the prelude to the file, eg. the ford rune imports. Proper documentation for this will be done as part of ford documentaton at a later date.
+This is like a `%a` scry but it only compiles the prelude to the file, e.g. the Ford rune imports. Proper documentation for this will be done as part of Ford documentaton at a later date.
 
 ### late
 
-This will return the most recent revision number of a desk that has been fully downloaded. The type it returns is a `cass:clay`. The case in the `beak` must be a revision number rather than a date. You can just provide a case of `1` since it returns the latest regardless. If we have nothing for the specified desk, this will just return the bunt of a `cass:clay` like `cass=[ud=0 da=~2000.1.1]`
+This will return the most recent revision number of a `desk` that has been fully downloaded. The type it returns is a `cass:clay`. The `case` in the `beak` must be a revision number rather than a date. You can just provide a case of `1` since it returns the latest regardless. If we have nothing for the specified `desk`, this will just return the bunt of a `cass:clay` like `cass=[ud=0 da=~2000.1.1]`.
 
 Example:
 
@@ -270,7 +272,7 @@ cass=[ud=0 da=~2000.1.1]
 
 ### base
 
-This will return the mergebase (i.e. most recent common ancestor) between two desks. The type it returns is a `(list tako:clay)`. The first desk will just be the one in the `beak` path prefix and the second will be specified like `/ship/desk` at the end of the scry path. If there is no common ancestor between the two desks, this will just produce an empty list.
+This will return the mergebase (i.e. most recent common ancestor) between two `desk`s. The type it returns is a `(list tako:clay)`. The first `desk` will just be the one in the `beak` `path` prefix and the second will be specified like `/ship/desk` at the end of the scry `path`. If there is no common ancestor between the two `desk`s, this will just produce an empty `list`.
 
 Examples:
 
@@ -286,7 +288,7 @@ Examples:
 
 ## t
 
-A scry with a care of `%t` will return a `(list path)` of all files in the given directory, or just a `(list path)` of the single file if it's a file. This is done recursively so will provide files in sub-directories as well. The paths will be fully qualified except for the ship, desk and case. If the directory or file specified does not exist, it will return null.
+A scry with a `care` of `%t` will return a `(list path)` of all files in the given directory, or just a `(list path)` of the single file if it's a file. This is done recursively so will provide files in subdirectories as well. The paths will be fully qualified except for the `ship`, `desk` and `case`. If the directory or file specified does not exist, it will return an empty `list`.
 
 Examples:
 
@@ -314,7 +316,7 @@ Examples:
 
 ## u
 
-A scry with a care of `%u` will return a `?` depending on whether the file exists. It will produce `%.n` if it's a directory or doesn't exist and will produce `%.y` if it's a file and exists.
+A scry with a `care` of `%u` will return a `?` depending on whether the file exists. It will produce `%.n` if it's a directory or doesn't exist and will produce `%.y` if it's a file and exists.
 
 Examples:
 
@@ -335,7 +337,7 @@ Examples:
 
 ## v
 
-A scry with a care of `%v` will return the entire state of a desk as a `dome:clay`.
+A scry with a care of `%v` will return the entire state of a `desk` as a `dome:clay`.
 
 Example:
 
@@ -345,11 +347,11 @@ Example:
 1
 ```
 
-If you try printing this it will take forever and probably OOM your ship.
+Note: If you try printing this it will take forever and probably OOM your ship.
 
 ## w
 
-A scry with a care of `%w` will return the revision number and date of a given case. The type returned is a `cass:clay` like `[ud=@ud da=@da]` where `ud` is the revision number and `da` is the date.
+A scry with a `care` of `%w` will return the revision number and date of a given `case`. The type returned is a `cass:clay` like `[ud=@ud da=@da]` where `ud` is the revision number and `da` is the date.
 
 Example:
 
@@ -360,7 +362,7 @@ Example:
 
 ## x
 
-A scry with a care of `%x` will return the raw data of a file as an `@` or crash if it's a directory.
+A scry with a `care` of `%x` will return the raw data of a file as an `@` or crash if it's a directory.
 
 
 Examples:
@@ -382,11 +384,11 @@ Crash!
 
 ## y
 
-A scry with a care of `%y` will return the `arch` of a file or directory.
+A scry with a `care` of `%y` will return the `arch` of a file or directory.
 
-An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain the `lobe:clay` hash if it's a file, otherwise will be null. The `dir` will contain a map of the files and directories it contains, otherwise will be null.
+An `arch` is a `[fil=(unit lobe:clay) dir=(map @ta ~)]`. The `fil` will contain the `lobe:clay` hash if it's a file, otherwise it will be null. The `dir` will contain a map of the files and directories it contains, otherwise it will be null.
 
-It will return the bunt of an arch—`[fil=~ dir={}]`—if the file or directory is not found.
+It will return the bunt of an `arch` if the file or directory is not found.
 
 Examples:
 
@@ -423,7 +425,7 @@ Examples:
 
 ## z
 
-A scry with a care of `%z` will return the hash of a file or the recursive hash of a directory. If the file or directory doesn't exist it will return a null value.
+A scry with a `care` of `%z` will return the hash of a file or the recursive hash of a directory. If the file or directory doesn't exist it will return a null value.
 
 The type returned is a `@uxI`.
 

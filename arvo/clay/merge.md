@@ -4,9 +4,9 @@ weight = 9
 template = "doc.html"
 +++
 
-Here we'll look at merging desks programmatically.
+Here we'll look at merging `desk`s programmatically.
 
-A `%merg` tagged `task:clay` will merge the specified source desk into the target local desk. It looks like:
+A `%merg` `task` will merge the specified source `desk` into the target local `desk`. It looks like:
 
 ```hoon
 $:  %merg                       ::  merge desks
@@ -36,9 +36,9 @@ The `germ` specifies the merge strategy and looks like:
 
 You can refer to the [Strategies](@/docs/arvo/clay/using.md#strategies) section of the [Using Clay](@/docs/arvo/clay/using.md) document for details of each `germ`.
 
-If you're merging into a new desk you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
+If you're merging into a new `desk` you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
 
-Clay will respond to the request with a `%mere` tagged `gift:clay` which looks like:
+Clay will respond to the request with a `%mere` `gift` which looks like:
 
 ```hoon
 [%mere p=(each (set path) (pair term tang))]  ::  merge result
@@ -59,7 +59,7 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
 
 Example:
 
-Here's a thread that sends the given `task:clay` to clay and prints the `gift:clay` response:
+Here's a thread that sends the given `task` to Clay and prints the `gift` response:
 
 `send-task.hoon`
 
@@ -82,21 +82,21 @@ Here's a thread that sends the given `task:clay` to clay and prints the `gift:cl
 
 Save it to `ted/send-task.hoon` and `|commit %home`.
 
-First, let's try creating a new desk:
+First, let's try creating a new `desk`:
 
 ```hoon
 > -send-task-take-gift [%merg %foo our %home da+now %init]
 [%mere p=[%.y p={}]]
 ```
 
-Now if we scry for our desks we'll see `%foo` is there:
+Now if we scry for our `desk`s we'll see `%foo` is there:
 
 ```hoon
 > .^((set desk) %cd /===)
 {%home %foo %kids}
 ```
 
-Next, we'll create a merge conflict and try a couple of things. Mount `%foo` with `|mount /=foo=`, then add a `foo.txt` to both desks but with different text in each and `|commit` them.
+Next, we'll create a merge conflict and try a couple of things. Mount `%foo` with `|mount /=foo=`, then add a `foo.txt` to both `desk`s but with different text in each and `|commit` them.
 
 Now we'll try merging `%home` into `%foo` with a `%mate` strategy:
 
@@ -132,15 +132,15 @@ Now the merge has succeeded and the `%mere` notes the file with a merge conflict
 : /~zod/foo/6/foo/txt
 ```
 
-...you can see it's overwritten the `foo/txt` in the `%foo` desk and the `%mere` now has an empty set, indicating no merge conflicts.
+...you can see it's overwritten the `foo/txt` in the `%foo` `desk` and the `%mere` now has an empty `set`, indicating no merge conflicts.
 
-Next, let's look at subscribing for future changes. Since the `case` is specified explicitly in the `%merge` task, we can set in in the future:
+Next, let's look at subscribing for future changes. Since the `case` is specified explicitly in the `%merge` `task`, we can set it in the future:
 
 ```hoon
 > -send-task-take-gift [%merg %foo our %home da+(add ~m2 now) %only-that]
 ```
 
-Now change the text in the `foo.txt` in the `%home` desk, hit backspace to detach the thread and `|commit %home`. After the two minutes pass you should see:
+Now change the text in the `foo.txt` in the `%home` `desk`, hit backspace to detach the thread and `|commit %home`. After the two minutes pass you should see:
 
 ```hoon
 [/foo [%clay [%mere p=[%.y p={}]]]]

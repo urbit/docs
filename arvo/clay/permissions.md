@@ -17,7 +17,7 @@ Here we'll look at file permissions.
 
 For each file or directory, there is both a read permission and a write permission. Each may be set separately and is either a whitelist or a blacklist (but not both). The whitelist/blacklist contains a `set` of ships and/or groups which are allowed or banned respectively. If it's an empty whitelist it means all foreign ships are denied. If it's an empty blacklist it means all foreign ships are allowed.
 
-If permissions are not set for a particular file, they will be inherited from the directory in which it resides. If *that* directory has no permissions set, they will be inherited from another level up, and so on to the desk's root directory. If the root directory has no permissions set, it will have the default permissions of an empty whitelist, meaning "deny all".
+If permissions are not set for a particular file, they will be inherited from the directory in which it resides. If *that* directory has no permissions set, they will be inherited from another level up, and so on to the `desk`'s root directory. If the root directory has no permissions set, it will have the default permissions of an empty whitelist, meaning "deny all".
 
 A group is called a `crew` and is just a `set` of ships with a `@ta` name.
 
@@ -38,20 +38,20 @@ The `src` path is where the permissions were inherited from and the `real` is th
     ==                                        ::
 ```
 
-So if we scry for permissions with a `%p` care, it'll look like:
+So if we scry for permissions with a `%p` `care`, it'll look like:
 
 ```hoon
 > .^([r=dict:clay w=dict:clay] %cp /===/lib/strandio/hoon)
 [r=[src=/ rul=[mod=%white who=[p={} q={}]]] w=[src=/ rul=[mod=%white who=[p={} q={}]]]]
 ```
 
-There are four permission-related tasks which you can pass to clay.
+There are four permission-related `task`s which you can pass to Clay.
 
-A `%perm` task is for setting permissions, and the other three are for managing groups:
+A `%perm` `task` is for setting permissions, and the other three are for managing groups:
 
-- `%cred` - add permission group
-- `%crew` - get permission groups
-- `%crow` - get group usage
+- `%cred` - Add permission group.
+- `%crew` - Get permission groups.
+- `%crow` - Get group usage.
 
 We'll look at each of these in turn.
 
@@ -61,7 +61,7 @@ This sets permissions for the target file or directory.
 
 Note this will replace existing permissions rather than add to them, so if you want to add a ship to an existing whitelist or whatever you'll have to first read the existing permissions, add the ship, then send the whole lot back.
 
-A `%perm` tagged `task:clay` looks like:
+A `%perm` `task` looks like:
 
 ```hoon
 [%perm des=desk pax=path rit=rite]  ::  change permissions
@@ -92,7 +92,7 @@ As the comment suggests, the `@ta` is the name of a `crew` (group).
 
 Example:
 
-Here's a generic thread that just sends the given `task:clay` to clay so we can try a few different things:
+Here's a generic thread that just sends the given `task` to Clay so we can try a few different things:
 
 `send-clay-task.hoon`
 
@@ -121,7 +121,7 @@ Save it to `ted/send-clay-task.hoon` and `|commit %home`. Now, let's allow `~nes
 
 ...and we'll do a `%p` scry to see that the permission was set:
 
-```hood
+```hoon
 > .^([r=dict:clay w=dict:clay] %cp /===/gen/hood/hi/hoon)
 [r=[src=/gen/hood/hi/hoon rul=[mod=%white who=[p={~nes} q={}]]] w=[src=/ rul=[mod=%white who=[p={} q={}]]]]
 ```
@@ -178,7 +178,7 @@ For example, to remove a read permission (or write if you specify `%w`):
 > -send-clay-task [%perm %home /gen/help/hoon %rw ~ ~]
 ```
 
-```hood
+```hoon
 > .^([r=dict:clay w=dict:clay] %cp /===/gen/help/hoon)
 [r=[src=/ rul=[mod=%white who=[p={} q={}]]] w=[src=/ rul=[mod=%white who=[p={} q={}]]]]
 ```
@@ -211,7 +211,7 @@ We'll use the same thread from the [%perm](#perm) example. Try:
 -send-clay-task [%crew 'foo' (sy ~[~zod ~nec ~bud ~wes ~sev])]
 ```
 
-We'll check it with the next kind of task: [%crew](#crew).
+We'll check it with the next kind of `task`: [%crew](#crew).
 
 ## %crew
 
@@ -221,7 +221,7 @@ This retrieves all permission groups. It looks like:
 [%crew ~]  ::  permission groups
 ```
 
-Clay wil return a sign containing a `gift:clay` with a `%cruz` tag. It looks like:
+Clay wil return a sign containing a `%cruz` `gift`. It looks like:
 
 ```hoon
 [%cruz cez=(map @ta crew)]  ::  permission groups
@@ -231,7 +231,7 @@ The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 
 Example:
 
-Here's a generic thread that sends the given `task:clay` and receives a gift which it just prints to the dojo.
+Here's a generic thread that sends the given `task` and receives a `gift` which it just prints to the dojo.
 
 `send-task-take-gift.hoon`
 
@@ -263,13 +263,13 @@ Save the above to `ted/send-task-take-gift.hoon` and `|commit %home`. Now we'll 
 
 ## %crow
 
-This is the last group task. It retrieves all files and directories in all desks which have permissions set for the group in question. It will not return inherited permissions, only those explicitly set. It looks like:
+This is the last group `task`. It retrieves all files and directories in all `desk`s which have permissions set for the group in question. It will not return inherited permissions, only those explicitly set. It looks like:
 
 ```hoon
 [%crow nom=@ta]  ::  group usage
 ```
 
-The `gift:clay` you get back is a `%croz` which looks like:
+The `gift` you get back is a `%croz` which looks like:
 
 ```hoon
 [%croz rus=(map desk [r=regs w=regs])]  ::  rules for group

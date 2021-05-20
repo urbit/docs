@@ -4,9 +4,9 @@ weight = 11
 template = "doc.html"
 +++
 
-Here we'll looking at making `clay` requests to a foreign ship.
+Here we'll looking at making Clay requests to a foreign ship.
 
-As it currently stands, it's not possible to write to a foreign desk. Additionally, remote scries are not implemented. That leaves requests to read files (`%warp`) and merge desks (`%merg`).
+As it currently stands, it's not possible to write to a foreign `desk`. Additionally, remote scries are not implemented. That leaves requests to read files (`%warp`) and merge desks (`%merg`).
 
 ## Contents
 
@@ -15,9 +15,9 @@ As it currently stands, it's not possible to write to a foreign desk. Additional
 
 ## %warp
 
-To read files on a foreign desk, you just send clay a `%warp` `task:clay` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](@/docs/arvo/clay/read.md) document.
+To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](@/docs/arvo/clay/read.md) document.
 
-Clay only allows a subset of cares to be used remotely. They are:
+Clay only allows a subset of `care`s to be used remotely. They are:
 
 - `%u` - Check for existence of file.
 - `%v` - Get entire `dome:clay` state of a desk.
@@ -30,13 +30,13 @@ Any other `care` will crash with a `%clay-bad-foreign-request-care` error.
 
 The foreign ship will respond only if correct permissions have been set. See the [Permissions](@/docs/arvo/clay/permissions.md) document for details.
 
-Note that if you're reading a whole desk or directory, all subfolders and files must also permit reading. If even a single file does not permit you reading it, the foreign ship will not respond to the request.
+Note that if you're reading a whole `desk` or directory, all subfolders and files must also permit reading. If even a single file does not permit you reading it, the foreign ship will not respond to the request.
 
 Example:
 
 We'll use a fake ~nes as the the foreign ship and a fake ~zod as the local ship.
 
-First we'll set permissions on the foreign ship. Here's a simple thread that just sends a task to clay:
+First we'll set permissions on the foreign ship. Here's a simple thread that just sends a `task` to Clay:
 
 `send-clay-task.hoon`
 
@@ -63,7 +63,7 @@ Create a file called `foo.txt` in the `%home` of ~nes. Save the above thread to 
 > -send-clay-task [%perm %home /foo/txt %rw `[%white (sy [%.y ~zod]~)] `[%white (sy [%.y ~zod]~)]]
 ```
 
-If we scry the file for its permissions with a `%p` care, we'll see ~zod is now whitelisted:
+If we scry the file for its permissions with a `%p` `care`, we'll see ~zod is now whitelisted:
 
 ```hoon
 > .^([r=dict:clay w=dict:clay] %cp /===/foo/txt)
@@ -139,8 +139,8 @@ call: failed
 
 ## %merg
 
-To merge a foreign desk into a local one, you just send clay a `%merg` `task:clay` (as you would for a local merge) and specify the foreign ship in the `her` field. For details on making such requests, see the [Merge Desks](@/docs/arvo/clay/merge.md) document.
+To merge a foreign `desk` into a local one, you just send Clay a `%merg` `task` (as you would for a local merge) and specify the foreign ship in the `her` field. For details on making such requests, see the [Merge Desks](@/docs/arvo/clay/merge.md) document.
 
-The foreign ship will respond only if correct permissions have been set. See the [Permissions](@/docs/arvo/clay/permissions.md) document for details. By default, a ship's `%kids` desk is set to be publicly readable, so unless permissions have been manually modified, you should be able to merge from any `%kids` desk.
+The foreign ship will respond only if correct permissions have been set. See the [Permissions](@/docs/arvo/clay/permissions.md) document for details. By default, a ship's `%kids` desk is set to be publicly readable, so unless permissions have been manually modified, you should be able to merge from any `%kids` `desk`.
 
-Note that all subfolders and individual files within the desk must permit your reading in order for the merge to succeed. If even one file does not permit you reading it, the remote ship will not respond to the request at all.
+Note that all subfolders and individual files within the `desk` must permit your reading in order for the merge to succeed. If even one file does not permit you reading it, the remote ship will not respond to the request at all.
