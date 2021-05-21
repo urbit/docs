@@ -34,3 +34,7 @@ A walkthrough of each of the `u3` modules.
 ## [How to write a jet](@/docs/vere/jetting.md)
 
 A jetting guide by for new Urbit developers.
+
+## [Cryptography](@/docs/vere/cryptography.md)
+
+References on the cryptography libraries utilized by jets.
