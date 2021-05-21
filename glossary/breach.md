@@ -7,21 +7,19 @@ category = "arvo"
 
 Continuity on the [Ames](../ames) network occasionally needs to be broken at
 this early stage in order to correct a networking error or to make major changes
-to Arvo. These infrequent events are known as **breaches** which either cause an
-individual ship to forget its network message history, called a **personal
-breach**, or cause the entire network to forget its history, called a **network
-breach**. 
+to [Arvo](../arvo). These infrequent events are known as **breaches**, which cause an
+individual ship to forget its network message history.
 
-Personal breaches are always initiated by the user, frequently in response to a
+Breaches are always initiated by the user, frequently in response to a
 connectivity error. The easiest way to do this is with [Bridge](../bridge).
 There are two types of personal breaches: changing networking keys, and changing
 the Urbit ID ownership address.
 
-Network breaches happen when a major Arvo revision that cannot be implemented
-via an [OTA update](../ota-updates) occurs. When this happens, a new binary will
-need to be downloaded, and your ship's [pier](../pier) needs to be moved to the
-directory containing the new binary. The most recent network breach occurred in
-December 2020, and we expect it to be the final one.
+Historically, there were also "network breaches", which happened when a major
+Arvo revision that could not be implemented via an [OTA update](../ota-updates)
+occured. Network breaches were effectively breaching every ship on the network
+at once. The most recent network breach occurred in December 2020, and we expect
+it to be the final one.
 
 ### Further Reading
 
