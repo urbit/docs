@@ -14,7 +14,7 @@ and [Jael](@/docs/arvo/jael/jael-api.md) to ensure that communication between
 ships is always done with the most recent set of networking keys, and that
 networking state is appropriately reset when a breach has occurred.
 
-Before it has been spawned, every ship begin with a `life` and `rift` of 0. For
+Every ship begins with a `life` and `rift` of 0. For
 galaxies, stars, and planets, these values are stored in the Azimuth PKI, while
 for moons, these values are stored by their parent. Comets cannot change their
 networking keys, nor can they breach, and so their `life` and `rift` are always 0.
