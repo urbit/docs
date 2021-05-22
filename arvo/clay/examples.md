@@ -203,7 +203,7 @@ This thread will subscribe to `/foo/txt` with an `%x` `care` and `/bar/txt` with
 
 Save the above to `ted/sub-mult.hoon`, `|commit %home` and run with `-sub-mult`. Now, create `foo.txt` and `bar.txt` in your home directory, hit backspace in the dojo to disconnect the thread and run `|commit %home`. You should see something like:
 
-```hoon
+```
 > |commit %home
 >=
 [%wris p=[%da p=~2021.4.27..06.07.08..5ec4] q={[p=%u q=/bar/txt] [p=%x q=/foo/txt]}]
@@ -217,7 +217,7 @@ Now, run the thread again, open `bar.txt` in an editor, modify its contents, sav
 
 Lastly, delete `foo.txt` and `|commit %home`. You should see something like:
 
-```hoon
+```
 > |commit %home
 >=
 [%wris p=[%da p=~2021.4.27..06.15.03..0da4] q={[p=%x q=/foo/txt]}]
@@ -274,7 +274,7 @@ This thread will subscribe to changes to your `%home` `desk` for the next three 
 
 Make sure `foo.txt` doesn't exist in the root of your `%home` `desk`. Save this to `ted/sub-many.hoon`, `|commit %home`, run it like `-sub-many /foo/txt`, and hit backspace in the dojo to free up the dojo prompt. Now, add a file called `bar.txt` to your `desk` and `|commit %home`. You should see something like:
 
-```hoon
+```
 > |commit %home
 >=
 + /~zod/home/260/bar/txt
@@ -282,7 +282,7 @@ Make sure `foo.txt` doesn't exist in the root of your `%home` `desk`. Save this 
 
 Notice you've received no `%writ` from Clay. This is because `/foo/txt` doesn't exist. Now, create `foo.txt` and `|commit %home` again. You should see:
 
-```hoon
+```
 > |commit %home
 >=
 [ p=/many
@@ -295,7 +295,7 @@ Now that `/foo/txt` exists it will inform you of updates. Note that if you delet
 
 Now try adding `baz.txt`:
 
-```hoon
+```
 > |commit %home
 >=
 [ p=/many
@@ -306,7 +306,7 @@ Now try adding `baz.txt`:
 
 Now wait until the three minutes is up and try making a change, for example deleting `baz.txt`:
 
-```hoon
+```
 > |commit %home
 >=
 [ p=/many
@@ -443,7 +443,7 @@ Since `soba` is just a `list` of `miso`, you can add a bunch of `miso` and they'
 
 Save to `ted/multi-change.hoon`, `|commit %home`, and run:
 
-```hoon
+```
 > -multi-change
 + /~zod/home/37/foo/txt
 + /~zod/home/37/bar/txt
@@ -544,7 +544,7 @@ Here we'll look at committing changed files by sending Clay a `%dirk` `task`.
 
 With your `%home` `desk` mounted, try adding a file and, using the `send-task.hoon` thread, send a `%dirk` to commit the change:
 
-```hoon
+```
 > -send-task [%dirk %home]
 + /~zod/home/12/foo/txt
 ```
