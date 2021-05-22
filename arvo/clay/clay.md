@@ -56,26 +56,10 @@ Explanations of the many data types found throughout Clay. (Up to date as of Apr
 
 Reference for Clay's various scry endpoints.
 
-[Read and Subscribe](@/docs/arvo/clay/read.md)
+[API Reference](@/docs/arvo/clay/tasks.md)
 
-How to read files and subscribe for changes.
+Details of the various `task`s you can use to interact with Clay.
 
-[Write and Modify](@/docs/arvo/clay/write.md)
+[Examples](@/docs/arvo/clay/examples.md)
 
-How to add, delete and modify files.
-
-[Manage Mounts](@/docs/arvo/clay/mounts.md)
-
-How to manage clay unix mounts programmatically.
-
-[Merge Desks](@/docs/arvo/clay/merge.md)
-
-How to merge desks programmatically.
-
-[Permissions](@/docs/arvo/clay/permissions.md)
-
-How to manage file permissions in clay.
-
-[Foreign Ships](@/docs/arvo/clay/foreign-requests.md)
-
-How to make requests to foreign ships.
+Example usage of the various Clay `task`s.
