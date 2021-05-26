@@ -38,26 +38,7 @@ template = "doc.html"
 
 This document contains a number of examples of interacting with Clay using its various `task`s. Sections correspond to the general details in the [API Reference](@/docs/arvo/clay/tasks.md) document.
 
-Most examples use one of these two threads which you can save to the `ted` directory of your `%home` `desk`:
-
-`send-task.hoon`
-
-```hoon
-/-  spider 
-/+  strandio
-=,  strand=strand:spider 
-^-  thread:spider 
-|=  arg=vase 
-=/  m  (strand ,vase) 
-^-  form:m
-=/  uarg  !<  (unit task:clay)  arg
-?~  uarg
-  (strand-fail:strand %no-arg ~)
-=/  =task:clay  u.uarg
-=/  =card:agent:gall  [%pass /foo %arvo %c task]
-;<  ~  bind:m  (send-raw-card:strandio card)
-(pure:m !>(~))
-```
+Most examples will either use `|pass` to just send a `task` or the following thread to send a `task` and take the resulting `gift`. You can save the following thread to the `ted` directory of your `%home` `desk`:
 
 `send-task-take-gift.hoon`
 
@@ -376,10 +357,10 @@ See the [Write and Modify](@/docs/arvo/clay/tasks.md#write-and-modify) section o
 
 Here we'll look at adding a file by sending Clay a `%info` `task` containing a `%ins` `miso`.
 
-Using the `send-task.hoon` thread, let's try adding a `foo.txt` file with 'foo' as its contents:
+Let's try adding a `foo.txt` file with 'foo' as its contents:
 
 ```
-> -send-task [%info %home %& [/foo/txt %ins %txt !>(~['foo'])]~]
+> |pass [%c [%info %home %& [/foo/txt %ins %txt !>(~['foo'])]~]]
 + /~zod/home/5/foo/txt
 ```
 
@@ -395,10 +376,10 @@ Here's a breakdown of the `task` we sent:
 
 Here we'll look at deleting a file by sending Clay a `%info` `task` containing a `%del` `miso`.
 
-Using the `send-task.hoon` thread, let's try deleting the `foo.txt` file created in the [previous example](#ins):
+Let's try deleting the `foo.txt` file created in the [previous example](#ins):
 
 ```
-> -send-task [%info %home %& [/foo/txt %del ~]~]
+> |pass [%c [%info %home %& [/foo/txt %del ~]~]]
 - /~zod/home/6/foo/txt
 ```
 
@@ -472,10 +453,10 @@ Using the `send-task-take-gift.hoon` thread, let's make such a request:
 
 Here we'll look at mounting `desk`s, directories and files to unix by sending Clay a `%mont` `task`.
 
-Using the `send-task.hoon` thread, let's first try mounting our `%kids` desk:
+Let's first try mounting our `%kids` desk:
 
 ```
-> -send-task [%mont %kids [our %kids da+now] /]
+> |pass [%c [%mont %kids [our %kids da+now] /]]
 ```
 
 If you look in your pier, you should now see a `kids` folder which contains the contents of that `desk`.
@@ -493,7 +474,7 @@ The cez is just a map from group name to crew
 Note the mount point doesn't need to match a `desk`, file or directory. We can also do:
 
 ```
-> -send-task [%mont %wibbly-wobbly [our %home da+now] /]
+> |pass [%c [%mont %wibbly-wobbly [our %home da+now] /]]
 ```
 
 And you'll now see that there's a `wibbly-wobbly` folder with the contents of the `%home` `desk`. You'll also notice we can mount the same file or directory more than once. There's no problem having `%home` mounted to both `home` and `wibbly-wobbly`. The only requirement is that their mount points be unique.
@@ -501,8 +482,8 @@ And you'll now see that there's a `wibbly-wobbly` folder with the contents of th
 Let's try mounting a subdirectory and a single folder:
 
 ```
-> -send-task [%mont %gen [our %home da+now] /gen]
-> -send-task [%mont %hi [our %home da+now] /gen/hood/hi]
+> |pass [%c [%mont %gen [our %home da+now] /gen]]
+> |pass [%c [%mont %hi [our %home da+now] /gen/hood/hi]]
 ```
 
 If you look in your pier you'll now see a `gen` folder with the contents of `/gen` and a `hi.hoon` file by itself. Notice how the file extension has been automatically added.
@@ -511,28 +492,28 @@ If you look in your pier you'll now see a `gen` folder with the contents of `/ge
 
 Here we'll look at unmounting `desk`s, directories and files by sending Clay a `%ogre` `task`.
 
-Using the `send-task.hoon` thread, let's unmount what we mounted in the [%mont](#mont) section. First we'll unmount the `%kids` desk:
+Let's unmount what we mounted in the [%mont](#mont) section. First we'll unmount the `%kids` desk:
 
 ```
--send-task [%ogre %kids]
+|pass [%c [%ogre %kids]]
 ```
 
 Our custom mount point `%wibbly-wobbly`:
 
 ```
--send-task [%ogre %wibbly-wobbly]
+|pass [%c [%ogre %wibbly-wobbly]]
 ```
 
 And the single `hi.hoon` we previously mounted by specifying its mount point `%hi`:
 
 ```
--send-task [%ogre %hi]
+|pass [%c [%ogre %hi]]
 ```
 
 If we specify a non-existent mount point it will fail with an error printed to the dojo like:
 
 ```
-> -send-task [%ogre %kids] 
+> |pass [%c [%ogre %kids]]
 [%not-mounted %kids]
 ```
 
@@ -542,10 +523,10 @@ If we give it an unmounted `beam` it will not print an error but still won't wor
 
 Here we'll look at committing changed files by sending Clay a `%dirk` `task`.
 
-With your `%home` `desk` mounted, try adding a file and, using the `send-task.hoon` thread, send a `%dirk` to commit the change:
+With your `%home` `desk` mounted, try adding a file and send a `%dirk` to commit the change:
 
 ```
-> -send-task [%dirk %home]
+> |pass [%c [%dirk %home]]
 + /~zod/home/12/foo/txt
 ```
 
@@ -636,10 +617,10 @@ See the [Permissions](@/docs/arvo/clay/tasks.md#permissions) section of the [API
 
 Here we'll look at setting permissions by sending Clay a `%perm` `task`.
 
-First, using the `send-task.hoon` thread, let's try allow `~nes` to read `/gen/hood/hi/hoon`:
+First, let's allow `~nes` to read `/gen/hood/hi/hoon`:
 
 ```
-> -send-task [%perm %home /gen/hood/hi/hoon %r ~ %white (sy [%.y ~nes]~)]
+> |pass [%c [%perm %home /gen/hood/hi/hoon %r ~ %white (sy [%.y ~nes]~)]]
 ```
 
 ...and we'll do a `%p` scry to see that the permission was set:
@@ -652,7 +633,7 @@ First, using the `send-task.hoon` thread, let's try allow `~nes` to read `/gen/h
 You can see that `~nes` is now in the read whitelist. Next, let's try a write permission:
 
 ```
-> -send-task [%perm %home /ted %w ~ %white (sy [%.y ~nes]~)]
+> |pass [%c [%perm %home /ted %w ~ %white (sy [%.y ~nes]~)]]
 ```
 
 You can see `~nes` can now write to `/ted`:
@@ -674,7 +655,7 @@ Since we've set it for the whole `/ted` directory, if we check a file inside it 
 Now let's try setting both read and write permissions:
 
 ```
-> -send-task [%perm %home /gen/help/hoon %rw `[%black (sy [%.y ~nes]~)] `[%white (sy [%.y ~nes]~)]]
+> |pass [%c [%perm %home /gen/help/hoon %rw `[%black (sy [%.y ~nes]~)] `[%white (sy [%.y ~nes]~)]]]
 ```
 
 ```
@@ -687,7 +668,7 @@ Lastly, let's look at deleting a permission rule we've previously set. To do tha
 For example, to remove a read permission (or write if you specify `%w`):
 
 ```
-> -send-task [%perm %home /gen/help/hoon %r ~]
+> |pass [%c [%perm %home /gen/help/hoon %r ~]]
 ```
 
 ```
@@ -698,7 +679,7 @@ For example, to remove a read permission (or write if you specify `%w`):
 ...and to remove both read and write at the same time:
 
 ```
-> -send-task [%perm %home /gen/help/hoon %rw ~ ~]
+> |pass [%c [%perm %home /gen/help/hoon %rw ~ ~]]
 ```
 
 ```
@@ -716,10 +697,10 @@ Here's a breakdown of a `%perm` task:
 
 Here we'll look at creating a permission group by sending Clay a `%cred` `task`.
 
-Using the `send-task.hoon` thread, try:
+Let's create a group called `'foo'` with a few ships:
 
 ```
--send-task [%crew 'foo' (sy ~[~zod ~nec ~bud ~wes ~sev])]
+|pass [%c [%crew 'foo' (sy ~[~zod ~nec ~bud ~wes ~sev])]]
 ```
 
 We'll check it with the next kind of `task`: [%crew](#crew).
@@ -739,11 +720,11 @@ Let's check, using the `send-task-take-gift.hoon` thread, for the permission gro
 
 Here we'll look at retrieving a list of all files and directories in all `desk`s which have permissions set for a group by sending Clay a `%crow` `task` and receiving a `%croz` `gift` in response.
 
-First we'll set a couple of permissions for the `foo` group we created in the [%cred](#cred) section using the `send-task.hoon` thread:
+First we'll set a couple of permissions for the `foo` group we created in the [%cred](#cred) section:
 
 ```
-> -send-task [%perm %home /gen/hood/hi/hoon %w ~ %white (sy [%.n 'foo']~)]
-> -send-task [%perm %home /ted %w ~ %white (sy [%.n 'foo']~)]
+> |pass [%c [%perm %home /gen/hood/hi/hoon %w ~ %white (sy [%.n 'foo']~)]]
+> |pass [%c [%perm %home /ted %w ~ %white (sy [%.n 'foo']~)]]
 ```
 
 Notice we use a `%.n` in the `whom` to indicate a group rather than the `%.y` of a ship.
@@ -777,10 +758,10 @@ Here we'll look at reading files on a foreign ship by sending Clay a `%warp` `ta
 
 We'll use a fake ~nes as the the foreign ship and a fake ~zod as the local ship.
 
-First we'll set permissions on the foreign ship. Create a file called `foo.txt` in the `%home` of ~nes. Using the `send-task.hoon` thread, send a `%perm` request to allow ~zod to read and write the file:
+First we'll set permissions on the foreign ship. Create a file called `foo.txt` in the `%home` of ~nes, then send a `%perm` request to allow ~zod to read and write the file:
 
 ```
-> -send-task [%perm %home /foo/txt %rw `[%white (sy [%.y ~zod]~)] `[%white (sy [%.y ~zod]~)]]
+> |pass [%c [%perm %home /foo/txt %rw `[%white (sy [%.y ~zod]~)] `[%white (sy [%.y ~zod]~)]]]
 ```
 
 If we scry the file for its permissions with a `%p` `care`, we'll see ~zod is now whitelisted:
@@ -823,7 +804,7 @@ As you can see, we've received a `%writ` containing the requested data just as w
 If we send a `%d` request however, it will crash:
 
 ```
-> -send-receive-task [%warp ~nes %home ~ %sing %d da+now /foo/txt]
+> -send-task-take-gift [%warp ~nes %home ~ %sing %d da+now /foo/txt]
 call: failed
 /sys/vane/clay/hoon:<[4.085 3].[4.314 5]>
 ...
