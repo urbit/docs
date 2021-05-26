@@ -523,6 +523,8 @@ If we give it an unmounted `beam` it will not print an error but still won't wor
 
 Here we'll look at committing changed files by sending Clay a `%dirk` `task`.
 
+This `task` performs the same function as the `|commit` dojo command.
+
 With your `%home` `desk` mounted, try adding a file and send a `%dirk` to commit the change:
 
 ```
