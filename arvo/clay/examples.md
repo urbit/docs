@@ -230,9 +230,9 @@ This thread will subscribe to changes to your `%home` `desk` for the next three 
   %-  (main-loop:strandio ,~)
   :~  |=  ~
       ^-  form:m
-      ;<  res=(pair wire sign-arvo)
-        bind:m
-      ((handle:strandio ,(pair wire sign-arvo)) take-sign-arvo:strandio)
+      ;<    res=(pair wire sign-arvo)
+          bind:m
+        ((handle:strandio ,(pair wire sign-arvo)) take-sign-arvo:strandio)
       ~&  res
       (pure:m ~)
   ==
