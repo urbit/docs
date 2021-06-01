@@ -5,10 +5,10 @@ template = "doc.html"
 category = "arvo"
 +++
 
-Continuity on the [Ames](../ames) network occasionally needs to be broken at
-this early stage in order to correct a networking error or to make major changes
-to [Arvo](../arvo). These infrequent events are known as **breaches**, which cause an
-individual ship to forget its network message history.
+Continuity on the [Ames](../ames) network occasionally needs to be broken
+(though with increasing rarity) in order to correct a networking error. These
+infrequent events are known as **breaches**, which cause an individual ship to
+forget its network message history.
 
 Breaches are always initiated by the user, frequently in response to a
 connectivity error. The easiest way to do this is with [Bridge](../bridge).
