@@ -2,7 +2,6 @@
 title = "Life and Rift"
 weight = 3
 template = "doc.html"
-aliases = ["/docs/learn/azimuth"]
 +++
 
 Associated to every Azimuth point are two non-negative integers known as _life_
