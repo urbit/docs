@@ -4,8 +4,6 @@ weight = 3
 template = "doc.html"
 +++
 
-This document is up-to-date as of March 2021.
-
 ### Reading and Subscribing
 
 When reading from Clay, there are three types of requests.  A

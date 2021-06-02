@@ -23,34 +23,27 @@ zuse. Second is the write, query, and subscription logic. Finally, there
 is the logic for communicating requests to, and receiving requests from,
 foreign ships.
 
-Clay documentation is extensive, but the reader much tread carefully as portions
-of it are out of date as of April 2021. We are actively working on updating
-them. If you'd like to help, please reach out to us in the Docs channel on Urbit
-Community or submit a PR at
-[https://github.com/urbit/docs](https://github.com/urbit/docs).
-
 ### User documentation
 
 [Filesystem](@/using/os/filesystem.md)
 
 How to interact with the Clay filesystem via Dojo. This includes basics such as
-mounting to Unix, changing directory, merging, and listing files. (Up to date as
-of April 2021)
+mounting to Unix, changing directory, merging, and listing files.
 
 ### Developer Documentation
 
 [Architecture](@/docs/arvo/clay/architecture.md)
 
-A conceptual overview of how Clay was designed. (Up to date as of April 2021)
+A conceptual overview of how Clay was designed.
 
 [Using Clay](@/docs/arvo/clay/using.md)
 
 A quick overview of how the most common tasks involving Clay are performed:
-reading and subscribing, syncing to Unix, and merging. (Up to date as of April 2021)
+reading and subscribing, syncing to Unix, and merging.
 
 [Data Types](@/docs/arvo/clay/data-types.md)
 
-Explanations of the many data types found throughout Clay. (Up to date as of April 2021)
+Explanations of the many data types found throughout Clay.
 
 [Scry Reference](@/docs/arvo/clay/scry.md)
 
