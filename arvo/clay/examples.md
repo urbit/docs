@@ -150,7 +150,7 @@ You can see the `riot` is just `~` due to the file being deleted.
 
 Here's a breakdown of the task we sent:
 
-![%next diagram](https://media.urbit.org/docs/arvo/clay/sing.png "%next diagram")
+![%next diagram](https://media.urbit.org/docs/arvo/clay/next.png "%next diagram")
 
 ## `%mult`
 
