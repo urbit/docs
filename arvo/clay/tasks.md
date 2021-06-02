@@ -7,7 +7,7 @@ template = "doc.html"
 # Contents
 
 - [Introduction](#introduction)
-- [Read and Subscribe](#read-and-subscribe)
+- [%warp](#warp) - Read and Subscribe.
    - [%sing](#sing) - Read a file or directory.
    - [%next](#next) - Subscribe for the next change to a file or directory.
    - [%mult](#mult) - Subscribe for the next change to a set of files and/or directories.
@@ -28,8 +28,8 @@ template = "doc.html"
    - [%crew](#crew) - Get permission groups.
    - [%crow](#crow) - Get group usage.
 - [Foreign Ships](#foreign-ships)
-   - [%warp](#warp) - Read a file on a foreign ship.
-   - [%merg](#merg) - Merge from a foreign `desk`.
+   - [%warp](#warp-remote) - Read a file on a foreign ship.
+   - [%merg](#merg-remote) - Merge from a foreign `desk`.
 
 # Introduction
 
@@ -37,13 +37,15 @@ This document details all the `task`s you're likely to use to interact with Clay
 
 The focus of this document is on interacting with Clay from userspace applications and threads, so it doesn't delve into the internal mechanics of Clay from a kernel development perspective.
 
-# Read and Subscribe
-
-Here we'll look at reading files and subscribing to changes. This is done by sending Clay a `%warp` `task`:
+# `%warp`
 
 ```hoon
 [%warp wer=ship rif=riff]  ::  internal file req
 ```
+
+A `%warp` `task` is for reading a subscribing to files and directories.
+
+### Accepts
 
 The `wer` field is the target ship. The `(unit rave)` of the [riff](@/docs/arvo/clay/data-types.md#riff-clay-request-desist) is null to cancel an existing subscription, otherwise the [rave](@/docs/arvo/clay/data-types.md#rave-clay-general-subscription-request) is tagged with one of:
 
@@ -53,6 +55,8 @@ The `wer` field is the target ship. The `(unit rave)` of the [riff](@/docs/arvo/
 - `%many` - Track changes to a desk for the specified range of revisions.
 
 We'll look at each of these in more detail below.
+
+### Returns
 
 Clay responds to a `%mult` request with a `%wris` `gift`, and the rest with a `%writ` `gift`.
 
@@ -72,19 +76,23 @@ The `unit` of the [riot](@/docs/arvo/clay/data-types.md#riot-clay-response) will
 
 Now we'll look at each of the `rave` request types in turn.
 
-## %sing
+## `%sing`
 
 ```hoon
 [%sing =mood] 
 ```
 
-This is for reading a single file or directory immediately. The `care` of the [mood](@/docs/arvo/clay/data-types.md#mood-clay-single-subscription-request) will determine what you can read and what type of data will be returned. See the [care](@/docs/arvo/clay/data-types.md#care-clay-clay-submode) documentation and [scry](@/docs/arvo/clay/scry.md) documentation for details on the various `care`s.
+This `rave` is for reading a single file or directory immediately.
+
+The `care` of the [mood](@/docs/arvo/clay/data-types.md#mood-clay-single-subscription-request) will determine what you can read and what type of data will be returned. See the [care](@/docs/arvo/clay/data-types.md#care-clay-clay-submode) documentation and [scry](@/docs/arvo/clay/scry.md) documentation for details on the various `care`s.
 
 The [case](@/docs/arvo/clay/data-types.md#case-specifying-a-commit) specifies the `desk` revision and you can use whichever kind you prefer. The `path` will usually be a path to a file or directory like `/gen/hood/hi/hoon` but may be something else depending on the `care`.
 
+### Example
+
 [See here for an example of using %sing.](@/docs/arvo/clay/examples.md#sing)
 
-## %next
+## `%next`
 
 ```hoon
 [%next =mood]  ::  await next version
@@ -94,9 +102,11 @@ This subscribes to the next version of the specified file. See [here](@/docs/arv
 
 If you subscribe to the current `case` of the `desk`, Clay will not respond until the file changes. If you subscribe to a previous `case` of the `desk` and the file has changed in between then and now, it will immediately return the first change it comes across in that range. For example, if you're currently at `case` `100`, subscribe to case `50` and the file in question has been modified at both `60` and `80`, clay will immediately return the version of the file at `case` `60`.
 
+### Example
+
 [See here for an example of using %next.](@/docs/arvo/clay/examples.md#next)
 
-## %mult
+## `%mult`
 
 ```hoon
 [%mult =mool]  ::  next version of any
@@ -114,9 +124,11 @@ The `mool` specified in the request is this structure:
 
 You can use a different `care` for each of the files specified by the `path` if you like. Significantly, the `care` will determine whether Clay sends a response for a given change. For example, if you subscribe to an existing `/foo/txt` with a `%u` `care` and `/foo/txt` is modified but isn't deleted, Clay will *not* tell you. However, if you subscribe with an `%x` `care`, it *will* tell you.
 
+### Example
+
 [See here for an example of using %mult.](@/docs/arvo/clay/examples.md#mult)
 
-## %many
+## `%many`
 
 ```hoon
 [%many track=? =moat]  ::  track range
@@ -144,23 +156,29 @@ When you reach the end of the subscribed range of `case`s, Clay will send you a 
 [%writ p=~]
 ```
 
+### Example
+
 [See here for an example of using %many.](@/docs/arvo/clay/examples.md#many)
 
 ## Cancel Subscription
 
 To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in the `riff`. Clay will cancel the subscription based on the `wire`. The request is exactly the same regardless of which type of `rave` you subscribed with originally.
 
+### Example
+
 [See here for an example of cancelling a subscription.](@/docs/arvo/clay/examples.md#cancel-subscription)
 
 # Write and Modify
 
-## %info
-
-To write or modify a file, we send Clay a `%info` `task`:
+## `%info`
 
 ```hoon
 [%info des=desk dit=nori]  ::  internal edit
 ```
+
+To write or modify a file, we send Clay a `%info` `task`.
+
+### Accepts
 
 The `%|` tag in the [nori](@/docs/arvo/clay/data-types.md#nori-clay-repository-action) is not currently supported and will crash with a `%labelling-not-implemented` if used, so you can focus on the `%&` part. The [soba](@/docs/arvo/clay/data-types.md#soba-clay-delta) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](@/docs/arvo/clay/data-types.md#miso-clay-ankh-delta) is one of these types of requests:
 
@@ -169,7 +187,11 @@ The `%|` tag in the [nori](@/docs/arvo/clay/data-types.md#nori-clay-repository-a
 - `%dif` - This has not yet been implemented so will crash with a `%dif-not-implemented` error.
 - `%mut` - Change a file. At the time of writing this behaves identically to `%ins` so its use merely informs the reader.
 
+### Returns
+
 Clay does not give any response to an `%info` `task` so don't expect a `sign` back.
+
+### Example
 
 Here are examples of using each of these as well as making multiple changes in one request:
 
@@ -190,15 +212,21 @@ There are four Clay `task`s relevant to mounts:
 - [%ogre](#ogre) - Unmount something.
 - [%dirk](#dirk) - Commit changes.
 
-## %boat
-
-This type of `task` will request the list of existing mounts. It looks like:
+## `%boat`
 
 ```hoon
 [%boat ~]
 ```
 
-Pretty simple. The type it returns is a `%hill` `gift`, which looks like:
+A `%boat` `task` requests the list of existing mounts.
+
+### Accepts
+
+A `%boat` `task` does not take any arguments.
+
+### Returns
+
+The type it returns is a `%hill` `gift`, which looks like:
 
 ```hoon
 [%hill p=(list @tas)]
@@ -206,15 +234,19 @@ Pretty simple. The type it returns is a `%hill` `gift`, which looks like:
 
 ...where the `@tas` is the name of the mount point.
 
+### Example
+
 [See here for an example of using %boat.](@/docs/arvo/clay/examples.md#boat)
 
-## %mont
-
-This type of `task` mounts the specified `beam` to the specified `term` mount point. It looks like:
+## `%mont`
 
 ```hoon
 [%mont pot=term bem=beam]
 ```
+
+A `%mont` `task` mounts the specified `beam` to the specified `term` mount point.
+
+### Accepts
 
 A `beam:clay` is the following structure:
 
@@ -224,37 +256,57 @@ A `beam:clay` is the following structure:
 
 You can mount the whole desk with a `path` of `/`, and you can also mount subdirectories or even individual files. If you want to mount an individual file, you must exclude its `mark` from the path. For example, if you want to mount `/gen/hood/hi/hoon`, you'd specify `/gen/hood/hi`. It will automatically be given the correct file extension when mounted. If you include the `hoon` mark it will crash (and currently crash your ship).
 
+### Returns
+
+Clay does not return a `gift` in response to a `%mont` `%task`.
+
+### Example
+
 [See here for an example of using %mont.](@/docs/arvo/clay/examples.md#mont)
 
-## %ogre
-
-This type of `task` unmounts the specified mount. It's defined in `lull.hoon` as:
+## `%ogre`
 
 ```hoon
 [%ogre pot=$@(desk beam)]
 ```
 
-But in fact it will only unmount the target when specified as a `term` mount name. Passing it a `desk` will incidentally work if the mount is named the same as the `desk` but otherwise it won't work. Passing it a `beam:clay` will simply not work.
+A `%ogre` `task` unmounts the specified mount. 
+
+### Accepts
+
+It's defined in `lull.hoon` as taking `$@(desk beam)` but in fact it will only unmount the target when specified as a `term` mount name. Passing it a `desk` will incidentally work if the mount is named the same as the `desk` but otherwise it won't work. Passing it a `beam:clay` will simply not work.
+
+### Returns
+
+Clay does not return a `gift` in response to a `%ogre` `task`.
+
+### Example
 
 [See here for an example of using %ogre.](@/docs/arvo/clay/examples.md#ogre)
 
-## %dirk
-
-This type of `task` commits changes in the target mount. It's defined in `lull.hoon` as:
+## `%dirk`
 
 ```hoon
 [%dirk des=desk]
 ```
 
-... but like [%ogre](#ogre), it actually takes the name of a mount point rather than a `desk` as is specified.
+### Accepts
+
+A `%dirk` `task` commits changes in the target mount.
+
+It's defined in `lull.hoon` as taking a `desk` but like [%ogre](#ogre), it actually takes the name of a mount point rather than a `desk` as is specified.
+
+### Returns
+
+Clay does not return a `gift` in response to a `%dirk` `task`.
+
+### Example
 
 [See here for an example of using %dirk.](@/docs/arvo/clay/examples.md#dirk)
 
 # Merge Desks
 
-## %merg
-
-A `%merg` `task` will merge the specified source `desk` into the target local `desk`. It looks like:
+## `%merg`
 
 ```hoon
 $:  %merg                       ::  merge desks
@@ -264,9 +316,15 @@ $:  %merg                       ::  merge desks
 ==                              ::
 ```
 
+A `%merg` `task` will merge the specified source `desk` into the target local `desk`.
+
+### Accepts
+
 The `germ` specifies the merge strategy. You can refer to the [Strategies](@/docs/arvo/clay/using.md#strategies) section of the [Using Clay](@/docs/arvo/clay/using.md) document for details of each `germ`.
 
 If you're merging into a new `desk` you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
+
+### Returns
 
 Clay will respond to the request with a `%mere` `gift` which looks like:
 
@@ -286,6 +344,8 @@ If the merge failed, `p` will have a head of `%.n` and then a `[term tang]` wher
   ]
 ]
 ```
+
+### Example
 
 [See here for an example of using %merg.](@/docs/arvo/clay/examples.md#merg)
 
@@ -331,17 +391,17 @@ A `%perm` `task` is for setting permissions, and the other three are for managin
 
 We'll look at each of these in turn.
 
-## %perm
-
-This sets permissions for the target file or directory.
-
-Note this will replace existing permissions rather than add to them, so if you want to add a ship to an existing whitelist or whatever you'll have to first read the existing permissions, add the ship, then send the whole lot back.
-
-A `%perm` `task` looks like:
+## `%perm`
 
 ```hoon
 [%perm des=desk pax=path rit=rite]  ::  change permissions
 ```
+
+A `%perm` `task` sets permissions for the target file or directory.
+
+Note this will replace existing permissions rather than add to them, so if you want to add a ship to an existing whitelist or whatever you'll have to first read the existing permissions, add the ship, then send the whole lot back.
+
+### Accepts
 
 The `pax` path is the file or directory whose permissions you want to change, and the `rite` is this structure:
 
@@ -366,15 +426,23 @@ Where a `rule` is this structure:
 
 As the comment suggests, the `@ta` is the name of a `crew` (group).
 
+### Returns
+
+Clay does not return a `gift` in response to a `%perm` `task`.
+
+### Example
+
 [See here for an example of using %perm.](@/docs/arvo/clay/examples.md#perm)
 
-## %cred
-
-This simply creates a permission group. The task looks like this:
+## `%cred`
 
 ```hoon
 [%cred nom=@ta cew=crew]  ::  set permission group
 ```
+
+This simply creates a permission group.
+
+### Accepts
 
 The `nom` is a name for the group and the `crew` is just a `(set ship)`:
 
@@ -382,17 +450,28 @@ The `nom` is a name for the group and the `crew` is just a `(set ship)`:
 +$  crew  (set ship)  ::  permissions group
 ```
 
+### Returns
+
+Clay does not return a `gift` in response to a `%cred` `task`.
+
+### Example
+
 [See here for an example of using %cred.](@/docs/arvo/clay/examples.md#cred)
 
-## %crew
-
-This retrieves all permission groups. It looks like:
+## `%crew`
 
 ```hoon
 [%crew ~]  ::  permission groups
 ```
+This retrieves all permission groups.
 
-Clay wil return a sign containing a `%cruz` `gift`. It looks like:
+### Accepts
+
+A `%crew` `task` takes no arguments.
+
+### Returns
+
+Clay wil return a `%cruz` `gift`. It looks like:
 
 ```hoon
 [%cruz cez=(map @ta crew)]  ::  permission groups
@@ -400,15 +479,23 @@ Clay wil return a sign containing a `%cruz` `gift`. It looks like:
 
 The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 
+### Example
+
 [See here for an example of using %crew.](@/docs/arvo/clay/examples.md#crew)
 
-## %crow
-
-This is the last group `task`. It retrieves all files and directories in all `desk`s which have permissions set for the group in question. It will not return inherited permissions, only those explicitly set. It looks like:
+## `%crow`
 
 ```hoon
 [%crow nom=@ta]  ::  group usage
 ```
+
+A `%crow` `task` retrieves all files and directories in all `desk`s which have permissions set for the group in question. It will not return inherited permissions, only those explicitly set.
+
+### Accepts
+
+The `nom` is the name of a `crew`.
+
+### Returns
 
 The `gift` you get back is a `%croz` which looks like:
 
@@ -422,6 +509,8 @@ The `gift` you get back is a `%croz` which looks like:
 +$  regs  (map path rule)  ::  rules for paths
 ```
 
+### Example
+
 [See here for an example of using %crow.](@/docs/arvo/clay/examples.md#crow)
 
 # Foreign Ships
@@ -430,9 +519,9 @@ Here we'll looking at making Clay requests to a foreign ship.
 
 As it currently stands, it's not possible to write to a foreign `desk`. Additionally, remote scries are not implemented. That leaves requests to read files (`%warp`) and merge desks (`%merg`), which we'll look at next.
 
-## %warp
+## `%warp` - Remote
 
-To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](#read-and-subscribe) section.
+To read files on a foreign `desk`, you just send Clay a `%warp` `task` (as you would for a local read) and specify the target ship in the `wer` field. For details on making such requests, see the [Read and Subscribe](#warp) section.
 
 Clay only allows a subset of `care`s to be used remotely. They are:
 
@@ -449,14 +538,18 @@ The foreign ship will respond only if correct permissions have been set. See the
 
 Note that if you're reading a whole `desk` or directory, all subfolders and files must also permit reading. If even a single file does not permit you reading it, the foreign ship will not respond to the request.
 
+### Example
+
 [See here for examples of requests to foreign ships.](@/docs/arvo/clay/examples.md#foreign-ships)
 
-## %merg
+## `%merg` - Remote
 
 To merge a foreign `desk` into a local one, you just send Clay a `%merg` `task` (as you would for a local merge) and specify the foreign ship in the `her` field. For details on making such requests, see the [Merge Desks](#merge-desks) section.
 
 The foreign ship will respond only if correct permissions have been set. See the [Permissions](#permissions) section for details. By default, a ship's `%kids` desk is set to be publicly readable, so unless permissions have been manually modified, you should be able to merge from any `%kids` `desk`.
 
 Note that all subfolders and individual files within the `desk` must permit your reading in order for the merge to succeed. If even one file does not permit you reading it, the remote ship will not respond to the request at all.
+
+### Example
 
 [See here for examples of requests to foreign ships.](@/docs/arvo/clay/examples.md#foreign-ships)

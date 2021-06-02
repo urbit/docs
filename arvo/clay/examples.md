@@ -7,13 +7,13 @@ template = "doc.html"
 # Contents
 
 - [Introduction](#introduction)
-- [Read and Subscribe](#read-and-subscribe)
+- [%warp](#warp) - Read and Subscribe.
    - [%sing](#sing) - Read a file or directory.
    - [%next](#next) - Subscribe for the next change to a file or directory.
    - [%mult](#mult) - Subscribe for the next change to a set of files and/or directories.
    - [%many](#many) - Track changes to a `desk` for the specified range of revisions.
    - [Cancel Subscription](#cancel-subscription)
-- [Write and Modify](#write-and-modify)
+- [%info](#info) - Write and Modify.
    - [%ins](#ins) - Add a file.
    - [%del](#del) - Delete a file.
    - [%mut](#mut) - Change a file.
@@ -31,8 +31,8 @@ template = "doc.html"
    - [%crew](#crew) - Get permission groups.
    - [%crow](#crow) - Get group usage.
 - [Foreign Ships](#foreign-ships)
-   - [%warp](#warp) - Read a file on a foreign ship.
-   - [%merg](#merg) - Merge from a foreign `desk`.
+   - [%warp](#warp-remote) - Read a file on a foreign ship.
+   - [%merg](#merg-remote) - Merge from a foreign `desk`.
 
 # Introduction
 
@@ -61,11 +61,11 @@ Most examples will either use `|pass` to just send a `task` or the following thr
 (pure:m !>(~))
 ```
 
-# Read and Subscribe
+# `%warp`
 
-See the [Read and Subscribe](@/docs/arvo/clay/tasks.md#read-and-subscribe) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
+See the [Read and Subscribe](@/docs/arvo/clay/tasks.md#warp) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
 
-## %sing
+## `%sing`
 
 Here we'll look at reading files by passing Clay a `%warp` `task` with a `%sing` `rave` and receiving a `%writ` `gift` containing the data in response.
 
@@ -116,7 +116,7 @@ Here's a breakdown of the `task` we sent:
 
 ![%sing diagram](https://pub.m.tinnus-napbus.xyz/sing.png "%sing diagram")
 
-## %next
+## `%next`
 
 Here we'll look at subscribing to the next version of a file by passing Clay a `%warp` `task` with a `%next` `rave` and receiving a `%writ` `gift` when the file changes.
 
@@ -152,7 +152,7 @@ Here's a breakdown of the task we sent:
 
 ![%next diagram](https://pub.m.tinnus-napbus.xyz/next.png "%next diagram")
 
-## %mult
+## `%mult`
 
 Here we'll look at subscribing to the next version of multiple files by passing Clay a `%warp` `task` with a `%mult` `rave` and receiving a `%wris` `gift` when any of the files change.
 
@@ -211,7 +211,7 @@ Here's a breakdown of the `task` we sent:
 
 ![subscribe mult diagram](https://pub.m.tinnus-napbus.xyz/sub-mult.png "subscribe mult diagram")
 
-## %many
+## `%many`
 
 Here we'll look at subscribing to a range of changes to a `desk` by passing Clay a `%warp` `task` with a `%many` `rave` and receiving `%writ` `gift`s when changes occur.
 
@@ -349,11 +349,11 @@ Here's a breakdown of the `task` we sent:
 
 ![cancel subscription diagram](https://pub.m.tinnus-napbus.xyz/stop-sub.png "cancel subscription diagram")
 
-# Write and Modify
+# `%info`
 
 See the [Write and Modify](@/docs/arvo/clay/tasks.md#write-and-modify) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
 
-## %ins
+## `%ins`
 
 Here we'll look at adding a file by sending Clay a `%info` `task` containing a `%ins` `miso`.
 
@@ -372,7 +372,7 @@ Here's a breakdown of the `task` we sent:
 
 ![%ins diagram](https://pub.m.tinnus-napbus.xyz/ins.png) 
 
-## %del
+## `%del`
 
 Here we'll look at deleting a file by sending Clay a `%info` `task` containing a `%del` `miso`.
 
@@ -389,7 +389,7 @@ Here's a breakdown of the `task` we sent:
 
 ![%del diagram](https://pub.m.tinnus-napbus.xyz/del.png) 
 
-## %mut
+## `%mut`
 
 Identical to the [%ins](#ins) example, just replace `%ins` with `%mut`.
 
@@ -438,7 +438,7 @@ Save to `ted/multi-change.hoon`, `|commit %home`, and run:
 
 See the [Manage Mounts](@/docs/arvo/clay/tasks.md#manage-mounts) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
 
-## %boat
+## `%boat`
 
 Here we'll look at requesting the list of existing mount points on a ship by sending Clay a `%boat` `task` and receiving a `%hill` `gift`.
 
@@ -449,7 +449,7 @@ Using the `send-task-take-gift.hoon` thread, let's make such a request:
 [%hill p=~[%home]]
 ```
 
-## %mont
+## `%mont`
 
 Here we'll look at mounting `desk`s, directories and files to unix by sending Clay a `%mont` `task`.
 
@@ -488,7 +488,7 @@ Let's try mounting a subdirectory and a single folder:
 
 If you look in your pier you'll now see a `gen` folder with the contents of `/gen` and a `hi.hoon` file by itself. Notice how the file extension has been automatically added.
 
-## %ogre
+## `%ogre`
 
 Here we'll look at unmounting `desk`s, directories and files by sending Clay a `%ogre` `task`.
 
@@ -519,7 +519,7 @@ If we specify a non-existent mount point it will fail with an error printed to t
 
 If we give it an unmounted `beam` it will not print an error but still won't work.
 
-## %dirk
+## `%dirk`
 
 Here we'll look at committing changed files by sending Clay a `%dirk` `task`.
 
@@ -540,7 +540,7 @@ If you have the same `desk` mounted to multiple points, a committed change in on
 
 See the [Merge Desks](@/docs/arvo/clay/tasks.md#merge-desks) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
 
-## %merg
+## `%merg`
 
 Here we'll look at merging `desk`s by sending Clay a `%merg` `task` and receiving a `%mere` `gift` in response.
 
@@ -615,7 +615,7 @@ You can also specify it by revision number or label.
 
 See the [Permissions](@/docs/arvo/clay/tasks.md#permissions) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
 
-## %perm
+## `%perm`
 
 Here we'll look at setting permissions by sending Clay a `%perm` `task`.
 
@@ -695,7 +695,7 @@ Here's a breakdown of a `%perm` task:
 
 ![perm diagram](https://pub.m.tinnus-napbus.xyz/perm-diagram.png) 
 
-## %cred
+## `%cred`
 
 Here we'll look at creating a permission group by sending Clay a `%cred` `task`.
 
@@ -707,7 +707,7 @@ Let's create a group called `'foo'` with a few ships:
 
 We'll check it with the next kind of `task`: [%crew](#crew).
 
-## %crew
+## `%crew`
 
 Here we'll look at retrieving permission groups by sending Clay a `%crew` `task` and receiving a `%cruz` `gift` in response.
 
@@ -718,7 +718,7 @@ Let's check, using the `send-task-take-gift.hoon` thread, for the permission gro
 [%cruz cez={[p=~.foo q={~nec ~bud ~wes ~zod ~sev}]}]
 ```
 
-## %crow
+## `%crow`
 
 Here we'll look at retrieving a list of all files and directories in all `desk`s which have permissions set for a group by sending Clay a `%crow` `task` and receiving a `%croz` `gift` in response.
 
@@ -754,7 +754,7 @@ Now we'll use the `send-task-take-gift.hoon` thread to try `%crow`:
 
 See the [Foreign Ships](@/docs/arvo/clay/tasks.md#foreign-ships) section of the [API Reference](@/docs/arvo/clay/tasks.md) document for general details.
 
-## %warp
+## `%warp` - Remote
 
 Here we'll look at reading files on a foreign ship by sending Clay a `%warp` `task` with a foreign ship in the `wer` field and receiving a `%writ` `gift` in response.
 
@@ -817,7 +817,7 @@ call: failed
 /sys/vane/clay/hoon:<[1.365 48].[1.365 50]>
 ```
 
-## %merg
+## `%merg` - Remote
 
 To merge a foreign `desk` into a local one, you just send Clay a `%merg` `task` (as you would for a local merge) and specify the foreign ship in the `her` field. For an example, see the [%merg](#merg) section.
 
