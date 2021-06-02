@@ -11,3 +11,13 @@ members of the [Galactic Senate](../senate), through an [Azimuth](../azimuth)
 smart contract. Galaxies collectively make decisions about the governance of
 Azimuth and the [Arvo](../arvo) network by voting. There are two types of proposals that can be voted on:
 an [upgrade proposal](../upgrade) and a [document proposal](../docvote).
+
+A proposal is always a Yes/No vote. The vote concludes at the end of 30 days,
+or whenever an absolute majority is reached, whichever comes first. At the end
+of 30 days the option that has received the most votes is chosen.
+
+In the case of absolute majority, the vote transaction that achieves that
+majority triggers the upgrade or document ratification. In case time runs out,
+an explicit "update vote status/check result" transaction will need to be made.
+This can be performed by anyone at any time. Any effects from doing so will only
+happen if there was a majority vote in favor.
