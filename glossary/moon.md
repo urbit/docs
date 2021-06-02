@@ -12,12 +12,13 @@ the ship that issued it. By this we mean that the networking keys for the moon
 are controlled by the parent, and may be altered or revoked at any time by that parent.
 
 Moons may be utilized for many purposes, including but not limited to:
- - identities for the issuing ship's connected devices, such as phones, desktops, smart TVs, and digital thermostats
  - vanity identities
  - backup identities incase the parent identity cannot be accessed
  - identities for children
  - testing software
  - bots
+Looking towards the future, we expect moons to also be utilized as identities
+for devices, such as such as phones, desktops, smart TVs, and digital thermostats
 
 Unlike planets, stars, and galaxies, moons have no presence on
 [Azimuth](../azimuth). Moons are representable with 64 bits and have long names
