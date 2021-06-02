@@ -5,7 +5,7 @@ template = "doc.html"
 +++
 
 This section will be reference documentation for the data types used by our
-filesystem. It is up to date as of April 2021.
+filesystem.
 
 As a general guide, we recommend reading and attempting to understand the data
 structures used in any Hoon code before you try to read the code itself.
