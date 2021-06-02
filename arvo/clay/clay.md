@@ -52,14 +52,14 @@ reading and subscribing, syncing to Unix, and merging. (Up to date as of April 2
 
 Explanations of the many data types found throughout Clay. (Up to date as of April 2021)
 
-[Local Reads and Writes](@/docs/arvo/clay/local-reads.md)
+[Scry Reference](@/docs/arvo/clay/scry.md)
 
-How local reads and writes work.
+Reference for Clay's various scry endpoints.
 
-[Local Subscriptions](@/docs/arvo/clay/local-sub.md)
+[API Reference](@/docs/arvo/clay/tasks.md)
 
-How local subscriptions work.
+Details of the various `task`s you can use to interact with Clay.
 
-[Foreign Requests](@/docs/arvo/clay/foreign.md)
+[Examples](@/docs/arvo/clay/examples.md)
 
-How foreign reads and subscriptions work.
+Example usage of the various Clay `task`s.
