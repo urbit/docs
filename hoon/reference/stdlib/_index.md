@@ -118,7 +118,6 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2q/#date' title="Point in time"><code>++date</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3c/#day-yo' title="Seconds in day"><code>++day:yo</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1a/#dec' title="Decrement"><code>++dec</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#def-by' title="Difference (map)"><code>+-def:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
@@ -980,7 +979,6 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#any-by' title="Logical OR (map and wet gate)"><code>+-any:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#apt-by' title="Check correctness (map)"><code>+-apt:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#bif-by' title="Bifurcate map"><code>+-bif:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#def-by' title="Difference (map)"><code>+-def:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dig-by' title="Address of key (map)"><code>+-dig:by</code></a>
