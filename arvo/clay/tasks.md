@@ -39,13 +39,13 @@ The focus of this document is on interacting with Clay from userspace applicatio
 
 # `%warp`
 
-```hoon
-[%warp wer=ship rif=riff]  ::  internal file req
-```
-
 A `%warp` `task` is for reading a subscribing to files and directories.
 
 ### Accepts
+
+```hoon
+[wer=ship rif=riff]
+```
 
 The `wer` field is the target ship. The `(unit rave)` of the [riff](@/docs/arvo/clay/data-types.md#riff-clay-request-desist) is null to cancel an existing subscription, otherwise the [rave](@/docs/arvo/clay/data-types.md#rave-clay-general-subscription-request) is tagged with one of:
 
@@ -172,13 +172,13 @@ To cancel a subscription, you just send a `%warp` with a null `(unit rave)` in t
 
 ## `%info`
 
-```hoon
-[%info des=desk dit=nori]  ::  internal edit
-```
-
 To write or modify a file, we send Clay a `%info` `task`.
 
 ### Accepts
+
+```hoon
+[des=desk dit=nori]
+```
 
 The `%|` tag in the [nori](@/docs/arvo/clay/data-types.md#nori-clay-repository-action) is not currently supported and will crash with a `%labelling-not-implemented` if used, so you can focus on the `%&` part. The [soba](@/docs/arvo/clay/data-types.md#soba-clay-delta) in the `nori` is just a list of changes so you can make more than one change in one request. Its `path` is just the path to a file like `/gen/hood/hi/hoon` and the [miso](@/docs/arvo/clay/data-types.md#miso-clay-ankh-delta) is one of these types of requests:
 
@@ -214,13 +214,13 @@ There are four Clay `task`s relevant to mounts:
 
 ## `%boat`
 
-```hoon
-[%boat ~]
-```
-
 A `%boat` `task` requests the list of existing mounts.
 
 ### Accepts
+
+```hoon
+~
+```
 
 A `%boat` `task` does not take any arguments.
 
@@ -240,13 +240,14 @@ The type it returns is a `%hill` `gift`, which looks like:
 
 ## `%mont`
 
-```hoon
-[%mont pot=term bem=beam]
-```
 
 A `%mont` `task` mounts the specified `beam` to the specified `term` mount point.
 
 ### Accepts
+
+```hoon
+[pot=term bem=beam]
+```
 
 A `beam:clay` is the following structure:
 
@@ -266,13 +267,13 @@ Clay does not return a `gift` in response to a `%mont` `%task`.
 
 ## `%ogre`
 
-```hoon
-[%ogre pot=$@(desk beam)]
-```
-
 A `%ogre` `task` unmounts the specified mount. 
 
 ### Accepts
+
+```hoon
+[pot=$@(desk beam)]
+```
 
 It's defined in `lull.hoon` as taking `$@(desk beam)` but in fact it will only unmount the target when specified as a `term` mount name. Passing it a `desk` will incidentally work if the mount is named the same as the `desk` but otherwise it won't work. Passing it a `beam:clay` will simply not work.
 
@@ -286,13 +287,13 @@ Clay does not return a `gift` in response to a `%ogre` `task`.
 
 ## `%dirk`
 
-```hoon
-[%dirk des=desk]
-```
+A `%dirk` `task` commits changes in the target mount.
 
 ### Accepts
 
-A `%dirk` `task` commits changes in the target mount.
+```hoon
+des=desk
+```
 
 It's defined in `lull.hoon` as taking a `desk` but like [%ogre](#ogre), it actually takes the name of a mount point rather than a `desk` as is specified.
 
@@ -308,18 +309,16 @@ Clay does not return a `gift` in response to a `%dirk` `task`.
 
 ## `%merg`
 
-```hoon
-$:  %merg                       ::  merge desks
-    des=desk                    ::  target
-    her=@p  dem=desk  cas=case  ::  source
-    how=germ                    ::  method
-==                              ::
-```
-
 A `%merg` `task` will merge the specified source `desk` into the target local `desk`.
 
 ### Accepts
 
+```hoon
+$:  des=desk                    ::  target
+    her=@p  dem=desk  cas=case  ::  source
+    how=germ                    ::  method
+==
+```
 The `germ` specifies the merge strategy. You can refer to the [Strategies](@/docs/arvo/clay/using.md#strategies) section of the [Using Clay](@/docs/arvo/clay/using.md) document for details of each `germ`.
 
 If you're merging into a new `desk` you must use `%init`, all other strategies will fail. If the desk already exists, you cannot use `%init`. Otherwise, you're free to use whichever you'd like.
@@ -393,15 +392,15 @@ We'll look at each of these in turn.
 
 ## `%perm`
 
-```hoon
-[%perm des=desk pax=path rit=rite]  ::  change permissions
-```
-
 A `%perm` `task` sets permissions for the target file or directory.
 
 Note this will replace existing permissions rather than add to them, so if you want to add a ship to an existing whitelist or whatever you'll have to first read the existing permissions, add the ship, then send the whole lot back.
 
 ### Accepts
+
+```hoon
+[des=desk pax=path rit=rite]
+```
 
 The `pax` path is the file or directory whose permissions you want to change, and the `rite` is this structure:
 
@@ -436,13 +435,13 @@ Clay does not return a `gift` in response to a `%perm` `task`.
 
 ## `%cred`
 
-```hoon
-[%cred nom=@ta cew=crew]  ::  set permission group
-```
-
 This simply creates a permission group.
 
 ### Accepts
+
+```hoon
+[nom=@ta cew=crew]
+```
 
 The `nom` is a name for the group and the `crew` is just a `(set ship)`:
 
@@ -460,12 +459,13 @@ Clay does not return a `gift` in response to a `%cred` `task`.
 
 ## `%crew`
 
-```hoon
-[%crew ~]  ::  permission groups
-```
 This retrieves all permission groups.
 
 ### Accepts
+
+```hoon
+~
+```
 
 A `%crew` `task` takes no arguments.
 
@@ -485,13 +485,13 @@ The `cez` is just a map from group name to `crew` which is just a `(set ship)`.
 
 ## `%crow`
 
-```hoon
-[%crow nom=@ta]  ::  group usage
-```
-
 A `%crow` `task` retrieves all files and directories in all `desk`s which have permissions set for the group in question. It will not return inherited permissions, only those explicitly set.
 
 ### Accepts
+
+```hoon
+nom=@ta
+```
 
 The `nom` is the name of a `crew`.
 
