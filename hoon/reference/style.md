@@ -108,7 +108,7 @@ With four (the maximum rune fanout):
 ```
 
 It is sometimes acceptable to not backstep -- especially in tuple
-runes: `:-,` `:_`, `:+` and `+^`. But you should have a specific reason:
+runes: `:-`, `:_`, `:+` and `+^`. But you should have a specific reason:
 for example: emphasizing symmetry in a tuple.
 
 #### Variable sequences
