@@ -116,8 +116,8 @@ which allows software updates to be implemented across the network without
 needing to worry whether it won't work on someone's ship, since Arvo is an
 [interpreter](#solid-state-intrepeter) that can accept source code to
 update itself instead of requiring a pre-compiled binary. This essential
-property is why Urbit is able to act as a personal server while only having the
-the user experience is akin to that of a web browser.
+property is why Urbit is able to act as a personal server while having
+a user experience as accessible as a browser.
 
 ### Event log
 
