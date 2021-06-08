@@ -48,8 +48,7 @@ communicate over HTTP.
 To get started quickly with the language of your choice, see the list 
 libraries that provide HTTP interfaces to Urbit [here](https://github.com/urbit/awesome-urbit#http-apis-airlock).
 
-To learn more about how to work with Urbit's HTTP interface, follow [this
-guide](@/docs/arvo/eyre/using-eyre.md).
+To learn more about how to work with Urbit's HTTP interface, have a look at [this document](@/docs/arvo/eyre/external-api-ref.md).
 
 Alternatively, command-line interface (CLI) applications can be built using a
 library called `shoe`, which you can learn more about

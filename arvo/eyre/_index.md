@@ -8,9 +8,24 @@ insert_anchor_links = "right"
 
 ## [Overview](@/docs/arvo/eyre/eyre.md)
 
-A high-level overview of `eyre`, Urbit's HTTP server vane.
+An overview of Eyre and its capabilities.
 
-## [Using Eyre](@/docs/arvo/eyre/using-eyre.md)
+## [External API Reference](@/docs/arvo/eyre/external-api-ref.md)
 
-How to use Urbit's HTTP API. 
+Details of Eyre's external API including the channel system's JSON API.
 
+## [Internal API Reference](@/docs/arvo/eyre/tasks.md)
+
+The tasks Eyre takes and the gifts it returns.
+
+## [Scry Reference](@/docs/arvo/eyre/scry.md)
+
+The scry endpoints of Eyre.
+
+## [Data Types](@/docs/arvo/eyre/data-types.md)
+
+Reference documentation of the various data types used by Eyre.
+
+## [Examples](@/docs/arvo/eyre/examples.md)
+
+Practical examples of the different ways of using Eyre.
