@@ -128,31 +128,46 @@ There is a 32-bit header followed by a variable width body.
 
 The 32-bit header is given by the following data, presented in order:
 
- - 3 bits: Ames `protocol-version`,
- - 20 bits: a checksum as a truncated insecure hash of the body, done with
-   [`+mug`](@/docs/hoon/reference/stdlib/2e.md#mug),
- - 2 bits: the bit width of the sender address encoded as a 2-bit enum,
- - 2 bits: the bit width of the receiver address encoded as a 2-bit enum,
- - 1 bit: whether the packet is encrypted or not,
- - 4 bits: unused.
+ - 3 bits: reserved
+ - 1 bit: is this Ames? (i.e. not using a different protocol, such as the
+   planned remote scry protocol)
+ - 3 bits: Ames protocol version (currently 0)
+ - 2 bits: sender address size
+ - 2 bits: receiver address size
+ - 20 bits: checksum (truncated insecure hash of the body, done with
+   [`+mug`](@/docs/hoon/reference/stdlib/2e.md#mug)
+ - 1 bit: is this relayed? (if set, `origin` will be present in the body)
 
  Every packet sent between ships is encrypted except for self-signed attestation packets from 128-bit comets.
 
 #### Body
 
-The body is of variable length and consists of three parts in this order:
+The body is of variable length and consists of the following parts in this
+order:
 
- - The `@p` of the sending ship,
- - The `@p` of the receiving ship,
- - The payload, which is the [`+jam`](@/docs/hoon/reference/stdlib/2p.md#jam) (i.e. serialization) of the noun `[origin content]`.
+ - 4 bits: sender life (mod 16)
+ - 4 bits: receiver life (mod 16)
+ - variable: sender address
+ - variable: receiver address
+ - 48 bits: (optional) 48-bit `origin`
+ - 128 bits: `SIV`
+ - 16 bits: ciphertext size
+ - variable: ciphertext
 
  `origin` is the IP and port of the original sender if the packet was proxied
- through a relay and null otherwise. `content` is a noun that is either an encrypted ack or an
- encrypted message fragment, unless it is a comet attestation packet in which
- case it is unencrypted. `content` is always 1kB in size or less.
-
- The sender and receiver live outside of the jammed data section to simplify
- packet filtering for the interpreter.
+ through a relay.
+ 
+ `SIV` is an "associated data vector" as defined in AES-256 SIV, the encryption
+ algorithm utilized to encrypt Ames packets (see the page on [Ames
+ cryptography](@/docs/arvo/ames/cryptography.md)). It is formed from the
+ following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see
+ [Life and Rift](@/docs/azimuth/life-and-rift.md) for information on what `life`
+ is). As this data is in Azimuth, it is not explicitly sent over the wire. Thus
+ the mod 16 sender and receiver life in the first 8 bits are only for quick
+ filtering of honest packets sent to or from a stale life.
+ 
+ The ciphertext is formed by `+jam`ming a `$shut-packet` and then encrypting
+ using [`+en:sivc:aes:crypto`](@/docs/arvo/reference/cryptography.md#en).
 
 ### Packeting
 
@@ -319,10 +334,10 @@ with `%boon`s and create congestion there. So naxplanations have their own bone,
 and so do acks to packets that make up a naxplanation, as well as the
 message-level naxplanation ack.
 
-### Packet relaying
+### Packet relaying and peer discovery
 
-Here we describes how the Ames network relays packets. We ignore all details
-about UDP, which occurs at a lower layer than Ames.
+Here we describes how the Ames network relays packets and does peer discovery.
+We ignore all details about UDP, which occurs at a lower layer than Ames.
 
 When a ship first contacts another ship, it may only know its `@p`, but an IP
 address and port are necessary for peer-to-peer communication to occur.
@@ -330,23 +345,34 @@ Thus the initial correspondence between two ships, or additional correspondence
 following a change in IP or port of one of the parties, will need to be relayed
 by an intermediary that knows the IP and port of the receiving ship.
 
-For now packet relaying is handled entirely by galaxies. Every galaxy is
+For now, peer discovery is handled entirely by galaxies. Every galaxy is
 responsible for knowing the IP and port of every planet underneath it. In the
-future, galaxies will only need to know the star sponsoring a planet, and stars
-will be responsible for the final step of the relay.
+future, galaxies will only need to know the IP and port of the star sponsoring a
+planet, and stars will be responsible knowing the IP and port of their sponsored planets.
+
+Galaxies are also utilized for packet relaying in the case where two ships
+cannot communicate directly with one another, as is often the case when one or
+both are behind a
+[NAT](https://en.wikipedia.org/wiki/Network_address_translation) or certain
+firewalls. Again, stars will someday assist with this process as well in a
+similar fashion to peer discovery.
+
+In the case of moons, their parent is responsible for packet relaying and peer
+discovery, analagous to the role that galaxies currently play for stars and planets.
 
 The following diagram summarizes the packet creation and forwarding process.
 
 <div style="text-align:center">
-<img src="https://media.urbit.org/docs/arvo/datagram-long.png">
+<img src="https://media.urbit.org/docs/arvo/datagram-updated-2021-06-09.png">
 </div>
 
 We elaborate on the above diagram.
 
 A typical relay will look something like this: `~bacbel-tagfeb` wishes to
 contact `~worwel-sipnum` but does not know the IP address and port at which
-`~worwel-sipnum` resides. Both planets live under `~zod`, which knows both of
-their IP and port numbers by virtue of being the galaxy that both live under.
+`~worwel-sipnum` resides. Both planets are sponsored by a star sponsored by
+`~zod`, which knows both of their IP addresses and port numbers by virtue of
+being the galaxy that both live under.
 
 To prepare, `~bacbel-tagfeb` forms a Diffie-Hellman symmetric key with their own
 private key and the public key of `~worwel-sipnum`, obtained via Jael. Then
@@ -355,23 +381,28 @@ private key and the public key of `~worwel-sipnum`, obtained via Jael. Then
 The packet has the following format:
  - The standard Ames header described in [header](#header), where the checksum
    is the `+mug` of the body, and the sender and receiver ship types are `01`,
-   denoting that the sender and receiver are planets. The remainder of the
-   packet is the body.
- - The body of this packet will be the `@p` of the
-sender `~bacbel-tagfeb`, followed by the `@p` of the receiver `~worwel-sipnum`,
-followed by the payload.
- - The payload of this packet will be the `+jam` of `[origin content]`. `origin`
-for this initial packet will be `~`, which implies that the packet is
-originating from the sender. `content` is the `+jam` of the message, encrypted
-using the Diffie-Hellman symmetric key that was previously computed.
+   denoting that the sender and receiver are planets. The "is this relayed?" bit
+   is set to 0 since this is the first hop on the packet route.
+ - The body of this packet will be the life of `~bacbel-tagfeg` mod 16, followed
+   by the life of `~worwel-sipnum` mod 16, followed by `~bacbel-tagfeg`,
+   followed by the receiver `~worwel-sipnum`, followed by the origin `~`
+   (denoting that the ship sending the packet is the origin). After this comes
+   the payload.
+ - The payload of this packet will be the `+jam` of the `content`, which is an
+ encrypted fragment of the message `%watch /path/to/recipes`.
 
 `~zod` receives the packet and reads the body. It sees that it is not the
 intended recipient of the packet, and so gets ready to forward it to
-`~worwel-sipnum`. First, it [`+cue`s](@/docs/hoon/reference/stdlib/2p.md#cue)
-(deserializes) the payload and changes the `origin` to the IP and port of
-`~bacbel-tagfeb`. Then it `+jam`s `[origin content]` to form a new payload, and
-`+mug`s that payload to get a new checksum. It replaces the old payload and
-checksum with the new, and then sends the packet along to `~worwel-sipnum`.
+`~worwel-sipnum`. First, it replaces the origin field with the IP and port of
+`~bacbel-tagfeb`, then computes the `+mug` of the body and replaces the checksum
+with the new mug. Since the packet is being relayed, `~zod` flips the "is it
+relayed?" bit to 1. `~zod` then forwards the packet to `~worwel-sipnum`.
+
+In order to decrypt the packet, `~worwel-sipnum` will need to include the
+associated data vector utilized by SIV, which consists of `~[sender=@p
+receiver=@p sender-life=@ receiver-life=@]`, and insert it into the correct spot
+in the body of the packet before decrypting and `+cue`ing (deserializing) to
+obtain the payload which includes the message fragment.
 
 Once `~worwel-sipnum` processes the packet, it will know the IP and port of
 `~bacbel-tagfeb` since `~zod` included it when it forwarded the packet. Thus
@@ -381,6 +412,18 @@ NAT and/or firewall prevents a direct peer-to-peer connection, in which case
 peer-to-peer connection, communication between the two ships will now be direct
 until one of them changes their IP address, port, or networking keys.
 
+In this scenario, of course, the message is so short that a single packet would
+be sufficient to send the message, so the `+cue` of the payload would contain
+the complete message `%watch /path/to/recipes`. At this point, `~worwel-sipnum`
+would ack (or nack) the packet, which would perform double duty as a message
+ack. Assuming that a direct peer-to-peer connection is possible, the ack would
+be sent directly to `~bacbel-tagfeb` using the IP and port found in the origin
+field of the received packet rather than being relayed via `~zod`.
+
+But if the message were not short enough to be contained in a single packet,
+each packet would need to be decrypted and `+cue`d to obtain the message
+fragments that are then put together and `+cue`d again to obtain the complete
+message.
 
 ## The Serf and the King
 
