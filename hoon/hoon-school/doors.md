@@ -285,8 +285,7 @@ Let's try it on these expressions:
 ```
 
 You don't need to know any Nock to see that these two expressions are identical.
-Thus we have witnessed, at the bedrock level, that doors really are just cores
-with samples.
+Thus we have witnessed that doors really are just cores with samples.
 
 #### Back to the Example
 
