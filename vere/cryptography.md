@@ -12,7 +12,10 @@ the primitives written in C.
 
 All jets related to encryption may be found in `pkg/urbit/jets/e/`.
 
-In this section we review what specific implementations are utilized.
+In this section we review what specific implementations are utilized. At the
+moment, only libraries directly related to Ames are documented here, though we
+note that there are jets for other cryptographic functions such as the [SHA
+Hash Family](@/docs/reference/stdlib/3d.md) as well.
 
 ### Ed25519 {#ed}
 
