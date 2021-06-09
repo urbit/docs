@@ -3,13 +3,10 @@ title = "Concepts"
 weight = 100
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+insert_anchor_links = "right"
 +++
 
 Other concepts related to the way Arvo works.
-
-## [Input and Output](@/docs/arvo/concepts/io.md)
-
-Styles if IO you'll encounter in Urbit.
 
 ## [Subscriptions](@/docs/arvo/concepts/subscriptions.md)
 

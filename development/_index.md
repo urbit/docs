@@ -3,6 +3,7 @@ title = "Development"
 weight = 100
 sort_by = "weight"
 template = "sections/docs/chapters.html"
+insert_anchor_links = "right"
 +++
 
 This section covers the development process in general.

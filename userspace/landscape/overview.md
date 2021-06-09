@@ -37,7 +37,7 @@ Landscape is composed of two primary parts: its backend, which runs as a suite o
 ### Backend
 
 The Landscape backend is implemented as a collection of long-running
-microservices known as [Gall agents](@/docs/arvo/gall/gall.md). They can be divided into the following,
+microservices known as [Gall agents](@/docs/userspace/gall/gall.md). They can be divided into the following,
 though this is a simplification:
 
 - **Graph**: handles storing messages / posts in a non-relational database
@@ -152,7 +152,7 @@ Pinterest equivalent, a more private version of Facebook, a decentralized
 Reddit, or an even more distributed version of Mastodon. You can read more about
 graph-store by [viewing the
 source](https://github.com/urbit/urbit/blob/ac096d85ae847fcfe8786b51039c92c69abc006e/pkg/arvo/app/graph-store.hoon)
-or reading our [API Reference](@/docs/landscape/reference/graph-store.md) documentation.
+or reading our [API Reference](@/docs/userspace/landscape/reference/graph-store.md) documentation.
 
 The `%graph-store` may be accessed from foreign ships through the use of the
 `%graph-pull-hook` and `%graph-push-hook`.

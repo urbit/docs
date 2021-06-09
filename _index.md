@@ -51,7 +51,6 @@ between Urbit and Unix.
 
 The workings of Azimuth, the decentralized ID system utilized by Urbit.
 
-### [Landscape (Web Client)](@/docs/landscape/_index.md)
+### [Userspace](@/docs/userspace/_index.md)
 
-Developer guides to Landscape, the web client by which most users interact
-with their ship.
+Developer guides for Gall (the vane for controlling userspace apps), Landscape (the web client by which most users interact with their ship), and Threads (transient apps for IO).
