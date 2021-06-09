@@ -41,7 +41,7 @@ keys and optional secret encryption and authentication keys.
     |%
     ...
 ```
-`+crub` cores are typically created using one of the constructors in [`+nu:crub`](#nu).
+`+crub` cores (because they follow the `+acru` interface) are typically created using one of the constructors in [`+nu:crub`](#nu).
 
 ### `+seal:as`
 
