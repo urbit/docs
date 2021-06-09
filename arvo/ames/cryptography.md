@@ -42,7 +42,7 @@ message fragment is signed using the authentication key. It is encrypted using
 
 ## Diffie-Hellman key exchange {#key-exchange}
 
-For each foreign ship a given ship has met, `$ames-state` contains a
+For each foreign ship a given ship has communicated with, `$ames-state` contains a
 `$peer-state`, inside which the `$symmetric-key` (an atom which nests under
 `@uw`) is utilized for encrypting all Ames packets shared between the two ships.
 The `symmetric-key` is derived using [`+shar:ed:crypto`](@/docs/arvo/reference/cryptography.md#shar) found in `sys/zuse.hoon`,
@@ -122,7 +122,7 @@ This core is used for the standard asymmetric cryptographic operations: encrypti
 
 #### `+ex:acru`
 
-This core stores keys and their fingerprints. `+sec` is the secret key (which
+This core is used to extract keys and their fingerprints. `+sec` is the secret key (which
 may be empty), `+pub` is the public key associated to the secret key, `+pac` is
 the fingerprint associated to the secret key, and `+fig` is the fingerprint
 associated to the public key. We note that when the core contains both
@@ -143,4 +143,3 @@ only the public key.
 These arms are for symmetric encryption (`+en`) and decryption (`+de` and
 `+dy`). The difference between the decryption arms is that `+de` returns null
 and `+dy` crashes upon failure.
-
