@@ -109,8 +109,8 @@ Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
     --  ::acru                                          ::
 ```
 
-As the `+acru` core is merely an interface, the details on how it is utilized
-may vary according to the cryptosuite implemented in it. We summarize what each
+As the `+acru` core is merely an interface, the details on how it is implemented
+may vary according to the cryptosuite. We summarize what each
 core is utilized for here, but see
 [`crub:crypto`](@/docs/arvo/reference/cryptography.md#crub) for more details on
 how the specific cryptosuite utilized by Ames is implemented.
