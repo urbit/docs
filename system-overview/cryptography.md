@@ -99,8 +99,8 @@ of private networking keys and retrieval of public networking keys utilized by
 Ames. The Jael vane of planets, stars, and galaxies are responsible for
 distributing the public keys of their moons (ultimately via Ames).
 
-`zuse` is the Hoon standard library. It contains cryptographic functions which
-are utilized by Ames. All cryptographic primitives are
+`zuse` is part of the standard library. It contains cryptographic functions
+which are utilized by Ames. All cryptographic primitives are
 [jetted](@/docs/vere/jetting.md) in Vere with standard vetted implementations of
 cryptographic libraries.
 
