@@ -2,7 +2,6 @@
 title = "Cryptography"
 weight = 5
 template = "doc.html"
-aliases = ["/docs/learn/arvo/ames/"]
 +++
 
 Here we give a technical overview of how Ames implements cryptography.
@@ -19,16 +18,16 @@ this are comet [self-attestation packets](#comets), which are unencrypted.
 All packets are also [signed](#packets) using [Elliptic Curve Digital Signature
 Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm).
 
-The `$ames-state` includes a [`+acru:ames`](#crypto-core) core, an interface core
-into which one of the cryptosuites in `zuse` may be implemented. Some, but not
-all, of the cryptography-related tasks (encryption, signing, decrypting, and
-authenticating) are peformed utilizing the `+acru` core.
+The `$ames-state` includes a [`+acru:ames`](#crypto-core) core, an interface
+core into which one of the cryptosuites in `zuse` may be implemented. Some, but
+not all, of the calls to cryptography-related tasks (encryption, signing,
+decrypting, and authenticating) are peformed utilizing the `+acru` core.
 
 ## Packet encryption and authentication {#packets}
 
-Each Urbit ship possesses two networking keypairs: one for encryption, and one for
-authentication. We often refer to these two keypairs as though they were a single keypair,
-because they are stored as a single atom. [Elliptic Curve
+Each Urbit ship possesses two networking keypairs: one for encryption, and one
+for authentication. We often refer to these two keypairs as though they were a
+single keypair because they are stored as a single atom. [Elliptic Curve
 Diffie-Hellman](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman)
 is used for encryption, while [Elliptic Curve Digital Signature
 Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)
@@ -37,29 +36,34 @@ is used for authentication
 The encrypted payload of each packet is a `$shut-packet`, which is the `+jam` of
 a cell with the `bone`, message number, and message fragment or ack (see
 [Ames](@/docs/ames/ames.md) for more information on packet structure). The
-message fragment is signed using the authentication key. It is
-encrypted using `+sivc:aes:crypto` found in `sys/zuse.hoon`, which is an arm
-utilized for 256-bit AES SIV symmetric encryption.
+message fragment is signed using the authentication key. It is encrypted using
+[`+en:crub:crypto`](@/docs/arvo/reference/cryptography.md#en) found in
+`sys/zuse.hoon`, which utilizes the 256-bit AES-SIV algorithm.
 
 ## Diffie-Hellman key exchange {#key-exchange}
 
-For each foreign ship a given ship has met, `$ames-state` contains a `$peer-state`,
-inside which the `$symmetric-key` (an atom which nests under `@uw`) is utilized
-for encrypting all Ames packets shared between the two ships. The
-`symmetric-key` is derived using `+shar:ed:crypto` found in `sys/zuse.hoon`,
+For each foreign ship a given ship has met, `$ames-state` contains a
+`$peer-state`, inside which the `$symmetric-key` (an atom which nests under
+`@uw`) is utilized for encrypting all Ames packets shared between the two ships.
+The `symmetric-key` is derived using [`+shar:ed:crypto`](@/docs/arvo/reference/cryptography.md#shar) found in `sys/zuse.hoon`,
 which is an arm utilized for generating the symmetric key for elliptic curve
 [Diffie-Hellman key
 exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
-with [curve25519](https://en.wikipedia.org/wiki/Curve25519).
+with [curve25519](https://en.wikipedia.org/wiki/Curve25519). Briefly, each ship
+in a two-way conversation computes the shared symmetric key for that
+conversation by computing the product of their own private key and the public
+key of the other party.
 
 ## Comet self-attestation {#comets}
 
-Recall that the `@p` of a comet is the hash of their 128-bit public key cast as a
-`@p`. Since the public key of a comet is not stored on Azimuth, a comet proves
+Recall that the `@p` of a comet is the hash of their 128-bit public key cast as
+a `@p`. Since the public key of a comet is not stored on Azimuth, a comet proves
 its identity with an "attestation packet". This is an unencrypted packet whose
-payload is the comet's signature created with its private key. This is the
-only situation in which a ship will send an unencrypted packet. The signature is
-generated with `+sign:as:crub` found in `sys/zuse.hoon`.
+payload is the comet's signature created with its private key. This is the only
+circumstance under which a ship will send an unencrypted packet. The signature
+is generated with
+[`+sign:as:crub`](@/docs/arvo/reference/cryptography.md#sign-as) found in
+`sys/zuse.hoon`.
 
 Upon hearing an attestation packet, the receiving ship will generate a symmetric
 key for communications with the comet, according to the [key
@@ -107,7 +111,8 @@ Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
 As the `+acru` core is merely an interface, the details on how it is utilized
 may vary according to the cryptosuite implemented in it. We summarize what each
-core is utilized for here, but see [`crub:crypto`](#crub) for more details on
+core is utilized for here, but see
+[`crub:crypto`](@/docs/arvo/reference/cryptography.md#crub) for more details on
 how the specific cryptosuite utilized by Ames is implemented.
 
 #### `+as:acru`
@@ -128,13 +133,14 @@ returned as a single atom.
 
 This core contains constructors for the `+acru` core. `+pit:nu` is used to
 construct an `+acru` core with both a private and public key (i.e. both
-`+sec:ex` and `pub:ex` are set) from a bitlength and seed. `+nol:nu` can then be
+`+sec:ex` and `+pub:ex` are set) from a bitlength and seed. `+nol:nu` can then be
 called from an `+acru` core created with `+pit:nu` to get an `+acru` core with
 only the secret key, while `+com:nu` can be called to get an `+acru` core with
 only the public key.
 
-#### `+de`, `+dy`, `+en`
+#### `+en:acru`, `+de:acru`, and `+dy:acru`
 
-These arms are for symmetric encryption and decryption. In case of failure,
-`+de` returns null and `+dy` crashes.
+These arms are for symmetric encryption (`+en`) and decryption (`+de` and
+`+dy`). The difference between the decryption arms is that `+de` returns null
+and `+dy` crashes upon failure.
 

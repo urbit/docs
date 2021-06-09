@@ -2,7 +2,6 @@
 title = "Cryptography"
 weight = 6
 template = "doc.html"
-aliases = ["/docs/learn/vere/jetting/"]
 +++
 
 All cryptographic primitives utilized by Arvo are
@@ -26,9 +25,9 @@ All code is pure ANSI C without any dependencies, except for the random seed
 generation which uses standard OS cryptography APIs (CryptGenRandom on Windows,
 `/dev/urandom` on nix).
 
-### AES SIV {#aes}
+### AES-SIV {#aes}
 
-The library we utilize for AES SIV is an
+The library we utilize for AES-SIV is an
 [RFC5297](https://tools.ietf.org/html/rfc5297)-compliant C implementation of
 AES-SIV written by Daniel Franke on behalf of [Akamai
 Technologies](https://www.akamai.com). It is published under the [Apache License
