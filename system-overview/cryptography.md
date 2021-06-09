@@ -120,5 +120,5 @@ The following pages contained more detailed information about the cryptography
 utilized by each of the system components.
 
  - [Ames](@/docs/arvo/ames/cryptography.md)
- - [zuse](@/docs/arvo/reference/cryptography.md)
+ - [Zuse](@/docs/arvo/reference/cryptography.md)
  - [Vere](@/docs/vere/cryptography.md)

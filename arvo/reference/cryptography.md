@@ -18,8 +18,7 @@ library reference.
 
 `zuse` contains several cryptosuites. The ones utilized by Ames are
 [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with
-the latter being the only one which is implementable as an [`+acru:ames`
-core](@/docs/arvo/ames/cryptography/#crypto-core).
+the latter being the only one which is implemented as an [`+acru:ames`](@/docs/arvo/ames/cryptography/#crypto-core)-shaped core.
 
 ## `+crub:crypto` {#crub}
 
@@ -219,4 +218,3 @@ This core contains several doors, each one used for a different variation of AES
 according to key size and mode. The only ones currently in use are
 `+siva:aes:crypto` and `+sivc:aes:crypto`, which are 128-bit and
 256-bit modes of [`AES-SIV`](https://www.aes-siv.com) respectively.
-
