@@ -56,6 +56,11 @@ find-fork-d
 ~[2 3 4 5]
 ```
 
+`=>` is a reversed form of the `:` operator we've been using, meaning that `=>  a  b` is the
+same as `b:a`. Here, this means we're evaluation the `?~` expression with the
+`b=...` expression as the subject. We explore this rune in more detail in a
+[later lesson](@/docs/hoon/hoon-school/arms-and-cores.md#cores-and-contexts).
+
 It's important to note that performing tests like `?~ mylist` will actually transform `mylist` into a `lest`, a non-null list. Because `lest` is a different type than `list`, performing such tests can come back to bite you later in non-obvious ways when you try to use some standard library functions meant for lists.
 
 You can construct lists of any type. `(list @)` indicates a list of atoms, `(list ^)` indicates a list of cells, `(list [@ ?])` indicates a list of cells whose head is an atom and whose tail is a flag, etc.

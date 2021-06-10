@@ -226,7 +226,7 @@ It follows from this definition that a gate is a special case of a door.  A gate
 
 Gates are useful for defining functions.  But there are many-armed doors as well.  How are they used?  Doors are quite useful data structures.  In Chapter 2 of the Hoon tutorial series you'll learn how to use doors to implement state machines, where the sample stores the relevant state data.  For now let's talk about how to use doors for simpler purposes.
 
-### An Example Door
+### An Example Door {#example}
 
 Let's write an example door in order to illustrate its features.  Each of the arms in the door will define a simple gate.  Let's bind the door to `c` as we did with the last core.  To make a door we use the `|_` rune:
 
@@ -248,9 +248,48 @@ The `|_` rune for making a door works exactly like the `|%` rune for making a co
 
 The first subexpression after the `|_` rune defines the door's sample.  (This is the subexpression the `|%` rune lacks.)  Following that are a series of `++` runes, each of which defines an arm of the door.  Finally, the expression is terminated with a `--` rune.
 
+We emphasize that a door really is, at bedrock level, the same thing as a core
+with a sample. Let's ask dojo to pretty print a simple door.
+
+```
+> =a =>  ~  |_  b=@  ++  foo  b  --
+> a
+<1.zgd [b=@ %~]>
+```
+
+Dojo tells us that `a` is a core with one arm and a payload of `[b=@ %~]`. Since
+a door's payload is `[sample context]`, this means that `b` is the sample and
+the context is null. Setting the context is what the `=> ~` did. The reason we
+did this was to avoid including the standard library that is included in the
+context by default in dojo, which would have made the pretty printed core much
+more verbose.
+
+Now let's try to define a core with a sample:
+
+```
+> =a =>  ~  =|  b=@  |%  ++  foo  b  --
+> a
+<1.zgd [b=@ %~]>
+```
+
+Dojo gives us the same result! But is the pretty printer hiding something from
+us? Recall that Hoon compiles down to Nock, Urbit's purely-functional
+assembly-level language. The `!=` rune returns the Nock of any Hoon expression.
+Let's try it on these expressions:
+
+```
+> !=  =>  ~  |_  b=@  ++  foo  b  --
+[7 [1 0] 8 [1 0] [1 0 6] 0 1]
+> !=  =>  ~  =|  b=@  |%  ++  foo  b  --
+[7 [1 0] 8 [1 0] [1 0 6] 0 1]
+```
+
+You don't need to know any Nock to see that these two expressions are identical.
+Thus we have witnessed that doors really are just cores with samples.
+
 #### Back to the Example
 
-For the door defined above, `c`, the sample is defined as an [atom](/docs/glossary/atom/), `@`, and given the face `b`.  The `plus` arm defines a gate that takes a single [atom](/docs/glossary/atom/) as its argument, `a`, and which returns the sum of `a` and `b`.  The `times` arm defines a gate that takes a single [atom](/docs/glossary/atom/), `a`, and returns `a` times `b`.  The `greater` arm defines a gate that takes a single [atom](/docs/glossary/atom/), `a`, and if `a` is greater than `b` returns `%.y`; otherwise `%.n`.
+For the door defined [above](#example), `c`, the sample is defined as an [atom](/docs/glossary/atom/), `@`, and given the face `b`.  The `plus` arm defines a gate that takes a single [atom](/docs/glossary/atom/) as its argument, `a`, and which returns the sum of `a` and `b`.  The `times` arm defines a gate that takes a single [atom](/docs/glossary/atom/), `a`, and returns `a` times `b`.  The `greater` arm defines a gate that takes a single [atom](/docs/glossary/atom/), `a`, and if `a` is greater than `b` returns `%.y`; otherwise `%.n`.
 
 Let's try out the arms of `c` with ordinary function calls:
 
