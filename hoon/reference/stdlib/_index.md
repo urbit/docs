@@ -124,7 +124,6 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#dem-ag' title="Parse decmal with dots"><code>++dem:ag</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#den-fl' title="Denormalizes (floating point)"><code>++den:fl</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>++dep:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#dep-to' title="Maximum depth (queue)"><code>++dep:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#dif-fe' title="Difference between atoms (modular basis)"><code>++dif:fe</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#dif-fo' title='Subtraction (modular base)'><code>++dif:fo</code></a>
@@ -980,7 +979,6 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#apt-by' title="Check correctness (map)"><code>++apt:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#bif-by' title="Bifurcate map"><code>++bif:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>++del:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>++dep:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dig-by' title="Address of key (map)"><code>++dig:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gas-by' title="Concatenate (map)"><code>++gas:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#get-by' title="Grab unit value"><code>++get:by</code></a>
