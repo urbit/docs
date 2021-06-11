@@ -22,30 +22,30 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1a/#add' title="Add"><code>++add</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#add-ff' title="Add (floating point)"><code>++add:ff</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#add-fl' title="Add (with exact/rounded flag)"><code>++add:fl</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#add-ja' title="Prepend to list"><code>+-add:ja</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#add-ja' title="Prepend to list"><code>++add:ja</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#add-rd' title="Add (double-precision float)"><code>++add:rd</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#add-rh' title="Add (half-precision float)"><code>++add:rh</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#add-rs' title="Add (single-precision float)"><code>++add:rs</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#add-rq' title="Add (quad-precision float)"><code>++add:rq</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#ag' title="Top-level atom parser engine"><code>++ag</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#alf' title="Parse alphabetic characters"><code>++alf</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#all-by' title="Logical AND (map and wet gate)"><code>+-all:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#all-in' title="Logical AND (set and wet gate)"><code>+-all:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#all-by' title="Logical AND (map and wet gate)"><code>++all:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#all-in' title="Logical AND (set and wet gate)"><code>++all:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#aln' title="Parse alphanumeric characters"><code>++aln</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#alp' title="Parse alphanumeric characters and -"><code>++alp</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#any-by' title="Logical OR (map and wet gate)"><code>+-any:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#any-in' title="Logical OR (set and gate)"><code>+-any:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#any-by' title="Logical OR (map and wet gate)"><code>++any:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#any-in' title="Logical OR (set and gate)"><code>++any:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2f/#aor' title="Alphabetical order"><code>++aor</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#ape-ag' title="Parse 0 or rule"><code>++ape:ag</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#apt-by' title="Check correctness (map)"><code>+-apt:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#apt-in' title="Check correctness (set)"><code>+-apt:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#apt-by' title="Check correctness (map)"><code>++apt:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#apt-in' title="Check correctness (set)"><code>++apt:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#at' title="(Undocumented)"><code>++at</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4o/#aura' title="'Type' of atom"><code>++aura</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4o/#axis' title="Nock axis"><code>++axis</code></a>
 
 ### b
 
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#bal-to' title="Balance queue"><code>+-bal:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#bal-to' title="Balance queue"><code>++bal:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4h/#bar' title="Parse | (bar)"><code>++bar</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4h/#bas' title="Parse \ (bas)"><code>++bas</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4o/#base' title="Base type"><code>++base</code></a>
@@ -58,8 +58,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#bet' title="Parse hep and lus axis syntax"><code>++bet</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#bex' title="Binary exponent"><code>++bex</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#bif-ff' title="Converts from fn to @r"><code>++bif:ff</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#bif-by' title="Bifurcate map"><code>+-bif:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#bif-in' title="Bifurcate set"><code>+-bif:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#bif-by' title="Bifurcate map"><code>++bif:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#bif-in' title="Bifurcate set"><code>++bif:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2a/#biff' title="Unit as argument"><code>++biff</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#bin' title="Binary to atom"><code>++bin</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2a/#bind' title="Non-unit function to unit, producing unit"><code>++bind</code></a>
@@ -118,20 +118,20 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2q/#date' title="Point in time"><code>++date</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3c/#day-yo' title="Seconds in day"><code>++day:yo</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1a/#dec' title="Decrement"><code>++dec</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>++del:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#del-in' title="Delete (set)"><code>++del:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#del-ju' title="Delete (jug)"><code>++del:ju</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#dem' title="Decimal to atom"><code>++dem</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#dem-ag' title="Parse decmal with dots"><code>++dem:ag</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#den-fl' title="Denormalizes (floating point)"><code>++den:fl</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#dep-to' title="Maximum depth (queue)"><code>+-dep:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>++dep:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#dep-to' title="Maximum depth (queue)"><code>++dep:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#dif-fe' title="Difference between atoms (modular basis)"><code>++dif:fe</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#dif-fo' title='Subtraction (modular base)'><code>++dif:fo</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dif-in' title='Difference (set)'><code>+-dif:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dif-in' title='Difference (set)'><code>++dif:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#dif-si' title="Subtraction (signed integer)"><code>++dif:si</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dig-by' title="Address of key (map)"><code>+-dig:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dig-in' title="Address of a in set"><code>+-dig:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dig-by' title="Address of key (map)"><code>++dig:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dig-in' title="Address of a in set"><code>++dig:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#dim-ag' title="Parse decimal number"><code>++dim:ag</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3g/#dime' title="Aura-atom pair"><code>++dime</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4c/#din-re' title="(Undocumented)"><code>++din:re</code></a>
@@ -225,20 +225,20 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#gap' title="Plural whitespace"><code>++gap</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#gaq' title="End of line"><code>++gaq</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4h/#gar' title="Parse > (gar)"><code>++gar</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gas-by' title="Concatenate (map)"><code>+-gas:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#gas-in' title="Concatenate (set)"><code>+-gas:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#gas-to' title="Push list into queue"><code>+-gas:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gas-by' title="Concatenate (map)"><code>++gas:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#gas-in' title="Concatenate (set)"><code>++gas:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#gas-to' title="Push list into queue"><code>++gas:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#gate' title="Function"><code>++gate</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#gaw' title="Classic whitespace"><code>++gaw</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#gay' title="Optional gap"><code>++gay</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#get-by' title="Grab unit value"><code>+-get:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ja' title="Grab value by key"><code>+-get:ja</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ju' title="Retrieve set"><code>+-get:ju</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#get-to' title="Head-tail pair"><code>+-get:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#get-by' title="Grab unit value"><code>++get:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ja' title="Grab value by key"><code>++get:ja</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ju' title="Retrieve set"><code>++get:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#get-to' title="Head-tail pair"><code>++get:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4e/#glue' title="Skip delimiter"><code>++glue</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#gon' title="Parse long numbers"><code>++gon</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2f/#gor' title="Hash order"><code>++gor</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#got-by' title="Assert for value (map)"><code>+-got:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#got-by' title="Assert for value (map)"><code>++got:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#grd-ff' title="Decimal float to @r"><code>++grd:ff</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#grd-fl' title="Decimal to float"><code>++grd:fl</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#grd-rd' title="Decimal float to @rd"><code>++grd:rd</code></a>
@@ -261,15 +261,15 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#gth-rq' title="Greater than (quad-precision float)"><code>++gth:rq</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#gul' title="Axis syntax < or >"><code>++gul</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2b/#gulf' title="List from range"><code>++gulf</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gut-by' title="Grab value with defualt"><code>+-gut:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gut-by' title="Grab value with defualt"><code>++gut:by</code></a>
 
 ### h
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3g/#hair' title="Parsing line and column"><code>++hair</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2n/#hard' title="Force remold"><code>++hard</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#has-by' title="Key existence check (map)"><code>+-has:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#has-in' title="Key existence check (set)"><code>+-has:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#has-ju' title="Check contents (jug)"><code>+-has:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#has-by' title="Key existence check (map)"><code>++has:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#has-in' title="Key existence check (set)"><code>++has:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#has-ju' title="Check contents (jug)"><code>++has:ju</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4h/#hax' title="Parse # (hax)"><code>++hax</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2n/#head' title="Get head of cell"><code>++head</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4f/#here' title="Place-based apply"><code>++here</code></a>
@@ -291,8 +291,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4f/#ifix' title="Infix"><code>++ifix</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4a/#ind-po' title="Parse suffix"><code>++ind:po</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4a/#ins-po' title="Parse prefix"><code>++ins:po</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#int-by' title="Intersection (map)"><code>+-int:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#int-in' title="Intersection (set)"><code>+-int:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#int-by' title="Intersection (map)"><code>++int:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#int-in' title="Intersection (set)"><code>++int:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#inv-fe' title="Inverse order of modular field"><code>++inv:fe</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#inv-fl' title="Inverse"><code>++inv:fl</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#inv-fo' title="Inverse (signed modulus)"><code>++inv:fo</code></a>
@@ -367,7 +367,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4n/#mack' title="Nock subject to unit"><code>++mack</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2l/#malt' title="Map from list"><code>++malt</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2o/#map' title="Mold generator (map)"><code>++map</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#mar-by' title="Assert and add (map)"><code>+-mar:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#mar-by' title="Assert and add (map)"><code>++mar:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1b/#mas' title="Address within head/tail"><code>++mas</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4f/#mask' title="Match character"><code>++mask</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2p/#mat' title="Length-encode"><code>++mat</code></a>
@@ -412,14 +412,14 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### n
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3g/#nail' title="Location, remainder of parsed text"><code>++nail</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nap-to' title="Remove head of queue"><code>+-nap:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nap-to' title="Remove head of queue"><code>++nap:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#ne' title="Digit rendering engine"><code>++ne</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#ned-fl' title="Require float"><code>++ned:fl</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2a/#need' title="Unwrap unit"><code>++need</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#net-fe' title="Flip endianness"><code>++net:fe</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#new-si' title="Atom to @s"><code>++new:si</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4f/#next' title="Consume character"><code>++next</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nip-to' title="Remove root of queue"><code>+-nip:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nip-to' title="Remove root of queue"><code>++nip:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#nix' title="Parse letters and -"><code>++nix</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2m/#nl' title="Noun to container operations"><code>++nl</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4o/#nock' title="Virtual machine (see Nock)"><code>++nock</code></a>
@@ -466,10 +466,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4i/#prn' title="Parse any printable character"><code>++prn</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#pro-fo' title="Multiplies b and c modulo a"><code>++pro:fo</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3a/#pro-si' title="Multiply to signed integer"><code>++pro:si</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#put-by' title="Add key-value pair (map)"><code>+-put:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#put-in' title="Put b in a (set)"><code>+-put:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#put-ju' title="Add key-set pair (jar)"><code>+-put:ju</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#put-to' title="Insert into queue"><code>+-put:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#put-by' title="Add key-value pair (map)"><code>++put:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#put-in' title="Put b in a (set)"><code>++put:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#put-ju' title="Add key-set pair (jar)"><code>++put:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#put-to' title="Insert into queue"><code>++put:to</code></a>
 
 ### q
 
@@ -503,10 +503,10 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4k/#rend-co' title="Render coin lot as tape"><code>++rend:co</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4k/#rent-co' title="Render coin lot as span"><code>++rent:co</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#rep' title="Assemble single"><code>++rep</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rep-by' title="Replace by product (map)"><code>+-rep:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#rep-in' title="Accumulate elements (set)"><code>+-rep:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rep-by' title="Replace by product (map)"><code>++rep:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#rep-in' title="Accumulate elements (set)"><code>++rep:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#rf-at' title="(Undocumented)"><code>++rf:at</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rib-by' title="Replace values with accumulator (map)"><code>+-rib:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rib-by' title="Replace values with accumulator (map)"><code>++rib:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4c/#rig-re' title="Wrap tape in / (tank)"><code>++rig:re</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2c/#rip' title="Disassemble"><code>++rip</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#rn-at' title="(Undocumented)"><code>++rn:at</code></a>
@@ -526,14 +526,14 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#rud-at' title="(Undocumented)"><code>++rud:at</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3g/#rule' title="Parsing rule (match this with _)"><code>++rule</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#rum-at' title="(Undocumented)"><code>++rum:at</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#run-by' title="Transform values (map)"><code>+-run:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#run-in' title="Apply gate to set"><code>+-run:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#run-by' title="Transform values (map)"><code>++run:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#run-in' title="Apply gate to set"><code>++run:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3f/#rund-ob' title="Reverse single Feistel-like"><code>++rund:ob</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#runt' title="Prepend n times"><code>++runt</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#rup-at' title="(Undocumented)"><code>++rup:at</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4g/#rush' title="Parse or null"><code>++rush</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4g/#rust' title="Parse tape or null"><code>++rust</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rut-by' title="Transform nodes (map)"><code>+-rut:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rut-by' title="Transform nodes (map)"><code>++rut:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#ruv-at' title="(Undocumented)"><code>++ruv:at</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4b/#rux-at' title="(Undocumented)"><code>++rux:at</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3f/#rynd-ob' title="Reverse Feistel-like cipher"><code>++rynd:ob</code></a>
@@ -676,12 +676,12 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### t
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2n/#tail' title="Get tail of cell"><code>++tail</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#tap-to' title="Queue to list"><code>+-tap:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#tap-to' title="Queue to list"><code>++tap:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4h/#tar' title="Parse * (tar)"><code>++tar</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2q/#tang' title="Generic print structure"><code>++tang</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2q/#tank' title="Pretty-printing structure"><code>++tank</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#tap-by' title="Listify pairs"><code>+-tap:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#tap-in' title="Flatten set into list"><code>+-tap:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#tap-by' title="Listify pairs"><code>++tap:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#tap-in' title="Flatten set into list"><code>++tap:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2q/#tape' title="List of characters"><code>++tape</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2q/#tarp' title="Parsed time"><code>++tarp</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4l/#tash-so' title="Parse signed dime"><code>++tash:so</code></a>
@@ -709,7 +709,7 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#toj-fl' title="Round unsigned and signed integer to float"><code>++toj:fl</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3g/#tone' title="Nock result (error report)"><code>++tone</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3g/#toon' title="Nock result (stack trace)"><code>++toon</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#top-to' title="Produce head of queue"><code>+-top:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#top-to' title="Produce head of queue"><code>++top:to</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4a/#tos-po' title="Fetch prefix"><code>++tos:po</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#tos-rh' title="Convert half-precision float to single-precision float"><code>++tos:rh</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#trap' title="Core with one arm $"><code>++trap</code></a>
@@ -732,11 +732,11 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### u
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3f/#un' title="Reversible scrambling"><code>++un</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#uni-by' title="Union (map between keys of two lists)"><code>+-uni:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#uni-by' title="Union (map between keys of two lists)"><code>++uni:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3b/#uni-fl' title="Change representation to odd"><code>++uni:fl</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#uni-in' title="Union (sets)"><code>+-uni:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#uni-in' title="Union (sets)"><code>++uni:in</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/1c/#unit' title="Mold generator (maybe)"><code>++unit</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#urn-by' title="Turn (with key) (map)"><code>+-urn:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#urn-by' title="Turn (with key) (map)"><code>++urn:by</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#urs-ab' title="Parse span characters"><code>++urs:ab</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4j/#urt-ab' title="Parse non-_ span"><code>++urt:ab</code></a>
 
@@ -775,8 +775,8 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3f/#wred-un' title="Restore structure"><code>++wred:un</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/3f/#wren-un' title="Conceal structure"><code>++wren:un</code></a>
 <a class="tooltip" href='/docs/hoon/reference/stdlib/4h/#wut' title="Parse ? (wut)"><code>++wut</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#wyt-by' title="Produce depth of tree map"><code>+-wyt:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#wyt-in' title="Produce number of elements in set"><code>+-wyt:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#wyt-by' title="Produce depth of tree map"><code>++wyt:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#wyt-in' title="Produce number of elements in set"><code>++wyt:in</code></a>
 
 ### x
 
@@ -955,74 +955,74 @@ Can be navigated [alphabetically](#alphabetical) or [by section](#by-section).
 ### 2h: set logic
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#in'><code>++in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#all-in' title="Logical AND (set and wet gate)"><code>+-all:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#any-in' title="Logical OR (set and gate)"><code>+-any:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#apt-in' title="Check correctness (set)"><code>+-apt:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#bif-in' title="Bifurcate set"><code>+-bif:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#del-in' title="Delete (set)"><code>+-del:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dif-in' title='Difference (set)'><code>+-dif:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dig-in' title="Address of a in set"><code>+-dig:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#gas-in' title="Concatenate (set)"><code>+-gas:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#has-in' title="Key existence check (set)"><code>+-has:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#int-in' title="Intersection (set)"><code>+-int:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#put-in' title="Put b in a (set)"><code>+-put:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#rep-in' title="Accumulate elements (set)"><code>+-rep:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#run-in' title="Apply gate to set"><code>+-run:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#tap-in' title="Flatten set into list"><code>+-tap:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#uni-in' title="Union (sets)"><code>+-uni:in</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#wyt-in' title="Produce number of elements in set"><code>+-wyt:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#all-in' title="Logical AND (set and wet gate)"><code>++all:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#any-in' title="Logical OR (set and gate)"><code>++any:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#apt-in' title="Check correctness (set)"><code>++apt:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#bif-in' title="Bifurcate set"><code>++bif:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#del-in' title="Delete (set)"><code>++del:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dif-in' title='Difference (set)'><code>++dif:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#dig-in' title="Address of a in set"><code>++dig:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#gas-in' title="Concatenate (set)"><code>++gas:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#has-in' title="Key existence check (set)"><code>++has:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#int-in' title="Intersection (set)"><code>++int:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#put-in' title="Put b in a (set)"><code>++put:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#rep-in' title="Accumulate elements (set)"><code>++rep:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#run-in' title="Apply gate to set"><code>++run:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#tap-in' title="Flatten set into list"><code>++tap:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#uni-in' title="Union (sets)"><code>++uni:in</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2h/#wyt-in' title="Produce number of elements in set"><code>++wyt:in</code></a>
 
 ### 2i: map logic
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#by' title="Map operations"><code>++by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#all-by' title="Logical AND (map and wet gate)"><code>+-all:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#any-by' title="Logical OR (map and wet gate)"><code>+-any:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#apt-by' title="Check correctness (map)"><code>+-apt:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#bif-by' title="Bifurcate map"><code>+-bif:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>+-del:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>+-dep:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dig-by' title="Address of key (map)"><code>+-dig:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gas-by' title="Concatenate (map)"><code>+-gas:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#get-by' title="Grab unit value"><code>+-get:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#got-by' title="Assert for value (map)"><code>+-got:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gut-by' title="Grab value with default"><code>+-gut:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#has-by' title="Key existence check (map)"><code>+-has:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#int-by' title="Intersection (map)"><code>+-int:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#mar-by' title="Assert and add (map)"><code>+-mar:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#put-by' title="Add key-value pair (map)"><code>+-put:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rep-by' title="Replace by product (map)"><code>+-rep:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rib-by' title="Replace values with accumulator (map)"><code>+-rib:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#run-by' title="Transform values (map)"><code>+-run:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rut-by' title="Transform nodes (map)"><code>+-rut:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#tap-by' title="Listify pairs"><code>+-tap:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#uni-by' title="Union (map between keys of two lists)"><code>+-uni:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#urn-by' title="Turn (with key) (map)"><code>+-urn:by</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#wyt-by' title="Produce depth of tree map"><code>+-wyt:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#all-by' title="Logical AND (map and wet gate)"><code>++all:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#any-by' title="Logical OR (map and wet gate)"><code>++any:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#apt-by' title="Check correctness (map)"><code>++apt:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#bif-by' title="Bifurcate map"><code>++bif:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#del-by' title="Delete (map)"><code>++del:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dep-by' title="Difference as patch (map)"><code>++dep:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#dig-by' title="Address of key (map)"><code>++dig:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gas-by' title="Concatenate (map)"><code>++gas:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#get-by' title="Grab unit value"><code>++get:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#got-by' title="Assert for value (map)"><code>++got:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#gut-by' title="Grab value with default"><code>++gut:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#has-by' title="Key existence check (map)"><code>++has:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#int-by' title="Intersection (map)"><code>++int:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#mar-by' title="Assert and add (map)"><code>++mar:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#put-by' title="Add key-value pair (map)"><code>++put:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rep-by' title="Replace by product (map)"><code>++rep:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rib-by' title="Replace values with accumulator (map)"><code>++rib:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#run-by' title="Transform values (map)"><code>++run:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#rut-by' title="Transform nodes (map)"><code>++rut:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#tap-by' title="Listify pairs"><code>++tap:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#uni-by' title="Union (map between keys of two lists)"><code>++uni:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#urn-by' title="Turn (with key) (map)"><code>++urn:by</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2i/#wyt-by' title="Produce depth of tree map"><code>++wyt:by</code></a>
 
 ### 2j: jar and jug logic
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#ja' title="Jar engine"><code>++ja</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#add-ja' title="Prepend to list"><code>+-add:ja</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ja' title="Grab value by key"><code>+-get:ja</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#add-ja' title="Prepend to list"><code>++add:ja</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ja' title="Grab value by key"><code>++get:ja</code></a>
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#ju' title="Jug operations"><code>++ju</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#del-ju' title="Delete (jug)"><code>+-del:ju</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ju' title="Retrieve set"><code>+-get:ju</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#has-ju' title="Check contents (jug)"><code>+-has:ju</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#put-ju' title="Add key-set pair (jar)"><code>+-put:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#del-ju' title="Delete (jug)"><code>++del:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#get-ju' title="Retrieve set"><code>++get:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#has-ju' title="Check contents (jug)"><code>++has:ju</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2j/#put-ju' title="Add key-set pair (jar)"><code>++put:ju</code></a>
 
 ### 2k: queue logic
 
 <a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#to' title="Queue operations"><code>++to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#bal-to' title="Balance queue"><code>+-bal:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#dep-to' title="Maximum depth (queue)"><code>+-dep:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#gas-to' title="Push list into queue"><code>+-gas:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#get-to' title="Head-tail pair"><code>+-get:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nap-to' title="Remove head of queue"><code>+-nap:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nip-to' title="Remove root of queue"><code>+-nip:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#put-to' title="Insert into queue"><code>+-put:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#tap-to' title="Queue to list"><code>+-tap:to</code></a>
-<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#top-to' title="Produce head of queue"><code>+-top:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#bal-to' title="Balance queue"><code>++bal:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#dep-to' title="Maximum depth (queue)"><code>++dep:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#gas-to' title="Push list into queue"><code>++gas:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#get-to' title="Head-tail pair"><code>++get:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nap-to' title="Remove head of queue"><code>++nap:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#nip-to' title="Remove root of queue"><code>++nip:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#put-to' title="Insert into queue"><code>++put:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#tap-to' title="Queue to list"><code>++tap:to</code></a>
+<a class="tooltip" href='/docs/hoon/reference/stdlib/2k/#top-to' title="Produce head of queue"><code>++top:to</code></a>
 
 ### 2l: container from container
 
