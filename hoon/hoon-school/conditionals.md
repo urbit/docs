@@ -54,7 +54,8 @@ Next we have:
     (lte n 100)
 ```
 
-`lte` is the standard library function for "less than or equal to". `(lte a b)` returns `%.y` if `a` is less than `b`, and `%.n` otherwise.
+`lte` is the standard library function for "less than or equal to". `(lte a b)`
+returns `%.y` if `a` is less than or equal to `b`, and `%.n` otherwise.
 
 The last boolean test we have is:
 
