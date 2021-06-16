@@ -12,48 +12,52 @@ docs and a short description of the rune. Both regular and irregular forms are g
 
 Want to `Ctrl-f` to find out the meaning of something weird you saw? Search for `\symbol`. ie `\?` or `\=`. It'll show you to the irregular forms that uses that symbol.
 
-## . dot (nock)
+## `.` dot (nock)
 
 Anything Nock can do, Hoon can do also.
 
-### .+ dotlus
+### `.+` dotlus
 
 [docs](@/docs/hoon/reference/rune/dot.md#dotlus) \\+
+
 `[%dtls p=atom]`: increment an atom with Nock 4.
 
 Regular: `.+(p)`
 
 Irregular: `+(p)`
 
-### .= dottis
+### `.=` dottis
 
 [docs](@/docs/hoon/reference/rune/dot.md#dottis) \\=
+
 `[%dtts p=hoon q=hoon]`: test for equality with Nock 5.
 
 Regular: `.=(p q)`
 
 Irregular: `=(p q)`
 
-## ; mic (make)
+## `;` mic (make)
 
 Miscellaneous useful macros.
 
-### ;: miccol
+### `;:` miccol
 
 [docs](@/docs/hoon/reference/rune/mic.md#miccol) \\:
+
 `[%mccl p=hoon q=(list hoon)]`: call a binary function as an n-ary function.
 
 Regular: `;:(p q)`
 
 Irregular: `:(p q)`
 
-## : col (cells)
+## `:` col (cells)
 
 The cell runes.
 
-### :- colhep
+### `:-` colhep
 
 [docs](@/docs/hoon/reference/rune/col.md#colhep)  \\[\\]\\^\\+\\\`\\~
+
 `[%clhp p=hoon q=hoon]`: construct a cell (2-tuple).
 
 Regular: `:-(p q)`
@@ -71,22 +75,24 @@ Irregular:
   [a b]~  ==>   [[a b] ~]
 ```
 
-## = tis (flow)
+## `=` tis (flow)
 
 Flow hoons change the subject. All non-flow hoons (except cores) pass the subject down unchanged.
 
-### =< tisgal
+### `=<` tisgal
 
 [docs](@/docs/hoon/reference/rune/tis.md#tisgal) \\:
+
 `[%tsgl p=hoon q=hoon]`: compose two hoons, inverted.
 
 Regular: `=<(p q)`
 
 Irregular: `p:q`
 
-## | bar (core)
+## `|` bar (core)
 
 [docs](@/docs/hoon/reference/rune/bar.md) \\$
+
 Core hoons are flow hoon.
 
 Technically not irregular syntax, but worth mentioning.
@@ -98,31 +104,34 @@ Technically not irregular syntax, but worth mentioning.
 
 The above runes produce a core with a single arm, named `$` ("buc"). We can recompute this arm with changes, useful for recursion among other things. Commonly used with the irregular syntax for `%=`, `:make`, like so: `$()`.
 
-## % cen (call)
+## `%` cen (call)
 
 The invocation family of runes.
 
-### %= centis
+### `%=` centis
 
 [docs](@/docs/hoon/reference/rune/cen.md#centis)  \\(\\)
+
 `[%cnts p=wing q=(list (pair wing hoon))]`: take a wing with changes.
 
 Regular: `%=(p a 1)`
 
 Irregular: `p(a 1)`
 
-### %~ censig
+### `%~` censig
 
 [docs](@/docs/hoon/reference/rune/cen.md#censig) \\~
+
 `[%cnsg p=wing q=hoon r=hoon]`: call with multi-armed door.
 
 Regular: `%~(p q r)`
 
 Irregular: `~(p q r)`
 
-### %- cenhep
+### `%-` cenhep
 
 [docs](@/docs/hoon/reference/rune/cen.md#cenhep) \\(\\)
+
 `[%cnhp p=hoon q=hoon]`: call a gate (function).
 
 Regular: `%-(p q)`
@@ -131,93 +140,102 @@ Irregular: `(p q)`
 
 Note: `(p)` becomes `$:p` (`=<($ p)`), which behaves as you would expect (func call w/o args).
 
-## $ buc (mold)
+## `$` buc (mold)
 
 A mold is a gate (function) that helps us build simple and rigorous data structures.
 
-### $? bucwut
+### `$?` bucwut
 
 [docs](@/docs/hoon/reference/rune/buc.md#bucwut) \\?
+
 `[%bcwt p=(list model)]`: mold which normalizes a general union.
 
 Regular: `$?(p)`
 
 Irregular: `?(p)`
 
-### $_ buccab
+### `$_` buccab
 
 [docs](@/docs/hoon/reference/rune/buc.md#buccab) \\_
+
 `[%bccb p=value]`: mold which normalizes to an example.
 
 Regular: `$_(p)`
 
 Irregular: `_p`
 
-## ? wut (test)
+## `?` wut (test)
 
 Hoon has the usual branches and logical tests.
 
-### ?! wutzap
+### `?!` wutzap
 
 [docs](@/docs/hoon/reference/rune/wut.md#wutzap) \\!
+
 `[%wtzp p=hoon]`: logical not.
 
 Regular: `?!(p)`
 
 Irregular: `!(p)`
 
-### ?& wutpam
+### `?&` wutpam
 
 [docs](@/docs/hoon/reference/rune/wut.md#wutpam) \\&
+
 `[%wtpm p=(list hoon)]`: logical and.
 
 Regular: `?&(p)`
 
 Irregular: `&(p)`
 
-### ?| wutbar
+### `?|` wutbar
 
 [docs](@/docs/hoon/reference/rune/wut.md#wutbar) \\|
+
 `[%wtbr p=(list hoon)]`: logical or.
 
 Regular: `?|(p)`
 
 Irregular: `|(p)`
 
-## ^ ket (cast)
+## `^` ket (cast)
 
 Lets us adjust types without violating type constraints.
 
-### ^: ketcol
+### `^:` ketcol
 
 [docs](@/docs/hoon/reference/ket.md#ketcol) \\,
+
 `[%ktcl p=spec]`: mold gate for type `p`.
 
 Regular: `^:(p)`
 
 Irregular: `,p`
 
-### ^- kethep
+### `^-` kethep
 
 [docs](@/docs/hoon/reference/rune/ket.md#kethep) \\\`
+
 `[%kthp p=model q=value]`: typecast by mold.
 
 Regular: `^-(p q)`
 
 Irregular: `` `p`q ``
 
-### ^* kettar
+### `^*` kettar
 
 [docs](@/docs/hoon/reference/rune/ket.md#kettar) \\*
+
 `[%kttr p=spec]`: produce bunt value of mold.
 
 Regular: `^*(p)`
 
 Irregular: `*p`
 
-### ^= kettis
+### `^=` kettis
 
 [docs](@/docs/hoon/reference/rune/ket.md#kettis) \\=
+
 `[%ktts p=toga q=value]`: name a value.
 
 Regular: `^=(p q)`
@@ -254,6 +272,7 @@ See [%sand](@/docs/hoon/reference/rune/constants.md#warm) for other irregular de
 ### Limbs
 
 [docs](@/docs/hoon/reference/limbs/limb.md) \\+\\.\\^
+
 `[%limb p=(each @ud [p=@ud q=@tas])]`: attribute of subject.
 
 - `+15` is slot 15
