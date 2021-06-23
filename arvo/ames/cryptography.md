@@ -35,7 +35,7 @@ is used for authentication
 
 The encrypted payload of each packet is a `$shut-packet`, which is the `+jam` of
 a cell with the `bone`, message number, and message fragment or ack (see
-[Ames](@/docs/ames/ames.md) for more information on packet structure). The
+[Ames](@/docs/arvo/ames/ames.md) for more information on packet structure). The
 message fragment is signed using the authentication key. It is encrypted using
 [`+en:crub:crypto`](@/docs/arvo/reference/cryptography.md#en) found in
 `sys/zuse.hoon`, which utilizes the 256-bit AES-SIV algorithm.
