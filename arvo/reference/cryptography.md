@@ -11,7 +11,7 @@ cryptographic functions relevant to Ethereum such as the `+keccak:crypto` core,
 but they are currently undocumented.
 
 Documentation for [Insecure Hashing](@/docs/hoon/reference/stdlib/2e.md) and the
-[SHA Hash Family](@/docs/reference/stdlib/3d.md) is found in the Hoon standard
+[SHA Hash Family](@/docs/hoon/reference/stdlib/3d.md) is found in the Hoon standard
 library reference.
 
 ## Summary
