@@ -108,7 +108,7 @@ The first `fact`'s `cage` must have a `mark` of `%http-response-header` and a `v
 
 The `cage` of the second and subsequent `fact`s must have a `mark` of `%http-response-data` and a `vase` containing a `(unit octs)` with the actual data of the response. An `octs` is just `[p=@ud q=@]` where `p` is the byte-length of `q`, the data. You can send an arbitrary number of these.
 
-Finally, once you've sent all the `fact`s you want, you can `give` Eyre a `kick` and it will complete the response and close the connection to the HTTP client.
+Finally, once you've sent all the `fact`s you want, you can `kick` Eyre's subscription and it will complete the response and close the connection to the HTTP client.
 
 ## Accepts
 
