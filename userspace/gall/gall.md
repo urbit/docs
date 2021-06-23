@@ -64,7 +64,7 @@ definable in a regular recursive data type).
 An agent is defined as a [core](/docs/glossary/core/) with a set of [arms](/docs/glossary/arm/) to handle various
 events.  These handlers usually produce a list of effects and the next
 state of the agent.  The interface definition can be found in
-`sys/zuse.hoon`, which at the time of writing is:
+`sys/lull.hoon`, which at the time of writing is:
 
 ```hoon
 ++  agent
@@ -548,7 +548,7 @@ It will be one of the following types of response:
 
 This arm is called to handle responses to `%pass` `move`s to vanes.  The
 list of possible responses from the system is statically defined in
-sys/zuse.hoon (grep for `+  sign-arvo`).
+`sys/lull.hoon` (grep for `+$  sign-arvo`).
 
 ### +on-fail
 
