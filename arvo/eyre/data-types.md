@@ -271,7 +271,7 @@ The status code and [$header-list:http](#header-list-http) of an HTTP response. 
   ==
 ```
 
-Packetised HTTP.
+Packetized HTTP.
 
 Urbit treats Earth's HTTP servers as pipes, where Urbit sends or receives one or more `http-event`s. The first of these will always be a `%start` or an `%error`, and the last will always be `%cancel` or will have `complete` set to `%.y` to finish the connection.
 
