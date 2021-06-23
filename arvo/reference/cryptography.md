@@ -18,12 +18,12 @@ library reference.
 
 `zuse` contains several cryptosuites. The ones utilized by Ames are
 [`+ed:crypto`](#ed), [`+aes:crypto`](#aes), and [`+crub:crypto`](#crub), with
-the latter being the only one which is implemented as an [`+acru:ames`](@/docs/arvo/ames/cryptography/#crypto-core)-shaped core.
+the latter being the only one which is implemented as an [`+acru:ames`](@/docs/arvo/ames/cryptography.md#crypto-core)-shaped core.
 
 ## `+crub:crypto` {#crub}
 
 `+crub:crypto` implements an
-[`+acru:ames`](@/docs/arvo/ames/cryptography/#crypto-core) core that implements
+[`+acru:ames`](@/docs/arvo/ames/cryptography.md#crypto-core) core that implements
 [Suite B Cryptography](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography).
 
 It utilizes AES symmetric key encryption and decryption from [`+aes:crypto`](#aes)
@@ -201,7 +201,7 @@ only cryptosuite which [Ames](@/docs/arvo/ames/ames.md) makes use of.
 Most gates in `+ed:crypto` are [jetted](@/docs/vere/jetting.md), meaning that an
 external reference library is utilized whenever these functions are called,
 rather than running in Nock natively. See the [Vere
-documentation](@/docs/vere/cryptography/#ed) for more information about the
+documentation](@/docs/vere/cryptography.md#ed) for more information about the
 library utilized by jets.
 
 ## `+aes:crypto` {#aes}
@@ -211,7 +211,7 @@ This core contains cryptographic primitives and helper functions for
 encryption and decryption. As is the case with `ed:crypto`, these
 functionalities are utilized by [`+crub:crypto`](#crub), and most gates are
 jetted. See also the Vere documentation on [AES
-SIV](@/docs/vere/cryptography/#aes) for more information about the library
+SIV](@/docs/vere/cryptography.md#aes) for more information about the library
 utilized by jets.
 
 This core contains several doors, each one used for a different variation of AES
