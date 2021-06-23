@@ -172,7 +172,7 @@ Example:
 # `connections`
 
 
-A scry with `bindings` in place of the `desk` in the `beak` will return all open http connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [outstanding-connection](@/docs/arvo/eyre/data-types.md#outstanding-connection) section of the Data Types document for details).
+A scry with `bindings` in place of the `desk` in the `beak` will return all open HTTP connections that aren't fully complete. The type returned is a `(map duct outstanding-connection:eyre)` (see the [outstanding-connection](@/docs/arvo/eyre/data-types.md#outstanding-connection) section of the Data Types document for details).
 
 Example:
 
