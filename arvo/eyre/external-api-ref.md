@@ -151,7 +151,7 @@ This is for acknowledging a [fact](#fact) from a Gall agent to which you've subs
 |------------|-----------|---------------|--------------------------------------------------------|
 | `id`       | Number    | `3`           | Sequential ID for keeping track of sent messages.      |
 | `action`   | String    | `'ack'`       | The kind of action.                                    |
-| `event-id` | Number    | `7`           | ID of SSE event for which you're acknowledging receipt |
+| `event-id` | Number    | `7`           | ID of SSE event up to which you're acknowledging receipt |
 
 **Example**
 
