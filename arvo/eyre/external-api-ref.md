@@ -93,7 +93,7 @@ This is for poking a Gall agent.
 |----------|-----------|---------------|---------------------------------------------------------------|
 | `id`     | Number    | `1`           | Sequential ID for keeping track of sent messages.             |
 | `action` | String    | `'poke'`      | The kind of action.                                           |
-| `ship`   | String    | `'zod'`       | Ship name, excluding leading `~`.                             |
+| `ship`   | String    | `'zod'`       | Target ship name, excluding leading `~`.                             |
 | `app`    | String    | `'hood'`      | Name of the gall agent you're poking.                         |
 | `mark`   | String    | `'helm-hi'`   | Type of data. Must correspond to a mark definition in `/mar`. |
 | `json`   | Any       | `'hello'`     | Actual payload. Any JSON type, determined by app.             |
