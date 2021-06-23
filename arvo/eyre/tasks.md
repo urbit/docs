@@ -46,7 +46,7 @@ Eyre returns no `gift` in response to a `%live` `task`.
 
 # `%rule`
 
-This `task` either configures HTTPS with a certificate and keypair, or configures a DNS binding. You would typically do this via the `%acme` app rather than directly.
+This `task` either configures HTTPS with a certificate and keypair, or configures a DNS binding. This is typically done for you by the `%acme` app, rather than done manually.
 
 ## Accepts
 
