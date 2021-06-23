@@ -44,7 +44,7 @@ Example:
 
 ## `/x/cors/requests`
 
-An `x` scry with a `path` of `/cors/requests` will return the `set` of pending origin requests. These are origins that were in an `Origin: ...` http header but weren't in the existing approved or rejected sets. The type returned is a `(set origin:eyre)`.
+An `x` scry with a `path` of `/cors/requests` will return the `set` of pending origin requests. These are origins that were in an `Origin: ...` HTTP header but weren't in the existing approved or rejected sets. The type returned is a `(set origin:eyre)`.
 
 Example:
 
