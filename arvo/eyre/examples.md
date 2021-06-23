@@ -382,7 +382,7 @@ Here's a Gall agent that demonstrates this method. It binds the URL path `/foo`,
 --
 ```
 
-Save the above to `app/eyre-agent.hoon`. Commit it:
+Save the above to `/app/eyre-agent.hoon`. Commit it:
 
 ```
 > |commit %home
