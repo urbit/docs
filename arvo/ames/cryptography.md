@@ -45,7 +45,7 @@ message fragment is signed using the authentication key. It is encrypted using
 For each foreign ship a given ship has communicated with, `$ames-state` contains a
 `$peer-state`, inside which the `$symmetric-key` (an atom which nests under
 `@uw`) is utilized for encrypting all Ames packets shared between the two ships.
-The `symmetric-key` is derived using [`+shar:ed:crypto`](@/docs/arvo/reference/cryptography.md#shar) found in `sys/zuse.hoon`,
+The `symmetric-key` is derived using [`+shar:ed:crypto`](@/docs/arvo/reference/cryptography.md#ed) found in `sys/zuse.hoon`,
 which is an arm utilized for generating the symmetric key for elliptic curve
 [Diffie-Hellman key
 exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)

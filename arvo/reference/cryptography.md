@@ -57,7 +57,7 @@ signed message using `+en:siva:aes` with the symmetric key, and then `+jam`s it.
 
 Crashes if `sek` is null.
 
-### `+sign:as` {#sign:as}
+### `+sign:as` {#sign-as}
 
 ```hoon
       ++  sign                                          ::
