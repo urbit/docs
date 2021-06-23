@@ -7,7 +7,7 @@ template = "doc.html"
 # Contents
 - [Introduction](#introduction)
 - [%live](#live) - *(Internal only)* - Notifies Eyre of HTTP(S) ports.
-- [%rule](#rule) - *(Usually Internal)* - Sets TLS Cert or DNS binding. 
+- [%rule](#rule) - *(Usually internal)* - Sets TLS cert or DNS binding. 
 - [%request](#request) - *(Internal only)* - Incoming HTTP request.
 - [%request-local](#request-local) - *(Internal only)* - Incoming HTTP request from the local loopback port.
 - [%cancel-request](#cancel-request) - *(Internal only)* - Notifies Eyre of a connection being closed externally.
