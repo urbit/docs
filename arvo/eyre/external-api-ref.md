@@ -123,7 +123,7 @@ This is for subscribing to a watch `path` of a Gall agent.
 |----------|-----------|-----------------|-----------------------------------------------------|
 | `id`     | Number    | `2`             | Sequential ID for keeping track of sent messages.   |
 | `action` | String    | `'subscribe'`   | The kind of action.                                 |
-| `ship`   | String    | `'zod'`         | Ship name, excluding leading `~`.                   |
+| `ship`   | String    | `'zod'`         | Target ship name, excluding leading `~`.                   |
 | `app`    | String    | `'graph-store'` | Name of the gall agent to which you're subscribing. |
 | `path`   | String    | `'/updates'`    | The path to watch. Depends on the app.              |
 
