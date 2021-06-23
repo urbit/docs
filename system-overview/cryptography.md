@@ -99,8 +99,8 @@ of private networking keys and retrieval of public networking keys utilized by
 Ames. The Jael vane of planets, stars, and galaxies are responsible for
 distributing the public keys of their moons (ultimately via Ames).
 
-`zuse` is the Hoon standard library. It contains cryptographic functions which
-are utilized by Ames. All cryptographic primitives are
+`zuse` is part of the standard library. It contains cryptographic functions
+which are utilized by Ames. All cryptographic primitives are
 [jetted](@/docs/vere/jetting.md) in Vere with standard vetted implementations of
 cryptographic libraries.
 
@@ -114,3 +114,11 @@ infrastructure utilized by Urbit. `azimuth-tracker` obtains networking public
 keys for planets, stars, and galaxies from this store, which are then stored in
 Jael and utilized by Ames for end-to-end encrypted communication.
 
+### Additional documentation
+
+The following pages contained more detailed information about the cryptography
+utilized by each of the system components.
+
+ - [Ames](@/docs/arvo/ames/cryptography.md)
+ - [Zuse](@/docs/arvo/reference/cryptography.md)
+ - [Vere](@/docs/vere/cryptography.md)
