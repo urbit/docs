@@ -44,7 +44,7 @@ CORS origins categorised by approval status. The `requests` `set` contains all [
   ==
 ```
 
-An HTTP connection that is currently open. The [$action](#action) is how it's being handled (e.g. by a gall app, the channel system, etc). The [$inbound-request](#inbound-request) is the original request which opened the connection. The `response-header` contains the status code and headers of the initial response. The `bytes-sent` is the total bytes sent so far in response.
+An HTTP connection that is currently open. The [$action](#action) is how it's being handled (e.g. by a gall app, the channel system, etc). The [$inbound-request](#inbound-request) is the original request which opened the connection. The `response-header` contains the status code and headers. The `bytes-sent` is the total bytes sent so far in response.
 
 ## `$authentication-state`
 
@@ -201,7 +201,7 @@ A client IP address.
   ==
 ```
 
-An inbound HTTP request and metadata - this is what comes in when an external client makes a request to Eyre. The `authenticated` field says whether the request was made with a valid session cookie. The `secure` field says whether it was made with HTTPS. The [$address](#address) is the client's IP address. The [$request:http](#request-http) contains the HTTP request itself. 
+An inbound HTTP request and metadata - this is what is poked into a bound app. The `authenticated` field says whether the request was made with a valid session cookie. The `secure` field says whether it was made with HTTPS. The [$address](#address) is the client's IP address. The [$request:http](#request-http) contains the HTTP request itself. 
 
 # HTTP
 
@@ -252,7 +252,7 @@ A single HTTP request. The [$method:http](#method-http) is the HTTP method, the 
   ==
 ```
 
-The status code and [$header-list:http](#header-list-http) of an HTTP response. This is typically sent separately to the body.
+The status code and [$header-list:http](#header-list-http) of an HTTP response.
 
 ## `$http-event:http`
 
@@ -273,7 +273,7 @@ The status code and [$header-list:http](#header-list-http) of an HTTP response. 
 
 Packetized HTTP.
 
-Urbit treats Earth's HTTP servers as pipes, where Urbit sends or receives one or more `http-event`s. The first of these will always be a `%start` or an `%error`, and the last will always be `%cancel` or will have `complete` set to `%.y` to finish the connection.
+Urbit treats Earth's HTTP servers as pipes, where Urbit sends or receives one or more `http-event`s. The first of these will be a `%start`, and the last will always be `%cancel` or will have `complete` set to `%.y` to finish the connection.
 
 Calculation of control headers such as `'Content-Length'` or `'Transfer-Encoding'` should be performed at a higher level; this structure is merely for what gets sent to or received from Earth.
 

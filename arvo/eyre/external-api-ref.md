@@ -19,8 +19,8 @@ template = "doc.html"
    - [Responses](#responses)
      - [Poke Ack](#poke-ack)
      - [Watch Ack](#watch-ack)
-     - [Fact](#fact)
-     - [Kick](#kick)
+     - [Diff](#diff)
+     - [Quit](#quit)
 - [Scry](#scry)
 - [Spider](#spider)
   
@@ -65,7 +65,7 @@ id: 0
 data: {"ok":"ok","id":1,"response":"poke"}
 ```
 
-If you're working with Javascript in the browser context you'll handle these with an EventSource object. If you're using another language, there'll likely be a library available to handle SSEs.
+If you're working with Javascript in the browser context you'll handle these with an EventSource object or by using fetch and ReadableStream. If you're using another language, there'll likely be a library available to handle SSEs.
 
 When you're finished with a channel, you can send Eyre a [delete action](#delete-channel) to close it.
 
@@ -91,7 +91,7 @@ This is for poking a Gall agent.
 
 | Key      | JSON Type | Example Value | Description                                                   |
 |----------|-----------|---------------|---------------------------------------------------------------|
-| `id`     | Number    | `1`           | Sequential ID for keeping track of sent messages.             |
+| `id`     | Number    | `1`           | ID for keeping track of sent messages.             |
 | `action` | String    | `'poke'`      | The kind of action.                                           |
 | `ship`   | String    | `'zod'`       | Target ship name, excluding leading `~`.                             |
 | `app`    | String    | `'hood'`      | Name of the gall agent you're poking.                         |
@@ -121,7 +121,7 @@ This is for subscribing to a watch `path` of a Gall agent.
 
 | Key      | JSON Type | Example Value   | Description                                         |
 |----------|-----------|-----------------|-----------------------------------------------------|
-| `id`     | Number    | `2`             | Sequential ID for keeping track of sent messages.   |
+| `id`     | Number    | `2`             | ID for keeping track of sent messages.   |
 | `action` | String    | `'subscribe'`   | The kind of action.                                 |
 | `ship`   | String    | `'zod'`         | Target ship name, excluding leading `~`.                   |
 | `app`    | String    | `'graph-store'` | Name of the gall agent to which you're subscribing. |
@@ -141,15 +141,15 @@ This is for subscribing to a watch `path` of a Gall agent.
 
 **Response**
 
-Eyre will send back a [watch ack](#watch-ack). If subscribing was successful, you will also begin receiving any [fact](#fact)s sent by the Gall agent on the specified `path`.
+Eyre will send back a [watch ack](#watch-ack). If subscribing was successful, you will also begin receiving any [diff](#diff)s sent by the Gall agent on the specified `path`.
 
 ### Ack
 
-This is for acknowledging a [fact](#fact) from a Gall agent to which you've subscribed.
+This is for acknowledging an SSE event. If you `ack` one event, you also implicitly `ack` all previous events. Events must be `ack`ed.
 
 | Key        | JSON Type | Example Value | Description                                            |
 |------------|-----------|---------------|--------------------------------------------------------|
-| `id`       | Number    | `3`           | Sequential ID for keeping track of sent messages.      |
+| `id`       | Number    | `3`           | ID for keeping track of sent messages.      |
 | `action`   | String    | `'ack'`       | The kind of action.                                    |
 | `event-id` | Number    | `7`           | ID of SSE event up to which you're acknowledging receipt |
 
@@ -165,7 +165,7 @@ This is for acknowledging a [fact](#fact) from a Gall agent to which you've subs
 
 **Response**
 
-Eyre will not respond to an `ack` action - acks are never acked.
+Eyre will not respond to an `ack` action.
 
 ### Unsubscribe
 
@@ -173,7 +173,7 @@ This is for unsubscribing from a Gall agent watch `path` to which you've previou
 
 | Key            | JSON Type | Example Value | Description                                                |
 |----------------|-----------|---------------|------------------------------------------------------------|
-| `id`           | Number    | `4`           | Sequential ID for keeping track of sent messages.          |
+| `id`           | Number    | `4`           | ID for keeping track of sent messages.          |
 | `action`       | String    | `unsubscribe` | The kind of action.                                        |
 | `subscription` | Number    | `2`           | Request ID of the initial `subscribe` action from earlier. |
 
@@ -197,7 +197,7 @@ This is for deleting the channel itself.
 
 | Key      | JSON Type | Example Value | Description                                       |
 |----------|-----------|---------------|---------------------------------------------------|
-| `id`     | Number    | `5`           | Sequential ID for keeping track of sent messages. |
+| `id`     | Number    | `5`           | ID for keeping track of sent messages. |
 | `action` | String    | `'delete'`    | The kind of action.                               |
 
 **Example**
@@ -257,7 +257,7 @@ This acknowledgement comes in response to a [poke](#poke) action. A poke ack wit
 
 **Action Required**
 
-No action is required - acks are never acked.
+You must ack the event.
 
 ### Watch Ack
 
@@ -301,11 +301,11 @@ This acknowledgement comes in response to a [subscribe](#subscribe) action. A wa
 
 **Action Required**
 
-No action is required - acks are never acked.
+You must ack the event.
 
-### Fact
+### Diff
 
-All data sent by a Gall agent on the `path` to which you've subscribed comes in as `fact`s.
+All `fact`s sent by a Gall agent on the `path` to which you've subscribed are delivered as `diff`s. Note that Eyre makes a best effort to convert the `fact` to a `json` mark. If it can't, Eyre will crash and close the subscription, and you won't receive any `diff` for the `fact`.
 
 | Key        | JSON Type | Example Value    | Description                                                  |
 |------------|-----------|------------------|--------------------------------------------------------------|
@@ -325,29 +325,29 @@ All data sent by a Gall agent on the `path` to which you've subscribed comes in 
 
 **Action Required**
 
-You must [ack](#ack) each individual `fact` that comes in the event stream.
+You must [ack](#ack) each `diff` that comes in the event stream.
 
-### Kick
+### Quit
 
-A `kick` comes in when a subscription has been ended. You may be intentionally `kick`ed by the Gall agent to which you're subscribed, but certain network conditions can also trigger a `kick`. As a result, it's best to try and re[subscribe](#subscribe) when you get a `kick`, and if the resulting [watch ack](#watch-ack) is negative you can then conclude the `kick` was intentional and give up.
+A `quit` comes in when a subscription has been ended. You may be intentionally kicked by the Gall agent to which you're subscribed, but certain network conditions can also trigger a `quit`. As a result, it's best to try and re[subscribe](#subscribe) when you get a `quit`, and if the resulting [watch ack](#watch-ack) is negative you can then conclude the `quit` was intentional and give up.
 
 | Key        | JSON Type | Example Value | Description                                   |
 |------------|-----------|---------------|-----------------------------------------------|
 | `id`       | Number    | `4`           | Request ID of the initial `subscribe` action. |
-| `response` | String    | `'kick'`      | The kind of response.                         |
+| `response` | String    | `'quit'`      | The kind of response.                         |
 
 **Example**
 
 ```json
 {
   'id': 4,
-  'response': 'kick'
+  'response': 'quit'
 }
 ```
 
 **Action Required**
 
-No action is required in response to a `kick`, but you may wish to try and re[subscribe](#subscribe).
+You must ack the event and you may wish to try and re[subscribe](#subscribe).
 
 # Scry
 
