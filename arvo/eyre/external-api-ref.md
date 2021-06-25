@@ -67,6 +67,8 @@ data: {"ok":"ok","id":1,"response":"poke"}
 
 If you're working with Javascript in the browser context you'll handle these with an EventSource object or by using fetch and ReadableStream. If you're using another language, there'll likely be a library available to handle SSEs.
 
+All the events that Eyre sends you on a channel must be [ack](#ack)ed so that Eyre can forget about them and clear them from the channel state. If `fact`s (as [diff](#diff)s) from Gall agents to which you've subscribed are left un`ack`ed long enough, Eyre will consider the particular subscription clogged and automatically unsubscribe you. Note that `Ack`ing one event will implicitly `ack` all previous events.
+
 When you're finished with a channel, you can send Eyre a [delete action](#delete-channel) to close it.
 
 See the [Using the Channel System](@/docs/arvo/eyre/examples.md#using-the-channel-system) section of the [Examples](@/docs/arvo/eyre/examples.md) document for a practical example.
@@ -145,7 +147,7 @@ Eyre will send back a [watch ack](#watch-ack). If subscribing was successful, yo
 
 ### Ack
 
-This is for acknowledging an SSE event. If you `ack` one event, you also implicitly `ack` all previous events. Events must be `ack`ed.
+This is for acknowledging an SSE event. If you `ack` one event, you also implicitly `ack` all previous events. Events *must* be `ack`ed so that Eyre can forget them. If you leave `fact`s (as [diff](#diff)s) un`ack`ed long enough, Eyre will consider the subscription clogged and automatically unsubscribe you.
 
 | Key        | JSON Type | Example Value | Description                                            |
 |------------|-----------|---------------|--------------------------------------------------------|
