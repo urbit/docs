@@ -296,7 +296,7 @@ Note that this example does a lot of things manually for demonstrative purposes.
       `this
     %-  (slog leaf+"Attempting to bind /foo." ~)
     :_  this
-    [%pass /eyre %arvo %e %connect `/'foo' %eyre-agent]~
+    [%pass /bind-foo %arvo %e %connect `/'foo' %eyre-agent]~
   ::
       %handle-http-request
     =/  req  !<  (pair @ta inbound-request:eyre)  vase
@@ -353,16 +353,14 @@ Note that this example does a lot of things manually for demonstrative purposes.
 ++  on-arvo
   |=  [=wire =sign-arvo]
   ^-  (quip card _this)
-  ?+    sign-arvo
+  ?.  ?=([%bind-foo ~] wire)
     (on-arvo:def [wire sign-arvo])
-  ::
-      [%eyre %bound *]
-    ?:  accepted.sign-arvo
-      %-  (slog leaf+"/foo bound successfully!" ~)
-      `this
-    %-  (slog leaf+"Binding /foo failed!" ~)
+  ?>  ?=([%eyre %bound *] sign-arvo)
+  ?:  accepted.sign-arvo
+    %-  (slog leaf+"/foo bound successfully!" ~)
     `this
-  ==
+  %-  (slog leaf+"Binding /foo failed!" ~)
+  `this
 ++  on-fail   on-fail:def
 --
 ```
