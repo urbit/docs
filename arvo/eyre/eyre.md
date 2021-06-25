@@ -16,13 +16,13 @@ Most types of requests require the client provide a valid session cookie which i
 
 Eyre's channel system is the primary way of interacting with Gall agents from outside of Urbit. It provides a simple JSON API that allows you to send data to apps and subscribe for updates from apps. Updates come back on a SSE ([Server Sent Event](https://html.spec.whatwg.org/#server-sent-events)) stream which you can easily handle with an EventSource object in Javascript or the equivalent in whichever language you prefer.
 
-The channel system is designed to be extremely simple with just a handful of `action` and `response` JSON objects to deal with so you can focus on the logic and data structures of your external app and the Gall agent with which you're interacting.
+The channel system is designed to be extremely simple with just a handful of `action` and `response` JSON objects to deal. Essentially it's a thin layer on top of the underlying Gall agent interface. You can poke agents, subscribe for updates, etc, just like you would from within Urbit.
 
 Detailed documentation of the channel system's JSON API is provided in the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document with corresponding examples in the [Examples](@/docs/arvo/eyre/examples.md#using-the-channel-system) document.
 
 # Scrying
 
-Along with the channel system, Eyre also provides a way to make read-only requests for data which are called scries. While not technically part of the channel system, you'll likely use scries in conjunction with channel `action`s.
+Along with the channel system, Eyre also provides a way to make read-only requests for data which are called scries. Eyre's scry interface is separate to the channel system but may be useful in conjunction with it.
 
 Details of Eyre's scry API are in the [Scry](@/docs/arvo/eyre/external-api-ref.md#scry) section of the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document.
 
