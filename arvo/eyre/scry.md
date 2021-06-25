@@ -7,13 +7,13 @@ template = "doc.html"
 ## Contents
 
 - [Introduction](#introduction)
-- [/x/cors](#xcors) - CORS settings.
-   - [/x/cors/requests](#xcorsrequests) - Requested origins.
-   - [/x/cors/approved](#xcorsapproved) - Approved origins.
-   - [/x/cors/approved/\<origin\>](#xcorsapprovedorigin) - Check if origin approved.
-   - [/x/cors/rejected](#xcorsrejected) - Rejected origins.
-   - [/x/cors/rejected/\<origin\>](#xcorsrejectedorigin) - Check if origin rejected.
-- [/x/authenticated/cookie/\<cookie\>](#xauthenticatedcookiecookie) - Check if cookie authenticated.
+- [/cors](#cors) - CORS settings.
+   - [/cors/requests](#cors-requests) - Requested origins.
+   - [/cors/approved](#cors-approved) - Approved origins.
+   - [/cors/approved/\<origin\>](#cors-approved-origin) - Check if origin approved.
+   - [/cors/rejected](#cors-rejected) - Rejected origins.
+   - [/cors/rejected/\<origin\>](#cors-rejected-origin) - Check if origin rejected.
+- [/authenticated/cookie/\<cookie\>](#authenticated-cookie-cookie) - Check if cookie authenticated.
 - [bindings](#bindings) - URL path bindings.
 - [connections](#connections) - Open http connections.
 - [authentication-state](#authentication-state) - Authentication details.
@@ -24,11 +24,11 @@ template = "doc.html"
 
 Here are all of Eyre's scry endpoints. There's not too many and they mostly deal with either CORS settings or aspects of the state of connections.
 
-The first few with a `care` of `x` are a scry like `.^(<type> %ex /=//=/<some-path>)` (note the empty `desk`). The rest have no `care` and the tag replaces the `desk` like `.^(<type> %e /=<something>=)`.
+The first few have a `care` of `x` and are a scry like `.^(<type> %ex /=//=/<some-path>)` (note the empty `desk`). The rest have no `care` and the tag replaces the `desk` like `.^(<type> %e /=<something>=)`.
 
 All examples are from the dojo.
 
-# `/x/cors`
+# `/cors`
 
 An `x` scry with a `path` of `/cors` will return Eyre's CORS origin registry. The type returned is a [cors-registry](@/docs/arvo/eyre/data-types.md#cors-registry) which contains the `set`s of approved, rejected and requested origins.
 
@@ -42,7 +42,7 @@ Example:
 ]
 ```
 
-## `/x/cors/requests`
+## `/cors/requests`
 
 An `x` scry with a `path` of `/cors/requests` will return the `set` of pending origin requests. These are origins that were in an `Origin: ...` HTTP header but weren't in the existing approved or rejected sets. The type returned is a `(set origin:eyre)`.
 
@@ -53,7 +53,7 @@ Example:
 requests={~~http~3a.~2f.~2f.baz~.example}
 ```
 
-## `/x/cors/approved`
+## `/cors/approved`
 
 An `x` scry with a `path` of `/cors/approved` will return the `set` of approved CORS origins. The type returned is a `(set origin:eyre)`.
 
@@ -64,11 +64,11 @@ Example:
 approved={~~http~3a.~2f.~2f.foo~.example}
 ```
 
-## `/x/cors/approved/<origin>`
+## `/cors/approved/<origin>`
 
 An `x` scry whose `path` is `/cors/approved/<origin>` tests whether the given origin URL is in the `approved` set of the CORS registry. The type returned is a simple `?`.
 
-The origin URL must be a cord-encoded `@t` rather than just the plain `@t`, so you'll have to do something like `(scot %t 'foo')` rather than just `'foo'`.
+The origin URL is a `@t`, but since `@t` may not be valid in a path, it must be encoded in a `@ta` using `+scot` like `(scot %t 'foo')` rather than just `'foo'`.
 
 Examples:
 
@@ -82,7 +82,7 @@ Examples:
 %.n
 ```
 
-## `/x/cors/rejected`
+## `/cors/rejected`
 
 An `x` scry with a `path` of `/cors/rejected` will return the `set` of rejected CORS origins. The type returned is a `(set origin:eyre)`.
 
@@ -93,7 +93,7 @@ Example:
 rejected={~~http~3a.~2f.~2f.bar~.example}
 ```
 
-## `/x/cors/rejected/<origin>`
+## `/cors/rejected/<origin>`
 
 An `x` scry whose `path` is `/cors/rejected/<origin>` tests whether the given origin URL is in the `rejected` set of the CORS registry. The type returned is a simple `?`.
 
@@ -111,7 +111,7 @@ Examples:
 %.n
 ```
 
-# `/x/authenticated/cookie/<cookie>`
+# `/authenticated/cookie/<cookie>`
 
 An `x` scry whose `path` is `/authenticated/cookies/<cookie>` tests whether the given cookie is currently valid. The type returned is a `?`.
 
@@ -146,26 +146,7 @@ Example:
     ~[/gall/use/file-server/0w2.EijQB/~zod/~landscape /dill //term/1]
     [%app app=%file-server]
   ]
-  [ [site=~ path=<|~chat|>]
-    ~[/gall/use/file-server/0w2.EijQB/~zod/~chat /dill //term/1]
-    [%app app=%file-server]
-  ]
-  [[site=~ path=<|~ scry|>] ~[/dill //term/1] [%scry ~]]
-  [[site=~ path=<|~ logout|>] ~[/dill //term/1] [%logout ~]]
-  [[site=~ path=<|~ login|>] ~[/dill //term/1] [%authentication ~]]
-  [[site=~ path=<|~ channel|>] ~[/dill //term/1] [%channel ~]]
-  [ [site=~ path=<|spider|>]
-    ~[/gall/use/spider/0w2.EijQB/~zod/bind /dill //term/1]
-    [%app app=%spider]
-  ]
-  [ [site=~ path=<|.well-known acme-challenge|>]
-    ~[/gall/use/acme/0w2.EijQB/~zod/acme /dill //term/1]
-    [%gen generator=[desk=%home path=<|gen acme domain-validation hoon|> args=0]]
-  ]
-  [ [site=~ path=<||>]
-    ~[/gall/use/file-server/0w2.EijQB/~zod /dill //term/1]
-    [%app app=%file-server]
-  ]
+  ...(truncated for brevity)...
 ]
 ```
 

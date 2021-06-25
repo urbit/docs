@@ -592,7 +592,7 @@ First, using `|pass` in the dojo, let's approve the origin `http://foo.example` 
 |pass [%e [%approve-origin 'http://foo.example']] 
 ```
 
-Now if we scry for the [approved](@/docs/arvo/eyre/scry.md#x-cors-approved) CORS `set`:
+Now if we scry for the [approved](@/docs/arvo/eyre/scry.md#cors-approved) CORS `set`:
 
 ```
 > .^(approved=(set @t) %ex /=//=/cors/approved)
@@ -630,7 +630,7 @@ Now we'll try rejecting an `origin`. Back in the dojo, let's `|pass` Eyre a `%re
 |pass [%e [%reject-origin 'http://bar.example']]
 ```
 
-If we scry for the [rejected](@/docs/arvo/eyre/scry.md#x-cors-rejected) CORS `set`:
+If we scry for the [rejected](@/docs/arvo/eyre/scry.md#cors-rejected) CORS `set`:
 
 ```
 > .^(rejected=(set @t) %ex /=//=/cors/rejected)
@@ -679,7 +679,7 @@ Connection: close
 Server: urbit/vere-1.5
 ```
 
-Now if we scry for the [requests](@/docs/arvo/eyre/scry.md#x-cors-requests) CORS `set`: 
+Now if we scry for the [requests](@/docs/arvo/eyre/scry.md#cors-requests) CORS `set`: 
 
 ```
 > .^(requests=(set @t) %ex /=//=/cors/requests)
