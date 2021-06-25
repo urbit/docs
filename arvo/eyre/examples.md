@@ -94,7 +94,7 @@ id: 0
 data: {"ok":"ok","id":1,"response":"poke"}
 ```
 
-Normally this event stream would be handled by an EventSource object in Javascript or the equivalent in whatever other language you're using. Here, though, we'll continue using `curl` for simplicity.
+Normally this event stream would be handled by an EventSource object or similar in Javascript or the equivalent in whatever other language you're using. Here, though, we'll continue using `curl` for simplicity.
 
 Leaving the event stream connection open, in another shell session on unix we'll try subscribing to the watch path of a Gall agent - the `/updates` watch path of `graph-store` in this case.
 
@@ -267,6 +267,8 @@ In many cases you'll just want to interact with Gall agents through the JSON API
 You can refer to the [%connect](@/docs/arvo/eyre/tasks.md#connect) section of the [Internal API Reference](@/docs/arvo/eyre/tasks.md) document for relevant details.
 
 Here's a Gall agent that demonstrates this method. It binds the URL path `/foo`, serves `<h1>Hello, World!</h1>` for GET requests and a `405` error for all others. It also prints debug information to the terminal as various things happen.
+
+Note that this example does a lot of things manually for demonstrative purposes. In practice you'd likely want to use a library like `/lib/server.hoon` to cut down on boilerplate code.
 
 `eyre-agent.hoon`
 
@@ -489,6 +491,8 @@ Here we'll look at running a generator via Eyre. Eyre doesn't have a mediated JS
 You can refer to the [%serve](@/docs/arvo/eyre/tasks.md#serve) section of the [Internal API Reference](@/docs/arvo/eyre/tasks.md) document for relevant details.
 
 Here's a very simple generator that will just echo back the body of the request (if available) along with the current datetime. You can save it in the `/gen` directory and `|commit %home`.
+
+Note that this example does some things manually for demonstrative purposes. In practice you'd likely want to use a library like `/lib/server.hoon` to cut down on boilerplate code.
 
 `eyre-gen.hoon`
 
