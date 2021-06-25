@@ -7,6 +7,7 @@ template = "doc.html"
 # Contents
 
 - [Introduction](#introduction)
+- [Authenticating](#authenticating)
 - [Using the Channel System](#using-the-channel-system)
 - [Scrying](#scrying)
 - [Running Threads With Spider](#running-threads-with-spider)
@@ -20,11 +21,11 @@ This documents contains practical examples of the various ways of interacting wi
 
 General documentation of the `task`s and methods described here are available in the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document and the [Internal API Reference](@/docs/arvo/eyre/tasks.md) document.
 
-# Using The Channel System
+# Authenticating
 
-Here we'll look at a practical example of Eyre's channel system. You can refer to the [Channels](@/docs/arvo/eyre/external-api-ref.md#channels) section of the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document for relevant details.
+In most cases we must obtain a valid session cookie by [authenticating](@/docs/arvo/eyre/external-api-ref.md#authentication) with our web login code (which can be obtained by running `+code` in the dojo) before we can use Eyre's interfaces (such as the channel system or scry interface).
 
-The first thing we need to do is obtain a session cookie by [authenticating](@/docs/arvo/eyre/external-api-ref.md#authentication) with our web login code, which you can get by running `+code` in the dojo. In our case we'll just use the default code for a fakezod.
+Here we'll try authenticating with the default fakezod code.
 
 Using `curl` in the unix terminal, we'll make an HTTP POST request with `"password=<code>"` in the body:
 
@@ -41,6 +42,14 @@ Connection: keep-alive
 Server: urbit/vere-1.5
 set-cookie: urbauth-~zod=0v3.j2062.1prp1.qne4e.goq3h.ksudm; Path=/; Max-Age=604800
 ```
+
+The `urbauth-....` cookie can be now be included in subsequent requests (e.g. to the channel system) by providing it in a Cookie HTTP header.
+
+# Using The Channel System
+
+Here we'll look at a practical example of Eyre's channel system. You can refer to the [Channels](@/docs/arvo/eyre/external-api-ref.md#channels) section of the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document for relevant details.
+
+First, we must obtain a session cookie by [authenticating](#authenticating).
 
 Now that we have our cookie, we can try poking an app & simultaneously opening a new channel. In this case, we'll poke the `hood` app with a `mark` of `helm-hi` to print "Opening airlock" in the dojo.
 
@@ -99,7 +108,7 @@ curl --header "Content-Type: application/json" \
      http://localhost:8080/~/channel/my-channel
 ```
 
-Notice we've incremented the `id` to `2`, as request IDs must be sequential.
+Notice we've incremented the `id` to `2`. Eyre doesn't require IDs to be sequential, merely numerical and unique, but sequential IDs are typically the most practical.
 
 Back in the event stream, we'll see a positive watch ack as a [subscribe](@/docs/arvo/eyre/external-api-ref.md#watch-ack) `response`, meaning the subscription has been successful:
 
@@ -108,14 +117,14 @@ id: 1
 data: {"ok":"ok","id":2,"response":"subscribe"}
 ```
 
-Now we'll try trigger an event on our event stream. In fakezod's landscape, create a new chat channel named "test". You should see the `fact` containing the `add-graph` `graph-update` come through on our channel in a [diff](@/docs/arvo/eyre/external-api-ref.md#diff) `response`: 
+Now we'll try trigger an event on our event stream. In fakezod's landscape, create a new chat channel named "test". You should see the `add-graph` `graph-update` come through on our channel in a [diff](@/docs/arvo/eyre/external-api-ref.md#diff) `response`: 
 
 ```
 id: 2
 data: {"json":{"graph-update":{"add-graph":{"graph":{},"resource":{"name":"test-1183","ship":"zod"},"mark":"graph-validator-chat","overwrite":false}}},"id":2,"response":"diff"}
 ```
 
-All `fact`s we receive must be acked so Eyre knows we've successfully received it. To do this we'll send an [ack](@/docs/arvo/eyre/external-api-ref.md#ack) `action` which specifies the `event-id` of the event in question - `2` in this case:
+All events we receive must be `ack`ed so Eyre knows we've successfully received them. To do this we'll send an [ack](@/docs/arvo/eyre/external-api-ref.md#ack) `action` which specifies the `event-id` of the event in question - `2` in this case:
 
 ```
 curl --header "Content-Type: application/json" \
@@ -125,7 +134,9 @@ curl --header "Content-Type: application/json" \
      http://localhost:8080/~/channel/my-channel
 ```
 
-This same pattern would be repeated for all subsequent `fact`s. When we're finished, we can unsubscribe from `graph-store` `/update`. We do this by sending Eyre a [unsubscribe](@/docs/arvo/eyre/external-api-ref.md#unsubscribe) `action`, and specify the request ID of the original `subscribe` `action` in the `subscription` field - `2` in our case:
+This same pattern would be repeated for all subsequent events. Note that when you `ack` one event, you also implicitly `ack` all previous events, so in this case event `1` will also be `ack`ed.
+
+When we're finished, we can unsubscribe from `graph-store` `/update`. We do this by sending Eyre a [unsubscribe](@/docs/arvo/eyre/external-api-ref.md#unsubscribe) `action`, and specify the request ID of the original `subscribe` `action` in the `subscription` field - `2` in our case:
 
 ```
 curl --header "Content-Type: application/json" \
@@ -135,7 +146,7 @@ curl --header "Content-Type: application/json" \
      http://localhost:8080/~/channel/my-channel
 ```
 
-Unlike `poke` and `subscribe` actions, Eyre doesn't ack `unsubscribe`s, but we'll now have stopped receiving `fact`s from `graph-store`.
+Unlike `poke` and `subscribe` actions, Eyre doesn't acknowledge `unsubscribe`s, but we'll now have stopped receiving updates from `graph-store`.
 
 Finally, let's close the channel itself. We can do this simply by sending Eyre a [delete](@/docs/arvo/eyre/external-api-ref.md#delete-channel) `action`:
 
@@ -153,21 +164,7 @@ With our channel deleted, we can now close the connection on the client side.
 
 Here we'll look at performing scries through Eyre. You can refer to the [Scry](@/docs/arvo/eyre/external-api-ref.md#scry) section of the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document for relevant details.
 
-The first thing we must do is obtain a session cookie by authenticating with our web login code. We'll use the unix `curl` utility and provide the default code for a fakezod:
-
-```
-curl -i localhost:8080/~/login -X POST -d "password=lidlut-tabwed-pillex-ridrup"
-```
-
-Eyre will respond with HTTP status 204 and a `set-cookie` header containing the cookie, which we'll use in the `cookie` header of subsequent requests:
-
-```
-HTTP/1.1 204 ok
-Date: Fri, 04 Jun 2021 10:15:15 GMT
-Connection: keep-alive
-Server: urbit/vere-1.5
-set-cookie: urbauth-~zod=0v1.1pseu.tq7hs.hps2t.ltaf1.tmqjm; Path=/; Max-Age=604800
-```
+First we must obtain a session cookie by [authenticating](#authenticating).
 
 Having obtained a cookie, we can now try a scry. We'll scry the `graph-store` Gall agent on the `/x/keys` scry path, which will return the list of channels it has. If you don't already have any chat channels on your fakezod, go ahead and create one via landscape so it'll have something to return.
 
@@ -237,21 +234,7 @@ Here's an extremely simple thread that takes a `vase` of `(unit json)` and just 
 (pure:m !>(json))
 ```
 
-In order to run it through Eyre, we must first obtain a session cookie by [authenticating](@/docs/arvo/eyre/external-api-ref.md#authentication) with our web login code. To do so, we'll make an HTTP POST request using the unix `curl` utility:
-
-```
-curl -i localhost:8080/~/login -X POST -d "password=lidlut-tabwed-pillex-ridrup"
-```
-
-Eyre will respond with a 204 status and a `set-cookie` header containing the cookie:
-
-```
-HTTP/1.1 204 ok
-Date: Sun, 06 Jun 2021 04:50:09 GMT
-Connection: keep-alive
-Server: urbit/vere-1.5
-set-cookie: urbauth-~zod=0v6.h6t4q.2tkui.oeaqu.nihh9.i0qv6; Path=/; Max-Age=604800
-```
+First we must obtain a session cookie by [authenticating](#authenticating).
 
 Now we can try and run our thread. Spider (the Gall agent that manages threads) is bound to the `/spider` URL path, and expects the rest of the path to be `/{inputMark}/{thread}/{outputMark}`. Our `{thread}` is called `eyre-thread`, and both its `{inputMark}` and `{outputMark}` are `json`, so our URL path will be `/spider/json/eyre-agent/json`. Our request will be an HTTP POST request and the body will be some `json`, in this case `[{"foo": "bar"}]`:
 
@@ -283,7 +266,7 @@ In many cases you'll just want to interact with Gall agents through the JSON API
 
 You can refer to the [%connect](@/docs/arvo/eyre/tasks.md#connect) section of the [Internal API Reference](@/docs/arvo/eyre/tasks.md) document for relevant details.
 
-Here's a Gall agent that demonstrates this method. It binds the URL path `/foo`, serves `<h1>Hello, World!</h1>` for GET requests and a `405` error for all others. It also prints information to the dojo as various things happen.
+Here's a Gall agent that demonstrates this method. It binds the URL path `/foo`, serves `<h1>Hello, World!</h1>` for GET requests and a `405` error for all others. It also prints debug information to the terminal as various things happen.
 
 `eyre-agent.hoon`
 
@@ -320,7 +303,7 @@ Here's a Gall agent that demonstrates this method. It binds the URL path `/foo`,
       =/  data=octs
         (as-octs:mimes:html '<h1>405 Method Not Allowed</h1>')
       =/  content-length=@t
-        (crip (skip (scow %ud p.data) |=(a=@tD =(a '.'))))
+        (crip ((d-co:co 1) p.data))
       =/  =response-header:http
         :-  405
         :~  ['Content-Length' content-length]
@@ -338,7 +321,7 @@ Here's a Gall agent that demonstrates this method. It binds the URL path `/foo`,
       =/  data=octs
         (as-octs:mimes:html '<h1>Hello, World!</h1>')
       =/  content-length=@t
-        (crip (skip (scow %ud p.data) |=(a=@tD =(a '.'))))
+        (crip ((d-co:co 1) p.data))
       =/  =response-header:http
         :-  200
         :~  ['Content-Length' content-length]
@@ -453,7 +436,7 @@ transfer-encoding: chunked
 =/  data=octs
   (as-octs:mimes:html '<h1>Hello, World!</h1>')
 =/  content-length=@t
-  (crip (skip (scow %ud p.data) |=(a=@tD =(a '.'))))
+  (crip ((d-co:co 1) p.data))
 =/  =response-header:http
   :-  200
   :~  ['Content-Length' content-length]
@@ -520,7 +503,7 @@ Here's a very simple generator that will just echo back the body of the request 
 =/  data=octs
   (as-octs:mimes:html msg)
 =/  content-length=@t
-  (rsh [3 2] (scot %ui p.data))
+  (crip ((d-co:co 1) p.data))
 =/  =response-header:http
   :-  200
   :~  ['Content-Length' content-length]
