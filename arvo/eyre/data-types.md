@@ -201,7 +201,7 @@ A client IP address.
   ==
 ```
 
-An inbound HTTP request and metadata. The `authenticated` field says whether the request was made with a valid session cookie. The `secure` field says whether it was made with HTTPS. The [$address](#address) is the client's IP address. The [$request:http](#request-http) contains the HTTP request itself. 
+An inbound HTTP request and metadata. The `authenticated` field says whether the request was made with a valid session cookie. The `secure` field says whether it was made with HTTPS. The [$address](#address) is the IP address from which the request originated, except if it came from localhost and included a `Forwarded` header, in which case it's the address specified in that header. The [$request:http](#request-http) contains the HTTP request itself. 
 
 # HTTP
 
