@@ -523,7 +523,7 @@ The sample of the second nested gate must be:
 
 The return type of the generator must be [simple-payload:http](@/docs/arvo/eyre/data-types.md#simple-payload-http). If you look at our example generator you'll see it meets these requirements.
 
-Because generators return the entire HTTP message as a single `simple-payload`, Eyre can calculate the `content-length` itself and automatically add the header, so we don't need to do it by hand like with a Gall agent.
+Because generators return the entire HTTP message as a single `simple-payload`, Eyre can calculate the `content-length` itself and automatically add the header.
 
 In order to make our generator available, we must bind it to a URL path. To do this, we send Eyre a `%serve` `task`, which looks like:
 
