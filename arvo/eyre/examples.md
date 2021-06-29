@@ -10,7 +10,6 @@ template = "doc.html"
 - [Authenticating](#authenticating)
 - [Using the Channel System](#using-the-channel-system)
 - [Scrying](#scrying)
-- [Running Threads With Spider](#running-threads-with-spider)
 - [Direct HTTP Handling With Gall Agents](#direct-http-handling-with-gall-agents)
 - [Generators](#generators)
 - [Managing CORS Origins](#managing-cors-origins)
@@ -212,52 +211,6 @@ set-cookie: urbauth-~zod=0v1.1pseu.tq7hs.hps2t.ltaf1.tmqjm; Path=/; Max-Age=6048
 content-type: text/html
 
 <html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>There was an error while handling the request for /foo/bar/baz.json.</p><code>no scry result</code></body></html>
-```
-
-# Running Threads With Spider
-
-Here we'll look at running Spider threads through Eyre. You can refer to the [Spider](@/docs/arvo/eyre/external-api-ref.md#spider) section of the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document for relevant details.
-
-Here's an extremely simple thread that takes a `vase` of `(unit json)` and just returns the `json` in a new `vase`. You can save it in `/ted` and `|commit %home`:
-
-`eyre-thread.hoon`
-
-```hoon
-/-  spider
-=,  strand=strand:spider
-^-  thread:spider
-|=  arg=vase
-=/  m  (strand ,vase)
-^-  form:m
-=/  =json
-  (need !<((unit json) arg))
-(pure:m !>(json))
-```
-
-First we must obtain a session cookie by [authenticating](#authenticating).
-
-Now we can try and run our thread. Spider (the Gall agent that manages threads) is bound to the `/spider` URL path, and expects the rest of the path to be `/{inputMark}/{thread}/{outputMark}`. Our `{thread}` is called `eyre-thread`, and both its `{inputMark}` and `{outputMark}` are `json`, so our URL path will be `/spider/json/eyre-agent/json`. Our request will be an HTTP POST request and the body will be some `json`, in this case `[{"foo": "bar"}]`:
-
-```
-curl -i --header "Content-Type: application/json" \
-        --cookie "urbauth-~zod=0v6.h6t4q.2tkui.oeaqu.nihh9.i0qv6" \
-        --request POST \
-        --data '[{"foo": "bar"}]' \
-        http://localhost:8080/spider/json/eyre-thread/json
-```
-
-Spider will run the thread and the result will be returned through Eyre in the body of an HTTP response with a 200 status code:
-
-```
-HTTP/1.1 200 ok
-Date: Sun, 06 Jun 2021 05:32:45 GMT
-Connection: keep-alive
-Server: urbit/vere-1.5
-set-cookie: urbauth-~zod=0v6.h6t4q.2tkui.oeaqu.nihh9.i0qv6; Path=/; Max-Age=604800
-content-type: application/json
-transfer-encoding: chunked
-
-[{"foo":"bar"}]
 ```
 
 # Direct HTTP Handling With Gall Agents

@@ -26,7 +26,7 @@ template = "doc.html"
   
 # Introduction
 
-This document contains reference information about Eyre's external APIs including [the channel system](#channels), [scries](#scry) and [threads](#spider). Each section will also have practical examples in the [Examples](@/docs/arvo/eyre/examples.md) document.
+This document contains reference information about Eyre's external APIs including [the channel system](#channels) and [scries](#scry). Each section will also have practical examples in the [Examples](@/docs/arvo/eyre/examples.md) document.
 
 # Authentication
 
@@ -376,26 +376,4 @@ See the [Scrying](@/docs/arvo/eyre/examples.md#scrying) section of the [Examples
 
 # Spider
 
-Spider (the Gall agent that manages threads) has an Eyre binding which allows threads to be run via [authenticated](#authentication) HTTP POST requests.
-
-Spider is bound to the `/spider` URL path, and expects the requested URL to look like:
-
-```
-http{s}://{host}/spider/{inputMark}/{threadName}/{outputMark}
-```
-
-The `inputMark` is the `mark` the thread takes. The `threadName` is the name of the thread, e.g. `foo` for `/ted/foo/hoon`. The `outputMark` is the `mark` the thread produces. You may also include a file extension though it doesn't have an effect.
-
-When Spider receives an HTTP request, the following steps happen: 
-
-1. It converts the raw body of the message to `json` using `de-json:html`
-2. It creates a `tube:clay` (`mark` conversion gate) from `json` to whatever input `mark` you've specified and does the conversion.
-3. It runs the specified thread and provides a `vase` of `(unit inputMark)` as the argument.
-4. The thread does its thing and finally produces its result as a `vase` of `outputMark`.
-5. Spider creates another `tube:clay` from the output `mark` to `json` and converts it.
-6. It converts the `json` back into raw data suitable for the HTTP response body using `en-json:html`.
-7. Finally, it composes the HTTP response and passes it back to Eyre which passes it on to the client.
-
-Thus, it's important to understand that the original HTTP request and final HTTP response must contain JSON data, and therefore the input & output `mark`s you specify must each have a `mark` file in `/mar` that includes a conversion method for `json -> inputMark` and `outputMark -> json` respectively.
-
-See the [Running Threads With Spider](@/docs/arvo/eyre/examples.md#running-threads-with-spider) section of the [Examples](@/docs/arvo/eyre/examples.md) document for a practical example.
+See the [HTTP API](@/docs/userspace/threads/http-api.md) section of the [Threads](@/docs/userspace/threads/overview.md) documentation.

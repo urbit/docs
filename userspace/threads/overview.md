@@ -77,5 +77,8 @@ These docs walk through the basics of interacting with threads from gall agents.
 - [Scry](@/docs/userspace/threads/examples/scry.md) - Scry arvo or an agent.
 - [Take a fact](@/docs/userspace/threads/examples/take-fact.md) - Subscribe to an agent and receive a fact.
 
+## [HTTP API](@/docs/userspace/threads/http-api.md)
+An overview and practical example of running threads externally with HTTP requests.
+
 ## [Reference](@/docs/userspace/threads/reference.md)
 Basic reference information. For usage of particular `strandio` functions just refer directly to `/lib/strandio/hoon` since they're largely self-explanatory.
