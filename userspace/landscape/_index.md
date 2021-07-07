@@ -15,4 +15,4 @@ An overview of how Landscape, our flagship client, is structured.
 
 ## [API Reference](@/docs/userspace/landscape/reference/_index.md)
 
-API documentation about specific agents that comprise Landscape.
+API documentation about specific agents Landscape comprises.
