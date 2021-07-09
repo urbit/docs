@@ -4,7 +4,7 @@ weight = 30
 template = "doc.html"
 +++
 
-Here's a breakdown of the various repositories that comprise the project. All of
+Here's a breakdown of the various repositories the project comprises. All of
 our code is hosted on GitHub, so you can of course peruse it there at
 [https://github.com/urbit](https://github.com/urbit).
 
@@ -14,9 +14,10 @@ Urbit OS, the Landscape interface and Vere are all contained in one monolithic
 repository that can be found [here](https://github.com/urbit/urbit). The repo is
 large, so here's some links to its various high-level components
 
-- [Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo): the part of the urbit repo that comprises Arvo, the Urbit OS.
+- [Arvo](https://github.com/urbit/urbit/tree/master/pkg/arvo): the part of the
+  urbit repo that contains Arvo, the Urbit OS.
 - [Vere](https://github.com/urbit/urbit/tree/master/pkg/urbit): the part of the
-  urbit repo that comprises the C and Haskell interpreters.
+  urbit repo that contains the C and Haskell interpreters.
 - [Landscape
   interface](https://github.com/urbit/urbit/tree/master/pkg/interface): the part
   of the urbit repo that contains the interface code for Landscape.
@@ -26,7 +27,7 @@ large, so here's some links to its various high-level components
 ### Urbit ID
 
 - [azimuth](https://github.com/urbit/azimuth): the public-key infrastructure
-  (PKI) that comprises Urbit ID, live on the Etheereum blockchain.
+  (PKI) that implements Urbit ID, live on the Ethereum blockchain.
 - [bridge](https://github.com/urbit/bridge): an application for interacting with
   Azimuth that can be accessed at [bridge.urbit.org](https://bridge.urbit.org).
 - [urbit-key-generation](https://github.com/urbit/urbit-key-generation): a javascript library for key derivation and HD

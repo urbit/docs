@@ -19,7 +19,7 @@ contributing to the Urbit project. If you're looking for documentation on how to
 The Development section is recommended reading for developers interested in
 contributing to Urbit itself, or building apps on top of Urbit. It serves as a
 high-level orientation to how to set up a development environment, the various
-codebases that comprise the project, our grants program, and the precepts that
+codebases the project comprises, our grants program, and the precepts that
 drive the development of Urbit.
 
 ### [System Overview](@/docs/system-overview/_index.md)

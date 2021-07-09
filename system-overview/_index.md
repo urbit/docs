@@ -10,7 +10,7 @@ network of general-purpose personal servers.  Each server on this network is a
 deterministic computer called an 'urbit' that runs on a Unix-based virtual
 machine.
 
-The Urbit stack is primarily comprised of:
+The Urbit stack primarily comprises:
 
 - [Arvo](@/docs/system-overview/arvo.md): the functional operating system of
   each urbit, written in Hoon.
