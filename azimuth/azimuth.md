@@ -42,7 +42,7 @@ Think of your master ticket like a very high-value password. The master ticket i
 
 ### Ownership Address
 
-An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in the Ecliptic, Azimuth's suite of governing smart-contracts.
+An ownership address has all rights over the assets deeded to it. These rights are on-chain actions described and implemented in [Ecliptic](@/docs/glossary/ecliptic.md), Azimuth's suite of governing smart-contracts.
 
 ### Proxies
 
@@ -55,8 +55,8 @@ Proxy addresses allow you to execute non-ownership related actions like spawning
 
 - **Voting Proxy**
 
-  Galaxies only. Galaxies are the part of the galactic senate, and this means
-  they can cast votes on new proposals including changes to the Ecliptic.
+  Galaxies only. Galaxies are the part of the [Galactic Senate](@/docs/glossary/senate.md), and this means
+  they can cast votes on new proposals including changes to Ecliptic.
 
 - **Spawn Proxy**
 
@@ -95,8 +95,7 @@ The ERC-721 standard, having been made specifically to provide a smart-contract
 interface for non-fungible assets, serves our needs well. This is the standard
 that we use for deeding Urbit identities.
 
-Identities, and all of their blockchain operations, are governed by the Ecliptic.
-The Ecliptic is an Ethereum smart-contract that governs identity state and the
+Identities, and all of their blockchain operations, are governed by Ecliptic. Ecliptic is an Ethereum smart-contract that governs identity state and the
 ownership, spawn, management, and voting rights affiliated with your identities.
 
 For the technical implementation details, take a look at Azimuth's
