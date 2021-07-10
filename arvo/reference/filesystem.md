@@ -21,7 +21,7 @@ definitions in `/lib`, for example.
    generators, etc. However, this is not the location of the standard libraries
    (see `/sys`). Libraries are imported from `/lib` with `/+`.
  - `/mar` contains [mark](@/docs/arvo/clay/architecture.md#marks) definitions.
- - `/sur` contains shared [structure](@/docs/hoon/reference/rune) definitions.
+ - `/sur` contains shared [structure](@/docs/hoon/reference/rune.md) definitions.
    Whenever you expect structures to be used by code across multiple files, it
    is recommended to place their shared structures in `/sur`. Structures are
    imported from `/sur` with `/-`.
