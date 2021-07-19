@@ -29,5 +29,5 @@ Arvo modules are also called 'vanes'.  Arvo's vanes are:
 - [Eyre](@/docs/arvo/eyre/eyre.md): HTTP server.
 - [Gall](@/docs/userspace/gall/gall.md): application sandbox and manager.
 - [Iris](@/docs/arvo/iris/iris-api.md): HTTP client.
-- [Jael](@/docs/arvo/jael/jael-api.md): Public and private key storage.
+- [Jael](@/docs/arvo/jael/jael.md): Public and private key storage.
 
