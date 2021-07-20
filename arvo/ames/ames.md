@@ -157,7 +157,7 @@ order:
  `origin` is the IP and port of the original sender if the packet was proxied
  through a relay.
  
- `SIV` is an "associated data vector" as defined in AES-256 SIV, the encryption
+ `SIV` is a "synthetic initialization vector" as defined in AES-256 SIV, the encryption
  algorithm utilized to encrypt Ames packets (see the page on [Ames
  cryptography](@/docs/arvo/ames/cryptography.md)). It is formed from the
  following noun: `~[sender=@p receiver=@p sender-life=@ receiver-life=@]` (see
@@ -348,16 +348,16 @@ by an intermediary that knows the IP and port of the receiving ship.
 For now, peer discovery is handled entirely by galaxies. Every galaxy is
 responsible for knowing the IP and port of every planet underneath it. In the
 future, galaxies will only need to know the IP and port of the star sponsoring a
-planet, and stars will be responsible knowing the IP and port of their sponsored planets.
+planet, and stars will be responsible for knowing the IP and port of their sponsored planets.
 
 Galaxies are also utilized for packet relaying in the case where two ships
 cannot communicate directly with one another, as is often the case when one or
 both are behind a
 [NAT](https://en.wikipedia.org/wiki/Network_address_translation) or certain
-firewalls. Again, stars will someday assist with this process as well in a
-similar fashion to peer discovery.
+firewalls. We remark that packet relaying is a necessary component of peer
+discovery. Thus stars will also assist with packet relaying in the future.
 
-In the case of moons, their parent is responsible for packet relaying and peer
+In the case of a moon, its parent ship is responsible for packet relaying and peer
 discovery, analagous to the role that galaxies currently play for stars and planets.
 
 The following diagram summarizes the packet creation and forwarding process.
@@ -396,13 +396,13 @@ intended recipient of the packet, and so gets ready to forward it to
 `~worwel-sipnum`. First, it replaces the origin field with the IP and port of
 `~bacbel-tagfeb`, then computes the `+mug` of the body and replaces the checksum
 with the new mug. Since the packet is being relayed, `~zod` flips the "is it
-relayed?" bit to 1. `~zod` then forwards the packet to `~worwel-sipnum`.
+relayed?" bit to `%.y`. `~zod` then forwards the packet to `~worwel-sipnum`.
 
-In order to decrypt the packet, `~worwel-sipnum` will need to include the
+In order to decrypt the packet, `~worwel-sipnum` will need to calculate the
 associated data vector utilized by SIV, which consists of `~[sender=@p
-receiver=@p sender-life=@ receiver-life=@]`, and insert it into the correct spot
-in the body of the packet before decrypting and `+cue`ing (deserializing) to
-obtain the payload which includes the message fragment.
+receiver=@p sender-life=@ receiver-life=@]`. It then passes that along with the
+SIV and ciphertext to the decryption function, and receives the unencrypted
+packet as a return.
 
 Once `~worwel-sipnum` processes the packet, it will know the IP and port of
 `~bacbel-tagfeb` since `~zod` included it when it forwarded the packet. Thus
