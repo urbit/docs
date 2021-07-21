@@ -69,7 +69,7 @@ Source of public key updates for Jael. If it's a `term` it's a Gall agent e.g `%
 +$  source-id  @udsourceid
 ```
 
-Numerical index for Jael to organise its sources. Jael assigns its `source-id`s sequentially, starting from `0`.
+Numerical index for Jael to organise its `source`s. Jael assigns its `source-id`s sequentially, starting from `0`.
 
 ## `$state-eth-node`
 
