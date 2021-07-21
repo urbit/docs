@@ -16,7 +16,7 @@ Details of Eyre's external API including the channel system's JSON API.
 
 ## [Internal API Reference](@/docs/arvo/eyre/tasks.md)
 
-The tasks Eyre takes and the gifts it returns.
+The `task`s Eyre takes and the `gift`s it returns.
 
 ## [Scry Reference](@/docs/arvo/eyre/scry.md)
 
