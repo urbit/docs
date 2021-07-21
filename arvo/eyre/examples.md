@@ -336,7 +336,7 @@ activated app home/eyre-agent
 [unlinked from [p=~zod q=%eyre-agent]]
 ```
 
-Now, first we need to bind a url to our app. In the `++  on-poke` arm, our agent will send a [%connect](@/docs/arvo/eyre/tasks.md#connect) `task` to Eyre when poked with `%bind`:
+Now, first we need to bind a URL to our app. In the `++  on-poke` arm, our agent will send a [%connect](@/docs/arvo/eyre/tasks.md#connect) `task` to Eyre when poked with `%bind`:
 
 ```hoon
   %noun
