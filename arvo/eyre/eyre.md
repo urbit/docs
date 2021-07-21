@@ -46,7 +46,7 @@ This method is explained in the [%connect](@/docs/arvo/eyre/tasks.md#connect) se
 
 Eyre supports both simple [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) requests and OPTIONS preflight requests. It has a CORS registry with three categories - `approved`, `rejected` and `requests`. Eyre will respond positively for origins in its `approved` list and negatively for all others. Eyre will add origins in requests that it doesn't have in either its `approved` or `rejected` lists to its `requests` list. Eyre always allows all methods and headers over CORS.
 
-There are three generators - `+cors-registry`, `|cors-approve` and `|cors-reject` to view, approve and deny origins respectively from the dojo. Eyre also has [tasks](@/docs/arvo/eyre/tasks.md) to [approve](@/docs/arvo/eyre/tasks.md#approve-origin) and [reject](@/docs/arvo/eyre/tasks.md#reject-origin) origins programmatically, and a number of [scry endpoints](@/docs/arvo/eyre/scry.md) to query them. Examples are also included in the [Managing CORS Origins](@/docs/arvo/eyre/examples.md#managing-cors-origins) section of the Examples document.
+There are three generators - `+cors-registry`, `|cors-approve`, and `|cors-reject` to view, approve, and deny origins respectively from the dojo. Eyre also has [tasks](@/docs/arvo/eyre/tasks.md) to [approve](@/docs/arvo/eyre/tasks.md#approve-origin) and [reject](@/docs/arvo/eyre/tasks.md#reject-origin) origins programmatically, and a number of [scry endpoints](@/docs/arvo/eyre/scry.md) to query them. Examples are also included in the [Managing CORS Origins](@/docs/arvo/eyre/examples.md#managing-cors-origins) section of the Examples document.
 
 # Eyre Documentation Sections
 
