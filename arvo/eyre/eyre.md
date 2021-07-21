@@ -38,7 +38,7 @@ Their usage is explained in the [%serve](@/docs/arvo/eyre/tasks.md#serve) sectio
 
 # Direct HTTP Handling With Gall Agents
 
-As well as the [Channel System](#the-channel-system) and [Scries](#scrying), it's also possible for Gall Agents to deal directly with HTTP requests. This method is much more complicated that the channel system so you're unlikely to use it unless you want to build a custom HTTP-based API or something like that.
+As well as the [Channel System](#the-channel-system) and [Scries](#scrying), it's also possible for Gall agents to deal directly with HTTP requests. This method is much more complicated than the channel system so you're unlikely to use it unless you want to build a custom HTTP-based API or something like that.
 
 This method is explained in the [%connect](@/docs/arvo/eyre/tasks.md#connect) section of the [Internal API Reference](@/docs/arvo/eyre/tasks.md) document and a detailed example is provided in the [Direct HTTP Handling With Gall Agents](@/docs/arvo/eyre/examples.md#direct-http-handling-with-gall-agents) section of the [Examples](@/docs/arvo/eyre/examples.md) document.
 
