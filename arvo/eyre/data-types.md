@@ -44,7 +44,7 @@ CORS origins categorised by approval status. The `requests` `set` contains all [
   ==
 ```
 
-An HTTP connection that is currently open. The [$action](#action) is how it's being handled (e.g. by a gall app, the channel system, etc). The [$inbound-request](#inbound-request) is the original request which opened the connection. The `response-header` contains the status code and headers. The `bytes-sent` is the total bytes sent so far in response.
+An HTTP connection that is currently open. The [$action](#action) is how it's being handled (e.g. by a Gall app, the channel system, etc). The [$inbound-request](#inbound-request) is the original request which opened the connection. The `response-header` contains the status code and headers. The `bytes-sent` is the total bytes sent so far in response.
 
 ## `$authentication-state`
 
