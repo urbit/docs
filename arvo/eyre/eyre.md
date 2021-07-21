@@ -32,7 +32,7 @@ Spider (the Gall agent that manages threads) has an Eyre binding that allows you
 
 # Generators
 
-Generators, which are like hoon scripts, can also be used through Eyre. Rather than having a predefined JSON API, they instead handle HTTP requests and return HTTP responses directly, and are therefore a more complex case that you're less likely to use.
+Generators, which are like Hoon scripts, can also be used through Eyre. Rather than having a predefined JSON API, they instead handle HTTP requests and return HTTP responses directly, and are therefore a more complex case that you're less likely to use.
 
 Their usage is explained in the [%serve](@/docs/arvo/eyre/tasks.md#serve) section of the [Internal API Reference](@/docs/arvo/eyre/tasks.md) documentation and a practical example is provided in the [Generators](@/docs/arvo/eyre/examples.md#generators) section of the [Examples](@/docs/arvo/eyre/examples.md) document.
 
