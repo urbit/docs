@@ -62,7 +62,7 @@ Eyre returns no `gift` in response to a `%rule` `task`.
 
 This `task` is how Eyre receives an inbound HTTP request. It will ordinarily be sent to Eyre by the runtime so you wouldn't use it except perhaps in tests.
 
-The `secure` field says whether it's over HTTPS. The `address` is the ip address from which the request originated. The [request:http](@/docs/arvo/eyre/data-types.md#request-http) is the HTTP request itself containing the method, url, headers and body.
+The `secure` field says whether it's over HTTPS. The `address` is the IP address from which the request originated. The [request:http](@/docs/arvo/eyre/data-types.md#request-http) is the HTTP request itself containing the method, URL, headers, and body.
 
 ## Returns
 
