@@ -48,7 +48,7 @@ The `urbauth-....` cookie can be now be included in subsequent requests (e.g. to
 
 Here we'll look at a practical example of Eyre's channel system. You can refer to the [Channels](@/docs/arvo/eyre/external-api-ref.md#channels) section of the [External API Reference](@/docs/arvo/eyre/external-api-ref.md) document for relevant details.
 
-First, we must obtain a session cookie by [authenticating](#authenticating).
+First, we must obtain a session cookie by [authenticating](#authenticating). You will be copying the entry of the `set-cookie` field into the `--cookie` field in subsequent commands.
 
 Now that we have our cookie, we can try poking an app & simultaneously opening a new channel. In this case, we'll poke the `hood` app with a `mark` of `helm-hi` to print "Opening airlock" in the dojo.
 
