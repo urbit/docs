@@ -176,7 +176,7 @@ A `%saxo` scry gets the sponsorship chain for the target ship (including the tar
 
 # `%subscriptions`
 
-A `%subscriptions` scry gets the current state of subscriptions to public key updates (typically initiated with a [%public-keys task](@/docs/arvo/jael/tasks.md#public-keys)). It takes a `life` as its `path` and returns a triple of the following:
+A `%subscriptions` scry gets the current state of subscriptions to public key updates (typically initiated with a [%public-keys task](@/docs/arvo/jael/tasks.md#public-keys)). It takes a `life` as its `path` and returns a triple consisting of the following:
 
 ```hoon
 yen=(jug duct ship)  ::  trackers
