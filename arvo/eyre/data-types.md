@@ -166,7 +166,7 @@ This refers to a generator on a local ship that can handle requests. Note that s
   ==
 ```
 
-The configuration of the runtime HTTP server itself. The `secure` field contains the PEM-encoded RSA private key and certificate or certificate chain if using HTTPS, otherwise is `~` for plain HTTP. The `proxy` field is not currently used. The `log` field turns on HTTP(s) access logs but is not currently implemented. The `redirect` field turns on 301 redirects to upgrade HTTP to HTTPS if the `key` and `cert` are set in `secure`.
+The configuration of the runtime HTTP server itself. The `secure` field contains the PEM-encoded RSA private key and certificate or certificate chain when using HTTPS, and otherwise is `~` when using plain HTTP. The `proxy` field is not currently used. The `log` field turns on HTTP(S) access logs but is not currently implemented. The `redirect` field turns on 301 redirects to upgrade HTTP to HTTPS if the `key` and `cert` are set in `secure`.
 
 ## `$http-rule`
 
