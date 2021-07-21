@@ -348,7 +348,7 @@ Now, first we need to bind a url to our app. In the `++  on-poke` arm, our agent
 [%pass /eyre %arvo %e %connect `/'foo' %eyre-agent]~
 ```
 
-...and when `%eyre` responds with a `%bound` gift, the `+on-agent` arm will print whether the bind succeeded:
+...and when `%eyre` responds with a `%bound` `gift`, the `+on-agent` arm will print whether the bind succeeded:
 
 ```hoon
   [%eyre %bound *]
