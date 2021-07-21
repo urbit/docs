@@ -4,7 +4,7 @@ weight = 4
 template = "doc.html"
 +++
 
-Jael's type definitions in `lull.hoon` have a three substructures as well as the general types, so this reference is divided as follows:
+Jael's section in `lull.hoon` contains three ancillary cores with their own type definitions as well as Jael's general types, so this reference is divided as follows:
 
 - [jael](#public-keys-result) - General structures.
 - [block:jael](#block) - Structures for Ethereum blocks.
