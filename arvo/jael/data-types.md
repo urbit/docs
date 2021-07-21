@@ -90,7 +90,7 @@ Jael's data about `source`s for PKI updates about ships.
 - `sources` is a `map` of [$source-id](#source-id)s to [$source](#source)s.
 - `sources-reverse` the same as `sources` but in reverse.
 - `default-source` is the default `source` to use (typically `0` - `%azimuth-tracker`).
-- `ship-sources` is a `map` from `ship`s to `source-id`s and records where to get updates from for the ships in question. Typically these will map moons to their parent planets.
+- `ship-sources` is a `map` from `ship`s to `source-id`s and records where to get updates from for the ships in question. Typically these will map moons to their parent ships.
 - `ship-sources-reverse` is the same as `ship-sources` but in reverse.
 
 # block
