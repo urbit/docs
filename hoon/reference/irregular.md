@@ -204,7 +204,7 @@ Lets us adjust types without violating type constraints.
 
 ### `^:` ketcol
 
-[docs](@/docs/hoon/reference/ket.md#ketcol) \\,
+[docs](@/docs/hoon/reference/rune/ket.md#ketcol) \\,
 
 `[%ktcl p=spec]`: mold gate for type `p`.
 
