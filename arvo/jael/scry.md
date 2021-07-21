@@ -124,7 +124,7 @@ A `%vile` scry gets your `jam`mmed private boot parameters at your ship's curren
 
 # `%deed`
 
-A `%deed` scry gets the `life`, pubkey and maybe a signature if the ship in question is a comet. It takes the target ship and life as its `path` like `/~sampel-palnet/1`and the type returned is a `[life pass (unit @ux)]`.
+A `%deed` scry gets the `life`, pubkey and maybe a signature if the ship in question is a comet. It takes the target ship and life as its `path` like `/~sampel-palnet/1` and the type returned is a `[life pass (unit @ux)]`.
 
 ## Example
 
