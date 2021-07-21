@@ -26,7 +26,7 @@ Here are all of Eyre's scry endpoints. There's not too many and they mostly deal
 
 The first few have a `care` of `x` and are a scry like `.^(<type> %ex /=//=/<some-path>)` (note the empty `desk`). The rest have no `care` and the tag replaces the `desk` like `.^(<type> %e /=<something>=)`.
 
-All examples are from the dojo.
+All examples are run from the dojo.
 
 # `/cors`
 
