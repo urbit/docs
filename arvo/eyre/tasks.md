@@ -70,7 +70,15 @@ Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the 
 
 # `%request-local`
 
+```hoon
+[%request-local secure=? =address =request:http]
+```
+
 This `task` is how Eyre receives an inbound HTTP request over the local loopback port. It behaves the same and takes the same arguments as in the [%request](#request) example except it skips any normally required authentication. Just like for a [%request](#request) `task`, you'd not normally use this manually.
+
+## Returns
+
+Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
 # `%cancel-request`
 
