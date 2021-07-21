@@ -67,7 +67,7 @@ data: {"ok":"ok","id":1,"response":"poke"}
 
 If you're working with Javascript in the browser context you'll handle these with an EventSource object or by using fetch and ReadableStream. If you're using another language, there'll likely be a library available to handle SSEs.
 
-All the events that Eyre sends you on a channel must be [ack](#ack)ed so that Eyre can forget about them and clear them from the channel state. If `fact`s (as [diff](#diff)s) from Gall agents to which you've subscribed are left un`ack`ed long enough, Eyre will consider the particular subscription clogged and automatically unsubscribe you. Note that `Ack`ing one event will implicitly `ack` all previous events.
+All the events that Eyre sends you on a channel must be [ack](#ack)ed so that Eyre can forget about them and clear them from the channel state. If `fact`s (as [diff](#diff)s) from Gall agents to which you've subscribed are left un`ack`ed long enough, Eyre will consider the particular subscription clogged and automatically unsubscribe you. Note that `ack`ing one event will implicitly `ack` all previous events.
 
 When you're finished with a channel, you can send Eyre a [delete action](#delete-channel) to close it.
 
