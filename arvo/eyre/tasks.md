@@ -66,7 +66,7 @@ The `secure` field says whether it's over HTTPS. The `address` is the IP address
 
 ## Returns
 
-Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection and other factors.
+Eyre may `pass` a `%response` `gift` on the appropriate `duct` depending on the contents of the `%request`, state of the connection, and other factors.
 
 # `%request-local`
 
