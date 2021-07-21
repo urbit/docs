@@ -116,7 +116,7 @@ id: 1
 data: {"ok":"ok","id":2,"response":"subscribe"}
 ```
 
-Now we'll try trigger an event on our event stream. In fakezod's landscape, create a new chat channel named "test". You should see the `add-graph` `graph-update` come through on our channel in a [diff](@/docs/arvo/eyre/external-api-ref.md#diff) `response`: 
+Now we'll try trigger an event on our event stream. In fakezod's Landscape, create a new chat channel named "test". You should see the `add-graph` `graph-update` come through on our channel in a [diff](@/docs/arvo/eyre/external-api-ref.md#diff) `response`: 
 
 ```
 id: 2
