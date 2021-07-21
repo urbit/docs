@@ -195,10 +195,6 @@ This is what is send to Eyre by `%hood` implicitly when you run `|rekey` after r
 
 Eyre does not return any `gift` in response to a `%rekey` `task`.
 
-## Example
-
-See the [%rekey](@/docs/arvo/jael/examples.md#rekey) section of the Examples document for a practical example.
-
 # `%turf`
 
 ```hoon

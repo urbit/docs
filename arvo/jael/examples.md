@@ -12,7 +12,6 @@ General documentation of the `task`s demonstrated here can be found in the [API 
 
 - [%private-keys](#private-keys)
 - [%public-keys and %nuke](#public-keys-and-nuke)
-- [%rekey](#rekey)
 - [%turf](#turf)
 - [%step](#step)
 
@@ -178,58 +177,6 @@ At this point our thread will send a `%nuke` `task` like `[%nuke (silt ~[~dopzod
 ```
 
 As you can see the `set` is now empty, so we know the `%nuke` succeeded and Jael will no longer send us pubkey updates for `~dopzod`. One thing to note about `%nuke` is that it *must* come from the same `duct` as the original subscription. You can't unsubscribe another app, ship, thread or what have you, so if we'd tried `%nuke`ing the subscription from a separate thread it wouldn't have worked.
-
-# `%rekey`
-
-Here we'll look at changing a ship's private keys by sending a `%rekey` `task` to Jael. 
-
-Here's a thread that will scry for a ship's current `life`, increment it, generate a random private key from some entropy, and send a `%rekey` `task` to jael to increase the ship's `life` and set the new private key.
-
-This example was run on an offline **copy** of a real ship booted with `urbit -L` because you can't change the `life` of a `urbit -F` fake ship. Setting a random private key this way on a real ship is obviously a bad idea so please be careful not to do that.
-
-`rekey-task.hoon`
-
-```hoon
-/-  spider
-/+  *strandio
-=,  strand=strand:spider
-^-  thread:spider
-|=  arg=vase
-=/  m  (strand ,vase)
-^-  form:m
-;<  =bowl:strand  bind:m  get-bowl
-;<  =life         bind:m  (scry ,life /j/life/(scot %p our.bowl))
-=/  =task:jael  [%rekey +(life) (cat 3 'B' eny.bowl)]
-=/  =card:agent:gall  [%pass /rekey-our %arvo %j task]
-;<  ~  bind:m  (send-raw-card card)
-(pure:m !>(~))
-```
-
-Save this in the `/ted` directory of you `%home` desk and `|commit %home`.
-
-First, let's check our current `life` with a [life scry](@/docs/arvo/jael/scry.md#life) and our private keys with a [vein scry](@/docs/arvo/jael/scry.md#vein):
-
-```
-> .^(@ud %j /=life=/(scot %p our))
-1
-> .^(@uw %j /=vein=/1)
-0w84.0MwlQ.y2Ly9.6HVmH.8SYwo.EvuLC.f5YRw.T2NzD.EHtjZ.gpHZb.J0Pu5.aTGVL.UugSA.EZ~E9.~PODC.cohVD.B1zWj.ZWnJ2
-```
-
-As you can see, our ship is currently on life `1`. Now let's rekey it:
-
-```
-> -rekey-task
-```
-
-This will have changed the private key and incremented our ship's `life`. Let's do the `%life` and `%vein` scries again to check:
-
-```
-> .^(@ud %j /=life=/(scot %p our))
-2
-> .^(@uw %j /=vein=/2)
-0w6T.Uvlap.8TeR4.OxR-r.IPy6s.Nwzdy.bjNgF.IZhjn.RSHs3.YieBr.6jUWX.diA1i.8CJEm.uOjE~.n9kKJ.ZxOB5.npAax.1rBZ2
-```
 
 # `%turf`
 
