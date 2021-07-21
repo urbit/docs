@@ -77,7 +77,7 @@ Jael `%give`s a `%init` `gift` to Unix.
 [%listen whos=(set ship) =source]  ::  set ethereum source
 ```
 
-Set ethereum source.
+Set Ethereum source.
 
 Sets the source that the public keys for a set of `ship`s should be obtained from. This can either be a Gall app that communicates with an Ethereum node such as `%azimuth-tracker`, as in the case of galaxies, stars, and planets, or a ship, as in the case of moons.
 
