@@ -31,7 +31,7 @@ Typically the `%full` kind with a `map` of `ship`s to [$point:point](#point-poin
 +$  seed  [who=ship lyf=life key=ring sig=(unit oath:pki)]
 ```
 
-Private boot parameters. The `who` field is the name of the ship, `lyf` is the `life` (key revision number), `key` is the private key and `sig` is the signature of the parent planet if it's a moon, and `~` otherwise.
+Private boot parameters. The `who` field is the name of the ship, `lyf` is the `life` (key revision number), `key` is the private key and `sig` is the signature of the parent ship if it's a moon, and `~` otherwise.
 
 ## `$dawn-event`
 
