@@ -84,7 +84,7 @@ Numerical index for Jael to organise its `source`s. Jael assigns its `source-id`
   ==
 ```
 
-Jael's data about sources for PKI updates about ships.
+Jael's data about `source`s for PKI updates about ships.
 
 - `top-source-id` is the highest and therefore most recent source.
 - `sources` is a `map` of [$source-id](#source-id)s to [$source](#source)s.
