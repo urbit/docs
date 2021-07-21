@@ -36,6 +36,8 @@ To use Eyre's channel system, run threads or perform scries you must first obtai
 |-------------|----------------------------------------|------------|-------------------------------------------------------------------------------------|
 | `POST`      | `password=lidlut-tabwed-pillex-ridrup` | `/~/login` | The password is your web login code which can be obtained with `+code` in the dojo. |
 
+See the [examples](@/docs/arvo/eyre/examples.md#authenticating) for an example of how to do this using the curl.
+
 Eyre's response will include a `set-cookie` header like:
 
 ```
