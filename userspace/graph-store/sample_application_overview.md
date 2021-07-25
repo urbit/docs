@@ -14,7 +14,8 @@ Using this application, you can:
 -   Allow others to view your library based on various permissioning schemes (policies)
 -   Add and remove comments from a library, if you are the owner or were granted access
 
-You can find the source code at https://github.com/ynx0/library/tree/library  <!-- todo make this point to https://github.com/ynx0/library/ once branch is merged -->
+You can find the source code at https://github.com/ynx0/library/tree/library.  <!-- todo make this point to https://github.com/ynx0/library/ once branch is merged --> Before continuing with this overview, it is recommended to download the application and play around with it. You can find a detailed usage guide [here](https://github.com/ynx0/library/blob/library/README.md).
+
 
 ## How does it achieve its functionality?
 
