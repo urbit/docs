@@ -1,4 +1,4 @@
-# Sample Application Walkthrough — *Library*
+# Sample Application Overview — *Library*
 
 ## What is *Library*?
 
