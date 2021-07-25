@@ -17,9 +17,43 @@ Using this application, you can:
 You can find the source code at https://github.com/ynx0/library/tree/library.  <!-- todo make this point to https://github.com/ynx0/library/ once branch is merged --> Before continuing with this overview, it is recommended to download the application and play around with it. You can find a detailed usage guide [here](https://github.com/ynx0/library/blob/library/README.md).
 
 
+## How is the project structured?
+
+Here is the directory structure of our app.
+```
+├── app
+│   └── library-proxy.hoon
+├── lib
+│   └── library.hoon
+├── mar
+│   ├── graph
+│   │   └── validator
+│   │       └── library.hoon
+│   └── library
+│       ├── action.hoon
+│       ├── command.hoon
+│       └── response.hoon
+├── sur
+│   └── library.hoon
+└── install.sh
+```
+
+- The main code of the application lives in [`app/library-proxy.hoon`](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon). This contains the gall agent which proxies the `%graph-store` updates between ships.
+
+- [`lib/library.hoon`](https://github.com/ynx0/library/blob/library/lib/library.hoon) contains miscellaneous helper arms which the proxy uses extensively. It mainly contains arms that construct different `%graph-store` updates various actions that a user performed.
+
+- The `mar/library` folder contains the definitions of the pokes that `%library-proxy` uses.
+
+- Contained in [`mar/graph/validator/library.hoon`](https://github.com/ynx0/library/blob/library/mar/graph/validator/library.hoon) is the definition of the validation logic that `%graph-store` uses to enforce the schema of the library applications graph data.
+
+- [`sur/library.hoon`](https://github.com/ynx0/library/blob/library/sur/library.hoon) contains all the various type definitions used by `%library-store`.
+
+- `install.sh` is a script that automates copying the source files into a ship's pier / home desk.
+
+
 ## How does it achieve its functionality?
 
-We use a custom validator to define our application's schema, and create a custom gall agent, called `%library-proxy`, which proxies `%graph-store` updates between the host ship and subscribers. 
+As seen above, we have created a custom `%graph-store` validator to define our application's schema, and have also created a custom gall agent, called `%library-proxy`, which sends `%graph-store` updates between the host ship and subscribers.
 The gall agent also generates `%graph-store` updates based on commands and actions that a user issues. Commands can only be issued to a proxy by the ship owner, 
 while actions can be issued by any ship, but may fail based on permissions. A host ship's `%library-proxy` talks to the subscriber ship's `%library-proxy` through the normal gall app channels (pokes/peeks) 
 to send them any updates that have taken place on the library graph. It is the host's responsibility to forward all relevant updates to subscribers 
@@ -28,8 +62,8 @@ while subscribers must only trust graph updates that it receives from the owner 
 
 Here are the proxy's responsibilities:
 
--   **Application-specific API** - presents an interface for a user to interact with both his/her own library proxy and others' by directly defining and implementing a user-facing API as pokes and scries,
--   as opposed to forcing the user to deal with the graph-store API directly. The `command`/`action`/`response` poke types are defined [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/sur/library.hoon#L19-L44),
+-   **Application-specific API** - presents an interface for a user to interact with both his/her own library proxy and others' by directly defining and implementing a user-facing API as pokes and scries, 
+    as opposed to forcing the user to deal with the graph-store API directly. The `command`/`action`/`response` poke types are defined [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/sur/library.hoon#L19-L44),
     while the scries are defined [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/app/library-proxy.hoon#L137).
 -   **Graph store update creation** - creates the appropriate graph update for a given user-facing action
 -   **Graph store update proxying** - handles the networking and subscription logic required to send graph store updates between host and subscriber
@@ -37,10 +71,7 @@ Here are the proxy's responsibilities:
 
 ## How does the app interact with `%graph-store`?
 
-- The app subscribes to graph store on init on path `/updates`, meaning it will be notified of every single update that occurs to `%graph-store`. (*Recall the type of graph-update, defined [here](https://github.com/urbit/urbit/blob/ceed4b78d068d7cb70350b3cd04e7525df1c7e2d/pkg/arvo/sur/graph-store.hoon#L29), the reference for which can be found [here](https://urbit.org/docs/userspace/graph-store/data-structure-overview/#update-part-1)*)
-
-- The [lib/library.hoon](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/lib/library.hoon) file contains arms that generate the graph updates appropriate for each given library command/action
-- Graph store looks for all marks inside the path `%/graph/validator/<name of app>/hoon`, and requires them to have a `graph-indexed-post` arm which does schema validation. Our validator can be found [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/mar/graph/validator/library.hoon).
+The app subscribes to graph store on init on path `/updates`, meaning it will be notified of every single update that occurs to `%graph-store`. (*Recall the type of graph-update, defined [here](https://github.com/urbit/urbit/blob/ceed4b78d068d7cb70350b3cd04e7525df1c7e2d/pkg/arvo/sur/graph-store.hoon#L29), the reference for which can be found [here](https://urbit.org/docs/userspace/graph-store/data-structure-overview/#update-part-1)*). Since `%graph-store` registers all validators under the path `%/graph/validator/<name of app>/hoon`, we don't have to do anything special to register our validator. We just need to correctly name our file, and provide an `+graph-indexed-post` arm which should perform all schema validation.
 
 ### How does it synchronize graph data between ships?
 
@@ -58,7 +89,6 @@ The second type is a [`comment`](https://github.com/ynx0/library/blob/2b75bc6fd6
 meant to represent a comment on any given book.
 
 ### How do you store your application data if we can only store limited data types in a node's content?
-
 
 The data types we defined for our application do not fit within `%graph-store` out of the box. `%graph-store` doesn't allow arbitrarily typed data in a node's content field, so we'll have to create an ad-hoc representation that we can cleanly convert to an from our own data types and `%graph-store` types. The conversion code can be seen [here](https://github.com/ynx0/library/blob/library/lib/library.hoon#L12-L19), where each arm takes in either a `book` or a `comment` and spits out a `(list content)`.
 
@@ -222,7 +252,7 @@ To make things more concrete, let's look at an example of an actual graph.
 ### How is the app's schema enforced on a given graph?
 
 
-Recall that in `%graph-store`, all data that is to be added to a graph passes through our custom validator (ours is [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/mar/graph/validator/library.hoon)).
+Recall that in `%graph-store`, all data that is to be added to a graph passes through our custom validator.
 Take a moment to read through it and cross-check your understanding with the following explanation.
 
 **Validator logic summary**
