@@ -1,8 +1,15 @@
-# Sample Application Overview — *Library*
++++
+title = "Sample Application Overview — Library"
+weight = 4
+sort_by = "weight"
+template = "doc.html"
+insert_anchor_links = "right"
++++
+
 
 ## What is *Library*?
 
-Library is a toy social media application in which you can create a collection of books, called a library, which can contain any number of books. 
+Library is a sample social media application in which you can create a collection of books, called a library, which can contain any number of books. 
 You can share individual collections per-ship. The creator of the collection has de-facto admin powers; he is the only one who can add or remove books to/from the library, 
 remove the library itself, and add comments or remove anyone's comments. Guest ships may request access to specific libraries, which if granted, 
 allows them to request any book from the library.
