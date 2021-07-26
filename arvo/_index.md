@@ -40,7 +40,7 @@ Ford is our build system. It handles resources and publishing.
 
 Gall is the vane for controlling userspace apps.
 
-## [Iris](@/docs/arvo/iris/iris-api.md)
+## [Iris](@/docs/arvo/iris/iris.md)
 
 Iris is our HTTP client.
 
