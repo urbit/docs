@@ -86,7 +86,7 @@ Numerical index for Jael to organise its `source`s. Jael assigns its `source-id`
 
 Jael's data about `source`s for PKI updates about ships.
 
-- `top-source-id` is the highest and therefore most recent `source`.
+- `top-source-id` tracks the highest `source-id` so Jael can easily determine what the next `source-id` should be.
 - `sources` is a `map` of [$source-id](#source-id)s to [$source](#source)s.
 - `sources-reverse` the same as `sources` but in reverse.
 - `default-source` is the default `source` to use (typically `0` - `%azimuth-tracker`).
