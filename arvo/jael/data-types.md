@@ -237,7 +237,7 @@ Key identifier.
 +$  name  (pair @ta @t)
 ```
 
-ASCII/unicode.
+Name in both ASCII and Unicode.
 
 ## `$oath:pki`
 
