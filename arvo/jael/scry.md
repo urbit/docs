@@ -165,7 +165,7 @@ A `%sein` scry gets the sponsor for the specified ship. This scry is used implic
 
 # `%saxo`
 
-A `%saxo` scry gets the sponsorship chain for the target ship (including the target ship itself). For example, a `%saxo` scry for a planet will return the planet, its star and the star's galaxy. This scry is used implicitly by `sein:title`. It takes the target ship as its `path` and the type returned is a `(list @p)`.
+A `%saxo` scry gets the sponsorship chain for the target ship (including the target ship itself). For example, a `%saxo` scry for a planet will return the planet, its star and the star's galaxy. This scry is used implicitly by `saxo:title`. It takes the target ship as its `path` and the type returned is a `(list @p)`.
 
 ## Example
 
