@@ -144,7 +144,7 @@ Structures for points (Ship IDs in Azimuth).
   ==
 ```
 
-Public key data for a particular ship. The `rift` is the current continuity breach number and `life` is the current key revision number. The `keys` `map` contains the public key (`pass`) for each `life` up to the current one. The `sponsor` is maybe the current sponsor of the ship in question.
+Public key data for a particular ship. The `rift` is the current continuity breach number and `life` is the current key revision number. The `keys` `map` contains the public key (`pass`) for each `life` up to the current one. The `sponsor` is the current sponsor of the ship in question, if it has one.
 
 ## `$key-update:point`
 
