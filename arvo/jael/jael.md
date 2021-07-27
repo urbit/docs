@@ -4,7 +4,7 @@ weight = 1
 template = "doc.html"
 +++
 
-Jael is the security and encryption vane.
+Jael is the networking key infrastructure vane.
 
 The main purpose of Jael is keeping track of [Azimuth](@/docs/azimuth/azimuth.md) related information. For each ship, this consists of its public keys, its key revision number (or `life`), its continuity breach number (or `rift`) (see [Life and Rift](@/docs/azimuth/life-and-rift.md), and who the sponsor of the ship is. It also handles the local ship's private keys, keeps track of galaxy domain prefixes, and performs some boot-related tasks. 
 
