@@ -189,11 +189,11 @@ See the [%public-keys and %nuke](@/docs/arvo/jael/examples.md#public-keys-and-nu
 
 Update private keys.
 
-This is what is send to Eyre by `%hood` implicitly when you run `|rekey` after rekeying via Bridge (or via `|cycle-moon-keys` on your planet in the case of a moon). It will update your `life` (key revision number) and private keys. The `life` field is the new `life` (typically an increment of the current `life`) and the `ring` is a private key `@`.
+This is what is send to Jael by `%hood` implicitly when you run `|rekey` after rekeying via Bridge (or via `|cycle-moon-keys` on your planet in the case of a moon). It will update your `life` (key revision number) and private keys. The `life` field is the new `life` (typically an increment of the current `life`) and the `ring` is a private key `@`.
 
 ## Returns
 
-Eyre does not return any `gift` in response to a `%rekey` `task`.
+Jael does not return any `gift` in response to a `%rekey` `task`.
 
 # `%turf`
 
@@ -207,7 +207,7 @@ The domains returned by a `%turf` `task` are used as the base for individual gal
 
 ## Returns
 
-Eyre will respond to a `%turf` `task` with a `%turf` `gift`, which looks like:
+Jael will respond to a `%turf` `task` with a `%turf` `gift`, which looks like:
 
 ```hoon
 [%turf turf=(list turf)]
