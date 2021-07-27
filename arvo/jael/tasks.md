@@ -74,7 +74,7 @@ Jael `%give`s a `%init` `gift` to Unix.
 # `%listen`
 
 ```hoon
-[%listen whos=(set ship) =source]  ::  set ethereum source
+[%listen whos=(set ship) =source]
 ```
 
 Set Ethereum source.
