@@ -121,7 +121,7 @@ Cancel subscription to public or private key updates.
 
 If you've subscribed to public or private key updates from Jael with a [%private-keys](#private-keys) or [%public-keys](#public-keys) `task`, you can unsubscribe and stop receiving updates with a `%nuke` `task`. The `(set ship)` is the `set` of `ship`s which you want to stop tracking. Jael organises subscriptions based on `duct`s, and will determine which subscription to cancel implicitly based on the `duct` the `%nuke` `task` came from. This means a `%nuke` `task` only works from the same thread or agent and on the same `path` as the original subscription request.
 
-To cancel a subscription to a ship's private keys you must leave `whos` empty like `[%nuke ~]`.
+To cancel a subscription to the ship's private keys you must leave `whos` empty like `[%nuke ~]`.
 
 ## Returns
 
