@@ -88,8 +88,7 @@ generated.
 Most Ethereum tokens use the ERC-20 standard for smart contracts. Urbit identities
 are, however, essentially different from most Ethereum tokens, due to identities not
 being fungible. Since any two stars will handle social-networking realities in a
-different way, they will carry a different reputation. identities are to houses as
-tokens are to gold.
+different way, they will carry a different reputation.
 
 The ERC-721 standard, having been made specifically to provide a smart-contract
 interface for non-fungible assets, serves our needs well. This is the standard
