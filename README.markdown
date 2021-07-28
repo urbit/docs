@@ -1,3 +1,1 @@
-# Urbit Docs
-
-Urbit documentation as it appears on [urbit.org](https://urbit.org/docs/).
+The Urbit documentation now lives at [urbit.org](https://github.com/urbit/urbit.org/tree/master/content/docs).
