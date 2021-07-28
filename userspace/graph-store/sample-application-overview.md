@@ -21,7 +21,7 @@ Using this application, you can:
 -   Allow others to view your library based on various permissioning schemes (policies)
 -   Add and remove comments from a library, if you are the owner or were granted access
 
-You can find the source code at https://github.com/ynx0/library/tree/library.  <!-- todo make this point to https://github.com/ynx0/library/ once branch is merged --> Before continuing with this overview, it is recommended to download the application and play around with it. You can find a detailed usage guide [here](https://github.com/ynx0/library/blob/library/README.md).
+You can find the source code at https://github.com/ynx0/library.  <!-- todo make this point to https://github.com/ynx0/library/ once branch is merged --> Before continuing with this overview, it is recommended to download the application and play around with it. You can find a detailed usage guide [here](https://github.com/ynx0/library/blob/master/README.md).
 
 
 ## How is the project structured?
@@ -45,17 +45,17 @@ Here is the directory structure of our app.
 └── install.sh
 ```
 
-- The main code of the application lives in [`app/library-proxy.hoon`](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon). This contains the gall agent which proxies the `%graph-store` updates between ships.
+- The main code of the application lives in [`app/library-proxy.hoon`](https://github.com/ynx0/library/blob/master/app/library-proxy.hoon). This contains the gall agent which proxies the `%graph-store` updates between ships.
 
-- [`lib/library.hoon`](https://github.com/ynx0/library/blob/library/lib/library.hoon) contains miscellaneous helper arms which the proxy uses extensively. It mainly contains arms that construct different `%graph-store` updates various actions that a user performed.
+- [`lib/library.hoon`](https://github.com/ynx0/library/blob/master/lib/library.hoon) contains miscellaneous helper arms which the proxy uses extensively. It mainly contains arms that construct different `%graph-store` updates various actions that a user performed.
 
 - The `mar/library` folder contains the definitions of the pokes that `%library-proxy` uses.
 
-- Contained in [`mar/graph/validator/library.hoon`](https://github.com/ynx0/library/blob/library/mar/graph/validator/library.hoon) is the definition of the validation logic that `%graph-store` uses to enforce the schema of the library applications graph data.
+- Contained in [`mar/graph/validator/library.hoon`](https://github.com/ynx0/library/blob/master/mar/graph/validator/library.hoon) is the definition of the validation logic that `%graph-store` uses to enforce the schema of the library applications graph data.
 
-- [`sur/library.hoon`](https://github.com/ynx0/library/blob/library/sur/library.hoon) contains all the various type definitions used by `%library-store`.
+- [`sur/library.hoon`](https://github.com/ynx0/library/blob/master/sur/library.hoon) contains all the various type definitions used by `%library-store`.
 
-- `install.sh` is a script that automates copying the source files into a ship's pier / home desk.
+- [`install.sh`](https://github.com/ynx0/library/blob/master/install.sh) is a script that automates copying the source files into a ship's pier / home desk.
 
 
 ## How does it achieve its functionality?
@@ -82,7 +82,7 @@ The app subscribes to graph store on init on path `/updates`, meaning it will be
 
 ### How does it synchronize graph data between ships?
 
-An owner is responsible for forwarding any updates to clients. Whenever the `%library-proxy` gall agent receives an update from it's local `%graph-store`, it checks to see whether it's for a graph it owns or not. If it's not, we skip sending out updates since we don't own the resource\*. If it is, then we generate cards to poke each subscriber with that same graph update. This logic occurs within the agent's `+on-watch` arm, with the logic residing in the `handle-outgoing-graph-update` arm, found [here](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L350).
+An owner is responsible for forwarding any updates to clients. Whenever the `%library-proxy` gall agent receives an update from it's local `%graph-store`, it checks to see whether it's for a graph it owns or not. If it's not, we skip sending out updates since we don't own the resource\*. If it is, then we generate cards to poke each subscriber with that same graph update. This logic occurs within the agent's `+on-watch` arm, with the logic residing in the `handle-outgoing-graph-update` arm, found [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L350).
 
 On the receiving end, since we know that we are not the source of the graph store, we handle the update in the `handle-incoming-graph-store` helper arm, which makes sure to only process and forward graph store updates to local graph store that are sent by the owner, and no one else. Once it passes this permissions check, it is poked into the local graph like any other graph-update.
 
@@ -97,7 +97,7 @@ meant to represent a comment on any given book.
 
 ### How do you store your application data if we can only store limited data types in a node's content?
 
-The data types we defined for our application do not fit within `%graph-store` out of the box. `%graph-store` doesn't allow arbitrarily typed data in a node's content field, so we'll have to create an ad-hoc representation that we can cleanly convert to an from our own data types and `%graph-store` types. The conversion code can be seen [here](https://github.com/ynx0/library/blob/library/lib/library.hoon#L12-L19), where each arm takes in either a `book` or a `comment` and spits out a `(list content)`.
+The data types we defined for our application do not fit within `%graph-store` out of the box. `%graph-store` doesn't allow arbitrarily typed data in a node's content field, so we'll have to create an ad-hoc representation that we can cleanly convert to an from our own data types and `%graph-store` types. The conversion code can be seen [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/lib/library.hoon#L12-L19), where each arm takes in either a `book` or a `comment` and spits out a `(list content)`.
 
 ### How is the application data structured using graph-store objects?
 
@@ -276,7 +276,7 @@ Take a moment to read through it and cross-check your understanding with the fol
 ### What are the rules of the permissioning system?
 
 There are explicit access control rules called `policy`s, (defined [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/sur/library.hoon#L47-L51))
-which are set by the user per-library at the time of creation (stored [here](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L187)).
+which are set by the user per-library at the time of creation (stored [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L187)).
 These specify who can or cannot gain access to a library.
 
 There are also implicit rules, defined as follows:
@@ -295,17 +295,17 @@ Implicitly, all readers are given permission to get any book when granted access
 ### Where and how is the permissioning logic implemented?
 
 - `policies` (defined [here](https://github.com/ynx0/library/blob/2b75bc6fd6c31d9c9eddd26c156db39f866258eb/sur/library.hoon#L46)) is a map between the names of libraries that we own and what policy should be enforced on each one.
-  It is a part of the agent state, shown  [here](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L14).
+  It is a part of the agent state, shown  [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L14).
 
--   The `+is-allowed` arm implements each policy's behavior, and can be found [here](https://github.com/ynx0/library/blob/library/lib/library.hoon#L21)
+-   The `+is-allowed` arm implements each policy's behavior, and can be found [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/lib/library.hoon#L21)
 
--   `+is-allowed` is used in `+on-watch` [here](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L118), where it only allows a ship to subscribe to a library if it passes the permissions check
--   It is also used [here](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L304) and [here](https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L315), so that when a ship wants to know about what libraries and books exist, only data they are allowed to see gets revealed to them.
+-   `+is-allowed` is used in `+on-watch` [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L118), where it only allows a ship to subscribe to a library if it passes the permissions check
+-   It is also used [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L304) and [here](https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L315), so that when a ship wants to know about what libraries and books exist, only data they are allowed to see gets revealed to them.
 -   Some of the more ad-hoc/implicit permission rules are implemented at the following locations
-    + https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L323
-    + https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L49
-    + https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L264
-    + https://github.com/ynx0/library/blob/library/app/library-proxy.hoon#L299
+    + https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L323
+    + https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L49
+    + https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L264
+    + https://github.com/ynx0/library/blob/4c47fdd88dc0f41b3d611192b2f77dddbddc226f/app/library-proxy.hoon#L299
 
 ## Is this the only way to do it?
 
